@@ -1,0 +1,103 @@
+﻿using Microsoft.Xna.Framework;
+using SpiritMod.Items.Halloween;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace SpiritMod
+{
+	public static class ItemUtils
+	{
+		public static bool IsWeapon(this Item item) => item.type != ItemID.None && item.stack > 0 && item.useStyle > ItemUseStyleID.None && (item.damage > 0 || item.useAmmo > 0 && item.useAmmo != AmmoID.Solution);
+
+		public static void DropItem(this Entity ent, int type, IEntitySource source, int stack = 1)
+		{
+			int i = Item.NewItem(source, ent.Hitbox, type, stack);
+			if (Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendData(MessageID.SyncItem, -1, -1, null, i);
+		}
+
+		public static void DropItem(this Entity ent, int type, float chance, IEntitySource source, int stack = 1)
+		{
+			if (Main.rand.NextDouble() < chance)
+			{
+				int i = Item.NewItem(source, ent.Hitbox, type, stack);
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendData(MessageID.SyncItem, -1, -1, null, i);
+			}
+		}
+
+		public static void DropItem(this Entity ent, int type, int min, int max, IEntitySource source)
+		{
+			int i = Item.NewItem(source, ent.Hitbox, type, Main.rand.Next(min, max));
+			if (Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendData(MessageID.SyncItem, -1, -1, null, i);
+		}
+
+		public static int NewItemWithSync(IEntitySource source, int owner, int x, int y, int width, int height, int type, int stack = 1, bool noBroadcast = false, int prefix = 0, bool noGrabDelay = false, bool reverseLookup = false)
+		{
+			int item = Item.NewItem(source, x, y, width, height, type, stack, noBroadcast, prefix, noGrabDelay, reverseLookup);
+			if (Main.netMode == NetmodeID.MultiplayerClient && Main.myPlayer == owner)
+				NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item, 1f);
+			return item;
+		}
+
+		public static int NewItemWithSync(IEntitySource source, int owner, Rectangle area, int type, int stack = 1, bool noBroadcast = false, int prefix = 0, bool noGrabDelay = false, bool reverseLookup = false)
+		{
+			(int x, int y, int width, int height) = (area.X, area.Y, area.Width, area.Height);
+			return NewItemWithSync(source, owner, x, y, width, height, type, stack, noBroadcast, prefix, noGrabDelay, reverseLookup);
+		}
+
+		public static int[] DropCandyTable()
+		{
+			int[] types = new[] { ModContent.ItemType<Taffy>(), ModContent.ItemType<Candy>(), ModContent.ItemType<ChocolateBar>(), ModContent.ItemType<HealthCandy>(), ModContent.ItemType<ManaCandy>(),
+				ModContent.ItemType<Lollipop>(), ModContent.ItemType<Apple>(), ModContent.ItemType<MysteryCandy>(), ModContent.ItemType<GoldCandy>() };
+			return types;
+		}
+
+		public static Color RarityColor(this Item item, float alpha = 1)
+		{
+			if (alpha > 1)
+				alpha = 1;
+			else if (alpha <= 0)
+				return Color.Transparent;
+
+			switch (item.rare)
+			{
+				case -11:
+					return new Color((byte)(255f * alpha), (byte)(175f * alpha), (byte)(0f * alpha), (byte)(alpha * 255));
+				case -1:
+					return new Color((byte)(130f * alpha), (byte)(130f * alpha), (byte)(130f * alpha), (byte)(alpha * 255));
+				case 1:
+					return new Color((byte)(150f * alpha), (byte)(150f * alpha), (byte)(255f * alpha), (byte)(alpha * 255));
+				case 2:
+					return new Color((byte)(150f * alpha), (byte)(255f * alpha), (byte)(150f * alpha), (byte)(alpha * 255));
+				case 3:
+					return new Color((byte)(255f * alpha), (byte)(200f * alpha), (byte)(150f * alpha), (byte)(alpha * 255));
+				case 4:
+					return new Color((byte)(255f * alpha), (byte)(150f * alpha), (byte)(150f * alpha), (byte)(alpha * 255));
+				case 5:
+					return new Color((byte)(255f * alpha), (byte)(150f * alpha), (byte)(255f * alpha), (byte)(alpha * 255));
+				case 6:
+					return new Color((byte)(210f * alpha), (byte)(160f * alpha), (byte)(255f * alpha), (byte)(alpha * 255));
+				case 7:
+					return new Color((byte)(150f * alpha), (byte)(255f * alpha), (byte)(10f * alpha), (byte)(alpha * 255));
+				case 8:
+					return new Color((byte)(255f * alpha), (byte)(255f * alpha), (byte)(10f * alpha), (byte)(alpha * 255));
+				case 9:
+					return new Color((byte)(5f * alpha), (byte)(200f * alpha), (byte)(255f * alpha), (byte)(alpha * 255));
+				case 10:
+					return new Color((byte)(255f * alpha), (byte)(40f * alpha), (byte)(100f * alpha), (byte)(alpha * 255));
+			}
+
+			if (item.rare >= ItemRarityID.Purple)
+				return new Color((byte)(180f * alpha), (byte)(40f * alpha), (byte)(255f * alpha), (byte)(alpha * 255));
+
+			if (item.expert || item.rare == -12)
+				return new Color((byte)(Main.DiscoR * alpha), (byte)(Main.DiscoG * alpha), (byte)(Main.DiscoB * alpha), (byte)(alpha * 255));
+
+			return new Color((byte)(255 * alpha), (byte)(255 * alpha), (byte)(255 * alpha), (byte)(alpha * 255));
+		}
+	}
+}
