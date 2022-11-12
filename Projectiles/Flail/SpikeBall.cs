@@ -1,7 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,10 +6,7 @@ namespace SpiritMod.Projectiles.Flail
 {
 	public class SpikeBall : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Spike Ball");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Spike Ball");
 
 		public override void SetDefaults()
 		{
@@ -29,18 +23,13 @@ namespace SpiritMod.Projectiles.Flail
 			return false;
 		}
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return ProjectileExtras.FlailTileCollide(Projectile.whoAmI, oldVelocity);
-		}
+		public override bool OnTileCollide(Vector2 oldVelocity) => ProjectileExtras.FlailTileCollide(Projectile.whoAmI, oldVelocity);
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			ProjectileExtras.DrawChain(Projectile.whoAmI, Main.player[Projectile.owner].MountedCenter,
-				"SpiritMod/Projectiles/Flail/FleshRender_Chain");
+			ProjectileExtras.DrawChain(Projectile.whoAmI, Main.player[Projectile.owner].MountedCenter, "SpiritMod/Projectiles/Flail/ClatterMace_Chain");
 			ProjectileExtras.DrawAroundOrigin(Projectile.whoAmI, lightColor);
 			return false;
 		}
-
 	}
 }

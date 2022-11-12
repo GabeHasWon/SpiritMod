@@ -70,13 +70,13 @@ namespace SpiritMod.NPCs.Critters
 			NPC.frame.X = 46 * pickedType;
 			NPC.frame.Width = 46;
 
-			if (NPC.IsABestiaryIconDummy && frame == 5)
-			{
-				pickedType++;
+			//if (NPC.IsABestiaryIconDummy && frame == 5)
+			//{
+			//	pickedType++;
 
-				if (pickedType > 2)
-					pickedType = 0;
-			}
+			//	if (pickedType > 2)
+			//		pickedType = 0;
+			//}
 		}
 
 		public override void SendExtraAI(BinaryWriter writer)

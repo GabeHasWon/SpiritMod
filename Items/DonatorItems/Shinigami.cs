@@ -2,6 +2,8 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Utilities;
+using SpiritMod.GlobalClasses.Players;
+
 namespace SpiritMod.Items.DonatorItems
 {
 	class Shinigami : ModItem
@@ -45,18 +47,19 @@ namespace SpiritMod.Items.DonatorItems
 		}
 		public override bool CanUseItem(Player player)
 		{
-			if (player.altFunctionUse == 2) {
-				if (player.dashDelay == 0) {
+			if (player.altFunctionUse == 2)
+			{
+				if (player.dashDelay == 0)
+				{
 					Item.useStyle = ItemUseStyleID.Thrust;
 					Item.noMelee = true;
-					player.GetModPlayer<MyPlayer>().PerformDash(
-						DashType.Shinigami,
-						(sbyte)player.direction);
+					player.GetModPlayer<DashPlayer>().PerformDash(DashType.Shinigami, (sbyte)player.direction);
 				}
 				else
 					return false;
 			}
-			else {
+			else
+			{
 				Item.useStyle = ItemUseStyleID.Swing;
 				Item.noMelee = false;
 			}

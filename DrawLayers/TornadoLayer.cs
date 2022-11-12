@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 using System;
+using SpiritMod.GlobalClasses.Players;
 
 namespace SpiritMod.DrawLayers
 {
@@ -35,7 +36,7 @@ namespace SpiritMod.DrawLayers
 					float scale = MathHelper.Lerp(0.6f, 1f, i / density);
 					DrawData drawdata = new DrawData(texture, offset - Main.screenPosition,
 						new Rectangle(0, 0, texture.Width, texture.Height),
-						Lighting.GetColor((int)player.Center.X / 16, (int)player.Center.Y / 16).MultiplyRGBA(color) * 0.5f * ((float)MyPlayer.ChitinDashTicks / 20),
+						Lighting.GetColor((int)player.Center.X / 16, (int)player.Center.Y / 16).MultiplyRGBA(color) * 0.5f * ((float)player.GetModPlayer<DashPlayer>().chitinDashTicks / 20),
 						i / 6f - Main.GlobalTimeWrappedHourly * 7f,
 						texture.Size() / 2,
 						scale,

@@ -3,6 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using SpiritMod.Items.Armor.DiverSet;
+using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.ZombieVariants
 {
@@ -27,6 +28,14 @@ namespace SpiritMod.NPCs.ZombieVariants
 			NPC.knockBackResist = .45f;
 			NPC.aiStyle = 3;
 			AIType = NPCID.Zombie;
+		}
+
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+		{
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
+				new FlavorTextBestiaryInfoElement("Who knew those oxygen tanks needed have actual oxygen in them?"),
+			});
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

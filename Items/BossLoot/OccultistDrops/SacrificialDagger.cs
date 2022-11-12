@@ -42,7 +42,7 @@ namespace SpiritMod.Items.BossLoot.OccultistDrops
 			texture = TextureAssets.Item[Item.type].Value;
 			spriteBatch.Draw
 			(
-				ModContent.Request<Texture2D>("SpiritMod/Items/Weapon/Summon/SacrificialDagger/SacrificialDagger_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
+				ModContent.Request<Texture2D>("SpiritMod/NPCs/Boss/Occultist/SacrificialDagger_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
 				new Vector2
 				(
 					Item.Center.X,

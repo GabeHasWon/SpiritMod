@@ -29,6 +29,12 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 			Main.npcFrameCount[NPC.type] = 10;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(-10, -10),
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -309,7 +315,7 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 
 			bool nearby = Vector2.Distance(player.Center, NPC.Center) <= 45f && NPC.velocity.X == 0f;
 
-			if (nearby || NPC.IsABestiaryIconDummy)
+			if (nearby && !NPC.IsABestiaryIconDummy)
 			{
 				if (!NPC.IsABestiaryIconDummy && NPC.frameCounter == 24 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0))
 				{

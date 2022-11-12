@@ -71,6 +71,5 @@ namespace SpiritMod.Projectiles.Yoyo
 			target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 280);
 			Projectile.velocity *= 0f;
 		}
-
 	}
 }

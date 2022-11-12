@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,12 +9,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.RegalCane
 	[AutoloadEquip(EquipType.HandsOn)]
 	public class RegalCane : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Gilded Cane");
-
-			//ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Cane");
 
 		public override void SetDefaults()
 		{
@@ -25,8 +19,12 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.RegalCane
 			Item.rare = ItemRarityID.Blue;
 			Item.accessory = true;
 			Item.vanity = true;
+			Item.canBePlacedInVanityRegardlessOfConditions = true;
 		}
-		
+
+		//public override void UpdateVanity(Player player) => player.handon = (sbyte)EquipLoader.GetEquipSlot(Mod, nameof(RegalCane), EquipType.HandsOn);
+		//public override void UpdateAccessory(Player player, bool hideVisual) => player.waist = (sbyte)EquipLoader.GetEquipSlot(Mod, nameof(RegalCane), EquipType.HandsOn);
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			if (Main.rand.NextBool(20))

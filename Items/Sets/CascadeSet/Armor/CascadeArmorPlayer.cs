@@ -4,7 +4,6 @@ using SpiritMod.Dusts;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Utilities;
 using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -101,11 +100,9 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 
 		private void DrawBubble(SpriteBatch sB, bool outline = false)
 		{
-			Mod mod = SpiritMod.Instance;
-
 			if (bubbleVisual > 0f)
 			{
-				string texturePath = "Items/Sets/CascadeSet/Armor/BubbleShield";
+				string texturePath = "SpiritMod/Items/Sets/CascadeSet/Armor/BubbleShield";
 				if (outline)
 					texturePath += "Outline";
 

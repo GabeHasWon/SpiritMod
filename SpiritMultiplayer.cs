@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Mechanics.BoonSystem;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.Trails;
@@ -141,7 +142,7 @@ namespace SpiritMod
 						packet.Write(dir);
 						packet.Send(-1, whoAmI);
 					}
-					Main.player[player].GetModPlayer<MyPlayer>().PerformDash(dash, dir, false);
+					Main.player[player].GetModPlayer<DashPlayer>().PerformDash(dash, dir, false);
 					break;
 				case MessageType.PlayerGlyph:
 					player = reader.ReadByte();
