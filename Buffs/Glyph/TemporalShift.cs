@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.GlobalClasses.Players;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -29,7 +30,7 @@ namespace SpiritMod.Buffs.Glyph
 				modPlayer.phaseShift = true;
 				Main.buffNoTimeDisplay[Type] = false;
 			}
-			else if (modPlayer.phaseStacks > 0) {
+			else if (player.GetModPlayer<DashPlayer>().phaseStacks > 0) {
 				player.buffTime[buffIndex] = 2;
 				Main.buffNoTimeDisplay[Type] = true;
 			}
@@ -41,7 +42,7 @@ namespace SpiritMod.Buffs.Glyph
 		public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			var texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/TemporalShift_" + (modPlayer.phaseStacks - 1)).Value;
+			var texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/TemporalShift_" + (Main.LocalPlayer.GetModPlayer<DashPlayer>().phaseStacks - 1)).Value;
 			if (modPlayer.divineStacks == 0)
 				texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/TemporalShift").Value;
 

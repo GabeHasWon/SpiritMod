@@ -4,6 +4,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using SpiritMod.Dusts;
+using SpiritMod.GlobalClasses.Players;
+
 namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 {
 	[AutoloadEquip(EquipType.Head)]
@@ -25,7 +28,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Double tap in a direction to dash and envelop yourself in a tornado";
-			player.GetSpiritPlayer().chitinSet = true;
+			player.GetModPlayer<DashPlayer>().chitinSet = true;
 
 			if (player.velocity.X != 0f) {
 				int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 0, DustID.Dirt);
@@ -41,6 +44,29 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 			recipe.AddIngredient(ModContent.ItemType<Chitin>(), 10);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
+		}
+
+		public static void ChitinDashVisuals(Player player, out float speedCap, out float decayCapped, out float speedMax, out float decayMax, out int delay)
+		{
+			for (int k = 0; k < 2; k++)
+			{
+				int dust;
+				if (player.velocity.Y == 0f)
+					dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 8, ModContent.DustType<SandDust>(), 0f, 0f, 100, default, 1.4f);
+				else
+					dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y + (player.height >> 1) - 8f), player.width, 16, ModContent.DustType<SandDust>(), 0f, 0f, 100, default, 1.4f);
+
+				Main.dust[dust].velocity *= 0.1f;
+				Main.dust[dust].scale *= 1f + Main.rand.Next(20) * 0.01f;
+			}
+
+			player.GetModPlayer<DashPlayer>().chitinDashTicks = 20;
+			player.noKnockback = true;
+			speedCap = 30;
+			speedMax = 13f;
+			decayCapped = 0.95f;
+			decayMax = decayCapped;
+			delay = 25;
 		}
 	}
 }
