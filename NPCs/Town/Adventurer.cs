@@ -108,7 +108,7 @@ namespace SpiritMod.NPCs.Town
 			if (armsDealer >= 0)
 				dialogue.Add($"Got some great prices today! {Main.npc[armsDealer].GivenName}'s wares can't compete! They literally can't. I don't sell guns anymore.");
 
-			dialogue.AddWithCondition("Like the moon, my merchandise is inconstent.", !Main.dayTime);
+			dialogue.AddWithCondition("Like the moon, my merchandise is inconsistent.", !Main.dayTime);
 			dialogue.AddWithCondition("Everyone seems to be so aggressive tonight. With the zombies knocking at our door, I think you should buy stuff and head underground as quick as you can. Can you take me with you?", Main.bloodMoon);
 			dialogue.AddWithCondition("The goblins are more organized than you'd think- I saw their mages build a huge tower over yonder. You should check it out sometime!", MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
 			dialogue.AddWithCondition("My old business partner turned to the bandit life a few years ago. I wonder if he's doing okay. I think his associates have set up a bandit camp somewhere near the seas.", !MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));

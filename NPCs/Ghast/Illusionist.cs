@@ -193,7 +193,7 @@ namespace SpiritMod.NPCs.Ghast
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddCommon(ItemID.GoldenKey, 153);
+			npcLoot.AddCommon(ItemID.GoldenKey, 65);
 			npcLoot.AddCommon(ItemID.Nazar, 75);
 			npcLoot.AddCommon(ItemID.TallyCounter, 100);
 			npcLoot.AddCommon(ItemID.BoneWand, 250);

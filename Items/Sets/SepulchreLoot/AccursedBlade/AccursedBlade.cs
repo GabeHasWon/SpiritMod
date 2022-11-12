@@ -28,9 +28,10 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             Item.useTime = 25;
             Item.useAnimation = 25;
             Item.value = Item.buyPrice(0, 1, 20, 0);
-            Item.damage = 19;
+            Item.damage = 22;
             Item.width = 30;
             Item.height = 30;
+			Item.scale = 1.15f;
             Item.UseSound = SoundID.Item1;
             Item.shoot = ModContent.ProjectileType<AccursedBolt>();
             Item.shootSpeed = 9;
@@ -68,7 +69,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             {
                 return false;
             }
-            damage = 10 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 25);
+            damage = 22 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 150);
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetModPlayer<AccursedBladePlayer>().charge);
             player.GetModPlayer<AccursedBladePlayer>().charge = 0;
             SoundEngine.PlaySound(SoundID.NPCDeath52 with { Pitch = 1.2f }, player.position);
@@ -106,7 +107,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		}
 		public override void GrabRange(Player player, ref int grabRange)
 		{
-			grabRange = 0;
+			grabRange = 15;
 		}
 
         public override void Update(ref float gravity, ref float maxFallSpeed)
@@ -163,7 +164,6 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             Projectile.timeLeft = 270;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.damage = 15;
         }
 
         //bool primsCreated = false;

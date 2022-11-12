@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.QueenSpiderStaff);
-			Item.damage = 7;
+			Item.damage = 10;
 			Item.mana = 10;
 			Item.width = 50;
 			Item.height = 50;

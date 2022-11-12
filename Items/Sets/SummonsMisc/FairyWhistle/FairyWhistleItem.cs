@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.FairyWhistle
 
 		public override void SetDefaults()
 		{
-			Item.damage = 6;
+			Item.damage = 8;
 			Item.width = 22;
 			Item.height = 18;
 			Item.value = Item.sellPrice(0, 2, 0, 0);

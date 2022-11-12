@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Mantaray_Hunting_Harpoon
             Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
 			DisplayName.SetDefault("Manta Ray");
-			Description.SetDefault("Swift as the tides !");
+			Description.SetDefault("Swift as the tides!");
         }
  
         public override void Update(Player player, ref int buffIndex)

@@ -27,11 +27,11 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 		public override void SetDefaults()
         {
             Item.channel = true;
-            Item.damage = 100;
+            Item.damage = 180;
             Item.width = 60;
             Item.height = 60;
-            Item.useTime = 60;
-            Item.useAnimation = 60;
+            Item.useTime = 90;
+            Item.useAnimation = 90;
             Item.crit = 4;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.DamageType = DamageClass.Melee;
@@ -40,7 +40,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
             Item.useTurn = false;
 			Item.value = Item.sellPrice(gold: 10);
 			Item.rare = ItemRarityID.LightPurple;
-			Item.autoReuse = false;
+			Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<BladeOfTheDragonProj>();
             Item.shootSpeed = 6f;
             Item.noUseGraphic = true;

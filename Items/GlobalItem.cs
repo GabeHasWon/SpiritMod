@@ -274,9 +274,9 @@ namespace SpiritMod.Items
 			if (player.GetModPlayer<MyPlayer>().blazeBurn)
 				speed += .17f;
 			if (player.GetModPlayer<MyPlayer>().leatherGlove)
-				speed += .06f;
+				player.GetAttackSpeed(DamageClass.Melee) += .06f;
 			if (player.GetModPlayer<MyPlayer>().frigidGloves)
-				speed += .04f * player.GetModPlayer<MyPlayer>().frigidGloveStacks;
+				player.GetAttackSpeed(DamageClass.Melee) += .04f * player.GetModPlayer<MyPlayer>().frigidGloveStacks;
 			return speed;
 		}
 

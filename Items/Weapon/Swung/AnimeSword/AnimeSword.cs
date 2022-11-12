@@ -36,7 +36,7 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 			Item.useTurn = false;
 			Item.value = Item.sellPrice(0, 0, 90, 0);
 			Item.rare = ItemRarityID.Orange;
-			Item.autoReuse = false;
+			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<AnimeSwordProj>();
 			Item.shootSpeed = 6f;
 			Item.noUseGraphic = true;

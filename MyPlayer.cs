@@ -2734,8 +2734,8 @@ namespace SpiritMod
 					}
 				}
 
-				if (frigidGloveStacks >= 6)
-					frigidGloveStacks = 6;
+				if (frigidGloveStacks >= 5)
+					frigidGloveStacks = 5;
 			}
 
 			if (bloodfireShield)

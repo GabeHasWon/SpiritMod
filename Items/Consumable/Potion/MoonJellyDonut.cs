@@ -85,7 +85,7 @@ namespace SpiritMod.Items.Consumable.Potion
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			foreach (TooltipLine line in tooltips.Where(x => x.Mod == "Terraria" && x.Name == "HealLife"))
-				line.Text = "Restores 225 life over 10 seconds";
+				line.Text = "Restores 225 life over 15 seconds";
 		}
 
         public override void AddRecipes()

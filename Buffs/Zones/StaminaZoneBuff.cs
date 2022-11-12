@@ -15,8 +15,8 @@ namespace SpiritMod.Buffs.Zones
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.runAcceleration *= 1.20f;
-            player.maxRunSpeed *= 1.20f;
+            player.runAcceleration *= 1.30f;
+            player.maxRunSpeed *= 1.30f;
 
 			if (Main.rand.NextBool(3))
 			{
