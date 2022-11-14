@@ -36,4 +36,24 @@ namespace SpiritMod.Items.Placeable.Relics
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Avian Relic");
 	}
+
+	public class AtlasRelicItem : BaseRelicItem<AtlasRelic>
+	{
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Atlas Relic");
+	}
+
+	public class InfernonRelicItem : BaseRelicItem<InfernonRelic>
+	{
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Infernon Relic");
+	}
+
+	public class RlyehianRelicItem : BaseRelicItem<RlyehianRelic>
+	{
+		public override void SetStaticDefaults() => DisplayName.SetDefault("R'lyehian Relic");
+	}
+
+	public class StarplateRelicItem : BaseRelicItem<StarplateRelic>
+	{
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Starplate Voyager Relic");
+	}
 }
