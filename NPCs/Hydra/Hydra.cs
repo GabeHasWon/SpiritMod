@@ -156,6 +156,13 @@ namespace SpiritMod.NPCs.Hydra
 		{
 			DisplayName.SetDefault("Lernean Hydra");
 			Main.npcFrameCount[NPC.type] = 3;
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				CustomTexturePath = $"{Texture}_Bestiary",
+				Position = new Vector2(28f, 8f),
+				PortraitPositionXOverride = 12f,
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 
 		public override void SetDefaults()

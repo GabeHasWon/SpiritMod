@@ -46,7 +46,15 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Starplate Voyager");
-			Main.npcFrameCount[NPC.type] = 1; //new //new
+			Main.npcFrameCount[NPC.type] = 1;
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				CustomTexturePath = $"{Texture}_Bestiary",
+				Position = new Vector2(70f, 20f),
+				PortraitPositionXOverride = 0f,
+				PortraitPositionYOverride = 12f
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 
 		public override void SetDefaults()
