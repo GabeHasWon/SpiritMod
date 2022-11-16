@@ -2,7 +2,6 @@
 using Terraria;
 using Terraria.Audio;
 using System;
-using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,6 +11,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Placeable.Relics;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet;
 
 namespace SpiritMod.NPCs.Boss.ReachBoss
 {
@@ -333,7 +333,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddMasterModeRelicAndPet<VinewrathRelicItem, VinewrathPet>();
+			npcLoot.AddMasterModeRelicAndPet<VinewrathRelicItem, VinewrathPetItem>();
 			npcLoot.AddBossBag<ReachBossBag>();
 
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());

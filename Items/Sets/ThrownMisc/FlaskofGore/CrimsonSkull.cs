@@ -1,13 +1,8 @@
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
-using SpiritMod.Buffs;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 {
@@ -18,6 +13,7 @@ namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 			DisplayName.SetDefault("Crimson Skull");
 			Tooltip.SetDefault("You shouldn't see this");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 7));
+			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 		}
 		public override void SetDefaults()
 		{

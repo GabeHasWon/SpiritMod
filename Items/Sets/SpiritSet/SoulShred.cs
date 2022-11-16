@@ -1,4 +1,4 @@
-
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -12,15 +12,17 @@ namespace SpiritMod.Items.Sets.SpiritSet
 		{
 			DisplayName.SetDefault("Ethereal Ember");
 			Tooltip.SetDefault("'A part of the everburning Soul'");
-			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(7, 6));
+			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 6));
+			ItemID.Sets.AnimatesAsSoul[Item.type] = true; 
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 		public override void SetDefaults()
 		{
 			Item.rare = ItemRarityID.Pink;
 			Item.width = 14;
-			Item.maxStack = 99;
 			Item.height = 36;
+			Item.maxStack = 99;
 		}
+		public override void PostUpdate() => Lighting.AddLight(Item.Center, new Color(46, 255, 251).ToVector3() * 0.3f * Main.essScale);
 	}
 }

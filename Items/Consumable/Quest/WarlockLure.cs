@@ -15,6 +15,7 @@ namespace SpiritMod.Items.Consumable.Quest
 		{
 			DisplayName.SetDefault("Unholy Magic");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 7));
+			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
 
 		public override void SetDefaults()

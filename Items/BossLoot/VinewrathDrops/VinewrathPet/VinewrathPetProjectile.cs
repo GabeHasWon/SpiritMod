@@ -1,13 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using System;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.BossLoot.VinewrathDrops
+namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 {
-	internal class VinewrathPetProjectile : ModProjectile
+	public class VinewrathPetProjectile : ModProjectile
 	{
 		private Player Owner => Main.player[Projectile.owner];
 		private ref float MoveSpeedX => ref Projectile.ai[0];
@@ -19,7 +21,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wrathful Seedling");
-			Main.projFrames[Projectile.type] = 2;
+			Main.projFrames[Projectile.type] = 7;
 			Main.projPet[Projectile.type] = true;
 		}
 
@@ -49,6 +51,12 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 			else if (Projectile.velocity.X < 0)
 				Projectile.spriteDirection = 1;
 			Projectile.rotation = Projectile.velocity.X * 0.04f;
+			//Increment draw frame
+			if (++Projectile.frameCounter >= 6)
+			{
+				Projectile.frameCounter = 0;
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Projectile.type];
+			}
 		}
 
 		private void NearbyMovement()
@@ -124,29 +132,10 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-			Rectangle rect = new Rectangle(0, 0, 40, 40);
+			Asset<Texture2D> texture = TextureAssets.Projectile[Projectile.type];
+			Rectangle rect = new Rectangle(0, texture.Height() / Main.projFrames[Projectile.type] * Projectile.frame, texture.Width(), texture.Height() / Main.projFrames[Projectile.type] - 2);
 			SpriteEffects effect = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
-			if (Projectile.frame <= 3)
-				rect.Y = Projectile.frame * 42;
-			else if (Projectile.frame >= 4 && Projectile.frame <= 8)
-			{
-				rect.X = 42;
-				rect.Y = (Projectile.frame - 4) * 42;
-			}
-			else if (Projectile.frame >= 9 && Projectile.frame <= 11)
-			{
-				rect.X = 84;
-				rect.Y = (Projectile.frame - 9) * 42;
-			}
-			else
-			{
-				rect.X = 126;
-				rect.Y = (Projectile.frame - 12) * 42;
-			}
-
-			Main.EntitySpriteDraw(tex, Projectile.position - Main.screenPosition, rect, lightColor, Projectile.rotation, Vector2.Zero, 1f, effect, 0);
+			Main.EntitySpriteDraw(texture.Value, Projectile.position - Main.screenPosition, rect, lightColor, Projectile.rotation, Vector2.Zero, 1f, effect, 0);
 			return false;
 		}
 	}

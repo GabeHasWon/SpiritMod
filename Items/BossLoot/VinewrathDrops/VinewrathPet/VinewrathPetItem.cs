@@ -1,24 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
+using SpiritMod.Buffs.Pet;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.BossLoot.VinewrathDrops
+namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 {
-	internal class VinewrathPet : ModItem
+	internal class VinewrathPetItem : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wrathful Seedling");
+			DisplayName.SetDefault("Withered Petal");
 			Tooltip.SetDefault("Summons an angry Seedling companion");
 		}
 
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.Fish);
+			Item.width = 32;
+			Item.height = 20;
 			Item.shoot = ModContent.ProjectileType<VinewrathPetProjectile>();
-			Item.buffType = 0;
-			//Item.buffTime = 50;
+			Item.buffType = ModContent.BuffType<VinewrathPetBuff>();
 			Item.UseSound = SoundID.NPCDeath6;
 			Item.rare = ItemRarityID.Master;
 			Item.master = true;

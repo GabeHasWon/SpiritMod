@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
-using System;
 
 namespace SpiritMod.UI.ChargeMeter
 {
@@ -25,7 +24,7 @@ namespace SpiritMod.UI.ChargeMeter
             chargeMeter.charge = 0;
             chargeMeter.meterTexture = "SpiritMod/ChargeMeter/ChargeMeter";
             chargeMeter.barTexture = "SpiritMod/ChargeMeter/ChargeBar";
-        }
+		}
     }
 
 	public class ChargeMeterLayer : PlayerDrawLayer
