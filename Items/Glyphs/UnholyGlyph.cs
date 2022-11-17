@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Glyph;
 using SpiritMod.Projectiles;
 using System;
@@ -10,16 +11,16 @@ namespace SpiritMod.Items.Glyphs
 {
 	public class UnholyGlyph : GlyphBase, IGlowing
 	{
-		public static Microsoft.Xna.Framework.Graphics.Texture2D[] _textures;
+		public static Texture2D[] _textures;
 
-		Microsoft.Xna.Framework.Graphics.Texture2D IGlowing.Glowmask(out float bias)
+		Texture2D IGlowing.Glowmask(out float bias)
 		{
 			bias = GLOW_BIAS;
 			return _textures[1];
 		}
 
 		public override GlyphType Glyph => GlyphType.Unholy;
-		public override Microsoft.Xna.Framework.Graphics.Texture2D Overlay => _textures[2];
+		public override Texture2D Overlay => _textures[2];
 		public override Color Color => new Color { PackedValue = 0x08dd5d };
 		public override string Effect => "Pestilence";
 		public override string Addendum =>
@@ -42,10 +43,8 @@ namespace SpiritMod.Items.Glyphs
 			Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.Green;
-
 			Item.maxStack = 999;
 		}
-
 
 		public static void PlagueEffects(NPC target, int owner, ref int damage, bool crit)
 		{

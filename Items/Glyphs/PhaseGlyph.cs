@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 
@@ -6,16 +7,16 @@ namespace SpiritMod.Items.Glyphs
 {
 	public class PhaseGlyph : GlyphBase, IGlowing
 	{
-		public static Microsoft.Xna.Framework.Graphics.Texture2D[] _textures;
+		public static Texture2D[] _textures;
 
-		Microsoft.Xna.Framework.Graphics.Texture2D IGlowing.Glowmask(out float bias)
+		Texture2D IGlowing.Glowmask(out float bias)
 		{
 			bias = GLOW_BIAS;
 			return _textures[1];
 		}
 
 		public override GlyphType Glyph => GlyphType.Phase;
-		public override Microsoft.Xna.Framework.Graphics.Texture2D Overlay => _textures[2];
+		public override Texture2D Overlay => _textures[2];
 		public override Color Color => new Color { PackedValue = 0xeb6bd8 };
 		public override string ItemType => "item";
 		public override string Effect => "Phase Flux";
@@ -34,22 +35,15 @@ namespace SpiritMod.Items.Glyphs
 				"These stacks allow you to dash and gain a short burst of speed");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.LightPurple;
-
 			Item.maxStack = 999;
 		}
-
-		public override bool CanApply(Item item)
-		{
-			return item.IsWeapon() || item.useStyle > 0 && item.mountType < 0 && item.shoot <= ProjectileID.None;
-		}
-
+		public override bool CanApply(Item item) => item.IsWeapon() || item.useStyle > 0 && item.mountType < 0 && item.shoot <= ProjectileID.None;
 
 		public static void PhaseEffects(Player player, ref int damage, bool crit)
 		{

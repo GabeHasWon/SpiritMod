@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -8,16 +9,16 @@ namespace SpiritMod.Items.Glyphs
 {
 	public sealed class NullGlyph : GlyphBase, IGlowing
 	{
-		public static Microsoft.Xna.Framework.Graphics.Texture2D[] _textures;
+		public static Texture2D[] _textures;
 
-		Microsoft.Xna.Framework.Graphics.Texture2D IGlowing.Glowmask(out float bias)
+		Texture2D IGlowing.Glowmask(out float bias)
 		{
 			bias = GLOW_BIAS;
 			return _textures[1];
 		}
 
 		public override GlyphType Glyph => GlyphType.None;
-		public override Microsoft.Xna.Framework.Graphics.Texture2D Overlay => _textures[2];
+		public override Texture2D Overlay => _textures[2];
 		public override Color Color => new Color { PackedValue = 0x9f9593 };
 		public override string Effect => "Invalid Effect";
 		public override string Addendum =>
@@ -29,22 +30,15 @@ namespace SpiritMod.Items.Glyphs
 			Tooltip.SetDefault("Can be used to wipe a glyph off an item");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 28;
 			Item.value = Item.buyPrice(0, 5, 0, 0);
 			Item.rare = ItemRarityID.Blue;
-
 			Item.maxStack = 999;
 		}
-
-
-		public override bool CanApply(Item item)
-		{
-			return item.GetGlobalItem<GItem>().Glyph != GlyphType.None;
-		}
+		public override bool CanApply(Item item) => item.GetGlobalItem<GItem>().Glyph != GlyphType.None;
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{

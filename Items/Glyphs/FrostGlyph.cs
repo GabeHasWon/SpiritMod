@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles;
 using System;
 using Terraria;
@@ -9,7 +10,7 @@ namespace SpiritMod.Items.Glyphs
 {
 	public class FrostGlyph : GlyphBase, IGlowing
 	{
-		public static Microsoft.Xna.Framework.Graphics.Texture2D[] _textures;
+		public static Texture2D[] _textures;
 
 		public const int LIMIT = 5;
 		public const int COOLDOWN = 3;
@@ -17,14 +18,14 @@ namespace SpiritMod.Items.Glyphs
 		public const float OFFSET = 50;
 
 
-		Microsoft.Xna.Framework.Graphics.Texture2D IGlowing.Glowmask(out float bias)
+		Texture2D IGlowing.Glowmask(out float bias)
 		{
 			bias = GLOW_BIAS;
 			return _textures[1];
 		}
 
 		public override GlyphType Glyph => GlyphType.Frost;
-		public override Microsoft.Xna.Framework.Graphics.Texture2D Overlay => _textures[2];
+		public override Texture2D Overlay => _textures[2];
 		public override Color Color => new Color { PackedValue = 0xee853a };
 		public override string Effect => "Stinging Cold";
 		public override string Addendum =>
@@ -40,7 +41,6 @@ namespace SpiritMod.Items.Glyphs
 				"Critical strikes conjure Ice Spikes that orbit you\n" +
 				"Every Spike beyond the fifth will be shot towards the cursor");
 		}
-
 
 		public override void SetDefaults()
 		{

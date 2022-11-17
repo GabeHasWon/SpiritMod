@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,16 +8,16 @@ namespace SpiritMod.Items.Glyphs
 {
 	public class VeilGlyph : GlyphBase, IGlowing
 	{
-		public static Microsoft.Xna.Framework.Graphics.Texture2D[] _textures;
+		public static Texture2D[] _textures;
 
-		Microsoft.Xna.Framework.Graphics.Texture2D IGlowing.Glowmask(out float bias)
+		Texture2D IGlowing.Glowmask(out float bias)
 		{
 			bias = GLOW_BIAS;
 			return _textures[1];
 		}
 
 		public override GlyphType Glyph => GlyphType.Veil;
-		public override Microsoft.Xna.Framework.Graphics.Texture2D Overlay => _textures[2];
+		public override Texture2D Overlay => _textures[2];
 		public override Color Color => new Color { PackedValue = 0x89cc3e };
 		public override string ItemType => "item";
 		public override string Effect => "Shielding Veil";
@@ -33,7 +34,6 @@ namespace SpiritMod.Items.Glyphs
 				"This Veil will increase life regen and block the next attack");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
@@ -43,12 +43,7 @@ namespace SpiritMod.Items.Glyphs
 
 			Item.maxStack = 999;
 		}
-
-		public override bool CanApply(Item item)
-		{
-			return item.IsWeapon() || item.useStyle > 0 && item.mountType < 0 && item.shoot <= ProjectileID.None;
-		}
-
+		public override bool CanApply(Item item) => item.IsWeapon() || item.useStyle > 0 && item.mountType < 0 && item.shoot <= ProjectileID.None;
 
 		public static void Block(Player player)
 		{

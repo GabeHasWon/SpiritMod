@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 
@@ -6,16 +7,16 @@ namespace SpiritMod.Items.Glyphs
 {
 	public class BeeGlyph : GlyphBase, IGlowing
 	{
-		public static Microsoft.Xna.Framework.Graphics.Texture2D[] _textures;
+		public static Texture2D[] _textures;
 
-		Microsoft.Xna.Framework.Graphics.Texture2D IGlowing.Glowmask(out float bias)
+		Texture2D IGlowing.Glowmask(out float bias)
 		{
 			bias = GLOW_BIAS;
 			return _textures[1];
 		}
 
 		public override GlyphType Glyph => GlyphType.Bee;
-		public override Microsoft.Xna.Framework.Graphics.Texture2D Overlay => _textures[2];
+		public override Texture2D Overlay => _textures[2];
 		public override Color Color => new Color { PackedValue = 0x5ca6eb };
 		public override string Effect => "Honeyed";
 		public override string Addendum =>
@@ -30,17 +31,14 @@ namespace SpiritMod.Items.Glyphs
 				"Attacks will release bees");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.LightRed;
-
 			Item.maxStack = 999;
 		}
-
 
 		public static void ReleaseBees(Player owner, NPC target, int damage)
 		{
