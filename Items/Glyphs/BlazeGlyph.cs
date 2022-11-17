@@ -32,14 +32,12 @@ namespace SpiritMod.Items.Glyphs
 				"Burning Rage increases attack speed and damage but sets you ablaze");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.Pink;
-
 			Item.maxStack = 999;
 		}
 

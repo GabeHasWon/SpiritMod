@@ -62,6 +62,7 @@ using SpiritMod.GlobalClasses.Projectiles;
 using SpiritMod.GlobalClasses.Tiles;
 using SpiritMod.Utilities.PhaseIndicatorCompat;
 using SpiritMod.Utilities.Journey;
+using SpiritMod.Items.Glyphs;
 
 namespace SpiritMod
 {
@@ -891,20 +892,22 @@ namespace SpiritMod
 				if (_texField == null || !_texField.IsStatic || _texField.FieldType != typeof(Texture2D[]))
 					continue;
 
-				string path = type.FullName[10..].Replace('.', '/'); //Substring(10) removes "SpiritMod."
+				string path = type.FullName.Replace('.', '/');
 				int texCount = 0;
 
-				while (ModContent.FileExists(path + "_" + (texCount + 1)))
+				while (ModContent.RequestIfExists<Texture2D>(path + "_" + (texCount + 1), out _))
 					texCount++;
 
 				Texture2D[] textures = new Texture2D[texCount + 1];
 
-				if (ModContent.FileExists(path))
+				if (ModContent.RequestIfExists<Texture2D>(path, out _))
 					textures[0] = ModContent.Request<Texture2D>(path, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
 				for (int i = 1; i <= texCount; i++)
+				{
 					textures[i] = ModContent.Request<Texture2D>(path + "_" + i, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-
+					StormGlyph.TESTO = textures[i].ToString();
+				}
 				_texField.SetValue(null, textures);
 			}
 		}

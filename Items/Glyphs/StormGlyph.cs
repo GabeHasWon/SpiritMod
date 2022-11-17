@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,6 +11,7 @@ namespace SpiritMod.Items.Glyphs
 	public class StormGlyph : GlyphBase, IGlowing
 	{
 		public static Texture2D[] _textures;
+		public static string TESTO = string.Empty;
 
 		Texture2D IGlowing.Glowmask(out float bias)
 		{

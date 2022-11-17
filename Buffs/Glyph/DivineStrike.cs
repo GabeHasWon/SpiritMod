@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Buffs.Glyph
@@ -37,11 +36,10 @@ namespace SpiritMod.Buffs.Glyph
 		public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			var texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/DivineStrike_" + (modPlayer.divineStacks - 1)).Value;
-			if (modPlayer.divineStacks == 0)
-				texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/DivineStrike").Value;
-
-			spriteBatch.Draw(texture, drawParams.Position, drawParams.DrawColor);
+			string texturePath = "Buffs/Glyph/DivineStrike";
+			if (modPlayer.divineStacks > 1)
+				texturePath += $"_{modPlayer.divineStacks - 1}";
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>(texturePath).Value, drawParams.Position, drawParams.DrawColor);
 			return false;
 		}
 

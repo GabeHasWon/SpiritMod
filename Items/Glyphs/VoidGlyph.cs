@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Glyph;
 using SpiritMod.NPCs;
 using SpiritMod.Projectiles;
@@ -11,20 +12,20 @@ namespace SpiritMod.Items.Glyphs
 {
 	public class VoidGlyph : GlyphBase, IGlowing
 	{
-		public static Microsoft.Xna.Framework.Graphics.Texture2D[] _textures;
+		public static Texture2D[] _textures;
 
 		public const int DELAY = 100;
 		public const int DECAY = 3;
 
 
-		Microsoft.Xna.Framework.Graphics.Texture2D IGlowing.Glowmask(out float bias)
+		Texture2D IGlowing.Glowmask(out float bias)
 		{
 			bias = GLOW_BIAS;
 			return _textures[1];
 		}
 
 		public override GlyphType Glyph => GlyphType.Void;
-		public override Microsoft.Xna.Framework.Graphics.Texture2D Overlay => _textures[2];
+		public override Texture2D Overlay => _textures[2];
 		public override Color Color => new Color { PackedValue = 0xff057a };
 		public override string Effect => "Shadow Maelstrom";
 		public override string Addendum =>
@@ -48,10 +49,8 @@ namespace SpiritMod.Items.Glyphs
 			Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.LightPurple;
-
 			Item.maxStack = 999;
 		}
-
 
 		public static void DevouringVoid(Player player)
 		{
@@ -75,13 +74,12 @@ namespace SpiritMod.Items.Glyphs
 		public static void CollapsingVoid(Player player, Entity target, int damage)
 		{
 			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
-			if (player.whoAmI == Main.myPlayer && modPlayer.voidStacks > 1 && Main.rand.Next(14) == 0) {
+			if (player.whoAmI == Main.myPlayer && modPlayer.voidStacks > 1 && Main.rand.NextBool(14)) {
 				Vector2 vel = Vector2.UnitY.RotatedByRandom(Math.PI * 2);
 				vel *= (float)Main.rand.NextDouble() * 3f;
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), target.Center, vel, ModContent.ProjectileType<VoidStar>(), damage >> 1, 0, Main.myPlayer);
 			}
-
-			if (Main.rand.Next(10) == 1)
+			if (Main.rand.NextBool(10))
 				player.AddBuff(ModContent.BuffType<CollapsingVoid>(), 299);
 		}
 	}

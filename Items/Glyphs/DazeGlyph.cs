@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 
@@ -6,16 +7,16 @@ namespace SpiritMod.Items.Glyphs
 {
 	public class DazeGlyph : GlyphBase, IGlowing
 	{
-		public static Microsoft.Xna.Framework.Graphics.Texture2D[] _textures;
+		public static Texture2D[] _textures;
 
-		Microsoft.Xna.Framework.Graphics.Texture2D IGlowing.Glowmask(out float bias)
+		Texture2D IGlowing.Glowmask(out float bias)
 		{
 			bias = GLOW_BIAS;
 			return _textures[1];
 		}
 
 		public override GlyphType Glyph => GlyphType.Daze;
-		public override Microsoft.Xna.Framework.Graphics.Texture2D Overlay => _textures[2];
+		public override Texture2D Overlay => _textures[2];
 		public override Color Color => new Color { PackedValue = 0xce5aba };
 		public override string Effect => "Dazed Dance";
 		public override string Addendum =>
@@ -32,17 +33,14 @@ namespace SpiritMod.Items.Glyphs
 				"Getting hurt may confuse the player");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.Pink;
-
 			Item.maxStack = 999;
 		}
-
 
 		public static void Daze(NPC target, ref int damage)
 		{
@@ -50,8 +48,7 @@ namespace SpiritMod.Items.Glyphs
 				//Main.NewText("Daze");
 				damage += 30;
 			}
-
-			if (Main.rand.Next(9) == 1)
+			if (Main.rand.NextBool(9))
 				target.AddBuff(BuffID.Confused, 240);
 		}
 
@@ -59,8 +56,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			if (target.FindBuffIndex(BuffID.Confused) > -1)
 				damage += 30;
-
-			if (Main.rand.Next(9) == 1)
+			if (Main.rand.NextBool(9))
 				target.AddBuff(BuffID.Confused, 240, false);
 		}
 	}
