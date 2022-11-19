@@ -7,6 +7,8 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet;
+using SpiritMod.Items.Placeable.Relics;
 
 namespace SpiritMod.NPCs.Tides
 {
@@ -204,6 +206,8 @@ namespace SpiritMod.NPCs.Tides
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
+			npcLoot.AddMasterModeRelicAndPet<RlyehianRelicItem, RlyehianMountItem>();
+
 			npcLoot.AddCommon<RlyehMask>(10);
 			npcLoot.AddCommon<Trophy10>(10);
 			npcLoot.AddOneFromOptions(1, ModContent.ItemType<TomeOfRylien>(), ModContent.ItemType<TentacleChain>());

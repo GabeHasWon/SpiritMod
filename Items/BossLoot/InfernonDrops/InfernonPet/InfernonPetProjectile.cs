@@ -73,7 +73,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 			//Spawn fancy running dusts
 			if (Math.Abs(Projectile.velocity.X) > 3f)
 			{
-				if (Main.rand.NextBool(25))
+				if (Main.rand.NextBool(25 - (int)(Projectile.velocity.Length() / 10)))
 				{
 					int dustType = Main.rand.NextBool(2) ? DustID.Torch : DustID.GoldFlame;
 					Vector2 dustVel = new Vector2(-Projectile.velocity.X / 5, 0f);
@@ -101,6 +101,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 			{
 				if (State != RUNNING)
 				{
+					//Fancy running dusts
 					for (int i = 0; i < 20; i++)
 					{
 						int dustType = Main.rand.NextBool(2) ? DustID.Torch : DustID.GoldFlame;
@@ -114,23 +115,31 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 					}
 				}
 				ResetState(RUNNING);
+				//Control the pet's falling frame
+				if ((int)Projectile.velocity.Y > 0)
+				{
+					Projectile.frameCounter = 0;
+					Projectile.frame = 4;
+				}
 				targetSpeed = 5.8f;
 			}
 			else if (dist <= 240 * 240)
 			{
+				//The pet is within two tile range of the player on either side
+				bool inHorizontalRange = Projectile.Center.X > Owner.Center.X - 32 && Projectile.Center.X < Owner.Center.X + 32;
 				if ((int)Projectile.velocity.X == 0)
 					ResetState(IDLING);
 				else
 					ResetState(WALKING);
-				if (dist <= 60 * 60)
+				if (dist <= 60 * 60 || inHorizontalRange)
 					targetSpeed = 0f;
 				else targetSpeed = 2.45f;
 			}
-			
+			float randomVariance = (targetSpeed != 0) ? Main.rand.NextFloat(-0.12f, 0.12f) : 0;
 			if (Owner.Center.X < Projectile.Center.X)
-				Projectile.velocity.X = MathHelper.Lerp(Projectile.velocity.X, -targetSpeed, 0.1f);
+				Projectile.velocity.X = MathHelper.Lerp(Projectile.velocity.X, -targetSpeed + randomVariance, 0.04f);
 			else
-				Projectile.velocity.X = MathHelper.Lerp(Projectile.velocity.X, targetSpeed, 0.1f);
+				Projectile.velocity.X = MathHelper.Lerp(Projectile.velocity.X, targetSpeed + randomVariance, 0.04f);
 
 			float throwaway = 6;
 			Collision.StepUp(ref Projectile.position, ref Projectile.velocity, Projectile.width, Projectile.height, ref throwaway, ref Projectile.gfxOffY);
@@ -143,37 +152,48 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 		private void ChasePlayer()
 		{
 			float dist = Projectile.DistanceSQ(Main.player[Projectile.owner].Center);
-			float targetSpeed = 13f;
 
-			if (dist <= 60 * 60)
+			if (dist <= 20 * 20)
 			{
-				targetSpeed = 3f;
-				if (dist <= 18 * 18)
+				//Landing dusts
+				for (int i = 0; i < 8; i++)
 				{
-					for (int i = 0; i < 8; i++)
-					{
-						int dustType = Main.rand.NextBool(2) ? DustID.Torch : DustID.GoldFlame;
-						Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 0, default, Main.rand.NextFloat(1.0f, 1.5f));
-						dust.noGravity = true;
-						if (Main.rand.NextBool(2))
-							dust.fadeIn = 1.2f;
-						Dust dust2 = Dust.NewDustDirect(Projectile.position + new Vector2(0f, Projectile.height), Projectile.width, 2, DustID.Smoke, -Projectile.velocity.X / 5, -0.8f, 0, default, Main.rand.NextFloat(1.3f, 1.8f));
-						dust2.noGravity = true;
-						dust2.fadeIn = 1.3f;
+					int dustType = Main.rand.NextBool(2) ? DustID.Torch : DustID.GoldFlame;
+					Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 0, default, Main.rand.NextFloat(1.0f, 1.5f));
+					dust.noGravity = true;
+					if (Main.rand.NextBool(2))
+						dust.fadeIn = 1.2f;
+					Dust dust2 = Dust.NewDustDirect(Projectile.position + new Vector2(0f, Projectile.height), Projectile.width, 2, DustID.Smoke, -Projectile.velocity.X / 5, -0.8f, 0, default, Main.rand.NextFloat(1.3f, 1.8f));
+					dust2.noGravity = true;
+					dust2.fadeIn = 1.3f;
 
-						Vector2 spawnPos = Projectile.position + new Vector2(Main.rand.Next(Projectile.width), Main.rand.NextFloat(Projectile.height));
-						if (i > 5)
-						{
-							Gore.NewGoreDirect(Projectile.GetSource_FromAI(), spawnPos, new Vector2(0f, -1f), Main.rand.NextBool(2) ? GoreID.Smoke1 : GoreID.Smoke2);
-						}
+					Vector2 spawnPos = Projectile.position + new Vector2(Main.rand.Next(Projectile.width), Main.rand.NextFloat(Projectile.height));
+					if (i > 5)
+					{
+						Gore.NewGoreDirect(Projectile.GetSource_FromAI(), spawnPos, new Vector2(0f, -1f), Main.rand.NextBool(2) ? GoreID.Smoke1 : GoreID.Smoke2);
 					}
-					State = WALKING;
 				}
-				//Projectile.tileCollide = true;
+				State = WALKING;
 			}
-			//else Projectile.tileCollide = false;
+			else if (Main.rand.NextBool(4))
+			{
+				//Fancy dusts
+				int num24 = (int)((Main.LocalPlayer.miscCounter / 300.0f * MathHelper.TwoPi).ToRotationVector2().Y * 4.0) * 3;
+				for (int i = 0; i < 2; i++)
+				{
+					Dust dust = Dust.NewDustPerfect(Projectile.Center + new Vector2(0, num24 * ((i > 0) ? -1 : 1)).RotatedBy(Projectile.velocity.ToRotation()), DustID.Torch, Vector2.Zero, 0, default, Main.rand.NextFloat(1.0f, 1.5f));
+					dust.velocity = Vector2.Zero;
+					dust.noGravity = true;
+				}
+			}
 			Projectile.tileCollide = false;
-			Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(Owner.Center) * targetSpeed, 0.05f);
+
+			const float MaxSpeedDistance = 1400;
+			float magnitude = 13;
+			if (dist > MaxSpeedDistance * MaxSpeedDistance)
+				magnitude = 13 + (((float)Math.Sqrt(dist) - MaxSpeedDistance) * 0.1f);
+			Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(Owner.Center) * magnitude, 0.05f);
+
 			Projectile.rotation += 0.42f * Projectile.spriteDirection;
 		}
 
@@ -209,7 +229,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 			if (State == CHASING)
 			{
 				Texture2D fireTex = TextureAssets.Extra[55].Value;
-				float speedometer = Projectile.velocity.Length() / 24;
+				float speedometer = Projectile.velocity.Length() / 26;
 
 				int frameCount = 4;
 				int frameDur = 4;

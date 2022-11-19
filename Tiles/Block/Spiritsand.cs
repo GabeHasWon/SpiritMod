@@ -23,11 +23,7 @@ namespace SpiritMod.Tiles.Block
 			DustType = DustID.Water_Space;
 		}
 
-		public override bool CanExplode(int i, int j)
-		{
-			return true;
-		}
-
+		public override bool CanExplode(int i, int j) => true;
         public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
         {
             if (WorldGen.noTileActions)

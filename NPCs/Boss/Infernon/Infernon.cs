@@ -11,6 +11,9 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Placeable.Relics;
+using SpiritMod.Items.Sets.RlyehianDrops;
+using SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet;
 
 namespace SpiritMod.NPCs.Boss.Infernon
 {
@@ -412,7 +415,9 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
+			npcLoot.AddMasterModeRelicAndPet<InfernonRelicItem, InfernonPetItem>();
 			npcLoot.AddBossBag<InfernonBag>();
+
 			npcLoot.AddCommon<InfernonMask>(7);
 			npcLoot.AddCommon<Trophy4>(10);
 			npcLoot.AddOneFromOptions<InfernalJavelin, InfernalSword, DiabolicHorn, SevenSins, InfernalStaff, EyeOfTheInferno, InfernalShield>();

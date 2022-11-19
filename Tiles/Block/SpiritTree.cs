@@ -24,7 +24,8 @@ namespace SpiritMod.Tiles.Block
 		};
 
 		public override void SetStaticDefaults() => GrowsOnTileId = new int[] { ModContent.TileType<SpiritGrass>() };
-		public override int CreateDust() => 1;
+		public override int CreateDust() => DustID.WoodFurniture;
+		public override int TreeLeaf() => GoreID.TreeLeaf_HallowJim;
 		public override int DropWood() => ModContent.ItemType<SpiritWoodItem>();
 
 		public override Asset<Texture2D> GetTexture() => ModContent.Request<Texture2D>("SpiritMod/Tiles/Block/SpiritTree", AssetRequestMode.ImmediateLoad);
