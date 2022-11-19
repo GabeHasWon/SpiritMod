@@ -268,15 +268,11 @@ namespace SpiritMod.Items
 				itemLoot.Add(ItemDropRule.Common(45, ModContent.ItemType<Sets.BriarChestLoot.TwigStaff>()));
 		}
 
-		public override float UseTimeMultiplier(Item item, Player player)
+		public override float UseSpeedMultiplier(Item item, Player player)
 		{
 			float speed = 1f;
-			if (player.GetModPlayer<MyPlayer>().blazeBurn)
-				speed += .17f;
-			if (player.GetModPlayer<MyPlayer>().leatherGlove)
-				player.GetAttackSpeed(DamageClass.Melee) += .06f;
-			if (player.GetModPlayer<MyPlayer>().frigidGloves)
-				player.GetAttackSpeed(DamageClass.Melee) += .04f * player.GetModPlayer<MyPlayer>().frigidGloveStacks;
+			if (player.GetModPlayer<MyPlayer>().blazeBurn) 
+				speed += .10f;
 			return speed;
 		}
 

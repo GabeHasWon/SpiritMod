@@ -24,7 +24,7 @@ namespace SpiritMod.Items.Accessory.Leather
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetSpiritPlayer().leatherGlove = true;
+			player.GetAttackSpeed(DamageClass.Melee) += 0.06f; 
 		}
 
 		public override void AddRecipes()

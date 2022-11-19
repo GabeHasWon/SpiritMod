@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Accessory.Leather
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetSpiritPlayer().frigidGloves = true;
+			player.GetAttackSpeed(DamageClass.Melee) += 0.05f * player.GetModPlayer<MyPlayer>().frigidGloveStacks;
 		}
 
 		public override void AddRecipes()

@@ -12,7 +12,7 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Starpowder");
-			Tooltip.SetDefault("Can be thrown on grass to invigorate it");
+			Tooltip.SetDefault("Tthrow onto grass to invigorate it with starlight!");
 		}
 
 		public override void SetDefaults()
@@ -28,7 +28,6 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 			Item.noMelee = true;
 			Item.consumable = true;
 			Item.autoReuse = false;
-			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item43;
 			Item.shoot = ModContent.ProjectileType<StarPowderProj>();
 			Item.shootSpeed = 6f;
@@ -37,7 +36,7 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 		public override void AddRecipes()
 		{
 			CreateRecipe(5)
-				.AddIngredient(ItemID.Star, 1)
+				.AddIngredient(ItemID.FallenStar, 1)
 				.Register();
 		}
 	}
@@ -55,7 +54,7 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
 			Projectile.aiStyle = -1;
-			Projectile.timeLeft = 80;
+			Projectile.timeLeft = 30;
 		}
 
 		public override void AI()

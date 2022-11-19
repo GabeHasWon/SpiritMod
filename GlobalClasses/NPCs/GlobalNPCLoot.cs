@@ -97,7 +97,6 @@ namespace SpiritMod.GlobalClasses.NPCs
 			DropLoot(npcLoot, 120, 110, ModContent.ItemType<Items.Accessory.RabbitFoot.Rabbit_Foot>(), npc, NPCID.Bunny);
 			DropLoot(npcLoot, 150, 150, ModContent.ItemType<WinterbornSculpture>(), npc, ModContent.NPCType<WinterbornMelee>(), ModContent.NPCType<WinterbornMagic>());
 			DropLoot(npcLoot, 5, 5, ModContent.ItemType<Items.Consumable.Potion.BottomlessHealingPotion>(), npc, NPCID.Mimic);
-			DropLoot(npcLoot, 5, 5, ModContent.ItemType<Items.Sets.MagicMisc.MagicDeck.MagicDeck>(), npc, NPCID.Mimic);
 			DropLoot(npcLoot, 42, 42, ModContent.ItemType<Items.Sets.MagicMisc.TerraStaffTree.DungeonStaff>(), npc, NPCID.DarkCaster);
 			DropLoot(npcLoot, 200, 200, ModContent.ItemType<Items.Sets.GunsMisc.Swordsplosion.Swordsplosion>(), npc, NPCID.RustyArmoredBonesAxe, NPCID.RustyArmoredBonesFlail, NPCID.RustyArmoredBonesSword, NPCID.RustyArmoredBonesSwordNoArmor, NPCID.BlueArmoredBones, NPCID.BlueArmoredBonesMace,
 				NPCID.BlueArmoredBonesNoPants, NPCID.BlueArmoredBonesSword, NPCID.HellArmoredBones, NPCID.HellArmoredBonesSpikeShield, NPCID.HellArmoredBonesMace, NPCID.HellArmoredBonesSword);
