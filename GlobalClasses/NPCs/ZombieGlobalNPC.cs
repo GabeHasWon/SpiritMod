@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.NPCs.GlobalNPCs
+namespace SpiritMod.GlobalClasses.NPCs
 {
 	public class ZombieGlobalNPC : GlobalNPC
 	{
@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.GlobalNPCs
 			Player closest = Main.player[Player.FindClosest(npc.position, npc.width, npc.height)];
 
 			if (closest.ZoneBeach)
-            {
+			{
 				if (npc.type == NPCID.Zombie || npc.type == NPCID.BaldZombie || npc.type == NPCID.PincushionZombie || npc.type == NPCID.SlimedZombie || npc.type == NPCID.SwampZombie || npc.type == NPCID.TwiggyZombie)
 				{
 					timeAlive++;
@@ -30,10 +30,10 @@ namespace SpiritMod.NPCs.GlobalNPCs
 							npc.Transform(ModContent.NPCType<DiverZombie>());
 					}
 				}
-            }
+			}
 
 			if (npc.type >= NPCID.ArmedZombie && npc.type <= NPCID.ArmedZombieCenx && timeAlive == 1) //All armed zombies (this felt less clunky than typing out each ID)
 				npc.Transform(ModContent.NPCType<TridentZombie>());
-	    }
+		}
 	}
 }

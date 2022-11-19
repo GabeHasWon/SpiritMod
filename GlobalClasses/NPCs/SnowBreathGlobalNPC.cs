@@ -3,7 +3,7 @@ using SpiritMod.Dusts;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace SpiritMod.NPCs.GlobalNPCs
+namespace SpiritMod.GlobalClasses.NPCs
 {
 	public class SnowBreathGlobalNPC : GlobalNPC
 	{
@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.GlobalNPCs
 			{
 				if (npc.townNPC && Main.rand.NextBool(27))
 				{
-					Vector2 spawnPos = new Vector2(npc.position.X + 8 * npc.direction, npc.Center.Y - 13f);
+					var spawnPos = new Vector2(npc.position.X + 8 * npc.direction, npc.Center.Y - 13f);
 					int d = Dust.NewDust(spawnPos, npc.width, 10, ModContent.DustType<FrostBreath>(), 1.5f * npc.direction, 0f, 100, default, Main.rand.NextFloat(.7f, 1.7f));
 					Main.dust[d].velocity.Y *= 0f;
 				}

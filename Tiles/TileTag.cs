@@ -2,6 +2,7 @@
 
 namespace SpiritMod.Tiles
 {
+	[AttributeUsage(AttributeTargets.Class)]
 	public class TileTagAttribute : Attribute
 	{
 		public TileTags[] Tags = { };
