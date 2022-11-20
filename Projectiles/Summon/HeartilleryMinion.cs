@@ -1,7 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using SpiritMod.Projectiles.Hostile;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -44,7 +41,6 @@ namespace SpiritMod.Projectiles.Summon
 			NPC target = new NPC();
 			if (Projectile.OwnerMinionAttackTargetNPC != null && Projectile.Distance(Projectile.OwnerMinionAttackTargetNPC.Center) / 16 < range)
 				target = Projectile.OwnerMinionAttackTargetNPC;
-
 			else {
 				for (int i = 0; i < 200; ++i) {
 					NPC npc = Main.npc[i];
@@ -65,7 +61,6 @@ namespace SpiritMod.Projectiles.Summon
 					}
 				}
 			}
-
 
 			Projectile.frameCounter++;
 			if (target.CanBeChasedBy(this))
@@ -124,11 +119,13 @@ namespace SpiritMod.Projectiles.Summon
                 Main.dust[index2].position.Y -= num2;
             }
         }
+
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
 		{
 			fallThrough = false;
 			return true;
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCDeath22, Projectile.Center);

@@ -81,7 +81,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 					attackCooldown = ++attackCooldown % cooldownTime;
 					if (attackCooldown == 0)
 					{
-						int damage = (int)player.GetDamage(DamageClass.Summon).ApplyTo(30);
+						int damage = (int)player.GetDamage(DamageClass.Summon).ApplyTo(20);
 						Projectile proj = Projectile.NewProjectileDirect(player.GetSource_FromThis("Mount"), player.Center, Vector2.Zero, ModContent.ProjectileType<RlyehianMount_Proj>(),
 							damage, 2, player.whoAmI, (int)(target.Center - player.Center).Length());
 						proj.rotation = player.AngleTo(target.Center);

@@ -59,7 +59,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			for (int i = 0; i < 6; i++)
-				Dust.NewDustPerfect(target.Center, DustID.Blood, Projectile.DirectionFrom(target.Center).RotatedByRandom(0.2f), 0, default, Main.rand.NextFloat(0.8f, 1.3f));
+				Dust.NewDustPerfect(target.Center, DustID.Blood, (Projectile.DirectionFrom(target.Center) * Main.rand.NextFloat(2.0f, 4.0f)).RotatedByRandom(1f), 0, default, Main.rand.NextFloat(0.8f, 1.3f));
 			crit = false;
 		}
 

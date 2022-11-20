@@ -149,7 +149,7 @@ namespace SpiritMod
 		{
 			Main.spriteBatch.Draw(
 				texture,
-				new Vector2(item.position.X - Main.screenPosition.X + item.width / 2, item.position.Y - Main.screenPosition.Y + item.height - (texture.Height / 2) + 2f),
+				new Vector2(item.position.X - Main.screenPosition.X + item.width / 2, item.position.Y - Main.screenPosition.Y + item.height - (texture.Height / 2)),
 				new Rectangle(0, 0, texture.Width, texture.Height),
 				Color.White * ((255f - item.alpha) / 255f),
 				rotation,

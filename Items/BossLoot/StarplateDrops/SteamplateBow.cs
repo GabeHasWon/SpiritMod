@@ -37,37 +37,15 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.value = Item.sellPrice(0, 1, 0, 0);
 			Item.autoReuse = true;
 			Item.shootSpeed = 15f;
+		}
 
-		}
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-3, 0);
-		}
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
 		}
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+		public override Vector2? HoldoutOffset() => new Vector2(-4, 0);
+		public override bool AltFunctionUse(Player player) => true;
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{

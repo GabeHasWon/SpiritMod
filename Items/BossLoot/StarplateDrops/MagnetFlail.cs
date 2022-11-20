@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using Terraria.GameContent;
 
 namespace SpiritMod.Items.BossLoot.StarplateDrops
 {
@@ -21,12 +22,13 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		{
 			DisplayName.SetDefault("Livewire");
 			Tooltip.SetDefault("Plugs into tiles, changing the chain into a shocking livewire");
-
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SafeSetDefaults()
 		{
-			Item.Size = new Vector2(34, 30);
+			Item.width = 36;
+			Item.height = 44;
 			Item.damage = 40;
 			Item.rare = ItemRarityID.Orange;
 			Item.value = Item.sellPrice(0, 01, 10, 0);
@@ -36,6 +38,13 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.shootSpeed = 13;
 			Item.knockBack = 4;
 		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
+		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
@@ -220,15 +229,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 				else
 					Projectile.rotation = 3.14f;
 			}
-
 			return base.OnTileCollide(oldVelocity);
-		}
-
-		public override bool PreDrawExtras()
-		{
-			if (stuck)
-				return false;
-			return true;
 		}
 
 		public override void SendExtraAI(BinaryWriter writer)

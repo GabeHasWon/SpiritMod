@@ -5,6 +5,7 @@ using SpiritMod.NPCs.Boss.FrostTroll;
 using SpiritMod.Particles;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,13 +27,14 @@ namespace SpiritMod.Mounts.SnowMongerMount
 		}
 
 		const int DashTimeMax = 24;
+		const int DashCooldownTime = -DashTimeMax * 3;
 		int dashTime = 0;
 
 		bool Dashing => dashTime > 0;
 
 		private void Player_KeyDoubleTap(On.Terraria.Player.orig_KeyDoubleTap orig, Player self, int keyDir)
 		{
-			if ((keyDir == 2 || keyDir == 3) && self.mount.Active && self.mount.Type == ModContent.MountType<SnowmongerMount>() && dashTime <= -DashTimeMax * 3)
+			if ((keyDir == 2 || keyDir == 3) && self.mount.Active && self.mount.Type == ModContent.MountType<SnowmongerMount>() && dashTime <= DashCooldownTime)
 				Dash(self, keyDir);
 			else
 				orig(self, keyDir);
@@ -78,15 +80,17 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			Lighting.AddLight(player.position, 0f, 0.18f, 0.4f);
 			player.gravity = 0;
 			player.fallStart = (int)(player.position.Y / 16.0);
-			dashTime--;
+			if (dashTime > DashCooldownTime)
+				dashTime--;
+
+			int maxHeight = 12 * 16;
+			if (player.controlJump)
+				maxHeight = 38 * 16;
+			else if (player.controlDown)
+				maxHeight = 3 * 16;
 
 			if (!Dashing)
-			{
-				if (player.controlJump)
-					player.velocity.Y = MathHelper.Clamp(player.velocity.Y - 0.4f, -6, 10);
-				else
-					ControlFloatHeight(player, player.controlDown ? 3 * 16 : 12 * 16);
-			}
+				ControlFloatHeight(player, maxHeight);
 			else
 				UpdateDash(player);
 		}
@@ -130,8 +134,8 @@ namespace SpiritMod.Mounts.SnowMongerMount
 
 		private static void ControlFloatHeight(Player player, float floatHeight)
 		{
-			const float MaxSpeed = 7;
-			const float MoveSpeed = 0.25f;
+			const float MaxSpeed = 5.8f;
+			const float MoveSpeed = 0.23f;
 
 			float baseHeight = floatHeight;
 
