@@ -41,12 +41,11 @@ namespace SpiritMod.Buffs.Glyph
 
 		public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)
 		{
-			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			var texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/TemporalShift_" + (Main.LocalPlayer.GetModPlayer<DashPlayer>().phaseStacks - 1)).Value;
-			if (modPlayer.divineStacks == 0)
-				texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/TemporalShift").Value;
-
-			spriteBatch.Draw(texture, drawParams.Position, drawParams.DrawColor);
+			DashPlayer modPlayer = Main.LocalPlayer.GetModPlayer<DashPlayer>();
+			string texturePath = "Buffs/Glyph/TemporalShift";
+			if (modPlayer.phaseStacks > 1)
+				texturePath += $"_{modPlayer.phaseStacks - 1}";
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>(texturePath).Value, drawParams.Position, drawParams.DrawColor);
 			return false;
 		}
 

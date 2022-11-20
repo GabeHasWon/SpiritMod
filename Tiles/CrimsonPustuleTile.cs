@@ -151,7 +151,11 @@ namespace SpiritMod.Tiles
 				Dust.NewDustDirect(PustuleWorldCenter, 6, 6, DustID.Blood, Main.rand.NextFloat(3f, 6f) * Main.rand.NextFloatDirection(), Main.rand.NextFloat(3f, 6f) * Main.rand.NextFloatDirection(), Scale: Main.rand.NextFloat(1f, 2f));
 
 			for (int i = 1; i <= 4; i++)
-				Gore.NewGore(new EntitySource_TileBreak(Position.X, Position.Y, "PustuleDeath"), PustuleWorldCenter, Main.rand.NextVector2Unit() * Main.rand.NextFloat(3f, 6f), ModContent.Find<ModGore>("Gores/CrimsonPustule/CrimsonPustule" + i).Type);
+			{
+				int goreType = Mod.Find<ModGore>("CrimsonPustule" + i.ToString()).Type;
+				Vector2 velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(3f, 6f);
+				Gore.NewGore(new EntitySource_TileBreak(Position.X, Position.Y, "PustuleDeath"), PustuleWorldCenter, velocity, goreType);
+			}
 
 			WorldGen.KillTile(Position.X, Position.Y);
 			Kill(Position.X, Position.Y);

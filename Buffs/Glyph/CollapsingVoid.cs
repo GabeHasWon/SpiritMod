@@ -49,11 +49,10 @@ namespace SpiritMod.Buffs.Glyph
 		public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			var texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/CollapsingVoid_" + (modPlayer.voidStacks - 1)).Value;
-			if (modPlayer.divineStacks == 0)
-				texture = Mod.Assets.Request<Texture2D>("Buffs/Glyph/CollapsingVoid").Value;
-
-			spriteBatch.Draw(texture, drawParams.Position, drawParams.DrawColor);
+			string texturePath = "Buffs/Glyph/CollapsingVoid";
+			if (modPlayer.voidStacks > 1)
+				texturePath += $"_{modPlayer.voidStacks - 1}";
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>(texturePath).Value, drawParams.Position, drawParams.DrawColor);
 			return false;
 		}
 
