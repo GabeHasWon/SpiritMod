@@ -11,7 +11,9 @@ namespace SpiritMod.Mounts.RlyehianMount
 {
 	public class RlyehianMount : ModMount
 	{
-		private int flightTime = 0;
+		public override void Load() => On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
+		public override void Unload() => On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
+
 		private int attackCooldown = 0;
 
 		private readonly int mountStatesMax = 5;
@@ -28,7 +30,6 @@ namespace SpiritMod.Mounts.RlyehianMount
 			MountData.fallDamage = 0f;
 			MountData.runSpeed = 5f;
 			MountData.dashSpeed = 8f;
-			MountData.flightTimeMax = 300;
 			MountData.fatigueMax = 320;
 			MountData.jumpHeight = 10;
 			MountData.acceleration = 0.4f;
@@ -61,10 +62,9 @@ namespace SpiritMod.Mounts.RlyehianMount
 			player.gravity = 0;
 			player.fallStart = (int)(player.position.Y / 16.0);
 			int floatHeight = 18;
-			if (player.controlJump && flightTime > 0)
+			if (player.controlJump)
 			{
-				floatHeight = 7 * 16;
-				flightTime--;
+				floatHeight = 10 * 16;
 				mountState = FLOAT;
 			}
 			else mountState = NORMAL;
@@ -73,7 +73,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 
 			if (mountState == FLOAT)
 			{
-				NPC target = GetTarget(player);
+				NPC target = GetTarget(player, floatHeight);
 				if (target != null)
 				{
 					mountState = ATTACKING;
@@ -81,15 +81,16 @@ namespace SpiritMod.Mounts.RlyehianMount
 					attackCooldown = ++attackCooldown % cooldownTime;
 					if (attackCooldown == 0)
 					{
-						Projectile proj = Projectile.NewProjectileDirect(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<RlyehianMount_Proj>(), 
-							10, 2, player.whoAmI, (int)(target.Center - player.Center).Length());
+						int damage = (int)player.GetDamage(DamageClass.Summon).ApplyTo(30);
+						Projectile proj = Projectile.NewProjectileDirect(player.GetSource_FromThis("Mount"), player.Center, Vector2.Zero, ModContent.ProjectileType<RlyehianMount_Proj>(),
+							damage, 2, player.whoAmI, (int)(target.Center - player.Center).Length());
 						proj.rotation = player.AngleTo(target.Center);
 					}
 				}
 			}
 		}
 
-		private void ControlFloatHeight(Player player, int height)
+		private static void ControlFloatHeight(Player player, int height)
 		{
 			float baseHeight = height;
 			float moveSpeed = 0.2f;
@@ -104,17 +105,13 @@ namespace SpiritMod.Mounts.RlyehianMount
 			if (player.DistanceSQ(goPos) > (maxSpeed + 1) * (maxSpeed + 1))
 				player.velocity.Y += MathHelper.Clamp(player.DirectionTo(goPos).Y * moveSpeed, -maxSpeed, maxSpeed);
 			else
-			{
-				player.velocity.Y *= 0.8f;
-				if (mountState != FLOAT)
-					flightTime = MountData.flightTimeMax;
-			}
+				player.velocity.Y *= 0.5f;
 		}
 
-		private static NPC GetTarget(Player player)
+		private static NPC GetTarget(Player player, int detectHeight)
 		{
 			int detectWidth = player.width * 3;
-			Rectangle detectRange = new Rectangle((int)player.getRect().Center.X - (detectWidth / 2), (int)player.getRect().Bottom, detectWidth, 8 * 16);
+			Rectangle detectRange = new Rectangle((int)player.getRect().Center.X - (detectWidth / 2), (int)player.getRect().Bottom, detectWidth, detectHeight);
 			foreach (NPC npc in Main.npc)
 			{
 				if (npc.active && !npc.friendly && npc.getRect().Bottom >= player.getRect().Bottom && 
@@ -173,7 +170,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 		{
 			drawPlayer.GetModPlayer<RlyehianMountPlayer>().usingMount = true;
 
-			texture = ModContent.Request<Texture2D>("SpiritMod/Mounts/RlyehianMount/RlyehianMount").Value;
+			/*texture = ModContent.Request<Texture2D>("SpiritMod/Mounts/RlyehianMount/RlyehianMount").Value;
 
 			int verticalFrame = drawPlayer.mount._frame % mountStatesMax;
 			int horizontalFrame = (int)(drawPlayer.mount._frame / mountStatesMax);
@@ -182,8 +179,32 @@ namespace SpiritMod.Mounts.RlyehianMount
 			SpriteEffects effect = drawPlayer.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			int frameOffX = (drawPlayer.direction == 1) ? -30 : -24;
 			DrawData data = new DrawData(texture, drawPosition + new Vector2(frameOffX, 0), sourceRect, drawColor, 0f, drawOrigin, 1f, effect, 0);
-			playerDrawData.Add(data);
+			playerDrawData.Add(data);*/
 			return false;
+		}
+
+		private void DrawOverPlayer(On.Terraria.DataStructures.PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
+		{
+			orig(ref drawinfo);
+
+			Player drawPlayer = drawinfo.drawPlayer;
+			if (!(drawPlayer.mount.Active && drawPlayer.mount.Type == ModContent.MountType<RlyehianMount>()))
+				return;
+
+			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Mounts/RlyehianMount/RlyehianMount").Value;
+
+			int verticalFrame = drawPlayer.mount._frame % mountStatesMax;
+			int horizontalFrame = (int)(drawPlayer.mount._frame / mountStatesMax);
+			Rectangle sourceRect = new Rectangle(56 * horizontalFrame, 46 * verticalFrame, 54, 44);
+			SpriteEffects effect = drawPlayer.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			int frameOffX = (drawPlayer.direction == 1) ? -30 : -24;
+
+			Vector2 position;
+			position.X = (int)(drawPlayer.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) + (float)MountData.xOffset);
+			position.Y = (int)(drawPlayer.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + (float)MountData.yOffset);
+
+			DrawData data = new DrawData(texture, position + new Vector2(frameOffX, 0), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.Zero, 1f, effect, 0);
+			drawinfo.DrawDataCache.Add(data);
 		}
 
 		public override void SetMount(Player player, ref bool skipDust)
