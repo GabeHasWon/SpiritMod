@@ -41,9 +41,8 @@ namespace SpiritMod.Projectiles
 		public override bool PreDraw(Projectile projectile, ref Color lightColor)
 		{
 			Player player = Main.player[projectile.owner];
-			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
 
-			if (projectile.minion && modPlayer.stellarSet && player.HasBuff(ModContent.BuffType<StellarMinionBonus>()))
+			if (projectile.minion && player.GetModPlayer<MyPlayer>().stellarSet && player.HasBuff(ModContent.BuffType<StellarMinionBonus>()))
 			{
 				float sineAdd = (float)Math.Sin(alphaCounter) + 3;
 				Main.spriteBatch.Draw(TextureAssets.Extra[49].Value, projectile.Center - Main.screenPosition, null, new Color((int)(20f * sineAdd), (int)(16f * sineAdd), (int)(4f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + .25f), SpriteEffects.None, 0f);
@@ -83,10 +82,11 @@ namespace SpiritMod.Projectiles
 
 			CannonEffects(projectile);
 
-			Player player = Main.player[projectile.owner];
-			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
 			if (projectile.owner >= Main.maxPlayers || projectile.owner <= -1) //Check if owner is invalid
 				return true;
+
+			Player player = Main.player[projectile.owner];
+			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
 
 			if (projectile.friendly && !runOnce)
 			{
