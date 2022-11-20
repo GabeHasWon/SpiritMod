@@ -9,7 +9,7 @@ namespace SpiritMod.GlobalClasses.Items
 {
 	internal class MiscItemHooks : ILoadable
 	{
-		private int[] FlowerBootsPlantSubIds = new int[0];
+		private int[] FlowerBootsPlantSubIds = System.Array.Empty<int>();
 
 		public void Load(Mod mod) => On.Terraria.Player.DoBootsEffect_PlaceFlowersOnTile += Player_DoBootsEffect_PlaceFlowersOnTile;
 
