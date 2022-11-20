@@ -8,19 +8,19 @@ namespace SpiritMod.Buffs.Candy
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sugar Rush");
-			Description.SetDefault("Increased stats");
+			Description.SetDefault("Slight increase to all stats");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.moveSpeed += 0.5f;
+			player.moveSpeed += 0.1f;
 			player.statDefense += 2;
 			player.GetCritChance(DamageClass.Generic) += 2;
 			player.GetDamage(DamageClass.Generic) += 0.04f;
 			player.lifeRegen += 1;
-			player.jumpSpeedBoost += 0.4f;
+			player.jumpSpeedBoost += 0.1f;
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("G-TEK Grenade");
-			Tooltip.SetDefault("Slows and electrocutes enemies in it's aura\nCan be destroyed by the player\nDestroying it causes an explosion");
+			Tooltip.SetDefault("Slows and electrocutes enemies in its aura\nCan be destroyed by the player\nDestroying it causes an explosion");
 		}
 
 		public override void SetDefaults()
@@ -30,7 +30,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 			Item.noMelee = true;
 			Item.knockBack = 2;
 			Item.useTurn = false;
-			Item.value = Item.sellPrice(0, 5, 0, 0);
+			Item.value = Item.sellPrice(0, 0, 4, 0);
 			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
@@ -43,7 +43,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 
 		public override void AddRecipes()
 		{
-			var recipe = CreateRecipe(10);
+			var recipe = CreateRecipe(5);
 			recipe.AddIngredient(ModContent.ItemType<GranitechMaterial>(), 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();

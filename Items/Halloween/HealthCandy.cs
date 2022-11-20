@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Halloween
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Health Candy");
-			Tooltip.SetDefault("Increases Health");
+			Tooltip.SetDefault("Increases health");
 		}
 
 

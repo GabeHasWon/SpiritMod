@@ -9,14 +9,14 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granitech Drone Box");
+			DisplayName.SetDefault("T-TEK Drone Box");
 			Tooltip.SetDefault("Summons 3 drones to aid you\nCan cycle between 3 modes\nThese drones do not take up minion slots");
 		}
 
 
 		public override void SetDefaults()
 		{
-			Item.damage = 72;
+			Item.damage = 50;
 			Item.DamageType = DamageClass.Summon;
 			Item.knockBack = 1.5f;
 			Item.width = 24;

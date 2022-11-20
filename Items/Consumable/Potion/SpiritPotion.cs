@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Consumable.Potion
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spirit Potion");
-			Tooltip.SetDefault("Increases damage and critical strike chance by 5% \nGetting hurt occasionally spawns a damaging bolt to chase enemies");
+			Tooltip.SetDefault("Increases damage and critical strike chance by 5%\nGetting hurt occasionally spawns a damaging bolt to chase enemies");
 		}
 
 

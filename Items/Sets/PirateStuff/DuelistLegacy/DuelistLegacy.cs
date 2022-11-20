@@ -26,13 +26,13 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 
 		public override void SetDefaults()
 		{
-			Item.damage = 100;
+			Item.damage = 90;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 36;
 			Item.height = 44;
 			Item.useTime = 12;
 			Item.useAnimation = 12;
-			Item.reuseDelay = 20;
+			Item.reuseDelay = 10;
 			Item.channel = true;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 10f;

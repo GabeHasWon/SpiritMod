@@ -50,7 +50,7 @@ namespace SpiritMod.NPCs.GraniTech
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granitech Turret");
+			DisplayName.SetDefault("G-TEK Turret");
 			Main.npcFrameCount[NPC.type] = 3;
 		}
 
@@ -77,7 +77,7 @@ namespace SpiritMod.NPCs.GraniTech
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Granite,
-				new FlavorTextBestiaryInfoElement("‘Granitech Incorporated would like you to know that we take no responsibility for any death or dismemberment caused by our protection turrets. They are simply there to guard what is ours. Thank you.’"),
+				new FlavorTextBestiaryInfoElement("‘G-TEK Incorporated would like you to know that we take no responsibility for any death or dismemberment caused by our protection turrets. They are simply there to guard what is ours. Thank you.’"),
 			});
 		}
 

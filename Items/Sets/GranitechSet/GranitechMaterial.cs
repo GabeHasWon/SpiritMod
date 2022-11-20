@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.GranitechSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("G-Tek Components");
+			DisplayName.SetDefault("G-TEK Components");
 			Tooltip.SetDefault("'An impressive combination of magic and science'");
 		}
 
@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.GranitechSet
 		{
 			subID = Main.rand.Next(3);
 
-			Item.value = 100;
+			Item.value = Item.sellPrice(silver: 20);
 			Item.maxStack = 999;
 			Item.rare = ItemRarityID.Pink;
 		}

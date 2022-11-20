@@ -23,7 +23,6 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 0;
-			Item.damage = 4;
 			Item.value = Item.sellPrice(0, 0, 0, 0);
 			Item.rare = ItemRarityID.Blue;
 			Item.shootSpeed = 10f;
@@ -32,6 +31,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 			Item.autoReuse = false;
 			Item.consumable = true;
 			Item.maxStack = 999;
+			Item.noMelee = true; 
 		}
 	}
 
@@ -50,6 +50,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 			Projectile.height = 24;
 			Projectile.friendly = false;
 			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.damage = 10; 
 			Projectile.penetrate = 1;
 			Projectile.timeLeft = 90;
 		}
