@@ -19,7 +19,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 		{
 			DisplayName.SetDefault("Locust Crook");
 			Tooltip.SetDefault("Conjures a friendly locust that dashes into enemies\nLocusts infest hit enemies, causing baby locusts to hatch from them");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -46,7 +46,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 			return false;
 		}
 
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}
 
 	[AutoloadMinionBuff("Locusts", "Bringer of a plague")]

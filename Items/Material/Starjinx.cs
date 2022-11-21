@@ -46,7 +46,7 @@ namespace SpiritMod.Items.Material
 
 		public override void Update(ref float gravity, ref float maxFallSpeed)
 		{
-			if (Main.rand.Next(50) == 0)
+			if (Main.rand.NextBool(50))
 				Particles.ParticleHandler.SpawnParticle(new Particles.StarParticle(Item.Center + Main.rand.NextVector2Circular(7, 7), Main.rand.NextVector2Circular(1, 1), Color.White * 0.66f, SpiritMod.StarjinxColor(Main.GlobalTimeWrappedHourly), Main.rand.NextFloat(0.2f, 0.3f), 25));
 		}
 	}

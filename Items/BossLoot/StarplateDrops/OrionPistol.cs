@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Bullet;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace SpiritMod.Items.BossLoot.StarplateDrops

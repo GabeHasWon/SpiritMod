@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.NPCs.Critters;
 using Terraria;
 using Terraria.ID;
@@ -11,6 +13,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			DisplayName.SetDefault("Blossmoon");
 			Tooltip.SetDefault("'It releases a soothing aroma'");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -22,7 +25,6 @@ namespace SpiritMod.Items.Consumable
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = Item.useAnimation = 20;
-
 			Item.noMelee = true;
 			Item.consumable = true;
 			Item.autoReuse = true;
@@ -32,6 +34,12 @@ namespace SpiritMod.Items.Consumable
 		{
 			NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<Blossmoon>());
 			return true;
+		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.9f, 0.12f, 0.4f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 	}
 }

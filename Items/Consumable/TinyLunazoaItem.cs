@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.NPCs.MoonjellyEvent;
 using SpiritMod.Projectiles.Bullet;
 using Terraria;
@@ -46,5 +47,7 @@ namespace SpiritMod.Items.Consumable
 				(!Main.dayTime ? 15 : 0) +
 				(MyWorld.jellySky ? 20 : 0);
 		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}
 }

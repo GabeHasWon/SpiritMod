@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Sets.SlagSet;
 using SpiritMod.Projectiles.Held;
 using SpiritMod.Projectiles.Returning;
@@ -14,6 +15,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 		{
 			DisplayName.SetDefault("Slag Breaker");
 			Tooltip.SetDefault("Hold down and release to throw the Hammer like a boomerang\nCan be wound up to deal increased damage");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -36,6 +38,9 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.shoot = ModContent.ProjectileType<SlagHammerProj>();
 		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => 
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0 && player.ownedProjectileCounts[ModContent.ProjectileType<SlagHammerProjReturning>()] == 0;
 

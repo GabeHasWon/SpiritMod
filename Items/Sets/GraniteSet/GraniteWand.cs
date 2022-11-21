@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Magic;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +16,6 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			Tooltip.SetDefault("Creates a fountain of energy at the ground near the Cursor Position\nKilling enemies with this weapon causes them to explode into damaging energy wisps");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteWand_Glow");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -42,6 +40,12 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			Item.autoReuse = false;
 		}
 
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.08f, .12f, .52f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+		}
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			for (int i = 0; i < Main.projectile.Length; i++) {
@@ -52,29 +56,6 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			}
 			Projectile.NewProjectile(source, Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 100f, type, damage, knockback, player.whoAmI);
 			return false;
-		}
-
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Lighting.AddLight(Item.position, 0.08f, .12f, .52f);
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				ModContent.Request<Texture2D>("Items/Sets/GraniteSet/GraniteWand_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
 		}
 
 		public override void AddRecipes()

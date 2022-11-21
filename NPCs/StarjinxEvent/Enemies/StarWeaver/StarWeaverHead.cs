@@ -193,7 +193,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, position - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(Color.Lerp(lightColor, Color.White, 0.5f)) * opacity,
 					rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale * scale, SpriteEffects.None, 0);
 
-				Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_glowRed", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, position - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(Color.White) * opacity,
+				Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_GlowRed", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, position - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(Color.White) * opacity,
 					rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale * scale, SpriteEffects.None, 0);
 			}
 
@@ -211,7 +211,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 			//Bloom glowmask
 			PulseDraw.DrawPulseEffect(PulseDraw.BloomConstant, 12, 12, delegate (Vector2 posOffset, float opacityMod)
 			{
-				Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition + posOffset, Projectile.DrawFrame(),
+				Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition + posOffset, Projectile.DrawFrame(),
 					Projectile.GetAlpha(bloomColor) * (1 - TrailProgress) * AttackProgress * opacityMod,
 					Projectile.rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale, flip, 0);
 			});
@@ -220,7 +220,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 
 			Color glowmaskColor = Color.Lerp(Color.White, bloomColor, AttackProgress);
 			Projectile.QuickDrawGlow(Main.spriteBatch, Projectile.GetAlpha(glowmaskColor) * (1 - TrailProgress));
-			Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_glowRed", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(Color.White) * TrailProgress,
+			Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_GlowRed", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(Color.White) * TrailProgress,
 				Projectile.rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale, flip, 0);
 			return false;
 		}
@@ -231,7 +231,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 			for (int i = 1; i < 10; i++)
 			{
 				Color color = Color.Lerp(startColor, endColor, i / 10f) * opacity;
-				spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center + offset - Main.screenPosition - Projectile.velocity * (float)i * trailLengthModifier,
+				spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center + offset - Main.screenPosition - Projectile.velocity * (float)i * trailLengthModifier,
 					Projectile.DrawFrame(), color, Projectile.rotation, Projectile.DrawFrame().Size() * 0.5f, MathHelper.Lerp(startScale, endScale, i / 10f), spriteEffects, 0f);
 			}
 		}

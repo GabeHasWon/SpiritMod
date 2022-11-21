@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.NPCs.Critters;
 using Terraria;
 using Terraria.ID;
@@ -11,6 +13,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			DisplayName.SetDefault("Lumoth");
 			Tooltip.SetDefault("'Mechanically stunning'");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -31,6 +34,12 @@ namespace SpiritMod.Items.Consumable
 		{
 			NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<Lumoth>());
 			return true;
+		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.56f, 0.53f, 0.09f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 	}
 }

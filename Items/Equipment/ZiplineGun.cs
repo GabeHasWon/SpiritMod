@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpiritMod.Items.Equipment
 {
@@ -22,6 +23,7 @@ namespace SpiritMod.Items.Equipment
 		{
 			DisplayName.SetDefault("Rail-gun");
 			Tooltip.SetDefault("Left and right click to shoot tethers that latch to tiles\nThese tethers are connected by a rail\nHold UP to slide down the rail \nDoes not work with steep rails");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -42,8 +44,10 @@ namespace SpiritMod.Items.Equipment
 			Item.shootSpeed = 16.7f;
 		}
 
-		public override bool AltFunctionUse(Player player) => true;
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
+		public override bool AltFunctionUse(Player player) => true;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1"), position);
@@ -90,6 +94,7 @@ namespace SpiritMod.Items.Equipment
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
+
 		public override ModItem Clone(Item item)
 		{
 			ZiplineGun staff = (ZiplineGun)base.Clone(item);

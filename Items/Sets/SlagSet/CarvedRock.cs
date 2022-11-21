@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SlagSet
 		{
 			DisplayName.SetDefault("Slagstone");
 			Tooltip.SetDefault("'A seething piece of hardened magma'");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -20,12 +20,13 @@ namespace SpiritMod.Items.Sets.SlagSet
 			Item.height = 22;
 			Item.value = 800;
 			Item.rare = ItemRarityID.Orange;
-
 			Item.maxStack = 999;
 		}
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, 0.4f, .12f, .036f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 	}
 }

@@ -8,8 +8,8 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Snowmech");
-			Tooltip.SetDefault("Punch");
+			DisplayName.SetDefault("Robotic Arm");
+			Tooltip.SetDefault("Summons an airborne mech with the ability to dash forward\nDashes launch a downward barrage of damaging ice beams");
 		}
 
 		public override void SetDefaults()

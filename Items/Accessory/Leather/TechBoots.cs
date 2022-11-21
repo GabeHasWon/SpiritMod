@@ -1,5 +1,5 @@
-
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Sets.CoilSet;
 using Terraria;
 using Terraria.ID;
@@ -21,7 +21,6 @@ namespace SpiritMod.Items.Accessory.Leather
 			Item.height = 20;
 			Item.value = Item.buyPrice(0, 0, 70, 0);
 			Item.rare = ItemRarityID.Green;
-
 			Item.accessory = true;
 		}
 
@@ -39,6 +38,9 @@ namespace SpiritMod.Items.Accessory.Leather
 				}
 			}
 		}
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

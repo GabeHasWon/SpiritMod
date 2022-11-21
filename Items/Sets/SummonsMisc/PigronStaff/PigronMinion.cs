@@ -68,7 +68,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 			Projectile.ai[0] = 1;
 			Projectile.direction = Projectile.spriteDirection = (Projectile.velocity.X < 1) ? 1 : -1;
 			Projectile.rotation = Projectile.velocity.ToRotation() + (Projectile.direction > 0 ? MathHelper.Pi : 0);
-			if (Main.rand.Next(9) == 0 && Projectile.velocity.Length() > 7)
+			if (Main.rand.NextBool(9) && Projectile.velocity.Length() > 7)
 			{
 				int dustID = 0;
 				switch (BiomeType)
@@ -169,11 +169,11 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 			switch (BiomeType) {
 				case 1:
 					trailColor = Color.Purple;
-					drawTex = ModContent.Request<Texture2D>(Texture + "_corrupt", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+					drawTex = ModContent.Request<Texture2D>(Texture + "_Corrupt", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 					break;
 				case 2:
 					trailColor = Color.Red;
-					drawTex = ModContent.Request<Texture2D>(Texture + "_crim", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+					drawTex = ModContent.Request<Texture2D>(Texture + "_Crim", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 					break;
 			}
 

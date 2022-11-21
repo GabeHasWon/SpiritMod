@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 		{
 			DisplayName.SetDefault("Void Quill");
 			Tooltip.SetDefault("Creates a tear in reality, damaging enemies \n Write faster to deal more damage\n'Write your own destiny'");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -43,7 +43,7 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 			return false;
 		}
 
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
 
 		public override void AddRecipes()
         {

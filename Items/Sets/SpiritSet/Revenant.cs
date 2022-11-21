@@ -18,7 +18,6 @@ namespace SpiritMod.Items.Sets.SpiritSet
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/Revenant_Glow");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 12;
@@ -38,36 +37,19 @@ namespace SpiritMod.Items.Sets.SpiritSet
 			Item.shootSpeed = 10f;
 			Item.UseSound = SoundID.Item5;
 		}
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Lighting.AddLight(Item.position, 0.06f, .16f, .22f);
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				Mod.Assets.Request<Texture2D>("Items/Sets/SpiritSet/Revenant_Glow").Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
-		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			if (type == ProjectileID.WoodenArrowFriendly) {
+			if (type == ProjectileID.WoodenArrowFriendly)
 				type = ModContent.ProjectileType<SpiritArrow>();
-			}
 			Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
 			return false;
+		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.06f, .16f, .22f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
 		public override void AddRecipes()

@@ -13,7 +13,6 @@ namespace SpiritMod.Items.BossLoot.OccultistDrops
 		{
 			DisplayName.SetDefault("Sacrificial Dagger");
 			Tooltip.SetDefault("Your summons will target focus enemies\nSummons that hit tagged enemies may deal extra strikes of damage");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -39,24 +38,7 @@ namespace SpiritMod.Items.BossLoot.OccultistDrops
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, 0.46f, .07f, .52f);
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				ModContent.Request<Texture2D>("SpiritMod/NPCs/Boss/Occultist/SacrificialDagger_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-				new Vector2
-				(
-					Item.Center.X,
-					Item.position.Y + Item.height - texture.Height * 0.5f + 2f
-				) - Main.screenPosition,
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 	}
 }

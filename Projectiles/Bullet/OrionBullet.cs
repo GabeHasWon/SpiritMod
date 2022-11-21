@@ -70,7 +70,7 @@ namespace SpiritMod.Projectiles.Bullet
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center, null, Projectile.GetAlpha(Color.White), 
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(Color.White), 
 				Projectile.rotation, TextureAssets.Projectile[Projectile.type].Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			return false;
 		}

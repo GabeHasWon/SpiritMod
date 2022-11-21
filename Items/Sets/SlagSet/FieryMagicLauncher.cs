@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Magic;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,27 +16,7 @@ namespace SpiritMod.Items.Sets.SlagSet
 			Tooltip.SetDefault("Expels spurts of magical flame\nCritical hits shower enemies in damaging sparks");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SlagSet/FieryMagicLauncher_Glow");
 		}
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				ModContent.Request<Texture2D>("SpiritMod/Items/Sets/SlagSet/FieryMagicLauncher_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
-		}
+
 		public override void SetDefaults()
 		{
 			Item.damage = 21;
@@ -58,15 +37,11 @@ namespace SpiritMod.Items.Sets.SlagSet
 			Item.shoot = ModContent.ProjectileType<FieryFlareMagic>();
 			Item.shootSpeed = 6f;
 		}
-		public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<CarvedRock>(), 14);
-			recipe.AddTile(TileID.Anvils);
-			recipe.Register();
-		}
-		public override Vector2? HoldoutOffset() => new Vector2(-5, 0);
 
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => 
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+
+		public override Vector2? HoldoutOffset() => new Vector2(-5, 0);
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 5f;
@@ -92,6 +67,14 @@ namespace SpiritMod.Items.Sets.SlagSet
 			}
 			Projectile.NewProjectile(source, position + new Vector2(-8, 8), vel, type, damage, knockback, player.whoAmI, 0f, 0f);
 			return false;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<CarvedRock>(), 14);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 }

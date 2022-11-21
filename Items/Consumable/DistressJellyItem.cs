@@ -1,5 +1,5 @@
-using System;
-
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,5 +37,11 @@ namespace SpiritMod.Items.Consumable
 				NetMessage.SendData(MessageID.WorldData);
             return true;
         }
-    }
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.46f, .07f, .64f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+		}
+	}
 }

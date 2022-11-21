@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -12,6 +13,7 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 		{
 			DisplayName.SetDefault("Ethereal Butterfly Staff");
 			Tooltip.SetDefault("Summons a magical butterfly to fight for you\nLeft-click to cause butterflies to dissipate and leave behind exploding arcane stars");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -31,6 +33,9 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 			Item.shoot = ModContent.ProjectileType<ButterflyMinion>();
 			Item.UseSound = SoundID.Item44;
 		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{

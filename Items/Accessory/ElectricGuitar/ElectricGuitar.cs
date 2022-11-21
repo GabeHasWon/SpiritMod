@@ -15,6 +15,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 			DisplayName.SetDefault("Electric Guitar");
 			Tooltip.SetDefault("Nearby enemies and enemies hit by attacks may be hit by chain lightning");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 6));
+			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 		}
 
 		public override void SetDefaults()

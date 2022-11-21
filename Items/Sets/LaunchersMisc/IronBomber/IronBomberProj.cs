@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.IronBomber
 		}
 
 		private const int MaxTimeLeft = 240;
-		private float PulseTime => (MaxTimeLeft * 0.66f);
+		private static float PulseTime => MaxTimeLeft * 0.66f;
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
@@ -96,7 +96,7 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.IronBomber
 			if (Projectile.timeLeft < PulseTime)
 			{
 				float Opacity = (float)Math.Pow((PulseTime - Projectile.timeLeft) / PulseTime, 2);
-				Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, Projectile.DrawFrame(), Color.Cyan * Opacity, Projectile.rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+				Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, Projectile.DrawFrame(), Color.Cyan * Opacity, Projectile.rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			}
 			return false;
 		}
