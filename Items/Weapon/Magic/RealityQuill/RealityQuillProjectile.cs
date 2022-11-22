@@ -16,12 +16,14 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 
 		Vector2 previousMousePosition = Vector2.Zero;
 		Vector2 currentMousePosition = Vector2.Zero;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magic Gloop");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 32;
@@ -39,6 +41,7 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 		}
 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Projectile.Distance(targetHitbox.Center.ToVector2()) < (16 * (Projectile.scale + 0.1f) + (targetHitbox.Width + targetHitbox.Height) / 2); //circular collision
+		
 		public override void AI()
 		{
 			if (!start)
@@ -56,18 +59,15 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 				float normalizedX = 1 - ((Projectile.timeLeft - 140) / 8f);
 				Projectile.scale = normalizedX * normalizedX * Projectile.ai[0];
 			}
+
 			if (Projectile.timeLeft < 140 && Projectile.timeLeft >= 132)
-			{
 				Projectile.scale = (Projectile.scale + Projectile.ai[0]) / 2;
-			}
+
 			if (Projectile.timeLeft >= 10 && Projectile.timeLeft < 24)
-			{
 				Projectile.scale += 0.02f * Projectile.ai[0];
-			}
+
 			if (Projectile.timeLeft < 10)
-			{
 				Projectile.scale *= 0.8f;
-			}
 
 			previousMousePosition = currentMousePosition;
 			currentMousePosition = Main.MouseWorld;
@@ -78,7 +78,6 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 			for (int i = 0; i < 2; i++)
 			{
 				Vector2 delta = Main.rand.NextVector2Unit() * Main.rand.NextFloat(4f, 5f);
-
 				Dust.NewDustPerfect(Projectile.position, ModContent.DustType<NebulaGoopDust>(), delta, Scale: Main.rand.NextFloat(2f, 4f));
 			}
 

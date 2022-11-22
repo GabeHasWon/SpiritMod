@@ -114,8 +114,10 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 			if (Projectile.ai[0] == 60)
 			{ //dash
 				float vel = MathHelper.Clamp(Projectile.Distance(target.Center) / 12, 10, 20);
+
 				Projectile.velocity = Projectile.DirectionTo(target.Center) * vel;
 				Projectile.ai[1] = Main.rand.NextBool() ? -1 : 1;
+
 				for (int i = 0; i < 6; i++)
 					Dust.NewDustPerfect(Projectile.Center + Main.rand.NextVector2Circular(10, 10), ModContent.DustType<SandDust>(), -Projectile.velocity.RotatedByRandom(MathHelper.Pi / 8));
 
@@ -156,16 +158,19 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 		{
 			float rotation = Projectile.rotation;
 			SpriteEffects effects = SpriteEffects.None;
+
 			if (Math.Abs(rotation) > MathHelper.PiOver2)
 			{
 				rotation -= MathHelper.Pi;
 				effects = SpriteEffects.FlipHorizontally;
 			}
+
 			if (Projectile.ai[0] > 60)
 			{
 				Projectile.QuickDrawTrail(Main.spriteBatch, 0.5f, rotation, effects);
 				Projectile.QuickDrawGlowTrail(Main.spriteBatch, 0.5f, rotation: rotation, spriteEffects: effects);
 			}
+
 			Projectile.QuickDraw(Main.spriteBatch, rotation, effects);
 			Projectile.QuickDrawGlow(Main.spriteBatch, rotation: rotation, spriteEffects : effects);
 			return false;
@@ -251,10 +256,10 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 			Projectile.width = Projectile.height = 10;
 
 			Player player = Main.player[Projectile.owner];
-
 			NPC target = null;
 			float maxdist = 600;
 			NPC miniontarget = Projectile.OwnerMinionAttackTargetNPC;
+
 			if (miniontarget != null && miniontarget.CanBeChasedBy(this) && CanHit(Projectile.Center, miniontarget.Center) && CanHit(player.Center, miniontarget.Center) && miniontarget.Distance(Projectile.Center) <= maxdist)
 				target = miniontarget;
 			else
@@ -317,11 +322,13 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 		{
 			float rotation = Projectile.rotation;
 			SpriteEffects effects = SpriteEffects.None;
+
 			if (Math.Abs(rotation) > MathHelper.PiOver2)
 			{
 				rotation -= MathHelper.Pi;
 				effects = SpriteEffects.FlipHorizontally;
 			}
+
 			Projectile.QuickDrawTrail(Main.spriteBatch, 0.5f, rotation, effects);
 			Projectile.QuickDrawGlowTrail(Main.spriteBatch, 0.5f, rotation: rotation, spriteEffects: effects);
 
