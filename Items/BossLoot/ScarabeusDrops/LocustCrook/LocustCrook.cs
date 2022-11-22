@@ -308,7 +308,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 
 			for (int j = 1; j <= 3; j++)
 			{
-				Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("LocustCrook/SmallLocustGore" + j.ToString()).Type);
+				Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("SmallLocustGore" + j.ToString()).Type);
 				gore.timeLeft = 20;
 			}
 		}

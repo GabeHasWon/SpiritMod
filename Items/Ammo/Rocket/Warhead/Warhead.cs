@@ -34,9 +34,9 @@ namespace SpiritMod.Items.Ammo.Rocket.Warhead
 		{
 			type = weapon.type switch
 			{
-				ItemID.ProximityMineLauncher => ModContent.ProjectileType<Warhead_proximity>(),
-				ItemID.GrenadeLauncher => ModContent.ProjectileType<Warhead_grenade>(),
-				ItemID.SnowmanCannon => ModContent.ProjectileType<Warhead_snowman>(),
+				ItemID.ProximityMineLauncher => ModContent.ProjectileType<Warhead_Proximity>(),
+				ItemID.GrenadeLauncher => ModContent.ProjectileType<Warhead_Grenade>(),
+				ItemID.SnowmanCannon => ModContent.ProjectileType<Warhead_Snowman>(),
 				_ => Item.shoot,
 			};
 		}
@@ -150,19 +150,19 @@ namespace SpiritMod.Items.Ammo.Rocket.Warhead
 		}
 	}
 
-	public class Warhead_proximity : BaseWarheadProj
+	public class Warhead_Proximity : BaseWarheadProj
 	{
-		public Warhead_proximity() : base(ProjectileID.ProximityMineI, true) { }
+		public Warhead_Proximity() : base(ProjectileID.ProximityMineI, true) { }
 	}
 
-	public class Warhead_grenade : BaseWarheadProj
+	public class Warhead_Grenade : BaseWarheadProj
 	{
-		public Warhead_grenade() : base(ProjectileID.GrenadeI, true) { }
+		public Warhead_Grenade() : base(ProjectileID.GrenadeI, true) { }
 	}
 
-	public class Warhead_snowman : BaseWarheadProj
+	public class Warhead_Snowman : BaseWarheadProj
 	{
-		public Warhead_snowman() : base(ProjectileID.RocketSnowmanI, true) { }
+		public Warhead_Snowman() : base(ProjectileID.RocketSnowmanI, true) { }
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

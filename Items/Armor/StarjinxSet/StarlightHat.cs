@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 		{
 			DisplayName.SetDefault("Starlight Hat");
 			Tooltip.SetDefault("12% increased magic damage and 6% increased magic critical strike chance");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
@@ -44,7 +44,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 			player.manaCost *= 1.5f;
 			MyPlayer modplayer = player.GetModPlayer<MyPlayer>();
 			modplayer.StarjinxSet = true;
-			if (Main.rand.Next(30) == 0)
+			if (Main.rand.NextBool(30))
 		    {
 				int gore = Gore.NewGore(player.GetSource_Accessory(Item, "Armor"), player.position + new Vector2(Main.rand.Next(player.width), Main.rand.Next(player.height)), 
 					player.velocity / 2 + Main.rand.NextVector2Circular(1, 1), 

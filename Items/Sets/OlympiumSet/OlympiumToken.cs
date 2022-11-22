@@ -42,7 +42,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 				_yFrame++;
 
 			_yFrame %= 4;
-			if (Main.rand.Next(15) == 0)
+			if (Main.rand.NextBool(15))
 			{
 				int dust = Dust.NewDust(Item.position, Item.width, Item.height, DustID.GoldCoin, 0, 0);
 				Main.dust[dust].velocity = Vector2.Zero;

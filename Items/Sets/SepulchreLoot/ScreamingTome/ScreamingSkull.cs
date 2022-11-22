@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Prim;
-using SpiritMod.Dusts;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -143,7 +142,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 			int frameHeight = texture.Height / Main.projFrames[Projectile.type];
 			Rectangle frameRect = new Rectangle(0, Projectile.frame * frameHeight, texture.Width, frameHeight);
 			Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, frameRect, lightColor, 0f, center, 1, spriteEffects3, 0f);
-			Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, frameRect, Color.White, 0f, center, 1, spriteEffects3, 0f);
+			Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, frameRect, Color.White, 0f, center, 1, spriteEffects3, 0f);
 
 			//Main.spriteBatch.End();
 			//Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);

@@ -85,7 +85,7 @@ namespace SpiritMod.NPCs.BloodGazer
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
-			Texture2D pupiltex = ModContent.Request<Texture2D>(Texture + "_pupil", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D pupiltex = ModContent.Request<Texture2D>(Texture + "_Pupil", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			void DrawEye(Vector2 position, float Opacity)
 			{
 				Main.spriteBatch.Draw(tex, position - Main.screenPosition, Projectile.DrawFrame(), Color.White * Opacity, 0, Projectile.DrawFrame().Size() / 2, Projectile.scale, SpriteEffects.None, 0);
@@ -258,7 +258,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			if (chain == null)
 				return false;
 
-			Texture2D chaintex = ModContent.Request<Texture2D>(Texture + "_chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D chaintex = ModContent.Request<Texture2D>(Texture + "_Chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			chain.Draw(Main.spriteBatch, chaintex);
 			Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
 

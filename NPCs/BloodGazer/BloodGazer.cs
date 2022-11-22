@@ -93,7 +93,7 @@ namespace SpiritMod.NPCs.BloodGazer
 
 			AiTimer++;
 			NPC.rotation = NPC.velocity.X * 0.05f;
-			if (Main.netMode != NetmodeID.Server && Main.rand.Next(60) == 0)
+			if (Main.netMode != NetmodeID.Server && Main.rand.NextBool(60))
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/HeartbeatFx"), NPC.position);
 
 			if (Phase == 0 && NPC.life <= NPC.lifeMax / 2)
@@ -336,7 +336,7 @@ namespace SpiritMod.NPCs.BloodGazer
 
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{
-			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_Mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			for (int i = 0; i < NPCID.Sets.TrailCacheLength[NPC.type]; i++)
 			{
 				float opacity = 0.5f * (float)(NPCID.Sets.TrailCacheLength[NPC.type] - i) / NPCID.Sets.TrailCacheLength[NPC.type];
@@ -423,7 +423,7 @@ namespace SpiritMod.NPCs.BloodGazer
 				}
 			}
 
-			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_Mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			void DrawMask(Vector2 center, float opacity) => spriteBatch.Draw(glowmask, center - Main.screenPosition, NPC.frame, Color.Red * opacity * GlowmaskOpacity * NPC.Opacity, NPC.rotation,
 																				NPC.frame.Size() / 2, NPC.scale * 1.2f, (NPC.spriteDirection > 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 			DrawMask(NPC.Center, 0.5f);
@@ -453,7 +453,7 @@ namespace SpiritMod.NPCs.BloodGazer
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_mask2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_Mask2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Color col = Color.Red * GlowmaskOpacity * NPC.Opacity;
 			SpriteEffects effect = (NPC.spriteDirection > 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 

@@ -328,7 +328,7 @@ namespace SpiritMod.NPCs.GraniTech
 			if (BaseState != STATE_FALLING)
 				DrawLaser(spriteBatch);
 
-			Texture2D npcGlow = ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D npcGlow = ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Vector2 realPos = NPC.position - screenPos;
 			Vector2 offset;
 			Rectangle baseRect = new Rectangle(0, 32, 44, 18);
