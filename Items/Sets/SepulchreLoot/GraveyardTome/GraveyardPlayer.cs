@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.GraveyardTome
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<Graveyard>())
-				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/SepulchreLoot/GraveyardTome/Graveyard_held").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SepulchreLoot/GraveyardTome/Graveyard_heldGlow").Value, drawInfo);
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/SepulchreLoot/GraveyardTome/Graveyard_Held").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SepulchreLoot/GraveyardTome/Graveyard_HeldGlow").Value, drawInfo);
 		}
 
 		public void DrawItem(Texture2D texture, Texture2D glow, PlayerDrawSet info)

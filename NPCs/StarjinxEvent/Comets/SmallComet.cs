@@ -327,7 +327,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
 			}
 
 			SpriteEffects effects = NPC.spriteDirection > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			sB.Draw(ModContent.Request<Texture2D>($"SpiritMod/NPCs/StarjinxEvent/Comets/{Size}Comet_mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, NPC.Center - screenPos, null, Color.White * DeathGlowStrength, NPC.rotation, texture.Size()/2, NPC.scale, effects, 0f);
+			sB.Draw(ModContent.Request<Texture2D>($"SpiritMod/NPCs/StarjinxEvent/Comets/{Size}Comet_Mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, NPC.Center - screenPos, null, Color.White * DeathGlowStrength, NPC.rotation, texture.Size()/2, NPC.scale, effects, 0f);
 		}
 
 		private Color EnergyColor => Color.Lerp(SpiritMod.StarjinxColor(Timer * 0.8f), Color.White, 0.33f);

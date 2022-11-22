@@ -128,7 +128,7 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 				Vector2 drawPos = Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / Repeats) * timer * 8;
 				_circle.DelegateDraw(spriteBatch, Player.MountedCenter + drawPos, Scale, delegate(int runeNumber) 
 				{ 
-					return new RuneCircle.RuneDrawInfo(Mod.Assets.Request<Texture2D>("Textures/Runes_outline").Value, color * (1 - timer)); 
+					return new RuneCircle.RuneDrawInfo(Mod.Assets.Request<Texture2D>("Textures/Runes_Outline").Value, color * (1 - timer)); 
 				});
 			}
 
@@ -136,7 +136,7 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 
 			_circle.DelegateDraw(spriteBatch, Player.MountedCenter, Scale, delegate (int runeNumber)
 			{
-				return new RuneCircle.RuneDrawInfo(Mod.Assets.Request<Texture2D>("Textures/Runes_mask").Value, Color.White * flashprogress);
+				return new RuneCircle.RuneDrawInfo(Mod.Assets.Request<Texture2D>("Textures/Runes_Mask").Value, Color.White * flashprogress);
 			});
 		}
 
