@@ -1,5 +1,3 @@
-using SpiritMod.Items.Material;
-using SpiritMod.Projectiles.Flail;
 using SpiritMod.Prim;
 using Terraria;
 using SpiritMod.Particles;
@@ -9,10 +7,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.FlailsMisc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using Terraria.GameContent;
 
 namespace SpiritMod.Items.BossLoot.StarplateDrops
 {
@@ -398,7 +394,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		{
 			Vector2 lengthMeasure = Entity.Center - _target.Center;
 			Effect effect = SpiritMod.RepeatingTextureShader;
-			effect.Parameters["baseTexture"].SetValue(ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/LivewireProj_chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+			effect.Parameters["baseTexture"].SetValue(ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/LivewireProj_Chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 			effect.Parameters["repeats"].SetValue(lengthMeasure.Length() / 12f);
 			PrepareShader(effect, "MainPS", Counter * 0.1f);
 		}
