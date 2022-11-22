@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Sets.SlagSet;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +13,6 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 			DisplayName.SetDefault("Slag Tyrant's Platemail");
 			Tooltip.SetDefault("4% increased minion damage\nIncreases your max number of minions");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SlagSet/FieryArmor/ObsidiusPlate_Glow");
-
 		}
 
 		public override void SetDefaults()
@@ -25,15 +23,15 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 			Item.rare = ItemRarityID.Orange;
 			Item.defense = 8;
 		}
-		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
-		{
-			glowMaskColor = new Color(100, 100, 100, 100);
-		}
+
+		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor) => glowMaskColor = new Color(100, 100, 100, 100);
+
 		public override void UpdateEquip(Player player)
 		{
-			player.maxMinions += 1;
+			player.maxMinions++;
 			player.GetDamage(DamageClass.Summon) += .04f;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);
