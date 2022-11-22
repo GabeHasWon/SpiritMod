@@ -1,10 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Material;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.CryoliteSet
 {
 	public class CryoPick : ModItem
@@ -14,7 +13,6 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 			DisplayName.SetDefault("Cryolite Pickaxe");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/CryoliteSet/CryoPick_Glow");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -33,33 +31,19 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 			Item.autoReuse = true;
 			Item.UseSound = SoundID.Item1;
 		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.06f, .16f, .22f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+		}
+
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.DungeonSpirit);
 			Main.dust[dust].noGravity = true;
 		}
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Lighting.AddLight(Item.position, 0.06f, .16f, .22f);
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				Mod.Assets.Request<Texture2D>("Items/Sets/CryoliteSet/CryoPick_Glow").Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
-		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

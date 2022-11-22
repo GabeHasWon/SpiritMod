@@ -398,8 +398,8 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Texture2D baseGlow = ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			Texture2D whiteGlow = ModContent.Request<Texture2D>(Texture + "_glowWhite", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D baseGlow = ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D whiteGlow = ModContent.Request<Texture2D>(Texture + "_GlowWhite", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
 			DrawGlowmask(spriteBatch, baseGlow, NPC.Center, Color.White, screenPos);
 

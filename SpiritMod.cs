@@ -8,14 +8,12 @@ using SpiritMod.NPCs.Tides.Tide;
 using SpiritMod.Skies;
 using SpiritMod.Skies.Overlays;
 using SpiritMod.Utilities;
-using SpiritMod.World;
 using SpiritMod.Dusts;
 using System;
 using System.Reflection;
 using System.Collections.Generic;
 using System.IO;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.GameContent.Shaders;
 using Terraria.GameContent.Dyes;
@@ -36,7 +34,6 @@ using SpiritMod.Items.Sets.BowsMisc.GemBows.Ruby_Bow;
 using SpiritMod.Items.Sets.BowsMisc.GemBows.Sapphire_Bow;
 using SpiritMod.Items.Sets.BowsMisc.GemBows.Topaz_Bow;
 using SpiritMod.Items.Consumable;
-using SpiritMod.NPCs.AuroraStag;
 using SpiritMod.Particles;
 using SpiritMod.UI.QuestUI;
 using SpiritMod.Mechanics.QuestSystem;
@@ -52,17 +49,14 @@ using SpiritMod.Items.Weapon.Magic.Rhythm;
 using SpiritMod.Items.Weapon.Magic.Rhythm.Anthem;
 using SpiritMod.Mechanics.EventSystem;
 using SpiritMod.Skies.Starjinx;
-using SpiritMod.NPCs.StarjinxEvent;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.Items.Sets.OlympiumSet;
 using SpiritMod.Mechanics.Coverings;
 using static Terraria.ModLoader.Core.TmodFile;
 using SpiritMod.Items.Sets.DyesMisc.HairDye;
-using SpiritMod.GlobalClasses.Projectiles;
 using SpiritMod.GlobalClasses.Tiles;
-using SpiritMod.Utilities.PhaseIndicatorCompat;
-using SpiritMod.Utilities.Journey;
 using SpiritMod.Items.Glyphs;
+using ReLogic.Content;
 
 namespace SpiritMod
 {
@@ -900,12 +894,12 @@ namespace SpiritMod
 
 				Texture2D[] textures = new Texture2D[texCount + 1];
 
-				if (ModContent.RequestIfExists<Texture2D>(path, out _))
-					textures[0] = ModContent.Request<Texture2D>(path, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				if (ModContent.RequestIfExists(path, out Asset<Texture2D> texture, AssetRequestMode.ImmediateLoad))
+					textures[0] = texture.Value;
 
 				for (int i = 1; i <= texCount; i++)
 				{
-					textures[i] = ModContent.Request<Texture2D>(path + "_" + i, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+					textures[i] = ModContent.Request<Texture2D>(path + "_" + i, AssetRequestMode.ImmediateLoad).Value;
 					StormGlyph.TESTO = textures[i].ToString();
 				}
 				_texField.SetValue(null, textures);
@@ -1143,7 +1137,7 @@ namespace SpiritMod
 				//scarabWings = new SoundLooper(this, "Sounds/BossSFX/Scarab_Wings");
 			}
 
-			Items.Glyphs.GlyphBase.InitializeGlyphLookup();
+			GlyphBase.InitializeGlyphLookup();
 
 			BossChecklistDataHandler.RegisterSpiritData(this);
 			CrossModContent();

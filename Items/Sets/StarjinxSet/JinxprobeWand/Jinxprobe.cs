@@ -94,8 +94,8 @@ namespace SpiritMod.Items.Sets.StarjinxSet.JinxprobeWand
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Texture2D glow = Mod.Assets.Request<Texture2D>(Texture.Remove(0, Mod.Name.Length + 1) + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			Texture2D glow2 = Mod.Assets.Request<Texture2D>(Texture.Remove(0, Mod.Name.Length + 1) + "_glow2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D glow = Mod.Assets.Request<Texture2D>(Texture.Remove(0, Mod.Name.Length + 1) + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D glow2 = Mod.Assets.Request<Texture2D>(Texture.Remove(0, Mod.Name.Length + 1) + "_Glow2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Rectangle rect = glow.Bounds;
 
 			//draw beam to player

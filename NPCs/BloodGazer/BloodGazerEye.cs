@@ -259,7 +259,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			if (_chain == null)
 				return false;
 
-			Texture2D chaintex = ModContent.Request<Texture2D>(Texture + "_chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D chaintex = ModContent.Request<Texture2D>(Texture + "_Chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			_chain.Draw(spriteBatch, chaintex);
 			Texture2D tex = TextureAssets.Npc[NPC.type].Value;
 

@@ -32,10 +32,10 @@ namespace SpiritMod
 
 		public static void QuickDrawGlow(this Projectile projectile, SpriteBatch spriteBatch, Color? color = null, float? rotation = null, SpriteEffects? spriteEffects = null, Vector2? drawOrigin = null)
 		{
-			if (!ModContent.HasAsset(projectile.ModProjectile.Texture + "_glow"))
+			if (!ModContent.HasAsset(projectile.ModProjectile.Texture + "_Glow"))
 				return;
 
-			Texture2D tex = ModContent.Request<Texture2D>(projectile.ModProjectile.Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D tex = ModContent.Request<Texture2D>(projectile.ModProjectile.Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Rectangle frame = new Rectangle(0, projectile.frame * tex.Height / Main.projFrames[projectile.type], tex.Width, tex.Height / Main.projFrames[projectile.type]);
 			if (spriteEffects == null)
 				spriteEffects = projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
@@ -64,10 +64,10 @@ namespace SpiritMod
 
 		public static void QuickDrawGlowTrail(this Projectile projectile, SpriteBatch spriteBatch, float Opacity = 0.5f, Color? color = null, float? rotation = null, SpriteEffects? spriteEffects = null, Vector2? drawOrigin = null)
 		{
-			if (!ModContent.HasAsset(projectile.ModProjectile.Texture + "_glow"))
+			if (!ModContent.HasAsset(projectile.ModProjectile.Texture + "_Glow"))
 				return;
 
-			Texture2D tex = ModContent.Request<Texture2D>(projectile.ModProjectile.Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D tex = ModContent.Request<Texture2D>(projectile.ModProjectile.Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Rectangle frame = new Rectangle(0, projectile.frame * tex.Height / Main.projFrames[projectile.type], tex.Width, tex.Height / Main.projFrames[projectile.type]);
 			if (spriteEffects == null)
 				spriteEffects = projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;

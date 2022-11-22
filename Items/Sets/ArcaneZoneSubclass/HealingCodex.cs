@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Summon.Zones;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Buffs.Zones;
@@ -54,23 +53,7 @@ namespace SpiritMod.Items.Sets.ArcaneZoneSubclass
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, 0.19f, .031f, .091f);
-			Texture2D texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				Mod.Assets.Request<Texture2D>("Items/Sets/ArcaneZoneSubclass/HealingCodex_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
 		public override void AddRecipes()

@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Bullet;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace SpiritMod.Items.BossLoot.StarplateDrops
@@ -14,15 +13,15 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		{
 			DisplayName.SetDefault("Orion's Quickdraw");
 			Tooltip.SetDefault("Converts regular bullets into Orion Bullets\nOrion Bullets leave lingering stars in their wake\n'Historically accurate'");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/StarplateDrops/OrionPistol_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
 		{
 			Item.damage = 28;
 			Item.DamageType = DamageClass.Ranged;
-			Item.width = 24;
-			Item.height = 24;
+			Item.width = 56;
+			Item.height = 26;
 			Item.useTime = 23;
 			Item.useAnimation = 23;
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -31,7 +30,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.useTurn = false;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.Orange;
-			Item.UseSound = SoundID.Item41;
+			Item.UseSound = SoundID.Item67 with { Volume = 0.5f, PitchVariance = 1.0f };
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<OrionBullet>();
 			Item.shootSpeed = 6f;
@@ -55,24 +54,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/OrionPistol_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
 		}
 
 		public override void AddRecipes()

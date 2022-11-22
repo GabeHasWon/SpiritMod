@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
         {
             DisplayName.SetDefault("Helios");
 			Tooltip.SetDefault("Hold and release to throw \nRight click to dash to it, destroying everything in your path");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
         public override void SetDefaults()
@@ -54,13 +54,10 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 			return true;
 		}
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => 
-            GlowmaskUtils.DrawItemGlowMaskWorld(Main.spriteBatch, Item, Mod.Assets.Request<Texture2D>(Texture.Remove(0, "SpiritMod/".Length) + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-10, 0);
-        }
+            GlowmaskUtils.DrawItemGlowMaskWorld(Main.spriteBatch, Item, Mod.Assets.Request<Texture2D>(Texture.Remove(0, "SpiritMod/".Length) + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
+        public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
-        public override void AddRecipes()
+		public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.FragmentSolar, 18);
@@ -183,7 +180,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
             trail._direction = player.direction;
         }
 
-        private void CheckCollision(Player player) //I'm sorry forthis
+        /*private void CheckCollision(Player player) //I'm sorry forthis
         {
             int pX = (int)(primCenter.X / 16f);
             int pY = (int)(primCenter.Y / 16f);
@@ -222,7 +219,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
                 player.velocity = new Vector2(1, 0).RotatedBy(angle + Math.PI) * 20; //set the player's position
             }
-        }
+        }*/
 
         private void SpinBlade(double d1, double adder, bool grow = true)
         {

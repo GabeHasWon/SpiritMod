@@ -64,11 +64,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 			}
 			return true;
 		}
-
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-4, 0);
-		}
+		public override Vector2? HoldoutOffset() => new Vector2(-4, 0);
 
 		public override bool CanUseItem(Player player)
 		{

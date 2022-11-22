@@ -14,13 +14,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.Partystarter
 			Tooltip.SetDefault("'Let's get this party started!'\nConverts regular bullets into VIP party bullets");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.damage = 70;
 			Item.DamageType = DamageClass.Ranged;
-			Item.width = 65;
-			Item.height = 32;
+			Item.width = 84;
+			Item.height = 28;
 			Item.useTime = 50;
 			Item.useAnimation = 50;
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -42,10 +41,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Partystarter
 			if (type == ProjectileID.Bullet)
 				type = ModContent.ProjectileType<PartyStarterBullet>();
 		}
-		
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-10, 0);
-		}
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 	}
 }

@@ -221,7 +221,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 
 		public override bool PreDrawExtras()
 		{
-			Texture2D ChainTexture = Mod.Assets.Request<Texture2D>(Texture.Remove(0, Mod.Name.Length + 1)+ "_chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D ChainTexture = Mod.Assets.Request<Texture2D>(Texture.Remove(0, Mod.Name.Length + 1) + "_Chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Player Owner = Main.player[Projectile.owner];
 			int timestodrawchain = Math.Max((int)(Projectile.Distance(Owner.MountedCenter) / ChainTexture.Width), 1);
 			for (int i = 0; i < timestodrawchain; i++)

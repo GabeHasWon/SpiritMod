@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,7 +13,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
         {
             DisplayName.SetDefault("Cornucop-ion");
             Tooltip.SetDefault("Hold to charge up lightning that strikes nearby enemies\nCharging up for longer periods creates more strikes\nCharging up for too long electrifies the player\nCan only be used on the surface or higher\n'Shockingly effective'");
-            SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/MoonWizardDrops/Cornucopion_Glow");
+            SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
         public override void SetDefaults()
@@ -37,33 +36,16 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
             Item.value = 10000;
             Item.noUseGraphic = false;
         }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Lighting.AddLight(Item.position, 0.08f, .28f, .38f);
-            Texture2D texture;
-            texture = TextureAssets.Item[Item.type].Value;
-            spriteBatch.Draw
-            (
-                ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/MoonWizardDrops/Cornucopion_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-                new Vector2
-                (
-                    Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
-        }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(0, -1);
-        }
-        public override bool CanUseItem(Player player)
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
+		}
+
+        public override Vector2? HoldoutOffset() => new Vector2(0, -1);
+		public override bool CanUseItem(Player player)
         {
             if (!player.ZoneOverworldHeight && !player.ZoneSkyHeight)
             {

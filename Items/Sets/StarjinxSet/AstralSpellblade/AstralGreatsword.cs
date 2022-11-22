@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.AstralSpellblade
         {
             DisplayName.SetDefault("Astral Spellblade");
 			Tooltip.SetDefault("Does a devastating spin attack after 2 swings\nReleases stars when swung or swinging");
-            SpiritGlowmask.AddGlowMask(Item.type, Texture + "_glow");
+            SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
         public override void SetDefaults()
@@ -42,7 +42,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.AstralSpellblade
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => 
-            GlowmaskUtils.DrawItemGlowMaskWorld(Main.spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
+            GlowmaskUtils.DrawItemGlowMaskWorld(Main.spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{

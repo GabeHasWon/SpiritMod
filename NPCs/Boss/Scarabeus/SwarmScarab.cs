@@ -132,7 +132,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Texture2D texture2D = Mod.Assets.Request<Texture2D>("NPCs/Boss/Scarabeus/SwarmScarab_glow").Value;
+			Texture2D texture2D = Mod.Assets.Request<Texture2D>("NPCs/Boss/Scarabeus/SwarmScarab_Glow").Value;
 			SpriteEffects spriteeffects = (NPC.spriteDirection > 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			float rotation = (NPC.spriteDirection < 0) ? NPC.rotation - MathHelper.Pi : NPC.rotation;
 			spriteBatch.Draw(texture2D, NPC.Center - Main.screenPosition, NPC.frame, NPC.GetAlpha(Color.White), rotation, NPC.frame.Size() / 2f, NPC.scale, spriteeffects, 0f);

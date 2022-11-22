@@ -1,9 +1,7 @@
 using SpiritMod.Projectiles.Summon;
 using Terraria;
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
@@ -16,32 +14,8 @@ namespace SpiritMod.Items.Weapon.Summon.ElectricGun
 		{
 			DisplayName.SetDefault("Arcbolter");
 			Tooltip.SetDefault("Your summons will focus struck enemies\nHit enemies may create static links between each other when struck by minions, dealing additional damage");
-
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Weapon/Summon/ElectricGun/ElectricGun_Glow");
         }
-
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Lighting.AddLight(Item.position, 0.08f, .4f, .28f);
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/ElectricGun/ElectricGun_Glow").Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
-		}
 
         public override void SetDefaults()
 		{
@@ -79,9 +53,12 @@ namespace SpiritMod.Items.Weapon.Summon.ElectricGun
             }
             return false;
         }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-7, 0);
-        }
-    }
+        public override Vector2? HoldoutOffset() => new Vector2(-7, 0);
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.08f, .4f, .28f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+		}
+	}
 }

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Summon.LaserGate;
 using System.Linq;
 using Terraria;
@@ -10,14 +11,14 @@ namespace SpiritMod.Items.Weapon.Summon
 {
 	public class GateStaff : ModItem
 	{
-		int RightHopper => ModContent.ProjectileType<RightHopper>();
-		int LeftHopper => ModContent.ProjectileType<LeftHopper>();
+		static int RightHopper => ModContent.ProjectileType<RightHopper>();
+		static int LeftHopper => ModContent.ProjectileType<LeftHopper>();
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gate Staff");
 			Tooltip.SetDefault("Left click and right click to summon an electric field");
-
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Item.staff[Item.type] = true;
 		}
 
@@ -41,8 +42,10 @@ namespace SpiritMod.Items.Weapon.Summon
 			Item.shootSpeed = 0f;
 		}
 
-		public override bool AltFunctionUse(Player player) => true;
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
+		public override bool AltFunctionUse(Player player) => true;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			type = (player.altFunctionUse == 2) ? RightHopper : LeftHopper;

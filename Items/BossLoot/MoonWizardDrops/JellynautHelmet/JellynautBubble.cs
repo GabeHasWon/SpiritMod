@@ -1,11 +1,9 @@
-using SpiritMod.Items.Material;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria.Localization;
 
 namespace SpiritMod.Items.BossLoot.MoonWizardDrops.JellynautHelmet
@@ -34,25 +32,9 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops.JellynautHelmet
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Lighting.AddLight(Item.position, 0.08f, .4f, .28f);
-            Texture2D texture;
-            texture = TextureAssets.Item[Item.type].Value;
-            spriteBatch.Draw
-            (
-                Mod.Assets.Request<Texture2D>("Items/BossLoot/MoonWizardDrops/JellynautHelmet/JellynautBubble_Glow").Value,
-                new Vector2
-                (
-                    Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
-        }
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
+		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) => (body.type >= ItemID.AmethystRobe && body.type <= ItemID.DiamondRobe || body.type == ItemID.GypsyRobe);
 

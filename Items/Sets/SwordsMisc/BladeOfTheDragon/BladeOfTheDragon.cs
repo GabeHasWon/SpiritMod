@@ -281,7 +281,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<BladeOfTheDragon>())
-				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_held").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_sparkle").Value, drawInfo);
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_Held").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_sparkle").Value, drawInfo);
 		}
 
 		public static void DrawItem(Texture2D texture, Texture2D sparkle, PlayerDrawSet info)

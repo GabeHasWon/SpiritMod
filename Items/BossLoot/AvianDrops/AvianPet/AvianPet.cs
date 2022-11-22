@@ -20,8 +20,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 			DisplayName.SetDefault("Ancient Hatchling");
 			Main.projFrames[Projectile.type] = 2;
 			Main.projPet[Projectile.type] = true;
-
-			ProjectileID.Sets.TrailCacheLength[Type] = 8;
+			ProjectileID.Sets.TrailCacheLength[Type] = 6;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
 
@@ -45,12 +44,22 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 				Follow();
 			else if (State == 1)
 				Relax();
+			else if (State == 2)
+				Traverse();
+			else if (State == 3)
+				Chase();
+
+			if (Projectile.velocity.X < 0)
+				Projectile.spriteDirection = -1;
+			if (Projectile.velocity.X > 0)
+				Projectile.spriteDirection = 1;
 		}
 
 		private void Relax() //Idles while close enough to the player and not moving.
 		{
-			Projectile.rotation *= 0.92f; //Reduce rotation and movement
-			Projectile.velocity *= 0.9f;
+			Projectile.rotation *= 0.25f; //Reduce rotation and movement
+			Projectile.velocity.X *= 0.9f;
+			Projectile.velocity.Y += 0.4f; //Gravity
 
 			if (Math.Abs(Projectile.rotation) < 0.01f) //While upright, increase counter
 				Projectile.frameCounter++;
@@ -93,6 +102,73 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 
 			float throwaway = 6; //Fills the required but useless params in StepUp
 			Collision.StepUp(ref Projectile.position, ref Projectile.velocity, Projectile.width, Projectile.height, ref throwaway, ref Projectile.gfxOffY); //Automatically move up 1 tile tall walls
+
+			if (Projectile.DistanceSQ(Owner.Center) > 900 * 900) //If player moves too far away, change state to Chase
+				State = 3;
+			else if ((int)Projectile.position.X == (int)Projectile.oldPos[ProjectileID.Sets.TrailCacheLength[Type] - 1].X &&
+				(int)Projectile.position.Y == (int)Projectile.oldPos[ProjectileID.Sets.TrailCacheLength[Type] - 1].Y) //Make a brief attempt to pass obstacles when sitting still for too long
+			{
+				if ((int)Projectile.velocity.Y == 0)
+				{
+					Projectile.velocity.Y = -3;
+					for (int i = 0; i < 5; i++)
+					{
+						int type = Main.rand.NextBool(2) ? DustID.Smoke : DustID.MothronEgg;
+						Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, type,
+							Projectile.velocity.X * Main.rand.NextFloat(0.4f, 0.8f), Projectile.velocity.Y * Main.rand.NextFloat(0.4f, 0.8f),
+							0, default, Main.rand.NextFloat(0.9f, 1.7f));
+						if (type == DustID.Smoke)
+							dust.alpha = 100;
+					}
+				}
+				Projectile.velocity.X = Owner.Center.X < Projectile.Center.X ? -5 : 5;
+				State = 2;
+			}
+		}
+
+		private void Traverse()
+		{
+			if (Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, Owner.position, Owner.width, Owner.height))
+			{
+				Projectile.tileCollide = true;
+				State = 0;
+				return;
+			}
+			Projectile.tileCollide = false;
+			float magnitude = 8f;
+			Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(Owner.Center) * magnitude, 0.1f);
+			Projectile.rotation += Projectile.velocity.X * 0.05f; //Rotate according to speed
+		}
+
+		private void Chase()
+		{
+			const float MaxSpeedDistance = 1400;
+
+			Projectile.tileCollide = false;
+
+			float dist = Projectile.DistanceSQ(Main.player[Projectile.owner].Center);
+			float magnitude = 13;
+
+			if (dist > MaxSpeedDistance * MaxSpeedDistance)
+				magnitude = 13 + (((float)Math.Sqrt(dist) - MaxSpeedDistance) * 0.1f);
+
+			Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(Owner.Center) * magnitude, 0.05f);
+			Projectile.rotation += Projectile.velocity.X * 0.05f; //Rotate according to speed
+
+			Player player = Main.player[Projectile.owner];
+			if (dist < 700 * 700 && Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, player.position, player.width, player.height))
+			{
+				Projectile.tileCollide = true;
+				State = 1;
+			}
+		}
+
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			//Bounce when falling fast enough
+			if (oldVelocity.Y > 2f)
+				Projectile.velocity.Y = -oldVelocity.Y * .5f;
+			return base.OnTileCollide(oldVelocity);
 		}
 
 		public override bool PreDraw(ref Color lightColor)
@@ -118,7 +194,10 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 				drawPos.Y += 2 + sineY;
 			}
 
-			Main.spriteBatch.Draw(TextureAssets.Projectile[Type].Value, drawPos, source, lightColor, Projectile.rotation, Origin, Vector2.One, SpriteEffects.None, 0);
+			SpriteEffects effects = (Projectile.spriteDirection == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			Main.spriteBatch.Draw(TextureAssets.Projectile[Type].Value, drawPos, source, lightColor, Projectile.rotation, Origin, Vector2.One, effects, 0);
+			//Draw a glowmask
+			Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, drawPos, source, Projectile.GetAlpha(Color.White), Projectile.rotation, Origin, Vector2.One, effects, 0);
 			return false;
 		}
 	}

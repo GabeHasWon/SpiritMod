@@ -17,7 +17,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.RadiantCane
 		{
 			DisplayName.SetDefault("Sunrise Scepter");
 			Tooltip.SetDefault("Conjures a slow, controllable sun orb");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Item.staff[Item.type] = true;
 		}
 
@@ -43,7 +43,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.RadiantCane
 
 		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
 
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, Mod.Assets.Request<Texture2D>(Texture.Remove(0, Mod.Name.Length + 1) + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, Mod.Assets.Request<Texture2D>(Texture.Remove(0, Mod.Name.Length + 1) + "_Glow").Value, rotation, scale);
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{

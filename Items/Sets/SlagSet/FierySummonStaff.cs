@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -12,6 +13,7 @@ namespace SpiritMod.Items.Sets.SlagSet
 		{
 			DisplayName.SetDefault("Slagtern Staff");
 			Tooltip.SetDefault("Summons a hovering slag lantern that lobs lava at nearby foes");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -34,13 +36,8 @@ namespace SpiritMod.Items.Sets.SlagSet
             Item.shootSpeed = 10f;
 		}
 
-		public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<CarvedRock>(), 14);
-			recipe.AddTile(TileID.Anvils);
-			recipe.Register();
-		}
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
@@ -56,6 +53,14 @@ namespace SpiritMod.Items.Sets.SlagSet
 				}
 			}
 			return true;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<CarvedRock>(), 14);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 }

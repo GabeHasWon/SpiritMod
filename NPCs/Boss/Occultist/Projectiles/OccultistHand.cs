@@ -112,7 +112,7 @@ namespace SpiritMod.NPCs.Boss.Occultist.Projectiles
 
 		public override void PostDraw(Color lightColor)
 		{
-			Texture2D maskTex = ModContent.Request<Texture2D>(Texture + "_mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D maskTex = ModContent.Request<Texture2D>(Texture + "_Mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Main.spriteBatch.Draw(maskTex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(new Color(252, 68, 166)) * Math.Max(1 - AiTimer / 20f, 0), Projectile.rotation,
 				maskTex.Size() / 2, Projectile.scale, Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 		}

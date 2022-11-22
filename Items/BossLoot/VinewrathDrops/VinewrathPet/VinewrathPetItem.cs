@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Pet;
 using Terraria;
 using Terraria.ID;
@@ -12,6 +13,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 		{
 			DisplayName.SetDefault("Withered Petal");
 			Tooltip.SetDefault("Summons an angry Seedling companion");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -33,5 +35,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 		}
 
 		public override bool CanUseItem(Player player) => player.miscEquips[0].IsAir;
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}
 }

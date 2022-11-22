@@ -121,7 +121,7 @@
 //	public class StarfireLampLayer : PlayerDrawLayer
 //	{
 //		//The location of the held texture, used for drawing and determining bounds of the drawing rectangle
-//		internal static string TexturePath => "Items/Sets/StarjinxSet/StarfireLamp/StarfireLantern_held";
+//		internal static string TexturePath => "Items/Sets/StarjinxSet/StarfireLamp/StarfireLantern_Held";
 //		internal static string GlowmaskPath => TexturePath + "Glow";
 
 //		//Where the origin of the texture is drawn

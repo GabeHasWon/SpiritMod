@@ -37,7 +37,7 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
-			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			float Timer = 0.5f + (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 4) / 2);
 			float BlurTimer = 0.5f + (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 12) / 2);
 

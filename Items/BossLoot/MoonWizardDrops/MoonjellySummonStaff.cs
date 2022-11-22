@@ -15,7 +15,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 		{
 			DisplayName.SetDefault("Lunazoa Staff");
 			Tooltip.SetDefault("Summons a Moonlight Preserver\nMoonlight Preservers summon smaller jellyfish that explode\nOnly one Moonlight Preserver can exist at once\nUsing the staff multiple times takes up summon slots, but increases jellyfish spawn rates");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/MoonWizardDrops/MoonjellySummonStaff_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -35,8 +35,8 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 			Item.shoot = ModContent.ProjectileType<MoonjellySummon>();
 			Item.UseSound = SoundID.Item44;
 		}
-		public override bool AltFunctionUse(Player player) => true;
 
+		public override bool AltFunctionUse(Player player) => true;
 		public override bool? UseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)
@@ -86,24 +86,8 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, 0.08f, .4f, .28f);
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				Mod.Assets.Request<Texture2D>("Items/BossLoot/MoonWizardDrops/MoonjellySummonStaff_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
 		}
 	}
 }

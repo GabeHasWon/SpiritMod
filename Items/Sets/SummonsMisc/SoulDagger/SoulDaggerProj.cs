@@ -2,9 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Summon;
 using SpiritMod.Projectiles.BaseProj;
-using SpiritMod.Utilities;
-using System;
-using System.IO;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -21,7 +18,6 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 			TRANSITIONING = 1,
 			ATTACKING = 2
 		}
-
 
 		public SoulDaggerProj() : base(1000, 1500, new Vector2(64, 64)) { }
 
@@ -197,7 +193,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 	internal class SoulDaggerSummon : ModProjectile
 	{
 
-		protected virtual Color color => Color.White;
+		protected virtual Color DrawColor => Color.White;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Soul Dagger");
@@ -214,6 +210,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = 16;
 		}
+
 		public override void AI()
 		{
 			if (Projectile.velocity != Vector2.Zero)
@@ -225,14 +222,14 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 			if (Projectile.frame >= Main.projFrames[Projectile.type])
 				Projectile.active = false;
 		}
-		public override Color? GetAlpha(Color lightColor) => Color.White;
 
+		public override Color? GetAlpha(Color lightColor) => Color.White;
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
 			int frameHeight = tex.Height / Main.projFrames[Projectile.type];
 			Rectangle frame = new Rectangle(0, frameHeight * Projectile.frame, tex.Width, frameHeight);
-			Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, new Vector2(0, frameHeight), Projectile.scale, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, frame, DrawColor, Projectile.rotation, new Vector2(0, frameHeight), Projectile.scale, SpriteEffects.None, 0f);
 			return false;
 		}
 	}

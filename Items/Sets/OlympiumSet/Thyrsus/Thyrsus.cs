@@ -1,12 +1,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Prim;
 using SpiritMod.VerletChains;
 
 namespace SpiritMod.Items.Sets.OlympiumSet.Thyrsus
@@ -166,7 +164,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.Thyrsus
 			if (_chain == null)
 				return false;
 
-			_chain.Draw(Main.spriteBatch, ModContent.Request<Texture2D>(Texture + "_chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+			_chain.Draw(Main.spriteBatch, ModContent.Request<Texture2D>(Texture + "_Chain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 			return false;
 		}
 	}

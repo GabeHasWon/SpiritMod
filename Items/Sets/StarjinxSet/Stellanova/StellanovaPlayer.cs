@@ -14,7 +14,7 @@
 //	public class StellanovaPlayer : ModPlayer
 //	{
 //		//Constant values
-//		private const string TexturePath = "Items/Sets/StarjinxSet/Stellanova/StellanovaCannon_held";
+//		private const string TexturePath = "Items/Sets/StarjinxSet/Stellanova/StellanovaCannon_Held";
 //		private const int NumFrames = 5;
 
 //		//Helper properties
@@ -61,7 +61,7 @@
 //		{
 //			if(Player.HeldItem.type == ModContent.ItemType<StellanovaCannon>() && false)
 //				layers.Insert(layers.FindIndex(x => x.Name == "HeldItem" && x.mod == "Terraria"), new PlayerDrawLayer(Mod.Name, "StellanovaHeld",
-//					delegate (PlayerDrawSet info) { DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/StarjinxSet/Stellanova/StellanovaCannon_held").Value, info); }));
+//					delegate (PlayerDrawSet info) { DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/StarjinxSet/Stellanova/StellanovaCannon_Held").Value, info); }));
 //		}
 
 //		public override void PostUpdate()

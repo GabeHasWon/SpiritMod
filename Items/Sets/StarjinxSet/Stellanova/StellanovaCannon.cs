@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Stellanova
         {
             DisplayName.SetDefault("Stellanova Cannon");
             Tooltip.SetDefault("Uses stars as ammo\nFires erratic starfire\nRight click to launch an explosive stellanova that draws in smaller stars\n50% chance not to consume ammo");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
 		public override void SetDefaults()
@@ -46,7 +46,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Stellanova
 		}
 
 		public override bool AltFunctionUse(Player player) => true;
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
 		public override bool CanConsumeAmmo(Item item, Player player) => Main.rand.NextBool();
         public override bool CanUseItem(Player player) => player.altFunctionUse != 2 || player.ownedProjectileCounts[ModContent.ProjectileType<BigStellanova>()] <= 0;
 

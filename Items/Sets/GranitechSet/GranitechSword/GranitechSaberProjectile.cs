@@ -11,7 +11,6 @@ using Terraria.ModLoader;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
 using System.IO;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
@@ -225,7 +224,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 			Projectile.QuickDrawGlow(Main.spriteBatch);
 			float opacity = (float)Math.Pow(Math.Sin(Timer * MathHelper.Pi / swingTime), 0.75f);
 
-			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
 			DrawAberration.DrawChromaticAberration(Projectile.velocity, 2f, delegate (Vector2 offset, Color colorMod)

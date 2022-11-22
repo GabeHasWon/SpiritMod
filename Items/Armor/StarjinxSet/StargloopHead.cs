@@ -45,7 +45,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 			Dust.NewDustPerfect(center - player.velocity + new Vector2(0, -10), ModContent.DustType<FriendlyStargoopDust>(), velocity + player.velocity * 0.5f, Scale: Main.rand.NextFloat(1.4f, 1.8f));
 		}
 
-		private float DrawTimer => (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.5f) / 2) + 0.5f;
+		private static float DrawTimer => (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.5f) / 2) + 0.5f;
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
@@ -69,7 +69,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			float opacity = MathHelper.Lerp(0.7f, 1f, DrawTimer) * ((255f - Item.alpha) / 255f);
 
 			Vector2 itemCenter = new Vector2(Item.position.X - Main.screenPosition.X + Item.width / 2, Item.position.Y - Main.screenPosition.Y + Item.height - (TextureAssets.Item[Item.type].Value.Height / 2) + 2f);

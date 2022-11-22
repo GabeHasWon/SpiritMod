@@ -30,7 +30,7 @@ namespace SpiritMod.Skies.Starjinx
 		{
 			_bgTexture = ModContent.Request<Texture2D>("SpiritMod/Skies/Starjinx/StarjinxSky", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			_planet = ModContent.Request<Texture2D>("SpiritMod/Skies/Starjinx/StarjinxPlanet", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			_planetGlow = ModContent.Request<Texture2D>("SpiritMod/Skies/Starjinx/StarjinxPlanet_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			_planetGlow = ModContent.Request<Texture2D>("SpiritMod/Skies/Starjinx/StarjinxPlanet_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			_planetBloom = ModContent.Request<Texture2D>("SpiritMod/Effects/Ripple", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 		}
 

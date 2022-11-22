@@ -7,6 +7,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritCrateTile = SpiritMod.Tiles.Furniture.SpiritCrate;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Consumable
 {
@@ -16,6 +18,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			DisplayName.SetDefault("Spirit Crate");
 			Tooltip.SetDefault("Right click to open");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -70,5 +73,7 @@ namespace SpiritMod.Items.Consumable
 				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable2[loot2], Main.rand.Next(30, 80));
 			}
 		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}
 }

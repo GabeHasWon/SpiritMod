@@ -64,6 +64,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 					Projectile.ai[0] = 60;
 					flag4 = false;
 					Projectile.Kill();
+					Projectile.netUpdate = true;
 				}
 				if (flag4 && !flag2)
 				{
@@ -90,6 +91,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 					p.minion = true;
 					p.netUpdate = true;
 					p.scale = Projectile.scale;
+					Projectile.netUpdate = true;
 				}
 			}
 			else
@@ -115,6 +117,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 								p.scale = Projectile.scale;
 								break;
 							}
+							Projectile.netUpdate = true;
 						}
 					}
 				}

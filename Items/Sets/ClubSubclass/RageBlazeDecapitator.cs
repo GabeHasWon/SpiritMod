@@ -39,8 +39,14 @@ namespace SpiritMod.Items.Sets.ClubSubclass
             Item.shootSpeed = 6f;
             Item.noUseGraphic = true;
         }
-
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.06f, .16f, .22f);
+			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/ClubSubclass/RageBlazeDecapitator_Glow").Value;
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
+		}
 
 		public override void AddRecipes()
         {
@@ -48,29 +54,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass
             recipe.AddIngredient(ModContent.ItemType<GraniteSet.GraniteChunk>(), 18);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-        }
-
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Lighting.AddLight(Item.position, 0.06f, .16f, .22f);
-            Texture2D texture;
-            texture = TextureAssets.Item[Item.type].Value;
-            spriteBatch.Draw
-            (
-                Mod.Assets.Request<Texture2D>("Items/Sets/ClubSubclass/RageBlazeDecapitator_Glow").Value,
-                new Vector2
-                (
-                    Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
         }
     }
 }

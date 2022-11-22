@@ -1,11 +1,9 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
@@ -31,11 +29,10 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 			Projectile.ignoreWater = true;
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.aiStyle = -1;
-
 			DrawHeldProjInFrontOfHeldItemAndArms = false;
 		}
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => false;
+		public override bool? CanDamage() => false;
 
 		public override void AI()
 		{
@@ -57,10 +54,10 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 			{
 				p.itemTime = p.HeldItem.useTime;
 				p.itemAnimation = p.HeldItem.useAnimation;
-				Projectile.Center = p.Center - (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * 27) + new Vector2(21, 18 + p.gfxOffY);
+				Projectile.Center = p.Center - (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * 27) + new Vector2(29, 18 + p.gfxOffY);
 			}
 			else
-				Projectile.Center = p.Center - (new Vector2(1, 0).RotatedBy(_finalRotation) * 27) + new Vector2(21, 18 + p.gfxOffY);
+				Projectile.Center = p.Center - (new Vector2(1, 0).RotatedBy(_finalRotation) * 27) + new Vector2(29, 18 + p.gfxOffY);
 
 			if (!p.channel && _endCharge == -1) //the player has stopped shooting
 			{
@@ -105,7 +102,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 			}
 		}
 
-		private void VFX(Vector2 position, Vector2 velocity)
+		private static void VFX(Vector2 position, Vector2 velocity)
 		{
 			for (int i = 0; i < 6; ++i)
 			{
@@ -157,7 +154,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 
 			Main.spriteBatch.Draw(t, drawPos, frame, lightColor, realRot, new Vector2(42, 22), 1f, _effect, 1f);
 
-			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D glowmask = ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Main.spriteBatch.Draw(glowmask, drawPos, frame, Color.White, realRot, new Vector2(42, 22), 1f, _effect, 1f);
 
 			return false;

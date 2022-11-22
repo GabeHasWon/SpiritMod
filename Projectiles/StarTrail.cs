@@ -1,40 +1,50 @@
-﻿
-using Microsoft.Xna.Framework;
-
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
+using Terraria.GameContent;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpiritMod.Projectiles
 {
 	public class StarTrail : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Star Trail");
-		}
-
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Trail");
 		public override void SetDefaults()
 		{
-			Projectile.width = 8;
-			Projectile.height = 8;
-
-			Projectile.timeLeft = 30;
-			Projectile.alpha = 255;
+			Projectile.width = 10;
+			Projectile.height = 10;
+			Projectile.timeLeft = 255;
+			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.alpha = 0;
 			Projectile.penetrate = -1;
-			Projectile.hostile = false;
 			Projectile.friendly = true;
+			Projectile.tileCollide = false;
 		}
+
 		public override void AI()
 		{
-			for (int i = 0; i < 6; i++) {
-				float x = Projectile.Center.X - Projectile.velocity.X / 10f * (float)i;
-				float y = Projectile.Center.Y - Projectile.velocity.Y / 10f * (float)i;
-				int num = Dust.NewDust(new Vector2(x, y), 2, 2, DustID.Flare_Blue);
-				Main.dust[num].alpha = Projectile.alpha;
-				Main.dust[num].noGravity = true;
-			}
+			float maxValue = 255 / 2;
+			float scalar = (float)(Projectile.timeLeft / maxValue);
+			if (scalar > 1)
+				scalar -= (scalar - 1) * 2;
 
+			Projectile.velocity *= 0.98f;
+
+			Projectile.spriteDirection = (Projectile.velocity.X < 0) ? -1 : 1;
+			Projectile.scale = scalar * .6f;
+			Projectile.rotation += 0.04f * Projectile.spriteDirection;
 		}
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+			Color color = Projectile.GetAlpha(Color.White);
+			color.A = 0;
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, 
+				TextureAssets.Projectile[Projectile.type].Value.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+			return false;
+		}
+
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.numHits++;
+		public override bool? CanDamage() => (Projectile.numHits < 1) ? null : false;
 	}
 }

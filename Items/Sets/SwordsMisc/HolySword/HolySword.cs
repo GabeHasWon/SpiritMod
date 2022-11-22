@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -12,7 +13,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.HolySword
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Holy Sword");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SwordsMisc/HolySword/HolySword_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -66,6 +67,13 @@ namespace SpiritMod.Items.Sets.SwordsMisc.HolySword
 		{
 			if (charger < 6)
 				charger++;
+		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.52f, .52f, .60f);
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
 		}
 	}
 }
