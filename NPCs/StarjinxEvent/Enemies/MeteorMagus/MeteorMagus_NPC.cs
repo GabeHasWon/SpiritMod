@@ -417,7 +417,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 
 		public void AdditiveCall(SpriteBatch sB, Vector2 screenPos)
 		{
-			Texture2D whiteGlow = ModContent.Request<Texture2D>(Texture + "_glowWhite", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D whiteGlow = ModContent.Request<Texture2D>(Texture + "_GlowWhite", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Color additiveGlow = _attackGlowColor;
 
 			PulseDraw.DrawPulseEffect(PulseDraw.BloomConstant, 6, 6, delegate (Vector2 posOffset, float opacityMod)

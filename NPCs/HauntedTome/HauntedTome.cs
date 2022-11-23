@@ -490,7 +490,7 @@ namespace SpiritMod.NPCs.HauntedTome
 
 		public override void PostDraw(Color lightColor)
 		{
-			Texture2D tex = Mod.Assets.Request<Texture2D>("NPCs/HauntedTome/HauntedPaperPlane_mask").Value;
+			Texture2D tex = Mod.Assets.Request<Texture2D>("NPCs/HauntedTome/HauntedPaperPlane_Mask").Value;
 			Rectangle drawFrame = new Rectangle(0, Projectile.frame * tex.Height / Main.projFrames[Projectile.type], tex.Width, tex.Height / Main.projFrames[Projectile.type]);
 			Main.spriteBatch.Draw(tex,
 					Projectile.Center - Main.screenPosition,

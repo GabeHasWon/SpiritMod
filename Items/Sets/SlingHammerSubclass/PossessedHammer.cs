@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using System;
-using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using Terraria;
 using Terraria.Audio;
