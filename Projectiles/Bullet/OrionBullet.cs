@@ -48,7 +48,7 @@ namespace SpiritMod.Projectiles.Bullet
 			}
 			if (timer == 0)
 			{
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), position, (Projectile.velocity * Main.rand.NextFloat(0.08f, 0.2f)).RotatedByRandom(0.2f), 
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), position, (Projectile.velocity * Main.rand.NextFloat(0.08f, 0.3f)).RotatedByRandom(0.5f), 
 					ModContent.ProjectileType<StarTrail>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 				ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + (Projectile.velocity * 2), Color.LightBlue, 30, 10)
 					{ Angle = Projectile.velocity.ToRotation(), ZRotation = 0.5f });
@@ -62,8 +62,11 @@ namespace SpiritMod.Projectiles.Bullet
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
 			for (int i = 0; i < 12; i++)
 			{
-				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, Main.rand.NextBool(2) ? DustID.Flare_Blue : DustID.BlueCrystalShard, 
-					-(Projectile.velocity * Main.rand.NextFloat(0.4f, 1.0f)).RotatedByRandom(0.52f), 0, default, Main.rand.NextFloat(0.8f, 1.5f));
+				Vector2 velocity = -(Projectile.velocity * Main.rand.NextFloat(0.4f, 1.0f)).RotatedByRandom(0.52f);
+				if (timeLeft <= 0)
+					velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(0.11f);
+				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, Main.rand.NextBool(2) ? DustID.Flare_Blue : DustID.BlueCrystalShard,
+					velocity, 0, default, Main.rand.NextFloat(0.8f, 1.5f));
 				dust.noGravity = true;
 			}
 		}

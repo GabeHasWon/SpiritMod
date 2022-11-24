@@ -16,18 +16,23 @@ namespace SpiritMod.Items.Accessory.Rangefinder
 			Player drawPlayer = drawInfo.drawPlayer;
 			Texture2D texture = TextureAssets.Extra[47].Value;
 			Vector2 drawPlayerCenter = drawPlayer.MountedCenter;
-			Vector2 distToProj = Main.MouseWorld - drawPlayerCenter;
+
+			//Base the rotation of the beam on drawPlayer.itemRotation and not the player's angle to Main.MouseWorld
+			float rotation = MathHelper.WrapAngle(drawPlayer.itemRotation + ((drawPlayer.direction == -1) ? MathHelper.Pi : 0));
+			Vector2 mouseItemWorld = drawPlayerCenter + new Vector2(drawPlayer.Distance(Main.MouseWorld), 0).RotatedBy(rotation);
+			
+			Vector2 distToProj = mouseItemWorld - drawPlayerCenter;
 			float projRotation = distToProj.ToRotation() - 1.57f;
 			float distance = distToProj.Length();
 
-			if (drawPlayer.GetModPlayer<RangefinderPlayer>().active && drawPlayer.itemAnimation > 0 && drawPlayer.HeldItem.IsRanged() && drawPlayer.HeldItem.useAnimation > 0 && !drawPlayer.mount.Active)
+			if (drawPlayer.GetModPlayer<RangefinderPlayer>().active && drawPlayer.itemAnimation > 0 && drawPlayer.HeldItem.IsRanged() && drawPlayer.HeldItem.useAnimation > 0 && (drawPlayer.HeldItem.noUseGraphic == false || drawPlayer.heldProj > -1) && !drawPlayer.mount.Active)
 			{
 				while (distance > 30 && !float.IsNaN(distance))
 				{
 					distToProj.Normalize();
 					distToProj *= 36f;
 					drawPlayerCenter += distToProj;
-					distToProj = Main.MouseWorld - drawPlayerCenter;
+					distToProj = mouseItemWorld - drawPlayerCenter;
 					distance = distToProj.Length();
 					var drawData = new DrawData(texture,
 						new Vector2(drawPlayerCenter.X - Main.screenPosition.X, drawPlayerCenter.Y - Main.screenPosition.Y),

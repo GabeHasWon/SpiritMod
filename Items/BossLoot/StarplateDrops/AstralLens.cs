@@ -40,12 +40,9 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int i = 0; i < 2; i++)
-			{
+			int numLoops = Main.rand.NextBool(6) ? 3 : 2;
+			for (int i = 0; i < numLoops; i++)
 				Projectile.NewProjectile(source, position.X - 8, position.Y + 8, velocity.X + ((float)Main.rand.Next(-300, 300) / 30), velocity.Y + ((float)Main.rand.Next(-300, 300) / 30), type, damage, knockback, player.whoAmI, 0f, 0f);
-				if (Main.rand.NextBool(6))
-					Projectile.NewProjectile(source, position.X - 8, position.Y + 8, velocity.X + ((float)Main.rand.Next(-300, 300) / 30), velocity.Y + ((float)Main.rand.Next(-300, 300) / 30), type, damage, knockback, player.whoAmI, 0f, 0f);
-			}
 			return false;
 		}
 

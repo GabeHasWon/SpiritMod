@@ -38,7 +38,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 		{
 			Player p = Main.player[Projectile.owner];
 			p.heldProj = Projectile.whoAmI;
-			GItem.ArmsTowardsMouse(p);
+			//GItem.ArmsTowardsMouse(p);
 
 			if (p.whoAmI != Main.myPlayer) return; //mp check (hopefully)
 
@@ -46,18 +46,20 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 				p.direction = Main.MouseWorld.X >= p.MountedCenter.X ? 1 : -1;
 
 			Projectile.rotation = Vector2.Normalize(p.MountedCenter - Main.MouseWorld).ToRotation() - MathHelper.Pi; //So it looks like the player is holding it properly
+			Projectile.spriteDirection = p.direction;
+			p.itemRotation = MathHelper.WrapAngle(Projectile.rotation + ((Projectile.spriteDirection < 0) ? MathHelper.Pi : 0));
 
 			_charge++; //Increase charge timer...
 			Projectile.timeLeft++; //...and dont die
 
 			if (_endCharge == -1) //Wait until the player has fired to let go & set position
 			{
-				p.itemTime = p.HeldItem.useTime;
-				p.itemAnimation = p.HeldItem.useAnimation;
-				Projectile.Center = p.Center - (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * 27) + new Vector2(29, 18 + p.gfxOffY);
+				p.itemTime = 2;
+				p.itemAnimation = 2;
+				Projectile.Center = p.Center - (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * 27) + new Vector2(28, 18 + p.gfxOffY);
 			}
 			else
-				Projectile.Center = p.Center - (new Vector2(1, 0).RotatedBy(_finalRotation) * 27) + new Vector2(29, 18 + p.gfxOffY);
+				Projectile.Center = p.Center - (new Vector2(1, 0).RotatedBy(_finalRotation) * 27) + new Vector2(28, 18 + p.gfxOffY);
 
 			if (!p.channel && _endCharge == -1) //the player has stopped shooting
 			{

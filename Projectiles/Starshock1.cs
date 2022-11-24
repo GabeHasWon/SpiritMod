@@ -11,8 +11,13 @@ using Terraria.ModLoader;
 namespace SpiritMod.Projectiles
 {
 	public class Starshock1 : ModProjectile, ITrailProjectile
-
     {
+		public void DoTrailCreation(TrailManager tManager)
+		{
+			tManager.CreateTrail(Projectile, new GradientTrail(new Color(108, 215, 245), new Color(105, 213, 255)), new RoundCap(), new DefaultTrailPosition(), 50f, 150f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/ConstellationTrail").Value, 0.01f, 1f, 1f));
+			tManager.CreateTrail(Projectile, new GradientTrail(Color.LightBlue, Color.BlueViolet * .5f), new RoundCap(), new DefaultTrailPosition(), 60f, 220f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_1").Value, 0.01f, 1f, 1f));
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Starshock");
@@ -33,21 +38,13 @@ namespace SpiritMod.Projectiles
 			Projectile.extraUpdates = 1;
 		}
 
-		public void DoTrailCreation(TrailManager tManager)
-		{
-			tManager.CreateTrail(Projectile, new GradientTrail(new Color(108, 215, 245), new Color(105, 213, 255)), new RoundCap(), new DefaultTrailPosition(), 8f, 150f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_2").Value, 0.01f, 1f, 1f));
-			tManager.CreateTrail(Projectile, new GradientTrail(new Color(255, 255, 255) * .25f, new Color(255, 255, 255) * .25f), new RoundCap(), new DefaultTrailPosition(), 22f, 250f, new DefaultShader());
-		}
-
 		public override void AI()
 		{
-			float num1 = 5f;
-			float num2 = 3f;
 			float num3 = 20f;
-			num1 = 6f;
-			num2 = 3.5f;
+			float num1 = 8f;
+			float num2 = 3.5f;
 			if (Projectile.timeLeft > 30 && Projectile.alpha > 0)
-				Projectile.alpha -= 25;
+				Projectile.alpha -= 255 / 20;
 			if (Projectile.timeLeft > 30 && Projectile.alpha < 128 && Collision.SolidCollision(Projectile.position, Projectile.width, Projectile.height))
 				Projectile.alpha = 128;
 			if (Projectile.alpha < 0)
@@ -60,8 +57,6 @@ namespace SpiritMod.Projectiles
 			}
 
 			++Projectile.ai[1];
-			double num5 = (double)Projectile.ai[1] / 180.0;
-
 
 			if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead) {
 				if (Projectile.Distance(Main.player[Projectile.owner].Center) <= num3)
@@ -83,18 +78,17 @@ namespace SpiritMod.Projectiles
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.25f, Projectile.height * 0.25f);
-			for (int k = 0; k < Projectile.oldPos.Length; k++) {
-				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-				//Vector2 drawPos1 = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY - 4);
-				Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
-				//Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Effects/Masks/Extra_A1"), drawPos1, null, new Color (0, 50, 155, (int)((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length)), 0f, drawOrigin, .6f, SpriteEffects.None, 0f);
-
+			Texture2D texture = TextureAssets.Projectile[Type].Value;
+			for (int k = 0; k < Projectile.oldPos.Length; k++)
+			{
+				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+				Color color = Projectile.GetAlpha(lightColor) * (float)((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+				Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, Vector2.Zero, Projectile.scale, SpriteEffects.None, 0);
 			}
-			return false;
+			return true;
 		}
 		public override Color? GetAlpha(Color lightColor) => Color.White;
+
 		public override void Kill(int timeLeft)
 		{
 			int z = Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<Wrath>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
@@ -110,7 +104,6 @@ namespace SpiritMod.Projectiles
 				int num622 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Electric, 0f, 0f, 100, default, 1f);
 				Main.dust[num622].velocity *= 1f;
 				Main.dust[num622].noGravity = true;
-
 			}
 			for (int num623 = 0; num623 < 15; num623++) {
 				int num624 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Electric, 0f, 0f, 100, default, .31f);
