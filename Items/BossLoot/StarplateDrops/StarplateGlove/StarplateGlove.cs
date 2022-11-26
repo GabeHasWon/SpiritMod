@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -8,7 +9,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 {
 	public class StarplateGlove : ModItem
 	{
-		float charge = 1.33f;
+		private readonly float charge = 1.33f;
 
 		public override void SetStaticDefaults()
 		{
@@ -26,8 +27,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 			Item.useAnimation = 7;
 			Item.useTime = 7;
 			Item.channel = true;
-			Item.width = 26;
-			Item.height = 26;
+			Item.width = 24;
+			Item.height = 30;
 			Item.mana = 6;
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
@@ -37,16 +38,13 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 			Item.shoot = ModContent.ProjectileType<StargloveChargeOrange>();
 		}
 
-		public override bool AltFunctionUse(Player player) => true;
-
-		public override void AddRecipes()
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<CosmiliteShard>(), 17);
-			recipe.AddTile(TileID.Anvils);
-			recipe.Register();
+			Lighting.AddLight(Item.position, 0.38f, .22f, .14f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
+		public override bool AltFunctionUse(Player player) => true;
 		public override bool CanUseItem(Player player)
 		{
 			if (player.altFunctionUse != 2)
@@ -67,6 +65,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 
 			return true;
 		}
+
 		public override void HoldItem(Player player)
 		{
 			for (int i = 0; i < 1000; ++i)
@@ -102,7 +101,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 			}
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateGloveProj>()] != 0)
 				return false;
@@ -142,6 +141,14 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 				}
 			}
 			return false;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<CosmiliteShard>(), 17);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 }

@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -30,10 +29,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 			Projectile.ignoreWater = true;
 		}
 		
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return Color.White;
-		}
+		public override Color? GetAlpha(Color lightColor) => Color.White;
+
 		bool returning = false;
 		bool rightClick = true;
 		Vector2 target = Vector2.Zero;
@@ -83,7 +80,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 					Vector2 speed2 = new Vector2(speedX,speedY).RotatedBy(stray);
 					//speed *= Main.rand.NextFloat(0.9f, 1.1f);
 					position += speed2 * 8;
-					int type = Main.rand.Next(2)==0 ? ModContent.ProjectileType<StargloveChargeOrange>() : ModContent.ProjectileType<StargloveChargePurple>();
+					int type = Main.rand.NextBool(2) ? ModContent.ProjectileType<StargloveChargeOrange>() : ModContent.ProjectileType<StargloveChargePurple>();
 					int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), position, new Vector2(speedX, speedY), type, Projectile.damage, Projectile.knockBack, player.whoAmI);
 
 					if (type == ModContent.ProjectileType<StargloveChargePurple>())

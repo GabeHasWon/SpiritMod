@@ -36,6 +36,7 @@ namespace SpiritMod.NPCs.Critters.Algae
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 				new FlavorTextBestiaryInfoElement("A tiny blue organism sometimes found floating gently atop of the ocean's waves. It's a wonder why or when they appear."),
 			});
 		}
@@ -88,17 +89,14 @@ namespace SpiritMod.NPCs.Critters.Algae
 				}
 			}
 		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(176 - (int)(num / 3 * 4), 255 - (int)(num / 3 * 4), 237 - (int)(num / 3 * 4), 255 - num);
-		}
+
+		public override Color? GetAlpha(Color lightColor) => new Color(176 - (int)(num / 3 * 4), 255 - (int)(num / 3 * 4), 237 - (int)(num / 3 * 4), 255 - num);
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			drawColor = new Color(148 - (int)(num / 3 * 4), 212 - (int)(num / 3 * 4), 255 - (int)(num / 3 * 4), 255 - num);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY - 8), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
-
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY - 8), NPC.frame, 
+				drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
 	}

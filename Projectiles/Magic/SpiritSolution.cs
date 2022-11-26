@@ -10,9 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class SpiritSolution : ModProjectile
 	{
-
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Spray");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 6;
@@ -83,7 +81,7 @@ namespace SpiritMod.Projectiles.Magic
 				int wall = Main.tile[k, l].WallType;
 
 				if (WallID.Sets.Conversion.Grass[wall]) {
-					Main.tile[k, l].WallType = (ushort)ModContent.WallType<SpiritWall>();
+					Main.tile[k, l].WallType = (ushort)ModContent.WallType<SpiritWallNatural>();
 					WorldGen.SquareWallFrame(k, l);
 					NetMessage.SendTileSquare(-1, k, l, 1);
 				}

@@ -12,17 +12,5 @@ namespace SpiritMod.Tiles.Walls.Natural
 			AddMapEntry(new Color(92, 76, 64));
 			ItemDrop = ModContent.ItemType<Items.Placeable.Walls.AsteroidWall>();
 		}
-
-		/*	public override void NumDust(int i, int j, bool fail, ref int num)
-            {
-                num = fail ? 1 : 3;
-            }
-
-            public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-            {
-                r = 0f;
-                g = 0f;
-                b = 2.5f; 
-            } */
 	}
 }

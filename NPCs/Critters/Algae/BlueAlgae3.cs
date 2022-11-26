@@ -4,7 +4,7 @@ using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
-using Terraria.GameContent.Bestiary;
+using Terraria.ID;
 
 namespace SpiritMod.NPCs.Critters.Algae
 {
@@ -14,6 +14,11 @@ namespace SpiritMod.NPCs.Critters.Algae
 		{
 			DisplayName.SetDefault("Bioluminescent Algae");
 			Main.npcFrameCount[NPC.type] = 1;
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0)
+			{
+				Hide = true
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 
 		public override void SetDefaults()
