@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Pets
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Stardrive Chip");
-			Tooltip.SetDefault("It's inscribed in an Astral language\nSummons a Star Spider to run alongside you");
+			Tooltip.SetDefault("'It's inscribed in an Astral language'\nSummons a Star Spider to run alongside you");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Pets/TechChip_Glow");
 		}
 

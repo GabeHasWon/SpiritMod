@@ -27,12 +27,14 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 		public override void SetDefaults()
         {
             Item.channel = true;
-            Item.damage = 180;
+            Item.damage = 150;
             Item.width = 60;
             Item.height = 60;
             Item.useTime = 90;
             Item.useAnimation = 90;
-            Item.crit = 4;
+			Item.reuseDelay = 20;
+			Item.autoReuse = true;
+			Item.crit = 4;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;
@@ -40,7 +42,6 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
             Item.useTurn = false;
 			Item.value = Item.sellPrice(gold: 10);
 			Item.rare = ItemRarityID.LightPurple;
-			Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<BladeOfTheDragonProj>();
             Item.shootSpeed = 6f;
             Item.noUseGraphic = true;
@@ -281,7 +282,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<BladeOfTheDragon>())
-				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_Held").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_sparkle").Value, drawInfo);
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_held").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_sparkle").Value, drawInfo);
 		}
 
 		public static void DrawItem(Texture2D texture, Texture2D sparkle, PlayerDrawSet info)

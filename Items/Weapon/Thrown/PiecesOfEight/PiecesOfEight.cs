@@ -24,7 +24,8 @@ namespace SpiritMod.Items.Weapon.Thrown.PiecesOfEight
 			Item.height = 24;
 			Item.noUseGraphic = true;
 			Item.UseSound = SoundID.Item1;
-			Item.DamageType = DamageClass.Ranged;
+			Item.DamageType = DamageClass.Magic;
+			Item.mana = 25;
 			Item.noMelee = true;
 			Item.shoot = ModContent.ProjectileType<EightCoin>();
 			Item.useAnimation = 41;

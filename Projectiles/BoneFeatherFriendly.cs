@@ -23,9 +23,9 @@ namespace SpiritMod.Projectiles
 			Projectile.height = 20;
 			Projectile.friendly = true;
 			Projectile.hostile = false;
-			Projectile.penetrate = 1;
+			Projectile.penetrate = 4;
 			Projectile.timeLeft = 1000;
-			Projectile.tileCollide = true;
+			Projectile.tileCollide = false;
 			Projectile.aiStyle = 1;
 			AIType = ProjectileID.Bullet;
 		}

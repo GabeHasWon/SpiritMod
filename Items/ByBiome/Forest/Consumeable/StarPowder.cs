@@ -28,7 +28,7 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 			Item.noMelee = true;
 			Item.consumable = true;
 			Item.autoReuse = false;
-			Item.UseSound = SoundID.Item43;
+			Item.UseSound = SoundID.Item1;
 			Item.shoot = ModContent.ProjectileType<StarPowderProj>();
 			Item.shootSpeed = 6f;
 		}
