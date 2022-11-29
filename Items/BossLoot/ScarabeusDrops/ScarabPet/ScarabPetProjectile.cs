@@ -247,6 +247,9 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet
 			}
 
 			Main.EntitySpriteDraw(tex, Projectile.position - Main.screenPosition, rect, lightColor, Projectile.rotation, Vector2.Zero, 1f, effect, 0);
+			//Draw a glowmask
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.position - Main.screenPosition, rect, 
+				Projectile.GetAlpha(Color.White), Projectile.rotation, Vector2.Zero, 1f, effect, 0);
 			return false;
 		}
 	}

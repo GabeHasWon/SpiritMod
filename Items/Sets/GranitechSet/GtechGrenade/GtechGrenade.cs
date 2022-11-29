@@ -22,6 +22,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 		public override void SetDefaults()
 		{
 			Item.damage = 70;
+			Item.DamageType = DamageClass.Ranged;
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 20;
@@ -66,6 +67,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 		public override void SetDefaults()
 		{
 			Projectile.penetrate = -1;
+			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.hostile = false;
 			Projectile.friendly = false;
 			Projectile.width = Projectile.height = 32;
@@ -242,6 +244,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 		public override void SetDefaults()
 		{
 			Projectile.penetrate = -1;
+			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.tileCollide = false;
 			Projectile.hostile = false;
 			Projectile.friendly = true;

@@ -18,12 +18,6 @@ namespace SpiritMod.Items.Armor.BotanistSet
 			Item.defense = 1;
 		}
 
-		public override void UpdateEquip(Player player)
-		{
-			if (player.armor[11].IsAir)
-				player.waist = (sbyte)EquipLoader.GetEquipSlot(Mod, nameof(BotanistBody), EquipType.Waist);
-		}
-
 		public override void AddRecipes()
 		{
 			CreateRecipe()

@@ -2,8 +2,8 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using System;
 using SpiritMod.Tiles.Block;
+using Terraria.DataStructures;
 
 namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 {
@@ -22,13 +22,12 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 			Item.rare = ItemRarityID.White;
 			Item.maxStack = 99;
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.useTime = 30;
-			Item.useAnimation = 30;
-			Item.reuseDelay = 10;
+			Item.useTime = 15;
+			Item.useAnimation = 15;
 			Item.noMelee = true;
 			Item.consumable = true;
 			Item.autoReuse = false;
-			Item.UseSound = SoundID.Item43;
+			Item.UseSound = SoundID.Item1;
 			Item.shoot = ModContent.ProjectileType<StarPowderProj>();
 			Item.shootSpeed = 6f;
 		}
@@ -45,24 +44,25 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 	{
 		public override string Texture => base.Texture[..^"Proj".Length];
 
-		public override void SetDefaults()
+		public override void SetDefaults() => Projectile.CloneDefaults(ProjectileID.PurificationPowder);
+
+		public override void OnSpawn(IEntitySource source)
 		{
-			Projectile.hide = true;
-			Projectile.Size = new Vector2(40, 40);
-			Projectile.friendly = false;
-			Projectile.hostile = false;
-			Projectile.penetrate = -1;
-			Projectile.tileCollide = false;
-			Projectile.aiStyle = -1;
-			Projectile.timeLeft = 30;
+			for (int i = 0; i < 20; i++)
+			{
+				Vector2 rectDims = new Vector2(50, 50);
+				Vector2 position = new Vector2(Projectile.Center.X - (rectDims.X / 2), Projectile.Center.Y - (rectDims.Y / 2)) + (Projectile.velocity * 2);
+				Vector2 velocity = (new Vector2(Projectile.velocity.X, Projectile.velocity.Y) * Main.rand.NextFloat(0.8f, 1.2f)).RotatedByRandom(1f);
+				Dust dust = Dust.NewDustDirect(position, (int)rectDims.X, (int)rectDims.Y, Main.rand.NextBool(2) ? DustID.BlueTorch : DustID.PurificationPowder, 
+					velocity.X, velocity.Y, 0, default, Main.rand.NextFloat(0.7f, 1.1f));
+				dust.noGravity = true;
+				dust.fadeIn = 1.1f;
+				if (dust.type == DustID.PurificationPowder && Main.rand.NextBool(2))
+					dust.color = Color.Goldenrod;
+			}
 		}
 
-		public override void AI()
-		{
-			Dust.NewDust(Projectile.position, 40, 40, DustID.BlueTorch, Projectile.velocity.X, Projectile.velocity.Y);
-
-			ConvertTiles();
-		}
+		public override void AI() => ConvertTiles();
 
 		private void ConvertTiles()
 		{

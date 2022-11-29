@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,14 +16,15 @@ namespace SpiritMod.Items.Consumable.Potion
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottomless Healing Potion");
-			Tooltip.SetDefault("Non-consumable");
-
+			//Tooltip.SetDefault("Non-consumable");
+			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 6));
+			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			Item.width = 26;
+			Item.width = 22;
 			Item.height = 34;
 			Item.rare = ItemRarityID.LightRed;
 			Item.maxStack = 1;
@@ -40,12 +42,16 @@ namespace SpiritMod.Items.Consumable.Potion
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) //pulsating glow effect in world
 		{
+			Texture2D texture = TextureAssets.Item[Item.type].Value;
+			Rectangle rect = new Rectangle(0, texture.Height / Main.itemAnimations[Item.type].FrameCount * Main.itemAnimations[Item.type].Frame, 
+				texture.Width, texture.Height / Main.itemAnimations[Item.type].FrameCount);
+
 			spriteBatch.Draw(TextureAssets.Item[Item.type].Value, 
 				Item.Center - Main.screenPosition,
-				null, 
+				rect, 
 				Color.Lerp(Color.White, Color.Transparent, 0.75f), 
-				rotation, 
-				Item.Size / 2, 
+				rotation,
+				rect.Size() / 2,
 				MathHelper.Lerp(1f, 1.3f, (float)Math.Sin(Main.GlobalTimeWrappedHourly * 3) / 2 + 0.5f), 
 				SpriteEffects.None, 
 				0);
@@ -71,7 +77,7 @@ namespace SpiritMod.Items.Consumable.Potion
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			foreach (TooltipLine line in tooltips.Where(x => x.Mod == "Terraria" && x.Name == "HealLife")) {
-				line.Text = "Restores 100 health";
+				line.Text = "Non-consumable\nRestores 100 health";
 			}
 		}
 	}

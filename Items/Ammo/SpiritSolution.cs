@@ -1,8 +1,8 @@
-﻿
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritSolnAmmo = SpiritMod.Projectiles.Magic.SpiritSolution;
+
 namespace SpiritMod.Items.Ammo
 {
 	class SpiritSolution : ModItem

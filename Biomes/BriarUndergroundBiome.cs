@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -12,9 +11,9 @@ namespace SpiritMod.Biomes
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ReachUnderground");
 
 		public override string BestiaryIcon => base.BestiaryIcon;
-		public override Color? BackgroundColor => base.BackgroundColor;
 		public override string BackgroundPath => MapBackground;
-		public override string MapBackground => "SpiritMod/Backgrounds/BriarMapBG";
+		public override Color? BackgroundColor => base.BackgroundColor;
+		public override string MapBackground => "SpiritMod/Backgrounds/BriarUndergroundMapBG";
 
 		public override bool IsBiomeActive(Player player) => (player.ZoneRockLayerHeight || player.ZoneDirtLayerHeight) && BiomeTileCounts.InBriar;
 		public override void OnEnter(Player player) => player.GetSpiritPlayer().ZoneReach = true;

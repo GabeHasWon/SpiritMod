@@ -71,7 +71,7 @@ namespace SpiritMod.Projectiles.Magic
 					if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size)) {
 						int type = (int)Main.tile[k, l].TileType;
 						int wall = (int)Main.tile[k, l].WallType;
-						if (type == (int)ModContent.WallType<SpiritWall>() || type == (int)ModContent.WallType<ReachWallNatural>()) {
+						if (type == (int)ModContent.WallType<SpiritWallNatural>() || type == (int)ModContent.WallType<ReachWallNatural>()) {
 							Main.tile[k, l].WallType = (ushort)2;
 							WorldGen.SquareWallFrame(k, l, true);
 							NetMessage.SendTileSquare(-1, k, l, 1);

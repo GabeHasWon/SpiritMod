@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +12,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet
 		{
 			DisplayName.SetDefault("Scarab Food");
 			Tooltip.SetDefault("Summons a little Scarab companion");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -30,5 +32,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet
 		}
 
 		public override bool CanUseItem(Player player) => player.miscEquips[0].IsAir;
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => 
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}
 }

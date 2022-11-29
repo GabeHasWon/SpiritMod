@@ -51,12 +51,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		}
 
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
-
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
-		}
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override void AddRecipes()
 		{

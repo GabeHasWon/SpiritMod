@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.Critters.Algae
@@ -30,10 +31,21 @@ namespace SpiritMod.NPCs.Critters.Algae
 			NPC.dontCountMe = true;
 			NPC.dontTakeDamage = true;
 		}
+
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+		{
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+				new FlavorTextBestiaryInfoElement("A tiny green organism sometimes found floating gently atop of the ocean's waves. It's a wonder why or when they appear."),
+			});
+		}
+
 		public float num42;
 		int num = 0;
 		bool collision = false;
 		int num1232;
+
 		public override void AI()
 		{
 			if (Main.dayTime) {

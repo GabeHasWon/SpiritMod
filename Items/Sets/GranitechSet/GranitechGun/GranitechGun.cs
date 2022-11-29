@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 			Item.channel = true;
 			Item.rare = ItemRarityID.LightRed;
 			Item.value = Item.sellPrice(gold: 2);
-			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.useStyle = ItemUseStyleID.Rapier;
 			Item.shoot = ProjectileID.PurificationPowder;
 			Item.useAmmo = AmmoID.Bullet;
 		}

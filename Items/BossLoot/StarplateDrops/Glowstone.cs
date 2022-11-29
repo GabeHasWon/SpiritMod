@@ -44,18 +44,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Items/BossLoot/StarplateDrops/Glowstone_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y + 2) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), new Color(100, 100, 100), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged)
-		{
-			if (!MyWorld.downedRaider)
-				return false;
-			return true;
-		}
-
-		public override bool CanExplode(int i, int j)
-		{
-			if (!MyWorld.downedRaider)
-				return false;
-			return true;
-		}
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => MyWorld.downedRaider;
+		public override bool CanExplode(int i, int j) => MyWorld.downedRaider;
 	}
 }

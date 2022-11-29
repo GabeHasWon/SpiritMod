@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 			Item.width = 16;
 			Item.height = 16;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.useTime = Item.useAnimation = 28;
+			Item.useTime = Item.useAnimation = 22;
 			Item.shootSpeed = 1f;
 			Item.knockBack = 4f;
 			Item.UseSound = SoundID.Item116;
@@ -320,7 +320,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 			if (Slam)
 			{
 				crit = true;
-				target.AddBuff(BuffID.OnFire, 180);
+				target.AddBuff(BuffID.OnFire3, 180);
 			}
 			if (Collision.CheckAABBvAABBCollision(target.position, target.Size, Projectile.position, Projectile.Size))
 			{

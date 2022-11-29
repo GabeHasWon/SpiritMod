@@ -3,11 +3,18 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.DataStructures;
 
 namespace SpiritMod.Projectiles
 {
 	public class StarTrail : ModProjectile
 	{
+		private float RandomScale
+		{
+			get => Projectile.ai[0];
+			set => Projectile.ai[0] = value;
+		}
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Trail");
 		public override void SetDefaults()
 		{
@@ -16,10 +23,12 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 255;
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.alpha = 0;
-			Projectile.penetrate = -1;
+			Projectile.penetrate = 1;
 			Projectile.friendly = true;
 			Projectile.tileCollide = false;
 		}
+
+		public override void OnSpawn(IEntitySource source) => RandomScale = Main.rand.NextFloat(0.35f, 0.65f);
 
 		public override void AI()
 		{
@@ -27,11 +36,10 @@ namespace SpiritMod.Projectiles
 			float scalar = (float)(Projectile.timeLeft / maxValue);
 			if (scalar > 1)
 				scalar -= (scalar - 1) * 2;
-
 			Projectile.velocity *= 0.98f;
 
 			Projectile.spriteDirection = (Projectile.velocity.X < 0) ? -1 : 1;
-			Projectile.scale = scalar * .6f;
+			Projectile.scale = scalar * RandomScale;
 			Projectile.rotation += 0.04f * Projectile.spriteDirection;
 		}
 
@@ -43,8 +51,5 @@ namespace SpiritMod.Projectiles
 				TextureAssets.Projectile[Projectile.type].Value.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			return false;
 		}
-
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.numHits++;
-		public override bool? CanDamage() => (Projectile.numHits < 1) ? null : false;
 	}
 }
