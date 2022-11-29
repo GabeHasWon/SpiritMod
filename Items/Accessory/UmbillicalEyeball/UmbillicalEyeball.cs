@@ -262,7 +262,7 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 		{
 			Effect effect = SpiritMod.EyeballShader;
 			if (effect.HasParameter("tentacleTexture"))
-				effect.Parameters["tentacleTexture"].SetValue(ModContent.Request<Texture2D>("Textures/EyeballTentacle", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+				effect.Parameters["tentacleTexture"].SetValue(ModContent.Request<Texture2D>("SpiritMod/Textures/EyeballTentacle", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 			PrepareShader(effect, "MainPS", (float)_length, Color);
 		}
 
