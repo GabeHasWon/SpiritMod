@@ -77,7 +77,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.Lightspire
 
 			if (Main.rand.NextBool(6))
             {
-                SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sound/CoilRocket"), player.Center);
+                SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/CoilRocket"), player.Center);
                 int proj = Projectile.NewProjectile(Item.GetSource_ItemUse(Item), position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<DarkfeatherBomb>(), damage, knockback*2, player.whoAmI);
                 Main.projectile[proj].DamageType = DamageClass.Magic;
                 Main.projectile[proj].hostile = false;

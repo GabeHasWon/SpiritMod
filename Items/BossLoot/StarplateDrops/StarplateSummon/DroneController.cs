@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -12,6 +13,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 		{
 			DisplayName.SetDefault("Drone Controller");
 			Tooltip.SetDefault("Summons a Starplate Fighter Drone to fight for you");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -33,6 +35,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 			Item.UseSound = SoundID.Item44;
 		}
 
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		public override void HoldStyle(Player player, Rectangle heldItemFrame)
 		{
 			player.itemLocation.X -= 12 * player.direction;
@@ -44,6 +47,14 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 			position = Main.MouseWorld;
 			Projectile.NewProjectile(source, position, Main.rand.NextVector2Circular(3, 3), type, damage, knockback, player.whoAmI);
 			return false;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<CosmiliteShard>(), 18);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 }

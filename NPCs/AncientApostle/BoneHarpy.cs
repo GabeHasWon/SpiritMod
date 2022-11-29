@@ -80,7 +80,7 @@ namespace SpiritMod.NPCs.AncientApostle
 				MoveSpeedY++;
 
 			NPC.velocity.Y = MoveSpeedY * 0.12f;
-			if (Main.rand.Next(220) == 8 && Main.netMode != NetmodeID.MultiplayerClient)
+			if (Main.rand.NextBool(220) && Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				NPC.ai[0] = -25f;
 				NPC.netUpdate = true;
@@ -109,7 +109,7 @@ namespace SpiritMod.NPCs.AncientApostle
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY > Main.rockLayer && !Main.LocalPlayer.GetSpiritPlayer().ZoneAsteroid ? 0.16f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSkyHeight && !spawnInfo.Player.GetSpiritPlayer().ZoneAsteroid ? 0.16f : 0f;
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

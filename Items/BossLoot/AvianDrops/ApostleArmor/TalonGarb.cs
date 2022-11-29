@@ -1,11 +1,10 @@
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.AvianDrops.ApostleArmor
 {
-	[AutoloadEquip(EquipType.Legs)]
+	[AutoloadEquip(EquipType.Body)]
 	public class TalonGarb : ModItem
 	{
 		public override void SetStaticDefaults()
