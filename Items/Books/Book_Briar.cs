@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Books
 {
@@ -14,6 +10,7 @@ namespace SpiritMod.Items.Books
             "[i:" + SpiritMod.Instance.Find<ModItem>("RawMeat").Type + "] [c/7c9e5a:Fauna] [i:" + SpiritMod.Instance.Find<ModItem>("RawMeat").Type + "]\n\nThe Briar is dominated by feral, low-intelligence bipeds and quadrapeds. Every faunal organism in the Briar is carnivorous yet composed of a large percentage of plant matter. A few bipeds seem to exhibit higher intelligence and wield magic, but their origin and habits could not be discerned. All organisms in the briar are hyper-aggressive and should be approached with extreme caution.\n\n---\n\n" +
             "[c/7c9e5a:Anomalies]\n\nThe underground Briar displays signs of inhabitation by some now-extinct civilization. Ruined brick and wood houses can be observed along with primitive weapons, tools, and trinkets. Many mysteries remain about these ruins and the Briar at large. Where did it come from? Why is it so hostile? And where are the people that once lived here?\n\n---\n\n" +
             "Note: It seems as though a page of notes and diagrams is missing from the book. I probably lost it back in the depths of the Briar. Not worth a return journey, though. ";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Notes on the Briar");

@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria.UI;
+using SpiritMod.Items.Books.UI;
 
 namespace SpiritMod.Items.Books.MaterialPages
 {
-	public abstract class MaterialPage : ModItem
+	public abstract class MaterialPage<T> : ModItem where T : UIState
 	{
-		public override void SetDefaults() {
+		protected virtual bool CheckTitle => false;
+		protected bool IsOpen => ModContent.GetInstance<SpiritMod>().BookUserInterface.CurrentState is T currentBookState && (!CheckTitle || (currentBookState as UIBookState).title == Item.Name);
+
+		public override void SetDefaults()
+		{
 			Item.noMelee = true;
 			Item.useTurn = true;
-			//item.channel = true; //Channel so that you can held the weapon [Important]
 			Item.rare = ItemRarityID.Green;
 			Item.width = 54;
 			Item.height = 50;
@@ -25,9 +25,8 @@ namespace SpiritMod.Items.Books.MaterialPages
 			Item.autoReuse = false;
 			Item.noUseGraphic = false;
 		}
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-10, 0);
-        }
+
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+		public override bool CanUseItem(Player player) => !IsOpen;
 	}
 }

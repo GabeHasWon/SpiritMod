@@ -42,23 +42,23 @@ namespace SpiritMod.World
 		#region GENPASS: SPIRIT MICROS
 		public static void MicrosPass(GenerationProgress progress, GameConfiguration config)
 		{
-			progress.Message = "Spirit Mod: Microstructures: Boulders";
+			progress.Message = "Spirit Mod Microstructures: Boulders";
 			BoulderMicropass.Run();
 
-			progress.Message = "Spirit Mod: Microstructures: Waterfalls";
+			progress.Message = "Spirit Mod Microstructures: Waterfalls";
 			WaterfallMicropass.Run();
 
-			progress.Message = "Spirit Mod: Microstructures: Campsite";
+			progress.Message = "Spirit Mod Microstructures: Campsite";
 			if (WorldGen.genRand.NextBool(4))
 				GenerateCampsite();
 
-			progress.Message = "Spirit Mod: Microstructures: Sunken Surfaces";
+			progress.Message = "Spirit Mod Microstructures: Sunken Surfaces";
 			SunkenSurfaceMicropass.Run();
 
-			progress.Message = "Spirit Mod: Microstructures: Stargrass";
+			progress.Message = "Spirit Mod Microstructures: Stargrass";
 			StargrassMicropass.Run();
 
-			progress.Message = "Spirit Mod: Microstructures: Hideouts";
+			progress.Message = "Spirit Mod Microstructures: Hideouts";
 			if (ModContent.GetInstance<SpiritClientConfig>().DoubleHideoutGeneration)
 			{
 				new BanditHideout().Generate();
@@ -80,7 +80,7 @@ namespace SpiritMod.World
 				}
 			}
 
-			progress.Message = "Spirit Mod: Microstructures: Stashes, Caverns and Dungeons";
+			progress.Message = "Spirit Mod Microstructures: Stashes, Caverns and Dungeons";
 
 			int siz = (int)((Main.maxTilesX / 4200f) * 7);
 			int repeats = WorldGen.genRand.Next(siz, siz + 4);
@@ -101,16 +101,27 @@ namespace SpiritMod.World
 			for (int k = 0; k < WorldGen.genRand.Next(5, 7); k++)
 				GenerateGemStash();
 
-			progress.Message = "Spirit Mod: Microstructures: Avian Islands";
+			progress.Message = "Spirit Mod Microstructures: Pagoda and Ziggurat";
+
+			GeneratePagoda();
+			GenerateZiggurat();
+		}
+
+		private static List<Point> houseLocations = new();
+
+		internal static void StealIslandInfo(On.Terraria.WorldGen.orig_IslandHouse orig, int i, int j, int islandStyle)
+		{
+			houseLocations.Add(new(i, j));
+			orig(i, j, islandStyle);
+		}
+
+		public static void AvianIslandsPass(GenerationProgress progress, GameConfiguration config)
+		{
+			progress.Message = "Spirit Mod Microstructures: Avian Islands";
 
 			List<int> takenIslands = new List<int>();
 			for (int i = 0; i < Main.maxTilesX / 4200f * 2f; i++)
 				GenerateBoneIsland(takenIslands); //2 islands in a small world
-
-			progress.Message = "Spirit Mod: Microstructures: Pagoda and Ziggurat";
-
-			GeneratePagoda();
-			GenerateZiggurat();
 		}
 		#endregion Spirit Micros
 
@@ -166,6 +177,7 @@ namespace SpiritMod.World
 				break;
 			} while (true);
 		}
+
 
 		#region Campsite
 		private static void GenerateCampsite()
@@ -747,18 +759,18 @@ namespace SpiritMod.World
 				if (totalAttempts > 3000)
 					break;
 
-				int houseMax = Array.IndexOf(WorldGen.floatingIslandHouseX, WorldGen.floatingIslandHouseX.First(x => x == 0));
-				int house = WorldGen.genRand.Next(houseMax);
+				//int house = WorldGen.genRand.Next(WorldGen.numIslandHouses);
+				//while (takenIslands.Contains(house))
+				//	house = WorldGen.genRand.Next(WorldGen.numIslandHouses);
 
-				while (takenIslands.Contains(house))
-					house = WorldGen.genRand.Next(houseMax);
+				//Point pos = new Point(WorldGen.floatingIslandHouseX[house], WorldGen.floatingIslandHouseY[house]);
 
-				Point pos = new Point(WorldGen.floatingIslandHouseX[house], WorldGen.floatingIslandHouseY[house]);
+				Point pos = Main.rand.Next(houseLocations);
 
 				while (true)
 				{
-					int xOffset = WorldGen.genRand.NextBool() ? WorldGen.genRand.Next(40, 60) : -WorldGen.genRand.Next(60, 80);
-					Point realPos = new Point(pos.X + xOffset, pos.Y + WorldGen.genRand.Next(15, 25));
+					int xOffset = WorldGen.genRand.NextBool() ? WorldGen.genRand.Next(50, 60) : -WorldGen.genRand.Next(70, 90);
+					Point realPos = new Point(pos.X + xOffset, pos.Y + WorldGen.genRand.Next(10, 25));
 					bool failed = false;
 
 					for (int i = 0; i < 30; ++i)
@@ -780,7 +792,7 @@ namespace SpiritMod.World
 					if (failed)
 						continue;
 
-					takenIslands.Add(house);
+					houseLocations.Remove(pos);
 					return realPos;
 				}
 			}

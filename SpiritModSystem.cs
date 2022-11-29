@@ -280,7 +280,7 @@ namespace SpiritMod
 
 			if (TideWorld.TheTide)
 			{
-				int index = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Inventory"));
+				int index = layers.FindIndex(layer => layer is not null && layer.Name.Equals("Vanilla: Inventory"));
 				LegacyGameInterfaceLayer NewLayer = new LegacyGameInterfaceLayer("SpiritMod: Tide UI",
 					delegate
 					{

@@ -113,7 +113,7 @@ namespace SpiritMod
 
 		public static HashSet<Point16> superSunFlowerPositions = new HashSet<Point16>();
 
-		public bool txt = false;
+		public override void Load() => On.Terraria.WorldGen.IslandHouse += SpiritGenPasses.StealIslandInfo;
 
 		public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
 		{
@@ -1246,8 +1246,12 @@ namespace SpiritMod
 			if (Sunflowers != -1) //Add only if Sunflowers pass exists
 				tasks.Insert(Sunflowers, new PassLegacy("SpiritMicros", SpiritGenPasses.MicrosPass));
 
+			int FloatingHouses = tasks.FindIndex(genpass => genpass.Name.Equals("Floating Island Houses"));
+			if (FloatingHouses != -1) //Add only if FloatingHouses pass exists...
+				tasks.Insert(FloatingHouses + 1, new PassLegacy("AvianIslands", SpiritGenPasses.AvianIslandsPass));
+
 			int FinalCleanup = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
-			if (FinalCleanup != -1) //Add only if Final Cleanup exists...
+			if (FinalCleanup != -1)
 				tasks.Insert(FinalCleanup + 1, new PassLegacy("Piles", SpiritGenPasses.PilesPass));
 
 			int TrapsIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Traps"));

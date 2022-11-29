@@ -1,10 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace SpiritMod.Items.Books
+﻿namespace SpiritMod.Items.Books
 {
     class Book_Yeremy : Book
     {

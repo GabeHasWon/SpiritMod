@@ -1241,7 +1241,7 @@ namespace SpiritMod
 				const int OffsetX = 20;
 				const int OffsetY = 20;
 
-				Texture2D EventIcon = ModContent.Request<Texture2D>("Textures/InvasionIcons/Depths_Icon", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				Texture2D EventIcon = Assets.Request<Texture2D>("Textures/InvasionIcons/Depths_Icon", AssetRequestMode.ImmediateLoad).Value;
 				Color descColor = new Color(77, 39, 135);
 				Color waveColor = new Color(255, 241, 51);
 
@@ -1267,7 +1267,7 @@ namespace SpiritMod
 
 				int descOffset = (descBackground.Height - (int)(32f * Scale)) / 2;
 				var icon = new Rectangle(descBackground.X + descOffset + 7, descBackground.Y + descOffset, (int)(32 * Scale), (int)(32 * Scale));
-				spriteBatch.Draw(EventIcon, icon, Color.White); 
+				spriteBatch.Draw(EventIcon, icon, Color.White);
 				Utils.DrawBorderString(spriteBatch, "The Tide", new Vector2(barrierBackground.Center.X, barrierBackground.Y - InternalOffset - descSize.Y * 0.5f), Color.White, 0.8f, 0.3f, 0.4f);
 			}
 		}
