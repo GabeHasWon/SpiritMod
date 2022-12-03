@@ -16,14 +16,14 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 	public class StarplateDrone : BaseMinion, ITrailProjectile
 	{
 		public StarplateDrone() : base(700, 1200, new Vector2(24, 24)) { }
-		public void DoTrailCreation(TrailManager tManager) => tManager.CreateTrail(Projectile, new GradientTrail(new Color(224, 108, 29) * 2.2f, Color.Red * .8f), new NoCap(), new DefaultTrailPosition(), 6f, 100f, new DefaultShader());
+		public void DoTrailCreation(TrailManager tManager) => tManager.CreateTrail(Projectile, new GradientTrail(new Color(224, 108, 29) * 2.2f, Color.Red * .8f), new NoCap(), new DefaultTrailPosition(), 6f, 50f, new DefaultShader());
 
 		public override void AbstractSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Starplate Fighter Drone");
 			Main.projFrames[Projectile.type] = 8;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
 		public override void AbstractSetDefaults() => Projectile.localNPCHitCooldown = 20;
 
@@ -148,6 +148,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 
 					if (meleeAttacks >= meleeAttacksMax)
 					{
+						CanRetarget = false;
 						if (Projectile.Distance(target.Center) >= 120) //Dash when given enough distance
 							SwitchState(DASH);
 						else //Attempt to back up a distance before dashing
@@ -158,6 +159,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 
 					break;
 				case DASH:
+					//CanRetarget = false;
 					DoDash(Projectile.DirectionTo(target.Center) * ((Projectile.Distance(target.Center) + (target.width / 2) + 50) / (maxDashTime - 1)), maxDashTime);
 					break;
 			}
@@ -172,8 +174,6 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 				dashVelocity = constVel;
 				SoundEngine.PlaySound(SoundID.DD2_SonicBoomBladeSlash, Projectile.position); //SoundID.DD2_JavelinThrowersAttack
 			}
-
-			CanRetarget = false;
 
 			if (AiTimer < maxTime)
 			{
@@ -251,7 +251,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 					float opacityMod = (ProjectileID.Sets.TrailCacheLength[Projectile.type] - i) / (float)ProjectileID.Sets.TrailCacheLength[Projectile.type];
 					Vector2 drawPosition = Projectile.oldPos[i] + (Projectile.Size / 2) - Main.screenPosition;
 					Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow2").Value, drawPosition, rect, Projectile.GetAlpha(Color.White) * opacityMod,
-						Projectile.oldRot[i], rect.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+						Projectile.rotation, rect.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 				}
 
 				if (AiState == DASH)
@@ -259,7 +259,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 					Color color = Color.Lerp(Color.Azure, new Color(24, 140, 210), Projectile.velocity.Length() / 15f);
 					color.A = 0;
 					Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glide").Value, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(color),
-						Projectile.rotation, new Vector2(70, 11), new Vector2(Projectile.velocity.Length() / 8, 1) * Projectile.scale, SpriteEffects.None, 0);
+						Projectile.rotation, new Vector2(70, 11), new Vector2(Projectile.velocity.Length() / 12, 1) * Projectile.scale, SpriteEffects.None, 0);
 				}
 			}
 			return false;

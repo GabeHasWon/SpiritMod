@@ -9,7 +9,7 @@ namespace SpiritMod.Biomes
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Asteroids");
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Asteroids");
-		public override SceneEffectPriority Priority => SceneEffectPriority.BiomeLow;
+		public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
 		public override string BestiaryIcon => base.BestiaryIcon;

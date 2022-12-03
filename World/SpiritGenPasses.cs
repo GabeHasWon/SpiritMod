@@ -1229,15 +1229,13 @@ namespace SpiritMod.World
 			ushort silver = WorldExtras.GetOreCounterpart(WorldGen.SavedOreTiers.Silver);
 			ushort gold = WorldExtras.GetOreCounterpart(WorldGen.SavedOreTiers.Gold);
 
-			int roll = WorldGen.genRand.Next(1120);
+			int roll = WorldGen.genRand.Next(1070);
 			if (roll < 250)
 				return WorldExtras.GetOreCounterpart(iron);
 			else if (roll < 400)
 				return WorldExtras.GetOreCounterpart(silver);
 			else if (roll < 600)
 				return WorldExtras.GetOreCounterpart(gold);
-			else if (roll < 650)
-				return TileID.Meteorite;
 			else
 				return glowstone;
 		}

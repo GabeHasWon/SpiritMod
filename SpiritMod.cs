@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Sets.HuskstalkSet;
-using SpiritMod.Items.Pins;
 using SpiritMod.NPCs.Town;
 using SpiritMod.NPCs.Boss.Atlas;
 using SpiritMod.NPCs.Tides.Tide;
@@ -452,8 +451,7 @@ namespace SpiritMod
 
 			GlobalNoise = new PerlinNoise(Main.rand.Next());
 
-			if (Main.rand == null)
-				Main.rand = new UnifiedRandom();
+			Main.rand ??= new UnifiedRandom();
 
 			Items.Halloween.CandyBag.Initialize();
 
@@ -624,7 +622,7 @@ namespace SpiritMod
 			Filters.Scene["SpiritMod:WindEffect"] = new Filter((new BlizzardShaderData("FilterBlizzardForeground")).UseColor(0.4f, 0.4f, 0.4f).UseSecondaryColor(0.2f, 0.2f, 0.2f).UseImage("Images/Misc/noise", 0, null).UseOpacity(0.149f).UseImageScale(new Vector2(3f, 0.75f), 0), EffectPriority.High);
 			Filters.Scene["SpiritMod:WindEffect2"] = new Filter((new BlizzardShaderData("FilterBlizzardForeground")).UseColor(0.4f, 0.4f, 0.4f).UseSecondaryColor(0.2f, 0.2f, 0.2f).UseImage("Images/Misc/noise", 0, null).UseOpacity(0.549f).UseImageScale(new Vector2(3f, 0.75f), 0), EffectPriority.High);
 
-			GlyphCurrencyID = CustomCurrencyManager.RegisterCurrency(new Currency(ModContent.ItemType<Items.Glyphs.Glyph>(), 999L));
+			GlyphCurrencyID = CustomCurrencyManager.RegisterCurrency(new Currency(ModContent.ItemType<Glyph>(), 999L));
 
 			AutoloadMinionDictionary.AddBuffs(Code);
 
@@ -632,8 +630,8 @@ namespace SpiritMod
 			{
 				TrailManager = new TrailManager(this);
 				EquipLoader.AddEquipTexture(this, "SpiritMod/Items/BossLoot/AvianDrops/ApostleArmor/TalonGarb_Legs", EquipType.Legs, null, "TalonGarb_Legs");
-				EmptyTexture = ModContent.Request<Texture2D>("SpiritMod/Empty", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value; 
-				auroraEffect = ModContent.Request<Effect>("SpiritMod/Effects/aurora", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				EmptyTexture = ModContent.Request<Texture2D>("SpiritMod/Empty", AssetRequestMode.ImmediateLoad).Value; 
+				auroraEffect = ModContent.Request<Effect>("SpiritMod/Effects/aurora", AssetRequestMode.ImmediateLoad).Value;
 
 				ShaderDict = new Dictionary<string, Effect>();
 				var tmodfile = (TmodFile)typeof(SpiritMod).GetProperty("File", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(Instance);
@@ -657,7 +655,7 @@ namespace SpiritMod
 					};
 				});
 
-				noise = ModContent.Request<Texture2D>("SpiritMod/Textures/noise", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				noise = ModContent.Request<Texture2D>("SpiritMod/Textures/noise", AssetRequestMode.ImmediateLoad).Value;
 
 				SpiritModAutoSellTextures.Load();
 
@@ -979,7 +977,7 @@ namespace SpiritMod
 			glitchScreenShader = null;
 			TrailManager = null;
 			GlobalNoise = null;
-			Items.Glyphs.GlyphBase.UninitGlyphLookup();
+			GlyphBase.UninitGlyphLookup();
 			primitives = null;
 			Metaballs = null;
 			ShaderDict = new Dictionary<string, Effect>();

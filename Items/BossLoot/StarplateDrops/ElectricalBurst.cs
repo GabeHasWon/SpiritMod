@@ -1,18 +1,19 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
+using SpiritMod.Utilities;
 using Terraria;
 
-namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
+namespace SpiritMod.Items.BossLoot.StarplateDrops
 {
-	public class StarplateDroneSlash : Particle
+	public class ElectricalBurst : Particle
 	{
-		private const int _numFrames = 4;
+		private const int _numFrames = 8;
 		private int _frame;
 		private readonly int _direction;
-		private const int _displayTime = 15;
+		private const int _displayTime = 32;
 
-		public StarplateDroneSlash(Vector2 position, float scale, float rotation)
+		public ElectricalBurst(Vector2 position, float scale, float rotation)
 		{
 			Position = position;
 			Scale = scale;
@@ -30,13 +31,17 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 
 		public override bool UseCustomDraw => true;
 
-		public override bool UseAdditiveBlend => true;
+		public override bool UseAdditiveBlend => false;
 
 		public override void CustomDraw(SpriteBatch spriteBatch)
 		{
 			Texture2D tex = ParticleHandler.GetTexture(Type);
 			var DrawFrame = new Rectangle(0, _frame * tex.Height / _numFrames, tex.Width, tex.Height / _numFrames);
-			spriteBatch.Draw(tex, Position - Main.screenPosition, DrawFrame, Color.White, Rotation, DrawFrame.Size() / 2, Scale, (_direction > 0) ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+
+			DrawAberration.DrawChromaticAberration(Vector2.UnitX.RotatedBy(Rotation), 1.5f, delegate (Vector2 offset, Color colorMod)
+			{
+				spriteBatch.Draw(tex, Position + offset - Main.screenPosition, DrawFrame, colorMod, Rotation, DrawFrame.Size() / 2, Scale, (_direction > 0) ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			});
 		}
 	}
 }

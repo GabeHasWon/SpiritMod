@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Arrow;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,7 +26,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.useTime = 26;
 			Item.useAnimation = 26;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.shoot = ProjectileID.Shuriken;
+			Item.shoot = ProjectileID.WoodenArrowFriendly;
 			Item.useAmmo = AmmoID.Arrow;
 			Item.knockBack = 1;
 			Item.rare = ItemRarityID.Orange;
@@ -44,21 +43,17 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
-			if (type == ProjectileID.WoodenArrowFriendly && player.altFunctionUse != 2)
-				type = ModContent.ProjectileType<PositiveArrow>();
-		}
-
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
-		{
+			SteamplateBowPlayer modPlayer = player.GetModPlayer<SteamplateBowPlayer>();
 			if (player.altFunctionUse == 2)
 			{
 				type = ModContent.ProjectileType<NegativeArrow>();
-				player.GetModPlayer<SteamplateBowPlayer>().negative = true;
+				modPlayer.negative = true;
 			}
-			else player.GetModPlayer<SteamplateBowPlayer>().negative = false;
-
-			Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
-			return false;
+			else
+			{
+				type = ModContent.ProjectileType<PositiveArrow>();
+				modPlayer.negative = false;
+			}
 		}
 
 		public override void AddRecipes()
