@@ -9,9 +9,8 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ace of Diamonds");
-			Tooltip.SetDefault("Enemies killed by critical hits drop Diamond Aces\nDiamond aces give you 15% increased damage for 3 seconds upon collecting");
+			Tooltip.SetDefault("Critical hits have a chance to drop Diamond Aces\nDiamond aces give you 15% increased damage for 3 seconds upon collecting");
 		}
-
 
 		public override void SetDefaults()
 		{

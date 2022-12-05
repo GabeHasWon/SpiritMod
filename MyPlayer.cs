@@ -804,7 +804,7 @@ namespace SpiritMod
 					if (Main.dust[num].position != Player.Center)
 						Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
 				}
-				marbleJump = 300;
+				marbleJump = 480;
 			}
 
 			if (marbleSet && (Player.sliding || Player.velocity.Y == 0f))
@@ -1009,7 +1009,7 @@ namespace SpiritMod
 			foreach (var effect in effects)
 				effect.PlayerOnHitNPC(Player, item, target, damage, knockback, crit);
 
-			if (AceOfHearts && target.life <= 0 && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
+			if (AceOfHearts && Main.rand.NextBool(8) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
 				ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, Main.halloween ? ItemID.CandyApple : ItemID.Heart);
 				for (int i = 0; i < 3; i++)
@@ -1019,7 +1019,7 @@ namespace SpiritMod
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
 
-			if (AceOfDiamonds && target.life <= 0 && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
+			if (AceOfDiamonds && Main.rand.NextBool(8) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
 				ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ModContent.ItemType<Items.Accessory.AceCardsSet.DiamondAce>());
 				for (int i = 0; i < 3; i++)
@@ -1996,9 +1996,8 @@ namespace SpiritMod
 						int proj = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ModContent.ProjectileType<GraniteSpike1>(), fallDistance * 10, 1, Player.whoAmI);
 						Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ModContent.ProjectileType<StompExplosion>(), fallDistance * 10, 9, Player.whoAmI);
 						Main.projectile[proj].timeLeft = 0;
-						Main.projectile[proj].DamageType = DamageClass.Ranged;
 					}
-					stompCooldown = 4 * 60;
+					stompCooldown = 3 * 60;
 				}
 
 				stompCooldown--;
