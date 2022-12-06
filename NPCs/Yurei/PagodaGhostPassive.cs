@@ -9,7 +9,6 @@ namespace SpiritMod.NPCs.Yurei
 {
 	public class PagodaGhostPassive : ModNPC
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Yuurei");
@@ -47,6 +46,7 @@ namespace SpiritMod.NPCs.Yurei
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
 		}
+
 		public override void AI()
 		{
 			Player target = Main.player[NPC.target];
@@ -69,6 +69,8 @@ namespace SpiritMod.NPCs.Yurei
 				NPC.Transform(ModContent.NPCType<PagodaGhostHostile>());
 			}
 		}
+
+		public override Color? GetAlpha(Color lightColor) => new Color(255, 255, 255, 100);
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height * 0.5f));
@@ -79,10 +81,6 @@ namespace SpiritMod.NPCs.Yurei
 				spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
 			}
 			return true;
-		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(255, 255, 255, 100);
 		}
 	}
 }

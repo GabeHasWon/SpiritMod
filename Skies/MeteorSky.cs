@@ -32,7 +32,7 @@ namespace SpiritMod.Skies
 				double num2 = Meteor.Random.NextDouble() * 0.6 - 0.3;
 				Meteor.Rotation = (float)num2;
 
-				if (Meteor.Random.Next(2) == 0)
+				if (Meteor.Random.NextBool(2))
 					num2 += MathHelper.Pi * 1.5;
 
 				_speed = new Vector2((float)Math.Cos(num2) * num3, 0f);
