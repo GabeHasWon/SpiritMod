@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ace of Spades");
-			Tooltip.SetDefault("Critical hits do 10% more damage");
+			Tooltip.SetDefault("Critical hits deal extra damage.");
 		}
 
 		public override void SetDefaults()

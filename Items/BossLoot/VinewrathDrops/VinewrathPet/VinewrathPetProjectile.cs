@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using SpiritMod.Items.BossLoot.StarplateDrops;
+using SpiritMod.Particles;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -122,14 +124,13 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 				if (Projectile.Hitbox.Intersects(Main.npc[targetIndex].getRect()))
 				{
 					Projectile.velocity = Projectile.DirectionFrom(Main.npc[targetIndex].Center) * 5;
-					Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI("Bash Attack"), Main.npc[targetIndex].getRect().ClosestPointInRect(Projectile.Center), 
-						Vector2.Zero, ModContent.ProjectileType<VinewrathPetProjectile_Bash>(), 0, 0f, Owner.whoAmI);
-					proj.rotation = Projectile.velocity.ToRotation();
+					if (!Main.dedServ)
+						ParticleHandler.SpawnParticle(new Bash(Projectile.Center, 1, Projectile.velocity.ToRotation()));
 					for (int i = 0; i < 6; i++)
 					{
 						int type = Main.rand.NextBool(2) ? DustID.Sunflower : DustID.Grass;
 						Vector2 velocity = Projectile.velocity * Main.rand.NextFloat(0.8f, 1.2f);
-						Dust.NewDust(proj.position, proj.width, proj.height, type, velocity.X, velocity.Y, 0, default, Main.rand.NextFloat(1.0f, 1.3f));
+						Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, type, velocity.X, velocity.Y, 0, default, Main.rand.NextFloat(1.0f, 1.3f));
 					}
 
 					SoundEngine.PlaySound(SoundID.GlommerBounce, Projectile.position); //Item171, GlommerBounce

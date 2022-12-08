@@ -118,6 +118,7 @@ namespace SpiritMod.NPCs.Yurei
 			}
 			NPC.spriteDirection = NPC.direction;
 		}
+
 		public override Color? GetAlpha(Color lightColor) => new Color(100 + NPC.alpha, 100 + NPC.alpha, 100 + NPC.alpha, 100 + NPC.alpha);
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

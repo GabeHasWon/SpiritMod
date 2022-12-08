@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.Graphics.Effects;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Skies
 {
@@ -21,10 +20,7 @@ namespace SpiritMod.Skies
 				intensity -= 0.02f;
 			}
 		}
-		private float GetIntensity()
-		{
-			return 1f - Utils.SmoothStep(1000f, 6000f, 200f);
-		}
+		//private float GetIntensity() => 1f - Utils.SmoothStep(1000f, 6000f, 200f);
 
 		public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
 		{
@@ -33,29 +29,10 @@ namespace SpiritMod.Skies
 			}
 		}
 
-		public override float GetCloudAlpha()
-		{
-			return 0f;
-		}
-
-		public override void Activate(Vector2 position, params object[] args)
-		{
-			isActive = true;
-		}
-
-		public override void Deactivate(params object[] args)
-		{
-			isActive = false;
-		}
-
-		public override void Reset()
-		{
-			isActive = false;
-		}
-
-		public override bool IsActive()
-		{
-			return isActive || intensity > 0f;
-		}
+		public override float GetCloudAlpha() => 0f;
+		public override void Activate(Vector2 position, params object[] args) => isActive = true;
+		public override void Deactivate(params object[] args) => isActive = false;
+		public override void Reset() => isActive = false;
+		public override bool IsActive() => isActive || intensity > 0f;
 	}
 }

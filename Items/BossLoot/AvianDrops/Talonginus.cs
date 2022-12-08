@@ -23,7 +23,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.height = 24;
 			Item.value = Item.sellPrice(0, 1, 30, 0);
 			Item.rare = ItemRarityID.Green;
-			Item.crit = 3;
+			Item.crit = 6;
 			Item.damage = 21;
 			Item.knockBack = 2.5f;
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -34,7 +34,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.autoReuse = true;
 			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<TalonginusProj>();
-			Item.shootSpeed = 9f;
+			Item.shootSpeed = 15f;
 			Item.UseSound = SoundID.Item1;
 			this.currentHit = 0;
 		}

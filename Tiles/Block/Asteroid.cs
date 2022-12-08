@@ -1,8 +1,11 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Tiles;
+using SpiritMod.NPCs.AsteroidDebris;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.PlayerDrawLayer;
+
 namespace SpiritMod.Tiles.Block
 {
 	public class Asteroid : ModTile
@@ -17,14 +20,26 @@ namespace SpiritMod.Tiles.Block
 			MinPick = 40;
 			ItemDrop = ModContent.ItemType<AsteroidBlock>();
 		}
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => Main.LocalPlayer.inventory[Main.LocalPlayer.selectedItem].type != ItemID.ReaverShark;
+		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 		{
-			Player player = Main.LocalPlayer;
-			if (player.inventory[player.selectedItem].type == ItemID.ReaverShark) {
-				return false;
+			if (!fail)
+			{
+				if (Main.rand.NextBool(3))
+				{
+					NPC npc = NPC.NewNPCDirect(new Terraria.DataStructures.EntitySource_TileBreak(i, j), (i * 16) + 8, (j * 16) + 8, ModContent.NPCType<AsteroidDebris>());
+					npc.velocity = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f, Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f);
+				}
+				//Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i, j).ToWorldCoordinates(),
+				//	new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f, Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f), Mod.Find<ModGore>("AsteroidDebrisLarge").Type);
+				int randomAmount = Main.rand.Next(3) + 1;
+				for (int e = 0; e < randomAmount; e++)
+					Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i, j).ToWorldCoordinates(),
+						new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 3f, Main.rand.NextFloat(-1.0f, 1.0f) * 3f), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
 			}
-			return true;
 		}
+
 		//UNCOMMENT THIS IF YOU WANT CRYSTALS TO GROW ON REGULAR ASTEROIDS
 		/*    public override void RandomUpdate(int i, int j)
             {

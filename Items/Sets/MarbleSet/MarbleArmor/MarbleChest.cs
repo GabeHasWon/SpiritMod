@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gilded Robe");
-			Tooltip.SetDefault("7% increased movement speed\n'All that glitters is gold'");
+			Tooltip.SetDefault("10% increased movement speed\nDoubles acceleration\n'All that glitters is gold'");
 
 			ArmorIDs.Body.Sets.HidesHands[Item.bodySlot] = false;
 			ArmorIDs.Body.Sets.NeedsToDrawArm[Item.bodySlot] = true;
@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.maxRunSpeed += 0.08f;
+			player.maxRunSpeed += 0.1f;
 			player.runAcceleration *= 2f;
 
 			if (player.velocity.X != 0f)

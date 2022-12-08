@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 		{
 			DisplayName.SetDefault("Granite Breastplate");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteArmor/GraniteBody_Glow");
-
+			Tooltip.SetDefault("Increases jump height slightly");
 		}
 
 		public override void SetDefaults()
@@ -22,8 +22,13 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 			Item.height = 24;
 			Item.value = 1100;
 			Item.rare = ItemRarityID.Green;
-			Item.defense = 9;
+			Item.defense = 11;
 		}
+		public override void UpdateEquip(Player player)
+		{
+			Player.jumpSpeed += 1;
+		}
+
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 		{
 			glowMaskColor = Color.White;

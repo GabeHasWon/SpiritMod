@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 			Tooltip.SetDefault("Critical hits make enemies drop money");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 18;

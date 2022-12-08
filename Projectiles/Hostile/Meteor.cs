@@ -56,9 +56,6 @@ namespace SpiritMod.Projectiles.Hostile
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 
-			if (Main.rand.Next(0, 4) == 0)
-				Item.NewItem(Projectile.GetSource_Death(), (int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height, 116, 1, false, 0, false, false);
-
 			for (int num625 = 0; num625 < 2; num625++) {
 				float scaleFactor10 = 0.33f;
 				if (num625 == 1) {

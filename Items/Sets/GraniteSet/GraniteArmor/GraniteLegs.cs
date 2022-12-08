@@ -20,11 +20,11 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 			Item.height = 24;
 			Item.value = 1100;
 			Item.rare = ItemRarityID.Green;
-			Item.defense = 6;
+			Item.defense = 10;
 		}
 		public override void UpdateEquip(Player player)
 		{
-			player.jumpSpeedBoost += 0.5f;
+			Player.jumpSpeed += 1;
 		}
 		public override void AddRecipes()
 		{

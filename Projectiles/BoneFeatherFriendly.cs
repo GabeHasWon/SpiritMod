@@ -51,14 +51,5 @@ namespace SpiritMod.Projectiles
 		{
 			return new Color(160, 160, 160, 100);
 		}
-		public override void AI()
-		{
-			if (Projectile.timeLeft >= 890) {
-				Projectile.tileCollide = false;
-			}
-			else {
-				Projectile.tileCollide = true;
-			}
-		}
 	}
 }

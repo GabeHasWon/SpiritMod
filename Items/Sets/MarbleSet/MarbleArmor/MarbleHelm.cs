@@ -10,8 +10,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gilded Laurel");
-			Tooltip.SetDefault("3% increased movement speed");
-
+			Tooltip.SetDefault("10% increased movement speed");
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}
 
@@ -32,7 +31,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 			player.GetSpiritPlayer().marbleSet = true;
 		}
 
-		public override void UpdateEquip(Player player) => player.maxRunSpeed += 0.03f;
+		public override void UpdateEquip(Player player) => player.maxRunSpeed += 0.1f;
 		public override void ArmorSetShadows(Player player) => player.armorEffectDrawShadow = true;
 
 		public override void AddRecipes()

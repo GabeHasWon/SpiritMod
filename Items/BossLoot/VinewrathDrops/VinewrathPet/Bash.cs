@@ -1,18 +1,18 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using Terraria;
 
-namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
+namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 {
-	public class StarplateDroneSlash : Particle
+	public class Bash : Particle
 	{
-		private const int _numFrames = 4;
+		private const int _numFrames = 6;
 		private int _frame;
 		private readonly int _direction;
-		private const int _displayTime = 15;
+		private const int _displayTime = 18;
 
-		public StarplateDroneSlash(Vector2 position, float scale, float rotation)
+		public Bash(Vector2 position, float scale, float rotation)
 		{
 			Position = position;
 			Scale = scale;
@@ -29,9 +29,6 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 		}
 
 		public override bool UseCustomDraw => true;
-
-		public override bool UseAdditiveBlend => true;
-
 		public override void CustomDraw(SpriteBatch spriteBatch)
 		{
 			Texture2D tex = ParticleHandler.GetTexture(Type);

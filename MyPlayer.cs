@@ -45,6 +45,7 @@ using SpiritMod.Projectiles.Hostile;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Buffs.DoT;
 using SpiritMod.GlobalClasses.Players;
+using SpiritMod.NPCs.AsteroidDebris;
 
 namespace SpiritMod
 {
@@ -804,7 +805,7 @@ namespace SpiritMod
 					if (Main.dust[num].position != Player.Center)
 						Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
 				}
-				marbleJump = 300;
+				marbleJump = 480;
 			}
 
 			if (marbleSet && (Player.sliding || Player.velocity.Y == 0f))
@@ -1009,7 +1010,7 @@ namespace SpiritMod
 			foreach (var effect in effects)
 				effect.PlayerOnHitNPC(Player, item, target, damage, knockback, crit);
 
-			if (AceOfHearts && target.life <= 0 && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
+			if (AceOfHearts && Main.rand.NextBool(8) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
 				ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, Main.halloween ? ItemID.CandyApple : ItemID.Heart);
 				for (int i = 0; i < 3; i++)
@@ -1019,7 +1020,7 @@ namespace SpiritMod
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
 
-			if (AceOfDiamonds && target.life <= 0 && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
+			if (AceOfDiamonds && Main.rand.NextBool(8) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
 				ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ModContent.ItemType<Items.Accessory.AceCardsSet.DiamondAce>());
 				for (int i = 0; i < 3; i++)
@@ -1772,7 +1773,30 @@ namespace SpiritMod
 				}
 			}
 
-			if (MyWorld.meteorShowerWeather && Main.rand.NextBool(270)&& ZoneAsteroid)
+			//Randomly spawn floating asteroid debris
+			if (ZoneAsteroid && Main.rand.NextBool(55))
+			{
+				Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
+				
+				Rectangle spawnRect = screenRect;
+				int padding = 40;
+				spawnRect.Inflate(padding, padding);
+
+				int npcType = ModContent.NPCType<AsteroidDebris>();
+
+				for (int i = 0; i < 20; i++)
+				{
+					Vector2 spawnPos = new Vector2(spawnRect.X + Main.rand.Next(spawnRect.Width), spawnRect.Y + Main.rand.Next(spawnRect.Height));
+					if (!screenRect.Contains(spawnPos.ToPoint()))
+					{
+						if (!Collision.SolidCollision(spawnPos, 8, 8))
+							NPC.NewNPC(Player.GetSource_FromThis("Asteroid Ambience"), (int)spawnPos.X, (int)spawnPos.Y, npcType);
+						return;
+					}
+				}
+			}
+
+			if (MyWorld.meteorShowerWeather && Main.rand.NextBool(270) && ZoneAsteroid)
 			{
 				float num12 = Main.rand.Next(-30, 30);
 				float num14 = (float)Math.Sqrt(num12 * num12 + 100 * 100);
@@ -1781,7 +1805,7 @@ namespace SpiritMod
 				float num17 = 100 * num15;
 				float SpeedX = num16 + Main.rand.Next(-40, 41) * 0.02f;
 				float SpeedY = num17 + Main.rand.Next(-40, 41) * 0.02f;
-				Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-1000, 1000), Player.Center.Y + Main.rand.Next(-1200, -900), SpeedX, SpeedY, ModContent.ProjectileType<Projectiles.Hostile.Meteor>(), 30, 3, Main.myPlayer, 0.0f, 1);
+				Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-1000, 1000), Player.Center.Y + Main.rand.Next(-1200, -900), SpeedX, SpeedY, ModContent.ProjectileType<Meteor>(), 30, 3, Main.myPlayer, 0.0f, 1);
 			}
 
 			if (!throwerGlove || (throwerStacks >= 7 && firedSharpshooter))
@@ -1871,7 +1895,7 @@ namespace SpiritMod
 				float SpeedX = num16 + Main.rand.Next(-40, 41) * Main.windSpeedCurrent + (.01f * Main.windSpeedCurrent);
 				float SpeedY = num17 + Main.rand.Next(-40, 41) * 0.02f;
 
-				string[] bigDebris = { "SpaceDebris3", "SpaceDebris4", "MeteorShard6" };
+				string[] bigDebris = { "SpaceDebris3", "SpaceDebris4", "Meteor" };
 				string[] smallDebris = { "SpaceDebris1", "SpaceDebris2" };
 
 				if (ZoneAsteroid && MyWorld.spaceJunkWeather && Main.rand.NextBool(59))
@@ -1996,9 +2020,8 @@ namespace SpiritMod
 						int proj = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ModContent.ProjectileType<GraniteSpike1>(), fallDistance * 10, 1, Player.whoAmI);
 						Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ModContent.ProjectileType<StompExplosion>(), fallDistance * 10, 9, Player.whoAmI);
 						Main.projectile[proj].timeLeft = 0;
-						Main.projectile[proj].DamageType = DamageClass.Ranged;
 					}
-					stompCooldown = 4 * 60;
+					stompCooldown = 3 * 60;
 				}
 
 				stompCooldown--;
