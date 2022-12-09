@@ -283,6 +283,7 @@ namespace SpiritMod
 				return SetEventFromCall(args[2], args[3], args.Length > 4 ? args[4] : null);
 		}
 
+
 		private static bool? GetEventFromCall(object nameVal)
 		{
 			if (nameVal is not string name)

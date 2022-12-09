@@ -44,6 +44,29 @@ namespace SpiritMod
 				scale *= .96f;
 		}
 
+		/// <summary>Used to reset world bools.</summary>
+		public override void PreSaveAndQuit()
+		{
+			MyWorld.downedAncientFlier = false;
+			MyWorld.downedAtlas = false;
+			MyWorld.downedBeholder = false;
+			MyWorld.downedBlueMoon = false;
+			MyWorld.downedDusking = false;
+			MyWorld.downedGazer = false;
+			MyWorld.downedGladeWraith = false;
+			MyWorld.downedInfernon = false;
+			MyWorld.downedJellyDeluge = false;
+			MyWorld.downedMechromancer = false;
+			MyWorld.downedMoonWizard = false;
+			MyWorld.downedOccultist = false;
+			MyWorld.downedRaider = false;
+			MyWorld.downedReachBoss = false;
+			MyWorld.downedScarabeus = false;
+			MyWorld.downedSnaptrapper = false;
+			MyWorld.downedTide = false;
+			MyWorld.downedTome = false;
+		}
+
 		public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
 		{
 			if (ModContent.GetInstance<Biomes.BiomeTileCounts>().spiritCount > 0)

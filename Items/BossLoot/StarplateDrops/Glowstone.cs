@@ -22,6 +22,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			DustType = DustID.Electric;
 		}
 
+		public override void NearbyEffects(int i, int j, bool closer) => MinPick = MyWorld.downedRaider ? 0 : 10000; //STUPID workaround for blockswap but it has to happen
+
 		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 		{
 			Player player = Main.LocalPlayer;
