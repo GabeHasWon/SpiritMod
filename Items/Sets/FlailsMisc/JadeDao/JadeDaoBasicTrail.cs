@@ -1,5 +1,4 @@
-﻿using SpiritMod.Items.Sets.OlympiumSet.BetrayersChains;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Linq;
 using Terraria;
@@ -23,17 +22,21 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			Counter = Main.rand.Next(100);
 		}
 
-
 		public override void PrimStructure(SpriteBatch spriteBatch)
 		{
-			if (PointCount <= 6) return;
+			if (PointCount <= 6) 
+				return;
+
 			float widthVar;
 			var proj = Entity as Projectile;
 			bool flip = false;
+
 			if (proj.ModProjectile is JadeDaoProj modproj)
 				flip = !modproj.Flip;
+
 			if (Main.player[proj.owner].direction == -1)
 				flip = !flip;
+
 			for (int i = 0; i < Points.Count; i++)
 			{
 				if (i == 0)
@@ -82,11 +85,11 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 
 		public override void OnUpdate()
 		{
-			if (!(Entity is Projectile proj))
+			if (Entity is not Projectile)
 				return;
 
 			Counter++;
-			PointCount = Points.Count() * 6;
+			PointCount = Points.Count * 6;
 
 			if (Cap < PointCount / 6)
 				Points.RemoveAt(0);
@@ -96,12 +99,15 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			else
 				AddPoints();
 		}
+
 		public void AddPoints()
 		{
-			var proj = Entity as Projectile;
-			var modproj = proj.ModProjectile as JadeDaoProj;
-			Points.Add(modproj.CurrentBase);
+			var modProj = (Entity as Projectile).ModProjectile as JadeDaoProj;
+
+			if (modProj.oldBase.Count > 0)
+				Points.Add(modProj.oldBase[^1]);
 		}
+
 		public override void OnDestroy()
 		{
 			Destroyed = true;

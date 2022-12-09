@@ -10,7 +10,7 @@ namespace SpiritMod.Biomes
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Synthwave");
 		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("SpiritMod/SynthwaveBGStyle");
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Mushroom;
-		public override SceneEffectPriority Priority => SceneEffectPriority.BiomeLow;
+		public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
 		public override int Music => MusicLoader.GetMusicSlot(Mod, Main.dayTime ? "Sounds/Music/NeonTech1" : "Sounds/Music/NeonTech");
 

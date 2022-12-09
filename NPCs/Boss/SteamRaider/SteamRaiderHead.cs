@@ -831,7 +831,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			npcLoot.AddBossBag<SteamRaiderBag>();
 
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
-			notExpertRule.AddCommon<StarMap>();
 			notExpertRule.AddCommon<StarplateMask>(7);
 			notExpertRule.AddCommon<Trophy3>(10);
 			notExpertRule.AddCommon<CosmiliteShard>(1, 6, 10);

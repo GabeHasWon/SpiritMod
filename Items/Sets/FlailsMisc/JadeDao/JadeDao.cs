@@ -136,8 +136,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 		public bool Slam = false;
 		public bool PreSlam = false;
 
-		private List<float> oldRotation = new List<float>();
-		private List<Vector2> oldBase = new List<Vector2>();
+		internal List<Vector2> oldBase = new List<Vector2>();
 
 		public Vector2 CurrentBase = Vector2.Zero;
 
@@ -243,7 +242,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 
 			CurrentBase = projBottom + (newRotation - 1.57f).ToRotationVector2() * (projTexture.Height / 2);
 
-			oldBase.Add(projBottom - Main.screenPosition);
+			oldBase.Add(projBottom + (newRotation - 1.57f).ToRotationVector2() * (projTexture.Height / 2));
 
 			if (oldBase.Count > 8)
 				oldBase.RemoveAt(0);
@@ -318,15 +317,16 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			}
 			return base.Colliding(projHitbox, targetHitbox);
 		}
+
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			if (Slam)
-			{
 				crit = true;
-			}
+
 			if (Collision.CheckAABBvAABBCollision(target.position, target.Size, Projectile.position, Projectile.Size))
 			{
 				damage = (int)(damage * 1.5f);
+
 				for (int i = 0; i < 8; i++)
 				{
 					Vector2 vel = Main.rand.NextFloat(6.28f).ToRotationVector2();
@@ -336,6 +336,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 					ParticleHandler.SpawnParticle(line);
 
 				}
+
 				float progress = Timer / SwingTime; //How far the projectile is through its swing
 				if (Slam)
 					progress = EaseFunction.EaseCubicInOut.Ease(progress);
