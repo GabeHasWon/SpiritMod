@@ -6,6 +6,7 @@ using Terraria;
 using SpiritMod.GlobalClasses.Tiles;
 using SpiritMod.Utilities.Helpers;
 using Terraria.ID;
+using System;
 
 namespace SpiritMod.Utilities.ILEdits
 {
@@ -19,27 +20,45 @@ namespace SpiritMod.Utilities.ILEdits
 
 			ILHelper.CompleteLog(c, true);
 
-			if (!c.TryGotoNext(MoveType.After, i => i.MatchCall(typeof(TileLoader), "PreDraw"))) //Move to PreDraw call
+			if (!c.TryGotoNext(MoveType.After, i => i.MatchCall(typeof(TileDrawing), "ShouldSwayInWind"))) //Move to PreDraw call
 				return;
 
-			if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(52))) //Move to 52 condition to grab the label
-				return;
+			ILLabel label = c.MarkLabel();
+			c.Emit(OpCodes.Ldloc_S, (byte)3); //flag
+			c.Emit(OpCodes.Brfalse, label);
 
-			var goTo = c.Next;
-
-			if (!c.TryGotoPrev(MoveType.Before, i => i.MatchLdcI4(271))) //Move to 217 condition
-				return;
-
-			c.Index--;
-
-			foreach (int item in ModContent.GetInstance<SwingGlobalTile>().Vines)
+			c.Emit(OpCodes.Ldloc_S, (byte)12); //i
+			c.Emit(OpCodes.Ldloc_S, (byte)13); //j
+			c.EmitDelegate((int i, int j) =>
 			{
-				c.Emit(OpCodes.Ldloc_S, (byte)15);
-				c.Emit(OpCodes.Ldc_I4, item);
-				c.Emit(goTo.OpCode, goTo.Operand); //Really ugly thing that just spams switch conditions
-			}
+				return ModContent.GetInstance<SwingGlobalTile>().Vines.Contains(Main.tile[i, j].TileType);
+			});
+			c.Emit(OpCodes.Brfalse, label);
 
-			ILHelper.CompleteLog(c, false);
+			c.Emit(OpCodes.Ldarg_0); //self
+			c.Emit(OpCodes.Ldloc_S, (byte)13); //j (god I hate this order)
+			c.Emit(OpCodes.Ldloc_S, (byte)12); //i
+
+			c.Emit<TileDrawing>(OpCodes.Call, "CrawlToTopOfVineAndAddSpecialPoint");
+
+			//if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(52))) //Move to 52 condition to grab the label
+			//	return;
+
+			//var goTo = c.Next;
+
+			//if (!c.TryGotoPrev(MoveType.Before, i => i.MatchLdcI4(271))) //Move to 217 condition
+			//	return;
+
+			//c.Index--;
+
+			//foreach (int item in ModContent.GetInstance<SwingGlobalTile>().Vines)
+			//{
+			//	c.Emit(OpCodes.Ldloc_S, (byte)15);
+			//	c.Emit(OpCodes.Ldc_I4, item);
+			//	c.Emit(goTo.OpCode, goTo.Operand); //Really ugly thing that just spams switch conditions
+			//}
+
+			//ILHelper.CompleteLog(c, false);
 		}
 	}
 }
