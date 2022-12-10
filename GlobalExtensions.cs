@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SpiritMod.Mechanics.TileMergeSystem;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -56,5 +57,7 @@ namespace SpiritMod
 			new int[] { ModContent.TileType<T1>(), ModContent.TileType<T2>(), ModContent.TileType<T3>(), ModContent.TileType<T4>(), ModContent.TileType<T5>(), ModContent.TileType<T6>(), ModContent.TileType<T7>() };
 		public static int[] TileSet<T1, T2, T3, T4, T5, T6, T7, T8>() where T1 : ModTile where T2 : ModTile where T3 : ModTile where T4 : ModTile where T5 : ModTile where T6 : ModTile where T7 : ModTile where T8 : ModTile =>
 			new int[] { ModContent.TileType<T1>(), ModContent.TileType<T2>(), ModContent.TileType<T3>(), ModContent.TileType<T4>(), ModContent.TileType<T5>(), ModContent.TileType<T6>(), ModContent.TileType<T7>(), ModContent.TileType<T8>() };
+
+		public static void AddTileMerges(this ModTile tile, int[] types) => Mergers.AddMergers(tile.Type, types);
 	}
 }
