@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using SpiritMod.Items.Sets.ToolsMisc.BrilliantHarvester;
 using Terraria;
 using Terraria.DataStructures;
@@ -34,10 +33,9 @@ namespace SpiritMod.Tiles.Furniture
 			name.SetDefault("Lodged Pickaxe");
 			AddMapEntry(Color.Red, name);
 		}
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
-		}
+
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
 			r = .122f;
@@ -47,12 +45,10 @@ namespace SpiritMod.Tiles.Furniture
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			if (Main.rand.NextBool(2)) {
-				Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GemPickaxe>());
-			}
-			for (int k = 0; k < 3; k++) {
-				Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Ruby);
-			}
+			if (Main.rand.NextBool(2))
+				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GemPickaxe>());
+			for (int k = 0; k < 3; k++)
+				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Ruby);
 		}
 	}
 }

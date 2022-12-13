@@ -97,7 +97,6 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 					SoundEngine.PlaySound(SoundID.MenuOpen);
 
 					var slotState = new UISlotState(i, j, nearestPlayer);
-					slotState.Activate();
 
 					ModContent.GetInstance<SpiritMod>().SlotUserInterface.SetState(slotState);
 				}

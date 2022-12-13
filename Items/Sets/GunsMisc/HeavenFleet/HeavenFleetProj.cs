@@ -4,11 +4,8 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
-using SpiritMod.Projectiles.Bullet;
 using Terraria.ID;
 using SpiritMod.Particles;
-using SpiritMod.Utilities;
-using System.Collections.Generic;
 
 
 namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet

@@ -1,13 +1,8 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using System.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Terraria.Audio;
 
@@ -42,11 +37,11 @@ namespace SpiritMod.Projectiles.BaseProj
 				Projectile.ai[0] = value;
 			}
 		}
-		protected virtual void SafeSetDefaults(){}
-		protected virtual void SetBowDefaults(){}
+		protected virtual void SafeSetDefaults() {}
+		protected virtual void SetBowDefaults() {}
 		protected virtual void SafeAI() {}
 		protected virtual void Shoot(bool firstFire) {}
-		protected virtual void Charging() {AdjustDirection();}
+		protected virtual void Charging() => AdjustDirection();
 		
 		protected int minDamage;
 		protected int maxDamage;
