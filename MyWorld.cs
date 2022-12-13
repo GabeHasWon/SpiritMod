@@ -45,6 +45,7 @@ using SpiritMod.Mechanics.QuestSystem;
 using Terraria.WorldBuilding;
 using Terraria.IO;
 using static SpiritMod.Utilities.ChestPoolUtils;
+using SpiritMod.NPCs.AsteroidDebris;
 
 namespace SpiritMod
 {
@@ -1537,6 +1538,34 @@ namespace SpiritMod
 				}
 				else
 					jellySky = false;
+			}
+
+			//Randomly spawn floating asteroid debris without disrupting NPC spawn weight
+			//ToDo: ensure NPCs don't spawn on other player screens in multiplayer
+			if (modPlayer.ZoneAsteroid && Main.rand.NextBool(55))
+			{
+				Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
+
+				Rectangle spawnRect = screenRect;
+				int padding = 100;
+				spawnRect.Inflate(padding, padding);
+
+				int npcType = ModContent.NPCType<AsteroidDebris>();
+
+				for (int i = 0; i < 20; i++)
+				{
+					Vector2 spawnPos = new Vector2(spawnRect.X + Main.rand.Next(spawnRect.Width), spawnRect.Y + Main.rand.Next(spawnRect.Height));
+					if (!screenRect.Contains(spawnPos.ToPoint()) && !Collision.SolidCollision(spawnPos, 10, 10))
+					{
+						if (NPC.CountNPCS(npcType) < 30)
+						{
+							int index = NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcType);
+							if (Main.netMode != NetmodeID.SinglePlayer)
+								NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, index);
+						}
+						return;
+					}
+				}
 			}
 
 			//pagoda enemy spawning

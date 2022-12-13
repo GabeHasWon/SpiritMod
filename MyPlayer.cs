@@ -1773,29 +1773,6 @@ namespace SpiritMod
 				}
 			}
 
-			//Randomly spawn floating asteroid debris
-			if (ZoneAsteroid && Main.rand.NextBool(55))
-			{
-				Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
-				
-				Rectangle spawnRect = screenRect;
-				int padding = 40;
-				spawnRect.Inflate(padding, padding);
-
-				int npcType = ModContent.NPCType<AsteroidDebris>();
-
-				for (int i = 0; i < 20; i++)
-				{
-					Vector2 spawnPos = new Vector2(spawnRect.X + Main.rand.Next(spawnRect.Width), spawnRect.Y + Main.rand.Next(spawnRect.Height));
-					if (!screenRect.Contains(spawnPos.ToPoint()))
-					{
-						if (!Collision.SolidCollision(spawnPos, 8, 8))
-							NPC.NewNPC(Player.GetSource_FromThis("Asteroid Ambience"), (int)spawnPos.X, (int)spawnPos.Y, npcType);
-						return;
-					}
-				}
-			}
-
 			if (MyWorld.meteorShowerWeather && Main.rand.NextBool(270) && ZoneAsteroid)
 			{
 				float num12 = Main.rand.Next(-30, 30);

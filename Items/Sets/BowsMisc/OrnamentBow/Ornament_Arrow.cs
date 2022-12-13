@@ -1,38 +1,26 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using System;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using SpiritMod.Items.Sets.BowsMisc.GemBows;
 
 namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 {
-	public class Ornament_Arrow : ModProjectile
+	public class Ornament_Arrow : GemArrow
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ornament Arrow");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 14; 
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
-
-		public override void SetDefaults()
-		{
-			Projectile.width = 16;
-			Projectile.height = 16;
-			Projectile.arrow = true;
-			Projectile.aiStyle = 1;
-			Projectile.friendly = true;
-			Projectile.DamageType = DamageClass.Ranged;
-			Projectile.arrow = true;
-		}
+		protected override void SafeSetDefaults() => glowColor = Main.DiscoColor;
 
 		public override void AI()
 		{
-			for (int i = 0; i < 1; i++)
+			for (int i = 0; i < 2; i++)
 			{
 				int num = Projectile.frameCounter;
 				Projectile.frameCounter = num + 1;
@@ -48,75 +36,6 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 					num = num41;
 				}
 			}
-			for (int i = 0; i < 1; i++)
-			{
-				int num = Projectile.frameCounter;
-				Projectile.frameCounter = num + 1;
-				Projectile.localAI[0] += 1f;
-				for (int num41 = 0; num41 < 4; num41 = num + 1)
-				{
-					Vector2 value8 = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * 0.1308997f + num41 * 3.14159274f) * new Vector2(10f, 2f) - Projectile.rotation.ToRotationVector2();
-					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.RainbowTorch, 0f, 0f, 160, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
-					Main.dust[dust].scale = 0.7f;
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].position = Projectile.Center + value8 + Projectile.velocity * 2f;
-					Main.dust[dust].velocity = Vector2.Normalize(Projectile.Center + Projectile.velocity * 2f - Main.dust[dust].position) / 8f + Projectile.velocity;
-					num = num41;
-				}
-			}
-
-			Lighting.AddLight(Projectile.Center, new Vector3(Main.DiscoR, Main.DiscoG, Main.DiscoB) / 512f);
-		}
-
-		public override bool PreDraw(ref Color lightColor)
-		{
-			SpriteEffects effect = Projectile.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
-			Color col = Lighting.GetColor((int)(Projectile.Center.Y) / 16, (int)(Projectile.Center.Y) / 16);
-			var basePos = Projectile.Center - Main.screenPosition + new Vector2(0.0f, Projectile.gfxOffY);
-
-			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-
-			int height = texture.Height / Main.projFrames[Projectile.type];
-			var frame = new Rectangle(0, height * Projectile.frame, texture.Width, height);
-			Vector2 origin = frame.Size() / 2f;
-			int reps = 1;
-			while (reps < 5)
-			{
-				col = Projectile.GetAlpha(Color.Lerp(col, Color.White, 2.5f));
-				float num7 = 5 - reps;
-				Color drawCol = col * (num7 / (ProjectileID.Sets.TrailCacheLength[Projectile.type] * 1.5f));
-				Vector2 oldPo = Projectile.oldPos[reps];
-				float rotation = Projectile.rotation;
-				SpriteEffects effects2 = effect;
-				if (ProjectileID.Sets.TrailingMode[Projectile.type] == 2)
-				{
-					rotation = Projectile.oldRot[reps];
-					effects2 = Projectile.oldSpriteDirection[reps] == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-				}
-				Vector2 drawPos = oldPo + Projectile.Size / 2f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
-				Main.spriteBatch.Draw(texture, drawPos, frame, drawCol, rotation + Projectile.rotation * (reps - 1) * -effect.HasFlag(SpriteEffects.FlipHorizontally).ToDirectionInt(), origin, MathHelper.Lerp(Projectile.scale, 3f, reps / 15f), effects2, 0.0f);
-				reps++;
-			}
-
-			Main.spriteBatch.Draw(texture, basePos, frame, new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 175), Projectile.rotation, origin, Projectile.scale, effect, 0.0f);
-
-			height = texture.Height / Main.projFrames[Projectile.type];
-			frame = new Rectangle(0, height * Projectile.frame, texture.Width, height);
-			origin = new Vector2(texture.Width / 2, texture.Height / 2);
-			float num99 = (float)(Math.Cos(Main.GlobalTimeWrappedHourly % 2.40000009536743 / 2.40000009536743 * MathHelper.TwoPi) / 4.0f + 0.5f);
-
-			Color color2 = new Color(sbyte.MaxValue - Projectile.alpha, sbyte.MaxValue - Projectile.alpha, sbyte.MaxValue - Projectile.alpha, 0).MultiplyRGBA(Color.White);
-			for (int i = 0; i < 4; ++i)
-			{
-				Color drawCol = Projectile.GetAlpha(color2) * (1f - num99);
-				Vector2 offset = ((i / 4 * MathHelper.TwoPi) + Projectile.rotation).ToRotationVector2();
-				Vector2 position2 = Projectile.Center + offset * (8.0f * num99 + 2.0f) - Main.screenPosition - texture.Size() * Projectile.scale / 2f + origin * Projectile.scale + new Vector2(0.0f, Projectile.gfxOffY);
-				Main.spriteBatch.Draw(texture, position2, frame, drawCol, Projectile.rotation, origin, Projectile.scale, effect, 0.0f);
-			}
-
-			Lighting.AddLight(Projectile.Center, Color.Purple.ToVector3() / 2f);
-			return false;
 		}
 
 		private void SpawnArrows(IEntitySource src)

@@ -78,6 +78,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				NPC.DeathSound = SoundID.NPCDeath44;
 			}
 			NPC.frameCounter = Main.rand.Next(Main.npcFrameCount[NPC.type]);
+			NPC.netUpdate = true;
 		}
 
 		public override void AI()
@@ -119,7 +120,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			return Shiny;
 		}
 
-		public override bool CheckActive()
+		/*public override bool CheckActive()
 		{
 			bool onScreen = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight).Intersects(NPC.Hitbox);
 			if (!fadingIn)
@@ -132,7 +133,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				else NPC.alpha = 0;
 			}
 			return false;
-		}
+		}*/
 
 		private void Bump(Vector2 newVelocity)
 		{

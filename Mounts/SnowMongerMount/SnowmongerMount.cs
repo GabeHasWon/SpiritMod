@@ -110,7 +110,7 @@ namespace SpiritMod.Mounts.SnowMongerMount
 				proj.width = 40;
 				proj.height = 40;
 
-				Terraria.Audio.SoundEngine.PlaySound(SoundID.Item91 with { Volume = 0.5f }, player.Center);
+				SoundEngine.PlaySound(SoundID.Item91 with { Volume = 0.5f }, player.Center);
 			}
 			for (int i = 0; i < 2; i++)
 			{
@@ -129,7 +129,7 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			for (int i = 0; i < 2; i++)
 				ParticleHandler.SpawnParticle(new PulseCircle(player.Center + (player.velocity * i * 2), Color.LightBlue, 100 - (i * 20), 15) 
 				{ Angle = player.velocity.ToRotation(), ZRotation = 0.5f });
-			Terraria.Audio.SoundEngine.PlaySound(SoundID.Item67 with { Volume = 0.7f }, player.Center);
+			SoundEngine.PlaySound(SoundID.Item67 with { Volume = 0.7f }, player.Center);
 		}
 
 		private static void ControlFloatHeight(Player player, float floatHeight)
@@ -203,21 +203,7 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			return false;
 		}
 
-		public override bool Draw(List<DrawData> playerDrawData, int drawType, Player drawPlayer, ref Texture2D texture, ref Texture2D glowTexture, ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, ref Vector2 drawOrigin, ref float drawScale, float shadow)
-		{
-			/*int curFrame = drawPlayer.mount._frame;
-			texture = ModContent.Request<Texture2D>("SpiritMod/Mounts/SnowMongerMount/SnowmongerMount").Value;
-			Rectangle sourceRect = new Rectangle(0, curFrame * 56, 78, 56);
-			SpriteEffects effect = drawPlayer.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			int frameOffX = drawPlayer.direction == 1 ? 6 : -6;
-
-			if (curFrame > 5)
-				sourceRect = new Rectangle(78, (curFrame - 5) * 56, 78, 56);
-
-			DrawData data = new DrawData(texture, drawPosition - new Vector2(40 + frameOffX, 20), sourceRect, drawColor, 0f, drawOrigin, 1f, effect, 0);
-			playerDrawData.Add(data);*/
-			return false;
-		}
+		public override bool Draw(List<DrawData> playerDrawData, int drawType, Player drawPlayer, ref Texture2D texture, ref Texture2D glowTexture, ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, ref Vector2 drawOrigin, ref float drawScale, float shadow) => false;
 
 		private void DrawOverPlayer(On.Terraria.DataStructures.PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
 		{

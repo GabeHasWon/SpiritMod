@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
-using SpiritMod.Dusts;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles
