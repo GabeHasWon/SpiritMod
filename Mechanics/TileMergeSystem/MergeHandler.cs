@@ -13,20 +13,25 @@ namespace SpiritMod.Mechanics.TileMergeSystem
 	{
 		const string VanillaMergePath = "Mechanics/TileMergeSystem/Textures/";
 
-		public override bool IsLoadingEnabled(Mod mod) => false;
-
 		public override void SetStaticDefaults()
 		{
 			VanillaMergeAll(TileID.Dirt);
+			VanillaMergeAll(TileID.Stone);
 		}
 
-		private void VanillaMergeAll(int tileID)
+		private static void VanillaMergeAll(int tileID)
 		{
 			for (int i = 0; i < Main.tileMerge.Length; ++i)
-				Main.tileMerge[i][tileID] = true;
+			{
+				if (!Main.tileFrameImportant[i])
+					Main.tileMerge[i][tileID] = true;
+			}
 
 			for (int i = 0; i < Main.tileMerge[tileID].Length; ++i)
-				Main.tileMerge[tileID][i] = true;
+			{
+				if (!Main.tileFrameImportant[i])
+					Main.tileMerge[tileID][i] = true;
+			}
 		}
 
 		public override void PostDraw(int i, int j, int type, SpriteBatch spriteBatch)
@@ -36,28 +41,33 @@ namespace SpiritMod.Mechanics.TileMergeSystem
 
 			Dictionary<int, List<Offset>> containers = new();
 
-			for (int x = i - 1; x < i + 2; ++x)
+			void CheckLoc(Offset offset, int x, int y)
 			{
-				for (int y = j - 1; y < j + 2; ++y)
+				Tile tile = Main.tile[x, y];
+				int tileType = tile.TileType;
+
+				if (!tile.HasTile || tileType == type || (Mergers.TypeHas(type, tileType) && Mergers.TypeHas(tileType, type)) || (Mergers.HasUniversal(type) && Mergers.HasUniversal(tileType) && type > tileType))
+					return; //Active, duplicate, and double merge checks
+
+				if (tileType == TileID.Dirt && (Main.tileMergeDirt[type] || TileID.Sets.Grass[type]))
+					return; //Dirt and grass tilesheet check
+
+				if ((tileType == TileID.Mud && type == TileID.Dirt) || (tileType == TileID.Dirt && type == TileID.Mud))
+					return; //Hardcoded mud check for some reason
+
+				if (Mergers.TypeHas(type, tileType) || Mergers.HasUniversal(tileType))
 				{
-					if (x == i && y == j)
-						continue;
-
-					Tile tile = Main.tile[x, y];
-					int tileType = tile.TileType;
-
-					if (!tile.HasTile || type == tileType)
-						continue;
-
-					if (Mergers.TypeHas(type, tileType) || Mergers.HasUniversal(tileType))
-					{
-						if (containers.ContainsKey(tileType))
-							containers[tileType].Add(GetOffset(i - x, j - y));
-						else
-							containers.Add(tileType, new List<Offset>() { GetOffset(i - x, j - y) });
-					}
+					if (containers.ContainsKey(tileType))
+						containers[tileType].Add(offset);
+					else
+						containers.Add(tileType, new List<Offset>() { offset });
 				}
 			}
+
+			CheckLoc(Offset.Top, i, j - 1);
+			CheckLoc(Offset.Bottom, i, j + 1);
+			CheckLoc(Offset.Right, i + 1, j);
+			CheckLoc(Offset.Left, i - 1, j);
 
 			if (containers.Count > 0)
 			{
@@ -71,41 +81,111 @@ namespace SpiritMod.Mechanics.TileMergeSystem
 			if (offsets.Count == 0 || (offsets.Count == 1 && offsets.First() == Offset.None))
 				return;
 
-			//if (offsets.Count == 1)
-			//{
-			//	Offset offset = offsets.First();
+			int frameX = 0;
+			int frameY = 0;
+			int randomOffset = (i + j) % 3;
 
-			//	if (offset == Offset.Top)
-			//	{
-			//		frameX = 108;
-			//		frameY = 54;
-			//	}
-			//	else if (offset == Offset.Bottom)
-			//	{
-			//		frameX = 108;
-			//		frameY = 0;
-			//	}
-			//	else if (offset == Offset.Right)
-			//	{
-			//		frameX = 156;
-			//		frameY = 0;
-			//	}
-			//	else if (offset == Offset.Left)
-			//	{
-			//		frameX = 216;
-			//		frameY = 0;
-			//	}
-			//}
+			FrameOverlay(offsets, ref frameX, ref frameY, randomOffset);
+			ActuallyDrawOverlay(type, i, j, frameX, frameY);
+		}
 
-			Tile tile = Main.tile[i, j];
-			ActuallyDrawOverlay(type, i, j, tile.TileFrameX, tile.TileFrameY);
+		private static void FrameOverlay(List<Offset> offsets, ref int frameX, ref int frameY, int frameOffset)
+		{
+			if (offsets.Count == 1)
+			{
+				Offset offset = offsets.First();
+
+				if (offset == Offset.Top)
+				{
+					frameX = 108 + (frameOffset * 18);
+					frameY = 54;
+				}
+				else if (offset == Offset.Bottom)
+				{
+					frameX = 108 + (frameOffset * 18);
+					frameY = 0;
+				}
+				else if (offset == Offset.Right)
+				{
+					frameX = 162;
+					frameY = frameOffset * 18;
+				}
+				else if (offset == Offset.Left)
+				{
+					frameX = 216;
+					frameY = frameOffset * 18;
+				}
+			}
+			else if (offsets.Count == 2)
+			{
+				if (offsets.Contains(Offset.Left) && offsets.Contains(Offset.Right)) //Straight right/left
+				{
+					frameX = 108 + (frameOffset * 18);
+					frameY = 72;
+				}
+				else if (offsets.Contains(Offset.Top) && offsets.Contains(Offset.Bottom)) //Straight up/down
+				{
+					frameX = 90;
+					frameY = frameOffset * 18;
+				}
+				else if (offsets.Contains(Offset.Bottom) && offsets.Contains(Offset.Right)) //Corner right/bottom
+				{
+					frameX = frameOffset * 36;
+					frameY = 54;
+				}
+				else if (offsets.Contains(Offset.Bottom) && offsets.Contains(Offset.Left)) //Corner left/bottom
+				{
+					frameX = 18 + (frameOffset * 36);
+					frameY = 54;
+				}
+				else if (offsets.Contains(Offset.Top) && offsets.Contains(Offset.Right)) //Corner top/right
+				{
+					frameX = frameOffset * 36;
+					frameY = 72;
+				}
+				else if (offsets.Contains(Offset.Top) && offsets.Contains(Offset.Left)) //Corner top/left
+				{
+					frameX = 18 + (frameOffset * 36);
+					frameY = 72;
+				}
+			}
+			else if (offsets.Count == 3)
+			{
+				if (offsets.Contains(Offset.Top, Offset.Right, Offset.Bottom)) //Merge all but left
+				{
+					frameX = 0;
+					frameY = frameOffset * 18;
+				}
+				else if (offsets.Contains(Offset.Top, Offset.Left, Offset.Bottom)) //Merge all but right
+				{
+					frameX = 72;
+					frameY = frameOffset * 18;
+				}
+				else if (offsets.Contains(Offset.Right, Offset.Left, Offset.Bottom)) //Merge all but top
+				{
+					frameX = 18 + (frameOffset * 18);
+					frameY = 0;
+				}
+				else if (offsets.Contains(Offset.Right, Offset.Left, Offset.Top)) //Merge all but bottom
+				{
+					frameX = 18 + (frameOffset * 18);
+					frameY = 36;
+				}
+			}
+			else if (offsets.Count == 4) //All four
+			{
+				frameX = 18 + (frameOffset * 18);
+				frameY = 18;
+			}
 		}
 
 		private void ActuallyDrawOverlay(int type, int i, int j, int frameX, int frameY)
 		{
 			Asset<Texture2D> tex = GetMergeTexture(type);
+			Color light = Lighting.GetColor(i, j);
+			Vector2 pos = new Vector2(i, j) * 16 - Main.screenPosition + new Vector2(Main.offScreenRange);
 
-			Main.spriteBatch.Draw(tex.Value, new Vector2(i, j) * 16 - Main.screenPosition + new Vector2(Main.offScreenRange), new Rectangle(frameX, frameY, 16, 16), Color.White);
+			Main.spriteBatch.Draw(tex.Value, pos, new Rectangle(frameX, frameY, 16, 16), light);
 		}
 
 		private Asset<Texture2D> GetMergeTexture(int type)
@@ -128,9 +208,9 @@ namespace SpiritMod.Mechanics.TileMergeSystem
 			}
 			else if (y == 0)
 			{
-				if (x == -1)
+				if (x == 1)
 					return Offset.Left;
-				else if (x == 1)
+				else if (x == -1)
 					return Offset.Right;
 			}
 			else if (y == -1)

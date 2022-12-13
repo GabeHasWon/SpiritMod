@@ -7,7 +7,7 @@ namespace SpiritMod.Mechanics.TileMergeSystem
 	internal class Mergers
 	{
 		private static Dictionary<int, List<int>> mergers = new();
-		private static bool[] universalMergers = TileID.Sets.Factory.CreateBoolSet(false, TileID.Dirt);
+		private static bool[] universalMergers = TileID.Sets.Factory.CreateBoolSet(false, TileID.Dirt, TileID.Stone);
 
 		public static void AddMergers(int baseType, params int[] types)
 		{

@@ -3,6 +3,7 @@ using SpiritMod.Mechanics.TileMergeSystem;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using System.Collections.Generic;
 
 namespace SpiritMod
 {
@@ -59,5 +60,13 @@ namespace SpiritMod
 			new int[] { ModContent.TileType<T1>(), ModContent.TileType<T2>(), ModContent.TileType<T3>(), ModContent.TileType<T4>(), ModContent.TileType<T5>(), ModContent.TileType<T6>(), ModContent.TileType<T7>(), ModContent.TileType<T8>() };
 
 		public static void AddTileMerges(this ModTile tile, int[] types) => Mergers.AddMergers(tile.Type, types);
+
+		public static bool Contains<T>(this List<T> self, params T[] elements)
+		{
+			for (int i = 0; i < elements.Length; ++i)
+				if (!self.Contains(elements[i]))
+					return false;
+			return true;
+		}
 	}
 }
