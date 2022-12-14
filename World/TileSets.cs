@@ -8,7 +8,7 @@ namespace SpiritMod.World
 	{
 		public static int[] Mosses = new int[] { TileID.ArgonMoss, TileID.BlueMoss, TileID.BrownMoss, TileID.GreenMoss, TileID.KryptonMoss, TileID.LavaMoss, TileID.PurpleMoss, TileID.RedMoss, TileID.XenonMoss };
 
-		public static T[] With<T>(this T[] array, T[] otherArray)
+		public static T[] With<T>(this T[] array, params T[] otherArray)
 		{
 			List<T> newArr = array.ToList();
 			newArr.AddRange(otherArray);

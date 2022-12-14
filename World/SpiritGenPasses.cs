@@ -125,12 +125,12 @@ namespace SpiritMod.World
 		}
 		#endregion Spirit Micros
 
-		private static void BlacklistBriarBlocks(int maxTries, int width, int height, Rectangle randomizationRange, ref Point tileCheckPos, out bool failed)
+		private static void BlacklistBlocks(int maxTries, int width, int height, Rectangle randomizationRange, ref Point tileCheckPos, out bool failed)
 		{
 			int tries = 0;
 			failed = false;
 
-			int[] TileBlacklist = GlobalExtensions.TileSet<BriarGrass, FloranOreTile, BlastStone>();
+			int[] TileBlacklist = GlobalExtensions.TileSet<BriarGrass, FloranOreTile, BlastStone>().With(TileID.Ebonsand, TileID.Ebonstone, TileID.Crimstone, TileID.Crimsand, TileID.LihzahrdBrick);
 			int[] WallBlacklist = new int[]
 			{
 				ModContent.WallType<ReachWallNatural>(),
@@ -159,6 +159,7 @@ namespace SpiritMod.World
 							break;
 						}
 					}
+
 					if (blackListedTile)
 						break;
 				}
@@ -498,8 +499,7 @@ namespace SpiritMod.World
 			int width = (StashRoomMain.GetLength(1) / 2) + 5;
 			int height = (StashRoomMain.GetLength(0) / 2) + 4;
 			Rectangle positionRange = new Rectangle(Main.spawnTileX - 800, Main.spawnTileY + 120, 1600, 280);
-			BlacklistBriarBlocks(80, width, height, positionRange, ref center, out bool failed);
-
+			BlacklistBlocks(80, width, height, positionRange, ref center, out bool failed);
 
 			if (failed) //Dont generate if tried too many times
 				return;

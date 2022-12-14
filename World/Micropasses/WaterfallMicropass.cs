@@ -28,7 +28,18 @@ namespace SpiritMod.World.Micropasses
 				}
 
 				while (!Main.tile[x, y].HasTile)
+				{
 					y--;
+
+					if (y <= 40)
+					{
+						i--;
+						break;
+					}
+				}
+
+				if (y <= 40)
+					continue;
 
 				//We've found an opening and went to the ceiling, try and place a waterfall
 				if (TryPlaceWaterfall(x, y))

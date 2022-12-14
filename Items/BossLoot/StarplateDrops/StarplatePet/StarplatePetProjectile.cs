@@ -106,10 +106,11 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 		{
 			float maxSpeed = 12;
 
-			spinner += 0.02f * Owner.direction;
-
 			Vector2 targetPosition = Owner.Center;
-			CheckForOre(ref targetPosition);
+			bool ore = CheckForOre(ref targetPosition);
+
+			spinner += 0.02f * (ore ? 1 : Owner.direction);
+
 			float projDist = Projectile.DistanceSQ(targetPosition);
 			float ownerDist = Projectile.DistanceSQ(Owner.Center);
 
@@ -145,9 +146,9 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 
 					Tile tile = Main.tile[pos.X, pos.Y];
 
-					if (tile.HasTile && tile.TileType == ModContent.TileType<StarBeacon>())
+					if (tile.HasTile && tile.TileType == ModContent.TileType<StarBeacon>() && tile.TileFrameX == 0 && tile.TileFrameY == 0)
 					{
-						targetPosition = pos.ToWorldCoordinates();
+						targetPosition = pos.ToWorldCoordinates() + new Vector2(16);
 						return true;
 					}
 				}
