@@ -46,6 +46,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			set => NPC.ai[0] = value;
 		}
 		private bool Shiny { get => NPC.ai[1] != 0; set => NPC.ai[1] = value ? 1 : 0; }
+
 		private int npcFrame;
 		private bool fadingIn = true;
 
@@ -81,6 +82,28 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			NPC.netUpdate = true;
 		}
 
+		public override bool PreAI()
+		{
+			if (fadingIn)
+			{
+				if (NPC.alpha > 0)
+					NPC.alpha -= 255 / 10;
+				else
+					fadingIn = false;
+				if (NPC.alpha < 0)
+					NPC.alpha = 0;
+
+				//This is used in tandem with custom NPC spawning in MyPlayer to make sure it doesn't spawn on screen
+				Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
+				if (screenRect.Contains(NPC.Hitbox))
+				{
+					NPC.active = false;
+					NPC.netUpdate = true;
+				}
+			}
+			return !fadingIn;
+		}
+
 		public override void AI()
 		{
 			NPC.TargetClosest();
@@ -100,16 +123,6 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			NPC.rotation += 0.002f + NPC.velocity.Length() / 40;
 			if (Cooldown > 0)
 				Cooldown--;
-
-			if (fadingIn)
-			{
-				if (NPC.alpha > 0)
-					NPC.alpha -= 255 / 20;
-				else
-					fadingIn = false;
-				if (NPC.alpha < 0)
-					NPC.alpha = 0;
-			}
 		}
 
 		public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit) => Bump(NPC.DirectionFrom(player.Center) * (knockback / 2));
@@ -119,21 +132,6 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				Bump((projectile.velocity * .3f).RotatedByRandom(0.5f));
 			return Shiny;
 		}
-
-		/*public override bool CheckActive()
-		{
-			bool onScreen = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight).Intersects(NPC.Hitbox);
-			if (!fadingIn)
-			{
-				if (!onScreen)
-				{
-					if (++NPC.alpha >= 255)
-						NPC.active = false;
-				}
-				else NPC.alpha = 0;
-			}
-			return false;
-		}*/
 
 		private void Bump(Vector2 newVelocity)
 		{

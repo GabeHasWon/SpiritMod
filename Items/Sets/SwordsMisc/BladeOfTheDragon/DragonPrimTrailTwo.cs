@@ -2,11 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using System.Collections.Generic;
-using System.Linq;
 using System;
-using static Terraria.ModLoader.ModContent;
-using System.Reflection;
 using SpiritMod.Prim;
 
 namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
@@ -33,7 +29,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
             Cap = 80;
             Width = 20;
         }
-        float angle;
+
+        private readonly float angle;
         public override void PrimStructure(SpriteBatch spriteBatch)
         {
             /*if (PointCount <= 1) return; //for easier, but less customizable, drawing
@@ -44,7 +41,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 
             if (PointCount <= 6) return;
             float widthVar;
-            float colorSin = (float)Math.Sin(Counter / 3f);
+            //float colorSin = (float)Math.Sin(Counter / 3f);
             for (int i = 0; i < Points.Count; i++)
             {
                 if (i == 0)
@@ -64,7 +61,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
                     {
                         widthVar = Width;
                         Color c = Color.LightGreen;
-						Color CBT = Color.LightGreen;
+						//Color CBT = Color.LightGreen;
                         Vector2 normal = CurveNormal(Points, i);
                         Vector2 normalAhead = CurveNormal(Points, i + 1);
                         Vector2 firstUp = Points[i] - normal * widthVar;
@@ -98,7 +95,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 		public override void OnUpdate()
         {
             Counter++;
-            PointCount = Points.Count() * 6;
+            PointCount = Points.Count * 6;
             OnDestroy();
         }
         public override void OnDestroy()

@@ -18,6 +18,9 @@ using Terraria.ModLoader.IO;
 using System.Linq;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
+using SpiritMod.Tiles.Block;
+using SpiritMod.Tiles.Block.Ambient.WeatheredMoss;
+using SpiritMod.Tiles.Block.Ambient;
 
 namespace SpiritMod.Items
 {
@@ -625,6 +628,23 @@ namespace SpiritMod.Items
 
 			if (spawnType != -1)
 				NPC.NewNPC(item.GetSource_ItemUse(item), (int)player.Center.X, (int)player.Center.Y, spawnType);
+
+			//This allows vanilla moss items to be used on Weathered Stone
+			int[] mossItems = new int[] { ItemID.BlueMoss, ItemID.GreenMoss, ItemID.PurpleMoss, ItemID.RedMoss, ItemID.BrownMoss };
+			if (mossItems.Contains(item.type))
+			{
+				if (Main.netMode == NetmodeID.Server)
+					return false;
+				int[] mossTile = new int[] { ModContent.TileType<WeatheredBlueMoss>(), ModContent.TileType<WeatheredGreenMoss>(),
+					ModContent.TileType<WeatheredPurpleMoss>(), ModContent.TileType<WeatheredRedMoss>(), ModContent.TileType<WeatheredYellowMoss>() };
+
+				Tile tile = Framing.GetTileSafely(Player.tileTargetX, Player.tileTargetY);
+				if (tile.HasTile && tile.TileType == ModContent.TileType<WeatheredStoneTile>() && player.WithinPlacementRange(Player.tileTargetX, Player.tileTargetY))
+				{
+					WorldGen.PlaceTile(Player.tileTargetX, Player.tileTargetY, mossTile[Array.IndexOf(mossItems, item.type)], forced: true);
+					player.inventory[player.selectedItem].stack--;
+				}
+			}
 			return null;
 		}
 

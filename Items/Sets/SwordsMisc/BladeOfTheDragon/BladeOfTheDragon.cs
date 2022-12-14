@@ -5,7 +5,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Utilities;
@@ -201,7 +200,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			comboActivated = true;
-			Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<DragonSlash>(), 0, 0, Projectile.whoAmI, target.whoAmI);
+			Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<DragonSlash>(), 0, 0, Main.player[Projectile.owner].whoAmI, target.whoAmI);
 		}
 	}
 
@@ -295,7 +294,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 			Rectangle drawFrame = texture.Bounds;
 			int numFrames = 2;
 			drawFrame.Height /= numFrames;
-			drawFrame.Y = (drawFrame.Height) * (info.drawPlayer.channel ? 1 : 0);
+			drawFrame.Y = drawFrame.Height * (info.drawPlayer.channel ? 1 : 0);
 
 			Vector2 offset = new Vector2(6, texture.Height / (2 * numFrames));
 

@@ -17,8 +17,9 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 				ModContent.TileType<SpiritWood>(), ModContent.TileType<LivingBriarWood>(), ModContent.TileType<DriftwoodTile>(), TileID.Pearlwood };
 
 			bool inOcean = (i < Main.maxTilesX / 16 || i > (Main.maxTilesX / 16) * 15) && j < (int)Main.worldSurface; //Might need adjustment; don't know if this will be exclusively in the ocean
+			bool inWorldBounds = i > 40 && i < (Main.maxTilesX - 40);
 
-			if (sands.Contains(type) && inOcean && !Framing.GetTileSafely(i, j - 1).HasTile && !Framing.GetTileSafely(i, j).TopSlope) //woo
+			if (sands.Contains(type) && inOcean && inWorldBounds && !Framing.GetTileSafely(i, j - 1).HasTile && !Framing.GetTileSafely(i, j).TopSlope) //woo
 			{
 				if (Framing.GetTileSafely(i, j - 1).LiquidAmount > 200) //water stuff
 				{

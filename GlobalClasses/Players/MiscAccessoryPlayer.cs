@@ -8,13 +8,18 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Accessory.MeleeCharmTree;
 using SpiritMod.Items.BossLoot.DuskingDrops;
-using SpiritMod.Projectiles.Summon.CimmerianStaff;
 using SpiritMod.Items.Accessory.MageTree;
 using SpiritMod.Items.Sets.CascadeSet.Armor;
 using System.Collections.Generic;
 using SpiritMod.Items;
 using System;
 using System.Linq;
+using SpiritMod.Items.Accessory.UmbillicalEyeball;
+using SpiritMod.Projectiles.Summon.BowSummon;
+using SpiritMod.Projectiles.Summon;
+using SpiritMod.Items.Accessory.BowSummonItem;
+using SpiritMod.Projectiles.Summon.CimmerianStaff;
+using SpiritMod.Items.Accessory.GranitechDrones;
 
 namespace SpiritMod.GlobalClasses.Players
 {
@@ -133,7 +138,7 @@ namespace SpiritMod.GlobalClasses.Players
 			}
 		}
 
-		private void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
+		private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
 
 		public override void PostUpdateEquips()
 		{
@@ -145,9 +150,32 @@ namespace SpiritMod.GlobalClasses.Players
 				Player.GetAttackSpeed(DamageClass.Melee) += 0.07f;
 			}
 
-			// Cimmerian Scepter
-			if (!Player.dead && Player.HasAccessory<CimmerianScepter>() && Player.ownedProjectileCounts[ModContent.ProjectileType<CimmerianScepterProjectile>()] < 1)
-				Projectile.NewProjectile(Player.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<CimmerianScepterProjectile>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(22), 1.5f, Player.whoAmI);
+			if (!Player.dead && Player.active)
+			{
+				if (Player.HasAccessory<UmbillicalEyeball>() && Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()] < 3)
+					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<UmbillicalEyeballProj>(), (int)(Player.GetDamage(DamageClass.Summon).ApplyTo(55)), 1.5f, Player.whoAmI, Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()], 0);
+
+				if (Player.HasAccessory<RogueCrest>() && Player.ownedProjectileCounts[ModContent.ProjectileType<KnifeMinionProjectile>()] < 1)
+						Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<KnifeMinionProjectile>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(5), .5f, Player.whoAmI);
+
+				if (Player.HasAccessory<BowSummonItem>() && Player.ownedProjectileCounts[ModContent.ProjectileType<BowSummon>()] < 1)
+					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<BowSummon>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(22), 1.5f, Player.whoAmI);
+
+				if (Player.HasAccessory<SpellswordCrest>() && Player.ownedProjectileCounts[ModContent.ProjectileType<HolyKnifeMinion>()] < 1)
+					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<HolyKnifeMinion>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(32), 1.25f, Player.whoAmI);
+
+				if (Player.HasAccessory<CimmerianScepter>() && Player.ownedProjectileCounts[ModContent.ProjectileType<CimmerianScepterProjectile>()] < 1)
+					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<CimmerianScepterProjectile>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(22), 1.5f, Player.whoAmI);
+
+				if (Player.HasAccessory<GranitechDroneBox>())
+				{
+					if (Player.ownedProjectileCounts[ModContent.ProjectileType<GranitechDrone>()] < 3)
+					{
+						int newProj = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<GranitechDrone>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(72), 1.5f, Player.whoAmI);
+						Main.projectile[newProj].ai[1] = Player.ownedProjectileCounts[ModContent.ProjectileType<GranitechDrone>()];
+					}
+				}
+			}
 		}
 
 		public override void MeleeEffects(Item item, Rectangle hitbox)

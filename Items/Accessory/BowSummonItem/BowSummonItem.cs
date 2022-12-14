@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.BowSummonItem
 {
-	public class BowSummonItem : ModItem
+	public class BowSummonItem : MinionAccessory
 	{
 		public override void SetStaticDefaults()
 		{
@@ -23,7 +23,5 @@ namespace SpiritMod.Items.Accessory.BowSummonItem
 			Item.DamageType = DamageClass.Summon;
 			Item.accessory = true;
 		}
-
-		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().bowSummon = true;
 	}
 }

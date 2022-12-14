@@ -1,18 +1,16 @@
-﻿using SpiritMod;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.GranitechDrones
 {
-	public class GranitechDroneBox : ModItem
+	public class GranitechDroneBox : MinionAccessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("T-TEK Drone Box");
+			DisplayName.SetDefault("G-TEK Drone Box");
 			Tooltip.SetDefault("Summons 3 drones to aid you\nCan cycle between 3 modes\nThese drones do not take up minion slots");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -24,10 +22,6 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
 			Item.value = Item.buyPrice(0, 3, 0, 0);
 			Item.rare = ItemRarityID.Orange;
 			Item.accessory = true;
-		}
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetModPlayer<MyPlayer>().granitechDrones = true;
 		}
 	}
 }
