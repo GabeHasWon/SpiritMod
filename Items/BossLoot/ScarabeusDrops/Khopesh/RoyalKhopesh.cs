@@ -66,7 +66,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 
 		Player Player => Main.player[Projectile.owner];
 
-		private bool FirstTickOfSwingFrame {
+		private bool FirstTickOfSwingFrame
+		{
 			get => Projectile.ai[1] == 0;
 			set => Projectile.ai[1] = value ? 0 : 1;
 		}
@@ -86,7 +87,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 			if (Player.dead || !Player.active)
 				return killproj();
 
-			if (SwingStart && Main.myPlayer == Projectile.owner && FirstTickOfSwingFrame) { //update the direction at the beginning of a slash
+			if (SwingStart && Main.myPlayer == Projectile.owner && FirstTickOfSwingFrame)
+			{ //update the direction at the beginning of a slash
 				if (!Player.channel)
 					return killproj();
 
@@ -107,7 +109,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 		public override void AI()
 		{
 			Projectile.scale = (Bigswing) ? 1.75f : 1f;
-			float dist = (Bigswing) ? 45f : 35f;
+			float dist = Bigswing ? 45f : 35f;
 
 			Player.itemTime = 2;
 			Player.itemAnimation = 2;
@@ -116,15 +118,16 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 			Projectile.rotation = Player.AngleFrom(Projectile.Center) - ((Projectile.spriteDirection > 0) ? 0 : MathHelper.Pi);
 			Player.ChangeDir(Math.Sign(Projectile.Center.X - Player.Center.X));
 			Player.itemRotation = MathHelper.WrapAngle(Player.AngleFrom(Projectile.Center) - ((Player.direction < 0) ? 0 : MathHelper.Pi));
-			//projectile.spriteDirection = player.direction;
 
 			Projectile.frameCounter++;
 
-			if (Projectile.frameCounter > 3) {
+			if (Projectile.frameCounter > 3)
+			{
 				FirstTickOfSwingFrame = true;
 				Projectile.frameCounter = 0;
 				Projectile.frame++;
-				if (Projectile.frame == 4 && Projectile.ai[0] == 0) {
+				if (Projectile.frame == 4 && Projectile.ai[0] == 0)
+				{
 					Projectile.spriteDirection *= -1;
 					Projectile.rotation -= MathHelper.Pi;
 					Projectile.frame = 0;
@@ -134,9 +137,11 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 				if (Projectile.frame >= Main.projFrames[Projectile.type])
 					Projectile.Kill();
 			}
-			if (SwingStart && Projectile.frameCounter == 1) {
+			if (SwingStart && Projectile.frameCounter == 1)
+			{
 				int dustamount = (Bigswing) ? 20 : 7;
-				for (int i = 0; i < dustamount; i++) {
+				for (int i = 0; i < dustamount; i++)
+				{
 					float dustscale = (Bigswing) ? 2f : 1f;
 					dustscale *= Main.rand.NextFloat(0.7f, 1.3f);
 					float dusvel = dustscale * Main.rand.NextFloat(3, 6);
@@ -155,13 +160,14 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			if (Bigswing) {
+			if (Bigswing)
+			{
 				damage = (int)(damage * 1.5f);
 				damage += target.defense / 2;
 				knockback *= 1.5f;
 
 				if (!Main.player[Projectile.owner].noKnockback)
-					Main.player[Projectile.owner].velocity = -Projectile.velocity * 4;
+					Main.player[Projectile.owner].velocity.X = -Projectile.velocity.X * 3;
 			}
 
 			hitDirection = Player.direction;
@@ -185,6 +191,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 	internal class KhopeshPlayer : ModPlayer
 	{
 		public int KhopeshDelay = 0;
+
 		public override void ResetEffects() => KhopeshDelay = Math.Max(KhopeshDelay - 1, 0);
 	}
 }
