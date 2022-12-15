@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,10 +17,13 @@ namespace SpiritMod
 
 	public class SpiritGlowMaskItemLayer : PlayerDrawLayer
 	{
-		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Head);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.HandOnAcc);
+
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
-			if (drawInfo.drawPlayer.HeldItem.type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.HeldItem.type, out Texture2D textureItem))//Held ItemType
+			Item item = drawInfo.drawPlayer.HeldItem;
+
+			if (item.type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(item.type, out Texture2D textureItem) && drawInfo.drawPlayer.itemTime > 0)//Held ItemType
 				GlowmaskUtils.DrawItemGlowMask(textureItem, drawInfo);
 		}
 	}
@@ -41,7 +45,7 @@ namespace SpiritMod
 	{
 		protected override int ID => 12;
 		protected override EquipType Type => EquipType.Legs;
-		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Leggings);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Leggings);
 
 	}
 
@@ -49,19 +53,19 @@ namespace SpiritMod
 	{
 		protected override int ID => 11;
 		protected override EquipType Type => EquipType.Body;
-		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Torso);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Torso);
 	}
 
 	public class SpiritGlowMaskVanityHeadLayer : SpiritGlowMaskVanityLayer
 	{
 		protected override int ID => 10;
 		protected override EquipType Type => EquipType.Head;
-		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Head);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Head);
 	}
 
 	public class SpiritGlowMaskLegsLayer : PlayerDrawLayer
 	{
-		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Leggings);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Leggings);
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.armor[2].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[2].type, out Texture2D textureLegs))//Legs
@@ -71,7 +75,7 @@ namespace SpiritMod
 
 	public class SpiritGlowMaskBodyLayer : PlayerDrawLayer
 	{
-		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Torso);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Torso);
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.armor[1].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[1].type, out Texture2D textureBody))//Body
@@ -81,7 +85,7 @@ namespace SpiritMod
 
 	public class SpiritGlowMaskHeadLayer : PlayerDrawLayer
 	{
-		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Head);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Head);
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.armor[0].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[0].type, out Texture2D textureBody))//Body
