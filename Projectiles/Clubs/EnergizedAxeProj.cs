@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class EnergizedAxeProj : ClubProj
 	{
-		public EnergizedAxeProj() : base(40, 23, 53, -1, 60, 6, 10, 4f, 19f) { }
+		public EnergizedAxeProj() : base(40, 30, 70, -1, 60, 6, 10, 4f, 19f) { }
 
 		public override void SetStaticDefaults()
 		{
@@ -54,7 +54,7 @@ namespace SpiritMod.Projectiles.Clubs
 					if (Main.dust[num].position != target.Center)
 						Main.dust[num].velocity = target.DirectionTo(Main.dust[num].position) * 6f;
 				}
-				int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0, 0, ModContent.ProjectileType<GraniteSpike1>(), Projectile.damage, Projectile.knockBack / 2, Main.myPlayer, 0f, 0f);
+				int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0, 0, ModContent.ProjectileType<GraniteSpike1>(), Projectile.damage / 2, Projectile.knockBack / 2, Main.myPlayer, 0f, 0f);
 				Main.projectile[proj].timeLeft = 2;
 			}
 		}

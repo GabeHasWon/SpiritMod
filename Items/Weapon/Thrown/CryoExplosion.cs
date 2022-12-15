@@ -49,7 +49,7 @@ namespace SpiritMod.Projectiles.Thrown
 			}
 
 			for (int i = 0; i < 3; i++)
-				Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("SpiritMod/Gores/CryoBomb/CryoShard1").Type, 1f);
+				Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("SpiritMod/Gores/CryoBomb/CryoShard").Type, 1f);
 			for (int i = 0; i < 3; i++)
 				Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("SpiritMod/Gores/CryoBomb/CryoShard2").Type, 1f);
 			for (int i = 0; i < 3; i++)

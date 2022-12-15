@@ -18,12 +18,12 @@ namespace SpiritMod.Items.Sets.ClubSubclass
         public override void SetDefaults()
         {
             Item.channel = true;
-            Item.damage = 22;
+            Item.damage = 24;
             Item.width = 66;
             Item.height = 66;
             Item.useTime = 320;
             Item.useAnimation = 320;
-            Item.crit = 4;
+            Item.crit = 6;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;

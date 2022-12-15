@@ -15,10 +15,10 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
         {
             DisplayName.SetDefault("Accursed Blade");
             Tooltip.SetDefault("Kill enemies and collect their souls to build up charge\nRight click to release charge as a cursed bolt");
-            SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-        }
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
+		}
 
-        public override void SetDefaults()
+		public override void SetDefaults()
         {
             Item.DamageType = DamageClass.Melee;
             Item.rare = ItemRarityID.Green;
@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             Item.useTime = 25;
             Item.useAnimation = 25;
             Item.value = Item.buyPrice(0, 1, 20, 0);
-            Item.damage = 22;
+            Item.damage = 18;
             Item.width = 30;
             Item.height = 30;
 			Item.scale = 1.15f;
@@ -36,7 +36,6 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             Item.shoot = ModContent.ProjectileType<AccursedBolt>();
             Item.shootSpeed = 9;
         }
-
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
@@ -66,7 +65,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		{
             if (player.altFunctionUse != 2 || player.GetModPlayer<AccursedBladePlayer>().charge == 0)
                 return false;
-            damage = 22 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 150);
+            damage = 18 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 150);
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetModPlayer<AccursedBladePlayer>().charge);
             player.GetModPlayer<AccursedBladePlayer>().charge = 0;
             SoundEngine.PlaySound(SoundID.NPCDeath52 with { Pitch = 1.2f }, player.position);
