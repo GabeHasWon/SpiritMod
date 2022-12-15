@@ -33,6 +33,6 @@ namespace SpiritMod.Projectiles.Clubs
                 Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size * 2, size, size), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
         }
 
-        public NautilusClubProj() : base(64, 21, 48, -1, 82, 6, 11, 1.9f, 17f){}
+        public NautilusClubProj() : base(64, 23, 54, -1, 82, 6, 11, 1.9f, 17f){}
 	}
 }

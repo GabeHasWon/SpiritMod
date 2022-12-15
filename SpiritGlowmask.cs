@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace SpiritMod
 {

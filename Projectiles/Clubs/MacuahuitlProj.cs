@@ -38,6 +38,6 @@ namespace SpiritMod.Projectiles.Clubs
                 Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size * 2, size, size), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
         }
 
-        public MacuahuitlProj() : base(72, 28, 62, -1, 66, 5, 10, 1.9f, 17f){}
+        public MacuahuitlProj() : base(72, 45, 115, -1, 66, 5, 10, 1.9f, 17f){}
 	}
 }
