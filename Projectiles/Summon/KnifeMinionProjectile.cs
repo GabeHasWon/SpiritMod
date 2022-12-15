@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Accessory;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -41,15 +43,12 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void CheckActive()
 		{
-			MyPlayer mp = Main.player[Projectile.owner].GetModPlayer<MyPlayer>();
+			Player mp = Main.player[Projectile.owner];
 
 			if (Projectile.damage == 0) //This shouldn't happen
 				Projectile.damage = (int)Main.player[Projectile.owner].GetDamage(Projectile.DamageType).ApplyTo(5);
 
-			if (mp.Player.dead || !mp.rogueCrest)
-				Projectile.active = false;
-
-			if (mp.rogueCrest)
+			if (mp.HasAccessory<RogueCrest>())
 				Projectile.timeLeft = 2;
 		}
 

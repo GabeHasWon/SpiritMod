@@ -17,7 +17,6 @@ using SpiritMod.NPCs.Mimic;
 using SpiritMod.Projectiles;
 using SpiritMod.Projectiles.DonatorItems;
 using SpiritMod.Projectiles.Magic;
-using SpiritMod.Projectiles.Summon;
 using SpiritMod.Utilities;
 using System;
 using System.Collections.Generic;
@@ -31,8 +30,6 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.Audio;
 using SpiritMod.NPCs.AuroraStag;
-using SpiritMod.Items.Accessory.GranitechDrones;
-using SpiritMod.Items.Equipment.AuroraSaddle;
 using Terraria.Graphics.Effects;
 using SpiritMod.Projectiles.Bullet;
 using System.Linq;
@@ -206,7 +203,6 @@ namespace SpiritMod
 		public bool gemPickaxe = false;
 		public bool carnivorousPlantMinion = false;
 		public bool skeletalonMinion = false;
-		public bool bowSummon = false;
 		public bool snapsporeMinion = false;
 		public bool butterflyMinion = false;
 		public bool steamMinion = false;
@@ -218,8 +214,6 @@ namespace SpiritMod
 		public bool ReachSummon = false;
 		public bool gasopodMinion = false;
 		public bool lunazoa = false;
-		public bool rogueCrest = false;
-		public bool spellswordCrest = false;
 		public bool tankMinion = false;
 		public bool OG = false;
 		public bool lavaRock = false;
@@ -628,11 +622,9 @@ namespace SpiritMod
 			strikeshield = false;
 			KoiTotem = false;
 			setbonus = null;
-			rogueCrest = false;
 			moonlightSack = false;
 			midasTouch = false;
 			seaSnailVenom = false;
-			spellswordCrest = false;
 			stoneHead = false;
 			silkenRobe = false;
 			zipline = false;
@@ -744,7 +736,6 @@ namespace SpiritMod
 			terror2Summon = false;
 			terror3Summon = false;
 			terror4Summon = false;
-			bowSummon = false;
 			minior = false;
 			drakomireMount = false;
 			basiliskMount = false;
@@ -849,7 +840,7 @@ namespace SpiritMod
 
 			// quest related hotkeys
 			if (SpiritMod.QuestBookHotkey.JustPressed && QuestManager.QuestBookUnlocked) // swap the quest book's state around, if it's open, close it, and vice versa.
-				QuestManager.SetBookState(!(SpiritMod.Instance.BookUserInterface.CurrentState is UI.QuestUI.QuestBookUI));
+				QuestManager.SetBookState(SpiritMod.Instance.BookUserInterface.CurrentState is not UI.QuestUI.QuestBookUI);
 
 			if (SpiritMod.QuestHUDHotkey.JustPressed && QuestManager.QuestBookUnlocked) // swap the quest book's state around, if it's open, close it, and vice versa.
 				SpiritMod.QuestHUD.Toggle();
@@ -885,13 +876,13 @@ namespace SpiritMod
 				swingingItem = Player.HeldItem;
 		}
 
-		private void BeginShotDetection(Item item)
+		private static void BeginShotDetection(Item item)
 		{
 			if (swingingItem == item)
 				swingingCheck = true;
 		}
 
-		private void EndShotDetection()
+		private static void EndShotDetection()
 		{
 			swingingItem = null;
 			swingingCheck = false;
@@ -1820,6 +1811,50 @@ namespace SpiritMod
 			else
 				spawnedShield = false;
 
+			//Randomly spawn floating asteroid debris without disrupting NPC spawn weight
+			if (ZoneAsteroid)
+			{
+				int spawnChance = 55;
+
+				bool run = false;
+				if (Main.netMode == NetmodeID.SinglePlayer) //Avoid running a player instance loop unless necessary
+				{
+					if (Main.rand.NextBool(spawnChance))
+						run = true;
+				}
+				else if (Main.rand.NextBool(spawnChance * Main.player.Count(x => x.active && !x.dead && x.GetSpiritPlayer().ZoneAsteroid)))
+					run = true; //Multiply debris spawn odds for every valid player in the biome, since this would be called for all of them
+
+				if (run)
+				{
+					Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
+
+					Rectangle spawnRect = screenRect;
+					int padding = 100;
+					spawnRect.Inflate(padding, padding);
+
+					int npcType = ModContent.NPCType<AsteroidDebris>();
+
+					for (int i = 0; i < 20; i++)
+					{
+						Vector2 spawnPos = new Vector2(spawnRect.X + Main.rand.Next(spawnRect.Width), spawnRect.Y + Main.rand.Next(spawnRect.Height));
+
+						var tilePos = spawnPos / 16;
+						bool inWorldBounds = tilePos.X < (Main.maxTilesX - 40) && tilePos.X > 40 && tilePos.Y < (Main.maxTilesY - 40) && tilePos.Y > 40;
+						if (!screenRect.Contains(spawnPos.ToPoint()) && inWorldBounds && !Collision.SolidCollision(spawnPos, 10, 10))
+						{
+							if (NPC.CountNPCS(npcType) < 30)
+							{
+								int index = NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcType);
+								if (Main.netMode != NetmodeID.SinglePlayer)
+									NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, index);
+							}
+							return;
+						}
+					}
+				}
+			}
+
 			if (ZoneAsteroid && MyWorld.stardustWeather)
 			{
 				int d = Main.rand.Next(new int[] { 180, 226, 206 });
@@ -2485,15 +2520,6 @@ namespace SpiritMod
 			if (clatterboneSet)
 				clatterboneTimer--;
 
-			if (rogueCrest && Player.ownedProjectileCounts[ModContent.ProjectileType<KnifeMinionProjectile>()] < 1)
-				Projectile.NewProjectile(Player.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<KnifeMinionProjectile>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(5), .5f, Player.whoAmI);
-
-			if (bowSummon && Player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Summon.BowSummon.BowSummon>()] < 1)
-				Projectile.NewProjectile(Player.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.Summon.BowSummon.BowSummon>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(22), 1.5f, Player.whoAmI);
-
-			if (spellswordCrest && Player.ownedProjectileCounts[ModContent.ProjectileType<HolyKnifeMinion>()] < 1)
-				Projectile.NewProjectile(Player.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<HolyKnifeMinion>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(32), 1.25f, Player.whoAmI);
-
 			// Update armor sets.
 			if (infernalSet)
 			{
@@ -3013,15 +3039,6 @@ namespace SpiritMod
 					Dust.NewDust(vector2, 16, 16, DustID.Torch, 0f, 0f, 0, default, 1f);
 				}
 			}
-
-			if (granitechDrones)
-			{
-				if (Player.ownedProjectileCounts[ModContent.ProjectileType<GranitechDrone>()] < 3)
-				{
-					int newProj = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<GranitechDrone>(), (int)(Player.GetDamage(DamageClass.Summon).ApplyTo(72)), 1.5f, Player.whoAmI);
-					Main.projectile[newProj].ai[1] = Player.ownedProjectileCounts[ModContent.ProjectileType<GranitechDrone>()];
-				}
-			}
 		}
 
 		public override void PostUpdateRunSpeeds()
@@ -3303,7 +3320,7 @@ namespace SpiritMod
 			}
 		}
 
-		private void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
+		private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
 
 		public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
 		{
@@ -3633,7 +3650,7 @@ namespace SpiritMod
 			}
 		}
 
-		private Vector2 TestTeleport(ref bool canSpawn, int teleportStartX, int teleportRangeX, int teleportStartY, int teleportRangeY)
+		private static Vector2 TestTeleport(ref bool canSpawn, int teleportStartX, int teleportRangeX, int teleportStartY, int teleportRangeY)
 		{
 			Player player = Main.player[Main.myPlayer];
 

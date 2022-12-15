@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.Items.Accessory.GranitechDrones
 {
@@ -80,7 +81,6 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
                 shootTimer--;
 
             Player owner = Main.player[Projectile.owner];
-            MyPlayer modOwner = owner.GetModPlayer<MyPlayer>();
 
             if (owner.inventory[owner.selectedItem].pick > 0)
 			{
@@ -147,10 +147,7 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
                     IdleMovement(owner);
             }
 
-            if (owner.dead)
-                modOwner.granitechDrones = false;
-
-            if (modOwner.granitechDrones)
+            if (owner.HasAccessory<GranitechDroneBox>())
                 Projectile.timeLeft = 2;
 
             foreach (var t in laserData.ToList())

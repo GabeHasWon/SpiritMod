@@ -111,7 +111,9 @@ namespace SpiritMod.NPCs.SkeletonBrute
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 		}
 
-        public override void FindFrame(int frameHeight)
+		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = NPC.Hitbox;
+
+		public override void FindFrame(int frameHeight)
         {
 			NPC.frame.Width = 240;
             NPC.frameCounter++;

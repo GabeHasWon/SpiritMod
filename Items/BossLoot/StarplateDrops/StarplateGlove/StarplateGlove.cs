@@ -74,7 +74,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 
 			if (charge > 0)
 			{
-				int chosenDust = Main.rand.NextBool(2) ? 6 : 62;
+				int chosenDust = Main.rand.NextBool(2) ? DustID.Torch : DustID.BlueTorch;
 				Vector2 vector2_1 = Main.OffsetsPlayerOnhand[player.bodyFrame.Y / 56] * 2f;
 				if (player.direction != 1)
 					vector2_1.X = (float)player.bodyFrame.Width - vector2_1.X;

@@ -2,11 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using System.Collections.Generic;
-using System.Linq;
 using System;
-using static Terraria.ModLoader.ModContent;
-using System.Reflection;
 using SpiritMod.Prim;
 
 namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
@@ -37,7 +33,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 
             if (PointCount <= 6) return;
             float widthVar;
-            float colorSin = (float)Math.Sin(Counter / 3f);
+            //float colorSin = (float)Math.Sin(Counter / 3f);
             for (int i = 0; i < Points.Count; i++)
             {
                 if (i == 0)
@@ -46,7 +42,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
                     Color c1 = Color.LightGreen;
                     Vector2 normalAhead = CurveNormal(Points, i + 1);
                     Vector2 secondUp = Points[i + 1] - normalAhead * widthVar;
-                    Vector2 secondDown = Points[i + 1] + normalAhead * widthVar;
+                    //Vector2 secondDown = Points[i + 1] + normalAhead * widthVar;
 					AddVertex(Points[i], c1 * AlphaValue, new Vector2(0, 0.5f));
 					AddVertex(secondUp, c1 * AlphaValue, new Vector2((float)(i + 1) / (float)Cap, 0));
 					AddVertex(secondUp, c1 * AlphaValue, new Vector2((float)(i + 1) / (float)Cap, 1));
@@ -56,8 +52,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
                     if (i != Points.Count - 1)
                     {
                         widthVar = (float)Math.Sqrt(i) * Width;
-                        Color base1 = new Color(7, 86, 122);
-                        Color base2 = new Color(255, 244, 173);
+                        //Color base1 = new Color(7, 86, 122);
+                        //Color base2 = new Color(255, 244, 173);
                         Color c =  Color.LightGreen;
 						Color CBT = Color.LightGreen;
                         Vector2 normal = CurveNormal(Points, i);
@@ -94,11 +90,11 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 		}
 		public override void OnUpdate()
         {
-			if (!(Entity is Projectile))
+			if (Entity is not Projectile)
 				return;
 
 			Counter++;
-            PointCount = Points.Count() * 6;
+            PointCount = Points.Count * 6;
             if (Cap < PointCount / 6)
             {
                 Points.RemoveAt(0);

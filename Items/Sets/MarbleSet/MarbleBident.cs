@@ -25,9 +25,9 @@ namespace SpiritMod.Items.Sets.MarbleSet
 			Item.noMelee = true;
 			Item.useAnimation = 28;
 			Item.useTime = 28;
-			Item.shootSpeed = 4f;
+			Item.shootSpeed = 5f;
 			Item.knockBack = 8f;
-			Item.damage = 18;
+			Item.damage = 24;
 			Item.value = Item.sellPrice(0, 0, 60, 0);
 			Item.rare = ItemRarityID.Green;
 			Item.shoot = ModContent.ProjectileType<MarbleBidentProj>();

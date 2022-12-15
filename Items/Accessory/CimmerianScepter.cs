@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
-	public class CimmerianScepter : AccessoryItem
+	public class CimmerianScepter : MinionAccessory
 	{
 		public override void SetStaticDefaults()
 		{

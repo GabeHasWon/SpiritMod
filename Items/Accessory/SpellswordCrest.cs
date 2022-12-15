@@ -1,11 +1,10 @@
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
-	public class SpellswordCrest : ModItem
+	public class SpellswordCrest : MinionAccessory
 	{
 		public override void SetStaticDefaults()
 		{
@@ -25,8 +24,6 @@ namespace SpiritMod.Items.Accessory
 			Item.defense = 1;
 			Item.accessory = true;
 		}
-
-		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().spellswordCrest = true;
 
 		public override void AddRecipes()
         {

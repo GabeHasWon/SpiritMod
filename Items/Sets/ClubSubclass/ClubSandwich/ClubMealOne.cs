@@ -25,7 +25,14 @@ namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
 		public override bool OnPickup(Player player)
 		{
 			SoundEngine.PlaySound(SoundID.Item2);
-			player.AddBuff(BuffID.WellFed2, 240);
+			if (player.HasBuff(BuffID.WellFed3))
+			{
+				player.buffTime[player.FindBuffIndex(BuffID.WellFed3)] += 60;
+			}
+			else
+			{
+				player.AddBuff(BuffID.WellFed3, 60);
+			}
 			return false;
 		}
 	}

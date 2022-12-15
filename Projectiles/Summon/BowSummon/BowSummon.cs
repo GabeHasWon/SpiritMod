@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items;
+using SpiritMod.Items.Accessory.BowSummonItem;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -42,14 +44,10 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 		{
 			bool flag64 = Projectile.type == ModContent.ProjectileType<BowSummon>();
 			Player player = Main.player[Projectile.owner];
-			MyPlayer modPlayer = player.GetSpiritPlayer();
 
 			if (flag64)
 			{
-				if (player.dead)
-					modPlayer.bowSummon = false;
-
-				if (modPlayer.bowSummon)
+				if (player.HasAccessory<BowSummonItem>())
 					Projectile.timeLeft = 2;
 			}
 

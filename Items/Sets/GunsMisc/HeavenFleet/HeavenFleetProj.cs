@@ -6,7 +6,7 @@ using Terraria.Audio;
 using Terraria.ModLoader;
 using Terraria.ID;
 using SpiritMod.Particles;
-
+using System.IO;
 
 namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 {
@@ -41,20 +41,23 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 		public override bool PreAI()
 		{
 			Player player = Main.player[Projectile.owner];
-			player.ChangeDir(Main.MouseWorld.X > player.position.X ? 1 : -1);
 
 			player.itemTime = 10; // Set item time to 10 frames while we are used
 			player.itemAnimation = 10; // Set item animation time to 10 frames while we are used
 			Projectile.position = player.Center;
 
-			direction = Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))) * 10f;
+			if (player == Main.LocalPlayer)
+			{
+				player.ChangeDir(Main.MouseWorld.X > player.position.X ? 1 : -1);
+				direction = Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))) * 10f;
+			}
+
 			Vector2 dustUnit = (direction * 2.5f).RotatedBy(Main.rand.NextFloat(-1, 1)) * 0.03f;
-			Vector2 pulseUnit = (direction * 2.5f) * 0.03f;
+			Vector2 pulseUnit = direction * 2.5f * 0.03f;
 
 			Vector2 dustOffset = player.Center + (direction * (5f + 3 * (float)Math.Sqrt(Projectile.localAI[0] / 100f))) + player.velocity;
 			Color color = Color.Lerp(new Color(35, 57, 222), new Color(140, 238, 255), (float)Math.Sqrt(Projectile.localAI[0] / 100f));
 			Vector2 spawnPos = dustOffset + (pulseUnit * 30);
-
 
 			if (player.channel && !firing)
 			{
@@ -122,6 +125,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 					toShoot *= 2.3f;
 					toShoot *= (float)Math.Pow(maxCounter, 0.18);
 					player.GetModPlayer<MyPlayer>().Shake += 1;
+
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 						Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center + (direction * 4), toShoot * new Vector2(Main.rand.NextFloat(.6f, 1.3f), Main.rand.NextFloat(0.6f, 1.2f)), ModContent.ProjectileType<HeavenfleetStar>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 				}
@@ -129,6 +133,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 			}
 			return true;
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Player player = Main.player[Projectile.owner];
@@ -145,7 +150,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 					}
 					Color color = Color.White * 0.75f * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
 
-					float scale = Projectile.scale;
 					Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/GunsMisc/HeavenFleet/HeavenFleet_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value; ;
 
 					Main.spriteBatch.Draw(tex, Offset - Main.screenPosition, null, color, player.itemRotation, tex.Size() / 2, num107, default, default);
@@ -165,12 +169,14 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 				{
 					Color color = Color.White * 0.75f * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
 
-					float scale = Projectile.scale;
 					Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/GunsMisc/HeavenFleet/HeavenFleet_Lights", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
 					spriteBatch.Draw(tex, Offset - screenPos, null, color, player.itemRotation, tex.Size() / 2, 1f, default, default);
 				}
 			}
 		}
+
+		public override void SendExtraAI(BinaryWriter writer) => writer.WriteVector2(direction);
+		public override void ReceiveExtraAI(BinaryReader reader) => direction = reader.ReadVector2();
 	}
 }

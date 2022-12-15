@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows
 		}
 		protected virtual void SafeSetDefaults() { }
 
-		public override Color? GetAlpha(Color lightColor) => Color.Lerp(lightColor, Color.White, 0.5f) * (1f - (float)Projectile.alpha / 255f);
+		public override Color? GetAlpha(Color lightColor) => Color.White * (1f - (float)Projectile.alpha / 255f);
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
@@ -44,15 +44,17 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows
 
 			for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[Projectile.type]; i++)
 			{
-				float opacityMod = (ProjectileID.Sets.TrailCacheLength[Projectile.type] - i) / (float)ProjectileID.Sets.TrailCacheLength[Projectile.type];
+				float opacityMod = (ProjectileID.Sets.TrailCacheLength[Projectile.type] - i) / (float)ProjectileID.Sets.TrailCacheLength[Projectile.type] * (.5f - (pulse * .25f));
 				Vector2 drawPosition = Projectile.oldPos[i] + (Projectile.Size / 2) - Main.screenPosition + new Vector2(0, Projectile.gfxOffY);
 				Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor) * opacityMod,
 					Projectile.oldRot[i], texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			}
-			//Draw the projectile normally
-			Main.EntitySpriteDraw(texture, drawPos, null, Projectile.GetAlpha(lightColor), Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
-			//Draw a pulse effect
-			Main.EntitySpriteDraw(texture, drawPos, null, Color.White * (1f - pulse), Projectile.rotation, texture.Size() / 2, Projectile.scale + (pulse * .75f), SpriteEffects.None, 0);
+			Color color = new Color(sbyte.MaxValue - Projectile.alpha, sbyte.MaxValue - Projectile.alpha, sbyte.MaxValue - Projectile.alpha, 0).MultiplyRGBA(Color.White);
+
+			Main.EntitySpriteDraw(texture, drawPos, null, Projectile.GetAlpha(color), Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+
+			for (int i = 0; i < 3; i++)
+				Main.EntitySpriteDraw(texture, drawPos, null, color * (1f + i - pulse), Projectile.rotation, texture.Size() / 2, Projectile.scale + (pulse * (.7f / (i + 1))), SpriteEffects.None, 0);
 
 			Lighting.AddLight(Projectile.Center, glowColor.ToVector3() / 2f);
 			return false;

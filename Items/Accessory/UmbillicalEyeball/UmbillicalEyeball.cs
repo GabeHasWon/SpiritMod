@@ -7,10 +7,11 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 {
-	public class UmbillicalEyeball : ModItem
+	public class UmbillicalEyeball : MinionAccessory
 	{
 		public override void SetStaticDefaults()
 		{
@@ -28,22 +29,6 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 			Item.value = Item.buyPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.LightRed;
 			Item.accessory = true;
-		}
-
-		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetModPlayer<EyeballPlayer>().EyeballMinion = true;
-	}
-
-	public class EyeballPlayer : ModPlayer
-	{
-		public bool EyeballMinion = false;
-
-		public override void ResetEffects() => EyeballMinion = false;
-
-		public override void PostUpdateEquips()
-		{
-			if (EyeballMinion)
-				if (Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()] < 3)
-					Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<UmbillicalEyeballProj>(), (int)(Player.GetDamage(DamageClass.Summon).ApplyTo(55)), 1.5f, Player.whoAmI, Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()], 0);
 		}
 	}
 
@@ -99,13 +84,10 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 			}
 
 			Player player = Main.player[Projectile.owner];
-			EyeballPlayer modOwner = player.GetModPlayer<EyeballPlayer>();
 			attackCounter = (Main.GameUpdateCount / 60f * 6.28f) + Projectile.ai[0];
 			rotationCounter += circleSpeed;
 
-			if (player.dead)
-				modOwner.EyeballMinion = false;
-			if (modOwner.EyeballMinion)
+			if (player.HasAccessory<UmbillicalEyeball>())
 				Projectile.timeLeft = 2;
 
 			float maxRange = 450f;
@@ -268,7 +250,7 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 
 		public override void OnUpdate()
 		{
-			PointCount = Points.Count() * 6;
+			PointCount = Points.Count * 6;
 			if (Destroyed || !Entity.active)
 				OnDestroy();
 			else
@@ -287,7 +269,7 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 
 			}
 			_length = 0;
-			for (int i = 0; i < Points.Count() - 2; i++)
+			for (int i = 0; i < Points.Count - 2; i++)
 			{
 				Vector2 dir = Points[i] - Points[i + 1];
 				_length += dir.Length();

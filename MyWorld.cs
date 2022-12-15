@@ -1541,9 +1541,15 @@ namespace SpiritMod
 			}
 
 			//Randomly spawn floating asteroid debris without disrupting NPC spawn weight
-			//ToDo: ensure NPCs don't spawn on other player screens in multiplayer
-			if (modPlayer.ZoneAsteroid && Main.rand.NextBool(55))
+			/*if (Main.rand.NextBool(55))
 			{
+				bool run = Main.netMode != NetmodeID.Server && player.GetSpiritPlayer().ZoneAsteroid;
+				if (!run) //Avoid running this loop whenever possible
+					if (Main.player.Any(x => x.active && x.GetSpiritPlayer().ZoneAsteroid))
+						run = true;
+				if (!run)
+					return;
+				//This only accounts for the host player's screen, fix it.
 				Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
 
 				Rectangle spawnRect = screenRect;
@@ -1566,7 +1572,7 @@ namespace SpiritMod
 						return;
 					}
 				}
-			}
+			}*/
 
 			//pagoda enemy spawning
 			if (!spawnedPagodaEnemies && Main.netMode != NetmodeID.MultiplayerClient)

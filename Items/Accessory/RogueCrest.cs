@@ -1,11 +1,10 @@
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
-	public class RogueCrest : ModItem
+	public class RogueCrest : MinionAccessory
 	{
 		public override void SetStaticDefaults()
 		{
@@ -25,7 +24,5 @@ namespace SpiritMod.Items.Accessory
 			Item.defense = 1;
 			Item.accessory = true;
 		}
-
-		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().rogueCrest = true;
 	}
 }
