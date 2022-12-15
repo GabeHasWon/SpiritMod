@@ -72,7 +72,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 			set => Projectile.ai[1] = value ? 0 : 1;
 		}
 
-		private bool Bigswing => (Projectile.frame >= 4);
+		private bool BigSwing => (Projectile.frame >= 4);
 
 		private bool SwingStart => Projectile.frame == 0 || Projectile.frame == 4 && Projectile.ai[0] > 0;
 		public override bool PreAI()
@@ -108,8 +108,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 
 		public override void AI()
 		{
-			Projectile.scale = (Bigswing) ? 1.75f : 1f;
-			float dist = Bigswing ? 45f : 35f;
+			Projectile.scale = (BigSwing) ? 1.75f : 1f;
+			float dist = BigSwing ? 45f : 35f;
 
 			Player.itemTime = 2;
 			Player.itemAnimation = 2;
@@ -139,10 +139,10 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 			}
 			if (SwingStart && Projectile.frameCounter == 1)
 			{
-				int dustamount = (Bigswing) ? 20 : 7;
+				int dustamount = (BigSwing) ? 20 : 7;
 				for (int i = 0; i < dustamount; i++)
 				{
-					float dustscale = (Bigswing) ? 2f : 1f;
+					float dustscale = (BigSwing) ? 2f : 1f;
 					dustscale *= Main.rand.NextFloat(0.7f, 1.3f);
 					float dusvel = dustscale * Main.rand.NextFloat(3, 6);
 					Vector2 dustpos = Projectile.velocity.RotatedByRandom(MathHelper.Pi) * dist * Main.rand.NextFloat(0.8f, 1.2f);
@@ -160,7 +160,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			if (Bigswing)
+			if (BigSwing)
 			{
 				damage = (int)(damage * 1.5f);
 				damage += target.defense / 2;

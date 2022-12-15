@@ -762,10 +762,17 @@ namespace SpiritMod.NPCs
 
 			if (MyWorld.calmNight)
 			{
-				if (spawnInfo.Invasion || spawnInfo.Sky || MyWorld.BlueMoon) return; //if invasion or in sky
-				if (Main.eclipse || Main.bloodMoon) return; //if eclipse or blood moon
-				if (!player.ZoneOverworldHeight) return; //if not in overworld
-				if (player.ZoneMeteor || player.ZoneRockLayerHeight || player.ZoneDungeon || player.ZoneBeach || player.ZoneCorrupt || player.ZoneCrimson || player.ZoneJungle || player.ZoneHallow || spawnInfo.Player.GetSpiritPlayer().ZoneReach || spawnInfo.Player.GetSpiritPlayer().ZoneSpirit) return; //if in wrong biome
+				if (spawnInfo.Invasion || spawnInfo.Sky || MyWorld.BlueMoon) 
+					return; //if invasion or in sky
+
+				if (Main.eclipse || Main.bloodMoon) 
+					return; //if eclipse or blood moon
+
+				if (!player.ZoneOverworldHeight) 
+					return; //if not in overworld
+
+				if (player.ZoneMeteor || player.ZoneRockLayerHeight || player.ZoneDungeon || player.ZoneBeach || player.ZoneCorrupt || player.ZoneCrimson || player.ZoneJungle || player.ZoneHallow || spawnInfo.Player.GetSpiritPlayer().ZoneReach || spawnInfo.Player.GetSpiritPlayer().ZoneSpirit) 
+					return; //if in wrong biome
 
 				pool.Clear();
 			}
@@ -811,6 +818,7 @@ namespace SpiritMod.NPCs
 			if (spawnInfo.Player.active && spawnInfo.Player.ZoneBeach && MyWorld.luminousOcean && !Main.dayTime)
 			{
 				pool.Clear();
+
 				if (spawnInfo.Water)
 				{
 					if (MyWorld.luminousType == 1)
@@ -821,7 +829,6 @@ namespace SpiritMod.NPCs
 						pool.Add(ModContent.NPCType<PurpleAlgae2>(), 3f);
 				}
 			}
-			return;
 		}
 
 		public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
