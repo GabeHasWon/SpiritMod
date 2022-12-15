@@ -459,140 +459,57 @@ namespace SpiritMod
 			OlympiumCurrencyID = CustomCurrencyManager.RegisterCurrency(new OlympiumCurrency(ModContent.ItemType<OlympiumToken>(), 999));
 
 			#region configLabels
+			void AddTranslation(string name, string defaultValue)
+			{
+				ModTranslation config = LocalizationLoader.CreateTranslation(this, name);
+				config.SetDefault(defaultValue);
+				LocalizationLoader.AddTranslation(config);
+			}
+
 			//Regular Config labels
-			ModTranslation config1 = LocalizationLoader.CreateTranslation(this,"Screenshake");
-			config1.SetDefault($"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Screenshake");
-			LocalizationLoader.AddTranslation(config1);
-
-			ModTranslation config2 = LocalizationLoader.CreateTranslation(this,"Distortion");
-			config2.SetDefault($"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Screen Distortion");
-			LocalizationLoader.AddTranslation(config2);
-
-			ModTranslation config3 = LocalizationLoader.CreateTranslation(this,"Particles");
-			config3.SetDefault($"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Foreground Particles");
-			LocalizationLoader.AddTranslation(config3);
-
-			ModTranslation config4 = LocalizationLoader.CreateTranslation(this,"Quicksell");
-			config4.SetDefault($"[i:" + Find<ModItem>("SeedBag").Type + "]  QoL: Quick-Sell Feature");
-			LocalizationLoader.AddTranslation(config4);
-
-			ModTranslation config5 = LocalizationLoader.CreateTranslation(this,"Autoswing");
-			config5.SetDefault($"[i:" + Find<ModItem>("PurpleNeonSign").Type + "]  QoL: Auto-Reuse Tooltip");
-			LocalizationLoader.AddTranslation(config5);
-
-			ModTranslation config6 = LocalizationLoader.CreateTranslation(this,"AmbientSounds");
-			config6.SetDefault($"[i:" + Find<ModItem>("SurrenderBell").Type + "]  Ambience: Ambient Sounds");
-			LocalizationLoader.AddTranslation(config6);
-
-			ModTranslation config7 = LocalizationLoader.CreateTranslation(this,"LeafFallAmbience");
-			config7.SetDefault($"[i:" + Find<ModItem>("EnchantedLeaf").Type + "]  Ambience: Falling Leaf Effects");
-			LocalizationLoader.AddTranslation(config7);
-
-			ModTranslation config8 = LocalizationLoader.CreateTranslation(this,"QuestButton");
-			config8.SetDefault($"[i:" + Find<ModItem>("Book_Slime").Type + "]  Quests: Quest Book Button Location");
-			LocalizationLoader.AddTranslation(config8);
-
-			ModTranslation config15 = LocalizationLoader.CreateTranslation(this,"QuestBookSwitching");
-			config15.SetDefault($"[i:" + Find<ModItem>("Book_Slime").Type + "]  Quests: Quest Book Tab Switching");
-			LocalizationLoader.AddTranslation(config15);
-
-			ModTranslation config9 = LocalizationLoader.CreateTranslation(this,"QuestIcons");
-			config9.SetDefault($"[i:" + Find<ModItem>("Brightbulb").Type + "]  Quests: Town NPC Quest Icons");
-			LocalizationLoader.AddTranslation(config9);
-
-			ModTranslation config10 = LocalizationLoader.CreateTranslation(this,"ArcaneHideoutGen");
-			config10.SetDefault($"[i:" + Find<ModItem>("JellyCandle").Type + "]  Worldgen: Arcane Tower and Bandit Hideout Generation");
-			LocalizationLoader.AddTranslation(config10);
-
-			ModTranslation config11 = LocalizationLoader.CreateTranslation(this,"OceanShape");
-			config11.SetDefault($"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Ocean Generation Shape");
-			LocalizationLoader.AddTranslation(config11);
-
-			ModTranslation config12 = LocalizationLoader.CreateTranslation(this,"OceanVents");
-			config12.SetDefault($"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Hydothermal Vent Ecosystems");
-			LocalizationLoader.AddTranslation(config12);
-
-			ModTranslation config13 = LocalizationLoader.CreateTranslation(this,"OceanWater");
-			config13.SetDefault($"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Ocean Water Transparency");
-			LocalizationLoader.AddTranslation(config13);
-
-			ModTranslation config14 = LocalizationLoader.CreateTranslation(this,"WaterEnemies");
-			config14.SetDefault($"[i:" + Find<ModItem>("SpiritKoi").Type + "]  Fishing: Fishing Encounters");
-			LocalizationLoader.AddTranslation(config14);
+			AddTranslation("Screenshake", $"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Screenshake");
+			AddTranslation("Distortion", $"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Screen Distortion");
+			AddTranslation("Particles", $"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Foreground Particles");
+			AddTranslation("Quicksell", $"[i:" + Find<ModItem>("SeedBag").Type + "]  QoL: Quick-Sell Feature");
+			AddTranslation("Autoswing", $"[i:" + Find<ModItem>("PurpleNeonSign").Type + "]  QoL: Auto-Reuse Tooltip");
+			AddTranslation("AmbientSounds", $"[i:" + Find<ModItem>("SurrenderBell").Type + "]  Ambience: Ambient Sounds");
+			AddTranslation("LeafFallAmbience", $"[i:" + Find<ModItem>("EnchantedLeaf").Type + "]  Ambience: Falling Leaf Effects");
+			AddTranslation("QuestButton", $"[i:" + Find<ModItem>("Book_Slime").Type + "]  Quests: Quest Book Button Location");
+			AddTranslation("QuestBookSwitching", $"[i:" + Find<ModItem>("Book_Slime").Type + "]  Quests: Quest Book Tab Switching");
+			AddTranslation("QuestIcons", $"[i:" + Find<ModItem>("Brightbulb").Type + "]  Quests: Town NPC Quest Icons");
+			AddTranslation("ArcaneHideoutGen", $"[i:" + Find<ModItem>("JellyCandle").Type + "]  Worldgen: Arcane Tower and Bandit Hideout Generation");
+			AddTranslation("OceanShape", $"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Ocean Generation Shape");
+			AddTranslation("OceanVents", $"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Hydothermal Vent Ecosystems");
+			AddTranslation("OceanWater", $"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Ocean Water Transparency");
+			AddTranslation("WaterEnemies", $"[i:" + Find<ModItem>("SpiritKoi").Type + "]  Fishing: Fishing Encounters");
 
 			//Music Config
-			ModTranslation musicConfig1 = LocalizationLoader.CreateTranslation(this,"BlizzardMusic");
-			musicConfig1.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for Blizzards");
-			LocalizationLoader.AddTranslation(musicConfig1);
+			void AddMusicTranslation(string name, string addedValue)
+			{
+				ModTranslation config = LocalizationLoader.CreateTranslation(this, name);
+				config.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  " + addedValue);
+				LocalizationLoader.AddTranslation(config);
+			}
 
-			ModTranslation musicConfig2 = LocalizationLoader.CreateTranslation(this,"SnowNightMusic");
-			musicConfig2.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Snow biome at night");
-			LocalizationLoader.AddTranslation(musicConfig2);
-
-			ModTranslation musicConfig3 = LocalizationLoader.CreateTranslation(this,"DesertNightMusic");
-			musicConfig3.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Desert biome at night");
-			LocalizationLoader.AddTranslation(musicConfig3);
-
-			ModTranslation musicConfig4 = LocalizationLoader.CreateTranslation(this,"HallowNightMusic");
-			musicConfig4.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for The Hallow at night");
-			LocalizationLoader.AddTranslation(musicConfig4);
-
-			ModTranslation musicConfig5 = LocalizationLoader.CreateTranslation(this,"CorruptNightMusic");
-			musicConfig5.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for The Corruption at night");
-			LocalizationLoader.AddTranslation(musicConfig5);
-
-			ModTranslation musicConfig6 = LocalizationLoader.CreateTranslation(this,"CrimsonNightMusic");
-			musicConfig6.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for The Crimson at night");
-			LocalizationLoader.AddTranslation(musicConfig6);
-
-			ModTranslation musicConfig7 = LocalizationLoader.CreateTranslation(this,"GraniteMusic");
-			musicConfig7.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Granite biome");
-			LocalizationLoader.AddTranslation(musicConfig7);
-
-
-			ModTranslation musicConfig8 = LocalizationLoader.CreateTranslation(this,"MarbleMusic");
-			musicConfig8.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Marble biome");
-			LocalizationLoader.AddTranslation(musicConfig8);
-
-			ModTranslation musicConfig9 = LocalizationLoader.CreateTranslation(this,"SpiderMusic");
-			musicConfig9.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Spider caverns");
-			LocalizationLoader.AddTranslation(musicConfig9);
-
-			ModTranslation musicConfig10 = LocalizationLoader.CreateTranslation(this,"MeteorMusic");
-			musicConfig10.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Meteorite biome");
-			LocalizationLoader.AddTranslation(musicConfig10);
-
-			ModTranslation musicConfig18 = LocalizationLoader.CreateTranslation(this,"FrostLegionMusic");
-			musicConfig18.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Frost Legion invasion");
-			LocalizationLoader.AddTranslation(musicConfig18);
-
-			ModTranslation musicConfig11 = LocalizationLoader.CreateTranslation(this,"SkeletonPrimeMusic");
-			musicConfig11.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for Skeletron Prime");
-			LocalizationLoader.AddTranslation(musicConfig11);
-
-			ModTranslation musicConfig16 = LocalizationLoader.CreateTranslation(this,"AuroraMusic");
-			musicConfig16.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Aurora");
-			LocalizationLoader.AddTranslation(musicConfig16);
-
-			ModTranslation musicConfig12 = LocalizationLoader.CreateTranslation(this,"LuminousMusic");
-			musicConfig12.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for Luminous Oceans");
-			LocalizationLoader.AddTranslation(musicConfig12);
-
-			ModTranslation musicConfig13 = LocalizationLoader.CreateTranslation(this,"CalmNightMusic");
-			musicConfig13.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for Calm Night mini-events");
-			LocalizationLoader.AddTranslation(musicConfig13);
-
-			ModTranslation musicConfig14 = LocalizationLoader.CreateTranslation(this,"OceanDepthsMusic");
-			musicConfig14.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Ocean depths");
-			LocalizationLoader.AddTranslation(musicConfig14);
-
-			ModTranslation musicConfig15 = LocalizationLoader.CreateTranslation(this,"HyperspaceMusic");
-			musicConfig15.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds two unique tracks for the artificial Hyperspace biome");
-			LocalizationLoader.AddTranslation(musicConfig15);
-
-			ModTranslation musicConfig17 = LocalizationLoader.CreateTranslation(this,"AshfallMusic");
-			musicConfig17.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  Adds a unique track for the Ashfall weather in the Underworld");
-			LocalizationLoader.AddTranslation(musicConfig17);
+			AddMusicTranslation("BlizzardMusic", "Adds a unique track for Blizzards");
+			AddMusicTranslation("SnowNightMusic", "Adds a unique track for the Snow biome at night");
+			AddMusicTranslation("DesertNightMusic", "Adds a unique track for the Desert biome at night");
+			AddMusicTranslation("HallowNightMusic", "Adds a unique track for The Hallow at night");
+			AddMusicTranslation("CorruptNightMusic", "Adds a unique track for The Corruption at night");
+			AddMusicTranslation("CrimsonNightMusic", "Adds a unique track for The Crimson at night");
+			AddMusicTranslation("GraniteMusic", "Adds a unique track for the Granite biome");
+			AddMusicTranslation("MarbleMusic", "Adds a unique track for the Marble biome");
+			AddMusicTranslation("SpiderMusic", "Adds a unique track for the Spider caverns");
+			AddMusicTranslation("MeteorMusic", "Adds a unique track for the Meteorite biome");
+			AddMusicTranslation("FrostLegionMusic", "Adds a unique track for the Frost Legion invasion");
+			AddMusicTranslation("SkeletonPrimeMusic", "Adds a unique track for Skeletron Prime");
+			AddMusicTranslation("AuroraMusic", "Adds a unique track for the Aurora");
+			AddMusicTranslation("LuminousMusic", "Adds a unique track for Luminous Oceans");
+			AddMusicTranslation("CalmNightMusic", "Adds a unique track for Calm Night mini-events");
+			AddMusicTranslation("OceanDepthsMusic", "Adds a unique track for the Ocean depths");
+			AddMusicTranslation("HyperspaceMusic", "Adds two unique tracks for the artificial Hyperspace biome");
+			AddMusicTranslation("AshfallMusic", "Adds a unique track for the Ashfall weather in the Underworld");
+			AddMusicTranslation("VictoryNightMusic", "Adds a unique track for the Lantern Night event");
 			#endregion
 
 			if (Main.netMode != NetmodeID.Server)

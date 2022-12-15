@@ -97,5 +97,10 @@ namespace SpiritMod.Utilities
 		[Tooltip("Enables a unique track for the Ashfall weather in the Underworld")]
 		[DefaultValue(true)]
 		public bool AshfallMusic { get; set; }
+
+		[Label("$Mods.SpiritMod.VictoryNightMusic")]
+		[Tooltip("Enables a unique track for the Lantern Night event")]
+		[DefaultValue(true)]
+		public bool VictoryNightMusic { get; set; }
 	}
 }
