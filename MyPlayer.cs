@@ -1814,7 +1814,7 @@ namespace SpiritMod
 			//Randomly spawn floating asteroid debris without disrupting NPC spawn weight
 			if (ZoneAsteroid)
 			{
-				int spawnChance = 55;
+				int spawnChance = 64;
 
 				bool run = false;
 				if (Main.netMode == NetmodeID.SinglePlayer) //Avoid running a player instance loop unless necessary
@@ -1830,7 +1830,7 @@ namespace SpiritMod
 					Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
 
 					Rectangle spawnRect = screenRect;
-					int padding = 100;
+					int padding = 80 * 16; //40 tiles in each direction
 					spawnRect.Inflate(padding, padding);
 
 					int npcType = ModContent.NPCType<AsteroidDebris>();

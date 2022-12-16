@@ -162,7 +162,10 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			spriteBatch.Draw(texture, NPC.Center + new Vector2(offset) - screenPos, rect, NPC.GetAlpha(drawColor), NPC.rotation, rect.Size() / 2, NPC.scale, SpriteEffects.None, 0f);
 			return false;
 		}
+
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => Shiny ? null : false;
+
+		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = NPC.Hitbox;
 
 		public override void FindFrame(int frameHeight)
 		{
