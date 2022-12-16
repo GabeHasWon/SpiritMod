@@ -451,7 +451,6 @@ namespace SpiritMod
 			//Coverings.Load(this);
 
 			GlobalNoise = new PerlinNoise(Main.rand.Next());
-
 			Main.rand ??= new UnifiedRandom();
 
 			Items.Halloween.CandyBag.Initialize();
@@ -786,14 +785,8 @@ namespace SpiritMod
 				if (type.IsAbstract)
 					continue;
 
-				bool modType = true;
-
 				var types = new[]{ typeof(ModItem), typeof(ModNPC), typeof(ModProjectile), typeof(ModDust), typeof(ModTile), typeof(ModWall), typeof(ModBuff), typeof(ModMount) };
-				if (types.Any(x => type.IsSubclassOf(x)))
-				{
-				}
-				else
-					modType = false;
+				bool modType = types.Any(x => type.IsSubclassOf(x));
 
 				if (Main.dedServ || !modType)
 					continue;
@@ -814,10 +807,8 @@ namespace SpiritMod
 					textures[0] = texture.Value;
 
 				for (int i = 1; i <= texCount; i++)
-				{
 					textures[i] = ModContent.Request<Texture2D>(path + "_" + i, AssetRequestMode.ImmediateLoad).Value;
-					StormGlyph.TESTO = textures[i].ToString();
-				}
+
 				_texField.SetValue(null, textures);
 			}
 		}

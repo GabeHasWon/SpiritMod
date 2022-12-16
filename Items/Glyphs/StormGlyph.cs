@@ -10,7 +10,6 @@ namespace SpiritMod.Items.Glyphs
 	public class StormGlyph : GlyphBase, IGlowing
 	{
 		public static Texture2D[] _textures;
-		public static string TESTO = string.Empty;
 
 		Texture2D IGlowing.Glowmask(out float bias)
 		{
