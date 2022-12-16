@@ -20,8 +20,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-			Item.width = 24;
-			Item.height = 26;
+			Item.width = 20;
+			Item.height = 24;
 			Item.value = 100;
 			Item.rare = ItemRarityID.Orange;
 			Item.maxStack = 999;
