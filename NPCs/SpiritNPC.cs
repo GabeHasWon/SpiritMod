@@ -36,14 +36,12 @@ namespace SpiritMod.NPCs
 			if (fps == 0)
 				return;
 
-			if (NPC.frameCounter >= (60 / fps))
+			if (NPC.frameCounter >= (60f / fps))
 			{
 				frame.Y += reverse ? -1 : 1;
 				NPC.frameCounter = 0;
 				LoopCheck();
-
-				if (action != null)
-					action.Invoke(frame.Y);
+				action?.Invoke(frame.Y);
 			}
 		}
 
