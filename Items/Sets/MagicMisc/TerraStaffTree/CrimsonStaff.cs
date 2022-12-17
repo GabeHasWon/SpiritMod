@@ -1,3 +1,4 @@
+using SpiritMod.Projectiles.Magic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,7 +31,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 			Item.rare = ItemRarityID.Blue;
 			Item.UseSound = SoundID.Item20;
 			Item.autoReuse = false;
-			Item.shoot = ModContent.ProjectileType<Projectiles.Magic.Blood>();
+			Item.shoot = ModContent.ProjectileType<Blood>();
 			Item.shootSpeed = 7f;
 		}
 		public override void AddRecipes()

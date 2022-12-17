@@ -665,7 +665,7 @@ namespace SpiritMod.NPCs
 			else if (type == NPCID.Dryad)
 			{
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Placeable.MusicBox.TranquilWindsBox>(), false);
-				if (NPC.downedMoonlord && Main.halloween)
+				if (NPC.downedGolemBoss && Main.halloween)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Placeable.Tiles.HalloweenGrass>(), false);
 
 				if (Main.LocalPlayer.GetSpiritPlayer().ZoneReach)
@@ -697,7 +697,6 @@ namespace SpiritMod.NPCs
 			{
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Canvas>(), false);
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<FloppaPainting>(), false);
-
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SatchelReward>(), false);
 
 				if (ModContent.GetInstance<StarjinxEvent.StarjinxEventWorld>().StarjinxDefeated)

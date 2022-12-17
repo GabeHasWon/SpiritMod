@@ -1,6 +1,7 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
+using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Items.Placeable.Furniture;
 
 namespace SpiritMod.Mechanics.QuestSystem.Quests

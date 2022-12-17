@@ -86,6 +86,7 @@ namespace SpiritMod
 		public int astralSetStacks;
 		public bool frigidGloves = false;
 		public bool mushroomPotion = false;
+		public bool flightPotion = false; 
 		public bool magnifyingGlass = false;
 		public bool ShieldCore = false;
 		public int shieldsLeft = 2;

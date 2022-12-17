@@ -1,23 +1,21 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
+
 
 namespace SpiritMod.Buffs.Potion
 {
-	public class MushroomPotionBuff : ModBuff
+	public class FlightPotionBuff : ModBuff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spore Release");
-			Description.SetDefault("Leave behind a trail of damaging mushrooms");
+			DisplayName.SetDefault("Soaring");
+			Description.SetDefault("Increases flight duration by 25%.");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			modPlayer.mushroomPotion = true;
 		}
-
 	}
 }

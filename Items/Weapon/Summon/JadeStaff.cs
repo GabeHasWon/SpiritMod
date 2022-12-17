@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Weapon.Summon
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.knockBack = 2.25f;
-			Item.value = 20000;
+			Item.value = Item.buyPrice(gold: 10);
 			Item.rare = ItemRarityID.Orange;
 			Item.UseSound = SoundID.NPCHit56;
 			Item.autoReuse = false;

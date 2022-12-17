@@ -1,23 +1,22 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Buffs.Potion
 {
-	public class MushroomPotionBuff : ModBuff
+	public class DoubleJumpPotionBuff : ModBuff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spore Release");
-			Description.SetDefault("Leave behind a trail of damaging mushrooms");
+			DisplayName.SetDefault("Aether Jump");
+			Description.SetDefault("Provides an additional midair jump.");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			modPlayer.mushroomPotion = true;
+		player.hasJumpOption_Cloud = true;
 		}
-
 	}
 }
+

@@ -76,6 +76,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			if (type == ModContent.NPCType<RuneWizard>() && QuestManager.GetQuest<FirstAdventure>().IsCompleted && !Main.dayTime)
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<OccultistMap>(), false);
 
+			/*
 			if (type == NPCID.Stylist)
 			{
 				if (QuestManager.GetQuest<StylistQuestSeafoam>().IsCompleted)
@@ -86,17 +87,19 @@ namespace SpiritMod.Mechanics.QuestSystem
 				if (QuestManager.GetQuest<StylistQuestCorrupt>().IsCompleted)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Sets.DyesMisc.HairDye.CystalDye>(), false);
 				if (QuestManager.GetQuest<StylistQuestCrimson>().IsCompleted)
-					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Sets.DyesMisc.HairDye.ViciousDye>(), false);
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Sets.DyesMisc.HairDye.ViciousDye>(), false); 
 			}
+			*/
+
 			if (type == NPCID.Merchant)
 			{
 				if (QuestManager.GetQuest<AnglerStatueQuest>().IsCompleted)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<GiantAnglerStatue>(), false);
 			}
-			if (type == NPCID.Demolitionist)
+			if (type == NPCID.Dryad)
 			{
-				if (QuestManager.GetQuest<RescueQuestStylist>().IsCompleted)
-					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<LongFuse>(), false);
+				if (QuestManager.GetQuest<CritterCaptureFloater>().IsCompleted)
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Magic.LuminanceSeacone.LuminanceSeacone>(), false);
 			}
 			if (type == ModContent.NPCType<Adventurer>())
 			{
@@ -114,17 +117,17 @@ namespace SpiritMod.Mechanics.QuestSystem
 				if (QuestManager.GetQuest<ExplorerQuestMushroom>().IsCompleted)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<ExplorerScrollMushroomFull>(), false);
 
-				if (QuestManager.GetQuest<CritterCaptureFloater>().IsCompleted)
-					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Magic.LuminanceSeacone.LuminanceSeacone>(), false);
-
 				if (QuestManager.GetQuest<ManicMage>().IsCompleted)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Sets.MagicMisc.Lightspire.AkaviriStaff>(), false);
 
 				if (QuestManager.GetQuest<SkyHigh>().IsCompleted)
+				{
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Tiles.Furniture.JadeDragonStatue.DragonStatueItem>(), false);
-
-				if (QuestManager.GetQuest<SlayerQuestCavern>().IsCompleted)
-					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Thrown.ClatterSpear>(), false);
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Equipment.DynastyFan>(), false);
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Summon.JadeStaff>(), false);
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Swung.AnimeSword.AnimeSword>(), false);
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Tiles.Furniture.FestivalLanternItem>(), false);
+				}
 
 				if (QuestManager.GetQuest<ZombieOriginQuest>().IsCompleted)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Swung.Punching_Bag.Punching_Bag>(), false);
@@ -135,8 +138,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SepulchreBannerItem>(), false);
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SepulchreChest>(), false);
 				}
-
-				if (QuestManager.GetQuest<SkyHigh>().IsCompleted)
+				if ((QuestManager.GetQuest<BreakingAndEntering>().IsCompleted) || (QuestManager.GetQuest<FriendSafari>().IsCompleted))
 				{
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<PottedSakura>(), false);
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<PottedWillow>(), false);
@@ -151,6 +153,9 @@ namespace SpiritMod.Mechanics.QuestSystem
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Thrown.CryoKnife>(), false);
 				if (QuestManager.GetQuest<IceDeityQuest>().IsCompleted)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Placeable.IceSculpture.IceDeitySculpture>(), false);
+
+				if (QuestManager.GetQuest<SlayerQuestBriar>().IsCompleted)
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.FeralConcoction>(), false);
 			}
 			OnSetupShop?.Invoke(type, shop, nextSlot);
 		}

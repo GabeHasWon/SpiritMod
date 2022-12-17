@@ -24,6 +24,14 @@ namespace SpiritMod.Items.Sets.FloranSet
 			Item.defense = 2;
 			Item.accessory = true;
 		}
+		public override void AddRecipes()
+		{
+			var recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<FloranSet.FloranBar>(), 8);
+			recipe.AddIngredient(ModContent.ItemType<BriarDrops.EnchantedLeaf>(), 4);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
+		}
 
 	}
 

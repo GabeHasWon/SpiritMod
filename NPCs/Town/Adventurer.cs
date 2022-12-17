@@ -11,6 +11,7 @@ using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Personalities;
+using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -134,7 +135,7 @@ namespace SpiritMod.NPCs.Town
             int glowStick = Main.moonPhase == 4 && !Main.dayTime ? ItemID.SpelunkerGlowstick : ItemID.StickyGlowstick;
             AddItem(ref shop, ref nextSlot, glowStick);
 
-            switch (Main.moonPhase)
+			switch (Main.moonPhase)
             {
                 case 4 when !Main.dayTime:
                     AddItem(ref shop, ref nextSlot, ItemID.CursedTorch);

@@ -23,7 +23,8 @@ namespace SpiritMod.Tiles.Furniture
 		{
 			Item.width = 28;
 			Item.height = 22;
-			Item.value = Item.sellPrice(0, 0, 10, 0);
+			Item.value = Item.sellPrice(0, 0, 40, 0);
+			Item.value = Item.buyPrice(gold: 2);
 
 			Item.maxStack = 99;
 

@@ -34,7 +34,8 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 			Item.noMelee = true;
 			Item.knockBack = 1;
 			Item.useTurn = false;
-			Item.value = Item.sellPrice(0, 0, 90, 0);
+			Item.value = Item.sellPrice(0, 2, 0, 0);
+			Item.value = Item.buyPrice(gold: 10);
 			Item.rare = ItemRarityID.Orange;
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<AnimeSwordProj>();

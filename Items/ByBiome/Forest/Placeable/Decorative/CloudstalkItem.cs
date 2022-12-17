@@ -40,6 +40,7 @@ namespace SpiritMod.Items.ByBiome.Forest.Placeable.Decorative
 				AddIngredient<CloudstalkItem>().
 				AddTile(TileID.Bottles).
 				Register();
+
 		}
 	}
 }
