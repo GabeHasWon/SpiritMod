@@ -305,7 +305,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			npcLoot.AddOneFromOptions(1, ModContent.ItemType<Handball>(), ModContent.ItemType<SacrificialDagger>(), ModContent.ItemType<BloodWard>());
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => Main.bloodMoon && spawnInfo.Player.Center.Y / 16f < Main.worldSurface ? 0.02f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !NPC.AnyNPCs(Type) && Main.bloodMoon && spawnInfo.Player.Center.Y / 16f < Main.worldSurface ? 0.01f : 0f;
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,

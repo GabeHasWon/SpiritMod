@@ -335,7 +335,7 @@ namespace SpiritMod.NPCs.Boss
 				ModContent.ItemType<TalonGarb>()
 			};
 
-			npcLoot.AddMasterModeRelicAndPet<Items.Placeable.Relics.DuskingRelicItem, Items.BossLoot.ScarabeusDrops.ScarabPet.ScarabPetItem>();
+			npcLoot.AddMasterModeRelicAndPet<Items.Placeable.Relics.AvianRelicItem, Items.BossLoot.AvianDrops.AvianPet.AvianPetItem>();
 			npcLoot.AddBossBag<FlyerBag>();
 
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());

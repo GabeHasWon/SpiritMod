@@ -81,12 +81,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 				if (Charge >= chargeMax)
 				{
-					damage *= 2;
+					damage = (int)(damage * 2.5f);
 					knockback *= 2f;
 					magnitude *= 2f;
 					player.GetModPlayer<MyPlayer>().Shake += 1;
 
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyBlastMedium") with { PitchVariance = 0.1f, Volume = 0.275f }, player.Center);
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyBlastMedium") with { PitchVariance = 0.1f, Volume = 0.6f }, player.Center);
 					ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center, fxColor, 50, 20, PulseCircle.MovementType.OutwardsQuadratic)
 					{
 						Angle = player.itemRotation,
@@ -101,7 +101,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						dust.scale = (float)(Charge / chargeMax) * Main.rand.NextFloat(0.8f, 1.2f);
 					}
 				}
-				else SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 2 }, player.Center);
+				else 
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 2 }, player.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{

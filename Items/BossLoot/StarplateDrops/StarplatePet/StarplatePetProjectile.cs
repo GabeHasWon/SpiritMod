@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Tiles.Ambient;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -118,6 +119,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 			{
 				targetPosition += new Vector2(120, 0).RotatedBy(spinner % MathHelper.TwoPi);
 				maxSpeed = Projectile.Distance(targetPosition) - 10;
+
 				if (maxSpeed > 12)
 					maxSpeed = 12;
 			}
@@ -125,6 +127,9 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 				targetPosition = Owner.Center;
 
 			Projectile.velocity += Projectile.DirectionTo(targetPosition - Projectile.velocity) * 0.3f;
+
+			if (ownerDist > 1400 * 1400)
+				maxSpeed = 12 + (float)((Math.Sqrt(ownerDist) - 1400) * 0.05f);
 
 			if (Projectile.velocity.LengthSquared() > maxSpeed * maxSpeed)
 				Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
