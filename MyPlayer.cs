@@ -2269,6 +2269,11 @@ namespace SpiritMod
 				Player.manaFlower = !StarjinxSet;
 		}
 
+		public override void PostUpdateBuffs()
+		{
+			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeMaxMultiplier);
+		}
+
 		public override void PostUpdateEquips()
 		{
 			Player.GetModPlayer<DashPlayer>().DashMovement();

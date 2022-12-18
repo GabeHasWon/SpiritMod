@@ -8,7 +8,7 @@ namespace SpiritMod.Buffs.Potion
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Aether Jump");
-			Description.SetDefault("Provides an additional midair jump.");
+			Description.SetDefault("Grants a temporary double jump");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}
