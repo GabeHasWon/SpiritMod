@@ -1,9 +1,6 @@
-using SpiritMod.Items.BossLoot.ScarabeusDrops;
 using SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh;
-using SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook;
 using SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop;
 using SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow;
-using SpiritMod.Items.BossLoot.ScarabeusDrops.RadiantCane;
 using SpiritMod.Items.Equipment;
 using Terraria;
 using Terraria.ID;
@@ -12,26 +9,9 @@ using SpiritMod.Items.Sets.DonatorVanity;
 
 namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 {
-	public class BagOScarabs : ModItem
+	public class BagOScarabs : BossBagItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Consumable\nRight Click to open");
-		}
-
-		public override void SetDefaults()
-		{
-			Item.width = 20;
-			Item.height = 20;
-			Item.rare = -2;
-
-			Item.maxStack = 30;
-
-			Item.expert = true;
-		}
-
-		public override bool CanRightClick() => true;
+		internal override string BossName => "Scarabeus";
 
 		public override void RightClick(Player player)
 		{

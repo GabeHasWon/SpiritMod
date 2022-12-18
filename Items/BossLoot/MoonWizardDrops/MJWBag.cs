@@ -7,30 +7,9 @@ using SpiritMod.Items.Sets.DonatorVanity;
 
 namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 {
-	public class MJWBag : ModItem
+	public class MJWBag : BossBagItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Consumable\nRight Click to open");
-		}
-
-
-		public override void SetDefaults()
-		{
-			Item.width = 20;
-			Item.height = 20;
-			Item.rare = -2;
-
-			Item.maxStack = 30;
-
-			Item.expert = true;
-		}
-
-		public override bool CanRightClick()
-		{
-			return true;
-		}
+		internal override string BossName => "Moon Jelly Wizard";
 
 		public override void RightClick(Player player)
 		{

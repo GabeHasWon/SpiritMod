@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Particles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -12,6 +13,7 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 	{
 		private Color trailColor = Color.White;
 		private int[] dustType = new int[2];
+		private int debuffType = -1;
 
 		public override void SetStaticDefaults()
 		{
@@ -40,10 +42,12 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 				case 1:
 					trailColor = Color.LimeGreen;
 					dustType = new int[] { DustID.FartInAJar, DustID.GreenTorch };
+					debuffType = BuffID.Poisoned;
 					break;
 				case 2:
 					trailColor = Color.LightBlue;
 					dustType = new int[] { DustID.FrostHydra, DustID.IceTorch };
+					debuffType = BuffID.Frostburn;
 					break;
 				case 3:
 					trailColor = Color.Magenta;
@@ -52,6 +56,7 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 				default:
 					trailColor = Color.Orange;
 					dustType = new int[] { DustID.SolarFlare, DustID.Torch };
+					debuffType = BuffID.OnFire;
 					break;
 			}
 			return true;
@@ -70,17 +75,39 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
-			for (int i = 0; i < 12; i++)
+			if (Subtype == 3)
 			{
-				Vector2 velocity = (new Vector2(Projectile.velocity.X, 0) * Main.rand.NextFloat(0.3f, 0.5f)).RotatedByRandom(MathHelper.TwoPi);
-				if (timeLeft <= 0)
-					velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(0.11f);
-				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, Main.rand.NextBool(2) ? dustType[0] : dustType[1],
-					velocity, 0, default, Main.rand.NextFloat(1.0f, 1.2f));
-				dust.noGravity = true;
-				if (dust.type == DustID.PinkTorch)
-					dust.fadeIn = 1.1f;
+				for (int i = 0; i < 10; i++)
+				{
+					Vector2 velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(1.5f);
+					Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType[Main.rand.Next(dustType.Length)],
+						velocity, 0, default, Main.rand.NextFloat(0.8f, 1.0f));
+					dust.noGravity = true;
+				}
 			}
+			else
+			{
+				for (int i = 0; i < 12; i++)
+				{
+					Vector2 velocity = (new Vector2(Projectile.velocity.X, 0) * Main.rand.NextFloat(0.3f, 0.5f)).RotatedByRandom(MathHelper.TwoPi);
+					if (timeLeft <= 0)
+						velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(0.11f);
+					Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, dustType[Main.rand.Next(dustType.Length)],
+						velocity, 0, default, Main.rand.NextFloat(1.0f, 1.2f));
+					dust.noGravity = true;
+					if (dust.type == DustID.PinkTorch)
+						dust.fadeIn = 1.1f;
+				}
+			}
+		}
+
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			if (debuffType != -1)
+				target.AddBuff(debuffType, 300);
+
+			if (Subtype == 3 && !Main.dedServ)
+				ParticleHandler.SpawnParticle(new PlasmaBurst(Projectile.Center, 1f, Main.rand.NextFloat(MathHelper.Pi)));
 		}
 
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)

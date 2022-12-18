@@ -5,26 +5,9 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.VinewrathDrops
 {
-	public class ReachBossBag : ModItem
+	public class ReachBossBag : BossBagItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Consumable\nRight Click to open");
-		}
-
-		public override void SetDefaults()
-		{
-			Item.width = 20;
-			Item.height = 20;
-			Item.rare = -2;
-
-			Item.maxStack = 30;
-
-			Item.expert = true;
-		}
-
-		public override bool CanRightClick() => true;
+		internal override string BossName => "Vinewrath Bane";
 
 		public override void RightClick(Player player)
 		{

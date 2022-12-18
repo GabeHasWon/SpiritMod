@@ -1,28 +1,33 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Particles;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Bullet.Blaster
 {
-    public class Beam : SubtypeProj
+    public class BigBeam : SubtypeProj
     {
+		private Color commonColor = Color.White;
+		private int[] dustType = new int[2];
+
 		private readonly int frameDur = 3;
 
 		private float beamLength;
-		private readonly int maxBeamLength = 300;
+		private readonly int maxBeamLength = 1200;
 
-		private Vector2? lastStrikePos;
+		private bool spawnedVFX = false;
 
 		private Player Player => Main.player[Projectile.owner];
 
 		public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Beam");
-			Main.projFrames[Projectile.type] = 3;
+			Main.projFrames[Projectile.type] = 8;
         }
 
         public override void SetDefaults()
@@ -53,17 +58,32 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 			Projectile.netUpdate = true;
 		}
 
+		public override bool PreAI()
+		{
+			switch (Subtype)
+			{
+				case 1:
+					commonColor = Color.LimeGreen;
+					dustType = new int[] { DustID.FartInAJar, DustID.GreenTorch };
+					break;
+				case 2:
+					commonColor = Color.White;
+					dustType = new int[] { DustID.FrostHydra, DustID.IceTorch };
+					break;
+				case 3:
+					commonColor = Color.HotPink;
+					dustType = new int[] { DustID.Pixie, DustID.PinkTorch };
+					break;
+				default:
+					commonColor = Color.Orange;
+					dustType = new int[] { DustID.SolarFlare, DustID.Torch };
+					break;
+			}
+			return true;
+		}
+
 		public override void AI()
         {
-			if (lastStrikePos != null && Projectile.velocity == Vector2.Zero)
-			{
-				if (Player == Main.LocalPlayer)
-				{
-					Projectile.velocity = Main.player[Projectile.owner].DirectionTo(Main.MouseWorld) * 2;
-					Projectile.netUpdate = true;
-				}
-			}
-
             if (++Projectile.frameCounter >= frameDur)
 			{
 				Projectile.frameCounter = 0;
@@ -75,38 +95,50 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            //Only test collision once after firing
-            if (CanDamage() != false)
-            {
-				Vector2 velocity = Vector2.Normalize(new Vector2(1f, 0).RotatedBy(Projectile.rotation));
-				int maxRange = maxBeamLength + 30;
+			Vector2 velocity = Vector2.Normalize(new Vector2(1f, 0).RotatedBy(Projectile.rotation));
+			int maxRange = maxBeamLength + 30;
 
-				float collisionPoint = 0;
-				Vector2 lineStart = Projectile.Center;
+			float collisionPoint = 0;
+			Vector2 lineStart = Projectile.Center;
 
-				float[] samples = new float[4];
-				Collision.LaserScan(lineStart, velocity, 1, maxRange, samples);
-				beamLength = 0;
-				foreach (float sample in samples)
-					beamLength += sample / samples.Length;
+			float[] samples = new float[4];
+			Collision.LaserScan(lineStart, velocity, 1, maxRange, samples);
+			beamLength = 0;
+			foreach (float sample in samples)
+				beamLength += sample / samples.Length;
 
-				Vector2 lineEnd = Projectile.Center + (velocity * beamLength);
+			Vector2 lineEnd = Projectile.Center + (velocity * beamLength);
+			float lineWidth = 10;
 
-				if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), lineStart, lineEnd, 10, ref collisionPoint))
+			if (!spawnedVFX)
+			{
+				if (!Main.dedServ)
 				{
-					lastStrikePos = Vector2.Lerp(lineStart, lineEnd, collisionPoint / lineStart.Distance(lineEnd));
-					if (Player == Main.LocalPlayer)
+					for (int i = 0; i < 6; i++)
 					{
-						Projectile.velocity = Main.player[Projectile.owner].DirectionTo(Main.MouseWorld) * ((Projectile.Distance((Vector2)lastStrikePos) / Projectile.timeLeft) - 2);
-						Projectile.netUpdate = true;
+						Vector2 scale = new Vector2(Main.rand.NextFloat(0.8f, 1.5f), beamLength / 72);
+						Vector2 position = lineStart + new Vector2(0, Main.rand.NextFloat(-1.0f, 1.0f) * (float)lineWidth).RotatedBy(velocity.ToRotation());
+						ParticleHandler.SpawnParticle(new ImpactLine(position, velocity, commonColor, scale, 24, Projectile));
 					}
-					return true;
+					int loops = (int)(beamLength / 80) - 1;
+					for (int i = 0; i < loops; i++)
+						ParticleHandler.SpawnParticle(new PulseCircle(Vector2.Lerp(lineStart, lineEnd, (float)((float)i / loops)), commonColor, 50, 15, PulseCircle.MovementType.OutwardsQuadratic) 
+						{ 
+							Angle = Projectile.rotation,
+							ZRotation = 0.7f,
+							Velocity = velocity * 3f
+						});
 				}
-            }
-            return false;
-        }
+				for (int i = 0; i < 20; i++)
+				{
+					Dust dust = Dust.NewDustPerfect(lineEnd, dustType[Main.rand.Next(2)], -(velocity * Main.rand.NextFloat(1.0f, 5.0f)).RotatedByRandom(1.5f), 0, default, Main.rand.NextFloat(1.0f, 1.5f));
+					dust.noGravity = true;
+				}
+				spawnedVFX = true;
+			}
 
-        public override bool? CanDamage() => (Projectile.frame == 0 && Projectile.frameCounter <= 1 && lastStrikePos == null) ? null : false;
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), lineStart, lineEnd, lineWidth, ref collisionPoint);
+        }
 
 		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI) => overPlayers.Add(index);
 
@@ -123,17 +155,19 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, rect, Projectile.GetAlpha(Color.White),
 				Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
 
+			SpriteEffects effects = SpriteEffects.None;
+
 			//Draw the beam body
-			if (lastStrikePos != null)
-				beamLength = (int)((Vector2)lastStrikePos - Projectile.Center).Length();
 			int beamSegments = (int)beamLength / rect2.Width;
 			for (int i = 0; i < beamSegments; i++)
 			{
+				effects = (effects == SpriteEffects.None) ? SpriteEffects.FlipVertically : SpriteEffects.None;
+
 				texture2 = (i >= (beamSegments - 1)) ? ModContent.Request<Texture2D>(Texture + "_End").Value : TextureAssets.Projectile[Projectile.type].Value;
 				origin = new Vector2(0f, rect2.Height / 2);
 				var position = Projectile.Center + new Vector2(rect.Width + (rect2.Width * i), 0f).RotatedBy(Projectile.rotation);
 				Main.EntitySpriteDraw(texture2, position - Main.screenPosition, rect2, Projectile.GetAlpha(Color.White),
-					Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+					Projectile.rotation, origin, Projectile.scale, effects, 0);
 			}
 			return false;
 		}

@@ -10,13 +10,13 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 {
 	public class Ornament_Arrow : GemArrow
 	{
+		public Ornament_Arrow() : base(Main.DiscoColor, DustID.GemDiamond) { }
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ornament Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
-		protected override void SafeSetDefaults() => glowColor = Main.DiscoColor;
 
 		public override void AI()
 		{
@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 				for (int num41 = 0; num41 < 4; num41 = num + 1)
 				{
 					Vector2 value8 = -Vector2.UnitY.RotatedBy(Projectile.localAI[0] * 0.1308997f + num41 * MathHelper.Pi) * new Vector2(2f, 10f) - Projectile.rotation.ToRotationVector2();
-					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.RainbowTorch, 0f, 0f, 160, glowColor, 1f);
+					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.RainbowTorch, 0f, 0f, 160, Main.DiscoColor, 1f);
 					Main.dust[dust].scale = 0.7f;
 					Main.dust[dust].noGravity = true;
 					Main.dust[dust].position = Projectile.Center + value8 + Projectile.velocity * 2f;
@@ -41,7 +41,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 		private void SpawnArrows(IEntitySource src)
 		{
 			for (int index = 0; index < 10; ++index) {
-				int i = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.RainbowTorch, 0.0f, 0.0f, 0, glowColor, 1f);
+				int i = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.RainbowTorch, 0.0f, 0.0f, 0, Main.DiscoColor, 1f);
 				Main.dust[i].noGravity = true;
 			}
 			SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f });

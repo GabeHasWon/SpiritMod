@@ -13,28 +13,33 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
-			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<Blaster>() && drawInfo.drawPlayer.itemAnimation > 0)
+			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<Blaster>())
 			{
 				var blaster = drawInfo.drawPlayer.HeldItem.ModItem as Blaster;
-				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster_Glow").Value, blaster.element, blaster.usingAltTexture ? 1 : 0, drawInfo);
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster_Glow").Value, new Vector2(4, 2), new Vector2(blaster.element, blaster.usingAltTexture ? 1 : 0), drawInfo);
+			}
+			else if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<Exotic>())
+			{
+				var exotic = drawInfo.drawPlayer.HeldItem.ModItem as Exotic;
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Exotic").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Exotic_Glow").Value, new Vector2(1, 3), new Vector2(0, exotic.style), drawInfo);
 			}
 		}
 
-		private static void DrawItem(Texture2D texture, Texture2D glow, int frameX, int frameY, PlayerDrawSet info)
+		private static void DrawItem(Texture2D texture, Texture2D glow, Vector2 numFrames, Vector2 frame, PlayerDrawSet info)
 		{
-			Item item = info.drawPlayer.HeldItem;
-			if (info.shadow != 0f || info.drawPlayer.frozen || ((info.drawPlayer.itemAnimation <= 0 || item.useStyle == ItemUseStyleID.None) && (item.holdStyle <= 0 || info.drawPlayer.pulley)) || info.drawPlayer.dead || (info.drawPlayer.wet && item.noWet))
+			Item item = info.heldItem;
+			if (info.shadow != 0f || info.drawPlayer.frozen || ((info.drawPlayer.itemAnimation <= 0 || item.useStyle != ItemUseStyleID.Shoot) && (item.holdStyle <= 0 || info.drawPlayer.pulley)) || info.drawPlayer.dead || (info.drawPlayer.wet && item.noWet))
 				return;
 
 			Rectangle drawFrame = texture.Bounds;
 
-			int numXFrames = 4;
+			int numXFrames = (int)numFrames.X;
 			drawFrame.Width /= numXFrames;
-			drawFrame.X = drawFrame.Width * frameX;
+			drawFrame.X = drawFrame.Width * (int)frame.X;
 
-			int numYFrames = 2;
+			int numYFrames = (int)numFrames.Y;
 			drawFrame.Height /= numYFrames;
-			drawFrame.Y = drawFrame.Height * frameY;
+			drawFrame.Y = drawFrame.Height * (int)frame.Y;
 
 			Vector2 offset = new Vector2(0, texture.Height / 2);
 
@@ -46,8 +51,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			{
 				origin.X += drawFrame.Width;
 			}
-			drawFrame.Height -= 2;
-			drawFrame.Width -= 2;
+
+			//Is texture padding necessary?
+			if (numFrames.Y > 1)
+				drawFrame.Height -= 2;
+			if (numFrames.X > 1)
+				drawFrame.Width -= 2;
 
 			info.DrawDataCache.Add(new DrawData(
 				texture,

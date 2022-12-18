@@ -6,6 +6,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Topaz_Bow
 {
 	public class Topaz_Arrow : GemArrow
 	{
+		public Topaz_Arrow() : base(Color.Yellow, DustID.GemTopaz) { }
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Topaz Arrow");
@@ -17,9 +18,6 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Topaz_Bow
 		{
 			Projectile.aiStyle = -1;
 			Projectile.extraUpdates = 2;
-
-			dustType = DustID.GemTopaz;
-			glowColor = Color.Yellow;
 		}
 
 		public override void AI()

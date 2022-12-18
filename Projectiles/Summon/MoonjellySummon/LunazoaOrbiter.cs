@@ -141,7 +141,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 				Color color = Projectile.GetAlpha(lightColor) * (float)(((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) / 2);
 				Color color1 = Color.White * (float)(((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) / 2);
-				Texture2D glow = ModContent.Request<Texture2D>("Projectiles/Summon/MoonjellySummon/LunazoaOrbiter_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				Texture2D glow = Mod.Assets.Request<Texture2D>("Projectiles/Summon/MoonjellySummon/LunazoaOrbiter_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
 				Main.spriteBatch.Draw(glow, drawPos, new Microsoft.Xna.Framework.Rectangle?(TextureAssets.Projectile[Projectile.type].Value.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame)), color1, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);
 				Main.spriteBatch.Draw(glow, drawPos, new Microsoft.Xna.Framework.Rectangle?(TextureAssets.Projectile[Projectile.type].Value.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame)), color1, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);
