@@ -41,7 +41,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-				new FlavorTextBestiaryInfoElement("When the moon hits your eye like a big pizza pie... that’s an Ardorè."),
+				new FlavorTextBestiaryInfoElement("When the moon hits your eye like a big pizza pie... that's an Ardor."),
 			});
 		}
 

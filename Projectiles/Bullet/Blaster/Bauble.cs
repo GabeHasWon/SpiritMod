@@ -16,6 +16,8 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 		{
 			DisplayName.SetDefault("Bauble");
 			Main.projFrames[Projectile.type] = 4;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
 
 		public override void SetDefaults()
@@ -23,11 +25,10 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.DamageType = DamageClass.Ranged;
-			Projectile.timeLeft = 80;
+			Projectile.timeLeft = 200;
 			Projectile.height = 6;
 			Projectile.width = 6;
 			AIType = ProjectileID.Bullet;
-			Projectile.extraUpdates = 1;
 		}
 
 		public override void OnSpawn(IEntitySource source) => Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
@@ -42,7 +43,7 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 				Main.dust[num].noGravity = true;
 			}
 
-			Projectile.velocity.Y += 0.1f;
+			Projectile.velocity.Y += 0.2f;
 
 			Projectile.direction = Projectile.spriteDirection = (Projectile.velocity.X < 0) ? -1 : 1;
 			Projectile.rotation += 0.1f * Projectile.direction;
@@ -50,34 +51,43 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
+			float mult = 0.8f;
+
 			if (Math.Abs(Projectile.velocity.X) > Math.Abs(Projectile.velocity.Y))
-				Projectile.velocity.Y = -oldVelocity.Y;
+				Projectile.velocity.Y = -(oldVelocity.Y * mult);
 			else
-				Projectile.velocity.X = -oldVelocity.X;
+				Projectile.velocity.X = -(oldVelocity.X * mult);
+
+			if (oldVelocity.Length() > 3f)
+				SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.14f, PitchVariance = 0.2f }, Projectile.position);
 
 			return false;
 		}
 
 		public override void Kill(int timeLeft)
 		{
-			SoundEngine.PlaySound(SoundID.Shatter, Projectile.position);
+			if (timeLeft > 0)
+				SoundEngine.PlaySound(SoundID.Shatter, Projectile.position);
 			for (int i = 0; i < 14; i++)
 			{
-				Vector2 velocity = -(Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(1f);
+				Vector2 velocity = -(Projectile.velocity * Main.rand.NextFloat(0.4f, 0.8f)).RotatedByRandom(1f);
 				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, Main.rand.NextBool(2) ? DustID.Confetti : DustID.GoldCoin,
 					velocity, 0, default, Main.rand.NextFloat(0.8f, 1.5f));
 				if (dust.type == DustID.GoldCoin)
+				{
 					dust.noGravity = true;
+					dust.velocity = dust.velocity.RotatedByRandom(2f);
+				}
 			}
 		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Projectile.QuickDrawGlowTrail(Main.spriteBatch, 0.5f, Color.White, Projectile.rotation, SpriteEffects.None);
+			Projectile.QuickDrawTrail(Main.spriteBatch, 0.75f, Projectile.rotation, SpriteEffects.None);
 
 			Rectangle frame = new Rectangle(0, TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Type] * Projectile.frame, TextureAssets.Projectile[Projectile.type].Value.Width, (TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Type]) - 2);
 
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(Color.White), 
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(lightColor), 
 				Projectile.rotation, frame.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			return false;
 		}

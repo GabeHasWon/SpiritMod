@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.BlizzardBandit
         {
             DisplayName.SetDefault("Blizzard Bandit");
             Main.npcFrameCount[NPC.type] = 16;
-        }
+		}
 
         int timer = 0;
         bool shooting = false;

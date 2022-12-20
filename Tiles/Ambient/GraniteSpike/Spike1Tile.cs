@@ -1,11 +1,10 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.GraniteSpikes;
 using Terraria;
 using Terraria.ID;
-using Terraria.Enums;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using SpiritMod.Items.Placeable.Furniture.GraniteSpikes;
 
 namespace SpiritMod.Tiles.Ambient.GraniteSpike
 {
@@ -34,9 +33,7 @@ namespace SpiritMod.Tiles.Ambient.GraniteSpike
 			DustType = -1;
 			TileID.Sets.DisableSmartCursor[Type] = true;
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Terraria.Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<Items.Placeable.Furniture.GraniteSpikes.GraniteSpike1>());
-		}
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<GraniteSpike1>());
 	}
 }

@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Particles;
 using SpiritMod.Projectiles.Bullet.Blaster;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,7 +30,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		{
 			var myClone = (Exotic)base.Clone(itemClone);
 			myClone.style = style;
-			ApplyStats();
+
+			myClone.ApplyStats();
 
 			return myClone;
 		}
@@ -40,12 +43,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		}
 
 		public override void SetDefaults()
-		{
-			StateDefaults();
-			Generate();
-		}
-
-		private void StateDefaults()
 		{
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 46;
@@ -62,15 +59,35 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Item.rare = ItemRarityID.Green;
 			Item.channel = false;
 			Item.autoReuse = true;
-			Item.shoot = ModContent.ProjectileType<Bauble>();
+			Item.shoot = ModContent.ProjectileType<EnergyBurst>();
 			Item.shootSpeed = 9f;
 			Item.useAmmo = AmmoID.Bullet;
+
+			Generate();
 		}
 
 		public override void UseItemFrame(Player player)
 		{
-			int offset = (int)MathHelper.Clamp(player.itemAnimation - (Item.useAnimation - 8), 0, Item.useAnimation);
+			int offset = (int)MathHelper.Clamp(player.itemAnimation - (player.itemAnimationMax - 8), 0, player.itemAnimationMax);
 			player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
+		}
+
+		public override bool AltFunctionUse(Player player) => style == (int)StyleType.Golden;
+		public override bool CanUseItem(Player player)
+		{
+			if (style != (int)StyleType.Golden)
+				return base.CanUseItem(player);
+
+			if (player.altFunctionUse == 2)
+			{
+				Projectile.NewProjectile(Entity.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<GoldBlasterProj>(), (int)player.GetDamage(DamageClass.Ranged).ApplyTo(Item.damage), Item.knockBack, player.whoAmI);
+				Item.useStyle = ItemUseStyleID.Rapier;
+				SoundEngine.PlaySound(SoundID.Item149, player.Center);
+			}
+			else
+				Item.useStyle = ItemUseStyleID.Shoot;
+
+			return player.altFunctionUse != 2;
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -79,6 +96,26 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 				position += muzzleOffset;
 			type = Item.shoot;
+
+			if (style == (int)StyleType.Bleak)
+			{
+				if (!Main.dedServ)
+				{
+					ParticleHandler.SpawnParticle(new BlasterFlash(position + (muzzleOffset / 2.5f), 1, velocity.ToRotation()));
+					for (int i = 0; i < 3; i++)
+						ParticleHandler.SpawnParticle(new FireParticle(position, (velocity * Main.rand.NextFloat(0.1f, 0.8f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.2f, 0.5f), 12));
+				}
+
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { Volume = 0.5f, PitchVariance = 0.2f, MaxInstances = 3 }, position);
+			}
+			else
+			{
+				if (style == (int)StyleType.Festive)
+					for (int i = 0; i < 4; i++)
+						Dust.NewDustPerfect(position, DustID.Confetti, (velocity * Main.rand.NextFloat(0.4f, 0.8f)).RotatedByRandom(1f), 100);
+
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1"), position);
+			}
 		}
 
 		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
@@ -143,7 +180,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		}
 
 		public override void SaveData(TagCompound tag) => tag[nameof(style)] = style;
-		public override void LoadData(TagCompound tag) => style = tag.Get<byte>(nameof(style));
+		public override void LoadData(TagCompound tag)
+		{
+			style = tag.Get<byte>(nameof(style));
+			ApplyStats();
+		}
 
 		public override void NetSend(BinaryWriter writer) => writer.Write(style);
 		public override void NetReceive(BinaryReader reader)
@@ -154,20 +195,24 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public void Generate()
 		{
-			style = (byte)Main.rand.Next((int)StyleType.Count);
+			List<byte> list = new List<byte> { (byte)StyleType.Golden, (byte)StyleType.Bleak };
+			if (Main.xMas || Main.snowMoon)
+				list.Add((byte)StyleType.Festive); //This weapon is a seasonal exclusive
+
+			style = Main.rand.NextFromCollection(list);
+
 			ApplyStats();
 		}
 
 		public void ApplyStats()
 		{
-			StateDefaults();
-			string[] nameSelection = new string[] { "Bulb", "Golden", "Bleak" };
+			string[] nameSelection = new string[] { "Bulb", "Golden", "Swift" };
 
 			Item.shoot = style switch
 			{
-				1 => ModContent.ProjectileType<GoldBullet>(),
-				2 => ModContent.ProjectileType<EnergyBurst>(),
-				_ => Item.shoot
+				0 => Item.shoot = ModContent.ProjectileType<Bauble>(),
+				1 => Item.shoot = ModContent.ProjectileType<GoldBullet>(),
+				_ => Item.shoot = ModContent.ProjectileType<EnergyBurst>()
 			};
 
 			Item.SetNameOverride(nameSelection[style] + " Blaster");
@@ -175,8 +220,25 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
+			string text = style switch
+			{
+				1 => "Struck enemies are marked for damage\nRight click to detonate all marked enemies\nAll marks instantly expire when missing a shot",
+				2 => "Rapid Fire",
+				_ => "Launches bouncing glass baubles...ouch!"
+			};
+			if (text == string.Empty)
+				return;
+
+			tooltips.Add(new TooltipLine(Mod, string.Empty, text));
 		}
 
 		//public override void ModifyWeaponDamage(Player player, ref StatModifier damage) => base.ModifyWeaponDamage(player, ref damage);
+
+		public override float UseSpeedMultiplier(Player player)
+		{
+			if (style == (int)StyleType.Bleak)
+				return 1.8f;
+			return base.UseSpeedMultiplier(player);
+		}
 	}
 }

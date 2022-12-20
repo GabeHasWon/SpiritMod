@@ -18,6 +18,7 @@ using Terraria.GameContent.Bestiary;
 using SpiritMod.Utilities.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet;
+using SpiritMod.Biomes;
 
 namespace SpiritMod.NPCs.Boss.SteamRaider
 {
@@ -77,6 +78,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
 			Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/Starplate");
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<AsteroidBiome>().Type };
 
 			for (int k = 0; k < NPC.buffImmune.Length; k++)
 				NPC.buffImmune[k] = true;
@@ -85,7 +87,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("A strange automaton of unknown origin, designed for mining a precious metal from the stars. It utilizes the untapped energy found within the ore to power itself and perpetuate an endless search."),
 			});
 		}

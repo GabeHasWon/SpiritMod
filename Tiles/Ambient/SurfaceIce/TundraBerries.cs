@@ -1,9 +1,5 @@
-using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.GraniteSpikes;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Enums;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -28,6 +24,7 @@ namespace SpiritMod.Tiles.Ambient.SurfaceIce
 			HitSound = SoundID.Dig;
 
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.BreakableWhenPlacing[Type] = true;
 		}
 
 		//public override void KillMultiTile(int i, int j, int frameX, int frameY)
@@ -58,6 +55,7 @@ namespace SpiritMod.Tiles.Ambient.SurfaceIce
 			HitSound = SoundID.Dig;
 
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.BreakableWhenPlacing[Type] = true;
 		}
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;

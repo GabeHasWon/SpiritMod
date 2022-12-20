@@ -1,22 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.GunsMisc.Blaster;
 using SpiritMod.Mechanics.Trails;
-using SpiritMod.Particles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace SpiritMod.Projectiles.Bullet.Blaster
 {
 	public class GoldBullet : ModProjectile, ITrailProjectile
 	{
+		private bool StruckNPC { get => Projectile.ai[0] != 0; set => Projectile.ai[0] = value ? 1 : 0; }
+
 		public void DoTrailCreation(TrailManager tManager)
 		{
-			tManager.CreateTrail(Projectile, new GradientTrail(Color.White, Color.Yellow), new RoundCap(), new DefaultTrailPosition(), 10f, 704f, new DefaultShader());
-			tManager.CreateTrail(Projectile, new GradientTrail(Color.Orange, Color.Red * .5f), new RoundCap(), new DefaultTrailPosition(), 10f, 704f, new DefaultShader());
-			tManager.CreateTrail(Projectile, new StandardColorTrail(Color.White), new TriangleCap(), new DefaultTrailPosition(), 2f, 700f, new DefaultShader());
+			tManager.CreateTrail(Projectile, new GradientTrail(Color.Yellow, Color.Orange), new TriangleCap(), new DefaultTrailPosition(), 5f, 704f, new DefaultShader());
+			tManager.CreateTrail(Projectile, new GradientTrail(Color.Orange, Color.Red * .5f), new TriangleCap(), new DefaultTrailPosition(), 5f, 704f, new DefaultShader());
 		}
 
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Gold Bullet");
@@ -32,34 +34,43 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 			Projectile.extraUpdates = 1;
 		}
 
-		private readonly int timerMax = 20;
-		private int timer;
 		public override void AI()
 		{
 			Vector2 position = Projectile.Center + new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 10f, Main.rand.NextFloat(-1.0f, 1.0f) * 10f);
 			for (int i = 0; i < 2; i++)
 			{
 				int num = Dust.NewDust(position, 0, 0, DustID.IchorTorch, 0, 0, 100, default, 0.8f);
-				Main.dust[num].velocity = Vector2.Zero;
+				Main.dust[num].velocity = Projectile.velocity * .25f;
 				Main.dust[num].noGravity = true;
 			}
-			if (timer == 0 && !Main.dedServ)
-				ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + (Projectile.velocity * 3), Color.LightBlue, 20, 10)
-					{ Angle = Projectile.velocity.ToRotation(), ZRotation = 0.5f });
 
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
-			timer = ++timer % timerMax;
+		}
+
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			if (target.TryGetGlobalNPC(out GoldBlasterGNPC GNPC))
+			{
+				if (GNPC.numMarks < GNPC.maxNumMarks)
+					GNPC.numMarks++;
+				else
+				{
+					Gore.NewGore(Projectile.GetSource_FromAI(), Projectile.Center, (-Projectile.velocity).RotatedBy(1f), ModContent.GoreType<GoldCasing>());
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Ricochet") with { Volume = 0.75f, PitchVariance = 0.5f }, Projectile.Center);
+				}
+			}
+			StruckNPC = true;
 		}
 
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
-			for (int i = 0; i < 14; i++)
+
+			if (!StruckNPC) //If the projectile dies without striking an NPC, clear all marks
 			{
-				Vector2 velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(1f);
-				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, Main.rand.NextBool(2) ? DustID.IchorTorch : DustID.GemTopaz,
-					velocity, 0, default, Main.rand.NextFloat(0.8f, 1.5f));
-				dust.noGravity = true;
+				foreach (NPC npc in Main.npc)
+					if (npc.active && npc.TryGetGlobalNPC(out GoldBlasterGNPC GNPC))
+						GNPC.TryVoidMarks(npc);
 			}
 		}
 

@@ -66,7 +66,7 @@ namespace SpiritMod.NPCs.Town
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				new FlavorTextBestiaryInfoElement("An intrepid explorer driven by an ambition that has often landed him in danger. He’s also an avid note-taker, his many accounts now scattered throughout the land."),
+				new FlavorTextBestiaryInfoElement("An intrepid explorer driven by an ambition that has often landed him in danger. He's also an avid note-taker, his many accounts now scattered throughout the land."),
 			});
 		}
 

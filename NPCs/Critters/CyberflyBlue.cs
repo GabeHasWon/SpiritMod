@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Consumable;
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -54,7 +53,7 @@ namespace SpiritMod.NPCs.Critters
 
 			Lighting.AddLight((int)((NPC.position.X + (NPC.width / 2f)) / 16f), (int)((NPC.position.Y + (NPC.height / 2f)) / 16f), .2f, .3f, .5f);
 
-			if (Main.rand.Next(45) == 0)
+			if (Main.rand.NextBool(45))
 			{
 				int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, .5f);
 				Main.dust[num622].velocity *= .1f;

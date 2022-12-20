@@ -21,6 +21,7 @@ namespace SpiritMod.Tiles.Ambient.Underground
 			TileObjectData.newTile.StyleHorizontal = false;
 			TileObjectData.newTile.RandomStyleRange = 1;
 			TileObjectData.addTile(Type);
+			TileID.Sets.BreakableWhenPlacing[Type] = true;
 
 			DustType = DustID.Stone;
 

@@ -44,7 +44,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Count
 		}
 
-		public bool usingAltTexture;
+		public bool usingAltTexture = false;
 
 		protected override bool CloneNewInstances => true;
 		public override ModItem Clone(Item itemClone)
@@ -53,7 +53,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			myClone.element = element;
 			myClone.build = build;
 			myClone.auxillary = auxillary;
-			ApplyStats();
+
+			myClone.ApplyStats();
 
 			return myClone;
 		}
@@ -65,12 +66,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		}
 
 		public override void SetDefaults()
-		{
-			StateDefaults();
-			Generate();
-		}
-
-		private void StateDefaults()
 		{
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 46;
@@ -91,7 +86,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Item.shootSpeed = 9f;
 			Item.useAmmo = AmmoID.Bullet;
 
-			usingAltTexture = false;
+			Generate();
 		}
 
 		public override void UseItemFrame(Player player)
@@ -276,6 +271,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			element = tag.Get<byte>(nameof(element));
 			build = tag.Get<byte>(nameof(build));
 			auxillary = tag.Get<byte>(nameof(auxillary));
+
+			ApplyStats();
 		}
 
 		public override void NetSend(BinaryWriter writer)
@@ -290,6 +287,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			element = reader.ReadByte();
 			build = reader.ReadByte();
 			auxillary = reader.ReadByte();
+
 			ApplyStats();
 		}
 
@@ -298,27 +296,24 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			element = (byte)Main.rand.Next((int)ElementType.Count);
 			build = (byte)Main.rand.Next((int)BuildType.Count);
 			auxillary = (byte)Main.rand.Next((int)AuxillaryType.Count);
+
 			ApplyStats();
 		}
 
 		public void ApplyStats()
 		{
-			StateDefaults();
 			string[] nameSelection = new string[] { "Luminous", "Ecliptic", "Aphelaic", "Cosmic", "Perihelaic", "Ionized", "Axial" };
 
-			switch (build)
+			Item.shoot = build switch
 			{
-				case (int)BuildType.Heavy:
-					usingAltTexture = true;
-					Item.shoot = ModContent.ProjectileType<MiniRocket>();
-					break;
-				case (int)BuildType.Laser:
-					Item.shoot = ModContent.ProjectileType<Beam>();
-					break;
-			}
+				1 => Item.shoot = ModContent.ProjectileType<MiniRocket>(),
+				2 => Item.shoot = ModContent.ProjectileType<Beam>(),
+				_ => Item.shoot = ModContent.ProjectileType<EnergyBurst>()
+			};
 
-			if (auxillary == (int)AuxillaryType.Charge)
-				Item.channel = true;
+			Item.channel = auxillary == (int)AuxillaryType.Charge;
+
+			usingAltTexture = build == (int)BuildType.Heavy;
 
 			Item.SetNameOverride(nameSelection[element + build] + " Blaster");
 		}
@@ -333,10 +328,14 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			};
 			if (text == string.Empty)
 				return;
-			tooltips.Add(new TooltipLine(Mod, "Tooltip1", text));
-			//ToDo: fix reforge stats flickering in the tooltip
+
+			tooltips.Add(new TooltipLine(Mod, string.Empty, text));
 		}
 
-		//public override void ModifyWeaponDamage(Player player, ref StatModifier damage) => base.ModifyWeaponDamage(player, ref damage);
+		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+		{
+			if (element == (int)ElementType.Plasma)
+				damage += 6;
+		}
 	}
 }

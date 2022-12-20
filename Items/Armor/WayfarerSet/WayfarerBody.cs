@@ -1,8 +1,5 @@
-using SpiritMod.Items.Material;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Armor.WayfarerSet
@@ -10,6 +7,14 @@ namespace SpiritMod.Items.Armor.WayfarerSet
 	[AutoloadEquip(EquipType.Body)]
 	public class WayfarerBody : ModItem
 	{
+		public override void Load()
+		{
+			if (Main.netMode == NetmodeID.Server)
+				return;
+
+			EquipLoader.AddEquipTexture(Mod, $"{Texture}_{EquipType.Back}", EquipType.Back, this);
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wayfarer's Rucksack");
@@ -31,6 +36,8 @@ namespace SpiritMod.Items.Armor.WayfarerSet
 		{
 			player.moveSpeed += 0.05f;
 			player.runAcceleration += .01f;
+
+			player.back = (sbyte)EquipLoader.GetEquipSlot(Mod, $"{Texture}_{EquipType.Back}", EquipType.Back);
 		}
 
 		public override void AddRecipes()

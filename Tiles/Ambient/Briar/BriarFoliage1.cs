@@ -51,15 +51,9 @@ namespace SpiritMod.Tiles.Ambient.Briar
             AddMapEntry(new Color(100, 150, 66));
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = 2;
-		}
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
-		}
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 
 		public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
 		{
@@ -70,21 +64,17 @@ namespace SpiritMod.Tiles.Ambient.Briar
 
 			return true;
         }
+
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             if (Main.rand.NextBool(8))
-            {
-                int n = NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileBreak(i, j), (int)i * 16 + 8, (int)j * 16 + 16, ModContent.NPCType<Blubby>(), 0, 2, 1, 0, 0, Main.myPlayer);
-            }
+                NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileBreak(i, j), (int)i * 16 + 8, (int)j * 16 + 16, ModContent.NPCType<Blubby>(), 0, 2, 1, 0, 0, Main.myPlayer);
             if (Main.rand.NextBool(5))
-            {
-                int n = NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileBreak(i, j), (int)i * 16 + 8, (int)j * 16 + 16, ModContent.NPCType<BriarInchworm>(), 0, 2, 1, 0, 0, Main.myPlayer);
-            }
+                NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileBreak(i, j), (int)i * 16 + 8, (int)j * 16 + 16, ModContent.NPCType<BriarInchworm>(), 0, 2, 1, 0, 0, Main.myPlayer);
 			if (Main.rand.NextBool(5))
-			{
             	Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<Items.Placeable.Tiles.BriarGrassSeeds>());
-			}
         }
+
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			Tile tile = Framing.GetTileSafely(i, j);

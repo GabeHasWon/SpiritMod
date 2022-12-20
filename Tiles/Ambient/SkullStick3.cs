@@ -1,6 +1,4 @@
-
 using Microsoft.Xna.Framework;
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,15 +17,15 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[]
 			{
-			16,
-			16,
+				16,
+				16,
 			};
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Skull Stick");
 			AddMapEntry(new Color(107, 90, 64), name);
 			AdjTiles = new int[] { TileID.Lamps };
+			TileID.Sets.BreakableWhenPlacing[Type] = true;
 		}
-
 	}
 }

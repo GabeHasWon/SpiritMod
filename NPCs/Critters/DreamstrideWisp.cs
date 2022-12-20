@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
-				new FlavorTextBestiaryInfoElement("The essense of a nightmare, often appearing during the practice of 'blood corruption'. They wheeze and moan in silent pain."),
+				new FlavorTextBestiaryInfoElement("The essence of a nightmare, often appearing during the practice of 'blood corruption'. They wheeze and moan in silent pain."),
 			});
 		}
 

@@ -11,13 +11,19 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 {
 	public class SuicideLaser : ModNPC
 	{
+		private int timer = 0;
+		private float alphaCounter;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Laser Bomber");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
-		int timer = 0;
+
 		public override void SetDefaults()
 		{
 			NPC.width = 56;
@@ -33,25 +39,27 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.knockBackResist = .0f;
 			NPC.noTileCollide = true;
 		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height / Main.npcFrameCount[NPC.type]) * 0.5f);
-			{
-				float sineAdd = (float)Math.Sin(alphaCounter) + 3;
-				Vector2 drawPos1 = NPC.Center - Main.screenPosition + drawOrigin + new Vector2(0f, NPC.gfxOffY);
-				Main.spriteBatch.Draw(Terraria.GameContent.TextureAssets.Extra[49].Value, (NPC.Center - Main.screenPosition) - new Vector2(-2, 8), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + 1), SpriteEffects.None, 0f);
-			}
+			float sineAdd = (float)Math.Sin(alphaCounter) + 3;
+			Main.spriteBatch.Draw(TextureAssets.Extra[49].Value, (NPC.Center - Main.screenPosition) - new Vector2(-2, 8), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + 1), SpriteEffects.None, 0f);
+
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+				drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+
 			return false;
 		}
+
+		public override Color? GetAlpha(Color lightColor) => new Color(3, 252, 215, 100);
+
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if (NPC.alpha != 255) {
+			if (NPC.alpha != 255)
 				GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/LaserBase_Glow").Value, screenPos);
-			}
 		}
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int k = 0; k < 20; k++) {
@@ -73,7 +81,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				}
 			}
 		}
-		float alphaCounter;
+
 		public override void AI()
 		{
 			alphaCounter += .08f;
@@ -103,8 +111,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			float length = (float)Math.Sqrt(xDir * xDir + yDir * yDir);
 
 			float num10 = speed / length;
-			xDir = xDir * num10;
-			yDir = yDir * num10;
+			xDir *= num10;
+			yDir *= num10;
 			if (NPC.velocity.X < xDir) {
 				NPC.velocity.X = NPC.velocity.X + acceleration;
 				if (NPC.velocity.X < 0 && xDir > 0)
@@ -145,12 +153,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			Vector2 direction9 = Main.player[NPC.target].Center - NPC.Center;
 			direction9.Normalize();
 			NPC.rotation = direction9.ToRotation() + 1.57f + 3.14f;
-			Player target = Main.player[NPC.target];
 		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(3, 252, 215, 100);
-		}
+
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
 			NPC.life = 0;
@@ -161,9 +165,9 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 0f, -2f, 117, new Color(0, 255, 142), .6f);
 				Main.dust[num].noGravity = true;
 				Dust dust = Main.dust[num];
-				dust.position.X = dust.position.X + ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
+				dust.position.X += ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
 				Dust expr_92_cp_0 = Main.dust[num];
-				expr_92_cp_0.position.Y = expr_92_cp_0.position.Y + ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
+				expr_92_cp_0.position.Y += ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
 				if (Main.dust[num].position != NPC.Center) {
 					Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 6f;
 				}

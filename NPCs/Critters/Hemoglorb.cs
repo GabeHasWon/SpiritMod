@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCrimson,
-				new FlavorTextBestiaryInfoElement("The forgotten kin of the Crimson, casted aside due to his abnormal shape and size. He never could, and likely never will, find love nor acceptance in this cruel world."),
+				new FlavorTextBestiaryInfoElement("The forgotten kin of the Crimson, cast aside due to his abnormal shape and size. He never could, and likely never will, find love nor acceptance in this cruel world."),
 			});
 		}
 
