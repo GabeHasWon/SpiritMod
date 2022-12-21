@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-				new FlavorTextBestiaryInfoElement("You’d have to be tough as nails to chew meat from a fish like this, it’s hard as diamonds!"),
+				new FlavorTextBestiaryInfoElement("You’d have to be tough as nails to chew meat from a fish like this, it's hard as diamonds!"),
 			});
 		}
 

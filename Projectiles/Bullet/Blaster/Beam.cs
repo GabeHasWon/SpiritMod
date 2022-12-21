@@ -11,7 +11,10 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
     public class Beam : SubtypeProj
     {
 		private readonly int frameDur = 3;
+
+		private float beamLength;
 		private readonly int maxBeamLength = 300;
+
 		private Vector2? lastStrikePos;
 
 		private Player Player => Main.player[Projectile.owner];
@@ -75,24 +78,30 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
             //Only test collision once after firing
             if (CanDamage() != false)
             {
-				Vector2 velocity = new Vector2(2f, 0).RotatedBy(Projectile.rotation);
-                float speed = velocity.Length();
-                int maxRange = maxBeamLength + 30;
-                //Test instantaneous collision
-                for (int i = 0; i < (int)(maxRange / speed) + 1; i++)
-                {
-                    Vector2 samplePos = Projectile.position + (velocity * i);
-                    if (Collision.CheckAABBvAABBCollision(samplePos, projHitbox.Size(), targetHitbox.TopLeft(), targetHitbox.Size()))
-                    {
-                        lastStrikePos = samplePos + projHitbox.Size() / 2;
-						if (Player == Main.LocalPlayer)
-						{
-							Projectile.velocity = Main.player[Projectile.owner].DirectionTo(Main.MouseWorld) * ((Projectile.Distance((Vector2)lastStrikePos) / Projectile.timeLeft) - 2);
-							Projectile.netUpdate = true;
-						}
-						return true;
-                    }
-                }
+				Vector2 velocity = Vector2.Normalize(new Vector2(1f, 0).RotatedBy(Projectile.rotation));
+				int maxRange = maxBeamLength + 30;
+
+				float collisionPoint = 0;
+				Vector2 lineStart = Projectile.Center;
+
+				float[] samples = new float[4];
+				Collision.LaserScan(lineStart, velocity, 1, maxRange, samples);
+				beamLength = 0;
+				foreach (float sample in samples)
+					beamLength += sample / samples.Length;
+
+				Vector2 lineEnd = Projectile.Center + (velocity * beamLength);
+
+				if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), lineStart, lineEnd, 10, ref collisionPoint))
+				{
+					lastStrikePos = Vector2.Lerp(lineStart, lineEnd, collisionPoint / lineStart.Distance(lineEnd));
+					if (Player == Main.LocalPlayer)
+					{
+						Projectile.velocity = Main.player[Projectile.owner].DirectionTo(Main.MouseWorld) * ((Projectile.Distance((Vector2)lastStrikePos) / Projectile.timeLeft) - 2);
+						Projectile.netUpdate = true;
+					}
+					return true;
+				}
             }
             return false;
         }
@@ -113,11 +122,11 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 			//Draw the beam start
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, rect, Projectile.GetAlpha(Color.White),
 				Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+
 			//Draw the beam body
-			int beamLength = maxBeamLength;
 			if (lastStrikePos != null)
 				beamLength = (int)((Vector2)lastStrikePos - Projectile.Center).Length();
-			int beamSegments = beamLength / rect2.Width;
+			int beamSegments = (int)beamLength / rect2.Width;
 			for (int i = 0; i < beamSegments; i++)
 			{
 				texture2 = (i >= (beamSegments - 1)) ? ModContent.Request<Texture2D>(Texture + "_End").Value : TextureAssets.Projectile[Projectile.type].Value;

@@ -1,13 +1,14 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Projectiles.Pet
 {
 	public class JellyfishPet : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Support Saucer");
+			DisplayName.SetDefault("Jellyfish");
 			Main.projFrames[Projectile.type] = 1;
 			Main.projPet[Projectile.type] = true;
 		}

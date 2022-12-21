@@ -45,7 +45,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("A stray space rock has popped this Lunazoa’s protective bubble. The stone prevents the bubble from reforming, causing them distress."),
+				new FlavorTextBestiaryInfoElement("A stray space rock has popped this Lunazoa's protective bubble. The stone prevents the bubble from reforming, causing them distress."),
 			});
 		}
 

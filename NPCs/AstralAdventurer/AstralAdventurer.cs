@@ -58,7 +58,7 @@ namespace SpiritMod.NPCs.AstralAdventurer
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Meteor,
-				new FlavorTextBestiaryInfoElement("It appears you weren’t the only one after the meteor. These sharpshooters have been tracking it for a while and will stop at nothing to siphon its precious resources."),
+				new FlavorTextBestiaryInfoElement("It appears you weren't the only one after the meteor. These sharpshooters have been tracking it for a while and will stop at nothing to siphon its precious resources."),
 			});
 		}
 

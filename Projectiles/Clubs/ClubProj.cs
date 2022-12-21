@@ -6,8 +6,6 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-using SpiritMod.Dusts;
 
 namespace SpiritMod.Projectiles.Clubs
 {

@@ -16,6 +16,8 @@ namespace SpiritMod.Buffs.Potion
 
 		public override void Update(Player player, ref int buffIndex)
 		{
+			MyPlayer modPlayer = player.GetSpiritPlayer();
+			modPlayer.WingTimeMaxMultiplier += 0.25f;
 		}
 	}
 }

@@ -34,7 +34,7 @@ namespace SpiritMod.NPCs.ZombieVariants
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("Who knew those oxygen tanks needed have actual oxygen in them?"),
+				new FlavorTextBestiaryInfoElement("Who knew those oxygen tanks needed to have actual oxygen in them?"),
 			});
 		}
 

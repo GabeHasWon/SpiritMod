@@ -211,7 +211,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
                 Color color = Projectile.GetAlpha(lightColor) * (float)(((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) / 2);
                 Color color1 = Color.White * (float)(((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) / 2);
 
-                Microsoft.Xna.Framework.Color color29 = new Color(127 - Projectile.alpha, 127 - Projectile.alpha, 127 - Projectile.alpha, 0).MultiplyRGBA(Microsoft.Xna.Framework.Color.LightBlue);
+                //Color color29 = new Color(127 - Projectile.alpha, 127 - Projectile.alpha, 127 - Projectile.alpha, 0).MultiplyRGBA(Color.LightBlue);
 				Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Projectiles/Summon/MoonjellySummon/MoonjellySummon_Glow").Value, drawPos, TextureAssets.Projectile[Projectile.type].Value.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame), color1, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);
 
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, TextureAssets.Projectile[Projectile.type].Value.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame), color, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);

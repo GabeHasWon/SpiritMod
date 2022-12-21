@@ -31,7 +31,6 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             Item.damage = 18;
             Item.width = 30;
             Item.height = 30;
-			Item.scale = 1.15f;
             Item.UseSound = SoundID.Item1;
             Item.shoot = ModContent.ProjectileType<AccursedBolt>();
             Item.shootSpeed = 9;

@@ -54,7 +54,7 @@ namespace SpiritMod.NPCs.Critters
 			Lighting.AddLight((int)((NPC.position.X + (NPC.width / 2f)) / 16f), (int)((NPC.position.Y + (NPC.height / 2f)) / 16f), .4f, .2f, .27f);
 
 
-			if (Main.rand.Next(45) == 0)
+			if (Main.rand.NextBool(45))
 			{
 				int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.VenomStaff, 0f, 0f, 100, default, .85f);
 				Main.dust[num622].velocity *= .1f;

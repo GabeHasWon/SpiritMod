@@ -6,27 +6,9 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.AvianDrops
 {
-	public class FlyerBag : ModItem
+	public class FlyerBag : BossBagItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Consumable\nRight Click to open");
-		}
-
-
-		public override void SetDefaults()
-		{
-			Item.width = 20;
-			Item.height = 20;
-			Item.rare = -2;
-
-			Item.maxStack = 30;
-
-			Item.expert = true;
-		}
-
-		public override bool CanRightClick() => true;
+		internal override string BossName => "Ancient Avian";
 
 		public override void RightClick(Player player)
 		{

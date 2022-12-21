@@ -11,8 +11,14 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows
 {
 	public abstract class GemArrow : ModProjectile
 	{
-		protected int dustType;
-		protected Color glowColor;
+		private readonly Color GlowColor;
+		private readonly int DustType;
+
+		public GemArrow(Color glowColor, int dustType)
+		{
+			GlowColor = glowColor;
+			DustType = dustType;
+		}
 
 		public override void SetStaticDefaults()
 		{
@@ -56,7 +62,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows
 			for (int i = 0; i < 3; i++)
 				Main.EntitySpriteDraw(texture, drawPos, null, color * (1f + i - pulse), Projectile.rotation, texture.Size() / 2, Projectile.scale + (pulse * (.7f / (i + 1))), SpriteEffects.None, 0);
 
-			Lighting.AddLight(Projectile.Center, glowColor.ToVector3() / 2f);
+			Lighting.AddLight(Projectile.Center, GlowColor.ToVector3() / 2f);
 			return false;
 		}
 
@@ -64,7 +70,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows
 		{
 			for (int index = 0; index < 5; ++index)
 			{
-				int i = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 0, glowColor, 1f);
+				int i = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustType, 0f, 0f, 0, GlowColor, 1f);
 				Main.dust[i].noGravity = true;
 			}
 			SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f });

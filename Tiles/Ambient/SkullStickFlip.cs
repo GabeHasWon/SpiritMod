@@ -1,7 +1,5 @@
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,10 +30,9 @@ namespace SpiritMod.Tiles.Ambient
 			AddMapEntry(new Color(107, 90, 64), name);
 			AdjTiles = new int[] { TileID.Lamps };
 		}
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 4;
-		}
+
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 4;
+		
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			int item = 0;
@@ -51,6 +48,7 @@ namespace SpiritMod.Tiles.Ambient
 				Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, item);
 			}
 		}
+
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
 			if (!Main.dayTime) {
@@ -59,6 +57,7 @@ namespace SpiritMod.Tiles.Ambient
 				b = .052f;
 			}
 		}
+
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			if (!Main.dayTime) {
@@ -69,7 +68,6 @@ namespace SpiritMod.Tiles.Ambient
 				}
 				int height = tile.TileFrameY == 36 ? 18 : 16;
 				Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Ambient/SkullStick_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), new Color(100, 100, 100, 100), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-				Tile t = Main.tile[i, j];
 			}
 		}
 	}

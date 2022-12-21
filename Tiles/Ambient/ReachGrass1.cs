@@ -22,6 +22,7 @@ namespace SpiritMod.Tiles.Ambient
 
 			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
 			TileID.Sets.SwaysInWindBasic[Type] = true;
+			TileID.Sets.BreakableWhenPlacing[Type] = true;
 
 			name.SetDefault("Spiky Grass");
 			AddMapEntry(new Color(200, 200, 200), name);

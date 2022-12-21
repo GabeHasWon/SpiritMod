@@ -5,17 +5,26 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using SpiritMod.Particles;
 using SpiritMod.Projectiles.Bullet.Blaster;
+using System.IO;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
 	public class BlasterProj : SubtypeProj
 	{
-		private int Charge
+		private int charge;
+		private readonly int chargeMax = 40;
+
+		private int ShotIndex
 		{
 			get => (int)Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-		private readonly int chargeMax = 40;
+
+		private int ChargeShotIndex
+		{
+			get => (int)Projectile.ai[1];
+			set => Projectile.ai[1] = value;
+		}
 
 		private bool fired = false;
 
@@ -49,24 +58,24 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			player.itemRotation = MathHelper.WrapAngle(Direction.ToRotation() + ((player.direction < 0) ? MathHelper.Pi : 0));
 
-			Projectile.frame = (int)((float)Charge / chargeMax * Main.projFrames[Projectile.type]);
+			Projectile.frame = (int)((float)charge / chargeMax * Main.projFrames[Projectile.type]);
 
 			GetVFX(out Color fxColor, out int[] dustType);
 
 			if (player.channel)
 			{
-				if (Charge < chargeMax)
+				if (charge < chargeMax)
 				{
-					if (Charge >= 8)
+					if (charge >= 8)
 					{
-						var dust = Dust.NewDustPerfect(Projectile.Center + new Vector2(chargeMax - Charge + 2f, 0).RotatedByRandom(MathHelper.TwoPi), dustType[Main.rand.Next(2)]);
-						dust.velocity = new Vector2((1f - (Charge / (float)chargeMax)) * Main.rand.NextFloat(3f, 7f), 0).RotatedBy((Projectile.Center - dust.position).ToRotation());
+						var dust = Dust.NewDustPerfect(Projectile.Center + new Vector2(chargeMax - charge + 2f, 0).RotatedByRandom(MathHelper.TwoPi), dustType[Main.rand.Next(2)]);
+						dust.velocity = new Vector2((1f - (charge / (float)chargeMax)) * Main.rand.NextFloat(3f, 7f), 0).RotatedBy((Projectile.Center - dust.position).ToRotation());
 						dust.noGravity = true;
 						dust.scale = Main.rand.NextFloat(0.5f, 0.8f);
 					}
-					Charge++;
+					charge++;
 				}
-				if ((Charge + 1) == chargeMax)
+				if ((charge + 1) == chargeMax)
 					SoundEngine.PlaySound(SoundID.MaxMana, Projectile.position);
 
 				Projectile.timeLeft = 2;
@@ -79,18 +88,27 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				float knockback = Projectile.knockBack;
 				float magnitude = player.HeldItem.shootSpeed + 2f;
 
-				if (Charge >= chargeMax)
+				if (charge >= chargeMax)
 				{
-					damage = (int)(damage * 2.5f);
-					knockback *= 2f;
+					if (ChargeShotIndex == ModContent.ProjectileType<BigBeam>())
+					{
+						damage = (int)(Projectile.damage * .6f); //The projectile's piercing and range compensate for this
+						knockback = 1f;
+					}
+					else
+					{
+						damage = (int)(damage * 2.5f);
+						knockback *= 2f;
+					}
+
 					magnitude *= 2f;
-					player.GetModPlayer<MyPlayer>().Shake += 1;
+					player.GetModPlayer<MyPlayer>().Shake += 4;
 
 					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyBlastMedium") with { PitchVariance = 0.1f, Volume = 0.6f }, player.Center);
 					ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center, fxColor, 50, 20, PulseCircle.MovementType.OutwardsQuadratic)
 					{
-						Angle = player.itemRotation,
-						ZRotation = 0.5f,
+						Angle = Direction.ToRotation(),
+						ZRotation = 0.6f,
 						Velocity = Direction
 					});
 					for (int i = 0; i < 12; i++)
@@ -98,18 +116,21 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						var dust = Dust.NewDustPerfect(Projectile.Center, dustType[Main.rand.Next(2)]);
 						dust.velocity = Vector2.Zero + (Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))).RotatedByRandom(MathHelper.ToRadians(30)) * Main.rand.NextFloat(2f, 6f) * 3f);
 						dust.noGravity = true;
-						dust.scale = (float)(Charge / chargeMax) * Main.rand.NextFloat(0.8f, 1.2f);
+						dust.scale = (float)(charge / chargeMax) * Main.rand.NextFloat(0.8f, 1.2f);
 					}
 				}
 				else 
 					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 2 }, player.Center);
 
+				Blaster.FireVisuals(Projectile.Center, Direction * magnitude, Subtype);
+
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Direction * magnitude, (Charge >= chargeMax) ? ModContent.ProjectileType<PhaseBlast>() : ModContent.ProjectileType<EnergyBurst>(), damage, knockback, Projectile.owner);
+					Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Direction * magnitude, (charge >= chargeMax) ? ChargeShotIndex : ShotIndex, damage, knockback, Projectile.owner);
 					if (proj.ModProjectile is SubtypeProj)
 						(proj.ModProjectile as SubtypeProj).Subtype = Subtype;
 				}
+				Projectile.netUpdate = true;
 			}
 			return true;
 		}
@@ -136,5 +157,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					break;
 			}
 		}
+
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(charge);
+		public override void ReceiveExtraAI(BinaryReader reader) => charge = reader.Read();
 	}
 }

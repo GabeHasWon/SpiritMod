@@ -1,7 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Accessory;
@@ -83,7 +80,7 @@ namespace SpiritMod.NPCs.Gloop
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.AddCommon<GravityModulator>(400);
-			npcLoot.AddOneFromOptions(ModContent.ItemType<AstronautLegs>(), ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>());
+			npcLoot.AddOneFromOptions(40, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -97,6 +94,7 @@ namespace SpiritMod.NPCs.Gloop
 				}
 			}
 		}
+
 		public override void FindFrame(int frameHeight)
 		{
 			NPC.frameCounter += 0.15f;
@@ -104,6 +102,7 @@ namespace SpiritMod.NPCs.Gloop
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
 		}
+
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
 			if (Main.rand.NextBool(6)) {

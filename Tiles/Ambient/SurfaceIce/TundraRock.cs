@@ -19,6 +19,7 @@ namespace SpiritMod.Tiles.Ambient.SurfaceIce
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.RandomStyleRange = 3;
 			TileObjectData.addTile(Type);
+			TileID.Sets.BreakableWhenPlacing[Type] = true;
 
 			DustType = DustID.RedMoss;
 

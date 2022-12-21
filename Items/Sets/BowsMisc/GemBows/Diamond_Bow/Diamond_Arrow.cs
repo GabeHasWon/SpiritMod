@@ -7,6 +7,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Diamond_Bow
 {
 	public class Diamond_Arrow : GemArrow
 	{
+		public Diamond_Arrow() : base(Color.White, DustID.GemDiamond) { }
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Diamond Arrow");
@@ -33,9 +34,6 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Diamond_Bow
 			Projectile.penetrate = 2;
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = -1;
-
-			dustType = DustID.GemDiamond;
-			glowColor = Color.White;
 		}
 	}
 }

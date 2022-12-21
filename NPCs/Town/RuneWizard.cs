@@ -61,7 +61,7 @@ namespace SpiritMod.NPCs.Town
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("This tired rune scribe has spent sleepless nights studying the ancient magic found in glyphs. He’s not much of a conversationalist, but he’ll gladly empower your arsenal."),
+				new FlavorTextBestiaryInfoElement("This tired rune scribe has spent sleepless nights studying the ancient magic found in glyphs. He's not much of a conversationalist, but he'll gladly empower your arsenal."),
 			});
 		}
 

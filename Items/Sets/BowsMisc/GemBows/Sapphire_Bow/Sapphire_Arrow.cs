@@ -6,6 +6,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Sapphire_Bow
 {
 	public class Sapphire_Arrow : GemArrow
 	{
+		public Sapphire_Arrow() : base(Color.Blue, DustID.GemSapphire) { }
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sapphire Arrow");
@@ -13,13 +14,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Sapphire_Bow
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
 
-		protected override void SafeSetDefaults()
-		{
-			Projectile.aiStyle = -1;
-
-			dustType = DustID.GemSapphire;
-			glowColor = Color.Blue;
-		}
+		protected override void SafeSetDefaults() => Projectile.aiStyle = -1;
 
 		static readonly int gravityTimer = 30;
 		public override void AI()

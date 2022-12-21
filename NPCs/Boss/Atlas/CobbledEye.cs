@@ -14,7 +14,12 @@ namespace SpiritMod.NPCs.Boss.Atlas
 		int timer = 0;
 		bool start = true;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cobbled Eye");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cobbled Eye");
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
+		}
 
 		public override void SetDefaults()
 		{

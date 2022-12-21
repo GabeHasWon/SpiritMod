@@ -4,24 +4,9 @@ using Terraria.ModLoader;
 using SpiritMod.Items.Sets.DonatorVanity;
 namespace SpiritMod.Items.BossLoot.StarplateDrops
 {
-	public class SteamRaiderBag : ModItem
+	public class SteamRaiderBag : BossBagItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Consumable\nRight Click to open");
-		}
-
-		public override void SetDefaults()
-		{
-			Item.width = 20;
-			Item.height = 20;
-			Item.rare = -2;
-			Item.maxStack = 30;
-			Item.expert = true;
-		}
-
-		public override bool CanRightClick() => true;
+		internal override string BossName => "Starplate Voyager";
 
 		public override void RightClick(Player player)
 		{

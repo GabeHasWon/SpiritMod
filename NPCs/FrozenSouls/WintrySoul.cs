@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Consumable;
-using SpiritMod.Tiles.Block;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

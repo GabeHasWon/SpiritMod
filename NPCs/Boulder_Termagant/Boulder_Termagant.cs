@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-				new FlavorTextBestiaryInfoElement("Entranced by anything that glistens, this beast’s eyes now serve only one purpose. Find any glint of light. This usually leads it to gems, but it will mistakenly eat anything that glows."),
+				new FlavorTextBestiaryInfoElement("Entranced by anything that glistens, this beast's eyes now serve only one purpose. Find any glint of light. This usually leads it to gems, but it will mistakenly eat anything that glows."),
 			});
 		}
 

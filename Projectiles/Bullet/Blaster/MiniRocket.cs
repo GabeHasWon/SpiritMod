@@ -10,13 +10,16 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Bullet.Blaster
 {
-	public class Rocket : ModProjectile
+	public class MiniRocket : SubtypeProj
 	{
+		private int[] dustType = new int[2];
+		private int debuffType;
+
 		private NPC target;
 
 		private int? directNPCIndex;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Rocket");
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Mini Rocket");
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
@@ -40,12 +43,36 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 			}
 		}
 
+		public override bool PreAI()
+		{
+			switch (Subtype)
+			{
+				case 1:
+					dustType = new int[] { DustID.FartInAJar, DustID.GreenTorch };
+					debuffType = BuffID.Poisoned;
+					break;
+				case 2:
+					dustType = new int[] { DustID.FrostHydra, DustID.IceTorch };
+					debuffType = BuffID.Frostburn;
+					break;
+				case 3:
+					dustType = new int[] { DustID.Pixie, DustID.PinkTorch };
+					debuffType = BuffID.OnFire;
+					break;
+				default:
+					dustType = new int[] { DustID.SolarFlare, DustID.Torch };
+					debuffType = BuffID.OnFire;
+					break;
+			}
+			return true;
+		}
+
 		public override void AI()
 		{
 			if (Main.rand.NextBool(2))
 			{
 				Vector2 position = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height));
-				Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.Smoke : DustID.Torch, null, 0, default, Main.rand.NextFloat(0.8f, 1.6f));
+				Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.Smoke : dustType[1], null, 0, default, Main.rand.NextFloat(0.8f, 1.6f));
 				dust.velocity = Projectile.velocity * .8f;
 				dust.noGravity = true;
 			}
@@ -93,26 +120,32 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 			{
 				if (i < 3)
 					ParticleHandler.SpawnParticle(new SmokeParticle(Projectile.Center, new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f)), Color.Lerp(Color.DarkGray, Color.Orange, Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.5f, 1.0f), 14));
-				Dust dust = Dust.NewDustPerfect(Projectile.Center, Main.rand.NextBool(2) ? DustID.Torch : DustID.GemRuby, null);
+				Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType[Main.rand.Next(dustType.Length)], null);
 				dust.velocity = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * .5f, Main.rand.NextFloat(-1.0f, 1.0f) * .5f);
 				dust.fadeIn = 1.1f;
 				dust.noGravity = true;
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => directNPCIndex = target.whoAmI;
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			directNPCIndex = target.whoAmI;
+			target.AddBuff(debuffType, 200);
+		}
+
 		public override bool? CanHitNPC(NPC target) => (target.whoAmI != directNPCIndex) ? null : false;
 
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+			Rectangle frame = GetDrawFrame(texture);
 
 			//Draw the projectile normally
-			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), 
-				Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(lightColor), 
+				Projectile.rotation, frame.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			//Draw a glowmask
-			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(Color.White),
-				Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(Color.White),
+				Projectile.rotation, frame.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			return false;
 		}
 	}

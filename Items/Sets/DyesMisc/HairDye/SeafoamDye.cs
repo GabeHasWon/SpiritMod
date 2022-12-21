@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.DyesMisc.HairDye
 			Item.value = Item.buyPrice(gold: 4);
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item3;
-			Item.useStyle = ItemUseStyleID.EatFood;
+			Item.useStyle = ItemUseStyleID.DrinkLiquid;
 			Item.useTurn = true;
 			Item.useAnimation = 17;
 			Item.useTime = 17;
