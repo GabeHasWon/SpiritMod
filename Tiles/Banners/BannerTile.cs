@@ -10,9 +10,108 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Banners
 {
-
 	public class BannerTile : ModTile
 	{
+		public readonly static (string item, string npc)[] BannersIndex = new (string, string)[]
+		{
+			("OccultistBanner", "OccultistBoss"),
+			("BeholderBanner", "Beholder"),
+			("BottomFeederBanner", "BottomFeeder"),
+			("ValkyrieBanner", "Valkyrie"),
+			("YureiBanner", "PagodaGhostHostile"),
+			("SporeWheezerBanner", "SporeWheezer"),
+			("WheezerBanner", "Wheezer"),
+			("AstralAmalgamBanner", "AstralAmalgam"),
+			("ShockhopperBanner", "DeepspaceHopper"),
+			("AncientApostleBanner", "BoneHarpy"),
+			("LostMimeBanner", "LostMime"),
+			("StardancerBanner", "CogTrapperHead"),
+			("CavernCrawlerBanner", "CavernCrawler"),
+			("OrbititeBanner", "Mineroid"),
+			("GladiatorSpiritBanner", "GladiatorSpirit"),
+			("AntlionAssassinBanner", "AntlionAssassin"),
+			("GoldCrateMimicBanner", "GoldCrateMimic"),
+			("IronCrateMimicBanner", "IronCrateMimic"),
+			("WoodCrateMimicBanner", "WoodCrateMimic"),
+			("GraniteSlimeBanner", "GraniteSlime"),
+			("PLACEHOLDER", "NONE"), //Old BlazingRattler
+			("GhastBanner", "Illusionist"),
+			("PLACEHOLDER", "NONE"), //Old SpectralSkull
+			("GreenDungeonCubeBanner", "DungeonCubeGreen"),
+			("PinkDungeonCubeBanner", "DungeonCubePink"),
+			("BlueDungeonCubeBanner", "DungeonCubeBlue"),
+			("WinterbornBanner", "WinterbornMelee"),
+			("WinterbornHeraldBanner", "WinterbornMagic"),
+			("DiseasedSlimeBanner", "DiseasedSlime"),
+			("PLACEHOLDER", "NONE"), //Old DiseasedBat
+			("CoconutSlimeBanner", "OceanSlime"),
+			("BloaterBanner", "Spewer"),
+			("ArterialGrasperBanner", "CrimsonTrapper"),
+			("FesterflyBanner", "Vilemoth"),
+			("PutromaBanner", "Teratoma"),
+			("MasticatorBanner", "Masticator"),
+			("BubbleBruteBanner", "LargeCrustecean"),
+			("GluttonousDevourerBanner", "HellEater"),
+			("ElectricEelBanner", "ElectricEel"),
+			("BlossomHoundBanner", "BlossomHound"),
+			("RlyehianBanner", "Rylheian"),
+			("MangoWarBanner", "MangoJelly"),
+			("CrocosaurBanner", "Crocomount"),
+			("KakamoraGliderBanner", "KakamoraParachuter"),
+			("KakamoraThrowerBanner", "SpearKakamora"),
+			("KakamoraBruteBanner", "SwordKakamora"),
+			("KakamoraShielderBanner", "KakamoraShielder"),
+			("KakamoraShielderBanner1", "KakamoraShielderRare"),
+			("KakamoraShamanBanner", "KakamoraShaman"),
+			("BriarthornSlimeBanner", "ReachSlime"),
+			("PLACEHOLDER", "NONE"), //Old Draseran Trapper/"GrassVine"
+			("GladeWraithBanner", "ForestWraith"),
+			("PLACEHOLDER", "NONE"), //Old CaptiveMask
+			("DarkAlchemistBanner", "PlagueDoctor"),
+			("BloatfishBanner", "SwollenFish"),
+			("MechromancerBanner", "Mecromancer"),
+			("KakamoraBanner", "KakamoraRunner"),
+			("GloopBanner", "GloopGloop"),
+			("ThornStalkerBanner", "ThornStalker"),
+			("PLACEHOLDER", "NONE"), //Old ForgottenOne
+			("DeadeyeMarksmanBanner", "DeadArcher"),
+			("PhantomSamuraiBanner", "SamuraiHostile"),
+			("FleshHoundBanner", "FleshHound"),
+			("CracklingCoreBanner", "GraniteCore"),
+			("CavernBanditBanner", "CavernBandit"),
+			("ReachmanBanner", "Reachman"),
+			("HemaphoraBanner", "Hemophora"),
+			("MyceliumBotanistBanner", "MycelialBotanist"),
+			("MoonlightPreserverBanner", "MoonlightPreserver"),
+			("MoonlightRupturerBanner", "ExplodingMoonjelly"),
+			("GiantJellyBanner", "MoonjellyGiant"),
+			("BloomshroomBanner", "Bloomshroom"),
+			("GlitterflyBanner", "Glitterfly"),
+			("GlowToadBanner", "GlowToad"),
+			("LumantisBanner", "Lumantis"),
+			("LunarSlimeBanner", "LunarSlime"),
+			("BlizzardBanditBanner", "BlizzardBandit"),
+			("CrystalDrifterBanner", "CrystalDrifter"),
+			("PLACEHOLDER", "NONE"), //Old BloodGazer
+			("CystalBanner", "Cystal"),
+			("WildwoodWatcherBanner", "ReachObserver"),
+			("MoltenCoreBanner", "Molten_Core"),
+			("PokeyBanner", "Pokey_Body"),
+			("ScreechOwlBanner", "ScreechOwl"),
+			("ArachmatonBanner", "AutomataCreeper"),
+			("AstralAdventurerBanner", "AstralAdventurer"),
+			("TrochmatonBanner", "AutomataSpinner"),
+			("ChestZombieBanner", "Chest_Zombie"),
+			("BoulderBehemothBanner", "Boulder_Termagant"),
+			("FallingAsteroidBanner", "Falling_Asteroid"),
+			("GoblinGrenadierBanner", "Goblin_Grenadier"),
+			("BlazingSkullBanner", "BlazingSkull"),
+			("StymphalianBatBanner", "StymphalianBat"),
+			("SkeletonBruteBanner", "Skeleton_Brute"),
+			("DraugrBanner", "Enchanted_Armor"),
+			("PirateLobberBanner", "PirateLobber"),
+		};
+
 		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
@@ -43,134 +142,24 @@ namespace SpiritMod.Tiles.Banners
 			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Banners/BannerTile_Glow").Value, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White * .8f, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 48, Mod.Find<ModItem>(GetBannerItem(frameX)).Type);
+		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		{
+			var banner = GetBannerItem(frameX);
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 48, Mod.Find<ModItem>(banner).Type);
+		}
 
 		private static string GetBannerItem(int frameX)
 		{
 			int style = frameX / 18;
-			return style switch
-			{
-				0 => "OccultistBanner",
-				1 => "BeholderBanner",
-				2 => "BottomFeederBanner",
-				3 => "ValkyrieBanner",
-				4 => "YureiBanner",
-				5 => "SporeWheezerBanner",
-				6 => "WheezerBanner",
-				7 => "AstralAmalgamBanner",
-				8 => "ShockhopperBanner",
-				9 => "AncientApostleBanner",
-				10 => "LostMimeBanner",
-				11 => "StardancerBanner",
-				12 => "CavernCrawlerBanner",
-				13 => "OrbititeBanner",
-				14 => "GladiatorSpiritBanner",
-				15 => "AntlionAssassinBanner",
-				16 => "CrystalDrifterBanner",
-				17 => "GoldCrateMimicBanner",
-				18 => "IronCrateMimicBanner",
-				19 => "WoodCrateMimicBanner",
-				20 => "GraniteSlimeBanner",
-				21 => "BlazingRattlerBanner",
-				22 => "GhastBanner",
-				23 => "SpectralSkullBanner",
-				24 => "GreenDungeonCubeBanner",
-				25 => "PinkDungeonCubeBanner",
-				26 => "BlueDungeonCubeBanner",
-				27 => "WinterbornBanner",
-				28 => "WinterbornHeraldBanner",
-				29 => "DiseasedSlimeBanner",
-				30 => "DiseasedBatBanner",
-				31 => "CoconutSlimeBanner",
-				32 => "BloaterBanner",
-				33 => "ArterialGrasperBanner",
-				34 => "FesterflyBanner",
-				35 => "PutromaBanner",
-				36 => "MasticatorBanner",
-				37 => "BubbleBruteBanner",
-				38 => "GluttonousDevourerBanner",
-				39 => "ElectricEelBanner",
-				40 => "BlossomHoundBanner",
-				41 => "RlyehianBanner",
-				42 => "MangoWarBanner",
-				43 => "CrocosaurBanner",
-				44 => "KakamoraGliderBanner",
-				45 => "KakamoraThrowerBanner",
-				46 => "KakamoraBruteBanner",
-				47 => "KakamoraShielderBanner",
-				48 => "KakamoraShielderBanner1",
-				49 => "KakamoraShamanBanner",
-				50 => "BriarthornSlimeBanner",
-				51 => "DroseranTrapperBanner",
-				52 => "GladeWraithBanner",
-				53 => "CaptiveMaskBanner",
-				54 => "DarkAlchemistBanner",
-				55 => "BloatfishBanner",
-				56 => "MechromancerBanner",
-				57 => "KakamoraBanner",
-				58 => "GloopBanner",
-				59 => "ThornStalkerBanner",
-				60 => "ForgottenOneBanner",
-				61 => "DeadeyeMarksmanBanner",
-				62 => "PhantomSamuraiBanner",
-				63 => "FleshHoundBanner",
-				64 => "CracklingCoreBanner",
-				65 => "CavernBanditBanner",
-				66 => "ReachmanBanner",
-				67 => "HemaphoraBanner",
-				68 => "MyceliumBotanistBanner",
-				69 => "MoonlightPreserverBanner",
-				70 => "MoonlightRupturerBanner",
-				71 => "GiantJellyBanner",
-				72 => "BloomshroomBanner",
-				73 => "GlitterflyBanner",
-				74 => "GlowToadBanner",
-				75 => "LumantisBanner",
-				76 => "LunarSlimeBanner",
-				77 => "BlizzardBanditBanner",
-				78 => "CrystalDrifterBanner",
-				79 => "BloodGazerBanner",
-				80 => "CystalBanner",
-				81 => "WildwoodWatcherBanner",
-				82 => "MoltenCoreBanner",
-				83 => "PokeyBanner",
-				84 => "ScreechOwlBanner",
-				85 => "ArachmatonBanner",
-				86 => "AstralAdventurerBanner",
-				87 => "TrochmatonBanner",
-				88 => "ChestZombie",
-				89 => "BoulderBehemothBanner",
-				90 => "FallingAsteroidBanner",
-				91 => "GoblinGrenadierBanner",
-				92 => "BlazingSkullBanner",
-				93 => "StymphalianBatBanner",
-				94 => "SkeletonBruteBanner",
-				95 => "DraugrBanner",
-				96 => "PirateLobberBanner",
-				_ => "",
-			};
+			return BannersIndex[style].item;
 		}
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			int style = Main.tile[i, j].TileFrameX / 18;
+			var npc = BannersIndex[style].npc;
 
-			// NPC internal name array for banner buff usage.
-			// If you need to add another npc, make sure there is a space before/after every NPC name apart from the very last, i.e.
-			// "NPCOne NPCTwo NPCThree"
-			// And *always* add it at the *end* of the string. Messing up the order will offset everything.
-
-			string[] names = ("Occultist Beholder BottomFeeder Valkyrie PagodaGhostHostile SporeWheezer Wheezer AstralAmalgram DeepspaceHopper BoneHarpy LostMime" +
-				" CogTrapperHead CavernCrawler Mineroid GladiatorSpirit AntlionAssassin CrystalDrifter GoldCrateMimic IronCrateMimic WoodCrateMimic GraniteSlime BlazingRattler" +
-				" Illusionist SpectralSkull DungeonCubeGreen DungeonCubePink DungeonCubeBlue WinterbornMagic DiseasedSlime DiseasedBat OceanSlime Spewer CrimsonTrapper Vilemoth" +
-				" Teratoma Masticator LargeCrustecean HellEater ElectricEel BlossomHound Rylheian MangoJelly Crocomount KakamoraParachuter SpearKakamora SwordKakamora" +
-				" KakamoraShielder KakamoraShielderRare KakmoraShaman ReachSlime GrassVine ForestWraith CaptiveMask PlagueDoctor SwollenFish Mecromancer KakamoraRunner" +
-				" GloopGloop ThornStalker ForgottenOne DeadArcher DeadArcher SamuraiHostile FleshHound GraniteCore CavernBandit Reachman Hemophora MycelialBotanist MoonlightPreserver" +
-				" ExplodingMoonjelly MoonjellyGiant Bloomshroom Glitterfly GlowToad Lumantis LunarSlime BlizzardBandit CrystalDrifter BloodGazer Cystal ReachObserver" +
-				" Molten_Core Pokey_Body ScreechOwl AutomataCreeper AstralAdventurer AutomataSpinner Chest_Zombie Boulder_Termagant Falling_Asteroid Goblin_Grenadier" +
-				" BlazingSkull StymphalianBat Skeleton_Brute Enchanted_Armor PirateLobber").Split(' ');
-
-			Main.SceneMetrics.NPCBannerBuff[Mod.Find<ModNPC>(names[style]).Type] = true;
+			Main.SceneMetrics.NPCBannerBuff[Mod.Find<ModNPC>(npc).Type] = true;
 			Main.SceneMetrics.hasBanner = true;
 		}
 

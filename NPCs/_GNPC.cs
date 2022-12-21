@@ -785,7 +785,7 @@ namespace SpiritMod.NPCs
 				{
 					pool.Clear();
 					pool.Add(ModContent.NPCType<Shockhopper.DeepspaceHopper>(), .35f);
-					pool.Add(ModContent.NPCType<AstralAmalgam.AstralAmalgram>(), 0.16f);
+					pool.Add(ModContent.NPCType<AstralAmalgam.AstralAmalgam>(), 0.16f);
 
 					if (NPC.downedBoss2)
 						pool.Add(ModContent.NPCType<Orbitite.Mineroid>(), 0.3f);

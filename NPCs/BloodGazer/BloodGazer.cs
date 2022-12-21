@@ -56,7 +56,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			NPC.HitSound = SoundID.NPCHit19;
 			NPC.DeathSound = SoundID.NPCDeath10;
 			Banner = NPC.type;
-			BannerItem = ModContent.ItemType<Items.Banners.BloodGazerBanner>();
+			//BannerItem = ModContent.ItemType<Items.Banners.BloodGazerBanner>();
 			NPC.netAlways = true;
 		}
 

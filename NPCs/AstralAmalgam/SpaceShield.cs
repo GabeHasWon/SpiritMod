@@ -114,7 +114,7 @@ namespace SpiritMod.NPCs.AstralAmalgam
 
 				NPC.position.X = parent.Center.X - (int)(Math.Cos(rad) * dist) - NPC.width / 2;
 				NPC.position.Y = parent.Center.Y - (int)(Math.Sin(rad) * dist) - NPC.height / 2;
-				if (!parent.active || parent.type != ModContent.NPCType<AstralAmalgram>())
+				if (!parent.active || parent.type != ModContent.NPCType<AstralAmalgam>())
 				{
 					NPC.life = 0;
 					NPC.HitEffect(0, 10);

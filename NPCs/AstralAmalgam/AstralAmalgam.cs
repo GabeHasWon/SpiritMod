@@ -16,10 +16,10 @@ using SpiritMod.Biomes;
 
 namespace SpiritMod.NPCs.AstralAmalgam
 {
-	public class AstralAmalgram : ModNPC
+	public class AstralAmalgam : ModNPC
 	{
 		private bool hasSpawnedBoys = false;
-		private ref float Chargetimer => ref NPC.ai[2];
+		private ref float ChargeTimer => ref NPC.ai[2];
 
 		public override void SetStaticDefaults()
 		{
@@ -68,71 +68,90 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			float deltaY = Main.player[NPC.target].position.Y + (float)(Main.player[NPC.target].height / 2) - center.Y;
 			float distance = (float)Math.Sqrt((double)deltaX * (double)deltaX + (double)deltaY * (double)deltaY);
 			NPC.ai[1] += 1f;
-			if ((double)NPC.ai[1] > 600.0) {
+			if ((double)NPC.ai[1] > 600.0)
+			{
 				acceleration *= 8f;
 				velMax = 4f;
-				if ((double)NPC.ai[1] > 650.0) {
+				if ((double)NPC.ai[1] > 650.0)
+				{
 					NPC.ai[1] = 0f;
 				}
 			}
-			else if ((double)distance < 250.0) {
+			else if ((double)distance < 250.0)
+			{
 				NPC.ai[0] += 0.9f;
-				if (NPC.ai[0] > 0f) {
+				if (NPC.ai[0] > 0f)
+				{
 					NPC.velocity.Y = NPC.velocity.Y + 0.019f;
 				}
-				else {
+				else
+				{
 					NPC.velocity.Y = NPC.velocity.Y - 0.019f;
 				}
-				if (NPC.ai[0] < -100f || NPC.ai[0] > 100f) {
+				if (NPC.ai[0] < -100f || NPC.ai[0] > 100f)
+				{
 					NPC.velocity.X = NPC.velocity.X + 0.019f;
 				}
-				else {
+				else
+				{
 					NPC.velocity.X = NPC.velocity.X - 0.019f;
 				}
-				if (NPC.ai[0] > 200f) {
+				if (NPC.ai[0] > 200f)
+				{
 					NPC.ai[0] = -200f;
 				}
 			}
-			if ((double)distance > 350.0) {
+			if ((double)distance > 350.0)
+			{
 				velMax = 5f;
 				acceleration = 0.3f;
 			}
-			else if ((double)distance > 300.0) {
+			else if ((double)distance > 300.0)
+			{
 				velMax = 3f;
 				acceleration = 0.2f;
 			}
-			else if ((double)distance > 250.0) {
+			else if ((double)distance > 250.0)
+			{
 				velMax = 1.5f;
 				acceleration = 0.1f;
 			}
 			float stepRatio = velMax / distance;
 			float velLimitX = deltaX * stepRatio;
 			float velLimitY = deltaY * stepRatio;
-			if (Main.player[NPC.target].dead) {
+			if (Main.player[NPC.target].dead)
+			{
 				velLimitX = (float)((double)((float)NPC.direction * velMax) / 2.0);
 				velLimitY = (float)((double)(-(double)velMax) / 2.0);
 			}
-			if (NPC.velocity.X < velLimitX) {
+			if (NPC.velocity.X < velLimitX)
+			{
 				NPC.velocity.X = NPC.velocity.X + acceleration;
 			}
-			else if (NPC.velocity.X > velLimitX) {
+			else if (NPC.velocity.X > velLimitX)
+			{
 				NPC.velocity.X = NPC.velocity.X - acceleration;
 			}
-			if (NPC.velocity.Y < velLimitY) {
+			if (NPC.velocity.Y < velLimitY)
+			{
 				NPC.velocity.Y = NPC.velocity.Y + acceleration;
 			}
-			else if (NPC.velocity.Y > velLimitY) {
+			else if (NPC.velocity.Y > velLimitY)
+			{
 				NPC.velocity.Y = NPC.velocity.Y - acceleration;
 			}
-			if ((double)velLimitX > 0.0) {
+			if ((double)velLimitX > 0.0)
+			{
 				NPC.rotation = (float)Math.Atan2((double)velLimitY, (double)velLimitX);
 			}
-			if ((double)velLimitX < 0.0) {
+			if ((double)velLimitX < 0.0)
+			{
 				NPC.rotation = (float)Math.Atan2((double)velLimitY, (double)velLimitX) + 3.14f;
 			}
-			Chargetimer++;
-			if (Chargetimer >= 300) {
-				Chargetimer = 0;
+			ChargeTimer++;
+			if (ChargeTimer >= 300)
+			{
+				ChargeTimer = 0;
 				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 				direction.Normalize();
 				direction.X = direction.X * Main.rand.Next(8, 10);
@@ -141,7 +160,8 @@ namespace SpiritMod.NPCs.AstralAmalgam
 				NPC.velocity.Y = direction.Y;
 				NPC.velocity.Y *= 0.98f;
 				NPC.velocity.X *= 0.995f;
-				for (int i = 0; i < 20; i++) {
+				for (int i = 0; i < 20; i++)
+				{
 					int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DungeonSpirit, 0f, -2f, 0, default, .8f);
 					Main.dust[num].noGravity = true;
 					Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
@@ -153,9 +173,11 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			NPC.spriteDirection = NPC.direction;
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0.05f, 0.09f, 0.4f);
 
-			if (!hasSpawnedBoys) {
+			if (!hasSpawnedBoys)
+			{
 				int latestNPC = NPC.whoAmI;
-				for (int I = 0; I < 3; I++) {
+				for (int I = 0; I < 3; I++)
+				{
 					//cos = y, sin = x
 					latestNPC = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + (int)(Math.Sin(I * 120) * 80), (int)NPC.Center.Y + (int)(Math.Sin(I * 120) * 80), ModContent.NPCType<SpaceShield>(), NPC.whoAmI, 0, latestNPC);
 					NPC shield = Main.npc[latestNPC];
@@ -175,12 +197,12 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			hasSpawnedBoys = reader.ReadBoolean();
 		}
 		public override void FindFrame(int frameHeight)
-        {
-            NPC.frameCounter += 0.12f;
-            NPC.frameCounter %= Main.npcFrameCount[NPC.type];
-            int frame = (int)NPC.frameCounter;
-            NPC.frame.Y = frame * frameHeight;
-        }
+		{
+			NPC.frameCounter += 0.12f;
+			NPC.frameCounter %= Main.npcFrameCount[NPC.type];
+			int frame = (int)NPC.frameCounter;
+			NPC.frame.Y = frame * frameHeight;
+		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
@@ -194,11 +216,13 @@ namespace SpiritMod.NPCs.AstralAmalgam
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int k = 0; k < 30; k++) {
+			for (int k = 0; k < 30; k++)
+			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DungeonSpirit, 2.5f * hitDirection, -2.5f, 0, default, .74f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0)
+			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Amalgam1").Type);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Amalgam2").Type);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Amalgam3").Type);
@@ -207,7 +231,8 @@ namespace SpiritMod.NPCs.AstralAmalgam
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Amalgam6").Type);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Amalgam7").Type);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Amalgam8").Type);
-				for (int i = 0; i < 20; i++) {
+				for (int i = 0; i < 20; i++)
+				{
 					int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DungeonSpirit, 0f, -2f, 0, default, .8f);
 					Main.dust[num].noGravity = true;
 					Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
@@ -226,17 +251,16 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			for (int k = 0; k < NPC.oldPos.Length; k++)
 			{
 				Vector2 drawPos = NPC.oldPos[k] - screenPos + drawOrigin + new Vector2(0f, NPC.gfxOffY);
-				Color color = NPC.GetAlpha(drawColor) * (float)(((float)(NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
-				spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
+				Color color = NPC.GetAlpha(drawColor) * (float)(((NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
+				Main.EntitySpriteDraw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0);
 			}
 			return false;
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if (NPC.alpha != 255) {
+			if (NPC.alpha != 255)
 				GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/AstralAmalgam/AstralAmalgam_Glow").Value, screenPos);
-			}
 		}
 	}
 }

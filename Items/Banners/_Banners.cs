@@ -121,6 +121,7 @@ namespace SpiritMod.Items.Banners
 	public class WoodCrateMimicBanner : BaseBannerItem
 	{
 		protected override int Style => 18;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Wooden Crate Banner");
 	}
 
 	public class GraniteSlimeBanner : BaseBannerItem
@@ -128,20 +129,20 @@ namespace SpiritMod.Items.Banners
 		protected override int Style => 19;
 	}
 
-	public class BlazingRattlerBanner : BaseBannerItem
-	{
-		protected override int Style => 20;
-	}
+	//public class BlazingRattlerBanner : BaseBannerItem //Removed as the NPC no longer exist
+	//{
+	//	protected override int Style => 20;
+	//}
 
-	public class GhastBanner : BaseBannerItem
+	public class GhastBanner : BaseBannerItem 
 	{
 		protected override int Style => 21;
 	}
 
-	public class SpectralSkullBanner : BaseBannerItem
-	{
-		protected override int Style => 22;
-	}
+	//public class SpectralSkullBanner : BaseBannerItem //Removed as the NPC no longer exists
+	//{
+	//	protected override int Style => 22;
+	//}
 
 	public class GreenDungeonCubeBanner : BaseBannerItem
 	{
@@ -173,10 +174,10 @@ namespace SpiritMod.Items.Banners
 		protected override int Style => 28;
 	}
 
-	public class DiseasedBatBanner : BaseBannerItem
-	{
-		protected override int Style => 29;
-	}
+	//public class DiseasedBatBanner : BaseBannerItem //Removed as the NPC no longer exists
+	//{
+	//	protected override int Style => 29;
+	//}
 
 	public class CoconutSlimeBanner : BaseBannerItem
 	{
@@ -292,10 +293,10 @@ namespace SpiritMod.Items.Banners
 		protected override int Style => 51;
 	}
 
-	public class CaptiveMaskBanner : BaseBannerItem
-	{
-		protected override int Style => 52;
-	}
+	//public class CaptiveMaskBanner : BaseBannerItem
+	//{
+	//	protected override int Style => 52;
+	//}
 
 	public class DarkAlchemistBanner : BaseBannerItem
 	{
@@ -309,207 +310,210 @@ namespace SpiritMod.Items.Banners
 
 	public class MechromancerBanner : BaseBannerItem
 	{
-		protected override int Style => 56;
+		protected override int Style => 55;
 	}
 
 	public class KakamoraBanner : BaseBannerItem
 	{
-		protected override int Style => 57;
+		protected override int Style => 56;
 	}
 
 	public class GloopBanner : BaseBannerItem
 	{
-		protected override int Style => 58;
+		protected override int Style => 57;
 	}
 
 	public class ThornStalkerBanner : BaseBannerItem
 	{
-		protected override int Style => 59;
+		protected override int Style => 58;
 	}
 
-	public class ForgottenOneBanner : BaseBannerItem
+	//public class ForgottenOneBanner : BaseBannerItem
+	//{
+	//	protected override int Style => 59;
+	//}
+
+	public class DeadeyeMarksmanBanner : BaseBannerItem
 	{
 		protected override int Style => 60;
 	}
 
-	public class DeadeyeMarksmanBanner : BaseBannerItem
+	public class PhantomSamuraiBanner : BaseBannerItem
 	{
 		protected override int Style => 61;
 	}
 
-	public class PhantomSamuraiBanner : BaseBannerItem
+	public class FleshHoundBanner : BaseBannerItem
 	{
 		protected override int Style => 62;
 	}
 
-	public class FleshHoundBanner : BaseBannerItem
+	public class CracklingCoreBanner : BaseBannerItem
 	{
 		protected override int Style => 63;
 	}
 
-	public class CracklingCoreBanner : BaseBannerItem
+	public class CavernBanditBanner : BaseBannerItem
 	{
 		protected override int Style => 64;
 	}
 
-	public class CavernBanditBanner : BaseBannerItem
+	public class ReachmanBanner : BaseBannerItem
 	{
 		protected override int Style => 65;
 	}
 
-	public class ReachmanBanner : BaseBannerItem
+	public class HemaphoraBanner : BaseBannerItem
 	{
 		protected override int Style => 66;
 	}
 
-	public class HemaphoraBanner : BaseBannerItem
+	public class MyceliumBotanistBanner : BaseBannerItem
 	{
 		protected override int Style => 67;
 	}
 
-	public class MyceliumBotanistBanner : BaseBannerItem
+	public class MoonlightPreserverBanner : BaseBannerItem
 	{
 		protected override int Style => 68;
 	}
 
-	public class MoonlightPreserverBanner : BaseBannerItem
+	public class MoonlightRupturerBanner : BaseBannerItem
 	{
 		protected override int Style => 69;
 	}
 
-	public class MoonlightRupturerBanner : BaseBannerItem
-	{
-		protected override int Style => 70;
-	}
-
 	public class GiantJellyBanner : BaseBannerItem
 	{
-		protected override int Style => 71;
+		protected override int Style => 70;
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Tethervolt Jelly Banner");
     }
 
     public class BloomshroomBanner : BaseBannerItem
 	{
-		protected override int Style => 72;
+		protected override int Style => 71;
 	}
 
 	public class GlitterflyBanner : BaseBannerItem
 	{
-		protected override int Style => 73;
+		protected override int Style => 72;
 	}
 
 	public class GlowToadBanner : BaseBannerItem
 	{
-		protected override int Style => 74;
+		protected override int Style => 73;
 	}
 
 	public class LumantisBanner : BaseBannerItem
 	{
-		protected override int Style => 75;
+		protected override int Style => 74;
 	}
 
 	public class LunarSlimeBanner : BaseBannerItem
 	{
-		protected override int Style => 76;
+		protected override int Style => 75;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Stargazer Slime Banner");
 	}
 
 	public class BlizzardBanditBanner : BaseBannerItem
 	{
-		protected override int Style => 77;
+		protected override int Style => 76;
 	}
 
 	public class CrystalDrifterBanner : BaseBannerItem
 	{
-		protected override int Style => 78;
+		protected override int Style => 77;
 	}
 
-	public class BloodGazerBanner : BaseBannerItem
+	//public class BloodGazerBanner : BaseBannerItem
+	//{
+	//	protected override int Style => 78;
+	//}
+
+	public class CystalBanner : BaseBannerItem
 	{
 		protected override int Style => 79;
 	}
 
-	public class CystalBanner : BaseBannerItem
+	public class WildwoodWatcherBanner : BaseBannerItem
 	{
 		protected override int Style => 80;
 	}
 
-	public class WildwoodWatcherBanner : BaseBannerItem
+	public class MoltenCoreBanner : BaseBannerItem
 	{
 		protected override int Style => 81;
 	}
 
-	public class MoltenCoreBanner : BaseBannerItem
-	{
-		protected override int Style => 82;
-	}
-
 	public class PokeyBanner : BaseBannerItem
 	{
-		protected override int Style => 83;
+		protected override int Style => 82;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Stactus Banner");
 	}
 
 	public class ScreechOwlBanner : BaseBannerItem
 	{
-		protected override int Style => 84;
+		protected override int Style => 83;
 	}
 
 	public class ArachmatonBanner : BaseBannerItem
 	{
-		protected override int Style => 85;
+		protected override int Style => 84;
 	}
 
 	public class AstralAdventurerBanner : BaseBannerItem
 	{
-		protected override int Style => 86;
+		protected override int Style => 85;
 	}
 
 	public class TrochmatonBanner : BaseBannerItem
 	{
-		protected override int Style => 87;
+		protected override int Style => 86;
 	}
 
 	public class ChestZombieBanner : BaseBannerItem
 	{
-		protected override int Style => 88;
+		protected override int Style => 87;
 	}
 
 	public class BoulderBehemothBanner : BaseBannerItem
 	{
-		protected override int Style => 89;
+		protected override int Style => 88;
 	}
 
 	public class FallingAsteroidBanner : BaseBannerItem
 	{
-		protected override int Style => 90;
+		protected override int Style => 89;
 	}
 
 	public class GoblinGrenadierBanner : BaseBannerItem
 	{
-		protected override int Style => 91;
+		protected override int Style => 90;
 	}
 
 	public class BlazingSkullBanner : BaseBannerItem
 	{
-		protected override int Style => 92;
+		protected override int Style => 91;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Wrathful Soul Banner");
 	}
 
 	public class StymphalianBatBanner : BaseBannerItem
 	{
-		protected override int Style => 93;
+		protected override int Style => 92;
 	}
 
 	public class SkeletonBruteBanner : BaseBannerItem
 	{
-		protected override int Style => 94;
+		protected override int Style => 93;
 	}
 
 	public class DraugrBanner : BaseBannerItem
 	{
-		protected override int Style => 95;
+		protected override int Style => 94;
 	}
 
 	public class PirateLobberBanner : BaseBannerItem
 	{
-		protected override int Style => 96;
+		protected override int Style => 95;
 	}
 }

@@ -13,7 +13,7 @@ namespace SpiritMod
 		public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture, Vector2 screenPos, Color? color = null)
 		{
 			var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(
+			Main.EntitySpriteDraw(
 				texture,
 				npc.Center - screenPos + new Vector2(0, npc.gfxOffY),
 				npc.frame,
