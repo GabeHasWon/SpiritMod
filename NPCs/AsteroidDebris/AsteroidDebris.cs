@@ -77,6 +77,8 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				NPC.value = 43500f;
 				NPC.HitSound = SoundID.NPCHit42;
 				NPC.DeathSound = SoundID.NPCDeath44;
+
+				NPC.GivenName = "Hit Me!";
 			}
 			NPC.frameCounter = Main.rand.Next(Main.npcFrameCount[NPC.type]);
 			NPC.netUpdate = true;

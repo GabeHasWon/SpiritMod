@@ -63,7 +63,6 @@ namespace SpiritMod.NPCs.Bloatfish
 			if (target.wet)
 			{
 				NPC.noGravity = false;
-				NPC.spriteDirection = -NPC.direction;
 
 				if (DashTimer++ >= 60 && Main.tile[(int)(NPC.position.X / 16), (int)(NPC.position.Y / 16 - 2)].LiquidAmount == 255)
 				{
@@ -75,11 +74,11 @@ namespace SpiritMod.NPCs.Bloatfish
 			}
 			else
 			{
-				NPC.spriteDirection = -NPC.direction;
 				NPC.aiStyle = 16;
 				NPC.noGravity = true;
 				AIType = NPCID.Goldfish;
 			}
+			NPC.direction = NPC.spriteDirection = (NPC.velocity.X < 0f) ? -1 : 1;
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)

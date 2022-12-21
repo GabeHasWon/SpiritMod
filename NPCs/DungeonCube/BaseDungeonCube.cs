@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.DungeonCube
 		private bool ychase = false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dungeon Cube");
+			DisplayName.SetDefault($"{CubeColor} Dungeon Cube");
 			Main.npcFrameCount[NPC.type] = 8;
 		}
 

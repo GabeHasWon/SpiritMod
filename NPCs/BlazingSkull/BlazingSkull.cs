@@ -63,7 +63,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 			Player player = Main.player[NPC.target];
 			NPC.TargetClosest(true);
-			NPC.spriteDirection = -NPC.direction;
+			NPC.spriteDirection = NPC.direction;
 
 			NPC.ai[0] = ((NPC.Distance(player.Center) < 800 || NPC.ai[2] > rechargetime)
 				&& Collision.CanHit(NPC.position, NPC.width, NPC.height, player.position, 0, 0)
@@ -100,7 +100,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 						NPC.ai[3] = 1;
 					}
 
-					NPC.spriteDirection = -Math.Sign(NPC.velocity.X);
+					NPC.spriteDirection = Math.Sign(NPC.velocity.X);
 
 					if (Main.expertMode)
 						targetpos = Vector2.Lerp(targetpos, player.Center, 0.03f);

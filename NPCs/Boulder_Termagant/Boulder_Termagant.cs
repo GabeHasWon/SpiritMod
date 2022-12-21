@@ -236,7 +236,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 			}
 		}
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => false;
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !spawnInfo.PlayerSafe && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode && !spawnInfo.Player.ZoneUnderworldHeight ? 0.045f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !spawnInfo.PlayerSafe && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode && !(spawnInfo.Player.ZoneDungeon || spawnInfo.Player.ZoneSnow) && !spawnInfo.Player.ZoneUnderworldHeight ? 0.045f : 0f;
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

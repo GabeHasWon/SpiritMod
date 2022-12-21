@@ -40,9 +40,11 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new CritterUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type]);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("Where could this have drifted off from? A loose net? A sunken ship? Guess it doesn't really matter - finders keepers!"),
+				new FlavorTextBestiaryInfoElement("Stray cargo washed ashore from who knows where. Nobody seems to be coming for it, best to net it out of the water. Finders keepers after all."),
 			});
 		}
 
@@ -85,7 +87,6 @@ namespace SpiritMod.NPCs.Critters
 			npcLoot.AddCommon(ItemID.GoldCoin, 5, 20);
 			npcLoot.AddOneFromOptions(27, ItemID.ReaverShark, ItemID.Swordfish, ItemID.SawtoothShark);
 			npcLoot.AddOneFromOptions(3, ItemID.FrostDaggerfish, ItemID.BombFish);
-			npcLoot.AddOneFromOptions(4, ModContent.ItemType<FloaterItem>(), ModContent.ItemType<FloaterItem>());
 			npcLoot.AddOneFromOptions(4, ItemID.ArmoredCavefish, ItemID.Damselfish, ItemID.DoubleCod, ItemID.FrostMinnow);
 			npcLoot.AddOneFromOptions(1, ItemID.Shrimp, ItemID.Salmon, ItemID.Bass, ItemID.RedSnapper, ItemID.Trout);
 			npcLoot.AddOneFromOptions(10, ItemID.FlarefinKoi, ItemID.Obsidifish, ItemID.Prismite, ItemID.PrincessFish);

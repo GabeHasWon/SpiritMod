@@ -403,7 +403,17 @@ namespace SpiritMod.NPCs.DarkfeatherMage
                 num14 = 0.0f;
             Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
             Vector2 drawOrigin = r2.Size() / 2f;
-            Vector2 position3 = position1 + new Vector2(22.0f * NPC.spriteDirection, -1f);
+
+			float offsetY = (int)NPC.frameCounter switch
+			{
+				1 => -10f,
+				2 => -8f,
+				3 => -18f,
+				4 => -16f,
+				_ => -14f,
+			};
+            Vector2 position3 = position1 + new Vector2(26.0f * NPC.spriteDirection, offsetY);
+
             Color color3 = new Color(137, 209, 61) * 1.6f;
             Main.spriteBatch.Draw(texture2D2, position3, r2, color3, NPC.rotation, drawOrigin, NPC.scale * 0.275f, SpriteEffects.FlipHorizontally, 0.0f);
             float num15 = 1f + num11 * 0.75f;

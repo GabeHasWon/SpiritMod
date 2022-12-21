@@ -49,7 +49,7 @@ namespace SpiritMod.NPCs.Wheezer
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (spawnInfo.PlayerSafe || !NPC.downedBoss1)
+			if (spawnInfo.PlayerSafe || !NPC.downedBoss1 || spawnInfo.Player.ZoneSnow)
 				return 0f;
 			if (Main.hardMode)
 				return SpawnCondition.Cavern.Chance * 0.03f;
@@ -136,7 +136,7 @@ namespace SpiritMod.NPCs.Wheezer
 
 		public override void FindFrame(int frameHeight)
 		{
-			float distance = 0;
+			float distance = 200 * 200;
 
 			if (!NPC.IsABestiaryIconDummy)
 			{

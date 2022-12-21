@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.AntlionAssassin
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
-				new FlavorTextBestiaryInfoElement("These desert scavengers are lone wolves. They hunt antlions not to survive – but for sport, to establish dominance among their tribe."),
+				new FlavorTextBestiaryInfoElement("These desert scavengers are lone wolves. They hunt antlions not to survive- but for sport, to establish dominance among their tribe."),
 			});
 		}
 
@@ -154,19 +154,13 @@ namespace SpiritMod.NPCs.AntlionAssassin
 			NPC.alpha = 0;
 		}
 
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			writer.Write(invisibilityTimer);
-		}
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(invisibilityTimer);
 
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			invisibilityTimer = reader.ReadInt32();
-		}
+		public override void ReceiveExtraAI(BinaryReader reader) => invisibilityTimer = reader.ReadInt32();
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.Add(ItemDropRule.Common(857, 53));
+			npcLoot.Add(ItemDropRule.Common(ItemID.SandstorminaBottle, 180));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Hummus>(), 16));
 		}
 

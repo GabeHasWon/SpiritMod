@@ -47,6 +47,8 @@ namespace SpiritMod.NPCs.DesertBandit
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], quickUnlock: true);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
 				new FlavorTextBestiaryInfoElement("A roaming bandit, looking for anything that shines under the harsh sun. Not very fun at parties."),
@@ -85,14 +87,21 @@ namespace SpiritMod.NPCs.DesertBandit
 			if (NPC.localAI[2] == 0f)
 			{
 				if (Vector2.Distance(target.Center, NPC.Center) > 60f)
+				{
 					NPC.aiStyle = 3;
+					if (NPC.velocity.X < 0f)
+						NPC.spriteDirection = -1;
+					else if (NPC.velocity.X > 0f)
+						NPC.spriteDirection = 1;
+				}
 				else
+				{
 					NPC.velocity.X = 0f;
-
-				if (NPC.velocity.X < 0f)
-					NPC.spriteDirection = 1;
-				else if (NPC.velocity.X > 0f)
-					NPC.spriteDirection = -1;
+					if (target.Center.X < NPC.Center.X)
+						NPC.spriteDirection = -1;
+					else if (target.Center.X > NPC.Center.X)
+						NPC.spriteDirection = 1;
+				}
 
 				if (NPC.velocity.X == 0f && target.dead)
 					NPC.spriteDirection = 1;
@@ -251,7 +260,7 @@ namespace SpiritMod.NPCs.DesertBandit
 		{
 			if (NPC.IsABestiaryIconDummy)
 			{
-				Vector2 offset = new Vector2(30, 16);
+				Vector2 offset = new Vector2(50, 2);
 				spriteBatch.Draw(TextureAssets.Npc[Type].Value, NPC.position - screenPos - offset, NPC.frame, drawColor);
 				return false;
 			}

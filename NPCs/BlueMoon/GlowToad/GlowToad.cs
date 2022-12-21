@@ -8,6 +8,9 @@ using Terraria.ModLoader;
 using SpiritMod.Projectiles;
 using SpiritMod.Buffs;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Sets.SeraphSet;
+using Terraria.GameContent.ItemDropRules;
+using SpiritMod.Items.Sets.MagicMisc.AstralClock;
 
 namespace SpiritMod.NPCs.BlueMoon.GlowToad
 {
@@ -142,7 +145,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+				drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 
 			Texture2D headTexture = ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToad_Head", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Vector2 headOffset = new Vector2(NPC.direction == -1 ? 25 : headTexture.Width - 25, 20);
@@ -154,10 +157,16 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			Texture2D glow = ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToad_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			Texture2D headGlow = ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToad_Head", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D headGlow = ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToad_HeadGlow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			spriteBatch.Draw(glow, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, Color.White, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			Vector2 headOffset = new Vector2(NPC.direction == -1 ? 25 : headGlow.Width - 25, 20);
 			spriteBatch.Draw(headGlow, NPC.position - screenPos + headOffset, new Rectangle(0, mouthOpen ? 52 : 0, headGlow.Width, headGlow.Height / 2), Color.White, headRotation, headOffset, NPC.scale, effects, 0);
+		}
+
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MoonStone>(), 5));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StopWatch>(), 100));
 		}
 	}
 	public class GlowToadTongue : ModProjectile

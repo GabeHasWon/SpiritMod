@@ -67,10 +67,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return MyWorld.BlueMoon && spawnInfo.Player.ZoneOverworldHeight ? 1f : 0f;
-		}
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => MyWorld.BlueMoon && spawnInfo.Player.ZoneOverworldHeight ? 1f : 0f;
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -132,11 +129,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200);
 		}
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{
-			npcLoot.Add(ItemDropRule.Common(239, 12));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Armor.MadHat>(), 20));
-		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Armor.MadHat>(), 20));
 	}
 }
 

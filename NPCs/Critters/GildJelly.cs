@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Consumable.Fish;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -82,10 +81,6 @@ namespace SpiritMod.NPCs.Critters
 			return true;
 		}
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{
-			npcLoot.AddCommon<RawFish>();
-			npcLoot.AddCommon(ItemID.GoldCoin, 1, 5);
-		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(ItemID.GoldCoin, 1, 5);
 	}
 }

@@ -80,8 +80,11 @@ namespace SpiritMod.NPCs.Critters
                 }
             }
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
+			if (spawnInfo.Player.ZoneDungeon || spawnInfo.Player.ZoneSnow)
+				return 0f;
             if (spawnInfo.PlayerSafe)
                 return SpawnCondition.Cavern.Chance * 0.008f;
             return SpawnCondition.Cavern.Chance * 0.000763f;

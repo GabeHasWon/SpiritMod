@@ -49,7 +49,8 @@ namespace SpiritMod.NPCs.CrystalDrifter
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Blizzard,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Rain,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Blizzard,
 				new FlavorTextBestiaryInfoElement("The howling winds of a blizzard give flight to this otherwise cumbersome entity composed of ice."),
 			});
 		}

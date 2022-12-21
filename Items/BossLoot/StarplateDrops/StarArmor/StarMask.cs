@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Material;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -14,7 +14,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 		{
 			DisplayName.SetDefault("Astralite Visor");
 			Tooltip.SetDefault("6% increased ranged critical strike chance");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/StarplateDrops/StarArmor/StarMask_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
@@ -29,10 +29,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 			Item.defense = 6;
 		}
 
-		public override void UpdateEquip(Player player)
-		{
-			player.GetCritChance(DamageClass.Ranged) +=(6);
-		}
+		public override void UpdateEquip(Player player) => player.GetCritChance(DamageClass.Ranged) += 6;
 
 		public override void UpdateArmorSet(Player player)
 		{
@@ -41,6 +38,12 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 			player.GetSpiritPlayer().starSet = true;
             player.endurance += 0.05f;
         }
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.08f, .28f, .38f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_ItemGlow").Value, rotation, scale);
+		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 			=> body.type == ModContent.ItemType<StarPlate>() && legs.type == ModContent.ItemType<StarLegs>();

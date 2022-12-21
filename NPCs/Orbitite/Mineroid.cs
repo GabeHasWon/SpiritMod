@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Biomes;
 using SpiritMod.Items.Accessory;
 using SpiritMod.Items.Armor.AstronautVanity;
 using SpiritMod.Items.Weapon.Summon;
@@ -40,12 +41,12 @@ namespace SpiritMod.NPCs.Orbitite
 			AIType = NPCID.FlyingAntlion;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.OrbititeBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<AsteroidBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Meteor,
 				new FlavorTextBestiaryInfoElement("This insignificant asteroid orbits a larger body, but will one day leave the nest and drift into the vast universe."),
 			});
 		}
@@ -56,7 +57,7 @@ namespace SpiritMod.NPCs.Orbitite
 		{
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrbiterStaff>(), 20));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GravityModulator>(), 400));
-			npcLoot.Add(ItemDropRule.OneFromOptions(ModContent.ItemType<AstronautLegs>(), ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>()));
+			npcLoot.AddOneFromOptions(67, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

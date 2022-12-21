@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace SpiritMod.NPCs.Critters
 {
@@ -17,6 +19,11 @@ namespace SpiritMod.NPCs.Critters
 			DisplayName.SetDefault("Gulper");
 			Main.npcFrameCount[NPC.type] = 6;
 			Main.npcCatchable[NPC.type] = true;
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0, 6f),
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 
 		public override void SetDefaults()
@@ -64,7 +71,7 @@ namespace SpiritMod.NPCs.Critters
 		private int Counter;
 		public override void AI()
 		{
-			NPC.spriteDirection = -NPC.direction;
+			NPC.spriteDirection = NPC.direction;
 			Counter++;
 			if (Counter == 100)
 			{
@@ -83,17 +90,23 @@ namespace SpiritMod.NPCs.Critters
 				NPC.rotation = NPC.velocity.X * .06f;
 				if (target.position.X > NPC.position.X)
 				{
-					NPC.spriteDirection = 1;
-					NPC.direction = -1;
+					NPC.direction = NPC.spriteDirection = -1;
 					NPC.netUpdate = true;
 				}
 				else if (target.position.X < NPC.position.X)
 				{
-					NPC.spriteDirection = -1;
-					NPC.direction = 1;
+					NPC.direction = NPC.spriteDirection = 1;
 					NPC.netUpdate = true;
 				}
 			}
+		}
+
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		{
+			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			Rectangle drawFrame = NPC.frame with { Height = NPC.frame.Height - 2 };
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), drawFrame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			return false;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

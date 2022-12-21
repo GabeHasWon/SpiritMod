@@ -164,7 +164,7 @@ namespace SpiritMod.NPCs.SporeWheezer
 		
 		public override void FindFrame(int frameHeight)
 		{
-			float distance = 0;
+			float distance = 200 * 200;
 
 			if (!NPC.IsABestiaryIconDummy)
 			{

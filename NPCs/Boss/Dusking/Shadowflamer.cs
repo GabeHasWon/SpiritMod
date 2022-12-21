@@ -14,6 +14,11 @@ namespace SpiritMod.NPCs.Boss.Dusking
 		{
 			DisplayName.SetDefault("Antumbral Skull");
 			Main.npcFrameCount[NPC.type] = 4;
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Rotation = MathHelper.PiOver2
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
 		public override void SetDefaults()

@@ -17,6 +17,13 @@ namespace SpiritMod.NPCs.BlizzardBandit
         {
             DisplayName.SetDefault("Blizzard Bandit");
             Main.npcFrameCount[NPC.type] = 16;
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(-4, 0),
+				Velocity = 1f
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
         int timer = 0;
@@ -75,9 +82,9 @@ namespace SpiritMod.NPCs.BlizzardBandit
                 timer++;
 
             if (NPC.velocity.X < 0f)
-                NPC.spriteDirection = 1;
-            else if (NPC.velocity.X > 0f)
                 NPC.spriteDirection = -1;
+            else if (NPC.velocity.X > 0f)
+                NPC.spriteDirection = 1;
             return base.PreAI();
         }
 
@@ -86,9 +93,9 @@ namespace SpiritMod.NPCs.BlizzardBandit
             if (shooting)
             {
                 if (NPC.velocity.X < 0f)
-                    NPC.spriteDirection = 1;
-                else if (NPC.velocity.X > 0f)
                     NPC.spriteDirection = -1;
+                else if (NPC.velocity.X > 0f)
+                    NPC.spriteDirection = 1;
             }
         }
 
@@ -106,7 +113,6 @@ namespace SpiritMod.NPCs.BlizzardBandit
 
         public override void FindFrame(int frameHeight)
         {
-            Player player = Main.player[NPC.target];
             NPC.frameCounter++;
 
             if (!shooting)
@@ -123,9 +129,9 @@ namespace SpiritMod.NPCs.BlizzardBandit
             else
             {
                 if (Main.player[NPC.target].Center.X < NPC.Center.X)
-                    NPC.spriteDirection = 1;
-                else
                     NPC.spriteDirection = -1;
+                else
+                    NPC.spriteDirection = 1;
 
                 if (NPC.frameCounter >= 7)
                 {

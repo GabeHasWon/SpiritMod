@@ -33,6 +33,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.noGravity = true;
 			NPC.npcSlots = 0;
 			AIType = NPCID.Goldfish;
+			NPC.rarity = 3;
 			NPC.dontCountMe = true;
 		}
 

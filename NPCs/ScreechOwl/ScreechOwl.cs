@@ -15,7 +15,11 @@ namespace SpiritMod.NPCs.ScreechOwl
 			DisplayName.SetDefault("Screech Owl");
 			Main.npcFrameCount[NPC.type] = 8;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { PortraitPositionYOverride = 10 };
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0, 10),
+				Velocity = 1f
+			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -52,21 +56,6 @@ namespace SpiritMod.NPCs.ScreechOwl
         {
             NPC.spriteDirection = NPC.direction;
             Player player = Main.player[NPC.target];
-            if (NPC.ai[1] == 0f)
-            {
-                NPC.ai[3]++;
-                if (NPC.ai[3] >= 6)
-                {
-                    frame++;
-                    NPC.ai[3] = 0;
-                    NPC.netUpdate = true;
-                }
-
-                if (frame >= 6)
-                    frame = 0;
-            }
-			else
-                frame = 7;
 
             NPC.ai[2]++;
 			if (NPC.ai[2] > 300)
@@ -166,7 +155,20 @@ namespace SpiritMod.NPCs.ScreechOwl
         }
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.worldSurface && spawnInfo.Player.ZoneSnow && !Main.dayTime && !spawnInfo.PlayerSafe ? 0.05f : 0f;
-		public override void FindFrame(int frameHeight) => NPC.frame.Y = frameHeight * frame;
+		
+		public override void FindFrame(int frameHeight)
+		{
+			if (NPC.ai[1] == 0f)
+			{
+				NPC.frameCounter += 0.15f;
+				NPC.frameCounter %= 7;
+			}
+			else
+				NPC.frameCounter = 7f;
+
+			int frame = (int)NPC.frameCounter;
+			NPC.frame.Y = frame * frameHeight;
+		}
 
 		public override void HitEffect(int hitDirection, double damage)
         {

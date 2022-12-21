@@ -30,6 +30,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.dontCountMe = true;
 			NPC.noGravity = true;
 			NPC.npcSlots = 0;
+			NPC.rarity = 3;
 			AIType = NPCID.Shark;
 		}
 
