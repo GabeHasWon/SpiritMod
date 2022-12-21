@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.Mechromancer
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Invasions.Goblins,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				new FlavorTextBestiaryInfoElement("One of the greatest minds among the Goblin Army’s arsenal. A Mechromancer’s tinkering talents are nearly unmatched."),
+				new FlavorTextBestiaryInfoElement("One of the greatest minds among the Goblin Army's arsenal. A Mechromancer's tinkering talents are nearly unmatched."),
 			});
 		}
 

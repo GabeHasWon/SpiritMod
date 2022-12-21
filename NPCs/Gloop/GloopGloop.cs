@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Gloop
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("No one’s quite sure what these things are made of. Whatever it is, it doesn’t taste good."),
+				new FlavorTextBestiaryInfoElement("No one's quite sure what these things are made of. Whatever it is, it doesn't taste good."),
 			});
 		}
 

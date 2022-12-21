@@ -41,7 +41,7 @@ namespace SpiritMod.NPCs.Tides
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("We’re on a baby hunt. And don’t think we don’t know how to weed em’ out."),
+				new FlavorTextBestiaryInfoElement("We're on a baby hunt. And don't think we don't know how to weed em' out."),
 			});
 		}
 

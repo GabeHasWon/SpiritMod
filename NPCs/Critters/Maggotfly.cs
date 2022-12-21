@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
-				new FlavorTextBestiaryInfoElement("A massive maggot that’s somehow matured and grown wings, nasty little thing."),
+				new FlavorTextBestiaryInfoElement("A massive maggot that's somehow matured and grown wings, nasty little thing."),
 			});
 		}
 

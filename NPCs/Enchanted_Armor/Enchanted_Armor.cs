@@ -67,7 +67,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-				new FlavorTextBestiaryInfoElement("These suits of armor were given life by cursed souls connected to the dark sepulchers’ treasure. Now they wait frozen and inanimate for a brave adventurer to wander inside."),
+				new FlavorTextBestiaryInfoElement("These suits of armor were given life by cursed souls connected to the dark sepulchers' treasure. Now they wait frozen and inanimate for a brave adventurer to wander inside."),
 			});
 		}
 

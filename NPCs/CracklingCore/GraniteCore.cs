@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.CracklingCore
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Granite,
-				new FlavorTextBestiaryInfoElement("Pent up energy that was once trapped inside the rocky, amorphous form of a Granite Slime. Now it’s free, and it’s about to go critical!"),
+				new FlavorTextBestiaryInfoElement("Pent up energy that was once trapped inside the rocky, amorphous form of a Granite Slime. Now it's free, and it's about to go critical!"),
 			});
 		}
 

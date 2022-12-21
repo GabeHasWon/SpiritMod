@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Mimic
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-				new FlavorTextBestiaryInfoElement("A fisherman is not alone in their hunt for the sea’s vast riches. A slippery octopus seems to have beaten you to the punch."),
+				new FlavorTextBestiaryInfoElement("A fisherman is not alone in their hunt for the sea's vast riches. A slippery octopus seems to have beaten you to the punch."),
 			});
 		}
 

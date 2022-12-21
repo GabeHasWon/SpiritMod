@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				new FlavorTextBestiaryInfoElement("They’ve been driven mad, completely bonkers! But all the best people are."),
+				new FlavorTextBestiaryInfoElement("They've been driven mad, completely bonkers! But all the best people are."),
 			});
 		}
 

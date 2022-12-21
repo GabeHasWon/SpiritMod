@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
-				new FlavorTextBestiaryInfoElement("An undead dream demon obsessed with the practice and perfection of so-called ‘blood corruption.’ For this practice, he only reveals himself when the moon shimmers sanguine."),
+				new FlavorTextBestiaryInfoElement("An undead dream demon obsessed with the practice and perfection of so-called 'blood corruption.' For this practice, he only reveals himself when the moon shimmers sanguine."),
 			});
 		}
 

@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.AncientApostle
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("The reanimated bones of a long extinct bird. Though dead, don’t lower your guard near them, for these fowl fossils still have fight in them!"),
+				new FlavorTextBestiaryInfoElement("The reanimated bones of a long extinct bird. Though dead, don't lower your guard near them, for these fowl fossils still have fight in them!"),
 			});
 		}
 

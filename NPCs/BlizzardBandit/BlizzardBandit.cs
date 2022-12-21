@@ -52,7 +52,7 @@ namespace SpiritMod.NPCs.BlizzardBandit
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Blizzard,
-				new FlavorTextBestiaryInfoElement("Snowball fights can be fun, but these bandits don’t play nice. They pack their snowballs around cores of ice, causing duress for any passerby."),
+				new FlavorTextBestiaryInfoElement("Snowball fights can be fun, but these bandits don't play nice. They pack their snowballs around cores of ice, causing duress for any passerby."),
 			});
 		}
 

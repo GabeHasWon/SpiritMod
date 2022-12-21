@@ -52,7 +52,7 @@ namespace SpiritMod.NPCs.Automata
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Marble,
-				new FlavorTextBestiaryInfoElement("Times grow dire, and I must hurry. Dual blades, for attack. Four legs, for stability. Extra plating, for resistance. A marble core and at last the spark of life. Make haste o’ guardian, you know your task. Defend these caves we call home."),
+				new FlavorTextBestiaryInfoElement("Times grow dire, and I must hurry. Dual blades, for attack. Four legs, for stability. Extra plating, for resistance. A marble core and at last the spark of life. Make haste o' guardian, you know your task. Defend these caves we call home."),
 			});
 		}
 

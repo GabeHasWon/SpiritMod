@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("Where could this have drifted off from? A loose net? A sunken ship? Guess it doesn’t really matter - finders keepers!"),
+				new FlavorTextBestiaryInfoElement("Where could this have drifted off from? A loose net? A sunken ship? Guess it doesn't really matter - finders keepers!"),
 			});
 		}
 

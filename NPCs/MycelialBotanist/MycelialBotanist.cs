@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.MycelialBotanist
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundMushroom,
-				new FlavorTextBestiaryInfoElement("A gardener’s hobbies are not to be ridiculed. Get in the way of these naturalists, and you’ll face bloom and doom."),
+				new FlavorTextBestiaryInfoElement("A gardener's hobbies are not to be ridiculed. Get in the way of these naturalists, and you'll face bloom and doom."),
 			});
 		}
 

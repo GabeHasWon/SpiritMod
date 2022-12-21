@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.Critters
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Rain,
-				new FlavorTextBestiaryInfoElement("A modest little nimbus that can’t get enough of the rain. Even its shell produces rain, when it gathers enough moisture."),
+				new FlavorTextBestiaryInfoElement("A modest little nimbus that can't get enough of the rain. Even its shell produces rain, when it gathers enough moisture."),
 			});
 		}
 

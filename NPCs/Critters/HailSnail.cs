@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.Critters
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Blizzard,
-				new FlavorTextBestiaryInfoElement("A small living snowball that can’t get enough of the cold. It can get colder and colder, but it will never freeze."),
+				new FlavorTextBestiaryInfoElement("A small living snowball that can't get enough of the cold. It can get colder and colder, but it will never freeze."),
 			});
 		}
 

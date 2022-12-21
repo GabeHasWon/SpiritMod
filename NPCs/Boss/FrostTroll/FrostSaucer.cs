@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Invasions.FrostLegion,
-				new FlavorTextBestiaryInfoElement("A dangerous hovercraft made of spine-chillingly cold metal, and powered by Frost Cores. Playtime’s over, no more mister ice guy!"),
+				new FlavorTextBestiaryInfoElement("A dangerous hovercraft made of spine-chillingly cold metal, and powered by Frost Cores. Playtime's over, no more mister ice guy!"),
 			});
 		}
 

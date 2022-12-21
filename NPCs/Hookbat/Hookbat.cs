@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Hookbat
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
-				new FlavorTextBestiaryInfoElement("These simple thieving pests decided ‘divide and conquer’ was a solid strategy after stealing the adventurer’s cloth."),
+				new FlavorTextBestiaryInfoElement("These simple thieving pests decided 'divide and conquer' was a solid strategy after stealing the adventurer's cloth."),
 			});
 		}
 

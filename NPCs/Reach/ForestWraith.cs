@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.Reach
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Despite the Briar’s unnatural creeping presence, it has left its mark on nature just long enough for these vengeful spirits to call it home."),
+				new FlavorTextBestiaryInfoElement("Despite the Briar's unnatural creeping presence, it has left its mark on nature just long enough for these vengeful spirits to call it home."),
 			});
 		}
 

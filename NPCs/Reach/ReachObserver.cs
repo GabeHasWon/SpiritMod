@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Reach
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("These bramble beasts nest in the leaves of elderbark trees, waiting for an invasive body to set foot within the Briar’s central cavity."),
+				new FlavorTextBestiaryInfoElement("These bramble beasts nest in the leaves of elderbark trees, waiting for an invasive body to set foot within the Briar's central cavity."),
 			});
 		}
 

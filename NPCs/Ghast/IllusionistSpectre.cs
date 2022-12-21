@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.Ghast
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
-				new FlavorTextBestiaryInfoElement("A convincing apparition summoned by Ghasts, made to do their bidding. It’s merely a mirror image of the real deal, don’t be fooled!"),
+				new FlavorTextBestiaryInfoElement("A convincing apparition summoned by Ghasts, made to do their bidding. It's merely a mirror image of the real deal, don't be fooled!"),
 			});
 		}
 

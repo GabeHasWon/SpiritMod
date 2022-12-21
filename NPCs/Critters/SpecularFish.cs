@@ -41,7 +41,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-				new FlavorTextBestiaryInfoElement("Alchemists regard that there’s never enough of this fish to go around in the heat of battle, as the potions they produce tend to empty fast."),
+				new FlavorTextBestiaryInfoElement("Alchemists regard that there's never enough of this fish to go around in the heat of battle, as the potions they produce tend to empty fast."),
 			});
 		}
 

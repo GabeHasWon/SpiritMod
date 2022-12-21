@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Hornetfish
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Jungle,
-				new FlavorTextBestiaryInfoElement("This fish wasn’t content with just being caught. It chose to fight back, and armed with both wings and stingers, it did just that."),
+				new FlavorTextBestiaryInfoElement("This fish wasn't content with just being caught. It chose to fight back, and armed with both wings and stingers, it did just that."),
 			});
 		}
 

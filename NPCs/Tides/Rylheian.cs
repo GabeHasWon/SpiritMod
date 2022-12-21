@@ -43,7 +43,7 @@ namespace SpiritMod.NPCs.Tides
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("The maker of tides and caller of storms! They’re a wicked elderly lich who’s taken charge of the Kakamora Army."),
+				new FlavorTextBestiaryInfoElement("The maker of tides and caller of storms! They're a wicked elderly lich who's taken charge of the Kakamora Army."),
 			});
 		}
 

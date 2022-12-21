@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("At the end of a Lunazoa’s lifespan, obedient migrative drifting evolves into aggression towards foreign entities."),
+				new FlavorTextBestiaryInfoElement("At the end of a Lunazoa's lifespan, obedient migrative drifting evolves into aggression towards foreign entities."),
 			});
 		}
 

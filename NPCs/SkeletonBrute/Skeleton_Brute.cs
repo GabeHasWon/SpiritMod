@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.SkeletonBrute
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
-				new FlavorTextBestiaryInfoElement("As a specimen, yes, they’re intimidating. In a swinging match, nobody swings like a Skeleton Brute."),
+				new FlavorTextBestiaryInfoElement("As a specimen, yes, they're intimidating. In a swinging match, nobody swings like a Skeleton Brute."),
 			});
 		}
 

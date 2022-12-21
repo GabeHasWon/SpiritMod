@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.Spirit
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("They only look like skulls, but in actuality are once again stones carved many centuries ago. These stones seem to be carved in such a way for souls to be able to inhabit it, yet there’s seemingly no record of the Spirit existing prior to its release."),
+				new FlavorTextBestiaryInfoElement("They only look like skulls, but in actuality are once again stones carved many centuries ago. These stones seem to be carved in such a way for souls to be able to inhabit it, yet there's seemingly no record of the Spirit existing prior to its release."),
 			});
 		}
 

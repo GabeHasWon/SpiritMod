@@ -38,7 +38,7 @@ namespace SpiritMod.NPCs.Spirit
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Chunks of spirit-infused metal concentrated into the vague shape of a bat. Likely a lost soul’s attempt to emulate the common flying mammal."),
+				new FlavorTextBestiaryInfoElement("Chunks of spirit-infused metal concentrated into the vague shape of a bat. Likely a lost soul's attempt to emulate the common flying mammal."),
 			});
 		}
 

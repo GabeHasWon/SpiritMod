@@ -47,7 +47,7 @@ namespace SpiritMod.NPCs.GraniteSlime
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Granite,
-				new FlavorTextBestiaryInfoElement("A gelatinous creature that’s roamed the Granite caves for a long while, accumulating enough pebbles and dust to become one with the stone."),
+				new FlavorTextBestiaryInfoElement("A gelatinous creature that's roamed the Granite caves for a long while, accumulating enough pebbles and dust to become one with the stone."),
 			});
 		}
 

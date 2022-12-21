@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundMushroom,
-				new FlavorTextBestiaryInfoElement("This little guy’s playlist consists of 80% lofi beats and hyperwave. Although some judge his taste, that won’t stop him from dancing."),
+				new FlavorTextBestiaryInfoElement("This little guy's playlist consists of 80% lofi beats and hyperwave. Although some judge his taste, that won't stop him from dancing."),
 			});
 		}
 

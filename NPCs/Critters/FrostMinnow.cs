@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
-				new FlavorTextBestiaryInfoElement("Fretful minnows that can survive the intensely cold temperatures of the tundra’s waters because of their unnaturally high body heat."),
+				new FlavorTextBestiaryInfoElement("Fretful minnows that can survive the intensely cold temperatures of the tundra's waters because of their unnaturally high body heat."),
 			});
 		}
 

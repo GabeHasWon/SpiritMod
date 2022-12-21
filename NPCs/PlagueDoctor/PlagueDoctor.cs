@@ -43,7 +43,7 @@ namespace SpiritMod.NPCs.PlagueDoctor
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
-				new FlavorTextBestiaryInfoElement("These bringers of plague roam the shadows of the dungeon. Don’t let yourself be caught taking one of their many workplaces strewn about, lest you suffer acid burns."),
+				new FlavorTextBestiaryInfoElement("These bringers of plague roam the shadows of the dungeon. Don't let yourself be caught taking one of their many workplaces strewn about, lest you suffer acid burns."),
 			});
 		}
 

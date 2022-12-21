@@ -52,7 +52,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCrimson,
-				new FlavorTextBestiaryInfoElement("These beating organs are vital to the crimson's ensured survival – they pump blood into the biome’s squelching stone, granting it the strength to spread and support its extremities."),
+				new FlavorTextBestiaryInfoElement("These beating organs are vital to the crimson's ensured survival – they pump blood into the biome's squelching stone, granting it the strength to spread and support its extremities."),
 			});
 		}
 

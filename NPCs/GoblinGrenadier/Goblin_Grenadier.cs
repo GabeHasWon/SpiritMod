@@ -41,7 +41,7 @@ namespace SpiritMod.NPCs.GoblinGrenadier
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Invasions.Goblins,
-				new FlavorTextBestiaryInfoElement("When spiky balls aren’t cutting it, good old fashioned shrapnel-spitting explosives should do the trick."),
+				new FlavorTextBestiaryInfoElement("When spiky balls aren't cutting it, good old fashioned shrapnel-spitting explosives should do the trick."),
 			});
 		}
 
