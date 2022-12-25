@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.SkeletonBrute
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
-				Position = new Vector2(0, 30),
+				Position = new Vector2(0, 40),
 				PortraitPositionYOverride = 0,
 				Velocity = 1f
 			};

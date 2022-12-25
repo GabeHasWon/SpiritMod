@@ -11,25 +11,26 @@ using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Sets.SeraphSet;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Sets.MagicMisc.AstralClock;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.BlueMoon.GlowToad
 {
 	public class GlowToad : ModNPC
 	{
 		//TODO:
-		//Get animation
 		//smoother head rotation
+		private bool Jumping { get => NPC.ai[0] != 0; set => NPC.ai[0] = value ? 1 : 0; }
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Glow Toad");
-			Main.npcFrameCount[NPC.type] = 1;
+			Main.npcFrameCount[NPC.type] = 2;
 		}
 
 		public override void SetDefaults()
 		{
 			NPC.width = 64;
-			NPC.height = 50;
+			NPC.height = 54;
 			NPC.damage = 100;
 			NPC.defense = 50;
 			NPC.lifeMax = 1080;
@@ -39,12 +40,12 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			NPC.buffImmune[ModContent.BuffType<StarFlame>()] = true;
 			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.knockBackResist = 0.5f;
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("Psychedelic fungus grows upon the back of this toad. They are lost in delirium, as they find themselves snacking on it frequently."),
 			});
 		}
@@ -80,11 +81,11 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		int tongueProj = -1;
 		Vector2 offset;
 
-		private void tongueStuff(Player player, Vector2 dir)
+		private void TongueStuff(Player player, Vector2 dir)
 		{
 			offset = NPC.Center;
 			offset.X += NPC.direction * 15;
-			offset.Y += dir.Y * 12;
+			offset.Y += dir.Y * 16;
 			tongueCooldown--;
 			if (tongueCooldown < 0 && NPC.velocity.Y == 0)
 			{
@@ -125,6 +126,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 					NPC.velocity.Y = -7;
 					NPC.velocity.X = NPC.direction * 10;
 					jumpCounter = 0;
+					Jumping = true;
 				}
 				jumpCounter++;
 			}
@@ -138,18 +140,26 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			else
 				NPC.direction = direction;
 
-			tongueStuff(player, dir);
+			if (Jumping && NPC.velocity.Y == 0)
+				Jumping = false;
+
+			TongueStuff(player, dir);
 		}
 		//int tongueDirection = 0;
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame,
-				drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			Rectangle drawFrame = NPC.frame with 
+			{ 
+				Y = NPC.frame.Height * (Jumping ? 1 : 0),
+			};
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.position - screenPos + new Vector2(0, NPC.gfxOffY), drawFrame,
+				drawColor, NPC.rotation, Vector2.Zero, NPC.scale, effects, 0);
 
 			Texture2D headTexture = ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToad_Head", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Vector2 headOffset = new Vector2(NPC.direction == -1 ? 25 : headTexture.Width - 25, 20);
-			spriteBatch.Draw(headTexture, NPC.position - screenPos + headOffset, new Rectangle(0, mouthOpen ? 52 : 0, headTexture.Width, headTexture.Height / 2), drawColor, headRotation, headOffset, NPC.scale, effects, 0);
+			spriteBatch.Draw(headTexture, NPC.position - screenPos + headOffset, new Rectangle(0, mouthOpen ? headTexture.Height / Main.npcFrameCount[Type] : 0, headTexture.Width, headTexture.Height / 2), drawColor, headRotation, headOffset, NPC.scale, effects, 0);
 			return false;
 		}
 
@@ -157,10 +167,15 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			Texture2D glow = ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToad_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Rectangle drawFrame = NPC.frame with
+			{
+				Y = NPC.frame.Height * (Jumping ? 1 : 0),
+			};
+			spriteBatch.Draw(glow, NPC.position - screenPos + new Vector2(0, NPC.gfxOffY), drawFrame, Color.White, NPC.rotation, Vector2.Zero, NPC.scale, effects, 0);
+
 			Texture2D headGlow = ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToad_HeadGlow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			spriteBatch.Draw(glow, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, Color.White, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			Vector2 headOffset = new Vector2(NPC.direction == -1 ? 25 : headGlow.Width - 25, 20);
-			spriteBatch.Draw(headGlow, NPC.position - screenPos + headOffset, new Rectangle(0, mouthOpen ? 52 : 0, headGlow.Width, headGlow.Height / 2), Color.White, headRotation, headOffset, NPC.scale, effects, 0);
+			spriteBatch.Draw(headGlow, NPC.position - screenPos + headOffset, new Rectangle(0, mouthOpen ? headGlow.Height / Main.npcFrameCount[Type] : 0, headGlow.Width, headGlow.Height / 2), Color.White, headRotation, headOffset, NPC.scale, effects, 0);
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -171,10 +186,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 	}
 	public class GlowToadTongue : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Glow Tongue");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Glow Tongue");
 
 		public override void SetDefaults()
 		{

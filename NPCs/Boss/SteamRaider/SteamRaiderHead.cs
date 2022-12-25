@@ -19,6 +19,8 @@ using SpiritMod.Utilities.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet;
 using SpiritMod.Biomes;
+using SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet;
+using SpiritMod.Items.Placeable.Relics;
 
 namespace SpiritMod.NPCs.Boss.SteamRaider
 {
@@ -828,7 +830,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddMasterModeDropOnAllPlayers<StarplatePetItem>();
+			npcLoot.AddMasterModeRelicAndPet<StarplateRelicItem, StarplatePetItem>();
 			npcLoot.AddBossBag<SteamRaiderBag>();
 
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());

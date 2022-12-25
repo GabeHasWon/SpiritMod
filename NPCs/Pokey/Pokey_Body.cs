@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
@@ -20,7 +19,13 @@ namespace SpiritMod.NPCs.Pokey
 		{
 			DisplayName.SetDefault("Stactus");
             Main.npcFrameCount[NPC.type] = 3;
-        }
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0, 12)
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
+		}
 
         public override void SetDefaults()
         {
@@ -184,7 +189,7 @@ namespace SpiritMod.NPCs.Pokey
                 //ai stuff for base goes here
                 NPC.velocity.X += Math.Sign(Main.player[NPC.target].Center.X - NPC.Center.X) / 10f;
                 NPC.velocity.X = MathHelper.Clamp(NPC.velocity.X, -2, 2);
-                NPC.spriteDirection = -NPC.direction;
+                NPC.spriteDirection = NPC.direction;
                 Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
                 CheckPlatform(Main.player[NPC.target]);
                 CheckPit();
@@ -195,7 +200,7 @@ namespace SpiritMod.NPCs.Pokey
                 NPC.noGravity = true;
                 NPC.aiStyle = -1;
                 NPC.direction = Tail.direction;
-                NPC.spriteDirection = -NPC.direction;
+                NPC.spriteDirection = NPC.direction;
                 NPC.position.X = Tail.position.X + ((float)Math.Sin(queue + NPC.ai[2]) * 3);
                 float posToBe = Main.npc[LowerChain].position.Y - (NPC.height);
                 if (QueueFromTop() == 0)
@@ -339,6 +344,13 @@ namespace SpiritMod.NPCs.Pokey
 			npcLoot.Add(headfulRule);
 		}
 
+		private float animCounter;
+		public override void FindFrame(int frameHeight)
+		{
+			if (NPC.IsABestiaryIconDummy)
+				animCounter = Main.GameUpdateCount; //Allows the NPC to animate only when hovered over in the bestiary
+		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			if (NPC.IsABestiaryIconDummy)
@@ -348,7 +360,7 @@ namespace SpiritMod.NPCs.Pokey
 				for (int i = 3; i >= 0; --i) {
 					Rectangle rect = new Rectangle(0, i % 2 * 32, tex.Width, 26);
 					float yOffset = (i - 4) * 16;
-					float sine = (float)Math.Sin((Main.GameUpdateCount + i * 10) * 0.1f) * 2.5f;
+					float sine = (float)Math.Sin((animCounter + i * 10) * 0.1f) * 2.5f;
 
 					if (i == 0)
 					{

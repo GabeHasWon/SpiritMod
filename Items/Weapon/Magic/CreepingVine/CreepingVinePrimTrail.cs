@@ -74,7 +74,7 @@ namespace SpiritMod.Items.Weapon.Magic.CreepingVine
 		{
 			Effect effect = SpiritMod.ThyrsusShader;
 			if (effect.HasParameter("vineTexture"))
-				effect.Parameters["vineTexture"].SetValue(ModContent.Request<Texture2D>("Textures/CreepingVine", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+				effect.Parameters["vineTexture"].SetValue(Request<Texture2D>("SpiritMod/Textures/CreepingVine", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 			PrepareShader(effect, "MainPS", (float)_length);
 		}
 

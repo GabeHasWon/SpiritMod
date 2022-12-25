@@ -38,7 +38,7 @@ namespace SpiritMod.NPCs.Boss
 
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
-				Position = new Vector2(-18f, 24f)
+				Position = new Vector2(18f, 24f)
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
@@ -81,7 +81,7 @@ namespace SpiritMod.NPCs.Boss
 
 		public override void AI()
 		{
-			NPC.spriteDirection = -NPC.direction;
+			NPC.spriteDirection = NPC.direction;
 			NPC.rotation = NPC.velocity.X * 0.07f;
 
 			Player player = Main.player[NPC.target];
@@ -186,7 +186,7 @@ namespace SpiritMod.NPCs.Boss
 				}
 				else
 				{
-					if (Main.rand.Next(9) == 0 && Main.netMode != NetmodeID.MultiplayerClient)
+					if (Main.rand.NextBool(9) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						int offsetX = 1000 * (int)(Main.windSpeedCurrent / Main.windSpeedCurrent);
 						int offsetY = Main.rand.Next(-460, 460);
@@ -212,7 +212,7 @@ namespace SpiritMod.NPCs.Boss
 				if (Main.expertMode)
 				{
 					modPlayer.windEffect = true;
-					if (Main.rand.Next(22) == 0 && Main.netMode != NetmodeID.MultiplayerClient)
+					if (Main.rand.NextBool(22) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						int offsetX = Main.rand.Next(-2500, 2500) * 2;
 						int offsetY = Main.rand.Next(-1000, 1000) - 700;

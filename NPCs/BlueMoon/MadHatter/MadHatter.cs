@@ -6,6 +6,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.BlueMoon.MadHatter
 {
@@ -33,12 +34,12 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			NPC.knockBackResist = 0f;
 			NPC.aiStyle = 3;
 			AIType = 104;
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				new FlavorTextBestiaryInfoElement("They've been driven mad, completely bonkers! But all the best people are."),
 			});
 		}

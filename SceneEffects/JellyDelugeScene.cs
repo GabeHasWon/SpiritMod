@@ -1,5 +1,4 @@
-﻿using SpiritMod.Utilities;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace SpiritMod.SceneEffects

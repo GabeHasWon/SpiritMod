@@ -24,8 +24,12 @@ namespace SpiritMod.NPCs.BlazingSkull
 			Main.npcFrameCount[NPC.type] = 17;
 			NPC.gfxOffY = 50;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { PortraitPositionYOverride = 10 };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0f, 8f),
+				PortraitPositionYOverride = 0f,
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -50,7 +54,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheUnderworld,
-				new FlavorTextBestiaryInfoElement("One large mask of acceptable quality, pulled from the kiln."),
+				new FlavorTextBestiaryInfoElement("Easily angered, this soul is eternally ablaze because of its sheer rage. All this energy is then released as it charges forward to blow up at any little thing. What a hothead."),
 			});
 		}
 
@@ -142,6 +146,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			}
 			CheckPlatform();
 		}
+
 		private void IdleMovement()
 		{
 			if (Main.rand.NextBool(10))
@@ -155,6 +160,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			NPC.velocity = Vector2.Lerp(NPC.velocity, Vector2.Zero, 0.1f);
 			UpdateFrame(10, 0, 5);
 		}
+
 		private void CheckPlatform()
 		{
 			bool onplatform = true;
@@ -169,6 +175,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			else
 				NPC.noTileCollide = false;
 		}
+
 		private void UpdateFrame(int framespersecond, int minframe, int maxframe)
 		{
 			NPC.frameCounter++;

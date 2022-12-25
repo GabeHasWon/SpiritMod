@@ -1,6 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,10 +7,7 @@ namespace SpiritMod.NPCs.Tides
 {
 	class MangoLaser : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Mango Laser");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Mango Laser");
 
 		public override void SetDefaults()
 		{
@@ -27,10 +22,10 @@ namespace SpiritMod.NPCs.Tides
 			AIType = ProjectileID.Bullet;
 			Projectile.extraUpdates = 1;
 		}
+
 		bool fired = false;
 		public override void AI()
 		{
-
 			Vector2 targetPos = Projectile.Center;
 			float targetDist = 450f;
 			bool targetAcquired = false;

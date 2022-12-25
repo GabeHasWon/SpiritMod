@@ -14,6 +14,8 @@ using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.BossLoot.OccultistDrops;
+using SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet;
+using SpiritMod.Items.BossLoot.OccultistDrops.OccultistPet;
 
 namespace SpiritMod.NPCs.Boss.Occultist
 {
@@ -301,7 +303,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddMasterModeCommonDrop<OccultistRelicItem>();
+			npcLoot.AddMasterModeRelicAndPet<OccultistRelicItem, OccultistPetItem>();
 			npcLoot.AddOneFromOptions(1, ModContent.ItemType<Handball>(), ModContent.ItemType<SacrificialDagger>(), ModContent.ItemType<BloodWard>());
 		}
 

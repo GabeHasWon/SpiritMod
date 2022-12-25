@@ -16,6 +16,8 @@ namespace SpiritMod.NPCs.FrozenSouls
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Icebound Soul");
+
+			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -52,10 +54,7 @@ namespace SpiritMod.NPCs.FrozenSouls
 		public override bool? CanBeHitByItem(Player player, Item item) => false;
 		public override bool? CanBeHitByProjectile(Projectile projectile) => false;
 
-		public override string GetChat()
-		{
-			return "As I approach the spirit, the cave around me seems to shake. The walls collapse, leaving me standing in a boundless chasm. I am alone. Countless piles of gold and relics lay strewn about, covered in a thin layer of frost. The only light in the cavern seems to come from the soul beside me as it waits for me to make a decision.";
-		}
+		public override string GetChat() => "As I approach the spirit, the cave around me seems to shake. The walls collapse, leaving me standing in a boundless chasm. I am alone. Countless piles of gold and relics lay strewn about, covered in a thin layer of frost. The only light in the cavern seems to come from the soul beside me as it waits for me to make a decision.";
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
@@ -136,10 +135,9 @@ namespace SpiritMod.NPCs.FrozenSouls
 				}
 			}
 		}
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return QuestManager.GetQuest<IceDeityQuest>().IsActive && (spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow) && !NPC.AnyNPCs(ModContent.NPCType<WintrySoul>()) ? 0.00001f : 0f;
-		}
+
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => QuestManager.GetQuest<IceDeityQuest>().IsActive && (spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow) && !NPC.AnyNPCs(ModContent.NPCType<WintrySoul>()) ? 0.00001f : 0f;
+		
 		public void DoPassiveDust()
 		{
 			Vector2 center = NPC.Center;

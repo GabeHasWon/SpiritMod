@@ -52,6 +52,13 @@ namespace SpiritMod.NPCs.GraniTech
 		{
 			DisplayName.SetDefault("G-TEK Turret");
 			Main.npcFrameCount[NPC.type] = 3;
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0, 10),
+				PortraitPositionYOverride = 30
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()

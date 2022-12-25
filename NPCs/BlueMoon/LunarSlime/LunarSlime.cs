@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using System;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 {
@@ -42,12 +43,12 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 			AnimationType = NPCID.BlueSlime;
             Banner = NPC.type;
             BannerItem = ModContent.ItemType<Items.Banners.LunarSlimeBanner>();
-        }
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
+		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				new FlavorTextBestiaryInfoElement("Gelatinous nectar from the stars. Stargazer Slimes may be aggressive, but the oil they secrete makes for a delicious spread."),
 			});
 		}

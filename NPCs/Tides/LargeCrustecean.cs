@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.TideDrops;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.Tides
 {
@@ -15,8 +16,14 @@ namespace SpiritMod.NPCs.Tides
 			DisplayName.SetDefault("Bubble Brute");
 			Main.npcFrameCount[NPC.type] = 9;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Velocity = 1f,
+				Position = new Vector2(16f, 28f),
+				PortraitPositionXOverride = 0f,
+				PortraitPositionYOverride = 0f
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -35,12 +42,12 @@ namespace SpiritMod.NPCs.Tides
 			NPC.DeathSound = SoundID.NPCDeath5;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.BubbleBruteBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
 				new FlavorTextBestiaryInfoElement("We're on a baby hunt. And don't think we don't know how to weed em' out."),
 			});
 		}

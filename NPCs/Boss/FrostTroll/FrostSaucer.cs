@@ -9,6 +9,8 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
+using SpiritMod.Items.Placeable.Relics;
 
 namespace SpiritMod.NPCs.Boss.FrostTroll
 {
@@ -42,7 +44,6 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Invasions.FrostLegion,
 				new FlavorTextBestiaryInfoElement("A dangerous hovercraft made of spine-chillingly cold metal, and powered by Frost Cores. Playtime's over, no more mister ice guy!"),
 			});
@@ -257,16 +258,6 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 					NetMessage.SendData(MessageID.InvasionProgressReport, -1, -1, null, Main.invasionProgress, Main.invasionProgressMax, Main.invasionProgressIcon, 0f, 0, 0, 0);
 			}
 
-			int[] lootTable = {
-				ModContent.ItemType<Bauble>(),
-				ModContent.ItemType<BlizzardEdge>(),
-				ModContent.ItemType<Chillrend>(),
-				ModContent.ItemType<ShiverWind>()
-			};
-
-			int loot = Main.rand.Next(lootTable.Length);
-			Item.NewItem(NPC.GetSource_Death(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, lootTable[loot]);
-
 			for (int i = 0; i < 15; ++i)
 			{
 				if (Main.rand.NextBool(8))
@@ -276,6 +267,14 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 					Main.dust[newDust].velocity *= 5f;
 				}
 			}
+		}
+
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.AddMasterModeRelicAndPet<FrostSaucerRelicItem, SnowmongerMountItem>();
+
+			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+			notExpertRule.AddOneFromOptions<Bauble, BlizzardEdge, Chillrend, ShiverWind>();
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

@@ -39,13 +39,12 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			Main.npcFrameCount[NPC.type] = 22;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				Position = new Vector2(8f, 12f),
-				PortraitPositionXOverride = -8,
-				Direction = -1
+				PortraitPositionXOverride = 0f
 			};
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()

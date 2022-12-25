@@ -14,6 +14,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Buffs.DoT;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.NPCs.Festerfly;
 
 namespace SpiritMod.NPCs.HauntedTome
 {
@@ -51,6 +52,8 @@ namespace SpiritMod.NPCs.HauntedTome
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], true);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
 				new FlavorTextBestiaryInfoElement("A warding glyph was placed on this tome to protect it from improper use. Unfortunately for you, that means staring down a book with 20 canines."),

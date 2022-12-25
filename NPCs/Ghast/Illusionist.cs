@@ -15,6 +15,13 @@ namespace SpiritMod.NPCs.Ghast
 		{
 			DisplayName.SetDefault("Ghast");
 			Main.npcFrameCount[NPC.type] = 5;
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Velocity = 1f,
+				Position = new Vector2(0f, 20f),
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()

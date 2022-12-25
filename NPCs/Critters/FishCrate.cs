@@ -1,5 +1,4 @@
 using SpiritMod.Items.Armor.DiverSet;
-using SpiritMod.Items.Consumable;
 using SpiritMod.Items.Consumable.Fish;
 using Terraria;
 using Terraria.ID;
@@ -14,7 +13,6 @@ namespace SpiritMod.NPCs.Critters
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Packing Crate");
-
 			Main.npcFrameCount[NPC.type] = 1;
 			Main.npcCatchable[NPC.type] = true;
 		}

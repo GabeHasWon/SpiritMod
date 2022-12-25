@@ -4,7 +4,6 @@ using System;
 using SpiritMod.NPCs.Boss.MoonWizard.Projectiles;
 using SpiritMod.Projectiles.Hostile;
 using Terraria;
-using SpiritMod.Buffs;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -12,17 +11,17 @@ using Terraria.ModLoader;
 using SpiritMod.Items.BossLoot.MoonWizardDrops;
 using SpiritMod.Items.BossLoot.MoonWizardDrops.JellynautHelmet;
 using System.IO;
-using SpiritMod.NPCs.MoonjellyEvent;
 using SpiritMod.Items.Consumable;
 using SpiritMod.Utilities;
 using System.Collections.Generic;
 using SpiritMod.Items.Placeable.MusicBox;
-using SpiritMod.Items.Equipment;
 using SpiritMod.Items.Consumable.Potion;
 using SpiritMod.Buffs.DoT;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet;
 using Terraria.GameContent.ItemDropRules;
+using SpiritMod.Biomes.Events;
+using SpiritMod.Items.Placeable.Relics;
 
 namespace SpiritMod.NPCs.Boss.MoonWizard
 {
@@ -36,8 +35,17 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { PortraitPositionYOverride = 30 };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(4f, 34f),
+				PortraitPositionYOverride = 20f,
+				PortraitPositionXOverride = 0f,
+				Direction = 1,
+				Velocity = 1f,
+				Scale = 2f,
+				PortraitScale = 2f
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -64,12 +72,12 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			NPC.DeathSound = SoundID.NPCDeath2;
             Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/MoonJelly");
             NPC.boss = true;
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("Those moon jellies are smarter than they seem. With only a bit of coordination and a sharp sense of fashion, they can become a far tougher adversary than any one jelly could ever be."),
 			});
 		}
@@ -305,7 +313,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddMasterModeDropOnAllPlayers<MJWPetItem>();
+			npcLoot.AddMasterModeRelicAndPet<MJWRelicItem, MJWPetItem>();
 			npcLoot.AddBossBag<MJWBag>();
 
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());

@@ -19,6 +19,12 @@ namespace SpiritMod.NPCs.FleshHound
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(20f, 0f)
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -126,6 +132,16 @@ namespace SpiritMod.NPCs.FleshHound
 				NPC.netUpdate = true;
 				trailbehind = false;
 				NPC.knockBackResist = .2f;
+			}
+
+			//Run away from the player target during the day
+			if (Main.dayTime && Main.netMode != NetmodeID.MultiplayerClient)
+			{
+				Vector2 direction = Vector2.Normalize(NPC.Center - Main.player[NPC.target].Center) * new Vector2(Main.rand.Next(7, 9), Main.rand.Next(2, 4));
+				NPC.velocity = direction;
+				NPC.velocity.Y *= 0.98f;
+				NPC.velocity.X *= 0.995f;
+				NPC.netUpdate = true;
 			}
 		}
 

@@ -23,8 +23,8 @@ namespace SpiritMod.NPCs.SamuraiGhost
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
-				PortraitPositionXOverride = -16,
-				PortraitPositionYOverride = 10
+				Position = new Vector2(-10, 16),
+				Velocity = 1f
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}

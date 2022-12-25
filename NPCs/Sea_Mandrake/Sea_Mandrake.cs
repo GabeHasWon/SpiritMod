@@ -188,11 +188,7 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 				Item.NewItem(NPC.GetSource_Death(), NPC.Center, ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.SeaMandrakeSac>());
 		}
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{
-			npcLoot.AddCommon<LuminanceSeacone>(20);
-			npcLoot.AddCommon<RawFish>(2);
-		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<LuminanceSeacone>(20);
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

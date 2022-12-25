@@ -103,7 +103,6 @@ namespace SpiritMod.NPCs.Critters
 			}
 		}
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<RawFish>(2);
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneRockLayerHeight && spawnInfo.Water ? 0.007666f : 0f;
 	}
 }

@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Consumable.Potion;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.MoonjellyEvent
 {
@@ -39,12 +40,12 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			AIType = NPCID.Firefly;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.MoonlightPreserverBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("A mature female Lunazoa carries infantile jellies within their membrane until they are mature enough to migrate on their own."),
 			});
 		}
