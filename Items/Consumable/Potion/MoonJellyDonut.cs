@@ -11,23 +11,17 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
-	public class MoonJellyDonut : ModItem
+	public class MoonJellyDonut : FoodItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Moon Jelly Donut");
+		internal override Point Size => new(34, 20);
+		public override void StaticDefaults() => DisplayName.SetDefault("Moon Jelly Donut");
 
-		public override void SetDefaults()
+		public override void Defaults()
 		{
-			Item.width = 34;
-			Item.height = 26;
 			Item.rare = ItemRarityID.Pink;
 			Item.maxStack = 30;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.useTime = Item.useAnimation = 20;
-			Item.consumable = true;
-			Item.autoReuse = false;
 			Item.potion = true;
 			Item.healLife = 180;
-			Item.UseSound = SoundID.Item2;
 		}
 
 		public override bool CanUseItem(Player player) => player.FindBuffIndex(BuffID.PotionSickness) == -1;
@@ -44,12 +38,12 @@ namespace SpiritMod.Items.Consumable.Potion
                 new Vector2
                 (
                     Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
+                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height / 3 * 0.5f + 2f
                 ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
+				null,
                 Color.White,
                 rotation,
-                texture.Size() * 0.5f,
+				Item.Size * 0.5f,
                 scale,
                 SpriteEffects.None,
                 0f
@@ -58,7 +52,7 @@ namespace SpiritMod.Items.Consumable.Potion
                 new Vector2
                 (
                     Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
+                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height / 3 * 0.5f + 2f
                 ),
                 null, 
 				Color.Lerp(Color.White, Color.Transparent, 0.75f), 
@@ -92,7 +86,7 @@ namespace SpiritMod.Items.Consumable.Potion
         {
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient(ModContent.ItemType<MoonJelly>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<Items.Sets.SeraphSet.MoonStone>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Sets.SeraphSet.MoonStone>(), 1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

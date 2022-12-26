@@ -1,33 +1,16 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Halloween.Biome
 {
-	public class JackOGourd : ModItem
+	public class JackOGourd : FoodItem
 	{
-		public override void SetStaticDefaults()
+		internal override Point Size => new(32, 38);
+		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Jack-o-Gourd");
 			Tooltip.SetDefault("Minor improvements to all stats...kinda");
-		}
-
-		public override void SetDefaults()
-		{
-			Item.width = 30;
-			Item.height = 42;
-			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
-			Item.value = Item.sellPrice(0, 0, 0, 50);
-			Item.noUseGraphic = false;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.useTime = Item.useAnimation = 20;
-			Item.noMelee = true;
-			Item.consumable = true;
-			Item.autoReuse = false;
-			Item.UseSound = SoundID.Item2;
-			Item.buffTime = 4 * 60 * 60;
-			Item.buffType = BuffID.WellFed;
 		}
 
 		public override bool? UseItem(Player player)

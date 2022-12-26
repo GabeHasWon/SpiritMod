@@ -7,7 +7,7 @@ namespace SpiritMod.Items;
 
 internal class FoodHelper
 {
-	public static bool PreDrawInInventory(ModItem item, SpriteBatch spriteBatch, Vector2 position, Color drawColor, float scale, Vector2? offset = null)
+	public static bool PreDrawInInventory(ModItem item, SpriteBatch spriteBatch, Vector2 position, Color drawColor, float scale, Vector2? offset = null) //Currently Unused
 	{
 		offset = offset ?? new Vector2(0, item.Item.width * (10 / 30f));
 		Texture2D tex = ModContent.Request<Texture2D>(item.Texture).Value;

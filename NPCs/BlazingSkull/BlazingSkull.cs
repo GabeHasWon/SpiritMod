@@ -26,8 +26,8 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
-				Position = new Vector2(0f, 8f),
-				PortraitPositionYOverride = 0f,
+				Position = new Vector2(0, 10),
+				PortraitPositionYOverride = 20,
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
@@ -178,6 +178,9 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 		private void UpdateFrame(int framespersecond, int minframe, int maxframe)
 		{
+			if (NPC.IsABestiaryIconDummy)
+				return;
+
 			NPC.frameCounter++;
 			if (NPC.frameCounter >= (60 / framespersecond))
 			{
@@ -210,7 +213,22 @@ namespace SpiritMod.NPCs.BlazingSkull
 			}
 		}
 
-		public override void FindFrame(int frameHeight) => NPC.frame.Y = frameHeight * frame;
+		public override void FindFrame(int frameHeight)
+		{
+			if (NPC.IsABestiaryIconDummy)
+			{
+				NPC.frameCounter++;
+				if (NPC.frameCounter >= 6)
+				{
+					frame++;
+					NPC.frameCounter = 0;
+				}
+				if (frame >= 5 || frame < 0)
+					frame = 0;
+			}
+			NPC.frame.Y = frameHeight * frame;
+		}
+
 		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.OnFire, 180);
 
 		public override void OnKill()
