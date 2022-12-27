@@ -1,10 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs.Summon;
-using SpiritMod.Projectiles.BaseProj;
-using SpiritMod.Utilities;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

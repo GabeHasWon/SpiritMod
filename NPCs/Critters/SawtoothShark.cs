@@ -2,8 +2,6 @@ using SpiritMod.Items.Consumable.Fish;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
-using Microsoft.Xna.Framework;
 using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Critters

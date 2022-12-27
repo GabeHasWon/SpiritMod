@@ -1,8 +1,5 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -15,15 +12,14 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Twilight Star");
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
+			ProjectileID.Sets.MinionShot[Projectile.type] = true;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
-			Projectile.hostile = false;
-			Projectile.minion = true;
 			Projectile.penetrate = 1;
 			Projectile.timeLeft = 180;
 			Projectile.height = 18;
@@ -32,13 +28,14 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 			AIType = ProjectileID.Bullet;
 			Projectile.extraUpdates = 1;
 		}
+
         public override void AI()
         {
             Projectile.rotation += .3f;
             for (int i = 0; i < 5; i++)
             {
                 Vector2 position = Projectile.Center;
-                Dust dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, DustID.ShadowbeamStaff, 0f, 0f, 0, new Color(255, 255, 255), 0.64947368f)];
+                Dust dust = Main.dust[Dust.NewDust(position, 0, 0, DustID.ShadowbeamStaff, 0f, 0f, 0, new Color(255, 255, 255), 0.64947368f)];
                 dust.noLight = true;
                 dust.noGravity = true;
                 dust.velocity = Vector2.Zero;
@@ -46,7 +43,7 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 			if (Main.rand.NextBool(3))
             {
                 Vector2 position = Projectile.Center;
-                Dust dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, DustID.ShadowbeamStaff, 0f, 0f, 0, new Color(255, 255, 255), 0.64947368f)];
+                Dust dust = Main.dust[Dust.NewDust(position, 0, 0, DustID.ShadowbeamStaff, 0f, 0f, 0, new Color(255, 255, 255), 0.64947368f)];
                 dust.noLight = true;
                 dust.noGravity = true;
                 dust.velocity *= .6f;

@@ -1,11 +1,11 @@
 ﻿using Terraria.Audio;
-using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
+using Terraria.DataStructures;
 
 namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 {
@@ -13,50 +13,50 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gilded Bolt");
-            Main.projFrames[base.Projectile.type] = 4;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-            ProjectileID.Sets.MinionSacrificable[base.Projectile.type] = true;
-            ProjectileID.Sets.CultistIsResistantTo[base.Projectile.type] = true;
-            ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
+			DisplayName.SetDefault("Red Glyph");
+			ProjectileID.Sets.MinionShot[Projectile.type] = true;
+			Main.projFrames[Projectile.type] = 4;
         }
 
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
+			Projectile.DamageType = DamageClass.Default;
 			Projectile.width = 24;
 			Projectile.height = 38;
-			Projectile.minion = true;
 			Projectile.friendly = true;
-            Main.projPet[Projectile.type] = true;
             Projectile.penetrate = 2;
             Projectile.timeLeft = 40;
             Projectile.alpha = 100;
 		}
-        float alphaCounter;
-        float sineAdd;
-        bool chooseFrame;
+
+        private float SineAdd => (float)Math.Sin(AlphaCounter) + 2;
+		private float AlphaCounter
+		{
+			get => Projectile.ai[0];
+			set => Projectile.ai[0] = value;
+		}
+
+		public override void OnSpawn(IEntitySource source) => Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
+
 		public override void AI()
 		{
             Projectile.rotation = 0f;
-            alphaCounter += .095f;
+			AlphaCounter += .095f;
+
 			if (Main.rand.NextBool(15))
             {
                 int glyphnum = Main.rand.Next(4);
                 DustHelper.DrawDustImage(new Vector2(Projectile.Center.X + Main.rand.Next(-30, 30), Projectile.Center.Y + Main.rand.Next(-30, 30)), 130, 0.05f, "SpiritMod/Effects/DustImages/CimmerianGlyph" + glyphnum, 1f);
             }
             DoDustEffect(Projectile.Center, 34f);
-            sineAdd = (float)Math.Sin(alphaCounter) + 2;
-			if (!chooseFrame)
-            {
-                chooseFrame = true;
-                Projectile.frame = Main.rand.Next(0, 4);
-            }
+
             Projectile.velocity = Vector2.Zero;
         }
+
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<Fire>(), Projectile.damage/3 * 2, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<Fire>(), (int)(Projectile.damage *.66f), Projectile.knockBack, Projectile.owner, 0f, 0f);
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 
             for (int k = 0; k < 40; k++)
@@ -70,7 +70,8 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
                 DustHelper.DrawDustImage(new Vector2(Projectile.Center.X + Main.rand.Next(-30, 30), Projectile.Center.Y + Main.rand.Next(-30, 30)), 130, 0.05f, "SpiritMod/Effects/DustImages/CimmerianGlyph" + glyphnum, 1f);
             }
         }
-        private void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
+
+        private static void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
         {
             float angle = Main.rand.NextFloat(-MathHelper.Pi, MathHelper.Pi);
             Vector2 vec = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
@@ -83,7 +84,7 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
             Main.dust[dust].customData = follow;
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(255, 94, 94) * sineAdd;
+        public override Color? GetAlpha(Color lightColor) => new Color(255, 94, 94) * SineAdd;
 
         public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{

@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Graphics.Shaders;
 using SpiritMod.Utilities;
 using SpiritMod.Items.Accessory;
 
@@ -13,16 +12,18 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 {
 	public class CimmerianScepterProjectile : ModProjectile, IDrawAdditive
     {
-		int timer = 0;
+		private int timer = 0;
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cimmerian Scepter");
-			Main.projFrames[base.Projectile.type] = 1;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
+			Main.projFrames[Projectile.type] = 1;
+			Main.projPet[Projectile.type] = true;
+
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-            ProjectileID.Sets.MinionSacrificable[base.Projectile.type] = true;
-			ProjectileID.Sets.CultistIsResistantTo[base.Projectile.type] = true;
+            ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
+			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 		}
 
@@ -32,9 +33,8 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 			Projectile.width = 20;
 			Projectile.height = 52;
 			Projectile.friendly = true;
-			Main.projPet[Projectile.type] = true;
 			Projectile.minion = true;
-			Projectile.minionSlots = 0;
+			Projectile.minionSlots = 0f;
 			Projectile.penetrate = -1;
 			Projectile.timeLeft = 18000;
 			Projectile.tileCollide = false;
@@ -42,16 +42,25 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 			AIType = ProjectileID.Raven;
 		}
 
-        Color colorVer;
-        float alphaCounter;
+        private Color colorVer;
+        private float alphaCounter;
+
+		public override bool PreAI()
+		{
+			Player player = Main.player[Projectile.owner];
+
+			if (Projectile.damage == 0) //This shouldn't happen
+				Projectile.damage = (int)Main.player[Projectile.owner].GetDamage(Projectile.DamageType).ApplyTo(22);
+
+			if (player.HasAccessory<CimmerianScepter>())
+				Projectile.timeLeft = 2;
+
+			return true;
+		}
 
 		public override void AI()
 		{
 			alphaCounter += 0.03f;
-			Player player = Main.player[Projectile.owner];
-
-			if (player.HasAccessory<CimmerianScepter>())
-				Projectile.timeLeft = 2;
 
 			for (int num526 = 0; num526 < 1000; num526++)
 			{

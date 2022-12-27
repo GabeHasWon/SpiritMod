@@ -6,7 +6,6 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Critters
@@ -30,11 +29,11 @@ namespace SpiritMod.NPCs.Critters
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.knockBackResist = .35f;
 			NPC.aiStyle = 16;
+			NPC.dontCountMe = true;
 			NPC.noGravity = true;
 			NPC.npcSlots = 0;
-			AIType = NPCID.Goldfish;
 			NPC.rarity = 3;
-			NPC.dontCountMe = true;
+			AIType = NPCID.Shark;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
