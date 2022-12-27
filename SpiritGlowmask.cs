@@ -17,7 +17,7 @@ namespace SpiritMod
 
 	public class SpiritGlowMaskItemLayer : PlayerDrawLayer
 	{
-		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.HandOnAcc);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.ArmOverItem);
 
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
