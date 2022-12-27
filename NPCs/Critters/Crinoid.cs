@@ -26,7 +26,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.height = 22;
 			NPC.damage = 0;
 			NPC.defense = 0;
-			NPC.lifeMax = 30;
+			NPC.lifeMax = 5;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.catchItem = (short)ModContent.ItemType<CrinoidItem>();
@@ -39,6 +39,8 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], quickUnlock: true);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
 				new FlavorTextBestiaryInfoElement("These curious critters are closely related to starfish. They feed off of whatever sinks down to the bottom of the sea."),

@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			NPC.width = 48;
 			NPC.height = 28;
-			NPC.damage = 0;
+			NPC.damage = 30;
 			NPC.defense = 12;
 			NPC.lifeMax = 55;
 			NPC.HitSound = SoundID.NPCHit1;

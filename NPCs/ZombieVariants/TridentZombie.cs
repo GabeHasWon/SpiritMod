@@ -30,16 +30,6 @@ namespace SpiritMod.NPCs.ZombieVariants
 			AnimationType = NPCID.ArmedZombie;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Moon,
-				new FlavorTextBestiaryInfoElement("Also known as \"Waterman\" in some circles."),
-			});
-		}
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int k = 0; k < 20; k++)

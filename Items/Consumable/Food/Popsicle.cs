@@ -1,7 +1,8 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Buffs;
-using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Consumable.Food
 {
@@ -15,5 +16,6 @@ namespace SpiritMod.Items.Consumable.Food
 			player.AddBuff(ModContent.BuffType<IceBerryBuff>(), 7200);
 			return true;
 		}
+
 	}
 }

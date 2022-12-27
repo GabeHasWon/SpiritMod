@@ -42,8 +42,8 @@ namespace SpiritMod.Projectiles.Summon.Zones
                 {
 					float dist = npc.Distance(Projectile.Center);
                     dist = 8f / dist;
-					npc.velocity.X = dist * -.8f;
-                    npc.velocity.Y = dist * -.8f;
+					npc.velocity.X = dist * -0.8f;
+                    npc.velocity.Y = dist * -0.8f;
 
                     Projectile.ai[1]++;
                     for (int k = 0; k < 10; k++)

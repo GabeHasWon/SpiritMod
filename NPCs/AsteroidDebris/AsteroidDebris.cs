@@ -36,6 +36,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
             NPC.lavaImmune = true;
 			NPC.value = 0f;
 			NPC.aiStyle = -1;
+			NPC.npcSlots = 0;
 			NPC.alpha = 255; //The NPC will fade in on spawn
             AIType = 0;
 		}

@@ -33,12 +33,12 @@ namespace SpiritMod.Mechanics.BoonSystem
 
 		public void ApplyBoon(NPC npc)
 		{
-			int chance = 15;
+			int chance = 12;
 
 			if (Main.netMode == NetmodeID.SinglePlayer) //Check if any player has the boon increase buff
 			{
 				if (Main.LocalPlayer.HasBuff(ModContent.BuffType<OracleBoonBuff>()))
-					chance = 5;
+					chance = 3;
 			}
 			else
 			{

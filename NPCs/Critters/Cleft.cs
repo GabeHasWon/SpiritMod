@@ -37,7 +37,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundDesert,
-				new FlavorTextBestiaryInfoElement("A tiny living crag that roams the desert. They leave small little trails in the sand, letting the wind cover their tracks."),
+				new FlavorTextBestiaryInfoElement("A tiny living crag that roams the underground desert. They tend to get anxious amidst the antlions' chaos, rarely retreating from their outcoves."),
 			});
 		}
 
