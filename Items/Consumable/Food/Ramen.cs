@@ -9,6 +9,8 @@ namespace SpiritMod.Items.Consumable.Food
 		internal override Point Size => new(28, 36);
 		public override void StaticDefaults() => Tooltip.SetDefault("Minor improvements to all stats\n'It'll warm you right up!'");
 
+		public override void Defaults() => Item.useStyle = ItemUseStyleID.DrinkLiquid;
+
 		public override bool CanUseItem(Player player)
 		{
 			player.AddBuff(BuffID.Warmth, 72000);

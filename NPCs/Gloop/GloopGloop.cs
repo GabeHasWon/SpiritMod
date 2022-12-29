@@ -6,6 +6,7 @@ using System;
 using SpiritMod.Items.Armor.AstronautVanity;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes;
+using Terraria.GameContent.ItemDropRules;
 
 namespace SpiritMod.NPCs.Gloop
 {
@@ -80,7 +81,7 @@ namespace SpiritMod.NPCs.Gloop
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.AddCommon<GravityModulator>(400);
-			npcLoot.AddOneFromOptions(40, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
+			npcLoot.AddOneFromOptions(67, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

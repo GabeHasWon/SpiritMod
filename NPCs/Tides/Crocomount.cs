@@ -4,6 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.TideDrops;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace SpiritMod.NPCs.Tides
 {
@@ -29,12 +32,12 @@ namespace SpiritMod.NPCs.Tides
 			NPC.knockBackResist = .1f;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.CrocosaurBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
 				new FlavorTextBestiaryInfoElement("A reptilian biped, tamed by the Kakamora and used for riding into battle. High-ho silver, away!"),
 			});
 		}
@@ -105,10 +108,18 @@ namespace SpiritMod.NPCs.Tides
 				target.AddBuff(BuffID.Bleeding, 600);
 		}
 
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		{
+			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			Rectangle drawFrame = NPC.frame with { Height = NPC.frame.Height - 2 };
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), drawFrame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			return false;
+		}
+
 		public override void FindFrame(int frameHeight)
 		{
 			timer++;
-			if (attack || NPC.IsABestiaryIconDummy)
+			if (attack && !NPC.IsABestiaryIconDummy)
 			{
 				if (timer >= 5)
 				{

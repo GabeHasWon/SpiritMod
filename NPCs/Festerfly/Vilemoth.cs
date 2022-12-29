@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Items.Sets.EvilBiomeDrops.PesterflyCane;
+using SpiritMod.NPCs.Tides;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -40,6 +42,8 @@ namespace SpiritMod.NPCs.Festerfly
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<VileWasp>()], false);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
 				new FlavorTextBestiaryInfoElement("The putrid scent of the corruption was bound to attract flies, and sure enough, it did. Now corrupted and ravenous, they follow the scent of any fresh meat they can find."),
@@ -131,6 +135,9 @@ namespace SpiritMod.NPCs.Festerfly
 
 			NPC.spriteDirection = NPC.direction;
 		}
+
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight && !NPC.AnyNPCs(ModContent.NPCType<Vilemoth>()) ? .05f : 0f;
+
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<PesterflyCane>(30);
 	}
 }

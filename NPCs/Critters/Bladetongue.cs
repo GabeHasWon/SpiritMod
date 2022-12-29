@@ -2,8 +2,6 @@ using SpiritMod.Items.Consumable.Fish;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
-using Microsoft.Xna.Framework;
 using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Critters
@@ -30,6 +28,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.dontCountMe = true;
 			NPC.noGravity = true;
 			NPC.npcSlots = 0;
+			NPC.rarity = 3;
 			AIType = NPCID.Shark;
 		}
 

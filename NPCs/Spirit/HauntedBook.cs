@@ -76,7 +76,7 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void AI()
 		{
-			if (Main.rand.Next(150) == 8) {
+			if (Main.rand.NextBool(150)) {
 				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 				direction.Normalize();
 				direction.X *= 2f;

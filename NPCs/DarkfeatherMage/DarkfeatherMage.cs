@@ -24,6 +24,12 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 		{
 			DisplayName.SetDefault("Darkfeather Mage");
 			Main.npcFrameCount[NPC.type] = 6;
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0, 8)
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -383,13 +389,14 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 				}
             }
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             Vector2 position1 = NPC.Bottom - screenPos;
             Texture2D texture2D2 = TextureAssets.GlowMask[239].Value;
-            float num11 = (float)(Main.GlobalTimeWrappedHourly % 1.0);
+            float num11 = (float)(animCounter % 1.0);
             float num12 = num11;
             if ((double)num12 > 0.5)
                 num12 = 1f - num11;
@@ -403,7 +410,17 @@ namespace SpiritMod.NPCs.DarkfeatherMage
                 num14 = 0.0f;
             Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
             Vector2 drawOrigin = r2.Size() / 2f;
-            Vector2 position3 = position1 + new Vector2(22.0f * NPC.spriteDirection, -1f);
+
+			float offsetY = (int)NPC.frameCounter switch
+			{
+				1 => -10f,
+				2 => -8f,
+				3 => -18f,
+				4 => -16f,
+				_ => -14f,
+			};
+            Vector2 position3 = position1 + new Vector2(26.0f * NPC.spriteDirection, offsetY);
+
             Color color3 = new Color(137, 209, 61) * 1.6f;
             Main.spriteBatch.Draw(texture2D2, position3, r2, color3, NPC.rotation, drawOrigin, NPC.scale * 0.275f, SpriteEffects.FlipHorizontally, 0.0f);
             float num15 = 1f + num11 * 0.75f;
@@ -415,8 +432,12 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/DarkfeatherMage/DarkfeatherMage_Glow").Value, screenPos);
 
+		private float animCounter;
 		public override void FindFrame(int frameHeight)
 		{
+			if (NPC.IsABestiaryIconDummy)
+				animCounter = Main.GlobalTimeWrappedHourly;
+
 			NPC.frameCounter += 0.25f;
 			NPC.frameCounter %= Main.npcFrameCount[NPC.type];
 			int frame = (int)NPC.frameCounter;

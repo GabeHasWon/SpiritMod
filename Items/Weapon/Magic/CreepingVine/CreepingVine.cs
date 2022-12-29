@@ -1,12 +1,9 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Prim;
 
 namespace SpiritMod.Items.Weapon.Magic.CreepingVine
 {
@@ -221,10 +218,7 @@ namespace SpiritMod.Items.Weapon.Magic.CreepingVine
 			}
 		}
 
-		protected virtual Vector2 Collide()
-		{
-			return Collision.noSlopeCollision(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height, true, true);
-		}
+		protected virtual Vector2 Collide() => Collision.noSlopeCollision(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height, true, true);
 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{

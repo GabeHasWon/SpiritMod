@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 
 		public override void SetDefaults()
 		{
-			Item.damage = 8;
+			Item.damage = 10;
 			Item.noMelee = true;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 20;

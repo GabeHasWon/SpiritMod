@@ -192,6 +192,22 @@ namespace SpiritMod.NPCs.Town
 			randomOffset = 2f;
 		}
 
+		private float animCounter;
+		public override void FindFrame(int frameHeight)
+		{
+			if (!NPC.IsABestiaryIconDummy)
+				return;
+
+			animCounter += 0.25f;
+			if (animCounter >= 16)
+				animCounter = 2;
+			else if (animCounter < 2)
+				animCounter = 2;
+
+			int frame = (int)animCounter;
+			NPC.frame.Y = frame * frameHeight;
+		}
+
 		public override ITownNPCProfile TownNPCProfile() => new RuneWizardProfile();
 	}
 

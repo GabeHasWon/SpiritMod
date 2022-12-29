@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 using SpiritMod.Buffs;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 {
@@ -23,6 +24,13 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 		{
 			DisplayName.SetDefault("Bloomshroom");
 			Main.npcFrameCount[NPC.type] = 12;
+
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(2f, 0f),
+				Velocity = 1f
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -39,12 +47,12 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 			NPC.knockBackResist = .35f;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.BloomshroomBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				new FlavorTextBestiaryInfoElement("This aggressive mycelium only becomes lively once in a blue moon. They spread their spores to the skies, reproducing once they hit the ground or find a living host."),
 			});
 		}

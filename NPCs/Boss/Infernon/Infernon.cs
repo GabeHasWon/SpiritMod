@@ -12,7 +12,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Placeable.Relics;
-using SpiritMod.Items.Sets.RlyehianDrops;
 using SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet;
 
 namespace SpiritMod.NPCs.Boss.Infernon
@@ -26,7 +25,11 @@ namespace SpiritMod.NPCs.Boss.Infernon
 		{
 			DisplayName.SetDefault("Infernon");
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { PortraitPositionYOverride = 60 };
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(14, 80),
+				PortraitPositionYOverride = 60
+			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

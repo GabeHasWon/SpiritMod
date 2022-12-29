@@ -17,6 +17,11 @@ namespace SpiritMod.NPCs.AncientApostle
 		{
 			DisplayName.SetDefault("Ancient Apostle");
 			Main.npcFrameCount[NPC.type] = 7;
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0f, 14f),
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 
 		public override void SetDefaults()

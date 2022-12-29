@@ -24,8 +24,12 @@ namespace SpiritMod.NPCs.BlazingSkull
 			Main.npcFrameCount[NPC.type] = 17;
 			NPC.gfxOffY = 50;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { PortraitPositionYOverride = 10 };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0, 10),
+				PortraitPositionYOverride = 20,
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -50,7 +54,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheUnderworld,
-				new FlavorTextBestiaryInfoElement("One large mask of acceptable quality, pulled from the kiln."),
+				new FlavorTextBestiaryInfoElement("Easily angered, this soul is eternally ablaze because of its sheer rage. All this energy is then released as it charges forward to blow up at any little thing. What a hothead."),
 			});
 		}
 
@@ -63,7 +67,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 			Player player = Main.player[NPC.target];
 			NPC.TargetClosest(true);
-			NPC.spriteDirection = -NPC.direction;
+			NPC.spriteDirection = NPC.direction;
 
 			NPC.ai[0] = ((NPC.Distance(player.Center) < 800 || NPC.ai[2] > rechargetime)
 				&& Collision.CanHit(NPC.position, NPC.width, NPC.height, player.position, 0, 0)
@@ -100,7 +104,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 						NPC.ai[3] = 1;
 					}
 
-					NPC.spriteDirection = -Math.Sign(NPC.velocity.X);
+					NPC.spriteDirection = Math.Sign(NPC.velocity.X);
 
 					if (Main.expertMode)
 						targetpos = Vector2.Lerp(targetpos, player.Center, 0.03f);
@@ -142,6 +146,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			}
 			CheckPlatform();
 		}
+
 		private void IdleMovement()
 		{
 			if (Main.rand.NextBool(10))
@@ -155,6 +160,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			NPC.velocity = Vector2.Lerp(NPC.velocity, Vector2.Zero, 0.1f);
 			UpdateFrame(10, 0, 5);
 		}
+
 		private void CheckPlatform()
 		{
 			bool onplatform = true;
@@ -169,8 +175,12 @@ namespace SpiritMod.NPCs.BlazingSkull
 			else
 				NPC.noTileCollide = false;
 		}
+
 		private void UpdateFrame(int framespersecond, int minframe, int maxframe)
 		{
+			if (NPC.IsABestiaryIconDummy)
+				return;
+
 			NPC.frameCounter++;
 			if (NPC.frameCounter >= (60 / framespersecond))
 			{
@@ -203,7 +213,22 @@ namespace SpiritMod.NPCs.BlazingSkull
 			}
 		}
 
-		public override void FindFrame(int frameHeight) => NPC.frame.Y = frameHeight * frame;
+		public override void FindFrame(int frameHeight)
+		{
+			if (NPC.IsABestiaryIconDummy)
+			{
+				NPC.frameCounter++;
+				if (NPC.frameCounter >= 6)
+				{
+					frame++;
+					NPC.frameCounter = 0;
+				}
+				if (frame >= 5 || frame < 0)
+					frame = 0;
+			}
+			NPC.frame.Y = frameHeight * frame;
+		}
+
 		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.OnFire, 180);
 
 		public override void OnKill()

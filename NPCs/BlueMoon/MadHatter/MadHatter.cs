@@ -6,6 +6,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.BlueMoon.MadHatter
 {
@@ -33,12 +34,12 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			NPC.knockBackResist = 0f;
 			NPC.aiStyle = 3;
 			AIType = 104;
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				new FlavorTextBestiaryInfoElement("They've been driven mad, completely bonkers! But all the best people are."),
 			});
 		}
@@ -67,10 +68,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return MyWorld.BlueMoon && spawnInfo.Player.ZoneOverworldHeight ? 1f : 0f;
-		}
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => MyWorld.BlueMoon && spawnInfo.Player.ZoneOverworldHeight ? 1f : 0f;
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -132,11 +130,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200);
 		}
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{
-			npcLoot.Add(ItemDropRule.Common(239, 12));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Armor.MadHat>(), 20));
-		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Armor.MadHat>(), 20));
 	}
 }
 

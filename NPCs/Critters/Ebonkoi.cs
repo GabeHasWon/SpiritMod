@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
-				new FlavorTextBestiaryInfoElement("Once a beautiful specimen, now is grotesque and nasty thanks to the insidious veins of the Corruption. Quite sad."),
+				new FlavorTextBestiaryInfoElement("A once a beautiful specimen now grotesque and nasty thanks to the insidious veins of the Corruption. Truly tragic."),
 			});
 		}
 

@@ -267,7 +267,7 @@ namespace SpiritMod.NPCs.Shockhopper
 		{
 			npcLoot.AddCommon(ModContent.ItemType<GateStaff>(), 40);
 			npcLoot.AddCommon(ModContent.ItemType<GravityModulator>(), 400);
-			npcLoot.AddOneFromOptions(40, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
+			npcLoot.AddOneFromOptions(67, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
 		}
 	}
 }

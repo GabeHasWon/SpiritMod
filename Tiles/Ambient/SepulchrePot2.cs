@@ -20,6 +20,7 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileCut[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			Main.tileLighted[Type] = true;
+			Main.tileSpelunker[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 3;

@@ -422,13 +422,15 @@ namespace SpiritMod.NPCs.Hydra
 			redCondition.OnSuccess(ItemDropRule.Common(ItemID.MagmaStone, 50));
 			redCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<HydraMaskFire>(), 33));
 
-			LeadingConditionRule purpleCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional("From acidic heads", (npc) => CheckHeadColor(npc, HeadColor.Purple)));
+			LeadingConditionRule purpleCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional("From acidic heads", (npc) => CheckHeadColor(npc, HeadColor.Purple) && NPC.downedPlantBoss));
 			purpleCondition.OnSuccess(ItemDropRule.Common(ItemID.VialofVenom, 3, 1, 3));
-			purpleCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<HydraMaskAcid>(), 33));
+			LeadingConditionRule purpleMaskCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional("From acidic heads", (npc) => CheckHeadColor(npc, HeadColor.Purple)));
+			purpleMaskCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<HydraMaskAcid>(), 33));
 
 			npcLoot.Add(greenCondition);
 			npcLoot.Add(redCondition);
 			npcLoot.Add(purpleCondition);
+			npcLoot.Add(purpleMaskCondition);
 			npcLoot.AddCommon<Items.Accessory.GoldenApple>(100);
 		}
 

@@ -28,6 +28,12 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(-8, 8)
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -102,7 +108,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 
 				NPC.noTileCollide = true;
 
-				if (Main.rand.Next(355) == 0 && !isFlashing && NPC.ai[1] < 260 && !justFlashed)
+				if (Main.rand.NextBool(355) && !isFlashing && NPC.ai[1] < 260 && !justFlashed)
 				{
 					isFlashing = true;
 					justFlashed = true;
@@ -354,50 +360,57 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			}
 		}
 
-		public override void OnKill()
-		{
-			NPC.DropItemInstanced(NPC.position, NPC.Size, ModContent.ItemType<GoldenEgg>(), 1, true);
-		}
+		public override void OnKill() => NPC.DropItemInstanced(NPC.position, NPC.Size, ModContent.ItemType<GoldenEgg>(), 1, true);
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<Vulture_Matriarch_Mask>(12);
 
 		public override void FindFrame(int frameHeight)
 		{
-			const int AnimSpeed = 6;
-
-			NPC.frameCounter++;
-			if (NPC.ai[0] != 0)
+			if (NPC.IsABestiaryIconDummy)
 			{
-				if (!gliding)
-				{
-					if (NPC.frameCounter < AnimSpeed * 1)
-						NPC.frame.Y = 0 * frameHeight;
-					else if (NPC.frameCounter < AnimSpeed * 2)
-						NPC.frame.Y = 1 * frameHeight;
-					else if (NPC.frameCounter < AnimSpeed * 3)
-						NPC.frame.Y = 2 * frameHeight;
-					else if (NPC.frameCounter < AnimSpeed * 4)
-						NPC.frame.Y = 3 * frameHeight;
-					else if (NPC.frameCounter < AnimSpeed * 5)
-					{
-						NPC.frame.Y = 4 * frameHeight;
-						SoundEngine.PlaySound(SoundID.Item32, NPC.Center);
-					}
-					else
-						NPC.frameCounter = 0;
-				}
-				else
-				{
-					if (NPC.frameCounter < AnimSpeed * 1)
-						NPC.frame.Y = 5 * frameHeight;
-					else if (NPC.frameCounter < AnimSpeed * 2)
-						NPC.frame.Y = 6 * frameHeight;
-					else
-						NPC.frameCounter = 0;
-				}
+				NPC.frameCounter += 0.15f;
+				NPC.frameCounter %= 5;
+				int frame = (int)NPC.frameCounter;
+				NPC.frame.Y = frame * frameHeight;
 			}
 			else
-				NPC.frame.Y = 7 * frameHeight;
+			{
+				const int AnimSpeed = 6;
+
+				NPC.frameCounter++;
+				if (NPC.ai[0] != 0)
+				{
+					if (!gliding)
+					{
+						if (NPC.frameCounter < AnimSpeed * 1)
+							NPC.frame.Y = 0 * frameHeight;
+						else if (NPC.frameCounter < AnimSpeed * 2)
+							NPC.frame.Y = 1 * frameHeight;
+						else if (NPC.frameCounter < AnimSpeed * 3)
+							NPC.frame.Y = 2 * frameHeight;
+						else if (NPC.frameCounter < AnimSpeed * 4)
+							NPC.frame.Y = 3 * frameHeight;
+						else if (NPC.frameCounter < AnimSpeed * 5)
+						{
+							NPC.frame.Y = 4 * frameHeight;
+							SoundEngine.PlaySound(SoundID.Item32, NPC.Center);
+						}
+						else
+							NPC.frameCounter = 0;
+					}
+					else
+					{
+						if (NPC.frameCounter < AnimSpeed * 1)
+							NPC.frame.Y = 5 * frameHeight;
+						else if (NPC.frameCounter < AnimSpeed * 2)
+							NPC.frame.Y = 6 * frameHeight;
+						else
+							NPC.frameCounter = 0;
+					}
+				}
+				else
+					NPC.frame.Y = 7 * frameHeight;
+			}
 		}
 
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

@@ -7,6 +7,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.MoonjellyEvent
 {
@@ -39,12 +40,12 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.noGravity = true;
             NPC.noTileCollide = true;
 			AIType = NPCID.Firefly;
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("A tiny Lunazoa that emits a gorgeous, dreamlike green glow. A genetic mutation is the source of their chartreuse gleam, but also prevents them from ever maturing."),
 			});
 		}

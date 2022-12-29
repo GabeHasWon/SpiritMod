@@ -12,6 +12,7 @@ public class Durian : FoodItem
 	public override bool? UseItem(Player player)
 	{
 		player.AddBuff(BuffID.Stinky, 5 * 60 * 60);
+		player.AddBuff(BuffID.WellFed, 15 * 60);
 		return true;
 	}
 }

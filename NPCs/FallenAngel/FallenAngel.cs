@@ -51,7 +51,7 @@ namespace SpiritMod.NPCs.FallenAngel
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("Banished from the heavens, this rogue cherub takes his frustrations out on the mortal beings of this realm."),
+				new FlavorTextBestiaryInfoElement("Banished from the heavens, this rogue cherub takes their frustrations out on the mortal beings of this realm."),
 			});
 		}
 

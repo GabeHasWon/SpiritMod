@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Material;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,12 +13,10 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 		{
 			DisplayName.SetDefault("Astralite Chestguard");
 			Tooltip.SetDefault("20% chance to not consume ammo\nIncreases ranged damage by 5%");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/StarplateDrops/StarArmor/StarPlate_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
-		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
-		{
-			glowMaskColor = Color.White;
-		}
+
+		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor) => glowMaskColor = Color.White;
 
 		public override void SetDefaults()
 		{
@@ -28,15 +26,21 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 			Item.rare = ItemRarityID.Orange;
 			Item.defense = 9;
 		}
+
 		public override void UpdateEquip(Player player)
 		{
 			player.ammoCost80 = true;
 			player.GetDamage(DamageClass.Ranged) += .05f;
 		}
-		public override void ArmorSetShadows(Player player)
+
+		public override void ArmorSetShadows(Player player) => player.armorEffectDrawShadow = true;
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			player.armorEffectDrawShadow = true;
+			Lighting.AddLight(Item.position, 0.08f, .28f, .38f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_ItemGlow").Value, rotation, scale);
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

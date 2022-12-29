@@ -20,7 +20,12 @@ namespace SpiritMod.NPCs.SkeletonBrute
 			DisplayName.SetDefault("Skeleton Brute");
 			Main.npcFrameCount[NPC.type] = 10;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0, 40),
+				PortraitPositionYOverride = 0,
+				Velocity = 1f
+			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

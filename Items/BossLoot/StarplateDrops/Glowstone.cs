@@ -16,6 +16,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Main.tileBlendAll[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
+			Main.tileSpelunker[Type] = true;
+			Main.tileOreFinderPriority[Type] = 300;
 			AddMapEntry(new Color(156, 102, 36));
 			ItemDrop = ModContent.ItemType<CosmiliteShard>();
 			HitSound = SoundID.Tink;

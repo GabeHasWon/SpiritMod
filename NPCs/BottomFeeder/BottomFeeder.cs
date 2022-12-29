@@ -16,6 +16,12 @@ namespace SpiritMod.NPCs.BottomFeeder
 		{
 			DisplayName.SetDefault("Bottom Feeder");
 			Main.npcFrameCount[NPC.type] = 11;
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0f, 12f),
+				PortraitPositionYOverride = 0f,
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()

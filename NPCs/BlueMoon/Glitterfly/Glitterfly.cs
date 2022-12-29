@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
 using SpiritMod.Items.Sets.SeraphSet;
 using SpiritMod.Items.Sets.MagicMisc.AstralClock;
-using SpiritMod.Projectiles.Hostile;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -12,6 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 {
@@ -47,12 +47,12 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 			NPC.DeathSound = SoundID.NPCDeath46;
             Banner = NPC.type;
             BannerItem = ModContent.ItemType<Items.Banners.GlitterflyBanner>();
-        }
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
+		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 				new FlavorTextBestiaryInfoElement("Glitterflies do not feed often, as their palette consists of a rare fungus. In addition, they possess a venomous sting that causes intense disorientation and vertigo."),
 			});
 		}
@@ -71,10 +71,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return MyWorld.BlueMoon && NPC.CountNPCS(ModContent.NPCType<Glitterfly>()) < 3 && spawnInfo.Player.ZoneOverworldHeight ? 1f : 0f;
-		}
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => MyWorld.BlueMoon && NPC.CountNPCS(ModContent.NPCType<Glitterfly>()) < 3 && spawnInfo.Player.ZoneOverworldHeight ? 1f : 0f;
 
 		public override bool PreAI()
 		{
@@ -110,13 +107,13 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 			NPC.velocity.Y = moveSpeedY * 0.1f;
 			++NPC.ai[1];
 			if (NPC.ai[1] >= 10 && Main.netMode != NetmodeID.MultiplayerClient) {
-				int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0f, 0f, ModContent.ProjectileType<GlitterDust>(), 0, 0, Main.myPlayer, 0, 0);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0f, 0f, ModContent.ProjectileType<GlitterDust>(), 0, 0, Main.myPlayer, 0, 0);
                 NPC.ai[1] = 0;
 			}
-			Vector2 center = NPC.Center;
-			float num8 = (float)player.miscCounter / 40f;
-			float num7 = 1.0471975512f * 2;
-			for (int k = 0; k < 3; k++) {
+			//Vector2 center = NPC.Center;
+			//float num8 = (float)player.miscCounter / 40f;
+			//float num7 = 1.0471975512f * 2;
+			/*for (int k = 0; k < 3; k++) {
 				{
 					int num6 = Dust.NewDust(center, 0, 0, DustID.GoldCoin, 0f, 0f, 100, default, 1.3f);
 					Main.dust[num6].noGravity = true;
@@ -124,7 +121,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 					Main.dust[num6].noLight = true;
 					Main.dust[num6].position = center + (num8 * 6.28318548f + num7 * (float)k).ToRotationVector2() * 12f;
 				}
-			}
+			}*/
 			int distance = (int)Math.Sqrt((NPC.Center.X - player.Center.X) * (NPC.Center.X - player.Center.X) + (NPC.Center.Y - player.Center.Y) * (NPC.Center.Y - player.Center.Y));
 			if (distance < 540) {
 				++NPC.ai[0];
@@ -162,14 +159,11 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+				 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
 
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/BlueMoon/Glitterfly/Glitterfly_Glow").Value, screenPos);
-		}
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/BlueMoon/Glitterfly/Glitterfly_Glow").Value, screenPos);
 
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{

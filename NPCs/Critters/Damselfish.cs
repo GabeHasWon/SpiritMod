@@ -97,6 +97,6 @@ namespace SpiritMod.NPCs.Critters
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<RawFish>(2);
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Sky && spawnInfo.Water ? 0.65f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.worldSurface * .35f && spawnInfo.Water ? 0.65f : 0f;
 	}
 }

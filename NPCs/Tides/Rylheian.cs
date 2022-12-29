@@ -7,8 +7,8 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
-using SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet;
 using SpiritMod.Items.Placeable.Relics;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.Tides
 {
@@ -37,12 +37,12 @@ namespace SpiritMod.NPCs.Tides
 			NPC.DeathSound = SoundID.NPCDeath5;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.RlyehianBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
 				new FlavorTextBestiaryInfoElement("The maker of tides and caller of storms! They're a wicked elderly lich who's taken charge of the Kakamora Army."),
 			});
 		}

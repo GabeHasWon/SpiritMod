@@ -1,4 +1,3 @@
-using SpiritMod.Projectiles.Hostile;
 using Terraria;
 using System;
 using Terraria.Audio;
@@ -50,9 +49,9 @@ namespace SpiritMod.NPCs.Hemophora
             int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
 
             if (target.position.X > NPC.position.X)
-                NPC.spriteDirection = -1;
-            else
                 NPC.spriteDirection = 1;
+            else
+                NPC.spriteDirection = -1;
 
             if (distance < 680)
             {

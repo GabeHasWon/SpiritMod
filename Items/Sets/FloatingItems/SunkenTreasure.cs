@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture;
 using Terraria.Enums;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
@@ -114,6 +113,7 @@ namespace SpiritMod.Items.Sets.FloatingItems
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+			Main.tileSpelunker[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
 			TileObjectData.newTile.StyleWrapLimit = 2; //not really necessary but allows me to add more subtypes of chairs below the example chair texture

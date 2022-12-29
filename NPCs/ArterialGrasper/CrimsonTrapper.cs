@@ -99,7 +99,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 				NPC.netUpdate = true;
 			}
 
-			NPC.spriteDirection = -NPC.direction;
+			NPC.spriteDirection = NPC.direction;
 			Player target = Main.player[NPC.target];
 			int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
 

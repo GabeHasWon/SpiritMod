@@ -1,41 +1,25 @@
-
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Fish
 {
-	public class CrystalFish : ModItem
+	public class CrystalFish : FoodItem
 	{
-		public override void SetStaticDefaults()
+		internal override Point Size => new(48, 34);
+		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Crystallized Salmon");
 			Tooltip.SetDefault("Minor improvements to all stats\nBoosts magic power");
 		}
 
-
-		public override void SetDefaults()
-		{
-			Item.width = Item.height = 22;
-			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
-			Item.noUseGraphic = true;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.useTime = Item.useAnimation = 30;
-
-			Item.buffType = BuffID.WellFed;
-			Item.buffTime = 72000;
-			Item.noMelee = true;
-			Item.consumable = true;
-			Item.UseSound = SoundID.Item2;
-			Item.autoReuse = false;
-
-		}
 		public override bool CanUseItem(Player player)
 		{
 			player.AddBuff(BuffID.MagicPower, 9860);
 			return true;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe1 = CreateRecipe(1);

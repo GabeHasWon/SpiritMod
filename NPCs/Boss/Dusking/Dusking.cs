@@ -14,6 +14,7 @@ using Terraria.GameContent.Bestiary;
 using SpiritMod.Utilities.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Placeable.Relics;
+using SpiritMod.Items.BossLoot.DuskingDrops.DuskingPet;
 
 namespace SpiritMod.NPCs.Boss.Dusking
 {
@@ -31,8 +32,12 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			DisplayName.SetDefault("Dusking");
 			Main.npcFrameCount[NPC.type] = 5;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { PortraitPositionXOverride = 20, PortraitPositionYOverride = 20 };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(20, -10),
+				PortraitPositionYOverride = -14
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -472,7 +477,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddMasterModeRelicAndPet<DuskingRelicItem, Items.BossLoot.ScarabeusDrops.ScarabPet.ScarabPetItem>();
+			npcLoot.AddMasterModeRelicAndPet<DuskingRelicItem, DuskingPetItem>();
 			npcLoot.AddBossBag<DuskingBag>();
 
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());

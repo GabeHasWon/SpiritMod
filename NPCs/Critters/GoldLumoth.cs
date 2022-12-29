@@ -41,6 +41,8 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new GoldCritterUICollectionInfoProvider(new int[] { ModContent.NPCType<Lumoth>() }, ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type]);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
 				new FlavorTextBestiaryInfoElement("Rarely, critters are found coated entirely in gold! Shopkeepers will pay handsomely for these, or you can show them off in cages!"),
@@ -80,8 +82,11 @@ namespace SpiritMod.NPCs.Critters
                 }
             }
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
+			if (spawnInfo.Player.ZoneDungeon || spawnInfo.Player.ZoneSnow)
+				return 0f;
             if (spawnInfo.PlayerSafe)
                 return SpawnCondition.Cavern.Chance * 0.008f;
             return SpawnCondition.Cavern.Chance * 0.000763f;

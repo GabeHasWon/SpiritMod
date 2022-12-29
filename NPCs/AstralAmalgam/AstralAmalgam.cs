@@ -209,9 +209,7 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GravityModulator>(), 400));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ShieldCore>(), 50));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PopRocks>(), 16));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AstronautLegs>(), 50));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AstronautHelm>(), 50));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AstronautBody>(), 50));
+			npcLoot.AddOneFromOptions(67, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

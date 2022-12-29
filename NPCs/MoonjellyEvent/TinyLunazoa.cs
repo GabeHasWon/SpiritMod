@@ -8,6 +8,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.MoonjellyEvent
 {
@@ -39,12 +40,12 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.noGravity = true;
             NPC.noTileCollide = true;
 			AIType = NPCID.Firefly;
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("Tiny, docile jellies that float aimlessly with their smack, following their moonlit migratory patterns."),
 			});
 		}

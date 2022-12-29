@@ -4,6 +4,8 @@ using Terraria.Audio;
 using Terraria.ID;
 using SpiritMod.Items.Sets.ClubSubclass.ClubSandwich;
 using static Terraria.ModLoader.ModContent;
+using SpiritMod.Items.Equipment.AuroraSaddle;
+using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Clubs
 {
@@ -23,24 +25,21 @@ namespace SpiritMod.Projectiles.Clubs
 
 			for (int i = 0; i < 5; i++)
 			{
-				int type = 0;
-				switch (Main.rand.Next(4))
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					case 0:
-						type = ItemType<ClubMealOne>();
-						break;
-					case 1:
-						type = ItemType<ClubMealTwo>();
-						break;
-					case 2:
-						type = ItemType<ClubMealThree>();
-						break;
-					case 3:
-						type = ItemType<ClubMealFour>();
-						break;
+					int type = Main.rand.Next(4) switch
+					{
+						0 => ItemType<ClubMealOne>(),
+						1 => ItemType<ClubMealTwo>(),
+						2 => ItemType<ClubMealThree>(),
+						_ => ItemType<ClubMealFour>()
+					};
+
+					int item = Item.NewItem(Projectile.GetSource_FromAI("ClubSmash"), Projectile.position, type);
+					Main.item[item].velocity = Vector2.UnitY.RotatedBy(3.14f + Main.rand.NextFloat(3.14f)) * 8f * player.direction;
+					if (Main.netMode != NetmodeID.SinglePlayer)
+						NetMessage.SendData(MessageID.SyncItem, -1, -1, null, i);
 				}
-				int item = Item.NewItem(Projectile.GetSource_FromAI("ClubSmash"), Projectile.position, Projectile.Size, type);
-				Main.item[item].velocity = Vector2.UnitY.RotatedBy(3.14f + Main.rand.NextFloat(3.14f)) * 8f * player.direction;
 			}
 			SoundEngine.PlaySound(SoundID.NPCHit20, Projectile.position);
 		}

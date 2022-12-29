@@ -54,7 +54,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundSnow,
 				new FlavorTextBestiaryInfoElement("Long after forseeing the destruction of their tribe, these once elite mages now follow in the footsteps of their brethren, seeking to rebuild."),
 			});
 		}
@@ -235,7 +235,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 			NPC.spriteDirection = NPC.direction;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && (spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow) ? 0.035f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && (spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon) ? 0.035f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

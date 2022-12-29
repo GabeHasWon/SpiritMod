@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Critters
@@ -95,6 +94,6 @@ namespace SpiritMod.NPCs.Critters
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<RawFish>(2);
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneJungle && spawnInfo.Water && !spawnInfo.Player.ZoneOverworldHeight ? 0.08f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneJungle && spawnInfo.Water && spawnInfo.SpawnTileY > Main.rockLayer ? 0.08f : 0f;
 	}
 }

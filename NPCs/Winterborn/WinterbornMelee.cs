@@ -50,13 +50,12 @@ namespace SpiritMod.NPCs.Winterborn
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Rain,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundSnow,
 				new FlavorTextBestiaryInfoElement("The last remnants of a bygone tribe. Encased in ice by a mysterious curse, they wander the tundra, looking for relics of their civilization."),
 			});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && spawnInfo.Player.ZoneSnow && ((spawnInfo.SpawnTileY > Main.rockLayer) || (Main.raining && spawnInfo.Player.ZoneOverworldHeight)) ? 0.12f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon && ((spawnInfo.SpawnTileY > Main.rockLayer) || (Main.raining && spawnInfo.Player.ZoneOverworldHeight)) ? 0.12f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -115,10 +114,10 @@ namespace SpiritMod.NPCs.Winterborn
 
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-			target.AddBuff(BuffID.Chilled, 300);
-
 			if (Main.rand.NextBool(10))
 				target.AddBuff(BuffID.Frozen, 120);
+			else if (Main.rand.NextBool(4))
+				target.AddBuff(BuffID.Chilled, 300);
 		}
 
 		public override void AI()

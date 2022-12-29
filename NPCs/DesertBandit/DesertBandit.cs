@@ -10,6 +10,7 @@ using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria.GameContent.Bestiary;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using SpiritMod.Items.Sets.MaterialsMisc.QuestItems;
 
 namespace SpiritMod.NPCs.DesertBandit
 {
@@ -21,6 +22,8 @@ namespace SpiritMod.NPCs.DesertBandit
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+
+			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -47,6 +50,8 @@ namespace SpiritMod.NPCs.DesertBandit
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], quickUnlock: true);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
 				new FlavorTextBestiaryInfoElement("A roaming bandit, looking for anything that shines under the harsh sun. Not very fun at parties."),
@@ -84,15 +89,11 @@ namespace SpiritMod.NPCs.DesertBandit
 			NPC.TargetClosest(true);
 			if (NPC.localAI[2] == 0f)
 			{
+				NPC.spriteDirection = NPC.direction;
 				if (Vector2.Distance(target.Center, NPC.Center) > 60f)
+				{
 					NPC.aiStyle = 3;
-				else
-					NPC.velocity.X = 0f;
-
-				if (NPC.velocity.X < 0f)
-					NPC.spriteDirection = 1;
-				else if (NPC.velocity.X > 0f)
-					NPC.spriteDirection = -1;
+				}
 
 				if (NPC.velocity.X == 0f && target.dead)
 					NPC.spriteDirection = 1;
@@ -174,14 +175,14 @@ namespace SpiritMod.NPCs.DesertBandit
 		{
 			if (firstButton)
 			{
-				if (Main.npcChatText == TravelingMerchantDesertQuest.ThankText)
+				if (Main.npcChatText == TravelingMerchantDesertQuest.ThankText && Main.LocalPlayer.HasItem(ModContent.ItemType<RoyalCrown>()))
 				{
 					NPC.localAI[2] = -1;
 
 					for (int i = 0; i < Main.LocalPlayer.inventory.Length; ++i)
 					{
 						Item item = Main.LocalPlayer.inventory[i];
-						if (item.type == ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.RoyalCrown>() && !item.IsAir)
+						if (item.type == ModContent.ItemType<RoyalCrown>() && !item.IsAir)
 							item.TurnToAir();
 					}
 				}
@@ -251,7 +252,7 @@ namespace SpiritMod.NPCs.DesertBandit
 		{
 			if (NPC.IsABestiaryIconDummy)
 			{
-				Vector2 offset = new Vector2(30, 16);
+				Vector2 offset = new Vector2(50, 3);
 				spriteBatch.Draw(TextureAssets.Npc[Type].Value, NPC.position - screenPos - offset, NPC.frame, drawColor);
 				return false;
 			}

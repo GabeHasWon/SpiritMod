@@ -1,41 +1,25 @@
-
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Fish
 {
-	public class HoneySalmon : ModItem
+	public class HoneySalmon : FoodItem
 	{
-		public override void SetStaticDefaults()
+		internal override Point Size => new(52, 38);
+		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Honey-Glazed Salmon");
 			Tooltip.SetDefault("Minor improvements to all stats\nBoosts life regeneration");
 		}
 
-
-		public override void SetDefaults()
-		{
-			Item.width = Item.height = 22;
-			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
-			Item.noUseGraphic = true;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.useTime = Item.useAnimation = 30;
-
-			Item.buffType = BuffID.WellFed;
-			Item.buffTime = 36000;
-			Item.noMelee = true;
-			Item.consumable = true;
-			Item.UseSound = SoundID.Item2;
-			Item.autoReuse = false;
-
-		}
 		public override bool CanUseItem(Player player)
 		{
 			player.AddBuff(48, 1800);
 			return true;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe1 = CreateRecipe(1);

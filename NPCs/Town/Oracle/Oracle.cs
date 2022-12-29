@@ -435,7 +435,7 @@ namespace SpiritMod.NPCs.Town.Oracle
 
 		public override void SetChatButtons(ref string button, ref string button2) => button = Language.GetTextValue("LegacyInterface.28");
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => Main.hardMode && !NPC.AnyNPCs(ModContent.NPCType<Oracle>()) && spawnInfo.Marble ? 0.1f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => Main.hardMode && !NPC.AnyNPCs(ModContent.NPCType<Oracle>()) && spawnInfo.Marble && !spawnInfo.Player.ZoneDungeon ? 0.1f : 0f;
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

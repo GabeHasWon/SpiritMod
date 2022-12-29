@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.LostMime
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (spawnInfo.PlayerSafe)
+			if (spawnInfo.PlayerSafe || spawnInfo.Player.ZoneJungle || spawnInfo.Player.ZoneSnow)
 				return 0f;
 			if (Main.hardMode)
 				return SpawnCondition.Cavern.Chance * 0.015f;

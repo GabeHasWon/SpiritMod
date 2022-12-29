@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Sets.EvilBiomeDrops.PesterflyCane;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
@@ -78,7 +77,5 @@ namespace SpiritMod.NPCs.Festerfly
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Pesterfly6").Type, 1f);
 			}
 		}
-
-		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<PesterflyCane>(30);
 	}
 }

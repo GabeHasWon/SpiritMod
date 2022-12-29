@@ -218,7 +218,7 @@ namespace SpiritMod.NPCs.Bloater
 				NPC.velocity.Y = NPC.velocity.Y + acceleration;
 			else if (NPC.velocity.Y > velLimitY)
 				NPC.velocity.Y = NPC.velocity.Y - acceleration;
-			NPC.spriteDirection = -NPC.direction;
+			NPC.spriteDirection = NPC.direction;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

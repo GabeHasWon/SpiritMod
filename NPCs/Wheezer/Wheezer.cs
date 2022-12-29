@@ -49,7 +49,7 @@ namespace SpiritMod.NPCs.Wheezer
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (spawnInfo.PlayerSafe || !NPC.downedBoss1)
+			if (spawnInfo.PlayerSafe || !NPC.downedBoss1 || spawnInfo.Player.ZoneSnow)
 				return 0f;
 			if (Main.hardMode)
 				return SpawnCondition.Cavern.Chance * 0.03f;
@@ -81,7 +81,7 @@ namespace SpiritMod.NPCs.Wheezer
 			//npcLoot.Add(ItemDropRule.OneFromOptions(55, ModContent.ItemType<ClatterboneBreastplate>(), ModContent.ItemType<ClatterboneFaceplate>(), ModContent.ItemType<ClatterboneLeggings>()));
 
 			LeadingConditionRule snow = new LeadingConditionRule(new DropRuleConditions.InBiome(DropRuleConditions.InBiome.Biome.Snow));
-			snow.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.IceSculpture.IceWheezerSculpture>(), 100));
+			snow.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.IceSculpture.IceWheezerSculpture>(), 1));
 			npcLoot.Add(snow);
 		}
 
@@ -136,7 +136,7 @@ namespace SpiritMod.NPCs.Wheezer
 
 		public override void FindFrame(int frameHeight)
 		{
-			float distance = 0;
+			float distance = 200 * 200;
 
 			if (!NPC.IsABestiaryIconDummy)
 			{

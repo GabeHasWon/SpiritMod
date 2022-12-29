@@ -70,7 +70,7 @@ namespace SpiritMod.NPCs.PlagueDoctor
 			npcLoot.AddCommon(ItemID.TallyCounter, 100);
 			npcLoot.AddCommon(ItemID.BoneWand, 250);
 			npcLoot.AddCommon<Items.Weapon.Thrown.PlagueVial>(1, 26, 42);
-			npcLoot.AddOneFromOptions(ModContent.ItemType<PlagueDoctorCowl>(), ModContent.ItemType<PlagueDoctorRobe>(), ModContent.ItemType<PlagueDoctorLegs>());
+			npcLoot.AddOneFromOptions(25, ModContent.ItemType<PlagueDoctorCowl>(), ModContent.ItemType<PlagueDoctorRobe>(), ModContent.ItemType<PlagueDoctorLegs>());
 		}
 
 

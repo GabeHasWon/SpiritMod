@@ -16,6 +16,8 @@ using SpiritMod.Buffs.DoT;
 using SpiritMod.Items.Armor.JackSet;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
+using SpiritMod.Items.Placeable.Relics;
+using SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet;
 
 namespace SpiritMod.NPCs.Boss.Atlas
 {
@@ -353,7 +355,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddMasterModeRelicAndPet<Items.Placeable.Relics.DuskingRelicItem, Items.BossLoot.AtlasDrops.AtlasPet.AtlasPetItem>();
+			npcLoot.AddMasterModeRelicAndPet<AtlasRelicItem, AtlasPetItem>();
 			npcLoot.AddBossBag<AtlasBag>();
 
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());

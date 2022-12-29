@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
             Item.useTime = 320;
             Item.useAnimation = 320;
             Item.crit = 4;
-            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;
             Item.knockBack = 12;

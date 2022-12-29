@@ -64,7 +64,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		{
             if (player.altFunctionUse != 2 || player.GetModPlayer<AccursedBladePlayer>().charge == 0)
                 return false;
-            damage = 18 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 150);
+            damage = 18 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 100);
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetModPlayer<AccursedBladePlayer>().charge);
             player.GetModPlayer<AccursedBladePlayer>().charge = 0;
             SoundEngine.PlaySound(SoundID.NPCDeath52 with { Pitch = 1.2f }, player.position);

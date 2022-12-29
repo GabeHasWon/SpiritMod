@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.TideDrops;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.Tides
 {
@@ -31,12 +32,12 @@ namespace SpiritMod.NPCs.Tides
 			NPC.DeathSound = SoundID.NPCDeath1;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.KakamoraGliderBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("Any army needs air support! Only the strongest, glidiest palm leaves are selected for use by Kakamora Windgliders."),
 			});
 		}

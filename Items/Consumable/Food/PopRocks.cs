@@ -9,6 +9,10 @@ namespace SpiritMod.Items.Consumable.Food
 		internal override Point Size => new(36, 42);
 		public override void StaticDefaults() => Tooltip.SetDefault("Minor improvements to all stats\nEmits an aura of light\n'It zips around your mouth!'");
 
+		public override void Defaults()
+		{
+			Item.useStyle = ItemUseStyleID.DrinkOld;
+		}
 		public override bool CanUseItem(Player player)
 		{
 			player.AddBuff(BuffID.Shine, 7200);

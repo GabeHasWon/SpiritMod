@@ -30,6 +30,8 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], true);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
 				new FlavorTextBestiaryInfoElement("The scrappy brethren of the larger Scarabeus, these little things follow their leader to the death."),

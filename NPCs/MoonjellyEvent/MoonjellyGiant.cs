@@ -7,6 +7,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.MoonjellyEvent
 {
@@ -17,6 +18,13 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			DisplayName.SetDefault("Tethervolt Jelly");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(0f, 20f),
+				PortraitPositionYOverride = 10f,
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -38,12 +46,12 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.aiStyle = -1;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.GiantJellyBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("Mature male Lunazoas have electrical abilities that are far more developed than any other jellies, leading their territorial tendencies to be much more lethal."),
 			});
 		}

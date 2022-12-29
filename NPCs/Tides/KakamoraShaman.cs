@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.TideDrops;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.Tides
 {
@@ -37,12 +38,12 @@ namespace SpiritMod.NPCs.Tides
 			NPC.DeathSound = SoundID.NPCDeath1;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.KakamoraShamanBanner>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
 				new FlavorTextBestiaryInfoElement("Pint-sized mystics that attack using the arcane arts. They double as healers for their nearby Kakamora companions."),
 			});
 		}

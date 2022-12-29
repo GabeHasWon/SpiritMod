@@ -52,6 +52,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+			Main.tileSpelunker[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
 			TileObjectData.newTile.Width = 1;

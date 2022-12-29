@@ -33,7 +33,9 @@ namespace SpiritMod.NPCs.ZombieVariants
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Moon,
 				new FlavorTextBestiaryInfoElement("Fish fear me, women fear me, men fear me, children fear me, for I am the undead."),
 			});
 		}

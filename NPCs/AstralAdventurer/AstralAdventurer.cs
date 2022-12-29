@@ -66,7 +66,7 @@ namespace SpiritMod.NPCs.AstralAdventurer
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			var effects = NPC.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			Texture2D tex = Mod.Assets.Request<Texture2D>("NPCs/AstralAdventurer/AstralAdventurer_Glow").Value;
 			spriteBatch.Draw(tex, new Vector2(NPC.Center.X, NPC.Center.Y + 5) - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame, Color.White, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 		}
@@ -91,7 +91,6 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			if (flyingTimer > 240)
 			{
 				NPC.aiStyle = 0;
-				NPC.spriteDirection = -NPC.direction;
 				Flying();
 				if (NPC.velocity.X > .5f || NPC.velocity.X < -.5f)
 				NPC.rotation = NPC.velocity.X * 0.15f;
@@ -100,10 +99,10 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			{
 				NPC.rotation = 0f;
 				NPC.aiStyle = -1;
-				NPC.spriteDirection = -NPC.direction;
 				Walking();
 			}
-			
+			NPC.spriteDirection = NPC.direction;
+
 			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.5f, 0.25f, 0f);
 			if (pickedWeapon == 1)
             {

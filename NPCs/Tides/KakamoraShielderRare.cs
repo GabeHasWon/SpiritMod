@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Sets.TideDrops;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Biomes.Events;
 
 namespace SpiritMod.NPCs.Tides
 {
@@ -36,12 +37,12 @@ namespace SpiritMod.NPCs.Tides
 			NPC.DeathSound = SoundID.NPCDeath1;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.KakamoraShielderBanner1>();
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("A brave little nut kitted out with a shield and protective headgear, they protect the less aggressive Kakamora from harm."),
 			});
 		}

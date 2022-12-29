@@ -24,8 +24,13 @@ namespace SpiritMod.NPCs.Snaptrapper
             NPCID.Sets.TrailCacheLength[NPC.type] = 5;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { PortraitPositionXOverride = -10 };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Position = new Vector2(-10, 10),
+				PortraitPositionYOverride = 0,
+				Velocity = 1f
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -98,7 +103,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 		{
 			float distance = NPC.DistanceSQ(Main.player[NPC.target].Center);
 
-			if (!chargePhase && distance > 62 * 62)
+			if (!chargePhase && distance > 62 * 62 && !NPC.IsABestiaryIconDummy)
 			{
 				if (++frameTimer >= 8)
 				{

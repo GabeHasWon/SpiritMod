@@ -22,6 +22,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 			Item.rare = ItemRarityID.Orange;
 			Item.defense = 7;
 		}
+
 		public override void UpdateEquip(Player player)
 		{
 			player.GetDamage(DamageClass.Ranged) += .05f;

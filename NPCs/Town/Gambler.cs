@@ -194,14 +194,30 @@ namespace SpiritMod.NPCs.Town
 					Main.dust[num].scale = Main.rand.NextFloat(.8f, 1.2f);
 					Main.dust[num].noGravity = true;
 					Dust dust = Main.dust[num];
-					dust.position.X = dust.position.X + ((Main.rand.Next(-50, 51) / 20) - 1.5f);
-					dust.position.Y = dust.position.Y + ((Main.rand.Next(-50, 51) / 20) - 1.5f);
+					dust.position.X += (Main.rand.Next(-50, 51) / 20) - 1.5f;
+					dust.position.Y += (Main.rand.Next(-50, 51) / 20) - 1.5f;
 					if (Main.dust[num].position != NPC.Center)
 					{
 						Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 3f;
 					}
 				}
 			}
+		}
+
+		private float animCounter;
+		public override void FindFrame(int frameHeight)
+		{
+			if (!NPC.IsABestiaryIconDummy)
+				return;
+
+			animCounter += 0.25f;
+			if (animCounter >= 16)
+				animCounter = 2;
+			else if (animCounter < 2)
+				animCounter = 2;
+
+			int frame = (int)animCounter;
+			NPC.frame.Y = frame * frameHeight;
 		}
 	}
 }
