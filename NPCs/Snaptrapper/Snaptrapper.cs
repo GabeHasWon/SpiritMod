@@ -46,9 +46,10 @@ namespace SpiritMod.NPCs.Snaptrapper
             NPC.buffImmune[ModContent.BuffType<Buffs.DoT.FesteringWounds>()] = true;
             NPC.buffImmune[BuffID.Venom] = true;
             NPC.DeathSound = SoundID.NPCDeath25;
-			NPC.value = 629f;
+			NPC.value = Item.buyPrice(0, 0, 50, 0);
 			NPC.knockBackResist = 0f;
 			NPC.aiStyle = 3;
+
 			AIType = NPCID.SnowFlinx;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.AntlionAssassinBanner>();
@@ -79,6 +80,7 @@ namespace SpiritMod.NPCs.Snaptrapper
                 Main.gore[a].timeLeft = 20;
                 Main.gore[a].scale = Main.rand.NextFloat(.5f, 1f);
             }
+
 			if (NPC.life <= 0)
             {
                 for (int j = 0; j < 12; j++)
@@ -408,11 +410,12 @@ namespace SpiritMod.NPCs.Snaptrapper
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height / Main.npcFrameCount[NPC.type]) * 0.5f);
             if (chargePhase)
             {
-                for (int k = 0; k < NPC.oldPos.Length; k++)
+				var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height / Main.npcFrameCount[NPC.type]) * 0.5f);
+
+				for (int k = 0; k < NPC.oldPos.Length; k++)
                 {
                     Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, NPC.gfxOffY);
                     Color color = NPC.GetAlpha(drawColor) * (float)(((float)(NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
@@ -441,8 +444,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 			        ModContent.ItemType<SnapsporeStaff>(),
 			        ModContent.ItemType<SporeClub>()
 		        });
-	        spawnInfo =
-		        "The Snaptrapper spawns rarely on the Jungle surface after the Eater of Worlds or Brain of Cthulhu has been defeated.";
+	        spawnInfo = "The Snaptrapper spawns rarely on the Jungle surface after the Eater of Worlds or Brain of Cthulhu has been defeated.";
 	        texture = "SpiritMod/Textures/BossChecklist/SnaptrapperTexture";
 	        headTextureOverride = "SpiritMod/NPCs/Snaptrapper_Head_Boss";
         }

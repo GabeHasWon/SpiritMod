@@ -361,6 +361,7 @@ namespace SpiritMod.Items.Banners
 	public class ReachmanBanner : BaseBannerItem
 	{
 		protected override int Style => 65;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Feral Shambler Banner");
 	}
 
 	public class HemaphoraBanner : BaseBannerItem

@@ -139,7 +139,10 @@ namespace SpiritMod.GlobalClasses.NPCs
 			if (types.Contains(npc.type))
 			{
 				LeadingConditionRule rule = new LeadingConditionRule(new DropRuleConditions.BossDowned(boss));
-				rule.OnSuccess(ItemDropRule.NormalvsExpert(itemID, normal, expert));
+				if (normal != expert)
+					rule.OnSuccess(ItemDropRule.NormalvsExpert(itemID, normal, expert));
+				else
+					rule.OnSuccess(ItemDropRule.Common(itemID, normal));
 				npcLoot.Add(rule);
 			}
 		}
@@ -157,7 +160,10 @@ namespace SpiritMod.GlobalClasses.NPCs
 			if (types.Contains(npc.type))
 			{
 				LeadingConditionRule rule = new LeadingConditionRule(new DropRuleConditions.BossDowned(boss));
-				rule.OnSuccess(DropRules.NormalvsExpertStacked(itemID, normal, expert, minStack, maxStack));
+				if (normal != expert)
+					rule.OnSuccess(DropRules.NormalvsExpertStacked(itemID, normal, expert, minStack, maxStack));
+				else
+					rule.OnSuccess(ItemDropRule.Common(itemID, normal, minStack, maxStack));
 				npcLoot.Add(rule);
 			}
 		}
@@ -181,7 +187,12 @@ namespace SpiritMod.GlobalClasses.NPCs
 		public void DropLoot(NPCLoot loot, int chance, int expertChance, int itemID, NPC npc, params int[] types)
 		{
 			if (types.Contains(npc.type))
-				loot.Add(ItemDropRule.NormalvsExpert(itemID, chance, expertChance));
+			{
+				if (chance != expertChance)
+					loot.Add(ItemDropRule.NormalvsExpert(itemID, chance, expertChance));
+				else
+					loot.Add(ItemDropRule.Common(itemID, chance));
+			}
 		}
 
 		/// <summary>Drops an item given the specific conditions. Uses DropRules.NormalvsExpertStacked.</summary>
@@ -195,7 +206,12 @@ namespace SpiritMod.GlobalClasses.NPCs
 		public void DropLoot(NPCLoot loot, int chance, int expertChance, int itemID, int minStack, int maxStack, NPC npc, params int[] types)
 		{
 			if (types.Contains(npc.type))
-				loot.Add(DropRules.NormalvsExpertStacked(itemID, chance, expertChance, minStack, maxStack));
+			{
+				if (chance != expertChance)
+					loot.Add(DropRules.NormalvsExpertStacked(itemID, chance, expertChance, minStack, maxStack));
+				else
+					loot.Add(ItemDropRule.Common(itemID, chance));
+			}
 		}
 	}
 }
