@@ -599,7 +599,19 @@ namespace SpiritMod.Items
 
 		public override bool? UseItem(Item item, Player player)
 		{
+			//Checks for spawning vanilla fish critters
+			if (FishCheck(item, player))
+				return true;
+
+			//This allows vanilla moss items to be used on Weathered Stone
+			MossPlacement(item, player);
+			return null;
+		}
+
+		private bool FishCheck(Item item, Player player)
+		{
 			int spawnType = -1;
+			bool fish = true;
 
 			if (item.type == ItemID.AtlanticCod)
 				spawnType = ModContent.NPCType<AtlanticCod>();
@@ -625,16 +637,23 @@ namespace SpiritMod.Items
 				spawnType = ModContent.NPCType<RedSnapper>();
 			else if (item.type == ItemID.VariegatedLardfish)
 				spawnType = ModContent.NPCType<Lardfish>();
+			else
+				fish = false;
 
 			if (spawnType != -1)
 				NPC.NewNPC(item.GetSource_ItemUse(item), (int)player.Center.X, (int)player.Center.Y, spawnType);
 
-			//This allows vanilla moss items to be used on Weathered Stone
+			return fish;
+		}
+
+		private void MossPlacement(Item item, Player player)
+		{
 			int[] mossItems = new int[] { ItemID.BlueMoss, ItemID.GreenMoss, ItemID.PurpleMoss, ItemID.RedMoss, ItemID.BrownMoss };
 			if (mossItems.Contains(item.type))
 			{
 				if (Main.netMode == NetmodeID.Server)
-					return false;
+					return;
+
 				int[] mossTile = new int[] { ModContent.TileType<WeatheredBlueMoss>(), ModContent.TileType<WeatheredGreenMoss>(),
 					ModContent.TileType<WeatheredPurpleMoss>(), ModContent.TileType<WeatheredRedMoss>(), ModContent.TileType<WeatheredYellowMoss>() };
 
@@ -645,7 +664,6 @@ namespace SpiritMod.Items
 					player.inventory[player.selectedItem].stack--;
 				}
 			}
-			return null;
 		}
 
 		private static readonly Vector2 SlotDimensions = new Vector2(52, 52);

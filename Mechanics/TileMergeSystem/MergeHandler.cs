@@ -46,10 +46,13 @@ namespace SpiritMod.Mechanics.TileMergeSystem
 				Tile tile = Main.tile[x, y];
 				int tileType = tile.TileType;
 
-				if (!tile.HasTile || tileType == type || (Mergers.TypeHas(type, tileType) && Mergers.TypeHas(tileType, type)) || (Mergers.HasUniversal(type) && Mergers.HasUniversal(tileType) && type > tileType))
+				if (!tile.HasTile || tileType == type || (Mergers.TypeHas(type, tileType) && Mergers.TypeHas(tileType, type) && type > tileType) || (Mergers.HasUniversal(type) && Mergers.HasUniversal(tileType) && type > tileType))
 					return; //Active, duplicate, and double merge checks
 
 				if (tileType == TileID.Dirt && (Main.tileMergeDirt[type] || TileID.Sets.Grass[type]))
+					return; //Dirt and grass tilesheet check
+
+				if (type == TileID.Dirt && (Main.tileMergeDirt[tileType] || TileID.Sets.Grass[tileType]))
 					return; //Dirt and grass tilesheet check
 
 				if ((tileType == TileID.Mud && type == TileID.Dirt) || (tileType == TileID.Dirt && type == TileID.Mud))

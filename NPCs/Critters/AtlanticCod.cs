@@ -26,7 +26,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.damage = 0;
 			NPC.defense = 0;
 			NPC.lifeMax = 5;
-			NPC.catchItem = (short)ItemID.AtlanticCod;
+			NPC.catchItem = ItemID.AtlanticCod;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.dontTakeDamageFromHostiles = false;
