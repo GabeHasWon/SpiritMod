@@ -160,8 +160,7 @@ namespace SpiritMod.NPCs.DungeonCube
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			if (spawnInfo.SpawnTileType == TileID.BlueDungeonBrick) 
-				return spawnInfo.Player.ZoneDungeon ? 0.04f : 0f;
-
+				return spawnInfo.Player.ZoneDungeon ? 0.09f : 0f;
 			return 0f;
 		}
 

@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using System;
 using TileID = Terraria.ID.TileID;
 using Terraria.ID;
+using SpiritMod.Tiles.Ambient.Spirit;
 
 namespace SpiritMod.Tiles.Block
 {
@@ -31,7 +32,7 @@ namespace SpiritMod.Tiles.Block
 			ItemDrop = ModContent.ItemType<SpiritDirtItem>();
 		}
 
-		public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
+		public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int random = -1, int direction = -1)
 		{
 			if (!TileObject.CanPlace(x, y, type, style, direction, out TileObject toBePlaced, false))
 				return false;
@@ -43,11 +44,11 @@ namespace SpiritMod.Tiles.Block
 
 		public override void RandomUpdate(int i, int j)
 		{
-			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(40))
+			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(8))
 			{
-				int rand = Main.rand.Next(1, 6);
-				PlaceObject(i, j - 1, Mod.Find<ModTile>("SpiritGrassA" + rand).Type);
-				NetMessage.SendObjectPlacment(-1, i, j - 1, Mod.Find<ModTile>("SpiritGrassA" + rand).Type, 0, 0, -1, -1);
+				int type = Main.rand.NextBool(4) ? ModContent.TileType<SpiritTallgrass>() : ModContent.TileType<SpiritFoliage>();
+				PlaceObject(i, j - 1, type, true);
+				NetMessage.SendObjectPlacment(-1, i, j - 1, type, -1, 0, -1, -1);
 			}
 		}
 

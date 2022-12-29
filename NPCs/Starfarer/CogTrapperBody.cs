@@ -5,7 +5,6 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,15 +27,15 @@ namespace SpiritMod.NPCs.Starfarer
 
 		public override void SetDefaults()
 		{
-			NPC.damage = 25; //70
+			NPC.damage = 25;
 			NPC.npcSlots = 0f;
-			NPC.width = 14; //324
-			NPC.height = 20; //216
+			NPC.width = 14;
+			NPC.height = 20;
 			NPC.defense = 14;
-			NPC.lifeMax = 300; //250000
-			NPC.aiStyle = 6; //new
-			AIType = -1; //new
-			AnimationType = 10; //new
+			NPC.lifeMax = 300;
+			NPC.aiStyle = 6;
+			AIType = -1;
+			AnimationType = 10;
 			NPC.dontCountMe = true;
 			NPC.knockBackResist = 0f;
 			NPC.alpha = 255;
@@ -46,16 +45,14 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
+
 			for (int k = 0; k < NPC.buffImmune.Length; k++) {
 				NPC.buffImmune[k] = true;
 			}
 			NPC.dontCountMe = true;
 		}
 
-		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-		{
-			return false;
-		}
+		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
 		public override void AI()
 		{
@@ -110,15 +107,10 @@ namespace SpiritMod.NPCs.Starfarer
 			}
 		}
 
-		public override bool CheckActive()
-		{
-			return false;
-		}
+		public override bool CheckActive() => false;
 
-		public override bool PreKill()
-		{
-			return false;
-		}
+		public override bool PreKill() => false;
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
 
@@ -151,8 +143,8 @@ namespace SpiritMod.NPCs.Starfarer
 		{
 
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), 
+				NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
 

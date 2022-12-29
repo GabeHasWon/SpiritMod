@@ -111,7 +111,7 @@ namespace SpiritMod.NPCs.ChestZombie
 		{
 			NPC.frameCounter++;
 
-			if (NPC.velocity.X != 0f)
+			if (NPC.velocity.X != 0f || NPC.IsABestiaryIconDummy)
 			{
 				if (NPC.velocity.Y != 0f)
 					NPC.frame.Y = 0 * frameHeight;

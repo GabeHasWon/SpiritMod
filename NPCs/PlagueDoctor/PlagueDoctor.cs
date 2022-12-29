@@ -125,8 +125,8 @@ namespace SpiritMod.NPCs.PlagueDoctor
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			if (NPC.downedPlantBoss)
-				return spawnInfo.Player.ZoneDungeon && NPC.CountNPCS(ModContent.NPCType<PlagueDoctor>()) < 1 ? 0.0015f : 0f;
-			return spawnInfo.Player.ZoneDungeon && NPC.CountNPCS(ModContent.NPCType<PlagueDoctor>()) < 1 ? 0.05f : 0f;
+				return spawnInfo.Player.ZoneDungeon && NPC.CountNPCS(ModContent.NPCType<PlagueDoctor>()) < 1 ? 0.005f : 0f;
+			return spawnInfo.Player.ZoneDungeon && NPC.CountNPCS(ModContent.NPCType<PlagueDoctor>()) < 1 ? 0.09f : 0f;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

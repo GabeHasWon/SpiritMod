@@ -110,6 +110,8 @@ namespace SpiritMod
 		public static int pagodaY = 0;
 		public static bool spawnedPagodaEnemies = false;
 
+		public static int pagodaSpawnTimer;
+
 		public static Dictionary<string, bool> droppedGlyphs = new Dictionary<string, bool>();
 
 		public static HashSet<Point16> superSunFlowerPositions = new HashSet<Point16>();
@@ -1540,67 +1542,6 @@ namespace SpiritMod
 					jellySky = false;
 			}
 
-			//Randomly spawn floating asteroid debris without disrupting NPC spawn weight
-			/*if (Main.rand.NextBool(55))
-			{
-				bool run = Main.netMode != NetmodeID.Server && player.GetSpiritPlayer().ZoneAsteroid;
-				if (!run) //Avoid running this loop whenever possible
-					if (Main.player.Any(x => x.active && x.GetSpiritPlayer().ZoneAsteroid))
-						run = true;
-				if (!run)
-					return;
-				//This only accounts for the host player's screen, fix it.
-				Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
-
-				Rectangle spawnRect = screenRect;
-				int padding = 100;
-				spawnRect.Inflate(padding, padding);
-
-				int npcType = ModContent.NPCType<AsteroidDebris>();
-
-				for (int i = 0; i < 20; i++)
-				{
-					Vector2 spawnPos = new Vector2(spawnRect.X + Main.rand.Next(spawnRect.Width), spawnRect.Y + Main.rand.Next(spawnRect.Height));
-					if (!screenRect.Contains(spawnPos.ToPoint()) && !Collision.SolidCollision(spawnPos, 10, 10))
-					{
-						if (NPC.CountNPCS(npcType) < 30)
-						{
-							int index = NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcType);
-							if (Main.netMode != NetmodeID.SinglePlayer)
-								NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, index);
-						}
-						return;
-					}
-				}
-			}*/
-
-			//pagoda enemy spawning
-			if (!spawnedPagodaEnemies && Main.netMode != NetmodeID.MultiplayerClient)
-			{
-				Rectangle pagodaSpawnArea = new Rectangle(pagodaX - 65, pagodaY - 37, 256, 140);
-				bool shouldSpawn = false;
-				if (Main.netMode == NetmodeID.SinglePlayer && pagodaSpawnArea.Contains(player.Center.ToTileCoordinates())) shouldSpawn = true;
-				else if (Main.netMode == NetmodeID.Server)
-				{
-					for (int i = 0; i < Main.maxPlayers; i++)
-					{
-						if (Main.player[i].active && pagodaSpawnArea.Contains(Main.player[i].Center.ToTileCoordinates()))
-						{
-							shouldSpawn = true;
-							break;
-						}
-					}
-				}
-				if (shouldSpawn)
-				{
-					spawnedPagodaEnemies = true;
-					for (int i = 0; i < Main.rand.Next(8, 10); i++)
-						NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (pagodaX + Main.rand.Next(0, 126)) * 16, (pagodaY + Main.rand.Next(-10, 50)) * 16, ModContent.NPCType<NPCs.Yurei.PagodaGhostPassive>());
-					for (int i = 0; i < 3; i++)
-						NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (pagodaX + Main.rand.Next(0, 126)) * 16, (pagodaY + Main.rand.Next(-10, 50)) * 16, ModContent.NPCType<NPCs.SamuraiGhost.SamuraiPassive>());
-				}
-			}
-
 			if (Main.hardMode && !rockCandy)
 			{
 				rockCandy = true;
@@ -1625,6 +1566,35 @@ namespace SpiritMod
 					}
 				}
 			}
+
+			//pagoda enemy spawning
+			if (!spawnedPagodaEnemies && Main.netMode != NetmodeID.MultiplayerClient)
+			{
+				Rectangle pagodaSpawnArea = new Rectangle(pagodaX - 65, pagodaY - 37, 256, 140);
+				bool shouldSpawn = false;
+				if (Main.netMode == NetmodeID.SinglePlayer && pagodaSpawnArea.Contains(player.Center.ToTileCoordinates())) shouldSpawn = true;
+				else if (Main.netMode == NetmodeID.Server)
+				{
+					for (int i = 0; i < Main.maxPlayers; i++)
+					{
+						if (Main.player[i].active && pagodaSpawnArea.Contains(Main.player[i].Center.ToTileCoordinates()))
+						{
+							shouldSpawn = true;
+							break;
+						}
+					}
+				}
+				if (shouldSpawn)
+				{
+					spawnedPagodaEnemies = true;
+					for (int i = 0; i < Main.rand.Next(8, 10); i++)
+						NPC.NewNPC(Entity.GetSource_NaturalSpawn(), (pagodaX + Main.rand.Next(0, 126)) * 16, (pagodaY + Main.rand.Next(-10, 50)) * 16, ModContent.NPCType<NPCs.Pagoda.Yuurei.PagodaGhostPassive>());
+					for (int i = 0; i < 3; i++)
+						NPC.NewNPC(Entity.GetSource_NaturalSpawn(), (pagodaX + Main.rand.Next(0, 126)) * 16, (pagodaY + Main.rand.Next(-10, 50)) * 16, ModContent.NPCType<NPCs.Pagoda.SamuraiGhost.SamuraiPassive>());
+				}
+			}
+			if (pagodaSpawnTimer > 0)
+				pagodaSpawnTimer--;
 		}
 	}
 }

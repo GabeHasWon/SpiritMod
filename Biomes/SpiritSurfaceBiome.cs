@@ -13,6 +13,7 @@ namespace SpiritMod.Biomes
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Mushroom;
 
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SpiritOverworld");
+		public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
 
 		public override string BestiaryIcon => base.BestiaryIcon;
 		public override string BackgroundPath => MapBackground;

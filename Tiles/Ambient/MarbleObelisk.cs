@@ -1,14 +1,11 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using SpiritMod.Items.Material;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Dusts;
-
 using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.Ambient
@@ -28,19 +25,18 @@ namespace SpiritMod.Tiles.Ambient
 			AdjTiles = new int[] { TileID.LunarMonolith };
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) {
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ItemType<Items.Placeable.Furniture.MarbleObeliskItem>());
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ItemType<Items.Placeable.Furniture.MarbleObeliskItem>());
 
 		public override void NearbyEffects(int i, int j, bool closer) {
 			if (Main.tile[i, j].TileFrameY >= 56) {
-                if (Main.rand.Next(100) == 1)
+                if (Main.rand.NextBool(100))
                 {
                     int glyphnum = Main.rand.Next(10);
-                    DustHelper.DrawDustImage(new Vector2(i * 16 + Main.rand.Next(-25, 25), j * 16 + Main.rand.Next(-25, 0)), ModContent.DustType<MarbleDust>(), 0.05f, "SpiritMod/Effects/Glyphs/Glyph" + glyphnum, 1f);
+                    DustHelper.DrawDustImage(new Vector2(i * 16 + Main.rand.Next(-25, 25), j * 16 + Main.rand.Next(-25, 0)), DustType<MarbleDust>(), 0.05f, "SpiritMod/Effects/Glyphs/Glyph" + glyphnum, 1f);
                 }
             }
 		}
+
 		public override bool RightClick(int i, int j) {
 			SoundEngine.PlaySound(SoundID.Mech, new(i * 16, j * 16));
 			HitWire(i, j);

@@ -18,6 +18,7 @@ namespace SpiritMod.World.Sepulchre
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
             Main.tileLighted[Type] = true;
+			Main.tileSpelunker[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleOnTable1x1);
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();

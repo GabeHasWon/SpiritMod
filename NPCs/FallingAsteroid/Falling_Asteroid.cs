@@ -213,7 +213,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 		{
 			Player player = Main.player[NPC.target];
 
-			if (player.active)
+			if (player.active || NPC.IsABestiaryIconDummy)
 			{
 				NPC.frameCounter++;
 				if (NPC.frameCounter < 6)
@@ -267,14 +267,10 @@ namespace SpiritMod.NPCs.FallingAsteroid
 
 				SpriteEffects spriteEffects = SpriteEffects.None;
 				float addHeight = -4f;
-				float addWidth = 0f;
 				var vector2_3 = new Vector2(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
 
 				if (NPC.velocity.X == 0)
-				{
 					addHeight = 0f;
-					addWidth = 0f;
-				}
 
 				Texture2D tex = TextureAssets.Extra[55].Value;
 				Vector2 origin = new Vector2(tex.Width / 2, tex.Height / 8 + 14);
@@ -295,14 +291,15 @@ namespace SpiritMod.NPCs.FallingAsteroid
 					color2.A = (byte)(color2.A * (10 - index) / 20);
 					color2 *= amount;
 
-					int frameY = (((visualTimer / 2) % 4) - index) % 4;
+					int frameY = ((visualTimer / (NPC.IsABestiaryIconDummy ? 6 : 2) % 4) - index) % 4;
 					if (frameY < 0)
 						frameY += 4;
 
 					Rectangle rectangle = tex.Frame(1, 4, 0, frameY);
 
-					var pos = new Vector2(NPC.oldPos[index].X + (NPC.width / 2f) - TextureAssets.Npc[NPC.type].Value.Width * NPC.scale / 2 + vector2_3.X + addWidth, NPC.oldPos[index].Y + NPC.height - TextureAssets.Npc[NPC.type].Value.Height * NPC.scale / Main.npcFrameCount[NPC.type] + 4 + vector2_3.Y + addHeight) * NPC.scale;
-					Main.EntitySpriteDraw(tex, pos - screenPos, rectangle, color2, num2, origin, MathHelper.Lerp(0.1f, 1.2f, ((10 - index) / 15f)), spriteEffects, 0);
+					var pos = new Vector2(NPC.oldPos[index].X + (NPC.width / 2f) - TextureAssets.Npc[NPC.type].Value.Width * NPC.scale / 2 + vector2_3.X - .5f, NPC.oldPos[index].Y + NPC.height - TextureAssets.Npc[NPC.type].Value.Height * NPC.scale / Main.npcFrameCount[NPC.type] + 4 + vector2_3.Y + addHeight) * NPC.scale;
+
+					Main.EntitySpriteDraw(tex, pos - screenPos, rectangle, color2, num2, origin, MathHelper.Lerp(0.1f, 1.2f, (10 - index) / 15f), spriteEffects, 0);
 				}
 			}
 			return false;

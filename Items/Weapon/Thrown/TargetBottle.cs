@@ -10,6 +10,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			DisplayName.SetDefault("Target Bottle");
 			Tooltip.SetDefault("Hit it with a bullet in the air to do high bullet damage for a short time after\n'Take a crack at this bottle!'");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

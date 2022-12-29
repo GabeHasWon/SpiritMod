@@ -345,7 +345,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 
 			//draw ritual circle and a bloom
 			spriteBatch.End(); 
-			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 			Texture2D bloom = Mod.Assets.Request<Texture2D>("Effects/Masks/CircleGradient", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			spriteBatch.Draw(bloom, NPC.Center - screenPos, null, glowColor * _ritualCircle * 0.66f, 0, bloom.Size() / 2, _ritualCircle * 1.25f, SpriteEffects.None, 0);
 
@@ -360,7 +360,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 				_rotMan.DrawBack(spriteBatch, NPC.Center);
 
 			spriteBatch.End(); 
-			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 
 			Texture2D mask = ModContent.Request<Texture2D>(Texture + "_Mask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 

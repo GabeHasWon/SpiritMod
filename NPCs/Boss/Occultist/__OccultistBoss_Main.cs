@@ -14,7 +14,6 @@ using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.BossLoot.OccultistDrops;
-using SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet;
 using SpiritMod.Items.BossLoot.OccultistDrops.OccultistPet;
 
 namespace SpiritMod.NPCs.Boss.Occultist

@@ -9,11 +9,10 @@ namespace SpiritMod.Projectiles.Thrown
 {
 	public class TargetCan : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Target Can");
-		}
-		bool shot = false;
+		private bool shot = false;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Target Can");
+
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Shuriken);
@@ -28,19 +27,27 @@ namespace SpiritMod.Projectiles.Thrown
 			var list = Main.projectile.Where(x => x.Hitbox.Intersects(Projectile.Hitbox));
 			foreach (var proj in list) {
 				if (proj.IsRanged() && proj.active && !shot && proj.friendly && !proj.hostile && (proj.width <= 6 || proj.height <= 6)) {
-					SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
+					ImpactFX();
 					shot = true;
 					Projectile.damage = 110;
 					Projectile.velocity = proj.velocity * 2;
 					proj.active = false;
-					CombatText.NewText(new Rectangle((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height), new Color(255, 155, 0, 100),
-				   "Bullseye!");
+					CombatText.NewText(new Rectangle((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height), new Color(255, 155, 0, 100), "Bullseye!");
 					Projectile.DamageType = DamageClass.Ranged;
 					Projectile.penetrate = 2;
 				}
 			}
 		}
 
+		public override void Kill(int timeLeft) => ImpactFX();
+
+		private void ImpactFX()
+		{
+			for (int i = 0; i < 15; i++)
+				Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Tin, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 0, default, 0.7f);
+			
+			SoundEngine.PlaySound(SoundID.NPCHit4 with { PitchVariance = 0.5f }, Projectile.Center);
+		}
 
 		//public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		//{

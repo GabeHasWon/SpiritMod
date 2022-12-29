@@ -1,13 +1,12 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace SpiritMod.NPCs.SamuraiGhost
+
+namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 {
 	public class SamuraiPassive : ModNPC
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Phantom Samurai");
@@ -38,6 +37,7 @@ namespace SpiritMod.NPCs.SamuraiGhost
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.knockBackResist = 0f;
 		}
+
 		public override void FindFrame(int frameHeight)
 		{
 			NPC.frameCounter += 0.15f;
@@ -45,6 +45,7 @@ namespace SpiritMod.NPCs.SamuraiGhost
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
 		}
+
 		public override void AI()
 		{
 			NPC.TargetClosest(true);

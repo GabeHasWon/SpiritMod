@@ -10,11 +10,10 @@ namespace SpiritMod.Projectiles.Thrown
 {
 	public class TargetBottle : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Target Bottle");
-		}
-		bool shot = false;
+		private bool shot = false;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Target Bottle");
+
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Shuriken);
@@ -29,10 +28,7 @@ namespace SpiritMod.Projectiles.Thrown
 			var list = Main.projectile.Where(x => x.Hitbox.Intersects(Projectile.Hitbox));
 			foreach (var proj in list) {
 				if (proj.IsRanged() && proj.active && !shot && proj.friendly && !proj.hostile && (proj.width <= 6 || proj.height <= 6)) {
-					SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
-					for (int num424 = 0; num424 < 15; num424++) {
-						Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Glass, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 0, default, 0.75f);
-					}
+					ImpactFX();
 					shot = true;
 					Main.player[Projectile.owner].AddBuff(ModContent.BuffType<TrueMarksman>(), 210);
 					Projectile.active = false;
@@ -41,12 +37,15 @@ namespace SpiritMod.Projectiles.Thrown
 				}
 			}
 		}
-		public override void Kill(int timeLeft)
+
+		public override void Kill(int timeLeft) => ImpactFX();
+
+		private void ImpactFX()
 		{
-			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
-			for (int num424 = 0; num424 < 15; num424++) {
+			for (int i = 0; i < 15; i++)
 				Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Glass, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 0, default, 0.75f);
-			}
+
+			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 		}
 
 		//public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
@@ -60,6 +59,5 @@ namespace SpiritMod.Projectiles.Thrown
 		//    }
 		//    return true;
 		//}
-
 	}
 }

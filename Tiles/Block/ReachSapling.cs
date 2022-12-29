@@ -48,14 +48,11 @@ namespace SpiritMod.Tiles.Block
 			AdjTiles = new int[] { TileID.Saplings };
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
 		public override void RandomUpdate(int i, int j)
 		{
-			if (WorldGen.genRand.Next(20) == 0) {
+			if (WorldGen.genRand.NextBool(20)) {
 				bool isPlayerNear = WorldGen.PlayerLOS(i, j);
 				bool success = WorldGen.GrowTree(i, j);
 				if (success && isPlayerNear)

@@ -5,7 +5,8 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace SpiritMod.NPCs.Yurei
+
+namespace SpiritMod.NPCs.Pagoda.Yuurei
 {
 	public class PagodaGhostPassive : ModNPC
 	{

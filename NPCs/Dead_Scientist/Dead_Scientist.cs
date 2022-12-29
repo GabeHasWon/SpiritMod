@@ -40,6 +40,7 @@ namespace SpiritMod.NPCs.Dead_Scientist
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 				new FlavorTextBestiaryInfoElement("An unholy practitioner of a necro-alchemy, combining typical alchemy with a form of minor necromancy in order to keep its sick experiments going."),
 			});
 		}

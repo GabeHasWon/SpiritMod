@@ -9,7 +9,9 @@ namespace SpiritMod.Biomes
 	{
 		public override ModUndergroundBackgroundStyle UndergroundBackgroundStyle => ModContent.Find<ModUndergroundBackgroundStyle>("SpiritMod/SpiritUgBgStyle");
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Underground Spirit");
+
 		public override int Music => GetMusicFromDepth();
+		public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
 
 		public override string BestiaryIcon => base.BestiaryIcon;
 		public override string BackgroundPath => MapBackground;

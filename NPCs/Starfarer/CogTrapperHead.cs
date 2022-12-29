@@ -27,7 +27,7 @@ namespace SpiritMod.NPCs.Starfarer
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Stardancer");
-			Main.npcFrameCount[NPC.type] = 1; //new
+			Main.npcFrameCount[NPC.type] = 1;
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				CustomTexturePath = $"{Texture}_Bestiary",
@@ -40,15 +40,15 @@ namespace SpiritMod.NPCs.Starfarer
 
 		public override void SetDefaults()
 		{
-			NPC.damage = 32; //150
+			NPC.damage = 32;
 			NPC.npcSlots = 17f;
-			NPC.width = 26; //324
-			NPC.height = 26; //216
+			NPC.width = 26;
+			NPC.height = 26;
 			NPC.defense = 0;
-			NPC.lifeMax = 225; //250000
-			NPC.aiStyle = 6; //new
-			AIType = -1; //new
-			AnimationType = 10; //new
+			NPC.lifeMax = 225;
+			NPC.aiStyle = 6;
+			AIType = -1;
+			AnimationType = 10;
 			NPC.knockBackResist = 0f;
 			NPC.value = 540;
 			NPC.alpha = 255;
@@ -100,7 +100,7 @@ namespace SpiritMod.NPCs.Starfarer
 				if (!tail && NPC.ai[0] == 0f) {
 					int current = NPC.whoAmI;
 					for (int num36 = 0; num36 < maxLength; num36++) {
-						int trailing = 0;
+						int trailing;
 						if (num36 >= 0 && num36 < minLength)
 							trailing = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X + (NPC.width / 2), (int)NPC.position.Y + (NPC.height / 2), ModContent.NPCType<CogTrapperBody>(), NPC.whoAmI);
 						else
@@ -120,21 +120,6 @@ namespace SpiritMod.NPCs.Starfarer
 				}
 			}
 
-			int num180 = (int)(NPC.position.X / 16f) - 1;
-			int num181 = (int)((NPC.position.X + (float)NPC.width) / 16f) + 2;
-			int num182 = (int)(NPC.position.Y / 16f) - 1;
-			int num183 = (int)((NPC.position.Y + (float)NPC.height) / 16f) + 2;
-
-			if (num180 < 0)
-				num180 = 0;
-			if (num181 > Main.maxTilesX)
-				num181 = Main.maxTilesX;
-			if (num182 < 0)
-				num182 = 0;
-			if (num183 > Main.maxTilesY)
-				num183 = Main.maxTilesY;
-
-			bool flag94 = flies;
 			NPC.localAI[1] = 0f;
 			if (directional) {
 				if (NPC.velocity.X < 0f)
@@ -145,7 +130,6 @@ namespace SpiritMod.NPCs.Starfarer
 
 			if (player.dead) {
 				NPC.TargetClosest(false);
-				flag94 = false;
 				NPC.velocity.Y = NPC.velocity.Y + 10f;
 				if ((double)NPC.position.Y > Main.worldSurface * 16.0)
 					NPC.velocity.Y = NPC.velocity.Y + 10f;
@@ -243,7 +227,7 @@ namespace SpiritMod.NPCs.Starfarer
 			vector18.Y = (float)((int)(vector18.Y / 16f) * 16);
 			num191 -= vector18.X;
 			num192 -= vector18.Y;
-			float num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
+			float num193;
 			if (NPC.ai[1] > 0f && NPC.ai[1] < (float)Main.npc.Length) {
 				try {
 					vector18 = new Vector2(NPC.position.X + (float)NPC.width * 0.5f, NPC.position.Y + (float)NPC.height * 0.5f);
@@ -252,8 +236,8 @@ namespace SpiritMod.NPCs.Starfarer
 				}
 				catch {
 				}
-				NPC.rotation = (float)System.Math.Atan2((double)num192, (double)num191) + 1.57f;
-				num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
+				NPC.rotation = (float)Math.Atan2((double)num192, (double)num191) + 1.57f;
+				num193 = (float)Math.Sqrt((double)(num191 * num191 + num192 * num192));
 				int num194 = NPC.width;
 				num193 = (num193 - (float)num194) / num193;
 				num191 *= num193;
@@ -269,9 +253,9 @@ namespace SpiritMod.NPCs.Starfarer
 				}
 			}
 			else {
-				num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
-				float num196 = System.Math.Abs(num191);
-				float num197 = System.Math.Abs(num192);
+				num193 = (float)Math.Sqrt((double)(num191 * num191 + num192 * num192));
+				float num196 = Math.Abs(num191);
+				float num197 = Math.Abs(num192);
 				float num198 = num188 / num193;
 				num191 *= num198;
 				num192 *= num198;
@@ -288,14 +272,14 @@ namespace SpiritMod.NPCs.Starfarer
 						else if (NPC.velocity.Y > num192)
 							NPC.velocity.Y = NPC.velocity.Y - num189;
 
-						if ((double)System.Math.Abs(num192) < (double)num188 * 0.2 && ((NPC.velocity.X > 0f && num191 < 0f) || (NPC.velocity.X < 0f && num191 > 0f))) {
+						if ((double)Math.Abs(num192) < (double)num188 * 0.2 && ((NPC.velocity.X > 0f && num191 < 0f) || (NPC.velocity.X < 0f && num191 > 0f))) {
 							if (NPC.velocity.Y > 0f)
 								NPC.velocity.Y = NPC.velocity.Y + num189 * 2f;
 							else
 								NPC.velocity.Y = NPC.velocity.Y - num189 * 2f;
 						}
 
-						if ((double)System.Math.Abs(num191) < (double)num188 * 0.2 && ((NPC.velocity.Y > 0f && num192 < 0f) || (NPC.velocity.Y < 0f && num192 > 0f))) {
+						if ((double)Math.Abs(num191) < (double)num188 * 0.2 && ((NPC.velocity.Y > 0f && num192 < 0f) || (NPC.velocity.Y < 0f && num192 > 0f))) {
 							if (NPC.velocity.X > 0f)
 								NPC.velocity.X = NPC.velocity.X + num189 * 2f; //changed from 2
 							else
@@ -309,7 +293,7 @@ namespace SpiritMod.NPCs.Starfarer
 							else if (NPC.velocity.X > num191)
 								NPC.velocity.X = NPC.velocity.X - num189 * 1.1f; //changed from 1.1
 
-							if ((double)(System.Math.Abs(NPC.velocity.X) + System.Math.Abs(NPC.velocity.Y)) < (double)num188 * 0.5) {
+							if ((double)(Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y)) < (double)num188 * 0.5) {
 								if (NPC.velocity.Y > 0f)
 									NPC.velocity.Y = NPC.velocity.Y + num189;
 								else
@@ -322,7 +306,7 @@ namespace SpiritMod.NPCs.Starfarer
 							else if (NPC.velocity.Y > num192)
 								NPC.velocity.Y = NPC.velocity.Y - num189 * 1.1f;
 
-							if ((double)(System.Math.Abs(NPC.velocity.X) + System.Math.Abs(NPC.velocity.Y)) < (double)num188 * 0.5) {
+							if ((double)(Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y)) < (double)num188 * 0.5) {
 								if (NPC.velocity.X > 0f)
 									NPC.velocity.X = NPC.velocity.X + num189;
 								else
@@ -369,6 +353,7 @@ namespace SpiritMod.NPCs.Starfarer
 				}
 			}
 		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -376,6 +361,7 @@ namespace SpiritMod.NPCs.Starfarer
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, col, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
+
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);

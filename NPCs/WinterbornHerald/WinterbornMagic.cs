@@ -12,11 +12,14 @@ using Terraria.ModLoader;
 using SpiritMod.Buffs.DoT;
 using SpiritMod.Mechanics.QuestSystem;
 using Terraria.GameContent.Bestiary;
+using System.IO;
 
 namespace SpiritMod.NPCs.WinterbornHerald
 {
 	public class WinterbornMagic : ModNPC
 	{
+		private bool iceCloudAttack;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Winterborn Herald");
@@ -75,6 +78,8 @@ namespace SpiritMod.NPCs.WinterbornHerald
 		{
 			bool expertMode = Main.expertMode;
 			NPC.TargetClosest(true);
+			Player target = Main.player[NPC.target];
+
 			NPC.velocity.X = NPC.velocity.X * 0.93f;
 			if (NPC.velocity.X > -0.1F && NPC.velocity.X < 0.1F)
 				NPC.velocity.X = 0;
@@ -111,7 +116,10 @@ namespace SpiritMod.NPCs.WinterbornHerald
 
 			if (NPC.ai[0] == 100 || NPC.ai[0] == 300)
 			{
-				NPC.ai[1] = 30f;
+				iceCloudAttack = Main.rand.NextBool(2);
+				if (iceCloudAttack || Collision.CanHitLine(NPC.position - new Vector2(0, 30), 2, 2, target.position, target.width, target.height))
+					NPC.ai[1] = 30f;
+
 				NPC.netUpdate = true;
 			}
 
@@ -139,22 +147,21 @@ namespace SpiritMod.NPCs.WinterbornHerald
 						DustHelper.DrawDustImage(new Vector2(NPC.Center.X, NPC.Center.Y - 40), ModContent.DustType<WinterbornDust>(), 0.25f, "SpiritMod/Effects/Snowflakes/Flake" + flakenum, 1.33f);
 						for (int i = 0; i < amountOfProjectiles; ++i)
 						{
-							if (Main.rand.NextBool(2))
+							if (iceCloudAttack)
 							{
 								int somedamage = expertMode ? 15 : 30;
-								int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), Main.player[NPC.target].Center.X, Main.player[NPC.target].Center.Y - 300, 0, 0, ModContent.ProjectileType<IceCloudHostile>(), somedamage, 1, Main.myPlayer, 0, 0);
+								int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X, target.Center.Y - 300, 0, 0, ModContent.ProjectileType<IceCloudHostile>(), somedamage, 1, Main.myPlayer, 0, 0);
 								Main.projectile[p].hostile = true;
 								Main.projectile[p].friendly = false;
 								Main.projectile[p].tileCollide = false;
 							}
 							else
 							{
-								Vector2 direction = Vector2.Normalize(Main.player[NPC.target].Center - (NPC.Center - new Vector2(0, 30))) * 4.9f;
+								Vector2 direction = Vector2.Normalize(target.Center - (NPC.Center - new Vector2(0, 30))) * 4.9f;
 								int somedamage = expertMode ? 17 : 34;
-								int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y - 30, direction.X, direction.Y, ProjectileID.IceBolt, somedamage, 1, Main.myPlayer, 0, 0);
-								Main.projectile[p].hostile = true;
-								Main.projectile[p].friendly = false;
-								Main.projectile[p].tileCollide = false;
+								NPC npc = NPC.NewNPCDirect(NPC.GetSource_FromAI(), NPC.Center - new Vector2(0, 30), ModContent.NPCType<IceBoltNPC>());
+								npc.damage = somedamage;
+								npc.velocity = direction;
 							}
 						}
 					}
@@ -275,5 +282,8 @@ namespace SpiritMod.NPCs.WinterbornHerald
 				}
 			}
 		}
+
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(iceCloudAttack);
+		public override void ReceiveExtraAI(BinaryReader reader) => iceCloudAttack = reader.ReadBoolean();
 	}
 }

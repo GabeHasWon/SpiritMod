@@ -9,8 +9,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Buffs.Tiles;
 
-namespace SpiritMod.NPCs.Yurei
+namespace SpiritMod.NPCs.Pagoda.Yuurei
 {
 	public class PagodaGhostHostile : ModNPC
 	{
@@ -98,6 +99,8 @@ namespace SpiritMod.NPCs.Yurei
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Ramen>(), 16));
+
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.HasBuff(ModContent.BuffType<PagodaCurse>()) ? 0.22f : 0f;
 
 		public override void AI()
 		{

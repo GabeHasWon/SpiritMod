@@ -24,14 +24,14 @@ namespace SpiritMod.NPCs.Starfarer
 		{
 			NPC.damage = 15;
 			NPC.npcSlots = 0f;
-			NPC.width = 14; //324
-			NPC.height = 20; //216
+			NPC.width = 14;
+			NPC.height = 20;
 			NPC.defense = 12;
-			NPC.lifeMax = 300; //250000
-			NPC.aiStyle = 6; //new
-			Main.npcFrameCount[NPC.type] = 1; //new
-			AIType = -1; //new
-			AnimationType = 10; //new
+			NPC.lifeMax = 300;
+			NPC.aiStyle = 6;
+			Main.npcFrameCount[NPC.type] = 1;
+			AIType = -1;
+			AnimationType = 10;
 			NPC.knockBackResist = 0f;
 			NPC.alpha = 255;
 			NPC.behindTiles = true;
@@ -40,16 +40,14 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
+
 			for (int k = 0; k < NPC.buffImmune.Length; k++) {
 				NPC.buffImmune[k] = true;
 			}
 			NPC.dontCountMe = true;
 		}
 
-		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-		{
-			return false;
-		}
+		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
 		public override void AI()
 		{
@@ -107,21 +105,12 @@ namespace SpiritMod.NPCs.Starfarer
 							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
+		
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Starfarer/CogTrapperTail_Glow").Value, screenPos);
 
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Starfarer/CogTrapperTail_Glow").Value, screenPos);
+		public override bool CheckActive() => false;
 
-		}
-		public override bool CheckActive()
-		{
-			return false;
-		}
-
-		public override bool PreKill()
-		{
-			return false;
-		}
+		public override bool PreKill() => false;
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
