@@ -60,7 +60,7 @@ namespace SpiritMod.NPCs.Midknight
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Midknight/Midknight_Glow").Value, screenPos);
-		
+
 		public override void AI()
 		{
 			NPC.localAI[1] += 0.03f;
@@ -68,16 +68,20 @@ namespace SpiritMod.NPCs.Midknight
 			NPC.spriteDirection = NPC.direction;
 			Player target = Main.player[NPC.target];
 			int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
-			if (distance < 64) {
+			if (distance < 64)
+			{
 				target.AddBuff(BuffID.Darkness, 65);
 			}
-			if (distance > 640 && Main.rand.NextBool(6)) {
-				if (Main.netMode != NetmodeID.MultiplayerClient) {
+			if (distance > 640 && Main.rand.NextBool(6))
+			{
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
 					SoundEngine.PlaySound(SoundID.Zombie53, NPC.Center);
 					NPC.position.X = target.position.X + Main.rand.Next(50, 100) * -target.direction;
 					NPC.position.Y = target.position.Y - Main.rand.Next(30, 60);
 					NPC.netUpdate = true;
-					for (int num73 = 0; num73 < 20; num73++) {
+					for (int num73 = 0; num73 < 20; num73++)
+					{
 						int index = Dust.NewDust(NPC.position, 128, 128, DustID.PurpleCrystalShard, 0.0f, 0.0f, 200, new Color(), 0.5f);
 						Main.dust[index].noGravity = true;
 						Main.dust[index].velocity *= 0.75f;
@@ -98,11 +102,14 @@ namespace SpiritMod.NPCs.Midknight
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int k = 0; k < 40; k++) {
+			for (int k = 0; k < 40; k++)
+			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, hitDirection * 6f, -1f, 0, default, .45f);
 			}
-			if (NPC.life <= 0) {
-				for (int k = 0; k < 10; k++) {
+			if (NPC.life <= 0)
+			{
+				for (int k = 0; k < 10; k++)
+				{
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);

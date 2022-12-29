@@ -73,9 +73,10 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop
 			MountData.bodyFrame = 3;
 			MountData.heightBoost = 26;
 			MountData.standingFrameCount = 1;
-			MountData.spawnDust = Mod.Find<ModDust>("SandDust").Type;
+
 			if (Main.netMode != NetmodeID.Server)
 			{
+				MountData.spawnDust = Mod.Find<ModDust>("SandDust").Type;
 				MountData.textureWidth = MountData.backTexture.Width();
 				MountData.textureHeight = MountData.backTexture.Height();
 			}

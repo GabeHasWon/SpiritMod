@@ -26,7 +26,6 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
 
-
 		public int SwingTime; //Total time for weapon to be used
 		public Vector2 InitialVelocity = Vector2.Zero; //Starting velocity, used for determining swing arc direction
 		public Vector2 BasePosition = Vector2.Zero;
