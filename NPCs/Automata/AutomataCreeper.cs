@@ -241,9 +241,13 @@ namespace SpiritMod.NPCs.Automata
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos, NPC.frame, drawColor, NPC.rotation % 6.28f, NPC.frame.Size() / 2, NPC.scale, initialDirection != 1 ? SpriteEffects.FlipVertically : SpriteEffects.None, 0);
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
+			var effect = initialDirection != 1 ? SpriteEffects.FlipVertically : SpriteEffects.None;
+			Main.EntitySpriteDraw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos, NPC.frame, drawColor, NPC.rotation % 6.28f, NPC.frame.Size() / 2, NPC.scale, effect, 0);
 			return false;
 		}
+
+		public override Color? GetAlpha(Color drawColor) => base.GetAlpha(drawColor);
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.Marble) && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 1f : 0f;
 

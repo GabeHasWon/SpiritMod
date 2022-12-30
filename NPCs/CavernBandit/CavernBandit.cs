@@ -183,7 +183,7 @@ namespace SpiritMod.NPCs.CavernBandit
 			Texture2D npcTex = TextureAssets.Npc[NPC.type].Value;
 			Vector2 yOffset = new Vector2(0, NPC.gfxOffY);
 			yOffset.Y += 22; //hardcoded offset so its on ground properly
-			spriteBatch.Draw(npcTex, NPC.Center - screenPos + yOffset, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, new Vector2(NPC.frame.Width/2f, NPC.frame.Height), NPC.scale, spriteEffects, 0);
+			spriteBatch.Draw(npcTex, NPC.Center - screenPos + yOffset, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(NPC.frame.Width/2f, NPC.frame.Height), NPC.scale, spriteEffects, 0);
 			return false;
 		}
 

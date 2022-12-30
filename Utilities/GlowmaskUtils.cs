@@ -17,7 +17,7 @@ namespace SpiritMod
 				texture,
 				npc.Center - screenPos + new Vector2(0, npc.gfxOffY),
 				npc.frame,
-				color ?? Color.White,
+				npc.GetNPCColorTintedByBuffs(color ?? Color.White),
 				npc.rotation,
 				npc.frame.Size() / 2,
 				npc.scale,

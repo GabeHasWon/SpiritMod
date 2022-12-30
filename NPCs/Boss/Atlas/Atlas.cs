@@ -339,7 +339,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			int offset = NPC.IsABestiaryIconDummy ? 170 : 0;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY + offset), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;

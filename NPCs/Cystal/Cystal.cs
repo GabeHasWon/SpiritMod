@@ -234,6 +234,7 @@ namespace SpiritMod.NPCs.Cystal
 			else if (!check)
 				colorNumber += 10;
 
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
@@ -242,7 +243,7 @@ namespace SpiritMod.NPCs.Cystal
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Cystal/Cystal_Glow").Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, new Color(colorNumber / 2, colorNumber / 2, colorNumber / 2), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Cystal/Cystal_Glow").Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetNPCColorTintedByBuffs(new Color(colorNumber / 2, colorNumber / 2, colorNumber / 2)), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 		}
 
 		public override void FindFrame(int frameHeight)
