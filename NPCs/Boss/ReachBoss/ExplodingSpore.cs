@@ -116,23 +116,13 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
-			Vector2 vector2_3 = new Vector2((float)(TextureAssets.Npc[NPC.type].Value.Width / 2), (float)(TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2));
-			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height / Main.npcFrameCount[NPC.type]) * 0.5f);
+							 NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 
 			SpriteEffects spriteEffects = SpriteEffects.None;
 			if (NPC.spriteDirection == 1)
 				spriteEffects = SpriteEffects.FlipHorizontally;
-			Texture2D texture2D1 = TextureAssets.Npc[NPC.type].Value;
 			Vector2 position1 = NPC.Bottom - Main.screenPosition;
-			Microsoft.Xna.Framework.Rectangle r1 = texture2D1.Frame(1, 1, 0, 0);
-			Vector2 origin = r1.Size() / 2f;
 			float num11 = (float) (Math.Cos((double) Main.GlobalTimeWrappedHourly % 2.40000009536743 / 2.40000009536743 * 6.28318548202515) / 2 + 0.5);
-			float num12 = num11;
-			if ((double) num12 > 0.5)
-			  num12 = 1f - num11;
-			if ((double) num12 < 0.0)
-			  num12 = 0.0f;
 			float num13 = (float) (((double) num11 + 0.5) % 1.0);
 			float num14 = num13;
 			if ((double) num14 > 0.5)
@@ -141,18 +131,15 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			  num14 = 0.0f;
 			float num16 = 1f + num13 * 0.75f;
 			Microsoft.Xna.Framework.Color color3 = Color.Gold * 1.2f;
-			Microsoft.Xna.Framework.Color color9 = Color.Khaki * 1.9f;
-			Microsoft.Xna.Framework.Color color11 = Color.Yellow * 0.3f;
 			Vector2 position3 = position1 + new Vector2(0.0f, -10f);
 			Texture2D texture2D3 = Mod.Assets.Request<Texture2D>("Effects/Ripple").Value;
 			Microsoft.Xna.Framework.Rectangle r3 = texture2D3.Frame(1, 1, 0, 0);
-			origin = r3.Size() / 2f;
+			var origin = r3.Size() / 2f;
 			Vector2 scale = new Vector2(0.75f, 1f + num16) * 0.45f * NPC.scale;
 			Vector2 scale2 = new Vector2(1f + num16, 0.75f) * 0.45f * NPC.scale;
-			float num17 = 1f + num13 * 0.75f;
 			position3.Y -= 6f;
-			Main.spriteBatch.Draw(texture2D3, position3, new Microsoft.Xna.Framework.Rectangle?(r3), color3 * num14, NPC.rotation + 1.570796f, origin, scale, spriteEffects ^ SpriteEffects.FlipHorizontally, 0.0f);
-			Main.spriteBatch.Draw(texture2D3, position3, new Microsoft.Xna.Framework.Rectangle?(r3), color3 * num14, NPC.rotation + 1.570796f, origin, scale2, spriteEffects ^ SpriteEffects.FlipHorizontally, 0.0f);
+			Main.spriteBatch.Draw(texture2D3, position3, r3, NPC.GetNPCColorTintedByBuffs(color3 * num14), NPC.rotation + 1.570796f, origin, scale, spriteEffects, 0.0f);
+			Main.spriteBatch.Draw(texture2D3, position3, r3, NPC.GetNPCColorTintedByBuffs(color3 * num14), NPC.rotation + 1.570796f, origin, scale2, spriteEffects, 0.0f);
 			return false;
 		}
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

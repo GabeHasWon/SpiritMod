@@ -427,6 +427,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, new Vector2(NPC.Center.X, NPC.Center.Y - 8) - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame,
 							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);

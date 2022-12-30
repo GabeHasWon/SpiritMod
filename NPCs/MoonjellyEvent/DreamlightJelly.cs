@@ -80,7 +80,8 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            float sineAdd = (float)Math.Sin(alphaCounter) + 3;
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
+			float sineAdd = (float)Math.Sin(alphaCounter) + 3;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (NPC.spriteDirection == 1)
                 spriteEffects = SpriteEffects.FlipHorizontally;

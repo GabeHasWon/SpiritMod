@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.height = 22;
 			NPC.damage = 0;
 			NPC.defense = 0;
-			NPC.lifeMax = 35;
+			NPC.lifeMax = 5;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.knockBackResist = .35f;
@@ -45,6 +45,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;

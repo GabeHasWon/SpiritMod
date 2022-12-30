@@ -66,7 +66,7 @@ namespace SpiritMod.NPCs.Critters
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			int frameHeight = TextureAssets.Npc[Type].Value.Height / Main.npcFrameCount[Type];
 			var source = new Rectangle(0, frameHeight * frame.Y, NPC.frame.Width, NPC.frame.Height);
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), source, Color.White * opac, NPC.rotation, NPC.frame.Size() / 2, scale, effects, 0);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), source, NPC.GetNPCColorTintedByBuffs(Color.White) * opac, NPC.rotation, NPC.frame.Size() / 2, scale, effects, 0);
 			return false;
 		}
 

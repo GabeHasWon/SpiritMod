@@ -87,6 +87,7 @@ namespace SpiritMod.NPCs.FallenAngel
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height / Main.npcFrameCount[NPC.type]) * 0.5f);
 			float sineAdd = (float)Math.Sin(NPC.ai[1]) + 3;

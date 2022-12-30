@@ -149,6 +149,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			Rectangle drawFrame = NPC.frame with 
 			{ 

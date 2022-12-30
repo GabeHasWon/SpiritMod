@@ -68,7 +68,7 @@ namespace SpiritMod.NPCs.ExplosiveBarrel
             {
                 NPC.life--;
 
-				if (Main.rand.Next(10) == 1)
+				if (Main.rand.NextBool(10))
                     Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 0, -5, 0, default, 1.5f);
 
                 if (NPC.life <= 0)
@@ -113,6 +113,7 @@ namespace SpiritMod.NPCs.ExplosiveBarrel
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
+			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var orig = new Vector2(NPC.width / 2, 68);
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.position - Main.screenPosition + orig - new Vector2(0, 10), NPC.frame, drawColor, NPC.rotation, orig, 1f, SpriteEffects.None, 0f);
 			return false;
