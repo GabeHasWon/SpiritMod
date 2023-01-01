@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 
 		public override bool OnPickup(Player player)
 		{
-			player.AddBuff(ModContent.BuffType<AceOfDiamondsBuff>(), 180);
+			player.AddBuff(ModContent.BuffType<AceOfDiamondsBuff>(), 300);
 			SoundEngine.PlaySound(SoundID.Grab, player.Center);
 			return false;
 		}

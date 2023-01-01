@@ -56,7 +56,7 @@ namespace SpiritMod.NPCs.Orbitite
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrbiterStaff>(), 20));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GravityModulator>(), 400));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GravityModulator>(), 200));
 			npcLoot.AddOneFromOptions(67, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
 		}
 

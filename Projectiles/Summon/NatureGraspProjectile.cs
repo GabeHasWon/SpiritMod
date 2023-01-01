@@ -55,7 +55,7 @@ namespace SpiritMod.Projectiles.Summon
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             Player player = Main.player[Projectile.owner];
-            target.AddBuff(Mod.Find<ModBuff>("SummonTag3").Type, 240, true);
+            target.AddBuff(Mod.Find<ModBuff>("SummonTag3").Type, 180, true);
             int num = -1;
             for (int i = 0; i < Main.maxNPCs; i++)
                 if (Main.npc[i].CanBeChasedBy(player, false) && Main.npc[i] == target)

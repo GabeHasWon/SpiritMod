@@ -797,7 +797,7 @@ namespace SpiritMod
 					if (Main.dust[num].position != Player.Center)
 						Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
 				}
-				marbleJump = 120;
+				marbleJump = 300;
 			}
 
 			if (marbleSet && (Player.sliding || Player.velocity.Y == 0f))
@@ -1002,7 +1002,7 @@ namespace SpiritMod
 			foreach (var effect in effects)
 				effect.PlayerOnHitNPC(Player, item, target, damage, knockback, crit);
 
-			if (AceOfHearts && Main.rand.NextBool(8) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
+			if (AceOfHearts && Main.rand.NextBool(6) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
 				ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, Main.halloween ? ItemID.CandyApple : ItemID.Heart);
 				for (int i = 0; i < 3; i++)
@@ -1012,7 +1012,7 @@ namespace SpiritMod
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
 
-			if (AceOfDiamonds && Main.rand.NextBool(8) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
+			if (AceOfDiamonds && Main.rand.NextBool(6) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
 				ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ModContent.ItemType<Items.Accessory.AceCardsSet.DiamondAce>());
 				for (int i = 0; i < 3; i++)
@@ -1021,7 +1021,8 @@ namespace SpiritMod
 
 			if (AceOfClubs && crit && target.lifeMax > 15 && !target.friendly && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
-				int money = (int)(300 * MathHelper.Clamp((float)damage / target.lifeMax, 1 / 300f, 1f));
+				//int money = (int)(300 * MathHelper.Clamp((float)damage / target.lifeMax, 1 / 300f, 1f));
+				int money = (int)(Math.Round(damage * 0.5f));
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<ClubDust>(), 0, -0.8f);
 				if (money / 1000000 > 0) ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.PlatinumCoin, money / 1000000);

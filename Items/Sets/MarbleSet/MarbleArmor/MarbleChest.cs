@@ -31,6 +31,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 			player.accRunSpeed *= 1.1f;
 			player.moveSpeed *= 1.1f; 
 			player.runAcceleration *= 2f;
+			player.runSlowdown *= 2f;
 
 			if (player.velocity.X != 0f)
 			{

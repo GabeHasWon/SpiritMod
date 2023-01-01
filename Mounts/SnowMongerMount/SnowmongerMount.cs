@@ -46,12 +46,12 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			MountData.buff = ModContent.BuffType<SnowmongerMountBuff>();
 			MountData.heightBoost = 10;
 			MountData.fallDamage = 0f;
-			MountData.runSpeed = 5f;
-			MountData.dashSpeed = 8f;
+			MountData.runSpeed = 4f;
+			MountData.dashSpeed = 6f;
 			MountData.flightTimeMax = 200;
 			MountData.fatigueMax = 320;
 			MountData.jumpHeight = 10;
-			MountData.acceleration = 0.4f;
+			MountData.acceleration = 0.3f;
 			MountData.jumpSpeed = 10f;
 			MountData.blockExtraJumps = true;
 			MountData.totalFrames = 14;

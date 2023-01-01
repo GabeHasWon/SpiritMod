@@ -13,7 +13,6 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 		{
 			DisplayName.SetDefault("Chitin Leggings");
 			Tooltip.SetDefault("Increases movement speed by 7%");
-
 		}
 		public override void SetDefaults()
 		{
@@ -25,8 +24,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 		}
 		public override void UpdateEquip(Player player)
 		{
-			player.moveSpeed += 0.07f;
-			player.maxRunSpeed += 0.07f;
+			player.moveSpeed *= 1.07f;
+			player.maxRunSpeed *= 1.07f;
 		}
 		public override void AddRecipes()
 		{

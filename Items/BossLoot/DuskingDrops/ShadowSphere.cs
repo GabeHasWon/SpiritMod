@@ -46,7 +46,7 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 				if (p.active && p.type == Item.shoot && p.owner == player.whoAmI)
 					p.active = false;
 			}
-
+			player.UpdateMaxTurrets();
 			position = Main.MouseWorld;
 		}
 

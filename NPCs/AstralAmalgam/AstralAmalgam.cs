@@ -206,7 +206,7 @@ namespace SpiritMod.NPCs.AstralAmalgam
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GravityModulator>(), 400));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GravityModulator>(), 200));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ShieldCore>(), 50));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PopRocks>(), 16));
 			npcLoot.AddOneFromOptions(67, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());

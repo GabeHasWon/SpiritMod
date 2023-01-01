@@ -11,6 +11,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chitin Chestplate");
+			Tooltip.SetDefault("Increases movement speed by 5%");
 		}
 
 		public override void SetDefaults()
@@ -21,7 +22,11 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 			Item.rare = ItemRarityID.Blue;
 			Item.defense = 4;
 		}
-
+		public override void UpdateEquip(Player player)
+		{
+			player.moveSpeed *= 1.05f;
+			player.maxRunSpeed *= 1.05f;
+		}
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

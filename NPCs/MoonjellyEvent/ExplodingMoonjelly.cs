@@ -157,7 +157,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		{
 			npcLoot.AddCommon(ItemID.Gel, 1, 1, 3);
 			npcLoot.AddCommon<MoonJelly>(5);
-			npcLoot.AddCommon<NautilusClub>(25);
+			npcLoot.AddCommon<NautilusClub>(35);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
