@@ -99,7 +99,10 @@ namespace SpiritMod.NPCs.BlazingSkull
 					if (NPC.ai[3] == 0)
 					{
 						if (Main.netMode != NetmodeID.Server)
+						{
 							SpiritMod.primitives.CreateTrail(new PrimFireTrail(NPC, new Color(255, 170, 0), 26));
+							SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/skullscrem") with { PitchVariance = 0.2f }, NPC.Center);
+						}
 
 						NPC.ai[3] = 1;
 					}
@@ -111,9 +114,6 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 					if (NPC.ai[1] == 0)
 					{
-						if (Main.netMode != NetmodeID.Server)
-							SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/skullscrem") with { PitchVariance = 0.2f }, NPC.Center);
-
 						NPC.velocity = NPC.DirectionTo(targetpos) * 14;
 						NPC.ai[1]++;
 					}
@@ -125,7 +125,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 					if (NPC.Distance(targetpos) < 20)
 					{
 						SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
-						int damage = (Main.expertMode) ? NPC.damage / 4 : NPC.damage / 2;
+						int damage = Main.expertMode ? NPC.damage / 4 : NPC.damage / 2;
 
 						for (int i = 0; i < 6; i++)
 							Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center + Main.rand.NextVector2Square(-20, 20), Main.rand.NextVector2Circular(3, 3), 11);

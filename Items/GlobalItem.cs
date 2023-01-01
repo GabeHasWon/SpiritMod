@@ -18,7 +18,6 @@ using Terraria.ModLoader.IO;
 using System.Linq;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
-using SpiritMod.Tiles.Block;
 using SpiritMod.Tiles.Block.Ambient.WeatheredMoss;
 using SpiritMod.Tiles.Block.Ambient;
 

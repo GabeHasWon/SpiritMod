@@ -44,11 +44,17 @@ namespace SpiritMod.Tiles.Block
 
 		public override void RandomUpdate(int i, int j)
 		{
-			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(8))
+			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(4))
 			{
-				int type = Main.rand.NextBool(4) ? ModContent.TileType<SpiritTallgrass>() : ModContent.TileType<SpiritFoliage>();
-				PlaceObject(i, j - 1, type, true);
-				NetMessage.SendObjectPlacment(-1, i, j - 1, type, -1, 0, -1, -1);
+				int style = Main.rand.Next(16);
+				PlaceObject(i, j - 1, ModContent.TileType<SpiritFoliage>(), true, style);
+				NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<SpiritFoliage>(), style, 0, -1, -1);
+			}
+			else if (!(Framing.GetTileSafely(i, j - 2).HasTile && Framing.GetTileSafely(i, j - 1).HasTile) && Main.rand.NextBool(8))
+			{
+				int style = Main.rand.Next(10);
+				PlaceObject(i, j - 2, ModContent.TileType<SpiritTallgrass>(), true, style);
+				NetMessage.SendObjectPlacment(-1, i, j - 2, ModContent.TileType<SpiritTallgrass>(), style, 0, -1, -1);
 			}
 		}
 

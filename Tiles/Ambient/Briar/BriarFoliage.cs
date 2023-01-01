@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.Metadata;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Ambient.Briar
 {
@@ -15,10 +15,27 @@ namespace SpiritMod.Tiles.Ambient.Briar
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileCut[Type] = true;
-			Main.tileNoFail[Type] = true;
-			Main.tileMergeDirt[Type] = true;
+			Main.tileSolid[Type] = false;
+			Main.tileLighted[Type] = true;
 
-			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+			TileObjectData.newTile.LavaDeath = true;
+			TileObjectData.newTile.WaterDeath = false;
+			TileObjectData.newTile.CoordinatePadding = 2;
+			TileObjectData.newTile.CoordinateWidth = 16;
+			TileObjectData.newTile.CoordinateHeights = new int[] { 20 };
+			TileObjectData.newTile.DrawYOffset = -2;
+			TileObjectData.newTile.Style = 0;
+			TileObjectData.newTile.StyleHorizontal = true;
+			TileObjectData.newTile.UsesCustomCanPlace = true;
+
+			for (int i = 0; i < 7; i++)
+			{
+				TileObjectData.newSubTile.CopyFrom(TileObjectData.newTile);
+				TileObjectData.addSubTile(TileObjectData.newSubTile.Style);
+			}
+			TileObjectData.addTile(Type);
+
 			TileID.Sets.SwaysInWindBasic[Type] = true;
 
 			DustType = DustID.Plantera_Green;
@@ -27,15 +44,7 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			AddMapEntry(new Color(100, 150, 66));
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = 2;
-		}
-
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
-		}
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
 
 		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 		{
@@ -45,13 +54,13 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			}
 		}
 
-		public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
+		/*public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
 		{
 			Tile tileBelow = Framing.GetTileSafely(i, j + 1);
 			if (!tileBelow.HasTile || tileBelow.IsHalfBlock || tileBelow.TopSlope || tileBelow.TileType != ModContent.TileType<Block.BriarGrass>()) 
 				WorldGen.KillTile(i, j);
 			return true;
-		}
+		}*/
 
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
