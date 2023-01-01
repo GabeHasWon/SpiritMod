@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Sets.BriarDrops
 			Item.damage = 14;
 			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<VineChainProj>();
-			Item.shootSpeed = 18f;
+			Item.shootSpeed = 25f;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = false;
 			Item.DamageType = DamageClass.Melee;

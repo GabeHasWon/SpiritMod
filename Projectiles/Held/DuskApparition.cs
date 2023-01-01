@@ -24,7 +24,7 @@ namespace SpiritMod.Projectiles.Held
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.penetrate = 4;
-			Projectile.timeLeft = 600;
+			Projectile.timeLeft = 300;
 			Projectile.height = 50;
 			Projectile.width = 10;
 			AIType = ProjectileID.Bullet;
@@ -68,8 +68,7 @@ namespace SpiritMod.Projectiles.Held
 		}
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.NextBool(4))
-				target.AddBuff(BuffID.ShadowFlame, 220, false);
+				target.AddBuff(BuffID.ShadowFlame, 300, false);
 		}
 
 	}

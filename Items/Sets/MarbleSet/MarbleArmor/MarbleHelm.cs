@@ -30,8 +30,11 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 			player.setBonus = "Press 'Up' to grant 'Divine Winds', allowing for limited flight\n5 second cooldown";
 			player.GetSpiritPlayer().marbleSet = true;
 		}
-
-		public override void UpdateEquip(Player player) => player.maxRunSpeed += 0.1f;
+		public override void UpdateEquip(Player player)
+		{
+			player.accRunSpeed *= 1.1f;
+			player.moveSpeed *= 1.1f;
+		}
 		public override void ArmorSetShadows(Player player) => player.armorEffectDrawShadow = true;
 
 		public override void AddRecipes()

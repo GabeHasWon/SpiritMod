@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Accessory.Leather
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Coiled Cleats");
-			Tooltip.SetDefault("Increases movement speed and acceleration slightly\nIncreases movement speed and acceleration further when below half health");
+			Tooltip.SetDefault("Increases acceleration by 50%\nIncreases movement stats when below half health");
 		}
 		public override void SetDefaults()
 		{
@@ -26,12 +26,11 @@ namespace SpiritMod.Items.Accessory.Leather
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.moveSpeed += 0.09f;
-			player.runAcceleration += 0.045f;
+			player.runAcceleration *= 1.5f;
 			if (player.statLife <= player.statLifeMax2 / 2) {
-				player.moveSpeed += 0.9f;
-				player.accRunSpeed += 0.09f;
-				player.runAcceleration += 0.05f;
+				player.moveSpeed *= 1.15f;
+				player.accRunSpeed *= 1.15f;
+				player.runAcceleration *= 1.25f;
 				if (player.velocity.X != 0f) {
 					int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 0, DustID.Electric);
 					Main.dust[dust].velocity *= 0f;

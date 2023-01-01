@@ -15,7 +15,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		public override (int, int)[] QuestRewards => _rewards;
 		private readonly (int, int)[] _rewards = new[]
 		{
-			(ModContent.ItemType<Items.Sets.FloatingItems.SunkenTreasure>(), 1),
+			(ModContent.ItemType<Items.Weapon.Magic.LuminanceSeacone.LuminanceSeacone>(), 1),
 			(ItemID.JellyfishNecklace, 1),
 			(ItemID.SonarPotion, 3),
 			(ItemID.SilverCoin, 55)
@@ -34,7 +34,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 				.AddTask(new GiveNPCTask(NPCID.Angler, ModContent.ItemType<Items.Consumable.Fish.RawFish>(), 1, "This looks absolutely scrumptions! And they're all mine- oh, you're still here? Fine, I guess I'll thank you this once, but don't expect me to always be this nice!", "Return the raw fish to the Angler", true, true, ModContent.ItemType<Items.Consumable.Fish.CrystalFish>()));
 
 			TaskBuilder branch4 = new TaskBuilder();
-			branch4.AddTask(new TalkNPCTask(NPCID.Dryad, "That rotten, spoiled child! I have let him off the hook time and time again for fishing up rare creatures, but now he has gone too far. These species are meant to be admired, not gobbled up! Thank you for telling me about his nasty plan- your commitment to the natural world is admirable. Take this as thanks! Don't forget those Luminous Floaters, now!", "Or tell the Dryad about the Angler's plans", null, ItemID.PureWaterFountain))
+			branch4.AddTask(new TalkNPCTask(NPCID.Dryad, "That rotten, spoiled child! I have let him off the hook time and time again for fishing up rare creatures, but now he has gone too far. These species are meant to be admired, not gobbled up! Thank you for telling me about his nasty plan- your commitment to the natural world is admirable. Take this as thanks! Don't forget those Luminous Floaters, now!", "Or tell the Dryad about the Angler's plans", null, ModContent.ItemType<Items.Sets.FloatingItems.SunkenTreasure>()))
 				   .AddTask(new RetrievalTask(ModContent.ItemType<Items.Consumable.FloaterItem>(), 1, "Capture"))
 				   .AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Consumable.FloaterItem>(), 1, "These marvels of nature light up the ocean with their glow. I certainly would not want to see them perish by the hands of sea monsters and greedy fishermen. They will look beautiful in my arcane nature preserve. Thank you again.", "Bring the Luminous Floater back to the Dryad", true, true));
 

@@ -22,7 +22,7 @@ namespace SpiritMod.Projectiles
 			Projectile.aiStyle = -1;
 			Projectile.friendly = true;
 			Projectile.penetrate = -1;
-			Projectile.timeLeft = 220;
+			Projectile.timeLeft = 18000;
 		}
 
 		public override bool PreAI()

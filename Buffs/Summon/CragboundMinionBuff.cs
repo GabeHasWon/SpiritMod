@@ -26,7 +26,7 @@ namespace SpiritMod.Buffs.Summon
 				buffIndex--;
 			}
 			else {
-				player.buffTime[buffIndex] = 18000;
+				player.buffTime[buffIndex] = 36000;
 			}
 		}
 	}

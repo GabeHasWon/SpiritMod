@@ -25,7 +25,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.tileCollide = false;
 			Projectile.penetrate = -1;
 			Projectile.aiStyle = -1;
-			Projectile.timeLeft = 3600;
+			Projectile.timeLeft = Projectile.SentryLifeTime;
             Projectile.minionSlots = 1;
 			Projectile.sentry = true;
 		}
@@ -79,8 +79,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.NextBool(2))
-				target.AddBuff(BuffID.ShadowFlame, 180);
+				target.AddBuff(BuffID.ShadowFlame, 300);
 		}
 
 	}

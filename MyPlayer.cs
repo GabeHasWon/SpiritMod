@@ -797,7 +797,7 @@ namespace SpiritMod
 					if (Main.dust[num].position != Player.Center)
 						Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
 				}
-				marbleJump = 480;
+				marbleJump = 120;
 			}
 
 			if (marbleSet && (Player.sliding || Player.velocity.Y == 0f))

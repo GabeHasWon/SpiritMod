@@ -27,7 +27,7 @@ namespace SpiritMod.Projectiles.Held
 		{
 			timer--;
 
-			if (timer == 0 & Main.rand.NextBool(4)) {
+			if (timer == 0) {
 				SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
 				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<DuskApparition>(), Projectile.damage / 3 * 2, Projectile.knockBack, Projectile.owner, 0f, 0f);
 				timer = 20;
@@ -70,8 +70,7 @@ namespace SpiritMod.Projectiles.Held
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.NextBool(4))
-				target.AddBuff(BuffID.ShadowFlame, 220, false);
+				target.AddBuff(BuffID.ShadowFlame, 300, false);
 		}
 
 	}

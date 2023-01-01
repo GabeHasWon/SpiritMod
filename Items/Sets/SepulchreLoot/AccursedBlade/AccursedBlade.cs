@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             Item.useTime = 25;
             Item.useAnimation = 25;
             Item.value = Item.buyPrice(0, 1, 20, 0);
-            Item.damage = 18;
+            Item.damage = 19;
             Item.width = 30;
             Item.height = 30;
             Item.UseSound = SoundID.Item1;
@@ -64,7 +64,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		{
             if (player.altFunctionUse != 2 || player.GetModPlayer<AccursedBladePlayer>().charge == 0)
                 return false;
-            damage = 18 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 100);
+            damage = 19 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 100);
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetModPlayer<AccursedBladePlayer>().charge);
             player.GetModPlayer<AccursedBladePlayer>().charge = 0;
             SoundEngine.PlaySound(SoundID.NPCDeath52 with { Pitch = 1.2f }, player.position);

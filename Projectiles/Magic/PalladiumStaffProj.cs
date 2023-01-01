@@ -22,7 +22,8 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.penetrate = 10;
 			Projectile.hide = true;
 			Projectile.alpha = 255;
-			Projectile.timeLeft = 660;
+			Projectile.timeLeft = 18000;
+			Projectile.tileCollide = false;
 		}
 		bool hitGround = false;
 		int timer;

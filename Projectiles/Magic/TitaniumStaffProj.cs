@@ -27,7 +27,6 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.penetrate = 1;
-			Projectile.timeLeft = 180;
 			Projectile.height = 14;
 			Projectile.width = 26;
 			Projectile.tileCollide = false;

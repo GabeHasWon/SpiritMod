@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.SpearsMisc.DuskLance
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dusk Lance");
-			Tooltip.SetDefault("Occasionally shoots out an apparition that inflicts Shadowflame");
+			Tooltip.SetDefault("Shoots out an apparition that inflicts Shadowflame");
 		}
 		public override void SetDefaults()
 		{
@@ -25,11 +25,11 @@ namespace SpiritMod.Items.Sets.SpearsMisc.DuskLance
 			Item.DamageType = DamageClass.Melee;
 			Item.autoReuse = true;
 			Item.noMelee = true;
-			Item.useAnimation = 28;
-			Item.useTime = 28;
-			Item.shootSpeed = 5.5f;
+			Item.useAnimation = 20;
+			Item.useTime = 20;
+			Item.shootSpeed = 6f;
 			Item.knockBack = 6f;
-			Item.damage = 38;
+			Item.damage = 42;
 			Item.value = Item.sellPrice(0, 3, 60, 0);
 			Item.rare = ItemRarityID.LightRed;
 			Item.shoot = ModContent.ProjectileType<DuskLanceProj>();

@@ -16,8 +16,6 @@ namespace SpiritMod.Items.Weapon.Magic
 			Tooltip.SetDefault("Creates a singularity at the cursor position that shoots out multiple void stars\nVoid stars home in on enemies and may inflict Shadowflame");
 
 		}
-
-
 		public override void SetDefaults()
 		{
 			Item.damage = 55;

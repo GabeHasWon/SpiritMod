@@ -17,12 +17,12 @@ namespace SpiritMod.Projectiles.Summon
 		{
 			Projectile.width = 100;
 			Projectile.height = 86;
-			Projectile.timeLeft = 3000;
+			Projectile.timeLeft = Projectile.SentryLifeTime;
 			Projectile.friendly = false;
 			Projectile.hostile = false;
 			Projectile.penetrate = -1;
 			Projectile.ignoreWater = true;
-			Projectile.minion = true;
+			Projectile.sentry = true;
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
@@ -32,17 +32,6 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AI()
 		{
-			bool flag64 = Projectile.type == ModContent.ProjectileType<CragboundMinion>();
-			Player player = Main.player[Projectile.owner];
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			if (flag64) {
-				if (player.dead)
-					modPlayer.cragboundMinion = false;
-
-				if (modPlayer.cragboundMinion)
-					Projectile.timeLeft = 2;
-
-			}
 
 			Projectile.frameCounter++;
 			if (Projectile.frameCounter >= 8) {

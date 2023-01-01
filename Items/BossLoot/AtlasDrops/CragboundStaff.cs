@@ -31,21 +31,16 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 			Item.noMelee = true;
 			Item.shoot = ModContent.ProjectileType<CragboundMinion>();
 			Item.UseSound = SoundID.Item44;
+			Item.sentry = true; 
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			//remove any other owned SpiritBow projectiles, just like any other sentry minion
-			for (int i = 0; i < Main.projectile.Length; i++) {
-				Projectile p = Main.projectile[i];
-				if (p.active && p.type == Item.shoot && p.owner == player.whoAmI) {
-					p.active = false;
-				}
-			}
-			//projectile spawns at mouse cursor
-			Vector2 value18 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
-			position = value18;
-			return true;
+			player.FindSentryRestingSpot(type, out int worldX, out int worldY, out int pushYUp);
+			worldY -= 16;
+			Projectile.NewProjectile(source, worldX, worldY - pushYUp, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
+			player.UpdateMaxTurrets();
+			return false;
 		}
 	}
 }

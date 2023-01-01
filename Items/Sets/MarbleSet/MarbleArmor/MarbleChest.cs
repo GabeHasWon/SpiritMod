@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 {
-	[AutoloadEquip(EquipType.Body, EquipType.Legs)]
+	[AutoloadEquip(EquipType.Body)]
 	public class MarbleChest : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -28,7 +28,8 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.maxRunSpeed += 0.1f;
+			player.accRunSpeed *= 1.1f;
+			player.moveSpeed *= 1.1f; 
 			player.runAcceleration *= 2f;
 
 			if (player.velocity.X != 0f)

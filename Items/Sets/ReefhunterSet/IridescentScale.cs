@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Iridescent Shard");
+			DisplayName.SetDefault("Iridescent Scale");
 			Tooltip.SetDefault("'Glints beautifully under the water'");
 		}
 

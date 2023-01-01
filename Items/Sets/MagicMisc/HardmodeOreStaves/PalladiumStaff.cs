@@ -40,12 +40,14 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int i = 0; i < Main.projectile.Length; i++) {
+			for (int i = 0; i < Main.projectile.Length; i++) { //Framing.GetTileSafely(position.X / 16f, position.Y / 16f + i).active()
+
 				Projectile p = Main.projectile[i];
 				if (p.active && p.type == Item.shoot && p.owner == player.whoAmI) {
 					p.active = false;
 				}
 			}
+
 			Vector2 mouse = Main.MouseWorld;
 			Terraria.Projectile.NewProjectile(source, mouse.X, mouse.Y, 0f, 100f, type, damage, knockback, player.whoAmI);
 			return false;
