@@ -8,10 +8,7 @@ namespace SpiritMod.Projectiles.Bullet
 	class CoilBullet1 : ModProjectile
 	{
 		NPC[] hit = new NPC[8];
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Coiled Bullet");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Coiled Bullet");
 
 		public override void SetDefaults()
 		{
@@ -30,10 +27,10 @@ namespace SpiritMod.Projectiles.Bullet
 			set => Projectile.ai[0] = value;
 		}
 
-		private NPC Target {
+		/*private NPC Target {
 			get => Main.npc[(int)Projectile.ai[1]];
 			set { Projectile.ai[1] = value.whoAmI; }
-		}
+		}*/
 
 		private Vector2 Origin {
 			get => new Vector2(Projectile.localAI[0], Projectile.localAI[1]);

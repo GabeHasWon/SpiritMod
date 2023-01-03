@@ -7,12 +7,17 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.ApostleArmor
 	[AutoloadEquip(EquipType.Body)]
 	public class TalonGarb : ModItem
 	{
+		public override void Load()
+		{
+			if (Main.netMode == NetmodeID.Server)
+				return;
+			EquipLoader.AddEquipTexture(Mod, "SpiritMod/Items/BossLoot/AvianDrops/ApostleArmor/TalonGarb_Legs", EquipType.Legs, null, "TalonGarb_Legs");
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Apostle's Garb");
 			Tooltip.SetDefault("Increases magic and ranged damage by 7%\nIncreases movement speed by 10%");
-
-			//ArmorIDs.Body.Sets.HidesArms[Item.bodySlot] = false;
 		}
 
 		public override void SetDefaults()
@@ -27,7 +32,6 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.ApostleArmor
 		public override void SetMatch(bool male, ref int equipSlot, ref bool robes)
 		{
 			robes = true;
-			// The equipSlot is added in ExampleMod.cs --> Load hook
 			equipSlot = EquipLoader.GetEquipSlot(Mod, "TalonGarb_Legs", EquipType.Legs);
 		}
 

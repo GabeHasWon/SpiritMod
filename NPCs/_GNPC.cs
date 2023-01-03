@@ -725,16 +725,22 @@ namespace SpiritMod.NPCs
 				maxSpawns = (int)(maxSpawns * 1.1f);
 			}
 
+			if (player.GetSpiritPlayer().ZoneAsteroid)
+			{
+				spawnRate = (int)(spawnRate * .4f);
+				maxSpawns = (int)(maxSpawns * 1.1f);
+			}
+
 			if (MyWorld.BlueMoon && surface)
 			{
-				maxSpawns = (int)(maxSpawns * 1.1f);
 				spawnRate = (int)(spawnRate * 0.4f);
+				maxSpawns = (int)(maxSpawns * 1.1f);
 			}
 
 			if (MyWorld.jellySky && (player.ZoneOverworldHeight || player.ZoneSkyHeight))
 			{
-				maxSpawns = (int)(maxSpawns * 1.18f);
 				spawnRate = 2;
+				maxSpawns = (int)(maxSpawns * 1.18f);
 			}
 
 			if (player.GetSpiritPlayer().oliveBranchBuff)
@@ -773,7 +779,7 @@ namespace SpiritMod.NPCs
 				if (!spawnInfo.PlayerSafe)
 				{
 					pool.Clear();
-					pool.Add(ModContent.NPCType<Shockhopper.DeepspaceHopper>(), .35f);
+					pool.Add(ModContent.NPCType<Shockhopper.DeepspaceHopper>(), 0.30f);
 					pool.Add(ModContent.NPCType<AstralAmalgam.AstralAmalgam>(), 0.16f);
 
 					if (NPC.downedBoss2)

@@ -14,7 +14,6 @@ using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Snaptrapper
 {
-    [AutoloadBossHead]
     public class Snaptrapper : ModNPC, IBCRegistrable
 	{
 		public override void SetStaticDefaults()

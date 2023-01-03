@@ -5,14 +5,16 @@ using Terraria.ModLoader;
 namespace SpiritMod.Items.Armor.SilkArmor
 {
 	[AutoloadEquip(EquipType.Body)]
-	public class SilkRobe : ModItem
+	public class SilkTop : ModItem
 	{
-		public override void SetStaticDefaults()
+		public override void Load()
 		{
-			DisplayName.SetDefault("Manasilk Robe");
-
-			ArmorIDs.Body.Sets.NeedsToDrawArm[Item.bodySlot] = true;
+			if (Main.netMode == NetmodeID.Server)
+				return;
+			EquipLoader.AddEquipTexture(Mod, "SpiritMod/Items/Armor/SilkArmor/SilkTopFemale_Body", EquipType.Body, null, "AltTop");
 		}
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Desert Top");
 
 		public override void SetDefaults()
 		{

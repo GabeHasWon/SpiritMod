@@ -419,6 +419,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
+			//Infernon himself doesn't drop Expert+ loot, but we need these in order to populate the bestiary
 			npcLoot.AddMasterModeRelicAndPet<InfernonRelicItem, InfernonPetItem>();
 			npcLoot.AddBossBag<InfernonBag>();
 
