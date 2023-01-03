@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.BossLoot.InfernonDrops;
+using SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet;
+using SpiritMod.Items.Placeable.Relics;
 using SpiritMod.Projectiles.Hostile;
 using System;
 using Terraria;
@@ -167,7 +169,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 				timer = 0;
 			}
-			else if (Main.rand.Next(90) == 1 && NPC.life <= (NPC.lifeMax / 3))
+			else if (Main.rand.NextBool(90) && NPC.life <= (NPC.lifeMax / 3))
 			{
 				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y + 500, 0f, 0f, ModContent.ProjectileType<Fireball>(), damage, 1, Main.myPlayer, 0, 0);
 				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + 500, NPC.Center.Y, 0f, 0f, ModContent.ProjectileType<Fireball>(), damage, 1, Main.myPlayer, 0, 0);
@@ -213,6 +215,10 @@ namespace SpiritMod.NPCs.Boss.Infernon
 		}
 
 		public override void BossLoot(ref string name, ref int potionType) => potionType = ItemID.GreaterHealingPotion;
-		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddBossBag<InfernonBag>();
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.AddMasterModeRelicAndPet<InfernonRelicItem, InfernonPetItem>();
+			npcLoot.AddBossBag<InfernonBag>();
+		}
 	}
 }

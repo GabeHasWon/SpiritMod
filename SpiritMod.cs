@@ -546,7 +546,6 @@ namespace SpiritMod
 			if (Main.netMode != NetmodeID.Server)
 			{
 				TrailManager = new TrailManager(this);
-				EquipLoader.AddEquipTexture(this, "SpiritMod/Items/BossLoot/AvianDrops/ApostleArmor/TalonGarb_Legs", EquipType.Legs, null, "TalonGarb_Legs");
 				EmptyTexture = ModContent.Request<Texture2D>("SpiritMod/Empty", AssetRequestMode.ImmediateLoad).Value; 
 				auroraEffect = ModContent.Request<Effect>("SpiritMod/Effects/aurora", AssetRequestMode.ImmediateLoad).Value;
 

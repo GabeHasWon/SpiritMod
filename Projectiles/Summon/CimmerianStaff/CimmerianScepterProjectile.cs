@@ -50,7 +50,7 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 			Player player = Main.player[Projectile.owner];
 
 			if (Projectile.damage == 0) //This shouldn't happen
-				Projectile.damage = (int)Main.player[Projectile.owner].GetDamage(Projectile.DamageType).ApplyTo(22);
+				Projectile.damage = (int)player.GetDamage(Projectile.DamageType).ApplyTo(22);
 
 			if (player.HasAccessory<CimmerianScepter>())
 				Projectile.timeLeft = 2;

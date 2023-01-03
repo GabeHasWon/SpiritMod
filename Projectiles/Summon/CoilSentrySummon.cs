@@ -11,30 +11,41 @@ namespace SpiritMod.Projectiles.Summon
 {
 	public class CoilSentrySummon : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Electric Turret");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Turret");
 
 		public override void SetDefaults()
 		{
 			Projectile.width = 32;
 			Projectile.height = 28;
-			Projectile.timeLeft = Projectile.SentryLifeTime;
 			Projectile.friendly = true;
-			Projectile.hostile = false;
 			Projectile.penetrate = -1;
+			Projectile.aiStyle = -1;
 			Projectile.sentry = true;
+			Projectile.timeLeft = Projectile.SentryLifeTime;
 			Projectile.ignoreWater = true;
-			Projectile.damage = 19;
+			Projectile.tileCollide = true;
 		}
-		float alphaCounter = 0;
+
+		private float alphaCounter;
+
 		public override bool OnTileCollide(Vector2 oldVelocity) => false;
+
 		public override void PostDraw(Color lightColor)
 		{
 			float sineAdd = (float)Math.Sin(alphaCounter) + 3;
-			Main.spriteBatch.Draw(Terraria.GameContent.TextureAssets.Extra[49].Value, (Projectile.Center - Main.screenPosition) - new Vector2(-2, 8), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + 1), SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Terraria.GameContent.TextureAssets.Extra[49].Value, Projectile.Center - Main.screenPosition - new Vector2(-2, 8), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + 1), SpriteEffects.None, 0f);
 		}
+
+		public override bool PreAI()
+		{
+			Player player = Main.player[Projectile.owner];
+
+			if (Projectile.damage == 0) //This shouldn't happen
+				Projectile.damage = (int)player.GetDamage(Projectile.DamageType).ApplyTo(19);
+
+			return true;
+		}
+
 		public override void AI()
 		{
 			alphaCounter += 0.04f;
@@ -72,14 +83,14 @@ namespace SpiritMod.Projectiles.Summon
 				Vector2 ShootArea = new Vector2(Projectile.Center.X, Projectile.Center.Y - 13);
 				Vector2 direction = Vector2.Normalize(target.Center - ShootArea) * shootVelocity;
 				if(Main.netMode != NetmodeID.MultiplayerClient) {
-					int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y - 13, direction.X, direction.Y, ModContent.ProjectileType<CoilBullet1>(), Projectile.damage, 0, Main.myPlayer);
+					int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y - 13, direction.X, direction.Y, ModContent.ProjectileType<CoilBullet1>(), Projectile.damage, 1, Main.myPlayer);
 					Main.projectile[proj2].DamageType = DamageClass.Summon;
 				}
 				
-				SoundEngine.PlaySound(SoundID.Item12, Projectile.Center);  //make bow shooty sound
+				SoundEngine.PlaySound(SoundID.Item12, Projectile.Center);
 			}
 			Vector2 globePos = new Vector2(Projectile.Center.X + 2, Projectile.position.Y + 6);
-			if (Main.rand.Next(11) == 1) {
+			if (Main.rand.NextBool(11)) {
 				Vector2 vector2 = Vector2.UnitY.RotatedByRandom(6.28318548202515) * new Vector2(8f, 8f) * Projectile.scale * 1.45f / 2f;
 				int index = Dust.NewDust(globePos + vector2, 0, 0, DustID.Electric, 0.0f, 0.0f, 0, new Color(), .8f);
 				Main.dust[index].position = globePos + vector2;
@@ -87,21 +98,14 @@ namespace SpiritMod.Projectiles.Summon
 				Main.dust[index].noGravity = true;
 				Main.dust[index].noLight = true;
 			}
-			//old dust effect incase you don't like this
-			/*for (int i = 0; i < 2; i++)
-            {
-                Vector2 vector2 = Vector2.UnitY.RotatedByRandom(6.28318548202515) * new Vector2((float)projectile.height, (float)projectile.height) * projectile.scale * 1.45f / 2f;
-                int index = Dust.NewDust(projectile.Center + vector2, 0, 0, 226, 0.0f, 0.0f, 0, new Color(), .8f);
-                Main.dust[index].position = projectile.Center + vector2;
-                Main.dust[index].velocity = Vector2.Zero;
-                Main.dust[index].noGravity = true;
-            }*/
 		}
+
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
 		{
 			fallThrough = false;
 			return true;
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);

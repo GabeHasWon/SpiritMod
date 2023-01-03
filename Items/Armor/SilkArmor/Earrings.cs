@@ -4,10 +4,14 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Armor.SilkArmor
 {
-	[AutoloadEquip(EquipType.Head)]
-	public class SilkHood : ModItem
+	[AutoloadEquip(EquipType.Head, EquipType.Front)]
+	public class Earrings : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Manasilk Hood");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Earrings");
+			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
+		}
 
 		public override void SetDefaults()
 		{
