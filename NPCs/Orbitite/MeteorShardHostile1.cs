@@ -91,6 +91,7 @@ namespace SpiritMod.NPCs.Orbitite
 				SoundEngine.PlaySound(SoundID.Item89, Projectile.Center);
 			}
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
