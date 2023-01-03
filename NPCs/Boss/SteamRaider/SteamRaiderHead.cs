@@ -753,15 +753,12 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		{
 			if (NPC.life <= 1200)
 			{
-				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height / Main.npcFrameCount[NPC.type]) * 0.5f);
-				{
-					float sineAdd = (float)Math.Sin(alphaCounter * 2) + 3;
-					Main.spriteBatch.Draw(TextureAssets.Extra[49].Value, (NPC.Center - screenPos), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + .65f), SpriteEffects.None, 0f);
-				}
+				float sineAdd = (float)Math.Sin(alphaCounter * 2) + 3;
+				Main.spriteBatch.Draw(TextureAssets.Extra[49].Value, (NPC.Center - screenPos), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + .65f), SpriteEffects.None, 0f);
 			}
+
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
 
@@ -771,13 +768,12 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			if (NPC.life < NPC.lifeMax * .2f)
 				damage = (int)(damage * 0.8f);
 		}
+
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			if (Charge)
 			{
-				Color color1 = Lighting.GetColor((int)((double)NPC.position.X + (double)NPC.width * 0.5) / 16, (int)(((double)NPC.position.Y + (double)NPC.height * 0.5) / 16.0));
 				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);
-				int r1 = (int)color1.R;
 				drawOrigin.Y += 30f;
 				drawOrigin.Y += 8f;
 				--drawOrigin.X;
