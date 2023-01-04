@@ -18,7 +18,6 @@ using SpiritMod.Items.BossLoot.OccultistDrops.OccultistPet;
 
 namespace SpiritMod.NPCs.Boss.Occultist
 {
-	[AutoloadBossHead]
 	public partial class OccultistBoss : SpiritNPC, IBCRegistrable
 	{
 		public override void SetStaticDefaults()

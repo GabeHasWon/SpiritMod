@@ -484,12 +484,12 @@ namespace SpiritMod.NPCs.Hydra
 				Vector2 scale = new Vector2(1, yScale); // Stretch/Squash chain segment
 				Color chainLightColor = Lighting.GetColor((int)position.X / 16, (int)position.Y / 16); //Lighting of the position of the chain segment
 				Vector2 origin = new Vector2(neckTex.Width / 2, neckTex.Height); //Draw from center bottom of texture
-				spriteBatch.Draw(neckTex, position - screenPos, null, chainLightColor, rotation, origin, scale, NPC.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
+				spriteBatch.Draw(neckTex, position - screenPos, null, NPC.GetNPCColorTintedByBuffs(chainLightColor), rotation, origin, scale, NPC.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 			}
 
 			int frameHeight = headTex.Height / NumFrames();
 			Rectangle frame = new Rectangle(0, frameHeight * frameY, headTex.Width, frameHeight);
-			spriteBatch.Draw(headTex, NPC.Center - Main.screenPosition, frame, drawColor, drawRotation, new Vector2(headTex.Width, frameHeight) / 2, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+			spriteBatch.Draw(headTex, NPC.Center - Main.screenPosition, frame, NPC.GetNPCColorTintedByBuffs(drawColor), drawRotation, new Vector2(headTex.Width, frameHeight) / 2, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 			return false;
 		}
 
@@ -756,6 +756,7 @@ namespace SpiritMod.NPCs.Hydra
 				Dust.NewDustPerfect(Projectile.Center, ModContent.DustType<Dusts.AcidDust>(), Main.rand.NextVector2Circular(3, 3));
 		}
 	}
+
 	public class HydraVenomGlob : ModProjectile, ITrailProjectile
 	{
 		public override void SetStaticDefaults()

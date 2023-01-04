@@ -149,7 +149,7 @@ namespace SpiritMod.NPCs.Valkyrie
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.Size / 2f, NPC.scale, effects, 0);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.Size / 2f, NPC.scale, effects, 0);
 			if (trailing)
 			{
 				for (int k = 0; k < NPC.oldPos.Length; k++)
@@ -165,7 +165,8 @@ namespace SpiritMod.NPCs.Valkyrie
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos, NPC.frame, Color.White, NPC.rotation, NPC.Size / 2f, NPC.scale, effects, 0f);
+			var color = Main.LocalPlayer.detectCreature ? new Color(255, 50, 50) : Color.White;
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, color, NPC.rotation, NPC.Size / 2f, NPC.scale, effects, 0f);
 		}
 
 		public override void OnHitPlayer(Player target, int damage, bool crit)

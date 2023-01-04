@@ -26,7 +26,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
             NPC.height = 36;             
             NPC.damage = 35;
             NPC.defense = 8;
-            NPC.lifeMax = 1;
+            NPC.lifeMax = 2;
             NPC.knockBackResist = 0.0f;
             NPC.behindTiles = true;
             NPC.noTileCollide = true;
@@ -166,8 +166,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			var pos = NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(Lighting.GetColor(NPC.Center.ToTileCoordinates())), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
 

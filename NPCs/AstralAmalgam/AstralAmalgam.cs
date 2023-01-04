@@ -188,14 +188,11 @@ namespace SpiritMod.NPCs.AstralAmalgam
 				hasSpawnedBoys = true;
 			}
 		}
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			writer.Write(hasSpawnedBoys);
-		}
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			hasSpawnedBoys = reader.ReadBoolean();
-		}
+
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(hasSpawnedBoys);
+
+		public override void ReceiveExtraAI(BinaryReader reader) => hasSpawnedBoys = reader.ReadBoolean();
+
 		public override void FindFrame(int frameHeight)
 		{
 			NPC.frameCounter += 0.12f;

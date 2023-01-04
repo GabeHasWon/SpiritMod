@@ -118,7 +118,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		{
 			Color color9 = Lighting.GetColor((int)(NPC.position.X + NPC.width * 0.5) / 16, (int)((NPC.position.Y + NPC.height * 0.5) / 16.0));
 
-			float num355 = NPC.scale;
+			float scale = NPC.scale;
 			float num354 = 22f * NPC.scale;
 			float num353 = 18f * NPC.scale;
 			float num352 = 18;
@@ -126,12 +126,12 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 
 			if (num352 > num354)
 			{
-				num355 *= num354 / num352;
-				num351 *= num355;
+				scale *= num354 / num352;
+				num351 *= scale;
 			}
 
 			if (num351 > num353)
-				num355 *= num353 / num351;
+				scale *= num353 / num351;
 
 			float num348 = -1f;
 			float num347 = 1f;
@@ -142,23 +142,23 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			float num343 = 0.2f;
 			num343 -= 0.02f * (float)num346;
 
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_1").Value, new Vector2(NPC.Center.X - screenPos.X + num348, NPC.Center.Y - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_1_Glow").Value, new Vector2(NPC.Center.X - screenPos.X + num348, NPC.Center.Y - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_1").Value, new Vector2(NPC.Center.X - screenPos.X + num348, NPC.Center.Y - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_1_Glow").Value, new Vector2(NPC.Center.X - screenPos.X + num348, NPC.Center.Y - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
 
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_1").Value, new Vector2(NPC.Center.X + 5 - screenPos.X + num348, NPC.Center.Y + 7 - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_1_Glow").Value, new Vector2(NPC.Center.X + 5 - screenPos.X + num348, NPC.Center.Y + 7 - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_1").Value, new Vector2(NPC.Center.X + 5 - screenPos.X + num348, NPC.Center.Y + 7 - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_1_Glow").Value, new Vector2(NPC.Center.X + 5 - screenPos.X + num348, NPC.Center.Y + 7 - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
 
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_2").Value, new Vector2(NPC.Center.X + 4 - screenPos.X + num349, NPC.Center.Y - 14 - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_2_Glow").Value, new Vector2(NPC.Center.X + 4 - screenPos.X + num349, NPC.Center.Y - 14 - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_2").Value, new Vector2(NPC.Center.X + 4 - screenPos.X + num349, NPC.Center.Y - 14 - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_2_Glow").Value, new Vector2(NPC.Center.X + 4 - screenPos.X + num349, NPC.Center.Y - 14 - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
 
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_5").Value, new Vector2(NPC.Center.X - 8 - screenPos.X + num349, NPC.Center.Y + 4 - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_5_Glow").Value, new Vector2(NPC.Center.X - 8 - screenPos.X + num349, NPC.Center.Y + 4 - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_5").Value, new Vector2(NPC.Center.X - 8 - screenPos.X + num349, NPC.Center.Y + 4 - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_5_Glow").Value, new Vector2(NPC.Center.X - 8 - screenPos.X + num349, NPC.Center.Y + 4 - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
 
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_4").Value, new Vector2(NPC.Center.X - 6 - screenPos.X + num348, NPC.Center.Y - 9 - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_4_Glow").Value, new Vector2(NPC.Center.X - 6 - screenPos.X + num348, NPC.Center.Y - 9 - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), num355, SpriteEffects.None, 0f);
-			Main.spriteBatch.Draw(TextureAssets.Item[tremorItem].Value, new Vector2(NPC.Center.X - screenPos.X + num348, NPC.Center.Y - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(TextureAssets.Item[tremorItem].Value.Width / 2), (float)(TextureAssets.Item[tremorItem].Value.Height / 2)), num355 * 1.3f, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_4").Value, new Vector2(NPC.Center.X - 6 - screenPos.X + num348, NPC.Center.Y - 9 - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/Projectiles/Baby_Jellyfish_4_Glow").Value, new Vector2(NPC.Center.X - 6 - screenPos.X + num348, NPC.Center.Y - 9 - screenPos.Y + NPC.gfxOffY + num347), null, Color.White, num343, new Vector2((float)(18 / 2), (float)(34 / 2)), scale, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(TextureAssets.Item[tremorItem].Value, new Vector2(NPC.Center.X - screenPos.X + num348, NPC.Center.Y - screenPos.Y + NPC.gfxOffY + num347), null, color9, num343, new Vector2((float)(TextureAssets.Item[tremorItem].Value.Width / 2), (float)(TextureAssets.Item[tremorItem].Value.Height / 2)), scale * 1.3f, SpriteEffects.None, 0f);
 
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, SpriteEffects.None, 0);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, SpriteEffects.None, 0);
 			return false;
 		}
 

@@ -18,7 +18,6 @@ using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Mechromancer
 {
-	[AutoloadBossHead]
 	public class Mecromancer : ModNPC, IBCRegistrable
 	{
 		public override void SetStaticDefaults()

@@ -89,7 +89,7 @@ namespace SpiritMod.NPCs.Critters
 			Vector2 drawPos = NPC.Center - screenPos + drawOrigin + new Vector2(-14, -12);
 			Color color = !NPC.IsABestiaryIconDummy ? NPC.GetAlpha(drawColor) : Color.White;
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, NPC.GetNPCColorTintedByBuffs(color), NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
 			return false;
 		}
 

@@ -380,7 +380,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			DrawTex(spriteBatch, mask, glowColor * _pulseGlowmask, screenPos, 1.1f);
 
 			//normal drawing replacement
-			DrawTex(spriteBatch, TextureAssets.Npc[NPC.type].Value, drawColor, screenPos);
+			DrawTex(spriteBatch, TextureAssets.Npc[NPC.type].Value, NPC.GetNPCColorTintedByBuffs(drawColor), screenPos);
 			return false;
 		}
 

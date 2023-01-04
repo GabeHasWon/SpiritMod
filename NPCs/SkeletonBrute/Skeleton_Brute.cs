@@ -113,7 +113,7 @@ namespace SpiritMod.NPCs.SkeletonBrute
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			Vector2 drawPos = new Vector2(NPC.Center.X + 20 * NPC.spriteDirection, NPC.Center.Y - 22);
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 		}
 
 		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = NPC.Hitbox;

@@ -35,12 +35,12 @@ namespace SpiritMod.NPCs
 		public static void AddFood<T>(this NPCLoot loot, int chanceDenominator = 1, int minStack = 1, int maxStack = 1) where T : ModItem => loot.Add(ItemDropRule.Food(ModContent.ItemType<T>(), chanceDenominator, minStack, maxStack));
 		public static void AddBossBag<T>(this NPCLoot loot) where T : ModItem => loot.Add(ItemDropRule.BossBag(ModContent.ItemType<T>()));
 		public static void AddMasterModeCommonDrop<T>(this NPCLoot loot) where T : ModItem => loot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<T>()));
-		public static void AddMasterModeDropOnAllPlayers<T>(this NPCLoot loot) where T : ModItem => loot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<T>()));
+		public static void AddMasterModeDropOnAllPlayers<T>(this NPCLoot loot, int chanceDenominator = 1) where T : ModItem => loot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<T>(), chanceDenominator));
 
 		public static void AddMasterModeRelicAndPet<TRelic, TPet>(this NPCLoot loot) where TRelic : ModItem where TPet : ModItem
 		{
-			loot.AddMasterModeDropOnAllPlayers<TRelic>();
-			loot.AddBossBag<TPet>();
+			loot.AddMasterModeCommonDrop<TRelic>();
+			loot.AddMasterModeDropOnAllPlayers<TPet>(4);
 		}
 		
 		//LeadingConditionRule
@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs
 		public static void AddFood<T>(this LeadingConditionRule loot, int chanceDenominator = 1, int minStack = 1, int maxStack = 1) where T : ModItem => loot.OnSuccess(ItemDropRule.Food(ModContent.ItemType<T>(), chanceDenominator, minStack, maxStack));
 		public static void AddBossBag<T>(this LeadingConditionRule loot) where T : ModItem => loot.OnSuccess(ItemDropRule.BossBag(ModContent.ItemType<T>()));
 		public static void AddMasterModeCommonDrop<T>(this LeadingConditionRule loot) where T : ModItem => loot.OnSuccess(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<T>()));
-		public static void AddMasterModeDropOnAllPlayers<T>(this LeadingConditionRule loot) where T : ModItem => loot.OnSuccess(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<T>()));
+		public static void AddMasterModeDropOnAllPlayers<T>(this LeadingConditionRule loot, int chanceDenominator = 1) where T : ModItem => loot.OnSuccess(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<T>(), chanceDenominator));
 
 		//Shortcut for getting a leading condition rule
 		public static LeadingConditionRule NightCondition(this NPCLoot loot) => new LeadingConditionRule(new DropRuleConditions.NotDay());

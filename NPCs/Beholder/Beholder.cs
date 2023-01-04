@@ -19,7 +19,6 @@ using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Beholder
 {
-	[AutoloadBossHead]
 	public class Beholder : ModNPC, IBCRegistrable
 	{
 		public int dashTimer;

@@ -14,11 +14,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Buffs.DoT;
 using Terraria.GameContent.Bestiary;
-using SpiritMod.NPCs.Festerfly;
 
 namespace SpiritMod.NPCs.HauntedTome
 {
-	[AutoloadBossHead]
 	public class HauntedTome : ModNPC, IBCRegistrable
 	{
 		public override void SetStaticDefaults()

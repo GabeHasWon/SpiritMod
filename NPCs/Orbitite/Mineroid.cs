@@ -51,7 +51,7 @@ namespace SpiritMod.NPCs.Orbitite
 			});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneMeteor && spawnInfo.SpawnTileY < Main.rockLayer && NPC.downedBoss2 ? 0.15f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.GetSpiritPlayer().ZoneAsteroid && NPC.downedBoss2 ? 0.15f : 0f;
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
@@ -63,7 +63,8 @@ namespace SpiritMod.NPCs.Orbitite
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			Main.EntitySpriteDraw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
+			Main.EntitySpriteDraw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
 

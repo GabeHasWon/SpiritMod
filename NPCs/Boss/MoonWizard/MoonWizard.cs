@@ -131,7 +131,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			if (jellyRapidFire)
             {
                 Vector2 position1 = NPC.Bottom - screenPos;
-                Texture2D texture2D2 = TextureAssets.GlowMask[239].Value;
+                Texture2D glow = TextureAssets.GlowMask[239].Value;
                 float num11 = (float)((double)Main.GlobalTimeWrappedHourly % 1.0 / 1.0);
                 float num12 = num11;
                 if ((double)num12 > 0.5)
@@ -144,15 +144,15 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
                     num14 = 1f - num13;
                 if ((double)num14 < 0.0)
                     num14 = 0.0f;
-                Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
+                Rectangle r2 = glow.Frame(1, 1, 0, 0);
                 Vector2 drawOrigin = r2.Size() / 2f;
                 Vector2 position3 = position1 + new Vector2(0.0f, -46f);
                 Color color3 = new Color(87, 238, 255) * .8f;
-                Main.spriteBatch.Draw(texture2D2, position3, r2, color3, NPC.rotation, drawOrigin, NPC.scale * .6f, SpriteEffects.FlipHorizontally, 0.0f);
+                Main.spriteBatch.Draw(glow, position3, r2, color3, NPC.rotation, drawOrigin, NPC.scale * .6f, SpriteEffects.FlipHorizontally, 0.0f);
                 float num15 = 1f + num11 * 0.75f;
-                Main.spriteBatch.Draw(texture2D2, position3, r2, color3 * num12, NPC.rotation, drawOrigin, NPC.scale * .6f * num15, SpriteEffects.FlipHorizontally, 0.0f);
+                Main.spriteBatch.Draw(glow, position3, r2, color3 * num12, NPC.rotation, drawOrigin, NPC.scale * .6f * num15, SpriteEffects.FlipHorizontally, 0.0f);
                 float num16 = 1f + num13 * 0.75f;
-                Main.spriteBatch.Draw(texture2D2, position3, r2, color3 * num14, NPC.rotation, drawOrigin, NPC.scale * .6f * num16, SpriteEffects.FlipHorizontally, 0.0f);
+                Main.spriteBatch.Draw(glow, position3, r2, color3 * num14, NPC.rotation, drawOrigin, NPC.scale * .6f * num16, SpriteEffects.FlipHorizontally, 0.0f);
             }
 
             float num395 = Main.mouseTextColor / 200f - 0.35f;
@@ -167,7 +167,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, new Vector2(NPC.Center.X, NPC.Center.Y - 18) - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, new Vector2(NPC.Center.X, NPC.Center.Y - 18) - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			DrawSpecialGlow(screenPos);
 		}
 

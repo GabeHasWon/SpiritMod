@@ -223,7 +223,7 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 			SpriteEffects effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			Texture2D glow = Mod.Assets.Request<Texture2D>("NPCs/Sea_Mandrake/Sea_Mandrake_Glow").Value;
 
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 
 			Color col = new Color(r - NPC.alpha, g - NPC.alpha, b - NPC.alpha, byte.MaxValue - NPC.alpha);
 			if (NPC.IsABestiaryIconDummy)

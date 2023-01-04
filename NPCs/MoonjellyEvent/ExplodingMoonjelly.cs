@@ -163,21 +163,22 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+            spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
 			Main.spriteBatch.Draw(
-            Mod.Assets.Request<Texture2D>("NPCs/MoonjellyEvent/ExplodingMoonjelly_Glow").Value,
-            NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY),
-            NPC.frame,
-            Color.White,
-            NPC.rotation,
-            NPC.frame.Size() / 2,
-            NPC.scale,
-            SpriteEffects.None,
-            0
+				Mod.Assets.Request<Texture2D>("NPCs/MoonjellyEvent/ExplodingMoonjelly_Glow").Value,
+				NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY),
+				NPC.frame,
+				Color.White,
+				NPC.rotation,
+				NPC.frame.Size() / 2,
+				NPC.scale,
+				SpriteEffects.None,
+				0
 			);
         }
     }
