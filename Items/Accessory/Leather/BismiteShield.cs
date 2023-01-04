@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Accessory.Leather
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Noxious Targe");
-			Tooltip.SetDefault("Being struck by an enemy poisons them\nIncreases defense by 1 for every poisoned enemy near the player\nThis effect stacks up to five times");
+			Tooltip.SetDefault("Being struck by an enemy inflicts festering wounds\nIncreases defense by 1 for every afflicted enemy near the player\nThis effect stacks up to five times");
 		}
 
 		public override void SetDefaults()
@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Accessory.Leather
 			Item.width = 24;
 			Item.height = 28;
 			Item.rare = ItemRarityID.Green;
-			Item.defense = 2;
+			Item.defense = 1;
 			Item.DamageType = DamageClass.Melee;
             Item.value = Item.sellPrice(0, 0, 60, 0);
             Item.accessory = true;

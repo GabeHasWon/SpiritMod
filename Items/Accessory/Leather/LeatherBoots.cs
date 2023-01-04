@@ -26,7 +26,9 @@ namespace SpiritMod.Items.Accessory.Leather
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.runAcceleration *= 1.5f;
+			player.runAcceleration *= 1.25f;
+			player.maxRunSpeed += 0.05f;
+			player.accRunSpeed += 0.05f; 
 		}
 		public override void AddRecipes()
 		{

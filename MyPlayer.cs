@@ -2405,7 +2405,7 @@ namespace SpiritMod
 				bismiteShieldStacks = 0;
 				for (int i = 0; i < 200; i++)
 				{
-					if (Main.npc[i].active && !Main.npc[i].friendly && Main.npc[i].HasBuff(BuffID.Poisoned) && Main.npc[i].type != NPCID.TargetDummy)
+					if (Main.npc[i].active && !Main.npc[i].friendly && Main.npc[i].HasBuff(ModContent.BuffType<FesteringWounds>()) && Main.npc[i].type != NPCID.TargetDummy)
 					{
 						int distance = (int)Main.npc[i].Distance(Player.Center);
 						if (distance < 320)
@@ -2422,7 +2422,7 @@ namespace SpiritMod
 					}
 				}
 
-				Player.statDefense += Player.GetSpiritPlayer().bismiteShieldStacks;
+				Player.statDefense += (Player.GetSpiritPlayer().bismiteShieldStacks * 2);
 				if (bismiteShieldStacks >= 5)
 					bismiteShieldStacks = 5;
 			}
@@ -3454,7 +3454,7 @@ namespace SpiritMod
 		{
 			if (strikeshield)
 			{
-				npc.AddBuff(ModContent.BuffType<Buffs.SummonTag.SummonTag3>(), 240, true);
+				npc.AddBuff(ModContent.BuffType<Buffs.SummonTag.SummonTag3>(), 300, true);
 				int num = -1;
 				for (int i = 0; i < Main.maxNPCs; i++)
 				{
@@ -3463,16 +3463,15 @@ namespace SpiritMod
 				}
 
 				Player.MinionAttackTargetNPC = num;
-				if (Main.rand.NextBool(5))
-				{
-					for (int i = 0; i < 10; i++)
-						Dust.NewDust(npc.position, npc.width, npc.height, DustID.Dirt, 2.5f, -2.5f, 0, Color.Gray, 0.7f);
-					npc.StrikeNPCNoInteraction(7, 4f, 0, false, false, false);
-				}
+
+				for (int i = 0; i < 10; i++)
+					Dust.NewDust(npc.position, npc.width, npc.height, DustID.Dirt, 2.5f, -2.5f, 0, Color.Gray, 0.7f);
+				npc.StrikeNPCNoInteraction(30, 4f, 0, false, false, false);
+
 			}
 
 			if (bismiteShield)
-				npc.AddBuff(BuffID.Poisoned, 300);
+				npc.AddBuff(ModContent.BuffType<FesteringWounds>(), 300);
 
 			if (basiliskMount)
 			{

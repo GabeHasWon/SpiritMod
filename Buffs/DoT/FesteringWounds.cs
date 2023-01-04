@@ -9,7 +9,7 @@ namespace SpiritMod.Buffs.DoT
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Festering Wounds");
-			Description.SetDefault("Deals more damage if the player is under half health");
+			Description.SetDefault("Deals more damage if the victim is under half health");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
@@ -25,7 +25,7 @@ namespace SpiritMod.Buffs.DoT
 					npc.lifeRegen = 0;
 
 				if (npc.life <= npc.lifeMax / 2)
-					npc.lifeRegen -= 5;
+					npc.lifeRegen -= 7;
 				else
 					npc.lifeRegen -= 3;
 
@@ -46,7 +46,7 @@ namespace SpiritMod.Buffs.DoT
 			if (player.statLife <= player.statLife / 2)
 				player.lifeRegen -= 5;
 			else
-				player.lifeRegen -= 3;
+				player.lifeRegen -= 2;
 
 			if (Main.rand.NextBool(3))
 			{
