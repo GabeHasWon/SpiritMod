@@ -172,6 +172,7 @@ namespace SpiritMod.Items.Banners
 	public class DiseasedSlimeBanner : BaseBannerItem
 	{
 		protected override int Style => 28;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Noxious Slime Banner");
 	}
 
 	//public class DiseasedBatBanner : BaseBannerItem //Removed as the NPC no longer exists
@@ -293,7 +294,7 @@ namespace SpiritMod.Items.Banners
 		protected override int Style => 51;
 	}
 
-	//public class CaptiveMaskBanner : BaseBannerItem
+	//public class CaptiveMaskBanner : BaseBannerItem //Removed as the NPC doesn't exist
 	//{
 	//	protected override int Style => 52;
 	//}
