@@ -128,7 +128,7 @@ namespace SpiritMod.Utilities
 				BackgroundItemManager.Update();
 
 			SpiritMod.deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-			if(SpiritMod.Instance != null)
+			if (SpiritMod.Instance != null)
 				SpiritMod.Instance.CheckScreenSize();
 
 			orig(self, gameTime);
@@ -307,6 +307,7 @@ namespace SpiritMod.Utilities
 				SpiritMod.TrailManager.DrawTrails(Main.spriteBatch, TrailLayer.UnderProjectile);
 				SpiritMod.primitives.DrawTargetProj(Main.spriteBatch);
 			}
+
 			orig(self);
 
 			if (!Main.dedServ)
@@ -318,8 +319,8 @@ namespace SpiritMod.Utilities
 			if (!Main.dedServ)
 				SpiritMod.primitives.DrawTargetNPC(Main.spriteBatch);
 
-			//SpiritMod.Metaballs.DrawEnemyLayer(Main.spriteBatch);
-			//SpiritMod.Metaballs.DrawNebulaLayer(Main.spriteBatch);
+			SpiritMod.Metaballs.DrawEnemyLayer(Main.spriteBatch);
+			SpiritMod.Metaballs.DrawNebulaLayer(Main.spriteBatch);
 
 			PathfinderGNPC.DrawBuffedOutlines(Main.spriteBatch);
 			orig(self, behindTiles);
@@ -339,7 +340,8 @@ namespace SpiritMod.Utilities
 		{
 			SpiritMod spirit = ModContent.GetInstance<SpiritMod>();
 
-			if (spirit.BookUserInterface.CurrentState != null) {
+			if (spirit.BookUserInterface.CurrentState != null) 
+			{
 				spirit.BookUserInterface.SetState(null);
 				SoundEngine.PlaySound(SoundID.MenuClose);
 				return;
@@ -351,9 +353,7 @@ namespace SpiritMod.Utilities
         private static string LanguageManager_GetTextValue_string1(On.Terraria.Localization.LanguageManager.orig_GetTextValue_string orig, Terraria.Localization.LanguageManager self, string key)
         {
             if (key == "GameUI.LightRain" || key == "GameUI.Rain" || key == "GameUI.HeavyRain" || key == "GameUI.Clear" || key == "GameUI.PartlyCloudy" || key == "GameUI.MostlyCloudy" || key == "GameUI.Overcast"|| key == "GameUI.Cloudy")
-            {
                 return SpiritMod.GetWeatherRadioText(key);
-            }
             return orig(self, key);
         }
 

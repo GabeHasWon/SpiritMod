@@ -1,11 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -16,10 +10,13 @@ namespace SpiritMod.Effects.Stargoop
 		private readonly Color EnemyBorderColor = new Color(255, 171, 51);
 		private readonly Color FriendlyBorderColor = new Color(242, 240, 134);
 		private readonly Color NebulaBorderColor = new Color(255, 102, 200);
+
 		public StargoopLayer FriendlyLayer { get; set; }
 		public StargoopLayer EnemyLayer { get; set; }
 		public StargoopLayer NebulaLayer { get; set; }
+
 		public RenderTarget2D TmpTarget { get; protected set; }
+
 		public Texture2D Galaxy0 { get; set; }
 		public Texture2D Galaxy1 { get; set; }
 		public Texture2D Galaxy2 { get; set; }
@@ -32,10 +29,7 @@ namespace SpiritMod.Effects.Stargoop
 
 		private bool _loaded = false;
 
-		public void Initialize(GraphicsDevice graphicsDevice)
-		{
-			UpdateWindowSize(graphicsDevice, Main.screenWidth / 2, Main.screenHeight / 2);
-		}
+		public void Initialize(GraphicsDevice graphicsDevice) => UpdateWindowSize(graphicsDevice, Main.screenWidth / 2, Main.screenHeight / 2);
 
 		public void LoadContent()
 		{
@@ -61,7 +55,6 @@ namespace SpiritMod.Effects.Stargoop
 
 		public void UpdateWindowSize(GraphicsDevice graphicsDevice, int width, int height)
 		{
-			return;
 			if (!_loaded)
 				return;
 
@@ -73,7 +66,6 @@ namespace SpiritMod.Effects.Stargoop
 
 		public void DrawToTarget(SpriteBatch sB, GraphicsDevice graphicsDevice)
 		{
-			return;
 			var prevTarget = graphicsDevice.GetRenderTargets();
 			
 			if (FriendlyLayer.Metaballs.Count > 0 || FriendlyLayer.Sprites.Count > 0)
@@ -97,6 +89,7 @@ namespace SpiritMod.Effects.Stargoop
 				sB.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 			}
 		}
+
 		public void DrawFriendlyLayer(SpriteBatch sB)
 		{
 			if (FriendlyLayer.Metaballs.Count > 0 || FriendlyLayer.Sprites.Count > 0)

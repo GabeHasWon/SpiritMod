@@ -739,7 +739,6 @@ namespace SpiritMod
 				RhythmMinigame.LoadStatic();
 				GuitarMinigame.LoadStatic();
 			}
-			// LoadDetours();
 
 			// using a mildly specific name to avoid mod clashes
 			ChatManager.Register<UI.Chat.QuestTagHandler>(new string[] { "sq", "spiritQuest" });
@@ -751,12 +750,12 @@ namespace SpiritMod
 
 		public void CheckScreenSize()
 		{
-			if (!Main.dedServ && _finishedLoading)
+			if (!Main.dedServ)
 			{
 				if (_lastScreenSize != new Vector2(Main.screenWidth, Main.screenHeight) && primitives != null)
 					primitives.InitializeTargets(Main.graphics.GraphicsDevice);
 
-				if (_lastViewSize != Main.ViewSize && Metaballs != null)
+				if (_lastViewSize != Main.ViewSize && Metaballs is not null)
 					Metaballs.Initialize(Main.graphics.GraphicsDevice);
 
 				if ((_lastViewPort.Bounds != Main.graphics.GraphicsDevice.Viewport.Bounds || _lastScreenSize != new Vector2(Main.screenWidth, Main.screenHeight) || _lastViewSize != Main.ViewSize)
@@ -814,9 +813,9 @@ namespace SpiritMod
 
 		public static void InitStargoop()
 		{
-			//Metaballs = new StargoopManager();
-			//Metaballs.LoadContent();
-			//Metaballs.Initialize(Main.graphics.GraphicsDevice);
+			Metaballs = new StargoopManager();
+			Metaballs.LoadContent();
+			Metaballs.Initialize(Main.graphics.GraphicsDevice);
 
 			var friendlyDust = (FriendlyStargoopDust)ModContent.GetModDust(ModContent.DustType<FriendlyStargoopDust>());
 			var enemyDust = (EnemyStargoopDust)ModContent.GetModDust(ModContent.DustType<EnemyStargoopDust>());
