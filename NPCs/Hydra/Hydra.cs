@@ -7,7 +7,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using SpiritMod.Utilities;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.Items.Armor.Masks;
@@ -23,7 +22,7 @@ namespace SpiritMod.NPCs.Hydra
 
 		private bool initialized = false;
 
-		private readonly List<NPC> heads = new List<NPC>();
+		private readonly List<NPC> heads = new();
 
 		public int headsSpawned = 0;
 
@@ -33,10 +32,7 @@ namespace SpiritMod.NPCs.Hydra
 		private int attackIndex = 0;
 		private int attackCounter = 0;
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Lernean Hydra");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Lernean Hydra");
 
 		public override void SetDefaults()
 		{
@@ -88,9 +84,9 @@ namespace SpiritMod.NPCs.Hydra
 				return;
 			}
 
-			if (++attackCounter > 300 / heads.Count())
+			if (++attackCounter > 300 / heads.Count)
 			{
-				attackIndex %= heads.Count();
+				attackIndex %= heads.Count;
 				attackCounter = 0;
 				var modNPC = heads[attackIndex++].ModNPC as HydraHead;
 				modNPC.attacking = true;
