@@ -65,7 +65,7 @@ namespace SpiritMod.Projectiles
 				}
 			}
 
-			// Ace of Hearts
+			/* Ace of Hearts
 			if (modPlayer.AceOfHearts && target.life <= 0 && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
 			{
 				ItemUtils.NewItemWithSync(projectile.GetSource_OnHit(target), projectile.owner, (int)target.position.X, (int)target.position.Y, target.width, target.height, Main.halloween ? ItemID.CandyApple : ItemID.Heart);
@@ -80,6 +80,7 @@ namespace SpiritMod.Projectiles
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<DiamondDust>(), 0, -0.8f);
 			}
+			*/
 
 			// Geode Set
 			if (projectile.friendly && projectile.IsThrown() && Main.rand.NextBool(4) && modPlayer.geodeSet)

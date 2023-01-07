@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Accessory
 		{
 			Recipe recipe = CreateRecipe(1);
 			recipe.AddIngredient(ModContent.ItemType<GoldenApple>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<Leather.LeatherShield>(), 1);
+            recipe.AddIngredient(ItemID.CobaltShield, 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}
