@@ -41,6 +41,9 @@ namespace SpiritMod.NPCs.FleshHound
 			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
 			NPC.knockBackResist = .2f;
 			NPC.aiStyle = 3;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.FleshHoundBanner>();
 			AIType = NPCID.WalkingAntlion;
 		}
 

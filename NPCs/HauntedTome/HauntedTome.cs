@@ -46,6 +46,9 @@ namespace SpiritMod.NPCs.HauntedTome
 			NPC.knockBackResist = 1f;
 			NPC.HitSound = SoundID.NPCHit15 with { PitchVariance = 0.2f };
 			NPC.DeathSound = SoundID.NPCDeath6;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.HauntedTomeBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

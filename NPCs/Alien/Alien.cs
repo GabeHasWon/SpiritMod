@@ -28,6 +28,9 @@ namespace SpiritMod.NPCs.Alien
 			NPC.knockBackResist = .25f;
 			NPC.aiStyle = 26;
 			AIType = NPCID.Unicorn;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.AlienBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

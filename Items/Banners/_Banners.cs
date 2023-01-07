@@ -518,4 +518,34 @@ namespace SpiritMod.Items.Banners
 	{
 		protected override int Style => 95;
 	}
+
+	public class GranitecTurretBanner : BaseBannerItem
+	{
+		protected override int Style => 96;
+	}
+
+	public class HauntedTomeBanner : BaseBannerItem
+	{
+		protected override int Style => 97;
+	}
+
+	public class AlienBanner : BaseBannerItem
+	{
+		protected override int Style => 98;
+	}
+
+	public class SpiritTomeBanner : BaseBannerItem
+	{
+		protected override int Style => 99;
+	}
+
+	public class AncientSpectreBanner : BaseBannerItem
+	{
+		protected override int Style => 100;
+	}
+
+	public class BlizzardNimbusBanner : BaseBannerItem
+	{
+		protected override int Style => 101;
+	}
 }

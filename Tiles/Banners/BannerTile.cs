@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Banners;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -110,6 +111,12 @@ namespace SpiritMod.Tiles.Banners
 			("SkeletonBruteBanner", "Skeleton_Brute"),
 			("DraugrBanner", "Enchanted_Armor"),
 			("PirateLobberBanner", "PirateLobber"),
+			(nameof(GranitecTurretBanner), "GraniteSentry"),
+			(nameof(HauntedTomeBanner), "HauntedTome"),
+			(nameof(AlienBanner), "Alien"),
+			(nameof(SpiritTomeBanner), "HauntedBook"),
+			(nameof(AncientSpectreBanner), "AncientDemon"),
+			(nameof(BlizzardNimbusBanner), "BlizzardNimbus"),
 		};
 
 		public override void SetStaticDefaults()
