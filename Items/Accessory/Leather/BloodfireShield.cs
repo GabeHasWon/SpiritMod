@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Accessory.Leather
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sanguine Scutum");
-			Tooltip.SetDefault("Reduces life regen to 0\nReduces damage taken by 5% for every nearby enemy, up to 25%");
+			Tooltip.SetDefault("Reduces life regen to 0\nIncreases maximum HP by 40");
 		}
 
 		public override void SetDefaults()
@@ -27,7 +27,8 @@ namespace SpiritMod.Items.Accessory.Leather
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.GetSpiritPlayer().bloodfireShield = true;
-			player.endurance += .04f * player.GetSpiritPlayer().bloodfireShieldStacks;
+			player.statLifeMax2 += 40; 
+			//player.endurance += .04f * player.GetSpiritPlayer().bloodfireShieldStacks;
 		}
 
 		public override void AddRecipes()

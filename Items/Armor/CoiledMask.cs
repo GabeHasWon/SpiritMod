@@ -1,8 +1,8 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 
 namespace SpiritMod.Items.Armor
 {
@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Autonaut's Headgear");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Armor/CoiledMask_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -23,9 +23,9 @@ namespace SpiritMod.Items.Armor
 			Item.vanity = true;
 			Item.rare = ItemRarityID.Green;
 		}
-		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
-		{
-			glowMaskColor = Color.White;
-		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_ItemGlow").Value, rotation, scale);
+
+		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor) => glowMaskColor = Color.White;
 	}
 }

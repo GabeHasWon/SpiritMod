@@ -25,9 +25,9 @@ namespace SpiritMod.Buffs.DoT
 					npc.lifeRegen = 0;
 
 				if (npc.life <= npc.lifeMax / 2)
-					npc.lifeRegen -= 7;
+					npc.lifeRegen -= 8;
 				else
-					npc.lifeRegen -= 3;
+					npc.lifeRegen -= 4;
 
 				if (Main.rand.NextBool(3))
 				{
