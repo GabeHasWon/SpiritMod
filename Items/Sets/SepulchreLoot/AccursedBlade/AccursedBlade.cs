@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -35,20 +34,14 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             Item.shoot = ModContent.ProjectileType<AccursedBolt>();
             Item.shootSpeed = 9;
         }
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
-		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override bool AltFunctionUse(Player player) => true;
 		public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse == 2 && player.GetModPlayer<AccursedBladePlayer>().charge != 0)
             {
-                if(player.GetModPlayer<AccursedBladePlayer>().charge == 0)
-                    return false;
-
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.staff[Item.type] = true;
                 Item.noMelee = true;
@@ -73,8 +66,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
         {
-            if (target.life <= 0)
-               Item.NewItem(Item.GetSource_OnHit(target), (int)target.position.X, (int)target.position.Y - 20, target.width, target.height, Mod.Find<ModItem>("AccursedSoul").Type);
+			if (target.life <= 0)
+				Item.NewItem(Item.GetSource_OnHit(target), (int)target.position.X, (int)target.position.Y - 20, target.width, target.height, Mod.Find<ModItem>("AccursedSoul").Type);
         }
     }
     public class AccursedSoul: ModItem
@@ -133,6 +126,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 
 	public class AccursedBolt : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Accursed Bolt");
 		public override void SetDefaults()
 		{

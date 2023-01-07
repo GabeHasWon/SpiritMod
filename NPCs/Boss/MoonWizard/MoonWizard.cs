@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using SpiritMod.NPCs.Boss.MoonWizard.Projectiles;
-using SpiritMod.Projectiles.Hostile;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;

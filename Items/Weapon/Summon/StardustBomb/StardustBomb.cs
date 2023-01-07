@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using SpiritMod.Particles;
 using System;
 using Terraria.DataStructures;
+using System.Reflection;
 
 namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 {
@@ -55,6 +56,8 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			int npcindex = NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
 			NPC npc2 = Main.npc[npcindex];
 			npc2.velocity = velocity;
+			if (Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcindex);
 			return false;
 		}
 	}
@@ -179,7 +182,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 
 			Color bloomColor = Color.Cyan;
 			bloomColor.A = 0;
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value, (NPC.Center - Main.screenPosition) + new Vector2(0, NPC.gfxOffY), null, bloomColor, 0 - (NPC.rotation / 2), new Vector2(50, 50), 0.45f * scale * NPC.scale, SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), null, bloomColor, 0 - (NPC.rotation / 2), new Vector2(50, 50), 0.45f * scale * NPC.scale, SpriteEffects.None, 0f);
 
 			Main.spriteBatch.Draw(
                 Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/StardustBomb/StardustBombNPC_Star").Value,

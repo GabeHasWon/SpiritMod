@@ -115,7 +115,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.RadiantCane
 					Main.dust[dust].velocity = vector2_1;
 					vector2_1.Normalize();
 					Vector2 vector2_3 = vector2_1 * 34f;
-					Main.dust[dust].position = (owner.MountedCenter + offset) - vector2_3;
+					Main.dust[dust].position = owner.MountedCenter + offset - vector2_3;
 				}
 			}
 			else if (Projectile.localAI[0] % 50 == 0)
@@ -127,7 +127,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.RadiantCane
 				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Vector2.Zero, 0.1f);
 			}
 
-			int sign = Math.Sign(owner.Center.X - Projectile.Center.X);
+			int sign = Math.Sign(Projectile.Center.X - owner.Center.X);
 			owner.ChangeDir(sign);
 			owner.itemRotation = MathHelper.WrapAngle(owner.AngleTo(Projectile.Center) - owner.fullRotation - ((owner.direction < 0) ? MathHelper.Pi : 0));
 

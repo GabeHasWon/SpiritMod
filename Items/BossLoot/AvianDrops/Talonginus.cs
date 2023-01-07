@@ -3,7 +3,6 @@ using SpiritMod.Projectiles.Held;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 
 namespace SpiritMod.Items.BossLoot.AvianDrops
 {
@@ -15,8 +14,6 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Tooltip.SetDefault("Extremely quick, but innacurate");
 		}
 
-
-		int currentHit;
 		public override void SetDefaults()
 		{
 			Item.width = 24;
@@ -36,26 +33,21 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.shoot = ModContent.ProjectileType<TalonginusProj>();
 			Item.shootSpeed = 15f;
 			Item.UseSound = SoundID.Item1;
-			this.currentHit = 0;
 		}
-		public override bool CanUseItem(Player player)
-		{
-			if (player.ownedProjectileCounts[Item.shoot] > 0)
-				return false;
-			return true;
-		}
+
+		public override bool CanUseItem(Player player) => !(player.ownedProjectileCounts[Item.shoot] > 0);
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
 			Vector2 origVect = velocity;
-			Vector2 newVect = Vector2.Zero;
+			Vector2 newVect;
 			if (Main.rand.NextBool(2))
 				newVect = origVect.RotatedBy(System.Math.PI / (Main.rand.Next(82, 1800) / 10));
 			else
 				newVect = origVect.RotatedBy(-System.Math.PI / (Main.rand.Next(82, 1800) / 10));
+
 			velocity.X = newVect.X;
 			velocity.Y = newVect.Y;
-			this.currentHit++;
 		}
 	}
 }

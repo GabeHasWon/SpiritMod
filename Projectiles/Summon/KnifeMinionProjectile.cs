@@ -6,7 +6,6 @@ using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon
 {
@@ -37,8 +36,7 @@ namespace SpiritMod.Projectiles.Summon
 			Projectile.netImportant = true;
 
 			Projectile.usesLocalNPCImmunity = true;
-			//5a: projectile.localNPCHitCooldown = -1; // 1 hit per npc max
-			Projectile.localNPCHitCooldown = 20; // o
+			Projectile.localNPCHitCooldown = 20;
 		}
 
 		public override void CheckActive()
@@ -46,7 +44,7 @@ namespace SpiritMod.Projectiles.Summon
 			Player mp = Main.player[Projectile.owner];
 
 			if (Projectile.damage == 0) //This shouldn't happen
-				Projectile.damage = (int)Main.player[Projectile.owner].GetDamage(Projectile.DamageType).ApplyTo(5);
+				Projectile.damage = (int)mp.GetDamage(Projectile.DamageType).ApplyTo(5);
 
 			if (mp.HasAccessory<RogueCrest>())
 				Projectile.timeLeft = 2;
@@ -55,7 +53,6 @@ namespace SpiritMod.Projectiles.Summon
 		bool trailing = false;
 		public override void Behavior()
 		{
-			Projectile.minionSlots = 0f;
 			Projectile.rotation = Projectile.velocity.X * 0.25f;
 			trailing = false;
 			Projectile.tileCollide = false;

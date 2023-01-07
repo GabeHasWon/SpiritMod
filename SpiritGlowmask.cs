@@ -23,7 +23,7 @@ namespace SpiritMod
 		{
 			Item item = drawInfo.drawPlayer.HeldItem;
 
-			if (item.type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(item.type, out Texture2D textureItem) && drawInfo.drawPlayer.itemTime > 0)//Held ItemType
+			if (item.type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(item.type, out Texture2D textureItem) && (drawInfo.drawPlayer.itemTime > 0 || item.useStyle != ItemUseStyleID.None)) //Held ItemType
 				GlowmaskUtils.DrawItemGlowMask(textureItem, drawInfo);
 		}
 	}

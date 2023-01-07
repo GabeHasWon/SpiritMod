@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.ZombieVariants
 {
@@ -12,6 +11,12 @@ namespace SpiritMod.NPCs.ZombieVariants
 		{
 			DisplayName.SetDefault("Zombie");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.ArmedZombie];
+
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Hide = true
+			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 
 		public override void SetDefaults()
