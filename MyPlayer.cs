@@ -2457,24 +2457,24 @@ namespace SpiritMod
 				if (Player.lifeRegen >= 0)
 					Player.lifeRegen = 0;
 
-				bloodfireShieldStacks = 0;
+				//bloodfireShieldStacks = 0;
 
-				if (bloodfireShieldStacks >= 5)
-					bloodfireShieldStacks = 5;
+				//if (bloodfireShieldStacks >= 5)
+				//	bloodfireShieldStacks = 5;
 
 				for (int i = 0; i < 200; i++)
 				{
 					if (Main.npc[i].active && !Main.npc[i].friendly && Main.npc[i].type != NPCID.TargetDummy)
 					{
 						int distance = (int)Main.npc[i].Distance(Player.Center);
-						if (distance < 320)
-							bloodfireShieldStacks++;
-						if (bloodfireShieldStacks >= 5)
-							bloodfireShieldStacks = 5;
+						//if (distance < 320)
+						//	bloodfireShieldStacks++;
+						//if (bloodfireShieldStacks >= 5)
+						//	bloodfireShieldStacks = 5;
 
-						for (int k = 0; k < bloodfireShieldStacks; k++)
-							if (Main.rand.NextBool(6))
-								Dust.NewDust(Player.position, Player.width, Player.height, DustID.Blood, 0f, 0f, 0, default, .14f * bloodfireShieldStacks);
+						//for (int k = 0; k < bloodfireShieldStacks; k++)
+						//	if (Main.rand.NextBool(6))
+						//		Dust.NewDust(Player.position, Player.width, Player.height, DustID.Blood, 0f, 0f, 0, default, .14f * bloodfireShieldStacks);
 					}
 				}
 			}
