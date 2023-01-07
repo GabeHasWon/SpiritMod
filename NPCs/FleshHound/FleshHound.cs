@@ -8,6 +8,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using System;
 
 namespace SpiritMod.NPCs.FleshHound
 {
@@ -22,7 +23,8 @@ namespace SpiritMod.NPCs.FleshHound
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
-				Position = new Vector2(20f, 0f)
+				Position = new Vector2(18f, 0f),
+				PortraitPositionXOverride = 8f
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
@@ -83,7 +85,7 @@ namespace SpiritMod.NPCs.FleshHound
 				for (int k = 0; k < NPC.oldPos.Length; k++)
 				{
 					Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, NPC.gfxOffY);
-					Color color = NPC.GetAlpha(drawColor) * (float)(((NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
+					Color color = NPC.GetAlpha(drawColor) * (float)((NPC.oldPos.Length - k) / (float)NPC.oldPos.Length / 2);
 					spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
 				}
 			}
@@ -107,7 +109,24 @@ namespace SpiritMod.NPCs.FleshHound
 		public override void AI()
 		{
 			NPC.spriteDirection = NPC.direction;
+			num34616 = .25f;
 			timer++;
+
+			//Run away from the player target during the day
+			if (Main.dayTime && Main.netMode != NetmodeID.MultiplayerClient)
+			{
+				Vector2 direction = Vector2.Normalize(NPC.Center - Main.player[NPC.target].Center) * new Vector2(Main.rand.Next(4, 5), 0.1f);
+				NPC.velocity.X = direction.X;
+				float stepSpeed = 6f;
+				Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref stepSpeed, ref NPC.gfxOffY);
+				NPC.spriteDirection = NPC.direction = Math.Sign(NPC.velocity.X);
+
+				timer = 0;
+				trailbehind = false;
+				NPC.netUpdate = true;
+
+				return;
+			}
 
 			if (timer == 400 && Main.netMode != NetmodeID.MultiplayerClient)
 			{
@@ -126,8 +145,6 @@ namespace SpiritMod.NPCs.FleshHound
 				trailbehind = true;
 				NPC.knockBackResist = 0f;
 			}
-			else
-				num34616 = .25f;
 
 			if (timer >= 551)
 			{
@@ -135,16 +152,6 @@ namespace SpiritMod.NPCs.FleshHound
 				NPC.netUpdate = true;
 				trailbehind = false;
 				NPC.knockBackResist = .2f;
-			}
-
-			//Run away from the player target during the day
-			if (Main.dayTime && Main.netMode != NetmodeID.MultiplayerClient)
-			{
-				Vector2 direction = Vector2.Normalize(NPC.Center - Main.player[NPC.target].Center) * new Vector2(Main.rand.Next(7, 9), Main.rand.Next(2, 4));
-				NPC.velocity = direction;
-				NPC.velocity.Y *= 0.98f;
-				NPC.velocity.X *= 0.995f;
-				NPC.netUpdate = true;
 			}
 		}
 

@@ -49,6 +49,10 @@ namespace SpiritMod.Items.Sets.SpiritSet
 			if (type == ProjectileID.Bullet)
 				type = ModContent.ProjectileType<SpiritBullet>();
 
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 45f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+				position += muzzleOffset;
+
 			float spread = 15 * 0.0174f;//45 degrees converted to radians
 			float baseSpeed = velocity.Length();
 			double baseAngle = Math.Atan2(velocity.X, velocity.Y);

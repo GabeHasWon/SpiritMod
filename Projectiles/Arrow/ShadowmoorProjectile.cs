@@ -48,7 +48,6 @@ namespace SpiritMod.Projectiles.Arrow
 			tManager.CreateTrail(Projectile, new StandardColorTrail(Color.White * 0.3f), new RoundCap(), new SleepingStarTrailPosition(), 12f, 80f, new DefaultShader());
 		}
 
-		float num;
         bool escaped = false;
         Color colorField;
         bool checkColor = false;
@@ -70,24 +69,23 @@ namespace SpiritMod.Projectiles.Arrow
                 }
                 checkColor = true;
             }
-			if (Projectile.timeLeft >= 290) {
+			if (Projectile.timeLeft >= 290)
 				Projectile.tileCollide = false;
-			}
-			else {
+			else
 				Projectile.tileCollide = true;
-			}
-            Lighting.AddLight(Projectile.position, 0.205f*1.85f, 0.135f*1.85f, 0.255f*1.85f);
-            num += .4f;
+
+			Lighting.AddLight(Projectile.position, 0.205f * 1.85f, 0.135f * 1.85f, 0.255f * 1.85f);
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
             float distance = Vector2.Distance(Projectile.Center, Main.MouseWorld);
 			if (distance < 20f)
             {
                 DustHelper.DrawDiamond(new Vector2(Projectile.Center.X, Projectile.Center.Y), 173, 4, .8f, .75f);
                 SoundEngine.PlaySound(SoundID.NPCDeath6, Projectile.Center);
-                if (!escaped && Main.rand.NextBool(2))
-                {
-                    Projectile.ai[1] = 10;
-                }
+				if (!escaped && Main.rand.NextBool(2))
+				{
+					Projectile.ai[1] = 10;
+					Projectile.netUpdate = true;
+				}
                 escaped = true;
             }
 			if (Projectile.ai[1] == 10)
@@ -113,13 +111,9 @@ namespace SpiritMod.Projectiles.Arrow
 			}
 			return true;
 		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-            return colorField;
-		}
-		public override void Kill (int timLeft)
-        {
-            SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
-        }
+
+		public override Color? GetAlpha(Color lightColor) => colorField;
+
+		public override void Kill (int timLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 	}
 }

@@ -39,10 +39,7 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 			Item.shootSpeed = 16.2f;
 		}
 
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-6, 0);
-        }
+		public override Vector2? HoldoutOffset() => new Vector2(-6, 0);
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
@@ -72,13 +69,14 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
             for (int I = 0; I < 4; I++)
             {
                 float angle = Main.rand.NextFloat(MathHelper.PiOver4, -MathHelper.Pi - MathHelper.PiOver4);
+
                 Vector2 spawnPlace = Vector2.Normalize(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle))) * 20f;
                 if (Collision.CanHit(position, 0, 0, position + spawnPlace, 0, 0))
                     position += spawnPlace;
 
                 Vector2 vel = Vector2.Normalize(Main.MouseWorld - position) * Item.shootSpeed;
                 DustHelper.DrawDiamond(new Vector2(position.X, position.Y), 173, 2, .8f, .75f);
-                int p = Projectile.NewProjectile(source, position.X, position.Y, vel.X, vel.Y, type, damage, knockback, 0, 0.0f, 0.0f);
+                Projectile.NewProjectile(source, position.X, position.Y, vel.X, vel.Y, type, damage, knockback, 0, 0.0f, 0.0f);
             }
 			return false;
 		}
