@@ -5,7 +5,7 @@ namespace SpiritMod.Items.Armor.SilkArmor
 {
 	internal class SilkPlayer : ModPlayer
 	{
-		public override void Initialize() => On.Terraria.Player.SetArmorEffectVisuals += LoadArmorVisuals;
+		public override void Load() => On.Terraria.Player.SetArmorEffectVisuals += LoadArmorVisuals;
 		public override void Unload() => On.Terraria.Player.SetArmorEffectVisuals -= LoadArmorVisuals;
 
 		private static void LoadArmorVisuals(On.Terraria.Player.orig_SetArmorEffectVisuals orig, Player self, Player drawPlayer)
