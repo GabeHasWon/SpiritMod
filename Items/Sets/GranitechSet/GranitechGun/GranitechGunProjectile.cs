@@ -38,36 +38,39 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 		{
 			Player p = Main.player[Projectile.owner];
 			p.heldProj = Projectile.whoAmI;
-			//GItem.ArmsTowardsMouse(p);
 
-			if (p.whoAmI != Main.myPlayer) return; //mp check (hopefully)
+			if (p == Main.LocalPlayer)
+			{
+				if (p.channel) //Use turn functionality
+					p.ChangeDir(Main.MouseWorld.X >= p.MountedCenter.X ? 1 : -1);
 
-			if (p.channel) //Use turn functionality
-				p.direction = Main.MouseWorld.X >= p.MountedCenter.X ? 1 : -1;
-
-			Projectile.rotation = Vector2.Normalize(p.MountedCenter - Main.MouseWorld).ToRotation() - MathHelper.Pi; //So it looks like the player is holding it properly
+				Projectile.timeLeft++; //dont die
+				Projectile.rotation = Vector2.Normalize(p.MountedCenter - Main.MouseWorld).ToRotation() - MathHelper.Pi; //So it looks like the player is holding it properly
+				Projectile.netUpdate = true;
+			}
 			Projectile.spriteDirection = p.direction;
 			p.itemRotation = MathHelper.WrapAngle(Projectile.rotation + ((Projectile.spriteDirection < 0) ? MathHelper.Pi : 0));
 
 			_charge++; //Increase charge timer...
-			Projectile.timeLeft++; //...and dont die
 
 			if (_endCharge == -1) //Wait until the player has fired to let go & set position
 			{
 				p.itemTime = 2;
 				p.itemAnimation = 2;
-				Projectile.Center = p.Center - (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * 27) + new Vector2(28, 18 + p.gfxOffY);
+				Projectile.Center = p.Center - new Vector2(27, 0).RotatedBy(Projectile.rotation - MathHelper.Pi) + new Vector2(28, 18 + p.gfxOffY);
+
+				if (!p.channel) //the player has stopped shooting
+				{
+					_endCharge = _charge;
+					_finalRotation = Projectile.rotation - MathHelper.Pi;
+					_endCharge += p.HeldItem.useAnimation;
+					_effect = Main.MouseWorld.X >= p.MountedCenter.X ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+					Projectile.netUpdate = true;
+				}
 			}
 			else
 				Projectile.Center = p.Center - (new Vector2(1, 0).RotatedBy(_finalRotation) * 27) + new Vector2(28, 18 + p.gfxOffY);
-
-			if (!p.channel && _endCharge == -1) //the player has stopped shooting
-			{
-				_endCharge = _charge;
-				_finalRotation = (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * 27).ToRotation();
-				_endCharge += p.HeldItem.useAnimation;
-				_effect = Main.MouseWorld.X >= p.MountedCenter.X ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			}
 
 			if (_charge > _endCharge && _endCharge != -1) //Kill projectile when done shooting
 				Projectile.Kill();

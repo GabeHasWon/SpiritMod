@@ -257,8 +257,8 @@ namespace SpiritMod.NPCs.DarkfeatherMage
                 {
                     direction.Normalize();
                     SoundEngine.PlaySound(SoundID.DD2_WyvernDiveDown, NPC.Center);
-                    direction.X = direction.X * Main.rand.Next(12, 16);
-                    direction.Y = direction.Y * Main.rand.Next(6, 9);
+                    direction.X *= Main.rand.Next(12, 16);
+                    direction.Y *= Main.rand.Next(6, 9);
                     NPC.velocity.X = direction.X;
                     NPC.velocity.Y = direction.Y;
                 }
@@ -340,16 +340,15 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 
 		public override void HitEffect(int hitDirection, double damage)
         {
-            if (NPC.life <= 0)
-            {
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DarkfeatherMage3").Type, 1f);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DarkfeatherMage").Type, 1f);
-                for (int k = 0; k < 6; k++)
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DarkfeatherMage1").Type, Main.rand.NextFloat(.6f, 1f));
-                for (int z = 0; z < 2; z++)
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DarkfeatherMage2").Type, Main.rand.NextFloat(.8f, 1f));
-            }
-        }
+			if (NPC.life > 0)
+				return;
+			for (int i = 0; i < 6; i++)
+			{
+				if (i < 4)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DarkfeatherMage" + (i + 1)).Type, 1f);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DarkfeatherMage4").Type, 1f);
+			}
+		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.5f * bossLifeScale);
 
@@ -397,7 +396,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             Vector2 position1 = NPC.Bottom - screenPos;
             Texture2D texture2D2 = TextureAssets.GlowMask[239].Value;
-            float num11 = (float)(animCounter % 1.0);
+            float num11 = (float)(Main.GlobalTimeWrappedHourly % 1.0);
             float num12 = num11;
             if ((double)num12 > 0.5)
                 num12 = 1f - num11;
@@ -433,12 +432,8 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/DarkfeatherMage/DarkfeatherMage_Glow").Value, screenPos);
 
-		private float animCounter;
 		public override void FindFrame(int frameHeight)
 		{
-			if (NPC.IsABestiaryIconDummy)
-				animCounter = Main.GlobalTimeWrappedHourly;
-
 			NPC.frameCounter += 0.25f;
 			NPC.frameCounter %= Main.npcFrameCount[NPC.type];
 			int frame = (int)NPC.frameCounter;

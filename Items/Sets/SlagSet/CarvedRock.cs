@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Sets.SlagSet
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Lighting.AddLight(Item.position, 0.4f, .12f, .036f);
+			Lighting.AddLight(Item.position, 0.4f, .12f, .028f);
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 	}
