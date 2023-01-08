@@ -164,7 +164,6 @@ namespace SpiritMod
 		public int movementStacks = 1;
 
 		public bool bloodfireShield;
-		//public int bloodfireShieldStacks;
 		public int shootDelay = 0;
 		public int shootDelay1 = 0;
 		public int shootDelay2 = 0;
@@ -1021,7 +1020,8 @@ namespace SpiritMod
 
 			if (AceOfClubs && crit && target.lifeMax > 15 && !target.friendly && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
-				int money = (int)(300 * MathHelper.Clamp((float)damage / target.lifeMax, 1 / 300f, 1f));
+				//int money = (int)(300 * MathHelper.Clamp((float)damage / target.lifeMax, 1 / 300f, 1f));
+				int money = (int)(5 * damage);
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<ClubDust>(), 0, -0.8f);
 				if (money / 1000000 > 0) ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.PlatinumCoin, money / 1000000);
@@ -2456,30 +2456,7 @@ namespace SpiritMod
 			{
 				if (Player.lifeRegen >= 0)
 					Player.lifeRegen = 0;
-
-				bloodfireShieldStacks = 0;
-
-				if (bloodfireShieldStacks >= 5)
-					bloodfireShieldStacks = 5;
-
-				for (int i = 0; i < 200; i++)
-				{
-					if (Main.npc[i].active && !Main.npc[i].friendly && Main.npc[i].type != NPCID.TargetDummy)
-					{
-						int distance = (int)Main.npc[i].Distance(Player.Center);
-						if (distance < 320)
-							bloodfireShieldStacks++;
-						if (bloodfireShieldStacks >= 5)
-							bloodfireShieldStacks = 5;
-
-						for (int k = 0; k < bloodfireShieldStacks; k++)
-							if (Main.rand.NextBool(6))
-								Dust.NewDust(Player.position, Player.width, Player.height, DustID.Blood, 0f, 0f, 0, default, .14f * bloodfireShieldStacks);
-					}
-				}
-			}
-			else
-				bismiteShieldStacks = 0;
+			};
 
 			if (Player.controlUp && scarabCharm)
 			{

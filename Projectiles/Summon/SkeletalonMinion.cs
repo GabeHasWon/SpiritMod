@@ -177,6 +177,10 @@ namespace SpiritMod.Projectiles.Summon
 				}
 			}
 		}
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			target.AddBuff(ModContent.BuffType<Buffs.SummonTag.SummonTag5>(), 180, true);
+		}
 
 		public override bool MinionContactDamage() => true;
 		public override void Kill(int timeLeft)
