@@ -33,6 +33,9 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.knockBackResist = .35f;
 			NPC.aiStyle = 14;
 			NPC.noTileCollide = false;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.SpiritFloaterBanner>();
 			AIType = NPCID.CaveBat;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
 		}

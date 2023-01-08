@@ -45,6 +45,8 @@ namespace SpiritMod.NPCs.FallenAngel
 
 			AIType = NPCID.FlyingFish;
 			AnimationType = NPCID.FlyingFish;
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.FallenAngelBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

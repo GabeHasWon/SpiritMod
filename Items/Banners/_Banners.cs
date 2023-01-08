@@ -2,6 +2,8 @@ using SpiritMod.Tiles.Banners;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.DataStructures;
+using SpiritMod.NPCs.Hydra;
 
 namespace SpiritMod.Items.Banners
 {
@@ -547,5 +549,74 @@ namespace SpiritMod.Items.Banners
 	public class BlizzardNimbusBanner : BaseBannerItem
 	{
 		protected override int Style => 101;
+	}
+
+	public class FallenAngelBanner : BaseBannerItem
+	{
+		protected override int Style => 102;
+	}
+
+	public class NetherbaneBanner : BaseBannerItem
+	{
+		protected override int Style => 103;
+	}
+
+	public class HydraGreenBanner : BaseBannerItem
+	{
+		protected override int Style => 104;
+	}
+
+	public class HydraPurpleBanner : BaseBannerItem
+	{
+		protected override int Style => 105;
+	}
+
+	public class HydraRedBanner : BaseBannerItem
+	{
+		protected override int Style => 106;
+
+		public override void OnSpawn(IEntitySource source) //Randomizes banner if from a Hydra npc
+		{
+			if (Main.rand.NextFloat() > 0.666666f)
+				return;
+
+			if (source is EntitySource_Loot loot && loot.Entity is NPC npc && (npc.ModNPC is Hydra || npc.ModNPC is HydraHead))
+				Item.SetDefaults(Main.rand.NextBool() ? ModContent.ItemType<HydraPurpleBanner>() : ModContent.ItemType<HydraGreenBanner>());
+		}
+	}
+
+	public class PhantomBanner : BaseBannerItem
+	{
+		protected override int Style => 107;
+	}
+
+	public class SpiritGhoulBanner : BaseBannerItem
+	{
+		protected override int Style => 108;
+	}
+
+	public class SoulCrusherBanner : BaseBannerItem
+	{
+		protected override int Style => 109;
+	}
+
+	public class SpiritFloaterBanner : BaseBannerItem
+	{
+		protected override int Style => 110;
+	}
+
+	public class SpiritBatBanner : BaseBannerItem
+	{
+		protected override int Style => 111;
+	}
+
+	public class SpiritSkullBanner : BaseBannerItem
+	{
+		protected override int Style => 112;
+	}
+
+	public class WanderingSoulBanner : BaseBannerItem
+	{
+		protected override int Style => 113;
 	}
 }

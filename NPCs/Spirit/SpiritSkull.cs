@@ -33,6 +33,9 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.npcSlots = 0.75f;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.SpiritSkullBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
 		}
 

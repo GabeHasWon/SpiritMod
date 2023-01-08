@@ -34,6 +34,9 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.value = 360f;
 			NPC.knockBackResist = .16f;
 			NPC.aiStyle = 3;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.SpiritGhoulBanner>();
 			AIType = NPCID.DesertGhoul;
 			AnimationType = NPCID.DesertGhoul;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
