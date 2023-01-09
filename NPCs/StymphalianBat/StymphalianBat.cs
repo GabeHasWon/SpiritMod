@@ -48,7 +48,8 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
+			{
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Marble,
 				new FlavorTextBestiaryInfoElement("Ancient blueprints. Recent fabrication. These designs were perfected long ago, there is no need to deviate from his design."),
 			});
@@ -82,10 +83,13 @@ namespace SpiritMod.NPCs.StymphalianBat
 			{
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					int npc1 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + Main.rand.Next(-10, 10), (int)NPC.Center.Y + Main.rand.Next(-10, 10), ModContent.NPCType<StymphalianBat>(), NPC.whoAmI, 40f, 0f, 0f, 1f);
+					int npc1 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + Main.rand.Next(-100, 100), (int)NPC.Center.Y + Main.rand.Next(-100, 100), ModContent.NPCType<StymphalianBat>(), NPC.whoAmI, 40f, 0f, 0f, 1f);
 					NPC.ai[3] = 1f;
 					NPC.netUpdate = true;
 					Main.npc[npc1].netUpdate = true;
+
+					for (int i = 0; i < 3; ++i)
+						Gore.NewGore(NPC.GetSource_Death(), Main.npc[npc1].position, Main.rand.NextVector2Circular(4f, 4f), 99);
 				}
 			}
 
@@ -214,14 +218,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-
-			int x = spawnInfo.SpawnTileX;
-			int y = spawnInfo.SpawnTileY;
-			int tile = (int)Main.tile[x, y].TileType;
-			return (tile == 367) && spawnInfo.Player.GetSpiritPlayer().ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.435f : 0f;
-		}
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == 367) && spawnInfo.Player.GetSpiritPlayer().ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.435f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

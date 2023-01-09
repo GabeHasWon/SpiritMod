@@ -57,10 +57,13 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
+			{
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
 				new FlavorTextBestiaryInfoElement("The powerful elder of the vulture tribe, the Matriarch has a hold of ancient magics and abilities in order to destroy its prey."),
 			});
+
+			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
 		public override void SendExtraAI(BinaryWriter writer)

@@ -37,6 +37,7 @@ namespace SpiritMod.Items.Banners
     public class BeholderBanner : BaseBannerItem
 	{
 		protected override int Style => 1;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class BottomFeederBanner : BaseBannerItem
@@ -52,7 +53,12 @@ namespace SpiritMod.Items.Banners
 	public class YureiBanner : BaseBannerItem
     {
 		protected override int Style => 4;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Yuurei Banner");
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Yuurei Banner");
+			ItemID.Sets.KillsToBanner[Type] = 25;
+		}
     }
 
     public class SporeWheezerBanner : BaseBannerItem
@@ -113,17 +119,23 @@ namespace SpiritMod.Items.Banners
 	public class GoldCrateMimicBanner : BaseBannerItem
 	{
 		protected override int Style => 16;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 10;
 	}
 
 	public class IronCrateMimicBanner : BaseBannerItem
 	{
 		protected override int Style => 17;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class WoodCrateMimicBanner : BaseBannerItem
 	{
 		protected override int Style => 18;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Wooden Crate Banner");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Wooden Crate Mimic Banner");
+			ItemID.Sets.KillsToBanner[Type] = 25;
+		}
 	}
 
 	public class GraniteSlimeBanner : BaseBannerItem
@@ -233,10 +245,15 @@ namespace SpiritMod.Items.Banners
 	}
 
 	public class RlyehianBanner : BaseBannerItem
-    {
+	{
 		protected override int Style => 40;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("R'lyehian Banner");
-    }
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("R'lyehian Banner");
+			ItemID.Sets.KillsToBanner[Type] = 10;
+		}
+	}
 
     public class MangoWarBanner : BaseBannerItem
     {
@@ -279,6 +296,7 @@ namespace SpiritMod.Items.Banners
     public class KakamoraShamanBanner : BaseBannerItem
 	{
 		protected override int Style => 48;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 10;
 	}
 
 	public class BriarthornSlimeBanner : BaseBannerItem
@@ -294,6 +312,7 @@ namespace SpiritMod.Items.Banners
 	public class GladeWraithBanner : BaseBannerItem
 	{
 		protected override int Style => 51;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	//public class CaptiveMaskBanner : BaseBannerItem //Removed as the NPC doesn't exist
@@ -344,6 +363,7 @@ namespace SpiritMod.Items.Banners
 	public class PhantomSamuraiBanner : BaseBannerItem
 	{
 		protected override int Style => 61;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class FleshHoundBanner : BaseBannerItem
@@ -370,6 +390,7 @@ namespace SpiritMod.Items.Banners
 	public class HemaphoraBanner : BaseBannerItem
 	{
 		protected override int Style => 66;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class MyceliumBotanistBanner : BaseBannerItem
@@ -509,6 +530,7 @@ namespace SpiritMod.Items.Banners
 	public class SkeletonBruteBanner : BaseBannerItem
 	{
 		protected override int Style => 93;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class DraugrBanner : BaseBannerItem
