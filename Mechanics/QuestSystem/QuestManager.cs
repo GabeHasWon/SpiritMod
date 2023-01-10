@@ -271,6 +271,18 @@ namespace SpiritMod.Mechanics.QuestSystem
 			}
 		}
 
+		public static void UnlockAll()
+		{
+			foreach (var quest in Quests)
+				UnlockQuest(quest, false);
+		}
+
+		public static void CompleteAll()
+		{
+			foreach (var quest in Quests)
+				ForceCompleteQuest(quest);
+		}
+
 		/// <summary>Forces a quest to complete a single task (or finish).</summary>
 		public static void ForceCompleteQuest<T>() where T : Quest
 		{

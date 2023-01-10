@@ -19,7 +19,7 @@ namespace SpiritMod.NPCs
 		public BestiaryUICollectionInfo GetEntryUICollectionInfo()
 		{
 			BestiaryEntryUnlockState unlockStateByKillCount = GetUnlockStateByKillCount(Main.BestiaryTracker.Kills.GetKillCount(_persistentIdentifierToCheck), _quickUnlock, _maxKills);
-			BestiaryUICollectionInfo result = default(BestiaryUICollectionInfo);
+			BestiaryUICollectionInfo result = default;
 			result.UnlockState = unlockStateByKillCount;
 			return result;
 		}

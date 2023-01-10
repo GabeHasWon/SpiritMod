@@ -193,11 +193,14 @@ namespace SpiritMod.Mechanics.QuestSystem
 			if (IsCompleted)
 				return;
 
-			_currentTask.Completed = true;
-			_currentTask.Deactivate();
-			_currentTask = _currentTask.NextTask;
+			if (_currentTask is not null) //This should only be true when the quest is force-completed
+			{
+				_currentTask.Completed = true;
+				_currentTask.Deactivate();
+				_currentTask = _currentTask.NextTask;
+			}
 
-			if (_currentTask == null) //Quest completed
+			if (_currentTask is null) //Quest completed
 			{
 				OnQuestComplete();
 				QuestManager.DeactivateQuest(this);
