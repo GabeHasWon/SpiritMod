@@ -25,13 +25,12 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.height = 18;
 			Projectile.friendly = true;
 			Projectile.timeLeft = 60;
+		}
 
-		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(252 - (int)(timer / 3), 153 - (int)(timer / 3), 3 - (int)(timer / 3), 255 - timer * 2);
-		}
+		public override Color? GetAlpha(Color lightColor) => new Color(252 - (timer / 3), 153 - (timer / 3), 3 - (timer / 3), 255 - timer * 2);
+		
 		int timer;
+		
 		public override void AI()
 		{
 			Lighting.AddLight(Projectile.position, 0.4f / 2, .12f / 2, .036f / 2);
@@ -45,6 +44,7 @@ namespace SpiritMod.Projectiles.Magic
 				Projectile.frame = (Projectile.frame + 1) % 10;
 			}
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			{
@@ -62,6 +62,7 @@ namespace SpiritMod.Projectiles.Magic
 				}
 			}
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;

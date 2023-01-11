@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 		{
 			DisplayName.SetDefault("Palladium Staff");
 			Tooltip.SetDefault("Summons a runic pillar at the cursor position\nIf below 1/3 HP, step inside the pillar to rapidly regenerate health");
+			Item.staff[Item.type] = true;
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -26,7 +26,6 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 			Item.useTime = 28;
 			Item.useAnimation = 28;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.knockBack = 5;
 			Item.useTurn = false;
@@ -40,16 +39,16 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int i = 0; i < Main.projectile.Length; i++) { //Framing.GetTileSafely(position.X / 16f, position.Y / 16f + i).active()
-
+			for (int i = 0; i < Main.projectile.Length; i++) 
+			{
 				Projectile p = Main.projectile[i];
-				if (p.active && p.type == Item.shoot && p.owner == player.whoAmI) {
+
+				if (p.active && p.type == Item.shoot && p.owner == player.whoAmI)
 					p.active = false;
-				}
 			}
 
 			Vector2 mouse = Main.MouseWorld;
-			Terraria.Projectile.NewProjectile(source, mouse.X, mouse.Y, 0f, 100f, type, damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, mouse.X, mouse.Y, 0f, 100f, type, damage, knockback, player.whoAmI);
 			return false;
 		}
 

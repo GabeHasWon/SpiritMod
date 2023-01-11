@@ -34,6 +34,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.aiStyle = 0;
 			NPC.npcSlots = 0;
 			NPC.alpha = 255;
+
 			AIType = NPCID.WebbedStylist;
         }
 

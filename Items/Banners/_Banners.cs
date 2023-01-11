@@ -333,6 +333,7 @@ namespace SpiritMod.Items.Banners
 	public class MechromancerBanner : BaseBannerItem
 	{
 		protected override int Style => 55;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class KakamoraBanner : BaseBannerItem
