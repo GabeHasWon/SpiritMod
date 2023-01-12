@@ -135,7 +135,6 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
                     Projectile.velocity *= 0.6f;
                     
                     Projectile.velocity += dir * (float)Math.Pow(length, 1.5) * 0.05f;
-
                     Projectile.velocity += noise * 0.5f;
                     Projectile.spriteDirection = 1;
                     Projectile.rotation = (Projectile.rotation + (Main.MouseWorld - Projectile.Center).ToRotation()) * 0.5f;
@@ -259,7 +258,7 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
                 Vector2 delta = t.endCoords - Projectile.Center;
                 float length = delta.Length();
                 float rotation = delta.ToRotation();
-                Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 1, 1), t.color, rotation, new Vector2(0f, 1f), new Vector2(length, t.timeLeft), SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 1, 1), new Color(t.color.R, t.color.G, t.color.B, 180) * 0.75f, rotation, new Vector2(0f, 1f), new Vector2(length, t.timeLeft), SpriteEffects.None, 0f);
             }
             return false;
 		}
