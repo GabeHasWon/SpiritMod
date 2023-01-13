@@ -125,7 +125,7 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddFood(ModContent.ItemType<Ramen>(), 16);
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.HasBuff(ModContent.BuffType<PagodaCurse>()) ? 0.1f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.HasBuff(ModContent.BuffType<PagodaCurse>()) ? 0.23f : 0f;
 
 		float chargeRotation = 0;
 		public override void AI()

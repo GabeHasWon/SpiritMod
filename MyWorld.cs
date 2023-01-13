@@ -7,7 +7,6 @@ using SpiritMod.Items.Glyphs;
 using SpiritMod.Items.Material;
 using SpiritMod.Items.Placeable;
 using SpiritMod.Items.Placeable.Tiles;
-using SpiritMod.Items.BossLoot.StarplateDrops;
 using SpiritMod.Items.Sets.BriarChestLoot;
 using SpiritMod.Items.Sets.ToolsMisc.Evergreen;
 using SpiritMod.Items.Weapon.Summon;
@@ -45,7 +44,7 @@ using SpiritMod.Mechanics.QuestSystem;
 using Terraria.WorldBuilding;
 using Terraria.IO;
 using static SpiritMod.Utilities.ChestPoolUtils;
-using SpiritMod.NPCs.AsteroidDebris;
+using Terraria.GameContent.Events;
 
 namespace SpiritMod
 {
@@ -64,6 +63,9 @@ namespace SpiritMod
 		public static bool luminousOcean = false;
 		public static bool calmNight = false;
 		public static int luminousType = 1;
+
+		private static bool wasLanternNight = false;
+		public static bool VictoryDay => wasLanternNight && Main.dayTime;
 
 		public static bool stardustWeather = false;
 		public static bool spaceJunkWeather = false;
@@ -1541,6 +1543,11 @@ namespace SpiritMod
 				else
 					jellySky = false;
 			}
+
+			if (LanternNight.LanternsUp)
+				wasLanternNight = true;
+			else if (!Main.dayTime)
+				wasLanternNight = false;
 
 			if (Main.hardMode && !rockCandy)
 			{
