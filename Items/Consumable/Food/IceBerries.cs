@@ -17,6 +17,8 @@ namespace SpiritMod.Items.Consumable.Food
 			Tooltip.SetDefault("Grants immunity to being on fire\nPerhaps some mystical creature would like this?");
 		}
 
+		public override bool AltFunctionUse(Player player) => true;
+
 		public override bool? UseItem(Player player)
 		{
 			if (player.whoAmI != Main.myPlayer)
@@ -25,14 +27,14 @@ namespace SpiritMod.Items.Consumable.Food
 			MyPlayer myPlayer = player.GetModPlayer<MyPlayer>();
 			AuroraStag auroraStag = myPlayer.hoveredStag;
 
-			if (auroraStag != null && !auroraStag.Scared && !auroraStag.NPC.immortal && auroraStag.TameAnimationTimer == 0) {
+			if (player.altFunctionUse == 2 && auroraStag != null && !auroraStag.Scared && !auroraStag.NPC.immortal && auroraStag.TameAnimationTimer == 0) {
 				auroraStag.TameAnimationTimer = AuroraStag.TameAnimationLength;
 				myPlayer.hoveredStag = null;
 
 				if (Main.netMode == NetmodeID.MultiplayerClient)
 					SpiritMod.WriteToPacket(SpiritMod.Instance.GetPacket(4), (byte)MessageType.TameAuroraStag, auroraStag.NPC.whoAmI).Send();
 			}
-			else
+			else if (player.altFunctionUse != 2)
 				player.AddBuff(ModContent.BuffType<IceBerryBuff>(), 19600);
 
 			return true;
