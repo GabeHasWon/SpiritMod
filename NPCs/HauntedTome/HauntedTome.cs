@@ -297,6 +297,7 @@ namespace SpiritMod.NPCs.HauntedTome
 			Projectile.alpha = (int)MathHelper.Max(Projectile.alpha - 10, 0);
 			NPC npc = Main.npc[(int)Projectile.ai[0]];
 			Player player = Main.player[(int)Projectile.ai[1]];
+
 			if (!npc.active || npc.type != ModContent.NPCType<HauntedTome>() || !player.active || player.dead)
 			{
 				Projectile.Kill();
