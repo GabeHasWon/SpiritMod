@@ -98,9 +98,9 @@ namespace SpiritMod.Utilities
 		[DefaultValue(true)]
 		public bool AshfallMusic { get; set; }
 
-		[Label("$Mods.SpiritMod.VictoryNightMusic")]
-		[Tooltip("Enables a unique track for the Lantern Night event")]
+		[Label("$Mods.SpiritMod.VictoryDayMusic")]
+		[Tooltip("Enables a unique track for the day after the Lantern Night event")]
 		[DefaultValue(true)]
-		public bool VictoryNightMusic { get; set; }
+		public bool VictoryDayMusic { get; set; }
 	}
 }

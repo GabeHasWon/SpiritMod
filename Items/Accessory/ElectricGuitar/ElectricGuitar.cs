@@ -187,14 +187,16 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 					Projectile.extraUpdates = 0;
 					Projectile.numUpdates = 0;
 				}
-				if (Projectile.timeLeft < 300)
+
+				if (Projectile.timeLeft < 300 && currentEnemy is not null)
 				{
+					NPC target = TargetNext(currentEnemy);
 					animCounter--;
 					if (animCounter > 0)
 						Projectile.Center = currentEnemy.Center;
+
 					if (animCounter == 1)
 					{
-						NPC target = TargetNext(currentEnemy);
 						if (target != null && !target.friendly && !target.townNPC)
 						{
 							Projectile.Center = target.Center;

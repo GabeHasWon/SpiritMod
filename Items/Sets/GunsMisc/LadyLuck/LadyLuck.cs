@@ -37,6 +37,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.LadyLuck
 			Item.autoReuse = true;
 		}
 
+		public override Vector2? HoldoutOffset() => new Vector2(-8, 0);
+
 		public override bool AltFunctionUse(Player player) => true;
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
@@ -50,7 +52,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.LadyLuck
 			}
 			else
 			{
-				int p = Projectile.NewProjectile(source, position + (direction * 2.65f) + (direction.RotatedBy(-1.57f * player.direction) * -.02f), direction, ModContent.ProjectileType<LadyLuckFlash>(), 0, 0, player.whoAmI);
+				int p = Projectile.NewProjectile(source, position + (direction * 2.0f), direction, ModContent.ProjectileType<LadyLuckFlash>(), 0, 0, player.whoAmI);
 				Main.projectile[p].frame = Main.rand.Next(0, 3);
 				Gore.NewGore(source, player.Center, new Vector2(player.direction * -1, -0.5f) * 4, Mod.Find<ModGore>("BulletCasing").Type, 1f);
 				int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);

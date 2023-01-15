@@ -46,14 +46,18 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 			Player p = Main.player[Projectile.owner];
 			p.heldProj = Projectile.whoAmI;
 
-			if (_endCharge == -1) //Wait until the player has fired to let go & set position
+			if (p == Main.LocalPlayer)
 			{
-				p.itemTime = p.HeldItem.useTime;
-				p.itemAnimation = p.HeldItem.useAnimation;
-				Projectile.Center = p.Center - (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * HoldOutLength) + new Vector2(21, 12);
+				if (_endCharge == -1) //Wait until the player has fired to let go & set position
+				{
+					p.itemTime = p.HeldItem.useTime;
+					p.itemAnimation = p.HeldItem.useAnimation;
+					Projectile.Center = p.Center - (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * HoldOutLength) + new Vector2(21, 12);
+				}
+				else
+					Projectile.Center = p.Center - (new Vector2(1, 0).RotatedBy(_finalRotation) * HoldOutLength) + new Vector2(21, 12);
+				Projectile.netUpdate = true;
 			}
-			else
-				Projectile.Center = p.Center - (new Vector2(1, 0).RotatedBy(_finalRotation) * HoldOutLength) + new Vector2(21, 12);
 			Projectile.Center += p.gfxOffY * Vector2.UnitY;
 
 			if (p.whoAmI != Main.myPlayer)

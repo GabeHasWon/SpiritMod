@@ -37,27 +37,32 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 		int counter;
 		public override void AI()
 		{
+			Player player = Main.player[Projectile.owner];
 			Projectile.timeLeft = 2;
 			counter++;
-			Player player = Main.player[Projectile.owner];
+
 			if (player.HeldItem.type != ModContent.ItemType<StarplateGlove>())
 			{
 				returning = true;
 			}
+
 			Vector2 direction = Main.MouseWorld - Projectile.Center;
 			direction.Normalize();
 			Projectile.rotation = direction.ToRotation() + 1.57f;
 			if (!returning)
 			{
+				if (player != Main.LocalPlayer)
+					return;
+
 				if (target == Vector2.Zero)
-				{
 					target = Main.MouseWorld;
-				}
+
 				Vector2 vel = target - Projectile.position;
 				float speed = (float)Math.Sqrt(vel.Length()) / 2;
 				vel.Normalize();
 				vel *= speed;
 				Projectile.velocity = vel;
+
 				if (!Main.mouseRight)
 				{
 					rightClick = false;
@@ -65,11 +70,14 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 				if (Main.mouseRight && !rightClick)
 				{
 					returning = true;
+					Projectile.netUpdate = true;
 				}
+
 				if (Main.mouseLeft && counter % 7 == 0)
 				{
 					if (player.statMana <= 0)
 						return;
+
 					player.statMana -= 6;
 					player.manaRegenDelay = 60;
 					Vector2 position = Projectile.Center;
@@ -103,6 +111,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 						for (int j = 0; j < 5; j++)
 							Projectile.NewProjectile(Projectile.GetSource_FromAI(), position, speed2, type, 0, 0, player.whoAmI, proj);
 					}
+					Projectile.netUpdate = true;
 				}
 			}
 			else
@@ -117,6 +126,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 				Projectile.velocity = vel;
 				Projectile.rotation =vel.ToRotation() - 1.57f;
 			}
+
 		}
 	}
 }

@@ -100,7 +100,7 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Ramen>(), 16));
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.HasBuff(ModContent.BuffType<PagodaCurse>()) ? 0.22f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.HasBuff(ModContent.BuffType<PagodaCurse>()) ? 0.5f : 0f;
 
 		public override void AI()
 		{

@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Sets.SlagSet;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 		{
 			DisplayName.SetDefault("Slag Tyrant's Helm");
 			Tooltip.SetDefault("5% increased minion damage\nIncreases your max number of sentries");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SlagSet/FieryArmor/ObsidiusHelm_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -28,6 +28,12 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 			=> glowMaskColor = new Color(100, 100, 100, 100);
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, 0.4f, .12f, .028f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_ItemGlow").Value, rotation, scale);
+		}
 
 		public override void UpdateEquip(Player player)
 		{

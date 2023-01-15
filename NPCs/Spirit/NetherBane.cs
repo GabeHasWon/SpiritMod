@@ -34,8 +34,11 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.knockBackResist = .35f;
 			NPC.aiStyle = 14;
 			NPC.noTileCollide = true;
+
 			AIType = NPCID.CaveBat;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritSurfaceBiome>().Type };
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.NetherbaneBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

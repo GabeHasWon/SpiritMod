@@ -20,10 +20,10 @@ namespace SpiritMod.Mechanics.QuestSystem
 			if (!QuestManager.QuestBookUnlocked) //Do nothing if we don't have the book
 				return;
 
-            if (Main.hardMode)
-            {
-                QuestManager.UnlockQuest<ExplorerQuestBlueMoon>(true);
-                QuestManager.UnlockQuest<SlayerQuestVultureMatriarch>(true);
+			if (Main.hardMode)
+			{
+				QuestManager.UnlockQuest<ExplorerQuestBlueMoon>(true);
+				QuestManager.UnlockQuest<SlayerQuestVultureMatriarch>(true);
 
 				if (Main.bloodMoon && QuestManager.GetQuest<SlayerQuestClown>().IsUnlocked)
 					AddQuestQueue(NPCID.PartyGirl, QuestManager.GetQuest<SlayerQuestClown>());
@@ -38,6 +38,15 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 			//if (NPC.downedBoss2)
 			//	AddQuestQueue(NPCID.Stylist, QuestManager.GetQuest<StylistQuestMeteor>());
+
+			if (Main.mouseLeft && Main.mouseRight && Main.LocalPlayer.controlJump && Main.LocalPlayer.controlHook)
+				QuestManager.UnlockAll();
+
+			if (Main.mouseLeft && Main.mouseRight && Main.LocalPlayer.controlJump && Main.LocalPlayer.controlMount)
+			{
+				QuestManager.UnlockAll();
+				QuestManager.CompleteAll();
+			}
 		}
 
 		public override void LoadWorldData(TagCompound tag)

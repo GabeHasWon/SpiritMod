@@ -46,6 +46,9 @@ namespace SpiritMod.NPCs.HauntedTome
 			NPC.knockBackResist = 1f;
 			NPC.HitSound = SoundID.NPCHit15 with { PitchVariance = 0.2f };
 			NPC.DeathSound = SoundID.NPCDeath6;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.HauntedTomeBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -294,6 +297,7 @@ namespace SpiritMod.NPCs.HauntedTome
 			Projectile.alpha = (int)MathHelper.Max(Projectile.alpha - 10, 0);
 			NPC npc = Main.npc[(int)Projectile.ai[0]];
 			Player player = Main.player[(int)Projectile.ai[1]];
+
 			if (!npc.active || npc.type != ModContent.NPCType<HauntedTome>() || !player.active || player.dead)
 			{
 				Projectile.Kill();

@@ -78,7 +78,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => Main.player.Any(x => x.active) && !NPC.AnyNPCs(NPCType<Rogue>()) && !NPC.AnyNPCs(NPCType<BoundRogue>());
 
-		public override List<string> SetNPCNameList() => new List<string>() { "Zane", "Carlos", "Tycho", "Damien", "Shane", "Daryl", "Shepard", "Sly" };
+		public override List<string> SetNPCNameList() => new() { "Zane", "Carlos", "Tycho", "Damien", "Shane", "Daryl", "Shepard", "Sly" };
 
 		public override string GetChat()
 		{
@@ -105,10 +105,7 @@ namespace SpiritMod.NPCs.Town
 			return Main.rand.Next(dialogue);
 		}
 
-		public override void SetChatButtons(ref string button, ref string button2)
-		{
-			button = Language.GetTextValue("LegacyInterface.28");
-		}
+		public override void SetChatButtons(ref string button, ref string button2) => button = Language.GetTextValue("LegacyInterface.28");
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
@@ -137,13 +134,10 @@ namespace SpiritMod.NPCs.Town
 			AddItem(ref shop, ref nextSlot, ItemType<ShurikenLauncher>());
 			AddItem(ref shop, ref nextSlot, ItemType<SwiftRune>());
 			AddItem(ref shop, ref nextSlot, ItemType<AssassinMagazine>());
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Weapon.Thrown.TargetCan>());
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Weapon.Thrown.TargetBottle>());
+			AddItem(ref shop, ref nextSlot, ItemType<TargetCan>());
+			AddItem(ref shop, ref nextSlot, ItemType<TargetBottle>());
 			AddItem(ref shop, ref nextSlot, ItemType<Items.Placeable.Furniture.TreasureChest>());
             AddItem(ref shop, ref nextSlot, ItemType<Items.Armor.Masks.PsychoMask>());
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Armor.OperativeSet.OperativeHead>(), check: Main.hardMode);
-            AddItem(ref shop, ref nextSlot, ItemType<Items.Armor.OperativeSet.OperativeBody>(), check: Main.hardMode);
-            AddItem(ref shop, ref nextSlot, ItemType<Items.Armor.OperativeSet.OperativeLegs>(), check: Main.hardMode);
         }
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)

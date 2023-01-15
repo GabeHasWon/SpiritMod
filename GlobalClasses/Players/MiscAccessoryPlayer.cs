@@ -171,8 +171,10 @@ namespace SpiritMod.GlobalClasses.Players
 				{
 					if (Player.ownedProjectileCounts[ModContent.ProjectileType<GranitechDrone>()] < 3)
 					{
-						int newProj = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<GranitechDrone>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(72), 1.5f, Player.whoAmI);
+						int dmg = (int)Player.GetDamage(DamageClass.Summon).ApplyTo(ContentSamples.ItemsByType[ModContent.ItemType<GranitechDroneBox>()].damage);
+						int newProj = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<GranitechDrone>(), dmg, 1.5f, Player.whoAmI);
 						Main.projectile[newProj].ai[1] = Player.ownedProjectileCounts[ModContent.ProjectileType<GranitechDrone>()];
+						Main.projectile[newProj].originalDamage = dmg;
 					}
 				}
 			}

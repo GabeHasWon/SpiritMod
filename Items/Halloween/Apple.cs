@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Halloween
@@ -6,16 +7,15 @@ namespace SpiritMod.Items.Halloween
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
-		public override void SetStaticDefaults()
+		internal override Point Size => new(20, 20);
+		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Apple");
 			Tooltip.SetDefault("'Who the hell gives these out?'");
 		}
 
-		public override void SetDefaults()
+		public override void Defaults()
 		{
-			Item.width = 20;
-			Item.height = 30;
 			Item.rare = -1;
 			Item.maxStack = 30;
 			Item.autoReuse = false;

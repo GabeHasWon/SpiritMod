@@ -336,7 +336,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			Color glowColor = Color.Lerp(Color.Red, Color.Magenta, DrawTimer);
-			Matrix matrix = NPC.IsABestiaryIconDummy ? Matrix.Identity : Main.GameViewMatrix.ZoomMatrix;
+			Matrix matrix = NPC.IsABestiaryIconDummy ? Main.UIScaleMatrix : Main.GameViewMatrix.ZoomMatrix;
 
 			if (NPC.frame.Width > 72) //workaround for framing not working properly on first tick
 			{

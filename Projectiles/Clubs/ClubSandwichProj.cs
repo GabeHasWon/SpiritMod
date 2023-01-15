@@ -38,7 +38,7 @@ namespace SpiritMod.Projectiles.Clubs
 					int item = Item.NewItem(Projectile.GetSource_FromAI("ClubSmash"), Projectile.position, type);
 					Main.item[item].velocity = Vector2.UnitY.RotatedBy(3.14f + Main.rand.NextFloat(3.14f)) * 8f * player.direction;
 					if (Main.netMode != NetmodeID.SinglePlayer)
-						NetMessage.SendData(MessageID.SyncItem, -1, -1, null, i);
+						NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item);
 				}
 			}
 			SoundEngine.PlaySound(SoundID.NPCHit20, Projectile.position);

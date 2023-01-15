@@ -76,7 +76,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 					if (data.IsActive)
 					{
 						QuestManager.ActivateQuest(q);
-						q.ReadFromDataBuffer(data.Buffer ?? new byte[0]); //Extra security so I don't pass null
+						q.ReadFromDataBuffer(data.Buffer ?? Array.Empty<byte>()); //Extra security so I don't pass null
 					}
 
 					q.ActiveTime = data.TimeLeftActive;

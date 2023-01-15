@@ -13,6 +13,7 @@ using SpiritMod.Items.Armor.Masks;
 using SpiritMod.Mechanics.BoonSystem;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Banners;
 
 namespace SpiritMod.NPCs.Hydra
 {
@@ -50,6 +51,9 @@ namespace SpiritMod.NPCs.Hydra
 			NPC.immortal = true;
 			NPC.dontTakeDamage = true;
 			NPC.hide = true;
+
+			Banner = ModContent.NPCType<HydraHead>();
+			BannerItem = ModContent.ItemType<HydraRedBanner>();
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -174,6 +178,9 @@ namespace SpiritMod.NPCs.Hydra
 			NPC.knockBackResist = 0;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<HydraRedBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -533,6 +540,7 @@ namespace SpiritMod.NPCs.Hydra
 			}
 		}
 	}
+
 	public class HydraFireGlob : ModProjectile, IDrawAdditive
 	{
 		public override void SetStaticDefaults()

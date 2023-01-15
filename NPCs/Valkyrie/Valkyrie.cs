@@ -165,7 +165,7 @@ namespace SpiritMod.NPCs.Valkyrie
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			var color = Main.LocalPlayer.detectCreature ? new Color(255, 50, 50) : Color.White;
+			var color = (Main.LocalPlayer.detectCreature && !NPC.IsABestiaryIconDummy) ? new Color(255, 50, 50) : Color.White;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, color, NPC.rotation, NPC.Size / 2f, NPC.scale, effects, 0f);
 		}
 

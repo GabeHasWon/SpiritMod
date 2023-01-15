@@ -11,15 +11,15 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 {
 	public class BlizzardEdge : ModItem
 	{
-		private readonly Color Blue = new Color(0, 114, 201);
-		private readonly Color White = new Color(255, 255, 255);
+		private readonly Color Blue = new(0, 114, 201);
+		private readonly Color White = new(255, 255, 255);
 		int counter = 5;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blizzard's Edge");
 			Tooltip.SetDefault("Right-click after five swings to summon a blizzard");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-
 		}
 
 		public override void SetDefaults()
@@ -41,12 +41,15 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 			Item.crit = 6;
 			Item.shoot = ModContent.ProjectileType<BlizzardProjectile>();
 		}
+
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 400, true);
 		}
+
 		public override bool AltFunctionUse(Player player) => true;
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -68,17 +71,14 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 					counter = 5;
 				}
 			}
-			if (counter == 0)
+			if (counter == 0 && Main.netMode != NetmodeID.Server)
 			{
-				if (Main.netMode != NetmodeID.Server)
-				{
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MagicCast1") with { Volume = 0.5f, PitchVariance = 0.54f }, player.Center);
-					SoundEngine.PlaySound(SoundID.Item46);
-				}
-
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MagicCast1") with { Volume = 0.5f, PitchVariance = 0.54f }, player.Center);
+				SoundEngine.PlaySound(SoundID.Item46);
 			}
 			return false;
 		}
+
 		public void DrawDust(Player player)
 		{
 			float cosRot = (float)Math.Cos(player.itemRotation - 0.78f * player.direction * player.gravDir);
@@ -92,6 +92,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 				}
 			}
 		}
+
 		public override bool CanUseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)
@@ -100,7 +101,6 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 					return false;
 
 				Item.useStyle = ItemUseStyleID.HoldUp;
-
 			}
 			else
 			{
@@ -112,8 +112,8 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 
 	class BlizzardProjectile : ModProjectile
 	{
-		private readonly Color Blue = new Color(0, 114, 201);
-		private readonly Color White = new Color(255, 255, 255);
+		private readonly Color Blue = new(0, 114, 201);
+		private readonly Color White = new(255, 255, 255);
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Blizzard");
 
 		public override void SetDefaults()
@@ -169,9 +169,10 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 
 			for (int i = 0; i < 2; i++)
 			{
-				ImpactLine line = new ImpactLine(target.Center, new Vector2(Projectile.velocity.X * .65f, Main.rand.NextFloat(-.5f, .5f)), Color.Lerp(White, Blue, Main.rand.NextFloat()), new Vector2(0.25f, Main.rand.NextFloat(0.4f, .55f) * 1.5f), 70);
-				line.TimeActive = 30;
-				ParticleHandler.SpawnParticle(line);
+				ParticleHandler.SpawnParticle(new ImpactLine(target.Center, new Vector2(Projectile.velocity.X * .65f, Main.rand.NextFloat(-.5f, .5f)), Color.Lerp(White, Blue, Main.rand.NextFloat()), new Vector2(0.25f, Main.rand.NextFloat(0.4f, .55f) * 1.5f), 70) 
+				{ 
+					TimeActive = 30 
+				});
 			}
 		}
 	}

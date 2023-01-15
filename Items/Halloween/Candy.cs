@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using SpiritMod.Buffs.Candy;
 using System;
 using System.Collections.Generic;
@@ -13,35 +14,26 @@ namespace SpiritMod.Items.Halloween
 {
 	public class Candy : CandyBase
 	{
-
 		protected override bool CloneNewInstances => true;
 
 		public int Variant { get; internal set; }
 
+		internal override Point Size => new(34, 16);
 
-		public override void SetStaticDefaults()
+		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Candy");
 			Tooltip.SetDefault("Increases all stats slightly");
 		}
 
-		public override void SetDefaults()
+		public override void Defaults()
 		{
-			Item.width = 20;
-			Item.height = 30;
+			Item.width = Size.X;
+			Item.height = Size.Y;
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = 1;
-
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.useTime = Item.useAnimation = 20;
-
-			Item.consumable = true;
-			Item.autoReuse = false;
-
 			Item.buffType = ModContent.BuffType<CandyBuff>();
 			Item.buffTime = 14400;
-
-			Item.UseSound = SoundID.Item2;
 
 			Variant = Main.rand.Next(CandyNames.Count);
 		}
@@ -94,24 +86,13 @@ namespace SpiritMod.Items.Halloween
 				tooltips.Insert(index + 1, line);
 			}
 		}
-		public override void SaveData(TagCompound tag)
-		{
-			tag.Add("Variant", Variant);
-		}
 
-		public override void LoadData(TagCompound tag)
-		{
-			Variant = tag.GetInt("Variant");
-		}
+		public override void SaveData(TagCompound tag) => tag.Add("Variant", Variant);
 
-		public override void NetSend(BinaryWriter writer)
-		{
-			writer.Write((byte)Variant);
-		}
+		public override void LoadData(TagCompound tag) => Variant = tag.GetInt("Variant");
 
-		public override void NetReceive(BinaryReader reader)
-		{
-			Variant = reader.ReadByte();
-		}
+		public override void NetSend(BinaryWriter writer) => writer.Write((byte)Variant);
+
+		public override void NetReceive(BinaryReader reader) => Variant = reader.ReadByte();
 	}
 }

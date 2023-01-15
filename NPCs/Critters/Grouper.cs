@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using SpiritMod.Items.Consumable.Fish;
 using Terraria.GameContent.Bestiary;
 
@@ -86,15 +85,17 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life > 0)
+				return;
+			for (int i = 0; i < 30; i++)
 			{
-				for (int num621 = 0; num621 < 40; num621++)
-				{
-					int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood);
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].velocity *= 0.5f;
-					Main.dust[dust].scale *= .6f;
-				}
+				if (i < 3)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Grouper" + (i + 1)).Type, 1f);
+
+				int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood);
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].velocity *= 0.5f;
+				Main.dust[dust].scale *= .6f;
 			}
 		}
 

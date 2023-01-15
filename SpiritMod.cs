@@ -716,6 +716,7 @@ namespace SpiritMod
 				LoadMusicBox("JellyDelugeBox", "Sounds/Music/JellySky");
 				LoadMusicBox("FrostLegionBox", "Sounds/Music/FrostLegion");
 				LoadMusicBox("AshfallBox", "Sounds/Music/AshStorm");
+				LoadMusicBox("VictoryDayBox", "Sounds/Music/VictoryDay");
 
 				AutoSellUI.visible = false;
 				Mechanics.AutoSell.Sell_NoValue.Sell_NoValue.visible = false;

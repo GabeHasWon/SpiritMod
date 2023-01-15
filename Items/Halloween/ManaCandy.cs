@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using SpiritMod.Buffs.Candy;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,31 +7,21 @@ namespace SpiritMod.Items.Halloween
 {
 	public class ManaCandy : CandyBase
 	{
-
-		public override void SetStaticDefaults()
+		internal override Point Size => new(24, 24);
+		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Mana Candy");
 			Tooltip.SetDefault("Increases mana");
 		}
 
-
-		public override void SetDefaults()
+		public override void Defaults()
 		{
-			Item.width = 20;
-			Item.height = 30;
+			Item.width = Size.X;
+			Item.height = Size.Y;
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = 30;
-
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.useTime = Item.useAnimation = 20;
-
-			Item.consumable = true;
-			Item.autoReuse = false;
-
 			Item.buffType = ModContent.BuffType<ManaBuffC>();
 			Item.buffTime = 14400;
-
-			Item.UseSound = SoundID.Item2;
 		}
 	}
 }

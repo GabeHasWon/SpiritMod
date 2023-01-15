@@ -43,10 +43,13 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
+			{
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Invasions.FrostLegion,
 				new FlavorTextBestiaryInfoElement("A dangerous hovercraft made of spine-chillingly cold metal, and powered by Frost Cores. Playtime's over, no more mister ice guy!"),
 			});
+
+			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
 		public override void FindFrame(int frameHeight)
@@ -87,7 +90,12 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 				}
 
 				for (int j = 0; j < 17; j++)
+				{
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hitDirection, -2.5f, 0, default, 0.75f);
+
+					if (j < 5)
+						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("FrostSaucer" + (j + 1)).Type, 1f);
+				}
 			}
 
 			for (int k = 0; k < 7; k++)

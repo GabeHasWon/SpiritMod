@@ -28,10 +28,13 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.value = 460f;
 			NPC.knockBackResist = .15f;
 			NPC.aiStyle = 44;
-			AIType = NPCID.FlyingAntlion;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.AncientSpectreBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<SpiritUndergroundBiome>().Type };
+			AIType = NPCID.FlyingAntlion;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

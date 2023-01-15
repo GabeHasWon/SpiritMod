@@ -35,6 +35,9 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.noTileCollide = true;
 			NPC.noGravity = true;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.SpiritTomeBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

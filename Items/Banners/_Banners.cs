@@ -2,6 +2,8 @@ using SpiritMod.Tiles.Banners;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.DataStructures;
+using SpiritMod.NPCs.Hydra;
 
 namespace SpiritMod.Items.Banners
 {
@@ -35,6 +37,7 @@ namespace SpiritMod.Items.Banners
     public class BeholderBanner : BaseBannerItem
 	{
 		protected override int Style => 1;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class BottomFeederBanner : BaseBannerItem
@@ -50,7 +53,12 @@ namespace SpiritMod.Items.Banners
 	public class YureiBanner : BaseBannerItem
     {
 		protected override int Style => 4;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Yuurei Banner");
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Yuurei Banner");
+			ItemID.Sets.KillsToBanner[Type] = 25;
+		}
     }
 
     public class SporeWheezerBanner : BaseBannerItem
@@ -111,17 +119,23 @@ namespace SpiritMod.Items.Banners
 	public class GoldCrateMimicBanner : BaseBannerItem
 	{
 		protected override int Style => 16;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 10;
 	}
 
 	public class IronCrateMimicBanner : BaseBannerItem
 	{
 		protected override int Style => 17;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class WoodCrateMimicBanner : BaseBannerItem
 	{
 		protected override int Style => 18;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Wooden Crate Banner");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Wooden Crate Mimic Banner");
+			ItemID.Sets.KillsToBanner[Type] = 25;
+		}
 	}
 
 	public class GraniteSlimeBanner : BaseBannerItem
@@ -231,10 +245,15 @@ namespace SpiritMod.Items.Banners
 	}
 
 	public class RlyehianBanner : BaseBannerItem
-    {
+	{
 		protected override int Style => 40;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("R'lyehian Banner");
-    }
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("R'lyehian Banner");
+			ItemID.Sets.KillsToBanner[Type] = 10;
+		}
+	}
 
     public class MangoWarBanner : BaseBannerItem
     {
@@ -277,6 +296,7 @@ namespace SpiritMod.Items.Banners
     public class KakamoraShamanBanner : BaseBannerItem
 	{
 		protected override int Style => 48;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 10;
 	}
 
 	public class BriarthornSlimeBanner : BaseBannerItem
@@ -292,6 +312,7 @@ namespace SpiritMod.Items.Banners
 	public class GladeWraithBanner : BaseBannerItem
 	{
 		protected override int Style => 51;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	//public class CaptiveMaskBanner : BaseBannerItem //Removed as the NPC doesn't exist
@@ -312,6 +333,7 @@ namespace SpiritMod.Items.Banners
 	public class MechromancerBanner : BaseBannerItem
 	{
 		protected override int Style => 55;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class KakamoraBanner : BaseBannerItem
@@ -342,6 +364,7 @@ namespace SpiritMod.Items.Banners
 	public class PhantomSamuraiBanner : BaseBannerItem
 	{
 		protected override int Style => 61;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class FleshHoundBanner : BaseBannerItem
@@ -368,6 +391,7 @@ namespace SpiritMod.Items.Banners
 	public class HemaphoraBanner : BaseBannerItem
 	{
 		protected override int Style => 66;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class MyceliumBotanistBanner : BaseBannerItem
@@ -507,6 +531,7 @@ namespace SpiritMod.Items.Banners
 	public class SkeletonBruteBanner : BaseBannerItem
 	{
 		protected override int Style => 93;
+		public override void SetStaticDefaults() => ItemID.Sets.KillsToBanner[Type] = 25;
 	}
 
 	public class DraugrBanner : BaseBannerItem
@@ -517,5 +542,104 @@ namespace SpiritMod.Items.Banners
 	public class PirateLobberBanner : BaseBannerItem
 	{
 		protected override int Style => 95;
+	}
+
+	public class GranitecTurretBanner : BaseBannerItem
+	{
+		protected override int Style => 96;
+	}
+
+	public class HauntedTomeBanner : BaseBannerItem
+	{
+		protected override int Style => 97;
+	}
+
+	public class AlienBanner : BaseBannerItem
+	{
+		protected override int Style => 98;
+	}
+
+	public class SpiritTomeBanner : BaseBannerItem
+	{
+		protected override int Style => 99;
+	}
+
+	public class AncientSpectreBanner : BaseBannerItem
+	{
+		protected override int Style => 100;
+	}
+
+	public class BlizzardNimbusBanner : BaseBannerItem
+	{
+		protected override int Style => 101;
+	}
+
+	public class FallenAngelBanner : BaseBannerItem
+	{
+		protected override int Style => 102;
+	}
+
+	public class NetherbaneBanner : BaseBannerItem
+	{
+		protected override int Style => 103;
+	}
+
+	public class HydraGreenBanner : BaseBannerItem
+	{
+		protected override int Style => 104;
+	}
+
+	public class HydraPurpleBanner : BaseBannerItem
+	{
+		protected override int Style => 105;
+	}
+
+	public class HydraRedBanner : BaseBannerItem
+	{
+		protected override int Style => 106;
+
+		public override void OnSpawn(IEntitySource source) //Randomizes banner if from a Hydra npc
+		{
+			if (Main.rand.NextFloat() > 0.666666f)
+				return;
+
+			if (source is EntitySource_Loot loot && loot.Entity is NPC npc && (npc.ModNPC is Hydra || npc.ModNPC is HydraHead))
+				Item.SetDefaults(Main.rand.NextBool() ? ModContent.ItemType<HydraPurpleBanner>() : ModContent.ItemType<HydraGreenBanner>());
+		}
+	}
+
+	public class PhantomBanner : BaseBannerItem
+	{
+		protected override int Style => 107;
+	}
+
+	public class SpiritGhoulBanner : BaseBannerItem
+	{
+		protected override int Style => 108;
+	}
+
+	public class SoulCrusherBanner : BaseBannerItem
+	{
+		protected override int Style => 109;
+	}
+
+	public class SpiritFloaterBanner : BaseBannerItem
+	{
+		protected override int Style => 110;
+	}
+
+	public class SpiritBatBanner : BaseBannerItem
+	{
+		protected override int Style => 111;
+	}
+
+	public class SpiritSkullBanner : BaseBannerItem
+	{
+		protected override int Style => 112;
+	}
+
+	public class WanderingSoulBanner : BaseBannerItem
+	{
+		protected override int Style => 113;
 	}
 }

@@ -3,9 +3,9 @@ using SpiritMod.Projectiles.Bullet.Crimbine;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 {
 	public class Crimbine : ModItem
@@ -15,7 +15,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			DisplayName.SetDefault("Harvester");
 			Tooltip.SetDefault("Converts regular bullets into bones\nRight-click to shoot a slow-moving bloody amalgam\nShooting the bloody amalgam creates an explosion of organs with different effects\n5 second cooldown");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -37,29 +36,32 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			Item.useAmmo = AmmoID.Bullet;
 			Item.crit = 6;
 		}
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+
+		public override bool AltFunctionUse(Player player) => true;
+
 		public override bool CanUseItem(Player player)
 		{
-			if (player.altFunctionUse == 2) {
-
+			if (player.altFunctionUse == 2)
+			{
 				MyPlayer modPlayer = player.GetSpiritPlayer();
 				if (modPlayer.shootDelay2 == 0)
 					return true;
 				return false;
 			}
-			else {
+			else
 				return true;
-			}
 		}
+
 		public override void HoldItem(Player player)
 		{
 			MyPlayer modPlayer = player.GetSpiritPlayer();
-			if (modPlayer.shootDelay2 == 1) {
-				SoundEngine.PlaySound(SoundID.MaxMana);
-				for (int index1 = 0; index1 < 5; ++index1) {
+			if (modPlayer.shootDelay2 == 1) 
+			{
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(SoundID.MaxMana);
+
+				for (int index1 = 0; index1 < 5; ++index1) 
+				{
 					int index2 = Dust.NewDust(player.position, player.width, player.height, DustID.Blood, 0.0f, 0.0f, (int)byte.MaxValue, new Color(), (float)Main.rand.Next(20, 26) * 0.1f);
 					Main.dust[index2].noLight = false;
 					Main.dust[index2].noGravity = true;
@@ -72,12 +74,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 45f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-			{
 				position += muzzleOffset;
-			}
+
 			if (player.altFunctionUse == 2)
 			{
-				SoundEngine.PlaySound(SoundID.Item95);
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(SoundID.Item95);
+
 				MyPlayer modPlayer = player.GetSpiritPlayer();
 				modPlayer.shootDelay2 = 300;
 				type = ModContent.ProjectileType<CrimbineAmalgam>();
@@ -86,7 +89,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			}
 			else
 			{
-				SoundEngine.PlaySound(SoundID.Item11);
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(SoundID.Item11);
+
 				Item.shootSpeed = 10f;
 				float spread = 8 * 0.0174f;//45 degrees converted to radians
 				float baseSpeed = (float)velocity.Length();
@@ -94,10 +99,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 				double randomAngle = baseAngle + (Main.rand.NextFloat() - 0.5f) * spread;
 				velocity.X = baseSpeed * (float)Math.Sin(randomAngle);
 				velocity.Y = baseSpeed * (float)Math.Cos(randomAngle);
+
 				if (type == ProjectileID.Bullet)
-				{
 					type = ModContent.ProjectileType<CrimbineBone>();
-				}
 			}
 		}
 
@@ -107,13 +111,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			recipe.AddIngredient(ItemID.Boomstick);
 			recipe.AddIngredient(ItemID.TheUndertaker);
 			recipe.AddIngredient(ItemID.Handgun, 1);
-			recipe.AddIngredient(ModContent.ItemType<Items.Sets.CoilSet.CoilPistol>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<CoilSet.CoilPistol>(), 1);
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.Register();
 		}
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-10, 0);
-		}
+
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 	}
 }

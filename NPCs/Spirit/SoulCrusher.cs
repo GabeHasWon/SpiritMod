@@ -37,6 +37,9 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.noTileCollide = true;
 			NPC.lavaImmune = true;
 			NPC.buffImmune[BuffID.OnFire] = true;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.SoulCrusherBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
 		}
 

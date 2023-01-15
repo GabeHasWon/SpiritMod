@@ -78,6 +78,9 @@ namespace SpiritMod.NPCs.GraniTech
 
 			for (int k = 0; k < NPC.buffImmune.Length; k++)
 				NPC.buffImmune[k] = true;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.GranitecTurretBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

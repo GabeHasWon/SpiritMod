@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Material;
 using System.Linq;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,7 +13,6 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 			DisplayName.SetDefault("Chitin Axe");
 			Tooltip.SetDefault("Cuts down palm wood and cactus faster");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -53,7 +50,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 
 			if (SandTiles.Contains(Main.tile[mousetilecoords.X, mousetilecoords.Y].TileType) && player.WithinPlacementRange(mousetilecoords.X, mousetilecoords.Y) ||
 				Main.SmartCursorIsUsed && Main.SmartCursorShowing && SandTiles.Contains(Main.tile[Main.SmartCursorX, Main.SmartCursorY].TileType)) {
-				return 2.5f;
+				return 0.25f;
 			}
 
 			return 1f;

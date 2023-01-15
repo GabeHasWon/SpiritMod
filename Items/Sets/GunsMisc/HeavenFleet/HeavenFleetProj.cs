@@ -50,6 +50,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 			{
 				player.ChangeDir(Main.MouseWorld.X > player.position.X ? 1 : -1);
 				direction = Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))) * 10f;
+				Projectile.netUpdate = true;
 			}
 
 			Vector2 dustUnit = (direction * 2.5f).RotatedBy(Main.rand.NextFloat(-1, 1)) * 0.03f;

@@ -8,28 +8,19 @@ namespace SpiritMod.Items.Halloween
 {
 	public class MysteryCandy : CandyBase
 	{
-
-		public override void SetStaticDefaults()
+		internal override Point Size => new(24, 24);
+		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Mystery Candy");
 			Tooltip.SetDefault("Either a great treat... or a nasty trick");
 		}
 
-
-		public override void SetDefaults()
+		public override void Defaults()
 		{
-			Item.width = 20;
-			Item.height = 30;
+			Item.width = Size.X;
+			Item.height = Size.Y;
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = 30;
-
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.useTime = Item.useAnimation = 20;
-
-			Item.consumable = true;
-			Item.autoReuse = false;
-
-			Item.UseSound = SoundID.Item2;
 		}
 
 		public override bool? UseItem(Player player)

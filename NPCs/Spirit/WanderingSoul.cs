@@ -33,12 +33,16 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.aiStyle = 22;
+			NPC.stepSpeed = .5f;
+
+			for (int k = 0; k < NPC.buffImmune.Length; k++)
+				NPC.buffImmune[k] = true;
+
 			AIType = NPCID.Wraith;
 			AIType = NPCID.Wraith;
 			AnimationType = NPCID.Wraith;
-			NPC.stepSpeed = .5f;
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.WanderingSoulBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
 		}
 

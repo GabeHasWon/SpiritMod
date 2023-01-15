@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SpiritMod.Items.Accessory;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -35,6 +34,9 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 			NPC.value = Item.buyPrice(0, 0, 4, 0);
 			NPC.HitSound = SoundID.NPCHit30;
 			NPC.DeathSound = SoundID.NPCDeath49;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.BlizzardNimbusBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
