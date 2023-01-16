@@ -25,9 +25,7 @@ namespace SpiritMod.Items.Armor.SilkArmor
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);
-			recipe.AddIngredient(ItemID.Silk, 3);
-			recipe.AddRecipeGroup("SpiritMod:GoldBars");
-			recipe.AddIngredient(ItemID.FallenStar, 1);
+			recipe.AddRecipeGroup("SpiritMod:GoldBars", 2);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}

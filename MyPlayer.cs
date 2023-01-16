@@ -3612,7 +3612,7 @@ namespace SpiritMod
 											var spawnPos = new Vector2(Main.projectile[p].Center.X + 21 * Main.projectile[p].spriteDirection, Main.projectile[p].Center.Y + 12);
 
 											int num8 = Dust.NewDust(spawnPos, 0, 0, DustID.ChlorophyteWeapon, 0f, 0f, 160, new Color(209, 255, 0), .86f);
-											Main.dust[num8].shader = GameShaders.Armor.GetSecondaryShader(69, Main.LocalPlayer);
+											Main.dust[num8].shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
 											Main.dust[num8].position = new Vector2(Main.projectile[p].Center.X + 21 * Main.projectile[p].spriteDirection, Main.projectile[p].Center.Y + 12) + vector2;
 											Main.dust[num8].velocity = Main.projectile[p].velocity * 0.1f;
 											Main.dust[num8].noGravity = true;

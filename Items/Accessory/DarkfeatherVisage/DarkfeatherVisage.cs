@@ -10,8 +10,7 @@ namespace SpiritMod.Items.Accessory.DarkfeatherVisage
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Darkfeather Visage");
-            Tooltip.SetDefault("Generates exploding darkfeather bolts around the player\nIncreases magic damage by 5%\nCan be worn in the accessory or helmet slot");
-			
+            Tooltip.SetDefault("Increases magic and summon damage by 7%\nGrants a bonus when worn with a magic robe or fur coat");
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}
 
@@ -21,20 +20,18 @@ namespace SpiritMod.Items.Accessory.DarkfeatherVisage
             Item.height = 20;
             Item.value = Item.sellPrice(0, 1, 6, 0);
             Item.rare = ItemRarityID.Orange;
-            Item.defense = 1;
-            Item.accessory = true;
+            Item.defense = 2;
         }
 
-        public override void UpdateAccessory(Player player, bool hideVisual)
+		public override bool IsArmorSet(Item head, Item body, Item legs) => (body.type >= ItemID.AmethystRobe && body.type <= ItemID.DiamondRobe || body.type == ItemID.GypsyRobe || body.type == ItemID.FlinxFurCoat);
+		public override void UpdateEquip(Player player)
         {
-            player.GetDamage(DamageClass.Magic) += .05f;
-            player.GetSpiritPlayer().darkfeatherVisage = true;
+            player.GetDamage(DamageClass.MagicSummonHybrid) += .07f;
         }
-
-        public override void UpdateEquip(Player player)
-        {
-            player.GetDamage(DamageClass.Magic) += .05f;
-            player.GetSpiritPlayer().darkfeatherVisage = true;
-        }
-    }
+		public override void UpdateArmorSet(Player player)
+		{
+			player.setBonus = $"Generates exploding darkfeather bolts around the player";
+			player.GetSpiritPlayer().darkfeatherVisage = true;
+		}
+	}
 }

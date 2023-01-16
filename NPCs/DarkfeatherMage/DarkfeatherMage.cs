@@ -208,8 +208,8 @@ namespace SpiritMod.NPCs.DarkfeatherMage
                         Vector2 vector2 = Vector2.UnitX * -NPC.width / 2f;
                         vector2 += -Utils.RotatedBy(Vector2.UnitY, (j * MathHelper.Pi / 6f), default) * new Vector2(16f);
                         vector2 = Utils.RotatedBy(vector2, (NPC.rotation - MathHelper.PiOver2), default) * 1.3f;
-                        int num8 = Dust.NewDust(new Vector2(NPC.Center.X + 18 * NPC.spriteDirection, NPC.Center.Y + 12), 0, 0, DustID.Teleporter, 0f, 0f, 160, new Color(209, 255, 0), 1f);
-                        Main.dust[num8].shader = GameShaders.Armor.GetSecondaryShader(67, Main.LocalPlayer);
+                        int num8 = Dust.NewDust(new Vector2(NPC.Center.X + 18 * NPC.spriteDirection, NPC.Center.Y + 12), 0, 0, DustID.MagicMirror, 0f, 0f, 160, default, 1f);
+                        Main.dust[num8].shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
                         Main.dust[num8].position = NPC.Center + vector2;
                         Main.dust[num8].velocity = NPC.velocity * 0.1f;
                         Main.dust[num8].velocity = Vector2.Normalize(NPC.Center - NPC.velocity * 3f - Main.dust[num8].position) * 1.25f;
@@ -270,8 +270,8 @@ namespace SpiritMod.NPCs.DarkfeatherMage
                         Vector2 vector2 = Vector2.UnitX * -NPC.width / 2f;
                         vector2 += -Utils.RotatedBy(Vector2.UnitY, ((float)j * 3.141591734f / 6f), default) * new Vector2(16f, 16f);
                         vector2 = Utils.RotatedBy(vector2, (NPC.rotation - 1.57079637f), default) * 1.3f;
-                        int num8 = Dust.NewDust(new Vector2(NPC.Center.X + 21 * NPC.spriteDirection, NPC.Center.Y + 12), 0, 0, DustID.ChlorophyteWeapon, 0f, 0f, 160, new Color(209, 255, 0), .86f);
-                        Main.dust[num8].shader = GameShaders.Armor.GetSecondaryShader(69, Main.LocalPlayer);
+                        int num8 = Dust.NewDust(new Vector2(NPC.Center.X + 21 * NPC.spriteDirection, NPC.Center.Y + 12), 0, 0, DustID.ChlorophyteWeapon, 0f, 0f, 160, default, .86f);
+                        Main.dust[num8].shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
                         Main.dust[num8].position = new Vector2(NPC.Center.X + 21 * NPC.spriteDirection, NPC.Center.Y + 12) + vector2;
                         Main.dust[num8].velocity = NPC.velocity * 0.1f;
                         Main.dust[num8].noGravity = true;
@@ -372,21 +372,21 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 				Vector2[] pos = new Vector2[] { eastPosFar, westPosFar, northPosFar, southPosFar };
 				for (int i = 0; i < pos.Length; ++i)
 				{
-					int d4 = Dust.NewDust(pos[i], 2, 2, DustID.Teleporter, 0f, 0f, 0, new Color(209, 255, 0), 1f);
-					Main.dust[d4].shader = GameShaders.Armor.GetSecondaryShader(67, Main.LocalPlayer);
+					int d4 = Dust.NewDust(pos[i], 2, 2, DustID.MagicMirror, 0f, 0f, 0, default, 1f);
+					Main.dust[d4].shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
 				}
 
-                Vector2 eastPosClose = NPC.Center + new Vector2((Closeness - 30f) * (float)Math.Sin(radians), (Closeness - 30f) * (float)Math.Cos(radians));
+				Vector2 eastPosClose = NPC.Center + new Vector2((Closeness - 30f) * (float)Math.Sin(radians), (Closeness - 30f) * (float)Math.Cos(radians));
                 Vector2 westPosClose = NPC.Center - new Vector2((Closeness - 30f) * (float)Math.Sin(radians), (Closeness - 30f) * (float)Math.Cos(radians));
                 Vector2 northPosClose = NPC.Center + new Vector2((Closeness - 30f) * (float)Math.Sin(radians + 1.57), (Closeness - 30f) * (float)Math.Cos(radians + 1.57));
                 Vector2 southPosClose = NPC.Center - new Vector2((Closeness - 30f) * (float)Math.Sin(radians + 1.57), (Closeness - 30f) * (float)Math.Cos(radians + 1.57));
 				pos = new Vector2[] { eastPosClose, westPosClose, northPosClose, southPosClose };
 				for (int i = 0; i < pos.Length; ++i)
 				{
-					int d = Dust.NewDust(eastPosClose, 2, 2, DustID.Teleporter, 0f, 0f, 0, new Color(209, 255, 0), 1f);
-					Main.dust[d].shader = GameShaders.Armor.GetSecondaryShader(67, Main.LocalPlayer);
+					int d = Dust.NewDust(eastPosClose, 2, 2, DustID.MagicMirror, 0f, 0f, 0, default, 1f);
+					Main.dust[d].shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
 				}
-            }
+			}
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -421,7 +421,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 			};
             Vector2 position3 = position1 + new Vector2(26.0f * NPC.spriteDirection, offsetY);
 
-            Color color3 = new Color(137, 209, 61) * 1.6f;
+            Color color3 = new Color(120, 200, 160) * 1.6f;
             Main.spriteBatch.Draw(texture2D2, position3, r2, color3, NPC.rotation, drawOrigin, NPC.scale * 0.275f, SpriteEffects.FlipHorizontally, 0.0f);
             float num15 = 1f + num11 * 0.75f;
             Main.spriteBatch.Draw(texture2D2, position3, r2, color3 * num12, NPC.rotation, drawOrigin, NPC.scale * 0.275f * num15, SpriteEffects.FlipHorizontally, 0.0f);
