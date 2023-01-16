@@ -28,6 +28,7 @@ using SpiritMod.Items.Sets.LaunchersMisc.Liberty;
 using SpiritMod.Items.Placeable.Furniture.Paintings;
 using SpiritMod.Buffs.DoT;
 using SpiritMod.World;
+using Terraria.GameContent.Events;
 
 namespace SpiritMod.NPCs
 {
@@ -623,6 +624,8 @@ namespace SpiritMod.NPCs
 			{
 				if (Main.halloween)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<CandyBowl>(), false);
+				if (LanternNight.LanternsUp)
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Tiles.Furniture.FestivalLanternItem>(), false);
 			}
 			else if (type == NPCID.ArmsDealer)
 			{

@@ -7,7 +7,6 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.GameContent;
 using ReLogic.Content;
-using SpiritMod.Buffs;
 
 namespace SpiritMod.Projectiles.Flail
 {
@@ -36,7 +35,7 @@ namespace SpiritMod.Projectiles.Flail
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Clatter Mace");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
 		public override void SetDefaults()
@@ -67,8 +66,6 @@ namespace SpiritMod.Projectiles.Flail
 			}
 
 			Vector2 mountedCenter = player.MountedCenter;
-			bool doFastThrowDust = false;
-			bool shouldOwnerHitCheck = false;
 			int launchTimeLimit = 15;  // How much time the projectile can go before retracting (speed and shootTimer will set the flail's range)
 			float launchSpeed = 10f; // How fast the projectile can move
 			float maxLaunchLength = 600f; // How far the projectile's chain can stretch before being forced to retract when in launched state
@@ -102,7 +99,6 @@ namespace SpiritMod.Projectiles.Flail
 			{
 				case AIState.Spinning:
 					{
-						shouldOwnerHitCheck = true;
 						if (Projectile.owner == Main.myPlayer)
 						{
 							Vector2 unitVectorTowardsMouse = mountedCenter.DirectionTo(Main.MouseWorld).SafeNormalize(Vector2.UnitX * player.direction);
@@ -135,7 +131,6 @@ namespace SpiritMod.Projectiles.Flail
 					}
 				case AIState.LaunchingForward:
 					{
-						doFastThrowDust = true;
 						bool shouldSwitchToRetracting = StateTimer++ >= launchTimeLimit;
 						shouldSwitchToRetracting |= Projectile.Distance(mountedCenter) >= maxLaunchLength;
 						if (player.controlUseItem) // If the player clicks, transition to the Dropping state
@@ -404,8 +399,6 @@ namespace SpiritMod.Projectiles.Flail
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			// Flails do a few custom things, you'll want to keep these to have the same feel as vanilla flails.
-
 			// The hitDirection is always set to hit away from the player, even if the flail damages the npc while returning
 			hitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
 
@@ -460,7 +453,7 @@ namespace SpiritMod.Projectiles.Flail
 			int chainCount = 0;
 			float chainLengthRemainingToDraw = vectorFromProjectileToPlayerArms.Length() + chainSegmentLength / 2f;
 
-			// This while loop draws the chain texture from the projectile to the player, looping to draw the chain texture along the path
+			// Chain drawing from the projectile to the player
 			while (chainLengthRemainingToDraw > 0f)
 			{
 				// This code gets the lighting at the current tile coordinates
@@ -475,7 +468,6 @@ namespace SpiritMod.Projectiles.Flail
 				chainLengthRemainingToDraw -= chainSegmentLength;
 			}
 
-			// Add a motion trail when moving forward, like most flails do (don't add trail if already hit a tile)
 			if (CurrentAIState == AIState.LaunchingForward)
 			{
 				Texture2D projectileTexture = TextureAssets.Projectile[Projectile.type].Value;

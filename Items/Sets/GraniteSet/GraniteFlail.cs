@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Flail;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,9 +11,10 @@ namespace SpiritMod.Items.Sets.GraniteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Colonnade");
+			DisplayName.SetDefault("Unstable Star");
 			Tooltip.SetDefault("Killing enemies with this weapon causes them to explode into damaging energy wisps");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteFlail_Glow");
+			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
 		}
 
 		public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			Item.height = 30;
 			Item.value = Item.sellPrice(0, 0, 80, 0);
 			Item.rare = ItemRarityID.Green;
-			Item.damage = 38;
+			Item.damage = 20;
 			Item.knockBack = 7;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useTime = Item.useAnimation = 41;

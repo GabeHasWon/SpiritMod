@@ -1,4 +1,4 @@
-using SpiritMod.Tiles.Furniture;
+﻿using SpiritMod.Tiles.Furniture;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,11 +6,11 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Items.Consumable
 {
-	public class ReachCrate : ModItem
+	internal class BriarCrate : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thorny Crate");
+			DisplayName.SetDefault("Thistle Crate");
 			Tooltip.SetDefault("Right click to open");
 		}
 
@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Consumable
 			Item.height = 20;
 			Item.rare = ItemRarityID.Green;
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.createTile = ModContent.TileType<ReachCrate_Tile>();
+			Item.createTile = ModContent.TileType<BriarCrate_Tile>();
 			Item.maxStack = 999;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
@@ -42,19 +42,27 @@ namespace SpiritMod.Items.Consumable
 				int loot1 = Main.rand.Next(lootTable1.Length);
 				player.QuickSpawnItem(source, Mod.Find<ModItem>(lootTable1[loot1]).Type);
 			}
+
 			if (Main.rand.NextBool(4))
 			{
 				int stack = Main.rand.Next(5, 12);
 				player.QuickSpawnItem(source, 73, stack);
 			}
-
-			if (Main.rand.NextBool(7))
+			if (Main.rand.NextBool(14))
 			{
 				int[] ores = { 12, 11, 13, 14, 699, 700, 701, 702 };
 				int loot2 = Main.rand.Next(ores.Length);
 				int oreamt = Main.rand.Next(10, 20);
 				for (int j = 0; j < oreamt; j++)
 					player.QuickSpawnItem(source, ores[loot2]);
+			}
+			if (Main.rand.NextBool(14))
+			{
+				int[] hmores = { 364, 365, 366, 1104, 1105, 1106 };
+				int loot2 = Main.rand.Next(hmores.Length);
+				int hmoreamt = Main.rand.Next(10, 20);
+				for (int j = 0; j < hmoreamt; j++)
+					player.QuickSpawnItem(source, hmores[loot2]);
 			}
 			if (Main.rand.NextBool(4))
 			{
@@ -64,13 +72,20 @@ namespace SpiritMod.Items.Consumable
 				for (int j = 0; j < baitamt; j++)
 					player.QuickSpawnItem(source, lootTable3[loot3]);
 			}
-
-			if (Main.rand.NextBool(4))
+			if (Main.rand.NextBool(12))
 			{
 				int[] lootTable2 = { 19, 20, 21, 22, 703, 704, 705, 706 };
 				int loot2 = Main.rand.Next(lootTable2.Length);
 				int baramt = Main.rand.Next(10, 20);
 				for (int j = 0; j < baramt; j++)
+					player.QuickSpawnItem(source, lootTable2[loot2]);
+			}
+			if(Main.rand.NextBool(6))
+			{
+				int[] lootTable2 = { 381, 382, 391, 1184, 1191, 1198 };
+				int loot2 = Main.rand.Next(lootTable2.Length);
+				int hmbaramt = Main.rand.Next(8, 20);
+				for (int j = 0; j < hmbaramt; j++)
 					player.QuickSpawnItem(source, lootTable2[loot2]);
 			}
 			if (Main.rand.NextBool(2))
@@ -81,11 +96,10 @@ namespace SpiritMod.Items.Consumable
 				for (int j = 0; j < potamt; j++)
 					player.QuickSpawnItem(source, potions);
 			}
-
 			if (Main.rand.NextBool(2))
 			{
 				int recoveryPots;
-				recoveryPots = Main.rand.Next(new int[] { 188, 189 });
+				recoveryPots = Main.rand.Next(new int[] { 188, 189});
 				int recamt = Main.rand.Next(5, 17);
 				for (int j = 0; j < recamt; j++)
 					player.QuickSpawnItem(source, recoveryPots);

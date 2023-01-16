@@ -124,9 +124,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 				{
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Tiles.Furniture.JadeDragonStatue.DragonStatueItem>(), false);
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Equipment.DynastyFan>(), false);
-					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Summon.JadeStaff>(), false);
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Swung.AnimeSword.AnimeSword>(), false);
-					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Tiles.Furniture.FestivalLanternItem>(), false);
 				}
 
 				if (QuestManager.GetQuest<ZombieOriginQuest>().IsCompleted)

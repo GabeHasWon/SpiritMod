@@ -946,8 +946,11 @@ namespace SpiritMod
 			if (modPlayer.ZoneReach && Main.rand.NextBool(5))
 				itemDrop = ModContent.ItemType<Items.Sets.BriarDrops.ReachFishingCatch>();
 
-			if (modPlayer.ZoneReach && Main.rand.NextBool(Player.cratePotion ? 25 : 45))
+			if (modPlayer.ZoneReach && !Main.hardMode && Main.rand.NextBool(Player.cratePotion ? 25 : 45))
 				itemDrop = ModContent.ItemType<ReachCrate>();
+
+			if (modPlayer.ZoneReach && Main.hardMode && Main.rand.NextBool(Player.cratePotion ? 25 : 45))
+				itemDrop = ModContent.ItemType<BriarCrate>();
 
 			if (modPlayer.ZoneReach && Main.rand.NextBool(25))
 				itemDrop = ModContent.ItemType<ThornDevilfish>();
