@@ -10,25 +10,25 @@ namespace SpiritMod.Items.Sets.FlailsMisc.ClatterMace
 		{
 			DisplayName.SetDefault("Clattering Mace");
 			Tooltip.SetDefault("Has a chance to lower enemy defense on hit");
+			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
 		}
 
 		public override void SetDefaults()
 		{
-			Item.width = 30;
-			Item.height = 10;
+			Item.width = 38;
+			Item.height = 34;
 			Item.value = Item.sellPrice(0, 0, 60, 0);
 			Item.rare = ItemRarityID.Green;
-			Item.damage = 19;
-			Item.knockBack = 5.4f;
+			Item.damage = 10;
+			Item.knockBack = 5.5f;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useTime = Item.useAnimation = 30;
-			Item.scale = 1.1F;
 			Item.DamageType = DamageClass.Melee;
 			Item.noMelee = true;
 			Item.channel = true;
 			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<ClatterMaceProj>();
-			Item.shootSpeed = 12.5F;
+			Item.shootSpeed = 12.5f;
 			Item.UseSound = SoundID.Item1;
 		}
 	}
