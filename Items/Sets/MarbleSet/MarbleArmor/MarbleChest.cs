@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.accRunSpeed *= 1.1f;
+			player.maxRunSpeed *= 1.1f;
 			player.moveSpeed *= 1.1f; 
 			player.runAcceleration *= 2f;
 			player.runSlowdown *= 2f;
