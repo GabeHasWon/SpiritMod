@@ -28,6 +28,7 @@ using SpiritMod.Items.Sets.LaunchersMisc.Liberty;
 using SpiritMod.Items.Placeable.Furniture.Paintings;
 using SpiritMod.Buffs.DoT;
 using SpiritMod.World;
+using Terraria.GameContent.Events;
 
 namespace SpiritMod.NPCs
 {
@@ -148,8 +149,8 @@ namespace SpiritMod.NPCs
 			Vector2 dist = npc.position - player.position;
 			if (Main.netMode != NetmodeID.Server)
 			{
-				if (player.GetModPlayer<MyPlayer>().HellGaze == true && Math.Sqrt((dist.X * dist.X) + (dist.Y * dist.Y)) < 160 && Main.rand.NextBool(80) && !npc.friendly)
-					npc.AddBuff(24, 130, false);
+				if (player.GetModPlayer<MyPlayer>().HellGaze == true && Math.Sqrt((dist.X * dist.X) + (dist.Y * dist.Y)) < 400 && Main.rand.NextBool(80) && !npc.friendly)
+					npc.AddBuff(BuffID.OnFire3, 300, false);
 				dist = npc.Center - new Vector2(modPlayer.clockX, modPlayer.clockY);
 				if (player.GetModPlayer<MyPlayer>().clockActive == true && Math.Sqrt((dist.X * dist.X) + (dist.Y * dist.Y)) < 175 && !npc.friendly)
 					npc.AddBuff(ModContent.BuffType<Stopped>(), 3);
@@ -623,6 +624,8 @@ namespace SpiritMod.NPCs
 			{
 				if (Main.halloween)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<CandyBowl>(), false);
+				if (LanternNight.LanternsUp)
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Tiles.Furniture.FestivalLanternItem>(), false);
 			}
 			else if (type == NPCID.ArmsDealer)
 			{

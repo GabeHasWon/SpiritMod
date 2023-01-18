@@ -51,8 +51,8 @@ namespace SpiritMod.Items.Halloween
 
 
 		private int pieces;
-		private byte[] candy;
-		private byte[] variants;
+		private readonly byte[] candy;
+		private readonly byte[] variants;
 
 		public bool ContainsCandy => pieces > 0;
 		public bool Full => pieces >= MaxCandy;
@@ -122,15 +122,12 @@ namespace SpiritMod.Items.Halloween
 			}
 		}
 
-		public override bool CanRightClick()
-		{
-			return ContainsCandy;
-		}
+		public override bool CanRightClick() => ContainsCandy;
 
 		public override void RightClick(Player player)
 		{
 			//Needed to counter the default consuption.
-			this.Item.stack++;
+			Item.stack++;
 
 			if (!ContainsCandy)
 				return;

@@ -28,7 +28,6 @@ namespace SpiritMod.Items.Accessory.Leather
 		{
 			player.GetSpiritPlayer().bloodfireShield = true;
 			player.statLifeMax2 += 40; 
-			//player.endurance += .04f * player.GetSpiritPlayer().bloodfireShieldStacks;
 		}
 
 		public override void AddRecipes()

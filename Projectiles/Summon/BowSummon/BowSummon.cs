@@ -11,7 +11,16 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 {
 	public class BowSummon : ModProjectile
 	{
-		int timer = 0;
+		private int Timer
+		{
+			get => (int)Projectile.ai[0];
+			set => Projectile.ai[0] = value;
+		}
+		private int TargetIndex
+		{
+			get => (int)Projectile.ai[1];
+			set => Projectile.ai[1] = value;
+		}
 
 		public override void SetStaticDefaults()
 		{
@@ -42,14 +51,10 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 
 		public override void AI()
 		{
-			bool flag64 = Projectile.type == ModContent.ProjectileType<BowSummon>();
 			Player player = Main.player[Projectile.owner];
 
-			if (flag64)
-			{
-				if (player.HasAccessory<BowSummonItem>())
-					Projectile.timeLeft = 2;
-			}
+			if (player.HasAccessory<BowSummonItem>())
+				Projectile.timeLeft = 2;
 
 			for (int i = 0; i < Main.maxProjectiles; i++)
 			{
@@ -67,30 +72,26 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 				}
 			}
 
-			float num529 = 900f;
-			bool flag19 = false;
+			float minDist = 900f;
+			bool foundTarget = false;
 
-			if (Projectile.ai[0] == 0f)
+			for (int n = 0; n < 200; n++)
 			{
-				for (int num531 = 0; num531 < 200; num531++)
+				if (Main.npc[n].CanBeChasedBy(Projectile, false))
 				{
-					if (Main.npc[num531].CanBeChasedBy(Projectile, false))
+					float num532 = Main.npc[n].position.X + 40 + (Main.npc[n].width / 2);
+					float num533 = Main.npc[n].position.Y - 90 + (Main.npc[n].height / 2);
+					float num534 = Math.Abs(Projectile.position.X + (Projectile.width / 2) - num532) + Math.Abs(Projectile.position.Y + (Projectile.height / 2) - num533);
+
+					if (num534 < minDist && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[n].position, Main.npc[n].width, Main.npc[n].height))
 					{
-						float num532 = Main.npc[num531].position.X + 40 + (Main.npc[num531].width / 2);
-						float num533 = Main.npc[num531].position.Y - 90 + (Main.npc[num531].height / 2);
-						float num534 = Math.Abs(Projectile.position.X + (Projectile.width / 2) - num532) + Math.Abs(Projectile.position.Y + (Projectile.height / 2) - num533);
-						if (num534 < num529 && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[num531].position, Main.npc[num531].width, Main.npc[num531].height))
-						{
-							num529 = num534;
-							flag19 = true;
-						}
+						minDist = num534;
+						foundTarget = true;
 					}
 				}
 			}
-			else
-				Projectile.tileCollide = false;
 
-			if (!flag19)
+			if (!foundTarget)
 			{
 				Projectile.friendly = true;
 				Projectile.position.X = Main.player[Projectile.owner].Center.X - (Projectile.width * .5f);
@@ -99,12 +100,11 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 				Projectile.spriteDirection = Main.player[Projectile.owner].direction;
 				Projectile.frame = 0;
 			}
-
 			else
 			{
 				Projectile.spriteDirection = 1;
-				timer++;
-				if (timer >= 70)
+				Timer++;
+				if (Timer >= 70)
 				{
 					int range = 30;   //How many tiles away the projectile targets NPCs
 					float shootVelocity = 16f; //magnitude of the shoot vector (speed of arrows shot)
@@ -127,14 +127,14 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 									lowestDist = dist;
 
 									//target this npc
-									Projectile.ai[1] = npc.whoAmI;
+									TargetIndex = npc.whoAmI;
 									Projectile.netUpdate = true;
 								}
 							}
 						}
 					}
 
-					NPC target = Main.npc[(int)Projectile.ai[1]];
+					NPC target = Main.npc[TargetIndex];
 
 					if (target.CanBeChasedBy(Projectile, false))
 						Projectile.rotation = Projectile.DirectionTo(target.Center).ToRotation();
@@ -175,20 +175,22 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 							direction *= 0.5f;
 						}
 
-						int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, direction, shootType, damage, Projectile.knockBack, player.whoAmI);
-						Main.projectile[proj2].DamageType = DamageClass.Summon;
-						Main.projectile[proj2].netUpdate = true;
-						Main.projectile[proj2].friendly = true;
+						Projectile newProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, direction, shootType, damage, Projectile.knockBack, player.whoAmI);
+						newProj.DamageType = DamageClass.Summon;
+						newProj.friendly = true;
+						newProj.netUpdate = true;
 
-						GItem.UseAmmoDirect(Main.player[Projectile.owner], selectedIndex);
+						GItem.UseAmmoDirect(player, selectedIndex);
 
 						Projectile.frame = 0;
-						timer = 0;
+						Timer = 0;
+
+						Projectile.netUpdate = true;
 					}
 				}
 
-				Projectile.position.X = Main.player[Projectile.owner].Center.X - (Projectile.width * .5f);
-				Projectile.position.Y = Main.player[Projectile.owner].Center.Y - (Projectile.width * .5f) - 40;
+				Projectile.position.X = player.Center.X - (Projectile.width * .5f);
+				Projectile.position.Y = player.Center.Y - (Projectile.width * .5f) - 40;
 			}
 		}
 

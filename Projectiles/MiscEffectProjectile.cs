@@ -24,7 +24,8 @@ namespace SpiritMod.Projectiles
 			// Ace of Clubs
 			if (modPlayer.AceOfClubs && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
-				int money = (int)(300 * MathHelper.Clamp((float)damage / target.lifeMax, 1 / 295f, 1f));
+				//int money = (int)(300 * MathHelper.Clamp(damage / target.lifeMax, 1 / 295f, 1f));
+				int money = (int)(50 * damage);
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<ClubDust>(), 0, -0.8f);
 
@@ -65,8 +66,8 @@ namespace SpiritMod.Projectiles
 				}
 			}
 
-			/* Ace of Hearts
-			if (modPlayer.AceOfHearts && target.life <= 0 && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
+			//Ace of Hearts
+			if (modPlayer.AceOfHearts && Main.rand.NextBool(6) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
 			{
 				ItemUtils.NewItemWithSync(projectile.GetSource_OnHit(target), projectile.owner, (int)target.position.X, (int)target.position.Y, target.width, target.height, Main.halloween ? ItemID.CandyApple : ItemID.Heart);
 				for (int i = 0; i < 3; i++)
@@ -74,13 +75,12 @@ namespace SpiritMod.Projectiles
 			}
 
 			// Ace of Diamonds
-			if (modPlayer.AceOfDiamonds && target.life <= 0 && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
+			if (modPlayer.AceOfDiamonds && Main.rand.NextBool(6) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue)
 			{
 				ItemUtils.NewItemWithSync(projectile.GetSource_OnHit(target), projectile.owner, (int)target.position.X, (int)target.position.Y, target.width, target.height, ModContent.ItemType<Items.Accessory.AceCardsSet.DiamondAce>());
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<DiamondDust>(), 0, -0.8f);
 			}
-			*/
 
 			// Geode Set
 			if (projectile.friendly && projectile.IsThrown() && Main.rand.NextBool(4) && modPlayer.geodeSet)

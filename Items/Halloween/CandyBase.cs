@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Halloween
 {
-	public abstract class CandyBase : ModItem
+	public abstract class CandyBase : FoodItem
 	{
 		public override bool ItemSpace(Player player)
 		{
@@ -42,10 +42,7 @@ namespace SpiritMod.Items.Halloween
 				tooltips.Add(new TooltipLine(Mod, "RightclickHint", "Right click to put into Candy Bag"));
 		}
 
-		public override bool CanRightClick()
-		{
-			return ItemSpace(Main.player[Main.myPlayer]);
-		}
+		public override bool CanRightClick() => ItemSpace(Main.player[Main.myPlayer]);
 
 		public override void RightClick(Player player)
 		{

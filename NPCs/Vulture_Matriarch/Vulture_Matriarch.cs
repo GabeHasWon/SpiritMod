@@ -13,7 +13,6 @@ using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Vulture_Matriarch
 {
-	[AutoloadBossHead]
 	public class Vulture_Matriarch : ModNPC
 	{
 		public bool gliding = false;

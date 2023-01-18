@@ -128,7 +128,7 @@ namespace SpiritMod.Projectiles.Summon
 
 			bool flag = false;
 			Vector2 value = Vector2.Zero;
-			float num5 = 280f;
+			float num5 = 480f; //distance to start following
 			for (int i = 0; i < 200; i++) {
 				if (Main.npc[i].CanBeChasedBy(this, false)) {
 					float num6 = Main.npc[i].position.X + (float)(Main.npc[i].width / 2);
@@ -145,7 +145,7 @@ namespace SpiritMod.Projectiles.Summon
 				Vector2 vector = value - Projectile.Center;
 				vector.Normalize();
 				vector *= 0.75f;
-				Projectile.velocity = (Projectile.velocity * 11f + vector) / 11f;
+				Projectile.velocity = (Projectile.velocity * 10f + vector) / 10f; 
 				return false;
 			}
 
@@ -160,6 +160,7 @@ namespace SpiritMod.Projectiles.Summon
 			Projectile.velocity *= 0f;
 			Projectile.alpha = 255;
 			Projectile.timeLeft = 3;
+			target.AddBuff(ModContent.BuffType<Buffs.SummonTag.SummonTag5>(), 180, true);
 		}
 
 		public override void Kill(int timeLeft)

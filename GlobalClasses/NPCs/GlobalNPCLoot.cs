@@ -79,10 +79,9 @@ namespace SpiritMod.GlobalClasses.NPCs
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<TrapperGlove>(), npc, NPCID.ManEater);
 			DropLoot(npcLoot, 500, 500, ModContent.ItemType<SnakeStaff>(), npc, NPCID.Lihzahrd, NPCID.LihzahrdCrawler);
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<Glyph>(), npc, NPCID.Tim, NPCID.RuneWizard);
-			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Consumable.Potion.BottomlessAle>(), npc, NPCID.Pixie);
-			DropLoot(npcLoot, 250, 200, ModContent.ItemType<ContentItems.Accessory.Ukelele.Ukelele>(), npc, NPCID.AngryNimbus);
-			DropLoot(npcLoot, 100, 95, ModContent.ItemType<ContentItems.Accessory.BowSummonItem.BowSummonItem>(), npc, NPCID.GoblinArcher);
-			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Accessory.FlyingFishFin.Flying_Fish_Fin>(), npc, NPCID.FlyingFish);
+			DropLoot(npcLoot, 200, 150, ModContent.ItemType<ContentItems.Accessory.Ukelele.Ukelele>(), npc, NPCID.AngryNimbus);
+			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Accessory.BowSummonItem.BowSummonItem>(), npc, NPCID.GoblinArcher);
+			DropLoot(npcLoot, 50, 50, ModContent.ItemType<ContentItems.Accessory.FlyingFishFin.Flying_Fish_Fin>(), npc, NPCID.FlyingFish);
 			DropLoot(npcLoot, 3, 3, ModContent.ItemType<ContentItems.Accessory.SeaSnailVenom.Sea_Snail_Poison>(), npc, NPCID.SeaSnail);
 			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Sets.SlingHammerSubclass.PossessedHammer>(), npc, NPCID.PossessedArmor);
 			DropLoot(npcLoot, 90, 75, ModContent.ItemType<GoblinSorcererStaff>(), npc, NPCID.GoblinSorcerer);

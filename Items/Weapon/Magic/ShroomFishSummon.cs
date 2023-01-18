@@ -12,20 +12,20 @@ namespace SpiritMod.Items.Weapon.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Fungal Icthyoid");
-			Tooltip.SetDefault("Summons slow, homing spores around the player\nThese spores do not take up minion slots");
+			Tooltip.SetDefault("Summons slow homing spores around the player\n5 summon tag damage");
 
 			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			Item.damage = 12;
+			Item.damage = 20;
 			Item.noMelee = true;
 			Item.DamageType = DamageClass.Summon;
 			Item.width = 32;
 			Item.height = 42;
 			Item.useTime = Item.useAnimation = 27;
-			Item.mana = 14;
+			Item.mana = 8;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 3;
 			Item.value = Item.sellPrice(0, 0, 65, 0);

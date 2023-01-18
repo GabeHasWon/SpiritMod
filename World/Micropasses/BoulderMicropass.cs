@@ -1,12 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using System.Collections.Generic;
 using System.Linq;
-using SpiritMod.Tiles.Block.Ambient;
-using SpiritMod.Tiles.Block.Ambient.WeatheredMoss;
 
 namespace SpiritMod.World.Micropasses
 {

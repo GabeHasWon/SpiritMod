@@ -7,6 +7,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
+using SpiritMod;
 
 namespace SpiritMod.NPCs.PirateLobber
 {
@@ -126,6 +127,8 @@ namespace SpiritMod.NPCs.PirateLobber
 			npcLoot.AddCommon(ItemID.PirateStaff, 1500);
 			npcLoot.AddCommon(ItemID.Cutlass, 200);
 			npcLoot.AddCommon(ItemID.GoldRing, 200);
+			npcLoot.AddCommon(ModContent.ItemType<Items.Consumable.Potion.BottomlessAle>(), 100);
+
 
 			int[] GoldFurniture = new int[] { ItemID.GoldenBathtub, ItemID.GoldenBed, ItemID.GoldenBookcase, ItemID.GoldenCandelabra, ItemID.GoldenCandle, ItemID.GoldenChair, ItemID.GoldenChandelier,
 					ItemID.GoldenChest, ItemID.GoldenClock, ItemID.GoldenDoor, ItemID.GoldenDresser, ItemID.GoldenLamp, ItemID.GoldenLantern, ItemID.GoldenPiano, ItemID.GoldenShower, ItemID.GoldenSink,

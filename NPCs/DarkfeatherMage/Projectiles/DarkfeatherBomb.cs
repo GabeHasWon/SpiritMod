@@ -25,6 +25,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
             Projectile.hostile = true;
             Projectile.penetrate = 2;
             Projectile.timeLeft = 90;
+			Projectile.DamageType = DamageClass.MagicSummonHybrid; 
 		}
 
 		public override void AI()
@@ -35,7 +36,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
             Projectile.ai[0] += .1135f;
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             int num623 = Dust.NewDust(Projectile.Center, 4, 4, DustID.ChlorophyteWeapon, 0f, 0f, 0, default, 1f);
-            Main.dust[num623].shader = GameShaders.Armor.GetSecondaryShader(67, Main.LocalPlayer);
+            Main.dust[num623].shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
             if (Projectile.scale > .5f)
                 Main.dust[num623].noGravity = true;
             else
@@ -60,9 +61,9 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
 
                 for (int k = 0; k < 35; k++)
                 {
-                    Dust d = Dust.NewDustPerfect(Projectile.Center, 159, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.8f, 1.2f));
+                    Dust d = Dust.NewDustPerfect(Projectile.Center, DustID.MagicMirror, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.5f, 1.0f));
                     d.noGravity = false;
-                    d.shader = GameShaders.Armor.GetSecondaryShader(67, Main.LocalPlayer);
+                    d.shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
                 }
             });
         }

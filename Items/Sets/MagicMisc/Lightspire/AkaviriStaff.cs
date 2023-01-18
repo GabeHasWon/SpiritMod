@@ -63,11 +63,11 @@ namespace SpiritMod.Items.Sets.MagicMisc.Lightspire
                     Vector2 mouse = Main.MouseWorld;
                     Vector2 offset = Vector2.Normalize(mouse - player.position) * 23f;
                     int dust = Dust.NewDust(projectile.Center + offset, projectile.width, projectile.height, DustID.ChlorophyteWeapon, 0f, 0f, 0, default, 1f);
-                    Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(69, Main.LocalPlayer);
+                    Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
                     Main.dust[dust].velocity *= -1f;
                     Main.dust[dust].noGravity = true;
                     Vector2 vector2_1 = Vector2.Normalize(new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101)));
-                    Vector2 vector2_2 = vector2_1 * ((float)Main.rand.Next(50, 100) * 0.04f);
+                    Vector2 vector2_2 = vector2_1 * ((float)Main.rand.Next(27, 100) * 0.04f);
                     Main.dust[dust].velocity = vector2_2;
                     vector2_2.Normalize();
                     Vector2 vector2_3 = vector2_2 * 34f;
@@ -88,7 +88,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.Lightspire
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Lighting.AddLight(Item.position, 0.08f, .38f, .24f);
+			Lighting.AddLight(Item.position, 153, 255, 255);
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 	}

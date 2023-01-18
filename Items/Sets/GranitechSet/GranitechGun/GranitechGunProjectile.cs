@@ -94,7 +94,6 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 				if (p.ModProjectile is GranitechGunBullet bullet)
 					bullet.spawnRings = true;
 
-				//Main.PlaySound(Terraria.ID.SoundID.Item11, projectile.Center);
 				if (!Main.dedServ)
 					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyShoot") with { PitchVariance = 0.1f, Volume = 0.25f }, pos);
 

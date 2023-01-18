@@ -7,7 +7,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Accessory.MeleeCharmTree;
-using SpiritMod.Items.BossLoot.DuskingDrops;
 using SpiritMod.Items.Accessory.MageTree;
 using SpiritMod.Items.Sets.CascadeSet.Armor;
 using System.Collections.Generic;
@@ -99,7 +98,7 @@ namespace SpiritMod.GlobalClasses.Players
 		public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
 		{
 			// Twilight Talisman & Shadow Gauntlet
-			if ((Player.HasAccessory<Twilight1>() && Main.rand.NextBool(13)) || (Player.HasAccessory<ShadowGauntlet>() && Main.rand.NextBool(2)))
+			if (Player.HasAccessory<Twilight1>() && Main.rand.NextBool(13))
 				target.AddBuff(BuffID.ShadowFlame, 180);
 
 			// Ace of Spades
@@ -117,7 +116,7 @@ namespace SpiritMod.GlobalClasses.Players
 		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			// Twilight Talisman & Shadow Gauntlet
-			bool shadowFlameCondition = (Player.HasAccessory<Twilight1>() && Main.rand.NextBool(15)) || (Player.HasAccessory<ShadowGauntlet>() && proj.IsMelee() && Main.rand.NextBool(2));
+			bool shadowFlameCondition = Player.HasAccessory<Twilight1>() && Main.rand.NextBool(15);
 			AddBuffWithCondition(shadowFlameCondition, target, BuffID.ShadowFlame, 180);
 		}
 
@@ -142,14 +141,6 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public override void PostUpdateEquips()
 		{
-			// Shadow Gauntlet
-			if (Player.HasAccessory<ShadowGauntlet>())
-			{
-				Player.kbGlove = true;
-				Player.GetDamage(DamageClass.Melee) += 0.07f;
-				Player.GetAttackSpeed(DamageClass.Melee) += 0.07f;
-			}
-
 			if (!Player.dead && Player.active)
 			{
 				if (Player.HasAccessory<UmbillicalEyeball>() && Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()] < 3)
@@ -178,13 +169,6 @@ namespace SpiritMod.GlobalClasses.Players
 					}
 				}
 			}
-		}
-
-		public override void MeleeEffects(Item item, Rectangle hitbox)
-		{
-			// Shadow Gauntlet
-			if (Player.HasAccessory<ShadowGauntlet>() && item.IsMelee())
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Shadowflame);
 		}
 
 		public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)

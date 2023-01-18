@@ -36,42 +36,60 @@ namespace SpiritMod.Items.Consumable
 			int loot = Main.rand.Next(lootTable.Length);
 			var source = player.GetSource_OpenItem(Item.type, "RightClick");
 			player.QuickSpawnItem(source, Mod.Find<ModItem>(lootTable[loot]).Type, Main.rand.Next(3, 5));
-			if (NPC.downedBoss1 && Main.rand.NextBool(2))
+			if (Main.rand.NextBool(2))
 			{
 				string[] lootTable1 = { "ReachBrooch", "ReachBoomerang", "ThornHook", "ReachChestMagic" };
 				int loot1 = Main.rand.Next(lootTable1.Length);
 				player.QuickSpawnItem(source, Mod.Find<ModItem>(lootTable1[loot1]).Type);
 			}
-			int[] lootTable3 = { 2674, 2675 };
-			int loot3 = Main.rand.Next(lootTable3.Length);
-			int baitamt = Main.rand.Next(2, 6);
+			if (Main.rand.NextBool(4))
+			{
+				int stack = Main.rand.Next(5, 12);
+				player.QuickSpawnItem(source, 73, stack);
+			}
 
-			for (int j = 0; j < baitamt; j++)
-				player.QuickSpawnItem(source, lootTable3[loot3]);
+			if (Main.rand.NextBool(7))
+			{
+				int[] ores = { 12, 11, 13, 14, 699, 700, 701, 702 };
+				int loot2 = Main.rand.Next(ores.Length);
+				int oreamt = Main.rand.Next(10, 20);
+				for (int j = 0; j < oreamt; j++)
+					player.QuickSpawnItem(source, ores[loot2]);
+			}
+			if (Main.rand.NextBool(4))
+			{
+				int[] lootTable3 = { 2675, 2676 };
+				int loot3 = Main.rand.Next(lootTable3.Length);
+				int baitamt = Main.rand.Next(2, 6);
+				for (int j = 0; j < baitamt; j++)
+					player.QuickSpawnItem(source, lootTable3[loot3]);
+			}
 
-			if (Main.rand.NextBool(2))
+			if (Main.rand.NextBool(4))
 			{
 				int[] lootTable2 = { 19, 20, 21, 22, 703, 704, 705, 706 };
 				int loot2 = Main.rand.Next(lootTable2.Length);
-				int oreamt = Main.rand.Next(5, 9);
-				for (int j = 0; j < oreamt; j++)
+				int baramt = Main.rand.Next(10, 20);
+				for (int j = 0; j < baramt; j++)
 					player.QuickSpawnItem(source, lootTable2[loot2]);
 			}
 			if (Main.rand.NextBool(2))
 			{
 				int potions;
 				potions = Main.rand.Next(new int[] { 288, 290, 292, 304, 298, 2322, 2323, 291, 2329 });
-				int potamt = Main.rand.Next(2, 3);
+				int potamt = Main.rand.Next(2, 4);
 				for (int j = 0; j < potamt; j++)
 					player.QuickSpawnItem(source, potions);
 			}
-			if (Main.rand.NextBool(20))
-				player.QuickSpawnItem(source, 3200);
-			if (Main.rand.NextBool(20))
-				player.QuickSpawnItem(source, 3201);
-			if (Main.rand.NextBool(23))
-				player.QuickSpawnItem(source, 997);
-			player.QuickSpawnItem(source, 72, Main.rand.Next(7, 16));
+
+			if (Main.rand.NextBool(2))
+			{
+				int recoveryPots;
+				recoveryPots = Main.rand.Next(new int[] { 188, 189 });
+				int recamt = Main.rand.Next(5, 17);
+				for (int j = 0; j < recamt; j++)
+					player.QuickSpawnItem(source, recoveryPots);
+			}
 		}
 	}
 }
