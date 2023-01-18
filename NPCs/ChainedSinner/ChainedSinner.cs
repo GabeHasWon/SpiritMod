@@ -14,7 +14,6 @@ namespace SpiritMod.NPCs.ChainedSinner
 {
 	internal class ChainedSinner : ModNPC
 	{
-		public int parentid;
 		public Chain chain;
 
 		public float angularMomentum = 0;
@@ -31,11 +30,12 @@ namespace SpiritMod.NPCs.ChainedSinner
 			NPC.height = 74;
 			NPC.aiStyle = -1;
 			NPC.knockBackResist = 0;
-			NPC.lifeMax = 500;
-			NPC.damage = 100;
+			NPC.lifeMax = 220;
+			NPC.damage = 60;
 			NPC.defense = 20;
 			NPC.noTileCollide = true;
 			NPC.lavaImmune = true;
+			NPC.buffImmune[BuffID.OnFire] = true;
 		}
 
 		public override void OnSpawn(IEntitySource source)
@@ -91,13 +91,6 @@ namespace SpiritMod.NPCs.ChainedSinner
 
 			chain.LastVertex.Position += arbitraryVelocity;
 			NPC.Center = chain.LastVertex.Position;
-		}
-
-		public override bool CheckDead()
-		{
-			NPC parent = Main.npc[parentid];
-			parent.active = false;
-			return true;
 		}
 
 		public void InitializeChain(Vector2 position)

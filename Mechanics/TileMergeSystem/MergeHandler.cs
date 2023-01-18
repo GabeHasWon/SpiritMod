@@ -13,6 +13,8 @@ namespace SpiritMod.Mechanics.TileMergeSystem
 	{
 		const string VanillaMergePath = "Mechanics/TileMergeSystem/Textures/";
 
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetStaticDefaults()
 		{
 			VanillaMergeAll(TileID.Dirt);
