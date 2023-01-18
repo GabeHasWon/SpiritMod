@@ -929,25 +929,4 @@ namespace SpiritMod.Tiles.Block.Ambient
 			DustType = DustID.Sand;
 		}
 	}
-
-	public class WeatheredStoneItem : AmbientStoneItem<WeatheredStoneTile>
-	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Weathered Stone");
-	}
-
-	public class WeatheredStoneTile : ModTile
-	{
-		public override void SetStaticDefaults()
-		{
-			AmbientTileDefaults.SetTileData(Type);
-
-			Main.tileMerge[Type][TileID.Grass] = true;
-			Main.tileMerge[TileID.Grass][Type] = true;
-
-			HitSound = SoundID.Tink;
-			AddMapEntry(new Color(100, 100, 100));
-			ItemDrop = ModContent.ItemType<WeatheredStoneItem>();
-			DustType = DustID.Stone;
-		}
-	}
 }
