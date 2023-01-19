@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Critters
 				new FlavorTextBestiaryInfoElement("This particular species of shark is remarkable for its potential as a tool. Not only is it small enough to hold, but its cleft chin and large forehorn excel at breaking the ice."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
 		}
 
 		public override void FindFrame(int frameHeight)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SpiritMod.NPCs.Shockhopper;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -52,8 +53,9 @@ namespace SpiritMod.NPCs.AstralAmalgam
 				{
 					NPC.ai[0] = 0;
 
+					SoundEngine.PlaySound(SoundID.Item91, NPC.Center);
 					int close = Player.FindClosest(NPC.position, NPC.width, NPC.height);
-					Projectile.NewProjectile(NPC.GetSource_OnHurt(projectile), NPC.Center, NPC.DirectionTo(Main.player[close].Center) * 6, ProjectileID.BulletDeadeye, 30, 0, Main.myPlayer);
+					Projectile.NewProjectile(NPC.GetSource_OnHurt(projectile), NPC.Center, NPC.DirectionTo(Main.player[close].Center) * 25, ModContent.ProjectileType<HopperLaser>(), 25, 1, Main.myPlayer);
 				}
 			}
 			NPC.life = 100;

@@ -41,7 +41,7 @@ namespace SpiritMod.NPCs.Mimic
 				new FlavorTextBestiaryInfoElement("These inconspicuous imposters are rather suspicious. Exercise caution before approaching them for what lies within."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
 		int frame = 2;

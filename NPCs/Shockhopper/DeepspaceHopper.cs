@@ -149,27 +149,20 @@ namespace SpiritMod.NPCs.Shockhopper
 					NPC.position.X = player.Center.X + (int)(TELEPORT_DISTANCE * angle.X);
 					NPC.position.Y = player.Center.Y + (int)(TELEPORT_DISTANCE * angle.Y);
 					NPC.netUpdate = true;
+
 					if (Main.tile[(int)(NPC.position.X / 16), (int)(NPC.position.Y / 16)].HasTile)
-					{
 						State = AIState.TELEPORT_FAIL;
-					}
 					else
-					{
 						State = AIState.TELEPORT_SUCCESS;
-					}
 				}
 			}
 
 			// Look at the player
 			if (State == AIState.STANDBY)
-			{
 				NPC.rotation = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
-			}
 
 			if (State == AIState.TELEPORT_FAIL)
-			{
 				NPC.alpha = 255;
-			}
 
 			// When we succeed at performing the teleport
 			if (State == AIState.TELEPORT_SUCCESS)
@@ -185,10 +178,9 @@ namespace SpiritMod.NPCs.Shockhopper
 						dust.noGravity = true;
 						dust.position.X += (Main.rand.Next(-50, 51) / 20) - 1.5f;
 						dust.position.Y += (Main.rand.Next(-50, 51) / 20) - 1.5f;
+
 						if (dust.position != NPC.Center)
-						{
 							dust.velocity = NPC.DirectionTo(dust.position) * 3f;
-						}
 					}
 				}
 				State = AIState.STANDBY;
@@ -223,10 +215,9 @@ namespace SpiritMod.NPCs.Shockhopper
 			{
 				// Play sound on client, fire projectile on server
 				SoundEngine.PlaySound(SoundID.Item91, NPC.Center);
+
 				if (Main.netMode != NetmodeID.MultiplayerClient)
-				{
 					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, AngleToPlayer * 30, ModContent.ProjectileType<HopperLaser>(), 19, 1, Main.myPlayer);
-				}
 				State = AIState.STANDBY;
 			}
 

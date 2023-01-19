@@ -64,7 +64,7 @@ namespace SpiritMod.NPCs.Mechromancer
 				new FlavorTextBestiaryInfoElement("One of the greatest minds among the Goblin Army's arsenal. A Mechromancer’s tinkering talents are nearly unmatched."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.AnyNPCs(ModContent.NPCType<Mecromancer>()) ? 0 : SpawnCondition.GoblinArmy.Chance * 0.0266f;

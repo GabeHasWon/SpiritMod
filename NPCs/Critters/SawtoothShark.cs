@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Critters
 				new FlavorTextBestiaryInfoElement("A species of shark with a long cartilage appendage, barbed with sharp extremities. It is remarkably tough and durable, and surprisingly efficient at sawing logs."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
 		}
 
 		public override void FindFrame(int frameHeight)

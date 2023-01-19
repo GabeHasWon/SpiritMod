@@ -49,7 +49,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 				new FlavorTextBestiaryInfoElement("A dangerous hovercraft made of spine-chillingly cold metal, and powered by Frost Cores. Playtime's over, no more mister ice guy!"),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
 		public override void FindFrame(int frameHeight)

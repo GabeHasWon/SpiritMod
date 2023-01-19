@@ -56,7 +56,7 @@ namespace SpiritMod.NPCs.Reach
 				new FlavorTextBestiaryInfoElement("Despite the Briar's unnatural creeping presence, it has left its mark on nature just long enough for these vengeful spirits to call it home."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
 		bool throwing = false;

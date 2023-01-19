@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Critters
 				new FlavorTextBestiaryInfoElement("It's a sword, it's a fish! It's a swordfish! Versatile fish that function as both pets and weapons, what a deal! These don't come with speakers though."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
 		}
 
 		public override void FindFrame(int frameHeight)

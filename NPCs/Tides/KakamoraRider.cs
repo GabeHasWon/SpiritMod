@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Tides
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<KakamoraRunner>()], false);
+			bestiaryEntry.UIInfoProvider = new Terraria.GameContent.Bestiary.CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<KakamoraRunner>()], false);
 			/*bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				new FlavorTextBestiaryInfoElement("An esteemed rider of a Crocomount. Despite their small stature, this creature rides with the ferocity of a war general."),
 			});*/

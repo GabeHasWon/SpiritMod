@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,6 +14,7 @@ namespace SpiritMod.NPCs.Starfarer
 		{
 			DisplayName.SetDefault("Stardancer");
 
+			Main.npcFrameCount[NPC.type] = 1;
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				Hide = true,
@@ -29,7 +31,6 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.defense = 12;
 			NPC.lifeMax = 300;
 			NPC.aiStyle = 6;
-			Main.npcFrameCount[NPC.type] = 1;
 			AIType = -1;
 			AnimationType = 10;
 			NPC.knockBackResist = 0f;
@@ -47,6 +48,7 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.dontCountMe = true;
 		}
 
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<CogTrapperHead>()], false);
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
 		public override void AI()

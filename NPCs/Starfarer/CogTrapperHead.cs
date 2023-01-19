@@ -28,6 +28,7 @@ namespace SpiritMod.NPCs.Starfarer
 		{
 			DisplayName.SetDefault("Stardancer");
 			Main.npcFrameCount[NPC.type] = 1;
+
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				CustomTexturePath = $"{Texture}_Bestiary",

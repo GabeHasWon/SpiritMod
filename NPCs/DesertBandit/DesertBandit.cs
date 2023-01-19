@@ -50,7 +50,7 @@ namespace SpiritMod.NPCs.DesertBandit
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], quickUnlock: true);
+			bestiaryEntry.UIInfoProvider = new Terraria.GameContent.Bestiary.CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], quickUnlock: true);
 
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,

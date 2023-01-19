@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Critters
 				new FlavorTextBestiaryInfoElement("If you are trying to claim this weapon of mass destruction, beware of its power. It can and will use it against you!"),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
 		}
 
 		public override void FindFrame(int frameHeight)

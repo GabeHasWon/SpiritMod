@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.SkeletonBrute
 				new FlavorTextBestiaryInfoElement("As a specimen, yes, they're intimidating. In a swinging match, nobody swings like a Skeleton Brute."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
 		public override void AI()

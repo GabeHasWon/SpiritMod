@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Critters
 				new FlavorTextBestiaryInfoElement("The Corruption twisted the innards of this fish to perpetually rot, releasing a noxious gas that forms bubbles with the excess mucus it now forms. It is surprisingly corrosive."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
 		}
 
 		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Poisoned, 1200);

@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Hemophora
 				new FlavorTextBestiaryInfoElement("This plant-like beast is quite the foe. It has sacks around its mouth-like opening that can fire acidic blood to dissolve both predators and prey."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
 		int frame = 0;

@@ -55,6 +55,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			counter--;
+
 			if (player.altFunctionUse == 2)
 			{
 				DrawDust(player);
@@ -71,6 +72,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 					counter = 5;
 				}
 			}
+
 			if (counter == 0 && Main.netMode != NetmodeID.Server)
 			{
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MagicCast1") with { Volume = 0.5f, PitchVariance = 0.54f }, player.Center);

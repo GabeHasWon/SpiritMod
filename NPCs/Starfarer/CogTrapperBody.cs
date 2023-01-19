@@ -5,6 +5,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,7 +17,8 @@ namespace SpiritMod.NPCs.Starfarer
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Stardancer");
-			Main.npcFrameCount[NPC.type] = 1; //new
+			Main.npcFrameCount[NPC.type] = 1;
+			NPCID.Sets.SpawnFromLastEmptySlot[Type] = true;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -52,6 +54,7 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.dontCountMe = true;
 		}
 
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<CogTrapperHead>()], false);
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
 		public override void AI()

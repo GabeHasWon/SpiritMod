@@ -46,7 +46,7 @@ namespace SpiritMod.NPCs.Mimic
 				new FlavorTextBestiaryInfoElement("While you may not enjoy their aggressive nature, you do respect their eye for fashion...at least, until you take it."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
 		int frame = 2;
