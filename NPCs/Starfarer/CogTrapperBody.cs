@@ -54,7 +54,7 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.dontCountMe = true;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<CogTrapperHead>()], false);
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<CogTrapperHead>()], false);
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
 		public override void AI()

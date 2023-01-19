@@ -3,13 +3,13 @@ using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs
 {
-	internal class CommonEnemyUICollectionInfoProvider : IBestiaryUICollectionInfoProvider
+	internal class CustomEnemyUICollectionInfoProvider : IBestiaryUICollectionInfoProvider
 	{
 		private readonly string _persistentIdentifierToCheck;
 		private readonly bool _quickUnlock;
 		private readonly float _maxKills;
 
-		public CommonEnemyUICollectionInfoProvider(string persistentId, bool quickUnlock, float maxKills = 50)
+		public CustomEnemyUICollectionInfoProvider(string persistentId, bool quickUnlock, float maxKills = 50)
 		{
 			_persistentIdentifierToCheck = persistentId;
 			_quickUnlock = quickUnlock;

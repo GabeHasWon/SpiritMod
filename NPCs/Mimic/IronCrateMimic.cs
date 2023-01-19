@@ -46,7 +46,7 @@ namespace SpiritMod.NPCs.Mimic
 				new FlavorTextBestiaryInfoElement("A fisherman is not alone in their hunt for the sea's vast riches. A slippery octopus seems to have beaten you to the punch."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
 		int frame = 2;

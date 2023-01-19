@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 				new FlavorTextBestiaryInfoElement("An undead dream demon obsessed with the practice and perfection of so-called 'blood corruption.' For this practice, he only reveals himself when the moon shimmers sanguine."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
 		private ref float AIState => ref NPC.ai[0];

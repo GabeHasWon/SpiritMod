@@ -47,7 +47,7 @@ namespace SpiritMod.NPCs.Tides
 				new FlavorTextBestiaryInfoElement("The maker of tides and caller of storms! They're a wicked elderly lich who's taken charge of the Kakamora Army."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
+			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
 		float alphaCounter = 0;

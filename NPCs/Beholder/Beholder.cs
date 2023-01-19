@@ -69,7 +69,7 @@ namespace SpiritMod.NPCs.Beholder
 				new FlavorTextBestiaryInfoElement("These beasts roam the marble pits found within the world, judging you with each one of their many eyes."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
 		public override bool PreAI()

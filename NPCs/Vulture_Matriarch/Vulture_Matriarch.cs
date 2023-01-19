@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 				new FlavorTextBestiaryInfoElement("The powerful elder of the vulture tribe, the Matriarch has a hold of ancient magics and abilities in order to destroy its prey."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
+			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
 		public override void SendExtraAI(BinaryWriter writer)

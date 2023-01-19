@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.Tides
 				new FlavorTextBestiaryInfoElement("Pint-sized mystics that attack using the arcane arts. They double as healers for their nearby Kakamora companions."),
 			});
 
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
 		bool blocking = false;
