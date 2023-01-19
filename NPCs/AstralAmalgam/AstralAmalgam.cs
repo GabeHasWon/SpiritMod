@@ -64,8 +64,8 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			float acceleration = 0.011f;
 			NPC.TargetClosest(true);
 			Vector2 center = NPC.Center;
-			float deltaX = Main.player[NPC.target].position.X + (float)(Main.player[NPC.target].width / 2) - center.X;
-			float deltaY = Main.player[NPC.target].position.Y + (float)(Main.player[NPC.target].height / 2) - center.Y;
+			float deltaX = Main.player[NPC.target].Center.X - center.X;
+			float deltaY = Main.player[NPC.target].Center.Y - center.Y;
 			float distance = (float)Math.Sqrt((double)deltaX * (double)deltaX + (double)deltaY * (double)deltaY);
 			NPC.ai[1] += 1f;
 			if ((double)NPC.ai[1] > 600.0)

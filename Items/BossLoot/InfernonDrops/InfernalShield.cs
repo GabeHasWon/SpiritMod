@@ -7,6 +7,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	[AutoloadEquip(EquipType.Shield)]
 	public class InfernalShield : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Infernal Shield");

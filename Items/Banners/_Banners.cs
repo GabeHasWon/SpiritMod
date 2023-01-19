@@ -474,7 +474,12 @@ namespace SpiritMod.Items.Banners
 	public class PokeyBanner : BaseBannerItem
 	{
 		protected override int Style => 82;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Stactus Banner");
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Stactus Banner");
+			ItemID.Sets.KillsToBanner[Type] = 200;
+		}
 	}
 
 	public class ScreechOwlBanner : BaseBannerItem
@@ -587,16 +592,34 @@ namespace SpiritMod.Items.Banners
 	public class HydraGreenBanner : BaseBannerItem
 	{
 		protected override int Style => 104;
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Poisonous Hydra Banner");
+			ItemID.Sets.KillsToBanner[Type] = 25;
+		}
 	}
 
 	public class HydraPurpleBanner : BaseBannerItem
 	{
 		protected override int Style => 105;
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Venomous Hydra Banner");
+			ItemID.Sets.KillsToBanner[Type] = 25;
+		}
 	}
 
 	public class HydraRedBanner : BaseBannerItem
 	{
 		protected override int Style => 106;
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Flaming Hydra Banner");
+			ItemID.Sets.KillsToBanner[Type] = 25;
+		}
 
 		public override void OnSpawn(IEntitySource source) //Randomizes banner if from a Hydra npc
 		{

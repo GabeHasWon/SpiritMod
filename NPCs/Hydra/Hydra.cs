@@ -185,6 +185,8 @@ namespace SpiritMod.NPCs.Hydra
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.UIInfoProvider = new CustomCollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
+
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Marble,
 				new FlavorTextBestiaryInfoElement("A legendary creature, born of monster and god. Killing a head does nothing but worsen the fight."),

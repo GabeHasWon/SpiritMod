@@ -11,6 +11,7 @@ namespace SpiritMod.Buffs.Tiles
 			Description.SetDefault("You feel a ghostly presence nearby");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
+			Main.debuff[Type] = true;
 		}
 	}
 }
