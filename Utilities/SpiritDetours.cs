@@ -107,7 +107,7 @@ namespace SpiritMod.Utilities
 			bool removeWet = false;
 			Player target = null;
 
-			if (npc.target >= 0)
+			if (npc.target >= 0 && npc.target < Main.maxPlayers && !npc.townNPC && !npc.friendly)
 			{
 				target = Main.player[npc.target];
 				removeWet = target.HasBuff(ModContent.BuffType<BottleMountBuff>()) && (target.velocity.Y == -target.gravity || target.velocity.Y == 0);

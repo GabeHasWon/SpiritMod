@@ -12,6 +12,8 @@ namespace SpiritMod.Items.Sets.ArcaneZoneSubclass
 {
 	public class RepulsionCodex : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Arcane Codex: Repulsion Zone");

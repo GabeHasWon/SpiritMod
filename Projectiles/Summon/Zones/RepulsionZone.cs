@@ -10,6 +10,8 @@ namespace SpiritMod.Projectiles.Summon.Zones
 {
 	class RepulsionZone : ModProjectile, IDrawAdditive
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Repulsion Zone");
@@ -40,10 +42,7 @@ namespace SpiritMod.Projectiles.Summon.Zones
 
                 if (npc.active && distance < 70 && !npc.boss && !npc.friendly && npc.knockBackResist != 0f && !npc.dontTakeDamage)
                 {
-					float dist = npc.Distance(Projectile.Center);
-                    dist = 8f / dist;
-					npc.velocity.X = dist * -0.8f;
-                    npc.velocity.Y = dist * -0.8f;
+					npc.velocity = (npc.Center - Projectile.Center) * 0.1f;
 
                     Projectile.ai[1]++;
                     for (int k = 0; k < 10; k++)
