@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 		{
 			DisplayName.SetDefault("True Hallowed Staff");
 			Tooltip.SetDefault("Shoots out multiple swords with different effects.");
+			Item.staff[Item.type] = true;
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -26,7 +26,6 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 			Item.useTime = 20;
 			Item.useAnimation = 20;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.knockBack = 3;
 			Item.value = 120000;
@@ -40,23 +39,22 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
-            recipe.AddIngredient(ModContent.ItemType<HallowedStaff>(), 1);
+			recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
+			recipe.AddIngredient(ModContent.ItemType<HallowedStaff>(), 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (Main.myPlayer == player.whoAmI) {
+			if (Main.myPlayer == player.whoAmI)
+			{
 				Vector2 mouse = Main.MouseWorld;
 
-				for (int i = 0; i < 3; ++i) {
-					int p = Projectile.NewProjectile(source, mouse.X + Main.rand.Next(-80, 80), mouse.Y - 50 + Main.rand.Next(-10, 10), 0, Main.rand.Next(2, 4), type, damage, knockback, player.whoAmI);
-				}
+				for (int i = 0; i < 3; ++i)
+					Projectile.NewProjectile(source, mouse.X + Main.rand.Next(-80, 80), mouse.Y - 50 + Main.rand.Next(-10, 10), 0, Main.rand.Next(2, 4), type, damage, knockback, player.whoAmI);
 			}
 			return false;
 		}
-
 	}
 }

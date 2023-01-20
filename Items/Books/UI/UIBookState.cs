@@ -28,11 +28,14 @@ namespace SpiritMod.Items.Books.UI
 
 		public override void OnInitialize()
 		{
-			mainPanel = new UIDragableElement();
-			mainPanel.HAlign = 0.5f;
-			mainPanel.VAlign = 0.5f;
-			mainPanel.Width.Set(400f, 0f);
-			mainPanel.Height.Set(600f, 0f);
+			mainPanel = new UIDragableElement
+			{
+				HAlign = 0.5f,
+				VAlign = 0.5f,
+				Width = StyleDimension.FromPixels(400),
+				Height = StyleDimension.FromPixels(600)
+			};
+
 			mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
 			Append(mainPanel);
 
@@ -42,17 +45,21 @@ namespace SpiritMod.Items.Books.UI
 				mainPanel.Top.Set(offsetY, 0f);
 			}
 
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/BookBackground"));
+			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/BookBackground"))
+			{ 
+				Width = StyleDimension.FromPercent(1),
+				Height = StyleDimension.FromPercent(1)
+			};
 			panelBackground.SetPadding(12);
 			mainPanel.Append(panelBackground);
 			mainPanel.AddDragTarget(panelBackground);
 
 			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton", ReLogic.Content.AssetRequestMode.ImmediateLoad);
 			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-15, 1f);
-			closeButton.Top.Set(0, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
+			closeButton.Left = StyleDimension.FromPixelsAndPercent(-15, 1f);
+			//closeButton.Top.Set(0, 0f);
+			closeButton.Width = StyleDimension.FromPixels(15);
+			closeButton.Height = StyleDimension.FromPixels(15);
 			closeButton.OnClick += CloseButton_OnClick;
 			panelBackground.Append(closeButton);
 
@@ -61,8 +68,8 @@ namespace SpiritMod.Items.Books.UI
 			mainPanel.AddDragTarget(titleLabel);
 
 			UIText authorLabel = new UIText(author, 0.7f);
-			authorLabel.Left.Set(12, 0f);
-			authorLabel.Top.Set(24, 0f);
+			authorLabel.Left = StyleDimension.FromPixels(12);
+			authorLabel.Top = StyleDimension.FromPixels(24);
 			panelBackground.Append(authorLabel);
 			mainPanel.AddDragTarget(authorLabel);
 
@@ -91,6 +98,8 @@ namespace SpiritMod.Items.Books.UI
 			}.WithView(100f, 1000f);
 			messageBoxPanel.Append(messageBoxScrollbar);
 			messageBox.SetScrollbar(messageBoxScrollbar);
+
+			mainPanel.Recalculate();
 		}
 
 		// A hack to fix scroll bar usage scrolling the item hotbar
@@ -100,6 +109,7 @@ namespace SpiritMod.Items.Books.UI
 		{
 			if (mainPanel.ContainsPoint(Main.MouseScreen))
 				Main.LocalPlayer.mouseInterface = true;
+
 			if (mainPanel.Left.Pixels != 0)
 			{
 				offsetX = mainPanel.Left.Pixels;

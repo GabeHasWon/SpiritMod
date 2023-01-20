@@ -32,7 +32,9 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			mainPanel = new UIDragableElement
 			{
 				HAlign = 0.5f,
-				VAlign = 0.5f
+				VAlign = 0.5f,
+				Width = StyleDimension.FromPixels(256),
+				Height = StyleDimension.FromPixels(188),
 			};
 
 			mainPanel.Width.Set(300f, 0f);
@@ -45,7 +47,12 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 				mainPanel.Top.Set(offsetY, 0f);
 			}
 
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/SlotMachine/SlotMachineBaseFramer"));
+			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/SlotMachine/SlotMachineBaseFramer"))
+			{
+				Width = StyleDimension.FromPercent(1),
+				Height = StyleDimension.FromPercent(1)
+			};
+
 			panelBackground.SetPadding(12);
 			mainPanel.Append(panelBackground);
 			mainPanel.AddDragTarget(panelBackground);

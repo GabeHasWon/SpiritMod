@@ -56,6 +56,7 @@ using SpiritMod.Items.Sets.DyesMisc.HairDye;
 using SpiritMod.GlobalClasses.Tiles;
 using SpiritMod.Items.Glyphs;
 using ReLogic.Content;
+using SpiritMod.Items.Books.UI.MaterialUI;
 
 namespace SpiritMod
 {
@@ -431,7 +432,10 @@ namespace SpiritMod
 			if (!Main.dedServ)
 			{
 				ParticleHandler.RegisterParticles();
+
 				BookUserInterface = new UserInterface();
+				BookUserInterface.SetState(new UIBismitePageStsate());
+				BookUserInterface.SetState(null);
 
 				QuestBookUIState = new QuestBookUI();
 				QuestHUD = new QuestHUD();
