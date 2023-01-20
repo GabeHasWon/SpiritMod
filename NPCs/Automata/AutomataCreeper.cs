@@ -35,6 +35,7 @@ namespace SpiritMod.NPCs.Automata
 		{
 			DisplayName.SetDefault("Arachmaton");
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 		}
 
 		public override void SetDefaults()
@@ -48,15 +49,11 @@ namespace SpiritMod.NPCs.Automata
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.value = 180f;
 			NPC.knockBackResist = 0;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
 			NPC.noGravity = true;
+			NPC.noTileCollide = true;
+
 			initialDirection = (Main.rand.Next(2) * 2) - 1;
 			moveDirection = new Vector2(initialDirection, 0);
-			NPC.noTileCollide = true;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.ArachmatonBanner>();
 		}

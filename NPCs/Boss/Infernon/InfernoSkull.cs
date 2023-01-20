@@ -20,6 +20,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 		{
 			DisplayName.SetDefault("Infernus Skull");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo(this, BuffID.CursedInferno, BuffID.OnFire);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
@@ -34,8 +35,6 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			NPC.damage = 50;
 			NPC.lifeMax = 5500;
 			NPC.aiStyle = -1;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.CursedInferno] = true;
 			NPC.npcSlots = 10;
 			NPC.boss = true;
 			NPC.noGravity = true;

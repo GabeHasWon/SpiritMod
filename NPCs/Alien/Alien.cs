@@ -11,6 +11,7 @@ namespace SpiritMod.NPCs.Alien
 		{
 			DisplayName.SetDefault("Alien");
 			Main.npcFrameCount[NPC.type] = 8;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -20,8 +21,6 @@ namespace SpiritMod.NPCs.Alien
 			NPC.damage = 70;
 			NPC.defense = 30;
 			NPC.lifeMax = 600;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.WeaponImbueVenom] = true;
 			NPC.HitSound = SoundID.NPCHit6;
 			NPC.DeathSound = SoundID.NPCDeath8;
 			NPC.value = 10000f;

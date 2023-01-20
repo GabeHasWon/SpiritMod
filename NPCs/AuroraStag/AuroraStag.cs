@@ -81,7 +81,7 @@ namespace SpiritMod.NPCs.AuroraStag
 		{
 			DisplayName.SetDefault("Aurora Stag");
 			Main.npcFrameCount[NPC.type] = 10;
-			NPC.frame.Width = 402;
+			NPCHelper.BuffImmune(Type);
 		}
 
 		public override void SetDefaults()
@@ -96,9 +96,6 @@ namespace SpiritMod.NPCs.AuroraStag
 			NPC.knockBackResist = .85f;
 			NPC.aiStyle = -1;
 			NPC.chaseable = false;
-
-			for (int i = 0; i < BuffLoader.BuffCount; i++)
-				NPC.buffImmune[i] = true;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

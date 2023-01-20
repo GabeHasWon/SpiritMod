@@ -19,6 +19,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 		{
 			DisplayName.SetDefault("Arterial Grasper");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -38,12 +39,11 @@ namespace SpiritMod.NPCs.ArterialGrasper
 			NPC.noGravity = true;
 			NPC.HitSound = SoundID.NPCHit19;
 			NPC.DeathSound = SoundID.DD2_BetsyHurt;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.value = 220f;
 			NPC.aiStyle = -1;
 			NPC.knockBackResist = 0f;
 			NPC.behindTiles = true;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.ArterialGrasperBanner>();
 		}

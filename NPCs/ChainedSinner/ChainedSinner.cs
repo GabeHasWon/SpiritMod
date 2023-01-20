@@ -19,10 +19,14 @@ namespace SpiritMod.NPCs.ChainedSinner
 		public float angularMomentum = 0;
 
 		private Vector2 arbitraryVelocity;
-		private Vector2 CachedVel;
+		private Vector2 cachedVel;
 		private Vector2 spawnPos;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Chained Sinner");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Chained Sinner");
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
+		}
 
 		public override void SetDefaults()
 		{
@@ -35,7 +39,6 @@ namespace SpiritMod.NPCs.ChainedSinner
 			NPC.defense = 20;
 			NPC.noTileCollide = true;
 			NPC.lavaImmune = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
 		}
 
 		public override void OnSpawn(IEntitySource source)
@@ -76,10 +79,10 @@ namespace SpiritMod.NPCs.ChainedSinner
 			if (NPC.ai[0] % LoopLength < 30)
 			{
 				if (NPC.ai[0] % LoopLength == 1)
-					CachedVel = Vector2.Normalize(player.Center - NPC.Center);
+					cachedVel = Vector2.Normalize(player.Center - NPC.Center);
 
 				if (NPC.ai[0] % LoopLength > 1)
-					arbitraryVelocity += CachedVel / 1.5f;
+					arbitraryVelocity += cachedVel / 1.5f;
 			}
 			else if (NPC.ai[0] % LoopLength > LoopLength / 3)
 			{

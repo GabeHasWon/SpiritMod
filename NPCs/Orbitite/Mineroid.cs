@@ -20,6 +20,8 @@ namespace SpiritMod.NPCs.Orbitite
 		{
 			DisplayName.SetDefault("Orbitite");
 			Main.npcFrameCount[NPC.type] = 6;
+
+			NPCHelper.ImmuneTo(this, BuffID.OnFire, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -34,10 +36,9 @@ namespace SpiritMod.NPCs.Orbitite
 			NPC.value = 110f;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.knockBackResist = .45f;
 			NPC.aiStyle = 44;
+
 			AIType = NPCID.FlyingAntlion;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.OrbititeBanner>();

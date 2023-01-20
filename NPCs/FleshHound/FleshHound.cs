@@ -20,6 +20,7 @@ namespace SpiritMod.NPCs.FleshHound
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo<BloodCorrupt, BloodInfusion>(this);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -39,8 +40,6 @@ namespace SpiritMod.NPCs.FleshHound
 			NPC.HitSound = SoundID.NPCHit6;
 			NPC.DeathSound = SoundID.NPCDeath5;
 			NPC.value = 180f;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
 			NPC.knockBackResist = .2f;
 			NPC.aiStyle = 3;
 

@@ -13,6 +13,7 @@ namespace SpiritMod.NPCs.OceanSlime
 		{
 			DisplayName.SetDefault("Coconut Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -23,12 +24,11 @@ namespace SpiritMod.NPCs.OceanSlime
 			NPC.defense = 6;
 			NPC.lifeMax = 60;
 			NPC.HitSound = SoundID.NPCHit2;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.value = 860f;
 			NPC.knockBackResist = .45f;
 			NPC.aiStyle = 1;
+
 			AIType = NPCID.BlueSlime;
 			AnimationType = NPCID.BlueSlime;
 			Banner = NPC.type;

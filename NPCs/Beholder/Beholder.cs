@@ -31,6 +31,7 @@ namespace SpiritMod.NPCs.Beholder
 		{
 			DisplayName.SetDefault("Beholder");
 			Main.npcFrameCount[NPC.type] = 9;
+			NPCHelper.ImmuneTo(this, BuffID.Confused);
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
@@ -51,7 +52,6 @@ namespace SpiritMod.NPCs.Beholder
 			NPC.knockBackResist = 0.35f;
 			NPC.noTileCollide = true;
 			NPC.noGravity = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.aiStyle = 14;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;

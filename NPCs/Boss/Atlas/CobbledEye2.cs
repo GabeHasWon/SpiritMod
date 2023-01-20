@@ -19,6 +19,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			DisplayName.SetDefault("Cobbled Eye");
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 		}
 
 		public override void SetDefaults()
@@ -28,14 +29,6 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.damage = 80;
-
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
-
 			NPC.lifeMax = 1500;
 		}
 

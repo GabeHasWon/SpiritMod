@@ -17,6 +17,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Laser Bomber");
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
+
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
@@ -33,8 +35,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.noGravity = true;
 			NPC.lifeMax = 5;
 			NPC.HitSound = SoundID.NPCHit4;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.value = 0f;
 			NPC.knockBackResist = .0f;
 			NPC.noTileCollide = true;

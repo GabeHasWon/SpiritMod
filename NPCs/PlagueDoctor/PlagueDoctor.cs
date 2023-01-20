@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.PlagueDoctor
 		{
 			DisplayName.SetDefault("Dark Alchemist");
 			Main.npcFrameCount[NPC.type] = 12;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.OnFire, BuffID.CursedInferno);
 		}
 
 		public override void SetDefaults()
@@ -28,10 +29,6 @@ namespace SpiritMod.NPCs.PlagueDoctor
 			NPC.defense = 16;
 			NPC.lifeMax = 140;
 			NPC.HitSound = SoundID.NPCHit2;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.CursedInferno] = true;
 			NPC.DeathSound = SoundID.NPCDeath2;
 			NPC.value = 220f;
 			NPC.knockBackResist = .35f;

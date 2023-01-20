@@ -15,6 +15,7 @@ namespace SpiritMod.NPCs.Reach
 		{
 			DisplayName.SetDefault("Briarthorn Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -27,8 +28,6 @@ namespace SpiritMod.NPCs.Reach
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.value = 30f;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.alpha = 60;
 			NPC.knockBackResist = .25f;
 			NPC.aiStyle = 1;

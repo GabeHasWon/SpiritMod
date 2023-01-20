@@ -38,6 +38,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			NPCID.Sets.TrailCacheLength[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			Main.npcFrameCount[NPC.type] = 6;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 		}
 
 		public override void SetDefaults()
@@ -50,18 +51,11 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			NPC.knockBackResist = 0f;
 			NPC.boss = true;
 			NPC.timeLeft = NPC.activeTime * 30;
-
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
-
 			NPC.noGravity = true;
 			NPC.alpha = 255;
 			NPC.HitSound = SoundID.NPCHit7;
 			NPC.DeathSound = SoundID.NPCDeath5;
+
             Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Atlas");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritSurfaceBiome>().Type };
 		}

@@ -20,6 +20,7 @@ namespace SpiritMod.NPCs.FallenAngel
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.FlyingFish];
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.OnFire, BuffID.CursedInferno);
 		}
 
 		public override void SetDefaults()
@@ -29,10 +30,6 @@ namespace SpiritMod.NPCs.FallenAngel
 			NPC.damage = 50;
 			NPC.defense = 31;
 			NPC.lifeMax = 3200;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.CursedInferno] = true;
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.value = 60f;

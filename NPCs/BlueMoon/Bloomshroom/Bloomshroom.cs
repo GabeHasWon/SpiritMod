@@ -24,6 +24,7 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 		{
 			DisplayName.SetDefault("Bloomshroom");
 			Main.npcFrameCount[NPC.type] = 12;
+			NPCHelper.ImmuneTo<StarFlame>(this);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -42,7 +43,6 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 			NPC.lifeMax = 600;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath16;
-			NPC.buffImmune[ModContent.BuffType<StarFlame>()] = true;
 			NPC.value = 600f;
 			NPC.knockBackResist = .35f;
 			Banner = NPC.type;

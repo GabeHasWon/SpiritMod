@@ -20,6 +20,7 @@ namespace SpiritMod.NPCs.Spirit
 		{
 			DisplayName.SetDefault("Soul Crusher");
 			Main.npcFrameCount[NPC.type] = 7;
+			NPCHelper.ImmuneTo(this, BuffID.OnFire);
 		}
 
 		public override void SetDefaults()
@@ -36,7 +37,6 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.lavaImmune = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
 
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.SoulCrusherBanner>();

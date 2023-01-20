@@ -36,6 +36,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			Main.npcFrameCount[NPC.type] = 21;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -64,10 +65,6 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			NPC.damage = 30;
 			NPC.scale = 2f;
 			NPC.lavaImmune = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.HitSound = SoundID.NPCHit13;

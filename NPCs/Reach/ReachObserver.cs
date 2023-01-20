@@ -19,6 +19,7 @@ namespace SpiritMod.NPCs.Reach
 			DisplayName.SetDefault("Wildwood Watcher");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 6;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
 
 		public override void SetDefaults()
@@ -28,7 +29,6 @@ namespace SpiritMod.NPCs.Reach
 			NPC.damage = 21;
 			NPC.defense = 6;
 			NPC.lifeMax = 44;
-			NPC.buffImmune[BuffID.Poisoned] = true;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.value = 460f;

@@ -39,6 +39,8 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			Main.npcFrameCount[NPC.type] = 22;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo(this, BuffID.Confused);
+
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				Position = new Vector2(8f, 12f),
@@ -61,7 +63,6 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			NPC.npcSlots = 15f;
 			NPC.HitSound = SoundID.NPCHit31;
 			NPC.DeathSound = SoundID.NPCDeath5;
-			NPC.buffImmune[BuffID.Confused] = true;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

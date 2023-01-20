@@ -25,6 +25,7 @@ namespace SpiritMod.NPCs.AstralAmalgam
 		{
 			DisplayName.SetDefault("Astral Amalgam");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo(this, ModContent.BuffType<FesteringWounds>(), BuffID.Poisoned, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -37,12 +38,10 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			NPC.HitSound = SoundID.NPCHit3;
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.value = 210f;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.knockBackResist = .40f;
 			NPC.noTileCollide = true;
 			NPC.noGravity = true;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.AstralAmalgamBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<AsteroidBiome>().Type };

@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		{
 			DisplayName.SetDefault("Moonlight Preserver");
 			Main.npcFrameCount[NPC.type] = 7;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -29,14 +30,13 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.lifeMax = 80;
 			NPC.HitSound = SoundID.NPCHit25;
 			NPC.DeathSound = SoundID.NPCDeath28;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.value = 60f;
 			NPC.knockBackResist = .45f;
 			NPC.aiStyle = 64;
 			NPC.scale = 1f;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
+
 			AIType = NPCID.Firefly;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.MoonlightPreserverBanner>();

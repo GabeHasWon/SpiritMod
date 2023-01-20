@@ -38,7 +38,9 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.Poisoned, BuffID.OnFire);
 		}
+
 		public override void SetDefaults()
 		{
 			NPC.aiStyle = -1;
@@ -49,16 +51,12 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 			NPC.width = 30;
 			NPC.height = 56;
 			NPC.damage = 27;
-
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-
 			NPC.lavaImmune = true;
 			NPC.noTileCollide = false;
 			NPC.noGravity = false;
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath6;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.DraugrBanner>();
 		}

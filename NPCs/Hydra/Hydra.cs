@@ -156,6 +156,8 @@ namespace SpiritMod.NPCs.Hydra
 		{
 			DisplayName.SetDefault("Lernean Hydra");
 			Main.npcFrameCount[NPC.type] = 3;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused, BuffID.OnFire, BuffID.Venom);
+
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				CustomTexturePath = $"{Texture}_Bestiary",
@@ -244,22 +246,6 @@ namespace SpiritMod.NPCs.Hydra
 			posToBe = DecidePosition();
 
 			MoveToPosition();
-
-			if (headColor == HeadColor.Red)
-			{
-				NPC.buffImmune[BuffID.OnFire] = true;
-				NPC.buffImmune[BuffID.Confused] = true;
-			}
-			if (headColor == HeadColor.Green)
-			{
-				NPC.buffImmune[BuffID.Poisoned] = true;
-				NPC.buffImmune[BuffID.Confused] = true;
-			}
-			if (headColor == HeadColor.Purple)
-			{
-				NPC.buffImmune[BuffID.Venom] = true;
-				NPC.buffImmune[BuffID.Confused] = true;
-			}
 
 			if (!Parent.active)
 				NPC.active = false;

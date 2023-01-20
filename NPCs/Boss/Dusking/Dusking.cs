@@ -31,6 +31,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 		{
 			DisplayName.SetDefault("Dusking");
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.ShadowFlame);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -49,10 +50,6 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			NPC.lifeMax = 21000;
 			NPC.knockBackResist = 0;
 			NPC.boss = true;
-
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[BuffID.ShadowFlame] = true;
-
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.npcSlots = 5;

@@ -15,6 +15,7 @@ namespace SpiritMod.NPCs.ExplosiveBarrel
 		{
 			DisplayName.SetDefault("Explosive Barrel");
 			Main.npcFrameCount[NPC.type] = 6;
+			NPCHelper.BuffImmune(Type, true);
 		}
 
 		public override void SetDefaults()
@@ -33,10 +34,8 @@ namespace SpiritMod.NPCs.ExplosiveBarrel
             NPC.chaseable = false;
             NPC.HitSound = SoundID.NPCHit4;
 			NPC.friendly = false;
-			
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 		}
+
 		public override void AI()
 		{
 			NPC.spriteDirection = -1;

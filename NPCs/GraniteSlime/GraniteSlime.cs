@@ -21,6 +21,7 @@ namespace SpiritMod.NPCs.GraniteSlime
 		{
 			DisplayName.SetDefault("Granite Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -29,14 +30,13 @@ namespace SpiritMod.NPCs.GraniteSlime
 			NPC.height = 12;
 			NPC.damage = 22;
 			NPC.defense = 8;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.lifeMax = 85;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath43;
 			NPC.value = 200f;
 			NPC.knockBackResist = .25f;
 			NPC.aiStyle = 1;
+
 			AIType = NPCID.BlueSlime;
 			AnimationType = NPCID.BlueSlime;
 			Banner = NPC.type;

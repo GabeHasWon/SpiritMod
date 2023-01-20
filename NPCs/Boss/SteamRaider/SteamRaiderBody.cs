@@ -18,7 +18,11 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		private NPC Head => Main.npc[(int)NPC.ai[2]];
 		public bool Exposed => NPC.localAI[0] == 1;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Starplate Voyager");
+		public override void SetStaticDefaults()
+		{
+			NPCHelper.BuffImmune(Type, true);
+			DisplayName.SetDefault("Starplate Voyager");
+		}
 
 		public override void SetDefaults()
 		{
@@ -38,9 +42,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
             NPC.boss = true;
 			NPC.aiStyle = -1;
             NPC.alpha = 200;
-			for (int k = 0; k < NPC.buffImmune.Length; k++) {
-				NPC.buffImmune[k] = true;
-			}
+
 			Music = MusicID.Boss3;
 			NPC.dontCountMe = true;
 		}

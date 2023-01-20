@@ -14,10 +14,12 @@ namespace SpiritMod.NPCs.DungeonCube
 		private bool xchase = true;
 		private int timer = 0;
 		private bool ychase = false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault($"{CubeColor} Dungeon Cube");
 			Main.npcFrameCount[NPC.type] = 8;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -28,8 +30,6 @@ namespace SpiritMod.NPCs.DungeonCube
 			NPC.lifeMax = 150;
 			NPC.defense = 10;
 			NPC.damage = 32;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.HitSound = SoundID.NPCHit7;
 			NPC.DeathSound = SoundID.NPCDeath44;
 			NPC.knockBackResist = 0f;

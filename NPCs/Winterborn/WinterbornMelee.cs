@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.Winterborn
 		{
 			DisplayName.SetDefault("Winterborn");
 			Main.npcFrameCount[NPC.type] = 6;
+			NPCHelper.ImmuneTo<CryoCrush>(this, BuffID.Frostburn, BuffID.OnFire);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -36,9 +37,6 @@ namespace SpiritMod.NPCs.Winterborn
 			NPC.HitSound = SoundID.NPCDeath15;
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.value = 189f;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Frostburn] = true;
-			NPC.buffImmune[ModContent.BuffType<CryoCrush>()] = true;
 			NPC.knockBackResist = .07f;
 			NPC.aiStyle = 3;
 			AIType = NPCID.ArmoredViking;

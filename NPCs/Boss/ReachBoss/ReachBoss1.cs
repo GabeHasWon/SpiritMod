@@ -25,6 +25,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 		{
 			DisplayName.SetDefault("Vinewrath Husk");
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -46,9 +47,6 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			NPC.noTileCollide = true;
 			NPC.npcSlots = 20;
 			NPC.defense = 10;
-			NPC.buffImmune[20] = true;
-			NPC.buffImmune[31] = true;
-			NPC.buffImmune[70] = true;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 

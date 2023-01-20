@@ -15,11 +15,13 @@ namespace SpiritMod.NPCs.StarjinxEvent
 	public class StarjinxMeteorite : ModNPC
 	{
 		public const int EVENT_RADIUS = 1500;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Starjinx");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.BuffImmune(Type, true);
 		}
 
 		public override bool IsLoadingEnabled(Mod mod) => false;
@@ -43,8 +45,6 @@ namespace SpiritMod.NPCs.StarjinxEvent
 			NPC.alpha = 255;
 			NPC.chaseable = false;
 			AIType = 0;
-			for (int i = 0; i < BuffLoader.BuffCount; i++)
-				NPC.buffImmune[i] = true;
 
 			//Draw on a layer before all other npcs, to help with visual clarity
 			NPC.behindTiles = true;

@@ -26,6 +26,8 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 		{
 			DisplayName.SetDefault("Boulder Behemoth");
 			Main.npcFrameCount[NPC.type] = 11;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
+
 			NPCID.Sets.TrailCacheLength[NPC.type] = 30;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
@@ -44,7 +46,6 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 			NPC.width = 50;
 			NPC.height = 38;
 			NPC.damage = 70;
-			NPC.buffImmune[BuffID.Poisoned] = true;
 			NPC.lavaImmune = false;
 			NPC.noTileCollide = false;
 			NPC.HitSound = SoundID.NPCHit6;

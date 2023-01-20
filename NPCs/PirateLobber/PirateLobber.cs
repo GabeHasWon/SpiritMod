@@ -17,6 +17,7 @@ namespace SpiritMod.NPCs.PirateLobber
 		{
 			DisplayName.SetDefault("Pirate Lobber");
 			Main.npcFrameCount[NPC.type] = 8;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -30,8 +31,7 @@ namespace SpiritMod.NPCs.PirateLobber
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.value = Item.buyPrice(0, 0, 20, 0);
 			NPC.knockBackResist = 0.35f;
-			NPC.buffImmune[20] = true;
-			NPC.buffImmune[31] = false;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.PirateLobberBanner>();
 		}

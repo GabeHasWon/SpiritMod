@@ -29,6 +29,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 4;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
+			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
@@ -47,9 +48,6 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			NPC.defense = 9;
 			NPC.aiStyle = -1;
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ReachBoss");
-			NPC.buffImmune[20] = true;
-			NPC.buffImmune[31] = true;
-			NPC.buffImmune[70] = true;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 		}

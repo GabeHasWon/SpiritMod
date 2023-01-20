@@ -14,6 +14,7 @@ namespace SpiritMod.NPCs.LostMime
 		{
 			DisplayName.SetDefault("Lost Mime");
 			Main.npcFrameCount[NPC.type] = 14;
+			NPCHelper.ImmuneTo(this, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -26,7 +27,6 @@ namespace SpiritMod.NPCs.LostMime
 			NPC.value = 80f;
 			NPC.knockBackResist = .25f;
 			NPC.aiStyle = 3;
-			NPC.buffImmune[BuffID.Confused] = true;
 			AIType = NPCID.SnowFlinx;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.LostMimeBanner>();

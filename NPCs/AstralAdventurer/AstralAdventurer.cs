@@ -26,6 +26,7 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10; 
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo(this, BuffID.OnFire);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -44,12 +45,12 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			NPC.width = 30;
 			NPC.height = 56;
 			NPC.damage = 0;
-			NPC.buffImmune[BuffID.OnFire] = true;
 			NPC.lavaImmune = false;
 			NPC.noTileCollide = false;
 			NPC.noGravity = false;
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath1;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.AstralAdventurerBanner>();
 		}

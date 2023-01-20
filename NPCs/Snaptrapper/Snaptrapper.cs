@@ -22,6 +22,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 			Main.npcFrameCount[NPC.type] = 11;
             NPCID.Sets.TrailCacheLength[NPC.type] = 5;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo<Buffs.DoT.FesteringWounds>(this, BuffID.Poisoned, BuffID.Venom);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -41,9 +42,6 @@ namespace SpiritMod.NPCs.Snaptrapper
 			NPC.lifeMax = 340;
     		NPC.rarity = 3;
 			NPC.HitSound = SoundID.NPCHit32;
-            NPC.buffImmune[BuffID.Poisoned] = true;
-            NPC.buffImmune[ModContent.BuffType<Buffs.DoT.FesteringWounds>()] = true;
-            NPC.buffImmune[BuffID.Venom] = true;
             NPC.DeathSound = SoundID.NPCDeath25;
 			NPC.value = Item.buyPrice(0, 0, 50, 0);
 			NPC.knockBackResist = 0f;

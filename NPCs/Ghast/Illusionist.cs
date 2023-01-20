@@ -15,6 +15,7 @@ namespace SpiritMod.NPCs.Ghast
 		{
 			DisplayName.SetDefault("Ghast");
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -33,9 +34,6 @@ namespace SpiritMod.NPCs.Ghast
 			NPC.damage = 25;
 			NPC.HitSound = SoundID.NPCHit2;
 			NPC.DeathSound = SoundID.NPCDeath2;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.value = 1200f;
 			NPC.knockBackResist = 0.75f;
 			NPC.noGravity = true;

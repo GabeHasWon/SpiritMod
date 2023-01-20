@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.Hornetfish
 			DisplayName.SetDefault("Hornetfish");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -28,8 +29,6 @@ namespace SpiritMod.NPCs.Hornetfish
 			NPC.defense = 9;
 			NPC.lifeMax = 100;
 			NPC.noGravity = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.value = 100f;
 			NPC.noTileCollide = false;
 			NPC.HitSound = SoundID.NPCHit1;

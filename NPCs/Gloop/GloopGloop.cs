@@ -16,6 +16,7 @@ namespace SpiritMod.NPCs.Gloop
 		{
 			DisplayName.SetDefault("Gloop");
 			Main.npcFrameCount[NPC.type] = 3;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -28,11 +29,10 @@ namespace SpiritMod.NPCs.Gloop
 			NPC.noGravity = true;
 			NPC.value = 90f;
 			NPC.noTileCollide = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.HitSound = SoundID.DD2_GoblinHurt;
 			NPC.DeathSound = SoundID.NPCDeath22;
 			NPC.noGravity = true;
+
             Banner = NPC.type;
             BannerItem = ModContent.ItemType<Items.Banners.GloopBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<AsteroidBiome>().Type };

@@ -21,6 +21,7 @@ namespace SpiritMod.NPCs.HellEater
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Pixie];
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo(this, BuffID.OnFire, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -32,15 +33,14 @@ namespace SpiritMod.NPCs.HellEater
 			NPC.lifeMax = 112;
 			NPC.HitSound = SoundID.NPCHit2;
 			NPC.DeathSound = SoundID.NPCDeath6;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.value = 300f;
 			NPC.knockBackResist = .29f;
 			NPC.aiStyle = 85;
 			NPC.noGravity = true;
+			NPC.lavaImmune = true;
+
 			AIType = NPCID.StardustCellBig;
 			AnimationType = NPCID.Pixie;
-			NPC.lavaImmune = true;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.GluttonousDevourerBanner>();
 		}

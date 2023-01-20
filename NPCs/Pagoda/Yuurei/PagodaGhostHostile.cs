@@ -21,6 +21,7 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.BuffImmune(Type);
 		}
 
 		public override void SetDefaults()
@@ -58,9 +59,6 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 			AIType = NPCID.FlyingAntlion;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.YureiBanner>();
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

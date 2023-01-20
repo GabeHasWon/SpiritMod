@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.Wheezer
 		{
 			DisplayName.SetDefault("Wheezer");
 			Main.npcFrameCount[NPC.type] = 16;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
 
 		public override void SetDefaults()
@@ -32,7 +33,6 @@ namespace SpiritMod.NPCs.Wheezer
 			NPC.value = 120f;
 			NPC.knockBackResist = .35f;
 			NPC.aiStyle = 3;
-			NPC.buffImmune[BuffID.Poisoned] = true;
 
 			AIType = NPCID.Skeleton;
 			Banner = NPC.type;

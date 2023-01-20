@@ -25,6 +25,7 @@ namespace SpiritMod.NPCs.Reach
 		{
 			DisplayName.SetDefault("Glade Wraith");
 			Main.npcFrameCount[NPC.type] = 12;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
 
 		public override void SetDefaults()
@@ -33,7 +34,6 @@ namespace SpiritMod.NPCs.Reach
 			NPC.height = 82;
 			NPC.damage = 28;
 			NPC.defense = 10;
-			NPC.buffImmune[BuffID.Poisoned] = true;
 			NPC.lifeMax = 300;
 			NPC.HitSound = SoundID.NPCHit7;
 			NPC.DeathSound = SoundID.NPCDeath6;

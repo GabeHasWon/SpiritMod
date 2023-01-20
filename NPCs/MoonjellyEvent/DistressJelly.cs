@@ -28,8 +28,6 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.lifeMax = 5;
 			NPC.HitSound = SoundID.NPCHit25;
 			NPC.DeathSound = SoundID.NPCDeath28;
-            NPC.buffImmune[BuffID.Poisoned] = true;
-            NPC.buffImmune[BuffID.Venom] = true;
             NPC.value = 0f;
 			NPC.catchItem = (short)ModContent.ItemType<DistressJellyItem>();
 			NPC.knockBackResist = .45f;
@@ -38,6 +36,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.noGravity = true;
             NPC.noTileCollide = true;
             NPC.rarity = 3;
+
             AIType = NPCID.Firefly;
 		}
 

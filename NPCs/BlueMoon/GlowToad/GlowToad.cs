@@ -25,6 +25,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		{
 			DisplayName.SetDefault("Glow Toad");
 			Main.npcFrameCount[NPC.type] = 2;
+			NPCHelper.ImmuneTo<StarFlame>(this, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -37,9 +38,8 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath5;
 			NPC.value = 600f;
-			NPC.buffImmune[ModContent.BuffType<StarFlame>()] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.knockBackResist = 0.5f;
+
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}
 

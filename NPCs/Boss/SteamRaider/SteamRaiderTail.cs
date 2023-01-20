@@ -14,6 +14,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Starplate Voyager");
+			NPCHelper.BuffImmune(Type, true);
 		}
 
 		public override void SetDefaults()
@@ -25,9 +26,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.defense = 15;
 			NPC.lifeMax = 6500; //250000
 			NPC.aiStyle = 6; //new
-			Main.npcFrameCount[NPC.type] = 1; //new
-			AIType = -1; //new
-			AnimationType = 10; //new
 			NPC.knockBackResist = 0f;
 			NPC.alpha = 255;
 			NPC.behindTiles = true;
@@ -36,11 +34,11 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
-			for (int k = 0; k < NPC.buffImmune.Length; k++) {
-				NPC.buffImmune[k] = true;
-			}
-			Music = MusicID.Boss3;
 			NPC.dontCountMe = true;
+
+			AIType = -1; //new
+			AnimationType = 10; //new
+			Music = MusicID.Boss3;
 		}
 
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;

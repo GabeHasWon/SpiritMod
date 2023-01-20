@@ -23,6 +23,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			DisplayName.SetDefault("Wrathful Soul");
 			Main.npcFrameCount[NPC.type] = 17;
 			NPC.gfxOffY = 50;
+			NPCHelper.ImmuneTo(this, BuffID.OnFire);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -45,7 +46,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			NPC.aiStyle = -1;
 			NPC.noGravity = true;
 			NPC.lavaImmune = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
+			
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.BlazingSkullBanner>();
 		}

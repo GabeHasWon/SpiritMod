@@ -20,9 +20,10 @@ namespace SpiritMod.NPCs.DesertBandit
 		{
 			DisplayName.SetDefault("Forsaken Bandit");
 			Main.npcFrameCount[NPC.type] = 12;
+			NPCHelper.BuffImmune(Type);
+
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
-
 			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true;
 		}
 
@@ -40,8 +41,6 @@ namespace SpiritMod.NPCs.DesertBandit
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.lavaImmune = true;
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 			NPC.noTileCollide = false;
 			NPC.alpha = 255;
 			NPC.dontTakeDamage = false;

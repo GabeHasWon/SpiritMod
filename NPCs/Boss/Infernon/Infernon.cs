@@ -24,6 +24,8 @@ namespace SpiritMod.NPCs.Boss.Infernon
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Infernon");
+			Main.npcFrameCount[NPC.type] = 8;
+			NPCHelper.ImmuneTo(this, BuffID.CursedInferno, BuffID.OnFire);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -41,17 +43,14 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			NPC.defense = 13;
 			NPC.lifeMax = 13000;
 			NPC.knockBackResist = 0;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.CursedInferno] = true;
-			Main.npcFrameCount[NPC.type] = 8;
 			NPC.boss = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
-			Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/Infernon");
 			NPC.npcSlots = 10;
-
 			NPC.HitSound = SoundID.NPCHit7;
 			NPC.DeathSound = SoundID.NPCDeath5;
+
+			Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/Infernon");
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

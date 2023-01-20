@@ -21,6 +21,7 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 		{
 			DisplayName.SetDefault("Stargazer Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
+			NPCHelper.ImmuneTo<StarFlame>(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -35,9 +36,6 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 			NPC.value = 600f;
 			NPC.knockBackResist = .4f;
 			NPC.aiStyle = 1;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[ModContent.BuffType<StarFlame>()] = true;
 
 			AIType = NPCID.BlueSlime;
 			AnimationType = NPCID.BlueSlime;

@@ -14,7 +14,8 @@ namespace SpiritMod.NPCs.Hemophora
         {
             DisplayName.SetDefault("Hemophora");
             Main.npcFrameCount[NPC.type] = 11;
-        }
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
+		}
 
         public override void SetDefaults()
         {
@@ -23,7 +24,6 @@ namespace SpiritMod.NPCs.Hemophora
             NPC.damage = 10;
             NPC.defense = 18;
             NPC.lifeMax = 121;
-			NPC.buffImmune[BuffID.Poisoned] = true;
 			NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.value = 220f;

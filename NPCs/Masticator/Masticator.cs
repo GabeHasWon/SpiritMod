@@ -19,6 +19,7 @@ namespace SpiritMod.NPCs.Masticator
 			Main.npcFrameCount[NPC.type] = 11;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo(this, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -33,7 +34,6 @@ namespace SpiritMod.NPCs.Masticator
 			NPC.value = Item.buyPrice(0, 0, 0, 80);
 			NPC.HitSound = SoundID.NPCHit19;
 			NPC.DeathSound = SoundID.NPCDeath49;
-			NPC.buffImmune[BuffID.Confused] = true;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.MasticatorBanner>();
 		}

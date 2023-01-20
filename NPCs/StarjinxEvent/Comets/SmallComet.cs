@@ -36,7 +36,11 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
 
 		private bool spawnedEnemies = false;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Small Starjinx Comet");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Small Starjinx Comet");
+			NPCHelper.BuffImmune(Type, true);
+		}
 
 		public override void SetDefaults()
         {
@@ -57,9 +61,6 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
             NPC.alpha = 255;
 			NPC.direction = NPC.spriteDirection = Main.rand.NextBool() ? -1 : 1;
 			NPC.chaseable = false;
-            for (int i = 0; i < BuffLoader.BuffCount; i++)
-                NPC.buffImmune[i] = true;
-
 			NPC.hide = true; //Drawn manually by main meteor for layering and efficiency with shaders
 		}
 

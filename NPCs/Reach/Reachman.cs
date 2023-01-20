@@ -25,6 +25,7 @@ namespace SpiritMod.NPCs.Reach
 		{
 			DisplayName.SetDefault("Feral Shambler");
 			Main.npcFrameCount[NPC.type] = 16;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -40,7 +41,6 @@ namespace SpiritMod.NPCs.Reach
 			NPC.damage = 22;
 			NPC.defense = 8;
 			NPC.lifeMax = 59;
-			NPC.buffImmune[BuffID.Poisoned] = true;
 			NPC.DeathSound = SoundID.NPCDeath2;
 			NPC.value = 70f;
 			NPC.knockBackResist = .34f;

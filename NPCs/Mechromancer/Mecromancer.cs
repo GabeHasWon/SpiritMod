@@ -24,6 +24,8 @@ namespace SpiritMod.NPCs.Mechromancer
 		{
 			DisplayName.SetDefault("Mechromancer");
 			Main.npcFrameCount[NPC.type] = 17;
+			NPCHelper.ImmuneTo<ElectrifiedV2>(this, BuffID.Confused, BuffID.OnFire);
+
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
@@ -45,12 +47,10 @@ namespace SpiritMod.NPCs.Mechromancer
 			NPC.lifeMax = 270;
 			NPC.HitSound = SoundID.NPCHit40;
 			NPC.DeathSound = SoundID.NPCDeath2;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[ModContent.BuffType<ElectrifiedV2>()] = true;
 			NPC.value = Item.buyPrice(0, 1, 38, 58);
 			NPC.knockBackResist = 0.1f;
 			NPC.noTileCollide = false;
+
 			AnimationType = 471;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.MechromancerBanner>();

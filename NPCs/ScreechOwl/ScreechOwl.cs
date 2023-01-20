@@ -14,6 +14,7 @@ namespace SpiritMod.NPCs.ScreechOwl
 		{
 			DisplayName.SetDefault("Screech Owl");
 			Main.npcFrameCount[NPC.type] = 8;
+			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.Frostburn);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -36,8 +37,7 @@ namespace SpiritMod.NPCs.ScreechOwl
 			NPC.knockBackResist = .62f;
 			NPC.aiStyle = -1;
             NPC.noGravity = true;
-			NPC.buffImmune[BuffID.Frostburn] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.ScreechOwlBanner>();
 		}

@@ -17,6 +17,7 @@ namespace SpiritMod.NPCs.BlizzardBandit
         {
             DisplayName.SetDefault("Blizzard Bandit");
             Main.npcFrameCount[NPC.type] = 16;
+			NPCHelper.ImmuneTo(this, BuffID.Frostburn, ModContent.BuffType<MageFreeze>(), ModContent.BuffType<CryoCrush>());
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -35,13 +36,9 @@ namespace SpiritMod.NPCs.BlizzardBandit
             NPC.aiStyle = 3;
             NPC.lifeMax = 55;
             NPC.defense = 6;
-            AIType = NPCID.SnowFlinx;
             NPC.value = 65f;
             NPC.knockBackResist = 0.7f;
             NPC.width = 30;
-			NPC.buffImmune[BuffID.Frostburn] = true;
-			NPC.buffImmune[ModContent.BuffType<MageFreeze>()] = true;
-			NPC.buffImmune[ModContent.BuffType<CryoCrush>()] = true;
 			NPC.height = 54;
             NPC.damage = 15;
             NPC.lavaImmune = false;
@@ -49,9 +46,11 @@ namespace SpiritMod.NPCs.BlizzardBandit
             NPC.alpha = 0;
             NPC.dontTakeDamage = false;
             NPC.HitSound = SoundID.NPCHit1;
-			NPC.DeathSound = SoundID.NPCHit1;// new Terraria.Audio.LegacySoundStyle(4, 1);
+			NPC.DeathSound = SoundID.NPCHit1;
+
+            AIType = NPCID.SnowFlinx;
             Banner = NPC.type;
-            BannerItem = ModContent.ItemType<Items.Banners.BlizzardBanditBanner>();
+			BannerItem = ModContent.ItemType<Items.Banners.BlizzardBanditBanner>();
         }
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

@@ -23,6 +23,7 @@ namespace SpiritMod.NPCs.HauntedTome
 		{
 			DisplayName.SetDefault("Haunted Tome");
 			Main.npcFrameCount[NPC.type] = 19;
+			NPCHelper.ImmuneTo<BloodCorrupt, BloodInfusion>(this, BuffID.Poisoned, BuffID.Confused, BuffID.OnFire);
 		}
 
 		private int frame = 0;
@@ -35,11 +36,6 @@ namespace SpiritMod.NPCs.HauntedTome
 			NPC.defense = 8;
 			NPC.noTileCollide = true;
 			NPC.noGravity = true;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
 			NPC.lavaImmune = true;
 			NPC.aiStyle = -1;
 			NPC.value = 600;

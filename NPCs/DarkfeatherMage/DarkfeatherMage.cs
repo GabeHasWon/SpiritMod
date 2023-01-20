@@ -24,6 +24,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 		{
 			DisplayName.SetDefault("Darkfeather Mage");
 			Main.npcFrameCount[NPC.type] = 6;
+			NPCHelper.ImmuneTo(this, BuffID.Confused);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -43,7 +44,6 @@ namespace SpiritMod.NPCs.DarkfeatherMage
             NPC.knockBackResist = .05f;
             NPC.noGravity = true;
 			NPC.value = 1320f;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.noTileCollide = false;
 			NPC.HitSound = SoundID.DD2_GoblinBomberDeath;
 			NPC.DeathSound = SoundID.DD2_GoblinBomberHurt;

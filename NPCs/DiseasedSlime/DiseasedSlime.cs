@@ -21,6 +21,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 		{
 			DisplayName.SetDefault("Noxious Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
+			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -32,13 +33,11 @@ namespace SpiritMod.NPCs.DiseasedSlime
 			NPC.lifeMax = 65;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath22;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.value = 42f;
 			NPC.alpha = 45;
 			NPC.knockBackResist = .6f;
 			NPC.aiStyle = 1;
+
 			AIType = NPCID.BlueSlime;
 			AnimationType = NPCID.BlueSlime;
 			Banner = NPC.type;

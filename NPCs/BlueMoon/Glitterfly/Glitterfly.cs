@@ -27,6 +27,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 		{
 			DisplayName.SetDefault("Glitterfly");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Pixie];
+			NPCHelper.ImmuneTo<StarFlame>(this, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -37,10 +38,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 			NPC.lifeMax = 460;
 			NPC.defense = 16;
 			NPC.knockBackResist = 0.1f;
-
 			NPC.noGravity = true;
-			NPC.buffImmune[ModContent.BuffType<StarFlame>()] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 
 			AnimationType = NPCID.Pixie;
 			NPC.HitSound = SoundID.NPCHit44;

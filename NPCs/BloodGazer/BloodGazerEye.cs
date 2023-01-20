@@ -23,7 +23,11 @@ namespace SpiritMod.NPCs.BloodGazer
 		private bool Active => Parent.active && Parent.type == ModContent.NPCType<BloodGazer>() &&
 			((Parent.ai[0] != (float)BloodGazerAiStates.Passive && Parent.ai[0] != (float)BloodGazerAiStates.Despawn && Parent.ai[0] != (float)BloodGazerAiStates.Phase2Transition) ||
 			_detatched);
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Gazer");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Blood Gazer");
+			NPCHelper.BuffImmune(Type);
+		}
 
 		public override void SetDefaults()
 		{
@@ -39,11 +43,8 @@ namespace SpiritMod.NPCs.BloodGazer
 			NPC.HitSound = SoundID.NPCHit19;
 			NPC.DeathSound = SoundID.NPCDeath22;
 			NPC.netAlways = true;
-			for (int i = 0; i < BuffLoader.BuffCount; i++)
-			{
-				NPC.buffImmune[i] = true;
-			}
 		}
+
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.damage = (int)(NPC.damage * bossLifeScale * 0.66f);
 
 		private const int chainSegments = 16;

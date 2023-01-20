@@ -27,6 +27,7 @@ namespace SpiritMod.Items.Consumable.Potion
 			Item.buffTime = 14400;
 			Item.UseSound = SoundID.Item3;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

@@ -22,6 +22,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			NPCID.Sets.TrailCacheLength[NPC.type] = 30;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.ImmuneTo(this, BuffID.OnFire, BuffID.Confused, BuffID.Poisoned);
 		}
 
 		public override void SetDefaults()
@@ -36,11 +37,9 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			NPC.lavaImmune = true;
 			NPC.noGravity = true;
 			NPC.damage = 30;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
 			NPC.HitSound = SoundID.NPCHit3;
 			NPC.DeathSound = SoundID.NPCDeath43;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.FallingAsteroidBanner>();
 		}

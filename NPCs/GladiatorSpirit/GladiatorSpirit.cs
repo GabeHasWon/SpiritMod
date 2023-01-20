@@ -19,6 +19,7 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -30,9 +31,6 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 			NPC.lifeMax = 80;
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath6;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.value = 220f;
 			NPC.knockBackResist = .40f;
 			NPC.noGravity = true;

@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			DisplayName.SetDefault("Tethervolt Jelly");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -36,14 +37,13 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.lifeMax = 65;
 			NPC.HitSound = SoundID.NPCHit25;
 			NPC.DeathSound = SoundID.NPCDeath28;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.value = 250f;
 			NPC.knockBackResist = 0f;
 			NPC.alpha = 100;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.aiStyle = -1;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.GiantJellyBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };

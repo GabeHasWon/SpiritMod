@@ -17,6 +17,8 @@ namespace SpiritMod.NPCs.Starfarer
 		{
 			DisplayName.SetDefault("Stardancer");
 			Main.npcFrameCount[NPC.type] = 1;
+			NPCHelper.BuffImmune(Type, true);
+
 			NPCID.Sets.SpawnFromLastEmptySlot[Type] = true;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -46,17 +48,11 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
+			NPC.killCount[Type] = NPC.killCount[ModContent.NPCType<CogTrapperHead>()];
+			NPC.dontCountMe = true;
 
 			Banner = ModContent.NPCType<CogTrapperHead>();
 			BannerItem = ModContent.ItemType<Items.Banners.StardancerBanner>();
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-			{
-				NPC.buffImmune[k] = true;
-			}
-			NPC.dontCountMe = true;
-
-			NPC.killCount[Type] = NPC.killCount[ModContent.NPCType<CogTrapperHead>()];
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<CogTrapperHead>()], false);

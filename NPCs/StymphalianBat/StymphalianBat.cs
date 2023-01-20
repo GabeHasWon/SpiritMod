@@ -22,6 +22,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 			Main.npcFrameCount[NPC.type] = 7;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo<FesteringWounds, BloodCorrupt, BloodInfusion>(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -37,11 +38,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 			NPC.noTileCollide = false;
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath4;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.StymphalianBatBanner>();
 		}

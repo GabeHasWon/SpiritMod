@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.CracklingCore
 		{
 			DisplayName.SetDefault("Crackling Core");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 		}
 
 		public override void SetDefaults()
@@ -33,11 +34,6 @@ namespace SpiritMod.NPCs.CracklingCore
 			NPC.value = 360f;
 			NPC.knockBackResist = .3f;
 			NPC.aiStyle = 44;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
 
 			AIType = NPCID.FlyingAntlion;
 			Banner = NPC.type;

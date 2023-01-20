@@ -13,6 +13,7 @@ using SpiritMod.Particles;
 using SpiritMod.Items.Sets.GranitechSet;
 using System.IO;
 using Terraria.GameContent.Bestiary;
+using Terraria.DataStructures;
 
 namespace SpiritMod.NPCs.GraniTech
 {
@@ -59,6 +60,7 @@ namespace SpiritMod.NPCs.GraniTech
 				PortraitPositionYOverride = 30
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
+			NPCHelper.BuffImmune(this);
 		}
 
 		public override void SetDefaults()
@@ -75,9 +77,6 @@ namespace SpiritMod.NPCs.GraniTech
 			NPC.aiStyle = -1;
 			NPC.DeathSound = SoundID.NPCDeath37;
 			NPC.HitSound = SoundID.NPCHit4;
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.GranitecTurretBanner>();

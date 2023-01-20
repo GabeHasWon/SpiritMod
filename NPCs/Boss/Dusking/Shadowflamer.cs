@@ -14,6 +14,8 @@ namespace SpiritMod.NPCs.Boss.Dusking
 		{
 			DisplayName.SetDefault("Antumbral Skull");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.ShadowFlame);
+
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				Rotation = MathHelper.PiOver2
@@ -28,10 +30,6 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			NPC.damage = 45;
 			NPC.knockBackResist = 0;
 			NPC.DeathSound = SoundID.NPCDeath6;
-
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[BuffID.ShadowFlame] = true;
-
 			NPC.friendly = false;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;

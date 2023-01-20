@@ -19,6 +19,7 @@ namespace SpiritMod.NPCs.CrystalDrifter
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.ImmuneTo(this, BuffID.OnFire, BuffID.Frostburn, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -30,10 +31,6 @@ namespace SpiritMod.NPCs.CrystalDrifter
 			NPC.lifeMax = 200;
 			NPC.HitSound = SoundID.NPCDeath15;
 			NPC.DeathSound = SoundID.NPCDeath6;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Frostburn] = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Venom] = true;
 			NPC.value = 200f;
 			NPC.knockBackResist = 0f;
 			NPC.alpha = 100;
@@ -41,6 +38,7 @@ namespace SpiritMod.NPCs.CrystalDrifter
 			NPC.noTileCollide = true;
 			NPC.aiStyle = 22;
 			NPC.aiStyle = -1;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.CrystalDrifterBanner>();
 		}

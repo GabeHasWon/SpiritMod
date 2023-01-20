@@ -21,6 +21,7 @@ namespace SpiritMod.NPCs.Bloatfish
 		{
 			DisplayName.SetDefault("Bloatfish");
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.ImmuneTo(this, BuffID.Confused);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -39,10 +40,10 @@ namespace SpiritMod.NPCs.Bloatfish
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.value = 90f;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.knockBackResist = 0.3f;
 			NPC.aiStyle = 16;
 			NPC.noGravity = true;
+
 			AIType = NPCID.Goldfish;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.BloatfishBanner>();

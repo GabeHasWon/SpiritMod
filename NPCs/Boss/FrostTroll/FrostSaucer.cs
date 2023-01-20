@@ -23,6 +23,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.BuffImmune(Type);
 		}
 
 		public override void SetDefaults()
@@ -36,9 +37,6 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			NPC.noTileCollide = true;
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath5;
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

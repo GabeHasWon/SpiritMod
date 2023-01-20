@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.ElectricEel
 		{
 			DisplayName.SetDefault("Electric Eel");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo<ElectrifiedV2>(this);
 		}
 
 		public override void SetDefaults()
@@ -28,7 +29,6 @@ namespace SpiritMod.NPCs.ElectricEel
 			NPC.defense = 10;
 			NPC.lifeMax = 125;
 			NPC.HitSound = SoundID.NPCHit1;
-			NPC.buffImmune[ModContent.BuffType<ElectrifiedV2>()] = true;
 			NPC.DeathSound = SoundID.NPCDeath5;
 			NPC.value = 340f;
 			NPC.knockBackResist = .35f;

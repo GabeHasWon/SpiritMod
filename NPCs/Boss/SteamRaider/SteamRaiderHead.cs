@@ -50,6 +50,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		{
 			DisplayName.SetDefault("Starplate Voyager");
 			Main.npcFrameCount[NPC.type] = 1;
+			NPCHelper.BuffImmune(Type, true);
+
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				CustomTexturePath = $"{Texture}_Bestiary",
@@ -79,11 +81,9 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
+
 			Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/Starplate");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<AsteroidBiome>().Type };
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

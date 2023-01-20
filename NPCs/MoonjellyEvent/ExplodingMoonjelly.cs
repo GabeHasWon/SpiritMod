@@ -19,6 +19,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		{
 			DisplayName.SetDefault("Moonlight Rupturer");
 			Main.npcFrameCount[NPC.type] = 7;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
 
 		public override void SetDefaults()
@@ -30,8 +31,6 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.lifeMax = 48;
 			NPC.HitSound = SoundID.NPCHit25;
 			NPC.DeathSound = SoundID.NPCDeath28;
-            NPC.buffImmune[BuffID.Poisoned] = true;
-            NPC.buffImmune[BuffID.Venom] = true;
             NPC.value = 10f;
 			NPC.knockBackResist = .45f;
             NPC.scale = 1f;

@@ -20,6 +20,7 @@ namespace SpiritMod.NPCs.Festerfly
 		{
 			DisplayName.SetDefault("Festerfly");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo(this, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -34,8 +35,8 @@ namespace SpiritMod.NPCs.Festerfly
 			NPC.value = 110f;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.knockBackResist = .45f;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.FesterflyBanner>();
 		}

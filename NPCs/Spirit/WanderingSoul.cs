@@ -17,6 +17,7 @@ namespace SpiritMod.NPCs.Spirit
 		{
 			DisplayName.SetDefault("Wandering Soul");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Wraith];
+			NPCHelper.BuffImmune(Type, true);
 		}
 
 		public override void SetDefaults()
@@ -34,9 +35,6 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.noTileCollide = true;
 			NPC.aiStyle = 22;
 			NPC.stepSpeed = .5f;
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 
 			AIType = NPCID.Wraith;
 			AIType = NPCID.Wraith;

@@ -16,6 +16,7 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 		{
 			DisplayName.SetDefault("Blizzard Nimbus");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo(this, BuffID.Frostburn, BuffID.Confused, ModContent.BuffType<MageFreeze>(), ModContent.BuffType<CryoCrush>());
 		}
 
 		public override void SetDefaults()
@@ -27,10 +28,6 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 			NPC.lifeMax = 220;
 			NPC.knockBackResist = 0.3f;
 			NPC.noGravity = true;
-			NPC.buffImmune[BuffID.Frostburn] = true;
-			NPC.buffImmune[ModContent.BuffType<MageFreeze>()] = true;
-			NPC.buffImmune[ModContent.BuffType<CryoCrush>()] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.value = Item.buyPrice(0, 0, 4, 0);
 			NPC.HitSound = SoundID.NPCHit30;
 			NPC.DeathSound = SoundID.NPCDeath49;

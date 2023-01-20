@@ -13,6 +13,7 @@ namespace SpiritMod.NPCs.AstralAmalgam
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Astral Buffer");
+			NPCHelper.BuffImmune(Type, true);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
@@ -34,10 +35,6 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			NPC.chaseable = false;
 			NPC.noGravity = true;
 			NPC.knockBackResist = 0f;
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
-
 			NPC.dontCountMe = true;
 		}
 

@@ -17,9 +17,9 @@ namespace SpiritMod.NPCs.BloodstainedChest
 		{
 			DisplayName.SetDefault("Bloodstained Chest");
             Main.npcFrameCount[NPC.type] = 1;
+			NPCHelper.BuffImmune(Type);
 
 			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true; //Disables happiness
-
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
@@ -36,9 +36,6 @@ namespace SpiritMod.NPCs.BloodstainedChest
             NPC.dontCountMe = true;
 			NPC.townNPC = true;
 			NPC.friendly = true;
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 		}
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

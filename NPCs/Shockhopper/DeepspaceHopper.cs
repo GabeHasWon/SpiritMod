@@ -56,6 +56,7 @@ namespace SpiritMod.NPCs.Shockhopper
 		{
 			DisplayName.SetDefault("Shockhopper");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo<ElectrifiedV2, FesteringWounds>(this, BuffID.Poisoned, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -72,12 +73,9 @@ namespace SpiritMod.NPCs.Shockhopper
 			NPC.aiStyle = -1;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.ShockhopperBanner>();
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[ModContent.BuffType<ElectrifiedV2>()] = true;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<AsteroidBiome>().Type };
 			Timer = 300; // start with 5 seconds to the first teleport
 		}

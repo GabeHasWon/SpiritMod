@@ -17,6 +17,7 @@ namespace SpiritMod.NPCs.MoltenCore
 		{
 			DisplayName.SetDefault("Molten Core");
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.OnFire);
 		}
 
 		public override void SetDefaults()
@@ -32,10 +33,9 @@ namespace SpiritMod.NPCs.MoltenCore
 			NPC.lavaImmune = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.HitSound = SoundID.NPCHit3;
 			NPC.DeathSound = SoundID.NPCDeath43;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.MoltenCoreBanner>();
 		}

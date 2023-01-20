@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.Bloater
 		{
 			DisplayName.SetDefault("Bloater");
 			Main.npcFrameCount[NPC.type] = 9;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -31,8 +32,6 @@ namespace SpiritMod.NPCs.Bloater
 			NPC.lifeMax = 45;
 			NPC.HitSound = SoundID.NPCHit18;
 			NPC.DeathSound = SoundID.NPCDeath21;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
 			Banner = NPC.type;

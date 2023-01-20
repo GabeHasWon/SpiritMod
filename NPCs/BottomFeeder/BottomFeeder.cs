@@ -16,6 +16,8 @@ namespace SpiritMod.NPCs.BottomFeeder
 		{
 			DisplayName.SetDefault("Bottom Feeder");
 			Main.npcFrameCount[NPC.type] = 11;
+			NPCHelper.ImmuneTo<BloodCorrupt, BloodInfusion>(this);
+
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				Position = new Vector2(0f, 12f),
@@ -33,8 +35,6 @@ namespace SpiritMod.NPCs.BottomFeeder
 			NPC.lifeMax = 175;
 			NPC.HitSound = SoundID.NPCHit18;
 			NPC.DeathSound = SoundID.NPCDeath5;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
 			NPC.value = 800f;
 			NPC.knockBackResist = 0.34f;
 			NPC.aiStyle = 3;

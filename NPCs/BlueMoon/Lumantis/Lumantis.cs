@@ -23,6 +23,7 @@ namespace SpiritMod.NPCs.BlueMoon.Lumantis
 		{
 			DisplayName.SetDefault("Lumantis");
 			Main.npcFrameCount[NPC.type] = 5;
+			NPCHelper.ImmuneTo<StarFlame>(this);
 		}
 
 		public override void SetDefaults()
@@ -32,12 +33,12 @@ namespace SpiritMod.NPCs.BlueMoon.Lumantis
 			NPC.damage = 62;
 			NPC.defense = 20;
 			NPC.lifeMax = 560;
-			NPC.buffImmune[ModContent.BuffType<StarFlame>()] = true;
 			NPC.HitSound = SoundID.DD2_LightningBugHurt;
 			NPC.DeathSound = SoundID.NPCDeath34;
 			NPC.value = 760f;
 			NPC.knockBackResist = .2f;
 			NPC.aiStyle = 3;
+
 			AIType = NPCID.WalkingAntlion;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.LumantisBanner>();

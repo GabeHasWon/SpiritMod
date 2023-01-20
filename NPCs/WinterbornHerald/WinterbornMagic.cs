@@ -24,6 +24,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 		{
 			DisplayName.SetDefault("Winterborn Herald");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCHelper.ImmuneTo<CryoCrush>(this, BuffID.Frostburn, BuffID.OnFire);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -41,9 +42,6 @@ namespace SpiritMod.NPCs.WinterbornHerald
 			NPC.damage = 0;
 			NPC.HitSound = SoundID.NPCDeath15;
 			NPC.DeathSound = SoundID.NPCDeath6;
-			NPC.buffImmune[BuffID.OnFire] = true;
-			NPC.buffImmune[BuffID.Frostburn] = true;
-			NPC.buffImmune[ModContent.BuffType<CryoCrush>()] = true;
 			NPC.value = 289f;
 			NPC.knockBackResist = 0.15f;
 			NPC.noGravity = false;

@@ -21,6 +21,7 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 			NPCID.Sets.TownCritter[NPC.type] = true;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			NPCHelper.BuffImmune(Type);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -63,10 +64,6 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 			NPC.noTileCollide = true;
             Banner = NPC.type;
             BannerItem = ModContent.ItemType<Items.Banners.PhantomSamuraiBanner>();
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-			{
-				NPC.buffImmune[k] = true;
-			}
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

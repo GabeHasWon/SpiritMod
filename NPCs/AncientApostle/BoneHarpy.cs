@@ -17,6 +17,8 @@ namespace SpiritMod.NPCs.AncientApostle
 		{
 			DisplayName.SetDefault("Ancient Apostle");
 			Main.npcFrameCount[NPC.type] = 7;
+			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
+
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
 				Position = new Vector2(0f, 14f),
@@ -33,14 +35,10 @@ namespace SpiritMod.NPCs.AncientApostle
 			NPC.lifeMax = 70;
 			NPC.noGravity = true;
 			NPC.value = 90f;
-			NPC.buffImmune[BuffID.Poisoned] = true;
-			NPC.buffImmune[BuffID.Confused] = true;
-			NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodCorrupt>()] = true;
-			NPC.buffImmune[ModContent.BuffType<BloodInfusion>()] = true;
 			NPC.noTileCollide = false;
 			NPC.HitSound = SoundID.NPCHit2;
 			NPC.DeathSound = SoundID.NPCDeath6;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.AncientApostleBanner>();
 		}

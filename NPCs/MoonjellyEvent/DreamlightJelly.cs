@@ -30,8 +30,6 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			NPC.lifeMax = 5;
 			NPC.HitSound = SoundID.NPCHit25;
 			NPC.DeathSound = SoundID.NPCDeath28;
-            NPC.buffImmune[BuffID.Poisoned] = true;
-            NPC.buffImmune[BuffID.Venom] = true;
             NPC.value = 0f;
 			NPC.catchItem = (short)ModContent.ItemType<DreamlightJellyItem>();
 			NPC.knockBackResist = .45f;

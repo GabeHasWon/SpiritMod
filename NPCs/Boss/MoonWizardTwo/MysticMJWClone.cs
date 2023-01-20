@@ -26,6 +26,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 		{
 			DisplayName.SetDefault("Mystic Clone");
 			Main.npcFrameCount[NPC.type] = 21;
+			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
+
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
@@ -46,9 +48,6 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 			NPC.damage = 110;
             NPC.scale = 2f;
 			NPC.lavaImmune = true;
-            NPC.buffImmune[BuffID.Poisoned] = true;
-            NPC.buffImmune[ModContent.BuffType<FesteringWounds>()] = true;
-            NPC.buffImmune[BuffID.Venom] = true;
             NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.HitSound = SoundID.NPCHit13;

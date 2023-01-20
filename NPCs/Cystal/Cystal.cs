@@ -23,6 +23,7 @@ namespace SpiritMod.NPCs.Cystal
 		{
 			DisplayName.SetDefault("Cystal");
 			Main.npcFrameCount[NPC.type] = 8;
+			NPCHelper.ImmuneTo(this, BuffID.Confused);
 		}
 
 		public override void SetDefaults()
@@ -34,7 +35,6 @@ namespace SpiritMod.NPCs.Cystal
 			NPC.knockBackResist = 0.1f;
 			NPC.width = 40;
 			NPC.height = 40;
-			NPC.buffImmune[BuffID.Confused] = true;
 			NPC.damage = 20;
 			NPC.lavaImmune = true;
 			NPC.noGravity = true;

@@ -27,6 +27,7 @@ namespace SpiritMod.NPCs.Starfarer
 		{
 			DisplayName.SetDefault("Stardancer");
 			Main.npcFrameCount[NPC.type] = 1;
+			NPCHelper.BuffImmune(Type, true);
 
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -62,9 +63,6 @@ namespace SpiritMod.NPCs.Starfarer
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.StardancerBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<AsteroidBiome>().Type };
-
-			for (int k = 0; k < NPC.buffImmune.Length; k++)
-				NPC.buffImmune[k] = true;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
