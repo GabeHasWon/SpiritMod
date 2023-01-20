@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -35,7 +34,7 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.height = 20;
 			NPC.defense = 14;
 			NPC.lifeMax = 300;
-			NPC.aiStyle = 6;
+			NPC.aiStyle = -1;
 			AIType = -1;
 			AnimationType = 10;
 			NPC.dontCountMe = true;
@@ -48,10 +47,16 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
 
-			for (int k = 0; k < NPC.buffImmune.Length; k++) {
+			Banner = ModContent.NPCType<CogTrapperHead>();
+			BannerItem = ModContent.ItemType<Items.Banners.StardancerBanner>();
+
+			for (int k = 0; k < NPC.buffImmune.Length; k++)
+			{
 				NPC.buffImmune[k] = true;
 			}
 			NPC.dontCountMe = true;
+
+			NPC.killCount[Type] = NPC.killCount[ModContent.NPCType<CogTrapperHead>()];
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<CogTrapperHead>()], false);
@@ -60,80 +65,100 @@ namespace SpiritMod.NPCs.Starfarer
 		public override void AI()
 		{
 			Player player = Main.player[NPC.target];
-			bool expertMode = Main.expertMode;
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0f, 0.0375f * 2, 0.125f * 2);
-			if (Main.netMode != NetmodeID.MultiplayerClient) {
+
+			if (Main.netMode != NetmodeID.MultiplayerClient)
+			{
 				NPC.localAI[0] += Main.rand.Next(4);
-				if (NPC.localAI[0] >= (float)Main.rand.Next(700, 1000)) {
+
+				if (NPC.localAI[0] >= (float)Main.rand.Next(700, 1000))
+				{
 					SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
 					NPC.localAI[0] = 0f;
 					NPC.TargetClosest(true);
-					if (Collision.CanHit(NPC.position, NPC.width, NPC.height, player.position, player.width, player.height)) {
-						float num941 = 1f; //speed
-						Vector2 vector104 = new Vector2(NPC.position.X + (float)NPC.width * 0.5f, NPC.position.Y + (float)(NPC.height / 2));
-						float num942 = player.position.X + (float)player.width * 0.5f - vector104.X + (float)Main.rand.Next(-20, 21);
-						float num943 = player.position.Y + (float)player.height * 0.5f - vector104.Y + (float)Main.rand.Next(-20, 21);
-						float num944 = (float)Math.Sqrt((double)(num942 * num942 + num943 * num943));
-						num944 = num941 / num944;
-						num942 *= num944;
-						num943 *= num944;
-						num942 += (float)Main.rand.Next(-10, 11) * 0.05f;
-						num943 += (float)Main.rand.Next(-10, 11) * 0.05f;
-						int num945 = expertMode ? 10 : 15;
-						int num946 = ModContent.ProjectileType<Starshock>();
-						vector104.X += num942 * 5f;
-						vector104.Y += num943 * 5f;
-						int num947 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector104.X, vector104.Y, num942, num943, num946, num945, 0f, Main.myPlayer, 0f, 0f);
-						Main.projectile[num947].timeLeft = 180;
+
+					if (Collision.CanHit(NPC.position, NPC.width, NPC.height, player.position, player.width, player.height))
+					{
+						Vector2 targetPos = player.Center - NPC.Center + new Vector2(Main.rand.Next(-20, 21), Main.rand.Next(-20, 21));
+						float speedMod = 1 / targetPos.Length();
+
+						targetPos *= speedMod;
+						targetPos += new Vector2(Main.rand.Next(-10, 11), Main.rand.Next(-10, 11)) * 0.05f;
+
+						int damage = Main.expertMode ? 10 : 15;
+						int type = ModContent.ProjectileType<Starshock>();
+						int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, targetPos.X, targetPos.Y, type, damage, 0f, Main.myPlayer, 0f, 0f);
+
+						Main.projectile[proj].timeLeft = 180;
 						NPC.netUpdate = true;
 					}
 				}
 			}
 
-			if (!Main.npc[(int)NPC.ai[1]].active) {
+			var parent = Main.npc[(int)NPC.ai[1]];
+
+			if (!parent.active || (parent.type != ModContent.NPCType<CogTrapperHead>() && parent.type != Type))
+			{
 				NPC.life = 0;
 				NPC.HitEffect(0, 10.0);
 				NPC.active = false;
 			}
 
-			if (Main.npc[(int)NPC.ai[1]].alpha < 128) {
-				if (NPC.alpha != 0) {
-					for (int num934 = 0; num934 < 2; num934++) {
-						int num935 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, 2f);
-						Main.dust[num935].noGravity = true;
-						Main.dust[num935].noLight = true;
+			const int BodyLength = 12;
+
+			if (parent.DistanceSQ(NPC.Center) > BodyLength * BodyLength)
+				NPC.velocity = NPC.DirectionTo(parent.Center) * (parent.Distance(NPC.Center) - BodyLength);
+			else
+				NPC.velocity = Vector2.Zero;
+
+			NPC.rotation = NPC.velocity.ToRotation() + 1.57f;
+
+			if (parent.alpha < 128)
+			{
+				if (NPC.alpha != 0)
+				{
+					for (int i = 0; i < 2; i++)
+					{
+						int dust = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, 2f);
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].noLight = true;
 					}
 				}
+
 				NPC.alpha -= 42;
+
 				if (NPC.alpha < 0)
 					NPC.alpha = 0;
 			}
 		}
 
 		public override bool CheckActive() => false;
-
 		public override bool PreKill() => false;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-
-			for (int k = 0; k < 5; k++) {
+			for (int k = 0; k < 5; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
-			}
-			if (NPC.life <= 0) {
+
+			if (NPC.life <= 0)
+			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Stardancer3").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Stardancer4").Type, 1f);
-				NPC.position.X = NPC.position.X + (float)(NPC.width / 2);
-				NPC.position.Y = NPC.position.Y + (float)(NPC.height / 2);
+
+				NPC.position = NPC.Center;
 				NPC.width = 20;
 				NPC.height = 20;
-				NPC.position.X = NPC.position.X - (float)(NPC.width / 2);
-				NPC.position.Y = NPC.position.Y - (float)(NPC.height / 2);
-				for (int num621 = 0; num621 < 5; num621++) {
+				NPC.position.X = NPC.position.X - (NPC.width / 2f);
+				NPC.position.Y = NPC.position.Y - (NPC.height / 2f);
+
+				for (int i = 0; i < 5; i++)
+				{
 					int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, .5f);
 					Main.dust[num622].velocity *= 2f;
 				}
-				for (int num623 = 0; num623 < 10; num623++) {
+
+				for (int i = 0; i < 10; i++)
+				{
 					int num624 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, 1f);
 					Main.dust[num624].noGravity = true;
 					Main.dust[num624].velocity *= 4f;
@@ -141,7 +166,7 @@ namespace SpiritMod.NPCs.Starfarer
 					Main.dust[num624].velocity *= 1f;
 				}
 			}
-         }
+		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
@@ -152,7 +177,7 @@ namespace SpiritMod.NPCs.Starfarer
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Starfarer/CogTrapperBody_Glow").Value, screenPos);
-		
+
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			NPC.lifeMax = (int)(NPC.lifeMax * 0.6f * bossLifeScale);
