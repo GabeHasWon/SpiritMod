@@ -751,25 +751,28 @@ namespace SpiritMod
 
 		public void CheckScreenSize()
 		{
-			if (!Main.dedServ)
+			if (!Main.dedServ && !Main.gameMenu)
 			{
-				if (_lastScreenSize != new Vector2(Main.screenWidth, Main.screenHeight) && primitives != null)
-					primitives.InitializeTargets(Main.graphics.GraphicsDevice);
-
-				if (_lastViewSize != Main.ViewSize && Metaballs is not null)
-					Metaballs.Initialize(Main.graphics.GraphicsDevice);
-
-				if ((_lastViewPort.Bounds != Main.graphics.GraphicsDevice.Viewport.Bounds || _lastScreenSize != new Vector2(Main.screenWidth, Main.screenHeight) || _lastViewSize != Main.ViewSize)
-					&& basicEffect != null && primitives != null)
+				Main.QueueMainThreadAction(() =>
 				{
-					Helpers.SetBasicEffectMatrices(ref basicEffect, Main.GameViewMatrix.Zoom);
-					Helpers.SetBasicEffectMatrices(ref primitives.pixelEffect, Main.GameViewMatrix.Zoom);
-					Helpers.SetBasicEffectMatrices(ref primitives.galaxyEffect, new Vector2(1));
-				}
+					if (_lastScreenSize != new Vector2(Main.screenWidth, Main.screenHeight) && primitives != null)
+						primitives.InitializeTargets(Main.graphics.GraphicsDevice);
 
-				_lastScreenSize = new Vector2(Main.screenWidth, Main.screenHeight);
-				_lastViewSize = Main.ViewSize;
-				_lastViewPort = Main.graphics.GraphicsDevice.Viewport;
+					if (_lastViewSize != Main.ViewSize && Metaballs is not null)
+						Metaballs.Initialize(Main.graphics.GraphicsDevice);
+
+					if ((_lastViewPort.Bounds != Main.graphics.GraphicsDevice.Viewport.Bounds || _lastScreenSize != new Vector2(Main.screenWidth, Main.screenHeight) || _lastViewSize != Main.ViewSize)
+						&& basicEffect != null && primitives != null)
+					{
+						Helpers.SetBasicEffectMatrices(ref basicEffect, Main.GameViewMatrix.Zoom);
+						Helpers.SetBasicEffectMatrices(ref primitives.pixelEffect, Main.GameViewMatrix.Zoom);
+						Helpers.SetBasicEffectMatrices(ref primitives.galaxyEffect, new Vector2(1));
+					}
+
+					_lastScreenSize = new Vector2(Main.screenWidth, Main.screenHeight);
+					_lastViewSize = Main.ViewSize;
+					_lastViewPort = Main.graphics.GraphicsDevice.Viewport;
+				});
 			}
 		}
 

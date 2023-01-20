@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.DonatorItems.FrostTroll
 {
 	public class BlizzardEdge : ModItem
@@ -37,7 +38,6 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 			Item.shootSpeed = 0f;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
-			Item.useTurn = true;
 			Item.crit = 6;
 			Item.shoot = ModContent.ProjectileType<BlizzardProjectile>();
 		}
