@@ -1,10 +1,9 @@
 using SpiritMod.Items.Consumable;
 using SpiritMod.Items.Consumable.Fish;
+using SpiritMod.Tiles.Furniture;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
-using BrownMushrooms = SpiritMod.Tiles.Ambient.Underground.OreDeposits;
 
 namespace SpiritMod.Items.Placeable
 {
@@ -22,8 +21,8 @@ namespace SpiritMod.Items.Placeable
 			Item.height = 20;
 			Item.rare = ItemRarityID.Orange;
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.createTile = ModContent.TileType<BrownMushrooms>();
-			Item.maxStack = 999;
+			Item.createTile = ModContent.TileType<FishCrate_Tile>();
+			Item.maxStack = 99;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;

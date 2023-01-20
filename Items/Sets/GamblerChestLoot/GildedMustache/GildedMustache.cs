@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -13,8 +12,8 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GildedMustache
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gilded Mustache");
-
-			//ArmorIDs.Body.Sets.NeedsToDrawArm[Item.faceSlot] = true;
+			//ArmorIDs.Face.Sets.DrawInFaceUnderHairLayer[Item.faceSlot] = true;
+			ArmorIDs.Face.Sets.DrawInFaceFlowerLayer[Item.faceSlot] = true;
 		}
 
 		public override void SetDefaults()
