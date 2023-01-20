@@ -224,11 +224,17 @@ namespace SpiritMod.NPCs.Undead_Warlock
 		{
 			if (NPC.life <= 0)
 			{
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadScientistGore4").Type, 1f);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadScientistGore3").Type, 1f);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadScientistGore2").Type, 1f);
 				SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadWarlock_0").Type, 1f);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadWarlock_2").Type, 1f);
+
+				for (int i = 0; i < 2; ++i)
+				{
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("UndeadWarlock_1").Type, 1f);
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("UndeadWarlock_3").Type, 1f);
+				}
 			}
+
 			for (int k = 0; k < 7; k++)
 			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);

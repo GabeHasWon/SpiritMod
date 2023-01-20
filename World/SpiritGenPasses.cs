@@ -804,12 +804,12 @@ namespace SpiritMod.World
 		private static void GeneratePagoda()
 		{
 			if (MyWorld.asteroidSide == 0)
-				MyWorld.pagodaX = Main.maxTilesX - WorldGen.genRand.Next(200, 350);
+				MyWorld.pagodaLocation.X = Main.maxTilesX - WorldGen.genRand.Next(200, 350);
 			else
-				MyWorld.pagodaX = WorldGen.genRand.Next(200, 350);
+				MyWorld.pagodaLocation.X = WorldGen.genRand.Next(200, 350);
 
-			MyWorld.pagodaY = (int)(Main.worldSurface / 5.0);
-			StructureHelper.Generator.GenerateStructure("Structures/Pagoda", new Point16(MyWorld.pagodaX, MyWorld.pagodaY), SpiritMod.Instance);
+			MyWorld.pagodaLocation.Y = (int)(Main.worldSurface / 5.0);
+			StructureHelper.Generator.GenerateStructure("Structures/Pagoda", new(MyWorld.pagodaLocation.X, MyWorld.pagodaLocation.Y), SpiritMod.Instance);
 		}
 		#endregion Pagoda
 

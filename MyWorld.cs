@@ -107,12 +107,7 @@ namespace SpiritMod
 		public static bool downedBlueMoon = false;
 		public static bool downedGazer = false;
 
-		//pagoda enemy spawn variables
-		public static int pagodaX = 0;
-		public static int pagodaY = 0;
-		public static bool spawnedPagodaEnemies = false;
-
-		public static int pagodaSpawnTimer;
+		public static Point pagodaLocation;
 
 		public static Dictionary<string, bool> droppedGlyphs = new Dictionary<string, bool>();
 
@@ -178,11 +173,10 @@ namespace SpiritMod
 			tag.Add("blueMoon", BlueMoon);
 			tag.Add("jellySky", jellySky);
 			tag.Add("gennedBandits", gennedBandits);
-			tag.Add("gennedTower", gennedTower); ;
+			tag.Add("gennedTower", gennedTower);
 
-			tag.Add("pagodaX", pagodaX);
-			tag.Add("pagodaY", pagodaY);
-			tag.Add("spawnedPagodaEnemies", spawnedPagodaEnemies);
+			tag.Add("pagodaX", pagodaLocation.X);
+			tag.Add("pagodaY", pagodaLocation.Y);
 
 			//SaveSpecialNPCs(data);
 
@@ -233,9 +227,8 @@ namespace SpiritMod
 			gennedBandits = tag.GetBool("gennedBandits");
 			gennedTower = tag.GetBool("gennedTower");
 
-			pagodaX = tag.Get<int>("pagodaX");
-			pagodaY = tag.Get<int>("pagodaY");
-			spawnedPagodaEnemies = tag.Get<bool>("spawnedPagodaEnemies");
+			pagodaLocation.X = tag.Get<int>("pagodaX");
+			pagodaLocation.Y = tag.Get<int>("pagodaY");
 
 			superSunFlowerPositions = new HashSet<Point16>(tag.GetList<Point16>("superSunFlowerPositions"));
 			// verify that there are super sunflowers at the loaded positions
@@ -1573,35 +1566,6 @@ namespace SpiritMod
 					}
 				}
 			}
-
-			//pagoda enemy spawning
-			if (!spawnedPagodaEnemies && Main.netMode != NetmodeID.MultiplayerClient)
-			{
-				Rectangle pagodaSpawnArea = new Rectangle(pagodaX - 65, pagodaY - 37, 256, 140);
-				bool shouldSpawn = false;
-				if (Main.netMode == NetmodeID.SinglePlayer && pagodaSpawnArea.Contains(player.Center.ToTileCoordinates())) shouldSpawn = true;
-				else if (Main.netMode == NetmodeID.Server)
-				{
-					for (int i = 0; i < Main.maxPlayers; i++)
-					{
-						if (Main.player[i].active && pagodaSpawnArea.Contains(Main.player[i].Center.ToTileCoordinates()))
-						{
-							shouldSpawn = true;
-							break;
-						}
-					}
-				}
-				if (shouldSpawn)
-				{
-					spawnedPagodaEnemies = true;
-					for (int i = 0; i < Main.rand.Next(8, 10); i++)
-						NPC.NewNPC(Entity.GetSource_NaturalSpawn(), (pagodaX + Main.rand.Next(0, 126)) * 16, (pagodaY + Main.rand.Next(-10, 50)) * 16, ModContent.NPCType<NPCs.Pagoda.Yuurei.PagodaGhostPassive>());
-					for (int i = 0; i < 3; i++)
-						NPC.NewNPC(Entity.GetSource_NaturalSpawn(), (pagodaX + Main.rand.Next(0, 126)) * 16, (pagodaY + Main.rand.Next(-10, 50)) * 16, ModContent.NPCType<NPCs.Pagoda.SamuraiGhost.SamuraiPassive>());
-				}
-			}
-			if (pagodaSpawnTimer > 0)
-				pagodaSpawnTimer--;
 		}
 	}
 }

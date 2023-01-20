@@ -9,6 +9,8 @@ namespace SpiritMod.NPCs
 {
 	public class PagodaGlobalNPC : GlobalNPC
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		private readonly int[] validNPCs = new int[]
 		{
 			ModContent.NPCType<PagodaGhostPassive>(),
@@ -21,6 +23,6 @@ namespace SpiritMod.NPCs
 
 		public override bool AppliesToEntity(NPC entity, bool lateInstantiation) => validNPCs.Contains(entity.type);
 
-		public override void OnSpawn(NPC npc, IEntitySource source) => MyWorld.pagodaSpawnTimer = 15;
+		//public override void OnSpawn(NPC npc, IEntitySource source) => MyWorld.pagodaSpawnTimer = 15;
 	}
 }

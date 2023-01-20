@@ -2,7 +2,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Tiles;
 using SpiritMod.Items.Placeable;
+using SpiritMod.NPCs.Pagoda.SamuraiGhost;
+using SpiritMod.NPCs.Pagoda.Yuurei;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -93,6 +96,20 @@ namespace SpiritMod.Tiles
 				if (!player.dead)
 					player.AddBuff(ModContent.BuffType<PagodaCurse>(), 8);
 			}
+
+			if (Main.rand.NextBool(700) && NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) < 20)
+			{
+				Vector2 pos = new Vector2(i, j).ToWorldCoordinates() + new Vector2(Main.rand.NextFloat(350, 1000), 0).RotatedByRandom(MathHelper.TwoPi);
+
+				while (Main.player.Take(Main.maxPlayers).Any(x => x.active && !x.dead && x.DistanceSQ(pos) < 200 * 200))
+					pos = new Vector2(i, j).ToWorldCoordinates() + new Vector2(Main.rand.NextFloat(350, 1000), 0).RotatedByRandom(MathHelper.TwoPi);
+
+				int type = Main.rand.NextBool() ? ModContent.NPCType<SamuraiPassive>() : ModContent.NPCType<PagodaGhostPassive>();
+				NPC.NewNPC(new EntitySource_TileUpdate(i, j), (int)pos.X, (int)pos.Y, type);
+
+				for (int v = 0; v < 6; ++v)
+					Gore.NewGore(new EntitySource_TileUpdate(i, j), pos, Vector2.Zero, 99);
+			} 
 		}
 
 		public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
@@ -145,16 +162,6 @@ namespace SpiritMod.Tiles
 			{
 				Vector2 offset = (Vector2.UnitX * (float)Math.Sin(Main.GlobalTimeWrappedHourly)) + Main.rand.NextVector2Square(-0.5f, 0.5f);
 				spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_ShadeGlow").Value, new Vector2(i * 16, (float)(j * 16) + drawOffsetY) - Main.screenPosition + zero - offset, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), Color.White * colorMod);
-			}
-
-			if (MyWorld.pagodaSpawnTimer > 0)
-			{
-				float quoteant = (float)MathHelper.Clamp((float)(MyWorld.pagodaSpawnTimer / 10f), 0, 1);
-				Color color = Color.Lerp(Color.Red, Color.White, quoteant) with { A = 0 };
-
-				Texture2D glare = ModContent.Request<Texture2D>(Texture + "_Glare").Value;
-
-				Main.spriteBatch.Draw(glare, new Vector2(i * 16, (float)(j * 16) + drawOffsetY) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), color, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 			}
 		}
 	}
