@@ -66,19 +66,21 @@ namespace SpiritMod
 	public class SpiritGlowMaskLegsLayer : PlayerDrawLayer
 	{
 		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Leggings);
+
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
-			if (drawInfo.drawPlayer.armor[2].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[2].type, out Texture2D textureLegs))//Legs
+			if (drawInfo.drawPlayer.armor[2].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[2].type, out Texture2D textureLegs))
 				GlowmaskUtils.DrawArmorGlowMask(EquipType.Legs, textureLegs, drawInfo);
 		}
 	}
 
 	public class SpiritGlowMaskBodyLayer : PlayerDrawLayer
 	{
-		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Torso);
+		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Head);
+
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
-			if (drawInfo.drawPlayer.armor[1].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[1].type, out Texture2D textureBody))//Body
+			if (drawInfo.drawPlayer.armor[1].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[1].type, out Texture2D textureBody))
 				GlowmaskUtils.DrawArmorGlowMask(EquipType.Body, textureBody, drawInfo);
 		}
 	}
@@ -88,7 +90,7 @@ namespace SpiritMod
 		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.Head);
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
-			if (drawInfo.drawPlayer.armor[0].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[0].type, out Texture2D textureBody))//Body
+			if (drawInfo.drawPlayer.armor[0].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[0].type, out Texture2D textureBody))
 				GlowmaskUtils.DrawArmorGlowMask(EquipType.Head, textureBody, drawInfo);
 		}
 	}

@@ -49,9 +49,10 @@ namespace SpiritMod
 				case EquipType.Head:
 					{
 						Vector2 adjustedPosition = new Vector2((int)(info.Position.X - Main.screenPosition.X) + ((info.drawPlayer.width - info.drawPlayer.bodyFrame.Width) / 2), (int)(info.Position.Y - Main.screenPosition.Y) + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 4);
+						
 						DrawData drawData = new DrawData(texture, adjustedPosition + info.drawPlayer.headPosition + info.rotationOrigin, info.drawPlayer.bodyFrame, info.headGlowColor, info.drawPlayer.headRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
 						{
-							//shader = info.headArmorShader //NEEDSUPDATE ALL of these
+							shader = info.cHead
 						};
 						info.DrawDataCache.Add(drawData);
 					}
@@ -59,14 +60,16 @@ namespace SpiritMod
 
 				case EquipType.Body:
 					{
-						var bodyFrame = info.drawPlayer.bodyFrame;
+						var bodyFrame = info.compTorsoFrame;
 
 						if (!info.drawPlayer.invis)
 						{
-							Vector2 adjustedPos = info.Position - new Vector2((info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2), info.drawPlayer.height) - Main.screenPosition;
-							DrawData drawData = new DrawData(texture, adjustedPos + info.drawPlayer.bodyPosition + (info.drawPlayer.bodyFrame.Size() / 2f), bodyFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
+							Vector2 adjustedPos = info.Position - new Vector2((info.compTorsoFrame.Width / 2) + (info.drawPlayer.width / 2), info.drawPlayer.height) - Main.screenPosition;
+							Vector2 realPos = adjustedPos + info.drawPlayer.bodyPosition + (info.compTorsoFrame.Size() / 2f).ToPoint().ToVector2();
+
+							DrawData drawData = new DrawData(texture, realPos, bodyFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
 							{
-								//shader = info.bodyArmorShader
+								shader = info.cBody
 							};
 							info.DrawDataCache.Add(drawData);
 						}
@@ -82,7 +85,7 @@ namespace SpiritMod
 								Vector2 adjPos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.legFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.legFrame.Height + 4));
 								DrawData drawData = new DrawData(texture, adjPos + info.drawPlayer.legPosition + info.rotationOrigin, info.drawPlayer.legFrame, info.legsGlowColor, info.drawPlayer.legRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
 								{
-									//shader = info.legArmorShader
+									shader = info.cLegs
 								};
 								info.DrawDataCache.Add(drawData);
 							}

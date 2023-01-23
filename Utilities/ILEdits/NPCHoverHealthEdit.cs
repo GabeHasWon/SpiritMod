@@ -25,7 +25,7 @@ namespace SpiritMod.Utilities.ILEdits
 			c.Emit(OpCodes.Ldsfld, typeof(Main).GetField("npc")); //Push the current NPC to the stack -->
 			c.Emit(OpCodes.Ldloc_S, (byte)8);
 			c.Emit(OpCodes.Ldelem_Ref); // <--
-			c.EmitDelegate<Func<bool, NPC, bool>>(CheckDrawLife); //And make a hook for overriding if the life stat draws
+			c.EmitDelegate(CheckDrawLife); //And make a hook for overriding if the life stat draws
 		}
 
 		private static bool CheckDrawLife(bool flag, NPC self)
