@@ -175,12 +175,20 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 							direction *= 0.5f;
 						}
 
-						Projectile newProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, direction, shootType, damage, Projectile.knockBack, player.whoAmI);
-						newProj.DamageType = DamageClass.Summon;
-						newProj.friendly = true;
-						newProj.netUpdate = true;
+						if (Main.myPlayer == Projectile.owner)
+						{
+							int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, direction, shootType, damage, Projectile.knockBack, player.whoAmI);
 
-						GItem.UseAmmoDirect(player, selectedIndex);
+							Projectile newProj = Main.projectile[proj];
+							newProj.DamageType = DamageClass.Summon;
+							newProj.friendly = true;
+							newProj.netUpdate = true;
+
+							if (Main.netMode != NetmodeID.SinglePlayer)
+								NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
+
+							GItem.UseAmmoDirect(player, selectedIndex);
+						}
 
 						Projectile.frame = 0;
 						Timer = 0;
