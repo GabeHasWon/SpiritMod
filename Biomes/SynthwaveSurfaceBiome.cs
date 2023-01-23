@@ -25,6 +25,8 @@ namespace SpiritMod.Biomes
 			return ModContent.GetInstance<BiomeTileCounts>().inSynthwave && surface;
 		}
 
+		public override void SpecialVisuals(Player player, bool isActive) => player.ManageSpecialBiomeVisuals("SpiritMod:SynthwaveSky", isActive);
+
 		public override void OnEnter(Player player) => player.GetSpiritPlayer().ZoneSynthwave = true;
 		public override void OnLeave(Player player) => player.GetSpiritPlayer().ZoneSynthwave = false;
 	}

@@ -417,8 +417,6 @@ namespace SpiritMod
 			Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritBiomeSky", spirit);
 			Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", ZoneAsteroid);
 
-			Player.ManageSpecialBiomeVisuals("SpiritMod:SynthwaveSky", ZoneSynthwave);
-
 			Player.ManageSpecialBiomeVisuals("SpiritMod:GreenAlgaeSky", greenOcean);
 			Player.ManageSpecialBiomeVisuals("SpiritMod:BlueAlgaeSky", blueOcean);
 			Player.ManageSpecialBiomeVisuals("SpiritMod:PurpleAlgaeSky", purpleOcean);

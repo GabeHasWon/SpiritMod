@@ -40,17 +40,13 @@ namespace SpiritMod.World.Sepulchre
 		{
 			Item.width = 20;
 			Item.height = 30;
-
 			Item.maxStack = 999;
-
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<SepulchreMirror>();
 		}
 
