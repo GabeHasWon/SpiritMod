@@ -56,7 +56,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 		{
 			counter--;
 
-			if (player.altFunctionUse == 2)
+			if (player.altFunctionUse == 2 && player.whoAmI == Main.myPlayer)
 			{
 				DrawDust(player);
 				if (counter <= 0)
@@ -69,6 +69,10 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 
 					int p = Projectile.NewProjectile(source, position.X + (110 * player.direction), position.Y - 8, 0, 0, ModContent.ProjectileType<BlizzardProjectile>(), damage / 3, knockback / 4, player.whoAmI);
 					Main.projectile[p].direction = player.direction;
+
+					if (Main.netMode != NetmodeID.SinglePlayer)
+						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, p);
+
 					counter = 5;
 				}
 			}

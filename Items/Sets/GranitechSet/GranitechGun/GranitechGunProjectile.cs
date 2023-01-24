@@ -4,6 +4,7 @@ using SpiritMod.Particles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
@@ -83,21 +84,29 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 		{
 			if (player.PickAmmo(player.HeldItem, out int _, out float _, out int _, out float _, out int _))
 			{
-				var baseVel = player.DirectionTo(Main.MouseWorld).RotatedByRandom(0.02f) * player.HeldItem.shootSpeed;
+				if (Main.myPlayer == Projectile.owner)
+				{
+					var baseVel = player.DirectionTo(Main.MouseWorld).RotatedByRandom(0.02f) * player.HeldItem.shootSpeed;
 
-				Vector2 pos = player.Center;
-				Vector2 muzzleOffset = Vector2.Normalize(baseVel) * (player.HeldItem.width / 2f);
-				if (Collision.CanHit(pos, 0, 0, pos + muzzleOffset, 0, 0))
-					pos += muzzleOffset;
+					Vector2 pos = player.Center;
+					Vector2 muzzleOffset = Vector2.Normalize(baseVel) * (player.HeldItem.width / 2f);
+					if (Collision.CanHit(pos, 0, 0, pos + muzzleOffset, 0, 0))
+						pos += muzzleOffset;
 
-				var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), pos, baseVel, ModContent.ProjectileType<GranitechGunBullet>(), player.HeldItem.damage, 0f, player.whoAmI);
-				if (p.ModProjectile is GranitechGunBullet bullet)
-					bullet.spawnRings = true;
+					var proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), pos, baseVel, ModContent.ProjectileType<GranitechGunBullet>(), player.HeldItem.damage, 0f, player.whoAmI);
+					var p = Main.projectile[proj];
 
-				if (!Main.dedServ)
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyShoot") with { PitchVariance = 0.1f, Volume = 0.25f }, pos);
+					if (p.ModProjectile is GranitechGunBullet bullet)
+						bullet.spawnRings = true;
 
-				VFX(pos + muzzleOffset, baseVel * 0.2f);
+					if (Main.netMode != NetmodeID.SinglePlayer)
+						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
+
+					if (!Main.dedServ)
+						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyShoot") with { PitchVariance = 0.1f, Volume = 0.25f }, pos);
+
+					VFX(pos + muzzleOffset, baseVel * 0.2f);
+				}
 			}
 			else
 			{
