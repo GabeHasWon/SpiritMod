@@ -78,14 +78,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 							GNPC.TryDetonate(npc, Projectile.damage, out bool detonated, player);
 
 							if (!Main.dedServ && detonated)
-								ParticleHandler.SpawnParticle(new BlasterFlash(Projectile.Center + new Vector2(28, 0).RotatedBy(direction.ToRotation()), 1, Projectile.rotation)); //qm update this
+								ParticleHandler.SpawnParticle(new BlasterFlash(Projectile.Center + new Vector2(28, 0).RotatedBy(direction.ToRotation()), 1, direction.ToRotation())); //qm update this
 						}
 					}
 
 					Projectile.active = false;
 				}
 			}
-
 		}
 
 		public override bool? CanDamage() => false;

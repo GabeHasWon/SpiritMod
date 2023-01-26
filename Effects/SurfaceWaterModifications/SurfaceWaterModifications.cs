@@ -77,10 +77,13 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				int oldAdjX = adjX;
 				Tile tile = Main.tile[oldAdjX, j];
 
-				while (tile.HasTile && !Main.tileSolid[tile.TileType] || !tile.HasTile || !WorldGen.InWorld(oldAdjX, j))
+				while ((tile.HasTile && !Main.tileSolid[tile.TileType]) || !tile.HasTile)
 				{
-					oldAdjX -= 1;
+					oldAdjX--;
 					tile = Main.tile[oldAdjX, j];
+
+					if (!WorldGen.InWorld(oldAdjX, j, 30))
+						break;
 				}
 
 				if (tile.Slope != SlopeType.Solid)
