@@ -6,12 +6,10 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Projectiles.Bullet.Blaster
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 {
 	public class PhaseBlast : SubtypeProj, IDrawAdditive
 	{
-		private int[] dustType = new int[2];
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Phase Blast");
@@ -34,18 +32,6 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 			AIType = ProjectileID.Bullet;
 		}
 
-		public override bool PreAI()
-		{
-			dustType = Subtype switch
-			{
-				1 => new int[] { DustID.FartInAJar, DustID.GreenTorch },
-				2 => new int[] { DustID.FrostHydra, DustID.IceTorch },
-				3 => new int[] { DustID.Pixie, DustID.PinkTorch },
-				_ => new int[] { DustID.SolarFlare, DustID.Torch }
-			};
-			return true;
-		}
-
 		public override void AI()
 		{
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
@@ -55,6 +41,14 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 				Projectile.alpha -= 255 / 20;
 			if (Projectile.alpha < 0)
 				Projectile.alpha = 0;
+
+			for (int i = 0; i < 2; i++)
+			{
+				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+
+				Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType[Main.rand.Next(dustType.Length)], Projectile.velocity * .5f, 80);
+				dust.noGravity = true;
+			}
 		}
 
 		public override void Kill(int timeLeft)
@@ -65,40 +59,50 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 				Vector2 velocity = (new Vector2(Projectile.velocity.X, 0) * Main.rand.NextFloat(0.3f, 0.5f)).RotatedByRandom(MathHelper.TwoPi);
 				if (timeLeft <= 0)
 					velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(0.11f);
+
+				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
 				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, dustType[Main.rand.Next(2)],
 					velocity, 0, default, Main.rand.NextFloat(1.0f, 1.2f));
 				dust.noGravity = true;
+
 				if (dust.type == DustID.PinkTorch)
 					dust.fadeIn = 1.1f;
 			}
 		}
 
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			int? debuffType = ColorEffectsIndex.GetDebuffs(Subtype);
+			if (debuffType != null)
+				target.AddBuff(debuffType.Value, 200);
+		}
+
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{
-			float scale = Projectile.scale;
-			Texture2D texture = TextureAssets.Projectile[Type].Value;
-			Rectangle frame = GetDrawFrame(texture);
+			for (int k = 0; k < Projectile.oldPos.Length; k++)
+			{
+				Color color = ColorEffectsIndex.GetColor(Subtype) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+				float scale = Projectile.scale;
+				Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-			Color color = new Color(255, 255, 200) * 0.75f;
-
-			spriteBatch.Draw(texture, Projectile.Center - screenPos, frame, color, Projectile.rotation, frame.Size() / 2, scale * 1.5f, default, default);
-			spriteBatch.Draw(texture, Projectile.Center - screenPos, frame, color, Projectile.rotation, frame.Size() / 2, scale * 1.33f, default, default);
+				spriteBatch.Draw(texture, Projectile.oldPos[k] + Projectile.Size / 2 - Main.screenPosition, null, color, Projectile.rotation, texture.Size() / 2, scale, default, default);
+			}
 		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-			Rectangle frame = GetDrawFrame(texture);
+			Color drawColor = ColorEffectsIndex.GetColor(Subtype);
 
 			for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[Projectile.type]; i++)
 			{
 				float opacityMod = (ProjectileID.Sets.TrailCacheLength[Projectile.type] - i) / (float)ProjectileID.Sets.TrailCacheLength[Projectile.type];
 				Vector2 drawPosition = Projectile.oldPos[i] + (Projectile.Size / 2) - Main.screenPosition;
-				Main.EntitySpriteDraw(texture, drawPosition, new Rectangle(texture.Width / maxSubtypes * (i % maxSubtypes), 0, (texture.Width / maxSubtypes) - 2, texture.Height), Projectile.GetAlpha(Color.White) * opacityMod,
-					Projectile.rotation, frame.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+				Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(drawColor) * opacityMod,
+					Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			}
-			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(Color.White), 
-				Projectile.rotation, frame.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(drawColor), 
+				Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			return false;
 		}
 	}

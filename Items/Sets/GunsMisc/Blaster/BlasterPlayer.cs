@@ -16,16 +16,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<Blaster>())
 			{
 				var blaster = drawInfo.drawPlayer.HeldItem.ModItem as Blaster;
-				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster_Glow").Value, new Vector2(4, 2), new Vector2(blaster.element, blaster.usingAltTexture ? 1 : 0), drawInfo);
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster_Glow").Value, new Vector2(1, 4), new Vector2(0, blaster.build), drawInfo, ColorEffectsIndex.GetColor(blaster.element));
 			}
 			else if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<Exotic>())
 			{
 				var exotic = drawInfo.drawPlayer.HeldItem.ModItem as Exotic;
-				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Exotic").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Exotic_Glow").Value, new Vector2(1, 3), new Vector2(0, exotic.style), drawInfo);
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Exotic").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Exotic_Glow").Value, new Vector2(1, 4), new Vector2(0, exotic.style), drawInfo);
 			}
 		}
 
-		private static void DrawItem(Texture2D texture, Texture2D glow, Vector2 numFrames, Vector2 frame, PlayerDrawSet info)
+		private static void DrawItem(Texture2D texture, Texture2D glow, Vector2 numFrames, Vector2 frame, PlayerDrawSet info, Color? glowColor = null)
 		{
 			Item item = info.heldItem;
 			if (info.shadow != 0f || info.drawPlayer.frozen || ((info.drawPlayer.itemAnimation <= 0 || item.useStyle != ItemUseStyleID.Shoot) && (item.holdStyle <= 0 || info.drawPlayer.pulley)) || info.drawPlayer.dead || (info.drawPlayer.wet && item.noWet))
@@ -74,7 +74,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				 glow,
 				 info.ItemLocation - Main.screenPosition + offset,
 				 drawFrame,
-				 Color.White,
+				 glowColor is null ? Color.White : glowColor.Value,
 				 info.drawPlayer.itemRotation,
 				 origin,
 				 item.scale,

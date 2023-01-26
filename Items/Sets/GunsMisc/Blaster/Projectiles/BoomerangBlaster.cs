@@ -6,13 +6,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 
-namespace SpiritMod.Projectiles.Bullet.Blaster
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 {
 	public class BoomerangBlaster : SubtypeProj
 	{
-		private Color[] commonColor = new Color[2];
-		private int dustType;
-
 		private int Counter
 		{
 			get => (int)Projectile.ai[0];
@@ -53,27 +50,6 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 
 		public override bool PreAI()
 		{
-			//Initialize VFX properties here
-			switch (Subtype)
-			{
-				case 1:
-					commonColor = new Color[] { Color.LimeGreen, Color.LightSeaGreen };
-					dustType = DustID.GreenTorch;
-					break;
-				case 2:
-					commonColor = new Color[] { Color.LightBlue, Color.YellowGreen };
-					dustType = DustID.IceTorch;
-					break;
-				case 3:
-					commonColor = new Color[] { Color.Magenta, Color.Wheat };
-					dustType = DustID.PinkTorch;
-					break;
-				default:
-					commonColor = new Color[] { Color.Orange, Color.Yellow };
-					dustType = DustID.Torch;
-					break;
-			}
-
 			if (Player.itemAnimation > 2)
 			{
 				Player.heldProj = Projectile.whoAmI;
@@ -127,8 +103,10 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 
 			for (int i = 0; i < 2; i++)
 			{
+				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+
 				int width = 16;
-				Dust dust = Dust.NewDustPerfect(Projectile.Center + new Vector2(width * ((i > 0) ? -1 : 1), 0).RotatedBy(Projectile.rotation), dustType, null, 0, default, 1f);
+				Dust dust = Dust.NewDustPerfect(Projectile.Center + new Vector2(width * ((i > 0) ? -1 : 1), 0).RotatedBy(Projectile.rotation), dustType[Main.rand.Next(dustType.Length)], null, 0, default, 1f);
 				dust.noGravity = true;
 				dust.velocity = Projectile.velocity * .05f;
 			}
@@ -138,39 +116,34 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 		{
 			if (!Main.dedServ)
 				for (int i = 0; i < 8; i++)
-					ParticleHandler.SpawnParticle(new GlowParticle(Projectile.position + Projectile.velocity, (Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(1.5f), commonColor[0], Main.rand.NextFloat(0.03f, 0.08f), 20, 10));
+					ParticleHandler.SpawnParticle(new GlowParticle(Projectile.position + Projectile.velocity, (Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(1.5f), ColorEffectsIndex.GetColor(Subtype), Main.rand.NextFloat(0.03f, 0.08f), 20, 10));
 		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
-			string commonPath = "SpiritMod/Projectiles/Bullet/Blaster/Blaster";
+			string commonPath = "SpiritMod/Items/Sets/GunsMisc/Blaster/Projectiles/Blaster";
 
-			int hFrames = 4;
-			int vFrames = 2;
-			Rectangle frame = new(texture.Width / hFrames * (Style % 4), texture.Height / vFrames * (Style / 4), texture.Width / hFrames, texture.Height / vFrames);
-			frame.Width -= 2;
-			frame.Height -= 2;
+			int vFrames = 4;
+			Rectangle frame = new(0, texture.Height / vFrames * Style, texture.Width, (texture.Height / vFrames) - 2);
 
 			SpriteEffects effects = (Projectile.spriteDirection == 1) ? SpriteEffects.FlipVertically : SpriteEffects.None;
 
 			if (Counter > 0 && !returning)
 			{
 				Texture2D outline = ModContent.Request<Texture2D>(commonPath + "_Pulse").Value;
-				Rectangle outFrame = new(outline.Width / hFrames * (Style % 4), outline.Height / hFrames * (Style / 4), outline.Width / hFrames, outline.Height / vFrames);
-				outFrame.Width -= 2;
-				outFrame.Height -= 2;
+				Rectangle outFrame = new(0, outline.Height / vFrames * Style, outline.Width, (outline.Height / vFrames) - 2);
 
 				for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[Projectile.type]; i++)
 				{
 					float opacityMod = (ProjectileID.Sets.TrailCacheLength[Projectile.type] - i) / (float)ProjectileID.Sets.TrailCacheLength[Projectile.type] / 4 * MathHelper.Clamp(Projectile.velocity.Length() / 8, 0f, 1f);
 					Vector2 drawPosition = Projectile.oldPos[i] + (Projectile.Size / 2) - Main.screenPosition;
-					Main.EntitySpriteDraw(outline, drawPosition, outFrame, Projectile.GetAlpha(commonColor[0]) * opacityMod,
+					Main.EntitySpriteDraw(outline, drawPosition, outFrame, Projectile.GetAlpha(ColorEffectsIndex.GetColor(Subtype)) * opacityMod,
 						Projectile.rotation, outFrame.Size() / 2, Projectile.scale, effects, 0);
 				}
 
 				Texture2D glideTex = ModContent.Request<Texture2D>(commonPath + "_Glide").Value;
-				Color color = commonColor[1] with { A = 0 };
+				Color color = (ColorEffectsIndex.GetColor(Subtype) * Main.rand.NextFloat(0.8f, 1.2f)) with { A = 0 };
 				Vector2 stretch = new Vector2(Projectile.velocity.Length() / (glideTex.Width / 10), 1.5f) * Projectile.scale;
 
 				Main.EntitySpriteDraw(glideTex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(color), Projectile.velocity.ToRotation(), new Vector2(glideTex.Width, glideTex.Height / 2), stretch, effects, 0);

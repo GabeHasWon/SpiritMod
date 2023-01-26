@@ -1,15 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Sets.GunsMisc.Blaster;
 using SpiritMod.Mechanics.Trails;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
-namespace SpiritMod.Projectiles.Bullet.Blaster
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 {
 	public class GoldBullet : ModProjectile, ITrailProjectile
 	{
