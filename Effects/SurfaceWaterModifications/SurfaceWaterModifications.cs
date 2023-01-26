@@ -43,6 +43,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				IL.Terraria.Main.DoDraw += AddWaterShader; //Transparency shader
 				IL.Terraria.GameContent.Liquid.LiquidRenderer.InternalDraw += LiquidRenderer_InternalDraw;
 				IL.Terraria.Main.DrawBlack += Main_DrawBlack;
+				On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += (_, _, _, _, _, _, _) => { };
 			}
 
 			IL.Terraria.GameContent.Shaders.WaterShaderData.QueueRipple_Vector2_Color_Vector2_RippleShape_float += IncreaseRippleSize; //Makes ripple bigger
@@ -67,14 +68,25 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 			ILLabel skipLabel = c.Prev.Operand as ILLabel;
 
-			c.Emit(OpCodes.Ldloca_S, (byte)13); //i
-			c.Emit(OpCodes.Ldloc_S, (byte)10); //j
+			c.Emit(OpCodes.Ldloca_S, (byte)13); //i (source num7)
+			c.Emit(OpCodes.Ldloc_S, (byte)10); //j (source i)
+			c.Emit(OpCodes.Ldloca_S, (byte)12); //adjX (source j)
 
-			c.EmitDelegate(static (ref int i, int j) =>
+			c.EmitDelegate(static (ref int i, int j, ref int adjX) =>
 			{
-				Tile tile = Main.tile[i, j];
-				Tile right = Main.tile[i + 1, j];
-				Tile left = Main.tile[i - 1, j];
+				int oldAdjX = adjX;
+				Tile tile = Main.tile[oldAdjX, j];
+
+				while (tile.HasTile && !Main.tileSolid[tile.TileType] || !tile.HasTile || !WorldGen.InWorld(oldAdjX, j))
+				{
+					oldAdjX -= 1;
+					tile = Main.tile[oldAdjX, j];
+				}
+
+				if (tile.Slope != SlopeType.Solid)
+					adjX--;
+
+				tile = Main.tile[i, j];
 
 				if (tile.HasTile && tile.Slope != SlopeType.Solid)
 				{
@@ -119,18 +131,23 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			Vector2 drawOffset = (Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange)) - Main.screenPosition;
 
 			bool openTile = !tile.HasTile || !Main.tileSolid[tile.TileType];
+			float factor = tile.LiquidAmount / 255f;
+			Texture2D texture = Main.waterStyle < WaterStyleID.Count ? TextureAssets.LiquidSlope[Main.waterStyle].Value : TextureAssets.LiquidSlope[0].Value;
 
 			if (openTile && right.HasTile && right.LeftSlope) 
 			{
-				float factor = tile.LiquidAmount / 255f;
-
 				var pos = new Vector2((i + 1) << 4, (j + (1 - factor)) * 16f) + drawOffset;
-				Main.tileBatch.Draw(TextureAssets.LiquidSlope[0].Value, pos, new Rectangle(18, (int)(16 * (1 - factor)), 16, (int)(16 * factor)), colours, Vector2.Zero, 1f, SpriteEffects.None);
+				var source = new Rectangle((int)(right.Slope - 1) * 18, (int)(16 * (1 - factor)), 16, (int)(16 * factor));
+
+				Main.tileBatch.Draw(texture, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 			}
 
 			if (openTile && left.HasTile && left.RightSlope)
 			{
-				Main.tileBatch.Draw(TextureAssets.LiquidSlope[0].Value, new Vector2((i - 1) << 4, (j) << 4) + drawOffset, new Rectangle(18, 0, 16, 16), colours, Vector2.Zero, 1f, SpriteEffects.None);
+				var pos = new Vector2((i - 1) << 4, (j + (1 - factor)) * 16f) + drawOffset;
+				var source = new Rectangle((int)(left.Slope - 1) * 18, (int)(16 * (1 - factor)), 16, (int)(16 * factor));
+
+				Main.tileBatch.Draw(texture, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 			}
 		}
 
