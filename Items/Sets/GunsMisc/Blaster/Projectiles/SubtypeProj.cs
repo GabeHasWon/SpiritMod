@@ -4,7 +4,7 @@ using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Projectiles.Bullet.Blaster
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 {
 	public abstract class SubtypeProj : ModProjectile
 	{

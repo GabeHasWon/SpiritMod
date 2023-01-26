@@ -6,10 +6,10 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Projectiles.Bullet.Blaster
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 {
     public class Beam : SubtypeProj
-    {
+	{
 		private readonly int frameDur = 3;
 
 		private float beamLength;
@@ -95,11 +95,6 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 				if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), lineStart, lineEnd, 10, ref collisionPoint))
 				{
 					lastStrikePos = Vector2.Lerp(lineStart, lineEnd, collisionPoint / lineStart.Distance(lineEnd));
-					if (Player == Main.LocalPlayer)
-					{
-						Projectile.velocity = Main.player[Projectile.owner].DirectionTo(Main.MouseWorld) * ((Projectile.Distance((Vector2)lastStrikePos) / Projectile.timeLeft) - 2);
-						Projectile.netUpdate = true;
-					}
 					return true;
 				}
             }
@@ -108,31 +103,45 @@ namespace SpiritMod.Projectiles.Bullet.Blaster
 
         public override bool? CanDamage() => (Projectile.frame == 0 && Projectile.frameCounter <= 1 && lastStrikePos == null) ? null : false;
 
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			int? debuffType = ColorEffectsIndex.GetDebuffs(Subtype);
+			if (debuffType != null)
+				target.AddBuff(debuffType.Value, 200);
+		}
+
 		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI) => overPlayers.Add(index);
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Start").Value;
-			Texture2D texture2 = TextureAssets.Projectile[Projectile.type].Value;
+			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+			Texture2D glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
 
-			Rectangle rect = GetDrawFrame(texture);
-			Rectangle rect2 = GetDrawFrame(texture2);
+			int vFrames = 3;
+			Rectangle rect = new(0, texture.Height / Main.projFrames[Projectile.type] * Projectile.frame, texture.Width / vFrames, texture.Height / Main.projFrames[Projectile.type]);
+			int[] beamWidths = new int[]{ 12, 6 };
 
-			var origin = new Vector2(0f, rect.Height / 2);
+			Vector2 origin = new Vector2(0f, rect.Height / 2);
+			Color drawColor = ColorEffectsIndex.GetColor(Subtype);
+
 			//Draw the beam start
-			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, rect, Projectile.GetAlpha(Color.White),
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, rect, Projectile.GetAlpha(drawColor),
+				Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+			Main.EntitySpriteDraw(glowTexture, Projectile.Center - Main.screenPosition, rect, Projectile.GetAlpha(Color.White),
 				Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
 
 			//Draw the beam body
 			if (lastStrikePos != null)
 				beamLength = (int)((Vector2)lastStrikePos - Projectile.Center).Length();
-			int beamSegments = (int)beamLength / rect2.Width;
+			int beamSegments = (int)beamLength / beamWidths[1];
 			for (int i = 0; i < beamSegments; i++)
 			{
-				texture2 = (i >= (beamSegments - 1)) ? ModContent.Request<Texture2D>(Texture + "_End").Value : TextureAssets.Projectile[Projectile.type].Value;
-				origin = new Vector2(0f, rect2.Height / 2);
-				var position = Projectile.Center + new Vector2(rect.Width + (rect2.Width * i), 0f).RotatedBy(Projectile.rotation);
-				Main.EntitySpriteDraw(texture2, position - Main.screenPosition, rect2, Projectile.GetAlpha(Color.White),
+				rect.X = texture.Width / vFrames * ((i >= (beamSegments - 1)) ? 2 : 1);
+				var position = Projectile.Center + new Vector2(beamWidths[0] + (beamWidths[1] * i), 0f).RotatedBy(Projectile.rotation);
+
+				Main.EntitySpriteDraw(texture, position - Main.screenPosition, rect, Projectile.GetAlpha(drawColor),
+					Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+				Main.EntitySpriteDraw(glowTexture, position - Main.screenPosition, rect, Projectile.GetAlpha(Color.White),
 					Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
 			}
 			return false;

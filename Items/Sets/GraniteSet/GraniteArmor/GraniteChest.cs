@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Items.Sets.GraniteSet;
 
 namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 {
@@ -12,7 +11,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Granite Breastplate");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteArmor/GraniteBody_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Tooltip.SetDefault("Increases jump height slightly");
 		}
 
@@ -24,15 +23,11 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 			Item.rare = ItemRarityID.Green;
 			Item.defense = 11;
 		}
-		public override void UpdateEquip(Player player)
-		{
-			Player.jumpSpeed += 1;
-		}
 
-		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
-		{
-			glowMaskColor = Color.White;
-		}
+		public override void UpdateEquip(Player player) => Player.jumpSpeed += 1;
+
+		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor) => glowMaskColor = Color.White;
+		
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

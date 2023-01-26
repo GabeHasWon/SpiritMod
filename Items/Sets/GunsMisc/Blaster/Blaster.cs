@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles;
 using SpiritMod.Particles;
-using SpiritMod.Projectiles.Bullet.Blaster;
 using System.Collections.Generic;
 using System.IO;
 using Terraria;
@@ -30,8 +30,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		private enum BuildType : byte
 		{
 			None = 0,
-			Heavy = 1,
-			Laser = 2,
+			Laser = 1,
+			Heavy = 2,
+			Wave = 3,
 			Count
 		}
 
@@ -41,10 +42,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			None = 0,
 			Charge = 1,
 			Boomerang = 2,
+			Burst = 3,
 			Count
 		}
-
-		public bool usingAltTexture = false;
 
 		protected override bool CloneNewInstances => true;
 		public override ModItem Clone(Item itemClone)
@@ -91,13 +91,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void UseItemFrame(Player player)
 		{
-			if (auxillary == (int)AuxillaryType.Charge || (auxillary == (int)AuxillaryType.Boomerang && player.altFunctionUse == 2))
-				return;
-			int offset = (int)MathHelper.Clamp(player.itemAnimation - (Item.useAnimation - 8), 0, Item.useAnimation);
+			//Shot feedback
+			int offset = (int)MathHelper.Clamp(player.itemTime - (float)(player.itemTimeMax / 3f), 0, 10);
 			player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
 		}
 
-		public override bool AltFunctionUse(Player player) => auxillary == (int)AuxillaryType.Boomerang;
+		public override bool AltFunctionUse(Player player) => auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge;
 		public override bool CanUseItem(Player player)
 		{
 			if (auxillary == (int)AuxillaryType.Boomerang)
@@ -110,54 +109,77 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 40f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 				position += muzzleOffset;
-			type = Item.shoot;
 
-			if (auxillary == (int)AuxillaryType.Boomerang)
-			{
-				if (player.altFunctionUse == 2)
-				{
-					velocity = velocity.RotatedBy(-0.3f * player.direction);
-					type = ModContent.ProjectileType<BoomerangBlaster>();
-					Item.useStyle = ItemUseStyleID.Rapier;
-				}
-				else Item.useStyle = ItemUseStyleID.Shoot;
-			}
-			if (build == (int)BuildType.Heavy && player.altFunctionUse != 2)
-				velocity = (velocity * Main.rand.NextFloat(0.75f, 1.0f)).RotatedByRandom(0.2f);
+			type = Item.shoot;
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (!(auxillary == (int)AuxillaryType.Boomerang && player.altFunctionUse == 2) && auxillary != (int)AuxillaryType.Charge)
+			if (!((auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge) && player.altFunctionUse == 2))
 			{
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1"), position);
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 3 }, position);
 				FireVisuals(position, velocity, element);
 			}
 
 			Projectile proj;
+			int ai1 = 0;
 
-			if (auxillary == (int)AuxillaryType.Charge)
+			if (player.altFunctionUse == 2)
 			{
-				proj = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<BlasterProj>(), damage, knockback, player.whoAmI);
-
-				proj.ai[0] = type;
-				proj.ai[1] = build switch
+				if (auxillary == (int)AuxillaryType.Charge)
 				{
-					1 => ModContent.ProjectileType<LongRocket>(),
-					2 => ModContent.ProjectileType<BigBeam>(),
-					_ => ModContent.ProjectileType<PhaseBlast>()
-				};
-			}
-			else if (auxillary == (int)AuxillaryType.Boomerang && player.altFunctionUse == 2)
-			{
-				proj = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<BoomerangBlaster>(), damage, knockback, player.whoAmI);
+					//Reduce the damage of the laser due to its piercing and multi-hit abilities
+					damage = (int)(damage * ((build == (int)BuildType.Laser) ? 0.8f : 2.5f));
+					velocity *= 1.5f;
+					type = ModContent.ProjectileType<BlasterProj>();
 
-				proj.ai[1] = element + (usingAltTexture ? 4 : 0);
+					ai1 = build switch
+					{
+						1 => ModContent.ProjectileType<BigBeam>(),
+						2 => ModContent.ProjectileType<LongRocket>(),
+						_ => ModContent.ProjectileType<PhaseBlast>()
+					};
+				}
+				if (auxillary == (int)AuxillaryType.Boomerang)
+				{
+					velocity = velocity.RotatedBy(-0.3f * player.direction);
+					type = ModContent.ProjectileType<BoomerangBlaster>();
+					Item.useStyle = ItemUseStyleID.Rapier;
+
+					ai1 = build;
+				}
 			}
-			else proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+			else
+			{
+				if (build == (int)BuildType.Wave)
+				{
+					if (auxillary == (int)AuxillaryType.Burst)
+						velocity = (velocity * Main.rand.NextFloat(0.7f, 1.0f)).RotatedByRandom(0.5f);
+					else
+					{
+						for (int i = 0; i < 3; i++)
+						{
+							Vector2 newVel = (velocity * Main.rand.NextFloat(0.5f, 0.8f)).RotatedByRandom(1f);
+							Projectile starshot = Projectile.NewProjectileDirect(source, position, newVel, type, damage, knockback, player.whoAmI);
+							(starshot.ModProjectile as SubtypeProj).Subtype = element;
+							starshot.frame = 1;
+						}
+					}
+				}
+				else if (build == (int)BuildType.Heavy)
+					velocity = (velocity * Main.rand.NextFloat(0.75f, 1.0f)).RotatedByRandom(0.2f);
+
+				if (auxillary == (int)AuxillaryType.Boomerang)
+					Item.useStyle = ItemUseStyleID.Shoot;
+			}
+
+			proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
 
 			if (proj.ModProjectile is SubtypeProj)
 				(proj.ModProjectile as SubtypeProj).Subtype = element;
+			proj.ai[1] = ai1;
+			proj.netUpdate = true;
+
 			return false;
 		}
 
@@ -183,10 +205,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					for (int i = 0; i < 8; i++)
 					{
 						if (i < 3)
-							ParticleHandler.SpawnParticle(new SmokeParticle(position, new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f)), Color.Lerp(Color.Green, Color.LimeGreen, Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.7f, 1.1f), 22));
+							ParticleHandler.SpawnParticle(new SmokeParticle(position, new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f)), Color.Lerp(Color.White, Color.LimeGreen, Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.25f, 0.5f), 12));
 						Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.FartInAJar : DustID.GreenTorch, null);
-						dust.velocity = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * .5f, Main.rand.NextFloat(-1.0f, 1.0f) * .5f);
-						dust.fadeIn = 1.1f;
+						dust.velocity = (velocity * Main.rand.NextFloat(0.15f, 0.3f)).RotatedByRandom(1f);
+						if (dust.type == DustID.GreenTorch)
+							dust.fadeIn = 1.1f;
 						dust.noGravity = true;
 					}
 					break;
@@ -224,38 +247,34 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		{
 			Texture2D texture = TextureAssets.Item[Item.type].Value;
 
-			frame.Width = (texture.Width / (int)ElementType.Count) - 2;
-			frame.X = texture.Width / (int)ElementType.Count * element;
-
-			int yFrame = usingAltTexture ? 1 : 0;
-			frame.Height = (texture.Height / 2) - 2;
-			frame.Y = texture.Height / 2 * yFrame;
+			frame.Height = (texture.Height / (int)BuildType.Count) - 2;
+			frame.Y = texture.Height / (int)BuildType.Count * build;
 
 			scale *= (int)BuildType.Count;
 			if (frame.Width > 32 || frame.Height > 32)
 				scale = (frame.Width <= frame.Height) ? (32f / (float)frame.Height) : (32f / (float)frame.Width);
 			scale *= Main.inventoryScale;
 
+			position += new Vector2(-(frame.Width / 2) - 2, (frame.Height / 2) - 2) * scale / 2;
+
 			//Draw the item normally
 			spriteBatch.Draw(texture, position, frame, Item.GetAlpha(drawColor), 0f, origin, scale, SpriteEffects.None, 0f);
 			//Draw a glowmask
-			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, Item.GetAlpha(Color.White), 0f, origin, scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, Item.GetAlpha(ColorEffectsIndex.GetColor(element)), 0f, origin, scale, SpriteEffects.None, 0f);
 			return false;
 		}
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
 			Texture2D texture = TextureAssets.Item[Item.type].Value;
-			int yFrame = usingAltTexture ? 1 : 0;
-			Rectangle frame = new Rectangle(TextureAssets.Item[Type].Value.Width / (int)ElementType.Count * element, TextureAssets.Item[Type].Value.Height / 2 * yFrame, 
-				(TextureAssets.Item[Type].Value.Width / (int)ElementType.Count) - 2, (TextureAssets.Item[Type].Value.Height / 2) - 2);
+			Rectangle frame = new Rectangle(0, texture.Height / (int)BuildType.Count * build, texture.Width, (texture.Height / (int)BuildType.Count) - 2);
 
-			Vector2 position = new Vector2(Item.position.X - Main.screenPosition.X + Item.width / 2, Item.position.Y - Main.screenPosition.Y + Item.height - (frame.Height / 2));
-			
+			Vector2 position = new Vector2(Item.position.X - Main.screenPosition.X + Item.width / 2, Item.position.Y - Main.screenPosition.Y + Item.height / 2);
+
 			//Draw the item normally
 			spriteBatch.Draw(texture, position, frame, Item.GetAlpha(lightColor), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
 			//Draw a glowmask
-			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, Color.White * ((255f - Item.alpha) / 255f), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, ColorEffectsIndex.GetColor(element) * ((255f - Item.alpha) / 255f), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
 			return false;
 		}
 
@@ -306,36 +325,67 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			Item.shoot = build switch
 			{
-				1 => Item.shoot = ModContent.ProjectileType<MiniRocket>(),
-				2 => Item.shoot = ModContent.ProjectileType<Beam>(),
+				1 => Item.shoot = ModContent.ProjectileType<Beam>(),
+				2 => Item.shoot = ModContent.ProjectileType<MiniRocket>(),
+				3 => Item.shoot = ModContent.ProjectileType<Starshot>(),
 				_ => Item.shoot = ModContent.ProjectileType<EnergyBurst>()
 			};
 
 			Item.channel = auxillary == (int)AuxillaryType.Charge;
-
-			usingAltTexture = build == (int)BuildType.Heavy;
+			Item.reuseDelay = (auxillary == (int)AuxillaryType.Burst) ? 60 : 0;
 
 			Item.SetNameOverride(nameSelection[element + build] + " Blaster");
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			string text = auxillary switch
+			string[] text = new string[]
 			{
-				1 => "Attacks can be charged for greater effectiveness",
-				2 => "Right click to throw the gun out like a boomerang",
-				_ => string.Empty
+				auxillary switch
+				{
+					1 => "Right click to fire an empowered shot",
+					2 => "Right click to throw the gun out like a boomerang",
+					3 => "Fires in bursts",
+					_ => string.Empty
+				},
+				element switch
+				{
+					0 => "Attacks ignite enemies",
+					1 => "Attacks poison enemies",
+					2 => "Attacks inflict Frostburn",
+					_ => string.Empty,
+				}
 			};
-			if (text == string.Empty)
-				return;
 
-			tooltips.Add(new TooltipLine(Mod, string.Empty, text));
+			for (int i = 0; i < text.Length; i++)
+			{
+				if (text[i] != string.Empty)
+					tooltips.Add(new TooltipLine(Mod, string.Empty, text[i]));
+			}
 		}
 
 		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
 		{
 			if (element == (int)ElementType.Plasma)
-				damage += 6;
+				damage.ApplyTo(7);
+		}
+
+		public override float UseTimeMultiplier(Player player)
+		{
+			if (auxillary == (int)AuxillaryType.Burst)
+				return 0.5f;
+			else if (build == (int)BuildType.Wave)
+				return 2f;
+			return base.UseTimeMultiplier(player);
+		}
+
+		public override float UseAnimationMultiplier(Player player)
+		{
+			if (auxillary == (int)AuxillaryType.Burst)
+				return 1.5f;
+			else if (build == (int)BuildType.Wave)
+				return 2f;
+			return base.UseAnimationMultiplier(player);
 		}
 	}
 }

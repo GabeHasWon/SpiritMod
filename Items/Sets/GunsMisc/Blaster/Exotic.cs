@@ -1,7 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Particles;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles;
 using SpiritMod.Particles;
-using SpiritMod.Projectiles.Bullet.Blaster;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +22,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		{
 			Festive = 0,
 			Golden = 1,
-			Bleak = 2,
+			Swift = 2,
+			Starplate = 3,
 			Count
 		}
 
@@ -68,8 +70,19 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void UseItemFrame(Player player)
 		{
-			int offset = (int)MathHelper.Clamp(player.itemAnimation - (player.itemAnimationMax - 8), 0, player.itemAnimationMax);
-			player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
+			//Shot feedback
+			if (style == (int)StyleType.Starplate)
+			{
+				int offset = (int)MathHelper.Clamp(player.itemAnimation - (player.itemAnimationMax - 12), 0, player.itemAnimationMax);
+
+				player.itemRotation = player.itemRotation - (offset * 0.001f * player.direction) + (12 * 0.001f * player.direction);
+				player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
+			}
+			else
+			{
+				int offset = (int)MathHelper.Clamp(player.itemAnimation - (player.itemAnimationMax - 8), 0, player.itemAnimationMax);
+				player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
+			}
 		}
 
 		public override bool AltFunctionUse(Player player) => style == (int)StyleType.Golden;
@@ -92,12 +105,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 40f;
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 2)) * 40f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 				position += muzzleOffset;
 			type = Item.shoot;
 
-			if (style == (int)StyleType.Bleak)
+			if (style == (int)StyleType.Swift)
 			{
 				if (!Main.dedServ)
 				{
@@ -105,16 +118,26 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					for (int i = 0; i < 3; i++)
 						ParticleHandler.SpawnParticle(new FireParticle(position, (velocity * Main.rand.NextFloat(0.1f, 0.8f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.2f, 0.5f), 12));
 				}
-
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { Volume = 0.5f, PitchVariance = 0.2f, MaxInstances = 3 }, position);
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { Volume = 0.5f, PitchVariance = 0.2f, MaxInstances = 3 }, position);
 			}
 			else
 			{
 				if (style == (int)StyleType.Festive)
+				{
 					for (int i = 0; i < 4; i++)
 						Dust.NewDustPerfect(position, DustID.Confetti, (velocity * Main.rand.NextFloat(0.4f, 0.8f)).RotatedByRandom(1f), 100);
+				}
 
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1"), position);
+				if (style == (int)StyleType.Starplate)
+				{
+					if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateHologram>()] < 1)
+						Projectile.NewProjectile(Entity.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<StarplateHologram>(), damage, knockback, player.whoAmI);
+				}
+				else if (Main.netMode != NetmodeID.Server)
+				{
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1"), position);
+				}
 			}
 		}
 
@@ -130,7 +153,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				scale = (frame.Width <= frame.Height) ? (32f / (float)frame.Height) : (32f / (float)frame.Width);
 			scale *= Main.inventoryScale;
 
-			position += new Vector2(-(frame.Width / 2), frame.Height) * scale / 2;
+			position += new Vector2(-(frame.Width / 2), frame.Height / 2) * scale / 2;
 
 			//Draw the item normally
 			spriteBatch.Draw(texture, position, frame, Item.GetAlpha(drawColor), 0f, origin, scale, SpriteEffects.None, 0f);
@@ -148,7 +171,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			//Manage fancy drop visuals
 			#region extraVFX
-			float quoteant = 1f - (float)MathHelper.Clamp(Item.timeSinceItemSpawned / 240f, 0f, 1f);
+			float quoteant = 1f - (float)MathHelper.Clamp(Item.timeSinceItemSpawned / 300f, 0f, 1f);
 
 			if (quoteant > 0f)
 			{
@@ -195,7 +218,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public void Generate()
 		{
-			List<byte> list = new List<byte> { (byte)StyleType.Golden, (byte)StyleType.Bleak };
+			List<byte> list = new List<byte> { (byte)StyleType.Golden, (byte)StyleType.Swift, (byte)StyleType.Starplate };
 			if (Main.xMas || Main.snowMoon)
 				list.Add((byte)StyleType.Festive); //This weapon is a seasonal exclusive
 
@@ -206,14 +229,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public void ApplyStats()
 		{
-			string[] nameSelection = new string[] { "Bulb", "Golden", "Swift" };
+			string[] nameSelection = new string[] { "Bulb", "Golden", "Swift", "Starplate" };
 
 			Item.shoot = style switch
 			{
 				0 => Item.shoot = ModContent.ProjectileType<Bauble>(),
 				1 => Item.shoot = ModContent.ProjectileType<GoldBullet>(),
-				_ => Item.shoot = ModContent.ProjectileType<EnergyBurst>()
+				2 => Item.shoot = ModContent.ProjectileType<EnergyBurst>(),
+				_ => Item.shoot = ModContent.ProjectileType<StarshotOrange>()
 			};
+			Item.channel = style == (int)StyleType.Starplate;
 
 			Item.SetNameOverride(nameSelection[style] + " Blaster");
 		}
@@ -223,7 +248,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			string text = style switch
 			{
 				1 => "Struck enemies are marked for damage\nRight click to detonate all marked enemies\nAll marks instantly expire when missing a shot",
-				2 => "Rapid Fire",
+				2 => "Fires a rapid volley of energy",
+				3 => "Creates a hologram to supply additional fire",
 				_ => "Launches bouncing glass baubles...ouch!"
 			};
 			if (text == string.Empty)
@@ -232,12 +258,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			tooltips.Add(new TooltipLine(Mod, string.Empty, text));
 		}
 
-		//public override void ModifyWeaponDamage(Player player, ref StatModifier damage) => base.ModifyWeaponDamage(player, ref damage);
-
 		public override float UseSpeedMultiplier(Player player)
 		{
-			if (style == (int)StyleType.Bleak)
-				return 1.8f;
+			if (style == (int)StyleType.Swift)
+				return 2f;
 			return base.UseSpeedMultiplier(player);
 		}
 	}

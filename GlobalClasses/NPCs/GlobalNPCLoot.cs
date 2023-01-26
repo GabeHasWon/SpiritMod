@@ -9,6 +9,7 @@ using SpiritMod.Items.Pets;
 using SpiritMod.Items.Placeable.Furniture;
 using SpiritMod.Items.Placeable.IceSculpture;
 using SpiritMod.Items.Sets.FrigidSet;
+using SpiritMod.Items.Sets.GunsMisc.Blaster;
 using SpiritMod.Items.Sets.PirateStuff;
 using SpiritMod.Items.Sets.ReefhunterSet;
 using SpiritMod.Items.Sets.SummonsMisc.PigronStaff;
@@ -39,7 +40,8 @@ namespace SpiritMod.GlobalClasses.NPCs
 			globalLoot.Add(glyphChance);
 
 			LeadingConditionRule inAsteroids = new LeadingConditionRule(new DropRuleConditions.InBiome(DropRuleConditions.InBiome.Biome.Asteroid));
-			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<ContentItems.Sets.GunsMisc.Blaster.Blaster>(), 40));
+			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Blaster>(), 40));
+			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Exotic>(), 100));
 			globalLoot.Add(inAsteroids);
 
 			LeadingConditionRule wearingArcaneNecklace = new LeadingConditionRule(new DropRuleConditions.PlayerConditional("Wearing the Arcane Necklace and is using a magic weapon", (player) => player.HasAccessory<ArcaneNecklace>() && player.HeldItem.IsMagic() && player.statMana < player.statManaMax2));
@@ -133,7 +135,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 		/// <param name="itemID"></param>
 		/// <param name="npc"></param>
 		/// <param name="types"></param>
-		private void DownedBossLoot(NPCLoot npcLoot, DropRuleConditions.BossDowned.Bosses boss, int normal, int expert, int itemID, NPC npc, params int[] types)
+		private static void DownedBossLoot(NPCLoot npcLoot, DropRuleConditions.BossDowned.Bosses boss, int normal, int expert, int itemID, NPC npc, params int[] types)
 		{
 			if (types.Contains(npc.type))
 			{
@@ -146,7 +148,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 			}
 		}
 
-		/// <summary>Adds loot that only drops after a certain boss has been defeated. Uses NormalvsExpert if the condition is true.</summary>
+		/*/// <summary>Adds loot that only drops after a certain boss has been defeated. Uses NormalvsExpert if the condition is true.</summary>
 		/// <param name="npcLoot"></param>
 		/// <param name="boss"></param>
 		/// <param name="normal"></param>
@@ -165,9 +167,9 @@ namespace SpiritMod.GlobalClasses.NPCs
 					rule.OnSuccess(ItemDropRule.Common(itemID, normal, minStack, maxStack));
 				npcLoot.Add(rule);
 			}
-		}
+		}*/
 
-		private void DownedBossLootCommon(NPCLoot npcLoot, DropRuleConditions.BossDowned.Bosses boss, int normal, int itemID, int minStack, int maxStack, NPC npc, params int[] types)
+		private static void DownedBossLootCommon(NPCLoot npcLoot, DropRuleConditions.BossDowned.Bosses boss, int normal, int itemID, int minStack, int maxStack, NPC npc, params int[] types)
 		{
 			if (types.Contains(npc.type))
 			{
@@ -183,7 +185,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 		/// <param name="expertChance">Chance in expert mode (1/x).</param>
 		/// <param name="itemID">The item to drop.</param>
 		/// <param name="types">The NPC IDs to drop from.</param>
-		public void DropLoot(NPCLoot loot, int chance, int expertChance, int itemID, NPC npc, params int[] types)
+		public static void DropLoot(NPCLoot loot, int chance, int expertChance, int itemID, NPC npc, params int[] types)
 		{
 			if (types.Contains(npc.type))
 			{
@@ -202,7 +204,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 		/// <param name="minStack">The minimum stack size of the dropped item.</param>
 		/// <param name="maxStack">The maximum stack size of the dropped item.</param>
 		/// <param name="types">The NPC IDs to drop from.</param>
-		public void DropLoot(NPCLoot loot, int chance, int expertChance, int itemID, int minStack, int maxStack, NPC npc, params int[] types)
+		public static void DropLoot(NPCLoot loot, int chance, int expertChance, int itemID, int minStack, int maxStack, NPC npc, params int[] types)
 		{
 			if (types.Contains(npc.type))
 			{
