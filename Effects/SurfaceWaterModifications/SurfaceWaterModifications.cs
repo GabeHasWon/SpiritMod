@@ -1,8 +1,10 @@
 ﻿using log4net;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using SpiritMod.Effects.Waters;
 using SpiritMod.Mechanics.OceanWavesSystem;
 using SpiritMod.Utilities;
 using SpiritMod.Utilities.Helpers;
@@ -39,7 +41,8 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			if (ModContent.GetInstance<SpiritClientConfig>().SurfaceWaterTransparency)
 			{
 				IL.Terraria.Main.DoDraw += AddWaterShader; //Transparency shader
-				On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += RenderRealLiquidInPlaceOfPartial;
+				IL.Terraria.GameContent.Liquid.LiquidRenderer.InternalDraw += LiquidRenderer_InternalDraw;
+				IL.Terraria.Main.DrawBlack += Main_DrawBlack;
 			}
 
 			IL.Terraria.GameContent.Shaders.WaterShaderData.QueueRipple_Vector2_Color_Vector2_RippleShape_float += IncreaseRippleSize; //Makes ripple bigger
@@ -52,59 +55,89 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			}
 		}
 
+		private static void Main_DrawBlack(ILContext il)
+		{
+			ILCursor c = new(il);
+
+			if (!c.TryGotoNext(x => x.MatchCallvirt<SpriteBatch>("Draw")))
+				return;
+
+			if (!c.TryGotoPrev(x => x.MatchLdsfld<Main>("spriteBatch")))
+				return;
+
+			ILLabel skipLabel = c.Prev.Operand as ILLabel;
+
+			c.Emit(OpCodes.Ldloca_S, (byte)13); //i
+			c.Emit(OpCodes.Ldloc_S, (byte)10); //j
+
+			c.EmitDelegate(static (ref int i, int j) =>
+			{
+				Tile tile = Main.tile[i, j];
+				Tile right = Main.tile[i + 1, j];
+				Tile left = Main.tile[i - 1, j];
+
+				if (tile.HasTile && tile.Slope != SlopeType.Solid)
+				{
+					if (!WorldGen.SolidTile(i + 1, j) && !WorldGen.SolidTile(i - 1, j))
+						return false;
+					else if (!WorldGen.SolidTile(i - 1, j) && WorldGen.SolidTile(i + 1, j))
+						i++;
+				}
+				return true; //DO draw the darkness
+			});
+
+			c.Emit(OpCodes.Brfalse, skipLabel);
+		}
+
+		private static void LiquidRenderer_InternalDraw(ILContext il)
+		{
+			ILCursor c = new ILCursor(il);
+
+			if (!c.TryGotoNext(MoveType.After, x => x.MatchCall<Main>(nameof(Main.DrawTileInWater))))
+				return;
+
+			if (!c.TryGotoNext(MoveType.Before, x => x.MatchLdloc(2)))
+				return;
+
+			ILLabel label = c.MarkLabel();
+
+			if (!c.TryGotoPrev(MoveType.After, x => x.MatchCall<Main>(nameof(Main.DrawTileInWater))))
+				return;
+
+			c.Emit(OpCodes.Ldloc_3); //i
+			c.Emit(OpCodes.Ldloc_S, (byte)4); //j
+			c.Emit(OpCodes.Ldloc_S, (byte)9); //vertex colours
+
+			c.EmitDelegate(DrawSlope);
+		}
+
+		public static void DrawSlope(int i, int j, VertexColors colours)
+		{
+			Tile tile = Main.tile[i, j];
+			Tile right = Main.tile[i + 1, j];
+			Tile left = Main.tile[i - 1, j];
+			Vector2 drawOffset = (Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange)) - Main.screenPosition;
+
+			bool openTile = !tile.HasTile || !Main.tileSolid[tile.TileType];
+
+			if (openTile && right.HasTile && right.LeftSlope) 
+			{
+				float factor = tile.LiquidAmount / 255f;
+
+				var pos = new Vector2((i + 1) << 4, (j + (1 - factor)) * 16f) + drawOffset;
+				Main.tileBatch.Draw(TextureAssets.LiquidSlope[0].Value, pos, new Rectangle(18, (int)(16 * (1 - factor)), 16, (int)(16 * factor)), colours, Vector2.Zero, 1f, SpriteEffects.None);
+			}
+
+			if (openTile && left.HasTile && left.RightSlope)
+			{
+				Main.tileBatch.Draw(TextureAssets.LiquidSlope[0].Value, new Vector2((i - 1) << 4, (j) << 4) + drawOffset, new Rectangle(18, 0, 16, 16), colours, Vector2.Zero, 1f, SpriteEffects.None);
+			}
+		}
+
 		public static void Unload()
 		{
 			transparencyEffect = null;
 			rippleTex = null;
-		}
-
-		private static void RenderRealLiquidInPlaceOfPartial(On.Terraria.GameContent.Drawing.TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, Tile tileCache, Vector2 position, Rectangle liquidSize, int liquidType, Color aColor)
-		{
-			if (TileID.Sets.BlocksWaterDrawingBehindSelf[(int)tileCache.BlockType] || tileCache.Slope == SlopeType.Solid)
-			{
-				orig(self, tileCache, position, liquidSize, liquidType, aColor);
-				return;
-			}
-
-			var drawPos = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
-			var drawOffset = drawPos - Main.screenPosition;
-			var tileCoords = (position + Main.screenPosition - drawPos).ToTileCoordinates();
-
-			if (Main.LocalPlayer.ZoneBeach)
-			{
-				transparencyEffect.Parameters["transparency"].SetValue(GetTransparency());
-				Main.tileBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, transparencyEffect);
-			}
-			else
-				Main.tileBatch.Begin();
-
-			Main.DrawTileInWater(drawOffset, tileCoords.X, tileCoords.Y);
-
-			var tile = Framing.GetTileSafely(tileCoords);
-
-			if (tile.LiquidType != LiquidID.Water)
-				return;
-
-			int liquidStyle = Main.waterStyle;
-			float opacity = 0.8f * 0.8f;
-
-			opacity = Math.Min(opacity, 1f);
-			if (tile.WallType != 0) 
-				opacity = 0.5f;
-
-			Lighting.GetCornerColors(tileCoords.X, tileCoords.Y, out var vertices);
-			vertices.BottomLeftColor *= opacity;
-			vertices.BottomRightColor *= opacity;
-			vertices.TopLeftColor *= opacity;
-			vertices.TopRightColor *= opacity;
-
-			Main.DrawTileInWater(drawOffset, tileCoords.X, tileCoords.Y);
-
-			int frameYOffset = tile.LiquidAmount == 0 && !tile.HasTile ? 0 : 48;
-			var srcRect = new Rectangle(16, frameYOffset + (int)(animationFrameField!.GetValue(LiquidRenderer.Instance) ?? 0) * 80, 16, 16);
-
-			Main.tileBatch.Draw(TextureAssets.Liquid[liquidStyle].Value, position + new Vector2(-2f, tile.IsHalfBlock ? 8f : 0f), srcRect, vertices, Vector2.Zero, 1f, SpriteEffects.None);
-			Main.tileBatch.End();
 		}
 
 		private static void WaterShaderData_DrawWaves(ILContext il)
