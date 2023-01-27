@@ -826,14 +826,6 @@ namespace SpiritMod
 		public override void Unload()
 		{
 			BoonLoader.Unload();
-			//nighttimeAmbience = null; //NEEDSUPDATE
-			//underwaterAmbience = null;
-			//wavesAmbience = null;
-			//desertWind = null;
-			//caveAmbience = null;
-			//spookyAmbience = null;
-			//lightWind = null;
-			//scarabWings = null;
 			spiritRNG = null;
 			auroraEffect = null;
 			StarjinxNoise = null;

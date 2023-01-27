@@ -169,18 +169,6 @@ namespace SpiritMod
 			mod.SlotUserInterface?.Update(gameTime);
 		}
 
-		public override void PostUpdateInput()
-		{
-			//SpiritMod.nighttimeAmbience?.Update(); //NEEDSUPDATE
-			//SpiritMod.underwaterAmbience?.Update();
-			//SpiritMod.wavesAmbience?.Update();
-			//SpiritMod.lightWind?.Update();
-			//SpiritMod.desertWind?.Update();
-			//SpiritMod.caveAmbience?.Update();
-			//SpiritMod.spookyAmbience?.Update();
-			//SpiritMod.scarabWings?.Update();
-		}
-
 		public override void PostUpdateEverything()
 		{
 			if (!Main.dedServ)
