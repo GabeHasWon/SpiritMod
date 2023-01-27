@@ -11,14 +11,12 @@ namespace SpiritMod.Items.Material
 			Tooltip.SetDefault("'Is it past its expiry date?'");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 38;
 			Item.height = 42;
 			Item.value = 100;
 			Item.rare = ItemRarityID.LightRed;
-
 			Item.maxStack = 999;
 		}
 	}

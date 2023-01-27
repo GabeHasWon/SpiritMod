@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
-using Terraria.GameContent;
 using System;
 using SpiritMod.GlobalClasses.Players;
 
@@ -18,7 +17,6 @@ namespace SpiritMod.DrawLayers
 			if (drawInfo.shadow != 0f)
 				return;
 
-			Mod mod = ModLoader.GetMod("SpiritMod");
 			Player player = drawInfo.drawPlayer;
 			if (player.active && !player.outOfRange)
 			{

@@ -1,4 +1,3 @@
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,10 +20,7 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;
 		}
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().AceOfClubs = true;
-		}
 
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().AceOfClubs = true;
 	}
 }

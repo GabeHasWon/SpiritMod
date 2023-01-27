@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs;
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Arrow;
 using System;
 using Terraria;
@@ -19,7 +18,6 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 			Tooltip.SetDefault("Right click to release an explosion of vengeance\nUsing it too frequently will reduce its damage\nInflicts 'Surging Anguish'");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.damage = 21;
@@ -37,23 +35,16 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 			Item.shootSpeed = 12f;
 			Item.autoReuse = true;
 		}
-		public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe(1);
-			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 12);
-			recipe.AddTile(TileID.Anvils);
-			recipe.Register();
-		}
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+
+		public override bool AltFunctionUse(Player player) => true;
+
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.NextBool(4)) {
 				target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 180);
 			}
 		}
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			MyPlayer modPlayer = player.GetSpiritPlayer();
@@ -65,6 +56,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 			}
 			return false;
 		}
+
 		public override void UseStyle(Player player, Rectangle heldItemFrame)
 		{
 			float cosRot = (float)Math.Cos(player.itemRotation - 0.78f * player.direction * player.gravDir);
@@ -75,6 +67,14 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 				Main.dust[dust].velocity *= 0f;
 				Main.dust[dust].noGravity = true;
 			}
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe(1);
+			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 12);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 }

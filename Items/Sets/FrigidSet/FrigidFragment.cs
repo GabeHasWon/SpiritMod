@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +30,8 @@ namespace SpiritMod.Items.Sets.FrigidSet
 			recipe.AddIngredient(this, 1);
 			recipe.Register();
 		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => Lighting.AddLight(Item.position, .08f, .18f, .34f);
+		public override Color? GetAlpha(Color lightColor) => Color.White;
 	}
 }

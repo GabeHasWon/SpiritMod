@@ -12,7 +12,6 @@ namespace SpiritMod.Items.Accessory
 			Tooltip.SetDefault("13% reduced damage\n15% increased critical strike chance\n'Right on the mark'");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 32;
@@ -21,10 +20,11 @@ namespace SpiritMod.Items.Accessory
 			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;
 		}
+
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.GetDamage(DamageClass.Generic) -= 0.13f;
-			player.GetCritChance(DamageClass.Melee) += 15;
+			player.GetCritChance(DamageClass.Generic) += 15;
 		}
 	}
 }

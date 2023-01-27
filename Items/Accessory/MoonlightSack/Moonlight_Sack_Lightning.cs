@@ -10,10 +10,9 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 	public class Moonlight_Sack_Lightning : ModProjectile
 	{
 		public float x = 0f;
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Moonlight Lightning");
-		}
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Moonlight Lightning");
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 4;

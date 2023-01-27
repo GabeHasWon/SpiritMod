@@ -255,7 +255,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			if (text == string.Empty)
 				return;
 
-			tooltips.Add(new TooltipLine(Mod, string.Empty, text));
+			tooltips.Insert(5, new TooltipLine(Mod, string.Empty, text));
 		}
 
 		public override float UseSpeedMultiplier(Player player)

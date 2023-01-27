@@ -12,7 +12,6 @@ namespace SpiritMod.Items.Accessory
 			Tooltip.SetDefault("'Who knew Skeletons could write?'\nMagic attacks may inflict random debuffs on foes\nMagic attacks may shoot out a random projectile");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 32;
@@ -21,10 +20,7 @@ namespace SpiritMod.Items.Accessory
 			Item.rare = ItemRarityID.Orange;
 			Item.accessory = true;
 		}
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().timScroll = true;
-		}
 
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().timScroll = true;
 	}
 }

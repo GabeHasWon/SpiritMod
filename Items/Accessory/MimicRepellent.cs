@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Accessory
 
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 18;
@@ -22,9 +21,7 @@ namespace SpiritMod.Items.Accessory
 			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;
 		}
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().mimicRepellent = true;
-		}
+
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().mimicRepellent = true;
 	}
 }

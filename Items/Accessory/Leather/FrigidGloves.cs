@@ -1,4 +1,3 @@
-
 using SpiritMod.Items.Sets.FrigidSet;
 using Terraria;
 using Terraria.ID;
@@ -14,6 +13,7 @@ namespace SpiritMod.Items.Accessory.Leather
 			DisplayName.SetDefault("Frigid Wraps");
 			Tooltip.SetDefault("Melee critical strikes inflict Frostburn\nGrants 4% increased attack speed for every nearby enemy\nThis effect stacks up to five times");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.width = 26;
@@ -23,10 +23,7 @@ namespace SpiritMod.Items.Accessory.Leather
 			Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetAttackSpeed(DamageClass.Melee) += 0.05f * player.GetModPlayer<MyPlayer>().frigidGloveStacks;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetAttackSpeed(DamageClass.Melee) += 0.05f * player.GetModPlayer<MyPlayer>().frigidGloveStacks;
 
 		public override void AddRecipes()
 		{

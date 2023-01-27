@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Sets.MarbleSet
 			Tooltip.SetDefault("Occasionally inflicts 'Midas', causing enemies to drop more gold\nHitting an enemy that has 'Midas' may release a fountain of gold");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Shoot;

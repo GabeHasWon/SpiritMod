@@ -25,6 +25,7 @@ namespace SpiritMod.Items.Sets.SeraphSet
 			Item.scale = .8f;
 			Item.maxStack = 999;
 		}
+
 		public override Color? GetAlpha(Color lightColor) => new Color(255, 255, 255, 100);
 	}
 }

@@ -12,16 +12,15 @@ namespace SpiritMod.Items.Material
 			Tooltip.SetDefault("'Extremely potent'");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 42;
 			Item.height = 24;
 			Item.value = 100;
 			Item.rare = ItemRarityID.Pink;
-
 			Item.maxStack = 999;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(5);

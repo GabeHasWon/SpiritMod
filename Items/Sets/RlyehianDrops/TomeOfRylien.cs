@@ -1,12 +1,9 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Projectiles;
 using SpiritMod.Projectiles.Magic;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,12 +11,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 {
 	public class TomeOfRylien : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Tome of R'lyeh");
-		}
-
-
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Tome of R'lyeh");
 
 		public override void SetDefaults()
 		{
@@ -35,7 +27,6 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 			Item.knockBack = 4;
 			Item.value = Terraria.Item.buyPrice(0, 7, 0, 0);
 			Item.rare = ItemRarityID.Orange;
-			//	item.UseSound = SoundID.Item103;
 			Item.autoReuse = true;
 			Item.shootSpeed = 11;
 			Item.shoot = ModContent.ProjectileType<TentacleSpike>();

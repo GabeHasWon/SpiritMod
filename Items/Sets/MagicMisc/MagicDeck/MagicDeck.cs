@@ -56,19 +56,14 @@ namespace SpiritMod.Items.Sets.MagicMisc.MagicDeck
 		{
 			get
 			{
-				switch (Projectile.frame)
+				return Projectile.frame switch
 				{
-					case 0:
-						return new Color(93, 13, 184);
-					case 1:
-						return new Color(204, 10, 20);
-					case 2:
-						return new Color(93, 13, 184);
-					case 3:
-						return new Color(204, 10, 20);
-					default:
-						return Color.White;
-				}
+					0 => new Color(93, 13, 184),
+					1 => new Color(204, 10, 20),
+					2 => new Color(93, 13, 184),
+					3 => new Color(204, 10, 20),
+					_ => Color.White,
+				};
 			}
 		}
 		public override void SetStaticDefaults()

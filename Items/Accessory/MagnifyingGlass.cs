@@ -18,7 +18,6 @@ namespace SpiritMod.Items.Accessory
 			Item.height = 24;
 			Item.value = Item.buyPrice(0, 0, 20, 0);
 			Item.rare = ItemRarityID.Blue;
-
 			Item.accessory = true;
 		}
 
