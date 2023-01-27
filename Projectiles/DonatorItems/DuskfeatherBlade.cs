@@ -56,9 +56,10 @@ namespace SpiritMod.Projectiles.DonatorItems
 				var projectile = Main.projectile[i];
 				if (!projectile.active)
 					continue;
+
 				int state = (int)projectile.ai[0];
-				if (projectile.type == ModContent.ProjectileType<DuskfeatherBlade>() &&
-					projectile.owner == player.whoAmI &&
+
+				if (projectile.type == ModContent.ProjectileType<DuskfeatherBlade>() && projectile.owner == player.whoAmI &&
 					state != (int)DuskfeatherState.Return &&
 					state != (int)DuskfeatherState.FadeOut &&
 					state != (int)DuskfeatherState.FadeOutStuck &&

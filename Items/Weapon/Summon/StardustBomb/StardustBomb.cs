@@ -32,6 +32,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			Item.UseSound = SoundID.Item20;
 			Item.DamageType = DamageClass.Summon;
 			Item.shootSpeed = 10f;
+			Item.shoot = 10;
 			Item.noUseGraphic = true;
 		}
 
@@ -53,11 +54,15 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 					npc.netUpdate = true;
 				}
 			}
-			int npcindex = NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
-			NPC npc2 = Main.npc[npcindex];
-			npc2.velocity = velocity;
-			if (Main.netMode != NetmodeID.SinglePlayer)
-				NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcindex);
+
+			if (Main.myPlayer == player.whoAmI)
+			{
+				int npcindex = NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
+				Main.npc[npcindex].velocity = velocity;
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcindex);
+			}
 			return false;
 		}
 	}
@@ -69,14 +74,13 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			DisplayName.SetDefault("Supernova");
 			Main.npcFrameCount[NPC.type] = 7;
         }
+
 		int returnCounter;
-
 		int boomdamage;
-
 		float shrinkCounter = 0.25f;
-
 		bool shrinking;
-        public override void SetDefaults()
+        
+		public override void SetDefaults()
         {
             NPC.width = 158;
             NPC.height = 197;
@@ -98,10 +102,15 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
 		}
+
 		public override void AI()
 		{
 			Player player = Main.player[(int)NPC.ai[0]];
 			returnCounter++;
+
+			if (returnCounter == 1)
+				NPC.netUpdate = true;
+
 			if (returnCounter == 200)
 			{
 				if (Explode())

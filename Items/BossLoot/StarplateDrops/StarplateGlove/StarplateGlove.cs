@@ -45,6 +45,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 		}
 
 		public override bool AltFunctionUse(Player player) => true;
+
 		public override bool CanUseItem(Player player)
 		{
 			if (player.altFunctionUse != 2)
@@ -54,6 +55,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 					if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == ModContent.ProjectileType<StarplateGloveProj>())
 						return false;
 				}
+
 				Item.useTime = 7;
 				Item.useAnimation = 7;
 			}
@@ -107,12 +109,17 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 				return false;
 
 			if (player.altFunctionUse == 2)
-				Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<StarplateGloveProj>(), damage, knockback, player.whoAmI);
+			{
+				int proj = Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<StarplateGloveProj>(), damage, knockback, player.whoAmI);
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
+				return false;
+			}
 			else
 			{
 				float stray = Main.rand.NextFloat(-0.5f, 0.5f);
 				Vector2 speed = velocity.RotatedBy(stray);
-				//speed *= Main.rand.NextFloat(0.9f, 1.1f);
 				position += speed * 8;
 				type = Main.rand.NextBool(2) ? ModContent.ProjectileType<StargloveChargeOrange>() : ModContent.ProjectileType<StargloveChargePurple>();
 				int proj = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
@@ -125,6 +132,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 						Main.dust[dustIndex].noGravity = true;
 						Main.dust[dustIndex].velocity = Vector2.Normalize((speed * 5).RotatedBy(Main.rand.NextFloat(6.28f))) * 2.5f;
 					}
+
 					for (int j = 0; j < 5; j++)
 						Projectile.NewProjectile(source, position, speed, type, 0, 0, player.whoAmI, proj);
 				}
@@ -136,6 +144,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 						Main.dust[dustIndex].noGravity = true;
 						Main.dust[dustIndex].velocity = Vector2.Normalize((speed * 8).RotatedBy(Main.rand.NextFloat(6.28f))) * 2.5f;
 					}
+
 					for (int j = 0; j < 5; j++)
 						Projectile.NewProjectile(source, position, speed, type, 0, 0, player.whoAmI, proj);
 				}

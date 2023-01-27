@@ -17,6 +17,9 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 {
 	public class GranitechSaberProjectile : BaseHeldProj
 	{
+		private int swingTime; //Total time for weapon to be used
+		private Vector2 initialVelocity = Vector2.Zero; //Starting velocity, used for determining swing arc direction
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Technobrand");
@@ -26,8 +29,6 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 
 		public override string Texture => "SpiritMod/Items/Sets/GranitechSet/GranitechSword/GranitechSaberItem";
 
-		private int swingTime; //Total time for weapon to be used
-		private Vector2 initialVelocity = Vector2.Zero; //Starting velocity, used for determining swing arc direction
 		public override void SetDefaults()
 		{
 			Projectile.Size = new Vector2(88, 92);
@@ -51,6 +52,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 		public override bool AutoAimCursor() => false; //Only aim when first used
 
 		public const float SwingRadians = MathHelper.Pi * 0.75f; //Total radians of the sword's arc
+
 		public override bool PreAI()
 		{
 			Timer++;
@@ -68,10 +70,10 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 			{
 				int ownerDir = Owner.direction;
 				Owner.ChangeDir(Projectile.velocity.X > 0 ? 1 : -1);
+
 				if (ownerDir != Owner.direction && Main.netMode != NetmodeID.SinglePlayer)
 					NetMessage.SendData(MessageID.SyncPlayer, -1, -1, null, Owner.whoAmI);
 			}
-			
 
 			//Get new velocity for swinging motion
 			float progress = Timer / swingTime;
@@ -84,6 +86,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 		public override void AbstractAI()
 		{
 			Projectile.rotation += MathHelper.PiOver4 * Owner.direction;
+
 			if(SwingDirection == Owner.direction)
 			{
 				Projectile.rotation += MathHelper.PiOver2 * Owner.direction;
@@ -150,6 +153,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 
 			Vector2 newPos = Vector2.Lerp(Projectile.Center, position, 0.5f);
 			Vector2 direction = Owner.DirectionTo(newPos);
+
 			if(_hitTimer == 0)
 			{
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyImpact") with { PitchVariance = 0.1f, Volume = 0.4f }, Projectile.Center);

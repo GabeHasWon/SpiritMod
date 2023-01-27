@@ -44,13 +44,14 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 
 			player.itemTime = 10; // Set item time to 10 frames while we are used
 			player.itemAnimation = 10; // Set item animation time to 10 frames while we are used
-			Projectile.position = player.Center;
 
 			if (player == Main.LocalPlayer)
 			{
 				player.ChangeDir(Main.MouseWorld.X > player.position.X ? 1 : -1);
 				direction = Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))) * 10f;
+				Projectile.position = player.Center;
 				Projectile.netUpdate = true;
+				player.itemRotation = direction.ToRotation();
 			}
 
 			Vector2 dustUnit = (direction * 2.5f).RotatedBy(Main.rand.NextFloat(-1, 1)) * 0.03f;
@@ -82,10 +83,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 						});
 						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyCharge1") with { PitchVariance = 0.1f, Volume = 0.275f }, player.Center);
 					}
-
 				}
+
 				direction = direction.RotatedBy(Main.rand.NextFloat(0 - ((float)Math.Sqrt(Projectile.localAI[0]) / 300f), ((float)Math.Sqrt(Projectile.localAI[0]) / 300f)));
-				player.itemRotation = direction.ToRotation();
 
 				if (player.direction != 1)
 					player.itemRotation -= 3.14f;
@@ -117,6 +117,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 							dust.scale = (float)Math.Sqrt(Projectile.localAI[0] / 100f);
 						}
 					}
+
 					Projectile.localAI[0] -= 10;
 					Vector2 toShoot = direction.RotatedBy(Main.rand.NextFloat(0 - ((float)Math.Sqrt(200 - maxCounter) / 40f), (float)Math.Sqrt(200 - maxCounter) / 40f));
 					player.itemRotation = (toShoot.ToRotation() + direction.ToRotation()) / 2;
@@ -127,8 +128,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 					toShoot *= (float)Math.Pow(maxCounter, 0.18);
 					player.GetModPlayer<MyPlayer>().Shake += 1;
 
-					if (Main.netMode != NetmodeID.MultiplayerClient)
-						Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center + (direction * 4), toShoot * new Vector2(Main.rand.NextFloat(.6f, 1.3f), Main.rand.NextFloat(0.6f, 1.2f)), ModContent.ProjectileType<HeavenfleetStar>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+					int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center + (direction * 4), toShoot * new Vector2(Main.rand.NextFloat(.6f, 1.3f), Main.rand.NextFloat(0.6f, 1.2f)), ModContent.ProjectileType<HeavenfleetStar>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+
+					if (Main.netMode != NetmodeID.SinglePlayer)
+						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
 				}
 				Projectile.active = false;
 			}
@@ -145,11 +148,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
 				{
 					float num107 = (float)Math.Cos((double)(Main.GlobalTimeWrappedHourly % 2.4f / 2.4f * 6.28318548f)) / 2f + (0.225f * k);
+
 					if (num107 < 0)
-					{
 						num107 = 0;
-					}
-					Color color = Color.White * 0.75f * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+
+					Color color = Color.White * 0.75f * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
 
 					Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/GunsMisc/HeavenFleet/HeavenFleet_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value; ;
 
@@ -164,12 +167,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 			Player player = Main.player[Projectile.owner];
 			direction = Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))) * 10f;
 			Vector2 Offset = player.Center + direction * 2.5f + player.velocity;
+
 			if (Projectile.localAI[0] == 100)
 			{
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
 				{
 					Color color = Color.White * 0.75f * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-
 					Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/GunsMisc/HeavenFleet/HeavenFleet_Lights", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
 					spriteBatch.Draw(tex, Offset - screenPos, null, color, player.itemRotation, tex.Size() / 2, 1f, default, default);

@@ -42,6 +42,7 @@ namespace SpiritMod.Items.DonatorItems
 		{
 			//Don't put this line into SetDefaults, or the item will break.
 			Item.shoot = ModContent.ProjectileType<DuskfeatherBlade>();
+
 			if (player.altFunctionUse == 2)
 			{
 				if (Item.useStyle == ItemUseStyleID.Swing)

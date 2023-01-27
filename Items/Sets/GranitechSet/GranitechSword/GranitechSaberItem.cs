@@ -46,7 +46,6 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 
 			Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, modplayer.SwingDirection);
 			modplayer.SwingDirection *= -1;
-
 			return false;
 		}
 

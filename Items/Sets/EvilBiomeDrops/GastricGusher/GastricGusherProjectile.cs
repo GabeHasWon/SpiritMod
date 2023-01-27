@@ -60,6 +60,9 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 			}
 			Projectile.Center += p.gfxOffY * Vector2.UnitY;
 
+			if (_charge > _endCharge && _endCharge != -1) //Kill projectile when done shooting - does nothing special but allowed for a cooldown timer before polish
+				Projectile.active = false;
+
 			if (p.whoAmI != Main.myPlayer)
 				return; //mp check (hopefully)
 
@@ -73,9 +76,6 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 
 			if (p.channel) //Use turn functionality
 				p.direction = Main.MouseWorld.X >= p.MountedCenter.X ? 1 : -1;
-
-			if (_charge > _endCharge && _endCharge != -1) //Kill projectile when done shooting - does nothing special but allowed for a cooldown timer before polish
-				Projectile.active = false;
 
 			_charge++; //Increase charge timer...
 			Projectile.timeLeft++; //...and dont die
