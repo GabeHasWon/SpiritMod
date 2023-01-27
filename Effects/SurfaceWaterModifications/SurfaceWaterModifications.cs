@@ -213,6 +213,21 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			}
 
 			OceanWaveManager.UpdateWaves(sides.Item1, sides.Item2, offset);
+
+			if (Main.LocalPlayer.wet) //Draw player ripples
+			{
+				Player player = Main.LocalPlayer;
+				player.GetSpiritPlayer().Submerged(6, out int actualDepth);
+				actualDepth++;
+
+				float g = player.velocity.Length() * 0.25f + 0.5f;
+				float mult = Math.Min(Math.Abs(player.velocity.Length()) * 0.25f, 0.25f);
+				Color c = new Color(0.5f, g, 0f, 1f) * mult;
+
+				Vector2 drawPos = Main.LocalPlayer.Center - offset;
+				Rectangle src = new Rectangle(1, 1, 40, 40);
+				Main.tileBatch.Draw(rippleTex, new Vector4(drawPos.X, drawPos.Y, player.width, player.height) * 0.25f, src, new VertexColors(c * (actualDepth / 6f)), src.Size() / 2f, SpriteEffects.None, 0f);
+			}
 		}
 
 		private static void CheckBeachHeightsSet()
@@ -336,17 +351,6 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(default, default, default, default, default, null, Main.GameViewMatrix.ZoomMatrix);
 		}
-
-		// <summary>Just a little test I did. Don't mind this. :)</summary>
-		//private static void DrawReflectedPlayer()
-		//{
-		//	Player plr = Main.LocalPlayer;
-		//	plr.direction = plr.direction == -1 ? 1 : -1;
-		//
-		//	Main.instance.DrawPlayer(plr, plr.position, MathHelper.Pi, new Vector2(plr.width / 2f, plr.height), 0);
-		//
-		//	plr.direction = plr.direction == -1 ? 1 : -1;
-		//}
 
 		private static void SetShader(bool back)
 		{
