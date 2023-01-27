@@ -67,9 +67,9 @@ namespace SpiritMod.NPCs.Tides.Tide
 				TideWave = 0;
 				TidePoints = 0;
 
-				if (Main.netMode != NetmodeID.Server)
+				if (Main.netMode != NetmodeID.Server && Main.musicVolume > 0)
 				{
-					//Main.musicFade[SpiritMod.Instance.GetSoundSlot(SoundType.Music, "Sounds/Music/DepthInvasion")] = 0; //NEEDSUPDATING
+					Main.musicFade[MusicLoader.GetMusicSlot(ModContent.GetInstance<SpiritMod>(), "Sounds/Music/DepthInvasion")] = 0;
 					float temp = Main.soundVolume; //temporarily store main.soundvolume, since sounds dont play at all if sound volume is at 0, regardless of actual volume of the sound
 					Main.soundVolume = (temp == 0) ? 1 : Main.soundVolume;
 					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DeathSounds/TideComplete"));
