@@ -1,9 +1,6 @@
-using System.IO;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace SpiritMod.Items.Accessory.RabbitFoot
 {
@@ -14,6 +11,7 @@ namespace SpiritMod.Items.Accessory.RabbitFoot
 			DisplayName.SetDefault("Rabbit's Foot");
 			Tooltip.SetDefault("You have 1% critical strike chance");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -23,10 +21,7 @@ namespace SpiritMod.Items.Accessory.RabbitFoot
 			Item.accessory = true;
 		}
 
-		public override void UpdateEquip(Player player)
-		{
-			player.GetCritChance(DamageClass.Generic) = 1;
-		}
+		public override void UpdateEquip(Player player) => player.GetCritChance(DamageClass.Generic) = 1;
 
 		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) 
 		{

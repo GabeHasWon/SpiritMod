@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SpiritMod.Items.Accessory.MoonlightSack;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -32,5 +31,6 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 				}
 			}
 		}
+
 	}
 }

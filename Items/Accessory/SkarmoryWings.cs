@@ -1,4 +1,3 @@
-
 using SpiritMod.Projectiles;
 using Terraria;
 using Terraria.ID;
@@ -30,17 +29,18 @@ namespace SpiritMod.Items.Accessory
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 137;
-			if (Main.rand.NextBool(4)) {
 
+			if (Main.rand.NextBool(4))
+			{
 				Dust.NewDust(player.position, player.width, player.height, DustID.SilverCoin);
 			}
-			timer++;
-			if (timer == 200) {
-				int proj2 = Projectile.NewProjectile(player.GetSource_Accessory(Item), player.Center.X, player.Center.Y, 0, 0, ModContent.ProjectileType<QuicksilverBolt>(), 40, 0, Main.myPlayer);
+			if (++timer >= 200)
+			{
+				Projectile.NewProjectile(player.GetSource_Accessory(Item), player.Center.X, player.Center.Y, 0, 0, ModContent.ProjectileType<QuicksilverBolt>(), 40, 0, Main.myPlayer);
 				timer = 0;
 			}
-
 		}
+
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 		{
 			ascentWhenFalling = 0.65f;

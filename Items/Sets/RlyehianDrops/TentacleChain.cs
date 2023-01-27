@@ -8,10 +8,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 {
 	public class TentacleChain : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Brine Barrage");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Brine Barrage");
 
 		public override void SetDefaults()
 		{
@@ -33,6 +30,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 			Item.DamageType = DamageClass.Melee;
 			Item.channel = true;
 		}
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			// How far out the inaccuracy of the shot chain can be.

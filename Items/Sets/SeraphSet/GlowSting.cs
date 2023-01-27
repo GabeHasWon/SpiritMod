@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
 using SpiritMod.Projectiles.Held;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,10 +14,9 @@ namespace SpiritMod.Items.Sets.SeraphSet
 		{
 			DisplayName.SetDefault("Seraph's Strike");
 			Tooltip.SetDefault("Right-click to release a flurry of strikes");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SeraphSet/GlowSting_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
-		int currentHit;
 		public override void SetDefaults()
 		{
 			Item.damage = 47;
@@ -35,38 +33,19 @@ namespace SpiritMod.Items.Sets.SeraphSet
 			Item.UseSound = SoundID.Item1;
 			Item.shoot = ModContent.ProjectileType<GlowStingSpear>();
 			Item.shootSpeed = 10f;
-			this.currentHit = 0;
 		}
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				ModContent.Request<Texture2D>("SpiritMod/Items/Sets/SeraphSet/GlowSting_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
-		}
+			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 180);
 		}
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+
+		public override bool AltFunctionUse(Player player) => true;
+
 		public override bool CanUseItem(Player player)
 		{
 			if (player.altFunctionUse == 2) {
@@ -93,6 +72,7 @@ namespace SpiritMod.Items.Sets.SeraphSet
 				return false;
 			return true;
 		}
+
 		public override void UseStyle(Player player, Rectangle heldItemFrame)
 		{
 			if (player.altFunctionUse != 2) {
@@ -114,7 +94,6 @@ namespace SpiritMod.Items.Sets.SeraphSet
 					velocity = origVect.RotatedBy(System.Math.PI / (Main.rand.Next(82, 1800) / 10));
 				else
 					velocity = origVect.RotatedBy(-System.Math.PI / (Main.rand.Next(82, 1800) / 10));
-				currentHit++;
 			}
 		}
 

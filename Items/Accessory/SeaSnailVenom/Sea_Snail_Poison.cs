@@ -11,6 +11,7 @@ namespace SpiritMod.Items.Accessory.SeaSnailVenom
 			DisplayName.SetDefault("Sea Snail Venom");
 			Tooltip.SetDefault("You leave a trail of mucus that envenoms enemies");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.width = 36;
@@ -20,9 +21,6 @@ namespace SpiritMod.Items.Accessory.SeaSnailVenom
 			Item.accessory = true;
 		}
 
-		public override void UpdateEquip(Player player)
-		{
-			player.GetSpiritPlayer().seaSnailVenom = true;
-		}
+		public override void UpdateEquip(Player player) => player.GetSpiritPlayer().seaSnailVenom = true;
 	}
 }

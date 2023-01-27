@@ -35,9 +35,11 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.knockBackResist = .20f;
 			NPC.aiStyle = 3;
 			AIType = NPCID.Mummy;
-			AIType = NPCID.Mummy;
 			AnimationType = NPCID.Mummy;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritSurfaceBiome>().Type };
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.SpiritMummyBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

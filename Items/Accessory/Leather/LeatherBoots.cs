@@ -1,4 +1,3 @@
-
 using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
@@ -14,13 +13,13 @@ namespace SpiritMod.Items.Accessory.Leather
 			DisplayName.SetDefault("Leather Striders");
 			Tooltip.SetDefault("Slightly increases movement speed and acceleration");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 20;
 			Item.value = Item.buyPrice(0, 0, 4, 0);
 			Item.rare = ItemRarityID.Blue;
-
 			Item.accessory = true;
 		}
 
@@ -30,6 +29,7 @@ namespace SpiritMod.Items.Accessory.Leather
 			player.maxRunSpeed += 0.05f;
 			player.accRunSpeed += 0.05f; 
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

@@ -15,6 +15,7 @@ namespace SpiritMod.Items.Accessory.Leather
 			DisplayName.SetDefault("Coiled Cleats");
 			Tooltip.SetDefault("Slightly increases movement speed and acceleration\nGain a huge speed boost below half health");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.width = 28;

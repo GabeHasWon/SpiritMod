@@ -15,12 +15,10 @@ namespace SpiritMod.Items.Sets.SeraphSet
 		{
 			DisplayName.SetDefault("Seraph's Storm");
 			Tooltip.SetDefault("Launches bolts of sporadic lunar energy");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SeraphSet/StarBow_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		}
 
-
-		//private Vector2 newVect;
 		public override void SetDefaults()
 		{
 			Item.damage = 28;
@@ -45,31 +43,11 @@ namespace SpiritMod.Items.Sets.SeraphSet
 		{
 			for(int i = 1; i <= 2; i++)
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<SleepingStar>(), damage, knockback, player.whoAmI, i);
-
 			return false;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Texture2D texture;
-			texture = TextureAssets.Item[Item.type].Value;
-			spriteBatch.Draw
-			(
-				ModContent.Request<Texture2D>("SpiritMod/Items/Sets/SeraphSet/StarBow_Glow").Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
-		}
+			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override void AddRecipes()
 		{

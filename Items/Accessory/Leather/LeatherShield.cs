@@ -1,4 +1,3 @@
-
 using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
@@ -25,10 +24,8 @@ namespace SpiritMod.Items.Accessory.Leather
 			Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.statLifeMax2 += 10;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.statLifeMax2 += 10;
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

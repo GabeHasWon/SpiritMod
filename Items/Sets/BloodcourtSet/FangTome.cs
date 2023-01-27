@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Magic;
 using Terraria;
 using Terraria.ID;
@@ -10,13 +9,14 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 {
 	public class FangTome : ModItem
 	{
+		static readonly int offsetLength = 23;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tome of the Thousand Fangs");
 			Tooltip.SetDefault("Summon a set of gnashing teeth\nInflicts 'Surging Anguish'");
 		}
 
-		static int offsetLength = 23;
 		public override void SetDefaults()
 		{
 			Item.damage = 26;

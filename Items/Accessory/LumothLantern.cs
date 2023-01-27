@@ -1,4 +1,3 @@
-
 using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
@@ -13,7 +12,6 @@ namespace SpiritMod.Items.Accessory
 		{
 			DisplayName.SetDefault("Luminous Lantern");
 			Tooltip.SetDefault("Provides bright light\nWorks in the vanity slot, but less effectively\n'Adventure into the deepest caverns with a trusty lightsource!'");
-
 		}
 
 		public override void SetDefaults()
@@ -24,16 +22,11 @@ namespace SpiritMod.Items.Accessory
 			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;
 		}
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			{
-				Lighting.AddLight(player.position, 1.25f, 1.2f, 1.2f);
-			}
-		}
-		public override void EquipFrameEffects(Player player, EquipType type)
-		{
-			Lighting.AddLight(player.position, .65f, .65f, .65f);
-		}
+
+		public override void UpdateAccessory(Player player, bool hideVisual) => Lighting.AddLight(player.position, 1.25f, 1.2f, 1.2f);
+
+		public override void EquipFrameEffects(Player player, EquipType type) => Lighting.AddLight(player.position, .65f, .65f, .65f);
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

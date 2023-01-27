@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Banners;
-using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -129,6 +128,7 @@ namespace SpiritMod.Tiles.Banners
 			(nameof(SpiritBatBanner), "SeerBat"),
 			(nameof(SpiritSkullBanner), "SpiritSkull"),
 			(nameof(WanderingSoulBanner), "WanderingSoul"),
+			(nameof(SpiritMummyBanner), "SpiritMummy")
 		};
 
 		public override void SetStaticDefaults()
@@ -142,7 +142,7 @@ namespace SpiritMod.Tiles.Banners
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16 };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
-			TileObjectData.newTile.StyleWrapLimit = 111;
+			TileObjectData.newTile.StyleWrapLimit = 115;
 			TileObjectData.addTile(Type);
 
 			DustType = -1;

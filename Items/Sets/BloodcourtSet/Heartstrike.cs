@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 			Tooltip.SetDefault("Right click after 5 shots to launched a flayed arrow\nEnemies hit by flayed arrows will explode upon death, or 5 seconds later");
 		}
 
-		int counter = 0;
+		private int counter = 0;
 		public override void SetDefaults()
 		{
 			Item.damage = 16;
@@ -37,10 +37,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 			Item.shootSpeed = 8f;
 		}
 
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+		public override bool AltFunctionUse(Player player) => true;
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
@@ -88,10 +85,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 			return true;
 		}
 
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-6, 0);
-		}
+		public override Vector2? HoldoutOffset() => new Vector2(-6, 0);
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

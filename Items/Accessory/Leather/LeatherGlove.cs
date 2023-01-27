@@ -13,6 +13,7 @@ namespace SpiritMod.Items.Accessory.Leather
 			DisplayName.SetDefault("Leather Fistwraps");
 			Tooltip.SetDefault("Increases melee speed by 6%");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.width = 26;
@@ -22,10 +23,7 @@ namespace SpiritMod.Items.Accessory.Leather
 			Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetAttackSpeed(DamageClass.Melee) += 0.06f; 
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetAttackSpeed(DamageClass.Melee) += 0.06f;
 
 		public override void AddRecipes()
 		{

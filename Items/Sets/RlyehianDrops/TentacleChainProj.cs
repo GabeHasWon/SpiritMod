@@ -1,11 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using SpiritMod.Projectiles.Flail;
 using Terraria;
 using Terraria.Enums;
 using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.RlyehianDrops
@@ -17,10 +15,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 		public float firingAnimation;
 		public float firingTime;
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Brine Barrage");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Brine Barrage");
 
 		public override void SetDefaults()
 		{
@@ -110,10 +105,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 		}
 
 		// Set to true so the projectile can break tiles like grass, pots, vines, etc.
-		public override bool? CanCutTiles()
-		{
-			return true;
-		}
+		public override bool? CanCutTiles() => true;
 
 		// Plot a line from the start of the Solar Eruption to the end of it, to change the tile-cutting collision logic. (Don't change this.)
 		public override void CutTiles()

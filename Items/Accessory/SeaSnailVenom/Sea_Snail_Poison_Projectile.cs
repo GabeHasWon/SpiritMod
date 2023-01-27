@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,6 +22,7 @@ namespace SpiritMod.Items.Accessory.SeaSnailVenom
 			Projectile.friendly = true;
 			Projectile.timeLeft = 180;
 		}
+
 		public override bool OnTileCollide(Vector2 oldVelocity) => false;
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
 		{

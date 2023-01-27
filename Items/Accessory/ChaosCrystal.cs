@@ -12,7 +12,6 @@ namespace SpiritMod.Items.Accessory
 			Tooltip.SetDefault("Getting hit has a chance to teleport you to somewhere nearby");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 18;
@@ -21,10 +20,7 @@ namespace SpiritMod.Items.Accessory
 			Item.rare = ItemRarityID.LightRed;
 			Item.accessory = true;
 		}
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().ChaosCrystal = true;
-		}
 
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().ChaosCrystal = true;
 	}
 }

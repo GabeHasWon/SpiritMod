@@ -1,4 +1,3 @@
-
 using SpiritMod.Items.Sets.BismiteSet;
 using Terraria;
 using Terraria.ID;
@@ -26,10 +25,8 @@ namespace SpiritMod.Items.Accessory.Leather
             Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().bismiteShield = true;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().bismiteShield = true;
+		
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

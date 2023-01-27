@@ -665,4 +665,9 @@ namespace SpiritMod.Items.Banners
 	{
 		protected override int Style => 113;
 	}
+
+	public class SpiritMummyBanner : BaseBannerItem
+	{
+		protected override int Style => 114;
+	}
 }

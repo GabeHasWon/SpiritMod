@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Projectiles.Summon.LaserGate;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,17 +30,19 @@ namespace SpiritMod.Items.Equipment
 			Item.shoot = ProjectileID.WoodenArrowFriendly;
 			Item.shootSpeed = 12f;
 		}
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			if (!player.HasBuff(BuffID.Featherfall)) {
+			if (!player.HasBuff(BuffID.Featherfall))
+			{
                 player.AddBuff(ModContent.BuffType<Buffs.DynastyFanBuff>(), 120);
 				player.velocity = -velocity;
-				int ing = Gore.NewGore(source, player.Center, player.velocity * 4, 825);
-				Main.gore[ing].timeLeft = Main.rand.Next(30, 90);
-				int ing1 = Gore.NewGore(source, player.Center, player.velocity * 4, 826);
-				Main.gore[ing1].timeLeft = Main.rand.Next(30, 90);
-				int ing2 = Gore.NewGore(source, player.Center, player.velocity * 4, 827);
-				Main.gore[ing2].timeLeft = Main.rand.Next(30, 90);
+
+				for (int i = 0; i < 3; i++)
+				{
+					Gore gore = Gore.NewGoreDirect(source, player.Center, player.velocity * 4, 825 + i);
+					gore.timeLeft = Main.rand.Next(30, 90);
+				}
 			}
 
 			return false;

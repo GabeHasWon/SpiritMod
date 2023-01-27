@@ -1,10 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 
 namespace SpiritMod.Items.Material
 {
@@ -15,7 +13,6 @@ namespace SpiritMod.Items.Material
 			DisplayName.SetDefault("Discharge Tubule");
 			Tooltip.SetDefault("'The colorful tubes are filled with energized gas'");
 		}
-
 
 		public override void SetDefaults()
 		{

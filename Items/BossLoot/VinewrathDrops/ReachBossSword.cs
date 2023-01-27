@@ -69,6 +69,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, 0, player.whoAmI);
 			return false;
 		}
+
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			if (crit)
