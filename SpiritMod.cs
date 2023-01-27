@@ -123,26 +123,17 @@ namespace SpiritMod
 		public UserInterface SellLock_INTERFACE;
 		public UserInterface SellWeapons_INTERFACE;
 
-		//public static SoundLooper nighttimeAmbience;
-		//public static SoundLooper underwaterAmbience;
-		//public static SoundLooper scarabWings;
-		//public static SoundLooper wavesAmbience;
-		//public static SoundLooper lightWind;
-		//public static SoundLooper desertWind;
-		//public static SoundLooper caveAmbience;
-		//public static SoundLooper spookyAmbience;
-
 		public static event Action<SpriteViewMatrix> OnModifyTransformMatrix;
 		//public static Dictionary<int, Texture2D> Portraits = new Dictionary<int, Texture2D>(); //Portraits dict - Gabe
 
-		//public static Texture2D MoonTexture;
 		public const string EMPTY_TEXTURE = "SpiritMod/Empty";
+
 		public static Texture2D EmptyTexture
 		{
 			get;
 			private set;
 		}
-		//public static int customEvent;
+
 		public static int GlyphCurrencyID;
 
 		internal static float deltaTime;
@@ -1038,18 +1029,6 @@ namespace SpiritMod
 
 		public override void PostSetupContent()
 		{
-			if (!Main.dedServ)
-			{
-				//nighttimeAmbience = new SoundLooper(this, "Sounds/NighttimeAmbience"); //NEEDSUPDATE
-				//underwaterAmbience = new SoundLooper(this, "Sounds/UnderwaterAmbience");
-				//wavesAmbience = new SoundLooper(this, "Sounds/WavesAmbience");
-				//lightWind = new SoundLooper(this, "Sounds/LightWind");
-				//desertWind = new SoundLooper(this, "Sounds/DesertWind");
-				//caveAmbience = new SoundLooper(this, "Sounds/CaveAmbience");
-				//spookyAmbience = new SoundLooper(this, "Sounds/SpookyAmbience");
-				//scarabWings = new SoundLooper(this, "Sounds/BossSFX/Scarab_Wings");
-			}
-
 			GlyphBase.InitializeGlyphLookup();
 
 			BossChecklistDataHandler.RegisterSpiritData(this);
