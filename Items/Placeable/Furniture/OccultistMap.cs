@@ -11,6 +11,7 @@ using System.Collections.Generic;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class OccultistMap : ModItem
 	{
 		public override void SetStaticDefaults()

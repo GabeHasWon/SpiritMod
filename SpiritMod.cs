@@ -409,14 +409,12 @@ namespace SpiritMod
 			return (int)item.GetGlobalItem<Items.GItem>().Glyph;
 		}
 
-		private bool _finishedLoading = false;
-
 		public override void Load()
 		{
 			//Always keep this call in the first line of Load!
 			LoadReferences();
 
-			QuestBookHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestBookToggle", Microsoft.Xna.Framework.Input.Keys.C);
+			QuestBookHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestBookToggle", Microsoft.Xna.Framework.Input.Keys.Q);
 			QuestHUDHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestHUDToggle", Microsoft.Xna.Framework.Input.Keys.V);
 
 			QuestManager.Load();
@@ -738,8 +736,6 @@ namespace SpiritMod
 
 			// using a mildly specific name to avoid mod clashes
 			ChatManager.Register<UI.Chat.QuestTagHandler>(new string[] { "sq", "spiritQuest" });
-
-			_finishedLoading = true;
 		}
 
 		private void LoadMusicBox(string name, string path) => MusicLoader.AddMusicBox(this, MusicLoader.GetMusicSlot(this, path), Find<ModItem>(name).Type, Find<ModTile>(name).Type);

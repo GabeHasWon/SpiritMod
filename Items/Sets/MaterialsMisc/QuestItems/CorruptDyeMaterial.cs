@@ -8,6 +8,7 @@ using SpiritMod.Mechanics.QuestSystem.Quests;
 
 namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 {
+	[Sacrifice(1)]
 	public class CorruptDyeMaterial : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Violet Crystal");

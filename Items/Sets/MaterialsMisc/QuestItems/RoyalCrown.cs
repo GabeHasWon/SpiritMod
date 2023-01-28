@@ -10,6 +10,7 @@ using SpiritMod.Mechanics.QuestSystem.Quests;
 
 namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 {
+	[Sacrifice(1)]
 	public class RoyalCrown : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Royal Crown");

@@ -6,6 +6,7 @@ using SpiritMod.Mechanics.QuestSystem;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
+	[Sacrifice(1)]
 	public class HornetfishQuest : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Hornetfish");

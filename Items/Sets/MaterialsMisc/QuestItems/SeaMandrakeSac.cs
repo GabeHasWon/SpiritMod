@@ -8,6 +8,7 @@ using SpiritMod.Mechanics.QuestSystem.Quests;
 
 namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 {
+	[Sacrifice(1)]
 	public class SeaMandrakeSac : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Luminous Sac");
@@ -15,7 +16,7 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
-			Item.rare = -11;
+			Item.rare = ItemRarityID.Quest;
 			Item.maxStack = 99;
 		}
 

@@ -6,7 +6,8 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Books
 {
-    class Book_LuminousArt : ModItem
+	[Sacrifice(1)]
+	class Book_LuminousArt : ModItem
     {
         public override void SetStaticDefaults()
         {

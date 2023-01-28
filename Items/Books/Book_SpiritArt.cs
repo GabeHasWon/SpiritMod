@@ -6,7 +6,8 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Books
 {
-    class Book_SpiritArt : ModItem
+	[Sacrifice(1)]
+	class Book_SpiritArt : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -17,7 +18,6 @@ namespace SpiritMod.Items.Books
         {
             Item.noMelee = true;
             Item.useTurn = true;
-            //item.channel = true; //Channel so that you can held the weapon [Important]
             Item.rare = ItemRarityID.Green;
             Item.width = 54;
             Item.height = 50;

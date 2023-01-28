@@ -6,7 +6,8 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Books
 {
-    class Book_Soulbloom : ModItem
+	[Sacrifice(1)]
+	class Book_Soulbloom : ModItem
     {
         public override void SetStaticDefaults()
         {

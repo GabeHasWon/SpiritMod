@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Books
 {
+	[Sacrifice(1)]
 	public abstract class Book : ModItem
 	{
 		public abstract string BookText { get; }
@@ -25,7 +26,7 @@ namespace SpiritMod.Items.Books
 		}
 
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
-		public override bool CanUseItem(Player player) => !(ModContent.GetInstance<SpiritMod>().BookUserInterface.CurrentState is UI.UIBookState currentBookState) || currentBookState.title != Item.Name;
+		public override bool CanUseItem(Player player) => ModContent.GetInstance<SpiritMod>().BookUserInterface.CurrentState is not UI.UIBookState currentBookState || currentBookState.title != Item.Name;
 
 		public override bool? UseItem(Player player)
 		{

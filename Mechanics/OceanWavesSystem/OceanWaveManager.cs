@@ -76,7 +76,8 @@ namespace SpiritMod.Mechanics.OceanWavesSystem
 			Color col = GetRippleColor(wave);
 			Vector2 drawPos = wave.position - offset;
 			Rectangle src = new Rectangle(1, 1, 62, 62);
-			Main.tileBatch.Draw(SurfaceWaterModifications.rippleTex, new Vector4(drawPos.X, drawPos.Y, wave.Size.X, wave.Size.Y) * 0.25f, src, new VertexColors(col), src.Size() / 2f, SpriteEffects.None, 0f);
+			
+			Main.tileBatch.Draw(SurfaceWaterModifications.rippleTex, new Vector4(drawPos, wave.Size.X, wave.Size.Y) * 0.25f, src, new VertexColors(col), src.Size() / 2f, SpriteEffects.None, 0f);
 		}
 
 		public static Color GetRippleColor(Wave wave)

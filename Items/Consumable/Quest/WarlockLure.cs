@@ -9,6 +9,7 @@ using SpiritMod.Mechanics.QuestSystem.Quests;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
+	[Sacrifice(1)]
 	public class WarlockLureCorruption : ModItem
 	{
 		public override void SetStaticDefaults()

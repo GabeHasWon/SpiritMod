@@ -184,6 +184,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 		{
 			bool validPlayer = false;
 			(bool, bool) sides = (false, false);
+
 			for (int i = 0; i < Main.maxPlayers; ++i)
 			{
 				Player p = Main.player[i];
@@ -214,19 +215,24 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 			OceanWaveManager.UpdateWaves(sides.Item1, sides.Item2, offset);
 
-			if (Main.LocalPlayer.wet) //Draw player ripples
+			if (Main.LocalPlayer.wet && Main.GameUpdateCount % 12 == 0) //Draw player ripples
 			{
 				Player player = Main.LocalPlayer;
-				player.GetSpiritPlayer().Submerged(6, out int actualDepth);
-				actualDepth++;
+				float speed = player.velocity.Length();
 
-				float g = player.velocity.Length() * 0.25f + 0.5f;
-				float mult = Math.Min(Math.Abs(player.velocity.Length()) * 0.25f, 0.25f);
-				Color c = new Color(0.5f, g, 0f, 1f) * mult;
+				if (speed > 0.2f)
+				{
+					player.GetSpiritPlayer().Submerged(6, out int actualDepth);
+					actualDepth++;
 
-				Vector2 drawPos = Main.LocalPlayer.Center - offset;
-				Rectangle src = new Rectangle(1, 1, 40, 40);
-				Main.tileBatch.Draw(rippleTex, new Vector4(drawPos.X, drawPos.Y, player.width, player.height) * 0.25f, src, new VertexColors(c * (actualDepth / 6f)), src.Size() / 2f, SpriteEffects.None, 0f);
+					float g = speed * 0.25f + 0.5f;
+					float mult = Math.Min(Math.Abs(speed) * 0.65f, 0.25f);
+					Color c = new Color(0.5f, g, 0f, 1f) * mult;
+
+					Vector2 drawPos = Main.LocalPlayer.Center - offset;
+					Rectangle src = new Rectangle(1, 1, 40, 40);
+					Main.tileBatch.Draw(rippleTex, new Vector4(drawPos.X, drawPos.Y, player.width, player.height) * 0.25f, src, new VertexColors(c * (actualDepth / 6f)), src.Size() / 2f, SpriteEffects.None, 0f);
+				}
 			}
 		}
 
