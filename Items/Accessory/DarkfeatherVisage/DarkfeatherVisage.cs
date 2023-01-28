@@ -26,7 +26,8 @@ namespace SpiritMod.Items.Accessory.DarkfeatherVisage
 		public override bool IsArmorSet(Item head, Item body, Item legs) => (body.type >= ItemID.AmethystRobe && body.type <= ItemID.DiamondRobe || body.type == ItemID.GypsyRobe || body.type == ItemID.FlinxFurCoat);
 		public override void UpdateEquip(Player player)
         {
-            player.GetDamage(DamageClass.MagicSummonHybrid) += .07f;
+            player.GetDamage(DamageClass.Magic) += .07f;
+			player.GetDamage(DamageClass.Summon) += .07f;
         }
 		public override void UpdateArmorSet(Player player)
 		{

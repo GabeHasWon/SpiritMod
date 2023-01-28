@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 		public override void SetDefaults()
         {
             Item.channel = true;
-            Item.damage = 11;
+            Item.damage = 12;
             Item.width = 60;
             Item.height = 60;
             Item.useTime = 320;
@@ -37,6 +37,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Wood, 30);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 5)
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }

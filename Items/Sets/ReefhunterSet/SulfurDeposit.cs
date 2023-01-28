@@ -34,20 +34,19 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 		{
 			var recipe = Recipe.Create(ItemID.Grenade, 5);
 			recipe.AddIngredient(this, 5);
-			recipe.AddRecipeGroup("SpiritMod:CopperBars", 3);
+			recipe.AddRecipeGroup("SpiritMod:CopperBars", 1);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 
 			recipe = Recipe.Create(ItemID.Bomb, 3);
 			recipe.AddIngredient(this, 3);
-			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 3);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 1);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 
 			recipe = Recipe.Create(ItemID.Dynamite, 3);
-			recipe.AddIngredient(this, 5);
-			recipe.AddIngredient(ItemID.Rope, 1);
-			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 3);
+			recipe.AddIngredient(this, 6);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
