@@ -23,6 +23,6 @@ namespace SpiritMod.Projectiles.Clubs
 				Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), DustType<Dusts.EarthDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 10f);
 			}
 		}
-		public WoodClubProj() : base(50, 10, 20, -1, 58, 5, 8, 1.7f, 12f){}
+		public WoodClubProj() : base(50, 12, 33, -1, 58, 5, 8, 1.7f, 12f){}
 	}
 }
