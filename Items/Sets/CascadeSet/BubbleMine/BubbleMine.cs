@@ -1,11 +1,7 @@
 using Terraria.Audio;
 using Terraria.ID;
-using SpiritMod.Items.Material;
 using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
-using System;
-using SpiritMod.Items.Sets.CascadeSet;
 
 namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 {
@@ -16,7 +12,6 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 			DisplayName.SetDefault("Bubble Mine");
 			Tooltip.SetDefault("Right-click to make bubble mines detonate");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -111,10 +106,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 	public class BubbleMineBubble : ModProjectile
 	{
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Bubble");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble");
 
 		public override void SetDefaults()
 		{

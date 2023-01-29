@@ -8,10 +8,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
 {
 	public class Basking_Shark_Projectile : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Basking Shark");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Basking Shark");
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 16;
@@ -24,10 +22,11 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
 			Projectile.tileCollide = true;
 			Projectile.scale = 1f;
 		}
+
 		public override void AI()
 		{
 			Projectile.velocity.Y += 0.2f;
-			Player player = Main.player[Projectile.owner];
+
 			if ((double)Projectile.ai[0] == 0.0)
 			{
 				Projectile.ai[0] = 1f;
@@ -63,6 +62,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
 				Main.dust[index2].scale *= 1f;
 			}
 		}
+
 		public override void Kill(int timeLeft)
 		{
 		}

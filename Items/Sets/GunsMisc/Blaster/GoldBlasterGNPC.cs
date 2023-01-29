@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if (numMarks <= 0)
+			if (numMarks <= 0 && !Main.dedServ)
 				return;
 
 			Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/GoldCasing").Value;
@@ -27,8 +27,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Rectangle rect = new Rectangle(0, texture.Height / frames * (int)frame, texture.Width, (texture.Height / frames) - 2);
 			Vector2 position = npc.Hitbox.TopLeft() - new Vector2(20) - screenPos;
 
-			Rectangle hoverBox = npc.Hitbox;
-			hoverBox.Inflate(20, 20);
+			Vector2 zoom = Main.GameViewMatrix.Zoom;
+
+			Rectangle hoverBox = npc.getRect();
+			hoverBox.Inflate((int)(20 + zoom.X), (int)(20 + zoom.Y));
 			bool hovering = hoverBox.Contains(Main.MouseWorld.ToPoint());
 
 			spriteBatch.Draw(texture, position, rect, new Color(180, 180, 180) * (hovering ? 1f : 0.2f), 0f, rect.Size() / 2, 1f, SpriteEffects.None, 0f);

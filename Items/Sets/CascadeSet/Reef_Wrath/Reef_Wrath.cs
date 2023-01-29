@@ -9,6 +9,12 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 {
 	public class Reef_Wrath : ModItem
 	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Reef Wrath");
+			Tooltip.SetDefault("Conjures harmful coral spires along the ground");
+		}
+
 		public override void SetDefaults()
 		{
 			Item.damage = 18;
@@ -29,32 +35,6 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 			Item.value = Item.sellPrice(silver: 30);
 			Item.useTurn = false;
 			Item.mana = 8;
-		}
-
-		public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<DeepCascadeShard>(), 11);
-			recipe.AddIngredient(ModContent.ItemType<Kelp>(), 6);
-			recipe.AddTile(TileID.Anvils);
-			recipe.Register();
-		}
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Reef Wrath");
-			Tooltip.SetDefault("Conjures harmful coral spires along the ground");
-		}
-
-		private Vector2 CollisionPoint(Player player) {
-			float[] scanarray = new float[3];
-			float dist = player.Distance(Main.MouseWorld);
-			Collision.LaserScan(player.Center, player.DirectionTo(Main.MouseWorld), 0, dist, scanarray);
-			dist = 0;
-			foreach(float fl in scanarray) {
-				dist += fl / scanarray.Length;
-			}
-			return player.MountedCenter + player.DirectionTo(Main.MouseWorld) * dist;
 		}
 		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
@@ -95,6 +75,30 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 			}
 			
 			return false;
+		}
+
+		private static Vector2 CollisionPoint(Player player)
+		{
+			float[] scanarray = new float[3];
+			float dist = player.Distance(Main.MouseWorld);
+			Collision.LaserScan(player.Center, player.DirectionTo(Main.MouseWorld), 0, dist, scanarray);
+			dist = 0;
+
+			foreach (float fl in scanarray)
+			{
+				dist += fl / scanarray.Length;
+			}
+
+			return player.MountedCenter + player.DirectionTo(Main.MouseWorld) * dist;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<DeepCascadeShard>(), 11);
+			recipe.AddIngredient(ModContent.ItemType<Kelp>(), 6);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 }

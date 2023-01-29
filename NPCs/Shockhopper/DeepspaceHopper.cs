@@ -87,6 +87,8 @@ namespace SpiritMod.NPCs.Shockhopper
 			});
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = 110;
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int k = 0; k < 12; k++) {

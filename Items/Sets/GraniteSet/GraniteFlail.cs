@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 		{
 			DisplayName.SetDefault("Unstable Star");
 			Tooltip.SetDefault("Killing enemies with this weapon causes them to explode into damaging energy wisps");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteFlail_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
 		}
 

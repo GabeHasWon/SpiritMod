@@ -43,6 +43,7 @@ using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Buffs.DoT;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.NPCs.AsteroidDebris;
+using SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles;
 
 namespace SpiritMod
 {
@@ -333,7 +334,7 @@ namespace SpiritMod
 		public int cometTimer;
 		public bool concentrated; // For the leather armor set.
 		public int concentratedCooldown = 360;
-		public int stompCooldown = 600;
+		public int stompCooldown = 30;
 		public bool basiliskMount;
 		public bool drakomireMount;
 		public int drakomireFlameTimer;
@@ -1946,57 +1947,8 @@ namespace SpiritMod
 			if ((Player.velocity.Y == 0f || Player.sliding || (Player.autoJump && Player.justJumped)) && marbleJustJumped)
 				marbleJustJumped = true;
 
-			if (graniteSet)
-			{
-				if (Player.velocity.Y == 0f && Player.HasBuff(ModContent.BuffType<GraniteBonus>()) && !Player.mount.Active)
-				{
-					int fallDistance = (int)((Player.position.Y / 16f) - Player.fallStart) / 2;
-					if (fallDistance >= 8)
-						fallDistance = 8;
-
-					if (Player.gravDir == 1f && fallDistance > 1 + Player.extraFall)
-					{
-						Player.ClearBuff(ModContent.BuffType<GraniteBonus>());
-						SoundEngine.PlaySound(SoundID.Item109);
-
-						for (int i = 0; i < 8 * fallDistance; i++)
-						{
-							int num = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Electric, 0f, -2f, 0, default, 2f);
-							Main.dust[num].noGravity = true;
-							Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-							Main.dust[num].position.Y += Main.rand.Next(-50, 51) * .05f - 1.5f;
-							Main.dust[num].scale *= .25f;
-							if (Main.dust[num].position != Player.Center)
-								Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
-						}
-
-						int proj = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ModContent.ProjectileType<GraniteSpike1>(), fallDistance * 10, 1, Player.whoAmI);
-						Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ModContent.ProjectileType<StompExplosion>(), fallDistance * 10, 9, Player.whoAmI);
-						Main.projectile[proj].timeLeft = 0;
-					}
-					stompCooldown = 3 * 60;
-				}
-
+			if (graniteSet && stompCooldown > 0)
 				stompCooldown--;
-
-				if (stompCooldown == 0)
-				{
-					var textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 30, Player.width, Player.height);
-					CombatText.NewText(textPos, new Color(82, 226, 255, 100), "Energy Stomp Ready!");
-					SoundEngine.PlaySound(SoundID.MaxMana);
-
-					for (int i = 0; i < 2; i++)
-					{
-						int num = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Electric, 0f, -2f, 0, default, 2f);
-						Main.dust[num].noGravity = true;
-						Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-						Main.dust[num].position.Y += Main.rand.Next(-50, 51) * .05f - 1.5f;
-						Main.dust[num].scale *= .25f;
-						if (Main.dust[num].position != Player.Center)
-							Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
-					}
-				}
-			}
 
 			if (!Main.dayTime && MyWorld.dayTimeSwitched)
 			{
@@ -2209,40 +2161,23 @@ namespace SpiritMod
 				Player.manaFlower = !StarjinxSet;
 		}
 
-		public override void PostUpdateBuffs()
-		{
-			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeMaxMultiplier);
-		}
+		public override void PostUpdateBuffs() => Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeMaxMultiplier);
 
 		public override void PostUpdateEquips()
 		{
 			Player.GetModPlayer<DashPlayer>().DashMovement();
 
 			if (Player.ownedProjectileCounts[ModContent.ProjectileType<MiningHelmet>()] < 1 && Player.head == 11)
-				Projectile.NewProjectile(Player.GetSource_NaturalSpawn(), Player.Center.X, Player.Center.Y, 0f, 0f, ModContent.ProjectileType<MiningHelmet>(), 0, 0, Player.whoAmI);
+				Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center.X, Player.Center.Y, 0f, 0f, ModContent.ProjectileType<MiningHelmet>(), 0, 0, Player.whoAmI);
 
 			if (graniteSet)
 			{
-				if (Player.velocity.Y > 0 && Player.HasBuff(ModContent.BuffType<GraniteBonus>()))
+				if (Player.ownedProjectileCounts[ModContent.ProjectileType<EnergyStomp>()] > 0)
 				{
+					Player.noKnockback = true;
 					Player.noFallDmg = true;
-					Player.velocity.Y = 20f;
-					Player.maxFallSpeed = 30f;
-
-					for (int j = 0; j < 12; j++)
-					{
-						int dist = (int)(Player.position.Y / 16f) - Player.fallStart;
-						if (dist >= 16)
-							dist = 16;
-						Vector2 vector2 = Vector2.UnitX;
-						vector2 += -Vector2.UnitY.RotatedBy(j * MathHelper.Pi / 6f, default) * new Vector2(1f * dist, 16f);
-						int num8 = Dust.NewDust(Player.Center, 0, 0, DustID.Electric, 0f, 0f, 160, default, 1f);
-						Main.dust[num8].scale = .68f;
-						Main.dust[num8].noGravity = true;
-						Main.dust[num8].position = Player.Center + vector2;
-						Main.dust[num8].velocity = Player.velocity * 0.1f;
-						Main.dust[num8].velocity = Vector2.Normalize(Player.Center - Player.velocity * 3f - Main.dust[num8].position) * 1.25f;
-					}
+					Player.velocity.Y = 40f * Player.gravDir;
+					Player.maxFallSpeed = 50f;
 
 					Player.armorEffectDrawShadow = true;
 				}
@@ -3762,7 +3697,7 @@ namespace SpiritMod
 				}
 
 				if (graniteSet && !Player.mount.Active && Player.velocity.Y != 0 && stompCooldown <= 0)
-					Player.AddBuff(ModContent.BuffType<GraniteBonus>(), 300);
+					Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), Player.Center, Vector2.Zero, ModContent.ProjectileType<EnergyStomp>(), 10, 3, Player.whoAmI);
 
 				if (fierySet && fierySetTimer <= 0)
 				{

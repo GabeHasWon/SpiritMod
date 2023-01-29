@@ -7,11 +7,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranHamaxe : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Floran Hamaxe");
-		}
-
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Hamaxe");
 
 		public override void SetDefaults()
 		{
@@ -19,21 +15,16 @@ namespace SpiritMod.Items.Sets.FloranSet
 			Item.height = 40;
 			Item.value = Item.buyPrice(0, 0, 16, 0);
 			Item.rare = ItemRarityID.Blue;
-
 			Item.axe = 12;
 			Item.hammer = 50;
-
 			Item.damage = 11;
 			Item.knockBack = 5;
-
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 24;
 			Item.useAnimation = 24;
-
 			Item.DamageType = DamageClass.Melee;
 			Item.useTurn = true;
 			Item.autoReuse = true;
-
 			Item.UseSound = SoundID.Item1;
 		}
 

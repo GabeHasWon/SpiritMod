@@ -19,16 +19,13 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			Item.width = 22;
 			Item.height = 36;
 			Item.value = 5000;
-
 			Item.maxStack = 999;
 			Item.rare = ItemRarityID.Green;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<GraniteOre>();
 		}
 

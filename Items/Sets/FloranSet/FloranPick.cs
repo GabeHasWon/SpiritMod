@@ -7,11 +7,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranPick : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Floran Pickaxe");
-		}
-
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Pickaxe");
 
 		public override void SetDefaults()
 		{
@@ -19,22 +15,18 @@ namespace SpiritMod.Items.Sets.FloranSet
 			Item.height = 42;
 			Item.value = 1000;
 			Item.rare = ItemRarityID.Blue;
-
 			Item.pick = 55;
-
 			Item.damage = 12;
 			Item.knockBack = 3;
-
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 15;
 			Item.useAnimation = 25;
-
 			Item.DamageType = DamageClass.Melee;
 			Item.useTurn = true;
 			Item.autoReuse = true;
-
 			Item.UseSound = SoundID.Item1;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe modRecipe = CreateRecipe();
