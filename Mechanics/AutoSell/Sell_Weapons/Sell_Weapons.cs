@@ -16,7 +16,7 @@ namespace SpiritMod.Mechanics.AutoSell.Sell_Weapons
 			var buttonPlayTexture = SpiritModAutoSellTextures.sellWeaponsButton;
 			UIImageButton playButton = new UIImageButton(buttonPlayTexture);
 			playButton.Left.Set(502, 0f);
-			playButton.Top.Set(394, 0f);
+			playButton.Top.Set(362, 0f);
 			playButton.Width.Set(32, 0f);
 			playButton.Height.Set(32, 0f);
 			playButton.OnClick += new MouseEvent(PlayButtonClicked);

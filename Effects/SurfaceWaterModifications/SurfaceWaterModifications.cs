@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using ReLogic.Content;
 using SpiritMod.Effects.Waters;
 using SpiritMod.Mechanics.OceanWavesSystem;
 using SpiritMod.Utilities;
@@ -30,20 +31,20 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 		internal static int leftOceanHeight = 0;
 		internal static int rightOceanHeight = 0;
 
-		private static FieldInfo animationFrameField;
-
 		public static ILog Logger => ModContent.GetInstance<SpiritMod>().Logger;
 
 		public static void Load()
 		{
-			animationFrameField = typeof(LiquidRenderer).GetField("_animationFrame", BindingFlags.Instance | BindingFlags.NonPublic);
-
 			if (ModContent.GetInstance<SpiritClientConfig>().SurfaceWaterTransparency)
 			{
 				IL.Terraria.Main.DoDraw += AddWaterShader; //Transparency shader
 				IL.Terraria.GameContent.Liquid.LiquidRenderer.InternalDraw += LiquidRenderer_InternalDraw;
 				IL.Terraria.Main.DrawBlack += Main_DrawBlack;
-				On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += (_, _, _, _, _, _, _) => { };
+				//On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += (_, _, _, _, _, _, _) => 
+				//{ 
+				//};
+
+				On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += TileDrawing_DrawPartialLiquid;
 			}
 
 			IL.Terraria.GameContent.Shaders.WaterShaderData.QueueRipple_Vector2_Color_Vector2_RippleShape_float += IncreaseRippleSize; //Makes ripple bigger
@@ -54,6 +55,11 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				transparencyEffect = ModContent.Request<Effect>("SpiritMod/Effects/SurfaceWaterModifications/SurfaceWaterFX", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 				rippleTex = ModContent.Request<Texture2D>("Terraria/Images/Misc/Ripples", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			}
+		}
+
+		private static void TileDrawing_DrawPartialLiquid(On.Terraria.GameContent.Drawing.TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, Tile tileCache, Vector2 position, Rectangle liquidSize, int liquidType, Color aColor)
+		{
+
 		}
 
 		private static void Main_DrawBlack(ILContext il)
@@ -135,22 +141,47 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 			bool openTile = !tile.HasTile || !Main.tileSolid[tile.TileType];
 			float factor = tile.LiquidAmount / 255f;
-			Texture2D texture = Main.waterStyle < WaterStyleID.Count ? TextureAssets.LiquidSlope[Main.waterStyle].Value : TextureAssets.LiquidSlope[0].Value;
+			bool vanillaWaterStyle = Main.waterStyle < WaterStyleID.Count;
 
-			if (openTile && right.HasTile && right.LeftSlope) 
+			Asset<Texture2D> texture = TextureAssets.LiquidSlope[0];
+
+			if (vanillaWaterStyle)
+				texture = TextureAssets.LiquidSlope[Main.waterStyle];
+
+			if (openTile)
 			{
-				var pos = new Vector2((i + 1) << 4, (j + (1 - factor)) * 16f) + drawOffset;
-				var source = new Rectangle((int)(right.Slope - 1) * 18, (int)(16 * (1 - factor)), 16, (int)(16 * factor));
+				static void DrawSlopedLiquid(Tile tile, int offset, bool left, float factor, Vector2 drawOffset, VertexColors colours, Asset<Texture2D> texture, int i, int j)
+				{
+					if (tile.HasTile && ((left && tile.LeftSlope) || tile.RightSlope))
+					{
+						var pos = new Vector2((i + offset) << 4, (j + (1 - factor)) * 16f) + drawOffset;
+						var source = new Rectangle((int)(tile.Slope - 1) * 18, (int)(16 * (1 - factor)), 16, (int)(16 * factor));
 
-				Main.tileBatch.Draw(texture, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
-			}
+						Main.tileBatch.Draw(texture.Value, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
+					}
+				}
 
-			if (openTile && left.HasTile && left.RightSlope)
-			{
-				var pos = new Vector2((i - 1) << 4, (j + (1 - factor)) * 16f) + drawOffset;
-				var source = new Rectangle((int)(left.Slope - 1) * 18, (int)(16 * (1 - factor)), 16, (int)(16 * factor));
+				static void DrawHalfBrickLiquid(Tile tile, int offset, Vector2 drawOffset, VertexColors colours, int i, int j)
+				{
+					if (tile.HasTile && tile.IsHalfBlock)
+					{
+						var pos = new Vector2((i + offset) << 4, j * 16f) + drawOffset;
+						var source = new Rectangle(16, 0, 16, 16);
+						var tex = LiquidRenderer.Instance._liquidTextures[Main.waterStyle].Value;
 
-				Main.tileBatch.Draw(texture, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
+						if (Main.tile[i + offset, j - 1].LiquidAmount > 0)
+							return;
+
+						Main.tileBatch.Draw(tex, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
+					}
+				}
+
+				
+				DrawSlopedLiquid(right, 1, true, factor, drawOffset, colours, texture, i, j);
+				DrawSlopedLiquid(left, -1, false, factor, drawOffset, colours, texture, i, j);
+
+				DrawHalfBrickLiquid(right, 1, drawOffset, colours, i, j);
+				DrawHalfBrickLiquid(left, -1, drawOffset, colours, i, j);
 			}
 		}
 

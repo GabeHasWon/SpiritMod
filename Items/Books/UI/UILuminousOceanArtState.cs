@@ -23,10 +23,10 @@ namespace SpiritMod.Items.Books.UI
 		internal static float offsetX = -1;
 		internal static float offsetY = -1;
 
-		public UILuminousOceanArtState() {
-		}
+		public UILuminousOceanArtState() { }
 
-		public override void OnInitialize() {
+		public override void OnInitialize() 
+		{
 			mainPanel = new UIDragableElement();
 			//mainPanel.Left.Set(300f, 0f);
 			//mainPanel.Top.Set(300f, 0f);

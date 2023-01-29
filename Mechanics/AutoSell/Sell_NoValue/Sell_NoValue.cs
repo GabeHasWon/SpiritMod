@@ -16,7 +16,7 @@ namespace SpiritMod.Mechanics.AutoSell.Sell_NoValue
 			var buttonPlayTexture = SpiritModAutoSellTextures.sellNoValueButton;
 			UIImageButton playButton = new UIImageButton(buttonPlayTexture);
 			playButton.Left.Set(502, 0f);
-			playButton.Top.Set(432, 0f);
+			playButton.Top.Set(400, 0f);
 			playButton.Width.Set(32, 0f);
 			playButton.Height.Set(32, 0f);
 			playButton.OnClick += new MouseEvent(PlayButtonClicked);
