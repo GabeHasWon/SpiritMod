@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs;
 using SpiritMod.Items.Sets.BismiteSet;
 using SpiritMod.Items.Consumable.Food;
 using Terraria;
@@ -12,11 +11,14 @@ using System.IO;
 using SpiritMod.Buffs.DoT;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using Terraria.DataStructures;
 
 namespace SpiritMod.NPCs.DiseasedSlime
 {
 	public class DiseasedSlime : ModNPC
 	{
+		private int pickedType;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Noxious Slime");
@@ -52,17 +54,12 @@ namespace SpiritMod.NPCs.DiseasedSlime
 			});
 		}
 
-		public bool hasPicked = false;
-		int pickedType;
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = 130;
 
-		public override void AI()
+		public override void OnSpawn(IEntitySource source)
 		{
-			if (!hasPicked)
-			{
-				NPC.scale = Main.rand.NextFloat(.9f, 1f);
-				pickedType = Main.rand.Next(0, 5);
-				hasPicked = true;
-			}
+			NPC.scale = Main.rand.NextFloat(.9f, 1f);
+			pickedType = Main.rand.Next(0, 5);
 		}
 
 		public override void FindFrame(int frameHeight)
@@ -71,17 +68,9 @@ namespace SpiritMod.NPCs.DiseasedSlime
 			NPC.frame.Width = 50;
 		}
 
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			writer.Write(pickedType);
-			writer.Write(hasPicked);
-		}
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(pickedType);
 
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			pickedType = reader.ReadInt32();
-			hasPicked = reader.ReadBoolean();
-		}
+		public override void ReceiveExtraAI(BinaryReader reader) => pickedType = reader.ReadInt32();
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

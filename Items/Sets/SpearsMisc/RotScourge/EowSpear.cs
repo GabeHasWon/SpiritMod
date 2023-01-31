@@ -14,7 +14,6 @@ namespace SpiritMod.Items.Sets.SpearsMisc.RotScourge
 			Tooltip.SetDefault("Hitting foes may cause them to release multiple tiny, homing eaters");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -34,10 +33,7 @@ namespace SpiritMod.Items.Sets.SpearsMisc.RotScourge
 			Item.autoReuse = false;
 			Item.shoot = ModContent.ProjectileType<EoWSpearProj>();
 		}
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-10, 0);
-		}
 
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 	}
 }

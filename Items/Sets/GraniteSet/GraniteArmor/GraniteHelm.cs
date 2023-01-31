@@ -24,10 +24,9 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 			Item.rare = ItemRarityID.Green;
 			Item.defense = 9;
 		}
-		public override void UpdateEquip(Player player)
-		{
-			Player.jumpSpeed += 1;
-		}
+
+		public override void UpdateEquip(Player player) => Player.jumpSpeed += 1;
+
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor) => glowMaskColor = Color.White;
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<GraniteChest>() && legs.type == ModContent.ItemType<GraniteLegs>();
@@ -35,7 +34,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 		public override void UpdateArmorSet(Player player)
 		{
 			string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-			player.setBonus = $"Double tap {tapDir} while falling to stomp downward\nHitting the ground releases a shockwave that scales with height\n4 second cooldown";
+			player.setBonus = $"Double tap {tapDir} while falling to stomp downward\nHitting the ground releases a shockwave that scales with height";
 			player.GetSpiritPlayer().graniteSet = true;
 		}
 

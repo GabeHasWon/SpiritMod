@@ -8,10 +8,7 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class GraniteSpike1 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Grant Spike");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Grant Spike");
 
 		public override void SetDefaults()
 		{
@@ -52,6 +49,7 @@ namespace SpiritMod.Projectiles.Magic
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Flare_Blue);
 			return false;
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			Dust.NewDust(Projectile.position + Projectile.velocity,

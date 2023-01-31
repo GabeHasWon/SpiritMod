@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.CascadeSet
 {
 	public class JellyfishStaff : ModItem
@@ -14,7 +15,7 @@ namespace SpiritMod.Items.Sets.CascadeSet
 		{
 			DisplayName.SetDefault("Jellyfish Staff");
 			Tooltip.SetDefault("Summons a tiny jellyfish to fight for you!");
-            SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/CascadeSet/JellyfishStaff_Glow");
+            SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
         public override void SetDefaults()
@@ -54,8 +55,7 @@ namespace SpiritMod.Items.Sets.CascadeSet
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, .224f, .133f, .255f);
-			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/CascadeSet/JellyfishStaff_Glow").Value;
-			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
 		public override void AddRecipes()

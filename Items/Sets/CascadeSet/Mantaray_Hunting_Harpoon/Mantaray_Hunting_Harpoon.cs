@@ -1,14 +1,18 @@
 ﻿using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria;
-using SpiritMod.Items.Sets.CascadeSet;
-using SpiritMod.Items.Sets.FloatingItems;
 
 namespace SpiritMod.Items.Sets.CascadeSet.Mantaray_Hunting_Harpoon
 {
     public class Mantaray_Hunting_Harpoon : ModItem
     {
-        public override void SetDefaults()
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Manta Harpoon");
+			Tooltip.SetDefault("Summons a rideable manta ray mount\nThe manta Ray is incapable of movement on land");
+		}
+
+		public override void SetDefaults()
         {
             Item.width = 20;
             Item.height = 30;
@@ -20,12 +24,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Mantaray_Hunting_Harpoon
             Item.noMelee = true;
 			Item.mountType = Mod.Find<ModMount>("Mantaray_Mount").Type;
 			Item.value = Item.sellPrice(gold: 5);
-        }  
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Manta Harpoon");
-			Tooltip.SetDefault("Summons a rideable manta ray mount\nThe manta Ray is incapable of movement on land");
-		}
+        } 
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

@@ -97,7 +97,7 @@ namespace SpiritMod.Tiles
 					player.AddBuff(ModContent.BuffType<PagodaCurse>(), 8);
 			}
 
-			if (Main.rand.NextBool(700) && NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) < 20)
+			if (Main.rand.NextBool(1200) && NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) < 20)
 			{
 				Vector2 pos = new Vector2(i, j).ToWorldCoordinates() + new Vector2(Main.rand.NextFloat(350, 1000), 0).RotatedByRandom(MathHelper.TwoPi);
 

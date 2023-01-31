@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -12,10 +10,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 {
 	public class Reef_Wrath_Projectile_1 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Coral Reef");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Coral Reef");
 
 		readonly int maxtime = 50;
 		public override void SetDefaults()

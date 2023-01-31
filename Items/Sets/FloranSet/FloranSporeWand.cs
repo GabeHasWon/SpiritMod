@@ -3,6 +3,7 @@ using SpiritMod.Projectiles.Magic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranSporeWand : ModItem
@@ -12,7 +13,6 @@ namespace SpiritMod.Items.Sets.FloranSet
 			DisplayName.SetDefault("Floran Spore Wand");
 			Tooltip.SetDefault("Shoots out a floating Floran Spore\nHit enemies are occasionally ensnared by vines and lose speed");
 		}
-
 
 		public override void SetDefaults()
 		{

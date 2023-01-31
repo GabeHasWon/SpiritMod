@@ -154,7 +154,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				if (build == (int)BuildType.Wave)
 				{
 					if (auxillary == (int)AuxillaryType.Burst)
-						velocity = (velocity * Main.rand.NextFloat(0.7f, 1.0f)).RotatedByRandom(0.5f);
+						velocity = (velocity * Main.rand.NextFloat(0.7f, 1.0f)).RotatedByRandom(0.15f);
 					else
 					{
 						for (int i = 0; i < 3; i++)

@@ -1,13 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Bullet;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.GunsMisc.Scattergun
 {
 	public class Scattergun : ModItem
@@ -16,7 +15,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Scattergun
 		{
 			DisplayName.SetDefault("Scattergun");
 			Tooltip.SetDefault("Converts regular bullets into neon pellets");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GunsMisc/Scattergun/Scattergun_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -47,9 +46,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Scattergun
 		{
             SoundEngine.PlaySound(SoundID.Item12, player.Center);
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 45f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0)) {
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 				position += muzzleOffset;
-			}
 
             if (type == ProjectileID.Bullet)
                 type = ModContent.ProjectileType<ScattergunPellet>();
@@ -66,7 +64,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Scattergun
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient(ItemID.Sapphire, 1);
             recipe.AddIngredient(ItemID.Amethyst, 1);
-            recipe.AddIngredient(ModContent.ItemType<Items.Placeable.Tiles.SpaceJunkItem>(), 35);
+            recipe.AddIngredient(ModContent.ItemType<Placeable.Tiles.SpaceJunkItem>(), 35);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

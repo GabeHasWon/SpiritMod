@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -11,13 +10,15 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 {
 	public class Meteorite_Spew : ModProjectile
 	{
-		public bool hasCreatedSound = false;
+		private bool hasCreatedSound = false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Meteorite Spew");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 16;
@@ -31,10 +32,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 			Projectile.hide = false;
 			Projectile.DamageType = DamageClass.Ranged;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			target.AddBuff(24, 60 * 3);
-		}
+
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(24, 60 * 3);
+
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			Projectile.velocity.X = 0f;
@@ -47,10 +47,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 			}
 			return false;
 		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(255, 255, 255, 0);
-		}
+
+		public override Color? GetAlpha(Color lightColor) => new Color(255, 255, 255, 0);
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			if (!Projectile.wet)

@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranStaff : ModItem
@@ -36,20 +37,14 @@ namespace SpiritMod.Items.Sets.FloranSet
 			Item.shootSpeed = 10f;
 		}
 
-		public override void AddRecipes()
-		{
-			Recipe modRecipe = CreateRecipe();
-			modRecipe.AddIngredient(ModContent.ItemType<FloranBar>(), 12);
-			modRecipe.AddIngredient(ModContent.ItemType<EnchantedLeaf>(), 6);
-			modRecipe.AddTile(TileID.Anvils);
-			modRecipe.Register();
-		}
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			//Remove all previous Floran projectiles - creates "reset" behavior
-			for (int i = 0; i < Main.projectile.Length; i++) {
+			for (int i = 0; i < Main.projectile.Length; i++)
+			{
 				Projectile p = Main.projectile[i];
-				if (p.active && p.type == Item.shoot && p.owner == player.whoAmI) {
+				if (p.active && p.type == Item.shoot && p.owner == player.whoAmI)
+				{
 					p.active = false;
 				}
 			}
@@ -64,6 +59,15 @@ namespace SpiritMod.Items.Sets.FloranSet
 			Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Item.shoot, damage, knockback, player.whoAmI, 0, dir2);
 			Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, Item.shoot, damage, knockback, player.whoAmI, 0, dir3);
 			return false;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe modRecipe = CreateRecipe();
+			modRecipe.AddIngredient(ModContent.ItemType<FloranBar>(), 12);
+			modRecipe.AddIngredient(ModContent.ItemType<EnchantedLeaf>(), 6);
+			modRecipe.AddTile(TileID.Anvils);
+			modRecipe.Register();
 		}
 	}
 }

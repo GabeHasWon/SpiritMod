@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,11 +10,13 @@ namespace SpiritMod.Items.Sets.CoilSet
 {
 	public class CoilSword : ModItem
 	{
+		private int charger;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Coiled Blade");
 			Tooltip.SetDefault("Every six successful hits on an enemy releases an electrical explosion");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/CoilSet/CoilSword_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -38,28 +39,8 @@ namespace SpiritMod.Items.Sets.CoilSet
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, 0.08f, .12f, .52f);
-
-			Texture2D texture = TextureAssets.Item[Item.type].Value;
-
-			spriteBatch.Draw
-			(
-				Mod.Assets.Request<Texture2D>("Items/Sets/CoilSet/CoilSword_Glow").Value,
-				new Vector2
-				(
-					Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-					Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
-				),
-				new Rectangle(0, 0, texture.Width, texture.Height),
-				Color.White,
-				rotation,
-				texture.Size() * 0.5f,
-				scale,
-				SpriteEffects.None,
-				0f
-			);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
-
-		int charger;
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{

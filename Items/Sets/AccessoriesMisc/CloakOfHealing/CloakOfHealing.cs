@@ -14,6 +14,7 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.CloakOfHealing
 			DisplayName.SetDefault("Cloak Of Healing");
 			Tooltip.SetDefault("Minions have a small chance to return life");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -23,10 +24,8 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.CloakOfHealing
 			Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().HealCloak = true;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().HealCloak = true;
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

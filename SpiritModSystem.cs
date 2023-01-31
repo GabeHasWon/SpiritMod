@@ -2,10 +2,14 @@
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.GlobalClasses.Projectiles;
 using SpiritMod.GlobalClasses.Tiles;
-using SpiritMod.Items.Pins;
+using SpiritMod.Items.Consumable;
+using SpiritMod.Items.Sets.BowsMisc.GemBows.Emerald_Bow;
+using SpiritMod.Items.Sets.BowsMisc.GemBows.Ruby_Bow;
+using SpiritMod.Items.Sets.BowsMisc.GemBows.Sapphire_Bow;
+using SpiritMod.Items.Sets.BowsMisc.GemBows.Topaz_Bow;
+using SpiritMod.Items.Sets.HuskstalkSet;
 using SpiritMod.Mechanics.AutoSell;
 using SpiritMod.Mechanics.QuestSystem;
-using SpiritMod.Mechanics.Trails;
 using SpiritMod.NPCs.AuroraStag;
 using SpiritMod.NPCs.StarjinxEvent;
 using SpiritMod.NPCs.Tides.Tide;
@@ -20,6 +24,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.Graphics;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -36,6 +41,65 @@ namespace SpiritMod
 			ModLoader.TryGetMod("PhaseIndicator", out Mod phaseIndicator);
 			if (phaseIndicator != null && !Main.dedServ)
 				PhaseIndicatorLoader.Load(Mod, phaseIndicator);
+		}
+
+		public override void AddRecipeGroups()
+		{
+			RecipeGroup woodGrp = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["Wood"]];
+			woodGrp.ValidItems.Add(ModContent.ItemType<AncientBark>());
+			woodGrp.ValidItems.Add(ModContent.ItemType<Items.Placeable.Tiles.SpiritWoodItem>());
+			woodGrp.ValidItems.Add(ModContent.ItemType<Items.Sets.FloatingItems.Driftwood.DriftwoodTileItem>());
+
+			RecipeGroup butterflyGrp = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["Butterflies"]];
+			butterflyGrp.ValidItems.Add(ModContent.ItemType<BriarmothItem>());
+
+			RecipeGroup BaseGroup(object GroupName, int[] Items)
+			{
+				string Name = "";
+				Name += GroupName switch
+				{
+					//modcontent items
+					int i => Lang.GetItemNameValue((int)GroupName),
+					//vanilla item ids
+					short s => Lang.GetItemNameValue((short)GroupName),
+					//custom group names
+					_ => GroupName.ToString(),
+				};
+				return new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + Name, Items);
+			}
+
+			RecipeGroup.RegisterGroup("SpiritMod:GoldBars", BaseGroup(ItemID.GoldBar, new int[]
+				{ ItemID.GoldBar, ItemID.PlatinumBar }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:EvilMaterial", BaseGroup(ItemID.CursedFlame, new int[]
+				{ ItemID.CursedFlame, ItemID.Ichor }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:PHMEvilMaterial", BaseGroup(ItemID.ShadowScale, new int[]
+				{ ItemID.ShadowScale, ItemID.TissueSample }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:Tier3HMBar", BaseGroup(ItemID.AdamantiteBar, new int[]
+				{ ItemID.AdamantiteBar, ItemID.TitaniumBar }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:SilverBars", BaseGroup(ItemID.SilverBar, new int[]
+				{ ItemID.SilverBar, ItemID.TungstenBar }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:CopperBars", BaseGroup(ItemID.CopperBar, new int[]
+				{ ItemID.CopperBar, ItemID.TinBar }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:EmeraldBows", BaseGroup("Emerald or Ruby Bow", new int[]
+				{ ModContent.ItemType<Emerald_Bow>(), ModContent.ItemType<Ruby_Bow>() }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:TopazBows", BaseGroup("Sapphire or Topaz Bow", new int[]
+				{ ModContent.ItemType<Sapphire_Bow>(), ModContent.ItemType<Topaz_Bow>() }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:AmethystStaffs", BaseGroup("Amethyst or Topaz Staff", new int[]
+				{ ItemID.AmethystStaff, ItemID.TopazStaff }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:SapphireStaffs", BaseGroup("Sapphire or Emerald Staff", new int[]
+				{ ItemID.SapphireStaff, ItemID.EmeraldStaff }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:RubyStaffs", BaseGroup("Ruby or Diamond Staff", new int[]
+				{ ItemID.RubyStaff, ItemID.DiamondStaff }));
 		}
 
 		public override void ModifyLightingBrightness(ref float scale)
@@ -85,7 +149,7 @@ namespace SpiritMod
 			else if (MyWorld.spiritLight > .9f)
 				MyWorld.spiritLight = .9f;
 
-			int ColorAdjustment(int col, float light)
+			static int ColorAdjustment(int col, float light)
 			{
 				float val = 250f / 1.14f * light * (col / 255f);
 				if (val < 0)
@@ -158,7 +222,7 @@ namespace SpiritMod
 				mod.screenshakeTimer = 0;
 			}
 
-			mod.InvokeModifyTransform(Transform);
+			SpiritMod.InvokeModifyTransform(Transform);
 		}
 
 		public override void UpdateUI(GameTime gameTime)
@@ -255,7 +319,7 @@ namespace SpiritMod
 					"SpiritMod: SellUI",
 					delegate
 					{
-						SpiritMod.Instance.DrawUpdateToggles();
+						SpiritMod.DrawUpdateToggles();
 						if (AutoSellUI.visible)
 						{
 							SpiritMod.Instance.AutoSellUI_INTERFACE.Update(Main._drawInterfaceGameTime);

@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Sets.HuskstalkSet;
 using SpiritMod.NPCs.Town;
 using SpiritMod.NPCs.Boss.Atlas;
 using SpiritMod.NPCs.Tides.Tide;
@@ -28,11 +27,6 @@ using Terraria.ModLoader.Core;
 using Terraria.Utilities;
 using Terraria.UI.Chat;
 using SpiritMod.Prim;
-using SpiritMod.Items.Sets.BowsMisc.GemBows.Emerald_Bow;
-using SpiritMod.Items.Sets.BowsMisc.GemBows.Ruby_Bow;
-using SpiritMod.Items.Sets.BowsMisc.GemBows.Sapphire_Bow;
-using SpiritMod.Items.Sets.BowsMisc.GemBows.Topaz_Bow;
-using SpiritMod.Items.Consumable;
 using SpiritMod.Particles;
 using SpiritMod.UI.QuestUI;
 using SpiritMod.Mechanics.QuestSystem;
@@ -592,76 +586,76 @@ namespace SpiritMod
 				SellLock_SHORTCUT.Activate();
 				SellWeapons_SHORTCUT.Activate();
 
-				stardustOverlayEffect = ModContent.Request<Effect>("SpiritMod/Effects/StardustOverlay", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				stardustOverlayEffect = ModContent.Request<Effect>("SpiritMod/Effects/StardustOverlay", AssetRequestMode.ImmediateLoad).Value;
 
-				glitchEffect = ModContent.Request<Effect>("SpiritMod/Effects/glitch", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				glitchEffect = ModContent.Request<Effect>("SpiritMod/Effects/glitch", AssetRequestMode.ImmediateLoad).Value;
 				glitchScreenShader = new GlitchScreenShader(glitchEffect);
 				Filters.Scene["SpiritMod:Glitch"] = new Filter(glitchScreenShader, (EffectPriority)50);
 
-				starjinxBorderEffect = ModContent.Request<Effect>("SpiritMod/Effects/StarjinxBorder", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				starjinxBorderEffect = ModContent.Request<Effect>("SpiritMod/Effects/StarjinxBorder", AssetRequestMode.ImmediateLoad).Value;
 				starjinxBorderShader = new StarjinxBorderShader(starjinxBorderEffect, "MainPS");
 				Filters.Scene["SpiritMod:StarjinxBorder"] = new Filter(starjinxBorderShader, (EffectPriority)50);
 
 				Filters.Scene["SpiritMod:StarjinxBorderFade"] = new Filter(new StarjinxBorderShader(starjinxBorderEffect, "FadePS"), (EffectPriority)70);
 
-				vignetteEffect = ModContent.Request<Effect>("SpiritMod/Effects/Vignette", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				vignetteEffect = ModContent.Request<Effect>("SpiritMod/Effects/Vignette", AssetRequestMode.ImmediateLoad).Value;
 				vignetteShader = new Vignette(vignetteEffect, "MainPS");
 				Filters.Scene["SpiritMod:Vignette"] = new Filter(vignetteShader, (EffectPriority)100);
 
-				StarjinxNoise = ModContent.Request<Effect>("SpiritMod/Effects/StarjinxNoise", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				CircleNoise = ModContent.Request<Effect>("SpiritMod/Effects/CircleNoise", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				StarfirePrims = ModContent.Request<Effect>("SpiritMod/Effects/StarfirePrims", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				ScreamingSkullTrail = ModContent.Request<Effect>("SpiritMod/Effects/ScreamingSkullTrail", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				RipperSlugShader = ModContent.Request<Effect>("SpiritMod/Effects/RipperSlugShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				RepeatingTextureShader = ModContent.Request<Effect>("SpiritMod/Effects/RepeatingTextureShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				PrimitiveTextureMap = ModContent.Request<Effect>("SpiritMod/Effects/PrimitiveTextureMap", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				EyeballShader = ModContent.Request<Effect>("SpiritMod/Effects/EyeballShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				ArcLashShader = ModContent.Request<Effect>("SpiritMod/Effects/ArcLashShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				ConicalNoise = ModContent.Request<Effect>("SpiritMod/Effects/ConicalNoise", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				JemShaders = ModContent.Request<Effect>("SpiritMod/Effects/JemShaders", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				SunOrbShader = ModContent.Request<Effect>("SpiritMod/Effects/SunOrbShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				ThyrsusShader = ModContent.Request<Effect>("SpiritMod/Effects/ThyrsusShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				JetbrickTrailShader = ModContent.Request<Effect>("SpiritMod/Effects/JetbrickTrailShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				OutlinePrimShader = ModContent.Request<Effect>("SpiritMod/Effects/OutlinePrimShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				GSaber = ModContent.Request<Effect>("SpiritMod/Effects/GSaber", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				AnthemCircle = ModContent.Request<Effect>("SpiritMod/Effects/AnthemCircle", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-				TeslaShader = ModContent.Request<Effect>("SpiritMod/Effects/TeslaShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				StarjinxNoise = ModContent.Request<Effect>("SpiritMod/Effects/StarjinxNoise", AssetRequestMode.ImmediateLoad).Value;
+				CircleNoise = ModContent.Request<Effect>("SpiritMod/Effects/CircleNoise", AssetRequestMode.ImmediateLoad).Value;
+				StarfirePrims = ModContent.Request<Effect>("SpiritMod/Effects/StarfirePrims", AssetRequestMode.ImmediateLoad).Value;
+				ScreamingSkullTrail = ModContent.Request<Effect>("SpiritMod/Effects/ScreamingSkullTrail", AssetRequestMode.ImmediateLoad).Value;
+				RipperSlugShader = ModContent.Request<Effect>("SpiritMod/Effects/RipperSlugShader", AssetRequestMode.ImmediateLoad).Value;
+				RepeatingTextureShader = ModContent.Request<Effect>("SpiritMod/Effects/RepeatingTextureShader", AssetRequestMode.ImmediateLoad).Value;
+				PrimitiveTextureMap = ModContent.Request<Effect>("SpiritMod/Effects/PrimitiveTextureMap", AssetRequestMode.ImmediateLoad).Value;
+				EyeballShader = ModContent.Request<Effect>("SpiritMod/Effects/EyeballShader", AssetRequestMode.ImmediateLoad).Value;
+				ArcLashShader = ModContent.Request<Effect>("SpiritMod/Effects/ArcLashShader", AssetRequestMode.ImmediateLoad).Value;
+				ConicalNoise = ModContent.Request<Effect>("SpiritMod/Effects/ConicalNoise", AssetRequestMode.ImmediateLoad).Value;
+				JemShaders = ModContent.Request<Effect>("SpiritMod/Effects/JemShaders", AssetRequestMode.ImmediateLoad).Value;
+				SunOrbShader = ModContent.Request<Effect>("SpiritMod/Effects/SunOrbShader", AssetRequestMode.ImmediateLoad).Value;
+				ThyrsusShader = ModContent.Request<Effect>("SpiritMod/Effects/ThyrsusShader", AssetRequestMode.ImmediateLoad).Value;
+				JetbrickTrailShader = ModContent.Request<Effect>("SpiritMod/Effects/JetbrickTrailShader", AssetRequestMode.ImmediateLoad).Value;
+				OutlinePrimShader = ModContent.Request<Effect>("SpiritMod/Effects/OutlinePrimShader", AssetRequestMode.ImmediateLoad).Value;
+				GSaber = ModContent.Request<Effect>("SpiritMod/Effects/GSaber", AssetRequestMode.ImmediateLoad).Value;
+				AnthemCircle = ModContent.Request<Effect>("SpiritMod/Effects/AnthemCircle", AssetRequestMode.ImmediateLoad).Value;
+				TeslaShader = ModContent.Request<Effect>("SpiritMod/Effects/TeslaShader", AssetRequestMode.ImmediateLoad).Value;
 
 				SkyManager.Instance["SpiritMod:AuroraSky"] = new AuroraSky();
-				Filters.Scene["SpiritMod:AuroraSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:AuroraSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 				Overlays.Scene["SpiritMod:AuroraSky"] = new AuroraOverlay();
 
 				Filters.Scene["SpiritMod:BlueMoonSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0.1f, 0.2f, 0.5f).UseOpacity(0.53f), EffectPriority.High);
 				SkyManager.Instance["SpiritMod:BlueMoonSky"] = new BlueMoonSky();
 
 				SkyManager.Instance["SpiritMod:StarjinxSky"] = new StarjinxSky();
-				Filters.Scene["SpiritMod:StarjinxSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:StarjinxSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				SkyManager.Instance["SpiritMod:MeteorSky"] = new MeteorSky();
 				SkyManager.Instance["SpiritMod:AsteroidSky2"] = new MeteorBiomeSky2();
-				Filters.Scene["SpiritMod:MeteorSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
-				Filters.Scene["SpiritMod:AsteroidSky2"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:MeteorSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:AsteroidSky2"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				SkyManager.Instance["SpiritMod:SpiritBiomeSky"] = new SpiritBiomeSky();
-				Filters.Scene["SpiritMod:SpiritBiomeSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:SpiritBiomeSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				SkyManager.Instance["SpiritMod:JellySky"] = new JellySky();
-				Filters.Scene["SpiritMod:JellySky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:JellySky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				SkyManager.Instance["SpiritMod:PurpleAlgaeSky"] = new PurpleAlgaeSky();
-				Filters.Scene["SpiritMod:PurpleAlgaeSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:PurpleAlgaeSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				SkyManager.Instance["SpiritMod:GreenAlgaeSky"] = new GreenAlgaeSky();
-				Filters.Scene["SpiritMod:GreenAlgaeSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:GreenAlgaeSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				SkyManager.Instance["SpiritMod:OceanFloorSky"] = new OceanFloorSky();
-				Filters.Scene["SpiritMod:OceanFloorSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:OceanFloorSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				SkyManager.Instance["SpiritMod:BlueAlgaeSky"] = new BlueAlgaeSky();
-				Filters.Scene["SpiritMod:BlueAlgaeSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:BlueAlgaeSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				SkyManager.Instance["SpiritMod:BloodMoonSky"] = new BloodMoonSky();
-				Filters.Scene["SpiritMod:BloodMoonSky"] = new Filter((new ScreenShaderData("FilterMiniTower")).UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
+				Filters.Scene["SpiritMod:BloodMoonSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
 
 				Filters.Scene["SpiritMod:Atlas"] = new Filter(new AtlasScreenShaderData("FilterMiniTower").UseColor(0.5f, 0.5f, 0.5f).UseOpacity(0.6f), EffectPriority.VeryHigh);
 				SkyManager.Instance["SpiritMod:Atlas"] = new AtlasSky();
@@ -919,102 +913,6 @@ namespace SpiritMod
 			return LanguageManager.Instance.GetText(key).Value;
 		}
 
-		public override void AddRecipeGroups()
-		{
-			RecipeGroup woodGrp = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["Wood"]];
-			woodGrp.ValidItems.Add(ModContent.ItemType<AncientBark>());
-			woodGrp.ValidItems.Add(ModContent.ItemType<Items.Placeable.Tiles.SpiritWoodItem>());
-			woodGrp.ValidItems.Add(ModContent.ItemType<Items.Sets.FloatingItems.Driftwood.DriftwoodTileItem>());
-
-			RecipeGroup butterflyGrp = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["Butterflies"]];
-			butterflyGrp.ValidItems.Add(ModContent.ItemType<BriarmothItem>());
-
-			RecipeGroup BaseGroup(object GroupName, int[] Items)
-			{
-				string Name = "";
-				switch (GroupName)
-				{
-					case int i: //modcontent items
-						Name += Lang.GetItemNameValue((int)GroupName);
-						break;
-					case short s: //vanilla item ids
-						Name += Lang.GetItemNameValue((short)GroupName);
-						break;
-					default: //custom group names
-						Name += GroupName.ToString();
-						break;
-				}
-
-				return new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + Name, Items);
-			}
-
-			RecipeGroup.RegisterGroup("SpiritMod:GoldBars", BaseGroup(ItemID.GoldBar, new int[]
-			{
-				ItemID.GoldBar,
-				ItemID.PlatinumBar
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:EvilMaterial", BaseGroup(ItemID.CursedFlame, new int[]
-			{
-				ItemID.CursedFlame,
-				ItemID.Ichor
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:PHMEvilMaterial", BaseGroup(ItemID.ShadowScale, new int[]
-			{
-				ItemID.ShadowScale,
-				ItemID.TissueSample
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:Tier3HMBar", BaseGroup(ItemID.AdamantiteBar, new int[]
-			{
-				ItemID.AdamantiteBar,
-				ItemID.TitaniumBar
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:SilverBars", BaseGroup(ItemID.SilverBar, new int[]
-			{
-				ItemID.SilverBar,
-				ItemID.TungstenBar
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:CopperBars", BaseGroup(ItemID.CopperBar, new int[]
-			{
-				ItemID.CopperBar,
-				ItemID.TinBar
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:EmeraldBows", BaseGroup("Emerald or Ruby Bow", new int[]
-			{
-				ModContent.ItemType<Emerald_Bow>(),
-				ModContent.ItemType<Ruby_Bow>()
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:TopazBows", BaseGroup("Sapphire or Topaz Bow", new int[]
-			{
-				ModContent.ItemType<Sapphire_Bow>(),
-				ModContent.ItemType<Topaz_Bow>()
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:AmethystStaffs", BaseGroup("Amethyst or Topaz Staff", new int[]
-			{
-				ItemID.AmethystStaff,
-				ItemID.TopazStaff
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:SapphireStaffs", BaseGroup("Sapphire or Emerald Staff", new int[]
-			{
-				ItemID.SapphireStaff,
-				ItemID.EmeraldStaff
-			}));
-
-			RecipeGroup.RegisterGroup("SpiritMod:RubyStaffs", BaseGroup("Ruby or Diamond Staff", new int[]
-			{
-				ItemID.RubyStaff,
-				ItemID.DiamondStaff
-			}));
-		}
-
 		public override void PostSetupContent()
 		{
 			GlyphBase.InitializeGlyphLookup();
@@ -1025,7 +923,7 @@ namespace SpiritMod
 			FinishedContentSetup = true;
 		}
 
-		private void CrossModContent()
+		private static void CrossModContent()
 		{
 			if (ModLoader.TryGetMod("Census", out Mod census))
 			{
@@ -1039,34 +937,24 @@ namespace SpiritMod
 			{
 				// AddSummon, order or value in terms of vanilla bosses, your mod internal name, summon   
 				//item internal name, inline method for retrieving downed value, price to sell for in copper
-				fargos.Call("AddSummon", 1.4f, "SpiritMod", "ScarabIdol", (Func<bool>)(() => MyWorld.downedScarabeus), 100 * 200);
-				fargos.Call("AddSummon", 4.2f, "SpiritMod", "JewelCrown", (Func<bool>)(() => MyWorld.downedAncientFlier), 100 * 200);
-				fargos.Call("AddSummon", 5.9f, "SpiritMod", "StarWormSummon", (Func<bool>)(() => MyWorld.downedRaider), 100 * 400);
-				fargos.Call("AddSummon", 6.5f, "SpiritMod", "CursedCloth", (Func<bool>)(() => MyWorld.downedInfernon), 100 * 500);
-				fargos.Call("AddSummon", 7.3f, "SpiritMod", "DuskCrown", (Func<bool>)(() => MyWorld.downedDusking), 100 * 500);
-				fargos.Call("AddSummon", 12.4f, "SpiritMod", "StoneSkin", (Func<bool>)(() => MyWorld.downedAtlas), 100 * 800);
+				fargos.Call("AddSummon", 1.4f, "SpiritMod", "ScarabIdol", () => MyWorld.downedScarabeus, 100 * 200);
+				fargos.Call("AddSummon", 4.2f, "SpiritMod", "JewelCrown", () => MyWorld.downedAncientFlier, 100 * 200);
+				fargos.Call("AddSummon", 5.9f, "SpiritMod", "StarWormSummon", () => MyWorld.downedRaider, 100 * 400);
+				fargos.Call("AddSummon", 6.5f, "SpiritMod", "CursedCloth", () => MyWorld.downedInfernon, 100 * 500);
+				fargos.Call("AddSummon", 7.3f, "SpiritMod", "DuskCrown", () => MyWorld.downedDusking, 100 * 500);
+				fargos.Call("AddSummon", 12.4f, "SpiritMod", "StoneSkin", () => MyWorld.downedAtlas, 100 * 800);
 			}
 		}
 
 		internal bool _questBookHover;
 		internal bool _questBookToggle = false;
 
-		//public override void HotKeyPressed(string name)
-		//{
-		//	if (name == "Concentration_Hotkey")
-		//	{
-		//		MyPlayer mp = Main.player[Main.myPlayer].GetModPlayer<MyPlayer>();
-		//		if (mp.leatherSet && !mp.concentrated && mp.concentratedCooldown <= 0)
-		//			mp.concentrated = true;
-		//	}
-		//}
-
-		public void InvokeModifyTransform(SpriteViewMatrix matrix) => OnModifyTransformMatrix?.Invoke(matrix);
+		public static void InvokeModifyTransform(SpriteViewMatrix matrix) => OnModifyTransformMatrix?.Invoke(matrix);
 
 		public static float tremorTime;
 		public int screenshakeTimer = 0;
 
-		internal void DrawUpdateToggles()
+		internal static void DrawUpdateToggles()
 		{
 			Point mousePoint = new Point(Main.mouseX, Main.mouseY);
 

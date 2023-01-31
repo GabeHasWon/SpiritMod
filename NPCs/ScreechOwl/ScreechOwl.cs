@@ -52,8 +52,6 @@ namespace SpiritMod.NPCs.ScreechOwl
 			});
 		}
 
-		int frame = 0;
-
         public override void AI()
         {
             NPC.spriteDirection = NPC.direction;

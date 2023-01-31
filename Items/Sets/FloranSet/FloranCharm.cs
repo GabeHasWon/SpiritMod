@@ -24,6 +24,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 			Item.defense = 2;
 			Item.accessory = true;
 		}
+
 		public override void AddRecipes()
 		{
 			var recipe = CreateRecipe();

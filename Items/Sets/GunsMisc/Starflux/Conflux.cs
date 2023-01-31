@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Starflux
 		{
 			DisplayName.SetDefault("Starflux");
 			Tooltip.SetDefault("Converts regular bullets into bouncing stars");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GunsMisc/Starflux/Conflux_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -41,13 +41,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.Starflux
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 45f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0)) {
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 				position += muzzleOffset;
-			}
+
             if (type == ProjectileID.Bullet)
-            {
                 type = ModContent.ProjectileType<ConfluxPellet>();
-            }
+
             Projectile.NewProjectile(source, position.X - 8, position.Y + 8, velocity.X + ((float)Main.rand.Next(-250, 250) / 150), velocity.Y + ((float)Main.rand.Next(-100, 100) / 100), type, damage, knockback, player.whoAmI, 0f, 0f);
             return false;
 		}
@@ -60,7 +59,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Starflux
         {
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient(ItemID.IllegalGunParts, 1);
-            recipe.AddIngredient(ModContent.ItemType<Items.Sets.GunsMisc.Scattergun.Scattergun>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Scattergun.Scattergun>(), 1);
             recipe.AddIngredient(ItemID.SoulofLight, 11);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

@@ -65,7 +65,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 				if (!Main.dedServ)
 				{
-					Vector2 position = Projectile.Center + (direction * 32);
+					Vector2 position = Projectile.Center + (direction * 28);
 					ParticleHandler.SpawnParticle(new BlasterFlash(position, 1, direction.ToRotation()));
 					for (int i = 0; i < 3; i++)
 						ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(0.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.2f, 0.5f), 12));
@@ -76,6 +76,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			Projectile.Center = player.Center + new Vector2(18f - offset, 0).RotatedBy(direction.ToRotation());
 			Projectile.rotation = direction.ToRotation() + ((direction.X < 0) ? MathHelper.Pi : 0) - (offset * 0.03f * player.direction);
+
+			if (Projectile.alpha < 255)
+				Projectile.alpha += 255 / 30;
 		}
 
 		private void SetDirection(Player player)
@@ -84,6 +87,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			{
 				direction = player.DirectionTo(Main.MouseWorld);
 				Projectile.timeLeft = player.itemAnimationMax + 1;
+				Projectile.alpha = 0;
+
 				Projectile.netUpdate = true;
 			}
 		}
