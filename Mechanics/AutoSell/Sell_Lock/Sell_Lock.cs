@@ -1,9 +1,7 @@
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.UI;
 
 namespace SpiritMod.Mechanics.AutoSell.Sell_Lock
@@ -11,6 +9,7 @@ namespace SpiritMod.Mechanics.AutoSell.Sell_Lock
 	public class Sell_Lock : UIState
 	{
 		public static bool visible = false;
+
 		public override void OnInitialize()
 		{
 			var buttonPlayTexture = SpiritModAutoSellTextures.sellLockButton;
@@ -21,7 +20,7 @@ namespace SpiritMod.Mechanics.AutoSell.Sell_Lock
 			playButton.Height.Set(32, 0f);
 			playButton.OnClick += new MouseEvent(PlayButtonClicked);
 
-			base.Append(playButton);
+			Append(playButton);
 		}
 
 		private void PlayButtonClicked(UIMouseEvent evt, UIElement listeningElement)

@@ -6,6 +6,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Mechanics.QuestSystem;
+using SpiritMod.Mechanics.QuestSystem.Quests;
+using SpiritMod.Items.Consumable.Quest;
 
 namespace SpiritMod.NPCs.Dead_Scientist
 {
@@ -127,6 +130,10 @@ namespace SpiritMod.NPCs.Dead_Scientist
 		{
 			if (NPC.AnyNPCs(ModContent.NPCType<Dead_Scientist>()))
 				return 0f;
+
+			if (spawnInfo.Player.HasItem(ModContent.ItemType<ScientistLure>()))
+				return 0.2f;
+
 			return SpawnCondition.OverworldNightMonster.Chance * 0.002f;
 		}
 

@@ -80,6 +80,9 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 			c.EmitDelegate(static (ref int i, int j, ref int adjX) =>
 			{
+				if (Main.gameMenu || !Main.LocalPlayer.active)
+					return true;
+
 				int oldAdjX = adjX;
 				Tile tile = Main.tile[oldAdjX, j];
 
