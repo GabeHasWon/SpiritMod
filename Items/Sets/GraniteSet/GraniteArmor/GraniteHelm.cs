@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 		public override void UpdateArmorSet(Player player)
 		{
 			string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-			player.setBonus = $"Double tap {tapDir} while falling to stomp downward\nHitting the ground releases a shockwave that scales with height\n3 second cooldown";
+			player.setBonus = $"Double tap {tapDir} while falling to stomp downward\nHitting the ground releases a shockwave that scales with height";
 			player.GetSpiritPlayer().graniteSet = true;
 		}
 

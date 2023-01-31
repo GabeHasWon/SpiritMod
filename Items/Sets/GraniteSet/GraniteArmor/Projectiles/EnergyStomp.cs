@@ -79,7 +79,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 					}
 				}
 
-				int damage = (int)(fallDistance * 8);
+				int damage = (int)(fallDistance * 5);
 				Projectile.NewProjectileDirect(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EnergyStomp_Explosion>(), damage, 5, player.whoAmI);
 				for (int i = 0; i < 2; i++)
 					Projectile.NewProjectileDirect(player.GetSource_FromThis(), player.Center + new Vector2(0, 20), new Vector2(6, 0) * ((i > 0) ? -1 : 1), ModContent.ProjectileType<EnergyShockwave>(), damage, 8, player.whoAmI);

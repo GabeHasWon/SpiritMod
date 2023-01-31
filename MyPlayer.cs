@@ -189,7 +189,6 @@ namespace SpiritMod
 		public bool starMap = false;
 		public bool minionName = false;
 		public bool moonlightSack = false;
-		public static bool hasProjectile;
 		public bool DoomDestiny = false;
 		public int HitNumber;
 		public int PutridHits = 0;
@@ -234,7 +233,7 @@ namespace SpiritMod
 		public int jellynautStacks;
 		public bool blazeBurn;
 		public bool phaseShift;
-		private float[] phaseSlice = new float[60];
+		private readonly float[] phaseSlice = new float[60];
 		public int divineCounter;
 		public int divineStacks = 1;
 		public int stormStacks;

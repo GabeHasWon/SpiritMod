@@ -37,7 +37,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Wood, 30);
-			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 5)
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 5);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }

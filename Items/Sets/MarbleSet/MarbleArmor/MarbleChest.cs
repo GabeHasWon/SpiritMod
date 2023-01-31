@@ -8,6 +8,13 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 	[AutoloadEquip(EquipType.Body)]
 	public class MarbleChest : ModItem
 	{
+		public override void Load()
+		{
+			if (Main.netMode == NetmodeID.Server)
+				return;
+			EquipLoader.AddEquipTexture(Mod, "SpiritMod/Items/Sets/MarbleSet/MarbleArmor/MarbleChest_Legs", EquipType.Legs, null, "MarbleChest_Legs");
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gilded Robe");
@@ -24,6 +31,12 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 			Item.value = 12100;
 			Item.rare = ItemRarityID.Green;
 			Item.defense = 7;
+		}
+
+		public override void SetMatch(bool male, ref int equipSlot, ref bool robes)
+		{
+			robes = true;
+			equipSlot = EquipLoader.GetEquipSlot(Mod, "MarbleChest_Legs", EquipType.Legs);
 		}
 
 		public override void UpdateEquip(Player player)
