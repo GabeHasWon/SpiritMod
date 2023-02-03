@@ -54,7 +54,7 @@ namespace SpiritMod.Sounds.GameContent
 				UpdateSingleSound("underwaterAmbience", "SpiritMod/Sounds/UnderwaterAmbience", 1f, 0.08f, realDepth > 10);
 
 				bool beachCondition = player.ZoneBeach && player.ZoneOverworldHeight;
-				UpdateSingleSound("wavesAmbience", "SpiritMod/Sounds/WavesAmbience", 5f * (submerged ? 1 - (realDepth / 20f) : 1f), 0.01f, beachCondition);
+				UpdateSingleSound("wavesAmbience", "SpiritMod/Sounds/WavesAmbience", 1f * (submerged ? 1 - (realDepth / 20f) : 1f), 0.01f, beachCondition);
 			}
 		}
 
@@ -63,12 +63,12 @@ namespace SpiritMod.Sounds.GameContent
 			if (condition)
 			{
 				if (!soundSlots.ContainsKey(key))
-					soundSlots.Add(key, SoundEngine.PlaySound(new SoundStyle(path) with { IsLooped = true, Volume = 0.1f }));
+					soundSlots.Add(key, SoundEngine.PlaySound(new SoundStyle(path) with { IsLooped = true, Volume = 0.1f, Type = SoundType.Ambient }));
 
 				if (SoundEngine.TryGetActiveSound(soundSlots[key], out ActiveSound sound) && sound is not null)
 					sound.Volume = MathHelper.Lerp(sound.Volume, maxVol, lerpFactor);
 				else
-					soundSlots[key] = SoundEngine.PlaySound(new SoundStyle(path) with { IsLooped = true, Volume = 0.1f });
+					soundSlots[key] = SoundEngine.PlaySound(new SoundStyle(path) with { IsLooped = true, Volume = 0.1f, Type = SoundType.Ambient });
 			}
 			else
 			{

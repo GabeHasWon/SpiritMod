@@ -78,39 +78,41 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			c.Emit(OpCodes.Ldloc_S, (byte)10); //j (source i)
 			c.Emit(OpCodes.Ldloca_S, (byte)12); //adjX (source j)
 
-			c.EmitDelegate(static (ref int i, int j, ref int adjX) =>
-			{
-				if (Main.gameMenu || !Main.LocalPlayer.active)
-					return true;
-
-				int oldAdjX = adjX;
-				Tile tile = Main.tile[oldAdjX, j];
-
-				while ((tile.HasTile && !Main.tileSolid[tile.TileType]) || !tile.HasTile)
-				{
-					oldAdjX--;
-					tile = Main.tile[oldAdjX, j];
-
-					if (!WorldGen.InWorld(oldAdjX, j, 30))
-						break;
-				}
-
-				if (tile.Slope != SlopeType.Solid)
-					adjX--;
-
-				tile = Main.tile[i, j];
-
-				if (tile.HasTile && tile.Slope != SlopeType.Solid)
-				{
-					if (!WorldGen.SolidTile(i + 1, j) && !WorldGen.SolidTile(i - 1, j))
-						return false;
-					else if (!WorldGen.SolidTile(i - 1, j) && WorldGen.SolidTile(i + 1, j))
-						i++;
-				}
-				return true; //DO draw the darkness
-			});
+			c.EmitDelegate(DrawBlackMod);
 
 			c.Emit(OpCodes.Brfalse, skipLabel);
+		}
+
+		public static bool DrawBlackMod(ref int i, int j, ref int adjX)
+		{
+			if (Main.gameMenu || !Main.LocalPlayer.active)
+				return true;
+
+			int oldAdjX = adjX;
+			Tile tile = Main.tile[oldAdjX, j];
+
+			while ((tile.HasTile && !Main.tileSolid[tile.TileType]) || !tile.HasTile)
+			{
+				oldAdjX--;
+				tile = Main.tile[oldAdjX, j];
+
+				if (!WorldGen.InWorld(oldAdjX, j, 30))
+					break;
+			}
+
+			if (tile.Slope != SlopeType.Solid)
+				adjX--;
+
+			tile = Main.tile[i, j];
+
+			if (tile.HasTile && tile.Slope != SlopeType.Solid)
+			{
+				if (!WorldGen.SolidTile(i + 1, j) && !WorldGen.SolidTile(i - 1, j))
+					return false;
+				else if (!WorldGen.SolidTile(i - 1, j) && WorldGen.SolidTile(i + 1, j))
+					i++;
+			}
+			return true; //DO draw the darkness
 		}
 
 		private static void LiquidRenderer_InternalDraw(ILContext il)
