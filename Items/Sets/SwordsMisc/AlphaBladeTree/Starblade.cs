@@ -64,7 +64,6 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.Starfury, 1);
 			recipe.AddIngredient(ModContent.ItemType<Items.BossLoot.AvianDrops.TalonBlade>(), 1);
 			recipe.AddIngredient(ItemID.FallenStar, 5);
 			recipe.AddIngredient(ModContent.ItemType<CosmiliteShard>(), 6);

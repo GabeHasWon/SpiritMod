@@ -31,7 +31,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 			bool showUnlocks = true;
 
 			QuestManager.UnlockQuest<ReturnToYourRoots>(showUnlocks);
-			QuestManager.UnlockQuest<IdleIdol>(showUnlocks);
 			QuestManager.UnlockQuest<BareNecessities>(showUnlocks);
 			QuestManager.UnlockQuest<SlayerQuestBriar>(showUnlocks);
 

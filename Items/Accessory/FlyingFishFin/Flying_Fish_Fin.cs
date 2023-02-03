@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Accessory.FlyingFishFin
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flying Fish Fin");
-			Tooltip.SetDefault("Increases jump height\n5% increased movement speed");
+			Tooltip.SetDefault("Increases jump height and descent speed");
 		}
 
 		public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Accessory.FlyingFishFin
 
 		public override void UpdateEquip(Player player)
 		{
-			Player.jumpHeight += 10;
+			Player.jumpSpeed += 2;
 			player.maxFallSpeed *= 1.35f;
 		}	
 	}
