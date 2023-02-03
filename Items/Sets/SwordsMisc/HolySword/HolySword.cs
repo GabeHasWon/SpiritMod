@@ -9,6 +9,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.HolySword
 {
 	public class HolySword : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		int charger;
 		public override void SetStaticDefaults()
 		{

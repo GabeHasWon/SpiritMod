@@ -34,6 +34,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		public override void OnQuestComplete()
 		{
+			QuestManager.UnlockQuest<IdleIdol>(true);
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.Demolitionist, QuestManager.GetQuest<RescueQuestStylist>());
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.Dryad, QuestManager.GetQuest<LumothQuest>());
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.TravellingMerchant, QuestManager.GetQuest<TravelingMerchantDesertQuest>());
@@ -41,7 +42,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.Guide, QuestManager.GetQuest<HeartCrystalQuest>());
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.Guide, QuestManager.GetQuest<SlayerQuestScreechOwls>());
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(ModContent.NPCType<Adventurer>(), QuestManager.GetQuest<SlayerQuestBriar>());
-			ModContent.GetInstance<QuestWorld>().AddQuestQueue(ModContent.NPCType<Adventurer>(), QuestManager.GetQuest<IdleIdol>());
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(ModContent.NPCType<Adventurer>(), QuestManager.GetQuest<BareNecessities>());
 
 			if (WorldGen.crimson)
