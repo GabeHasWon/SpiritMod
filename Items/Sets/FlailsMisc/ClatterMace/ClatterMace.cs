@@ -22,7 +22,6 @@ namespace SpiritMod.Items.Sets.FlailsMisc.ClatterMace
 			Item.damage = 10;
 			Item.knockBack = 5.5f;
 			Item.useTime = Item.useAnimation = 30;
-			Item.noMelee = true;
 			Item.shoot = ModContent.ProjectileType<ClatterMaceProj>();
 			Item.shootSpeed = 12f;
 		}

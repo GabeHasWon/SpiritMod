@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteFlail
 				Dust dust = Dust.NewDustPerfect(position, DustID.Electric, Vector2.Zero, 0, default, Main.rand.NextFloat(0.5f, 1.0f));
 				dust.noGravity = true;
 			}
-			return base.PreAI();
+			return true;
 		}
 
 		public override void SafeTileCollide(Vector2 oldVelocity, bool highImpact)
