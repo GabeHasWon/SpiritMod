@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.ClatterMace
 			Item.height = 34;
 			Item.value = Item.sellPrice(0, 0, 60, 0);
 			Item.rare = ItemRarityID.Green;
-			Item.damage = 14;
+			Item.damage = 10;
 			Item.knockBack = 5.5f;
 			Item.useTime = Item.useAnimation = 30;
 			Item.noMelee = true;

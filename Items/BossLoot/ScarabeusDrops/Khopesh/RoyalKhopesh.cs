@@ -165,9 +165,6 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 				damage = (int)(damage * 1.5f);
 				damage += target.defense / 2;
 				knockback *= 1.5f;
-
-				if (!Main.player[Projectile.owner].noKnockback)
-					Main.player[Projectile.owner].velocity.X = -Projectile.velocity.X * 3;
 			}
 
 			hitDirection = Player.direction;

@@ -69,6 +69,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.ClatterMace
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(color), Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 		}
 	}
+
 	/*public class ClatterMaceProj : ModProjectile
 	{
 		private const string ChainTexturePath = "SpiritMod/Projectiles/Flail/ClatterMace_Chain";

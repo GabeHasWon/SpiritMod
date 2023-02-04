@@ -81,6 +81,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 			Projectile.netImportant = true;
 			Projectile.timeLeft = 2;
 			Projectile.penetrate = -1;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 10;
 		}
 
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(struckTile);
@@ -89,6 +91,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 
 		public override void AI()
 		{
+			Projectile.localNPCHitCooldown = 10;
+
 			if (!Owner.dead && Owner.active && !Owner.CCed)
 			{
 				Owner.itemTime = 2;
@@ -103,6 +107,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 
 			if (State == SPINNING) //spinning around the player in an ellipse
 			{
+				Projectile.localNPCHitCooldown = 15;
 				Projectile.velocity = Vector2.Zero;
 				Projectile.tileCollide = false;
 
@@ -123,7 +128,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 						SoundEngine.PlaySound(SoundID.Item19, Projectile.Center);
 						Projectile.Center = Owner.MountedCenter;
 						Projectile.velocity = Owner.DirectionTo(Main.MouseWorld) * (GetLaunchSpeed(Owner) * multiplier) + Owner.velocity;
-
+						Projectile.ResetLocalNPCHitImmunity();
+						Projectile.localNPCHitCooldown = 10;
 						OnLaunch(Owner);
 					}
 
@@ -256,6 +262,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 			knockback *= State switch
 			{
 				SPINNING => 0.35f,
+				FALLING => 0.5f,
 				_ => 1.0f
 			};
 

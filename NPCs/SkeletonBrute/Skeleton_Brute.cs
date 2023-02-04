@@ -31,7 +31,7 @@ namespace SpiritMod.NPCs.SkeletonBrute
 
 		public override void SetDefaults()
 		{
-			NPC.lifeMax = 250;
+			NPC.lifeMax = 200;
 			NPC.defense = 10;
 			NPC.value = Item.buyPrice(0, 0, 30, 0);
 			NPC.knockBackResist = 0.3f;

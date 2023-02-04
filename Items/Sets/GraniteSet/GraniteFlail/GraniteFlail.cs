@@ -17,13 +17,13 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteFlail
 			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
 		}
 
-		public override void SetDefaults()
+		public override void SafeSetDefaults()
 		{
 			Item.width = 30;
 			Item.height = 30;
 			Item.value = Item.sellPrice(0, 0, 80, 0);
 			Item.rare = ItemRarityID.Green;
-			Item.damage = 20;
+			Item.damage = 25;
 			Item.knockBack = 7;
 			Item.useTime = Item.useAnimation = 41;
 			Item.shoot = ModContent.ProjectileType<GraniteMaceProj>();

@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 			Item.consumable = true;
 			Item.maxStack = 999;
 			Item.shootSpeed = 11f;
-			Item.damage = 15;
+			Item.damage = 17;
 			Item.knockBack = 4.5f;
 			Item.value = Item.sellPrice(0, 0, 0, 25);
 			Item.rare = ItemRarityID.Green;

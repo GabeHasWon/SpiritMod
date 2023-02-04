@@ -72,7 +72,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);
-			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 12);
+			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 8);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}

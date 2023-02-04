@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.TwoFaceMask
 		{
 			Recipe modRecipe = CreateRecipe(1);
 			modRecipe.AddIngredient(ModContent.ItemType<MimeMask>(), 1);
-			modRecipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 8);
+			modRecipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 6);
 			modRecipe.AddTile(TileID.Anvils);
 			modRecipe.Register();
 		}

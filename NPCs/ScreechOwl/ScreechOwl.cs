@@ -155,7 +155,6 @@ namespace SpiritMod.NPCs.ScreechOwl
         }
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.worldSurface && spawnInfo.Player.ZoneSnow && !Main.dayTime && !spawnInfo.PlayerSafe ? 0.05f : 0f;
-		
 		public override void FindFrame(int frameHeight)
 		{
 			if (NPC.ai[1] == 0f)
