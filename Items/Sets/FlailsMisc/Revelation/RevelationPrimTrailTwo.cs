@@ -1,12 +1,6 @@
-﻿using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using System.Collections.Generic;
-using System.Linq;
-using System;
-using static Terraria.ModLoader.ModContent;
-using System.Reflection;
 using SpiritMod.Prim;
 
 namespace SpiritMod.Items.Sets.FlailsMisc.Revelation
@@ -73,14 +67,11 @@ namespace SpiritMod.Items.Sets.FlailsMisc.Revelation
                 }
             }
         }
-        public override void SetShaders()
-        {
-            PrepareShader(SpiritMod.StarfirePrims,"MainPS", Counter);
-        }
-        public override void OnUpdate()
+		public override void SetShaders() => PrepareShader(SpiritMod.StarfirePrims, "MainPS", Counter);
+		public override void OnUpdate()
         {
             Counter++;
-            PointCount = Points.Count() * 6;
+            PointCount = Points.Count * 6;
             if (Cap < PointCount / 6)
             {
                 Points.RemoveAt(0);
@@ -97,7 +88,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.Revelation
         public override void OnDestroy()
         {
             Destroyed = true;
-            if (Points.Count() < 3)
+            if (Points.Count < 3)
             {
                  Dispose();
             }

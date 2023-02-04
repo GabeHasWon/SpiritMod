@@ -11,25 +11,21 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
-	public class MoonJelly : ModItem
+	public class MoonJelly : FoodItem
 	{
-		public override void SetStaticDefaults()
+		internal override Point Size => new(23, 26);
+
+		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Moon Jelly");
 
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 
-		public override void SetDefaults()
+		public override void Defaults()
 		{
-			Item.width = 34;
-			Item.height = 26;
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = 30;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.useTime = Item.useAnimation = 20;
-			Item.consumable = true;
-			Item.autoReuse = false;
 			Item.potion = true;
 			Item.healLife = 120;
 			Item.UseSound = SoundID.Item3;
@@ -40,12 +36,15 @@ namespace SpiritMod.Items.Consumable.Potion
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) //pulsating glow effect in world
 		{
-			spriteBatch.Draw(TextureAssets.Item[Item.type].Value, 
+			Texture2D texture = TextureAssets.Item[Item.type].Value;
+			Rectangle frame = new Rectangle(0, 0, texture.Width, texture.Height / 3);
+
+			spriteBatch.Draw(texture, 
 				Item.Center - Main.screenPosition,
-				null, 
+				frame, 
 				Color.Lerp(Color.White, Color.Transparent, 0.75f), 
-				rotation, 
-				Item.Size / 2, 
+				rotation,
+				frame.Size() / 2, 
 				MathHelper.Lerp(1f, 1.3f, (float)Math.Sin(Main.GlobalTimeWrappedHourly * 3) / 2 + 0.5f), 
 				SpriteEffects.None, 
 				0);

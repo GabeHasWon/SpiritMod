@@ -40,9 +40,8 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 
 			Projectile.Center = player.Center + new Vector2(0, 18);
 
-			if (player.velocity.Y == 0f && !Landed)
+			if (player.velocity.Y == 0f && !Landed) //Explode
 			{
-				//Explode
 				float fallDistance = (player.position.Y / 16f) - player.fallStart;
 				if (fallDistance > 16)
 					fallDistance = 16;
@@ -62,13 +61,13 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 
 					if (j < 6)
 					{
-						killDust = Dust.NewDustPerfect(player.position + new Vector2(player.width * Main.rand.NextFloat(0.0f, 1.0f), player.height), DustID.Electric, new Vector2(fallDistance * Main.rand.NextFromList(-1.0f, 1.0f), 0f), 0, default, 0.8f);
+						killDust = Dust.NewDustPerfect(player.Center + new Vector2(player.width * Main.rand.NextFloat(0.0f, 1.0f), player.height / 2 * player.gravDir), DustID.Electric, new Vector2(fallDistance * Main.rand.NextFromList(-1.0f, 1.0f), 0f), 0, default, 0.8f);
 						killDust.noGravity = true;
 						killDust.fadeIn = 1.2f;
 					}
 					else
 					{
-						Dust.NewDustPerfect(player.position + new Vector2(player.width * Main.rand.NextFloat(0.0f, 1.0f), player.height), DustID.Electric, -velocity.RotatedByRandom(MathHelper.Pi), 0, default, Main.rand.NextFloat(0.5f, 1.0f));
+						Dust.NewDustPerfect(player.Center + new Vector2(player.width * Main.rand.NextFloat(0.0f, 1.0f), player.height / 2 * player.gravDir), DustID.Electric, -velocity.RotatedByRandom(MathHelper.Pi), 0, default, Main.rand.NextFloat(0.5f, 1.0f));
 						
 						if (!Main.dedServ)
 						{
@@ -82,7 +81,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 				int damage = (int)(fallDistance * 5);
 				Projectile.NewProjectileDirect(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EnergyStomp_Explosion>(), damage, 5, player.whoAmI);
 				for (int i = 0; i < 2; i++)
-					Projectile.NewProjectileDirect(player.GetSource_FromThis(), player.Center + new Vector2(0, 20), new Vector2(6, 0) * ((i > 0) ? -1 : 1), ModContent.ProjectileType<EnergyShockwave>(), damage, 8, player.whoAmI);
+					Projectile.NewProjectileDirect(player.GetSource_FromThis(), player.Center + new Vector2(0, 20 * player.gravDir), new Vector2(6, 0) * ((i > 0) ? -1 : 1), ModContent.ProjectileType<EnergyShockwave>(), damage, 8, player.whoAmI);
 
 				player.GetModPlayer<MyPlayer>().Shake += 15;
 

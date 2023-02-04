@@ -1,16 +1,75 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Audio;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using ReLogic.Content;
+using Terraria.Audio;
+using Terraria.ModLoader;
 
-namespace SpiritMod.Projectiles.Flail
+namespace SpiritMod.Items.Sets.FlailsMisc.ClatterMace
 {
-	public class ClatterMaceProj : ModProjectile
+	public class ClatterMaceProj : BaseFlailProj
+	{
+		private int hitCounter;
+		private readonly int hitCounterMax = 10;
+
+		public ClatterMaceProj() : base() { }
+
+		public override void SetStaticDefaults()
+		{
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+		}
+
+		public override void PostAI() { if (hitCounter > 0) hitCounter--; }
+
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //Clattering Mace effect 
+		{
+			if (Main.rand.NextBool((State == LAUNCHING) ? 2 : 8))
+			{
+				target.defense = target.defDefense - 2;
+				SoundEngine.PlaySound(SoundID.DD2_CrystalCartImpact, Projectile.position);
+				hitCounter = hitCounterMax;
+			}
+		}
+
+		public override void SafeTileCollide(Vector2 oldVelocity, bool highImpact)
+		{
+			if (highImpact)
+			{
+				Collision.HitTiles(Projectile.position, oldVelocity, Projectile.width, Projectile.height);
+				SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
+
+				for (int i = 0; i < 8; i++)
+				{
+					Dust dust = Dust.NewDustDirect(Projectile.position + oldVelocity, Projectile.width, Projectile.height, DustID.Torch, oldVelocity.X / 2, oldVelocity.Y / 2, 0, default, Main.rand.NextFloat(1.0f, 1.5f));
+					dust.noGravity = true;
+				}
+			}
+		}
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+			if (State == LAUNCHING)
+				Projectile.QuickDrawTrail(Main.spriteBatch);
+
+			Texture2D texture = TextureAssets.Projectile[Type].Value;
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+			return false;
+		}
+
+		public override void PostDraw(Color lightColor)
+		{
+			if (hitCounter <= 0)
+				return;
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			float quoteant = (float)hitCounter / hitCounterMax;
+			Color color = Color.Lerp(Color.White, Color.Yellow, 1f - quoteant) * quoteant;
+
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(color), Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+		}
+	}
+	/*public class ClatterMaceProj : ModProjectile
 	{
 		private const string ChainTexturePath = "SpiritMod/Projectiles/Flail/ClatterMace_Chain";
 		private enum AIState
@@ -484,5 +543,5 @@ namespace SpiritMod.Projectiles.Flail
 			}
 			return true;
 		}
-	}
+	}*/
 }

@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
-using System.Collections.Generic;
 using SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon;
 using Terraria.DataStructures;
 

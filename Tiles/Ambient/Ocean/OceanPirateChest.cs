@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Sets.PirateStuff;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -63,7 +62,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 		public override bool IsLockedChest(int i, int j) => Main.tile[i, j] != null && Main.tile[i, j].TileFrameX > 18;
 
-		public string MapChestName(string name, int i, int j)
+		public static string MapChestName(string name, int i, int j)
 		{
 			Tile tile = Main.tile[i, j];
 			if (tile == null)
@@ -85,7 +84,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
 			Chest.DestroyChest(i, j);
 		}
 
