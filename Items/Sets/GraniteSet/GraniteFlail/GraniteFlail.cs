@@ -14,10 +14,10 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteFlail
 			DisplayName.SetDefault("Unstable Star");
 			Tooltip.SetDefault("Builds momentum as it spins\nCreates a damaging blast when colliding at full momentum");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
+			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2;
 		}
 
-		public override void SetDefaults()
+		public override void SafeSetDefaults()
 		{
 			Item.width = 30;
 			Item.height = 30;
