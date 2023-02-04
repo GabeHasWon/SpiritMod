@@ -8,6 +8,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Accessory.SanguineWardTree;
+using SpiritMod.Tiles.Furniture.AuroraMonoliths; 
 using SpiritMod.NPCs.Critters;
 using SpiritMod.Items.Placeable.Relics;
 using SpiritMod.Mechanics.QuestSystem;
@@ -32,8 +33,8 @@ namespace SpiritMod.NPCs.Boss.Occultist
 		{
 			NPC.width = 42;
 			NPC.height = 56;
-			NPC.lifeMax = 1000;
-			NPC.defense = 14;
+			NPC.lifeMax = 800;
+			NPC.defense = 10;
 			NPC.damage = 30;
 			NPC.HitSound = SoundID.DD2_SkeletonHurt;
 			NPC.DeathSound = SoundID.NPCDeath59;
@@ -290,7 +291,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 		
 		public override void OnKill()
 		{
-			for(int i = 0; i < 4; i++)
+			for(int i = 0; i < 6; i++)
 			{
 				int n = NPC.NewNPC(NPC.GetSource_Death(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DreamstrideWisp>());
 				if(Main.npc[n].type == ModContent.NPCType<DreamstrideWisp>() && Main.npc[n].active)
@@ -306,9 +307,11 @@ namespace SpiritMod.NPCs.Boss.Occultist
 		{
 			npcLoot.AddMasterModeRelicAndPet<OccultistRelicItem, OccultistPetItem>();
 			npcLoot.AddOneFromOptions(1, ModContent.ItemType<Handball>(), ModContent.ItemType<SacrificialDagger>(), ModContent.ItemType<BloodWard>());
+			npcLoot.AddCommon<BloodMoonAuroraMonolithItem>(9);
+			npcLoot.AddCommon(ItemID.BloodMoonStarter, 2);
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !NPC.AnyNPCs(Type) && Main.bloodMoon && spawnInfo.Player.Center.Y / 16f < Main.worldSurface ? 0.01f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !NPC.AnyNPCs(Type) && Main.bloodMoon && spawnInfo.Player.Center.Y / 16f < Main.worldSurface ? 0.02f : 0f;
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,

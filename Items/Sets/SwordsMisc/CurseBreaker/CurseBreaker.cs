@@ -73,9 +73,9 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);
-			recipe.AddIngredient(ItemID.SoulofNight, 12);
-			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 8);
-			recipe.AddRecipeGroup("SpiritMod:Tier3HMBar", 8);
+			recipe.AddIngredient(ItemID.SoulofNight, 6);
+			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 6);
+			recipe.AddRecipeGroup("SpiritMod:Tier3HMBar", 12);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}

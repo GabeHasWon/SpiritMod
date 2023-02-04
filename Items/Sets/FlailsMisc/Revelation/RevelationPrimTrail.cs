@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using System.Linq;
-using System;
 using SpiritMod.Prim;
 
 namespace SpiritMod.Items.Sets.FlailsMisc.Revelation
@@ -71,7 +69,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.Revelation
         public override void OnUpdate()
         {
             Counter++;
-            PointCount= Points.Count() * 6;
+            PointCount= Points.Count * 6;
             if (Cap < PointCount / 6)
             {
                 Points.RemoveAt(0);

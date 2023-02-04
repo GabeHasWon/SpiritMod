@@ -7,7 +7,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.FlailsMisc;
 using System;
-using System.Linq;
 using System.IO;
 
 namespace SpiritMod.Items.BossLoot.StarplateDrops
@@ -31,7 +30,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.useTime = 30;
 			Item.useAnimation = 30;
 			Item.shoot = ModContent.ProjectileType<LivewireProj>();
-			Item.shootSpeed = 13;
+			Item.shootSpeed = 14;
 			Item.knockBack = 4;
 		}
 
@@ -70,7 +69,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		private bool oldTileCollide = false;
 
 		private bool canHitTarget = false;
-		public LivewireProj() : base(new Vector2(0.7f, 1), new Vector2(0.5f, 3f), 2, 50, 8) { }
+		public LivewireProj() : base(270, 50, 32) { }
 
 		public override void SetDefaults()
 		{
@@ -84,12 +83,15 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 		public override bool PreAI()
 		{
-			Player player = Main.player[Projectile.owner];
-			player.itemTime = 2;
-			player.itemAnimation = 2;
-			player.heldProj = Projectile.whoAmI;
+			if (!Owner.dead && Owner.active && !Owner.CCed)
+			{
+				Owner.itemTime = 2;
+				Owner.itemAnimation = 2;
+				Owner.heldProj = Projectile.whoAmI;
+				Projectile.timeLeft = 2;
+			}
 
-			if (!released)
+			if (State == SPINNING)
 				return true;
 			stuckTimer--;
 
@@ -107,7 +109,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 				ParticleHandler.SpawnParticle(new ImpactLine(Projectile.Center, vel, new Color(33, 211, 255), new Vector2(0.25f, 1f), 16));
 
 				float lerper = Main.rand.NextFloat();
-				ParticleHandler.SpawnParticle(new GlowParticle(Vector2.Lerp(Projectile.Center, player.Center, lerper), Vector2.Zero, new Color(33, 151, 255), 0.1f, 30));
+				ParticleHandler.SpawnParticle(new GlowParticle(Vector2.Lerp(Projectile.Center, Owner.Center, lerper), Vector2.Zero, new Color(33, 151, 255), 0.1f, 30));
 				Projectile.velocity = Vector2.Zero;
 				Projectile.tileCollide = false;
 				if (stuckToTiles)
@@ -119,7 +121,6 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 					else
 						Projectile.Center = stickTarget.Center + stuckPosition;
 				}
-
 				return false;
 			}
 			return true;
@@ -127,7 +128,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (readyToStick && released && target.life > 0)
+			if (readyToStick && (State != SPINNING) && target.life > 0)
 			{
 				trail2 = new PlugTrail2(Projectile, Main.player[Projectile.owner]);
 				trail = new PlugTrail(Projectile, Main.player[Projectile.owner]);
@@ -352,7 +353,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		public override void OnUpdate()
 		{
 			Counter++;
-			PointCount = Points.Count() * 6;
+			PointCount = Points.Count * 6;
 
 			if (Destroyed || _target.dead || !Entity.active)
 			{

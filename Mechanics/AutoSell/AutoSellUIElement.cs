@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.UI;
 
 namespace SpiritMod.Mechanics.AutoSell
@@ -30,19 +29,19 @@ namespace SpiritMod.Mechanics.AutoSell
 					spriteBatch.Draw(_backgroundTexture, new Rectangle(point1.X, point1.Y, width, height), Color.White);
 				}
 				
-				if (player.GetModPlayer<AutoSellPlayer>().sell_NoValue && Main.npcShop > 0)
-				{
-					spriteBatch.Draw(sell_NoValueActive, new Rectangle(502, 432, 32, 32), Color.White);
-				}
-
 				if (player.GetModPlayer<AutoSellPlayer>().sell_Lock && Main.npcShop > 0)
 				{
-					spriteBatch.Draw(sell_LockActive, new Rectangle(502, 356, 32, 32), Color.White);
+					spriteBatch.Draw(sell_LockActive, new Rectangle(502, 324, 32, 32), Color.White);
 				}
 
 				if (player.GetModPlayer<AutoSellPlayer>().sell_Weapons && Main.npcShop > 0)
 				{
-					spriteBatch.Draw(sell_WeaponsActive, new Rectangle(502, 394, 32, 32), Color.White);
+					spriteBatch.Draw(sell_WeaponsActive, new Rectangle(502, 362, 32, 32), Color.White);
+				}
+
+				if (player.GetModPlayer<AutoSellPlayer>().sell_NoValue && Main.npcShop > 0)
+				{
+					spriteBatch.Draw(sell_NoValueActive, new Rectangle(502, 400, 32, 32), Color.White);
 				}
 			}
 		}

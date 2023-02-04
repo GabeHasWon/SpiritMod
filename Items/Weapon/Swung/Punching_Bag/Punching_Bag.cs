@@ -18,13 +18,13 @@ namespace SpiritMod.Items.Weapon.Swung.Punching_Bag
 		{
 			Item.shootSpeed = 10f;
 			Item.damage = 15;
-			Item.knockBack = 6f;
+			Item.knockBack = 4f;
 			Item.DamageType = DamageClass.Magic;
-			Item.mana = 10;
+			Item.mana = 5;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.UseSound = SoundID.Item1;
-			Item.useAnimation = 30;
-			Item.useTime = 30;
+			Item.useAnimation = 18;
+			Item.useTime = 18;
 			Item.width = 26;
 			Item.height = 26;
 			Item.noUseGraphic = true;

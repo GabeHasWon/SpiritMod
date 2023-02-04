@@ -958,7 +958,7 @@ namespace SpiritMod
 		{
 			Point mousePoint = new Point(Main.mouseX, Main.mouseY);
 
-			Rectangle AutoSellUI_TOGGLERECTANGLE = new Rectangle(494, 312, 39, 39);
+			Rectangle AutoSellUI_TOGGLERECTANGLE = new Rectangle(494, 280, 39, 39);
 			bool AutoSellUI_TOGGLE = AutoSellUI_TOGGLERECTANGLE.Contains(mousePoint);
 
 			if (AutoSellUI_TOGGLE && Main.playerInventory && Main.npcShop > 0)
@@ -968,17 +968,7 @@ namespace SpiritMod
 				Main.hoverItemName = "Click to quick-sell your items";
 			}
 
-			Rectangle Sell_NoValue_TOGGLERECTANGLE = new Rectangle(502, 432, 32, 32);
-			bool Sell_NoValue_TOGGLE = Sell_NoValue_TOGGLERECTANGLE.Contains(mousePoint);
-
-			if (Sell_NoValue_TOGGLE && Main.playerInventory && Main.npcShop > 0)
-			{
-				Main.LocalPlayer.mouseInterface = true;
-				Main.HoverItem = new Item();
-				Main.hoverItemName = "Toggle this to sell 'no value' items with quick-sell";
-			}
-
-			Rectangle Sell_Lock_TOGGLERECTANGLE = new Rectangle(502, 356, 32, 32);
+			Rectangle Sell_Lock_TOGGLERECTANGLE = new Rectangle(502, 324, 32, 32);
 			bool Sell_Lock_TOGGLE = Sell_Lock_TOGGLERECTANGLE.Contains(mousePoint);
 
 			if (Sell_Lock_TOGGLE && Main.playerInventory && Main.npcShop > 0)
@@ -988,7 +978,7 @@ namespace SpiritMod
 				Main.hoverItemName = "Toggle this to lock quick-sell mechanic\nYou won't be able to use quick-sell while this is toggled";
 			}
 
-			Rectangle Sell_Weapons_TOGGLERECTANGLE = new Rectangle(502, 394, 32, 32);
+			Rectangle Sell_Weapons_TOGGLERECTANGLE = new Rectangle(502, 362, 32, 32);
 			bool Sell_Weapons_TOGGLE = Sell_Weapons_TOGGLERECTANGLE.Contains(mousePoint);
 
 			if (Sell_Weapons_TOGGLE && Main.playerInventory && Main.npcShop > 0)
@@ -996,6 +986,16 @@ namespace SpiritMod
 				Main.LocalPlayer.mouseInterface = true;
 				Main.HoverItem = new Item();
 				Main.hoverItemName = "Toggle this to disable the selling of weapons";
+			}
+
+			Rectangle Sell_NoValue_TOGGLERECTANGLE = new Rectangle(502, 400, 32, 32);
+			bool Sell_NoValue_TOGGLE = Sell_NoValue_TOGGLERECTANGLE.Contains(mousePoint);
+
+			if (Sell_NoValue_TOGGLE && Main.playerInventory && Main.npcShop > 0)
+			{
+				Main.LocalPlayer.mouseInterface = true;
+				Main.HoverItem = new Item();
+				Main.hoverItemName = "Toggle this to sell 'no value' items with quick-sell";
 			}
 		}
 
