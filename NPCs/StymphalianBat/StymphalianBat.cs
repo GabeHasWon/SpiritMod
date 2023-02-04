@@ -215,7 +215,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == 367) && spawnInfo.Player.GetSpiritPlayer().ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.435f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == 367) && spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.435f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

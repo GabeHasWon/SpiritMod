@@ -49,7 +49,7 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 			});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.GetSpiritPlayer().ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && NPC.downedBoss2 ? 0.135f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && NPC.downedBoss2 ? 0.135f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

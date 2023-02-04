@@ -44,6 +44,7 @@ using SpiritMod.Buffs.DoT;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.NPCs.AsteroidDebris;
 using SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles;
+using SpiritMod.Biomes;
 
 namespace SpiritMod
 {
@@ -283,14 +284,11 @@ namespace SpiritMod
 		public bool OverseerCharm = false;
 
 		public bool ZoneAsteroid = false;
-		public bool ZoneMarble = false;
-		public bool ZoneGranite = false;
 		public bool ZoneSpider = false;
 		public bool ZoneSynthwave = false;
 		public bool ZoneLantern = false;
 		public bool ZoneSpirit = false;
 		public bool ZoneReach = false;
-		public bool ZoneHive = false;
 
 		public bool inGranite = false;
 		public bool inMarble = false;

@@ -26,7 +26,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestMarble()
         {
-            _tasks.AddTask(new ExploreTask((Player player) => player.GetModPlayer<MyPlayer>().ZoneMarble, 5000f, "marble caverns"));
+            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneMarble, 5000f, "marble caverns"));
         }
     }
 }

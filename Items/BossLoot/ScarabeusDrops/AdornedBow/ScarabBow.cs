@@ -16,6 +16,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 			Tooltip.SetDefault("Hold longer for more damage\nConverts wooden arrows into piercing adorned arrows, that get enchanted upon full charge");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.damage = 24;
@@ -37,11 +38,12 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 			Item.crit = 8;
 			Item.channel = true;
 		}
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			if (type == ProjectileID.WoodenArrowFriendly) {
+			if (type == ProjectileID.WoodenArrowFriendly)
 				type = ModContent.ProjectileType<ScarabArrow>();
-			}
+
 			Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<AdornedBowProj>(), damage - Item.damage, knockback, player.whoAmI, type);
 			return false;
 		}
@@ -51,7 +53,20 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 
 	public class AdornedBowProj : ChargeBowProj
 	{
+		static BasicEffect _effect = null;
+
 		public override string Texture => "SpiritMod/Items/BossLoot/ScarabeusDrops/AdornedBow/ScarabBow";
+
+		public override void SetStaticDefaults()
+		{
+			Main.RunOnMainThread(() =>
+			{
+				_effect = new BasicEffect(Main.instance.GraphicsDevice)
+				{
+					VertexColorEnabled = true
+				};
+			});
+		}
 
 		protected override void SetBowDefaults()
 		{
@@ -68,6 +83,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 		{
 			if (!firstFire)
 				return;
+
 			if (Main.myPlayer == Projectile.owner) {
 				Projectile proj = Main.projectile[CreateArrow()];
 				if (charge >= 1 && Projectile.ai[0] == ModContent.ProjectileType<ScarabArrow>()) proj.penetrate += 2;
@@ -82,15 +98,13 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 			//if (firing)
 				//return false;
 			Main.spriteBatch.End();
+
 			Player player = Main.player[Projectile.owner];
-			BasicEffect effect = new BasicEffect(Main.instance.GraphicsDevice) {
-				VertexColorEnabled = true
-			};
 			Color color = Color.Lerp(new Color(158, 255, 253), lightColor, 0.3f);
-			ArrowDraw.DrawArrowBasic(effect, player.Center + direction * 20, direction.ToRotation() + 3.14f, 0 - LerpFloat(0, maxVelocity, charge) * 3, 12,
-				color * 0.3f, 0 - LerpFloat(0.7f, 0.4f, charge), 0 - LerpFloat(minVelocity, maxVelocity, charge) * 2);
-			ArrowDraw.DrawArrowBasic(effect, player.Center + direction * 20, direction.ToRotation() + 3.14f, 0 - LerpFloat(0, maxVelocity, charge) * 3, 6,
-				color * 0.3f, 0 - LerpFloat(0.7f, 0.4f, charge), 0 - LerpFloat(minVelocity, maxVelocity, charge) * 2);
+
+			ArrowDraw.DrawArrowBasic(_effect, player.Center + direction * 20, direction.ToRotation() + 3.14f, 0 - LerpFloat(0, maxVelocity, charge) * 3, 12, color * 0.3f, 0 - LerpFloat(0.7f, 0.4f, charge), 0 - LerpFloat(minVelocity, maxVelocity, charge) * 2);
+			ArrowDraw.DrawArrowBasic(_effect, player.Center + direction * 20, direction.ToRotation() + 3.14f, 0 - LerpFloat(0, maxVelocity, charge) * 3, 6, color * 0.3f, 0 - LerpFloat(0.7f, 0.4f, charge), 0 - LerpFloat(minVelocity, maxVelocity, charge) * 2);
+			
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
 			return false;
 		}
