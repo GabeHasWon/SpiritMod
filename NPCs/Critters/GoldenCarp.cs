@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Consumable.Fish;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,6 +13,8 @@ namespace SpiritMod.NPCs.Critters
 		{
 			DisplayName.SetDefault("Golden Carp");
 			Main.npcFrameCount[NPC.type] = 5;
+			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -23,7 +24,6 @@ namespace SpiritMod.NPCs.Critters
 			NPC.damage = 0;
 			NPC.defense = 0;
 			NPC.lifeMax = 5;
-			Main.npcCatchable[NPC.type] = true;
 			NPC.catchItem = (short)ItemID.GoldenCarp;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;

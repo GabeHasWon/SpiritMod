@@ -13,8 +13,8 @@ namespace SpiritMod.NPCs.Critters
 		{
 			DisplayName.SetDefault("Rotslug");
 			Main.npcFrameCount[NPC.type] = 4;
-			Main.npcFrameCount[NPC.type] = 4;
 			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

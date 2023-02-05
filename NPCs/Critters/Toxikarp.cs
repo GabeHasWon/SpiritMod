@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Critters
@@ -16,6 +15,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			DisplayName.SetDefault("Toxikarp");
 			Main.npcFrameCount[NPC.type] = 6;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

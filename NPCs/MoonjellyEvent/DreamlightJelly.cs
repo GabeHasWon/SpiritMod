@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			DisplayName.SetDefault("Dreamlight Jelly");
 			Main.npcFrameCount[NPC.type] = 6;
 			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

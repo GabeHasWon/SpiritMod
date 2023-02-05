@@ -15,6 +15,8 @@ namespace SpiritMod.NPCs.Critters
 		{
 			DisplayName.SetDefault("Luminous Floater");
 			Main.npcFrameCount[NPC.type] = 40;
+			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

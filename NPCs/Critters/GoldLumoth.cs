@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.Critters
             DisplayName.SetDefault("Gold Lumoth");
             Main.npcFrameCount[NPC.type] = 4;
             Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()
