@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.Critters
 			DisplayName.SetDefault("Cyberfly");
 			Main.npcFrameCount[NPC.type] = 2;
 			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

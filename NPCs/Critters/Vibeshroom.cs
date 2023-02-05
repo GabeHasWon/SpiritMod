@@ -16,6 +16,7 @@ namespace SpiritMod.NPCs.Critters
 			DisplayName.SetDefault("Quivershroom");
 			Main.npcFrameCount[NPC.type] = 14;
 			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

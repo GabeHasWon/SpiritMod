@@ -11,8 +11,9 @@ namespace SpiritMod.NPCs.Critters
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cleft Hopper");
-			Main.npcCatchable[NPC.type] = true;
 			Main.npcFrameCount[NPC.type] = 7;
+			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

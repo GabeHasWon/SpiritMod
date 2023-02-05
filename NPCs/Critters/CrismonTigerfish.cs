@@ -12,6 +12,8 @@ namespace SpiritMod.NPCs.Critters
 		{
 			DisplayName.SetDefault("Crimson Tigerfish");
 			Main.npcFrameCount[NPC.type] = 5;
+			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -21,7 +23,6 @@ namespace SpiritMod.NPCs.Critters
 			NPC.damage = 0;
 			NPC.defense = 0;
 			NPC.lifeMax = 5;
-			Main.npcCatchable[NPC.type] = true;
 			NPC.catchItem = (short)ItemID.CrimsonTigerfish;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;

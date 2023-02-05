@@ -19,10 +19,9 @@ namespace SpiritMod.NPCs.Critters
 			DisplayName.SetDefault("Gulper");
 			Main.npcFrameCount[NPC.type] = 6;
 			Main.npcCatchable[NPC.type] = true;
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Position = new Vector2(0, 6f),
-			};
+			NPCID.Sets.CountsAsCritter[Type] = true;
+
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Position = new Vector2(0, 6f), };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 

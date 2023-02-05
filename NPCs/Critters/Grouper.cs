@@ -15,6 +15,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			DisplayName.SetDefault("Grouper");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

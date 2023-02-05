@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Consumable;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,8 +14,9 @@ namespace SpiritMod.NPCs.Critters
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blossmoon");
-			Main.npcCatchable[NPC.type] = true;
 			Main.npcFrameCount[NPC.type] = 45;
+			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

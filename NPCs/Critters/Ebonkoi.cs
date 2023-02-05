@@ -15,6 +15,7 @@ namespace SpiritMod.NPCs.Critters
 			DisplayName.SetDefault("Ebonkoi");
 			Main.npcFrameCount[NPC.type] = 5;
 			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()
