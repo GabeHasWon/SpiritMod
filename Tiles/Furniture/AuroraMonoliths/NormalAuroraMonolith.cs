@@ -16,7 +16,7 @@ namespace SpiritMod.Tiles.Furniture.AuroraMonoliths
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Aurora Monolith");
 		public override int PlaceType => ModContent.TileType<NormalAuroraMonolith>();
 
-        public override void SafeAddRecipes()
+        public override void AddRecipes()
 		{
 			var recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.IceBlock, 10);

@@ -17,7 +17,7 @@ namespace SpiritMod.Tiles.Furniture.AuroraMonoliths
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Biome Aurora Monolith");
 		public override int PlaceType => ModContent.TileType<SpiritBiomeAuroraMonolith>();
 
-        public override void SafeAddRecipes()
+        public override void AddRecipes()
 		{
 			var recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<SpiritBar>(), 1);

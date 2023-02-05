@@ -127,9 +127,5 @@ namespace SpiritMod.Tiles.Furniture.AuroraMonoliths
             Item.value = Item.buyPrice(0, 2, 0, 0);
             Item.createTile = PlaceType;
         }
-
-        public override void AddRecipes() => SafeAddRecipes();
-
-        public abstract void SafeAddRecipes();
     }
 }

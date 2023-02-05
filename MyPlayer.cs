@@ -2138,19 +2138,6 @@ namespace SpiritMod
 				Player.lifeRegen += 4;
 		}
 
-		//public override void NaturalLifeRegen(ref float regen)
-		//{
-		//	// Last hook before player.DashMovement
-		//	DashType dash = FindDashes();
-		//	if (dash != DashType.None)
-		//	{
-		//		// Prevent vanilla dashes
-		//		Player.dash = 0;
-		//		//if (Player.pulley)
-		//		//	DashMovement(dash);
-		//	}
-		//}
-
 		public override void UpdateEquips()
 		{
 			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeMaxMultiplier);
