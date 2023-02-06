@@ -31,7 +31,7 @@ namespace SpiritMod.Tiles.Furniture.NeonLights
             TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			Main.tileLighted[Type] = true;
-			name.SetDefault("Fluorescent Plant");
+			name.SetDefault("Neon Plant");
             AddMapEntry(new Color(139, 88, 255), name);
             AdjTiles = new int[] { TileID.Torches };
             DustType = -1;

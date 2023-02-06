@@ -28,7 +28,7 @@ namespace SpiritMod.Tiles.Furniture.NeonLights
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			DustType = DustID.Dirt;//ModContent.DustType<Pixel>();
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Fluorescent Lantern");
+			name.SetDefault("Neon Lantern");
             AddMapEntry(new Color(255, 243, 74), name);
             AdjTiles = new int[] { TileID.Torches };
             DustType = -1;

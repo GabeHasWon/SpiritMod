@@ -29,7 +29,7 @@ namespace SpiritMod.Tiles.Furniture.NeonLights
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			ModTranslation name = CreateMapEntryName();
 			Main.tileLighted[Type] = true;
-			name.SetDefault("Fluorescent Candle");
+			name.SetDefault("Neon Candle");
             AddMapEntry(new Color(77, 255, 88), name);
             AdjTiles = new int[] { TileID.Torches };
             DustType = -1;

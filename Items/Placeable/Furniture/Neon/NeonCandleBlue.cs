@@ -8,10 +8,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 {
 	public class NeonCandleBlue : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Blue Fluorescent Candle");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Blue Neon Candle");
 
 		public override void SetDefaults()
 		{
@@ -19,19 +16,16 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 			Item.height = 28;
 			Item.value = Item.value = Terraria.Item.buyPrice(0, 0, 1, 0);
 			Item.rare = ItemRarityID.Blue;
-
 			Item.maxStack = 99;
-
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<BlueNeonCandle>();
 		}
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(3);

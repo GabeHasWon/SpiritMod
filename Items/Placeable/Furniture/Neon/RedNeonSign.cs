@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Fluorescent Sign");
+			DisplayName.SetDefault("Red Neon Sign");
 		}
 
 		public override void SetDefaults()
