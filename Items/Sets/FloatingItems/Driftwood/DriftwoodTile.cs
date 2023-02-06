@@ -41,6 +41,13 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
+
+			Main.tileMerge[Type][TileID.WoodBlock] = true;
+			Main.tileMerge[TileID.WoodBlock][Type] = true;
+
+			Main.tileMerge[Type][TileID.Sand] = true;
+			Main.tileMerge[TileID.Sand][Type] = true;
+
 			AddMapEntry(new Color(138, 79, 45));
 			ItemDrop = ModContent.ItemType<DriftwoodTileItem>();
 		}
