@@ -49,7 +49,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			});
 		}
 
-		public override bool? CanBeHitByProjectile(Projectile projectile) => !projectile.minion;
+		public override bool? CanBeHitByProjectile(Projectile projectile) => projectile.minion ? false : null;
 
 		public override void HitEffect(int hitDirection, double damage)
         {
