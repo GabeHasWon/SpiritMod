@@ -1,3 +1,4 @@
+using SpiritMod.Items.Material;
 using SpiritMod.Tiles.Furniture.Signs;
 using Terraria;
 using Terraria.ID;

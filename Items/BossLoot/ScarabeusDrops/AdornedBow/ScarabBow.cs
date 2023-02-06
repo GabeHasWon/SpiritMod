@@ -59,13 +59,16 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 
 		public override void SetStaticDefaults()
 		{
-			Main.RunOnMainThread(() =>
+			if (!Main.dedServ && Main.netMode != NetmodeID.Server)
 			{
-				_effect = new BasicEffect(Main.instance.GraphicsDevice)
+				Main.RunOnMainThread(() =>
 				{
-					VertexColorEnabled = true
-				};
-			});
+					_effect = new BasicEffect(Main.instance.GraphicsDevice)
+					{
+						VertexColorEnabled = true
+					};
+				});
+			}
 		}
 
 		protected override void SetBowDefaults()

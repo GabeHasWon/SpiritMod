@@ -52,6 +52,7 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 			{
 				float angle = Main.rand.NextFloat(MathHelper.PiOver4, -MathHelper.Pi - MathHelper.PiOver4);
 				Vector2 spawnPlace = Vector2.Normalize(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle))) * 20f;
+
 				if (Collision.CanHit(position, 0, 0, position + spawnPlace, 0, 0))
 					position += spawnPlace;
 			}

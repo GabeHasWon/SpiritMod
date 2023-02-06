@@ -23,6 +23,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			Projectile.aiStyle = -1;
 			Projectile.scale = 0.85f;
 		}
+
 		public override void AI()
 		{
 			if (!Main.npc[(int)Projectile.ai[1]].active)
@@ -41,23 +42,15 @@ namespace SpiritMod.NPCs.Undead_Warlock
 				Projectile.Center = Location + new Vector2(Main.npc[(int)Projectile.ai[1]].Center.X, Main.npc[(int)Projectile.ai[1]].Center.Y - 90);
 			}
 
-			if (Main.rand.Next(28)==0)
+			if (Main.rand.NextBool(28))
 			{
 				for (int index1 = 0; index1 < 4; ++index1)
 				{
-					int chosenDust = Main.rand.Next(2)==0 ? 173 : 157;
-					float scale = (float) Main.rand.Next(3, 10) * 0.1f;
+					int chosenDust = Main.rand.NextBool(2) ? 173 : 157;
+					float scale = Main.rand.Next(3, 10) * 0.1f;
 					float fadeIn = 1.2f;
-					if (chosenDust == 258)
-					{
-						scale = (float) Main.rand.Next(1, 3) * 0.1f;
-						fadeIn = 0.7f;
-					}
-					int index2 = Dust.NewDust(new Vector2
-					(
-						Projectile.position.X,
-						Projectile.position.Y
-					), 22, 34, chosenDust, 0.0f, 0.0f, 200, new Color(), 1.2f);
+
+					int index2 = Dust.NewDust(Projectile.position, 22, 34, chosenDust, 0.0f, 0.0f, 200, new Color(), 1.2f);
 					Main.dust[index2].scale = scale;
 					Main.dust[index2].noGravity = true;
 					Main.dust[index2].fadeIn = fadeIn;
