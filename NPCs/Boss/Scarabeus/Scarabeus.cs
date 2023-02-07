@@ -35,6 +35,24 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	[AutoloadBossHead]
 	public class Scarabeus : ModNPC, IBCRegistrable
 	{
+		bool trailBehind;
+		int frame = 0;
+		float extraYoff;
+		float skipTimer = 0;
+		int timer = 0;
+		bool canHitPlayer;
+
+		public float AiTimer
+		{
+			get => NPC.ai[0];
+			set => NPC.ai[0] = value;
+		}
+		public float AttackType
+		{
+			get => NPC.ai[1];
+			set => NPC.ai[1] = value;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Scarabeus");
@@ -75,22 +93,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			});
 		}
 
-		bool trailBehind;
-		int frame = 0;
-		float extraYoff;
-		float skipTimer = 0;
-		int timer = 0;
-		bool canHitPlayer;
-
-		public float AiTimer
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			get => NPC.ai[0];
-			set => NPC.ai[0] = value;
-		}
-		public float AttackType
-		{
-			get => NPC.ai[1];
-			set => NPC.ai[1] = value;
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.7143f * bossLifeScale);
+			NPC.damage = (int)(NPC.damage * 0.626f);
 		}
 
 		public override bool CheckActive()
@@ -101,6 +107,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 			return true;
 		}
+
 		public override void AI()
 		{
 			NPC.TargetClosest(true);
@@ -454,7 +461,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 						Vector2 velocity = -Vector2.UnitY.RotatedBy(i * (float)Math.PI / 12);
 						velocity *= 10f;
 						velocity.Y += 2f;
-						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<ScarabSandball>(), NPC.damage / 4, 1f, Main.myPlayer, 0, player.position.Y).netUpdate = true;
+						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<ScarabSandball>(), NPCUtils.ToActualDamage(20, 1.5f, 2f), 1f, Main.myPlayer, 0, player.position.Y).netUpdate = true;
 					}
 				}
 			}
@@ -685,7 +692,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 								break;
 
 							if (Main.netMode != NetmodeID.MultiplayerClient)
-								Projectile.NewProjectile(NPC.GetSource_FromAI(), center, Vector2.Zero, ModContent.ProjectileType<SandShockwave>(), NPC.damage / 4, 5f, Main.myPlayer);
+								Projectile.NewProjectile(NPC.GetSource_FromAI(), center, Vector2.Zero, ModContent.ProjectileType<SandShockwave>(), NPCUtils.ToActualDamage(24, 1.5f, 2f), 5f, Main.myPlayer);
 						}
 					}
 
@@ -1018,7 +1025,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 										break;
 
 									if (Main.netMode != NetmodeID.MultiplayerClient)
-										Projectile.NewProjectile(NPC.GetSource_FromAI(), center, Vector2.Zero, ModContent.ProjectileType<SandShockwave>(), NPC.damage / 4, 5f, Main.myPlayer);
+										Projectile.NewProjectile(NPC.GetSource_FromAI(), center, Vector2.Zero, ModContent.ProjectileType<SandShockwave>(), NPCUtils.ToActualDamage(20, 1.5f, 2f), 5f, Main.myPlayer);
 								}
 							}
 						}
@@ -1113,7 +1120,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 							break;
 
 						if (Main.netMode != NetmodeID.MultiplayerClient)
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), center, Vector2.Zero, ModContent.ProjectileType<SandShockwave>(), NPC.damage / 5, 5f, Main.myPlayer);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), center, Vector2.Zero, ModContent.ProjectileType<SandShockwave>(), NPCUtils.ToActualDamage(16, 1.5f, 2f), 5f, Main.myPlayer);
 					}
 				}
 				NPC.rotation = NPC.velocity.X * -0.05f;
@@ -1140,7 +1147,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 				{
 					for (int i = 0; i < 3; i++)
 					{
-						Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), player.Center - new Vector2(Main.rand.Next(-200, 200), 200), -Vector2.UnitY, ModContent.ProjectileType<LargeScarab>(), NPC.damage / 5, 1, Main.myPlayer, player.whoAmI, Main.rand.Next(20));
+						Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), player.Center - new Vector2(Main.rand.Next(-200, 200), 200), -Vector2.UnitY, ModContent.ProjectileType<LargeScarab>(), NPCUtils.ToActualDamage(16, 1.5f, 2f), 1, Main.myPlayer, player.whoAmI, Main.rand.Next(20));
 						proj.netUpdate = true;
 					}
 				}
@@ -1228,12 +1235,6 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.7143f * bossLifeScale);
-			NPC.damage = (int)(NPC.damage * 0.626f);
-		}
-
 		public override bool PreKill()
 		{
 			MyWorld.downedScarabeus = true;
@@ -1260,7 +1261,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			npcLoot.Add(notExpertRule);
 		}
 
-		private void Gores()
+		/*private void Gores()
 		{
 			for (int i = 1; i <= 7; i++)
 				Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Scarabeus/Scarab" + i.ToString()).Type, 1f);
@@ -1290,7 +1291,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 				Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, randomDustType(), 0f, 0f, 100, default, .82f).velocity *= 2f;
 			}
-		}
+		}*/
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,

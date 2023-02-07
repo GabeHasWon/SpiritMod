@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -32,8 +31,9 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             Projectile.hide = false;
 			Projectile.timeLeft = 30000;
 		}
-        float alphaCounter;
+
         int num1;
+
 		public override void AI()
         {
             var list = Main.projectile.Where(x1 => x1.Hitbox.Intersects(Projectile.Hitbox));
@@ -44,10 +44,11 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                     Projectile.Kill();
                 }
             }
-            alphaCounter += .04f;
+
             Lighting.AddLight(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);
             Projectile.frameCounter++;
             Projectile.spriteDirection = -Projectile.direction;
+
             if (Projectile.timeLeft % 4 == 0)
             {
                
@@ -96,6 +97,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                 }
             }
         }
+
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             Vector2 lineStart = Projectile.Center;
@@ -113,11 +115,9 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             return false;
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
-        public override void Kill(int timeLeft)
+		public override Color? GetAlpha(Color lightColor) => Color.White;
+
+		public override void Kill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCDeath28, Projectile.Center);
             for (int i = 0; i < 12; i++)

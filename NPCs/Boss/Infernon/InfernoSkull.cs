@@ -43,6 +43,9 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/Infernon");
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
+
 		public override void FindFrame(int frameHeight)
 		{
 			NPC.frameCounter += 0.10f;
@@ -214,6 +217,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 		}
 
 		public override void BossLoot(ref string name, ref int potionType) => potionType = ItemID.GreaterHealingPotion;
+
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.AddMasterModeRelicAndPet<InfernonRelicItem, InfernonPetItem>();

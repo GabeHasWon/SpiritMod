@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             Lighting.AddLight(Projectile.Center, 0.1f * num, 0.2f * num, 0.4f * num);
 
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
-            Projectile.velocity = Projectile.velocity.RotatedBy(System.Math.PI / 40);
+            Projectile.velocity = Projectile.velocity.RotatedBy(Math.PI / 40);
 
             int num623 = Dust.NewDust(Projectile.Center, 4, 4, DustID.DungeonSpirit, 0f, 0f, 0, default, 1.8f);
             Main.dust[num623].velocity = Projectile.velocity;

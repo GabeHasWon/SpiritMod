@@ -44,7 +44,6 @@ using SpiritMod.Buffs.DoT;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.NPCs.AsteroidDebris;
 using SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles;
-using SpiritMod.Biomes;
 
 namespace SpiritMod
 {
@@ -410,7 +409,6 @@ namespace SpiritMod
 			bool showAurora = (Player.ZoneSnow || ZoneSpirit || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
 
 			ManageAshrainShader();
-			//player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 			Player.ManageSpecialBiomeVisuals("SpiritMod:AuroraSky", showAurora || auroraMonoliths.Any(x => x.Value >= 1));
 			Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritBiomeSky", spirit);
 			Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", ZoneAsteroid);

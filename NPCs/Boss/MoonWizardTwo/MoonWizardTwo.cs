@@ -492,7 +492,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 			{
 				Vector2 vector2_2 = Vector2.UnitY.RotatedByRandom(1.57079637050629f) * new Vector2(5f, 3f);
 				bool expertMode = Main.expertMode;
-				int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + Main.rand.Next(-60, 60), NPC.Center.Y + Main.rand.Next(-60, 60), vector2_2.X, vector2_2.Y, ModContent.ProjectileType<MysticJellyfishOrbiter>(), NPCUtils.ToActualDamage(70, 1.5f), 0.0f, Main.myPlayer, 0.0f, (float)NPC.whoAmI);
+				int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + Main.rand.Next(-60, 60), NPC.Center.Y + Main.rand.Next(-60, 60), vector2_2.X, vector2_2.Y, ModContent.ProjectileType<MysticJellyfishOrbiter>(), NPCUtils.ToActualDamage(70, 1.5f, 2f), 0.0f, Main.myPlayer, 0.0f, (float)NPC.whoAmI);
 				Main.projectile[p].scale = Main.rand.NextFloat(.6f, 1f);
 			}
 			return true;
@@ -521,7 +521,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 
 				Vector2 startPos = new Vector2(NPC.Center.X + 75 * NPC.spriteDirection, NPC.Center.Y - 30);
 				Vector2 arcVel = ArcVelocityHelper.GetArcVel(startPos, player.Center, 0.3f, 300, 500, 50, 100).RotatedBy(Main.rand.NextFloat(-0.2f,0.2f));
-				int Ball = Projectile.NewProjectile(NPC.GetSource_FromAI(), startPos, arcVel, ModContent.ProjectileType<MysticWizardBallSmall>(), NPCUtils.ToActualDamage(100, 1.5f), 3f, 0);
+				int Ball = Projectile.NewProjectile(NPC.GetSource_FromAI(), startPos, arcVel, ModContent.ProjectileType<MysticWizardBallSmall>(), NPCUtils.ToActualDamage(100, 1.5f, 2f), 3f, 0);
 				Main.projectile[Ball].ai[0] = NPC.whoAmI;
 				Main.projectile[Ball].ai[1] = Main.rand.Next(3, 5);
 				Main.projectile[Ball].netUpdate = true;
@@ -593,7 +593,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 						Dust.NewDustPerfect(new Vector2(NPC.Center.X + 75 * NPC.spriteDirection, NPC.Center.Y - 30), 226, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(5), 0, default, 0.75f).noGravity = true;
 					SoundEngine.PlaySound(SoundID.NPCDeath28, NPC.position);
 
-					int Ball = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + 75 * NPC.spriteDirection, NPC.Center.Y - 30, NPC.spriteDirection * 3.5f, -2f, ModContent.ProjectileType<MysticWizardBall>(), NPCUtils.ToActualDamage(100, 1.5f), 3f, 0);
+					int Ball = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + 75 * NPC.spriteDirection, NPC.Center.Y - 30, NPC.spriteDirection * 3.5f, -2f, ModContent.ProjectileType<MysticWizardBall>(), NPCUtils.ToActualDamage(100, 1.5f, 2f), 3f, 0);
 					Main.projectile[Ball].ai[0] = NPC.whoAmI;
 					Main.projectile[Ball].ai[1] = Main.rand.Next(7, 9);
 					Main.projectile[Ball].netUpdate = true;

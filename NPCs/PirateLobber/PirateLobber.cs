@@ -91,7 +91,7 @@ namespace SpiritMod.NPCs.PirateLobber
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				var vel = new Vector2(NPC.direction * 5, 0);
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center - vel, vel, ModContent.ProjectileType<PirateLobberBarrel>(), NPCUtils.ToActualDamage(60, 1.3f), 5, Main.myPlayer);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center - vel, vel, ModContent.ProjectileType<PirateLobberBarrel>(), NPCUtils.ToActualDamage(60, 1.3f, 1.6f), 5, Main.myPlayer);
 			}
 			SoundEngine.PlaySound(SoundID.Item1, NPC.Center);
 		}

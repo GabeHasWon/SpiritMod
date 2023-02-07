@@ -9,10 +9,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class MoonshotProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Moonshot");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Moonshot");
 
 		public override void SetDefaults()
 		{
@@ -60,7 +57,8 @@ namespace SpiritMod.Projectiles.Bullet
             {
 				if (player.HasAmmo(player.inventory[player.selectedItem]))
 				{
-					bool canshoot = player.PickAmmo(player.inventory[player.selectedItem], out int shoot, out float speed, out Projectile.damage, out Projectile.knockBack, out int _);
+					player.PickAmmo(player.inventory[player.selectedItem], out int shoot, out float speed, out Projectile.damage, out Projectile.knockBack, out int _);
+
 					if (counter < 45)
 					{
 						SoundEngine.PlaySound(SoundID.Item96, Projectile.Center);
@@ -78,8 +76,8 @@ namespace SpiritMod.Projectiles.Bullet
 					{
 						direction *= .8f;
 						SoundEngine.PlaySound(SoundID.Item109);
-						int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center - new Vector2(4, 4), direction, ModContent.ProjectileType<SineBall>(), Projectile.damage/3, Projectile.knockBack * 0.25f, Projectile.owner, 180);
-						int p1 = Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center - new Vector2(4, 4), direction, ModContent.ProjectileType<SineBall>(), Projectile.damage/3, Projectile.knockBack * 0.25f, Projectile.owner, 0, proj + 1);
+						int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center - new Vector2(4, 4), direction, ModContent.ProjectileType<SineBall>(), Projectile.damage / 3, Projectile.knockBack * 0.25f, Projectile.owner, 180);
+						int p1 = Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center - new Vector2(4, 4), direction, ModContent.ProjectileType<SineBall>(), Projectile.damage / 3, Projectile.knockBack * 0.25f, Projectile.owner, 0, proj + 1);
 						Main.projectile[proj].hostile = false;
 						Main.projectile[p1].hostile = false;
 						Main.projectile[proj].friendly = true;

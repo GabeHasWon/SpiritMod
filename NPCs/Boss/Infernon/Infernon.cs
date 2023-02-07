@@ -61,6 +61,9 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			});
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
+
 		public override bool PreAI()
 		{
 			NPC.spriteDirection = NPC.direction;
