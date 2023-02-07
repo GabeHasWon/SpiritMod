@@ -133,8 +133,10 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 					{
 						for (int i = 0; i < oldSpeed / 7f; i++)
 						{
-							var line = new ImpactLine(Vector2.Lerp(oldCenter, Projectile.Center, Main.rand.NextFloat()) + Main.rand.NextVector2Circular(35, 35), Vector2.Normalize(player.velocity) * 0.5f, Color.Lerp(Color.Green, Color.LightGreen, Main.rand.NextFloat()), new Vector2(0.25f, Main.rand.NextFloat(0.5f, 1.5f)) * 3, 60);
-							line.TimeActive = 30;
+							ImpactLine line = new(Vector2.Lerp(oldCenter, Projectile.Center, Main.rand.NextFloat()) + Main.rand.NextVector2Circular(35, 35), Vector2.Normalize(player.velocity) * 0.5f, Color.Lerp(Color.Green, Color.LightGreen, Main.rand.NextFloat()), new Vector2(0.25f, Main.rand.NextFloat(0.5f, 1.5f)) * 3, 60)
+							{
+								TimeActive = 30
+							};
 							ParticleHandler.SpawnParticle(line);
 						}
 					}
@@ -149,7 +151,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
                 if (charge == MAXCHARGE)
                 {
 					player.GetModPlayer<MyPlayer>().AnimeSword = false;
-					player.velocity = Vector2.Zero;
+					player.velocity *= 0.001f;
 					Projectile.Kill();
                 }
             }
@@ -158,11 +160,13 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 				if (charge > 40 && charge < MAXCHARGE)
 				{
 					player.GetModPlayer<MyPlayer>().AnimeSword = false;
-					player.velocity = Vector2.Zero;
+					player.velocity *= 0.001f;
 				}
 				Projectile.Kill();
             }
-        }
+
+			player.itemRotation = 0;
+		}
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -282,10 +286,10 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<BladeOfTheDragon>())
-				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_Held").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_Sparkle").Value, drawInfo);
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_Held").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_Sparkle").Value, -9, drawInfo);
 		}
 
-		public static void DrawItem(Texture2D texture, Texture2D sparkle, PlayerDrawSet info)
+		public static void DrawItem(Texture2D texture, Texture2D sparkle, int sparkleOffY, PlayerDrawSet info)
 		{
 			Item item = info.drawPlayer.HeldItem;
 			if (info.shadow != 0f || info.drawPlayer.frozen || info.drawPlayer.dead || (info.drawPlayer.wet && item.noWet))
@@ -325,7 +329,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 			{
 				info.DrawDataCache.Add(new DrawData(
 					sparkle,
-					info.drawPlayer.Center - Main.screenPosition + offset - new Vector2(0, 9),
+					info.drawPlayer.Center - Main.screenPosition + offset + new Vector2(0, sparkleOffY),
 					null,
 					Color.White,
 					Main.GlobalTimeWrappedHourly * 0.5f,

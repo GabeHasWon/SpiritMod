@@ -135,7 +135,7 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 				if (charge > 60 && charge < MAXCHARGE)
 				{
 					player.GetModPlayer<MyPlayer>().AnimeSword = false;
-					player.velocity = Vector2.Zero;
+					player.velocity *= 0.001f;
 					charge = MAXCHARGE + 1;
 				}
 
@@ -181,6 +181,8 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 						Projectile.timeLeft = 15;
 				}
 			}
+
+			player.itemRotation = 0;
 		}
 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -216,7 +218,7 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<AnimeSword>())
-				BladeoftheDragonLayer.DrawItem(Mod.Assets.Request<Texture2D>("Items/Weapon/Swung/AnimeSword/AnimeSwordProj").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_Sparkle").Value, drawInfo);
+				BladeoftheDragonLayer.DrawItem(Mod.Assets.Request<Texture2D>("Items/Weapon/Swung/AnimeSword/AnimeSwordProj").Value, Mod.Assets.Request<Texture2D>("Items/Sets/SwordsMisc/BladeOfTheDragon/BladeOfTheDragon_Sparkle").Value, 0, drawInfo);
 		}
 	}
 }
