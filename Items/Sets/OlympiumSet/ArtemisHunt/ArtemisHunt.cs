@@ -250,10 +250,12 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 					SoundEngine.PlaySound(SoundID.Item20 with { PitchVariance = 0.2f }, Projectile.Center);
 
 					offsetAngle += SPREAD;
-					Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, direction.RotatedBy(offsetAngle) * 20, ModContent.ProjectileType<ArtemisHuntVolley>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+					Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, direction.RotatedBy(offsetAngle) * 20, ModContent.ProjectileType<ArtemisHuntVolley>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 
-					ImpactLine line = new ImpactLine(Projectile.Center - (direction.RotatedBy(offsetAngle) * 50), direction.RotatedBy(offsetAngle) * 4, new Color(125, 255, 253), new Vector2(0.25f, 2f), 70);
-					line.TimeActive = 30; 
+					ImpactLine line = new ImpactLine(Projectile.Center - (direction.RotatedBy(offsetAngle) * 50), direction.RotatedBy(offsetAngle) * 4, new Color(125, 255, 253), new Vector2(0.25f, 2f), 70)
+					{
+						TimeActive = 30
+					};
 					ParticleHandler.SpawnParticle(line);
 
 					shots--;

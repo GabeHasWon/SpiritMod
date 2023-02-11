@@ -11,12 +11,12 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 		{
 			DisplayName.SetDefault("Whirltide");
 			Tooltip.SetDefault("Sprouts tides from the ground below");
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-
-			Item.damage = 25;
+			Item.damage = 12;
 			Item.noMelee = true;
 			Item.noUseGraphic = false;
 			Item.DamageType = DamageClass.Magic;
@@ -25,10 +25,9 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 			Item.useTime = 25;
 			Item.useAnimation = 12;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.shoot = ModContent.ProjectileType<Whirltide_Bullet>();
-			Item.knockBack = 10f;
+			Item.shoot = ModContent.ProjectileType<WhirltideScouter>();
+			Item.knockBack = 7.5f;
 			Item.shootSpeed = 7f;
-			Item.staff[Item.type] = true;
 			Item.autoReuse = true;
 			Item.rare = ItemRarityID.Green;
 			Item.value = Item.sellPrice(silver: 50);
@@ -36,7 +35,10 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 			Item.mana = 5;
 		}
 
-		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<Whirltide_Water_Explosion>()] < 1;
+		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<WhirltideSpout>()] < 1;
+
+		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+			=> velocity = new Vector2(6 * player.direction, 0);
 
 		public override void AddRecipes()
 		{
@@ -44,16 +46,6 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 			recipe.AddIngredient(null, "TribalScale", 5);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
-		}
-
-		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-		{
-			if (player.direction == 1)
-				velocity.X = 6f;
-			else
-				velocity.X = -6f;
-
-			velocity.Y = 0f;
 		}
 	}
 }

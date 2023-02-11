@@ -2,6 +2,7 @@ using SpiritMod.Projectiles.Thrown;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.BossLoot.AvianDrops
 {
 	public class SoaringScapula : ModItem
@@ -9,9 +10,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Soaring Scapula");
-			Tooltip.SetDefault("Pulls enemies towards the ground");
+			Tooltip.SetDefault("Pulls enemies towards the ground, causing them to take additional damage on collision");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -20,17 +20,17 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.value = Item.sellPrice(0, 0, 40, 0);
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = 1;
-			Item.damage = 22;
+			Item.damage = 28;
 			Item.knockBack = 3;
-			Item.useStyle = ItemUseStyleID.Swing;
-			Item.useTime = Item.useAnimation = 21;
+			Item.useStyle = ItemUseStyleID.Rapier;
+			Item.useTime = Item.useAnimation = 19;
 			Item.DamageType = DamageClass.Ranged;
 			Item.noMelee = true;
 			Item.autoReuse = true;
 			Item.consumable = false;
 			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<Scapula>();
-			Item.shootSpeed = 8;
+			Item.shootSpeed = 11;
 			Item.UseSound = SoundID.Item1;
 		}
 	}

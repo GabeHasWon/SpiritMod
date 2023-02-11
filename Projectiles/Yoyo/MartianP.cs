@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,23 +22,17 @@ namespace SpiritMod.Projectiles.Yoyo
 			AIType = ProjectileID.TheEyeOfCthulhu;
 		}
 
-		public override void PostAI()
-		{
-			Projectile.rotation -= (10);
-		}
+		public override void PostAI() => Projectile.rotation -= 10;
 
 		public override void AI()
 		{
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= 200) {
+			if (++Projectile.frameCounter >= 200)
+			{
 				Projectile.frameCounter = 0;
-				float rotation = (float)(Main.rand.Next(0, 361) * (Math.PI / 180));
-				Vector2 velocity = new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation));
-				int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileID.Electrosphere, Projectile.damage, Projectile.owner, 0, 0f);
-				Main.projectile[proj].friendly = true;
-				Main.projectile[proj].hostile = false;
-				Main.projectile[proj].velocity *= 7f;
-				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric);
+
+				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ProjectileID.Electrosphere, Projectile.damage, 0f, Main.player[Projectile.owner].whoAmI);
+				proj.friendly = true;
+				proj.hostile = false;
 			}
 		}
 

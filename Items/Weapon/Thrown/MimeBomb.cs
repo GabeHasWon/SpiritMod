@@ -7,12 +7,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class MimeBomb : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Mime Bomb");
-			//Tooltip.SetDefault("A noxious mixture of flammable toxins\nExplodes into cursed embers upon hitting foes\n'We could make a class out of this!'");
-		}
-
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Mime Bomb");
 
 		public override void SetDefaults()
 		{
@@ -20,7 +15,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.width = 16;
 			Item.height = 16;
 			Item.noUseGraphic = true;
-			//	item.UseSound = SoundID.Item106;
 			Item.DamageType = DamageClass.Ranged;
 			Item.channel = true;
 			Item.noMelee = true;

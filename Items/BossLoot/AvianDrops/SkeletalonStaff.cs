@@ -14,7 +14,6 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Tooltip.SetDefault("5 summon tag damage\nSummons an army of fossilized birds to fight for you");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 26;
@@ -44,11 +43,13 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			for (int i = 0; i <= Main.rand.Next(0, 3); i++) {
-				int proj = Projectile.NewProjectile(source, position.X + Main.rand.Next(-30, 30), position.Y, 0f, 0f, type, damage, knockback, player.whoAmI);
-				Projectile projectile = Main.projectile[proj];
-				for (int j = 0; j < 10; j++) {
-					int d = Dust.NewDust(projectile.Center, projectile.width, projectile.height, DustID.Dirt, (float)(Main.rand.Next(5) - 2), (float)(Main.rand.Next(5) - 2), 133);
+			for (int i = 0; i <= Main.rand.Next(0, 3); i++)
+			{
+				Projectile proj = Projectile.NewProjectileDirect(source, position + new Vector2(Main.rand.Next(-30, 30), 0), Vector2.Zero, type, damage, knockback, player.whoAmI);
+
+				for (int j = 0; j < 10; j++)
+				{
+					int d = Dust.NewDust(proj.Center, proj.width, proj.height, DustID.Dirt, (float)(Main.rand.Next(5) - 2), (float)(Main.rand.Next(5) - 2), 133);
 					Main.dust[d].scale *= .75f;
 				}
 			}

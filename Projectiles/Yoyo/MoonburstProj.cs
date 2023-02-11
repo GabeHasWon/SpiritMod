@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Dusts;
 
 namespace SpiritMod.Projectiles.Yoyo
 {
@@ -16,7 +15,6 @@ namespace SpiritMod.Projectiles.Yoyo
 			DisplayName.SetDefault("Moonburst");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-
 		}
 		
 		public override void SetDefaults()
@@ -26,6 +24,7 @@ namespace SpiritMod.Projectiles.Yoyo
             Projectile.width = Projectile.height = 14;
 
         }
+
         float alphaCounter;
         public override void AI()
         {
@@ -36,11 +35,10 @@ namespace SpiritMod.Projectiles.Yoyo
                 Projectile.Kill();
             }
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            Projectile.frameCounter++;
-        }
-        public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
+
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.frameCounter++;
+
+		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
         {
             if (Projectile.frameCounter >= 1)
             {
@@ -56,6 +54,7 @@ namespace SpiritMod.Projectiles.Yoyo
                 }
             }
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             for (int k = 0; k < Projectile.oldPos.Length; k++)
@@ -69,6 +68,7 @@ namespace SpiritMod.Projectiles.Yoyo
             }
             return true;
         }
+
 		public override void Kill(int timeLeft)
         {
             ProjectileExtras.Explode(Projectile.whoAmI, 150, 150, delegate

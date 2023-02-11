@@ -34,6 +34,8 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 			Item.shootSpeed = 14f;
 		}
 
+		public override Vector2? HoldoutOffset() => new Vector2(-8, 0);
+
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
 			if (type == ProjectileID.WoodenArrowFriendly) 

@@ -76,11 +76,13 @@ namespace SpiritMod.Projectiles.Arrow
 
 			Lighting.AddLight(Projectile.position, 0.205f * 1.85f, 0.135f * 1.85f, 0.255f * 1.85f);
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
+
             float distance = Vector2.Distance(Projectile.Center, Main.MouseWorld);
 			if (distance < 20f)
             {
                 DustHelper.DrawDiamond(new Vector2(Projectile.Center.X, Projectile.Center.Y), 173, 4, .8f, .75f);
                 SoundEngine.PlaySound(SoundID.NPCDeath6, Projectile.Center);
+
 				if (!escaped && Main.rand.NextBool(2))
 				{
 					Projectile.ai[1] = 10;

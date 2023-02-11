@@ -8,16 +8,14 @@ namespace SpiritMod.Projectiles.Held
 {
 	public class MarbleBidentProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Gilded Bident");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Bident");
 
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Trident);
 			AIType = ProjectileID.Trident;
 		}
+
 		public override void AI()
 		{
 			Vector2 position = Projectile.Center + Vector2.Normalize(Projectile.velocity) * 2;
@@ -35,6 +33,7 @@ namespace SpiritMod.Projectiles.Held
 			newDust.fadeIn = 0.5F;
 			newDust.noGravity = true;
 		}
+
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.NextBool(4) && !target.SpawnedFromStatue)

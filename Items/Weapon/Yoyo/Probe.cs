@@ -1,4 +1,5 @@
 using SpiritMod.Items.Placeable.Furniture;
+using SpiritMod.Projectiles.Yoyo;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,23 +11,23 @@ namespace SpiritMod.Items.Weapon.Yoyo
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Probe");
-			Tooltip.SetDefault("Shoots out lasers in random arcs");
+			Tooltip.SetDefault("Fires lasers at surrounding enemies");
 		}
-
 
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.WoodYoyo);
 			Item.damage = 52;
 			Item.value = Item.sellPrice(0, 10, 0, 0);
-			base.Item.rare = ItemRarityID.LightPurple;
-			base.Item.knockBack = 3f;
-			base.Item.channel = true;
-			base.Item.useStyle = ItemUseStyleID.Shoot;
-			base.Item.useAnimation = 25;
-			base.Item.useTime = 24;
-			base.Item.shoot = ModContent.ProjectileType<ProbeP>();
+			Item.rare = ItemRarityID.LightPurple;
+			Item.knockBack = 3f;
+			Item.channel = true;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.useAnimation = 25;
+			Item.useTime = 24;
+			Item.shoot = ModContent.ProjectileType<ProbeP>();
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

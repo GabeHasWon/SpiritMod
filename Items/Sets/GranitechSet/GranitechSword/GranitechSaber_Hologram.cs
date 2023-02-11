@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod;
-using SpiritMod.Projectiles.BaseProj;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -12,7 +10,6 @@ using Terraria.ModLoader;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
 using System.IO;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword

@@ -1,6 +1,7 @@
 using SpiritMod.Projectiles.Yoyo;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Weapon.Yoyo
 {
 	public class SweetThrow : ModItem
@@ -10,7 +11,6 @@ namespace SpiritMod.Items.Weapon.Yoyo
 			DisplayName.SetDefault("Sweet Throw");
 			Tooltip.SetDefault("Releases bees to chase down your foes");
 		}
-
 
 		public override void SetDefaults()
 		{

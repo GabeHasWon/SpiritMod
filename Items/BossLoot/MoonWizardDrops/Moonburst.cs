@@ -16,7 +16,6 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.WoodYoyo);

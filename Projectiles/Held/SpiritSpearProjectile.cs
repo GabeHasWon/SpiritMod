@@ -7,22 +7,15 @@ namespace SpiritMod.Projectiles.Held
 {
 	public class SpiritSpearProjectile : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Spirit Spear");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Spear");
 
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Trident);
-
 			AIType = ProjectileID.Trident;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			target.AddBuff(ModContent.BuffType<SoulBurn>(), 280);
-		}
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<SoulBurn>(), 280);
 
 		int timer = 0;
 		public override void AI()
