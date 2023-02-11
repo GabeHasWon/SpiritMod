@@ -17,7 +17,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 		public override void SetDefaults()
 		{
 			Projectile.hostile = false;
-			Projectile.DamageType = DamageClass.Magic;
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.width = 16;
 			Projectile.height = 16;
 			Projectile.aiStyle = -1;
@@ -48,7 +48,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 				Projectile.position = player.position + holdOffset;
 				player.velocity.X *= 0.95f;
 				if (counter < 9) {
-					counter += 0.05f;
+					counter += 0.09f;
 				}
 				Projectile.rotation = direction.ToRotation() - 1.57f;
 				if (direction.X > 0) {

@@ -20,7 +20,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.value = Item.sellPrice(0, 0, 40, 0);
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = 1;
-			Item.damage = 28;
+			Item.damage = 32;
 			Item.knockBack = 3;
 			Item.useStyle = ItemUseStyleID.Rapier;
 			Item.useTime = Item.useAnimation = 19;

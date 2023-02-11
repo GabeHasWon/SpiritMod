@@ -15,7 +15,8 @@ namespace SpiritMod.Items.Weapon.Thrown
 
 		public override void SetDefaults()
 		{
-			Item.damage = 13;
+			Item.damage = 16;
+			Item.crit = 6; 
 			Item.noMelee = true;
 			Item.channel = true; //Channel so that you can held the weapon [Important]
 			Item.rare = ItemRarityID.Blue;
@@ -26,7 +27,7 @@ namespace SpiritMod.Items.Weapon.Thrown
             Item.value = 22000;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = Item.useAnimation = 24;
-			Item.knockBack = 8;
+			Item.knockBack = 8f;
 			Item.DamageType = DamageClass.Melee;
 			Item.noMelee = true;
 			//   item.UseSound = SoundID.Item20;
