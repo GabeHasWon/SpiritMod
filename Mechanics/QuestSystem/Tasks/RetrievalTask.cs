@@ -110,5 +110,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			}
 			return _lastCount >= _itemsNeeded;
 		}
+
+		internal int GetItemID() => _itemID;
 	}
 }

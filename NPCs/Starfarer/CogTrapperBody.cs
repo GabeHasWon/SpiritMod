@@ -69,12 +69,13 @@ namespace SpiritMod.NPCs.Starfarer
 
 				if (NPC.localAI[0] >= (float)Main.rand.Next(700, 1000))
 				{
-					SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
 					NPC.localAI[0] = 0f;
 					NPC.TargetClosest(true);
 
 					if (Collision.CanHit(NPC.position, NPC.width, NPC.height, player.position, player.width, player.height))
 					{
+						SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
+
 						Vector2 targetPos = player.Center - NPC.Center + new Vector2(Main.rand.Next(-20, 21), Main.rand.Next(-20, 21));
 						float speedMod = 1 / targetPos.Length();
 

@@ -360,7 +360,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			for (int i = 0; i < text.Length; i++)
 			{
 				if (text[i] != string.Empty)
-					tooltips.Insert(6, new TooltipLine(Mod, string.Empty, text[i]));
+					tooltips.Add(new TooltipLine(Mod, string.Empty, text[i]));
 			}
 		}
 

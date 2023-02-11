@@ -137,7 +137,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			}
 		}
 
-		SlotId wingSoundSlot = new SlotId(uint.MaxValue - 1);
+		SlotId wingSoundSlot = SlotId.Invalid;
 
 		public override void OnSpawn(IEntitySource source) => wingSoundSlot = SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BossSFX/Scarab_Wings") with { IsLooped = true, Volume = 3 }, NPC.Center);
 
@@ -163,7 +163,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			SoundEngine.TryGetActiveSound(wingSoundSlot, out ActiveSound sound);
 
 			if (sound is not null && sound.IsPlaying)
+			{
 				sound.Stop();
+				wingSoundSlot = SlotId.Invalid;
+			}
 		}
 
 		#region utilities
