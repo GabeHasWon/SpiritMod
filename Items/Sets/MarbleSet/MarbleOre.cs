@@ -9,7 +9,6 @@ namespace SpiritMod.Items.Sets.MarbleSet
 	public class MarbleOre : ModTile
 	{
 		private const int minPick = 65;
-		private readonly bool canKill = NPC.downedBoss2;
 
 		public override void SetStaticDefaults()
 		{
@@ -24,13 +23,12 @@ namespace SpiritMod.Items.Sets.MarbleSet
 			name.SetDefault("Enchanted Marble Chunk");
 			AddMapEntry(new Color(227, 191, 75), name);
 			HitSound = SoundID.Tink;
-			MinPick = minPick;
 			DustType = DustID.GoldCoin;
 		}
 
 		public override bool CanExplode(int i, int j) => false;
 
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => canKill;
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => NPC.downedBoss2;
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
@@ -40,7 +38,7 @@ namespace SpiritMod.Items.Sets.MarbleSet
 				DustHelper.DrawDustImage(new Vector2(i * 16, j * 16), ModContent.DustType<MarbleDust>(), 0.05f, "SpiritMod/Effects/Glyphs/Glyph" + glyphnum, 1f);
 			}
 
-			MinPick = canKill ? minPick : 10000; //Blockswap precaution
+			MinPick = NPC.downedBoss2 ? minPick : 10000; //Blockswap precaution
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

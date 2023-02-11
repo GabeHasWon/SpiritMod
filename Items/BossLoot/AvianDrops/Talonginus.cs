@@ -37,17 +37,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 		public override bool CanUseItem(Player player) => !(player.ownedProjectileCounts[Item.shoot] > 0);
 
-		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-		{
-			Vector2 origVect = velocity;
-			Vector2 newVect;
-			if (Main.rand.NextBool(2))
-				newVect = origVect.RotatedBy(System.Math.PI / (Main.rand.Next(82, 1800) / 10));
-			else
-				newVect = origVect.RotatedBy(-System.Math.PI / (Main.rand.Next(82, 1800) / 10));
-
-			velocity.X = newVect.X;
-			velocity.Y = newVect.Y;
-		}
+		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) 
+			=> velocity = velocity.RotatedByRandom(0.5f);
 	}
 }

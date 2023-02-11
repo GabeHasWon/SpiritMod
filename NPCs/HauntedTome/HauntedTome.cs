@@ -149,7 +149,7 @@ namespace SpiritMod.NPCs.HauntedTome
 				{
 					Vector2 vel = -Vector2.UnitY.RotatedByRandom(MathHelper.Pi / 2) * 3;
 					int type = ModContent.ProjectileType<HauntedSkull>();
-					Projectile.NewProjectileDirect(npc.GetSource_FromAI(), npc.Center, vel, type, NPCUtils.ToActualDamage(30, 1.5f), 1, Main.myPlayer, npc.whoAmI, npc.target).netUpdate = true;
+					Projectile.NewProjectileDirect(npc.GetSource_FromAI(), npc.Center, vel, type, NPCUtils.ToActualDamage(30, 1.5f, 2f), 1, Main.myPlayer, npc.whoAmI, npc.target).netUpdate = true;
 				}
 			}
 
@@ -173,7 +173,7 @@ namespace SpiritMod.NPCs.HauntedTome
 				{
 					Vector2 vel = -Vector2.UnitY.RotatedByRandom(MathHelper.Pi / 4) * 3;
 					int type = ModContent.ProjectileType<HauntedPaperPlane>();
-					Projectile.NewProjectileDirect(npc.GetSource_FromAI(), npc.Center, vel, type, NPCUtils.ToActualDamage(24, 1.25f), 1, Main.myPlayer, npc.whoAmI, npc.target).netUpdate = true;
+					Projectile.NewProjectileDirect(npc.GetSource_FromAI(), npc.Center, vel, type, NPCUtils.ToActualDamage(24, 1.25f, 1.75f), 1, Main.myPlayer, npc.whoAmI, npc.target).netUpdate = true;
 				}
 			}
 

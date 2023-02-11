@@ -1,19 +1,16 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Items.Material;
 
 namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class CryoKnife : ModItem
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cryolite Bomb");
 			Tooltip.SetDefault("Occasionally inflicts 'Cryo Crush'\n'Cryo Crush' does more damage as enemy health wanes\nThis effect does not apply to bosses, and deals a flat amount of damage instead");
 		}
-
 
 		public override void SetDefaults()
 		{

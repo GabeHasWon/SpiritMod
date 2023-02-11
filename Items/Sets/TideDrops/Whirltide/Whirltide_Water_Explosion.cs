@@ -1,45 +1,57 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 {
-	public class Whirltide_Water_Explosion : ModProjectile
+	public class WhirltideSpout : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Water Explosion");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Whirltide Spout");
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 60;
 			Projectile.height = 60;
-			Projectile.aiStyle = 1;
-			AIType = ProjectileID.WoodenArrowFriendly;
 			Projectile.hide = true;
+			Projectile.tileCollide = false;
 			Projectile.penetrate = -1;
 			Projectile.DamageType = DamageClass.Magic;
 			Projectile.friendly = true;
 			Projectile.scale = 1f;
 			Projectile.extraUpdates = 1;
 			Projectile.timeLeft = 60;
+			AIType = ProjectileID.WoodenArrowFriendly;
+			Projectile.aiStyle = 1;
 		}
-		public override Color? GetAlpha(Color lightColor)
+
+		public override Color? GetAlpha(Color lightColor) => Color.White;
+
+		public override void OnSpawn(IEntitySource source)
 		{
-			return Color.White;
+			for (int i = 0; i < 30; i++) //Scan only 30 tiles down
+			{
+				Point position = new Point((int)(Projectile.Center.X / 16), (int)((Projectile.Center.Y / 16) + i));
+				if (WorldGen.SolidOrSlopedTile(Framing.GetTileSafely(position)))
+				{
+					Projectile.Center = new Vector2(Projectile.Center.X, (position.Y * 16) + 8); //Don't modify X
+					break;
+				}
+			}
 		}
+
 		public override void AI()
 		{
 			for (int index = 0; index < 12; ++index)
 			{
-				if (Main.rand.Next(5) != 0)
+				if (!Main.rand.NextBool(5))
 				{
-					int Type = Utils.SelectRandom<int>(Main.rand, new int[2]
-					{
-				  4,
-				  157
-					});
+					int Type = Utils.SelectRandom(Main.rand, new int[2] { 4, 157 });
+
 					Dust dust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Type, Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(), 1f)];
 					dust.velocity = dust.velocity / 4f + Projectile.velocity / 2f;
 					dust.scale = (float)(0.800000011920929 + (double)Main.rand.NextFloat() * 0.400000005960464);

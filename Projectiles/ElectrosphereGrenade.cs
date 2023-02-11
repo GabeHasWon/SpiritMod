@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -11,7 +12,8 @@ namespace SpiritMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			Projectile.aiStyle = 16;
+			Projectile.aiStyle = ProjAIStyleID.GroundProjectile;
+			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.timeLeft = 180;
@@ -21,10 +23,10 @@ namespace SpiritMod.Projectiles
 
 		public override void Kill(int timeLeft)
 		{
-			int proj = Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileID.Electrosphere, Projectile.damage, 0, Main.myPlayer);
-			Main.projectile[proj].friendly = true;
-			Main.projectile[proj].hostile = false;
-			Main.projectile[proj].timeLeft = 180;
+			Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ProjectileID.Electrosphere, Projectile.damage, 0, Main.myPlayer);
+			proj.friendly = true;
+			proj.hostile = false;
+			proj.timeLeft = 180;
 
 			SoundEngine.PlaySound(SoundID.Item12, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);

@@ -24,13 +24,14 @@ namespace SpiritMod.NPCs.Boss.Atlas
 	[AutoloadBossHead]
 	public class Atlas : ModNPC, IBCRegistrable
 	{
+		private int Counter;
 
-		int[] arms = new int[2];
-		int timer = 0;
-		bool secondStage = false;
-		bool thirdStage = false;
-		bool lastStage = false;
-		int collideTimer = 0;
+		readonly int[] arms = new int[2];
+		private int timer = 0;
+		private bool secondStage = false;
+		private bool thirdStage = false;
+		private bool lastStage = false;
+		private int collideTimer = 0;
 
 		public override void SetStaticDefaults()
 		{
@@ -67,7 +68,11 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			});
 		}
 
-		private int Counter;
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.85f * bossLifeScale);
+			NPC.damage = (int)(NPC.damage * 0.65f);
+		}
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -295,12 +300,6 @@ namespace SpiritMod.NPCs.Boss.Atlas
 				SpiritMod.tremorTime = 20;
 				Counter = 0;
 			}
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.85f * bossLifeScale);
-			NPC.damage = (int)(NPC.damage * 0.65f);
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

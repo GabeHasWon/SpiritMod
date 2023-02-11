@@ -77,12 +77,9 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             }
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
+		public override Color? GetAlpha(Color lightColor) => Color.White;
 
-        public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(ref Color lightColor)
         {
             float sineAdd = (float)Math.Sin(alphaCounter) + 3;
             SpriteEffects spriteEffects = SpriteEffects.None;

@@ -161,7 +161,7 @@ namespace SpiritMod.NPCs.BloodGazer
 
 								if (Main.netMode != NetmodeID.MultiplayerClient)
 								{
-									Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, NPC.DirectionFrom(Parent.Center) * 5, ModContent.ProjectileType<BloodGazerEyeShot>(), NPCUtils.ToActualDamage(40, 1.5f), 1, Main.myPlayer);
+									Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, NPC.DirectionFrom(Parent.Center) * 5, ModContent.ProjectileType<BloodGazerEyeShot>(), NPCUtils.ToActualDamage(40, 1.5f, 2f), 1, Main.myPlayer);
 
 									if (Main.netMode != NetmodeID.SinglePlayer)
 										NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, p.whoAmI);
@@ -207,7 +207,7 @@ namespace SpiritMod.NPCs.BloodGazer
 
 								if (Main.netMode != NetmodeID.MultiplayerClient)
 								{
-									Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, NPC.DirectionFrom(Parent.Center) * 2f, ModContent.ProjectileType<BloodGazerEyeShotWavy>(), NPCUtils.ToActualDamage(40, 1.5f), 1, Main.myPlayer, Main.rand.NextBool() ? -1 : 1);
+									Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, NPC.DirectionFrom(Parent.Center) * 2f, ModContent.ProjectileType<BloodGazerEyeShotWavy>(), NPCUtils.ToActualDamage(40, 1.5f, 2f), 1, Main.myPlayer, Main.rand.NextBool() ? -1 : 1);
 
 									if(Main.netMode != NetmodeID .SinglePlayer)
 										NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, p.whoAmI);

@@ -22,11 +22,6 @@ namespace SpiritMod.NPCs.Boss.Dusking
 	[AutoloadBossHead]
 	public class Dusking : ModNPC, IBCRegistrable
 	{
-		// npc.ai[0] = State Manager.
-		// npc.ai[1] = Additional timer (charge timer, state timer, etc).
-		// npc.localAI[0] = Outer Circle Opacity.
-		// npc.localAI[1] = Outer Circle Rotation.
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dusking");
@@ -58,6 +53,9 @@ namespace SpiritMod.NPCs.Boss.Dusking
 
 			Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/DuskingTheme");
 		}
+
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{

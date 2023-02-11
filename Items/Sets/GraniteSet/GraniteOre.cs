@@ -10,7 +10,6 @@ namespace SpiritMod.Items.Sets.GraniteSet
 	public class GraniteOre : ModTile
 	{
 		private const int minPick = 65;
-		private readonly bool canKill = NPC.downedBoss2;
 
 		public override void SetStaticDefaults()
 		{
@@ -23,20 +22,19 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			name.SetDefault("Enchanted Granite Chunk");
 			AddMapEntry(new Color(30, 144, 255), name);
 			HitSound = SoundID.Tink;
-			MinPick = minPick;
 			DustType = DustID.Electric;
 		}
 
 		public override bool CanExplode(int i, int j) => false;
 
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => canKill;
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => NPC.downedBoss2;
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			if (Main.rand.NextBool(255))
 				Dust.NewDustPerfect(new Vector2(i * 16, j * 16), 226, new Vector2(Main.rand.NextFloat(-1.5f, 1.5f), Main.rand.NextFloat(-1.5f, 1.5f)), 0, default, 0.8f).noGravity = false;
 
-			MinPick = canKill ? minPick : 10000; //Blockswap precaution
+			MinPick = NPC.downedBoss2 ? minPick : 10000; //Blockswap precaution
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

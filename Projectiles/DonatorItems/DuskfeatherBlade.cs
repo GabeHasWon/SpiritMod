@@ -106,7 +106,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		private Vector2 Origin
 		{
-			get { return new Vector2(Projectile.localAI[0], Projectile.localAI[1]); }
+			get => new Vector2(Projectile.localAI[0], Projectile.localAI[1]);
 			set
 			{
 				Projectile.localAI[0] = value.X;

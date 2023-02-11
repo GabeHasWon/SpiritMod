@@ -17,6 +17,9 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 	[AutoloadBossHead]
 	public class FrostSaucer : ModNPC
 	{
+		private bool trailBehind;
+		private bool canHitPlayer;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snow Monger");
@@ -50,6 +53,9 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
+
 		public override void FindFrame(int frameHeight)
 		{
 			NPC.frameCounter += .15f;
@@ -57,9 +63,6 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
 		}
-
-		bool trailBehind;
-		bool canHitPlayer;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

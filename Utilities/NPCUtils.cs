@@ -1,26 +1,17 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace SpiritMod
 {
 	public static class NPCUtils
 	{
-		public static bool CanDamage(this NPC npc)
-		{
-			return npc.lifeMax > 5 && !npc.friendly;
-		}
+		public static bool CanDamage(this NPC npc) => npc.lifeMax > 5 && !npc.friendly;
 
-		public static bool CanLeech(this NPC npc)
-		{
-			return npc.lifeMax > 5 && !npc.friendly && !npc.dontTakeDamage && !npc.immortal;
-		}
+		public static bool CanLeech(this NPC npc) => npc.lifeMax > 5 && !npc.friendly && !npc.dontTakeDamage && !npc.immortal;
 
-		public static bool CanDropLoot(this NPC npc)
-		{
-			return npc.lifeMax > 5 && !npc.friendly && !npc.SpawnedFromStatue;
-		}
+		public static bool CanDropLoot(this NPC npc) => npc.lifeMax > 5 && !npc.friendly && !npc.SpawnedFromStatue;
 
 		public static void AddItem(ref Chest shop, ref int nextSlot, int item, int price = -1, bool check = true)
 		{
@@ -34,10 +25,16 @@ namespace SpiritMod
 			}
 		}
 
-		public static int ToActualDamage(float damagevalue, float expertscaling = 1)
+		public static int ToActualDamage(float damageValue, float expertScaling = 1, float masterScaling = 1)
 		{
-			damagevalue = (Main.expertMode) ? (damagevalue / 4) * (expertscaling) : (damagevalue / 2);
-			return (int)damagevalue;
+			if (Main.masterMode)
+				damageValue = damageValue / 6 * masterScaling;
+			else if (Main.expertMode)
+				damageValue = damageValue / 4 * expertScaling;
+			else
+				damageValue /= 2;
+
+			return (int)damageValue;
 		}
 
 		public static void PlayDeathSound(this NPC npc, string Sound)

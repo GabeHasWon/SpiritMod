@@ -60,7 +60,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 
 			if (NPC.life <= 0)
 			{
-				int p = Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center.X, NPC.Center.Y, Main.rand.NextFloat(-1.1f, 1.1f), Main.rand.NextFloat(-1.1f, 1.1f), ModContent.ProjectileType<JellyfishOrbiter>(), NPCUtils.ToActualDamage(15, 1.5f), 0.0f, Main.myPlayer, 0.0f, (float)NPC.whoAmI);
+				int p = Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center.X, NPC.Center.Y, Main.rand.NextFloat(-1.1f, 1.1f), Main.rand.NextFloat(-1.1f, 1.1f), ModContent.ProjectileType<JellyfishOrbiter>(), NPCUtils.ToActualDamage(15, 1.5f, 2f), 0.0f, Main.myPlayer, 0.0f, (float)NPC.whoAmI);
 				Main.projectile[p].scale = NPC.scale;
 				Main.projectile[p].timeLeft = Main.rand.Next(55, 75);
 				for (int k = 0; k < 10; k++)

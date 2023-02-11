@@ -19,7 +19,6 @@ using SpiritMod.Utilities.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet;
 using SpiritMod.Biomes;
-using SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet;
 using SpiritMod.Items.Placeable.Relics;
 
 namespace SpiritMod.NPCs.Boss.SteamRaider
@@ -64,13 +63,13 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void SetDefaults()
 		{
-			NPC.damage = 25; //150
+			NPC.damage = 25;
 			NPC.npcSlots = 20f;
-			NPC.width = 64; //324
-			NPC.height = 56; //216
+			NPC.width = 64;
+			NPC.height = 56;
 			NPC.defense = 0;
-			NPC.lifeMax = 8000; //250000 //new
-			AnimationType = 10; //new
+			NPC.lifeMax = 8000;
+			AnimationType = 10;
 			NPC.knockBackResist = 0f;
 			NPC.boss = true;
 			NPC.value = 40000;
@@ -93,6 +92,9 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			});
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * bossLifeScale);
+
 		public override void SendExtraAI(BinaryWriter writer)
 		{
 			writer.Write(chargetimer);
@@ -100,6 +102,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			writer.Write(NPC.localAI[1]);
 			writer.Write(NPC.localAI[2]);
 		}
+
 		public override void ReceiveExtraAI(BinaryReader reader)
 		{
 			chargetimer = reader.ReadInt32();
@@ -107,6 +110,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.localAI[1] = reader.ReadSingle();
 			NPC.localAI[2] = reader.ReadSingle();
 		}
+
 		public override void AI()
 		{
 			NPC.TargetClosest(true);
@@ -120,58 +124,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				}
 			}
 
-			/*if (crashY < npc.position.Y && charging)
-			{
-				 for (int i = 0; i < 40; i++)
-                    {
-                        int num = Dust.NewDust(npc.position, npc.width, npc.height, 226, 0f, -2f, 0, default, 1.1f);
-                        Main.dust[num].noGravity = true;
-                        Dust dust = Main.dust[num];
-                        dust.position.X = dust.position.X + ((float)(Main.rand.Next(-30, 31) / 20) - 1.5f);
-                        Dust expr_92_cp_0 = Main.dust[num];
-                        expr_92_cp_0.position.Y = expr_92_cp_0.position.Y + ((float)(Main.rand.Next(-30, 31) / 20) - 1.5f);
-                        if (Main.dust[num].position != npc.Center)
-                        {
-                            Main.dust[num].velocity = npc.DirectionTo(Main.dust[num].position) * 20f;
-                        }
-                    }
-					Main.PlaySound(SoundID.Item, (int)npc.position.X, (int)npc.position.Y, 89);
-					Main.PlaySound(SoundID.Item, (int)npc.position.X, (int)npc.position.Y, 27);
-					Main.PlaySound(SoundID.Item, (int)npc.position.X, (int)npc.position.Y, 14);
-					charging = false;
-			}
-			if (charging)
-			{
-				npc.velocity.X = 0;
-				npc.velocity.Y = 0;
-				musicTimer++;
-				if (musicTimer > 690) //change 720 if the music changes
-				{
-					npc.velocity.Y = 25;
-					for (int i = 0; i < npc.height; i++)
-					{
-						if (Main.rand.Next(10) == 1)
-						{
-						int num = Dust.NewDust(new Vector2(npc.position.X + i, npc.Center.Y), 0, 0, 226);
-						Main.dust[num].velocity.X = -10;
-						Main.dust[num].velocity.Y = Main.rand.Next(-3,3);
-						Main.dust[num].noGravity = true;
-						
-						num = Dust.NewDust(new Vector2(npc.position.X + i, npc.Center.Y), 0, 0, 226);
-						Main.dust[num].velocity.X = 10;
-						Main.dust[num].velocity.Y = Main.rand.Next(-3,3);
-						Main.dust[num].noGravity = true;
-						}
-					}
-				}
-			}
-            else
-            {
-                crashY = (int)player.position.Y + 48;
-                npc.position.X = player.position.X;
-                return;
-            }*/
-
 			if (!Charge)
 			{
 				timer++;
@@ -182,7 +134,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 						SoundEngine.PlaySound(SoundID.Item91, NPC.Center);
 						Vector2 direction = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center) * 4f;
 
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<SteamBeam>(), NPCUtils.ToActualDamage(18, 1.5f), 0, Main.myPlayer, 0, 0);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<SteamBeam>(), NPCUtils.ToActualDamage(18, 1.5f, 2f), 0, Main.myPlayer, 0, 0);
 					}
 				}
 				if (timer == 600)
@@ -205,7 +157,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 			if (NPC.life >= NPC.lifeMax * .2f)
 			{
-				NPC.aiStyle = 6; //new
+				NPC.aiStyle = 6;
 				AIType = -1;
 				if (NPC.Distance(player.Center) > 1800 && chargetimer < 700 && player.active && !player.dead) //use its charge attack as an "enrage" when the player is too far away, to quickly gain distance
 					chargetimer = 700;
@@ -251,7 +203,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				{
 					if (!tail && NPC.ai[0] == 0f)
 					{
-
 						int after = NPC.whoAmI;
 						for (int num36 = 0; num36 < maxLength; num36++)
 						{
@@ -276,23 +227,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 						NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, NPC.whoAmI, -1f, 0f, 0f, 0, 0, 0);
 				}
 
-				int num180 = (int)(NPC.position.X / 16f) - 1;
-				int num181 = (int)((NPC.position.X + (float)NPC.width) / 16f) + 2;
-				int num182 = (int)(NPC.position.Y / 16f) - 1;
-				int num183 = (int)((NPC.position.Y + (float)NPC.height) / 16f) + 2;
-				if (num180 < 0)
-					num180 = 0;
-
-				if (num181 > Main.maxTilesX)
-					num181 = Main.maxTilesX;
-
-				if (num182 < 0)
-					num182 = 0;
-
-				if (num183 > Main.maxTilesY)
-					num183 = Main.maxTilesY;
-
-				bool flag94 = flies;
 				NPC.localAI[1] = 0f;
 				if (directional)
 				{
@@ -302,7 +236,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 					else if (NPC.velocity.X > 0f)
 						NPC.spriteDirection = -1;
 				}
-
 
 				if (player.dead || !player.active)
 				{
@@ -433,13 +366,15 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 						}
 					}
 				}
+
 				num191 = ((int)(num191 / 16f) * 16);
 				num192 = ((int)(num192 / 16f) * 16);
 				vector18.X = ((int)(vector18.X / 16f) * 16);
 				vector18.Y = ((int)(vector18.Y / 16f) * 16);
 				num191 -= vector18.X;
 				num192 -= vector18.Y;
-				float num193 = (float)System.Math.Sqrt((num191 * num191 + num192 * num192));
+				float num193;
+
 				if (NPC.ai[1] > 0f && NPC.ai[1] < Main.npc.Length)
 				{
 					try
@@ -451,6 +386,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 					catch
 					{
 					}
+
 					NPC.rotation = (float)Math.Atan2(num192, num191) + 1.57f;
 					num193 = (float)Math.Sqrt(num191 * num191 + num192 * num192);
 					int num194 = NPC.width;
@@ -697,7 +633,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 						}
 						if (Main.netMode != NetmodeID.MultiplayerClient)
 						{
-							int gLaser = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 10), ModContent.ProjectileType<GlitchLaser>(), NPCUtils.ToActualDamage(25, 1.5f), 1, Main.myPlayer, 0, 0);
+							int gLaser = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 10), ModContent.ProjectileType<GlitchLaser>(), NPCUtils.ToActualDamage(25, 1.5f, 2f), 1, Main.myPlayer, 0, 0);
 							NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, gLaser);
 						}
 					}
@@ -731,11 +667,11 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 						NPC.rotation = direction9.ToRotation() + 1.57f;
 					}
 					if (atkCounter % 50 < 30)
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)direction9.X * 30, (float)direction9.Y * 30, ModContent.ProjectileType<StarLaserTrace>(), NPCUtils.ToActualDamage(27, 1.5f), 1, Main.myPlayer);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)direction9.X * 30, (float)direction9.Y * 30, ModContent.ProjectileType<StarLaserTrace>(), NPCUtils.ToActualDamage(27, 1.5f, 2f), 1, Main.myPlayer);
 					if (atkCounter % 50 == 30) //change to frame related later
 					{
 						SoundEngine.PlaySound(SoundID.NPCHit53, NPC.Center);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)direction9.X * 40, (float)direction9.Y * 40, ModContent.ProjectileType<StarLaser>(), NPCUtils.ToActualDamage(55, 1.5f), 1, Main.myPlayer);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)direction9.X * 40, (float)direction9.Y * 40, ModContent.ProjectileType<StarLaser>(), NPCUtils.ToActualDamage(55, 1.5f, 2f), 1, Main.myPlayer);
 					}
 					if (atkCounter % 50 == 49 && Main.expertMode)
 						NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<SuicideLaser>(), NPC.whoAmI);
@@ -743,12 +679,12 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			}
 			#endregion
 		}
+
 		float alphaCounter;
 		int atkCounter = 0;
 		int distAbove = 500;
 		Vector2 direction9 = Vector2.Zero;
 
-		//int shootCounter = 150;
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			if (NPC.life <= 1200)
@@ -836,8 +772,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 			npcLoot.Add(notExpertRule);
 		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.6f * bossLifeScale);
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,

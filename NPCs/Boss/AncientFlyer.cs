@@ -72,6 +72,9 @@ namespace SpiritMod.NPCs.Boss
 			});
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.8f * bossLifeScale);
+
 		bool displayCircle = false;
 		float frameNum = .2f;
 
@@ -272,8 +275,6 @@ namespace SpiritMod.NPCs.Boss
 			Main.dust[dust].noLight = true;
 			Main.dust[dust].scale = .85f;
 		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * bossLifeScale);
 
 		public override bool PreKill()
 		{

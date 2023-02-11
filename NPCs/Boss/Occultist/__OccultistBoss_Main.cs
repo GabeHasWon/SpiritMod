@@ -21,6 +21,21 @@ namespace SpiritMod.NPCs.Boss.Occultist
 {
 	public partial class OccultistBoss : SpiritNPC, IBCRegistrable
 	{
+		private ref float AIState => ref NPC.ai[0];
+
+		private const float AISTATE_SPAWN = 0;
+		private const float AISTATE_DESPAWN = 1;
+		private const float AISTATE_PHASE1 = 2;
+		private const float AISTATE_PHASETRANSITION = 3;
+		private const float AISTATE_PHASE2 = 4;
+		private const float AISTATE_DEATH = 5;
+
+		private ref float AttackType => ref NPC.ai[1];
+
+		private ref float AiTimer => ref NPC.ai[2];
+
+		private ref float SecondaryCounter => ref NPC.ai[3];
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Occultist");
@@ -61,20 +76,11 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
-		private ref float AIState => ref NPC.ai[0];
-
-		private const float AISTATE_SPAWN = 0;
-		private const float AISTATE_DESPAWN = 1;
-		private const float AISTATE_PHASE1 = 2;
-		private const float AISTATE_PHASETRANSITION = 3;
-		private const float AISTATE_PHASE2 = 4;
-		private const float AISTATE_DEATH = 5;
-
-		private ref float AttackType => ref NPC.ai[1];
-
-		private ref float AiTimer => ref NPC.ai[2];
-
-		private ref float SecondaryCounter => ref NPC.ai[3];
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.75f * bossLifeScale);
+			NPC.damage = (int)(NPC.damage * 0.75f);
+		}
 
 		private void UpdateAIState(float State)
 		{
@@ -251,12 +257,6 @@ namespace SpiritMod.NPCs.Boss.Occultist
 					SecondaryCounter = 0;
 				}
 			}
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.75f * bossLifeScale);
-			NPC.damage = (int)(NPC.damage * 0.75f);
 		}
 
 		public override bool CheckActive() => false; //uses custom despawn so not needed

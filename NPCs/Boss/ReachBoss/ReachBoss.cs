@@ -52,6 +52,12 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			NPC.DeathSound = SoundID.NPCDeath1;
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.66f * bossLifeScale);
+			NPC.damage = (int)(NPC.damage * 0.6f);
+		}
+
 		bool pulseTrail;
 		bool pulseTrailPurple;
 		bool pulseTrailYellow;
@@ -72,6 +78,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			pulseTrailYellow = reader.ReadBoolean();
 			trailbehind = reader.ReadBoolean();
 		}
+
 		public override void AI()
 		{
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0.301f, 0.110f, 0.126f);
@@ -122,7 +129,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 			if (NPC.ai[0] >= 480 && NPC.ai[0] < 730)
 			{
-				SideFloat(player);
+				SideFloat();
 				pulseTrail = true;
 			}
 			else
@@ -137,7 +144,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			if (NPC.ai[0] > 900 && NPC.ai[0] < 1050)
 			{
 				pulseTrailPurple = true;
-				FlowerAttack(player);
+				FlowerAttack();
 			}
 			else
 				pulseTrailPurple = false;
@@ -196,7 +203,8 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 			NPC.velocity.Y = moveSpeedY * 0.1f;
 		}
-		public void SideFloat(Player player)
+
+		public void SideFloat()
 		{
 			bool expertMode = Main.expertMode;
 			Vector2 homepos = Main.player[NPC.target].Center;
@@ -233,7 +241,8 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				}
 			}
 		}
-		public void FlowerAttack(Player player)
+
+		public void FlowerAttack()
 		{
 			bool expertMode = Main.expertMode;
 			int damage = expertMode ? 13 : 16;
@@ -328,12 +337,6 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			NPC.frameCounter %= Main.npcFrameCount[NPC.type];
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.66f * bossLifeScale);
-			NPC.damage = (int)(NPC.damage * 0.6f);
 		}
 
 		Vector2 Drawoffset => new Vector2(0, NPC.gfxOffY) + Vector2.UnitX * NPC.spriteDirection * 12;

@@ -37,7 +37,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 
 		private ref float TargetAngle => ref Projectile.ai[1];
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => false;
+		public override bool? CanDamage() => false;
 
 		public override void AI()
 		{

@@ -7,7 +7,6 @@ using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -47,14 +46,22 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.dontCountMe = true;
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * bossLifeScale);
+			NPC.damage = (int)(NPC.damage * 0.65f);
+		}
+
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(NPC.localAI[0]);
 		public override void ReceiveExtraAI(BinaryReader reader) => NPC.localAI[0] = reader.ReadSingle();
+
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => Head.ai[2] == 1 && NPC.ai[3] < 100;
 
 		public override bool PreAI()
 		{
-			var exposedBodies = Main.npc.Where(x => x.active && (x.type == ModContent.NPCType<SteamRaiderBody>() || x.type == ModContent.NPCType<SteamRaiderBody2>()) && x.localAI[0] > 0).Count();
+			int exposedBodies = Main.npc.Where(x => x.active && (x.type == ModContent.NPCType<SteamRaiderBody>() || x.type == ModContent.NPCType<SteamRaiderBody2>()) && x.localAI[0] > 0).Count();
+			
 			if (Main.netMode != NetmodeID.MultiplayerClient) {
 				if (exposedBodies < 7 && Main.rand.NextBool(50) || (++NPC.localAI[1] % 60 == 0 && Main.rand.NextBool(50))) {
 					if (!Exposed) {
@@ -80,6 +87,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				NPC.defense = 9999;
 				NPC.dontTakeDamage = true;
 			}
+
 			Player player = Main.player[NPC.target];
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0f, 0.075f, 0.25f);
 			if (Head.ai[2] == 1) {
@@ -102,7 +110,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 							int num946 = ModContent.ProjectileType<Starshock>();
 							vector104.X += num942 * 4f;
 							vector104.Y += num943 * 2.5f;
-							int num947 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector104.X, vector104.Y, num942, num943, num946, NPCUtils.ToActualDamage(30, 1.25f), 0f, Main.myPlayer, 0f, 0f);
+							int num947 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector104.X, vector104.Y, num942, num943, num946, NPCUtils.ToActualDamage(30, 1.25f, 1.75f), 0f, Main.myPlayer, 0f, 0f);
 							Main.projectile[num947].timeLeft = 350;
 						}
 					}
@@ -213,8 +221,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			}
 			if (NPC.life <= 0) {
 				SoundEngine.PlaySound(SoundID.Item4, NPC.Center);
-				// Gore.NewGore(npc.position, npc.velocity, ModContent.Find<ModGore>("Gores/Starplate/Starplate4"), 1f);
-				// Gore.NewGore(npc.position, npc.velocity, ModContent.Find<ModGore>("Gores/Starplate/Starplate5"), 1f);
+
 				for (int num623 = 0; num623 < 20; num623++) {
 					int dust1 = Dust.NewDust(NPC.Center, NPC.width, NPC.height, DustID.Electric);
 
@@ -229,6 +236,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 					Vector2 vector2_3 = vector2_2 * 104f;
 					Main.dust[dust1].position = (NPC.Center) - vector2_3;
 				}
+
 				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 				direction.Normalize();
 				direction.X *= 12;
@@ -241,12 +249,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 					Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center.X, NPC.Center.Y, direction.X + A, direction.Y + B, ModContent.ProjectileType<SteamBodyFallingProj>(), 15, 1, Main.myPlayer, 0, 0);
 				}
 			}
-		}
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.6f * bossLifeScale);
-			NPC.damage = (int)(NPC.damage * 0.65f);
 		}
 	}
 }

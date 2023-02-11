@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Weapon.Yoyo
 			Tooltip.SetDefault("May confuse foes\n'But it keeps your mind clear'");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.WoodYoyo);

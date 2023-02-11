@@ -24,8 +24,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.width = 38; 
 			NPC.height = 16; 
 			NPC.defense = 15;
-			NPC.lifeMax = 6500; //250000
-			NPC.aiStyle = 6; //new
+			NPC.lifeMax = 6500;
+			NPC.aiStyle = 6;
 			NPC.knockBackResist = 0f;
 			NPC.alpha = 255;
 			NPC.behindTiles = true;
@@ -36,14 +36,21 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.netAlways = true;
 			NPC.dontCountMe = true;
 
-			AIType = -1; //new
-			AnimationType = 10; //new
+			AIType = -1;
+			AnimationType = 10;
 			Music = MusicID.Boss3;
+		}
+
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * bossLifeScale);
+			NPC.damage = (int)(NPC.damage * 0.65f);
 		}
 
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => false;
+
 		public override void AI()
 		{
 			Player player = Main.player[NPC.target];
@@ -79,7 +86,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 							//int num946 = 440;
 							vector104.X += num942 * 5f;
 							vector104.Y += num943 * 5f;
-							int num947 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector104.X, vector104.Y, num942, num943, ModContent.ProjectileType<GlitchLaser>(), NPCUtils.ToActualDamage(25, 1.5f), 0f, Main.myPlayer, 0f, 0f);
+							int num947 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector104.X, vector104.Y, num942, num943, ModContent.ProjectileType<GlitchLaser>(), NPCUtils.ToActualDamage(25, 1.5f, 2f), 0f, Main.myPlayer, 0f, 0f);
 							Main.projectile[num947].timeLeft = 300;
 							NPC.netUpdate = true;
 						}
@@ -168,32 +175,19 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
 			}
 		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
 
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/SteamRaiderTail_Glow").Value, screenPos);
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) 
+			=> GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/SteamRaiderTail_Glow").Value, screenPos);
 
-		}
-		public override bool CheckActive()
-		{
-			return false;
-		}
+		public override bool CheckActive() => false;
 
-		public override bool PreKill()
-		{
-			return false;
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.6f * bossLifeScale);
-			NPC.damage = (int)(NPC.damage * 0.65f);
-		}
+		public override bool PreKill() => false;
 	}
 }
