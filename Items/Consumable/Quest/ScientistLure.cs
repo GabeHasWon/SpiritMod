@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
+using SpiritMod.Mechanics.QuestSystem.Tasks;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
@@ -45,9 +46,16 @@ namespace SpiritMod.Items.Consumable.Quest
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
+			recipe.AddCondition(QuestCondition());
 			recipe.AddIngredient(ModContent.ItemType<Items.Material.OldLeather>(), 2);
 			recipe.AddIngredient(ItemID.RottenChunk, 5);
 			recipe.Register();
-		}  
+		}
+
+		public static Recipe.Condition QuestCondition() => new Recipe.Condition(Terraria.Localization.NetworkText.FromLiteral("During Unholy Undertaking"), (self) =>
+		{
+			Mechanics.QuestSystem.Quest quest = QuestManager.GetQuest<ZombieOriginQuest>();
+			return (quest.CurrentTask is RetrievalTask task && task.GetItemID() == ModContent.ItemType<ScientistLure>());
+		});
 	}
 }

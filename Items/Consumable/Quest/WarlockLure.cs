@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
+using SpiritMod.Mechanics.QuestSystem.Tasks;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
@@ -50,10 +51,17 @@ namespace SpiritMod.Items.Consumable.Quest
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
+			recipe.AddCondition(QuestCondition(Type));
 			recipe.AddIngredient(ItemID.FallenStar, 2);
 			recipe.AddIngredient(ItemID.RottenChunk, 5);
 			recipe.Register();
-		}   
+		}
+
+		public static Recipe.Condition QuestCondition(int type) => new Recipe.Condition(Terraria.Localization.NetworkText.FromLiteral("During Unholy Undertaking"), (self) =>
+		{
+			Mechanics.QuestSystem.Quest quest = QuestManager.GetQuest<ZombieOriginQuest>();
+			return (quest.CurrentTask is RetrievalTask task && task.GetItemID() == type);
+		});
 	}
 
     public class WarlockLureCrimson : WarlockLureCorruption
@@ -61,9 +69,10 @@ namespace SpiritMod.Items.Consumable.Quest
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
+			recipe.AddCondition(QuestCondition(Type));
 			recipe.AddIngredient(ItemID.FallenStar, 2);
 			recipe.AddIngredient(ItemID.Vertebrae, 5);
 			recipe.Register();
-		}        
-    }
+		}
+	}
 }
