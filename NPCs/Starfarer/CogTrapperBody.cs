@@ -30,6 +30,7 @@ namespace SpiritMod.NPCs.Starfarer
 
 		public override void SetDefaults()
 		{
+			NPC.killCount[Type] = NPC.killCount[ModContent.NPCType<CogTrapperHead>()];
 			NPC.damage = 25;
 			NPC.npcSlots = 0f;
 			NPC.width = 14;
@@ -37,7 +38,6 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.defense = 14;
 			NPC.lifeMax = 300;
 			NPC.aiStyle = -1;
-			AIType = -1;
 			AnimationType = 10;
 			NPC.dontCountMe = true;
 			NPC.knockBackResist = 0f;
@@ -48,9 +48,9 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
-			NPC.killCount[Type] = NPC.killCount[ModContent.NPCType<CogTrapperHead>()];
 			NPC.dontCountMe = true;
 
+			AIType = -1;
 			Banner = ModContent.NPCType<CogTrapperHead>();
 			BannerItem = ModContent.ItemType<Items.Banners.StardancerBanner>();
 		}
@@ -67,7 +67,7 @@ namespace SpiritMod.NPCs.Starfarer
 			{
 				NPC.localAI[0] += Main.rand.Next(4);
 
-				if (NPC.localAI[0] >= (float)Main.rand.Next(700, 1000))
+				if (NPC.localAI[0] >= Main.rand.Next(700, 1000))
 				{
 					NPC.localAI[0] = 0f;
 					NPC.TargetClosest(true);

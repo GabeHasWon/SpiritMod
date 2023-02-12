@@ -34,9 +34,10 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			if (ModContent.GetInstance<SpiritClientConfig>().SurfaceWaterTransparency)
 			{
 				IL.Terraria.Main.DoDraw += AddWaterShader; //Transparency shader
-				IL.Terraria.GameContent.Liquid.LiquidRenderer.InternalDraw += LiquidRenderer_InternalDraw;
-				IL.Terraria.Main.DrawBlack += Main_DrawBlack;
 
+				//Slope fix garbage
+				IL.Terraria.GameContent.Liquid.LiquidRenderer.InternalDraw += LiquidRenderer_InternalDraw; //Draw over slopes
+				IL.Terraria.Main.DrawBlack += Main_DrawBlack;
 				On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += TileDrawing_DrawPartialLiquid;
 			}
 
@@ -52,7 +53,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		private static void TileDrawing_DrawPartialLiquid(On.Terraria.GameContent.Drawing.TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, Tile tileCache, Vector2 position, Rectangle liquidSize, int liquidType, Color aColor)
 		{
-			if (tileCache.LiquidType != LiquidID.Water)
+			if (tileCache.LiquidType != LiquidID.Water || Main.waterStyle >= WaterStyleID.Count)
 				orig(self, tileCache, position, liquidSize, liquidType, aColor);
 		}
 
@@ -116,14 +117,6 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			if (!c.TryGotoNext(MoveType.After, x => x.MatchCall<Main>(nameof(Main.DrawTileInWater))))
 				return;
 
-			if (!c.TryGotoNext(MoveType.Before, x => x.MatchLdloc(2)))
-				return;
-
-			ILLabel label = c.MarkLabel();
-
-			if (!c.TryGotoPrev(MoveType.After, x => x.MatchCall<Main>(nameof(Main.DrawTileInWater))))
-				return;
-
 			c.Emit(OpCodes.Ldloc_3); //i
 			c.Emit(OpCodes.Ldloc_S, (byte)4); //j
 			c.Emit(OpCodes.Ldloc_S, (byte)9); //vertex colours
@@ -134,7 +127,14 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		public static void DrawSlope(int i, int j, VertexColors colours, bool isBackgroundDraw)
 		{
+			if (Main.waterStyle >= WaterStyleID.Count)
+				return;
+
 			Tile tile = Main.tile[i, j];
+
+			if (tile.LiquidType > LiquidID.Water)
+				return;
+
 			Tile right = Main.tile[i + 1, j];
 			Tile left = Main.tile[i - 1, j];
 			Vector2 drawOffset = (Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange)) - Main.screenPosition;
