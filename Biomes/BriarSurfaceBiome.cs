@@ -12,7 +12,7 @@ namespace SpiritMod.Biomes
 		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("SpiritMod/ReachSurfaceBgStyle");
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
-		public override int Music => Main.dayTime ? MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Reach") : MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ReachNighttime");
+		public override int Music => Main.LocalPlayer.townNPCs >= 2 ? -1 : (Main.dayTime ? MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Reach") : MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ReachNighttime"));
 
 		public override string BestiaryIcon => base.BestiaryIcon;
 		public override string BackgroundPath => MapBackground;

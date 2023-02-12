@@ -37,8 +37,8 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 				//Slope fix garbage
 				IL.Terraria.GameContent.Liquid.LiquidRenderer.InternalDraw += LiquidRenderer_InternalDraw; //Draw over slopes
-				IL.Terraria.Main.DrawBlack += Main_DrawBlack;
-				On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += TileDrawing_DrawPartialLiquid;
+				IL.Terraria.Main.DrawBlack += Main_DrawBlack; //Modify blackness to not draw in bad places
+				On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += TileDrawing_DrawPartialLiquid; //Only draw vanilla slopes in certain cases
 			}
 
 			IL.Terraria.GameContent.Shaders.WaterShaderData.QueueRipple_Vector2_Color_Vector2_RippleShape_float += IncreaseRippleSize; //Makes ripple bigger
