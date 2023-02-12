@@ -12,6 +12,7 @@ namespace SpiritMod.Items.Weapon.Magic.CreepingVine
 	//TODO: Make it so right click destroys the currently alive one
 	public class CreepingVine : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Creeping Vine");

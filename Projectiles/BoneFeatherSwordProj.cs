@@ -28,7 +28,7 @@ namespace SpiritMod.Projectiles
 		{
 			DisplayName.SetDefault("Bone Feather");
 			Main.projFrames[Type] = 3;
-			ProjectileID.Sets.TrailCacheLength[Type] = 8;
+			ProjectileID.Sets.TrailCacheLength[Type] = 4;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
 
@@ -48,7 +48,7 @@ namespace SpiritMod.Projectiles
 		{
 			originPos = Main.player[Projectile.owner].Center;
 			Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
-			Projectile.scale = Main.rand.NextFloat(0.75f, 1.0f);
+			Projectile.scale = Main.rand.NextFloat(0.9f, 1.2f);
 
 			Projectile.netUpdate = true;
 		}

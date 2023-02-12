@@ -17,7 +17,8 @@ namespace SpiritMod.Items.Sets.FrigidSet
 
 		public override void SetDefaults()
 		{
-			Item.damage = 9;
+			Item.damage = 12;
+			Item.crit = 6;
 			Item.noMelee = true;
 			Item.channel = true; //Channel so that you can held the weapon [Important]
 			Item.rare = ItemRarityID.Blue;
@@ -27,7 +28,7 @@ namespace SpiritMod.Items.Sets.FrigidSet
 			Item.useAnimation = 45;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = Item.useAnimation = 24;
-			Item.knockBack = 2.5f;
+			Item.knockBack = 6f;
 			Item.DamageType = DamageClass.Melee;
 			Item.noMelee = true;
 			//   item.UseSound = SoundID.Item20;

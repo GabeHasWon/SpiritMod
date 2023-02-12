@@ -16,7 +16,8 @@ namespace SpiritMod.Items.Sets.TideDrops
 
 		public override void SetDefaults()
 		{
-			Item.damage = 25;
+			Item.damage = 40;
+			Item.crit = 6;
 			Item.noMelee = true;
 			Item.channel = true; //Channel so that you can held the weapon [Important]
 			Item.rare = ItemRarityID.Orange;
