@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace SpiritMod.Items.BossLoot.StarplateDrops
+namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 {
 	internal class SteamplateBowLayer : PlayerDrawLayer
 	{
@@ -17,7 +17,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			if (!drawPlayer.GetModPlayer<SteamplateBowPlayer>().active)
 				return;
 
-			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow_Backpack").Value;
+			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow/SteamplateBow_Backpack").Value;
 			int frameHeight = texture.Height / 2;
 
 			SteamplateBowPlayer modPlayer = drawPlayer.GetModPlayer<SteamplateBowPlayer>();
@@ -50,12 +50,12 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			List<DrawData> data = new List<DrawData>
 			{
 				new DrawData(texture, position, rect, Lighting.GetColor((int)(drawPlayer.Center.X / 16), (int)(drawPlayer.Center.Y / 16)), 0f, rect.Size() / 2, 1f, effects, 0),
-				new DrawData(ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow_Backpack_Glow").Value, position, rect, Color.White, 0f, rect.Size() / 2, 1f, effects, 0)
+				new DrawData(ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow/SteamplateBow_Backpack_Glow").Value, position, rect, Color.White, 0f, rect.Size() / 2, 1f, effects, 0)
 			};
 			if (modPlayer.counter > 0)
 			{
 				Color color = Color.White * (float)((float)modPlayer.counter / (float)modPlayer.counterMax);
-				data.Add(new DrawData(ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow_Backpack_Swap").Value, position, rect, color, 0f, rect.Size() / 2, 1f, effects, 0));
+				data.Add(new DrawData(ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow/SteamplateBow_Backpack_Swap").Value, position, rect, color, 0f, rect.Size() / 2, 1f, effects, 0));
 			}
 			drawInfo.DrawDataCache.AddRange(data);
 		}

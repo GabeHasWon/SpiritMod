@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Buffs
 {
-	public class FateToken : ModBuff
+	public class FateBlessing : ModBuff
 	{
 		public override void SetStaticDefaults()
 		{
@@ -11,12 +11,6 @@ namespace SpiritMod.Buffs
 			Description.SetDefault("You are protected by the fates");
 			Main.buffNoSave[Type] = true;
 			Terraria.ID.BuffID.Sets.NurseCannotRemoveDebuff[Type] = false;
-		}
-
-		public override void Update(Player player, ref int buffIndex)
-		{
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			player.buffTime[buffIndex] = modPlayer.timeLeft;
 		}
 	}
 }

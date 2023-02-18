@@ -5,7 +5,6 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace SpiritMod.Items.Weapon.Summon
 {
 	public class EngineeringRod : ModItem
@@ -16,12 +15,11 @@ namespace SpiritMod.Items.Weapon.Summon
 			Tooltip.SetDefault("Summons a stationary Tesla Turret");
 		}
 
-
 		public override void SetDefaults()
 		{
-			Item.CloneDefaults(ItemID.QueenSpiderStaff); //only here for values we haven't defined ourselves yet
-			Item.damage = 75;  //placeholder damage :3
-			Item.mana = 16;   //somehow I think this might be too much...? -thegamemaster1234
+			Item.CloneDefaults(ItemID.QueenSpiderStaff);
+			Item.damage = 75;
+			Item.mana = 16;
 			Item.width = 40;
 			Item.height = 40;
 			Item.value = Item.sellPrice(0, 5, 0, 0);
@@ -37,7 +35,7 @@ namespace SpiritMod.Items.Weapon.Summon
 			player.FindSentryRestingSpot(Item.shoot, out int worldX, out int worldY, out _);
 			worldX /= 16;
 			worldY /= 16;
-			worldY-= 3;
+			worldY -= 3;
 			return !WorldGen.SolidTile(worldX, worldY);
 		}
 
@@ -49,6 +47,5 @@ namespace SpiritMod.Items.Weapon.Summon
 			player.UpdateMaxTurrets();
 			return false;
 		}
-
 	}
 }

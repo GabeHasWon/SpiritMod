@@ -1,6 +1,4 @@
-
 using Microsoft.Xna.Framework;
-
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -15,8 +13,6 @@ namespace SpiritMod.Items.Weapon.Magic
 			DisplayName.SetDefault("Thorn Devilfish");
 			Tooltip.SetDefault("Shoots out poisonous bubbles");
 		}
-
-
 
 		public override void SetDefaults()
 		{

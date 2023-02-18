@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -10,6 +9,12 @@ namespace SpiritMod.Projectiles.Yoyo
 {
 	public class BeholderYoyoProj : ModProjectile
 	{
+		private int ManaCounter
+		{
+			get => (int)Projectile.ai[0];
+			set => Projectile.ai[0] = value;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Eye of the Beholder");
@@ -24,72 +29,80 @@ namespace SpiritMod.Projectiles.Yoyo
 			Projectile.timeLeft = 1200;
 			Projectile.penetrate = -1;
 		}
-		int manaTimer;
+
 		public override void AI()
 		{
-			for (int i = 0; i < 2; i++) {
-				int dust = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, DustID.PurificationPowder);
-				Main.dust[dust].velocity *= -1f;
-				Main.dust[dust].scale *= .6f;
-				Main.dust[dust].noGravity = true;
-				Vector2 vector2_1 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
-				vector2_1.Normalize();
-				Vector2 vector2_2 = vector2_1 * ((float)Main.rand.Next(50, 100) * 0.04f);
-				Main.dust[dust].velocity = vector2_2;
-				vector2_2.Normalize();
-				Vector2 vector2_3 = vector2_2 * 24f;
-				Main.dust[dust].position = Projectile.Center - vector2_3;
+			for (int i = 0; i < 2; i++)
+			{
+				Dust dust = Dust.NewDustDirect(Projectile.Center, Projectile.width, Projectile.height, DustID.PurificationPowder, Scale: 0.6f);
+				dust.noGravity = true;
+
+				Vector2 vector = Main.rand.NextVector2Unit() * Main.rand.NextFloat(2.0f, 4.0f);
+				dust.velocity = vector;
+				dust.position = Projectile.Center - (vector * 24f);
 			}
-			if (Main.myPlayer == Projectile.owner) {
-				if (Main.player[Projectile.owner].channel && Main.player[Projectile.owner].statMana > 0) {
-					manaTimer++;
-					if (manaTimer >= 4) {
-						manaTimer = 0;
-						Main.player[Projectile.owner].statMana--;
+
+			if (Main.myPlayer == Projectile.owner)
+			{
+				Player player = Main.player[Projectile.owner];
+				if (player.channel && player.statMana > 0)
+				{
+					if (++ManaCounter >= 6)
+					{
+						ManaCounter = 0;
+						player.statMana--;
 					}
-				}
-				if (Main.player[Projectile.owner].statMana <= 0) {
-					Projectile.Kill();
-				}
-			}
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= 180) {
-				Projectile.frameCounter = 0;
-				float num = 8000f;
-				int num2 = -1;
-				for (int i = 0; i < 200; i++) {
-					float num3 = Vector2.Distance(Projectile.Center, Main.npc[i].Center);
-					if (num3 < num && num3 < 640f && Main.npc[i].CanBeChasedBy(Projectile, false)) {
-						num2 = i;
-						num = num3;
-					}
-				}
-				if (num2 != -1) {
-					bool flag = Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[num2].position, Main.npc[num2].width, Main.npc[num2].height);
-					if (flag) {
-						Vector2 value = Main.npc[num2].Center - Projectile.Center;
-						float num4 = 9f;
-						float num5 = (float)Math.Sqrt((double)(value.X * value.X + value.Y * value.Y));
-						if (num5 > num4) {
-							num5 = num4 / num5;
+
+					if (player.controlUseTile && Projectile.frameCounter <= 0)
+					{
+						for (int n = 0; n < Main.maxNPCs; n++)
+						{
+							NPC npc = Main.npc[n];
+							if (Projectile.Distance(npc.Center) < 640 && npc.CanBeChasedBy(Projectile) && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height))
+							{
+								CastMagic(Projectile.DirectionTo(npc.Center) * 10);
+
+								Projectile.velocity = Projectile.DirectionFrom(npc.Center) * 8;
+								Projectile.frameCounter = 20;
+
+								Projectile.netUpdate = true;
+								break;
+							}
 						}
-						value *= num5;
-						int p = Terraria.Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y, value.X, value.Y, ProjectileID.Fireball, Projectile.damage, Projectile.knockBack / 2f, Projectile.owner, 0f, 0f);
-						Main.projectile[p].friendly = true;
-						Main.projectile[p].hostile = false;
 					}
+					if (Projectile.frameCounter > 0)
+						Projectile.frameCounter--;
 				}
+				if (player.statMana <= 0)
+					player.channel = false;
 			}
 		}
+
+		private void CastMagic(Vector2 velocity)
+		{
+			Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, velocity, ProjectileID.Fireball, Projectile.damage, Projectile.knockBack / 2f, Projectile.owner, 0f, 0f);
+			proj.friendly = true;
+			proj.hostile = false;
+		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
-			for (int k = 0; k < Projectile.oldPos.Length; k++) {
+			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+
+			Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
+			for (int k = 0; k < Projectile.oldPos.Length; k++)
+			{
 				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 				Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
+				Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 			}
 			return false;
+		}
+
+		public override void PostDraw(Color lightColor)
+		{
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 		}
 	}
 }

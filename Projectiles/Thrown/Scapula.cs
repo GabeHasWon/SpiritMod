@@ -20,7 +20,6 @@ namespace SpiritMod.Projectiles.Thrown
 			set => Projectile.ai[0] = value;
 		}
 		private readonly int counterMax = 10;
-		private readonly int animTime = 5;
 
 		private int hitNPCIndex = -1;
 
@@ -109,14 +108,14 @@ namespace SpiritMod.Projectiles.Thrown
 							}
 						}
 					}
-
-					if (!npc.active)
-						NoDamage = true;
-					else
-						Projectile.position += npc.velocity; //Appear to remain stuck to the NPC
 				}
 				if (shouldKill)
 					Projectile.Kill();
+
+				if (npc.active)
+					Projectile.position += npc.velocity; //Appear to remain stuck to the NPC
+				else
+					NoDamage = true;
 
 				return false;
 			}
@@ -208,7 +207,7 @@ namespace SpiritMod.Projectiles.Thrown
 
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{
-			if ((hitNPCIndex < 0) || (Counter > animTime))
+			if ((hitNPCIndex < 0) || (Counter > 5))
 				return;
 			Vector2 direction = Projectile.DirectionTo(Main.npc[hitNPCIndex].Center);
 

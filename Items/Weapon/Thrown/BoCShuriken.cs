@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Tooltip.SetDefault("Shoots a revolving creeper\n'Fashioned after yet another fleshy eyeball'");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -39,6 +38,5 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.maxStack = 999;
 			Item.consumable = true;
 		}
-
 	}
 }
