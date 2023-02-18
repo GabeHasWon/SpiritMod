@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.AstralClock
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			MyPlayer modPlayer = player.GetSpiritPlayer();
-			modPlayer.cooldowns[Type] = 3600;
+			CooldownGItem.GetCooldown(Type, player, 3600);
 			player.AddBuff(ModContent.BuffType<ClockBuff>(), 200);
 
 			modPlayer.clockX = (int)position.X;
@@ -49,6 +49,6 @@ namespace SpiritMod.Items.Sets.MagicMisc.AstralClock
 			return false;
 		}
 
-		public override bool CanUseItem(Player player) => player.GetSpiritPlayer().cooldowns[Type] == 0;
+		public override bool CanUseItem(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
 	}
 }

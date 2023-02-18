@@ -36,7 +36,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			player.GetSpiritPlayer().cooldowns[Type] = 180;
+			CooldownGItem.GetCooldown(Type, player, 180);
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -46,6 +46,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 			return false;
 		}
 
-		public override bool CanUseItem(Player player) => player.GetSpiritPlayer().cooldowns[Type] == 0;
+		public override bool CanUseItem(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
 	}
 }

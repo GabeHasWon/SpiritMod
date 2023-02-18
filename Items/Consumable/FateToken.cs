@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Consumable
 		public override bool? UseItem(Player player)
 		{
 			player.AddBuff(ModContent.BuffType<FateBlessing>(), 3600);
-			player.GetModPlayer<MyPlayer>().cooldowns[Type] = 7200; //Apply a cooldown for 2 minutes
+			CooldownGItem.GetCooldown(Type, player, 7200); //Apply a cooldown for 2 minutes
 
 			Rectangle rect = player.getRect();
 			for (int i = 0; i < 20; i++)
@@ -61,7 +61,7 @@ namespace SpiritMod.Items.Consumable
 			return false;
 		}
 
-		public override bool CanUseItem(Player player) => player.GetModPlayer<MyPlayer>().cooldowns[Type] == 0;
+		public override bool CanUseItem(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
 	}
 
 	public class FateTokenParticle : Particle

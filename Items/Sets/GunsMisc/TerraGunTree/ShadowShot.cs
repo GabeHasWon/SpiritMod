@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			Item.crit = 6;
 		}
 
-		public override bool AltFunctionUse(Player player) => player.GetSpiritPlayer().cooldowns[Type] == 0;
+		public override bool AltFunctionUse(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
 
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
@@ -54,7 +54,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 				if (Main.netMode != NetmodeID.Server)
 					SoundEngine.PlaySound(SoundID.Item94);
 
-				player.GetSpiritPlayer().cooldowns[Type] = 300;
+				CooldownGItem.GetCooldown(Type, player, 300);
 
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ShadowShotTracker>(), Item.damage / 3, knockback, player.whoAmI);
 			}
@@ -81,7 +81,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 
 		public override void HoldItem(Player player)
 		{
-			if (player.GetSpiritPlayer().cooldowns[Type] == 1)
+			if (CooldownGItem.GetCooldown(Type, player) == 1)
 			{
 				if (Main.netMode != NetmodeID.Server)
 					SoundEngine.PlaySound(SoundID.MaxMana);
@@ -102,7 +102,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			recipe.AddIngredient(ItemID.Boomstick);
 			recipe.AddIngredient(ItemID.Musket);
 			recipe.AddIngredient(ItemID.Handgun, 1);
-			recipe.AddIngredient(ModContent.ItemType<Items.Sets.CoilSet.CoilPistol>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<CoilSet.CoilPistol>(), 1);
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.Register();
 		}

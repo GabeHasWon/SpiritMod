@@ -54,43 +54,40 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 		}
 
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
-		public override bool AltFunctionUse(Player player) => true;
+		public override bool AltFunctionUse(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
 
 		public override bool CanUseItem(Player player)
 		{
-			MyPlayer modPlayer = player.GetSpiritPlayer();
 			if (player.altFunctionUse == 2)
 			{
-				if (modPlayer.cooldowns[Type] == 0)
+				if (!Main.dedServ)
 				{
-					if (!Main.dedServ)
-					{
-						//Create an Occultist-esque explosion effect
-						ParticleHandler.SpawnParticle(new OccultistDeathBoom(player.Center, 0.8f));
+					//Create an Occultist-esque explosion effect
+					ParticleHandler.SpawnParticle(new OccultistDeathBoom(player.Center, 0.8f));
 
-						for (int i = 0; i < 25; i++)
-							ParticleHandler.SpawnParticle(new GlowParticle(player.Center, Main.rand.NextVector2Circular(7, 7), new Color(99, 23, 25), Main.rand.NextFloat(0.04f, 0.08f), 35));
+					for (int i = 0; i < 25; i++)
+						ParticleHandler.SpawnParticle(new GlowParticle(player.Center, Main.rand.NextVector2Circular(7, 7), new Color(99, 23, 25), Main.rand.NextFloat(0.04f, 0.08f), 35));
 
-						for (int i = 0; i < 3; i++)
-							ParticleHandler.SpawnParticle(new PulseCircle(player.Center, new Color(255, 33, 66) * 0.7f, 80 * i, 20) { RingColor = Color.Red });
-					}
-					if (Main.netMode != NetmodeID.Server)
-						SoundEngine.PlaySound(SoundID.NPCDeath39 with { PitchVariance = 0.2f }, player.position);
-
-					int maxDist = 100;
-					foreach (NPC npc in Main.npc)
-					{
-						if (Collision.CanHitLine(player.position, player.width, player.height, npc.position, npc.width, npc.height) && player.Distance(npc.Center) < maxDist && npc.CanDamage() && npc.active)
-						{
-							int damage = (int)(Item.damage * (npc.HasBuff(ModContent.BuffType<SurgingAnguish>()) ? 3f : 0.75f));
-
-							if ((int)(npc.life - npc.StrikeNPC(damage, 8, Math.Sign(npc.Center.X - player.Center.X))) <= 0 && !Main.dedServ)
-								ParticleHandler.SpawnParticle(new OccultistDeathBoom(npc.Center, 0.4f));
-						}
-					}
-
-					modPlayer.cooldowns[Type] = 180;
+					for (int i = 0; i < 3; i++)
+						ParticleHandler.SpawnParticle(new PulseCircle(player.Center, new Color(255, 33, 66) * 0.7f, 80 * i, 20) { RingColor = Color.Red });
 				}
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(SoundID.NPCDeath39 with { PitchVariance = 0.2f }, player.position);
+
+				int maxDist = 100;
+				foreach (NPC npc in Main.npc)
+				{
+					if (Collision.CanHitLine(player.position, player.width, player.height, npc.position, npc.width, npc.height) && player.Distance(npc.Center) < maxDist && npc.CanDamage() && npc.active)
+					{
+						int damage = (int)(Item.damage * (npc.HasBuff(ModContent.BuffType<SurgingAnguish>()) ? 3f : 0.75f));
+
+						if ((int)(npc.life - npc.StrikeNPC(damage, 8, Math.Sign(npc.Center.X - player.Center.X))) <= 0 && !Main.dedServ)
+							ParticleHandler.SpawnParticle(new OccultistDeathBoom(npc.Center, 0.4f));
+					}
+				}
+
+				CooldownGItem.GetCooldown(Type, player, 180);
+
 				return false;
 			}
 			return true;
