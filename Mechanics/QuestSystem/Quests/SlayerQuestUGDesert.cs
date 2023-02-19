@@ -25,7 +25,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private SlayerQuestUGDesert()
         {
-            _tasks.AddTask(new SlayTask(new int[] { NPCID.TombCrawlerHead, NPCID.FlyingAntlion, NPCID.WalkingAntlion}, 8));
+            _tasks.AddTask(new SlayTask(new int[] { NPCID.TombCrawlerHead, NPCID.FlyingAntlion, NPCID.WalkingAntlion, NPCID.GiantWalkingAntlion, NPCID.GiantFlyingAntlion}, 8));
         }
     }
 }

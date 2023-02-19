@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 			Item.height = 26;
 			Item.value = Item.sellPrice(0, 0, 80, 0);
 			Item.rare = ItemRarityID.Orange;
-			Item.defense = 9;
+			Item.defense = 8;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 
 		public override void UpdateEquip(Player player)
 		{
-            player.GetAttackSpeed(DamageClass.Melee) += 0.12f;
+			player.GetDamage(DamageClass.Melee) += 0.08f;
 		}
 		public override void AddRecipes()
 		{

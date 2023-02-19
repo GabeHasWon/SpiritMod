@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 
 		public override void SetDefaults()
 		{
-			Item.damage = 32;
+			Item.damage = 30;
 			Item.noMelee = true;
 			Item.noUseGraphic = false;
 			Item.DamageType = DamageClass.Magic;
@@ -26,13 +26,13 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 			Item.useAnimation = 12;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.shoot = ModContent.ProjectileType<WhirltideScouter>();
-			Item.knockBack = 6.5f;
+			Item.knockBack = 6f;
 			Item.shootSpeed = 7f;
 			Item.autoReuse = true;
 			Item.rare = ItemRarityID.Green;
 			Item.value = Item.sellPrice(silver: 50);
 			Item.useTurn = true;
-			Item.mana = 20;
+			Item.mana = 10;
 		}
 
 		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<WhirltideSpout>()] < 1;
