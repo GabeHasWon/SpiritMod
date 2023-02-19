@@ -54,8 +54,10 @@ namespace SpiritMod
 		internal static bool swingingCheck;
 		internal static Item swingingItem;
 
-		public List<SpiritPlayerEffect> effects = new List<SpiritPlayerEffect>();
-		public List<SpiritPlayerEffect> removedEffects = new List<SpiritPlayerEffect>();
+		public Dictionary<int, ushort> cooldowns = new();
+
+		public List<SpiritPlayerEffect> effects = new();
+		public List<SpiritPlayerEffect> removedEffects = new();
 		public SpiritPlayerEffect setbonus = null;
 
 		public int Shake = 0;
@@ -117,7 +119,6 @@ namespace SpiritMod
 		public bool animusLens = false;
 		public bool timScroll = false;
 		public bool cultistScarf = false;
-		public bool fateToken = false;
 		public bool AnimeSword = false;
 		public bool geodeRanged = false;
 		public bool fireMaw = false;
@@ -165,10 +166,6 @@ namespace SpiritMod
 		public int movementStacks = 1;
 
 		public bool bloodfireShield;
-		public int shootDelay = 0;
-		public int shootDelay1 = 0;
-		public int shootDelay2 = 0;
-		public int shootDelay3 = 0;
 
 		public bool unboundSoulMinion = false;
 		public bool cragboundMinion = false;
@@ -1500,15 +1497,13 @@ namespace SpiritMod
 
 		public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
 		{
-			if (fateToken)
+			if (Player.HasBuff(ModContent.BuffType<FateBlessing>()))
 			{
+				Player.ClearBuff(ModContent.BuffType<FateBlessing>());
+
 				Player.statLife = 500;
-				timeLeft = 0;
-				MyPlayer myPlayer = Main.player[Main.myPlayer].GetModPlayer<MyPlayer>();
-				var textPos = new Rectangle((int)myPlayer.Player.position.X, (int)myPlayer.Player.position.Y - 60, myPlayer.Player.width, myPlayer.Player.height);
-				CombatText.NewText(textPos, new Color(255, 240, 0, 100), "Fate has protected you!");
 				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.position.X, Player.position.Y, 0, 0, ModContent.ProjectileType<Shockwave>(), 0, 0, Player.whoAmI);
-				fateToken = false;
+
 				return false;
 			}
 
@@ -2973,23 +2968,11 @@ namespace SpiritMod
 				CombatText.NewText(textPos, new Color(121, 195, 237, 100), "Water Spout Charged!");
 			}
 
-			if (shootDelay > 0)
-				shootDelay--;
-
-			if (shootDelay == 1)
+			foreach (int entry in cooldowns.Keys)
 			{
-				Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-				CombatText.NewText(textPos, new Color(29, 240, 255, 100), "Cooldown over!");
+				if (cooldowns[entry] > 0)
+					cooldowns[entry]--;
 			}
-
-			if (shootDelay1 > 0)
-				shootDelay1--;
-
-			if (shootDelay2 > 0)
-				shootDelay2--;
-
-			if (shootDelay3 > 0)
-				shootDelay3--;
 		}
 
 		private void TeslaStrike(Player player)

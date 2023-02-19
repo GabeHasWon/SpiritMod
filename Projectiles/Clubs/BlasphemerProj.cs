@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -25,13 +24,13 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			Player player = Main.player[Projectile.owner];
 			for (int k = 0; k <= 100; k++) {
-				Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), DustType<Dusts.BoneDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 10f);
+				Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), DustType<BoneDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 10f);
 			}
             for (int k = 0; k <= 100; k++)
             {
-                Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), DustType<Dusts.FireClubDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 10f);
+                Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), DustType<FireClubDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 10f);
             }
-			int a = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y, 0, -12, ModContent.ProjectileType<Projectiles.Magic.Firespike>(), Projectile.damage/3, Projectile.knockBack / 2, Projectile.owner, 0, player.direction);
+			int a = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y, 0, -12, ProjectileType<Magic.Firespike>(), Projectile.damage/3, Projectile.knockBack / 2, Projectile.owner, 0, player.direction);
             Main.projectile[a].DamageType = DamageClass.Melee;
             SoundEngine.PlaySound(SoundID.NPCHit20, Projectile.position);
         }

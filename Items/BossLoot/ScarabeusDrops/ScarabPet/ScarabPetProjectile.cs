@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.GlobalClasses.Players;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -37,13 +38,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet
 
 		public override void AI()
 		{
-			var modPlayer = Main.player[Projectile.owner].GetModPlayer<GlobalClasses.Players.PetPlayer>();
-
-			if (Main.player[Projectile.owner].dead)
-				modPlayer.scarabPet = false;
-
-			if (modPlayer.scarabPet)
-				Projectile.timeLeft = 2;
+			Main.player[Projectile.owner].GetModPlayer<PetPlayer>().PetFlag(Projectile);
 
 			if (_state == 0)
 				NearbyMovement();

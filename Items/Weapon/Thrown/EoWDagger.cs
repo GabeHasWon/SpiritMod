@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Tooltip.SetDefault("Splits into two smaller, homing eaters");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

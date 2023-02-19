@@ -1,7 +1,7 @@
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Thrown.Charge;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class ClatterSpear : ModItem
@@ -11,7 +11,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			DisplayName.SetDefault("Clatter Javelin");
 			Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -30,7 +29,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.knockBack = 8f;
 			Item.DamageType = DamageClass.Melee;
 			Item.noMelee = true;
-			//   item.UseSound = SoundID.Item20;
 			Item.autoReuse = false;
 			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<ClatterJavelinProj>();

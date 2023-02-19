@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Mechanics.CooldownItem;
 using SpiritMod.Projectiles.Bullet.Crimbine;
 using System;
 using Terraria;
@@ -8,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 {
-	public class Crimbine : ModItem
+	public class Crimbine : ModItem, ICooldownItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -37,25 +38,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			Item.crit = 6;
 		}
 
-		public override bool AltFunctionUse(Player player) => true;
+		public override bool AltFunctionUse(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
 
-		public override bool CanUseItem(Player player)
-		{
-			if (player.altFunctionUse == 2)
-			{
-				MyPlayer modPlayer = player.GetSpiritPlayer();
-				if (modPlayer.shootDelay2 == 0)
-					return true;
-				return false;
-			}
-			else
-				return true;
-		}
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
 		public override void HoldItem(Player player)
 		{
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			if (modPlayer.shootDelay2 == 1) 
+			if (CooldownGItem.GetCooldown(Type, player) == 1) 
 			{
 				if (Main.netMode != NetmodeID.Server)
 					SoundEngine.PlaySound(SoundID.MaxMana);
@@ -81,11 +70,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 				if (Main.netMode != NetmodeID.Server)
 					SoundEngine.PlaySound(SoundID.Item95);
 
-				MyPlayer modPlayer = player.GetSpiritPlayer();
-				modPlayer.shootDelay2 = 300;
+				CooldownGItem.GetCooldown(Type, player, 300);
+
 				type = ModContent.ProjectileType<CrimbineAmalgam>();
-				velocity.X /= 4;
-				velocity.Y /= 4;
+				velocity /= 4;
 			}
 			else
 			{
@@ -115,7 +103,5 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.Register();
 		}
-
-		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 	}
 }

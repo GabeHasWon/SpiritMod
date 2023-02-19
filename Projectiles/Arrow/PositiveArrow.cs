@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using System;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.Particles;
-using SpiritMod.Items.BossLoot.StarplateDrops;
+using SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow;
 
 namespace SpiritMod.Projectiles.Arrow
 {

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Projectiles.Summon.Dragon;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -38,28 +39,22 @@ namespace SpiritMod.Items.Weapon.Summon
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			// Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124));
 			int dragonLength = 8;
-			int offset = 0;
-			if (velocity.X > 0) {
-				offset = -32;
-			}
-			else {
-				offset = 32;
-			}
+			int offset = -(32 * Math.Sign(velocity.X));
 
 			int latestprojectile = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<DragonHeadOne>(), damage, knockback, player.whoAmI, velocity.X, velocity.Y); //bottom
-			for (int i = 0; i < dragonLength; ++i) {
+			for (int i = 0; i < dragonLength; ++i)
+			{
 				latestprojectile = Projectile.NewProjectile(source, position.X + (i * offset), position.Y, 0, 0, ModContent.ProjectileType<DragonBodyOne>(), damage, 0, player.whoAmI, 0, latestprojectile);
 			}
 			latestprojectile = Projectile.NewProjectile(source, position.X + (dragonLength * offset), position.Y, 0, 0, ModContent.ProjectileType<DragonTailOne>(), damage, 0, player.whoAmI, 0, latestprojectile);
 
 			latestprojectile = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<DragonHeadTwo>(), damage, knockback, player.whoAmI, velocity.X, velocity.Y); //bottom
-			for (int j = 0; j < dragonLength; ++j) {
+			for (int j = 0; j < dragonLength; ++j)
+			{
 				latestprojectile = Projectile.NewProjectile(source, position.X + (j * offset), position.Y, 0, 0, ModContent.ProjectileType<DragonBodyTwo>(), damage, 0, player.whoAmI, 0, latestprojectile);
 			}
 			latestprojectile = Projectile.NewProjectile(source, position.X + (dragonLength * offset), position.Y, 0, 0, ModContent.ProjectileType<DragonTailTwo>(), damage, 0, player.whoAmI, 0, latestprojectile);
-			//Main.projectile[(int)latestprojectile].realLife = projectile.whoAmI;
 			return true;
 		}
 	}

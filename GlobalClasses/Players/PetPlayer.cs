@@ -25,11 +25,6 @@ namespace SpiritMod.GlobalClasses.Players
 		public bool harpyPet = false;
 		public bool cultFishPet = false;
 		public bool briarSlimePet = false;
-		public bool scarabPet = false;
-		public bool vinewrathPet = false;
-		public bool mjwPet = false;
-		public bool starplatePet = false;
-		public bool infernonPet = false;
 
 		public Dictionary<int, bool> pets = new();
 
@@ -49,11 +44,6 @@ namespace SpiritMod.GlobalClasses.Players
 			harpyPet = false;
 			cultFishPet = false;
 			briarSlimePet = false;
-			scarabPet = false;
-			vinewrathPet = false;
-			mjwPet = false;
-			starplatePet = false;
-			infernonPet = false;
 
 			foreach (int item in pets.Keys)
 				pets[item] = false;

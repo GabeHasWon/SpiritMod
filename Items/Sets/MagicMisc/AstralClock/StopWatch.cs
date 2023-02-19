@@ -1,19 +1,21 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs;
+using SpiritMod.Mechanics.CooldownItem;
 using SpiritMod.Projectiles.Magic;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.MagicMisc.AstralClock
 {
-	public class StopWatch : ModItem
+	public class StopWatch : ModItem, ICooldownItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Astral Clock");
-			Tooltip.SetDefault("Creates a clock around the player, stopping time. \nHas a 60 second cooldown");
-			Item.staff[Item.type] = false;
+			Tooltip.SetDefault("Freezes time in a radius around the player \n60 second cooldown");
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -24,32 +26,29 @@ namespace SpiritMod.Items.Sets.MagicMisc.AstralClock
 			Item.useTime = 30;
 			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.noMelee = true; //so the item's animation doesn't do damage
+			Item.noMelee = true;
 			Item.knockBack = 5;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = SoundID.Item20;
 			Item.autoReuse = false;
 			Item.shoot = ModContent.ProjectileType<Clock>();
-			Item.shootSpeed = 0.3f;
+			Item.shootSpeed = 0f;
 		}
 
-		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			MyPlayer modPlayer = player.GetSpiritPlayer();
-			modPlayer.shootDelay = 3600;
+			CooldownGItem.GetCooldown(Type, player, 3600);
+			player.AddBuff(ModContent.BuffType<ClockBuff>(), 200);
+
 			modPlayer.clockX = (int)position.X;
 			modPlayer.clockY = (int)position.Y;
-			velocity = Vector2.Zero;
-			player.AddBuff(ModContent.BuffType<ClockBuff>(), 200);
-		}
 
-		public override bool CanUseItem(Player player)
-		{
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			if (modPlayer.shootDelay == 0)
-				return true;
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 			return false;
 		}
+
+		public override bool CanUseItem(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
 	}
 }

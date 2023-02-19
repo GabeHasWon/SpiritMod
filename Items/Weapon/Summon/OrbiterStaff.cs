@@ -34,16 +34,12 @@ namespace SpiritMod.Items.Weapon.Summon
 			Item.UseSound = SoundID.Item44;
 		}
 
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+		public override bool AltFunctionUse(Player player) => true;
 
 		public override bool? UseItem(Player player)
 		{
-			if (player.altFunctionUse == 2) {
+			if (player.altFunctionUse == 2)
 				player.MinionNPCTargetAim(true);
-			}
 			return null;
 		}
 

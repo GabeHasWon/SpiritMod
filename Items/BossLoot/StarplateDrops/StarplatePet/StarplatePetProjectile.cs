@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Tiles.Ambient;
 using System;
 using Terraria;
@@ -48,13 +49,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 
 		public override void AI()
 		{
-			var modPlayer = Main.player[Projectile.owner].GetModPlayer<GlobalClasses.Players.PetPlayer>();
-
-			if (Main.player[Projectile.owner].dead)
-				modPlayer.starplatePet = false;
-
-			if (modPlayer.starplatePet)
-				Projectile.timeLeft = 2;
+			Main.player[Projectile.owner].GetModPlayer<PetPlayer>().PetFlag(Projectile);
 
 			if (State < BODY_VAR1)
 			{

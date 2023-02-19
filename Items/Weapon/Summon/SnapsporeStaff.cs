@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Weapon.Summon
 {
 	public class SnapsporeStaff : ModItem
@@ -32,18 +33,16 @@ namespace SpiritMod.Items.Weapon.Summon
 			Item.shoot = ModContent.ProjectileType<SnapsporeMinion>();
 			Item.UseSound = SoundID.Grass;
 		}
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+
+		public override bool AltFunctionUse(Player player) => true;
 
 		public override bool? UseItem(Player player)
 		{
-			if (player.altFunctionUse == 2) {
+			if (player.altFunctionUse == 2)
 				player.MinionNPCTargetAim(true);
-			}
 			return null;
 		}
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			player.AddBuff(ModContent.BuffType<SnapsporeBuff>(), 3600);

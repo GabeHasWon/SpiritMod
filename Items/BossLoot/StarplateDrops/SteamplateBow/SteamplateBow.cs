@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.BossLoot.StarplateDrops
+namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 {
 	public class SteamplateBow : ModItem
 	{
@@ -13,7 +13,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		{
 			DisplayName.SetDefault("Starcharger");
 			Tooltip.SetDefault("Left-click to shoot Positive Arrows\nRight-click to shoot Negative Arrows\nOppositely charged arrows explode upon touching each other");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()

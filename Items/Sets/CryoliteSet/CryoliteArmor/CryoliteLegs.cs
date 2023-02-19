@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 			Item.height = 26;
 			Item.value = Item.sellPrice(0, 0, 80, 0);
 			Item.rare = ItemRarityID.Orange;
-			Item.defense = 10;
+			Item.defense = 9;
 		}
 
 		public override void UpdateEquip(Player player)

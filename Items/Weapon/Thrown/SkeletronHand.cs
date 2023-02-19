@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Tooltip.SetDefault("Dashes through the air in rapid bursts");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

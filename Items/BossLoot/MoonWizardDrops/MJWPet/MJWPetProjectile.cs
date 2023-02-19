@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.GlobalClasses.Players;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -36,13 +37,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet
 
 		public override void AI()
 		{
-			var modPlayer = Main.player[Projectile.owner].GetModPlayer<GlobalClasses.Players.PetPlayer>();
-
-			if (Main.player[Projectile.owner].dead)
-				modPlayer.mjwPet = false;
-
-			if (modPlayer.mjwPet)
-				Projectile.timeLeft = 2;
+			Main.player[Projectile.owner].GetModPlayer<PetPlayer>().PetFlag(Projectile);
 
 			Lighting.AddLight(Projectile.Center, new Vector3(0.025f, 0.05f, 2f) * 0.9f);
 			Projectile.rotation = Projectile.velocity.X * 0.06f;

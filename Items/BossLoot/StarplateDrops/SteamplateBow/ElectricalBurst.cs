@@ -4,7 +4,7 @@ using SpiritMod.Particles;
 using SpiritMod.Utilities;
 using Terraria;
 
-namespace SpiritMod.Items.BossLoot.StarplateDrops
+namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 {
 	public class ElectricalBurst : Particle
 	{

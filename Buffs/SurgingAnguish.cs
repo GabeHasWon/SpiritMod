@@ -14,12 +14,13 @@ namespace SpiritMod.Buffs
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}
-		float counter = 3f;
+
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.lifeRegen -= (int)counter;
+			npc.lifeRegen -= 3;
 
-			if (Main.rand.NextBool(2)) {
+			if (Main.rand.NextBool(2))
+			{
 				int dust = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<NightmareDust>());
 				Main.dust[dust].noGravity = true;
 				Main.dust[dust].noLight = true;
