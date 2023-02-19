@@ -131,10 +131,6 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				return;
 
 			Tile tile = Main.tile[i, j];
-
-			if (tile.LiquidType > LiquidID.Water)
-				return;
-
 			Tile right = Main.tile[i + 1, j];
 			Tile left = Main.tile[i - 1, j];
 			Vector2 drawOffset = (Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange)) - Main.screenPosition;
@@ -152,39 +148,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 			if (openTile)
 			{
-				static void DrawSlopedLiquid(Tile tile, int offset, bool left, float factor, Vector2 drawOffset, VertexColors colours, Asset<Texture2D> texture, int i, int j)
-				{
-					if (tile.HasTile && ((left && tile.LeftSlope) || tile.RightSlope))
-					{
-						var pos = new Vector2((i + offset) << 4, (j + (1 - factor)) * 16f) + drawOffset;
-						var source = new Rectangle((int)(tile.Slope - 1) * 18, (int)(16 * (1 - factor)), 16, (int)(16 * factor));
-
-						Main.tileBatch.Draw(texture.Value, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
-					}
-				}
-
-				static void DrawHalfBrickLiquid(Tile tile, int offset, Vector2 drawOffset, VertexColors colours, int i, int j)
-				{
-					if (tile.HasTile && tile.IsHalfBlock)
-					{
-						byte targetAmount = Math.Max(Main.tile[i + offset - 1, j].LiquidAmount, Main.tile[i + offset + 1, j].LiquidAmount);
-
-						if (Main.tile[i + offset, j - 1].LiquidAmount > 0)
-							targetAmount = 255;
-
-						float heightFactor = (targetAmount / 255f);
-
-						var pos = new Vector2((i + offset) << 4, j * 16f) + drawOffset;
-						var source = new Rectangle(16, (int)(16 * (1 - heightFactor)), 16, (int)(16 * heightFactor));
-						var tex = LiquidRenderer.Instance._liquidTextures[Main.waterStyle].Value;
-
-						if (Main.tile[i + offset, j - 1].LiquidAmount > 0)
-							return;
-
-						Main.tileBatch.Draw(tex, pos + new Vector2(0, 8 * (1 - heightFactor)), source, colours, Vector2.Zero, 1f, SpriteEffects.None);
-					}
-				}
-				
+			
 				DrawSlopedLiquid(right, 1, true, factor, drawOffset, colours, texture, i, j);
 				DrawSlopedLiquid(left, -1, false, factor, drawOffset, colours, texture, i, j);
 
@@ -229,6 +193,39 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 					Main.tileBatch.Draw(tex, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 				}
+			}
+		}
+
+		static void DrawSlopedLiquid(Tile tile, int offset, bool left, float factor, Vector2 drawOffset, VertexColors colours, Asset<Texture2D> texture, int i, int j)
+		{
+			if (tile.HasTile && ((left && tile.LeftSlope) || tile.RightSlope))
+			{
+				var pos = new Vector2((i + offset) << 4, (j + (1 - factor)) * 16f) + drawOffset;
+				var source = new Rectangle((int)(tile.Slope - 1) * 18, (int)(16 * (1 - factor)), 16, (int)(16 * factor));
+
+				Main.tileBatch.Draw(texture.Value, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
+			}
+		}
+
+		private static void DrawHalfBrickLiquid(Tile tile, int offset, Vector2 drawOffset, VertexColors colours, int i, int j)
+		{
+			if (tile.HasTile && tile.IsHalfBlock)
+			{
+				byte targetAmount = Math.Max(Main.tile[i + offset - 1, j].LiquidAmount, Main.tile[i + offset + 1, j].LiquidAmount);
+
+				if (Main.tile[i + offset, j - 1].LiquidAmount > 0)
+					targetAmount = 255;
+
+				float heightFactor = (targetAmount / 255f);
+
+				var pos = new Vector2((i + offset) << 4, j * 16f) + drawOffset;
+				var source = new Rectangle(16, (int)(16 * (1 - heightFactor)), 16, (int)(16 * heightFactor));
+				var tex = LiquidRenderer.Instance._liquidTextures[Main.waterStyle].Value;
+
+				if (Main.tile[i + offset, j - 1].LiquidAmount > 0)
+					return;
+
+				Main.tileBatch.Draw(tex, pos + new Vector2(0, 8 * (1 - heightFactor)), source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 			}
 		}
 

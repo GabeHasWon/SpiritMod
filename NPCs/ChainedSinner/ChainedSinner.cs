@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.ChainedSinner
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chained Sinner");
+			DisplayName.SetDefault("Furnace Maw");
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
 
@@ -43,13 +43,15 @@ namespace SpiritMod.NPCs.ChainedSinner
 
 		public override void OnSpawn(IEntitySource source)
 		{
+			const int Distance = 8;
+
 			int x = (int)(NPC.Center.X / 16f);
 			int y = (int)(NPC.Center.Y / 16f);
 			List<Point16> points = new();
 
-			for (int i = x - 4; i < x + 4; ++i)
+			for (int i = x - Distance; i < x + Distance; ++i)
 			{
-				for (int j = y - 4; j < y + 4; ++j)
+				for (int j = y - Distance; j < y + Distance; ++j)
 				{
 					Tile tile = Main.tile[i, j];
 
@@ -58,9 +60,15 @@ namespace SpiritMod.NPCs.ChainedSinner
 				}
 			}
 
+			if (points.Count == 0)
+			{
+				NPC.active = false;
+				return;
+			}
+
 			NPC.Center = Main.rand.Next(points).ToVector2() * 16;
-			InitializeChain(NPC.Center);
 			NPC.netUpdate = true;
+			InitializeChain(NPC.Center);
 		}
 
 		public override void AI()
@@ -69,6 +77,9 @@ namespace SpiritMod.NPCs.ChainedSinner
 
 			NPC.TargetClosest(true);
 			NPC.ai[0]++;
+
+			if (chain is null)
+				InitializeChain(NPC.Center);
 
 			chain.Update(spawnPos - new Vector2(0, 1), NPC.Center);
 
@@ -113,6 +124,15 @@ namespace SpiritMod.NPCs.ChainedSinner
 			if (!NPC.IsABestiaryIconDummy)
 				chain.Draw(spriteBatch, Mod.Assets.Request<Texture2D>("NPCs/ChainedSinner/ChainedSinner_Chain").Value);
 			return true;
+		}
+
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (NPC.life <= 0)
+			{
+				foreach (var item in chain.VerticesArray())
+					Gore.NewGoreDirect(NPC.GetSource_Death(), item, Vector2.Zero, Mod.Find<ModGore>("ChainedSinnerChain").Type);
+			}
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) 
