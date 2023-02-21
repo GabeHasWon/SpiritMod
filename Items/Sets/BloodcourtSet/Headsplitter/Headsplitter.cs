@@ -27,8 +27,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 34;
 			Item.height = 40;
-			Item.useTime = 30;
-			Item.useAnimation = 30;
+			Item.useTime = 24;
+			Item.useAnimation = 24;
 			Item.useStyle = ItemUseStyleID.Rapier;
 			Item.knockBack = 6;
 			Item.value = Item.sellPrice(0, 0, 20, 0);

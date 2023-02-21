@@ -14,6 +14,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.Thyrsus
 	//TODO: Make it so right click destroys the currently alive one
 	public class Thyrsus : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Thyrsus");
