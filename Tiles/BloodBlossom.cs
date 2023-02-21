@@ -81,7 +81,7 @@ namespace SpiritMod.Tiles
 			return true;
 		}
 
-		private float GetOffset() => (float)Math.Sin(Main.GlobalTimeWrappedHourly * 1.2f) * 8f;
+		private static float GetOffset() => (float)Math.Sin(Main.GlobalTimeWrappedHourly * 1.2f) * 8f;
 
 		public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 		{

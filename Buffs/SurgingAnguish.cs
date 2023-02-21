@@ -1,5 +1,7 @@
+using Microsoft.Xna.Framework;
 using SpiritMod.Dusts;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Buffs
@@ -19,11 +21,23 @@ namespace SpiritMod.Buffs
 		{
 			npc.lifeRegen -= 3;
 
-			if (Main.rand.NextBool(2))
+			int loops = (npc.width + npc.height) / 50;
+			for (int i = 0; i < loops; i++)
 			{
-				int dust = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<NightmareDust>());
-				Main.dust[dust].noGravity = true;
-				Main.dust[dust].noLight = true;
+				Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, Main.rand.NextBool(2) ? DustID.GemRuby : ModContent.DustType<NightmareDust>());
+
+				if (Main.rand.NextBool(2) && dust.type == DustID.GemRuby)
+				{
+					dust.fadeIn = 1.5f;
+					dust.velocity = Vector2.Zero;
+				}
+				else
+				{
+					dust.velocity = new Vector2(0, -2);
+				}
+
+				dust.scale = npc.scale * Main.rand.NextFloat(0.8f, 1.3f);
+				dust.noGravity = true;
 			}
 		}
 	}

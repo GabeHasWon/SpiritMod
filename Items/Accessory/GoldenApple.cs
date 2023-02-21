@@ -1,7 +1,6 @@
 using SpiritMod.Utilities;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
@@ -27,7 +26,7 @@ namespace SpiritMod.Items.Accessory
 		{
 			if (!player.HasAccessory<GoldShield>() || !player.HasAccessory<MedusaShield>())
 			{
-				float defBoost = ((float)player.statLifeMax2 - player.statLife) / player.statLifeMax2 * 15f;
+				float defBoost = (float)(player.statLifeMax2 - (float)player.statLife) / player.statLifeMax2 * 15f;
 				player.statDefense += (int)defBoost;
 			}
 		}

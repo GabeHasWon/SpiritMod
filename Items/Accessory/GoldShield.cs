@@ -1,4 +1,3 @@
-
 using SpiritMod.Utilities;
 using Terraria;
 using Terraria.ID;
@@ -40,7 +39,7 @@ namespace SpiritMod.Items.Accessory
 
 			if (!player.HasAccessory<MedusaShield>())
 			{
-				float mult = player.HasAccessory<GoldenApple>() ? 25 : 20f;
+				float mult = player.HasAccessory<GoldenApple>() ? 25f : 20f;
 
 				float defBoost = (player.statLifeMax2 - (float)player.statLife) / player.statLifeMax2 * mult;
 				player.statDefense += (int)defBoost;

@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Headsplitter");
-			Tooltip.SetDefault("Right click to release an explosion of vengeance, effective on anguished foes\nStrikes inflict 'Surging Anguish'");
+			Tooltip.SetDefault("Right click to release an explosion of vengeance, effective on anguished foes\nStrikes inflict 'Surging Anguish', slowly depleting enemy life");
 		}
 
 		public override void SetDefaults()

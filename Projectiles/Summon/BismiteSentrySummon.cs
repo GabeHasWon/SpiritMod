@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Magic;
 using System;
 using Terraria;
@@ -42,20 +41,20 @@ namespace SpiritMod.Projectiles.Summon
             int range = 18;   //How many tiles away the projectile targets NPCs
 			float shootVelocity = 6f; //magnitude of the shoot vector (speed of arrows shot)
 
-			//TARGET NEAREST NPC WITHIN RANGE
 			float lowestDist = float.MaxValue;
-			for (int i = 0; i < 200; ++i) {
-				NPC npc = Main.npc[i];
-				//if npc is a valid target (active, not friendly, and not a critter)
-				if (npc.active && npc.CanBeChasedBy(Projectile) && !npc.friendly) {
+			foreach (NPC npc in Main.npc)
+			{
+				if (npc.active && npc.CanBeChasedBy(Projectile) && !npc.friendly)
+				{
 					//if npc is within 50 blocks
 					float dist = Projectile.Distance(npc.Center);
-					if (dist / 16 < range) {
+					if (dist / 16 < range)
+					{
 						//if npc is closer than closest found npc
-						if (dist < lowestDist) {
+						if (dist < lowestDist)
+						{
 							lowestDist = dist;
 
-							//target this npc
 							Projectile.ai[1] = npc.whoAmI;
 							Projectile.netUpdate = true;
 						}
@@ -64,8 +63,8 @@ namespace SpiritMod.Projectiles.Summon
 			}
 
 			NPC mainTarget = Projectile.OwnerMinionAttackTargetNPC;
-            NPC target = (Main.npc[(int)Projectile.ai[1]] ?? new NPC()); //our target
-																 //firing
+            NPC target = Main.npc[(int)Projectile.ai[1]] ?? new NPC(); //our target
+
 			Projectile.ai[0]++;
 			if (Projectile.ai[0] >= 60 && Projectile.Distance(target.Center) / 16 < range)
 			{
@@ -99,6 +98,7 @@ namespace SpiritMod.Projectiles.Summon
 				{
 					Vector2 ShootArea = new Vector2(Projectile.Center.X, Projectile.Center.Y - 13);
 					Vector2 direction = Vector2.Normalize(target.Center - ShootArea) * shootVelocity;
+
 					if (Projectile.alpha <= 100)
 					{
 						for (int i = 0; i < 10; i++)
@@ -112,8 +112,8 @@ namespace SpiritMod.Projectiles.Summon
 								Main.dust[num].velocity = Projectile.DirectionTo(Main.dust[num].position) * 2f;
 							}
 						}
-						if (Main.netMode != NetmodeID.MultiplayerClient) {
-
+						if (Main.netMode != NetmodeID.MultiplayerClient)
+						{
 							int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y - 13, direction.X, direction.Y, ModContent.ProjectileType<BismiteShot>(), Projectile.damage, 0, Main.myPlayer);
 							Main.projectile[proj2].DamageType = DamageClass.Summon;
 						}

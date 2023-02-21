@@ -35,15 +35,16 @@ namespace SpiritMod.Tiles
 			r = 0f;
 			g = 0.1f + (510 * 0.001f);
 			b = 0.3f  + (510 * 0.001f);
-
 		}
+
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			Tile tile = Main.tile[i, j];
+
 			Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-			if (Main.drawToScreen) {
+			if (Main.drawToScreen)
 				zero = Vector2.Zero;
-			}
+
 			int height = tile.TileFrameY == 36 ? 18 : 16;
 			if (tile.Slope == 0 && !tile.IsHalfBlock) 
 			{

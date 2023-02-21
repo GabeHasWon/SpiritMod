@@ -44,7 +44,7 @@ namespace SpiritMod.Items.Accessory
 			if (player.HasAccessory<GoldenApple>())
 				mult += 4;
 
-			float defBoost = (float)(player.statLifeMax2 - player.statLife) / player.statLifeMax2 * mult;
+			float defBoost = (float)(player.statLifeMax2 - (float)player.statLife) / player.statLifeMax2 * mult;
 			player.statDefense += (int)defBoost;
 		}
 	}
