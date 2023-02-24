@@ -282,9 +282,9 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 			if (validPlayer) //Draw here to draw stuff only when there's a player at a beach
 			{
-				if (sides.Item1 && Main.GameUpdateCount % 50 == 0)
+				if (sides.Item1 && Main.GameUpdateCount % 80 == 0)
 					OceanWaveManager.AddWave(new OceanWaveManager.Wave(new Vector2(600, leftOceanHeight), new Vector2(10, 30), Main.rand.NextFloat(0.6f, 1f), Speed()));
-				if (sides.Item2 && Main.GameUpdateCount % 50 == 0)
+				if (sides.Item2 && Main.GameUpdateCount % 80 == 0)
 					OceanWaveManager.AddWave(new OceanWaveManager.Wave(new Vector2(Main.maxTilesX * 16 - 550, rightOceanHeight), new Vector2(10, 30), Main.rand.NextFloat(0.6f, 1f), Speed()));
 			}
 
@@ -319,6 +319,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 		private static void CheckBeachHeightsSet()
 		{
 			int maxYAllowed = Main.maxTilesY - 200;
+
 			if (leftOceanHeight == 0 || leftOceanHeight / 16f > Main.worldSurface)
 			{
 				var start = new Point(60, (int)(Main.maxTilesY * 0.35f / 16f));

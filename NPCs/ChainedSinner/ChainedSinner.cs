@@ -130,6 +130,9 @@ namespace SpiritMod.NPCs.ChainedSinner
 		{
 			if (NPC.life <= 0)
 			{
+				for (int i = 0; i < 3; ++i)
+				Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, Mod.Find<ModGore>("ChainedSinner" + i).Type);
+
 				foreach (var item in chain.VerticesArray())
 					Gore.NewGoreDirect(NPC.GetSource_Death(), item, Vector2.Zero, Mod.Find<ModGore>("ChainedSinnerChain").Type);
 			}
