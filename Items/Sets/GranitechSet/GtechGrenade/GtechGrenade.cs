@@ -60,7 +60,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gtech Grenade");
+			DisplayName.SetDefault("G-TEK Grenade");
 			Main.projFrames[Projectile.type] = 15;
 		}
 
@@ -73,6 +73,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 			Projectile.width = Projectile.height = 32;
 			Projectile.timeLeft = 300;
 			Projectile.tileCollide = true;
+			Projectile.ignoreWater = true;
 		}
 
 		private ref float Timer => ref Projectile.ai[0];

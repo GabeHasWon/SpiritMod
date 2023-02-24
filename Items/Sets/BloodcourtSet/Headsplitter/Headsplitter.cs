@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Headsplitter");
-			Tooltip.SetDefault("Right click to release an explosion of vengeance, effective on anguished foes\nStrikes inflict 'Surging Anguish'");
+			Tooltip.SetDefault("Right click to release an explosion of vengeance, effective on anguished foes\nStrikes inflict 'Surging Anguish', slowly depleting enemy life");
 		}
 
 		public override void SetDefaults()
@@ -27,8 +27,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 34;
 			Item.height = 40;
-			Item.useTime = 30;
-			Item.useAnimation = 30;
+			Item.useTime = 24;
+			Item.useAnimation = 24;
 			Item.useStyle = ItemUseStyleID.Rapier;
 			Item.knockBack = 6;
 			Item.value = Item.sellPrice(0, 0, 20, 0);

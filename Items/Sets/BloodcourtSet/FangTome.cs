@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tome of the Thousand Fangs");
-			Tooltip.SetDefault("Summon a set of gnashing teeth\nInflicts 'Surging Anguish'");
+			Tooltip.SetDefault("Summon a set of gnashing teeth\nInflicts 'Surging Anguish', slowly depleting enemy life");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

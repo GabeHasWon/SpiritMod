@@ -19,6 +19,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 			Projectile.height = 80;
 			Projectile.width = 80;
 			Projectile.alpha = 255;
+			Projectile.tileCollide = false;
 		}
 
 		public override void AI()

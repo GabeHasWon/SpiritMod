@@ -1,7 +1,5 @@
 using Terraria;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -66,7 +64,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			}
 		}
 
-		private void RunTeleport(Player player, Vector2 pos)
+		private static void RunTeleport(Player player, Vector2 pos)
 		{
 			player.Teleport(pos, 2, 0);
 			player.velocity = Vector2.Zero;

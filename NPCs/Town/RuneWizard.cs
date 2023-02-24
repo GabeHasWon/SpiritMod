@@ -192,6 +192,15 @@ namespace SpiritMod.NPCs.Town
 			randomOffset = 2f;
 		}
 
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (NPC.life > 0)
+				return;
+
+			for (int i = 0; i < 4; i++)
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Enchanter" + (i + 1)).Type);
+		}
+
 		private float animCounter;
 		public override void FindFrame(int frameHeight)
 		{

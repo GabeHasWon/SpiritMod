@@ -8,10 +8,10 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 {
 	public class MidasProjectile : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("GOld Light");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Gold Light");
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 4;
@@ -22,16 +22,15 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			Projectile.timeLeft = 3600*5;
 			Projectile.tileCollide = false;
 		}
+
 		public override void AI()
 		{
-			if (Main.rand.Next(1) == 0)
-			{
-				int index2 = Dust.NewDust(Projectile.Center, 8, 8, DustID.GoldCoin, 0.0f, 0.0f, 0, new Color(), 1f);
-				Main.dust[index2].position = Projectile.Center;
-				Main.dust[index2].velocity = Projectile.velocity;
-				Main.dust[index2].noGravity = true;
-				Main.dust[index2].scale = Projectile.scale;
-			}
+			int index2 = Dust.NewDust(Projectile.Center, 8, 8, DustID.GoldCoin, 0.0f, 0.0f, 0, new Color(), 1f);
+			Main.dust[index2].position = Projectile.Center;
+			Main.dust[index2].velocity = Projectile.velocity;
+			Main.dust[index2].noGravity = true;
+			Main.dust[index2].scale = Projectile.scale;
+
 			Player player = Main.player[Projectile.owner];
 			float x = 0.15f;
 			float y = 0.15f;

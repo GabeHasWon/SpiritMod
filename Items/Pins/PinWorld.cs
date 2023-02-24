@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Pins
 	// There's no data management here - please don't flood with unnecessary bloat
 	public class PinWorld : ModSystem
 	{
-		public TagCompound pins = new TagCompound();
+		public TagCompound pins = new();
 
 		public void SetPin(string name, Vector2 pos) => pins[name] = pos;
 

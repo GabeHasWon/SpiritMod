@@ -83,7 +83,7 @@ namespace SpiritMod.Items.Sets.CoilSet
 			}
 		}
 
-		private void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
+		private static void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
 		{
 			float angle = Main.rand.NextFloat(-MathHelper.Pi, MathHelper.Pi);
 			Vector2 vec = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));

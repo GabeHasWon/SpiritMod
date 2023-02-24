@@ -70,13 +70,11 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
-			{
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("FishCrate1").Type, 1f);
-				for (int i = 0; i < 6; i++)
-					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("FishCrate2").Type, Main.rand.NextFloat(.5f, 1f));
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("FishCrate3").Type, 1f);
-			}
+			if (NPC.life > 0)
+				return;
+
+			for (int i = 0; i < 5; i++)
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("FishCrate" + (i + 1)).Type, 1f);
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)

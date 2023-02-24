@@ -104,7 +104,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			if (distance < Size)
 				distance++;
 
-			int maxDist = Size - 10;
+			int maxDist = Size - 4;
 			bool collided = false;
 			//Allow the projectile to be pushed back by solid tiles
 			for (int i = 0; i < Size; i++)

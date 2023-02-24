@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Heartstrike");
-			Tooltip.SetDefault("Each hit grants the ability to fire an empowered shot using right click");
+			Tooltip.SetDefault("Successful hits grant charges, which can fired using right click\nFired charges inflict 'Surging Anguish', slowly depleting enemy life");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -83,17 +83,18 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 			for (int i = 0; i < 12; i++)
 			{
-				Dust dust = Dust.NewDustPerfect(position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(10.0f, 20.0f)), DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(1.0f, 1.5f));
+				Dust dust = Dust.NewDustPerfect(position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(18.0f, 30.0f)), DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(1.0f, 1.5f));
 				dust.velocity = dust.position.DirectionTo(position) * (dust.position.Distance(position) / 12);
 				dust.noGravity = true;
 				dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
+				dust.customData = player;
 
 				if (i < 3)
 				{
-					Vector2 randomPos = position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(15.0f, 30.0f));
+					Vector2 randomPos = position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(18.0f, 30.0f));
 					int timeAlive = Main.rand.Next(14, 24);
 
-					ParticleHandler.SpawnParticle(new ImpactLine(randomPos, randomPos.DirectionTo(position) * (randomPos.Distance(position) / (timeAlive + 2)), Color.Magenta, new Vector2(.5f, .8f), timeAlive, player));
+					ParticleHandler.SpawnParticle(new ImpactLine(randomPos, randomPos.DirectionTo(position) * (randomPos.Distance(position) / (timeAlive + 2)), Color.Magenta, Vector2.One * 0.8f, timeAlive, player));
 				}
 			}
 		}

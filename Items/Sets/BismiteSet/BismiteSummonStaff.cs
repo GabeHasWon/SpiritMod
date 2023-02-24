@@ -1,6 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Summon;
 using Terraria;
 using Terraria.ID;
@@ -51,7 +49,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
                 for (int projectileFinder = 0; projectileFinder < 200; ++projectileFinder)
                 {
 					Projectile proj = Main.projectile[projectileFinder];
-					if (proj.type == Item.shoot && proj.alpha == 0)
+					if (proj.type == Item.shoot && proj.alpha == 0 && proj.active)
 					{
 						proj.alpha = BismiteSentrySummon.BurstAlpha;
 						(proj.ModProjectile as BismiteSentrySummon).SpecialAttack();

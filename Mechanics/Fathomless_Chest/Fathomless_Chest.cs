@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using System.Linq;
 using SpiritMod.Tiles;
+using Terraria.GameContent;
 
 namespace SpiritMod.Mechanics.Fathomless_Chest
 {
@@ -33,7 +34,6 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			TileObjectData.newTile.Origin = new Point16(0, 2);
 			Main.tileOreFinderPriority[Type] = 1000;
 			TileObjectData.addTile(Type);
-			ItemDrop = ModContent.ItemType<Tiles.Black_Stone_Item>();
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Fathomless Vase");
 			Main.tileSpelunker[Type] = true;
@@ -42,14 +42,16 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			Main.tileLighted[Type] = true;
 
 			HitSound = SoundID.DD2_SkeletonDeath;
+			ItemDrop = ModContent.ItemType<Black_Stone_Item>();
+			DustType = DustID.DungeonSpirit;
 		}
 		public override bool CanExplode(int i, int j) => false;
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
 			r = 0f;
-			g = 0.2f;
-			b = 0.5f;
+			g = 0.2f + (1 * (Timer / 6));
+			b = 0.5f + (1 * (Timer / 9));
 		}
 
 		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => false;
@@ -80,7 +82,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Player player = Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 100, 100)];
-			Tile tile = Main.tile[i, j];
+
 			SoundEngine.PlaySound(HitSound.Value, new Vector2(i * 16, j * 16));
 			for (int index1 = 0; index1 < 3; ++index1)
 			{
@@ -98,7 +100,6 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				Main.projectile[p].scale = Main.rand.Next(30, 150) * 0.01f;
 			}
 
-			//int randomEffectCounter = 5;
 			int randomEffectCounter = Main.rand.Next(11);
 			bool CheckTileRange(int[] tiletypes, int size)
 			{
@@ -186,7 +187,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 								Main.item[number].stack = num3;
 								Main.item[number].velocity.Y = Main.rand.Next(-20, 1) * 0.2f;
 								Main.item[number].velocity.X = Main.rand.Next(-20, 21) * 0.2f;
-								Main.item[number].noGrabDelay = 600;
+								Main.item[number].noGrabDelay = 60;
 								if (index == 58)
 								{
 									Main.mouseItem = player.inventory[index].Clone();
@@ -259,12 +260,11 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				case 4: //SPAWN BUTTERFLIES
 					{
 						GoodLuck(i, j);
-						float npcposX = 0f;
-						float npcposY = 0f;
+
 						for (int g = 0; g < 8 + Main.rand.Next(6); g++)
 						{
-							npcposX = (i * 16) + Main.rand.Next(-60, 60);
-							npcposY = (j * 16) + Main.rand.Next(-60, 60);
+							float npcposX = (i * 16) + Main.rand.Next(-60, 60);
+							float npcposY = (j * 16) + Main.rand.Next(-60, 60);
 							int dustType;
 							int npcType;
 							if (Main.rand.NextBool(6))
@@ -383,7 +383,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 					}
 			}
 		}
-		public void ConvertStone(int i, int j, int size, int typeConvert, float density = 1f)
+		public static void ConvertStone(int i, int j, int size, int typeConvert, float density = 1f)
 		{
 			for (int k = i - size; k <= i + size; k++)
 			{
@@ -402,7 +402,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				}
 			}
 		}
-		public void ConvertDirt(int i, int j, int size, int typeConvert)
+		public static void ConvertDirt(int i, int j, int size, int typeConvert)
 		{
 			for (int k = i - size; k <= i + size; k++)
 			{
@@ -421,7 +421,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				}
 			}
 		}
-		public void ConvertIce(int i, int j, int size, int typeConvert)
+		public static void ConvertIce(int i, int j, int size, int typeConvert)
 		{
 			for (int k = i - size; k <= i + size; k++)
 			{
@@ -441,7 +441,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			}
 		}
 
-		public void BadLuck(int i, int j)
+		public static void BadLuck(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
 			int index = CombatText.NewText(new Rectangle(i * 16, j * 16, player.width, player.height), new Color(255, 150, 150), "Bad Luck!", false, false);
@@ -449,7 +449,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			NetMessage.SendData(MessageID.CombatTextInt, -1, -1, NetworkText.FromLiteral(combatText.text), (int)combatText.color.PackedValue, combatText.position.X, combatText.position.Y, 0.0f, 0, 0, 0);
 		}
 
-		public void GoodLuck(int i, int j)
+		public static void GoodLuck(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
 			int index = CombatText.NewText(new Rectangle(i * 16, j * 16, player.width, player.height), new Color(150, 255, 150), "Good Luck!", false, false);
@@ -457,7 +457,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			NetMessage.SendData(MessageID.CombatTextInt, -1, -1, NetworkText.FromLiteral(combatText.text), (int)combatText.color.PackedValue, combatText.position.X, combatText.position.Y, 0.0f, 0, 0, 0);
 		}
 
-		public void NeutralLuck(int i, int j)
+		public static void NeutralLuck(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
 			int index = CombatText.NewText(new Rectangle(i * 16, j * 16, player.width, player.height), new Color(150, 150, 255), "Neutral Luck!", false, false);
@@ -467,11 +467,23 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 
 		public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 		{
-			Tile tile = Main.tile[i, j];
+			Tile tile = Framing.GetTileSafely(i, j);
+
+			Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
+			if (tile.TileFrameX % 32 == 0 && tile.TileFrameY == 0)
+			{
+				Texture2D texture = TextureAssets.Extra[59].Value;
+				Vector2 center = new Vector2((i * 16) - (int)Main.screenPosition.X + 16, (j * 16) - (int)Main.screenPosition.Y + 24) + zero;
+
+				spriteBatch.Draw(texture, center, null, new Color(90, 179, 255, 0) * Timer, 0f, texture.Size() / 2, .4f, SpriteEffects.None, 0f);
+				Utilities.DrawGodray.DrawGodrays(spriteBatch, center, Color.SeaGreen * Timer, 26, 18, 3);
+			}
+
 			int left = i - tile.TileFrameX / 18;
 			int top = j - tile.TileFrameY / 18;
 			int spawnX = left * 16;
 			int spawnY = top * 16;
+
 			if (Main.rand.NextBool(20))
 			{
 				Dust dust = Main.dust[Dust.NewDust(new Vector2(spawnX, spawnY), 16 * 2, 16 * 3, DustID.DungeonSpirit, 0.0f, 0.0f, 150, new Color(), 0.3f)];
@@ -482,6 +494,18 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			}
 			return true;
 		}
+
+		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+		{
+			Tile tile = Framing.GetTileSafely(i, j);
+
+			Texture2D glow = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
+
+			spriteBatch.Draw(glow, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), Color.White * Timer * .5f);
+		}
+
+		private static float Timer => (float)Math.Sin(Main.GlobalTimeWrappedHourly) + 0.5f;
 	}
 
 	internal class Fathomless_Chest_Item : ModItem

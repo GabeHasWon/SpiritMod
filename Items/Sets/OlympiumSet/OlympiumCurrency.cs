@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 								color.B,
 								Language.GetTextValue("LegacyTooltip.50"),
 								price,
-								price > 1 ? "Olympium Tokens" : "Olympium Tokens"
+								price > 1 ? "Olympium Tokens" : "Olympium Token"
 							);
 		}
 	}
