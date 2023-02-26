@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.DonatorItems
@@ -67,6 +68,11 @@ namespace SpiritMod.Projectiles.DonatorItems
 				{
 					timeLeft = projectile.timeLeft;
 					oldest = projectile;
+
+					if (Main.netMode != NetmodeID.SinglePlayer)
+						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, projectile.whoAmI);
+
+					projectile.netUpdate = true;
 				}
 			}
 			if (oldest != null)
@@ -106,7 +112,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		private Vector2 Origin
 		{
-			get => new Vector2(Projectile.localAI[0], Projectile.localAI[1]);
+			get => new(Projectile.localAI[0], Projectile.localAI[1]);
 			set
 			{
 				Projectile.localAI[0] = value.X;

@@ -58,27 +58,25 @@ namespace SpiritMod.Utilities.Map
 		private void HoldPin(ref bool placedPin)
 		{
 			float heldOffsetMax = 4f;
+			string heldPinValue = heldPin;
+
 			heldOffset = MathHelper.Lerp(heldOffset, heldOffsetMax, 0.2f);
 
-			if ((Main.mouseLeft && Main.mouseLeftRelease) || !Main.mapFullscreen)
+			if ((Main.mouseLeft && Main.mouseLeftRelease) || !Main.mapFullscreen) //Drop the pin
 			{
 				heldOffset = 0;
+				heldPin = null;
 				placedPin = true;
+
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MapPin") with { PitchVariance = 0.3f });
 			}
 
 			Vector2 drawOffset = new Vector2(0, heldOffset); //Hover above the cursor slightly when held
 			Vector2 cursorPos = Main.MouseScreen - (Main.ScreenSize.ToVector2() / 2);
 			cursorPos = ((cursorPos - drawOffset) * (1 / Main.mapFullscreenScale)) + Main.mapFullscreenPos;
 
-			ModContent.GetInstance<PinWorld>().SetPin(heldPin, cursorPos);
-
-			if (placedPin)
-			{
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MapPin") with { PitchVariance = 0.3f });
-
-				heldPin = null;
-			}
+			ModContent.GetInstance<PinWorld>().SetPin(heldPinValue, cursorPos);
 		}
 	}
 }

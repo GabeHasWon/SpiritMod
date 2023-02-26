@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Terraria;
 using Terraria.DataStructures;
@@ -28,7 +27,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			set => Projectile.ai[1] = value ? 1 : 0;
 		}
 
-		private float shotLength = 1200;
+		private int shotLength = 1200;
 		private Vector2 origin;
 
 		public override string Texture => "SpiritMod/Items/Sets/BloodcourtSet/Heartstrike/Heartstrike";
@@ -76,7 +75,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 			shotLength = 0;
 			foreach (float sample in samples)
-				shotLength += sample / samples.Length;
+				shotLength += (int)(sample / samples.Length);
 
 			NPC target = null;
 			//Test NPC collision

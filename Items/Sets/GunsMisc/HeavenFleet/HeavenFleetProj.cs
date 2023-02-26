@@ -6,7 +6,6 @@ using Terraria.Audio;
 using Terraria.ModLoader;
 using Terraria.ID;
 using SpiritMod.Particles;
-using System.IO;
 
 namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 {
@@ -36,28 +35,38 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 
 		int maxCounter = 1;
 		bool firing = false;
-		Vector2 direction = Vector2.Zero;
 
-		public override bool PreAI()
+		private static Vector2 GetOffset(float rotation, Player player)
+		{
+			var pos = player.Center - new Vector2(4, 4);
+			return Vector2.Normalize(pos.DirectionTo(pos + new Vector2(1, 0).RotatedBy(rotation))) * 10f;
+		}
+
+		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
+
+			if (player.whoAmI == Main.myPlayer)
+			{
+				Projectile.velocity = GetOffset(player.MountedCenter.AngleTo(Main.MouseWorld), player);
+
+				Projectile.netUpdate = true;
+			}
+
+			Projectile.rotation = Projectile.velocity.ToRotation();
+			Projectile.spriteDirection = Projectile.direction;
+
+			player.ChangeDir(Projectile.direction);
 
 			player.itemTime = 10; // Set item time to 10 frames while we are used
 			player.itemAnimation = 10; // Set item animation time to 10 frames while we are used
 
-			if (player == Main.LocalPlayer)
-			{
-				player.ChangeDir(Main.MouseWorld.X > player.position.X ? 1 : -1);
-				direction = Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))) * 10f;
-				Projectile.position = player.Center;
-				Projectile.netUpdate = true;
-				player.itemRotation = direction.ToRotation();
-			}
+			Projectile.position = player.Center - Projectile.velocity;
 
-			Vector2 dustUnit = (direction * 2.5f).RotatedBy(Main.rand.NextFloat(-1, 1)) * 0.03f;
-			Vector2 pulseUnit = direction * 2.5f * 0.03f;
+			Vector2 dustUnit = (GetOffset(Projectile.rotation, player) * 2.5f).RotatedBy(Main.rand.NextFloat(-1, 1)) * 0.03f;
+			Vector2 pulseUnit = GetOffset(Projectile.rotation, player) * 2.5f * 0.03f;
 
-			Vector2 dustOffset = player.Center + (direction * (5f + 3 * (float)Math.Sqrt(Projectile.localAI[0] / 100f))) + player.velocity;
+			Vector2 dustOffset = player.Center + (GetOffset(Projectile.rotation, player) * (5f + 3 * (float)Math.Sqrt(Projectile.localAI[0] / 100f))) + player.velocity;
 			Color color = Color.Lerp(new Color(35, 57, 222), new Color(140, 238, 255), (float)Math.Sqrt(Projectile.localAI[0] / 100f));
 			Vector2 spawnPos = dustOffset + (pulseUnit * 30);
 
@@ -85,10 +94,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 					}
 				}
 
-				direction = direction.RotatedBy(Main.rand.NextFloat(0 - ((float)Math.Sqrt(Projectile.localAI[0]) / 300f), ((float)Math.Sqrt(Projectile.localAI[0]) / 300f)));
-
-				if (player.direction != 1)
-					player.itemRotation -= 3.14f;
+				Projectile.rotation = GetOffset(Projectile.rotation, player).RotatedBy(Main.rand.NextFloat(0 - ((float)Math.Sqrt(Projectile.localAI[0]) / 300f), (float)Math.Sqrt(Projectile.localAI[0]) / 300f)).ToRotation();
 			}
 			else
 			{
@@ -119,30 +125,37 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 					}
 
 					Projectile.localAI[0] -= 10;
-					Vector2 toShoot = direction.RotatedBy(Main.rand.NextFloat(0 - ((float)Math.Sqrt(200 - maxCounter) / 40f), (float)Math.Sqrt(200 - maxCounter) / 40f));
-					player.itemRotation = (toShoot.ToRotation() + direction.ToRotation()) / 2;
-					if (player.direction != 1)
-						player.itemRotation -= 3.14f;
+					Vector2 toShoot = GetOffset(Projectile.rotation, player).RotatedBy(Main.rand.NextFloat(0 - ((float)Math.Sqrt(200 - maxCounter) / 40f), (float)Math.Sqrt(200 - maxCounter) / 40f));
+
 					Projectile.velocity = toShoot;
 					toShoot *= 2.3f;
 					toShoot *= (float)Math.Pow(maxCounter, 0.18);
+
+					if (player.whoAmI == Main.myPlayer)
+					{
+						int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center + (GetOffset(Projectile.rotation, player) * 4), toShoot * new Vector2(Main.rand.NextFloat(.6f, 1.3f), Main.rand.NextFloat(0.6f, 1.2f)), ModContent.ProjectileType<HeavenfleetStar>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+
+						if (Main.netMode != NetmodeID.SinglePlayer)
+							NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
+					}
 					player.GetModPlayer<MyPlayer>().Shake += 1;
-
-					int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center + (direction * 4), toShoot * new Vector2(Main.rand.NextFloat(.6f, 1.3f), Main.rand.NextFloat(0.6f, 1.2f)), ModContent.ProjectileType<HeavenfleetStar>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-
-					if (Main.netMode != NetmodeID.SinglePlayer)
-						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
 				}
+
 				Projectile.active = false;
+				Projectile.netUpdate = true;
 			}
-			return true;
+
+			player.itemRotation = MathHelper.WrapAngle(Projectile.rotation + ((Projectile.spriteDirection < 0) ? MathHelper.Pi : 0));
 		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Player player = Main.player[Projectile.owner];
-			direction = Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))) * 10f;
-			Vector2 Offset = player.Center + direction * 3f + player.velocity;
+
+			Vector2 pos = player.Center + GetOffset(Projectile.rotation, player) * 3f + player.velocity;
+			SpriteEffects effects = (Projectile.spriteDirection < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			float rotation = Projectile.rotation + ((effects == SpriteEffects.FlipHorizontally) ? MathHelper.Pi : 0);
+
 			if (Projectile.localAI[0] == 100)
 			{
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
@@ -154,9 +167,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 
 					Color color = Color.White * 0.75f * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
 
-					Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/GunsMisc/HeavenFleet/HeavenFleet_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value; ;
+					Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/GunsMisc/HeavenFleet/HeavenFleet_Glow").Value;
 
-					Main.spriteBatch.Draw(tex, Offset - Main.screenPosition, null, color, player.itemRotation, tex.Size() / 2, num107, default, default);
+					Main.spriteBatch.Draw(tex, pos - Main.screenPosition, null, color, rotation, tex.Size() / 2, num107, effects, default);
 				}
 			}
 			return true;
@@ -165,22 +178,21 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{
 			Player player = Main.player[Projectile.owner];
-			direction = Vector2.Normalize(Main.MouseWorld - (player.Center - new Vector2(4, 4))) * 10f;
-			Vector2 Offset = player.Center + direction * 2.5f + player.velocity;
+
+			Vector2 pos = player.Center + GetOffset(Projectile.rotation, player) * 2.5f + player.velocity;
+			SpriteEffects effects = (Projectile.spriteDirection < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			float rotation = Projectile.rotation + ((effects == SpriteEffects.FlipHorizontally) ? MathHelper.Pi : 0);
 
 			if (Projectile.localAI[0] == 100)
 			{
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
 				{
 					Color color = Color.White * 0.75f * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-					Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/GunsMisc/HeavenFleet/HeavenFleet_Lights", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+					Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/GunsMisc/HeavenFleet/HeavenFleet_Lights").Value;
 
-					spriteBatch.Draw(tex, Offset - screenPos, null, color, player.itemRotation, tex.Size() / 2, 1f, default, default);
+					spriteBatch.Draw(tex, pos - screenPos, null, color, rotation, tex.Size() / 2, Projectile.scale, effects, default);
 				}
 			}
 		}
-
-		public override void SendExtraAI(BinaryWriter writer) => writer.WriteVector2(direction);
-		public override void ReceiveExtraAI(BinaryReader reader) => direction = reader.ReadVector2();
 	}
 }

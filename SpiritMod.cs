@@ -51,6 +51,7 @@ using SpiritMod.GlobalClasses.Tiles;
 using SpiritMod.Items.Glyphs;
 using ReLogic.Content;
 using SpiritMod.Items.Books.UI.MaterialUI;
+using SpiritMod.Mechanics.Fathomless_Chest;
 
 namespace SpiritMod
 {
@@ -434,6 +435,7 @@ namespace SpiritMod
 			BoonLoader.Load();
 			SpiritMultiplayer.Load();
 			SpiritDetours.Initialize();
+			ChanceEffectManager.Load();
 			//Coverings = new CoveringsManager();
 			//Coverings.Load(this);
 

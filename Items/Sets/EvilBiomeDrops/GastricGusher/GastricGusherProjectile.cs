@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
@@ -14,7 +13,6 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 	{
 		private int _charge = 0;
 		private int _endCharge = -1;
-		private float _finalRotation = 0f;
 
 		const int MinimumCharge = 0; //How long it takes for a minimum charge - 1/2 second by default
 
@@ -33,11 +31,9 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 			Projectile.ignoreWater = true;
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.aiStyle = -1;
-
-			DrawHeldProjInFrontOfHeldItemAndArms = true;
 		}
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => false;
+		public override bool? CanDamage() => false;
 
 		public override void AI()
 		{
@@ -46,42 +42,47 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 			Player p = Main.player[Projectile.owner];
 			p.heldProj = Projectile.whoAmI;
 
-			if (p == Main.LocalPlayer)
+			Projectile.timeLeft++; //dont die
+			_charge++; //Increase charge timer...
+
+			if (_endCharge == -1)
 			{
-				if (_endCharge == -1) //Wait until the player has fired to let go & set position
+				if (p.whoAmI == Main.myPlayer)
 				{
-					p.itemTime = p.HeldItem.useTime;
-					p.itemAnimation = p.HeldItem.useAnimation;
-					Projectile.Center = p.Center - (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * HoldOutLength) + new Vector2(21, 12);
+					Projectile.velocity = new Vector2(HoldOutLength, 0).RotatedBy(p.MountedCenter.AngleTo(Main.MouseWorld));
+
+					Projectile.netUpdate = true;
 				}
-				else
-					Projectile.Center = p.Center - (new Vector2(1, 0).RotatedBy(_finalRotation) * HoldOutLength) + new Vector2(21, 12);
-				Projectile.netUpdate = true;
+
+				Projectile.rotation = Projectile.velocity.ToRotation();
+				Projectile.spriteDirection = Projectile.direction;
+
+				if (p.channel) //Use turn functionality
+					p.ChangeDir(Projectile.direction);
+
+				p.itemTime = p.HeldItem.useTime;
+				p.itemAnimation = p.HeldItem.useAnimation;
 			}
-			Projectile.Center += p.gfxOffY * Vector2.UnitY;
+
+			GItem.ArmsTowardsMouse(p);
+			Projectile.Center = p.Center + new Vector2(21, 12 + p.gfxOffY);
 
 			if (_charge > _endCharge && _endCharge != -1) //Kill projectile when done shooting - does nothing special but allowed for a cooldown timer before polish
-				Projectile.active = false;
-
-			if (p.whoAmI != Main.myPlayer)
-				return; //mp check (hopefully)
-
-			if (!p.channel && _endCharge == -1) //Fire (if possible)
 			{
-				_endCharge = _charge;
-				_finalRotation = (Vector2.Normalize(p.MountedCenter - Main.MouseWorld) * HoldOutLength).ToRotation();
-				if (_endCharge >= MinimumCharge)
-					Fire(p);
+				Projectile.active = false;
+				Projectile.netUpdate = true;
 			}
 
-			if (p.channel) //Use turn functionality
-				p.direction = Main.MouseWorld.X >= p.MountedCenter.X ? 1 : -1;
+			if (p.whoAmI == Main.myPlayer)
+			{
+				if (!p.channel && _endCharge == -1) //Fire (if possible)
+				{
+					_endCharge = _charge;
 
-			_charge++; //Increase charge timer...
-			Projectile.timeLeft++; //...and dont die
-
-			Projectile.rotation = Vector2.Normalize(p.MountedCenter - Main.MouseWorld).ToRotation() - MathHelper.Pi; //So it looks like the player is holding it properly
-			GItem.ArmsTowardsMouse(p);
+					if (_endCharge >= MinimumCharge)
+						Fire(p);
+				}
+			}
 		}
 
 		private void Fire(Player p)
@@ -102,14 +103,10 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Player p = Main.player[Projectile.owner];
 			Texture2D t = TextureAssets.Projectile[Projectile.type].Value;
-			SpriteEffects e = Main.MouseWorld.X >= p.MountedCenter.X ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			SpriteEffects e = (Projectile.spriteDirection < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-			float realRot = Projectile.rotation; //Rotate towards mouse
-			if (_endCharge != -1) realRot = _finalRotation + MathHelper.Pi;
-			if (e == SpriteEffects.FlipHorizontally)
-				realRot -= MathHelper.Pi;
+			float realRot = Projectile.rotation - ((e == SpriteEffects.FlipHorizontally) ? MathHelper.Pi : 0); //Rotate towards mouse
 
 			Vector2 drawPos = Projectile.position - Main.screenPosition; //Draw position + charge shaking
 			if (_charge > MinimumCharge && _endCharge == -1)
@@ -123,14 +120,12 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 		{
 			writer.Write(_endCharge);
 			writer.Write(_charge);
-			writer.Write(_finalRotation);
 		}
 
 		public override void ReceiveExtraAI(BinaryReader reader)
 		{
 			_endCharge = reader.ReadInt32();
 			_charge = reader.ReadInt32();
-			_finalRotation = reader.ReadSingle();
 		}
 	}
 }

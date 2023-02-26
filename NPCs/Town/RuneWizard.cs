@@ -11,7 +11,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static SpiritMod.NPCUtils;
-using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.Town
@@ -52,7 +51,7 @@ namespace SpiritMod.NPCs.Town
 			NPC.defense = 30;
 			NPC.lifeMax = 250;
 			NPC.HitSound = SoundID.NPCHit1;
-			NPC.DeathSound = SoundID.NPCDeath6;
+			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.knockBackResist = 0.4f;
 			AnimationType = NPCID.Guide;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<SpiritSurfaceBiome>().Type };
@@ -65,9 +64,9 @@ namespace SpiritMod.NPCs.Town
 			});
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => Main.player.Any(x => x.active && x.inventory.Any(y => y.type == ItemType<Glyph>()));
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => Main.player.Any(x => x.active && x.inventory.Any(y => y.type == ModContent.ItemType<Glyph>()));
 
-		public override List<string> SetNPCNameList() => new List<string>() { "Malachai", "Nisarmah", "Moneque", "Tosalah", "Kentremah", "Salqueeh", "Oarno", "Cosimo" };
+		public override List<string> SetNPCNameList() => new() { "Malachai", "Nisarmah", "Moneque", "Tosalah", "Kentremah", "Salqueeh", "Oarno", "Cosimo" };
 
 		public override string GetChat()
 		{
@@ -98,66 +97,66 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			AddItem(ref shop, ref nextSlot, ItemType<NullGlyph>());
+			AddItem(ref shop, ref nextSlot, ModContent.ItemType<NullGlyph>());
 
 			Item item = shop.item[nextSlot++];
-			CustomWare(item, ItemType<FrostGlyph>());
+			CustomWare(item, ModContent.ItemType<FrostGlyph>());
 
 			item = shop.item[nextSlot++];
-			CustomWare(item, ItemType<EfficiencyGlyph>());
+			CustomWare(item, ModContent.ItemType<EfficiencyGlyph>());
 
 			if (NPC.downedBoss1)
 			{
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<RadiantGlyph>());
+				CustomWare(item, ModContent.ItemType<RadiantGlyph>());
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<SanguineGlyph>(), 3);
+				CustomWare(item, ModContent.ItemType<SanguineGlyph>(), 3);
 			}
 
 			if (MyWorld.downedReachBoss)
 			{
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<StormGlyph>(), 2);
+				CustomWare(item, ModContent.ItemType<StormGlyph>(), 2);
 			}
 
 			if (NPC.downedBoss2)
 			{
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<UnholyGlyph>(), 2);
+				CustomWare(item, ModContent.ItemType<UnholyGlyph>(), 2);
 			}
 
 			if (NPC.downedBoss3)
 			{
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<VeilGlyph>(), 3);
+				CustomWare(item, ModContent.ItemType<VeilGlyph>(), 3);
 			}
 
 			if (NPC.downedQueenBee)
 			{
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<BeeGlyph>(), 3);
+				CustomWare(item, ModContent.ItemType<BeeGlyph>(), 3);
 			}
 
 			if (Main.hardMode)
 			{
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<BlazeGlyph>(), 3);
+				CustomWare(item, ModContent.ItemType<BlazeGlyph>(), 3);
 			}
 
 			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
 			{
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<VoidGlyph>(), 4);
+				CustomWare(item, ModContent.ItemType<VoidGlyph>(), 4);
 			}
 
 			if (MyWorld.downedDusking)
 			{
 				item = shop.item[nextSlot++];
-				CustomWare(item, ItemType<PhaseGlyph>(), 4);
+				CustomWare(item, ModContent.ItemType<PhaseGlyph>(), 4);
 			}
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Armor.WitchSet.WitchHead>(), 12000, !Main.dayTime);
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Armor.WitchSet.WitchBody>(), 15000, !Main.dayTime);
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Armor.WitchSet.WitchLegs>(), 10000, !Main.dayTime);
+			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchHead>(), 12000, !Main.dayTime);
+			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchBody>(), 15000, !Main.dayTime);
+			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchLegs>(), 10000, !Main.dayTime);
 		}
 
 		private static void CustomWare(Item item, int type, int price = 1)
@@ -228,9 +227,9 @@ namespace SpiritMod.NPCs.Town
 		public ReLogic.Content.Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
 		{
 			if (npc.altTexture == 1 && !(npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn))
-				return Request<Texture2D>("SpiritMod/NPCs/Town/RuneWizard_Alt_1");
+				return ModContent.Request<Texture2D>("SpiritMod/NPCs/Town/RuneWizard_Alt_1");
 
-			return Request<Texture2D>("SpiritMod/NPCs/Town/RuneWizard");
+			return ModContent.Request<Texture2D>("SpiritMod/NPCs/Town/RuneWizard");
 		}
 
 		public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("SpiritMod/NPCs/Town/RuneWizard_Head");
