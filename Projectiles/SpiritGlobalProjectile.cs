@@ -106,16 +106,6 @@ namespace SpiritMod.Projectiles
 			if (projectile.minion && modPlayer.stellarSet && player.HasBuff(ModContent.BuffType<StellarMinionBonus>()))
 				alphaCounter += .04f;
 
-			if (projectile.minion && modPlayer.silkenSet)
-			{
-				int dust = Dust.NewDust(projectile.Center, projectile.width, projectile.height, DustID.GoldCoin);
-				Main.dust[dust].velocity *= -1f;
-				Main.dust[dust].noGravity = true;
-				var vel = Vector2.Normalize(new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101)));
-				Main.dust[dust].velocity = vel * Main.rand.Next(50, 100) * 0.04f;
-				Main.dust[dust].position = projectile.Center - vel * 34f;
-			}
-
 			return BowEffects(projectile);
 		}
 

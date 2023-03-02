@@ -43,6 +43,9 @@ namespace SpiritMod.Utilities.Map
 
 				if (context.Draw(Textures[pair.Key].Value, pos, Color.White, new SpriteFrame(1, 1, 0, 0), scale, scale, Alignment.Center).IsMouseOver)
 				{
+					if (!Main.mapFullscreen)
+						continue;
+
 					if (Main.mouseLeft && Main.mouseLeftRelease && !placedPin)
 						heldPin = pair.Key;
 
@@ -77,6 +80,15 @@ namespace SpiritMod.Utilities.Map
 			cursorPos = ((cursorPos - drawOffset) * (1 / Main.mapFullscreenScale)) + Main.mapFullscreenPos;
 
 			ModContent.GetInstance<PinWorld>().SetPin(heldPinValue, cursorPos);
+
+			if (placedPin && Main.netMode != NetmodeID.SinglePlayer)
+			{
+				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.PlaceMapPin, 3);
+				packet.Write(heldPinValue);
+				packet.Write(cursorPos.X);
+				packet.Write(cursorPos.Y);
+				packet.Send();
+			}
 		}
 	}
 }

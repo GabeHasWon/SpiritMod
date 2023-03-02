@@ -7,7 +7,6 @@ using Terraria.ModLoader;
 using SpiritMod.Particles;
 using System;
 using Terraria.DataStructures;
-using System.Reflection;
 
 namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 {
@@ -32,7 +31,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			Item.UseSound = SoundID.Item20;
 			Item.DamageType = DamageClass.Summon;
 			Item.shootSpeed = 10f;
-			Item.shoot = 10;
+			Item.shoot = ProjectileID.PurificationPowder;
 			Item.noUseGraphic = true;
 		}
 
@@ -55,14 +54,13 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 				}
 			}
 
-			if (Main.myPlayer == player.whoAmI)
-			{
-				int npcindex = NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
-				Main.npc[npcindex].velocity = velocity;
+			int npcindex = NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
+			Main.npc[npcindex].velocity = velocity;
+			Main.npc[npcindex].netUpdate = true;
 
-				if (Main.netMode != NetmodeID.SinglePlayer)
-					NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcindex);
-			}
+			if (Main.netMode == NetmodeID.MultiplayerClient)
+				NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcindex);
+
 			return false;
 		}
 	}
@@ -105,7 +103,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 
 		public override void AI()
 		{
-			Player player = Main.player[(int)NPC.ai[0]];
+			//Player player = Main.player[(int)NPC.ai[0]];
 			returnCounter++;
 
 			if (returnCounter == 1)

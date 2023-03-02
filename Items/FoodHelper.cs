@@ -18,7 +18,7 @@ internal class FoodHelper
 	public static bool PreDrawInWorld(ModItem item, SpriteBatch spriteBatch, Color lightColor, ref float rotation, ref float scale)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(item.Texture).Value;
-		spriteBatch.Draw(tex, item.Item.Center - Main.screenPosition, new Rectangle(0, 0, item.Item.width, item.Item.height), item.GetAlpha(lightColor).Value, rotation, item.Item.Size / 2f, scale, SpriteEffects.None, 0f);
+		spriteBatch.Draw(tex, item.Item.Center - Main.screenPosition, new Rectangle(0, 0, item.Item.width, item.Item.height), lightColor, rotation, item.Item.Size / 2f, scale, SpriteEffects.None, 0f);
 		return false;
 	}
 }

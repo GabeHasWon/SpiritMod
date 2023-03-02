@@ -286,9 +286,6 @@ namespace SpiritMod.Items
 					boost = 0.5f;
 				damage *= 1 + 1 * boost;
 			}
-
-			if (item.IsSummon() && spirit.silkenSet)
-				damage += 1;
 		}
 
 		public override void ModifyHitNPC(Item item, Player player, NPC target, ref int damage, ref float knockback, ref bool crit)

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.GlobalClasses.Players;
+using SpiritMod.Items.Pins;
 using SpiritMod.Mechanics.BoonSystem;
+using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.NPCs.AuroraStag;
@@ -10,9 +12,6 @@ using SpiritMod.Projectiles;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Chat;
 using Terraria.DataStructures;
@@ -202,6 +201,9 @@ namespace SpiritMod
 					if (Main.projectile[projindex].ModProjectile is IManualTrailProjectile trailProj)
 						trailProj.DoTrailCreation(SpiritMod.TrailManager);
 					break;
+				case MessageType.PlaceMapPin:
+					ModContent.GetInstance<PinWorld>().SetPin(reader.ReadString(), new Vector2(reader.ReadInt32(), reader.ReadInt32()));
+					break;
 				case MessageType.PlaceSuperSunFlower:
 					MyWorld.superSunFlowerPositions.Add(new Point16(reader.ReadUInt16(), reader.ReadUInt16()));
 					break;
@@ -211,6 +213,13 @@ namespace SpiritMod
 				case MessageType.SpawnExplosiveBarrel: // this packet is only meant to be received by the server
 					(int x, int y) = (reader.ReadInt32(), reader.ReadInt32());
 					NPC.NewNPC(new EntitySource_TileBreak(x / 16, y / 16), x, y, ModContent.NPCType<ExplosiveBarrel>(), 0, 2, 1, 0, 0); // gets forwarded to all clients
+					break;
+				case MessageType.FathomlessData:
+					byte effectIndex = reader.ReadByte();
+					Player closePlayer = Main.player[reader.ReadByte()];
+					(int i, int j) = (reader.ReadInt32(), reader.ReadInt32());
+
+					ChanceEffectManager.effectIndex[effectIndex].Trigger(closePlayer, new Point16(i, j));
 					break;
 				case MessageType.StarjinxData:
 					//TBD in future

@@ -61,7 +61,6 @@ namespace SpiritMod
 		public SpiritPlayerEffect setbonus = null;
 
 		public int Shake = 0;
-		public int Soldiers = 0;
 		public bool clockActive = false;
 		public bool QuacklingMinion = false;
 		public bool rabbitMinion = false;
@@ -113,32 +112,24 @@ namespace SpiritMod
 		public int throwerStacks;
 		public bool scarabCharm = false;
 		public bool floranCharm = false;
-		public bool sunStone = false;
-		public bool moonStone = false;
 		public bool bloodCourtHead = false;
-		public bool animusLens = false;
 		public bool timScroll = false;
 		public bool cultistScarf = false;
 		public bool AnimeSword = false;
 		public bool geodeRanged = false;
 		public bool fireMaw = false;
 		public bool deathRose = false;
-		public bool anglure = false;
 		public bool manaWings = false;
 		public bool infernalFlame = false;
 		public bool floranSet = false;
-		public bool silkenLegs = false;
-		public bool silkenRobe = false;
 		public bool rogueSet = false;
 		public bool crystal = false;
-		public bool eyezorEye = false;
 		public bool shamanBand = false;
 		public bool ChaosCrystal = false;
 		public bool wheezeScale = false;
 		public bool winterbornCharmMage = false;
 		public bool sepulchreCharm = false;
 		public bool HellGaze = false;
-		public bool hungryMinion = false;
 		public bool magazine = false;
 		public bool EaterSummon = false;
 		public bool CreeperSummon = false;
@@ -148,17 +139,14 @@ namespace SpiritMod
 		public bool Phantom = false;
 		public bool gremlinTooth = false;
 		public bool illusionistEye = false;
-		public bool sacredVine = false;
 		public bool BlueDust = false;
 		public bool reachFireflies = false;
 		public bool onGround = false;
-		public bool moving = false;
-		public bool flying = false;
-		public bool swimming = false;
-		public bool copterBrake = false;
-		public bool copterFiring = false;
-		public int copterFireFrame = 1000;
 
+		public float oakHeartStacks = 0;
+		public readonly int oakHeartStacksMax = 5;
+
+		private int attackTimer;
 		public int beetleStacks = 1;
 
 		public int miningStacks = 1;
@@ -167,54 +155,28 @@ namespace SpiritMod
 
 		public bool bloodfireShield;
 
-		public bool unboundSoulMinion = false;
 		public bool cragboundMinion = false;
 		public bool crawlerockMinion = false;
 		public bool mangoMinion = false;
-		public bool terror1Summon = false;
-		public bool terror2Summon = false;
-		public bool terror3Summon = false;
 		public bool clatterboneShield = false;
-		public bool terror4Summon = false;
 		public bool minior = false;
-		public double pressedSpecial;
-		public Entity LastEnemyHit = null;
-		public bool TiteRing = false;
 		public bool NebulaPearl = false;
 		public bool CursedPendant = false;
-		public bool KingRock = false;
 		public bool starMap = false;
-		public bool minionName = false;
 		public bool moonlightSack = false;
 		public bool DoomDestiny = false;
-		public int HitNumber;
-		public int PutridHits = 0;
-		public int Rangedhits = 0;
-		public bool flametrail = false;
 		public bool daybloomGarb = false;
-		public bool silkenSet = false;
 		public bool EnchantedPaladinsHammerMinion = false;
-		public bool ProbeMinion = false;
 		public int frigidGloveStacks;
-		public int weaponAnimationCounter;
 		public bool gemPickaxe = false;
-		public bool carnivorousPlantMinion = false;
 		public bool skeletalonMinion = false;
 		public bool snapsporeMinion = false;
 		public bool butterflyMinion = false;
-		public bool steamMinion = false;
-		public bool aeonMinion = false;
 		public bool SnakeMinion = false;
-		public bool Ghast = false;
 		public bool jellyfishMinion = false;
 		public bool DungeonSummon = false;
-		public bool ReachSummon = false;
-		public bool gasopodMinion = false;
 		public bool lunazoa = false;
-		public bool tankMinion = false;
-		public bool OG = false;
 		public bool lavaRock = false;
-		public bool Flayer = false;
 		public int soulSiphon;
 		public bool oliveBranchBuff = false;
 		public bool leatherHood = false;
@@ -242,11 +204,7 @@ namespace SpiritMod
 		public bool stoneHead;
 		public bool jellynautHelm;
 
-		public float shadowRotation;
-		public bool shadowUpdate;
-		public int shadowTally;
 		public int shadowCount;
-		public int attackTimer;
 		// Armor set booleans.
 		public bool duskSet;
 		public bool runicSet;
@@ -254,30 +212,23 @@ namespace SpiritMod
 		public bool elderbarkWoodSet;
 		public bool primalSet;
 		public bool spiritSet;
-		public bool putridSet;
 		public bool reachSet;
 		public bool coralSet;
 		public bool leatherSet;
-		public bool shadowSet;
 		public bool oceanSet;
 		public bool wayfarerSet;
 		public bool marbleSet;
 		public bool midasTouch;
 		public bool bloodfireSet;
 		public bool stellarSet;
-		public bool magicshadowSet;
 		public bool cryoSet;
 		public bool frigidSet;
-		public bool rangedshadowSet;
 		public bool graniteSet;
-		public bool graniteslam = false;
-		public bool meleeshadowSet;
 		public bool infernalSet;
 		public bool fierySet;
 		public bool starSet;
 		public bool clatterboneSet;
 		public bool talonSet;
-		public bool OverseerCharm = false;
 
 		public bool ZoneAsteroid = false;
 		public bool ZoneSpider = false;
@@ -563,24 +514,7 @@ namespace SpiritMod
 			frostCount = frostTally;
 			frostTally = 0;
 
-			copterFireFrame++;
-
-			onGround = false;
-			flying = false;
-			swimming = false;
-			if (Player.velocity.Y != 0f)
-			{
-				if (Player.mount.Active && Player.mount.FlyTime > 0 && Player.jump == 0 && Player.controlJump && !Player.mount.CanHover())
-					flying = true;
-				else if (Player.wet)
-					swimming = true;
-			}
-			else
-				onGround = true;
-
-			moving = false;
-			if (Player.velocity.X != 0f)
-				moving = true;
+			onGround = (Player.velocity.Y == 0f);
 		}
 
 		private void ResetAccBools()
@@ -588,7 +522,6 @@ namespace SpiritMod
 			crystalFlower = false;
 			mimicRepellent = false;
 			forbiddenTome = false;
-			animusLens = false;
 			deathRose = false;
 			Resolve = false;
 			MoonSongBlossom = false;
@@ -596,7 +529,6 @@ namespace SpiritMod
 			infernalShield = false;
 			illusionistEye = false;
 			moonGauntlet = false;
-			unboundSoulMinion = false;
 			longFuse = false;
 			granitechDrones = false;
 
@@ -617,7 +549,6 @@ namespace SpiritMod
 			midasTouch = false;
 			seaSnailVenom = false;
 			stoneHead = false;
-			silkenRobe = false;
 			zipline = false;
 			clockActive = false;
 			bloodcourtSet = false;
@@ -632,7 +563,6 @@ namespace SpiritMod
 			SpiritCloak = false;
 			HealCloak = false;
 			vitaStone = false;
-			silkenLegs = false;
 			astralSet = false;
 			mushroomPotion = false;
 			ChaosCrystal = false;
@@ -660,12 +590,9 @@ namespace SpiritMod
 			AceOfHearts = false;
 			AceOfClubs = false;
 			AceOfDiamonds = false;
-			anglure = false;
 			geodeSet = false;
 			manaWings = false;
-			sunStone = false;
 			fireMaw = false;
-			moonStone = false;
 			rogueSet = false;
 			timScroll = false;
 			wheezeScale = false;
@@ -673,15 +600,10 @@ namespace SpiritMod
 			HellGaze = false;
 			Bauble = false;
 			geodeRanged = false;
-			OverseerCharm = false;
-			ReachSummon = false;
-			hungryMinion = false;
-			silkenSet = false;
 			snapsporeMinion = false;
 			EaterSummon = false;
 			CreeperSummon = false;
 			bloodfireShield = false;
-			tankMinion = false;
 			Phantom = false;
 			magnifyingGlass = false;
 			magazine = false;
@@ -690,43 +612,26 @@ namespace SpiritMod
 			CursedPendant = false;
 			BlueDust = false;
 			SnakeMinion = false;
-			Ghast = false;
 			starCharm = false;
-			eyezorEye = false;
-			minionName = false;
 			starMap = false;
 			frigidGloves = false;
 			NebulaPearl = false;
-			TiteRing = false;
 			bismiteShield = false;
-			sacredVine = false;
 			winterbornCharmMage = false;
 			sepulchreCharm = false;
 			clatterboneShield = false;
-			KingRock = false;
 			leatherGlove = false;
-			flametrail = false;
 			EnchantedPaladinsHammerMinion = false;
-			ProbeMinion = false;
 			crawlerockMinion = false;
 			mangoMinion = false;
 			skeletalonMinion = false;
 			cragboundMinion = false;
 			shamanBand = false;
-			aeonMinion = false;
-			gasopodMinion = false;
-			Flayer = false;
-			steamMinion = false;
 			DungeonSummon = false;
 			lunazoa = false;
-			OG = false;
 			lavaRock = false;
 			jellyfishMinion = false;
 			butterflyMinion = false;
-			terror1Summon = false;
-			terror2Summon = false;
-			terror3Summon = false;
-			terror4Summon = false;
 			minior = false;
 			drakomireMount = false;
 			basiliskMount = false;
@@ -737,7 +642,6 @@ namespace SpiritMod
 			starBuff = false;
 			runeBuff = false;
 			soulPotion = false;
-			carnivorousPlantMinion = false;
 		}
 
 		private void ResetArmorBools()
@@ -746,17 +650,12 @@ namespace SpiritMod
 			runicSet = false;
 			darkfeatherVisage = false;
 			primalSet = false;
-			shadowSet = false;
 			wayfarerSet = false;
-			meleeshadowSet = false;
-			rangedshadowSet = false;
-			magicshadowSet = false;
 			spiritSet = false;
 			coralSet = false;
 			stellarSet = false;
 			graniteSet = false;
 			fierySet = false;
-			putridSet = false;
 			reachSet = false;
 			leatherSet = false;
 			starSet = false;
@@ -847,10 +746,6 @@ namespace SpiritMod
 		{
 			BeginShotDetection(item);
 
-			if (silkenRobe && item.IsSummon())
-				damage += 1;
-			if (stoneHead && item.IsMelee())
-				damage += 1;
 			if (daybloomGarb && item.IsMagic())
 				damage += 1;
 			if (leatherHood && item.IsRanged())
@@ -973,9 +868,6 @@ namespace SpiritMod
 
 		public override void OnHitAnything(float x, float y, Entity victim)
 		{
-			if (TiteRing && LastEnemyHit == victim && Main.rand.NextBool(10))
-				Player.AddBuff(BuffID.ShadowDodge, 145);
-
 			if (Player.HeldItem.type == ModContent.ItemType<Items.Sets.TideDrops.Minifish>() && MinifishTimer <= 0)
 			{
 				MinifishTimer = 120;
@@ -986,8 +878,6 @@ namespace SpiritMod
 					p.netUpdate = true;
 				}
 			}
-
-			LastEnemyHit = victim;
 		}
 
 		public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
@@ -1078,18 +968,6 @@ namespace SpiritMod
 				}
 			}
 
-			if (meleeshadowSet && Main.rand.NextBool(14) && item.IsMelee())
-				Projectile.NewProjectile(item.GetSource_OnHit(target), Player.position.X + 20, Player.position.Y + 30, 0, -12, ModContent.ProjectileType<SpiritShardFriendly>(), 60, 0, Main.myPlayer);
-
-			if (magicshadowSet && Main.rand.NextBool(14) && item.IsMagic())
-				Projectile.NewProjectile(item.GetSource_OnHit(target), Player.position.X + 20, Player.position.Y + 30, 0, -12, ModContent.ProjectileType<SpiritShardFriendly>(), 60, 0, Main.myPlayer);
-
-			if (magicshadowSet && Main.rand.NextBool(14) && item.IsSummon())
-				Projectile.NewProjectile(item.GetSource_OnHit(target), Player.position.X + 20, Player.position.Y + 30, 0, -12, ModContent.ProjectileType<SpiritShardFriendly>(), 60, 0, Main.myPlayer);
-
-			if (rangedshadowSet && Main.rand.NextBool(14) && item.IsRanged())
-				Projectile.NewProjectile(item.GetSource_OnHit(target), Player.position.X + 20, Player.position.Y + 30, 0, -12, ModContent.ProjectileType<SpiritShardFriendly>(), 60, 0, Main.myPlayer);
-
 			if (midasTouch)
 				target.AddBuff(BuffID.Midas, 240);
 
@@ -1157,9 +1035,6 @@ namespace SpiritMod
 				}
 			}
 
-			if (sacredVine && Main.rand.NextBool(20))
-					Player.AddBuff(BuffID.Regeneration, 180);
-
 			if (midasTouch)
 				target.AddBuff(BuffID.Midas, 240);
 
@@ -1180,12 +1055,6 @@ namespace SpiritMod
 					int p = Projectile.NewProjectile(proj.GetSource_OnHit(target), target.position, new Vector2(Main.rand.Next(-6, 6), Main.rand.Next(-5, -1)), ModContent.ProjectileType<GhastSkullFriendly>(), (int)MathHelper.Clamp((damage / 5 * 2), 0, upperClamp), knockback, Main.myPlayer);
 					Main.projectile[p].DamageType = proj.DamageType;
 				}
-			}
-
-			if (KingRock && Main.rand.NextBool(5) && proj.IsMagic())
-			{
-				Projectile.NewProjectile(proj.GetSource_OnHit(target), Player.position.X + Main.rand.Next(-350, 350), Player.position.Y - 350, 0, 12, ModContent.ProjectileType<PrismaticBolt>(), 55, 0, Main.myPlayer);
-				Projectile.NewProjectile(proj.GetSource_OnHit(target), Player.position.X + Main.rand.Next(-350, 350), Player.position.Y - 350, 0, 12, ModContent.ProjectileType<PrismaticBolt>(), 55, 0, Main.myPlayer);
 			}
 
 			if (geodeSet && crit && Main.rand.NextBool(5))
@@ -1212,9 +1081,6 @@ namespace SpiritMod
 					Player.HealEffect(2);
 				}
 			}
-
-			if (eyezorEye && proj.IsMagic() && crit && Main.rand.NextBool(3))
-				target.StrikeNPC(40, 0f, 0, crit);
 
 			if (wheezeScale && Main.rand.NextBool(9) && proj.IsMelee())
 			{
@@ -1263,15 +1129,6 @@ namespace SpiritMod
 
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
-
-			if (magicshadowSet && Main.rand.NextBool(10) && proj.IsMagic())
-				Projectile.NewProjectile(proj.GetSource_OnHit(target), Player.position.X + 20, Player.position.Y + 30, 0, 12, ModContent.ProjectileType<SpiritShardFriendly>(), 60, 0, Main.myPlayer);
-
-			if (meleeshadowSet && Main.rand.NextBool(10) && proj.IsMelee())
-				Projectile.NewProjectile(proj.GetSource_OnHit(target), Player.position.X + 20, Player.position.Y + 30, 0, 12, ModContent.ProjectileType<SpiritShardFriendly>(), 60, 0, Main.myPlayer);
-
-			if (rangedshadowSet && Main.rand.NextBool(10) && proj.IsRanged())
-				Projectile.NewProjectile(proj.GetSource_OnHit(target), Player.position.X + 20, Player.position.Y + 30, 0, 12, ModContent.ProjectileType<SpiritShardFriendly>(), 60, 0, Main.myPlayer);
 
 			if (ToxicExtract && Main.rand.NextBool(5) && proj.IsMagic())
 				target.AddBuff(BuffID.Venom, 240);
@@ -1471,18 +1328,6 @@ namespace SpiritMod
 				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Main.player[Main.myPlayer].Center, Vector2.Zero, ModContent.ProjectileType<IceReflector>(), 0, 0, Main.myPlayer);
 				Player.endurance += .30f;
 				baubleTimer = 7200;
-			}
-
-			if (OverseerCharm)
-			{
-				for (int h = 0; h < 8; h++)
-				{
-					Vector2 vel = new Vector2(0, -1);
-					float rand = Main.rand.NextFloat() * 6.283f;
-					vel = vel.RotatedBy(rand);
-					vel *= 4f;
-					Projectile.NewProjectile(Player.GetSource_OnHurt(null), Main.player[Main.myPlayer].Center, vel, ModContent.ProjectileType<SpiritShardFriendly>(), 250, 0, Main.myPlayer);
-				}
 			}
 		}
 
@@ -2428,125 +2273,6 @@ namespace SpiritMod
 			if (duskSet && Player.ownedProjectileCounts[ModContent.ProjectileType<ShadowCircleRune1>()] <= 0)
 				Projectile.NewProjectile(Player.GetSource_NaturalSpawn(), Player.position, Vector2.Zero, ModContent.ProjectileType<ShadowCircleRune1>(), 18, 0, Player.whoAmI);
 
-
-			if (shadowSet)
-			{
-				if (infernalDash > 0)
-					infernalDash--;
-				else
-					infernalHit = -1;
-
-				if (infernalDash > 0 && infernalHit < 0)
-				{
-					var rectangle = new Rectangle((int)(Player.position.X + Player.velocity.X * 0.5 - 4.0), (int)(Player.position.Y + Player.velocity.Y * 0.5 - 4.0), Player.width + 8, Player.height + 8);
-					for (int i = 0; i < 200; i++)
-					{
-						if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && !Main.npc[i].friendly)
-						{
-							NPC npc = Main.npc[i];
-							Rectangle rect = npc.getRect();
-							if (rectangle.Intersects(rect) && (npc.noTileCollide || Collision.CanHit(Player.position, Player.width, Player.height, npc.position, npc.width, npc.height)))
-							{
-								float damage = Player.GetDamage(DamageClass.Melee).ApplyTo(100);
-
-								float knockback = 10f;
-								if (Player.kbGlove)
-									knockback *= 0f;
-
-								if (Player.kbBuff)
-									knockback *= 1f;
-
-								bool crit = false;
-								if (Main.rand.Next(100) < Player.GetCritChance(DamageClass.Melee))
-									crit = true;
-
-								int hitDirection = Player.direction;
-								if (Player.velocity.X < 0f)
-									hitDirection = -1;
-
-								if (Player.velocity.X > 0f)
-									hitDirection = 1;
-
-								if (Player.whoAmI == Main.myPlayer)
-								{
-									npc.AddBuff(ModContent.BuffType<SoulFlare>(), 600);
-									npc.StrikeNPC((int)damage, knockback, hitDirection, crit, false, false);
-
-									if (Main.netMode != NetmodeID.SinglePlayer)
-										NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, i, damage, knockback, hitDirection);
-								}
-
-								infernalDash = 10;
-								Player.dashDelay = 0;
-								Player.velocity.X = -hitDirection * 2f;
-								Player.velocity.Y = -2f;
-								Player.immune = true;
-								Player.immuneTime = 7;
-								infernalHit = i;
-							}
-						}
-					}
-				}
-
-				if (Player.dash <= 0 && Player.dashDelay == 0 && !Player.mount.Active)
-				{
-					int num21 = 0;
-					bool spawnDust = false;
-
-					if (Player.dashTime > 0)
-						Player.dashTime--;
-
-					if (Player.dashTime < 0)
-						Player.dashTime++;
-
-					if (Player.controlRight && Player.releaseRight)
-					{
-						if (Player.dashTime > 0)
-						{
-							num21 = 1;
-							spawnDust = true;
-							Player.dashTime = 0;
-						}
-						else
-							Player.dashTime = 15;
-					}
-					else if (Player.controlLeft && Player.releaseLeft)
-					{
-						if (Player.dashTime < 0)
-						{
-							num21 = -1;
-							spawnDust = true;
-							Player.dashTime = 0;
-						}
-						else
-							Player.dashTime = -15;
-					}
-
-					if (spawnDust)
-					{
-						Player.velocity.X = 15.5f * num21;
-						Point point3 = (Player.Center + new Vector2(num21 * Player.width / 2 + 2, Player.gravDir * -Player.height / 2f + Player.gravDir * 2f)).ToTileCoordinates();
-						Point point4 = (Player.Center + new Vector2(num21 * Player.width / 2 + 2, 0f)).ToTileCoordinates();
-
-						if (WorldGen.SolidOrSlopedTile(point3.X, point3.Y) || WorldGen.SolidOrSlopedTile(point4.X, point4.Y))
-							Player.velocity.X = Player.velocity.X / 2f;
-
-						Player.dashDelay = -1;
-						infernalDash = 15;
-
-						for (int num22 = 0; num22 < 0; num22++)
-						{
-							int num23 = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Smoke, 0f, 0f, 100, default, 2f);
-							Main.dust[num23].position.X = Main.dust[num23].position.X + Main.rand.Next(-5, 6);
-							Main.dust[num23].position.Y = Main.dust[num23].position.Y + Main.rand.Next(-5, 6);
-							Main.dust[num23].velocity *= 0.2f;
-							Main.dust[num23].scale *= 1f + Main.rand.Next(20) * 0.01f;
-							Main.dust[num23].shader = GameShaders.Armor.GetSecondaryShader(Player.shield, Player);
-						}
-					}
-				}
-			}
-
 			if (infernalDash > 0)
 				infernalDash--;
 
@@ -2872,6 +2598,9 @@ namespace SpiritMod
 					Dust.NewDust(vector2, 16, 16, DustID.Torch, 0f, 0f, 0, default, 1f);
 				}
 			}
+
+			if (oakHeartStacks > 0)
+				oakHeartStacks -= 0.025f;
 		}
 
 		public override void PostUpdateRunSpeeds()

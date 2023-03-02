@@ -71,7 +71,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 		{
 			Player player = Main.LocalPlayer;
 			player.cursorItemIconID = ModContent.ItemType<Fathomless_Chest_Item>();
-			player.cursorItemIconText = "";
+			player.cursorItemIconText = string.Empty;
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
 		}
@@ -82,13 +82,26 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 		{
 			Player player = Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 100, 100)];
 
-			int count = ChanceEffectManager.effectIndex.Count;
-			int randomEffectCounter = Main.rand.Next(count);
+			if (player.whoAmI == Main.myPlayer)
+			{
+				int count = ChanceEffectManager.effectIndex.Count;
+				int randomEffectCounter = Main.rand.Next(count);
 
-			while (!ChanceEffectManager.effectIndex[randomEffectCounter].Selectable(new Point16(i, j)))
-				randomEffectCounter = Main.rand.Next(count);
+				while (!ChanceEffectManager.effectIndex[randomEffectCounter].Selectable(new Point16(i, j)))
+					randomEffectCounter = Main.rand.Next(count);
 
-			ChanceEffectManager.effectIndex[randomEffectCounter].Trigger(player, new Point16(i, j));
+				ChanceEffectManager.effectIndex[randomEffectCounter].Trigger(player, new Point16(i, j));
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+				{
+					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.FathomlessData, 4);
+					packet.Write((byte)randomEffectCounter);
+					packet.Write((byte)player.whoAmI);
+					packet.Write(i);
+					packet.Write(j);
+					packet.Send();
+				}
+			}
 		}
 
 		public static void ConvertTiles(int i, int j, int size, Dictionary<int, int> pair, float density = 1f)

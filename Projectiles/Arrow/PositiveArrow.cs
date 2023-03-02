@@ -47,9 +47,6 @@ namespace SpiritMod.Projectiles.Arrow
 			Projectile.localNPCHitCooldown = 20;
 		}
 
-		//public override void SendExtraAI(BinaryWriter writer) => writer.Write(stuck);
-		//public override void ReceiveExtraAI(BinaryReader reader) => stuck = reader.ReadBoolean();
-
 		public override void Kill(int timeLeft)
 		{
 			if (timeLeft <= 0)
@@ -93,6 +90,7 @@ namespace SpiritMod.Projectiles.Arrow
 				{
 					Projectile.Center = Main.npc[TargetIndex].Center - Projectile.velocity * 2f;
 					Projectile.gfxOffY = Main.npc[TargetIndex].gfxOffY;
+
 					if (Projectile.timeLeft % 30f == 0f)
 						Main.npc[TargetIndex].HitEffect(0, 1.0);
 				}
@@ -107,6 +105,7 @@ namespace SpiritMod.Projectiles.Arrow
 		{
 			const int range = 40;
 			var list = Main.projectile.Where(x => x.active && x.type == oppositearrow && ((x.Distance(Projectile.Center) <= range && x.ai[0] == STRUCK_TILE) || (x.ai[1] == TargetIndex && x.ai[0] == STRUCK_NPC && Projectile.ai[0] == STRUCK_NPC)));
+			
 			if (list.Any()) 
 			{
 				foreach (var proj in list) 
@@ -119,14 +118,18 @@ namespace SpiritMod.Projectiles.Arrow
 							Main.dust[num622].noGravity = true;
 						Main.dust[num622].scale = 0.5f;
 					}
+
 					if (!Main.dedServ)
 						ParticleHandler.SpawnParticle(new ElectricalBurst(proj.Center, 1, 0));
+
 					proj.Kill();
 				}
+
 				doDamageEffect = true;
 
 				Projectile.timeLeft = 8;
 				Damage = (int)(Damage * 1.5);
+
 				ProjectileExtras.Explode(Projectile.whoAmI, 120, 120, delegate 
 				{
 					SoundEngine.PlaySound(SoundID.Item93, Projectile.position);
@@ -141,8 +144,11 @@ namespace SpiritMod.Projectiles.Arrow
 					}
 					DustHelper.DrawStar(new Vector2(Projectile.Center.X, Projectile.Center.Y), 226, pointAmount: 5, mainSize: 2.5f, dustDensity: 2, pointDepthMult: 0.3f, noGravity: true);
 				});
+
 				if (!Main.dedServ)
 					ParticleHandler.SpawnParticle(new ElectricalBurst(Projectile.Center, 1, 0));
+
+				Projectile.netUpdate = true;
 				Projectile.Kill();
 			}
 		}

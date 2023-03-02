@@ -1,11 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.BossLoot.StarplateDrops;
-using SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,10 +11,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 {
 	public class SteamRaiderHeadDeath : ModNPC
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Starplate Voyager");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Starplate Voyager");
 
 		public override void SetDefaults()
 		{
@@ -50,21 +45,20 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		{
 			alphaCounter += 0.025f;
 			NPC.alpha = 255 - timeLeft;
-			if (timeLeft == 200) {
+			if (timeLeft == 200)
 				NPC.rotation = 3.14f;
-			}
 
 			NPC.rotation += Main.rand.Next(-20, 20) / 100f;
 
 			Dust.NewDustPerfect(NPC.Center, 226, new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)));
 
-			if (timeLeft < 50) {
+			if (timeLeft < 50)
 				Dust.NewDustPerfect(NPC.Center, 226, new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)));
-			}
 
 			timeLeft--;
 
-			if (timeLeft <= 0) {
+			if (timeLeft <= 0)
+			{
 				if (!Main.expertMode)
 				{
 					NPC.DropItem(ModContent.ItemType<CosmiliteShard>(), 6, 10, NPC.GetSource_FromAI());
@@ -76,10 +70,9 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Starplate2").Type, 1f);
 				Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Starplate3").Type, 1f);
 				SoundEngine.PlaySound(SoundID.DD2_EtherianPortalOpen, NPC.Center);
-				//  Main.PlaySound(SoundID.Item, (int)npc.position.X, (int)npc.position.Y, 14);
-				for (int i = 0; i < 90; i++) {
+
+				for (int i = 0; i < 90; i++)
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, Main.rand.Next(-25, 25), Main.rand.Next(-13, 13));
-				}
 
 				NPC.position.X = NPC.position.X + (NPC.width / 2);
 				NPC.position.Y = NPC.position.Y + (NPC.height / 2);

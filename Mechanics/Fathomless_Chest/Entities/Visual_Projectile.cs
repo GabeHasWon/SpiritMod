@@ -31,7 +31,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			Main.dust[index2].noGravity = true;
 			Main.dust[index2].scale = Projectile.scale;
 
-			Player player = Main.LocalPlayer;
+			Player player = Main.player[Projectile.owner];
 			float x = 0.15f;
 			float y = 0.15f;
 
