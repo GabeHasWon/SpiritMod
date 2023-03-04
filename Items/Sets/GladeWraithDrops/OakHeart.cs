@@ -26,8 +26,8 @@ namespace SpiritMod.Items.Sets.GladeWraithDrops
 			Item.maxStack = 1;
 			Item.shoot = ModContent.ProjectileType<Projectiles.Thrown.OakHeart>();
 			Item.shootSpeed = 12f;
-			Item.useAnimation = 25;
-			Item.useTime = 25;
+			Item.useAnimation = 32;
+			Item.useTime = 32;
 			Item.damage = 12;
 			Item.knockBack = 1.5f;
 			Item.value = Item.sellPrice(0, 1, 0, 0);

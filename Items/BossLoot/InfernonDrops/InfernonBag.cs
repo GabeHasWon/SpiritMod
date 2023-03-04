@@ -12,7 +12,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 		public override void RightClick(Player player)
 		{
 			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ItemID.GoldCoin, Main.rand.Next(2, 5));
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<HellsGaze>()); //expert drop
+			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<InfernalPact>()); //expert drop
 			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<InfernalAppendage>(), Main.rand.Next(25, 36));
 
 			int[] lootTable = {

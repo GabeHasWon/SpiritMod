@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 				Main.dust[dust].noGravity = true;
 			}
 
-			if (++Projectile.frameCounter > 3)
+			if (++Projectile.frameCounter > 6)
 			{
 				Projectile.frameCounter = 0;
 

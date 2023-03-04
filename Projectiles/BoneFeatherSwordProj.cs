@@ -48,7 +48,7 @@ namespace SpiritMod.Projectiles
 		{
 			originPos = Main.player[Projectile.owner].Center;
 			Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
-			Projectile.scale = Main.rand.NextFloat(0.9f, 1.2f);
+			Projectile.scale = Main.rand.NextFloat(0.8f, 1.2f);
 
 			Projectile.netUpdate = true;
 		}

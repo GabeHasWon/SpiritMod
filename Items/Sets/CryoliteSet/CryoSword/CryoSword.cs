@@ -49,7 +49,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 		{
 			if ((comboCounter + 1) == maxCombo)
 			{
-				bool tileBelow = false;
+				/*bool tileBelow = false;
 				for (int i = 0; i < 7; i++)
 				{
 					Vector2 samplePos = position / 16;
@@ -65,7 +65,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 				}
 
 				if (player.velocity.Y == 0f || tileBelow)
-				{
+				{ */ 
 					Vector2 newPos = position + new Vector2(0, player.height / 2);
 					velocity.Y *= 0.08f;
 
@@ -91,7 +91,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 				else if (Main.netMode != NetmodeID.Server)
 				{
 					SoundEngine.PlaySound(SoundID.DD2_MonkStaffGroundMiss with { Volume = 0.6f }, position);
-				}
+				//}
 			}
 
 			velocity = new Vector2((comboCounter % 2 == 1) ? -1 : 1, 0);

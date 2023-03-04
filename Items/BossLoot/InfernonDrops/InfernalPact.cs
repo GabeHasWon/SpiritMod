@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Accessory
+namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
 	public class InfernalPact : ModItem
 	{
@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Accessory
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Infernal Pact");
-			Tooltip.SetDefault("+4% all damage\nReduces your defense to 0\nAdds 0.75% all damage per defense point lost");
+			Tooltip.SetDefault("4% increased damage\nReduces your defense to 0\nIncreases damage by 0.75% per defense point lost");
 		}
 
 		public override void SetDefaults()
@@ -25,6 +25,7 @@ namespace SpiritMod.Items.Accessory
 			Item.value = Item.buyPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.LightRed;
 			Item.accessory = true;
+			Item.expert = true; 
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
