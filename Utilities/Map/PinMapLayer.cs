@@ -81,7 +81,7 @@ namespace SpiritMod.Utilities.Map
 
 			ModContent.GetInstance<PinWorld>().SetPin(heldPinValue, cursorPos);
 
-			if (placedPin && Main.netMode != NetmodeID.SinglePlayer)
+			if (placedPin && Main.netMode != NetmodeID.SinglePlayer && Main.netMode != NetmodeID.Server)
 			{
 				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.PlaceMapPin, 3);
 				packet.Write(heldPinValue);

@@ -90,16 +90,18 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				while (!ChanceEffectManager.effectIndex[randomEffectCounter].Selectable(new Point16(i, j)))
 					randomEffectCounter = Main.rand.Next(count);
 
-				ChanceEffectManager.effectIndex[randomEffectCounter].Trigger(player, new Point16(i, j));
-
 				if (Main.netMode != NetmodeID.SinglePlayer)
 				{
 					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.FathomlessData, 4);
 					packet.Write((byte)randomEffectCounter);
 					packet.Write((byte)player.whoAmI);
-					packet.Write(i);
-					packet.Write(j);
+					packet.Write((ushort)i);
+					packet.Write((ushort)j);
 					packet.Send();
+				}
+				else //This prevents the effect from triggering twice for the specified player in multiplayer
+				{
+					ChanceEffectManager.effectIndex[randomEffectCounter].Trigger(player, new Point16(i, j));
 				}
 			}
 		}

@@ -1,4 +1,3 @@
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Magic;
 using Terraria;
 using Terraria.ID;
@@ -13,7 +12,6 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			DisplayName.SetDefault("Bismite Staff");
 			Tooltip.SetDefault("Shoots a bolt of energy\nOccasionally causes foes to receive 'Festering Wounds,' which deal more damage to foes under half health");
 		}
-
 
 		public override void SetDefaults()
 		{

@@ -66,9 +66,9 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				Gore gore = Gore.NewGoreDirect(source, tileCoords.ToVector2() * 16, Vector2.Zero, 99, 1.1f);
 				gore.velocity *= 0.6f;
 
-				if (g < 5)
+				if (g < 5 && !Main.dedServ && Main.netMode != NetmodeID.Server)
 				{
-					gore = Gore.NewGoreDirect(source, tilePos + new Vector2(0, 4), Vector2.Zero, SpiritMod.Instance.Find<ModGore>("FathomlessChest" + (g + 1)).Type, 1f);
+					gore = Gore.NewGoreDirect(source, tilePos + new Vector2(0, 4), Vector2.Zero, ModContent.GetInstance<SpiritMod>().Find<ModGore>("FathomlessChest" + (g + 1)).Type, 1f);
 					gore.velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.5f, 1.8f);
 				}
 			}

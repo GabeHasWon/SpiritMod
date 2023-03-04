@@ -29,7 +29,7 @@ namespace SpiritMod.Projectiles
 			DisplayName.SetDefault("Bone Feather");
 			Main.projFrames[Type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Type] = 4;
-			ProjectileID.Sets.TrailingMode[Type] = 0;
+			ProjectileID.Sets.TrailingMode[Type] = 2;
 		}
 
 		public override void SetDefaults()
@@ -99,7 +99,7 @@ namespace SpiritMod.Projectiles
 			{
 				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 				Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-				Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+				Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.oldRot[k], drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 			}
 			return false;
 		}

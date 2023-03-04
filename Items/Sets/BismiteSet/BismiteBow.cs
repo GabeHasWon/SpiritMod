@@ -52,7 +52,9 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
 			Main.projectile[proj].GetGlobalProjectile<SpiritGlobalProjectile>().shotFromBismiteBow = true;
 			Projectile projectile = Main.projectile[proj];
-			for (int k = 0; k < 25; k++) {
+			
+			for (int k = 0; k < 25; k++)
+			{
 				Vector2 mouse = Main.MouseWorld;
 				Vector2 offset = mouse - player.position;
 				offset.Normalize();
@@ -61,7 +63,6 @@ namespace SpiritMod.Items.Sets.BismiteSet
 
 				Main.dust[dust].velocity *= -1f;
 				Main.dust[dust].noGravity = true;
-				//        Main.dust[dust].scale *= 2f;
 				Vector2 vector2_1 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
 				vector2_1.Normalize();
 				Vector2 vector2_2 = vector2_1 * ((float)Main.rand.Next(50, 100) * 0.02f);

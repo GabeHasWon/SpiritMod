@@ -79,7 +79,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 
 					if (g < 5)
 					{
-						gore = Gore.NewGoreDirect(Entity.GetSource_Death(), NPC.Center, Vector2.Zero, SpiritMod.Instance.Find<ModGore>("FathomlessChest" + (g + 1)).Type, 1f);
+						gore = Gore.NewGoreDirect(Entity.GetSource_Death(), NPC.Center - new Vector2(0, 18), Vector2.Zero, Mod.Find<ModGore>("FathomlessChest" + (g + 1)).Type, 1f);
 						gore.velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.5f, 1.8f);
 					}
 				}
@@ -131,6 +131,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			{
 				SoundEngine.PlaySound(SoundID.Coins, player.Center);
 				NPC.extraValue = player.lostCoins;
+
+				NPC.netUpdate = true;
 			}
 		}
 

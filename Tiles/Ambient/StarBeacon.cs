@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Consumable;
 using SpiritMod.Items.Placeable;
+using SpiritMod.Items.Sets.GranitechSet;
 using SpiritMod.NPCs.Boss.SteamRaider;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
@@ -28,8 +29,11 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileLighted[Type] = true;
 			Main.tileLavaDeath[Type] = false;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
+			TileObjectData.newTile.Height = 3;
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
+			TileObjectData.newTile.CoordinatePadding = 2;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
-			TileObjectData.newTile.Origin = new Point16(0, 1);
+			TileObjectData.newTile.Origin = new Point16(0, 2);
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Astralite Beacon");
@@ -61,7 +65,7 @@ namespace SpiritMod.Tiles.Ambient
 			if (Main.drawToScreen)
 				zero = Vector2.Zero;
 
-			if (tile.TileFrameX % 36 == 0 && tile.TileFrameY % 36 == 0)
+			if (tile.TileFrameX % 36 == 0 && tile.TileFrameY % 54 == 18)
 				DrawSpecialFX(new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y + 2) + zero + new Vector2(16), spriteBatch);
 
 			return true;
@@ -78,17 +82,21 @@ namespace SpiritMod.Tiles.Ambient
 			int height = tile.TileFrameY == 36 ? 18 : 16;
 			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Ambient/StarBeacon_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y + 2) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 
-			if (Main.rand.NextBool(10) && !Main.dedServ && tile.TileFrameX % 36 == 0 && tile.TileFrameY % 36 == 0)
+			if (Main.rand.NextBool(10) && !Main.dedServ && tile.TileFrameX % 36 == 0 && tile.TileFrameY % 54 == 18)
 			{
 				if (Mechanics.EventSystem.EventManager.IsPlaying<Mechanics.EventSystem.Events.StarplateBeaconIntroEvent>())
 					return;
 
 				Vector2 position = (new Vector2(i, j) * 16) + new Vector2(16 + Main.rand.NextFloat(-8.0f, 8.0f), 16);
-				ParticleHandler.SpawnParticle(new GlowParticle(position, Vector2.UnitY * -Main.rand.NextFloat(0.3f, 1.8f), PulseColor, Main.rand.NextFloat(0.03f, 0.1f), Main.rand.Next(25, 50)));
+
+				if (Main.rand.NextBool(4))
+					ParticleHandler.SpawnParticle(new GranitechParticle(position, Vector2.UnitY * -Main.rand.NextFloat(3f, 5f), PulseColor, Main.rand.NextFloat(1.0f, 1.5f), Main.rand.Next(30, 60)));
+				else
+					ParticleHandler.SpawnParticle(new GlowParticle(position, Vector2.UnitY * -Main.rand.NextFloat(0.3f, 1.8f), PulseColor, Main.rand.NextFloat(0.03f, 0.1f), Main.rand.Next(25, 50)));
 			}
 		}
 
-		private void DrawSpecialFX(Vector2 position, SpriteBatch spriteBatch) //WIP
+		private void DrawSpecialFX(Vector2 position, SpriteBatch spriteBatch)
 		{
 			Texture2D extra = Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_60").Value;
 			Texture2D ray = Mod.Assets.Request<Texture2D>("Textures/Ray").Value;

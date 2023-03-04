@@ -202,7 +202,10 @@ namespace SpiritMod
 						trailProj.DoTrailCreation(SpiritMod.TrailManager);
 					break;
 				case MessageType.PlaceMapPin:
-					ModContent.GetInstance<PinWorld>().SetPin(reader.ReadString(), new Vector2(reader.ReadInt32(), reader.ReadInt32()));
+					string pinValue = reader.ReadString();
+					(int cursorX, int cursorY) = (reader.ReadInt32(), reader.ReadInt32());
+
+					ModContent.GetInstance<PinWorld>().SetPin(pinValue, new Vector2(cursorX, cursorY));
 					break;
 				case MessageType.PlaceSuperSunFlower:
 					MyWorld.superSunFlowerPositions.Add(new Point16(reader.ReadUInt16(), reader.ReadUInt16()));
@@ -216,10 +219,23 @@ namespace SpiritMod
 					break;
 				case MessageType.FathomlessData:
 					byte effectIndex = reader.ReadByte();
-					Player closePlayer = Main.player[reader.ReadByte()];
-					(int i, int j) = (reader.ReadInt32(), reader.ReadInt32());
+					byte pIndex = reader.ReadByte();
+					(ushort i, ushort j) = (reader.ReadUInt16(), reader.ReadUInt16());
 
-					ChanceEffectManager.effectIndex[effectIndex].Trigger(closePlayer, new Point16(i, j));
+					if (Main.netMode == NetmodeID.Server)
+					{
+						//If received by the server, send to all clients instead
+						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.FathomlessData, 4);
+						packet.Write(effectIndex);
+						packet.Write(pIndex);
+						packet.Write(i);
+						packet.Write(j);
+						packet.Send();
+
+						break;
+					}
+
+					ChanceEffectManager.effectIndex[effectIndex].Trigger(Main.player[(int)pIndex], new Point16(i, j));
 					break;
 				case MessageType.StarjinxData:
 					//TBD in future

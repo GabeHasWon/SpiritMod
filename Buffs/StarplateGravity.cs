@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Buffs
@@ -14,12 +13,8 @@ namespace SpiritMod.Buffs
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = false;
 			Main.buffNoSave[Type] = true;
-			Terraria.ID.BuffID.Sets.LongerExpertDebuff[Type] = true;
 		}
 
-		public override void Update(Player player, ref int buffIndex)
-		{
-			player.gravity = 0.4f;
-		}
+		public override void Update(Player player, ref int buffIndex) => player.gravity = 0.4f;
 	}
 }

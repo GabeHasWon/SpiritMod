@@ -24,20 +24,20 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.damage = 24;
 			Item.knockBack = 2.5f;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.useTime = 9;
-			Item.useAnimation = 9;
+			Item.useTime = 10;
+			Item.useAnimation = 10;
 			Item.DamageType = DamageClass.Melee;
 			Item.noMelee = true;
 			Item.autoReuse = true;
 			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<TalonginusProj>();
-			Item.shootSpeed = 12f;
+			Item.shootSpeed = 2f;
 			Item.UseSound = SoundID.Item1;
 		}
 
 		public override bool CanUseItem(Player player) => !(player.ownedProjectileCounts[Item.shoot] > 0);
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) 
-			=> velocity = velocity.RotatedByRandom(0.5f);
+			=> velocity = velocity.RotatedByRandom(0.45f);
 	}
 }

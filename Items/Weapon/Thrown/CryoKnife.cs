@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cryolite Bomb");
-			Tooltip.SetDefault("Occasionally inflicts 'Cryo Crush'\n'Cryo Crush' does more damage as enemy health wanes\nThis effect does not apply to bosses, and deals a flat amount of damage instead");
+			Tooltip.SetDefault("Occasionally inflicts 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
 		}
 
 		public override void SetDefaults()

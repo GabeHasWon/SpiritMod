@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cryo Staff");
-			Tooltip.SetDefault("Shoots out an icy bolt\nOccasionally shoots out a spread of icy bolts\nBoth inflict 'Cryo Crush,' which does more damage as enemy health wanes\nThis effect does not apply to bosses, and deals a flat amount of damage instead\nThese bolts may also slow down enemies");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/CryoliteSet/CryoStaff_Glow");
+			Tooltip.SetDefault("Casts a spread of icy magic bolts, which inflict 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Item.staff[Item.type] = true;
 		}
 
@@ -61,6 +61,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
+			Lighting.AddLight(Item.position, 0.06f, .16f, .22f);
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 

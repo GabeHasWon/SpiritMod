@@ -54,7 +54,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 
 			for (int g = 0; g < 5; g++)
 			{
-				Gore gore = Gore.NewGoreDirect(Entity.GetSource_Death(), NPC.Center, Vector2.Zero, SpiritMod.Instance.Find<ModGore>("FathomlessChest_Gold" + (g + 1)).Type, 1f);
+				Gore gore = Gore.NewGoreDirect(Entity.GetSource_Death(), NPC.Center - new Vector2(0, 18), Vector2.Zero, Mod.Find<ModGore>("FathomlessChest_Gold" + (g + 1)).Type, 1f);
 				gore.velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.5f, 1.8f);
 			}
 		}
