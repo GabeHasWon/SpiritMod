@@ -79,15 +79,16 @@ namespace SpiritMod.Utilities.Map
 			Vector2 cursorPos = Main.MouseScreen - (Main.ScreenSize.ToVector2() / 2);
 			cursorPos = ((cursorPos - drawOffset) * (1 / Main.mapFullscreenScale)) + Main.mapFullscreenPos;
 
-			ModContent.GetInstance<PinWorld>().SetPin(heldPinValue, cursorPos);
-
-			if (placedPin && Main.netMode != NetmodeID.SinglePlayer && Main.netMode != NetmodeID.Server)
+			if (placedPin && Main.netMode != NetmodeID.SinglePlayer)
 			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.PlaceMapPin, 3);
+				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.PlaceMapPin, 2);
 				packet.Write(heldPinValue);
-				packet.Write(cursorPos.X);
-				packet.Write(cursorPos.Y);
+				packet.WriteVector2(cursorPos);
 				packet.Send();
+			}
+			else
+			{
+				ModContent.GetInstance<PinWorld>().SetPin(heldPinValue, cursorPos);
 			}
 		}
 	}

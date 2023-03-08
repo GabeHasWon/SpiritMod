@@ -13,16 +13,16 @@ namespace SpiritMod.NPCs.Undead_Warlock
 {
 	public class Undead_Warlock : ModNPC
 	{
-		public bool SpawningCrystals => spawningCrystalsTimer >= 240;
+		private bool SpawningCrystals => spawningCrystalsTimer >= 240;
 
-		public int spawningCrystalsTimer = 0;
-		public int crystalTimer = 0;
-		public int projectileTimer = 0;
-		public int resetTimer = 0;
+		private int spawningCrystalsTimer = 0;
+		private int crystalTimer = 0;
+		private int projectileTimer = 0;
+		private int resetTimer = 0;
 
-		public int spawnedProjectiles = 0;
+		private int spawnedProjectiles = 0;
 
-		public int[] crystals = new int[3];
+		private int[] crystals = new int[3];
 
 		public override void SetStaticDefaults()
 		{
@@ -58,6 +58,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			writer.Write(spawningCrystalsTimer);
 			writer.Write(crystalTimer);
 			writer.Write(spawnedProjectiles);
+			writer.Write(projectileTimer);
 			writer.Write(resetTimer);
 		}
 
@@ -66,6 +67,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			spawningCrystalsTimer = reader.ReadInt32();
 			crystalTimer = reader.ReadInt32();
 			spawnedProjectiles = reader.ReadInt32();
+			projectileTimer = reader.ReadInt32();
 			resetTimer = reader.ReadInt32();
 		}
 
@@ -182,7 +184,12 @@ namespace SpiritMod.NPCs.Undead_Warlock
 				}
 			}
 			else
-				NPC.aiStyle = 3;
+			{
+				if (NPC.aiStyle != 3)
+					NPC.aiStyle = 3;
+
+				NPC.netUpdate = true;
+			}
 		}
 
 		public static void DrawDustBeetweenThisAndThat(Vector2 vector3, Vector2 vector1)
@@ -221,6 +228,8 @@ namespace SpiritMod.NPCs.Undead_Warlock
 					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("UndeadWarlock_1").Type, 1f);
 					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("UndeadWarlock_3").Type, 1f);
 				}
+
+				NPC.netUpdate = true;
 			}
 
 			for (int k = 0; k < 7; k++)

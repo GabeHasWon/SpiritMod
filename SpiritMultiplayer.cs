@@ -202,10 +202,7 @@ namespace SpiritMod
 						trailProj.DoTrailCreation(SpiritMod.TrailManager);
 					break;
 				case MessageType.PlaceMapPin:
-					string pinValue = reader.ReadString();
-					(int cursorX, int cursorY) = (reader.ReadInt32(), reader.ReadInt32());
-
-					ModContent.GetInstance<PinWorld>().SetPin(pinValue, new Vector2(cursorX, cursorY));
+					ModContent.GetInstance<PinWorld>().pins[reader.ReadString()] = reader.ReadVector2();
 					break;
 				case MessageType.PlaceSuperSunFlower:
 					MyWorld.superSunFlowerPositions.Add(new Point16(reader.ReadUInt16(), reader.ReadUInt16()));

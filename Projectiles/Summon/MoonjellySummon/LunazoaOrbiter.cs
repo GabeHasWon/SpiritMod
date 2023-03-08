@@ -115,6 +115,10 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 								p.minion = true;
 								p.netUpdate = true;
 								p.scale = Projectile.scale;
+
+								if (Main.netMode != NetmodeID.SinglePlayer)
+									NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, p.whoAmI);
+
 								break;
 							}
 							Projectile.netUpdate = true;

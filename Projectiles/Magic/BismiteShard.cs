@@ -34,7 +34,8 @@ namespace SpiritMod.Projectiles.Magic
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
-			for (int k = 0; k < Projectile.oldPos.Length; k++) {
+			for (int k = 0; k < Projectile.oldPos.Length; k++)
+			{
 				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
 				Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
@@ -42,24 +43,17 @@ namespace SpiritMod.Projectiles.Magic
 			return false;
 		}
 
-		int alpha;
-
 		public override void AI()
 		{
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
-			alpha += 2;
+			Projectile.alpha += 2;
 			Projectile.velocity *= 0.98f;
-			int dust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Plantera_Green, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
-			int dust2 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Plantera_Green, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
-			Main.dust[dust].noGravity = true;
-			Main.dust[dust2].noGravity = true;
-			Main.dust[dust2].velocity *= 0f;
-			Main.dust[dust2].velocity *= 0f;
-			Main.dust[dust2].scale = 0.9f;
-			Main.dust[dust].scale = 0.9f;
+
+			Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.GreenFairy, Projectile.velocity, Projectile.alpha);
+			dust.noGravity = true;
 		}
 
-		public override Color? GetAlpha(Color lightColor) => new Color(155 - (int)(alpha / 3f * 2), 204 - (int)(alpha / 3f * 2), 92 - (int)(alpha / 3f * 2), 255 - alpha);
+		public override Color? GetAlpha(Color lightColor) => new Color(155 - (int)(Projectile.alpha / 3f * 2), 204 - (int)(Projectile.alpha / 3f * 2), 92 - (int)(Projectile.alpha / 3f * 2), 255 - Projectile.alpha);
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{

@@ -1,4 +1,3 @@
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Returning;
 using Terraria;
 using Terraria.ID;

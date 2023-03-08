@@ -54,6 +54,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             Vector2 center = Projectile.Center;
             float num8 = (float)player.miscCounter / 40f;
             float num7 = 1.0471975512f * 2;
+
             if (Projectile.minion)
             {
                 for (int i = 0; i < 2; i++)
@@ -101,6 +102,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                     }
                     DustHelper.DrawDustImage(Projectile.Center, 226, 0.15f, "SpiritMod/Effects/DustImages/MoonSigil", 1f);
                 }, true);
+
+				Projectile.netUpdate = true;
             }
         }
 

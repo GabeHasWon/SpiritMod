@@ -1,9 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
-using System;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -38,17 +36,12 @@ namespace SpiritMod.Projectiles.Held
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void OnSpawn(IEntitySource source)
-		{
-			Projectile.rotation = Projectile.velocity.ToRotation();
-			Projectile.direction = Projectile.spriteDirection = Main.player[Projectile.owner].direction;
-
-			Projectile.netUpdate = true;
-		}
-
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
+
+			player.ChangeDir(Projectile.direction);
+			Projectile.rotation = Projectile.velocity.ToRotation();
 
 			if (!player.frozen)
 				Counter++;
@@ -87,9 +80,9 @@ namespace SpiritMod.Projectiles.Held
 				desiredVel = Vector2.Zero;
 			}
 
+			Projectile.rotation += extraRotation;
 			Projectile.velocity = Vector2.Lerp(Projectile.velocity, desiredVel, 0.25f);
 			Projectile.Center = player.MountedCenter + Projectile.velocity + new Vector2(0, Projectile.height / 2 + (extraRotation * 35 * Projectile.direction));
-			Projectile.rotation += extraRotation;
 		}
 
 		public override bool PreDraw(ref Color lightColor)
