@@ -9,6 +9,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.Eyeshot
 {
 	public class Eyeshot : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Eyeshot");

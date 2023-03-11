@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Mechanics.Fathomless_Chest
+namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 {
 	public class Visual_Projectile : ModProjectile
 	{
@@ -31,7 +31,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			Main.dust[index2].noGravity = true;
 			Main.dust[index2].scale = Projectile.scale;
 
-			Player player = Main.LocalPlayer;
+			Player player = Main.player[Projectile.owner];
 			float x = 0.15f;
 			float y = 0.15f;
 

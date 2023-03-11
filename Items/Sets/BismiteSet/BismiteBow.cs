@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles;
 using Terraria;
 using Terraria.ID;
@@ -49,26 +48,20 @@ namespace SpiritMod.Items.Sets.BismiteSet
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
-			Main.projectile[proj].GetGlobalProjectile<SpiritGlobalProjectile>().shotFromBismiteBow = true;
-			Projectile projectile = Main.projectile[proj];
-			for (int k = 0; k < 25; k++) {
-				Vector2 mouse = Main.MouseWorld;
-				Vector2 offset = mouse - player.position;
-				offset.Normalize();
-				offset *= 15f;
-				int dust = Dust.NewDust(projectile.Center + offset, projectile.width / 2, projectile.height / 2, DustID.Plantera_Green);
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 18;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+				position += muzzleOffset;
 
-				Main.dust[dust].velocity *= -1f;
-				Main.dust[dust].noGravity = true;
-				//        Main.dust[dust].scale *= 2f;
-				Vector2 vector2_1 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
-				vector2_1.Normalize();
-				Vector2 vector2_2 = vector2_1 * ((float)Main.rand.Next(50, 100) * 0.02f);
-				Main.dust[dust].velocity = vector2_2;
-				vector2_2.Normalize();
-				Vector2 vector2_3 = vector2_2 * 10f;
-				Main.dust[dust].position = (projectile.Center + offset) + vector2_3;
+			Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+			proj.GetGlobalProjectile<SpiritGlobalProjectile>().shotFromBismiteBow = true;
+
+			int numLoops = 25;
+			for (int k = 0; k < numLoops; k++)
+			{
+				Vector2 offset = Vector2.Normalize(velocity) * 15f;
+				Dust dust = Dust.NewDustPerfect(proj.Center + offset, DustID.Plantera_Green);
+				dust.velocity = (Vector2.UnitX * (velocity.Length() / 3.5f)).RotatedBy(MathHelper.TwoPi / numLoops * k);
+				dust.noGravity = true;
 			}
 			return false;
 		}

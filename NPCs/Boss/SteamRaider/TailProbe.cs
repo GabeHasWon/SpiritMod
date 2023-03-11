@@ -258,7 +258,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			}
 
 			NPC.velocity.Y = moveSpeedY * 0.14f;
-			if (Main.rand.Next(220) == 33) {
+			if (Main.rand.NextBool(220)) {
 				HomeY = -35f;
 			}
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), .25f, .57f, .85f);

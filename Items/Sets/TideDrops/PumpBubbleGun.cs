@@ -1,10 +1,9 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Magic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.TideDrops
 {
 	public class PumpBubbleGun : ModItem
@@ -13,7 +12,6 @@ namespace SpiritMod.Items.Sets.TideDrops
 		{
 			DisplayName.SetDefault("Bubble Blaster");
 			Tooltip.SetDefault("Hold for a longer blast\nConsumes 20 mana each second");
-
 		}
 
 		public override void SetDefaults()
@@ -35,16 +33,9 @@ namespace SpiritMod.Items.Sets.TideDrops
 			Item.shoot = ModContent.ProjectileType<BubblePumpProj>();
 			Item.shootSpeed = 6f;
 		}
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-10, 0);
-		}
-		public override bool CanUseItem(Player player)
-		{
-			if (player.statMana >= 20) {
-				return true;
-			}
-			return false;
-		}
+
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
+		public override bool CanUseItem(Player player) => player.statMana >= 20;
 	}
 }

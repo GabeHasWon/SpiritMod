@@ -39,17 +39,18 @@ namespace SpiritMod.Tiles.Ambient
                 frame %= 3;
             }
         }
+
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = .242f * .5f;
             g = .132f * .5f;
             b = .068f * .5f;
         }
-        public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
-		}
+
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+		
 		public int cloudtimer;
+
 		public override void NearbyEffects(int i, int j, bool closer)
         {
             Player player = Main.LocalPlayer;

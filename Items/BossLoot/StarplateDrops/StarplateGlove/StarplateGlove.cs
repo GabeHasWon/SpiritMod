@@ -50,11 +50,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 		{
 			if (player.altFunctionUse != 2)
 			{
-				for (int i = 0; i < 1000; ++i)
-				{
-					if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == ModContent.ProjectileType<StarplateGloveProj>())
-						return false;
-				}
+				if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateGloveProj>()] > 0)
+					return false;
 
 				Item.useTime = 7;
 				Item.useAnimation = 7;
@@ -110,7 +107,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 
 			if (player.altFunctionUse == 2)
 			{
-				int proj = Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<StarplateGloveProj>(), damage, knockback, player.whoAmI);
+				velocity = new Vector2(position.Distance(Main.MouseWorld) / 10, 0).RotatedBy(velocity.ToRotation());
+				int proj = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<StarplateGloveProj>(), damage, knockback, player.whoAmI);
 
 				if (Main.netMode != NetmodeID.SinglePlayer)
 					NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
@@ -118,10 +116,10 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 			}
 			else
 			{
-				float stray = Main.rand.NextFloat(-0.5f, 0.5f);
-				Vector2 speed = velocity.RotatedBy(stray);
+				Vector2 speed = velocity.RotatedByRandom(0.5f);
 				position += speed * 8;
 				type = Main.rand.NextBool(2) ? ModContent.ProjectileType<StargloveChargeOrange>() : ModContent.ProjectileType<StargloveChargePurple>();
+				
 				int proj = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 
 				if (type == ModContent.ProjectileType<StargloveChargePurple>())
@@ -132,9 +130,6 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 						Main.dust[dustIndex].noGravity = true;
 						Main.dust[dustIndex].velocity = Vector2.Normalize((speed * 5).RotatedBy(Main.rand.NextFloat(6.28f))) * 2.5f;
 					}
-
-					for (int j = 0; j < 5; j++)
-						Projectile.NewProjectile(source, position, speed, type, 0, 0, player.whoAmI, proj);
 				}
 				else
 				{
@@ -144,10 +139,10 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 						Main.dust[dustIndex].noGravity = true;
 						Main.dust[dustIndex].velocity = Vector2.Normalize((speed * 8).RotatedBy(Main.rand.NextFloat(6.28f))) * 2.5f;
 					}
-
-					for (int j = 0; j < 5; j++)
-						Projectile.NewProjectile(source, position, speed, type, 0, 0, player.whoAmI, proj);
 				}
+
+				for (int j = 0; j < 5; j++)
+					Projectile.NewProjectile(source, position, speed, type, 0, 0, player.whoAmI, proj);
 			}
 			return false;
 		}

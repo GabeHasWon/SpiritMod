@@ -4,15 +4,14 @@ using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
 using SpiritMod.Utilities;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using SpiritMod.Particles;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader.Config;
+using System.IO;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 {
-	public class GranitechGunBullet : ModProjectile, IDrawAdditive //, ITrailProjectile
+	public class GranitechGunBullet : ModProjectile, IDrawAdditive
 	{
 		public bool spawnRings = false;
 		private float aberrationOffset = 0;
@@ -161,5 +160,9 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 			sb.Draw(bloomTex, Projectile.Center - screenPos, null, Projectile.GetAlpha(new Color(239, 241, 80)) * 0.33f, Projectile.rotation, bloomTex.Size() / 2f,
 				new Vector2(0.22f, 0.17f) * Projectile.scale, SpriteEffects.None, 0);
 		}
+
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(spawnRings);
+
+		public override void ReceiveExtraAI(BinaryReader reader) => spawnRings = reader.ReadBoolean();
 	}
 }

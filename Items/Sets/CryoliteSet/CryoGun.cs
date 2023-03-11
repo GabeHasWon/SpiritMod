@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Winter's Wake");
-			Tooltip.SetDefault("Converts rockets into flake rockets");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/CryoliteSet/CryoGun_Glow");
+			Tooltip.SetDefault("Converts rockets into flake rockets, which inflict 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()

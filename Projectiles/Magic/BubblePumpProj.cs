@@ -10,10 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class BubblePumpProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Bubble");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble Blaster");
 
 		public override void SetDefaults()
 		{
@@ -37,9 +34,9 @@ namespace SpiritMod.Projectiles.Magic
 			Player player = Main.player[Projectile.owner];
 			player.ChangeDir(Main.MouseWorld.X > player.position.X ? 1 : -1);
 			player.heldProj = Projectile.whoAmI;
-			if (player.statMana <= 0) {
+
+			if (player.statMana <= 0)
 				Projectile.Kill();
-			}
 
 			direction = Main.MouseWorld - (player.Center - new Vector2(4, 4));
 			direction.Normalize();
@@ -47,21 +44,26 @@ namespace SpiritMod.Projectiles.Magic
 			player.itemTime = 5;
 			player.itemAnimation = 5;
 			player.velocity.X *= 0.97f;
-			if (counter == 7) {
-				if (player.statMana > 0) {
+			if (counter == 7)
+			{
+				if (player.statMana > 0)
+				{
                     player.statMana -= 20;
 					player.manaRegenDelay = 60;
 				}
-				else {
+				else
+				{
 					firing = true;
 				}
 			}
-			if (player.channel && !firing) {
+			if (player.channel && !firing)
+			{
 				Projectile.position = player.Center;
-				if (counter < 100) {
+				if (counter < 100)
+				{
 					counter++;
-					if (counter % 20 == 19)
-						SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
+					if (counter % 15 == 0)
+						SoundEngine.PlaySound(SoundID.Item34 with { Volume = (float)(counter / 100f) }, Projectile.Center);
 
 					Vector2 dustUnit = direction.RotatedBy(Main.rand.NextFloat(-1,1)) * 0.15f;
 					Vector2 dustOffset = player.Center + (direction * 5.3f) + player.velocity;
@@ -71,37 +73,41 @@ namespace SpiritMod.Projectiles.Magic
 					dust.scale = (float)Math.Sqrt(counter / 100f);
 
 					Projectile.ai[1]++;
-					if (Projectile.ai[1] % 20 == 19) {
-						if (player.statMana > 0) {
+					if (Projectile.ai[1] % 20 == 19)
+					{
+						if (player.statMana > 0)
+						{
 							player.statMana -= 20;
 							player.manaRegenDelay = 90;
 						}
-						else {
+						else
+						{
 							firing = true;
 						}
 					}
 				}
-				if (counter == 100) {
+				if (counter == 100)
 					counter = 130;
-				}
+
 				direction = direction.RotatedBy(Main.rand.NextFloat(0 - ((float)Math.Sqrt(counter) / 120f), ((float)Math.Sqrt(counter) / 120f)));
 				player.itemRotation = direction.ToRotation();
+
 				if (player.direction != 1)
-				{
 					player.itemRotation -= 3.14f;
-				}
 			}
-			else {
+			else
+			{
 				firing = true;
-				if (counter > 0) {
+				if (counter > 0)
+				{
 					counter -= 2;
-					if (counter % 5 == 0) {
+					if (counter % 5 == 0)
+					{
 						direction = direction.RotatedBy(Main.rand.NextFloat(-0.18f, 0.18f));
 						player.itemRotation = direction.ToRotation();
 						if (player.direction != 1)
-						{
 							player.itemRotation -= 3.14f;
-						}
+
 						int bubbleproj;
 						bubbleproj = Main.rand.Next(new int[] {
 							ModContent.ProjectileType<GunBubble1>(),
@@ -114,7 +120,8 @@ namespace SpiritMod.Projectiles.Magic
 						Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center + (direction * 5), direction.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.85f, 1.15f), bubbleproj, Projectile.damage, Projectile.knockBack, Projectile.owner);
 					}
 				}
-				else {
+				else
+				{
 					Projectile.active = false;
 				}
 			}

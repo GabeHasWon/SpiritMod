@@ -43,6 +43,9 @@ namespace SpiritMod.Utilities.Map
 
 				if (context.Draw(Textures[pair.Key].Value, pos, Color.White, new SpriteFrame(1, 1, 0, 0), scale, scale, Alignment.Center).IsMouseOver)
 				{
+					if (!Main.mapFullscreen)
+						continue;
+
 					if (Main.mouseLeft && Main.mouseLeftRelease && !placedPin)
 						heldPin = pair.Key;
 
@@ -58,26 +61,34 @@ namespace SpiritMod.Utilities.Map
 		private void HoldPin(ref bool placedPin)
 		{
 			float heldOffsetMax = 4f;
+			string heldPinValue = heldPin;
+
 			heldOffset = MathHelper.Lerp(heldOffset, heldOffsetMax, 0.2f);
 
-			if ((Main.mouseLeft && Main.mouseLeftRelease) || !Main.mapFullscreen)
+			if ((Main.mouseLeft && Main.mouseLeftRelease) || !Main.mapFullscreen) //Drop the pin
 			{
 				heldOffset = 0;
+				heldPin = null;
 				placedPin = true;
+
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MapPin") with { PitchVariance = 0.3f });
 			}
 
 			Vector2 drawOffset = new Vector2(0, heldOffset); //Hover above the cursor slightly when held
 			Vector2 cursorPos = Main.MouseScreen - (Main.ScreenSize.ToVector2() / 2);
 			cursorPos = ((cursorPos - drawOffset) * (1 / Main.mapFullscreenScale)) + Main.mapFullscreenPos;
 
-			ModContent.GetInstance<PinWorld>().SetPin(heldPin, cursorPos);
-
-			if (placedPin)
+			if (placedPin && Main.netMode != NetmodeID.SinglePlayer)
 			{
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MapPin") with { PitchVariance = 0.3f });
-
-				heldPin = null;
+				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.PlaceMapPin, 2);
+				packet.Write(heldPinValue);
+				packet.WriteVector2(cursorPos);
+				packet.Send();
+			}
+			else
+			{
+				ModContent.GetInstance<PinWorld>().SetPin(heldPinValue, cursorPos);
 			}
 		}
 	}

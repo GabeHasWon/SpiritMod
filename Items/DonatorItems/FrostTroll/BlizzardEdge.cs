@@ -120,6 +120,9 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 	{
 		private readonly Color Blue = new(0, 114, 201);
 		private readonly Color White = new(255, 255, 255);
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Blizzard");
 
 		public override void SetDefaults()

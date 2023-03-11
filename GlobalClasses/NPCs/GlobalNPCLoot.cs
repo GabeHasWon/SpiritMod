@@ -93,7 +93,6 @@ namespace SpiritMod.GlobalClasses.NPCs
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<TimScroll>(), npc, NPCID.Tim);
 			DropLoot(npcLoot, 30, 30, ItemID.SnowGlobe, npc, NPCID.IcyMerman);
 			DropLoot(npcLoot, 14, 10, ModContent.ItemType<SweetThrow>(), npc, NPCID.QueenBee);
-			DropLoot(npcLoot, 80, 60, ModContent.ItemType<InfernalPact>(), npc, NPCID.Lavabat, NPCID.RedDevil);
 			DropLoot(npcLoot, 150, 150, ModContent.ItemType<IceVikingSculpture>(), npc, NPCID.UndeadViking);
 			DropLoot(npcLoot, 150, 150, ModContent.ItemType<IceFlinxSculpture>(), npc, NPCID.SnowFlinx);
 			DropLoot(npcLoot, 150, 150, ModContent.ItemType<IceBatSculpture>(), npc, NPCID.IceBat);

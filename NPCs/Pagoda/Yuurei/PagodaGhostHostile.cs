@@ -26,30 +26,12 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 
 		public override void SetDefaults()
 		{
-			if (NPC.downedBoss2) {
-				NPC.width = 30;
-				NPC.height = 40;
-				NPC.damage = 25;
-				NPC.noGravity = true;
-				NPC.defense = 8;
-				NPC.lifeMax = 80;
-			}
-			if (NPC.downedBoss3) {
-				NPC.width = 30;
-				NPC.height = 40;
-				NPC.damage = 30;
-				NPC.noGravity = true;
-				NPC.defense = 11;
-				NPC.lifeMax = 130;
-			}
-			else {
-				NPC.width = 30;
-				NPC.height = 40;
-				NPC.damage = 23;
-				NPC.noGravity = true;
-				NPC.defense = 4;
-				NPC.lifeMax = 50;
-			}
+			NPC.width = 30;
+			NPC.height = 40;
+			NPC.damage = 23;
+			NPC.noGravity = true;
+			NPC.defense = 4;
+			NPC.lifeMax = 50;
 			NPC.HitSound = SoundID.NPCHit3;
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.value = 120f;
@@ -79,19 +61,21 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0)
+			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
-				for (int i = 0; i < 40; i++) {
-					int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.RainbowTorch, 0f, -2f, 0, new Color(0, 255, 142), .6f);
-					Main.dust[num].noGravity = true;
-					Dust dust = Main.dust[num];
-					dust.position.X = dust.position.X + ((Main.rand.Next(-50, 51) / 20) - 1.5f);
-					dust.position.Y = dust.position.Y + ((Main.rand.Next(-50, 51) / 20) - 1.5f);
-					if (Main.dust[num].position != NPC.Center) {
-						Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 6f;
-					}
+
+				for (int i = 0; i < 40; i++)
+				{
+					Dust dust = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.RainbowTorch, 0f, -2f, 0, new Color(0, 255, 142), .6f);
+					dust.noGravity = true;
+
+					dust.position.X += (Main.rand.Next(-50, 51) / 20) - 1.5f;
+					dust.position.Y += (Main.rand.Next(-50, 51) / 20) - 1.5f;
+					if (dust.position != NPC.Center)
+						dust.velocity = NPC.DirectionTo(dust.position) * 6f;
 				}
 			}
 		}
@@ -104,8 +88,8 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 		{
 			Player player = Main.player[NPC.target];
 			NPC.alpha += 1;
-			if (NPC.alpha >= 180) {
-
+			if (NPC.alpha >= 180)
+			{
 				int angle = Main.rand.Next(360);
 				int distX = (int)(Math.Sin(angle * (Math.PI / 180)) * 90);
 				int distY = (int)(Math.Cos(angle * (Math.PI / 180)) * 300);
@@ -120,7 +104,8 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 			NPC.spriteDirection = NPC.direction;
 		}
 
-		public override Color? GetAlpha(Color lightColor) => new Color(100 + NPC.alpha, 100 + NPC.alpha, 100 + NPC.alpha, 100 + NPC.alpha);
+		public override Color? GetAlpha(Color lightColor) => new Color(100, 100, 100, 100) * NPC.Opacity;
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height * 0.5f));

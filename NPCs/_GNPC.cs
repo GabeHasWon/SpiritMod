@@ -43,7 +43,6 @@ namespace SpiritMod.NPCs
 		public int angelLightStacks;
 		public int angelWrathStacks;
 		public int titanicSetStacks;
-		public int duneSetStacks;
 		public int acidBurnStacks;
 		public bool vineTrap = false;
 		public bool clatterPierce = false;
@@ -61,29 +60,22 @@ namespace SpiritMod.NPCs
 		public int summonTag;
 		public bool sacrificialDaggerBuff;
 
-		public bool felBrand = false;
-		public bool spectre = false;
 		public bool soulBurn = false;
 		public bool Stopped = false;
-		public bool SoulFlare = false;
 		public bool afflicted = false;
-		public bool sunBurn = false;
 		public bool starDestiny = false;
 		public int bloodInfusion = 0;
 		public bool bloodInfused = false;
 		public bool death = false;
 		public bool iceCrush = false;
-		public bool pestilence = false;
-		public bool moonBurn = false;
-		public bool holyBurn = false;
+
+		public int oakHeartStacks;
+		public readonly int oakHeartStacksMax = 3;
 
 		public bool DoomDestiny = false;
 
 		public bool sFracture = false;
-		public bool Etrap = false;
-		public bool necrosis = false;
 		public bool blaze = false;
-		public bool blaze1 = false;
 		#endregion
 
 		public override void ResetEffects(NPC npc)
@@ -110,27 +102,15 @@ namespace SpiritMod.NPCs
 			sFracture = false;
 			death = false;
 			starDestiny = false;
-			SoulFlare = false;
 			afflicted = false;
-			Etrap = false;
 			Stopped = false;
 			soulBurn = false;
-			necrosis = false;
-			moonBurn = false;
-			sunBurn = false;
 			blaze = false;
 			tracked = false;
 			iceCrush = false;
-			blaze1 = false;
 
 			summonTag = 0;
 			sacrificialDaggerBuff = false;
-
-			felBrand = false;
-			spectre = false;
-			holyBurn = false;
-			pestilence = false;
-			//	bloodInfusion = false;
 		}
 
 		public override bool PreAI(NPC npc)
@@ -168,6 +148,10 @@ namespace SpiritMod.NPCs
 					}
 				}
 			}
+
+			if (oakHeartStacks > 0)
+				oakHeartStacks--;
+
 			return true;
 		}
 
@@ -333,66 +317,12 @@ namespace SpiritMod.NPCs
 				damage = 10000;
 			}
 
-			if (SoulFlare)
-			{
-				drain = true;
-				npc.lifeRegen -= 9;
-
-			}
-
-			if (felBrand)
-			{
-				drain = true;
-				npc.lifeRegen -= 30;
-				damage = 10;
-			}
-
-			if (spectre)
-			{
-				drain = true;
-				npc.lifeRegen -= 20;
-				damage = 5;
-			}
-
-			if (moonBurn)
-			{
-				drain = true;
-				npc.lifeRegen -= 10;
-				damage = 6;
-			}
-
-			if (sunBurn)
-			{
-				drain = true;
-				npc.lifeRegen -= 6;
-				damage = 3;
-			}
-
-			if (holyBurn)
-			{
-				drain = true;
-				npc.lifeRegen -= 25;
-				damage = 3;
-			}
-			if (pestilence)
-			{
-				drain = true;
-				npc.lifeRegen -= 3;
-				damage = 3;
-			}
 			if (blaze)
 			{
 				drain = true;
 				npc.lifeRegen -= 4;
 				damage = 2;
 			}
-			if (blaze1)
-			{
-				drain = true;
-				npc.lifeRegen -= 20;
-				damage = 2;
-			}
-
 
 			if (noDamage)
 				damage -= damageBefore;
@@ -941,9 +871,6 @@ namespace SpiritMod.NPCs
 		{
 			if (sFracture && Main.rand.NextBool(2))
 				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Firework_Yellow, (Main.rand.Next(8) - 4), (Main.rand.Next(8) - 4), 133);
-
-			if (felBrand && Main.rand.NextBool(2))
-				Dust.NewDust(npc.position, npc.width, npc.height, DustID.CursedTorch, (Main.rand.Next(8) - 4), (Main.rand.Next(8) - 4), 75);
 
 			if (vineTrap)
 				drawColor = new Color(103, 138, 84);

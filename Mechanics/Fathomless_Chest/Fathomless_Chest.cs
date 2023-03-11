@@ -1,18 +1,15 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
 using System;
-using SpiritMod.Items.Glyphs;
 using Terraria.DataStructures;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using System.Linq;
 using SpiritMod.Tiles;
 using Terraria.GameContent;
+using System.Collections.Generic;
 
 namespace SpiritMod.Mechanics.Fathomless_Chest
 {
@@ -43,7 +40,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 
 			HitSound = SoundID.DD2_SkeletonDeath;
 			ItemDrop = ModContent.ItemType<Black_Stone_Item>();
-			DustType = DustID.DungeonSpirit;
+			DustType = -1;
 		}
 		public override bool CanExplode(int i, int j) => false;
 
@@ -74,316 +71,42 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 		{
 			Player player = Main.LocalPlayer;
 			player.cursorItemIconID = ModContent.ItemType<Fathomless_Chest_Item>();
-			player.cursorItemIconText = "";
+			player.cursorItemIconText = string.Empty;
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
 		}
+
+		public override bool KillSound(int i, int j, bool fail) => fail;
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Player player = Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 100, 100)];
 
-			SoundEngine.PlaySound(HitSound.Value, new Vector2(i * 16, j * 16));
-			for (int index1 = 0; index1 < 3; ++index1)
+			if (player.whoAmI == Main.myPlayer)
 			{
-				for (int index2 = 0; index2 < 2; ++index2)
+				int count = ChanceEffectManager.effectIndex.Count;
+				int randomEffectCounter = Main.rand.Next(count);
+
+				while (!ChanceEffectManager.effectIndex[randomEffectCounter].Selectable(new Point16(i, j)))
+					randomEffectCounter = Main.rand.Next(count);
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
 				{
-					int index3 = Gore.NewGore(new EntitySource_TileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0.0f, 0.0f), 99, 1.1f);
-					Main.gore[index3].velocity *= 0.6f;
+					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.FathomlessData, 4);
+					packet.Write((byte)randomEffectCounter);
+					packet.Write((byte)player.whoAmI);
+					packet.Write((ushort)i);
+					packet.Write((ushort)j);
+					packet.Send();
 				}
-			}
-			for (int index = 0; index < 9; ++index)
-			{
-				float SpeedX = (float)(-1 * Main.rand.Next(40, 70) * 0.00999999977648258 + Main.rand.Next(-20, 21) * 0.4f);
-				float SpeedY = (float)(-1 * Main.rand.Next(40, 70) * 0.00999999977648258 + Main.rand.Next(-20, 21) * 0.4f);
-				int p = Projectile.NewProjectile(new EntitySource_TileBreak(i, j), (float)(i * 16) + 8 + SpeedX, (float)(j * 16) + 12 + SpeedY, SpeedX, SpeedY, ModContent.ProjectileType<Visual_Projectile>(), 0, 0f, player.whoAmI, 0.0f, 0.0f);
-				Main.projectile[p].scale = Main.rand.Next(30, 150) * 0.01f;
-			}
-
-			int randomEffectCounter = Main.rand.Next(11);
-			bool CheckTileRange(int[] tiletypes, int size)
-			{
-				for (int k = i - size; k <= i + size; k++)
+				else //This prevents the effect from triggering twice for the specified player in multiplayer
 				{
-					for (int l = j - size; l <= j + size; l++)
-					{
-						if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
-						{
-							int type = Main.tile[k, l].TileType;
-							if (tiletypes.Contains(type))
-								return true;
-						}
-					}
+					ChanceEffectManager.effectIndex[randomEffectCounter].Trigger(player, new Point16(i, j));
 				}
-				return false;
-			}
-
-			while (randomEffectCounter == 7)
-			{
-				if (CheckTileRange(new int[] { TileID.Dirt, TileID.Stone, TileID.IceBlock }, 22))
-					break;
-
-				randomEffectCounter = Main.rand.Next(11);
-			}
-
-			while (randomEffectCounter == 6 || randomEffectCounter == 10)
-			{
-				if (CheckTileRange(new int[] { TileID.Stone }, 19))
-					break;
-
-				randomEffectCounter = Main.rand.Next(11);
-			}
-
-			switch (randomEffectCounter)
-			{
-				case 0: //SPAWN ZOMBIES
-					{
-						BadLuck(i, j);
-						int a = NPC.NewNPC(new EntitySource_TileBreak(i, j), (i * 16) + -8 - 16 - 16, (j * 16) + 6, 21);
-						int b = NPC.NewNPC(new EntitySource_TileBreak(i, j), (i * 16) + -8 - 16, (j * 16) + 6, 21);
-						int c = NPC.NewNPC(new EntitySource_TileBreak(i, j), (i * 16) + 8, (j * 16) + 6, 21);
-						int d = NPC.NewNPC(new EntitySource_TileBreak(i, j), (i * 16) + 24 + 16, (j * 16) + 6, 21);
-						int e = NPC.NewNPC(new EntitySource_TileBreak(i, j), (i * 16) + 24 + 32, (j * 16) + 6, 21);
-						Main.npc[a].netUpdate = true;
-						Main.npc[b].netUpdate = true;
-						Main.npc[c].netUpdate = true;
-						Main.npc[d].netUpdate = true;
-						Main.npc[e].netUpdate = true;
-						break;
-					}
-				case 1: //DROP COINS
-					{
-						BadLuck(i, j);
-						SoundEngine.PlaySound(SoundID.Coins, new(i * 16, j * 16));
-						int num1 = 0;
-						for (int index = 0; index < 59; ++index)
-						{
-							if (player.inventory[index].type >= ItemID.CopperCoin && player.inventory[index].type <= ItemID.PlatinumCoin)
-							{
-								int number = Item.NewItem(new EntitySource_TileBreak(i, j), (int)player.position.X, (int)player.position.Y, player.width, player.height, player.inventory[index].type, 1);
-								if (Main.netMode != NetmodeID.SinglePlayer && number >= 0)
-									NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number, 1f);
-								int num2 = player.inventory[index].stack / 5;
-								if (Main.expertMode)
-									num2 = (int)(player.inventory[index].stack * 0.25f);
-
-								int num3 = player.inventory[index].stack - num2;
-								player.inventory[index].stack -= num3;
-								if (player.inventory[index].type == ItemID.CopperCoin)
-									num1 += num3;
-
-								if (player.inventory[index].type == ItemID.SilverCoin)
-									num1 += num3 * 100;
-
-								if (player.inventory[index].type == ItemID.GoldCoin)
-									num1 += num3 * 10000;
-
-								if (player.inventory[index].type == ItemID.PlatinumCoin)
-									num1 += num3 * 1000000;
-
-								if (player.inventory[index].stack <= 0)
-									player.inventory[index] = new Item();
-
-								Main.item[number].stack = num3;
-								Main.item[number].velocity.Y = Main.rand.Next(-20, 1) * 0.2f;
-								Main.item[number].velocity.X = Main.rand.Next(-20, 21) * 0.2f;
-								Main.item[number].noGrabDelay = 60;
-								if (index == 58)
-								{
-									Main.mouseItem = player.inventory[index].Clone();
-								}
-							}
-						}
-						player.lostCoins = num1;
-						player.lostCoinString = Main.ValueToCoins(player.lostCoins);
-						break;
-					}
-				case 2: //SPAWN POTIONS
-					{
-						GoodLuck(i, j);
-						int randomPotion = Utils.SelectRandom(Main.rand, new int[38] { 2344, 303, 300, 2325, 2324, 2356, 2329, 2346, 295, 2354, 2327, 291, 305, 2323, 304, 2348, 297, 292, 2345, 2352, 294, 293, 2322, 299, 288, 2347, 289, 298, 2355, 296, 2353, 2328, 290, 301, 2326, 2359, 302, 2349 });
-						int randomPotion2 = Utils.SelectRandom(Main.rand, new int[38] { 2344, 303, 300, 2325, 2324, 2356, 2329, 2346, 295, 2354, 2327, 291, 305, 2323, 304, 2348, 297, 292, 2345, 2352, 294, 293, 2322, 299, 288, 2347, 289, 298, 2355, 296, 2353, 2328, 290, 301, 2326, 2359, 302, 2349 });
-						int randomPotion3 = Utils.SelectRandom(Main.rand, new int[38] { 2344, 303, 300, 2325, 2324, 2356, 2329, 2346, 295, 2354, 2327, 291, 305, 2323, 304, 2348, 297, 292, 2345, 2352, 294, 293, 2322, 299, 288, 2347, 289, 298, 2355, 296, 2353, 2328, 290, 301, 2326, 2359, 302, 2349 });
-						int randomPotion4 = Utils.SelectRandom(Main.rand, new int[38] { 2344, 303, 300, 2325, 2324, 2356, 2329, 2346, 295, 2354, 2327, 291, 305, 2323, 304, 2348, 297, 292, 2345, 2352, 294, 293, 2322, 299, 288, 2347, 289, 298, 2355, 296, 2353, 2328, 290, 301, 2326, 2359, 302, 2349 });
-						if (Main.netMode != NetmodeID.SinglePlayer)
-						{
-							randomPotion = 2344;
-							randomPotion2 = 303;
-							randomPotion3 = 300;
-							randomPotion4 = 2356;
-						}
-						int number = Item.NewItem(new EntitySource_TileBreak(i, j), (int)(i * 16) + 8, (int)(j * 16) + 12, 16, 18, randomPotion, 1);
-						Main.item[number].velocity.Y = (float)Main.rand.Next(-20, 1) * 0.2f;
-						Main.item[number].velocity.X = (float)Main.rand.Next(-20, 21) * 0.2f;
-						if (Main.netMode != NetmodeID.SinglePlayer && number >= 0)
-						{
-							NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number, 1f);
-						}
-						int number2 = Item.NewItem(new EntitySource_TileBreak(i, j), (int)(i * 16) + 8, (int)(j * 16) + 12, 16, 18, randomPotion2, 1);
-						Main.item[number2].velocity.Y = (float)Main.rand.Next(-20, 1) * 0.2f;
-						Main.item[number2].velocity.X = (float)Main.rand.Next(-20, 21) * 0.2f;
-						if (Main.netMode != NetmodeID.SinglePlayer && number2 >= 0)
-						{
-							NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number2, 1f);
-						}
-						int number3 = Item.NewItem(new EntitySource_TileBreak(i, j), (int)(i * 16) + 8, (int)(j * 16) + 12, 16, 18, randomPotion3, 1);
-						Main.item[number3].velocity.Y = (float)Main.rand.Next(-20, 1) * 0.2f;
-						Main.item[number3].velocity.X = (float)Main.rand.Next(-20, 21) * 0.2f;
-						if (Main.netMode != NetmodeID.SinglePlayer && number3 >= 0)
-						{
-							NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number3, 1f);
-						}
-						int number4 = Item.NewItem(new EntitySource_TileBreak(i, j), (int)(i * 16) + 8, (int)(j * 16) + 12, 16, 18, randomPotion4, 1);
-						Main.item[number4].velocity.Y = (float)Main.rand.Next(-20, 1) * 0.2f;
-						Main.item[number4].velocity.X = (float)Main.rand.Next(-20, 21) * 0.2f;
-						if (Main.netMode != NetmodeID.SinglePlayer && number4 >= 0)
-						{
-							NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number4, 1f);
-						}
-						break;
-					}
-				case 3: //SPAWN AN ITEM
-					{
-						GoodLuck(i, j);
-						int item = Item.NewItem(new EntitySource_TileBreak(i, j), (int)(i * 16) + 8, (int)(j * 16) + 12, 16, 18, 393, 1);
-						if (Main.netMode != NetmodeID.SinglePlayer && item >= 0)
-						{
-							NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item, 1f);
-						}
-						int item1 = Item.NewItem(new EntitySource_TileBreak(i, j), (int)(i * 16) + 8, (int)(j * 16) + 12, 16, 18, 18, 1);
-						if (Main.netMode != NetmodeID.SinglePlayer && item1 >= 0)
-						{
-							NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item1, 1f);
-						}
-						break;
-					}
-				case 4: //SPAWN BUTTERFLIES
-					{
-						GoodLuck(i, j);
-
-						for (int g = 0; g < 8 + Main.rand.Next(6); g++)
-						{
-							float npcposX = (i * 16) + Main.rand.Next(-60, 60);
-							float npcposY = (j * 16) + Main.rand.Next(-60, 60);
-							int dustType;
-							int npcType;
-							if (Main.rand.NextBool(6))
-							{
-								npcType = NPC.NewNPC(new EntitySource_TileBreak(i, j), (int)npcposX, (int)npcposY, NPCID.GoldButterfly);
-								dustType = DustID.GoldCoin;
-							}
-							else
-							{
-								npcType = NPC.NewNPC(new EntitySource_TileBreak(i, j), (int)npcposX, (int)npcposY, 356);
-								dustType = DustID.MagicMirror;
-							}
-							Main.npc[npcType].netUpdate = true;
-							Vector2 spinningpoint = new Vector2(0.0f, -3f).RotatedByRandom(MathHelper.Pi);
-							float num1 = (float)28;
-							Vector2 vector2 = new Vector2(1.1f, 1f);
-							for (float num2 = 0.0f; (double)num2 < (double)num1; ++num2)
-							{
-								int dustIndex = Dust.NewDust(new Vector2(npcposX, npcposY), 0, 0, dustType, 0.0f, 0.0f, 0, new Color(), 1f);
-								Main.dust[dustIndex].position = new Vector2(npcposX, npcposY);
-								Main.dust[dustIndex].velocity = spinningpoint.RotatedBy(6.28318548202515 * (double)num2 / (double)num1, new Vector2()) * vector2 * (float)(0.800000011920929 + (double)Main.rand.NextFloat() * 0.400000005960464);
-								Main.dust[dustIndex].noGravity = true;
-								Main.dust[dustIndex].scale = 2f;
-								Main.dust[dustIndex].fadeIn = Main.rand.NextFloat() * 2f;
-								Dust dust = Dust.CloneDust(dustIndex);
-								dust.scale /= 2f;
-								dust.fadeIn /= 2f;
-							}
-							SoundEngine.PlaySound(SoundID.Item6, new Vector2(npcposX, npcposY));
-						}
-						break;
-					}
-				case 5: //Convert regional stone into gems
-					{
-						GoodLuck(i, j);
-						int gemType = Main.rand.Next(new int[] { 63, 64, 65, 66, 67, 68 });
-						if (Main.netMode != NetmodeID.SinglePlayer)
-							gemType = 64;
-						ConvertStone(i, j, 22, gemType, 0.1f);
-
-						for (int val = 0; val < 22; val++)
-						{
-							int num = Dust.NewDust(new Vector2(i * 16, j * 16), 80, 80, DustID.Electric, 0f, -2f, 0, default, 2f);
-							Main.dust[num].noGravity = true;
-							Main.dust[num].shader = GameShaders.Armor.GetSecondaryShader(77, player);
-							Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-							Main.dust[num].position.Y += Main.rand.Next(-50, 51) * .05f - 1.5f;
-							Main.dust[num].scale *= .25f;
-						}
-						break;
-					}
-				case 6: //Places opposite world evil
-					{
-						BadLuck(i, j);
-						for (int value = 0; value < 32; value++)
-						{
-							int num = Dust.NewDust(new Vector2(i * 16, j * 16), 50, 50, DustID.Wraith, 0f, -2f, 0, default, 2f);
-							Main.dust[num].noGravity = true;
-							Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-							Main.dust[num].position.Y += Main.rand.Next(-50, 51) * .05f - 1.5f;
-							Main.dust[num].scale *= .35f;
-							Main.dust[num].fadeIn += .1f;
-						}
-						if (WorldGen.crimson)
-						{
-							ConvertStone(i, j, 22, 25);
-							ConvertDirt(i, j, 22, 23);
-							ConvertIce(i, j, 22, TileID.CorruptIce);
-						}
-						else
-						{
-							ConvertStone(i, j, 22, 203);
-							ConvertDirt(i, j, 22, 199);
-							ConvertIce(i, j, 22, TileID.FleshIce);
-						}
-						break;
-					}
-				case 7: //Midas effect
-					{
-						GoodLuck(i, j);
-						player.AddBuff(ModContent.BuffType<Buffs.MidasTouch>(), 3600 * 5);
-						for (int numi = 0; numi < 8; numi++)
-						{
-							float SpeedX = (float)(-1 * Main.rand.Next(40, 70) * 0.00999999977648258 + Main.rand.Next(-20, 21) * 0.4f);
-							float SpeedY = (float)(-1 * Main.rand.Next(40, 70) * 0.00999999977648258 + Main.rand.Next(-20, 21) * 0.4f);
-							int p = Projectile.NewProjectile(new EntitySource_TileBreak(i, j), (float)(i * 16) + 8 + SpeedX, (float)(j * 16) + 12 + SpeedY, SpeedX, SpeedY, ModContent.ProjectileType<MidasProjectile>(), 0, 0f, player.whoAmI, 0.0f, 0.0f);
-							Main.projectile[p].scale = Main.rand.Next(60, 150) * 0.01f;
-						}
-						break;
-					}
-				case 8: //Darkness and Weak
-					{
-						BadLuck(i, j);
-						player.AddBuff(BuffID.Darkness, 3600);
-						player.AddBuff(BuffID.Weak, 3600);
-						break;
-					}
-				case 9: //Opposite gold/platinum ore
-					{
-						GoodLuck(i, j);
-						int oreType;
-						if (WorldGen.SavedOreTiers.Gold == TileID.Platinum)
-							oreType = TileID.Gold;
-						else
-							oreType = TileID.Platinum;
-						ConvertStone(i, j, 22, oreType, 0.25f);
-						break;
-					}
-				case 10:
-					{
-						GoodLuck(i, j);
-						int item = Item.NewItem(new EntitySource_TileBreak(i, j),(i * 16) + 8, (j * 16) + 12, 16, 18, ModContent.ItemType<Glyph>(), 1);
-						if (Main.netMode != NetmodeID.SinglePlayer && item >= 0)
-							NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item, 1f);
-						break;
-					}
 			}
 		}
-		public static void ConvertStone(int i, int j, int size, int typeConvert, float density = 1f)
+
+		public static void ConvertTiles(int i, int j, int size, Dictionary<int, int> pair, float density = 1f)
 		{
 			for (int k = i - size; k <= i + size; k++)
 			{
@@ -391,37 +114,30 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				{
 					if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
 					{
-						int type = (int)Main.tile[k, l].TileType;
-						if (TileID.Sets.Conversion.Stone[type] && Main.rand.NextFloat() <= density)
-						{
-							Main.tile[k, l].TileType = (ushort)typeConvert;
-							WorldGen.SquareTileFrame(k, l, true);
-							NetMessage.SendTileSquare(-1, k, l, 1);
-						}
-					}
-				}
-			}
-		}
-		public static void ConvertDirt(int i, int j, int size, int typeConvert)
-		{
-			for (int k = i - size; k <= i + size; k++)
-			{
-				for (int l = j - size; l <= j + size; l++)
-				{
-					if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
-					{
-						int type = (int)Main.tile[k, l].TileType;
+						int type = Main.tile[k, l].TileType;
+
+						//Set up basic conversion types
+						if (TileID.Sets.Conversion.Stone[type])
+							type = TileID.Stone;
 						if (type == 0 || type == 2)
-						{
-							Main.tile[k, l].TileType = (ushort)typeConvert;
-							WorldGen.SquareTileFrame(k, l, true);
-							NetMessage.SendTileSquare(-1, k, l, 1);
-						}
+							type = TileID.Dirt;
+						if (TileID.Sets.Conversion.Ice[type])
+							type = TileID.IceBlock;
+
+						int convertTo = pair.GetValueOrDefault(type, -1); //Does type have a valid pair present in the dictionary?
+
+						if (convertTo == -1 || Main.rand.NextFloat() <= density) //The tile isn't a match
+							continue;
+
+						Main.tile[k, l].TileType = (ushort)convertTo;
+						WorldGen.SquareTileFrame(k, l, true);
+						NetMessage.SendTileSquare(-1, k, l, 1);
 					}
 				}
 			}
 		}
-		public static void ConvertIce(int i, int j, int size, int typeConvert)
+
+		public static bool CheckTileRange(int i, int j, int[] tiletypes, int size)
 		{
 			for (int k = i - size; k <= i + size; k++)
 			{
@@ -429,40 +145,14 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				{
 					if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size))
 					{
-						int type = (int)Main.tile[k, l].TileType;
-						if (TileID.Sets.Conversion.Ice[type])
-						{
-							Main.tile[k, l].TileType = (ushort)typeConvert;
-							WorldGen.SquareTileFrame(k, l, true);
-							NetMessage.SendTileSquare(-1, k, l, 1);
-						}
+						int type = Main.tile[k, l].TileType;
+
+						if (tiletypes.Contains(type))
+							return true;
 					}
 				}
 			}
-		}
-
-		public static void BadLuck(int i, int j)
-		{
-			Player player = Main.LocalPlayer;
-			int index = CombatText.NewText(new Rectangle(i * 16, j * 16, player.width, player.height), new Color(255, 150, 150), "Bad Luck!", false, false);
-			CombatText combatText = Main.combatText[index];
-			NetMessage.SendData(MessageID.CombatTextInt, -1, -1, NetworkText.FromLiteral(combatText.text), (int)combatText.color.PackedValue, combatText.position.X, combatText.position.Y, 0.0f, 0, 0, 0);
-		}
-
-		public static void GoodLuck(int i, int j)
-		{
-			Player player = Main.LocalPlayer;
-			int index = CombatText.NewText(new Rectangle(i * 16, j * 16, player.width, player.height), new Color(150, 255, 150), "Good Luck!", false, false);
-			CombatText combatText = Main.combatText[index];
-			NetMessage.SendData(MessageID.CombatTextInt, -1, -1, NetworkText.FromLiteral(combatText.text), (int)combatText.color.PackedValue, combatText.position.X, combatText.position.Y, 0.0f, 0, 0, 0);
-		}
-
-		public static void NeutralLuck(int i, int j)
-		{
-			Player player = Main.LocalPlayer;
-			int index = CombatText.NewText(new Rectangle(i * 16, j * 16, player.width, player.height), new Color(150, 150, 255), "Neutral Luck!", false, false);
-			CombatText combatText = Main.combatText[index];
-			NetMessage.SendData(MessageID.CombatTextInt, -1, -1, NetworkText.FromLiteral(combatText.text), (int)combatText.color.PackedValue, combatText.position.X, combatText.position.Y, 0.0f, 0, 0, 0);
+			return false;
 		}
 
 		public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)

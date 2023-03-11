@@ -6,6 +6,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
 	public class HellsGaze : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Fiery Lash");

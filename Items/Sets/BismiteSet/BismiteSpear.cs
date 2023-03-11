@@ -13,6 +13,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			DisplayName.SetDefault("Bismite Pike");
 			Tooltip.SetDefault("Occasionally causes foes to receive 'Festering Wounds,' which deal more damage to enemies under half health");
 		}
+
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -31,6 +32,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Item.rare = ItemRarityID.Blue;
 			Item.shoot = ModContent.ProjectileType<BismiteSpearProj>();
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

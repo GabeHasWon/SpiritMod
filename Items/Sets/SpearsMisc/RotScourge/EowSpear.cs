@@ -8,6 +8,7 @@ namespace SpiritMod.Items.Sets.SpearsMisc.RotScourge
 {
 	public class EoWSpear : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Rot Scourge");

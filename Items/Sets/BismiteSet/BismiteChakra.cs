@@ -1,4 +1,3 @@
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Returning;
 using Terraria;
 using Terraria.ID;
@@ -33,18 +32,11 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Item.autoReuse = false;
 		}
 
-		public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once
-		{
-			for (int i = 0; i < Main.maxProjectiles; ++i) {
-				if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == Item.shoot)
-					return false;
-			}
-			return true;
-		}
+		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 1;
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<BismiteCrystal>(), 10);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();

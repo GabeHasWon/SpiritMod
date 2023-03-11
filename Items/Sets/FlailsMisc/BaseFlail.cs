@@ -42,6 +42,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 		internal const int FALLING = 3;
 
 		internal bool struckTile = false;
+		internal bool didDrop = false;
 
 		internal int Timer
 		{
@@ -85,9 +86,17 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 			Projectile.localNPCHitCooldown = 10;
 		}
 
-		public override void SendExtraAI(BinaryWriter writer) => writer.Write(struckTile);
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			writer.Write(struckTile);
+			writer.Write(didDrop);
+		}
 
-		public override void ReceiveExtraAI(BinaryReader reader) => struckTile = reader.ReadBoolean();
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			struckTile = reader.ReadBoolean();
+			didDrop = reader.ReadBoolean();
+		}
 
 		public override void AI()
 		{
@@ -128,8 +137,10 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 						SoundEngine.PlaySound(SoundID.Item19, Projectile.Center);
 						Projectile.Center = Owner.MountedCenter;
 						Projectile.velocity = Owner.DirectionTo(Main.MouseWorld) * (GetLaunchSpeed(Owner) * multiplier) + Owner.velocity;
+
 						Projectile.ResetLocalNPCHitImmunity();
 						Projectile.localNPCHitCooldown = 10;
+
 						OnLaunch(Owner);
 					}
 
@@ -184,12 +195,12 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 							Projectile.velocity *= 0.5f;
 
 						State = RETRACTING;
-						struckTile = true;
+						didDrop = true;
 
 						Projectile.netUpdate = true;
 					}
 				}
-				else if (Owner.controlUseItem && !struckTile) //prompt the flail to fall
+				else if (Owner.controlUseItem && !didDrop) //prompt the flail to fall
 				{
 					State = FALLING;
 					Projectile.velocity *= 0.2f;

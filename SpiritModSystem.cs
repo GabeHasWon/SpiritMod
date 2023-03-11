@@ -3,11 +3,17 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.GlobalClasses.Projectiles;
 using SpiritMod.GlobalClasses.Tiles;
 using SpiritMod.Items.Consumable;
+using SpiritMod.Items.Sets.BismiteSet;
+using SpiritMod.Items.Sets.BloodcourtSet;
 using SpiritMod.Items.Sets.BowsMisc.GemBows.Emerald_Bow;
 using SpiritMod.Items.Sets.BowsMisc.GemBows.Ruby_Bow;
 using SpiritMod.Items.Sets.BowsMisc.GemBows.Sapphire_Bow;
 using SpiritMod.Items.Sets.BowsMisc.GemBows.Topaz_Bow;
+using SpiritMod.Items.Sets.BriarDrops;
+using SpiritMod.Items.Sets.CoilSet;
+using SpiritMod.Items.Sets.FrigidSet;
 using SpiritMod.Items.Sets.HuskstalkSet;
+using SpiritMod.Items.Sets.SlagSet;
 using SpiritMod.Mechanics.AutoSell;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.NPCs.AuroraStag;
@@ -100,6 +106,67 @@ namespace SpiritMod
 
 			RecipeGroup.RegisterGroup("SpiritMod:RubyStaffs", BaseGroup("Ruby or Diamond Staff", new int[]
 				{ ItemID.RubyStaff, ItemID.DiamondStaff }));
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe.Create(ItemID.IceTorch, 3)
+				.AddIngredient(ModContent.ItemType<FrigidFragment>())
+				.AddIngredient(ItemID.Torch, 3);
+
+			Recipe.Create(ItemID.PoisonDart, 25)
+				.AddIngredient(ModContent.ItemType<BismiteCrystal>());
+
+			Recipe.Create(ItemID.StinkPotion)
+				.AddTile(TileID.Bottles)
+				.AddIngredient(ModContent.ItemType<BismiteCrystal>())
+				.AddIngredient(ItemID.BottledWater)
+				.AddIngredient(ItemID.Waterleaf);
+
+			Recipe.Create(ItemID.WrathPotion)
+				.AddTile(TileID.Bottles).AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 2)
+				.AddIngredient(ItemID.BottledWater)
+				.AddIngredient(ItemID.Deathweed);
+			
+			Recipe.Create(ItemID.RagePotion)
+				.AddTile(TileID.Bottles)
+				.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 2)
+				.AddIngredient(ItemID.BottledWater)
+				.AddIngredient(ItemID.Deathweed);
+
+			Recipe.Create(ItemID.ThornsPotion)
+				.AddTile(TileID.Bottles).AddIngredient(ModContent.ItemType<EnchantedLeaf>())
+				.AddIngredient(ItemID.BottledWater)
+				.AddIngredient(ItemID.Deathweed)
+				.AddIngredient(ItemID.Waterleaf)
+				.AddIngredient(ItemID.Stinger)
+				.AddIngredient(ItemID.Cactus);
+
+			Recipe.Create(ItemID.Timer1Second)
+				.AddTile(TileID.Anvils)
+				.AddIngredient(ModContent.ItemType<TechDrive>())
+				.AddIngredient(ItemID.Wire);
+
+			Recipe.Create(ItemID.Timer3Second)
+				.AddTile(TileID.Anvils)
+				.AddIngredient(ModContent.ItemType<TechDrive>(), 3)
+				.AddIngredient(ItemID.Wire);
+
+			Recipe.Create(ItemID.Timer5Second)
+				.AddTile(TileID.Anvils)
+				.AddIngredient(ModContent.ItemType<TechDrive>(), 5)
+				.AddIngredient(ItemID.Wire);
+
+			Recipe.Create(ItemID.InfernoPotion)
+				.AddTile(TileID.Bottles)
+				.AddIngredient(ModContent.ItemType<CarvedRock>())
+				.AddIngredient(ItemID.BottledWater)
+				.AddIngredient(ItemID.Hellstone)
+				.AddIngredient(ItemID.SoulofNight);
+
+			Recipe.Create(ItemID.PoisonedKnife, 50)
+				.AddIngredient(ModContent.ItemType<BismiteCrystal>())
+				.AddIngredient(ItemID.ThrowingKnife, 50);
 		}
 
 		public override void ModifyLightingBrightness(ref float scale)

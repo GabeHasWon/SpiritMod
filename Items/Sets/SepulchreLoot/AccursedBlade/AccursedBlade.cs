@@ -68,9 +68,25 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
         public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
         {
 			if (target.life <= 0)
-				Item.NewItem(Item.GetSource_OnHit(target), (int)target.position.X, (int)target.position.Y - 20, target.width, target.height, Mod.Find<ModItem>("AccursedSoul").Type);
+			{
+				int item = Item.NewItem(Item.GetSource_OnHit(target), (int)target.position.X, (int)target.position.Y - 20, target.width, target.height, Mod.Find<ModItem>("AccursedSoul").Type);
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item);
+			}
         }
-    }
+
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			for (int i = 0; i < 2; i++)
+			{
+				Dust dust = Dust.NewDustDirect(hitbox.TopLeft(), hitbox.Width, hitbox.Height, DustID.CursedTorch);
+				dust.noGravity = true;
+				dust.scale = Main.rand.NextFloat(0.4f, 1.25f);
+				dust.velocity = Vector2.Zero;
+			}
+		}
+	}
     public class AccursedSoul: ModItem
     {
         public override void SetStaticDefaults()
@@ -123,7 +139,14 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             else
                 charge = 0;
         }
-    }
+
+		public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+		{
+			ModPacket packet = Mod.GetPacket();
+			packet.Write((byte)Player.whoAmI);
+			packet.Write(charge);
+		}
+	}
 
 	public class AccursedBolt : ModProjectile
 	{

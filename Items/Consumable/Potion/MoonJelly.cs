@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Consumable.Potion
 {
 	public class MoonJelly : FoodItem
 	{
-		internal override Point Size => new(23, 26);
+		internal override Point Size => new(34, 26);
 
 		public override void StaticDefaults()
 		{

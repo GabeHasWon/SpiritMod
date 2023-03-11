@@ -22,7 +22,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 		{
 			Item.damage = 45;
 			Item.noMelee = true;
-			Item.DamageType = DamageClass.Throwing;
+			Item.DamageType = DamageClass.Ranged;
 			Item.width = 18;
 			Item.height = 20;
 			Item.useTime = 25;

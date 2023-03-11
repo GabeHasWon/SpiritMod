@@ -79,7 +79,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 			float progress = Timer / swingTime;
 			progress = EaseFunction.EaseCircularInOut.Ease(progress);
 
-			Projectile.velocity = initialVelocity.RotatedBy(MathHelper.Lerp(SwingRadians / 2 * SwingDirection, -SwingRadians/2 * SwingDirection, progress));
+			Projectile.velocity = initialVelocity.RotatedBy(MathHelper.Lerp(SwingRadians / 2 * SwingDirection, -SwingRadians / 2 * SwingDirection, progress));
 			return true;
 		}
 

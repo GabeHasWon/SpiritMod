@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.Explosives.Thrown
 {
-	[ItemTag(ItemTags.Explosive, ItemTags.Unloaded)]
+	//[ItemTag(ItemTags.Explosive)]
 	public class HealingGrenade : ModItem
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
@@ -52,6 +52,8 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 
 	public class HealingGrenadeProj : ModProjectile
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override string Texture => Mod.Name + "/Items/Sets/Explosives/Thrown/HealingGrenade";
 
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Healing Grenade");

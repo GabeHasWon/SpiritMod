@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Mechanics.Fathomless_Chest
+namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 {
 	public class MidasProjectile : ModProjectile
 	{
