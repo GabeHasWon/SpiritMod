@@ -20,6 +20,12 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 		}
 		private readonly int counterMax = 40;
 
+		private bool NoDamage
+		{
+			get => (int)Projectile.ai[1] != 0;
+			set => Projectile.ai[1] = value ? 1 : 0;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cryo Pillar");
@@ -55,6 +61,14 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<CryoCrush>(), 300);
+
+		public override bool? CanDamage() => !NoDamage;
+
+		public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+			Vector2 newSize = new Vector2(34, 100);
+			hitbox = new Rectangle((int)Projectile.position.X + (Projectile.width / 2) - (int)(newSize.X / 2), (int)Projectile.position.Y + (Projectile.height / 2) - (int)(newSize.Y / 2), (int)newSize.X, (int)newSize.Y);
+		}
 
 		public override void Kill(int timeLeft)
 		{

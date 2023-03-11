@@ -28,11 +28,14 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Vector2 offset = Vector2.Zero;
 			ItemLoader.HoldoutOffset(info.drawPlayer.gravDir, item.type, ref offset);
 
-			float rotation = info.drawPlayer.itemRotation + (0.785f * info.drawPlayer.direction);
+			float rotation = info.drawPlayer.itemRotation + (0.785f * info.drawPlayer.direction * (float)info.drawPlayer.gravDir);
 
 			Vector2 origin = new Vector2(0, texture.Height);
 			if (info.drawPlayer.direction == -1)
 				origin = texture.Size();
+
+			if (info.drawPlayer.gravDir == -1)
+				origin.Y -= (texture.Height / 2) + 21;
 
 			info.DrawDataCache.Add(new DrawData(
 				texture,
@@ -45,6 +48,8 @@ namespace SpiritMod.Items.Sets.BismiteSet
 				info.itemEffect,
 				0
 			));
+
+			Dust.NewDustPerfect(origin, DustID.Firefly, Vector2.Zero, 100, default, .5f);
 		}
 	}
 }

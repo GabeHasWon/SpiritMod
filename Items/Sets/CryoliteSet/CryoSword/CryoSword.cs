@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -50,24 +51,20 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 			if ((comboCounter + 1) == maxCombo)
 			{
 				bool tileBelow = false;
-				for (int i = 0; i < 7; i++)
+				for (int i = 0; i < 6; i++)
 				{
-					Vector2 samplePos = position / 16;
-					samplePos.Y += i;
+					Point16 samplePos = (position / 16 + (Vector2.UnitY * i)).ToPoint16();
 
-					Tile sample = Framing.GetTileSafely(samplePos);
-
-					if (WorldGen.SolidOrSlopedTile(sample))
+					if (WorldGen.SolidOrSlopedTile(Main.tile[samplePos.X, samplePos.Y]))
 					{
-						position = samplePos + new Vector2(8);
+						position = (samplePos.ToVector2() * 16) - new Vector2(-8, 18);
 						tileBelow = true;
 						break;
 					}
 				}
 
 				if (player.velocity.Y == 0f || tileBelow)
-				{ 
-					Vector2 newPos = position + new Vector2(0, player.height / 2);
+				{
 					velocity.Y = 0;
 
 					for (int i = 0; i < 20; i++)
@@ -77,10 +74,10 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 						if (i < 10 && !Main.dedServ)
 						{
 							if (i < 5)
-								ParticleHandler.SpawnParticle(new SmokeParticle(newPos + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.0f, 5.0f)), (velocity * Main.rand.NextFloat(1.0f, 2.2f)).RotatedByRandom(0.5f),
+								ParticleHandler.SpawnParticle(new SmokeParticle(position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.0f, 5.0f)), (velocity * Main.rand.NextFloat(1.0f, 2.2f)).RotatedByRandom(0.5f),
 									Color.Lerp(Color.White, Color.LightBlue, Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.55f, 1.25f), 30));
 
-							ParticleHandler.SpawnParticle(new FireParticle(newPos, (velocity * Main.rand.NextFloat(1.0f, 1.8f)).RotatedByRandom(0.5f), Color.White, Color.Blue, Main.rand.NextFloat(0.15f, 0.45f), 30));
+							ParticleHandler.SpawnParticle(new FireParticle(position, (velocity * Main.rand.NextFloat(1.0f, 1.8f)).RotatedByRandom(0.5f), Color.White, Color.Blue, Main.rand.NextFloat(0.15f, 0.45f), 30));
 						}
 					}
 
@@ -119,6 +116,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 						Projectile proj = Projectile.NewProjectileDirect(Entity.GetSource_ItemUse(Item), position + (newVel * 10) + player.velocity, newVel, ModContent.ProjectileType<IceWave>(), damage * 2, knockback * 2, player.whoAmI);
 						proj.frame = i;
+						proj.ai[1] = (i == 2) ? 0 : 1; //This determines whether the projectile deals damage
 						proj.netUpdate = true;
 					}
 
