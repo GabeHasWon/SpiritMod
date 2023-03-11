@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 		public override void SetDefaults()
 		{
-			Item.damage = 33;
+			Item.damage = 40;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 40;
 			Item.height = 40;

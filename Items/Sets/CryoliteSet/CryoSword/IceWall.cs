@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 			get => (int)Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-		private readonly int counterMax = 90;
+		private readonly int counterMax = 40;
 
 		private int InitialDir
 		{
@@ -48,7 +48,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 			Projectile.rotation = 0f;
 
-			Projectile.velocity *= 0.9f;
+			Projectile.velocity *= 0.95f;
 
 			if (++Counter > counterMax)
 				Projectile.Kill();

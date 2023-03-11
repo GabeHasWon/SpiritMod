@@ -44,7 +44,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 		public override void AI()
 		{
-			Projectile.velocity *= 0.95f;
+			Projectile.velocity *= 0.98f;
 
 			int fadeoutTime = 8;
 

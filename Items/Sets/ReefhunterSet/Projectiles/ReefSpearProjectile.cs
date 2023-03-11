@@ -29,6 +29,8 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			Projectile.DamageType = DamageClass.Melee;
 			Projectile.aiStyle = -1;
 			Projectile.timeLeft = 18;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = -1;
 
 			DrawHeldProjInFrontOfHeldItemAndArms = false;
 		}

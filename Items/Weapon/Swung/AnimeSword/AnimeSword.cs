@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 		public override void SetDefaults()
 		{
 			Item.channel = true;
-			Item.damage = 32;
+			Item.damage = 40;
 			Item.width = 60;
 			Item.height = 60;
 			Item.useTime = 60;
