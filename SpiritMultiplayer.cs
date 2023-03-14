@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.GlobalClasses.Players;
-using SpiritMod.Items.Pins;
+using SpiritMod.Items.Weapon.Summon.StardustBomb;
 using SpiritMod.Mechanics.BoonSystem;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.Mechanics.QuestSystem;
@@ -161,15 +161,16 @@ namespace SpiritMod
 					if (Main.netMode == NetmodeID.Server)
 					{
 						player = reader.ReadByte();
-						int bossType = reader.ReadInt32();
+						int npcIndex = reader.ReadInt32();
 						int npcCenterX = reader.ReadInt32();
 						int npcCenterY = reader.ReadInt32();
 
-						if (NPC.AnyNPCs(bossType))
+						if (NPC.AnyNPCs(npcIndex))
 							return;
 
-						int npcID = NPC.NewNPC(NPC.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, bossType);
+						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, npcIndex);
 						Main.npc[npcID].netUpdate2 = true;
+
 						ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", Main.npc[npcID].GetTypeNetName()), new Color(175, 75, 255));
 					}
 					break;
@@ -201,9 +202,6 @@ namespace SpiritMod
 					if (Main.projectile[projindex].ModProjectile is IManualTrailProjectile trailProj)
 						trailProj.DoTrailCreation(SpiritMod.TrailManager);
 					break;
-				case MessageType.PlaceMapPin:
-					ModContent.GetInstance<PinWorld>().pins[reader.ReadString()] = reader.ReadVector2();
-					break;
 				case MessageType.PlaceSuperSunFlower:
 					MyWorld.superSunFlowerPositions.Add(new Point16(reader.ReadUInt16(), reader.ReadUInt16()));
 					break;
@@ -214,9 +212,20 @@ namespace SpiritMod
 					(int x, int y) = (reader.ReadInt32(), reader.ReadInt32());
 					NPC.NewNPC(new EntitySource_TileBreak(x / 16, y / 16), x, y, ModContent.NPCType<ExplosiveBarrel>(), 0, 2, 1, 0, 0); // gets forwarded to all clients
 					break;
+				case MessageType.SpawnStardustBomb:
+					if (Main.netMode == NetmodeID.Server)
+					{
+						player = reader.ReadByte();
+						Vector2 velocity = reader.ReadVector2();
+
+						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), (int)Main.player[player].Center.X, (int)Main.player[player].Center.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player);
+						Main.npc[npcID].velocity = velocity;
+						Main.npc[npcID].netUpdate2 = true;
+					}
+					break;
 				case MessageType.FathomlessData:
 					byte effectIndex = reader.ReadByte();
-					byte pIndex = reader.ReadByte();
+					player = reader.ReadByte();
 					(ushort i, ushort j) = (reader.ReadUInt16(), reader.ReadUInt16());
 
 					if (Main.netMode == NetmodeID.Server)
@@ -224,7 +233,7 @@ namespace SpiritMod
 						//If received by the server, send to all clients instead
 						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.FathomlessData, 4);
 						packet.Write(effectIndex);
-						packet.Write(pIndex);
+						packet.Write(player);
 						packet.Write(i);
 						packet.Write(j);
 						packet.Send();
@@ -232,7 +241,7 @@ namespace SpiritMod
 						break;
 					}
 
-					ChanceEffectManager.effectIndex[effectIndex].Trigger(Main.player[(int)pIndex], new Point16(i, j));
+					ChanceEffectManager.effectIndex[effectIndex].Trigger(Main.player[player], new Point16(i, j));
 					break;
 				case MessageType.StarjinxData:
 					//TBD in future
