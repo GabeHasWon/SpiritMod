@@ -83,7 +83,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 				degrees += 180;
 
 			Radians = degrees * (Math.PI / 180);
-			UseCounter = MathHelper.Lerp((float)UseCounter, player.itemAnimationMax, 0.2f);
+			float amount = 0.2f * (player.HeldItem.useTime / player.itemTimeMax);
+			UseCounter = MathHelper.Lerp((float)UseCounter, player.itemAnimationMax, amount);
 
 			Projectile.position.X = player.Center.X - (int)(Math.Cos(Radians * 0.96) * Size) - (Projectile.width / 2);
 			Projectile.position.Y = player.Center.Y - (int)(Math.Sin(Radians * 0.96) * Size) - (Projectile.height / 2);

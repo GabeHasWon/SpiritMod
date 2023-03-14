@@ -35,14 +35,6 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			Item.noUseGraphic = true;
 		}
 
-		public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(ItemID.FragmentStardust, 18);
-			recipe.AddTile(TileID.LunarCraftingStation);
-			recipe.Register();
-		}
-
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			foreach (NPC npc in Main.npc)
@@ -54,14 +46,31 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 				}
 			}
 
-			int npcindex = NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
-			Main.npc[npcindex].velocity = velocity;
-			Main.npc[npcindex].netUpdate = true;
-
-			if (Main.netMode == NetmodeID.MultiplayerClient)
-				NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcindex);
-
+			if (player == Main.LocalPlayer)
+			{
+				if (Main.netMode == NetmodeID.MultiplayerClient)
+				{
+					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnStardustBomb, 2);
+					packet.Write((byte)player.whoAmI);
+					packet.WriteVector2(velocity);
+					packet.Send();
+				}
+				else
+				{
+					int npcindex = NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
+					Main.npc[npcindex].velocity = velocity;
+					Main.npc[npcindex].netUpdate = true;
+				}
+			}
 			return false;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe(1);
+			recipe.AddIngredient(ItemID.FragmentStardust, 18);
+			recipe.AddTile(TileID.LunarCraftingStation);
+			recipe.Register();
 		}
 	}
 
@@ -74,6 +83,8 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
         }
 
 		int returnCounter;
+		readonly int returnCounterMax = 200;
+
 		int boomdamage;
 		float shrinkCounter = 0.25f;
 		bool shrinking;
@@ -105,27 +116,32 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 		{
 			//Player player = Main.player[(int)NPC.ai[0]];
 			returnCounter++;
-
-			if (returnCounter == 1)
-				NPC.netUpdate = true;
-
-			if (returnCounter == 200)
+			if (returnCounter >= returnCounterMax)
 			{
 				if (Explode())
 					NPC.active = false;
 				else
 					shrinking = true;
+
+				NPC.netUpdate = true;
 			}
+			else if (returnCounter % 40 == 1)
+			{
+				float scale = MathHelper.Clamp(LifeQuoteant * 25f, 0, 1);
+				DustHelper.DrawStar(NPC.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(100.0f)), 206, 5, scale, scale * 0.8f, scale * 1.5f);
+			}
+
 			NPC.velocity *= 0.97f;
 			NPC.rotation += 0.03f;
+
 			Lighting.AddLight(NPC.Center, Color.Cyan.R * 0.005f, Color.Cyan.G * 0.005f, Color.Cyan.B * 0.005f);
-			NPC.ai[1]++;
-			if (NPC.ai[1] == 20)
+
+			if (++NPC.ai[1] == 20 && Main.netMode != NetmodeID.Server)
 				SoundEngine.PlaySound(SoundID.DD2_EtherianPortalIdleLoop, NPC.Center);
 			if (shrinking)
 			{
 				shrinkCounter += 0.1f;
-				NPC.scale = 0.75f + (float)(Math.Sin(shrinkCounter));
+				NPC.scale = 0.75f + (float)Math.Sin(shrinkCounter);
 				if (NPC.scale < 0.3f)
 				{
 					NPC.active = false;
@@ -134,12 +150,12 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 						int timeLeft = Main.rand.Next(20, 40);
 
 						StarParticle particle = new StarParticle(
-						NPC.Center,
-						Main.rand.NextVector2Circular(10, 7),
-						Color.Cyan,
-						Main.rand.NextFloat(0.15f, 0.3f),
-						timeLeft);
-						ParticleHandler.SpawnParticle(particle);
+							NPC.Center,
+							Main.rand.NextVector2Circular(10, 7),
+							Color.Cyan,
+							Main.rand.NextFloat(0.15f, 0.3f),
+							timeLeft);
+							ParticleHandler.SpawnParticle(particle);
 					}
 				}
 				else if (NPC.scale > 1)
@@ -155,7 +171,6 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 				return false;
 
 			Player player = Main.player[(int)NPC.ai[0]];
-			SoundEngine.PlaySound(SoundID.Item92, NPC.Center);
 
 			for (int i = 0; i < 2; i++)
 			{
@@ -163,11 +178,23 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 				{
 					float randFloat = Main.rand.NextFloat(6.28f);
 					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + (randFloat.ToRotationVector2() * 60), Main.rand.NextFloat(6.28f).ToRotationVector2() * 16, Mod.Find<ModGore>("StarbombGore" + j).Type, 1f);
+
+					if (i == 0)
+					{
+						float scale = Main.rand.NextFloat(1.0f, 2.5f);
+						DustHelper.DrawStar(NPC.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(120.0f)), 206, 5, scale, scale * 0.8f, Math.Min(scale, 1.8f));
+					}
 				}
 			}
 
-			Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<StarShockwave>(), (int)(player.GetDamage(DamageClass.Summon).ApplyTo(boomdamage * 0.5f)), 0, player.whoAmI);
-			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Thunder"), NPC.Center);
+			Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<StarShockwave>(), (int)player.GetDamage(DamageClass.Summon).ApplyTo(boomdamage * 0.5f), 0, player.whoAmI);
+			
+			if (Main.netMode != NetmodeID.Server)
+			{
+				SoundEngine.PlaySound(SoundID.Item92, NPC.Center);
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Thunder"), NPC.Center);
+			}
+
 			SpiritMod.tremorTime = 15;
 			return true;
 		}
@@ -185,22 +212,45 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-			Vector2 scale = new Vector2(1,1);
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 
-			Color bloomColor = Color.Cyan;
-			bloomColor.A = 0;
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), null, bloomColor, 0 - (NPC.rotation / 2), new Vector2(50, 50), 0.45f * scale * NPC.scale, SpriteEffects.None, 0f);
+			float breakCounter = (float)MathHelper.Clamp(LifeQuoteant, 0, 1);
 
-			Main.spriteBatch.Draw(
-                Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/StardustBomb/StardustBombNPC_Star").Value,
-				NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY),
-				new Rectangle(0,0,48,52),
-				Color.White,
-				0 - (NPC.rotation / 2),
-				new Vector2(28,26),
-				NPC.scale * scale,
-				SpriteEffects.None, 0
-			);
+			SpiritMod.CircleNoise.Parameters["breakCounter"].SetValue(breakCounter * 5f);
+			SpiritMod.CircleNoise.Parameters["rotation"].SetValue(0 - (NPC.rotation / 1.25f) + (breakCounter * 3.5f));
+			SpiritMod.CircleNoise.Parameters["colorMod"].SetValue(Color.Silver.ToVector4());
+			SpiritMod.CircleNoise.Parameters["noise"].SetValue(Mod.Assets.Request<Texture2D>("Textures/noise").Value);
+			SpiritMod.CircleNoise.CurrentTechnique.Passes[0].Apply();
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), null, Color.White, 0f, new Vector2(50, 50), 0.64f + (breakCounter * 2f), SpriteEffects.None, 0f);
+
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), null, Color.Cyan with { A = 0 }, 0 - (NPC.rotation / 2), new Vector2(50, 50), 0.45f * NPC.scale + (breakCounter * 0.75f), SpriteEffects.None, 0f);
+
+			for (int i = 0; i < 2; i++)
+			{
+				Rectangle frame = new Rectangle(0, 0, 48, 52);
+				Color drawCol = Color.White;
+
+				if (i > 0)
+				{
+					frame.Y = 52;
+					drawCol *= breakCounter * 12f;
+				}
+
+				Main.spriteBatch.Draw(
+					Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/StardustBomb/StardustBombNPC_Star").Value,
+					NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY),
+					frame,
+					drawCol,
+					0 - (NPC.rotation / 2) + (LifeQuoteant * 30f),
+					frame.Size() / 2,
+					NPC.scale,
+					SpriteEffects.None, 0
+				);
+			}
 
             Main.spriteBatch.Draw(
                 Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/StardustBomb/StardustBombNPC").Value,
@@ -209,7 +259,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 				drawColor,
 				NPC.rotation,
 				NPC.frame.Size() / 2,
-				NPC.scale * scale,
+				NPC.scale,
 				SpriteEffects.None, 0
 			);
 			return false;
@@ -217,11 +267,9 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-			Vector2 scale = new Vector2(1, 1);
-
 			float num107 = 0f;
 
-            SpriteEffects spriteEffects3 = (NPC.spriteDirection == 1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			SpriteEffects spriteEffects3 = (NPC.spriteDirection == 1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			Color color29 = new Color(127 - NPC.alpha, 127 - NPC.alpha, 127 - NPC.alpha, 0).MultiplyRGBA(Color.White);
 			Color color28 = color29;
             color28 = NPC.GetAlpha(color28);
@@ -230,7 +278,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
             for (int num103 = 0; num103 < 6; num103++)
             {
                 Vector2 vector29 = NPC.Center + ((float)num103 / 4f * 6.28318548f + NPC.rotation).ToRotationVector2() * (2f * num107 + 2f) - Main.screenPosition + new Vector2(0, NPC.gfxOffY);
-                Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/StardustBomb/StardustBombNPC_Glow").Value, vector29, NPC.frame, color28, NPC.rotation, NPC.frame.Size() / 2f, NPC.scale * scale, spriteEffects3, 0f);
+                Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/StardustBomb/StardustBombNPC_Glow").Value, vector29, NPC.frame, color28, NPC.rotation, NPC.frame.Size() / 2f, NPC.scale, spriteEffects3, 0f);
             }
 
             num107 = (float)Math.Cos((double)(Main.GlobalTimeWrappedHourly % 2.4f / 2.4f * 6.28318548f)) / 2f + 0.5f;
@@ -244,9 +292,14 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
             for (int num103 = 0; num103 < 6; num103++)
             {
                 Vector2 vector29 = NPC.Center + ((float)num103 / 4f * 6.28318548f + NPC.rotation).ToRotationVector2() * (4f * num107 + 2f) - Main.screenPosition + new Vector2(0, NPC.gfxOffY);
-                Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/StardustBomb/StardustBombNPC_Glow").Value, vector29, NPC.frame, color28, NPC.rotation, NPC.frame.Size() / 2f, NPC.scale * scale, spriteEffects3, 0f);
+                Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Items/Weapon/Summon/StardustBomb/StardustBombNPC_Glow").Value, vector29, NPC.frame, color28, NPC.rotation, NPC.frame.Size() / 2f, NPC.scale, spriteEffects3, 0f);
             }
 		}
+
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
+
+		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = Rectangle.Empty;
+
+		private float LifeQuoteant => 1f - ((float)NPC.life / NPC.lifeMax);
 	}
 }

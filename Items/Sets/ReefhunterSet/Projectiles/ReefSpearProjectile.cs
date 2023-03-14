@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
@@ -16,7 +17,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 		public int maxTimeLeft = 0;
 		public float maxRotation = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Reefe Tridente");
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Reef Trident");
 
 		public override void SetDefaults()
 		{
@@ -35,7 +36,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			DrawHeldProjInFrontOfHeldItemAndArms = false;
 		}
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => true;
+		public override bool? CanDamage() => true;
 
 		public override void AI()
 		{
@@ -62,8 +63,12 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			if (Projectile.timeLeft < maxTimeLeft / 2f)
 				factor = Projectile.timeLeft / (maxTimeLeft / 2f);
 
-			Projectile.Center = p.Center + new Vector2(0, p.gfxOffY) - Vector2.Lerp(Vector2.Zero, RealDirection, factor) + (RealDirection * 0.5f);
+			Vector2 offset = new Vector2(0, -2 * p.direction);
+
+			Projectile.Center = p.Center + new Vector2(0, p.gfxOffY) - Vector2.Lerp(Vector2.Zero, RealDirection, factor) + (RealDirection * 0.5f) + offset;
 		}
+
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => hitDirection = Math.Sign(Main.player[Projectile.owner].DirectionTo(Projectile.Center).X);
 
 		public override void ModifyDamageHitbox(ref Rectangle hitbox)
 		{

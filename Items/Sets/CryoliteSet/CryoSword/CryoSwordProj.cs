@@ -71,7 +71,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 			Radians = degrees * (Math.PI / 180);
 
-			float amount = 0.1f;
+			float amount = 0.1f * (player.HeldItem.useTime / player.itemTimeMax);
 			if (StrongAttack)
 			{
 				amount = (float)(player.itemAnimationMax - (float)player.itemAnimation) / player.itemAnimationMax;
