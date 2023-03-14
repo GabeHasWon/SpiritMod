@@ -214,16 +214,44 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				byte targetAmount = Math.Max(Main.tile[i + offset - 1, j].LiquidAmount, Main.tile[i + offset + 1, j].LiquidAmount);
 
 				if (Main.tile[i + offset, j - 1].LiquidAmount > 0)
-					targetAmount = 255;
-
-				float heightFactor = (targetAmount / 255f);
-
-				var pos = new Vector2((i + offset) << 4, j * 16f) + drawOffset;
-				var source = new Rectangle(16, (int)(16 * (1 - heightFactor)), 16, (int)(16 * heightFactor));
-				var tex = LiquidRenderer.Instance._liquidTextures[Main.waterStyle].Value;
-
-				if (Main.tile[i + offset, j - 1].LiquidAmount > 0)
 					return;
+
+				if (targetAmount <= 127)
+					return;
+
+				int leftType = Main.tile[i + offset - 1, j].LiquidType;
+				int rightType = Main.tile[i + offset + 1, j].LiquidType;
+				int useType = Main.waterStyle;
+
+				if (Main.tile[i + offset - 1, j].LiquidAmount == 0)
+					useType = rightType;
+				else if (Main.tile[i + offset + 1, j].LiquidAmount == 0)
+					useType = leftType;
+				else
+				{
+					if (leftType == rightType)
+					{
+						if (leftType == LiquidID.Lava)
+							useType = WaterStyleID.Lava;
+						else if (leftType == LiquidID.Honey)
+							useType = WaterStyleID.Honey;
+					}
+					else
+					{
+						if (leftType == LiquidID.Water || rightType == LiquidID.Water)
+							useType = Main.waterStyle;
+						else if (leftType == LiquidID.Lava || rightType == LiquidID.Lava)
+							useType = WaterStyleID.Lava;
+						else
+							useType = WaterStyleID.Honey;
+					}
+				}
+
+				float heightFactor = (targetAmount - 127) / 126.5f;
+
+				var pos = new Vector2((i + offset) << 4, j * 16f - 4) + drawOffset;
+				var source = new Rectangle(16, 0, 16, (int)(8 * heightFactor));
+				var tex = LiquidRenderer.Instance._liquidTextures[useType].Value;
 
 				Main.tileBatch.Draw(tex, pos + new Vector2(0, 8 * (1 - heightFactor)), source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 			}

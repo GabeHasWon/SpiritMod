@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.IO;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
@@ -44,11 +42,10 @@ namespace SpiritMod.Mechanics.BoonSystem.HecateBoon
 
 			spriteBatch.Draw(texture, Position - Main.screenPosition, null, glowColor * reverseProgress, 0, texture.Size() / 2, reverseProgress * Scale, SpriteEffects.None, 0);
 
-
 			float blurLength = 150 * reverseProgress;
 			float blurWidth = 25 * reverseProgress;
 
-			Effect blurEffect = ModContent.Request<Effect>("Effects/BlurLine", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Effect blurEffect = ModContent.Request<Effect>("SpiritMod/Effects/BlurLine", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Prim.SquarePrimitive blurLine = new Prim.SquarePrimitive()
 			{
 				Position = Position - Main.screenPosition,
