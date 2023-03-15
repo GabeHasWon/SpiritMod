@@ -1615,8 +1615,6 @@ namespace SpiritMod
 					int padding = 80 * 16; //40 tiles in each direction
 					spawnRect.Inflate(padding, padding);
 
-					int npcType = ModContent.NPCType<AsteroidDebris>();
-
 					for (int i = 0; i < 20; i++)
 					{
 						Vector2 spawnPos = new Vector2(spawnRect.X + Main.rand.Next(spawnRect.Width), spawnRect.Y + Main.rand.Next(spawnRect.Height));
@@ -1625,9 +1623,9 @@ namespace SpiritMod
 						bool inWorldBounds = tilePos.X < (Main.maxTilesX - 40) && tilePos.X > 40 && tilePos.Y < (Main.maxTilesY - 40) && tilePos.Y > 40;
 						if (!screenRect.Contains(spawnPos.ToPoint()) && inWorldBounds && !Collision.SolidCollision(spawnPos, 10, 10))
 						{
-							if (NPC.CountNPCS(npcType) < 30)
+							if (NPC.CountNPCS(ModContent.NPCType<AsteroidDebris>()) < 30)
 							{
-								int index = NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcType);
+								int index = NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<AsteroidDebris>());
 								if (Main.netMode != NetmodeID.SinglePlayer)
 									NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, index);
 							}

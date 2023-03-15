@@ -12,6 +12,9 @@ namespace SpiritMod.World.Sepulchre
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+
+			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 5;
 			TileObjectData.newTile.Width = 3;

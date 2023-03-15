@@ -14,6 +14,7 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 	{
 		public override void SetStaticDefaults()
 		{
+			TileID.Sets.FramesOnKillWall[Type] = true;
 
 			TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
 			TileObjectData.newAlternate.StyleHorizontal = true;

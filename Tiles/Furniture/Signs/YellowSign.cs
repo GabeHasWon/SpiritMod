@@ -20,9 +20,10 @@ namespace SpiritMod.Tiles.Furniture.Signs
             Main.tileLavaDeath[Type] = false;
             Main.tileLighted[Type] = true;
 
-            TileObjectData.newTile.UsesCustomCanPlace = true;
+			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+
             TileObjectData.newTile = new TileObjectData(TileObjectData.Style2xX);
-            TileObjectData.newTile.Height = 2;
+			TileObjectData.newTile.Height = 2;
             TileObjectData.newTile.Width = 3;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.newAlternate.Origin = new Point16(1, 0);
@@ -61,7 +62,7 @@ namespace SpiritMod.Tiles.Furniture.Signs
             name.SetDefault("Sign");
             AddMapEntry(new Color(255, 243, 74), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
-            DustType = -1;//?
+            DustType = -1;
         }
 	   public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{

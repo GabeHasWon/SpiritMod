@@ -4,7 +4,6 @@ using SpiritMod.NPCs.AsteroidDebris;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace SpiritMod.Tiles.Block
 {
@@ -21,7 +20,8 @@ namespace SpiritMod.Tiles.Block
 			ItemDrop = ModContent.ItemType<AsteroidBlock>();
 		}
 
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => Main.LocalPlayer.inventory[Main.LocalPlayer.selectedItem].type != ItemID.ReaverShark;
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => Main.LocalPlayer.HeldItem.type != ItemID.ReaverShark;
+
 		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 		{
 			if (!fail)
@@ -31,8 +31,7 @@ namespace SpiritMod.Tiles.Block
 					NPC npc = NPC.NewNPCDirect(new Terraria.DataStructures.EntitySource_TileBreak(i, j), (i * 16) + 8, (j * 16) + 8, ModContent.NPCType<AsteroidDebris>());
 					npc.velocity = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f, Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f);
 				}
-				//Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i, j).ToWorldCoordinates(),
-				//	new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f, Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f), Mod.Find<ModGore>("AsteroidDebrisLarge").Type);
+				
 				int randomAmount = Main.rand.Next(3) + 1;
 				for (int e = 0; e < randomAmount; e++)
 					Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i, j).ToWorldCoordinates(),

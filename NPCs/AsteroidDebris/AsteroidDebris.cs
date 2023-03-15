@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -12,7 +13,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("");
+			DisplayName.SetDefault("Debris");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0)
 			{
@@ -38,6 +39,8 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			NPC.aiStyle = -1;
 			NPC.npcSlots = 0;
 			NPC.alpha = 255; //The NPC will fade in on spawn
+			NPC.ShowNameOnHover = false;
+
             AIType = 0;
 		}
 
@@ -71,6 +74,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 		public override void OnSpawn(IEntitySource source)
 		{
 			Shiny = Main.rand.NextBool(80);
+
 			if (Shiny)
 			{
 				NPC.lifeMax = 500;
@@ -78,9 +82,9 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				NPC.value = 43500f;
 				NPC.HitSound = SoundID.NPCHit42;
 				NPC.DeathSound = SoundID.NPCDeath44;
-
 				NPC.GivenName = "Hit Me!";
 			}
+
 			NPC.frameCounter = Main.rand.Next(Main.npcFrameCount[NPC.type]);
 			NPC.netUpdate = true;
 		}
@@ -126,9 +130,36 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			NPC.rotation += 0.002f + NPC.velocity.Length() / 40;
 			if (Cooldown > 0)
 				Cooldown--;
+
+			float top = (float)(Main.worldSurface * 0.34);
+
+			if (NPC.position.Y / 16 > Main.worldSurface * 0.36f)
+			{
+				NPC.velocity.Y += 0.2f;
+
+				if (NPC.collideY && Math.Abs(NPC.velocity.Y) > 4)
+					Impact();
+			}
+			else if (NPC.position.Y / 16 > top)
+			{
+				float dist = (NPC.position.Y / 16f) - top;
+				NPC.velocity.Y += 0.2f * (dist / (float)(Main.worldSurface * 0.36f - top));
+			}
+		}
+
+		private void Impact()
+		{
+			float Direction() => Main.rand.NextFloat(-1.0f, 1.0f) * 3f;
+
+			int randomAmount = Main.rand.Next(4, 7);
+			for (int i = 0; i < randomAmount; i++)
+				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, new Vector2(Direction(), Direction()), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
+
+			NPC.active = false;
 		}
 
 		public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit) => Bump(NPC.DirectionFrom(player.Center) * (knockback / 2));
+
 		public override bool? CanBeHitByProjectile(Projectile projectile)
 		{
 			if (projectile.Hitbox.Intersects(NPC.Hitbox))

@@ -148,6 +148,9 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+
+			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.Width = 2;
@@ -211,6 +214,9 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+
+			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Width = 3;

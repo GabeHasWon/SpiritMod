@@ -20,6 +20,9 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileLavaDeath[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLighted[Type] = true;
+
+			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 4;
 			TileObjectData.newTile.Width = 4;

@@ -19,9 +19,11 @@ namespace SpiritMod.Tiles.Furniture.Signs
             Main.tileSolid[Type] = false;
             Main.tileNoAttach[Type] = true;
             Main.tileLavaDeath[Type] = false;
-
             Main.tileLighted[Type] = true;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
+
+			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
             TileObjectData.newTile.Height = 4;
             TileObjectData.newTile.Width = 2;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16};
@@ -62,7 +64,6 @@ namespace SpiritMod.Tiles.Furniture.Signs
             AddMapEntry(new Color(77, 255, 88), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = -1;
-                                       //TODO	Main.highlightMaskTexture[Type] = ModContent.Request<Texture2D>("Tiles/ScoreBoard_Outline");
         }
 
 	    public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

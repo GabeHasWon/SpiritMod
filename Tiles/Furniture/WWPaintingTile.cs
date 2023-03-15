@@ -14,10 +14,13 @@ namespace SpiritMod.Tiles.Furniture
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+			Main.tileLighted[Type] = false;
+
+			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 5;
 			TileObjectData.newTile.Width = 5;
-            Main.tileLighted[Type] = false;
             TileObjectData.newTile.CoordinateHeights = new int[]
 			{
 				16,
