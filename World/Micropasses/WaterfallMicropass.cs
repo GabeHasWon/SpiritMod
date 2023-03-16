@@ -3,16 +3,26 @@ using Terraria.ID;
 using System.Linq;
 using System;
 using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
+using Terraria.WorldBuilding;
+using Terraria.IO;
+using System.Collections.Generic;
 
 namespace SpiritMod.World.Micropasses
 {
-	public class WaterfallMicropass
+	public class WaterfallMicropass : Micropass
 	{
+		public override string WorldGenName => "Waterfalls Micropass";
+
 		static int[] ValidTypes = new int[] { TileID.Stone, TileID.ArgonMoss, TileID.BlueMoss, TileID.BrownMoss, TileID.GreenMoss, TileID.KryptonMoss, TileID.LavaMoss, 
 			TileID.PurpleMoss, TileID.RedMoss, TileID.XenonMoss, TileID.Dirt, TileID.Mud, TileID.JungleGrass };
 
-		public static void Run()
+		public override int GetWorldGenIndexInsert(List<GenPass> passes, ref bool afterIndex) => passes.FindIndex(genpass => genpass.Name.Equals("Sunflowers"));
+
+		public override void Run(GenerationProgress progress, GameConfiguration config)
 		{
+			progress.Message = "Spirit Mod Microstructures: Waterfalls";
+
 			float worldSize = Main.maxTilesX / 4200f;
 			for (int i = 0; i < 16 * worldSize; i++)
 			{

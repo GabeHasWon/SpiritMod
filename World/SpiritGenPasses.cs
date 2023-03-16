@@ -42,22 +42,6 @@ namespace SpiritMod.World
 		#region GENPASS: SPIRIT MICROS
 		public static void MicrosPass(GenerationProgress progress, GameConfiguration config)
 		{
-			progress.Message = "Spirit Mod Microstructures: Boulders";
-			BoulderMicropass.Run();
-
-			progress.Message = "Spirit Mod Microstructures: Waterfalls";
-			WaterfallMicropass.Run();
-
-			progress.Message = "Spirit Mod Microstructures: Campsite";
-			if (WorldGen.genRand.NextBool(4))
-				GenerateCampsite();
-
-			progress.Message = "Spirit Mod Microstructures: Sunken Surfaces";
-			SunkenSurfaceMicropass.Run();
-
-			progress.Message = "Spirit Mod Microstructures: Stargrass";
-			StargrassMicropass.Run();
-
 			progress.Message = "Spirit Mod Microstructures: Hideouts";
 			if (ModContent.GetInstance<SpiritClientConfig>().DoubleHideoutGeneration)
 			{

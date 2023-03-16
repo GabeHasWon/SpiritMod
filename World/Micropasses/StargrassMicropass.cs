@@ -1,13 +1,22 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
+using Terraria.WorldBuilding;
+using System.Collections.Generic;
 
 namespace SpiritMod.World.Micropasses
 {
-	internal class StargrassMicropass
+	internal class StargrassMicropass : Micropass
 	{
-		public static void Run()
+		public override string WorldGenName => "Stargrass Micropass";
+
+		public override int GetWorldGenIndexInsert(List<GenPass> passes, ref bool afterIndex) => passes.FindIndex(genpass => genpass.Name.Equals("Sunflowers"));
+
+		public override void Run(GenerationProgress progress, Terraria.IO.GameConfiguration config)
 		{
+			progress.Message = "Spirit Mod Microstructures: Stargrass";
+
 			float worldSize = Main.maxTilesX / 4200f;
 			for (int i = 0; i < 4 * worldSize; i++)
 			{

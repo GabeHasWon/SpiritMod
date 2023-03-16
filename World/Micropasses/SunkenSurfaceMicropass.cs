@@ -1,19 +1,27 @@
 ﻿using SpiritMod.Tiles.Furniture;
 using SpiritMod.Tiles.Furniture.Hanging;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace SpiritMod.World.Micropasses
 {
-	internal class SunkenSurfaceMicropass
+	internal class SunkenSurfaceMicropass : Micropass
 	{
+		public override string WorldGenName => "Sunken Surface Micropass";
+
 		private static int[] ValidTypes = new int[] { TileID.Stone, TileID.Dirt, TileID.ClayBlock, TileID.ArgonMoss, TileID.BlueMoss, TileID.BrownMoss, TileID.GreenMoss, TileID.KryptonMoss, TileID.LavaMoss, TileID.PurpleMoss, 
 			TileID.RedMoss, TileID.XenonMoss };
 
-		public static void Run()
+		public override int GetWorldGenIndexInsert(List<GenPass> passes, ref bool afterIndex) => passes.FindIndex(genpass => genpass.Name.Equals("Sunflowers"));
+
+		public override void Run(GenerationProgress progress, Terraria.IO.GameConfiguration config)
 		{
+			progress.Message = "Spirit Mod Microstructures: Sunken Surface";
+
 			float worldSize = Main.maxTilesX / 4200f;
 			for (int i = 0; i < 16 * worldSize; i++)
 			{

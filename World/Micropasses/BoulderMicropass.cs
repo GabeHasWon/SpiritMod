@@ -4,11 +4,17 @@ using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using System.Collections.Generic;
 using System.Linq;
+using Terraria.WorldBuilding;
 
 namespace SpiritMod.World.Micropasses
 {
-	internal class BoulderMicropass
+	internal class BoulderMicropass : Micropass
 	{
+		public override string WorldGenName => "Boulder Micropass";
+
+		static int MossType = -1;
+		static Vector2 EndPoint = Vector2.Zero;
+
 		static WeightedRandom<int> StoneType
 		{
 			get
@@ -24,11 +30,12 @@ namespace SpiritMod.World.Micropasses
 			}
 		}
 
-		static int MossType = -1;
-		static Vector2 EndPoint = Vector2.Zero;
+		public override int GetWorldGenIndexInsert(List<GenPass> passes, ref bool afterIndex) => passes.FindIndex(genpass => genpass.Name.Equals("Sunflowers"));
 
-		public static void Run()
+		public override void Run(GenerationProgress progress, Terraria.IO.GameConfiguration config)
 		{
+			progress.Message = "Spirit Mod Microstructures: Boulders";
+
 			float worldSize = Main.maxTilesX / 4200f;
 			for (int i = 0; i < 6 * worldSize; i++)
 			{
