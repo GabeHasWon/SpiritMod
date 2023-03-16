@@ -47,6 +47,6 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 			recipe.Register();
 		}
 
-		public override bool CanConsumeAmmo(Item item, Player player) => false; //Dont consume ammo by myself
+		public override bool CanConsumeAmmo(Item item, Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<GranitechGunProjectile>()] > 0;
 	}
 }
