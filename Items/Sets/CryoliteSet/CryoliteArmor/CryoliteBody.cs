@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cryolite Chestplate");
-			Tooltip.SetDefault("10% increased melee speed\nGrants immunity to knockback");
+			Tooltip.SetDefault("10% increased melee damage\nGrants immunity to knockback");
 		}
 
 		public override void SetDefaults()

@@ -2118,7 +2118,7 @@ namespace SpiritMod
 					}
 				}
 
-				Player.statDefense += Player.GetSpiritPlayer().bismiteShieldStacks;
+				Player.statDefense += (Player.GetSpiritPlayer().bismiteShieldStacks * 2);
 				if (bismiteShieldStacks >= 5)
 					bismiteShieldStacks = 5;
 			}
