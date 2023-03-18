@@ -3393,8 +3393,9 @@ namespace SpiritMod
 					Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), Player.Center - new Vector2(0, 30), Vector2.Zero, ModContent.ProjectileType<WaterSpout>(), (int)(Player.GetDamage(DamageClass.Magic).ApplyTo(30)), 8, Player.whoAmI);
 				}
 
-				if (graniteSet && !Player.mount.Active && Player.velocity.Y != 0 && stompCooldown <= 0)
-					Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), Player.Center, Vector2.Zero, ModContent.ProjectileType<EnergyStomp>(), 10, 3, Player.whoAmI);
+				int stompProj = ModContent.ProjectileType<EnergyStomp>();
+				if (graniteSet && !Player.mount.Active && Player.velocity.Y != 0 && stompCooldown <= 0 && Player.ownedProjectileCounts[stompProj] < 1)
+					Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), Player.Center, Vector2.Zero, stompProj, 10, 3, Player.whoAmI);
 
 				if (fierySet && fierySetTimer <= 0)
 				{

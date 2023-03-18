@@ -84,7 +84,7 @@ namespace SpiritMod.Tiles.Ambient
 
 			if (Main.rand.NextBool(10) && !Main.dedServ && tile.TileFrameX % 36 == 0 && tile.TileFrameY % 54 == 18)
 			{
-				if (Mechanics.EventSystem.EventManager.IsPlaying<Mechanics.EventSystem.Events.StarplateBeaconIntroEvent>())
+				if (Mechanics.EventSystem.EventManager.IsPlaying<Mechanics.EventSystem.Events.StarplateBeaconIntroEvent>() || Main.gamePaused)
 					return;
 
 				Vector2 position = (new Vector2(i, j) * 16) + new Vector2(16 + Main.rand.NextFloat(-8.0f, 8.0f), 16);
@@ -123,13 +123,14 @@ namespace SpiritMod.Tiles.Ambient
 
 			int columns = 2;
 			int rows = 8;
-			Rectangle frame = new Rectangle(0, head.Height / rows * ((int)(Main.timeForVisualEffects / 4)) % head.Height, (head.Width / columns) - 2, (head.Height / rows) - 2);
+
+			Rectangle frame = new Rectangle(0, head.Height / rows * ((int)(Main.timeForVisualEffects / 4f)) % head.Height, (head.Width / columns) - 2, (head.Height / rows) - 2);
 			if (Main.rand.NextBool(45) || playingIntro) //Display a "glitched" frame
 				frame.X = head.Width / columns;
 
 			DrawAberration.DrawChromaticAberration(Vector2.UnitX, 1f, delegate (Vector2 offset, Color colorMod)
 			{
-				spriteBatch.Draw(head, position - new Vector2(0, 40) + offset, frame, color.MultiplyRGBA(colorMod), 0f, frame.Size() / 2, 1f, SpriteEffects.None, 0);
+				spriteBatch.Draw(head, position - new Vector2(0, 40 + ((float)Main.timeForVisualEffects / 40f).ToRotationVector2().Y) + offset, frame, color.MultiplyRGBA(colorMod), 0f, frame.Size() / 2, 1f, SpriteEffects.None, 0);
 			});
 
 			for (int i = 0; i < 4; i++)
@@ -155,7 +156,7 @@ namespace SpiritMod.Tiles.Ambient
 			offset.Y *= .2f;
 
 			float quoteant = (float)((position + offset).Y - position.Y) / range;
-			float scale = .03f + (.07f * quoteant);
+			float scale = .02f + (.068f * quoteant);
 			position += offset.RotatedBy(rotation) - new Vector2(0, 40);
 
 			DrawAberration.DrawChromaticAberration(Vector2.UnitX, 1f, delegate (Vector2 offset, Color colorMod)

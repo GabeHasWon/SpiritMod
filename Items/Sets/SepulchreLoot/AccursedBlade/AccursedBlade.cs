@@ -93,10 +93,11 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		{
 			DisplayName.SetDefault("Accursed Soul");
 			Tooltip.SetDefault("You shouldn't see this");
-			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 7));
-			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
-			ItemID.Sets.ItemNoGravity[Item.type] = true;
-			ItemID.Sets.ItemIconPulse[Item.type] = true;
+			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 7));
+			ItemID.Sets.AnimatesAsSoul[Type] = true;
+			ItemID.Sets.ItemNoGravity[Type] = true;
+			ItemID.Sets.ItemIconPulse[Type] = true;
+			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -124,7 +125,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
         }
 		public override void PostUpdate() => Lighting.AddLight(Item.position, 0.18f, .64f, .31f);
 
-		public override Color? GetAlpha(Color lightColor) => Color.Lerp(Color.White, Color.Transparent, ((float)Item.alpha / 255f));
+		public override Color? GetAlpha(Color lightColor) => Color.Lerp(Color.White, Color.Transparent, Item.alpha / 255f);
 	}
 
     internal class AccursedBladePlayer : ModPlayer

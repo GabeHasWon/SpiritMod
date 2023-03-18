@@ -12,8 +12,10 @@ namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 		{
 			DisplayName.SetDefault("Crimson Skull");
 			Tooltip.SetDefault("You shouldn't see this");
-			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 7));
-			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
+			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 7));
+			ItemID.Sets.AnimatesAsSoul[Type] = true;
+			ItemID.Sets.ItemNoGravity[Type] = true;
+			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
 		}
 		public override void SetDefaults()
 		{
@@ -21,7 +23,6 @@ namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 			Item.height = 32;
 			Item.maxStack = 1;
 			Item.alpha = 50;
-			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 
 		public override bool ItemSpace(Player player) => true;

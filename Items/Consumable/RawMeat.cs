@@ -1,4 +1,3 @@
-
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -9,7 +8,11 @@ namespace SpiritMod.Items.Consumable
 {
 	public class RawMeat : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Raw Meat");
+		public override void SetStaticDefaults()
+		{ 
+			DisplayName.SetDefault("Raw Meat");
+			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
+		}
 
 		public override void SetDefaults()
 		{
