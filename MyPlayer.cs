@@ -747,11 +747,11 @@ namespace SpiritMod
 			BeginShotDetection(item);
 
 			if (daybloomGarb && item.IsMagic())
-				damage += 1;
+				damage.Flat++;
 			if (leatherHood && item.IsRanged())
-				damage += 1;
+				damage.Flat++;
 			if (elderbarkWoodSet)
-				damage += 1;
+				damage.Flat++;
 		}
 
 		public override void PostItemCheck() => EndShotDetection();
@@ -2016,10 +2016,7 @@ namespace SpiritMod
 				if (concentratedCooldown == 0)
 					SoundEngine.PlaySound(SoundID.MaxMana);
 
-				if (Player.velocity.X != 0f)
-					concentratedCooldown--;
-				else
-					concentratedCooldown -= 2;
+				concentratedCooldown -= (Player.velocity.X == 0f) ? 2 : 1;
 			}
 			else
 			{
@@ -2118,7 +2115,7 @@ namespace SpiritMod
 					}
 				}
 
-				Player.statDefense += Player.GetSpiritPlayer().bismiteShieldStacks;
+				Player.statDefense += (Player.GetSpiritPlayer().bismiteShieldStacks * 2);
 				if (bismiteShieldStacks >= 5)
 					bismiteShieldStacks = 5;
 			}
@@ -3393,8 +3390,9 @@ namespace SpiritMod
 					Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), Player.Center - new Vector2(0, 30), Vector2.Zero, ModContent.ProjectileType<WaterSpout>(), (int)(Player.GetDamage(DamageClass.Magic).ApplyTo(30)), 8, Player.whoAmI);
 				}
 
-				if (graniteSet && !Player.mount.Active && Player.velocity.Y != 0 && stompCooldown <= 0)
-					Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), Player.Center, Vector2.Zero, ModContent.ProjectileType<EnergyStomp>(), 10, 3, Player.whoAmI);
+				int stompProj = ModContent.ProjectileType<EnergyStomp>();
+				if (graniteSet && !Player.mount.Active && Player.velocity.Y != 0 && stompCooldown <= 0 && Player.ownedProjectileCounts[stompProj] < 1)
+					Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), Player.Center, Vector2.Zero, stompProj, 10, 3, Player.whoAmI);
 
 				if (fierySet && fierySetTimer <= 0)
 				{

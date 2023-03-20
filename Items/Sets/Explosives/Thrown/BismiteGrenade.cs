@@ -55,8 +55,6 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 	{
 		public bool Exploded { get => Projectile.ai[0] != 0; set => Projectile.ai[0] = !value ? 0 : 1; }
 
-		public override string Texture => Mod.Name + "/Items/Sets/Explosives/Thrown/BismiteGrenade";
-
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Grenade");
 
 		public override void SetDefaults()

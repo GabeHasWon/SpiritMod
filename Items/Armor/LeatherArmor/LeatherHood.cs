@@ -24,18 +24,15 @@ namespace SpiritMod.Items.Armor.LeatherArmor
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return body.type == ModContent.ItemType<LeatherPlate>() && legs.type == ModContent.ItemType<LeatherLegs>();
-		}
+			=> body.type == ModContent.ItemType<LeatherPlate>() && legs.type == ModContent.ItemType<LeatherLegs>();
+
+		public override void UpdateEquip(Player player) => player.GetSpiritPlayer().leatherHood = true;
+
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Wearing Marksman's Armor builds up concentration\nWhile concentrated, your next strike is a critical strike and deals more damage\nConcentration is disrupted when hurt, but charges faster while standing still";
 			player.GetSpiritPlayer().leatherSet = true;
 		}
-		public override void UpdateEquip(Player player)
-		{
-            player.GetSpiritPlayer().leatherHood = true;
-        }
 
 		public override void AddRecipes()
 		{

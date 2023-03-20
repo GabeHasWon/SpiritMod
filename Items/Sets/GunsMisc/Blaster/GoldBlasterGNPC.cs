@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Effects;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -17,10 +18,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if (numMarks <= 0 && !Main.dedServ)
+			if (numMarks <= 0 || Main.dedServ)
 				return;
 
-			Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/GoldCasing").Value;
+			Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Effects/GoldCasing").Value;
 			int frames = 7;
 			float frame = Main.GlobalTimeWrappedHourly * 10 % frames;
 
@@ -30,7 +31,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Vector2 zoom = Main.GameViewMatrix.Zoom;
 
 			Rectangle hoverBox = npc.getRect();
-			hoverBox.Inflate((int)(20 + zoom.X), (int)(20 + zoom.Y));
+			hoverBox.Inflate((int)zoom.X, (int)zoom.Y);
+
 			bool hovering = hoverBox.Contains(Main.MouseWorld.ToPoint());
 
 			spriteBatch.Draw(texture, position, rect, new Color(180, 180, 180) * (hovering ? 1f : 0.2f), 0f, rect.Size() / 2, 1f, SpriteEffects.None, 0f);

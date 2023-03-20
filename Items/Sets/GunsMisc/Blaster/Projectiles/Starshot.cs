@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			//Manually get the weapon's element color because Subtype is assigned to after DoTrailCreation is called
 			Item heldItem = Main.player[Projectile.owner].HeldItem;
 			if (heldItem.ModItem is Blaster)
-				color = ColorEffectsIndex.GetColor((heldItem.ModItem as Blaster).element);
+				color = GetColor((heldItem.ModItem as Blaster).element);
 
 			tManager.CreateTrail(Projectile, new StandardColorTrail(color), new RoundCap(), new DefaultTrailPosition(), 12f, 100f, new DefaultShader());
 		}
@@ -77,21 +77,14 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				if (timeLeft <= 0)
 					velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(0.11f);
 
-				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+				int[] dustType = Dusts;
 				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, dustType[Main.rand.Next(dustType.Length)],
 					velocity, 0, default, Main.rand.NextFloat(1.0f, 1.2f));
 				dust.noGravity = true;
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			int? debuffType = ColorEffectsIndex.GetDebuffs(Subtype);
-			if (debuffType != null)
-				target.AddBuff(debuffType.Value, 200);
-		}
-
-		public override Color? GetAlpha(Color lightColor) => ColorEffectsIndex.GetColor(Subtype);
+		public override Color? GetAlpha(Color lightColor) => GetColor(Subtype);
 
 		public override bool PreDraw(ref Color lightColor)
 		{

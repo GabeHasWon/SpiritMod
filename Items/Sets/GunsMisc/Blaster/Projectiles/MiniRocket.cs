@@ -46,7 +46,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			if (Main.rand.NextBool(2))
 			{
 				Vector2 position = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height));
-				Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.Smoke : ColorEffectsIndex.GetDusts(Subtype)[1], null, 0, default, Main.rand.NextFloat(0.8f, 1.6f));
+				Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.Smoke : Dusts[1], null, 0, default, Main.rand.NextFloat(0.8f, 1.6f));
 				dust.velocity = Projectile.velocity * .8f;
 				dust.noGravity = true;
 			}
@@ -93,8 +93,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			for (int i = 0; i < 10; i++)
 			{
 				if (i < 3)
-					ParticleHandler.SpawnParticle(new SmokeParticle(Projectile.Center, new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f)), Color.Lerp(Color.DarkGray, ColorEffectsIndex.GetColor(Subtype), Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.5f, 1.0f), 14));
-				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+					ParticleHandler.SpawnParticle(new SmokeParticle(Projectile.Center, new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f)), Color.Lerp(Color.DarkGray, GetColor(Subtype), Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.5f, 1.0f), 14));
+				int[] dustType = Dusts;
 				
 				Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType[Main.rand.Next(dustType.Length)], null);
 				dust.velocity = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * .5f, Main.rand.NextFloat(-1.0f, 1.0f) * .5f);
@@ -105,11 +105,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			directNPCIndex = target.whoAmI;
+			base.OnHitNPC(target, damage, knockback, crit);
 
-			int? debuffType = ColorEffectsIndex.GetDebuffs(Subtype);
-			if (debuffType != null)
-				target.AddBuff(debuffType.Value, 200);
+			directNPCIndex = target.whoAmI;
 		}
 
 		public override bool? CanHitNPC(NPC target) => (target.whoAmI != directNPCIndex) ? null : false;
@@ -117,7 +115,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-			Rectangle frame = GetDrawFrame(texture);
+			Rectangle frame = new(texture.Width / (int)Subtypes.Count * Subtype, texture.Height / Main.projFrames[Projectile.type] * Projectile.frame, (texture.Width / (int)Subtypes.Count) - 2, (texture.Height / Main.projFrames[Projectile.type]) - ((Main.projFrames[Projectile.type] > 1) ? 2 : 0));
 
 			//Draw the projectile normally
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(lightColor), 

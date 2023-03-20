@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -83,13 +84,15 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 				for (int i = 0; i < 2; i++)
 					Projectile.NewProjectileDirect(player.GetSource_FromThis(), player.Center + new Vector2(0, 20 * player.gravDir), new Vector2(6, 0) * ((i > 0) ? -1 : 1), ModContent.ProjectileType<EnergyShockwave>(), damage, 8, player.whoAmI);
 
-				player.GetModPlayer<MyPlayer>().Shake += 15;
+				MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
+				modPlayer.Shake += Math.Min(modPlayer.Shake + 15, 30);
 
 				Landed = true;
 			}
 			if (!Landed)
 			{
-				Projectile.rotation = player.velocity.ToRotation();
+				float tolerance = 0.15f;
+				Projectile.rotation = MathHelper.Clamp(player.velocity.X * -0.025f, -tolerance, tolerance) + 1.57f + ((player.gravDir == -1.0) ? MathHelper.Pi : 0);
 
 				Dust dust = Dust.NewDustPerfect(player.position + new Vector2(player.width * Main.rand.NextFloat(0.0f, 1.0f), player.height), DustID.Electric, player.velocity * Main.rand.NextFloat(0.1f, 0.3f), 0, default, 0.5f);
 				dust.noGravity = true;

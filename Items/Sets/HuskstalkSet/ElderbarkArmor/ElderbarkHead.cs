@@ -1,5 +1,4 @@
 using Terraria;
-using SpiritMod.Items.Material;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,10 +7,7 @@ namespace SpiritMod.Items.Sets.HuskstalkSet.ElderbarkArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class ElderbarkHead : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Elderbark Helmet");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Elderbark Helmet");
 
 		public override void SetDefaults()
 		{

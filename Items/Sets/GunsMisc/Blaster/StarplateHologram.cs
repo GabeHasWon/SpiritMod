@@ -3,12 +3,14 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using Terraria.Audio;
 using SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles;
-using Terraria.ID;
-using SpiritMod.Items.Sets.GunsMisc.Blaster.Particles;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Effects;
 using SpiritMod.Particles;
 using Terraria.DataStructures;
+using static Terraria.ModLoader.PlayerDrawLayer;
+using Terraria.ID;
+using Terraria.Audio;
+using System;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
@@ -20,9 +22,20 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			set => Projectile.ai[0] = value;
 		}
 
-		private Vector2 direction;
+		private float AnimCounter
+		{
+			get => Projectile.ai[1];
+			set => Projectile.ai[1] = value;
+		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blaster");
+		private Vector2 direction;
+		private bool Hologram => Projectile.frame > 0;
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Blaster");
+			Main.projFrames[Type] = 2;
+		}
 
 		public override void SetDefaults()
 		{
@@ -48,37 +61,58 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
+			player.heldProj = Projectile.whoAmI;
 
-			if (Counter > 0)
-				Counter--;
-			if ((player.itemAnimation == (player.itemAnimationMax / 2)) || (player.itemAnimation >= player.itemAnimationMax))
+			if (player.channel)
 			{
-				if (player.itemAnimation == (player.itemAnimationMax / 2)) //Fire a shot
-				{
-					SetDirection(player);
+				player.itemAnimation = 2;
+				player.itemTime = 2;
 
-					Projectile.NewProjectile(Entity.GetSource_FromAI(), Projectile.Center, direction * 11f, ModContent.ProjectileType<StarshotBlue>(), Projectile.damage, Projectile.knockBack, player.whoAmI);
-					Counter = player.itemAnimationMax;
-				}
-				if (Main.netMode != NetmodeID.Server) //Play a firing sound, also accounting for the normal weapon due to instance issues
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 3, PitchVariance = 0.3f }, Projectile.Center);
+				Projectile.timeLeft = 2;
+			}
+
+			Projectile.Center = player.Center + new Vector2(18f - (AnimCounter * 8f), 0).RotatedBy(direction.ToRotation());
+			Projectile.rotation = direction.ToRotation() + ((direction.X < 0) ? MathHelper.Pi : 0) - (AnimCounter * player.direction);
+			player.itemRotation = MathHelper.WrapAngle(direction.ToRotation() + ((player.direction < 0) ? MathHelper.Pi : 0));
+
+			if (Counter == (Hologram ? (player.itemAnimationMax / 2) : 0))
+			{
+				SetDirection(player);
+				AnimCounter = 1f;
+
+				Projectile.NewProjectile(Entity.GetSource_FromAI(), Projectile.Center, direction * 10f, ModContent.ProjectileType<HoloShot>(), Projectile.damage, Projectile.knockBack, player.whoAmI, Hologram ? 1f : 0f);
 
 				if (!Main.dedServ)
 				{
-					Vector2 position = Projectile.Center + (direction * 28);
-					ParticleHandler.SpawnParticle(new BlasterFlash(position, 1, direction.ToRotation()));
-					for (int i = 0; i < 3; i++)
-						ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(0.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.2f, 0.5f), 12));
+					Vector2 position = Projectile.Center + ((direction * 28) - (Vector2.UnitY * 4));
+
+					if (Hologram)
+					{
+						ParticleHandler.SpawnParticle(new HoloFlash(position, 1, direction.ToRotation()));
+
+						for (int i = 0; i < 3; i++)
+							ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(0.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Blue, Main.rand.NextFloat(0.2f, 0.5f), 12));
+					}
+					else
+					{
+						ParticleHandler.SpawnParticle(new BlasterFlash(position, 1, direction.ToRotation()));
+
+						for (int i = 0; i < 3; i++)
+							ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(0.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.2f, 0.5f), 12));
+					}
 				}
+
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.5f, MaxInstances = 3 }, Projectile.Center);
 			}
 
-			int offset = (int)MathHelper.Clamp(Counter - (player.itemAnimationMax - 12), 0, player.itemAnimationMax);
+			if (Counter > 0)
+				Counter--;
+			else
+				Counter = player.itemAnimationMax;
 
-			Projectile.Center = player.Center + new Vector2(18f - offset, 0).RotatedBy(direction.ToRotation());
-			Projectile.rotation = direction.ToRotation() + ((direction.X < 0) ? MathHelper.Pi : 0) - (offset * 0.03f * player.direction);
-
-			if (Projectile.alpha < 255)
-				Projectile.alpha += 255 / 30;
+			if (AnimCounter > 0)
+				AnimCounter -= 0.1f;
 		}
 
 		private void SetDirection(Player player)
@@ -86,8 +120,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			if (player.channel && player == Main.LocalPlayer) //Readjust the gun to face the owner's cursor
 			{
 				direction = player.DirectionTo(Main.MouseWorld);
-				Projectile.timeLeft = player.itemAnimationMax + 1;
-				Projectile.alpha = 0;
+				player.ChangeDir(Math.Sign(player.DirectionTo(Main.MouseWorld).X));
 
 				Projectile.netUpdate = true;
 			}
@@ -100,8 +133,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			SpriteEffects effects = (direction.X < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			Vector2 offset = new Vector2(0, Projectile.gfxOffY);
 
-			Main.EntitySpriteDraw(texture, Projectile.Center + offset - Main.screenPosition, null, Projectile.GetAlpha(Color.White), 
-				Projectile.rotation, texture.Size() / 2, Projectile.scale, effects, 0);
+			Main.EntitySpriteDraw(texture, Projectile.Center + offset - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(Color.White), 
+				Projectile.rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale, effects, 0);
 			return false;
 		}
 

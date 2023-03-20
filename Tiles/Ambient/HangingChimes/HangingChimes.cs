@@ -127,7 +127,7 @@ namespace SpiritMod.Tiles.Ambient.HangingChimes
 			if (closer && (int)Vector2.Distance(player.Center, new Vector2(i * 16, j * 16)) < 48)
 			{
 				if (Main.rand.NextBool(75) && Main.netMode != NetmodeID.MultiplayerClient)
-					SoundEngine.PlaySound(new SoundStyle("Sounds/WindChime"), new Vector2(i * 16, j * 16));
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/WindChime"), new Vector2(i * 16, j * 16));
 			}
 		}
 

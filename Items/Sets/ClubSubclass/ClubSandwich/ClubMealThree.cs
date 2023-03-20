@@ -1,13 +1,7 @@
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
-using SpiritMod.Buffs;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
 {
@@ -17,6 +11,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
 		{
 			DisplayName.SetDefault("Club Meal");
 			Tooltip.SetDefault("You shouldn't see this");
+			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
 		}
 
 		public override void SetDefaults()

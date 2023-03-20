@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Sets.GunsMisc.Blaster.Particles;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Effects;
 using SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles;
 using SpiritMod.Particles;
 using System;
@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -71,18 +72,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		public override void UseItemFrame(Player player)
 		{
 			//Shot feedback
-			if (style == (int)StyleType.Starplate)
-			{
-				int offset = (int)MathHelper.Clamp(player.itemAnimation - (player.itemAnimationMax - 12), 0, player.itemAnimationMax);
-
-				player.itemRotation = player.itemRotation - (offset * 0.001f * player.direction) + (12 * 0.001f * player.direction);
-				player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
-			}
-			else
-			{
-				int offset = (int)MathHelper.Clamp(player.itemAnimation - (player.itemAnimationMax - 8), 0, player.itemAnimationMax);
-				player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
-			}
+			int offset = (int)MathHelper.Clamp(player.itemAnimation - (player.itemAnimationMax - 8), 0, player.itemAnimationMax);
+			player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
 		}
 
 		public override bool AltFunctionUse(Player player) => style == (int)StyleType.Golden;
@@ -110,36 +101,53 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				position += muzzleOffset;
 			type = Item.shoot;
 
+			bool muzzleFlare = style == (int)StyleType.Swift || style == (int)StyleType.Golden;
+
+			if (style == (int)StyleType.Festive)
+			{
+				for (int i = 0; i < 4; i++)
+					Dust.NewDustPerfect(position, DustID.Confetti, (velocity * Main.rand.NextFloat(0.4f, 0.8f)).RotatedByRandom(1f), 100);
+
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, position);
+			}
+			if (style == (int)StyleType.Golden)
+			{
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, position);
+			}
+			if (style == (int)StyleType.Starplate)
+			{
+				if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateHologram>()] < 2)
+					for (int i = 0; i < 2; i++)
+					{
+						Projectile proj = Projectile.NewProjectileDirect(Entity.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<StarplateHologram>(), damage, knockback, player.whoAmI);
+						proj.frame = i;
+					}
+			}
 			if (style == (int)StyleType.Swift)
+			{
+				velocity = velocity.RotatedByRandom(0.25f);
+
+				if (Main.netMode != NetmodeID.Server)
+				{
+					SoundEngine.PlaySound(SoundID.Item41 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, position);
+					SoundEngine.PlaySound(SoundID.Item45 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, position);
+				}
+			}
+
+			if (muzzleFlare)
 			{
 				if (!Main.dedServ)
 				{
 					ParticleHandler.SpawnParticle(new BlasterFlash(position + (muzzleOffset / 2.5f), 1, velocity.ToRotation()));
 					for (int i = 0; i < 3; i++)
-						ParticleHandler.SpawnParticle(new FireParticle(position, (velocity * Main.rand.NextFloat(0.1f, 0.8f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.2f, 0.5f), 12));
-				}
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { Volume = 0.5f, PitchVariance = 0.2f, MaxInstances = 3 }, position);
-			}
-			else
-			{
-				if (style == (int)StyleType.Festive)
-				{
-					for (int i = 0; i < 4; i++)
-						Dust.NewDustPerfect(position, DustID.Confetti, (velocity * Main.rand.NextFloat(0.4f, 0.8f)).RotatedByRandom(1f), 100);
-				}
-
-				if (style == (int)StyleType.Starplate)
-				{
-					if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateHologram>()] < 1)
-						Projectile.NewProjectile(Entity.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<StarplateHologram>(), damage, knockback, player.whoAmI);
-				}
-				else if (Main.netMode != NetmodeID.Server)
-				{
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1"), position);
+						ParticleHandler.SpawnParticle(new FireParticle(position, (velocity * Main.rand.NextFloat(0.1f, 0.8f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.1f, 0.3f), 12));
 				}
 			}
 		}
+
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => style != (int)StyleType.Starplate;
 
 		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
@@ -235,10 +243,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			{
 				0 => Item.shoot = ModContent.ProjectileType<Bauble>(),
 				1 => Item.shoot = ModContent.ProjectileType<GoldBullet>(),
-				2 => Item.shoot = ModContent.ProjectileType<EnergyBurst>(),
-				_ => Item.shoot = ModContent.ProjectileType<StarshotOrange>()
+				2 => Item.shoot = ModContent.ProjectileType<SwiftShot>(),
+				_ => Item.shoot = ModContent.ProjectileType<HoloShot>()
 			};
 			Item.channel = style == (int)StyleType.Starplate;
+			Item.useStyle = (style == (int)StyleType.Starplate) ? ItemUseStyleID.Rapier : ItemUseStyleID.Shoot;
 
 			Item.SetNameOverride(nameSelection[style] + " Blaster");
 		}
@@ -247,7 +256,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		{
 			string text = style switch
 			{
-				1 => "Struck enemies are marked for damage\nRight click to detonate all marked enemies\nAll marks instantly expire when missing a shot",
+				1 => "Struck enemies are marked for damage\nRight click to detonate all marked enemies\nAll marks instantly expire after missing a shot",
 				2 => "Fires a rapid volley of energy",
 				3 => "Creates a hologram to supply additional fire",
 				_ => "Launches bouncing glass baubles...ouch!"
@@ -255,13 +264,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			if (text == string.Empty)
 				return;
 
-			tooltips.Insert(5, new TooltipLine(Mod, string.Empty, text));
+			tooltips.Add(new TooltipLine(Mod, string.Empty, text));
 		}
 
 		public override float UseSpeedMultiplier(Player player)
 		{
 			if (style == (int)StyleType.Swift)
-				return 2f;
+				return 3f;
 			return base.UseSpeedMultiplier(player);
 		}
 	}

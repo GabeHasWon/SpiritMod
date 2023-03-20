@@ -11,6 +11,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
 		{
 			DisplayName.SetDefault("Club Meal");
 			Tooltip.SetDefault("You shouldn't see this");
+			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
 		}
 
 		public override void SetDefaults()

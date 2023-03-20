@@ -49,20 +49,20 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				if (timeLeft <= 0)
 					velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(0.11f);
 
-				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+				int[] dustType = Dusts;
 				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, dustType[Main.rand.Next(dustType.Length)],
 					velocity, 0, default, Main.rand.NextFloat(1.0f, 1.2f));
 				dust.noGravity = true;
 			}
 		}
 
-		public override Color? GetAlpha(Color lightColor) => ColorEffectsIndex.GetColor(Subtype);
+		public override Color? GetAlpha(Color lightColor) => GetColor(Subtype);
 
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{
 			for (int k = 0; k < Projectile.oldPos.Length; k++)
 			{
-				Color color = ColorEffectsIndex.GetColor(Subtype) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+				Color color = GetColor(Subtype) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
 				float scale = Projectile.scale;
 				Texture2D texture = TextureAssets.Projectile[Type].Value;
 

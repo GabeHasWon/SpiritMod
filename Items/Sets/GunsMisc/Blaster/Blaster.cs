@@ -12,19 +12,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
+using static SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles.SubtypeProj.Subtypes;
+
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
 	public class Blaster : ModItem
 	{
 		public byte element;
-		private enum ElementType : byte
-		{
-			Fire = 0,
-			Poison = 1,
-			Frost = 2,
-			Plasma = 3,
-			Count
-		}
+		//This enum is stored in SubtypeProj for wider use
 
 		public byte build;
 		private enum BuildType : byte
@@ -59,11 +54,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			return myClone;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Cosmic Blaster");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Cosmic Blaster");
 
 		public override void SetDefaults()
 		{
@@ -135,7 +126,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 					ai1 = build switch
 					{
-						1 => ModContent.ProjectileType<BigBeam>(),
+						1 => ModContent.ProjectileType<PiercingBeam>(),
 						2 => ModContent.ProjectileType<LongRocket>(),
 						_ => ModContent.ProjectileType<PhaseBlast>()
 					};
@@ -189,7 +180,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				return;
 			switch (visualElement)
 			{
-				case (int)ElementType.Fire:
+				case (int)Fire:
 					for (int i = 0; i < 10; i++)
 					{
 						if (i < 3)
@@ -201,7 +192,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						dust.noGravity = true;
 					}
 					break;
-				case (int)ElementType.Poison:
+				case (int)Poison:
 					for (int i = 0; i < 8; i++)
 					{
 						if (i < 3)
@@ -213,7 +204,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						dust.noGravity = true;
 					}
 					break;
-				case (int)ElementType.Frost:
+				case (int)Frost:
 					for (int i = 0; i < 8; i++)
 					{
 						if (i < 3)
@@ -224,7 +215,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						dust.noGravity = true;
 					}
 					break;
-				case (int)ElementType.Plasma:
+				case (int)Plasma:
 					for (int i = 0; i < 8; i++)
 					{
 						if (i == 0)
@@ -260,7 +251,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			//Draw the item normally
 			spriteBatch.Draw(texture, position, frame, Item.GetAlpha(drawColor), 0f, origin, scale, SpriteEffects.None, 0f);
 			//Draw a glowmask
-			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, Item.GetAlpha(ColorEffectsIndex.GetColor(element)), 0f, origin, scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, Item.GetAlpha(SubtypeProj.GetColor(element)), 0f, origin, scale, SpriteEffects.None, 0f);
 			return false;
 		}
 
@@ -274,7 +265,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			//Draw the item normally
 			spriteBatch.Draw(texture, position, frame, Item.GetAlpha(lightColor), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
 			//Draw a glowmask
-			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, ColorEffectsIndex.GetColor(element) * ((255f - Item.alpha) / 255f), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, SubtypeProj.GetColor(element).MultiplyRGBA(Color.White) * ((255f - Item.alpha) / 255f), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
 			return false;
 		}
 
@@ -312,7 +303,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public void Generate()
 		{
-			element = (byte)Main.rand.Next((int)ElementType.Count);
+			element = (byte)Main.rand.Next((int)Count);
 			build = (byte)Main.rand.Next((int)BuildType.Count);
 			auxillary = (byte)Main.rand.Next((int)AuxillaryType.Count);
 
@@ -325,7 +316,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			Item.shoot = build switch
 			{
-				1 => Item.shoot = ModContent.ProjectileType<Beam>(),
+				1 => Item.shoot = ModContent.ProjectileType<EnergyBeam>(),
 				2 => Item.shoot = ModContent.ProjectileType<MiniRocket>(),
 				3 => Item.shoot = ModContent.ProjectileType<Starshot>(),
 				_ => Item.shoot = ModContent.ProjectileType<EnergyBurst>()
@@ -366,26 +357,17 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
 		{
-			if (element == (int)ElementType.Plasma)
+			if (element == (int)Plasma)
 				damage.ApplyTo(7);
 		}
 
-		public override float UseTimeMultiplier(Player player)
-		{
-			if (auxillary == (int)AuxillaryType.Burst)
-				return 0.5f;
-			else if (build == (int)BuildType.Wave)
-				return 2f;
-			return base.UseTimeMultiplier(player);
-		}
-
-		public override float UseAnimationMultiplier(Player player)
+		public override float UseSpeedMultiplier(Player player)
 		{
 			if (auxillary == (int)AuxillaryType.Burst)
 				return 1.5f;
 			else if (build == (int)BuildType.Wave)
-				return 2f;
-			return base.UseAnimationMultiplier(player);
+				return 1.8f;
+			return base.UseSpeedMultiplier(player);
 		}
 	}
 }

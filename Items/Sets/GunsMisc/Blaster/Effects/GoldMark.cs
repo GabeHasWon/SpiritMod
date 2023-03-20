@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using Terraria;
 
-namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Particles
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Effects
 {
 	public class GoldMark : Particle
 	{

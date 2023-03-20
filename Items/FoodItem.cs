@@ -45,5 +45,5 @@ public abstract class FoodItem : ModItem
 	public virtual void Defaults() { }
 
 	//public sealed override bool PreDrawInInventory(SpriteBatch sb, Vector2 pos, Rectangle frm, Color drawCol, Color itemCol, Vector2 o, float scale) => FoodHelper.PreDrawInInventory(this, sb, pos, drawCol, scale);
-	public sealed override bool PreDrawInWorld(SpriteBatch sb, Color light, Color a, ref float rot, ref float scale, int whoAmI) => FoodHelper.PreDrawInWorld(this, sb, light, ref rot, ref scale);
+	public sealed override bool PreDrawInWorld(SpriteBatch sb, Color light, Color a, ref float rot, ref float scale, int whoAmI) => FoodHelper.PreDrawInWorld(Main.item[whoAmI], sb, light, ref rot, ref scale);
 }
