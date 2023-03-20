@@ -1,488 +1,123 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.UI;
 using Terraria.UI;
 
-namespace SpiritMod.Items.Books.UI.MaterialUI
+namespace SpiritMod.Items.Books.UI.MaterialUI;
+
+public abstract class UIPageState : UIState
 {
-	class UIGraniteMaterialPageState : UIState
+	internal static float offsetX = -1;
+	internal static float offsetY = -1;
+
+	protected abstract string BackgroundTexturePath { get; }
+
+	private UIDragableElement mainPanel;
+
+	public override void OnInitialize()
 	{
-		private UIDragableElement mainPanel;
+		mainPanel = new UIDragableElement
+		{
+			HAlign = 0.5f,
+			VAlign = 0.5f,
+			Width = StyleDimension.FromPixels(756f),
+			Height = StyleDimension.FromPixels(323f)
+		};
+		mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
+		Append(mainPanel);
 
-		internal static float offsetX = -1;
-		internal static float offsetY = -1;
-
-		public UIGraniteMaterialPageState() {
+		if (offsetX != -1)
+		{
+			mainPanel.Left.Set(offsetX, 0f);
+			mainPanel.Top.Set(offsetY, 0f);
 		}
 
-		public override void OnInitialize() {
-			mainPanel = new UIDragableElement();
-			mainPanel.HAlign = 0.5f;
-			mainPanel.VAlign = 0.5f;
-			mainPanel.Width.Set(756f, 0f);
-			mainPanel.Height.Set(323f, 0f);
-			mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
-			Append(mainPanel);
+		var panelBackground = new UIImage(ModContent.Request<Texture2D>(BackgroundTexturePath))
+		{
+			Width = StyleDimension.FromPercent(1f),
+			Height = StyleDimension.FromPercent(1f)
+		};
+		panelBackground.SetPadding(12);
+		mainPanel.Append(panelBackground);
+		mainPanel.AddDragTarget(panelBackground);
 
-			if (offsetX != -1) {
-				mainPanel.Left.Set(offsetX, 0f);
-				mainPanel.Top.Set(offsetY, 0f);
-			}
+		var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton");
+		UIImageButton closeButton = new UIImageButton(closeTexture)
+		{
+			Left = StyleDimension.FromPixelsAndPercent(-20, 1f),
+			Top = StyleDimension.FromPixels(5),
+			Width = StyleDimension.FromPixels(15),
+			Height = StyleDimension.FromPixels(15)
+		};
+		closeButton.OnClick += CloseButton_OnClick;
+		panelBackground.Append(closeButton);
 
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/MaterialUI/GraniteMaterialPage"));
-			panelBackground.SetPadding(12);
-			mainPanel.Append(panelBackground);
-			mainPanel.AddDragTarget(panelBackground);
-
-			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton");
-			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-20, 1f);
-			closeButton.Top.Set(5, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
-			closeButton.OnClick += CloseButton_OnClick;
-			panelBackground.Append(closeButton);
-
-			UIElement messageBoxPanel = new UIElement {
-				Width = { Percent = 1f },
-				Height = { Pixels = -50, Percent = 1f },
-				Top = { Pixels = 50, },
-			};
-			panelBackground.Append(messageBoxPanel);
-			mainPanel.AddDragTarget(messageBoxPanel);
-
-        }
-		internal static void OnScrollWheel_FixHotbarScroll(UIScrollWheelEvent evt, UIElement listeningElement) {
-			Main.LocalPlayer.ScrollHotbar(Terraria.GameInput.PlayerInput.ScrollWheelDelta / 120);
-		}
-
-		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			if (mainPanel.ContainsPoint(Main.MouseScreen)) {
-				Main.LocalPlayer.mouseInterface = true;
-			}
-			if (mainPanel.Left.Pixels != 0) {
-				offsetX = mainPanel.Left.Pixels;
-				offsetY = mainPanel.Top.Pixels;
-			}
-			base.DrawSelf(spriteBatch);
-		}
-
-		private void CloseButton_OnClick(UIMouseEvent evt, UIElement listeningElement) {
-			SoundEngine.PlaySound(SoundID.MenuClose);
-			ModContent.GetInstance<SpiritMod>().BookUserInterface.SetState(null);
-		}
+		UIElement messageBoxPanel = new UIElement
+		{
+			Width = StyleDimension.FromPercent(1),
+			Height = StyleDimension.FromPixelsAndPercent(-50, 1),
+			Top = StyleDimension.FromPixels(50)
+		};
+		panelBackground.Append(messageBoxPanel);
+		mainPanel.AddDragTarget(messageBoxPanel);
 	}
-	class UIMarbleMaterialPageState : UIState
+
+	private static void OnScrollWheel_FixHotbarScroll(UIScrollWheelEvent evt, UIElement listeningElement) => Main.LocalPlayer.ScrollHotbar(Terraria.GameInput.PlayerInput.ScrollWheelDelta / 120);
+
+	private static void CloseButton_OnClick(UIMouseEvent evt, UIElement listeningElement)
 	{
-		private UIDragableElement mainPanel;
-
-		internal static float offsetX = -1;
-		internal static float offsetY = -1;
-
-		public UIMarbleMaterialPageState() {
-		}
-
-		public override void OnInitialize() {
-			mainPanel = new UIDragableElement();
-			mainPanel.HAlign = 0.5f;
-			mainPanel.VAlign = 0.5f;
-			mainPanel.Width.Set(756f, 0f);
-			mainPanel.Height.Set(323f, 0f);
-			mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
-			Append(mainPanel);
-
-			if (offsetX != -1) {
-				mainPanel.Left.Set(offsetX, 0f);
-				mainPanel.Top.Set(offsetY, 0f);
-			}
-
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/MaterialUI/MarbleMaterialPage"));
-			panelBackground.SetPadding(12);
-			mainPanel.Append(panelBackground);
-			mainPanel.AddDragTarget(panelBackground);
-
-			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton", ReLogic.Content.AssetRequestMode.ImmediateLoad);
-			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-20, 1f);
-			closeButton.Top.Set(5, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
-			closeButton.OnClick += CloseButton_OnClick;
-			panelBackground.Append(closeButton);
-
-			UIElement messageBoxPanel = new UIElement {
-				Width = { Percent = 1f },
-				Height = { Pixels = -50, Percent = 1f },
-				Top = { Pixels = 50, },
-			};
-			panelBackground.Append(messageBoxPanel);
-			mainPanel.AddDragTarget(messageBoxPanel);
-
-        }
-		internal static void OnScrollWheel_FixHotbarScroll(UIScrollWheelEvent evt, UIElement listeningElement) {
-			Main.LocalPlayer.ScrollHotbar(Terraria.GameInput.PlayerInput.ScrollWheelDelta / 120);
-		}
-
-		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			if (mainPanel.ContainsPoint(Main.MouseScreen)) {
-				Main.LocalPlayer.mouseInterface = true;
-			}
-			if (mainPanel.Left.Pixels != 0) {
-				offsetX = mainPanel.Left.Pixels;
-				offsetY = mainPanel.Top.Pixels;
-			}
-			base.DrawSelf(spriteBatch);
-		}
-
-		private void CloseButton_OnClick(UIMouseEvent evt, UIElement listeningElement) {
-			SoundEngine.PlaySound(SoundID.MenuClose);
-			ModContent.GetInstance<SpiritMod>().BookUserInterface.SetState(null);
-		}
+		SoundEngine.PlaySound(SoundID.MenuClose);
+		ModContent.GetInstance<SpiritMod>().BookUserInterface.SetState(null);
 	}
-	class UIGlowrootPageState : UIState
+
+	protected override void DrawSelf(SpriteBatch spriteBatch)
 	{
-		private UIDragableElement mainPanel;
+		if (mainPanel.ContainsPoint(Main.MouseScreen))
+			Main.LocalPlayer.mouseInterface = true;
 
-		internal static float offsetX = -1;
-		internal static float offsetY = -1;
-
-		public UIGlowrootPageState() {
+		if (mainPanel.Left.Pixels != 0)
+		{
+			offsetX = mainPanel.Left.Pixels;
+			offsetY = mainPanel.Top.Pixels;
 		}
-
-		public override void OnInitialize() {
-			mainPanel = new UIDragableElement();
-			mainPanel.HAlign = 0.5f;
-			mainPanel.VAlign = 0.5f;
-			mainPanel.Width.Set(756f, 0f);
-			mainPanel.Height.Set(323f, 0f);
-			mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
-			Append(mainPanel);
-
-			if (offsetX != -1) {
-				mainPanel.Left.Set(offsetX, 0f);
-				mainPanel.Top.Set(offsetY, 0f);
-			}
-
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/MaterialUI/GlowrootPage"));
-			panelBackground.SetPadding(12);
-			mainPanel.Append(panelBackground);
-			mainPanel.AddDragTarget(panelBackground);
-
-			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton", ReLogic.Content.AssetRequestMode.ImmediateLoad);
-			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-20, 1f);
-			closeButton.Top.Set(5, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
-			closeButton.OnClick += CloseButton_OnClick;
-			panelBackground.Append(closeButton);
-
-			UIElement messageBoxPanel = new UIElement {
-				Width = { Percent = 1f },
-				Height = { Pixels = -50, Percent = 1f },
-				Top = { Pixels = 50, },
-			};
-			panelBackground.Append(messageBoxPanel);
-			mainPanel.AddDragTarget(messageBoxPanel);
-
-        }
-		internal static void OnScrollWheel_FixHotbarScroll(UIScrollWheelEvent evt, UIElement listeningElement) {
-			Main.LocalPlayer.ScrollHotbar(Terraria.GameInput.PlayerInput.ScrollWheelDelta / 120);
-		}
-
-		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			if (mainPanel.ContainsPoint(Main.MouseScreen)) {
-				Main.LocalPlayer.mouseInterface = true;
-			}
-			if (mainPanel.Left.Pixels != 0) {
-				offsetX = mainPanel.Left.Pixels;
-				offsetY = mainPanel.Top.Pixels;
-			}
-			base.DrawSelf(spriteBatch);
-		}
-
-		private void CloseButton_OnClick(UIMouseEvent evt, UIElement listeningElement) {
-			SoundEngine.PlaySound(SoundID.MenuClose);
-			ModContent.GetInstance<SpiritMod>().BookUserInterface.SetState(null);
-		}
+		base.DrawSelf(spriteBatch);
 	}
-	class UIBismitePageStsate : UIState
-	{
-		private UIDragableElement mainPanel;
+}
 
-		internal static float offsetX = -1;
-		internal static float offsetY = -1;
+class UIGraniteMaterialPageState : UIPageState
+{
+	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/GraniteMaterialPage";
+}
 
-		public UIBismitePageStsate() {
-		}
+class UIMarbleMaterialPageState : UIPageState
+{
+	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/MarbleMaterialPage";
+}
 
-		public override void OnInitialize() {
-			mainPanel = new UIDragableElement();
-			mainPanel.HAlign = 0.5f;
-			mainPanel.VAlign = 0.5f;
-			mainPanel.Width.Set(756f, 0f);
-			mainPanel.Height.Set(323f, 0f);
-			mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
-			Append(mainPanel);
+class UIGlowrootPageState : UIPageState
+{
+	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/GlowrootPage";
+}
 
-			if (offsetX != -1) {
-				mainPanel.Left.Set(offsetX, 0f);
-				mainPanel.Top.Set(offsetY, 0f);
-			}
+class UIBismitePageStsate : UIPageState
+{
+	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/BismiteMaterialPage";
+}
 
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/MaterialUI/BismiteMaterialPage"));
-			panelBackground.SetPadding(12);
-			mainPanel.Append(panelBackground);
-			mainPanel.AddDragTarget(panelBackground);
+class UIFrigidFragmentPageState : UIPageState
+{
+	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/FrigidFragmentMaterialPage";
+}
 
-			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton", ReLogic.Content.AssetRequestMode.ImmediateLoad);
-			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-20, 1f);
-			closeButton.Top.Set(5, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
-			closeButton.OnClick += CloseButton_OnClick;
-			panelBackground.Append(closeButton);
+class UIHeartScalePageState : UIPageState
+{
+	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/HeartScaleMaterialPage";
+}
 
-			UIElement messageBoxPanel = new UIElement {
-				Width = { Percent = 1f },
-				Height = { Pixels = -50, Percent = 1f },
-				Top = { Pixels = 50, },
-			};
-			panelBackground.Append(messageBoxPanel);
-			mainPanel.AddDragTarget(messageBoxPanel);
-
-        }
-		internal static void OnScrollWheel_FixHotbarScroll(UIScrollWheelEvent evt, UIElement listeningElement) {
-			Main.LocalPlayer.ScrollHotbar(Terraria.GameInput.PlayerInput.ScrollWheelDelta / 120);
-		}
-
-		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			if (mainPanel.ContainsPoint(Main.MouseScreen)) {
-				Main.LocalPlayer.mouseInterface = true;
-			}
-			if (mainPanel.Left.Pixels != 0) {
-				offsetX = mainPanel.Left.Pixels;
-				offsetY = mainPanel.Top.Pixels;
-			}
-			base.DrawSelf(spriteBatch);
-		}
-
-		private void CloseButton_OnClick(UIMouseEvent evt, UIElement listeningElement) {
-			SoundEngine.PlaySound(SoundID.MenuClose);
-			ModContent.GetInstance<SpiritMod>().BookUserInterface.SetState(null);
-		}
-	}
-	class UIFrigidFragmentPageState : UIState
-	{
-		private UIDragableElement mainPanel;
-
-		internal static float offsetX = -1;
-		internal static float offsetY = -1;
-
-		public UIFrigidFragmentPageState() {
-		}
-
-		public override void OnInitialize() {
-			mainPanel = new UIDragableElement();
-			mainPanel.HAlign = 0.5f;
-			mainPanel.VAlign = 0.5f;
-			mainPanel.Width.Set(756f, 0f);
-			mainPanel.Height.Set(323f, 0f);
-			mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
-			Append(mainPanel);
-
-			if (offsetX != -1) {
-				mainPanel.Left.Set(offsetX, 0f);
-				mainPanel.Top.Set(offsetY, 0f);
-			}
-
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/MaterialUI/FrigidFragmentMaterialPage"));
-			panelBackground.SetPadding(12);
-			mainPanel.Append(panelBackground);
-			mainPanel.AddDragTarget(panelBackground);
-
-			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton", ReLogic.Content.AssetRequestMode.ImmediateLoad);
-			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-20, 1f);
-			closeButton.Top.Set(5, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
-			closeButton.OnClick += CloseButton_OnClick;
-			panelBackground.Append(closeButton);
-
-			UIElement messageBoxPanel = new UIElement {
-				Width = { Percent = 1f },
-				Height = { Pixels = -50, Percent = 1f },
-				Top = { Pixels = 50, },
-			};
-			panelBackground.Append(messageBoxPanel);
-			mainPanel.AddDragTarget(messageBoxPanel);
-
-        }
-		internal static void OnScrollWheel_FixHotbarScroll(UIScrollWheelEvent evt, UIElement listeningElement) {
-			Main.LocalPlayer.ScrollHotbar(Terraria.GameInput.PlayerInput.ScrollWheelDelta / 120);
-		}
-
-		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			if (mainPanel.ContainsPoint(Main.MouseScreen)) {
-				Main.LocalPlayer.mouseInterface = true;
-			}
-			if (mainPanel.Left.Pixels != 0) {
-				offsetX = mainPanel.Left.Pixels;
-				offsetY = mainPanel.Top.Pixels;
-			}
-			base.DrawSelf(spriteBatch);
-		}
-
-		private void CloseButton_OnClick(UIMouseEvent evt, UIElement listeningElement) {
-			SoundEngine.PlaySound(SoundID.MenuClose);
-			ModContent.GetInstance<SpiritMod>().BookUserInterface.SetState(null);
-		}
-	}
-	class UIHeartScalePageState : UIState
-	{
-		private UIDragableElement mainPanel;
-
-		internal static float offsetX = -1;
-		internal static float offsetY = -1;
-
-		public UIHeartScalePageState() {
-		}
-
-		public override void OnInitialize() {
-			mainPanel = new UIDragableElement();
-			mainPanel.HAlign = 0.5f;
-			mainPanel.VAlign = 0.5f;
-			mainPanel.Width.Set(756f, 0f);
-			mainPanel.Height.Set(323f, 0f);
-			mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
-			Append(mainPanel);
-
-			if (offsetX != -1) {
-				mainPanel.Left.Set(offsetX, 0f);
-				mainPanel.Top.Set(offsetY, 0f);
-			}
-
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/MaterialUI/HeartScaleMaterialPage"));
-			panelBackground.SetPadding(12);
-			mainPanel.Append(panelBackground);
-			mainPanel.AddDragTarget(panelBackground);
-
-			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton");
-			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-20, 1f);
-			closeButton.Top.Set(5, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
-			closeButton.OnClick += CloseButton_OnClick;
-			panelBackground.Append(closeButton);
-
-			UIElement messageBoxPanel = new UIElement {
-				Width = { Percent = 1f },
-				Height = { Pixels = -50, Percent = 1f },
-				Top = { Pixels = 50, },
-			};
-			panelBackground.Append(messageBoxPanel);
-			mainPanel.AddDragTarget(messageBoxPanel);
-
-        }
-		internal static void OnScrollWheel_FixHotbarScroll(UIScrollWheelEvent evt, UIElement listeningElement) {
-			Main.LocalPlayer.ScrollHotbar(Terraria.GameInput.PlayerInput.ScrollWheelDelta / 120);
-		}
-
-		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			if (mainPanel.ContainsPoint(Main.MouseScreen)) {
-				Main.LocalPlayer.mouseInterface = true;
-			}
-			if (mainPanel.Left.Pixels != 0) {
-				offsetX = mainPanel.Left.Pixels;
-				offsetY = mainPanel.Top.Pixels;
-			}
-			base.DrawSelf(spriteBatch);
-		}
-
-		private void CloseButton_OnClick(UIMouseEvent evt, UIElement listeningElement) {
-			SoundEngine.PlaySound(SoundID.MenuClose);
-			ModContent.GetInstance<SpiritMod>().BookUserInterface.SetState(null);
-		}
-	}
-    class UIEnchantedLeafPageState : UIState
-	{
-		private UIDragableElement mainPanel;
-
-		internal static float offsetX = -1;
-		internal static float offsetY = -1;
-
-		public UIEnchantedLeafPageState() {
-		}
-
-		public override void OnInitialize() {
-			mainPanel = new UIDragableElement();
-			mainPanel.HAlign = 0.5f;
-			mainPanel.VAlign = 0.5f;
-			mainPanel.Width.Set(756f, 0f);
-			mainPanel.Height.Set(323f, 0f);
-			mainPanel.OnScrollWheel += OnScrollWheel_FixHotbarScroll;
-			Append(mainPanel);
-
-			if (offsetX != -1) {
-				mainPanel.Left.Set(offsetX, 0f);
-				mainPanel.Top.Set(offsetY, 0f);
-			}
-
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/MaterialUI/EnchantedLeafMaterialPage"));
-			panelBackground.SetPadding(12);
-			mainPanel.Append(panelBackground);
-			mainPanel.AddDragTarget(panelBackground);
-
-			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/closeButton", ReLogic.Content.AssetRequestMode.ImmediateLoad);
-			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-20, 1f);
-			closeButton.Top.Set(5, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
-			closeButton.OnClick += CloseButton_OnClick;
-			panelBackground.Append(closeButton);
-
-			UIElement messageBoxPanel = new UIElement {
-				Width = { Percent = 1f },
-				Height = { Pixels = -50, Percent = 1f },
-				Top = { Pixels = 50, },
-			};
-			panelBackground.Append(messageBoxPanel);
-			mainPanel.AddDragTarget(messageBoxPanel);
-
-        }
-		internal static void OnScrollWheel_FixHotbarScroll(UIScrollWheelEvent evt, UIElement listeningElement) {
-			Main.LocalPlayer.ScrollHotbar(Terraria.GameInput.PlayerInput.ScrollWheelDelta / 120);
-		}
-
-		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			if (mainPanel.ContainsPoint(Main.MouseScreen)) {
-				Main.LocalPlayer.mouseInterface = true;
-			}
-			if (mainPanel.Left.Pixels != 0) {
-				offsetX = mainPanel.Left.Pixels;
-				offsetY = mainPanel.Top.Pixels;
-			}
-			base.DrawSelf(spriteBatch);
-		}
-
-		private void CloseButton_OnClick(UIMouseEvent evt, UIElement listeningElement) {
-			SoundEngine.PlaySound(SoundID.MenuClose);
-			ModContent.GetInstance<SpiritMod>().BookUserInterface.SetState(null);
-		}
-	}
+class UIEnchantedLeafPageState : UIPageState
+{
+	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/EnchantedLeafMaterialPage";
 }
