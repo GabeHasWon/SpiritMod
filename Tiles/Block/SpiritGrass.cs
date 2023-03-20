@@ -56,6 +56,9 @@ namespace SpiritMod.Tiles.Block
 				PlaceObject(i, j - 2, ModContent.TileType<SpiritTallgrass>(), true, style);
 				NetMessage.SendObjectPlacment(-1, i, j - 2, ModContent.TileType<SpiritTallgrass>(), style, 0, -1, -1);
 			}
+
+			if (SpreadHelper.Spread(i, j, Type, 4, TileID.Dirt) && Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendTileSquare(-1, i, j, 3, TileChangeType.None);
 		}
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

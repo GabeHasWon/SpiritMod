@@ -43,17 +43,9 @@ namespace SpiritMod.Tiles.Block
 				if (PlaceObject(i, j - 1, ModContent.TileType<SpookyFoliage>(), false, style))
 					NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<SpookyFoliage>(), style, 0, -1, -1);
 			}
-			//else if (Main.rand.Next(100) == 0)
-			//{
-			//	if (Framing.GetTileSafely(i-1, j).type == _type &&
-			//		!Framing.GetTileSafely(i-1, j-1).active()&&
-			//		!Framing.GetTileSafely(i, j-1).active()&&
-			//		!Framing.GetTileSafely(i-1, j-2).active()&&
-			//		!Framing.GetTileSafely(i, j-2).active())
-			//	{
 
-			//	}
-			//}
+			if (SpreadHelper.Spread(i, j, Type, 4, TileID.Dirt) && Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendTileSquare(-1, i, j, 3, TileChangeType.None);
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

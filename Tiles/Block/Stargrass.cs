@@ -46,6 +46,9 @@ namespace SpiritMod.Tiles.Block
 				PlaceObject(i, j - 1, ModContent.TileType<StargrassFlowers>(), true, style);
 				NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<StargrassFlowers>(), style, 0, -1, -1);
 			}
+
+			if (SpreadHelper.Spread(i, j, Type, 4, TileID.Dirt) && Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendTileSquare(-1, i, j, 3, TileChangeType.None);
 		}
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

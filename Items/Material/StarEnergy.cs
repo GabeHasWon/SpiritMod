@@ -13,6 +13,9 @@ namespace SpiritMod.Items.Material
 		{
 			DisplayName.SetDefault("Energized Metal");
 			Tooltip.SetDefault("'It utilizes some kind of otherworldly power source'");
+
+			ItemID.Sets.ItemIconPulse[Item.type] = true;
+			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -22,8 +25,6 @@ namespace SpiritMod.Items.Material
 			Item.value = 100;
 			Item.rare = ItemRarityID.Orange;
 			Item.maxStack = 999;
-			ItemID.Sets.ItemIconPulse[Item.type] = true;
-			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);

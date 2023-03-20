@@ -12,6 +12,6 @@ public abstract class Micropass : ILoadable
 	public abstract void Run(GenerationProgress progress, GameConfiguration config);
 	public abstract int GetWorldGenIndexInsert(List<GenPass> tasks, ref bool afterIndex);
 
-	public void Load(Mod mod) { }
-	public void Unload() { }
+	public virtual void Load(Mod mod) { }
+	public virtual void Unload() { }
 }
