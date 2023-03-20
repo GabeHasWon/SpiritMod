@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Sets.GunsMisc.Blaster
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Effects
 {
 	public class GoldCasing : ModGore
 	{

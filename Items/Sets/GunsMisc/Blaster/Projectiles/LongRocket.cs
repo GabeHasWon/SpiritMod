@@ -22,7 +22,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			//Manually get the weapon's element color because Subtype is assigned to after DoTrailCreation is called
 			Item heldItem = Main.player[Projectile.owner].HeldItem;
 			if (heldItem.ModItem is Blaster)
-				color = ColorEffectsIndex.GetColor((heldItem.ModItem as Blaster).element);
+				color = GetColor((heldItem.ModItem as Blaster).element);
 
 			tManager.CreateTrail(Projectile, new StandardColorTrail(color), new RoundCap(), new DefaultTrailPosition(), 12f, 100f, new DefaultShader());
 		}
@@ -44,14 +44,14 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			if (Main.rand.NextBool(2))
 			{
 				Vector2 position = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height));
-				Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.Smoke : ColorEffectsIndex.GetDusts(Subtype)[1], null, 0, default, Main.rand.NextFloat(0.8f, 1.6f));
+				Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.Smoke : Dusts[1], null, 0, default, Main.rand.NextFloat(0.8f, 1.6f));
 				dust.velocity = Projectile.velocity * .8f;
 				dust.noGravity = true;
 			}
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 
 			if (Projectile.timeLeft % 8 == 0 && !Main.dedServ)
-				ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + Projectile.velocity, ColorEffectsIndex.GetColor(Subtype), 25, 10) { ZRotation = .5f, Angle = Projectile.rotation - 1.57f });
+				ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + Projectile.velocity, GetColor(Subtype), 25, 10) { ZRotation = .5f, Angle = Projectile.rotation - 1.57f });
 		}
 
 		public override void Kill(int timeLeft)
@@ -68,7 +68,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			SoundEngine.PlaySound(SoundID.Item14 with { PitchVariance = 0.1f }, Projectile.Center);
 
 			int fireParticles = Main.rand.Next(5, 12);
-			Color color = ColorEffectsIndex.GetColor(Subtype);
+			Color color = GetColor(Subtype);
 
 			for (int i = 0; i < 15; i++)
 			{
@@ -80,7 +80,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 					Vector2 vel = Main.rand.NextVector2Unit() * velLength;
 					ParticleHandler.SpawnParticle(new FireParticle(Projectile.Center, vel, Color.White, color * .25f, Main.rand.NextFloat(0.2f, 0.5f), Main.rand.Next(15, 25)));
 				}
-				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+				int[] dustType = Dusts;
 
 				Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType[Main.rand.Next(dustType.Length)], null);
 				dust.velocity = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * .5f, Main.rand.NextFloat(-1.0f, 1.0f) * .5f);
@@ -92,11 +92,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			directNPCIndex = target.whoAmI;
+			base.OnHitNPC(target, damage, knockback, crit);
 
-			int? debuffType = ColorEffectsIndex.GetDebuffs(Subtype);
-			if (debuffType != null)
-				target.AddBuff(debuffType.Value, 200);
+			directNPCIndex = target.whoAmI;
 		}
 
 		public override bool? CanHitNPC(NPC target) => (target.whoAmI != directNPCIndex) ? null : false;
@@ -104,7 +102,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-			Rectangle frame = GetDrawFrame(texture);
+			Rectangle frame = new(texture.Width / (int)Subtypes.Count * Subtype, texture.Height / Main.projFrames[Projectile.type] * Projectile.frame, (texture.Width / (int)Subtypes.Count) - 2, (texture.Height / Main.projFrames[Projectile.type]) - ((Main.projFrames[Projectile.type] > 1) ? 2 : 0));
 
 			//Draw the projectile normally
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(lightColor),

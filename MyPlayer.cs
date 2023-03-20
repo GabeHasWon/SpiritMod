@@ -747,11 +747,11 @@ namespace SpiritMod
 			BeginShotDetection(item);
 
 			if (daybloomGarb && item.IsMagic())
-				damage += 1;
+				damage.Flat++;
 			if (leatherHood && item.IsRanged())
-				damage += 1;
+				damage.Flat++;
 			if (elderbarkWoodSet)
-				damage += 1;
+				damage.Flat++;
 		}
 
 		public override void PostItemCheck() => EndShotDetection();
@@ -2016,10 +2016,7 @@ namespace SpiritMod
 				if (concentratedCooldown == 0)
 					SoundEngine.PlaySound(SoundID.MaxMana);
 
-				if (Player.velocity.X != 0f)
-					concentratedCooldown--;
-				else
-					concentratedCooldown -= 2;
+				concentratedCooldown -= (Player.velocity.X == 0f) ? 2 : 1;
 			}
 			else
 			{

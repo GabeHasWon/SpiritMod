@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Effects;
 using SpiritMod.Mechanics.Trails;
 using Terraria;
 using Terraria.Audio;

@@ -44,7 +44,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 			for (int i = 0; i < 2; i++)
 			{
-				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+				int[] dustType = Dusts;
 
 				Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType[Main.rand.Next(dustType.Length)], Projectile.velocity * .5f, 80);
 				dust.noGravity = true;
@@ -60,7 +60,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				if (timeLeft <= 0)
 					velocity = (Projectile.velocity * Main.rand.NextFloat(0.6f, 1.0f)).RotatedByRandom(0.11f);
 
-				int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+				int[] dustType = Dusts;
 				Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, dustType[Main.rand.Next(2)],
 					velocity, 0, default, Main.rand.NextFloat(1.0f, 1.2f));
 				dust.noGravity = true;
@@ -70,18 +70,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			int? debuffType = ColorEffectsIndex.GetDebuffs(Subtype);
-			if (debuffType != null)
-				target.AddBuff(debuffType.Value, 200);
-		}
-
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{
 			for (int k = 0; k < Projectile.oldPos.Length; k++)
 			{
-				Color color = ColorEffectsIndex.GetColor(Subtype) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+				Color color = GetColor(Subtype) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
 				float scale = Projectile.scale;
 				Texture2D texture = TextureAssets.Projectile[Type].Value;
 
@@ -92,7 +85,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-			Color drawColor = ColorEffectsIndex.GetColor(Subtype);
+			Color drawColor = GetColor(Subtype);
 
 			for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[Projectile.type]; i++)
 			{

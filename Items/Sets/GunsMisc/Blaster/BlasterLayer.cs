@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -7,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
-	public class BlasterPlayer : PlayerDrawLayer
+	public class BlasterLayer : PlayerDrawLayer
 	{
 		public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.HeldItem);
 
@@ -16,7 +17,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<Blaster>())
 			{
 				var blaster = drawInfo.drawPlayer.HeldItem.ModItem as Blaster;
-				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster_Glow").Value, new Vector2(1, 4), new Vector2(0, blaster.build), drawInfo, ColorEffectsIndex.GetColor(blaster.element));
+				DrawItem(Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster").Value, Mod.Assets.Request<Texture2D>("Items/Sets/GunsMisc/Blaster/Blaster_Glow").Value, new Vector2(1, 4), new Vector2(0, blaster.build), drawInfo, SubtypeProj.GetColor(blaster.element));
 			}
 			else if (drawInfo.drawPlayer.HeldItem.type == ModContent.ItemType<Exotic>())
 			{

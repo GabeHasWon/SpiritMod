@@ -3,16 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using Terraria;
 
-namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Particles
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Effects
 {
-	public class BlasterFlash : Particle
+	public class HoloFlash : Particle
 	{
 		private const int _numFrames = 3;
 		private readonly int _frame;
 		private readonly int _direction;
 		private const int _displayTime = 2;
 
-		public BlasterFlash(Vector2 position, float scale, float rotation)
+		public HoloFlash(Vector2 position, float scale, float rotation)
 		{
 			Position = position;
 			Scale = scale;

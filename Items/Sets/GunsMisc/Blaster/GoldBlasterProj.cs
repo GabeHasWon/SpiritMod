@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Sets.GunsMisc.Blaster.Particles;
+using SpiritMod.Items.Sets.GunsMisc.Blaster.Effects;
 using SpiritMod.Particles;
 using Terraria;
 using Terraria.DataStructures;
@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blaster");
-			Main.projFrames[Projectile.type] = 9;
+			Main.projFrames[Projectile.type] = 12;
 		}
 
 		public override void SetDefaults()
@@ -56,7 +56,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			if (++Projectile.frameCounter >= 4)
 			{
-				Projectile.frameCounter = 0;
 				if (Projectile.frame == 0)
 				{
 					//Spawn a visual indicator
@@ -69,7 +68,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						}
 					}
 				}
-				if (++Projectile.frame >= Main.projFrames[Type])
+
+				bool didDetonate = Projectile.frame != 8;
+				if (Projectile.frame == 8)
 				{
 					foreach (NPC npc in Main.npc)
 					{
@@ -79,14 +80,25 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 							if (!Main.dedServ && detonated)
 							{
+								didDetonate = true;
+
 								float rotation = direction.ToRotation();
+								Vector2 position = Projectile.Center + new Vector2(28, 0).RotatedBy(rotation);
+
 								ParticleHandler.SpawnParticle(new BlasterFlash(Projectile.Center + new Vector2(28, 0).RotatedBy(rotation), 1, rotation));
+								for (int i = 0; i < 3; i++)
+									ParticleHandler.SpawnParticle(new FireParticle(position, (Vector2.UnitX.RotatedBy(rotation) * Main.rand.NextFloat(0.1f, 0.8f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.1f, 0.3f), 12));
+
+								ParticleHandler.SpawnParticle(new PulseCircle(npc.Center, (Color.Goldenrod * 0.4f) with { A = 100 }, 50, 10));
 							}
 						}
 					}
-
-					Projectile.active = false;
 				}
+				if (Projectile.frame >= Main.projFrames[Type] || !didDetonate)
+					Projectile.active = false;
+
+				Projectile.frame++;
+				Projectile.frameCounter = 0;
 			}
 		}
 

@@ -1,18 +1,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs;
 using System;
 using System.IO;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
+namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 {
-	public class HeartstrikeProj : ModProjectile
+	public class EnergyBeam : SubtypeProj
 	{
 		private int Counter
 		{
@@ -21,18 +17,12 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 		}
 		private readonly int counterMax = 10;
 
-		private bool Secondary
-		{
-			get => (int)Projectile.ai[1] != 0;
-			set => Projectile.ai[1] = value ? 1 : 0;
-		}
-
-		private int shotLength = 1200;
+		private int shotLength = 500;
 		private Vector2 origin;
 
-		public override string Texture => "SpiritMod/Items/Sets/BloodcourtSet/Heartstrike/Heartstrike";
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Heartstrike");
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Beam");
 
 		public override void SetDefaults()
 		{
@@ -56,7 +46,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			Projectile.Center = player.Center;
 			player.heldProj = Projectile.whoAmI;
 
-			if (Secondary && Counter == 0)
+			if (Counter == 0)
 				CheckCollision();
 
 			if (Counter < counterMax)
@@ -93,45 +83,26 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			}
 			if (target != null)
 			{
-				target.StrikeNPC((int)(Projectile.damage * 1.5f), Projectile.knockBack * 1.25f, Math.Sign(Projectile.velocity.X));
-				target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 200);
+				target.StrikeNPC(Projectile.damage, Projectile.knockBack, Math.Sign(Projectile.velocity.X));
 
-				Projectile.NewProjectile(Entity.GetSource_FromAI(), origin + (dirUnit * shotLength), Projectile.velocity, ModContent.ProjectileType<FlayedArrow>(), 0, 0f, Projectile.owner, target.whoAmI);
+				int? debuffType = Debuff;
+				if (debuffType != null)
+					target.AddBuff(debuffType.Value, 200);
 			}
 
 			for (int i = 0; i < 12; i++) //Do impact dusts
 			{
-				Dust dust = Dust.NewDustPerfect(origin + (dirUnit * shotLength), DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(1.0f, 1.5f));
+				Dust dust = Dust.NewDustPerfect(origin + (dirUnit * shotLength), Dusts[Main.rand.Next(2)], Vector2.Zero, 0, Color.White, Main.rand.NextFloat(1.0f, 1.5f));
 				dust.velocity = -(Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(0.8f);
 				dust.noGravity = true;
-				dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
 			}
 		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Player player = Main.player[Projectile.owner];
-			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+			if (Counter < 1)
+				return false;
 
-			Vector2 position = player.Center + Projectile.velocity - Main.screenPosition;
-			SpriteEffects effects = Projectile.velocity.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-			float rotation = Projectile.velocity.ToRotation() + ((effects == SpriteEffects.FlipHorizontally) ? MathHelper.Pi : 0);
-
-			if (Secondary && Counter > 0)
-				DrawSecondaryBeam();
-
-			//Draw the projectile normally
-			Main.EntitySpriteDraw(texture, position, null, lightColor, rotation, texture.Size() / 2, Projectile.scale, effects, 0);
-			//Draw the projectile glowmask
-			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, null, Color.White, rotation, texture.Size() / 2, Projectile.scale, effects, 0);
-			//Draw a projectile pulse effect
-			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Pulse").Value, position, null, Color.White * (float)(1f - ((float)Counter / counterMax)), rotation, texture.Size() / 2, Projectile.scale, effects, 0);
-
-			return false;
-		}
-
-		private void DrawSecondaryBeam()
-		{
 			float quoteant = (float)Counter / counterMax;
 			float initScaleY = 30;
 
@@ -142,14 +113,17 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 				Color color = i switch
 				{
-					0 => Color.Red * .5f,
-					1 => Color.Magenta * .8f,
-					_ => Color.Yellow * .6f
+					0 => GetColor(Subtype) * .4f,
+					1 => GetColor(Subtype) * .8f,
+					_ => Color.White * 1.5f
 				};
 				color = (color with { A = 0 }) * (float)(1f - quoteant);
-				scale.Y -= 0.03f * i;
 
 				Main.EntitySpriteDraw(texture, origin - Main.screenPosition, null, color, Projectile.velocity.ToRotation(), new Vector2(0, texture.Height / 2), scale, SpriteEffects.None, 0);
+
+				Texture2D bloom = Mod.Assets.Request<Texture2D>("Effects/Masks/CircleGradient").Value;
+				Vector2 endPos = origin + (Vector2.UnitX * shotLength).RotatedBy(Projectile.velocity.ToRotation());
+				Main.spriteBatch.Draw(bloom, endPos - Main.screenPosition, null, color, 0, bloom.Size() / 2, (0.15f - (i * 0.03f)) * (float)(1f - quoteant), SpriteEffects.None, 0);
 			}
 
 			if (Counter == 1) //Do fancy dusts
@@ -157,25 +131,18 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 				for (int i = 0; i < (shotLength / 10); i++)
 				{
 					Vector2 dustPos = Projectile.Center + new Vector2(Main.rand.NextFloat(shotLength), Main.rand.NextFloat(-(initScaleY / 4), initScaleY / 4)).RotatedBy(Projectile.velocity.ToRotation());
-					Dust dust = Dust.NewDustPerfect(dustPos, DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.2f, 0.5f));
+					Dust dust = Dust.NewDustPerfect(dustPos, Dusts[Main.rand.Next(2)], Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.5f, 1.0f));
 					dust.velocity = Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f);
 					dust.noGravity = true;
-					dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
 				}
 			}
+
+			return false;
 		}
 
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			writer.Write(shotLength);
-			writer.WriteVector2(origin);
-		}
+		public override void SendExtraAI(BinaryWriter writer) => writer.WriteVector2(origin);
 
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			shotLength = reader.Read();
-			origin = reader.ReadVector2();
-		}
+		public override void ReceiveExtraAI(BinaryReader reader) => origin = reader.ReadVector2();
 
 		public override bool? CanDamage() => false;
 	}

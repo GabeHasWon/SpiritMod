@@ -55,7 +55,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Projectile.position = player.Center + new Vector2(44f, -6 * player.direction).RotatedBy(Direction.ToRotation()) - (Projectile.Size / 2);
 			player.itemRotation = MathHelper.WrapAngle(Direction.ToRotation() + ((player.direction < 0) ? MathHelper.Pi : 0));
 
-			int[] dustType = ColorEffectsIndex.GetDusts(Subtype);
+			int[] dustType = Dusts;
 
 			if (Charge < chargeMax)
 			{
@@ -75,12 +75,17 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				player.GetModPlayer<MyPlayer>().Shake += 4;
 
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/EnergyBlastMedium") with { PitchVariance = 0.1f, Volume = 0.6f }, player.Center);
-				ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center, ColorEffectsIndex.GetColor(Subtype), 50, 20, PulseCircle.MovementType.OutwardsQuadratic)
+				
+				for (int i = 0; i < 3; i++)
 				{
-					Angle = Direction.ToRotation(),
-					ZRotation = 0.6f,
-					Velocity = Direction
-				});
+					ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center, GetColor(Subtype), 40 + (i * 15), 20 - i, PulseCircle.MovementType.OutwardsQuadratic)
+					{
+						Angle = Direction.ToRotation(),
+						ZRotation = 0.65f,
+						Velocity = Direction * (i + .5f)
+					});
+				}
+
 				for (int i = 0; i < 12; i++)
 				{
 					var dust = Dust.NewDustPerfect(Projectile.Center, dustType[Main.rand.Next(2)]);
