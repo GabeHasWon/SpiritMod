@@ -7,7 +7,6 @@ using SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles;
 using SpiritMod.Items.Sets.GunsMisc.Blaster.Effects;
 using SpiritMod.Particles;
 using Terraria.DataStructures;
-using static Terraria.ModLoader.PlayerDrawLayer;
 using Terraria.ID;
 using Terraria.Audio;
 using System;
@@ -71,21 +70,22 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				Projectile.timeLeft = 2;
 			}
 
-			Projectile.Center = player.Center + new Vector2(18f - (AnimCounter * 8f), 0).RotatedBy(direction.ToRotation());
+			Projectile.Center = player.Center + new Vector2(22f * (float)(1f - (AnimCounter * 2f)), -(player.direction * 10f) * AnimCounter).RotatedBy(direction.ToRotation());
 			Projectile.rotation = direction.ToRotation() + ((direction.X < 0) ? MathHelper.Pi : 0) - (AnimCounter * player.direction);
+
 			player.itemRotation = MathHelper.WrapAngle(direction.ToRotation() + ((player.direction < 0) ? MathHelper.Pi : 0));
 
 			if (Counter == (Hologram ? (player.itemAnimationMax / 2) : 0))
 			{
 				SetDirection(player);
-				AnimCounter = 1f;
+				AnimCounter = 0.5f;
 
-				Projectile.NewProjectile(Entity.GetSource_FromAI(), Projectile.Center, direction * 10f, ModContent.ProjectileType<HoloShot>(), Projectile.damage, Projectile.knockBack, player.whoAmI, Hologram ? 1f : 0f);
+				Vector2 position = Projectile.Center + (direction * 26) - (Vector2.UnitY * 2);
+
+				Projectile.NewProjectile(Entity.GetSource_FromAI(), position, direction * 10f, ModContent.ProjectileType<HoloShot>(), Projectile.damage, Projectile.knockBack, player.whoAmI, Hologram ? 1f : 0f);
 
 				if (!Main.dedServ)
 				{
-					Vector2 position = Projectile.Center + ((direction * 28) - (Vector2.UnitY * 4));
-
 					if (Hologram)
 					{
 						ParticleHandler.SpawnParticle(new HoloFlash(position, 1, direction.ToRotation()));
@@ -112,7 +112,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				Counter = player.itemAnimationMax;
 
 			if (AnimCounter > 0)
-				AnimCounter -= 0.1f;
+				AnimCounter -= 0.05f;
 		}
 
 		private void SetDirection(Player player)
@@ -132,8 +132,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			SpriteEffects effects = (direction.X < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			Vector2 offset = new Vector2(0, Projectile.gfxOffY);
+			Color color = Hologram ? Color.White : lightColor;
 
-			Main.EntitySpriteDraw(texture, Projectile.Center + offset - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(Color.White), 
+			Main.EntitySpriteDraw(texture, Projectile.Center + offset - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(color), 
 				Projectile.rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale, effects, 0);
 			return false;
 		}

@@ -62,12 +62,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				Projectile.scale += 0.005f;
 		}
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			Projectile.velocity = -oldVelocity;
-			return false;
-		}
-
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);

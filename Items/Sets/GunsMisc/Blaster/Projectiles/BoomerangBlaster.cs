@@ -150,7 +150,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(lightColor), Projectile.rotation, frame.Size() / 2, Projectile.scale, effects, 0);
 
-			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(Color.White), Projectile.rotation, frame.Size() / 2, Projectile.scale, effects, 0);
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(GetColor(Subtype)), Projectile.rotation, frame.Size() / 2, Projectile.scale, effects, 0);
 			return false;
 		}
 	}

@@ -1,15 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon.LaserGate
 {
 	public class GateLaser : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Gate Laser");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Gate Laser");
 
 		public override void SetDefaults()
 		{
@@ -24,6 +22,5 @@ namespace SpiritMod.Projectiles.Summon.LaserGate
 			Projectile.timeLeft = 1;
 			Projectile.tileCollide = true;
 		}
-
 	}
 }

@@ -48,7 +48,6 @@ namespace SpiritMod.Items.DonatorItems
 				if (Item.useStyle == ItemUseStyleID.Swing)
 				{
 					Item.useStyle = ItemUseStyleID.HoldUp;
-					Item.noUseGraphic = false;
 					Item.UseSound = null;
 				}
 				else
@@ -60,7 +59,6 @@ namespace SpiritMod.Items.DonatorItems
 					DuskfeatherBlade.AttractOldestBlade(player);
 
 				Item.useStyle = ItemUseStyleID.Swing;
-				Item.noUseGraphic = true;
 				Item.UseSound = SoundID.Item1;
 			}
 			return true;

@@ -55,7 +55,9 @@ namespace SpiritMod.NPCs.Phantom
 		bool trailbehind;
 		bool noise;
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneOverworldHeight && Main.hardMode && !Main.dayTime && !spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneCorrupt && !spawnInfo.Player.ZoneCrimson && !spawnInfo.Player.ZoneHallow && !Main.pumpkinMoon && !Main.snowMoon ? 0.015f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+			=> spawnInfo.Player.ZoneOverworldHeight && Main.hardMode && !Main.dayTime && !spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneCorrupt && 
+			!spawnInfo.Player.ZoneCrimson && !spawnInfo.Player.ZoneHallow && !spawnInfo.PlayerInTown && !Main.pumpkinMoon && !Main.snowMoon ? 0.015f : 0f;
 
 		public override bool PreAI()
 		{

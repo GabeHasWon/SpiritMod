@@ -10,12 +10,15 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 {
 	public class DragonTailTwo : ModProjectile
 	{
+		int num;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Jade Dragon");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.penetrate = 600;
@@ -28,11 +31,9 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 			Projectile.width = Projectile.height = 32;
 
 		}
-		int num;
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(66 - (int)(num / 3 * 2), 245 - (int)(num / 3 * 2), 120 - (int)(num / 3 * 2), 255 - num);
-		}
+
+		public override Color? GetAlpha(Color lightColor) => new Color(66 - (int)(num / 3 * 2), 245 - (int)(num / 3 * 2), 120 - (int)(num / 3 * 2), 255 - num);
+		
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
@@ -43,6 +44,7 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 			}
 			return false;
 		}
+
 		public override bool PreAI()
 		{
 			num += 4;
