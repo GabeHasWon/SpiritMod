@@ -141,7 +141,7 @@ namespace SpiritMod.NPCs.ChainedSinner
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) 
 		{
 			if (spawnInfo.SpawnTileY < Main.maxTilesY - 160 && spawnInfo.SpawnTileType == TileID.Ash || spawnInfo.SpawnTileType == TileID.ObsidianBrick || spawnInfo.SpawnTileType == TileID.HellstoneBrick)
-				return NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 2f : 0f;
+				return NPC.downedBoss3 ? SpawnCondition.Underworld.Chance : 0f;
 			return 0;
 		}
 	}
