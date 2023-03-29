@@ -10,15 +10,15 @@ namespace SpiritMod.Prim
 {
 	public class FireChainPrimTrail : PrimTrail
 	{
-		public FireChainPrimTrail(Projectile projectile)
+		public FireChainPrimTrail(Projectile projectile, int width = 20, int cap = 12, float alpha = 1f)
 		{
 			Entity = projectile;
 			EntityType = projectile.type;
 			DrawType = PrimTrailManager.DrawProjectile;
 			Color = new Color(252, 73, 3);
-			Width = 20;
-			Cap = 40;
-			AlphaValue = 1f;
+			Width = width;
+			Cap = cap;
+			AlphaValue = alpha;
 		}
 
 
@@ -76,11 +76,11 @@ namespace SpiritMod.Prim
 
 		public override void OnUpdate()
 		{
-			if (!(Entity is Projectile proj))
+			if (Entity is not Projectile)
 				return;
 
 			Counter++;
-			PointCount = Points.Count() * 6;
+			PointCount = Points.Count * 6;
 
 			if (Cap < PointCount / 6)
 				Points.RemoveAt(0);
@@ -98,7 +98,8 @@ namespace SpiritMod.Prim
 		{
 			Destroyed = true;
 			Width *= 0.8f;
-			Width += ((float)Math.Sin(Counter * 2) * 0.3f);
+			Width += (float)Math.Sin(Counter * 2) * 0.3f;
+
 			if (Width < 0.05f)
 				Dispose();
 		}

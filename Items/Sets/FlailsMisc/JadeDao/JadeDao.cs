@@ -16,16 +16,20 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 {
 	public class JadeDao : ModItem
 	{
-		public int combo;
+		private bool reversed = false;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Jade Daos");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Jade Daos");
+			Tooltip.SetDefault("Pulls enemies inward on release");
+		}
 
 		public override void SetDefaults()
 		{
 			Item.width = 16;
 			Item.height = 16;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.useTime = Item.useAnimation = 18;
+			Item.useTime = Item.useAnimation = 30;
 			Item.shootSpeed = 1f;
 			Item.knockBack = 4f;
 			Item.UseSound = SoundID.Item116;
@@ -36,58 +40,30 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			Item.channel = true;
 			Item.autoReuse = true;
 			Item.DamageType = DamageClass.Melee;
-			Item.damage = 95;
+			Item.damage = 115;
 			Item.rare = ItemRarityID.LightPurple;
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			combo++;
-
-			float distanceMult = Main.rand.NextFloat(0.8f, 1.2f);
-			float curvatureMult = 0.7f;
-
-			bool slam = combo % 5 == 4;
-
-			Vector2 direction = velocity.RotatedBy(Main.rand.NextFloat(-0.2f, 0.2f));
-			Projectile proj = Projectile.NewProjectileDirect(source, position, direction, type, damage, knockback, player.whoAmI);
-
-			if (proj.ModProjectile is JadeDaoProj modProj)
+			for (int i = 0; i < 2; i++)
 			{
-				modProj.SwingTime = (int)(Item.useTime * UseTimeMultiplier(player) * (slam ? 1.75f : 1));
-				modProj.SwingDistance = player.Distance(Main.MouseWorld) * distanceMult;
-				modProj.Curvature = 0.33f * curvatureMult;
-				modProj.Flip = combo % 2 == 1;
-				modProj.Slam = slam;
-				modProj.PreSlam = combo % 5 == 3;
-			}
-
-			if (slam)
-			{
-				Projectile proj2 = Projectile.NewProjectileDirect(source, position, direction, type, damage, knockback, player.whoAmI);
-
-				if (proj2.ModProjectile is JadeDaoProj modProj2)
+				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, (int)(damage * .5f), knockback, player.whoAmI);
+				if (proj.ModProjectile is JadeDaoProj modProj)
 				{
-					modProj2.SwingTime = (int)(Item.useTime * UseTimeMultiplier(player) * (slam ? 1.75f : 1));
-					modProj2.SwingDistance = player.Distance(Main.MouseWorld) * distanceMult;
-					modProj2.Curvature = 0.33f * curvatureMult;
-					modProj2.Flip = combo % 2 == 0;
-					modProj2.Slam = slam;
+					modProj.Flip = reversed;
+					modProj.secondary = i > 0;
 				}
 
 				if (Main.netMode != NetmodeID.SinglePlayer)
-					NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj2.whoAmI);
+					NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj.whoAmI);
 			}
-
-			if (Main.netMode != NetmodeID.SinglePlayer)
-				NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj.whoAmI);
+			reversed = !reversed;
 
 			return false;
 		}
 
 		public override float UseTimeMultiplier(Player player) => player.GetAttackSpeed(DamageClass.Melee); //Scale with melee speed buffs, like whips
-		public override void NetSend(BinaryWriter writer) => writer.Write(combo);
-		public override void NetReceive(BinaryReader reader) => combo = reader.ReadInt32();
 	}
 
 	public class JadeDaoProj : ModProjectile
@@ -102,11 +78,14 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
-			Projectile.Size = new Vector2(85, 85);
+			Projectile.Size = new Vector2(80, 80);
 			Projectile.tileCollide = false;
 			Projectile.ownerHitCheck = true;
 			Projectile.ignoreWater = true;
 			Projectile.penetrate = -1;
+			Projectile.extraUpdates = 1;
+
+			Projectile.localNPCHitCooldown = -1;
 			Projectile.usesLocalNPCImmunity = true;
 		}
 
@@ -119,101 +98,196 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 		public ref float Timer => ref Projectile.ai[0];
 		public ref float AiState => ref Projectile.ai[1];
 
+		private const int STATE_SWING = 0;
+		private const int STATE_THRUST = 1;
+		private const int STATE_RETRACT = 2;
 
-		private Vector2 returnPosOffset; //The position of the projectile when it starts returning to the player from being hooked
-		private Vector2 npcHookOffset = Vector2.Zero; //Used to determine the offset from the hooked npc's center
-		private float npcHookRotation; //Stores the projectile's rotation when hitting an npc
 		private NPC hookNPC; //The npc the projectile is hooked into
 
 		public const float THROW_RANGE = 320; //Peak distance from player when thrown out, in pixels
-		public const float HOOK_MAXRANGE = 700; //Maximum distance between owner and hooked enemies before it automatically rips out
-		public const int HOOK_HITTIME = 30; //Time between damage ticks while hooked in
-		public const int RETURN_TIME = 6; //Time it takes for the projectile to return to the owner after being ripped out
-
-		private int _flashTime;
+		public const float THRUST_RANGE = 540; //Peak distance from player when thrust out, in pixels
+		public const float HOOK_MAXRANGE = 780; //Maximum distance between owner and hooked enemies before it automatically rips out
 
 		public bool Flip = false;
-		public bool Slam = false;
-		public bool PreSlam = false;
 
-		internal List<Vector2> oldBase = new List<Vector2>();
+		internal List<Vector2> oldBase = new();
 
 		public Vector2 CurrentBase = Vector2.Zero;
 
-		private int slamTimer = 0;
+		public bool secondary = false;
+
+		public JadeDaoBasicTrail trail;
 
 		public override void AI()
 		{
-			if (Projectile.timeLeft > 2) //Initialize chain control points on first tick, in case of projectile hooking in on first tick
-			{
-				_chainMidA = Projectile.Center;
-				_chainMidB = Projectile.Center;
+			if (Projectile.timeLeft > 2) //Initialize the projectile
+				Recalculate();
 
-				SpiritMod.primitives.CreateTrail(new JadeDaoBasicTrail(Projectile));
-			}
+			if (Collision.CanHit(Owner.Center, 1, 1, CurrentBase, 1, 1))
+				Lighting.AddLight(CurrentBase, new Color(54, 192, 98).ToVector3());
 
-			Lighting.AddLight(CurrentBase, new Color(54, 192, 98).ToVector3());
 			Projectile.timeLeft = 2;
+			Owner.itemTime = Owner.itemAnimation = 2;
+			Owner.heldProj = Projectile.whoAmI;
 
-			if (Slam)
-				Owner.itemTime = Owner.itemAnimation = 40;
-			else if (PreSlam)
-				Owner.itemTime = Owner.itemAnimation = 10;
+			if (hookNPC == null)
+				Projectile.rotation = Projectile.AngleFrom(Owner.Center) - 1.57f;
 
-			ThrowOutAI();
-
-			if (!Slam)
-				Owner.itemRotation = MathHelper.WrapAngle(Owner.AngleTo(Projectile.Center) - (Owner.direction < 0 ? MathHelper.Pi : 0));
+			if (AiState != STATE_SWING)
+				ThrustAI();
 			else
-				Owner.itemRotation = MathHelper.WrapAngle(Owner.AngleTo(Main.MouseWorld) - (Owner.direction < 0 ? MathHelper.Pi : 0));
-			_flashTime = Math.Max(_flashTime - 1, 0);
+				ThrowOutAI();
+
+			if (!Owner.channel && AiState == STATE_SWING)
+			{
+				AiState = STATE_THRUST;
+				Recalculate();
+			}
+			if (Timer >= SwingTime)
+			{
+				if (AiState != STATE_SWING)
+					Projectile.Kill();
+
+				Recalculate();
+			}
 		}
 
-		private Vector2 GetSwingPosition(float progress)
+		private void Recalculate()
 		{
-			//Starts at owner center, goes to peak range, then returns to owner center
-			float distance = MathHelper.Clamp(SwingDistance, THROW_RANGE * 0.1f, THROW_RANGE) * MathHelper.Lerp((float)Math.Sin(progress * MathHelper.Pi), 1, 0.04f);
-			distance = Math.Max(distance, 100); //Dont be too close to player
+			Timer = 0;
+			Item item = Owner.HeldItem;
 
-			float angleMaxDeviation = MathHelper.Pi / 1.2f;
-			float angleOffset = Owner.direction * (Flip ? -1 : 1) * MathHelper.Lerp(-angleMaxDeviation, angleMaxDeviation, progress); //Moves clockwise if player is facing right, counterclockwise if facing left
-			return Projectile.velocity.RotatedBy(angleOffset) * distance;
+			if (Owner.whoAmI == Main.myPlayer)
+			{
+				SwingDistance = Owner.Distance(Main.MouseWorld) * Main.rand.NextFloat(0.8f, 1.8f);
+
+				float inaccuracy = (AiState != STATE_SWING) ? Main.rand.NextFloat(-0.1f, 0.1f) : (secondary ? 0.2f : 0f);	
+				Projectile.velocity = Owner.DirectionTo(Main.MouseWorld).RotatedBy(inaccuracy);
+
+				Projectile.netUpdate = true;
+			}
+			SwingTime = (int)(item.useTime * item.ModItem.UseTimeMultiplier(Owner) * (float)((AiState == STATE_THRUST) ? 2.4f : 2.8f));
+			Curvature = 0.29f;
+
+			Owner.ChangeDir(Math.Sign(Projectile.velocity.X));
+			Projectile.ResetLocalNPCHitImmunity();
+
+			//Handle trail and chain drawing variables
+			_chainMidA = Projectile.Center;
+			_chainMidB = Projectile.Center;
+
+			if (trail != null)
+				trail.Destroyed = true;
+
+			SpiritMod.primitives.CreateTrail(trail = new JadeDaoBasicTrail(Projectile));
+		}
+
+		private Vector2 GetPosition(float progress)
+		{
+			if (AiState != STATE_SWING)
+			{
+				float distance = MathHelper.Clamp(SwingDistance, 0, THRUST_RANGE) * MathHelper.Lerp((float)Math.Sin(progress * MathHelper.Pi), 1, 0.04f);
+				return Projectile.velocity * distance;
+			}
+			else
+			{
+				float angleDeviation = MathHelper.Pi;
+
+				//Starts at owner center, goes to peak range, then returns to owner center
+				float distance = MathHelper.Clamp(SwingDistance, 0, THROW_RANGE) * MathHelper.Lerp((float)Math.Sin(progress * MathHelper.Pi), 1, 0.04f);
+
+				float angleOffset = Owner.direction * (Flip ? -1 : 1) * MathHelper.Lerp(-angleDeviation, angleDeviation, progress); //Moves clockwise if player is facing right, counterclockwise if facing left
+				return Projectile.velocity.RotatedBy(angleOffset) * distance;
+			}
 		}
 
 		private void ThrowOutAI()
 		{
-			Projectile.rotation = Projectile.AngleFrom(Owner.Center);
-			Vector2 position = Owner.MountedCenter;
+			Vector2 basePos = Owner.MountedCenter;
 			float progress = ++Timer / SwingTime; //How far the projectile is through its swing
-			if (Slam)
-			{
-				slamTimer++;
-				progress = EaseFunction.EaseCubicInOut.Ease(progress);
-				if (progress > 0.15f && progress < 0.85f)
-				{
-					int timeLeft = Main.rand.Next(40, 100);
+			progress = EaseFunction.EaseCubicInOut.Ease(progress);
 
-					StarParticle particle = new StarParticle(
-						CurrentBase,
-						Main.rand.NextVector2Circular(1, 1),
-						Color.Lerp(new Color(106, 255, 35), new Color(18, 163, 85), Main.rand.NextFloat()),
-						Main.rand.NextFloat(0.1f, 0.2f),
-						timeLeft);
-						particle.TimeActive = (uint)(timeLeft / 2);
-					ParticleHandler.SpawnParticle(particle);
+			Projectile.Center = basePos + GetPosition(progress);
+			Projectile.direction = Projectile.spriteDirection = -Owner.direction * (Flip ? -1 : 1);
+
+			if (Timer == (SwingTime / 2) && Main.netMode != NetmodeID.Server)
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/SwordSlash1") with { PitchVariance = 0.6f, Volume = 0.6f }, Projectile.position);
+
+			Owner.itemRotation = MathHelper.WrapAngle(Owner.AngleTo(Projectile.Center) - (Owner.direction < 0 ? MathHelper.Pi : 0));
+		}
+
+		private void ThrustAI()
+		{
+			Vector2 basePos = Owner.MountedCenter;
+			float progress = ++Timer / SwingTime; //How far the projectile is through its swing
+
+			if (progress > 0.15f && progress < 0.85f)
+			{
+				int timeLeft = Main.rand.Next(40, 100);
+
+				StarParticle particle = new StarParticle(CurrentBase, Main.rand.NextVector2Circular(1, 1), Color.Lerp(new Color(106, 255, 35), new Color(18, 163, 85), Main.rand.NextFloat()), Main.rand.NextFloat(0.1f, 0.2f), timeLeft)
+				{ TimeActive = (uint)(timeLeft / 2) };
+				ParticleHandler.SpawnParticle(particle);
+			}
+
+			if (hookNPC != null) //Owner has an NPC hooked
+			{
+				Projectile.velocity = hookNPC.velocity;
+				Vector2 direction = Owner.DirectionTo(Projectile.Center);
+
+				if (!hookNPC.active)
+				{
+					Timer = SwingTime / 2;
+					Projectile.velocity = direction;
+
+					hookNPC = null;
+				}
+				else if (progress >= .5f || Owner.Distance(Projectile.Center) > HOOK_MAXRANGE) //Unhook the NPC
+				{
+					Curvature = Main.rand.NextFloat(-0.44f, 0.44f);
+
+					SwingDistance = Owner.Distance(Projectile.Center);
+					Projectile.velocity = direction;
+
+					if (hookNPC.knockBackResist > 0f && hookNPC.CanBeChasedBy(Projectile))
+						hookNPC.velocity = -(direction * 20 * hookNPC.knockBackResist);
+
+					Vector2 pos = hookNPC.getRect().ClosestPointInRect(Projectile.Center);
+					for (int i = 0; i < 30; i++)
+					{
+						Dust dust = Dust.NewDustPerfect(pos + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.0f, 8.0f)), DustID.Blood, (-direction * Main.rand.NextFloat(0.5f, 7.0f)).RotatedByRandom(.8f), Scale: Main.rand.NextFloat(0.5f, 1.5f));
+						
+						if (Main.rand.NextBool(2))
+						{
+							dust.noGravity = true;
+							dust.fadeIn = 1.2f;
+						}
+					}
+
+					hookNPC = null;
+
+					if (Main.netMode != NetmodeID.Server)
+					{
+						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Stab") with { PitchVariance = 0.3f, Pitch = 0.5f }, Projectile.position);
+						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/ChainsClanking") with { PitchVariance = 0.5f }, Owner.position);
+					}
 				}
 			}
 			else
-				progress = EaseFunction.EaseQuadOut.Ease(progress);
+			{
+				Projectile.Center = basePos + GetPosition(progress);
 
-			if (slamTimer == 5)
-				SoundEngine.PlaySound(SoundID.NPCDeath7, Projectile.Center);
+				if (Timer == 1) //Spawn one-time effects
+				{
+					Vector2 dirUnit = Vector2.UnitX.RotatedBy(Projectile.velocity.ToRotation());
+					for (int i = 0; i < 12; i++)
+						Dust.NewDustPerfect(Owner.Center + (dirUnit * 18) + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.0f, 10.0f)), DustID.GemEmerald, dirUnit * Main.rand.NextFloat(1.0f, 7.0f), 80, default, Main.rand.NextFloat(0.5f, 1.5f)).noGravity = true;
 
-			Projectile.Center = position + GetSwingPosition(progress);
-			Projectile.direction = Projectile.spriteDirection = -Owner.direction * (Flip ? -1 : 1);
+					Curvature = 0;
+				}
+			}
 
-			if (Timer >= SwingTime)
-				Projectile.Kill();
+			Owner.itemRotation = MathHelper.WrapAngle(Owner.AngleTo(Main.MouseWorld) - (Owner.direction < 0 ? MathHelper.Pi : 0));
 		}
 
 		public override bool PreDraw(ref Color lightColor)
@@ -225,11 +299,13 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			Texture2D glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
 
 			//End control point for the chain
-			Vector2 projBottom = Projectile.Center + new Vector2(0, projTexture.Height / 2).RotatedBy(Projectile.rotation + MathHelper.PiOver2) * 0.75f;
-			DrawChainCurve(Main.spriteBatch, projBottom, out Vector2[] chainPositions);
+			Vector2 projBottom = Projectile.Center + new Vector2(0, projTexture.Height / 2).RotatedBy(Projectile.rotation) * 0.75f;
+			DrawChainCurve(projBottom, out Vector2[] chainPositions);
 
 			//Adjust rotation to face from the last point in the bezier curve
-			float newRotation = (projBottom - chainPositions[chainPositions.Length - 2]).ToRotation() + MathHelper.PiOver2;
+			float newRotation = (projBottom - chainPositions[^2]).ToRotation() + MathHelper.PiOver2;
+			if (AiState == STATE_THRUST)
+				newRotation = Projectile.velocity.ToRotation() + 1.57f;
 
 			//Draw from bottom center of texture
 			Vector2 origin = new Vector2(projTexture.Width / 2, projTexture.Height);
@@ -237,8 +313,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 
 			lightColor = Lighting.GetColor((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f));
 
-			Main.spriteBatch.Draw(projTexture, projBottom - Main.screenPosition, null, lightColor, newRotation, origin, Projectile.scale, flip, 0);
-			Main.spriteBatch.Draw(glowTexture, projBottom - Main.screenPosition, null, Color.White, newRotation, origin, Projectile.scale, flip, 0);
+			Main.EntitySpriteDraw(projTexture, projBottom - Main.screenPosition, null, lightColor, newRotation, origin, Projectile.scale, flip, 0);
+			Main.EntitySpriteDraw(glowTexture, projBottom - Main.screenPosition, null, Color.White, newRotation, origin, Projectile.scale, flip, 0);
 
 			CurrentBase = projBottom + (newRotation - 1.57f).ToRotationVector2() * (projTexture.Height / 2);
 
@@ -247,39 +323,39 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			if (oldBase.Count > 8)
 				oldBase.RemoveAt(0);
 
-			if (!Slam)
-				return false;
+			if (AiState == STATE_THRUST && Timer < 30)
+				DrawGlow(ModContent.Request<Texture2D>(Texture + "_White").Value, projBottom, newRotation, Vector2.One * Projectile.scale, origin, flip, pulse: true);
 
-			Texture2D whiteTexture = ModContent.Request<Texture2D>(Texture + "_White").Value;
-			if (slamTimer < 20 && slamTimer > 5)
-			{
-				float progress = (slamTimer - 5) / 15f;
-				float transparency = (float)Math.Pow(1 - progress, 2);
-				float scale = 1 + progress;
-				Main.spriteBatch.Draw(whiteTexture, projBottom - Main.screenPosition, null, Color.White * transparency, newRotation, origin, Projectile.scale * scale, flip, 0);
-			}
 			return false;
+		}
+
+		private void DrawGlow(Texture2D texture, Vector2 position, float rotation, Vector2 scale, Vector2 origin, SpriteEffects effects, float rate = 30f, bool pulse = false)
+		{
+			float progress = MathHelper.Clamp(Timer / rate, 0f, 1.2f);
+			float transparency = (float)Math.Pow(1 - progress, 2);
+
+			if (pulse)
+				scale *= (float)(1f + progress);
+
+			Main.EntitySpriteDraw(texture, position - Main.screenPosition, null, Color.White * transparency, rotation, origin, scale, effects, 0);
 		}
 
 		//Control points for drawing chain bezier, update slowly when hooked in
 		private Vector2 _chainMidA;
 		private Vector2 _chainMidB;
-		private void DrawChainCurve(SpriteBatch spriteBatch, Vector2 projBottom, out Vector2[] chainPositions)
+		private void DrawChainCurve(Vector2 projBottom, out Vector2[] chainPositions)
 		{
 			Texture2D chainTex = ModContent.Request<Texture2D>(Texture + "_Chain").Value;
 
 			float progress = Timer / SwingTime;
 
-			if (Slam)
-				progress = EaseFunction.EaseCubicInOut.Ease(progress);
-			else
-				progress = EaseFunction.EaseQuadOut.Ease(progress);
+			progress = EaseFunction.EaseCubicInOut.Ease(progress);
 
 			float angleMaxDeviation = MathHelper.Pi * 0.85f;
 			float angleOffset = Owner.direction * (Flip ? -1 : 1) * MathHelper.Lerp(angleMaxDeviation, -angleMaxDeviation / 4, progress);
 
-			_chainMidA = Owner.MountedCenter + GetSwingPosition(progress).RotatedBy(angleOffset) * Curvature;
-			_chainMidB = Owner.MountedCenter + GetSwingPosition(progress).RotatedBy(angleOffset / 2) * Curvature * 2.5f;
+			_chainMidA = Owner.MountedCenter + GetPosition(progress).RotatedBy(angleOffset) * Curvature;
+			_chainMidB = Owner.MountedCenter + GetPosition(progress).RotatedBy(angleOffset / 2) * Curvature * 2.5f;
 
 			BezierCurve curve = new BezierCurve(new Vector2[] { Owner.MountedCenter, _chainMidA, _chainMidB, projBottom });
 
@@ -297,7 +373,11 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 				Vector2 scale = new Vector2(1, yScale); // Stretch/Squash chain segment
 				Color chainLightColor = Lighting.GetColor((int)position.X / 16, (int)position.Y / 16); //Lighting of the position of the chain segment
 				Vector2 origin = new Vector2(chainTex.Width / 2, chainTex.Height); //Draw from center bottom of texture
-				spriteBatch.Draw(chainTex, position - Main.screenPosition, null, chainLightColor, rotation, origin, scale, SpriteEffects.None, 0);
+
+				Main.EntitySpriteDraw(chainTex, position - Main.screenPosition, null, chainLightColor, rotation, origin, scale, SpriteEffects.None, 0);
+
+				if (AiState == STATE_THRUST && Timer < 30)
+					DrawGlow(ModContent.Request<Texture2D>(Texture + "_Chain_White").Value, position, rotation, scale, origin, SpriteEffects.None, 20f);
 			}
 		}
 
@@ -308,43 +388,35 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			int numPoints = 32;
 			Vector2[] chainPositions = curve.GetPoints(numPoints).ToArray();
 			float collisionPoint = 0;
+
 			for (int i = 1; i < numPoints; i++)
 			{
 				Vector2 position = chainPositions[i];
 				Vector2 previousPosition = chainPositions[i - 1];
+
 				if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), position, previousPosition, 6, ref collisionPoint))
 					return true;
 			}
 			return base.Colliding(projHitbox, targetHitbox);
 		}
 
+		public override bool? CanDamage() => AiState != STATE_RETRACT;
+
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			if (Slam)
-				crit = true;
+			float progress = Timer / SwingTime; //How far the projectile is through its swing
+			progress = EaseFunction.EaseCubicInOut.Ease(progress);
 
-			if (Collision.CheckAABBvAABBCollision(target.position, target.Size, Projectile.position, Projectile.Size))
+			if (AiState == STATE_THRUST && progress < 0.6f)
 			{
-				damage = (int)(damage * 1.5f);
+				Vector2 projTop = Projectile.Center + new Vector2(0, TextureAssets.Projectile[Type].Height() / 2).RotatedBy(Projectile.velocity.ToRotation() - 1.57f) * 0.75f;
+				Vector2 stabDims = new Vector2(30);
 
-				for (int i = 0; i < 8; i++)
-				{
-					Vector2 vel = Main.rand.NextFloat(6.28f).ToRotationVector2();
-					vel *= Main.rand.NextFloat(2, 5);
-					ImpactLine line = new ImpactLine(target.Center - (vel * 10), vel, Color.Green, new Vector2(0.25f, Main.rand.NextFloat(0.75f, 1.75f) * 1.5f), 70);
-					line.TimeActive = 30;
-					ParticleHandler.SpawnParticle(line);
-
-				}
-
-				float progress = Timer / SwingTime; //How far the projectile is through its swing
-				if (Slam)
-					progress = EaseFunction.EaseCubicInOut.Ease(progress);
-
-				if (Slam && progress > 0.4f && progress < 0.6f)
+				if (Collision.CheckAABBvAABBCollision(target.position, target.Size, projTop - (stabDims / 2), stabDims)) //Hook an NPC
 				{
 					if (Owner.GetModPlayer<MyPlayer>().Shake < 5)
 						Owner.GetModPlayer<MyPlayer>().Shake += 5;
+
 					for (int j = 0; j < 14; j++)
 					{
 						int timeLeft = Main.rand.Next(20, 40);
@@ -357,6 +429,31 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 							timeLeft);
 						ParticleHandler.SpawnParticle(particle);
 					}
+
+					Timer = 0;
+					hookNPC = target;
+
+					AiState = STATE_RETRACT;
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Stab") with { PitchVariance = 0.3f, Pitch = -0.5f, Volume = 0.8f }, Projectile.position);
+
+					if (trail != null)
+						trail.Destroyed = true;
+
+					crit = true;
+				}
+			}
+			else if (Collision.CheckAABBvAABBCollision(target.position, target.Size, Projectile.position, Projectile.Size))
+			{
+				damage = (int)(damage * 1.5f);
+
+				for (int i = 0; i < 8; i++)
+				{
+					Vector2 vel = Main.rand.NextFloat(6.28f).ToRotationVector2();
+					vel *= Main.rand.NextFloat(2, 5);
+
+					ImpactLine line = new ImpactLine(target.Center - (vel * 10), vel, Color.Green, new Vector2(0.25f, Main.rand.NextFloat(0.75f, 1.75f) * 1.5f), 70)
+					{ TimeActive = 30 };
+					ParticleHandler.SpawnParticle(line);
 				}
 			}
 		}
@@ -365,11 +462,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 		{
 			writer.Write(SwingTime);
 			writer.Write(SwingDistance);
-			writer.WriteVector2(returnPosOffset);
-			writer.WriteVector2(npcHookOffset);
-			writer.Write(npcHookRotation);
 			writer.Write(Flip);
-			writer.Write(Slam);
 			writer.Write(Curvature);
 
 			if (hookNPC == default(NPC)) //Write a -1 instead if the npc isnt set
@@ -382,11 +475,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 		{
 			SwingTime = reader.ReadInt32();
 			SwingDistance = reader.ReadSingle();
-			returnPosOffset = reader.ReadVector2();
-			npcHookOffset = reader.ReadVector2();
-			npcHookRotation = reader.ReadSingle();
 			Flip = reader.ReadBoolean();
-			Slam = reader.ReadBoolean();
 			Curvature = reader.ReadSingle();
 
 			int whoAmI = reader.ReadInt32(); //Read the whoami value sent
