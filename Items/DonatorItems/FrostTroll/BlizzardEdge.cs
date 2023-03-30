@@ -21,6 +21,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 			DisplayName.SetDefault("Blizzard's Edge");
 			Tooltip.SetDefault("Right-click after five swings to summon a blizzard");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
+			Item.staff[Type] = true; //This will only take effect when using right-click
 		}
 
 		public override void SetDefaults()
@@ -35,10 +36,10 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 			Item.knockBack = 5;
 			Item.value = 96700;
 			Item.rare = ItemRarityID.LightPurple;
-			Item.shootSpeed = 0f;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.crit = 6;
+			Item.shootSpeed = 1f;
 			Item.shoot = ModContent.ProjectileType<BlizzardProjectile>();
 		}
 
@@ -48,7 +49,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 				target.AddBuff(BuffID.Frostburn, 400, true);
 		}
 
-		public override bool AltFunctionUse(Player player) => true;
+		public override bool AltFunctionUse(Player player) => counter <= 0;
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
 
@@ -59,22 +60,19 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 			if (player.altFunctionUse == 2 && player.whoAmI == Main.myPlayer)
 			{
 				DrawDust(player);
-				if (counter <= 0)
-				{
-					player.GetModPlayer<MyPlayer>().Shake += 8;
-					SoundEngine.PlaySound(SoundID.Item45);
 
-					if (Main.netMode != NetmodeID.Server)
-						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BlizzardLoop") with { Volume = 0.65f, PitchVariance = 0.54f }, player.Center);
+				player.GetModPlayer<MyPlayer>().Shake += 8;
+				SoundEngine.PlaySound(SoundID.Item45);
 
-					int p = Projectile.NewProjectile(source, position.X + (110 * player.direction), position.Y - 8, 0, 0, ModContent.ProjectileType<BlizzardProjectile>(), damage / 3, knockback / 4, player.whoAmI);
-					Main.projectile[p].direction = player.direction;
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BlizzardLoop") with { Volume = 0.65f, PitchVariance = 0.54f }, player.Center);
 
-					if (Main.netMode != NetmodeID.SinglePlayer)
-						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, p);
+				int p = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<BlizzardProjectile>(), damage / 3, knockback / 4, player.whoAmI);
 
-					counter = 5;
-				}
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, p);
+
+				counter = 5;
 			}
 
 			if (counter == 0 && Main.netMode != NetmodeID.Server)
@@ -87,14 +85,15 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 
 		public void DrawDust(Player player)
 		{
-			float cosRot = (float)Math.Cos(player.itemRotation - 0.78f * player.direction * player.gravDir);
-			float sinRot = (float)Math.Sin(player.itemRotation - 0.78f * player.direction * player.gravDir);
+			float cosRot = (float)Math.Cos(player.itemRotation * player.direction * player.gravDir);
+			float sinRot = (float)Math.Sin(player.itemRotation * player.direction * player.gravDir);
+
 			if (!Main.dedServ)
 			{
 				for (int i = 0; i < 13; i++)
 				{
 					float length = (Item.width * 1.2f - i * Item.width / 9) * Item.scale + 32;
-					ParticleHandler.SpawnParticle(new FireParticle(new Vector2((float)(player.itemLocation.X + length * cosRot * player.direction), (float)(player.itemLocation.Y + length * sinRot * player.direction)), new Vector2(0, Main.rand.NextFloat(-.15f, -.1f)), Blue, White, Main.rand.NextFloat(0.15f, 0.45f), 30));
+					ParticleHandler.SpawnParticle(new FireParticle(new Vector2((float)(player.itemLocation.X + length * cosRot * player.direction), (float)(player.itemLocation.Y + length * sinRot)), new Vector2(0, Main.rand.NextFloat(-.8f, -.2f)), Blue, White, Main.rand.NextFloat(0.15f, 0.45f), 30));
 				}
 			}
 		}
@@ -106,7 +105,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 				if (counter > 0)
 					return false;
 
-				Item.useStyle = ItemUseStyleID.HoldUp;
+				Item.useStyle = ItemUseStyleID.Shoot;
 			}
 			else
 			{
@@ -121,6 +120,9 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 		private readonly Color Blue = new(0, 114, 201);
 		private readonly Color White = new(255, 255, 255);
 
+		public ref float Timer => ref Projectile.ai[0];
+		private readonly int timerMax = 400;
+
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Blizzard");
@@ -131,58 +133,67 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 			Projectile.hostile = false;
 			Projectile.penetrate = 25;
 			Projectile.timeLeft = 120;
-			Projectile.height = 60;
 			Projectile.tileCollide = false;
-			Projectile.width = 350;
+			Projectile.width = 60;
+			Projectile.height = 60;
 			Projectile.alpha = 255;
 		}
 
 		public override void AI()
 		{
-			Projectile.velocity.X = .5f * Projectile.direction;
+			Projectile.position -= Projectile.velocity;
+			Projectile.rotation = Projectile.velocity.ToRotation();
+			Vector2 dirFactor = Vector2.Normalize(Projectile.velocity);
 
-			Dust dust = Main.dust[Dust.NewDust(new Vector2(Projectile.Center.X - (120f * Projectile.direction), Projectile.Center.Y - 30 + Main.rand.Next(-25, 25)), 0, 0, ModContent.DustType<Dusts.BlizzardDust>(), 0f, 0f, 100, new Color(), Main.rand.NextFloat(1.125f, 1.775f))];
-			dust.velocity.Y = 0f;
-			dust.velocity.X = Main.rand.NextFloat(13f, 16f) * Projectile.direction;
+			if (Timer < timerMax)
+				Timer += timerMax / 20;
+
+			Vector2 position = Projectile.Center + (Vector2.UnitY * Main.rand.Next(-25, 25)).RotatedBy(Projectile.rotation);
+
+			float scale = Main.rand.NextFloat(1.125f, 1.775f);
+			Dust.NewDustPerfect(position - (Vector2.UnitY * 18 * scale), ModContent.DustType<Dusts.BlizzardDust>(), dirFactor * Main.rand.NextFloat(13f, 16f), 100, new Color(), Main.rand.NextFloat(1.125f, 1.775f));
 
 			if (Main.rand.NextBool(3))
 			{
-				ParticleHandler.SpawnParticle(new SmokeParticle(new Vector2(Projectile.Center.X - (120f * Projectile.direction), Projectile.Center.Y + Main.rand.Next(-25, 25)), new Vector2(Main.rand.NextFloat(-1.5f, 1.5f)), Color.Lerp(Color.LightBlue * .8f, White * .8f, Projectile.timeLeft / 120f), Main.rand.NextFloat(0.55f, 0.75f), 30, delegate (Particle p)
+				ParticleHandler.SpawnParticle(new SmokeParticle(position, new Vector2(Main.rand.NextFloat(-1.5f, 1.5f)), Color.Lerp(Color.LightBlue * .8f, White * .8f, Projectile.timeLeft / 120f), Main.rand.NextFloat(0.55f, 0.75f), 30, delegate (Particle p)
 				{
 					p.Velocity *= 0.93f;
-					p.Velocity.Y = 0f;
-					p.Velocity.X = Main.rand.NextFloat(11f, 14f) * Projectile.direction;
+					p.Velocity = dirFactor * Main.rand.NextFloat(11f, 14f);
 				}));
 			}
 			if (Main.rand.NextBool(5))
 			{
-				ParticleHandler.SpawnParticle(new SnowflakeParticle(new Vector2(Projectile.Center.X - (120f * Projectile.direction), Projectile.Center.Y + Main.rand.Next(-25, 25)), new Vector2(Main.rand.NextFloat(-1.5f, 1.5f), Main.rand.NextFloat(-4.5f, -2.5f)), Blue, White, Main.rand.NextFloat(.45f, .95f), 45, .5f, Main.rand.Next(3), delegate (Particle p)
+				ParticleHandler.SpawnParticle(new SnowflakeParticle(position, new Vector2(Main.rand.NextFloat(-1.5f, 1.5f), Main.rand.NextFloat(-4.5f, -2.5f)), Blue, White, Main.rand.NextFloat(.45f, .95f), 45, .5f, Main.rand.Next(3), delegate (Particle p)
 				{
 					p.Velocity *= 0.93f;
-					p.Velocity.Y += 0.15f;
-					p.Velocity.X = Main.rand.NextFloat(12f, 15f) * Projectile.direction;
+					p.Velocity = dirFactor * Main.rand.NextFloat(12f, 15f);
 				}));
 			}
-			ParticleHandler.SpawnParticle(new FireParticle(new Vector2(Projectile.Center.X - (120f * Projectile.direction), Projectile.Center.Y + Main.rand.Next(-25, 25)), new Vector2(Main.rand.NextFloat(-1.5f, 1.5f), Main.rand.NextFloat(-4.5f, -2.5f)), Blue, White, Main.rand.NextFloat(0.15f, 0.45f), 30, delegate (Particle p)
+			ParticleHandler.SpawnParticle(new FireParticle(position, new Vector2(Main.rand.NextFloat(-1.5f, 1.5f), Main.rand.NextFloat(-4.5f, -2.5f)), Blue, White, Main.rand.NextFloat(0.15f, 0.45f), 30, delegate (Particle p)
 			{
 				p.Velocity *= 0.93f;
-				p.Velocity.Y = 0f;
-				p.Velocity.X = Main.rand.NextFloat(13f, 16f) * Projectile.direction;
+				p.Velocity = dirFactor * Main.rand.NextFloat(13f, 16f);
 			}));
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
+			Vector2 dirFactor = Vector2.Normalize(Projectile.velocity);
+
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.Frostburn, 240);
 
 			for (int i = 0; i < 2; i++)
 			{
-				ParticleHandler.SpawnParticle(new ImpactLine(target.Center, new Vector2(Projectile.velocity.X * .65f, Main.rand.NextFloat(-.5f, .5f)), Color.Lerp(White, Blue, Main.rand.NextFloat()), new Vector2(0.25f, Main.rand.NextFloat(0.4f, .55f) * 1.5f), 70) 
-				{ 
-					TimeActive = 30 
-				});
+				ParticleHandler.SpawnParticle(new ImpactLine(target.Center, (dirFactor * .65f).RotatedByRandom(.5f), Color.Lerp(White, Blue, Main.rand.NextFloat()), new Vector2(0.25f, Main.rand.NextFloat(0.4f, .55f) * 1.5f), 70) 
+				{ TimeActive = 30 });
 			}
+		}
+
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+		{
+			Vector2 dirFactor = Vector2.Normalize(Projectile.velocity);
+			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center + (dirFactor * Timer));
 		}
 	}
 }

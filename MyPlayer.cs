@@ -1468,7 +1468,7 @@ namespace SpiritMod
 			int y1 = (int)Player.Center.Y / 16;
 			var config = ModContent.GetInstance<SpiritClientConfig>();
 
-			if (Player.ZoneSnow && Main.rand.NextBool(27))
+			if (Player.ZoneSnow && !Player.behindBackWall && Main.rand.NextBool(27))
 			{
 				Vector2 spawnPos = new Vector2(Player.Center.X + 8 * Player.direction, Player.Center.Y - 2f);
 				if (Player.sleeping.isSleeping)

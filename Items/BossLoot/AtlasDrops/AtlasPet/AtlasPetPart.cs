@@ -9,7 +9,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 {
 	internal class AtlasPetPart
 	{
-		public Asset<Texture2D> AtlasPetTex => TextureAssets.Projectile[ModContent.ProjectileType<AtlasPetProjectile>()];
+		public static Asset<Texture2D> AtlasPetTex => TextureAssets.Projectile[ModContent.ProjectileType<AtlasPetProjectile>()];
+		public static Asset<Texture2D> AtlasPetGlowMask => ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/AtlasDrops/AtlasPet/AtlasPetProjectile_Glow");
 
 		public Vector2 position;
 		public int column = 0;
@@ -18,10 +19,7 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 		private int _frame = 0;
 		private float _frameCounter = 0;
 
-		public void Update()
-		{
-			UpdateFrame();
-		}
+		public void Update() => UpdateFrame();
 
 		private void UpdateFrame()
 		{
@@ -44,6 +42,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 			var color = Lighting.GetColor(position.ToTileCoordinates());
 
 			Main.EntitySpriteDraw(AtlasPetTex.Value, position + origin - Main.screenPosition, source, color, 0f, origin, 1f, effects, 0);
+
+			Main.EntitySpriteDraw(AtlasPetGlowMask.Value, position + origin - Main.screenPosition, source, Color.White, 0f, origin, 1f, effects, 0);
 		}
 	}
 }
