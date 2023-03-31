@@ -8,10 +8,7 @@ namespace SpiritMod.Projectiles.Held
 {
 	public class GlowStingSpear : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Seraph Blade");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Seraph Blade");
 
 		public override void SetDefaults()
 		{
@@ -19,6 +16,7 @@ namespace SpiritMod.Projectiles.Held
 
 			AIType = ProjectileID.Trident;
 		}
+
 		public override void AI()
 		{
 			int dust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
@@ -28,10 +26,9 @@ namespace SpiritMod.Projectiles.Held
 			Main.dust[dust2].velocity *= 0f;
 			Main.dust[dust2].velocity *= 0f;
 		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return Color.White;
-		}
+
+		public override Color? GetAlpha(Color lightColor) => Color.White;
+
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.NextBool(3))

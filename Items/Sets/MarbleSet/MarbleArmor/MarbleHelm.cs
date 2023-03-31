@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Press 'Up' to grant 'Divine Winds', allowing for limited flight\n5 second cooldown";
+			player.setBonus = "Press 'Up' to grant 'Divine Winds', allowing for limited flight\n10 second cooldown";
 			player.GetSpiritPlayer().marbleSet = true;
 		}
 

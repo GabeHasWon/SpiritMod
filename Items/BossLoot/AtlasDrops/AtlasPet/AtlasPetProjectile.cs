@@ -19,12 +19,12 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 		public ref float State => ref Projectile.ai[0];
 		public ref float TargetNPC => ref Projectile.ai[1];
 
-		private List<AtlasPetPart> _parts = new List<AtlasPetPart>();
+		private readonly List<AtlasPetPart> _parts = new();
 		private float _handFactor = 0;
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lil' Scarab");
+			DisplayName.SetDefault("Atlas Jr.");
 			Main.projFrames[Projectile.type] = 2;
 			Main.projPet[Projectile.type] = true;
 
@@ -54,6 +54,22 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 			{
 				Behaviour();
 				UpdateParts();
+			}
+
+			if (Main.rand.NextBool(3))
+			{
+				Vector2 position = Projectile.oldPos[1] + (Projectile.Size / 2) + new Vector2(2, 8);
+
+				Vector2 factor = Main.rand.NextVector2Unit() * 10f;
+				factor.Y *= .5f;
+				float scale = Main.rand.NextFloat(0.2f, 1.0f);
+
+				Vector2 velocity = Vector2.Normalize(factor).RotatedBy(1.57f) * scale;
+				velocity.Y *= .35f;
+
+				Dust dust = Dust.NewDustPerfect(position + factor, DustID.PinkTorch, velocity, 80, default, scale);
+				dust.noGravity = true;
+				dust.noLightEmittence = true;
 			}
 		}
 
@@ -115,13 +131,13 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 			{
 				item.Update();
 
-				int slot = new int[4] { HandOldPosSlot, 0, 2, HandOldPosSlot }[item.column];
+				int slot = new int[4] { 2, HandOldPosSlot, 0, HandOldPosSlot }[item.column];
 				item.position = Projectile.oldPos[slot];
 
 				float adj = Projectile.oldPos[slot].X - Projectile.oldPos[slot + 1].X;
 				item.effects = Math.Sign(float.IsNaN(adj) ? 0 : adj) == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-				if ((item.column == 0 || item.column == 3) && TargetNPC != -1)
+				if ((item.column == 1 || item.column == 3) && TargetNPC != -1)
 				{
 					item.position = HandPosition(item.column == 0 ? new Vector2(10, 0) : new Vector2(-10, 0));
 					item.effects = Target.velocity.X > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -149,6 +165,13 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 
 		public override bool PreDraw(ref Color lightColor)
 		{
+			Texture2D ray = Mod.Assets.Request<Texture2D>("Textures/Ray_2").Value;
+			Vector2 offset = new Vector2((Projectile.direction == -1) ? 4 : 0, -4);
+			Color color = (Color.Purple * 1.8f * (1f - (float)(Projectile.velocity.Length() * 0.2f))) with { A = 0 };
+
+			Main.EntitySpriteDraw(ray, Projectile.oldPos[1] + (Projectile.Size / 2) + offset - Main.screenPosition, null, color, 
+				Projectile.rotation, new Vector2(ray.Width / 2, 0), new Vector2(1.2f, 0.3f) * Projectile.scale, SpriteEffects.None, 0);
+
 			foreach (var item in _parts)
 				item.Draw();
 			return false;

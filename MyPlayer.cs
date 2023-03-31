@@ -686,7 +686,7 @@ namespace SpiritMod
 					if (Main.dust[num].position != Player.Center)
 						Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
 				}
-				marbleJump = 300;
+				marbleJump = 600;
 			}
 
 			if (marbleSet && (Player.sliding || Player.velocity.Y == 0f))
@@ -797,14 +797,14 @@ namespace SpiritMod
 
 				if (!mimicRepellent && attempt.crate)
 				{
-					if (Main.rand.NextBool(35))
+					if (Main.rand.NextBool(20))
 					{
 						itemDrop = 0;
 						npcSpawn = ModContent.NPCType<WoodCrateMimic>();
 						return;
 					}
 
-					if (Main.rand.NextBool(45))
+					if (Main.rand.NextBool(40))
 					{
 						itemDrop = 0;
 						npcSpawn = ModContent.NPCType<IronCrateMimic>();
@@ -1468,7 +1468,7 @@ namespace SpiritMod
 			int y1 = (int)Player.Center.Y / 16;
 			var config = ModContent.GetInstance<SpiritClientConfig>();
 
-			if (Player.ZoneSnow && Main.rand.NextBool(27))
+			if (Player.ZoneSnow && !Player.behindBackWall && Main.rand.NextBool(27))
 			{
 				Vector2 spawnPos = new Vector2(Player.Center.X + 8 * Player.direction, Player.Center.Y - 2f);
 				if (Player.sleeping.isSleeping)

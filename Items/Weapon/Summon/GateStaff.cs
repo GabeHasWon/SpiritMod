@@ -11,13 +11,12 @@ namespace SpiritMod.Items.Weapon.Summon
 {
 	public class GateStaff : ModItem
 	{
-		static int RightHopper => ModContent.ProjectileType<RightHopper>();
-		static int LeftHopper => ModContent.ProjectileType<LeftHopper>();
+		private static int Hopper => ModContent.ProjectileType<Hopper>();
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gate Staff");
-			Tooltip.SetDefault("Left click and right click to summon an electric field");
+			Tooltip.SetDefault("Summons an electric field\nRight click to remove summoned fields");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Item.staff[Item.type] = true;
 		}
@@ -29,8 +28,8 @@ namespace SpiritMod.Items.Weapon.Summon
 			Item.mana = 16;
 			Item.width = 44;
 			Item.height = 48;
-			Item.useTime = 55;
-			Item.useAnimation = 55;
+			Item.useTime = 25;
+			Item.useAnimation = 25;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.knockBack = 5;
@@ -38,7 +37,7 @@ namespace SpiritMod.Items.Weapon.Summon
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item20;
 			Item.autoReuse = false;
-			Item.shoot = ModContent.ProjectileType<RightHopper>();
+			Item.shoot = ModContent.ProjectileType<Hopper>();
 			Item.shootSpeed = 0f;
 		}
 
@@ -46,44 +45,47 @@ namespace SpiritMod.Items.Weapon.Summon
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override bool AltFunctionUse(Player player) => true;
+
+		public override bool CanUseItem(Player player)
+		{
+			if (player.altFunctionUse == 2)
+			{
+				foreach (Projectile proj in Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == Hopper))
+					proj.Kill();
+
+				return false;
+			}
+			return true;
+		}
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			type = (player.altFunctionUse == 2) ? RightHopper : LeftHopper;
 			float[] scanarray = new float[3];
 			float dist = player.Distance(Main.MouseWorld);
 			Collision.LaserScan(player.Center, player.DirectionTo(Main.MouseWorld), 0, dist, scanarray);
 			dist = 0;
 
 			foreach (float array in scanarray)
-				dist += array / (scanarray.Length);
+				dist += array / scanarray.Length;
 
 			Vector2 spawnpos = player.Center + player.DirectionTo(Main.MouseWorld) * dist;
-			Projectile.NewProjectileDirect(source, spawnpos, Vector2.Zero, type, damage, knockback, player.whoAmI, 0, -1);
+			int projCounts = player.ownedProjectileCounts[Hopper];
+
+			Projectile.NewProjectileDirect(source, spawnpos, Vector2.Zero, Hopper, damage, knockback, player.whoAmI, projCounts);
+
+			int hoppersMax = 2;
+			if (projCounts >= hoppersMax)
+			{
+				foreach (Projectile proj in Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == Hopper))
+				{
+					if (proj.ai[0] == 0)
+						proj.Kill();
+					else
+						proj.ai[0]--; //Readjust all entries
+				}
+			}
+
 			return false;
-		}
-
-		public override bool CanUseItem(Player player)
-		{
-			if (player.statMana <= 12)
-				return false;
-
-			if (player.altFunctionUse == 2)
-			{
-				if (player.ownedProjectileCounts[RightHopper] > 0)
-				{
-					foreach (Projectile proj in Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == RightHopper))
-						proj.Kill();
-				}
-			}
-			else
-			{
-				if (player.ownedProjectileCounts[LeftHopper] > 0)
-				{
-					foreach (Projectile proj in Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == LeftHopper))
-						proj.Kill();
-				}
-			}
-			return true;
 		}
 	}
 }

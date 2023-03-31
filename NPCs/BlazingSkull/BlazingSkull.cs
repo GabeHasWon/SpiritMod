@@ -9,6 +9,7 @@ using System;
 using SpiritMod.Prim;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using Terraria.ModLoader.Utilities;
 
 namespace SpiritMod.NPCs.BlazingSkull
 {
@@ -40,7 +41,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			NPC.defense = 10;
 			NPC.lifeMax = 125;
 			NPC.HitSound = SoundID.NPCHit2;
-			NPC.DeathSound = SoundID.NPCDeath6;
+			NPC.DeathSound = SoundID.NPCDeath39;
 			NPC.value = 300f;
 			NPC.knockBackResist = 1f;
 			NPC.aiStyle = -1;
@@ -60,7 +61,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.damage = 60;
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneUnderworldHeight && NPC.downedBoss3 ? 0.04f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 1.25f : 0f;
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => NPC.ai[2] > rechargetime;
 		public override void AI()
 		{

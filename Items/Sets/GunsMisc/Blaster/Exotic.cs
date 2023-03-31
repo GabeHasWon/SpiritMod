@@ -42,7 +42,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Exotic Blaster");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
+			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, (int)StyleType.Count) { NotActuallyAnimating = true });
 		}
 
 		public override void SetDefaults()
@@ -69,8 +69,20 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Generate();
 		}
 
+		public override Vector2? HoldoutOffset() => Vector2.UnitX * -2f;
+
 		public override void UseItemFrame(Player player)
 		{
+			if (style == (int)StyleType.Golden)
+			{
+				float amount = .5f;
+
+				if (player.ItemAnimationJustStarted)
+					player.itemRotation += (float)player.itemAnimation / player.itemAnimationMax * -player.direction * amount;
+
+				player.itemRotation -= amount / (float)player.itemAnimationMax * -player.direction;
+			}
+
 			//Shot feedback
 			int offset = (int)MathHelper.Clamp(player.itemAnimation - (player.itemAnimationMax - 8), 0, player.itemAnimationMax);
 			player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
@@ -85,20 +97,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			if (player.altFunctionUse == 2)
 			{
 				Projectile.NewProjectile(Entity.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<GoldBlasterProj>(), (int)player.GetDamage(DamageClass.Ranged).ApplyTo(Item.damage), Item.knockBack, player.whoAmI);
-				Item.useStyle = ItemUseStyleID.Rapier;
 				SoundEngine.PlaySound(SoundID.Item149, player.Center);
+
+				player.GetModPlayer<BlasterPlayer>().hide = true;
 			}
-			else
-				Item.useStyle = ItemUseStyleID.Shoot;
 
 			return player.altFunctionUse != 2;
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 2)) * 40f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-				position += muzzleOffset;
 			type = Item.shoot;
 
 			bool muzzleFlare = style == (int)StyleType.Swift || style == (int)StyleType.Golden;
@@ -124,6 +132,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						Projectile proj = Projectile.NewProjectileDirect(Entity.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<StarplateHologram>(), damage, knockback, player.whoAmI);
 						proj.frame = i;
 					}
+
+				player.GetModPlayer<BlasterPlayer>().hide = true;
 			}
 			if (style == (int)StyleType.Swift)
 			{
@@ -135,6 +145,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					SoundEngine.PlaySound(SoundID.Item45 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, position);
 				}
 			}
+
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 2)) * 40f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+				position += muzzleOffset;
 
 			if (muzzleFlare)
 			{
@@ -153,15 +167,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		{
 			Texture2D texture = TextureAssets.Item[Item.type].Value;
 
-			frame.Height = (texture.Height / (int)StyleType.Count) - 2;
 			frame.Y = texture.Height / (int)StyleType.Count * style;
-
-			scale *= (int)StyleType.Count;
-			if (frame.Width > 32 || frame.Height > 32)
-				scale = (frame.Width <= frame.Height) ? (32f / (float)frame.Height) : (32f / (float)frame.Width);
-			scale *= Main.inventoryScale;
-
-			position += new Vector2(-(frame.Width / 2), frame.Height / 2) * scale / 2;
+			frame.Height -= 2;
 
 			//Draw the item normally
 			spriteBatch.Draw(texture, position, frame, Item.GetAlpha(drawColor), 0f, origin, scale, SpriteEffects.None, 0f);
@@ -247,7 +254,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				_ => Item.shoot = ModContent.ProjectileType<HoloShot>()
 			};
 			Item.channel = style == (int)StyleType.Starplate;
-			Item.useStyle = (style == (int)StyleType.Starplate) ? ItemUseStyleID.Rapier : ItemUseStyleID.Shoot;
 
 			Item.SetNameOverride(nameSelection[style] + " Blaster");
 		}

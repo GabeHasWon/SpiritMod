@@ -8,8 +8,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Consumable.Food;
 using System.IO;
-using Terraria.ModLoader.Core;
 using Terraria.GameContent.Bestiary;
+using Terraria.ModLoader.Utilities;
 
 namespace SpiritMod.NPCs.HellEater
 {
@@ -30,7 +30,7 @@ namespace SpiritMod.NPCs.HellEater
 			NPC.height = 46;
 			NPC.damage = 30;
 			NPC.defense = 16;
-			NPC.lifeMax = 112;
+			NPC.lifeMax = 120;
 			NPC.HitSound = SoundID.NPCHit2;
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.value = 300f;
@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.HellEater
 			});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneUnderworldHeight && NPC.downedBoss3 ? 0.04f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

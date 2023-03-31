@@ -43,11 +43,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		{
 			Player player = Main.player[Projectile.owner];
 
-			Projectile.Center = player.Center;
-			player.heldProj = Projectile.whoAmI;
-
 			if (Counter == 0)
 				CheckCollision();
+			else
+				Projectile.Center = player.Center;
 
 			if (Counter < counterMax)
 				Counter++;

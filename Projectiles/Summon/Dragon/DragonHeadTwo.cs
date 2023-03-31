@@ -10,15 +10,18 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 {
 	public class DragonHeadTwo : ModProjectile
 	{
+		int num;
 		int counter = 0;
 		float distance = 8;
-		int rotationalSpeed = 4;
+		readonly int rotationalSpeed = 4;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Jade Dragon");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.penetrate = 6;
@@ -27,15 +30,11 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 			Projectile.friendly = true;
 			Projectile.timeLeft = 95;
 			Projectile.DamageType = DamageClass.Magic;
-			//projectile.extraUpdates = 1;
 			Projectile.width = Projectile.height = 32;
+		}
+		
+		public override Color? GetAlpha(Color lightColor) => new Color(66 - (int)(num / 3 * 2), 245 - (int)(num / 3 * 2), 120 - (int)(num / 3 * 2), 255 - num);
 
-		}
-		int num;
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(66 - (int)(num / 3 * 2), 245 - (int)(num / 3 * 2), 120 - (int)(num / 3 * 2), 255 - num);
-		}
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
@@ -46,18 +45,18 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 			}
 			return false;
 		}
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return false;
-		}
+
+		public override bool OnTileCollide(Vector2 oldVelocity) => false;
+
 		public override void AI()
 		{
 			num += 4;
 			Projectile.alpha += 12;
 			Projectile.spriteDirection = 1;
-			if (Projectile.ai[0] > 0) {
+
+			if (Projectile.ai[0] > 0)
 				Projectile.spriteDirection = 0;
-			}
+
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 			distance += 0.03f;
 			counter += rotationalSpeed;
@@ -80,7 +79,8 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 
 				}
 			}
-			if (flag25) {
+			if (flag25)
+			{
 				float num1 = 12.5f;
 				Vector2 vector2 = new Vector2(Projectile.position.X + (float)Projectile.width * 0.5f, Projectile.position.Y + (float)Projectile.height * 0.5f);
 				float num2 = Main.npc[jim].Center.X - vector2.X;
@@ -93,7 +93,9 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 				float num6 = num2 * num5;
 				float num7 = num3 * num5;
 				int num8 = 10;
-				if (Main.rand.Next(16) == 0) {
+
+				if (Main.rand.NextBool(16))
+				{
 					Projectile.velocity.X = (Projectile.velocity.X * (float)(num8 - 1) + num6) / (float)num8;
 					Projectile.velocity.Y = (Projectile.velocity.Y * (float)(num8 - 1) + num7) / (float)num8;
 				}

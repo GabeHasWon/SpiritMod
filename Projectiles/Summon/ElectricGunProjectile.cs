@@ -70,6 +70,7 @@ namespace SpiritMod.Projectiles.Summon
 			}
 			Player player = Main.player[Projectile.owner];
 			target.AddBuff(Mod.Find<ModBuff>("ElectricSummonTag").Type, 8 * 60 * 60, true);
+			target.AddBuff(Mod.Find<ModBuff>("SummonTag3").Type, 3 * 60 * 60, true);
 			int num1 = -1;
 			for (int i = 0; i < 200; i++)
 			{

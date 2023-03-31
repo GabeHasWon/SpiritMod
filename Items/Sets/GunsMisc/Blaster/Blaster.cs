@@ -38,6 +38,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Charge = 1,
 			Boomerang = 2,
 			Burst = 3,
+			Bouncy = 4,
+			Frantic = 5,
 			Count
 		}
 
@@ -54,12 +56,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			return myClone;
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cosmic Blaster");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cosmic Blaster");
+			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, (int)BuildType.Count) { NotActuallyAnimating = true });
+		}
 
 		public override void SetDefaults()
 		{
 			Item.DamageType = DamageClass.Ranged;
-			Item.width = 46;
+			Item.width = 40;
 			Item.height = 30;
 			Item.damage = 13;
 			Item.useTime = 27;
@@ -80,64 +86,62 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Generate();
 		}
 
+		public override Vector2? HoldoutOffset() => Vector2.UnitX * -2f;
+
 		public override void UseItemFrame(Player player)
 		{
 			//Shot feedback
-			int offset = (int)MathHelper.Clamp(player.itemTime - (float)(player.itemTimeMax / 3f), 0, 10);
+			int offset = (int)MathHelper.Clamp(player.itemTime - (player.itemTimeMax - 5), 0, player.itemTimeMax);
 			player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
 		}
+
+		/*public override void HoldItemFrame(Player player) //This would not be compatible with multiplayer
+		{
+			if (Main.itemAnimations[Type] != null)
+				Main.itemAnimations[Type].Frame = build;
+		}*/
 
 		public override bool AltFunctionUse(Player player) => auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge;
 		public override bool CanUseItem(Player player)
 		{
 			if (auxillary == (int)AuxillaryType.Boomerang)
 				Item.useAnimation = Item.useTime = (player.altFunctionUse == 2) ? 14 : 24;
+
 			return base.CanUseItem(player);
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 40f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-				position += muzzleOffset;
-
 			type = Item.shoot;
-		}
+			IEntitySource source = Item.Source_ShootWithAmmo(player);
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-		{
-			if (!((auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge) && player.altFunctionUse == 2))
-			{
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 3 }, position);
-				FireVisuals(position, velocity, element);
-			}
-
-			Projectile proj;
-			int ai1 = 0;
+			if (auxillary == (int)AuxillaryType.Frantic)
+				velocity = velocity.RotatedByRandom(0.42f);
 
 			if (player.altFunctionUse == 2)
 			{
 				if (auxillary == (int)AuxillaryType.Charge)
 				{
 					//Reduce the damage of the laser due to its piercing and multi-hit abilities
-					damage = (int)(damage * ((build == (int)BuildType.Laser) ? 0.8f : 2.5f));
+					damage = (int)(damage * ((build == (int)BuildType.Laser) ? 1.0f : 2.5f));
 					velocity *= 1.5f;
 					type = ModContent.ProjectileType<BlasterProj>();
 
-					ai1 = build switch
+					SpawnProjectile(source, position, velocity, type, damage, knockback, player, 0, build switch
 					{
 						1 => ModContent.ProjectileType<PiercingBeam>(),
 						2 => ModContent.ProjectileType<LongRocket>(),
 						_ => ModContent.ProjectileType<PhaseBlast>()
-					};
+					});
 				}
 				if (auxillary == (int)AuxillaryType.Boomerang)
 				{
 					velocity = velocity.RotatedBy(-0.3f * player.direction);
 					type = ModContent.ProjectileType<BoomerangBlaster>();
-					Item.useStyle = ItemUseStyleID.Rapier;
 
-					ai1 = build;
+					player.GetModPlayer<BlasterPlayer>().hide = true;
+
+					SpawnProjectile(source, position, velocity, type, damage, knockback, player, 0, build);
 				}
 			}
 			else
@@ -156,22 +160,53 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 							starshot.frame = 1;
 						}
 					}
+
+					SpawnProjectile(source, position, velocity, type, damage, knockback, player);
 				}
 				else if (build == (int)BuildType.Heavy)
+				{
 					velocity = (velocity * Main.rand.NextFloat(0.75f, 1.0f)).RotatedByRandom(0.2f);
-
-				if (auxillary == (int)AuxillaryType.Boomerang)
-					Item.useStyle = ItemUseStyleID.Shoot;
+					SpawnProjectile(source, position, velocity, type, damage, knockback, player); 
+				}
+				else if (build == (int)BuildType.Laser)
+				{
+					SpawnProjectile(source, position, velocity, type, damage, knockback, player, 0, EnergyBeam.shotLengthMax);
+				}
+				else
+				{
+					SpawnProjectile(source, position, velocity, type, damage, knockback, player); //This counts as a generic case
+				}
 			}
 
-			proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+			if (!((auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge) && player.altFunctionUse == 2))
+			{
+				Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 36f;
+				if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+					position += muzzleOffset;
+
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 3 }, position);
+				FireVisuals(position, velocity, element);
+			}
+		}
+
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => false;
+
+		private Projectile SpawnProjectile(IEntitySource source, Vector2 position, Vector2 velocity, int type, int damage, float knockback, Player player, float ai0 = 0, float ai1 = 0)
+		{
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 40f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+				position += muzzleOffset;
+
+			Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, ai0, ai1);
 
 			if (proj.ModProjectile is SubtypeProj)
-				(proj.ModProjectile as SubtypeProj).Subtype = element;
-			proj.ai[1] = ai1;
-			proj.netUpdate = true;
+			{
+				var subtypeProj = proj.ModProjectile as SubtypeProj;
 
-			return false;
+				subtypeProj.Subtype = element;
+				subtypeProj.bouncy = auxillary == (int)AuxillaryType.Bouncy;
+			}
+			return proj;
 		}
 
 		public static void FireVisuals(Vector2 position, Vector2 velocity, int visualElement)
@@ -238,15 +273,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		{
 			Texture2D texture = TextureAssets.Item[Item.type].Value;
 
-			frame.Height = (texture.Height / (int)BuildType.Count) - 2;
 			frame.Y = texture.Height / (int)BuildType.Count * build;
-
-			scale *= (int)BuildType.Count;
-			if (frame.Width > 32 || frame.Height > 32)
-				scale = (frame.Width <= frame.Height) ? (32f / (float)frame.Height) : (32f / (float)frame.Width);
-			scale *= Main.inventoryScale;
-
-			position += new Vector2(-(frame.Width / 2) - 2, (frame.Height / 2) - 2) * scale / 2;
+			frame.Height -= 2;
 
 			//Draw the item normally
 			spriteBatch.Draw(texture, position, frame, Item.GetAlpha(drawColor), 0f, origin, scale, SpriteEffects.None, 0f);
@@ -337,14 +365,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					1 => "Right click to fire an empowered shot",
 					2 => "Right click to throw the gun out like a boomerang",
 					3 => "Fires in bursts",
+					4 => "Shots bounce off surfaces",
+					5 => "Fires quickly at the cost of accuracy",
 					_ => string.Empty
 				},
 				element switch
 				{
-					0 => "Attacks ignite enemies",
-					1 => "Attacks poison enemies",
+					0 => "Inflicts fire damage",
+					1 => "Inflicts poison damage",
 					2 => "Attacks inflict Frostburn",
-					_ => string.Empty,
+					_ => "Attacks shock enemies",
 				}
 			};
 
@@ -355,19 +385,18 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			}
 		}
 
-		public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-		{
-			if (element == (int)Plasma)
-				damage.ApplyTo(7);
-		}
+		public override float UseTimeMultiplier(Player player) => (auxillary == (int)AuxillaryType.Burst) ? 0.3f : base.UseSpeedMultiplier(player);
 
 		public override float UseSpeedMultiplier(Player player)
 		{
-			if (auxillary == (int)AuxillaryType.Burst)
-				return 1.5f;
-			else if (build == (int)BuildType.Wave)
-				return 1.8f;
-			return base.UseSpeedMultiplier(player);
+			float value = base.UseSpeedMultiplier(player);
+
+			if (build == (int)BuildType.Wave && auxillary != (int)AuxillaryType.Burst)
+				value = 0.5f;
+			if (auxillary == (int)AuxillaryType.Frantic)
+				value += 0.6f;
+
+			return value;
 		}
 	}
 }

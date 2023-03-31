@@ -48,7 +48,8 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0)
+			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Luvdisc").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Luvdisc1").Type, 1f);
 			}
@@ -58,26 +59,17 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void AI()
 		{
-			NPC.spriteDirection = -NPC.direction;
 			Player target = Main.player[NPC.target];
+
 			if (NPC.DistanceSQ(target.Center) < 65 * 65 && target.wet && NPC.wet)
 			{
 				Vector2 vel = NPC.DirectionFrom(target.Center) * 4.5f;
 				NPC.velocity = vel;
 				NPC.rotation = NPC.velocity.X * .06f;
-				if (target.position.X > NPC.position.X)
-				{
-					NPC.spriteDirection = -1;
-					NPC.direction = -1;
-					NPC.netUpdate = true;
-				}
-				else if (target.position.X < NPC.position.X)
-				{
-					NPC.spriteDirection = 1;
-					NPC.direction = 1;
-					NPC.netUpdate = true;
-				}
 			}
+
+			if (NPC.velocity.X != 0)
+				NPC.direction = NPC.spriteDirection = Math.Sign(NPC.velocity.X);
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneRockLayerHeight && spawnInfo.Water ? 0.2f : 0f;

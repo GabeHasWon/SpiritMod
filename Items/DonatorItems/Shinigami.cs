@@ -8,7 +8,7 @@ namespace SpiritMod.Items.DonatorItems
 {
 	class Shinigami : ModItem
 	{
-
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shinigami");

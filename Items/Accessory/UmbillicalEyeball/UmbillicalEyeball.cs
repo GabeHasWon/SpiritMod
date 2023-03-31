@@ -13,6 +13,7 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 {
 	public class UmbillicalEyeball : MinionAccessory
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Umbillical Eyeballs");

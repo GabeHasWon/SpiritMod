@@ -17,7 +17,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		}
 		private readonly int counterMax = 10;
 
-		private int shotLength = 500;
+		private int ShotLength
+		{
+			get => (int)Projectile.ai[1];
+			set => Projectile.ai[1] = value;
+		}
+		public const int shotLengthMax = 500;
+
 		private Vector2 origin;
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
@@ -43,11 +49,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		{
 			Player player = Main.player[Projectile.owner];
 
-			Projectile.Center = player.Center;
-			player.heldProj = Projectile.whoAmI;
-
 			if (Counter == 0)
 				CheckCollision();
+			else
+				Projectile.Center = player.Center;
 
 			if (Counter < counterMax)
 				Counter++;
@@ -59,28 +64,32 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		{
 			Vector2 dirUnit = Vector2.Normalize(Projectile.velocity);
 
+			float lenience = 8f; //The length from the origin that the projectile won't scan for tile collision
+
 			//Test tile collision
 			float[] samples = new float[3];
-			Collision.LaserScan(origin, dirUnit, 1, shotLength, samples);
+			Collision.LaserScan(origin + (dirUnit * lenience), dirUnit, 1, ShotLength - lenience, samples);
 
-			shotLength = 0;
+			ShotLength = 0;
 			foreach (float sample in samples)
-				shotLength += (int)(sample / samples.Length);
+				ShotLength += (int)(sample / samples.Length);
 
 			NPC target = null;
 			//Test NPC collision
 			foreach (NPC npc in Main.npc)
 			{
-				float collisionPoint = shotLength;
-				if (Collision.CheckAABBvLineCollision(npc.Hitbox.TopLeft(), npc.Hitbox.Size(), origin, origin + (dirUnit * shotLength), 1, ref collisionPoint) && npc.active && !npc.friendly && npc.CanDamage())
+				float collisionPoint = ShotLength;
+				if (Collision.CheckAABBvLineCollision(npc.Hitbox.TopLeft(), npc.Hitbox.Size(), origin, origin + (dirUnit * ShotLength), 1, ref collisionPoint) && npc.active && !npc.friendly && npc.CanDamage())
 				{
-					if (collisionPoint < shotLength)
+					if (collisionPoint < ShotLength)
 					{
-						shotLength = (int)collisionPoint;
+						ShotLength = (int)collisionPoint;
 						target = npc; //Get the first NPC to the player regardless of their position in the array
 					}
 				}
 			}
+
+			bool doDusts = false;
 			if (target != null)
 			{
 				target.StrikeNPC(Projectile.damage, Projectile.knockBack, Math.Sign(Projectile.velocity.X));
@@ -88,11 +97,28 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				int? debuffType = Debuff;
 				if (debuffType != null)
 					target.AddBuff(debuffType.Value, 200);
+
+				doDusts = true;
+			}
+			else if ((ShotLength + lenience) < shotLengthMax) //The projectile has collided with a tile
+			{
+				if (bouncy)
+				{
+					Vector2 bounceVel = -Projectile.velocity.RotatedByRandom(1.57f);
+
+					Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), origin + (dirUnit * ShotLength), bounceVel, Type, Projectile.damage, Projectile.knockBack, Projectile.owner, 0, shotLengthMax - ShotLength);
+
+					if (proj.ModProjectile is SubtypeProj)
+						(proj.ModProjectile as SubtypeProj).Subtype = Subtype;
+				}
+				doDusts = true;
 			}
 
+			if (!doDusts)
+				return;
 			for (int i = 0; i < 12; i++) //Do impact dusts
 			{
-				Dust dust = Dust.NewDustPerfect(origin + (dirUnit * shotLength), Dusts[Main.rand.Next(2)], Vector2.Zero, 0, Color.White, Main.rand.NextFloat(1.0f, 1.5f));
+				Dust dust = Dust.NewDustPerfect(origin + (dirUnit * ShotLength), Dusts[Main.rand.Next(2)], Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.9f, 1.2f));
 				dust.velocity = -(Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(0.8f);
 				dust.noGravity = true;
 			}
@@ -109,7 +135,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			for (int i = 0; i < 3; i++)
 			{
 				Texture2D texture = (i > 1) ? Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_1").Value : Mod.Assets.Request<Texture2D>("Textures/GlowTrail").Value;
-				Vector2 scale = new Vector2(shotLength, MathHelper.Lerp(initScaleY, 5, quoteant)) / texture.Size();
+				Vector2 scale = new Vector2(ShotLength, MathHelper.Lerp(initScaleY, 5, quoteant)) / texture.Size();
 
 				Color color = i switch
 				{
@@ -122,15 +148,15 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				Main.EntitySpriteDraw(texture, origin - Main.screenPosition, null, color, Projectile.velocity.ToRotation(), new Vector2(0, texture.Height / 2), scale, SpriteEffects.None, 0);
 
 				Texture2D bloom = Mod.Assets.Request<Texture2D>("Effects/Masks/CircleGradient").Value;
-				Vector2 endPos = origin + (Vector2.UnitX * shotLength).RotatedBy(Projectile.velocity.ToRotation());
+				Vector2 endPos = origin + (Vector2.UnitX * ShotLength).RotatedBy(Projectile.velocity.ToRotation());
 				Main.spriteBatch.Draw(bloom, endPos - Main.screenPosition, null, color, 0, bloom.Size() / 2, (0.15f - (i * 0.03f)) * (float)(1f - quoteant), SpriteEffects.None, 0);
 			}
 
 			if (Counter == 1) //Do fancy dusts
 			{
-				for (int i = 0; i < (shotLength / 10); i++)
+				for (int i = 0; i < (ShotLength / 10); i++)
 				{
-					Vector2 dustPos = Projectile.Center + new Vector2(Main.rand.NextFloat(shotLength), Main.rand.NextFloat(-(initScaleY / 4), initScaleY / 4)).RotatedBy(Projectile.velocity.ToRotation());
+					Vector2 dustPos = Projectile.Center + new Vector2(Main.rand.NextFloat(ShotLength), Main.rand.NextFloat(-(initScaleY / 4), initScaleY / 4)).RotatedBy(Projectile.velocity.ToRotation());
 					Dust dust = Dust.NewDustPerfect(dustPos, Dusts[Main.rand.Next(2)], Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.5f, 1.0f));
 					dust.velocity = Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f);
 					dust.noGravity = true;

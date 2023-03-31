@@ -34,11 +34,13 @@ namespace SpiritMod.NPCs.ChainedSinner
 			NPC.height = 74;
 			NPC.aiStyle = -1;
 			NPC.knockBackResist = 0;
-			NPC.lifeMax = 220;
+			NPC.lifeMax = 175;
 			NPC.damage = 60;
 			NPC.defense = 20;
 			NPC.noTileCollide = true;
 			NPC.lavaImmune = true;
+			NPC.HitSound = SoundID.NPCHit41;
+			NPC.DeathSound = SoundID.NPCDeath27;
 		}
 
 		public override void OnSpawn(IEntitySource source)
@@ -141,7 +143,7 @@ namespace SpiritMod.NPCs.ChainedSinner
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) 
 		{
 			if (spawnInfo.SpawnTileY < Main.maxTilesY - 160 && spawnInfo.SpawnTileType == TileID.Ash || spawnInfo.SpawnTileType == TileID.ObsidianBrick || spawnInfo.SpawnTileType == TileID.HellstoneBrick)
-				return NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 2f : 0f;
+				return NPC.downedBoss3 ? SpawnCondition.Underworld.Chance : 0f;
 			return 0;
 		}
 	}

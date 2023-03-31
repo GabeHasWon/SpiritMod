@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             Item.useTime = 25;
             Item.useAnimation = 25;
             Item.value = Item.buyPrice(0, 1, 20, 0);
-            Item.damage = 19;
+            Item.damage = 20;
             Item.width = 30;
             Item.height = 30;
             Item.UseSound = SoundID.Item1;
@@ -58,7 +58,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		{
             if (player.altFunctionUse != 2 || player.GetModPlayer<AccursedBladePlayer>().charge == 0)
                 return false;
-            damage = 19 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 100);
+            damage = 20 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 150);
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetModPlayer<AccursedBladePlayer>().charge);
             player.GetModPlayer<AccursedBladePlayer>().charge = 0;
             SoundEngine.PlaySound(SoundID.NPCDeath52 with { Pitch = 1.2f }, player.position);
@@ -67,7 +67,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
         {
-			if (target.life <= 0)
+			if (target.life <= 0 && target.lifeMax > 5 && !target.friendly && !target.SpawnedFromStatue)
 			{
 				int item = Item.NewItem(Item.GetSource_OnHit(target), (int)target.position.X, (int)target.position.Y - 20, target.width, target.height, Mod.Find<ModItem>("AccursedSoul").Type);
 
@@ -109,7 +109,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		}
 
 		public override bool ItemSpace(Player player) => true;
-		public override void GrabRange(Player player, ref int grabRange) => grabRange = 15;
+		public override void GrabRange(Player player, ref int grabRange) => grabRange = 20;
 		public override bool OnPickup(Player player)
 		{
 			player.GetModPlayer<AccursedBladePlayer>().charge += 0.15f;
