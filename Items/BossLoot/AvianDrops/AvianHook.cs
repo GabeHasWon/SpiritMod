@@ -18,8 +18,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 		public override void SetDefaults()
 		{
-			Item.expert = true;
 			Item.CloneDefaults(ItemID.AmethystHook);
+			Item.expert = true;
 			Item.shootSpeed = 14f;
 			Item.expert = true;
 			Item.shoot = ProjectileType<AvianHookProjectile>();
@@ -58,19 +58,17 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 		public override void PostDraw(Color lightColor)
 		{
-			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/AvianDrops/AvianHookChain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			Texture2D texture = Request<Texture2D>("SpiritMod/Items/BossLoot/AvianDrops/AvianHookChain", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Vector2 center = Projectile.Center;
-
 			Vector2 offset = Main.player[Projectile.owner].MountedCenter - center;
-			bool doDraw = true;
 
 			if (Projectile.Center.HasNaNs() || offset.HasNaNs())
-				doDraw = false;
+				return;
 
-			while (doDraw)
+			while (true)
 			{
 				if (offset.Length() < texture.Height + 1)
-					doDraw = false;
+					return;
 				else
 				{
 					center += Vector2.Normalize(offset) * texture.Height;
