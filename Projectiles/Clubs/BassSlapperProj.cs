@@ -8,11 +8,12 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class BassSlapperProj : ClubProj
 	{
-		public override void SetStaticDefaults()
+		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bass Slapper");
 			Main.projFrames[Projectile.type] = 2;
 		}
+
 		public override void Smash(Vector2 position)
 		{
 			for (int k = 0; k <= 100; k++)
@@ -20,6 +21,7 @@ namespace SpiritMod.Projectiles.Clubs
             
 			SoundEngine.PlaySound(SoundID.NPCHit1, Projectile.position);
 		}
-		public BassSlapperProj() : base(66, 13, 26, -1, 58, 13, 27, 1.7f, 12f){}
+
+		public BassSlapperProj() : base(66, -1, 58, 17f){}
 	}
 }

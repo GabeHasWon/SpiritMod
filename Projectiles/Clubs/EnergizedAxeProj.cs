@@ -11,9 +11,7 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class EnergizedAxeProj : ClubProj
 	{
-		public EnergizedAxeProj() : base(40, 30, 70, -1, 60, 6, 10, 4f, 19f) { }
-
-		public override void SetStaticDefaults()
+		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Unstable Adze");
 			Main.projFrames[Projectile.type] = 3;
@@ -21,7 +19,6 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void Smash(Vector2 position)
 		{
-			Player player = Main.player[Projectile.owner];
 			for (int k = 0; k <= 100; k++)
 				Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), ModContent.DustType<Dusts.BoneDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 9f);
 
@@ -33,10 +30,7 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			int size = 60;
 			if (Projectile.ai[0] >= ChargeTime)
-			{
-
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size * 2, size, size), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
-			}
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -58,5 +52,7 @@ namespace SpiritMod.Projectiles.Clubs
 				Main.projectile[proj].timeLeft = 2;
 			}
 		}
+
+		public EnergizedAxeProj() : base(40, -1, 60, 35f) { }
 	}
 }

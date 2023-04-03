@@ -4,14 +4,12 @@ using Terraria.Audio;
 using Terraria.ID;
 using SpiritMod.Items.Sets.ClubSubclass.ClubSandwich;
 using static Terraria.ModLoader.ModContent;
-using SpiritMod.Items.Equipment.AuroraSaddle;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Clubs
 {
 	class ClubSandwichProj : ClubProj
 	{
-		public override void SetStaticDefaults()
+		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Club Sandwich");
 			Main.projFrames[Projectile.type] = 2;
@@ -45,6 +43,6 @@ namespace SpiritMod.Projectiles.Clubs
 			SoundEngine.PlaySound(SoundID.NPCHit20, Projectile.position);
 		}
 
-		public ClubSandwichProj() : base(52, 17, 38, -1, 58, 5, 9, 1.7f, 12f) { }
+		public ClubSandwichProj() : base(52, -1, 58, 17f) { }
 	}
 }

@@ -12,16 +12,17 @@ namespace SpiritMod.Dusts
             dust.noGravity = false;
             dust.noLight = false;
         }
-        public override Color? GetAlpha(Dust dust, Color lightColor)
-        {
-            return new Color(220, 230, 220, 100);
-        }
-        public override bool Update(Dust dust)
+
+        public override Color? GetAlpha(Dust dust, Color lightColor) => new Color(220, 230, 220, 100);
+
+		public override bool Update(Dust dust)
         {
             dust.position += dust.velocity;
             dust.velocity.Y += 0.2f;
-            if (Main.tile[(int)dust.position.X / 16, (int)dust.position.Y / 16].HasTile && Main.tile[(int)dust.position.X / 16, (int)dust.position.Y / 16].BlockType == BlockType.Solid)
-            {
+
+			Tile tile = Main.tile[(int)dust.position.X / 16, (int)dust.position.Y / 16];
+			if (tile.HasTile && tile.BlockType == BlockType.Solid && Main.tileSolid[tile.TileType])
+			{
                 dust.velocity *= -0.5f;
             }
 

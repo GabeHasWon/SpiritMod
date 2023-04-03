@@ -11,6 +11,8 @@ namespace SpiritMod.Projectiles.Clubs
 	{
 		private bool[] _npcAliveLast;
 
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Toxin Field");
 
 		public override void SetDefaults()

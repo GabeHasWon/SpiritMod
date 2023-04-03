@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class BoneClubProj : ClubProj
 	{
-		public override void SetStaticDefaults()
+		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bone Club");
 			Main.projFrames[Projectile.type] = 3;
@@ -38,6 +38,7 @@ namespace SpiritMod.Projectiles.Clubs
 			if (Projectile.ai[0] >= ChargeTime)
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size * 2, Size, Size), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
 		}
-		public BoneClubProj() : base(50, 40, 100, -1, 62, 5, 9, 1.7f, 12f){}
+
+		public BoneClubProj() : base(50, -1, 62, 17f){}
 	}
 }

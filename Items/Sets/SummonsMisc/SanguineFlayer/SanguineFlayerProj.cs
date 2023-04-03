@@ -273,7 +273,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 			DrawChainCurve(Main.spriteBatch, projBottom, out Vector2[] chainPositions);
 
 			//Adjust rotation to face from the last point in the bezier curve
-			float newRotation = (projBottom - chainPositions[chainPositions.Length - 2]).ToRotation() + MathHelper.PiOver2;
+			float newRotation = (projBottom - chainPositions[^2]).ToRotation() + MathHelper.PiOver2;
 			if (AiState == STATE_HOOKED)
 				newRotation = npcHookRotation; //Use static rotation when hooked in instead
 

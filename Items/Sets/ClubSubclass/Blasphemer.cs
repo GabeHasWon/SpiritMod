@@ -4,46 +4,36 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace SpiritMod.Items.Sets.ClubSubclass
 {
-    public class Blasphemer : ModItem
+    public class Blasphemer : ClubItem
     {
-        public override void SetStaticDefaults()
+		internal override int MinDamage => 95;
+		internal override int MaxDamage => 238;
+		internal override float MinKnockback => 6f;
+		internal override float MaxKnockback => 12f;
+
+		public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Blasphemer");
             Tooltip.SetDefault("Charged strikes create a fiery geyser");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/ClubSubclass/Blasphemer_Glow");
         }
 
-        public override void SetDefaults()
+        public override void Defaults()
         {
-            Item.channel = true;
-            Item.damage = 38;
             Item.width = 60;
             Item.height = 60;
-            Item.useTime = 320;
-            Item.useAnimation = 320;
             Item.crit = 8;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.DamageType = DamageClass.Melee;
-            Item.noMelee = true;
-            Item.knockBack = 10;
-            Item.useTurn = true;
             Item.value = Item.sellPrice(0, 0, 90, 0);
             Item.rare = ItemRarityID.Orange;
-            Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<Projectiles.Clubs.BlasphemerProj>();
-            Item.shootSpeed = 6f;
-            Item.noUseGraphic = true;
         }
-
-		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
 		public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<Items.Sets.SlagSet.CarvedRock>(), 25);
+            recipe.AddIngredient(ModContent.ItemType<SlagSet.CarvedRock>(), 25);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

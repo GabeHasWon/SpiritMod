@@ -17,12 +17,14 @@ namespace SpiritMod.Dusts
         {
             dust.position += dust.velocity;
             dust.velocity.Y += 0.2f;
-            if (Main.tile[(int)dust.position.X / 16, (int)dust.position.Y / 16].HasTile && Main.tile[(int)dust.position.X / 16, (int)dust.position.Y / 16].BlockType == BlockType.Solid)
-            {
-                dust.velocity *= -0.5f;
-            }
 
-            dust.rotation = dust.velocity.ToRotation();
+			Tile tile = Main.tile[(int)dust.position.X / 16, (int)dust.position.Y / 16];
+			if (tile.HasTile && tile.BlockType == BlockType.Solid && Main.tileSolid[tile.TileType])
+			{
+				dust.velocity *= -0.5f;
+			}
+
+			dust.rotation = dust.velocity.ToRotation();
             dust.scale *= 0.99f;
             if (dust.scale < 0.2f)
             {

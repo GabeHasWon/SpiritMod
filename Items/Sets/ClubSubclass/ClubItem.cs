@@ -1,0 +1,68 @@
+﻿using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using Terraria.DataStructures;
+using SpiritMod.Projectiles.Clubs;
+
+namespace SpiritMod.Items.Sets.ClubSubclass
+{
+    public abstract class ClubItem : ModItem
+    {
+		internal abstract int MinDamage { get; }
+		internal abstract int MaxDamage { get; }
+		internal abstract float MinKnockback { get; }
+		internal abstract float MaxKnockback { get; }
+
+		public virtual void Defaults() { }
+
+		public sealed override void SetDefaults()
+        {
+			Item.damage = MinDamage;
+			Item.knockBack = MinKnockback;
+            Item.channel = true;
+            Item.useTime = 320;
+            Item.useAnimation = 320;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.DamageType = DamageClass.Melee;
+            Item.noMelee = true;
+			Item.noUseGraphic = true;
+			Item.useTurn = true;
+            Item.autoReuse = false;
+            Item.shootSpeed = 1f;
+
+			Defaults();
+		}
+
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		{
+			StatModifier meleeDMG = player.GetTotalDamage(DamageClass.Melee);
+			StatModifier meleeKB = player.GetTotalKnockback(DamageClass.Melee);
+
+			Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+
+			ClubProj clubProj = proj.ModProjectile as ClubProj;
+
+			clubProj.minDamage = (int)meleeDMG.ApplyTo(MinDamage);
+			clubProj.maxDamage = (int)meleeDMG.ApplyTo(MaxDamage);
+			clubProj.minKnockback = (int)meleeKB.ApplyTo(MinKnockback);
+			clubProj.maxKnockback = (int)meleeKB.ApplyTo(MaxKnockback);
+
+			return false;
+		}
+
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
+		{
+			StatModifier meleeStat = Main.LocalPlayer.GetTotalDamage(DamageClass.Melee);
+
+			foreach (TooltipLine line in tooltips)
+			{
+				if (line.Mod == "Terraria" && line.Name == "Damage") //Replace the vanilla text with our own
+					line.Text = $"{(int)meleeStat.ApplyTo(MinDamage)}-{(int)meleeStat.ApplyTo(MaxDamage)} melee damage";
+			}
+		}
+    }
+}

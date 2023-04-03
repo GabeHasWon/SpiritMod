@@ -1,37 +1,27 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Sets.ClubSubclass
 {
-    public class PlatinumClub : ModItem
+    public class PlatinumClub : ClubItem
     {
+		internal override int MinDamage => 50;
+		internal override int MaxDamage => 133;
+		internal override float MinKnockback => 6f;
+		internal override float MaxKnockback => 9f;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Platinum Scepter");
 
-		public override void SetDefaults()
+		public override void Defaults()
         {
-            Item.channel = true;
-            Item.damage = 20;
             Item.width = 58;
             Item.height = 58;
-            Item.useTime = 320;
-            Item.useAnimation = 320;
             Item.crit = 6;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.DamageType = DamageClass.Melee;
-            Item.noMelee = true;
-            Item.knockBack = 9;
-            Item.useTurn = true;
             Item.value = Item.sellPrice(0, 0, 22, 0);
             Item.rare = ItemRarityID.Blue;
-            Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<Projectiles.Clubs.PlatinumClubProj>();
-            Item.shootSpeed = 6f;
-            Item.noUseGraphic = true;
         }
-
-		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
 		public override void AddRecipes()
         {

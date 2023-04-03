@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Sets.ClubSubclass;
 
 namespace SpiritMod.NPCs.SkeletonBrute
 {
@@ -103,6 +104,8 @@ namespace SpiritMod.NPCs.SkeletonBrute
 				for (int i = 1; i < 6; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SkeletonBruteGore" + i).Type, 1f);
 		}
+
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<BruteHammer>(20);
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
