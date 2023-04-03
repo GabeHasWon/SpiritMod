@@ -7,10 +7,10 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class BassSlapper : ClubItem
     {
-		internal override int MinDamage => 33;
-		internal override int MaxDamage => 65;
-		internal override float MinKnockback => 13f;
-		internal override float MaxKnockback => 27f;
+		internal override int MinDamage => 28;
+		internal override int MaxDamage => 90;
+		internal override float MinKnockback => 10f;
+		internal override float MaxKnockback => 20f;
 		
 
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Bass Slapper");

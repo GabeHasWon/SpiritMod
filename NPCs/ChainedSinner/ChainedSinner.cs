@@ -9,6 +9,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
+using Terraria.GameContent.Bestiary;
 
 namespace SpiritMod.NPCs.ChainedSinner
 {
@@ -138,6 +139,13 @@ namespace SpiritMod.NPCs.ChainedSinner
 				foreach (var item in chain.VerticesArray())
 					Gore.NewGoreDirect(NPC.GetSource_Death(), item, Vector2.Zero, Mod.Find<ModGore>("ChainedSinnerChain").Type);
 			}
+		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+		{
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheUnderworld,
+				new FlavorTextBestiaryInfoElement("We forge the chains we bear in life and in death."),
+			});
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) 

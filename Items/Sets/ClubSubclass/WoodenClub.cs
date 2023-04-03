@@ -6,8 +6,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class WoodenClub : ClubItem
     {
-		internal override int MinDamage => 30;
-		internal override int MaxDamage => 83;
+		internal override int MinDamage => 12;
+		internal override int MaxDamage => 40;
 		internal override float MinKnockback => 5f;
 		internal override float MaxKnockback => 8f;
 

@@ -9,10 +9,10 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
 	public class BruteHammer : ClubItem
 	{
-		internal override int MinDamage => 35;
-		internal override int MaxDamage => 160;
-		internal override float MinKnockback => 5;
-		internal override float MaxKnockback => 14;
+		internal override int MinDamage => 26;
+		internal override int MaxDamage => 90;
+		internal override float MinKnockback => 4;
+		internal override float MaxKnockback => 12;
 
 		public override void SetStaticDefaults()
 		{

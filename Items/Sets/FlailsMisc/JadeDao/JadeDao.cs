@@ -40,7 +40,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			Item.channel = true;
 			Item.autoReuse = true;
 			Item.DamageType = DamageClass.Melee;
-			Item.damage = 115;
+			Item.damage = 170;
 			Item.rare = ItemRarityID.LightPurple;
 		}
 

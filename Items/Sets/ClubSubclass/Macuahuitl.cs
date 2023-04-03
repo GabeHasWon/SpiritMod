@@ -7,10 +7,10 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class Macuahuitl : ClubItem
     {
-		internal override int MinDamage => 113;
-		internal override int MaxDamage => 288;
-		internal override float MinKnockback => 5f;
-		internal override float MaxKnockback => 10f;
+		internal override int MinDamage => 65;
+		internal override int MaxDamage => 250;
+		internal override float MinKnockback => 4f;
+		internal override float MaxKnockback => 12f;
 
 		public override void SetStaticDefaults()
         {
@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 			Item.damage = 115;
             Item.width = 66;
             Item.height = 66;
-            Item.crit = 8;
+            Item.crit = 6;
 			Item.value = Item.buyPrice(0, 8, 0, 0);
             Item.rare = ItemRarityID.Green;
             Item.shoot = ModContent.ProjectileType<MacuahuitlProj>();

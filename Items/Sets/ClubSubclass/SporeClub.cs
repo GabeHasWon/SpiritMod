@@ -6,8 +6,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class SporeClub : ClubItem
     {
-		internal override int MinDamage => 55;
-		internal override int MaxDamage => 120;
+		internal override int MinDamage => 36;
+		internal override int MaxDamage => 60;
 		internal override float MinKnockback => 6f;
 		internal override float MaxKnockback => 10f;
 
@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
         {
             Item.width = 54;
             Item.height = 62;
-            Item.crit = 4;
+            Item.crit = 6;
             Item.value = Item.buyPrice(0, 3, 0, 0);
             Item.rare = ItemRarityID.Green;
             Item.shoot = ModContent.ProjectileType<Projectiles.Clubs.SporeClubProj>();

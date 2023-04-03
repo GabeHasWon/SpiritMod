@@ -6,8 +6,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class FloranBludgeon : ClubItem
     {
-		internal override int MinDamage => 48;
-		internal override int MaxDamage => 108;
+		internal override int MinDamage => 33;
+		internal override int MaxDamage => 100;
 		internal override float MinKnockback => 4f;
 		internal override float MaxKnockback => 8f;
 

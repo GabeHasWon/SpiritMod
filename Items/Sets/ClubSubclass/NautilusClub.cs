@@ -8,10 +8,10 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class NautilusClub : ClubItem
     {
-		internal override int MinDamage => 58;
-		internal override int MaxDamage => 135;
-		internal override float MinKnockback => 6f;
-		internal override float MaxKnockback => 11f;
+		internal override int MinDamage => 34;
+		internal override int MaxDamage => 75;
+		internal override float MinKnockback => 4f;
+		internal override float MaxKnockback => 8f;
 
 		public override void SetStaticDefaults()
         {
