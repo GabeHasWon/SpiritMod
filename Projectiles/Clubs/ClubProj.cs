@@ -204,15 +204,23 @@ namespace SpiritMod.Projectiles.Clubs
 				{
 					_lingerTimer = 30;
 
-					if (Projectile.ai[0] >= ChargeTime)
-						Smash(Projectile.Center);
-
-					if (validTile)
+					bool struckNPC = Projectile.numHits > 0;
+					if (validTile || struckNPC)
+					{
 						player.GetModPlayer<MyPlayer>().Shake += (int)(Projectile.ai[0] * 0.2f);
 
+						SoundEngine.PlaySound(SoundID.Item70, Projectile.Center);
+						SoundEngine.PlaySound(SoundID.NPCHit42, Projectile.Center);
+
+						if (Projectile.ai[0] >= ChargeTime)
+							Smash(Projectile.Center);
+					}
+					else
+					{
+						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/SwordSlash1") with { PitchVariance = 0.3f, Volume = 0.6f, Pitch = -0.7f }, Projectile.position);
+					}
+
 					Projectile.friendly = false;
-					SoundEngine.PlaySound(SoundID.Item70, Projectile.Center);
-					SoundEngine.PlaySound(SoundID.NPCHit42, Projectile.Center);
 				}
 			}
 			else
@@ -224,9 +232,12 @@ namespace SpiritMod.Projectiles.Clubs
 					animTime = 2;
 				}
 
-				float increment = _lingerTimer * 0.065f; //Allow collision overshoot
+				float increment = (int)(_lingerTimer * 0.065f); //Allow collision overshoot
 
-				animTime += (int)increment;
+				if (animTime <= 2) //The projectile has not collided with a tile
+					increment = _lingerTimer * -(Acceleration / 150f);
+
+				animTime += increment;
 			}
 
 			Projectile.rotation = TrueRotation; //This is set for drawing afterimages

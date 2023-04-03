@@ -50,11 +50,13 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 		private bool released = false;
 		private double radians = 0;
 
+		public float animTime;
+
 		private float _angularMomentum = 1;
 		private int _lingerTimer;
 		private int _flickerTime = 0;
 
-		private readonly int ChargeTime = 70;
+		private readonly int ChargeTime = 54;
 
 		public SpriteEffects Effects => ((Main.player[Projectile.owner].direction * (int)Main.player[Projectile.owner].gravDir) < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 		public float TrueRotation => (float)radians + ((Effects == SpriteEffects.FlipHorizontally) ? MathHelper.PiOver2 + 3.6f : 4.2f);
@@ -107,7 +109,7 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 				Projectile.velocity.X = player.direction;
 			}
 
-			int degrees = (int)((player.itemAnimation * -1.35) + 74) * player.direction * (int)player.gravDir;
+			float degrees = (float)((animTime * -1.35) + 74) * player.direction * (int)player.gravDir;
 			if (player.direction == 1)
 				degrees += 180;
 
@@ -115,7 +117,7 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 			if (player.channel && !released)
 			{
 				if (Projectile.ai[0] == 0)
-					player.itemTime = player.itemAnimation = animMax;
+					animTime = animMax;
 
 				if (Projectile.ai[0] <= ChargeTime)
 					Projectile.ai[0]++;
@@ -158,41 +160,43 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 				player.itemTime++;
 				player.itemAnimation++;
 
-				if (player.itemTime > _angularMomentum + 1)
-				{
-					player.itemTime -= (int)_angularMomentum;
-					player.itemAnimation -= (int)_angularMomentum;
-				}
+				if (animTime > _angularMomentum + 1)
+					animTime -= _angularMomentum;
 				else
-				{
-					player.itemTime = 2;
-					player.itemAnimation = 2;
-				}
+					animTime = 2;
 
 				Tile tile = Main.tile[(int)Projectile.Center.X / 16, (int)((Projectile.Center.Y + (Projectile.width / 2)) / 16)];
 				bool validTile = tile.HasTile && tile.BlockType == BlockType.Solid && Main.tileSolid[tile.TileType];
-				if (player.itemTime == 2 || (validTile && released && player.itemTime <= (animMax / 3)))
+				if (animTime == 2 || (validTile && released && animTime <= (animMax / 3)))
 				{
 					_lingerTimer = 30;
 
-					if (Projectile.ai[0] >= ChargeTime)
+					bool struckNPC = Projectile.numHits > 0;
+					if (validTile || struckNPC)
 					{
-						for (int i = 0; i < 100; i++)
-						{
-							Vector2 position = Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2);
-							Dust.NewDustPerfect(position, ModContent.DustType<Dusts.EarthDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 10f);
-
-							if (i < 50)
-								Dust.NewDustPerfect(position, DustID.Blood, player.DirectionTo(Projectile.Center).RotatedBy(Main.rand.NextFloat(-1.57f, 0f) * player.direction) * Main.rand.NextFloat(1.0f, 7.0f), Scale: Main.rand.NextFloat(0.5f, 1.5f));
-						}
-					}
-
-					if (validTile)
 						player.GetModPlayer<MyPlayer>().Shake += (int)(Projectile.ai[0] * 0.2f);
 
+						SoundEngine.PlaySound(SoundID.Item70, Projectile.Center);
+						SoundEngine.PlaySound(SoundID.NPCHit42, Projectile.Center);
+
+						if (Projectile.ai[0] >= ChargeTime)
+						{
+							for (int i = 0; i < 100; i++)
+							{
+								Vector2 position = Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2);
+								Dust.NewDustPerfect(position, ModContent.DustType<Dusts.EarthDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 10f);
+
+								if (i < 50)
+									Dust.NewDustPerfect(position, DustID.Blood, player.DirectionTo(Projectile.Center).RotatedBy(Main.rand.NextFloat(-1.57f, 0f) * player.direction) * Main.rand.NextFloat(1.0f, 7.0f), Scale: Main.rand.NextFloat(0.5f, 1.5f));
+							}
+						}
+					}
+					else
+					{
+						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/SwordSlash1") with { PitchVariance = 0.3f, Volume = 0.6f, Pitch = -0.7f }, Projectile.position);
+					}
+
 					Projectile.friendly = false;
-					SoundEngine.PlaySound(SoundID.Item70, Projectile.Center);
-					SoundEngine.PlaySound(SoundID.NPCHit42, Projectile.Center);
 				}
 			}
 			else
@@ -201,17 +205,19 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 				if (_lingerTimer == 1)
 				{
 					Projectile.active = false;
-					player.itemTime = 2;
-					player.itemAnimation = 2;
+					animTime = 2;
 				}
 
-				float increment = _lingerTimer * 0.065f; //Allow collision overshoot
+				float increment = (int)(_lingerTimer * 0.065f); //Allow collision overshoot
 
-				player.itemTime += 1 + (int)increment;
-				player.itemAnimation += 1 + (int)increment;
+				if (animTime <= 2) //The projectile has not collided with a tile
+					increment = _lingerTimer * -0.15f;
+
+				animTime += increment;
 			}
 
 			Projectile.rotation = TrueRotation; //This is set for drawing afterimages
+			player.itemAnimation = player.itemTime = (int)animTime;
 		}
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)

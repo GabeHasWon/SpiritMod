@@ -19,7 +19,6 @@ namespace SpiritMod.Projectiles.Clubs
 			Projectile.height = 24;
 			Projectile.aiStyle = -1;
 			Projectile.friendly = true;
-			Projectile.damage = 1;
 			Projectile.penetrate = -1;
 			Projectile.alpha = 255;
 			Projectile.timeLeft = 10;
