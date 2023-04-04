@@ -53,6 +53,6 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 		}
 
-		public EnergizedAxeProj() : base(40, -1, 60, 35f) { }
+		public EnergizedAxeProj() : base(40, new Point(60, 60), 35f) { }
 	}
 }

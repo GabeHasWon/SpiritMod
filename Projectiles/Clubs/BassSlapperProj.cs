@@ -22,6 +22,6 @@ namespace SpiritMod.Projectiles.Clubs
 			SoundEngine.PlaySound(SoundID.NPCHit1, Projectile.position);
 		}
 
-		public BassSlapperProj() : base(66, -1, 58, 17f){}
+		public BassSlapperProj() : base(66, new Point(58, 58), 17f){}
 	}
 }

@@ -39,6 +39,6 @@ namespace SpiritMod.Projectiles.Clubs
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size * 2, Size, Size), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
 		}
 
-		public BoneClubProj() : base(50, -1, 62, 17f){}
+		public BoneClubProj() : base(50, new Point(62, 62), 17f){}
 	}
 }

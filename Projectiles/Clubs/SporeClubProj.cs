@@ -23,6 +23,6 @@ namespace SpiritMod.Projectiles.Clubs
 
         }
 
-        public SporeClubProj() : base(52, -1, 62, 19f){}
+        public SporeClubProj() : base(52, new Point(62, 62), 19f){}
 	}
 }

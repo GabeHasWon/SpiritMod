@@ -11,11 +11,10 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	public abstract class ClubProj : ModProjectile
 	{
-		public readonly int ChargeTime;
-		private readonly int DustType;
-		private readonly int Size;
-		private readonly float Acceleration;
-		private readonly float MaxSpeed;
+		protected readonly int ChargeTime;
+		protected readonly Point Size;
+		protected readonly float Acceleration;
+		protected readonly float MaxSpeed;
 
 		public float minKnockback;
 		public float maxKnockback;
@@ -23,10 +22,9 @@ namespace SpiritMod.Projectiles.Clubs
 		public int minDamage;
 		public int maxDamage;
 
-		public ClubProj(int chargetime, int dusttype, int size, float acceleration, float maxspeed = -1)
+		public ClubProj(int chargetime, Point size, float acceleration, float maxspeed = -1)
 		{
 			ChargeTime = chargetime;
-			DustType = dusttype;
 			Size = size;
 			Acceleration = acceleration;
 			MaxSpeed = maxspeed;
@@ -65,29 +63,22 @@ namespace SpiritMod.Projectiles.Clubs
 		public double radians = 0;
 
 		public float animTime;
+		public int animMax = 120;
 
 		private float _angularMomentum = 1;
-		private int _lingerTimer = 0;
-		private int _flickerTime = 0;
+		protected int _lingerTimer = 0;
+		protected int _flickerTime = 0;
 
-		public SpriteEffects Effects => ((Main.player[Projectile.owner].direction * (int)Main.player[Projectile.owner].gravDir) < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-		public float TrueRotation => (float)radians + 3.9f + ((Effects == SpriteEffects.FlipHorizontally) ? MathHelper.PiOver2 : 0);
-		public Vector2 Origin => (Effects == SpriteEffects.FlipHorizontally) ? new Vector2(Size, Size) : new Vector2(0, Size);
+		public virtual SpriteEffects Effects => ((Main.player[Projectile.owner].direction * (int)Main.player[Projectile.owner].gravDir) < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+		public virtual float TrueRotation => (float)radians + 3.9f + ((Effects == SpriteEffects.FlipHorizontally) ? MathHelper.PiOver2 : 0);
+		public virtual Vector2 Origin => (Effects == SpriteEffects.FlipHorizontally) ? new Vector2(Size.X, Size.Y) : new Vector2(0, Size.Y);
 
 		public sealed override bool PreDraw(ref Color lightColor)
 		{
-			if (released && _lingerTimer == 0)
-			{
-				for (int k = 0; k < Projectile.oldPos.Length; k++)
-				{
-					Vector2 drawPos = Main.player[Projectile.owner].Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
-					Color trailColor = lightColor * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) * .5f;
-					Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Rectangle(0, 0, Size, Size), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
-				}
-			}
+			DrawTrail(lightColor);
 
 			Color color = lightColor;
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, 0, Size, Size), color, TrueRotation, Origin, Projectile.scale, Effects, 0);
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, 0, Size.X, Size.Y), color, TrueRotation, Origin, Projectile.scale, Effects, 0);
 			
 			SafeDraw(Main.spriteBatch, lightColor);
 			
@@ -100,9 +91,22 @@ namespace SpiritMod.Projectiles.Clubs
 				if (alpha < 0)
 					alpha = 0;
 
-				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size, Size, Size), color * alpha, TrueRotation, Origin, Projectile.scale, Effects, 1);
+				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size.Y, Size.X, Size.Y), color * alpha, TrueRotation, Origin, Projectile.scale, Effects, 1);
 			}
 			return false;
+		}
+
+		public virtual void DrawTrail(Color lightColor)
+		{
+			if (released && _lingerTimer == 0)
+			{
+				for (int k = 0; k < Projectile.oldPos.Length; k++)
+				{
+					Vector2 drawPos = Main.player[Projectile.owner].Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+					Color trailColor = lightColor * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) * .5f;
+					Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Rectangle(0, 0, Size.X, Size.Y), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
+				}
+			}
 		}
 
 		public sealed override bool PreAI()
@@ -110,7 +114,6 @@ namespace SpiritMod.Projectiles.Clubs
 			SafeAI();
 
 			Player player = Main.player[Projectile.owner];
-			int animMax = 120;
 			int animMaxHalf = animMax / 2;
 
 			Projectile.scale = (Projectile.ai[0] < 10 && !released) ? (Projectile.ai[0] / 10f) : 1;
@@ -129,38 +132,24 @@ namespace SpiritMod.Projectiles.Clubs
 			if (player.direction == 1)
 				degrees += 180;
 
+			float GetAcceleration() => Acceleration * (float)(MathHelper.Clamp(1f - (float)(animTime / animMaxHalf), 0f, 1f) + 0.1f);
+
 			radians = degrees * (Math.PI / 180);
 			if (player.channel && !released)
 			{
-				if (Projectile.ai[0] == 0)
-				{
-					animTime = animMax;
-				}
 				if (Projectile.ai[0] < ChargeTime)
 				{
-					Projectile.ai[0]++;
-					float rot = Main.rand.NextFloat(MathHelper.TwoPi);
-					
-					if (DustType != -1)
-						Dust.NewDustPerfect(Projectile.Center + Vector2.One.RotatedBy(rot) * 35, DustType, -Vector2.One.RotatedBy(rot) * 1.5f, 0, default, Projectile.ai[0] / 100f);
+					if (Projectile.ai[0] + 1 == ChargeTime)
+						SoundEngine.PlaySound(SoundID.NPCDeath7, Projectile.Center);
+					else if (Projectile.ai[0] == 0)
+						animTime = animMax;
 
-					_angularMomentum = -1;
+					Projectile.ai[0]++;
+
+					_angularMomentum = 1;
 				}
 				else
 				{
-					if (Projectile.ai[0] == ChargeTime)
-					{
-						for (int k = 0; k <= 100; k++)
-						{
-							if (DustType != -1)
-								Dust.NewDustPerfect(Projectile.Center, DustType, Vector2.One.RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(2), 0, default, 1.5f);
-						}
-						SoundEngine.PlaySound(SoundID.NPCDeath7, Projectile.Center);
-						Projectile.ai[0]++;
-					}
-					if (DustType != -1)
-						Dust.NewDustPerfect(Projectile.Center, DustType, Vector2.One.RotatedByRandom(MathHelper.TwoPi));
-
 					_angularMomentum = MathHelper.Lerp(_angularMomentum, 0, 0.08f);
 				}
 
@@ -170,10 +159,8 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 			else
 			{
-				float acceleration = Acceleration * (float)(MathHelper.Clamp(1f - (float)(animTime / animMaxHalf), 0f, 1f) + 0.1f);
-
-				if (_angularMomentum < MaxSpeed || MaxSpeed < 0)
-					_angularMomentum += acceleration;
+				if (_angularMomentum > -MaxSpeed || MaxSpeed < 0)
+					_angularMomentum -= GetAcceleration();
 
 				if (!released)
 				{
@@ -184,8 +171,8 @@ namespace SpiritMod.Projectiles.Clubs
 				}
 			}
 
-			Projectile.position.Y = player.Center.Y - (int)(Math.Sin(radians * 0.96) * Size) - (Projectile.height / 2);
-			Projectile.position.X = player.Center.X - (int)(Math.Cos(radians * 0.96) * Size) - (Projectile.width / 2);
+			Projectile.position.X = player.Center.X - (int)(Math.Cos(radians * 0.96) * Size.X) - (Projectile.width / 2);
+			Projectile.position.Y = player.Center.Y - (int)(Math.Sin(radians * 0.96) * Size.Y) - (Projectile.height / 2);
 
 			float rotation = (float)radians + 1.7f;
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, rotation);
@@ -193,16 +180,13 @@ namespace SpiritMod.Projectiles.Clubs
 
 			if (_lingerTimer == 0)
 			{
-				if (animTime > _angularMomentum + 1)
-					animTime -= _angularMomentum;
-				else
-					animTime = 2;
+				bool swingEnded = animTime < 2;
+				bool validTile = Collision.SolidTiles(Projectile.position, Projectile.width, Projectile.height, true);
 
-				Tile tile = Main.tile[(int)Projectile.Center.X / 16, (int)((Projectile.Center.Y + (Projectile.height * 0.5f)) / 16)];
-				bool validTile = tile.HasTile && tile.BlockType == BlockType.Solid && Main.tileSolid[tile.TileType];
-				if (animTime == 2 || (validTile && released && animTime <= animMaxHalf))
+				if (swingEnded || (validTile && released && animTime <= animMaxHalf))
 				{
 					_lingerTimer = 30;
+					_angularMomentum = 0;
 
 					bool struckNPC = Projectile.numHits > 0;
 					if (validTile || struckNPC)
@@ -225,23 +209,21 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 			else
 			{
+				//Allow overshoot on collision
+				_angularMomentum = (int)(_lingerTimer * 0.065f);
+
 				_lingerTimer--;
 				if (_lingerTimer == 1)
 				{
 					Projectile.active = false;
 					animTime = 2;
 				}
-
-				float increment = (int)(_lingerTimer * 0.065f); //Allow collision overshoot
-
-				if (animTime <= 2) //The projectile has not collided with a tile
-					increment = _lingerTimer * -(Acceleration / 150f);
-
-				animTime += increment;
 			}
 
+			animTime += _angularMomentum * Math.Sign(animTime - (_angularMomentum + 1));
+
 			Projectile.rotation = TrueRotation; //This is set for drawing afterimages
-			player.itemAnimation = player.itemTime = (int)animTime;
+			player.itemAnimation = player.itemTime = 2;
 
 			return true;
 		}
