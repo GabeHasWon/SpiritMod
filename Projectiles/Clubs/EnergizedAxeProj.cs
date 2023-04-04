@@ -11,6 +11,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class EnergizedAxeProj : ClubProj
 	{
+		private static Point size = new(52, 58);
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Unstable Adze");
@@ -28,9 +30,8 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			int size = 60;
 			if (Projectile.ai[0] >= ChargeTime)
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size * 2, size, size), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
+				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size.Y * 2, size.X, size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -53,6 +54,6 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 		}
 
-		public EnergizedAxeProj() : base(40, new Point(60, 60), 35f) { }
+		public EnergizedAxeProj() : base(40, size, 35f) { }
 	}
 }

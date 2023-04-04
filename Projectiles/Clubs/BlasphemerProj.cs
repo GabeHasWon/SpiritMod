@@ -12,6 +12,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class BlasphemerProj : ClubProj
 	{
+		private static Point size = new(84, 82);
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blasphemer");
@@ -34,10 +36,9 @@ namespace SpiritMod.Projectiles.Clubs
 
         public override void SafeDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			int size = 84;
 			if (Projectile.ai[0] >= ChargeTime)
 			{
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size * 2, size, size), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
+				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size.Y * 2, size.X, size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
                 Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
                 {
@@ -54,6 +55,6 @@ namespace SpiritMod.Projectiles.Clubs
                 target.AddBuff(BuffID.OnFire, 180);
         }
 
-        public BlasphemerProj() : base(66, new Point(84, 84), 17f){}
+        public BlasphemerProj() : base(66, size, 17f){}
 	}
 }

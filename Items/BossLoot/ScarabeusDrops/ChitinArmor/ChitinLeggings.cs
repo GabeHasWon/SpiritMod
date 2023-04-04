@@ -1,8 +1,6 @@
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 
 namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 {

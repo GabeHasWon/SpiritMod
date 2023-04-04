@@ -56,6 +56,8 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 
 			if (player.channel && !released)
 			{
+				Projectile.friendly = true;
+
 				float rate = 24f;
 				spinTimer += Projectile.ai[0] / ChargeTime * rate * player.direction;
 

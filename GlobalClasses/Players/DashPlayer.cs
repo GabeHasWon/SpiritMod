@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SpiritMod.Buffs;
 using SpiritMod.Dusts;
 using SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor;
 using SpiritMod.Items.Equipment.AuroraSaddle;
@@ -17,8 +16,6 @@ internal class DashPlayer : ModPlayer
 	public DashType ActiveDash { get; private set; }
 
 	public int chitinDashTicks;
-	public int firewallHit;
-	public bool firewall = false;
 	public int phaseStacks;
 	public int phaseCounter;
 	public bool chitinSet;
@@ -30,7 +27,6 @@ internal class DashPlayer : ModPlayer
 	public override void ResetEffects()
 	{
 		chitinDashTicks = Math.Max(chitinDashTicks - 1, 0);
-		firewall = false;
 		chitinSet = false;
 
 		if (Player.GetModPlayer<MyPlayer>().glyph != GlyphType.Phase)
@@ -49,7 +45,7 @@ internal class DashPlayer : ModPlayer
 		{
 			if (ActiveDash != DashType.None)
 			{
-				DashEnd();
+				//DashEnd();
 				ActiveDash = DashType.None;
 			}
 		}
@@ -102,18 +98,6 @@ internal class DashPlayer : ModPlayer
 		{
 			case DashType.Phase:
 				PhaseVisuals(out speedCap, out decayCapped, speedMax, out decayMax, out delay);
-				break;
-			case DashType.Firewall:
-				FirewallDash();
-				break;
-			case DashType.Shinigami:
-				speedCap = speedMax;
-				decayCapped = 0.88f;
-				delay = 30;
-
-				int animationLimit = (int)(Player.itemAnimationMax * 0.6f);
-				if (Player.itemAnimation > 0 && Player.itemAnimation < animationLimit)
-					Player.itemAnimation = animationLimit;
 				break;
 			case DashType.Chitin:
 				ChitinHelmet.ChitinDashVisuals(Player, out speedCap, out decayCapped, out speedMax, out decayMax, out delay);
@@ -183,61 +167,7 @@ internal class DashPlayer : ModPlayer
 		delay = 30;
 	}
 
-	private void DashEnd()
-	{
-		if (ActiveDash == DashType.Shinigami)
-			Player.itemAnimation = 0;
-	}
-
-	private void FirewallDash()
-	{
-		if (firewallHit < 0)
-		{
-			Dust.NewDust(Player.position, Player.width, Player.height, ModContent.DustType<BinaryDust>());
-			Dust.NewDust(Player.position, Player.width, Player.height, ModContent.DustType<BinaryDust>());
-			Dust.NewDust(Player.position, Player.width, Player.height, ModContent.DustType<BinaryDust>());
-			var hitbox = new Rectangle((int)(Player.position.X + Player.velocity.X * 0.5 - 4), (int)(Player.position.Y + Player.velocity.Y * 0.5 - 4), Player.width + 8, Player.height + 8);
-			for (int i = 0; i < Main.maxNPCs; i++)
-			{
-				var npc = Main.npc[i];
-				if (npc.active && !npc.dontTakeDamage && !npc.friendly)
-				{
-					if (hitbox.Intersects(npc.Hitbox) && (npc.noTileCollide || Collision.CanHit(Player.position, Player.width, Player.height, npc.position, npc.width, npc.height)))
-					{
-						float damage = Player.GetDamage(DamageClass.Melee).ApplyTo(40f);
-						float knockback = 12f;
-						bool crit = false;
-
-						if (Player.kbGlove)
-							knockback *= 2f;
-
-						if (Player.kbBuff)
-							knockback *= 1.5f;
-
-						if (Main.rand.Next(100) < Player.GetCritChance(DamageClass.Melee))
-							crit = true;
-
-						int hitDirection = Player.velocity.X < 0f ? -1 : 1;
-
-						if (Player.whoAmI == Main.myPlayer)
-						{
-							npc.AddBuff(ModContent.BuffType<StackingFireBuff>(), 600);
-							npc.StrikeNPC((int)damage, knockback, hitDirection, crit);
-							if (Main.netMode != NetmodeID.SinglePlayer)
-								NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, i, damage, knockback, hitDirection, 0, 0, 0);
-						}
-
-						Player.dashDelay = 30;
-						Player.velocity.X = -hitDirection * 1f;
-						Player.velocity.Y = -4f;
-						Player.immune = true;
-						Player.immuneTime = 2;
-						firewallHit = i;
-					}
-				}
-			}
-		}
-	}
+	//private void DashEnd() { }
 
 	internal void PerformDash(DashType dash, sbyte dir, bool local = true)
 	{
@@ -262,26 +192,6 @@ internal class DashPlayer : ModPlayer
 					Main.dust[dust].scale *= 1.4f + Main.rand.Next(20) * 0.01f;
 				}
 				_dashTimer = 30;
-				break;
-			case DashType.Firewall:
-				firewallHit = -1;
-
-				Dust.NewDust(Player.position, Player.width, Player.height, ModContent.DustType<BinaryDust>(), 0f, 0f, 0, default, 1f);
-				Dust.NewDust(Player.position, Player.width, Player.height, ModContent.DustType<BinaryDust>(), 0f, 0f, 0, default, 1f);
-
-				horizontalSpeed *= 18.5f;
-
-				for (int num22 = 0; num22 < 0; num22++)
-				{
-					int num23f = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y), Player.width, Player.height, ModContent.DustType<TemporalDust>(), 0f, 0f, 100, default, 2f);
-					Main.dust[num23f].position.X = Main.dust[num23f].position.X + Main.rand.Next(-5, 6);
-					Main.dust[num23f].position.Y = Main.dust[num23f].position.Y + Main.rand.Next(-5, 6);
-					Main.dust[num23f].velocity *= 0.2f;
-					Main.dust[num23f].shader = GameShaders.Armor.GetSecondaryShader(Player.shield, Player);
-				}
-				break;
-			case DashType.Shinigami:
-				horizontalSpeed *= 40;
 				break;
 			case DashType.Chitin:
 				horizontalSpeed *= 20;
@@ -332,8 +242,6 @@ internal class DashPlayer : ModPlayer
 
 		if (phaseStacks > 0)
 			return DashType.Phase;
-		else if (firewall)
-			return DashType.Firewall;
 		else if (chitinSet)
 			return DashType.Chitin;
 
