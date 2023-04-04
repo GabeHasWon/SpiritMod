@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Dusts;
-using SpiritMod.Items;
 using SpiritMod.Items.Equipment.AuroraSaddle;
 using SpiritMod.Mechanics.EventSystem;
 using SpiritMod.Mechanics.EventSystem.Events;
@@ -9,8 +7,6 @@ using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Particles;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -108,7 +104,7 @@ namespace SpiritMod.NPCs.AuroraStag
 			return 0.0015f;
 		}
 
-		private Color AuroraColor => Color.Lerp(new Color(85, 255, 229), new Color(28, 155, 255), Main.rand.NextFloat());
+		private static Color AuroraColor => Color.Lerp(new Color(85, 255, 229), new Color(28, 155, 255), Main.rand.NextFloat());
 
 		public override void AI()
 		{

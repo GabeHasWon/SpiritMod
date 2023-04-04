@@ -116,7 +116,7 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 
 			if (Main.netMode != NetmodeID.Server)
 			{
-				MountData.textureWidth = MountData.backTexture.Width() /3;
+				MountData.textureWidth = MountData.backTexture.Width() / 3;
 				MountData.textureHeight = MountData.backTexture.Height() / 10;
 			}
 		}
@@ -130,7 +130,7 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 
 			AuroraPlayer modplayer = player.GetModPlayer<AuroraPlayer>();
 
-			for (int i = (modplayer.auroraoldposition.Length - 1); i >= 0; i--)
+			for (int i = modplayer.auroraoldposition.Length - 1; i >= 0; i--)
 			{
 				modplayer.auroraoldposition[i] = player.Center;
 				modplayer.auroraoldrotation[i] = player.fullRotation;
@@ -159,7 +159,7 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 		{
 			AuroraPlayer modplayer = player.GetModPlayer<AuroraPlayer>();
 
-			for (int i = (modplayer.auroraoldposition.Length - 1); i > 0; i--)
+			for (int i = modplayer.auroraoldposition.Length - 1; i > 0; i--)
 			{
 				modplayer.auroraoldposition[i] = modplayer.auroraoldposition[i - 1];
 				modplayer.auroraoldrotation[i] = modplayer.auroraoldrotation[i - 1];
@@ -174,7 +174,7 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 			if (Main.rand.NextBool(20) && !Main.dedServ)
 				MakeStar(Main.rand.NextFloat(0.1f, 0.2f), player.Center);
 
-			if ((player.velocity.Y != 0 || player.oldVelocity.Y != 0))
+			if (player.velocity.Y != 0 || player.oldVelocity.Y != 0)
 			{
 				int direction = (velocity == 0) ? 0 :
 					(player.direction == Math.Sign(player.velocity.X)) ? 1 : -1;
@@ -191,20 +191,20 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 			float velocity = Math.Abs(drawPlayer.velocity.X);
 			AuroraPlayer modplayer = drawPlayer.GetModPlayer<AuroraPlayer>();
 
-			//ripped from stag npc drawcode
+			//modified from stag npc drawcode
 			int frameHeight = texture.Height / 10;
-			int frameWidth = texture.Width / 3;
+			int frameWidth = 86;
 			int frameX = 0;
 			int frameY = 0;
 			float drawYOffset = -18;
 			bool trail = false;
 
-			if (velocity > 6 || drawPlayer.velocity.Y != 0 || drawPlayer.oldVelocity.Y != 0)
+			if (velocity > 6 || drawPlayer.velocity.Y != 0 || drawPlayer.oldVelocity.Y != 0) //Running
 			{
-				frameX = frameWidth * 2 - 20;
-				frameY = (frameHeight + 6) * (int)(Main.GameUpdateCount / 6 % 6) - 2;
-				frameHeight += 6;
+				frameX = frameWidth * 2;
+				frameHeight += 4;
 				frameWidth += 32;
+				frameY = frameHeight * (int)(Main.GameUpdateCount / 6 % 6);
 
 				if (frameY > 6 * frameHeight)
 					frameY = 0;
@@ -212,18 +212,16 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 				if (drawPlayer.velocity.Y != 0 || drawPlayer.oldVelocity.Y != 0)
 					frameY = (4 * frameHeight) - 2;
 
-				drawYOffset = -24;
+				drawYOffset = -20;
 				trail = true;
 			}
-			else if (velocity > 0)
+			else if (velocity > 0) //Walking
 			{
-				frameX = frameWidth - 12;
-				frameY = (frameHeight + 1) * (int)((Main.GameUpdateCount / 8) % 10);
-
-				drawYOffset = -20;
+				frameX = frameWidth;
+				frameY = frameHeight * (int)(Main.GameUpdateCount / 8 % 10);
 			}
 
-			Rectangle sourceRectangle = new Rectangle(frameX, frameY, frameWidth - 12, frameHeight);
+			Rectangle sourceRectangle = new Rectangle(frameX, frameY, frameWidth - 2, frameHeight - 2);
 
 			void AddDrawDataWithMountShader(DrawData data)
 			{
