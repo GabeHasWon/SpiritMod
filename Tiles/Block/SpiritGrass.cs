@@ -7,6 +7,7 @@ using System;
 using TileID = Terraria.ID.TileID;
 using Terraria.ID;
 using SpiritMod.Tiles.Ambient.Spirit;
+using Terraria.Utilities;
 
 namespace SpiritMod.Tiles.Block
 {
@@ -36,25 +37,40 @@ namespace SpiritMod.Tiles.Block
 		{
 			if (!TileObject.CanPlace(x, y, type, style, direction, out TileObject toBePlaced, false))
 				return false;
+
 			toBePlaced.random = random;
 			if (TileObject.Place(toBePlaced) && !mute)
 				WorldGen.SquareTileFrame(x, y, true);
+
 			return false;
 		}
 
 		public override void RandomUpdate(int i, int j)
 		{
-			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(4))
+			Tile aboveTile = Framing.GetTileSafely(i, j - 1);
+
+			if (!aboveTile.HasTile)
 			{
-				int style = Main.rand.Next(16);
-				PlaceObject(i, j - 1, ModContent.TileType<SpiritFoliage>(), true, style);
-				NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<SpiritFoliage>(), style, 0, -1, -1);
-			}
-			else if (!(Framing.GetTileSafely(i, j - 2).HasTile && Framing.GetTileSafely(i, j - 1).HasTile) && Main.rand.NextBool(8))
-			{
-				int style = Main.rand.Next(10);
-				PlaceObject(i, j - 2, ModContent.TileType<SpiritTallgrass>(), true, style);
-				NetMessage.SendObjectPlacment(-1, i, j - 2, ModContent.TileType<SpiritTallgrass>(), style, 0, -1, -1);
+				WeightedRandom<int> plant = new WeightedRandom<int>();
+				plant.Add(-1, 1f);
+				plant.Add(ModContent.TileType<SpiritFoliage>(), 0.25f);
+				plant.Add(ModContent.TileType<SpiritTallgrass>(), 0.125f);
+				plant.Add(ModContent.TileType<SoulBloomTile>(), 0.04f);
+
+				int selection = plant;
+
+				if (selection != -1)
+				{
+					int style = 0;
+
+					if (selection == ModContent.TileType<SpiritFoliage>())
+						style = Main.rand.Next(16);
+					else if (selection == ModContent.TileType<SpiritFoliage>())
+						style = Main.rand.Next(10);
+
+					PlaceObject(i, j - 1, selection, true, style);
+					NetMessage.SendObjectPlacment(-1, i, j - 1, selection, style, 0, -1, -1);
+				}
 			}
 
 			if (SpreadHelper.Spread(i, j, Type, 4, TileID.Dirt) && Main.netMode != NetmodeID.SinglePlayer)
@@ -75,13 +91,13 @@ namespace SpiritMod.Tiles.Block
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
-			Tile tile2 = Framing.GetTileSafely(i, j - 1);
-			if (!Main.tileSolid[tile2.TileType] || !tile2.HasTile)
-			{
-				r = 0.3f;
-				g = 0.45f;
-				b = 1.05f;
-			}
+			Tile tile = Framing.GetTileSafely(i, j - 1);
+			if (Main.tileSolid[tile.TileType] && tile.HasTile)
+				return;
+
+			r = 0.3f;
+			g = 0.45f;
+			b = 1.05f;
 		}
 	}
 }

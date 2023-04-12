@@ -29,21 +29,21 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool CanUseItem(Player player)
 		{
-			if (Main.dayTime) {
-				Main.NewText("The moon isn't powerful in daylight.", 80, 80, 150);
+			if ((player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && !Main.pumpkinMoon && !Main.snowMoon)
 				return false;
-			}
-			if (MyWorld.BlueMoon)
-                return false;
-			return true;
+
+			if (Main.dayTime)
+				Main.NewText("The moon isn't powerful in daylight.", 80, 80, 150);
+
+			return !MyWorld.blueMoon && !Main.dayTime;
 		}
 
 		public override bool? UseItem(Player player)
 		{
-			Main.NewText("The Mystic Moon is Rising...", 0, 90, 220);
+			Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
 			SoundEngine.PlaySound(SoundID.Roar, player.Center);
-			if (!Main.dayTime)
-				MyWorld.BlueMoon = true;
+			MyWorld.blueMoon = true;
+
 			return true;
 		}
 

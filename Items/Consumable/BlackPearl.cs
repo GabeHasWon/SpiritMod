@@ -32,7 +32,7 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool CanUseItem(Player player)
 		{
-			if ((player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && (!Main.pumpkinMoon && !Main.snowMoon))
+			if ((player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && !Main.pumpkinMoon && !Main.snowMoon)
 				return false;
 
 			if (!player.ZoneBeach)

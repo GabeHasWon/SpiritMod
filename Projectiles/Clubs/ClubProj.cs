@@ -186,7 +186,8 @@ namespace SpiritMod.Projectiles.Clubs
 				if (swingEnded || (validTile && released && animTime <= animMaxHalf))
 				{
 					_lingerTimer = 30;
-					_angularMomentum = -5;
+
+					_angularMomentum = validTile ? -5 : 0;
 
 					bool struckNPC = Projectile.numHits > 0;
 					if (validTile || struckNPC)

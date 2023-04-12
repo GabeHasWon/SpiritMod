@@ -74,7 +74,7 @@ namespace SpiritMod
 		public static float asteroidLight = 0;
 		public static float spiritLight = 0;
 
-		public static bool BlueMoon = false;
+		public static bool blueMoon = false;
 		public static bool jellySky = false;
 		public static bool rareStarfallEvent = false;
 
@@ -170,7 +170,7 @@ namespace SpiritMod
 			}
 			tag.Add("droppedGlyphs", droppedGlyphTag);
 
-			tag.Add("blueMoon", BlueMoon);
+			tag.Add("blueMoon", blueMoon);
 			tag.Add("jellySky", jellySky);
 			tag.Add("gennedBandits", gennedBandits);
 			tag.Add("gennedTower", gennedTower);
@@ -222,7 +222,7 @@ namespace SpiritMod
 				droppedGlyphs.Add(entry.Key, entry.Value is byte ? (byte)entry.Value != 0 : entry.Value as bool? ?? false);
 			}
 
-			BlueMoon = tag.GetBool("blueMoon");
+			blueMoon = tag.GetBool("blueMoon");
 			jellySky = tag.GetBool("jellySky");
 			gennedBandits = tag.GetBool("gennedBandits");
 			gennedTower = tag.GetBool("gennedTower");
@@ -290,7 +290,7 @@ namespace SpiritMod
 			BitsByte bosses2 = new BitsByte(downedTide, downedMechromancer, downedOccultist, downedGladeWraith, downedBeholder, downedSnaptrapper, downedTome, downedGazer);
 			writer.Write(bosses1);
 			writer.Write(bosses2);
-			BitsByte environment = new BitsByte(BlueMoon, jellySky, downedBlueMoon, downedJellyDeluge);
+			BitsByte environment = new BitsByte(blueMoon, jellySky, downedBlueMoon, downedJellyDeluge);
 			BitsByte worldgen = new BitsByte(gennedBandits, gennedTower);
 			writer.Write(environment);
 			writer.Write(worldgen);
@@ -320,7 +320,7 @@ namespace SpiritMod
 			downedGazer = bosses2[7];
 
 			BitsByte environment = reader.ReadByte();
-			BlueMoon = environment[0];
+			blueMoon = environment[0];
 			jellySky = environment[1];
 			downedBlueMoon = environment[2];
 			downedJellyDeluge = environment[3];
@@ -338,7 +338,7 @@ namespace SpiritMod
 
 		public override void OnWorldLoad()
 		{
-			BlueMoon = false;
+			blueMoon = false;
 			jellySky = false;
 			ashRain = false;
 			dayTimeLast = Main.dayTime;
@@ -1449,7 +1449,7 @@ namespace SpiritMod
 			if (Main.snowMoon)
 				auroraType = 8;
 
-			if (BlueMoon)
+			if (blueMoon)
 				auroraType = 9;
 
 			if (!Main.bloodMoon && !Main.pumpkinMoon && !Main.snowMoon && !modPlayer.ZoneSpirit)
@@ -1462,7 +1462,7 @@ namespace SpiritMod
 
 			dayTimeLast = Main.dayTime;
 
-			if (BlueMoon && dayTimeSwitched && !downedBlueMoon)
+			if (blueMoon && dayTimeSwitched && !downedBlueMoon)
 				downedBlueMoon = true;
 
 			if (jellySky && dayTimeSwitched && !downedJellyDeluge)
@@ -1489,13 +1489,13 @@ namespace SpiritMod
 				{
 					if (!Main.fastForwardTime && !Main.bloodMoon && WorldGen.spawnHardBoss == 0 && ((Main.rand.NextBool(20) && !downedBlueMoon) || (Main.rand.NextBool(40) && !downedBlueMoon)))
 					{
-						Main.NewText("A Mystic Moon is rising...", 61, 255, 142);
-						BlueMoon = true;
+						Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
+						blueMoon = true;
 						downedBlueMoon = true;
 					}
 				}
 				else
-					BlueMoon = false;
+					blueMoon = false;
 
 				if (!Main.dayTime && Main.rand.NextBool(6))
 				{

@@ -22,7 +22,7 @@ namespace SpiritMod.Tiles.Ambient.Spirit
 			TileObjectData.newTile.Width = 1;
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.StyleHorizontal = true;
-			TileObjectData.newTile.Origin = new Point16(0, 0);
+			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.newTile.RandomStyleRange = 10;
 			TileObjectData.addTile(Type);

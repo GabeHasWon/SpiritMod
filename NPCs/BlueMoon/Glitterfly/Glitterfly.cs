@@ -69,8 +69,6 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => MyWorld.BlueMoon && NPC.CountNPCS(ModContent.NPCType<Glitterfly>()) < 3 && spawnInfo.Player.ZoneOverworldHeight ? 1f : 0f;
-
 		public override bool PreAI()
 		{
 			bool expertMode = Main.expertMode;

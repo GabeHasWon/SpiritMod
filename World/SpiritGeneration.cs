@@ -103,8 +103,6 @@ namespace SpiritMod.World
 				}
 			}
 
-			MyWorld.spiritBiome = true;
-
 			string message = "The Spirits spread through the Land...";
 
 			if (Main.netMode == NetmodeID.SinglePlayer)

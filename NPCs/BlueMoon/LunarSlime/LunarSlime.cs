@@ -52,7 +52,6 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 		}
 
 		public override Color? GetAlpha(Color lightColor) => new Color(200, 200, 200, 200);
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => MyWorld.BlueMoon && spawnInfo.Player.ZoneOverworldHeight ? 3.4f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

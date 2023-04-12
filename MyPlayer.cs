@@ -82,7 +82,6 @@ namespace SpiritMod
 		public bool nearLure = false;
 		public int clockX = 0;
 		public int clockY = 0;
-		public bool ZoneBlueMoon = false;
 		public bool astralSet = false;
 		public bool bloodcourtSet = false;
 		public int astralSetStacks;
@@ -320,7 +319,7 @@ namespace SpiritMod
 		{
 			var config = ModContent.GetInstance<SpiritClientConfig>();
 			bool reach = (!Main.dayTime && ZoneReach && !reachBrooch && Player.ZoneOverworldHeight) || (ZoneReach && Player.ZoneOverworldHeight && MyWorld.downedReachBoss && Main.dayTime);
-			bool spirit = (Player.ZoneOverworldHeight && ZoneSpirit);
+			bool spirit = Player.ZoneOverworldHeight && ZoneSpirit;
 
 			bool region1 = ZoneSpirit && Player.ZoneRockLayerHeight && Player.position.Y / 16 > (Main.rockLayer + Main.maxTilesY - 330) / 2f;
 			bool region2 = ZoneSpirit && Player.position.Y / 16 >= Main.maxTilesY - 300;
@@ -332,7 +331,7 @@ namespace SpiritMod
 			bool blueOcean = Player.ZoneBeach && MyWorld.luminousType == 2 && MyWorld.luminousOcean;
 			bool purpleOcean = Player.ZoneBeach && MyWorld.luminousType == 3 && MyWorld.luminousOcean;
 
-			bool blueMoon = ZoneBlueMoon && (Player.ZoneOverworldHeight || Player.ZoneSkyHeight);
+			bool blueMoon = MyWorld.blueMoon && (Player.ZoneOverworldHeight || Player.ZoneSkyHeight);
 
 			if (config.DistortionConfig)
 			{
@@ -514,7 +513,7 @@ namespace SpiritMod
 			frostCount = frostTally;
 			frostTally = 0;
 
-			onGround = (Player.velocity.Y == 0f);
+			onGround = Player.velocity.Y == 0f;
 		}
 
 		private void ResetAccBools()

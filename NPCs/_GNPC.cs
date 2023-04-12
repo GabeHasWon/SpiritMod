@@ -29,6 +29,12 @@ using SpiritMod.Items.Placeable.Furniture.Paintings;
 using SpiritMod.Buffs.DoT;
 using SpiritMod.World;
 using Terraria.GameContent.Events;
+using SpiritMod.NPCs.BlueMoon.Bloomshroom;
+using SpiritMod.NPCs.BlueMoon.Glitterfly;
+using SpiritMod.NPCs.BlueMoon.GlowToad;
+using SpiritMod.NPCs.BlueMoon.Lumantis;
+using SpiritMod.NPCs.BlueMoon.MadHatter;
+using SpiritMod.NPCs.BlueMoon.LunarSlime;
 
 namespace SpiritMod.NPCs
 {
@@ -664,7 +670,7 @@ namespace SpiritMod.NPCs
 				maxSpawns = (int)(maxSpawns * 1.1f);
 			}
 
-			if (MyWorld.BlueMoon && surface)
+			if (MyWorld.blueMoon && surface)
 			{
 				spawnRate = (int)(spawnRate * 0.4f);
 				maxSpawns = (int)(maxSpawns * 1.1f);
@@ -689,7 +695,7 @@ namespace SpiritMod.NPCs
 
 			if (MyWorld.calmNight)
 			{
-				if (spawnInfo.Invasion || spawnInfo.Sky || MyWorld.BlueMoon) 
+				if (spawnInfo.Invasion || spawnInfo.Sky || MyWorld.blueMoon) 
 					return; //if invasion or in sky
 
 				if (Main.eclipse || Main.bloodMoon) 
@@ -704,7 +710,7 @@ namespace SpiritMod.NPCs
 				pool.Clear();
 			}
 
-			if (spawnInfo.SpawnTileY <= Main.worldSurface && MyWorld.BlueMoon && !Main.dayTime)
+			if (spawnInfo.SpawnTileY <= Main.worldSurface && MyWorld.blueMoon && !Main.dayTime)
 				pool.Remove(0);
 
 			if (spawnInfo.Player.GetSpiritPlayer().ZoneAsteroid)
@@ -740,6 +746,24 @@ namespace SpiritMod.NPCs
 
 				if (!NPC.AnyNPCs(ModContent.NPCType<MoonjellyEvent.DreamlightJelly>()))
 					pool.Add(ModContent.NPCType<MoonjellyEvent.DreamlightJelly>(), .85f);
+			}
+
+			if (MyWorld.blueMoon && (spawnInfo.Player.ZoneOverworldHeight || spawnInfo.Player.ZoneSkyHeight))
+			{
+				pool.Add(ModContent.NPCType<MadHatter>(), 1f);
+				pool.Add(ModContent.NPCType<LunarSlime>(), 3.4f);
+
+				if (NPC.CountNPCS(ModContent.NPCType<Bloomshroom>()) < 2)
+					pool.Add(ModContent.NPCType<Bloomshroom>(), 1f);
+
+				if (NPC.CountNPCS(ModContent.NPCType<Glitterfly>()) < 3)
+					pool.Add(ModContent.NPCType<Glitterfly>(), 1f);
+
+				if (NPC.CountNPCS(ModContent.NPCType<GlowToad>()) < 4)
+					pool.Add(ModContent.NPCType<GlowToad>(), .6f);
+
+				if (NPC.CountNPCS(ModContent.NPCType<Lumantis>()) < 4)
+					pool.Add(ModContent.NPCType<Lumantis>(), .6f);
 			}
 
 			if (spawnInfo.Player.active && spawnInfo.Player.ZoneBeach && MyWorld.luminousOcean && !Main.dayTime)

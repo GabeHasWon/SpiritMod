@@ -24,9 +24,9 @@ namespace SpiritMod.Systems
 			}
 		}
 
-		internal static void DrawGrassSway(SpriteBatch batch, string texture, int i, int j, Color color) => DrawGrassSway(batch, ModContent.Request<Texture2D>(texture).Value, i, j, color);
+		internal static void DrawGrassSway(SpriteBatch batch, string texture, int i, int j, Color color, SpriteEffects effects = SpriteEffects.None) => DrawGrassSway(batch, ModContent.Request<Texture2D>(texture).Value, i, j, color, effects);
 
-		internal static void DrawGrassSway(SpriteBatch batch, Texture2D texture, int i, int j, Color color)
+		internal static void DrawGrassSway(SpriteBatch batch, Texture2D texture, int i, int j, Color color, SpriteEffects effects = SpriteEffects.None)
 		{
 			Tile tile = Main.tile[i, j];
 			Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange);
@@ -35,7 +35,7 @@ namespace SpiritMod.Systems
 			float rot = ModContent.GetInstance<TileSwaySystem>().GetGrassSway(i, j, ref pos);
 			Vector2 orig = GrassOrigin(i, j);
 
-			batch.Draw(texture, pos + new Vector2(8, 16), new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 22), color, rot, orig, 1f, SpriteEffects.None, 0f);
+			batch.Draw(texture, pos + new Vector2(8, 16), new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 22), color, rot, orig, 1f, effects, 0f);
 		}
 
 		internal float GetGrassSway(int i, int j, ref Vector2 position)

@@ -68,8 +68,6 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => MyWorld.BlueMoon && spawnInfo.Player.ZoneOverworldHeight ? 1f : 0f;
-
 		public override void FindFrame(int frameHeight)
 		{
 			if (NPC.IsABestiaryIconDummy)

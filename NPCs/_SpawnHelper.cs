@@ -55,7 +55,7 @@ namespace SpiritMod.NPCs
 				(NPC.AnyDanger() ? SpawnFlags.Danger : SpawnFlags.None) |
 				(modPlayer.ZoneSpirit ? SpawnFlags.Spirit : SpawnFlags.None) |
 				(modPlayer.ZoneReach ? SpawnFlags.Reach : SpawnFlags.None) |
-				(MyWorld.BlueMoon && !Main.dayTime && notUnderground ? SpawnFlags.BlueMoon : SpawnFlags.None) |
+				(MyWorld.blueMoon && !Main.dayTime && notUnderground ? SpawnFlags.BlueMoon : SpawnFlags.None) |
 				(TideWorld.TheTide && player.ZoneBeach ? SpawnFlags.Tide : SpawnFlags.None);
 		}
 

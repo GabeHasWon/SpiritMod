@@ -52,8 +52,6 @@ namespace SpiritMod.NPCs.BlueMoon.Lumantis
 			});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => MyWorld.BlueMoon && NPC.CountNPCS(ModContent.NPCType<Lumantis>()) < 4 && spawnInfo.Player.ZoneOverworldHeight ? .6f : 0f;
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int k = 0; k < 11; k++)

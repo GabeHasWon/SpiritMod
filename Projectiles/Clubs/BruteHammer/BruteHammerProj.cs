@@ -87,6 +87,8 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 
 				damage = (int)(minDamage * .6f);
 				knockback = minKnockback * .5f;
+
+				Projectile.numHits--;
 			}
 		}
 

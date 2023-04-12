@@ -69,7 +69,7 @@ namespace SpiritMod.Tiles.Ambient
 			float strength = MinBrightness;
 
 			if (dist < MaxDist)
-				strength = MathHelper.Lerp(MinBrightness, 1f, 1 - (dist / (MaxDist)));
+				strength = MathHelper.Lerp(MinBrightness, 1f, 1 - (dist / MaxDist));
 
 			TileSwaySystem.DrawGrassSway(spriteBatch, Texture + "_Glow", i, j, colour * strength);
 		}

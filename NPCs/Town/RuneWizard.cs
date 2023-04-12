@@ -81,7 +81,7 @@ namespace SpiritMod.NPCs.Town
 				"Anything can be enchanted if you possess the skill, wit, and essence!",
 			};
 
-			dialogue.AddWithCondition("I wonder what enchantements have been placed on the moon - It's all blue!", MyWorld.BlueMoon);
+			dialogue.AddWithCondition("I wonder what enchantements have been placed on the moon - It's all blue!", MyWorld.blueMoon);
 			dialogue.AddWithCondition("The resurgence of Spirits offer a whole level of enchanting possibility!", Main.hardMode);
 
 			return Main.rand.Next(dialogue);

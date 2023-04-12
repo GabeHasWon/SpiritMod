@@ -70,7 +70,6 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => MyWorld.BlueMoon && NPC.CountNPCS(ModContent.NPCType<GlowToad>()) < 4 && spawnInfo.Player.ZoneOverworldHeight ? .6f : 0f;
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(tongueOut);
 		public override void ReceiveExtraAI(BinaryReader reader) => tongueOut = reader.ReadBoolean();
 

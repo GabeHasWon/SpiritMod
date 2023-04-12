@@ -2,9 +2,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Armor.BotanistSet;
 using SpiritMod.Items.ByBiome.Forest.Placeable.Decorative;
+using SpiritMod.Systems;
 using SpiritMod.Tiles.Block;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -46,43 +48,39 @@ namespace SpiritMod.Tiles.Ambient.Forest
 		{
 			Tile tile = Framing.GetTileSafely(i, j);
 
-			if (tile.HasTile)
+			if (!tile.HasTile)
+				return true;
+
+			int tileType = tile.TileType;
+			if (tileType == Type)
 			{
-				int tileType = tile.TileType;
-				if (tileType == Type)
-				{
-					PlantStage stage = GetStage(i, j);
-					return stage == PlantStage.Grown;
-				}
-				else
-				{
-					if (Main.tileCut[tileType] || TileID.Sets.BreakableWhenPlacing[tileType] || tileType == TileID.WaterDrip || tileType == TileID.LavaDrip || tileType == TileID.HoneyDrip || tileType == TileID.SandDrip)
-					{
-						bool foliageGrass = tileType == TileID.Plants || tileType == TileID.Plants2;
-						bool moddedFoliage = tileType >= TileID.Count && (Main.tileCut[tileType] || TileID.Sets.BreakableWhenPlacing[tileType]);
-						bool harvestableVanillaHerb = Main.tileAlch[tileType] && WorldGen.IsHarvestableHerbWithSeed(tileType, tile.TileFrameX / 18);
-
-						if (foliageGrass || moddedFoliage || harvestableVanillaHerb)
-						{
-							WorldGen.KillTile(i, j);
-							if (!tile.HasTile && Main.netMode == NetmodeID.MultiplayerClient)
-								NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, i, j);
-							return true;
-						}
-					}
-
-					return false;
-				}
+				PlantStage stage = GetStage(i, j);
+				return stage == PlantStage.Grown;
 			}
+			else
+			{
+				if (Main.tileCut[tileType] || TileID.Sets.BreakableWhenPlacing[tileType] || tileType == TileID.WaterDrip || tileType == TileID.LavaDrip || tileType == TileID.HoneyDrip || tileType == TileID.SandDrip)
+				{
+					bool foliageGrass = tileType == TileID.Plants || tileType == TileID.Plants2;
+					bool moddedFoliage = tileType >= TileID.Count && (Main.tileCut[tileType] || TileID.Sets.BreakableWhenPlacing[tileType]);
+					bool harvestableVanillaHerb = Main.tileAlch[tileType] && WorldGen.IsHarvestableHerbWithSeed(tileType, tile.TileFrameX / 18);
 
-			return true;
+					if (foliageGrass || moddedFoliage || harvestableVanillaHerb)
+					{
+						WorldGen.KillTile(i, j);
+
+						if (!tile.HasTile && Main.netMode == NetmodeID.MultiplayerClient)
+							NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, i, j);
+
+						return true;
+					}
+				}
+				return false;
+			}
 		}
 
-		public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
-		{
-			if (i % 2 == 0)
-				spriteEffects = SpriteEffects.FlipHorizontally;
-		}
+		public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects) 
+			=> spriteEffects = (i % 2 == 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = -2;
 

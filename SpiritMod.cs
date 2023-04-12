@@ -281,7 +281,7 @@ namespace SpiritMod
 				"THETIDE" => TideWorld.TheTide,
 				"TIDE" => TideWorld.TheTide,
 				"CALMNIGHT" => MyWorld.calmNight,
-				"BLUEMOON" => MyWorld.BlueMoon,
+				"BLUEMOON" => MyWorld.blueMoon,
 				_ => null,
 			};
 		}
@@ -328,8 +328,8 @@ namespace SpiritMod
 			}
 			else if (name == "BLUEMOON")
 			{
-				bool oldBlueMoon = MyWorld.BlueMoon;
-				MyWorld.BlueMoon = value;
+				bool oldBlueMoon = MyWorld.blueMoon;
+				MyWorld.blueMoon = value;
 				return oldBlueMoon != value;
 			}
 			return null;
@@ -906,10 +906,10 @@ namespace SpiritMod
 		{
 			if (MyWorld.ashRain) return "Ashfall";
 			else if (MyWorld.aurora) return "Aurora";
-			else if (MyWorld.BlueMoon) return "Mystic Moon";
+			else if (MyWorld.blueMoon) return "Mystic Moon";
 			else if (MyWorld.jellySky) return "Jelly Deluge";
 			else if (MyWorld.luminousOcean) return "Luminous Seas";
-			else if (MyWorld.calmNight) return "Calm Might";
+			else if (MyWorld.calmNight) return "Calm Night";
 			else if (MyWorld.rareStarfallEvent) return "Starfall";
 
 			return LanguageManager.Instance.GetText(key).Value;
