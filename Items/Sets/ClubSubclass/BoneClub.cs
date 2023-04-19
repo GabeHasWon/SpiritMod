@@ -4,14 +4,18 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.ClubSubclass
 {
-    public class BoneClub : ClubItem
-    {
+	public class BoneClub : ClubItem
+	{
 		internal override int MinDamage => 66;
 		internal override int MaxDamage => 180;
 		internal override float MinKnockback => 5f;
 		internal override float MaxKnockback => 9f;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bone Club");
+		public override void SetStaticDefaults()
+		{ 
+			DisplayName.SetDefault("Bone Club");
+			Tooltip.SetDefault("Charged strikes launch bones forward");
+		}
 
 		public override void Defaults()
         {

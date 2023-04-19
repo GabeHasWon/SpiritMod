@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class PlatinumClub : ClubItem
     {
-		internal override int MinDamage => 32;
+		internal override int MinDamage => 31;
 		internal override int MaxDamage => 110;
 		internal override float MinKnockback => 6f;
 		internal override float MaxKnockback => 9f;

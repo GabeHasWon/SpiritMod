@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     public class SporeClub : ClubItem
     {
 		internal override int MinDamage => 36;
-		internal override int MaxDamage => 60;
+		internal override int MaxDamage => 90;
 		internal override float MinKnockback => 6f;
 		internal override float MaxKnockback => 10f;
 

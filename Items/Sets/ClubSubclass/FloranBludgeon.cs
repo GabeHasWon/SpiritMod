@@ -6,8 +6,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class FloranBludgeon : ClubItem
     {
-		internal override int MinDamage => 33;
-		internal override int MaxDamage => 100;
+		internal override int MinDamage => 32;
+		internal override int MaxDamage => 80;
 		internal override float MinKnockback => 4f;
 		internal override float MaxKnockback => 8f;
 
@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
         {
             Item.width = 58;
             Item.height = 58;
-            Item.crit = 4;
+            Item.crit = 6;
 			Item.value = Item.sellPrice(0, 0, 22, 0);
             Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<Projectiles.Clubs.FloranBludgeonProj>();
