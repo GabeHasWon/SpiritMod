@@ -49,7 +49,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
                     Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(finaltarget.Center) * 8, 0.05f);
             }
 
-            if (Main.rand.Next(50) == 0)
+            if (Main.rand.NextBool(50))
                 Gore.NewGore(Projectile.GetSource_FromAI(), Projectile.Center, Projectile.velocity / 4, Mod.Find<ModGore>("StarjinxGore").Type, 0.75f);
 
             if (Projectile.timeLeft < 25 || Projectile.penetrate <= 1)

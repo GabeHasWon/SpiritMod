@@ -129,7 +129,6 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 		public float Curvature;
 
 		public ref float Timer => ref Projectile.ai[0];
-		//public ref float AiState => ref Projectile.ai[1];
 
 		public const float THROW_RANGE = 250; //Peak distance from player when thrown out, in pixels
 

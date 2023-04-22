@@ -682,7 +682,7 @@ namespace SpiritMod.World
 						}
 
 						float stoneValue = EllipseFormula(tileX, tileY, _center, _size) + ((tileY * 16f - denseY) / stoneCompY);
-						if (tileY + 20 >= Main.worldSurface && stoneValue > 0.5f && WorldGen.genRand.Next(6) == 0)
+						if (tileY + 20 >= Main.worldSurface && stoneValue > 0.5f && WorldGen.genRand.NextBool(6))
 						{
 							stoneSpots.Add(new BlockSpot(tileX, tileY, stoneValue));
 						}
@@ -1153,7 +1153,7 @@ namespace SpiritMod.World
 				List<Vector2> stripPoints = stripCurve.GetPoints(pointCt);
 				for (int j = 1; j < pointCt; j++)
 				{
-					if (i >= 2 && i <= pointCt - 2 && WorldGen.genRand.Next(4) == 0) continue;
+					if (i >= 2 && i <= pointCt - 2 && WorldGen.genRand.NextBool(4)) continue;
 
 					Point sStart = stripPoints[j - 1].ToPoint();
 					Point sEnd = stripPoints[j].ToPoint();
@@ -2617,7 +2617,7 @@ namespace SpiritMod.World
 							Main.tile[i, num1 - 1].TileFrameY = 176;
 						}
 					}
-					if (WorldGen.genRand.Next(8) == 0)
+					if (WorldGen.genRand.NextBool(8))
 					{
 						num = WorldGen.genRand.Next(3);
 						if (num == 0)

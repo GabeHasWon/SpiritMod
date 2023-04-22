@@ -1,71 +1,61 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria.ID;
-using SpiritMod.Projectiles;
 using SpiritMod.Mechanics.Trails;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower
 {
 	public class CrystalFlowerProjectile : ModProjectile, IDrawAdditive, ITrailProjectile
 	{
+		private const int fadeoutTime = 24;
+
+		public void DoTrailCreation(TrailManager tM) 
+			=> tM.CreateTrail(Projectile, new GradientTrail(Color.White, Color.Magenta), new RoundCap(), new DefaultTrailPosition(), 6f, 35f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_2").Value, 0.01f, 1f, 1f));
+
 		public override void SetStaticDefaults()
 		{
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 			DisplayName.SetDefault("Crystal Flower");
 		}
+
 		public override void SetDefaults()
 		{
-			Projectile.width = 10;
-			Projectile.height = 16;
+			Projectile.width = 20;
+			Projectile.height = 20;
 			Projectile.friendly = true;
-			Projectile.penetrate = 2;
-			Projectile.tileCollide = true;
-			Projectile.timeLeft = 150;
+			Projectile.extraUpdates = 1;
+			Projectile.timeLeft = fadeoutTime;
 		}
-		int numBounce = 3;
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			numBounce--;
-			if (numBounce <= 0)
-				Projectile.Kill();
-			else
-			{
-				Projectile.Bounce(oldVelocity, .75f);
-			}
-			return false;
-		}
+
 		public override void AI()
 		{
 			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-			Projectile.velocity *= .98f;
-			Projectile.alpha++;
-			if (Projectile.alpha > 150)
-            {
-				Projectile.Kill();
-            }
+
+			Projectile.alpha += 255 / fadeoutTime;
 		}
-		public void DoTrailCreation(TrailManager tM) => tM.CreateTrail(Projectile, new GradientTrail(Color.Cyan, Color.Cyan * .5f), new RoundCap(), new DefaultTrailPosition(), 6f, 35f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_2").Value, 0.01f, 1f, 1f));
 
 		public override void Kill(int timeLeft)
 		{
-			Vector2 vector9 = Projectile.position;
-			Vector2 value19 = (Projectile.rotation - 1.57079637f).ToRotationVector2();
-			vector9 += value19 * 3f;
-			for (int num257 = 0; num257 < 12; num257++)
+			if (timeLeft <= 0)
+				return;
+
+			for (int k = 0; k < 14; k++)
 			{
-				int newDust = Dust.NewDust(vector9, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default, 1.2f);
-				Main.dust[newDust].position = (Main.dust[newDust].position + Projectile.Center) / 2f;
-				Main.dust[newDust].velocity += value19 * 2f;
-				Main.dust[newDust].velocity *= 0.5f;
-				Main.dust[newDust].noGravity = true;
-				vector9 -= value19 * 2f;
+				float unitMax = 8.0f;
+
+				Vector2 velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.0f, unitMax);
+				if (k < 5)
+					velocity = (-Vector2.UnitX * Main.rand.NextFloat(3.0f, unitMax)).RotatedBy(Projectile.rotation).RotatedByRandom(1f);
+
+				Dust.NewDustPerfect(Projectile.Center, Main.rand.NextBool(2) ? DustID.CrystalSerpent_Pink : DustID.CrystalSerpent, velocity, 0, default, 1.5f - (float)(velocity.Length() / unitMax)).noGravity = true;
 			}
 		}
+
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{
 			for (int k = 0; k < Projectile.oldPos.Length; k++)
@@ -76,14 +66,25 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower
 				spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.oldPos[k] + Projectile.Size / 2 - screenPos, null, color, Projectile.oldRot[k], TextureAssets.Projectile[Projectile.type].Value.Size() / 2, scale, default, default);
 			}
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
+			lightColor = Color.White;
+
+			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+			Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
+			
 			for (int k = 0; k < Projectile.oldPos.Length; k++)
 			{
+				float quoteant = (float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length;
+
 				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-				Color color = Projectile.GetAlpha(Color.White * (float)(.6-(Projectile.alpha/255))) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
+				Color color = Projectile.GetAlpha(lightColor) * quoteant;
+
+				DrawAberration.DrawChromaticAberration(Vector2.UnitX.RotatedBy(Projectile.rotation), 1.5f, delegate (Vector2 offset, Color colorMod)
+				{
+					Main.EntitySpriteDraw(texture, drawPos + offset, null, colorMod, Projectile.rotation, drawOrigin, Projectile.scale * quoteant, SpriteEffects.None, 0);
+				});
 			}
 			return false;
 		}

@@ -43,7 +43,7 @@ namespace SpiritMod.Items.Glyphs
 			Item.rare = ItemRarityID.LightPurple;
 			Item.maxStack = 999;
 		}
-		public override bool CanApply(Item item) => item.IsWeapon() || item.useStyle > 0 && item.mountType < 0 && item.shoot <= ProjectileID.None;
+		public override bool CanApply(Item item) => item.IsWeapon() || item.useStyle > ItemUseStyleID.None && item.mountType < 0 && item.shoot <= ProjectileID.None;
 
 		public static void PhaseEffects(Player player, ref int damage, bool crit)
 		{

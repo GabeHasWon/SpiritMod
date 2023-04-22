@@ -35,7 +35,7 @@ namespace SpiritMod.Skies
                 float num3 = (float)Ufo.Random.NextDouble() * 2f + 6f;
                 double num2 = Ufo.Random.NextDouble() * 0.60000002384185791 - 0.30000001192092896;
                 ufo.Rotation = (float)num2;
-                if (Ufo.Random.Next(2) == 0)
+                if (Ufo.Random.NextBool(2))
                 {
                     ufo.Rotation += 3.1415927410125732f;
                     num2 += 3.1415927410125732;

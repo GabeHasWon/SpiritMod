@@ -4,13 +4,12 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower
 {
-	//[AutoloadEquip(EquipType.Back)]
 	public class CrystalFlowerItem : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Crystal Flower");
-			Tooltip.SetDefault("Defeated enemies have a chance to drop damaging crystals on death");
+			Tooltip.SetDefault("Enemies have a chance to explode into damaging crystals on death");
 		}
 
 		public override void SetDefaults()

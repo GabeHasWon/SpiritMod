@@ -1,4 +1,3 @@
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles.Thrown.Charge;
 using Terraria;
 using Terraria.ID;
@@ -11,16 +10,15 @@ namespace SpiritMod.Items.Sets.FrigidSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Frigid Javelin");
-			Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage\nOccaisionally frostburns foes");
+			Tooltip.SetDefault("Hold and release to throw\nHold longer for more velocity and damage\nOccasionally inflicts Frostburn");
 		}
-
 
 		public override void SetDefaults()
 		{
 			Item.damage = 12;
 			Item.crit = 6;
 			Item.noMelee = true;
-			Item.channel = true; //Channel so that you can held the weapon [Important]
+			Item.channel = true;
 			Item.rare = ItemRarityID.Blue;
 			Item.width = 18;
 			Item.height = 18;
@@ -31,7 +29,6 @@ namespace SpiritMod.Items.Sets.FrigidSet
 			Item.knockBack = 6f;
 			Item.DamageType = DamageClass.Melee;
 			Item.noMelee = true;
-			//   item.UseSound = SoundID.Item20;
 			Item.autoReuse = false;
 			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<FrigidJavelinProj>();
@@ -40,7 +37,7 @@ namespace SpiritMod.Items.Sets.FrigidSet
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<FrigidFragment>(), 9);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();

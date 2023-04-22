@@ -69,7 +69,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 		}
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(4) == 2)
+			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.CursedInferno, 180);
 		}
 

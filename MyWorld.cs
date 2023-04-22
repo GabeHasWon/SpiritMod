@@ -419,7 +419,7 @@ namespace SpiritMod
 		}
 
 		#region MageTower
-		private void PlaceTower(int i, int j, int[,] ShrineArray, int[,] HammerArray, int[,] WallsArray, int[,] LootArray)
+		private static void PlaceTower(int i, int j, int[,] ShrineArray, int[,] HammerArray, int[,] WallsArray, int[,] LootArray)
 		{
 			for (int y = 0; y < WallsArray.GetLength(0); y++)
 			{ // This Loop Places Furnitures.(So that they have blocks to spawn on).
@@ -858,7 +858,7 @@ namespace SpiritMod
 		#endregion
 
 		#region BanditHideout
-		private void PlaceBanditHideout(int i, int j, int[,] BlocksArray, int[,] WallsArray, int[,] LootArray)
+		private static void PlaceBanditHideout(int i, int j, int[,] BlocksArray, int[,] WallsArray, int[,] LootArray)
 		{
 			for (int y = 0; y < WallsArray.GetLength(0); y++)
 			{
@@ -868,7 +868,6 @@ namespace SpiritMod
 					int l = j - 6 + y;
 					if (WorldGen.InWorld(k, l, 30))
 					{
-						Tile tile = Framing.GetTileSafely(k, l);
 						switch (WallsArray[y, x])
 						{
 							case 0:
@@ -934,7 +933,6 @@ namespace SpiritMod
 					int l = j - 6 + y;
 					if (WorldGen.InWorld(k, l, 30))
 					{
-						Tile tile = Framing.GetTileSafely(k, l);
 						switch (BlocksArray[y, x])
 						{
 							case 0:
@@ -979,7 +977,6 @@ namespace SpiritMod
 					int l = j - 6 + y;
 					if (WorldGen.InWorld(k, l, 30))
 					{
-						Tile tile = Framing.GetTileSafely(k, l);
 						switch (WallsArray[y, x])
 						{
 							case 0:
@@ -1044,7 +1041,6 @@ namespace SpiritMod
 					int l = j - 6 + y;
 					if (WorldGen.InWorld(k, l, 30))
 					{
-						Tile tile = Framing.GetTileSafely(k, l);
 						switch (LootArray[y, x])
 						{
 							case 4:
@@ -1095,7 +1091,7 @@ namespace SpiritMod
 				}
 			}
 		}
-		public void GenerateBanditHideout()
+		public static void GenerateBanditHideout()
 		{
 			int[,] BanditTiles = new int[,]
 			{
@@ -1227,8 +1223,8 @@ namespace SpiritMod
 			}
 		}
 		#endregion
-		#region SurfaceMicros
 
+		#region SurfaceMicros
 		public override void ResetNearbyTileEffects()
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MyPlayer>();
@@ -1236,6 +1232,7 @@ namespace SpiritMod
 			modPlayer.ZoneLantern = false;
 		}
 		#endregion
+
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
 			tasks.Insert(3, new PassLegacy("SpiritReset", ResetWorldInfo));

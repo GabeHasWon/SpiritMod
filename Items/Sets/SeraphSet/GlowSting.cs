@@ -33,7 +33,7 @@ namespace SpiritMod.Items.Sets.SeraphSet
 			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item1;
 			Item.shoot = ModContent.ProjectileType<GlowStingSpear>();
-			Item.shootSpeed = 8f;
+			Item.shootSpeed = 18f;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -54,8 +54,9 @@ namespace SpiritMod.Items.Sets.SeraphSet
 				Item.damage = 34;
 				Item.knockBack = 2;
 				Item.noUseGraphic = true;
-				Item.useTime = Item.useAnimation = 7;
-				Item.useStyle = ItemUseStyleID.Shoot;
+				Item.useTime = Item.useAnimation = 10;
+				Item.channel = true;
+				Item.useStyle = ItemUseStyleID.Rapier;
 			}
 			else
 			{
@@ -63,6 +64,7 @@ namespace SpiritMod.Items.Sets.SeraphSet
 				Item.knockBack = 5;
 				Item.noUseGraphic = false;
 				Item.useTime = Item.useAnimation = 25;
+				Item.channel = false;
 				Item.useStyle = ItemUseStyleID.Swing;
 			}
 			return true;
@@ -70,7 +72,8 @@ namespace SpiritMod.Items.Sets.SeraphSet
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) => velocity = velocity.RotatedByRandom(.1f);
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => player.altFunctionUse == 2;
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
+			=> player.altFunctionUse == 2 && player.ownedProjectileCounts[Item.shoot] < 1;
 
 		public override void AddRecipes()
 		{

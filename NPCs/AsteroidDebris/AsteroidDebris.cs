@@ -126,7 +126,6 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				dust.velocity = Vector2.Zero;
 			}
 
-			NPC.velocity *= 0.99f;
 			NPC.rotation += 0.002f + NPC.velocity.Length() / 40;
 			if (Cooldown > 0)
 				Cooldown--;
@@ -145,11 +144,15 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				float dist = (NPC.position.Y / 16f) - top;
 				NPC.velocity.Y += 0.2f * (dist / (float)(Main.worldSurface * 0.36f - top));
 			}
+			else
+			{
+				NPC.velocity *= 0.99f;
+			}
 		}
 
 		private void Impact()
 		{
-			float Direction() => Main.rand.NextFloat(-1.0f, 1.0f) * 3f;
+			static float Direction() => Main.rand.NextFloat(-1.0f, 1.0f) * 3f;
 
 			int randomAmount = Main.rand.Next(4, 7);
 			for (int i = 0; i < randomAmount; i++)
@@ -164,6 +167,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 		{
 			if (projectile.Hitbox.Intersects(NPC.Hitbox))
 				Bump((projectile.velocity * .3f).RotatedByRandom(0.5f));
+
 			return Shiny;
 		}
 

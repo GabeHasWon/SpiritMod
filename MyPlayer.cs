@@ -44,6 +44,8 @@ using SpiritMod.Buffs.DoT;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.NPCs.AsteroidDebris;
 using SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles;
+using SpiritMod.Particles;
+using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
 
 namespace SpiritMod
 {
@@ -90,8 +92,6 @@ namespace SpiritMod
 		public bool flightPotion = false; 
 		public bool magnifyingGlass = false;
 		public bool ShieldCore = false;
-		public int shieldsLeft = 2;
-		public bool spawnedShield = false;
 		public bool SoulStone = false;
 		public bool AceOfSpades = false;
 		public bool AceOfHearts = false;
@@ -129,7 +129,6 @@ namespace SpiritMod
 		public bool winterbornCharmMage = false;
 		public bool sepulchreCharm = false;
 		public bool HellGaze = false;
-		public bool magazine = false;
 		public bool EaterSummon = false;
 		public bool CreeperSummon = false;
 		public bool leatherGlove = false;
@@ -302,7 +301,7 @@ namespace SpiritMod
 		public int candyInBowl;
 		private IList<string> candyFromTown = new List<string>();
 
-		public Dictionary<int, int> auroraMonoliths = new Dictionary<int, int>()
+		public Dictionary<int, int> auroraMonoliths = new()
 		{
 			{ AuroraOverlay.UNUSED_BASIC, 0 }, { AuroraOverlay.PRIMARY, 0 }, { AuroraOverlay.PRIMARY_ALT1, 0 },
 			{ AuroraOverlay.PRIMARY_ALT2, 0 }, { AuroraOverlay.PRIMARY_ALT3, 0 }, { AuroraOverlay.BLOODMOON, 0 },
@@ -310,7 +309,7 @@ namespace SpiritMod
 			{ AuroraOverlay.SPIRIT, 0 }
 		};
 
-		public Dictionary<string, int> fountainsActive = new Dictionary<string, int>()
+		public Dictionary<string, int> fountainsActive = new()
 		{
 			{ "BRIAR", 0 }
 		};
@@ -605,7 +604,6 @@ namespace SpiritMod
 			bloodfireShield = false;
 			Phantom = false;
 			magnifyingGlass = false;
-			magazine = false;
 			daybloomSet = false;
 			daybloomGarb = false;
 			CursedPendant = false;
@@ -989,11 +987,10 @@ namespace SpiritMod
 			if (infernalFlame && item.IsMelee() && crit && Main.rand.NextBool(12))
 				Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<PhoenixProjectile>(), 50, 4, Main.myPlayer);
 
-			if (crystalFlower && target.life <= 0 && Main.rand.NextBool(12))
-				CrystalFlowerOnKillEffect(item.GetSource_OnHit(target), target);
+			if (crystalFlower && target.life <= 0 && Main.rand.NextBool(3))
+				CrystalFlowerOnKillEffect(item.GetSource_OnHit(target), target, damage);
 		}
 
-		int Charger;
 		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
 		{
 			foreach (var effect in effects)
@@ -1090,12 +1087,6 @@ namespace SpiritMod
 				Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center, vel, ModContent.ProjectileType<Wheeze>(), Main.hardMode ? 40 : 20, 0, Player.whoAmI);
 			}
 
-			if (magazine && proj.IsRanged() && ++Charger > 10)
-			{
-				crit = true;
-				Charger = 0;
-			}
-
 			if (timScroll && proj.IsMagic())
 			{
 				switch (Main.rand.Next(12))
@@ -1138,21 +1129,53 @@ namespace SpiritMod
 			if (NebulaPearl && Main.rand.NextBool(8) && proj.IsMagic())
 				Item.NewItem(proj.GetSource_OnHit(target), target.Hitbox, 3454);
 
-			if (crystalFlower && target.life <= 0 && Main.rand.NextBool(7))
-				CrystalFlowerOnKillEffect(proj.GetSource_OnHit(target), target);
+			if (crystalFlower && target.life <= 0 && (Main.rand.NextBool(3) || proj.type == ModContent.ProjectileType<CrystalFlowerProjectile>()))
+				CrystalFlowerOnKillEffect(proj.GetSource_OnHit(target), target, damage);
 		}
 
-		private void CrystalFlowerOnKillEffect(IEntitySource source, NPC target)
+		private void CrystalFlowerOnKillEffect(IEntitySource source, NPC target, int damage)
 		{
 			SoundEngine.PlaySound(SoundID.Item107, target.Center);
 
-			int numProjectiles = Main.rand.Next(3, 6);
-			if (Main.netMode != NetmodeID.MultiplayerClient)
+			int numProjectiles = Main.rand.Next(3, 5) + 1;
+
+			int finalDamage = (int)(damage / (numProjectiles * .5f));
+			float maxVelocity = 8.0f;
+			Vector2 basePosition = target.Center;
+
+			NPC[] storedNPCs = new NPC[numProjectiles];
+			int storedCount = -1;
+
+			foreach (NPC npc in Main.npc) //Create an array of nearby NPCs
 			{
-				for (int i = 0; i < numProjectiles; ++i)
+				if (npc.active && npc.Distance(basePosition) < (maxVelocity * 24))
+					storedNPCs[++storedCount] = npc;
+				if ((storedCount + 1) >= numProjectiles)
+					break;
+			}
+
+			if (Main.netMode == NetmodeID.MultiplayerClient) //The projectiles are spawned on the server
+				return;
+			for (int i = 0; i < numProjectiles; i++)
+			{
+				Vector2 velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(maxVelocity * .5f, maxVelocity);
+
+				if (storedCount > -1)
 				{
-					int p = Projectile.NewProjectile(source, target.Center, new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(3, 1)), ModContent.ProjectileType<Items.Sets.AccessoriesMisc.CrystalFlower.CrystalFlowerProjectile>(), 30, 0, Player.whoAmI);
-					Main.projectile[p].scale = Main.rand.NextFloat(.5f, .9f);
+					int index = Math.Min(storedCount, i / (numProjectiles / (storedCount + 1)));
+					velocity = (basePosition.DirectionTo(storedNPCs[index].Center) * maxVelocity).RotatedByRandom(.3f);
+				}
+
+				Projectile proj = Projectile.NewProjectileDirect(source, basePosition, velocity, ModContent.ProjectileType<Items.Sets.AccessoriesMisc.CrystalFlower.CrystalFlowerProjectile>(), finalDamage, 0, Player.whoAmI);
+				proj.scale = Main.rand.NextFloat(0.5f, 1.0f);
+
+				if (Main.dedServ)
+					continue;
+				for (int o = 0; o < 4; o++)
+				{
+					float randomScale = Main.rand.NextFloat(0.1f, 0.6f);
+					ParticleHandler.SpawnParticle(new FireParticle(basePosition, Main.rand.NextVector2Unit() * Main.rand.NextFloat(1.0f, maxVelocity),
+						Color.White, Color.Magenta, randomScale, (int)(randomScale * 60)));
 				}
 			}
 		}
@@ -1565,32 +1588,19 @@ namespace SpiritMod
 
 			if (ShieldCore)
 			{
-				if (!spawnedShield)
-				{
-					Player player = Main.player[Main.myPlayer];
-					int num = shieldsLeft;
-					for (int i = 0; i < num; i++)
-					{
-						int DegreeDifference = 360 / num;
-						Point pos = new Point((int)player.Center.X + (int)(Math.Sin(i * DegreeDifference) * 80), (int)player.Center.Y + (int)(Math.Sin(i * DegreeDifference) * 80));
-						Projectile.NewProjectile(Player.GetSource_FromThis(), pos.X, pos.Y, 0, 0, ModContent.ProjectileType<InterstellarShield>(), 1, 0, player.whoAmI, 0, i * DegreeDifference);
-					}
-					spawnedShield = true;
+				int shieldCount = 2;
+				int type = ModContent.ProjectileType<InterstellarShield>();
+				Player player = Main.player[Main.myPlayer];
 
-				}
-				if (shieldsLeft == 0)
+				if (player.ownedProjectileCounts[type] < shieldCount)
 				{
-					shieldCounter++;
-					if (shieldCounter > 2000)
+					for (int i = 0; i < 2; i++)
 					{
-						shieldsLeft = 2;
-						spawnedShield = false;
-						shieldCounter = 0;
+						Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<InterstellarShield>(), 0, 0, player.whoAmI, i * 360);
+						proj.ai[1] = -(InterstellarShield.cooldownTime * InterstellarShield.rechargeRate);
 					}
 				}
 			}
-			else
-				spawnedShield = false;
 
 			//Randomly spawn floating asteroid debris without disrupting NPC spawn weight
 			if (ZoneAsteroid)

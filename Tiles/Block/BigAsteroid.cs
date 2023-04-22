@@ -28,7 +28,7 @@ namespace SpiritMod.Tiles.Block
 		}
 		public override void RandomUpdate(int i, int j)
 		{
-			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.Next(400) == 0) {
+			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(400)) {
 				switch (Main.rand.Next(9)) {
 					case 0:
 						ReachGrassTile.PlaceObject(i, j - 1, Mod.Find<ModTile>("GlowShard1").Type);
@@ -48,7 +48,7 @@ namespace SpiritMod.Tiles.Block
 						break;
 				}
 			}
-			if (!Framing.GetTileSafely(i, j + 1).HasTile && Main.rand.Next(400) == 0) {
+			if (!Framing.GetTileSafely(i, j + 1).HasTile && Main.rand.NextBool(400)) {
 				switch (Main.rand.Next(3)) {
 					case 0:
 						ReachGrassTile.PlaceObject(i, j + 1, Mod.Find<ModTile>("GlowShard1").Type);

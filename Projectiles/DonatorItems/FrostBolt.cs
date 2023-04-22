@@ -56,7 +56,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			}
 
 			//Spawn the dust
-			if (Main.rand.Next(11) == 0)
+			if (Main.rand.NextBool(11))
 				Dust.NewDust(Projectile.position + Projectile.velocity,
 					Projectile.width, Projectile.height,
 					DustID.Flare_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);

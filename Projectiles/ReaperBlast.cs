@@ -7,10 +7,7 @@ namespace SpiritMod.Projectiles
 {
 	class ReaperBlast : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Hellfire Blast");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Hellfire Blast");
 
 		public override void SetDefaults()
 		{
@@ -42,9 +39,10 @@ namespace SpiritMod.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			Player player = Main.player[base.Projectile.owner];
+			Player player = Main.player[Projectile.owner];
 
-			if (Main.rand.Next(7) == 1) {
+			if (Main.rand.NextBool(7))
+			{
 				player.statLife += Main.rand.Next(2, 3);
 				player.HealEffect(Main.rand.Next(2, 3));
 			}

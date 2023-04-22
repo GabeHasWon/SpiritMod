@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using Terraria;
@@ -64,7 +63,7 @@ namespace SpiritMod.Skies.Overlays
 			//--THIS IS WHERE YOU EDIT!
 			const int Height = 400;
 
-			bool ActiveAurora(int ID) => Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[ID] >= 1 || (MyWorld.aurora && MyWorld.auroraType == ID);
+			static bool ActiveAurora(int ID) => Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[ID] >= 1 || (MyWorld.aurora && MyWorld.auroraType == ID);
 
 			if (ActiveAurora(UNUSED_BASIC))
 			{
