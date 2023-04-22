@@ -43,6 +43,6 @@ namespace SpiritMod.Projectiles.Clubs
 			SoundEngine.PlaySound(SoundID.NPCHit20, Projectile.position);
 		}
 
-		public ClubSandwichProj() : base(52, new Point(58, 58), 17f) { }
+		public ClubSandwichProj() : base(52, new Point(64, 70), 17f) { }
 	}
 }

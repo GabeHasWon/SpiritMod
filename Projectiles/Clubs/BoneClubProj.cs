@@ -31,14 +31,6 @@ namespace SpiritMod.Projectiles.Clubs
             }
         }
 
-		public override void SafeDraw(SpriteBatch spriteBatch, Color lightColor)
-		{
-			const int Size = 62;
-
-			if (Projectile.ai[0] >= ChargeTime)
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size * 2, Size, Size), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
-		}
-
-		public BoneClubProj() : base(50, new Point(62, 62), 17f){}
+		public BoneClubProj() : base(50, new Point(76, 82), 17f){}
 	}
 }

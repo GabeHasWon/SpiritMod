@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class EnergizedAxeProj : ClubProj
 	{
-		private static Point size = new(52, 58);
+		private static Point size = new(96, 96);
 
 		public override void SafeSetStaticDefaults()
 		{
@@ -54,6 +54,6 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 		}
 
-		public EnergizedAxeProj() : base(40, size, 35f) { }
+		public EnergizedAxeProj() : base(40, size, 28f) { }
 	}
 }

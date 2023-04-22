@@ -21,6 +21,6 @@ namespace SpiritMod.Projectiles.Clubs
 			Projectile.NewProjectile(Projectile.GetSource_FromAI("ClubSmash"), Projectile.Center - (Vector2.UnitY * 32), Vector2.UnitX * Main.player[Projectile.owner].direction * 2, ProjectileType<FloranShockwave>(), Projectile.damage / 4, Projectile.knockBack / 2, Projectile.owner, 8);
 		}
 
-		public FloranBludgeonProj() : base(52, new Point(58, 58), 21f){}
+		public FloranBludgeonProj() : base(52, new Point(80, 84), 21f){}
 	}
 }

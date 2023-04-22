@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class BlasphemerProj : ClubProj
 	{
-		private static Point size = new(84, 82);
+		private static Point size = new(104, 104);
 
 		public override void SafeSetStaticDefaults()
 		{

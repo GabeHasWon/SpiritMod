@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class SporeClubProj : ClubProj
 	{
-		private static Point size = new(54, 62);
+		private static Point size = new(86, 82);
 
 		public override void SafeSetStaticDefaults()
 		{
