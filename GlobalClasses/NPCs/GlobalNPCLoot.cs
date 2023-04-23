@@ -40,8 +40,8 @@ namespace SpiritMod.GlobalClasses.NPCs
 			globalLoot.Add(glyphChance);
 
 			LeadingConditionRule inAsteroids = new LeadingConditionRule(new DropRuleConditions.InBiome(DropRuleConditions.InBiome.Biome.Asteroid));
-			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Blaster>(), 40));
-			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Exotic>(), 100));
+			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Blaster>(), 30));
+			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Exotic>(), 80));
 			globalLoot.Add(inAsteroids);
 
 			LeadingConditionRule wearingArcaneNecklace = new LeadingConditionRule(new DropRuleConditions.PlayerConditional("Wearing the Arcane Necklace and is using a magic weapon", (player) => player.HasAccessory<ArcaneNecklace>() && player.HeldItem.IsMagic() && player.statMana < player.statManaMax2));
