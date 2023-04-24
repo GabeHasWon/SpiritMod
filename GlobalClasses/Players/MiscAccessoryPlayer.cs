@@ -77,7 +77,9 @@ namespace SpiritMod.GlobalClasses.Players
 			// Frost Giant Belt
 			if (player.HasAccessory<FrostGiantBelt>() && player.channel)
 				if (HeldItemIsClub(player))
+				{
 					totalKb *= 0.5f;
+				}
 
 			// Cascade Chestplate
 			if (player.ChestplateEquipped<CascadeChestplate>() && horizontal)
@@ -86,13 +88,6 @@ namespace SpiritMod.GlobalClasses.Players
 			if (totalKb < 0.001f) //Throws NullReferenceException if it's 0 for some reason
 				totalKb = 0.001f;
 			return totalKb;
-		}
-
-		public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
-		{
-			// Frost Giant Belt
-			if (Player.HasAccessory<FrostGiantBelt>() && HeldItemIsClub(Player) && item.type == Player.HeldItem.type)
-				damage *= 1 + (item.knockBack / 30f);
 		}
 
 		public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
@@ -138,13 +133,33 @@ namespace SpiritMod.GlobalClasses.Players
 		}
 
 		private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
-
+		
+		public int addDef = 0;
+		public int frostBeltTimer = 0;
+		public override void UpdateEquips()
+		{
+	
+			if (Player.HasAccessory<FrostGiantBelt>() && Player.channel)
+				if (HeldItemIsClub(Player))
+				{
+					frostBeltTimer++;
+					if ((frostBeltTimer % 6 == 0) && addDef < 15){
+						addDef++; 
+					}
+					Player.statDefense += addDef;
+				}
+			if (!Player.channel)
+			{
+				frostBeltTimer = 0;
+				addDef = 0; 
+			}
+		}
 		public override void PostUpdateEquips()
 		{
 			if (!Player.dead && Player.active)
 			{
-				//if (Player.HasAccessory<UmbillicalEyeball>() && Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()] < 3)
 				//	Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<UmbillicalEyeballProj>(), (int)(Player.GetDamage(DamageClass.Summon).ApplyTo(55)), 1.5f, Player.whoAmI, Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()], 0);
+							//if (Player.HasAccessory<UmbillicalEyeball>() && Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()] < 3)
 
 				if (Player.HasAccessory<RogueCrest>() && Player.ownedProjectileCounts[ModContent.ProjectileType<KnifeMinionProjectile>()] < 1)
 						Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<KnifeMinionProjectile>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(5), .5f, Player.whoAmI);
