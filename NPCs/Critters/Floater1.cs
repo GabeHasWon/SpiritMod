@@ -60,16 +60,13 @@ namespace SpiritMod.NPCs.Critters
 			return false;
 		}
 
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("SpiritMod/NPCs/Critters/Floater_Critter_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
-		}
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) 
+			=> GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("SpiritMod/NPCs/Critters/Floater_Critter_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int k = 0; k < 30; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, 242, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
-			}
+			for (int k = 0; k < 30; k++)
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.PinkTorch, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
 		}
 		public override bool PreAI()
 		{

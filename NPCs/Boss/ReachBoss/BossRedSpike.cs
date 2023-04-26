@@ -82,7 +82,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 		}
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-			if (Main.rand.Next(15) == 1)
+			if (Main.rand.NextBool(15))
 				target.AddBuff(BuffID.Bleeding, 200);
 		}
 	}

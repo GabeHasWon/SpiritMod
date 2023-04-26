@@ -41,7 +41,7 @@ namespace SpiritMod.Mechanics.Coverings
             bool isSnowTile = TileID.Sets.IcesSnow[tile.TileType];
 
             // if we're not in the tundra and this block isn't a snow tile of any kind, randomly remove
-            if (!isSnowTile && !Main.LocalPlayer.ZoneSnow && Main.rand.Next(300) == 0)
+            if (!isSnowTile && !Main.LocalPlayer.ZoneSnow && Main.rand.NextBool(300))
             {
                 int alpha = GetAlphaFromVariation(variation);
 

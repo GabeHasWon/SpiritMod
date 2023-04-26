@@ -99,7 +99,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.StarLance
 
 			if (!initialized)
 			{
-				if (Projectile.frame == 10 && Main.rand.Next(5) != 1)
+				if (Projectile.frame == 10 && !Main.rand.NextBool(5))
 					Projectile.frame = Main.rand.Next(10);
 
 				initialized = true;

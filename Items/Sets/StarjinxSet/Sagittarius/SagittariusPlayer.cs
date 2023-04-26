@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace SpiritMod.Items.Sets.StarjinxSet.Sagittarius
 {
@@ -19,7 +20,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Sagittarius
 		public void DrawItem(Texture2D texture, Texture2D glow, PlayerDrawSet info)
 		{
 			Item item = info.drawPlayer.HeldItem;
-			if (info.shadow != 0f || info.drawPlayer.frozen || ((info.drawPlayer.itemAnimation <= 0 || item.useStyle == 0) && (item.holdStyle <= 0 || info.drawPlayer.pulley)) || info.drawPlayer.dead || (info.drawPlayer.wet && item.noWet))
+			if (info.shadow != 0f || info.drawPlayer.frozen || ((info.drawPlayer.itemAnimation <= 0 || item.useStyle == ItemUseStyleID.None) && (item.holdStyle <= 0 || info.drawPlayer.pulley)) || info.drawPlayer.dead || (info.drawPlayer.wet && item.noWet))
 				return;
 
 			Rectangle drawFrame = texture.Bounds;

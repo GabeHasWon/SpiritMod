@@ -77,7 +77,7 @@ namespace SpiritMod.Projectiles.Arrow
 				Vector2 currentSpeed = new Vector2(Projectile.velocity.X, Projectile.velocity.Y);
 				Projectile.velocity = currentSpeed.RotatedBy(Main.rand.Next(-1, 2) * (Math.PI / 40));
 			}
-			if (Main.rand.Next(100) == 1 && !looping)
+			if (Main.rand.NextBool(100) && !looping)
 			{
 				loopCounter = 0;
 				looping = true;

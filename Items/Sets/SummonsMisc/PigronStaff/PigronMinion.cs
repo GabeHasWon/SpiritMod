@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 
 		public override bool PreAI()
 		{
-			if (Main.rand.Next(600) == 0 && Main.netMode != NetmodeID.Server)
+			if (Main.rand.NextBool(600) && Main.netMode != NetmodeID.Server)
 				SoundEngine.PlaySound(Main.rand.NextBool() ? SoundID.Zombie39 : SoundID.Zombie40, Projectile.Center);
 
 			return true;

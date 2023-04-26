@@ -46,7 +46,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.JinxprobeWand
 
             Projectile.velocity.Y += 0.1f;
 
-			if (Main.rand.Next(50) == 0)
+			if (Main.rand.NextBool(50))
 				Particles.ParticleHandler.SpawnParticle(new Particles.StarParticle(Projectile.Center, Projectile.velocity.RotatedByRandom(MathHelper.Pi / 8), Color.White * 0.66f, SpiritMod.StarjinxColor(Main.GlobalTimeWrappedHourly), Main.rand.NextFloat(0.2f, 0.3f), 35));
         }
 

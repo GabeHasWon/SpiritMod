@@ -23,9 +23,7 @@ namespace SpiritMod.NPCs.Dead_Scientist
 		}
 		public override void AI()
 		{
-			Player player = Main.player[Projectile.owner];
-			
-			float scale = Main.rand.Next(10)== 0 ? 2f : 0.8f;
+			float scale = Main.rand.NextBool(10) ? 2f : 0.8f;
             for (int index1 = 0; index1 < 2; ++index1)
             {
                 int index2 = Dust.NewDust(Projectile.Center, 0, 0, DustID.Blood, 0.0f, 0.0f, 0, new Color(), scale);

@@ -99,17 +99,18 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
                 Vector2 dir = _projectile2.Center - Entity.Center;
                 dir.Normalize();
                 dir = dir.RotatedBy(1.57f);
+
                 for (float i = 0; i < 1; i += 0.03f)
                 {
                     Vector2 toAdd = Vector2.Lerp(_projectile2.Center, Entity.Center, i);
                     toAdd += dir * 4 * Main.rand.NextFloat(-1,1);
                     points.Add(toAdd);
-                    if (Main.rand.Next(100) == 0)
+
+                    if (Main.rand.NextBool(100))
                     {
                         Dust dust = Dust.NewDustPerfect(toAdd, 226, Vector2.Zero, 0, Color.Purple);
                         dust.noGravity = !dust.noGravity;
                     }
-
                 }
                 Points = points;
             }

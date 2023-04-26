@@ -30,7 +30,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
 			for (int index = 0; index < 30; ++index)
 			{
-				Dust dust = Main.dust[Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 50), Projectile.width, Projectile.height, 7, 0.0f, 0.0f, 0, new Color(), 1.2f)];
+				Dust dust = Main.dust[Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 50), Projectile.width, Projectile.height, DustID.WoodFurniture, 0.0f, 0.0f, 0, new Color(), 1.2f)];
 				dust.velocity.Y -= (float)(1.0 + (double)4 * 1.5);
 				dust.velocity.Y *= Main.rand.NextFloat();
 				dust.scale += (float)8 * 0.03f;
@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			{
 				for (int index = 0; index < 40 - 1; ++index)
 				{
-					Dust dust = Main.dust[Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 50), Projectile.width, Projectile.height, 7, 0.0f, 0.0f, 0, new Color(), 1.2f)];
+					Dust dust = Main.dust[Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 50), Projectile.width, Projectile.height, DustID.WoodFurniture, 0.0f, 0.0f, 0, new Color(), 1.2f)];
 					dust.velocity.Y -= 1f + (float)3;
 					dust.velocity.Y *= Main.rand.NextFloat();
 				}

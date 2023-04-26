@@ -37,7 +37,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 			Player player = Main.LocalPlayer;
 			for (int index = 0; index < 6; ++index)
 			{
-				if (Main.rand.Next(10) != 0)
+				if (!Main.rand.NextBool(10))
 				{
 					Dust dust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Vortex, Projectile.velocity.X, Projectile.velocity.Y, 100, new Color(), 1f)];
 					dust.velocity = dust.velocity / 4f + Projectile.velocity / 2f;

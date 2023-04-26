@@ -99,7 +99,7 @@ namespace SpiritMod.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(5) == 2)
+			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<SoulFlare>(), 180);
 		}
 

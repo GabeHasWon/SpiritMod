@@ -55,7 +55,7 @@ namespace SpiritMod.NPCs.Reach
 			for (int k = 0; k < 30; k++)
 			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GrassBlades, 1.5f * hitDirection, -1.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, 7, 1.5f * hitDirection, -1.5f, 0, default, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 1.5f * hitDirection, -1.5f, 0, default, .34f);
 			}
 		}
 
