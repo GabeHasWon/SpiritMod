@@ -1,47 +1,25 @@
 using SpiritMod.Items.BossLoot.MoonWizardDrops.JellynautHelmet;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Consumable;
-using SpiritMod.Items.Sets.DonatorVanity;
+using SpiritMod.NPCs;
+using Terraria.GameContent.ItemDropRules;
 
-namespace SpiritMod.Items.BossLoot.MoonWizardDrops
+namespace SpiritMod.Items.BossLoot.MoonWizardDrops;
+
+public class MJWBag : BossBagItem
 {
-	public class MJWBag : BossBagItem
+	internal override string BossName => "Moon Jelly Wizard";
+
+	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
-		internal override string BossName => "Moon Jelly Wizard";
+		itemLoot.AddCommon<Cornucopion>();
 
-		public override void RightClick(Player player)
-		{
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ItemID.GoldCoin, Main.rand.Next(4, 5));
-			if (Main.rand.NextDouble() < 1d / 7)
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<MJWMask>());
-			if (Main.rand.NextDouble() < 1d / 10)
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<MJWTrophy>());
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<Cornucopion>());
-            int[] lootTable = {
-                ModContent.ItemType<Moonshot>(),
-                ModContent.ItemType<Moonburst>(),
-                ModContent.ItemType<JellynautBubble>(),
-                ModContent.ItemType<MoonjellySummonStaff>()
-            };
-            int loot = Main.rand.Next(lootTable.Length);
-			int lunazoastack = Main.rand.Next(10, 12);
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable[loot]);
-			if (lootTable[loot] == ModContent.ItemType<Moonshot>())
-				lunazoastack += Main.rand.Next(10, 20);
+		var opt = ItemDropRule.Common(ModContent.ItemType<Moonshot>(), 4); //Try dropping moonshot,
+		opt.OnSuccess(ItemDropRule.Common(ModContent.ItemType<TinyLunazoaItem>(), 1, 14, 20)); //if it drops, drop more tiny lunazoas, If not, drop another item.
+		opt.OnFailedRoll(ItemDropRule.OneFromOptions(1, ModContent.ItemType<Moonburst>(), ModContent.ItemType<JellynautBubble>(), ModContent.ItemType<MoonjellySummonStaff>()));
+		itemLoot.Add(opt);
 
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<TinyLunazoaItem>(), lunazoastack);
-
-			int[] vanityTable = {
-				ModContent.ItemType<WaasephiVanity>(),
-				ModContent.ItemType<MeteorVanity>(),
-				ModContent.ItemType<PixelatedFireballVanity>(),
-				ModContent.ItemType<LightNovasVanity>()
-			};
-			int vanityloot = Main.rand.Next(vanityTable.Length);
-			if (Main.rand.NextBool(20))
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), vanityTable[vanityloot]);
-		}
+		itemLoot.AddCommon<TinyLunazoaItem>(1, 10, 12);
+		AddBossItems<MJWMask, MJWTrophy>(itemLoot, 4..7);
 	}
 }

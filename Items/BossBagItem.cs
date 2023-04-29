@@ -1,5 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.DonatorVanity;
+using SpiritMod.NPCs;
+using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -24,11 +27,8 @@ public abstract class BossBagItem : ModItem
 		Item.width = 20;
 		Item.height = 20;
 		Item.rare = -2;
-
 		Item.maxStack = 30;
-
 		Item.expert = true;
-
 		Defaults();
 	}
 
@@ -36,6 +36,17 @@ public abstract class BossBagItem : ModItem
 	public virtual void Defaults() { }
 
 	public sealed override bool CanRightClick() => true;
+
+	/// <summary>
+	/// Adds all donator vanity, gold coins, mask and trophy to the ItemLoot as a OneFromOptions rule.
+	/// </summary>
+	public static void AddBossItems<TMask, TTrophy>(ItemLoot loot, Range goldCoinRange) where TTrophy : ModItem where TMask : ModItem
+	{
+		loot.AddCommon(ItemID.GoldCoin, 1, goldCoinRange.Start.Value, goldCoinRange.End.Value);
+		loot.AddCommon<TMask>(7);
+		loot.AddCommon<TTrophy>(10);
+		loot.AddOneFromOptions<WaasephiVanity, MeteorVanity, PixelatedFireballVanity, LightNovasVanity>(20);
+	}
 
 	public override Color? GetAlpha(Color lightColor) => Color.Lerp(lightColor, Color.White, 0.4f);
 

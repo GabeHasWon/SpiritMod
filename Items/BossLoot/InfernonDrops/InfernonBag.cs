@@ -1,6 +1,4 @@
-using SpiritMod.Items.Sets.DonatorVanity;
-using Terraria;
-using Terraria.ID;
+using SpiritMod.NPCs;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.InfernonDrops
@@ -9,38 +7,12 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		internal override string BossName => "Infernon";
 
-		public override void RightClick(Player player)
+		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ItemID.GoldCoin, Main.rand.Next(2, 5));
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<InfernalPact>()); //expert drop
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<InfernalAppendage>(), Main.rand.Next(25, 36));
-
-			int[] lootTable = {
-				ModContent.ItemType<InfernalJavelin>(),
-				ModContent.ItemType<DiabolicHorn>(),
-				ModContent.ItemType<SevenSins>(),
-				ModContent.ItemType<InfernalSword>(),
-				ModContent.ItemType<InfernalStaff>(),
-				ModContent.ItemType<InfernalShield>(),
-				ModContent.ItemType<EyeOfTheInferno>()
-			};
-			int loot = Main.rand.Next(lootTable.Length);
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable[loot]);
-
-			if (Main.rand.NextDouble() < 1d / 7)
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<InfernonMask>());
-			if (Main.rand.NextDouble() < 1d / 10)
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<Trophy4>());
-
-			int[] vanityTable = {
-				ModContent.ItemType<WaasephiVanity>(),
-				ModContent.ItemType<MeteorVanity>(),
-				ModContent.ItemType<PixelatedFireballVanity>(),
-				ModContent.ItemType<LightNovasVanity>()
-			};
-			int vanityloot = Main.rand.Next(vanityTable.Length);
-			if (Main.rand.NextBool(20))
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), vanityTable[vanityloot]);
+			itemLoot.AddCommon<InfernalPact>();
+			itemLoot.AddCommon<InfernalAppendage>(1, 25, 36);
+			itemLoot.AddOneFromOptions<InfernalJavelin, DiabolicHorn, SevenSins, InfernalSword, InfernalStaff, InfernalShield, EyeOfTheInferno>();
+			AddBossItems<InfernonMask, Trophy4>(itemLoot, 6..11);
 		}
 	}
 }
