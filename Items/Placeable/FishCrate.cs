@@ -1,7 +1,10 @@
+using SpiritMod.Items.Armor.DiverSet;
 using SpiritMod.Items.Consumable;
 using SpiritMod.Items.Consumable.Fish;
+using SpiritMod.NPCs;
 using SpiritMod.Tiles.Furniture;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -45,61 +48,22 @@ namespace SpiritMod.Items.Placeable
 			}
 		}
 
-		public override void RightClick(Player player)
+		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			var source = player.GetSource_ItemUse(
-				Item, "RightClick");
+			itemLoot.AddCommon<RawFish>(2);
+			itemLoot.AddOneFromOptions<FloaterItem, LuvdiscItem>(4);
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(3, 4, 1, 1, 1, ItemID.Shrimp, ItemID.Salmon, ItemID.Bass, ItemID.RedSnapper, ItemID.Trout));
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(1, 2, 1, 4, 1, ItemID.Damselfish, ItemID.DoubleCod, ItemID.ArmoredCavefish, ItemID.FrostMinnow));
+			itemLoot.AddOneFromOptions(27, ItemID.ReaverShark, ItemID.Swordfish, ItemID.SawtoothShark);
+			itemLoot.AddOneFromOptions<DiverLegs, DiverBody, DiverHead>(14);
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(9, 12, 1, 3, 1, ItemID.FrostDaggerfish, ItemID.BombFish));
 
-			if (Main.rand.NextBool(2))
-				player.QuickSpawnItem(source, ModContent.ItemType<RawFish>());
+			LeadingConditionRule isHardmode = new LeadingConditionRule(new Conditions.IsHardmode());
+			isHardmode.OnSuccess(DropRules.LootPoolDrop.SameStack(1, 3, 1, 10, 1, ItemID.FlarefinKoi, ItemID.Obsidifish, ItemID.Prismite, ItemID.PrincessFish));
+			itemLoot.Add(isHardmode);
 
-			if (Main.rand.NextBool(4))
-			{
-				if (Main.rand.NextBool())
-					player.QuickSpawnItem(source, ModContent.ItemType<FloaterItem>());
-				else
-					player.QuickSpawnItem(source, ModContent.ItemType<LuvdiscItem>());
-			}
-
-			int[] lootTable = { ItemID.Shrimp, ItemID.Salmon, ItemID.Bass, ItemID.RedSnapper, ItemID.Trout };
-			player.QuickSpawnItem(source, lootTable[Main.rand.Next(lootTable.Length)], Main.rand.Next(3, 5));
-
-			if (Main.rand.NextBool(4))
-			{
-				int[] lootTable3 = { ItemID.ArmoredCavefish, ItemID.Damselfish, ItemID.DoubleCod, ItemID.FrostMinnow };
-				player.QuickSpawnItem(source, lootTable3[Main.rand.Next(lootTable3.Length)], Main.rand.Next(1, 2));
-			}
-
-			if (Main.rand.NextBool(27))
-			{
-				int[] lootTable4 = { ItemID.ReaverShark, ItemID.Swordfish, ItemID.SawtoothShark };
-				player.QuickSpawnItem(source, lootTable4[Main.rand.Next(lootTable4.Length)]);
-			}
-
-			if (Main.rand.NextBool(14))
-			{
-				string[] lootTable2123 = { "DiverLegs", "DiverHead", "DiverBody" };
-				int loot443 = Main.rand.Next(lootTable2123.Length);
-				player.QuickSpawnItem(source, Mod.Find<ModItem>(lootTable2123[loot443]).Type);
-			}
-
-			if (Main.rand.NextBool(3))
-			{
-				int[] lootTable2 = { ItemID.FrostDaggerfish, ItemID.BombFish };
-				player.QuickSpawnItem(source, lootTable2[Main.rand.Next(lootTable2.Length)], Main.rand.Next(9, 12));
-			}
-
-			if (Main.hardMode && Main.rand.NextBool(10))
-			{
-				int[] lootTable51 = { ItemID.FlarefinKoi, ItemID.Obsidifish, ItemID.Prismite, ItemID.PrincessFish };
-				player.QuickSpawnItem(source, lootTable51[Main.rand.Next(lootTable51.Length)], Main.rand.Next(1, 3));
-			}
-
-			if (Main.rand.NextBool(3))
-				player.QuickSpawnItem(source, ItemID.SilverCoin, Main.rand.Next(10, 90));
-
-			if (Main.rand.NextBool(7))
-				player.QuickSpawnItem(source, ItemID.GoldCoin, Main.rand.Next(1, 3));
+			itemLoot.AddCommon(ItemID.SilverCoin, 3, 40, 91);
+			itemLoot.AddCommon(ItemID.GoldCoin, 7, 2, 5);
 		}
 	}
 }

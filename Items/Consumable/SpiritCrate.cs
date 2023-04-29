@@ -6,9 +6,11 @@ using SpiritMod.Items.Sets.SpiritBiomeDrops;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritCrateTile = SpiritMod.Tiles.Furniture.SpiritCrate;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using SpiritMod.NPCs;
+
+using SpiritCrateTile = SpiritMod.Tiles.Furniture.SpiritCrate;
 
 namespace SpiritMod.Items.Consumable
 {
@@ -37,41 +39,12 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool CanRightClick() => true;
 
-		public override void RightClick(Player player)
+		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			int[] lootTable = {
-				ModContent.ItemType<SpiritOre>(),
-				ModContent.ItemType<Rune>(),
-				ModContent.ItemType<StarPiece>(),
-				ModContent.ItemType<MoonStone>()
-			};
-			int loot = Main.rand.Next(lootTable.Length);
-
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable[loot], Main.rand.Next(3, 5));
-			if (Main.rand.NextBool(4)) {
-				int[] lootTable3 = {
-					ModContent.ItemType<SpiritOre>(),
-					ModContent.ItemType<Rune>(),
-					ModContent.ItemType<StarPiece>(),
-					ModContent.ItemType<MoonStone>()
-				};
-				int loot3 = Main.rand.Next(lootTable3.Length);
-
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable3[loot3], Main.rand.Next(3, 5));
-			}
-            if (Main.rand.NextBool(10))
-            {
-                player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<Items.Books.Book_SpiritArt>());
-            }
-            if (Main.rand.NextBool(6)) {
-				int[] lootTable2 = {
-					ModContent.ItemType<StarCutter>(),
-					ModContent.ItemType<GhostJellyBomb>()
-				};
-				int loot2 = Main.rand.Next(lootTable2.Length);
-
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable2[loot2], Main.rand.Next(30, 80));
-			}
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(5, 9, 1, 1, 1, ModContent.ItemType<SpiritOre>(), ModContent.ItemType<Rune>(), ModContent.ItemType<StarPiece>(),
+				ModContent.ItemType<MoonStone>()));
+			itemLoot.AddCommon<Books.Book_SpiritArt>(10);
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(40, 80, 1, 6, 1, ModContent.ItemType<StarCutter>(), ModContent.ItemType<GhostJellyBomb>());
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);

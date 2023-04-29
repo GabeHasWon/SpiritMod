@@ -1,3 +1,5 @@
+using SpiritMod.Items.Placeable.Furniture.Paintings;
+using SpiritMod.NPCs;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -26,10 +28,18 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool CanRightClick() => true;
 
-		public override void RightClick(Player player)
+		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), Mod.Find<ModItem>("AdvPainting" + Main.rand.Next(1, 24)).Type);
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), Mod.Find<ModItem>("AdvPainting" + Main.rand.Next(1, 24)).Type);
+			for (int i = 0; i < 2; ++i) //Ugly but I don't care
+			{
+				itemLoot.AddOneFromOptions(1, ModContent.ItemType<AdvPainting1>(), ModContent.ItemType<AdvPainting1>(), ModContent.ItemType<AdvPainting2>(),
+					ModContent.ItemType<AdvPainting3>(), ModContent.ItemType<AdvPainting4>(), ModContent.ItemType<AdvPainting5>(), ModContent.ItemType<AdvPainting6>(),
+					ModContent.ItemType<AdvPainting7>(), ModContent.ItemType<AdvPainting8>(), ModContent.ItemType<AdvPainting9>(), ModContent.ItemType<AdvPainting10>(),
+					ModContent.ItemType<AdvPainting11>(), ModContent.ItemType<AdvPainting12>(), ModContent.ItemType<AdvPainting13>(), ModContent.ItemType<AdvPainting14>(),
+					ModContent.ItemType<AdvPainting15>(), ModContent.ItemType<AdvPainting16>(), ModContent.ItemType<AdvPainting17>(), ModContent.ItemType<AdvPainting18>(),
+					ModContent.ItemType<AdvPainting19>(), ModContent.ItemType<AdvPainting20>(), ModContent.ItemType<AdvPainting21>(), ModContent.ItemType<AdvPainting22>(),
+					ModContent.ItemType<AdvPainting23>());
+			}
 		}
 	}
 }

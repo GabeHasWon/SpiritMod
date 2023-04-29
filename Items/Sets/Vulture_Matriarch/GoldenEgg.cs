@@ -26,14 +26,14 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch
 			for (int i = 0; i < Item.stack; i++)
 			{
 				if (Main.rand.NextBool(5))
-					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<HourglassItem>(), 1);
+					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), ModContent.ItemType<HourglassItem>(), 1);
 
 				if (Main.rand.NextBool(7))
-					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ModContent.ItemType<Vulture_Matriarch_Mask>(), 1);
+					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), ModContent.ItemType<Vulture_Matriarch_Mask>(), 1);
 
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), Main.rand.Next(new int[] { ModContent.ItemType<Tome_of_the_Great_Scavenger.Tome_of_the_Great_Scavenger>(), ModContent.ItemType<Sovereign_Talon.Sovereign_Talon>() }), 1);
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ItemID.GoldCoin, 1);
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ItemID.SilverCoin, Main.rand.Next(20, 40));
+				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), Main.rand.Next(new int[] { ModContent.ItemType<Tome_of_the_Great_Scavenger.Tome_of_the_Great_Scavenger>(), ModContent.ItemType<Sovereign_Talon.Sovereign_Talon>() }), 1);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), ItemID.GoldCoin, 1);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), ItemID.SilverCoin, Main.rand.Next(20, 40));
 			}
 			return false;
 		}

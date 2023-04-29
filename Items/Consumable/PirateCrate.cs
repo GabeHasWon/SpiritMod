@@ -1,4 +1,6 @@
+using SpiritMod.NPCs;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,61 +31,21 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool CanRightClick() => true;
 
-		public override void RightClick(Player player)
+		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			int[] lootTable = {
-				ItemID.GoldRing,
-				ItemID.GoldRing,
-				ItemID.GoldRing,
-				ItemID.GoldRing,
-				ItemID.GoldRing,
-				ItemID.GoldRing,
-				ItemID.LuckyCoin,
-				ItemID.LuckyCoin,
-				ItemID.LuckyCoin,
+			int[] minorItem = new int[] //"Weighted" way of choosing a random, single item
+			{
+				ItemID.GoldRing, ItemID.GoldRing, ItemID.GoldRing, ItemID.GoldRing, ItemID.GoldRing, ItemID.GoldRing,
+				ItemID.LuckyCoin, ItemID.LuckyCoin, ItemID.LuckyCoin,
 				ItemID.CoinGun,
-				ItemID.DiscountCard,
-				ItemID.DiscountCard,
-				ItemID.DiscountCard,
-				ItemID.DiscountCard,
-				ItemID.DiscountCard,
-				ItemID.DiscountCard
+				ItemID.DiscountCard, ItemID.DiscountCard, ItemID.DiscountCard, ItemID.DiscountCard, ItemID.DiscountCard, ItemID.DiscountCard
 			};
-			int loot = Main.rand.Next(lootTable.Length);
-			player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), lootTable[loot]);
-			if (Main.rand.Next(4) > 0) {
-				int[] lootTable2 = {
-					ItemID.GoldBar,
-					ItemID.SilverBar,
-					ItemID.TungstenBar,
-					ItemID.PlatinumBar
-				};
-				int loot2 = Main.rand.Next(lootTable2.Length);
-				int Booty = Main.rand.Next(15, 30);
-				for (int j = 0; j < Booty; j++) {
-					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), lootTable2[loot2]);
-				}
 
-			}
-			if (Main.rand.NextBool(2)) {
-				int Gems = Main.rand.Next(15, 30);
-				for (int I = 0; I < Gems; I++) {
-					int[] lootTable3 = {
-						ItemID.Ruby,
-						ItemID.Emerald,
-						ItemID.Topaz,
-						ItemID.Amethyst,
-						ItemID.Diamond,
-						ItemID.Sapphire,
-						ItemID.Amber
-					};
-					int loot3 = Main.rand.Next(lootTable3.Length);
-					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), lootTable3[loot3]);
-				}
-			}
-			int Coins = Main.rand.Next(10, 25);
-			for (int K = 0; K < Coins; K++)
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ItemID.GoldCoin);
+			itemLoot.AddOneFromOptions(1, minorItem);
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(15, 30, 1, 4, 1, ItemID.GoldBar, ItemID.SilverBar, ItemID.TungstenBar, ItemID.PlatinumBar));
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(15, 30, 1, 2, 1, ItemID.Ruby, ItemID.Emerald, ItemID.Topaz, ItemID.Amethyst, ItemID.Diamond, ItemID.Sapphire, 
+				ItemID.Amber));
+			itemLoot.AddCommon(ItemID.GoldCoin, 1, 10, 26);
 		}
 	}
 }

@@ -16,6 +16,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 	[TileTag(TileTags.Indestructible)]
 	public class Fathomless_Chest : ModTile
 	{
+		private static float Timer => (float)Math.Sin(Main.GlobalTimeWrappedHourly) + 0.5f;
+
 		public override void SetStaticDefaults()
 		{
 			Main.tileSolidTop[Type] = false;
@@ -194,8 +196,6 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 
 			spriteBatch.Draw(glow, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), Color.White * Timer * .5f);
 		}
-
-		private static float Timer => (float)Math.Sin(Main.GlobalTimeWrappedHourly) + 0.5f;
 	}
 
 	internal class Fathomless_Chest_Item : ModItem

@@ -48,6 +48,13 @@ namespace SpiritMod.NPCs
 				ChainedRules = new List<IItemDropRuleChainAttempt>();
 			}
 
+			/// <summary>
+			/// Like a OneFromOptions, but you can specify the stacks of all items.
+			/// </summary>
+			/// <param name="maxStack">Max stack of the dropped item, INCLUSIVE.</param>
+			/// <param name="amount">How many items are dropped.</param>
+			/// <param name="options">Item IDs to choose from.</param>
+			/// <exception cref="ArgumentOutOfRangeException"></exception>
 			public static LootPoolDrop SameStack(int minStack, int maxStack, int amount, int denominator, int numerator, params int[] options)
 			{
 				Range[] stacks = new Range[options.Length];

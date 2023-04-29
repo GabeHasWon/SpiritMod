@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using Terraria.Enums;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using SpiritMod.NPCs;
+using Terraria.GameContent.ItemDropRules;
 
 namespace SpiritMod.Items.Sets.FloatingItems
 {
@@ -36,73 +38,26 @@ namespace SpiritMod.Items.Sets.FloatingItems
 
 		public override bool CanRightClick() => true;
 
-		public override void RightClick(Player player)
+		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			if (Main.rand.NextBool(3))
+			int[] lootTable = new int[] //Another "weighted" loot table
 			{
-				int[] lootTable = {
-					ItemID.FishHook,
-					ItemID.ShipsWheel,
-					ItemID.ShipsWheel,
-					ItemID.ShipsWheel,
-					ItemID.TreasureMap,
-					ItemID.CompassRose,
-					ItemID.CompassRose,
-					ItemID.ShipInABottle,
-					ItemID.Sextant
-				};
-				int loot = Main.rand.Next(lootTable.Length);
-				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable[loot]);
-			}
+				ItemID.FishHook,
+				ItemID.ShipsWheel, ItemID.ShipsWheel, ItemID.ShipsWheel,
+				ItemID.TreasureMap,
+				ItemID.CompassRose, ItemID.CompassRose,
+				ItemID.ShipInABottle,
+				ItemID.Sextant
+			};
 
-			if (Main.rand.NextBool(4))
-			{
-				int[] lootTable2 = {
-					ItemID.GoldBar,
-					ItemID.SilverBar,
-					ItemID.TungstenBar,
-					ItemID.PlatinumBar
-				};
-				int loot2 = Main.rand.Next(lootTable2.Length);
-				int Booty = Main.rand.Next(6, 10);
+			itemLoot.AddOneFromOptions(3, lootTable);
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(6, 10, 1, 4, 1, ItemID.GoldBar, ItemID.SilverBar, ItemID.TungstenBar, ItemID.GoldBar));
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(5, 7, 1, 4, 1, ItemID.Ruby, ItemID.Emerald, ItemID.Topaz, ItemID.Amethyst, ItemID.Diamond, ItemID.Sapphire, ItemID.Amber));
+			itemLoot.AddCommon<Weapon.Thrown.ExplosiveRum.ExplosiveRum>(1, 45, 71);
 
-				for (int j = 0; j < Booty; j++)
-					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable2[loot2]);
-			}
-
-			if (Main.rand.NextBool(6))
-			{
-				int Gems = Main.rand.Next(5, 7);
-				for (int I = 0; I < Gems; I++)
-				{
-					int[] lootTable3 = {
-						ItemID.Ruby,
-						ItemID.Emerald,
-						ItemID.Topaz,
-						ItemID.Amethyst,
-						ItemID.Diamond,
-						ItemID.Sapphire,
-						ItemID.Amber
-					};
-					int loot3 = Main.rand.Next(lootTable3.Length);
-					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), lootTable3[loot3]);
-				}
-			}
-
-			if (Main.rand.NextBool(2))
-			{
-				int Coins = Main.rand.Next(1, 3);
-				for (int K = 0; K < Coins; K++)
-					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ItemID.GoldCoin);
-			}
-			else
-			{
-				int cobweb = Main.rand.Next(8, 12);
-				for (int K = 0; K < cobweb; K++)
-					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "RightClick"), ItemID.Cobweb);
-			}
-
-			Item.NewItem(player.GetSource_OpenItem(Item.type, "RightClick"), player.Center, Vector2.Zero, ModContent.ItemType<Weapon.Thrown.ExplosiveRum.ExplosiveRum>(), Main.rand.Next(45, 70));
+			var goldCoins = ItemDropRule.Common(ItemID.GoldCoin, 2, 1, 4);
+			goldCoins.OnFailedRoll(ItemDropRule.Common(ItemID.Cobweb, 8, 13));
+			itemLoot.Add(goldCoins);
 		}
 	}
 
@@ -116,12 +71,12 @@ namespace SpiritMod.Items.Sets.FloatingItems
 			Main.tileSpelunker[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
-			TileObjectData.newTile.StyleWrapLimit = 2; //not really necessary but allows me to add more subtypes of chairs below the example chair texture
-			TileObjectData.newTile.StyleMultiplier = 2; //same as above
+			TileObjectData.newTile.StyleWrapLimit = 2;
+			TileObjectData.newTile.StyleMultiplier = 2;
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
-			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
-			TileObjectData.addAlternate(1); //facing right will use the second texture style
+			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
+			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Sunken Treasure");

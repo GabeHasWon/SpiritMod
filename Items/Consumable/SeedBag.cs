@@ -1,3 +1,4 @@
+using SpiritMod.NPCs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,11 +31,11 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool CanRightClick() => true;
 
-		public override void RightClick(Player player)
+		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			player.QuickSpawnItem(player.GetSource_ItemUse(Item), ItemID.MushroomGrassSeeds, Main.rand.Next(1, 5));
-			player.QuickSpawnItem(player.GetSource_ItemUse(Item), ItemID.JungleGrassSeeds, Main.rand.Next(1, 5));
-			player.QuickSpawnItem(player.GetSource_ItemUse(Item), ModContent.ItemType<Items.Placeable.Tiles.BriarGrassSeeds>(), Main.rand.Next(1, 5));
+			itemLoot.AddCommon(ItemID.MushroomGrassSeeds, 1, 1, 5);
+			itemLoot.AddCommon(ItemID.JungleGrassSeeds, 1, 1, 5);
+			itemLoot.AddCommon<Placeable.Tiles.BriarGrassSeeds>(1, 1, 5);
 		}
 	}
 }
