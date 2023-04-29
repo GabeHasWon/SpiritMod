@@ -56,7 +56,7 @@ namespace SpiritMod.Items.Sets.FloatingItems
 			itemLoot.AddCommon<Weapon.Thrown.ExplosiveRum.ExplosiveRum>(1, 45, 71);
 
 			var goldCoins = ItemDropRule.Common(ItemID.GoldCoin, 2, 1, 4);
-			goldCoins.OnFailedRoll(ItemDropRule.Common(ItemID.Cobweb, 8, 13));
+			goldCoins.OnFailedRoll(ItemDropRule.Common(ItemID.Cobweb, 1, 8, 13));
 			itemLoot.Add(goldCoins);
 		}
 	}
