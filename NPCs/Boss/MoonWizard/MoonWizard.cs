@@ -324,7 +324,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 			notExpertRule.AddCommon<MJWMask>(7);
 			notExpertRule.AddCommon<MJWTrophy>(10);
-			notExpertRule.AddOneFromOptions<Moonshot, Moonburst, JellynautBubble, MoonjellySummonStaff>(7);
+			notExpertRule.AddOneFromOptions<Moonshot, NautilusClub, JellynautBubble, MoonjellySummonStaff>(7);
 			notExpertRule.AddCommon<TinyLunazoaItem>(1, 30, 40);
 
 			npcLoot.Add(notExpertRule);
@@ -820,7 +820,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 				new List<int> {
 					ModContent.ItemType<Cornucopion>(),
 					ModContent.ItemType<MoonjellySummonStaff>(),
-					ModContent.ItemType<Moonburst>(),
+					ModContent.ItemType<NautilusClub>(),
 					ModContent.ItemType<JellynautBubble>(),
 					ModContent.ItemType<Moonshot>(),
 					ModContent.ItemType<MoonJelly>()

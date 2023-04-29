@@ -5,11 +5,11 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Items.Sets.ClubSubclass;
 using SpiritMod.NPCs.Spirit;
 using SpiritMod.Items.Consumable.Potion;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes.Events;
+using SpiritMod.Items.Weapon.Yoyo;
 
 namespace SpiritMod.NPCs.MoonjellyEvent
 {
@@ -156,7 +156,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		{
 			npcLoot.AddCommon(ItemID.Gel, 1, 1, 3);
 			npcLoot.AddCommon<MoonJelly>(5);
-			npcLoot.AddCommon<NautilusClub>(35);
+			npcLoot.AddCommon<Moonburst>(35);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

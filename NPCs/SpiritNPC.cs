@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs
 	//Currently used to cut down on boilerplate for animation and platform logic, might add more later
 	public abstract class SpiritNPC : ModNPC 
 	{
-		public Point frame = new Point(0, 0);
+		public Point frame = new(0, 0);
 
 		public bool ignorePlatforms = false;
 

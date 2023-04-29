@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Prim;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Projectiles.Magic;
 
 namespace SpiritMod.Projectiles.Clubs
 {
@@ -22,36 +22,43 @@ namespace SpiritMod.Projectiles.Clubs
 		public override void Smash(Vector2 position)
 		{
 			for (int k = 0; k <= 100; k++)
-				Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), ModContent.DustType<Dusts.BoneDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 9f);
+			{
+				Vector2 newPosition = Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2);
 
-			for (int k = 0; k <= 30; k++)
-				Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), 226, new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 9f);
+				Dust.NewDustPerfect(newPosition, ModContent.DustType<Dusts.BoneDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 9f);
+				if (k < 30)
+					Dust.NewDustPerfect(newPosition, DustID.Electric, new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 9f);
+			}
+
+			Vector2 spawnPos = Projectile.Center;
+
+			for (int i = 0; i < 10; i++)
+			{
+				Tile tile = Framing.GetTileSafely(spawnPos / 16);
+				Tile aboveTile = Framing.GetTileSafely((spawnPos / 16) - Vector2.UnitY);
+
+				if (WorldGen.SolidTile(tile) && !WorldGen.SolidTile(aboveTile))
+					break;
+				else
+					spawnPos.Y -= 16;
+			}
+
+			Vector2 velocity = Vector2.UnitX * 12 * Main.player[Projectile.owner].direction;
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI("ClubSmash"), spawnPos, velocity, ModContent.ProjectileType<EnergizedShockwave>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner).position.Y += Projectile.height + 16;
+
+			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Item/GranitechLaserBlast"), position);
+		}
+
+		public override void SafeAI()
+		{
+			if ((Projectile.ai[0] + 1) == ChargeTime && Main.netMode != NetmodeID.Server)
+				SpiritMod.primitives.CreateTrail(new SkullPrimTrail(Projectile, new Color(90, 150, 255), 30, 5));
 		}
 
 		public override void SafeDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			if (Projectile.ai[0] >= ChargeTime)
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size.Y * 2, size.X, size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
-		}
-
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			if (Projectile.ai[0] >= ChargeTime)
-			{
-				SoundEngine.PlaySound(SoundID.Item109);
-				for (int i = 0; i < 20; i++)
-				{
-					int num = Dust.NewDust(target.position, target.width, target.height, DustID.Electric, 0f, -2f, 0, default, 2f);
-					Main.dust[num].noGravity = true;
-					Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-					Main.dust[num].position.Y += Main.rand.Next(-50, 51) * .05f - 1.5f;
-					Main.dust[num].scale *= .25f;
-					if (Main.dust[num].position != target.Center)
-						Main.dust[num].velocity = target.DirectionTo(Main.dust[num].position) * 6f;
-				}
-				int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0, 0, ModContent.ProjectileType<GraniteSpike1>(), Projectile.damage / 2, Projectile.knockBack / 2, Main.myPlayer, 0f, 0f);
-				Main.projectile[proj].timeLeft = 2;
-			}
 		}
 
 		public EnergizedAxeProj() : base(40, size, 28f) { }

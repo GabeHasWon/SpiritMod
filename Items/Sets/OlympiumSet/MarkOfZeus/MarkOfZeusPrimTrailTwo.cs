@@ -2,10 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using System.Collections.Generic;
 using System.Linq;
 using System;
-using static Terraria.ModLoader.ModContent;
 using SpiritMod.Prim;
 
 namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus

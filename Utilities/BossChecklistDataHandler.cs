@@ -8,12 +8,12 @@ using SpiritMod.Items.Consumable;
 using SpiritMod.Items.Consumable.Potion;
 using SpiritMod.Items.Placeable.MusicBox;
 using SpiritMod.Items.Weapon.Summon.ElectricGun;
-using SpiritMod.Items.Sets.ClubSubclass;
 using SpiritMod.Items.Sets.TideDrops;
 using SpiritMod.Items.Weapon.Summon;
 using SpiritMod.NPCs.MoonjellyEvent;
 using SpiritMod.NPCs.Tides;
 using Terraria.ModLoader;
+using SpiritMod.Items.BossLoot.MoonWizardDrops;
 
 namespace SpiritMod.Utilities
 {

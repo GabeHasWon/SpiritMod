@@ -3,8 +3,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.ClubSubclass;
 
-namespace SpiritMod.Items.Sets.ClubSubclass
+namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 {
     public class NautilusClub : ClubItem
     {
@@ -17,7 +18,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
         {
             DisplayName.SetDefault("Nautilobber");
             Tooltip.SetDefault("Generates a cascade of bubbles at the collision zone");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/ClubSubclass/NautilusClub_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
         public override void Defaults()
@@ -33,7 +34,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, 0.06f, .16f, .22f);
-			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/ClubSubclass/NautilusClub_Glow").Value;
+			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
 		}
 	}
