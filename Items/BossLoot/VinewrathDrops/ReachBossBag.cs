@@ -1,6 +1,3 @@
-using SpiritMod.Items.Sets.DonatorVanity;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.NPCs;
 
