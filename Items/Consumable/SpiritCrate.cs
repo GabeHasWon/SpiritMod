@@ -44,7 +44,7 @@ namespace SpiritMod.Items.Consumable
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(5, 9, 1, 1, 1, ModContent.ItemType<SpiritOre>(), ModContent.ItemType<Rune>(), ModContent.ItemType<StarPiece>(),
 				ModContent.ItemType<MoonStone>()));
 			itemLoot.AddCommon<Books.Book_SpiritArt>(10);
-			itemLoot.Add(DropRules.LootPoolDrop.SameStack(40, 80, 1, 6, 1, ModContent.ItemType<StarCutter>(), ModContent.ItemType<GhostJellyBomb>());
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(40, 80, 1, 6, 1, ModContent.ItemType<StarCutter>(), ModContent.ItemType<GhostJellyBomb>()));
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
