@@ -2,6 +2,7 @@ using SpiritMod.GlobalClasses.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Projectiles.Pet
 {
 	public class HauntedBookPet : ModProjectile
@@ -9,8 +10,8 @@ namespace SpiritMod.Projectiles.Pet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Haunted Tome");
-			Main.projFrames[Projectile.type] = 6;
-			Main.projPet[Projectile.type] = true;
+			Main.projFrames[Type] = 6;
+			Main.projPet[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -19,23 +20,12 @@ namespace SpiritMod.Projectiles.Pet
 			AIType = ProjectileID.ZephyrFish;
 		}
 
-		public override bool PreAI()
-		{
-			Player player = Main.player[Projectile.owner];
-			player.zephyrfish = false; // Relic from aiType
-			return true;
-		}
-
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
-			PetPlayer modPlayer = player.GetModPlayer<PetPlayer>();
-			if (player.dead)
-				modPlayer.bookPet = false;
 
-			if (modPlayer.bookPet)
-				Projectile.timeLeft = 2;
+			player.zephyrfish = false;
+			player.GetModPlayer<PetPlayer>().PetFlag(Projectile);
 		}
-
 	}
 }

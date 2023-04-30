@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.BossLoot.MoonWizardDrops
+namespace SpiritMod.Items.Weapon.Yoyo
 {
 	public class Moonburst : ModItem
 	{

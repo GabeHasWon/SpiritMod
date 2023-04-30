@@ -94,6 +94,8 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 
 	public class AuroraStagMount : ModMount 
 	{
+		private readonly float runThreshold = 6f;
+
 		public override void SetStaticDefaults()
 		{
 			MountData.buff = ModContent.BuffType<SaddleBuff>();
@@ -157,6 +159,9 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 
 		public override void UpdateEffects(Player player)
 		{
+			if (Math.Abs(player.velocity.X) > runThreshold)
+				player.waterWalk = true;
+
 			AuroraPlayer modplayer = player.GetModPlayer<AuroraPlayer>();
 
 			for (int i = modplayer.auroraoldposition.Length - 1; i > 0; i--)
@@ -199,7 +204,7 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 			float drawYOffset = -18;
 			bool trail = false;
 
-			if (velocity > 6 || drawPlayer.velocity.Y != 0 || drawPlayer.oldVelocity.Y != 0) //Running
+			if (velocity > runThreshold || drawPlayer.velocity.Y != 0 || drawPlayer.oldVelocity.Y != 0) //Running
 			{
 				frameX = frameWidth * 2;
 				frameHeight += 4;
@@ -210,7 +215,7 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 					frameY = 0;
 
 				if (drawPlayer.velocity.Y != 0 || drawPlayer.oldVelocity.Y != 0)
-					frameY = (4 * frameHeight) - 2;
+					frameY = 4 * frameHeight;
 
 				drawYOffset = -20;
 				trail = true;

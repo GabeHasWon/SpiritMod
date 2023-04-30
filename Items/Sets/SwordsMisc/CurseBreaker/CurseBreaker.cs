@@ -129,23 +129,16 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 		{
 			get
 			{
-				switch (Phase)
+				return Phase switch
 				{
-					case 0:
-						return -1 * Math.Sign(direction.X);
-					case 1:
-						return 1 * Math.Sign(direction.X);
-					default:
-						return -1 * Math.Sign(direction.X);
-
-				}
+					0 => -1 * Math.Sign(direction.X),
+					1 => 1 * Math.Sign(direction.X),
+					_ => -1 * Math.Sign(direction.X),
+				};
 			}
 		}
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Cursebreaker");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Cursebreaker");
 
 		public override void SetDefaults()
 		{
@@ -242,7 +235,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			Projectile.scale = 1.5f - (Math.Abs(0.5f - progress));
 
 			if (Empowered)
-				Projectile.scale = (((Projectile.scale - 1) * 1.66f) + 1);
+				Projectile.scale = ((Projectile.scale - 1) * 1.66f) + 1;
 
 			rotation = Projectile.rotation + MathHelper.Lerp(SwingRadians / 2 * SwingDirection, -SwingRadians / 2 * SwingDirection, progress);
 
@@ -251,7 +244,10 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			Player.itemRotation = rotation;
 			if (Player.direction != 1)
 				Player.itemRotation -= 3.14f;
+
 			Player.itemRotation = MathHelper.WrapAngle(Player.itemRotation);
+			Player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation - 1.57f);
+			Player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, rotation - 1.57f);
 		}
 
 		public override bool PreDraw(ref Color lightColor)
@@ -268,8 +264,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			PrimitiveSlashArc slash = new PrimitiveSlashArc
 			{
 				BasePosition = Player.Center - Main.screenPosition,
-				StartDistance = (Projectile.width * 0.3f) * Projectile.scale,
-				EndDistance = (Projectile.width * 0.85f) * (((Projectile.scale - 1) * 0.5f) + 1),
+				StartDistance = Projectile.width * 0.3f * Projectile.scale,
+				EndDistance = Projectile.width * 0.85f * (((Projectile.scale - 1) * 0.5f) + 1),
 				AngleRange = new Vector2(SwingRadians / 2 * SwingDirection, -SwingRadians / 2 * SwingDirection),
 				DirectionUnit = direction,
 				Color = Color.Red,
@@ -283,17 +279,18 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 
 			Texture2D tex2 = TextureAssets.Projectile[Projectile.type].Value;
 			Texture2D tex3 = ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value;
+
 			if (flip)
 			{
 				if (Empowered)
-					Main.spriteBatch.Draw(tex3, Player.Center - Main.screenPosition, null, Color.Red * (float)Math.Sqrt(1 - progress) * 0.3f, rotation + 2.355f, new Vector2(tex3.Width, tex3.Height), Projectile.scale, SpriteEffects.FlipHorizontally, 0f);
-				Main.spriteBatch.Draw(tex2, Player.Center - Main.screenPosition, null, lightColor * .5f, rotation + 2.355f, new Vector2(tex2.Width, tex2.Height), Projectile.scale, SpriteEffects.FlipHorizontally, 0f);
+					Main.spriteBatch.Draw(tex3, Player.Center - Main.screenPosition, null, Color.Red * (float)Math.Sqrt(1 - progress) * 0.3f, rotation + 1.57f, new Vector2(tex3.Width / 2, tex3.Height), Projectile.scale, SpriteEffects.FlipHorizontally, 0f);
+				Main.spriteBatch.Draw(tex2, Player.Center - Main.screenPosition, null, lightColor * .5f, rotation + 1.57f, new Vector2(tex2.Width / 2, tex2.Height), Projectile.scale, SpriteEffects.FlipHorizontally, 0f);
 			}
 			else
 			{
 				if (Empowered)
-					Main.spriteBatch.Draw(tex3, Player.Center - Main.screenPosition, null, Color.Red * (float)Math.Sqrt(1 - progress) * 0.3f, rotation + 0.785f, new Vector2(0, tex3.Height), Projectile.scale, SpriteEffects.None, 0f);
-				Main.spriteBatch.Draw(tex2, Player.Center - Main.screenPosition, null, lightColor, rotation + 0.785f, new Vector2(0, tex2.Height), Projectile.scale, SpriteEffects.None, 0f);
+					Main.spriteBatch.Draw(tex3, Player.Center - Main.screenPosition, null, Color.Red * (float)Math.Sqrt(1 - progress) * 0.3f, rotation + 1.57f, new Vector2(tex3.Width / 2, tex3.Height), Projectile.scale, SpriteEffects.None, 0f);
+				Main.spriteBatch.Draw(tex2, Player.Center - Main.screenPosition, null, lightColor, rotation + 1.57f, new Vector2(tex3.Width / 2, tex2.Height), Projectile.scale, SpriteEffects.None, 0f);
 			}
 
 			return false;
@@ -353,9 +350,10 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			return progress;
 		}
 	}
+
 	public class CurseBreakerCurse : ModProjectile
 	{
-		private NPC target => Main.npc[(int)Projectile.ai[0]];
+		private NPC Target => Main.npc[(int)Projectile.ai[0]];
 
 		private float counter;
 		public override void SetStaticDefaults()
@@ -364,6 +362,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.hostile = false;
@@ -376,10 +375,12 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			Projectile.timeLeft = 12;
 			Projectile.ignoreWater = true;
 		}
+
 		private readonly Color Red = new Color(242, 41, 58);
 		private readonly Color Black = new Color(38, 10, 12);
 
 		public override Color? GetAlpha(Color lightColor) => Color.White * .6f;
+
 		public override void AI()
 		{
 			if (Main.rand.NextBool(10))
@@ -394,16 +395,16 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			}
 			Lighting.AddLight(Projectile.Center, Color.Red.ToVector3() * 0.3f);
 			counter += 0.025f;
-			if (target.active)
+			if (Target.active)
 			{
-				if (target.HasBuff(ModContent.BuffType<CurseBreakerMark>()))
+				if (Target.HasBuff(ModContent.BuffType<CurseBreakerMark>()))
 				{
 					Projectile.scale = MathHelper.Clamp(counter * 3, 0, 1);
 					Projectile.timeLeft = 12;
 				}
 				else
 					Projectile.scale -= 0.083f;
-				Projectile.Center = target.Center;
+				Projectile.Center = Target.Center;
 			}
 			else
 				Projectile.active = false;
@@ -419,13 +420,12 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, Color.White * transparency, Projectile.rotation, tex.Size() / 2, scale * Projectile.scale, SpriteEffects.None, 0f);
 			return true;
 		}
-		public override void PostDraw(Color lightColor)
-		{
-			DrawBloom(Main.spriteBatch, new Color(242, 41, 58) * 0.33f, 0.48f);
-		}
+
+		public override void PostDraw(Color lightColor) => DrawBloom(Main.spriteBatch, new Color(242, 41, 58) * 0.33f, 0.48f);
+
 		protected void DrawBloom(SpriteBatch spriteBatch, Color color, float scale)
 		{
-			Texture2D glow = Terraria.GameContent.TextureAssets.Extra[49].Value;
+			Texture2D glow = TextureAssets.Extra[49].Value;
 			color.A = 0;
 
 			float glowScale = 1 + ((float)Math.Sin(counter) / 4);
@@ -437,13 +437,14 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 		{
 			if (timeLeft > 4)
 			{
-				target.StrikeNPC(Projectile.damage, 0, 0);
+				Target.StrikeNPC(Projectile.damage, 0, 0);
 
-				Projectile.NewProjectile(Projectile.GetSource_Death(), target.Center, Vector2.Zero, ModContent.ProjectileType<CurseBreak>(), 0, 0, Projectile.owner, target.whoAmI);
+				Projectile.NewProjectile(Projectile.GetSource_Death(), Target.Center, Vector2.Zero, ModContent.ProjectileType<CurseBreak>(), 0, 0, Projectile.owner, Target.whoAmI);
 				SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact, Projectile.Center);
 			}
 		}
 	}
+
 	internal class CurseBreak : ModProjectile, IDrawAdditive
 	{
 		public override void SetStaticDefaults()

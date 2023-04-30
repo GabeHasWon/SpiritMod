@@ -12,7 +12,11 @@ namespace SpiritMod.NPCs.Spirit
 {
 	public class HauntedBook : ModNPC
 	{
-		int timer = 0;
+		private int Counter
+		{
+			get => (int)NPC.ai[0];
+			set => NPC.ai[0] = value;
+		}
 
 		public override void SetStaticDefaults()
 		{
@@ -49,10 +53,8 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void FindFrame(int frameHeight)
 		{
-			NPC.frameCounter += 0.15f;
-			NPC.frameCounter %= Main.npcFrameCount[NPC.type];
-			int frame = (int)NPC.frameCounter;
-			NPC.frame.Y = frame * frameHeight;
+			NPC.frameCounter = (NPC.frameCounter + 0.15f) % Main.npcFrameCount[NPC.type];
+			NPC.frame.Y = (int)NPC.frameCounter * frameHeight;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -79,36 +81,30 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void AI()
 		{
-			if (Main.rand.NextBool(150)) {
-				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-				direction.Normalize();
-				direction.X *= 2f;
-				direction.Y *= 2f;
+			NPC.TargetClosest(true);
+			Player target = Main.player[NPC.target];
 
-				int amountOfProjectiles = Main.rand.Next(1, 2);
-				for (int i = 0; i < amountOfProjectiles; ++i) {
-					float A = (float)Main.rand.Next(-1, 1) * 0.03f;
-					float B = (float)Main.rand.Next(-1, 1) * 0.03f;
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X + A, direction.Y + B, ModContent.ProjectileType<RuneHostile>(), 38, 1, Main.myPlayer, 0, 0);
+			if (Main.rand.NextBool(150))
+			{
+				int numShots = Main.rand.Next(2, 3);
+
+				for (int i = 0; i < numShots; ++i)
+				{
+					Vector2 direction = (NPC.Center.DirectionTo(target.Center) * 2f).RotatedByRandom(0.05f);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction, ModContent.ProjectileType<RuneHostile>(), 38, 1, Main.myPlayer);
 				}
 			}
-			NPC.spriteDirection = NPC.direction;
+
 			Lighting.AddLight((int)((NPC.position.X + (NPC.width / 2)) / 16f), (int)((NPC.position.Y + (NPC.height / 2)) / 16f), 0f, 0.675f, 2.50f);
-			timer++;
-			NPC.TargetClosest(true);
-			if (timer == 25) {
-				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-				direction.Normalize();
-				NPC.velocity.Y = direction.Y * 3f;
-				NPC.velocity.X = direction.X * 3f;
-				timer = 0;
-			}
-			if (timer == 32) {
+
+			if (++Counter % 25 == 0)
+			{
 				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 				direction.Normalize();
 				NPC.velocity.Y = direction.Y * 3f;
 				NPC.velocity.X = direction.X * 3f;
 			}
+			NPC.spriteDirection = NPC.direction;
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
