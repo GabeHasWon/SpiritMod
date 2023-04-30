@@ -18,6 +18,7 @@ namespace SpiritMod.Tiles
 		Indestructible,
 		IndestructibleNoGround,
 		VineSway,
-		ChandelierSway
+		ChandelierSway,
+		HarvestableHerb
 	}
 }

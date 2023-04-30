@@ -41,7 +41,7 @@ namespace SpiritMod
 		public override void PostAddRecipes()
 		{
 			ExplosivesCache.Initialize(Mod);
-			ModContent.GetInstance<IndestructibleGlobalTile>().Load(Mod);
+			ModContent.GetInstance<TagGlobalTile>().Load(Mod);
 			SacrificeAutoloader.Load(Mod);
 
 			ModLoader.TryGetMod("PhaseIndicator", out Mod phaseIndicator);

@@ -15,7 +15,8 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles
 {
-	public class SoulBloomTile : ModTile
+	[TileTag(TileTags.HarvestableHerb)]
+	public class SoulBloomTile : ModTile, IHarvestableHerb
 	{
 		private const int FrameWidth = 18; // A constant for readability and to kick out those magic numbers
 
@@ -25,9 +26,11 @@ namespace SpiritMod.Tiles
 			Main.tileObsidianKill[Type] = true;
 			Main.tileCut[Type] = true;
 			Main.tileNoFail[Type] = true;
+
 			TileID.Sets.ReplaceTileBreakUp[Type] = true;
 			TileID.Sets.IgnoredInHouseScore[Type] = true;
 			TileID.Sets.IgnoredByGrowingSaplings[Type] = true;
+
 			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
 
 			ModTranslation name = CreateMapEntryName();
@@ -42,6 +45,8 @@ namespace SpiritMod.Tiles
 			HitSound = SoundID.Grass;
 			DustType = DustID.Flare_Blue;
 		}
+
+		public bool CanBeHarvested(int i, int j) => Main.tile[i, j].HasTile && GetStage(i, j) == PlantStage.Grown;
 
 		public override bool CanPlace(int i, int j)
 		{
@@ -79,9 +84,7 @@ namespace SpiritMod.Tiles
 		}
 
 		private static SpriteEffects GetEffects(int i) => (i % 2 == 0) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-
 		public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects) => GetEffects(i);
-
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = -2;
 
 		public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)

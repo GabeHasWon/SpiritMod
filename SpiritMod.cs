@@ -431,7 +431,6 @@ namespace SpiritMod
 				_lastViewPort = Main.graphics.GraphicsDevice.Viewport;
 			}
 
-			ModContent.GetInstance<SwingGlobalTile>().Load(this); //Load tiles before detours so the IL edit works right
 			BoonLoader.Load();
 			SpiritMultiplayer.Load();
 			SpiritDetours.Initialize();

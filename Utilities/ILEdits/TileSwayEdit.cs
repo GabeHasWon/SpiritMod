@@ -16,30 +16,30 @@ namespace SpiritMod.Utilities.ILEdits
 
 		private static void AddSwayTiles(ILContext il)
 		{
-			ILCursor c = new ILCursor(il);
+			//ILCursor c = new ILCursor(il);
 
-			ILHelper.CompleteLog(c, true);
+			//ILHelper.CompleteLog(c, true);
 
-			if (!c.TryGotoNext(MoveType.After, i => i.MatchCall(typeof(TileDrawing), "ShouldSwayInWind"))) //Move to PreDraw call
-				return;
+			//if (!c.TryGotoNext(MoveType.After, i => i.MatchCall(typeof(TileDrawing), "ShouldSwayInWind"))) //Move to PreDraw call
+			//	return;
 
-			ILLabel label = c.MarkLabel();
-			c.Emit(OpCodes.Ldloc_S, (byte)3); //flag
-			c.Emit(OpCodes.Brfalse, label);
+			//ILLabel label = c.MarkLabel();
+			//c.Emit(OpCodes.Ldloc_S, (byte)3); //flag
+			//c.Emit(OpCodes.Brfalse, label);
 
-			c.Emit(OpCodes.Ldloc_S, (byte)12); //i
-			c.Emit(OpCodes.Ldloc_S, (byte)13); //j
-			c.EmitDelegate((int i, int j) =>
-			{
-				return ModContent.GetInstance<SwingGlobalTile>().Vines.Contains(Main.tile[i, j].TileType);
-			});
-			c.Emit(OpCodes.Brfalse, label);
+			//c.Emit(OpCodes.Ldloc_S, (byte)12); //i
+			//c.Emit(OpCodes.Ldloc_S, (byte)13); //j
+			//c.EmitDelegate((int i, int j) =>
+			//{
+			//	return ModContent.GetInstance<SwingGlobalTile>().Vines.Contains(Main.tile[i, j].TileType);
+			//});
+			//c.Emit(OpCodes.Brfalse, label);
 
-			c.Emit(OpCodes.Ldarg_0); //self
-			c.Emit(OpCodes.Ldloc_S, (byte)13); //j (god I hate this order)
-			c.Emit(OpCodes.Ldloc_S, (byte)12); //i
+			//c.Emit(OpCodes.Ldarg_0); //self
+			//c.Emit(OpCodes.Ldloc_S, (byte)13); //j (god I hate this order)
+			//c.Emit(OpCodes.Ldloc_S, (byte)12); //i
 
-			c.Emit<TileDrawing>(OpCodes.Call, "CrawlToTopOfVineAndAddSpecialPoint");
+			//c.Emit<TileDrawing>(OpCodes.Call, "CrawlToTopOfVineAndAddSpecialPoint");
 
 			//if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(52))) //Move to 52 condition to grab the label
 			//	return;
