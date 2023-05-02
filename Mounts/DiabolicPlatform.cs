@@ -114,14 +114,11 @@ namespace SpiritMod.Mounts
 			player.fullRotationOrigin = new Vector2(10f, 14f);
 
 			// If the player is on the ground, regain fatigue.
-			if (modPlayer.onGround) {
-				if (player.controlUp || player.controlJump) {
-					player.position.Y -= MountData.acceleration;
-				}
+			if (player.velocity.Y == 0f) {
+				fatigue = Math.Min(maxFatigue, fatigue + 6);
 
-				this.fatigue += 6;
-				if (this.fatigue > maxFatigue)
-					this.fatigue = maxFatigue;
+				if (player.controlUp || player.controlJump)
+					player.position.Y -= MountData.acceleration;
 			}
 
 			player.velocity.Y = MathHelper.Clamp(player.velocity.Y, -4, 4);

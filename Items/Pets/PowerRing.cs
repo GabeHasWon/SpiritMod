@@ -17,8 +17,6 @@ namespace SpiritMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-
-			Item.damage = 0;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.shoot = ModContent.ProjectileType<Lantern>();
 			Item.width = 16;
@@ -33,19 +31,14 @@ namespace SpiritMod.Items.Pets
 
 		public override void UseStyle(Player player, Rectangle heldItemFrame)
 		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0) {
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 				player.AddBuff(Item.buffType, 3600, true);
-			}
 		}
 
-		public override bool CanUseItem(Player player)
-		{
-			return player.miscEquips[1].IsAir;
-		}
+		public override bool CanUseItem(Player player) => player.miscEquips[1].IsAir;
 
 		public override void AddRecipes()
 		{
-
 			Recipe modRecipe = CreateRecipe(1);
 			modRecipe.AddIngredient(ItemID.MeteoriteBar, 10);
 			modRecipe.AddIngredient(ItemID.FallenStar, 3);

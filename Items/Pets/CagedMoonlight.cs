@@ -48,7 +48,7 @@ namespace SpiritMod.Items.Pets
 
 		public override void AddRecipes()
 		{
-			Recipe modRecipe = CreateRecipe(1);
+			Recipe modRecipe = CreateRecipe();
 			modRecipe.AddIngredient(ModContent.ItemType<Consumable.Potion.MoonJelly>());
 			modRecipe.AddIngredient(ItemID.CrystalShard, 10);
 			modRecipe.AddIngredient(ItemID.SoulofLight, 5);

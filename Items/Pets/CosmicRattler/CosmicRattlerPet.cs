@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Utilities;
 using SpiritMod.NPCs.StarjinxEvent.Enemies.Starachnid;
+using SpiritMod.GlobalClasses.Players;
 
 namespace SpiritMod.Items.Pets.CosmicRattler
 {
@@ -90,11 +91,7 @@ namespace SpiritMod.Items.Pets.CosmicRattler
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
-			var modPlayer = player.GetModPlayer<GlobalClasses.Players.PetPlayer>();
-			if (player.dead)
-				modPlayer.starachnidPet = false;
-			if (modPlayer.starachnidPet)
-				Projectile.timeLeft = 2;
+			player.GetModPlayer<PetPlayer>().PetFlag(Projectile);
 
 			if (!seedInitialized && Main.netMode != NetmodeID.SinglePlayer)
 				return;

@@ -1,30 +1,9 @@
-using Microsoft.Xna.Framework;
-using SpiritMod.GlobalClasses.Players;
-using SpiritMod.Projectiles.Pet;
-using Terraria;
-using Terraria.ModLoader;
+using SpiritMod.Buffs.Pet;
 
 namespace SpiritMod.Items.Pets.CosmicRattler
 {
-	public class CosmicRattlerPetBuff : ModBuff
+	public class CosmicRattlerPetBuff : BasePetBuff<CosmicRattlerPet>
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Starachnid");
-			Description.SetDefault("'Inside it you can see the depths of space'");
-			Main.buffNoTimeDisplay[Type] = true;
-			Main.vanityPet[Type] = true;
-		}
-
-		public override void Update(Player player, ref int buffIndex)
-		{
-			player.buffTime[buffIndex] = 18000;
-			player.GetModPlayer<PetPlayer>().starachnidPet = true;
-
-			bool petProjectileNotSpawned = player.ownedProjectileCounts[ModContent.ProjectileType<CosmicRattlerPet>()] <= 0;
-			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer) {
-				Projectile.NewProjectile(Projectile.GetSource_NaturalSpawn(), player.Center, Vector2.Zero, ModContent.ProjectileType<CosmicRattlerPet>(), 0, 0f, player.whoAmI);
-			}
-		}
+		protected override (string, string) BuffInfo => ("Starachnid", "'Inside it you can see the depths of space'");
 	}
 }

@@ -380,13 +380,6 @@ namespace SpiritMod.Items
 					Main.projectile[proj].hostile = false;
 				}
 			}
-			if (modPlayer.crystal && item.IsRanged() && Main.rand.NextBool(8))
-			{
-				int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * (float)(Main.rand.Next(100, 165) / 100), velocity.Y * (float)(Main.rand.Next(100, 165) / 100), type, damage, knockback, player.whoAmI, 0f, 0f);
-				Main.projectile[proj].friendly = true;
-				Main.projectile[proj].hostile = false;
-			}
-
 			if (modPlayer.fireMaw && item.IsMagic() && Main.rand.NextBool(4))
 			{
 				int proj = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<FireMaw>(), 30, 2f, player.whoAmI);

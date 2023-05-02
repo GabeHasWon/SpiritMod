@@ -8,6 +8,7 @@ using SpiritMod.Utilities;
 using SpiritMod.Buffs.Pet;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.GlobalClasses.Players;
 
 namespace SpiritMod.Projectiles.DonatorItems
 {
@@ -39,33 +40,24 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		private float Timer
 		{
-			get { return Projectile.localAI[1]; }
-			set { Projectile.localAI[1] = value; }
+			get => Projectile.localAI[1];
+			set => Projectile.localAI[1] = value;
 		}
 
-		private int animationCounter;
-		private int frame;
 		public override void AI()
 		{
-			if (++animationCounter >= 5)
-			{
-				animationCounter = 0;
-				if (++frame >= Main.projFrames[Projectile.type])
-					frame = 0;
-			}
-			Projectile.frameCounter = 0;
-			Projectile.frame = frame;
-
 			var owner = Main.player[Projectile.owner];
-			if (owner.active && owner.HasBuff(ModContent.BuffType<HarpyPetBuff>()))
-				Projectile.timeLeft = 2;
+			owner.GetModPlayer<PetPlayer>().PetFlag(Projectile);
+
+			if (++Projectile.frameCounter % 5 == 0)
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Projectile.type];
 
 			if (Projectile.owner != Main.myPlayer)
 				return;
 
 			if (Timer > 0)
 			{
-				--Timer;
+				Timer--;
 				return;
 			}
 
@@ -79,6 +71,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			var fov = new FOVHelper();
 			fov.AdjustCone(origin, FOV, direction);
 			float maxDistSquared = Max_Range * Max_Range;
+
 			for (int i = 0; i < Main.maxNPCs; ++i)
 			{
 				NPC npc = Main.npc[i];
@@ -89,9 +82,8 @@ namespace SpiritMod.Projectiles.DonatorItems
 					Collision.CanHitLine(origin, 0, 0, npc.position, npc.width, npc.height))
 				{
 					if (Main.rand.NextBool(10))
-					{
 						ShootFeathersAt(npcPos);
-					}
+
 					Timer = 140;
 					break;
 				}
@@ -137,10 +129,10 @@ namespace SpiritMod.Projectiles.DonatorItems
 			num *= Projectile.scale;
 			Lighting.AddLight(Projectile.Center, 0.255f * num, 0.184f * num, 0.229f * num);
 			Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
+
 			if (Projectile.timeLeft < 55)
-			{
 				Projectile.tileCollide = true;
-			}
+
 			return true;
 		}
 		public override void Kill(int timeLeft)

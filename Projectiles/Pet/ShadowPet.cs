@@ -1,3 +1,4 @@
+using SpiritMod.GlobalClasses.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,22 +22,12 @@ namespace SpiritMod.Projectiles.Pet
 			Projectile.height = 36;
 		}
 
-		public override bool PreAI()
-		{
-			Player player = Main.player[Projectile.owner];
-			player.truffle = false; // Relic from aiType
-			return true;
-		}
-
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
-			var modPlayer = player.GetModPlayer<GlobalClasses.Players.PetPlayer>();
-			if (player.dead)
-				modPlayer.shadowPet = false;
-			if (modPlayer.shadowPet)
-				Projectile.timeLeft = 2;
-		}
 
+			player.GetModPlayer<PetPlayer>().PetFlag(Projectile);
+			player.truffle = false; //Relic from AIType
+		}
 	}
 }

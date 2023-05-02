@@ -44,8 +44,9 @@ using SpiritMod.Buffs.DoT;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.NPCs.AsteroidDebris;
 using SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles;
-using SpiritMod.Particles;
 using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
+using SpiritMod.Items.Accessory.DarkfeatherVisage;
+using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 
 namespace SpiritMod
 {
@@ -110,7 +111,6 @@ namespace SpiritMod
 		public bool firedSharpshooter = false;
 		public int throwerStacks;
 		public bool scarabCharm = false;
-		public bool floranCharm = false;
 		public bool bloodCourtHead = false;
 		public bool timScroll = false;
 		public bool cultistScarf = false;
@@ -122,24 +122,20 @@ namespace SpiritMod
 		public bool infernalFlame = false;
 		public bool floranSet = false;
 		public bool rogueSet = false;
-		public bool crystal = false;
-		public bool shamanBand = false;
 		public bool ChaosCrystal = false;
 		public bool wheezeScale = false;
 		public bool winterbornCharmMage = false;
 		public bool sepulchreCharm = false;
 		public bool HellGaze = false;
-		public bool EaterSummon = false;
-		public bool CreeperSummon = false;
 		public bool leatherGlove = false;
 		public bool forbiddenTome = false;
 		public bool teslaCoil = false;
 		public bool Phantom = false;
-		public bool gremlinTooth = false;
 		public bool illusionistEye = false;
-		public bool BlueDust = false;
-		public bool reachFireflies = false;
-		public bool onGround = false;
+		public bool stoneplate = false;
+
+		private bool canJustLand = false;
+		public bool justLanded = false;
 
 		public float oakHeartStacks = 0;
 		public readonly int oakHeartStacksMax = 5;
@@ -164,10 +160,8 @@ namespace SpiritMod
 		public bool moonlightSack = false;
 		public bool DoomDestiny = false;
 		public bool daybloomGarb = false;
-		public bool EnchantedPaladinsHammerMinion = false;
 		public int frigidGloveStacks;
 		public bool gemPickaxe = false;
-		public bool skeletalonMinion = false;
 		public bool snapsporeMinion = false;
 		public bool butterflyMinion = false;
 		public bool SnakeMinion = false;
@@ -199,10 +193,10 @@ namespace SpiritMod
 		public bool frostUpdate;
 		public int frostTally;
 		public int frostCount;
-		public bool stoneHead;
 		public bool jellynautHelm;
 
 		public int shadowCount;
+
 		// Armor set booleans.
 		public bool duskSet;
 		public bool runicSet;
@@ -243,21 +237,15 @@ namespace SpiritMod
 		public bool marbleJustJumped;
 
 		// Accessory booleans.
-		public bool icySoul;
 		public bool infernalShield;
 		public bool seaSnailVenom;
-		public bool Resolve;
 		public bool bloodyBauble;
-		public bool MoonSongBlossom;
-		public bool HolyGrail;
 		public bool surferSet;
-		public float virulence = 600f;
 		public int illusionistTimer;
 		public float cryoTimer = 0f;
 		public float marbleJump = 420f;
 		public bool moonGauntlet;
 		public bool starCharm;
-		public int timeLeft = 0;
 		public int infernalHit;
 		public int infernalDash;
 		public bool longFuse;
@@ -273,7 +261,6 @@ namespace SpiritMod
 		public int clatterboneTimer;
 		public int roseTimer;
 		public int baubleTimer;
-		public int cometTimer;
 		public bool concentrated; // For the leather armor set.
 		public int concentratedCooldown = 360;
 		public int stompCooldown = 30;
@@ -281,13 +268,11 @@ namespace SpiritMod
 		public bool drakomireMount;
 		public int drakomireFlameTimer;
 		public bool drakinMount;
-		public bool acidImbue;
 		public bool spiritBuff;
 		public bool starBuff;
 		public bool runeBuff;
 		public bool poisonPotion;
 		public bool soulPotion;
-		public bool gremlinBuff;
 
 		public float WingTimeMaxMultiplier = 1f;
 		public bool StarjinxSet = false;
@@ -511,8 +496,6 @@ namespace SpiritMod
 
 			frostCount = frostTally;
 			frostTally = 0;
-
-			onGround = Player.velocity.Y == 0f;
 		}
 
 		private void ResetAccBools()
@@ -521,9 +504,6 @@ namespace SpiritMod
 			mimicRepellent = false;
 			forbiddenTome = false;
 			deathRose = false;
-			Resolve = false;
-			MoonSongBlossom = false;
-			HolyGrail = false;
 			infernalShield = false;
 			illusionistEye = false;
 			moonGauntlet = false;
@@ -546,7 +526,6 @@ namespace SpiritMod
 			moonlightSack = false;
 			midasTouch = false;
 			seaSnailVenom = false;
-			stoneHead = false;
 			zipline = false;
 			clockActive = false;
 			bloodcourtSet = false;
@@ -580,7 +559,6 @@ namespace SpiritMod
 			reachBrooch = false;
 			windEffect = false;
 			windEffect2 = false;
-			gremlinTooth = false;
 			leatherHood = false;
 			floranSet = false;
 			SoulStone = false;
@@ -594,20 +572,16 @@ namespace SpiritMod
 			rogueSet = false;
 			timScroll = false;
 			wheezeScale = false;
-			crystal = false;
 			HellGaze = false;
 			Bauble = false;
 			geodeRanged = false;
 			snapsporeMinion = false;
-			EaterSummon = false;
-			CreeperSummon = false;
 			bloodfireShield = false;
 			Phantom = false;
 			magnifyingGlass = false;
 			daybloomSet = false;
 			daybloomGarb = false;
 			CursedPendant = false;
-			BlueDust = false;
 			SnakeMinion = false;
 			starCharm = false;
 			starMap = false;
@@ -618,12 +592,9 @@ namespace SpiritMod
 			sepulchreCharm = false;
 			clatterboneShield = false;
 			leatherGlove = false;
-			EnchantedPaladinsHammerMinion = false;
 			crawlerockMinion = false;
 			mangoMinion = false;
-			skeletalonMinion = false;
 			cragboundMinion = false;
-			shamanBand = false;
 			DungeonSummon = false;
 			lunazoa = false;
 			lavaRock = false;
@@ -632,7 +603,6 @@ namespace SpiritMod
 			minior = false;
 			drakomireMount = false;
 			basiliskMount = false;
-			gremlinBuff = false;
 			spiritBuff = false;
 			drakinMount = false;
 			poisonPotion = false;
@@ -981,14 +951,11 @@ namespace SpiritMod
 			if (geodeSet && crit && Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<Buffs.Crystal>(), 180);
 
-			if (gremlinBuff && item.IsMelee())
-				target.AddBuff(BuffID.Poisoned, 120);
-
 			if (infernalFlame && item.IsMelee() && crit && Main.rand.NextBool(12))
 				Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<PhoenixProjectile>(), 50, 4, Main.myPlayer);
 
 			if (crystalFlower && target.life <= 0 && Main.rand.NextBool(3))
-				CrystalFlowerOnKillEffect(item.GetSource_OnHit(target), target, damage);
+				CrystalFlowerItem.OnKillEffect(item.GetSource_OnHit(target), Player, target, damage);
 		}
 
 		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
@@ -1063,9 +1030,6 @@ namespace SpiritMod
 				target.AddBuff(BuffID.CursedInferno, 180);
 			}
 
-			if (shamanBand && proj.IsMagic() && Main.rand.NextBool(9))
-				target.AddBuff(BuffID.OnFire, 180);
-
 			if (bloodfireSet && proj.IsMagic())
 			{
 				if (Main.rand.NextBool(15))
@@ -1114,9 +1078,6 @@ namespace SpiritMod
 				}
 			}
 
-			if (gremlinBuff)
-				target.AddBuff(BuffID.Poisoned, 120);
-
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
 
@@ -1130,54 +1091,7 @@ namespace SpiritMod
 				Item.NewItem(proj.GetSource_OnHit(target), target.Hitbox, 3454);
 
 			if (crystalFlower && target.life <= 0 && (Main.rand.NextBool(3) || proj.type == ModContent.ProjectileType<CrystalFlowerProjectile>()))
-				CrystalFlowerOnKillEffect(proj.GetSource_OnHit(target), target, damage);
-		}
-
-		private void CrystalFlowerOnKillEffect(IEntitySource source, NPC target, int damage)
-		{
-			SoundEngine.PlaySound(SoundID.Item107, target.Center);
-
-			int numProjectiles = Main.rand.Next(3, 5) + 1;
-
-			int finalDamage = (int)(damage / (numProjectiles * .5f));
-			float maxVelocity = 8.0f;
-			Vector2 basePosition = target.Center;
-
-			NPC[] storedNPCs = new NPC[numProjectiles];
-			int storedCount = -1;
-
-			foreach (NPC npc in Main.npc) //Create an array of nearby NPCs
-			{
-				if (npc.active && npc.Distance(basePosition) < (maxVelocity * 24))
-					storedNPCs[++storedCount] = npc;
-				if ((storedCount + 1) >= numProjectiles)
-					break;
-			}
-
-			if (Main.netMode == NetmodeID.MultiplayerClient) //The projectiles are spawned on the server
-				return;
-			for (int i = 0; i < numProjectiles; i++)
-			{
-				Vector2 velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(maxVelocity * .5f, maxVelocity);
-
-				if (storedCount > -1)
-				{
-					int index = Math.Min(storedCount, i / (numProjectiles / (storedCount + 1)));
-					velocity = (basePosition.DirectionTo(storedNPCs[index].Center) * maxVelocity).RotatedByRandom(.3f);
-				}
-
-				Projectile proj = Projectile.NewProjectileDirect(source, basePosition, velocity, ModContent.ProjectileType<Items.Sets.AccessoriesMisc.CrystalFlower.CrystalFlowerProjectile>(), finalDamage, 0, Player.whoAmI);
-				proj.scale = Main.rand.NextFloat(0.5f, 1.0f);
-
-				if (Main.dedServ)
-					continue;
-				for (int o = 0; o < 4; o++)
-				{
-					float randomScale = Main.rand.NextFloat(0.1f, 0.6f);
-					ParticleHandler.SpawnParticle(new FireParticle(basePosition, Main.rand.NextVector2Unit() * Main.rand.NextFloat(1.0f, maxVelocity),
-						Color.White, Color.Magenta, randomScale, (int)(randomScale * 60)));
-				}
-			}
+				CrystalFlowerItem.OnKillEffect(proj.GetSource_OnHit(target), Player, target, damage);
 		}
 
 		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
@@ -1429,8 +1343,8 @@ namespace SpiritMod
 			if (clatterboneSet && clatterboneTimer <= 0)
 			{
 				Player.AddBuff(ModContent.BuffType<Sturdy>(), 21600);
-				MyPlayer myPlayer = Main.player[Main.myPlayer].GetModPlayer<MyPlayer>();
-				Rectangle textPos = new Rectangle((int)myPlayer.Player.position.X, (int)myPlayer.Player.position.Y - 60, myPlayer.Player.width, myPlayer.Player.height);
+
+				Rectangle textPos = new Rectangle((int)Main.LocalPlayer.position.X, (int)Main.LocalPlayer.position.Y - 60, Main.LocalPlayer.width, Main.LocalPlayer.height);
 				CombatText.NewText(textPos, new Color(100, 240, 0, 100), "Sturdy Activated!");
 
 				Player.statLife += (int)damage;
@@ -2226,8 +2140,8 @@ namespace SpiritMod
 					{
 						for (int i = 0; i < 3; ++i)
 						{
-							int newProj = Projectile.NewProjectile(Player.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<InfernalGuard>(), 0, 0, Player.whoAmI, 90, 1);
-							Main.projectile[newProj].localAI[1] = 2f * MathHelper.Pi / 3f * i;
+							Projectile proj = Projectile.NewProjectileDirect(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<InfernalGuard>(), 0, 0, Player.whoAmI, 90, 1);
+							proj.localAI[1] = 2f * MathHelper.Pi / 3f * i;
 						}
 					}
 
@@ -2240,10 +2154,10 @@ namespace SpiritMod
 				infernalSetCooldown--;
 
 			if (runicSet)
-				SpawnRunicRunes();
+				RunicHood.SpawnRunicRunes(Player);
 
 			if (darkfeatherVisage)
-				SpawnDarkfeatherBombs();
+				DarkfeatherVisage.SpawnDarkfeatherBombs(Player);
 
 			if (spiritSet)
 			{
@@ -2702,11 +2616,9 @@ namespace SpiritMod
 			}
 
 			foreach (int entry in cooldowns.Keys)
-			{
 				if (cooldowns[entry] > 0)
 					cooldowns[entry]--;
 			}
-		}
 
 		private void TeslaStrike(Player player)
 		{
@@ -2818,7 +2730,6 @@ namespace SpiritMod
 
 		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			AddBuffWithCondition(icySoul && Main.rand.NextBool(6) && proj.IsMagic(), target, BuffID.Frostburn, 280);
 			AddBuffWithCondition(poisonPotion && crit, target, ModContent.BuffType<FesteringWounds>(), 180);
 			AddBuffWithCondition(primalSet && Main.rand.NextBool(2) && (proj.IsMagic() || proj.IsMelee()), target, ModContent.BuffType<Afflicted>(), 120);
 			AddBuffWithCondition(duskSet && proj.IsMagic() && Main.rand.NextBool(4), target, BuffID.ShadowFlame, 300);
@@ -3042,167 +2953,6 @@ namespace SpiritMod
 			return true;
 		}
 
-		private void SpawnRunicRunes()
-		{
-			if (Main.rand.NextBool(15))
-			{
-				int runeAmount = 0;
-				for (int i = 0; i < Main.maxProjectiles; i++)
-				{
-					if (Main.projectile[i].active && Main.projectile[i].owner == Player.whoAmI && Main.projectile[i].type == ModContent.ProjectileType<RunicRune>())
-						runeAmount++;
-				}
-
-				if (Main.rand.Next(15) >= runeAmount && runeAmount < 10)
-				{
-					const int Dimension = 24;
-					const int Dimension2 = 90;
-
-					for (int j = 0; j < 50; j++)
-					{
-						int randValue = Main.rand.Next(200 - j * 2, 400 + j * 2);
-						Vector2 center = Player.Center;
-						center.X += Main.rand.Next(-randValue, randValue + 1);
-						center.Y += Main.rand.Next(-randValue, randValue + 1);
-
-						if (!Collision.SolidCollision(center, Dimension, Dimension) && !Collision.WetCollision(center, Dimension, Dimension))
-						{
-							center -= new Vector2(Dimension / 2);
-
-							if (Collision.CanHit(new Vector2(Player.Center.X, Player.position.Y), 1, 1, center, 1, 1) || Collision.CanHit(new Vector2(Player.Center.X, Player.position.Y - 50f), 1, 1, center, 1, 1))
-							{
-								int x = (int)center.X / 16;
-								int y = (int)center.Y / 16;
-
-								bool flag = false;
-								if (Main.rand.NextBool(4) && Main.tile[x, y] != null && Main.tile[x, y].WallType > 0)
-									flag = true;
-								else
-								{
-									center -= new Vector2(Dimension2 / 2);
-
-									if (Collision.SolidCollision(center, Dimension2, Dimension2))
-									{
-										center.X += Dimension2 / 2;
-										center.Y += Dimension2 / 2;
-										flag = true;
-									}
-								}
-
-								if (flag)
-								{
-									for (int k = 0; k < 1000; k++)
-									{
-										if (Main.projectile[k].active && Main.projectile[k].owner == Player.whoAmI && Main.projectile[k].type == ModContent.ProjectileType<RunicRune>() && (center - Main.projectile[k].Center).Length() < 48f)
-										{
-											flag = false;
-											break;
-										}
-									}
-
-									if (flag && Main.myPlayer == Player.whoAmI)
-									{
-										Projectile.NewProjectile(Player.GetSource_FromThis(), center.X, center.Y, 0f, 0f, ModContent.ProjectileType<RunicRune>(), 40, 1.5f, Player.whoAmI, 0f, 0f);
-										return;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		private void SpawnDarkfeatherBombs()
-		{
-			if (Main.rand.NextBool(80))
-			{
-				int bombAmt = 0;
-				for (int i = 0; i < Main.maxProjectiles; i++)
-				{
-					if (Main.projectile[i].active && Main.projectile[i].owner == Player.whoAmI && Main.projectile[i].type == ModContent.ProjectileType<RunicRune>())
-						bombAmt++;
-				}
-
-				if (Main.rand.Next(100) >= bombAmt && bombAmt < 4)
-				{
-					int dimension = 24;
-					int dimension2 = 90;
-					for (int j = 0; j < 50; j++)
-					{
-						int randValue = Main.rand.Next(200 - j * 2, 350 + j * 2);
-						Vector2 center = Player.Center;
-						center.X += Main.rand.Next(-randValue, randValue + 1);
-						center.Y += Main.rand.Next(-randValue, randValue + 1);
-
-						if (!Collision.SolidCollision(center, dimension, dimension) && !Collision.WetCollision(center, dimension, dimension))
-						{
-							center.X += dimension / 2;
-							center.Y += dimension / 2;
-
-							if (Collision.CanHit(new Vector2(Player.Center.X, Player.position.Y), 1, 1, center, 1, 1) || Collision.CanHit(new Vector2(Player.Center.X, Player.position.Y - 50f), 1, 1, center, 1, 1))
-							{
-								int x = (int)center.X / 16;
-								int y = (int)center.Y / 16;
-
-								bool flag = false;
-								if (Main.rand.NextBool(4) && Main.tile[x, y] != null && Main.tile[x, y].WallType > 0)
-									flag = true;
-								else
-								{
-									center.X -= dimension2 / 2;
-									center.Y -= dimension2 / 2;
-
-									if (Collision.SolidCollision(center, dimension2, dimension2))
-									{
-										center.X += dimension2 / 2;
-										center.Y += dimension2 / 2;
-										flag = true;
-									}
-								}
-
-								if (flag)
-								{
-									for (int k = 0; k < 1000; k++)
-									{
-										if (Main.projectile[k].active && Main.projectile[k].owner == Player.whoAmI && Main.projectile[k].type == ModContent.ProjectileType<RunicRune>() && (center - Main.projectile[k].Center).Length() < 48f)
-										{
-											flag = false;
-											break;
-										}
-									}
-
-									if (flag && Main.myPlayer == Player.whoAmI)
-									{
-										int p = Projectile.NewProjectile(Player.GetSource_FromThis(), center.X, center.Y - Main.rand.Next(40, 90), 0f, 0f, ModContent.ProjectileType<NPCs.DarkfeatherMage.Projectiles.DarkfeatherBomb>(), 23, 1.5f, Player.whoAmI, 0f, 0f);
-										for (int jk = 0; jk < 24; jk++)
-										{
-											Vector2 vector2 = Vector2.UnitX * -Main.projectile[p].width / 2f;
-											vector2 += -Utils.RotatedBy(Vector2.UnitY, jk * 3.141591734f / 6f, default) * new Vector2(16f, 16f);
-											vector2 = Utils.RotatedBy(vector2, (Main.projectile[p].rotation - 1.57079637f), default) * 1.3f;
-
-											var spawnPos = new Vector2(Main.projectile[p].Center.X + 21 * Main.projectile[p].spriteDirection, Main.projectile[p].Center.Y + 12);
-
-											int num8 = Dust.NewDust(spawnPos, 0, 0, DustID.ChlorophyteWeapon, 0f, 0f, 160, new Color(209, 255, 0), .86f);
-											Main.dust[num8].shader = GameShaders.Armor.GetSecondaryShader(27, Main.LocalPlayer);
-											Main.dust[num8].position = new Vector2(Main.projectile[p].Center.X + 21 * Main.projectile[p].spriteDirection, Main.projectile[p].Center.Y + 12) + vector2;
-											Main.dust[num8].velocity = Main.projectile[p].velocity * 0.1f;
-											Main.dust[num8].noGravity = true;
-											Main.dust[num8].velocity = Vector2.Normalize(Main.projectile[p].Center - Main.projectile[p].velocity * 3f - Main.dust[num8].position) * 1.25f;
-										}
-										Main.projectile[p].hostile = false;
-										Main.projectile[p].friendly = true;
-										Main.projectile[p].DamageType = DamageClass.Magic;
-										return;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
 		private static Vector2 TestTeleport(ref bool canSpawn, int teleportStartX, int teleportRangeX, int teleportStartY, int teleportRangeY)
 		{
 			Player player = Main.player[Main.myPlayer];
@@ -3290,23 +3040,6 @@ namespace SpiritMod
 		{
 			foreach (var effect in effects)
 				effect.PlayerDrawEffects(drawInfo, ref r, ref g, ref b, ref a, ref fullBright);
-
-			if (BlueDust)
-			{
-				if (Main.rand.NextBool(4))
-				{
-					int dust = Dust.NewDust(Player.position, Player.width + 4, 30, DustID.UnusedWhiteBluePurple, Player.velocity.X, Player.velocity.Y, 100, default, 1f);
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].velocity *= 1.8f;
-					Main.dust[dust].velocity.Y -= 0.5f;
-					drawInfo.DustCache.Add(dust);
-				}
-
-				r *= 0f;
-				g *= 1f;
-				b *= 0f;
-				fullBright = true;
-			}
 
 			if (HellGaze)
 			{

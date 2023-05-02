@@ -24,8 +24,8 @@ namespace SpiritMod.Projectiles.Pet
 		{
 			Player player = Main.player[Projectile.owner];
 
-			player.zephyrfish = false;
 			player.GetModPlayer<PetPlayer>().PetFlag(Projectile);
+			player.zephyrfish = false; //Relic from AIType
 		}
 	}
 }

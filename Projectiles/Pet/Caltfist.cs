@@ -3,6 +3,8 @@ using SpiritMod.GlobalClasses.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Humanizer.In;
+
 namespace SpiritMod.Projectiles.Pet
 {
 	public class Caltfist : ModProjectile
@@ -36,12 +38,7 @@ namespace SpiritMod.Projectiles.Pet
             if (Projectile.Distance(player.Center) > 1500)
                 Projectile.position = player.position + new Vector2(Main.rand.Next(-125, 126), Main.rand.Next(-125, 126));
 
-            PetPlayer modPlayer = player.GetModPlayer<PetPlayer>();
-			if (player.dead)
-				modPlayer.cultFishPet = false;
-
-			if (modPlayer.cultFishPet)
-				Projectile.timeLeft = 2;
+			player.GetModPlayer<PetPlayer>().PetFlag(Projectile);
 
 			Projectile.localAI[0] += 1f;
 			if (Projectile.localAI[0] >= 10f) {

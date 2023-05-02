@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.GlobalClasses.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,25 +22,14 @@ namespace SpiritMod.Projectiles.Pet
 			Projectile.height = 46;
 		}
 
-		public override bool PreAI()
-		{
-			Player player = Main.player[Projectile.owner];
-			player.zephyrfish = false; // Relic from aiType
-			Projectile.spriteDirection = 0;
-			return true;
-		}
-
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
-			var modPlayer = player.GetModPlayer<GlobalClasses.Players.PetPlayer>();
-			if (player.dead)
-				modPlayer.swordPet = false;
 
-			if (modPlayer.swordPet)
-				Projectile.timeLeft = 2;
+			player.GetModPlayer<PetPlayer>().PetFlag(Projectile);
+			player.zephyrfish = false; //Relic from AIType
 
-
+			Projectile.spriteDirection = 0;
 			int range = 10000;   //How many tiles away the projectile targets NPCs
 
 			//TARGET NEAREST NPC WITHIN RANGE

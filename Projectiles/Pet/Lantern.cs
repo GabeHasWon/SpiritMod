@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+using SpiritMod.GlobalClasses.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,36 +23,23 @@ namespace SpiritMod.Projectiles.Pet
 			Projectile.scale = 0.9f;
 		}
 
-		public override bool PreAI()
-		{
-			int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Green, 0, -1f, 0, default, 1f);
-			Main.dust[d].scale *= 0.5f;
-			Main.dust[d].noGravity = true;
-			Lighting.AddLight((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), 0.75f / 2, 1.5f / 2, 0.75f / 2);
-
-			Player player = Main.player[Projectile.owner];
-			player.zephyrfish = false; // Relic from aiType
-			return true;
-		}
-
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
-			var modPlayer = player.GetModPlayer<GlobalClasses.Players.PetPlayer>();
-			if (player.dead)
-				modPlayer.lanternPet = false;
+			player.GetModPlayer<PetPlayer>().PetFlag(Projectile);
 
-			if (modPlayer.lanternPet)
-				Projectile.timeLeft = 2;
+			player.zephyrfish = false; //Relic from AIType
 
-			if (player.controlDown && player.releaseDown)
+			if (player == Main.LocalPlayer && player.controlDown && player.releaseDown && player.doubleTapCardinalTimer[0] > 0 && player.doubleTapCardinalTimer[0] != 15)
 			{
-				if (player.doubleTapCardinalTimer[0] > 0 && player.doubleTapCardinalTimer[0] != 15)
-				{
-					Vector2 vectorToMouse = Main.MouseWorld - Projectile.Center;
-					Projectile.velocity += 5f * Vector2.Normalize(vectorToMouse);
-				}
+				Projectile.velocity += 5f * Projectile.DirectionTo(Main.MouseWorld);
+				Projectile.netUpdate = true;
 			}
+
+			Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Green, 0, -1f, 0, default, 1f);
+			dust.scale *= 0.5f;
+			dust.noGravity = true;
+			Lighting.AddLight((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), 0.75f / 2, 1.5f / 2, 0.75f / 2);
 		}
 	}
 }
