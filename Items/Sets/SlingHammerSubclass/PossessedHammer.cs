@@ -48,13 +48,13 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}
-		protected override int height => 46;
-		protected override int width => 50;
-		protected override int chargeTime => 40;
-		protected override float chargeRate => 0.7f;
-		protected override int thrownProj => ModContent.ProjectileType<PossessedHammerProjReturning>();
-		protected override float damageMult => 1.25f;
-		protected override int throwSpeed => 46;
+		protected override int Height => 46;
+		protected override int Width => 50;
+		protected override int ChargeTime => 40;
+		protected override float ChargeRate => 0.7f * Main.player[Projectile.owner].GetTotalAttackSpeed(DamageClass.Melee);
+		protected override int ThrownProj => ModContent.ProjectileType<PossessedHammerProjReturning>();
+		protected override float DamageMult => 1.25f;
+		protected override int ThrowSpeed => 46;
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage = (int)(damage * 0.75f);
 
@@ -95,7 +95,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 		public override void AI()
 		{
 			AiTimer++;
-			Projectile.tileCollide = (AiState != STATE_RETURN);
+			Projectile.tileCollide = AiState != STATE_RETURN;
 
 			if (!Main.dedServ)
 			{

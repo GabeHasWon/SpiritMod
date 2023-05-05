@@ -9,6 +9,9 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 {
     public class NautilusClub : ClubItem
     {
+		internal override int ChargeTime => 64;
+		internal override Point Size => new(80, 102);
+		internal override float Acceleration => 19f;
 		internal override int MinDamage => 34;
 		internal override int MaxDamage => 80;
 		internal override float MinKnockback => 4f;

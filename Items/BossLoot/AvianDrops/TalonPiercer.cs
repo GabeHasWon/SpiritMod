@@ -24,8 +24,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 10;
 			Item.width = Item.height = 46;
-			Item.useTime = 16;
-			Item.useAnimation = 16;
+			Item.useTime = 12;
+			Item.useAnimation = 36;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
@@ -46,11 +46,11 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			if (player.ownedProjectileCounts[heldProj] < 1)
 				Projectile.NewProjectile(Entity.GetSource_ItemUse(Item), position, Vector2.Zero, heldProj, damage, knockback, player.whoAmI);
 
-			float randomRotation = Main.rand.NextFloat(-0.1f, 0.1f);
+			float randomRotation = Main.rand.NextFloat(-0.2f, 0.2f);
 			velocity *= Main.rand.NextFloat(0.8f, 1.0f);
 			position -= (Vector2.Normalize(velocity) * 800).RotatedBy(randomRotation);
 
-			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, randomRotation * -0.05f);
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, randomRotation * -0.01f);
 			return false;
 		}
 	}
@@ -74,6 +74,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Projectile.friendly = true;
 			Projectile.penetrate = -1;
 			Projectile.aiStyle = -1;
+			Projectile.timeLeft = 2;
 			Projectile.ignoreWater = true;
 			Projectile.tileCollide = false;
 		}
@@ -84,15 +85,19 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 			Player player = Main.player[Projectile.owner];
 			player.heldProj = Projectile.whoAmI;
-			Projectile.rotation = -1.57f + (.2f * player.direction);
-
-			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, -1.57f * player.direction);
-			player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.ThreeQuarters, -1.57f * player.direction);
+			Projectile.rotation = (-1.57f + (.2f * player.direction)) * player.gravDir;
 
 			Projectile.Center = player.MountedCenter + (Vector2.UnitX * holdoutLength).RotatedBy(Projectile.rotation);
 
 			if (player.channel)
+			{
+				player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, -1.57f * player.direction);
+				player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.ThreeQuarters, -1.57f * player.direction);
+
 				Projectile.timeLeft = 2;
+			}
+
+			Projectile.alpha = player.channel ? 0 : 255;
 		}
 
 		public override bool PreDraw(ref Color lightColor)
@@ -100,7 +105,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Player player = Main.player[Projectile.owner];
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-			SpriteEffects effects = (player.direction < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			SpriteEffects effects = (player.direction * player.gravDir < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			float rotation = Projectile.rotation + ((effects == SpriteEffects.FlipHorizontally) ? 2.355f : 0.785f);
 			Vector2 origin = (effects == SpriteEffects.None) ? new Vector2(texture.Width - (Projectile.width / 2), Projectile.height / 2) : Projectile.Size / 2;
 

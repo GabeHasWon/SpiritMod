@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -6,6 +7,9 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class SporeClub : ClubItem
     {
+		internal override int ChargeTime => 52;
+		internal override Point Size => new(86, 82);
+		internal override float Acceleration => 19f;
 		internal override int MinDamage => 36;
 		internal override int MaxDamage => 90;
 		internal override float MinKnockback => 6f;

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -6,6 +7,9 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
 	public class BoneClub : ClubItem
 	{
+		internal override int ChargeTime => 50;
+		internal override Point Size => new(76, 82);
+		internal override float Acceleration => 17f;
 		internal override int MinDamage => 66;
 		internal override int MaxDamage => 180;
 		internal override float MinKnockback => 5f;

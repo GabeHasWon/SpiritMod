@@ -12,8 +12,6 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class BlasphemerProj : ClubProj
 	{
-		private static Point size = new(104, 104);
-
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blasphemer");
@@ -29,7 +27,7 @@ namespace SpiritMod.Projectiles.Clubs
             for (int k = 0; k <= 100; k++)
                 Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), DustType<FireClubDust>(), new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 10f);
 
-			int a = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y, 0, -12, ProjectileType<Magic.Firespike>(), Projectile.damage/3, Projectile.knockBack / 2, Projectile.owner, 0, player.direction);
+			int a = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y - 16, 0, -12, ProjectileType<Magic.Firespike>(), Projectile.damage / 3, Projectile.knockBack / 2, Projectile.owner, 0, player.direction);
             Main.projectile[a].DamageType = DamageClass.Melee;
             SoundEngine.PlaySound(SoundID.NPCHit20, Projectile.position);
         }
@@ -38,7 +36,7 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			if (Projectile.ai[0] >= ChargeTime)
 			{
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, size.Y * 2, size.X, size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
+				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size.Y * 2, Size.X, Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
                 Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
                 {
@@ -54,7 +52,5 @@ namespace SpiritMod.Projectiles.Clubs
             if (Main.rand.NextBool(3))
                 target.AddBuff(BuffID.OnFire, 180);
         }
-
-        public BlasphemerProj() : base(66, size, 17f){}
 	}
 }

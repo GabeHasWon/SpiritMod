@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
@@ -68,17 +66,17 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 					player.heldProj = Projectile.whoAmI;
 					player.itemTime = ++player.itemAnimation;
 
-					float rotationOffset = MathHelper.ToRadians(quoteant * -30 * Projectile.direction);
+					float rotationOffset = MathHelper.ToRadians(quoteant * -30) * Projectile.direction * player.gravDir;
 					Projectile.rotation = rotationOffset;
 					Projectile.Center = player.MountedCenter - new Vector2(-(TextureAssets.Projectile[Type].Width() / 2) * Projectile.direction, holdoutLength * player.gravDir).RotatedBy(rotationOffset);
 
-					player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, MathHelper.Pi + rotationOffset);
-					player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, Projectile.velocity.ToRotation() - 1.57f);
+					player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, MathHelper.Pi + rotationOffset * player.gravDir);
+					player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (Projectile.velocity.ToRotation() * player.gravDir) - 1.57f);
 				}
 				else
 				{
 					Released = true;
-					Counter = 0;
+					Counter = 30 - (quoteant * 30f);
 
 					SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
 
@@ -124,12 +122,13 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 			return true;
 		}
 
+		public virtual void DrawGlowmask(ref Color lightColor) { }
 		public sealed override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
 
 			SpriteEffects effects = (Projectile.direction < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-			Vector2 origin = (effects == SpriteEffects.None) ? new Vector2(texture.Width - (Projectile.width / 2), Projectile.height / 2) : Projectile.Size / 2;
+			Vector2 origin = (effects == SpriteEffects.None) ? new Vector2(texture.Width - (Projectile.width / 2), texture.Height / 2) : new Vector2(Projectile.width / 2, texture.Height / 2);
 
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, origin, Projectile.scale, effects, 0);
 
@@ -142,13 +141,19 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 					Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, origin, Projectile.scale, effects, 0);
 				}
 			}
-			return false;
-		}
 
-		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-		{
-			if (Embeded)
-				behindNPCs.Add(index);
+			DrawGlowmask(ref lightColor);
+
+			if (!Released && Counter >= 1f)
+			{
+				Projectile.localAI[0]++;
+				Vector2 scale = new Vector2(.5f) * Math.Max(0, 1f - (Projectile.localAI[0] / 12));
+				Vector2 position = Projectile.Center + (Vector2.UnitX * Projectile.localAI[0] * -Projectile.direction).RotatedBy(Projectile.rotation);
+
+				for (int i = 0; i < 2; i++)
+					Main.EntitySpriteDraw(TextureAssets.Extra[89].Value, position - Main.screenPosition, null, Color.White with { A = 0 } * .7f, 1.57f * i, TextureAssets.Extra[89].Size() / 2, scale, SpriteEffects.None, 0);
+			}
+			return false;
 		}
 
 		public virtual void HitNPC(NPC target, int damage, float knockback, bool crit) { }
@@ -162,6 +167,9 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 
 				StruckNPCIndex = target.whoAmI;
 			}
+
+			if (crit)
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Stab") with { Volume = .7f }, Projectile.Center);
 
 			HitNPC(target, damage, knockback, crit);
 		}

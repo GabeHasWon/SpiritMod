@@ -2,11 +2,15 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Projectiles.Clubs;
+using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class BassSlapper : ClubItem
     {
+		internal override int ChargeTime => 66;
+		internal override Point Size => new(76, 84);
+		internal override float Acceleration => 17f;
 		internal override int MinDamage => 28;
 		internal override int MaxDamage => 90;
 		internal override float MinKnockback => 10f;

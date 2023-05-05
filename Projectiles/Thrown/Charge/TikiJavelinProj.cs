@@ -35,13 +35,13 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 				Dust.NewDustPerfect(Projectile.Center, DustID.Torch, -(Vector2.Normalize(Projectile.velocity) * Main.rand.NextFloat(1.0f, 3.0f)).RotatedByRandom(1f), 0, default, 1.85f).noGravity = true;
 		}
 
-		public override void PostDraw(Color lightColor)
+		public override void DrawGlowmask(ref Color lightColor)
 		{
 			Player player = Main.player[Projectile.owner];
 			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
 
 			SpriteEffects effects = (player.direction < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-			Vector2 origin = (effects == SpriteEffects.None) ? new Vector2(texture.Width - (Projectile.width / 2), Projectile.height / 2) : Projectile.Size / 2;
+			Vector2 origin = (effects == SpriteEffects.None) ? new Vector2(texture.Width - (Projectile.width / 2), texture.Height / 2) : new Vector2(Projectile.width / 2, texture.Height / 2);
 
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(Color.White), Projectile.rotation, origin, Projectile.scale, effects, 0);
 		}

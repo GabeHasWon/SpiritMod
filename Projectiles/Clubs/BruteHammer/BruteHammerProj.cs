@@ -85,13 +85,11 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 			{
 				hitDirection = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
 
-				damage = (int)(minDamage * .6f);
-				knockback = minKnockback * .5f;
+				damage = (int)(MinDamage * .6f);
+				knockback = MinKnockback * .5f;
 
 				Projectile.numHits--;
 			}
 		}
-
-		public BruteHammerProj() : base(54, new Point(50, 80), 17f, 50f) { }
 	}
 }

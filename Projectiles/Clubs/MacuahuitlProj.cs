@@ -25,7 +25,5 @@ namespace SpiritMod.Projectiles.Clubs
             Player player = Main.player[Projectile.owner];
             player.GetArmorPenetration(DamageClass.Melee) += (int)(Projectile.ai[0] / 2);
         }
-
-        public MacuahuitlProj() : base(70, new Point(82, 82), 19f){}
 	}
 }

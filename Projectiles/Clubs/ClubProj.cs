@@ -11,24 +11,27 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	public abstract class ClubProj : ModProjectile
 	{
-		protected readonly int ChargeTime;
-		protected readonly Point Size;
-		protected readonly float Acceleration;
-		protected readonly float MaxSpeed;
-
-		public float minKnockback;
-		public float maxKnockback;
-
-		public int minDamage;
-		public int maxDamage;
-
-		public ClubProj(int chargetime, Point size, float acceleration, float maxspeed = -1)
+		public void SetStats(int chargeTime, Point size, float acceleration, int minDamage, int maxDamage, float minKnockback, float maxKnockback)
 		{
-			ChargeTime = chargetime;
+			ChargeTime = chargeTime;
 			Size = size;
 			Acceleration = acceleration;
-			MaxSpeed = maxspeed;
+			MinDamage = minDamage;
+			MaxDamage = maxDamage;
+			MinKnockback = minKnockback;
+			MaxKnockback = maxKnockback;
 		}
+
+		public int ChargeTime { get; private set; }
+		public Point Size { get; private set; }
+		public float Acceleration { get; private set; }
+
+		public int MinDamage { get; private set; }
+		public int MaxDamage { get; private set; }
+
+		public float MinKnockback { get; private set; }
+		public float MaxKnockback { get; private set; }
+
 
 		public virtual void SafeAI() { }
 		public virtual void SafeDraw(SpriteBatch spriteBatch, Color lightColor) { }
@@ -153,13 +156,13 @@ namespace SpiritMod.Projectiles.Clubs
 					_angularMomentum = MathHelper.Lerp(_angularMomentum, 0, 0.08f);
 				}
 
-				float dmg = minDamage + (Projectile.ai[0] / ChargeTime * (maxDamage - minDamage));
+				float dmg = MinDamage + (Projectile.ai[0] / ChargeTime * (MaxDamage - MinDamage));
 				Projectile.damage = (int)player.GetDamage(DamageClass.Melee).ApplyTo(dmg);
-				Projectile.knockBack = minKnockback + (int)(Projectile.ai[0] / ChargeTime * (maxKnockback - minKnockback));
+				Projectile.knockBack = MinKnockback + (int)(Projectile.ai[0] / ChargeTime * (MaxKnockback - MinKnockback));
 			}
 			else
 			{
-				if (_angularMomentum > -MaxSpeed || MaxSpeed < 0)
+				if (_angularMomentum > -80)
 					_angularMomentum -= GetAcceleration();
 
 				if (!released)

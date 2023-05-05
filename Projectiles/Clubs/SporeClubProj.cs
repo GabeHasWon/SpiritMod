@@ -7,8 +7,6 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class SporeClubProj : ClubProj
 	{
-		private static Point size = new(86, 82);
-
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sporebreaker");
@@ -24,7 +22,5 @@ namespace SpiritMod.Projectiles.Clubs
             Projectile.NewProjectile(Projectile.GetSource_FromAI("ClubSmash"), Projectile.Center.X + (20 * player.direction), Projectile.Center.Y - 40, 0, 0, ModContent.ProjectileType<ToxinField>(), Projectile.damage / 9, 0, Projectile.owner, 8, player.direction);
 
         }
-
-        public SporeClubProj() : base(52, size, 19f){}
 	}
 }

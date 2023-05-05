@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.GameContent;
 using static Terraria.ModLoader.ModContent;
 using SpiritMod.Dusts;
 
@@ -30,7 +28,5 @@ namespace SpiritMod.Projectiles.Clubs
                 Main.projectile[proj].scale *= Main.rand.NextFloat(.6f, 1f);
             }
         }
-
-		public BoneClubProj() : base(50, new Point(76, 82), 17f){}
 	}
 }

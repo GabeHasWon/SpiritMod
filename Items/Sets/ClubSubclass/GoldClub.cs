@@ -2,11 +2,15 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Projectiles.Clubs;
+using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class GoldClub : ClubItem
     {
+		internal override int ChargeTime => 60;
+		internal override Point Size => new(82, 82);
+		internal override float Acceleration => 18f;
 		internal override int MinDamage => 30;
 		internal override int MaxDamage => 105;
 		internal override float MinKnockback => 6f;

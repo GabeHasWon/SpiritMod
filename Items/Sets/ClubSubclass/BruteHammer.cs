@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Projectiles.Clubs.BruteHammer;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,6 +8,9 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
 	public class BruteHammer : ClubItem
 	{
+		internal override int ChargeTime => 54;
+		internal override Point Size => new(50, 80);
+		internal override float Acceleration => 17f;
 		internal override int MinDamage => 26;
 		internal override int MaxDamage => 90;
 		internal override float MinKnockback => 4;
@@ -28,20 +30,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 			Item.value = Item.sellPrice(0, 0, 60, 0);
 			Item.rare = ItemRarityID.Orange;
 			Item.shoot = ModContent.ProjectileType<BruteHammerProj>();
-		}
-
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-		{
-			StatModifier meleeDMG = player.GetTotalDamage(DamageClass.Melee);
-			StatModifier meleeKB = player.GetTotalKnockback(DamageClass.Melee);
-
-			Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-			(proj.ModProjectile as BruteHammerProj).minDamage = (int)meleeDMG.ApplyTo(MinDamage);
-			(proj.ModProjectile as BruteHammerProj).maxDamage = (int)meleeDMG.ApplyTo(MaxDamage);
-			(proj.ModProjectile as BruteHammerProj).minKnockback = (int)meleeKB.ApplyTo(MinKnockback);
-			(proj.ModProjectile as BruteHammerProj).maxKnockback = (int)meleeKB.ApplyTo(MaxKnockback);
-
-			return false;
 		}
 	}
 }

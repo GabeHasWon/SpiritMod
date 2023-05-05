@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -6,6 +7,9 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class PlatinumClub : ClubItem
     {
+		internal override int ChargeTime => 55;
+		internal override Point Size => new(84, 84);
+		internal override float Acceleration => 18f;
 		internal override int MinDamage => 31;
 		internal override int MaxDamage => 110;
 		internal override float MinKnockback => 6f;

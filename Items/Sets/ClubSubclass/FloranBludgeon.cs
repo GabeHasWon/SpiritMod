@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -6,6 +7,9 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 {
     public class FloranBludgeon : ClubItem
     {
+		internal override int ChargeTime => 52;
+		internal override Point Size => new(80, 84);
+		internal override float Acceleration => 21f;
 		internal override int MinDamage => 32;
 		internal override int MaxDamage => 80;
 		internal override float MinKnockback => 4f;

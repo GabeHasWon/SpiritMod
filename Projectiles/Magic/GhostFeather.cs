@@ -20,7 +20,15 @@ namespace SpiritMod.Projectiles.Magic
 		}
 
 		public void DoTrailCreation(TrailManager tManager)
-			=> tManager.CreateTrail(Projectile, new StandardColorTrail(Color.LightBlue), new NoCap(), new DefaultTrailPosition(), 10f, 80f, new DefaultShader());
+		{
+			//Misc spawn effects
+			Projectile.scale = Main.rand.NextFloat(0.7f, 1.0f);
+			Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
+
+			Projectile.netUpdate = true;
+
+			tManager.CreateTrail(Projectile, new StandardColorTrail(Color.LightBlue), new NoCap(), new DefaultTrailPosition(), Projectile.scale * 10f, 80f, new DefaultShader());
+		}
 
 		public override void SetStaticDefaults()
 		{
@@ -44,12 +52,6 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.aiStyle = -1;
 		}
 
-		public override void OnSpawn(IEntitySource source)
-		{
-			Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
-			Projectile.netUpdate = true;
-		}
-
 		public override void AI()
 		{
 			Projectile.alpha = Math.Max(0, Projectile.alpha - (255 / 30));
@@ -61,7 +63,7 @@ namespace SpiritMod.Projectiles.Magic
 			{
 				if (npc.active && !npc.friendly && npc.CanBeChasedBy(Projectile) && Projectile.Distance(npc.Center) <= maxRange)
 				{
-					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(npc.Center) * 10f, 0.01f);
+					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(npc.Center) * 10f, 0.025f);
 					foundNPC = true;
 
 					break;

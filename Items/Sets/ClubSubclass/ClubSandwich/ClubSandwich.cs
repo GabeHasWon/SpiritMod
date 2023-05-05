@@ -3,11 +3,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Consumable.Food;
 using SpiritMod.Projectiles.Clubs;
+using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
 {
     public class ClubSandwich : ClubItem
     {
+		internal override int ChargeTime => 52;
+		internal override Point Size => new(64, 70);
+		internal override float Acceleration => 17f;
 		internal override int MinDamage => 43;
 		internal override int MaxDamage => 95;
 		internal override float MinKnockback => 5f;
