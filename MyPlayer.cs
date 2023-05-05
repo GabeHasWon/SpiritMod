@@ -542,6 +542,10 @@ namespace SpiritMod
 			bloodCourtHead = false;
 			scarabCharm = false;
 			assassinMag = false;
+			stoneplate = false;
+
+			justLanded = canJustLand && Player.velocity.Y == 0 && Player.grappling[0] == -1;
+			canJustLand = Player.velocity.Y != 0;
 
 			jellynautHelm = false;
 			starplateGlitchEffect = false;
@@ -2600,7 +2604,7 @@ namespace SpiritMod
 			foreach (int entry in cooldowns.Keys)
 				if (cooldowns[entry] > 0)
 					cooldowns[entry]--;
-			}
+		}
 
 		private void TeslaStrike(Player player)
 		{
@@ -3040,6 +3044,13 @@ namespace SpiritMod
 
 		public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
 		{
+			if (stoneplate) //This causes the player to squint
+			{
+				Player.poisoned = true; //Workaround
+				Player.eyeHelper.Update(Player);
+				Player.poisoned = false;
+			}
+
 			if (camoCounter > 0)
 			{
 				float camo = 1 - .75f / CAMO_DELAY * camoCounter;
