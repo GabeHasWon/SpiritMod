@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Buffs.Summon;
 using System;
 using Terraria;
 using Terraria.ID;
 
 namespace SpiritMod.Projectiles.Summon
 {
+	[AutoloadMinionBuff("Flying Snake", "'Quite venomous...'")]
 	public class SnakeMinion : Minion
 	{
 		public override void SetStaticDefaults()
@@ -32,20 +34,10 @@ namespace SpiritMod.Projectiles.Summon
 			Projectile.netImportant = true;
 		}
 
-		public override void CheckActive()
-		{
-			MyPlayer mp = Main.player[Projectile.owner].GetModPlayer<MyPlayer>();
-			if (mp.Player.dead)
-				mp.SnakeMinion = false;
-
-			if (mp.SnakeMinion)
-				Projectile.timeLeft = 2;
-
-		}
+		public override void CheckActive() { }
 
 		public override void Behavior()
 		{
-			Player player = Main.player[Projectile.owner];
 			for (int num526 = 0; num526 < 1000; num526++) {
 				if (num526 != Projectile.whoAmI && Main.projectile[num526].active && Main.projectile[num526].owner == Projectile.owner && Main.projectile[num526].type == Projectile.type && Math.Abs(Projectile.position.X - Main.projectile[num526].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num526].position.Y) < (float)Projectile.width) {
 					if (Projectile.position.X < Main.projectile[num526].position.X)

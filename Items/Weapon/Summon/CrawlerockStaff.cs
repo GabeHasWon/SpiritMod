@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Buffs.Summon;
 using SpiritMod.Projectiles.Summon;
 using Terraria;
 using Terraria.DataStructures;
@@ -30,26 +29,22 @@ namespace SpiritMod.Items.Weapon.Summon
 			Item.useAnimation = 30;
 			Item.DamageType = DamageClass.Summon;
 			Item.noMelee = true;
-			Item.buffType = ModContent.BuffType<CrawlerockMinionBuff>();
             Item.shoot = ModContent.ProjectileType<Crawlerock>();
 			Item.UseSound = SoundID.Item44;
 		}
 
 		public override bool AltFunctionUse(Player player) => true;
 
+		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) => position = Main.MouseWorld;
+
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => player.altFunctionUse != 2;
+
 		public override bool? UseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)
 				player.MinionNPCTargetAim(true);
-			return null;
-		}
 
-		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) => position = Main.MouseWorld;
-
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-		{
-			player.AddBuff(Item.buffType, 2);
-			return player.altFunctionUse != 2;
+			return base.CanUseItem(player);
 		}
 	}
 }

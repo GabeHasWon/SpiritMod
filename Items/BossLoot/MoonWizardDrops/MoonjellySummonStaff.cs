@@ -1,10 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs.Summon;
 using SpiritMod.Projectiles.Summon.MoonjellySummon;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace SpiritMod.Items.BossLoot.MoonWizardDrops
@@ -37,6 +35,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 		}
 
 		public override bool AltFunctionUse(Player player) => true;
+
 		public override bool? UseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)
@@ -62,7 +61,6 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 				if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == Item.shoot)
 					return false;
 			}
-			player.AddBuff(ModContent.BuffType<MoonjellySummonBuff>(), 3600);
 			return player.altFunctionUse != 2;
 		}
 

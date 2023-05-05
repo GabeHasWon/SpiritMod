@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -121,7 +119,7 @@ namespace SpiritMod.Projectiles.BaseProj
 				UpdateFrame(framespersecond, startframe, endframe);
 		}
 
-		private bool CanHit(Vector2 center1, Vector2 center2) => Collision.CanHit(center1, 0, 0, center2, 0, 0);
+		private static bool CanHit(Vector2 center1, Vector2 center2) => Collision.CanHit(center1, 0, 0, center2, 0, 0);
 
 		public virtual void IdleMovement(Player player) { }
 

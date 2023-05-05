@@ -1,5 +1,5 @@
+using SpiritMod.Buffs.Pet;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.DonatorItems

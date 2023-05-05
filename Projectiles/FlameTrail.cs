@@ -1,7 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,10 +6,9 @@ namespace SpiritMod.Projectiles
 {
 	public class FlameTrail : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Flame Trail");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Flame Trail");
 
 		public override void SetDefaults()
 		{
@@ -38,9 +34,6 @@ namespace SpiritMod.Projectiles
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			target.AddBuff(BuffID.OnFire, 60);
-		}
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(BuffID.OnFire, 60);
 	}
 }

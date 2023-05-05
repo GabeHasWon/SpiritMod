@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Projectiles;
+using SpiritMod.Projectiles.Sword;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -28,7 +28,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.value = Item.sellPrice(0, 1, 0, 0);
 			Item.rare = ItemRarityID.Orange;
 			Item.UseSound = SoundID.Item1;
-			Item.shoot = ModContent.ProjectileType<BoneFeatherSwordProj>();
+			Item.shoot = ModContent.ProjectileType<BoneFeather>();
 			Item.shootSpeed = 10f;
 			Item.crit = 6;
 			Item.autoReuse = true;

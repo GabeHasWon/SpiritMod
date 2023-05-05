@@ -15,7 +15,6 @@ namespace SpiritMod.Projectiles
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
 
-		//Warning : it's not my code. It's SpiritMod code. so i donnt fully understand it
 		public override void SetDefaults()
 		{
 			Projectile.width = 12;
@@ -36,7 +35,7 @@ namespace SpiritMod.Projectiles
 				chasing = true;
 
 				Projectile.friendly = true;
-				NPC target = null;
+				NPC target;
 				if (Projectile.ai[0] == -1f) {
 					target = ProjectileExtras.FindRandomNPC(Projectile.Center, 960f, false);
 				}
@@ -102,13 +101,11 @@ namespace SpiritMod.Projectiles
 				});
 		}
 
-		private void AdjustMagnitude(ref Vector2 vector)
+		private static void AdjustMagnitude(ref Vector2 vector)
 		{
 			float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
 			if (magnitude > 6f)
 				vector *= 6f / magnitude;
 		}
-
-
 	}
 }

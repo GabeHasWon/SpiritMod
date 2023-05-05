@@ -7,10 +7,9 @@ namespace SpiritMod.Projectiles
 {
 	public class GildedFountain : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Gold Cascade");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Gold Cascade");
 
 		public override void SetDefaults()
 		{
@@ -19,9 +18,9 @@ namespace SpiritMod.Projectiles
 			Projectile.width = 16;
 			Projectile.height = 70;
 			Projectile.penetrate = 5;
-			Projectile.alpha = 255;
 			Projectile.timeLeft = 240;
 		}
+
 		public override bool PreAI()
 		{
 			float num1627 = 2f;
@@ -60,6 +59,7 @@ namespace SpiritMod.Projectiles
 			}
 			return true;
 		}
+
 		public override void AI()
 		{
 			Projectile.ai[1] += 1f;
@@ -94,6 +94,7 @@ namespace SpiritMod.Projectiles
 				}
 			}
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			Dust.NewDust(Projectile.position + Projectile.velocity,

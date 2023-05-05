@@ -26,13 +26,12 @@ namespace SpiritMod.Items.Sets.SlagSet
 			Item.useTime = 36;
 			Item.useAnimation = 36;
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.noMelee = true; //so the item's animation doesn't do damage
+			Item.noMelee = true;
 			Item.knockBack = 1.25f;
 			Item.value = 10000;
 			Item.UseSound = SoundID.Item73;
 			Item.rare = ItemRarityID.Orange;
 			Item.shoot = ModContent.ProjectileType<Projectiles.Summon.LavaRockSummon>();
-            Item.buffType = ModContent.BuffType<Buffs.Summon.LavaRockSummonBuff>();
             Item.shootSpeed = 10f;
 		}
 
@@ -42,11 +41,7 @@ namespace SpiritMod.Items.Sets.SlagSet
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
-		{
-			player.AddBuff(ModContent.BuffType<Buffs.Summon.LavaRockSummonBuff>(), 3600);
-            return player.altFunctionUse != 2; 
-		}
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => player.altFunctionUse != 2;
 
 		public override bool CanUseItem(Player player)       
 		{

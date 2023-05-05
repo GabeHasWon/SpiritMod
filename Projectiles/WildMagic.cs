@@ -1,6 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,11 +7,7 @@ namespace SpiritMod.Projectiles
 {
 	class WildMagic : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Ancient Magic");
-
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Magic");
 
 		public override void SetDefaults()
 		{
@@ -42,10 +36,7 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override void Kill(int timeLeft)
-		{
-			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.GoldCoin, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
-		}
+		public override void Kill(int timeLeft) => Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.GoldCoin, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

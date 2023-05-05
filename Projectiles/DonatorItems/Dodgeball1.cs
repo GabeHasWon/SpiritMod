@@ -4,10 +4,13 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Projectiles.DonatorItems
 {
 	public class Dodgeball1 : ModProjectile
 	{
+		public override string Texture => "SpiritMod/Items/DonatorItems/DodgeBall1";
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dodgeball");
@@ -24,6 +27,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			AIType = ProjectileID.WoodenBoomerang;
 			Projectile.penetrate = -1;
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);

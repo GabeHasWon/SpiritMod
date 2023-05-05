@@ -65,7 +65,6 @@ namespace SpiritMod
 
 		public int Shake = 0;
 		public bool clockActive = false;
-		public bool QuacklingMinion = false;
 		public bool rabbitMinion = false;
 		public bool bismiteShield = false;
 		public bool zipline = false;
@@ -150,10 +149,7 @@ namespace SpiritMod
 		public bool bloodfireShield;
 
 		public bool cragboundMinion = false;
-		public bool crawlerockMinion = false;
-		public bool mangoMinion = false;
 		public bool clatterboneShield = false;
-		public bool minior = false;
 		public bool NebulaPearl = false;
 		public bool CursedPendant = false;
 		public bool starMap = false;
@@ -162,13 +158,8 @@ namespace SpiritMod
 		public bool daybloomGarb = false;
 		public int frigidGloveStacks;
 		public bool gemPickaxe = false;
-		public bool snapsporeMinion = false;
 		public bool butterflyMinion = false;
-		public bool SnakeMinion = false;
-		public bool jellyfishMinion = false;
 		public bool DungeonSummon = false;
-		public bool lunazoa = false;
-		public bool lavaRock = false;
 		public int soulSiphon;
 		public bool oliveBranchBuff = false;
 		public bool leatherHood = false;
@@ -534,7 +525,6 @@ namespace SpiritMod
 			elderbarkWoodSet = false;
 			cleftHorn = false;
 			throwerGlove = false;
-			QuacklingMinion = false;
 			rabbitMinion = false;
 			VampireCloak = false;
 			SpiritCloak = false;
@@ -575,14 +565,12 @@ namespace SpiritMod
 			HellGaze = false;
 			Bauble = false;
 			geodeRanged = false;
-			snapsporeMinion = false;
 			bloodfireShield = false;
 			Phantom = false;
 			magnifyingGlass = false;
 			daybloomSet = false;
 			daybloomGarb = false;
 			CursedPendant = false;
-			SnakeMinion = false;
 			starCharm = false;
 			starMap = false;
 			frigidGloves = false;
@@ -592,15 +580,9 @@ namespace SpiritMod
 			sepulchreCharm = false;
 			clatterboneShield = false;
 			leatherGlove = false;
-			crawlerockMinion = false;
-			mangoMinion = false;
 			cragboundMinion = false;
 			DungeonSummon = false;
-			lunazoa = false;
-			lavaRock = false;
-			jellyfishMinion = false;
 			butterflyMinion = false;
-			minior = false;
 			drakomireMount = false;
 			basiliskMount = false;
 			spiritBuff = false;

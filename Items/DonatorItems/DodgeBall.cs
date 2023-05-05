@@ -14,7 +14,6 @@ namespace SpiritMod.Items.DonatorItems
 			Tooltip.SetDefault("Throw mach speed dodgeballs!");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.damage = 12;

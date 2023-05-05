@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Buffs.Summon;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -6,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.DonatorItems
 {
+	[AutoloadMinionBuff("Quackling", "Born with a bandana!")]
 	public class QuacklingMinion : ModProjectile
 	{
 		int timer = 0;
@@ -36,23 +38,10 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void AI()
 		{
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= 6f)
+			if (++Projectile.frameCounter >= 6)
 			{
 				Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
 				Projectile.frameCounter = 0;
-			}
-
-			bool flag64 = Projectile.type == ModContent.ProjectileType<QuacklingMinion>();
-			Player player = Main.player[Projectile.owner];
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-
-			if (flag64)
-			{
-				if (player.dead)
-					modPlayer.QuacklingMinion = false;
-				if (modPlayer.QuacklingMinion)
-					Projectile.timeLeft = 2;
 			}
 
 			for (int num526 = 0; num526 < 1000; num526++)

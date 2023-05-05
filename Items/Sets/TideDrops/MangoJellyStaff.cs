@@ -1,10 +1,10 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Buffs.Summon;
 using SpiritMod.Projectiles.Summon;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.TideDrops
 {
 	public class MangoJellyStaff : ModItem
@@ -32,22 +32,17 @@ namespace SpiritMod.Items.Sets.TideDrops
 			Item.shoot = ModContent.ProjectileType<MangoJellyMinion>();
 			Item.UseSound = SoundID.Item44;
 		}
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+
+		public override bool AltFunctionUse(Player player) => true;
+
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => player.altFunctionUse != 2;
 
 		public override bool? UseItem(Player player)
 		{
-			if (player.altFunctionUse == 2) {
+			if (player.altFunctionUse == 2)
 				player.MinionNPCTargetAim(true);
-			}
-			return null;
-		}
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
-		{
-			player.AddBuff(ModContent.BuffType<MangoJellyMinionBuff>(), 3600);
-			return player.altFunctionUse != 2;
+
+			return base.UseItem(player);
 		}
 	}
 }

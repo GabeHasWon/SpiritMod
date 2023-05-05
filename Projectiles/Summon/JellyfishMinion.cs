@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -7,9 +6,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Graphics.Shaders;
 using System.Linq;
+using SpiritMod.Buffs.Summon;
 
 namespace SpiritMod.Projectiles.Summon
 {
+	[AutoloadMinionBuff("Jellyfish", "A cute, bouncy Jellyfish fights for you!")]
 	public class JellyfishMinion : ModProjectile
     {
 		int timer = 0;
@@ -61,17 +62,8 @@ namespace SpiritMod.Projectiles.Summon
 			else if (colorType == 1)
 				colorVer = new Color(248 + Main.rand.Next(-13, 6), 148 + Main.rand.Next(-10, 20), 255 + Main.rand.Next(-20, 0));
 
-			bool flag64 = Projectile.type == ModContent.ProjectileType<JellyfishMinion>();
 			Player player = Main.player[Projectile.owner];
 			MyPlayer modPlayer = player.GetSpiritPlayer();
-
-			if (flag64)
-			{
-				if (player.dead)
-					modPlayer.jellyfishMinion = false;
-				if (modPlayer.jellyfishMinion)
-					Projectile.timeLeft = 2;
-			}
 
 			foreach (Projectile p in Main.projectile.Where(x => x.active && x != null && x.type == Projectile.type && x.owner == Projectile.owner && x != Projectile))
 			{

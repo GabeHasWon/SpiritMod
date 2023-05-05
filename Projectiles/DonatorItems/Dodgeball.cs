@@ -5,16 +5,20 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Projectiles.DonatorItems
 {
 	public class Dodgeball : ModProjectile
 	{
+		public override string Texture => "SpiritMod/Items/DonatorItems/DodgeBall";
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Super Dodgeball");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 30;
@@ -29,6 +33,8 @@ namespace SpiritMod.Projectiles.DonatorItems
 			AIType = ProjectileID.WoodenArrowFriendly;
 		}
 
+		public override void AI() => Projectile.rotation += 0.2f;
+
 		public override void Kill(int timeLeft)
 		{
 			for (int i = 0; i < 5; i++) {
@@ -39,6 +45,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			Main.gore[g].timeLeft = 1;
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
@@ -49,10 +56,5 @@ namespace SpiritMod.Projectiles.DonatorItems
 			}
 			return false;
 		}
-		public override void AI()
-		{
-			Projectile.rotation += 0.2f;
-		}
-
 	}
 }

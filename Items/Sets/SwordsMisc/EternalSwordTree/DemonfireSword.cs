@@ -12,7 +12,6 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 		{
 			DisplayName.SetDefault("Flameberge Sword");
 			Tooltip.SetDefault("Shoots out a fiery bolt");
-
 		}
 
 		public override void SetDefaults()
@@ -31,20 +30,21 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.useTurn = true;
-			Item.shoot = ModContent.ProjectileType<FlambergeProjectile>();
+			Item.shoot = ModContent.ProjectileType<FlamebergeProjectile>();
 		}
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.NextBool(4)) {
+			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.OnFire, 180);
-			}
 		}
+
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.NextBool(5))
 				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch);
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

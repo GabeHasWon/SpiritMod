@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Buffs.Summon;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -9,20 +10,18 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon.Snapspore
 {
+	[AutoloadMinionBuff("Snapspore", "A bouncy Snapspore fights for you!")]
 	public class SnapsporeMinion : ModProjectile
     {
-        Vector2 direction = Vector2.Zero;
         int counter = 0;
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snapspore");
-			Main.projFrames[base.Projectile.type] = 1;
-			Main.projPet[Projectile.type] = true;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
-            ProjectileID.Sets.MinionSacrificable[base.Projectile.type] = true;
-			ProjectileID.Sets.CultistIsResistantTo[base.Projectile.type] = true;
-			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
+			Main.projPet[Type] = true;
+            ProjectileID.Sets.TrailCacheLength[Type] = 6;
+            ProjectileID.Sets.MinionSacrificable[Type] = true;
+			ProjectileID.Sets.CultistIsResistantTo[Type] = true;
+			ProjectileID.Sets.MinionTargettingFeature[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -38,24 +37,14 @@ namespace SpiritMod.Projectiles.Summon.Snapspore
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
 		}
+
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.X * .08f;
-            bool flag64 = Projectile.type == ModContent.ProjectileType<SnapsporeMinion>();
+
             Player player = Main.player[Projectile.owner];
             if (Projectile.Distance(player.Center) > 1500)
-            {
                 Projectile.position = player.position + new Vector2(Main.rand.Next(-125, 126), Main.rand.Next(-125, 126));
-            }
-            MyPlayer modPlayer = player.GetSpiritPlayer();
-            if (flag64)
-            {
-                if (player.dead)
-                    modPlayer.snapsporeMinion = false;
-
-                if (modPlayer.snapsporeMinion)
-                    Projectile.timeLeft = 2;
-            }
 
             int range = 26;   //How many tiles away the projectile targets NPCs
             float lowestDist = float.MaxValue;
@@ -235,6 +224,7 @@ namespace SpiritMod.Projectiles.Summon.Snapspore
             }
 
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
@@ -253,10 +243,7 @@ namespace SpiritMod.Projectiles.Summon.Snapspore
             }
             return true;
         }
-        public override bool MinionContactDamage()
-		{
-			return true;
-		}
 
+		public override bool MinionContactDamage() => true;
 	}
 }

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Buffs.Summon;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -8,6 +9,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 {
+	[AutoloadMinionBuff("Moonlight Preserver", "This moonlight preserver summons tiny Lunazoa to fight for you!")]
 	public class MoonjellySummon : Minion
     {
 		public override void SetStaticDefaults()
@@ -59,13 +61,6 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 		{
 			alphaCounter += .04f;
 			Player player = Main.player[Projectile.owner];
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-
-			if (player.dead)
-				modPlayer.lunazoa = false;
-
-			if (modPlayer.lunazoa)
-				Projectile.timeLeft = 2;
 
 			int summonTime = (int)(34 / (.33f * Projectile.minionSlots));
 			if (summonTime >= 110)

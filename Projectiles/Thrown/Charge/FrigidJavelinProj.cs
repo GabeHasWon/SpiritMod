@@ -1,89 +1,39 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Thrown.Charge
 {
-	public class FrigidJavelinProj : ModProjectile
+	public class FrigidJavelinProj : JavelinProj
 	{
-		private float counter = 3;
-		private int trailcounter = 0;
-		private Vector2 holdOffset = new(0, -3);
+		internal override int ChargeTime => 125;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Frigid Javelin");
-
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
-			Projectile.hostile = false;
-			Projectile.DamageType = DamageClass.Melee;
-			Projectile.width = 16;
-			Projectile.height = 16;
-			Projectile.aiStyle = -1;
-			Projectile.friendly = false;
-			Projectile.penetrate = 1;
-			Projectile.alpha = 0;
-			Projectile.timeLeft = 999999;
-			Projectile.tileCollide = false;
+			DisplayName.SetDefault("Frigid Javelin");
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
 
-		public override bool PreAI()
+		public override void AI()
 		{
-			Player player = Main.player[Projectile.owner];
+			if (Released && Main.rand.NextBool(7))
+				Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BlueCrystalShard, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f).noGravity = true;
+		}
 
-			if (Projectile.owner == Main.myPlayer)
-			{
-				Vector2 direction2 = Main.MouseWorld - Projectile.position;
-				direction2.Normalize();
-				direction2 *= counter;
-				Projectile.ai[0] = direction2.X;
-				Projectile.ai[1] = direction2.Y;
-				Projectile.netUpdate = true;
-			}
+		public override void HitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(BuffID.Frostburn, 180, true);
 
-			Vector2 direction = new Vector2(Projectile.ai[0], Projectile.ai[1]);
-			if (player.channel) 
-			{
-				Projectile.position = player.position + holdOffset;
-				player.velocity.X *= 0.95f;
+		public override void Kill(int timeLeft)
+		{
+			if (!Released)
+				return;
 
-				if (counter < 10)
-					counter += 0.08f;
+			if (!Embeded)
+				SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 
-				Projectile.rotation = direction.ToRotation() - 1.57f;
-				if (direction.X > 0)
-				{
-					holdOffset.X = -10;
-					player.direction = 1;
-				}
-				else
-				{
-					holdOffset.X = 10;
-					player.direction = 0;
-				}
-
-				trailcounter++;
-				if (trailcounter % 5 == 0 && Projectile.owner == Main.myPlayer)
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + (direction * 5.5f), direction, ModContent.ProjectileType<FrigidJavelinProj1>(), 0, 0, Projectile.owner); //predictor trail, please pick a better dust Yuy
-			}
-			else
-			{
-				SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
-
-				if (Projectile.owner == Main.myPlayer)
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + (direction * 5.5f), direction, ModContent.ProjectileType<FrigidJavelinProj2>(), (int)(Projectile.damage * Math.Sqrt(counter)), Projectile.knockBack, Projectile.owner);
-				
-				Projectile.active = false;
-			}
-
-			player.heldProj = Projectile.whoAmI;
-			player.itemTime = 30;
-			player.itemAnimation = 30;
-
-			//player.itemRotation = 0;
-			return true;
+			for (int i = 0; i < 20; i++)
+				Dust.NewDustPerfect(Projectile.Center, DustID.BlueCrystalShard, -(Vector2.Normalize(Projectile.velocity) * Main.rand.NextFloat(1.0f, 3.0f)).RotatedByRandom(1.5f), 0, default, 1f).noGravity = true;
 		}
 	}
 }

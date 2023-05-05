@@ -1,13 +1,12 @@
-﻿using SpiritMod.Items.DonatorItems;
+﻿using SpiritMod.GlobalClasses.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.DonatorItems
 {
-	class DemonicBlob : ModProjectile
+	public class DemonicBlob : ModProjectile
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wishbone");
@@ -27,7 +26,6 @@ namespace SpiritMod.Projectiles.DonatorItems
 			Projectile.ignoreWater = true;
 			Projectile.tileCollide = false;
 			Projectile.manualDirectionChange = true;
-			Projectile.timeLeft *= 5;
 			AIType = ProjectileID.DD2PetGato;
 		}
 
@@ -35,20 +33,17 @@ namespace SpiritMod.Projectiles.DonatorItems
 		private int frame;
 		public override void AI()
 		{
-			if (++animationCounter >= 6) {
+			Main.player[Projectile.owner].GetModPlayer<PetPlayer>().PetFlag(Projectile);
+
+			if (++animationCounter >= 6)
+			{
 				animationCounter = 0;
-				if (++frame >= Main.projFrames[Projectile.type]) {
-					if (Main.rand.NextBool(2))
-						frame = 0;
-					else
-						frame = 9;
-				}
+
+				if (++frame >= Main.projFrames[Projectile.type])
+					frame = Main.rand.NextBool(2) ? 9 : 0;
 			}
 			Projectile.frameCounter = 2;
 			Projectile.frame = frame;
-			var owner = Main.player[Projectile.owner];
-			if (owner.active && owner.HasBuff(ModContent.BuffType<LoomingPresence>()))
-				Projectile.timeLeft = 2;
 		}
 	}
 }

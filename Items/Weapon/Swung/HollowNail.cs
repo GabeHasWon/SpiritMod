@@ -9,6 +9,8 @@ namespace SpiritMod.Items.Weapon.Swung
 {
 	public class HollowNail : ModItem
 	{
+		private bool reversed = false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hollow Nail");
@@ -32,18 +34,23 @@ namespace SpiritMod.Items.Weapon.Swung
 			Item.noUseGraphic = true;
 			Item.value = Item.sellPrice(0, 0, 0, 20);
 			Item.shoot = ModContent.ProjectileType<NailProj>();
-			Item.shootSpeed = 30f;
+			Item.shootSpeed = 1f;
+		}
+
+		public override ModItem Clone(Item newEntity)
+		{
+			var clone = (HollowNail)base.Clone(newEntity);
+			clone.reversed = reversed;
+
+			return clone;
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			position += velocity;
-			Projectile.NewProjectile(source, position.X, position.Y, velocity.X / 30, velocity.Y / 30, type, damage, knockback, player.whoAmI, velocity.X, velocity.Y);
+			position += velocity * 30;
+			Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI).frame = reversed ? Main.projFrames[type] / NailProj.swingStates : 0;
 
-			if (Item.shoot == ModContent.ProjectileType<NailProj>())
-				Item.shoot = ModContent.ProjectileType<NailProj2>();
-			else
-				Item.shoot = ModContent.ProjectileType<NailProj>();
+			reversed = !reversed;
 			return false;
 		}
 	}

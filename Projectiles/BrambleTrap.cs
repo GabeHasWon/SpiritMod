@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
 using Terraria;
 using Terraria.ModLoader;
@@ -8,10 +7,7 @@ namespace SpiritMod.Projectiles
 {
 	public class BrambleTrap : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Bramble Trap");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Bramble Trap");
 
 		public override void SetDefaults()
 		{
@@ -22,7 +18,6 @@ namespace SpiritMod.Projectiles
 			Projectile.friendly = false;
 			Projectile.damage = 1;
 			Projectile.penetrate = -1;
-		//	projectile.alpha = 255;
 			Projectile.timeLeft = 5;
 			Projectile.tileCollide = true;
 			Projectile.extraUpdates = 1;
@@ -97,6 +92,5 @@ namespace SpiritMod.Projectiles
 			}
 			return false;
 		}
-
 	}
 }

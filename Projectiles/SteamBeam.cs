@@ -8,10 +8,9 @@ namespace SpiritMod.Projectiles
 {
 	class SteamBeam : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Steam Beam");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Steam Beam");
 
 		public override void SetDefaults()
 		{
@@ -21,10 +20,9 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 150;
 			Projectile.height = 6;
 			Projectile.width = 6;
-
-			Projectile.alpha = 255;
 			AIType = ProjectileID.Bullet;
 		}
+
 		public override void AI()
 		{
 			if (Projectile.velocity.Length() < 28)

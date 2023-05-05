@@ -1,12 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using SpiritMod.Items.DonatorItems;
+using SpiritMod.Buffs.Summon;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.DonatorItems
 {
-	class RabbitOfCaerbannog : ModProjectile
+	[AutoloadMinionBuff("Rabbit of Caerbannog", "'It's just a harmless little bunny, isn't it?'")]
+	public class RabbitOfCaerbannog : ModProjectile
 	{
 		int frame2 = 1;
 		public override void SetStaticDefaults()

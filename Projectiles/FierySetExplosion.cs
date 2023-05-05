@@ -6,10 +6,9 @@ namespace SpiritMod.Projectiles
 {
 	public class FierySetExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Fiery Wrath");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Fiery Wrath");
 
 		public override void SetDefaults()
 		{
@@ -18,15 +17,9 @@ namespace SpiritMod.Projectiles
 			Projectile.height = 2;
 			Projectile.penetrate = -1;
 			Projectile.ignoreWater = true;
-			Projectile.alpha = 255;
 			Projectile.tileCollide = false;
 			Projectile.hostile = false;
 			Projectile.friendly = true;
-		}
-
-		public override void AI()
-		{
-			Projectile.Kill();
 		}
 
 		public override void Kill(int timeLeft)

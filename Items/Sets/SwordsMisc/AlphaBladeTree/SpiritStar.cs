@@ -1,11 +1,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Projectiles.Sword;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 {
 	public class SpiritStar : ModItem
@@ -33,27 +32,19 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 			Item.UseSound = SoundID.Item69;
 			Item.autoReuse = true;
 			Item.useTurn = true;
-			Item.shoot = ModContent.ProjectileType<HarpyFeather>();
+			Item.shoot = ModContent.ProjectileType<Projectiles.SpiritStar>();
 		}
 
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			int dust1 = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Electric);
-			Main.dust[dust1].scale *= .23f;
-		}
+		public override void MeleeEffects(Player player, Rectangle hitbox) => Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Electric).scale *= .23f;
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			for (int i = 0; i < 3; ++i)
-			{
 				if (Main.myPlayer == player.whoAmI)
-				{
-					Vector2 mouse = Main.MouseWorld;
-					Projectile.NewProjectile(source, mouse.X + Main.rand.Next(-80, 80), player.Center.Y - 1000 + Main.rand.Next(-50, 50), 0, Main.rand.Next(11, 23), ModContent.ProjectileType<Projectiles.SpiritStar>(), damage, knockback, player.whoAmI);
-				}
-			}
+					Projectile.NewProjectile(source, Main.MouseWorld.X + Main.rand.Next(-80, 80), player.Center.Y - 1000 + Main.rand.Next(-50, 50), 0, Main.rand.Next(11, 23), type, damage, knockback, player.whoAmI);
+			
 			return false;
 		}
 

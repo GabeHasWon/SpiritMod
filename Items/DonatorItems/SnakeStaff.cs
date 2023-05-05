@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Buffs.Summon;
 using SpiritMod.Projectiles.Summon;
 using Terraria;
 using Terraria.ID;
@@ -31,26 +30,19 @@ namespace SpiritMod.Items.DonatorItems
 			Item.DamageType = DamageClass.Summon;
 			Item.noMelee = true;
 			Item.shoot = ModContent.ProjectileType<SnakeMinion>();
-			Item.buffType = ModContent.BuffType<SnakeMinionBuff>();
-			Item.buffTime = 3600;
 			Item.UseSound = SoundID.Item44;
 		}
 
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+		public override bool AltFunctionUse(Player player) => true;
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
-		{
-			return player.altFunctionUse != 2;
-		}
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => player.altFunctionUse != 2;
 
 		public override bool? UseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)
 				player.MinionNPCTargetAim(true);
-			return null;
+
+			return base.UseItem(player);
 		}
 	}
 }

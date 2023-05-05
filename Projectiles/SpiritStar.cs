@@ -8,20 +8,16 @@ namespace SpiritMod.Projectiles
 {
 	public class SpiritStar : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Spirit Star");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Star");
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 12;
-			Projectile.height = 12;
+			Projectile.width = Projectile.height = 12;
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.hostile = false;
 			Projectile.friendly = true;
 			Projectile.alpha = 255;
 			Projectile.timeLeft = 150;
-			Projectile.penetrate = 1;
 			Projectile.extraUpdates = 1;
 		}
 
@@ -86,8 +82,6 @@ namespace SpiritMod.Projectiles
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(ModContent.BuffType<StarFracture>(), 200, true);
-
-			Projectile.Kill();
 		}
 	}
 }

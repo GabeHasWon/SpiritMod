@@ -15,7 +15,6 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 			Tooltip.SetDefault("A tiny Earthen Guardian rains down energy for you \nOccasionally inflicts foes with 'Unstable Affliction'");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.height = Item.width = 54;

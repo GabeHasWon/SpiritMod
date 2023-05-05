@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Buffs.Summon;
 using SpiritMod.Projectiles.Summon;
 using Terraria;
 using Terraria.DataStructures;
@@ -36,17 +35,14 @@ namespace SpiritMod.Items.Weapon.Summon
 
 		public override bool AltFunctionUse(Player player) => true;
 
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => player.altFunctionUse != 2;
+
 		public override bool? UseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)
 				player.MinionNPCTargetAim(true);
-			return null;
-		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
-		{
-			player.AddBuff(ModContent.BuffType<MiniorBuff>(), 3600);
-			return player.altFunctionUse != 2;
+			return base.UseItem(player);
 		}
 	}
 }

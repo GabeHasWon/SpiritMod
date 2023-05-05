@@ -1,16 +1,16 @@
-﻿using Terraria;
+﻿using SpiritMod.Projectiles.DonatorItems;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.DonatorItems
 {
-	class Omniwrench : ModItem
+	public class Omniwrench : ModItem
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Omniwrench");
-			Tooltip.SetDefault("Right click to throw ");
+			Tooltip.SetDefault("Right click to throw");
 		}
 
 		public override void SetDefaults()
@@ -19,41 +19,36 @@ namespace SpiritMod.Items.DonatorItems
 			Item.height = 48;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.UseSound = SoundID.Item1;
-
 			Item.value = Item.sellPrice(0, 11, 50, 0);
 			Item.rare = ItemRarityID.Purple;
-
 			Item.damage = 180;
 			Item.knockBack = 7f;
 			Item.DamageType = DamageClass.Melee;
 			Item.autoReuse = true;
 			Item.shootSpeed = 12f;
-
 			Item.pick = 225;
 			Item.tileBoost = 5;
-
-			Item.useTime = 9;
+			Item.useTime = 10;
 			Item.useAnimation = 10;
 		}
 
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+		public override bool AltFunctionUse(Player player) => true;
 
 		public override bool CanUseItem(Player player)
 		{
-			if (player.altFunctionUse == 2) {
-				Item.shoot = ModContent.ProjectileType<Projectiles.DonatorItems.Omniwrench>();
+			if (player.altFunctionUse == 2)
+			{
+				Item.shoot = ModContent.ProjectileType<OmniwrenchProj>();
 				Item.noUseGraphic = true;
 				Item.noMelee = true;
 			}
-			else {
+			else
+			{
 				Item.shoot = ProjectileID.None;
 				Item.noUseGraphic = false;
 				Item.noMelee = false;
 			}
-			return player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.DonatorItems.Omniwrench>()] == 0;
+			return player.ownedProjectileCounts[ModContent.ProjectileType<OmniwrenchProj>()] == 0;
 		}
 
 		public override void AddRecipes()

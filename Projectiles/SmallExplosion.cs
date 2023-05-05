@@ -6,10 +6,9 @@ namespace SpiritMod.Projectiles
 {
 	public class SmallExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Small Explosion");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Small Explosion");
 
 		public override void SetDefaults()
 		{
@@ -19,7 +18,6 @@ namespace SpiritMod.Projectiles
 			Projectile.DamageType = DamageClass.Magic;
 			Projectile.penetrate = 3;
 			Projectile.ignoreWater = true;
-			Projectile.alpha = 255;
 			Projectile.tileCollide = false;
 			Projectile.hostile = false;
 			Projectile.friendly = true;

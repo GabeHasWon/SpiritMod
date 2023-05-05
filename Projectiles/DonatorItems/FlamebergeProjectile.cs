@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.DonatorItems
 {
-	class FlambergeProjectile : ModProjectile
+	public class FlamebergeProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -22,7 +22,6 @@ namespace SpiritMod.Projectiles.DonatorItems
 		{
 			Projectile.friendly = true;
 			Projectile.hostile = false;
-			Projectile.penetrate = 1;
 			Projectile.timeLeft = 500;
 			Projectile.height = 6;
 			Projectile.width = 6;
@@ -65,14 +64,11 @@ namespace SpiritMod.Projectiles.DonatorItems
 			Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
 			Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
 		}
-		public override void AI()
-		{
-			Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
-		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(255, 150, 100, 100);
-		}
+
+		public override void AI() => Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
+		
+		public override Color? GetAlpha(Color lightColor) => new Color(255, 150, 100, 100);
+		
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
@@ -84,11 +80,6 @@ namespace SpiritMod.Projectiles.DonatorItems
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			Projectile.Kill();
-			target.AddBuff(BuffID.OnFire, 300);
-		}
-
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(BuffID.OnFire, 300);
 	}
 }

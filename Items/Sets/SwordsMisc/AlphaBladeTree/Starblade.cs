@@ -4,7 +4,6 @@ using SpiritMod.Items.BossLoot.StarplateDrops;
 using SpiritMod.Projectiles;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,14 +11,14 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 {
 	public class Starblade : ModItem
 	{
+		private int charger;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Starblade");
 			Tooltip.SetDefault("'Harness the night sky'\nEvery third swing causes the blade to release multiple bright stars\nEach star explodes into homing star wisps");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SwordsMisc/AlphaBladeTree/Starblade_Glow");
 		}
-
-		int charger;
 
 		public override void SetDefaults()
 		{
@@ -51,11 +50,11 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			charger++;
-			if (charger >= 3)
+			if (++charger >= 3)
 			{
 				for (int i = 0; i < 3; i++)
 					Projectile.NewProjectile(source, position.X - 8, position.Y + 8, velocity.X + ((float)Main.rand.Next(-230, 230) / 100), velocity.Y + ((float)Main.rand.Next(-230, 230) / 100), ModContent.ProjectileType<Starshock2>(), damage / 2, knockback, player.whoAmI, 0f, 0f);
+				
 				charger = 0;
 			}
 			return false;
@@ -64,7 +63,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<Items.BossLoot.AvianDrops.TalonBlade>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<BossLoot.AvianDrops.TalonBlade>(), 1);
 			recipe.AddIngredient(ItemID.FallenStar, 5);
 			recipe.AddIngredient(ModContent.ItemType<CosmiliteShard>(), 6);
 			recipe.AddTile(TileID.Anvils);

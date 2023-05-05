@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SpiritMod.Buffs.Summon;
 using SpiritMod.Utilities;
 using System;
 using Terraria;
@@ -7,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon
 {
+	[AutoloadMinionBuff("Slagtern", "The power of magma flows through this lantern")]
 	public class LavaRockSummon : ModProjectile
 	{
 		public override void SetStaticDefaults()
@@ -59,14 +61,6 @@ namespace SpiritMod.Projectiles.Summon
 
 			Player player = Main.player[Projectile.owner];
 			SpawnDust(player);
-
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			if (Projectile.type == ModContent.ProjectileType<LavaRockSummon>()) {
-				if (player.dead)
-					modPlayer.lavaRock = false;
-				if (modPlayer.lavaRock)
-					Projectile.timeLeft = 2;
-			}
 
 			Projectile.position.X = Main.player[Projectile.owner].Center.X - (Projectile.width / 2f);
 			Projectile.position.Y = Main.player[Projectile.owner].Center.Y - (Projectile.height / 2f) + Main.player[Projectile.owner].gfxOffY - 60f;

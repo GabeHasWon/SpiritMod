@@ -8,23 +8,19 @@ namespace SpiritMod.Projectiles
 {
 	public class SadBeam : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Star Beam");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Beam");
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 2;       //projectile width
-			Projectile.height = 2;  //projectile height
-			Projectile.friendly = true;      //make that the projectile will not damage you
-			Projectile.minion = true;         // 
-			Projectile.tileCollide = true;   //make that the projectile will be destroed if it hits the terrain
-			Projectile.penetrate = 1;      //how many npc will penetrate
-			Projectile.timeLeft = 210;   //how many time projectile projectile has before disepire // projectile light
-			Projectile.extraUpdates = 0;
+			Projectile.width = 2;
+			Projectile.height = 2;
+			Projectile.friendly = true;
+			Projectile.minion = true;
+			Projectile.tileCollide = true;
+			Projectile.timeLeft = 210;
 			Projectile.ignoreWater = true;
-			Projectile.alpha = 255;
 			Projectile.aiStyle = -1;
 		}
 
@@ -71,11 +67,6 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return true;
-		}
-
 		public override void Kill(int timeLeft)
 		{
 			for (int i = 0; i < 40; i++) {
@@ -84,5 +75,4 @@ namespace SpiritMod.Projectiles
 			}
 		}
 	}
-
 }

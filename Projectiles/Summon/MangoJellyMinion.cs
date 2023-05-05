@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Buffs.Summon;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -7,15 +7,17 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon
 {
+	[AutoloadMinionBuff("Mango Jelly", "A mini mango jelly fights for you!")]
 	public class MangoJellyMinion : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mango Jelly Minion");
-			Main.projFrames[base.Projectile.type] = 4;
-			ProjectileID.Sets.MinionSacrificable[base.Projectile.type] = true;
-			ProjectileID.Sets.CultistIsResistantTo[base.Projectile.type] = true;
-			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
+			DisplayName.SetDefault("Mango Jelly");
+			Main.projFrames[Type] = 4;
+			Main.projPet[Projectile.type] = true;
+			ProjectileID.Sets.MinionSacrificable[Type] = true;
+			ProjectileID.Sets.CultistIsResistantTo[Type] = true;
+			ProjectileID.Sets.MinionTargettingFeature[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -24,7 +26,6 @@ namespace SpiritMod.Projectiles.Summon
 			Projectile.width = 22;
 			Projectile.height = 23;
 			Projectile.friendly = true;
-			Main.projPet[Projectile.type] = true;
 			Projectile.minion = true;
 			Projectile.minionSlots = 1;
 			Projectile.penetrate = -1;
@@ -33,12 +34,11 @@ namespace SpiritMod.Projectiles.Summon
 			Projectile.ignoreWater = true;
 			AIType = ProjectileID.Raven;
 		}
+
 		bool jump = false;
 		int xoffset = 0;
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(250, 210, 230);
-		}
+		public override Color? GetAlpha(Color lightColor) => new Color(250, 210, 230);
+
 		public override void AI()
 		{
 			float num = 1f - (float)Projectile.alpha / 255f;
@@ -46,21 +46,13 @@ namespace SpiritMod.Projectiles.Summon
 			float num395 = Main.mouseTextColor / 155f - 0.35f;
 			num395 *= 0.34f;
 			Projectile.scale = num395 + 0.55f;
-			bool flag64 = Projectile.type == ModContent.ProjectileType<MangoJellyMinion>();
+
 			Player player = Main.player[Projectile.owner];
 			if (Projectile.Distance(player.Center) > 1500) {
 				Projectile.position = player.position + new Vector2(Main.rand.Next(-125, 126), Main.rand.Next(-125, 126));
 				for (int i = 0; i < 25; i++) {
 					Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.WitherLightning);
 				}
-			}
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			if (flag64) {
-				if (player.dead)
-					modPlayer.mangoMinion = false;
-
-				if (modPlayer.mangoMinion)
-					Projectile.timeLeft = 2;
 			}
 
 			int range = 40;   //How many tiles away the projectile targets NPCs
@@ -167,10 +159,6 @@ namespace SpiritMod.Projectiles.Summon
 			}
 		}
 
-		public override bool MinionContactDamage()
-		{
-			return true;
-		}
-
+		public override bool MinionContactDamage() => true;
 	}
 }

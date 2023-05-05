@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Buffs.Summon;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon
 {
+	[AutoloadMinionBuff("Crawlerock", "A baby Cavern Crawler fights for you!")]
 	public class Crawlerock : ModProjectile
 	{
 		public override void SetStaticDefaults()
@@ -44,20 +46,9 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AI()
 		{
-			bool flag64 = Projectile.type == ModContent.ProjectileType<Crawlerock>();
-			Player player = Main.player[Projectile.owner];
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			if (flag64)
-			{
-				if (player.dead)
-					modPlayer.crawlerockMinion = false;
-				if (modPlayer.crawlerockMinion)
-					Projectile.timeLeft = 2;
-			}
-
 			Projectile.spriteDirection = -Projectile.direction;
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter > 6)
+
+			if (++Projectile.frameCounter > 6)
 			{
 				Projectile.frame++;
 				Projectile.frameCounter = 0;

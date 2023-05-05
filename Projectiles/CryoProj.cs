@@ -9,10 +9,9 @@ namespace SpiritMod.Projectiles
 {
 	class CryoProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Cryolite Aura");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Cryolite Aura");
 
 		public override void SetDefaults()
 		{
@@ -22,7 +21,6 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 500;
 			Projectile.height = 30;
 			Projectile.width = 30;
-			Projectile.alpha = 255;
 			Projectile.extraUpdates = 1;
 		}
 
@@ -33,11 +31,10 @@ namespace SpiritMod.Projectiles
 			Projectile.Center = new Vector2(player.Center.X + (player.direction > 0 ? 0 : 0), player.position.Y + 30);   // I dont know why I had to set it to -60 so that it would look right   (change to -40 to 40 so that it's on the floor)
 
 			var list = Main.npc.Where(x => x.Hitbox.Intersects(Projectile.Hitbox));
-			foreach (var npc in list) {
-				if (!npc.friendly) {
+			foreach (var npc in list)
+				if (!npc.friendly)
 					npc.AddBuff(ModContent.BuffType<MageFreeze>(), 20);
-				}
-			}
+
 			for (int k = 0; k < 4; k++) {
 				Vector2 center = Projectile.Center;
 				Vector2 vector2 = Vector2.UnitY.RotatedByRandom(6.28318548202515) * new Vector2((float)Projectile.height, (float)Projectile.height) * Projectile.scale * 1.45f / 2f;

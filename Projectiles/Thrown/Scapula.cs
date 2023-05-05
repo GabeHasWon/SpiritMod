@@ -32,6 +32,8 @@ namespace SpiritMod.Projectiles.Thrown
 			set => Projectile.ai[1] = value ? 1 : 0;
 		}
 
+		public override string Texture => "SpiritMod/Items/BossLoot/AvianDrops/SoaringScapula";
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Soaring Scapula");
@@ -191,12 +193,12 @@ namespace SpiritMod.Projectiles.Thrown
 			SpriteEffects effects = (Projectile.direction < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, texture.Size() / 2, Projectile.scale, effects, 0);
 
-			Texture2D glowTex = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			Texture2D glowTex = Mod.Assets.Request<Texture2D>("Projectiles/Thrown/Scapula_Glow").Value;
 			Main.EntitySpriteDraw(glowTex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(Color.White * .5f), Projectile.rotation, texture.Size() / 2, Projectile.scale, effects, 0);
 
 			if (hitNPCIndex > -1)
 			{
-				Texture2D glow2Tex = ModContent.Request<Texture2D>(Texture + "_Glow2").Value;
+				Texture2D glow2Tex = Mod.Assets.Request<Texture2D>("Projectiles/Thrown/Scapula_Glow2").Value;
 				float quoteant = (float)Counter / counterMax;
 				Color color = Color.Lerp(Color.White, Color.Yellow, 1f - quoteant) * quoteant;
 

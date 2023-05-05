@@ -1,4 +1,7 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Thrown.Charge;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,54 +14,42 @@ namespace SpiritMod.Items.Sets.TideDrops
 		{
 			DisplayName.SetDefault("Tiki Javelin");
 			Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage");
-			//  SpiritGlowmask.AddGlowMask(item.type, "SpiritMod/Items/Equipment/StarMap_Glow");
 		}
 
 		public override void SetDefaults()
 		{
 			Item.damage = 40;
+			Item.knockBack = 8;
 			Item.crit = 6;
+			Item.noUseGraphic = true;
 			Item.noMelee = true;
-			Item.channel = true; //Channel so that you can held the weapon [Important]
+			Item.channel = true;
+			Item.autoReuse = false;
 			Item.rare = ItemRarityID.Orange;
-			Item.width = 18;
-			Item.height = 18;
-			Item.useTime = 15;
-			Item.useAnimation = 45;
+			Item.width = Item.height = 18;
+			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = Item.useAnimation = 24;
-			Item.knockBack = 8;
 			Item.DamageType = DamageClass.Melee;
-			Item.noMelee = true;
-			//   item.UseSound = SoundID.Item20;
-			Item.autoReuse = false;
-			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<TikiJavelinProj>();
-			Item.shootSpeed = 0f;
-			Item.value = Item.sellPrice(0, 0, 60, 0);
+			Item.shootSpeed = 1f;
 		}
 
-		/*   public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-           {
-               Lighting.AddLight(item.position, 0.08f, .28f, .38f);
-               Texture2D texture;
-               texture = Main.itemTexture[item.type];
-               spriteBatch.Draw
-               (
-                   ModContent.Request<Texture2D>("SpiritMod/Items/Equipment/StarMap_Glow"),
-                   new Vector2
-                   (
-                       item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                       item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                   ),
-                   new Rectangle(0, 0, texture.Width, texture.Height),
-                   Color.White,
-                   rotation,
-                   texture.Size() * 0.5f,
-                   scale,
-                   SpriteEffects.None,
-                   0f
-               );
-           }*/
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			Lighting.AddLight(Item.position, .42f, .29f, .10f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+		}
+
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
+		{
+			StatModifier meleeStat = Main.LocalPlayer.GetTotalDamage(DamageClass.Melee);
+
+			foreach (TooltipLine line in tooltips)
+			{
+				if (line.Mod == "Terraria" && line.Name == "Damage") //Replace the vanilla text with our own
+					line.Text = $"{(int)meleeStat.ApplyTo(Item.damage)}-{(int)meleeStat.ApplyTo(Item.damage * JavelinProj.maxDamageMult)} melee damage";
+			}
+		}
 	}
 }

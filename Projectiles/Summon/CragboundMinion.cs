@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Summon
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cragbound");
-			Main.projFrames[base.Projectile.type] = 8;
+			Main.projFrames[Type] = 8;
 		}
 
 		public override void SetDefaults()
@@ -25,21 +25,14 @@ namespace SpiritMod.Projectiles.Summon
 			Projectile.sentry = true;
 		}
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return false;
-		}
+		public override bool OnTileCollide(Vector2 oldVelocity) => false;
 
 		public override void AI()
 		{
-
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= 8) {
-				Projectile.frame++;
+			if (++Projectile.frameCounter >= 8)
+			{
 				Projectile.frameCounter = 0;
-				if (Projectile.frame >= 8)
-					Projectile.frame = 0;
-
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Type];
 			}
 
 			Projectile.velocity.Y = 5;
