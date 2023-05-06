@@ -1,12 +1,7 @@
-﻿using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using System.Collections.Generic;
-using System.Linq;
 using System;
-using static Terraria.ModLoader.ModContent;
-using System.Reflection;
 using SpiritMod.Prim;
 
 namespace SpiritMod.Items.Weapon.Swung.AnimeSword
@@ -29,7 +24,8 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
             Width = 5;
             Pixellated = true;
         }
-        float angle;
+
+        private readonly float angle;
         public override void PrimStructure(SpriteBatch spriteBatch)
         {
             /*if (PointCount <= 1) return; //for easier, but less customizable, drawing
@@ -83,16 +79,13 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
                 }
             }
         }
-       public override void SetShaders()
-        {
-            PrepareBasicShader();
-        }
-        public override void OnUpdate()
+		public override void SetShaders() => PrepareBasicShader();
+		public override void OnUpdate()
         {
             if (Counter == 1)
                  Points.Add(Entity.Center + ((angle + 3.14f).ToRotationVector2() * Entity.height * 1.5f));
             Counter++;
-            PointCount = Points.Count() * 6;
+            PointCount = Points.Count * 6;
             OnDestroy();
         }
         public override void OnDestroy()

@@ -35,10 +35,6 @@ namespace SpiritMod.Items.Armor
 			player.maxFallSpeed *= 2;
 			player.jumpSpeedBoost *= .5f;
 
-			player.runAcceleration *= 0.85f;
-			player.accRunSpeed *= 0.85f;
-			player.maxRunSpeed *= 0.85f;
-
 			if (player.GetModPlayer<MyPlayer>().justLanded)
 			{
 				for (int i = 0; i < 5; i++)

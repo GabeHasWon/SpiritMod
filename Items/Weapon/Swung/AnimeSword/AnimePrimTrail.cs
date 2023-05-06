@@ -84,11 +84,11 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 
 		public override void OnUpdate()
 		{
-			if (!(Entity is Projectile))
+			if (Entity is not Projectile)
 				return;
 
 			Counter++;
-			PointCount = Points.Count() * 6;
+			PointCount = Points.Count * 6;
 
 			if (Cap < PointCount / 6)
 				Points.RemoveAt(0);
@@ -103,10 +103,9 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 		{
 			Destroyed = true;
 			Width *= 0.93f;
+
 			if (Width < 0.05f)
-			{
 				Dispose();
-			}
 		}
 	}
 }

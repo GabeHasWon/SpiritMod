@@ -2509,7 +2509,7 @@ namespace SpiritMod
 
 		public override void PostUpdateRunSpeeds()
 		{
-			// Adjust speed here to also affect mounted speed.
+			//Adjust speed here to also affect mounted speed.
 			float speed = 1f;
 			float sprint = 1f;
 			float accel = 1f;
@@ -2524,6 +2524,13 @@ namespace SpiritMod
 				sprint += 0.55f;
 				accel += 3f;
 				slowdown += 3f;
+			}
+
+			if (stoneplate)
+			{
+				speed -= .15f;
+				sprint -= .15f;
+				accel -= .3f;
 			}
 
 			Player.maxRunSpeed *= speed;

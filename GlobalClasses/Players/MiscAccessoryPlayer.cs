@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using SpiritMod.Items;
 using System;
 using System.Linq;
-using SpiritMod.Items.Accessory.UmbillicalEyeball;
 using SpiritMod.Projectiles.Summon.BowSummon;
 using SpiritMod.Projectiles.Summon;
 using SpiritMod.Items.Accessory.BowSummonItem;
@@ -161,8 +160,8 @@ namespace SpiritMod.GlobalClasses.Players
 				//	Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<UmbillicalEyeballProj>(), (int)(Player.GetDamage(DamageClass.Summon).ApplyTo(55)), 1.5f, Player.whoAmI, Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()], 0);
 							//if (Player.HasAccessory<UmbillicalEyeball>() && Player.ownedProjectileCounts[ModContent.ProjectileType<UmbillicalEyeballProj>()] < 3)
 
-				if (Player.HasAccessory<RogueCrest>() && Player.ownedProjectileCounts[ModContent.ProjectileType<KnifeMinionProjectile>()] < 1)
-						Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<KnifeMinionProjectile>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(5), .5f, Player.whoAmI);
+				if (Player.HasAccessory<RogueCrest>() && Player.ownedProjectileCounts[ModContent.ProjectileType<RogueKnifeMinion>()] < 1)
+					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<RogueKnifeMinion>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(5), .5f, Player.whoAmI);
 
 				if (Player.HasAccessory<BowSummonItem>() && Player.ownedProjectileCounts[ModContent.ProjectileType<BowSummon>()] < 1)
 					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<BowSummon>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(22), 1.5f, Player.whoAmI);
