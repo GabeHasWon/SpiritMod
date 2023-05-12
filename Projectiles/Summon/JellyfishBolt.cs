@@ -1,6 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -9,12 +7,18 @@ using Terraria.Graphics.Shaders;
 
 namespace SpiritMod.Projectiles.Summon
 {
-	class BlueJellyfishBolt : ModProjectile
+	public class JellyfishBolt : ModProjectile
 	{
-		public override void SetStaticDefaults()
+		private bool IsPink
 		{
-			DisplayName.SetDefault("Electric Bolt");
+			get => (int)Projectile.ai[0] != 0;
+			set => Projectile.ai[0] = value ? 1 : 0;
 		}
+		private int ShaderID => IsPink ? 93 : 96;
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Bolt");
 
 		public override void SetDefaults()
 		{
@@ -39,28 +43,28 @@ namespace SpiritMod.Projectiles.Summon
                 dust.noLight = true;
                 dust.noGravity = true;
                 dust.velocity = Vector2.Zero;
-				dust.shader = GameShaders.Armor.GetSecondaryShader(96, Main.LocalPlayer);
+				dust.shader = GameShaders.Armor.GetSecondaryShader(ShaderID, Main.LocalPlayer);
             }
 			if (Main.rand.NextBool(3))
             {
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = Projectile.Center;
                 Dust dust = Main.dust[Dust.NewDust(position, (int)Projectile.velocity.X, (int)Projectile.velocity.Y, DustID.Electric, 0f, 0f, 0, new Color(255, 255, 255), 0.464947368f)];
                 dust.noLight = true;
                 dust.noGravity = true;
                 dust.velocity *= .6f;
-				dust.shader = GameShaders.Armor.GetSecondaryShader(96, Main.LocalPlayer);
+				dust.shader = GameShaders.Armor.GetSecondaryShader(ShaderID, Main.LocalPlayer);
             }
         }
 
 		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
+
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             for (int i = 0; i < 10; i++)
             {
                 int num = Dust.NewDust(target.position, target.width, target.height, DustID.Electric, 0f, -2f, 0, default, 2f);
                 Main.dust[num].noGravity = true;
-                Main.dust[num].shader = GameShaders.Armor.GetSecondaryShader(96, Main.LocalPlayer);
+                Main.dust[num].shader = GameShaders.Armor.GetSecondaryShader(ShaderID, Main.LocalPlayer);
                 Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
                 Main.dust[num].position.Y += Main.rand.Next(-50, 51) * .05f - 1.5f;
                 Main.dust[num].scale *= .25f;

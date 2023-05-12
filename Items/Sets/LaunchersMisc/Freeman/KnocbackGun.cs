@@ -44,9 +44,8 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Freeman
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 45f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-			{
 				position += muzzleOffset;
-			}
+
 			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/CoilRocket"), player.Center);
 			type = ModContent.ProjectileType<FreemanRocket>();
 		}

@@ -4,7 +4,6 @@ using Terraria.Audio;
 using Terraria.ID;
 using SpiritMod.Particles;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace SpiritMod.Items.Sets.LaunchersMisc.Liberty
 {

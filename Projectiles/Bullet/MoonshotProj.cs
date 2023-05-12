@@ -27,7 +27,7 @@ namespace SpiritMod.Projectiles.Bullet
 
 		Vector2 direction = Vector2.Zero;
         int counter = 0;
-        Vector2 holdOffset = new Vector2(0, -15);
+        Vector2 holdOffset = new(0, -15);
 
         public override bool PreAI()
 		{
@@ -64,7 +64,7 @@ namespace SpiritMod.Projectiles.Bullet
 						SoundEngine.PlaySound(SoundID.Item96, Projectile.Center);
 						direction /= 2f;
 						int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center - new Vector2(4, 4), direction * speed, shoot, 12, Projectile.knockBack / 4, 0, Projectile.owner);
-						Main.projectile[proj].GetGlobalProjectile<SpiritGlobalProjectile>().shotFromMaliwanShockCommon = true;
+						Main.projectile[proj].GetGlobalProjectile<SpiritGlobalProjectile>().shock = true;
 					}
 					else if (counter >= 45 && counter < 140)
 					{

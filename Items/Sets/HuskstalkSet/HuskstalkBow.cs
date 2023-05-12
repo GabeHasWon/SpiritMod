@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles;
 using Terraria;
 using Terraria.DataStructures;
@@ -15,8 +14,6 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 			DisplayName.SetDefault("Huskstalk Bow");
 			Tooltip.SetDefault("Arrows shot inflict Withering Leaf");
 		}
-
-
 
 		public override void SetDefaults()
 		{
@@ -41,7 +38,7 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			int p = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
-			Main.projectile[p].GetGlobalProjectile<SpiritGlobalProjectile>().WitherLeaf = true;
+			Main.projectile[p].GetGlobalProjectile<SpiritGlobalProjectile>().witherLeaf = true;
 			return false;
 		}
 

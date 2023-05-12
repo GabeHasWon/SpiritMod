@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Placeable
 			Item.useTurn = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useAnimation = 15;
-			Item.rare = ItemRarityID.Pink;
+			Item.rare = ItemRarityID.White;
 			Item.useTime = 15;
 			Item.maxStack = 99;
 			Item.consumable = true;

@@ -2,11 +2,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Armor.BotanistSet;
 using SpiritMod.Items.ByBiome.Forest.Placeable.Decorative;
-using SpiritMod.Systems;
 using SpiritMod.Tiles.Block;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +12,8 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Ambient.Forest
 {
-	public class Cloudstalk : ModTile
+	[TileTag(TileTags.HarvestableHerb)]
+	public class Cloudstalk : ModTile, IHarvestableHerb
 	{
 		private const int FrameWidth = 18; // A constant for readability and to kick out those magic numbers
 		private const float BloomWindSpeed = 14; //Constant for bloom speed, in mph
@@ -43,6 +42,8 @@ namespace SpiritMod.Tiles.Ambient.Forest
 			HitSound = SoundID.Grass;
 			DustType = DustID.Cloud;
 		}
+
+		public bool CanBeHarvested(int i, int j) => Main.tile[i, j].HasTile && GetStage(i, j) == PlantStage.Grown;
 
 		public override bool CanPlace(int i, int j)
 		{

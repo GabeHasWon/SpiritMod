@@ -12,6 +12,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 	public class RlyehianMount : ModMount
 	{
 		public override void Load() => On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
+
 		public override void Unload() => On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
 
 		private int attackCooldown = 0;
@@ -49,7 +50,6 @@ namespace SpiritMod.Mounts.RlyehianMount
 			MountData.bodyFrame = 0;
 			MountData.playerHeadOffset = 0;
 
-			MountData.frontTexture = ModContent.Request<Texture2D>("SpiritMod/Mounts/RlyehianMount/RlyehianMount");
 			if (Main.netMode != NetmodeID.Server)
 			{
 				MountData.textureWidth = MountData.frontTexture.Width();
@@ -166,20 +166,15 @@ namespace SpiritMod.Mounts.RlyehianMount
 			return false;
 		}
 
+		public override void SetMount(Player player, ref bool skipDust)
+		{
+			skipDust = true;
+			DustHelper.DrawDiamond(player.Center, 173, 10);
+		}
+
 		public override bool Draw(List<DrawData> playerDrawData, int drawType, Player drawPlayer, ref Texture2D texture, ref Texture2D glowTexture, ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, ref Vector2 drawOrigin, ref float drawScale, float shadow)
 		{
 			drawPlayer.GetModPlayer<RlyehianMountPlayer>().usingMount = true;
-
-			/*texture = ModContent.Request<Texture2D>("SpiritMod/Mounts/RlyehianMount/RlyehianMount").Value;
-
-			int verticalFrame = drawPlayer.mount._frame % mountStatesMax;
-			int horizontalFrame = (int)(drawPlayer.mount._frame / mountStatesMax);
-			Rectangle sourceRect = new Rectangle(56 * horizontalFrame, 46 * verticalFrame, 54, 44);
-
-			SpriteEffects effect = drawPlayer.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			int frameOffX = (drawPlayer.direction == 1) ? -30 : -24;
-			DrawData data = new DrawData(texture, drawPosition + new Vector2(frameOffX, 0), sourceRect, drawColor, 0f, drawOrigin, 1f, effect, 0);
-			playerDrawData.Add(data);*/
 			return false;
 		}
 
@@ -205,12 +200,6 @@ namespace SpiritMod.Mounts.RlyehianMount
 
 			DrawData data = new DrawData(texture, position + new Vector2(frameOffX, 0), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.Zero, 1f, effect, 0);
 			drawinfo.DrawDataCache.Add(data);
-		}
-
-		public override void SetMount(Player player, ref bool skipDust)
-		{
-			skipDust = true;
-			DustHelper.DrawDiamond(player.Center, 173, 10);
 		}
 	}
 }

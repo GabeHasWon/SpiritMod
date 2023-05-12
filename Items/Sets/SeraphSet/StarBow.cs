@@ -16,7 +16,6 @@ namespace SpiritMod.Items.Sets.SeraphSet
 			DisplayName.SetDefault("Seraph's Storm");
 			Tooltip.SetDefault("Launches bolts of sporadic lunar energy");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-
 		}
 
 		public override void SetDefaults()

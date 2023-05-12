@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles
 
 	public static class ProjectileExtras
 	{
-		public static void HomingAIVanilla(ModProjectile modProj, NPC target, float velocity = 4f, float weight = 0.0333f)
+		/*public static void HomingAIVanilla(ModProjectile modProj, NPC target, float velocity = 4f, float weight = 0.0333f)
 		{
 			Projectile projectile = modProj.Projectile;
 			Vector2 pos = new Vector2(projectile.position.X + (float)(projectile.width >> 1), projectile.position.Y + (float)(projectile.height >> 1));
@@ -24,7 +24,7 @@ namespace SpiritMod.Projectiles
 			aim *= velocity / aim.Length();
 			projectile.velocity *= 1f - weight;
 			projectile.velocity += aim * weight;
-		}
+		}*/
 
 		public static void HomingAI(ModProjectile modProj, NPC target, float velocity = 4f, float acceleration = 0.1f)
 		{
@@ -43,7 +43,7 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public static void HomingAIPredictive(ModProjectile modProj, NPC target, float velocity = 4f, float acceleration = 0.1f)
+		/*public static void HomingAIPredictive(ModProjectile modProj, NPC target, float velocity = 4f, float acceleration = 0.1f)
 		{
 			Projectile projectile = modProj.Projectile;
 			Vector2 aim = new Vector2(target.position.X + (float)(target.width >> 1), target.position.Y + (float)(target.height >> 1));
@@ -59,7 +59,7 @@ namespace SpiritMod.Projectiles
 				diff *= acceleration / diff.Length();
 				projectile.velocity += diff;
 			}
-		}
+		}*/
 
 		public static NPC FindCheapestNPC(Vector2 position, Vector2 velocity, float acceleration, float maxAngle, float maxDist = 2000f, bool ignoreLineOfSight = false, bool ignoreFriendlies = true, bool ignoreDontTakeDamage = false, bool ignoreChaseable = false)
 		{
@@ -159,14 +159,14 @@ namespace SpiritMod.Projectiles
 			projectile.rotation = (float)Math.Atan2(projectile.velocity.X, -projectile.velocity.Y);
 		}
 
-		public static void LookAt(ModProjectile modProj, Vector2 target)
+		/*public static void LookAt(ModProjectile modProj, Vector2 target)
 		{
 			Projectile projectile = modProj.Projectile;
 			Vector2 delta = target - projectile.position;
 			projectile.rotation = (float)Math.Atan2(delta.X, -delta.Y);
-		}
+		}*/
 
-		public static void Bounce(ModProjectile modProj, Vector2 oldVelocity, float bouncyness = 1f)
+		/*public static void Bounce(ModProjectile modProj, Vector2 oldVelocity, float bouncyness = 1f)
 		{
 			Projectile projectile = modProj.Projectile;
 			if (projectile.velocity.X != oldVelocity.X)
@@ -174,9 +174,9 @@ namespace SpiritMod.Projectiles
 
 			if (projectile.velocity.Y != oldVelocity.Y)
 				projectile.velocity.Y = -oldVelocity.Y * bouncyness;
-		}
+		}*/
 
-		public static void YoyoAI(int index, float seconds, float length, float acceleration = 14f, float rotationSpeed = 0.45f, ExtraAction action = null, ExtraAction initialize = null)
+		/*public static void YoyoAI(int index, float seconds, float length, float acceleration = 14f, float rotationSpeed = 0.45f, ExtraAction action = null, ExtraAction initialize = null)
 		{
 			Projectile projectile = Main.projectile[index];
 			bool flag = false;
@@ -380,9 +380,9 @@ namespace SpiritMod.Projectiles
 				}
 			}
 			projectile.rotation += rotationSpeed;
-		}
+		}*/
 
-		public static void SpearAI(int index, float protractSpeed = 1.5f, float retractSpeed = 1.4f, ExtraAction action = null, ExtraAction initialize = null)
+		/*public static void SpearAI(int index, float protractSpeed = 1.5f, float retractSpeed = 1.4f, ExtraAction action = null, ExtraAction initialize = null)
 		{
 			Projectile projectile = Main.projectile[index];
 			if (initialize != null && projectile.localAI[1] == 0f)
@@ -419,7 +419,7 @@ namespace SpiritMod.Projectiles
 
 			if (action != null)
 				action();
-		}
+		}*/
 
 		public static void FlailAI(int index, float initialRange = 160f, float weaponOutRange = 300f, float retractRange = 100f, ExtraAction action = null, ExtraAction initialize = null)
 		{
@@ -558,7 +558,7 @@ namespace SpiritMod.Projectiles
 			return false;
 		}
 
-		public static void BoomerangAI(int index, float retractTime = 30f, float speed = 9f, float speedAcceleration = 0.4f, ExtraAction action = null, ExtraAction initialize = null)
+		/*public static void BoomerangAI(int index, float retractTime = 30f, float speed = 9f, float speedAcceleration = 0.4f, ExtraAction action = null, ExtraAction initialize = null)
 		{
 			Projectile projectile = Main.projectile[index];
 			if (initialize != null && projectile.localAI[1] == 0f)
@@ -633,9 +633,9 @@ namespace SpiritMod.Projectiles
 			projectile.rotation += 0.4f * (float)projectile.direction;
 			if (action != null)
 				action();
-		}
+		}*/
 
-		public static bool BoomerangTileCollide(int index, Vector2 oldVelocity)
+		/*public static bool BoomerangTileCollide(int index, Vector2 oldVelocity)
 		{
 			Projectile projectile = Main.projectile[index];
 			Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
@@ -645,9 +645,9 @@ namespace SpiritMod.Projectiles
 			projectile.netUpdate = true;
 			SoundEngine.PlaySound(SoundID.Dig, projectile.Center);
 			return false;
-		}
+		}*/
 
-		public static void BoomerangOnHitEntity(int index)
+		/*public static void BoomerangOnHitEntity(int index)
 		{
 			Projectile projectile = Main.projectile[index];
 			if (projectile.ai[0] == 0f)
@@ -657,9 +657,9 @@ namespace SpiritMod.Projectiles
 				projectile.netUpdate = true;
 			}
 			projectile.ai[0] = 1f;
-		}
+		}*/
 
-		public static void ThrowingKnifeAI(int index, int airTime = 20, ExtraAction action = null, ExtraAction initialize = null)
+		/*public static void ThrowingKnifeAI(int index, int airTime = 20, ExtraAction action = null, ExtraAction initialize = null)
 		{
 			Projectile projectile = Main.projectile[index];
 			if (initialize != null && projectile.localAI[1] == 0f)
@@ -682,7 +682,7 @@ namespace SpiritMod.Projectiles
 
 			if (action != null)
 				action();
-		}
+		}*/
 
 		public static void Explode(int index, int sizeX, int sizeY, ExtraAction visualAction = null, bool weakerExplosion = false)
 		{
@@ -744,7 +744,7 @@ namespace SpiritMod.Projectiles
 			visualAction();
 		}
 
-		public static void DrawString(int index, Vector2 to = default)
+		/*public static void DrawString(int index, Vector2 to = default)
 		{
 			Projectile projectile = Main.projectile[index];
 			Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
@@ -890,7 +890,7 @@ namespace SpiritMod.Projectiles
 					Main.spriteBatch.Draw(TextureAssets.FishingLine.Value, new Vector2(vector.X - Main.screenPosition.X + (float)TextureAssets.FishingLine.Value.Width * 0.5f, vector.Y - Main.screenPosition.Y + (float)TextureAssets.FishingLine.Value.Height * 0.5f) - new Vector2(6f, 0f), new Rectangle?(new Rectangle(0, 0, TextureAssets.FishingLine.Value.Width, (int)num5)), color, rotation, new Vector2((float)TextureAssets.FishingLine.Value.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
 				}
 			}
-		}
+		}*/
 
 		public static void DrawChain(int index, Vector2 to, string chainPath, bool electric = false, int damage = 0, bool zipline = false, float velocityX = 0, float velocityY = 0, bool white = false)
 		{
@@ -939,7 +939,7 @@ namespace SpiritMod.Projectiles
 			Main.spriteBatch.Draw(texture2D, projectile.Center - Main.screenPosition, new Rectangle?(Utils.Frame(texture2D, 1, Main.projFrames[projectile.type], 0, projectile.frame)), lightColor, projectile.rotation, origin, projectile.scale, effects, 0f);
 		}
 
-		public static void DrawSpear(int index, Color lightColor)
+		/*public static void DrawSpear(int index, Color lightColor)
 		{
 			Projectile projectile = Main.projectile[index];
 			Vector2 zero = Vector2.Zero;
@@ -950,6 +950,6 @@ namespace SpiritMod.Projectiles
 				effects = SpriteEffects.FlipHorizontally;
 			}
 			Main.spriteBatch.Draw(TextureAssets.Projectile[projectile.type].Value, new Vector2(projectile.position.X - Main.screenPosition.X + (float)(projectile.width / 2), projectile.position.Y - Main.screenPosition.Y + (float)(projectile.height / 2) + projectile.gfxOffY), new Rectangle?(new Rectangle(0, 0, TextureAssets.Projectile[projectile.type].Value.Width, TextureAssets.Projectile[projectile.type].Value.Height)), projectile.GetAlpha(lightColor), projectile.rotation, zero, projectile.scale, effects, 0f);
-		}
+		}*/
 	}
 }

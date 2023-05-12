@@ -212,10 +212,7 @@ namespace SpiritMod.Items
 			}
 		}
 
-		public override void SaveData(Item item, TagCompound tag)/* tModPorter Suggestion: Edit tag parameter instead of returning new TagCompound */
-		{
-			tag.Add("glyph", (int)Glyph);
-		}
+		public override void SaveData(Item item, TagCompound tag) => tag.Add("glyph", (int)Glyph);
 
 		public override void LoadData(Item item, TagCompound data)
 		{
@@ -593,7 +590,7 @@ namespace SpiritMod.Items
 			return null;
 		}
 
-		private bool FishCheck(Item item, Player player)
+		private static bool FishCheck(Item item, Player player)
 		{
 			int spawnType = -1;
 			bool fish = true;
@@ -631,7 +628,7 @@ namespace SpiritMod.Items
 			return fish;
 		}
 
-		private static readonly Vector2 SlotDimensions = new Vector2(52, 52);
+		private static readonly Vector2 SlotDimensions = new(52, 52);
 		public override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
 			if (Glyph == GlyphType.None)
@@ -664,8 +661,8 @@ namespace SpiritMod.Items
 		public override void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Color glowColor = new Color(250, 250, 250, item.alpha);
-			IGlowing glow = item.ModItem as IGlowing;
-			if (glow != null)
+
+			if (item.ModItem is IGlowing glow)
 			{
 				Texture2D texture = glow.Glowmask(out float bias);
 				Color alpha = Color.Lerp(alphaColor, glowColor, bias);
@@ -714,7 +711,7 @@ namespace SpiritMod.Items
 		{
 			float chance = 0;
 
-			float CombineChances(float p1, float p2) => p1 + p2 - (p1 * p2);
+			static float CombineChances(float p1, float p2) => p1 + p2 - (p1 * p2);
 
 			if (p.ammoBox) //1/5 chance to reduce
 				chance = 0.2f;
@@ -742,8 +739,7 @@ namespace SpiritMod.Items
 		/// <param name="p"></param>
 		public static void ArmsTowardsMouse(Player p = null, Vector2? targetLoc = null)
 		{
-			if (p == null)
-				p = Main.LocalPlayer;
+			p ??= Main.LocalPlayer;
 
 			if (targetLoc == null)
 				targetLoc = Main.MouseWorld;
