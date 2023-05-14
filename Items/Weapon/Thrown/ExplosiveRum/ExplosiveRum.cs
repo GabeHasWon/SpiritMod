@@ -45,10 +45,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 
 	public class ExplosiveRumProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Explosive Rum");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Explosive Rum");
 
 		public override void SetDefaults()
 		{

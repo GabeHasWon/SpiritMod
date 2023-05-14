@@ -148,7 +148,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 				if (QuestManager.GetQuest<SlayerQuestDrBones>().IsCompleted)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Consumable.SeedBag>(), false);
 				if (QuestManager.GetQuest<IceDeityQuest>().IsCompleted)
-					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Thrown.CryoKnife>(), false);
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Weapon.Thrown.CryoKnife.CryoKnife>(), false);
 				if (QuestManager.GetQuest<IceDeityQuest>().IsCompleted)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Placeable.IceSculpture.IceDeitySculpture>(), false);
 

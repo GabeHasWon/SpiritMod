@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			DrawType = PrimTrailManager.DrawProjectile;
 			Color = new Color(18, 163, 85) * 0.6f;
 			Width = 20;
-			Cap = 10;
+			Cap = 5;
 			AlphaValue = 1f;
 			Counter = Main.rand.Next(100);
 		}
@@ -112,7 +112,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			Destroyed = true;
 			Width *= 0.75f;
 			AlphaValue *= 0.9f;
-			Width += ((float)Math.Sin(Counter * 2) * 0.3f);
+			Width += (float)Math.Sin(Counter * 2) * 0.3f;
+
 			if (Width < 0.05f)
 				Dispose();
 		}

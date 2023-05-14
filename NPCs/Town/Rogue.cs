@@ -15,6 +15,7 @@ using Terraria.ModLoader;
 using static SpiritMod.NPCUtils;
 using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Weapon.Thrown.PlagueVial;
 
 namespace SpiritMod.NPCs.Town
 {

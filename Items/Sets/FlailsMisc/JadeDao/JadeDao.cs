@@ -78,7 +78,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
-			Projectile.Size = new Vector2(80, 80);
+			Projectile.Size = new Vector2(60, 60);
 			Projectile.tileCollide = false;
 			Projectile.ownerHitCheck = true;
 			Projectile.ignoreWater = true;
@@ -105,8 +105,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 		private NPC hookNPC; //The npc the projectile is hooked into
 
 		public const float THROW_RANGE = 320; //Peak distance from player when thrown out, in pixels
-		public const float THRUST_RANGE = 540; //Peak distance from player when thrust out, in pixels
-		public const float HOOK_MAXRANGE = 780; //Maximum distance between owner and hooked enemies before it automatically rips out
+		public const float THRUST_RANGE = 580; //Peak distance from player when thrust out, in pixels
 
 		public bool Flip = false;
 
@@ -194,7 +193,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 				float angleDeviation = MathHelper.Pi;
 
 				//Starts at owner center, goes to peak range, then returns to owner center
-				float distance = MathHelper.Clamp(SwingDistance, 0, THROW_RANGE) * MathHelper.Lerp((float)Math.Sin(progress * MathHelper.Pi), 1, 0.04f);
+				float distance = MathHelper.Clamp(SwingDistance, THROW_RANGE * 0.1f, THROW_RANGE) * MathHelper.Lerp((float)Math.Sin(progress * MathHelper.Pi), 1, 0.04f);
 
 				float angleOffset = Owner.direction * (Flip ? -1 : 1) * MathHelper.Lerp(-angleDeviation, angleDeviation, progress); //Moves clockwise if player is facing right, counterclockwise if facing left
 				return Projectile.velocity.RotatedBy(angleOffset) * distance;
@@ -242,9 +241,9 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 
 					hookNPC = null;
 				}
-				else if (progress >= .5f || Owner.Distance(Projectile.Center) > HOOK_MAXRANGE) //Unhook the NPC
+				else if (progress >= .5f) //Unhook the NPC
 				{
-					Curvature = Main.rand.NextFloat(-0.44f, 0.44f);
+					Curvature = Main.rand.NextFloat(-0.35f, 0.35f);
 
 					SwingDistance = Owner.Distance(Projectile.Center);
 					Projectile.velocity = direction;
@@ -295,36 +294,32 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			if (Projectile.timeLeft > 2)
 				return false;
 
-			Texture2D projTexture = TextureAssets.Projectile[Projectile.type].Value;
-			Texture2D glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
 
 			//End control point for the chain
-			Vector2 projBottom = Projectile.Center + new Vector2(0, projTexture.Height / 2).RotatedBy(Projectile.rotation) * 0.75f;
+			Vector2 projBottom = Projectile.Center + new Vector2(0, texture.Height / 2).RotatedBy(Projectile.rotation) * 0.75f;
 			DrawChainCurve(projBottom, out Vector2[] chainPositions);
 
 			//Adjust rotation to face from the last point in the bezier curve
-			float newRotation = (projBottom - chainPositions[^2]).ToRotation() + MathHelper.PiOver2;
-			if (AiState == STATE_THRUST)
-				newRotation = Projectile.velocity.ToRotation() + 1.57f;
+			float rotation = (projBottom - chainPositions[^2]).ToRotation();
 
-			//Draw from bottom center of texture
-			Vector2 origin = new Vector2(projTexture.Width / 2, projTexture.Height);
-			SpriteEffects flip = (Projectile.spriteDirection < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
+			Vector2 origin = new Vector2(texture.Width * (.5f + (.25f * Projectile.spriteDirection)), texture.Height);
+			SpriteEffects effects = (Projectile.spriteDirection < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			lightColor = Lighting.GetColor((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f));
 
-			Main.EntitySpriteDraw(projTexture, projBottom - Main.screenPosition, null, lightColor, newRotation, origin, Projectile.scale, flip, 0);
-			Main.EntitySpriteDraw(glowTexture, projBottom - Main.screenPosition, null, Color.White, newRotation, origin, Projectile.scale, flip, 0);
+			for (int i = 0; i < 2; i++)
+			{
+				var drawTexture = (i > 0) ? ModContent.Request<Texture2D>(Texture + "_Glow").Value : texture;
+				Main.EntitySpriteDraw(drawTexture, projBottom - Main.screenPosition, null, Projectile.GetAlpha(lightColor), rotation + MathHelper.PiOver2, origin, Projectile.scale, effects, 0);
+			}
 
-			CurrentBase = projBottom + (newRotation - 1.57f).ToRotationVector2() * (projTexture.Height / 2);
-
-			oldBase.Add(projBottom + (newRotation - 1.57f).ToRotationVector2() * (projTexture.Height / 2));
-
+			CurrentBase = projBottom + rotation.ToRotationVector2() * (texture.Height / 2);
+			oldBase.Add(projBottom + rotation.ToRotationVector2() * (texture.Height / 2));
 			if (oldBase.Count > 8)
 				oldBase.RemoveAt(0);
 
 			if (AiState == STATE_THRUST && Timer < 30)
-				DrawGlow(ModContent.Request<Texture2D>(Texture + "_White").Value, projBottom, newRotation, Vector2.One * Projectile.scale, origin, flip, pulse: true);
+				DrawGlow(ModContent.Request<Texture2D>(Texture + "_White").Value, projBottom, rotation + MathHelper.PiOver2, Vector2.One * Projectile.scale, origin, effects, pulse: true);
 
 			return false;
 		}
@@ -359,7 +354,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 
 			BezierCurve curve = new BezierCurve(new Vector2[] { Owner.MountedCenter, _chainMidA, _chainMidB, projBottom });
 
-			int numPoints = 30; //Should make dynamic based on curve length, but I'm not sure how to smoothly do that while using a bezier curve
+			int numPoints = (AiState != STATE_SWING) ? (int)(SwingDistance / 10) : 30;
 			chainPositions = curve.GetPoints(numPoints).ToArray();
 
 			//Draw each chain segment, skipping the very first one, as it draws partially behind the player

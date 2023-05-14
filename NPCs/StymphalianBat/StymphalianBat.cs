@@ -52,7 +52,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 			});
 		}
 
-		int frame;
+		private int frame;
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{
@@ -228,7 +228,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 			{
 				for (int i = 0; i < 3; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
-				for (int i = 1; i < 4; ++i)
+				for (int i = 1; i < 5; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("StymphalianBat" + i).Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("StymphalianBat1").Type, 1f);
 			}
@@ -244,12 +244,12 @@ namespace SpiritMod.NPCs.StymphalianBat
 		{
 			if (NPC.ai[2] == 1f && !NPC.collideX && !NPC.collideY)
 			{
-				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height * 0.5f));
+				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);
 				for (int k = 0; k < NPC.oldPos.Length; k++)
 				{
 					var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 					Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, NPC.gfxOffY);
-					Color color = NPC.GetAlpha(drawColor) * (float)(((NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2f);
+					Color color = NPC.GetAlpha(drawColor) * (float)((NPC.oldPos.Length - k) / (float)NPC.oldPos.Length / 2f);
 					spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
 				}
 			}
@@ -258,8 +258,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		public override void FindFrame(int frameHeight)
 		{
-			NPC.localAI[0]++;
-			if (NPC.localAI[0] >= 6)
+			if (++NPC.localAI[0] >= 6)
 			{
 				frame++;
 				NPC.localAI[0] = 0;

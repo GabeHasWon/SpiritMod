@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using System;
 using Terraria;
@@ -20,7 +19,6 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 		{
 			DisplayName.SetDefault("Blizzard's Edge");
 			Tooltip.SetDefault("Right-click after five swings to summon a blizzard");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Item.staff[Type] = true; //This will only take effect when using right-click
 		}
 
@@ -50,8 +48,6 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 		}
 
 		public override bool AltFunctionUse(Player player) => counter <= 0;
-
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, rotation, scale);
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
