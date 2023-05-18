@@ -1,22 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Mechanics.Trails;
+using SpiritMod.Particles;
+using System;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.DonatorItems
 {
-	class DuskfeatherBlade : ModProjectile
+	class DuskfeatherBlade : ModProjectile, ITrailProjectile
 	{
-
 		private const float Range = 25 * 16;
 		private const float Max_Dist = 100 * 16;
 		private const int Total_Updates = 3;
 		private const int Total_Lifetime = 600 * Total_Updates;
 
+		public void DoTrailCreation(TrailManager trailManager)
+			=> trailManager.CreateTrail(Projectile, new StandardColorTrail(Color.HotPink with { A = 0 }), new RoundCap(), new DefaultTrailPosition(), 40, 160, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_3", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, 0.05f, 1f, 1f));
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Duskfeather Blade");
-			Main.projFrames[Projectile.type] = 13;
+			Main.projFrames[Projectile.type] = 8;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
 
 		public override void SetDefaults()
@@ -92,12 +101,6 @@ namespace SpiritMod.Projectiles.DonatorItems
 			projectile.netUpdate = true;
 		}
 
-		public override void Kill(int timeLeft)
-		{
-			if (Projectile.alpha == 255)
-				return;
-		}
-
 		private DuskfeatherState State
 		{
 			get => (DuskfeatherState)(int)Projectile.ai[0];
@@ -135,8 +138,6 @@ namespace SpiritMod.Projectiles.DonatorItems
 				else
 					Projectile.alpha = 0;
 			}
-			int minFrame = 7;
-			int maxFrame = 12;
 
 			switch (State)
 			{
@@ -144,39 +145,29 @@ namespace SpiritMod.Projectiles.DonatorItems
 					AIMove();
 					break;
 				case DuskfeatherState.StuckInBlock:
-					maxFrame = 7;
 					AIStopped();
 					break;
 				case DuskfeatherState.Stopped:
-					minFrame = 0;
-					maxFrame = 6;
 					AIStopped();
 					break;
 				case DuskfeatherState.Return:
 					AIReturn();
 					break;
 				case DuskfeatherState.FadeOut:
-					minFrame = 0;
-					maxFrame = 6;
 					AIFade();
 					break;
 				case DuskfeatherState.FadeOutStuck:
-					maxFrame = 7;
 					AIFade();
 					break;
 			}
 
 			if (Projectile.numUpdates == 0)
 			{
-				if (State == DuskfeatherState.Moving || State == DuskfeatherState.Return)
-					++Projectile.frameCounter;
-				if (++Projectile.frameCounter >= 5)
+				if (++Projectile.frameCounter >= 4)
 				{
 					Projectile.frameCounter = 0;
-					++Projectile.frame;
+					Projectile.frame = ++Projectile.frame % Main.projFrames[Type];
 				}
-				if (Projectile.frame < minFrame || Projectile.frame > maxFrame)
-					Projectile.frame = minFrame;
 			}
 		}
 
@@ -189,6 +180,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 				Projectile.velocity *= 1f / Total_Updates;
 				FiringVelocity = Projectile.velocity.Length();
 			}
+
 			float distanceFromStart = Vector2.DistanceSquared(Projectile.position, Origin);
 			if (Range * Range < distanceFromStart)
 			{
@@ -239,6 +231,13 @@ namespace SpiritMod.Projectiles.DonatorItems
 			Projectile.rotation = (float)System.Math.Atan2(velocity.X, -velocity.Y) + (float)System.Math.PI;
 
 			Projectile.timeLeft++;
+
+			Dust.NewDustPerfect(Projectile.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 18f), Main.rand.NextBool(2) ? DustID.PinkCrystalShard : DustID.Shadowflame, Projectile.velocity * .5f).noGravity = true;
+			if (Main.rand.NextBool(5) && !Main.dedServ)
+			{
+				float scale = Main.rand.NextFloat();
+				ParticleHandler.SpawnParticle(new StarParticle(Projectile.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 3), Projectile.velocity * .8f, Color.LightPink, .2f * scale, (int)(18 * scale)));
+			}
 		}
 
 		private void AIFade()
@@ -285,6 +284,43 @@ namespace SpiritMod.Projectiles.DonatorItems
 		public override bool? CanHitNPC(NPC target) => (State == DuskfeatherState.Moving || State == DuskfeatherState.Return) ? null : false;
 
 		public override bool? CanCutTiles() =>  State == DuskfeatherState.Moving ? null : false;
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+			if ((State == DuskfeatherState.Stopped) || (State == DuskfeatherState.StuckInBlock)) //Draw an arrow directed at the projectile owner
+			{
+				float magnitude = .15f;
+				Vector2 lerp = ((float)Main.timeForVisualEffects / 50).ToRotationVector2() * magnitude;
+				Vector2 scale = new Vector2(1 - lerp.X, 1 - lerp.Y) * Projectile.scale;
+
+				Texture2D arrowTexture = ModContent.Request<Texture2D>(Texture + "_Arrow").Value;
+
+				float angleToOwner = Projectile.AngleTo(Main.player[Projectile.owner].Center);
+				Vector2 position = Projectile.Center + (Vector2.UnitX * 20).RotatedBy(angleToOwner);
+				Color color = Color.White * Math.Min(.5f, Projectile.Distance(Main.player[Projectile.owner].Center) * 0.001f);
+
+				//Draw the arrow texture
+				Main.EntitySpriteDraw(arrowTexture, position - Main.screenPosition, null, color, angleToOwner, arrowTexture.Size() / 2, scale, SpriteEffects.None, 0);
+			}
+
+			Texture2D texture = TextureAssets.Projectile[Type].Value;
+			int frameX = (State == DuskfeatherState.Return) ? 1 : 0;
+			Rectangle drawFrame = texture.Frame(2, Main.projFrames[Type], frameX, Projectile.frame, -2, -2);
+			lightColor = Color.White;
+
+			//Draw the projectile normally
+			Main.EntitySpriteDraw(texture, Projectile.Center, drawFrame, Projectile.GetAlpha(lightColor), Projectile.rotation, drawFrame.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+
+			for (int k = 0; k < Projectile.oldPos.Length; k++)
+			{
+				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + (Projectile.Size / 2) + new Vector2(0f, Projectile.gfxOffY);
+				Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+
+				Main.EntitySpriteDraw(texture, drawPos, drawFrame, color * .6f, Projectile.rotation, drawFrame.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+			}
+
+			return false;
+		}
 
 		public enum DuskfeatherState
 		{

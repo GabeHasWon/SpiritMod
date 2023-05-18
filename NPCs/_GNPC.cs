@@ -35,6 +35,7 @@ using SpiritMod.NPCs.BlueMoon.GlowToad;
 using SpiritMod.NPCs.BlueMoon.Lumantis;
 using SpiritMod.NPCs.BlueMoon.MadHatter;
 using SpiritMod.NPCs.BlueMoon.LunarSlime;
+using SpiritMod.Buffs.Pet;
 
 namespace SpiritMod.NPCs
 {
@@ -686,6 +687,12 @@ namespace SpiritMod.NPCs
 			{
 				spawnRate = (int)(spawnRate * 4.5f);
 				maxSpawns = (int)(maxSpawns * .5f);
+			}
+
+			if (player.HasBuff(ModContent.BuffType<LoomingPresence>()))
+			{
+				spawnRate = (int)(spawnRate * 0.8);
+				maxSpawns += 2;
 			}
 		}
 

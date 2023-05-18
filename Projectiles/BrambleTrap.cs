@@ -56,6 +56,7 @@ namespace SpiritMod.Projectiles
 			}
 			return false;
 		}
+
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (!stuck)
@@ -67,6 +68,7 @@ namespace SpiritMod.Projectiles
 			Projectile.velocity = Vector2.Zero;
 			stuck = true;
 		}
+
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			if (oldVelocity.Y != Projectile.velocity.Y && !activated) {
@@ -76,19 +78,19 @@ namespace SpiritMod.Projectiles
 			}
 			return false;
 		}
+
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
 		{
 			fallThrough = false;
 			return true;
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			if (activated)
 			{
-				ProjectileExtras.DrawChain(Projectile.whoAmI, groundpos - new Vector2(30, 0),
-				"SpiritMod/Projectiles/BrambleTrap_Chain");
-				ProjectileExtras.DrawChain(Projectile.whoAmI, groundpos + new Vector2(30, 0),
-				"SpiritMod/Projectiles/BrambleTrap_Chain");
+				ProjectileExtras.DrawChain(Projectile.whoAmI, groundpos - new Vector2(30, 0), "SpiritMod/Projectiles/BrambleTrap_Chain");
+				ProjectileExtras.DrawChain(Projectile.whoAmI, groundpos + new Vector2(30, 0), "SpiritMod/Projectiles/BrambleTrap_Chain");
 			}
 			return false;
 		}

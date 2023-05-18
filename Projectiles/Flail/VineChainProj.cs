@@ -7,10 +7,7 @@ namespace SpiritMod.Projectiles.Flail
 {
 	public class VineChainProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Vine Chain");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Vine Chain");
 
 		public override void SetDefaults()
 		{
@@ -21,10 +18,11 @@ namespace SpiritMod.Projectiles.Flail
 			Projectile.timeLeft = 900;
 			Projectile.DamageType = DamageClass.Melee;
 		}
-		//  bool comingHome = false;
+
 		int hookednpc = 0;
 		bool hooked = false;
 		float returnSpeed = 7;
+
 		public override bool PreAI()
 		{
 			if (Projectile.Hitbox.Intersects(Main.player[Projectile.owner].Hitbox) && Projectile.timeLeft < 870) {
@@ -68,11 +66,12 @@ namespace SpiritMod.Projectiles.Flail
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			ProjectileExtras.DrawChain(Projectile.whoAmI, Main.player[Projectile.owner].MountedCenter,
-			"SpiritMod/Projectiles/Flail/VineChain_Chain");
+			ProjectileExtras.DrawChain(Projectile.whoAmI, Main.player[Projectile.owner].MountedCenter, "SpiritMod/Projectiles/Flail/VineChain_Chain");
 			ProjectileExtras.DrawAroundOrigin(Projectile.whoAmI, lightColor);
+			
 			return false;
 		}
+
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (!target.boss && target.knockBackResist != 0) {
@@ -83,6 +82,7 @@ namespace SpiritMod.Projectiles.Flail
 				//  target.velocity = projectile.velocity;
 			}
 		}
+
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			if (Projectile.timeLeft >= 859) {

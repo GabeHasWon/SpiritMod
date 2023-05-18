@@ -45,6 +45,7 @@ using Terraria.WorldBuilding;
 using Terraria.IO;
 using static SpiritMod.Utilities.ChestPoolUtils;
 using Terraria.GameContent.Events;
+using SpiritMod.Items.Equipment.ZiplineGun;
 
 namespace SpiritMod
 {
@@ -1353,7 +1354,7 @@ namespace SpiritMod
 			AddToVanillaChest(PagodaPool, dynastyChests);
 
 			List<ChestInfo> AsteroidPool = new List<ChestInfo> {
-				new ChestInfo(new int[]{ ModContent.ItemType<HighGravityBoots>(), ModContent.ItemType<MagnetHook>() }), //ItemType<ZiplineGun>()
+				new ChestInfo(new int[]{ ModContent.ItemType<HighGravityBoots>(), ModContent.ItemType<MagnetHook>(), ModContent.ItemType<ZiplineGun>() }),
 				new ChestInfo(new int[]{ ModContent.ItemType<JumpPadItem>(), ItemID.SuspiciousLookingEye }, 1, 0.5f),
 				new ChestInfo(ModContent.ItemType<TargetCan>(), WorldGen.genRand.Next(10, 15), 0.5f),
 				new ChestInfo(ModContent.ItemType<SpaceJunkItem>(), WorldGen.genRand.Next(30, 55), 0.5f),

@@ -49,7 +49,7 @@ namespace SpiritMod.Items.Equipment
 
 		public override void PostDraw(Color lightColor) => ProjectileExtras.DrawChain(Projectile.whoAmI, Main.player[Projectile.owner].MountedCenter, "SpiritMod/Items/Equipment/MagnetHookChain");
 
-		Point targetPos = new Point();
+		Point targetPos = new();
 		bool homing = false;
 		float lowestDist = float.MaxValue;
 

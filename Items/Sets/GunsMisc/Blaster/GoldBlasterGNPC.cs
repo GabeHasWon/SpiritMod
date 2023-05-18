@@ -14,6 +14,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		public readonly int maxNumMarks = 25;
 		public int numMarks;
 
+		private bool isHovering;
+
 		public override bool InstancePerEntity => true;
 
 		public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -28,16 +30,21 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Rectangle rect = new Rectangle(0, texture.Height / frames * (int)frame, texture.Width, (texture.Height / frames) - 2);
 			Vector2 position = npc.Hitbox.TopLeft() - new Vector2(20) - screenPos;
 
+			spriteBatch.Draw(texture, position, rect, new Color(180, 180, 180) * (isHovering ? 1f : 0.2f), 0f, rect.Size() / 2, 1f, SpriteEffects.None, 0f);
+			if (isHovering)
+				Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.ItemStack.Value, $"x{numMarks}", position.X + 8, position.Y - 4, Color.White * .8f, Color.Black * .8f, Vector2.Zero, 0.9f);
+		}
+
+		public override bool PreAI(NPC npc)
+		{
 			Vector2 zoom = Main.GameViewMatrix.Zoom;
 
 			Rectangle hoverBox = npc.getRect();
 			hoverBox.Inflate((int)zoom.X, (int)zoom.Y);
 
-			bool hovering = hoverBox.Contains(Main.MouseWorld.ToPoint());
+			isHovering = hoverBox.Contains(Main.MouseWorld.ToPoint());
 
-			spriteBatch.Draw(texture, position, rect, new Color(180, 180, 180) * (hovering ? 1f : 0.2f), 0f, rect.Size() / 2, 1f, SpriteEffects.None, 0f);
-			if (hovering)
-				Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.ItemStack.Value, $"x{numMarks}", position.X + 8, position.Y - 4, Color.White * .8f, Color.Black * .8f, Vector2.Zero, 0.9f);
+			return base.PreAI(npc);
 		}
 
 		public void TryDetonate(NPC npc, int baseDamage, out bool success, Player player = null)

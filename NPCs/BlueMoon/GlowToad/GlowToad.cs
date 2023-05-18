@@ -223,7 +223,9 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		{
 			ProjectileExtras.DrawChain(Projectile.whoAmI, origin, "SpiritMod/NPCs/BlueMoon/GlowToad/GlowToadTongue_Chain", white: true);
 			ProjectileExtras.DrawAroundOrigin(Projectile.whoAmI, Color.White);
-			Main.spriteBatch.Draw(ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToadTongue_ChainEnd", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, origin - Main.screenPosition, null, Color.White, dir.ToRotation() - 1.57f, new Vector2(7, 5), Projectile.scale, SpriteEffects.None, 0f);
+			
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>("SpiritMod/NPCs/BlueMoon/GlowToad/GlowToadTongue_ChainEnd", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, origin - Main.screenPosition, null, Color.White, dir.ToRotation() - 1.57f, new Vector2(7, 5), Projectile.scale, SpriteEffects.None, 0);
+			
 			return false;
 		}
 	}

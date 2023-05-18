@@ -29,6 +29,7 @@ namespace SpiritMod.Projectiles.Flail
 		{
 			ProjectileExtras.DrawChain(Projectile.whoAmI, Main.player[Projectile.owner].MountedCenter, "SpiritMod/Items/Sets/FlailsMisc/ClatterMace/ClatterMaceProj_Chain");
 			ProjectileExtras.DrawAroundOrigin(Projectile.whoAmI, lightColor);
+
 			return false;
 		}
 	}

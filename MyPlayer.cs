@@ -67,11 +67,6 @@ namespace SpiritMod
 		public bool clockActive = false;
 		public bool rabbitMinion = false;
 		public bool bismiteShield = false;
-		public bool zipline = false;
-		public bool ziplineActive = false;
-		public float ziplineX = 0;
-		public float ziplineY = 0;
-		public float ziplineCounter = 0f;
 		public int shieldCounter = 0;
 		public int bismiteShieldStacks;
 		public bool MetalBand = false;
@@ -517,7 +512,6 @@ namespace SpiritMod
 			moonlightSack = false;
 			midasTouch = false;
 			seaSnailVenom = false;
-			zipline = false;
 			clockActive = false;
 			bloodcourtSet = false;
 			ShieldCore = false;
@@ -1429,23 +1423,6 @@ namespace SpiritMod
 				else
 					inGranite = false;
 			}
-
-			if (zipline)
-			{
-				if (!ziplineActive)
-				{
-					ziplineCounter = 45;
-					ziplineActive = true;
-				}
-				Player.justJumped = true;
-				float g = 0.18f;
-				if (ziplineCounter * g * ziplineY < 20 && ziplineCounter < 400)
-					ziplineCounter += 2;
-				Dust.NewDustPerfect(new Vector2(Player.position.X + Main.rand.Next(Player.width), Player.position.Y + Player.height - Main.rand.Next(7)), 6, new Vector2(-ziplineX * Main.rand.Next(6), -ziplineY * Main.rand.Next(10)));
-				Player.velocity = MathHelper.Max(ziplineCounter * g * ziplineY, 5) * new Vector2(ziplineX, ziplineY);
-			}
-			else if (ziplineCounter > 45)
-				ziplineCounter -= 0.75f;
 
 			if (mushroomPotion)
 			{

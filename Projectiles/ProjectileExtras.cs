@@ -892,50 +892,45 @@ namespace SpiritMod.Projectiles
 			}
 		}*/
 
-		public static void DrawChain(int index, Vector2 to, string chainPath, bool electric = false, int damage = 0, bool zipline = false, float velocityX = 0, float velocityY = 0, bool white = false)
+		public static void DrawChain(int index, Vector2 to, string chainPath, bool white = false)
 		{
 			Texture2D texture = ModContent.Request<Texture2D>(chainPath, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			Projectile projectile = Main.projectile[index];
-			Vector2 vector = projectile.Center;
-			Rectangle? sourceRectangle = null;
-			Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
-			float num = (float)texture.Height;
-			Vector2 vector2 = to - vector;
-			float rotation = (float)Math.Atan2(vector2.Y, vector2.X) - 1.57f;
-			bool flag = true;
 
-			if (vector2.HasNaNs() || vector.HasNaNs())
+			float num = (float)texture.Height;
+			Vector2 from = projectile.Center;
+			Vector2 direction = to - from;
+			float rotation = (float)Math.Atan2(direction.Y, direction.X) - 1.57f;
+
+			bool flag = true;
+			if (direction.HasNaNs() || from.HasNaNs())
 				flag = false;
 
 			while (flag)
 			{
-				if (vector2.Length() < num + 1.0)
+				if (direction.Length() < num + 1.0)
 					flag = false;
 				else
 				{
-					Vector2 value = vector2;
+					Vector2 value = direction;
 					value.Normalize();
-					vector += value * num;
-					vector2 = to - vector;
-					Color color = Color.White;
-					if (!white) color = Lighting.GetColor((int)vector.X / 16, (int)((double)vector.Y / 16.0));
-					color = projectile.GetAlpha(color);
+					from += value * num;
+					direction = to - from;
 
-					Main.spriteBatch.Draw(texture, vector - Main.screenPosition, sourceRectangle, color, rotation, origin, 1f, SpriteEffects.None, 0f);
+					Color color = white ? Color.White : Lighting.GetColor((int)from.X / 16, (int)((double)from.Y / 16.0));
 
-					if (electric)
-						Projectile.NewProjectile(projectile.GetSource_FromAI(), vector.X, vector.Y, 0, 0, ModLoader.GetMod("SpiritMod").Find<ModProjectile>("ElectricChain").Type, damage, 0, Main.myPlayer);
-					if (zipline)
-						Projectile.NewProjectile(projectile.GetSource_FromAI(), vector.X, vector.Y, 0, 0, ModLoader.GetMod("SpiritMod").Find<ModProjectile>("ZiplinePiece").Type, 1, 0, Main.myPlayer, velocityX, velocityY);
+					Main.spriteBatch.Draw(texture, from - Main.screenPosition, null, projectile.GetAlpha(color), rotation, texture.Size() / 2, 1, SpriteEffects.None, 0f);
 				}
 			}
 		}
+
 		public static void DrawAroundOrigin(int index, Color lightColor)
 		{
 			Projectile projectile = Main.projectile[index];
 			Texture2D texture2D = TextureAssets.Projectile[projectile.type].Value;
 			Vector2 origin = new Vector2((float)texture2D.Width * 0.5f, (float)(texture2D.Height / Main.projFrames[projectile.type]) * 0.5f);
 			SpriteEffects effects = (projectile.direction == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			
 			Main.spriteBatch.Draw(texture2D, projectile.Center - Main.screenPosition, new Rectangle?(Utils.Frame(texture2D, 1, Main.projFrames[projectile.type], 0, projectile.frame)), lightColor, projectile.rotation, origin, projectile.scale, effects, 0f);
 		}
 

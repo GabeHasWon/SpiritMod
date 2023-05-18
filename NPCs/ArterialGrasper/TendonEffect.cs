@@ -48,8 +48,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 			NPC parent = Main.npc[(int)Projectile.ai[1]];
 			if (Main.npc[(int)Projectile.ai[1]].active && Main.npc[(int)Projectile.ai[1]].type == TrapperID)
 			{
-				ProjectileExtras.DrawChain(Projectile.whoAmI, parent.Center,
-				"SpiritMod/NPCs/ArterialGrasper/" + Name + "_Chain");
+				ProjectileExtras.DrawChain(Projectile.whoAmI, parent.Center, "SpiritMod/NPCs/ArterialGrasper/" + Name + "_Chain");
 			}
 			return false;
 

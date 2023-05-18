@@ -27,7 +27,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		public override void SetDefaults()
 		{
-			NPC.width = 50;
+			NPC.width = 40;
 			NPC.height = 40;
 			NPC.damage = 50;
 			NPC.defense = 21;
@@ -43,6 +43,28 @@ namespace SpiritMod.NPCs.StymphalianBat
 			BannerItem = ModContent.ItemType<Items.Banners.StymphalianBatBanner>();
 		}
 
+		private int Counter
+		{
+			get => (int)NPC.ai[0];
+			set => NPC.ai[0] = value;
+		}
+		private bool Diving
+		{
+			get => NPC.ai[1] > 0;
+			set => NPC.ai[1] = value ? 1 : 0;
+		}
+		private bool Collided
+		{
+			get => NPC.ai[2] > 0;
+			set => NPC.ai[2] = value ? 1 : 0;
+		}
+
+		private bool JustSpawned
+		{
+			get => NPC.ai[3] > 0;
+			set => NPC.ai[3] = value ? 1 : 0;
+		}
+
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
@@ -54,20 +76,6 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		private int frame;
 
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			writer.Write(NPC.localAI[0]);
-			writer.Write(NPC.localAI[1]);
-			writer.Write(NPC.localAI[2]);
-		}
-
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			NPC.localAI[0] = reader.ReadSingle();
-			NPC.localAI[1] = reader.ReadSingle();
-			NPC.localAI[2] = reader.ReadSingle();
-		}
-
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
 			if (Main.rand.NextBool(3))
@@ -76,14 +84,15 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		public override void AI()
 		{
-			if (NPC.ai[3] == 0)
+			if (!JustSpawned)
 			{
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int npc1 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + Main.rand.Next(-100, 100), (int)NPC.Center.Y + Main.rand.Next(-100, 100), ModContent.NPCType<StymphalianBat>(), NPC.whoAmI, 40f, 0f, 0f, 1f);
-					NPC.ai[3] = 1f;
 					NPC.netUpdate = true;
 					Main.npc[npc1].netUpdate = true;
+
+					JustSpawned = true;
 
 					for (int i = 0; i < 3; ++i)
 						Gore.NewGore(NPC.GetSource_Death(), Main.npc[npc1].position, Main.rand.NextVector2Circular(4f, 4f), 99);
@@ -93,18 +102,8 @@ namespace SpiritMod.NPCs.StymphalianBat
 			NPC.spriteDirection = NPC.direction;
 			Player target = Main.player[NPC.target];
 
-			if (NPC.ai[1] != 1f)
-				NPC.rotation = NPC.velocity.X * .1f;
-			else
-			{
-				if (NPC.direction == 1)
-					NPC.rotation = (float)Math.Sqrt((NPC.velocity.X * NPC.velocity.X) + (NPC.velocity.Y * NPC.velocity.Y)) * .1f;
-				else
-					NPC.rotation = (float)Math.Sqrt((NPC.velocity.X * NPC.velocity.X) + (NPC.velocity.Y * NPC.velocity.Y)) * .1f - 1.57f;
-			}
-
-			NPC.ai[0]++;
-			if (!target.dead && NPC.ai[1] < 1f)
+			Counter++;
+			if (!target.dead && !Diving)
 			{
 				if (NPC.collideX)
 				{
@@ -168,49 +167,68 @@ namespace SpiritMod.NPCs.StymphalianBat
 				if (NPC.velocity.Y > 4f)
 					NPC.velocity.Y = 3f;
 			}
-			if ((NPC.collideX || NPC.collideY) && NPC.ai[1] == 1f)
-			{
-				NPC.velocity = Vector2.Zero;
-				NPC.noGravity = false;
-				frame = 6;
-				NPC.netUpdate = true;
 
-				if (Main.netMode != NetmodeID.Server)
+			if (Diving)
+			{
+				if (NPC.collideX || NPC.collideY)
 				{
-					NPC.rotation += Main.rand.NextFloat(-0.06f, 0.06f);
-					DrawOffsetY = 15;
+					if (!Collided)
+					{
+						SoundEngine.PlaySound(SoundID.Tink, NPC.position);
+						Collision.TileCollision(NPC.position, NPC.velocity, NPC.width, NPC.height);
+
+						Collided = true;
+					}
+				}
+
+				if (Collided) //Stuck in a tile
+				{
+					if (Main.netMode != NetmodeID.Server)
+					{
+						NPC.rotation += Main.rand.NextFloat(-0.06f, 0.06f);
+						DrawOffsetY = 15;
+					}
+
+					NPC.velocity = Vector2.Zero;
+					NPC.netUpdate = true;
+				}
+				else if (NPC.velocity != Vector2.Zero)
+				{
+					NPC.rotation = NPC.velocity.ToRotation() + ((NPC.direction == -1) ? MathHelper.Pi : 0);
 				}
 			}
-
-			Vector2 direction = target.Center - NPC.Center;
-
-			if (NPC.ai[0] == 190)
+			else
 			{
-				NPC.ai[1] = 1f;
-				NPC.netUpdate = true;
+				NPC.rotation = NPC.velocity.X * .1f;
 			}
 
-			if (NPC.ai[1] == 1f)
+			if (Counter == 205)
 			{
-				frame = 6;
-				if (NPC.ai[2] == 0)
+				if (!Diving)
 				{
-					direction.Normalize();
 					SoundEngine.PlaySound(SoundID.DD2_WyvernDiveDown, NPC.Center);
+
+					Vector2 direction = NPC.DirectionTo(target.Center);
 					direction.X *= Main.rand.Next(16, 22);
 					direction.Y *= Main.rand.Next(10, 15);
+
 					NPC.velocity.X = direction.X;
 					NPC.velocity.Y = direction.Y;
-					NPC.ai[2]++;
+
+					Diving = true;
 				}
-			}
-			if (NPC.ai[0] > 265)
-			{
-				NPC.ai[0] = 0f;
-				NPC.ai[1] = 0f;
-				NPC.ai[2] = 0f;
+
 				NPC.netUpdate = true;
-				NPC.noGravity = true;
+			}
+
+			if (Counter > 265)
+			{
+				Counter = 0;
+				Diving = false;
+				Collided = false;
+
+				NPC.netUpdate = true;
+
 				DrawOffsetY = 0;
 			}
 		}
@@ -242,7 +260,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if (NPC.ai[2] == 1f && !NPC.collideX && !NPC.collideY)
+			if (Diving && !Collided)
 			{
 				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);
 				for (int k = 0; k < NPC.oldPos.Length; k++)
@@ -258,14 +276,15 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		public override void FindFrame(int frameHeight)
 		{
-			if (++NPC.localAI[0] >= 6)
+			if (++NPC.frameCounter >= 6)
 			{
 				frame++;
-				NPC.localAI[0] = 0;
-				NPC.netUpdate = true;
+				NPC.frameCounter = 0;
 			}
 
-			if (frame > 5)
+			if (Diving)
+				frame = Main.npcFrameCount[Type] - 1;
+			else if (frame > (Main.npcFrameCount[Type] - 2))
 				frame = 0;
 
 			NPC.frame.Y = frameHeight * frame;

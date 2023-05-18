@@ -34,7 +34,7 @@ namespace SpiritMod.Tiles
 			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
 
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Soul Bloom");
+			name.SetDefault("Soulbloom");
 			AddMapEntry(new Color(110, 158, 234), name);
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
