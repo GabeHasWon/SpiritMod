@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Sharkbones
 
 		public override void SetDefaults()
 		{
-			Item.damage = 120;
+			Item.damage = 220;
 			Item.DamageType = DamageClass.Ranged;
 			Item.Size = new Vector2(94, 30);
 			Item.useTime = Item.useAnimation = 40;

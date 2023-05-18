@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Four of a Kind");
-			Tooltip.SetDefault("Critical hits deal extra damage\nCritical hits have a chance to drop a diamond ace or heart\nCritical kills drop money");
+			Tooltip.SetDefault("Critical strikes deal extra damage and drop money\nCritical strikes have a chance to drop a diamond ace or heart");
 		}
 
 		public override void SetDefaults()

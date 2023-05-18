@@ -33,7 +33,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			Item.useTime = 30;
 			Item.shootSpeed = 8f;
 			Item.knockBack = 5f;
-			Item.damage = 40;
+			Item.damage = 50;
 			Item.value = Item.sellPrice(0, 0, 60, 0);
 			Item.rare = ItemRarityID.Orange;
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -53,7 +53,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			recipe.Register();
 		}
 	}
-
+	
 	public class SlagHammerProj : SlingHammerProj
 	{
 		public override void SetStaticDefaults()
