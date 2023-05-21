@@ -11,6 +11,8 @@ namespace SpiritMod.Items.Accessory.UnstableTeslaCoil
 	{
 		public float x = 0f;
 
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Lightning Zap");
 
 		public override void SetDefaults()

@@ -45,7 +45,10 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			p.itemTime = 2;
 			p.itemAnimation = 2;
 
-			GItem.ArmsTowardsMouse(p, direction == Vector2.Zero ? Main.MouseWorld : (p.Center - RealDirection + new Vector2(0, 4)));
+			p.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Quarter, direction.ToRotation() + 1.57f);
+			p.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Quarter, direction.ToRotation() + 1.57f);
+
+			//GItem.ArmsTowardsMouse(p, direction == Vector2.Zero ? Main.MouseWorld : (p.Center - RealDirection + new Vector2(0, 4)));
 
 			if (p.whoAmI != Main.myPlayer) return; //mp check (hopefully)
 
@@ -68,7 +71,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			Projectile.Center = p.Center + new Vector2(0, p.gfxOffY) - Vector2.Lerp(Vector2.Zero, RealDirection, factor) + (RealDirection * 0.5f) + offset;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => hitDirection = Math.Sign(Main.player[Projectile.owner].DirectionTo(Projectile.Center).X);
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => hitDirection = Math.Sign(-direction.X);
 
 		public override void ModifyDamageHitbox(ref Rectangle hitbox)
 		{

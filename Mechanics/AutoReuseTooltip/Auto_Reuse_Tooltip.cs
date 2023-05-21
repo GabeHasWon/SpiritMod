@@ -1,22 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 using SpiritMod.Utilities;
 
 namespace SpiritMod.Mechanics.AutoReuseTooltip
 {
 	public class Auto_Reuse_Tooltip : GlobalItem
 	{
-		public override bool InstancePerEntity
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool InstancePerEntity => true;
 
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{

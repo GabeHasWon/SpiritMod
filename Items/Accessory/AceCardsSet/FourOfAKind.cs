@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.AceCardsSet
 {
-	public class FourOfAKind : ModItem
+	public class FourOfAKind : AccessoryItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -19,14 +19,6 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 			Item.value = Item.buyPrice(0, 5, 0, 0);
 			Item.rare = ItemRarityID.Orange;
 			Item.accessory = true;
-		}
-
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().AceOfClubs = true;
-			player.GetSpiritPlayer().AceOfHearts = true;
-			player.GetSpiritPlayer().AceOfSpades = true;
-			player.GetSpiritPlayer().AceOfDiamonds = true;
 		}
 
 		public override void AddRecipes()

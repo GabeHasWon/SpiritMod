@@ -4,6 +4,7 @@ using SpiritMod.Projectiles.DonatorItems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 {
 	public class DemonfireSword : ModItem

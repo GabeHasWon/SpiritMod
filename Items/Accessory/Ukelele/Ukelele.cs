@@ -95,6 +95,8 @@ namespace SpiritMod.Items.Accessory.Ukelele
 		public NPC currentEnemy;
 		int animCounter = 5;
 
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ukulele");

@@ -12,7 +12,6 @@ namespace SpiritMod.Items.Accessory
 			Tooltip.SetDefault("6% increased melee damage\nWeapons have a 15% chance to inflict Cursed Inferno");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 18;

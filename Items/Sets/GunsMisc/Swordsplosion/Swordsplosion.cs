@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Projectiles;
-using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -22,8 +21,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Swordsplosion
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 60;
 			Item.height = 26;
-			Item.useTime = 19;
-			Item.useAnimation = 19;
+			Item.useTime = Item.useAnimation = 19;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.knockBack = 6;
@@ -35,22 +33,21 @@ namespace SpiritMod.Items.Sets.GunsMisc.Swordsplosion
 			Item.shoot = ModContent.ProjectileType<SwordBarrage>();
 			Item.shootSpeed = 10f;
 		}
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int i = 0; i < 3; i++) {
-				float spread = 35f * 0.0174f;//45 degrees converted to radians
-				float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-				double baseAngle = Math.Atan2(velocity.X, velocity.Y);
-				double randomAngle = baseAngle + (Main.rand.NextFloat() - 0.5f) * spread;
-				velocity.X = baseSpeed * (float)Math.Sin(randomAngle);
-				velocity.Y = baseSpeed * (float)Math.Cos(randomAngle);
-				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<SwordBarrage>(), Item.damage, knockback, Item.playerIndexTheItemIsReservedFor, 0, 0);
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 55f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+				position += muzzleOffset;
+
+			for (int i = 0; i < 3; i++)
+			{
+				Vector2 randomVel = velocity.RotatedByRandom(.785f);
+				Projectile.NewProjectile(source, position, randomVel, ModContent.ProjectileType<SwordBarrage>(), Item.damage, knockback, Item.playerIndexTheItemIsReservedFor, 0, 0);
 			}
 			return false;
 		}
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-10, 0);
-		}
+
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 	}
 }

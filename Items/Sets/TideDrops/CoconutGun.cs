@@ -30,21 +30,21 @@ namespace SpiritMod.Items.Sets.TideDrops
 			Item.rare = ItemRarityID.Orange;
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<CoconutSpurt>();
-			Item.shootSpeed = 1.5f;
+			Item.shootSpeed = 10f;
 			Item.crit = 2;
 			Item.UseSound = SoundID.Item61;
-			// item.useAmmo = AmmoID.Bullet;
 		}
 
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-7, 0);
-		}
+		public override Vector2? HoldoutOffset() => new Vector2(-7, 0);
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int i = 0; i < 3; i++) {
-				Projectile.NewProjectile(source, position.X, position.Y, (velocity.X * Main.rand.NextFloat(25, 30) / 4) + (Main.rand.NextFloat(-1, 2) * .66f), (velocity.Y * Main.rand.Next(25, 30) / 4) + (Main.rand.Next(-1, 2) * .66f), ModContent.ProjectileType<CoconutSpurt>(), damage, knockback, player.whoAmI);
+			for (int i = 0; i < 3; i++)
+			{
+				Vector2 randomVel = (velocity * Main.rand.NextFloat(0.8f, 1.0f)).RotatedByRandom(.3f);
+				Projectile.NewProjectile(source, position, randomVel, type, damage, knockback, player.whoAmI);
 			}
+
 			return false;
 		}
 	}

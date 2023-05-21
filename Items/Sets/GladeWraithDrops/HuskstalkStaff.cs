@@ -14,7 +14,6 @@ namespace SpiritMod.Items.Sets.GladeWraithDrops
 			Tooltip.SetDefault("Shoots consecutive leaves");
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.damage = 11;

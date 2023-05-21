@@ -4,12 +4,10 @@ using SpiritMod.Items.Material;
 using SpiritMod.Items.Sets.SpiritSet;
 using SpiritMod.Items.Sets.HuskstalkSet;
 using SpiritMod.Projectiles;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
-using SpiritMod.Items;
 
 namespace SpiritMod.Items.DonatorItems
 {

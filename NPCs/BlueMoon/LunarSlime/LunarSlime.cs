@@ -10,6 +10,7 @@ using System;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes.Events;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 {
@@ -75,9 +76,10 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 		}
 		public override bool PreAI()
 		{
-			if (NPC.collideY && jump && NPC.velocity.Y > 0) {
-				NPC.ai[3]++;
-				if (NPC.ai[3] >= 2) {
+			if (NPC.collideY && jump && NPC.velocity.Y > 0)
+			{
+				if (++NPC.ai[3] >= 2)
+				{
 					NPC.ai[3] = 0;
 					SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
 					float ScaleMult = 2.33f;
@@ -96,14 +98,14 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 						float num17 = num13 * num15;
 						float SpeedX = num16 + (float)Main.rand.Next(-40, 41) * 0.02f;  //this defines the projectile X position speed and randomnes
 						float SpeedY = num17 + (float)Main.rand.Next(-40, 41) * 0.02f;  //this defines the projectile Y position speed and randomnes
-						int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + Main.rand.Next(-60, 60), NPC.Center.Y + Main.rand.Next(-1200, -900), SpeedX, SpeedY, ModContent.ProjectileType<LunarStar>(), 20, 3, Main.myPlayer, 0.0f, 1);
+						
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + Main.rand.Next(-60, 60), NPC.Center.Y + Main.rand.Next(-1200, -900), SpeedX, SpeedY, ModContent.ProjectileType<LunarStar>(), 20, 3, Main.myPlayer, 0.0f, 1);
 					}
 				}
 				jump = false;
 			}
 			if (!NPC.collideY)
 				jump = true;
-
 
 			return true;
 		}
@@ -112,8 +114,11 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200);
-
 		}
+
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+			=> GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow").Value, screenPos, NPC.GetAlpha(Color.White));
+
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

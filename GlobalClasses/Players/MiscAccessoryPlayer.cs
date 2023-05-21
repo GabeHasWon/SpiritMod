@@ -95,14 +95,14 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
 		{
-			// Twilight Talisman & Shadow Gauntlet
+			// Twilight Talisman
 			if (Player.HasAccessory<Twilight1>() && Main.rand.NextBool(13))
 				target.AddBuff(BuffID.ShadowFlame, 180);
 
 			// Ace of Spades
-			if (Player.GetModPlayer<MyPlayer>().AceOfSpades && crit)
+			if ((Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>()) && crit)
 			{
-				damage = (int)(damage * 1.1f + 0.5f);
+				damage = (int)(damage * 1.2f);
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
 			}
@@ -113,9 +113,17 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			// Twilight Talisman & Shadow Gauntlet
+			// Twilight Talisman
 			bool shadowFlameCondition = Player.HasAccessory<Twilight1>() && Main.rand.NextBool(15);
 			AddBuffWithCondition(shadowFlameCondition, target, BuffID.ShadowFlame, 180);
+
+			// Ace of Spades
+			if ((Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>()) && crit)
+			{
+				damage = (int)(damage * 1.2f);
+				for (int i = 0; i < 3; i++)
+					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
+			}
 		}
 
 		public void OnHitNPCWithAnything(Entity weapon, NPC target, int damage, float knockback, bool crit)
@@ -132,6 +140,53 @@ namespace SpiritMod.GlobalClasses.Players
 			{
 				if ((weapon is Item i && i.IsMelee()) || weapon is Projectile)
 					target.AddBuff(BuffID.Poisoned, 120);
+			}
+
+			if (crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
+			{
+				if (((weapon is Item item) && Main.rand.NextFloat() < (item.useTime / 75f)) || ((weapon is Projectile proj) && Main.rand.NextFloat() < (proj.GetGlobalProjectile<SpiritGlobalProjectile>().storedUseTime / 75f)))
+				{
+					//Ace of Hearts
+					if (Player.HasAccessory<AceOfHearts>() || Player.HasAccessory<FourOfAKind>())
+					{
+						ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, Main.halloween ? ItemID.CandyApple : ItemID.Heart);
+
+						for (int i = 0; i < 3; i++)
+							Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<HeartDust>(), 0, -0.8f);
+					}
+					//Ace of Diamonds
+					if (Player.HasAccessory<AceOfDiamonds>() || Player.HasAccessory<FourOfAKind>())
+					{
+						ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ModContent.ItemType<DiamondAce>());
+
+						for (int i = 0; i < 3; i++)
+							Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<DiamondDust>(), 0, -0.8f);
+					}
+				}
+
+				//Ace of Clubs
+				if (Player.HasAccessory<AceOfClubs>() || Player.HasAccessory<FourOfAKind>())
+				{
+					for (int i = 0; i < 3; i++)
+						Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<ClubDust>(), 0, -0.8f);
+
+					int money = damage;
+
+					if (money / 1000000 > 0)
+						ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.PlatinumCoin, money / 1000000);
+
+					money %= 1000000;
+					if (money / 10000 > 0)
+						ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.GoldCoin, money / 10000);
+
+					money %= 10000;
+					if (money / 100 > 0)
+						ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.SilverCoin, money / 100);
+
+					money %= 100;
+					if (money > 0)
+						ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.CopperCoin, money);
+				}
 			}
 		}
 

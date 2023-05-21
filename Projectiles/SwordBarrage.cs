@@ -29,18 +29,14 @@ namespace SpiritMod.Projectiles
 			AIType = ProjectileID.ThrowingKnife;
 		}
 
-		public override void AI()
-		{
-			Projectile.rotation += 0.3f;
-		}
+		public override void AI() => Projectile.rotation += 0.3f;
 
 		public override void Kill(int timeLeft)
 		{
-			for (int i = 0; i < 5; i++) {
-				int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Asphalt);
-			}
+			for (int i = 0; i < 5; i++)
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Asphalt);
+
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 		}
-
 	}
 }

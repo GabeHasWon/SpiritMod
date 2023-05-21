@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Material;
 using SpiritMod.Projectiles;
 using Terraria;
 using Terraria.DataStructures;
@@ -10,25 +9,23 @@ namespace SpiritMod.Items.Sets.MagicMisc.NightSkyStaff
 {
 	public class NightSkyStaff : ModItem
 	{
+		private int charger;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova's Spark");
 			Tooltip.SetDefault("Shoots out a fast laser of starry energy\nEvery fifth strike on foes summons a more powerful homing beam of stars\nThat beam rains down homing bolts from the sky");
+			Item.staff[Item.type] = true;
 		}
 
-
-		int charger;
 		public override void SetDefaults()
 		{
 			Item.damage = 34;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 7;
-			Item.width = 58;
-			Item.height = 58;
-			Item.useTime = 24;
-			Item.useAnimation = 24;
+			Item.width = Item.height = 58;
+			Item.useTime = Item.useAnimation = 24;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.knockBack = 2.5f;
 			Item.useTurn = false;
@@ -42,10 +39,11 @@ namespace SpiritMod.Items.Sets.MagicMisc.NightSkyStaff
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			charger++;
-			if (charger >= 5) {
+			if (++charger >= 5)
+			{
 				Projectile.NewProjectile(source, position.X - 8, position.Y + 8, velocity.X, velocity.Y, ModContent.ProjectileType<NovaBeam2>(), damage / 2 * 3, knockback, player.whoAmI, 0f, 0f);
 				charger = 0;
+
 				return false;
 			}
 			return true;

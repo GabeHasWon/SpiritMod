@@ -1,9 +1,7 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Particles;
 using Microsoft.Xna.Framework;
-using System;
 
 namespace SpiritMod.Buffs
 {

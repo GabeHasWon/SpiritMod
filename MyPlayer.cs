@@ -86,11 +86,6 @@ namespace SpiritMod
 		public bool magnifyingGlass = false;
 		public bool ShieldCore = false;
 		public bool SoulStone = false;
-		public bool AceOfSpades = false;
-		public bool AceOfHearts = false;
-		public bool AceOfClubs = false;
-		public bool AceOfDiamonds = false;
-		public bool geodeSet = false;
 		public bool assassinMag = false;
 		public bool shadowFang = false;
 		public bool reachBrooch = false;
@@ -100,7 +95,6 @@ namespace SpiritMod
 		public bool ToxicExtract = false;
 		public bool vitaStone = false;
 		public bool throwerGlove = false;
-		public bool firedSharpshooter = false;
 		public int throwerStacks;
 		public bool scarabCharm = false;
 		public bool bloodCourtHead = false;
@@ -188,15 +182,12 @@ namespace SpiritMod
 		public bool elderbarkWoodSet;
 		public bool primalSet;
 		public bool spiritSet;
-		public bool reachSet;
-		public bool coralSet;
 		public bool leatherSet;
 		public bool oceanSet;
 		public bool wayfarerSet;
 		public bool marbleSet;
 		public bool midasTouch;
 		public bool bloodfireSet;
-		public bool stellarSet;
 		public bool cryoSet;
 		public bool frigidSet;
 		public bool graniteSet;
@@ -215,8 +206,6 @@ namespace SpiritMod
 
 		public bool inGranite = false;
 		public bool inMarble = false;
-
-		public bool Bauble = false;
 
 		public bool marbleJustJumped;
 
@@ -547,11 +536,6 @@ namespace SpiritMod
 			leatherHood = false;
 			floranSet = false;
 			SoulStone = false;
-			AceOfSpades = false;
-			AceOfHearts = false;
-			AceOfClubs = false;
-			AceOfDiamonds = false;
-			geodeSet = false;
 			manaWings = false;
 			fireMaw = false;
 			rogueSet = false;
@@ -595,11 +579,8 @@ namespace SpiritMod
 			primalSet = false;
 			wayfarerSet = false;
 			spiritSet = false;
-			coralSet = false;
-			stellarSet = false;
 			graniteSet = false;
 			fierySet = false;
-			reachSet = false;
 			leatherSet = false;
 			starSet = false;
 			bloodfireSet = false;
@@ -827,38 +808,9 @@ namespace SpiritMod
 		{
 			foreach (var effect in effects)
 				effect.PlayerOnHitNPC(Player, item, target, damage, knockback, crit);
-				
-			if (AceOfHearts && Main.rand.NextFloat() < (item.useTime / 75f) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
-			{
-				ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, Main.halloween ? ItemID.CandyApple : ItemID.Heart);
-				for (int i = 0; i < 3; i++)
-					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<HeartDust>(), 0, -0.8f);
-			}
 
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
-
-			if (AceOfDiamonds && Main.rand.NextFloat() < (item.useTime / 75f) && crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
-			{
-				ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ModContent.ItemType<Items.Accessory.AceCardsSet.DiamondAce>());
-				for (int i = 0; i < 3; i++)
-					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<DiamondDust>(), 0, -0.8f);
-			}
-
-			if (AceOfClubs && crit && target.lifeMax > 15 && !target.friendly && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
-			{
-				//int money = (int)(300 * MathHelper.Clamp((float)damage / target.lifeMax, 1 / 300f, 1f));
-				int money = (int)(damage);
-				for (int i = 0; i < 3; i++)
-					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<ClubDust>(), 0, -0.8f);
-				if (money / 1000000 > 0) ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.PlatinumCoin, money / 1000000);
-				money %= 1000000;
-				if (money / 10000 > 0) ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.GoldCoin, money / 10000);
-				money %= 10000;
-				if (money / 100 > 0) ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.SilverCoin, money / 100);
-				money %= 100;
-				if (money > 0) ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.CopperCoin, money);
-			}
 
 			if (astralSet && crit)
 				damage = (int)(damage + (.1f * astralSetStacks));
@@ -924,9 +876,6 @@ namespace SpiritMod
 			if (ToxicExtract && Main.rand.NextBool(5) && item.IsMagic())
 				target.AddBuff(BuffID.Venom, 240);
 
-			if (geodeSet && crit && Main.rand.NextBool(5))
-				target.AddBuff(ModContent.BuffType<Buffs.Crystal>(), 180);
-
 			if (infernalFlame && item.IsMelee() && crit && Main.rand.NextBool(12))
 				Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<PhoenixProjectile>(), 50, 4, Main.myPlayer);
 
@@ -938,15 +887,6 @@ namespace SpiritMod
 		{
 			foreach (var effect in effects)
 				effect.PlayerOnHitNPCWithProj(Player, proj, target, damage, knockback, crit);
-
-			if (stellarSet)
-			{
-				if (proj.minion && target.life <= 0)
-						Player.AddBuff(ModContent.BuffType<StellarSpeed>(), 300);
-
-				if (!target.SpawnedFromStatue && proj.IsRanged() && crit)
-						Player.AddBuff(ModContent.BuffType<StellarMinionBonus>(), 360);
-			}
 
 			if (shadowFang)
 			{
@@ -995,9 +935,6 @@ namespace SpiritMod
 					Main.projectile[p].DamageType = proj.DamageType;
 				}
 			}
-
-			if (geodeSet && crit && Main.rand.NextBool(5))
-				target.AddBuff(ModContent.BuffType<Buffs.Crystal>(), 180);
 
 			if (geodeRanged && proj.IsRanged() && Main.rand.NextBool(24))
 			{
@@ -1234,7 +1171,7 @@ namespace SpiritMod
 					Main.projectile[p].timeLeft = 600;
 				}
 			}
-			}
+		}
 
 		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
 		{
@@ -1446,11 +1383,8 @@ namespace SpiritMod
 				Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-1000, 1000), Player.Center.Y + Main.rand.Next(-1200, -900), SpeedX, SpeedY, ModContent.ProjectileType<Meteor>(), 30, 3, Main.myPlayer, 0.0f, 1);
 			}
 
-			if (!throwerGlove || (throwerStacks >= 7 && firedSharpshooter))
-			{
+			if (!throwerGlove)
 				throwerStacks = 0;
-				firedSharpshooter = false;
-			}
 
 			if (ShieldCore)
 			{
@@ -2674,13 +2608,6 @@ namespace SpiritMod
 				concentrated = false;
 				concentratedCooldown = 300;
 			}
-
-			if (AceOfSpades && crit)
-			{
-				damage = (int)(damage * 1.2f);
-				for (int i = 0; i < 3; i++)
-					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
-			}
 		}
 
 		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -2746,16 +2673,6 @@ namespace SpiritMod
 		{
 			if (npc.whoAmI == infernalHit)
 				damage = 0;
-
-			if (coralSet)
-			{
-				for (int k = 0; k < 10; k++)
-				{
-					Dust.NewDust(npc.position, npc.width, npc.height, DustID.Coralstone, 2.5f, -2.5f, 0, Color.White, 0.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, DustID.Coralstone, 2.5f, -2.5f, 0, default, .34f);
-				}
-				npc.StrikeNPC(damage / 3, 1f, 0, crit);
-			}
 		}
 
 		public void Yoraiz0rEye()

@@ -22,9 +22,6 @@ namespace SpiritMod.Items.Accessory
 			Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().throwerGlove = true;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().throwerGlove = true;
 	}
 }

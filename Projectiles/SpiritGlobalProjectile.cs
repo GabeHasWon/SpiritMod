@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
-using SpiritMod.Buffs.Armor;
 using SpiritMod.Buffs.DoT;
 using SpiritMod.Items;
 using System;
@@ -28,32 +27,30 @@ namespace SpiritMod.Projectiles
 
 		public bool throwerGloveBoost = false;
 
-		float alphaCounter;
+		public int storedUseTime = 0;
 
 		public override bool PreDraw(Projectile projectile, ref Color lightColor)
 		{
-			Player player = Main.player[projectile.owner];
-
-			if (projectile.minion && player.GetModPlayer<MyPlayer>().stellarSet && player.HasBuff(ModContent.BuffType<StellarMinionBonus>()))
-			{
-				float sineAdd = (float)Math.Sin(alphaCounter) + 3;
-				Main.EntitySpriteDraw(TextureAssets.Extra[49].Value, projectile.Center - Main.screenPosition, null, new Color((int)(20f * sineAdd), (int)(16f * sineAdd), (int)(4f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + .25f), SpriteEffects.None, 0);
-			}
-
-			if (throwerGloveBoost && projectile.IsThrown())
+			if (throwerGloveBoost)
 			{
 				Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[projectile.type].Value.Width * 0.5f, projectile.height * 0.5f);
 				for (int k = 0; k < projectile.oldPos.Length; k++)
 				{
 					Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-					Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / projectile.oldPos.Length);
-					
+					Color color = projectile.GetAlpha(Color.Cyan with { A = 0 }) * ((float)(projectile.oldPos.Length - k) / projectile.oldPos.Length);
+
 					Main.EntitySpriteDraw(TextureAssets.Projectile[projectile.type].Value, drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0);
 				}
 			}
-			return true;
+
+			return base.PreDraw(projectile, ref lightColor);
 		}
 
+		public override void PostDraw(Projectile projectile, Color lightColor)
+		{
+			if (throwerGloveBoost)
+				projectile.QuickDraw(Main.spriteBatch, drawColor: projectile.GetAlpha(Color.Cyan with { A = 0 }));
+		}
 
 		public override void OnSpawn(Projectile projectile, IEntitySource source)
 		{
@@ -63,14 +60,18 @@ namespace SpiritMod.Projectiles
 
 				if (projectile.IsRanged() && modPlayer.throwerGlove && modPlayer.throwerStacks >= 7) //Thrower glove functionality
 				{
-					modPlayer.firedSharpshooter = true;
 					projectile.extraUpdates += 1;
 					projectile.scale *= 1.1f;
-					projectile.damage += (int)(projectile.damage / 4f + 0.5f);
+					projectile.damage = (int)(projectile.damage * 1.25f);
 					projectile.knockBack += 2;
+
 					throwerGloveBoost = true;
+					modPlayer.throwerStacks = 0;
 				}
 			}
+
+			if (source is EntitySource_ItemUse item)
+				storedUseTime = item.Item.useTime;
 		}
 
 		public override bool PreAI(Projectile projectile)
@@ -101,14 +102,11 @@ namespace SpiritMod.Projectiles
 				}
 			}
 
+			if (throwerGloveBoost && Main.rand.NextBool(3))
+				Dust.NewDustPerfect(projectile.Center, DustID.Electric, (projectile.velocity * .5f).RotatedByRandom(.1f), 100, default, Main.rand.NextFloat(.2f, .5f)).noGravity = true;
+
 			if (projectile.owner >= Main.maxPlayers || projectile.owner <= -1) //Check if owner is invalid
 				return true;
-
-			Player player = Main.player[projectile.owner];
-			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
-
-			if (projectile.minion && modPlayer.stellarSet && player.HasBuff(ModContent.BuffType<StellarMinionBonus>()))
-				alphaCounter += .04f;
 
 			return BowEffects(projectile);
 		}
@@ -141,7 +139,6 @@ namespace SpiritMod.Projectiles
 
 			Player player = Main.player[projectile.owner];
 			MyPlayer modPlayer = player.GetSpiritPlayer();
-
 
 			if (shock)
 			{
@@ -183,6 +180,18 @@ namespace SpiritMod.Projectiles
 
 			if (shotFromBismiteBow && Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 120, true);
+
+			// Jellynaut Helmet
+			if (modPlayer.jellynautHelm && modPlayer.jellynautStacks < 4 && projectile.IsMagic() && (target.life <= 0 || Main.rand.NextBool(8)) && !target.friendly && !target.SpawnedFromStatue)
+			{
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					Vector2 position = projectile.position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 20);
+					Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), position, new Vector2(1, -1), ModContent.ProjectileType<Magic.JellynautOrbiter>(), 0, 0, player.whoAmI).scale = Main.rand.NextFloat(.5f, 1f);
+
+					modPlayer.jellynautStacks++;
+				}
+			}
 		}
 
 		public override void Kill(Projectile projectile, int timeLeft)

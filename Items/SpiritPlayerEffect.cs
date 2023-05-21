@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameInput;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Items
 {
