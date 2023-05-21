@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
-using SpiritMod.Mechanics.CooldownItem;
 using SpiritMod.NPCs.Boss.Occultist.Particles;
 using SpiritMod.Particles;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 {
-	public class Headsplitter : ModItem, ICooldownItem
+	public class Headsplitter : ModItem, ITimerItem
 	{
 		private bool reverseSwing = false;
 		public override void SetStaticDefaults()
@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			Item.height = 40;
 			Item.useTime = 24;
 			Item.useAnimation = 24;
-			Item.useStyle = ItemUseStyleID.Rapier;
+			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 6;
 			Item.value = Item.sellPrice(0, 0, 20, 0);
 			Item.rare = ItemRarityID.Green;
@@ -39,6 +39,14 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
 			Item.autoReuse = true;
+		}
+
+		public override ModItem Clone(Item newEntity)
+		{
+			var clone = (Headsplitter)base.Clone(newEntity);
+			clone.reverseSwing = reverseSwing;
+
+			return clone;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -54,7 +62,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 		}
 
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
-		public override bool AltFunctionUse(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
+
+		public override bool AltFunctionUse(Player player) => player.ItemTimer<Headsplitter>() <= 0;
 
 		public override bool CanUseItem(Player player)
 		{
@@ -86,12 +95,14 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 					}
 				}
 
-				CooldownGItem.GetCooldown(Type, player, 180);
+				player.SetItemTimer<Headsplitter>(180);
 
 				return false;
 			}
 			return true;
 		}
+
+		public int TimerCount() => 1;
 
 		public override void AddRecipes()
 		{

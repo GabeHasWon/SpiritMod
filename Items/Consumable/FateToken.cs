@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
-using SpiritMod.Mechanics.CooldownItem;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
 using Terraria;
@@ -11,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
-	public class FateToken : ModItem, ICooldownItem
+	public class FateToken : ModItem, ITimerItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -39,7 +38,8 @@ namespace SpiritMod.Items.Consumable
 		public override bool? UseItem(Player player)
 		{
 			player.AddBuff(ModContent.BuffType<FateBlessing>(), 3600);
-			CooldownGItem.GetCooldown(Type, player, 7200); //Apply a cooldown for 2 minutes
+
+			player.SetItemTimer<FateToken>(7200);
 
 			Rectangle rect = player.getRect();
 			for (int i = 0; i < 20; i++)
@@ -61,7 +61,9 @@ namespace SpiritMod.Items.Consumable
 			return false;
 		}
 
-		public override bool CanUseItem(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
+		public override bool CanUseItem(Player player) => player.ItemTimer<FateToken>() <= 0;
+
+		public int TimerCount() => 1;
 	}
 
 	public class FateTokenParticle : Particle

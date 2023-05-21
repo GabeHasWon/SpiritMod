@@ -18,6 +18,10 @@ using SpiritMod.Projectiles.Summon;
 using SpiritMod.Items.Accessory.BowSummonItem;
 using SpiritMod.Projectiles.Summon.CimmerianStaff;
 using SpiritMod.Items.Accessory.GranitechDrones;
+using Terraria.DataStructures;
+using SpiritMod.Items.Accessory.Bauble;
+using SpiritMod.Items.Accessory.AceCardsSet;
+using SpiritMod.Projectiles;
 
 namespace SpiritMod.GlobalClasses.Players
 {
@@ -212,6 +216,38 @@ namespace SpiritMod.GlobalClasses.Players
 						Player.statMana = 0;
 				}
 			}
+		}
+
+		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+		{
+			//Bauble
+			if (Player.HasAccessory<Bauble>())
+			{
+				NPC npc = Main.npc[damageSource.SourceNPCIndex];
+				bool destructableNPC = npc != null && npc.value == 0 && npc.lifeMax <= 1;
+
+				if (Player.ownedProjectileCounts[ModContent.ProjectileType<IceReflector>()] > 0 && (damageSource.SourceProjectileIndex > 0 || destructableNPC))
+				{
+					if (destructableNPC)
+						npc.life = 0;
+
+					return false;
+				}
+
+				bool hitBelowHalf = Player.statLife > (Player.statLifeMax2 / 2) && (Player.statLife - damage) < (Player.statLifeMax2 / 2);
+				
+				if (Player.ItemTimer<Bauble>() <= 0 && hitBelowHalf)
+				{
+					Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_OnHurt(null), Player.Center, Vector2.Zero, ModContent.ProjectileType<IceReflector>(), 0, 0, Player.whoAmI);
+					proj.timeLeft = Bauble.shieldTime;
+					proj.netUpdate = true;
+
+					Player.AddBuff(ModContent.BuffType<BaubleResistance>(), Bauble.shieldTime);
+					Player.SetItemTimer<Bauble>(Bauble.cooldown);
+				}
+			}
+
+			return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
 		}
 
 		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)

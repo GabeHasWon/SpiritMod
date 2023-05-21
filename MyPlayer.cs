@@ -57,8 +57,6 @@ namespace SpiritMod
 		internal static bool swingingCheck;
 		internal static Item swingingItem;
 
-		public Dictionary<int, ushort> cooldowns = new();
-
 		public List<SpiritPlayerEffect> effects = new();
 		public List<SpiritPlayerEffect> removedEffects = new();
 		public SpiritPlayerEffect setbonus = null;
@@ -246,7 +244,6 @@ namespace SpiritMod
 		public float starplateGlitchIntensity;
 		public int clatterboneTimer;
 		public int roseTimer;
-		public int baubleTimer;
 		public bool concentrated; // For the leather armor set.
 		public int concentratedCooldown = 360;
 		public int stompCooldown = 30;
@@ -561,7 +558,6 @@ namespace SpiritMod
 			timScroll = false;
 			wheezeScale = false;
 			HellGaze = false;
-			Bauble = false;
 			geodeRanged = false;
 			bloodfireShield = false;
 			Phantom = false;
@@ -1238,14 +1234,7 @@ namespace SpiritMod
 					Main.projectile[p].timeLeft = 600;
 				}
 			}
-
-			if (Bauble && Player.statLife < (Player.statLifeMax2 >> 1) && baubleTimer <= 0)
-			{
-				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Main.player[Main.myPlayer].Center, Vector2.Zero, ModContent.ProjectileType<IceReflector>(), 0, 0, Main.myPlayer);
-				Player.endurance += .30f;
-				baubleTimer = 7200;
 			}
-		}
 
 		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
 		{
@@ -2584,10 +2573,6 @@ namespace SpiritMod
 				var textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
 				CombatText.NewText(textPos, new Color(121, 195, 237, 100), "Water Spout Charged!");
 			}
-
-			foreach (int entry in cooldowns.Keys)
-				if (cooldowns[entry] > 0)
-					cooldowns[entry]--;
 		}
 
 		private void TeslaStrike(Player player)

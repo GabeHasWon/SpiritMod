@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Mechanics.CooldownItem;
 using SpiritMod.Projectiles.Bullet.Crimbine;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 {
-	public class Crimbine : ModItem, ICooldownItem
+	public class Crimbine : ModItem, ITimerItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -38,13 +38,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			Item.crit = 6;
 		}
 
-		public override bool AltFunctionUse(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
+		public override bool AltFunctionUse(Player player) => player.ItemTimer<Crimbine>() <= 0;
 
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
 		public override void HoldItem(Player player)
 		{
-			if (CooldownGItem.GetCooldown(Type, player) == 1) 
+			if (player.ItemTimer<Crimbine>() == 1) 
 			{
 				if (Main.netMode != NetmodeID.Server)
 					SoundEngine.PlaySound(SoundID.MaxMana);
@@ -70,7 +70,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 				if (Main.netMode != NetmodeID.Server)
 					SoundEngine.PlaySound(SoundID.Item95);
 
-				CooldownGItem.GetCooldown(Type, player, 300);
+				player.SetItemTimer<Crimbine>(300);
 
 				type = ModContent.ProjectileType<CrimbineAmalgam>();
 				velocity /= 4;
@@ -92,6 +92,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 					type = ModContent.ProjectileType<CrimbineBone>();
 			}
 		}
+
+		public int TimerCount() => 1;
 
 		public override void AddRecipes()
 		{

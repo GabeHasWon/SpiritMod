@@ -26,7 +26,6 @@ using SpiritMod.Mechanics.CollideableNPC;
 using SpiritMod.GlobalClasses.Players;
 using System.Linq;
 using SpiritMod.Utilities.ILEdits;
-using SpiritMod.Mechanics.CooldownItem;
 
 namespace SpiritMod.Utilities
 {

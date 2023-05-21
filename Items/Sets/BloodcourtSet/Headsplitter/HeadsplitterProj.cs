@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			get => Projectile.ai[1];
 			set => Projectile.ai[1] = (float)value;
 		}
-		private const int Size = 50;
+		private const int Size = 60;
 		private float distance = Size;
 
 		private bool ReverseSwing => Projectile.velocity.X < 0;
@@ -92,6 +92,9 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			if (player.itemTime < 2)
 				Projectile.active = false;
 			player.itemRotation = MathHelper.WrapAngle((float)Radians + ((player.direction < 0) ? 0 : MathHelper.Pi));
+
+			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)Radians + 1.57f);
+			player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (float)Radians + 1.57f);
 
 			if (UseCounter < (player.itemTimeMax - 8)) //Do fancy dusts
 			{

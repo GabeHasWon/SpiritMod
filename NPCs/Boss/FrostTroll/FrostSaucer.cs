@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Accessory;
+using SpiritMod.Items.Accessory.Bauble;
 using SpiritMod.Items.DonatorItems.FrostTroll;
 using System.IO;
 using Terraria;
