@@ -13,7 +13,9 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			get => (int)NPC.ai[0];
 			set => NPC.ai[0] = value;
 		}
-		private readonly int counterMax = 30;
+
+		private const int IDLE_TIME = 20;
+		private const int OPEN_TIME = 30;
 
 		public override void SetStaticDefaults()
 		{
@@ -42,21 +44,16 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 
 		public override void AI()
 		{
-			if (NPC.frameCounter >= (Main.npcFrameCount[Type] - 1) && Counter < counterMax)
+			NPC.TargetClosest(false);
+			Player player = Main.player[NPC.target];
+
+			if (++Counter > IDLE_TIME && Counter < (IDLE_TIME + OPEN_TIME))
 			{
 				float range = 130;
 
-				if (Counter == 0)
-				{
-					foreach (Player player in Main.player)
-					{
-						if (NPC.Distance(player.Center) <= range)
-						{
-							RemoveCoins(player);
-							break;
-						}
-					}
-				}
+				if (Counter == (IDLE_TIME + 1))
+					if (NPC.Distance(player.Center) <= range)
+						RemoveCoins(player);
 
 				for (int i = 0; i < 2; i++)
 				{
@@ -64,12 +61,14 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 					dust.velocity = dust.position.DirectionTo(NPC.Center) * Main.rand.NextFloat(2.0f, 8.0f);
 					dust.noGravity = true;
 				}
-				Counter++;
 			}
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
+			if (Main.netMode == NetmodeID.Server)
+				return;
+
 			if (NPC.life <= 0)
 			{
 				for (int g = 0; g < 6; g++)
@@ -131,23 +130,22 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			{
 				SoundEngine.PlaySound(SoundID.Coins, player.Center);
 				NPC.extraValue = player.lostCoins;
-
-				NPC.netUpdate = true;
 			}
 		}
 
 		public override void FindFrame(int frameHeight)
 		{
-			if (Counter < counterMax)
+			if (Counter < (IDLE_TIME + OPEN_TIME))
 			{
 				if (NPC.frameCounter < (Main.npcFrameCount[Type] - 1))
-					NPC.frameCounter += 0.2f;
+					NPC.frameCounter += Main.npcFrameCount[Type] / (float)IDLE_TIME;
 			}
 			else
 			{
 				if (NPC.frameCounter > 0)
 					NPC.frameCounter -= 0.2f;
 			}
+
 			NPC.frame.Y = frameHeight * (int)NPC.frameCounter;
 		}
 	}

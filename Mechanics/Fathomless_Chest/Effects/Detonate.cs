@@ -8,6 +8,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Effects
 {
 	public class Detonate : ChanceEffect
 	{
+		public override byte WhoAmI => 5;
+
 		public override bool Unlucky => true;
 
 		public override void Effects(Player player, Point16 tileCoords, IEntitySource source)

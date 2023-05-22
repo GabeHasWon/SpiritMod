@@ -36,11 +36,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Partystarter
 			Item.useAmmo = AmmoID.Bullet;
 		}
 
+		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
+			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 70f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+				position += muzzleOffset;
+
 			if (type == ProjectileID.Bullet)
 				type = ModContent.ProjectileType<PartyStarterBullet>();
 		}
-		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 	}
 }

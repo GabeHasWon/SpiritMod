@@ -15,7 +15,9 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 		{
 			DisplayName.SetDefault("Arc Lash");
 			Tooltip.SetDefault("Does more damage towards the end of its cycle");
+			Item.staff[Item.type] = true;
 		}
+
 		public override void SetDefaults()
 		{
 			Item.damage = 12;
@@ -27,7 +29,6 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 			Item.useTime = 30;
 			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.knockBack = 3;
 			Item.value = Item.sellPrice(0, 1, 10, 0);
@@ -37,6 +38,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 			Item.shoot = ModContent.ProjectileType<ArcLashProj>();
 			Item.shootSpeed = 8;
 		}
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
         {
 			Vector2 direction = velocity;
@@ -49,6 +51,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 	}
 	public class ArcLashProj : ModProjectile
     {
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Arc Lash");
 
 		private readonly int cycletime = 40;
@@ -69,7 +73,6 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.timeLeft = cycletime;
-            Projectile.alpha = 255;
         }
 
         public override void AI()
@@ -88,7 +91,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 			Owner.itemTime = 2;
 			Owner.itemAnimation = 2;
 
-			if(Progress == cycletime/2) {
+			if(Progress == cycletime / 2) {
 				Owner.CheckMana(Owner.HeldItem, Owner.HeldItem.mana, true);
 
 				if (Owner.HeldItem.UseSound.HasValue)

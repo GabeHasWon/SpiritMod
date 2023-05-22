@@ -225,23 +225,20 @@ namespace SpiritMod
 					break;
 				case MessageType.FathomlessData:
 					byte effectIndex = reader.ReadByte();
-					player = reader.ReadByte();
+					byte playerIndex = reader.ReadByte();
 					(ushort i, ushort j) = (reader.ReadUInt16(), reader.ReadUInt16());
 
-					if (Main.netMode == NetmodeID.Server)
+					if (Main.netMode == NetmodeID.Server) //If the server recieves the packet, send to other clients
 					{
-						//If received by the server, send to all clients instead
 						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.FathomlessData, 4);
 						packet.Write(effectIndex);
-						packet.Write(player);
+						packet.Write(playerIndex);
 						packet.Write(i);
 						packet.Write(j);
-						packet.Send();
-
-						break;
+						packet.Send(-1, whoAmI);
 					}
 
-					ChanceEffectManager.effectIndex[effectIndex].Trigger(Main.player[player], new Point16(i, j));
+					ChanceEffectManager.effectIndex[effectIndex].Trigger(Main.player[playerIndex], new Point16(i, j));
 					break;
 				case MessageType.StarjinxData:
 					//TBD in future

@@ -37,12 +37,15 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override bool PreAI(NPC npc)
 		{
-			Vector2 zoom = Main.GameViewMatrix.Zoom;
+			if (!Main.dedServ)
+			{
+				Vector2 zoom = Main.GameViewMatrix.Zoom;
 
-			Rectangle hoverBox = npc.getRect();
-			hoverBox.Inflate((int)zoom.X, (int)zoom.Y);
+				Rectangle hoverBox = npc.getRect();
+				hoverBox.Inflate((int)zoom.X, (int)zoom.Y);
 
-			isHovering = hoverBox.Contains(Main.MouseWorld.ToPoint());
+				isHovering = hoverBox.Contains(Main.MouseWorld.ToPoint());
+			}
 
 			return base.PreAI(npc);
 		}
