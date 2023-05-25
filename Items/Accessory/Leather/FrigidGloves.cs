@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Accessory.Leather
 
 		public override void SetDefaults()
 		{
-			Item.width = 26;
-			Item.height = 34;
+			Item.width = 24;
+			Item.height = 32;
 			Item.rare = ItemRarityID.Blue;
 			Item.value = 1200;
 			Item.accessory = true;
