@@ -14,14 +14,14 @@ namespace SpiritMod.Items.Pets
 		{
 			DisplayName.SetDefault("Caged Moonlight");
 			Tooltip.SetDefault("Summons a faerie to protect you\n'Here resides a being comprised of pure starfire.'\n'Thine enemies shall be harassed by luminous lances.'");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Pets/CagedMoonlight_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
 		public override void SetDefaults()
 		{
 			Item.damage = 0;
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.shoot = ModContent.ProjectileType<HarpyPet>();
+			Item.shoot = ModContent.ProjectileType<FaeriePet>();
 			Item.width = 16;
 			Item.height = 30;
 			Item.useAnimation = 20;
@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Pets
 			Item.rare = ItemRarityID.Orange;
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(0, 3, 50, 0);
-			Item.buffType = ModContent.BuffType<HarpyPetBuff>();
+			Item.buffType = ModContent.BuffType<FaeriePetBuff>();
 		}
 
 		public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -45,15 +45,5 @@ namespace SpiritMod.Items.Pets
 		}
 
 		public override bool CanUseItem(Player player) => player.miscEquips[1].IsAir;
-
-		public override void AddRecipes()
-		{
-			Recipe modRecipe = CreateRecipe();
-			modRecipe.AddIngredient(ModContent.ItemType<Consumable.Potion.MoonJelly>());
-			modRecipe.AddIngredient(ItemID.CrystalShard, 10);
-			modRecipe.AddIngredient(ItemID.SoulofLight, 5);
-			modRecipe.AddTile(TileID.MythrilAnvil);
-			modRecipe.Register();
-		}
 	}
 }

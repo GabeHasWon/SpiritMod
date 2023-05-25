@@ -24,7 +24,7 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 			Projectile.aiStyle = -1;
 			Projectile.penetrate = -1;
 			Projectile.timeLeft = 180;
-			Projectile.tileCollide = true;
+			Projectile.tileCollide = false;
 			Projectile.alpha = 255;
 			Projectile.extraUpdates = 4;
 		}
@@ -53,7 +53,27 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 		public override void AI()
 		{
 			if (!Deployed)
+			{
+				if (WorldGen.SolidOrSlopedTile(Framing.GetTileSafely(Projectile.Center)))
+				{
+					if (TryPair())
+					{
+						SoundEngine.PlaySound(SoundID.Item101, Projectile.Center);
+						Projectile.localAI[1] = 0;
+					}
+
+					Projectile.alpha = 0;
+					Projectile.extraUpdates = 0;
+					Projectile.velocity = Vector2.Zero;
+
+					if (!Main.dedServ)
+						ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center, Right ? Color.Orange : Color.Cyan, 50, 12));
+					for (int i = 0; i < 12; i++)
+						Dust.NewDustPerfect(Projectile.Center, Right ? DustID.FireworkFountain_Yellow : DustID.Electric, Main.rand.NextVector2Unit() * 2.2f, 0, default, .5f).noGravity = true;
+				}
+
 				return;
+			}
 
 			Projectile.timeLeft = 2;
 
@@ -115,7 +135,7 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 										zipline.vFadeout = .5f;
 								}
 
-								return;
+								break;
 							}
 						}
 					}
@@ -135,29 +155,6 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 				playerProgress[i] = playerProgress[i - 1];
 
 			playerProgress[0] = progress;
-		}
-
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			if (!Deployed)
-			{
-				if (TryPair())
-				{
-					SoundEngine.PlaySound(SoundID.Item101, Projectile.Center);
-					Projectile.localAI[1] = 0;
-				}
-
-				Projectile.alpha = 0;
-				Projectile.extraUpdates = 0;
-				Projectile.position += Vector2.Normalize(Projectile.velocity) * 18f;
-				Projectile.velocity = Vector2.Zero;
-
-				if (!Main.dedServ)
-					ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center, Right ? Color.Orange : Color.Cyan, 50, 12));
-				for (int i = 0; i < 12; i++)
-					Dust.NewDustPerfect(Projectile.Center, Right ? DustID.FireworkFountain_Yellow : DustID.Electric, Main.rand.NextVector2Unit() * 2.2f, 0, default, .5f).noGravity = true;
-			}
-			return false;
 		}
 
 		public override void Kill(int timeLeft)

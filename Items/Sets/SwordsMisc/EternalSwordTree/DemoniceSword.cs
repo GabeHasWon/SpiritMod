@@ -4,6 +4,7 @@ using SpiritMod.Projectiles.DonatorItems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 {
 	public class DemoniceSword : ModItem
@@ -14,7 +15,6 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 			Tooltip.SetDefault("Shoots out an icy razor that clings to tiles upon hitting them");
 
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -37,19 +37,16 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.NextBool(4)) {
+			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 180);
-			}
 		}
+
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
-			{
-				if (Main.rand.NextBool(5)) {
-					int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.UnusedWhiteBluePurple);
-					Main.dust[dust].noGravity = true;
-				}
-			}
+			if (Main.rand.NextBool(5))
+				Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.UnusedWhiteBluePurple).noGravity = true;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

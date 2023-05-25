@@ -9,7 +9,6 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Buffs
 		{
 			DisplayName.SetDefault("Swimming Fatigue");
 			Description.SetDefault("You can't swim very well for a bit");
-
 			Main.debuff[Type] = true;
 		}
 	}

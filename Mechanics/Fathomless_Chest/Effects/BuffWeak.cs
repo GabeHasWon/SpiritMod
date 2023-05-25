@@ -6,6 +6,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Effects
 {
 	public class BuffWeak : ChanceEffect
 	{
+		public override byte WhoAmI => 1;
+
 		public override bool Unlucky => true;
 
 		public override void Effects(Player player, Point16 tileCoords, IEntitySource source)

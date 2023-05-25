@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Pet;
 using SpiritMod.Projectiles.Pet;
 using Terraria;
@@ -13,12 +14,13 @@ namespace SpiritMod.Items.Pets
 		{
 			DisplayName.SetDefault("Ring of Willpower");
 			Tooltip.SetDefault("Summons a Lantern Power Battery to light the way");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.shoot = ModContent.ProjectileType<Lantern>();
+			Item.shoot = ModContent.ProjectileType<LanternPet>();
 			Item.width = 16;
 			Item.height = 30;
 			Item.useAnimation = 20;
@@ -35,16 +37,9 @@ namespace SpiritMod.Items.Pets
 				player.AddBuff(Item.buffType, 3600, true);
 		}
 
-		public override bool CanUseItem(Player player) => player.miscEquips[1].IsAir;
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
-		public override void AddRecipes()
-		{
-			Recipe modRecipe = CreateRecipe(1);
-			modRecipe.AddIngredient(ItemID.MeteoriteBar, 10);
-			modRecipe.AddIngredient(ItemID.FallenStar, 3);
-			modRecipe.AddIngredient(ItemID.Emerald, 1);
-			modRecipe.AddTile(TileID.Anvils);
-			modRecipe.Register();
-		}
+		public override bool CanUseItem(Player player) => player.miscEquips[1].IsAir;
 	}
 }

@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coiled Cleats");
+			DisplayName.SetDefault("Turbo Cleats");
 			Tooltip.SetDefault("Slightly increases movement speed and acceleration\nGain a huge speed boost below half health");
 		}
 

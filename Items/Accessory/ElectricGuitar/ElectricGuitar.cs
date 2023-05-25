@@ -140,6 +140,8 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 		public NPC currentEnemy;
 		int animCounter = 5;
 
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Guitar");
 
 		public override void SetDefaults()
@@ -266,10 +268,11 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 	public class ElectricGuitarProjPlayer : ModProjectile
 	{
 		public float x = 0f;
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Lightning Zap");
-		}
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Lightning Zap");
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 4;
@@ -281,6 +284,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 			Projectile.timeLeft = 66;
 			Projectile.tileCollide = false;
 		}
+
 		public override void AI()
 		{
 			Projectile.localAI[0] += 1f;

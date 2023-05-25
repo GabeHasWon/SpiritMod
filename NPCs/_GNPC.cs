@@ -36,6 +36,8 @@ using SpiritMod.NPCs.BlueMoon.Lumantis;
 using SpiritMod.NPCs.BlueMoon.MadHatter;
 using SpiritMod.NPCs.BlueMoon.LunarSlime;
 using SpiritMod.Buffs.Pet;
+using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Pets;
 
 namespace SpiritMod.NPCs
 {
@@ -637,6 +639,11 @@ namespace SpiritMod.NPCs
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Warhead>(), false);
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<ShortFuse>(), false);
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<LongFuse>(), false);
+			}
+			else if (type == NPCID.BestiaryGirl)
+			{
+				if (Main.BestiaryDB.GetCompletedPercentByMod(Mod) == 1f)
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<CagedMoonlight>(), false);
 			}
 		}
 

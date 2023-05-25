@@ -9,6 +9,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Effects
 {
 	public class PlaceEvil : ChanceEffect
 	{
+		public override byte WhoAmI => 6;
+
 		public override bool Unlucky => true;
 
 		public override bool Selectable(Point16 tileCoords)

@@ -4,6 +4,7 @@ using SpiritMod.Projectiles.DonatorItems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 {
 	public class DemoncomboSword : ModItem
@@ -12,9 +13,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 		{
 			DisplayName.SetDefault("Eternal Sword");
 			Tooltip.SetDefault("Shoots out apparitions of blades");
-
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -40,16 +39,18 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.CursedInferno, 180);
 		}
+
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.NextBool(5))
 			{
-				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.ShadowbeamStaff);
-				Main.dust[dust].velocity *= 0f;
-				Main.dust[dust].scale = 1.5f;
-				Main.dust[dust].noGravity = true;
+				Dust dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.ShadowbeamStaff);
+				dust.velocity *= 0f;
+				dust.scale = 1.5f;
+				dust.noGravity = true;
 			}
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

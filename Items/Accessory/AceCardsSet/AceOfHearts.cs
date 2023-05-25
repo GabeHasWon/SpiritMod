@@ -1,10 +1,9 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.AceCardsSet
 {
-	public class AceOfHearts : ModItem
+	public class AceOfHearts : AccessoryItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -20,7 +19,5 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;
 		}
-
-		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().AceOfHearts = true;
 	}
 }

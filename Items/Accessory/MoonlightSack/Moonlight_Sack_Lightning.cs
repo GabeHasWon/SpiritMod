@@ -11,6 +11,8 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 	{
 		public float x = 0f;
 
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Moonlight Lightning");
 
 		public override void SetDefaults()

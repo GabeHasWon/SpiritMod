@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 {
 	public class OpalFrogProjectile : GlobalProjectile
 	{
-		private Player GetPlayer(Projectile projectile) => Main.player[projectile.owner];
-		private OpalFrogPlayer GetOpalFrogPlayer(Projectile projectile) => GetPlayer(projectile).GetModPlayer<OpalFrogPlayer>();
+		private static Player GetPlayer(Projectile projectile) => Main.player[projectile.owner];
+		private static OpalFrogPlayer GetOpalFrogPlayer(Projectile projectile) => GetPlayer(projectile).GetModPlayer<OpalFrogPlayer>();
 
 		//Increase pull speed based on hook stats
 		public override void GrapplePullSpeed(Projectile projectile, Player player, ref float speed)

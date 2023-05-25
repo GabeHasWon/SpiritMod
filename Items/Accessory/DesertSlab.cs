@@ -22,11 +22,10 @@ namespace SpiritMod.Items.Accessory
 			Item.value = Item.sellPrice(0, 0, 15, 0);
 			Item.rare = ItemRarityID.Green;
 		}
+
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			if (player.ZoneDesert) {
-				player.buffImmune[BuffID.WindPushed] = true;
-			}
+			if (player.ZoneDesert) player.buffImmune[BuffID.WindPushed] = true;
 		}
 	}
 }

@@ -46,6 +46,7 @@ using Terraria.IO;
 using static SpiritMod.Utilities.ChestPoolUtils;
 using Terraria.GameContent.Events;
 using SpiritMod.Items.Equipment.ZiplineGun;
+using SpiritMod.Items.DonatorItems;
 
 namespace SpiritMod
 {
@@ -1373,11 +1374,12 @@ namespace SpiritMod
 			{
 				new ChestInfo(new int[] { ModContent.ItemType<AccursedBlade>(), ModContent.ItemType<OldCross>() }),
 				new ChestInfo(ItemID.SuspiciousLookingEye, 1, 0.5f),
+				new ChestInfo(ModContent.ItemType<MysticalCage>(), 1, 0.15f),
 				new ChestInfo(ModContent.ItemType<SepulchreArrow>(), WorldGen.genRand.Next(20, 50), 0.5f),
 				new ChestInfo(ItemID.Book, WorldGen.genRand.Next(1, 4)),
 				new ChestInfo(new int[]{ItemID.SilverBar, ItemID.GoldBar, ItemID.TungstenBar, ItemID.PlatinumBar }, WorldGen.genRand.Next(5, 12), 0.5f),
 				new ChestInfo(potions, WorldGen.genRand.Next(2, 4), 0.66f),
-				new ChestInfo((WorldGen.crimson) ? wrathPot : potionscrim, WorldGen.genRand.Next(2, 4), 0.66f),
+				new ChestInfo(WorldGen.crimson ? wrathPot : potionscrim, WorldGen.genRand.Next(2, 4), 0.66f),
 				new ChestInfo(moddedMaterials, WorldGen.genRand.Next(2, 6), 0.5f),
 				new ChestInfo(ItemID.CursedTorch, WorldGen.genRand.Next(15, 31), 0.75f),
 				new ChestInfo(ItemID.GoldCoin, WorldGen.genRand.Next(1, 3)),

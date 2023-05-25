@@ -7,6 +7,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Effects
 {
 	public class CoinPortal : ChanceEffect
 	{
+		public override byte WhoAmI => 2;
+
 		public override bool Unlucky => false;
 
 		public override void Effects(Player player, Point16 tileCoords, IEntitySource source) 

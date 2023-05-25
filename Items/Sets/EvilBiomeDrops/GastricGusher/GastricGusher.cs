@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gastric Gusher");
-			Tooltip.SetDefault("Sprays a cone of harmful acid\nCharge to increase range and damage");
+			Tooltip.SetDefault("Consumes gel\nSprays a cone of harmful acid\nCharge to increase range and damage");
 		}
 
 		public override void SetDefaults()

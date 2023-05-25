@@ -93,12 +93,9 @@ namespace SpiritMod.NPCs.AsteroidDebris
 		{
 			if (fadingIn)
 			{
-				if (NPC.alpha > 0)
-					NPC.alpha -= 255 / 10;
-				else
+				NPC.alpha = Math.Max(0, NPC.alpha - (255 / 10));
+				if (NPC.alpha == 0)
 					fadingIn = false;
-				if (NPC.alpha < 0)
-					NPC.alpha = 0;
 
 				//This is used in tandem with custom NPC spawning in MyPlayer to make sure it doesn't spawn on screen
 				Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
@@ -175,6 +172,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 		{
 			if (newVelocity == Vector2.Zero || Cooldown > 0)
 				return;
+
 			NPC.velocity += newVelocity;
 			NPC.netUpdate = true;
 			Cooldown = 5;
@@ -188,8 +186,8 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				float gradient = 1f - (float)(NPC.life / (float)NPC.lifeMax);
 				offset = Main.rand.NextFloat((float)(gradient * 3f));
 				Texture2D glowTex = ModContent.Request<Texture2D>("SpiritMod/Effects/Masks/CircleGradient").Value;
-				Color glowCol = Color.Goldenrod * gradient;
-				glowCol.A = 0;
+				Color glowCol = (Color.Goldenrod * gradient) with { A = 0 };
+				
 				spriteBatch.Draw(glowTex, NPC.Center - screenPos, null, glowCol, NPC.rotation, glowTex.Size() / 2, NPC.scale * .35f, SpriteEffects.None, 0f);
 				Utilities.DrawGodray.DrawGodrays(spriteBatch, NPC.Center - screenPos, Color.Goldenrod * (gradient * .75f), gradient * 45f, 20f, 5);
 			}
@@ -197,7 +195,9 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			Texture2D texture = TextureAssets.Npc[NPC.type].Value;
 			Rectangle rect = new Rectangle(texture.Width / 2 * (Shiny ? 1 : 0), texture.Height / Main.npcFrameCount[NPC.type] * npcFrame, 
 				texture.Width / 2 - 2, texture.Height / Main.npcFrameCount[NPC.type] - 2);
+			
 			spriteBatch.Draw(texture, NPC.Center + new Vector2(offset) - screenPos, rect, NPC.GetAlpha(drawColor), NPC.rotation, rect.Size() / 2, NPC.scale, SpriteEffects.None, 0f);
+			
 			return false;
 		}
 

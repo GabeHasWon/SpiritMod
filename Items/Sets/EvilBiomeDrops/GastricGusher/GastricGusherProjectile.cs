@@ -64,7 +64,11 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 				p.itemAnimation = p.HeldItem.useAnimation;
 			}
 
-			GItem.ArmsTowardsMouse(p);
+			float compRotation = Projectile.rotation - (1.57f - (.5f * Projectile.direction));
+			p.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Quarter, compRotation);
+			p.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Quarter, compRotation);
+
+			//GItem.ArmsTowardsMouse(p);
 			Projectile.Center = p.Center + new Vector2(21, 12 + p.gfxOffY);
 
 			if (_charge > _endCharge && _endCharge != -1) //Kill projectile when done shooting - does nothing special but allowed for a cooldown timer before polish

@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.GraveyardTome
 			Projectile.scale = 0f;
 		}
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => false;
+		public override bool? CanDamage() => false;
 
 		private ref float Direction => ref Projectile.ai[0];
 		private ref float Timer => ref Projectile.ai[1];

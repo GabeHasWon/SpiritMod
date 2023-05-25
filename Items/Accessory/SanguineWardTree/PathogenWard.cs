@@ -1,4 +1,3 @@
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,13 +7,12 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 	public class PathogenWard : ModItem
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pathogen Ward");
 			Tooltip.SetDefault("A bloody ward surrounds you, inflicting Blood Corruption to nearby enemies\nKilling enemies within the aura restores some life\nHearts are more likely to drop from enemies\nProvides immunity to the 'Poisoned' buff");
-
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -24,11 +22,13 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 			Item.rare = ItemRarityID.LightRed;
 			Item.accessory = true;
 		}
+
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.GetSpiritPlayer().vitaStone = true;
 			player.buffImmune[BuffID.Poisoned] = true;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

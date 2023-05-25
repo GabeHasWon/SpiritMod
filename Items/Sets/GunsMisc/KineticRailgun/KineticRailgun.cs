@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.KineticRailgun
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tesla Cannon");
-			Tooltip.SetDefault("Consumes gel\nDoes more damage to single targets \n'Zap your enemies to oblivion!'");
+			Tooltip.SetDefault("Consumes gel\nDoes more damage to single targets\n'Zap your enemies to oblivion!'");
 		}
 
 		public override void SetDefaults()

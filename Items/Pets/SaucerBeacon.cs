@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Pet;
 using SpiritMod.Projectiles.Pet;
 using Terraria;
@@ -13,6 +14,7 @@ namespace SpiritMod.Items.Pets
 		{
 			DisplayName.SetDefault("Support Beacon");
 			Tooltip.SetDefault("Calls in Martian Reinforcements!");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
 		public override void SetDefaults()
@@ -29,6 +31,9 @@ namespace SpiritMod.Items.Pets
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 				player.AddBuff(Item.buffType, 3600, true);
 		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override bool CanUseItem(Player player) => player.miscEquips[0].IsAir;
 	}

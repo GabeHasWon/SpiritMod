@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Mechanics.CooldownItem;
 using SpiritMod.Projectiles.Magic;
+using SpiritMod.Utilities;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
-	public class InfernalStaff : ModItem, ICooldownItem
+	public class InfernalStaff : ModItem, ITimerItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -36,7 +36,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			CooldownGItem.GetCooldown(Type, player, 180);
+			player.SetItemTimer<InfernalStaff>(180);
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -46,6 +46,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 			return false;
 		}
 
-		public override bool CanUseItem(Player player) => CooldownGItem.GetCooldown(Type, player) == 0;
+		public override bool CanUseItem(Player player) => player.ItemTimer<InfernalStaff>() <= 0;
+
+		public int TimerCount() => 1;
 	}
 }

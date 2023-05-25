@@ -14,6 +14,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 {
 	public abstract class ChanceEffect
 	{
+		public abstract byte WhoAmI { get; }
+
 		public virtual bool Unlucky => false;
 
 		public virtual bool Selectable(Point16 tileCoords) => true;
@@ -26,24 +28,27 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 
 			Effects(player, tileCoords, new EntitySource_TileBreak(tileCoords.X, tileCoords.Y));
 
-			OnKillVase(player, tileCoords, source);
-
-			//Do mandantory luck VFX
-			for (int d = 0; d < 9; d++)
+			if (Main.netMode != NetmodeID.Server)
 			{
-				Vector2 speed = new Vector2((float)(-1 * Main.rand.Next(40, 70) * 0.00999999977648258 + Main.rand.Next(-20, 21) * 0.4f));
+				OnKillVase(player, tileCoords, source);
 
-				Projectile proj = Projectile.NewProjectileDirect(source, new Vector2((float)(tileCoords.X * 16) + 8 + speed.X, (float)(tileCoords.Y * 16) + 12 + speed.Y), speed, ModContent.ProjectileType<Visual_Projectile>(), 0, 0f, player.whoAmI, 0.0f, 0.0f);
-				proj.scale = Main.rand.Next(30, 150) * 0.01f;
+				//Do mandantory luck VFX
+				for (int d = 0; d < 9; d++)
+				{
+					Vector2 speed = new Vector2((float)(-1 * Main.rand.Next(40, 70) * 0.00999999977648258 + Main.rand.Next(-20, 21) * 0.4f));
+
+					Projectile proj = Projectile.NewProjectileDirect(source, new Vector2((float)(tileCoords.X * 16) + 8 + speed.X, (float)(tileCoords.Y * 16) + 12 + speed.Y), speed, ModContent.ProjectileType<Visual_Projectile>(), 0, 0f, player.whoAmI, 0.0f, 0.0f);
+					proj.scale = Main.rand.Next(30, 150) * 0.01f;
+				}
+
+				Player localP = Main.LocalPlayer;
+
+				Color color = Unlucky ? new Color(255, 150, 150) : new Color(150, 255, 150);
+				string text = Unlucky ? "Bad Luck!" : "Good Luck!";
+
+				CombatText combatText = Main.combatText[CombatText.NewText(new Rectangle(tileCoords.X * 16, tileCoords.Y * 16, localP.width, localP.height), color, text, false, false)];
+				NetMessage.SendData(MessageID.CombatTextInt, -1, -1, NetworkText.FromLiteral(combatText.text), (int)combatText.color.PackedValue, combatText.position.X, combatText.position.Y, 0.0f, 0, 0, 0);
 			}
-
-			Player localP = Main.LocalPlayer;
-
-			Color color = Unlucky ? new Color(255, 150, 150) : new Color(150, 255, 150);
-			string text = Unlucky ? "Bad Luck!" : "Good Luck!";
-
-			CombatText combatText = Main.combatText[CombatText.NewText(new Rectangle(tileCoords.X * 16, tileCoords.Y * 16, localP.width, localP.height), color, text, false, false)];
-			NetMessage.SendData(MessageID.CombatTextInt, -1, -1, NetworkText.FromLiteral(combatText.text), (int)combatText.color.PackedValue, combatText.position.X, combatText.position.Y, 0.0f, 0, 0, 0);
 		}
 
 		public virtual void Effects(Player player, Point16 tileCoords, IEntitySource source)
@@ -66,13 +71,12 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				Gore gore = Gore.NewGoreDirect(source, tileCoords.ToVector2() * 16, Vector2.Zero, 99, 1.1f);
 				gore.velocity *= 0.6f;
 
-				if (g < 5 && !Main.dedServ && Main.netMode != NetmodeID.Server)
+				if (g < 5)
 				{
 					gore = Gore.NewGoreDirect(source, tilePos + new Vector2(0, 4), Vector2.Zero, ModContent.GetInstance<SpiritMod>().Find<ModGore>("FathomlessChest" + (g + 1)).Type, 1f);
 					gore.velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.5f, 1.8f);
 				}
 			}
-
 		}
 	}
 
@@ -86,7 +90,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			foreach (Type type in effects)
 			{
 				ChanceEffect chanceEffect = (ChanceEffect)Activator.CreateInstance(type);
-				effectIndex.Add(chanceEffect); //These may be added asynchronously between clients
+				effectIndex.Insert(chanceEffect.WhoAmI, chanceEffect);
 			}
 		}
 	}

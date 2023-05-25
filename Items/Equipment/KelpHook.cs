@@ -20,8 +20,9 @@ namespace SpiritMod.Items.Equipment
 		{
 			Item.CloneDefaults(ItemID.AmethystHook);
 			Item.shootSpeed = 12f; // how quickly the hook is shot.
-			Item.shoot = ProjectileType<KelpHookHead>();
+			Item.shoot = ProjectileType<KelpHookProj>();
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
@@ -32,7 +33,7 @@ namespace SpiritMod.Items.Equipment
 		}
 	}
 
-	internal class KelpHookHead : ModProjectile
+	internal class KelpHookProj : ModProjectile
 	{
 		public override void SetStaticDefaults()
 			=> DisplayName.SetDefault("Kelp Hook");
@@ -60,7 +61,6 @@ namespace SpiritMod.Items.Equipment
 		public override float GrappleRange() => Main.player[Projectile.owner].wet ? 425 : 325;
 
 		public override void NumGrappleHooks(Player player, ref int numHooks) => numHooks = 1;
-
 
 		public override void GrappleRetreatSpeed(Player player, ref float speed)
 		{

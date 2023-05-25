@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using SpiritMod.Dusts;
 using Terraria;
 using Terraria.ModLoader;
 

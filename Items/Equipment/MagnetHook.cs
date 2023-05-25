@@ -17,11 +17,11 @@ namespace SpiritMod.Items.Equipment
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.AmethystHook);
-			Item.shoot = ModContent.ProjectileType<MagnetHookProjectile>();
+			Item.shoot = ModContent.ProjectileType<MagnetHookProj>();
 		}
 	}
 
-	internal class MagnetHookProjectile : ModProjectile
+	internal class MagnetHookProj : ModProjectile
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("${ProjectileName.GemHookAmethyst}");
 

@@ -9,6 +9,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Effects
 {
 	public class ConvertGems : ChanceEffect
 	{
+		public override byte WhoAmI => 3;
+
 		public override bool Unlucky => false;
 
 		public override bool Selectable(Point16 tileCoords)

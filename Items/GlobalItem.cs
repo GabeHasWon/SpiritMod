@@ -734,7 +734,7 @@ namespace SpiritMod.Items
 			return Main.rand.NextFloat(1f) > chance;
 		}
 
-		/// <summary>Aims the player's arms to the given radians. If no player is passed, assumes <see cref="Main.LocalPlayer"/>.</summary>
+		/*/// <summary>Aims the player's arms to the given radians. If no player is passed, assumes <see cref="Main.LocalPlayer"/>.</summary>
 		/// <param name="radians"></param>
 		/// <param name="p"></param>
 		public static void ArmsTowardsMouse(Player p = null, Vector2? targetLoc = null)
@@ -758,6 +758,6 @@ namespace SpiritMod.Items
 				p.bodyFrame.Y = FrameSize * 4;
 			else if (WithinAngle(MathHelper.PiOver2 * 3))
 				p.bodyFrame.Y = FrameSize * 3;
-		}
+		}*/
 	}
 }
