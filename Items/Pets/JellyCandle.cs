@@ -35,15 +35,5 @@ namespace SpiritMod.Items.Pets
 		public override Color? GetAlpha(Color lightColor) => new Color(200, 200, 200, 100);
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
-
-		public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe(1);
-			recipe.AddIngredient(ItemID.PeaceCandle, 3);
-			recipe.AddIngredient(ItemID.PinkGel, 3);
-			recipe.AddIngredient(ItemID.SoulofLight, 3);
-			recipe.AddTile(TileID.Bottles);
-			recipe.Register();
-		}
 	}
 }

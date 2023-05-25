@@ -5,23 +5,24 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using SpiritMod.Utilities;
-using SpiritMod.Buffs.Pet;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.GlobalClasses.Players;
 
 namespace SpiritMod.Projectiles.DonatorItems
 {
-	public class HarpyPet : ModProjectile
+	public class FaeriePet : ModProjectile
 	{
+		private float frameCounter;
+
 		private const float FOV = (float)Math.PI / 2;
 		private const float Max_Range = 16 * 50;
 		private const int Damage = 15;
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mini Harpy");
-			Main.projFrames[Projectile.type] = 3;
+			DisplayName.SetDefault("Moonlit Faerie");
+			Main.projFrames[Projectile.type] = 6;
 			Main.projPet[Projectile.type] = true;
 		}
 
@@ -46,11 +47,12 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void AI()
 		{
-			var owner = Main.player[Projectile.owner];
-			owner.GetModPlayer<PetPlayer>().PetFlag(Projectile);
+			Player owner = Main.player[Projectile.owner];
 
-			if (++Projectile.frameCounter % 5 == 0)
-				Projectile.frame = ++Projectile.frame % Main.projFrames[Projectile.type];
+			owner.GetModPlayer<PetPlayer>().PetFlag(Projectile);
+			owner.hornet = false;
+
+			Projectile.frame = (int)(frameCounter += .2f) % Main.projFrames[Type];
 
 			if (Projectile.owner != Main.myPlayer)
 				return;
@@ -95,6 +97,16 @@ namespace SpiritMod.Projectiles.DonatorItems
 			var origin = Projectile.Center;
 			var direction = Projectile.DirectionTo(target) * 18;
 			Projectile.NewProjectile(Projectile.GetSource_FromAI(), origin, direction, ModContent.ProjectileType<HarpyBolt>(), Damage * 2, 0, Projectile.owner);
+		}
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+			Texture2D texture = TextureAssets.Projectile[Type].Value;
+			Rectangle frame = texture.Frame(1, Main.projFrames[Type], 0, Projectile.frame, 0, -2);
+
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(lightColor), Projectile.rotation, frame.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+
+			return false;
 		}
 	}
 

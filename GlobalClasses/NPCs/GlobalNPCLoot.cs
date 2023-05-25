@@ -42,6 +42,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 			LeadingConditionRule inAsteroids = new LeadingConditionRule(new DropRuleConditions.InBiome(DropRuleConditions.InBiome.Biome.Asteroid));
 			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Blaster>(), 30));
 			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Exotic>(), 80));
+			inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<PowerRing>(), 65));
 			globalLoot.Add(inAsteroids);
 
 			LeadingConditionRule wearingArcaneNecklace = new LeadingConditionRule(new DropRuleConditions.PlayerConditional("Wearing the Arcane Necklace and is using a magic weapon", (player) => player.HasAccessory<ArcaneNecklace>() && player.HeldItem.IsMagic() && player.statMana < player.statManaMax2));
@@ -55,6 +56,10 @@ namespace SpiritMod.GlobalClasses.NPCs
 			LeadingConditionRule vitaStoneEquipped = new LeadingConditionRule(new DropRuleConditions.PlayerConditional("Wearing the Vitality Stone (or an upgrade)", (player) => player.GetSpiritPlayer().vitaStone));
 			vitaStoneEquipped.OnSuccess(ItemDropRule.Common(ItemID.Heart, 9));
 			globalLoot.Add(vitaStoneEquipped);
+
+			LeadingConditionRule demonSheathChance = new LeadingConditionRule(new DropRuleConditions.NPCConditional("Uncommonly from Shadow Mimics", (npc) => npc.type == NPCID.Mimic && npc.frame.Y >= (npc.frame.Height * 12)));
+			demonSheathChance.OnSuccess(ItemDropRule.Common(ModContent.ItemType<DemonSheath>(), 10));
+			globalLoot.Add(demonSheathChance);
 		}
 
 		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
@@ -117,6 +122,10 @@ namespace SpiritMod.GlobalClasses.NPCs
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<FrigidFragment>(), 1, 2, npc, NPCID.SpikedIceSlime, NPCID.ArmedZombieEskimo);
 			DropLoot(npcLoot, 2, 2, ModContent.ItemType<ContentItems.Material.OldLeather>(), 1, 2, npc, NPCID.Zombie, NPCID.BaldZombie, NPCID.SlimedZombie, NPCID.SwampZombie, NPCID.TwiggyZombie, NPCID.ZombieRaincoat, NPCID.PincushionZombie);
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<IridescentScale>(), 1, 2, npc, NPCID.Shark);
+
+			DropLoot(npcLoot, 40, 30, ModContent.ItemType<JellyCandle>(), npc, NPCID.PinkJellyfish);
+			DropLoot(npcLoot, 32, 28, ModContent.ItemType<ShadowCollar>(), npc, NPCID.Hellhound);
+			DropLoot(npcLoot, 50, 40, ModContent.ItemType<DemonTail>(), npc, NPCID.Demon, NPCID.VoodooDemon, NPCID.RedDevil);
 
 			if (new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }.Contains(npc.type)) //Drops for EoW here
 			{

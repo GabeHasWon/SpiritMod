@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Dusts;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +22,7 @@ namespace SpiritMod.Buffs
 		{
 			npc.lifeRegen -= 3;
 
-			int loops = (npc.width + npc.height) / 50;
+			int loops = Math.Max(2, (npc.width + npc.height) / 50);
 			for (int i = 0; i < loops; i++)
 			{
 				Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, Main.rand.NextBool(2) ? DustID.GemRuby : ModContent.DustType<NightmareDust>());

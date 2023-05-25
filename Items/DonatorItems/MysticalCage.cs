@@ -20,7 +20,7 @@ namespace SpiritMod.Items.DonatorItems
 			Item.CloneDefaults(ItemID.Fish);
 			Item.value = 25000;
 			Item.rare = ItemRarityID.Orange;
-			Item.shoot = ModContent.ProjectileType<Caltfist>();
+			Item.shoot = ModContent.ProjectileType<CultfishPet>();
 			Item.buffType = ModContent.BuffType<CaltfistPetBuff>();
 		}
 

@@ -744,9 +744,6 @@ namespace SpiritMod
 				}
 			}
 
-			if (Player.ZoneDungeon && attempt.fishingLevel >= 30 && Main.rand.NextBool(25))
-				itemDrop = ModContent.ItemType<MysticalCage>();
-
 			if (modPlayer.ZoneSpirit && NPC.downedMechBossAny && Main.rand.NextBool(Player.cratePotion ? 35 : 65))
 				itemDrop = ModContent.ItemType<SpiritCrate>();
 

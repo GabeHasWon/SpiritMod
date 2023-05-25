@@ -19,23 +19,19 @@ namespace SpiritMod.Items.DonatorItems
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.Fish);
-			Item.shoot = ModContent.ProjectileType<SwordPet>();
-			Item.buffType = ModContent.BuffType<SwordPetBuff>();
+			Item.shoot = ModContent.ProjectileType<BladePet>();
+			Item.buffType = ModContent.BuffType<BladePetBuff>();
 			Item.value = Item.sellPrice(0, 0, 54, 0);
 			Item.rare = ItemRarityID.Orange;
 		}
 
 		public override void UseStyle(Player player, Rectangle heldItemFrame)
 		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0) {
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 				player.AddBuff(Item.buffType, 3600, true);
-			}
 		}
 
-		public override bool CanUseItem(Player player)
-		{
-			return player.miscEquips[0].IsAir;
-		}
+		public override bool CanUseItem(Player player) => player.miscEquips[0].IsAir;
 
 		public override void AddRecipes()
 		{

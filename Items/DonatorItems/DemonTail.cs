@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.Buffs.Pet;
-using SpiritMod.Items.Sets.BloodcourtSet;
 using SpiritMod.Projectiles.DonatorItems;
 using Terraria;
 using Terraria.ID;
@@ -28,7 +27,7 @@ namespace SpiritMod.Items.DonatorItems
 			Item.rare = ItemRarityID.LightRed;
 			Item.noMelee = true;
 			Item.buffType = ModContent.BuffType<LoomingPresence>();
-			Item.shoot = ModContent.ProjectileType<DemonicBlob>();
+			Item.shoot = ModContent.ProjectileType<AbominationPet>();
 		}
 
 		public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -38,15 +37,5 @@ namespace SpiritMod.Items.DonatorItems
 		}
 
 		public override bool CanUseItem(Player player) => player.miscEquips[0].IsAir;
-
-		public override void AddRecipes()
-		{
-			var recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.BlackLens);
-			recipe.AddIngredient(ItemID.WaterCandle);
-			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 5);
-			recipe.AddTile(TileID.DemonAltar);
-			recipe.Register();
-		}
 	}
 }
