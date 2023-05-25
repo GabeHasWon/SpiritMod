@@ -42,8 +42,8 @@ namespace SpiritMod.Projectiles.Pet
 
 			if (Main.rand.NextBool(3))
 			{
-				Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Green, 0, -1f, 0, default, 1f);
-				dust.scale *= 0.5f;
+				Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Green, 0, 0, 0, default, .75f);
+				dust.velocity = Vector2.Zero;
 				dust.noGravity = true;
 			}
 			Lighting.AddLight((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), 0.75f / 2, 1.5f / 2, 0.75f / 2);
