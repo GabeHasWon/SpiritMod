@@ -103,9 +103,9 @@ namespace SpiritMod.World
 		{
 			progress.Message = "Spirit Mod Microstructures: Avian Islands";
 
-			List<int> takenIslands = new List<int>();
-			for (int i = 0; i < Main.maxTilesX / 4200f * 2f; i++)
-				GenerateBoneIsland(takenIslands); //2 islands in a small world
+			float repeats = Main.maxTilesX / 4200f * 2f;
+			for (int i = 0; i < (int)repeats; i++)
+				GenerateBoneIsland(); //2 islands in a small world
 		}
 		#endregion Spirit Micros
 
@@ -720,19 +720,17 @@ namespace SpiritMod.World
 		#endregion Gem Stash
 
 		#region Bone Island
-		private static void GenerateBoneIsland(List<int> takenIslands)
+		private static void GenerateBoneIsland()
 		{
-			while (true)
-			{
-				// Select a place in the first 6th of the world
-				Point pos = FindBoneIslandPlacement(takenIslands);
+			string structure = "Structures/BoneIsland" + WorldGen.genRand.Next(2);
 
-				StructureHelper.Generator.GenerateStructure("Structures/BoneIsland", new Point16(pos.X, pos.Y), SpiritMod.Instance);
-				break;
-			}
+			Point16 size = default;
+			StructureHelper.Generator.GetDimensions(structure, SpiritMod.Instance, ref size);
+			Point pos = FindBoneIslandPlacement(size); // Select a place in the inner 4/6ths of the world
+			StructureHelper.Generator.GenerateStructure(structure, new Point16(pos.X, pos.Y), SpiritMod.Instance);
 		}
 
-		private static Point FindBoneIslandPlacement(List<int> takenIslands)
+		private static Point FindBoneIslandPlacement(Point16 islandSize, bool hugIsland = false)
 		{
 			int totalAttempts = -1;
 
@@ -743,26 +741,29 @@ namespace SpiritMod.World
 				if (totalAttempts > 3000)
 					break;
 
-				//int house = WorldGen.genRand.Next(WorldGen.numIslandHouses);
-				//while (takenIslands.Contains(house))
-				//	house = WorldGen.genRand.Next(WorldGen.numIslandHouses);
-
-				//Point pos = new Point(WorldGen.floatingIslandHouseX[house], WorldGen.floatingIslandHouseY[house]);
-
-				Point pos = Main.rand.Next(houseLocations);
+				Point pos = WorldGen.genRand.Next(houseLocations);
 
 				while (true)
 				{
-					int xOffset = WorldGen.genRand.NextBool() ? WorldGen.genRand.Next(50, 60) : -WorldGen.genRand.Next(70, 90);
-					Point realPos = new Point(pos.X + xOffset, pos.Y + WorldGen.genRand.Next(10, 25));
+					if (!hugIsland)
+						pos = new Point(WorldGen.genRand.Next(Main.maxTilesX / 6, (int)(Main.maxTilesX / 1.16f)), WorldGen.genRand.Next(40, (int)(Main.worldSurface * 0.33)));
+
+					Point realPos = pos;
+
+					if (hugIsland)
+					{
+						int xOffset = WorldGen.genRand.NextBool() ? WorldGen.genRand.Next(50, 60) : -WorldGen.genRand.Next(70, 90);
+						realPos = new Point(pos.X + xOffset, pos.Y + WorldGen.genRand.Next(10, 25));
+					}
+
 					bool failed = false;
 
-					for (int i = 0; i < 30; ++i)
+					for (int i = 0; i < islandSize.X; ++i)
 					{
 						if (failed)
 							break;
 
-						for (int j = 0; j < 20; ++j)
+						for (int j = 0; j < islandSize.Y; ++j)
 						{
 							Tile tile = Framing.GetTileSafely(realPos.X + i, realPos.Y + j);
 							if (tile.HasTile)
@@ -776,7 +777,8 @@ namespace SpiritMod.World
 					if (failed)
 						continue;
 
-					houseLocations.Remove(pos);
+					if (hugIsland)
+						houseLocations.Remove(pos);
 					return realPos;
 				}
 			}
