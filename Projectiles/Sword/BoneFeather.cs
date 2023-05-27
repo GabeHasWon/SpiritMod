@@ -38,7 +38,7 @@ namespace SpiritMod.Projectiles.Sword
 			Projectile.height = 20;
 			Projectile.friendly = true;
 			Projectile.hostile = false;
-			Projectile.penetrate = 2;
+			Projectile.penetrate = 3;
 			Projectile.extraUpdates = 1;
 			Projectile.tileCollide = false;
 			Projectile.aiStyle = -1;
@@ -48,7 +48,7 @@ namespace SpiritMod.Projectiles.Sword
 		{
 			originPos = Main.player[Projectile.owner].Center;
 			Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
-			Projectile.scale = Main.rand.NextFloat(0.8f, 1.2f);
+			Projectile.scale = Main.rand.NextFloat(0.9f, 1.1f);
 
 			Projectile.netUpdate = true;
 		}
@@ -61,7 +61,8 @@ namespace SpiritMod.Projectiles.Sword
 			float rotation = MathHelper.ToRadians(Counter) * Projectile.direction;
 
 			Vector2 posOff = (Vector2.UnitY * -Distance).RotatedBy(rotation);
-			posOff.Y *= Projectile.scale;
+			posOff.Y *= (Projectile.scale * 1.25f);
+			posOff.X *= (Projectile.scale * 1.25f);
 			Projectile.Center = originPos + posOff - Projectile.velocity;
 			Projectile.rotation = rotation + 1.57f + ((Projectile.direction < 0) ? MathHelper.Pi : 0);
 
@@ -73,8 +74,8 @@ namespace SpiritMod.Projectiles.Sword
 			}
 
 			//Fade out
-			int fadeTime = 10;
-			if (Counter >= (180 - fadeTime))
+			int fadeTime = 15;
+			if (Counter >= (200 - fadeTime))
 			{
 				Projectile.alpha += 255 / fadeTime;
 

@@ -22,7 +22,7 @@ namespace SpiritMod.Items.Armor
 			Item.height = 18;
 			Item.value = Item.buyPrice(0, 0, 10, 0);
 			Item.rare = ItemRarityID.Blue;
-			Item.defense = 10;
+			Item.defense = 12;
 		}
 
 		public override void UpdateEquip(Player player)
@@ -34,6 +34,8 @@ namespace SpiritMod.Items.Armor
 			player.gravity *= 2;
 			player.maxFallSpeed *= 2;
 			player.jumpSpeedBoost *= .5f;
+			player.maxRunSpeed *= 0.8f;
+			player.runAcceleration *= 0.8f;
 
 			if (player.GetModPlayer<MyPlayer>().justLanded)
 			{
@@ -60,7 +62,7 @@ namespace SpiritMod.Items.Armor
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.StoneBlock, 250);
+			recipe.AddIngredient(ItemID.StoneBlock, 150);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
