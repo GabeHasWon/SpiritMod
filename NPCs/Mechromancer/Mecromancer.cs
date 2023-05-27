@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Armor;
 using SpiritMod.Items.Sets.CoilSet;
 using SpiritMod.Items.Sets.LaunchersMisc.Freeman;
-using SpiritMod.Projectiles;
 using SpiritMod.Utilities;
 using Terraria;
 using Terraria.Audio;
@@ -15,6 +14,7 @@ using Terraria.ModLoader;
 using SpiritMod.Buffs;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Projectiles.Hostile;
 
 namespace SpiritMod.NPCs.Mechromancer
 {

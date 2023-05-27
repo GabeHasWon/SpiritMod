@@ -3,11 +3,12 @@
 	public enum MessageType : byte
 	{
 		None = 0,
+		AuroraData,
 		ProjectileData,
+		PlaceMapPin,
 		Dodge,
 		Dash,
 		PlayerGlyph,
-		AuroraData,
 		BossSpawnFromClient,
 		StartTide,
 		TideData,

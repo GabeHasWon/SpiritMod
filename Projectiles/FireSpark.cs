@@ -9,10 +9,9 @@ namespace SpiritMod.Projectiles
 {
 	public class FireSpark : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Infernal Ember");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Infernal Ember");
 
 		public override void SetDefaults()
 		{

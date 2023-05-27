@@ -642,7 +642,7 @@ namespace SpiritMod.NPCs
 			}
 			else if (type == NPCID.BestiaryGirl)
 			{
-				if (Main.BestiaryDB.GetCompletedPercentByMod(Mod) == 0.5f)
+				if (Main.BestiaryDB.GetCompletedPercentByMod(Mod) >= 0.5f)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<CagedMoonlight>(), false);
 			}
 		}

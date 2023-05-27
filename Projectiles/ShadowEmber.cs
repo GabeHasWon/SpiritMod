@@ -6,10 +6,9 @@ namespace SpiritMod.Projectiles
 {
 	public class ShadowEmber : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Shadow Ember");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Shadow Ember");
 
 		public override void SetDefaults()
 		{

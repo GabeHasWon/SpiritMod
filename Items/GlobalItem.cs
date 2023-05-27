@@ -363,9 +363,7 @@ namespace SpiritMod.Items
 			}
 			if (modPlayer.cultistScarf && item.IsMagic() && Main.rand.NextBool(8))
 			{
-				int proj = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<WildMagic>(), 66, 2f, player.whoAmI);
-				Main.projectile[proj].hostile = false;
-				Main.projectile[proj].friendly = true;
+				Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<WildMagic>(), 66, 2f, player.whoAmI);
 			}
 			if (modPlayer.timScroll && item.IsMagic() && Main.rand.NextBool(12))
 			{

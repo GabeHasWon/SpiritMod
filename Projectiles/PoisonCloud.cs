@@ -8,7 +8,6 @@ namespace SpiritMod.Projectiles
 {
 	public class PoisonCloud : ModProjectile
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Poison Cloud");
@@ -54,12 +53,10 @@ namespace SpiritMod.Projectiles
 			else
 				Projectile.alpha = Math.Max(Projectile.alpha - 7, 0);
 		}
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => Projectile.penetrate > 1;
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return false;
-		}
+		public override bool? CanDamage() => Projectile.penetrate > 1;
+
+		public override bool OnTileCollide(Vector2 oldVelocity) => false;
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{

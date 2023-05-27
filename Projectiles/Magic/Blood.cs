@@ -7,10 +7,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class Blood : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Blood Clusters");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Clusters");
 
 		public override void SetDefaults()
 		{

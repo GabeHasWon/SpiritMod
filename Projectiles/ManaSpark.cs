@@ -6,10 +6,9 @@ namespace SpiritMod.Projectiles
 {
 	public class ManaSpark : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Angelic Spark");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Angelic Spark");
 
 		public override void SetDefaults()
 		{

@@ -10,6 +10,8 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class Clock : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Clock");
 
 		public override void SetDefaults()

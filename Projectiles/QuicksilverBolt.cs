@@ -1,6 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,11 +7,9 @@ namespace SpiritMod.Projectiles
 {
 	public class QuicksilverBolt : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Quicksilver Droplet");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Quicksilver Droplet");
 
 		public override void SetDefaults()
 		{
@@ -87,10 +83,6 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override bool? CanHitNPC(NPC target)
-		{
-			return Projectile.ai[1] < 30 ? false : (bool?)null;
-		}
-
+		public override bool? CanHitNPC(NPC target) => Projectile.ai[1] < 30 ? false : null;
 	}
 }

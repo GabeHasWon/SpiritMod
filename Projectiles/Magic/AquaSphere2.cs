@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
@@ -7,10 +6,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class AquaSphere2 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Aqua Sphere");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Aqua Sphere");
 
 		public override void SetDefaults()
 		{

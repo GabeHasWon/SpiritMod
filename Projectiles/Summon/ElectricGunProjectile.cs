@@ -1,16 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Graphics.Shaders;
+
 namespace SpiritMod.Projectiles.Summon
 {
     class ElectricGunProjectile : ModProjectile
     {
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Arcbolt");
 		private static readonly int maxtimeleft = 200;
 		private readonly static int numY = -16;
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Arcbolt");
 
         public override void SetDefaults()
         {

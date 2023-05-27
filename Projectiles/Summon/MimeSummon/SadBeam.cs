@@ -1,38 +1,36 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ID;
 
-namespace SpiritMod.Projectiles.Magic
+namespace SpiritMod.Projectiles.Summon.MimeSummon
 {
-	public class NightSpit : ModProjectile
+	public class SadBeam : ModProjectile
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Night Grasp");
-			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Beam");
 
 		public override void SetDefaults()
 		{
+			Projectile.width = 2;
+			Projectile.height = 2;
 			Projectile.friendly = true;
-			Projectile.DamageType = DamageClass.Magic;
-			Projectile.width = 10;
-			Projectile.height = 10;
-			Projectile.penetrate = 1;
-			Projectile.alpha = 255;
-			Projectile.timeLeft = 180;
+			Projectile.minion = true;
+			Projectile.tileCollide = true;
+			Projectile.timeLeft = 210;
+			Projectile.ignoreWater = true;
+			Projectile.aiStyle = -1;
 		}
 
 		public override void AI()
 		{
+			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 			for (int i = 0; i < 10; i++) {
 				float x = Projectile.Center.X - Projectile.velocity.X / 10f * (float)i;
 				float y = Projectile.Center.Y - Projectile.velocity.Y / 10f * (float)i;
-				int num = Dust.NewDust(new Vector2(x, y), 26, 26, DustID.PurpleCrystalShard, 0f, 0f, 0, default, 1f);
+				int num = Dust.NewDust(new Vector2(x, y), 26, 26, DustID.DungeonSpirit, 0f, 0f, 0, default, 1f);
 				Main.dust[num].alpha = Projectile.alpha;
 				Main.dust[num].position.X = x;
 				Main.dust[num].position.Y = y;
@@ -51,12 +49,10 @@ namespace SpiritMod.Projectiles.Magic
 						flag25 = true;
 						jim = index1;
 					}
-
 				}
 			}
+
 			if (flag25) {
-
-
 				float num1 = 10f;
 				Vector2 vector2 = new Vector2(Projectile.position.X + (float)Projectile.width * 0.5f, Projectile.position.Y + (float)Projectile.height * 0.5f);
 				float num2 = Main.npc[jim].Center.X - vector2.X;
@@ -69,39 +65,14 @@ namespace SpiritMod.Projectiles.Magic
 				Projectile.velocity.X = (Projectile.velocity.X * (float)(num8 - 1) + num6) / (float)num8;
 				Projectile.velocity.Y = (Projectile.velocity.Y * (float)(num8 - 1) + num7) / (float)num8;
 			}
-			else {
-				Projectile.velocity *= 0.95f;
-			}
-		}
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			Projectile.penetrate--;
-			if (Projectile.penetrate <= 0)
-				Projectile.Kill();
-			else {
-				AIType = ProjectileID.Shuriken;
-				if (Projectile.velocity.X != oldVelocity.X) {
-					Projectile.velocity.X = -oldVelocity.X;
-				}
-				if (Projectile.velocity.Y != oldVelocity.Y) {
-					Projectile.velocity.Y = -oldVelocity.Y;
-				}
-				Projectile.velocity *= 0.75f;
-			}
-			return false;
 		}
 
-		private void AdjustMagnitude(ref Vector2 vector)
+		public override void Kill(int timeLeft)
 		{
-			float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-			if (magnitude > 6f)
-				vector *= 6f / magnitude;
-		}
-
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			Projectile.Kill();
+			for (int i = 0; i < 40; i++) {
+				int dust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
+				Main.dust[dust].noGravity = true;
+			}
 		}
 	}
 }
-

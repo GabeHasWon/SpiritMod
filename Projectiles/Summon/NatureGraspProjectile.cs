@@ -9,12 +9,11 @@ namespace SpiritMod.Projectiles.Summon
 {
     class NatureGraspProjectile : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Nature's Grasp");
-        }
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-        public override void SetDefaults()
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Nature's Grasp");
+
+		public override void SetDefaults()
         {
             Projectile.friendly = true;
             Projectile.hostile = false;

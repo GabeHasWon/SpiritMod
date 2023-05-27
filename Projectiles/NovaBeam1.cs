@@ -7,12 +7,9 @@ namespace SpiritMod.Projectiles
 {
 	public class NovaBeam1 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Nova Beam");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Nova Beam");
 
 		public override void SetDefaults()
 		{
@@ -44,9 +41,8 @@ namespace SpiritMod.Projectiles
 
 		public override void Kill(int timeLeft)
 		{
-			for (int num621 = 0; num621 < 5; num621++) {
-				int num622 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);
-			}
+			for (int num621 = 0; num621 < 5; num621++)
+				Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);
 		}
 	}
 }

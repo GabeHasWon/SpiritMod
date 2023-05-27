@@ -5,26 +5,33 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Mechanics.Trails;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.DataStructures;
 
 namespace SpiritMod.Projectiles.Magic
 {
 	public class SandWall : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Sand Wall");
-		}
-		int counter = -180;
+		private Vector2 initialVel;
+
 		float distance = 5f;
-		int rotationalSpeed = 2;
+		readonly int rotationalSpeed = 2;
 		float initialSpeedMult = 1;
+
+		private float Counter
+		{
+			get => Projectile.ai[0];
+			set => Projectile.ai[0] = value;
+		}
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Wall");
+
 		public override void SetDefaults()
 		{
 			Projectile.hostile = false;
 			Projectile.DamageType = DamageClass.Magic;
-			Projectile.width = 15;
-			Projectile.height = 15;
-			//projectile.aiStyle = -1;
+			Projectile.Size = new Vector2(15);
 			Projectile.friendly = true;
 			Projectile.penetrate = 5;
 			Projectile.alpha = 255;
@@ -41,31 +48,34 @@ namespace SpiritMod.Projectiles.Magic
 			tM.CreateTrail(Projectile, new StandardColorTrail(Color.Gold * 0.4f), new RoundCap(), new DefaultTrailPosition(), 20f, 250f, new DefaultShader());
 		}
 
+		public override void OnSpawn(IEntitySource source) => initialVel = Projectile.velocity;
+
 		public override void AI()
 		{
-			if (Projectile.timeLeft < 360) {
+			if (Projectile.timeLeft < 360)
 				Projectile.tileCollide = true;
-			}
-			if (Main.rand.NextBool(3)) {
+
+			if (Main.rand.NextBool(3))
+			{
 				Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.GoldCoin);
 				dust.velocity = Vector2.Zero;
 				dust.noGravity = true;
 			}
+
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 			distance += 0.025f;
 			initialSpeedMult += 0.01f;
-			counter += rotationalSpeed;
-			Vector2 initialSpeed = new Vector2(Projectile.ai[0], Projectile.ai[1]) * initialSpeedMult;
-			Vector2 offset = initialSpeed.RotatedBy(Math.PI / 2);
-			offset.Normalize();
-			offset *= (float)(Math.Cos(counter * (Math.PI / 180)) * (distance / 3));
-			Projectile.velocity = initialSpeed + offset;
+			Counter += rotationalSpeed;
+
+			Vector2 offset = Vector2.Normalize((initialVel * initialSpeedMult).RotatedBy(Math.PI / 2));
+			offset *= (float)(Math.Cos(Counter * (Math.PI / 180)) * (distance / 3));
+			Projectile.velocity = (initialVel * initialSpeedMult) + offset;
 		}
+
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (!target.boss && target.velocity != Vector2.Zero && target.knockBackResist != 0) {
+			if (!target.boss && target.velocity != Vector2.Zero && target.knockBackResist != 0)
 				target.velocity.Y = -4f;
-			}
 		}
 	}
 }

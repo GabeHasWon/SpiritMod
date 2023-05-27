@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.GlobalClasses.Players;
+using SpiritMod.Items.Pins;
 using SpiritMod.Items.Weapon.Summon.StardustBomb;
 using SpiritMod.Mechanics.BoonSystem;
 using SpiritMod.Mechanics.Fathomless_Chest;
@@ -113,6 +114,22 @@ namespace SpiritMod
 					break;
 				case MessageType.ProjectileData:
 					GlyphProj.ReceiveProjectileData(reader, whoAmI);
+					break;
+				case MessageType.PlaceMapPin:
+					int cursorX = reader.ReadInt32();
+					int cursorY = reader.ReadInt32();
+					string pinValue = reader.ReadString();
+
+					if (Main.netMode == NetmodeID.Server)
+					{
+						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.PlaceMapPin, 3);
+						packet.Write(cursorX);
+						packet.Write(cursorY);
+						packet.Write(pinValue);
+						packet.Send(-1, whoAmI);
+					}
+
+					ModContent.GetInstance<PinWorld>().SetPin(pinValue, new Vector2(cursorX, cursorY));
 					break;
 				case MessageType.Dodge:
 					player = reader.ReadByte();

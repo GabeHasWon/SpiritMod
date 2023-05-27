@@ -7,10 +7,9 @@ namespace SpiritMod.Projectiles
 {
 	public class CombustionBlaze : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Combustion Blaze");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Combustion Blaze");
 
 		public override void SetDefaults()
 		{
@@ -43,9 +42,6 @@ namespace SpiritMod.Projectiles
 		}
 
 		public override void Kill(int timeLeft)
-		{
-			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
-		}
-
+			=> Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 	}
 }

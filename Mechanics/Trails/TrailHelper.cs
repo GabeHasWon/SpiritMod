@@ -43,7 +43,7 @@ namespace SpiritMod.Mechanics.Trails
 		public static void TryTrailKill(Projectile projectile)
 		{
 			//todo: refactor this to be based on the itrailprojectile interface? wanted to have a dissolve speed parameter with a default value so it doesnt need to be specified but not possible in this version of C#
-			if (projectile.type == ModContent.ProjectileType<SleepingStar>() || projectile.type == ModContent.ProjectileType<LeafProjReachChest>() || projectile.type == ModContent.ProjectileType<HallowedStaffProj>() || projectile.type == ModContent.ProjectileType<TrueHallowedStaffProj>() || projectile.type == ModContent.ProjectileType<PositiveArrow>() || projectile.type == ModContent.ProjectileType<NegativeArrow>() || projectile.type == ModContent.ProjectileType<PartyStarterBullet>() || projectile.type == ModContent.ProjectileType<SandWall>() || projectile.type == ModContent.ProjectileType<SandWall2>())
+			if (projectile.type == ModContent.ProjectileType<SleepingStar>() || projectile.type == ModContent.ProjectileType<LeafProjReachChest>() || projectile.type == ModContent.ProjectileType<HallowedStaffProj>() || projectile.type == ModContent.ProjectileType<TrueHallowedStaffProj>() || projectile.type == ModContent.ProjectileType<PositiveArrow>() || projectile.type == ModContent.ProjectileType<NegativeArrow>() || projectile.type == ModContent.ProjectileType<PartyStarterBullet>() || projectile.type == ModContent.ProjectileType<SandWall>())
 				SpiritMod.TrailManager.TryEndTrail(projectile, Math.Max(15f, projectile.velocity.Length() * 3f));
 
 			if (projectile.type == ModContent.ProjectileType<OrichHoming>() || projectile.type == ModContent.ProjectileType<DarkAnima>())

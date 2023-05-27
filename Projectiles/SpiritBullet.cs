@@ -9,10 +9,9 @@ namespace SpiritMod.Projectiles
 {
 	public class SpiritBullet : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Spirit Bullet");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Bullet");
 
 		public override void SetDefaults()
 		{

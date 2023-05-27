@@ -1,6 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -10,10 +8,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	class ShadowflameOrbBolt : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Dark Bolt");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Dark Bolt");
 
 		public override void SetDefaults()
 		{

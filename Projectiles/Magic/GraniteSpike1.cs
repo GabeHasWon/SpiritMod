@@ -8,6 +8,8 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class GraniteSpike1 : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Spike");
 
 		public override void SetDefaults()

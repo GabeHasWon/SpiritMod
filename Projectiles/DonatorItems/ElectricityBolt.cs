@@ -6,11 +6,11 @@ namespace SpiritMod.Projectiles.DonatorItems
 {
 	public class ElectricityBolt : ModProjectile
 	{
-		NPC[] hit = new NPC[8];
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Electricity Bolt");
-		}
+		private readonly NPC[] hit = new NPC[8];
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Electricity Bolt");
 
 		public override void SetDefaults()
 		{
@@ -27,21 +27,17 @@ namespace SpiritMod.Projectiles.DonatorItems
 			Projectile.extraUpdates = 7;
 		}
 
-
-
-		private int Mode {
-			get { return (int)Projectile.ai[0]; }
-			set { Projectile.ai[0] = value; }
+		private int Mode
+		{
+			get => (int)Projectile.ai[0];
+			set => Projectile.ai[0] = value;
 		}
 
-		private NPC Target {
-			get { return Main.npc[(int)Projectile.ai[1]]; }
-			set { Projectile.ai[1] = value.whoAmI; }
-		}
-
-		private Vector2 Origin {
-			get { return new Vector2(Projectile.localAI[0], Projectile.localAI[1]); }
-			set {
+		private Vector2 Origin
+		{
+			get => new Vector2(Projectile.localAI[0], Projectile.localAI[1]);
+			set
+			{
 				Projectile.localAI[0] = value.X;
 				Projectile.localAI[1] = value.Y;
 			}
@@ -63,7 +59,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			}
 		}
 
-		private void Trail(Vector2 from, Vector2 to)
+		private static void Trail(Vector2 from, Vector2 to)
 		{
 			float distance = Vector2.Distance(from, to);
 			float step = 1 / distance;

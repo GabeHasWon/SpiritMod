@@ -11,10 +11,9 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class PartyExplosives : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Party Explosives");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Party Explosives");
 
 		public override void SetDefaults()
 		{
@@ -34,23 +33,16 @@ namespace SpiritMod.Projectiles.Bullet
 		int timer = 1;
 		public override void AI()
 		{
-			timer++;
-			if (timer >= Main.rand.Next(60, 90)) {
+			if (++timer >= Main.rand.Next(60, 90))
 				Projectile.Kill();
-			}
+
 			Vector2 currentSpeed = new Vector2(Projectile.velocity.X, Projectile.velocity.Y);
 			Projectile.velocity = currentSpeed.RotatedBy(Main.rand.Next(-1, 2) * (Math.PI / 40));
-			Projectile.velocity.X *= .96f;
-			Projectile.velocity.Y *= .96f;
+			Projectile.velocity *= .96f;
 			Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
-			Projectile.ai[1] += 1f;
-			if (Projectile.ai[1] >= 7200f) {
-				Projectile.alpha += 5;
-				if (Projectile.alpha > 255) {
-					Projectile.alpha = 255;
-					Projectile.Kill();
-				}
-			}
+
+			if (++Projectile.ai[1] >= 7200f)
+				Projectile.Kill();
 
 			Projectile.localAI[0] += 1f;
 			if (Projectile.localAI[0] >= 10f) {

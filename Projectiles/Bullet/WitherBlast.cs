@@ -8,6 +8,8 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class WitherBlast : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Wither Blast");
 
 		public override void SetDefaults()

@@ -6,6 +6,8 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class TerraProj : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Elemental Wrath");
 
 		public override void SetDefaults()

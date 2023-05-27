@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Buffs;
 using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
@@ -9,6 +8,8 @@ namespace SpiritMod.Projectiles
 {
 	public class EnergyFieldStarplate : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults()
 			=> DisplayName.SetDefault("Energizer Field");
 

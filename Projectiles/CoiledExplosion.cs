@@ -8,10 +8,9 @@ namespace SpiritMod.Projectiles
 {
 	public class CoiledExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Coiled Explosion");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Coiled Explosion");
 
 		public override void SetDefaults()
 		{
@@ -75,9 +74,7 @@ namespace SpiritMod.Projectiles
 				expr_13D1F_cp_0.velocity.Y = expr_13D1F_cp_0.velocity.Y - 1f;
 			}
 		}
-		public override void AI()
-		{
-			Projectile.Kill();
-		}
+
+		public override void AI() => Projectile.Kill();
 	}
 }

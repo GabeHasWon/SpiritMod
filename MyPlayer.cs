@@ -7,7 +7,6 @@ using SpiritMod.Dusts;
 using SpiritMod.Items;
 using SpiritMod.Items.Accessory;
 using SpiritMod.Items.Consumable;
-using SpiritMod.Items.DonatorItems;
 using SpiritMod.Items.Material;
 using SpiritMod.Items.Weapon.Magic;
 using SpiritMod.Mounts;
@@ -47,6 +46,7 @@ using SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles;
 using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
 using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
+using SpiritMod.Items.Accessory.ShieldCore;
 
 namespace SpiritMod
 {

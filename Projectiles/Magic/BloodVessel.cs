@@ -9,10 +9,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class BloodVessel : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Blood Vessel");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Vessel");
 
 		public override void SetDefaults()
 		{

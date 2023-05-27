@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SpiritMod.Buffs;
 using SpiritMod.Buffs.DoT;
 using System;
 using Terraria;
@@ -11,10 +10,9 @@ namespace SpiritMod.Projectiles
 {
 	class CryoliteMage : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Cryo Blast");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Cryo Blast");
 
 		public override void SetDefaults()
 		{

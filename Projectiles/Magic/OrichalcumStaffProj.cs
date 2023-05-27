@@ -7,10 +7,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class OrichalcumStaffProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Orichalcum Petal");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Orichalcum Petal");
 
 		public override void SetDefaults()
 		{

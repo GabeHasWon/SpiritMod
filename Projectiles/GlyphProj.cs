@@ -1,7 +1,5 @@
-﻿using SpiritMod.Dusts;
-using SpiritMod.Items;
+﻿using SpiritMod.Items;
 using System.IO;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

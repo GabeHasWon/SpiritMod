@@ -4,17 +4,18 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Projectiles.Magic;
 using SpiritMod.NPCs.Boss.MoonWizard.Projectiles;
 
 namespace SpiritMod.Projectiles
 {
 	public class CornucopionProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Cornucop-ion");
-		}
+		Vector2 direction = Vector2.Zero;
+		int counter = 0;
+		Vector2 holdOffset = new(0, -15);
+		int chargeStacks = 0;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Cornucop-ion");
 
 		public override void SetDefaults()
 		{
@@ -30,10 +31,6 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 999999;
 		}
 
-		Vector2 direction = Vector2.Zero;
-        int counter = 0;
-        Vector2 holdOffset = new Vector2(0, -15);
-        int chargeStacks = 0;
         public override bool PreAI()
 		{
             Player player = Main.player[Projectile.owner];
@@ -92,7 +89,8 @@ namespace SpiritMod.Projectiles
             player.itemAnimation = 2;
             return true;
 		}
-        private void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
+
+        private static void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
         {
             float angle = Main.rand.NextFloat(-MathHelper.Pi, MathHelper.Pi);
             Vector2 vec = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));

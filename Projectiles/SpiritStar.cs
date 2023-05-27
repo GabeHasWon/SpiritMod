@@ -8,6 +8,8 @@ namespace SpiritMod.Projectiles
 {
 	public class SpiritStar : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Star");
 
 		public override void SetDefaults()
