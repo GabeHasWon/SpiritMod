@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Armor;
 using SpiritMod.Items.Sets.BloodcourtSet;
-using SpiritMod.Projectiles.Summon;
+using SpiritMod.Projectiles.Summon.MimeSummon;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

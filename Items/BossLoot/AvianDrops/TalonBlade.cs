@@ -17,19 +17,19 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 		public override void SetDefaults()
 		{
-			Item.damage = 26;
+			Item.damage = 30;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 34;
 			Item.height = 40;
-			Item.useTime = 24;
-			Item.useAnimation = 24;
+			Item.useTime = 18;
+			Item.useAnimation = 18;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 5;
 			Item.value = Item.sellPrice(0, 1, 0, 0);
 			Item.rare = ItemRarityID.Orange;
 			Item.UseSound = SoundID.Item1;
 			Item.shoot = ModContent.ProjectileType<BoneFeather>();
-			Item.shootSpeed = 10f;
+			Item.shootSpeed = 7f;
 			Item.crit = 6;
 			Item.autoReuse = true;
 		}

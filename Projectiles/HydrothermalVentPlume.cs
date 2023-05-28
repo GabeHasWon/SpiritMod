@@ -9,11 +9,9 @@ namespace SpiritMod.Projectiles
 {
 	public class HydrothermalVentPlume : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Hydrothermal Vent");
-			Main.projFrames[Projectile.type] = 1;
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Hydrothermal Vent");
 
 		public override void SetDefaults()
 		{

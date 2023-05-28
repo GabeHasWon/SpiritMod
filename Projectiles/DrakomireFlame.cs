@@ -7,10 +7,9 @@ namespace SpiritMod.Projectiles
 {
 	public class DrakomireFlame : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Drakomire Flame");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Drakomire Flame");
 
 		public override void SetDefaults()
 		{

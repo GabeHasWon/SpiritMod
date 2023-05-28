@@ -6,10 +6,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class TrueClot1 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Death Clot");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Death Clot");
 
 		public override void SetDefaults()
 		{

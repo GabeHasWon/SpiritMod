@@ -1,22 +1,23 @@
 ﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace SpiritMod.Projectiles
 {
 	class EelOrb : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Orb");
 
 		readonly Vector2[] points = new Vector2[] { Vector2.Zero, Vector2.Zero };
 		private static readonly int cycletimer = 50;
 		private int Cycle => (int)(Projectile.ai[0] % cycletimer);
+
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
@@ -29,18 +30,21 @@ namespace SpiritMod.Projectiles
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = true;
 		}
+
 		public override void SendExtraAI(BinaryWriter writer)
 		{
 			foreach(Vector2 point in points) {
 				writer.WriteVector2(point);
 			}
 		}
+
 		public override void ReceiveExtraAI(BinaryReader reader)
 		{
 			for(int i = 0; i < points.Count(); i++) {
 				points[i] = reader.ReadVector2();
 			}
 		}
+
 		public override void AI()
 		{
 			if(Cycle == 0) { //look for point
@@ -79,6 +83,7 @@ namespace SpiritMod.Projectiles
 			}
 			Projectile.ai[0]++;
 		}
+
 		private void SetPoint(Vector2 direction)
 		{
 			float[] samplearray = new float[3];
@@ -95,7 +100,9 @@ namespace SpiritMod.Projectiles
 			SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
 			points[1] = Projectile.Center + (direction * maxdistance);
 		}
+
 		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => Cycle == 1;
+		
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.Center.ToVector2() - targetHitbox.Size() / 2, targetHitbox.Size(), points[0], points[1]);
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -103,6 +110,5 @@ namespace SpiritMod.Projectiles
 			if (Main.rand.NextBool(10))
 				target.AddBuff(Mod.Find<ModBuff>("ElectrifiedV2").Type, 120, true);
 		}
-
 	}
 }

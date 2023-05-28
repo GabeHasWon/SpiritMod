@@ -16,7 +16,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Livewire");
-			Tooltip.SetDefault("Plugs into tiles, changing the chain into a shocking livewire");
+			Tooltip.SetDefault("Plugs into tiles and enemies, changing the chain into a shocking livewire");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

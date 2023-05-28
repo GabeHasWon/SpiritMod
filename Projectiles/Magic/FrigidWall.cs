@@ -7,10 +7,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class FrigidWall : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Frigid Wall");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Frigid Wall");
 
 		public override void SetDefaults()
 		{
@@ -22,7 +21,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.penetrate = 4;
 			Projectile.alpha = 255;
 			Projectile.timeLeft = 480;
-			Projectile.tileCollide = false; //Tells the game whether or not it can collide with a tile
+			Projectile.tileCollide = false;
 		}
 
 		public override bool PreAI()

@@ -38,8 +38,9 @@ namespace SpiritMod.Items.Weapon.Magic
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			Projectile.NewProjectile(source, position.X, position.Y, 0, -0.25f, ModContent.ProjectileType<SandWall>(), damage, knockback, player.whoAmI, 0, -0.25f);
-			Projectile.NewProjectile(source, position.X, position.Y, 0, -0.25f, ModContent.ProjectileType<SandWall2>(), damage, knockback, player.whoAmI, 0, -0.25f);
+			for (int i = 0; i < 2; i++)
+				Projectile.NewProjectile(source, position.X, position.Y, 0, -0.25f, ModContent.ProjectileType<SandWall>(), damage, knockback, player.whoAmI, -180 * i);
+			
 			return false;
 		}
 

@@ -12,9 +12,12 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class FieryFlareMagic : ModProjectile, ITrailProjectile
 	{
+		Vector2 startingvel;
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Slag Flare");
 
-		Vector2 startingvel;
 		public override void SetDefaults()
 		{
 			Projectile.width = 12;
@@ -32,6 +35,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void SendExtraAI(BinaryWriter writer) => writer.WriteVector2(startingvel);
 		public override void ReceiveExtraAI(BinaryReader reader) => startingvel = reader.ReadVector2();
+
 		public override void AI()
 		{
 			Lighting.AddLight(Projectile.Center, Color.OrangeRed.ToVector3());

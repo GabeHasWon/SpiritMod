@@ -8,10 +8,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class TrueClot2 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("True Blood Cluster");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("True Blood Cluster");
 
 		public override void SetDefaults()
 		{

@@ -22,7 +22,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 
 		public override void SetDefaults()
 		{
-			Item.damage = 32;
+			Item.damage = 35;
 			Item.useTime = 27;
 			Item.useAnimation = 27;
 			Item.DamageType = DamageClass.Melee;
@@ -63,7 +63,6 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<BossLoot.AvianDrops.TalonBlade>(), 1);
 			recipe.AddIngredient(ItemID.FallenStar, 5);
 			recipe.AddIngredient(ModContent.ItemType<CosmiliteShard>(), 6);
 			recipe.AddTile(TileID.Anvils);

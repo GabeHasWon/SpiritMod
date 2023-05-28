@@ -8,10 +8,9 @@ namespace SpiritMod.Projectiles
 {
 	public class FireMaw : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Fire Spit");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Fire Spit");
 
 		public override void SetDefaults()
 		{
@@ -62,10 +61,7 @@ namespace SpiritMod.Projectiles
 			Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			Projectile.Kill();
-		}
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.Kill();
 
 		public override void AI()
 		{
@@ -89,6 +85,5 @@ namespace SpiritMod.Projectiles
 				Main.dust[num6].position = center + (num8 * 6.28318548f + num7 * (float)i).ToRotationVector2() * 12f;
 			}
 		}
-
 	}
 }

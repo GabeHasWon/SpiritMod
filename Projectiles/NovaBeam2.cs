@@ -9,12 +9,9 @@ namespace SpiritMod.Projectiles
 {
 	public class NovaBeam2 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Star Beam");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Beam");
 
 		public override void SetDefaults()
 		{

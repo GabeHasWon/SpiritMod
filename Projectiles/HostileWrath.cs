@@ -5,10 +5,9 @@ namespace SpiritMod.Projectiles
 {
 	public class HostileWrath : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Sun's Wrath");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Sun's Wrath");
 
 		public override void SetDefaults()
 		{

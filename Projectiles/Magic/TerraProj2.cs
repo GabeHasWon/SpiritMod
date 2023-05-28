@@ -8,10 +8,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class TerraProj2 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Terra Wrath");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Terra Wrath");
 
 		public override void SetDefaults()
 		{

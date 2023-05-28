@@ -6,10 +6,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class CursedFire : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Cursed Fire");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Cursed Fire");
 
 		public override void SetDefaults()
 		{

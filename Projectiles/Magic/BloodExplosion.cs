@@ -7,10 +7,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class BloodExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Blood Boil");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Boil");
 
 		public override void SetDefaults()
 		{

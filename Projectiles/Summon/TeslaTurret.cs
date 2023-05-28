@@ -26,15 +26,6 @@ namespace SpiritMod.Projectiles.Summon
 			Projectile.ignoreWater = true;
 		}
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return false;
-		}
-		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
-		{
-			fallThrough = false;
-			return true;
-		}
 		public override void AI()
 		{
 			Projectile.velocity.Y = 5;
@@ -66,7 +57,8 @@ namespace SpiritMod.Projectiles.Summon
 			NPC target = (Main.npc[(int)Projectile.ai[1]] ?? new NPC()); //our target
 																		 //firing
 			Projectile.ai[0]++;
-			if (Projectile.ai[0] % shootSpeed == 4 && target.active && Projectile.Distance(target.Center) / 16 < range) {
+			if (Projectile.ai[0] % shootSpeed == 4 && target.active && Projectile.Distance(target.Center) / 16 < range)
+			{
 				Vector2 ShootArea = new Vector2(Projectile.Center.X, Projectile.Center.Y - 25);
 				Vector2 direction = target.Center - ShootArea;
 				direction.Normalize();
@@ -77,5 +69,12 @@ namespace SpiritMod.Projectiles.Summon
 			}
 		}
 
+		public override bool OnTileCollide(Vector2 oldVelocity) => false;
+
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
+		{
+			fallThrough = false;
+			return true;
+		}
 	}
 }

@@ -8,10 +8,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class CorruptPortal : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Dark Portal");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Dark Portal");
 
 		public override void SetDefaults()
 		{

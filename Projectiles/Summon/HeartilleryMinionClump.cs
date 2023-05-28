@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using SpiritMod.Prim;
+﻿using SpiritMod.Prim;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -9,16 +8,16 @@ namespace SpiritMod.Projectiles.Summon
 {
 	public class HeartilleryMinionClump : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Clumped Blood");
-
 			ProjectileID.Sets.SentryShot[Projectile.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			//projectile.CloneDefaults(ProjectileID.WoodenArrowHostile);
 			Projectile.width = 10;
 			Projectile.height = 10;
 			Projectile.friendly = true;

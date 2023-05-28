@@ -8,6 +8,8 @@ namespace SpiritMod.Projectiles
 {
 	public class GraniteShard1 : ModProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Granite Shard");

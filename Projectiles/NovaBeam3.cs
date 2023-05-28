@@ -8,20 +8,19 @@ namespace SpiritMod.Projectiles
 {
 	public class NovaBeam3 : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Star Beam");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Beam");
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 2;       //projectile width
-			Projectile.height = 2;  //projectile height
-			Projectile.friendly = true;      //make that the projectile will not damage you
-			Projectile.DamageType = DamageClass.Magic;         // 
-			Projectile.tileCollide = false;   //make that the projectile will be destroed if it hits the terrain
-			Projectile.penetrate = 2;      //how many npc will penetrate
-			Projectile.timeLeft = 210;   //how many time projectile projectile has before disepire // projectile light
+			Projectile.width = 2;
+			Projectile.height = 2;
+			Projectile.friendly = true;
+			Projectile.DamageType = DamageClass.Magic;
+			Projectile.tileCollide = false;
+			Projectile.penetrate = 2;
+			Projectile.timeLeft = 210;
 			Projectile.extraUpdates = 0;
 			Projectile.ignoreWater = true;
 			Projectile.alpha = 255;
@@ -70,11 +69,6 @@ namespace SpiritMod.Projectiles
 				Projectile.velocity.X = (Projectile.velocity.X * (float)(num8 - 1) + num6) / (float)num8;
 				Projectile.velocity.Y = (Projectile.velocity.Y * (float)(num8 - 1) + num7) / (float)num8;
 			}
-		}
-
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return true;
 		}
 	}
 }

@@ -8,10 +8,10 @@ namespace SpiritMod.Projectiles
 {
 	class InfernalBlast : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Infernal Ember");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Infernal Ember");
+
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
@@ -42,9 +42,6 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 180);
-		}
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 180);
 	}
 }

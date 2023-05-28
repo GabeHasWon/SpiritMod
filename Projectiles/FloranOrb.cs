@@ -4,26 +4,24 @@ using SpiritMod.Dusts;
 using System;
 using System.Linq;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles
 {
 	public class FloranOrb : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Floran Orb");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-		}
+		public float counter = -1440;
+		float j = 0;
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Orb");
 
 		public override void SetDefaults()
 		{
 			Projectile.width = 18;
 			Projectile.height = 18;
 			Projectile.friendly = true;
-			Projectile.DamageType = DamageClass.Throwing;
 			Projectile.penetrate = 4;
 			Projectile.tileCollide = false;
 			Projectile.alpha = 255;
@@ -32,9 +30,6 @@ namespace SpiritMod.Projectiles
 			Projectile.extraUpdates = 1;
 		}
 
-		Vector2 offset = new Vector2(60, 60);
-		public float counter = -1440;
-		float j = 0;
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
@@ -82,19 +77,5 @@ namespace SpiritMod.Projectiles
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<VineTrap>(), 180);
 		}
-
-
-		//public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-		//{
-		//    Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
-		//    for (int k = 0; k < projectile.oldPos.Length; k++)
-		//    {
-		//        Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-		//        Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
-		//        spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
-		//    }
-		//    return true;
-		//}
-
 	}
 }

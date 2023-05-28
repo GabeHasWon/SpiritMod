@@ -6,10 +6,9 @@ namespace SpiritMod.Projectiles
 {
 	public class Fire : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Malevolent Wrath");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Malevolent Wrath");
 
 		public override void SetDefaults()
 		{
@@ -24,10 +23,7 @@ namespace SpiritMod.Projectiles
 			Projectile.friendly = true;
 		}
 
-		public override void AI()
-		{
-			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
-		}
+		public override void AI() => Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{

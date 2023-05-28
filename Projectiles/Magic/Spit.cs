@@ -8,10 +8,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class Spit : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Diseased Spit");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Diseased Spit");
 
 		public override void SetDefaults()
 		{

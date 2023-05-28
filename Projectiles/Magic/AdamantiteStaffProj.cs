@@ -9,6 +9,8 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class AdamantiteStaffProj : ModProjectile, ITrailProjectile
 	{
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Adamantite Blast");
 
 		public override void SetDefaults()

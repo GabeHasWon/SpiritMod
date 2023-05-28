@@ -9,10 +9,9 @@ namespace SpiritMod.Projectiles
 {
 	public class EarthSpirit : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Earth Spirit");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Earth Spirit");
 
 		public override void SetDefaults()
 		{
@@ -71,9 +70,6 @@ namespace SpiritMod.Projectiles
 				target.AddBuff(ModContent.BuffType<SoulBurn>(), 120, true);
 		}
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return false;
-		}
+		public override bool OnTileCollide(Vector2 oldVelocity) => false;
 	}
 }

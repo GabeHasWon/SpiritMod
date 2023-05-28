@@ -45,13 +45,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 		}
 
         public override Vector2? HoldoutOffset() => new Vector2(0, -1);
-		public override bool CanUseItem(Player player)
-        {
-            if (!player.ZoneOverworldHeight && !player.ZoneSkyHeight)
-            {
-                return false;
-            }
-            return true;
-        }
-    }
+
+		public override bool CanUseItem(Player player) => player.ZoneOverworldHeight || player.ZoneSkyHeight;
+	}
 }

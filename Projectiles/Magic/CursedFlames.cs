@@ -6,10 +6,9 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class CursedFlames : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Cursed Flame");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Cursed Flame");
 
 		public override void SetDefaults()
 		{
@@ -39,6 +38,5 @@ namespace SpiritMod.Projectiles.Magic
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.CursedInferno, 300, true);
 		}
-
 	}
 }

@@ -13,6 +13,7 @@ using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Armor.AstronautVanity;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes;
+using SpiritMod.Items.Accessory.ShieldCore;
 
 namespace SpiritMod.NPCs.AstralAmalgam
 {
