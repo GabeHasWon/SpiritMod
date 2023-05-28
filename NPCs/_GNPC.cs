@@ -644,6 +644,8 @@ namespace SpiritMod.NPCs
 			{
 				if (Main.BestiaryDB.GetCompletedPercentByMod(Mod) >= 0.5f)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<CagedMoonlight>(), false);
+				if (Main.BestiaryDB.GetCompletedPercentByMod(Mod) == 1)
+					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SuspiciousLookingMeatballs>(), false);
 			}
 		}
 
