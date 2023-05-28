@@ -139,16 +139,17 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			float factor = tile.LiquidAmount / 255f;
 			bool vanillaWaterStyle = Main.waterStyle < WaterStyleID.Count;
 
-			Asset<Texture2D> texture = TextureAssets.LiquidSlope[0];
+			int style = 0;
 
 			if (tile.LiquidType != LiquidID.Water)
-				texture = TextureAssets.LiquidSlope[tile.LiquidType == LiquidID.Lava ? 1 : 11];
+				style = tile.LiquidType == LiquidID.Lava ? WaterStyleID.Lava : WaterStyleID.Honey;
 			else if (vanillaWaterStyle)
-				texture = TextureAssets.LiquidSlope[Main.waterStyle];
+				style = Main.waterStyle;
+
+			Asset<Texture2D> texture = TextureAssets.LiquidSlope[style];
 
 			if (openTile)
 			{
-			
 				DrawSlopedLiquid(right, 1, true, factor, drawOffset, colours, texture, i, j);
 				DrawSlopedLiquid(left, -1, false, factor, drawOffset, colours, texture, i, j);
 
@@ -162,7 +163,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				{
 					var pos = new Vector2((i) << 4, (j - 1) * 16f + 8) + drawOffset;
 					var source = new Rectangle(16, 64, 16, 8);
-					var tex = LiquidRenderer.Instance._liquidTextures[Main.waterStyle].Value;
+					var tex = LiquidRenderer.Instance._liquidTextures[style].Value;
 
 					Main.tileBatch.Draw(tex, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 				}
@@ -171,7 +172,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				{
 					var pos = new Vector2((i) << 4, (j + 1) * 16f) + drawOffset;
 					var source = new Rectangle(16, 8, 16, 4);
-					var tex = LiquidRenderer.Instance._liquidTextures[Main.waterStyle].Value;
+					var tex = LiquidRenderer.Instance._liquidTextures[style].Value;
 
 					Main.tileBatch.Draw(tex, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 				}
@@ -180,7 +181,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				{
 					var pos = new Vector2((i << 4) + 16, j * 16f) + drawOffset;
 					var source = new Rectangle(16, 64, 2, 16);
-					var tex = LiquidRenderer.Instance._liquidTextures[Main.waterStyle].Value;
+					var tex = LiquidRenderer.Instance._liquidTextures[style].Value;
 
 					Main.tileBatch.Draw(tex, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 				}
@@ -189,7 +190,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				{
 					var pos = new Vector2((i << 4) - 2, j * 16f) + drawOffset;
 					var source = new Rectangle(16, 64, 2, 16);
-					var tex = LiquidRenderer.Instance._liquidTextures[Main.waterStyle].Value;
+					var tex = LiquidRenderer.Instance._liquidTextures[style].Value;
 
 					Main.tileBatch.Draw(tex, pos, source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 				}
@@ -216,7 +217,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				if (Main.tile[i + offset, j - 1].LiquidAmount > 0)
 					return;
 
-				if (targetAmount <= 127)
+				if (targetAmount <= 128)
 					return;
 
 				int leftType = Main.tile[i + offset - 1, j].LiquidType;
@@ -224,7 +225,12 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				int useType = Main.waterStyle;
 
 				if (Main.tile[i + offset - 1, j].LiquidAmount == 0)
-					useType = rightType;
+				{
+					if (rightType == LiquidID.Lava)
+						useType = WaterStyleID.Lava;
+					else if (rightType == LiquidID.Honey)
+						useType = WaterStyleID.Honey;
+				}
 				else if (Main.tile[i + offset + 1, j].LiquidAmount == 0)
 					useType = leftType;
 				else
@@ -247,13 +253,13 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 					}
 				}
 
-				float heightFactor = (targetAmount - 127) / 126.5f;
+				float heightFactor = (targetAmount - 128) / 127f;// 126.5f;
 
 				var pos = new Vector2((i + offset) << 4, j * 16f - 4) + drawOffset;
 				var source = new Rectangle(16, 0, 16, (int)(8 * heightFactor));
 				var tex = LiquidRenderer.Instance._liquidTextures[useType].Value;
 
-				Main.tileBatch.Draw(tex, pos + new Vector2(0, 8 * (1 - heightFactor)), source, colours, Vector2.Zero, 1f, SpriteEffects.None);
+				Main.tileBatch.Draw(tex, pos + new Vector2(0, 8 * (heightFactor)), source, colours, Vector2.Zero, 1f, SpriteEffects.None);
 			}
 		}
 

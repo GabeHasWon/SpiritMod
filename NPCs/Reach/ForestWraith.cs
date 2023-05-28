@@ -91,21 +91,14 @@ namespace SpiritMod.NPCs.Reach
 			if (timer == 240 || timer == 280 || timer == 320)
 			{
 				SoundEngine.PlaySound(SoundID.Grass, NPC.Center);
-				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-				direction.Normalize();
-				direction.X *= 10f;
-				direction.Y *= 10f;
+				Vector2 direction = NPC.DirectionTo(Main.player[NPC.target].Center) * 10f;
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					int amountOfProjectiles = 1;
-					for (int i = 0; i < amountOfProjectiles; ++i)
-					{
-						float A = Main.rand.Next(-120, 120) * 0.01f;
-						float B = Main.rand.Next(-120, 120) * 0.01f;
-						int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X + A, direction.Y + B, ModContent.ProjectileType<OvergrowthLeaf>(), 6, 1, Main.myPlayer, 0, 0);
-						Main.projectile[p].hostile = true;
-						Main.projectile[p].friendly = false;
-					}
+					int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction.RotatedByRandom(0.02f), ModContent.ProjectileType<OvergrowthLeaf>(), 6, 1, Main.myPlayer);
+
+					Main.projectile[p].hostile = true;
+					Main.projectile[p].friendly = false;
+					Main.projectile[p].minion = false;
 				}
 				NPC.netUpdate = true;
 			}
@@ -122,6 +115,7 @@ namespace SpiritMod.NPCs.Reach
 					thrown = true;
 					Vector2 direction = NPC.GetArcVel(Main.player[NPC.target].Center, 0.4f, 100, 500, maxXvel: 14);
 					SoundEngine.PlaySound(SoundID.Item8, NPC.Center);
+
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction, ModContent.ProjectileType<LittleBouncingSpore>(), 8, 1, Main.myPlayer, 0, 0);
 				}

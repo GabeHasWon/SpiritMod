@@ -229,25 +229,18 @@ namespace SpiritMod.World
 
 		public static ushort GetOreCounterpart(int ore)
 		{
-			switch (ore) {
-				case TileID.Copper: //copper ==> tin
-					return TileID.Tin;
-				case TileID.Tin: //tin ==> copper
-					return TileID.Copper;
-				case TileID.Iron: //iron ==> lead
-					return TileID.Lead;
-				case TileID.Lead: //lead ==> iron
-					return TileID.Iron;
-				case TileID.Silver: //silver ==> tungsten
-					return TileID.Tungsten;
-				case TileID.Tungsten: //tungsten ==> silver
-					return TileID.Silver;
-				case TileID.Gold: //gold ==> platinum
-					return TileID.Platinum;
-				case TileID.Platinum: //platinum ==> gold
-					return TileID.Gold;
-			}
-			return 0;
+			return ore switch
+			{
+				TileID.Copper => TileID.Tin, //copper ==> tin
+				TileID.Tin => TileID.Copper, //tin ==> copper
+				TileID.Iron => TileID.Lead, //iron ==> lead
+				TileID.Lead => TileID.Iron, //lead ==> iron
+				TileID.Silver => TileID.Tungsten, //silver ==> tungsten
+				TileID.Tungsten => TileID.Silver, //tungsten ==> silver
+				TileID.Gold => TileID.Platinum, //gold ==> platinum
+				TileID.Platinum => TileID.Gold, //platinum ==> gold
+				_ => 0,
+			};
 		}
 
 		public static bool ValidTile(float x, float y) => x >= 0f && x < Main.maxTilesX * 16f + 16f && y >= 0f && y < Main.maxTilesY * 16f + 16f;
