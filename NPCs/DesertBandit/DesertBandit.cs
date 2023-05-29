@@ -196,7 +196,7 @@ namespace SpiritMod.NPCs.DesertBandit
 			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hitDirection, -1f, 1, default, .61f);
 			}
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DesertBanditGore1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DesertBanditGore2").Type, 1f);

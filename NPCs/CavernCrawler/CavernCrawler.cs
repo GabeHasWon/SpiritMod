@@ -62,9 +62,6 @@ namespace SpiritMod.NPCs.CavernCrawler
 			npcLoot.Add(ItemDropRule.Common(ItemID.DepthMeter, 80));
 			npcLoot.Add(ItemDropRule.Common(ItemID.Compass, 80));
 			npcLoot.Add(ItemDropRule.Common(ItemID.Rally, 200));
-			//npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ClatterboneBreastplate>(), 65));
-			//npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ClatterboneFaceplate>(), 65));
-			//npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ClatterboneLeggings>(), 65));
 		}
 
 		int frame = 0;
@@ -77,6 +74,7 @@ namespace SpiritMod.NPCs.CavernCrawler
 			NPC.spriteDirection = NPC.direction;
 			Player target = Main.player[NPC.target];
 			float distance = NPC.DistanceSQ(target.Center);
+
 			if (distance < 320 * 320)
 			{
 				AIType = NPCID.Unicorn;
@@ -95,7 +93,7 @@ namespace SpiritMod.NPCs.CavernCrawler
 
 			if (trailbehind && !playsound)
 			{
-				SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
+				SoundEngine.PlaySound(SoundID.Item1, NPC.Center);
 				playsound = true;
 			}
 		}
@@ -153,7 +151,7 @@ namespace SpiritMod.NPCs.CavernCrawler
 			for (int k = 0; k < 5; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, .61f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				SoundEngine.PlaySound(SoundID.DD2_WitherBeastDeath, NPC.Center);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Crawler1").Type);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Crawler2").Type);

@@ -326,7 +326,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, hitDirection, -1f, 0, default, 1f);
 			}
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				if (Main.netMode != NetmodeID.MultiplayerClient && NPC.life <= 0)
 				{

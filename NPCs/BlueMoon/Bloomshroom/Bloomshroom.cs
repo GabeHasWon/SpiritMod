@@ -65,7 +65,7 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CursedTorch, 2.5f * hitDirection, -2.5f, 0, default, .34f);
 			}
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Glumshroom1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Gloomshroom2").Type, 1f);

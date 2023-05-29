@@ -55,7 +55,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
                 Dust d = Dust.NewDustPerfect(NPC.Center, 226, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(5), 0, default, 0.45f);
                 d.noGravity = true;
             }
-            if (NPC.life <= 0) {
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
                 for (int k = 0; k < 30; k++)
                 {
                     Dust d = Dust.NewDustPerfect(NPC.Center, 226, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(7), 0, default, 0.65f);

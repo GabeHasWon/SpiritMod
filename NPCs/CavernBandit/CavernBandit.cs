@@ -103,7 +103,7 @@ namespace SpiritMod.NPCs.CavernBandit
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit4, NPC.Center);
-			if (NPC.life <= 0) 
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) 
 				for(int i = 1; i <= 4; i++)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>($"CavernBanditGore{i}").Type, 1f);
 

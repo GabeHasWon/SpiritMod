@@ -64,7 +64,7 @@ namespace SpiritMod.NPCs.ElectricEel
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Eel_Gore").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Eel_Gore_2").Type, 1f);

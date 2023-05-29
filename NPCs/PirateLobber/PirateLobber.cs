@@ -138,7 +138,7 @@ namespace SpiritMod.NPCs.PirateLobber
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int i = 0; i < 3; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), Vector2.UnitX * hitDirection * Main.rand.NextFloat(0.9f, 1f), Mod.Find<ModGore>("PirateLobber" + i).Type);

@@ -33,7 +33,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.BrazierSuspended);
+			recipe.AddIngredient(ItemID.PotSuspended);
             recipe.AddIngredient(ItemID.Daybloom);
             recipe.AddIngredient(ModContent.ItemType<EnchantedLeaf>(), 2);
 			recipe.Register();

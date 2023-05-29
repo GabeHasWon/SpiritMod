@@ -85,7 +85,7 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 			for (int k = 0; k < 20; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hitDirection, -2.5f, 54, new Color(0, 255, 142), .6f);
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);

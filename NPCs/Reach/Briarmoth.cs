@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void HitEffect(int hitDirection, double damage)
         {
-            if (NPC.life <= 0)
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
                 for (int k = 0; k < 10; k++)
                     Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ScourgeOfTheCorruptor, 2.75f * hitDirection, -2.75f, 0, new Color(), 0.6f);
         }

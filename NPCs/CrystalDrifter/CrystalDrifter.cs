@@ -135,7 +135,7 @@ namespace SpiritMod.NPCs.CrystalDrifter
 			for (int k = 0; k < 20; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.BlueCrystalShard, hitDirection * 2f, -1f, 0, default, 1f);
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int i = 1; i < 5; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Drifter" + i).Type, .5f);

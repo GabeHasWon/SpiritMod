@@ -101,7 +101,7 @@ namespace SpiritMod.NPCs.MycelialBotanist
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Harpy, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.3f, 1.1f));
 			}
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MycelialBotanistGore1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MycelialBotanistGore2").Type, 1f);

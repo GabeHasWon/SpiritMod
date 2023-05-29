@@ -119,7 +119,7 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 			for (int k = 0; k < 3; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Demonite, hitDirection, -1f, 0, default, 1f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 12);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 11);

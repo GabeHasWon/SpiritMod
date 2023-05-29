@@ -174,7 +174,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Starachnid
 			for (int i = 0; i < 12; i++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VilePowder, 2.5f * hitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .75f));
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
                 for (int k = 0; k < 4; k++)
                     Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Starachnid1").Type, Main.rand.NextFloat(.6f, 1f));

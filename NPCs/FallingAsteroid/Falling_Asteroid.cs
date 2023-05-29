@@ -232,7 +232,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 1; i < 5; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("FallenAsteroidGore" + i).Type, 1f);
 

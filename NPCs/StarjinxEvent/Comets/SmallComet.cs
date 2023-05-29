@@ -260,7 +260,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
             if (NPC.life <= 0)
                 SoundEngine.PlaySound(SoundID.Item14, NPC.position);
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int k = 0; k < NPC.lifeMax / 60; k++)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(0, Main.rand.NextFloat(NPC.width / 2f)).RotatedByRandom(MathHelper.Pi), new Vector2(2 * hitDirection, Main.rand.NextFloat(-0.5f, 0.5f)), Mod.Find<ModGore>($"Gores/StarjinxEvent/Meteorite/Meteor_{Main.rand.Next(5)}").Type, Main.rand.NextFloat(.6f, 1f));
 		}

@@ -98,7 +98,7 @@ namespace SpiritMod.NPCs.Hemophora
                 Main.gore[a].timeLeft = 20;
                 Main.gore[a].scale = Main.rand.NextFloat(.5f, 1f);
             }
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 for (int i = 0; i < 6; i++)
                 {

@@ -108,18 +108,15 @@ namespace SpiritMod.NPCs.Bloatfish
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0 || NPC.life >= 0)
+			for (int k = 0; k < 10; k++)
 			{
-				for (int k = 0; k < 10; k++)
-				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GemAmber, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GemAmber, 2.5f * hitDirection, -2.5f, 0, Color.White, .67f);
-				}
-
-				if (NPC.life <= 0)
-					for (int i = 1; i < 5; ++i)
-						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bloatfish" + i).Type, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GemAmber, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GemAmber, 2.5f * hitDirection, -2.5f, 0, Color.White, .67f);
 			}
+
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+				for (int i = 1; i < 5; ++i)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bloatfish" + i).Type, 1f);
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

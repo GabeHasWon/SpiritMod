@@ -435,7 +435,7 @@ namespace SpiritMod.NPCs.StarjinxEvent
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int k = 0; k < 14; k++)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(0, Main.rand.NextFloat(42)).RotatedByRandom(MathHelper.Pi), new Vector2(2 * hitDirection, Main.rand.NextFloat(-1, 1f)), Mod.Find<ModGore>($"Gores/StarjinxEvent/Meteorite/Meteor_{Main.rand.Next(5)}").Type, Main.rand.NextFloat(.6f, 1f));
 		}

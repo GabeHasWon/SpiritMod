@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.BrazierSuspended);
+			recipe.AddIngredient(ItemID.PotSuspended);
             recipe.AddIngredient(ModContent.ItemType<SoulBloom>());
 			recipe.Register();
 		}

@@ -46,7 +46,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
                 for (int k = 0; k < 20; k++)
                     Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 1.75f * hitDirection, -1.75f, 0, new Color(), 0.86f);
 		}

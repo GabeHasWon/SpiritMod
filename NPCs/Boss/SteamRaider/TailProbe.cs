@@ -92,7 +92,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		}
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				NPC.position.X = NPC.position.X + (NPC.width / 2.0f);
 				NPC.position.Y = NPC.position.Y + (NPC.height / 2.0f);
 				NPC.width = 30;

@@ -60,7 +60,7 @@ namespace SpiritMod.NPCs.HellEater
 			for (int k = 0; k < 20; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 117, default, .6f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				for (int i = 0; i < 20; i++) {
 					int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 0f, -2f, 117, default, .6f);
 					Main.dust[num].noGravity = true;

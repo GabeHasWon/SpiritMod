@@ -103,7 +103,7 @@ namespace SpiritMod.NPCs.BlizzardBandit
             for (int k = 0; k < 30; k++)
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Rope, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.3f, 1.1f));
 
-            if (NPC.life <= 0)
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 1; i < 5; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BlizzardBanditGore" + i).Type, 1f);
         }

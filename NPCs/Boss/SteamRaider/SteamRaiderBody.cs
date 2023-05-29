@@ -219,7 +219,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			for (int k = 0; k < 5; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				SoundEngine.PlaySound(SoundID.Item4, NPC.Center);
 
 				for (int num623 = 0; num623 < 20; num623++) {

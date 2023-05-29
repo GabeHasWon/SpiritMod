@@ -350,7 +350,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 				NPC.netUpdate = true;
 			}
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("VultureMatriarchGore1").Type, 1f);
 				for (int i = 0; i < 2; ++i)

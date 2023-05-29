@@ -58,7 +58,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 				d.noGravity = true;
 			}
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				int p = Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center.X, NPC.Center.Y, Main.rand.NextFloat(-1.1f, 1.1f), Main.rand.NextFloat(-1.1f, 1.1f), ModContent.ProjectileType<JellyfishOrbiter>(), NPCUtils.ToActualDamage(15, 1.5f, 2f), 0.0f, Main.myPlayer, 0.0f, (float)NPC.whoAmI);
 				Main.projectile[p].scale = NPC.scale;

@@ -154,7 +154,7 @@ namespace SpiritMod.NPCs.Phantom
 				for (int k = 0; k < 20; k++)
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, hitDirection * 2, -1f, 0, default, 1f);
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int k = 0; k < 20; k++)
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, hitDirection * 2, -1f, 0, default, 1f);

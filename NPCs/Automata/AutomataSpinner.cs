@@ -89,7 +89,7 @@ namespace SpiritMod.NPCs.Automata
 	            Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
 				 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .55f));
 			}
-            if (NPC.life <= 0) {
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
                 SoundEngine.PlaySound(SoundID.NPCDeath6 with { PitchVariance = 0.2f }, NPC.Center);
 				for (int i = 0; i < 4; ++i)
                 {

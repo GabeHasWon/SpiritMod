@@ -98,7 +98,7 @@ namespace SpiritMod.NPCs.Starfarer
 			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
 			}
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Stardancer5").Type, 1f);
 				NPC.position.X = NPC.position.X + (float)(NPC.width / 2);

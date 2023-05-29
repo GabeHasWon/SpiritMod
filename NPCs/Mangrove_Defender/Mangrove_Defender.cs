@@ -296,7 +296,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 				int a = Gore.NewGore(NPC.GetSource_OnHurt(null), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hitDirection * 3f, 0f), 387, goreScale);
 				Main.gore[a].timeLeft = 5;
 			}
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ForestSentryGore1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ForestSentryGore2").Type, 1f);

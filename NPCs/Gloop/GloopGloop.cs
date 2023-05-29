@@ -89,7 +89,7 @@ namespace SpiritMod.NPCs.Gloop
 			for (int k = 0; k < 11; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hitDirection, -1f, 0, default, .61f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				for (int k = 0; k < 20; k++) {
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hitDirection, -1f, 0, default, .91f);
 				}

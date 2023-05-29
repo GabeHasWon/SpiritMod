@@ -217,7 +217,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadWarlock_0").Type, 1f);

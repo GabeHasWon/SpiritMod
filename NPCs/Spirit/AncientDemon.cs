@@ -78,7 +78,7 @@ namespace SpiritMod.NPCs.Spirit
 		{
 			Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Asphalt, 0f, 0f, 100, default, 1f);
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 12);

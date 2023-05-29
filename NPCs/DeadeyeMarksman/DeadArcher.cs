@@ -73,7 +73,7 @@ namespace SpiritMod.NPCs.DeadeyeMarksman
 			for (int k = 0; k < 40; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, .45f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Archer2").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Archer1").Type, 1f);
 				for (int k = 0; k < 80; k++) {

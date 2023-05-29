@@ -746,7 +746,12 @@ namespace SpiritMod.World
 				while (true)
 				{
 					if (!hugIsland)
-						pos = new Point(WorldGen.genRand.Next(Main.maxTilesX / 6, (int)(Main.maxTilesX / 1.16f)), WorldGen.genRand.Next(40, (int)(Main.worldSurface * 0.33)));
+					{
+						pos = new Point(WorldGen.genRand.Next(Main.maxTilesX / 6, (int)(Main.maxTilesX / 1.16f)), WorldGen.genRand.Next(80, (int)(Main.worldSurface * 0.34)));
+
+						while (pos.X > Main.maxTilesX / 2 - 360 && pos.X < Main.maxTilesX / 2 + 240)
+							pos.X = WorldGen.genRand.Next(Main.maxTilesX / 6, (int)(Main.maxTilesX / 1.16f));
+					}
 
 					Point realPos = pos;
 

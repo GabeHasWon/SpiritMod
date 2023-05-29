@@ -346,7 +346,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 					Main.projectile[p].scale = Main.rand.NextFloat(.2f, .4f);
 				}
 			}
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_OnHit(NPC), new Vector2(NPC.Center.X, NPC.Center.Y - 50), new Vector2(0, 3), Mod.Find<ModGore>("WizardHat_Gore").Type);
 				for (int i = 0; i < Main.rand.Next(9, 15); i++)

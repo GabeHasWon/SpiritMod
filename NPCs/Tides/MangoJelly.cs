@@ -65,7 +65,7 @@ namespace SpiritMod.NPCs.Tides
 			for (int k = 0; k < 20; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 1; i < 7; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MangoJelly" + i).Type, 1f);
 		}

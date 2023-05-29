@@ -224,7 +224,8 @@ namespace SpiritMod.NPCs.Bloater
 		{
 			for (int k = 0; k < 23; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 1.5f, -1f, 0, default, .91f);
-			if (NPC.life <= 0)
+
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				SoundEngine.PlaySound(SoundID.NPCDeath30, NPC.Center);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Spewer1").Type, 1f);

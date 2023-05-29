@@ -162,7 +162,7 @@ namespace SpiritMod.World.Micropasses
 					Tile tile = Main.tile[x, y];
 
 					if ((x == i - lOffsetX - 1 || x == i + rOffsetX) && tile.HasTile) //Line the walls
-						WorldGen.ReplaceTile(x, y, type, 0);
+						WorldGen.PlaceTile(x, y, type, true, true);
 					else if (y - j < height * 0.9f)//Clear the way
 					{
 						tile.ClearTile();
@@ -176,7 +176,7 @@ namespace SpiritMod.World.Micropasses
 					else if (y - j >= height * 0.9f)
 					{
 						if (WorldMethods.AdjacentOpening(x, y) && tile.HasTile)
-							WorldGen.ReplaceTile(x, y, type, 0);
+							WorldGen.PlaceTile(x, y, type, true, true);
 					}
 				}
 

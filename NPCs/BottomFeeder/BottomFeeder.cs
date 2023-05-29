@@ -125,7 +125,7 @@ namespace SpiritMod.NPCs.BottomFeeder
 				}
 			}
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity * 1.11f, Mod.Find<ModGore>("FeederGore").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity * 1.11f, Mod.Find<ModGore>("FeederGore1").Type, 1f);

@@ -115,7 +115,7 @@ namespace SpiritMod.NPCs.Ghast
 			for (int k = 0; k < 30; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, d1, 2.5f * hitDirection, -2.5f, 0, default, .74f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				for (int k = 0; k < 30; k++) {
 					int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, d1, 2.5f * hitDirection, -4.5f, 0, default, .74f);
 					Main.dust[d].noGravity = true;

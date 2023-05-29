@@ -58,7 +58,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 				d.noGravity = true;
 			}
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{

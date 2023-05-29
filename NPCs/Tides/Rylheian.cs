@@ -224,7 +224,7 @@ namespace SpiritMod.NPCs.Tides
 
         public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 0; i < 6; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>(nameof(Rylheian) + i).Type, 1f);
 		}

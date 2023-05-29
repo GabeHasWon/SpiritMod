@@ -289,7 +289,7 @@ namespace SpiritMod
 
 			bool blueMoon = MyWorld.blueMoon && (Player.ZoneOverworldHeight || Player.ZoneSkyHeight);
 
-			if (config.DistortionConfig)
+			if (config.DistortionConfig && Main.netMode != NetmodeID.Server)
 			{
 				if (starplateGlitchEffect)
 				{

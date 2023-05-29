@@ -59,7 +59,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ToxikarpGore").Type, 1f);
 			for (int k = 0; k < 11; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, NPC.direction, -1f, 1, default, .61f);

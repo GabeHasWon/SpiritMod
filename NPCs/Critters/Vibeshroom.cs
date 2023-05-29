@@ -50,7 +50,7 @@ namespace SpiritMod.NPCs.Critters
 			for (int k = 0; k < 20; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CorruptPlants, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Vibeshroom1").Type, 1f);
 		}
 

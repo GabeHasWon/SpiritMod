@@ -242,7 +242,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hitDirection, -2.5f, 0, default, 0.27f);
 			}
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int i = 0; i < 3; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);

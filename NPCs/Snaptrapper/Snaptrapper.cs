@@ -78,7 +78,7 @@ namespace SpiritMod.NPCs.Snaptrapper
                 Main.gore[a].scale = Main.rand.NextFloat(.5f, 1f);
             }
 
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 for (int j = 0; j < 12; j++)
                 {

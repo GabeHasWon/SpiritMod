@@ -180,7 +180,7 @@ namespace SpiritMod.NPCs.Masticator
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Pot, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ScourgeOfTheCorruptor, 2.5f * hitDirection, -2.5f, 0, Color.White, .34f);
 			}
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Teratoma1").Type, Main.rand.NextFloat(.85f, 1.1f));
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Teratoma2").Type, Main.rand.NextFloat(.85f, 1.1f));

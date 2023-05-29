@@ -58,7 +58,7 @@ namespace SpiritMod.NPCs.Reach
 			for (int k = 0; k < 11; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hitDirection, -1f, 0, Color.Green, .61f);
 			}
-            if (NPC.life <= 0) {
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
                 SoundEngine.PlaySound(SoundID.Zombie7, NPC.Center);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ThornStalker1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ThornStalker2").Type, 1f);

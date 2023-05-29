@@ -77,7 +77,7 @@ namespace SpiritMod.NPCs.Orbitite
 			for (int k = 0; k < 11; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CorruptionThorns, hitDirection, -1f, 0, default, .61f);
 			}
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Mineroid1").Type);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Mineroid2").Type);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Mineroid3").Type);

@@ -176,7 +176,7 @@ namespace SpiritMod.NPCs.Tides
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int k = 0; k < 10; k++)
 				{

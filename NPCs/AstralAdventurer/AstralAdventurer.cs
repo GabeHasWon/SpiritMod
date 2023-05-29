@@ -477,8 +477,9 @@ namespace SpiritMod.NPCs.AstralAdventurer
 
 			SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
 
-			for (int i = 1; i < 5; ++i)
-				Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, Mod.Find<ModGore>("AstralAdventurer/AstralAdventurerGore" + i).Type, 1f);
+			if (Main.netMode != NetmodeID.Server)
+				for (int i = 1; i < 5; ++i)
+					Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, Mod.Find<ModGore>("AstralAdventurer/AstralAdventurerGore" + i).Type, 1f);
 		}
 
 		public override void SendExtraAI(BinaryWriter writer)

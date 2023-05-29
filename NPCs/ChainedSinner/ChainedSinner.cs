@@ -131,7 +131,7 @@ namespace SpiritMod.NPCs.ChainedSinner
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0)
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int i = 0; i < 3; ++i)
 				Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, Mod.Find<ModGore>("ChainedSinner" + i).Type);

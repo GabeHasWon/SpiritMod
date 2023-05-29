@@ -73,7 +73,7 @@ namespace SpiritMod.NPCs.Putroma
 				Main.projectile[p].hostile = true;
 			}
 
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				for (int i = 1; i < 8; ++i)
 					Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, Mod.Find<ModGore>("Teratoma" + i).Type, Main.rand.NextFloat(.85f, 1.1f));
 				SoundEngine.PlaySound(SoundID.Zombie9, NPC.Center);

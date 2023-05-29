@@ -1,17 +1,17 @@
 -- By Team Spirit --
 
 Spirit currently adds:
-- 1382 new items!​
-- 41 new armor sets!​
+- 1382 new items!
+- 41 new armor sets!
 - 8 new bosses​!
-- 2 brand new biomes, the Spirit Biome and the Briar!​
+- 2 brand new biomes, the Spirit Biome and the Briar!
 - A complete rework of the Ocean biome!
-- A brand new Quest System!​
-- 250 new enemies and minibosses!​
-- 3 new events: the Tide, the Jelly Deluge, and the Mystic Moon!​
-- A new Weapon Enchantment system!​
-- 34 brand new music tracks for vanilla and modded events and biomes!​
-...and so much more for you to discover!​
+- A brand new Quest System!
+- 250 new enemies and minibosses!
+- 3 new events: the Tide, the Jelly Deluge, and the Mystic Moon!
+- A new Weapon Enchantment system!
+- 34 brand new music tracks for vanilla and modded events and biomes!
+...and so much more for you to discover!
 
 Introducing a variety of bosses, biomes, weapons, events, and mechanics, Spirit is one of Terraria’s largest content mods. 
 Spirit has been developed by a team of passionate modders since 2015, with the goal of expanding the vanilla experience and breathing new immersive life into your world. 

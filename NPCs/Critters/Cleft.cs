@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Cleft1").Type);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Cleft2").Type);
 			}
