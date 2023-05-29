@@ -146,12 +146,9 @@ namespace SpiritMod.NPCs.BlizzardBandit
                     SoundEngine.PlaySound(SoundID.Item19 with { Volume = 0.5f }, NPC.Center);
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-                        direction.Normalize();
-                        direction.X *= 8.5f;
-                        direction.Y *= 8.5f;
-                        float A = (float)Main.rand.Next(-50, 50) * 0.02f;
-                        float B = (float)Main.rand.Next(-50, 50) * 0.02f;
+                        Vector2 direction = NPC.DirectionTo(Main.player[NPC.target].Center) * 8.5f;
+                        float A = Main.rand.Next(-50, 50) * 0.02f;
+                        float B = Main.rand.Next(-50, 50) * 0.02f;
                         int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (NPC.direction * 12), NPC.Center.Y, direction.X + A, direction.Y + B, ProjectileID.SnowBallFriendly, NPC.damage / 3, 1, Main.myPlayer, 0, 0);
                         Main.projectile[p].hostile = true;
                         Main.projectile[p].friendly = false;
@@ -184,7 +181,8 @@ namespace SpiritMod.NPCs.BlizzardBandit
 			gettingballs = reader.ReadBoolean();
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSnow && spawnInfo.Player.ZoneOverworldHeight && Main.dayTime && !spawnInfo.PlayerSafe ? 0.0895f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSnow && spawnInfo.Player.ZoneOverworldHeight && Main.dayTime && !spawnInfo.PlayerSafe
+			&& !spawnInfo.Invasion ? 0.0895f : 0f;
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

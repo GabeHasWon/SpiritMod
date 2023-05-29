@@ -53,7 +53,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		private static void TileDrawing_DrawPartialLiquid(On.Terraria.GameContent.Drawing.TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, Tile tileCache, Vector2 position, Rectangle liquidSize, int liquidType, Color aColor)
 		{
-			if (tileCache.LiquidType != LiquidID.Water || Main.waterStyle >= WaterStyleID.Count)
+			if (!Main.LocalPlayer.ZoneBeach || tileCache.LiquidType != LiquidID.Water || Main.waterStyle >= WaterStyleID.Count)
 				orig(self, tileCache, position, liquidSize, liquidType, aColor);
 		}
 
@@ -80,7 +80,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		public static bool DrawBlackMod(ref int i, int j, ref int adjX)
 		{
-			if (Main.gameMenu || !Main.LocalPlayer.active)
+			if (Main.gameMenu || !Main.LocalPlayer.active || !Main.LocalPlayer.ZoneBeach)
 				return true;
 
 			int oldAdjX = adjX;
@@ -127,7 +127,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		public static void DrawSlope(int i, int j, VertexColors colours, bool isBackgroundDraw)
 		{
-			if (Main.waterStyle >= WaterStyleID.Count)
+			if (Main.waterStyle >= WaterStyleID.Count || !Main.LocalPlayer.ZoneBeach)
 				return;
 
 			Tile tile = Main.tile[i, j];

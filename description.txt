@@ -11,9 +11,12 @@ Spirit currently adds:
 - 34 brand new music tracks for vanilla and modded events and biomes!​
 ...and so much more for you to discover!​
 
-Hello, all! I'm Yuyutsu, and I'd like to introduce you to the Spirit Mod, one of Terraria's largest content mods. 
-I've been developing the Spirit Mod for more than 5 years alongside a wonderfully talented team, and we've added multiple bosses, biomes, weapon sets, events, and mechanics in that time! 
-My ultimate goal is to create a fresh, immersive Terraria experience with endless possibilities for you all to explore. We hope you enjoy the mod!
+Introducing a variety of bosses, biomes, weapons, events, and mechanics, Spirit is one of Terraria’s largest content mods. 
+Spirit has been developed by a team of passionate modders since 2015, with the goal of expanding the vanilla experience and breathing new immersive life into your world. 
+Since then, the mod has continued to grow and evolve, boasting over 3 million downloads in its lifetime on 1.3.5.
+Now, Spirit is making its debut in 1.4, with a bright future ahead. 
+
+We hope you enjoy!
 
 Discord: https://discord.gg/FUNqtZQ
 

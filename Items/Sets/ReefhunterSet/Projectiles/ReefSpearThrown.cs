@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			Projectile.aiStyle = 0;
 		}
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => !hasTarget;
+		public override bool? CanDamage() => !hasTarget;
 		public override bool? CanCutTiles() => !hasTarget;
 
 		public override void AI()
@@ -42,8 +42,8 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			if (!hasTarget)
 			{
 				Projectile.velocity.Y += 0.3f;
-
 				Projectile.rotation = Projectile.velocity.ToRotation();
+				Projectile.tileCollide = Projectile.ai[0]++ > 6;
 			}
 			else
 			{
