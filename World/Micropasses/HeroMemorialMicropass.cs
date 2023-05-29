@@ -85,7 +85,6 @@ internal class HeroMemorialMicropass : Micropass
 			}
 		}
 
-		Main.NewText("x: " + x);
 		WorldGen.PlaceObject(x, y - 2, ModContent.TileType<HerosMemorialStatueTile>(), true, direction: WorldGen.genRand.NextBool() ? -1 : 1);
 	}
 

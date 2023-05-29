@@ -1,10 +1,10 @@
-author = Yuyutsu and the Unread FAQ
+author = Team Spirit
 version = 1.4.4
 displayName = [c/cffffd:Spirit Mod]
 homepage = https://forums.terraria.org/index.php?threads/the-spirit-mod.41395/
-hideCode = true
+hideCode = false
 hideResources = true
-includeSource = false
+includeSource = true
 buildIgnore = .gitignore, *.sln, *.csproj, *.user, obj\*, bin\*, .vs\*, Properties\*, .git\*
 includePDB = true
 languageVersion = 6
