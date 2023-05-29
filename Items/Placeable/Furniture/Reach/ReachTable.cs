@@ -6,6 +6,7 @@ using ReachTableTile = SpiritMod.Tiles.Furniture.Reach.ReachTable;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachTable : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -6,6 +6,7 @@ using AcidBookcaseTile = SpiritMod.Tiles.Furniture.Acid.AcidBookcaseTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidBookcase : ModItem
 	{
 		public override void SetStaticDefaults()

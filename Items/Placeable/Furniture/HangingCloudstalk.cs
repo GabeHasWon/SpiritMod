@@ -6,6 +6,7 @@ using SpiritMod.Items.ByBiome.Forest.Placeable.Decorative;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class HangingCloudstalk : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Hanging Cloudstalk");

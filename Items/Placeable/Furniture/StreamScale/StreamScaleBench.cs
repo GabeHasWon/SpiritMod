@@ -5,6 +5,7 @@ using StreamScaleBenchTile = SpiritMod.Tiles.Furniture.StreamScale.StreamScaleBe
 
 namespace SpiritMod.Items.Placeable.Furniture.StreamScale
 {
+	[Sacrifice(1)]
 	public class StreamScaleBench : ModItem
 	{
 		public override void SetStaticDefaults()

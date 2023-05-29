@@ -6,13 +6,13 @@ using AcidKegTile = SpiritMod.Tiles.Furniture.Acid.AcidKegTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidKeg : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Corrosive Keg");
 		}
-
 
 		public override void SetDefaults()
 		{

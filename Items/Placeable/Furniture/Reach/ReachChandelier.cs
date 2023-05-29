@@ -6,6 +6,7 @@ using ReachChandelierTile = SpiritMod.Tiles.Furniture.Reach.ReachChandelier;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachChandelier : ModItem
 	{
 		public override void SetStaticDefaults()

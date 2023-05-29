@@ -39,6 +39,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			//if (NPC.downedBoss2)
 			//	AddQuestQueue(NPCID.Stylist, QuestManager.GetQuest<StylistQuestMeteor>());
 
+#if DEBUG
 			if (Main.mouseLeft && Main.mouseRight && Main.LocalPlayer.controlJump && Main.LocalPlayer.controlHook)
 				QuestManager.UnlockAll();
 
@@ -47,6 +48,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 				QuestManager.UnlockAll();
 				QuestManager.CompleteAll();
 			}
+#endif
 		}
 
 		public override void LoadWorldData(TagCompound tag)

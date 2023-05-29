@@ -6,6 +6,7 @@ using SpiritMod.Items.Material;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class HangingSoulbloom : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Hanging Soulbloom");

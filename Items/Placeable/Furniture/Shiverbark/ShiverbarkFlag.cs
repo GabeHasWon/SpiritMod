@@ -6,6 +6,7 @@ using ShiverbarkFlagTile = SpiritMod.Tiles.Furniture.Shiverbark.ShiverbarkFlagTi
 
 namespace SpiritMod.Items.Placeable.Furniture.Shiverbark
 {
+	[Sacrifice(1)]
 	public class ShiverbarkFlag : ModItem
 	{
 		public override void SetStaticDefaults()

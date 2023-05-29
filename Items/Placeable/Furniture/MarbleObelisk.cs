@@ -6,15 +6,14 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class MarbleObeliskItem : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Enchanted Marble Obelisk");
-            Tooltip.SetDefault("Emits ancient symbols");
-
+            Tooltip.SetDefault("Emits ancient symbols")
         }
-
 
 		public override void SetDefaults()
 		{

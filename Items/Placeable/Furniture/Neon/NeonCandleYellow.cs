@@ -6,6 +6,7 @@ using SpiritMod.Items.Material;
 
 namespace SpiritMod.Items.Placeable.Furniture.Neon
 {
+	[Sacrifice(1)]
 	public class NeonCandleYellow : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Yellow Neon Candle");

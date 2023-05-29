@@ -5,6 +5,7 @@ using StreamScaleLanternTile = SpiritMod.Tiles.Furniture.StreamScale.StreamScale
 
 namespace SpiritMod.Items.Placeable.Furniture.StreamScale
 {
+	[Sacrifice(1)]
 	public class StreamScaleLantern : ModItem
 	{
 		public override void SetStaticDefaults()

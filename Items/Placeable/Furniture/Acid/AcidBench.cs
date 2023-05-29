@@ -6,6 +6,7 @@ using AcidBenchTile = SpiritMod.Tiles.Furniture.Acid.AcidBenchTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidBench : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -6,6 +6,7 @@ using AcidClockTile = SpiritMod.Tiles.Furniture.Acid.AcidClockTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidClock : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -6,6 +6,7 @@ using AcidDoorClosed = SpiritMod.Tiles.Furniture.Acid.AcidDoorClosed;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidDoor : ModItem
 	{
 		public override void SetStaticDefaults()

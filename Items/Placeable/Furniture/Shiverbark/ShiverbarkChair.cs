@@ -6,6 +6,7 @@ using ShiverbarkChairTile = SpiritMod.Tiles.Furniture.Shiverbark.ShiverbarkChair
 
 namespace SpiritMod.Items.Placeable.Furniture.Shiverbark
 {
+	[Sacrifice(1)]
 	public class ShiverbarkChair : ModItem
 	{
 		public override void SetStaticDefaults()

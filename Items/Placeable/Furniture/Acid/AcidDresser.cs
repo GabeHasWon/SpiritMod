@@ -6,6 +6,7 @@ using AcidDresserTile = SpiritMod.Tiles.Furniture.Acid.AcidDresserTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidDresser : ModItem
 	{
 		public override void SetStaticDefaults()

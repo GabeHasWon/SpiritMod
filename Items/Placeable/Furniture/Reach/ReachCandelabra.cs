@@ -6,6 +6,7 @@ using ReachCandelabraTile = SpiritMod.Tiles.Furniture.Reach.ReachCandelabra;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachCandelabra : ModItem
 	{
 		public override void SetStaticDefaults()

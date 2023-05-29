@@ -6,6 +6,7 @@ using ShiverbarkTableTile = SpiritMod.Tiles.Furniture.Shiverbark.ShiverbarkTable
 
 namespace SpiritMod.Items.Placeable.Furniture.Shiverbark
 {
+	[Sacrifice(1)]
 	public class ShiverbarkTable : ModItem
 	{
 		public override void SetStaticDefaults()

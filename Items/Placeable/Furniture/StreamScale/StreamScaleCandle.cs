@@ -5,6 +5,7 @@ using StreamScaleCandleTile = SpiritMod.Tiles.Furniture.StreamScale.StreamScaleC
 
 namespace SpiritMod.Items.Placeable.Furniture.StreamScale
 {
+	[Sacrifice(1)]
 	public class StreamScaleCandle : ModItem
 	{
 		public override void SetStaticDefaults()

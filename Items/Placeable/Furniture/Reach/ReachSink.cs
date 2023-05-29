@@ -6,6 +6,7 @@ using ReachSinkTile = SpiritMod.Tiles.Furniture.Reach.ReachSink;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachSink : ModItem
 	{
 		public override void SetStaticDefaults()

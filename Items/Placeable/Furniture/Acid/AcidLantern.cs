@@ -6,6 +6,7 @@ using AcidLanternTile = SpiritMod.Tiles.Furniture.Acid.AcidLanternTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidLantern : ModItem
 	{
 		public override void SetStaticDefaults()

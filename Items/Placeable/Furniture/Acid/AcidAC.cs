@@ -6,13 +6,13 @@ using AcidACTile = SpiritMod.Tiles.Furniture.Acid.AcidACTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidAC : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Broken Air Conditioner");
 		}
-
 
 		public override void SetDefaults()
 		{

@@ -7,6 +7,7 @@ using TreemanStatueTile = SpiritMod.Tiles.Furniture.Reach.TreemanStatue;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class TreemanStatue : ModItem
 	{
 		public override void SetStaticDefaults()

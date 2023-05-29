@@ -6,6 +6,7 @@ using AcidFanTile = SpiritMod.Tiles.Furniture.Acid.AcidFanTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidFan : ModItem
 	{
 		public override void SetStaticDefaults()

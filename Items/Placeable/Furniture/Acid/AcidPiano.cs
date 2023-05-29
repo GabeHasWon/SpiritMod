@@ -6,6 +6,7 @@ using AcidPianoTile = SpiritMod.Tiles.Furniture.Acid.AcidPianoTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidPiano : ModItem
 	{
 		public override void SetStaticDefaults()

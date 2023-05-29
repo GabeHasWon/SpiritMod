@@ -6,6 +6,7 @@ using AcidLampTile = SpiritMod.Tiles.Furniture.Acid.AcidLampTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidLamp : ModItem
 	{
 		public override void SetStaticDefaults()

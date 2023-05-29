@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using SpiritChestTile = SpiritMod.Tiles.Furniture.SpiritChest;
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SpiritChest : ModItem
 	{
 		public override void SetStaticDefaults()

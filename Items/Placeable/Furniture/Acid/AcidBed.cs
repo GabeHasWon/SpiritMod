@@ -6,6 +6,7 @@ using AcidBedTile = SpiritMod.Tiles.Furniture.Acid.AcidBedTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidBed : ModItem
 	{
 		public override void SetStaticDefaults()

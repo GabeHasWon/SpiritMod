@@ -6,6 +6,7 @@ using ReachPianoTile = SpiritMod.Tiles.Furniture.Reach.ReachPiano;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachPiano : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SepulchreChest : ModItem
 	{
 		public override void SetStaticDefaults()

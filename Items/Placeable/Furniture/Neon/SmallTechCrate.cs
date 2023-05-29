@@ -6,6 +6,7 @@ using SpiritMod.Items.Placeable.Tiles;
 using SpiritMod.Tiles.Block;
 namespace SpiritMod.Items.Placeable.Furniture.Neon
 {
+	[Sacrifice(1)]
 	public class SmallTechCrate : ModItem
 	{
 		public override void SetStaticDefaults()

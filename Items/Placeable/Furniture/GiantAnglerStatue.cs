@@ -7,6 +7,7 @@ using SpiritMod.Mechanics.QuestSystem;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class GiantAnglerStatue : ModItem
 	{
 		public override void SetStaticDefaults()

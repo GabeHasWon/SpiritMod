@@ -6,6 +6,7 @@ using ReachSofaTile = SpiritMod.Tiles.Furniture.Reach.ReachSofa;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachSofa : ModItem
 	{
 		public override void SetStaticDefaults()

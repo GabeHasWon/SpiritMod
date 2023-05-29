@@ -6,6 +6,7 @@ using AcidBarrelTile = SpiritMod.Tiles.Furniture.Acid.AcidBarrelTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidBarrel : ModItem
 	{
 		public override void SetStaticDefaults()

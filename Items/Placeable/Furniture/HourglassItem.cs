@@ -6,14 +6,13 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class HourglassItem : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ancient Hourglass");
-
         }
-
 
 		public override void SetDefaults()
 		{

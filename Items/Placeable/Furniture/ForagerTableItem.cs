@@ -6,6 +6,7 @@ using SpiritMod.Items.Sets.BriarDrops;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class ForagerTableItem : ModItem
 	{
 		public override void SetStaticDefaults()

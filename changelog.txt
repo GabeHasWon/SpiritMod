@@ -1,11 +1,3 @@
-﻿- Made Avian Islands not spawn near world spawn
-- Fixed description having zero-width nonsense characters
-- Slightly adjusted spawn positions of Avian Islands
-- Modified but did not fix pot breaking sounds when generating Sepulchres
-- Fixed Avian Islands sometimes having their eggs break
-- Made Cavern Crawlers play a swing sound instead of a star sound when changing states
-- Fixed server loading issues with Bone Harpy gores, MyPlayer visual effects
-- Fixed Starpowder tooltip mispell
-- Fixed Hanging Cloudstalk, Hanging Sun in a Pot, Hanging Soulbloom requiring a Hanging Bezier
-- Fixed mispelling in Heart to the Cause quest description
-- Fixed literally all enemies with gores spawning gores on servers
+﻿- Disabled Quest debug tool
+- Made most furniture items (all those in SpiritMod/Items/Placeable/Furniture) need only 1 research
+- Fixed Astralite not having a name on the map (which broke ore finder)

@@ -5,6 +5,7 @@ using StreamScaleChairTile = SpiritMod.Tiles.Furniture.StreamScale.StreamScaleCh
 
 namespace SpiritMod.Items.Placeable.Furniture.StreamScale
 {
+	[Sacrifice(1)]
 	public class StreamScaleChair : ModItem
 	{
 		public override void SetStaticDefaults()

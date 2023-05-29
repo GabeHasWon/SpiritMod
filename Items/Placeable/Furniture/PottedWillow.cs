@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class PottedWillow : ModItem
 	{
 		public override void SetStaticDefaults()

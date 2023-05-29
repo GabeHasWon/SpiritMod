@@ -6,6 +6,7 @@ using ReachTubTile = SpiritMod.Tiles.Furniture.Reach.ReachTub;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachTub : ModItem
 	{
 		public override void SetStaticDefaults()

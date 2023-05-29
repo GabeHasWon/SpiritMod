@@ -6,6 +6,7 @@ using ReachClockTile = SpiritMod.Tiles.Furniture.Reach.ReachClockTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachClockItem : ModItem
 	{
 		public override void SetStaticDefaults()

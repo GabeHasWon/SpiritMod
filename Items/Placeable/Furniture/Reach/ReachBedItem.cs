@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachBedItem : ModItem
 	{
 		public override void SetStaticDefaults()

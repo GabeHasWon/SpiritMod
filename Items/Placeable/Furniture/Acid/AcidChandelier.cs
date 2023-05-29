@@ -6,6 +6,7 @@ using AcidChandelierTile = SpiritMod.Tiles.Furniture.Acid.AcidChandelierTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidChandelier : ModItem
 	{
 		public override void SetStaticDefaults()

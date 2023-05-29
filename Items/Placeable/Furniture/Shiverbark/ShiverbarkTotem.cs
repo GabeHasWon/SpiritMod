@@ -6,6 +6,7 @@ using ShiverbarkTotemTile = SpiritMod.Tiles.Furniture.Shiverbark.ShiverbarkTotem
 
 namespace SpiritMod.Items.Placeable.Furniture.Shiverbark
 {
+	[Sacrifice(1)]
 	public class ShiverbarkTotem : ModItem
 	{
 		public override void SetStaticDefaults()

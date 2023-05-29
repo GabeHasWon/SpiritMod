@@ -6,6 +6,7 @@ using AcidSinkTile = SpiritMod.Tiles.Furniture.Acid.AcidSinkTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Acid
 {
+	[Sacrifice(1)]
 	public class AcidSink : ModItem
 	{
 		public override void SetStaticDefaults()

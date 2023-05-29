@@ -3,13 +3,13 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class PottedSakura : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sakura Bonsai");
 		}
-
 
 		public override void SetDefaults()
 		{

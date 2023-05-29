@@ -6,6 +6,7 @@ using ReachLanternTile = SpiritMod.Tiles.Furniture.Reach.ReachLanternTile;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachLantern : ModItem
 	{
 		public override void SetStaticDefaults()

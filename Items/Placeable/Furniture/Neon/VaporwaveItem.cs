@@ -6,6 +6,7 @@ using SpiritMod.Items.Material;
 
 namespace SpiritMod.Items.Placeable.Furniture.Neon
 {
+	[Sacrifice(1)]
 	public class VaporwaveItem : ModItem
 	{
 		public override void SetStaticDefaults()

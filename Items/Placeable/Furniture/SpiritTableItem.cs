@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SpiritTableItem : ModItem
 	{
 		public override void SetStaticDefaults()

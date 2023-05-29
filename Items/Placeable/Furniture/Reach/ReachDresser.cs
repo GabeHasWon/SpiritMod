@@ -6,6 +6,7 @@ using ReachDresserTile = SpiritMod.Tiles.Furniture.Reach.ReachDresser;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachDresser : ModItem
 	{
 		public override void SetStaticDefaults()

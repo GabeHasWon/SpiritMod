@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture.Neon
 {
+	[Sacrifice(1)]
 	public class GreenNeonSign : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Green Neon Sign");

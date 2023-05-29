@@ -6,6 +6,7 @@ using SpiritMod.Tiles.Furniture.Hanging;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class HangingSunPot : ModItem
 	{
 		public override void SetStaticDefaults()

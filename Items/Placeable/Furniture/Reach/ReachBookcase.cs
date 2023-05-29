@@ -6,6 +6,7 @@ using ReachBookcaseTile = SpiritMod.Tiles.Furniture.Reach.ReachBookcase;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
+	[Sacrifice(1)]
 	public class ReachBookcase : ModItem
 	{
 		public override void SetStaticDefaults()
