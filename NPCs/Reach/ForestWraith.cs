@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.Reach
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Glade Wraith");
-			Main.npcFrameCount[NPC.type] = 12;
+			Main.npcFrameCount[NPC.type] = 6;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
 
@@ -60,24 +60,6 @@ namespace SpiritMod.NPCs.Reach
 		}
 
 		bool throwing = false;
-
-		public override void FindFrame(int frameHeight)
-		{
-			if (!throwing)
-			{
-				NPC.frameCounter += 0.15f;
-				NPC.frameCounter %= 4;
-				int frame = (int)NPC.frameCounter;
-				NPC.frame.Y = frame * frameHeight;
-			}
-			else
-			{
-				NPC.frameCounter += 0.15f;
-				NPC.frameCounter %= 8;
-				int frame = (int)NPC.frameCounter;
-				NPC.frame.Y = (frame + 4) * frameHeight;
-			}
-		}
 
 		int timer = 0;
 		bool thrown = false;
@@ -163,10 +145,8 @@ namespace SpiritMod.NPCs.Reach
 
 			if (NPC.life <= 0)
 			{
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GladeWraith1").Type);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GladeWraith2").Type);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GladeWraith3").Type);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GladeWraith4").Type);
+				for (int i = 1; i < 6; i++)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GladeWraith" + i).Type);
 
 				NPC.position.X = NPC.position.X + (NPC.width / 2);
 				NPC.position.Y = NPC.position.Y + (NPC.height / 2);
@@ -209,11 +189,27 @@ namespace SpiritMod.NPCs.Reach
 			return true;
 		}
 
+		public override void FindFrame(int frameHeight)
+		{
+			Texture2D texure = TextureAssets.Npc[Type].Value;
+			NPC.frameCounter = (NPC.frameCounter += 0.15f) % Main.npcFrameCount[Type];
+
+			int numFramesX = 2;
+			int frameX = throwing ? 1 : 0;
+			int frameY = (int)NPC.frameCounter;
+			int frameWidth = texure.Width / numFramesX;
+
+			NPC.frame.Width /= numFramesX;
+			NPC.frame = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth - 2, frameHeight - 2);
+		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			
 			return false;
 		}
 

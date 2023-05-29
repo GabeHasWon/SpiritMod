@@ -10,6 +10,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 {
 	public class OlympiumToken : ModItem
 	{
+		private readonly int numFrames = 12;
 		private int _frameCounter;
 		private int _yFrame;
 		private float _alpha;
@@ -22,8 +23,8 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 
 		public override void SetDefaults()
 		{
-			Item.width = 16;
-			Item.height = 16;
+			Item.width = 26;
+			Item.height = 24;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.value = 300;
 			Item.rare = ItemRarityID.LightRed;
@@ -37,11 +38,13 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 
 		public override void Update(ref float gravity, ref float maxFallSpeed)
 		{
-			_frameCounter++;
-			if (_frameCounter % 4 == 0)
-				_yFrame++;
+			if (++_frameCounter >= 4)
+			{
+				_frameCounter = 0;
+				_yFrame = ++_yFrame % numFrames;
+			}
 
-			_yFrame %= 4;
+			_yFrame %= numFrames;
 			if (Main.rand.NextBool(15))
 			{
 				int dust = Dust.NewDust(Item.position, Item.width, Item.height, DustID.GoldCoin, 0, 0);
@@ -71,7 +74,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 
 			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_World", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			Rectangle frame = new Rectangle(0, _yFrame * Item.height, Item.width, Item.height);
+			Rectangle frame = new Rectangle(0, tex.Height / numFrames * _yFrame, Item.width, Item.height);
 			spriteBatch.Draw(tex, Item.Center - Main.screenPosition, frame, lightColor, rotation, new Vector2(Item.width, Item.height) / 2, scale, SpriteEffects.None, 0f);
 
 			spriteBatch.End();
