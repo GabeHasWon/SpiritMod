@@ -60,7 +60,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 				for (int k = 0; k < 10; k++)
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
 
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("LittleScarab4").Type, 1f);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("TinyScarab1").Type, 1f);
 			}
 		}
 

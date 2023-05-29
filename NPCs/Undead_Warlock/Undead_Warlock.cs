@@ -79,7 +79,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 				if (NPC.frameCounter >= 7)
 				{
 					NPC.frameCounter = 0;
-					NPC.frame.Y = ((NPC.frame.Y + 1) % 5) * frameHeight;
+					NPC.frame.Y = (NPC.frame.Y + 1) % 5 * frameHeight;
 				}
 			}
 			else
@@ -117,7 +117,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 						}
 					}
 
-					if (projectileTimer % 60 == 0)
+					if (projectileTimer % 60 == 1)
 					{
 						if (Main.netMode != NetmodeID.MultiplayerClient)
 						{
@@ -153,7 +153,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 						crystalTimer = 0;
 						spawningCrystalsTimer = 0;
 						spawnedProjectiles = 0;
-						projectileTimer = 1;
+						projectileTimer = 0;
 						resetTimer = 0;
 						NPC.netUpdate = true;
 					}

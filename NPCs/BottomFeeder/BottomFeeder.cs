@@ -7,6 +7,7 @@ using SpiritMod.Buffs;
 using SpiritMod.Buffs.DoT;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using Terraria.Audio;
 
 namespace SpiritMod.NPCs.BottomFeeder
 {
@@ -65,8 +66,6 @@ namespace SpiritMod.NPCs.BottomFeeder
 
 			if (distance < 178 * 178)
 			{
-				shoottimer++;
-
 				if (!NPC.wet)
 				{
 					NPC.velocity.X = .01f * NPC.spriteDirection;
@@ -74,9 +73,12 @@ namespace SpiritMod.NPCs.BottomFeeder
 					NPC.velocity.Y = 10f;
 				}
 
+				if (++shoottimer == 40)
+					SoundEngine.PlaySound(SoundID.NPCDeath13, NPC.Center);
+
 				if (shoottimer >= 40 && shoottimer < 96)
 				{
-					if (Main.rand.NextBool(3)&& Main.netMode != NetmodeID.MultiplayerClient)
+					if (Main.rand.NextBool(3) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						int bloodproj = Main.rand.Next(new int[] { ModContent.ProjectileType<Feeder1>(), ModContent.ProjectileType<Feeder2>(), ModContent.ProjectileType<Feeder3>() });
 						int damage = Main.expertMode ? 10 : 15;

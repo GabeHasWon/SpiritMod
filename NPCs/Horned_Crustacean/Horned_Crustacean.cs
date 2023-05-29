@@ -13,6 +13,7 @@ using SpiritMod.Mechanics.QuestSystem;
 using Terraria.ModLoader.Utilities;
 using SpiritMod.Items.Weapon.Magic.LuminanceSeacone;
 using Terraria.GameContent.Bestiary;
+using System.Reflection;
 
 namespace SpiritMod.NPCs.Horned_Crustacean
 {
@@ -287,22 +288,30 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => SpawnCondition.OceanMonster.Chance * 0.08f;
-		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => false;
+
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		{
+			Texture2D texture = TextureAssets.Npc[Type].Value;
+			Vector2 drawOrigin = new Vector2(texture.Width, texture.Height / Main.npcFrameCount[Type]) / 2;
+			var effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+			spriteBatch.Draw(texture, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, drawOrigin, NPC.scale, effects, 0);
+
+			return false;
+		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Vector2 vector2_3 = new Vector2(TextureAssets.Npc[NPC.type].Value.Width / 2f, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2f);
-			float addHeight = 10f;
-			Color color1 = Lighting.GetColor((int)(NPC.Center.X / 16), (int)(NPC.Center.Y / 16.0));
+			Texture2D glow = Mod.Assets.Request<Texture2D>("NPCs/Horned_Crustacean/Horned_Crustacean_Glow").Value;
+			Vector2 drawOrigin = new Vector2(glow.Width, glow.Height / Main.npcFrameCount[Type]) / 2;
+			var effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			Color color = new Color(r - NPC.alpha, byte.MaxValue - NPC.alpha, g - NPC.alpha, b - NPC.alpha);
 
-			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+			Main.spriteBatch.Draw(glow, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
 
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Horned_Crustacean/Horned_Crustacean_Glow").Value, NPC.Bottom - screenPos + new Vector2((float)(-TextureAssets.Npc[NPC.type].Value.Width * NPC.scale / 2.0 + vector2_3.X * NPC.scale), (float)(-TextureAssets.Npc[NPC.type].Value.Height * NPC.scale / Main.npcFrameCount[NPC.type] + 4.0 + vector2_3.Y * NPC.scale) + addHeight + NPC.gfxOffY), NPC.frame, new Color(r - NPC.alpha, byte.MaxValue - NPC.alpha, g - NPC.alpha, b - NPC.alpha), NPC.rotation, vector2_3, NPC.scale, effects, 0.0f);
-
-			float num = 0.25f + (NPC.GetAlpha(color1).ToVector3() - new Vector3(4f)).Length() * 0.25f;
-			for (int index = 0; index < 4; ++index)
-				Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Horned_Crustacean/Horned_Crustacean_Glow").Value, NPC.Bottom - screenPos + new Vector2((float)(-TextureAssets.Npc[NPC.type].Value.Width * NPC.scale / 2.0 + vector2_3.X * NPC.scale), (float)(-TextureAssets.Npc[NPC.type].Value.Height * NPC.scale / Main.npcFrameCount[NPC.type] + 4.0 + vector2_3.Y * NPC.scale) + addHeight + NPC.gfxOffY) + NPC.velocity.RotatedBy(index * 47079637050629, new Vector2()) * num, NPC.frame, new Color(r, g, b, 0), NPC.rotation, vector2_3, NPC.scale, effects, 0.0f);
+			float num = 0.25f + (NPC.GetAlpha(drawColor).ToVector3() - new Vector3(4f)).Length() * 0.25f;
+			for (int i = 0; i < 4; i++)
+				Main.spriteBatch.Draw(glow, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY) + (NPC.velocity.RotatedBy(i * 47079637050629, new Vector2()) * num), NPC.frame, new Color(r, g, b, 0), NPC.rotation, drawOrigin, NPC.scale, effects, 0.0f);
 		}
 
 		public override void FindFrame(int frameHeight)

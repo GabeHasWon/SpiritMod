@@ -55,7 +55,7 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 					Projectile.Center = player.MountedCenter;
 
 				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(player.MountedCenter) * 15, 0.04f);
-				if (Projectile.Hitbox.Intersects(player.Hitbox))
+				if (player.Hitbox.Contains(Projectile.Center.ToPoint()))
 				{
 					stuckPos = Projectile.Center - player.MountedCenter;
 					AiState = StuckToPlayer;

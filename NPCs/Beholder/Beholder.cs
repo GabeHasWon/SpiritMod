@@ -266,15 +266,21 @@ namespace SpiritMod.NPCs.Beholder
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height * 0.5f));
+			Texture2D texture = TextureAssets.Npc[Type].Value;
+			Vector2 drawOrigin = new Vector2(texture.Width, texture.Height / Main.npcFrameCount[Type]) / 2;
+			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
 			for (int k = 0; k < NPC.oldPos.Length; k++)
 			{
-				var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-				Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, NPC.gfxOffY);
-				Color color = NPC.GetAlpha(drawColor) * (float)(((NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
-				spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
+				Vector2 drawPos = NPC.oldPos[k] - screenPos + (NPC.Size / 2) + new Vector2(0, NPC.gfxOffY);
+				Color color = NPC.GetAlpha(drawColor) * (float)((NPC.oldPos.Length - k) / (float)NPC.oldPos.Length / 2);
+				spriteBatch.Draw(texture, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
 			}
-			return true;
+
+			NPC.GetNPCColorTintedByBuffs(drawColor);
+			spriteBatch.Draw(texture, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
+
+			return false;
 		}
 
 		public override bool PreKill()

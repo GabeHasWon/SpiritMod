@@ -16,6 +16,12 @@ namespace SpiritMod.NPCs.FallingAsteroid
 	{
 		public int visualTimer = 0;
 
+		private int Counter
+		{
+			get => (int)NPC.ai[0];
+			set => NPC.ai[0] = value;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Falling Asteroid");
@@ -52,7 +58,8 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			});
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(24, 60 * 3);
+		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.OnFire, 60 * 3);
+
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => SpawnCondition.Meteor.Chance * 0.15f;
 
 		public override void AI()
@@ -60,18 +67,18 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			Player player = Main.player[NPC.target];
 			NPC.spriteDirection = 1;
 
-			NPC.ai[0]++;
-			if (NPC.ai[0] <= 320 && NPC.ai[0] >= 0)
+			Counter++;
+			if (Counter <= 320 && Counter >= 0)
 				Movement();
-			else if (NPC.ai[0] > 360)
-				DoExplosion();
+			else if (Counter > 360)
+				Drop();
 
-			if (NPC.ai[0] == 320 || NPC.ai[0] == 360)
+			if (Counter == 320 || Counter == 360)
 				NPC.netUpdate = true;
 
-			if (NPC.ai[0] >= 580)
+			if (Counter >= 580)
 			{
-				NPC.ai[0] = 0;
+				Counter = 0;
 				NPC.netUpdate = true;
 			}
 
@@ -90,11 +97,12 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.5f, 0.25f, 0f);
 		}
 
-		public void DoExplosion()
+		public void Drop()
 		{
 			NPC.velocity.Y += 0.15f;
 			NPC.noTileCollide = false;
-			if (NPC.collideY && NPC.ai[0] > 420)
+
+			if (NPC.collideY && Counter > 420) //The NPC has impacted
 			{
 				for (int index = 0; index < 30; ++index)
 				{
@@ -104,52 +112,46 @@ namespace SpiritMod.NPCs.FallingAsteroid
 					dust.scale += 8 * 0.03f;
 				}
 
-				SoundEngine.PlaySound(SoundID.NPCDeath14, NPC.Center);
-				NPC.ai[0] = -90;
-				NPC.netUpdate = true;
-
 				for (int k = 0; k < 10; k++)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, new Vector2(NPC.velocity.X * 0.5f, -NPC.velocity.Y * 0.5f), Main.rand.Next(61, 64), 1f);
 				for (int k = 0; k < 20; k++)
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, NPC.velocity.X * 2f, -NPC.velocity.Y * 2f, 150, new Color(), 1.2f);
 
-				for (int i = 0; i < Main.npc.Length; i++)
-				{
-					NPC npc2 = Main.npc[i];
-					if (Vector2.Distance(NPC.Center, npc2.Center) <= (double)150f && !npc2.boss && npc2.knockBackResist != 0f)
-						MoveEntity(npc2);
-				}
+				SoundEngine.PlaySound(SoundID.NPCDeath14, NPC.Center);
+				Counter = -90;
+				NPC.netUpdate = true;
 
-				for (int i = 0; i < Main.item.Length; i++)
+				#region entity collisions
+				foreach (NPC npc in Main.npc)
 				{
-					Item item = Main.item[i];
+					if (Vector2.Distance(NPC.Center, npc.Center) <= 150f)
+						MoveEntity(npc, 10f * npc.knockBackResist);
+				}
+				foreach (Item item in Main.item)
+				{
 					if (Vector2.Distance(NPC.Center, item.Center) <= 150f)
 						MoveEntity(item);
 				}
-
-				for (int i = 0; i < Main.player.Length; i++)
+				foreach (Player player in Main.player)
 				{
-					Player patates = Main.player[i];
-					if (Vector2.Distance(NPC.Center, patates.Center) <= 150f)
-						MoveEntity(patates);
+					if (Vector2.Distance(NPC.Center, player.Center) <= 150f)
+						MoveEntity(player);
 				}
-
-				for (int i = 0; i < Main.projectile.Length; i++)
+				foreach (Projectile proj in Main.projectile)
 				{
-					Projectile aga = Main.projectile[i];
-					if (Vector2.Distance(NPC.Center, aga.Center) <= 150f)
-						MoveEntity(aga);
+					if (Vector2.Distance(NPC.Center, proj.Center) <= 150f && proj.type != ProjectileID.IceBlock)
+						MoveEntity(proj);
 				}
+				#endregion
 			}
 		}
 
-		public void MoveEntity(Entity t)
+		public static void MoveEntity(Entity entity, float magnitude = 10f)
 		{
-			float num2 = NPC.position.X + Main.rand.Next(-10, 10) + (NPC.width / 2f) - t.Center.X;
-			float num3 = NPC.position.Y + Main.rand.Next(-10, 10) + (NPC.height / 2f) - t.Center.Y;
-			float num4 = 8f / (float)Math.Sqrt(num2 * num2 + num3 * num3);
-			t.velocity.X = num2 * num4 * -1.7f;
-			t.velocity.Y = num3 * num4 * -1.7f;
+			Vector2 velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat() * magnitude;
+
+			if (velocity != Vector2.Zero)
+				entity.velocity = velocity;
 		}
 
 		public void Movement()
@@ -254,7 +256,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if (NPC.ai[0] > 360 || NPC.IsABestiaryIconDummy)
+			if (Counter > 360 || NPC.IsABestiaryIconDummy)
 			{
 				++visualTimer;
 
@@ -308,6 +310,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 		{
 			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/FallingAsteroid/Falling_Asteroid_Glow").Value, screenPos);
 		}
