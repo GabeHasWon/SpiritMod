@@ -63,15 +63,16 @@ namespace SpiritMod.NPCs.FallenAngel
 			NPC.rotation = NPC.velocity.X * .009f;
 			NPC.ai[0]++;
 			NPC.ai[1] += 0.04f;
+			NPC.ai[2]++;
 
-			if (NPC.ai[0] == 100 || NPC.ai[0] == 240 || NPC.ai[0] == 360 || NPC.ai[0] == 620)
+			if (NPC.ai[2] == 100 || NPC.ai[2] == 240 || NPC.ai[2] == 360 || NPC.ai[2] == 620)
 			{
 				SoundEngine.PlaySound(SoundID.DD2_WyvernDiveDown, NPC.Center);
 				Vector2 direction = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center) * new Vector2(Main.rand.Next(8, 10), Main.rand.Next(8, 10));
 				NPC.velocity = direction * 0.96f;
 			}
 
-			if (NPC.ai[0] >= 680)
+			if (NPC.ai[2] >= 680)
 			{
 				SoundEngine.PlaySound(SoundID.Item109, NPC.Center);
 				DustHelper.DrawStar(NPC.Center, DustID.GoldCoin, pointAmount: 5, mainSize: 2.25f * 2.33f, dustDensity: 2, pointDepthMult: 0.3f, noGravity: true);
@@ -80,7 +81,7 @@ namespace SpiritMod.NPCs.FallenAngel
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, Main.rand.Next(-8, 8), Main.rand.Next(-8, 8), ModContent.ProjectileType<ShootingStarHostile>(), 30, 1, Main.myPlayer, 0, 0);
 
-				NPC.ai[0] = 0;
+				NPC.ai[2] = 0;
 			}
 		}
 

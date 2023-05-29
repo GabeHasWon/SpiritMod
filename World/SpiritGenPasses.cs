@@ -482,7 +482,7 @@ namespace SpiritMod.World
 			Point center = new Point();
 			int width = (StashRoomMain.GetLength(1) / 2) + 5;
 			int height = (StashRoomMain.GetLength(0) / 2) + 4;
-			Rectangle positionRange = new Rectangle(Main.spawnTileX - 800, Main.spawnTileY + 120, 1600, 280);
+			Rectangle positionRange = new Rectangle(Main.spawnTileX - 800, (int)(Main.worldSurface + 40), 1600, 280);
 			BlacklistBlocks(80, width, height, positionRange, ref center, out bool failed);
 
 			if (failed) //Dont generate if tried too many times

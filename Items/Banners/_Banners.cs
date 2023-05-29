@@ -7,6 +7,7 @@ using SpiritMod.NPCs.Hydra;
 
 namespace SpiritMod.Items.Banners
 {
+	[Sacrifice(1)]
 	public abstract class BaseBannerItem : ModItem 
 	{
 		protected abstract int Style { get; }

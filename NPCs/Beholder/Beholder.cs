@@ -315,7 +315,7 @@ namespace SpiritMod.NPCs.Beholder
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Miniboss;
-			progression = 3.2f;
+			progression = 3.1f;
 			name = "Beholder";
 			downedCondition = () => MyWorld.downedBeholder;
 			identificationData = new BossChecklistDataHandler.BCIDData(

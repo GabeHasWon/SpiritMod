@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Enchanted Marble Obelisk");
-            Tooltip.SetDefault("Emits ancient symbols")
+			Tooltip.SetDefault("Emits ancient symbols");
         }
 
 		public override void SetDefaults()

@@ -55,7 +55,7 @@ namespace SpiritMod.World.Sepulchre
 					Main.soundVolume = 0;
 					Main.ambientVolume = 0;
 
-					for (int i = 0; i < Main.maxTilesX / 200; i++)
+					for (int i = 0; i < Main.maxTilesX / 250; i++)
 					{
 						CreateSepulchre(new Vector2(WorldGen.genRand.Next((int)(Main.maxTilesX * 0.2f), (int)(Main.maxTilesX * 0.8f)), WorldGen.genRand.Next(Main.maxTilesY - 500, Main.maxTilesY - 300)));
 					}

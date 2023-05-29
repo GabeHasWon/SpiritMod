@@ -106,11 +106,11 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			NPC.spriteDirection = NPC.direction;
 
 			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.5f, 0.25f, 0f);
-			if (pickedWeapon == 1)
+			if (pickedWeapon != 1)
             {
                 if (projectileTimer > 80 && projectileTimer < 110)
                 {
-                    Vector2 Position = new Vector2(NPC.Center.X - (37 * NPC.spriteDirection), NPC.Center.Y);
+					Vector2 Position = NPC.Center + new Vector2(37 * NPC.spriteDirection, 0).RotatedBy(NPC.rotation);
                     Vector2 vector2 = new Vector2((float)(NPC.direction * -6), 12f) * 0.2f + Utils.RandomVector2(Main.rand, -1f, 1f) * 0.2f;
                     Dust dust = Main.dust[Dust.NewDust(Position, 8, 8, DustID.Torch, vector2.X, vector2.Y, 100, Color.Transparent, (float)(1.0 + (double)Main.rand.NextFloat() * 1))];
                     dust.noGravity = true;
