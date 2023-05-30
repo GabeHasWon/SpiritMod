@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -75,6 +76,7 @@ namespace SpiritMod.NPCs.BottomFeeder
 			}
 
 		}
+
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			const int DustType = DustID.Blood;
@@ -84,6 +86,12 @@ namespace SpiritMod.NPCs.BottomFeeder
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustType, 2.5f * 1, -2.5f, 0, Color.White, 0.7f);
 			}
 			return true;
+		}
+
+		public override void Kill(int timeLeft)
+		{
+			if (Main.netMode != NetmodeID.Server)
+				SoundEngine.PlaySound(SoundID.NPCHit1, Projectile.Center);
 		}
 	}
 }

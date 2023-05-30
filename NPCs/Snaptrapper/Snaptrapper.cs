@@ -101,6 +101,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 		public override void FindFrame(int frameHeight)
 		{
 			float distance = NPC.DistanceSQ(Main.player[NPC.target].Center);
+			int attackFrameStart = 7;
 
 			if (!chargePhase && distance > 62 * 62 && !NPC.IsABestiaryIconDummy)
 			{
@@ -110,8 +111,8 @@ namespace SpiritMod.NPCs.Snaptrapper
 					frame++;
 				}
 
-				if (frame > 10 || frame < 7)
-					frame = 7;
+				if (frame > 10 || frame < attackFrameStart)
+					frame = attackFrameStart;
 			}
 			else if (!chargePhase)
 			{
@@ -121,7 +122,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 					frame++;
 				}
 
-				if (frame >= 7)
+				if (frame >= attackFrameStart)
 					frame = 0;
 			}
 

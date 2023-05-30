@@ -14,7 +14,6 @@ namespace SpiritMod.NPCs.Reach
 			DisplayName.SetDefault("Blubby");
 			Main.npcFrameCount[NPC.type] = 2;
 			Main.npcCatchable[NPC.type] = true;
-			Main.npcFrameCount[NPC.type] = 2;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
@@ -62,7 +61,7 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void FindFrame(int frameHeight)
 		{
-			if (NPC.velocity != Vector2.Zero)
+			if (NPC.velocity != Vector2.Zero || NPC.IsABestiaryIconDummy)
 			{
 				NPC.frameCounter += 0.12f;
 				NPC.frameCounter %= Main.npcFrameCount[NPC.type];

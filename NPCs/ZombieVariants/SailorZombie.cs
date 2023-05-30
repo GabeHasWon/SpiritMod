@@ -55,6 +55,19 @@ namespace SpiritMod.NPCs.ZombieVariants
 			}
 		}
 
+		float frameCounter;
+
+		public override void FindFrame(int frameHeight)
+		{
+			if (NPC.IsABestiaryIconDummy)
+			{
+				frameCounter += .1f;
+				frameCounter %= Main.npcFrameCount[Type];
+
+				NPC.frame.Y = frameHeight * (int)frameCounter;
+			}
+		}
+
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.AddCommon(ItemID.Shackle, 50);

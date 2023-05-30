@@ -301,6 +301,9 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 
 		public override void FindFrame(int frameHeight)
 		{
+			if (NPC.IsABestiaryIconDummy)
+				trueFrame = (trueFrame + .15f) % 4;
+
 			NPC.frame.Width = 60;
 			NPC.frame.X = (int)trueFrame % 3 * NPC.frame.Width;
 			NPC.frame.Y = ((int)trueFrame - ((int)trueFrame % 3)) / 3 * NPC.frame.Height;
