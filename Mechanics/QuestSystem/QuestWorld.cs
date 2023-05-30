@@ -163,11 +163,18 @@ namespace SpiritMod.Mechanics.QuestSystem
 				tag.Add("SpiritMod:QuestQueueNPCID" + npcIDRep, item); //Writes the ID and the length of the queue
 				tag.Add("SpiritMod:SingleQuestQueueLength" + npcIDRep++, NPCQuestQueue[item].Count);
 
+				List<Quest> requeued = new();
+
 				while (NPCQuestQueue[item].Count > 0) //Writes every value in the queue
 				{
 					Quest q = NPCQuestQueue[item].Dequeue();
 					tag.Add("SpiritMod:SingleQuestQueue" + questRep++, q.QuestName);
+
+					requeued.Add(q);
 				}
+
+				foreach (var quest in requeued)
+					NPCQuestQueue[item].Enqueue(quest);
 			}
 		}
 

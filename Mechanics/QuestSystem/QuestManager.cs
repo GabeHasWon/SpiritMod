@@ -15,10 +15,6 @@ namespace SpiritMod.Mechanics.QuestSystem
 {
     public static class QuestManager
     {
-		/* Boffin's TODO list
-		 * NPC text override and quest buttons. (a helper class with a bunch of queued up quests to give for town npcs!) (I think this is done, but I'll keep this here just in case I'm wrong - Gabe)
-		 * New clients joining servers need to sync their quest managers up. (Same as above - Gabe)
-		*/
 		public const int MAX_QUESTS_ACTIVE = 5;
 
 		public static List<Quest> Quests { get; private set; }
@@ -384,18 +380,13 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 			if (questIndex < 0 || questIndex >= Quests.Count) return false;
 
-			switch (context)
+			return context switch
 			{
-				default:
-				case 0:
-					return Quests[questIndex].IsUnlocked;
-				case 1:
-					return Quests[questIndex].IsActive;
-				case 2:
-					return Quests[questIndex].IsCompleted;
-				case 3:
-					return Quests[questIndex].RewardsGiven;
-			}
+				1 => Quests[questIndex].IsActive,
+				2 => Quests[questIndex].IsCompleted,
+				3 => Quests[questIndex].RewardsGiven,
+				_ => Quests[questIndex].IsUnlocked,
+			};
 		}
 
 		public static QuestTask ParseTaskFromArguments(object[] args)

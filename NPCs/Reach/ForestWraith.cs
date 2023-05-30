@@ -25,7 +25,9 @@ namespace SpiritMod.NPCs.Reach
 		{
 			DisplayName.SetDefault("Glade Wraith");
 			Main.npcFrameCount[NPC.type] = 6;
+
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
+			NPCID.Sets.MPAllowedEnemies[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -112,16 +114,14 @@ namespace SpiritMod.NPCs.Reach
 
 			if (timer >= 730)
 			{
-				NPC.defense = 10;
-				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-				direction.Normalize();
-				SoundEngine.PlaySound(SoundID.Zombie7, NPC.Center);
+				Vector2 direction = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center);
 				direction.X *= Main.rand.Next(6, 9);
 				direction.Y *= Main.rand.Next(6, 9);
-				NPC.velocity.X = direction.X;
-				NPC.velocity.Y = direction.Y;
-				NPC.velocity *= 0.97f;
+				NPC.velocity = direction *= 0.97f;
 				timer = 0;
+
+				SoundEngine.PlaySound(SoundID.Zombie7, NPC.Center);
+				NPC.defense = 10;
 				NPC.netUpdate = true;
 			}
 

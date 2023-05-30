@@ -32,8 +32,17 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool? UseItem(Player player)
 		{
-			NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y - 180, ModContent.NPCType<ForestWraith>());
-			SoundEngine.PlaySound(SoundID.Zombie7, player.position);
+			if (player.whoAmI == Main.myPlayer)
+			{
+				SoundEngine.PlaySound(SoundID.Zombie7, player.position);
+
+				int type = ModContent.NPCType<ForestWraith>();
+				int who = NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y - 200, type);
+
+				if (Main.netMode == NetmodeID.MultiplayerClient)
+					NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, who);
+			}
+
 			return true;
 		}
 	}
