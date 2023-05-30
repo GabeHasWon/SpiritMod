@@ -79,15 +79,15 @@ namespace SpiritMod.GlobalClasses.NPCs
 				chat = Main.rand.Next(dialogue);
 		}
 
-		public void AddDialogueAboutNPC<T>(List<string> dialogue, string text, float increase, NPC npc, ref float replaceChance) where T : ModNPC => AddDialogueAboutNPC(dialogue, ModContent.NPCType<T>(), text, increase, npc, ref replaceChance);
-		public void AddDialogueAboutNPC(List<string> dialogue, int npcID, string text, float increase, NPC self, ref float replaceChance)
+		public static void AddDialogueAboutNPC<T>(List<string> dialogue, string text, float increase, NPC npc, ref float replaceChance) where T : ModNPC => AddDialogueAboutNPC(dialogue, ModContent.NPCType<T>(), text, increase, npc, ref replaceChance);
+		public static void AddDialogueAboutNPC(List<string> dialogue, int npcID, string text, float increase, NPC self, ref float replaceChance)
 		{
 			int npc = NPC.FindFirstNPC(npcID);
 			if (npc >= 0 && IsTownNPCNearby(self, npcID, out bool _))
 			{
 				dialogue.Add(text.Replace("{N}", $"{Main.npc[npc].GivenName}"));
 
-				float CombineChances(float p1, float p2) => p1 + p2 - (p1 * p2);
+				static float CombineChances(float p1, float p2) => p1 + p2 - (p1 * p2);
 
 				replaceChance = CombineChances(replaceChance, increase);
 			}

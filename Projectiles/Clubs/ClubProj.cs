@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -20,6 +21,8 @@ namespace SpiritMod.Projectiles.Clubs
 			MaxDamage = maxDamage;
 			MinKnockback = minKnockback;
 			MaxKnockback = maxKnockback;
+
+			Projectile.netUpdate = true;
 		}
 
 		public int ChargeTime { get; private set; }
@@ -230,6 +233,20 @@ namespace SpiritMod.Projectiles.Clubs
 			player.itemAnimation = player.itemTime = 2;
 
 			return true;
+		}
+
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			writer.Write(Size.X);
+			writer.Write(Size.Y);
+		}
+
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			int sizeX = reader.Read();
+			int sizeY = reader.Read();
+
+			Size = new Point(sizeX, sizeY);
 		}
 	}
 }

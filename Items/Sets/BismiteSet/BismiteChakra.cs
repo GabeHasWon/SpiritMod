@@ -22,6 +22,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Item.useTime = 28;
 			Item.useAnimation = 25;
 			Item.noUseGraphic = true;
+			Item.noMelee = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 2;
 			Item.value = Item.sellPrice(0, 0, 12, 0);

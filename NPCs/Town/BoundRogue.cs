@@ -13,10 +13,7 @@ namespace SpiritMod.NPCs.Town
 			DisplayName.SetDefault("Bound Bandit");
 			NPCID.Sets.TownCritter[NPC.type] = true;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Hide = true
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -39,12 +36,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
-		public override string GetChat()
-		{
-			NPC.Transform(NPCType<Rogue>());
-			NPC.dontTakeDamage = false;
-			return "Hey! Thanks for saving me- Now, mind getting us out of this pickle? They duped me, took all my cash and left me for dead here! Don't think it means I'll discount my wares for you, though. Just kidding! Not.";
-		}
+		public override string GetChat() => "Hey! Thanks for saving me- Now, mind getting us out of this pickle? They duped me, took all my cash and left me for dead here! Don't think it means I'll discount my wares for you, though. Just kidding! Not.";
 
 		public override void AI()
 		{
@@ -58,13 +50,18 @@ namespace SpiritMod.NPCs.Town
 
 			if (NPC.wet)
 				NPC.life = 250;
+
             foreach (var player in Main.player)
             {
-                if (!player.active) continue;
+                if (!player.active)
+					continue;
+
                 if (player.talkNPC == NPC.whoAmI)
                 {
                     Rescue();
-                    return;
+					player.SetTalkNPC(NPC.whoAmI); //Refresh dialogue options
+
+					return;
                 }
             }
         }

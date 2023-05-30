@@ -117,8 +117,13 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-			=> GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow").Value, screenPos, NPC.GetAlpha(Color.White));
+		{
+			var effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			Rectangle drawFrame = new Rectangle(NPC.frame.X, NPC.frame.Y, NPC.frame.Width, NPC.frame.Height - 2);
 
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY + 2), drawFrame,
+				NPC.GetNPCColorTintedByBuffs(Color.White), NPC.rotation, drawFrame.Size() / 2, NPC.scale, effects, 0);
+		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

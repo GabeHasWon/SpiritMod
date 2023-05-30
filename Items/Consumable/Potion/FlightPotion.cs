@@ -31,6 +31,7 @@ namespace SpiritMod.Items.Consumable.Potion
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.BottledWater, 1);
 			recipe.AddIngredient(ModContent.ItemType<ByBiome.Forest.Placeable.Decorative.CloudstalkItem>(), 1);
 			recipe.AddIngredient(ItemID.SoulofFlight, 5);
 			recipe.AddIngredient(ItemID.Damselfish, 1);

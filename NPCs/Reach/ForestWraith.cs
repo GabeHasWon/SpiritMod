@@ -191,15 +191,12 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void FindFrame(int frameHeight)
 		{
-			Texture2D texure = TextureAssets.Npc[Type].Value;
 			NPC.frameCounter = (NPC.frameCounter += 0.15f) % Main.npcFrameCount[Type];
 
-			int numFramesX = 2;
 			int frameX = throwing ? 1 : 0;
 			int frameY = (int)NPC.frameCounter;
-			int frameWidth = texure.Width / numFramesX;
+			int frameWidth = 88; //The width of the texture is 176px
 
-			NPC.frame.Width /= numFramesX;
 			NPC.frame = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth - 2, frameHeight - 2);
 		}
 
