@@ -125,7 +125,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 				foreach (NPC npc in Main.npc)
 				{
 					if (Vector2.Distance(NPC.Center, npc.Center) <= 150f && npc.whoAmI != NPC.whoAmI)
-						MoveEntity(npc, 10f * npc.knockBackResist);
+						MoveEntity(npc);
 				}
 				foreach (Item item in Main.item)
 				{
