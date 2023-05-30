@@ -252,7 +252,7 @@ namespace SpiritMod.NPCs.HauntedTome
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Miniboss;
-			progression = 1.5f;
+			progression = 0.9f;
 			name = "Haunted Tome";
 			downedCondition = () => MyWorld.downedTome;
 			identificationData = new BossChecklistDataHandler.BCIDData(

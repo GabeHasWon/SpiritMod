@@ -439,7 +439,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
-			progression = 6.8f;
+			progression = 7.5f;
 			name = "Infernon";
 			downedCondition = () => MyWorld.downedInfernon;
 			identificationData = new BossChecklistDataHandler.BCIDData(

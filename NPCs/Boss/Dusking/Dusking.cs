@@ -505,7 +505,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
-			progression = 7.3f;
+			progression = 11.4f;
 			name = "Dusking";
 			downedCondition = () => MyWorld.downedDusking;
 			identificationData = new BossChecklistDataHandler.BCIDData(

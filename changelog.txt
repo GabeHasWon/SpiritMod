@@ -1,9 +1,4 @@
-﻿- Disabled Quest debug tool
-- Made most furniture items (all those in SpiritMod/Items/Placeable/Furniture) need only 1 research
-- Fixed Astralite not having a name on the map (which broke ore finder)
-- Made all banners need only 1 research
-- Fixed Fallen Angel not attacking
-- Fixed Astral Adventurer flamethrower dust thing being flipped and unrotated
-- Reduced Sepulchre spawn rates (21 -> 17 per small world)
-- Made Gem Stashes not spawn above the surface (lol)
-- Made Sunken Surfaces not spawn in desert
+﻿- Fixed Boss Checklist boss progression order
+	Haunted Tome is now at 0.9
+	Infernon is now at 7.5
+	Dusking is now 11.4
