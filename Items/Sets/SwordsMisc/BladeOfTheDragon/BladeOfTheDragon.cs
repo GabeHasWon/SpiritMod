@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blade of the Dragon");
-            Tooltip.SetDefault("Hold and release to slice through nearby enemies\nBuild up a combo be repeatedly hitting enemies");
+            Tooltip.SetDefault("Hold and release to slice through nearby enemies\nBuild up a combo by repeatedly hitting enemies");
             Item.staff[Item.type] = true;
 		}
 

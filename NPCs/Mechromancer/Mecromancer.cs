@@ -227,7 +227,7 @@ namespace SpiritMod.NPCs.Mechromancer
 	        ref Func<bool> isAvailable)
         {
 	        entryType = BossChecklistDataHandler.EntryType.Miniboss;
-	        progression = 2.8f;
+	        progression = 3.5f;
 	        name = "Mechromancer";
 	        downedCondition = () => MyWorld.downedMechromancer;
 	        identificationData = new BossChecklistDataHandler.BCIDData(

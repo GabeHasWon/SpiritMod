@@ -368,8 +368,9 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 
 		public override void OnHitKill(int hitDirection, double damage)
 		{
-			for (int i = 0; i < 6; i++)
-				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity * .5f, 99, Main.rand.NextFloat(.75f, 1f));
+			if (Main.netMode != NetmodeID.Server)
+				for (int i = 0; i < 6; i++)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity * .5f, 99, Main.rand.NextFloat(.75f, 1f));
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

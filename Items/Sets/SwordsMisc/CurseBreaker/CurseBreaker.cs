@@ -253,7 +253,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 
 			float progress = GetProgress();
 
@@ -275,7 +275,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			PrimitiveRenderer.DrawPrimitiveShapeBatched(slashArcs.ToArray(), effect);
 
 			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 
 			Texture2D tex2 = TextureAssets.Projectile[Projectile.type].Value;
 			Texture2D tex3 = ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value;

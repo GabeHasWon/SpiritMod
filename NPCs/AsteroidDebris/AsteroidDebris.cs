@@ -149,11 +149,14 @@ namespace SpiritMod.NPCs.AsteroidDebris
 
 		private void Impact()
 		{
-			static float Direction() => Main.rand.NextFloat(-1.0f, 1.0f) * 3f;
+			if (Main.netMode != NetmodeID.Server)
+			{
+				static float Direction() => Main.rand.NextFloat(-1.0f, 1.0f) * 3f;
 
-			int randomAmount = Main.rand.Next(4, 7);
-			for (int i = 0; i < randomAmount; i++)
-				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, new Vector2(Direction(), Direction()), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
+				int randomAmount = Main.rand.Next(4, 7);
+				for (int i = 0; i < randomAmount; i++)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, new Vector2(Direction(), Direction()), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
+			}
 
 			NPC.active = false;
 		}

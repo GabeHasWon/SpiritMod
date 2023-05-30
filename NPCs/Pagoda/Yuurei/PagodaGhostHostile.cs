@@ -93,13 +93,17 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 				int angle = Main.rand.Next(360);
 				int distX = (int)(Math.Sin(angle * (Math.PI / 180)) * 90);
 				int distY = (int)(Math.Cos(angle * (Math.PI / 180)) * 300);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
+
+				if (Main.netMode != NetmodeID.Server)
+				{
+					for (int i = 0; i < 3; ++i)
+						Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 99);
+
+					SoundEngine.PlaySound(SoundID.NPCDeath6, NPC.Center);
+				}
 				NPC.position.X = player.position.X + distX;
 				NPC.position.Y = player.position.Y + distY;
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
 				NPC.alpha = 0;
-				SoundEngine.PlaySound(SoundID.NPCDeath6, NPC.Center);
 			}
 			NPC.spriteDirection = NPC.direction;
 		}

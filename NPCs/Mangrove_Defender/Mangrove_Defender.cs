@@ -284,19 +284,24 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 		}
 		public override void HitEffect(int hitDirection, double damage)
 		{
+			if (Main.netMode == NetmodeID.Server)
+				return;
+
 			for (int i = 0; i < 4; i++)
 			{
 				float goreScale = 0.01f * Main.rand.Next(20, 70);
 				int a = Gore.NewGore(NPC.GetSource_OnHurt(null), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hitDirection * 3f, 0f), 386, goreScale);
 				Main.gore[a].timeLeft = 5;
 			}
+
 			for (int i = 0; i < 4; i++)
 			{
 				float goreScale = 0.01f * Main.rand.Next(20, 70);
 				int a = Gore.NewGore(NPC.GetSource_OnHurt(null), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hitDirection * 3f, 0f), 387, goreScale);
 				Main.gore[a].timeLeft = 5;
 			}
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+
+			if (NPC.life <= 0)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ForestSentryGore1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ForestSentryGore2").Type, 1f);

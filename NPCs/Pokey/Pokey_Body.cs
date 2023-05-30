@@ -298,7 +298,25 @@ namespace SpiritMod.NPCs.Pokey
             SoundEngine.PlaySound(SoundID.Dig, NPC.Center);
 
             Tail.velocity.X = hitDirection * 2;
-        }
+
+			if (Main.netMode != NetmodeID.Server)
+			{
+				switch (NPC.frame.Y)
+				{
+					case 0:
+						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Pokey1_Gore1").Type, 1f);
+						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Pokey1_Gore2").Type, 1f);
+						break;
+					case 32:
+						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Pokey2_Gore1").Type, 1f);
+						break;
+					case 64:
+						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PokeyHead_Gore1").Type, 1f);
+						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PokeyHead_Gore2").Type, 1f);
+						break;
+				}
+			}
+		}
 
 		public override bool CheckDead()
 		{
@@ -316,21 +334,6 @@ namespace SpiritMod.NPCs.Pokey
         {
             if(Head.active && Head.life > 0) //no overlapping death sfx on head kill
                 SoundEngine.PlaySound(SoundID.Dig, NPC.Center);
-
-            switch (NPC.frame.Y)
-            {
-                case 0:
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Pokey1_Gore1").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Pokey1_Gore2").Type, 1f);
-                    break;
-                case 32:
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Pokey2_Gore1").Type, 1f);
-                    break;
-                case 64:
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PokeyHead_Gore1").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PokeyHead_Gore2").Type, 1f);
-                    break;
-            }
         }
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)

@@ -92,12 +92,16 @@ namespace SpiritMod.NPCs.Hemophora
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            for (int i = 0; i < 6; i++)
-            {
-                int a = Gore.NewGore(NPC.GetSource_OnHit(NPC), new Vector2(NPC.Center.X + Main.rand.Next(-10, 10), NPC.Center.Y + Main.rand.Next(-10, 10)), NPC.velocity, 911);
-                Main.gore[a].timeLeft = 20;
-                Main.gore[a].scale = Main.rand.NextFloat(.5f, 1f);
-            }
+			if (Main.netMode != NetmodeID.Server)
+			{
+				for (int i = 0; i < 6; i++)
+				{
+					int a = Gore.NewGore(NPC.GetSource_OnHit(NPC), new Vector2(NPC.Center.X + Main.rand.Next(-10, 10), NPC.Center.Y + Main.rand.Next(-10, 10)), NPC.velocity, 911);
+					Main.gore[a].timeLeft = 20;
+					Main.gore[a].scale = Main.rand.NextFloat(.5f, 1f);
+				}
+			}
+
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 for (int i = 0; i < 6; i++)

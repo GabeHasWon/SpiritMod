@@ -15,6 +15,7 @@ namespace SpiritMod.NPCs.Reach
 			Main.npcFrameCount[NPC.type] = 2;
 			Main.npcCatchable[NPC.type] = true;
 			Main.npcFrameCount[NPC.type] = 2;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

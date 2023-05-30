@@ -197,6 +197,9 @@ namespace SpiritMod.NPCs.HauntedTome
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
+				for (int i = 0; i < 8; i++)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, Main.rand.NextVector2Circular(0.5f, 0.5f), 99, Main.rand.NextFloat(0.6f, 1.2f));
+
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HauntedTomeGore3").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HauntedTomeGore2").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HauntedTomeGore1").Type, 1f);
@@ -210,9 +213,6 @@ namespace SpiritMod.NPCs.HauntedTome
 			MyWorld.downedTome = true;
 			if (Main.netMode != NetmodeID.SinglePlayer)
 				NetMessage.SendData(MessageID.WorldData);
-
-			for (int i = 0; i < 8; i++)
-				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, Main.rand.NextVector2Circular(0.5f, 0.5f), 99, Main.rand.NextFloat(0.6f, 1.2f));
 
 			if (Main.netMode != NetmodeID.Server)
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);

@@ -393,13 +393,15 @@ namespace SpiritMod.NPCs.Hydra
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit1, NPC.Center);
+
 			if (NPC.life <= 0 && Parent.ModNPC is Hydra modNPC)
 			{
 				if (modNPC.newHeadCountdown < 0)
 					modNPC.newHeadCountdown = 240 + (30 * modNPC.headsSpawned);
 				modNPC.headsDue++;
 
-				SpawnGores();
+				if (Main.netMode != NetmodeID.Server)
+					SpawnGores();
 			}
 		}
 

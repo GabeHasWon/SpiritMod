@@ -78,6 +78,7 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			Player player = Main.player[NPC.target];
 			NPC.TargetClosest(true);
 			PlayerPlatformCheck(player);
+			Lighting.AddLight(NPC.Center, 0.5f, 0.25f, 0f);
 
 			flyingTimer++;
 			weaponTimer++;
@@ -105,40 +106,43 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			}
 			NPC.spriteDirection = NPC.direction;
 
-			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.5f, 0.25f, 0f);
-			if (pickedWeapon != 1)
+			Vector2 muzzlePos = NPC.Center + new Vector2(37 * NPC.spriteDirection, 0).RotatedBy(NPC.rotation);
+
+			if (pickedWeapon == 1)
             {
                 if (projectileTimer > 80 && projectileTimer < 110)
                 {
-					Vector2 Position = NPC.Center + new Vector2(37 * NPC.spriteDirection, 0).RotatedBy(NPC.rotation);
-                    Vector2 vector2 = new Vector2((float)(NPC.direction * -6), 12f) * 0.2f + Utils.RandomVector2(Main.rand, -1f, 1f) * 0.2f;
-                    Dust dust = Main.dust[Dust.NewDust(Position, 8, 8, DustID.Torch, vector2.X, vector2.Y, 100, Color.Transparent, (float)(1.0 + (double)Main.rand.NextFloat() * 1))];
+                    Vector2 vel = new Vector2((NPC.direction * -6), 12f) * 0.2f + Utils.RandomVector2(Main.rand, -1f, 1f) * 0.2f;
+                    Dust dust = Main.dust[Dust.NewDust(muzzlePos, 8, 8, DustID.Torch, vel.X, vel.Y, 100, Color.Transparent, (float)(1.0 + (double)Main.rand.NextFloat() * 1))];
                     dust.noGravity = true;
-                    dust.velocity = vector2;
+                    dust.velocity = vel;
                     dust.fadeIn += .1f;
-                    dust.customData = (object)NPC;
+                    dust.customData = NPC;
                 }
-                if (projectileTimer >= 110 && projectileTimer % 12 == 0)
+
+                if (projectileTimer >= 110 && projectileTimer % 2 == 0)
                 {
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						SoundEngine.PlaySound(SoundID.Item34, NPC.position);
-						projectileTimer++;
-						if (projectileTimer >= 150)
-							projectileTimer = 0;
-						float num5 = 6f;
-						Vector2 vector2 = new Vector2(NPC.Center.X + 30 * -NPC.spriteDirection, NPC.position.Y + (float)NPC.height * 0.5f);
-						float num6 = Main.player[NPC.target].position.X + (float)Main.player[NPC.target].width * 0.5f - vector2.X;
-						float num7 = Math.Abs(num6) * 0.1f;
-						float num8 = Main.player[NPC.target].position.Y + (float)Main.player[NPC.target].height * 0.5f - vector2.Y - num7;
-						float num14 = (float)Math.Sqrt((double)num6 * (double)num6 + (double)num8 * (double)num8);
+						if (projectileTimer % 8 == 0)
+							SoundEngine.PlaySound(SoundID.Item34, NPC.position);
+
 						NPC.netUpdate = true;
+
+						float num5 = 6f;
+						float num6 = Main.player[NPC.target].Center.X - muzzlePos.X;
+						float num7 = Math.Abs(num6) * 0.1f;
+						float num8 = Main.player[NPC.target].Center.Y - muzzlePos.Y - num7;
+						float num14 = (float)Math.Sqrt((double)num6 * (double)num6 + (double)num8 * (double)num8);
 						float num15 = num5 / num14;
 						float num16 = num6 * num15;
 						float SpeedY = num8 * num15;
-						int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector2.X, vector2.Y, num16, SpeedY, ProjectileID.FlamesTrap, 8, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+						int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), muzzlePos.X, muzzlePos.Y, num16, SpeedY, ProjectileID.FlamesTrap, 8, 0.0f, Main.myPlayer, 0.0f, 0.0f);
 						Main.projectile[p].friendly = false;
 						Main.projectile[p].hostile = true;
+
+						if (projectileTimer > 140)
+							projectileTimer = 0;
 					}
 				}
 			}
@@ -146,30 +150,32 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			{
 				if (projectileTimer > 120 && projectileTimer < 160)
                 {
-                    Vector2 Position = new Vector2(NPC.Center.X - (37 * NPC.spriteDirection), NPC.Center.Y);
                     Vector2 vector2 = new Vector2((float)(NPC.direction * -6), 12f) * 0.2f + Utils.RandomVector2(Main.rand, -1f, 1f) * 0.2f;
-                    Dust dust = Main.dust[Dust.NewDust(Position, 8, 8, DustID.Torch, vector2.X, vector2.Y, 100, Color.Transparent, (float)(1.0 + (double)Main.rand.NextFloat() * 1))];
+                    Dust dust = Main.dust[Dust.NewDust(muzzlePos, 8, 8, DustID.Torch, vector2.X, vector2.Y, 100, Color.Transparent, (float)(1.0 + (double)Main.rand.NextFloat() * 1))];
                     dust.noGravity = true;
                     dust.velocity = vector2;
                     dust.customData = (object)NPC;
                 }
-				if (projectileTimer >= 160)
+
+				if (projectileTimer >= 160 && projectileTimer % 12 == 0)
 				{
 					SoundEngine.PlaySound(SoundID.Item40, NPC.position);
-					projectileTimer = 0;
 					float num5 = 9f;
-					Vector2 vector2 = new Vector2(NPC.Center.X + 30*-NPC.spriteDirection, NPC.position.Y + (float)NPC.height * 0.5f);
-					float num6 = Main.player[NPC.target].position.X + (float)Main.player[NPC.target].width * 0.5f - vector2.X;
+					float num6 = Main.player[NPC.target].position.X + (float)Main.player[NPC.target].width * 0.5f - muzzlePos.X;
 					float num7 = Math.Abs(num6) * 0.1f;
-					float num8 = Main.player[NPC.target].position.Y + (float)Main.player[NPC.target].height * 0.5f - vector2.Y - num7;
+					float num8 = Main.player[NPC.target].position.Y + (float)Main.player[NPC.target].height * 0.5f - muzzlePos.Y - num7;
 					float num14 = (float)Math.Sqrt((double)num6 * (double)num6 + (double)num8 * (double)num8);
-					NPC.netUpdate = true;
 					float num15 = num5 / num14;
 					float num16 = num6 * num15;
 					float SpeedY = num8 * num15;
-					int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector2.X, vector2.Y, num16, SpeedY, ProjectileID.ExplosiveBullet, 14, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+					int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), muzzlePos.X, muzzlePos.Y, num16, SpeedY, ProjectileID.ExplosiveBullet, 14, 0.0f, Main.myPlayer, 0.0f, 0.0f);
 					Main.projectile[p].friendly = false;
 					Main.projectile[p].hostile = true;
+
+					NPC.netUpdate = true;
+
+					if (projectileTimer > 172)
+						projectileTimer = 0;
 				}
 			}
 			

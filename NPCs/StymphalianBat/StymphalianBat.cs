@@ -94,8 +94,9 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 					JustSpawned = true;
 
-					for (int i = 0; i < 3; ++i)
-						Gore.NewGore(NPC.GetSource_Death(), Main.npc[npc1].position, Main.rand.NextVector2Circular(4f, 4f), 99);
+					if (Main.netMode != NetmodeID.Server)
+						for (int i = 0; i < 3; ++i)
+							Gore.NewGore(NPC.GetSource_Death(), Main.npc[npc1].position, Main.rand.NextVector2Circular(4f, 4f), 99);
 				}
 			}
 

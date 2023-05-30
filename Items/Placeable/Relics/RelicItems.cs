@@ -4,7 +4,7 @@ namespace SpiritMod.Items.Placeable.Relics
 {
 	public class MJWRelicItem : BaseRelicItem<MJWRelic>
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Moon Jelly Relic");
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Moon Jelly Wizard Relic");
 	}
 
 	public class VinewrathRelicItem : BaseRelicItem<VinewrathRelic>
@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Placeable.Relics
 
 	public class AvianRelicItem : BaseRelicItem<AvianRelic>
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Avian Relic");
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Avian Relic");
 	}
 
 	public class AtlasRelicItem : BaseRelicItem<AtlasRelic>

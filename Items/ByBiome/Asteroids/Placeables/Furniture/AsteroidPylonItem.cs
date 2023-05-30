@@ -6,6 +6,8 @@ namespace SpiritMod.Items.ByBiome.Asteroids.Placeables.Furniture
 {
 	internal class AsteroidPylonItem : ModItem
 	{
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Asteroid Pylon");
+
 		public override void SetDefaults()
 		{
 			Item.DefaultToPlaceableTile(ModContent.TileType<AsteroidPylonTile>());

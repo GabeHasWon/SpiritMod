@@ -14,6 +14,7 @@ namespace SpiritMod.NPCs.Reach
 			DisplayName.SetDefault("Briar Inchworm");
 			Main.npcFrameCount[NPC.type] = 2;
 			Main.npcCatchable[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

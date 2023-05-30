@@ -235,6 +235,9 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 		public override void OnKill()
 		{
+			if (Main.netMode == NetmodeID.Server)
+				return;
+
 			for (int i = 1; i <= 2; i++)
 				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("wrathfulskullgore" + i).Type);
 		}

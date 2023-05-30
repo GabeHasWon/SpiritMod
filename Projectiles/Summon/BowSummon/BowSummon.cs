@@ -94,10 +94,10 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 			if (!foundTarget)
 			{
 				Projectile.friendly = true;
-				Projectile.position.X = Main.player[Projectile.owner].Center.X - (Projectile.width * .5f);
-				Projectile.position.Y = Main.player[Projectile.owner].Center.Y - (Projectile.width * .5f) - 40;
-				Projectile.rotation = Main.player[Projectile.owner].velocity.X * 0.085f;
-				Projectile.spriteDirection = Main.player[Projectile.owner].direction;
+				Projectile.position.X = player.Center.X - (Projectile.width * .5f);
+				Projectile.position.Y = player.Center.Y - (Projectile.width * .5f) - 60 - player.gfxOffY;
+				Projectile.rotation = player.velocity.X * 0.05f;
+				Projectile.spriteDirection = player.direction;
 				Projectile.frame = 0;
 			}
 			else

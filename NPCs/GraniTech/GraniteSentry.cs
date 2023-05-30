@@ -322,10 +322,11 @@ namespace SpiritMod.NPCs.GraniTech
 			recoil = reader.ReadSingle();
 		}
 
-		public override void OnKill()
+		public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int i = 1; i <= 2; i++)
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>($"GraniteSentryGore{i}").Type, 1f);
+			if (Main.netMode != NetmodeID.Server)
+				for (int i = 1; i <= 2; i++)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>($"GraniteSentryGore{i}").Type, 1f);
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<GranitechMaterial>(1, 1, 3);

@@ -99,8 +99,9 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 				DespawnTimer--;
 				if (DespawnTimer <= 0)
 				{
-					for (int i = 0; i < 6; i++)
-						Gore.NewGore(NPC.GetSource_Death(), NPC.Center, Main.rand.NextVector2Circular(2, 2), 99);
+					if (Main.netMode != NetmodeID.Server)
+						for (int i = 0; i < 6; i++)
+							Gore.NewGore(NPC.GetSource_Death(), NPC.Center, Main.rand.NextVector2Circular(2, 2), 99);
 
 					bool placed = false;
 					Point CheckTile = new Point((int)NPC.Left.X / 16, (int)(NPC.Left.Y + 16) / 16);
@@ -120,8 +121,9 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 						if (Main.netMode != NetmodeID.SinglePlayer)
 							NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, ModContent.TileType<CursedArmor>(), CheckTile.X, CheckTile.Y);
 
-						for (int i = 0; i < 6; i++)
-							Gore.NewGore(NPC.GetSource_Death(), CheckTile.ToWorldCoordinates(), Main.rand.NextVector2Circular(2, 2), 99);
+						if (Main.netMode != NetmodeID.Server)
+							for (int i = 0; i < 6; i++)
+								Gore.NewGore(NPC.GetSource_Death(), CheckTile.ToWorldCoordinates(), Main.rand.NextVector2Circular(2, 2), 99);
 						placed = true;
 					}
 					else if (CanPlaceStatue(new Point(TileX, TileY)))
@@ -130,8 +132,9 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 						if (Main.netMode != NetmodeID.SinglePlayer)
 							NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, ModContent.TileType<CursedArmor>(), TileX, TileY);
 
-						for (int i = 0; i < 6; i++)
-							Gore.NewGore(NPC.GetSource_Death(), new Point(TileX, TileY).ToWorldCoordinates(), Main.rand.NextVector2Circular(2, 2), 99);
+						if (Main.netMode != NetmodeID.Server)
+							for (int i = 0; i < 6; i++)
+								Gore.NewGore(NPC.GetSource_Death(), new Point(TileX, TileY).ToWorldCoordinates(), Main.rand.NextVector2Circular(2, 2), 99);
 						placed = true;
 					}
 					int tries = 0;

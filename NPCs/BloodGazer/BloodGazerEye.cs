@@ -270,7 +270,7 @@ namespace SpiritMod.NPCs.BloodGazer
 
 		public override void OnKill()
 		{
-			if (!Main.dedServ)
+			if (!Main.dedServ && Main.netMode != NetmodeID.Server)
 			{
 				SoundEngine.PlaySound(SoundID.NPCDeath22, NPC.Center);
 

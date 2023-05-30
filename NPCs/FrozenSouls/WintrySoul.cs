@@ -18,6 +18,7 @@ namespace SpiritMod.NPCs.FrozenSouls
 			DisplayName.SetDefault("Icebound Soul");
 
 			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true;
+			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

@@ -65,6 +65,7 @@ namespace SpiritMod.Tiles.Furniture
 		{
 			int x = i - (Main.tile[i, j].TileFrameX / 18) % 3;
 			int y = j - (Main.tile[i, j].TileFrameY / 18) % 4;
+
 			for (int l = x; l < x + 3; l++)
 			{
 				for (int m = y; m < y + 4; m++)

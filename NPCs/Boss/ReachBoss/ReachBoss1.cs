@@ -245,22 +245,28 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 						Main.dust[num623].scale = 0.5f;
 				}
 
-				for (int i = 0; i < 8; ++i)
-					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("LeafGreen").Type, 1f);
+				if (Main.netMode != NetmodeID.Server)
+					for (int i = 0; i < 8; ++i)
+						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("LeafGreen").Type, 1f);
 			}
-			for (int j = 0; j < 2; j++)
+
+			if (Main.netMode != NetmodeID.Server)
 			{
-				float goreScale = 0.01f * Main.rand.Next(20, 70);
-				int a = Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(Main.rand.Next(-50, 50), Main.rand.Next(-50, 50)), NPC.velocity, 386, goreScale);
-				Main.gore[a].timeLeft = 15;
-				Main.gore[a].rotation = 10f;
-				Main.gore[a].velocity = new Vector2(hitDirection * 2.5f, Main.rand.NextFloat(1f, 2f));
-				
-				int a1 = Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(Main.rand.Next(-50, 50), Main.rand.Next(-50, 50)), NPC.velocity, 911, goreScale);
-				Main.gore[a1].timeLeft = 15;
-				Main.gore[a1].rotation = 1f;
-				Main.gore[a1].velocity = new Vector2(hitDirection * 2.5f, Main.rand.NextFloat(10f, 20f));
+				for (int j = 0; j < 2; j++)
+				{
+					float goreScale = 0.01f * Main.rand.Next(20, 70);
+					int a = Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(Main.rand.Next(-50, 50), Main.rand.Next(-50, 50)), NPC.velocity, 386, goreScale);
+					Main.gore[a].timeLeft = 15;
+					Main.gore[a].rotation = 10f;
+					Main.gore[a].velocity = new Vector2(hitDirection * 2.5f, Main.rand.NextFloat(1f, 2f));
+
+					int a1 = Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(Main.rand.Next(-50, 50), Main.rand.Next(-50, 50)), NPC.velocity, 911, goreScale);
+					Main.gore[a1].timeLeft = 15;
+					Main.gore[a1].rotation = 1f;
+					Main.gore[a1].velocity = new Vector2(hitDirection * 2.5f, Main.rand.NextFloat(10f, 20f));
+				}
 			}
+
 			for (int k = 0; k < 12; k++) {
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
 			}

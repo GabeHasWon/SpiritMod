@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.FairyWhistle
 			Item.damage = 8;
 			Item.width = 22;
 			Item.height = 18;
-			Item.value = Item.sellPrice(0, 2, 0, 0);
+			Item.value = Item.sellPrice(0, 0, 0, 10);
 			Item.rare = ItemRarityID.White;
 			Item.mana = 12;
 			Item.knockBack = 2f;

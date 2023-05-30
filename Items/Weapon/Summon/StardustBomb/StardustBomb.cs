@@ -176,8 +176,11 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			{
 				for (int j = 1; j < 5; ++j)
 				{
-					float randFloat = Main.rand.NextFloat(6.28f);
-					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + (randFloat.ToRotationVector2() * 60), Main.rand.NextFloat(6.28f).ToRotationVector2() * 16, Mod.Find<ModGore>("StarbombGore" + j).Type, 1f);
+					if (Main.netMode != NetmodeID.Server)
+					{
+						float randFloat = Main.rand.NextFloat(6.28f);
+						Gore.NewGore(NPC.GetSource_Death(), NPC.Center + (randFloat.ToRotationVector2() * 60), Main.rand.NextFloat(6.28f).ToRotationVector2() * 16, Mod.Find<ModGore>("StarbombGore" + j).Type, 1f);
+					}
 
 					if (i == 0)
 					{

@@ -442,11 +442,14 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				Vector2 spawnAt = NPC.Center + new Vector2(0f, (float)NPC.height / 2f);
 				NPC.NewNPC(NPC.GetSource_Death(), (int)spawnAt.X, (int)spawnAt.Y, ModContent.NPCType<ReachBoss1>());
 
-				for (int i = 0; i < 8; ++i)
-					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReachBoss").Type, 1f);
+				if (Main.netMode != NetmodeID.Server)
+				{
+					for (int i = 0; i < 8; ++i)
+						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReachBoss").Type, 1f);
 
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReachBoss1").Type, 1f);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReachBoss1").Type, 1f);
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReachBoss1").Type, 1f);
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReachBoss1").Type, 1f);
+				}
 
 				for (int num621 = 0; num621 < 20; num621++)
 				{

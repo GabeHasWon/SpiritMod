@@ -42,9 +42,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 				Main.dust[d].scale = 1.2f;
 			}
 			SoundEngine.PlaySound(SoundID.NPCDeath16, Projectile.Center);
-			for (int i = 1; i <= 3; i++) {
-				Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("largescarab" + i.ToString()).Type);
-			}
+
+			if (Main.netMode != NetmodeID.Server)
+				for (int i = 1; i <= 3; i++)
+					Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("largescarab" + i.ToString()).Type);
 		}
 
 		public override void AI()

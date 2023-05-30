@@ -1,4 +1,11 @@
-﻿- Fixed Boss Checklist boss progression order
-	Haunted Tome is now at 0.9
-	Infernon is now at 7.5
-	Dusking is now 11.4
+﻿- Fixed Fairy Whistle being a lucrative selling item
+- Made sure all gores are not spawned on servers
+- Made G-TEK Turret, Haunted Tome, Stactus use HitEffect instead of OnKill for gores
+- Fixed poor Cursebreaker spritebatch sampling mode
+- Fixed Captain's Cap not showing hat hair
+- Fixed Club projectile's poor offset on slopes
+- Fixed a ton of critters not being considered critters
+- Moved Mechromancer after Goblin Army in Boss Checklist
+- Moved Jinxbow down a little, made it rotate less
+- Fixed Astral Adventurer nonsense even more
+- Hid Ice Bolt from bestiary
