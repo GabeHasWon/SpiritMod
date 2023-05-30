@@ -146,7 +146,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			}
 		}
 
-		public void MoveEntity(Entity entity, float magnitude = 10f)
+		public void MoveEntity(Entity entity)
 		{
 			float num2 = NPC.position.X + Main.rand.Next(-10, 10) + (NPC.width / 2f) - entity.Center.X;
 			float num3 = NPC.position.Y + Main.rand.Next(-10, 10) + (NPC.height / 2f) - entity.Center.Y;
