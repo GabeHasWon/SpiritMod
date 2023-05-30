@@ -124,7 +124,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 				#region entity collisions
 				foreach (NPC npc in Main.npc)
 				{
-					if (Vector2.Distance(NPC.Center, npc.Center) <= 150f)
+					if (Vector2.Distance(NPC.Center, npc.Center) <= 150f && npc.whoAmI != NPC.whoAmI)
 						MoveEntity(npc, 10f * npc.knockBackResist);
 				}
 				foreach (Item item in Main.item)
@@ -146,12 +146,13 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			}
 		}
 
-		public static void MoveEntity(Entity entity, float magnitude = 10f)
+		public void MoveEntity(Entity entity, float magnitude = 10f)
 		{
-			Vector2 velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat() * magnitude;
-
-			if (velocity != Vector2.Zero)
-				entity.velocity = velocity;
+			float num2 = NPC.position.X + Main.rand.Next(-10, 10) + (NPC.width / 2f) - entity.Center.X;
+			float num3 = NPC.position.Y + Main.rand.Next(-10, 10) + (NPC.height / 2f) - entity.Center.Y;
+			float num4 = 8f / (float)Math.Sqrt(num2 * num2 + num3 * num3);
+			entity.velocity.X = num2 * num4 * -1.7f;
+			entity.velocity.Y = num3 * num4 * -1.7f;
 		}
 
 		public void Movement()
