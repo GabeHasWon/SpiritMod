@@ -42,6 +42,7 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.netAlways = true;
 			NPC.killCount[Type] = NPC.killCount[ModContent.NPCType<CogTrapperHead>()];
 			NPC.dontCountMe = true;
+			NPC.npcSlots = 0;
 
 			Banner = ModContent.NPCType<CogTrapperHead>();
 			BannerItem = ModContent.ItemType<Items.Banners.StardancerBanner>();

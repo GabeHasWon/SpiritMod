@@ -744,7 +744,7 @@ namespace SpiritMod.NPCs
 				pool.Add(ModContent.NPCType<Gloop.GloopGloop>(), 0.24f);
 
 				if (NPC.downedBoss3)
-					pool.Add(ModContent.NPCType<Starfarer.CogTrapperHead>(), 0.45f);
+					pool.Add(ModContent.NPCType<Starfarer.CogTrapperHead>(), 0.1f);
 
 				if (NPC.downedBoss1 || NPC.downedBoss3 || NPC.downedBoss3)
 					if (!NPC.AnyNPCs(ModContent.NPCType<MoonjellyEvent.DistressJelly>()))

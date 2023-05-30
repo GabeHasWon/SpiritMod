@@ -49,6 +49,7 @@ namespace SpiritMod.NPCs.Starfarer
 			NPC.DeathSound = SoundID.NPCDeath14;
 			NPC.netAlways = true;
 			NPC.dontCountMe = true;
+			NPC.npcSlots = 0;
 
 			AIType = -1;
 			Banner = ModContent.NPCType<CogTrapperHead>();

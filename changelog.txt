@@ -1,2 +1,3 @@
-﻿- Hopefully fixed Glade Wraith not syncing properly
-- Fixed NPCQuestQueue queue being consumed on autosave, losing quests
+﻿- Updated Discord link in description
+- Significantly reduced Stardancer spawn rate post-Skeletron
+- Made Stardancer body, tails not take up NPC slots
