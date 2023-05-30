@@ -73,11 +73,11 @@ namespace SpiritMod.NPCs.BottomFeeder
 					NPC.velocity.Y = 10f;
 				}
 
-				if (++shoottimer == 40)
-					SoundEngine.PlaySound(SoundID.NPCDeath13, NPC.Center);
-
-				if (shoottimer >= 40 && shoottimer < 96)
+				if (++shoottimer >= 40 && shoottimer < 96)
 				{
+					if ((shoottimer % 25) == 0 && Main.netMode != NetmodeID.Server)
+						SoundEngine.PlaySound(SoundID.NPCDeath13, NPC.Center);
+
 					if (Main.rand.NextBool(3) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						int bloodproj = Main.rand.Next(new int[] { ModContent.ProjectileType<Feeder1>(), ModContent.ProjectileType<Feeder2>(), ModContent.ProjectileType<Feeder3>() });

@@ -287,7 +287,16 @@ namespace SpiritMod.NPCs.Boss.Occultist
             return true;
         }
 
-		public override void SafeFindFrame(int frameHeight) => NPC.frame.Width = 72;
+		public override void SafeFindFrame(int frameHeight)
+		{
+			if (NPC.IsABestiaryIconDummy)
+			{
+				frame.X = 0;
+				UpdateYFrame(10, 0, 2);
+			}
+
+			NPC.frame.Width = 74;
+		}
 		
 		public override void OnKill()
 		{

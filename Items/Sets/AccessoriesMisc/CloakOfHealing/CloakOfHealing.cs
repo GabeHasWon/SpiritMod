@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.CloakOfHealing
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cloak Of Healing");
+			DisplayName.SetDefault("Cloak of Healing");
 			Tooltip.SetDefault("Minions have a small chance to return life");
 		}
 

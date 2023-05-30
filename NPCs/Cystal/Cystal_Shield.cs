@@ -13,6 +13,8 @@ namespace SpiritMod.NPCs.Cystal
 		private Vector2 Location;
 		private Vector2 Location2;
 
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Cystal Shield");
+
 		public override void SetDefaults()
 		{
 			NPC.aiStyle = -1;
@@ -31,8 +33,6 @@ namespace SpiritMod.NPCs.Cystal
 			NPC.DeathSound = SoundID.DD2_SkeletonHurt;
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cystal Shield");
-
 		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			if (!projectile.minion)
@@ -41,26 +41,19 @@ namespace SpiritMod.NPCs.Cystal
 			damage = 0;
 		}
 
-		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
-		{
-			damage = 0;
-		}
+		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit) => damage = 0;
 
-		public override bool CheckDead()
-		{
-			return false;
-		}
+		public override bool CheckDead() => false;
 
-		public override bool? DrawHealthBar(byte hbPos, ref float scale, ref Vector2 Pos)
-		{
-			return false;
-		}
+		public override bool? DrawHealthBar(byte hbPos, ref float scale, ref Vector2 Pos) => false;
+
+		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = Rectangle.Empty;
 
 		public override void AI()
 		{
 			Lighting.AddLight(NPC.position, 0.0149f, 0.0142f, 0.0207f);
 			NPC.TargetClosest(true);
-			Player player = Main.player[NPC.target];
+
 			NPC.ai[2]++;
 
 			if (NPC.ai[0] == 0)
@@ -117,14 +110,15 @@ namespace SpiritMod.NPCs.Cystal
 				Vector2 vector2_11 = dust2.velocity + vector2_2 * 2f;
 				dust2.velocity = vector2_11;
 			}
+
 			int num9 = (int)(NPC.frameCounter + 1);
 			NPC.frameCounter = num9;
 			if (num9 >= 40)
 			{
 				NPC.frameCounter = 0;
 			}
-			//npc.frame = npc.frameCounter / 5;
 		}
+
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Cystal/Cystal_Shield").Value, screenPos);
 
 		public override void HitEffect(int hitDirection, double damage)

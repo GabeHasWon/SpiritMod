@@ -11,7 +11,13 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 {
 	public class SteamRaiderHeadDeath : ModNPC
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Starplate Voyager");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Starplate Voyager");
+
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
+		}
 
 		public override void SetDefaults()
 		{

@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mark Of Zeus");
+			DisplayName.SetDefault("Mark of Zeus");
 			Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage\nConsumes 20 mana per second while charging");
 		}
 

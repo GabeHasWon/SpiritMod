@@ -324,13 +324,15 @@ namespace SpiritMod.NPCs.Boss.Occultist
 
 		#region Drawing
 
-		private float DrawTimer => (float)Math.Sin(Main.GlobalTimeWrappedHourly * 3) / 2 + 0.5f;
+		private static float DrawTimer => (float)Math.Sin(Main.GlobalTimeWrappedHourly * 3) / 2 + 0.5f;
 
 		private void DrawTex(SpriteBatch sB, Texture2D tex, Color color, Vector2 screenPos, float scale = 1f, Vector2? position = null)
 		{
 			var effects = NPC.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			Rectangle drawFrame = new Rectangle(NPC.frame.X, NPC.frame.Y, NPC.frame.Width - 2, NPC.frame.Height - 2);
+
 			sB.Draw(tex, (position ?? NPC.Center) - screenPos + new Vector2(0, NPC.gfxOffY),
-				NPC.frame, color * NPC.Opacity, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+				drawFrame, color * NPC.Opacity, NPC.rotation, drawFrame.Size() / 2, NPC.scale, effects, 0);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -338,7 +340,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			Color glowColor = Color.Lerp(Color.Red, Color.Magenta, DrawTimer);
 			Matrix matrix = NPC.IsABestiaryIconDummy ? Main.UIScaleMatrix : Main.GameViewMatrix.ZoomMatrix;
 
-			if (NPC.frame.Width > 72) //workaround for framing not working properly on first tick
+			if (NPC.frame.Width > 74) //workaround for framing not working properly on first tick
 			{
 				frame = new Point(3, 0);
 				NPC.FindFrame();

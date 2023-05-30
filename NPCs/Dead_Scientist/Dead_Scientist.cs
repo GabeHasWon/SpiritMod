@@ -36,6 +36,7 @@ namespace SpiritMod.NPCs.Dead_Scientist
 			NPC.damage = 28;
 			NPC.lavaImmune = false;
 			NPC.HitSound = SoundID.NPCHit1;
+			NPC.DeathSound = SoundID.NPCDeath2;
 			AIType = 3;
 		}
 
@@ -55,12 +56,17 @@ namespace SpiritMod.NPCs.Dead_Scientist
 			NPC.spriteDirection = NPC.direction;
 			pukeTimer++;
 			
-			if (Main.rand.NextBool(300))
-				SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
+			if (Main.rand.NextBool(300) && !isPuking && Main.netMode != NetmodeID.Server)
+				SoundEngine.PlaySound((Main.rand.NextFromList(SoundID.Zombie1, SoundID.Zombie2)) with { Volume = .5f, PitchVariance = .5f }, NPC.Center);
 			
-			if (Vector2.Distance(player.Center, NPC.Center) < 300f && !isPuking && player.position.Y > NPC.position.Y - 100 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0) && delayTimer < 180) 
+			if (Vector2.Distance(player.Center, NPC.Center) < 300f && !isPuking && player.position.Y > NPC.position.Y - 100 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0) && delayTimer < 180 && NPC.velocity.Y == 0) 
 			{
-				SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
+				if (Main.netMode != NetmodeID.Server)
+				{
+					SoundEngine.PlaySound(SoundID.NPCDeath13, NPC.Center);
+					SoundEngine.PlaySound(SoundID.NPCHit13 with { Volume = .5f, PitchVariance = .5f }, NPC.Center);
+				}
+
 				NPC.frameCounter = 0;
 				isPuking = true;
 			}
@@ -77,8 +83,10 @@ namespace SpiritMod.NPCs.Dead_Scientist
 			if (!Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0))
 				isPuking = false;
 			
-			if (isPuking && NPC.frameCounter >= 14)
+			if (isPuking && NPC.frameCounter >= 18)
 			{
+				if (pukeTimer % 14 == 0 && Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(SoundID.NPCHit13 with { Volume = .5f, PitchVariance = .5f }, NPC.Center);
 				if (pukeTimer % 2 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float num5 = 8f;

@@ -97,7 +97,19 @@ namespace SpiritMod.NPCs.ZombieVariants
 			}
 		}
 
-		public override void FindFrame(int frameHeight) => NPC.frame.Y = frameHeight * frame;
+		public override void FindFrame(int frameHeight)
+		{
+			if (NPC.IsABestiaryIconDummy)
+			{
+				if (++frameTimer >= 10)
+				{
+					frameTimer = 0;
+					frame = ++frame % 3;
+				}
+			}
+
+			NPC.frame.Y = frameHeight * frame;
+		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

@@ -15,7 +15,6 @@ namespace SpiritMod.NPCs.Reach
 			DisplayName.SetDefault("Briarmoth");
 			Main.npcFrameCount[NPC.type] = 4;
 			Main.npcCatchable[NPC.type] = true;
-			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 

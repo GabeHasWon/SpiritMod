@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flask Of Gore");
+			DisplayName.SetDefault("Flask of Gore");
 			Tooltip.SetDefault("Flasks may create a crimson skull upon popping\nPicking up crimson skulls temporarily increases the flask's damage");
 		}
 

@@ -8,10 +8,9 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stone Of Spirits Past");
+			DisplayName.SetDefault("Stone of Spirits Past");
 			Tooltip.SetDefault("Creates orbiting souls to hurt nearby enemies");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -23,9 +22,6 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 			Item.defense = 1;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().SoulStone = true;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().SoulStone = true;
 	}
 }

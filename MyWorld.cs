@@ -1230,7 +1230,7 @@ namespace SpiritMod
 		public override void ResetNearbyTileEffects()
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MyPlayer>();
-			modPlayer.ZoneSynthwave = false;
+			//modPlayer.ZoneSynthwave = false;
 			modPlayer.ZoneLantern = false;
 		}
 		#endregion
