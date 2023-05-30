@@ -11,7 +11,6 @@ using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Personalities;
-using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -230,6 +229,6 @@ namespace SpiritMod.NPCs.Town
 			return Request<Texture2D>("SpiritMod/NPCs/Town/Adventurer");
 		}
 
-		public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("SpiritMod/NPCs/Town/Adventurer_Head");
+		public int GetHeadTextureIndex(NPC npc) => GetModHeadSlot("SpiritMod/NPCs/Town/Adventurer_Head");
 	}
 }

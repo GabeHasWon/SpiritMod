@@ -16,10 +16,16 @@ namespace SpiritMod.NPCs.Snaptrapper
 {
     public class Snaptrapper : ModNPC, IBCRegistrable
 	{
+		/*private int aiState;
+
+		private const int STATE_WALKING = 0;
+		private const int STATE_ATTACKING = 1;
+		private const int STATE_CHARGING = 2;*/
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Snaptrapper");
-			Main.npcFrameCount[NPC.type] = 11;
+			Main.npcFrameCount[NPC.type] = 6;
             NPCID.Sets.TrailCacheLength[NPC.type] = 5;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo<Buffs.DoT.FesteringWounds>(this, BuffID.Poisoned, BuffID.Venom);
@@ -96,41 +102,35 @@ namespace SpiritMod.NPCs.Snaptrapper
             }
         }
 
-        int frame;
+		int frameX;
+		float frameCounter;
 
 		public override void FindFrame(int frameHeight)
 		{
-			float distance = NPC.DistanceSQ(Main.player[NPC.target].Center);
-			int attackFrameStart = 7;
+			int frameWidth = 88;
+			int frameX;
 
-			if (!chargePhase && distance > 62 * 62 && !NPC.IsABestiaryIconDummy)
+			if (chargePhase) //Charge
 			{
-				if (++frameTimer >= 8)
-				{
-					frameTimer = 0;
-					frame++;
-				}
-
-				if (frame > 10 || frame < attackFrameStart)
-					frame = attackFrameStart;
+				frameX = 1;
 			}
-			else if (!chargePhase)
+			else if (!chargePhase && melee) //Attack at close range
 			{
-				if (++frameTimer >= 6)
-				{
-					frameTimer = 0;
-					frame++;
-				}
-
-				if (frame >= attackFrameStart)
-					frame = 0;
+				frameX = 1;
+			}
+			else //Walk
+			{
+				frameX = 0;
 			}
 
-			NPC.frame.Y = frameHeight * frame;
+			frameCounter = (frameCounter += .15f) % Main.npcFrameCount[Type];
+			int frameY = (int)frameCounter;
+
+			NPC.frame = new Rectangle(frameX * frameWidth, frameY * frameHeight, frameWidth - 2, frameHeight - 2);
 		}
 
-        bool chargePhase;
-        int frameTimer;
+		bool melee;
+		bool chargePhase;
 
 		public override void AI()
 		{
@@ -139,11 +139,19 @@ namespace SpiritMod.NPCs.Snaptrapper
             Vector2 direction = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center) * new Vector2(3.75f, 8f);
 			float distance = NPC.DistanceSQ(target.Center);
 
-            if (!chargePhase && distance < 62 * 62)
+			if (melee)
+			{
+				NPC.velocity.X *= .9f;
+				NPC.noGravity = false;
+				NPC.spriteDirection = target.position.X < NPC.position.X ? -1 : 1;
+
+				if ((frameCounter + .15f) >= (Main.npcFrameCount[Type] - 1))
+					melee = false;
+			}
+			if (!melee && !chargePhase && distance < (62 * 62))
             {
-                NPC.velocity.X = 0;
-                NPC.noGravity = false;
-                NPC.spriteDirection = target.position.X < NPC.position.X ? -1 : 1;
+				frameCounter = 0;
+				melee = true;
 			}
 
 			NPC.localAI[1]++;
@@ -159,7 +167,7 @@ namespace SpiritMod.NPCs.Snaptrapper
                     {
                         Dust dust = Main.dust[Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + 2f), NPC.width, NPC.height, ModContent.DustType<Dusts.PoisonGas>(), NPC.velocity.X * 0.2f, NPC.velocity.Y * 0.2f, 100, new Color(), 7f)];
                         dust.noGravity = true;
-                        dust.velocity.X = dust.velocity.X * 0.3f;
+                        dust.velocity.X *= 0.3f;
                         dust.velocity.Y = (dust.velocity.Y * 0.2f) - 1;
                     }
                 }
@@ -187,20 +195,22 @@ namespace SpiritMod.NPCs.Snaptrapper
                 if (NPC.localAI[1] >= 400 && NPC.localAI[1] <= 530)
                 {
                     NPC.netUpdate = true;
+
                     Charging();
+
                     if (NPC.collideY)
                     {
                         for (int i = 0; i < 5; i++)
                         {
                             Dust dust = Main.dust[Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + 2f), NPC.width, NPC.height, ModContent.DustType<Dusts.PoisonGas>(), NPC.velocity.X * 0.2f, NPC.velocity.Y * 0.2f, 100, new Color(), 5.3f)];
                             dust.noGravity = true;
-                            dust.velocity.X = dust.velocity.X * 0.3f;
+                            dust.velocity.X *= 0.3f;
                             dust.velocity.Y = (dust.velocity.Y * 0.2f) - 1;
                         }
-                        frame = 7;
+                        frameCounter = 1;
                     }
 					else
-                        frame = 8;
+						frameCounter = 2;
                 }
                 else
                 {
@@ -224,7 +234,7 @@ namespace SpiritMod.NPCs.Snaptrapper
                     {
                         Dust dust = Main.dust[Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + 2f), NPC.width, NPC.height, ModContent.DustType<Dusts.PoisonGas>(), NPC.velocity.X * 0.2f, NPC.velocity.Y * 0.2f, 100, new Color(), 7f)];
                         dust.noGravity = true;
-                        dust.velocity.X = dust.velocity.X * 0.3f;
+                        dust.velocity.X *= 0.3f;
                         dust.velocity.Y = (dust.velocity.Y * 0.2f) - 1;
 
                     }
@@ -259,18 +269,19 @@ namespace SpiritMod.NPCs.Snaptrapper
                         Main.projectile[p].friendly = false;
                     }
                     NPC.netUpdate = true;
+
                     Charging();
-                    ChargeFrames();
+
                     if (NPC.collideY)
                     {
                         for (int i = 0; i < 5; i++)
                         {
                             Dust dust = Main.dust[Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + 2f), NPC.width, NPC.height, ModContent.DustType<Dusts.PoisonGas>(), NPC.velocity.X * 0.2f, NPC.velocity.Y * 0.2f, 100, new Color(), 5.4f)];
                             dust.noGravity = true;
-                            dust.velocity.X = dust.velocity.X * 0.3f;
+                            dust.velocity.X *= 0.3f;
                             dust.velocity.Y = (dust.velocity.Y * 0.2f) - 1;
                         }
-                        frame = 7;
+                        frameCounter = 1;
                     }
                 }
                 else
@@ -292,23 +303,12 @@ namespace SpiritMod.NPCs.Snaptrapper
             return spawnInfo.Player.ZoneJungle && NPC.downedBoss2 && !NPC.AnyNPCs(ModContent.NPCType<Snaptrapper>()) && spawnInfo.Player.ZoneOverworldHeight ? 0.036f : 0f;
         }
 
-        public void ChargeFrames()
-        {
-            frameTimer++;
-            if (frameTimer >= 8)
-            {
-                frameTimer = 0;
-                frame++;
-            }
-
-            if (frame > 10 || frame < 8)
-                frame = 8;
-        }
-
 		public void Charging()
         {
             NPC.aiStyle = -1;
             chargePhase = true;
+			melee = false;
+
             if (NPC.ai[2] > 1f)
             {
                 NPC.ai[2] -= 1f;
@@ -408,19 +408,24 @@ namespace SpiritMod.NPCs.Snaptrapper
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            if (chargePhase)
-            {
-				var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height / Main.npcFrameCount[NPC.type]) * 0.5f);
+			Texture2D texture = TextureAssets.Npc[NPC.type].Value;
+			Vector2 drawOrigin = NPC.frame.Size() / 2;
+			int drawOffX = 8 * NPC.spriteDirection;
+			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
+			if (chargePhase)
+            {
 				for (int k = 0; k < NPC.oldPos.Length; k++)
                 {
-                    Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, NPC.gfxOffY);
-                    Color color = NPC.GetAlpha(drawColor) * (float)(((float)(NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
-                    spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
+                    Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + (NPC.Size / 2) + new Vector2(drawOffX, NPC.gfxOffY);
+                    Color trailColor = NPC.GetAlpha(drawColor) * (float)(((float)(NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
+                    spriteBatch.Draw(texture, drawPos, NPC.frame, trailColor, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
                 }
             }
-            return true;
+
+			Color color = NPC.GetNPCColorTintedByBuffs(drawColor);
+			spriteBatch.Draw(texture, NPC.Center - screenPos + new Vector2(drawOffX, NPC.gfxOffY), NPC.frame, NPC.GetAlpha(color), NPC.rotation, drawOrigin, NPC.scale, effects, 0);
+            return false;
         }
 
         public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,

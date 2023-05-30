@@ -92,22 +92,28 @@ namespace SpiritMod.NPCs.HellEater
 			Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 			direction.Normalize();
 			NPC.velocity *= 0.98f;
-			dashtimer++;
-			if (dashtimer >= 180) {
+
+			if (++dashtimer >= 180) //Dash
+			{
 				dashtimer = 0;
 				NPC.netUpdate = true;
 				direction.X *= Main.rand.Next(8, 11);
 				direction.Y *= Main.rand.Next(8, 11);
 				NPC.velocity.X = direction.X;
 				NPC.velocity.Y = direction.Y;
+
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(SoundID.DD2_WyvernDiveDown, NPC.Center);
 			}
 		}
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height * 0.5f));
-			for (int k = 0; k < NPC.oldPos.Length; k++) {
-				var effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-				Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, NPC.gfxOffY);
+			Vector2 drawOrigin = NPC.frame.Size() / 2;
+			var effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+			for (int k = 0; k < NPC.oldPos.Length; k++)
+			{
+				Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + (NPC.Size / 2) + new Vector2(0f, NPC.gfxOffY);
 				Color color = NPC.GetAlpha(drawColor) * (float)(((float)(NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
 				spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
 			}

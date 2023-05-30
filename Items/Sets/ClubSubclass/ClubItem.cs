@@ -49,8 +49,10 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 			Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
 
 			if (proj.ModProjectile is ClubProj clubProj)
-				clubProj.SetStats((int)(ChargeTime - (float)(ChargeTime * (float)(player.GetTotalAttackSpeed(DamageClass.Melee) - 1f))), Size, Acceleration, 
+			{
+				clubProj.SetStats((int)(ChargeTime - (float)(ChargeTime * (float)(player.GetTotalAttackSpeed(DamageClass.Melee) - 1f))), Size, Acceleration,
 					(int)meleeDMG.ApplyTo(MinDamage), (int)meleeDMG.ApplyTo(MaxDamage), (int)meleeKB.ApplyTo(MinKnockback), (int)meleeKB.ApplyTo(MaxKnockback));
+			}
 
 			return false;
 		}

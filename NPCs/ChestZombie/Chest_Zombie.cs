@@ -67,13 +67,19 @@ namespace SpiritMod.NPCs.ChestZombie
 				NPC.aiStyle = -1;
 				NPC.velocity.X *= 0.98f;
 				NPC.damage = 60;
+
 				if (dashTimer == 120)
 				{
 					NPC.frameCounter = 0;
 					NPC.netUpdate = true;
 				}
-				isDashing = true;
+				if (dashTimer == 140)
+				{
+					if (Main.netMode != NetmodeID.Server)
+						SoundEngine.PlaySound(SoundID.DD2_WyvernDiveDown, NPC.Center);
+				}
 
+				isDashing = true;
 				Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
 
 				if (NPC.velocity.X == 0)
@@ -129,7 +135,6 @@ namespace SpiritMod.NPCs.ChestZombie
 					{
 						if (NPC.frameCounter == 25)
 						{
-							SoundEngine.PlaySound(SoundID.NPCHit18, NPC.Center);
 							NPC.velocity.X = 10f * NPC.direction;
 							NPC.velocity.Y = 0f;
 							NPC.netUpdate = true;
