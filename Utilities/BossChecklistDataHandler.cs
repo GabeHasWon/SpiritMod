@@ -162,7 +162,7 @@ namespace SpiritMod.Utilities
 			);
 
 			spiritMod.AddEvent(
-				5.6f,
+				6.6f,
 				"The Tide",
 				() => MyWorld.downedTide,
 				new BCIDData(
@@ -205,7 +205,7 @@ namespace SpiritMod.Utilities
 			);
 
 			spiritMod.AddEvent(
-				6.5f,
+				7.5f,
 				"Mystic Moon",
 				() => MyWorld.downedBlueMoon,
 				new BCIDData(

@@ -10,12 +10,13 @@ namespace SpiritMod.World.Sepulchre
 		public override void SetStaticDefaults()
 		{
 			Main.tileSolid[Type] = true;
-			Main.tileMergeDirt[Type] = true;
 			Main.tileBlendAll[Type] = true;
-			HitSound = SoundID.Tink;
 			Main.tileBlockLight[Type] = true;
-			ItemDrop = ModContent.ItemType<Items.Placeable.Tiles.SepulchreBrickTwoItem>();
+
 			AddMapEntry(new Color(87, 85, 81));
+
+			HitSound = SoundID.Tink;
+			ItemDrop = ModContent.ItemType<Items.Placeable.Tiles.SepulchreBrickTwoItem>();
 			DustType = DustID.Wraith;
 		}
 	}
