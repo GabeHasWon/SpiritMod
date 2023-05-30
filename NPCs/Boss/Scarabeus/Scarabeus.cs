@@ -141,6 +141,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 				Phase2(player);
 				NPC.defense = 6;
+				NPC.netUpdate = true;
 			}
 		}
 
@@ -732,7 +733,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			if (InSolidTile)
 			{
 
-				if (AiTimer % 20 == 0)
+				if (AiTimer % 30 == 0)
 					SoundEngine.PlaySound(SoundID.Roar, NPC.Center);
 
 				float distfromsurface = 0; //check the npc's distance from the surface to determine dust velocity, by checking each tile and increasing this float for every solid tile above this npc until a non-solid tile is found
@@ -742,15 +743,18 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 					tilecheck.Y -= 16;
 					distfromsurface += 2;
 				}
-				for (int i = 0; i < 2; i++)
+				if (Main.netMode != NetmodeID.Server)
 				{
-					Dust dust = Dust.NewDustPerfect(NPC.Center + (Vector2.UnitY * 20), Mod.Find<ModDust>("SandDust").Type, -Vector2.UnitY.RotatedByRandom(MathHelper.Pi / (12 + distfromsurface)) * distfromsurface * Main.rand.NextFloat(0.8f, 1.2f));
-					dust.position.X += Main.rand.NextFloat(-NPC.width / 6, NPC.width / 6);
-					dust.position.Y += Main.rand.NextFloat(-NPC.height / 6, -NPC.height / 6);
-					dust.noGravity = true;
-					dust.scale = Main.rand.NextFloat(1.8f, 2.4f);
+					for (int i = 0; i < 2; i++)
+					{
+						Dust dust = Dust.NewDustPerfect(NPC.Center + (Vector2.UnitY * 20), Mod.Find<ModDust>("SandDust").Type, -Vector2.UnitY.RotatedByRandom(MathHelper.Pi / (12 + distfromsurface)) * distfromsurface * Main.rand.NextFloat(0.8f, 1.2f));
+						dust.position.X += Main.rand.NextFloat(-NPC.width / 6, NPC.width / 6);
+						dust.position.Y += Main.rand.NextFloat(-NPC.height / 6, -NPC.height / 6);
+						dust.noGravity = true;
+						dust.scale = Main.rand.NextFloat(1.8f, 2.4f);
+					}
 				}
-				if (NPC.velocity.Length() > 4)
+				if (NPC.velocity.Length() > 4 && Main.netMode != NetmodeID.Server)
 				{
 					for (int i = -2; i < 2; i++)
 					{
@@ -1200,7 +1204,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			if (Main.player[projectile.owner].HeldItem.type == ItemID.Minishark)
 			{ //shadow nerfing minishark on scarab because meme balance weapon
 				knockback *= 0.5f;
-				int maxdamage = (Main.rand.Next(3, 6));
+				int maxdamage = Main.rand.Next(3, 6);
 
 				while (damage - (NPC.defense / 2) + (Main.player[projectile.owner].GetArmorPenetration(DamageClass.Ranged) * 0.33f) > maxdamage)
 					damage--;

@@ -289,25 +289,28 @@ namespace SpiritMod
 
 			bool blueMoon = MyWorld.blueMoon && (Player.ZoneOverworldHeight || Player.ZoneSkyHeight);
 
-			if (config.DistortionConfig && Main.netMode != NetmodeID.Server)
+			if (Main.netMode != NetmodeID.Server)
 			{
-				if (starplateGlitchEffect)
+				if (config.DistortionConfig)
 				{
-					SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.3f);
-					SpiritMod.glitchScreenShader.UseIntensity(starplateGlitchIntensity);
-					Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
-				}
-				else if (ZoneSynthwave)
-				{
-					SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.115f); //0.4f is default
-					SpiritMod.glitchScreenShader.UseIntensity(0.0008f);
-					Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
+					if (starplateGlitchEffect)
+					{
+						SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.3f);
+						SpiritMod.glitchScreenShader.UseIntensity(starplateGlitchIntensity);
+						Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
+					}
+					else if (ZoneSynthwave)
+					{
+						SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.115f); //0.4f is default
+						SpiritMod.glitchScreenShader.UseIntensity(0.0008f);
+						Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
+					}
+					else
+						Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 				}
 				else
 					Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 			}
-			else
-				Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 
 			bool showAurora = (Player.ZoneSnow || ZoneSpirit || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
 

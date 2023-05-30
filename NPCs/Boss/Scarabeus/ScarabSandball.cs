@@ -11,11 +11,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 {
 	public class ScarabSandball : ModProjectile
 	{
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Sand Ball");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Ball");
 
 		public override void SetDefaults()
 		{
@@ -30,7 +26,8 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 		public override void Kill(int timeLeft)
 		{
 			Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 10; i++)
+			{
 				int d = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Sand, Projectile.oldVelocity.X * 0.2f, Projectile.oldVelocity.Y * 0.2f);
 				Main.dust[d].noGravity = true;
 				Main.dust[d].scale = 1.2f;
@@ -43,15 +40,18 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			Projectile.tileCollide = (Projectile.position.Y >= Projectile.ai[1]);
 
 			Projectile.rotation += 0.1f;
-			for (int i = -2; i < 2; i++) {
-				Dust dust = Dust.NewDustPerfect(Projectile.Center + 2 * Projectile.velocity, Mod.Find<ModDust>("SandDust").Type, Vector2.Normalize(Projectile.velocity).RotatedBy(Math.Sign(i) * MathHelper.Pi / 4) * Math.Abs(i));
-				dust.noGravity = true;
-				dust.scale = 0.65f;
+			if (Main.netMode != NetmodeID.Server)
+			{
+				for (int i = -2; i < 2; i++)
+				{
+					Dust dust = Dust.NewDustPerfect(Projectile.Center + 2 * Projectile.velocity, Mod.Find<ModDust>("SandDust").Type, Vector2.Normalize(Projectile.velocity).RotatedBy(Math.Sign(i) * MathHelper.Pi / 4) * Math.Abs(i));
+					dust.noGravity = true;
+					dust.scale = 0.65f;
+				}
 			}
 
-			if (Projectile.ai[0] == 0 && Projectile.velocity.Y < 15f) {
+			if (Projectile.ai[0] == 0 && Projectile.velocity.Y < 15f)
 				Projectile.velocity.Y += 0.2f;
-			}
 
 			if (Projectile.ai[0] == 1) {
 				if(Projectile.velocity.Y < 0) {

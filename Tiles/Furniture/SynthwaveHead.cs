@@ -7,6 +7,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using SpiritMod.Items.Placeable.Furniture;
 
 namespace SpiritMod.Tiles.Furniture
 {
@@ -31,7 +32,7 @@ namespace SpiritMod.Tiles.Furniture
 			name.SetDefault("Hyperspace Bust");
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, Mod.Find<ModItem>("SynthwaveHeadItem").Type);
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<SynthwaveHeadItem>());
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
@@ -58,13 +59,13 @@ namespace SpiritMod.Tiles.Furniture
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
-			player.cursorItemIconID = Mod.Find<ModItem>("SynthwaveHeadItem").Type;
+			player.cursorItemIconID = ModContent.ItemType<SynthwaveHeadItem>();
 		}
 
 		public override void HitWire(int i, int j)
 		{
-			int x = i - (Main.tile[i, j].TileFrameX / 18) % 3;
-			int y = j - (Main.tile[i, j].TileFrameY / 18) % 4;
+			int x = i - Main.tile[i, j].TileFrameX / 18 % 3;
+			int y = j - Main.tile[i, j].TileFrameY / 18 % 4;
 
 			for (int l = x; l < x + 3; l++)
 			{
@@ -86,11 +87,19 @@ namespace SpiritMod.Tiles.Furniture
 				Wiring.SkipWire(x, y);
 				Wiring.SkipWire(x, y + 1);
 				Wiring.SkipWire(x, y + 2);
+				Wiring.SkipWire(x, y + 3);
+
 				Wiring.SkipWire(x + 1, y);
 				Wiring.SkipWire(x + 1, y + 1);
 				Wiring.SkipWire(x + 1, y + 2);
+				Wiring.SkipWire(x + 1, y + 3);
+
+				Wiring.SkipWire(x + 2, y);
+				Wiring.SkipWire(x + 2, y + 1);
+				Wiring.SkipWire(x + 2, y + 2);
+				Wiring.SkipWire(x + 2, y + 3);
 			}
-			NetMessage.SendTileSquare(-1, x, y + 1, 3);
+			NetMessage.SendTileSquare(-1, x, y + 1, 4);
 		}
 	}
 
@@ -105,7 +114,7 @@ namespace SpiritMod.Tiles.Furniture
 
 			if (Main.rand.NextBool(50))
 			{
-				int index3 = Dust.NewDust(new Vector2((i * 16), (float)(j * 16) - 20), 16, 16, DustID.Electric, 0.0f, 0f, 150, new Color(), 0.5f);
+				int index3 = Dust.NewDust(new Vector2(i * 16, (float)(j * 16) - 20), 16, 16, DustID.Electric, 0.0f, 0f, 150, new Color(), 0.5f);
 				Main.dust[index3].fadeIn = 0.75f;
 				Main.dust[index3].velocity = new Vector2(Main.rand.Next(-2, 2), Main.rand.Next(-2, -1));
 				Main.dust[index3].noLight = true;
@@ -113,7 +122,7 @@ namespace SpiritMod.Tiles.Furniture
 			}
 			if (Main.rand.NextBool(50))
 			{
-				int index3 = Dust.NewDust(new Vector2((i * 16), (float)(j * 16) - 20), 16, 16, DustID.WitherLightning, 0.0f, 0f, 150, new Color(), 0.5f);
+				int index3 = Dust.NewDust(new Vector2(i * 16, (float)(j * 16) - 20), 16, 16, DustID.WitherLightning, 0.0f, 0f, 150, new Color(), 0.5f);
 				Main.dust[index3].fadeIn = 0.75f;
 				Main.dust[index3].velocity = new Vector2(Main.rand.Next(-2, 2), Main.rand.Next(-2, -1));
 				Main.dust[index3].noGravity = true;

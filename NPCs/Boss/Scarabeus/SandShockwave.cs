@@ -35,41 +35,58 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 																													 Projectile.Center);
 		public override void AI()
 		{
-			Projectile.ai[0]++;
-			if(Projectile.ai[0] > passivetime && Projectile.ai[1] == 0) {
+			if (++Projectile.ai[0] > passivetime && Projectile.ai[1] == 0)
+			{
 				Projectile.ai[1]++;
-				SoundEngine.PlaySound(SoundID.Item14 with { Volume = 0.5f, PitchVariance = 0.2f }, Projectile.Center);
 				Projectile.velocity.Y = -12;
-				for(int i = 0; i < 3; i++) {
-					Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.Center + Main.rand.NextVector2Square(-18, 18), Main.rand.NextVector2Circular(3, 3), GoreID.ChimneySmoke1);
-					gore.timeLeft = 20;
+
+				if (Main.netMode != NetmodeID.Server)
+				{
+					SoundEngine.PlaySound(SoundID.Item14 with { Volume = 0.5f, PitchVariance = 0.2f }, Projectile.Center);
+					for (int i = 0; i < 3; i++)
+					{
+						Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.Center + Main.rand.NextVector2Square(-18, 18), Main.rand.NextVector2Circular(3, 3), GoreID.ChimneySmoke1);
+						gore.timeLeft = 20;
+					}
 				}
 			}
 
-			if (Projectile.ai[1] == 0) {
+			if (Projectile.ai[1] == 0)
+			{
 				startingpoint = Projectile.Center;
 				Vector2 dustvel = -Vector2.UnitY.RotatedByRandom(MathHelper.Pi / 5) * 3;
 				Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.Center + Main.rand.NextVector2Square(-18, 18), Main.rand.NextVector2Circular(3, 3), GoreID.ChimneySmoke1, 0.6f);
 				gore.timeLeft = 20;
-				for (int i = 0; i < 4; i++) {
-					Dust dust = Dust.NewDustPerfect(Projectile.Center + (Vector2.UnitY * 20), Mod.Find<ModDust>("SandDust").Type, dustvel);
-					dust.position.X += Main.rand.NextFloat(-6, 6);
-					dust.noGravity = false;
-					dust.scale = 0.75f;
+
+				if (Main.netMode != NetmodeID.Server)
+				{
+					for (int i = 0; i < 4; i++)
+					{
+						Dust dust = Dust.NewDustPerfect(Projectile.Center + (Vector2.UnitY * 20), Mod.Find<ModDust>("SandDust").Type, dustvel);
+						dust.position.X += Main.rand.NextFloat(-6, 6);
+						dust.noGravity = false;
+						dust.scale = 0.75f;
+					}
 				}
 			}
-			else {
+			else
+			{
 				Projectile.hide = false;
 				Projectile.alpha = (activetime - Projectile.timeLeft) * (255 / activetime);
 				Projectile.rotation += 0.1f + Projectile.direction;
-				if (Main.rand.NextBool(4))
-					Gore.NewGorePerfect(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity.RotatedByRandom(MathHelper.Pi / 14) / 2, Mod.Find<ModGore>("SandBall").Type, Main.rand.NextFloat(0.6f, 0.8f));
 
-				for (int i = 0; i < 3; i++) {
-					Dust dust = Dust.NewDustPerfect(Projectile.Center + (Vector2.UnitY * 16), Mod.Find<ModDust>("SandDust").Type, Projectile.velocity.RotatedByRandom(MathHelper.Pi / 8) * 0.2f);
-					dust.position += dust.velocity * Main.rand.NextFloat(20, 25);
-					dust.noGravity = true;
-					dust.scale = Main.rand.NextFloat(0.5f, 1.2f);
+				if (Main.netMode != NetmodeID.Server)
+				{
+					if (Main.rand.NextBool(4))
+						Gore.NewGorePerfect(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity.RotatedByRandom(MathHelper.Pi / 14) / 2, Mod.Find<ModGore>("SandBall").Type, Main.rand.NextFloat(0.6f, 0.8f));
+
+					for (int i = 0; i < 3; i++)
+					{
+						Dust dust = Dust.NewDustPerfect(Projectile.Center + (Vector2.UnitY * 16), Mod.Find<ModDust>("SandDust").Type, Projectile.velocity.RotatedByRandom(MathHelper.Pi / 8) * 0.2f);
+						dust.position += dust.velocity * Main.rand.NextFloat(20, 25);
+						dust.noGravity = true;
+						dust.scale = Main.rand.NextFloat(0.5f, 1.2f);
+					}
 				}
 			}
 		}

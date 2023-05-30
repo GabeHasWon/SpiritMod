@@ -40,7 +40,7 @@ namespace SpiritMod.Tiles
 
 		public override bool RightClick(int i, int j)
 		{
-			SoundEngine.PlaySound(SoundID.Mech, new(i * 16, j * 16));
+			SoundEngine.PlaySound(SoundID.Mech, new Vector2(i * 16, j * 16));
 			HitWire(i, j);
 			return true;
 		}
@@ -57,6 +57,7 @@ namespace SpiritMod.Tiles
 		{
 			int x = i - Main.tile[i, j].TileFrameX / 18 % 2;
 			int y = j - Main.tile[i, j].TileFrameY / 18 % 3;
+
 			for (int l = x; l < x + 2; l++)
 			{
 				for (int m = y; m < y + 3; m++)
