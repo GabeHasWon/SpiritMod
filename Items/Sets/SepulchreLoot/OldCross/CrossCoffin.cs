@@ -115,12 +115,15 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 							proj.damage = (int)(proj.damage * (0.5f / skeletstospawn + 0.5f));
 						}
 
-						for (int i = 0; i <= 12 + skeletstospawn; i++)
+						if (Main.netMode != NetmodeID.Server)
 						{
-							Gore gore = Gore.NewGoreDirect(Projectile.GetSource_FromAI(), Projectile.position + new Vector2(Main.rand.Next(Projectile.width), Main.rand.Next(Projectile.height)),
-								Main.rand.NextVector2Circular(-3, 3),
-								Mod.Find<ModGore>("bonger" + Main.rand.Next(1, 5)).Type);
-							gore.timeLeft = 40;
+							for (int i = 0; i <= 12 + skeletstospawn; i++)
+							{
+								Gore gore = Gore.NewGoreDirect(Projectile.GetSource_FromAI(), Projectile.position + new Vector2(Main.rand.Next(Projectile.width), Main.rand.Next(Projectile.height)),
+									Main.rand.NextVector2Circular(-3, 3),
+									Mod.Find<ModGore>("bonger" + Main.rand.Next(1, 5)).Type);
+								gore.timeLeft = 40;
+							}
 						}
 					}
 					if (Projectile.ai[0] > 160)

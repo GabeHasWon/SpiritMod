@@ -93,17 +93,19 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 
 				NPC miniontarget = Projectile.OwnerMinionAttackTargetNPC;
 				float maxdist = 900f;
+
 				if (miniontarget != null && Projectile.Distance(miniontarget.Center) < maxdist && miniontarget.CanBeChasedBy(Projectile))
-				{
 					Projectile.ai[1] = miniontarget.whoAmI;
-				}
-				else for (int i = 0; i < Main.npc.Length; i++)
+				else
 				{
-					NPC potentialtarget = Main.npc[i];
-					if (potentialtarget != null && Projectile.Distance(potentialtarget.Center) < maxdist && potentialtarget.CanBeChasedBy(Projectile))
+					for (int i = 0; i < Main.npc.Length; i++)
 					{
-						maxdist = Projectile.Distance(potentialtarget.Center);
-						Projectile.ai[1] = potentialtarget.whoAmI;
+						NPC npc = Main.npc[i];
+						if (npc != null && Projectile.DistanceSQ(npc.Center) < maxdist * maxdist && npc.CanBeChasedBy(Projectile) && Collision.CanHit(Projectile, npc))
+						{
+							maxdist = Projectile.Distance(npc.Center);
+							Projectile.ai[1] = npc.whoAmI;
+						}
 					}
 				}
 			}
@@ -129,14 +131,20 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 		{
 			for (int i = 0; i < 5; i++)
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Poisoned);
-			for(int i = 1; i <= Main.rand.Next(2, 5); i++)
+
+			if (Main.netMode != NetmodeID.Server)
 			{
-				Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity / 2, Mod.Find<ModGore>("skeler" + i).Type);
-				gore.timeLeft = 40;
+				for (int i = 1; i <= Main.rand.Next(2, 5); i++)
+				{
+					Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity / 2, Mod.Find<ModGore>("skeler" + i).Type);
+					gore.timeLeft = 40;
+				}
+				SoundEngine.PlaySound(SoundID.NPCDeath2 with { Volume = 0.6f }, Projectile.Center);
 			}
-			SoundEngine.PlaySound(SoundID.NPCDeath2 with { Volume = 0.6f }, Projectile.Center);
 		}
+
 		public override bool MinionContactDamage() => true;
+
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
 		{
 			fallThrough = (Projectile.Center.Y < hometarget.Y - 20);
