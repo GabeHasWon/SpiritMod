@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using System.Collections.Generic;
 using Terraria.DataStructures;
+using static Humanizer.In;
 
 namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 {
@@ -59,11 +60,10 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 					NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj.whoAmI);
 			}
 			reversed = !reversed;
-
 			return false;
 		}
 
-		public override float UseTimeMultiplier(Player player) => player.GetAttackSpeed(DamageClass.Melee); //Scale with melee speed buffs, like whips
+		public override float UseTimeMultiplier(Player player) => MathHelper.Max(1.05f, 2f - player.GetTotalAttackSpeed(DamageClass.Melee)); //Scale with melee speed buffs, like whips
 	}
 
 	public class JadeDaoProj : ModProjectile
@@ -165,7 +165,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 
 				Projectile.netUpdate = true;
 			}
-			SwingTime = (int)(item.useTime * item.ModItem.UseTimeMultiplier(Owner) * (float)((AiState == STATE_THRUST) ? 2.4f : 2.8f));
+
+			SwingTime = (int)(Owner.itemTimeMax * (float)((AiState == STATE_THRUST) ? 2.4f : 2.8f));
 			Curvature = 0.29f;
 
 			Owner.ChangeDir(Math.Sign(Projectile.velocity.X));

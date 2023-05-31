@@ -8,6 +8,7 @@ using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.NPCs.AuroraStag;
 using SpiritMod.NPCs.ExplosiveBarrel;
+using SpiritMod.NPCs.Reach;
 using SpiritMod.NPCs.Tides.Tide;
 using SpiritMod.Projectiles;
 using System;
@@ -189,6 +190,18 @@ namespace SpiritMod
 						Main.npc[npcID].netUpdate2 = true;
 
 						ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", Main.npc[npcID].GetTypeNetName()), new Color(175, 75, 255));
+					}
+					break;
+				case MessageType.SpawnGladeWraith:
+					if (Main.netMode == NetmodeID.Server)
+					{
+						int npcCenterX = reader.ReadInt32();
+						int npcCenterY = reader.ReadInt32();
+
+						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, ModContent.NPCType<ForestWraith>(), 0, 2, 1, 0, 0);
+						Main.npc[npcID].netUpdate2 = true;
+
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You have disturbed the ancient Nature Spirits!"), new Color(0, 170, 60));
 					}
 					break;
 				case MessageType.StartTide:

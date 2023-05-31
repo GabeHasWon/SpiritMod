@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     public class RageBlazeDecapitator : ClubItem
     {
 		internal override int ChargeTime => 40;
-		internal override Point Size => new(96, 96);
+		internal override Vector2 Size => new(96, 96);
 		internal override float Acceleration => 28f;
 		internal override int MinDamage => 60;
 		internal override int MaxDamage => 175;

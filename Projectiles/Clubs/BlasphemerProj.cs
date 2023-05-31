@@ -36,7 +36,7 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			if (Projectile.ai[0] >= ChargeTime)
 			{
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size.Y * 2, Size.X, Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
+				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, (int)(Size.Y * 2), (int)Size.X, (int)Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
                 Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
                 {

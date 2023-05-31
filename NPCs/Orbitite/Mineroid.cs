@@ -52,8 +52,6 @@ namespace SpiritMod.NPCs.Orbitite
 			});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.GetSpiritPlayer().ZoneAsteroid && NPC.downedBoss2 ? 0.15f : 0f;
-
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrbiterStaff>(), 20));

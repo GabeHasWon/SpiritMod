@@ -184,8 +184,10 @@ namespace SpiritMod.NPCs.Reach
 
 		public override bool PreKill()
 		{
-			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
+			if (Main.netMode != NetmodeID.Server)
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
 			MyWorld.downedGladeWraith = true;
+
 			return true;
 		}
 

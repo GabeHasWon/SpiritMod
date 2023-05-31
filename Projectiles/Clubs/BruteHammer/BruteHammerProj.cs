@@ -45,7 +45,7 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 				{
 					Vector2 drawPos = Main.player[Projectile.owner].Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
 					Color trailColor = lightColor * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) * .5f;
-					Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Rectangle(0, 0, Size.X, Size.Y), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
+					Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Rectangle(0, 0, (int)Size.X, (int)Size.Y), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
 				}
 			}
 		}

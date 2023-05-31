@@ -29,7 +29,6 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 
 			Vector2 spawnPos = Projectile.Center;
-
 			for (int i = 0; i < 10; i++)
 			{
 				Tile tile = Framing.GetTileSafely(spawnPos / 16);
@@ -42,7 +41,7 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 
 			Vector2 velocity = Vector2.UnitX * 12 * Main.player[Projectile.owner].direction;
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI("ClubSmash"), spawnPos, velocity, ModContent.ProjectileType<EnergizedShockwave>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner).position.Y += Projectile.height + 16;
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI("ClubSmash"), spawnPos, velocity, ModContent.ProjectileType<EnergizedShockwave>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner).position.Y += Projectile.height + 32;
 
 			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Item/GranitechLaserBlast"), position);
 		}
@@ -56,7 +55,7 @@ namespace SpiritMod.Projectiles.Clubs
 		public override void SafeDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			if (Projectile.ai[0] >= ChargeTime)
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size.Y * 2, Size.X, Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
+				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, (int)(Size.Y * 2), (int)Size.X, (int)Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
 		}
 	}
 }

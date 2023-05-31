@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     public class GoldClub : ClubItem
     {
 		internal override int ChargeTime => 60;
-		internal override Point Size => new(82, 82);
+		internal override Vector2 Size => new(82, 82);
 		internal override float Acceleration => 18f;
 		internal override int MinDamage => 30;
 		internal override int MaxDamage => 105;

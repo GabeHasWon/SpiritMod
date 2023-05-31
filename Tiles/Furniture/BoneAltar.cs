@@ -2,9 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.NPCs.Reach;
 using Terraria;
+using Terraria.Chat;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -81,11 +83,20 @@ namespace SpiritMod.Tiles.Furniture
 
 			if (!NPC.AnyNPCs(ModContent.NPCType<ForestWraith>()))
 			{
-				Main.NewText("You have disturbed the ancient Nature Spirits!", 0, 170, 60);
-				int who = NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16 - 300, ModContent.NPCType<ForestWraith>(), 0, 2, 1, 0, 0, Main.myPlayer);
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					Main.NewText("You have disturbed the ancient Nature Spirits!", 0, 170, 60);
 
-				if (Main.netMode == NetmodeID.MultiplayerClient)
-					NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, who);
+					int who = NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16 - 300, ModContent.NPCType<ForestWraith>(), 0, 2, 1, 0, 0);
+					Main.npc[who].netUpdate2 = true;
+				}
+				else if (Main.netMode != NetmodeID.SinglePlayer)
+				{
+					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnGladeWraith, 2);
+					packet.Write(i * 16);
+					packet.Write(j * 16 - 300);
+					packet.Send();
+				}
 			}
 		}
 	}

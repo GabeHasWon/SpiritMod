@@ -37,7 +37,7 @@ namespace SpiritMod.Projectiles.Clubs
         public override void SafeDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             if (Projectile.ai[0] >= ChargeTime)
-                Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size.Y * 2, Size.X, Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
+                Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, (int)(Size.Y * 2), (int)Size.X, (int)Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
         }
 	}
 }

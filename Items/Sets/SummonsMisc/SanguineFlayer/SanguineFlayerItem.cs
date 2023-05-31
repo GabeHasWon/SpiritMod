@@ -25,8 +25,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 			Item.rare = ItemRarityID.LightRed;
 			Item.knockBack = 2;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.useTime = 45;
-			Item.useAnimation = 45;
+			Item.useTime = Item.useAnimation = 45;
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
 			Item.shoot = ModContent.ProjectileType<SanguineFlayerProj>();
@@ -43,7 +42,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 			Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
 			if(proj.ModProjectile is SanguineFlayerProj flayer)
 			{
-				flayer.SwingTime = Item.useTime;
+				flayer.SwingTime = player.itemTimeMax;
 				flayer.SwingDistance = player.Distance(Main.MouseWorld);
 			}
 
@@ -52,6 +51,6 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 			return false;
 		}
 
-		public override float UseTimeMultiplier(Player player) => base.UseTimeMultiplier(player) * player.GetAttackSpeed(DamageClass.Melee); //Scale with melee speed buffs, like whips
+		public override float UseTimeMultiplier(Player player) => MathHelper.Max(0f, 2f - player.GetTotalAttackSpeed(DamageClass.Melee)); //Scale with melee speed buffs, like whips
 	}
 }

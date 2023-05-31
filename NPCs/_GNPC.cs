@@ -729,7 +729,7 @@ namespace SpiritMod.NPCs
 			if (spawnInfo.SpawnTileY <= Main.worldSurface && MyWorld.blueMoon && !Main.dayTime)
 				pool.Remove(0);
 
-			if (spawnInfo.Player.GetSpiritPlayer().ZoneAsteroid)
+			if (player.GetSpiritPlayer().ZoneAsteroid)
 			{
 				if (!spawnInfo.PlayerSafe)
 				{
@@ -751,7 +751,7 @@ namespace SpiritMod.NPCs
 						pool.Add(ModContent.NPCType<MoonjellyEvent.DistressJelly>(), .055f);
 			}
 
-			if (MyWorld.jellySky && (spawnInfo.Player.ZoneOverworldHeight || spawnInfo.Player.ZoneSkyHeight))
+			if (MyWorld.jellySky && (player.ZoneOverworldHeight || player.ZoneSkyHeight))
 			{
 				pool.Add(ModContent.NPCType<MoonjellyEvent.TinyLunazoa>(), 9.35f);
 				pool.Add(ModContent.NPCType<MoonjellyEvent.ExplodingMoonjelly>(), 8.35f);
@@ -764,7 +764,7 @@ namespace SpiritMod.NPCs
 					pool.Add(ModContent.NPCType<MoonjellyEvent.DreamlightJelly>(), .85f);
 			}
 
-			if (MyWorld.blueMoon && (spawnInfo.Player.ZoneOverworldHeight || spawnInfo.Player.ZoneSkyHeight))
+			if (MyWorld.blueMoon && (player.ZoneOverworldHeight || player.ZoneSkyHeight))
 			{
 				pool.Add(ModContent.NPCType<MadHatter>(), 1f);
 				pool.Add(ModContent.NPCType<LunarSlime>(), 3.4f);
@@ -782,7 +782,7 @@ namespace SpiritMod.NPCs
 					pool.Add(ModContent.NPCType<Lumantis>(), .6f);
 			}
 
-			if (spawnInfo.Player.active && spawnInfo.Player.ZoneBeach && MyWorld.luminousOcean && !Main.dayTime)
+			if (player.active && player.ZoneBeach && MyWorld.luminousOcean && !Main.dayTime)
 			{
 				pool.Clear();
 
