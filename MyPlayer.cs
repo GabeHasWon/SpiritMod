@@ -289,29 +289,33 @@ namespace SpiritMod
 
 			bool blueMoon = MyWorld.blueMoon && (Player.ZoneOverworldHeight || Player.ZoneSkyHeight);
 
-			if (config.DistortionConfig && Main.netMode != NetmodeID.Server)
+			if (Main.netMode != NetmodeID.Server)
 			{
-				if (starplateGlitchEffect)
+				if (config.DistortionConfig)
 				{
-					SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.3f);
-					SpiritMod.glitchScreenShader.UseIntensity(starplateGlitchIntensity);
-					Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
-				}
-				else if (ZoneSynthwave)
-				{
-					SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.115f); //0.4f is default
-					SpiritMod.glitchScreenShader.UseIntensity(0.0008f);
-					Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
+					if (starplateGlitchEffect)
+					{
+						SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.3f);
+						SpiritMod.glitchScreenShader.UseIntensity(starplateGlitchIntensity);
+						Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
+					}
+					else if (ZoneSynthwave)
+					{
+						SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.115f); //0.4f is default
+						SpiritMod.glitchScreenShader.UseIntensity(0.0008f);
+						Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
+					}
+					else
+						Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 				}
 				else
 					Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 			}
-			else
-				Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 
 			bool showAurora = (Player.ZoneSnow || ZoneSpirit || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
 
 			ManageAshrainShader();
+
 			Player.ManageSpecialBiomeVisuals("SpiritMod:AuroraSky", showAurora || auroraMonoliths.Any(x => x.Value >= 1));
 			Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritBiomeSky", spirit);
 			Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", ZoneAsteroid);
@@ -1613,7 +1617,8 @@ namespace SpiritMod
 					Main.gore[a].rotation = 0f;
 					Main.gore[a].velocity = new Vector2(Main.windSpeedCurrent * 40f, Main.rand.NextFloat(0.2f, 2f));
 				}
-				if (Main.rand.NextBool(9)&& (ZoneReach || MyWorld.calmNight) && Player.ZoneOverworldHeight && !Player.ZoneBeach && !Player.ZoneCorrupt && !Player.ZoneCrimson && !Player.ZoneJungle && !Player.ZoneHallow && !Player.ZoneSnow)
+				if (Main.rand.NextBool(9) && Main.netMode != NetmodeID.Server && (ZoneReach || MyWorld.calmNight) && Player.ZoneOverworldHeight && !Player.ZoneBeach && 
+					!Player.ZoneCorrupt && !Player.ZoneCrimson && !Player.ZoneJungle && !Player.ZoneHallow && !Player.ZoneSnow)
 				{
 					float goreScale = Main.rand.NextFloat(0.5f, 0.9f);
 					int x = (int)(Main.windSpeedCurrent > 0 ? Main.screenPosition.X - 100 : Main.screenPosition.X + Main.screenWidth + 100);

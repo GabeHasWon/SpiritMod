@@ -141,6 +141,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 				Phase2(player);
 				NPC.defense = 6;
+				NPC.netUpdate = true;
 			}
 		}
 
@@ -163,17 +164,6 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			}
 			else if (sound is null)
 				wingSoundSlot = SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BossSFX/Scarab_Wings") with { IsLooped = true, Volume = 3 }, NPC.Center);
-		}
-
-		public override void OnKill()
-		{
-			SoundEngine.TryGetActiveSound(wingSoundSlot, out ActiveSound sound);
-
-			if (sound is not null && sound.IsPlaying)
-			{
-				sound.Stop();
-				wingSoundSlot = SlotId.Invalid;
-			}
 		}
 
 		#region utilities
@@ -732,7 +722,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			if (InSolidTile)
 			{
 
-				if (AiTimer % 20 == 0)
+				if (AiTimer % 30 == 0)
 					SoundEngine.PlaySound(SoundID.Roar, NPC.Center);
 
 				float distfromsurface = 0; //check the npc's distance from the surface to determine dust velocity, by checking each tile and increasing this float for every solid tile above this npc until a non-solid tile is found
@@ -742,15 +732,18 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 					tilecheck.Y -= 16;
 					distfromsurface += 2;
 				}
-				for (int i = 0; i < 2; i++)
+				if (Main.netMode != NetmodeID.Server)
 				{
-					Dust dust = Dust.NewDustPerfect(NPC.Center + (Vector2.UnitY * 20), Mod.Find<ModDust>("SandDust").Type, -Vector2.UnitY.RotatedByRandom(MathHelper.Pi / (12 + distfromsurface)) * distfromsurface * Main.rand.NextFloat(0.8f, 1.2f));
-					dust.position.X += Main.rand.NextFloat(-NPC.width / 6, NPC.width / 6);
-					dust.position.Y += Main.rand.NextFloat(-NPC.height / 6, -NPC.height / 6);
-					dust.noGravity = true;
-					dust.scale = Main.rand.NextFloat(1.8f, 2.4f);
+					for (int i = 0; i < 2; i++)
+					{
+						Dust dust = Dust.NewDustPerfect(NPC.Center + (Vector2.UnitY * 20), Mod.Find<ModDust>("SandDust").Type, -Vector2.UnitY.RotatedByRandom(MathHelper.Pi / (12 + distfromsurface)) * distfromsurface * Main.rand.NextFloat(0.8f, 1.2f));
+						dust.position.X += Main.rand.NextFloat(-NPC.width / 6, NPC.width / 6);
+						dust.position.Y += Main.rand.NextFloat(-NPC.height / 6, -NPC.height / 6);
+						dust.noGravity = true;
+						dust.scale = Main.rand.NextFloat(1.8f, 2.4f);
+					}
 				}
-				if (NPC.velocity.Length() > 4)
+				if (NPC.velocity.Length() > 4 && Main.netMode != NetmodeID.Server)
 				{
 					for (int i = -2; i < 2; i++)
 					{
@@ -1192,6 +1185,19 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 		{
 			for (int k = 0; k < 5; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
+
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
+				SoundEngine.TryGetActiveSound(wingSoundSlot, out ActiveSound sound);
+
+				if (sound is not null && sound.IsPlaying)
+				{
+					sound.Stop();
+					wingSoundSlot = SlotId.Invalid;
+				}
+
+				SpawnGores();
+			}
 		}
 
 		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -1200,7 +1206,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			if (Main.player[projectile.owner].HeldItem.type == ItemID.Minishark)
 			{ //shadow nerfing minishark on scarab because meme balance weapon
 				knockback *= 0.5f;
-				int maxdamage = (Main.rand.Next(3, 6));
+				int maxdamage = Main.rand.Next(3, 6);
 
 				while (damage - (NPC.defense / 2) + (Main.player[projectile.owner].GetArmorPenetration(DamageClass.Ranged) * 0.33f) > maxdamage)
 					damage--;
@@ -1264,10 +1270,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			npcLoot.Add(notExpertRule);
 		}
 
-		/*private void Gores()
+		private void SpawnGores()
 		{
 			for (int i = 1; i <= 7; i++)
-				Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Scarabeus/Scarab" + i.ToString()).Type, 1f);
+				Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Scarab" + i.ToString()).Type, 1f);
 
 			NPC.position += NPC.Size / 2;
 			NPC.Size = new Vector2(100, 60);
@@ -1294,7 +1300,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 				Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, randomDustType(), 0f, 0f, 100, default, .82f).velocity *= 2f;
 			}
-		}*/
+		}
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
