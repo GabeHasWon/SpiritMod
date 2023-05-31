@@ -166,17 +166,6 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 				wingSoundSlot = SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BossSFX/Scarab_Wings") with { IsLooped = true, Volume = 3 }, NPC.Center);
 		}
 
-		public override void OnKill()
-		{
-			SoundEngine.TryGetActiveSound(wingSoundSlot, out ActiveSound sound);
-
-			if (sound is not null && sound.IsPlaying)
-			{
-				sound.Stop();
-				wingSoundSlot = SlotId.Invalid;
-			}
-		}
-
 		#region utilities
 		private void CheckPlatform(Player player)
 		{
@@ -1196,6 +1185,19 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 		{
 			for (int k = 0; k < 5; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
+
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
+				SoundEngine.TryGetActiveSound(wingSoundSlot, out ActiveSound sound);
+
+				if (sound is not null && sound.IsPlaying)
+				{
+					sound.Stop();
+					wingSoundSlot = SlotId.Invalid;
+				}
+
+				SpawnGores();
+			}
 		}
 
 		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -1268,10 +1270,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			npcLoot.Add(notExpertRule);
 		}
 
-		/*private void Gores()
+		private void SpawnGores()
 		{
 			for (int i = 1; i <= 7; i++)
-				Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Scarabeus/Scarab" + i.ToString()).Type, 1f);
+				Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Scarab" + i.ToString()).Type, 1f);
 
 			NPC.position += NPC.Size / 2;
 			NPC.Size = new Vector2(100, 60);
@@ -1298,7 +1300,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 				Dust.NewDustDirect(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, randomDustType(), 0f, 0f, 100, default, .82f).velocity *= 2f;
 			}
-		}*/
+		}
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,

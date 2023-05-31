@@ -136,7 +136,7 @@ namespace SpiritMod.Projectiles.BaseProj
 		{
 			HadTarget = reader.ReadBoolean();
 			int whoamI = reader.ReadInt32();
-			_targetNPC = whoamI == -1 ? null : Main.npc[_targetNPC.whoAmI];
+			_targetNPC = whoamI == -1 ? null : Main.npc[whoamI];
 			CanRetarget = reader.ReadBoolean();
 		}
 

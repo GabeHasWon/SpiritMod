@@ -122,7 +122,8 @@ namespace SpiritMod.Projectiles.Summon
 				{
 					if (trail != null && !trail.Destroyed)
 						trail.Destroyed = true;
-					SpiritMod.primitives.CreateTrail(trail = new AnimePrimTrail(Projectile));
+					if (Main.netMode != NetmodeID.Server)
+						SpiritMod.primitives.CreateTrail(trail = new AnimePrimTrail(Projectile));
 
 					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/SwordSlash1") with { Pitch = 1.25f }, Projectile.Center);
 

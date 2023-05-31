@@ -127,12 +127,16 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 		{
 			for (int i = 0; i < 5; i++)
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Poisoned);
-			for(int i = 1; i <= Main.rand.Next(2, 5); i++)
+
+			if (Main.netMode != NetmodeID.Server)
 			{
-				Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity / 2, Mod.Find<ModGore>("skeler" + i).Type);
-				gore.timeLeft = 40;
+				for (int i = 1; i <= Main.rand.Next(2, 5); i++)
+				{
+					Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity / 2, Mod.Find<ModGore>("skeler" + i).Type);
+					gore.timeLeft = 40;
+				}
+				SoundEngine.PlaySound(SoundID.NPCDeath2, Projectile.Center);
 			}
-			SoundEngine.PlaySound(SoundID.NPCDeath2, Projectile.Center);
 		}
 		public override bool MinionContactDamage() => true;
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)

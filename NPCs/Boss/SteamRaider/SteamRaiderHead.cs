@@ -20,6 +20,8 @@ using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet;
 using SpiritMod.Biomes;
 using SpiritMod.Items.Placeable.Relics;
+using Terraria.Localization;
+using Terraria.Chat;
 
 namespace SpiritMod.NPCs.Boss.SteamRaider
 {
@@ -749,7 +751,12 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		public override bool PreKill()
 		{
 			if (!MyWorld.downedRaider)
-				Main.NewText("The Astralite in the Asteroids hums with energy.", new Color(61, 255, 142));
+			{
+				if (Main.netMode == NetmodeID.SinglePlayer)
+					Main.NewText("The Astralite in the Asteroids hums with energy.", new Color(61, 255, 142));
+				else if (Main.netMode == NetmodeID.Server)
+					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Astralite in the Asteroids hums with energy."), new Color(61, 255, 142), -1);
+			}
 
 			MyWorld.downedRaider = true;
 			if (Main.netMode != NetmodeID.SinglePlayer)
