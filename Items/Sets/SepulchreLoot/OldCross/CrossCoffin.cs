@@ -12,6 +12,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 {
 	public class CrossCoffin : ModProjectile
 	{
+		int rotationtimer = 0;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Old Coffin");
@@ -31,13 +33,10 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity) => false;
-
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => false;
-
-		int rotationtimer = 0;
-
+		public override bool? CanDamage() => false;
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(rotationtimer);
 		public override void ReceiveExtraAI(BinaryReader reader) => rotationtimer = reader.ReadInt32();
+
 		public override void AI()
 		{
 			if (Projectile.velocity.Y != 0)
@@ -61,7 +60,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 			if (Projectile.velocity.Y < 15)
 				Projectile.velocity.Y += 0.2f;
 
-			if(Projectile.ai[0] == -1)
+			if (Projectile.ai[0] == -1)
 			{
 				MakeDust();
 				Projectile.ai[0]++;
@@ -69,27 +68,33 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 
 			NPC target = null;
 			NPC miniontarget = Projectile.OwnerMinionAttackTargetNPC;
-			float maxdist = 900f;
-			if(miniontarget != null && Projectile.Distance(miniontarget.Center) < maxdist && miniontarget.CanBeChasedBy(Projectile))
-			{
+
+			float maxDist = 900f;
+
+			if (miniontarget != null && Projectile.DistanceSQ(miniontarget.Center) < maxDist * maxDist && miniontarget.CanBeChasedBy(Projectile))
 				target = miniontarget;
-			}
-			else for(int i = 0; i < Main.npc.Length; i++)
+			else
 			{
-				NPC potentialtarget = Main.npc[i];
-				if(potentialtarget != null && Projectile.Distance(potentialtarget.Center) < maxdist && potentialtarget.CanBeChasedBy(Projectile))
+				for (int i = 0; i < Main.npc.Length; i++)
 				{
-					maxdist = Projectile.Distance(potentialtarget.Center);
-					target = potentialtarget;
+					NPC npc = Main.npc[i];
+
+					if (npc != null && npc.CanBeChasedBy(Projectile) && Projectile.DistanceSQ(npc.Center) < maxDist * maxDist && Collision.CanHit(Projectile, npc))
+					{
+						maxDist = Projectile.Distance(npc.Center);
+						target = npc;
+					}
 				}
 			}
-			if(target != null)
+
+			if (target != null)
 			{
 				Projectile.ai[0]++;
-				if(Projectile.ai[0] > 30)
+				if (Projectile.ai[0] > 30)
 				{
 					Projectile.frameCounter++;
-					if(Projectile.frameCounter >= 10)
+
+					if (Projectile.frameCounter >= 10)
 					{
 						Projectile.frameCounter = 0;
 						if (Projectile.frame < 2 && Projectile.ai[0] < 120)
@@ -97,22 +102,23 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 						if (Projectile.frame > 0 && Projectile.ai[0] > 120)
 							Projectile.frame--;
 					}
-					if(Projectile.ai[0] == 90)
+
+					if (Projectile.ai[0] == 90)
 					{
 						MakeDust();
 						int skeletstospawn = Main.rand.Next(1, 3);
 						Projectile.velocity.Y -= 3;
-						for(int i = 0; i <= skeletstospawn; i++)
-                        {
+						for (int i = 0; i <= skeletstospawn; i++)
+						{
 							Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<CrossSkelet>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.whoAmI, target.whoAmI);
 							proj.position.X += Main.rand.Next(-20, 21);
 							proj.damage = (int)(proj.damage * (0.5f / skeletstospawn + 0.5f));
-                        }
+						}
 
 						for (int i = 0; i <= 12 + skeletstospawn; i++)
 						{
-							Gore gore = Gore.NewGoreDirect(Projectile.GetSource_FromAI(), Projectile.position + new Vector2(Main.rand.Next(Projectile.width), Main.rand.Next(Projectile.height)), 
-								Main.rand.NextVector2Circular(-3, 3), 
+							Gore gore = Gore.NewGoreDirect(Projectile.GetSource_FromAI(), Projectile.position + new Vector2(Main.rand.Next(Projectile.width), Main.rand.Next(Projectile.height)),
+								Main.rand.NextVector2Circular(-3, 3),
 								Mod.Find<ModGore>("bonger" + Main.rand.Next(1, 5)).Type);
 							gore.timeLeft = 40;
 						}
@@ -141,7 +147,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 
 		public void MakeDust()
 		{
-			for(int i = 0; i < 40; i++)
+			for (int i = 0; i < 40; i++)
 			{
 				Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Poisoned, Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-0.25f, 0.5f));
 				dust.scale *= 0.66f;
@@ -153,10 +159,12 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 			Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
 			Rectangle drawframe = new Rectangle(0, Projectile.frame * tex.Height / Main.projFrames[Projectile.type], tex.Width, tex.Height / Main.projFrames[Projectile.type]);
 			SpriteEffects flip = (Projectile.spriteDirection < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			Color color = Projectile.GetAlpha(Lighting.GetColor((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16));
+
 			Main.spriteBatch.Draw(tex,
 					Projectile.Center - Main.screenPosition + (Vector2.UnitX * Projectile.spriteDirection * 10),
 					drawframe,
-					Projectile.GetAlpha(Lighting.GetColor((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16)),
+					color,
 					Projectile.rotation,
 					drawframe.Size() / 2,
 					Projectile.scale,

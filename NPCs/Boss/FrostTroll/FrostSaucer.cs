@@ -36,6 +36,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			NPC.damage = 45;
 			NPC.lifeMax = 5600;
 			NPC.knockBackResist = 0;
+			NPC.value = Item.buyPrice(0, 15, 0, 0);
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.HitSound = SoundID.NPCHit4;
@@ -53,8 +54,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -76,18 +76,16 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 						scaleFactor10 = 0.5f;
 					if (num625 == 2)
 						scaleFactor10 = 1f;
-					int num626 = Gore.NewGore(NPC.GetSource_OnHit(NPC), new Vector2(NPC.Center.X + Main.rand.Next(-100, 100), NPC.Center.Y + Main.rand.Next(-100, 100)), default, Main.rand.Next(61, 64), 1f);
+					int num626 = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.Center + new Vector2(Main.rand.Next(-100, 100), Main.rand.Next(-100, 100)), default, Main.rand.Next(61, 64), 1f);
 					Main.gore[num626].velocity *= scaleFactor10;
 					Gore expr_13AB6_cp_0 = Main.gore[num626];
 					expr_13AB6_cp_0.velocity.X += 1f;
-					Gore expr_13AD6_cp_0 = Main.gore[num626];
-					expr_13AD6_cp_0.velocity.Y += 1f;
-					num626 = Gore.NewGore(NPC.GetSource_OnHit(NPC), new Vector2(NPC.Center.X + Main.rand.Next(-100, 100), NPC.Center.Y + Main.rand.Next(-100, 100)), default, Main.rand.Next(61, 64), 1f);
+					expr_13AB6_cp_0.velocity.Y += 1f;
+					num626 = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.Center + new Vector2(Main.rand.Next(-100, 100), Main.rand.Next(-100, 100)), default, Main.rand.Next(61, 64), 1f);
 					Main.gore[num626].velocity *= scaleFactor10;
 					Gore expr_13B79_cp_0 = Main.gore[num626];
 					expr_13B79_cp_0.velocity.X -= 1f;
-					Gore expr_13B99_cp_0 = Main.gore[num626];
-					expr_13B99_cp_0.velocity.Y += 1f;
+					expr_13B79_cp_0.velocity.Y += 1f;
 				}
 
 				for (int j = 0; j < 17; j++)
@@ -281,9 +279,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.AddMasterModeRelicAndPet<FrostSaucerRelicItem, SnowmongerMountItem>();
-
-			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
-			notExpertRule.AddOneFromOptions<Bauble, BlizzardEdge, Chillrend, ShiverWind>();
+			npcLoot.AddOneFromOptions<Bauble, BlizzardEdge, Chillrend, ShiverWind>();
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

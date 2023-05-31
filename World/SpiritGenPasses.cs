@@ -24,6 +24,7 @@ using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.Utilities;
 using Terraria.WorldBuilding;
 
 namespace SpiritMod.World
@@ -720,14 +721,29 @@ namespace SpiritMod.World
 		#endregion Gem Stash
 
 		#region Bone Island
-		private static void GenerateBoneIsland()
+		public static void GenerateBoneIsland()
 		{
-			string structure = "Structures/BoneIsland" + WorldGen.genRand.Next(2);
+			int var = WorldGen.genRand.Next(2);
+			string structure = "Structures/BoneIsland" + var;
 
 			Point16 size = default;
 			StructureHelper.Generator.GetDimensions(structure, SpiritMod.Instance, ref size);
 			Point pos = FindBoneIslandPlacement(size); // Select a place in the inner 4/6ths of the world
 			StructureHelper.Generator.GenerateStructure(structure, new Point16(pos.X, pos.Y), SpiritMod.Instance);
+
+			if (var == 1 && Main.tile[pos.X + 118, pos.Y + 35].TileType == TileID.TatteredWoodSign)
+			{
+				int sign = Sign.ReadSign(pos.X + 118, pos.Y + 35, true);
+
+				if (sign != -1)
+				{
+					WeightedRandom<string> lines = new();
+					lines.Add("(the text is illegible)", 0.9f);
+					lines.Add("Floating Resort - The only (scratch marks)", 0.09f);
+					lines.Add("Overseer Spotted in Distance? More At 5", 0.01f);
+					Sign.TextSign(sign, lines);
+				}
+			}
 		}
 
 		private static Point FindBoneIslandPlacement(Point16 islandSize, bool hugIsland = false)

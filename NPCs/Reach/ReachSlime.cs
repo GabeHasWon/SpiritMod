@@ -47,8 +47,10 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void AI()
 		{
+			float targetScale = (.2f * (NPC.life / (float)NPC.lifeMax)) + .8f;
+
+			NPC.scale = MathHelper.Lerp(NPC.scale, targetScale, 0.2f);
 			NPC.spriteDirection = -NPC.direction;
-			NPC.scale = (.2f * (float)(NPC.life / NPC.lifeMax)) + .8f;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

@@ -15,7 +15,7 @@ namespace SpiritMod.Tiles.Furniture.Shiverbark
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 72;
+
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 4;
@@ -32,7 +32,10 @@ namespace SpiritMod.Tiles.Furniture.Shiverbark
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
+
 			DustType = -1;
+			AnimationFrameHeight = 74;
+
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Shiverbark Flag");
 			AddMapEntry(new Color(118, 155, 163), name);

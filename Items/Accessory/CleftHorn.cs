@@ -30,7 +30,14 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void PlayerOnHitNPC(Player player, Item item, NPC target, int damage, float knockback, bool crit)
 		{
-			if (item.IsMelee() && Main.rand.NextBool(9)) target.StrikeNPC(item.damage / 2, 0f, 0, crit);
+			if (item.IsMelee() && Main.rand.NextBool(9)) 
+				target.StrikeNPC(item.damage / 2, 0f, 0, crit);
+		}
+
+		public override void PlayerOnHitNPCWithProj(Player player, Projectile proj, NPC target, int damage, float knockback, bool crit)
+		{
+			if (proj.IsMelee() && Main.rand.NextBool(9))
+				target.StrikeNPC(proj.damage / 2, 0f, 0, crit);
 		}
 	}
 }

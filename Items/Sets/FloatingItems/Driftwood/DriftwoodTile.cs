@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Enums;
 using Terraria.ModLoader;
-using Terraria.ObjectData;
 using Terraria.ID;
 
 namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
@@ -20,17 +18,10 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 
 		public override void SetDefaults()
 		{
+			Item.DefaultToPlaceableTile(ModContent.TileType<DriftwoodTile>());
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.White;
-			Item.useStyle = ItemUseStyleID.Swing;
-			Item.consumable = true;
 			Item.maxStack = 999;
-			Item.createTile = ModContent.TileType<DriftwoodTile>();
-			Item.useTime = Item.useAnimation = 20;
-			Item.useAnimation = 15;
-			Item.useTime = 15;
-			Item.noMelee = true;
-			Item.autoReuse = true;
 		}
 	}
 

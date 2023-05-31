@@ -1,33 +1,11 @@
-﻿- Fixed Fairy Whistle being a lucrative selling item
-- Made sure all gores are not spawned on servers
-- Made G-TEK Turret, Haunted Tome, Stactus use HitEffect instead of OnKill for gores
-- Fixed poor Cursebreaker spritebatch sampling mode
-- Fixed Captain's Cap not showing hat hair
-- Fixed Club projectile's poor offset on slopes
-- Fixed a ton of critters not being considered critters
-- Moved Mechromancer after Goblin Army in Boss Checklist
-- Moved Jinxbow down a little, made it rotate less
-- Fixed Astral Adventurer nonsense even more
-- Hid Ice Bolt from bestiary
-- Moon Jelly Wizard, Blubby, Occultist, and Spirit's Zombie variants now animate in the bestiary
-- Changed capitalization of Eye of the Inferno, Cloak of Healing, Mark of Zeus, Stone of Spirits Past, and Flask of Gore names
-- Fixed minor framing errors on Occultist's sprite
-- Prevented any of Starplate Voyager's components (except the head) from appearing in the bestiary
-- Fixed Cyberflies not spawning even under the correct conditions
-- Fixed Hyperspace biome shaders not appearing
-- Prevented Cystal Shield health tooltip from appearing
-- Undead Scientist now uses more appropriate sound effects
-- Undead Scientist no longer attacks when jumping
-- Hopefully fixed Glade Wraith not syncing properly
-- Fixed NPCQuestQueue queue being consumed on autosave, losing quests
-- Improved draw effect positions for Stargazer Slime, Snaptrapper, Crystal Drifter, Yuurei, Gluttonous Devourer, Hookbat, Mechromancer, Valkyrie, and Fallen Angel
-- Added bottled water to Zephyr and Soaring potion recipes
-- Fixed Snaptrapper using incorrect animations
-- Hopefully fixed Clubs not appearing when used by other clients in multiplayer
-- Gave Chest zombie a more appropriate dash sound
-- Gave Gluttonous Devourer a dash sound
-- Fixed Spirit NPCs not assuming their happiness dialogue immediately after rescuing them
-- Fixed Bismite Cutter's swing animation dealing damage
-- Updated Discord link in description
-- Significantly reduced Stardancer spawn rate post-Skeletron
-- Made Stardancer body, tails not take up NPC slots
+﻿- Fixed Creepy Crawlies quest bad description
+- Added text to Avian Island sign
+- Fixed Shiverbark Flag animation error
+- Made Driftwood Block function like a normal block item
+- Fixed Blossom Hound not using a jump frame
+- Fixed Blossom Hound playing a star sound when dashing
+- Made the Zombies... Why Zombies quest spawn Dr. Bones only in Jungle
+- Made Cleft Horn work with melee projectiles
+- Made Old Cross skeleton minions not cut tiles, reduced death sound volume
+- Made Snow Monger drop 15 gold
+- Fixed Snow Monger drop stuff properly

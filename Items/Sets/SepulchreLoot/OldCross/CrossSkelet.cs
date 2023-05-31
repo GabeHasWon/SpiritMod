@@ -34,6 +34,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 			Projectile.penetrate = 1;
 		}
 
+		public override bool? CanCutTiles() => false;
+
 		Vector2 hometarget;
 		bool onground;
 
@@ -132,7 +134,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 				Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity / 2, Mod.Find<ModGore>("skeler" + i).Type);
 				gore.timeLeft = 40;
 			}
-			SoundEngine.PlaySound(SoundID.NPCDeath2, Projectile.Center);
+			SoundEngine.PlaySound(SoundID.NPCDeath2 with { Volume = 0.6f }, Projectile.Center);
 		}
 		public override bool MinionContactDamage() => true;
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
