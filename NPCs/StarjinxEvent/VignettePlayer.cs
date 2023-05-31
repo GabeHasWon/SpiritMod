@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.Buffs;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.StarjinxEvent
@@ -44,11 +45,14 @@ namespace SpiritMod.NPCs.StarjinxEvent
 
 		public override void PostUpdateMiscEffects()
 		{
-			SpiritMod.vignetteShader.UseColor(_color);
-			SpiritMod.vignetteShader.UseIntensity(_opacity);
-			SpiritMod.vignetteEffect.Parameters["Radius"].SetValue(_radius);
-			SpiritMod.vignetteEffect.Parameters["FadeDistance"].SetValue(_fadeDistance);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:Vignette", _vignetteActive || _lastTickVignetteActive, _targetPosition);
+			if (Main.netMode != NetmodeID.Server)
+			{
+				SpiritMod.vignetteShader.UseColor(_color);
+				SpiritMod.vignetteShader.UseIntensity(_opacity);
+				SpiritMod.vignetteEffect.Parameters["Radius"].SetValue(_radius);
+				SpiritMod.vignetteEffect.Parameters["FadeDistance"].SetValue(_fadeDistance);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:Vignette", _vignetteActive || _lastTickVignetteActive, _targetPosition);
+			}
 		}
 	}
 }
