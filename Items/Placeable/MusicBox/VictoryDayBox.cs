@@ -4,6 +4,7 @@ using VictoryDayBoxTile = SpiritMod.Tiles.MusicBox.VictoryDayBox;
 
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class VictoryDayBox : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Victory Day)");

@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 {
+	[Sacrifice(1)]
 	internal class AtlasPetItem : ModItem
 	{
 		public override void SetStaticDefaults()

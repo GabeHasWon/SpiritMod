@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 {
+	[Sacrifice(1)]
 	internal class StarplatePetItem : ModItem
 	{
 		public override void SetStaticDefaults()

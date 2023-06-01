@@ -4,6 +4,7 @@ using AshfallBoxTile = SpiritMod.Tiles.MusicBox.AshfallBox;
 
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class AshfallBox : ModItem
 	{
 		public override void SetStaticDefaults()

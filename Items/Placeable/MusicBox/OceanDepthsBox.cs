@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using OceanDepthsBoxTile = SpiritMod.Tiles.MusicBox.OceanDepthsBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class OceanDepthsBox : ModItem
 	{
 		public override void SetStaticDefaults()

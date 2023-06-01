@@ -87,7 +87,9 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 			}
 		}
 	}
-    public class AccursedSoul: ModItem
+
+	[Sacrifice(0)]
+	public class AccursedSoul : ModItem
     {
         public override void SetStaticDefaults()
 		{
@@ -110,6 +112,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 
 		public override bool ItemSpace(Player player) => true;
 		public override void GrabRange(Player player, ref int grabRange) => grabRange = 20;
+
 		public override bool OnPickup(Player player)
 		{
 			player.GetModPlayer<AccursedBladePlayer>().charge += 0.15f;
@@ -131,6 +134,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
     internal class AccursedBladePlayer : ModPlayer
 	{
 		public float charge = 0;
+
         public override void ResetEffects()
 		{
             if (charge > 1)

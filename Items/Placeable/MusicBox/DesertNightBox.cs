@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using DesertNightBoxTile = SpiritMod.Tiles.MusicBox.DesertNightBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class DesertNightBox : ModItem
 	{
 		public override void SetStaticDefaults()

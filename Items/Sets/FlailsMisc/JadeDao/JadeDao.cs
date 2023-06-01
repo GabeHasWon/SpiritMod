@@ -84,7 +84,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 			Projectile.ignoreWater = true;
 			Projectile.penetrate = -1;
 			Projectile.extraUpdates = 1;
-
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.localNPCHitCooldown = -1;
 			Projectile.usesLocalNPCImmunity = true;
 		}

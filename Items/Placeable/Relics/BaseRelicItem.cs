@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Relics
 {
+	[Sacrifice(1)]
 	public abstract class BaseRelicItem<T> : ModItem where T : ModTile
 	{
 		public override void SetDefaults()

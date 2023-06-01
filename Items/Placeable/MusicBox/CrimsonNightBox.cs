@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using CrimsonNightBoxTile = SpiritMod.Tiles.MusicBox.CrimsonNightBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class CrimsonNightBox : ModItem
 	{
 		public override void SetStaticDefaults()

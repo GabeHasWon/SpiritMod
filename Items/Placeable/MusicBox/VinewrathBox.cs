@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using VinewrathBoxTile = SpiritMod.Tiles.MusicBox.VinewrathBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class VinewrathBox : ModItem
 	{
 		public override void SetStaticDefaults()

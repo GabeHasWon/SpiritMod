@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using HyperspaceDayBoxTile = SpiritMod.Tiles.MusicBox.HyperspaceDayBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class HyperspaceDayBox : ModItem
 	{
 		public override void SetStaticDefaults()

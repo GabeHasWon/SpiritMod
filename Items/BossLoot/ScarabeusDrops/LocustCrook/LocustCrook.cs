@@ -246,7 +246,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 		public override void SetDefaults()
 		{
 			Projectile.width = Projectile.height = 10;
-			Projectile.minion = true;
+			Projectile.minion = false;
 			Projectile.friendly = true;
 			Projectile.penetrate = 1;
 			Projectile.timeLeft = 90;

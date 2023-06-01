@@ -72,7 +72,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 				AddDialogueAboutNPC<Adventurer>(dialogue, "That {N} knows how to tell a good story. Doesn't even buy that much drink, but I enjoy it nonetheless.", 0.2f, npc, ref replaceChance);
 			else if (npc.type == NPCID.Nurse)
 				AddDialogueAboutNPC<Gambler>(dialogue, "Ahem...\"Buy yourself a couple boxes and you won't need healing!\" Did {N} really tell me to read you an ad?", 0.2f, npc, ref replaceChance);
-			else if (npc.type == NPCID.BestiaryGirl)
+			else if (npc.type == NPCID.BestiaryGirl && !Main.bloodMoon)
 				AddDialogueAboutNPC<Adventurer>(dialogue, "Like, {N} really knows a lot about animals. He's totes cool!", 0.2f, npc, ref replaceChance);
 
 			if (Main.rand.NextFloat() < replaceChance)

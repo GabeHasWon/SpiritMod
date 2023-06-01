@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Mounts.Minecarts.MarbleMinecart
 {
+	[Sacrifice(1)]
 	public class MarbleMinecartItem : ModItem
 	{
 		public override void SetStaticDefaults()

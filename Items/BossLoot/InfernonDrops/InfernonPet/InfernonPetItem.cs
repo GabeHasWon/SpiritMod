@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 {
+	[Sacrifice(1)]
 	public class InfernonPetItem : ModItem
 	{
 		public override void SetStaticDefaults()

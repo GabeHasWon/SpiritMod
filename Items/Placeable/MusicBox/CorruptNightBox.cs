@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using CorruptNightBoxTile = SpiritMod.Tiles.MusicBox.CorruptNightBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class CorruptNightBox : ModItem
 	{
 		public override void SetStaticDefaults()

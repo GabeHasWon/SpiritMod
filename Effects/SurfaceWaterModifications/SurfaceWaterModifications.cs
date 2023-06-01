@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using ReLogic.Content;
+using SpiritMod.Effects.Waters;
 using SpiritMod.Mechanics.OceanWavesSystem;
 using SpiritMod.Utilities;
 using System;
@@ -28,6 +29,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 		internal static int rightOceanHeight = 0;
 
 		public static ILog Logger => ModContent.GetInstance<SpiritMod>().Logger;
+		public static bool PlayerInValidOcean => Main.LocalPlayer.ZoneBeach && Main.waterStyle == WaterStyleID.Purity;
 
 		public static void Load()
 		{
@@ -53,7 +55,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		private static void TileDrawing_DrawPartialLiquid(On.Terraria.GameContent.Drawing.TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, Tile tileCache, Vector2 position, Rectangle liquidSize, int liquidType, Color aColor)
 		{
-			if (!Main.LocalPlayer.ZoneBeach || tileCache.LiquidType != LiquidID.Water || Main.waterStyle >= WaterStyleID.Count)
+			if (!PlayerInValidOcean || tileCache.LiquidType != LiquidID.Water || Main.waterStyle >= WaterStyleID.Count)
 				orig(self, tileCache, position, liquidSize, liquidType, aColor);
 		}
 
@@ -80,7 +82,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		public static bool DrawBlackMod(ref int i, int j, ref int adjX)
 		{
-			if (Main.gameMenu || !Main.LocalPlayer.active || !Main.LocalPlayer.ZoneBeach)
+			if (Main.gameMenu || !Main.LocalPlayer.active || !PlayerInValidOcean)
 				return true;
 
 			int oldAdjX = adjX;
@@ -127,7 +129,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		public static void DrawSlope(int i, int j, VertexColors colours, bool isBackgroundDraw)
 		{
-			if (Main.waterStyle >= WaterStyleID.Count || !Main.LocalPlayer.ZoneBeach)
+			if (Main.waterStyle >= WaterStyleID.Count || !PlayerInValidOcean)
 				return;
 
 			Tile tile = Main.tile[i, j];
@@ -450,7 +452,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			c.Emit(OpCodes.Br, label2);
 		}
 
-		private static bool IsWaterTransparent() => (Lighting.Mode == LightMode.Color || Lighting.Mode == LightMode.White) && Main.LocalPlayer.ZoneBeach && !Main.bloodMoon && !Main.LocalPlayer.ZoneSkyHeight;
+		private static bool IsWaterTransparent() => (Lighting.Mode == LightMode.Color || Lighting.Mode == LightMode.White) && PlayerInValidOcean && !Main.bloodMoon && !Main.LocalPlayer.ZoneSkyHeight;
 
 		private static void NewDraw(bool back)
 		{

@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.RlyehianDrops
 {
+	[Sacrifice(1)]
 	public class Trophy10 : ModItem
 	{
 

@@ -4,6 +4,7 @@ using Terraria;
 
 namespace SpiritMod.Items.Sets.RlyehianDrops
 {
+	[Sacrifice(1)]
 	public class RlyehianMountItem : ModItem
 	{
 		public override void SetStaticDefaults()

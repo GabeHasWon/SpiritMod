@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using BriarNightBoxTile = SpiritMod.Tiles.MusicBox.BriarNightBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class BriarNightBox : ModItem
 	{
 		public override void SetStaticDefaults()

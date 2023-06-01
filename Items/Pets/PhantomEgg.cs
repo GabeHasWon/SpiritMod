@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Pets
 {
+	[Sacrifice(1)]
 	public class PhantomEgg : ModItem
 	{
 		public override void SetStaticDefaults()

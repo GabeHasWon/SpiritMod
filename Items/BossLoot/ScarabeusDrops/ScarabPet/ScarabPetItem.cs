@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet
 {
+	[Sacrifice(1)]
 	internal class ScarabPetItem : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 {
+	[Sacrifice(0)]
 	public class CrimsonSkull : ModItem
 	{
 		public override void SetStaticDefaults()

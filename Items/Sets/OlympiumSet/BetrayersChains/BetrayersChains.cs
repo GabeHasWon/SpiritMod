@@ -119,9 +119,9 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 			Projectile.ownerHitCheck = true;
 			Projectile.ignoreWater = true;
 			Projectile.penetrate = -1;
-
 			Projectile.localNPCHitCooldown = -1;
 			Projectile.usesLocalNPCImmunity = true;
+			Projectile.DamageType = DamageClass.Melee;
 		}
 
 		private Player Owner => Main.player[Projectile.owner];

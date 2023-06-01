@@ -330,7 +330,8 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			bool valid = spawnInfo.Player.ZoneOverworldHeight && !NPC.AnyNPCs(ModContent.NPCType<DarkfeatherMage>()) && (spawnInfo.SpawnTileX < Main.maxTilesX / 3 || spawnInfo.SpawnTileX > Main.maxTilesX / 1.5f);
+			bool valid = spawnInfo.Player.ZoneOverworldHeight && !NPC.AnyNPCs(ModContent.NPCType<DarkfeatherMage>()) 
+				&& (spawnInfo.SpawnTileX < Main.maxTilesX / 3 || spawnInfo.SpawnTileX > Main.maxTilesX / 1.5f) && !spawnInfo.Water;
 			
 			if (!valid)
 				return 0f;

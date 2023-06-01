@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 {
+	[Sacrifice(1)]
 	public class PossessedBook : ModItem
 	{
 		public override void SetStaticDefaults()

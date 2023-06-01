@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.OccultistDrops.OccultistPet
 {
+	[Sacrifice(1)]
 	internal class OccultistPetItem : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using InfernonBoxTile = SpiritMod.Tiles.MusicBox.InfernonBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class InfernonBox : ModItem
 	{
 		public override void SetStaticDefaults()

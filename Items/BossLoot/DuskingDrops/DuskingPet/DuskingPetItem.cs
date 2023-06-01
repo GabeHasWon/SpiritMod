@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.DuskingDrops.DuskingPet
 {
+	[Sacrifice(1)]
 	internal class DuskingPetItem : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Equipment
 {
+	[Sacrifice(1)]
 	public class SolarRattle : ModItem
 	{
 		public override void SetStaticDefaults()

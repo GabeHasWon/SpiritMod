@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using ScarabBoxTile = SpiritMod.Tiles.MusicBox.ScarabBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class ScarabBox : ModItem
 	{
 		public override void SetStaticDefaults()

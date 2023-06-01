@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using MJWBoxTile = SpiritMod.Tiles.MusicBox.MJWBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class MJWBox : ModItem
 	{
 		public override void SetStaticDefaults()

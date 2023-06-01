@@ -427,7 +427,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 			npcLoot.AddCommon<InfernonMask>(7);
 			npcLoot.AddCommon<Trophy4>(10);
-			npcLoot.AddOneFromOptions<InfernalJavelin, InfernalSword, DiabolicHorn, SevenSins, InfernalStaff, EyeOfTheInferno, InfernalShield>();
+			npcLoot.AddOneFromOptions<InfernalJavelin, InfernalSword, DiabolicHorn, SevenSins, InfernalStaff, EyeOfTheInferno>();
 			npcLoot.AddCommon<InfernalAppendage>(1, 25, 36);
 		}
 

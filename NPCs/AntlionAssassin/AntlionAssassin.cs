@@ -54,7 +54,7 @@ namespace SpiritMod.NPCs.AntlionAssassin
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (Main.tileSand[spawnInfo.SpawnTileType])
+			if (Main.tileSand[spawnInfo.SpawnTileType] && !spawnInfo.Player.ZoneBeach)
 				return SpawnCondition.OverworldDayDesert.Chance * 1.145f;
 			return 0;
 		}
@@ -155,7 +155,6 @@ namespace SpiritMod.NPCs.AntlionAssassin
 		}
 
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(invisibilityTimer);
-
 		public override void ReceiveExtraAI(BinaryReader reader) => invisibilityTimer = reader.ReadInt32();
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
