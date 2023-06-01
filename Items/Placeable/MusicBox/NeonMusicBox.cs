@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using NeonMusicBoxTile = SpiritMod.Tiles.MusicBox.NeonMusicBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class NeonMusicBox : ModItem
 	{
 		public override void SetStaticDefaults()

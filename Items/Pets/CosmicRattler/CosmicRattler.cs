@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Pets.CosmicRattler
 {
+	[Sacrifice(1)]
 	public class CosmicRattler : ModItem
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;

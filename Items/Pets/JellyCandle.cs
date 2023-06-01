@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Pets
 {
+	[Sacrifice(1)]
 	public class JellyCandle : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using HallowNightBoxTile = SpiritMod.Tiles.MusicBox.HallowNightBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class HallowNightBox : ModItem
 	{
 		public override void SetStaticDefaults()

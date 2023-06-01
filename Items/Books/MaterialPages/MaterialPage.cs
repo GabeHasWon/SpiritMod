@@ -7,6 +7,7 @@ using SpiritMod.Items.Books.UI;
 
 namespace SpiritMod.Items.Books.MaterialPages
 {
+	[Sacrifice(1)]
 	public abstract class MaterialPage<T> : ModItem where T : UIState
 	{
 		protected virtual bool CheckTitle => false;

@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using FrostLegionBoxTile = SpiritMod.Tiles.MusicBox.FrostLegionBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class FrostLegionBox : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -4,7 +4,8 @@ using Terraria;
 
 namespace SpiritMod.Items.Equipment
 {
-    public class Obolos : ModItem
+	[Sacrifice(1)]
+	public class Obolos : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

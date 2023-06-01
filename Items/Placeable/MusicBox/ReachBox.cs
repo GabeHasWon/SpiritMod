@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using ReachBoxTile = SpiritMod.Tiles.MusicBox.ReachBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class ReachBox : ModItem
 	{
 		public override void SetStaticDefaults()

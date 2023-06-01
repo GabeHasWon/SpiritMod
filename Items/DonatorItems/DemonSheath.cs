@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.DonatorItems
 {
+	[Sacrifice(1)]
 	public class DemonSheath : ModItem
 	{
 		public override void SetStaticDefaults()

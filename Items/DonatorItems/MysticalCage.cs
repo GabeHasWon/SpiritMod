@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.DonatorItems
 {
+	[Sacrifice(1)]
 	public class MysticalCage : ModItem
 	{
 		public override void SetStaticDefaults()

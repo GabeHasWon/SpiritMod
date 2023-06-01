@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using BlueMoonBoxTile = SpiritMod.Tiles.MusicBox.BlueMoonBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class BlueMoonBox : ModItem
 	{
 		public override void SetStaticDefaults()

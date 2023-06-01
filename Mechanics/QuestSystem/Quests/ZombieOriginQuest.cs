@@ -24,7 +24,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 			(ItemID.GoldCoin, 2)
 		};
 
-		public override bool IsQuestPossible() => Main.player[Main.myPlayer].HasItem(ModContent.ItemType<Items.Placeable.Furniture.OccultistMap>());
+		//public override bool IsQuestPossible() => Main.player[Main.myPlayer].HasItem(ModContent.ItemType<Items.Placeable.Furniture.OccultistMap>());
 
 		private ZombieOriginQuest()
         {

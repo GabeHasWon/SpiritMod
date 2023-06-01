@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using TideBoxTile = SpiritMod.Tiles.MusicBox.TideBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class TideBox : ModItem
 	{
 		public override void SetStaticDefaults()

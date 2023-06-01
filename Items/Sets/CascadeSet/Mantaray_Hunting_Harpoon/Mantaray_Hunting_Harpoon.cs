@@ -4,7 +4,8 @@ using Terraria;
 
 namespace SpiritMod.Items.Sets.CascadeSet.Mantaray_Hunting_Harpoon
 {
-    public class Mantaray_Hunting_Harpoon : ModItem
+	[Sacrifice(1)]
+	public class Mantaray_Hunting_Harpoon : ModItem
     {
 		public override void SetStaticDefaults()
 		{

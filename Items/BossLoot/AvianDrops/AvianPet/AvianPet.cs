@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 {
+	[Sacrifice(1)]
 	public class AvianPet : ModProjectile
 	{
 		private Player Owner => Main.player[Projectile.owner];

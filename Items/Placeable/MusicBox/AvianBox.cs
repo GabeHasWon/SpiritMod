@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using AvianBoxTile = SpiritMod.Tiles.MusicBox.AvianBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class AvianBox : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using MarbleBoxTile = SpiritMod.Tiles.MusicBox.MarbleBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class MarbleBox : ModItem
 	{
 		public override void SetStaticDefaults()

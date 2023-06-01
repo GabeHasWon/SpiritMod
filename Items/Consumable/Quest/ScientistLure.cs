@@ -50,6 +50,12 @@ namespace SpiritMod.Items.Consumable.Quest
 			recipe.AddIngredient(ModContent.ItemType<Items.Material.OldLeather>(), 2);
 			recipe.AddIngredient(ItemID.RottenChunk, 5);
 			recipe.Register();
+
+			recipe = CreateRecipe();
+			recipe.AddCondition(QuestCondition());
+			recipe.AddIngredient(ModContent.ItemType<Items.Material.OldLeather>(), 2);
+			recipe.AddIngredient(ItemID.TissueSample, 5);
+			recipe.Register();
 		}
 
 		public static Recipe.Condition QuestCondition() => new Recipe.Condition(Terraria.Localization.NetworkText.FromLiteral("During Unholy Undertaking"), (self) =>

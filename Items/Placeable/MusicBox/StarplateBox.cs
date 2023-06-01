@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using StarplateBoxTile = SpiritMod.Tiles.MusicBox.StarplateBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class StarplateBox : ModItem
 	{
 		public override void SetStaticDefaults()

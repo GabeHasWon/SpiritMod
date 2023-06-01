@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Equipment.AuroraSaddle
 {
+	[Sacrifice(1)]
 	public class AuroraSaddle : ModItem
 	{
 		public override void SetStaticDefaults()

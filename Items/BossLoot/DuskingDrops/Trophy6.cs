@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.DuskingDrops
 {
+	[Sacrifice(1)]
 	public class Trophy6 : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Dusking Trophy");

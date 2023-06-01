@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 {
+	[Sacrifice(1)]
 	public class VinewrathPetProjectile : ModProjectile
 	{
 		private Player Owner => Main.player[Projectile.owner];

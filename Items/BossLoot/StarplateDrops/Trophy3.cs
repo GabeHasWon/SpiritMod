@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.StarplateDrops
 {
+	[Sacrifice(1)]
 	public class Trophy3 : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Starplate Voyager Trophy");

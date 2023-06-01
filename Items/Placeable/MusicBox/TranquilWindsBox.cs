@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using TranquilWindsBoxTile = SpiritMod.Tiles.MusicBox.TranquilWindsBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class TranquilWindsBox : ModItem
 	{
 		public override void SetStaticDefaults()

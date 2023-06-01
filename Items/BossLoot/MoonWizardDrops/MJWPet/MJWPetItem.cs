@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet
 {
+	[Sacrifice(1)]
 	internal class MJWPetItem : ModItem
 	{
 		public override void SetStaticDefaults()

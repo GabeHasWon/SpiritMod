@@ -4,6 +4,7 @@ using Terraria;
 
 namespace SpiritMod.Items.DonatorItems.FrostTroll
 {
+	[Sacrifice(1)]
 	public class SnowmongerMountItem : ModItem
 	{
 		public override void SetStaticDefaults()

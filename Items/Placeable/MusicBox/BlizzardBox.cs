@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using BlizzardBoxTile = SpiritMod.Tiles.MusicBox.BlizzardBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class BlizzardBox : ModItem
 	{
 		public override void SetStaticDefaults()

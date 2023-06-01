@@ -12,6 +12,8 @@ namespace SpiritMod.Items.Equipment
 		{
 			DisplayName.SetDefault("Dynasty Fan");
 			Tooltip.SetDefault("Launch yourself in any direction with a gust of wind");
+
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -21,7 +23,6 @@ namespace SpiritMod.Items.Equipment
 			Item.useTime = 100;
 			Item.useAnimation = 100;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.value = Item.buyPrice(gold: 5);
 			Item.rare = ItemRarityID.Orange;
@@ -31,22 +32,21 @@ namespace SpiritMod.Items.Equipment
 			Item.shootSpeed = 12f;
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (!player.HasBuff(BuffID.Featherfall))
-			{
-                player.AddBuff(ModContent.BuffType<Buffs.DynastyFanBuff>(), 120);
-				player.velocity = -velocity;
+			if (player.HasBuff(BuffID.Featherfall))
+				velocity *= 0.75f;
 
-				for (int i = 0; i < 3; i++)
-				{
-					Gore gore = Gore.NewGoreDirect(source, player.Center, player.velocity * 4, 825 + i);
-					gore.timeLeft = Main.rand.Next(30, 90);
-				}
+			player.velocity = -velocity;
+			player.AddBuff(ModContent.BuffType<Buffs.DynastyFanBuff>(), 120);
+
+			for (int i = 0; i < 3; i++)
+			{
+				Gore gore = Gore.NewGoreDirect(source, player.Center, player.velocity * 4, 825 + i);
+				gore.timeLeft = Main.rand.Next(30, 90);
 			}
 
 			return false;
 		}
-
 	}
 }

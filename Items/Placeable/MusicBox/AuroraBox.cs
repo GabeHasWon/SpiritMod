@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using AuroraBoxTile = SpiritMod.Tiles.MusicBox.AuroraBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class AuroraBox : ModItem
 	{
 		public override void SetStaticDefaults()

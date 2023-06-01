@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using JellyDelugeBoxTile = SpiritMod.Tiles.MusicBox.JellyDelugeBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class JellyDelugeBox : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using SpiderCaveBoxTile = SpiritMod.Tiles.MusicBox.SpiderCaveBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class SpiderCaveBox : ModItem
 	{
 		public override void SetStaticDefaults()

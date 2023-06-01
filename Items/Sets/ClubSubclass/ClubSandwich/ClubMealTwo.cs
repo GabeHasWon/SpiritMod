@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
 {
+	[Sacrifice(0)]
 	public class ClubMealTwo : ModItem
 	{
 		public override void SetStaticDefaults()

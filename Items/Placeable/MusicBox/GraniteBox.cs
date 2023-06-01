@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using GraniteBoxTile = SpiritMod.Tiles.MusicBox.GraniteBox;
 namespace SpiritMod.Items.Placeable.MusicBox
 {
+	[Sacrifice(1)]
 	public class GraniteBox : ModItem
 	{
 		public override void SetStaticDefaults()

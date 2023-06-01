@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.FloatingItems.MessageBottle
 {
+	[Sacrifice(1)]
 	public class MessageBottle : FloatingItem
 	{
 		public override float SpawnWeight => 0.1f;

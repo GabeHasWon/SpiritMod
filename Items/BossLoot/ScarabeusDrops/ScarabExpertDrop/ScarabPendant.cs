@@ -11,6 +11,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop
 {
+	[Sacrifice(1)]
 	public class ScarabPendant : ModItem
 	{
 		public override void SetStaticDefaults()

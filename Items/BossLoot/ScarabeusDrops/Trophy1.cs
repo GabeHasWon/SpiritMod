@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 {
+	[Sacrifice(1)]
 	public class Trophy1 : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Scarabeus Trophy");
