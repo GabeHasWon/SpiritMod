@@ -7,6 +7,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class WoodClubProj : ClubProj
 	{
+		public WoodClubProj() : base(new Vector2(58)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wooden Club");

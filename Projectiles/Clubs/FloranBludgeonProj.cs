@@ -7,6 +7,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class FloranBludgeonProj : ClubProj
 	{
+		public FloranBludgeonProj() : base(new Vector2(80, 84)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Floran Bludgeon");

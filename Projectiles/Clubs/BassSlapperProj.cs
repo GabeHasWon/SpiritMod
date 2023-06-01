@@ -8,6 +8,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class BassSlapperProj : ClubProj
 	{
+		public BassSlapperProj() : base(new Vector2(76, 84)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bass Slapper");

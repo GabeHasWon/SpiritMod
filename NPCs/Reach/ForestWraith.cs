@@ -177,7 +177,7 @@ namespace SpiritMod.NPCs.Reach
 				&& (SpawnCondition.GoblinArmy.Chance == 0))
 			{
 				if (!NPC.AnyNPCs(ModContent.NPCType<ForestWraith>()))
-					return spawnInfo.Player.GetSpiritPlayer().ZoneReach && NPC.downedBoss1 && !Main.dayTime ? .05f : 0f;
+					return spawnInfo.Player.ZoneBriar() && NPC.downedBoss1 && !Main.dayTime ? .05f : 0f;
 			}
 			return 0f;
 		}

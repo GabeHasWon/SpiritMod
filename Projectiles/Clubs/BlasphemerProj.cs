@@ -12,6 +12,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class BlasphemerProj : ClubProj
 	{
+		public BlasphemerProj() : base(new Vector2(104)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blasphemer");
@@ -36,14 +38,10 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			if (Projectile.ai[0] >= ChargeTime)
 			{
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, (int)(Size.Y * 2), (int)Size.X, (int)Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
-                Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
-				for (int k = 0; k < Projectile.oldPos.Length; k++)
-                {
-                    Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                    Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-                    spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color, TrueRotation, drawOrigin, Projectile.scale, Effects, 0f);
-                }
+				Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+				Rectangle drawFrame = texture.Frame(1, Main.projFrames[Type], 0, 2, 0, 0);
+
+				spriteBatch.Draw(texture, Main.player[Projectile.owner].Center - Main.screenPosition, drawFrame, Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 0);
             }
 		}
 

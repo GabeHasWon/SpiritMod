@@ -6,6 +6,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class PlatinumClubProj : ClubProj
 	{
+		public PlatinumClubProj() : base(new Vector2(84)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Platinum Clobberer");

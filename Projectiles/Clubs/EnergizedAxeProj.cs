@@ -11,6 +11,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class EnergizedAxeProj : ClubProj
 	{
+		public EnergizedAxeProj() : base(new Vector2(96)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Unstable Adze");
@@ -55,7 +57,12 @@ namespace SpiritMod.Projectiles.Clubs
 		public override void SafeDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			if (Projectile.ai[0] >= ChargeTime)
-				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, (int)(Size.Y * 2), (int)Size.X, (int)Size.Y), Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 1);
+			{
+				Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+				Rectangle drawFrame = texture.Frame(1, Main.projFrames[Type], 0, 2, 0, 0);
+
+				spriteBatch.Draw(texture, Main.player[Projectile.owner].Center - Main.screenPosition, drawFrame, Color.White * 0.9f, TrueRotation, Origin, Projectile.scale, Effects, 0);
+			}
 		}
 	}
 }

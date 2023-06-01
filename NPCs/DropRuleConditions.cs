@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpiritMod.Utilities;
+using System;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 
@@ -119,7 +120,7 @@ namespace SpiritMod.NPCs
 						Biome.AnyPurity => info.player.ZonePurity,
 						Biome.SurfacePurity => info.player.ZonePurity && info.player.ZoneOverworldHeight,
 						Biome.UndergroundPurity => info.player.ZonePurity && info.player.ZoneDirtLayerHeight,
-						Biome.Asteroid => info.player.GetModPlayer<MyPlayer>().ZoneAsteroid,
+						Biome.Asteroid => info.player.ZoneAsteroid(),
 						Biome.Snow => info.player.ZoneSnow,
 						_ => false,
 					};

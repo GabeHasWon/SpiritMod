@@ -8,6 +8,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class BoneClubProj : ClubProj
 	{
+		public BoneClubProj() : base(new Vector2(76, 82)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bone Club");

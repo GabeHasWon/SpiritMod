@@ -3,6 +3,8 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 using SpiritMod.GlobalClasses.Players;
+using SpiritMod.Biomes;
+using SpiritMod.SceneEffects;
 
 namespace SpiritMod.Utilities
 {
@@ -39,5 +41,10 @@ namespace SpiritMod.Utilities
 		public static int ItemTimer<T>(this Player player, int slot = -1) where T : ModItem, ITimerItem => player.GetModPlayer<MiscAccessoryPlayer>().timers[ModContent.GetInstance<T>().GetType().Name + (slot == -1 ? "" : slot.ToString())];
 
 		public static int SetItemTimer<T>(this Player player, int value, int slot = -1) where T : ModItem, ITimerItem => player.GetModPlayer<MiscAccessoryPlayer>().timers[ModContent.GetInstance<T>().GetType().Name + (slot == -1 ? "" : slot.ToString())] = value;
+
+		public static bool ZoneSynthwave(this Player player) => player.InModBiome<SynthwaveSurfaceBiome>();
+		public static bool ZoneAsteroid(this Player player) => player.InModBiome<AsteroidBiome>();
+		public static bool ZoneBriar(this Player player) => player.InModBiome<BriarSurfaceBiome>() || player.InModBiome<BriarUndergroundBiome>();
+		public static bool ZoneSpirit(this Player player) => player.InModBiome<SpiritSurfaceBiome>() || player.InModBiome<SpiritUndergroundBiome>();
 	}
 }

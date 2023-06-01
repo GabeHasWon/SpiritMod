@@ -43,15 +43,18 @@ namespace SpiritMod.NPCs.Shockhopper
 				Dust.NewDustPerfect(dustPos, DustID.Phantasmal, Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f), 0, Color.White, Main.rand.NextFloat(0.2f, 0.5f)).noGravity = true;
 			}
 
-			for (int i = 0; i < 2; i++)
+			if (!Main.dedServ)
 			{
-				ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + (DirUnit * 10), Color.LightBlue, 80 - (i * 30), 20 - (i * 5), PulseCircle.MovementType.OutwardsSquareRooted)
+				for (int i = 0; i < 2; i++)
 				{
-					Angle = Projectile.velocity.ToRotation(),
-					ZRotation = 0.6f,
-					RingColor = Color.LightBlue,
-					Velocity = DirUnit * -(0.5f + i)
-				});
+					ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + (DirUnit * 10), Color.LightBlue, 80 - (i * 30), 20 - (i * 5), PulseCircle.MovementType.OutwardsSquareRooted)
+					{
+						Angle = Projectile.velocity.ToRotation(),
+						ZRotation = 0.6f,
+						RingColor = Color.LightBlue,
+						Velocity = DirUnit * -(0.5f + i)
+					});
+				}
 			}
 		}
 

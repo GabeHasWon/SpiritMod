@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using SpiritMod.Utilities;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace SpiritMod.SceneEffects
@@ -7,6 +8,6 @@ namespace SpiritMod.SceneEffects
 	{
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Starfall");
 		public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
-		public override bool IsSceneEffectActive(Player player) => MyWorld.rareStarfallEvent && !MyWorld.jellySky && !player.GetSpiritPlayer().ZoneAsteroid && !Main.dayTime && player.ZoneSkyHeight;
+		public override bool IsSceneEffectActive(Player player) => MyWorld.rareStarfallEvent && !MyWorld.jellySky && !player.ZoneAsteroid() && !Main.dayTime && player.ZoneSkyHeight;
 	}
 }

@@ -7,6 +7,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class SporeClubProj : ClubProj
 	{
+		public SporeClubProj() : base(new Vector2(86, 82)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sporebreaker");

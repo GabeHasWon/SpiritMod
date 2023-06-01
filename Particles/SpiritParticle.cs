@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
 
@@ -19,7 +20,7 @@ namespace SpiritMod.Particles
 				Velocity.X = MathHelper.Lerp(Velocity.X, Main.windSpeedCurrent * 15 * Scale, 0.1f);
 		}
 
-		public override bool ActiveCondition => Main.LocalPlayer.GetModPlayer<MyPlayer>().ZoneSpirit;
+		public override bool ActiveCondition => Main.LocalPlayer.ZoneSpirit();
 
 		public override float ScreenSpawnChance => 0.125f;
 

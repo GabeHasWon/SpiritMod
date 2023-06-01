@@ -8,7 +8,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     public class FloranBludgeon : ClubItem
     {
 		internal override int ChargeTime => 52;
-		internal override Vector2 Size => new(80, 84);
 		internal override float Acceleration => 21f;
 		internal override int MinDamage => 32;
 		internal override int MaxDamage => 80;

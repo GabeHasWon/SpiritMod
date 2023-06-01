@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -11,19 +12,11 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	public abstract class ClubProj : ModProjectile
 	{
-		public void SetStats(int chargeTime, Vector2 size, float acceleration, int minDamage, int maxDamage, float minKnockback, float maxKnockback)
-		{
-			ChargeTime = chargeTime;
-			Size = size;
-			Acceleration = acceleration;
-			MinDamage = minDamage;
-			MaxDamage = maxDamage;
-			MinKnockback = minKnockback;
-			MaxKnockback = maxKnockback;
-		}
+		public ClubProj(Vector2 size) { Size = size; }
+
+		internal readonly Vector2 Size;
 
 		public int ChargeTime { get; private set; }
-		public Vector2 Size { get; private set; }
 		public float Acceleration { get; private set; }
 
 		public int MinDamage { get; private set; }
@@ -31,6 +24,42 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public float MinKnockback { get; private set; }
 		public float MaxKnockback { get; private set; }
+
+		public void SetStats(int chargeTime, float acceleration, int minDamage, int maxDamage, float minKnockback, float maxKnockback)
+		{
+			ChargeTime = chargeTime;
+			Acceleration = acceleration;
+			MinDamage = minDamage;
+			MaxDamage = maxDamage;
+			MinKnockback = minKnockback;
+			MaxKnockback = maxKnockback;
+		}
+
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			if (Projectile.ai[0] > 0)
+				return;
+
+			writer.Write(ChargeTime);
+			writer.Write(Acceleration);
+			writer.Write(MinDamage);
+			writer.Write(MaxDamage);
+			writer.Write(MinKnockback);
+			writer.Write(MaxKnockback);
+		}
+
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			if (Projectile.ai[0] > 0)
+				return;
+
+			ChargeTime = reader.ReadInt32();
+			Acceleration = reader.ReadSingle();
+			MinDamage = reader.ReadInt32();
+			MaxDamage = reader.ReadInt32();
+			MinKnockback = reader.ReadSingle();
+			MaxKnockback = reader.ReadSingle();
+		}
 
 
 		public virtual void SafeAI() { }
@@ -83,28 +112,28 @@ namespace SpiritMod.Projectiles.Clubs
 		protected int _flickerTime = 0;
 
 		public virtual SpriteEffects Effects => ((Main.player[Projectile.owner].direction * (int)Main.player[Projectile.owner].gravDir) < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+		public virtual Vector2 Origin => (Effects == SpriteEffects.FlipHorizontally) ? Size : new Vector2(0, Size.Y);
 		public virtual float TrueRotation => (float)radians + 3.9f + ((Effects == SpriteEffects.FlipHorizontally) ? MathHelper.PiOver2 : 0);
-		public virtual Vector2 Origin => (Effects == SpriteEffects.FlipHorizontally) ? new Vector2(Size.X, Size.Y) : new Vector2(0, Size.Y);
 
 		public sealed override bool PreDraw(ref Color lightColor)
 		{
 			DrawTrail(lightColor);
 
-			Color color = lightColor;
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, 0, (int)Size.X, (int)Size.Y), color, TrueRotation, Origin, Projectile.scale, Effects, 0);
+			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 0, 0, 0), lightColor, Projectile.rotation, Origin, Projectile.scale, Effects, 0);
 			
 			SafeDraw(Main.spriteBatch, lightColor);
 			
 			if (Projectile.ai[0] >= ChargeTime && !released && _flickerTime < 16)
 			{
 				_flickerTime++;
-				color = Color.White;
+				//color = Color.White;
 				float flickerTime2 = _flickerTime / 20f;
 				float alpha = 1.5f - ((flickerTime2 * flickerTime2 / 2) + (2f * flickerTime2));
 				if (alpha < 0)
 					alpha = 0;
 
-				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, (int)Size.Y, (int)Size.X, (int)Size.Y), color * alpha, TrueRotation, Origin, Projectile.scale, Effects, 1);
+				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 1, 0, 0), Color.White * alpha, Projectile.rotation, Origin, Projectile.scale, Effects, 1);
 			}
 			return false;
 		}
@@ -113,11 +142,13 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			if (released && _lingerTimer == 0)
 			{
+				Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
 				{
 					Vector2 drawPos = Main.player[Projectile.owner].Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
 					Color trailColor = lightColor * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) * .5f;
-					Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Rectangle(0, 0, (int)Size.X, (int)Size.Y), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
+					Main.EntitySpriteDraw(texture, drawPos, texture.Frame(1, Main.projFrames[Type]), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
 				}
 			}
 		}
@@ -126,41 +157,41 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			SafeAI();
 
-			Player player = Main.player[Projectile.owner];
+			Player owner = Main.player[Projectile.owner];
 			int animMaxHalf = animMax / 2;
 
 			Projectile.scale = (Projectile.ai[0] < 10 && !released) ? (Projectile.ai[0] / 10f) : 1;
-			player.heldProj = Projectile.whoAmI;
+			owner.heldProj = Projectile.whoAmI;
 
-			if (player.HeldItem.useTurn)
+			if (owner.HeldItem.useTurn)
 			{
 				if (!released)
 				{
-					if (player == Main.LocalPlayer)
+					if (owner == Main.LocalPlayer)
 					{
-						int newDir = Math.Sign(Main.MouseWorld.X - player.Center.X);
-						Projectile.velocity.X = (newDir == 0) ? player.direction : newDir;
+						int newDir = Math.Sign(Main.MouseWorld.X - owner.Center.X);
+						Projectile.velocity.X = (newDir == 0) ? owner.direction : newDir;
 
-						if (newDir != player.direction)
+						if (newDir != owner.direction)
 							Projectile.netUpdate = true;
 					}
 
-					player.ChangeDir((int)Projectile.velocity.X);
+					owner.ChangeDir((int)Projectile.velocity.X);
 				}
 				else
 				{
-					player.direction = Math.Sign(Projectile.velocity.X);
+					owner.direction = Math.Sign(Projectile.velocity.X);
 				}
 			}
 
-			float degrees = (float)((animTime * -1.12) + 84) * player.direction * (int)player.gravDir;
-			if (player.direction == 1)
+			float degrees = (float)((animTime * -1.12) + 84) * owner.direction * (int)owner.gravDir;
+			if (owner.direction == 1)
 				degrees += 180;
 
 			float GetAcceleration() => Acceleration * (float)(MathHelper.Clamp(1f - (float)(animTime / animMaxHalf), 0f, 1f) + 0.1f);
 
 			radians = degrees * (Math.PI / 180);
-			if (player.channel && !released)
+			if (owner.channel && !released)
 			{
 				if (Projectile.ai[0] < ChargeTime)
 				{
@@ -177,8 +208,7 @@ namespace SpiritMod.Projectiles.Clubs
 					_angularMomentum = MathHelper.Lerp(_angularMomentum, 0, 0.08f);
 				}
 
-				float dmg = MinDamage + (Projectile.ai[0] / ChargeTime * (MaxDamage - MinDamage));
-				Projectile.damage = (int)player.GetDamage(DamageClass.Melee).ApplyTo(dmg);
+				Projectile.damage = (int)(MinDamage + (Projectile.ai[0] / ChargeTime * (MaxDamage - MinDamage)));
 				Projectile.knockBack = MinKnockback + (int)(Projectile.ai[0] / ChargeTime * (MaxKnockback - MinKnockback));
 			}
 			else
@@ -195,12 +225,12 @@ namespace SpiritMod.Projectiles.Clubs
 				}
 			}
 
-			Projectile.position.X = player.Center.X - (int)(Math.Cos(radians * 0.96) * Size.X) - (Projectile.width / 2);
-			Projectile.position.Y = player.Center.Y - (int)(Math.Sin(radians * 0.96) * Size.Y) - (Projectile.height / 2) - player.gfxOffY;
+			Projectile.position.X = owner.Center.X - (int)(Math.Cos(radians * 0.96) * Size.X) - (Projectile.width / 2);
+			Projectile.position.Y = owner.Center.Y - (int)(Math.Sin(radians * 0.96) * Size.Y) - (Projectile.height / 2) - owner.gfxOffY;
 
-			float rotation = (float)radians * player.gravDir + 1.7f;
-			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, rotation);
-			player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.ThreeQuarters, rotation);
+			float rotation = (float)radians * owner.gravDir + 1.7f;
+			owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, rotation);
+			owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.ThreeQuarters, rotation);
 
 			if (_lingerTimer == 0)
 			{
@@ -216,7 +246,7 @@ namespace SpiritMod.Projectiles.Clubs
 					bool struckNPC = Projectile.numHits > 0;
 					if (validTile || struckNPC)
 					{
-						player.GetModPlayer<MyPlayer>().Shake += (int)(Projectile.ai[0] * 0.2f);
+						owner.GetModPlayer<MyPlayer>().Shake += (int)(Projectile.ai[0] * 0.2f);
 
 						SoundEngine.PlaySound(SoundID.Item70, Projectile.Center);
 						SoundEngine.PlaySound(SoundID.NPCHit42, Projectile.Center);
@@ -247,8 +277,8 @@ namespace SpiritMod.Projectiles.Clubs
 
 			animTime += _angularMomentum * Math.Sign(animTime - (_angularMomentum + 1));
 
-			Projectile.rotation = TrueRotation; //This is set for drawing afterimages
-			player.itemAnimation = player.itemTime = 2;
+			Projectile.rotation = TrueRotation;
+			owner.itemAnimation = owner.itemTime = 2;
 
 			return true;
 		}

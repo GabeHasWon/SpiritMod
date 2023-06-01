@@ -9,6 +9,7 @@ using SpiritMod.Tiles.Block;
 using System.Linq;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.Spirit
 {
@@ -68,10 +69,10 @@ namespace SpiritMod.NPCs.Spirit
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-            if (!player.GetSpiritPlayer().ZoneSpirit)
+            if (!player.ZoneSpirit())
                 return 0f;
 
-            return SpawnTiles.Contains(spawnInfo.SpawnTileType) && player.position.Y / 16 >= Main.maxTilesY - 330 && player.GetSpiritPlayer().ZoneSpirit && !spawnInfo.PlayerSafe ? 3f : 0f;
+            return SpawnTiles.Contains(spawnInfo.SpawnTileType) && player.position.Y / 16 >= Main.maxTilesY - 330 && player.ZoneSpirit() && !spawnInfo.PlayerSafe ? 3f : 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

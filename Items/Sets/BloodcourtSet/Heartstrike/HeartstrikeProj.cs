@@ -165,18 +165,6 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			}
 		}
 
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			writer.Write(shotLength);
-			writer.WriteVector2(origin);
-		}
-
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			shotLength = reader.Read();
-			origin = reader.ReadVector2();
-		}
-
 		public override bool? CanDamage() => false;
 	}
 }

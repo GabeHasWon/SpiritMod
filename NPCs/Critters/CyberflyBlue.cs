@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using System;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.Critters
 {
@@ -97,7 +98,7 @@ namespace SpiritMod.NPCs.Critters
 		{
 			Player player = spawnInfo.Player;
 			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && !Main.pumpkinMoon && !Main.snowMoon && !Main.eclipse && (SpawnCondition.GoblinArmy.Chance == 0))
-				return spawnInfo.Player.GetSpiritPlayer().ZoneSynthwave ? .15f : 0f;
+				return spawnInfo.Player.ZoneSynthwave() ? .15f : 0f;
 			return 0f;
 		}
 

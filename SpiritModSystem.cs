@@ -171,7 +171,7 @@ namespace SpiritMod
 
 		public override void ModifyLightingBrightness(ref float scale)
 		{
-			if (Main.LocalPlayer.GetSpiritPlayer().ZoneReach && !Main.dayTime)
+			if (Main.LocalPlayer.ZoneBriar() && !Main.dayTime)
 				scale *= .96f;
 		}
 

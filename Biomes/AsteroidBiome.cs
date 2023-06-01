@@ -23,7 +23,7 @@ namespace SpiritMod.Biomes
 			return BiomeTileCounts.InAsteroids && surface;
 		}
 
-		public override void OnEnter(Player player) => player.GetSpiritPlayer().ZoneAsteroid = true;
-		public override void OnLeave(Player player) => player.GetSpiritPlayer().ZoneAsteroid = false;
+		//public override void OnEnter(Player player) => player.GetSpiritPlayer().ZoneAsteroid = true;
+		//public override void OnLeave(Player player) => player.GetSpiritPlayer().ZoneAsteroid = false;
 	}
 }

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Biomes;
 using SpiritMod.Items.Sets.HuskstalkSet;
+using SpiritMod.Utilities;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
@@ -57,7 +58,7 @@ namespace SpiritMod.NPCs.Reach
 		{
 			Player player = spawnInfo.Player;
 			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-				return spawnInfo.Player.GetSpiritPlayer().ZoneReach && Main.dayTime ? 2.1f : 0f;
+				return spawnInfo.Player.ZoneBriar() && Main.dayTime ? 2.1f : 0f;
 			return 0f;
 		}
 

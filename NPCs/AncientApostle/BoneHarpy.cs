@@ -8,6 +8,7 @@ using SpiritMod.Buffs;
 using SpiritMod.Buffs.DoT;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.AncientApostle
 {
@@ -112,7 +113,7 @@ namespace SpiritMod.NPCs.AncientApostle
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSkyHeight && !spawnInfo.Player.GetSpiritPlayer().ZoneAsteroid ? 0.16f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSkyHeight && !spawnInfo.Player.ZoneAsteroid() ? 0.16f : 0f;
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

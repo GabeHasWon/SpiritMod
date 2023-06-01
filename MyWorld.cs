@@ -1435,7 +1435,7 @@ namespace SpiritMod
 			Player player = Main.LocalPlayer;
 			MyPlayer modPlayer = player.GetSpiritPlayer();
 
-			if (modPlayer.ZoneSpirit)
+			if (player.ZoneSpirit())
 			{
 				if (!aurora)
 					aurora = true;
@@ -1454,7 +1454,7 @@ namespace SpiritMod
 			if (blueMoon)
 				auroraType = 9;
 
-			if (!Main.bloodMoon && !Main.pumpkinMoon && !Main.snowMoon && !modPlayer.ZoneSpirit)
+			if (!Main.bloodMoon && !Main.pumpkinMoon && !Main.snowMoon && !player.ZoneSpirit())
 				auroraType = auroraTypeFixed;
 
 			if (Main.dayTime != dayTimeLast)
