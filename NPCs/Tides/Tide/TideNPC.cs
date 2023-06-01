@@ -81,10 +81,11 @@ namespace SpiritMod.NPCs.Tides.Tide
 			{
 				pool.Clear();
 				IDictionary<int, float> spawnpool = Spawnpool.ElementAt(TideWorld.TideWave - 1); //find the spawn pool dictionary corresponding to the current tide wave
-				foreach (KeyValuePair<int, float> key in spawnpool)
-				{ //then add that dictionary info to the actual spawn pool
+				foreach (KeyValuePair<int, float> key in spawnpool) //then add that dictionary info to the actual spawn pool
 					pool.Add(key.Key, key.Value);
-				}
+
+				if (TideWorld.TideWave == 5 && !NPC.AnyNPCs(NPCType<Rylheian>())) //manually spawn rylehian to finish last wave if needed
+					pool[NPCType<Rylheian>()] = 0.5f;
 			}
 		}
 
@@ -115,18 +116,23 @@ namespace SpiritMod.NPCs.Tides.Tide
 					TideWorld.TideWaveIncrease();
 
 					if (TideWorld.TideWave == 5 && !NPC.AnyNPCs(NPCType<Rylheian>()))
-					{
-						Player player = Main.rand.Next(Main.player.Where(x => x.active && !x.dead && x.ZoneBeach).ToArray());
-						NPC rylheian = Main.npc[NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)player.Center.X, (int)player.Center.Y - 400, NPCType<Rylheian>(), 0, 2, 1, 0, 0, player.whoAmI)];
-						DustHelper.DrawDiamond(new Vector2(rylheian.Center.X, rylheian.Center.Y), 173, 8);
-						DustHelper.DrawTriangle(new Vector2(rylheian.Center.X, rylheian.Center.Y), 173, 8);
-						if (Main.netMode != NetmodeID.Server) 
-							SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/RlyehianCry") with { Volume = 0.5f, PitchVariance = 0.2f }, npc.Center);
-					}
+						SpawnRylehian(npc);
 				}
 
 				TideWorld.SendInfoPacket();
 			}
+		}
+
+		private static void SpawnRylehian(NPC npc)
+		{
+			Player player = Main.rand.Next(Main.player.Where(x => x.active && !x.dead && x.ZoneBeach).ToArray());
+			NPC rylheian = Main.npc[NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)player.Center.X, (int)player.Center.Y - 400, NPCType<Rylheian>(), 0, 2, 1, 0, 0, player.whoAmI)];
+
+			DustHelper.DrawDiamond(new Vector2(rylheian.Center.X, rylheian.Center.Y), 173, 8);
+			DustHelper.DrawTriangle(new Vector2(rylheian.Center.X, rylheian.Center.Y), 173, 8);
+
+			if (Main.netMode != NetmodeID.Server)
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/RlyehianCry") with { Volume = 0.5f, PitchVariance = 0.2f }, npc.Center);
 		}
 	}
 }

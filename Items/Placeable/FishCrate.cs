@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable
 {
+	[Sacrifice(10)]
 	public class FishCrate : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(5)]
 	internal class BriarCrate : ModItem
 	{
 		public override void SetStaticDefaults()

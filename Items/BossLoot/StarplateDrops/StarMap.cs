@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -13,8 +15,17 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Astral Map");
-			Tooltip.SetDefault("Teleports you to the cursor location\n10 second cooldown");
+			Tooltip.SetDefault("Teleports you to the cursor location\n{N} second cooldown");
+
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/StarplateDrops/StarMap_Glow");
+		}
+
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
+		{
+			var line = tooltips.FirstOrDefault(x => x.Name == "Tooltip1");
+			
+			if (line is not null)
+				line.Text = line.Text.Replace("{N}", Main.expertMode ? "20" : "10");
 		}
 
 		public override void SetDefaults()
@@ -34,13 +45,12 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.noUseGraphic = true;
 		}
 
+		public override bool CanUseItem(Player player) => !player.HasBuff(ModContent.BuffType<Buffs.AstralMapCooldown>());
+
 		public override bool? UseItem(Player player)
 		{
-			if (player.HasBuff(ModContent.BuffType<Buffs.AstralMapCooldown>()))
-				return false;		
-			else
-				AstralTeleport(player);
-			return null;
+			AstralTeleport(player);
+			return true;
 		}
 
 		private void AstralTeleport(Player player)
@@ -48,11 +58,11 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			if (!Collision.SolidCollision(Main.MouseWorld, player.width, player.height))
 			{
 				RunTeleport(player, Main.MouseWorld);
-				player.AddBuff(ModContent.BuffType<Buffs.AstralMapCooldown>(), 600);
+				player.AddBuff(ModContent.BuffType<Buffs.AstralMapCooldown>(), 10 * 60);
 			}
 		}
 
-		private void RunTeleport(Player player, Vector2 pos)
+		private static void RunTeleport(Player player, Vector2 pos)
 		{
 			player.Teleport(pos, 2, 0);
 			player.velocity = Vector2.Zero;
@@ -76,6 +86,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 				DrawTex(glow, (1 - Timer) / 2, drawPos);
 				DrawTex(outline, (1 - Timer) / 2, drawPos + (Vector2.UnitY * 2));
 			}
+
 			DrawTex(glow, (Timer / 5) + 0.5f);
 			DrawTex(outline, (Timer / 5) + 0.5f, Vector2.UnitY * 2);
 		}

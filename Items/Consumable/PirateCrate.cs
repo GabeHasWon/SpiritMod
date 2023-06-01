@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(5)]
 	public class PirateCrate : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -1248,6 +1248,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 		{
 			MyWorld.downedScarabeus = true;
 			Sandstorm.Happening = false;
+
 			if (Main.netMode != NetmodeID.SinglePlayer)
 				NetMessage.SendData(MessageID.WorldData);
 

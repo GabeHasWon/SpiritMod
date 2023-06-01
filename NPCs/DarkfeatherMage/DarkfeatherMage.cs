@@ -331,8 +331,10 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			bool valid = spawnInfo.Player.ZoneOverworldHeight && !NPC.AnyNPCs(ModContent.NPCType<DarkfeatherMage>()) && (spawnInfo.SpawnTileX < Main.maxTilesX / 3 || spawnInfo.SpawnTileX > Main.maxTilesX / 1.5f);
+			
 			if (!valid)
 				return 0f;
+
 			if (QuestManager.GetQuest<ManicMage>().IsActive)
 				return 0.5f;
 			return 0.0005f;
@@ -340,8 +342,9 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 
 		public override void HitEffect(int hitDirection, double damage)
         {
-			if (NPC.life > 0 || Main.netMode != NetmodeID.Server)
+			if (NPC.life > 0 || Main.netMode == NetmodeID.Server)
 				return;
+
 			for (int i = 0; i < 6; i++)
 			{
 				if (i < 4)

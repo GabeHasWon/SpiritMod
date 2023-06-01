@@ -49,6 +49,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 
 		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
 	}
+
 	public class ArcLashProj : ModProjectile
     {
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;

@@ -362,9 +362,11 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			}
 		}
 
-		public override void OnKill() => NPC.DropItemInstanced(NPC.position, NPC.Size, ModContent.ItemType<GoldenEgg>(), 1, true);
-
-		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<Vulture_Matriarch_Mask>(12);
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.AddCommon<Vulture_Matriarch_Mask>(12);
+			npcLoot.AddBossBag<GoldenEgg>();
+		}
 
 		public override void FindFrame(int frameHeight)
 		{

@@ -79,12 +79,11 @@ namespace SpiritMod.Prim
 			}
 		}
 
-		public override void SetShaders() =>
-			PrepareShader(SpiritMod.ShaderDict["ArcLashShader"], "MainPS", _arcProgress / 50, Color.Red);
+		public override void SetShaders() => PrepareShader(SpiritMod.ShaderDict["ArcLashShader"], "MainPS", _arcProgress / 50, Color.Red);
 
 		public override void OnUpdate()
 		{
-			if (!(Entity is Projectile projectile))
+			if (Entity is not Projectile projectile)
 				return;
 
 			_arcProgress = projectile.ai[0];

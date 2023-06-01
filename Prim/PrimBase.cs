@@ -50,7 +50,7 @@ namespace SpiritMod.Prim
 
 				gD.SetRenderTarget(primTargetNPC);
 				gD.Clear(Color.Transparent);
-				spriteBatch.Begin();
+				spriteBatch.Begin(default, default, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
 
 				foreach (PrimTrail trail in pixelTrails)
 					trail.Draw();
@@ -97,7 +97,7 @@ namespace SpiritMod.Prim
 
 				gD.SetRenderTarget(primTargetProjectile);
 				gD.Clear(Color.Transparent);
-				spriteBatch.Begin();
+				spriteBatch.Begin(default, default, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
 
 				foreach (PrimTrail trail in pixelTrails)
 					trail.Draw();
@@ -122,7 +122,7 @@ namespace SpiritMod.Prim
 
 			if (primTargetProjectile != null && pixelTrails.Count > 0)
 			{
-				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
+				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 				Main.spriteBatch.Draw(primTargetProjectile, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
 				spriteBatch.End();
 			}

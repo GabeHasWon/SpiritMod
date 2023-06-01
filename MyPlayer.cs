@@ -2105,35 +2105,51 @@ namespace SpiritMod
 					Main.dust[dust3].scale *= 10f;
 				}
 
+				for (int l = 0; l < 0; l++)
+				{
+					int dust;
+					if (Player.velocity.Y == 0f)
+						dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + Player.height - 4f), Player.width, 8, DustID.Smoke, 0f, 0f, 100, default, 1.4f);
+					else
+						dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + (Player.height / 2) - 8f), Player.width, 16, DustID.Smoke, 0f, 0f, 100, default, 1.4f);
+					Main.dust[dust].velocity *= 0.1f;
+					Main.dust[dust].scale *= 1f + Main.rand.Next(20) * 0.01f;
+					Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(Player.shoe, Player);
+				}
+
 				Player.vortexStealthActive = false;
 
-				float maxSpeed = Math.Max(Player.accRunSpeed, Player.maxRunSpeed);
-				if (Player.velocity.X > 12f || Player.velocity.X < -12f)
-				{
-					Player.velocity.X = Player.velocity.X * 0.985f;
-					return;
-				}
+				//float maxSpeed = Math.Max(Player.accRunSpeed, Player.maxRunSpeed);
 
-				if (Player.velocity.X > maxSpeed || Player.velocity.X < -maxSpeed)
-				{
-					Player.velocity.X = Player.velocity.X * 0.94f;
-					return;
-				}
+				//if (Player.velocity.X > 12f || Player.velocity.X < -12f)
+				//{
+				//	Player.velocity.X = Player.velocity.X * 0.985f;
+				//	return;
+				//}
 
-				Player.dashDelay = 30;
+				//if (Player.velocity.X > maxSpeed || Player.velocity.X < -maxSpeed)
+				//{
+				//	Player.velocity.X = Player.velocity.X * 0.94f;
+				//	return;
+				//}
 
-				if (Player.velocity.X < 0f)
-				{
-					Player.velocity.X = -maxSpeed;
-					return;
-				}
+				//Player.dashDelay = 30;
 
-				if (Player.velocity.X > 0f)
-				{
-					Player.velocity.X = maxSpeed;
-					return;
-				}
+				//if (Player.velocity.X < 0f)
+				//{
+				//	Player.velocity.X = -maxSpeed;
+				//	return;
+				//}
+
+				//if (Player.velocity.X > 0f)
+				//{
+				//	Player.velocity.X = maxSpeed;
+				//	return;
+				//}
 			}
+
+			if (infernalDash > 0)
+				infernalDash--;
 
 			// Update accessories.
 			if (infernalShield)
@@ -2267,53 +2283,6 @@ namespace SpiritMod
 							Main.dust[num23].shader = GameShaders.Armor.GetSecondaryShader(Player.shield, Player);
 						}
 					}
-				}
-			}
-
-			if (infernalDash > 0)
-				infernalDash--;
-
-			if (Player.dashDelay < 0)
-			{
-				for (int l = 0; l < 0; l++)
-				{
-					int dust;
-					if (Player.velocity.Y == 0f)
-						dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + Player.height - 4f), Player.width, 8, DustID.Smoke, 0f, 0f, 100, default, 1.4f);
-					else
-						dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + (Player.height / 2) - 8f), Player.width, 16, DustID.Smoke, 0f, 0f, 100, default, 1.4f);
-					Main.dust[dust].velocity *= 0.1f;
-					Main.dust[dust].scale *= 1f + Main.rand.Next(20) * 0.01f;
-					Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(Player.shoe, Player);
-				}
-
-				Player.vortexStealthActive = false;
-
-				float maxSpeed = Math.Max(Player.accRunSpeed, Player.maxRunSpeed);
-				if (Player.velocity.X > 12f || Player.velocity.X < -12f)
-				{
-					Player.velocity.X = Player.velocity.X * 0.985f;
-					return;
-				}
-
-				if (Player.velocity.X > maxSpeed || Player.velocity.X < -maxSpeed)
-				{
-					Player.velocity.X = Player.velocity.X * 0.94f;
-					return;
-				}
-
-				Player.dashDelay = 30;
-
-				if (Player.velocity.X < 0f)
-				{
-					Player.velocity.X = -maxSpeed;
-					return;
-				}
-
-				if (Player.velocity.X > 0f)
-				{
-					Player.velocity.X = maxSpeed;
-					return;
 				}
 			}
 

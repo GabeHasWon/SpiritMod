@@ -8,6 +8,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Items.Sets.BriarChestLoot
 {
+	[Sacrifice(1)]
 	internal class ThornHook : ModItem
 	{
 		public override void SetStaticDefaults()

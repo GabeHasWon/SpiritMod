@@ -4,10 +4,10 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Items.Equipment
 {
+	[Sacrifice(1)]
 	internal class KelpHook : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -19,14 +19,14 @@ namespace SpiritMod.Items.Equipment
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.AmethystHook);
-			Item.shootSpeed = 12f; // how quickly the hook is shot.
-			Item.shoot = ProjectileType<KelpHookProj>();
+			Item.shootSpeed = 12f;
+			Item.shoot = ModContent.ProjectileType<KelpHookProj>();
 		}
 
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<Items.Sets.FloatingItems.Kelp>(), 20);
+			recipe.AddIngredient(ModContent.ItemType<Sets.FloatingItems.Kelp>(), 20);
 			recipe.AddIngredient(ItemID.Hook, 1);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
@@ -35,8 +35,7 @@ namespace SpiritMod.Items.Equipment
 
 	internal class KelpHookProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-			=> DisplayName.SetDefault("Kelp Hook");
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Kelp Hook");
 
 		public override void SetDefaults()
 		{
@@ -46,33 +45,18 @@ namespace SpiritMod.Items.Equipment
 		public override bool? CanUseGrapple(Player player)
 		{
 			int hooksOut = 0;
-			for (int l = 0; l < 1000; l++) {
-				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == Projectile.type) {
+
+			for (int l = 0; l < 1000; l++)
+				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == Projectile.type)
 					hooksOut++;
-				}
-			}
-			if (hooksOut > 0) 
-			{
-				return false;
-			}
-			return true;
+
+			return hooksOut <= 1;
 		}
 
 		public override float GrappleRange() => Main.player[Projectile.owner].wet ? 425 : 325;
-
 		public override void NumGrappleHooks(Player player, ref int numHooks) => numHooks = 1;
-
-		public override void GrappleRetreatSpeed(Player player, ref float speed)
-		{
-			int retreatSpeed = Main.player[Projectile.owner].wet ? 17 : 12;
-			speed = retreatSpeed;
-		}
-
-		public override void GrapplePullSpeed(Player player, ref float speed)
-		{
-			int underwaterSpeed = Main.player[Projectile.owner].wet ? 18 : 10;
-			speed = underwaterSpeed;
-		}
+		public override void GrappleRetreatSpeed(Player player, ref float speed) => speed = Main.player[Projectile.owner].wet ? 24 : 12;
+		public override void GrapplePullSpeed(Player player, ref float speed) => speed = Main.player[Projectile.owner].wet ? 20 : 10;
 
 		public override void PostDraw(Color lightColor)
 		{

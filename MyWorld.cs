@@ -355,21 +355,21 @@ namespace SpiritMod
 			spiritBiome = NPC.downedMechBoss3 || NPC.downedMechBoss2 || NPC.downedMechBoss1;
 			rockCandy = Main.hardMode;
 
-			downedScarabeus = false;
-			downedAncientFlier = false;
-			downedRaider = false;
-			downedInfernon = false;
-			downedReachBoss = false;
-			downedDusking = false;
-			downedAtlas = false;
-			downedMoonWizard = false;
-			downedTide = false;
-			downedMechromancer = false;
-			downedOccultist = false;
-			downedGladeWraith = false;
-			downedBeholder = false;
-			downedSnaptrapper = false;
-			downedTome = false;
+			//downedScarabeus = false;
+			//downedAncientFlier = false;
+			//downedRaider = false;
+			//downedInfernon = false;
+			//downedReachBoss = false;
+			//downedDusking = false;
+			//downedAtlas = false;
+			//downedMoonWizard = false;
+			//downedTide = false;
+			//downedMechromancer = false;
+			//downedOccultist = false;
+			//downedGladeWraith = false;
+			//downedBeholder = false;
+			//downedSnaptrapper = false;
+			//downedTome = false;
 
 			//Portrait system - Gabe
 			//PortraitManager.Load(); //Load portraits so the detour can access them

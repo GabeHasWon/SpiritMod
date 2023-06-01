@@ -52,10 +52,12 @@ namespace SpiritMod.NPCs.Hookbat
 
 		public override void AI()
 		{
+			NPC.ai[0]++;
 			NPC.spriteDirection = NPC.direction;
+			NPC.ai[3] = MathHelper.Lerp(NPC.ai[3], 5, 0.05f);
+
 			Player target = Main.player[NPC.target];
 
-			NPC.ai[0]++;
 			if (!target.dead && NPC.ai[1] < 2f)
 			{
 				if (NPC.collideX)
@@ -76,56 +78,11 @@ namespace SpiritMod.NPCs.Hookbat
 				}
 
 				NPC.TargetClosest(true);
+				NPC.velocity += NPC.DirectionTo(target.Center) * (0.6f + (NPC.whoAmI % 8 * 0.05f));
 
-				if (NPC.direction == -1 && NPC.velocity.X > -5f)
-				{
-					NPC.velocity.X = NPC.velocity.X - 0.21f;
-					if (NPC.velocity.X > 5f)
-						NPC.velocity.X = NPC.velocity.X - 0.21f;
-					else if (NPC.velocity.X > 0f)
-						NPC.velocity.X = NPC.velocity.X - 0.05f;
-
-					if (NPC.velocity.X < -5f)
-						NPC.velocity.X = -5f;
-				}
-				else if (NPC.direction == 1 && NPC.velocity.X < 5f)
-				{
-					NPC.velocity.X = NPC.velocity.X + 0.21f;
-					if (NPC.velocity.X < -5f)
-						NPC.velocity.X = NPC.velocity.X + 0.21f;
-					else if (NPC.velocity.X < 0f)
-						NPC.velocity.X = NPC.velocity.X + 0.05f;
-
-					if (NPC.velocity.X > 5f)
-						NPC.velocity.X = 5f;
-				}
-
-				float num3225 = Math.Abs(NPC.Center.X - target.Center.X);
-				float num3224 = target.position.Y - (NPC.height / 2f);
-
-				if (num3225 > 50f)
-					num3224 -= 150f;
-
-				if (NPC.position.Y < num3224)
-				{
-					NPC.velocity.Y = NPC.velocity.Y + 0.05f;
-					if (NPC.velocity.Y < 0f)
-						NPC.velocity.Y = NPC.velocity.Y + 0.01f;
-				}
-				else
-				{
-					NPC.velocity.Y = NPC.velocity.Y - 0.05f;
-					if (NPC.velocity.Y > 0f)
-						NPC.velocity.Y = NPC.velocity.Y - 0.01f;
-				}
-
-				if (NPC.velocity.Y < -4f)
-					NPC.velocity.Y = -4f;
-				if (NPC.velocity.Y > 4f)
-					NPC.velocity.Y = 3f;
+				if (NPC.velocity.LengthSquared() > NPC.ai[3] * NPC.ai[3])
+					NPC.velocity = Vector2.Normalize(NPC.velocity) * NPC.ai[3];
 			}
-
-			Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 
 			if (NPC.ai[0] == 190)
 			{
@@ -136,22 +93,20 @@ namespace SpiritMod.NPCs.Hookbat
 			if (NPC.ai[1] == 1f)
 			{
 				frame = 4;
-				int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
-				if (distance < 400)
+
+				if (NPC.DistanceSQ(target.Center) < 400 * 400)
 				{
 					if (NPC.ai[2] == 0)
 					{
-						direction.Normalize();
 						SoundEngine.PlaySound(SoundID.DD2_WyvernDiveDown, NPC.Center);
-						direction.X *= Main.rand.Next(14, 17);
-						direction.Y *= Main.rand.Next(19, 27);
-						NPC.velocity.X = direction.X;
-						NPC.velocity.Y = direction.Y;
 						NPC.ai[2]++;
 					}
 					else
 						NPC.velocity.Y -= .0625f;
+
+					NPC.ai[3] = 8;
 				}
+
 				if (NPC.ai[0] > 235)
 				{
 					NPC.ai[0] = 0f;

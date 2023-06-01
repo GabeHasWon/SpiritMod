@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable;
 
+[Sacrifice(5)]
 public class ReachCrate : ModItem
 {
 	public override void SetStaticDefaults()

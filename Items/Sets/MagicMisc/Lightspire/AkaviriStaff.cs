@@ -88,7 +88,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.Lightspire
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Lighting.AddLight(Item.position, 153, 255, 255);
+			Lighting.AddLight(Item.position, 0.3f, 0.9f, 0.9f);
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 	}

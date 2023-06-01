@@ -14,6 +14,7 @@ using SpiritCrateTile = SpiritMod.Tiles.Furniture.SpiritCrate;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(5)]
 	public class SpiritCrate : ModItem
 	{
 		public override void SetStaticDefaults()

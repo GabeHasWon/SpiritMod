@@ -8,6 +8,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Items.Sets.CoilSet
 {
+	[Sacrifice(1)]
 	internal class CoilHook : ModItem
 	{
 		public override void SetStaticDefaults()

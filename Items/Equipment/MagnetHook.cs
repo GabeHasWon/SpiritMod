@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Equipment
 {
+	[Sacrifice(1)]
 	internal class MagnetHook : ModItem
 	{
 		public override void SetStaticDefaults()

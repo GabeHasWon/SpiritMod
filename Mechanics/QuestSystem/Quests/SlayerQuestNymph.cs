@@ -23,7 +23,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private SlayerQuestNymph()
         {
-            _tasks.AddTask(new SlayTask(Terraria.ID.NPCID.Nymph, 1, null, new QuestPoolData(0.1f, true, true, SpawnConditions)));
+            _tasks.AddTask(new SlayTask(Terraria.ID.NPCID.LostGirl, 1, null, new QuestPoolData(0.1f, true, true, SpawnConditions)));
         }
 
 		private bool SpawnConditions(NPCSpawnInfo conditions) => conditions.SpawnTileY > Main.rockLayer && conditions.SpawnTileY < Main.maxTilesY - 200;

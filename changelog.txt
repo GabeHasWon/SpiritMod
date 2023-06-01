@@ -1,11 +1,11 @@
-﻿- Fixed Creepy Crawlies quest bad description
-- Added text to Avian Island sign
-- Fixed Shiverbark Flag animation error
-- Made Driftwood Block function like a normal block item
-- Fixed Blossom Hound not using a jump frame
-- Fixed Blossom Hound playing a star sound when dashing
-- Made the Zombies... Why Zombies quest spawn Dr. Bones only in Jungle
-- Made Cleft Horn work with melee projectiles
-- Made Old Cross skeleton minions not cut tiles, reduced death sound volume
-- Made Snow Monger drop 15 gold
-- Fixed Snow Monger drop stuff properly
+﻿- Fixed Astral Map cooldown inconsistency
+- Fixed downedBoss bools being reset in a dumb way
+- Fixed SurfaceWaterModifications gravity flip bug
+- Fixed Rylehian not respawning if you die on wave 5 of the Tide
+- Fixed Darkfeather Mage not dropping anything in multiplayer
+- Buffed Kelp Hook
+- Made Kelp Hook usable when grappled, functions as a normal hook now
+- Completely changed the Hookbat's AI, doesn't clip through tiles now and is more aggressive
+- Fixed really weird dash speedcap code that existed for some reason?
+- Nerfed Chitin armor dash, is now slightly better than Tabi
+- Nerfed Phase dash, movement buff unaffected

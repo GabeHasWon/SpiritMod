@@ -46,7 +46,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 			return false;
 		}
 
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => 
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}
 
 	[AutoloadMinionBuff("Locusts", "Bringer of a plague")]
@@ -148,7 +149,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			LocustNPC lnpc = target.GetGlobalNPC<LocustNPC>();
-			lnpc.locustinfo = new LocustNPC.LocustInfo((int)(Projectile.damage * 0.65f), Main.rand.Next(40, 80), Projectile.owner);
+			lnpc.locustInfo = new LocustNPC.LocustInfo((int)(Projectile.damage * 0.65f), Main.rand.Next(40, 80), Projectile.owner, Projectile.GetSource_OnHit(target));
 
 			if (Main.netMode != NetmodeID.SinglePlayer)
 				NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, target.whoAmI);
@@ -191,33 +192,41 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 
 		public struct LocustInfo
 		{
-			public int LocustDamage { get; set; }
-			public int LocustTime { get; set; }
-			public int LocustPlayerindex { get; set; }
-			public LocustInfo(int LocustDamage, int LocustTime, int LocustPlayerindex)
+			public readonly int LocustDamage;
+			public readonly int PlayerWhoAmI;
+			public readonly IEntitySource Source;
+
+			public int SpawnTime;
+
+			public LocustInfo(int LocustDamage, int LocustTime, int LocustPlayerindex, IEntitySource source)
 			{
 				this.LocustDamage = LocustDamage;
-				this.LocustTime = LocustTime;
-				this.LocustPlayerindex = LocustPlayerindex;
+				
+				SpawnTime = LocustTime;
+				PlayerWhoAmI = LocustPlayerindex;
+				Source = source;
 			}
 		}
 
-		public LocustInfo locustinfo = new LocustInfo(0, 0, 0);
+		public LocustInfo locustInfo = new(0, 0, 0, default);
 
 		public override void PostAI(NPC npc)
 		{
-			if (locustinfo.LocustTime > 0)
+			if (locustInfo.SpawnTime > 0)
 			{
-				locustinfo.LocustTime--;
+				locustInfo.SpawnTime--;
 
 				if (Main.rand.NextBool(3))
-					Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<SandDust>(), Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0.5f), Scale: Main.rand.NextFloat(0.8f, 1.3f));
+					Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<SandDust>(), Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0.5f), 
+						Scale: Main.rand.NextFloat(0.8f, 1.3f));
 
-				if (locustinfo.LocustTime % 15 == 0 && Main.rand.NextBool(2) && Main.player[locustinfo.LocustPlayerindex].ownedProjectileCounts[ModContent.ProjectileType<LocustSmall>()] < 12)
+				if (locustInfo.SpawnTime % 15 == 0 && Main.rand.NextBool(2) && Main.player[locustInfo.PlayerWhoAmI].ownedProjectileCounts[ModContent.ProjectileType<LocustSmall>()] < 12)
 				{
-					Projectile proj = Projectile.NewProjectileDirect(npc.GetSource_FromAI(), npc.Center, Main.rand.NextVector2CircularEdge(6, 6), ModContent.ProjectileType<LocustSmall>(), locustinfo.LocustDamage, 1f, locustinfo.LocustPlayerindex);
+					Vector2 vel = Main.rand.NextVector2CircularEdge(6, 6);
+					int proj = Projectile.NewProjectile(locustInfo.Source, npc.Center, vel, ModContent.ProjectileType<LocustSmall>(), locustInfo.LocustDamage, 1f, locustInfo.PlayerWhoAmI);
+					
 					if (Main.netMode != NetmodeID.SinglePlayer)
-						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj.whoAmI);
+						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
 				}
 			}
 		}
@@ -225,13 +234,12 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 
 	internal class LocustSmall : ModProjectile
 	{
-		private static readonly int traillength = 3;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Baby Locust");
 			Main.projFrames[Projectile.type] = 2;
 			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = traillength;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
 
@@ -260,7 +268,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 			float maxdist = 600;
 			NPC miniontarget = Projectile.OwnerMinionAttackTargetNPC;
 
-			if (miniontarget != null && miniontarget.CanBeChasedBy(this) && CanHit(Projectile.Center, miniontarget.Center) && CanHit(player.Center, miniontarget.Center) && miniontarget.Distance(Projectile.Center) <= maxdist)
+			if (miniontarget != null && miniontarget.CanBeChasedBy(this) && CanHit(Projectile.Center, miniontarget.Center) && CanHit(player.Center, miniontarget.Center) && 
+				miniontarget.Distance(Projectile.Center) <= maxdist)
 				target = miniontarget;
 			else
 			{
@@ -289,7 +298,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 
 		private bool CanHit(Vector2 center1, Vector2 center2) => Collision.CanHit(center1, 0, 0, center2, 0, 0);
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => Projectile.ai[0] > 30;
+		public override bool? CanDamage() => Projectile.ai[0] > 30;
 
 		private void UpdateFrame(int framespersecond)
 		{

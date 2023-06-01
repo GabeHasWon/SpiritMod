@@ -59,10 +59,10 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 				Main.dust[dust].scale *= 1f + Main.rand.Next(20) * 0.01f;
 			}
 
-			player.GetModPlayer<DashPlayer>().chitinDashTicks = 20;
+			player.GetModPlayer<DashPlayer>().chitinDashTicks = 15;
 			player.noKnockback = true;
 			speedCap = 30;
-			speedMax = 13f;
+			speedMax = 11f;
 			decayCapped = 0.95f;
 			decayMax = decayCapped;
 			delay = 25;
