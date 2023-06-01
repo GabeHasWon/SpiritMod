@@ -43,7 +43,7 @@ namespace SpiritMod.NPCs.Shockhopper
 				Dust.NewDustPerfect(dustPos, DustID.Phantasmal, Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f), 0, Color.White, Main.rand.NextFloat(0.2f, 0.5f)).noGravity = true;
 			}
 
-			if (Main.netMode != NetmodeID.Server)
+			if (!Main.dedServ)
 			{
 				for (int i = 0; i < 2; i++)
 				{

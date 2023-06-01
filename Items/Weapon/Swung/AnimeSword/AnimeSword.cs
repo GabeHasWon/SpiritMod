@@ -88,8 +88,11 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 
 				if (charge == 60)
 				{
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/slashdash") with { PitchVariance = 0.4f, Volume = 0.4f }, Projectile.Center);
-					SpiritMod.primitives.CreateTrail(new AnimePrimTrail(Projectile));
+					if (Main.netMode != NetmodeID.Server)
+					{
+						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/slashdash") with { PitchVariance = 0.4f, Volume = 0.4f }, Projectile.Center);
+						SpiritMod.primitives.CreateTrail(new AnimePrimTrail(Projectile));
+					}
 					if (Projectile.owner == Main.myPlayer)
 					{
 						direction = Vector2.Normalize(Main.MouseWorld - player.Center) * 45f;

@@ -9,7 +9,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     public class Macuahuitl : ClubItem
     {
 		internal override int ChargeTime => 70;
-		internal override Vector2 Size => new(82, 82);
 		internal override float Acceleration => 19f;
 		internal override int MinDamage => 65;
 		internal override int MaxDamage => 250;

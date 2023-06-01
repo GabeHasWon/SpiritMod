@@ -10,7 +10,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
     public class ClubSandwich : ClubItem
     {
 		internal override int ChargeTime => 52;
-		internal override Vector2 Size => new(64, 70);
 		internal override float Acceleration => 17f;
 		internal override int MinDamage => 43;
 		internal override int MaxDamage => 95;

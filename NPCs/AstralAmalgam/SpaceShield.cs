@@ -152,11 +152,14 @@ namespace SpiritMod.NPCs.AstralAmalgam
 
 							Projectile.NewProjectile(NPC.GetSource_OnHurt(proj), NPC.Center, velocity, ModContent.ProjectileType<AstralCluster>(), 20, 3, Main.myPlayer);
 
-							for (int o = 0; o < 3; o++)
+							if (Main.netMode != NetmodeID.Server)
 							{
-								float randomScale = Main.rand.NextFloat(0.2f, 1.0f);
+								for (int o = 0; o < 3; o++)
+								{
+									float randomScale = Main.rand.NextFloat(0.2f, 1.0f);
 
-								ParticleHandler.SpawnParticle(new GlowParticle(NPC.Center, velocity * .5f, Color.Lerp(Color.White, Color.Blue, Main.rand.NextFloat()), randomScale * 0.12f, (int)(randomScale * 20)));
+									ParticleHandler.SpawnParticle(new GlowParticle(NPC.Center, velocity * .5f, Color.Lerp(Color.White, Color.Blue, Main.rand.NextFloat()), randomScale * 0.12f, (int)(randomScale * 20)));
+								}
 							}
 						}
 						DustHelper.DrawStar(NPC.Center, 206, 4, 2, 1.5f, 1.3f);

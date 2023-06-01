@@ -8,6 +8,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class MacuahuitlProj : ClubProj
 	{
+		public MacuahuitlProj() : base(new Vector2(82)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Macuahuitl");

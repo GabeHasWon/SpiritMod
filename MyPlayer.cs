@@ -1445,7 +1445,7 @@ namespace SpiritMod
 				}
 			}
 
-			if (Player.ZoneAsteroid() && MyWorld.stardustWeather)
+			if (Player.ZoneAsteroid() && MyWorld.stardustWeather && Main.netMode != NetmodeID.Server)
 			{
 				int d = Main.rand.Next(new int[] { 180, 226, 206 });
 
@@ -1464,6 +1464,7 @@ namespace SpiritMod
 					int num5 = num3 + (int)Main.screenPosition.X;
 					int x = num5 / 16;
 					int y = num4 / 16;
+
 					if (Main.tile[x, y] != null)
 					{
 						if (Main.tile[x, y].WallType == 0)

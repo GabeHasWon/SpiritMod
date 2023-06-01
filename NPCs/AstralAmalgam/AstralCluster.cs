@@ -108,16 +108,8 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			}
 		}
 
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			if (targetVelocity.HasValue)
-				writer.WriteVector2(targetVelocity.Value);
-		}
+		public override void SendExtraAI(BinaryWriter writer) => writer.WriteVector2((targetVelocity != null) ? targetVelocity.Value : Vector2.Zero);
 
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			if (targetVelocity.HasValue)
-				targetVelocity = reader.ReadVector2();
-		}
+		public override void ReceiveExtraAI(BinaryReader reader) => targetVelocity = reader.ReadVector2();
 	}
 }

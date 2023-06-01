@@ -9,6 +9,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class ClubSandwichProj : ClubProj
 	{
+		public ClubSandwichProj() : base(new Vector2(64, 70)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Club Sandwich");

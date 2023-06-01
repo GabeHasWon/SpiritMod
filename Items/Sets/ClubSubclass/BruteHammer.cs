@@ -9,7 +9,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 	public class BruteHammer : ClubItem
 	{
 		internal override int ChargeTime => 54;
-		internal override Vector2 Size => new(50, 80);
 		internal override float Acceleration => 17f;
 		internal override int MinDamage => 26;
 		internal override int MaxDamage => 90;

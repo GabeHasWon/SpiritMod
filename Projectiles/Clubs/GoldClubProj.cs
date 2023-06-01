@@ -7,6 +7,8 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	class GoldClubProj : ClubProj
 	{
+		public GoldClubProj() : base(new Vector2(82)) { }
+
 		public override void SafeSetStaticDefaults()
 		{
 			DisplayName.SetDefault("Golden Greathammer");
