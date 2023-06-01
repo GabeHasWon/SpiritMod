@@ -2082,7 +2082,7 @@ namespace SpiritMod
 			if (infernalDash > 0)
 				infernalDash--;
 
-			if (Player.dashDelay < 0)
+			/*if (Player.dashDelay < 0)
 			{
 				for (int l = 0; l < 0; l++)
 				{
@@ -2284,7 +2284,7 @@ namespace SpiritMod
 						}
 					}
 				}
-			}
+			}*/
 
 			if (bubbleTimer > 0)
 				bubbleTimer--;

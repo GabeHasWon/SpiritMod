@@ -736,11 +736,16 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			if (attackCounter > 82)
 			{
 				attackCounter = 0;
-				Gore.NewGore(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X, NPC.Center.Y - 50), new Vector2(0, 3), Mod.Find<ModGore>("WizardHat_Gore").Type);
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BossSFX/MoonWizard_Taunt"), NPC.Center);
+
+				if (Main.netMode != NetmodeID.Server)
+				{
+					Gore.NewGore(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X, NPC.Center.Y - 50), new Vector2(0, 3), Mod.Find<ModGore>("WizardHat_Gore").Type);
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BossSFX/MoonWizard_Taunt"), NPC.Center);
+				}
 				NPC.position = TeleportPos - new Vector2(NPC.width / 2, NPC.height / 2);
 				SoundEngine.PlaySound(SoundID.Item94, NPC.position);
 				numMoves--;
+
 				for (int i = 0; i < 20; i++)
 				{
 					int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.One.RotatedBy(0.314 * i) * 3.95f, ModContent.ProjectileType<MoonBubble>(), NPCUtils.ToActualDamage(40, 1.5f, 2f), 0, NPC.target, 1);

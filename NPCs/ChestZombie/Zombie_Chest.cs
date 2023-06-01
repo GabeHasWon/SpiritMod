@@ -22,33 +22,34 @@ namespace SpiritMod.NPCs.ChestZombie
 		{
 			for (int i = 0; i < Item.stack; i++)
 			{
-				int bab = Main.rand.Next(11);
-				if (bab == 0)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 280);
-				if (bab == 1)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 281);
-				if (bab == 2)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 284);
-				if (bab == 3)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 282);
-				if (bab == 4)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 279);
-				if (bab == 5)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 285);
-				if (bab == 6)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 953);
-				if (bab == 7)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 946);
-				if (bab == 8)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 3068);
-				if (bab == 9)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 3069);
-				if (bab == 10)
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 3084);
+				int drop = Main.rand.Next(11);
+
+				if (drop == 0)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 280);
+				if (drop == 1)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 281);
+				if (drop == 2)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 284);
+				if (drop == 3)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 282);
+				if (drop == 4)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 279);
+				if (drop == 5)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 285);
+				if (drop == 6)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 953);
+				if (drop == 7)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 946);
+				if (drop == 8)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 3068);
+				if (drop == 9)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 3069);
+				if (drop == 10)
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 3084);
 
 				if (Main.rand.NextBool(6))
 				{
-					int p = Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 3093);
+					int p = player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 3093);
 					if (Main.rand.NextBool(5))
 						Main.item[p].stack += Main.rand.Next(2);
 					if (Main.rand.NextBool(10))
@@ -57,8 +58,7 @@ namespace SpiritMod.NPCs.ChestZombie
 
 				if (Main.rand.NextBool(3))
 				{
-					int p = Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 168);
-					Main.item[p].stack = Main.rand.Next(3, 6);
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 168, Main.rand.Next(3, 6));
 				}
 
 				if (Main.rand.NextBool(2))
@@ -66,15 +66,15 @@ namespace SpiritMod.NPCs.ChestZombie
 					int num3 = Main.rand.Next(2);
 					int num4 = Main.rand.Next(8) + 3;
 					if (num3 == 0)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, WorldGen.copperBar, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), WorldGen.copperBar, num4);
 					if (num3 == 1)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, WorldGen.ironBar, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), WorldGen.ironBar, num4);
 				}
 
 				if (Main.rand.NextBool(2))
 				{
 					int num3 = Main.rand.Next(50, 101);
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 965, num3);
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 965, num3);
 				}
 
 				if (!Main.rand.NextBool(3))
@@ -82,9 +82,9 @@ namespace SpiritMod.NPCs.ChestZombie
 					int num3 = Main.rand.Next(2);
 					int num4 = Main.rand.Next(26) + 25;
 					if (num3 == 0)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 40, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 40, num4);
 					if (num3 == 1)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 42, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 42, num4);
 				}
 
 				if (Main.rand.NextBool(2))
@@ -92,12 +92,12 @@ namespace SpiritMod.NPCs.ChestZombie
 					int num3 = Main.rand.Next(1);
 					int num4 = Main.rand.Next(3) + 3;
 					if (num3 == 0)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 28, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 28, num4);
 				}
 
 				if (!Main.rand.NextBool(3))
 				{
-					int p = Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 2350);
+					int p = player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 2350);
 					Main.item[p].stack = Main.rand.Next(2, 5);
 				}
 
@@ -106,17 +106,17 @@ namespace SpiritMod.NPCs.ChestZombie
 					int num3 = Main.rand.Next(6);
 					int num4 = Main.rand.Next(1, 3);
 					if (num3 == 0)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 292, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 292, num4);
 					if (num3 == 1)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 298, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 298, num4);
 					if (num3 == 2)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 299, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 299, num4);
 					if (num3 == 3)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 290, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 290, num4);
 					if (num3 == 4)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 2322, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 2322, num4);
 					if (num3 == 5)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 2325, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 2325, num4);
 				}
 
 				if (Main.rand.NextBool(2))
@@ -124,13 +124,13 @@ namespace SpiritMod.NPCs.ChestZombie
 					int num3 = Main.rand.Next(2);
 					int num4 = Main.rand.Next(11) + 10;
 					if (num3 == 0)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 8, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 8, num4);
 					if (num3 == 1)
-						Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 31, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 31, num4);
 				}
 
 				if (Main.rand.NextBool(2))
-					Item.NewItem(player.GetSource_Loot("Pickup"), (int)player.position.X, (int)player.position.Y, player.width, player.height, 72, Main.rand.Next(10, 30));
+					player.QuickSpawnItem(player.GetSource_Loot("Pickup"), 72, Main.rand.Next(10, 30));
 			}
 			return false;
 		}

@@ -83,14 +83,14 @@ namespace SpiritMod.Tiles.Furniture
 
 			if (!NPC.AnyNPCs(ModContent.NPCType<ForestWraith>()))
 			{
-				if (Main.netMode != NetmodeID.MultiplayerClient)
+				if (Main.netMode == NetmodeID.SinglePlayer)
 				{
 					Main.NewText("You have disturbed the ancient Nature Spirits!", 0, 170, 60);
 
 					int who = NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16 - 300, ModContent.NPCType<ForestWraith>(), 0, 2, 1, 0, 0);
 					Main.npc[who].netUpdate2 = true;
 				}
-				else if (Main.netMode != NetmodeID.SinglePlayer)
+				else if (Main.netMode == NetmodeID.MultiplayerClient)
 				{
 					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnGladeWraith, 2);
 					packet.Write(i * 16);

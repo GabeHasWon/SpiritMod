@@ -10,6 +10,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using Terraria.Chat;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Vulture_Matriarch
 {
@@ -103,7 +105,12 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 				if (NPC.ai[2] != 1)
 				{
 					NPC.ai[2] = 1;
-					Main.NewText("The Vulture Matriarch has been disturbed!", 175, 75, 255);
+
+					if (Main.netMode == NetmodeID.SinglePlayer)
+						Main.NewText("The Vulture Matriarch has been disturbed!", 175, 75, 255);
+					else if (Main.netMode == NetmodeID.Server)
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Vulture Matriarch has been disturbed!"), new Color(175, 75, 255));
+
 					SoundEngine.PlaySound(SoundID.NPCHit28, NPC.Center);
 					NPC.netUpdate = true;
 				}

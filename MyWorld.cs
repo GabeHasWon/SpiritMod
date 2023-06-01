@@ -47,6 +47,8 @@ using static SpiritMod.Utilities.ChestPoolUtils;
 using Terraria.GameContent.Events;
 using SpiritMod.Items.Equipment.ZiplineGun;
 using SpiritMod.Items.DonatorItems;
+using Terraria.Localization;
+using Terraria.Chat;
 
 namespace SpiritMod
 {
@@ -1489,7 +1491,11 @@ namespace SpiritMod
 				{
 					if (!Main.fastForwardTime && !Main.bloodMoon && WorldGen.spawnHardBoss == 0 && ((Main.rand.NextBool(20) && !downedBlueMoon) || (Main.rand.NextBool(40) && !downedBlueMoon)))
 					{
-						Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
+						if (Main.netMode == NetmodeID.SinglePlayer)
+							Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
+						else if (Main.netMode == NetmodeID.Server)
+							ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mystic Moon is rising..."), new Color(61, 255, 142));
+
 						blueMoon = true;
 						downedBlueMoon = true;
 					}
@@ -1530,7 +1536,11 @@ namespace SpiritMod
 
 				if (!Main.dayTime && (NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || downedScarabeus || downedReachBoss || downedRaider || downedAncientFlier) && (!downedMoonWizard && Main.rand.NextBool(7) || downedMoonWizard && Main.rand.NextBool(36)))
 				{
-					Main.NewText("Strange jellyfish are raining from the skies!", 61, 255, 142);
+					if (Main.netMode == NetmodeID.SinglePlayer)
+						Main.NewText("Strange jellyfish are raining from the skies!", 61, 255, 142);
+					else if (Main.netMode == NetmodeID.Server)
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Strange jellyfish are raining from the skies!"), new Color(61, 255, 142));
+
 					jellySky = true;
 				}
 				else

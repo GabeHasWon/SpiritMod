@@ -177,11 +177,11 @@ namespace SpiritMod
 
             nodes[nodeCount] = point2; //adds the end as the last point
 
-            for (int k = 1; k < nodes.Count(); k++)
+            for (int k = 1; k < nodes.Length; k++)
             {
                 //Sets all intermediate nodes to their appropriate randomized dot product positions
                 nodes[k] = Vector2.Lerp(point1, point2, k / (float)nodeCount) +
-                    (k == nodes.Count() - 1 ? Vector2.Zero : Vector2.Normalize(point1 - point2).RotatedBy(1.58f) * Main.rand.NextFloat(-armLength / 2, armLength / 2));
+                    (k == nodes.Length - 1 ? Vector2.Zero : Vector2.Normalize(point1 - point2).RotatedBy(1.58f) * Main.rand.NextFloat(-armLength / 2, armLength / 2));
 
                 //Spawns the dust between each node
                 Vector2 prevPos = k == 1 ? point1 : nodes[k - 1];
