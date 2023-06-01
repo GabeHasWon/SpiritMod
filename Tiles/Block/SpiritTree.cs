@@ -49,6 +49,7 @@ namespace SpiritMod.Tiles.Block
 			WeightedRandom<SpiritTreeShakeEffect> options = new WeightedRandom<SpiritTreeShakeEffect>();
 			options.Add(SpiritTreeShakeEffect.None, 0.8f);
 			options.Add(SpiritTreeShakeEffect.Acorn, 0.8f);
+			options.Add(SpiritTreeShakeEffect.Wood, 0.8f);
 			options.Add(SpiritTreeShakeEffect.Critter, 0.6f);
 			options.Add(SpiritTreeShakeEffect.Fruit, 0.4f);
 
@@ -56,7 +57,12 @@ namespace SpiritMod.Tiles.Block
 			if (effect == SpiritTreeShakeEffect.Acorn)
 			{
 				Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
-				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, ItemID.Acorn, Main.rand.Next(1, 3));
+				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, ItemID.Acorn, Main.rand.Next(1, 2));
+			}
+			else if (effect == SpiritTreeShakeEffect.Wood)
+			{
+				Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
+				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, ModContent.ItemType<SpiritWoodItem>(), Main.rand.Next(1, 3));
 			}
 			else if (effect == SpiritTreeShakeEffect.Critter)
 			{
@@ -72,18 +78,8 @@ namespace SpiritMod.Tiles.Block
 			}
 			else if (effect == SpiritTreeShakeEffect.Fruit)
 			{
-				WeightedRandom<int> getRepeats = new WeightedRandom<int>();
-				getRepeats.Add(1, 1f);
-				getRepeats.Add(2, 0.5f);
-				getRepeats.Add(3, 0.33f);
-				getRepeats.Add(6, 0.01f);
-
-				int repeats = getRepeats;
-				for (int i = 0; i < repeats; ++i)
-				{
-					Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
-					Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, Main.rand.NextBool() ? ModContent.ItemType<LuminBerry>() : ModContent.ItemType<Glowpear>(), 1);
-				}
+				Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
+				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, Main.rand.NextBool() ? ModContent.ItemType<LuminBerry>() : ModContent.ItemType<Glowpear>(), 1);
 			}
 
 			//createLeaves = effect != SpiritTreeShakeEffect.None;
@@ -95,6 +91,7 @@ namespace SpiritMod.Tiles.Block
 	{
 		None = 0,
 		Acorn,
+		Wood,
 		Critter,
 		Gore,
 		Fruit,

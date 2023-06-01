@@ -40,6 +40,7 @@ namespace SpiritMod.NPCs.BottomFeeder
 			NPC.knockBackResist = 0.34f;
 			NPC.aiStyle = 3;
 			NPC.noGravity = false;
+			NPC.rarity = 1;
 			AIType = NPCID.WalkingAntlion;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.BottomFeederBanner>();
@@ -112,7 +113,13 @@ namespace SpiritMod.NPCs.BottomFeeder
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Sets.GunsMisc.Belcher.BottomFeederGun>(), 20));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Sets.GunsMisc.Belcher.BottomFeederGun>(), 4));
+			npcLoot.Add(ItemDropRule.Common(4381, 8));
+			npcLoot.Add(ItemDropRule.Common(4325, 8));
+			npcLoot.Add(ItemDropRule.Common(4273, 8));
+			npcLoot.Add(ItemDropRule.Common(4608, 2, 4, 6));
+			npcLoot.Add(ItemDropRule.Common(3213, 15));
+			npcLoot.Add(ItemDropRule.Common(4271, 25));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Consumable.Food.FishFingers>(), 20));
 		}
 

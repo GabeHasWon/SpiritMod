@@ -144,7 +144,7 @@ namespace SpiritMod.GlobalClasses.Players
 
 			if (crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
-				if (((weapon is Item item) && Main.rand.NextFloat() < (item.useTime / 75f)) || ((weapon is Projectile proj) && Main.rand.NextFloat() < (proj.GetGlobalProjectile<SpiritGlobalProjectile>().storedUseTime / 75f)))
+				if (((weapon is Item item) && Main.rand.NextFloat() < (item.useTime / 100f)) || ((weapon is Projectile proj) && Main.rand.NextFloat() < (proj.GetGlobalProjectile<SpiritGlobalProjectile>().storedUseTime / 75f)))
 				{
 					//Ace of Hearts
 					if (Player.HasAccessory<AceOfHearts>() || Player.HasAccessory<FourOfAKind>())
