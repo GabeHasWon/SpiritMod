@@ -1,6 +1,8 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using SpiritMod.NPCs.Tides.Tide;
+using SpiritMod.Utilities;
+
 namespace SpiritMod.NPCs
 {
 	public static class SpawnHelper
@@ -53,8 +55,8 @@ namespace SpiritMod.NPCs
 				(Main.hardMode ? SpawnFlags.Hardmode : SpawnFlags.None) |
 				(Main.dayTime ? SpawnFlags.Daytime : SpawnFlags.None) |
 				(NPC.AnyDanger() ? SpawnFlags.Danger : SpawnFlags.None) |
-				(modPlayer.ZoneSpirit ? SpawnFlags.Spirit : SpawnFlags.None) |
-				(modPlayer.ZoneReach ? SpawnFlags.Reach : SpawnFlags.None) |
+				(player.ZoneSpirit() ? SpawnFlags.Spirit : SpawnFlags.None) |
+				(player.ZoneBriar() ? SpawnFlags.Reach : SpawnFlags.None) |
 				(MyWorld.blueMoon && !Main.dayTime && notUnderground ? SpawnFlags.BlueMoon : SpawnFlags.None) |
 				(TideWorld.TheTide && player.ZoneBeach ? SpawnFlags.Tide : SpawnFlags.None);
 		}

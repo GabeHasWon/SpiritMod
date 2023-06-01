@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.NPCs.StarjinxEvent;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
 using Terraria.Graphics.Effects;
@@ -53,7 +54,7 @@ namespace SpiritMod.Skies
 				if (_ticks >= _maxTicks)
 					return false;
 
-				if (!Main.LocalPlayer.GetSpiritPlayer().ZoneAsteroid || Main.LocalPlayer.GetModPlayer<StarjinxPlayer>().zoneStarjinxEvent)
+				if (!Main.LocalPlayer.ZoneAsteroid() || Main.LocalPlayer.GetModPlayer<StarjinxPlayer>().zoneStarjinxEvent)
 					_ticks += 300;
 				else
 					_ticks++;

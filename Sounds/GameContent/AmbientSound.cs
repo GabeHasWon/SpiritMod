@@ -41,7 +41,7 @@ namespace SpiritMod.Sounds.GameContent
 				bool desertWind = player.ZoneDesert && player.ZoneOverworldHeight && !Terraria.GameContent.Events.Sandstorm.Happening && !Main.raining && !player.ZoneBeach;
 				UpdateSingleSound("desertWind", "SpiritMod/Sounds/DesertWind", 5f, 0.005f, desertWind);
 
-				bool lightWind = (spirit.ZoneReach || player.ZoneJungle) && player.ZoneOverworldHeight && !Main.raining;
+				bool lightWind = (player.ZoneBriar() || player.ZoneJungle) && player.ZoneOverworldHeight && !Main.raining;
 				UpdateSingleSound("lightWind", "SpiritMod/Sounds/LightWind", 5f, 0.005f, lightWind);
 
 				UpdateSingleSound("caveAmbience", "SpiritMod/Sounds/CaveAmbience", 5f, 0.0005f, player.ZoneRockLayerHeight);

@@ -114,6 +114,10 @@ namespace SpiritMod.NPCs.AstralAmalgam
 				writer.WriteVector2(targetVelocity.Value);
 		}
 
-		public override void ReceiveExtraAI(BinaryReader reader) => targetVelocity = reader.ReadVector2();
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			if (targetVelocity.HasValue)
+				targetVelocity = reader.ReadVector2();
+		}
 	}
 }

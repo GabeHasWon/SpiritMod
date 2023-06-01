@@ -13,6 +13,7 @@ using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.Reach
 {
@@ -63,7 +64,7 @@ namespace SpiritMod.NPCs.Reach
 		{
 			Player player = spawnInfo.Player;
 			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && !Main.pumpkinMoon && !Main.snowMoon && !Main.eclipse  && (SpawnCondition.GoblinArmy.Chance == 0))
-				return spawnInfo.Player.GetSpiritPlayer().ZoneReach ? 1.7f : 0f;
+				return spawnInfo.Player.ZoneBriar() ? 1.7f : 0f;
 			return 0f;
 		}
 

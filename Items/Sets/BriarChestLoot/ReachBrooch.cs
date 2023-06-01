@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.Items.Sets.BriarChestLoot
 {
@@ -29,7 +30,7 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.GetSpiritPlayer().reachBrooch = true;
-			if (player.GetSpiritPlayer().ZoneReach && (!Main.dayTime || (!player.ZoneSkyHeight && !player.ZoneOverworldHeight)))
+			if (player.ZoneBriar() && (!Main.dayTime || (!player.ZoneSkyHeight && !player.ZoneOverworldHeight)))
 				player.AddBuff(BuffID.NightOwl, 2);
 
 			Lighting.AddLight(player.Center, Color.Yellow.ToVector3() / 1.75f);

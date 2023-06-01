@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.SpiritBiomeDrops;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.Spirit
 {
@@ -65,7 +66,7 @@ namespace SpiritMod.NPCs.Spirit
 		private static int[] SpawnTiles = System.Array.Empty<int>();
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            if (!spawnInfo.Player.GetSpiritPlayer().ZoneSpirit || spawnInfo.Player.ZoneRockLayerHeight)
+            if (!spawnInfo.Player.ZoneSpirit() || spawnInfo.Player.ZoneRockLayerHeight)
                 return 0f;
 
             if (SpawnTiles.Length == 0) {

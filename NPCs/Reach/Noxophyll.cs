@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.Reach
 {
@@ -63,6 +64,6 @@ namespace SpiritMod.NPCs.Reach
 		public override void AI() => NPC.spriteDirection = NPC.direction;
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<RawFish>(2);
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.GetSpiritPlayer().ZoneReach && spawnInfo.Water ? 0.511f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneBriar() && spawnInfo.Water ? 0.511f : 0f;
 	}
 }

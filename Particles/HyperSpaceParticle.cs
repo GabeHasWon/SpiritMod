@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
 
@@ -21,7 +22,7 @@ namespace SpiritMod.Particles
 			Color *= 0.8f;
 		}
 
-		public override bool ActiveCondition => Main.LocalPlayer.GetModPlayer<MyPlayer>().ZoneSynthwave;
+		public override bool ActiveCondition => Main.LocalPlayer.ZoneSynthwave();
 		public override float ScreenSpawnChance => 0.12f;
 		public override bool UseAdditiveBlend => true;
 

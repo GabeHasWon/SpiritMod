@@ -91,7 +91,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				NPC.TargetClosest(false);
 				NPC.velocity.Y = -2000;
 			}
-			if (!player.GetSpiritPlayer().ZoneReach)
+			if (!player.ZoneBriar())
 			{
 				NPC.defense = 25;
 				NPC.damage = 45;

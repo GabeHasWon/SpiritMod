@@ -197,12 +197,12 @@ namespace SpiritMod
 		public bool clatterboneSet;
 		public bool talonSet;
 
-		public bool ZoneAsteroid = false;
+		//public bool ZoneAsteroid = false;
 		public bool ZoneSpider = false;
-		public bool ZoneSynthwave = false;
+		//public bool ZoneSynthwave = false;
 		public bool ZoneLantern = false;
-		public bool ZoneSpirit = false;
-		public bool ZoneReach = false;
+		//public bool ZoneSpirit = false;
+		//public bool ZoneReach = false;
 
 		public bool inGranite = false;
 		public bool inMarble = false;
@@ -274,11 +274,11 @@ namespace SpiritMod
 		public override void PostUpdateMiscEffects()
 		{
 			var config = ModContent.GetInstance<SpiritClientConfig>();
-			bool reach = (!Main.dayTime && ZoneReach && !reachBrooch && Player.ZoneOverworldHeight) || (ZoneReach && Player.ZoneOverworldHeight && MyWorld.downedReachBoss && Main.dayTime);
-			bool spirit = Player.ZoneOverworldHeight && ZoneSpirit;
+			bool reach = (!Main.dayTime && Player.ZoneBriar() && !reachBrooch && Player.ZoneOverworldHeight) || (Player.ZoneBriar() && Player.ZoneOverworldHeight && MyWorld.downedReachBoss && Main.dayTime);
+			bool spirit = Player.ZoneOverworldHeight && Player.ZoneSpirit();
 
-			bool region1 = ZoneSpirit && Player.ZoneRockLayerHeight && Player.position.Y / 16 > (Main.rockLayer + Main.maxTilesY - 330) / 2f;
-			bool region2 = ZoneSpirit && Player.position.Y / 16 >= Main.maxTilesY - 300;
+			bool region1 = Player.ZoneSpirit() && Player.ZoneRockLayerHeight && Player.position.Y / 16 > (Main.rockLayer + Main.maxTilesY - 330) / 2f;
+			bool region2 = Player.ZoneSpirit() && Player.position.Y / 16 >= Main.maxTilesY - 300;
 
 			bool showJellies = ((Player.ZoneOverworldHeight || Player.ZoneSkyHeight) && MyWorld.jellySky) || NPC.AnyNPCs(ModContent.NPCType<MoonWizard>());
 			bool underwater = Player.ZoneBeach && Submerged(30);
@@ -299,7 +299,7 @@ namespace SpiritMod
 						SpiritMod.glitchScreenShader.UseIntensity(starplateGlitchIntensity);
 						Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", true);
 					}
-					else if (ZoneSynthwave)
+					else if (Player.ZoneSynthwave())
 					{
 						SpiritMod.glitchEffect.Parameters["Speed"].SetValue(0.115f); //0.4f is default
 						SpiritMod.glitchScreenShader.UseIntensity(0.0008f);
@@ -311,13 +311,13 @@ namespace SpiritMod
 				else
 					Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 
-				bool showAurora = (Player.ZoneSnow || ZoneSpirit || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
+				bool showAurora = (Player.ZoneSnow || Player.ZoneSpirit() || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
 
 				ManageAshrainShader();
 
 				Player.ManageSpecialBiomeVisuals("SpiritMod:AuroraSky", showAurora || auroraMonoliths.Any(x => x.Value >= 1));
 				Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritBiomeSky", spirit);
-				Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", ZoneAsteroid);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", Player.ZoneAsteroid());
 
 				Player.ManageSpecialBiomeVisuals("SpiritMod:GreenAlgaeSky", greenOcean);
 				Player.ManageSpecialBiomeVisuals("SpiritMod:BlueAlgaeSky", blueOcean);
@@ -332,7 +332,7 @@ namespace SpiritMod
 
 				Player.ManageSpecialBiomeVisuals("SpiritMod:ReachSky", reach, Player.Center);
 				Player.ManageSpecialBiomeVisuals("SpiritMod:BlueMoonSky", blueMoon, Player.Center);
-				Player.ManageSpecialBiomeVisuals("SpiritMod:MeteorSky", ZoneAsteroid);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:MeteorSky", Player.ZoneAsteroid());
 				Player.ManageSpecialBiomeVisuals("SpiritMod:MeteoriteSky", Player.ZoneMeteor);
 				Player.ManageSpecialBiomeVisuals("SpiritMod:BloodMoonSky", Main.bloodMoon && Player.ZoneOverworldHeight);
 				Player.ManageSpecialBiomeVisuals("SpiritMod:WindEffect", windEffect, Player.Center);
@@ -748,22 +748,22 @@ namespace SpiritMod
 				}
 			}
 
-			if (modPlayer.ZoneSpirit && NPC.downedMechBossAny && Main.rand.NextBool(Player.cratePotion ? 35 : 65))
+			if (Player.ZoneSpirit() && NPC.downedMechBossAny && Main.rand.NextBool(Player.cratePotion ? 35 : 65))
 				itemDrop = ModContent.ItemType<SpiritCrate>();
 
-			if (modPlayer.ZoneSpirit && NPC.downedMechBossAny && Main.rand.NextBool(5))
+			if (Player.ZoneSpirit() && NPC.downedMechBossAny && Main.rand.NextBool(5))
 				itemDrop = ModContent.ItemType<SpiritKoi>();
 
-			if (modPlayer.ZoneReach && Main.rand.NextBool(5))
+			if (Player.ZoneBriar() && Main.rand.NextBool(5))
 				itemDrop = ModContent.ItemType<Items.Sets.BriarDrops.ReachFishingCatch>();
 
-			if (modPlayer.ZoneReach && !Main.hardMode && Main.rand.NextBool(Player.cratePotion ? 25 : 45))
+			if (Player.ZoneBriar() && !Main.hardMode && Main.rand.NextBool(Player.cratePotion ? 25 : 45))
 				itemDrop = ModContent.ItemType<ReachCrate>();
 
-			if (modPlayer.ZoneReach && Main.hardMode && Main.rand.NextBool(Player.cratePotion ? 25 : 45))
+			if (Player.ZoneBriar() && Main.hardMode && Main.rand.NextBool(Player.cratePotion ? 25 : 45))
 				itemDrop = ModContent.ItemType<BriarCrate>();
 
-			if (modPlayer.ZoneReach && Main.rand.NextBool(25))
+			if (Player.ZoneBriar() && Main.rand.NextBool(25))
 				itemDrop = ModContent.ItemType<ThornDevilfish>();
 
 			if (Player.ZoneGlowshroom && Main.rand.NextBool(27))
@@ -1372,7 +1372,7 @@ namespace SpiritMod
 				}
 			}
 
-			if (MyWorld.meteorShowerWeather && Main.rand.NextBool(270) && ZoneAsteroid)
+			if (MyWorld.meteorShowerWeather && Main.rand.NextBool(270) && Player.ZoneAsteroid())
 			{
 				float num12 = Main.rand.Next(-30, 30);
 				float num14 = (float)Math.Sqrt(num12 * num12 + 100 * 100);
@@ -1404,7 +1404,7 @@ namespace SpiritMod
 			}
 
 			//Randomly spawn floating asteroid debris without disrupting NPC spawn weight
-			if (ZoneAsteroid)
+			if (Player.ZoneAsteroid())
 			{
 				int spawnChance = 64;
 
@@ -1414,7 +1414,7 @@ namespace SpiritMod
 					if (Main.rand.NextBool(spawnChance))
 						run = true;
 				}
-				else if (Main.rand.NextBool(spawnChance * Main.player.Count(x => x.active && !x.dead && x.GetSpiritPlayer().ZoneAsteroid)))
+				else if (Main.rand.NextBool(spawnChance * Main.player.Count(x => x.active && !x.dead && x.ZoneAsteroid())))
 					run = true; //Multiply debris spawn odds for every valid player in the biome, since this would be called for all of them
 
 				if (run)
@@ -1445,7 +1445,7 @@ namespace SpiritMod
 				}
 			}
 
-			if (ZoneAsteroid && MyWorld.stardustWeather)
+			if (Player.ZoneAsteroid() && MyWorld.stardustWeather)
 			{
 				int d = Main.rand.Next(new int[] { 180, 226, 206 });
 
@@ -1500,7 +1500,7 @@ namespace SpiritMod
 				string[] bigDebris = { "SpaceDebris3", "SpaceDebris4", "Meteor" };
 				string[] smallDebris = { "SpaceDebris1", "SpaceDebris2" };
 
-				if (ZoneAsteroid && MyWorld.spaceJunkWeather && Main.rand.NextBool(59))
+				if (Player.ZoneAsteroid() && MyWorld.spaceJunkWeather && Main.rand.NextBool(59))
 				{
 					if (Main.rand.NextBool(7))
 						Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-1000, 1000), Player.Center.Y + Main.rand.Next(-1200, -900), SpeedX, SpeedY, Mod.Find<ModProjectile>(Main.rand.Next(bigDebris)).Type, 16, 3, Main.myPlayer, 0.0f, 1);
@@ -1510,14 +1510,14 @@ namespace SpiritMod
 
 				if (MyWorld.rareStarfallEvent && Main.rand.NextBool(65))
 				{
-					if (ZoneAsteroid)
+					if (Player.ZoneAsteroid())
 						Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-800, 800), Player.Center.Y + Main.rand.Next(-1000, -900), Main.rand.Next(26, 33) * Main.windSpeedCurrent, 4, ModContent.ProjectileType<Comet>(), 0, 3, Main.myPlayer, 0.0f, 1);
 					else
 						Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-800, 800), Player.Center.Y + Main.rand.Next(-1000, -900), Main.rand.Next(26, 33) * Main.windSpeedCurrent, 4, ModContent.ProjectileType<Comet>(), 0, 3, Main.myPlayer, 0.0f, 1);
 				}
 			}
 
-			if (ZoneReach && !Main.raining && !MyWorld.downedReachBoss)
+			if (Player.ZoneBriar() && !Main.raining && !MyWorld.downedReachBoss)
 			{
 				Main.cloudAlpha += .007f;
 				if (Main.cloudAlpha >= .4f)
@@ -1604,12 +1604,12 @@ namespace SpiritMod
 				candyFromTown.Clear();
 			}
 
-			if (ZoneAsteroid)
+			if (Player.ZoneAsteroid())
 				Main.numCloudsTemp = 0;
 
 			if (ChildSafety.Disabled && config.LeafFall)
 			{
-				if (Main.rand.NextBool(6) && (ZoneReach || MyWorld.calmNight) && Player.ZoneOverworldHeight && !Player.ZoneBeach && !Player.ZoneCorrupt && !Player.ZoneCrimson && !Player.ZoneJungle && !Player.ZoneHallow && !Player.ZoneSnow)
+				if (Main.rand.NextBool(6) && (Player.ZoneBriar() || MyWorld.calmNight) && Player.ZoneOverworldHeight && !Player.ZoneBeach && !Player.ZoneCorrupt && !Player.ZoneCrimson && !Player.ZoneJungle && !Player.ZoneHallow && !Player.ZoneSnow)
 				{
 					float goreScale = 0.01f * Main.rand.Next(20, 70);
 					int a = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.Center.X + Main.rand.Next(-1000, 1000), Player.Center.Y + Main.rand.Next(-1000, -100)), new Vector2(Main.windSpeedCurrent * 3f, 0f), 911, goreScale);
@@ -1617,7 +1617,7 @@ namespace SpiritMod
 					Main.gore[a].rotation = 0f;
 					Main.gore[a].velocity = new Vector2(Main.windSpeedCurrent * 40f, Main.rand.NextFloat(0.2f, 2f));
 				}
-				if (Main.rand.NextBool(9) && Main.netMode != NetmodeID.Server && (ZoneReach || MyWorld.calmNight) && Player.ZoneOverworldHeight && !Player.ZoneBeach && 
+				if (Main.rand.NextBool(9) && Main.netMode != NetmodeID.Server && (Player.ZoneBriar() || MyWorld.calmNight) && Player.ZoneOverworldHeight && !Player.ZoneBeach && 
 					!Player.ZoneCorrupt && !Player.ZoneCrimson && !Player.ZoneJungle && !Player.ZoneHallow && !Player.ZoneSnow)
 				{
 					float goreScale = Main.rand.NextFloat(0.5f, 0.9f);
@@ -2462,7 +2462,7 @@ namespace SpiritMod
 			foreach (var effect in effects)
 				effect.PlayerPostUpdate(Player);
 
-			if (ZoneReach && Player.wet && Main.expertMode && !MyWorld.downedReachBoss)
+			if (Player.ZoneBriar() && Player.wet && Main.expertMode && !MyWorld.downedReachBoss)
 				Player.AddBuff(BuffID.Poisoned, 120);
 			if (cryoSet)
 			{

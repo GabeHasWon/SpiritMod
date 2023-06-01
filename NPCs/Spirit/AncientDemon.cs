@@ -7,6 +7,7 @@ using System.Linq;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.Spirit
 {
@@ -115,9 +116,9 @@ namespace SpiritMod.NPCs.Spirit
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!player.GetSpiritPlayer().ZoneSpirit)
+			if (!player.ZoneSpirit())
 				return 0f;
-			return SpawnTiles.Contains(Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType) && player.position.Y / 16 >= Main.maxTilesY - 330 && player.GetSpiritPlayer().ZoneSpirit && !spawnInfo.PlayerSafe ? 2f : 0f;
+			return SpawnTiles.Contains(Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType) && player.position.Y / 16 >= Main.maxTilesY - 330 && player.ZoneSpirit() && !spawnInfo.PlayerSafe ? 2f : 0f;
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(ModContent.ItemType<SoulShred>(), 3);

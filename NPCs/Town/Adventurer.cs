@@ -124,8 +124,8 @@ namespace SpiritMod.NPCs.Town
 			AddItem(ref shop, ref nextSlot, ItemID.WhoopieCushion, 15000, NPC.downedBoss2);
 			AddItem(ref shop, ref nextSlot, ItemID.Book, 20, NPC.downedBoss3);
             AddItem(ref shop, ref nextSlot, ItemType<WWPainting>());
-            AddItem(ref shop, ref nextSlot, ItemType<SkullStick>(), 1000, Main.LocalPlayer.GetSpiritPlayer().ZoneReach);
-			AddItem(ref shop, ref nextSlot, ItemType<AncientBark>(), 200, Main.LocalPlayer.GetSpiritPlayer().ZoneReach);
+            AddItem(ref shop, ref nextSlot, ItemType<SkullStick>(), 1000, Main.LocalPlayer.ZoneBriar());
+			AddItem(ref shop, ref nextSlot, ItemType<AncientBark>(), 200, Main.LocalPlayer.ZoneBriar());
 			AddItem(ref shop, ref nextSlot, ItemType<Items.Sets.GunsMisc.PolymorphGun.PolymorphGun>(), check: NPC.downedMechBossAny);
             AddItem(ref shop, ref nextSlot, ItemType<PinGreen>());
 			AddItem(ref shop, ref nextSlot, ItemType<PinYellow>());

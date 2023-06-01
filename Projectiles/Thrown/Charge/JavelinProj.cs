@@ -183,7 +183,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 			writer.Write(Counter);
 			writer.Write(Released);
 
-			if (Embeded)
+			if (Embeded && StruckNPCIndex != null)
 				writer.Write(StruckNPCIndex.Value);
 		}
 
@@ -192,7 +192,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 			Counter = reader.Read();
 			Released = reader.ReadBoolean();
 
-			if (Embeded)
+			if (Embeded && StruckNPCIndex != null)
 				StruckNPCIndex = reader.Read();
 		}
 	}

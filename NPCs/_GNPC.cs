@@ -38,6 +38,7 @@ using SpiritMod.NPCs.BlueMoon.LunarSlime;
 using SpiritMod.Buffs.Pet;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Pets;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs
 {
@@ -600,7 +601,7 @@ namespace SpiritMod.NPCs
 				if (NPC.downedGolemBoss && Main.halloween)
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Placeable.Tiles.HalloweenGrass>(), false);
 
-				if (Main.LocalPlayer.GetSpiritPlayer().ZoneReach)
+				if (Main.LocalPlayer.ZoneBriar())
 					shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Placeable.Tiles.BriarGrassSeeds>(), false);
 			}
 			else if (type == NPCID.Wizard)
@@ -668,13 +669,13 @@ namespace SpiritMod.NPCs
 					activePlayers++;
 			}
 
-			if (player.GetSpiritPlayer().ZoneSpirit)
+			if (player.ZoneSpirit())
 			{
 				spawnRate = (int)(spawnRate * 0.73f);
 				maxSpawns = (int)(maxSpawns * 1.1f);
 			}
 
-			if (player.GetSpiritPlayer().ZoneAsteroid)
+			if (player.ZoneAsteroid())
 			{
 				spawnRate = (int)(spawnRate * .4f);
 				maxSpawns = (int)(maxSpawns * 1.1f);
@@ -720,7 +721,7 @@ namespace SpiritMod.NPCs
 				if (!player.ZoneOverworldHeight) 
 					return; //if not in overworld
 
-				if (player.ZoneMeteor || player.ZoneRockLayerHeight || player.ZoneDungeon || player.ZoneBeach || player.ZoneCorrupt || player.ZoneCrimson || player.ZoneJungle || player.ZoneHallow || spawnInfo.Player.GetSpiritPlayer().ZoneReach || spawnInfo.Player.GetSpiritPlayer().ZoneSpirit) 
+				if (player.ZoneMeteor || player.ZoneRockLayerHeight || player.ZoneDungeon || player.ZoneBeach || player.ZoneCorrupt || player.ZoneCrimson || player.ZoneJungle || player.ZoneHallow || spawnInfo.Player.ZoneBriar() || spawnInfo.Player.ZoneSpirit()) 
 					return; //if in wrong biome
 
 				pool.Clear();
@@ -729,7 +730,7 @@ namespace SpiritMod.NPCs
 			if (spawnInfo.SpawnTileY <= Main.worldSurface && MyWorld.blueMoon && !Main.dayTime)
 				pool.Remove(0);
 
-			if (player.GetSpiritPlayer().ZoneAsteroid)
+			if (player.ZoneAsteroid())
 			{
 				if (!spawnInfo.PlayerSafe)
 				{

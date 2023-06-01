@@ -1,4 +1,5 @@
 ﻿using SpiritMod.Mechanics.QuestSystem.Tasks;
+using SpiritMod.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -25,7 +26,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestAsteroid()
         {
-            _tasks.AddTask(new ExploreTask((Player player) => player.GetModPlayer<MyPlayer>().ZoneAsteroid, 5000f, "the Asteroid Field"));
+            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneAsteroid(), 5000f, "the Asteroid Field"));
         }
     }
 }

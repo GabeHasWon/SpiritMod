@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.Mangrove_Defender
 {
@@ -378,7 +379,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 		{
 			Player player = spawnInfo.Player;
 			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-				return spawnInfo.Player.GetSpiritPlayer().ZoneReach && Main.hardMode ? 2.1f : 0f;
+				return spawnInfo.Player.ZoneBriar() && Main.hardMode ? 2.1f : 0f;
 			return 0f;
 		}
 

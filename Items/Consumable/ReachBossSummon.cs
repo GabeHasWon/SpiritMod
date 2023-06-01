@@ -1,4 +1,5 @@
 using SpiritMod.NPCs.Boss.ReachBoss;
+using SpiritMod.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -27,7 +28,7 @@ namespace SpiritMod.Items.Consumable
             Item.UseSound = SoundID.Item43;
         }
 
-		public override bool CanUseItem(Player player) => !NPC.AnyNPCs(ModContent.NPCType<ReachBoss>()) && player.GetSpiritPlayer().ZoneReach && !player.ZoneOverworldHeight;
+		public override bool CanUseItem(Player player) => !NPC.AnyNPCs(ModContent.NPCType<ReachBoss>()) && player.ZoneBriar() && !player.ZoneOverworldHeight;
 
 		public override bool? UseItem(Player player)
         {

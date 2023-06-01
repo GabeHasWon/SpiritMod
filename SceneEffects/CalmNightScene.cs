@@ -11,7 +11,7 @@ namespace SpiritMod.SceneEffects
 		public override bool IsSceneEffectActive(Player player) => ModContent.GetInstance<SpiritMusicConfig>().CalmNightMusic
 				&& MyWorld.calmNight
 				&& !player.ZoneSnow
-				&& !player.GetSpiritPlayer().ZoneReach
+				&& !player.ZoneBriar()
 				&& player.ZoneOverworldHeight
 				&& !Main.dayTime
 				&& !player.ZoneCorrupt
