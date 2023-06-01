@@ -33,13 +33,12 @@ namespace SpiritMod.Projectiles.Clubs
 			MaxDamage = maxDamage;
 			MinKnockback = minKnockback;
 			MaxKnockback = maxKnockback;
+
+			Projectile.netUpdate = true;
 		}
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{
-			if (Projectile.ai[0] > 0)
-				return;
-
 			writer.Write(ChargeTime);
 			writer.Write(Acceleration);
 			writer.Write(MinDamage);
@@ -50,9 +49,6 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void ReceiveExtraAI(BinaryReader reader)
 		{
-			if (Projectile.ai[0] > 0)
-				return;
-
 			ChargeTime = reader.ReadInt32();
 			Acceleration = reader.ReadSingle();
 			MinDamage = reader.ReadInt32();
@@ -254,7 +250,7 @@ namespace SpiritMod.Projectiles.Clubs
 						if (Projectile.ai[0] >= ChargeTime)
 							Smash(Projectile.Center);
 					}
-					else
+					else if (Main.netMode != NetmodeID.Server)
 					{
 						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/SwordSlash1") with { PitchVariance = 0.3f, Volume = 0.6f, Pitch = -0.7f }, Projectile.position);
 					}

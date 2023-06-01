@@ -58,8 +58,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 					(int)meleeDMG.ApplyTo(MaxDamage), 
 					(int)meleeKB.ApplyTo(MinKnockback), 
 					(int)meleeKB.ApplyTo(MaxKnockback));
-
-				proj.netUpdate = true;
 			}
 
 			return false;
