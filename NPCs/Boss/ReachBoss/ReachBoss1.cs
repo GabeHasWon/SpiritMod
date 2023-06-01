@@ -12,6 +12,8 @@ using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Placeable.Relics;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet;
+using Terraria.Chat;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss.ReachBoss
 {
@@ -274,8 +276,13 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override bool PreKill()
 		{
-            if (!MyWorld.downedReachBoss)
-                Main.NewText("The torrential downpour in the Briar has lifted!", 61, 255, 142);
+			if (!MyWorld.downedReachBoss)
+			{
+				if (Main.netMode == NetmodeID.SinglePlayer)
+					Main.NewText("The torrential downpour in the Briar has lifted!", 61, 255, 142);
+				else if (Main.netMode == NetmodeID.Server)
+					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The torrential downpour in the Briar has lifted!"), new Color(61, 255, 142));
+			}
 
             MyWorld.downedReachBoss = true;
 			if(Main.netMode != NetmodeID.SinglePlayer)

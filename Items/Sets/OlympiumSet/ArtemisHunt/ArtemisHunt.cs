@@ -5,8 +5,6 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Graphics.Shaders;
-using SpiritMod.Prim;
 using SpiritMod.Particles;
 using System;
 using System.Linq;

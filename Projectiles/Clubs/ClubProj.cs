@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -12,7 +11,7 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	public abstract class ClubProj : ModProjectile
 	{
-		public void SetStats(int chargeTime, Point size, float acceleration, int minDamage, int maxDamage, float minKnockback, float maxKnockback)
+		public void SetStats(int chargeTime, Vector2 size, float acceleration, int minDamage, int maxDamage, float minKnockback, float maxKnockback)
 		{
 			ChargeTime = chargeTime;
 			Size = size;
@@ -21,12 +20,10 @@ namespace SpiritMod.Projectiles.Clubs
 			MaxDamage = maxDamage;
 			MinKnockback = minKnockback;
 			MaxKnockback = maxKnockback;
-
-			Projectile.netUpdate = true;
 		}
 
 		public int ChargeTime { get; private set; }
-		public Point Size { get; private set; }
+		public Vector2 Size { get; private set; }
 		public float Acceleration { get; private set; }
 
 		public int MinDamage { get; private set; }
@@ -62,7 +59,17 @@ namespace SpiritMod.Projectiles.Clubs
 			SafeSetDefaults();
 		}
 
-		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Main.player[Projectile.owner].Center, Projectile.Center) ? true : base.Colliding(projHitbox, targetHitbox);
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+		{
+			Player player = Main.player[Projectile.owner];
+			Rectangle playerHitbox = player.getRect();
+
+			if (Collision.CanHit(playerHitbox.TopLeft(), playerHitbox.Width, playerHitbox.Height, targetHitbox.TopLeft(), targetHitbox.Width, targetHitbox.Height))
+				return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.Center, Projectile.Center) ? true : base.Colliding(projHitbox, targetHitbox);
+			else
+				return false;
+		}
+
 		public virtual void Smash(Vector2 position) { }
 
 		public bool released = false;
@@ -84,7 +91,7 @@ namespace SpiritMod.Projectiles.Clubs
 			DrawTrail(lightColor);
 
 			Color color = lightColor;
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, 0, Size.X, Size.Y), color, TrueRotation, Origin, Projectile.scale, Effects, 0);
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, 0, (int)Size.X, (int)Size.Y), color, TrueRotation, Origin, Projectile.scale, Effects, 0);
 			
 			SafeDraw(Main.spriteBatch, lightColor);
 			
@@ -97,7 +104,7 @@ namespace SpiritMod.Projectiles.Clubs
 				if (alpha < 0)
 					alpha = 0;
 
-				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, Size.Y, Size.X, Size.Y), color * alpha, TrueRotation, Origin, Projectile.scale, Effects, 1);
+				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, new Rectangle(0, (int)Size.Y, (int)Size.X, (int)Size.Y), color * alpha, TrueRotation, Origin, Projectile.scale, Effects, 1);
 			}
 			return false;
 		}
@@ -110,7 +117,7 @@ namespace SpiritMod.Projectiles.Clubs
 				{
 					Vector2 drawPos = Main.player[Projectile.owner].Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
 					Color trailColor = lightColor * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) * .5f;
-					Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Rectangle(0, 0, Size.X, Size.Y), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
+					Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Rectangle(0, 0, (int)Size.X, (int)Size.Y), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
 				}
 			}
 		}
@@ -127,11 +134,23 @@ namespace SpiritMod.Projectiles.Clubs
 
 			if (player.HeldItem.useTurn)
 			{
-				player.direction = Math.Sign(player.velocity.X);
-				if (player.direction == 0)
-					player.direction = player.oldDirection;
+				if (!released)
+				{
+					if (player == Main.LocalPlayer)
+					{
+						int newDir = Math.Sign(Main.MouseWorld.X - player.Center.X);
+						Projectile.velocity.X = (newDir == 0) ? player.direction : newDir;
 
-				Projectile.velocity.X = player.direction;
+						if (newDir != player.direction)
+							Projectile.netUpdate = true;
+					}
+
+					player.ChangeDir((int)Projectile.velocity.X);
+				}
+				else
+				{
+					player.direction = Math.Sign(Projectile.velocity.X);
+				}
 			}
 
 			float degrees = (float)((animTime * -1.12) + 84) * player.direction * (int)player.gravDir;
@@ -151,8 +170,7 @@ namespace SpiritMod.Projectiles.Clubs
 						animTime = animMax;
 
 					Projectile.ai[0]++;
-
-					_angularMomentum = 1;
+					_angularMomentum = 50f / ChargeTime;
 				}
 				else
 				{
@@ -165,7 +183,7 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 			else
 			{
-				if (_angularMomentum > -80)
+				if (_angularMomentum > -60)
 					_angularMomentum -= GetAcceleration();
 
 				if (!released)
@@ -180,7 +198,7 @@ namespace SpiritMod.Projectiles.Clubs
 			Projectile.position.X = player.Center.X - (int)(Math.Cos(radians * 0.96) * Size.X) - (Projectile.width / 2);
 			Projectile.position.Y = player.Center.Y - (int)(Math.Sin(radians * 0.96) * Size.Y) - (Projectile.height / 2) - player.gfxOffY;
 
-			float rotation = (float)radians + 1.7f;
+			float rotation = (float)radians * player.gravDir + 1.7f;
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.ThreeQuarters, rotation);
 			player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.ThreeQuarters, rotation);
 
@@ -233,20 +251,6 @@ namespace SpiritMod.Projectiles.Clubs
 			player.itemAnimation = player.itemTime = 2;
 
 			return true;
-		}
-
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			writer.Write(Size.X);
-			writer.Write(Size.Y);
-		}
-
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			int sizeX = reader.Read();
-			int sizeY = reader.Read();
-
-			Size = new Point(sizeX, sizeY);
 		}
 	}
 }

@@ -310,35 +310,35 @@ namespace SpiritMod
 				}
 				else
 					Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
+
+				bool showAurora = (Player.ZoneSnow || ZoneSpirit || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
+
+				ManageAshrainShader();
+
+				Player.ManageSpecialBiomeVisuals("SpiritMod:AuroraSky", showAurora || auroraMonoliths.Any(x => x.Value >= 1));
+				Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritBiomeSky", spirit);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", ZoneAsteroid);
+
+				Player.ManageSpecialBiomeVisuals("SpiritMod:GreenAlgaeSky", greenOcean);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:BlueAlgaeSky", blueOcean);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:PurpleAlgaeSky", purpleOcean);
+
+				Player.ManageSpecialBiomeVisuals("SpiritMod:JellySky", showJellies);
+
+				Player.ManageSpecialBiomeVisuals("SpiritMod:OceanFloorSky", underwater);
+
+				Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritUG1", region1);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritUG2", region2);
+
+				Player.ManageSpecialBiomeVisuals("SpiritMod:ReachSky", reach, Player.Center);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:BlueMoonSky", blueMoon, Player.Center);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:MeteorSky", ZoneAsteroid);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:MeteoriteSky", Player.ZoneMeteor);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:BloodMoonSky", Main.bloodMoon && Player.ZoneOverworldHeight);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:WindEffect", windEffect, Player.Center);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:WindEffect2", windEffect2, Player.Center);
+				Player.ManageSpecialBiomeVisuals("SpiritMod:Atlas", NPC.AnyNPCs(ModContent.NPCType<Atlas>()));
 			}
-
-			bool showAurora = (Player.ZoneSnow || ZoneSpirit || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
-
-			ManageAshrainShader();
-
-			Player.ManageSpecialBiomeVisuals("SpiritMod:AuroraSky", showAurora || auroraMonoliths.Any(x => x.Value >= 1));
-			Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritBiomeSky", spirit);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", ZoneAsteroid);
-
-			Player.ManageSpecialBiomeVisuals("SpiritMod:GreenAlgaeSky", greenOcean);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:BlueAlgaeSky", blueOcean);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:PurpleAlgaeSky", purpleOcean);
-
-			Player.ManageSpecialBiomeVisuals("SpiritMod:JellySky", showJellies);
-
-			Player.ManageSpecialBiomeVisuals("SpiritMod:OceanFloorSky", underwater);
-
-			Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritUG1", region1);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritUG2", region2);
-
-			Player.ManageSpecialBiomeVisuals("SpiritMod:ReachSky", reach, Player.Center);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:BlueMoonSky", blueMoon, Player.Center);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:MeteorSky", ZoneAsteroid);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:MeteoriteSky", Player.ZoneMeteor);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:BloodMoonSky", Main.bloodMoon && Player.ZoneOverworldHeight);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:WindEffect", windEffect, Player.Center);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:WindEffect2", windEffect2, Player.Center);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:Atlas", NPC.AnyNPCs(ModContent.NPCType<Atlas>()));
 		}
 
 		private void ManageAshrainShader()

@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     public class BassSlapper : ClubItem
     {
 		internal override int ChargeTime => 66;
-		internal override Point Size => new(76, 84);
+		internal override Vector2 Size => new(76, 84);
 		internal override float Acceleration => 17f;
 		internal override int MinDamage => 28;
 		internal override int MaxDamage => 90;

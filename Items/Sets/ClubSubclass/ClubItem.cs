@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     public abstract class ClubItem : ModItem
     {
 		internal abstract int ChargeTime { get; }
-		internal abstract Point Size { get; }
+		internal abstract Vector2 Size { get; }
 		internal abstract float Acceleration { get; }
 
 		internal abstract int MinDamage { get; }
@@ -50,8 +50,16 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 
 			if (proj.ModProjectile is ClubProj clubProj)
 			{
-				clubProj.SetStats((int)(ChargeTime - (float)(ChargeTime * (float)(player.GetTotalAttackSpeed(DamageClass.Melee) - 1f))), Size, Acceleration,
-					(int)meleeDMG.ApplyTo(MinDamage), (int)meleeDMG.ApplyTo(MaxDamage), (int)meleeKB.ApplyTo(MinKnockback), (int)meleeKB.ApplyTo(MaxKnockback));
+				float speedMult = player.GetTotalAttackSpeed(DamageClass.Melee);
+
+				clubProj.SetStats(
+					(int)(ChargeTime * MathHelper.Max(.15f, 2f - (float)speedMult)), 
+					Size, 
+					Acceleration,
+					(int)meleeDMG.ApplyTo(MinDamage), 
+					(int)meleeDMG.ApplyTo(MaxDamage), 
+					(int)meleeKB.ApplyTo(MinKnockback), 
+					(int)meleeKB.ApplyTo(MaxKnockback));
 			}
 
 			return false;
@@ -67,5 +75,5 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 					line.Text = $"{(int)meleeStat.ApplyTo(MinDamage)}-{(int)meleeStat.ApplyTo(MaxDamage)} melee damage";
 			}
 		}
-    }
+	}
 }

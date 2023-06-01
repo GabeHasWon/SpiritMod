@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.Prim;
 using Terraria.DataStructures;
+using static Humanizer.In;
 
 namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 {
@@ -53,7 +54,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 
 			for (int i = 0; i < 2; i++)
 			{
-				float swingTime = Item.useTime * UseTimeMultiplier(player);
+				float swingTime = player.itemTimeMax;
 
 				if (slam)
 					swingTime *= 2f;
@@ -94,7 +95,8 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 			return false;
 		}
 
-		public override float UseTimeMultiplier(Player player) => player.GetAttackSpeed(DamageClass.Melee); //Scale with melee speed buffs, like whips
+		public override float UseTimeMultiplier(Player player) => MathHelper.Max(1.12f, 2f - player.GetTotalAttackSpeed(DamageClass.Melee)); //Scale with melee speed buffs, like whips
+
 		public override void NetSend(BinaryWriter writer) => writer.Write(combo);
 		public override void NetReceive(BinaryReader reader) => combo = reader.ReadByte();
 	}
