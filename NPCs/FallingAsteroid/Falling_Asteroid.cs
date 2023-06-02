@@ -94,7 +94,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 
 			if (player.dead)
 				NPC.velocity.Y -= 0.15f;
-			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.5f, 0.25f, 0f);
+			Lighting.AddLight(NPC.Center, 0.5f, 0.25f, 0f);
 		}
 
 		public void Drop()

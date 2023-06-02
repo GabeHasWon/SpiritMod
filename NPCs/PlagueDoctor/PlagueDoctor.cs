@@ -121,6 +121,9 @@ namespace SpiritMod.NPCs.PlagueDoctor
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
+			if (!NPC.downedBoss3)
+				return 0;
+
 			if (NPC.downedPlantBoss)
 				return spawnInfo.Player.ZoneDungeon && NPC.CountNPCS(ModContent.NPCType<PlagueDoctor>()) < 1 ? 0.005f : 0f;
 			return spawnInfo.Player.ZoneDungeon && NPC.CountNPCS(ModContent.NPCType<PlagueDoctor>()) < 1 ? 0.09f : 0f;

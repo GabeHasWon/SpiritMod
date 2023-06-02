@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.ByBiome.Spirit.Consumables;
 
+[Sacrifice(5)]
 public class Glowpear : FoodItem
 {
 	internal override Point Size => new(22, 28);

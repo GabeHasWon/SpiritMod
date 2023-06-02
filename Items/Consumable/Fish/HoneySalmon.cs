@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Fish
 {
+	[Sacrifice(5)]
 	public class HoneySalmon : FoodItem
 	{
 		internal override Point Size => new(52, 38);

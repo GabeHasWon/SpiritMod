@@ -65,7 +65,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
             NPC.rotation = NPC.velocity.X * .15f;
             NPC.spriteDirection = NPC.direction;
             alphaCounter += .04f;
-               Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);
+               Lighting.AddLight(NPC.Center, 0.075f * 2, 0.231f * 2, 0.255f * 2);
         }
         public override void FindFrame(int frameHeight)
 		{

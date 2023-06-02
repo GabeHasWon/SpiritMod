@@ -106,7 +106,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			bool expertMode = Main.expertMode;
 			float numYPos = -280f;
 			NPC.ai[0]++;
-			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.075f, 0.231f, 0.255f);
+			Lighting.AddLight(NPC.Center, 0.075f, 0.231f, 0.255f);
 			Player player = Main.player[NPC.target];
 			if (NPC.ai[0] < 420 || NPC.ai[0] > 490)
 			{

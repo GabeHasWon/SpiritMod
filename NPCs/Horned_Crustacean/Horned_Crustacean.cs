@@ -115,7 +115,7 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 				b = Main.rand.Next(1, 255);
 			}
 
-			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), r * 0.002f, g * 0.002f, b * 0.002f);
+			Lighting.AddLight(NPC.Center, r * 0.002f, g * 0.002f, b * 0.002f);
 
 			if (!player.wet)
 			{

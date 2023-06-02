@@ -51,7 +51,7 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 			NPC.TargetClosest(true);
 			float num1164 = 4f;
 			float num1165 = 0.75f;
-			Vector2 vector133 = new Vector2(NPC.Center.X, NPC.Center.Y);
+			Vector2 vector133 = NPC.Center;
 			float num1166 = Main.player[NPC.target].Center.X - vector133.X;
 			float num1167 = Main.player[NPC.target].Center.Y - vector133.Y - 200f;
 			float num1168 = (float)Math.Sqrt((double)(num1166 * num1166 + num1167 * num1167));

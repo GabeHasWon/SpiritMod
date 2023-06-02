@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.ByBiome.Spirit.Consumables;
 
+[Sacrifice(5)]
 public class LuminBerry : FoodItem
 {
 	internal override Point Size => new(26, 30);

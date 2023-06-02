@@ -37,10 +37,9 @@ namespace SpiritMod.Items.Consumable
 			{
 				SoundEngine.PlaySound(SoundID.Zombie7, player.position);
 
-				int type = ModContent.NPCType<ForestWraith>();
-				int who = NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y - 200, type);
+				int who = NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y - 200, ModContent.NPCType<ForestWraith>());
 
-				if (Main.netMode == NetmodeID.MultiplayerClient)
+				if (Main.netMode != NetmodeID.SinglePlayer)
 					NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, who);
 			}
 

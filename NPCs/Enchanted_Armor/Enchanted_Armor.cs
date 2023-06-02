@@ -175,7 +175,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 				NPC.velocity.X = 0f;
 			FlashTimer = Math.Max(FlashTimer - 1, 0);
 
-			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 72 * 0.002f, 175 * 0.002f, 206 * 0.002f);
+			Lighting.AddLight(NPC.Center, 72 * 0.002f, 175 * 0.002f, 206 * 0.002f);
 			CheckPlatform(player);
 		}
 

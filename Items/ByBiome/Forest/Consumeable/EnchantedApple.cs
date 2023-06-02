@@ -4,6 +4,7 @@ using Terraria.ID;
 
 namespace SpiritMod.Items.ByBiome.Forest.Consumeable;
 
+[Sacrifice(5)]
 public class EnchantedApple : FoodItem
 {
 	internal override Point Size => new(20, 22);

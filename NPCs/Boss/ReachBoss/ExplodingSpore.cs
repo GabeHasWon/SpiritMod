@@ -77,7 +77,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			SoundEngine.PlaySound(SoundID.Item14 with { PitchVariance = 0.2f }, NPC.Center);
 			NPC.life = 0;
 			NPC.active = false;
-			DustHelper.DrawStar(new Vector2(NPC.Center.X, NPC.Center.Y), DustID.GoldCoin, pointAmount: 5, mainSize: 8f, dustDensity: 2.5f, dustSize: .75f, pointDepthMult: 0.4f, noGravity: true);
+			DustHelper.DrawStar(NPC.Center, DustID.GoldCoin, pointAmount: 5, mainSize: 8f, dustDensity: 2.5f, dustSize: .75f, pointDepthMult: 0.4f, noGravity: true);
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				int p = Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center.X, NPC.Center.Y, 0f, 0f, ModContent.ProjectileType<SporeExplosion>(), 24, 1, Main.myPlayer, 0, 0);	
@@ -102,7 +102,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 					spinningpoint1 = spinningpoint1.RotatedBy((double)num4 * (double)num3 * 3.0, new Vector2());
 				}
 				float adada = MathHelper.Lerp(1f, 4f, (float)(index1 % num2) / (float)num2);
-				int index2 = Dust.NewDust(new Vector2(NPC.Center.X, NPC.Center.Y), 6, 6, DustID.GoldCoin, 0.0f, 0.0f, 100, new Color(), 1.4f);
+				int index2 = Dust.NewDust(NPC.Center, 6, 6, DustID.GoldCoin, 0.0f, 0.0f, 100, new Color(), 1.4f);
 				Main.dust[index2].velocity *= 0.1f;
 				Main.dust[index2].velocity += spinningpoint1 * adada;
 				if (flag)	

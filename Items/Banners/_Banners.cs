@@ -553,6 +553,7 @@ namespace SpiritMod.Items.Banners
 	public class GranitecTurretBanner : BaseBannerItem
 	{
 		protected override int Style => 96;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("G-TEK Turret Banner");
 	}
 
 	public class HauntedTomeBanner : BaseBannerItem

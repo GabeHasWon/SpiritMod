@@ -126,7 +126,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			for (int i = 1; i < 10; i++)
 			{
 				Color color = Color.Lerp(startColor, endColor, i / 10f) * opacity;
-				spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/MoonWizard_Afterimage").Value, new Vector2(NPC.Center.X, NPC.Center.Y) + offset - Main.screenPosition + new Vector2(0, NPC.gfxOffY) - NPC.velocity * (float)i * trailLengthModifier, NPC.frame, color, NPC.rotation, NPC.frame.Size() * 0.5f, MathHelper.Lerp(startScale, endScale, i / 10f), spriteEffects, 0f);
+				spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizard/MoonWizard_Afterimage").Value, NPC.Center + offset - Main.screenPosition + new Vector2(0, NPC.gfxOffY) - NPC.velocity * (float)i * trailLengthModifier, NPC.frame, color, NPC.rotation, NPC.frame.Size() * 0.5f, MathHelper.Lerp(startScale, endScale, i / 10f), spriteEffects, 0f);
 			}
 		}
 
@@ -206,7 +206,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 		//22-28: kick
 		public override void AI()
 		{
-			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);
+			Lighting.AddLight(NPC.Center, 0.075f * 2, 0.231f * 2, 0.255f * 2);
 			NPC.TargetClosest();
 			if (NPC.ai[0] == 0)
 			{

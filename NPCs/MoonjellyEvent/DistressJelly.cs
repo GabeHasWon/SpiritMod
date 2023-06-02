@@ -67,7 +67,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		public override void AI()
         {
             NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) + 1.57f;
-            Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);
+            Lighting.AddLight(NPC.Center, 0.075f * 2, 0.231f * 2, 0.255f * 2);
         }
 
         public override void FindFrame(int frameHeight)

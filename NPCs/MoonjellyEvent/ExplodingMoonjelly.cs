@@ -78,10 +78,14 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 		public override void AI()
         {
             alphaCounter += .04f;
-            if (NPC.Distance(Main.player[NPC.target].Center) <= 450 || NPC.life < NPC.lifeMax)
+
+			NPC.rotation = NPC.velocity.ToRotation() + 1.57f;
+
+			if (NPC.Distance(Main.player[NPC.target].Center) <= 450 || NPC.life < NPC.lifeMax)
                 aggro = true;
 			else
                 aggro = false;
+
             if (!aggro)
             {
                 AIType = NPCID.Firefly;
@@ -89,44 +93,11 @@ namespace SpiritMod.NPCs.MoonjellyEvent
             }
 			else
             {
-                NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) + 1.57f;
-
                 NPC.TargetClosest(true);
-                float speed = 5.5f;
-                float acceleration = 0.07f;
-                Vector2 vector2 = new Vector2(NPC.position.X + NPC.width * 0.5F, NPC.position.Y + NPC.height * 0.5F);
-                float xDir = Main.player[NPC.target].position.X + (Main.player[NPC.target].width * 0.5F) - vector2.X;
-                float yDir = Main.player[NPC.target].position.Y + (Main.player[NPC.target].height * 0.5F) - vector2.Y;
-                float length = (float)Math.Sqrt(xDir * xDir + yDir * yDir);
 
-                float num10 = speed / length;
-                xDir *= num10;
-                yDir *= num10;
-                if (NPC.velocity.X < xDir)
-                {
-                    NPC.velocity.X = NPC.velocity.X + acceleration;
-                    if (NPC.velocity.X < 0 && xDir > 0)
-                        NPC.velocity.X = NPC.velocity.X + acceleration;
-                }
-                else if (NPC.velocity.X > xDir)
-                {
-                    NPC.velocity.X = NPC.velocity.X - acceleration;
-                    if (NPC.velocity.X > 0 && xDir < 0)
-                        NPC.velocity.X = NPC.velocity.X - acceleration;
-                }
+				Vector2 velocity = Main.player[NPC.target].Center - NPC.Center;
+				NPC.velocity = (velocity * 0.005f) + Vector2.Normalize(velocity) * 3;
 
-                if (NPC.velocity.Y < yDir)
-                {
-                    NPC.velocity.Y = NPC.velocity.Y + acceleration;
-                    if (NPC.velocity.Y < 0 && yDir > 0)
-                        NPC.velocity.Y = NPC.velocity.Y + acceleration;
-                }
-                else if (NPC.velocity.Y > yDir)
-                {
-                    NPC.velocity.Y = NPC.velocity.Y - acceleration;
-                    if (NPC.velocity.Y > 0 && yDir < 0)
-                        NPC.velocity.Y = NPC.velocity.Y - acceleration;
-                }
                 if (Main.player[NPC.target].Hitbox.Intersects(NPC.Hitbox))
                 {
                     int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), Main.player[NPC.target].Center.X, Main.player[NPC.target].Center.Y, 0f, 0f, ModContent.ProjectileType<UnstableWisp_Explosion>(), 15, 0f, Main.myPlayer);
@@ -139,7 +110,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
                     NPC.active = false;
                 }
             }
-            Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);
+            Lighting.AddLight(NPC.Center, 0.075f * 2, 0.231f * 2, 0.255f * 2);
         }
 
         public override bool CheckDead()

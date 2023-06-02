@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items;
 
+[Sacrifice(5)]
 public abstract class FoodItem : ModItem
 {
 	internal abstract Point Size { get; }

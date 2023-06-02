@@ -103,7 +103,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 				NPC.netUpdate = true;
 			}
 
-			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);
+			Lighting.AddLight(NPC.Center, 0.075f * 2, 0.231f * 2, 0.255f * 2);
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)

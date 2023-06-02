@@ -106,7 +106,7 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 
 			sineTimer++;
 
-			Lighting.AddLight(new Vector2(NPC.Center.X, NPC.Center.Y), r * 0.002f, g * 0.002f, b * 0.002f);
+			Lighting.AddLight(NPC.Center, r * 0.002f, g * 0.002f, b * 0.002f);
 
 			if (NPC.wet)
 				DodgeProjectiles();

@@ -33,8 +33,8 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 
 		public override void SetDefaults()
 		{
-			NPC.width = 30;
-			NPC.height = 40;
+			NPC.width = 42;
+			NPC.height = 70;
 			NPC.damage = 33;
 			NPC.noGravity = true;
 			NPC.defense = 4;
@@ -45,6 +45,7 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 			NPC.value = 120f;
 			NPC.knockBackResist = .1f;
 			NPC.noTileCollide = true;
+
             Banner = NPC.type;
             BannerItem = ModContent.ItemType<Items.Banners.PhantomSamuraiBanner>();
 		}

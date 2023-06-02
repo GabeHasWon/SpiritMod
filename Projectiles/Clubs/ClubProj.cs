@@ -158,6 +158,10 @@ namespace SpiritMod.Projectiles.Clubs
 			SafeAI();
 
 			Player owner = Main.player[Projectile.owner];
+
+			if (owner.dead)
+				Projectile.Kill();
+
 			int animMaxHalf = animMax / 2;
 
 			Projectile.scale = (Projectile.ai[0] < 10 && !released) ? (Projectile.ai[0] / 10f) : 1;

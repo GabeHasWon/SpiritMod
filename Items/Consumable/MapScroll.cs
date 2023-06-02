@@ -28,34 +28,33 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool? UseItem(Player player)
 		{
-			CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 10, player.width, player.height), new Color(255, 255, 255, 100), "Map Revealed");
-
-			Point center = Main.player[Main.myPlayer].Center.ToTileCoordinates();
-
-			int range = 180;
-
-			for (int i = center.X - range / 2; i < center.X + range / 2; i++)
+			if (Main.myPlayer == player.whoAmI && Main.netMode != NetmodeID.Server)
 			{
-				for (int j = center.Y - range / 2; j < center.Y + range / 2; j++)
+				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 10, player.width, player.height), new Color(255, 255, 255, 100), "Map Revealed");
+
+				Point center = Main.player[Main.myPlayer].Center.ToTileCoordinates();
+
+				int range = 180;
+
+				for (int i = center.X - range / 2; i < center.X + range / 2; i++)
 				{
-					if (WorldGen.InWorld(i, j))
-						Main.Map.Update(i, j, 255);
+					for (int j = center.Y - range / 2; j < center.Y + range / 2; j++)
+					{
+						if (WorldGen.InWorld(i, j))
+							Main.Map.Update(i, j, 255);
+					}
 				}
-			}
-			Main.refreshMap = true;
 
-			for (int k = 0; k < 10; k++)
-			{
-				int dust = Dust.NewDust(player.Center, player.width, player.height, DustID.PortalBolt);
-				Main.dust[dust].velocity *= -1f;
-				Main.dust[dust].noGravity = true;
-				Vector2 vector2_1 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
-				vector2_1.Normalize();
-				Vector2 vector2_2 = vector2_1 * (Main.rand.Next(50, 100) * 0.04f);
-				Main.dust[dust].velocity = vector2_2;
-				vector2_2.Normalize();
-				Vector2 vector2_3 = vector2_2 * 34f;
-				Main.dust[dust].position = player.Center - vector2_3;
+				Main.refreshMap = true;
+
+				for (int k = 0; k < 10; k++)
+				{
+					int dust = Dust.NewDust(player.Center, player.width, player.height, DustID.PortalBolt);
+					Vector2 vector2_1 = new Vector2(Main.rand.NextFloat(-1, 1), Main.rand.NextFloat(-1, 1)) * (Main.rand.Next(50, 100) * 0.04f);
+					Main.dust[dust].velocity = vector2_1;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = player.Center - Vector2.Normalize(vector2_1) * 34f;
+				}
 			}
 			return true;
 		}

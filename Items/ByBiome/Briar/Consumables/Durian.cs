@@ -4,6 +4,7 @@ using Terraria.ID;
 
 namespace SpiritMod.Items.ByBiome.Briar.Consumables;
 
+[Sacrifice(5)]
 public class Durian : FoodItem
 {
 	internal override Point Size => new(30, 30);

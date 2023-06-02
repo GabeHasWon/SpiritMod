@@ -1,15 +1,7 @@
-﻿- Fixed Nymph quest being unfinishable as you have to find Lost Girls, not Nymphs
-- Fixed Grisly Science Expirement being impossible to make on a Crimson world
-- Removed unloaded Infernal Shield drop from Infernon's drop table
-- Removed Occultist Wall Scroll needless requirement from Unholy Undertaking
-- Made Dynasty Fan work with Featherfall, just nerfed
-- Made all unobtainable items unresearchable
-- Made ocean water not transparent if the water style is not ocean water
-- Removed unused OceanWaterStyle
-- Fixed Zoologist using out-of-place chat line when transformed
-- Made Antlion Assassins not spawn in the ocean
-- Made Darkfeather Mage not spawn in water
-- Made Notes on... items, Trophies, Relics, Pets, Light Pets, Mounts, Music Boxes need only 1 item to fully research
-- Fixed Locust Crook small locusts not doing damage
-- Made Jade Daos, Blades of Chaos use flask effects
-- Made Corpsebloom poison explosion work so much better
+﻿- Fixed minor crash for servers regarding Chitin dashes
+- Fixed Meteorite music not playing
+- Fixed Cartographer's Map issue on servers
+- Improved Phantom Samurai's hitbox
+- Fixed weird Moonjelly Rupturer issue by rewriting movement AI
+- Made all uses of new Vector2(NPC.Center.X, NPC.Center.Y) just use NPC.Center
+- Gave all Food items a research count of 5

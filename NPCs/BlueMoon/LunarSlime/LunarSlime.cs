@@ -71,7 +71,7 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 					Main.dust[num622].velocity *= 3f;
 				}
 				float ScaleMult = 2.33f;
-				DustHelper.DrawStar(new Vector2(NPC.Center.X, NPC.Center.Y), 206, pointAmount: 5, mainSize: 5.25f * ScaleMult, dustDensity: 4, pointDepthMult: 0.3f, noGravity: true);
+				DustHelper.DrawStar(NPC.Center, 206, pointAmount: 5, mainSize: 5.25f * ScaleMult, dustDensity: 4, pointDepthMult: 0.3f, noGravity: true);
 			}
 		}
 		public override bool PreAI()
@@ -83,7 +83,7 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 					NPC.ai[3] = 0;
 					SoundEngine.PlaySound(SoundID.Item9, NPC.Center);
 					float ScaleMult = 2.33f;
-					DustHelper.DrawStar(new Vector2(NPC.Center.X, NPC.Center.Y), 206, pointAmount: 5, mainSize: 4.25f * ScaleMult, dustDensity: 2, pointDepthMult: 0.3f, noGravity: true);
+					DustHelper.DrawStar(NPC.Center, 206, pointAmount: 5, mainSize: 4.25f * ScaleMult, dustDensity: 2, pointDepthMult: 0.3f, noGravity: true);
 					for (int i = 0; i < Main.rand.Next(1, 3); i++) {
 						Vector2 vector2_1 = new Vector2((float)((double)NPC.position.X + (double)NPC.width * 0.5 + (double)(Main.rand.Next(201) * -NPC.direction) + ((double)Main.mouseX + (double)Main.screenPosition.X - (double)NPC.position.X)), (float)((double)NPC.position.Y + (double)NPC.height * 0.5 - 600.0));   //this defines the projectile width, direction and position
 						vector2_1.X = (float)(((double)vector2_1.X + (double)NPC.Center.X) / 2.0) + (float)Main.rand.Next(-200, 201);

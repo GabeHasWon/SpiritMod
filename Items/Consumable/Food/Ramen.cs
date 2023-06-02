@@ -4,6 +4,7 @@ using Terraria.ID;
 
 namespace SpiritMod.Items.Consumable.Food
 {
+	[Sacrifice(5)]
 	public class Ramen : FoodItem
 	{
 		internal override Point Size => new(28, 36);

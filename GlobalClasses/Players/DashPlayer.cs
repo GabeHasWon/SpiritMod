@@ -195,9 +195,15 @@ internal class DashPlayer : ModPlayer
 				break;
 			case DashType.Chitin:
 				horizontalSpeed *= 20;
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BossSFX/Scarab_Roar2") with { PitchVariance = 0.2f, Volume = 0.5f }, Player.Center);
-				for (int i = 0; i < 16; i++)
-					Dust.NewDust(Player.position, Player.width, Player.height, Mod.Find<ModDust>("SandDust").Type, Main.rand.NextFloat(-1, 1), Main.rand.NextFloat(-1, 1), Scale: Main.rand.NextFloat(1, 2));
+
+				if (Main.netMode != NetmodeID.Server)
+				{
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BossSFX/Scarab_Roar2") with { PitchVariance = 0.2f, Volume = 0.5f }, Player.Center);
+
+					for (int i = 0; i < 16; i++)
+						Dust.NewDust(Player.position, Player.width, Player.height, Mod.Find<ModDust>("SandDust").Type, Main.rand.NextFloat(-1, 1), Main.rand.NextFloat(-1, 1), Scale: Main.rand.NextFloat(1, 2));
+				}
+
 				_dashTimer = 15;
 				_dashCooldown = 20;
 				break;

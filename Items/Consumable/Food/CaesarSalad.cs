@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Food
 {
+	[Sacrifice(5)]
 	public class CaesarSalad : FoodItem
 	{
 		internal override Point Size => new(30, 28);
