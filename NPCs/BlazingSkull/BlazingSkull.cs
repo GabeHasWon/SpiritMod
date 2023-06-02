@@ -61,7 +61,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.damage = 60;
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 1.25f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.9f : 0f;
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => NPC.ai[2] > rechargetime;
 		public override void AI()
 		{

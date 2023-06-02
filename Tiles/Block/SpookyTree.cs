@@ -41,6 +41,7 @@ namespace SpiritMod.Tiles.Block
 			WeightedRandom<SpookyTreeShakeEffect> options = new WeightedRandom<SpookyTreeShakeEffect>();
 			options.Add(SpookyTreeShakeEffect.None, 1f);
 			options.Add(SpookyTreeShakeEffect.Acorn, 0.8f);
+			options.Add(SpookyTreeShakeEffect.Wood, 0.8f);
 			options.Add(SpookyTreeShakeEffect.NPC, 0.3f);
 			options.Add(SpookyTreeShakeEffect.Gore, 0.5f);
 			options.Add(SpookyTreeShakeEffect.Fruit, 0.6f);
@@ -49,7 +50,12 @@ namespace SpiritMod.Tiles.Block
 			if (effect == SpookyTreeShakeEffect.Acorn)
 			{
 				Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
-				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, ItemID.Acorn, Main.rand.Next(1, 3));
+				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, ItemID.Acorn, Main.rand.Next(1, 2));
+			}
+			else if (effect == SpookyTreeShakeEffect.Wood)
+			{
+				Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
+				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, 1729, Main.rand.Next(1, 3));
 			}
 			else if (effect == SpookyTreeShakeEffect.NPC)
 			{
@@ -72,18 +78,8 @@ namespace SpiritMod.Tiles.Block
 			}
 			else if (effect == SpookyTreeShakeEffect.Fruit)
 			{
-				WeightedRandom<int> getRepeats = new WeightedRandom<int>();
-				getRepeats.Add(1, 1f);
-				getRepeats.Add(2, 0.2f);
-				getRepeats.Add(4, 0.1f);
-				getRepeats.Add(8, 0.01f);
-
-				int repeats = getRepeats;
-				for (int i = 0; i < repeats; ++i)
-				{
-					Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
-					Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, Main.rand.NextBool() ? ModContent.ItemType<TreeGourd>() : ModContent.ItemType<CaramelApple>(), 1);
-				}
+				Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
+				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, Main.rand.NextBool() ? ModContent.ItemType<TreeGourd>() : ModContent.ItemType<CaramelApple>(), 1);
 			}
 
 			createLeaves = effect != SpookyTreeShakeEffect.None;
@@ -95,6 +91,7 @@ namespace SpiritMod.Tiles.Block
 	{
 		None = 0,
 		Acorn,
+		Wood,
 		NPC,
 		Gore,
 		Fruit
