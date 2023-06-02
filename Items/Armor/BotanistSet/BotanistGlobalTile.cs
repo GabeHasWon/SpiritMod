@@ -15,15 +15,14 @@ namespace SpiritMod.Items.Armor.BotanistSet
 		private readonly int[] VanillaHerbs = new int[] { TileID.BloomingHerbs, TileID.MatureHerbs };
 		private static int[] SpiritHerbs => new[] { ModContent.TileType<Cloudstalk>(), ModContent.TileType<SoulBloomTile>() };
 
-		public List<int> AllHerbs
+		public readonly List<int> AllHerbs;
+
+		public BotanistGlobalTile()
 		{
-			get
-			{
-				List<int> herbs = new List<int>();
-				herbs.AddRange(SpiritHerbs);
-				herbs.AddRange(VanillaHerbs);
-				return herbs;
-			}
+			List<int> herbs = new List<int>();
+			herbs.AddRange(SpiritHerbs);
+			herbs.AddRange(VanillaHerbs);
+			AllHerbs = herbs;
 		}
 
 		public override bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)

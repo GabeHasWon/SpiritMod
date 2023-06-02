@@ -27,6 +27,7 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 300;
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
+			Projectile.DamageType = DamageClass.Magic;
 		}
 
 		public override bool PreAI()
@@ -36,10 +37,9 @@ namespace SpiritMod.Projectiles
 			Lighting.AddLight(Projectile.Center, 0.4f * num, 0.4f * num, 0.4f * num);
 			return true;
 		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(3, 252, 215, 100);
-		}
+
+		public override Color? GetAlpha(Color lightColor) => new Color(3, 252, 215, 100);
+
 		public override void AI()
 		{
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
@@ -95,6 +95,7 @@ namespace SpiritMod.Projectiles
 					}
 				});
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
@@ -104,10 +105,6 @@ namespace SpiritMod.Projectiles
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
 			}
 			return false;
-		}
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			return true;
 		}
 	}
 }

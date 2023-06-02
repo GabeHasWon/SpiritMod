@@ -1,7 +1,6 @@
-﻿- Fixed minor crash for servers regarding Chitin dashes
-- Fixed Meteorite music not playing
-- Fixed Cartographer's Map issue on servers
-- Improved Phantom Samurai's hitbox
-- Fixed weird Moonjelly Rupturer issue by rewriting movement AI
-- Made all uses of new Vector2(NPC.Center.X, NPC.Center.Y) just use NPC.Center
-- Gave all Food items a research count of 5
+﻿- Made BotanistGlobalTile.AllHerbs into a readonly, once-set value
+- Made OpalFrogGlobals UpdateItem use ContentSamples instead of making a new Item/Projectile every frame
+- Returned true in Seabreak Pearl when a text message is sent
+- Fixed Tome of Forbidden Knowledge projectile spam
+- Made Tome of Forbidden Knowledge deal only magic damage because Terraria is dumb
+- Slightly buffed Tome of Forbidden Knowledge

@@ -47,16 +47,14 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 			OpalFrogPlayer modPlayer = player.GetModPlayer<OpalFrogPlayer>();
 
 			//Create an instance of the projectile to check its aistyle
-			Projectile shootInstance = new Projectile();
-			shootInstance.SetDefaults(item.shoot);
-
-			//Create an instance of the item to find the base shootspeed
-			Item baseItemInstance = new Item();
-			baseItemInstance.SetDefaults(item.type);
+			Projectile shootInstance = ContentSamples.ProjectilesByType[item.shoot];
 
 			//If the instance of the item's shoot projectile has hook aistyle, increase shootspeed
 			if (shootInstance.aiStyle == 7)
 			{
+				//Create an instance of the item to find the base shootspeed
+				Item baseItemInstance = ContentSamples.ItemsByType[item.type];
+
 				//Due to update order, checks the last tick's hook stat value if the current hook stat value is the default
 				item.shootSpeed = baseItemInstance.shootSpeed * Math.Max(modPlayer.HookStat, modPlayer.LastHookStat);
 			}

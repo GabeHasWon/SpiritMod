@@ -846,22 +846,7 @@ namespace SpiritMod
 			if (forbiddenTome)
 			{
 				if (target.life <= 0 && !target.SpawnedFromStatue && Player.ownedProjectileCounts[ModContent.ProjectileType<GhastSkullFriendly>()] <= 8)
-				{
-					for (int i = 0; i < 40; i++)
-					{
-						Dust dust = Main.dust[Dust.NewDust(target.position, target.width, target.height, DustID.UltraBrightTorch, 0f, -2f, 117, new Color(0, 255, 142), .6f)];
-
-						dust.noGravity = true;
-						dust.position.X += ((Main.rand.Next(-50, 51) / 20) - 1.5f);
-						if (dust.position != target.Center)
-							dust.velocity = target.DirectionTo(dust.position) * 6f;
-					}
-
-					int upperClamp = (int)MathHelper.Clamp(target.lifeMax, 0, 75);
-					int p = Projectile.NewProjectile(item.GetSource_OnHit(target), target.position, new Vector2(Main.rand.Next(-6, 6), Main.rand.Next(-5, -1)), ModContent.ProjectileType<GhastSkullFriendly>(), (int)MathHelper.Clamp((damage / 5 * 2), 0, upperClamp), knockback, Main.myPlayer);
-
-					Main.projectile[p].DamageType = item.DamageType;
-				}
+					SpawnForbiddenTomeGhasts(item.GetSource_OnHit(target), target, damage, knockback);
 			}
 
 			if (midasTouch)
@@ -882,6 +867,41 @@ namespace SpiritMod
 
 			if (crystalFlower && target.life <= 0 && Main.rand.NextBool(3))
 				CrystalFlowerItem.OnKillEffect(item.GetSource_OnHit(target), Player, target, damage);
+		}
+
+		private void SpawnForbiddenTomeGhasts(IEntitySource src, NPC target, int damage, float knockback)
+		{
+			int count = 0;
+
+			for (int i = 0; i < Main.maxProjectiles; ++i)
+			{
+				Projectile p = Main.projectile[i];
+
+				if (p.active && p.owner == Player.whoAmI && p.friendly)
+					count++;
+			}
+
+			if (count > 8)
+				return;
+
+			for (int i = 0; i < 20; i++)
+			{
+				Dust dust = Main.dust[Dust.NewDust(target.position, target.width, target.height, DustID.UltraBrightTorch, 0f, -2f, 117, new Color(0, 255, 142), .6f)];
+
+				dust.noGravity = true;
+				dust.position.X += ((Main.rand.Next(-50, 51) / 20) - 1.5f);
+				if (dust.position != target.Center)
+					dust.velocity = target.DirectionTo(dust.position) * 6f;
+			}
+
+			if (Main.myPlayer == Player.whoAmI)
+			{
+				int upperClamp = (int)MathHelper.Clamp(target.lifeMax, 0, 75);
+				var vel = new Vector2(Main.rand.Next(-6, 6), Main.rand.Next(-5, -1));
+				int dmg = (int)MathHelper.Clamp(damage / 2, 1, upperClamp);
+
+				Projectile.NewProjectile(src, target.position, vel, ModContent.ProjectileType<GhastSkullFriendly>(), dmg, knockback, Player.whoAmI);
+			}
 		}
 
 		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
@@ -921,20 +941,7 @@ namespace SpiritMod
 			if (forbiddenTome)
 			{
 				if (target.life <= 0 && !target.SpawnedFromStatue)
-				{
-					for (int i = 0; i < 40; i++)
-					{
-						Dust dust = Main.dust[Dust.NewDust(target.position, target.width, target.height, DustID.UltraBrightTorch, 0f, -2f, 117, new Color(0, 255, 142), .6f)];
-						dust.noGravity = true;
-						dust.position.X += (Main.rand.Next(-50, 51) / 20 - 1.5f);
-
-						if (dust.position != target.Center)
-							dust.velocity = target.DirectionTo(dust.position) * 6f;
-					}
-					int upperClamp = (int)MathHelper.Clamp(target.lifeMax, 0, 75);
-					int p = Projectile.NewProjectile(proj.GetSource_OnHit(target), target.position, new Vector2(Main.rand.Next(-6, 6), Main.rand.Next(-5, -1)), ModContent.ProjectileType<GhastSkullFriendly>(), (int)MathHelper.Clamp((damage / 5 * 2), 0, upperClamp), knockback, Main.myPlayer);
-					Main.projectile[p].DamageType = proj.DamageType;
-				}
+					SpawnForbiddenTomeGhasts(proj.GetSource_OnHit(target), target, proj.damage, knockback);
 			}
 
 			if (geodeRanged && proj.IsRanged() && Main.rand.NextBool(24))

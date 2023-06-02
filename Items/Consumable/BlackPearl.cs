@@ -38,12 +38,12 @@ namespace SpiritMod.Items.Consumable
 			if (!player.ZoneBeach)
 			{
 				Main.NewText("The Tide only ebbs by the calm of the sea.", 85, 172, 247);
-				return false;
+				return true;
 			}
 			else if (TideWorld.TheTide)
 			{
 				Main.NewText("The Tide's already come in!", 85, 172, 247);
-				return false;
+				return true;
 			}
 			return true;
 		}
