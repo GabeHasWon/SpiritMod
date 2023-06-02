@@ -80,7 +80,7 @@ namespace SpiritMod.Projectiles.Clubs
 			Projectile.friendly = false;
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
-			Projectile.alpha = 255;
+
 			SafeSetDefaults();
 		}
 
@@ -116,20 +116,20 @@ namespace SpiritMod.Projectiles.Clubs
 			DrawTrail(lightColor);
 
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 0, 0, 0), lightColor, Projectile.rotation, Origin, Projectile.scale, Effects, 0);
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 0, 0, 0), Projectile.GetAlpha(lightColor), Projectile.rotation, Origin, Projectile.scale, Effects, 0);
 			
 			SafeDraw(Main.spriteBatch, lightColor);
 			
 			if (Projectile.ai[0] >= ChargeTime && !released && _flickerTime < 16)
 			{
 				_flickerTime++;
-				//color = Color.White;
+
 				float flickerTime2 = _flickerTime / 20f;
 				float alpha = 1.5f - ((flickerTime2 * flickerTime2 / 2) + (2f * flickerTime2));
 				if (alpha < 0)
 					alpha = 0;
 
-				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 1, 0, 0), Color.White * alpha, Projectile.rotation, Origin, Projectile.scale, Effects, 1);
+				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 1, 0, 0), Projectile.GetAlpha(Color.White * alpha), Projectile.rotation, Origin, Projectile.scale, Effects, 1);
 			}
 			return false;
 		}
@@ -143,7 +143,7 @@ namespace SpiritMod.Projectiles.Clubs
 				for (int k = 0; k < Projectile.oldPos.Length; k++)
 				{
 					Vector2 drawPos = Main.player[Projectile.owner].Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
-					Color trailColor = lightColor * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) * .5f;
+					Color trailColor = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) * .5f;
 					Main.EntitySpriteDraw(texture, drawPos, texture.Frame(1, Main.projFrames[Type]), trailColor, Projectile.oldRot[k], Origin, Projectile.scale, Effects, 0);
 				}
 			}

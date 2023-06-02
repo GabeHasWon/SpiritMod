@@ -198,7 +198,11 @@ namespace SpiritMod
 						int npcCenterX = reader.ReadInt32();
 						int npcCenterY = reader.ReadInt32();
 
-						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, ModContent.NPCType<ForestWraith>(), 0, 2, 1, 0, 0);
+						int npcIndex = ModContent.NPCType<ForestWraith>();
+						if (NPC.AnyNPCs(npcIndex))
+							return;
+
+						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, npcIndex, 0, 2, 1, 0, 0);
 						Main.npc[npcID].netUpdate2 = true;
 
 						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You have disturbed the ancient Nature Spirits!"), new Color(0, 170, 60));
