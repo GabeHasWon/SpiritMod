@@ -1433,7 +1433,6 @@ namespace SpiritMod
 		public override void PostUpdateWorld()
 		{
 			Player player = Main.LocalPlayer;
-			MyPlayer modPlayer = player.GetSpiritPlayer();
 
 			if (player.ZoneSpirit())
 			{

@@ -177,7 +177,7 @@ namespace SpiritMod.Items.Weapon.Swung.AnimeSword
 					if (closest != null)
 					{
 						mostRecent = closest;
-						if (mostRecent.active)
+						if (mostRecent.active && Main.netMode != NetmodeID.Server)
 							SpiritMod.primitives.CreateTrail(new AnimePrimTrailTwo(mostRecent));
 					}
 					else if (Projectile.timeLeft > 15)

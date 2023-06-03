@@ -149,7 +149,7 @@ namespace SpiritMod.World.Sepulchre
 			for (int x = i - 50; x < i + 50; x++)
 				for (int y = j - 90; y < j + 50; y++)
 					if (Main.rand.NextBool(25) && (Main.tile[x, y].TileType == Tile || Main.tile[x, y].TileType == TileTwo) && Main.tile[x, y].HasTile)
-						WorldGen.KillTile(x, y);
+						Framing.GetTileSafely(i, j).ClearTile();
 
 			CreateChests(i, j);
 			PolishSepulchre(i, j);
@@ -374,7 +374,7 @@ namespace SpiritMod.World.Sepulchre
 			}
 		}
 
-		public bool MirrorsNearby(int x, int y)
+		public static bool MirrorsNearby(int x, int y)
 		{
 			for (int i = x - 6; i < x + 6; i++)
 			{

@@ -27,9 +27,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 				.AddTask(new RetrievalTask(ModContent.ItemType<Items.Weapon.Magic.ShadowflameStoneStaff>(), 1));
 		}
 
-		public override bool IsQuestPossible()
-		{
-			return MyWorld.gennedTower;
-		}
+		public override bool IsQuestPossible() => MyWorld.gennedTower;
 	}
 }

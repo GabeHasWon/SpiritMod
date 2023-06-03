@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.NPCs.Boss;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -38,10 +39,6 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Main.NewText("The Ancient Avian has awoken!", 175, 75, 255);
-			int n = NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16 + Main.rand.Next(-60, 60), j * 16 - 120, ModContent.NPCType<AncientFlyer>(), 0, 2, 1, 0, 0, Main.myPlayer);
-			Main.npc[n].netUpdate = true;
-
 			for (int l = 0; l < 2; l++)
 			{
 				float scale = 0.2f;
@@ -52,21 +49,37 @@ namespace SpiritMod.Tiles.Ambient
 
 				for (int k = 0; k < 2; ++k)
 				{
-					Gore gore = Main.gore[Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i * 16 + Main.rand.Next(-60, 60), j * 16 - 120), default, Main.rand.Next(61, 64), 1f)];
+					Gore gore = Main.gore[Gore.NewGore(new EntitySource_TileBreak(i, j), new Vector2(i * 16 + Main.rand.Next(-60, 60), j * 16 - 120), default, Main.rand.Next(61, 64), 1f)];
 					gore.velocity *= scale;
 					gore.velocity.X += 1f;
 					gore.velocity.Y += i == 0 ? -1f : 1f;
 				}
 			}
+			if (Main.netMode != NetmodeID.Server)
+			{
+				for (int k = 0; k < 20; k++)
+				{
+					Dust.NewDust(new Vector2(i * 16, j * 16 - 10), 0, 16, DustID.Dirt, 0.0f, -1, 0, new Color(), 0.5f);
+					Gore.NewGore(new EntitySource_TileBreak(i, j), new Vector2(i * 16 + Main.rand.Next(-10, 10), j * 16 + Main.rand.Next(-10, 10)), new Vector2(-1, 1), Mod.Find<ModGore>("Apostle2").Type, Main.rand.NextFloat(.7f, 1.8f));
+				}
+			}
+
+			if (NPC.AnyNPCs(ModContent.NPCType<AncientFlyer>()))
+				return;
+
+			if (Main.netMode == NetmodeID.SinglePlayer)
+			{
+				Main.NewText("The Ancient Avian has awoken!", 175, 75, 255);
+
+				NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16 + Main.rand.Next(-60, 60), j * 16 - 120, ModContent.NPCType<AncientFlyer>(), 0, 2, 1, 0, 0, Main.myPlayer);
+			}
+			else if (Main.netMode == NetmodeID.MultiplayerClient)
+			{
+				SpiritMultiplayer.SpawnBossFromClient((byte)Main.LocalPlayer.whoAmI, ModContent.NPCType<AncientFlyer>(), (i * 16) + Main.rand.Next(-60, 60), (j * 16) - 120);
+			}
 
 			SoundEngine.PlaySound(SoundID.Roar, new Vector2(i * 16, j * 16));
 			SoundEngine.PlaySound(SoundID.NPCDeath1);
-
-			for (int k = 0; k < 20; k++)
-			{
-				Dust.NewDust(new Vector2(i * 16, j * 16 - 10), 0, 16, DustID.Dirt, 0.0f, -1, 0, new Color(), 0.5f);
-				Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i * 16 + Main.rand.Next(-10, 10), j * 16 + Main.rand.Next(-10, 10)), new Vector2(-1, 1), Mod.Find<ModGore>("Apostle2").Type, Main.rand.NextFloat(.7f, 1.8f));
-			}
 		}
 	}
 }
