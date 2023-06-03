@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,34 +31,34 @@ namespace SpiritMod.NPCs.Shockhopper
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void OnSpawn(IEntitySource source)
-		{
-			CheckCollision();
-
-			for (int i = 0; i < (ShotLength / 10); i++)
-			{
-				Vector2 dustPos = Projectile.Center + new Vector2(Main.rand.NextFloat(ShotLength), Main.rand.NextFloat(-(Projectile.height / 2), Projectile.height / 2)).RotatedBy(Projectile.velocity.ToRotation());
-				
-				Dust.NewDustPerfect(dustPos, DustID.Phantasmal, Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f), 0, Color.White, Main.rand.NextFloat(0.2f, 0.5f)).noGravity = true;
-			}
-
-			if (!Main.dedServ)
-			{
-				for (int i = 0; i < 2; i++)
-				{
-					ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + (DirUnit * 10), Color.LightBlue, 80 - (i * 30), 20 - (i * 5), PulseCircle.MovementType.OutwardsSquareRooted)
-					{
-						Angle = Projectile.velocity.ToRotation(),
-						ZRotation = 0.6f,
-						RingColor = Color.LightBlue,
-						Velocity = DirUnit * -(0.5f + i)
-					});
-				}
-			}
-		}
-
 		public override bool PreAI()
 		{
+			if (Projectile.timeLeft == timeLeftMax)
+			{
+				CheckCollision();
+
+				for (int i = 0; i < (ShotLength / 10); i++)
+				{
+					Vector2 dustPos = Projectile.Center + new Vector2(Main.rand.NextFloat(ShotLength), Main.rand.NextFloat(-(Projectile.height / 2), Projectile.height / 2)).RotatedBy(Projectile.velocity.ToRotation());
+
+					Dust.NewDustPerfect(dustPos, DustID.Phantasmal, Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f), 0, Color.White, Main.rand.NextFloat(0.2f, 0.5f)).noGravity = true;
+				}
+
+				if (!Main.dedServ)
+				{
+					for (int i = 0; i < 2; i++)
+					{
+						ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + (DirUnit * 10), Color.LightBlue, 80 - (i * 30), 20 - (i * 5), PulseCircle.MovementType.OutwardsSquareRooted)
+						{
+							Angle = Projectile.velocity.ToRotation(),
+							ZRotation = 0.6f,
+							RingColor = Color.LightBlue,
+							Velocity = DirUnit * -(0.5f + i)
+						});
+					}
+				}
+			} //Just spawned
+
 			Projectile.position -= Projectile.velocity;
 			return false;
 		}

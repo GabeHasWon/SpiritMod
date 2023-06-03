@@ -47,6 +47,9 @@ using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
 using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 using SpiritMod.Items.Accessory.ShieldCore;
+using System.Threading.Channels;
+using SpiritMod.NPCs.Boss;
+using SpiritMod.NPCs.Reach;
 
 namespace SpiritMod
 {
@@ -1411,43 +1414,31 @@ namespace SpiritMod
 			}
 
 			//Randomly spawn floating asteroid debris without disrupting NPC spawn weight
-			if (Player.ZoneAsteroid())
+			if (Player.ZoneAsteroid() && Player.whoAmI == Main.myPlayer && Player.active && !Player.dead && Main.rand.NextBool(64))
 			{
-				int spawnChance = 64;
+				Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
 
-				bool run = false;
-				if (Main.netMode == NetmodeID.SinglePlayer) //Avoid running a player instance loop unless necessary
+				Rectangle spawnRect = screenRect;
+				int padding = 80 * 16; //40 tiles in each direction
+				spawnRect.Inflate(padding, padding);
+
+				for (int i = 0; i < 20; i++)
 				{
-					if (Main.rand.NextBool(spawnChance))
-						run = true;
-				}
-				else if (Main.rand.NextBool(spawnChance * Main.player.Count(x => x.active && !x.dead && x.ZoneAsteroid())))
-					run = true; //Multiply debris spawn odds for every valid player in the biome, since this would be called for all of them
+					Vector2 spawnPos = new Vector2(spawnRect.X + Main.rand.Next(spawnRect.Width), spawnRect.Y + Main.rand.Next(spawnRect.Height));
 
-				if (run)
-				{
-					Rectangle screenRect = new Rectangle((int)Main.screenPosition.X, (int)Main.screenPosition.Y, Main.screenWidth, Main.screenHeight);
-
-					Rectangle spawnRect = screenRect;
-					int padding = 80 * 16; //40 tiles in each direction
-					spawnRect.Inflate(padding, padding);
-
-					for (int i = 0; i < 20; i++)
+					var tilePos = spawnPos / 16;
+					bool inWorldBounds = tilePos.X < (Main.maxTilesX - 40) && tilePos.X > 40 && tilePos.Y < (Main.maxTilesY - 40) && tilePos.Y > 40;
+					
+					if (!screenRect.Contains(spawnPos.ToPoint()) && inWorldBounds && !Collision.SolidCollision(spawnPos, 10, 10))
 					{
-						Vector2 spawnPos = new Vector2(spawnRect.X + Main.rand.Next(spawnRect.Width), spawnRect.Y + Main.rand.Next(spawnRect.Height));
-
-						var tilePos = spawnPos / 16;
-						bool inWorldBounds = tilePos.X < (Main.maxTilesX - 40) && tilePos.X > 40 && tilePos.Y < (Main.maxTilesY - 40) && tilePos.Y > 40;
-						if (!screenRect.Contains(spawnPos.ToPoint()) && inWorldBounds && !Collision.SolidCollision(spawnPos, 10, 10))
+						if (NPC.CountNPCS(ModContent.NPCType<AsteroidDebris>()) < 30)
 						{
-							if (NPC.CountNPCS(ModContent.NPCType<AsteroidDebris>()) < 30)
-							{
-								int index = NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<AsteroidDebris>());
-								if (Main.netMode != NetmodeID.SinglePlayer)
-									NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, index);
-							}
-							return;
+							int id = NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<AsteroidDebris>());
+
+							if (Main.netMode == NetmodeID.MultiplayerClient)
+								NetMessage.SendData(MessageID.SyncNPC, number: id);
 						}
+						return;
 					}
 				}
 			}

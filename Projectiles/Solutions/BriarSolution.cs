@@ -25,6 +25,7 @@ namespace SpiritMod.Projectiles.Solutions
 			Projectile.extraUpdates = 2;
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
+			Projectile.timeLeft = 133;
 		}
 
 		public override bool? CanCutTiles() => false;

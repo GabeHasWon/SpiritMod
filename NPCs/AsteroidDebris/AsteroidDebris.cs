@@ -60,39 +60,34 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			{
 				if (NPC.life < 1)
 					NPC.life = 1;
+
 				return false;
 			}
 			return true;
-		}
-
-		public override void OnKill()
-		{
-			for (int i = 0; i < 4; i++)
-				Gore.NewGore(Entity.GetSource_Death(), NPC.Center, new Vector2(Main.rand.NextFloat(1.0f, 1.0f), Main.rand.NextFloat(1.0f, 1.0f)), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
-		}
-
-		public override void OnSpawn(IEntitySource source)
-		{
-			Shiny = Main.rand.NextBool(80);
-
-			if (Shiny)
-			{
-				NPC.lifeMax = 500;
-				NPC.life = NPC.lifeMax;
-				NPC.value = 43500f;
-				NPC.HitSound = SoundID.NPCHit42;
-				NPC.DeathSound = SoundID.NPCDeath44;
-				NPC.GivenName = "Hit Me!";
-			}
-
-			NPC.frameCounter = Main.rand.Next(Main.npcFrameCount[NPC.type]);
-			NPC.netUpdate = true;
 		}
 
 		public override bool PreAI()
 		{
 			if (fadingIn)
 			{
+				if (NPC.alpha == 255)
+				{
+					Shiny = Main.rand.NextBool(3);
+
+					if (Shiny)
+					{
+						NPC.lifeMax = 500;
+						NPC.life = NPC.lifeMax;
+						NPC.value = 43500f;
+						NPC.HitSound = SoundID.NPCHit42;
+						NPC.DeathSound = SoundID.NPCDeath44;
+						NPC.GivenName = "Hit Me!";
+					}
+
+					NPC.frameCounter = Main.rand.Next(Main.npcFrameCount[NPC.type]);
+					NPC.netUpdate = true;
+				} //Just spawned
+
 				NPC.alpha = Math.Max(0, NPC.alpha - (255 / 10));
 				if (NPC.alpha == 0)
 					fadingIn = false;
@@ -173,12 +168,13 @@ namespace SpiritMod.NPCs.AsteroidDebris
 
 		private void Bump(Vector2 newVelocity)
 		{
-			if (newVelocity == Vector2.Zero || Cooldown > 0)
+			if (Cooldown > 0)
 				return;
 
 			NPC.velocity += newVelocity;
-			NPC.netUpdate = true;
 			Cooldown = 5;
+
+			NPC.netUpdate = true;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

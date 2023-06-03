@@ -20,26 +20,30 @@ namespace SpiritMod.NPCs.Shockhopper
 	{
 		private const int TELEPORT_DISTANCE = 300;
 
-		private int Timer {
+		private AIState State
+		{
+			get => (AIState)(int)NPC.ai[0];
+			set
+			{
+				NPC.ai[0] = (int)value;
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+					NPC.netUpdate = true;
+			}
+		}
+
+		private int Timer
+		{
 			get => (int)NPC.ai[1];
 			set => NPC.ai[1] = value;
 		}
 
-		private Vector2 AngleToPlayer {
-			get => new Vector2(NPC.localAI[0], NPC.localAI[1]);
-			set {
+		private Vector2 AngleToPlayer
+		{
+			get => new(NPC.localAI[0], NPC.localAI[1]);
+			set
+			{
 				NPC.localAI[0] = value.X;
 				NPC.localAI[1] = value.Y;
-			}
-		}
-
-		private AIState State {
-			get => (AIState)(int)NPC.ai[0];
-			set {
-				NPC.ai[0] = (int)value;
-				if(Main.netMode != NetmodeID.MultiplayerClient) {
-					NPC.netUpdate = true;
-				}
 			}
 		}
 
@@ -145,9 +149,8 @@ namespace SpiritMod.NPCs.Shockhopper
 			{
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Vector2 angle = Vector2.UnitX.RotateRandom(Math.PI * 2);
-					NPC.position.X = player.Center.X + (int)(TELEPORT_DISTANCE * angle.X);
-					NPC.position.Y = player.Center.Y + (int)(TELEPORT_DISTANCE * angle.Y);
+					Vector2 angle = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi);
+					NPC.position = player.Center + (TELEPORT_DISTANCE * angle);
 					NPC.netUpdate = true;
 
 					if (Main.tile[(int)(NPC.position.X / 16), (int)(NPC.position.Y / 16)].HasTile)
