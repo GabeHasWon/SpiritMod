@@ -108,6 +108,7 @@ namespace SpiritMod.Tiles.Furniture.AuroraMonoliths
         }
     }
 
+	[Sacrifice(1)]
     public abstract class AuroraMonolithItem : ModItem
     {
 		public virtual int PlaceType => ModContent.TileType<NormalAuroraMonolith>();

@@ -6,7 +6,7 @@ using ReachPlatform = SpiritMod.Tiles.Furniture.Reach.ReachPlatform;
 
 namespace SpiritMod.Items.Placeable.Furniture.Reach
 {
-	[Sacrifice(1)]
+	[Sacrifice(200)]
 	public class ReachPlatformTile : ModItem
 	{
 		public override void SetStaticDefaults()

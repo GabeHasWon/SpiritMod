@@ -4,3 +4,9 @@
 - Fixed Tome of Forbidden Knowledge projectile spam
 - Made Tome of Forbidden Knowledge deal only magic damage because Terraria is dumb
 - Slightly buffed Tome of Forbidden Knowledge
+- Gave Elderbark Platform a research count of 200
+- Gave all Spirit potions a research count of 20
+- Gave all Aurora Monoliths a research count of 1
+- Removed Droseran Trapper banner as the enemy does not exist anymore
+- Fixed weird JavelinProj syncing
+- Made particles not spawn on server

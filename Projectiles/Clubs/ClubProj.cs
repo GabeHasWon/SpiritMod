@@ -57,7 +57,6 @@ namespace SpiritMod.Projectiles.Clubs
 			MaxKnockback = reader.ReadSingle();
 		}
 
-
 		public virtual void SafeAI() { }
 		public virtual void SafeDraw(SpriteBatch spriteBatch, Color lightColor) { }
 		public virtual void SafeSetDefaults() { }

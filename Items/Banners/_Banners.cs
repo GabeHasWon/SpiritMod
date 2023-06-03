@@ -305,10 +305,10 @@ namespace SpiritMod.Items.Banners
 		protected override int Style => 49;
 	}
 
-	public class DroseranTrapperBanner : BaseBannerItem
-	{
-		protected override int Style => 50;
-	}
+	//public class DroseranTrapperBanner : BaseBannerItem
+	//{
+	//	protected override int Style => 50;
+	//}
 
 	public class GladeWraithBanner : BaseBannerItem
 	{

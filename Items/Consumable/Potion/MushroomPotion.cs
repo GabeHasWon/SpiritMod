@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
+	[Sacrifice(20)]
 	public class MushroomPotion : ModItem
 	{
 		public override void SetStaticDefaults()

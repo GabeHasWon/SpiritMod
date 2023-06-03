@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
+	[Sacrifice(20)]
 	public class RunePotion : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -14,7 +15,6 @@ namespace SpiritMod.Items.Consumable.Potion
 			DisplayName.SetDefault("Runescribe Potion");
 			Tooltip.SetDefault("Magic attacks may cause enemies to erupt into runes\nIncreases magic damage by 5%");
 		}
-
 
 		public override void SetDefaults()
 		{

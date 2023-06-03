@@ -62,7 +62,7 @@ namespace SpiritMod.Particles
 		/// </summary>
 		public static void SpawnParticle(Particle particle)
 		{
-			if (activeParticles == MaxParticlesAllowed)
+			if (Main.netMode == Terraria.ID.NetmodeID.Server || activeParticles == MaxParticlesAllowed)
 				return;
 
 			particles[nextVacantIndex] = particle;

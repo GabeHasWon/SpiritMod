@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
+	[Sacrifice(20)]
 	public class TurtlePotion : ModItem
 	{
 		public override void SetStaticDefaults()

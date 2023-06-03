@@ -128,7 +128,7 @@ namespace SpiritMod.Projectiles.BaseProj
 		public override void SendExtraAI(BinaryWriter writer)
 		{
 			writer.Write(HadTarget);
-			writer.Write(_targetNPC == null ? -1 : _targetNPC.whoAmI);
+			writer.Write(_targetNPC is null ? -1 : _targetNPC.whoAmI);
 			writer.Write(CanRetarget);
 		}
 

@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
+	[Sacrifice(20)]
 	public class SpiritPotion : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -13,7 +14,6 @@ namespace SpiritMod.Items.Consumable.Potion
 			DisplayName.SetDefault("Spirit Potion");
 			Tooltip.SetDefault("Increases damage and critical strike chance by 5%\nGetting hurt occasionally spawns a damaging bolt to chase enemies");
 		}
-
 
 		public override void SetDefaults()
 		{

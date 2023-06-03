@@ -61,6 +61,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 			if (Counter < counterMax)
 				Counter++;
+
 			if (player.itemAnimation < 2)
 				Projectile.Kill();
 		}

@@ -123,6 +123,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 		}
 
 		public virtual void DrawGlowmask(ref Color lightColor) { }
+
 		public sealed override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
@@ -157,6 +158,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 		}
 
 		public virtual void HitNPC(NPC target, int damage, float knockback, bool crit) { }
+
 		public sealed override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (Projectile.numHits >= Projectile.penetrate)
@@ -182,18 +184,15 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 		{
 			writer.Write(Counter);
 			writer.Write(Released);
-
-			if (Embeded && StruckNPCIndex != null)
-				writer.Write(StruckNPCIndex.Value);
+			writer.Write(StruckNPCIndex ?? -1);
 		}
 
 		public override void ReceiveExtraAI(BinaryReader reader)
 		{
 			Counter = reader.Read();
 			Released = reader.ReadBoolean();
-
-			if (Embeded && StruckNPCIndex != null)
-				StruckNPCIndex = reader.Read();
+			int index = reader.Read();
+			StruckNPCIndex = index == -1 ? null : index;
 		}
 	}
 }

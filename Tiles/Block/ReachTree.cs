@@ -95,11 +95,12 @@ namespace SpiritMod.Tiles.Block
 				getRepeats.Add(3, 0.33f);
 				getRepeats.Add(6, 0.01f);
 
+				bool guava = Main.rand.NextBool();
 				int repeats = getRepeats;
 				for (int i = 0; i < repeats; ++i)
 				{
 					Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
-					Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, Main.rand.NextBool() ? ModContent.ItemType<Guava>() : ModContent.ItemType<Durian>(), 1);
+					Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, guava ? ModContent.ItemType<Guava>() : ModContent.ItemType<Durian>(), 1);
                 }
 			}
 

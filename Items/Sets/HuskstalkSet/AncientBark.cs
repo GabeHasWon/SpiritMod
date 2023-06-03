@@ -7,12 +7,7 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 {
 	public class AncientBark : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Elderbark");
-
-		}
-
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Elderbark");
 
 		public override void SetDefaults()
 		{
@@ -25,7 +20,6 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<BarkTileTile>();
 		}
 

@@ -2472,6 +2472,7 @@ namespace SpiritMod
 
 			if (Player.ZoneBriar() && Player.wet && Main.expertMode && !MyWorld.downedReachBoss)
 				Player.AddBuff(BuffID.Poisoned, 120);
+
 			if (cryoSet)
 			{
 				cryoTimer += .5f;
