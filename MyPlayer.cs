@@ -1433,10 +1433,18 @@ namespace SpiritMod
 					{
 						if (NPC.CountNPCS(ModContent.NPCType<AsteroidDebris>()) < 30)
 						{
-							int id = NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<AsteroidDebris>());
-
-							if (Main.netMode == NetmodeID.MultiplayerClient)
-								NetMessage.SendData(MessageID.SyncNPC, number: id);
+							if (Main.netMode == NetmodeID.SinglePlayer)
+							{
+								int npcIndex = Main.rand.NextBool(3) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
+								NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcIndex);
+							}
+							else if (Main.netMode == NetmodeID.MultiplayerClient)
+							{
+								ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnDebris, 2);
+								packet.Write((int)spawnPos.X);
+								packet.Write((int)spawnPos.Y);
+								packet.Send();
+							}
 						}
 						return;
 					}

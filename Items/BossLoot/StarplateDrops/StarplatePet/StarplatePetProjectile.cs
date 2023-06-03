@@ -125,6 +125,11 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 
 			if (ownerDist > 1400 * 1400)
 				maxSpeed = 12 + (float)((Math.Sqrt(ownerDist) - 1400) * 0.05f);
+			if (ownerDist > 3400 * 3400)
+			{
+				Projectile.Center = Owner.Center - (Vector2.Normalize(Projectile.velocity) * 500);
+				Projectile.velocity = Vector2.Normalize(Projectile.velocity) * 3;
+			}
 
 			if (Projectile.velocity.LengthSquared() > maxSpeed * maxSpeed)
 				Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
@@ -201,6 +206,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 			}
 
 			Main.EntitySpriteDraw(tex, Projectile.position - Main.screenPosition, rect, lightColor, Projectile.rotation, rect.Size() / 2f, 1f, effect, 0);
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.position - Main.screenPosition, rect, Color.White, Projectile.rotation, rect.Size() / 2f, 1f, effect, 0);
+
 			return false;
 		}
 	}
