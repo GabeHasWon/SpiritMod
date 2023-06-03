@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Audio;
 using System;
+using System.IO;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
@@ -138,5 +139,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		}
 
 		public override bool? CanDamage() => false;
+
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(released);
+
+		public override void ReceiveExtraAI(BinaryReader reader) => released = reader.ReadBoolean();
 	}
 }
