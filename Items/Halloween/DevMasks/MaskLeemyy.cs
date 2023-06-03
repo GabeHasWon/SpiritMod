@@ -6,16 +6,13 @@ namespace SpiritMod.Items.Halloween.DevMasks
 	[AutoloadEquip(EquipType.Head)]
 	public class MaskLeemyy : ModItem
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Leemyy's Mask");
 			Tooltip.SetDefault("Vanity item \n'Great for impersonating devs!'");
 
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
-			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}
-
 
 		public override void SetDefaults()
 		{

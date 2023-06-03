@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Halloween.DevMasks
 			DisplayName.SetDefault("Iggysaur's Mask");
 			Tooltip.SetDefault("Vanity item \n'Great for impersonating devs!'");
 
+			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}
-
 
 		public override void SetDefaults()
 		{

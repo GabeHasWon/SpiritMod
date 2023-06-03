@@ -10,6 +10,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class StarMask : ModItem
 	{
+		public const int CooldownTime = 720;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Astralite Visor");
@@ -34,7 +36,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 		public override void UpdateArmorSet(Player player)
 		{
 			string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-			player.setBonus = $"Double tap {tapDir} to deploy an energy field at the cursor position\nThis field lasts for five seconds and supercharges all ranged projectiles that pass through it\n12 second cooldown";
+			player.setBonus = $"Double tap {tapDir} to deploy an energy field at the cursor position\nThis field lasts for five seconds and supercharges all ranged projectiles that pass through it\n{CooldownTime / 60} second cooldown";
 			player.GetSpiritPlayer().starSet = true;
             player.endurance += 0.05f;
         }

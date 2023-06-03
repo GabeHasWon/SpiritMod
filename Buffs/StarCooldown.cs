@@ -13,7 +13,6 @@ namespace SpiritMod.Buffs
 			Main.pvpBuff[Type] = false;
 			Main.debuff[Type] = true;
 			Main.buffNoSave[Type] = true;
-			Terraria.ID.BuffID.Sets.LongerExpertDebuff[Type] = true;
 		}
 	}
 }
