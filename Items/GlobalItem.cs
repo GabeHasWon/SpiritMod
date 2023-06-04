@@ -37,6 +37,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<Cavefish>();
 			}
 			if (item.type == ItemID.Damselfish)
 			{
@@ -45,6 +46,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<Damselfish>();
 			}
 			if (item.type == ItemID.CrimsonTigerfish)
 			{
@@ -53,6 +55,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<CrismonTigerfish>();
 			}
 			if (item.type == ItemID.GoldenCarp)
 			{
@@ -61,6 +64,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<GoldenCarp>();
 			}
 			if (item.type == ItemID.SpecularFish)
 			{
@@ -69,6 +73,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<SpecularFish>();
 			}
 			if (item.type == ItemID.Prismite)
 			{
@@ -77,6 +82,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<Prismite>();
 			}
 			if (item.type == ItemID.Ebonkoi)
 			{
@@ -85,6 +91,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<Ebonkoi>();
 			}
 			if (item.type == ItemID.NeonTetra)
 			{
@@ -93,6 +100,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<NeonTetra>();
 			}
 			if (item.type == ItemID.AtlanticCod)
 			{
@@ -101,6 +109,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<AtlanticCod>();
 			}
 			if (item.type == ItemID.FrostMinnow)
 			{
@@ -109,6 +118,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<FrostMinnow>();
 			}
 			if (item.type == ItemID.RedSnapper)
 			{
@@ -117,6 +127,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<RedSnapper>();
 			}
 			if (item.type == ItemID.VariegatedLardfish)
 			{
@@ -125,6 +136,7 @@ namespace SpiritMod.Items
 				item.noMelee = true;
 				item.consumable = true;
 				item.autoReuse = true;
+				item.makeNPC = ModContent.NPCType<Lardfish>();
 			}
 		}
 
@@ -577,53 +589,6 @@ namespace SpiritMod.Items
 				tip.IsModifier = true;
 				tooltips.Insert(index++, tip);
 			}
-		}
-
-		public override bool? UseItem(Item item, Player player)
-		{
-			//Checks for spawning vanilla fish critters
-			if (FishCheck(item, player))
-				return true;
-
-			return null;
-		}
-
-		private static bool FishCheck(Item item, Player player)
-		{
-			int spawnType = -1;
-			bool fish = true;
-
-			if (item.type == ItemID.AtlanticCod)
-				spawnType = ModContent.NPCType<AtlanticCod>();
-			else if (item.type == ItemID.NeonTetra)
-				spawnType = ModContent.NPCType<NeonTetra>();
-			else if (item.type == ItemID.ArmoredCavefish)
-				spawnType = ModContent.NPCType<Cavefish>();
-			else if (item.type == ItemID.Damselfish)
-				spawnType = ModContent.NPCType<Damselfish>();
-			else if (item.type == ItemID.CrimsonTigerfish)
-				spawnType = ModContent.NPCType<CrismonTigerfish>();
-			else if (item.type == ItemID.GoldenCarp)
-				spawnType = ModContent.NPCType<GoldenCarp>();
-			else if (item.type == ItemID.SpecularFish)
-				spawnType = ModContent.NPCType<SpecularFish>();
-			else if (item.type == ItemID.Ebonkoi)
-				spawnType = ModContent.NPCType<Ebonkoi>();
-			else if (item.type == ItemID.Prismite)
-				spawnType = ModContent.NPCType<Prismite>();
-			else if (item.type == ItemID.FrostMinnow)
-				spawnType = ModContent.NPCType<FrostMinnow>();
-			else if (item.type == ItemID.RedSnapper)
-				spawnType = ModContent.NPCType<RedSnapper>();
-			else if (item.type == ItemID.VariegatedLardfish)
-				spawnType = ModContent.NPCType<Lardfish>();
-			else
-				fish = false;
-
-			if (spawnType != -1)
-				NPC.NewNPC(item.GetSource_ItemUse(item), (int)player.Center.X, (int)player.Center.Y, spawnType);
-
-			return fish;
 		}
 
 		private static readonly Vector2 SlotDimensions = new(52, 52);

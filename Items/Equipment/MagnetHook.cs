@@ -32,10 +32,12 @@ namespace SpiritMod.Items.Equipment
 			Projectile.timeLeft = 1200;
 		}
 
-		public override bool? CanUseGrapple(Player player) => player.ownedProjectileCounts[Projectile.type] == 0;
+		public override bool? CanUseGrapple(Player player) => player.ownedProjectileCounts[Type] <= 1;
 
 		int extendlength = 450;
 		public override float GrappleRange() => extendlength;
+
+		public override bool? SingleGrappleHook(Player player) => true;
 
 		public override void NumGrappleHooks(Player player, ref int numHooks) => numHooks = 1;
 

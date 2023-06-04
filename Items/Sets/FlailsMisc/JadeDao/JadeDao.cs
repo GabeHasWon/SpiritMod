@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using System.Collections.Generic;
 using Terraria.DataStructures;
-using static Humanizer.In;
 
 namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 {

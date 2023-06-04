@@ -181,7 +181,7 @@ namespace SpiritMod
 				case MessageType.BossSpawnFromClient:
 					if (Main.netMode == NetmodeID.Server)
 					{
-						//player = reader.ReadByte();
+						player = reader.ReadByte();
 						int npcIndex = reader.ReadInt32();
 						int npcCenterX = reader.ReadInt32();
 						int npcCenterY = reader.ReadInt32();

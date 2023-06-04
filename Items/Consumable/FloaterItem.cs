@@ -22,16 +22,10 @@ namespace SpiritMod.Items.Consumable
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = Item.useAnimation = 20;
-
 			Item.noMelee = true;
 			Item.consumable = true;
 			Item.autoReuse = true;
-		}
-
-		public override bool? UseItem(Player player)
-		{
-			NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<Floater1>());
-			return true;
+			Item.makeNPC = ModContent.NPCType<Floater1>();
 		}
 	}
 }

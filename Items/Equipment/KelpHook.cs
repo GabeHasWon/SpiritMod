@@ -42,6 +42,7 @@ namespace SpiritMod.Items.Equipment
 			Projectile.CloneDefaults(ProjectileID.GemHookAmethyst);
 			Projectile.timeLeft = 1200;
 		}
+
 		public override bool? CanUseGrapple(Player player)
 		{
 			int hooksOut = 0;
