@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Buffs.DoT;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -16,6 +17,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
+			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.OnFire, BuffID.OnFire3, BuffID.Poisoned, BuffID.Venom);
 		}
 		
 		public override void SetDefaults()

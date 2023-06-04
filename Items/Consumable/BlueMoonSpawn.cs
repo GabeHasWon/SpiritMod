@@ -1,7 +1,10 @@
+using Microsoft.Xna.Framework;
 using SpiritMod.Items.BossLoot.StarplateDrops;
 using Terraria;
 using Terraria.Audio;
+using Terraria.Chat;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
@@ -40,10 +43,20 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool? UseItem(Player player)
 		{
-			Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
-			SoundEngine.PlaySound(SoundID.Roar, player.Center);
-			MyWorld.blueMoon = true;
+			if (Main.netMode == NetmodeID.SinglePlayer)
+				Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
+			else if (Main.netMode == NetmodeID.Server)
+				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mystic Moon is rising..."), new Color(61, 255, 142));
 
+			SoundEngine.PlaySound(SoundID.Roar, player.Center);
+			
+			if (Main.netMode != NetmodeID.MultiplayerClient)
+			{
+				MyWorld.blueMoon = true;
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendData(MessageID.WorldData);
+			}
 			return true;
 		}
 

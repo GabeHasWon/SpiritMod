@@ -1436,7 +1436,7 @@ namespace SpiritMod
 						{
 							if (Main.netMode == NetmodeID.SinglePlayer)
 							{
-								int npcIndex = Main.rand.NextBool(3) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
+								int npcIndex = Main.rand.NextBool(GoldDebris.Chance) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
 								NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcIndex);
 							}
 							else if (Main.netMode == NetmodeID.MultiplayerClient)
