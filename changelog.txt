@@ -10,3 +10,28 @@
 - Removed Droseran Trapper banner as the enemy does not exist anymore
 - Fixed weird JavelinProj syncing
 - Made particles not spawn on server
+- Fixed Ancient Avian not spawning correctly from destroyed Avian Eggs in multiplayer
+- Fixed Anime Sword creating an error when used on servers
+- Fixed the player being unable to respawn when dying alone in the Asteroid biome in multiplayer
+- Fixed some Shockhopper laser visuals not appearing in multiplayer
+- Decreased the maximum lifetime of Olive Solution's Projectile
+- Fixed Asteroid Debris spawns not syncing correctly in multiplayer
+- Starplate Voyager Master Mode pet now uses a glowmask
+- Starplate Voyager Master Mode pet now follows the player more closely when moving long distances
+- Gave Green Lernean Hydra a more appropriate attack sound
+- Fixed Starplate Blaster firing as fast as you can pull the trigger
+- Changed Starplate Blaster hologram lighting
+- Fixed Astralite Armor's set bonus applying an incorrect cooldown time
+- Fixed Astralite Armor's cooldown debuff applying for twice as long in expert mode
+- Fixed Leemy and Iggysaur's masks not drawing the player's hair correctly when worn
+- Fixed a sheeting error related to Iggysaur's Mask
+- Prevented Sepulchre Pot and Corpsebloom gores from being created on servers
+- Fixed Cryolite Chestplate claiming to increase melee damage by 10%, despite actually increasing melee speed by 10%
+- Fixed Magnet Hook being unusable when the player is already grappled
+- All Spirit critter items now use Item.MakeNPC to spawn critters
+- Fixed Cystal shields sometimes attaching to other NPCs
+- Fixed event summons not working correctly in multiplayer
+- Spirit Flail velocities and range now scale appropriately with melee speed bonuses
+- Fixed Livewire chain visuals not drawing from the correct position when the projectile is attached to something
+- Mechromancer drops Autonaut vanity now
+- Updated description to include desperate cry to not use Workshop please god
