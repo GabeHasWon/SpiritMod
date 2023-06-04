@@ -50,6 +50,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 			set => Projectile.ai[0] = value;
 		}
 
+		public float MeleeSpeed => Owner.GetAttackSpeed(DamageClass.Melee);
+
 		public int launchDist;
 		public float spinDist;
 		public float spinSpeed;
@@ -144,7 +146,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 						OnLaunch(Owner);
 					}
 
-					launchDist = (int)(launchDist * multiplier);
+					launchDist = (int)(launchDist * MeleeSpeed * multiplier);
 					Timer = 0;
 					State = LAUNCHING;
 
@@ -255,7 +257,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 			}
 		}
 
-		public virtual float GetLaunchSpeed(Player player) => player.HeldItem.shootSpeed * (1f / player.GetAttackSpeed(DamageClass.Melee));
+		public virtual float GetLaunchSpeed(Player player) => player.HeldItem.shootSpeed * MeleeSpeed;
 		#endregion
 
 		public override void ModifyDamageScaling(ref float damageScale)

@@ -6,6 +6,7 @@ using SpiritMod.Mechanics.BoonSystem;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.Trails;
+using SpiritMod.NPCs.AsteroidDebris;
 using SpiritMod.NPCs.AuroraStag;
 using SpiritMod.NPCs.ExplosiveBarrel;
 using SpiritMod.NPCs.Reach;
@@ -14,6 +15,7 @@ using SpiritMod.Projectiles;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Channels;
 using Terraria;
 using Terraria.Chat;
 using Terraria.DataStructures;
@@ -108,6 +110,7 @@ namespace SpiritMod
 		{
 			var id = (MessageType)reader.ReadByte();
 			byte player;
+
 			switch (id)
 			{
 				case MessageType.AuroraData:
@@ -206,6 +209,18 @@ namespace SpiritMod
 						Main.npc[npcID].netUpdate2 = true;
 
 						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You have disturbed the ancient Nature Spirits!"), new Color(0, 170, 60));
+					}
+					break;
+				case MessageType.SpawnDebris:
+					if (Main.netMode == NetmodeID.Server)
+					{
+						int npcCenterX = reader.ReadInt32();
+						int npcCenterY = reader.ReadInt32();
+
+						int npcIndex = Main.rand.NextBool(GoldDebris.Chance) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
+
+						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, npcIndex);
+						Main.npc[npcID].netUpdate2 = true;
 					}
 					break;
 				case MessageType.StartTide:
@@ -310,6 +325,6 @@ namespace SpiritMod
 			}
 		}
 
-		public static void SpawnBossFromClient(byte whoAmI, int type, int x, int y) => SpiritMod.WriteToPacket(SpiritMod.Instance.GetPacket(), (byte)MessageType.BossSpawnFromClient, whoAmI, type, x, y).Send(-1);
+		public static void SpawnBossFromClient(byte whoAmI, int type, int x, int y) => SpiritMod.WriteToPacket(SpiritMod.Instance.GetPacket(), (byte)MessageType.BossSpawnFromClient, whoAmI, type, x, y).Send();
 	}
 }

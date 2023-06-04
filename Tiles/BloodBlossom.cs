@@ -55,7 +55,7 @@ namespace SpiritMod.Tiles
 			Main.LocalPlayer.cursorItemIconID = -1;// mod.ItemType("VinewrathBox");
 
 			if (NPC.AnyNPCs(ModContent.NPCType<ReachBoss>()) || NPC.AnyNPCs(ModContent.NPCType<ReachBoss1>()))
-				Main.LocalPlayer.cursorItemIconText = "";
+				Main.LocalPlayer.cursorItemIconText = string.Empty;
 			else
 				Main.LocalPlayer.cursorItemIconText = "Disturbing this flower surely isn't a good idea...";
 		}

@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.NPCs.MoonjellyEvent;
 using SpiritMod.Projectiles.Bullet;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,12 +32,7 @@ namespace SpiritMod.Items.Consumable
 			Item.noMelee = true;
 			Item.consumable = true;
 			Item.autoReuse = true;
-		}
-
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
-		{
-			NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<TinyLunazoa>());
-			return false;
+			Item.makeNPC = ModContent.NPCType<TinyLunazoa>();
 		}
 
 		public override void UpdateInventory(Player player)

@@ -14,7 +14,6 @@ using SpiritMod.Tiles.Furniture;
 using SpiritMod.Tiles.Piles;
 using SpiritMod.Tiles.Walls.Natural;
 using SpiritMod.Utilities;
-using SpiritMod.World.Micropasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,7 +91,7 @@ namespace SpiritMod.World
 			GenerateZiggurat();
 		}
 
-		private static List<Point> houseLocations = new();
+		private static readonly List<Point> houseLocations = new();
 
 		internal static void StealIslandInfo(On.Terraria.WorldGen.orig_IslandHouse orig, int i, int j, int islandStyle)
 		{

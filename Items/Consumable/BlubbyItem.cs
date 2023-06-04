@@ -7,10 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class BlubbyItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Blubby");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Blubby");
 
 		public override void SetDefaults()
 		{
@@ -25,12 +22,7 @@ namespace SpiritMod.Items.Consumable
 			Item.noMelee = true;
 			Item.consumable = true;
 			Item.autoReuse = true;
-		}
-
-		public override bool? UseItem(Player player)
-		{
-			NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<Blubby>());
-			return true;
+			Item.makeNPC = ModContent.NPCType<Blubby>();
 		}
 	}
 }

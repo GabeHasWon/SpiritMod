@@ -50,6 +50,7 @@ using SpiritMod.Items.Accessory.ShieldCore;
 using System.Threading.Channels;
 using SpiritMod.NPCs.Boss;
 using SpiritMod.NPCs.Reach;
+using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
 
 namespace SpiritMod
 {
@@ -1433,10 +1434,18 @@ namespace SpiritMod
 					{
 						if (NPC.CountNPCS(ModContent.NPCType<AsteroidDebris>()) < 30)
 						{
-							int id = NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<AsteroidDebris>());
-
-							if (Main.netMode == NetmodeID.MultiplayerClient)
-								NetMessage.SendData(MessageID.SyncNPC, number: id);
+							if (Main.netMode == NetmodeID.SinglePlayer)
+							{
+								int npcIndex = Main.rand.NextBool(GoldDebris.Chance) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
+								NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcIndex);
+							}
+							else if (Main.netMode == NetmodeID.MultiplayerClient)
+							{
+								ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnDebris, 2);
+								packet.Write((int)spawnPos.X);
+								packet.Write((int)spawnPos.Y);
+								packet.Send();
+							}
 						}
 						return;
 					}
@@ -2958,10 +2967,16 @@ namespace SpiritMod
 				
 				if (starSet && !Player.HasBuff(ModContent.BuffType<StarCooldown>()))
 				{
-					Player.AddBuff(ModContent.BuffType<StarCooldown>(), 1020);
+					Player.AddBuff(ModContent.BuffType<StarCooldown>(), StarMask.CooldownTime);
 					SoundEngine.PlaySound(SoundID.Item92, Player.position);
-					Vector2 mouse = Main.MouseScreen + Main.screenPosition;
-					Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), mouse, Vector2.Zero, ModContent.ProjectileType<EnergyFieldStarplate>(), 0, 0, Player.whoAmI);
+
+					if (Player.whoAmI == Main.myPlayer)
+					{
+						int id = Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<EnergyFieldStarplate>(), 0, 0, Player.whoAmI);
+
+						if (Main.netMode != NetmodeID.SinglePlayer)
+							NetMessage.SendData(MessageID.SyncProjectile, number: id);
+					}
 					for (int i = 0; i < 8; i++)
 					{
 						int num = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Electric, 0f, -2f, 0, default, .7f);

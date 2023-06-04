@@ -47,7 +47,6 @@ using SpiritMod.Items.Sets.OlympiumSet;
 using SpiritMod.Mechanics.Coverings;
 using static Terraria.ModLoader.Core.TmodFile;
 using SpiritMod.Items.Sets.DyesMisc.HairDye;
-using SpiritMod.GlobalClasses.Tiles;
 using SpiritMod.Items.Glyphs;
 using ReLogic.Content;
 using SpiritMod.Items.Books.UI.MaterialUI;

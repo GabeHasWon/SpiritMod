@@ -10,6 +10,12 @@ namespace SpiritMod.NPCs.Cystal
 {
 	public class Cystal_Shield : ModNPC
 	{
+		private int Parent
+		{
+			get => (int)NPC.ai[1];
+			set => NPC.ai[1] = value;
+		}
+
 		private Vector2 Location;
 		private Vector2 Location2;
 
@@ -58,21 +64,19 @@ namespace SpiritMod.NPCs.Cystal
 
 			if (NPC.ai[0] == 0)
 			{
-				Location = NPC.Center - Main.npc[(int)NPC.ai[1]].Center;
-				Location2 = NPC.Center - Main.npc[(int)NPC.ai[1]].Center;
+				Location = NPC.Center - Main.npc[Parent].Center;
+				Location2 = NPC.Center - Main.npc[Parent].Center;
 				NPC.ai[0]++;
 			}
 			else
 			{
-				Location2 = Location.RotatedBy((MathHelper.Pi / 180));
+				Location2 = Location.RotatedBy(MathHelper.Pi / 180);
 				Location = Location2;
-				NPC.Center = Location + Main.npc[(int)NPC.ai[1]].Center;
+				NPC.Center = Location + Main.npc[Parent].Center;
 			}
 
-			if (Main.npc[(int)NPC.ai[1]].life <= 0)
-			{
+			if (Main.npc[Parent].life <= 0 || Main.npc[Parent].type != ModContent.NPCType<Cystal>())
 				NPC.life = 0;
-			}
 
 			NPC.rotation = NPC.velocity.ToRotation();
 			Vector2 vector2_1 = (new Vector2(0.0f, (float)Math.Cos((double)NPC.frameCounter * 6.28318548202515 / 40.0 - 1.57079637050629)) * 32f).RotatedBy((double)NPC.rotation, Vector2.Zero);
@@ -113,10 +117,9 @@ namespace SpiritMod.NPCs.Cystal
 
 			int num9 = (int)(NPC.frameCounter + 1);
 			NPC.frameCounter = num9;
+
 			if (num9 >= 40)
-			{
 				NPC.frameCounter = 0;
-			}
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Cystal/Cystal_Shield").Value, screenPos);

@@ -9,8 +9,10 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.AsteroidDebris
 {
-	public class AsteroidDebris : ModNPC
+	public class GoldDebris : ModNPC
 	{
+		public const int Chance = 80;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Debris");
@@ -26,33 +28,27 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			NPC.height = 36;
 			NPC.damage = 0;
 			NPC.defense = 0;
-			NPC.lifeMax = 1;
+			NPC.lifeMax = 500;
 			NPC.dontCountMe = true;
-			NPC.knockBackResist = .8f;
+			NPC.knockBackResist = .3f;
 			NPC.noGravity = true;
 			NPC.chaseable = false;
             NPC.lavaImmune = true;
-			NPC.value = 0f;
+			NPC.value = 43500f;
 			NPC.aiStyle = -1;
 			NPC.npcSlots = 0;
+			NPC.HitSound = SoundID.NPCHit42;
+			NPC.DeathSound = SoundID.NPCDeath44;
+			NPC.GivenName = "Hit Me! ";
 			NPC.alpha = 255; //The NPC will fade in on spawn
-			NPC.ShowNameOnHover = false;
 
-            AIType = 0;
+			AIType = 0;
 		}
 
-		private int HitCooldown
+		private int Cooldown
 		{
 			get => (int)NPC.ai[0];
 			set => NPC.ai[0] = value;
-		}
-
-		public override bool CheckDead()
-		{
-			if (NPC.life < 1)
-				NPC.life = 1;
-
-			return false;
 		}
 
 		public override bool PreAI()
@@ -82,32 +78,24 @@ namespace SpiritMod.NPCs.AsteroidDebris
 
 		public override void AI()
 		{
-			if (HitCooldown <= 0)
+			NPC.TargetClosest();
+			//Allow the player to bump asteroid debris by moving into them
+			if (Main.player[NPC.target].Hitbox.Intersects(NPC.Hitbox) && Cooldown <= 0)
 			{
-				NPC.TargetClosest();
-
-				if (Main.player[NPC.target].Hitbox.Intersects(NPC.Hitbox)) //Allow the player to bump asteroid debris by moving into them
-				{
-					Bump(Main.player[NPC.target].velocity * .1f, 5);
-				}
-				else
-				{
-					foreach (Projectile proj in Main.projectile)
-					{
-						if (proj.getRect().Intersects(NPC.getRect()))
-							Bump(proj.velocity * .4f * NPC.knockBackResist, 12);
-					}
-				}
-
-				void Bump(Vector2 newVelocity, int cooldown)
-				{
-					NPC.velocity += newVelocity;
-					HitCooldown = cooldown;
-
-					NPC.netUpdate = true;
-				}
+				NPC.velocity += Main.player[NPC.target].velocity * .1f;
+				Cooldown = 5;
 			}
-			else HitCooldown--;
+
+			if (Cooldown > 0)
+				Cooldown--;
+
+			if (Main.rand.NextBool(12))
+			{
+				Dust dust = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.GoldCoin, 
+					0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 1.0f));
+				dust.noGravity = true;
+				dust.velocity = Vector2.Zero;
+			}
 
 			NPC.rotation += 0.002f + NPC.velocity.Length() / 40;
 
@@ -141,19 +129,35 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			}
 		}
 
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
+				static float Direction() => Main.rand.NextFloat(-1.0f, 1.0f) * 3f;
+
+				int randomAmount = Main.rand.Next(4, 7);
+				for (int i = 0; i < randomAmount; i++)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, new Vector2(Direction(), Direction()), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
+			}
+		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
+			float quoteant = 1f - (float)(NPC.life / (float)NPC.lifeMax);
+			float offset = Main.rand.NextFloat((float)(quoteant * 3f));
+			Texture2D glowTex = ModContent.Request<Texture2D>("SpiritMod/Effects/Masks/CircleGradient").Value;
+			Color glowCol = (Color.Goldenrod * quoteant) with { A = 0 };
+
+			spriteBatch.Draw(glowTex, NPC.Center - screenPos, null, glowCol, NPC.rotation, glowTex.Size() / 2, NPC.scale * .35f, SpriteEffects.None, 0f);
+			Utilities.DrawGodray.DrawGodrays(spriteBatch, NPC.Center - screenPos, Color.Goldenrod * (quoteant * .75f), quoteant * 45f, 20f, 5);
+
 			Texture2D texture = TextureAssets.Npc[NPC.type].Value;
 			Rectangle rect = texture.Frame(1, Main.npcFrameCount[Type], 0, (int)NPC.frameCounter, sizeOffsetY: -2);
 
-			spriteBatch.Draw(texture, NPC.Center - screenPos, rect, NPC.GetAlpha(drawColor), NPC.rotation, rect.Size() / 2, NPC.scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(texture, NPC.Center + new Vector2(offset) - screenPos, rect, NPC.GetAlpha(drawColor), NPC.rotation, rect.Size() / 2, NPC.scale, SpriteEffects.None, 0f);
 			
 			return false;
 		}
-
-		public override bool? CanBeHitByProjectile(Projectile projectile) => false;
-
-		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
 		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = NPC.Hitbox;
 	}

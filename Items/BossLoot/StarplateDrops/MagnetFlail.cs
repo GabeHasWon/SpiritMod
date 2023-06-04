@@ -362,10 +362,9 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			else
 			{
 				Points.Clear();
+
 				for (float i = 0; i < 1; i += 0.025f)
-				{
-					Points.Add(Vector2.Lerp(Entity.Center, _target.Center, i));
-				}
+					Points.Add(Vector2.Lerp(Entity.Center, (Entity is Projectile proj) ? Main.GetPlayerArmPosition(proj) : _target.Center, i));
 			}
 		}
 		public override void OnDestroy()

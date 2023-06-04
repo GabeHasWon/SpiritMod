@@ -335,7 +335,7 @@ namespace SpiritMod.NPCs.Hydra
 						Main.dust[d].noGravity = true;
 					}
 
-					SoundEngine.PlaySound(SoundID.Pixie with { PitchVariance = 0.4f }, NPC.Center);
+					SoundEngine.PlaySound(SoundID.NPCHit6 with { PitchVariance = 0.5f, Volume = 0.7f }, NPC.Center);
 					SoundEngine.PlaySound(SoundID.Item95 with { PitchVariance = 0.4f }, NPC.Center);
 
 					if (Main.netMode != NetmodeID.MultiplayerClient)

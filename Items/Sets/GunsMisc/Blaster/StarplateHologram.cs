@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Audio;
 using System;
+using System.IO;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
@@ -27,8 +28,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			set => Projectile.ai[1] = value;
 		}
 
+		private bool released;
 		private Vector2 direction;
-		private bool Hologram => Projectile.frame > 0;
+		private bool Hologram => Projectile.frame == 0;
 
 		public override void SetStaticDefaults()
 		{
@@ -48,7 +50,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
 			Projectile.timeLeft = 60;
-			Projectile.alpha = 80;
 		}
 
 		public override void OnSpawn(IEntitySource source)
@@ -62,20 +63,19 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Player player = Main.player[Projectile.owner];
 			player.heldProj = Projectile.whoAmI;
 
-			if (player.channel)
+			if (player.channel && !released)
 			{
-				player.itemAnimation = 2;
-				player.itemTime = 2;
-
-				Projectile.timeLeft = 2;
+				player.itemAnimation = player.itemTime = 30;
+				Projectile.timeLeft = 30;
 			}
+			else released = true;
 
 			Projectile.Center = player.Center + new Vector2(22f * (float)(1f - (AnimCounter * 2f)), -(player.direction * 10f) * AnimCounter).RotatedBy(direction.ToRotation());
 			Projectile.rotation = direction.ToRotation() + ((direction.X < 0) ? MathHelper.Pi : 0) - (AnimCounter * player.direction);
 
 			player.itemRotation = MathHelper.WrapAngle(direction.ToRotation() + ((player.direction < 0) ? MathHelper.Pi : 0));
 
-			if (Counter == (Hologram ? (player.itemAnimationMax / 2) : 0))
+			if (!released && Counter == (Hologram ? (player.itemAnimationMax / 2) : 0))
 			{
 				SetDirection(player);
 				AnimCounter = 0.5f;
@@ -108,7 +108,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			if (Counter > 0)
 				Counter--;
-			else
+			else if (!released)
 				Counter = player.itemAnimationMax;
 
 			if (AnimCounter > 0)
@@ -131,14 +131,17 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
 
 			SpriteEffects effects = (direction.X < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-			Vector2 offset = new Vector2(0, Projectile.gfxOffY);
-			Color color = Hologram ? Color.White : lightColor;
+			Color color = Hologram ? (Color.White with { A = 0 }) * .5f : lightColor;
 
-			Main.EntitySpriteDraw(texture, Projectile.Center + offset - Main.screenPosition, Projectile.DrawFrame(), Projectile.GetAlpha(color), 
+			Main.EntitySpriteDraw(texture, Projectile.Center + new Vector2(0, Projectile.gfxOffY) - Main.screenPosition, Projectile.DrawFrame(), color, 
 				Projectile.rotation, Projectile.DrawFrame().Size() / 2, Projectile.scale, effects, 0);
 			return false;
 		}
 
 		public override bool? CanDamage() => false;
+
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(released);
+
+		public override void ReceiveExtraAI(BinaryReader reader) => released = reader.ReadBoolean();
 	}
 }

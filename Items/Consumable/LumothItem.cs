@@ -28,12 +28,7 @@ namespace SpiritMod.Items.Consumable
 			Item.noMelee = true;
 			Item.consumable = true;
 			Item.autoReuse = true;
-		}
-
-		public override bool? UseItem(Player player)
-		{
-			NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<Lumoth>());
-			return true;
+			Item.makeNPC = ModContent.NPCType<Lumoth>();
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
