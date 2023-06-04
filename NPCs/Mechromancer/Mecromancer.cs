@@ -88,6 +88,7 @@ namespace SpiritMod.NPCs.Mechromancer
 			npcLoot.AddOneFromOptions(1, ModContent.ItemType<KnocbackGun>(), ModContent.ItemType<Items.Accessory.UnstableTeslaCoil.Unstable_Tesla_Coil>());
 			npcLoot.AddCommon(ItemID.RocketBoots, 25);
 			npcLoot.AddCommon<TechDrive>(1, 7, 11);
+			npcLoot.AddOneFromOptions<CoiledMask, CoiledLeggings, CoiledChestplate>(1);
 		}
 
 		int timer;
