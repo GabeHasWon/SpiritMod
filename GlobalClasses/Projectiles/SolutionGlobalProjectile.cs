@@ -21,10 +21,8 @@ namespace SpiritMod.GlobalClasses.Projectiles
 
 		public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => solutions.Contains(entity.type);
 
-		public override void AI(Projectile projectile)
+		public override void PostAI(Projectile projectile) //Conversion sets already handle behaviour for most tiles
 		{
-			base.AI(projectile);
-
 			int size = 4;
 			int i = (int)(projectile.position.X + projectile.width / 2f) / 16;
 			int j = (int)(projectile.position.Y + projectile.height / 2f) / 16;
@@ -33,30 +31,25 @@ namespace SpiritMod.GlobalClasses.Projectiles
 			{
 				for (int l = j - size; l <= j + size; l++)
 				{
-					if (!WorldGen.InWorld(k, l, 1) ||
-					!(Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size)))
+					if (!WorldGen.InWorld(k, l, 1) || !(Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(size * size + size * size)))
 						continue;
 
 					Tile tile = Framing.GetTileSafely(k, l);
 					Tile aboveTile = Framing.GetTileSafely(k, l - 1);
 
-					//This check shouldn't be necessary
-					if (/*WallID.Sets.Conversion.Grass[tile.WallType]*/ tile.WallType == ModContent.WallType<SpiritWallNatural>() || tile.WallType == ModContent.WallType<ReachWallNatural>())
+					if (tile.WallType == ModContent.WallType<SpiritWallNatural>() || tile.WallType == ModContent.WallType<ReachWallNatural>())
 					{
-						tile.WallType = (ushort)WallID.Grass;
+						tile.WallType = WallID.Grass;
 						WorldGen.SquareTileFrame(k, l);
 						NetMessage.SendTileSquare(-1, k, l, 1);
 					}
-
 					if (tile.TileType == ModContent.TileType<SpiritDirt>())
 					{
-						tile.TileType = (ushort)TileID.Dirt;
+						tile.TileType = TileID.Dirt;
 						WorldGen.SquareTileFrame(k, l);
 						NetMessage.SendTileSquare(-1, k, l, 1);
 					}
-
-					//Convert small plants
-					if (grassIndex.Contains(tile.TileType) && plantIndex.Contains(aboveTile.TileType))
+					if (grassIndex.Contains(tile.TileType) && plantIndex.Contains(aboveTile.TileType)) //Convert small plants
 					{
 						int type = Array.IndexOf(solutions, projectile.type) switch
 						{
@@ -76,7 +69,6 @@ namespace SpiritMod.GlobalClasses.Projectiles
 					}
 				}
 			}
-
 		}
 	}
 }

@@ -33,29 +33,11 @@ namespace SpiritMod.Projectiles.Clubs
 			MaxDamage = maxDamage;
 			MinKnockback = minKnockback;
 			MaxKnockback = maxKnockback;
-
-			Projectile.netUpdate = true;
 		}
 
-		public override void SendExtraAI(BinaryWriter writer)
-		{
-			writer.Write(ChargeTime);
-			writer.Write(Acceleration);
-			writer.Write(MinDamage);
-			writer.Write(MaxDamage);
-			writer.Write(MinKnockback);
-			writer.Write(MaxKnockback);
-		}
+		public override void SendExtraAI(BinaryWriter writer) => writer.Write(animTime);
 
-		public override void ReceiveExtraAI(BinaryReader reader)
-		{
-			ChargeTime = reader.ReadInt32();
-			Acceleration = reader.ReadSingle();
-			MinDamage = reader.ReadInt32();
-			MaxDamage = reader.ReadInt32();
-			MinKnockback = reader.ReadSingle();
-			MaxKnockback = reader.ReadSingle();
-		}
+		public override void ReceiveExtraAI(BinaryReader reader) => animTime = reader.ReadSingle();
 
 		public virtual void SafeAI() { }
 		public virtual void SafeDraw(SpriteBatch spriteBatch, Color lightColor) { }
@@ -115,18 +97,14 @@ namespace SpiritMod.Projectiles.Clubs
 			DrawTrail(lightColor);
 
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 0, 0, 0), Projectile.GetAlpha(lightColor), Projectile.rotation, Origin, Projectile.scale, Effects, 0);
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type]), Projectile.GetAlpha(lightColor), Projectile.rotation, Origin, Projectile.scale, Effects, 0);
 			
 			SafeDraw(Main.spriteBatch, lightColor);
 			
 			if (Projectile.ai[0] >= ChargeTime && !released && _flickerTime < 16)
 			{
-				_flickerTime++;
-
-				float flickerTime2 = _flickerTime / 20f;
-				float alpha = 1.5f - ((flickerTime2 * flickerTime2 / 2) + (2f * flickerTime2));
-				if (alpha < 0)
-					alpha = 0;
+				float flickerTime2 = ++_flickerTime / 20f;
+				float alpha = Math.Max(0, 1.5f - ((flickerTime2 * flickerTime2 / 2) + (2f * flickerTime2)));
 
 				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 1, 0, 0), Projectile.GetAlpha(Color.White * alpha), Projectile.rotation, Origin, Projectile.scale, Effects, 1);
 			}
@@ -204,15 +182,16 @@ namespace SpiritMod.Projectiles.Clubs
 				}
 				else
 				{
-					_angularMomentum = MathHelper.Lerp(_angularMomentum, 0, 0.08f);
+					_angularMomentum = MathHelper.Lerp(_angularMomentum, 0, 0.08f); //Slow to a stop after reaching full charge
 				}
 
+				//Adjust stats gradually with charge
 				Projectile.damage = (int)(MinDamage + (Projectile.ai[0] / ChargeTime * (MaxDamage - MinDamage)));
 				Projectile.knockBack = MinKnockback + (int)(Projectile.ai[0] / ChargeTime * (MaxKnockback - MinKnockback));
 			}
 			else
 			{
-				if (_angularMomentum > -60)
+				if (Math.Abs(_angularMomentum) < 60)
 					_angularMomentum -= GetAcceleration();
 
 				if (!released)
@@ -263,11 +242,9 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 			else
 			{
-				//Allow overshoot on collision
-				_angularMomentum = (int)(_lingerTimer * 0.065f);
+				_angularMomentum = (int)(_lingerTimer * 0.065f); //Allow overshoot on collision
 
-				_lingerTimer--;
-				if (_lingerTimer == 1)
+				if (--_lingerTimer == 1)
 				{
 					Projectile.active = false;
 					animTime = 2;

@@ -7,10 +7,6 @@ using Microsoft.Xna.Framework;
 using Terraria.Enums;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using SpiritMod.Prim;
-using SpiritMod.Utilities;
-using System.Collections.Generic;
-using System.Linq;
 using SpiritMod.Particles;
 
 namespace SpiritMod.Items.Sets.GreatswordSubclass
@@ -101,7 +97,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 			Projectile.timeLeft = 2;
             Player player = Main.player[Projectile.owner];
             player.heldProj = Projectile.whoAmI;
-            if (!primsCreated)
+            if (!primsCreated && Main.netMode != NetmodeID.Server)
             {
                 trail = new SolarSwordPrimTrail(Projectile);
                 SpiritMod.primitives.CreateTrail(trail);
@@ -125,8 +121,8 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 			{
 				if (charge > 60)
 				{
-					if (phantomProj == null)
-						phantomProj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center, player.DirectionTo(Main.MouseWorld) * 15, ModContent.ProjectileType<HeliosPhantomProj>(), Projectile.damage, 0, player.whoAmI);
+					phantomProj ??= Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center, player.DirectionTo(Main.MouseWorld) * 15, ModContent.ProjectileType<HeliosPhantomProj>(), Projectile.damage, 0, player.whoAmI);
+					
 					primCenter = phantomProj.Center;
 					if (!phantomProj.active || phantomProj.ModProjectile is not HeliosPhantomProj)
 						returned = true;
@@ -134,9 +130,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 				else
 					returned = true;
 				if (!released)
-				{
 					released = true;
-				}
 			}
 			else
 			{
@@ -177,7 +171,8 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
                 player.itemTime = player.itemAnimation = 2;
             }
 
-            trail._direction = player.direction;
+			if (Main.netMode != NetmodeID.Server)
+				trail._direction = player.direction;
         }
 
         /*private void CheckCollision(Player player) //I'm sorry forthis
@@ -247,7 +242,8 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 					Projectile.Center = primCenter + ((float)radians + 3.14f).ToRotationVector2() * 110;
 				else
 					Projectile.Center = primCenter + ((float)radians + 3.14f).ToRotationVector2() * 11 * growCounter / 6f;
-				trail.Points.Add(Projectile.Center - primCenter);
+				if (Main.netMode != NetmodeID.Server)
+					trail.Points.Add(Projectile.Center - primCenter);
 
 				if (grow)
 				{

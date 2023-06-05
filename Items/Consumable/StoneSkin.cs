@@ -1,5 +1,4 @@
 using SpiritMod.NPCs.Boss.Atlas;
-using SpiritMod.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -37,10 +36,13 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool? UseItem(Player player)
 		{
-			SoundEngine.PlaySound(SoundID.Roar, player.Center);
-			NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y - 600, ModContent.NPCType<Atlas>());
+			if (Main.netMode == NetmodeID.SinglePlayer)
+				NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<Atlas>());
+			else if (Main.netMode == NetmodeID.MultiplayerClient && player == Main.LocalPlayer)
+				SpiritMultiplayer.SpawnBossFromClient((byte)player.whoAmI, ModContent.NPCType<Atlas>(), (int)(int)player.Center.X, (int)(int)player.Center.Y - 600);
 
-			Main.NewText("The earth is trembling!", 255, 60, 255);
+			SoundEngine.PlaySound(SoundID.Roar, player.Center);
+
 			return true;
 		}
 

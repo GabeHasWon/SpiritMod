@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
+using Terraria.GameContent;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -25,9 +27,13 @@ namespace SpiritMod.Tiles.Furniture
 			TileID.Sets.CanBeSleptIn[Type] = true;
 			TileID.Sets.InteractibleByNPCs[Type] = true;
 			TileID.Sets.IsValidSpawnPoint[Type] = true;
+			TileID.Sets.HasOutlines[Type] = true;
 		}
 
+		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
+
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
+
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<SpiritBedItem>());
 
 		public override bool RightClick(int i, int j)
@@ -41,16 +47,28 @@ namespace SpiritMod.Tiles.Furniture
 			if (tile.TileFrameY % 38 != 0)
 				spawnY--;
 
-			player.FindSpawn();
-			if (player.SpawnX == spawnX && player.SpawnY == spawnY)
+			if (!Player.IsHoveringOverABottomSideOfABed(i, j))
 			{
-				player.RemoveSpawn();
-				Main.NewText("Spawn point removed!", 255, 240, 20);
+				if (player.IsWithinSnappngRangeToTile(i, j, PlayerSleepingHelper.BedSleepingMaxDistance))
+				{
+					player.GamepadEnableGrappleCooldown();
+					player.sleeping.StartSleeping(player, i, j);
+				}
 			}
-			else if (Player.CheckSpawn(spawnX, spawnY))
+			else
 			{
-				player.ChangeSpawn(spawnX, spawnY);
-				Main.NewText("Spawn point set!", 255, 240, 20);
+				player.FindSpawn();
+
+				if (player.SpawnX == spawnX && player.SpawnY == spawnY)
+				{
+					player.RemoveSpawn();
+					Main.NewText("Spawn point removed!", 255, 240, 20);
+				}
+				else if (Player.CheckSpawn(spawnX, spawnY))
+				{
+					player.ChangeSpawn(spawnX, spawnY);
+					Main.NewText("Spawn point set!", 255, 240, 20);
+				}
 			}
 			return true;
 		}

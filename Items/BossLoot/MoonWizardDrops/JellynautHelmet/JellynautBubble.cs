@@ -36,7 +36,8 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops.JellynautHelmet
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
 		}
 
-		public override bool IsArmorSet(Item head, Item body, Item legs) => (body.type >= ItemID.AmethystRobe && body.type <= ItemID.DiamondRobe || body.type == ItemID.GypsyRobe);
+		public override bool IsArmorSet(Item head, Item body, Item legs)
+			=> body.type >= ItemID.AmethystRobe && body.type <= ItemID.DiamondRobe || body.type == ItemID.GypsyRobe || body.type == ItemID.AmberRobe;
 
 		public override void UpdateEquip(Player player)
         {
