@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using SpiritMod.Gores;
 using SpiritMod.Items.ByBiome.Briar.Consumables;
 using SpiritMod.Items.Sets.HuskstalkSet;
 using SpiritMod.NPCs.Reach;

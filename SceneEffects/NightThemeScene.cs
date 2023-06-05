@@ -6,20 +6,20 @@ namespace SpiritMod.SceneEffects
 {
 	internal class NightThemeScene : ModSceneEffect
 	{
-		private SpiritMusicConfig config => ModContent.GetInstance<SpiritMusicConfig>();
-		private Player player => Main.LocalPlayer;
+		private static SpiritMusicConfig Config => ModContent.GetInstance<SpiritMusicConfig>();
+		private static Player Player => Main.LocalPlayer;
 
-		private bool ValidCorruption => config.CorruptNightMusic && player.ZoneCorrupt && player.ZoneOverworldHeight
-				&& !Main.dayTime && !player.ZoneHallow && !player.ZoneMeteor && !Main.bloodMoon;
-		private bool ValidOcean => config.LuminousMusic && player.ZoneBeach && MyWorld.luminousOcean && !Main.dayTime;
-		private bool ValidHallow => config.HallowNightMusic && player.ZoneHallow && player.ZoneOverworldHeight && !Main.dayTime && !Main.raining && !Main.bloodMoon
-				&& !player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneJungle && !player.ZoneBeach && !player.ZoneMeteor;
-		private bool ValidCrimson => config.CrimsonNightMusic && player.ZoneCrimson && player.ZoneOverworldHeight && !Main.dayTime
-				&& !player.ZoneHallow && !player.ZoneMeteor && !Main.bloodMoon;
-		private bool ValidSnow => config.SnowNightMusic && player.ZoneSnow && player.ZoneOverworldHeight && !Main.dayTime && !player.ZoneCorrupt
-				&& !player.ZoneMeteor && !player.ZoneCrimson && !player.ZoneHallow && !MyWorld.aurora && !Main.raining && !Main.bloodMoon;
-		private bool ValidDesert => config.DesertNightMusic && player.ZoneDesert && player.ZoneOverworldHeight && !Main.dayTime && !player.ZoneCorrupt
-				&& !player.ZoneCrimson && !player.ZoneBeach;
+		private static bool ValidCorruption => Config.CorruptNightMusic && Player.ZoneCorrupt && Player.ZoneOverworldHeight
+				&& !Main.dayTime && !Player.ZoneHallow && !Player.ZoneMeteor && !Main.bloodMoon;
+		private static bool ValidOcean => Config.LuminousMusic && Player.ZoneBeach && MyWorld.luminousOcean && !Main.dayTime;
+		private static bool ValidHallow => Config.HallowNightMusic && Player.ZoneHallow && Player.ZoneOverworldHeight && !Main.dayTime && !Main.raining && !Main.bloodMoon
+				&& !Player.ZoneCorrupt && !Player.ZoneCrimson && !Player.ZoneJungle && !Player.ZoneBeach && !Player.ZoneMeteor;
+		private static bool ValidCrimson => Config.CrimsonNightMusic && Player.ZoneCrimson && Player.ZoneOverworldHeight && !Main.dayTime
+				&& !Player.ZoneHallow && !Player.ZoneMeteor && !Main.bloodMoon;
+		private static bool ValidSnow => Config.SnowNightMusic && Player.ZoneSnow && Player.ZoneOverworldHeight && !Main.dayTime && !Player.ZoneCorrupt
+				&& !Player.ZoneMeteor && !Player.ZoneCrimson && !Player.ZoneHallow && !MyWorld.aurora && !Main.raining && !Main.bloodMoon;
+		private static bool ValidDesert => Config.DesertNightMusic && Player.ZoneDesert && Player.ZoneOverworldHeight && !Main.dayTime && !Player.ZoneCorrupt
+				&& !Player.ZoneCrimson && !Player.ZoneBeach;
 
 		public override int Music => GetMusic();
 

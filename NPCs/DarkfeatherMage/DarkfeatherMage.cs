@@ -239,7 +239,9 @@ namespace SpiritMod.NPCs.DarkfeatherMage
                 NPC.velocity.Y *= 0f;
 				if (NPC.ai[0] % 22 == 0 && NPC.ai[0] != 180)
                 {
-                    SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/CoilRocket"), NPC.Center);
+					if (Main.netMode != NetmodeID.Server)
+						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/CoilRocket"), NPC.Center);
+
                     int damage = Main.expertMode ? 13 : 20;
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + 21 * NPC.direction, NPC.Center.Y + 12, Main.rand.Next(0, 2) * NPC.spriteDirection, -1, ModContent.ProjectileType<DarkfeatherBomb>(), damage, 1, Main.myPlayer, 0, 0);
                 }

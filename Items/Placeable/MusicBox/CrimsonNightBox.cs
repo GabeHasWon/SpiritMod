@@ -1,15 +1,13 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CrimsonNightBoxTile = SpiritMod.Tiles.MusicBox.CrimsonNightBox;
+
 namespace SpiritMod.Items.Placeable.MusicBox
 {
 	[Sacrifice(1)]
 	public class CrimsonNightBox : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Music Box (Crimson- Night)");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Crimson- Night)");
 
 		public override void SetDefaults()
 		{
@@ -25,6 +23,7 @@ namespace SpiritMod.Items.Placeable.MusicBox
 			Item.rare = ItemRarityID.LightRed;
 			Item.value = 100000;
 			Item.accessory = true;
+			Item.canBePlacedInVanityRegardlessOfConditions = true;
 		}
 	}
 }

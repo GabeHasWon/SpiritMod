@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -11,7 +10,7 @@ namespace SpiritMod.Biomes
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Underground Spirit");
 
 		public override int Music => GetMusicFromDepth();
-		public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
+		public override SceneEffectPriority Priority => SceneEffectPriority.BiomeLow;
 
 		public override string BestiaryIcon => base.BestiaryIcon;
 		public override string BackgroundPath => MapBackground;
