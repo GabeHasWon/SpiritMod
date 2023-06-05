@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
+	[Sacrifice(1)]
 	public class LongFuse : ModItem
 	{
 		public override void SetStaticDefaults()

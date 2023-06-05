@@ -43,7 +43,5 @@ namespace SpiritMod.Mechanics.BoonSystem.HecateBoon
 
 			DrawSigil(spriteBatch);
 		}
-
-		public override void OnDeath() => DropOlympium(Main.rand.Next(3, 6));
 	}
 }

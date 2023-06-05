@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
 using Filters = Terraria.Graphics.Effects.Filters;
+using System.Linq;
 
 namespace SpiritMod.NPCs.Cystal
 {
@@ -193,6 +194,10 @@ namespace SpiritMod.NPCs.Cystal
 				Player player = Main.player[NPC.target];
 				Filters.Scene.Deactivate("CystalTower", player.position);
 				Filters.Scene.Deactivate("CystalBloodMoon", player.position);
+
+				//var children = Main.npc.Take(Main.maxNPCs).Where(x => x.type == ModContent.NPCType<Cystal_Shield>() && x.ai[1] == NPC.whoAmI);
+				//foreach (var npc in children)
+				//	npc.active = false;
 			}
 
 			for (int k = 0; k < 7; k++)
@@ -220,7 +225,7 @@ namespace SpiritMod.NPCs.Cystal
 			//	Item.NewItem(npc.Center, ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.CorruptDyeMaterial>());
 		}
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(68, 2, 1, 2);
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(ItemID.RottenChunk, 2, 1, 2);
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

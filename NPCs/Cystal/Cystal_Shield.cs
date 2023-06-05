@@ -76,7 +76,7 @@ namespace SpiritMod.NPCs.Cystal
 			}
 
 			if (Main.npc[Parent].life <= 0 || Main.npc[Parent].type != ModContent.NPCType<Cystal>())
-				NPC.life = 0;
+				NPC.active = false;
 
 			NPC.rotation = NPC.velocity.ToRotation();
 			Vector2 vector2_1 = (new Vector2(0.0f, (float)Math.Cos((double)NPC.frameCounter * 6.28318548202515 / 40.0 - 1.57079637050629)) * 32f).RotatedBy((double)NPC.rotation, Vector2.Zero);

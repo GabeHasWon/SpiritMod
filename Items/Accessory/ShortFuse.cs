@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
+	[Sacrifice(1)]
 	public class ShortFuse : ModItem
 	{
 		public override void SetStaticDefaults()

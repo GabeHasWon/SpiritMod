@@ -279,9 +279,7 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 		}
 
 		public override bool? CanDamage() => false;
-
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(isHovering);
-
 		public override void ReceiveExtraAI(BinaryReader reader) => isHovering = reader.ReadBoolean();
 	}
 }

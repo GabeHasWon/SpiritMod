@@ -9,6 +9,7 @@ namespace SpiritMod.Items.Pins
 	// Abstract class for a map pin.
 	// Contains all the code needed for a map pin item to place, move, or remove map pins.
 	// ColorName is the most important: it defines which map pin the item is associated with
+	[Sacrifice(1)]
 	public abstract class AMapPin : ModItem
 	{
 		// The name of this pin's color (capitalized, single word, please)

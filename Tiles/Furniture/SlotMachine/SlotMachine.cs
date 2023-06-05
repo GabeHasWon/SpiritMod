@@ -9,6 +9,7 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Furniture.SlotMachine
 {
+	[Sacrifice(1)]
 	public class SlotMachine : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Slot Machine");

@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 {
+	[Sacrifice(1)]
 	internal class VinewrathPetItem : ModItem
 	{
 		public override void SetStaticDefaults()

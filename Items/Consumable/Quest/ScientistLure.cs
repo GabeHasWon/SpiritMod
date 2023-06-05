@@ -54,7 +54,7 @@ namespace SpiritMod.Items.Consumable.Quest
 			recipe = CreateRecipe();
 			recipe.AddCondition(QuestCondition());
 			recipe.AddIngredient(ModContent.ItemType<Items.Material.OldLeather>(), 2);
-			recipe.AddIngredient(ItemID.TissueSample, 5);
+			recipe.AddIngredient(ItemID.Vertebrae, 5);
 			recipe.Register();
 		}
 

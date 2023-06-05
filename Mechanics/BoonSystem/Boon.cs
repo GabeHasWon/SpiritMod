@@ -101,8 +101,6 @@ namespace SpiritMod.Mechanics.BoonSystem
 
 			spriteBatch.Draw(Texture, SigilPosition - Main.screenPosition, null, color, 0, Texture.Size() / 2, npc.scale * regularscale, SpriteEffects.None, 0f);
 		}
-
-		protected void DropOlympium(int stack) => Item.NewItem(npc.GetSource_Death(), npc.Center, ModContent.ItemType<OlympiumToken>(), stack);
 		#endregion
 	}
 }

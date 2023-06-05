@@ -75,8 +75,6 @@ namespace SpiritMod.Mechanics.BoonSystem.HestiaBoon
 
 				gnpc.drawHestiaRunes = false;
 			}
-
-			DropOlympium(Main.rand.Next(3, 6));
 		}
 
 		public NPC[] myNPCs = new NPC[3];

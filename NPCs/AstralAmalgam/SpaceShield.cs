@@ -210,8 +210,8 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			Vector2 drawcenter = NPC.Center - Main.screenPosition;
 
 			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor, NPC.rotation, bloom.Size() / 2, NPC.scale * 0.66f * MathHelper.Lerp(scale, 1, 0.25f), SpriteEffects.None, 0);
-
 			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor * 0.2f, NPC.rotation, bloom.Size() / 2, NPC.scale * scale, SpriteEffects.None, 0);
+
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
 

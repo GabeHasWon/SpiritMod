@@ -15,7 +15,6 @@ namespace SpiritMod.NPCs.Critters
 			DisplayName.SetDefault("Packing Crate");
 			Main.npcFrameCount[NPC.type] = 1;
 			Main.npcCatchable[NPC.type] = true;
-			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
 		public override void SetDefaults()

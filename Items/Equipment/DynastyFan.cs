@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 
 namespace SpiritMod.Items.Equipment
 {
+	[Sacrifice(1)]
 	public class DynastyFan : ModItem
 	{
 		public override void SetStaticDefaults()

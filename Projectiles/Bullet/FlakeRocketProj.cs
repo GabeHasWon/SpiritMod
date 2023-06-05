@@ -26,6 +26,7 @@ namespace SpiritMod.Projectiles.Bullet
 			AIType = ProjectileID.Bullet;
 			Projectile.timeLeft = 240;
 		}
+
 		public void DoTrailCreation(TrailManager tM) => tM.CreateTrail(Projectile, new GradientTrail(Color.Lerp(Color.Cyan, Color.White, 0.7f) * 0.2f, Color.Transparent), new RoundCap(), new DefaultTrailPosition(), 30, 100);
 
 		public override void AI()
@@ -50,16 +51,18 @@ namespace SpiritMod.Projectiles.Bullet
 		{
 			SoundEngine.PlaySound(SoundID.Item14 with { PitchVariance = 0.1f}, Projectile.Center);
 			DustHelper.DrawDustImage(Projectile.Center, ModContent.DustType<WinterbornDust>(), 0.3f, "SpiritMod/Effects/Snowflakes/Flake" + Main.rand.Next(3), 0.4f);
+
 			float rot = Main.rand.NextFloat(MathHelper.TwoPi);
 			for (int i = 0; i < 8; i++)
 				DustHelper.DrawDustImage(Projectile.Center + (Vector2.UnitX.RotatedBy(rot + (MathHelper.TwoPi * i / 8f)) * 60), ModContent.DustType<WinterbornDust>(), 0.15f, "SpiritMod/Effects/Snowflakes/Flake" + Main.rand.Next(3), 0.25f, rot: Main.rand.NextFloat(MathHelper.TwoPi));
 
 			for (int i = 0; i < 30; i++)
 			{
-				float maxDist = 100;
-				float Dist = Main.rand.NextFloat(maxDist);
+				const float MaxDist = 100;
+
+				float Dist = Main.rand.NextFloat(MaxDist);
 				Vector2 offset = Main.rand.NextVector2Unit();
-				ParticleHandler.SpawnParticle(new SmokeParticle(Projectile.Center + (offset * Dist), Main.rand.NextFloat(5f) * offset * (1 - (Dist / maxDist)), new Color(30, 30, 90) * 0.5f, Main.rand.NextFloat(0.4f, 0.6f), 40));
+				ParticleHandler.SpawnParticle(new SmokeParticle(Projectile.Center + (offset * Dist), Main.rand.NextFloat(5f) * offset * (1 - (Dist / MaxDist)), new Color(30, 30, 90) * 0.5f, Main.rand.NextFloat(0.4f, 0.6f), 40));
 			}
 
 			for (int i = 0; i < 8; i++)

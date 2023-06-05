@@ -10,6 +10,7 @@ using Terraria.GameContent.ItemDropRules;
 
 namespace SpiritMod.Items.Sets.FloatingItems
 {
+	[Sacrifice(1)]
 	public class SunkenTreasure : FloatingItem
 	{
 		public override float SpawnWeight => 0.001f;

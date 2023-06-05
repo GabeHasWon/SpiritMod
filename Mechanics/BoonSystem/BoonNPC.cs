@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using Terraria.ID;
 using SpiritMod.Buffs;
+using SpiritMod.NPCs;
+using Terraria.GameContent.ItemDropRules;
+using SpiritMod.Items.Sets.OlympiumSet;
 
 namespace SpiritMod.Mechanics.BoonSystem
 {
@@ -119,12 +122,22 @@ namespace SpiritMod.Mechanics.BoonSystem
 			if (npc.life <= 0)
 				currentBoon?.OnDeath();
 		}
+
+		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+		{
+			if (npc.ModNPC is IBoonable) //Adds tokens to boonable drop table
+			{
+				LeadingConditionRule token = new LeadingConditionRule(new DropRuleConditions.NPCConditional("Drops when enemy is enchanted", CanDropTokens));
+				token.OnSuccess(ItemDropRule.Common(ModContent.ItemType<OlympiumToken>(), 1, 3, 6));
+				npcLoot.Add(token);
+			}
+		}
+
+		private bool CanDropTokens(NPC npc) => npc.GetGlobalNPC<BoonNPC>().currentBoon is not null;
 		#endregion
 
 		private static Boon GetBoon(NPC npc)
 		{
-			/*if (Main.rand.Next(5) != 1)
-				return null;*/
 			List<Boon> possibleBoons = new List<Boon>();
 
 			foreach (Boon boon in BoonLoader.LoadedBoons)
