@@ -42,7 +42,7 @@ namespace SpiritMod.Items.Consumable
 
 		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			itemLoot.Add(DropRules.LootPoolDrop.SameStack(5, 9, 1, 1, 1, ModContent.ItemType<SpiritOre>(), ModContent.ItemType<Rune>(), ModContent.ItemType<StarPiece>(),
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(5, 9, 1, 1, ModContent.ItemType<SpiritOre>(), ModContent.ItemType<Rune>(),
 				ModContent.ItemType<MoonStone>()));
 			itemLoot.AddCommon<Books.Book_SpiritArt>(10);
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(40, 80, 1, 6, 1, ModContent.ItemType<StarCutter>(), ModContent.ItemType<GhostJellyBomb>()));

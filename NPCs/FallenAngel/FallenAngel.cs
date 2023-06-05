@@ -118,7 +118,6 @@ namespace SpiritMod.NPCs.FallenAngel
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StarPiece>(), 1, 1, 2));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessory.FallenAngel>(), 5));
 		}
 

@@ -62,7 +62,7 @@ namespace SpiritMod.Projectiles
 				{
 					projectile.extraUpdates += 1;
 					projectile.scale *= 1.1f;
-					projectile.damage = (int)(projectile.damage * 1.25f);
+					projectile.damage = (int)(projectile.damage * 1.5f);
 					projectile.knockBack += 2;
 
 					throwerGloveBoost = true;

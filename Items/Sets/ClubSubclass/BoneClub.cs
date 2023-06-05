@@ -29,5 +29,12 @@ namespace SpiritMod.Items.Sets.ClubSubclass
             Item.rare = ItemRarityID.Orange;
             Item.shoot = ModContent.ProjectileType<Projectiles.Clubs.BoneClubProj>();
         }
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.Bone, 30);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.Register();
+		}
 	}
 }

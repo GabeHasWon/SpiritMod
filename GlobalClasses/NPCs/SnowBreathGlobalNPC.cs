@@ -13,7 +13,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 		{
 			Player closest = Main.player[Player.FindClosest(npc.position, npc.width, npc.height)];
 
-			if (closest.ZoneSnow)
+			if (closest.ZoneSnow || closest.ZoneNormalSpace)
 			{
 				if (npc.townNPC && Main.rand.NextBool(27))
 				{

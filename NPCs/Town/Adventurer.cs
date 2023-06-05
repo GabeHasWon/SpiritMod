@@ -119,21 +119,17 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			AddItem(ref shop, ref nextSlot, ItemID.TrapsightPotion, 2000);
-			AddItem(ref shop, ref nextSlot, ItemID.DartTrap, 5000);
-			AddItem(ref shop, ref nextSlot, ItemID.WhoopieCushion, 15000, NPC.downedBoss2);
-			AddItem(ref shop, ref nextSlot, ItemID.Book, 20, NPC.downedBoss3);
+			AddItem(ref shop, ref nextSlot, ItemID.TrapsightPotion, 5000);
+			AddItem(ref shop, ref nextSlot, ItemID.HunterPotion, 5000);
+			AddItem(ref shop, ref nextSlot, ItemID.Book, 200, NPC.downedBoss3);
             AddItem(ref shop, ref nextSlot, ItemType<WWPainting>());
             AddItem(ref shop, ref nextSlot, ItemType<SkullStick>(), 1000, Main.LocalPlayer.ZoneBriar());
 			AddItem(ref shop, ref nextSlot, ItemType<AncientBark>(), 200, Main.LocalPlayer.ZoneBriar());
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Sets.GunsMisc.PolymorphGun.PolymorphGun>(), check: NPC.downedMechBossAny);
-            AddItem(ref shop, ref nextSlot, ItemType<PinGreen>());
+			AddItem(ref shop, ref nextSlot, ItemType<PinGreen>());
 			AddItem(ref shop, ref nextSlot, ItemType<PinYellow>());
-          
             AddItem(ref shop, ref nextSlot, ItemType<VitalityStone>(), check: Main.bloodMoon);
             int glowStick = Main.moonPhase == 4 && !Main.dayTime ? ItemID.SpelunkerGlowstick : ItemID.StickyGlowstick;
             AddItem(ref shop, ref nextSlot, glowStick);
-
 			switch (Main.moonPhase)
             {
                 case 4 when !Main.dayTime:
@@ -144,7 +140,8 @@ namespace SpiritMod.NPCs.Town
                     AddItem(ref shop, ref nextSlot, ItemID.UltrabrightTorch);
                     break;
             }
-        }
+			AddItem(ref shop, ref nextSlot, ItemType<Items.Sets.GunsMisc.PolymorphGun.PolymorphGun>(), check: NPC.downedMechBossAny);
+		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
