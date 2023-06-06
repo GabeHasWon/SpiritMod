@@ -5,6 +5,7 @@ using SpiritMod.Items.Placeable;
 using SpiritMod.NPCs.Pagoda.SamuraiGhost;
 using SpiritMod.NPCs.Pagoda.Yuurei;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -98,7 +99,10 @@ namespace SpiritMod.Tiles
 			if (!player.dead)
 				player.AddBuff(ModContent.BuffType<PagodaCurse>(), 8);
 
-			if (Main.rand.NextBool(1100) && NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) < 20)
+			//Increase spawn odds per player in range
+			int spawnOdds = 1100 * ((Main.netMode == NetmodeID.SinglePlayer) ? 1 : Main.player.Where(x => x.active && !x.dead && x.DistanceSQ(new Vector2(i, j).ToWorldCoordinates()) < 1500 * 1500).Count());
+
+			if (Main.rand.NextBool(Math.Max(1, spawnOdds)) && NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) < 20)
 			{
 				Vector2 pos = new Vector2(i, j).ToWorldCoordinates() + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(350, 1000));
 
