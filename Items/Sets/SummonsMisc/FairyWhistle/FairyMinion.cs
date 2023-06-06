@@ -92,8 +92,8 @@ namespace SpiritMod.Items.Sets.SummonsMisc.FairyWhistle
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Projectile.QuickDrawGlowTrail(Main.spriteBatch, 0.3f * Projectile.Opacity);
-			Projectile.QuickDraw(Main.spriteBatch, drawColor: Color.White); 
+			Projectile.QuickDrawGlowTrail(null, 0.3f * Projectile.Opacity);
+			Projectile.QuickDraw(null, drawColor: Color.White); 
 			return false;
 		}
 
@@ -101,7 +101,8 @@ namespace SpiritMod.Items.Sets.SummonsMisc.FairyWhistle
 		{
 			Texture2D bloom = Mod.Assets.Request<Texture2D>("Effects/Masks/CircleGradient").Value;
 			float bloomOpacity = MathHelper.Clamp(1.5f * AiTimer / SHOOTTIME, 0.33f, 1f); //glow brighter when closer to shot time
-			spriteBatch.Draw(bloom, Projectile.Center - screenPos, null, Color.Lerp(new Color(124, 255, 47) * Projectile.Opacity, Color.White, 0.75f) * bloomOpacity, 0, bloom.Size() / 2, 0.17f, SpriteEffects.None, 0);
+
+			Main.EntitySpriteDraw(bloom, Projectile.Center - screenPos, null, Color.Lerp(new Color(124, 255, 47) * Projectile.Opacity, Color.White, 0.75f) * bloomOpacity, 0, bloom.Size() / 2, 0.17f, SpriteEffects.None, 0);
 		}
 	}
 }

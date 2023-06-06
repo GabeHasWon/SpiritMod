@@ -35,9 +35,19 @@ namespace SpiritMod.Projectiles.Clubs
 			MaxKnockback = maxKnockback;
 		}
 
-		public override void SendExtraAI(BinaryWriter writer) => writer.Write(animTime);
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			writer.Write(animTime);
+			writer.Write(_angularMomentum);
+			writer.Write(released);
+		}
 
-		public override void ReceiveExtraAI(BinaryReader reader) => animTime = reader.ReadSingle();
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			animTime = reader.ReadSingle();
+			_angularMomentum = reader.ReadSingle();
+			released = reader.ReadBoolean();
+		}
 
 		public virtual void SafeAI() { }
 		public virtual void SafeDraw(SpriteBatch spriteBatch, Color lightColor) { }

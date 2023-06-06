@@ -53,9 +53,9 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			return true;
 		}
 
-		private void AstralTeleport(Player player)
+		private static void AstralTeleport(Player player)
 		{
-			if (!Collision.SolidCollision(Main.MouseWorld, player.width, player.height))
+			if (player.whoAmI == Main.myPlayer && !Collision.SolidCollision(Main.MouseWorld, player.width, player.height))
 			{
 				RunTeleport(player, Main.MouseWorld);
 				player.AddBuff(ModContent.BuffType<Buffs.AstralMapCooldown>(), 10 * 60);
@@ -68,6 +68,9 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			player.velocity = Vector2.Zero;
 			SoundEngine.PlaySound(SoundID.Item6, player.Center);
 			DustHelper.DrawStar(player.Center, DustID.GoldCoin, pointAmount: 4, mainSize: 1.7425f, dustDensity: 6, dustSize: .65f, pointDepthMult: 3.6f, noGravity: true);
+
+			if (Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendData(MessageID.SyncPlayer, number: player.whoAmI);
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

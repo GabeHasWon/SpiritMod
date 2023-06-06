@@ -88,7 +88,7 @@ namespace SpiritMod
 		public bool mushroomPotion = false;
 		public bool flightPotion = false; 
 		public bool magnifyingGlass = false;
-		public bool ShieldCore = false;
+		public bool shieldCore = false;
 		public bool SoulStone = false;
 		public bool assassinMag = false;
 		public bool shadowFang = false;
@@ -508,7 +508,7 @@ namespace SpiritMod
 			seaSnailVenom = false;
 			clockActive = false;
 			bloodcourtSet = false;
-			ShieldCore = false;
+			shieldCore = false;
 			bloodyBauble = false;
 			elderbarkWoodSet = false;
 			cleftHorn = false;
@@ -1398,17 +1398,16 @@ namespace SpiritMod
 			if (!throwerGlove)
 				throwerStacks = 0;
 
-			if (ShieldCore)
+			if (shieldCore)
 			{
 				int shieldCount = 2;
 				int type = ModContent.ProjectileType<InterstellarShield>();
-				Player player = Main.player[Main.myPlayer];
 
-				if (player.ownedProjectileCounts[type] < shieldCount)
+				if (Player.ownedProjectileCounts[type] < shieldCount)
 				{
 					for (int i = 0; i < 2; i++)
 					{
-						Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<InterstellarShield>(), 0, 0, player.whoAmI, i * 360);
+						Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<InterstellarShield>(), 0, 0, Player.whoAmI, i * 360);
 						proj.ai[1] = -(InterstellarShield.cooldownTime * InterstellarShield.rechargeRate);
 					}
 				}
