@@ -211,13 +211,12 @@ namespace SpiritMod
 						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You have disturbed the ancient Nature Spirits!"), new Color(0, 170, 60));
 					}
 					break;
-				case MessageType.SpawnDebris:
+				case MessageType.SpawnNPCFromClient:
 					if (Main.netMode == NetmodeID.Server)
 					{
+						int npcIndex = reader.ReadInt32();
 						int npcCenterX = reader.ReadInt32();
 						int npcCenterY = reader.ReadInt32();
-
-						int npcIndex = Main.rand.NextBool(GoldDebris.Chance) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
 
 						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, npcIndex);
 						Main.npc[npcID].netUpdate2 = true;

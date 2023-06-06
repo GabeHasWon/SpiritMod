@@ -1322,7 +1322,7 @@ namespace SpiritMod
 			int y1 = (int)Player.Center.Y / 16;
 			var config = ModContent.GetInstance<SpiritClientConfig>();
 
-			if (Player.ZoneSnow && !Player.behindBackWall && Main.rand.NextBool(27))
+			if ((Player.ZoneSnow || Player.ZoneSkyHeight) && !Player.behindBackWall && Main.rand.NextBool(27))
 			{
 				Vector2 spawnPos = new Vector2(Player.Center.X + 8 * Player.direction, Player.Center.Y - 2f);
 				if (Player.sleeping.isSleeping)
@@ -1434,14 +1434,16 @@ namespace SpiritMod
 					{
 						if (NPC.CountNPCS(ModContent.NPCType<AsteroidDebris>()) < 30)
 						{
+							static int GetNPCIndex() => Main.rand.NextBool(GoldDebris.Chance) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
+
 							if (Main.netMode == NetmodeID.SinglePlayer)
 							{
-								int npcIndex = Main.rand.NextBool(GoldDebris.Chance) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
-								NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcIndex);
+								NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, GetNPCIndex());
 							}
-							else if (Main.netMode == NetmodeID.MultiplayerClient)
+							if (Main.netMode == NetmodeID.MultiplayerClient)
 							{
-								ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnDebris, 2);
+								ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnNPCFromClient, 3);
+								packet.Write(GetNPCIndex());
 								packet.Write((int)spawnPos.X);
 								packet.Write((int)spawnPos.Y);
 								packet.Send();

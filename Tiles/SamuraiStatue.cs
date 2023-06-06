@@ -5,7 +5,6 @@ using SpiritMod.Items.Placeable;
 using SpiritMod.NPCs.Pagoda.SamuraiGhost;
 using SpiritMod.NPCs.Pagoda.Yuurei;
 using System;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -91,22 +90,32 @@ namespace SpiritMod.Tiles
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-			if (closer)
+			if (!closer)
+				return;
+
+			Player player = Main.LocalPlayer;
+
+			if (!player.dead)
+				player.AddBuff(ModContent.BuffType<PagodaCurse>(), 8);
+
+			if (Main.rand.NextBool(1100) && NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) < 20)
 			{
-				Player player = Main.player[Main.myPlayer];
-				if (!player.dead)
-					player.AddBuff(ModContent.BuffType<PagodaCurse>(), 8);
-			}
+				Vector2 pos = new Vector2(i, j).ToWorldCoordinates() + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(350, 1000));
 
-			if (Main.rand.NextBool(1200) && NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) < 20)
-			{
-				Vector2 pos = new Vector2(i, j).ToWorldCoordinates() + new Vector2(Main.rand.NextFloat(350, 1000), 0).RotatedByRandom(MathHelper.TwoPi);
+				static int GetNPCIndex() => Main.rand.NextBool() ? ModContent.NPCType<SamuraiPassive>() : ModContent.NPCType<PagodaGhostPassive>();
 
-				while (Main.player.Take(Main.maxPlayers).Any(x => x.active && !x.dead && x.DistanceSQ(pos) < 200 * 200))
-					pos = new Vector2(i, j).ToWorldCoordinates() + new Vector2(Main.rand.NextFloat(350, 1000), 0).RotatedByRandom(MathHelper.TwoPi);
-
-				int type = Main.rand.NextBool() ? ModContent.NPCType<SamuraiPassive>() : ModContent.NPCType<PagodaGhostPassive>();
-				NPC.NewNPC(new EntitySource_TileUpdate(i, j), (int)pos.X, (int)pos.Y, type);
+				if (Main.netMode == NetmodeID.SinglePlayer)
+				{
+					NPC.NewNPC(new EntitySource_TileUpdate(i, j), (int)pos.X, (int)pos.Y, GetNPCIndex());
+				}
+				else
+				{
+					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnNPCFromClient, 3);
+					packet.Write(GetNPCIndex());
+					packet.Write((int)pos.X);
+					packet.Write((int)pos.Y);
+					packet.Send();
+				}
 
 				for (int v = 0; v < 6; ++v)
 					Gore.NewGore(new EntitySource_TileUpdate(i, j), pos, Vector2.Zero, 99);
