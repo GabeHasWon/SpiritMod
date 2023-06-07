@@ -1,5 +1,1 @@
-﻿- Made Briar scale up to world sizes larger than Large because I can
-- Made DecorSpamData a readonly struct
-- Improved Phase Indicator compatibility
-- Removed Stargloop system initalizing rendertargets
-- Disposed of Stargloop targets before they're constructed
+﻿- Fixed all NPCs being invisible

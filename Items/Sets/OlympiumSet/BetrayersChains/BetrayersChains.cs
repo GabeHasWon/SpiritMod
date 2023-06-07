@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.Prim;
 using Terraria.DataStructures;
-using static Humanizer.In;
 
 namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 {
