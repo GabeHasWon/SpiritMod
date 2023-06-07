@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs;
+using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot
 {
@@ -27,7 +28,21 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot
 
 		public override void RightClick(Player player)
 		{
-			Main.npc[NPC.NewNPC(player.GetSource_OpenItem(Item.type, "RightClick"), (int)player.Center.X + player.direction * 30, (int)player.Center.Y, ModContent.NPCType<SilverChestBottom>(), 0)].netUpdate = true;
+			int npcType = ModContent.NPCType<SilverChestBottom>();
+			Vector2 position = player.Center + (Vector2.UnitX * player.direction * 30);
+
+			if (Main.netMode == NetmodeID.SinglePlayer)
+			{
+				NPC.NewNPC(player.GetSource_OpenItem(Item.type, "RightClick"), (int)position.X, (int)position.Y, npcType);
+			}
+			else if (Main.netMode == NetmodeID.MultiplayerClient && player.whoAmI == Main.myPlayer)
+			{
+				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnNPCFromClient, 3);
+				packet.Write(npcType);
+				packet.Write((int)position.X);
+				packet.Write((int)position.Y);
+				packet.Send();
+			}
 		}
 	}
 }

@@ -240,7 +240,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 			NPC.spriteDirection = NPC.direction;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && (spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon) ? 0.035f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon ? 0.035f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

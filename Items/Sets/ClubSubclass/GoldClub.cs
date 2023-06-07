@@ -2,7 +2,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Projectiles.Clubs;
-using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Sets.ClubSubclass
 {
