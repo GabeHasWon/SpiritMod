@@ -293,7 +293,10 @@ namespace SpiritMod.Utilities
 				SpiritMod.primitives.DrawTargetNPC(Main.spriteBatch);
 
 			if (SpiritMod.Metaballs is null || !SpiritMod.Metaballs.loaded) //LTTS
+			{
+				orig(self, behindTiles);
 				return;
+			}
 			
 			SpiritMod.Metaballs.DrawEnemyLayer(Main.spriteBatch);
 			SpiritMod.Metaballs.DrawNebulaLayer(Main.spriteBatch);
