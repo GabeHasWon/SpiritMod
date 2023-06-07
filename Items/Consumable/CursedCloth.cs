@@ -36,7 +36,6 @@ namespace SpiritMod.Items.Consumable
 		{
 			if (Main.netMode == NetmodeID.SinglePlayer)
 				NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<Infernon>());
-
 			else if (Main.netMode == NetmodeID.MultiplayerClient && player == Main.LocalPlayer)
 			{
 				Vector2 spawnPos = player.Center;
@@ -55,6 +54,7 @@ namespace SpiritMod.Items.Consumable
 				SpiritMultiplayer.SpawnBossFromClient((byte)player.whoAmI, ModContent.NPCType<Infernon>(), (int)spawnPos.X, (int)spawnPos.Y);
 			}
 			SoundEngine.PlaySound(SoundID.Roar, player.position);
+
 			return true;
 		}
 

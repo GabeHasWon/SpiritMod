@@ -25,7 +25,7 @@ namespace SpiritMod.Tiles.Block
 		public override int DropWood() => ModContent.ItemType<SpiritWoodItem>();
 		public override Asset<Texture2D> GetTexture() => ModContent.Request<Texture2D>("SpiritMod/Tiles/Block/SpiritPalmTree");
 		public override Asset<Texture2D> GetTopTextures() => ModContent.Request<Texture2D>("SpiritMod/Tiles/Block/SpiritPalmTree_Tops");
-		public override Asset<Texture2D> GetOasisTopTextures() => ModContent.Request<Texture2D>("SpiritMod/Tiles/Block/SpiritPalmTree_Tops");
+		public override Asset<Texture2D> GetOasisTopTextures() => ModContent.Request<Texture2D>("SpiritMod/Tiles/Block/SpiritPalmTree_OasisTops");
 
 		public override int SaplingGrowthType(ref int style)
 		{

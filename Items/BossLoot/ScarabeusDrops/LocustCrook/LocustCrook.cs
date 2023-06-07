@@ -168,12 +168,12 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 
 			if (Projectile.ai[0] > 60)
 			{
-				Projectile.QuickDrawTrail(Main.spriteBatch, 0.5f, rotation, effects);
-				Projectile.QuickDrawGlowTrail(Main.spriteBatch, 0.5f, rotation: rotation, spriteEffects: effects);
+				Projectile.QuickDrawTrail(null, 0.5f, rotation, effects);
+				Projectile.QuickDrawGlowTrail(null, 0.5f, rotation: rotation, spriteEffects: effects);
 			}
 
-			Projectile.QuickDraw(Main.spriteBatch, rotation, effects);
-			Projectile.QuickDrawGlow(Main.spriteBatch, rotation: rotation, spriteEffects : effects);
+			Projectile.QuickDraw(null, rotation, effects);
+			Projectile.QuickDrawGlow(null, rotation: rotation, spriteEffects : effects);
 			return false;
 		}
 
@@ -296,7 +296,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 			Projectile.rotation = Projectile.velocity.ToRotation();
 		}
 
-		private bool CanHit(Vector2 center1, Vector2 center2) => Collision.CanHit(center1, 0, 0, center2, 0, 0);
+		private static bool CanHit(Vector2 center1, Vector2 center2) => Collision.CanHit(center1, 0, 0, center2, 0, 0);
 
 		public override bool? CanDamage() => Projectile.ai[0] > 30;
 
@@ -338,11 +338,11 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 				effects = SpriteEffects.FlipHorizontally;
 			}
 
-			Projectile.QuickDrawTrail(Main.spriteBatch, 0.5f, rotation, effects);
-			Projectile.QuickDrawGlowTrail(Main.spriteBatch, 0.5f, rotation: rotation, spriteEffects: effects);
+			Projectile.QuickDrawTrail(null, 0.5f, rotation, effects);
+			Projectile.QuickDrawGlowTrail(null, 0.5f, rotation: rotation, spriteEffects: effects);
 
-			Projectile.QuickDraw(Main.spriteBatch, rotation, effects);
-			Projectile.QuickDrawGlow(Main.spriteBatch, rotation: rotation, spriteEffects: effects); 
+			Projectile.QuickDraw(null, rotation, effects);
+			Projectile.QuickDrawGlow(null, rotation: rotation, spriteEffects: effects); 
 			return false;
 		}
 	}

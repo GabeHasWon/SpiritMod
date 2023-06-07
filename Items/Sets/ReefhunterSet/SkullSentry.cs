@@ -65,7 +65,6 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<IridescentScale>(), 12);
 			recipe.AddIngredient(ItemID.Lens, 3);
-			recipe.AddIngredient(ItemID.Worm);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}

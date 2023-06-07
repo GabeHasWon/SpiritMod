@@ -6,6 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Items.Placeable.Tiles;
+using Terraria.GameContent;
+using Terraria.DataStructures;
 
 namespace SpiritMod.Tiles.Furniture
 {
@@ -35,7 +37,9 @@ namespace SpiritMod.Tiles.Furniture
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GlowplateBedItem>());
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GlowplateBedItem>());
+
+		public override void ModifySleepingTargetInfo(int i, int j, ref TileRestingInfo info) => info.VisualOffset.Y -= 4f;
 
 		public override bool RightClick(int i, int j)
 		{
@@ -44,16 +48,32 @@ namespace SpiritMod.Tiles.Furniture
 			int spawnX = i - tile.TileFrameX / 18;
 			int spawnY = j + 2;
 			spawnX += tile.TileFrameX >= 72 ? 5 : 2;
+
 			if (tile.TileFrameY % 38 != 0)
 				spawnY--;
-			player.FindSpawn();
-			if (player.SpawnX == spawnX && player.SpawnY == spawnY) {
-				player.RemoveSpawn();
-				Main.NewText("Spawn point removed!", 255, 240, 20);
+
+			if (!Player.IsHoveringOverABottomSideOfABed(i, j))
+			{
+				if (player.IsWithinSnappngRangeToTile(i, j, PlayerSleepingHelper.BedSleepingMaxDistance))
+				{
+					player.GamepadEnableGrappleCooldown();
+					player.sleeping.StartSleeping(player, i, j);
+				}
 			}
-			else if (Player.CheckSpawn(spawnX, spawnY)) {
-				player.ChangeSpawn(spawnX, spawnY);
-				Main.NewText("Spawn point set!", 255, 240, 20);
+			else
+			{
+				player.FindSpawn();
+
+				if (player.SpawnX == spawnX && player.SpawnY == spawnY)
+				{
+					player.RemoveSpawn();
+					Main.NewText("Spawn point removed!", 255, 240, 20);
+				}
+				else if (Player.CheckSpawn(spawnX, spawnY))
+				{
+					player.ChangeSpawn(spawnX, spawnY);
+					Main.NewText("Spawn point set!", 255, 240, 20);
+				}
 			}
 			return true;
 		}
@@ -70,8 +90,10 @@ namespace SpiritMod.Tiles.Furniture
         {
             Tile tile = Main.tile[i, j];
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
+
             if (Main.drawToScreen)
                 zero = Vector2.Zero;
+
             int height = tile.TileFrameY == 36 ? 18 : 16;
             Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Furniture/GlowplateBed_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), new Color(150, 150, 150, 100), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }

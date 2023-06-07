@@ -56,8 +56,8 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 		{
 			Player player = Main.player[Projectile.owner];
 
-			if (player.GetSpiritPlayer().ShieldCore)
-				Projectile.timeLeft = 2;
+			if (player.GetSpiritPlayer().shieldCore)
+				Projectile.timeLeft = 10;
 
 			const int distance = 80;
 			int endurance = Math.Max(40, (int)(player.statDefense * 1.5f));

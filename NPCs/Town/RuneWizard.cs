@@ -98,61 +98,29 @@ namespace SpiritMod.NPCs.Town
 		{
 			AddItem(ref shop, ref nextSlot, ModContent.ItemType<NullGlyph>());
 
-			Item item = shop.item[nextSlot++];
-			CustomWare(item, ModContent.ItemType<FrostGlyph>());
-
-			item = shop.item[nextSlot++];
-			CustomWare(item, ModContent.ItemType<EfficiencyGlyph>());
+			CustomWare(shop.item[nextSlot++], ModContent.ItemType<FrostGlyph>());
+			CustomWare(shop.item[nextSlot++], ModContent.ItemType<EfficiencyGlyph>());
 
 			if (NPC.downedBoss1)
 			{
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<RadiantGlyph>());
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<SanguineGlyph>(), 3);
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<RadiantGlyph>());
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<SanguineGlyph>(), 3);
 			}
-
 			if (MyWorld.downedReachBoss)
-			{
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<StormGlyph>(), 2);
-			}
-
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<StormGlyph>(), 2);
 			if (NPC.downedBoss2)
-			{
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<UnholyGlyph>(), 2);
-			}
-
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<UnholyGlyph>(), 2);
 			if (NPC.downedBoss3)
-			{
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<VeilGlyph>(), 3);
-			}
-
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<VeilGlyph>(), 3);
 			if (NPC.downedQueenBee)
-			{
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<BeeGlyph>(), 3);
-			}
-
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<BeeGlyph>(), 3);
 			if (Main.hardMode)
-			{
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<BlazeGlyph>(), 3);
-			}
-
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<BlazeGlyph>(), 3);
 			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-			{
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<VoidGlyph>(), 4);
-			}
-
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<VoidGlyph>(), 4);
 			if (MyWorld.downedDusking)
-			{
-				item = shop.item[nextSlot++];
-				CustomWare(item, ModContent.ItemType<PhaseGlyph>(), 4);
-			}
+				CustomWare(shop.item[nextSlot++], ModContent.ItemType<PhaseGlyph>(), 4);
+
 			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchHead>(), 12000, !Main.dayTime);
 			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchBody>(), 15000, !Main.dayTime);
 			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchLegs>(), 10000, !Main.dayTime);

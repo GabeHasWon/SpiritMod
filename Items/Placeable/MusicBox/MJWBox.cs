@@ -1,15 +1,13 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using MJWBoxTile = SpiritMod.Tiles.MusicBox.MJWBox;
+
 namespace SpiritMod.Items.Placeable.MusicBox
 {
 	[Sacrifice(1)]
 	public class MJWBox : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Music Box (Moon Jelly Wizard)");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Moon Jelly Wizard)");
 
 		public override void SetDefaults()
 		{
@@ -25,6 +23,7 @@ namespace SpiritMod.Items.Placeable.MusicBox
 			Item.rare = ItemRarityID.LightRed;
 			Item.value = Terraria.Item.buyPrice(gold : 2);
 			Item.accessory = true;
+			Item.canBePlacedInVanityRegardlessOfConditions = true;
 		}
 	}
 }

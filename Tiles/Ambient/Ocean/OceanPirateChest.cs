@@ -155,7 +155,8 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 								player.inventory[k].TurnToAir();
 
 							if (Main.netMode == NetmodeID.MultiplayerClient)
-								NetMessage.SendData(MessageID.Unlock, -1, -1, null, player.whoAmI, 1f, left, top);
+								NetMessage.SendTileSquare(-1, left, top, 2);
+							//NetMessage.SendData(MessageID.Unlock, -1, -1, null, player.whoAmI, 1f, left, top);
 							break;
 						}
 					}

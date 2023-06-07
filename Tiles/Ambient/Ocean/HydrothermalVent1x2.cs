@@ -125,9 +125,10 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 		internal static void SpawnCritter<T>(int i, int j, int denominator) where T : ModNPC
 		{
 			int npcIndex = -1;
+			int type = ModContent.NPCType<T>();
 
-			if (Main.rand.NextBool(denominator) && NPC.MechSpawn((float)i * 16, (float)j * 16, ModContent.NPCType<T>()))
-				npcIndex = NPC.NewNPC(new EntitySource_TileUpdate(i, j), i * 16, j * 16, ModContent.NPCType<T>());
+			if (Main.rand.NextBool(denominator) && NPC.MechSpawn((float)i * 16, (float)j * 16, type) && NPC.CountNPCS(type) < 10)
+				npcIndex = NPC.NewNPC(new EntitySource_TileUpdate(i, j), i * 16, j * 16, type);
 
 			if (npcIndex >= 0)
 			{

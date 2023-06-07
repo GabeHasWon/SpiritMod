@@ -13,15 +13,15 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Orange Beam");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+			ProjectileID.Sets.TrailCacheLength[Type] = 4;
+			ProjectileID.Sets.TrailingMode[Type] = 0;
+			ProjectileID.Sets.MinionShot[Type] = true;
 		}
 
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
 			Projectile.hostile = false;
-			Projectile.DamageType = DamageClass.Summon;
 			Projectile.penetrate = 2;
 			Projectile.timeLeft = 80;
 			Projectile.height = 6;
@@ -31,9 +31,11 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 		}
 
 		public override void AI() => Projectile.rotation = Projectile.velocity.ToRotation();
+
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
+
 			for (int i = 0; i < 12; i++)
 			{
 				Vector2 velocity = -(Projectile.velocity * Main.rand.NextFloat(0.4f, 1.0f)).RotatedByRandom(0.52f);
@@ -47,15 +49,16 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[Projectile.type]; i++)
+			for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[Type]; i++)
 			{
-				float opacityMod = (ProjectileID.Sets.TrailCacheLength[Projectile.type] - i) / (float)ProjectileID.Sets.TrailCacheLength[Projectile.type];
+				float opacityMod = (ProjectileID.Sets.TrailCacheLength[Type] - i) / (float)ProjectileID.Sets.TrailCacheLength[Type];
 				Vector2 drawPosition = Projectile.oldPos[i] + (Projectile.Size / 2) - Main.screenPosition;
-				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPosition, null, Projectile.GetAlpha(Color.White) * opacityMod,
-					Projectile.rotation, TextureAssets.Projectile[Projectile.type].Value.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+				Main.EntitySpriteDraw(TextureAssets.Projectile[Type].Value, drawPosition, null, Projectile.GetAlpha(Color.White) * opacityMod,
+					Projectile.rotation, TextureAssets.Projectile[Type].Value.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			}
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(Color.White), 
-				Projectile.rotation, TextureAssets.Projectile[Projectile.type].Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Type].Value, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(Color.White), 
+				Projectile.rotation, TextureAssets.Projectile[Type].Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+			
 			return false;
 		}
 	}

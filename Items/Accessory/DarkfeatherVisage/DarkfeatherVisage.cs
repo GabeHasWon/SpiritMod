@@ -27,7 +27,8 @@ namespace SpiritMod.Items.Accessory.DarkfeatherVisage
             Item.defense = 2;
         }
 
-		public override bool IsArmorSet(Item head, Item body, Item legs) => (body.type >= ItemID.AmethystRobe && body.type <= ItemID.DiamondRobe || body.type == ItemID.GypsyRobe || body.type == ItemID.FlinxFurCoat);
+		public override bool IsArmorSet(Item head, Item body, Item legs)
+			=> body.type >= ItemID.AmethystRobe && body.type <= ItemID.DiamondRobe || body.type == ItemID.GypsyRobe || body.type == ItemID.AmberRobe || body.type == ItemID.FlinxFurCoat;
 		
 		public override void UpdateEquip(Player player)
         {
@@ -37,7 +38,7 @@ namespace SpiritMod.Items.Accessory.DarkfeatherVisage
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = $"Generates exploding darkfeather bolts around the player";
+			player.setBonus = "Generates exploding darkfeather bolts around the player";
 			player.GetSpiritPlayer().darkfeatherVisage = true;
 		}
 

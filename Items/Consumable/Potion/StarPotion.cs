@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Consumable.Potion
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<SoulBloom>(), 1);
 			recipe.AddIngredient(ItemID.Feather, 2);
-			recipe.AddIngredient(ModContent.ItemType<StarPiece>(), 1);
+			recipe.AddIngredient(ItemID.FallenStar, 2);
 			recipe.AddIngredient(ItemID.BottledWater, 1);
 			recipe.AddTile(TileID.Bottles);
 			recipe.Register();

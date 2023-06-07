@@ -15,7 +15,11 @@ using SpiritMod.Items.Sets.ReefhunterSet;
 using SpiritMod.Items.Sets.SummonsMisc.PigronStaff;
 using SpiritMod.Items.Weapon.Magic;
 using SpiritMod.Items.Weapon.Yoyo;
+using SpiritMod.Items.Armor.ProtectorateSet;
 using SpiritMod.NPCs;
+using SpiritMod.NPCs.Pagoda.Yuurei;
+using SpiritMod.NPCs.CavernCrawler;
+using SpiritMod.NPCs.Orbitite;
 using SpiritMod.NPCs.Boss.ReachBoss;
 using SpiritMod.NPCs.Winterborn;
 using SpiritMod.NPCs.WinterbornHerald;
@@ -66,7 +70,6 @@ namespace SpiritMod.GlobalClasses.NPCs
 		{
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<SolarRattle>(), npc, NPCID.SolarDrakomire, NPCID.SolarDrakomireRider);
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<ContentItems.Weapon.Summon.EngineeringRod>(), npc, NPCID.GrayGrunt, NPCID.RayGunner, NPCID.BrainScrambler);
-			DropLoot(npcLoot, 5, 5, ModContent.ItemType<ContentItems.Sets.BowsMisc.Eyeshot.Eyeshot>(), npc, NPCID.EyeofCthulhu);
 			DropLoot(npcLoot, 2, 2, ModContent.ItemType<Martian>(), npc, NPCID.MartianSaucer);
 			DropLoot(npcLoot, 1, 1, Main.rand.NextBool(2) ? ModContent.ItemType<Ancient>() : ModContent.ItemType<CultistScarf>(), npc, NPCID.CultistBoss);
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<IchorPendant>(), npc, NPCID.IchorSticker);
@@ -78,38 +81,36 @@ namespace SpiritMod.GlobalClasses.NPCs
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<PirateKey>(), npc, NPCID.PirateShip);
 			DropLoot(npcLoot, 6, 6, ModContent.ItemType<ContentItems.Sets.SummonsMisc.SanguineFlayer.SanguineFlayerItem>(), npc, NPCID.BigMimicCrimson);
 			DropLoot(npcLoot, 6, 5, ModContent.ItemType<ContentItems.Accessory.OpalFrog.OpalFrogItem>(), npc, NPCID.BigMimicHallow);
-			DropLoot(npcLoot, 15, 15, ModContent.ItemType<ContentItems.Sets.SwordsMisc.CurseBreaker.CurseBreaker>(), npc, NPCID.RedDevil);
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<ChaosCrystal>(), npc, NPCID.ChaosElemental);
-			DropLoot(npcLoot, 100, 80, ModContent.ItemType<ContentItems.Weapon.Thrown.PiecesOfEight.PiecesOfEight>(), npc, NPCID.PirateDeckhand);
-			DropLoot(npcLoot, 23, 23, ModContent.ItemType<SaucerBeacon>(), npc, NPCID.MartianOfficer);
+			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Weapon.Thrown.PiecesOfEight.PiecesOfEight>(), npc, NPCID.PirateDeckhand);
+			DropLoot(npcLoot, 25, 25, ModContent.ItemType<SaucerBeacon>(), npc, NPCID.MartianOfficer);
 			DropLoot(npcLoot, 35, 35, ModContent.ItemType<SnapperHat>(), npc, NPCID.Crawdad, NPCID.Crawdad2);
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<TrapperGlove>(), npc, NPCID.ManEater);
-			DropLoot(npcLoot, 500, 500, ModContent.ItemType<SnakeStaff>(), npc, NPCID.Lihzahrd, NPCID.LihzahrdCrawler);
+			DropLoot(npcLoot, 300, 300, ModContent.ItemType<SnakeStaff>(), npc, NPCID.Lihzahrd, NPCID.LihzahrdCrawler);
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<Glyph>(), npc, NPCID.Tim, NPCID.RuneWizard);
-			DropLoot(npcLoot, 200, 150, ModContent.ItemType<ContentItems.Accessory.Ukelele.Ukelele>(), npc, NPCID.AngryNimbus);
+			DropLoot(npcLoot, 12, 12, ModContent.ItemType<ContentItems.Accessory.Ukelele.Ukelele>(), npc, NPCID.AngryNimbus);
 			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Accessory.BowSummonItem.BowSummonItem>(), npc, NPCID.GoblinArcher);
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<ContentItems.Accessory.FlyingFishFin.Flying_Fish_Fin>(), npc, NPCID.FlyingFish);
-			DropLoot(npcLoot, 3, 3, ModContent.ItemType<ContentItems.Accessory.SeaSnailVenom.Sea_Snail_Poison>(), npc, NPCID.SeaSnail);
-			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Sets.SlingHammerSubclass.PossessedHammer>(), npc, NPCID.PossessedArmor);
-			DropLoot(npcLoot, 90, 75, ModContent.ItemType<GoblinSorcererStaff>(), npc, NPCID.GoblinSorcerer);
-			DropLoot(npcLoot, 110, 95, ModContent.ItemType<ContentItems.Sets.ClubSubclass.BoneClub>(), npc, NPCID.AngryBones, NPCID.AngryBonesBig, NPCID.AngryBonesBigMuscle);
+			DropLoot(npcLoot, 2, 1, ModContent.ItemType<ContentItems.Accessory.SeaSnailVenom.Sea_Snail_Poison>(), npc, NPCID.SeaSnail);
+			DropLoot(npcLoot, 50, 50, ModContent.ItemType<ContentItems.Sets.SlingHammerSubclass.PossessedHammer>(), npc, NPCID.PossessedArmor);
+			DropLoot(npcLoot, 80, 80, ModContent.ItemType<GoblinSorcererStaff>(), npc, NPCID.GoblinSorcerer);
 			DropLoot(npcLoot, 45, 45, ModContent.ItemType<ContentItems.Sets.BowsMisc.StarSpray.StarlightBow>(), npc, NPCID.Harpy);
 			DropLoot(npcLoot, 45, 45, ModContent.ItemType<ContentItems.Sets.MagicMisc.ZephyrBreath.BreathOfTheZephyr>(), npc, NPCID.Harpy);
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<TimScroll>(), npc, NPCID.Tim);
 			DropLoot(npcLoot, 30, 30, ItemID.SnowGlobe, npc, NPCID.IcyMerman);
 			DropLoot(npcLoot, 14, 10, ModContent.ItemType<SweetThrow>(), npc, NPCID.QueenBee);
-			DropLoot(npcLoot, 150, 150, ModContent.ItemType<IceVikingSculpture>(), npc, NPCID.UndeadViking);
-			DropLoot(npcLoot, 150, 150, ModContent.ItemType<IceFlinxSculpture>(), npc, NPCID.SnowFlinx);
-			DropLoot(npcLoot, 150, 150, ModContent.ItemType<IceBatSculpture>(), npc, NPCID.IceBat);
-			DropLoot(npcLoot, 120, 110, ModContent.ItemType<ContentItems.Accessory.RabbitFoot.Rabbit_Foot>(), npc, NPCID.Bunny);
-			DropLoot(npcLoot, 150, 150, ModContent.ItemType<WinterbornSculpture>(), npc, ModContent.NPCType<WinterbornMelee>(), ModContent.NPCType<WinterbornMagic>());
+			DropLoot(npcLoot, 100, 100, ModContent.ItemType<IceVikingSculpture>(), npc, NPCID.UndeadViking);
+			DropLoot(npcLoot, 100, 100, ModContent.ItemType<IceFlinxSculpture>(), npc, NPCID.SnowFlinx);
+			DropLoot(npcLoot, 100, 100, ModContent.ItemType<IceBatSculpture>(), npc, NPCID.IceBat);
+			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Accessory.RabbitFoot.Rabbit_Foot>(), npc, NPCID.Bunny);
+			DropLoot(npcLoot, 100, 100, ModContent.ItemType<WinterbornSculpture>(), npc, ModContent.NPCType<WinterbornMelee>(), ModContent.NPCType<WinterbornMagic>());
 			DropLoot(npcLoot, 5, 5, ModContent.ItemType<ContentItems.Consumable.Potion.BottomlessHealingPotion>(), npc, NPCID.Mimic);
 			DropLoot(npcLoot, 42, 42, ModContent.ItemType<ContentItems.Sets.MagicMisc.TerraStaffTree.DungeonStaff>(), npc, NPCID.DarkCaster);
 			DropLoot(npcLoot, 200, 200, ModContent.ItemType<ContentItems.Sets.GunsMisc.Swordsplosion.Swordsplosion>(), npc, NPCID.RustyArmoredBonesAxe, NPCID.RustyArmoredBonesFlail, NPCID.RustyArmoredBonesSword, NPCID.RustyArmoredBonesSwordNoArmor, NPCID.BlueArmoredBones, NPCID.BlueArmoredBonesMace,
 				NPCID.BlueArmoredBonesNoPants, NPCID.BlueArmoredBonesSword, NPCID.HellArmoredBones, NPCID.HellArmoredBonesSpikeShield, NPCID.HellArmoredBonesMace, NPCID.HellArmoredBonesSword);
-			DropLoot(npcLoot, 20, 16, ModContent.ItemType<FrostGiantBelt>(), npc, NPCID.UndeadViking);
-			DropLoot(npcLoot, 13, 13, ModContent.ItemType<ContentItems.Sets.GunsMisc.CaptainsRegards.CaptainsRegards>(), npc, NPCID.PirateShip, NPCID.PirateCaptain);
-			DropLoot(npcLoot, 13, 13, ModContent.ItemType<PirateCrate>(), npc, NPCID.PirateShip);
+			DropLoot(npcLoot, 15, 15, ModContent.ItemType<FrostGiantBelt>(), npc, NPCID.UndeadViking);
+			DropLoot(npcLoot, 10, 10, ModContent.ItemType<ContentItems.Sets.GunsMisc.CaptainsRegards.CaptainsRegards>(), npc, NPCID.PirateShip, NPCID.PirateCaptain);
+			DropLoot(npcLoot, 3, 3, ModContent.ItemType<PirateCrate>(), npc, NPCID.PirateShip);
 			DropLoot(npcLoot, 175, 175, ModContent.ItemType<ContentItems.Sets.BowsMisc.Morningtide.Morningtide>(), npc, NPCID.HellArmoredBones, NPCID.HellArmoredBonesSpikeShield, NPCID.HellArmoredBonesMace, NPCID.HellArmoredBonesSword);
 
 			DownedBossLoot(npcLoot, DropRuleConditions.BossDowned.Bosses.Scarabeus, 40, 40, ModContent.ItemType<DesertSlab>(), npc, NPCID.TombCrawlerHead);
@@ -126,6 +127,8 @@ namespace SpiritMod.GlobalClasses.NPCs
 			DropLoot(npcLoot, 40, 30, ModContent.ItemType<JellyCandle>(), npc, NPCID.PinkJellyfish);
 			DropLoot(npcLoot, 32, 28, ModContent.ItemType<ShadowCollar>(), npc, NPCID.Hellhound);
 			DropLoot(npcLoot, 50, 40, ModContent.ItemType<DemonTail>(), npc, NPCID.Demon, NPCID.VoodooDemon, NPCID.RedDevil);
+			DropLoot(npcLoot, 15, 15, ModContent.ItemType<ProtectorateBody>(), npc, ModContent.NPCType<PagodaGhostHostile>(), ModContent.NPCType<PagodaGhostPassive>(), ModContent.NPCType<CavernCrawler>(), ModContent.NPCType<Mineroid>());
+			DropLoot(npcLoot, 15, 15, ModContent.ItemType<ProtectorateLegs>(), npc, ModContent.NPCType<PagodaGhostHostile>(), ModContent.NPCType<PagodaGhostPassive>(), ModContent.NPCType<CavernCrawler>(), ModContent.NPCType<Mineroid>());
 
 			if (new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }.Contains(npc.type)) //Drops for EoW here
 			{

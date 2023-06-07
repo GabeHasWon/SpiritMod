@@ -149,13 +149,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 					{
 						int timeLeft = Main.rand.Next(20, 40);
 
-						StarParticle particle = new StarParticle(
-							NPC.Center,
-							Main.rand.NextVector2Circular(10, 7),
-							Color.Cyan,
-							Main.rand.NextFloat(0.15f, 0.3f),
-							timeLeft);
-							ParticleHandler.SpawnParticle(particle);
+						ParticleHandler.SpawnParticle(new StarParticle(NPC.Center, Main.rand.NextVector2Circular(10, 7), Color.Cyan, Main.rand.NextFloat(0.15f, 0.3f), timeLeft));
 					}
 				}
 				else if (NPC.scale > 1)

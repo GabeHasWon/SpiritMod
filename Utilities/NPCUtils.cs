@@ -15,11 +15,11 @@ namespace SpiritMod
 
 		public static void AddItem(ref Chest shop, ref int nextSlot, int item, int price = -1, bool check = true)
 		{
-			if (check) {
+			if (check)
+			{
 				shop.item[nextSlot].SetDefaults(item);
-				if (price >= 0) {
+				if (price >= 0)
 					shop.item[nextSlot].shopCustomPrice = price;
-				}
 
 				nextSlot++;
 			}

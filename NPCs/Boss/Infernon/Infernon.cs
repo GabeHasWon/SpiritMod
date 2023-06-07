@@ -13,6 +13,8 @@ using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Placeable.Relics;
 using SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet;
+using Terraria.Chat;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss.Infernon
 {
@@ -323,20 +325,21 @@ namespace SpiritMod.NPCs.Boss.Infernon
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int k = 0; k < 5; k++)
-			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, hitDirection, -1f, 0, default, 1f);
-			}
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				if (Main.netMode != NetmodeID.MultiplayerClient && NPC.life <= 0)
+				if (Main.expertMode)
 				{
-					if (Main.expertMode)
-					{
+					if (Main.netMode == NetmodeID.SinglePlayer)
 						Main.NewText("You have yet to defeat the true master of Hell...", 220, 100, 100);
-						Vector2 spawnAt = NPC.Center + new Vector2(0f, (float)NPC.height);
-						NPC.NewNPC(NPC.GetSource_Death(), (int)spawnAt.X, (int)spawnAt.Y, ModContent.NPCType<InfernoSkull>());
-					}
+					else
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You have yet to defeat the true master of Hell..."), new Color(220, 100, 100));
+
+					Vector2 spawnAt = NPC.Center + new Vector2(0f, (float)NPC.height);
+					NPC.NewNPC(NPC.GetSource_Death(), (int)spawnAt.X, (int)spawnAt.Y, ModContent.NPCType<InfernoSkull>());
 				}
+
 				NPC.position.X = NPC.position.X + (NPC.width / 2);
 				NPC.position.Y = NPC.position.Y + (NPC.height / 2);
 				NPC.width = 156;

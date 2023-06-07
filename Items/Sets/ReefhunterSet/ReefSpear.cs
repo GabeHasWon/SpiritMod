@@ -113,7 +113,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 		{
 			var recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<IridescentScale>(), 10);
-			recipe.AddIngredient(ModContent.ItemType<SulfurDeposit>(), 2);
+			recipe.AddIngredient(ModContent.ItemType<SulfurDeposit>(), 12);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}

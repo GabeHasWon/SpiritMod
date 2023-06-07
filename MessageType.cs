@@ -11,7 +11,7 @@
 		PlayerGlyph,
 		BossSpawnFromClient,
 		SpawnGladeWraith,
-		SpawnDebris,
+		SpawnNPCFromClient,
 		StartTide,
 		TideData,
 		TameAuroraStag,

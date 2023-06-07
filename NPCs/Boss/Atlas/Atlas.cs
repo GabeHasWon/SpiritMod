@@ -81,6 +81,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
 		}
+
 		public override void AI()
 		{
 			bool expertMode = Main.expertMode; //expert mode bool
@@ -369,8 +370,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			return base.CanHitPlayer(target, ref cooldownSlot);
 		}
 
-		public override void BossLoot(ref string name, ref int potionType)
-			=> potionType = ItemID.GreaterHealingPotion;
+		public override void BossLoot(ref string name, ref int potionType) => potionType = ItemID.GreaterHealingPotion;
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,

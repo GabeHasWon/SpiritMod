@@ -88,7 +88,7 @@ namespace SpiritMod
 		public bool mushroomPotion = false;
 		public bool flightPotion = false; 
 		public bool magnifyingGlass = false;
-		public bool ShieldCore = false;
+		public bool shieldCore = false;
 		public bool SoulStone = false;
 		public bool assassinMag = false;
 		public bool shadowFang = false;
@@ -508,7 +508,7 @@ namespace SpiritMod
 			seaSnailVenom = false;
 			clockActive = false;
 			bloodcourtSet = false;
-			ShieldCore = false;
+			shieldCore = false;
 			bloodyBauble = false;
 			elderbarkWoodSet = false;
 			cleftHorn = false;
@@ -1322,7 +1322,7 @@ namespace SpiritMod
 			int y1 = (int)Player.Center.Y / 16;
 			var config = ModContent.GetInstance<SpiritClientConfig>();
 
-			if (Player.ZoneSnow && !Player.behindBackWall && Main.rand.NextBool(27))
+			if ((Player.ZoneSnow || Player.ZoneSkyHeight) && !Player.behindBackWall && Main.rand.NextBool(27))
 			{
 				Vector2 spawnPos = new Vector2(Player.Center.X + 8 * Player.direction, Player.Center.Y - 2f);
 				if (Player.sleeping.isSleeping)
@@ -1398,17 +1398,16 @@ namespace SpiritMod
 			if (!throwerGlove)
 				throwerStacks = 0;
 
-			if (ShieldCore)
+			if (shieldCore)
 			{
 				int shieldCount = 2;
 				int type = ModContent.ProjectileType<InterstellarShield>();
-				Player player = Main.player[Main.myPlayer];
 
-				if (player.ownedProjectileCounts[type] < shieldCount)
+				if (Player.ownedProjectileCounts[type] < shieldCount)
 				{
 					for (int i = 0; i < 2; i++)
 					{
-						Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<InterstellarShield>(), 0, 0, player.whoAmI, i * 360);
+						Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<InterstellarShield>(), 0, 0, Player.whoAmI, i * 360);
 						proj.ai[1] = -(InterstellarShield.cooldownTime * InterstellarShield.rechargeRate);
 					}
 				}
@@ -1434,14 +1433,16 @@ namespace SpiritMod
 					{
 						if (NPC.CountNPCS(ModContent.NPCType<AsteroidDebris>()) < 30)
 						{
+							static int GetNPCIndex() => Main.rand.NextBool(GoldDebris.Chance) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
+
 							if (Main.netMode == NetmodeID.SinglePlayer)
 							{
-								int npcIndex = Main.rand.NextBool(GoldDebris.Chance) ? ModContent.NPCType<GoldDebris>() : ModContent.NPCType<AsteroidDebris>();
-								NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, npcIndex);
+								NPC.NewNPC(Terraria.Entity.GetSource_NaturalSpawn(), (int)spawnPos.X, (int)spawnPos.Y, GetNPCIndex());
 							}
-							else if (Main.netMode == NetmodeID.MultiplayerClient)
+							if (Main.netMode == NetmodeID.MultiplayerClient)
 							{
-								ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnDebris, 2);
+								ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SpawnNPCFromClient, 3);
+								packet.Write(GetNPCIndex());
 								packet.Write((int)spawnPos.X);
 								packet.Write((int)spawnPos.Y);
 								packet.Send();

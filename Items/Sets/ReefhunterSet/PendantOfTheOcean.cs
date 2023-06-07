@@ -53,16 +53,9 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 		public override void AddRecipes()
 		{
 			var recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<IridescentScale>(), 8);
-			recipe.AddIngredient(ModContent.ItemType<SulfurDeposit>(), 4);
-			recipe.AddIngredient(ItemID.IronBar, 2);
-			recipe.AddTile(TileID.Anvils);
-			recipe.Register();
-
-			recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<IridescentScale>(), 8);
-			recipe.AddIngredient(ModContent.ItemType<SulfurDeposit>(), 4);
-			recipe.AddIngredient(ItemID.LeadBar, 2);
+			recipe.AddIngredient(ModContent.ItemType<IridescentScale>(), 4);
+			recipe.AddIngredient(ModContent.ItemType<SulfurDeposit>(), 10);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 5);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}

@@ -176,9 +176,7 @@ namespace SpiritMod.NPCs.Starfarer
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddCommon<GravityModulator>(400);
-			npcLoot.AddCommon<StarEnergy>(3);
-			npcLoot.AddOneFromOptions(30, ModContent.ItemType<ProtectorateBody>(), ModContent.ItemType<ProtectorateLegs>());
+			npcLoot.AddCommon<StarEnergy>(1);
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
