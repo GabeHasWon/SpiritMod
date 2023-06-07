@@ -7,6 +7,7 @@ namespace SpiritMod.Effects.Stargoop
 {
 	public class StargoopManager
 	{
+		// The finalizers for RTs may be trustworthy, but you should still have Dispose() calls for TmpTarget somewhere, for example in UpdateWindowSize - Mirs
 		private readonly Color EnemyBorderColor = new Color(255, 171, 51);
 		private readonly Color FriendlyBorderColor = new Color(242, 240, 134);
 		private readonly Color NebulaBorderColor = new Color(255, 102, 200);
@@ -27,7 +28,7 @@ namespace SpiritMod.Effects.Stargoop
 		public Effect borderNoise;
 		public Effect galaxyParallax;
 
-		private bool _loaded = false;
+		internal bool loaded = false;
 
 		public void Initialize(GraphicsDevice graphicsDevice) => UpdateWindowSize(graphicsDevice, Main.screenWidth / 2, Main.screenHeight / 2);
 
@@ -50,18 +51,23 @@ namespace SpiritMod.Effects.Stargoop
 															  ModContent.Request<Texture2D>("SpiritMod/Effects/Masks/Nebula1", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value,
 															  ModContent.Request<Texture2D>("SpiritMod/Effects/Masks/Nebula2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 
-			_loaded = true;
+			loaded = true;
 		}
 
 		public void UpdateWindowSize(GraphicsDevice graphicsDevice, int width, int height)
 		{
-			if (!_loaded)
+			if (!loaded)
 				return;
 
 			FriendlyLayer.UpdateWindowSize(graphicsDevice, width, height);
 			EnemyLayer.UpdateWindowSize(graphicsDevice, width, height);
 			NebulaLayer.UpdateWindowSize(graphicsDevice, width, height);
-			Main.QueueMainThreadAction(() => TmpTarget = new RenderTarget2D(graphicsDevice, width, height));
+
+			Main.QueueMainThreadAction(() =>
+			{
+				TmpTarget.Dispose();
+				TmpTarget = new RenderTarget2D(graphicsDevice, width, height);
+			});
 		}
 
 		public void DrawToTarget(SpriteBatch sB, GraphicsDevice graphicsDevice)

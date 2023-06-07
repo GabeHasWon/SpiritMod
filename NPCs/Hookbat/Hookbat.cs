@@ -119,11 +119,12 @@ namespace SpiritMod.NPCs.Hookbat
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
+			if (QuestManager.GetQuest<FirstAdventure>().IsActive)
+				return 0.2f;
+
 			bool valid = spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && spawnInfo.Player.ZoneOverworldHeight && !NPC.AnyNPCs(ModContent.NPCType<Hookbat>());
 			if (!valid)
 				return 0f;
-			if (QuestManager.GetQuest<FirstAdventure>().IsActive)
-				return 0.25f;
 			return 0.01f;
 		}
 

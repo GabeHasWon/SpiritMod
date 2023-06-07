@@ -11,7 +11,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
-using SpiritMod.Utilities.PhaseIndicatorCompat;
+using SpiritMod.Utilities.ModCompatibility.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Placeable.Relics;
 using SpiritMod.Items.BossLoot.DuskingDrops.DuskingPet;

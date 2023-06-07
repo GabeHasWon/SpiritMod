@@ -2,7 +2,7 @@
 using System;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Utilities.PhaseIndicatorCompat
+namespace SpiritMod.Utilities.ModCompatibility.PhaseIndicatorCompat
 {
 	[AttributeUsage(AttributeTargets.Class)]
 	internal class PhaseIndicatorAttribute : Attribute

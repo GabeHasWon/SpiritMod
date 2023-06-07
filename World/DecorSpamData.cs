@@ -1,15 +1,15 @@
 ﻿namespace SpiritMod.World
 {
-	internal struct DecorSpamData
+	internal readonly struct DecorSpamData
 	{
-		public int RealRepeats => (int)(BaseRepeats * GlobalExtensions.WorldSize);
+		public readonly int RealRepeats => (int)(BaseRepeats * GlobalExtensions.WorldSize);
 
-		public string Name;
-		public int[] Types;
-		public int[] ValidGround;
-		public int BaseRepeats;
-		public bool Forced;
-		public (int high, int low) RangeY;
+		public readonly string Name;
+		public readonly int[] Types;
+		public readonly int[] ValidGround;
+		public readonly int BaseRepeats;
+		public readonly bool Forced;
+		public readonly (int high, int low) RangeY;
 
 		public DecorSpamData(string name, int[] types, int[] ground, int baseReps, (int high, int low) rangeY, bool forced = true)
 		{

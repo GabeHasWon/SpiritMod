@@ -22,7 +22,7 @@ using SpiritMod.NPCs.Tides.Tide;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
 using SpiritMod.Utilities.Journey;
-using SpiritMod.Utilities.PhaseIndicatorCompat;
+using SpiritMod.Utilities.ModCompatibility.PhaseIndicatorCompat;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -43,10 +43,6 @@ namespace SpiritMod
 			ExplosivesCache.Initialize(Mod);
 			ModContent.GetInstance<TagGlobalTile>().Load(Mod);
 			SacrificeAutoloader.Load(Mod);
-
-			ModLoader.TryGetMod("PhaseIndicator", out Mod phaseIndicator);
-			if (phaseIndicator != null && !Main.dedServ)
-				PhaseIndicatorLoader.Load(Mod, phaseIndicator);
 		}
 
 		public override void AddRecipeGroups()

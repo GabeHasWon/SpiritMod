@@ -15,7 +15,7 @@ using Terraria.ModLoader;
 using SpiritMod.Buffs;
 using SpiritMod.Projectiles;
 using Terraria.GameContent.Bestiary;
-using SpiritMod.Utilities.PhaseIndicatorCompat;
+using SpiritMod.Utilities.ModCompatibility.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet;
 using SpiritMod.Biomes;

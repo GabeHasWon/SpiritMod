@@ -1,8 +1,5 @@
-﻿- Updated Forsaken Relics to force Bloodstained Chest to spawn when active
-- Made both fuses, Vinewrath pet, Dynasty fan, map pins, sunken treasure, slot machines need only 1 research
-- Fixed absolute nonsense Cystal/Winter's Wake issue
-- Made Packing Crate not count as a critter
-- Fixed Notes on Blossmoons not working
-- Fixed Grisly Science Experiment using Tissue Samples instead of Vertebrae
-- Added Princess quotes for every town NPC
-- Reorganized localization for future use in 1.4.4
+﻿- Made Briar scale up to world sizes larger than Large because I can
+- Made DecorSpamData a readonly struct
+- Improved Phase Indicator compatibility
+- Removed Stargloop system initalizing rendertargets
+- Disposed of Stargloop targets before they're constructed

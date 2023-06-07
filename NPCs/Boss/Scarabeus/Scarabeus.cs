@@ -24,7 +24,7 @@ using Terraria.ModLoader;
 using SpiritMod.Items.Placeable.Relics;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet;
-using SpiritMod.Utilities.PhaseIndicatorCompat;
+using SpiritMod.Utilities.ModCompatibility.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using ReLogic.Utilities;
 using Terraria.DataStructures;

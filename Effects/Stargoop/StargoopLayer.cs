@@ -33,7 +33,10 @@ namespace SpiritMod.Effects.Stargoop
 			Galaxy2 = galaxy2;
 		}
 
-		public void UpdateWindowSize(GraphicsDevice graphicsDevice, int width, int height) => Main.QueueMainThreadAction(() => Target = new RenderTarget2D(graphicsDevice, width, height));
+		public void UpdateWindowSize(GraphicsDevice graphicsDevice, int width, int height) => Main.QueueMainThreadAction(() => {
+			Target.Dispose();
+			Target = new RenderTarget2D(graphicsDevice, width, height);
+		});
 
 		public void DrawMetaballTarget(SpriteBatch sB, GraphicsDevice graphicsDevice)
 		{

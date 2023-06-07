@@ -663,8 +663,10 @@ namespace SpiritMod.World
 				{
 					bool valid;
 
-					if (tileY <= _y) valid = WithinEllipseNoise(tileX, tileY, _center, _topSize, _estimates, _noise);
-					else valid = WithinEllipseNoise(tileX, tileY, _center, _size, _estimates, _noise);
+					if (tileY <= _y) 
+						valid = WithinEllipseNoise(tileX, tileY, _center, _topSize, _estimates, _noise);
+					else 
+						valid = WithinEllipseNoise(tileX, tileY, _center, _size, _estimates, _noise);
 
 					if (valid)
 					{
@@ -677,15 +679,11 @@ namespace SpiritMod.World
 						tile.HasTile = true;
 						tile.Slope = 0;
 						if (tileY != surface)
-						{
 							tile.WallType = WallID.DirtUnsafe;
-						}
 
 						float stoneValue = EllipseFormula(tileX, tileY, _center, _size) + ((tileY * 16f - denseY) / stoneCompY);
 						if (tileY + 20 >= Main.worldSurface && stoneValue > 0.5f && WorldGen.genRand.NextBool(6))
-						{
 							stoneSpots.Add(new BlockSpot(tileX, tileY, stoneValue));
-						}
 					}
 				}
 			}
@@ -1582,14 +1580,19 @@ namespace SpiritMod.World
 			int midWorld = Main.maxTilesX / 2;
 			int minXUnsafeSpawn = midWorld - _halfSize.X - 100;
 			int maxXUnsafeSpawn = midWorld + _halfSize.X + 100;
-			if (tileX > minXUnsafeSpawn && tileX < maxXUnsafeSpawn) return false;
+
+			if (tileX > minXUnsafeSpawn && tileX < maxXUnsafeSpawn) 
+				return false;
 
 			int dungeonMinUnsafe = Main.dungeonX - 150;
 			int dungeonMaxUnsafe = Main.dungeonX + 150;
-			if (tileX > dungeonMinUnsafe && tileX < dungeonMaxUnsafe) return false;
+
+			if (tileX > dungeonMinUnsafe && tileX < dungeonMaxUnsafe) 
+				return false;
 
 			int y = FindSurfaceAt(tileX);
 			int spacing = 7;
+
 			for (int yTest = y; yTest < y + spacing * 10; yTest += spacing) //checks 70 blocks below surface (too high?) 
 			{
 				Tile tile = Framing.GetTileSafely(tileX, yTest);
@@ -1611,14 +1614,10 @@ namespace SpiritMod.World
 			int worldSizeBonus = (int)(Main.maxTilesX / 4200f * 8f);
 			int minX = 500;
 			int maxX = Main.maxTilesX - 500;
-			_size = new Point(250, 600);
 
-			if (Main.maxTilesX == 6400)
-				_size = new Point(350, 780);
-			else if (Main.maxTilesX > 6400)
-				_size = new Point(460, 940);
-
+			_size = (new Vector2(250, 600) * (Main.maxTilesX / 4200f)).ToPoint();
 			_halfSize = new Point(_size.X / 2, _size.Y / 2);
+
 			tasks.Insert(++index, new PassLegacy("Briar",
 				delegate (GenerationProgress progress, GameConfiguration config)
 				{
@@ -1641,10 +1640,10 @@ namespace SpiritMod.World
 
 						if (safe)
 						{
-							safeInARow++;
-							if (safeInARow > highestInARow)
+							if (++safeInARow > highestInARow)
 							{
 								highestInARow = safeInARow;
+
 								if (highestInARow % 2 == 1)
 									_x = tileX - tilePer * (int)Math.Ceiling(highestInARow / 2.0);
 							}
