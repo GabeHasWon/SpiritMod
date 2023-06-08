@@ -96,8 +96,11 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 			if (counter == 0)
 			{
 				NPC.active = false;
-				Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(6.28f).ToRotationVector2() * 7, Mod.Find<ModGore>("GoldChestGore4").Type, 1f);
-				Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(6.28f).ToRotationVector2() * 7, Mod.Find<ModGore>("GoldChestGore5").Type, 1f);
+				if (Main.netMode != NetmodeID.Server)
+				{
+					Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(6.28f).ToRotationVector2() * 7, Mod.Find<ModGore>("GoldChestGore4").Type, 1f);
+					Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(6.28f).ToRotationVector2() * 7, Mod.Find<ModGore>("GoldChestGore5").Type, 1f);
+				}
 				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center - new Vector2(0, 30), Vector2.Zero, ProjectileID.DD2ExplosiveTrapT2Explosion, 0, 0, NPC.target);
 				SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
 			}
@@ -221,7 +224,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 			Projectile.velocity.Y = -0.05f;
 			Projectile.velocity.X = 0;
 			Projectile.frameCounter++;
-			if (Projectile.frameCounter > Math.Sqrt(Math.Max((Projectile.timeLeft - 100), 1) / 2) / 2)
+			if (Projectile.frameCounter > Math.Sqrt(Math.Max(Projectile.timeLeft - 100, 1) / 2) / 2)
 			{
 				Projectile.frameCounter = 0;
 				Projectile.frame++;
@@ -231,7 +234,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 				}
 			}
 
-			if (Projectile.timeLeft == 1)
+			if (Projectile.timeLeft == 1 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Main.rand.NextFloat(6.28f).ToRotationVector2() * 7, Mod.Find<ModGore>("GoldChestGore1").Type, 1f);
 				Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Main.rand.NextFloat(6.28f).ToRotationVector2() * 7, Mod.Find<ModGore>("GoldChestGore2").Type, 1f);

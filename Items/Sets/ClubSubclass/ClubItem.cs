@@ -12,7 +12,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     {
 		internal abstract int ChargeTime { get; }
 		internal abstract float Acceleration { get; }
-
 		internal abstract int MinDamage { get; }
 		internal abstract int MaxDamage { get; }
 		internal abstract float MinKnockback { get; }

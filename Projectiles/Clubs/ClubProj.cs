@@ -39,6 +39,7 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			writer.Write(animTime);
 			writer.Write(_angularMomentum);
+			writer.Write(_lingerTimer);
 			writer.Write(released);
 		}
 
@@ -46,6 +47,7 @@ namespace SpiritMod.Projectiles.Clubs
 		{
 			animTime = reader.ReadSingle();
 			_angularMomentum = reader.ReadSingle();
+			_lingerTimer = reader.ReadInt32();
 			released = reader.ReadBoolean();
 		}
 
@@ -182,8 +184,11 @@ namespace SpiritMod.Projectiles.Clubs
 				{
 					if (Projectile.ai[0] + 1 == ChargeTime)
 						SoundEngine.PlaySound(SoundID.NPCDeath7, Projectile.Center);
-					else if (Projectile.ai[0] == 0)
+					if (Projectile.ai[0] == 0)
+					{
 						animTime = animMax;
+						Projectile.netUpdate = true;
+					}
 
 					Projectile.ai[0]++;
 					_angularMomentum = 50f / ChargeTime;
@@ -243,6 +248,7 @@ namespace SpiritMod.Projectiles.Clubs
 						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/SwordSlash1") with { PitchVariance = 0.3f, Volume = 0.6f, Pitch = -0.7f }, Projectile.position);
 					}
 
+					Projectile.netUpdate = true;
 					Projectile.friendly = false;
 				}
 			}
@@ -253,6 +259,8 @@ namespace SpiritMod.Projectiles.Clubs
 				if (--_lingerTimer == 1)
 				{
 					Projectile.active = false;
+					Projectile.netUpdate = true;
+
 					animTime = 2;
 				}
 			}

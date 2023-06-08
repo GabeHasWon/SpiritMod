@@ -186,10 +186,13 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 				NPC.active = false;
 				SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
 
-				Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 7, Mod.Find<ModGore>("PlatinumChestGore1").Type, 1f);
-				Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 7, Mod.Find<ModGore>("PlatinumChestGore2").Type, 1f);
-				Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 7, Mod.Find<ModGore>("PlatinumChestGore3").Type, 1f);
-				Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 7, Mod.Find<ModGore>("PlatinumChestGore4").Type, 1f);
+				if (Main.netMode != NetmodeID.Server)
+				{
+					Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 7, Mod.Find<ModGore>("PlatinumChestGore1").Type, 1f);
+					Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 7, Mod.Find<ModGore>("PlatinumChestGore2").Type, 1f);
+					Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 7, Mod.Find<ModGore>("PlatinumChestGore3").Type, 1f);
+					Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 7, Mod.Find<ModGore>("PlatinumChestGore4").Type, 1f);
+				}
 			}
 			if (counter > 0)
 			{
