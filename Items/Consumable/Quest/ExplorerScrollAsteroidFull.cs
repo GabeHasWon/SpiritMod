@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Mechanics.QuestSystem.Quests;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
+	[Sacrifice(1)]
 	public class ExplorerScrollAsteroidFull : ModItem
 	{
 		public override void SetStaticDefaults()

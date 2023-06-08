@@ -336,10 +336,9 @@ namespace SpiritMod.GlobalClasses.Players
 			Item heldItem = player.HeldItem;
 			if (heldItem.shoot > ProjectileID.None && heldItem.ModItem != null && heldItem.ModItem.Mod == ModContent.GetInstance<SpiritMod>())
 			{
-				var p = new Projectile();
-				p.SetDefaults(player.HeldItem.shoot);
+				var p = ContentSamples.ProjectilesByType[heldItem.shoot];
 
-				if (p.ModProjectile != null && p.ModProjectile is ClubProj)
+				if (p.ModProjectile is ClubProj)
 					return true;
 			}
 			return false;

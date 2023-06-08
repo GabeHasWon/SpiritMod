@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.CoilSet
 {
+	[Sacrifice(1)]
 	public class CoilEnergizerItem : ModItem
 	{
 		public override void SetStaticDefaults()

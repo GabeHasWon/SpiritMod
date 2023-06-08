@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.FloranSet
 {
+	[Sacrifice(25)]
 	public class FloranBar : ModItem
 	{
 		public override void SetStaticDefaults()

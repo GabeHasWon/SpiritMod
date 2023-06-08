@@ -20,7 +20,7 @@ namespace SpiritMod.Tiles
 			Main.tileLighted[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
-			TileObjectData.newTile.AnchorBottom = new AnchorData((AnchorType)0b_11111111, 3, 0); //Any anchor is valid
+			TileObjectData.newTile.AnchorBottom = AnchorData.Empty; //Any anchor is valid
 			TileObjectData.newTile.Origin = new Point16(1, 1);
 			TileObjectData.addTile(Type);
 

@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.CascadeSet.Coral_Catcher
 {
+	[Sacrifice(1)]
     public class Coral_Catcher : ModItem
     {
 		public override void SetStaticDefaults()

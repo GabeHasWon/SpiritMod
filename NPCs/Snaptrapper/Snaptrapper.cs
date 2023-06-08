@@ -102,7 +102,6 @@ namespace SpiritMod.NPCs.Snaptrapper
             }
         }
 
-		int frameX;
 		float frameCounter;
 
 		public override void FindFrame(int frameHeight)

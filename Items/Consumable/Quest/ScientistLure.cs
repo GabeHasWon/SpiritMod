@@ -12,10 +12,7 @@ namespace SpiritMod.Items.Consumable.Quest
 	[Sacrifice(1)]
 	public class ScientistLure : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Grisly Science Experiment");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Grisly Science Experiment");
 
 		public override void SetDefaults()
 		{

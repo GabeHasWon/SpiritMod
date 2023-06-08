@@ -7,6 +7,7 @@ using SpiritMod.Items.Material;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SpiritBiomePainting : ModItem
 	{
 		public override void SetStaticDefaults()

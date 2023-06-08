@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
+	[Sacrifice(1)]
 	public class ExplorerScrollMushroomFull : ModItem
 	{
 		public override void SetStaticDefaults()

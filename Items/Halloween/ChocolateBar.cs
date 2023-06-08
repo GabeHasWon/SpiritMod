@@ -8,6 +8,7 @@ namespace SpiritMod.Items.Halloween
 	public class ChocolateBar : CandyBase
 	{
 		internal override Point Size => new(20, 26);
+
 		public override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Chocolate Bar");

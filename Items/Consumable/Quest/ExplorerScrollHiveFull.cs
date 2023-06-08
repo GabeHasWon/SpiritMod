@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
+	[Sacrifice(1)]
 	public class ExplorerScrollHiveFull : ModItem
 	{
 		public override void SetStaticDefaults()

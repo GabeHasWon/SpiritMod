@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace SpiritMod.Items.Placeable.Furniture.Paintings
 {
+	[Sacrifice(1)]
 	public class AdvPainting1 : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -30,6 +31,5 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 
 			Item.createTile = ModContent.TileType<AdvPainting1Tile>();
 		}
-
 	}
 }

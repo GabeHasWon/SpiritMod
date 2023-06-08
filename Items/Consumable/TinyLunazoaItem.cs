@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(5)]
 	public class TinyLunazoaItem : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.SpiritSet
 {
+	[Sacrifice(25)]
 	public class SpiritBar : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Bar");

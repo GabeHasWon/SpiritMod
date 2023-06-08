@@ -1,1 +1,6 @@
-﻿- Fixed all NPCs being invisible
+﻿- Fixed Princess happiness quotes being bad
+- Made Rail-gun, Ambergris, Starplate Beacon, Coiled Energizer, Fish Lure, Coral Catcher, all treasure bags, all paintings, all wall scrolls, map scrolls need only 1 research
+- Made Noxophyll, Ardorfish need only 3 researches
+- Made all bars in the mod, Cloudstalk & Soulbloom seeds need 25 reseaches
+- Fixed Fish Lure being called "Bar" on the map
+- Made all critters (those with item.makeNPC > 0 && NPCID.Sets.CountAsCritter[item.makeNPC]) need 5 researches

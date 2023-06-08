@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items;
 
+[Sacrifice(1)]
 public abstract class BossBagItem : ModItem
 {
 	internal abstract string BossName { get; }
@@ -38,7 +39,7 @@ public abstract class BossBagItem : ModItem
 	public sealed override bool CanRightClick() => true;
 
 	/// <summary>
-	/// Adds all donator vanity, gold coins, mask and trophy to the ItemLoot as a OneFromOptions rule.
+	/// Adds all donator vanity, gold coins, mask and trophy to the ItemLoot.
 	/// </summary>
 	public static void AddBossItems<TMask, TTrophy>(ItemLoot loot, Range goldCoinRange) where TTrophy : ModItem where TMask : ModItem
 	{

@@ -166,9 +166,7 @@ namespace SpiritMod.Projectiles.Clubs
 					owner.ChangeDir((int)Projectile.velocity.X);
 				}
 				else
-				{
 					owner.direction = Math.Sign(Projectile.velocity.X);
-				}
 			}
 
 			float degrees = (float)((animTime * -1.12) + 84) * owner.direction * (int)owner.gravDir;
@@ -191,9 +189,7 @@ namespace SpiritMod.Projectiles.Clubs
 					_angularMomentum = 50f / ChargeTime;
 				}
 				else
-				{
 					_angularMomentum = MathHelper.Lerp(_angularMomentum, 0, 0.08f); //Slow to a stop after reaching full charge
-				}
 
 				//Adjust stats gradually with charge
 				Projectile.damage = (int)(MinDamage + (Projectile.ai[0] / ChargeTime * (MaxDamage - MinDamage)));

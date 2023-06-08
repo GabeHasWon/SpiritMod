@@ -46,6 +46,8 @@ namespace SpiritMod.Utilities.Journey
 				}
 				else if (accessoryOrArmor) //Accessories or armor
 					CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[type] = 1;
+				else if (item.makeNPC > NPCID.None && NPCID.Sets.CountsAsCritter[item.makeNPC])
+					CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[type] = 5;
 				else //Everything else, namely materials
 					CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[type] = 25;
 			}

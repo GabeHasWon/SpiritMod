@@ -4,8 +4,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritPaintingTile = SpiritMod.Tiles.Furniture.SpiritPainting;
+
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SpiritPainting : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -17,7 +19,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 		{
 			Item.width = 94;
 			Item.height = 62;
-			Item.value = Item.value = Terraria.Item.buyPrice(0, 10, 1000, 10);
+			Item.value = Item.value = Item.buyPrice(0, 10, 1000, 10);
 			Item.rare = ItemRarityID.LightPurple;
 
 			Item.maxStack = 99;
@@ -32,6 +34,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 
 			Item.createTile = ModContent.TileType<SpiritPaintingTile>();
 		}
+
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			TooltipLine line = new TooltipLine(Mod, "ItemName", "'Quite a milestone indeed!\nThings can only look up from here'");

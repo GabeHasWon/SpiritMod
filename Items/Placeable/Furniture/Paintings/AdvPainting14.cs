@@ -1,8 +1,10 @@
 using SpiritMod.Tiles.Furniture.Paintings;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Placeable.Furniture.Paintings
 {
+	[Sacrifice(1)]
 	public class AdvPainting14 : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(2)]
 	public class MapScroll : ModItem
 	{
 		public override void SetStaticDefaults()

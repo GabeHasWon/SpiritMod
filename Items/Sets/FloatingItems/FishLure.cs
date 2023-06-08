@@ -6,6 +6,7 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Items.Sets.FloatingItems
 {
+	[Sacrifice(1)]
 	public class FishLure : FloatingItem
 	{
 		public override float SpawnWeight => .008f;
@@ -47,7 +48,7 @@ namespace SpiritMod.Items.Sets.FloatingItems
 			TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.OnlyInFullLiquid;
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Bar");
+			name.SetDefault("Lure");
 			ItemDrop = ModContent.ItemType<FishLure>();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}

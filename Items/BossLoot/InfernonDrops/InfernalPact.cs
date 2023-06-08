@@ -10,8 +10,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
 	public class InfernalPact : ModItem
 	{
-		private int sineTimer = 0; //maybe there's a better way to do this idk
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Infernal Pact");

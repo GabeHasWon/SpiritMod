@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.StarplateDrops
 {
+	[Sacrifice(1)]
 	public class StarMap : ModItem
 	{
 		public override void SetStaticDefaults()

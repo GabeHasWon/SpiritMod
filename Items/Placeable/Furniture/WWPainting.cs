@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class WWPainting : ModItem
 	{
 		public override void SetStaticDefaults()

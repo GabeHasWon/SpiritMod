@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 namespace SpiritMod.Items.Sets.AmbientObjects
 {
 	//This file corresponds to all ambient objects in TileID.LargePiles and TileID.LargePiles2, Tile 186 and 187
+	[Sacrifice(1)]
 	public abstract class DefaultLargePile1 : ModItem
 	{
 		public override void SetDefaults()
@@ -19,12 +20,14 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;
-			SafeSetDefaults();
 
+			SafeSetDefaults();
 		}
+
 		public virtual void SafeSetDefaults() { }
 	}
 
+	[Sacrifice(1)]
 	public abstract class DefaultLargePile2 : ModItem
 	{
 		public override void SetDefaults()
@@ -39,9 +42,10 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;
-			SafeSetDefaults();
 
+			SafeSetDefaults();
 		}
+
 		public virtual void SafeSetDefaults() { }
 	}
 

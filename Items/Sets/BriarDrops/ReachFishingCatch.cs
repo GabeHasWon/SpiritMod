@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.BriarDrops
 {
+	[Sacrifice(3)]
 	public class ReachFishingCatch : ModItem
 	{
 		public override void SetStaticDefaults()

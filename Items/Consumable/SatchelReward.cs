@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(1)]
 	public class SatchelReward : ModItem
 	{
 		public override void SetStaticDefaults()

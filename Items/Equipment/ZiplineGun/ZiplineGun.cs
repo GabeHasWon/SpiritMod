@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpiritMod.Items.Equipment.ZiplineGun
 {
+	[Sacrifice(1)]
 	public class ZiplineGun : ModItem
 	{
 		public override void SetStaticDefaults()

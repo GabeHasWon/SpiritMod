@@ -3,6 +3,7 @@ using Terraria.ID;
 
 namespace SpiritMod.Items.Sets.FloatingItems
 {
+	[Sacrifice(1)]
 	public class Ambergris : FloatingItem
 	{
 		public override float SpawnWeight => 0.01f;

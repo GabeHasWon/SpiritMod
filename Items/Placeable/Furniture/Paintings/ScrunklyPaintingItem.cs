@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture.Paintings
 {
+	[Sacrifice(1)]
 	public class ScrunklyPaintingItem : ModItem
 	{
 		public override void SetStaticDefaults()
