@@ -1,9 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.IO;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,7 +30,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void OnSpawn(IEntitySource source) => origin = Projectile.Center;
+		public override void AI()
+		{
+			if (Projectile.timeLeft == timeLeftMax)
+				origin = Projectile.Center;
+		}
 
 		public override void Kill(int timeLeft)
 		{
@@ -71,14 +73,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 				Texture2D bloom = Mod.Assets.Request<Texture2D>("Effects/Masks/CircleGradient").Value;
 				Vector2 endPos = origin + (Vector2.UnitX * shotLength).RotatedBy(Projectile.velocity.ToRotation());
-				Main.spriteBatch.Draw(bloom, endPos - Main.screenPosition, null, color, 0, bloom.Size() / 2, (0.1f - (i * 0.03f)) * quoteant, SpriteEffects.None, 0);
+				Main.EntitySpriteDraw(bloom, endPos - Main.screenPosition, null, color, 0, bloom.Size() / 2, (0.1f - (i * 0.03f)) * quoteant, SpriteEffects.None, 0);
 			}
 
 			return false;
 		}
-
-		public override void SendExtraAI(BinaryWriter writer) => writer.WriteVector2(origin);
-
-		public override void ReceiveExtraAI(BinaryReader reader) => origin = reader.ReadVector2();
 	}
 }

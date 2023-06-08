@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.shoot = ModContent.ProjectileType<Reef_Wrath_Projectile_Alt>();
 			Item.shootSpeed = 0f;
-			Item.knockBack = 2.5f;
+			Item.knockBack = 8;
 			Item.autoReuse = false;
 			Item.rare = ItemRarityID.Blue;
 			Item.UseSound = SoundID.Item109;
@@ -42,8 +42,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 			for (int i = 0; i < 3; i++)
 			{
 				Vector2 collisionpoint = CollisionPoint(player);
-				int x = (int)(collisionpoint.X) / 16;
-				int y = (int)(collisionpoint.Y) / 16;
+				int x = (int)collisionpoint.X / 16;
+				int y = (int)collisionpoint.Y / 16;
 				int randomiseX = Main.rand.Next(-2, 3);
 
 				if (WorldGen.SolidTile(x + randomiseX, y) || WorldGen.SolidTile3(x + randomiseX, y))
@@ -71,7 +71,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 						break;
 				}
 
-				Projectile.NewProjectile(Item.GetSource_ItemUse(Item), pos, vel, ModContent.ProjectileType<Reef_Wrath_Projectile_Alt>(), 0, 0f, player.whoAmI);
+				Projectile.NewProjectile(source, pos, vel, ModContent.ProjectileType<Reef_Wrath_Projectile_Alt>(), damage, knockback, player.whoAmI);
 			}
 			
 			return false;
@@ -85,9 +85,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 			dist = 0;
 
 			foreach (float fl in scanarray)
-			{
 				dist += fl / scanarray.Length;
-			}
 
 			return player.MountedCenter + player.DirectionTo(Main.MouseWorld) * dist;
 		}

@@ -154,7 +154,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			{
 				if (!Main.dedServ)
 				{
-					ParticleHandler.SpawnParticle(new BlasterFlash(position + (muzzleOffset / 2.5f), 1, velocity.ToRotation()));
+					ParticleHandler.SpawnParticle(new BlasterFlash(position + (muzzleOffset / 3.5f), 1, velocity.ToRotation()));
 					for (int i = 0; i < 3; i++)
 						ParticleHandler.SpawnParticle(new FireParticle(position, (velocity * Main.rand.NextFloat(0.1f, 0.8f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.1f, 0.3f), 12));
 				}

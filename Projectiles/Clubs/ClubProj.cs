@@ -37,6 +37,9 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{
+			writer.Write(ChargeTime);
+			writer.Write(Acceleration);
+
 			writer.Write(animTime);
 			writer.Write(_angularMomentum);
 			writer.Write(_lingerTimer);
@@ -45,6 +48,9 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void ReceiveExtraAI(BinaryReader reader)
 		{
+			ChargeTime = reader.ReadInt32();
+			Acceleration = reader.ReadSingle();
+
 			animTime = reader.ReadSingle();
 			_angularMomentum = reader.ReadSingle();
 			_lingerTimer = reader.ReadInt32();
@@ -174,6 +180,11 @@ namespace SpiritMod.Projectiles.Clubs
 			float degrees = (float)((animTime * -1.12) + 84) * owner.direction * (int)owner.gravDir;
 			if (owner.direction == 1)
 				degrees += 180;
+			if (Projectile.ai[0] == 0)
+			{
+				animTime = animMax;
+				Projectile.netUpdate = true;
+			}
 
 			float GetAcceleration() => Acceleration * (float)(MathHelper.Clamp(1f - (float)(animTime / animMaxHalf), 0f, 1f) + 0.1f);
 
@@ -184,11 +195,6 @@ namespace SpiritMod.Projectiles.Clubs
 				{
 					if (Projectile.ai[0] + 1 == ChargeTime)
 						SoundEngine.PlaySound(SoundID.NPCDeath7, Projectile.Center);
-					if (Projectile.ai[0] == 0)
-					{
-						animTime = animMax;
-						Projectile.netUpdate = true;
-					}
 
 					Projectile.ai[0]++;
 					_angularMomentum = 50f / ChargeTime;
