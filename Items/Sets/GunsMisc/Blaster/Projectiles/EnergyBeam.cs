@@ -43,14 +43,15 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			Projectile.ignoreWater = true;
 		}
 
-		public override void OnSpawn(IEntitySource source) => origin = Projectile.Center;
-
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
 
 			if (Counter == 0)
+			{
+				origin = Projectile.Center;
 				CheckCollision();
+			}
 			else
 				Projectile.Center = player.Center;
 
@@ -59,6 +60,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			if (player.itemAnimation < 2)
 				Projectile.Kill();
 		}
+
+		public override bool? CanDamage() => false;
 
 		private void CheckCollision()
 		{
@@ -165,11 +168,5 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 			return false;
 		}
-
-		public override void SendExtraAI(BinaryWriter writer) => writer.WriteVector2(origin);
-
-		public override void ReceiveExtraAI(BinaryReader reader) => origin = reader.ReadVector2();
-
-		public override bool? CanDamage() => false;
 	}
 }

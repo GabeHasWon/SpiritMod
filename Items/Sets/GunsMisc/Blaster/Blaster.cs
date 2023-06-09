@@ -11,7 +11,6 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-
 using static SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles.SubtypeProj.Subtypes;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
@@ -95,12 +94,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
 		}
 
-		/*public override void HoldItemFrame(Player player) //This would not be compatible with multiplayer
-		{
-			if (Main.itemAnimations[Type] != null)
-				Main.itemAnimations[Type].Frame = build;
-		}*/
-
 		public override bool AltFunctionUse(Player player) => auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge;
 		public override bool CanUseItem(Player player)
 		{
@@ -108,6 +101,14 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				Item.useAnimation = Item.useTime = (player.altFunctionUse == 2) ? 14 : 24;
 
 			return base.CanUseItem(player);
+		}
+
+		public override bool? UseItem(Player player)
+		{
+			if (Main.netMode != NetmodeID.Server && !((auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge) && player.altFunctionUse == 2))
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 3 }, player.Center);
+
+			return base.UseItem(player);
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -184,7 +185,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 					position += muzzleOffset;
 
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 3 }, position);
 				FireVisuals(position, velocity, element);
 			}
 		}

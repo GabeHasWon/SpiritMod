@@ -13,6 +13,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
@@ -89,40 +90,54 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		}
 
 		public override bool AltFunctionUse(Player player) => style == (int)StyleType.Golden;
-		public override bool CanUseItem(Player player)
+
+		public override bool? UseItem(Player player)
 		{
-			if (style != (int)StyleType.Golden)
-				return base.CanUseItem(player);
+			if (Main.netMode == NetmodeID.Server)
+				return base.UseItem(player);
 
-			if (player.altFunctionUse == 2)
+			if (style == (int)StyleType.Festive)
 			{
-				Projectile.NewProjectile(Entity.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<GoldBlasterProj>(), (int)player.GetDamage(DamageClass.Ranged).ApplyTo(Item.damage), Item.knockBack, player.whoAmI);
-				SoundEngine.PlaySound(SoundID.Item149, player.Center);
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, player.Center);
+			}
+			if (style == (int)StyleType.Golden)
+			{
+				if (player.altFunctionUse == 2)
+				{
+					Projectile.NewProjectile(Entity.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<GoldBlasterProj>(), (int)player.GetDamage(DamageClass.Ranged).ApplyTo(Item.damage), Item.knockBack, player.whoAmI);
+					SoundEngine.PlaySound(SoundID.Item149, player.Center);
 
+					player.GetModPlayer<BlasterPlayer>().hide = true;
+					return false;
+				}
+				else
+				{
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, player.Center);
+				}
+			}
+			if (style == (int)StyleType.Starplate)
+			{
 				player.GetModPlayer<BlasterPlayer>().hide = true;
 			}
+			if (style == (int)StyleType.Swift)
+			{
+				SoundEngine.PlaySound(SoundID.Item41 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, player.Center);
+				SoundEngine.PlaySound(SoundID.Item45 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, player.Center);
+			}
 
-			return player.altFunctionUse != 2;
+			return base.UseItem(player);
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
 			type = Item.shoot;
 
-			bool muzzleFlare = style == (int)StyleType.Swift || style == (int)StyleType.Golden;
+			bool muzzleFlare = style == (int)StyleType.Swift || (style == (int)StyleType.Golden && player.altFunctionUse != 2);
 
 			if (style == (int)StyleType.Festive)
 			{
 				for (int i = 0; i < 4; i++)
 					Dust.NewDustPerfect(position, DustID.Confetti, (velocity * Main.rand.NextFloat(0.4f, 0.8f)).RotatedByRandom(1f), 100);
-
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, position);
-			}
-			if (style == (int)StyleType.Golden)
-			{
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, position);
 			}
 			if (style == (int)StyleType.Starplate)
 			{
@@ -132,18 +147,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						Projectile proj = Projectile.NewProjectileDirect(Entity.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<StarplateHologram>(), damage, knockback, player.whoAmI);
 						proj.frame = i;
 					}
-
-				player.GetModPlayer<BlasterPlayer>().hide = true;
 			}
 			if (style == (int)StyleType.Swift)
 			{
 				velocity = velocity.RotatedByRandom(0.25f);
-
-				if (Main.netMode != NetmodeID.Server)
-				{
-					SoundEngine.PlaySound(SoundID.Item41 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, position);
-					SoundEngine.PlaySound(SoundID.Item45 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, position);
-				}
 			}
 
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 2)) * 40f;
@@ -158,7 +165,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			}
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => style != (int)StyleType.Starplate;
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => style != (int)StyleType.Starplate && !(style == (int)StyleType.Golden && player.altFunctionUse == 2);
 
 		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{

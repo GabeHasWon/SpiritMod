@@ -128,7 +128,9 @@ namespace SpiritMod.Tiles.Banners
 			(nameof(SpiritBatBanner), "SeerBat"),
 			(nameof(SpiritSkullBanner), "SpiritSkull"),
 			(nameof(WanderingSoulBanner), "WanderingSoul"),
-			(nameof(SpiritMummyBanner), "SpiritMummy")
+			(nameof(SpiritMummyBanner), "SpiritMummy"),
+			(nameof(FurnaceMawBanner), "ChainedSinner"),
+			(nameof(MangroveDefenderBanner), "Mangrove_Defender")
 		};
 
 		public override void SetStaticDefaults()
@@ -142,7 +144,7 @@ namespace SpiritMod.Tiles.Banners
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16 };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
-			TileObjectData.newTile.StyleWrapLimit = 115;
+			TileObjectData.newTile.StyleWrapLimit = 117;
 			TileObjectData.addTile(Type);
 
 			DustType = -1;

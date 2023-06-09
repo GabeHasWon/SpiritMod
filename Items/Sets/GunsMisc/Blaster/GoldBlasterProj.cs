@@ -32,8 +32,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Projectile.ignoreWater = true;
 		}
 
-		public override void OnSpawn(IEntitySource source) => Projectile.velocity = Vector2.Zero;
-
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
@@ -46,11 +44,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			player.ChangeDir(direction.X > 0 ? 1 : -1);
 
 			player.heldProj = Projectile.whoAmI;
+			player.itemTime = player.itemAnimation = 2;
 
-			player.itemTime = 2;
-			player.itemAnimation = 2;
-			Projectile.position = player.Center + new Vector2(22f, -6 * player.direction).RotatedBy(direction.ToRotation()) - (Projectile.Size / 2);
-
+			Projectile.Center = player.Center + new Vector2(22f, -6 * player.direction).RotatedBy(direction.ToRotation());
 			Projectile.rotation = direction.ToRotation() + ((direction.X < 0) ? MathHelper.Pi : 0);
 			player.itemRotation = MathHelper.WrapAngle(direction.ToRotation() + ((player.direction < 0) ? MathHelper.Pi : 0));
 
