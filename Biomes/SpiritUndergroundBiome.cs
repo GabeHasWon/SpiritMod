@@ -20,14 +20,15 @@ namespace SpiritMod.Biomes
 		private int GetMusicFromDepth()
 		{
 			Player player = Main.LocalPlayer;
-			int music = -1;
+			int music;
 
-			if (player.ZoneRockLayerHeight && player.position.Y / 16 < (Main.rockLayer + Main.maxTilesY - 330) / 2f)
-				music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SpiritLayer1");
-			if (player.ZoneRockLayerHeight && player.position.Y / 16 > (Main.rockLayer + Main.maxTilesY - 330) / 2f)
-				music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SpiritLayer2");
-			if (player.position.Y / 16 >= Main.maxTilesY - 330)
+			if (player.position.Y / 16 >= Main.maxTilesY - (Main.maxTilesY * .25f))
 				music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SpiritLayer3");
+			else if (player.ZoneRockLayerHeight)
+				music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SpiritLayer2");
+			else
+				music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SpiritLayer1");
+
 			return music;
 		}
 

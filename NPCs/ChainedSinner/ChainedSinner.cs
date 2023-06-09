@@ -42,6 +42,9 @@ namespace SpiritMod.NPCs.ChainedSinner
 			NPC.lavaImmune = true;
 			NPC.HitSound = SoundID.NPCHit41;
 			NPC.DeathSound = SoundID.NPCDeath27;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.FurnaceMawBanner>();
 		}
 
 		public override void OnSpawn(IEntitySource source)

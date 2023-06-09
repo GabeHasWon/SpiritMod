@@ -42,6 +42,9 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			NPC.dontTakeDamage = false;
 			NPC.DeathSound = SoundID.NPCDeath6;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.BriarUndergroundBiome>().Type };
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.MangroveDefenderBanner>();
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -66,7 +69,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			if (NPC.ai[1] >= 280)
 			{
 				groundSlamming = true;
-				slam();
+				Slam();
 			}
 			else
 			{
@@ -75,7 +78,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			}
 		}
 
-		public void slam()
+		public void Slam()
 		{
 			Player player = Main.player[NPC.target];
 			NPC.ai[1]++;
@@ -279,10 +282,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 				NPC.velocity.X += 3f * (float)NPC.direction;
 			}
 		}
-		public override void OnKill()
-		{
 
-		}
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (Main.netMode == NetmodeID.Server)

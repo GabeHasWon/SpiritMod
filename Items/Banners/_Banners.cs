@@ -672,4 +672,14 @@ namespace SpiritMod.Items.Banners
 	{
 		protected override int Style => 114;
 	}
+
+	public class FurnaceMawBanner : BaseBannerItem
+	{
+		protected override int Style => 115;
+	}
+
+	public class MangroveDefenderBanner : BaseBannerItem
+	{
+		protected override int Style => 116;
+	}
 }

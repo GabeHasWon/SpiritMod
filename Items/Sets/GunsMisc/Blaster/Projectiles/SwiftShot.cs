@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,11 +18,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		public override void SetDefaults()
 		{
 			Projectile.hostile = false;
-			Projectile.DamageType = DamageClass.Ranged;
-			Projectile.width = 12;
-			Projectile.height = 12;
-			Projectile.aiStyle = -1;
 			Projectile.friendly = true;
+			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.Size = new Vector2(12);
 			Projectile.timeLeft = timeLeftMax;
 			Projectile.tileCollide = true;
 			Projectile.ignoreWater = true;
