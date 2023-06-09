@@ -31,9 +31,10 @@ namespace SpiritMod.NPCs.Critters
 			NPC.npcSlots = 0;
 			NPC.catchItem = (short)ModContent.ItemType<Items.Placeable.FishCrate>();
 			NPC.noGravity = false;
-			AIType = NPCID.Grasshopper;
 			NPC.alpha = 40;
 			NPC.dontCountMe = true;
+
+			AIType = NPCID.Grasshopper;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

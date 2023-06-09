@@ -75,7 +75,7 @@ namespace SpiritMod.Prim
 
 			if (primTargetNPC != null && pixelTrails.Count > 0)
 			{
-				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
+				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, Main.GameViewMatrix.TransformationMatrix);
 				Main.spriteBatch.Draw(primTargetNPC, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
 				spriteBatch.End();
 			}
@@ -91,13 +91,13 @@ namespace SpiritMod.Prim
 				if (trail.Pixellated && !trail.Disabled)
 					pixelTrails.Add(trail);
 
-			if(pixelTrails.Count > 0)
+			if (pixelTrails.Count > 0)
 			{
 				RenderTargetBinding[] bindings = gD.GetRenderTargets();
 
 				gD.SetRenderTarget(primTargetProjectile);
 				gD.Clear(Color.Transparent);
-				spriteBatch.Begin(default, default, default, default, default, default, Main.GameViewMatrix.TransformationMatrix);
+				spriteBatch.Begin(SpriteSortMode.Deferred, default, default, default, RasterizerState.CullNone, null, default);
 
 				foreach (PrimTrail trail in pixelTrails)
 					trail.Draw();
@@ -122,8 +122,9 @@ namespace SpiritMod.Prim
 
 			if (primTargetProjectile != null && pixelTrails.Count > 0)
 			{
-				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-				Main.spriteBatch.Draw(primTargetProjectile, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
+				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+				var destination = new Rectangle(0, 0, (int)(Main.screenWidth * Main.GameViewMatrix.Zoom.X), (int)(Main.screenHeight * Main.GameViewMatrix.Zoom.Y));
+				Main.spriteBatch.Draw(primTargetProjectile, destination, Color.White);
 				spriteBatch.End();
 			}
 

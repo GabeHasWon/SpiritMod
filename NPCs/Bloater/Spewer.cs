@@ -34,6 +34,7 @@ namespace SpiritMod.NPCs.Bloater
 			NPC.DeathSound = SoundID.NPCDeath21;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.BloaterBanner>();
 		}
@@ -89,20 +90,17 @@ namespace SpiritMod.NPCs.Bloater
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCrimson && spawnInfo.Player.ZoneOverworldHeight ? .075f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCrimson && spawnInfo.Player.ZoneOverworldHeight && !Main.eclipse ? .075f : 0f;
 
 		public override void AI()
 		{
 			NPC.rotation = NPC.velocity.X * .08f;
-			bool expertMode = Main.expertMode;
+			NPC.TargetClosest(true);
+			NPC.ai[1] += 1f;
+
 			float velMax = 1f;
 			float acceleration = 0.011f;
-			NPC.TargetClosest(true);
-			Vector2 center = NPC.Center;
-			float deltaX = Main.player[NPC.target].position.X + (Main.player[NPC.target].width / 2) - center.X;
-			float deltaY = Main.player[NPC.target].position.Y + (Main.player[NPC.target].height / 2) - center.Y;
 			float distance = NPC.Distance(Main.player[NPC.target].Center);
-			NPC.ai[1] += 1f;
 
 			if (distance < 240)
 			{
@@ -111,11 +109,8 @@ namespace SpiritMod.NPCs.Bloater
 					if (Main.rand.NextBool(10) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
-						Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-						direction.Normalize();
-						direction.X *= 11.5f;
-						direction.Y *= 8;
-						int damage = expertMode ? 11 : 13;
+						Vector2 direction = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center) * new Vector2(11.5f, 8);
+						int damage = Main.expertMode ? 11 : 13;
 						int vomit = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y + 4, direction.X, direction.Y + Main.rand.NextFloat(-.5f, .5f), ModContent.ProjectileType<VomitProj>(), damage, 1, Main.myPlayer, 0, 0);
 						Main.projectile[vomit].netUpdate = true;
 						NPC.netUpdate = true;
@@ -197,7 +192,9 @@ namespace SpiritMod.NPCs.Bloater
 				NPC.noTileCollide = true;
 			else
 				NPC.noTileCollide = false;
-			
+
+			float deltaX = Main.player[NPC.target].Center.X - NPC.Center.X;
+			float deltaY = Main.player[NPC.target].Center.Y - NPC.Center.Y;
 			float stepRatio = velMax / distance;
 			float velLimitX = deltaX * stepRatio;
 			float velLimitY = deltaY * stepRatio;

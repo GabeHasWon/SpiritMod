@@ -1,6 +1,16 @@
-﻿- Fixed Princess happiness quotes being bad
-- Made Rail-gun, Ambergris, Starplate Beacon, Coiled Energizer, Fish Lure, Coral Catcher, all treasure bags, all paintings, all wall scrolls, map scrolls need only 1 research
-- Made Noxophyll, Ardorfish need only 3 researches
-- Made all bars in the mod, Cloudstalk & Soulbloom seeds need 25 reseaches
-- Fixed Fish Lure being called "Bar" on the map
-- Made all critters (those with item.makeNPC > 0 && NPCID.Sets.CountAsCritter[item.makeNPC]) need 5 researches
+﻿- Increased priority for Meteorite and Spider Nest scenes
+- Fixed Bloater spawning during the Eclipse
+- Made Glowflowers only need 1 research
+- Fixed projectile primtrails being offset when zoomed in
+- Fixed nonsense high Spectre Knife sell price (30 gold per -> 3 silver per)
+- Fixed prims not being drawn when gravity is flipped
+- Fixed Cryolite aura spamming splash noise in water
+- Fixed Cryolite aura cutting tiles
+- Re-enabled Stargloop system, fixed Void Quill
+- Fixed Astral Amalgam, Interstellar Shield Core bad spriteBatch.Begin parameters
+- Hopefully caught Spirit Biome caught crash
+- Actually finished Slot Machine loot table
+- Sped up Slot Machine, made it affected by luck, made UI consistently init properly
+- Rigged Slot Machine in the player's favour (1/100 chance to rig jackpot)
+- Fixed QuestGlobalNPC QuestPoolData short-circuit
+- Removed erroneous duplicate SlayerQuestDrBones pool edit

@@ -33,12 +33,10 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			{
 				HAlign = 0.5f,
 				VAlign = 0.5f,
-				Width = StyleDimension.FromPixels(256),
-				Height = StyleDimension.FromPixels(188),
+				Width = StyleDimension.FromPixels(300f),
+				Height = StyleDimension.FromPixels(188f),
 			};
 
-			mainPanel.Width.Set(300f, 0f);
-			mainPanel.Height.Set(188f, 0f);
 			Append(mainPanel);
 
 			if (offsetX != -1)
@@ -57,21 +55,23 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			mainPanel.Append(panelBackground);
 			mainPanel.AddDragTarget(panelBackground);
 
-			var closeTexture = ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/SlotMachine/Close", ReLogic.Content.AssetRequestMode.ImmediateLoad);
-			UIImageButton closeButton = new UIImageButton(closeTexture);
-			closeButton.Left.Set(-50, 1f);
-			closeButton.Top.Set(5, 0f);
-			closeButton.Width.Set(15, 0f);
-			closeButton.Height.Set(15, 0f);
+			UIImageButton closeButton = new UIImageButton(ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/SlotMachine/Close"))
+			{
+				Width = StyleDimension.FromPixels(15),
+				Height = StyleDimension.FromPixels(15),
+				Left = StyleDimension.FromPixelsAndPercent(-50, 1),
+				Top = StyleDimension.FromPixels(5)
+			};
 			closeButton.OnClick += CloseButton_OnClick;
 			panelBackground.Append(closeButton);
 
-			var pullTexture = ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/SlotMachine/SlotMachineBaseFramer", ReLogic.Content.AssetRequestMode.ImmediateLoad);
-			UIImageButton pullButton = new UIImageButton(pullTexture);
-			pullButton.Left.Set(-10, 1f);
-			pullButton.Top.Set(-8, 0f);
-			pullButton.Width.Set(24, 0f);
-			pullButton.Height.Set(24, 0f);
+			UIImageButton pullButton = new UIImageButton(ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/SlotMachine/SlotMachineBaseFramer"))
+			{
+				Left = StyleDimension.FromPixelsAndPercent(-20, 1),
+				Top = StyleDimension.FromPixels(-10),
+				Width = StyleDimension.FromPixels(24),
+				Height = StyleDimension.FromPixels(24),
+			};
 			pullButton.OnClick += PullButton_OnClick;
 			panelBackground.Append(pullButton);
 		}
@@ -83,16 +83,27 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 		private float symbolCounterTwo = 0;
 		private float symbolCounterThree = 0;
 
+		private bool[] hasRigged = new[] { false, false };
+
 		public override void Update(GameTime gameTime)
 		{
+			if (pulleyCounter < 20) //Unset rig flags
+				hasRigged[0] = hasRigged[1] = false;
+
 			if (pulleyCounter < 30)
 				symbolCounterOne += Main.rand.NextFloat(0.25f, 0.45f) * (float)gameTime.ElapsedGameTime.TotalSeconds * 60;
+
 			if (pulleyCounter < 40)
 				symbolCounterTwo += Main.rand.NextFloat(0.25f, 0.45f) * (float)gameTime.ElapsedGameTime.TotalSeconds * 60;
+
 			if (pulleyCounter < 50)
 				symbolCounterThree += Main.rand.NextFloat(0.25f, 0.45f) * (float)gameTime.ElapsedGameTime.TotalSeconds * 60;
+
 			if (pulleyCounter >= 0)
-				pulleyCounter += 0.3f * (float)gameTime.ElapsedGameTime.TotalSeconds * 60;
+				pulleyCounter += 0.4f * (float)gameTime.ElapsedGameTime.TotalSeconds * 60;
+
+			TryRigResult(ref symbolCounterTwo, ref hasRigged[0], 40); //Try rigging (1/10 chance to rig positively)
+			TryRigResult(ref symbolCounterThree, ref hasRigged[1], 50);
 
 			base.Update(gameTime);
 
@@ -107,39 +118,62 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 				CheckRewards();
 		}
 
+		private void TryRigResult(ref float timer, ref bool flag, int max)
+		{
+			if (pulleyCounter >= max && !flag)
+			{
+				flag = true;
+
+				if (Main.LocalPlayer.RollLuck(10) == 0)
+					timer = symbolCounterOne;
+			}
+		}
+
 		private void CheckRewards()
 		{
 			if (((int)symbolCounterThree % numberOfSymbols) == ((int)symbolCounterTwo % numberOfSymbols) && ((int)symbolCounterThree % numberOfSymbols) == ((int)symbolCounterOne % numberOfSymbols))
 			{
+				var loc = new Rectangle(X * 16, Y * 16, _player.width, _player.height);
+				var src = Main.LocalPlayer.GetSource_GiftOrReward(null);
+
 				switch ((int)symbolCounterThree % numberOfSymbols)
 				{
 					case 0: //bell
-						CombatText.NewText(new Rectangle(X * 16, Y * 16, _player.width, _player.height), Color.Gold, "You win a Bell!");
-						Item.NewItem(new Terraria.DataStructures.EntitySource_Gift(null), X * 16, Y * 16, 32, 32, ModContent.ItemType<Items.Consumable.SurrenderBell>(), 1);
+						CombatText.NewText(loc, Color.Gold, "You win a bell!");
+						Main.LocalPlayer.QuickSpawnItem(src, ModContent.ItemType<Items.Consumable.SurrenderBell>(), 1);
 						break;
 					case 1: //mjw
-						CombatText.NewText(new Rectangle(X * 16, Y * 16, _player.width, _player.height), Color.Gold, "MJW");
+						CombatText.NewText(loc, Color.Gray, "You win a...jelly?");
+						Main.LocalPlayer.QuickSpawnItem(src, ModContent.ItemType<Items.Consumable.DistressJellyItem>(), 1);
 						break;
 					case 2: //lemon
-						CombatText.NewText(new Rectangle(X * 16, Y * 16, _player.width, _player.height), Color.Gold, "lemon");
+						CombatText.NewText(loc, Color.Gray, "You win lemons!");
+						Main.LocalPlayer.QuickSpawnItem(src, ItemID.Lemon, 5);
 						break;
 					case 3: //diamond
-						CombatText.NewText(new Rectangle(X * 16, Y * 16, _player.width, _player.height), Color.Red, "diamond");
+						CombatText.NewText(loc, Color.Green, "You win diamonds!");
+						Main.LocalPlayer.QuickSpawnItem(src, ItemID.Diamond, 15);
 						break;
 					case 4: //bomb
-						CombatText.NewText(new Rectangle(X * 16, Y * 16, _player.width, _player.height), Color.Red, "bomb");
+						CombatText.NewText(loc, Color.Red, "You win a...bomb!");
+						Main.LocalPlayer.QuickSpawnItem(src, ItemID.Bomb, 1);
 						break;
 					case 5: //cherry
-						CombatText.NewText(new Rectangle(X * 16, Y * 16, _player.width, _player.height), Color.Red, "cherry");
+						CombatText.NewText(loc, Color.Red, "You win a ch- apple!");
+						Main.LocalPlayer.QuickSpawnItem(src, ItemID.Apple, 1);
 						break;
 					case 6: //bar
-						CombatText.NewText(new Rectangle(X * 16, Y * 16, _player.width, _player.height), Color.Red, "bar");
+						CombatText.NewText(loc, Color.Green, "You win a brick of gold!");
+						Main.LocalPlayer.QuickSpawnItem(src, ItemID.GoldBar, 1);
 						break;
 					case 7: //seven
-						CombatText.NewText(new Rectangle(X * 16, Y * 16, _player.width, _player.height), Color.Red, "seven");
+						CombatText.NewText(loc, Color.Gold, "You win the JACKPOT!");
+						Main.LocalPlayer.QuickSpawnItem(src, ItemID.PlatinumCoin, 3);
+						Main.LocalPlayer.QuickSpawnItem(src, ItemID.EnchantedSword, 1);
+						Main.LocalPlayer.QuickSpawnItem(src, ItemID.DiscountCard, 1);
 						break;
-
 				}
+
 				ModContent.GetInstance<SpiritMod>().SlotUserInterface.SetState(null);
 			}
 		}

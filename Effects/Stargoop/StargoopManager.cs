@@ -65,7 +65,7 @@ namespace SpiritMod.Effects.Stargoop
 
 			Main.QueueMainThreadAction(() =>
 			{
-				TmpTarget.Dispose();
+				TmpTarget?.Dispose();
 				TmpTarget = new RenderTarget2D(graphicsDevice, width, height);
 			});
 		}

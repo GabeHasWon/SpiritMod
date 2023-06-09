@@ -720,7 +720,7 @@ namespace SpiritMod
 				primitives = new PrimTrailManager();
 				primitives.LoadContent(Main.graphics.GraphicsDevice);
 
-				//InitStargoop(); LTTS
+				InitStargoop();
 				Boids.LoadContent();
 				AdditiveCallManager.Load();
 

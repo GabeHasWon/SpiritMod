@@ -17,6 +17,7 @@ namespace SpiritMod.Tiles.Block
 			Main.tileBlendAll[this.Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
+
 			TileID.Sets.Conversion.Sand[Type] = true;
 			AddMapEntry(new Color(135, 206, 235));
 			ItemDrop = ModContent.ItemType<SpiritSandItem>();

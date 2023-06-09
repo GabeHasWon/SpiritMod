@@ -39,12 +39,13 @@ namespace SpiritMod.World
 			{
 				yAxis++;
 				xAxis = firstX;
+
 				for (int i = 0; i < 450; i++)
 				{
 					xAxis++;
-					if (Framing.GetTileSafely(xAxis, yAxis).HasTile)
+
+					if (WorldGen.InWorld(xAxis, yAxis, 30) && Framing.GetTileSafely(xAxis, yAxis).HasTile)
 					{
-						int nullRandom = Main.tile[xAxis, yAxis + 1] == null ? 50 : 1;
 						int type = -1;
 
 						int requiredDist = 10;
@@ -85,13 +86,13 @@ namespace SpiritMod.World
 						else if (xAxis > xAxisEdge + 1)
 							distanceFromCenter = xAxis - xAxisEdge;
 
-						if (type != -1 && Main.rand.NextBool(nullRandom) && Main.rand.Next(distanceFromCenter) < requiredDist)
+						if (type != -1 && Main.rand.Next(distanceFromCenter) < requiredDist)
 							Main.tile[xAxis, yAxis].TileType = (ushort)type; //Converts tiles
 
 						if (WallID.Sets.Conversion.Grass[Main.tile[xAxis, yAxis].WallType] && Main.rand.Next(distanceFromCenter) < 18)
 							Main.tile[xAxis, yAxis].WallType = (ushort)ModContent.WallType<SpiritWallNatural>(); //Converts walls
 
-						if (Decors.Contains(Main.tile[xAxis, yAxis].TileType) && Main.rand.NextBool(nullRandom) && Main.rand.Next(distanceFromCenter) < 18)
+						if (Decors.Contains(Main.tile[xAxis, yAxis].TileType) && Main.rand.Next(distanceFromCenter) < 18)
 						{
 							Tile tile = Main.tile[xAxis, yAxis];
 							tile.HasTile = false; //Removes remaining decor

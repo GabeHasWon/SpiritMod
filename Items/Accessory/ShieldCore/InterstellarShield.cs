@@ -114,7 +114,7 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			Texture2D bloom = TextureAssets.Extra[49].Value;
 			SpiritMod.SunOrbShader.Parameters["colorMod"].SetValue(new Color(120, 190, 255).ToVector4());
 			SpiritMod.SunOrbShader.Parameters["colorMod2"].SetValue(Color.LightBlue.ToVector4());
@@ -129,7 +129,7 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 
 			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor * 0.2f, Projectile.rotation, bloom.Size() / 2, Projectile.scale * scale, SpriteEffects.None, 0);
 			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
 			return false;
 		}

@@ -49,6 +49,7 @@ namespace SpiritMod.Utilities
 			On.Terraria.WorldGen.SpreadGrass += WorldGen_SpreadGrass;
 			On.Terraria.Main.DrawBackgroundBlackFill += Main_DrawBackgroundBlackFill; //BackgroundItemManager.Draw()
 			On.Terraria.Main.Update += Main_Update; //BackgroundItemManager.Update()
+			On.Terraria.Main.CheckMonoliths += DrawPrimRTs;
 
 			Main.OnPreDraw += Main_OnPreDraw;
 			HookEndpointManager.Add<hook_NPCAI>(NPCAIMethod, (hook_NPCAI)NPCAIMod);
@@ -59,6 +60,19 @@ namespace SpiritMod.Utilities
 			{
 				var inst = (ILEdit)Activator.CreateInstance(item);
 				inst.Load(SpiritMod.Instance);
+			}
+		}
+
+		private static void DrawPrimRTs(On.Terraria.Main.orig_CheckMonoliths orig)
+		{
+			if (Main.spriteBatch != null && SpiritMod.primitives != null)
+			{
+				Main.screenPosition += Main.LocalPlayer.velocity;
+
+				SpiritMod.primitives.DrawTrailsProj(Main.spriteBatch, Main.graphics.GraphicsDevice);
+				SpiritMod.primitives.DrawTrailsNPC(Main.spriteBatch, Main.graphics.GraphicsDevice);
+
+				Main.screenPosition -= Main.LocalPlayer.velocity;
 			}
 		}
 
@@ -254,15 +268,7 @@ namespace SpiritMod.Utilities
 
 		private static void Main_OnPreDraw(GameTime obj)
 		{
-			if (Main.spriteBatch != null && SpiritMod.primitives != null) 
-			{
-				Main.screenPosition += Main.LocalPlayer.velocity;
 
-				SpiritMod.primitives.DrawTrailsProj(Main.spriteBatch, Main.graphics.GraphicsDevice);
-				SpiritMod.primitives.DrawTrailsNPC(Main.spriteBatch, Main.graphics.GraphicsDevice);
-
-				Main.screenPosition -= Main.LocalPlayer.velocity;
-			}
 		}
 
 		private static void Main_DrawCachedProjs(On.Terraria.Main.orig_DrawCachedProjs orig, Main self, List<int> projCache, bool startSpriteBatch)

@@ -54,9 +54,8 @@ namespace SpiritMod.Prim
 			if (points.Count == 1)
 				return points[0];
 
-			if (index == 0) {
+			if (index == 0)
 				return Clockwise90(Vector2.Normalize(points[1] - points[0]));
-			}
 
 			return Clockwise90(index == points.Count - 1
 				? Vector2.Normalize(points[index] - points[index - 1]) 
@@ -90,6 +89,7 @@ namespace SpiritMod.Prim
 		protected void PrepareBasicShader()
 		{
 			BasicEffect basicEffect;
+
 			if (Pixellated)
 			{
 				Helpers.SetBasicEffectMatrices(ref SpiritMod.primitives.pixelEffect, Main.GameViewMatrix.Zoom);
@@ -104,9 +104,7 @@ namespace SpiritMod.Prim
 				basicEffect = SpiritMod.basicEffect;
 
 			foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
-			{
 				pass.Apply();
-			}
 		}
 
 		protected void AddVertex(Vector2 position, Color color, Vector2 uv)
@@ -114,17 +112,13 @@ namespace SpiritMod.Prim
 			if (CurrentIndex < Vertices.Length) 
 			{
 				if (Pixellated || this is IGalaxySprite)
-					Vertices[CurrentIndex++] =
-						new VertexPositionColorTexture(new Vector3((position - Main.screenPosition) / 2, 0f), color, uv);
-
+					Vertices[CurrentIndex++] = new VertexPositionColorTexture(new Vector3((position - Main.screenPosition) / 2, 0f), color, uv);
 				else
-					Vertices[CurrentIndex++] =
-						new VertexPositionColorTexture(new Vector3(position - Main.screenPosition, 0f), color, uv);
+					Vertices[CurrentIndex++] = new VertexPositionColorTexture(new Vector3(position - Main.screenPosition, 0f), color, uv);
 			}
 		}
 
-		protected void MakePrimHelix(int index, int baseWidth, float alphaValue, Color baseColor = default,
-			float fadeValue = 1, float sineFactor = 0)
+		protected void MakePrimHelix(int index, int baseWidth, float alphaValue, Color baseColor = default, float fadeValue = 1, float sineFactor = 0)
 		{
 			float floatCap = Cap;
 			Color color = (baseColor == default ? Color.White : baseColor) * (index / floatCap) * fadeValue;
@@ -140,17 +134,10 @@ namespace SpiritMod.Prim
 			float width1 = baseWidth * Math.Abs((float) Math.Sin(sine1 + lerpAmount) * (index / floatCap)) * fallout1;
 			float width2 = baseWidth * Math.Abs((float) Math.Sin(sine2 + lerpAmount) * ((index + 1) / floatCap)) * fallout2;
 
-			Vector2 firstUp = Points[index] - normal * width1 +
-			                  new Vector2(0, (float) Math.Sin(Counter / 10f + index / 3f)) * sineFactor;
-
-			Vector2 firstDown = Points[index] + normal * width1 +
-			                    new Vector2(0, (float) Math.Sin(Counter / 10f + index / 3f)) * sineFactor;
-
-			Vector2 secondUp = Points[index + 1] - normalAhead * width2 +
-			                   new Vector2(0, (float) Math.Sin(Counter / 10f + (index + 1) / 3f)) * sineFactor;
-
-			Vector2 secondDown = Points[index + 1] + normalAhead * width2 +
-			                     new Vector2(0, (float) Math.Sin(Counter / 10f + (index + 1) / 3f)) * sineFactor;
+			Vector2 firstUp = Points[index] - normal * width1 + new Vector2(0, (float) Math.Sin(Counter / 10f + index / 3f)) * sineFactor;
+			Vector2 firstDown = Points[index] + normal * width1 + new Vector2(0, (float) Math.Sin(Counter / 10f + index / 3f)) * sineFactor;
+			Vector2 secondUp = Points[index + 1] - normalAhead * width2 + new Vector2(0, (float) Math.Sin(Counter / 10f + (index + 1) / 3f)) * sineFactor;
+			Vector2 secondDown = Points[index + 1] + normalAhead * width2 + new Vector2(0, (float) Math.Sin(Counter / 10f + (index + 1) / 3f)) * sineFactor;
 
 			AddVertex(firstDown, color * alphaValue, new Vector2(index / floatCap, 1));
 			AddVertex(firstUp, color * alphaValue, new Vector2(index / floatCap, 0));

@@ -205,6 +205,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			foreach (int item in SpawnPoolMods.Keys)
 			{
 				var currentPool = SpawnPoolMods[item];
+
 				if (!pool.ContainsKey(item))
 				{
 					if (currentPool.Forced)
@@ -212,11 +213,11 @@ namespace SpiritMod.Mechanics.QuestSystem
 						if (((currentPool.Exclusive && !NPC.AnyNPCs(item)) || !currentPool.Exclusive) && (currentPool.Conditions == null || currentPool.Conditions.Invoke(spawnInfo)))
 							pool.Add(item, currentPool.NewRate.Value);
 					}
-					return;
+					continue;
 				}
 
 				if (currentPool.NewRate is null) //We don't have a new rate to set to
-					return;
+					continue;
 
 				if (((currentPool.Exclusive && !NPC.AnyNPCs(item)) || !currentPool.Exclusive) && (currentPool.Conditions == null || currentPool.Conditions.Invoke(spawnInfo)))
 					pool[item] = currentPool.NewRate.Value;
@@ -232,12 +233,6 @@ namespace SpiritMod.Mechanics.QuestSystem
 			{
 				if (!Main.dayTime && spawnInfo.Player.ZoneJungle && !spawnInfo.PlayerSafe && spawnInfo.SpawnTileY < Main.worldSurface && !NPC.AnyNPCs(NPCID.DoctorBones) && pool.ContainsKey(NPCID.DoctorBones))
 					pool[NPCID.DoctorBones] = 0.1f;
-			}
-
-			if (QuestManager.GetQuest<SlayerQuestDrBones>().IsActive)
-			{
-				if (spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.PlayerSafe && spawnInfo.SpawnTileY > Main.rockLayer && !NPC.AnyNPCs(NPCID.LostGirl) && pool.ContainsKey(NPCID.LostGirl))
-					pool[NPCID.LostGirl] = 0.05f;
 			}
 		}
 	}

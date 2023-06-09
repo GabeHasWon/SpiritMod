@@ -22,7 +22,10 @@ namespace SpiritMod.Projectiles
 			Projectile.height = 30;
 			Projectile.width = 30;
 			Projectile.extraUpdates = 1;
+			Projectile.ignoreWater = true;
 		}
+
+		public override bool? CanCutTiles() => false;
 
 		public override void AI()
 		{
