@@ -359,7 +359,7 @@ namespace SpiritMod.UI.QuestUI
 
 			_questInteractButton.OnClick += (UIMouseEvent evt, UIElement listeningElement) =>
 			{
-				if (SelectedQuest.RewardsGiven) 
+				if (Main.LocalPlayer.GetModPlayer<QuestPlayer>().HasRewardsForQuest(SelectedQuest.QuestName)) 
 					return;
 
 				if (SelectedQuest.IsCompleted)
@@ -519,9 +519,7 @@ namespace SpiritMod.UI.QuestUI
 		{
 			// open book if not open.
 			if (SpiritMod.Instance.BookUserInterface.CurrentState is not QuestBookUI)
-			{
 				QuestManager.SetBookState(true);
-			}
 
 			// this is here for external quest book openings.
 			if (selectOnLeftPage)
@@ -564,48 +562,37 @@ namespace SpiritMod.UI.QuestUI
 				_questObjectivesTitle.Text = "";
 				_questRewardsTitle.Text = "";
 				_questRewardList.Clear();
-				_questObjectivesPageText.Top.Set(-1000000f, 0f);
+				_questObjectivesPageText.Top.Set(-1000000f, 0f); // just move this off screen
 				UpdateArrows(0, -20);
 				_obnoxiousTutorialGlow.Texture = null;
-				// just move this off screen
-				_questInteractButton.Left.Set(-1000000f, 0f);
+				_questInteractButton.Left.Set(-1000000f, 0f); // just move this off screen
 
 				foreach (UISolid solid in _rightPageLines)
-				{
 					solid.Color = Color.Transparent;
-				}
 
 				SelectedQuest = null;
 				return;
 			}
 
 			foreach (UISolid solid in _rightPageLines)
-			{
 				solid.Color = new Color(102, 86, 67);
-			}
 
 			if (quest.RewardsGiven)
-			{
-				// just move this off screen
-				_questInteractButton.Left.Set(-1000000f, 0f);
-			}
+				_questInteractButton.Left.Set(-1000000f, 0f); // just move this off screen
 			else
-			{
-				// bring the interact button back to the screen if it's gone
-				_questInteractButton.Left.Set(-110f, 1f);
-			}
+				_questInteractButton.Left.Set(-110f, 1f);// bring the interact button back to the screen if it's gone
 
 			quest.UpdateBookOverlay(_bookOverlay);
 			_obnoxiousTutorialGlow.Texture = (quest.TutorialActivateButton && !quest.IsActive && !quest.RewardsGiven) ? TextureAssets.BlackTile.Value : null;
 			_questTitleText.Top.Set(-8f, 0f);
-			// TODO: Automate the scaling here:
 			_questTitleText.Text = quest.QuestName;
+
+			// TODO: Automate the scaling here:
 			float titleWidth = _questTitleText.Font.MeasureString(_questTitleText.Text).X;
 			float scale = 0.8f;
 			if (titleWidth >= 416.25f)
-			{
 				scale = 0.8f * (416.25f / titleWidth);
-			}
+
 			_questTitleText.Scale = scale;
 			_questObjectivesTitle.Text = "Objectives";
 			_questRewardsTitle.Text = "Rewards";

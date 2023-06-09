@@ -1,16 +1,3 @@
-﻿- Increased priority for Meteorite and Spider Nest scenes
-- Fixed Bloater spawning during the Eclipse
-- Made Glowflowers only need 1 research
-- Fixed projectile primtrails being offset when zoomed in
-- Fixed nonsense high Spectre Knife sell price (30 gold per -> 3 silver per)
-- Fixed prims not being drawn when gravity is flipped
-- Fixed Cryolite aura spamming splash noise in water
-- Fixed Cryolite aura cutting tiles
-- Re-enabled Stargloop system, fixed Void Quill
-- Fixed Astral Amalgam, Interstellar Shield Core bad spriteBatch.Begin parameters
-- Hopefully caught Spirit Biome caught crash
-- Actually finished Slot Machine loot table
-- Sped up Slot Machine, made it affected by luck, made UI consistently init properly
-- Rigged Slot Machine in the player's favour (1/100 chance to rig jackpot)
-- Fixed QuestGlobalNPC QuestPoolData short-circuit
-- Removed erroneous duplicate SlayerQuestDrBones pool edit
+﻿- Fixed Zoologist saying quote when transformed but again
+- Added short FAQ
+- Added system that should circumvent rewards being infinitely re-obtainable

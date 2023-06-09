@@ -143,6 +143,7 @@ namespace SpiritMod.UI.Elements
 			{
 				_highlighted = false;
 				_showExcl = false;
+
 				if (!quest.RewardsGiven)
 				{
 					StringBuilder questionMarks = new StringBuilder();
@@ -154,9 +155,8 @@ namespace SpiritMod.UI.Elements
 					Title.Text = questionMarks.ToString();
 				}
 				else
-				{
 					Title.Text = quest.QuestName;
-				}
+
 				Exclamation.Color = Color.Transparent;
 				Title.Colour = new Color(43, 28, 17) * 0.5f;
 				Icon.Color = Color.White * 0.3f;

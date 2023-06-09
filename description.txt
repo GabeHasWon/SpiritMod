@@ -28,3 +28,11 @@ Check out the mod's discord and forum page for more information! We hope you enj
 
 For those on the Workshop, please join the Discord if you have issues!
 Organizing help on in the comment section is near impossible.
+
+---------------
+----- FAQ -----
+Q: I'm getting a crash during world gen. How do I fix it?
+A: If you're using Remnants, disable it. Those mods are not compatible.
+
+Q: How do I get the quest book?
+A: Find the Adventurer in the underground Briar, and get the quest book from him.

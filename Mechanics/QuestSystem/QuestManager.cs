@@ -158,11 +158,10 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 		public static void GiveRewards(Quest quest)
 		{
-			if (quest.RewardsGiven)
-				return;
-
 			quest.GiveRewards();
 			quest.RewardsGiven = true;
+
+			Main.LocalPlayer.GetModPlayer<QuestPlayer>().SetRewardsForQuest(quest.QuestName);
 		}
 
 		private static void RegisterCategory(string category, Color colour, Asset<Texture2D> iconTexture, Rectangle? frame)
