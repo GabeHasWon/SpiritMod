@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 {
 	public class MoonjellySummonStaff : ModItem
@@ -42,25 +43,26 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 				player.MinionNPCTargetAim(true);
 			else
 			{
-				for (int i = 0; i < 1000; ++i)
+				foreach (Projectile proj in Main.projectile)
 				{
-					if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == Item.shoot)
+					if (proj.active && proj.owner == player.whoAmI && proj.type == Item.shoot)
 					{
-						Main.projectile[i].minionSlots += 1f;
-						Main.projectile[i].scale += .1f;
+						proj.minionSlots += 1f;
+						proj.scale += .1f;
 					}
 				}
 			}
-			return null;
+			return base.UseItem(player);
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int i = 0; i < 1000; ++i)
+			foreach (Projectile proj in Main.projectile)
 			{
-				if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == Item.shoot)
+				if (proj.active && proj.owner == player.whoAmI && proj.type == Item.shoot)
 					return false;
 			}
+
 			return player.altFunctionUse != 2;
 		}
 
@@ -68,13 +70,14 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 		{
 			if (player.altFunctionUse != 2)
 			{
-				for (int i = 0; i < 1000; ++i)
+				foreach (Projectile proj in Main.projectile)
 				{
-					if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == Item.shoot)
+					if (proj.active && proj.owner == player.whoAmI && proj.type == Item.shoot)
 					{
-						Main.projectile[i].minionSlots += 1f;
-						if (Main.projectile[i].scale < 1.3f)
-							Main.projectile[i].scale += .062f;
+						proj.minionSlots += 1f;
+
+						if (proj.scale < 1.3f)
+							proj.scale += .062f;
 					}
 				}
 			}

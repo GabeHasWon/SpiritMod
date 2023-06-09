@@ -45,7 +45,7 @@ namespace SpiritMod.Tiles
 							tremorItem = Main.rand.Next(new int[] { 11, 12, 13, 14, 699, 700, 701, 702, 999, 182, 178, 179, 177, 180, 181, 364, 365, 366, 1104, 1105, 1106 });
 
 						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/PositiveOutcome"), new Vector2(i * 16, j * 16));
-						Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, tremorItem, Main.rand.Next(1, 3));
+						ItemUtils.NewItemWithSync(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, tremorItem, Main.rand.Next(1, 3));
 					}
 				}
 

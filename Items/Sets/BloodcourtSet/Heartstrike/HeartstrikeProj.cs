@@ -2,9 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
 using System;
-using System.IO;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
@@ -47,8 +45,6 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			Projectile.ignoreWater = true;
 		}
 
-		public override void OnSpawn(IEntitySource source) => origin = Projectile.Center;
-
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
@@ -57,7 +53,10 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			player.heldProj = Projectile.whoAmI;
 
 			if (Secondary && Counter == 0)
+			{
+				origin = Projectile.Center;
 				CheckCollision();
+			}
 
 			if (Counter < counterMax)
 				Counter++;

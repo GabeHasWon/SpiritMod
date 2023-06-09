@@ -42,24 +42,27 @@ namespace SpiritMod.Items.Weapon.Magic
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int i = 0; i < Main.rand.Next(1, 3); i++) {
+			for (int i = 0; i < Main.rand.Next(1, 3); i++)
+			{
 				float angle = Main.rand.NextFloat(MathHelper.PiOver4, -MathHelper.Pi - MathHelper.PiOver4);
 				Vector2 spawnPlace = Vector2.Normalize(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle))) * 20f;
-				if (Collision.CanHit(position, 0, 0, position + spawnPlace, 0, 0)) {
+				if (Collision.CanHit(position, 0, 0, position + spawnPlace, 0, 0))
 					position += spawnPlace;
-				}
 
-				velocity = Vector2.Normalize(Main.MouseWorld - position) * Item.shootSpeed;
-				int p = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, 0, 0.0f, 0.0f);
-				for (float num2 = 0.0f; (double)num2 < 10; ++num2) {
-					int dustIndex = Dust.NewDust(position, 2, 2, DustID.ShadowbeamStaff, 0f, 0f, 0, default, .8f);
-					Main.dust[dustIndex].noGravity = true;
-					Main.dust[dustIndex].velocity = Vector2.Normalize(spawnPlace.RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi))) * 1.6f;
+				velocity = position.DirectionTo(Main.MouseWorld) * Item.shootSpeed;
+				Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+				
+				for (float num2 = 0.0f; (double)num2 < 10; ++num2)
+				{
+					Dust dust = Dust.NewDustDirect(position, 2, 2, DustID.ShadowbeamStaff, Scale: .8f);
+					dust.velocity = Vector2.Normalize(spawnPlace.RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi))) * 1.6f;
+					dust.noGravity = true;
 				}
 			}
 
 			return false;
 		}
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}

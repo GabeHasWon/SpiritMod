@@ -40,11 +40,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 				Main.dust[index2].noGravity = true;
 			}
 		}
-		public override bool PreAI()
-		{
-			Projectile.position -= Projectile.velocity;
-			return base.PreAI();
-		}
+
+		public override bool ShouldUpdatePosition() => false;
 
 		public override void AI()
 		{
