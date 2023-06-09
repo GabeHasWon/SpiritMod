@@ -76,7 +76,7 @@ namespace SpiritMod.Projectiles.Clubs
 			Projectile.DamageType = DamageClass.Melee;
 			Projectile.width = Projectile.height = 48;
 			Projectile.aiStyle = -1;
-			Projectile.friendly = false;
+			Projectile.friendly = true;
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
 
@@ -144,6 +144,8 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 		}
 
+		public override bool? CanDamage() => (_lingerTimer == 0) && released;
+
 		public sealed override bool PreAI()
 		{
 			SafeAI();
@@ -183,7 +185,7 @@ namespace SpiritMod.Projectiles.Clubs
 			if (Projectile.ai[0] == 0)
 			{
 				animTime = animMax;
-				Projectile.netUpdate = true;
+				Projectile.netUpdate = true; //This is vital in order for the club to be seen on first use in multiplayer
 			}
 
 			float GetAcceleration() => Acceleration * (float)(MathHelper.Clamp(1f - (float)(animTime / animMaxHalf), 0f, 1f) + 0.1f);
@@ -214,8 +216,6 @@ namespace SpiritMod.Projectiles.Clubs
 				if (!released)
 				{
 					released = true;
-
-					Projectile.friendly = true;
 					SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
 				}
 			}
@@ -253,9 +253,6 @@ namespace SpiritMod.Projectiles.Clubs
 					{
 						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/SwordSlash1") with { PitchVariance = 0.3f, Volume = 0.6f, Pitch = -0.7f }, Projectile.position);
 					}
-
-					Projectile.netUpdate = true;
-					Projectile.friendly = false;
 				}
 			}
 			else
@@ -265,8 +262,6 @@ namespace SpiritMod.Projectiles.Clubs
 				if (--_lingerTimer == 1)
 				{
 					Projectile.active = false;
-					Projectile.netUpdate = true;
-
 					animTime = 2;
 				}
 			}

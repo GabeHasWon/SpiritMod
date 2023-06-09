@@ -50,7 +50,9 @@ namespace SpiritMod.Items.Weapon.Magic
 					position += spawnPlace;
 
 				velocity = position.DirectionTo(Main.MouseWorld) * Item.shootSpeed;
-				Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+
+				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+				proj.netUpdate = true;
 				
 				for (float num2 = 0.0f; (double)num2 < 10; ++num2)
 				{
