@@ -54,6 +54,7 @@ namespace SpiritMod.Items.Sets.SeraphSet
 				Item.damage = 34;
 				Item.knockBack = 2;
 				Item.noUseGraphic = true;
+				Item.noMelee = true;
 				Item.useTime = Item.useAnimation = 10;
 				Item.channel = true;
 				Item.useStyle = ItemUseStyleID.Rapier;
@@ -63,6 +64,7 @@ namespace SpiritMod.Items.Sets.SeraphSet
 				Item.damage = 47;
 				Item.knockBack = 5;
 				Item.noUseGraphic = false;
+				Item.noMelee = false;
 				Item.useTime = Item.useAnimation = 25;
 				Item.channel = false;
 				Item.useStyle = ItemUseStyleID.Swing;
