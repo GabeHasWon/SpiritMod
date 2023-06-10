@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using Terraria.DataStructures;
+using Mono.Cecil;
 
 namespace SpiritMod.Items.Sets.GunsMisc.LadyLuck
 {
@@ -52,11 +53,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.LadyLuck
 			}
 			else
 			{
-				int p = Projectile.NewProjectile(source, position + (direction * 2.0f), direction, ModContent.ProjectileType<LadyLuckFlash>(), 0, 0, player.whoAmI);
-				Main.projectile[p].frame = Main.rand.Next(0, 3);
-				Gore.NewGore(source, player.Center, new Vector2(player.direction * -1, -0.5f) * 4, Mod.Find<ModGore>("BulletCasing").Type, 1f);
-				int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
-				Main.projectile[proj].GetGlobalProjectile<LLProj>().shotFromGun = true;
+				Projectile.NewProjectileDirect(source, position + (direction * 2.0f), direction, ModContent.ProjectileType<LadyLuckFlash>(), 0, 0, player.whoAmI).frame = Main.rand.Next(0, 3);
+
+				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+				proj.GetGlobalProjectile<LLProj>().shotFromGun = true;
 			}
 			return false;
 		}
@@ -89,6 +89,14 @@ namespace SpiritMod.Items.Sets.GunsMisc.LadyLuck
 				Item.autoReuse = true;
 			}
 			return true;
+		}
+
+		public override bool? UseItem(Player player)
+		{
+			if (Main.netMode != NetmodeID.Server)
+				Gore.NewGore(Item.GetSource_FromThis(), player.Center, new Vector2(player.direction * -1, -0.5f) * 4, Mod.Find<ModGore>("BulletCasing").Type, 1f);
+
+			return base.UseItem(player);
 		}
 	}
 

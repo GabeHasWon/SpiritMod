@@ -14,13 +14,13 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Talon's Fury");
-			Tooltip.SetDefault("Creates a flurry of feathers");
+			Tooltip.SetDefault("Creates a flurry of homing feathers");
 			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			Item.damage = 25;
+			Item.damage = 21;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 10;
 			Item.width = Item.height = 46;

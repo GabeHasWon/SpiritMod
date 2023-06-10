@@ -78,7 +78,8 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			Player player = Main.player[NPC.target];
 			bool expertMode = Main.expertMode;			
 
-			if (!player.active || player.dead) {
+			if (!player.active || player.dead)
+			{
 				NPC.TargetClosest(false);
 				NPC.velocity.Y = -2000;
 			}
@@ -96,7 +97,8 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				SoundEngine.PlaySound(SoundID.Grass, NPC.Center);
 				SoundEngine.PlaySound(SoundID.Item104 with { PitchVariance = 0.2f }, NPC.Center);
 			    DustHelper.DrawStar(NPC.Center, 163, pointAmount: 163, mainSize: 2.7425f, dustDensity: 4, dustSize: .65f, pointDepthMult: 3.6f, noGravity: true);
-                if (Main.netMode != NetmodeID.MultiplayerClient)
+                
+				if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
                     direction.Normalize();
@@ -127,8 +129,10 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			if (NPC.ai[0] >= 300 && NPC.ai[0] < 900)
 				DashAttack(player);
 
-			if (NPC.life <= (NPC.lifeMax / 2)) {
-				if (NPC.ai[3] == 0) {
+			if (NPC.life <= (NPC.lifeMax / 2))
+			{
+				if (NPC.ai[3] == 0)
+				{
 					NPC.ai[0] = 0;
 					CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(0, 200, 80, 100), "The Bramble shall consume you...");
 					SoundEngine.PlaySound(SoundID.Grass, NPC.Center);
@@ -191,7 +195,8 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 		void DashAttack(Player player) //basically just copy pasted from scarabeus mostly
 		{
 			NPC.direction = Math.Sign(player.Center.X - NPC.Center.X);		
-			if (NPC.ai[0] < 400 || NPC.ai[0] > 500 && NPC.ai[0] < 600 || NPC.ai[0] > 700 && NPC.ai[0] < 800) {
+			if (NPC.ai[0] < 400 || NPC.ai[0] > 500 && NPC.ai[0] < 600 || NPC.ai[0] > 700 && NPC.ai[0] < 800)
+			{
 				NPC.ai[1] = 0;
 				NPC.ai[2] = 0;
 				Vector2 homeCenter = player.Center;
@@ -202,24 +207,29 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				float vel = MathHelper.Clamp(NPC.Distance(homeCenter) / 12, 8, 30);
 				NPC.velocity = Vector2.Lerp(NPC.velocity, NPC.DirectionTo(homeCenter) * vel, 0.08f);
 			}
-			else {
+			else
+			{
 				NPC.rotation = NPC.velocity.X * 0.04f;
-				if (NPC.ai[0] < 420 || NPC.ai[0] > 600 && NPC.ai[0] < 620 || NPC.ai[0] > 800 && NPC.ai[0] < 820) {
+				if (NPC.ai[0] < 420 || NPC.ai[0] > 600 && NPC.ai[0] < 620 || NPC.ai[0] > 800 && NPC.ai[0] < 820)
+				{
 					NPC.velocity.X = -NPC.spriteDirection;
 					NPC.velocity.Y = 0;
 				}
 
-				else if (NPC.ai[0] == 420 || NPC.ai[0] == 621 || NPC.ai[0] == 822) {
+				else if (NPC.ai[0] == 420 || NPC.ai[0] == 621 || NPC.ai[0] == 822)
+				{
 					SoundEngine.PlaySound(SoundID.Roar, NPC.Center);
 					NPC.velocity.X = MathHelper.Clamp(Math.Abs((player.Center.X - NPC.Center.X) / 10), 27, 40) * NPC.spriteDirection;
 					NPC.netUpdate = true;
 				}
 
-				else if (NPC.direction != NPC.spriteDirection || NPC.ai[1] > 0) {
+				else if (NPC.direction != NPC.spriteDirection || NPC.ai[1] > 0)
+				{
 					NPC.ai[1]++; //ai 1 is used here to store this being triggered at least once, so if direction is equal to sprite direction again after this it will continue this part of the ai
 					NPC.velocity.X = MathHelper.Lerp(NPC.velocity.X, 0, 0.06f);
 
-					if (NPC.collideX && NPC.ai[2] == 0) {
+					if (NPC.collideX && NPC.ai[2] == 0)
+					{
 						NPC.ai[2]++; //ai 2 is used here as a flag to make sure the tile collide effects only trigger once
 						Collision.HitTiles(NPC.position, NPC.velocity, NPC.width, NPC.height);
 						SoundEngine.PlaySound(SoundID.Dig, NPC.Center);
@@ -234,8 +244,10 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (Main.netMode != NetmodeID.MultiplayerClient && NPC.life <= 0) {
-				for (int num621 = 0; num621 < 20; num621++) {
+			if (NPC.life <= 0)
+			{
+				for (int num621 = 0; num621 < 20; num621++)
+				{
 					int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Grass, 0f, 0f, 100, default, 2f);
 					Main.dust[num622].velocity *= 3f;
 					if (Main.rand.NextBool(2))
@@ -269,9 +281,8 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				}
 			}
 
-			for (int k = 0; k < 12; k++) {
+			for (int k = 0; k < 12; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
-			}
 		}
 
 		public override bool PreKill()
@@ -300,12 +311,12 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
             num395 *= 0.2f;
             float num366 = num395 + .85f;
 			if (NPC.ai[0] > 300 || NPC.life <= (NPC.lifeMax/2))
-			{
 				DrawAfterImage(Main.spriteBatch, new Vector2(0f, 0f), 0.75f, Color.Chartreuse * .7f, Color.PaleGreen * .05f, 0.75f, num366, .65f, screenPos);
-			}
+
 			var effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + Drawoffset, NPC.frame,
 				NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+
 			return false;
 		}
 

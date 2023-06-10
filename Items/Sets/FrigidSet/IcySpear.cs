@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.FrigidSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Frigid Javelin");
-			Tooltip.SetDefault("Hold and release to throw\nHold longer for more velocity and damage\nOccasionally inflicts Frostburn");
+			Tooltip.SetDefault("Hold and release to throw\nHold longer for more velocity and damage\nInflicts Frostburn");
 		}
 
 		public override void SetDefaults()

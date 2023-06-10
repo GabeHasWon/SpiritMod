@@ -23,6 +23,7 @@
 		StarjinxData,
 		BoonData,
 		FathomlessData,
+		PlayDeathSoundFromServer,
 		RequestQuestManager,
 		RecieveQuestManager,
 		Quest,

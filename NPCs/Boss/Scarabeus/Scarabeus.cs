@@ -1178,7 +1178,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 		{
 			SpriteEffects effects = NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/Scarabeus/Scarabeus_Glow").Value, NPC.Center - screenPos + new Vector2(-10 * NPC.spriteDirection, NPC.gfxOffY - 16 + extraYoff).RotatedBy(NPC.rotation), NPC.frame,
-							 Color.White, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+				Color.White, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
