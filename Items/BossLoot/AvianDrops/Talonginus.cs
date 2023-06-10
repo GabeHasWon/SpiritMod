@@ -24,8 +24,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			Item.damage = 24;
 			Item.knockBack = 2.5f;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.useTime = 10;
-			Item.useAnimation = 10;
+			Item.useTime = 7;
+			Item.useAnimation = 7;
 			Item.DamageType = DamageClass.Melee;
 			Item.noMelee = true;
 			Item.autoReuse = true;

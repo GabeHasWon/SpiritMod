@@ -25,7 +25,6 @@ namespace SpiritMod.Items.Accessory
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.noFallDmg = true;
 			if (player.gravity < 0.4f)
 				player.gravity = 0.4f;
 			if (player.controlDown)
