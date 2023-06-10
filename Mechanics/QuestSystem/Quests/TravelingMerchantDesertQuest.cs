@@ -1,10 +1,11 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
-
+using System;
 
 namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
+	[Obsolete("Incredibly broken, not worth fixing. Replace or remove entirely in a future update.")]
     public class TravelingMerchantDesertQuest : Quest
     {
 		public const string ThankText = "I cannot thank you enough. Take this, hopefully it'll be some penance for what me and...my old friends...have done to you. Goodbye.";

@@ -754,15 +754,17 @@ namespace SpiritMod.NPCs
 
 			if (MyWorld.jellySky && (player.ZoneOverworldHeight || player.ZoneSkyHeight))
 			{
-				pool.Add(ModContent.NPCType<MoonjellyEvent.TinyLunazoa>(), 9.35f);
-				pool.Add(ModContent.NPCType<MoonjellyEvent.ExplodingMoonjelly>(), 8.35f);
-				pool.Add(ModContent.NPCType<MoonjellyEvent.MoonlightPreserver>(), 3.25f);
+				float multiplier = Main.pumpkinMoon || Main.bloodMoon || Main.snowMoon ? 0.05f : 1f;
+
+				pool.Add(ModContent.NPCType<MoonjellyEvent.TinyLunazoa>(), 9.35f * multiplier);
+				pool.Add(ModContent.NPCType<MoonjellyEvent.ExplodingMoonjelly>(), 8.35f * multiplier);
+				pool.Add(ModContent.NPCType<MoonjellyEvent.MoonlightPreserver>(), 3.25f * multiplier);
 
 				if (!NPC.AnyNPCs(ModContent.NPCType<MoonjellyEvent.MoonjellyGiant>()))
-					pool.Add(ModContent.NPCType<MoonjellyEvent.MoonjellyGiant>(), .85f);
+					pool.Add(ModContent.NPCType<MoonjellyEvent.MoonjellyGiant>(), .85f * multiplier);
 
 				if (!NPC.AnyNPCs(ModContent.NPCType<MoonjellyEvent.DreamlightJelly>()))
-					pool.Add(ModContent.NPCType<MoonjellyEvent.DreamlightJelly>(), .85f);
+					pool.Add(ModContent.NPCType<MoonjellyEvent.DreamlightJelly>(), .85f * multiplier);
 			}
 
 			if (MyWorld.blueMoon && (player.ZoneOverworldHeight || player.ZoneSkyHeight))

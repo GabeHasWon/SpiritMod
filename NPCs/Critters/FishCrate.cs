@@ -10,6 +10,8 @@ namespace SpiritMod.NPCs.Critters
 {
 	public class FishCrate : ModNPC
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Packing Crate");

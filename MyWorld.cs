@@ -1533,7 +1533,8 @@ namespace SpiritMod
 				else
 					ashRain = false;
 
-				if (!Main.dayTime && (NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || downedScarabeus || downedReachBoss || downedRaider || downedAncientFlier) && (!downedMoonWizard && Main.rand.NextBool(7) || downedMoonWizard && Main.rand.NextBool(36)))
+				bool anyValidBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || downedScarabeus || downedReachBoss || downedRaider || downedAncientFlier;
+				if (!Main.dayTime && anyValidBoss && (!downedMoonWizard && Main.rand.NextBool(8) || downedMoonWizard && Main.rand.NextBool(46)))
 				{
 					if (Main.netMode == NetmodeID.SinglePlayer)
 						Main.NewText("Strange jellyfish are raining from the skies!", 61, 255, 142);

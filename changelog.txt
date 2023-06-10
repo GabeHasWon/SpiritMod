@@ -1,3 +1,9 @@
-﻿- Fixed Zoologist saying quote when transformed but again
-- Added short FAQ
-- Added system that should circumvent rewards being infinitely re-obtainable
+﻿- Improved Boulder Behemoth glow
+- Fixed Stactus gore spam
+- Fixed Ancient Tome needing to spawn only in the underground layer but also aboveground
+- Disabled Forsaken Relics (good riddance)
+- Made all quests which have their rewards obtained already be sorted into Completed quests
+- Removed Packing Crate NPC, made Packing Crate item a FloatingItem
+- Slightly increased rate of FloatingItems
+- Slightly decreased chance for natural Jelly Deluges
+- Significantly decrease spawn rate of Jelly Deluge enemies when in another natural invasion (Frost/Pumpkin Moon, Blood Moon)

@@ -11,9 +11,11 @@ using System.Collections.Generic;
 namespace SpiritMod.NPCs.BloodstainedChest
 {
 	[AutoloadHead]
-	public class BloodstainedChest : ModNPC
+	public class BloodstainedChest : ModNPC //hi i just want YOU (the reader) to know this thing SUCKS - gabehaswon
     {
-        public override void SetStaticDefaults()
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
+		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bloodstained Chest");
             Main.npcFrameCount[NPC.type] = 1;

@@ -347,15 +347,8 @@ namespace SpiritMod.UI.QuestUI
 			_questInteractButton.SelectedOutlineColour = new Color(102, 86, 67) * 0.9f;
 			_questInteractButton.HoverOutlineColour = new Color(102, 86, 67) * 0.7f;
 
-			_questInteractButton.OnMouseDown += (UIMouseEvent evt, UIElement listeningElement) => 
-			{
-				_questInteractButton.IsSelected = true;
-			};
-
-			_questInteractButton.OnMouseUp += (UIMouseEvent evt, UIElement listeningElement) =>
-			{
-				_questInteractButton.IsSelected = false;
-			};
+			_questInteractButton.OnMouseDown += (UIMouseEvent evt, UIElement listeningElement) => _questInteractButton.IsSelected = true;
+			_questInteractButton.OnMouseUp += (UIMouseEvent evt, UIElement listeningElement) => _questInteractButton.IsSelected = false;
 
 			_questInteractButton.OnClick += (UIMouseEvent evt, UIElement listeningElement) =>
 			{
@@ -690,7 +683,7 @@ namespace SpiritMod.UI.QuestUI
 					_questProgressCounterText.Text = "(" + orderedFilteredQuests.Count() + "/" + QuestManager.MAX_QUESTS_ACTIVE + ")";
 					break;
 				case 2: // get all completed quests
-					orderedFilteredQuests = orderedFilteredQuests.Where(q => q.MyQuest.IsCompleted);
+					orderedFilteredQuests = orderedFilteredQuests.Where(q => q.MyQuest.IsCompleted || Main.LocalPlayer.GetModPlayer<QuestPlayer>().HasRewardsForQuest(q.MyQuest.QuestName));
 					_questProgressCounterText.Text = "(" + orderedFilteredQuests.Where(q => q.MyQuest.CountsTowardsQuestTotal).Count() + "/" + _currentMaxPossible + ")";
 					break;
 			}

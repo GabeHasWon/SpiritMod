@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
 using SpiritMod.NPCs.Town;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

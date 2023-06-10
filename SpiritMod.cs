@@ -927,7 +927,7 @@ namespace SpiritMod
 		{
 			if (ModLoader.TryGetMod("Census", out Mod census))
 			{
-				census.Call("TownNPCCondition", ModContent.NPCType<Adventurer>(), "Rescue the Adventurer from the Briar after completing your first quest.");
+				census.Call("TownNPCCondition", ModContent.NPCType<Adventurer>(), "Rescue the Adventurer from a hut in the underground Briar.");
 				census.Call("TownNPCCondition", ModContent.NPCType<Gambler>(), "Rescue the Gambler from a Goblin Tower\nIf your world does not have a Goblin Tower, have at least 1 Gold in your inventory");
 				census.Call("TownNPCCondition", ModContent.NPCType<Rogue>(), "Rescue the Bandit from the Bandit Hideout\nIf your world does not have a Goblin Tower, have at least 1 Gold in your inventory");
 				census.Call("TownNPCCondition", ModContent.NPCType<RuneWizard>(), "Have a Blank Glyph in your inventory");

@@ -61,23 +61,23 @@ namespace SpiritMod.NPCs.Spirit
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-            if (!player.ZoneSpirit() || !player.ZoneRockLayerHeight)
+
+            if (!player.ZoneSpirit())
                 return 0f;
 
-            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0)) {
+            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && 
+				((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0)) {
 				int[] TileArray2 = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<Spiritsand>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>(), };
-				return TileArray2.Contains(spawnInfo.SpawnTileType) && NPC.downedMechBossAny && player.ZoneOverworldHeight ? 2.09f : 0f;
+				return TileArray2.Contains(spawnInfo.SpawnTileType) && NPC.downedMechBossAny ? 2.09f : 0f;
 			}
 			return 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 12);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 11);
-			}
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+				for (int i = 11; i < 14; ++i)
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, i);
 		}
 
 		public override void AI()

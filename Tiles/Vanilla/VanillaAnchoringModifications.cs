@@ -41,7 +41,19 @@ internal class VanillaAnchoringModifications : ILoadable
 
 	internal void ModifyTileAnchors()
 	{
-		ModifyTileAnchors(TileObjectData.GetTileData(TileID.Sunflower, 0, 0), false, ModContent.TileType<Stargrass>() );
+		ModifyTileAnchors(TileObjectData.GetTileData(TileID.Sunflower, 0, 0), false, ModContent.TileType<Stargrass>());
+		ModifyTileAnchors(new int[] { TileID.BloomingHerbs, TileID.ImmatureHerbs, TileID.MatureHerbs, TileID.Plants, TileID.Plants2 }, false, ModContent.TileType<Stargrass>());
+	}
+
+	public void ModifyTileAnchors(int[] dataToGet, bool remove, params int[] modifications)
+	{
+		foreach (int id in dataToGet)
+		{
+			var data = TileObjectData.GetTileData(id, 0, 0);
+
+			if (data is not null)
+				ModifyTileAnchors(data, remove, modifications);
+		}
 	}
 
 	public void ModifyTileAnchors(TileObjectData data, bool remove, params int[] modifications)

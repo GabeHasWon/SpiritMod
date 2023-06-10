@@ -1,6 +1,8 @@
 using SpiritMod.Items.Armor.DiverSet;
 using SpiritMod.Items.Consumable;
 using SpiritMod.Items.Consumable.Fish;
+using SpiritMod.Mechanics.QuestSystem;
+using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.NPCs;
 using SpiritMod.Tiles.Furniture;
 using Terraria;
@@ -11,8 +13,20 @@ using Terraria.ModLoader;
 namespace SpiritMod.Items.Placeable
 {
 	[Sacrifice(10)]
-	public class FishCrate : ModItem
+	public class FishCrate : FloatingItem
 	{
+		public override float SpawnWeight => QuestManager.GetQuest<AnglerStatueQuest>().IsActive && AnyOfSelf() ? 1f : 0.08f;
+		public override float Weight => base.Weight * 0.9f;
+		public override float Bouyancy => base.Bouyancy * 1.05f;
+
+		private bool AnyOfSelf()
+		{
+			for (int i = 0; i < Main.maxItems; ++i)
+				if (Main.item[i].active && Main.item[i].type == Type)
+					return true;
+			return false;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Packing Crate");

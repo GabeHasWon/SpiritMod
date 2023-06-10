@@ -87,6 +87,7 @@ namespace SpiritMod.NPCs.Pokey
             }
             return ret;
         }
+
         private int QueueFromTop()
         {
             int ret = 0;
@@ -100,6 +101,7 @@ namespace SpiritMod.NPCs.Pokey
             }
             return ret;
         }
+
         private NPC Tail
         {
             get
@@ -133,6 +135,7 @@ namespace SpiritMod.NPCs.Pokey
                 Main.npc[bottomChain].ai[1] = -1;
             }
         }
+
         private NPC Head
         {
             get
@@ -163,6 +166,7 @@ namespace SpiritMod.NPCs.Pokey
                 Main.npc[topChain].ai[0] = -1;
             }
         }
+
         public override void AI()
         {
             NPC.TargetClosest(true);
@@ -228,6 +232,7 @@ namespace SpiritMod.NPCs.Pokey
                 NPC.frame.Y = 64;
             }
         }
+
         private void CheckPlatform(Player player)
         {
             bool onplatform = true;
@@ -242,6 +247,7 @@ namespace SpiritMod.NPCs.Pokey
             else
                 NPC.noTileCollide = false;
         }
+
         private void CheckPit()
         {
             bool pit = true;
@@ -254,11 +260,13 @@ namespace SpiritMod.NPCs.Pokey
             if (pit)
                 NPC.velocity.X *= -0.5f;
         }
+
         private void GoTo(float pos) 
         {
             float lerpspeed = (Math.Abs(NPC.position.Y - pos) > (NPC.height / 2)) ? 0.45f : 0.15f;
             NPC.position.Y = MathHelper.Lerp(NPC.position.Y, pos, lerpspeed); 
         }
+
         private void Delete()
         {
             if (QueueFromTop() == 0)
@@ -299,7 +307,7 @@ namespace SpiritMod.NPCs.Pokey
 
             Tail.velocity.X = hitDirection * 2;
 
-			if (Main.netMode != NetmodeID.Server)
+			if (Main.netMode != NetmodeID.Server && NPC.life <= 0)
 			{
 				switch (NPC.frame.Y)
 				{
