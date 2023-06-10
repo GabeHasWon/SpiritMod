@@ -430,16 +430,31 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (Main.netMode != NetmodeID.MultiplayerClient && NPC.life <= 0)
+			if (NPC.life <= 0)
 			{
-				if (!text)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					CombatText.NewText(NPC.getRect(), new Color(0, 200, 80, 100), "You cannot stop the wrath of nature!");
-					text = true;
-				}
+					if (!text)
+					{
+						CombatText.NewText(NPC.getRect(), new Color(0, 200, 80, 100), "You cannot stop the wrath of nature!");
+						text = true;
+					}
 
-				Vector2 spawnAt = NPC.Center + new Vector2(0f, (float)NPC.height / 2f);
-				NPC.NewNPC(NPC.GetSource_Death(), (int)spawnAt.X, (int)spawnAt.Y, ModContent.NPCType<ReachBoss1>());
+					Vector2 spawnAt = NPC.Center + new Vector2(0f, (float)NPC.height / 2f);
+					NPC.NewNPC(NPC.GetSource_Death(), (int)spawnAt.X, (int)spawnAt.Y, ModContent.NPCType<ReachBoss1>());
+
+					for (int num621 = 0; num621 < 20; num621++)
+					{
+						int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Grass, 0f, 0f, 100, default, 2f);
+						Main.dust[num622].velocity *= 3f;
+
+						if (Main.rand.NextBool(2))
+						{
+							Main.dust[num622].scale = 0.5f;
+							Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+						}
+					}
+				}
 
 				if (Main.netMode != NetmodeID.Server)
 				{
@@ -448,18 +463,6 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReachBoss1").Type, 1f);
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReachBoss1").Type, 1f);
-				}
-
-				for (int num621 = 0; num621 < 20; num621++)
-				{
-					int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Grass, 0f, 0f, 100, default, 2f);
-					Main.dust[num622].velocity *= 3f;
-
-					if (Main.rand.NextBool(2))
-					{
-						Main.dust[num622].scale = 0.5f;
-						Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
-					}
 				}
 			}
 

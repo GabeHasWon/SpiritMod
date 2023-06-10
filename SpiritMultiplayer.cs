@@ -6,7 +6,6 @@ using SpiritMod.Mechanics.BoonSystem;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.Trails;
-using SpiritMod.NPCs.AsteroidDebris;
 using SpiritMod.NPCs.AuroraStag;
 using SpiritMod.NPCs.ExplosiveBarrel;
 using SpiritMod.NPCs.Reach;
@@ -15,7 +14,6 @@ using SpiritMod.Projectiles;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Channels;
 using Terraria;
 using Terraria.Chat;
 using Terraria.DataStructures;
@@ -271,23 +269,6 @@ namespace SpiritMod
 						Main.npc[npcID].netUpdate2 = true;
 					}
 					break;
-				case MessageType.FathomlessData:
-					byte effectIndex = reader.ReadByte();
-					byte playerIndex = reader.ReadByte();
-					(ushort i, ushort j) = (reader.ReadUInt16(), reader.ReadUInt16());
-
-					if (Main.netMode == NetmodeID.Server) //If the server recieves the packet, send to other clients
-					{
-						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.FathomlessData, 4);
-						packet.Write(effectIndex);
-						packet.Write(playerIndex);
-						packet.Write(i);
-						packet.Write(j);
-						packet.Send(-1, whoAmI);
-					}
-
-					ChanceEffectManager.effectIndex[effectIndex].Trigger(Main.player[playerIndex], new Point16(i, j));
-					break;
 				case MessageType.StarjinxData:
 					//TBD in future
 					break;
@@ -306,6 +287,30 @@ namespace SpiritMod
 						Main.npc[index].GetGlobalNPC<BoonNPC>().currentBoon.SetStats();
 						SpiritMod.Instance.Logger.Debug($"current boon is now: {Main.npc[index].GetGlobalNPC<BoonNPC>().currentBoon.GetType().Name}");
 					});
+					break;
+				case MessageType.FathomlessData:
+					byte effectIndex = reader.ReadByte();
+					byte playerIndex = reader.ReadByte();
+					(ushort i, ushort j) = (reader.ReadUInt16(), reader.ReadUInt16());
+
+					if (Main.netMode == NetmodeID.Server) //If the server recieves the packet, send to other clients
+					{
+						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.FathomlessData, 4);
+						packet.Write(effectIndex);
+						packet.Write(playerIndex);
+						packet.Write(i);
+						packet.Write(j);
+						packet.Send(-1, whoAmI);
+					}
+
+					ChanceEffectManager.effectIndex[effectIndex].Trigger(Main.player[playerIndex], new Point16(i, j));
+					break;
+				case MessageType.PlayDeathSoundFromServer:
+					index = reader.ReadUInt16();
+					string deathSound = reader.ReadString();
+
+					if (Main.netMode == NetmodeID.MultiplayerClient)
+						Main.npc[index].PlayDeathSound(deathSound);
 					break;
 				case MessageType.RequestQuestManager:
 					player = reader.ReadByte();

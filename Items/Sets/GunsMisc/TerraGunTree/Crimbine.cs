@@ -38,9 +38,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			Item.crit = 6;
 		}
 
-		public override bool AltFunctionUse(Player player) => player.ItemTimer<Crimbine>() <= 0;
-
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
+		public override bool AltFunctionUse(Player player) => player.ItemTimer<Crimbine>() <= 0;
 
 		public override void HoldItem(Player player)
 		{
@@ -67,9 +67,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 
 			if (player.altFunctionUse == 2)
 			{
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(SoundID.Item95);
-
 				player.SetItemTimer<Crimbine>(300);
 
 				type = ModContent.ProjectileType<CrimbineAmalgam>();
@@ -77,9 +74,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			}
 			else
 			{
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(SoundID.Item11);
-
 				Item.shootSpeed = 10f;
 				float spread = 8 * 0.0174f;//45 degrees converted to radians
 				float baseSpeed = (float)velocity.Length();
@@ -91,6 +85,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 				if (type == ProjectileID.Bullet)
 					type = ModContent.ProjectileType<CrimbineBone>();
 			}
+		}
+
+		public override bool? UseItem(Player player)
+		{
+			if (player.altFunctionUse == 2)
+				SoundEngine.PlaySound(SoundID.Item95);
+			else
+				SoundEngine.PlaySound(SoundID.Item11);
+
+			return base.UseItem(player);
 		}
 
 		public int TimerCount() => 1;

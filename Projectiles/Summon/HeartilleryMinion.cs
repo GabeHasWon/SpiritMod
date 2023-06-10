@@ -65,7 +65,6 @@ namespace SpiritMod.Projectiles.Summon
 			Projectile.frameCounter++;
 			if (target.CanBeChasedBy(this))
 			{
-
 				float num395 = Main.mouseTextColor / 200f - 0.35f;
 				num395 *= 0.3f;
 				Projectile.scale = num395 + 0.85f;

@@ -102,8 +102,6 @@ namespace SpiritMod.Prim
 				foreach (PrimTrail trail in pixelTrails)
 					trail.Draw();
 
-				Main.NewText(pixelTrails.Any(x => x is ArclashPrimTrail));
-
 				spriteBatch.End();
 				gD.SetRenderTargets(bindings);
 			}
