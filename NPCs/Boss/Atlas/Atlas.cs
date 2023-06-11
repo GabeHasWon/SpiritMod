@@ -94,7 +94,8 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			int defenseBuff = (int)(35f * (1f - NPC.life / NPC.lifeMax));
 			NPC.defense = NPC.defDefense + defenseBuff;
 			
-			if (NPC.ai[0] == 0f) {
+			if (NPC.ai[0] == 0f)
+			{
 				arms[0] = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X - 80 - Main.rand.Next(80, 160), (int)NPC.position.Y, ModContent.NPCType<AtlasArmRight>(), NPC.whoAmI, NPC.whoAmI);
 				arms[1] = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + 80 + Main.rand.Next(80, 160), (int)NPC.position.Y, ModContent.NPCType<AtlasArmLeft>(), NPC.whoAmI, NPC.whoAmI);
 				NPC.ai[0] = 1f;
@@ -102,11 +103,14 @@ namespace SpiritMod.NPCs.Boss.Atlas
                 Main.npc[arms[0]].netUpdate = true;
                 Main.npc[arms[1]].netUpdate = true;
             }
-			else if (NPC.ai[0] == 1f) {
+			else if (NPC.ai[0] == 1f)
+			{
 				NPC.ai[1] += 1f;
-				if (NPC.ai[1] >= 210f) {
+				if (NPC.ai[1] >= 210f)
+				{
 					NPC.alpha -= 4;
-					if (NPC.alpha <= 0) {
+					if (NPC.alpha <= 0)
+					{
 						NPC.ai[0] = 2f;
 						NPC.ai[1] = 0f;
 						NPC.alpha = 0;
@@ -115,13 +119,16 @@ namespace SpiritMod.NPCs.Boss.Atlas
 					}
 				}
 			}
-			else if (NPC.ai[0] == 2f) {
-				if (NPC.alpha == 0) {
+			else if (NPC.ai[0] == 2f)
+			{
+				if (NPC.alpha == 0)
+				{
 					Vector2 dist = player.Center - NPC.Center;
 					Vector2 direction = player.Center - NPC.Center;
 					NPC.netUpdate = true;
 					NPC.TargetClosest(true);
-					if (!player.active || player.dead) {
+					if (!player.active || player.dead)
+					{
 						NPC.TargetClosest(false);
 						NPC.velocity.Y = -100f;
 					}
@@ -200,17 +207,20 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 					timer += phaseChange ? 2 : 1; //if below 20% life fire more often
 					int shootThings = expertMode ? 200 : 250; //fire more often in expert mode
-					if (timer > shootThings) {
+					if (timer > shootThings)
+					{
 						direction.Normalize();
 						direction.X *= 8f;
 						direction.Y *= 8f;
 						int amountOfProjectiles = Main.rand.Next(6, 8);
 						int damageAmount = expertMode ? 54 : 62; //always account for expert damage values
 						SoundEngine.PlaySound(SoundID.Item92, NPC.Center);
-						for (int num621 = 0; num621 < 30; num621++) {
+
+						for (int num621 = 0; num621 < 30; num621++)
 							Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, 2f);
-						}
-						if (Main.netMode != NetmodeID.MultiplayerClient) {
+
+						if (Main.netMode != NetmodeID.MultiplayerClient)
+						{
 							for (int i = 0; i < amountOfProjectiles; ++i) {
 								float A = Main.rand.Next(-250, 250) * 0.01f;
 								float B = Main.rand.Next(-250, 250) * 0.01f;
@@ -220,12 +230,15 @@ namespace SpiritMod.NPCs.Boss.Atlas
 						}
 					}
 
-					if (aiChange) {
-						if (secondStage == false) {
+					if (aiChange)
+					{
+						if (secondStage == false)
+						{
 							SoundEngine.PlaySound(SoundID.Item93, NPC.Center);
 							float radius = 250;
 							float rot = MathHelper.TwoPi / 5;
-							for (int I = 0; I < 5; I++) {
+							for (int I = 0; I < 5; I++)
+							{
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
@@ -233,12 +246,15 @@ namespace SpiritMod.NPCs.Boss.Atlas
 						}
 					}
 
-					if (aiChange2) {
-						if (thirdStage == false) {
+					if (aiChange2)
+					{
+						if (thirdStage == false)
+						{
 							SoundEngine.PlaySound(SoundID.Item93, NPC.Center);
 							float radius = 400;
 							float rot = MathHelper.TwoPi / 10;
-							for (int I = 0; I < 10; I++) {
+							for (int I = 0; I < 10; I++)
+							{
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye2>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
@@ -246,19 +262,23 @@ namespace SpiritMod.NPCs.Boss.Atlas
 						}
 					}
 
-					if (aiChange3) {
-						if (lastStage == false) {
+					if (aiChange3)
+					{
+						if (lastStage == false)
+						{
 							SoundEngine.PlaySound(SoundID.Item93, NPC.Center);
 							float radius = 1200;
 							float rot = MathHelper.TwoPi / 41;
-							for (int I = 0; I < 41; I++) {
+							for (int I = 0; I < 41; I++)
+							{
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye3>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
 							lastStage = true;
 						}
 					}
-					for (int index1 = 0; index1 < 6; ++index1) {
+					for (int index1 = 0; index1 < 6; ++index1)
+					{
 						float x = (NPC.Center.X - 2);
 						float xnum2 = (NPC.Center.X + 2);
 						float y = (NPC.Center.Y - 160);
@@ -284,20 +304,19 @@ namespace SpiritMod.NPCs.Boss.Atlas
 				}
 			}
 
-			collideTimer++;
-			if (collideTimer == 500) {
+			if (++collideTimer == 500)
 				NPC.noTileCollide = true;
-			}
 
 			NPC.TargetClosest(true);
-			if (!player.active || player.dead) {
+			if (!player.active || player.dead)
+			{
 				NPC.TargetClosest(false);
 				NPC.velocity.Y = -100f;
 				timer = 0;
 			}
 
-			Counter++;
-			if (Counter > 400) {
+			if (++Counter > 400)
+			{
 				SpiritMod.tremorTime = 20;
 				Counter = 0;
 			}
@@ -305,23 +324,27 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int k = 0; k < 5; k++) {
+			for (int k = 0; k < 5; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, hitDirection, -1f, 0, default, 1f);
-			}
-			if (NPC.life <= 0) {
+
+			if (NPC.life <= 0)
+			{
 				NPC.position = NPC.Center;
 				NPC.width = 300;
 				NPC.height = 500;
 				NPC.position = NPC.Center;
-				for (int num621 = 0; num621 < 200; num621++) {
+				for (int num621 = 0; num621 < 200; num621++)
+				{
 					int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Stone, 0f, 0f, 100, default, 2f);
 					Main.dust[num622].velocity *= 3f;
-					if (Main.rand.NextBool(2)) {
+					if (Main.rand.NextBool(2))
+					{
 						Main.dust[num622].scale = 0.5f;
 						Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
 					}
 				}
-				for (int num623 = 0; num623 < 400; num623++) {
+				for (int num623 = 0; num623 < 400; num623++)
+				{
 					int num624 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Stone, 0f, 0f, 100, default, 3f);
 					Main.dust[num624].noGravity = true;
 					Main.dust[num624].velocity *= 5f;
@@ -330,6 +353,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 				}
 			}
 		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;

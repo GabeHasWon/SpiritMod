@@ -1,6 +1,4 @@
-
 using Microsoft.Xna.Framework;
-
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -10,23 +8,18 @@ namespace SpiritMod.Projectiles.Arrow
 {
 	public class AccursedArrow : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Accursed Arrow");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Accursed Arrow");
 
 		public override void SetDefaults()
 		{
 			Projectile.width = 9;
 			Projectile.height = 18;
-
 			Projectile.penetrate = 2;
-
 			Projectile.aiStyle = 1;
 			AIType = ProjectileID.WoodenArrowFriendly;
-
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.friendly = true;
+			Projectile.arrow = true;
 		}
 
 		public override void AI()
@@ -39,9 +32,8 @@ namespace SpiritMod.Projectiles.Arrow
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 2; i++)
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.CursedTorch);
-			}
 		}
 	}
 }

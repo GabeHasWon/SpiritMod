@@ -184,10 +184,12 @@ namespace SpiritMod.Projectiles
 			// Jellynaut Helmet
 			if (modPlayer.jellynautHelm && modPlayer.jellynautStacks < 4 && projectile.IsMagic() && (target.life <= 0 || Main.rand.NextBool(8)) && !target.friendly && !target.SpawnedFromStatue)
 			{
-				if (Main.netMode != NetmodeID.MultiplayerClient)
+				if (Main.netMode != NetmodeID.Server && player.whoAmI == Main.myPlayer)
 				{
 					Vector2 position = projectile.position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 20);
-					Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), position, new Vector2(1, -1), ModContent.ProjectileType<Magic.JellynautOrbiter>(), 0, 0, player.whoAmI).scale = Main.rand.NextFloat(.5f, 1f);
+					Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), position, new Vector2(1, -1), ModContent.ProjectileType<Magic.JellynautOrbiter>(), 0, 0, player.whoAmI);
+					proj.scale = Main.rand.NextFloat(.5f, 1f);
+					proj.netUpdate = true;
 
 					modPlayer.jellynautStacks++;
 				}

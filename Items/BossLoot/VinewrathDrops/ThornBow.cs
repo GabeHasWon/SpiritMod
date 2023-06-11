@@ -11,7 +11,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Thornshot");
-			Tooltip.SetDefault("Wooden arrows split into poisonous thorns");
+			Tooltip.SetDefault("Wooden arrows occasionally split into poisonous thorns");
 		}
 
 		public override void SetDefaults()

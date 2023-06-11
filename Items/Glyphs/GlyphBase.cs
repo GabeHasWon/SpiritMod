@@ -23,10 +23,7 @@ namespace SpiritMod.Items.Glyphs
 		public abstract string Effect { get; }
 		public abstract string Addendum { get; }
 
-		public virtual bool CanApply(Item item)
-		{
-			return item.IsWeapon();
-		}
+		public virtual bool CanApply(Item item) => item.IsWeapon();
 
 		public sealed override bool CanRightClick()
 		{
@@ -77,7 +74,7 @@ namespace SpiritMod.Items.Glyphs
 			tooltips.Insert(index, line);
 		}
 
-		public Item EnchantmentTarget(Player player)
+		public static Item EnchantmentTarget(Player player)
 		{
 			if (player.selectedItem == 58)
 				return Main.mouseItem;
@@ -91,7 +88,8 @@ namespace SpiritMod.Items.Glyphs
 			_lookup = new GlyphBase[(byte)GlyphType.Count];
 
 			Type glyphBase = typeof(GlyphBase);
-			foreach (Type type in SpiritMod.Instance.Code.GetTypes()) {
+			foreach (Type type in SpiritMod.Instance.Code.GetTypes())
+			{
 				if (type.IsAbstract)
 					continue;
 				if (!type.IsSubclassOf(glyphBase))
@@ -110,9 +108,6 @@ namespace SpiritMod.Items.Glyphs
 			}
 		}
 
-		internal static void UninitGlyphLookup()
-		{
-			_lookup = null;
-		}
+		internal static void UninitGlyphLookup() => _lookup = null;
 	}
 }
