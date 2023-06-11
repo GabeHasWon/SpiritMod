@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Copper Chest");
-			Tooltip.SetDefault("Right click to open\n'May contain a fortune'");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'May contain a fortune'");
 		}
 
 		public override void SetDefaults()

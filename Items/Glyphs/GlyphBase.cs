@@ -8,13 +8,13 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
 {
+	[Sacrifice(5)]
 	public abstract class GlyphBase : ModItem
 	{
 		public const float GLOW_BIAS = 0.225f;
 
 		private static GlyphBase[] _lookup;
 		public static GlyphBase FromType(GlyphType type) => _lookup[(byte)type];
-
 
 		public abstract GlyphType Glyph { get; }
 		public abstract Texture2D Overlay { get; }
@@ -23,10 +23,7 @@ namespace SpiritMod.Items.Glyphs
 		public abstract string Effect { get; }
 		public abstract string Addendum { get; }
 
-		public virtual bool CanApply(Item item)
-		{
-			return item.IsWeapon();
-		}
+		public virtual bool CanApply(Item item) => item.IsWeapon();
 
 		public sealed override bool CanRightClick()
 		{
@@ -110,9 +107,6 @@ namespace SpiritMod.Items.Glyphs
 			}
 		}
 
-		internal static void UninitGlyphLookup()
-		{
-			_lookup = null;
-		}
+		internal static void UninitGlyphLookup() => _lookup = null;
 	}
 }

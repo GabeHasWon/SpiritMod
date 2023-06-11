@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable
 {
+	[Sacrifice(1)]
 	public class JumpPadItem : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -10,7 +11,6 @@ namespace SpiritMod.Items.Placeable
 			DisplayName.SetDefault("Jump Pad");
 			Tooltip.SetDefault("'Take to the skies!'");
 		}
-
 
 		public override void SetDefaults()
 		{

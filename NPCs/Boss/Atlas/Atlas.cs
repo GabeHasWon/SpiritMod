@@ -93,20 +93,24 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			player.AddBuff(ModContent.BuffType<UnstableAffliction>(), 2); //buff that causes gravity shit
 			int defenseBuff = (int)(35f * (1f - NPC.life / NPC.lifeMax));
 			NPC.defense = NPC.defDefense + defenseBuff;
-			
-			if (NPC.ai[0] == 0f) {
+
+			if (NPC.ai[0] == 0f)
+			{
 				arms[0] = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X - 80 - Main.rand.Next(80, 160), (int)NPC.position.Y, ModContent.NPCType<AtlasArmRight>(), NPC.whoAmI, NPC.whoAmI);
 				arms[1] = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + 80 + Main.rand.Next(80, 160), (int)NPC.position.Y, ModContent.NPCType<AtlasArmLeft>(), NPC.whoAmI, NPC.whoAmI);
 				NPC.ai[0] = 1f;
-                NPC.netUpdate = true;
-                Main.npc[arms[0]].netUpdate = true;
-                Main.npc[arms[1]].netUpdate = true;
-            }
-			else if (NPC.ai[0] == 1f) {
+				NPC.netUpdate = true;
+				Main.npc[arms[0]].netUpdate = true;
+				Main.npc[arms[1]].netUpdate = true;
+			}
+			else if (NPC.ai[0] == 1f)
+			{
 				NPC.ai[1] += 1f;
-				if (NPC.ai[1] >= 210f) {
+				if (NPC.ai[1] >= 210f)
+				{
 					NPC.alpha -= 4;
-					if (NPC.alpha <= 0) {
+					if (NPC.alpha <= 0)
+					{
 						NPC.ai[0] = 2f;
 						NPC.ai[1] = 0f;
 						NPC.alpha = 0;
@@ -115,36 +119,44 @@ namespace SpiritMod.NPCs.Boss.Atlas
 					}
 				}
 			}
-			else if (NPC.ai[0] == 2f) {
-				if (NPC.alpha == 0) {
+			else if (NPC.ai[0] == 2f)
+			{
+				if (NPC.alpha == 0)
+				{
 					Vector2 dist = player.Center - NPC.Center;
 					Vector2 direction = player.Center - NPC.Center;
+
 					NPC.netUpdate = true;
 					NPC.TargetClosest(true);
-					if (!player.active || player.dead) {
+					if (!player.active || player.dead)
+					{
 						NPC.TargetClosest(false);
 						NPC.velocity.Y = -100f;
 					}
 
 					#region Dashing mechanics
 					//dash if player is too far away
-					if (Math.Sqrt((dist.X * dist.X) + (dist.Y * dist.Y)) > 155) {
+					if (Math.Sqrt((dist.X * dist.X) + (dist.Y * dist.Y)) > 155)
+					{
 						direction.Normalize();
 						NPC.velocity *= 0.99f;
-						if (Math.Sqrt((NPC.velocity.X * NPC.velocity.X) + (NPC.velocity.Y * NPC.velocity.Y)) >= 7f) {
+
+						if (NPC.velocity.LengthSquared() >= 7f * 7f)
+						{
 							int dust = Dust.NewDust(NPC.position + NPC.velocity, NPC.width, NPC.height, DustID.Stone, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f);
 							Main.dust[dust].noGravity = true;
 							dust = Dust.NewDust(NPC.position + NPC.velocity, NPC.width, NPC.height, DustID.Stone, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f);
 							Main.dust[dust].noGravity = true;
 						}
 
-						if (Math.Sqrt((NPC.velocity.X * NPC.velocity.X) + (NPC.velocity.Y * NPC.velocity.Y)) < 2f) {
-							if (Main.netMode != NetmodeID.MultiplayerClient) {
-								if (Main.rand.NextBool(25)) {
-									direction.X *= Main.rand.Next(19, 24);
-									direction.Y *= Main.rand.Next(19, 24);
-									NPC.velocity.X = direction.X;
-									NPC.velocity.Y = direction.Y;
+						if (Math.Sqrt((NPC.velocity.X * NPC.velocity.X) + (NPC.velocity.Y * NPC.velocity.Y)) < 2f)
+						{
+							if (Main.netMode != NetmodeID.MultiplayerClient)
+							{
+								if (Main.rand.NextBool(25))
+								{
+									direction *= Main.rand.Next(19, 24);
+									NPC.velocity = direction;
 									NPC.netUpdate = true;
 								}
 							}
@@ -153,20 +165,24 @@ namespace SpiritMod.NPCs.Boss.Atlas
 					#endregion
 
 					#region Flying Movement
-					if (Math.Sqrt((dist.X * dist.X) + (dist.Y * dist.Y)) < 325) {
+					if (Math.Sqrt((dist.X * dist.X) + (dist.Y * dist.Y)) < 325)
+					{
 						float speed = expertMode ? 21f : 18f; //made more aggressive.  expert mode is more.  dusking base value is 7
 						float acceleration = expertMode ? 0.16f : 0.13f; //made more aggressive.  expert mode is more.  dusking base value is 0.09
 						Vector2 vector2 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
 						float xDir = player.position.X + (player.width / 2) - vector2.X;
 						float yDir = (float)(player.position.Y + (player.height / 2) - 120) - vector2.Y;
 						float length = (float)Math.Sqrt(xDir * xDir + yDir * yDir);
-						if (length > 400f) {
+						if (length > 400f)
+						{
 							++speed;
 							acceleration += 0.08F;
-							if (length > 600f) {
+							if (length > 600f)
+							{
 								++speed;
 								acceleration += 0.08F;
-								if (length > 800f) {
+								if (length > 800f)
+								{
 									++speed;
 									acceleration += 0.08F;
 								}
@@ -175,22 +191,26 @@ namespace SpiritMod.NPCs.Boss.Atlas
 						float num10 = speed / length;
 						xDir *= num10;
 						yDir *= num10;
-						if (NPC.velocity.X < xDir) {
+						if (NPC.velocity.X < xDir)
+						{
 							NPC.velocity.X = NPC.velocity.X + acceleration;
 							if (NPC.velocity.X < 0 && xDir > 0)
 								NPC.velocity.X = NPC.velocity.X + acceleration;
 						}
-						else if (NPC.velocity.X > xDir) {
+						else if (NPC.velocity.X > xDir)
+						{
 							NPC.velocity.X = NPC.velocity.X - acceleration;
 							if (NPC.velocity.X > 0 && xDir < 0)
 								NPC.velocity.X = NPC.velocity.X - acceleration;
 						}
-						if (NPC.velocity.Y < yDir) {
+						if (NPC.velocity.Y < yDir)
+						{
 							NPC.velocity.Y = NPC.velocity.Y + acceleration;
 							if (NPC.velocity.Y < 0 && yDir > 0)
 								NPC.velocity.Y = NPC.velocity.Y + acceleration;
 						}
-						else if (NPC.velocity.Y > yDir) {
+						else if (NPC.velocity.Y > yDir)
+						{
 							NPC.velocity.Y = NPC.velocity.Y - acceleration;
 							if (NPC.velocity.Y > 0 && yDir < 0)
 								NPC.velocity.Y = NPC.velocity.Y - acceleration;
@@ -200,32 +220,39 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 					timer += phaseChange ? 2 : 1; //if below 20% life fire more often
 					int shootThings = expertMode ? 200 : 250; //fire more often in expert mode
-					if (timer > shootThings) {
+					if (timer > shootThings)
+					{
 						direction.Normalize();
-						direction.X *= 8f;
-						direction.Y *= 8f;
+						direction *= 8f;
 						int amountOfProjectiles = Main.rand.Next(6, 8);
 						int damageAmount = expertMode ? 54 : 62; //always account for expert damage values
 						SoundEngine.PlaySound(SoundID.Item92, NPC.Center);
-						for (int num621 = 0; num621 < 30; num621++) {
-							Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, 2f);
-						}
-						if (Main.netMode != NetmodeID.MultiplayerClient) {
-							for (int i = 0; i < amountOfProjectiles; ++i) {
+
+						for (int i = 0; i < 30; i++)
+							ElectricDust(NPC.Center.X - Main.rand.Next(-120, 120), NPC.Center.Y - Main.rand.Next(-220, 220));
+
+						if (Main.netMode != NetmodeID.MultiplayerClient)
+						{
+							for (int i = 0; i < amountOfProjectiles; ++i)
+							{
 								float A = Main.rand.Next(-250, 250) * 0.01f;
 								float B = Main.rand.Next(-250, 250) * 0.01f;
 								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X + A, direction.Y + B, ModContent.ProjectileType<PrismaticBoltHostile>(), damageAmount, 1, Main.myPlayer);
-								timer = 0;
 							}
 						}
+
+						timer = 0;
 					}
 
-					if (aiChange) {
-						if (secondStage == false) {
+					if (aiChange)
+					{
+						if (secondStage == false)
+						{
 							SoundEngine.PlaySound(SoundID.Item93, NPC.Center);
 							float radius = 250;
 							float rot = MathHelper.TwoPi / 5;
-							for (int I = 0; I < 5; I++) {
+							for (int I = 0; I < 5; I++)
+							{
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
@@ -233,12 +260,15 @@ namespace SpiritMod.NPCs.Boss.Atlas
 						}
 					}
 
-					if (aiChange2) {
-						if (thirdStage == false) {
+					if (aiChange2)
+					{
+						if (thirdStage == false)
+						{
 							SoundEngine.PlaySound(SoundID.Item93, NPC.Center);
 							float radius = 400;
 							float rot = MathHelper.TwoPi / 10;
-							for (int I = 0; I < 10; I++) {
+							for (int I = 0; I < 10; I++)
+							{
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye2>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
@@ -246,68 +276,61 @@ namespace SpiritMod.NPCs.Boss.Atlas
 						}
 					}
 
-					if (aiChange3) {
-						if (lastStage == false) {
+					if (aiChange3)
+					{
+						if (lastStage == false)
+						{
 							SoundEngine.PlaySound(SoundID.Item93, NPC.Center);
 							float radius = 1200;
 							float rot = MathHelper.TwoPi / 41;
-							for (int I = 0; I < 41; I++) {
+							for (int I = 0; I < 41; I++)
+							{
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye3>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
 							lastStage = true;
 						}
 					}
-					for (int index1 = 0; index1 < 6; ++index1) {
-						float x = (NPC.Center.X - 2);
-						float xnum2 = (NPC.Center.X + 2);
-						float y = (NPC.Center.Y - 160);
-						if (NPC.direction == -1) {
-							int index2 = Dust.NewDust(new Vector2(x, y), 1, 1, DustID.Electric, 0.0f, 0.0f, 0, new Color(), 1f);
-							Main.dust[index2].position.X = x;
-							Main.dust[index2].position.Y = y;
-							Main.dust[index2].scale = .85f;
-							Main.dust[index2].velocity *= 0.02f;
-							Main.dust[index2].noGravity = true;
-							Main.dust[index2].noLight = false;
-						}
-						else if (NPC.direction == 1) {
-							int index2 = Dust.NewDust(new Vector2(xnum2, y), 1, 1, DustID.Electric, 0.0f, 0.0f, 0, new Color(), 1f);
-							Main.dust[index2].position.X = xnum2;
-							Main.dust[index2].position.Y = y;
-							Main.dust[index2].scale = .85f;
-							Main.dust[index2].velocity *= 0.02f;
-							Main.dust[index2].noGravity = true;
-							Main.dust[index2].noLight = false;
-						}
-					}
 				}
 			}
 
 			collideTimer++;
-			if (collideTimer == 500) {
+			if (collideTimer == 500)
+			{
 				NPC.noTileCollide = true;
 			}
 
 			NPC.TargetClosest(true);
-			if (!player.active || player.dead) {
+			if (!player.active || player.dead)
+			{
 				NPC.TargetClosest(false);
 				NPC.velocity.Y = -100f;
 				timer = 0;
 			}
 
 			Counter++;
-			if (Counter > 400) {
+			if (Counter > 400)
+			{
 				SpiritMod.tremorTime = 20;
 				Counter = 0;
 			}
 		}
 
+		private static void ElectricDust(float x, float y)
+		{
+			int index2 = Dust.NewDust(new Vector2(x, y), 1, 1, DustID.Electric, 0.0f, 0.0f, 155, Color.White, 1f);
+			Main.dust[index2].position.X = x;
+			Main.dust[index2].position.Y = y;
+			Main.dust[index2].scale = Main.rand.NextFloat(1f, 1.8f);
+			Main.dust[index2].noGravity = true;
+			Main.dust[index2].noLight = false;
+		}
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int k = 0; k < 5; k++) {
+			for (int k = 0; k < 5; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, hitDirection, -1f, 0, default, 1f);
-			}
+
 			if (NPC.life <= 0) {
 				NPC.position = NPC.Center;
 				NPC.width = 300;
@@ -362,14 +385,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			npcLoot.Add(notExpertRule);
 		}
 
-		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
-		{
-			if (NPC.ai[0] < 2f)
-				return false;
-
-			return base.CanHitPlayer(target, ref cooldownSlot);
-		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => NPC.ai[0] >= 2f;
 		public override void BossLoot(ref string name, ref int potionType) => potionType = ItemID.GreaterHealingPotion;
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,

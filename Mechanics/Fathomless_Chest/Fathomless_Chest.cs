@@ -199,6 +199,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 		}
 	}
 
+	[Sacrifice(0)]
 	internal class Fathomless_Chest_Item : ModItem
 	{
 		public override void SetStaticDefaults()

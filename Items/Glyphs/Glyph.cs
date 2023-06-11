@@ -2,6 +2,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
 {
+	[Sacrifice(5)]
 	public class Glyph : ModItem
 	{
 		public override void SetStaticDefaults()

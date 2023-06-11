@@ -682,4 +682,9 @@ namespace SpiritMod.Items.Banners
 	{
 		protected override int Style => 116;
 	}
+
+	public class MadHatterBanner : BaseBannerItem
+	{
+		protected override int Style => 117;
+	}
 }

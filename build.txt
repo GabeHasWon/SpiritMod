@@ -1,5 +1,5 @@
 author = Team Spirit
-version = 1.4.4.10
+version = 1.4.4.11
 displayName = [c/cffffd:Spirit Mod]
 homepage = https://forums.terraria.org/index.php?threads/the-spirit-mod.41395/
 hideCode = false

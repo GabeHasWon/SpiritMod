@@ -6,6 +6,7 @@ using SpiritMod.Items.Sets.MarbleSet;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
+	[Sacrifice(20)]
 	public class MirrorCoat : ModItem
 	{
 		public override void SetStaticDefaults()

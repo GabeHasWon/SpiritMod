@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.AceCardsSet
 {
+	[Sacrifice(0)]
 	public class DiamondAce : ModItem
 	{
 		public override void SetStaticDefaults()

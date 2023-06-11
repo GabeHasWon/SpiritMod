@@ -16,7 +16,7 @@ public class ReachCrate : ModItem
 	public override void SetStaticDefaults()
 	{
 		DisplayName.SetDefault("Thorny Crate");
-		Tooltip.SetDefault("Right click to open");
+		Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 	}
 
 	public override void SetDefaults()

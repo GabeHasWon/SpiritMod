@@ -14,6 +14,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 		{
 			DisplayName.SetDefault("Orichalcum Staff");
 			Tooltip.SetDefault("Summons homing orichalcum blooms at the cursor positon");
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -23,17 +24,16 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 			Item.mana = 11;
 			Item.width = 40;
 			Item.height = 40;
-			Item.useTime = 43;
-			Item.useAnimation = 43;
+			Item.useTime = 45;
+			Item.useAnimation = 45;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.knockBack = 1;
 			Item.useTurn = false;
 			Item.value = Item.sellPrice(0, 3, 0, 0);
 			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = SoundID.Item20;
-			Item.autoReuse = false;
+			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<OrichalcumStaffProj>();
 			Item.shootSpeed = 1f;
 		}
@@ -60,7 +60,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 				int dust = Dust.NewDust(player.Center + offset, 1, 1, DustID.PinkTorch);
 				Main.dust[dust].noGravity = true;
 				Main.dust[dust].scale = 1.5f;
-				float dustSpeed = Main.rand.Next(23) / 5;
+				float dustSpeed = Main.rand.Next(23) / 5f;
 				Main.dust[dust].velocity = new Vector2(velocity.X * dustSpeed, velocity.Y * dustSpeed).RotatedBy(1.57f * Main.rand.Next(new[] { -1, 0, 1 }));
 			}
 

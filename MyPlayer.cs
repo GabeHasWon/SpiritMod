@@ -602,6 +602,7 @@ namespace SpiritMod
 		}
 
 		public bool marbleJumpEffects = false;
+
 		public override void ProcessTriggers(TriggersSet triggersSet)
 		{
 			if (marbleSet && Player.controlUp && Player.releaseUp && marbleJump <= 0)

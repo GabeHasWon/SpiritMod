@@ -9,6 +9,7 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Ambient.Ocean
 {
+	[Sacrifice(1)]
 	public class SmallVentItem : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Small Hydrothermal Vent");

@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Consumable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pirate Loot Crate");
-			Tooltip.SetDefault("'Contains booty!'");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'Contains booty!'");
 		}
 
 		public override void SetDefaults()

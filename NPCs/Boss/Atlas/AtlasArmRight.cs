@@ -25,7 +25,6 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			NPC.height = 324;
 			NPC.damage = 100;
 			NPC.lifeMax = 10000;
-			NPC.boss = true;
 			NPC.timeLeft = NPC.activeTime * 30;
 			NPC.noGravity = true;
 			NPC.dontTakeDamage = true;

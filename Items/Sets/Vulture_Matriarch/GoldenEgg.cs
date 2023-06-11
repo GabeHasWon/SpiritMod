@@ -6,6 +6,7 @@ using SpiritMod.Items.Placeable.Furniture;
 
 namespace SpiritMod.Items.Sets.Vulture_Matriarch
 {
+	[Sacrifice(0)]
 	public class GoldenEgg : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Vulture Matriarch's Golden Egg");

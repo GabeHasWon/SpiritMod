@@ -84,6 +84,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 					projectile.netUpdate = true;
 				}
 			}
+
 			if (oldest != null)
 				Retract(oldest);
 		}

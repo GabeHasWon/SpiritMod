@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 {
+	[Sacrifice(1)]
 	internal class AvianPetItem : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -1,15 +1,16 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using SkullStickTile = SpiritMod.Tiles.Ambient.SkullStick;
+
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SkullStick : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Skull on a Stick");
 		}
-
 
 		public override void SetDefaults()
 		{

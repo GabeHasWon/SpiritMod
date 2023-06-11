@@ -7,6 +7,7 @@ using SpiritMod.Items.Sets.MarbleSet;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SynthwaveHeadItem : ModItem
 	{
 		public override void SetStaticDefaults()

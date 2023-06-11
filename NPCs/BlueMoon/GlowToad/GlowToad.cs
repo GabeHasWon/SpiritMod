@@ -40,6 +40,8 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			NPC.value = 600f;
 			NPC.knockBackResist = 0.5f;
 
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.GlowToadBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}
 
@@ -57,6 +59,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hitDirection, -1f, 1, default, .81f);
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hitDirection, -1f, 1, default, .51f);
 			}
+
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int k = 0; k < 11; k++)
@@ -111,12 +114,11 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		{
 			NPC.TargetClosest(true);
 			Player player = Main.player[NPC.target];
-			Vector2 dir = player.Center - NPC.Center;
-			dir.Normalize();
+			Vector2 dir = Vector2.Normalize(player.Center - NPC.Center);
+
 			if (!NPC.collideY)
-			{
 				NPC.velocity.X *= 1.045f;
-			}
+
 			if (!tongueOut && tongueCooldown >= 60 && (NPC.velocity.Y == 0 || NPC.collideY))
 			{
 				//movement
@@ -129,6 +131,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 				}
 				jumpCounter++;
 			}
+
 			if (!tongueOut)
 			{
 				direction = NPC.direction;
@@ -184,6 +187,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StopWatch>(), 100));
 		}
 	}
+
 	public class GlowToadTongue : ModProjectile
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Glow Tongue");

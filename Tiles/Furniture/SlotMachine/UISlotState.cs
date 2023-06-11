@@ -69,8 +69,8 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			{
 				Left = StyleDimension.FromPixelsAndPercent(-20, 1),
 				Top = StyleDimension.FromPixels(-10),
-				Width = StyleDimension.FromPixels(24),
-				Height = StyleDimension.FromPixels(24),
+				Width = StyleDimension.FromPixels(40),
+				Height = StyleDimension.FromPixels(40),
 			};
 			pullButton.OnClick += PullButton_OnClick;
 			panelBackground.Append(pullButton);

@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.ChestZombie
 {
+	[Sacrifice(0)]
 	public class Zombie_Chest : ModItem
 	{
 		public override void SetDefaults()

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(20)]
 	public class OliveBranch : ModItem
 	{
 		public override void SetStaticDefaults()

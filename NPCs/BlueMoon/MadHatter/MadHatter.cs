@@ -33,6 +33,9 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			NPC.value = 1000f;
 			NPC.knockBackResist = 0f;
 			NPC.aiStyle = 3;
+
+			Banner = NPC.type;
+			BannerItem = ModContent.ItemType<Items.Banners.MadHatterBanner>();
 			AIType = 104;
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}

@@ -14,7 +14,6 @@ namespace SpiritMod.Items.Placeable.Furniture
 
 		}
 
-
 		public override void SetDefaults()
 		{
 			Item.width = 48;

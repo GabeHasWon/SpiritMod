@@ -23,18 +23,17 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.alpha = 255;
 			Projectile.timeLeft = 20;
 			Projectile.tileCollide = false;
-
 		}
 
 		public override void Kill(int timeLeft)
 		{
+			if (Main.myPlayer != Projectile.owner)
+				return;
+
 			for (int i = 0; i < 8; ++i) {
-				Vector2 targetDir = ((((float)Math.PI * 2) / 8) * i).ToRotationVector2();
-				targetDir.Normalize();
-				targetDir *= 4;
-				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, targetDir.X, targetDir.Y, ModContent.ProjectileType<OrichHoming>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
+				Vector2 targetDir = Vector2.Normalize(((float)Math.PI * 2 / 8 * i).ToRotationVector2()) * 4f;
+				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, targetDir.X, targetDir.Y, ModContent.ProjectileType<OrichHoming>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 			}
 		}
-
 	}
 }

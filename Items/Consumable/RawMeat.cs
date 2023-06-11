@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(0)]
 	public class RawMeat : ModItem
 	{
 		public override void SetStaticDefaults()

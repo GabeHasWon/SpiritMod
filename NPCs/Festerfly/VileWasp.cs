@@ -32,6 +32,7 @@ namespace SpiritMod.NPCs.Festerfly
 			NPC.noTileCollide = false;
 			NPC.knockBackResist = .65f;
 			NPC.aiStyle = 44;
+
 			AIType = NPCID.FlyingAntlion;
 		}
 

@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Consumable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spirit Crate");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

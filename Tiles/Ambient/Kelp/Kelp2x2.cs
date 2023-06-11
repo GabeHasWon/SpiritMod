@@ -9,6 +9,7 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Ambient.Kelp
 {
+	[Sacrifice(1)]
 	public class LargeKelpItem : ModItem
 	{
 		public override void SetStaticDefaults()
