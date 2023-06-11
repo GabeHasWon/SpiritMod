@@ -53,7 +53,10 @@ namespace SpiritMod.Projectiles.DonatorItems
 				int state = (int)projectile.ai[0];
 
 				if (projectile.type == ModContent.ProjectileType<DuskfeatherBlade>() && projectile.owner == player.whoAmI && state != (int)DuskfeatherState.FadeOut && state != (int)DuskfeatherState.FadeOutStuck)
+				{
 					Retract(projectile, true);
+					projectile.netUpdate = true;
+				}
 			}
 		}
 
@@ -61,6 +64,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 		{
 			Projectile oldest = null;
 			int timeLeft = int.MaxValue;
+
 			for (int i = 0; i < Main.maxProjectiles; ++i)
 			{
 				var projectile = Main.projectile[i];
@@ -77,11 +81,6 @@ namespace SpiritMod.Projectiles.DonatorItems
 				{
 					timeLeft = projectile.timeLeft;
 					oldest = projectile;
-
-					if (Main.netMode != NetmodeID.SinglePlayer)
-						NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, projectile.whoAmI);
-
-					projectile.netUpdate = true;
 				}
 			}
 
@@ -91,15 +90,13 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		internal static void Retract(Projectile projectile, bool fromRightClick = false)
 		{
-			projectile.ai[0] = (int)DuskfeatherState.Return;
-
-			if (fromRightClick)
+			if (fromRightClick && projectile.ai[0] != (int)DuskfeatherState.Return)
 			{
 				projectile.damage = (int)(projectile.damage * 1.5f);
 				projectile.scale *= 1.5f;
 			}
 
-			projectile.netUpdate = true;
+			projectile.ai[0] = (int)DuskfeatherState.Return;
 		}
 
 		private DuskfeatherState State
@@ -229,7 +226,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 				1.5f + (distance - Range) / Range);
 
 			Projectile.velocity = velocity;
-			Projectile.rotation = (float)System.Math.Atan2(velocity.X, -velocity.Y) + (float)System.Math.PI;
+			Projectile.rotation = (float)Math.Atan2(velocity.X, -velocity.Y) + (float)Math.PI;
 
 			Projectile.timeLeft++;
 
@@ -245,8 +242,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 		{
 			if (Projectile.numUpdates == 0)
 			{
-				Projectile.alpha += 5;
-				if (Projectile.alpha >= 255)
+				if ((Projectile.alpha += 5) >= 255)
 					Projectile.Kill();
 			}
 		}

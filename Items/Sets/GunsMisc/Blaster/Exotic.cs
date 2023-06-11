@@ -91,6 +91,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override bool AltFunctionUse(Player player) => style == (int)StyleType.Golden;
 
+		public override bool CanUseItem(Player player)
+		{
+			if (style == (int)StyleType.Golden && player.altFunctionUse == 2)
+			{
+				Projectile.NewProjectile(Entity.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<GoldBlasterProj>(), (int)player.GetDamage(DamageClass.Ranged).ApplyTo(Item.damage), Item.knockBack, player.whoAmI);
+				return false;
+			}
+			return base.CanUseItem(player);
+		}
+
 		public override bool? UseItem(Player player)
 		{
 			if (Main.netMode == NetmodeID.Server)
@@ -102,18 +112,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			}
 			if (style == (int)StyleType.Golden)
 			{
-				if (player.altFunctionUse == 2)
-				{
-					Projectile.NewProjectile(Entity.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<GoldBlasterProj>(), (int)player.GetDamage(DamageClass.Ranged).ApplyTo(Item.damage), Item.knockBack, player.whoAmI);
-					SoundEngine.PlaySound(SoundID.Item149, player.Center);
-
-					player.GetModPlayer<BlasterPlayer>().hide = true;
-					return false;
-				}
-				else
-				{
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, player.Center);
-				}
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, player.Center);
 			}
 			if (style == (int)StyleType.Starplate)
 			{
@@ -165,7 +164,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			}
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => style != (int)StyleType.Starplate && !(style == (int)StyleType.Golden && player.altFunctionUse == 2);
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => style != (int)StyleType.Starplate;
 
 		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{

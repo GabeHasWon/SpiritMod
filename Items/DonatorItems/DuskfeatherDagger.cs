@@ -50,29 +50,28 @@ namespace SpiritMod.Items.DonatorItems
 					Item.useStyle = ItemUseStyleID.HoldUp;
 					Item.UseSound = null;
 				}
-				else
-					return false;
+				else return false;
 			}
 			else
 			{
-				if (player.ownedProjectileCounts[ModContent.ProjectileType<DuskfeatherBlade>()] >= 8)
-					DuskfeatherBlade.AttractOldestBlade(player);
-
 				Item.useStyle = ItemUseStyleID.Swing;
 				Item.UseSound = SoundID.Item1;
 			}
 			return true;
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		public override bool? UseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)
-			{
 				DuskfeatherBlade.AttractBlades(player);
-				return false;
-			}
-			return true;
+			else if (player.ownedProjectileCounts[Item.shoot] >= 8)
+				DuskfeatherBlade.AttractOldestBlade(player);
+
+			return base.UseItem(player);
 		}
+
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+			=> player.altFunctionUse != 2;
 
 		public override void AddRecipes()
 		{

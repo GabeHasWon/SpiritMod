@@ -2949,9 +2949,14 @@ namespace SpiritMod
 			{
 				if (jellynautHelm)
 				{
-					for (int projFinder = 0; projFinder < 300; ++projFinder)
-						if (Main.projectile[projFinder].type == ModContent.ProjectileType<JellynautOrbiter>())
-							Main.projectile[projFinder].timeLeft = Main.rand.Next(10, 30);
+					foreach (Projectile proj in Main.projectile)
+					{
+						if (proj.type == ModContent.ProjectileType<JellynautOrbiter>() && proj.owner == Player.whoAmI && Player.whoAmI == Main.myPlayer)
+						{
+							proj.timeLeft = Main.rand.Next(10, 30);
+							proj.netUpdate = true;
+						}
+					}
 
 					jellynautStacks = 0;
 

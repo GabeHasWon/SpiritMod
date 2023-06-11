@@ -40,25 +40,23 @@ namespace SpiritMod.Items.Weapon.Magic
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int I = 0; I < 2; I++) {
+			for (int i = 0; i < 2; i++)
+			{
 				float angle = Main.rand.NextFloat(MathHelper.PiOver4, -MathHelper.Pi - MathHelper.PiOver4);
 				Vector2 spawnPlace = Vector2.Normalize(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle))) * 20f;
-				if (Collision.CanHit(position, 0, 0, position + spawnPlace, 0, 0)) {
+				if (Collision.CanHit(position, 0, 0, position + spawnPlace, 0, 0))
 					position += spawnPlace;
-				}
 
 				velocity = Vector2.Normalize(Main.MouseWorld - position) * Item.shootSpeed;
-				int p = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, 0, 0.0f, 0.0f);
-				if (Main.netMode != NetmodeID.SinglePlayer)
-					NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, p);
+				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
 
-				for (float num2 = 0.0f; (double)num2 < 10; ++num2) {
+				for (float o = 0; o < 10; o++)
+				{
 					int dustIndex = Dust.NewDust(position, 2, 2, DustID.PortalBolt, 0f, 0f, 0, default, 1f);
 					Main.dust[dustIndex].noGravity = true;
 					Main.dust[dustIndex].velocity = Vector2.Normalize(spawnPlace.RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi))) * 1.6f;
 				}
 			}
-
 			return false;
 		}
 	}

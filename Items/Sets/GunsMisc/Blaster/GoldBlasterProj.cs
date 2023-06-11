@@ -3,15 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Sets.GunsMisc.Blaster.Effects;
 using SpiritMod.Particles;
 using Terraria;
-using Terraria.DataStructures;
+using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
 	public class GoldBlasterProj : ModProjectile
 	{
-		private Vector2 direction;
+		private const int timeLeftMax = 300;
 
 		public override void SetStaticDefaults()
 		{
@@ -28,7 +29,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Projectile.friendly = false;
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
-			Projectile.timeLeft = 300;
+			Projectile.timeLeft = timeLeftMax;
 			Projectile.ignoreWater = true;
 		}
 
@@ -36,19 +37,26 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		{
 			Player player = Main.player[Projectile.owner];
 
+			if (Projectile.timeLeft == timeLeftMax) //The projectile has just spawned in
+			{
+				player.GetModPlayer<BlasterPlayer>().hide = true;
+				SoundEngine.PlaySound(SoundID.Item149, Projectile.Center);
+			}
+
 			if (player == Main.LocalPlayer)
 			{
-				direction = player.DirectionTo(Main.MouseWorld);
+				Projectile.velocity = player.DirectionTo(Main.MouseWorld);
 				Projectile.netUpdate = true;
 			}
-			player.ChangeDir(direction.X > 0 ? 1 : -1);
+			player.ChangeDir(Projectile.velocity.X > 0 ? 1 : -1);
+			Projectile.direction = Projectile.spriteDirection = player.direction;
 
 			player.heldProj = Projectile.whoAmI;
 			player.itemTime = player.itemAnimation = 2;
 
-			Projectile.Center = player.Center + new Vector2(22f, -6 * player.direction).RotatedBy(direction.ToRotation());
-			Projectile.rotation = direction.ToRotation() + ((direction.X < 0) ? MathHelper.Pi : 0);
-			player.itemRotation = MathHelper.WrapAngle(direction.ToRotation() + ((player.direction < 0) ? MathHelper.Pi : 0));
+			Projectile.Center = player.Center + new Vector2(22f, -6 * player.direction).RotatedBy(Projectile.velocity.ToRotation());
+			Projectile.rotation = Projectile.velocity.ToRotation() + ((Projectile.direction == -1) ? MathHelper.Pi : 0);
+			player.itemRotation = MathHelper.WrapAngle(Projectile.velocity.ToRotation() + ((player.direction < 0) ? MathHelper.Pi : 0));
 
 			if (++Projectile.frameCounter >= 4)
 			{
@@ -78,7 +86,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 							{
 								didDetonate = true;
 
-								float rotation = direction.ToRotation();
+								float rotation = Projectile.velocity.ToRotation();
 								Vector2 position = Projectile.Center + new Vector2(28, 0).RotatedBy(rotation);
 
 								ParticleHandler.SpawnParticle(new BlasterFlash(Projectile.Center + new Vector2(28, 0).RotatedBy(rotation), 1, rotation));
@@ -98,6 +106,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			}
 		}
 
+		public override bool ShouldUpdatePosition() => false;
+
 		public override bool? CanDamage() => false;
 
 		public override bool PreDraw(ref Color lightColor)
@@ -105,7 +115,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
 			Rectangle frame = new Rectangle(0, texture.Height / Main.projFrames[Type] * Projectile.frame, texture.Width, (texture.Height / Main.projFrames[Type]) - 2);
 
-			SpriteEffects effects = (direction.X < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			SpriteEffects effects = (Projectile.spriteDirection == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(lightColor), Projectile.rotation, frame.Size() / 2, Projectile.scale, effects, 0);
 			return false;

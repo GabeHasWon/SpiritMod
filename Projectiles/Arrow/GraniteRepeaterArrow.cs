@@ -9,26 +9,22 @@ namespace SpiritMod.Projectiles.Arrow
 {
 	public class GraniteRepeaterArrow : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Unstable Bolt");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Unstable Bolt");
 
 		public override void SetDefaults()
 		{
 			Projectile.width = 6;
 			Projectile.height = 12;
-
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.friendly = true;
-
 			Projectile.penetrate = -1;
 		}
 
 		public override bool PreAI()
 		{
 			int num = 5;
-			for (int k = 0; k < 3; k++) {
+			for (int k = 0; k < 3; k++)
+			{
 				int index2 = Dust.NewDust(Projectile.position, 1, 1, DustID.Electric, 0.0f, 0.0f, 0, new Color(), 1f);
 				Main.dust[index2].position = Projectile.Center - Projectile.velocity / num * (float)k;
 				Main.dust[index2].scale = .5f;
@@ -38,7 +34,8 @@ namespace SpiritMod.Projectiles.Arrow
 			}
 			if (Projectile.ai[0] == 0)
 				Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-			else {
+			else
+			{
 				Projectile.ignoreWater = true;
 				Projectile.tileCollide = false;
 				int num996 = 15;
@@ -49,9 +46,11 @@ namespace SpiritMod.Projectiles.Arrow
 					flag53 = true;
 				int num997 = (int)Projectile.ai[1];
 
-				if (!Main.npc[num997].active) {
+				if (!Main.npc[num997].active)
+				{
 					NPC target = Main.npc[num997];
-					if (Projectile.friendly && !Projectile.hostile) {
+					if (Projectile.friendly && !Projectile.hostile)
+					{
 						ProjectileExtras.Explode(Projectile.whoAmI, 30, 30,
 						delegate {
 						});
@@ -59,7 +58,8 @@ namespace SpiritMod.Projectiles.Arrow
 					}
 					SoundEngine.PlaySound(SoundID.Item109);
 					{
-						for (int i = 0; i < 20; i++) {
+						for (int i = 0; i < 20; i++)
+						{
 							int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric, 0f, -2f, 0, default, 2f);
 							Main.dust[dust].noGravity = true;
 							Main.dust[dust].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
@@ -76,12 +76,12 @@ namespace SpiritMod.Projectiles.Arrow
 					flag52 = true;
 				else if (num997 < 0 || num997 >= 200)
 					flag52 = true;
-				else if (Main.npc[num997].active && !Main.npc[num997].dontTakeDamage) {
+				else if (Main.npc[num997].active && !Main.npc[num997].dontTakeDamage)
+				{
 					Projectile.Center = Main.npc[num997].Center - Projectile.velocity * 2f;
 					Projectile.gfxOffY = Main.npc[num997].gfxOffY;
-					if (flag53) {
+					if (flag53)
 						Main.npc[num997].HitEffect(0, 1.0);
-					}
 				}
 				else
 					flag52 = true;
@@ -148,7 +148,8 @@ namespace SpiritMod.Projectiles.Arrow
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 
-			for (int k = 0; k < 6; k++) {
+			for (int k = 0; k < 6; k++)
+			{
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric, 2.5f * 1, -2.5f, 0, default, 0.27f);
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric, 2.5f * 1, -2.5f, 0, default, 0.37f);
 			}

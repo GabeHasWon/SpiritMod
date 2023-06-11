@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			Item.useTime = 31;
 			Item.useAnimation = 31;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.shoot = ProjectileID.Shuriken;
+			Item.shoot = ProjectileID.WoodenArrowFriendly;
 			Item.useAmmo = AmmoID.Arrow;
 			Item.knockBack = 1.5f;
 			Item.value = 22500;
@@ -60,7 +60,9 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			if (player.altFunctionUse != 2)
 			{
 				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-				proj.GetGlobalProjectile<HeartstrikeGProj>().heartStruck = true;
+
+				if (proj.TryGetGlobalProjectile(out HeartstrikeGProj globalProj))
+					globalProj.heartStruck = true;
 			}
 			else
 			{
@@ -128,7 +130,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 		public override bool InstancePerEntity => true;
 
-		public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.arrow;
+		public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.arrow || (entity.ModProjectile != null && entity.ModProjectile.AIType == ProjectileID.WoodenArrowFriendly);
 
 		public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
 		{

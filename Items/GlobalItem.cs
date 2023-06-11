@@ -632,7 +632,7 @@ namespace SpiritMod.Items
 				Vector2 origin = new Vector2(texture.Width >> 1, texture.Height >> 1);
 				Vector2 position = item.position - Main.screenPosition;
 				position.X += item.width >> 1;
-				position.Y += item.height - (texture.Height >> 1) + 2f;
+				position.Y += item.height - (texture.Height >> 1);
 				spriteBatch.Draw(texture, position, null, alpha, rotation, origin, scale, SpriteEffects.None, 0f);
 			}
 
@@ -642,8 +642,8 @@ namespace SpiritMod.Items
 				if (texture != null)
 				{
 					Vector2 position = item.position - Main.screenPosition;
-					position.X += (item.width >> 1);
-					position.Y += 2 + item.height - (TextureAssets.Item[item.type].Value.Height >> 1);
+					position.X += item.width >> 1;
+					position.Y += item.height - (TextureAssets.Item[item.type].Value.Height >> 1);
 
 					//Color alpha = Color.Lerp(alphaColor, glowColor, .2f);
 					Color alpha = alphaColor;

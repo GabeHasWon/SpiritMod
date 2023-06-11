@@ -74,7 +74,7 @@ namespace SpiritMod.Items.Glyphs
 			tooltips.Insert(index, line);
 		}
 
-		public Item EnchantmentTarget(Player player)
+		public static Item EnchantmentTarget(Player player)
 		{
 			if (player.selectedItem == 58)
 				return Main.mouseItem;
@@ -88,7 +88,8 @@ namespace SpiritMod.Items.Glyphs
 			_lookup = new GlyphBase[(byte)GlyphType.Count];
 
 			Type glyphBase = typeof(GlyphBase);
-			foreach (Type type in SpiritMod.Instance.Code.GetTypes()) {
+			foreach (Type type in SpiritMod.Instance.Code.GetTypes())
+			{
 				if (type.IsAbstract)
 					continue;
 				if (!type.IsSubclassOf(glyphBase))
