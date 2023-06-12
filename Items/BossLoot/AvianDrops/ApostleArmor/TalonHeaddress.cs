@@ -1,4 +1,3 @@
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,10 +22,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.ApostleArmor
 			Item.defense = 3;
 		}
 
-		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return legs.type == ModContent.ItemType<TalonGarb>();
-		}
+		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<TalonGarb>();
+
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Wind Spirits guide you, granting you double jumps\nMagic and ranged attacks occasionally spawn feathers to attack foes.";
