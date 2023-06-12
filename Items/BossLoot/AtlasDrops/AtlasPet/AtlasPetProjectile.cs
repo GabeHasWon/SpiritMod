@@ -169,7 +169,7 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 			Vector2 offset = new Vector2((Projectile.direction == -1) ? 4 : 0, -4);
 			Color color = (Color.Purple * 1.8f * (1f - (float)(Projectile.velocity.Length() * 0.2f))) with { A = 0 };
 
-			Main.EntitySpriteDraw(ray, Projectile.oldPos[1] + (Projectile.Size / 2) + offset - Main.screenPosition, null, color, 
+			Main.spriteBatch.Draw(ray, Projectile.oldPos[1] + (Projectile.Size / 2) + offset - Main.screenPosition, null, color, 
 				Projectile.rotation, new Vector2(ray.Width / 2, 0), new Vector2(1.2f, 0.3f) * Projectile.scale, SpriteEffects.None, 0);
 
 			foreach (var item in _parts)

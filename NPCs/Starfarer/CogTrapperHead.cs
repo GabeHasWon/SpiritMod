@@ -11,6 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace SpiritMod.NPCs.Starfarer
 {
@@ -174,10 +175,7 @@ namespace SpiritMod.NPCs.Starfarer
 				NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, NPC.whoAmI, -1f, 0f, 0f, 0, 0, 0);
 		}
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{
-			npcLoot.AddCommon<StarEnergy>(1);
-		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<StarEnergy>(1);
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -221,34 +219,29 @@ namespace SpiritMod.NPCs.Starfarer
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);
-			drawOrigin.Y += 30f;
-			drawOrigin.Y += 8f;
-			--drawOrigin.X;
-			Vector2 position1 = NPC.Bottom - Main.screenPosition;
-			Texture2D texture2D2 = TextureAssets.GlowMask[239].Value;
-			float num11 = (float)((double)Main.GlobalTimeWrappedHourly % 1.0 / 1.0);
-			float num12 = num11;
+			Texture2D pulseTexture = TextureAssets.GlowMask[239].Value;
+			float pulseTime = (float)(Main.GlobalTimeWrappedHourly % 1.0 / 1.0);
+
+			float num12 = pulseTime;
 			if ((double)num12 > 0.5)
-				num12 = 1f - num11;
+				num12 = 1f - pulseTime;
 			if ((double)num12 < 0.0)
 				num12 = 0.0f;
-			float num13 = (float)(((double)num11 + 0.5) % 1.0);
+			float num13 = (float)(((double)pulseTime + 0.5) % 1.0);
 			float num14 = num13;
 			if ((double)num14 > 0.5)
 				num14 = 1f - num13;
 			if ((double)num14 < 0.0)
 				num14 = 0.0f;
-			Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
-			drawOrigin = r2.Size() / 2f;
-			Vector2 position3 = position1 + new Vector2(0.0f, -20f);
-			Color color3 = new Color(84, 207, 255) * 1.6f;
-			Main.spriteBatch.Draw(texture2D2, position3, r2, color3, NPC.rotation, drawOrigin, NPC.scale * 0.35f, SpriteEffects.FlipHorizontally, 0.0f);
-			float num15 = 1f + num11 * 0.75f;
-			Main.spriteBatch.Draw(texture2D2, position3, r2, color3 * num12, NPC.rotation, drawOrigin, NPC.scale * 0.5f * num15, SpriteEffects.FlipHorizontally, 0.0f);
+
+			Color color = new Color(84, 207, 255) * 1.6f;
+			spriteBatch.Draw(pulseTexture, NPC.Center - screenPos, null, color, NPC.rotation, pulseTexture.Size() / 2, NPC.scale * .35f, SpriteEffects.None, 0);
+			float num15 = 1f + pulseTime * 0.75f;
+			spriteBatch.Draw(pulseTexture, NPC.Center - screenPos, null, color * num12, NPC.rotation, pulseTexture.Size() / 2, NPC.scale * .45f * num15, SpriteEffects.None, 0);
 			float num16 = 1f + num13 * 0.75f;
-			Main.spriteBatch.Draw(texture2D2, position3, r2, color3 * num14, NPC.rotation, drawOrigin, NPC.scale * 0.5f * num16, SpriteEffects.FlipHorizontally, 0.0f);
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Starfarer/CogTrapperHead_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+			spriteBatch.Draw(pulseTexture, NPC.Center - screenPos, null, color * num14, NPC.rotation, pulseTexture.Size() / 2, NPC.scale * .45f * num16, SpriteEffects.None, 0);
+
+			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Starfarer/CogTrapperHead_Glow").Value, screenPos);
 		}
 	}
 }

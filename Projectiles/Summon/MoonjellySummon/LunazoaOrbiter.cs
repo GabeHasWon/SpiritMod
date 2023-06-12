@@ -68,7 +68,10 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 				}
 				if (flag4 && !flag2)
 				{
-					Projectile.velocity += new Vector2((float)Math.Sign(Main.projectile[index1].Center.X - Projectile.Center.X), (float)Math.Sign(Main.projectile[index1].Center.Y - Projectile.Center.Y)) * new Vector2(x, y);
+					Projectile parent = Main.projectile[index1];
+					Vector2 dirToParent = parent.Center - Projectile.Center;
+
+					Projectile.velocity += Vector2.Normalize(dirToParent) * new Vector2(x, y);
 					if (Projectile.velocity.Length() > 4f)
 						Projectile.velocity *= 4f / Projectile.velocity.Length();
 				}
