@@ -225,12 +225,14 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			position.X = (int)(drawPlayer.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) + (float)MountData.xOffset);
 			position.Y = (int)(drawPlayer.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + (float)MountData.yOffset);
 
-			List<DrawData> data = new List<DrawData>
-			{
-				new DrawData(texture, position - new Vector2(40 + frameOffX, 20), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.One, 1f, effect, 0),
-				new DrawData(ModContent.Request<Texture2D>("SpiritMod/Mounts/SnowMongerMount/SnowmongerMount_Glow").Value, position - new Vector2(40 + frameOffX, 20), sourceRect, Color.White, 0f, Vector2.One, 1f, effect, 0)
-			};
-			drawinfo.DrawDataCache.AddRange(data);
+			var mount = new DrawData(texture, position - new Vector2(40 + frameOffX, 20), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.One, 1f, effect, 0);
+			mount.shader = drawPlayer.cMount;
+			drawinfo.DrawDataCache.Add(mount);
+
+			var tex = ModContent.Request<Texture2D>("SpiritMod/Mounts/SnowMongerMount/SnowmongerMount_Glow").Value;
+			var glow = new DrawData(tex, position - new Vector2(40 + frameOffX, 20), sourceRect, Color.White, 0f, Vector2.One, 1f, effect, 0);
+			glow.shader = drawPlayer.cMount;
+			drawinfo.DrawDataCache.Add(glow);
 		}
 	}
 }

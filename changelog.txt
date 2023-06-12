@@ -1,3 +1,1 @@
-﻿- Fixed some Music Display compatibility errors
-- Fixed Unstable Conduit worm crash
-- Fixed Engineering Rod sentry firing at invalid targets
+﻿- Fixed mounts not using dyes in the mount slot

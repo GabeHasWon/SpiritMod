@@ -12,7 +12,6 @@ namespace SpiritMod.Mounts.RlyehianMount
 	public class RlyehianMount : ModMount
 	{
 		public override void Load() => On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
-
 		public override void Unload() => On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
 
 		private int attackCooldown = 0;
@@ -199,6 +198,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 			position.Y = (int)(drawPlayer.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + (float)MountData.yOffset);
 
 			DrawData data = new DrawData(texture, position + new Vector2(frameOffX, 0), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.Zero, 1f, effect, 0);
+			data.shader = drawPlayer.cMount;
 			drawinfo.DrawDataCache.Add(data);
 		}
 	}
