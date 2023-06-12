@@ -1,11 +1,3 @@
-﻿- Fixed Festerfly using a bestiary info provider for pesterflies (???)
-- Made Slot Machine lever hitbox much, much larger
-- Fixed Atlas's arms playing Boss 1 as Atlas leaves to despawn
-- Fixed Pirate Loot Crate not having "Right click to open" in the tooltip
-- Replaced all "Right click to open" references in the mod with {$CommonItemTooltip.RightClickToOpen}
-- Made Orichalcum Staff autoreuse, slightly nerfed use time
-- Added myPlayer == owner check to interstitial Orichalcum Staff projectile
-- Completely rewrote Orichalcum Staff, homes much better, faster and more accurately
-- Made Small, Large Hydrothermal Vents and Glowing Plants, Skull on a Stick, need only 1 research
-- Removed some nonsense Atlas dust code that didn't work, and if it did work, it would work even worse
-- Fixed Atlas dust spam issue in multiplayer
+﻿- Fixed some Music Display compatibility errors
+- Fixed Unstable Conduit worm crash
+- Fixed Engineering Rod sentry firing at invalid targets

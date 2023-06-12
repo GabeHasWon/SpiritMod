@@ -15,6 +15,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			DisplayName.SetDefault("Unstable Conduit");
 			Tooltip.SetDefault("Creates a fountain of energy at the ground near the Cursor Position\nKilling enemies with this weapon causes them to explode into damaging energy wisps");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -27,7 +28,6 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			Item.useTime = 31;
 			Item.useAnimation = 31;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.knockBack = 4;
 			Item.useTurn = false;

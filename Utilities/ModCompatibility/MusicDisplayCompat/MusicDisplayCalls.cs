@@ -14,7 +14,7 @@ internal class MusicDisplayCalls : ModSystem
 		AddMusic("Sounds/Music/GraniteBiome", "salvati - Resounding Stones (Granite Theme)");
 		AddMusic("Sounds/Music/AuroraSnow", "salvati - Aurora Borealis");
 		AddMusic("Sounds/Music/DepthInvasion", "salvati - Drowning Tides (Tide Theme)");
-		AddMusic("Sounds/Music/SnowNighttime", "salvati - Icy Stars (Tide Theme)");
+		AddMusic("Sounds/Music/SnowNighttime", "salvati - Icy Stars (Snow Night Theme)");
 		AddMusic("Sounds/Music/DesertNighttime", "salvati - Kempt Dunes (Desert Night Theme)");
 		AddMusic("Sounds/Music/OceanNighttime", "salvati - Beyond the Horizon (Luminous Ocean Theme)");
 		AddMusic("Sounds/Music/CrimsonNighttime", "salvati, sbubby - Razor's Edge (Crimson Night Theme)");
@@ -22,8 +22,8 @@ internal class MusicDisplayCalls : ModSystem
 		AddMusic("Sounds/Music/Meteor", "salvati - Space Rocks! (Meteorite Theme)");
 		AddMusic("Sounds/Music/Infernon", "salvati - Fiery Care (Infernon Theme)");
 		AddMusic("Sounds/Music/CorruptNight", "salvati - Nightmare Fuel (Corruption Night Theme)");
-		AddMusic("Sounds/Music/NeonTech1", "salvati - Spaced Out (Corruption Night Theme)");
-		AddMusic("Sounds/Music/NeonTech", "salvati - Techno Vibes (Corruption Night Theme)");
+		AddMusic("Sounds/Music/NeonTech1", "salvati - Spaced Out (Hyperspace Day Theme)");
+		AddMusic("Sounds/Music/NeonTech", "salvati - Techno Vibes (Hyperspace Night Theme)");
 		AddMusic("Sounds/Music/BlueMoon", "salvati - Nighttime Groove (Mystic Moon Theme)");
 		AddMusic("Sounds/Music/JellySky", "salvati - Sticky Situation (Jelly Deluge Theme)");
 		AddMusic("Sounds/Music/FrostLegion", "salvati - Tougher Chill (Frost Legion Theme)");
@@ -44,7 +44,7 @@ internal class MusicDisplayCalls : ModSystem
 		AddMusic("Sounds/Music/VictoryDay", "salvati - Overworld Alt Alt (Victory Day Theme)");
 		AddMusic("Sounds/Music/AshStorm", "salvati - Ash Storm");
 		AddMusic("Sounds/Music/Asteroids", "salvati - Above Islands (Asteroid Theme)");
-		AddMusic("Sounds/Music/DuskingTheme", "LordCakeSpy - (Dusking Theme)");
+		AddMusic("Sounds/Music/DuskingTheme", "LordCakeSpy - Dusking");
 		AddMusic("Sounds/Music/Scarabeus", "salvati - Crawling Complications (Scarabeus Theme)");
 		AddMusic("Sounds/Music/TranquilWinds", "salvati - Tranquil Winds");
 

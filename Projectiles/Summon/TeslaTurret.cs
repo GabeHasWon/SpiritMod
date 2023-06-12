@@ -39,7 +39,7 @@ namespace SpiritMod.Projectiles.Summon
 			for (int i = 0; i < 200; ++i) {
 				NPC npc = Main.npc[i];
 				//if npc is a valid target (active, not friendly, and not a critter)
-				if (npc.active && npc.CanBeChasedBy(Projectile) && !npc.friendly) {
+				if (npc.active && npc.CanBeChasedBy(Projectile) && !npc.friendly && !NPCID.Sets.CountsAsCritter[npc.type]) {
 					//if npc is within 50 blocks
 					float dist = Projectile.Distance(npc.Center);
 					if (dist / 16 < range) {
@@ -54,18 +54,27 @@ namespace SpiritMod.Projectiles.Summon
 				}
 			}
 
-			NPC target = (Main.npc[(int)Projectile.ai[1]] ?? new NPC()); //our target
-																		 //firing
+			if (Projectile.ai[1] == -1)
+				return;
+
+			NPC target = Main.npc[(int)Projectile.ai[1]]; //our target
+
+			if (!target.active || !target.CanBeChasedBy(Projectile) || target.friendly || NPCID.Sets.CountsAsCritter[target.type])
+			{
+				target = null;
+				Projectile.ai[1] = -1;
+			}
+
+			if (target is null)
+				return;
+
 			Projectile.ai[0]++;
 			if (Projectile.ai[0] % shootSpeed == 4 && target.active && Projectile.Distance(target.Center) / 16 < range)
 			{
 				Vector2 ShootArea = new Vector2(Projectile.Center.X, Projectile.Center.Y - 25);
-				Vector2 direction = target.Center - ShootArea;
-				direction.Normalize();
-				direction.X *= shootVelocity;
-				direction.Y *= shootVelocity;
+				Vector2 direction = Vector2.Normalize(target.Center - ShootArea) * shootVelocity;
 				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y - 25, direction.X, direction.Y, ModContent.ProjectileType<TeslaSpikeProjectile>(), Projectile.damage, 0, Main.myPlayer);
-				SoundEngine.PlaySound(SoundID.Item12, Projectile.Center);  //make bow shooty sound
+				SoundEngine.PlaySound(SoundID.Item12, Projectile.Center);
 			}
 		}
 

@@ -684,9 +684,10 @@ namespace SpiritMod.Projectiles
 				action();
 		}*/
 
-		public static void Explode(int index, int sizeX, int sizeY, ExtraAction visualAction = null, bool weakerExplosion = false)
+		public static void Explode(int index, int sizeX, int sizeY, ExtraAction visualAction = null, bool weakerExplosion = false, bool skipDamageCheck = false)
 		{
 			Projectile projectile = Main.projectile[index];
+
 			if (!projectile.active)
 				return;
 
@@ -697,25 +698,30 @@ namespace SpiritMod.Projectiles
 			projectile.height = sizeY;
 			projectile.position.X -= (projectile.width / 2f);
 			projectile.position.Y -= (projectile.height / 2f);
+
 			if (weakerExplosion)
-			{
 				projectile.damage = (int)(projectile.damage * .75f);
-			}
-			projectile.Damage();
+
+			if (!skipDamageCheck)
+				projectile.Damage();
+
 			Main.projectileIdentity[projectile.owner, projectile.identity] = -1;
+
 			projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
 			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
 			projectile.width = (int)((float)sizeX / 5.8f);
 			projectile.height = (int)((float)sizeY / 5.8f);
 			projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
 			projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
-			if (visualAction == null)
+
+			if (visualAction is null)
 			{
 				for (int i = 0; i < 30; i++)
 				{
 					int num = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Smoke, 0f, 0f, 100, default, 1.5f);
 					Main.dust[num].velocity *= 1.4f;
 				}
+
 				for (int j = 0; j < 20; j++)
 				{
 					int num2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Torch, 0f, 0f, 100, default, 3.5f);
@@ -724,6 +730,7 @@ namespace SpiritMod.Projectiles
 					num2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Torch, 0f, 0f, 100, default, 1.5f);
 					Main.dust[num2].velocity *= 3f;
 				}
+
 				for (int k = 0; k < 8; k++)
 				{
 					float scaleFactor = 0.4f;
@@ -741,6 +748,7 @@ namespace SpiritMod.Projectiles
 				}
 				return;
 			}
+
 			visualAction();
 		}
 

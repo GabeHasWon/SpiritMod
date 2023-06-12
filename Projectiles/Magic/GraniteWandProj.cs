@@ -88,8 +88,7 @@ namespace SpiritMod.Projectiles.Magic
 		{
 			if (target.life <= 0)
 			{
-				if (Projectile.friendly && !Projectile.hostile)
-					ProjectileExtras.Explode(Projectile.whoAmI, 30, 30, delegate { });
+				ProjectileExtras.Explode(Projectile.whoAmI, 30, 30, delegate { }, skipDamageCheck: true);
 
 				SoundEngine.PlaySound(SoundID.Item109);
 				for (int i = 0; i < 20; i++)
@@ -99,6 +98,7 @@ namespace SpiritMod.Projectiles.Magic
 					Main.dust[num].scale *= .25f;
 					Main.dust[num].velocity = Projectile.DirectionTo(Main.dust[num].position) * 6f;
 				}
+
 				int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0, 0, ModContent.ProjectileType<GraniteSpike1>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 				Main.projectile[proj].timeLeft = 2;
 			}
