@@ -59,7 +59,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				Projectile.velocity.X = -(oldVelocity.X * mult);
 
 			if (oldVelocity.Length() > 3f)
-				SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.14f, PitchVariance = 0.2f }, Projectile.position);
+				SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.14f, PitchVariance = 0.2f }, Projectile.Center);
 
 			return false;
 		}
@@ -68,6 +68,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		{
 			if (timeLeft > 0)
 				SoundEngine.PlaySound(SoundID.Shatter, Projectile.position);
+
 			for (int i = 0; i < 14; i++)
 			{
 				Vector2 velocity = -(Projectile.velocity * Main.rand.NextFloat(0.4f, 0.8f)).RotatedByRandom(1f);

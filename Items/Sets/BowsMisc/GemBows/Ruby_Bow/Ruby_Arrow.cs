@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Ruby_Bow
 				Projectile.Kill();
 			else
 			{
-				SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f });
+				SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f }, Projectile.Center);
 				for (int index = 0; index < 5; ++index)
 				{
 					int i = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemRuby);

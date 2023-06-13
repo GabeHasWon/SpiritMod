@@ -75,9 +75,6 @@ namespace SpiritMod.World
 			for (int k = 0; k < (repeats / 2 + 1); k++)
 				GenerateCrateStashJungle();
 
-			for (int k = 0; k < (repeats + 2); k++)
-				GenerateBismiteCavern();
-
 			if (WorldGen.genRand.NextBool(2))
 				for (int k = 0; k < (repeats / 4); k++)
 					GenerateStoneDungeon();
@@ -318,33 +315,6 @@ namespace SpiritMod.World
 			}
 		}
 		#endregion Crate Stashes
-
-		#region Bismite Cavern
-		private static void GenerateBismiteCavern()
-		{
-			while (true)
-			{
-				int hideoutX = WorldGen.genRand.Next(300, Main.maxTilesX - 200); // from 50 since there's a unaccessible area at the world's borders
-				int hideoutY = WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 300);
-				Tile tile = Framing.GetTileSafely(hideoutX, hideoutY);
-
-				List<Point> location = new List<Point>(); //these are for ease of use if we ever want to add containers to these existing structures
-				Point[] containers = location.ToArray();
-
-				if (!tile.HasTile || tile.TileType != TileID.Stone)
-					continue;
-
-				//if (WorldGen.genRand.NextBool(2)) //STRUCTURES
-				//	StructureLoader.GetStructure("BismiteCavern1").PlaceForce(hideoutX, hideoutY, out containers);
-				//else if (WorldGen.genRand.NextBool(2))
-				//	StructureLoader.GetStructure("BismiteCavern2").PlaceForce(hideoutX, hideoutY, out containers);
-				//else
-				//	StructureLoader.GetStructure("BismiteCavern3").PlaceForce(hideoutX, hideoutY, out containers);
-
-				break;
-			}
-		}
-		#endregion Bismite Cavern
 
 		#region Stone Dungeon
 		private static void GenerateStoneDungeon()

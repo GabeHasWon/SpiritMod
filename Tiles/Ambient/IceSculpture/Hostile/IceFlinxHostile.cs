@@ -27,20 +27,13 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture.Hostile
 			DustType = DustID.SnowBlock;
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
-		}
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged)
-		{
-			if (!NPC.downedBoss3) {
-				return false;
-			}
-			return true;
-		}
+
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => !NPC.downedBoss3;
+
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.Item27);
+			SoundEngine.PlaySound(SoundID.Item27, new Vector2(i, j) * 16);
 			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<CreepingIce>(), Main.rand.Next(6, 13));
 		}
 

@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.MarblePillars;
 using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
@@ -22,14 +21,7 @@ namespace SpiritMod.Tiles.Ambient.Pillars
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Origin = new Point16(0, 4);
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop, 2, 0);
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16,
-				16,
-				16,
-				16,
-				16
-			};
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16 };
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Pillar");
@@ -37,9 +29,10 @@ namespace SpiritMod.Tiles.Ambient.Pillars
 			DustType = -1;
 			TileID.Sets.DisableSmartCursor[Type] = true;
 		}
+
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Terraria.Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<Items.Placeable.Furniture.MarblePillars.Pillar1>());
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<Items.Placeable.Furniture.MarblePillars.Pillar1>());
 		}
 	}
 }

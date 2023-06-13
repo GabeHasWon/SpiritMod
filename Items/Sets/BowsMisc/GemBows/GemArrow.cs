@@ -73,7 +73,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows
 				int i = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustType, 0f, 0f, 0, GlowColor, 1f);
 				Main.dust[i].noGravity = true;
 			}
-			SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f });
+			SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f }, Projectile.Center);
 		}
 	}
 }

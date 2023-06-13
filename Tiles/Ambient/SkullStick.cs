@@ -35,18 +35,7 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			int item = 0;
-			switch (frameX / 54) {
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-					item = ModContent.ItemType<Items.Placeable.Furniture.SkullStick>();
-					break;
-			}
-			if (item > 0) {
-				Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, item);
-			}
+			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<Items.Placeable.Furniture.SkullStick>());
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

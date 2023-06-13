@@ -145,7 +145,7 @@ namespace SpiritMod.Tiles.Banners
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16 };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
-			TileObjectData.newTile.StyleWrapLimit = 117;
+			TileObjectData.newTile.StyleWrapLimit = 118;
 			TileObjectData.addTile(Type);
 
 			DustType = -1;
@@ -166,7 +166,7 @@ namespace SpiritMod.Tiles.Banners
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			var banner = GetBannerItem(frameX);
+			string banner = GetBannerItem(frameX);
 			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 48, Mod.Find<ModItem>(banner).Type);
 		}
 

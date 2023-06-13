@@ -57,7 +57,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.NPCHit4);
+			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 			Terraria.Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, Mod.Find<ModItem>("ScrapItem1").Type);
 		}
 	}
@@ -111,7 +111,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		}
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.NPCHit4);
+			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 			Terraria.Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, Mod.Find<ModItem>("ScrapItem2").Type);
 		}
 	}
@@ -178,7 +178,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		}
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.NPCHit4);
+			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, Mod.Find<ModItem>("ScrapItem3").Type);
 		}
 	}
@@ -245,7 +245,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		}
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.NPCHit4);
+			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, Mod.Find<ModItem>("ScrapItem4").Type);
 		}
 	}
@@ -299,7 +299,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		}
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.NPCHit4);
+			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 			Terraria.Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, Mod.Find<ModItem>("ScrapItem5").Type);
 		}
 	}
@@ -360,7 +360,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.NPCHit4);
+			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 			Terraria.Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, Mod.Find<ModItem>("ScrapItem6").Type);
 		}
 	}

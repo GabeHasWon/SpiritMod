@@ -53,7 +53,8 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.Shatter);
+			SoundEngine.PlaySound(SoundID.Shatter, new Vector2(i, j) * 16);
+
 			for (int k = 0; k < 8; k++) {
 				Dust.NewDust(new Vector2(i * 16, j * 16 - 10), 54, 16, DustID.Dirt, 0.0f, -1, 0, new Color(), 0.5f);//Leave this line how it is, it uses int division
 				Dust.NewDust(new Vector2(i * 16, j * 16 - 10), 75, 16, DustID.Dirt, 0.0f, 0, 0, new Color(), 0.5f);//Leave this line how it is, it uses int division		

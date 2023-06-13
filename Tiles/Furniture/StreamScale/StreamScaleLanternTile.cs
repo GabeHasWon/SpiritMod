@@ -55,7 +55,7 @@ namespace SpiritMod.Tiles.Furniture.StreamScale
 		}
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.NPCHit4);
+			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 			Terraria.Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<Items.Placeable.Furniture.StreamScale.StreamScaleLantern>());
 		}
 	}

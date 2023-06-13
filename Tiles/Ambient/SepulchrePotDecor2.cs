@@ -51,7 +51,7 @@ namespace SpiritMod.Tiles.Ambient
 		}
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.Shatter);
+			SoundEngine.PlaySound(SoundID.Shatter, new Vector2(i, j) * 16);
 			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<SepulchrePotItem2>());
 		}
 	}

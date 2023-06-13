@@ -52,7 +52,7 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 				if (e <= 4)
 					Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), position, velocity, Mod.Find<ModGore>("BlueShardGore").Type);
 			}
-			SoundEngine.PlaySound(SoundID.Item27);
+			SoundEngine.PlaySound(SoundID.Item27, new Vector2(i, j) * 16);
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

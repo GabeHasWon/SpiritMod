@@ -39,8 +39,7 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<RockCandy>());
-			Player player = Main.LocalPlayer;
-			SoundEngine.PlaySound(Terraria.ID.SoundID.Item27);
+			SoundEngine.PlaySound(Terraria.ID.SoundID.Item27, new Vector2(i, j) * 16);
 		}
 	}
 }

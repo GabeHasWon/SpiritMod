@@ -1,35 +1,5 @@
-﻿- Improved Boulder Behemoth glow
-- Fixed Stactus gore spam
-- Fixed Ancient Tome needing to spawn only in the underground layer but also aboveground
-- Disabled Forsaken Relics (good riddance)
-- Made all quests which have their rewards obtained already be sorted into Completed quests
-- Removed Packing Crate NPC, made Packing Crate item a FloatingItem
-- Slightly increased rate of FloatingItems
-- Slightly decreased chance for natural Jelly Deluges
-- Significantly decrease spawn rate of Jelly Deluge enemies when in another natural invasion (Frost/Pumpkin Moon, Blood Moon)
-- Fixed Accursed Arrow being unaffected by Archery Potion and Magic Quiver speed bonuses
-- Fixed Accursed Arrow not being considered an arrow when gaining charges for Heartstrike
-- Fixed inaccurate Thornshot tooltip
-- Fixed Glyph glowmasks drawing 2 pixels lower than they should
-- Fixed Valkyrie Spirit Spear not dealing damage for non-host clients in multiplayer
-- Fixed Jellynaut's Bubble set bonus not working for non-host clients in multiplayer
-- Fixed Duskfeather Dagger harmful desync in multiplayer
-- Fixed Festerfly using a bestiary info provider for pesterflies (???)
-- Made Slot Machine lever hitbox much, much larger
-- Fixed Atlas's arms playing Boss 1 as Atlas leaves to despawn
-- Fixed Pirate Loot Crate not having "Right click to open" in the tooltip
-- Replaced all "Right click to open" references in the mod with {$CommonItemTooltip.RightClickToOpen}
-- Made Orichalcum Staff autoreuse, slightly nerfed use time
-- Added myPlayer == owner check to interstitial Orichalcum Staff projectile
-- Completely rewrote Orichalcum Staff, homes much better, faster and more accurately
-- Made Small, Large Hydrothermal Vents and Glowing Plants, Skull on a Stick, need only 1 research
-- Removed some nonsense Atlas dust code that didn't work, and if it did work, it would work even worse
-- Fixed Atlas dust spam issue in multiplayer
-- Fixed some Music Display compatibility errors
-- Fixed Unstable Conduit worm crash
-- Fixed Engineering Rod sentry firing at invalid targets
-- Fixed mounts not using dyes in the mount slot
-- Fixed Apostle armor being unable to provide a set bonus
-- Centered Stardancer's "pulse" draw effect
-- Fixed Atlas Jr. sometimes assuming strange visuals when dyed
-- Fixed Lunazoa orbiters vanishing early in some instances
+﻿- Fixed Mad Hatter banner issue
+- Reduced how much noise happens in worldgen
+- Made ALL tiles with a break sound do it with a position
+- Fixed Botanist highlight issue
+- Made Slot Machine UI draw properly on !=100% zoom

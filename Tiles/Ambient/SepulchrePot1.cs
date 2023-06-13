@@ -50,9 +50,11 @@ namespace SpiritMod.Tiles.Ambient
 			int height = tile.TileFrameY == 36 ? 18 : 16;
 			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Ambient/SepulchrePot1_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
+
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			SoundEngine.PlaySound(SoundID.Shatter);
+			SoundEngine.PlaySound(SoundID.Shatter, new Vector2(i, j) * 16);
+
 			for (int k = 0; k < 8; k++) {
 				Dust.NewDust(new Vector2(i * 16, j * 16 - 10), 54, 16, DustID.Dirt, 0.0f, -1, 0, new Color(), 0.5f);//Leave this line how it is, it uses int division
 				Dust.NewDust(new Vector2(i * 16, j * 16 - 10), 75, 16, DustID.Dirt, 0.0f, 0, 0, new Color(), 0.5f);//Leave this line how it is, it uses int division		

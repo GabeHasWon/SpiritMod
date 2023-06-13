@@ -78,8 +78,8 @@ namespace SpiritMod.Tiles.Ambient
 				SpiritMultiplayer.SpawnBossFromClient((byte)Main.LocalPlayer.whoAmI, ModContent.NPCType<AncientFlyer>(), (i * 16) + Main.rand.Next(-60, 60), (j * 16) - 120);
 			}
 
-			SoundEngine.PlaySound(SoundID.Roar, new Vector2(i * 16, j * 16));
-			SoundEngine.PlaySound(SoundID.NPCDeath1);
+			SoundEngine.PlaySound(SoundID.Roar, new Vector2(i, j) * 16);
+			SoundEngine.PlaySound(SoundID.NPCDeath1, new Vector2(i, j) * 16);
 		}
 	}
 }

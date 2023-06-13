@@ -199,7 +199,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			var rectbase = new Rectangle(drawCounter % 16 > 7 ? 0 : 246, 0, 246, 188);
 			int width = spriteBatch.GraphicsDevice.Viewport.Width;
 			int height = spriteBatch.GraphicsDevice.Viewport.Height;
-			Vector2 position = new Vector2(width, height) * new Vector2(mainPanel.HAlign, mainPanel.VAlign);
+			Vector2 position = new Vector2(width, height) * new Vector2(mainPanel.HAlign, mainPanel.VAlign) / Main.UIScale;
 			Texture2D texturebase = ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/SlotMachine/SlotMachineBase", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			spriteBatch.Draw(texturebase, new Vector2(offsetX, offsetY) + position, rectbase, Color.White, 0, new Vector2(texturebase.Width / 4, texturebase.Height / 2), 1, SpriteEffects.None, 0f);
 

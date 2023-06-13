@@ -17,13 +17,7 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 4;
 			TileObjectData.newTile.Width = 2;
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-			16,
-			16,
-			16,
-			16
-			};
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Skull Stick");
@@ -32,21 +26,10 @@ namespace SpiritMod.Tiles.Ambient
 		}
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 4;
-		
+
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			int item = 0;
-			switch (frameX / 54) {
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-					item = ModContent.ItemType<Items.Placeable.Furniture.SkullStick>();
-					break;
-			}
-			if (item > 0) {
-				Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, item);
-			}
+			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<Items.Placeable.Furniture.SkullStick>());
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
