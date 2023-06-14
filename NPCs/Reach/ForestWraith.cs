@@ -68,10 +68,9 @@ namespace SpiritMod.NPCs.Reach
 
 		public override bool PreAI()
 		{
-			NPC.collideX = false;
-			NPC.collideY = false;
 			Lighting.AddLight((int)((NPC.position.X + (NPC.width / 2)) / 16f), (int)((NPC.position.Y + (NPC.height / 2)) / 16f), 0.46f, 0.32f, .1f);
-			timer++;
+			
+			timer = ++timer % 750;
 			if (timer == 240 || timer == 280 || timer == 320)
 			{
 				SoundEngine.PlaySound(SoundID.Grass, NPC.Center);
@@ -86,7 +85,6 @@ namespace SpiritMod.NPCs.Reach
 				}
 				NPC.netUpdate = true;
 			}
-
 			if (timer >= 500 && timer <= 720)
 			{
 				throwing = true;
@@ -124,12 +122,8 @@ namespace SpiritMod.NPCs.Reach
 				NPC.defense = 10;
 				NPC.netUpdate = true;
 			}
-
-			if (timer >= 750)
-			{
-				timer = 0;
-				NPC.netUpdate = true;
-			}
+			else if (WorldGen.SolidTile(Framing.GetTileSafely(NPC.Center)))
+				NPC.velocity = Vector2.Lerp(NPC.velocity, NPC.DirectionTo(Main.player[NPC.target].Center) * 8f, .05f);
 
 			NPC.spriteDirection = NPC.direction;
 			return true;

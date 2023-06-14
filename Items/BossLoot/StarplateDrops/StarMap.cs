@@ -13,6 +13,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 	[Sacrifice(1)]
 	public class StarMap : ModItem
 	{
+		private static int CooldownTime => Main.expertMode ? 1200 : 600;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Astral Map");
@@ -26,7 +28,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			var line = tooltips.FirstOrDefault(x => x.Name == "Tooltip1");
 			
 			if (line is not null)
-				line.Text = line.Text.Replace("{N}", Main.expertMode ? "20" : "10");
+				line.Text = line.Text.Replace("{N}", (CooldownTime / 60).ToString());
 		}
 
 		public override void SetDefaults()
@@ -59,7 +61,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			if (player.whoAmI == Main.myPlayer && !Collision.SolidCollision(Main.MouseWorld, player.width, player.height))
 			{
 				RunTeleport(player, Main.MouseWorld);
-				player.AddBuff(ModContent.BuffType<Buffs.AstralMapCooldown>(), 10 * 60);
+				player.AddBuff(ModContent.BuffType<Buffs.AstralMapCooldown>(), CooldownTime);
 			}
 		}
 
@@ -86,7 +88,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 			for (int i = 0; i < 6; i++)
 			{
-				Vector2 drawPos = Vector2.UnitX.RotatedBy((i / 6f) * MathHelper.TwoPi) * Timer * 6;
+				Vector2 drawPos = Vector2.UnitX.RotatedBy(i / 6f * MathHelper.TwoPi) * Timer * 6;
 				DrawTex(glow, (1 - Timer) / 2, drawPos);
 				DrawTex(outline, (1 - Timer) / 2, drawPos + (Vector2.UnitY * 2));
 			}
