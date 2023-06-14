@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Accessory
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("High-Grav Boots");
-			Tooltip.SetDefault("Normalizes gravity in space\nHold DOWN to increase gravity and vertical momentum\nNegates fall damage");
+			Tooltip.SetDefault("Normalizes gravity in space\nHold DOWN to increase gravity and vertical momentum");
 		}
 		public override void SetDefaults()
 		{
@@ -27,6 +27,7 @@ namespace SpiritMod.Items.Accessory
 		{
 			if (player.gravity < 0.4f)
 				player.gravity = 0.4f;
+
 			if (player.controlDown)
 			{
 				player.portalPhysicsFlag = true;

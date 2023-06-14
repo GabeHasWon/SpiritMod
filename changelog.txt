@@ -1,5 +1,3 @@
-﻿- Fixed Mad Hatter banner issue
-- Reduced how much noise happens in worldgen
-- Made ALL tiles with a break sound do it with a position
-- Fixed Botanist highlight issue
-- Made Slot Machine UI draw properly on !=100% zoom
+﻿- Fixed outdated High-Grav Boots description
+- Made Bismite ore merge with everything
+- Added Bismite Caverns micropass, replacing old Bismite Caverns from before the 1.4 port

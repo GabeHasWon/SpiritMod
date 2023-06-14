@@ -15,4 +15,7 @@
       <HintPath>lib\StructureHelper.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\ModCompatibility\DialoguePanelReworkCompat\" />
+  </ItemGroup>
 </Project>

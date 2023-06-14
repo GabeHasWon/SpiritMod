@@ -12,6 +12,8 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Main.tileSpelunker[Type] = true;
 			Main.tileSolid[Type] = true;
 			Main.tileBlockLight[Type] = true;
+			Main.tileBrick[Type] = true;
+
 			ItemDrop = ModContent.ItemType<BismiteCrystal>();
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Bismite Crystal");
