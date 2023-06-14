@@ -28,6 +28,8 @@ namespace SpiritMod.NPCs.ZombieVariants
 			NPC.aiStyle = 3;
 			AIType = NPCID.Zombie;
 			AnimationType = NPCID.Zombie;
+			Banner = Item.NPCtoBanner(NPCID.Zombie);
+			BannerItem = Item.BannerToItem(Banner);
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

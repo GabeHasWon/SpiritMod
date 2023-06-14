@@ -33,6 +33,8 @@ namespace SpiritMod.NPCs.ZombieVariants
 			NPC.aiStyle = 3;
 			AIType = NPCID.ArmedZombie;
 			AnimationType = NPCID.ArmedZombie;
+			Banner = Item.NPCtoBanner(NPCID.Zombie);
+			BannerItem = Item.BannerToItem(Banner);
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

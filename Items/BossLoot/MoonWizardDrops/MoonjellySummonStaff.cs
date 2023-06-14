@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Summon.MoonjellySummon;
+using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -41,54 +42,36 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 		{
 			if (player.altFunctionUse == 2)
 				player.MinionNPCTargetAim(true);
-			else
-			{
-				foreach (Projectile proj in Main.projectile)
-				{
-					if (proj.active && proj.owner == player.whoAmI && proj.type == Item.shoot)
-					{
-						proj.minionSlots += 1f;
-						proj.scale += .1f;
-					}
-				}
-			}
+			else if (FindSummon(player, out Projectile summon))
+				summon.minionSlots++;
+
 			return base.UseItem(player);
 		}
 
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
-		{
-			foreach (Projectile proj in Main.projectile)
-			{
-				if (proj.active && proj.owner == player.whoAmI && proj.type == Item.shoot)
-					return false;
-			}
-
-			return player.altFunctionUse != 2;
-		}
-
-		public override bool CanUseItem(Player player)
-		{
-			if (player.altFunctionUse != 2)
-			{
-				foreach (Projectile proj in Main.projectile)
-				{
-					if (proj.active && proj.owner == player.whoAmI && proj.type == Item.shoot)
-					{
-						proj.minionSlots += 1f;
-
-						if (proj.scale < 1.3f)
-							proj.scale += .062f;
-					}
-				}
-			}
-			return true;
-		}
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+			=> player.altFunctionUse != 2 && !FindSummon(player, out _);
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, 0.08f, .4f, .28f);
 			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
+		}
+
+		private bool FindSummon(Player player, out Projectile projectile)
+		{
+			var found = Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == Item.shoot);
+
+			if (found.Any())
+			{
+				projectile = found.First();
+				return true;
+			}
+			else
+			{
+				projectile = null;
+				return false;
+			}
 		}
 	}
 }

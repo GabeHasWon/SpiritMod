@@ -13,6 +13,8 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 	[AutoloadMinionBuff("Moonlight Preserver", "This moonlight preserver summons tiny Lunazoa to fight for you!")]
 	public class MoonjellySummon : BaseMinion
     {
+		private readonly float baseScale = .8f;
+
 		public MoonjellySummon() : base(920, 1500, new Vector2(40, 40)) { }
 
 		public override void AbstractSetStaticDefaults()
@@ -23,7 +25,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
-		public override void AbstractSetDefaults() => Projectile.scale = .8f;
+		public override void AbstractSetDefaults() => Projectile.scale = baseScale;
 
 		private ref float AiTimer => ref Projectile.ai[0];
 
@@ -39,13 +41,16 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 				proj.scale = Main.rand.NextFloat(.4f, 1f);
 				proj.timeLeft = (int)(62 / (.33f * Projectile.minionSlots));
 			}
+
+			Projectile.scale = MathHelper.Min(1.3f, baseScale + ((Projectile.minionSlots - 1) * .062f));
 			Projectile.rotation = Projectile.velocity.X * 0.025f;
 		}
 
 		public override void IdleMovement(Player player)
 		{
 			Vector2 desiredPos = Player.Center + new Vector2(-30 * Player.direction, -50);
-			Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(desiredPos) * 10f, MathHelper.Min(100, Projectile.Distance(Player.Center)) / 3000);
+			if (Projectile.Distance(desiredPos) > 12)
+				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(desiredPos) * 10f, MathHelper.Min(100, Projectile.Distance(Player.Center)) / 3000);
 		}
 
 		public override void TargettingBehavior(Player player, NPC target)
@@ -89,15 +94,15 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 				Main.EntitySpriteDraw(texture, drawPos, drawFrame, Projectile.GetAlpha(lightColor) * alphaMod, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 				Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, drawPos, drawFrame, Projectile.GetAlpha(Color.White) * alphaMod, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 
-                float sineAdd = (float)Math.Sin(Main.timeForVisualEffects / 80) + 2;
+				float sineAdd = (float)Math.Sin(Main.timeForVisualEffects / 80) + 2;
 
 				Texture2D ripple = Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value;
                 Main.EntitySpriteDraw(ripple, Projectile.Center - (Vector2.UnitY * 10) - Main.screenPosition, null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), Projectile.rotation, ripple.Size() / 2, Projectile.scale * .7f, SpriteEffects.None, 0);
-            }
+			}
 
 			Lighting.AddLight(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);
 
 			return false;
-        }
-    }
+		}
+	}
 }

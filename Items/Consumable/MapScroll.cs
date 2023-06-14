@@ -33,7 +33,7 @@ namespace SpiritMod.Items.Consumable
 			{
 				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 10, player.width, player.height), new Color(255, 255, 255, 100), "Map Revealed");
 
-				Point center = Main.player[Main.myPlayer].Center.ToTileCoordinates();
+				Point center = (Main.LocalPlayer.Center / 16).ToPoint();
 
 				int range = 180;
 
@@ -41,7 +41,8 @@ namespace SpiritMod.Items.Consumable
 				{
 					for (int j = center.Y - range / 2; j < center.Y + range / 2; j++)
 					{
-						if (WorldGen.InWorld(i, j))
+						bool inWorldBorder = i < (Main.maxTilesX - 40) && i >= 40 && j < (Main.maxTilesY - 40) && j >= 40;
+						if (WorldGen.InWorld(i, j) && inWorldBorder)
 							Main.Map.Update(i, j, 255);
 					}
 				}
