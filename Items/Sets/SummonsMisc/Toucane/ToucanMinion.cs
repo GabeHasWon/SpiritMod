@@ -264,9 +264,9 @@ namespace SpiritMod.Items.Sets.SummonsMisc.Toucane
 		public override bool PreDraw(ref Color lightColor)
 		{
 			if(AiState == STATE_GLIDING)
-				Projectile.QuickDrawTrail(Main.spriteBatch);
+				Projectile.QuickDrawTrail();
 
-			Projectile.QuickDraw(Main.spriteBatch);
+			Projectile.QuickDraw();
 			return false;
 		}
 	}
