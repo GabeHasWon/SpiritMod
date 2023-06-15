@@ -184,7 +184,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 			Rectangle frame = new Rectangle(0, frameHeight * frameY, tex.Width, frameHeight);
 
 			Vector2 origin = new Vector2(tex.Width, frameHeight) / 2;
-			Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, frame, Color.White, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0f);
+			Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, frame, Color.White, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
 			return false;
 		}
 

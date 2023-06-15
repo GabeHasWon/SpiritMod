@@ -51,7 +51,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.Carrion
 				position += spawnPlace;
 
 			velocity = Vector2.Normalize(Main.MouseWorld - position) * Item.shootSpeed;
-			Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, 0, 0.0f, 0.0f);
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 			for (float num2 = 0.0f; (double)num2 < 10; ++num2)
 			{
 				int dustIndex = Dust.NewDust(position, 2, 2, DustID.Wraith, 0f, 0f, 0, default, 1f);
