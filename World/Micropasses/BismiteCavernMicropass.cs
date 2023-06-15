@@ -18,7 +18,7 @@ internal class BismiteCavernMicropass : Micropass
 
 	public override string WorldGenName => "Bismite Caverns";
 
-	public override int GetWorldGenIndexInsert(List<GenPass> tasks, ref bool afterIndex) => tasks.FindIndex(genpass => genpass.Name.Equals("Sunflowers"));
+	public override int GetWorldGenIndexInsert(List<GenPass> tasks, ref bool afterIndex) => tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
 
 	public override void Run(GenerationProgress progress, GameConfiguration config)
 	{
@@ -44,7 +44,7 @@ internal class BismiteCavernMicropass : Micropass
 			PopulateCavern(item);
 	}
 
-	private void PopulateCavern(Point16 item)
+	private static void PopulateCavern(Point16 item)
 	{
 		int distance = (int)(Size * 12);
 
