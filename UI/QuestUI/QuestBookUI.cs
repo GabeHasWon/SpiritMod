@@ -570,7 +570,7 @@ namespace SpiritMod.UI.QuestUI
 			foreach (UISolid solid in _rightPageLines)
 				solid.Color = new Color(102, 86, 67);
 
-			if (quest.RewardsGiven)
+			if (quest.RewardsGiven || Main.LocalPlayer.GetModPlayer<QuestPlayer>().HasRewardsForQuest(quest.QuestName))
 				_questInteractButton.Left.Set(-1000000f, 0f); // just move this off screen
 			else
 				_questInteractButton.Left.Set(-110f, 1f);// bring the interact button back to the screen if it's gone
