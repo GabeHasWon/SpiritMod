@@ -907,13 +907,7 @@ namespace SpiritMod.NPCs
 
 			bool lastTwin = (npc.type == NPCID.Retinazer && !NPC.AnyNPCs(NPCID.Spazmatism)) || (npc.type == NPCID.Spazmatism && !NPC.AnyNPCs(NPCID.Retinazer));
 			if ((npc.type == NPCID.SkeletronPrime || npc.type == NPCID.TheDestroyer || lastTwin) && !MyWorld.spiritBiome)
-			{
 				SpiritGeneration.SpawnSpiritBiome();
-				MyWorld.spiritBiome = true;
-
-				if (Main.netMode != NetmodeID.SinglePlayer)
-					NetMessage.SendData(MessageID.WorldData);
-			}
 		}
 
 		public override void DrawEffects(NPC npc, ref Color drawColor)

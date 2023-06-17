@@ -51,7 +51,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			Projectile.NewProjectile(source, position, new Vector2(10, 0).RotatedBy(velocity.ToRotation()), ModContent.ProjectileType<HeartstrikeProj>(), damage, knockback, player.whoAmI, ai1: (player.altFunctionUse == 2) ? 1 : 0);
+			//Spawn the held projectile
+			Projectile.NewProjectile(source, position, new Vector2(10, 0).RotatedBy(velocity.ToRotation()), ModContent.ProjectileType<HeartstrikeProj>(), (int)(damage * 1.5f), knockback * 1.25f, player.whoAmI, ai1: (player.altFunctionUse == 2) ? 1 : 0);
 
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 12f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))

@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-
 namespace SpiritMod.Buffs.Potion
 {
 	public class FlightPotionBuff : ModBuff

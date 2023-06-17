@@ -13,7 +13,6 @@ using SpiritMod.Particles;
 using SpiritMod.Items.Sets.GranitechSet;
 using System.IO;
 using Terraria.GameContent.Bestiary;
-using Terraria.DataStructures;
 
 namespace SpiritMod.NPCs.GraniTech
 {
@@ -324,7 +323,7 @@ namespace SpiritMod.NPCs.GraniTech
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (Main.netMode != NetmodeID.Server)
+			if (Main.netMode != NetmodeID.Server && NPC.life <= 0)
 				for (int i = 1; i <= 2; i++)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>($"GraniteSentryGore{i}").Type, 1f);
 		}

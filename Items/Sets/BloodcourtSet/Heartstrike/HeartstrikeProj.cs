@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
-using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
@@ -27,6 +26,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 		private int shotLength = 1200;
 		private Vector2 origin;
+		private int targetWhoAmI = -1;
 
 		public override string Texture => "SpiritMod/Items/Sets/BloodcourtSet/Heartstrike/Heartstrike";
 
@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			Projectile.width = 12;
 			Projectile.height = 12;
 			Projectile.aiStyle = -1;
-			Projectile.friendly = false;
+			Projectile.friendly = true;
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
@@ -65,6 +65,10 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 				Projectile.Kill();
 		}
 
+		public override bool? CanDamage() => Secondary && (Counter == 1);
+
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => (targetWhoAmI != -1) && (Main.npc[targetWhoAmI].Hitbox == targetHitbox);
+
 		private void CheckCollision()
 		{
 			Vector2 dirUnit = Vector2.Normalize(Projectile.velocity);
@@ -77,7 +81,6 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			foreach (float sample in samples)
 				shotLength += (int)(sample / samples.Length);
 
-			NPC target = null;
 			//Test NPC collision
 			foreach (NPC npc in Main.npc)
 			{
@@ -87,16 +90,13 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 					if (collisionPoint < shotLength)
 					{
 						shotLength = (int)collisionPoint;
-						target = npc; //Get the first NPC to the player regardless of their position in the array
+						targetWhoAmI = npc.whoAmI;
 					}
 				}
 			}
-			if (target != null)
+			if (targetWhoAmI != -1)
 			{
-				target.StrikeNPC((int)(Projectile.damage * 1.5f), Projectile.knockBack * 1.25f, Math.Sign(Projectile.velocity.X));
-				target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 200);
-
-				Projectile.NewProjectile(Entity.GetSource_FromAI(), origin + (dirUnit * shotLength), Projectile.velocity, ModContent.ProjectileType<FlayedArrow>(), 0, 0f, Projectile.owner, target.whoAmI);
+				Projectile.NewProjectile(Entity.GetSource_FromAI(), origin + (dirUnit * shotLength), Projectile.velocity, ModContent.ProjectileType<FlayedArrow>(), 0, 0f, Projectile.owner, Main.npc[targetWhoAmI].whoAmI);
 			}
 
 			for (int i = 0; i < 12; i++) //Do impact dusts
@@ -107,6 +107,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 				dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
 			}
 		}
+
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 200);
 
 		public override bool PreDraw(ref Color lightColor)
 		{
@@ -164,7 +166,5 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 				}
 			}
 		}
-
-		public override bool? CanDamage() => false;
 	}
 }

@@ -33,15 +33,14 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 
 		public override void SetDefaults()
 		{
+			Projectile.Size = new Vector2(48);
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
 			Projectile.hostile = false;
 			Projectile.friendly = true;
-			Projectile.timeLeft = 2;
+			Projectile.timeLeft = 10;
 			Projectile.extraUpdates = 1;
 			Projectile.alpha = 255;
-			Projectile.scale = 0f;
-			Projectile.width = Projectile.height = 48;
 		}
 
 		public override void Kill(int timeLeft)
@@ -61,10 +60,14 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 
 			const int distance = 80;
 			int endurance = Math.Max(40, (int)(player.statDefense * 1.5f));
-			//endurance = (int)(endurance * (Main.masterMode ? 2f : (Main.expertMode ? 1.5f : 1f))); //Multiply endurance based on difficulty
+			Counter = Math.Min(endurance, Counter + rechargeRate);
 
-			if (Counter < endurance)
-				Counter += rechargeRate;
+			float quoteant = MathHelper.Clamp(Counter / endurance, 0, 1);
+			Projectile.scale = quoteant;
+			Projectile.alpha = (int)(1f - (float)quoteant) * 255;
+
+			Projectile.rotation += 0.02f;
+			Projectile.Center = player.Center + (Vector2.UnitX * distance).RotatedBy(++Degrees * .5f * (Math.PI / 180));
 
 			if (!IsActive)
 				return;
@@ -77,6 +80,7 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 					{
 						Counter = -(cooldownTime * rechargeRate);
 						SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
+						Projectile.netUpdate = true;
 
 						break;
 					}
@@ -88,11 +92,7 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 				}
 			}
 
-			float quoteant = Math.Max(0, Counter / endurance);
-			Projectile.scale = quoteant;
-			Projectile.alpha = (int)(1f - (float)quoteant) * 255;
-
-			float rotUnit = (float)player.miscCounter / 60f;
+			float rotUnit = player.miscCounter / 60f;
 
 			if (Main.rand.NextBool(Math.Max(1, 30 - (int)(quoteant * 30f))))
 			{
@@ -106,9 +106,6 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 					dust.noLight = true;
 				}
 			}
-
-			Projectile.rotation += 0.02f;
-			Projectile.Center = player.Center + (Vector2.UnitX * distance).RotatedBy(++Degrees * .5f * (Math.PI / 180));
 		}
 
 		public override bool PreDraw(ref Color lightColor)

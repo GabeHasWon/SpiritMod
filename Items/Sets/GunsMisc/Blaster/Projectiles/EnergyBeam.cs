@@ -25,6 +25,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		public const int shotLengthMax = 500;
 
 		private Vector2 origin;
+		private int targetWhoAmI = -1;
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
@@ -37,7 +38,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			Projectile.width = 12;
 			Projectile.height = 12;
 			Projectile.aiStyle = -1;
-			Projectile.friendly = false;
+			Projectile.friendly = true;
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
@@ -52,8 +53,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				origin = Projectile.Center;
 				CheckCollision();
 			}
-			else
-				Projectile.Center = player.Center;
+			else Projectile.Center = player.Center;
 
 			if (Counter < counterMax)
 				Counter++;
@@ -61,7 +61,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				Projectile.Kill();
 		}
 
-		public override bool? CanDamage() => false;
+		public override bool? CanDamage() => Counter == 1;
+
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => (targetWhoAmI != -1) && (Main.npc[targetWhoAmI].Hitbox == targetHitbox);
 
 		private void CheckCollision()
 		{
@@ -77,7 +79,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			foreach (float sample in samples)
 				ShotLength += (int)(sample / samples.Length);
 
-			NPC target = null;
+			bool doDusts = false;
 			//Test NPC collision
 			foreach (NPC npc in Main.npc)
 			{
@@ -87,23 +89,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 					if (collisionPoint < ShotLength)
 					{
 						ShotLength = (int)collisionPoint;
-						target = npc; //Get the first NPC to the player regardless of their position in the array
+						targetWhoAmI = npc.whoAmI;
+						doDusts = true; //Get the first NPC to the player regardless of their position in the array
 					}
 				}
 			}
 
-			bool doDusts = false;
-			if (target != null)
-			{
-				target.StrikeNPC(Projectile.damage, Projectile.knockBack, Math.Sign(Projectile.velocity.X));
-
-				int? debuffType = Debuff;
-				if (debuffType != null)
-					target.AddBuff(debuffType.Value, 200);
-
-				doDusts = true;
-			}
-			else if ((ShotLength + lenience) < shotLengthMax) //The projectile has collided with a tile
+			if ((ShotLength + lenience) < shotLengthMax) //The projectile has collided with a tile
 			{
 				if (bouncy)
 				{

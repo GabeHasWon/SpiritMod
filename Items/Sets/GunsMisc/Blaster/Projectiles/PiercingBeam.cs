@@ -1,9 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.IO;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
@@ -31,22 +28,28 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			Projectile.width = 12;
 			Projectile.height = 12;
 			Projectile.aiStyle = -1;
-			Projectile.friendly = false;
+			Projectile.friendly = true;
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
 		}
-
-		public override void OnSpawn(IEntitySource source) => origin = Projectile.Center;
 
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
 
 			if (Counter == 0)
-				CheckCollision();
-			else
-				Projectile.Center = player.Center;
+			{
+				origin = Projectile.Center;
+
+				for (int i = 0; i < 12; i++) //Do impact dusts
+				{
+					Dust dust = Dust.NewDustPerfect(origin + (Vector2.Normalize(Projectile.velocity) * shotLength), Dusts[Main.rand.Next(2)], Vector2.Zero, 0, Color.White, Main.rand.NextFloat(1.0f, 1.5f));
+					dust.velocity = -(Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(0.8f);
+					dust.noGravity = true;
+				}
+			}
+			else Projectile.Center = player.Center;
 
 			if (Counter < counterMax)
 				Counter++;
@@ -54,7 +57,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				Projectile.Kill();
 		}
 
-		private void CheckCollision()
+		public override bool? CanDamage() => Counter == 1;
+
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			Vector2 dirUnit = Vector2.Normalize(Projectile.velocity);
 
@@ -66,26 +71,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			foreach (float sample in samples)
 				shotLength += (int)(sample / samples.Length);
 
-			//Test NPC collision
-			foreach (NPC npc in Main.npc)
-			{
-				float collisionPoint = shotLength;
-				if (Collision.CheckAABBvLineCollision(npc.Hitbox.TopLeft(), npc.Hitbox.Size(), origin, origin + (dirUnit * shotLength), 30, ref collisionPoint) && npc.active && !npc.friendly && npc.CanDamage())
-				{
-					npc.StrikeNPC(Projectile.damage, Projectile.knockBack, Math.Sign(Projectile.velocity.X));
+			float collisionPoint = shotLength;
+			if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), origin, origin + (dirUnit * shotLength), 30, ref collisionPoint))
+				return true;
 
-					int? debuffType = Debuff;
-					if (debuffType != null)
-						npc.AddBuff(debuffType.Value, 200);
-				}
-			}
-
-			for (int i = 0; i < 12; i++) //Do impact dusts
-			{
-				Dust dust = Dust.NewDustPerfect(origin + (dirUnit * shotLength), Dusts[Main.rand.Next(2)], Vector2.Zero, 0, Color.White, Main.rand.NextFloat(1.0f, 1.5f));
-				dust.velocity = -(Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(0.8f);
-				dust.noGravity = true;
-			}
+			return false;
 		}
 
 		public override bool PreDraw(ref Color lightColor)
@@ -134,11 +124,5 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 			return false;
 		}
-
-		public override void SendExtraAI(BinaryWriter writer) => writer.WriteVector2(origin);
-
-		public override void ReceiveExtraAI(BinaryReader reader) => origin = reader.ReadVector2();
-
-		public override bool? CanDamage() => false;
 	}
 }

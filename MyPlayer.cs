@@ -1406,7 +1406,7 @@ namespace SpiritMod
 
 				if (Player.ownedProjectileCounts[type] < shieldCount)
 				{
-					for (int i = 0; i < 2; i++)
+					for (int i = 0; i < shieldCount; i++)
 					{
 						Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<InterstellarShield>(), 0, 0, Player.whoAmI, i * 360);
 						proj.ai[1] = -(InterstellarShield.cooldownTime * InterstellarShield.rechargeRate);
@@ -1806,8 +1806,6 @@ namespace SpiritMod
 			if (Player.manaFlower)
 				Player.manaFlower = !StarjinxSet;
 		}
-
-		public override void PostUpdateBuffs() => Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeMaxMultiplier);
 
 		public override void PostUpdateEquips()
 		{

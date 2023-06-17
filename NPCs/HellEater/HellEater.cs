@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.HellEater
 			});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.9f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.09f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

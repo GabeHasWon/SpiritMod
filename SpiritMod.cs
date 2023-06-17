@@ -678,6 +678,7 @@ namespace SpiritMod
 				LoadMusicBox("SpiritBox4", "Sounds/Music/SpiritLayer3");
 				LoadMusicBox("ReachBox", "Sounds/Music/Reach");
 				LoadMusicBox("BriarNightBox", "Sounds/Music/ReachNighttime");
+				LoadMusicBox("BriarUndergroundBox", "Sounds/Music/ReachUnderground");
 				LoadMusicBox("AsteroidBox", "Sounds/Music/Asteroids");
 				LoadMusicBox("StarplateBox", "Sounds/Music/Starplate");
 				LoadMusicBox("MJWBox", "Sounds/Music/MoonJelly");
