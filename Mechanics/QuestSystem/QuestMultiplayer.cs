@@ -10,6 +10,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 	{
 		internal static void HandlePacket(BinaryReader reader, QuestMessageType messageType, bool forServer)
 		{
+			//needless syncing, PERPLAYER
+			return;
 			if (forServer) //The server handles informing all clients that we need X thing done
 			{
 				if (messageType == QuestMessageType.Deactivate)
@@ -101,7 +103,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 		{
 			packet.Write(quest.QuestName);
 
-			var data = QuestWorld.ToStoredQuest(quest);
+			var data = QuestSaving.ToStoredQuest(quest);
 			long flags = 0;
 			flags += (long)data.TimeLeftActive << 48;
 			flags += (long)data.TimeLeftUnlocked << 32;

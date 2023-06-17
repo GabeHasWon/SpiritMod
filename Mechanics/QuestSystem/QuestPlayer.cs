@@ -14,53 +14,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 {
 	public class QuestPlayer : ModPlayer
 	{
-		internal Dictionary<Guid, List<string>> QuestRewardsPerQuestPerWorld = new();
-
-		public void SetRewardsForQuest(string quest)
-		{
-			var uID = Main.ActiveWorldFileData.UniqueId;
-
-			if (!QuestRewardsPerQuestPerWorld.ContainsKey(uID))
-				QuestRewardsPerQuestPerWorld.Add(uID, new List<string>());
-
-			QuestRewardsPerQuestPerWorld[uID].Add(quest);
-		}
-
-		public bool HasRewardsForQuest(string quest)
-		{
-			var uID = Main.ActiveWorldFileData.UniqueId;
-			return QuestRewardsPerQuestPerWorld.ContainsKey(uID) && QuestRewardsPerQuestPerWorld[uID].Contains(quest);
-		}
-
-		public override void SaveData(TagCompound tag)
-		{
-			tag.Add("SpiritMod:QuestRewardsCount", QuestRewardsPerQuestPerWorld.Count);
-
-			int count = 0;
-
-			foreach (var (key, value) in QuestRewardsPerQuestPerWorld)
-			{
-				tag.Add("SpiritMod:QuestRewardKey" + count, key.ToByteArray());
-				tag.Add("SpiritMod:QuestRewardList" + count, value);
-				count++;
-			}
-		}
-
-		public override void LoadData(TagCompound tag)
-		{
-			if (tag.ContainsKey("SpiritMod:QuestRewardsCount"))
-			{
-				int count = tag.GetInt("SpiritMod:QuestRewardsCount");
-
-				for (int i = 0; i < count; ++i)
-				{
-					byte[] gUIDKeyArr = tag.GetByteArray("SpiritMod:QuestRewardKey" + i);
-					Guid key = new(gUIDKeyArr);
-
-					QuestRewardsPerQuestPerWorld.Add(key, new List<string>(tag.GetList<string>("SpiritMod:QuestRewardList" + i)));
-				}
-			}
-		}
+		public override void SaveData(TagCompound tag) => QuestSaving.SaveData(tag);
+		public override void LoadData(TagCompound tag) => QuestSaving.LoadData(tag);
 
 		public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
 		{
@@ -81,6 +36,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 		/// <summary>Handles syncing the QuestManager from server.</summary>
 		internal static void RecieveManager(BinaryReader reader)
 		{
+			//needless syncing, PERPLAYER
+			return;
 			QuestManager.QuestBookUnlocked = reader.ReadBoolean();
 			int questCount = reader.ReadInt16();
 

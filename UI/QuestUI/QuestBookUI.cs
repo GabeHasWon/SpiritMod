@@ -352,7 +352,7 @@ namespace SpiritMod.UI.QuestUI
 
 			_questInteractButton.OnClick += (UIMouseEvent evt, UIElement listeningElement) =>
 			{
-				if (Main.LocalPlayer.GetModPlayer<QuestPlayer>().HasRewardsForQuest(SelectedQuest.QuestName)) 
+				if (SelectedQuest.RewardsGiven) 
 					return;
 
 				if (SelectedQuest.IsCompleted)
@@ -570,7 +570,7 @@ namespace SpiritMod.UI.QuestUI
 			foreach (UISolid solid in _rightPageLines)
 				solid.Color = new Color(102, 86, 67);
 
-			if (quest.RewardsGiven || Main.LocalPlayer.GetModPlayer<QuestPlayer>().HasRewardsForQuest(quest.QuestName))
+			if (quest.RewardsGiven)
 				_questInteractButton.Left.Set(-1000000f, 0f); // just move this off screen
 			else
 				_questInteractButton.Left.Set(-110f, 1f);// bring the interact button back to the screen if it's gone
@@ -683,7 +683,7 @@ namespace SpiritMod.UI.QuestUI
 					_questProgressCounterText.Text = "(" + orderedFilteredQuests.Count() + "/" + QuestManager.MAX_QUESTS_ACTIVE + ")";
 					break;
 				case 2: // get all completed quests
-					orderedFilteredQuests = orderedFilteredQuests.Where(q => q.MyQuest.IsCompleted || Main.LocalPlayer.GetModPlayer<QuestPlayer>().HasRewardsForQuest(q.MyQuest.QuestName));
+					orderedFilteredQuests = orderedFilteredQuests.Where(q => q.MyQuest.IsCompleted);
 					_questProgressCounterText.Text = "(" + orderedFilteredQuests.Where(q => q.MyQuest.CountsTowardsQuestTotal).Count() + "/" + _currentMaxPossible + ")";
 					break;
 			}
