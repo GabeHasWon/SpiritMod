@@ -47,9 +47,6 @@ using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
 using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 using SpiritMod.Items.Accessory.ShieldCore;
-using System.Threading.Channels;
-using SpiritMod.NPCs.Boss;
-using SpiritMod.NPCs.Reach;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
 
 namespace SpiritMod
@@ -163,7 +160,7 @@ namespace SpiritMod
 		public int voidStacks = 1;
 		public int camoCounter;
 		public int veilCounter;
-		public int jellynautStacks;
+		public int jellynautStacks; //
 		public bool blazeBurn;
 		public bool phaseShift;
 		private readonly float[] phaseSlice = new float[60];
@@ -2945,19 +2942,6 @@ namespace SpiritMod
 							proj.timeLeft = Main.rand.Next(10, 30);
 							proj.netUpdate = true;
 						}
-					}
-
-					jellynautStacks = 0;
-
-					for (int i = 0; i < 12; i++)
-					{
-						int num = Dust.NewDust(Player.Center, Player.width, Player.height, DustID.Electric, 0f, -2f, 0, default, 1f);
-						Main.dust[num].noGravity = true;
-						Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-						Main.dust[num].position.Y += Main.rand.Next(-50, 51) * .05f - 1.5f;
-						Main.dust[num].scale *= .25f;
-						if (Main.dust[num].position != Player.Center)
-							Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
 					}
 				}
 				

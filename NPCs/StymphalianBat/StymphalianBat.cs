@@ -88,15 +88,25 @@ namespace SpiritMod.NPCs.StymphalianBat
 			{
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					int npc1 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + Main.rand.Next(-100, 100), (int)NPC.Center.Y + Main.rand.Next(-100, 100), ModContent.NPCType<StymphalianBat>(), NPC.whoAmI, 40f, 0f, 0f, 1f);
-					NPC.netUpdate = true;
-					Main.npc[npc1].netUpdate = true;
+					int attempts = 50;
+					for (int i = 0; i < attempts; i++)
+					{
+						Vector2 spawnPos = NPC.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 100f);
+
+						if (WorldGen.SolidTile(Framing.GetTileSafely(spawnPos / 16)))
+							continue;
+
+						int npc1 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<StymphalianBat>(), NPC.whoAmI, 40f, 0f, 0f, 1f);
+						NPC.netUpdate = true;
+						Main.npc[npc1].netUpdate = true;
+
+						if (Main.netMode != NetmodeID.Server)
+							for (int o = 0; o < 3; o++)
+								Gore.NewGore(NPC.GetSource_Death(), Main.npc[npc1].position, Main.rand.NextVector2Circular(4f, 4f), 99);
+						break;
+					}
 
 					JustSpawned = true;
-
-					if (Main.netMode != NetmodeID.Server)
-						for (int i = 0; i < 3; ++i)
-							Gore.NewGore(NPC.GetSource_Death(), Main.npc[npc1].position, Main.rand.NextVector2Circular(4f, 4f), 99);
 				}
 			}
 
@@ -234,7 +244,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == 367) && spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.435f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.Marble) && spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.435f : 0f;
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

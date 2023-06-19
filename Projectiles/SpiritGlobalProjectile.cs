@@ -181,17 +181,16 @@ namespace SpiritMod.Projectiles
 			if (shotFromBismiteBow && Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 120, true);
 
-			// Jellynaut Helmet
-			if (modPlayer.jellynautHelm && modPlayer.jellynautStacks < 4 && projectile.IsMagic() && (target.life <= 0 || Main.rand.NextBool(8)) && !target.friendly && !target.SpawnedFromStatue)
+			//Jellynaut Helmet
+			int orbiterType = ModContent.ProjectileType<Magic.JellynautOrbiter>();
+			if (modPlayer.jellynautHelm && player.ownedProjectileCounts[orbiterType] < 4 && projectile.IsMagic() && (target.life <= 0 || Main.rand.NextBool(8)) && !target.friendly && target.value > 0)
 			{
-				if (Main.netMode != NetmodeID.Server && player.whoAmI == Main.myPlayer)
+				if (player.whoAmI == Main.myPlayer)
 				{
 					Vector2 position = projectile.position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 20);
-					Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), position, new Vector2(1, -1), ModContent.ProjectileType<Magic.JellynautOrbiter>(), 0, 0, player.whoAmI);
+					Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), position, new Vector2(1, -1), orbiterType, Math.Max(16, (int)(damage * .75f)), 3, player.whoAmI);
 					proj.scale = Main.rand.NextFloat(.5f, 1f);
 					proj.netUpdate = true;
-
-					modPlayer.jellynautStacks++;
 				}
 			}
 		}
