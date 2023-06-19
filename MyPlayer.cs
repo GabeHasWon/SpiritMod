@@ -985,19 +985,10 @@ namespace SpiritMod
 						target.AddBuff(BuffID.OnFire, 120);
 						break;
 					case 1:
-						target.AddBuff(BuffID.Venom, 120);
-						break;
-					case 2:
-						target.AddBuff(BuffID.CursedInferno, 120);
-						break;
-					case 3:
-						target.AddBuff(BuffID.Frostburn, 120);
-						break;
-					case 4:
 						target.AddBuff(BuffID.Confused, 120);
 						break;
-					case 5:
-						target.AddBuff(BuffID.ShadowFlame, 120);
+					case 2:
+						target.AddBuff(BuffID.Frostburn, 120);
 						break;
 					default:
 						break;

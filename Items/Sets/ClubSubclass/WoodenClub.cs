@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     {
 		internal override int ChargeTime => 50;
 		internal override float Acceleration => 17f;
-		internal override int MinDamage => 12;
-		internal override int MaxDamage => 40;
+		internal override int MinDamage => 10;
+		internal override int MaxDamage => 35;
 		internal override float MinKnockback => 5f;
 		internal override float MaxKnockback => 8f;
 
