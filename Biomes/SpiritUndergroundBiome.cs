@@ -17,12 +17,14 @@ namespace SpiritMod.Biomes
 		public override Color? BackgroundColor => base.BackgroundColor;
 		public override string MapBackground => "SpiritMod/Backgrounds/SpiritMapBackground";
 
+		public static int ThirdLayerHeight = (int)(Main.maxTilesY - (Main.maxTilesY * .25f));
+
 		private int GetMusicFromDepth()
 		{
 			Player player = Main.LocalPlayer;
 			int music;
 
-			if (player.position.Y / 16 >= Main.maxTilesY - (Main.maxTilesY * .25f))
+			if (player.position.Y / 16 >= ThirdLayerHeight)
 				music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SpiritLayer3");
 			else if (player.ZoneRockLayerHeight)
 				music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SpiritLayer2");

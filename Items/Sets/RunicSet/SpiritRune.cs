@@ -11,9 +11,8 @@ namespace SpiritMod.Items.Sets.RunicSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spirit Rune");
-			Tooltip.SetDefault("'Contains ancient energy' \n Shoots out an ancient book filled with dangerous runes");
+			Tooltip.SetDefault("'Contains ancient energy'\nShoots out an ancient book filled with dangerous runes");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -25,7 +24,7 @@ namespace SpiritMod.Items.Sets.RunicSet
 			Item.useTime = 24;
 			Item.useAnimation = 24;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.noMelee = true; //so the item's animation doesn't do damage
+			Item.noMelee = true;
 			Item.knockBack = 5;
 			Item.value = Item.sellPrice(0, 4, 0, 0);
 			Item.rare = ItemRarityID.Pink;
@@ -34,6 +33,7 @@ namespace SpiritMod.Items.Sets.RunicSet
 			Item.shoot = ModContent.ProjectileType<RuneBook>();
 			Item.shootSpeed = 2f;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

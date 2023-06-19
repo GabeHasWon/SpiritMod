@@ -128,11 +128,10 @@ namespace SpiritMod.NPCs.Valkyrie
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (NPC.AnyNPCs(ModContent.NPCType<Valkyrie>()) || !spawnInfo.Sky)
-				return 0;
-			if (QuestManager.GetQuest<SlayerQuestValkyrie>().IsActive)
+			if (QuestManager.GetQuest<SlayerQuestValkyrie>().IsActive && !spawnInfo.PlayerInTown)
 				return 0.15f;
-			return 0.09f;
+
+			return spawnInfo.Sky && !spawnInfo.PlayerInTown && !NPC.AnyNPCs(ModContent.NPCType<Valkyrie>()) ? 0.09f : 0;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

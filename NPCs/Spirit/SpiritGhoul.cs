@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Tiles.Block;
+using SpiritMod.Utilities;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Utilities;
 
 namespace SpiritMod.NPCs.Spirit
 {
@@ -55,16 +55,18 @@ namespace SpiritMod.NPCs.Spirit
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
+
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Spirit/SpiritGhoul_Glow").Value, screenPos);
-		}
+			=> GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Spirit/SpiritGhoul_Glow").Value, screenPos);
+
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0)) {
-				int[] TileArray2 = { ModContent.TileType<Spiritsand>(), };
-				return TileArray2.Contains(Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType) && NPC.downedMechBossAny && spawnInfo.SpawnTileY > Main.rockLayer ? 4f : 0f;
+
+			if (player.ZoneSpirit() && spawnInfo.SpawnTileY > Main.rockLayer && !spawnInfo.PlayerInTown && !spawnInfo.Invasion)
+			{
+				int[] spawnTiles = { ModContent.TileType<Spiritsand>() };
+				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 4f : 0f;
 			}
 			return 0f;
 		}
@@ -92,15 +94,11 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-			if (Main.rand.NextBool(12)) {
+			if (Main.rand.NextBool(12))
 				target.AddBuff(BuffID.Cursed, 150);
-			}
 		}
 
-		public override void AI()
-		{
-			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0f, 0.675f, 2.50f);
-		}
+		public override void AI() => Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0f, 0.675f, 2.50f);
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<Items.Sets.RunicSet.Rune>();
 	}

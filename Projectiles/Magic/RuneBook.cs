@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -28,29 +27,23 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void AI()
 		{
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= 6) {
-				Projectile.frame++;
+			if (++Projectile.frameCounter >= 6)
+			{
 				Projectile.frameCounter = 0;
-				if (Projectile.frame >= 4)
-					Projectile.frame = 0;
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Type];
 			}
 		}
 
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
-			for (int k = 0; k < 15; k++) {
-				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.UnusedWhiteBluePurple, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
-			}
-			for (int h = 0; h < 7; h++) {
-				Vector2 vel = new Vector2(0, -1);
-				float rand = Main.rand.NextFloat() * (float)Math.PI;
-				vel = vel.RotatedBy(rand);
-				vel *= 6f;
-				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y + 20, vel.X, vel.Y, ModContent.ProjectileType<Rune>(), Projectile.damage, 0, Projectile.owner);
-			}
-		}
 
+			for (int k = 0; k < 15; k++)
+				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.UnusedWhiteBluePurple, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
+
+			if (Projectile.owner == Main.myPlayer)
+				for (int h = 0; h < 7; h++)
+					Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center + (Vector2.UnitY * 20), Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 6f, ModContent.ProjectileType<Rune>(), Projectile.damage, 0, Projectile.owner);
+		}
 	}
 }

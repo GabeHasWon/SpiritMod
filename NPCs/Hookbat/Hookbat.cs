@@ -119,13 +119,10 @@ namespace SpiritMod.NPCs.Hookbat
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (QuestManager.GetQuest<FirstAdventure>().IsActive)
+			if (QuestManager.GetQuest<FirstAdventure>().IsActive && !spawnInfo.PlayerInTown)
 				return 0.2f;
 
-			bool valid = spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && spawnInfo.Player.ZoneOverworldHeight && !NPC.AnyNPCs(ModContent.NPCType<Hookbat>());
-			if (!valid)
-				return 0f;
-			return 0.01f;
+			return ((spawnInfo.SpawnTileY < Main.rockLayer && !spawnInfo.Player.ZoneOverworldHeight) || (!Main.dayTime && spawnInfo.Player.ZoneOverworldHeight)) && !spawnInfo.PlayerInTown && !NPC.AnyNPCs(ModContent.NPCType<Hookbat>()) ? 0.01f : 0;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

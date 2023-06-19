@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.NPCs.Spirit
 {
@@ -50,16 +51,19 @@ namespace SpiritMod.NPCs.Spirit
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0)) {
-				int[] TileArray2 = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<Spiritsand>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>(), };
-				return TileArray2.Contains(Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType) && NPC.downedMechBossAny && spawnInfo.SpawnTileY > (Main.rockLayer + 150) ? 1f : 0f;
+
+			if (player.ZoneSpirit() && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && (!(Main.pumpkinMoon || Main.snowMoon || Main.eclipse) || spawnInfo.Player.Center.Y / 16 > Main.worldSurface) && SpawnCondition.GoblinArmy.Chance == 0)
+			{
+				int[] spawnTiles = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<Spiritsand>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>() };
+				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 1f : 0f;
 			}
 			return 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 12);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 11);
@@ -74,9 +78,6 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void AI()
-		{
-			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 1.1f, 1.1f, 1.8f);
-		}
+		public override void AI() => Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 1.1f, 1.1f, 1.8f);
 	}
 }

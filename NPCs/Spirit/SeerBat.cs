@@ -9,7 +9,7 @@ using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Utilities;
+
 namespace SpiritMod.NPCs.Spirit
 {
 	public class SeerBat : ModNPC
@@ -63,12 +63,11 @@ namespace SpiritMod.NPCs.Spirit
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-            if (!player.ZoneSpirit())
-                return 0f;
 
-            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0)) {
-				int[] TileArray2 = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<Spiritsand>(), ModContent.TileType<SpiritIce>(), };
-				return TileArray2.Contains(Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType) && NPC.downedMechBossAny && spawnInfo.SpawnTileY > (Main.rockLayer + Main.maxTilesY - 330) / 2f ? 6.09f : 0f;
+            if (player.ZoneSpirit() && spawnInfo.Player.Center.Y / 16 > Main.worldSurface && !spawnInfo.PlayerInTown && !spawnInfo.Invasion)
+			{
+				int[] spawnTiles = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<Spiritsand>(), ModContent.TileType<SpiritIce>(), };
+				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 6.09f : 0f;
 			}
 			return 0f;
 		}
