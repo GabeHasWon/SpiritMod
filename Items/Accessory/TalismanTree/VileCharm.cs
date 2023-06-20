@@ -2,9 +2,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Accessory.MeleeCharmTree
+namespace SpiritMod.Items.Accessory.TalismanTree
 {
-	public class DCharm : ModItem
+	public class VileCharm : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -24,11 +24,7 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 			base.Item.value = Item.sellPrice(0, 0, 6, 0);
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetCritChance(DamageClass.Melee) += 5;
-			player.moveSpeed += .1f;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().vileCharm = true;
 
 		public override void AddRecipes()
 		{

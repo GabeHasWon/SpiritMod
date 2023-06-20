@@ -2,9 +2,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Accessory.MeleeCharmTree
+namespace SpiritMod.Items.Accessory.TalismanTree
 {
-	public class Twilight1 : AccessoryItem
+	public class TwilightTalisman : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -22,21 +22,15 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 			Item.value = Item.buyPrice(0, 2, 30, 0);
 		}
 
-		public override void SafeUpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetDamage(DamageClass.Generic) += 0.05f;
-			player.GetCritChance(DamageClass.Generic) += 5;
-			player.endurance += 0.05f;
-			player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().twilightTalisman = true;
 
 		public override void AddRecipes()
 		{
 			Recipe modRecipe = CreateRecipe(1);
-			modRecipe.AddIngredient(ModContent.ItemType<YoyoCharm2>(), 1);
-			modRecipe.AddIngredient(ModContent.ItemType<MCharm>(), 1);
-			modRecipe.AddIngredient(ModContent.ItemType<DCharm>(), 1);
-			modRecipe.AddIngredient(ModContent.ItemType<HCharm>(), 1);
+			modRecipe.AddIngredient(ModContent.ItemType<AmazonianCharm>(), 1);
+			modRecipe.AddIngredient(ModContent.ItemType<HellMedallion>(), 1);
+			modRecipe.AddIngredient(ModContent.ItemType<VileCharm>(), 1);
+			modRecipe.AddIngredient(ModContent.ItemType<MarrowPendant>(), 1);
 			modRecipe.AddTile(TileID.DemonAltar);
 			modRecipe.Register();
 		}

@@ -14,13 +14,12 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 
 		public override void SetDefaults()
 		{
-			subID = Main.rand.Next(4);
-
 			Item.value = 100;
 			Item.maxStack = 999;
 			Item.rare = ItemRarityID.Blue;
 			Item.width = 28;
 			Item.height = 28;
+			subID = Main.rand.Next(4);
 		}
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

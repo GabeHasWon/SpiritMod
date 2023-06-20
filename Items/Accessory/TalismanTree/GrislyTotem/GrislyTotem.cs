@@ -2,14 +2,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Accessory.MeleeCharmTree
+namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTotem
 {
-	public class CCharm : ModItem
+	public class GrislyTotem : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Grisly Totem");
-			Tooltip.SetDefault("Increases critical strike chance by 6%");
+			Tooltip.SetDefault("Getting hit dislodges a chunk of meat that can be picked up to recover a portion of your lost health.\nThis pickup dissapears after a few seconds.");
 		}
 
 		public override void SetDefaults()
@@ -22,10 +22,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 			Item.value = Item.sellPrice(0, 0, 30, 0);
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetCritChance(DamageClass.Generic) += 6;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().grislyTotem = true;
+
 
 		public override void AddRecipes()
 		{

@@ -3,14 +3,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Accessory.MeleeCharmTree
+namespace SpiritMod.Items.Accessory.TalismanTree
 {
-	public class HCharm : AccessoryItem
+	public class HellMedallion : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hellstone Charm");
-			Tooltip.SetDefault("5% increased attack damage\nAttacks may burn enemies");
+			DisplayName.SetDefault("Hell Medallion");
+			Tooltip.SetDefault("5% increased attack damage");
 		}
 
 		public override void SetDefaults()
@@ -24,10 +24,7 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 			Item.value = Item.sellPrice(0, 0, 50, 0);
 		}
 
-		public override void SafeUpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetDamage(DamageClass.Generic) += 0.05f;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().hellMedallion = true;
 
 		public override void AddRecipes()
 		{

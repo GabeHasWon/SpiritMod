@@ -47,10 +47,9 @@ using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
 using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 using SpiritMod.Items.Accessory.ShieldCore;
-using System.Threading.Channels;
-using SpiritMod.NPCs.Boss;
-using SpiritMod.NPCs.Reach;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
+using SpiritMod.Items.Accessory.TalismanTree;
+using SpiritMod.Items.Accessory.TalismanTree.GrislyTotem;
 
 namespace SpiritMod
 {
@@ -227,6 +226,15 @@ namespace SpiritMod
 		public int infernalDash;
 		public bool longFuse;
 		public bool granitechDrones;
+
+		// Talisman booleans
+		public bool grislyTotem;
+		public int damageToRecover;
+		public bool amazonianCharm;
+		public bool vileCharm;
+		public bool hellMedallion;
+		public bool marrowPendant;
+		public bool twilightTalisman;
 
 		public bool windEffect;
 		public bool windEffect2;
@@ -494,9 +502,16 @@ namespace SpiritMod
 			StarjinxSet = false;
 			oldHelios = usingHelios;
 			usingHelios = false;
-		}
 
-		private void ResetMiscVariables()
+			grislyTotem = false;
+			amazonianCharm = false;
+			vileCharm = false;
+			hellMedallion = false;
+			marrowPendant = false;
+			twilightTalisman = false; 
+	}
+
+	private void ResetMiscVariables()
 		{
 			oliveBranchBuff = false;
 			MetalBand = false;
@@ -509,7 +524,6 @@ namespace SpiritMod
 			clockActive = false;
 			bloodcourtSet = false;
 			shieldCore = false;
-			bloodyBauble = false;
 			elderbarkWoodSet = false;
 			cleftHorn = false;
 			throwerGlove = false;
@@ -563,7 +577,6 @@ namespace SpiritMod
 			NebulaPearl = false;
 			bismiteShield = false;
 			winterbornCharmMage = false;
-			sepulchreCharm = false;
 			clatterboneShield = false;
 			leatherGlove = false;
 			cragboundMinion = false;
@@ -831,20 +844,6 @@ namespace SpiritMod
 				}
 			}
 
-			if (bloodyBauble)
-			{
-				if (Main.rand.Next(50) <= 1 && Player.statLife != Player.statLifeMax2)
-				{
-					int leech = Main.rand.Next(1, 4);
-					leech = Math.Min(leech, Player.statLifeMax2 - Player.statLife);
-					if (Player.lifeSteal <= 0f)
-						return;
-
-					Player.lifeSteal -= leech;
-					Projectile.NewProjectile(item.GetSource_OnHit(target), target.position, Vector2.Zero, ProjectileID.VampireHeal, 0, 0f, Player.whoAmI, Player.whoAmI, leech);
-				}
-			}
-
 			if (frigidGloves && crit && item.IsMelee())
 				target.AddBuff(BuffID.Frostburn, 180);
 
@@ -926,20 +925,6 @@ namespace SpiritMod
 			if (throwerGlove && proj.IsRanged())
 				throwerStacks++;
 
-			if (bloodyBauble)
-			{
-				if (Main.rand.Next(25) <= 1 && Player.statLife != Player.statLifeMax2)
-				{
-					int leech = Main.rand.Next(1, 4);
-					leech = Math.Min(leech, Player.statLifeMax2 - Player.statLife);
-					if (Player.lifeSteal <= 0f)
-						return;
-
-					Player.lifeSteal -= leech;
-					Projectile.NewProjectile(proj.GetSource_OnHit(target), target.position, Vector2.Zero, ProjectileID.VampireHeal, 0, 0f, Player.whoAmI, Player.whoAmI, leech);
-				}
-			}
-
 			if (midasTouch)
 				target.AddBuff(BuffID.Midas, 240);
 
@@ -1018,21 +1003,6 @@ namespace SpiritMod
 			
 			if (AnimeSword)
 				return false;
-
-			if (Main.rand.NextBool(5) && sepulchreCharm)
-			{
-				for (int k = 0; k < 5; k++)
-					Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + Player.height - 4f), Player.width, 8, DustID.CursedTorch, 0f, 0f, 100, default, .84f);
-				for (int i = 0; i < 200; i++)
-				{
-					if (Main.npc[i].active && !Main.npc[i].friendly && Main.npc[i].type != NPCID.TargetDummy)
-					{
-						int distance = (int)Main.npc[i].Distance(Player.Center);
-						if (distance < 320)
-							Main.npc[i].AddBuff(BuffID.CursedInferno, 120);
-					}
-				}
-			}
 
 			if (Player.GetModPlayer<DashPlayer>().ActiveDash == DashType.Shinigami)
 				return false;
@@ -1177,6 +1147,7 @@ namespace SpiritMod
 			}
 		}
 
+		public int dir;
 		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
 		{
 			if (soulPotion && Main.rand.NextBool(5))
@@ -1184,7 +1155,31 @@ namespace SpiritMod
 
 			if (spiritBuff && Main.rand.NextBool(3))
 				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, new Vector2(6, 6), ModContent.ProjectileType<StarSoul>(), 40, 0f, Main.myPlayer);
+
+			//Talismans
+			if (grislyTotem && damage > 8)
+				{
+					SoundEngine.PlaySound(SoundID.DD2_MonkStaffGroundImpact);
+					damageToRecover = (int)damage / 8;
+					for (int i = 0; i < 3; i++)
+					{
+						int item = Item.NewItem(Player.GetSource_FromThis("grislyTotem"), Player.position, ModContent.ItemType<GrislyBit>());
+						Main.item[item].velocity = Main.rand.NextVector2CircularEdge(25f, 10f);
+					}
+				for (int i = 0; i < 10; i++)
+						Dust.NewDust(Player.position, Player.width, Player.height, DustID.Blood, 1f, 1f, 100, default, 2f);
+				}
+
+			//if (vileCharm)
+			//if (amazonianCharm)
+			if (marrowPendant)
+				SoundEngine.PlaySound(SoundID.DD2_SkeletonHurt);
+
+			//if (hellMedallion)
+			//if (twilightTalisman)
+
 		}
+
 
 		public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
 		{
@@ -2776,6 +2771,7 @@ namespace SpiritMod
 				int num = Player.statDefense / 2;
 				npc.StrikeNPCNoInteraction(num, 0f, 0, false, false, false);
 			}
+
 		}
 
 		internal bool CanTrickOrTreat(NPC npc)

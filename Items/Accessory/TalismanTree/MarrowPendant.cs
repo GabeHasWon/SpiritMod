@@ -2,9 +2,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Accessory.MeleeCharmTree
+namespace SpiritMod.Items.Accessory.TalismanTree
 {
-	public class MCharm : ModItem
+	public class MarrowPendant : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -25,10 +25,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 			Item.value = Item.sellPrice(0, 0, 6, 0);
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.endurance += 0.05f;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().marrowPendant = true;
+
 
 		public override void AddRecipes()
 		{
