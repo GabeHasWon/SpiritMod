@@ -1,24 +1,27 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs;
-using SpiritMod.NPCs.Boss.Occultist.Particles;
 using SpiritMod.Particles;
-using SpiritMod.Utilities;
 using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 {
-	public class Headsplitter : ModItem, ITimerItem
+	public class Headsplitter : ModItem
 	{
-		private bool reverseSwing = false;
+		private float cachedCharge;
+
+		private static bool Empowered(Player player) => player.HasBuff(ModContent.BuffType<Empowered>());
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Headsplitter");
-			Tooltip.SetDefault("Right click to release an explosion of vengeance, effective on anguished foes\nStrikes inflict 'Surging Anguish', slowly depleting enemy life");
+			Tooltip.SetDefault("Strikes inflict 'Surging Anguish', slowly depleting enemy life\n" +
+				"Right click grants empowerement for a short time, dealing bonus damage to anguished foes");
 		}
 
 		public override void SetDefaults()
@@ -27,8 +30,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 34;
 			Item.height = 40;
-			Item.useTime = 24;
-			Item.useAnimation = 24;
+			Item.useTime = Item.useAnimation = 24;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 6;
 			Item.value = Item.sellPrice(0, 0, 20, 0);
@@ -41,75 +43,125 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 			Item.autoReuse = true;
 		}
 
-		public override ModItem Clone(Item newEntity)
-		{
-			var clone = (Headsplitter)base.Clone(newEntity);
-			clone.reverseSwing = reverseSwing;
-
-			return clone;
-		}
-
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, .42f, .02f, .13f);
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
-		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
-			velocity = new Vector2(reverseSwing ? -1 : 1, 0);
-			reverseSwing = !reverseSwing;
+			if (Main.LocalPlayer.HeldItem != Item)
+				return;
+
+			var modPlayer = Main.LocalPlayer.GetModPlayer<HeadsplitterPlayer>();
+			Texture2D bar = ModContent.Request<Texture2D>(Texture + "_Bar").Value;
+			Vector2 drawPos = position + ((frame.Size() / 2) + (Vector2.UnitY * 30)) * scale;
+
+			for (int i = 0; i < 3; i++)
+			{
+				Rectangle barFrame = bar.Frame(1, 3, 0, i, 0, -2);
+				Rectangle barDrawFrame = barFrame with
+				{
+					Width = i switch
+					{
+						0 => bar.Width,
+						1 => (int)(bar.Width * ((float)cachedCharge / modPlayer.chargeMax)),
+						_ => (int)(bar.Width * ((float)modPlayer.charge / modPlayer.chargeMax))
+					}
+				};
+
+				Color color = Color.White;
+				if (i == 2 && modPlayer.charge >= modPlayer.chargeMax)
+					color = Color.White * (float)Math.Sin((float)Main.timeForVisualEffects / 30f);
+
+				spriteBatch.Draw(bar, drawPos, barDrawFrame, color, 0, barFrame.Size() / 2, scale, SpriteEffects.None, 0);
+			}
 		}
 
-		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
-
-		public override bool AltFunctionUse(Player player) => player.ItemTimer<Headsplitter>() <= 0;
+		public override bool AltFunctionUse(Player player) => !Empowered(player) && player.GetModPlayer<HeadsplitterPlayer>().charge > (player.GetModPlayer<HeadsplitterPlayer>().chargeMax * .25f);
 
 		public override bool CanUseItem(Player player)
 		{
+			var modPlayer = player.GetModPlayer<HeadsplitterPlayer>();
+
 			if (player.altFunctionUse == 2)
 			{
-				if (!Main.dedServ)
+				ParticleHandler.SpawnParticle(new PulseCircle(player.Center, Color.Magenta, 100, 12, PulseCircle.MovementType.InwardsQuadratic));
+				for (int i = 0; i < 30; i++)
 				{
-					//Create an Occultist-esque explosion effect
-					ParticleHandler.SpawnParticle(new OccultistDeathBoom(player.Center, 0.8f));
-
-					for (int i = 0; i < 25; i++)
-						ParticleHandler.SpawnParticle(new GlowParticle(player.Center, Main.rand.NextVector2Circular(7, 7), new Color(99, 23, 25), Main.rand.NextFloat(0.04f, 0.08f), 35));
-
-					for (int i = 0; i < 3; i++)
-						ParticleHandler.SpawnParticle(new PulseCircle(player.Center, new Color(255, 33, 66) * 0.7f, 80 * i, 20) { RingColor = Color.Red });
-				}
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(SoundID.NPCDeath39 with { PitchVariance = 0.2f }, player.position);
-
-				int maxDist = 100;
-				foreach (NPC npc in Main.npc)
-				{
-					if (Collision.CanHitLine(player.position, player.width, player.height, npc.position, npc.width, npc.height) && player.Distance(npc.Center) < maxDist && npc.CanDamage() && npc.active)
-					{
-						int damage = (int)(Item.damage * (npc.HasBuff(ModContent.BuffType<SurgingAnguish>()) ? 3f : 0.75f));
-
-						if ((int)(npc.life - npc.StrikeNPC(damage, 8, Math.Sign(npc.Center.X - player.Center.X))) <= 0 && !Main.dedServ)
-							ParticleHandler.SpawnParticle(new OccultistDeathBoom(npc.Center, 0.4f));
-					}
+					Vector2 dustPos = player.Center + new Vector2(player.width * 2 * Main.rand.NextFloat(-1.0f, 1.0f), player.height / 2 * player.gravDir);
+					Dust dust = Dust.NewDustPerfect(dustPos, DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.5f, 1.5f));
+					dust.velocity = Vector2.UnitY * Main.rand.NextFloat() * -5f * player.gravDir;
+					dust.noGravity = true;
+					dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
 				}
 
-				player.SetItemTimer<Headsplitter>(180);
-
-				return false;
+				player.AddBuff(ModContent.BuffType<Empowered>(), (int)modPlayer.charge);
+				SoundEngine.PlaySound(SoundID.NPCDeath39 with { PitchVariance = 0.2f }, player.position);
 			}
-			return true;
+
+			if (Empowered(player))
+				Item.useTime = Item.useAnimation = 38;
+			else
+				Item.useTime = Item.useAnimation = 24;
+
+			return player.altFunctionUse != 2 || modPlayer.charge >= modPlayer.chargeMax;
 		}
 
-		public int TimerCount() => 1;
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		{
+			var modPlayer = player.GetModPlayer<HeadsplitterPlayer>();
+
+			int state = Empowered(player) ? ((modPlayer.charge >= modPlayer.chargeMax) ? 2 : 1) : 0;
+			velocity = Vector2.UnitX * ((state == 2) ? -player.direction : player.GetModPlayer<HeadsplitterPlayer>().SwingDirection);
+			modPlayer.SwingDirection *= -1;
+
+			Projectile.NewProjectile(source, position, velocity, type, damage * (state + 1), Math.Min(11, knockback * (state + 1)), player.whoAmI, state);
+
+			return false;
+		}
+
+		public override void HoldItem(Player player)
+		{
+			var modPlayer = player.GetModPlayer<HeadsplitterPlayer>();
+
+			if (!Empowered(player))
+				modPlayer.charge = Math.Min(modPlayer.chargeMax, modPlayer.charge + .1f);
+			cachedCharge = MathHelper.Lerp(cachedCharge, modPlayer.charge, .05f);
+
+			if (modPlayer.charge >= modPlayer.chargeMax && Main.rand.NextBool(5))
+			{
+				Vector2 dustPos = player.Center + new Vector2(player.width * 2 * Main.rand.NextFloat(-1.0f, 1.0f), player.height / 2 * player.gravDir);
+				Dust dust = Dust.NewDustPerfect(dustPos, DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.5f, 1.5f));
+				dust.velocity = Vector2.UnitY * Main.rand.NextFloat() * -5f * player.gravDir;
+				dust.noGravity = true;
+				dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
+			}
+		}
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 8);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
+		}
+	}
+
+	internal class HeadsplitterPlayer : ModPlayer
+	{
+		public float charge;
+		public readonly int chargeMax = 250;
+
+		public int SwingDirection { get; set; } = 1;
+
+		public override void PostUpdate()
+		{
+			if (Player.HeldItem.type != ModContent.ItemType<Headsplitter>()) //Reset when held item changes
+				SwingDirection = 1;
+			if (Player.HasBuff(ModContent.BuffType<Empowered>()))
+				charge = Math.Max(0, charge - 1);
 		}
 	}
 }

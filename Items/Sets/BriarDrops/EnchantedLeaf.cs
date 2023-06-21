@@ -22,24 +22,19 @@ namespace SpiritMod.Items.Sets.BriarDrops
 			Item.maxStack = 999;
 			Item.value = 500;
 			Item.rare = ItemRarityID.Blue;
+			Item.alpha = 50;
 		}
 
-		public override bool PreDrawInInventory(SpriteBatch sB, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
-			for (int i = 0; i < 1; i++)
+			Texture2D texture = TextureAssets.Item[Item.type].Value;
+
+			for (int i = 0; i < 3; ++i)
 			{
-				int num7 = 16;
-				float num8 = (float)(Math.Cos((double)Main.GlobalTimeWrappedHourly % 2.40000009536743 / 2.40000009536743 * MathHelper.TwoPi) / 5 + 0.4);
-				SpriteEffects spriteEffects = SpriteEffects.None;
-				Texture2D texture = TextureAssets.Item[Item.type].Value;
-				Vector2 vector2_3 = new Vector2((float)(TextureAssets.Item[Item.type].Value.Width / 2), (TextureAssets.Item[Item.type].Value.Height / 1 / 2));
-				var color2 = new Color(152, 250, 132, 150);
-				Rectangle r = TextureAssets.Item[Item.type].Value.Frame(1, 1, 0, 0);
-				for (int index2 = 0; index2 < num7; ++index2)
-				{
-					Color color3 = Item.GetAlpha(color2) * (0.85f - num8);
-					Main.spriteBatch.Draw(texture, position + new Vector2(7, 8), new Microsoft.Xna.Framework.Rectangle?(r), color3, 0f, vector2_3, Item.scale * .58f + num8, spriteEffects, 0.0f);
-				}
+				float lerp = (float)Math.Sin(Main.timeForVisualEffects / (50f + (i * 5)) % Math.PI) * 1.3f;
+				Color color = Item.GetAlpha(new Color(152, 250, 132, 0)) * lerp;
+
+				spriteBatch.Draw(texture, position + (frame.Size() / 2 * scale), null, color, 0, texture.Size() / 2, scale * lerp, SpriteEffects.None, 0);
 			}
 			return true;
 		}
@@ -47,21 +42,14 @@ namespace SpiritMod.Items.Sets.BriarDrops
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
 			Lighting.AddLight(new Vector2(Item.Center.X, Item.Center.Y), 81 * 0.001f, 194 * 0.001f, 58 * 0.001f);
-			for (int i = 0; i < 1; i++)
+			Texture2D texture = TextureAssets.Item[Item.type].Value;
+
+			for (int i = 0; i < 3; ++i)
 			{
-				int num7 = 16;
-				float num8 = (float)(Math.Cos(Main.GlobalTimeWrappedHourly % 2.4 / 2.4 * MathHelper.TwoPi) / 5 + 0.5);
-				SpriteEffects spriteEffects = SpriteEffects.None;
-				Texture2D texture = TextureAssets.Item[Item.type].Value;
-				var vector2_3 = new Vector2((TextureAssets.Item[Item.type].Value.Width / 2), (TextureAssets.Item[Item.type].Value.Height / 1 / 2));
-				var color2 = new Color(152, 250, 132, 150);
-				Rectangle r = TextureAssets.Item[Item.type].Value.Frame(1, 1, 0, 0);
-				for (int index2 = 0; index2 < num7; ++index2)
-				{
-					Color color3 = Item.GetAlpha(color2) * (0.85f - num8);
-					Vector2 position2 = Item.Center + ((index2 / num7 * MathHelper.TwoPi) + rotation).ToRotationVector2() * (4.0f * num8 + 2.0f) - Main.screenPosition - new Vector2(texture.Width + 8, texture.Height) * Item.scale / 2f + vector2_3 * Item.scale;
-					Main.spriteBatch.Draw(TextureAssets.Item[Item.type].Value, position2, new Microsoft.Xna.Framework.Rectangle?(r), color3, rotation, vector2_3, Item.scale * 1.1f, spriteEffects, 0.0f);
-				}
+				float lerp = (float)Math.Sin(Main.timeForVisualEffects / (50f + (i * 5)) % Math.PI) * 1.3f;
+				Color color = Item.GetAlpha(new Color(152, 250, 132, 0)) * lerp;
+
+				spriteBatch.Draw(texture, Item.Center - Main.screenPosition, null, color, rotation, texture.Size() / 2, scale * lerp, SpriteEffects.None, 0);
 			}
 			return true;
 		}

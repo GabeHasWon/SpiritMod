@@ -1,10 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Accessory;
-//using SpiritMod.Items.Armor.ClatterboneArmor;
-using SpiritMod.Items.Material;
-using SpiritMod.Projectiles.Hostile;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -45,20 +41,13 @@ namespace SpiritMod.NPCs.SporeWheezer
 			});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.SpawnTileX;
-			int y = spawnInfo.SpawnTileY;
-			int tile = (int)Main.tile[x, y].TileType;
-			return (tile == TileID.MushroomGrass) && spawnInfo.SpawnTileY > Main.rockLayer ? 3f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.MushroomGrass) && spawnInfo.SpawnTileY > Main.rockLayer ? 0.09f : 0f;
 
-		}
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int k = 0; k < 11; k++)
-			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Harpy, hitDirection, -1f, 0, default, .61f);
-			}
+
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SporeWheezer1").Type, 1f);
@@ -78,7 +67,6 @@ namespace SpiritMod.NPCs.SporeWheezer
 			npcLoot.AddCommon<Items.Sets.FlailsMisc.ClatterMace.ClatterMace>(60);
 			npcLoot.AddCommon(ItemID.Compass, 80);
 			npcLoot.AddCommon(ItemID.Rally, 200);
-			//npcLoot.AddOneFromOptions(ModContent.ItemType<ClatterboneBreastplate>(), ModContent.ItemType<ClatterboneFaceplate>(), ModContent.ItemType<ClatterboneLeggings>());
 		}
 
 		int frame = 0;

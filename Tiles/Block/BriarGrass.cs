@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Tiles.Ambient.Briar;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -19,6 +18,7 @@ namespace SpiritMod.Tiles.Block
 
 			TileID.Sets.Grass[Type] = true;
 			TileID.Sets.Conversion.Grass[Type] = true;
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			
 			AddMapEntry(new Color(104, 156, 70));
 

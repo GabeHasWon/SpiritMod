@@ -79,20 +79,12 @@ namespace SpiritMod.Projectiles.Clubs
 			Projectile.friendly = true;
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
+			Projectile.ownerHitCheck = true;
 
 			SafeSetDefaults();
 		}
 
-		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-		{
-			Player player = Main.player[Projectile.owner];
-			Rectangle playerHitbox = player.getRect();
-
-			if (Collision.CanHit(playerHitbox.TopLeft(), playerHitbox.Width, playerHitbox.Height, targetHitbox.TopLeft(), targetHitbox.Width, targetHitbox.Height))
-				return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.Center, Projectile.Center) ? true : base.Colliding(projHitbox, targetHitbox);
-			else
-				return false;
-		}
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Main.player[Projectile.owner].Center, Projectile.Center) ? true : base.Colliding(projHitbox, targetHitbox);
 
 		public virtual void Smash(Vector2 position) { }
 

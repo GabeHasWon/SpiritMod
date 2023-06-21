@@ -16,6 +16,9 @@ namespace SpiritMod.Tiles.Block
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
+
+			TileID.Sets.CanBeDugByShovel[Type] = true;
+
 			AddMapEntry(new Color(173, 216, 230));
 			ItemDrop = ModContent.ItemType<SpiritDirtItem>();
 			DustType = DustID.Water_Space;

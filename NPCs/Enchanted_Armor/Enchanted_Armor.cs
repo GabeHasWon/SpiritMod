@@ -105,7 +105,8 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 
 					bool placed = false;
 					Point CheckTile = new Point((int)NPC.Left.X / 16, (int)(NPC.Left.Y + 16) / 16);
-					bool CanPlaceStatue(Point CheckFrom)
+
+					static bool CanPlaceStatue(Point CheckFrom)
 					{
 						return (Collision.SolidTiles(CheckFrom.X, CheckFrom.X + 1, CheckFrom.Y + 1, CheckFrom.Y + 1) || //check if the bottom two tiles are solid
 							(TileID.Sets.Platforms[Framing.GetTileSafely(CheckFrom.X, CheckFrom.Y + 1).TileType] && TileID.Sets.Platforms[Framing.GetTileSafely(CheckFrom.X + 1, CheckFrom.Y + 1).TileType])) //or if they're platforms
@@ -394,7 +395,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 
 		public override void OnKill()
 		{
-			void tilecheck(int i, int j, int maxX, int maxY, int type, OnTileCheck onTileCheck)
+			static void tilecheck(int i, int j, int maxX, int maxY, int type, OnTileCheck onTileCheck)
 			{
 				for (int indexX = -maxX; indexX <= maxX; indexX++)
 					for (int indexY = -maxY; indexY <= maxY; indexY++)

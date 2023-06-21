@@ -27,7 +27,6 @@ namespace SpiritMod.NPCs.Reach
 			Main.npcFrameCount[NPC.type] = 6;
 
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
-			NPCID.Sets.MPAllowedEnemies[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -139,6 +138,8 @@ namespace SpiritMod.NPCs.Reach
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
+
 				for (int i = 1; i < 6; i++)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GladeWraith" + i).Type);
 
@@ -178,10 +179,7 @@ namespace SpiritMod.NPCs.Reach
 
 		public override bool PreKill()
 		{
-			if (Main.netMode != NetmodeID.Server)
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
 			MyWorld.downedGladeWraith = true;
-
 			return true;
 		}
 

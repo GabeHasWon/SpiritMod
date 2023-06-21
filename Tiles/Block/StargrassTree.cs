@@ -12,7 +12,7 @@ namespace SpiritMod.Tiles.Block
 {
 	public class StargrassTree : ModTree
 	{
-		public override TreePaintingSettings TreeShaderSettings => new TreePaintingSettings
+		public override TreePaintingSettings TreeShaderSettings => new()
 		{
 			UseSpecialGroups = true,
 			SpecialGroupMinimalHueValue = 11f / 72f,

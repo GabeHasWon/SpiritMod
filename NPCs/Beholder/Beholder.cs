@@ -285,7 +285,6 @@ namespace SpiritMod.NPCs.Beholder
 
 		public override bool PreKill()
 		{
-			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.position);
 			MyWorld.downedBeholder = true;
 			return true;
 		}
@@ -295,6 +294,7 @@ namespace SpiritMod.NPCs.Beholder
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				SoundEngine.PlaySound(SoundID.DD2_WyvernScream, NPC.Center);
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.position);
 
 				for (int i = 1; i < 9; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Beholder" + i).Type, 1f);

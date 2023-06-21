@@ -17,7 +17,9 @@ namespace SpiritMod.Tiles.Block
 			Main.tileBlockLight[Type] = true;
 			Main.tileMerge[TileID.Dirt][Type] = true;
 			Main.tileMerge[Type][TileID.Dirt] = true;
-			//Main.tileLighted[Type] = true;
+
+			TileID.Sets.CanBeDugByShovel[Type] = true;
+
 			AddMapEntry(new Color(104, 156, 70));
 			ItemDrop = ModContent.ItemType<ReachGrass>();
 		}

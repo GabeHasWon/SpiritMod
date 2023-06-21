@@ -68,7 +68,6 @@ namespace SpiritMod.NPCs.Snaptrapper
 
 		public override bool PreKill()
         {
-            SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
             MyWorld.downedSnaptrapper = true;
             return true;
         }
@@ -86,7 +85,9 @@ namespace SpiritMod.NPCs.Snaptrapper
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
-                for (int j = 0; j < 12; j++)
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
+
+				for (int j = 0; j < 12; j++)
                 {
                     int a = Gore.NewGore(NPC.GetSource_Death(), new Vector2(NPC.Center.X + Main.rand.Next(-10, 10), NPC.Center.Y + Main.rand.Next(-10, 10)), NPC.velocity, 911);
                     Main.gore[a].timeLeft = 20;
