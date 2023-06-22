@@ -19,6 +19,7 @@ namespace SpiritMod.Tiles.Ambient
 			DustType = DustID.Demonite;
 			HitSound = SoundID.Grass;
 			AnimationFrameHeight = 54;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Width = 2;

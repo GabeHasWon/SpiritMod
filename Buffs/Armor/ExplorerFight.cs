@@ -30,7 +30,7 @@ namespace SpiritMod.Buffs.Armor
 
 		public override void ModifyBuffTip(ref string tip, ref int rare)
 		{
-			MyPlayer modPlayer = Main.player[Main.myPlayer].GetSpiritPlayer();
+			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
 			tip += $"\nDamage dealt is increased by {modPlayer.damageStacks * 3}%";
 			rare = modPlayer.damageStacks >> 1;
 		}

@@ -134,7 +134,7 @@ namespace SpiritMod.NPCs
 				}
 			}
 
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			MyPlayer modPlayer = player.GetSpiritPlayer();
 			Vector2 dist = npc.position - player.position;
 			if (Main.netMode != NetmodeID.Server)

@@ -82,7 +82,7 @@ namespace SpiritMod.Effects.Stargoop
 			galaxyParallax.Parameters["GalaxyTexture0"].SetValue(Galaxy0);
 			galaxyParallax.Parameters["GalaxyTexture1"].SetValue(Galaxy1);
 			galaxyParallax.Parameters["GalaxyTexture2"].SetValue(Galaxy2);
-			galaxyParallax.Parameters["offset"].SetValue(Main.player[Main.myPlayer].position * 0.21f);
+			galaxyParallax.Parameters["offset"].SetValue(Main.LocalPlayer.position * 0.21f);
 			galaxyParallax.Parameters["time"].SetValue((float)Main.time);
 
 			sB.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);

@@ -45,7 +45,7 @@ namespace SpiritMod.Items.Glyphs
 			if (index < 0)
 				return;
 
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			TooltipLine line;
 
 			Color color = Color;

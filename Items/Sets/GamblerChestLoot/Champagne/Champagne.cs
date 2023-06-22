@@ -71,7 +71,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 		{
 			Player player = Main.player[Projectile.owner];
 
-			if (player == Main.player[Main.myPlayer])
+			if (player == Main.LocalPlayer)
 			{
 				if (Main.MouseWorld.X > player.Center.X)
 					player.direction = 1;

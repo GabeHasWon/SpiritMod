@@ -155,6 +155,6 @@ namespace SpiritMod.NPCs
 		}
 
 		//Best ore
-		//Lang.mapLegend.FromType(Main.player[Main.myPlayer].bestOre)
+		//Lang.mapLegend.FromType(Main.LocalPlayer.bestOre)
 	}
 }

@@ -179,8 +179,8 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void MouseOver(int i, int j)
 		{
-			Main.player[Main.myPlayer].cursorItemIconEnabled = true;
-			Main.player[Main.myPlayer].cursorItemIconID = ModContent.ItemType<StarWormSummon>();
+			Main.LocalPlayer.cursorItemIconEnabled = true;
+			Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<StarWormSummon>();
 		}
 
 		public override bool RightClick(int i, int j)
@@ -191,7 +191,7 @@ namespace SpiritMod.Tiles.Ambient
 			if (Mechanics.EventSystem.EventManager.IsPlaying<Mechanics.EventSystem.Events.StarplateBeaconIntroEvent>())
 				return false;
 
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			if (player.HasItem(ModContent.ItemType<StarWormSummon>()))
 			{
 				int x = i;

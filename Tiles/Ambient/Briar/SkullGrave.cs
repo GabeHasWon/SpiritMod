@@ -14,8 +14,8 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
-			TileObjectData.newTile.Height = 4;
 			TileObjectData.newTile.Width = 2;
+			TileObjectData.newTile.Height = 4;
 			TileObjectData.newTile.CoordinateHeights = new int[]
 			{
 				16,

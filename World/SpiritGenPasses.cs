@@ -43,6 +43,7 @@ namespace SpiritMod.World
 		public static void MicrosPass(GenerationProgress progress, GameConfiguration config)
 		{
 			progress.Message = "Spirit Mod Microstructures: Hideouts";
+
 			if (ModContent.GetInstance<SpiritClientConfig>().DoubleHideoutGeneration)
 			{
 				new BanditHideout().Generate();
@@ -1249,7 +1250,10 @@ namespace SpiritMod.World
 			AddDecorSpam("SnowFoliage", snowFoliage, new int[] { TileID.SnowBlock, TileID.IceBlock }, 140, (int)Main.worldSurface - 100, (int)Main.worldSurface + 30);
 			AddDecorSpam("IceCubes", GlobalExtensions.TileSet<IceCube1, IceCube2, IceCube3>(), new int[] { TileID.SnowBlock, TileID.IceBlock }, 120, (int)Main.worldSurface - 100, (int)Main.worldSurface + 30);
 
+			float vol = Main.soundVolume;
+			Main.soundVolume = 0;
 			PopulateSpam();
+			Main.soundVolume = vol;
 		}
 
 		private static void AddPileSpam()

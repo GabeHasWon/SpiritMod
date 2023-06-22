@@ -29,19 +29,21 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.newTile.Origin = new Point16(0, 1);
+			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-			TileObjectData.newTile.AnchorInvalidTiles = new int[] { 127 };
+			TileObjectData.newTile.AnchorInvalidTiles = new int[] { TileID.MagicalIceBlock };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
 
+			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Asteroid Chest");
 			AddMapEntry(new Color(125, 116, 115), name);
+			
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
 			ChestDrop = ModContent.ItemType<Items.Placeable.Furniture.AsteroidChest>();

@@ -45,7 +45,7 @@ namespace SpiritMod.Tiles.Furniture.Hanging
 		{
 			if (closer)
 			{
-				Player player = Main.player[Main.myPlayer];
+				Player player = Main.LocalPlayer;
 				if (!player.dead && Main.dayTime)
 					player.AddBuff(ModContent.BuffType<SunPotBuff>(), 8, true);
 			}

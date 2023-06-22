@@ -93,7 +93,7 @@ namespace SpiritMod.Tiles.Furniture
 
 		public override bool RightClick(int i, int j)
 		{
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			Tile tile = Main.tile[i, j];
 			Main.mouseRightRelease = false;
 			int left = i;
@@ -180,7 +180,7 @@ namespace SpiritMod.Tiles.Furniture
 		public override void MouseOverFar(int i, int j)
 		{
 			MouseOver(i, j);
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			if (player.cursorItemIconText == "") {
 				player.cursorItemIconEnabled = false;
 				player.cursorItemIconID = 0;

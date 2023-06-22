@@ -16,7 +16,7 @@ namespace SpiritMod.Mechanics.AutoSell
 		protected override void DrawSelf(SpriteBatch spriteBatch)
 		{
 			
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			CalculatedStyle dimensions = GetDimensions();
 			Point point1 = new Point((int)dimensions.X, (int)dimensions.Y);
 			int width = (int)Math.Ceiling(dimensions.Width);

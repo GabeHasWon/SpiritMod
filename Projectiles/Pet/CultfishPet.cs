@@ -42,7 +42,7 @@ namespace SpiritMod.Projectiles.Pet
 			if ((Projectile.localAI[0] = ++Projectile.localAI[0] % 10) == 0)
 			{
 				int num171 = 30;
-				if ((Projectile.Center - Main.player[Main.myPlayer].Center).Length() < (float)(Main.screenWidth + num171 * 16))
+				if ((Projectile.Center - Main.LocalPlayer.Center).Length() < (float)(Main.screenWidth + num171 * 16))
 				{
 					int num172 = (int)Projectile.Center.X / 16;
 					int num173 = (int)Projectile.Center.Y / 16;

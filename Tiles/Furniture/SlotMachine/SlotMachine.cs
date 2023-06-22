@@ -77,7 +77,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 		public override bool RightClick(int i, int j)
 		{
 			float minLength = float.MaxValue;
-			Player nearestPlayer = Main.player[Main.myPlayer];
+			Player nearestPlayer = Main.LocalPlayer;
 
 			foreach (Player player in Main.player)
 			{
@@ -89,7 +89,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 				}
 			}
 
-			if (Main.player[Main.myPlayer] == nearestPlayer)
+			if (Main.LocalPlayer == nearestPlayer)
 			{
 				if (ModContent.GetInstance<SpiritMod>().SlotUserInterface.CurrentState is UISlotState currentSlotState && currentSlotState != null)
 					return false;

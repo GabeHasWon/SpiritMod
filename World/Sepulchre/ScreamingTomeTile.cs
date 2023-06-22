@@ -19,11 +19,14 @@ namespace SpiritMod.World.Sepulchre
 			Main.tileLavaDeath[Type] = true;
             Main.tileLighted[Type] = true;
 			Main.tileSpelunker[Type] = true;
+
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleOnTable1x1);
 			TileObjectData.addTile(Type);
+
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Mysterious Tome");
 			AddMapEntry(new Color(179, 146, 107), name);
+			
 			DustType = -1;
 		}
 
@@ -31,8 +34,8 @@ namespace SpiritMod.World.Sepulchre
 		
 		public override void MouseOver(int i, int j)
 		{
-			Main.player[Main.myPlayer].cursorItemIconEnabled = true;
-			Main.player[Main.myPlayer].cursorItemIconID = ModContent.ItemType<ScreamingTome>();
+			Main.LocalPlayer.cursorItemIconEnabled = true;
+			Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<ScreamingTome>();
 		}
 
 		public override bool RightClick(int i, int j)

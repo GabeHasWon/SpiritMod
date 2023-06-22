@@ -15,17 +15,19 @@ namespace SpiritMod.World.Sepulchre
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 
-			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+			TileID.Sets.FramesOnKillWall[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 4;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
-			TileObjectData.newTile.AnchorBottom = default;
-			TileObjectData.newTile.AnchorTop = default;
+			TileObjectData.newTile.AnchorBottom = AnchorData.Empty;
+			TileObjectData.newTile.AnchorTop = AnchorData.Empty;
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
+
 			DustType = -1;
+			
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Sepulchre Mirror");
 			AddMapEntry(new Color(100, 100, 100), name);

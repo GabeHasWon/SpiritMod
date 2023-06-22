@@ -28,7 +28,7 @@ namespace SpiritMod.Tiles.Furniture
 				frame = 0;
 				return;
 			}
-			MyPlayer player = Main.player[Main.myPlayer].GetModPlayer<MyPlayer>();
+			MyPlayer player = Main.LocalPlayer.GetModPlayer<MyPlayer>();
 			frame = player.candyInBowl > 0 ? 1 : 0;
 		}
 
@@ -37,7 +37,7 @@ namespace SpiritMod.Tiles.Furniture
 			if (Main.dayTime)
 				return;
 
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			if (player.GetModPlayer<MyPlayer>().candyInBowl <= 0)
 				return;
 
@@ -51,7 +51,7 @@ namespace SpiritMod.Tiles.Furniture
 			if (Main.dayTime)
 				return false;
 
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
 			if (modPlayer.candyInBowl <= 0)
 				return false;

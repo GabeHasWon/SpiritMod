@@ -21,23 +21,6 @@ namespace SpiritMod.World.Sepulchre
 		private int Tile => ModContent.TileType<SepulchreBrick>();
 		private int TileTwo => ModContent.TileType<SepulchreBrickTwo>();
 
-		public static void RemoveWaterFromRegion(int width, int height, Vector2 startingPoint)
-		{
-			for (int i = 0; i < width; i++)
-			{
-				for (int j = 0; j < height; j++)
-				{
-					if (Main.tile[i + (int)startingPoint.X, j + (int)startingPoint.Y].LiquidType == 0 && Main.tile[i + (int)startingPoint.X, j + (int)startingPoint.Y].LiquidAmount > 64)
-					{
-						Main.tile[i + (int)startingPoint.X, j + (int)startingPoint.Y].ClearEverything();
-
-						if (Main.netMode == NetmodeID.MultiplayerClient) // sync
-							NetMessage.sendWater(i + (int)startingPoint.X, j + (int)startingPoint.Y);
-					}
-				}
-			}
-		}
-
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
 			int index = tasks.FindIndex(genpass => genpass.Name.Equals("Settle Liquids Again"));
@@ -45,24 +28,21 @@ namespace SpiritMod.World.Sepulchre
 			if (index == -1)
 				return;
 
-			tasks.Insert(++index, new PassLegacy("Sepulchure",
-				delegate (GenerationProgress progress, GameConfiguration config)
+			tasks.Insert(++index, new PassLegacy("Sepulchure", (GenerationProgress progress, GameConfiguration config) =>
+			{
+				progress.Message = "Spirit Mod: Generating Dark Sepulchres...";
+
+				float old = Main.soundVolume;
+				Main.soundVolume = 0;
+
+				for (int i = 0; i < Main.maxTilesX / 250; i++)
 				{
-					progress.Message = "Spirit Mod: Generating Dark Sepulchres...";
+					CreateSepulchre(new Vector2(WorldGen.genRand.Next((int)(Main.maxTilesX * 0.2f), (int)(Main.maxTilesX * 0.8f)), WorldGen.genRand.Next(Main.maxTilesY - 500, Main.maxTilesY - 300)));
+					progress.Value = i / (Main.maxTilesX / 250f);
+				}
 
-					float old = Main.soundVolume;
-					float oldA = Main.ambientVolume;
-					Main.soundVolume = 0;
-					Main.ambientVolume = 0;
-
-					for (int i = 0; i < Main.maxTilesX / 250; i++)
-					{
-						CreateSepulchre(new Vector2(WorldGen.genRand.Next((int)(Main.maxTilesX * 0.2f), (int)(Main.maxTilesX * 0.8f)), WorldGen.genRand.Next(Main.maxTilesY - 500, Main.maxTilesY - 300)));
-					}
-
-					Main.soundVolume = old;
-					Main.ambientVolume = oldA;
-				}, 300f));
+				Main.soundVolume = old;
+			}, 300f));
 		}
 
 		public void CreateSepulchre(Vector2 position)
@@ -100,6 +80,7 @@ namespace SpiritMod.World.Sepulchre
 			}
 
 			int tries = 0;
+
 			while (fail)
 			{
 				position = new Vector2(WorldGen.genRand.Next((int)(Main.maxTilesX * 0.2f), (int)(Main.maxTilesX * 0.8f)), WorldGen.genRand.Next(Main.maxTilesY - 500, Main.maxTilesY - 300));
@@ -119,8 +100,8 @@ namespace SpiritMod.World.Sepulchre
 							break;
 					}
 				}
-				tries++;
-				if (tries > 100)
+
+				if (++tries > 100)
 					return;
 			}
 
@@ -134,6 +115,7 @@ namespace SpiritMod.World.Sepulchre
 				{
 					if (noiseType.Noise2D((x * 600) / (float)4200, (y * 600) / (float)1200) > 0.85f) //regular rooms
 						CreateRoom(x, y, WorldGen.genRand.Next(5, 10), WorldGen.genRand.Next(5, 10));
+
 					if (noiseType.Noise2D((x * 600) / (float)4200, (y * 600) / (float)1200) > 0.95f || (x == i && y == j)) //towers
 					{
 						int towerheight = 30;
@@ -149,12 +131,26 @@ namespace SpiritMod.World.Sepulchre
 			for (int x = i - 50; x < i + 50; x++)
 				for (int y = j - 90; y < j + 50; y++)
 					if (Main.rand.NextBool(25) && (Main.tile[x, y].TileType == Tile || Main.tile[x, y].TileType == TileTwo) && Main.tile[x, y].HasTile)
-						Framing.GetTileSafely(i, j).ClearTile();
+						WorldGen.KillTile(x, y, false, false, true);
 
 			CreateChests(i, j);
 			PolishSepulchre(i, j);
 			PlaceEnemies(i, j);
 			RemoveWaterFromRegion(50, 40, position - new Vector2(25, 20));
+		}
+
+		public static void RemoveWaterFromRegion(int width, int height, Vector2 startingPoint)
+		{
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					Tile tile = Main.tile[i + (int)startingPoint.X, j + (int)startingPoint.Y];
+
+					if (tile.LiquidType == 0 && tile.LiquidAmount > 64)
+						tile.LiquidAmount = 0;
+				}
+			}
 		}
 
 		public delegate void AtTile(int x, int y);
@@ -184,34 +180,26 @@ namespace SpiritMod.World.Sepulchre
 
 		public void CreateChests(int i, int j)
 		{
-			bool placedchest = false;
-			int tries = 0;
-
-			while (!placedchest)
+			for (int x = i - 50; x < i + 50; x++)
 			{
-				for (int x = i - 50; x < i + 50; x++)
+				for (int y = j - 90; y < j + 50; y++)
 				{
-					for (int y = j - 90; y < j + 50; y++)
+					Tile me = Main.tile[x, y];
+					Tile below = Main.tile[x, y + 1];
+
+					if ((below.TileType == Tile || below.TileType == TileTwo) && Main.rand.NextBool(100) && me.WallType == Wall && !WorldGen.SolidOrSlopedTile(x, y))
 					{
-						if ((Main.tile[x, y + 1].TileType == Tile || Main.tile[x, y + 1].TileType == TileTwo)
-							&& !placedchest && Main.rand.NextBool(100) && Main.tile[x, y].WallType == Wall)
-						{
-							Tile tile = Main.tile[x + 1, y + 1];
-							tile.HasTile = true;
-							tile.TileType = Main.tile[x, y + 1].TileType;
+						WorldGen.PlaceTile(x + 1, y + 1, below.TileType);
+						WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<SepulchreChestTile>(), false, 0);
 
-							WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<SepulchreChestTile>(), false, 0);
-
-							if (Main.tile[x, y - 1].TileType == (ushort)ModContent.TileType<SepulchreChestTile>())
-								placedchest = true;
-						}
+						if (Main.tile[x, y - 1].TileType == (ushort)ModContent.TileType<SepulchreChestTile>())
+							goto skipLoops;
 					}
 				}
-
-				tries++;
-				if (tries > 6000)
-					break;
 			}
+
+		skipLoops:
+			return;
 		}
 
 		public void PlaceEnemies(int i, int j)
@@ -259,7 +247,7 @@ namespace SpiritMod.World.Sepulchre
 			{
 				delegate (int x, int y) //platforms
 				{
-					if (Main.rand.NextBool(50)&& Main.tile[x - 1, y].TileType == Tile && Main.tile[x - 1, y].HasTile)
+					if (Main.rand.NextBool(50) && Main.tile[x - 1, y].TileType == Tile && Main.tile[x - 1, y].HasTile)
 						CreateShelf(x, y, 50, 12, false);
 				},
 				delegate (int x, int y) //cursed armor
@@ -272,18 +260,11 @@ namespace SpiritMod.World.Sepulchre
 					if ((Main.tile[x, y + 1].TileType == Tile || Main.tile[x, y + 1].TileType == TileTwo) && Main.rand.NextBool(4) && Main.tile[x, y].WallType == Wall)
 					{
 						int potType = 0;
-						switch (Main.rand.Next(3))
+						potType = Main.rand.Next(2) switch
 						{
-							case 0:
-								potType = ModContent.TileType<SepulchrePot1>();
-								break;
-							case 1:
-								potType = ModContent.TileType<SepulchrePot2>();
-								break;
-							case 2:
-								potType = ModContent.TileType<SepulchrePot2>();
-								break;
-						}
+							0 => ModContent.TileType<SepulchrePot1>(),
+							_ => ModContent.TileType<SepulchrePot2>(),
+						};
 						WorldGen.PlaceObject(x, y, potType, true);
 					}
 				},
@@ -301,8 +282,7 @@ namespace SpiritMod.World.Sepulchre
 				{
 					if (WorldGen.genRand.NextBool(30)&& (Main.tile[x - 1, y].TileType == Tile || Main.tile[x - 1, y].TileType == TileTwo) && Main.tile[x - 1, y].HasTile)
 					{
-						int windowType = 0;
-						windowType = Main.rand.Next(2) switch
+						int windowType = Main.rand.Next(2) switch
 						{
 							0 => ModContent.TileType<SepulchreWindowOne>(),
 							_ => ModContent.TileType<SepulchreWindowTwo>(),
@@ -314,6 +294,7 @@ namespace SpiritMod.World.Sepulchre
 				{
 					if (Main.rand.NextBool(20) && (Main.tile[x - 1, y].TileType == Tile || Main.tile[x - 1, y].TileType == TileTwo) && Main.tile[x - 1, y].HasTile)
 						CreateShelf(x, y, Main.rand.Next(4, 8), 12, true);
+
 					if (Main.rand.NextBool(20) && (Main.tile[x - 1, y].TileType == Tile || Main.tile[x - 1, y].TileType == TileTwo) && Main.tile[x + 1, y].HasTile)
 						CreateShelfBackwards(x, y, Main.rand.Next(4, 8), 12, true);
 				},
@@ -329,9 +310,8 @@ namespace SpiritMod.World.Sepulchre
 				},
 				delegate (int x, int y) //mirrors
 				{
-					if (Main.rand.NextBool(200) && Main.tile[x, y].WallType == Wall && !Main.tile[x, y].HasTile)
-						if (!MirrorsNearby(x, y))
-							WorldGen.PlaceObject(x, y, ModContent.TileType<SepulchreMirror>(), true);
+					if (Main.rand.NextBool(200) && Main.tile[x, y].WallType == Wall && !Main.tile[x, y].HasTile && !MirrorsNearby(x, y))
+						WorldGen.PlaceObject(x, y, ModContent.TileType<SepulchreMirror>(), true);
 				}
 			};
 
@@ -360,13 +340,13 @@ namespace SpiritMod.World.Sepulchre
 
 					if (Math.Abs(j - diameter) <= 0.5f)
 					{
-						tile.ClearTile();
+						WorldGen.KillTile((int)pos.X + x, (int)pos.Y + y);
 						WorldGen.PlaceTile((int)pos.X + x, (int)pos.Y + y, Tile, true);
 					}
 					else
 					{
 						if (tile.TileType != Tile && tile.TileType != TileTwo)
-							tile.ClearEverything();
+							ClearTile((int)pos.X + x, (int)pos.Y + y);
 
 						WorldGen.PlaceWall((int)pos.X + x, (int)pos.Y + y, Wall, true);
 					}
@@ -475,7 +455,7 @@ namespace SpiritMod.World.Sepulchre
 			{
 				for (int y = j - width; y <= j + width; y++)
 				{
-					Framing.GetTileSafely(i, y).ClearEverything();
+					ClearTile(i, y);
 					WorldGen.PlaceWall(i, y, Wall, true);
 				}
 			}
@@ -489,7 +469,7 @@ namespace SpiritMod.World.Sepulchre
 			{
 				for (int x = i - width; x <= i + width; x++)
 				{
-					Framing.GetTileSafely(x, j).ClearEverything();
+					ClearTile(x, j);
 					WorldGen.PlaceWall(x, j, Wall, true);
 				}
 			}
@@ -497,8 +477,15 @@ namespace SpiritMod.World.Sepulchre
 
 		public void DeleteOrphan(int i, int j)
 		{
-			if (!Main.tile[i - 1, j].HasTile && !Main.tile[i + 1, j].HasTile && !Main.tile[i, j - 1].HasTile && !Main.tile[i, j + 1].HasTile && (Main.tile[i, j].TileType == Tile || Main.tile[i, j].TileType == TileTwo))
-				Framing.GetTileSafely(i, j).ClearEverything();
+			if (!Main.tile[i - 1, j].HasTile && !Main.tile[i + 1, j].HasTile && !Main.tile[i, j - 1].HasTile && !Main.tile[i, j + 1].HasTile &&
+				(Main.tile[i, j].TileType == Tile || Main.tile[i, j].TileType == TileTwo))
+				WorldGen.KillTile(i, j, false, false, true);
+		}
+
+		private void ClearTile(int i, int j)
+		{
+			WorldGen.KillTile(i, j, false, false, true);
+			WorldGen.KillWall(i, j);
 		}
 	}
 }

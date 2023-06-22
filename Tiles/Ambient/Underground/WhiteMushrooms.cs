@@ -15,6 +15,8 @@ namespace SpiritMod.Tiles.Ambient.Underground
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 
+			TileID.Sets.BreakableWhenPlacing[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.Width = 2;
@@ -25,7 +27,6 @@ namespace SpiritMod.Tiles.Ambient.Underground
 			TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.Grass, TileID.Dirt, TileID.Mud, TileID.Stone, TileID.ClayBlock, TileID.ArgonMoss, TileID.BlueMoss, TileID.BrownMoss, 
 				TileID.GreenMoss, TileID.KryptonMoss, TileID.LavaMoss, TileID.PurpleMoss, TileID.RedMoss, TileID.XenonMoss, ModContent.TileType<Stargrass>() }; 
 			TileObjectData.addTile(Type);
-			TileID.Sets.BreakableWhenPlacing[Type] = true;
 
 			DustType = DustID.RedMoss;
 

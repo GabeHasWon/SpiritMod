@@ -39,7 +39,7 @@ namespace SpiritMod.Tiles.Furniture.Reach
 
 		public override bool RightClick(int i, int j)
 		{
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			Tile tile = Main.tile[i, j];
 			int spawnX = i - tile.TileFrameX / 18;
 			int spawnY = j + 2;
@@ -76,7 +76,7 @@ namespace SpiritMod.Tiles.Furniture.Reach
 
 		public override void MouseOver(int i, int j)
 		{
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
 			player.cursorItemIconID = ModContent.ItemType<ReachBedItem>();

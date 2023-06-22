@@ -19,19 +19,21 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileLavaDeath[Type] = true;
 			Main.tileLighted[Type] = true;
 			Main.tileSpelunker[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.addTile(Type);
+
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Pot");
 			DustType = DustID.Wraith;
+
 			AddMapEntry(new Color(100, 100, 100), name);
 		}
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-			=> offsetY = 2;
+		public override void SetDrawPositions(int i, int j, ref int w, ref int offsetY, ref int h, ref short tFX, ref short tFY) => offsetY = 2;
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{

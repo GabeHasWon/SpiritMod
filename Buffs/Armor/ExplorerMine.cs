@@ -30,7 +30,7 @@ namespace SpiritMod.Buffs.Armor
 
 		public override void ModifyBuffTip(ref string tip, ref int rare)
 		{
-			MyPlayer modPlayer = Main.player[Main.myPlayer].GetSpiritPlayer();
+			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
 			tip += $"\nMining speed is increased: {modPlayer.miningStacks} stacks";
 			rare = modPlayer.miningStacks >> 1;
 		}

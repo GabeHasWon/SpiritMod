@@ -1096,22 +1096,22 @@ namespace SpiritMod
 			if (ChaosCrystal && Main.rand.NextBool(4))
 			{
 				bool canSpawn = false;
-				int teleportStartX = (int)(Main.player[Main.myPlayer].position.X / 16) - 35;
+				int teleportStartX = (int)(Main.LocalPlayer.position.X / 16) - 35;
 				int teleportRangeX = 70;
-				int teleportStartY = (int)(Main.player[Main.myPlayer].position.Y / 16) - 35;
+				int teleportStartY = (int)(Main.LocalPlayer.position.Y / 16) - 35;
 				int teleportRangeY = 70;
 				Vector2 vector2 = TestTeleport(ref canSpawn, teleportStartX, teleportRangeX, teleportStartY, teleportRangeY);
 
 				if (canSpawn)
 				{
 					Vector2 newPos = vector2;
-					Main.player[Main.myPlayer].Teleport(newPos, 2, 0);
-					Main.player[Main.myPlayer].velocity = Vector2.Zero;
+					Main.LocalPlayer.Teleport(newPos, 2, 0);
+					Main.LocalPlayer.velocity = Vector2.Zero;
 					SoundEngine.PlaySound(SoundID.Item27, Player.Center);
 					SoundEngine.PlaySound(SoundID.Item8, Player.Center);
 					if (Main.netMode == NetmodeID.Server)
 					{
-						RemoteClient.CheckSection(Main.myPlayer, Main.player[Main.myPlayer].position, 1);
+						RemoteClient.CheckSection(Main.myPlayer, Main.LocalPlayer.position, 1);
 						NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Main.myPlayer, newPos.X, newPos.Y, 3, 0, 0);
 					}
 				}
@@ -1463,7 +1463,7 @@ namespace SpiritMod
 					int num3 = Main.rand.Next(Main.screenWidth + 1000) - 500;
 					int num4 = (int)Main.screenPosition.Y - Main.rand.Next(50);
 					if (Main.LocalPlayer.velocity.Y > 0.0)
-						num4 -= (int)Main.player[Main.myPlayer].velocity.Y;
+						num4 -= (int)Main.LocalPlayer.velocity.Y;
 					if (Main.rand.NextBool(5))
 						num3 = Main.rand.Next(500) - 500;
 					else if (Main.rand.NextBool(5))
@@ -2809,7 +2809,7 @@ namespace SpiritMod
 
 		private static Vector2 TestTeleport(ref bool canSpawn, int teleportStartX, int teleportRangeX, int teleportStartY, int teleportRangeY)
 		{
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
 
 			int repeats = 0;
 			int num2 = 0;

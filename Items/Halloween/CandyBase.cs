@@ -42,7 +42,7 @@ namespace SpiritMod.Items.Halloween
 				tooltips.Add(new TooltipLine(Mod, "RightclickHint", "Right click to put into Candy Bag"));
 		}
 
-		public override bool CanRightClick() => ItemSpace(Main.player[Main.myPlayer]);
+		public override bool CanRightClick() => ItemSpace(Main.LocalPlayer);
 
 		public override void RightClick(Player player)
 		{

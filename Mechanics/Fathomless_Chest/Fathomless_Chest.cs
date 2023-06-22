@@ -27,18 +27,19 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = false;
+			Main.tileOreFinderPriority[Type] = 1000;
+			Main.tileSpelunker[Type] = true;
+			Main.tileLighted[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.newTile.Origin = new Point16(0, 2);
-			Main.tileOreFinderPriority[Type] = 1000;
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Fathomless Vase");
-			Main.tileSpelunker[Type] = true;
 			AddMapEntry(new Color(112, 216, 238), name);
-			TileID.Sets.DisableSmartCursor[Type] = true;
-			Main.tileLighted[Type] = true;
 
 			HitSound = SoundID.DD2_SkeletonDeath;
 			ItemDrop = ModContent.ItemType<Black_Stone_Item>();
