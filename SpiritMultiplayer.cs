@@ -193,22 +193,6 @@ namespace SpiritMod
 						ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", Main.npc[npcID].GetTypeNetName()), new Color(175, 75, 255));
 					}
 					break;
-				case MessageType.SpawnGladeWraith:
-					if (Main.netMode == NetmodeID.Server)
-					{
-						int npcCenterX = reader.ReadInt32();
-						int npcCenterY = reader.ReadInt32();
-
-						int npcIndex = ModContent.NPCType<ForestWraith>();
-						if (NPC.AnyNPCs(npcIndex))
-							return;
-
-						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, npcIndex, 0, 2, 1, 0, 0);
-						Main.npc[npcID].netUpdate2 = true;
-
-						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You have disturbed the ancient Nature Spirits!"), new Color(0, 170, 60));
-					}
-					break;
 				case MessageType.SpawnNPCFromClient:
 					if (Main.netMode == NetmodeID.Server)
 					{

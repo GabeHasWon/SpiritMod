@@ -12,7 +12,6 @@ using SpiritMod.Items.Sets.SeraphSet;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Sets.MagicMisc.AstralClock;
 using SpiritMod.Biomes.Events;
-using Terraria.DataStructures;
 
 namespace SpiritMod.NPCs.BlueMoon.GlowToad
 {
@@ -83,21 +82,21 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		int tongueCooldown = 300;
 		int tongueProj = -1;
 
-		public Vector2 tongueOffset => NPC.Center + new Vector2(NPC.direction * 6, -6) + new Vector2(16 * NPC.direction, 10).RotatedBy(headRotation);
+		public Vector2 TongueOffset => NPC.Center + new Vector2(NPC.direction * 6, -6) + new Vector2(16 * NPC.direction, 10).RotatedBy(headRotation);
 
 		private void TongueStuff(Player player, Vector2 dir)
 		{
-			tongueCooldown--;
-			if (tongueCooldown < 0 && NPC.velocity.Y == 0)
+			if (--tongueCooldown < 0 && NPC.velocity.Y == 0)
 			{
 				tongueOut = true;
 				tongueCooldown = 300;
 			}
+
 			mouthOpen = tongueOut || tongueCooldown < 60;
 			if (tongueOut)
 			{
 				if (tongueProj == -1)
-					tongueProj = Projectile.NewProjectile(NPC.GetSource_FromAI(), tongueOffset, dir * 30, ModContent.ProjectileType<GlowToadTongue>(), 100, 0, player.whoAmI, NPC.whoAmI);
+					tongueProj = Projectile.NewProjectile(NPC.GetSource_FromAI(), TongueOffset, dir * 30, ModContent.ProjectileType<GlowToadTongue>(), NPCUtils.ToActualDamage(100, 1.5f, 2.5f), 0, player.whoAmI, NPC.whoAmI);
 				else if (!Main.projectile[tongueProj].active)
 				{
 					tongueProj = -1;
@@ -121,20 +120,20 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			if (!tongueOut && tongueCooldown >= 60 && (NPC.velocity.Y == 0 || NPC.collideY))
 			{
 				//movement
-				if (jumpCounter >= 45)
+				if (++jumpCounter >= 45)
 				{
 					NPC.velocity.Y = -7;
 					NPC.velocity.X = NPC.direction * 10;
 					jumpCounter = 0;
 					Jumping = true;
 				}
-				jumpCounter++;
 			}
 
 			if (!tongueOut)
 			{
 				direction = NPC.direction;
 				headRotation = dir.ToRotation();
+
 				if (NPC.direction == -1)
 					headRotation += 3.14f;
 			}
@@ -192,7 +191,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 
 		private int speed = -30;
 
-		private Vector2 Origin => (Main.npc[(int)Projectile.ai[0]].ModNPC as GlowToad).tongueOffset;
+		private Vector2 Origin => (Main.npc[(int)Projectile.ai[0]].ModNPC as GlowToad).TongueOffset;
 
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Glow Tongue");
 

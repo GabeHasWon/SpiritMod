@@ -572,6 +572,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 		public override void SetStaticDefaults()
 		{
 			AmbientTileDefaults.SetTileData(Type);
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			AddMapEntry(new Color(115, 87, 62));
 			ItemDrop = ModContent.ItemType<CrumblingDirtItem>();
 			DustType = DustID.Dirt;
@@ -588,6 +589,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 		public override void SetStaticDefaults()
 		{
 			AmbientTileDefaults.SetTileData(Type);
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			AddMapEntry(new Color(115, 87, 62));
 			ItemDrop = ModContent.ItemType<CrackedDirtItem>();
 			DustType = DustID.Dirt;
@@ -604,6 +606,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 		public override void SetStaticDefaults()
 		{
 			AmbientTileDefaults.SetTileData(Type);
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			AddMapEntry(new Color(115, 87, 62));
 			ItemDrop = ModContent.ItemType<RoughDirtItem>();
 			DustType = DustID.Dirt;
@@ -620,6 +623,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 		public override void SetStaticDefaults()
 		{
 			AmbientTileDefaults.SetTileData(Type);
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			AddMapEntry(new Color(115, 87, 62));
 			ItemDrop = ModContent.ItemType<RockyDirtItem>();
 			DustType = DustID.Dirt;
@@ -636,6 +640,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 		public override void SetStaticDefaults()
 		{
 			AmbientTileDefaults.SetTileData(Type);
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			AddMapEntry(new Color(115, 87, 62));
 			ItemDrop = ModContent.ItemType<LayeredDirtItem>();
 			DustType = DustID.Dirt;
@@ -652,6 +657,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 		public override void SetStaticDefaults()
 		{
 			AmbientTileDefaults.SetTileData(Type);
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			AddMapEntry(new Color(115, 87, 62));
 			ItemDrop = ModContent.ItemType<CaveDirtItem>();
 			DustType = DustID.Dirt;
@@ -668,6 +674,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 		public override void SetStaticDefaults()
 		{
 			AmbientTileDefaults.SetTileData(Type);
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			AddMapEntry(new Color(115, 87, 62));
 			ItemDrop = ModContent.ItemType<WavyDirtItem>();
 			DustType = DustID.Dirt;

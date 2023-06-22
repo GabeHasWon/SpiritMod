@@ -104,14 +104,18 @@ namespace SpiritMod.World
 				}
 			}
 
-			string message = "The Spirits spread through the Land...";
-
-			if (Main.netMode == NetmodeID.SinglePlayer)
-				Main.NewText(message, Color.Orange);
-			else if (Main.netMode == NetmodeID.Server)
+			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				NetMessage.SendData(MessageID.WorldData);
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(message), Color.Orange, -1);
+				string message = "The Spirits spread through the Land...";
+				MyWorld.spiritBiome = true;
+
+				if (Main.netMode == NetmodeID.SinglePlayer)
+					Main.NewText(message, Color.Orange);
+				else
+				{
+					NetMessage.SendData(MessageID.WorldData);
+					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(message), Color.Orange, -1);
+				}
 			}
 		}
 	}

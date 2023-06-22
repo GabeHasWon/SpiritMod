@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Tiles.Block;
+using SpiritMod.Utilities;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent;
@@ -52,16 +53,19 @@ namespace SpiritMod.NPCs.Spirit
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0)) {
-				int[] TileArray2 = { ModContent.TileType<Spiritsand>(), };
-				return TileArray2.Contains(Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType) && NPC.downedMechBossAny && spawnInfo.SpawnTileY < Main.rockLayer ? 5f : 0f;
+
+			if (player.ZoneSpirit() && spawnInfo.SpawnTileY < Main.rockLayer && !spawnInfo.PlayerInTown && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && (!(Main.pumpkinMoon || Main.snowMoon || Main.eclipse) || spawnInfo.Player.Center.Y / 16 > Main.worldSurface) && SpawnCondition.GoblinArmy.Chance == 0)
+			{
+				int[] spawnTiles = { ModContent.TileType<Spiritsand>() };
+				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 5f : 0f;
 			}
 			return 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 12);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 11);
@@ -70,9 +74,8 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-			if (Main.rand.NextBool(5)) {
+			if (Main.rand.NextBool(5))
 				target.AddBuff(BuffID.Cursed, 150);
-			}
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(ModContent.ItemType<Items.Sets.RunicSet.Rune>(), 3);

@@ -22,6 +22,7 @@ namespace SpiritMod.Tiles.Block
 
 			TileID.Sets.Grass[Type] = true;
 			TileID.Sets.Conversion.Grass[Type] = true;
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 
 			AddMapEntry(new Color(28, 216, 151));
 			DustType = DustID.Flare_Blue;

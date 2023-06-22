@@ -14,11 +14,16 @@ namespace SpiritMod.Tiles.Block
 		{
 			Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
-			Main.tileBlendAll[this.Type] = true;
+			Main.tileBlendAll[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
 
+			TileID.Sets.CanBeDugByShovel[Type] = true;
 			TileID.Sets.Conversion.Sand[Type] = true;
+			TileID.Sets.Falling[Type] = true;
+			TileID.Sets.TouchDamageSands[Type] = 15;
+			TileID.Sets.ForAdvancedCollision.ForSandshark[Type] = true;
+
 			AddMapEntry(new Color(135, 206, 235));
 			ItemDrop = ModContent.ItemType<SpiritSandItem>();
 			DustType = DustID.Water_Space;
@@ -42,7 +47,6 @@ namespace SpiritMod.Tiles.Block
 
             if (canFall)
             {
-                //Set the projectile type to ExampleSandProjectile
                 int projectileType = ModContent.ProjectileType<SpiritSand>();
                 float positionX = i * 16 + 8;
                 float positionY = j * 16 + 8;

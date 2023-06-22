@@ -36,12 +36,9 @@ namespace SpiritMod.Items.Consumable
 			Item.makeNPC = ModContent.NPCType<TinyLunazoa>();
 		}
 
-		public override void UpdateInventory(Player player)
-		{
-			Item.bait = 30 +
-				(!Main.dayTime ? 15 : 0) +
-				(MyWorld.jellySky ? 20 : 0);
-		}
+		public override bool CanShoot(Player player) => false;
+
+		public override void UpdateInventory(Player player) => Item.bait = 30 + (!Main.dayTime ? 15 : 0) + (MyWorld.jellySky ? 20 : 0);
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}

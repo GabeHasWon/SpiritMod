@@ -1,160 +1,212 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
-using SpiritMod.Dusts;
+using SpiritMod.NPCs.Boss.Occultist.Particles;
 using SpiritMod.Particles;
+using SpiritMod.Projectiles.BaseProj;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
-using Terraria.GameContent;
+using Terraria.Audio;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 {
-	public class HeadsplitterProj : ModProjectile
+	public class HeadsplitterProj : BaseHeldProj
 	{
-		private double UseCounter
+		private int AiState
 		{
-			get => Projectile.ai[0];
-			set => Projectile.ai[0] = (float)value;
+			get => (int)Projectile.ai[0];
+			set => Projectile.ai[0] = value;
 		}
+		private const int STATE_NORMAL = 0;
+		private const int STATE_HEAVY = 1;
+		private const int STATE_SUPER = 2;
 
-		private double Radians
+		private bool collided = false;
+
+		private ref float Timer => ref Projectile.ai[1];
+
+		private Vector2 initialVelocity = Vector2.Zero;
+		private int swingDirection = 1;
+
+		private readonly Vector2 initialSize = new(60);
+
+		public override void SetStaticDefaults()
 		{
-			get => Projectile.ai[1];
-			set => Projectile.ai[1] = (float)value;
+			DisplayName.SetDefault("Headsplitter");
+			ProjectileID.Sets.TrailCacheLength[Type] = 5;
+			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
-		private const int Size = 60;
-		private float distance = Size;
-
-		private bool ReverseSwing => Projectile.velocity.X < 0;
-
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Headsplitter");
 
 		public override void SetDefaults()
 		{
-			Projectile.hostile = false;
 			Projectile.DamageType = DamageClass.Melee;
-			Projectile.width = Projectile.height = 48;
-			Projectile.aiStyle = -1;
+			Projectile.Size = initialSize;
 			Projectile.friendly = true;
+			Projectile.hostile = false;
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
+			Projectile.ownerHitCheck = true;
 
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = -1;
 		}
 
+		public override bool AutoAimCursor() => false;
+
+		public override Vector2 HoldoutOffset() => Projectile.velocity * Projectile.Size.Length() / 2 * Math.Min(1, Projectile.scale);
+
+		private float SwingRadians => (AiState != STATE_NORMAL) ? ((AiState == STATE_SUPER) ? 8f : MathHelper.TwoPi) : MathHelper.Pi;
+
+		public override bool PreAI()
+		{
+			bool firstTick = Projectile.timeLeft > 2;
+			if (firstTick)
+			{
+				swingDirection = Math.Sign(Projectile.velocity.X);
+				initialVelocity = (Vector2.UnitX * Owner.direction).RotatedBy(swingDirection * -.3f);
+				Projectile.scale = 0f;
+			}
+			Projectile.scale = Math.Min(1, Projectile.scale + .1f);
+
+			if (Timer < (Owner.itemTimeMax - 8)) //Do fancy dusts
+			{
+				float magnitude = (AiState == STATE_NORMAL) ? 1f : 3f;
+
+				Vector2 dustPos = Projectile.Center + (Vector2.UnitX * 30 * magnitude).RotatedBy(Projectile.velocity.ToRotation()) + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 8f * magnitude);
+				Dust dust = Dust.NewDustPerfect(dustPos, DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.5f, 1.0f));
+				dust.velocity = (Vector2.UnitX * Main.rand.NextFloat() * 2f * magnitude).RotatedBy(Projectile.velocity.ToRotation() + (1.57f * swingDirection)).RotatedByRandom(.3f * magnitude);
+				dust.noGravity = true;
+				dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
+			}
+
+			if (AiState != STATE_NORMAL)
+			{
+				float quoteant = Math.Min(1, Timer / (Owner.itemTimeMax * .4f));
+				Projectile.Size = Vector2.Lerp(initialSize, initialSize * 1.5f, quoteant);
+				Projectile.scale = quoteant + 1;
+
+				if (AiState == STATE_SUPER && !collided)
+				{
+					if (Timer == 0 && Main.netMode != NetmodeID.Server)
+						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/PowerSlash1"), Projectile.Center);
+					if (Timer >= (Owner.itemTimeMax / 2) && Collision.SolidTiles(Projectile.position, Projectile.width, Projectile.height, true))
+					{
+						collided = true;
+						Timer = 0;
+						Owner.GetModPlayer<MyPlayer>().Shake = (int)MathHelper.Min(30, Owner.GetModPlayer<MyPlayer>().Shake + 15);
+
+						Vector2 dustPos = Projectile.Center + (Vector2.UnitX * ((Projectile.Size.Length() / 2) - 30)).RotatedBy(Projectile.velocity.ToRotation()) - (Vector2.UnitY * 20);
+						for (int k = 0; k <= 80; k++)
+							Dust.NewDustPerfect(dustPos, ModContent.DustType<Dusts.EarthDust>(), Vector2.UnitY.RotatedByRandom(1) * Main.rand.NextFloat(-1.0f, 1.0f) * 5f);
+
+						SoundEngine.PlaySound(SoundID.Item70, Projectile.Center);
+						SoundEngine.PlaySound(SoundID.NPCHit42, Projectile.Center);
+					}
+				}
+				if (AiState == STATE_HEAVY && Timer == 0 && Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(SoundID.DD2_GhastlyGlaiveImpactGhost, Projectile.Center);
+			}
+
+			float progress = ++Timer / Owner.itemTimeMax;
+			progress = EaseFunction.EaseCircularInOut.Ease(progress);
+
+			if (!collided)
+				Projectile.velocity = initialVelocity.RotatedBy(MathHelper.Lerp(SwingRadians / 2 * swingDirection, -SwingRadians / 2 * swingDirection, progress));
+
+			float rotation = Projectile.velocity.ToRotation() - 1.57f * Owner.gravDir;
+			Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
+			Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, rotation);
+			return true;
+		}
+
+		public override void AbstractAI()
+		{
+			if (initialVelocity.X == Owner.direction)
+				Projectile.direction = Projectile.spriteDirection *= -1;
+
+			Owner.reuseDelay = Owner.HeldItem.reuseDelay;
+
+			if (Timer > Owner.itemTimeMax)
+				Projectile.Kill();
+		}
+
+		public override bool? CanDamage() => collided ? false : null;
+
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Main.player[Projectile.owner].Center, Projectile.Center) ? true : base.Colliding(projHitbox, targetHitbox);
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-			=> hitDirection = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
+		{
+			hitDirection = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
+
+			if (AiState != STATE_NORMAL && target.HasBuff(ModContent.BuffType<SurgingAnguish>()))
+				damage = (int)(damage * 1.5f);
+		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			Vector2 hitPos = target.getRect().ClosestPointInRect(Projectile.Center);
 
-			for (int i = 0; i < 8; i++)
+			if (AiState != STATE_NORMAL)
 			{
-				Dust dust = Dust.NewDustPerfect(hitPos, DustID.LavaMoss, Main.rand.NextVector2Unit() * Main.rand.NextFloat(1.0f, 5.0f), 0, Color.White, Main.rand.NextFloat(0.5f, 1.0f));
-				dust.noGravity = true;
-				dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
-			}
-			
-			if (Main.rand.NextBool(3))
-			{
-				if (!Main.dedServ)
-					ParticleHandler.SpawnParticle(new SplitterImpact(hitPos, 1f, (ReverseSwing ? MathHelper.Pi : 0f) - (hitPos.DirectionTo(Main.player[Projectile.owner].Center).X / 5)));
+				Owner.GetModPlayer<MyPlayer>().Shake = (int)MathHelper.Min(20, Owner.GetModPlayer<MyPlayer>().Shake + 5);
 
-				target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 180);
-			}
-		}
-
-		public override void AI()
-		{
-			Player player = Main.player[Projectile.owner];
-			player.heldProj = Projectile.whoAmI;
-
-			int degrees = (int)((double)(UseCounter / player.itemAnimationMax * -180) + 55) * player.direction * (int)player.gravDir;
-			if (ReverseSwing)
-				degrees = (int)((float)Math.PI - (int)((double)(UseCounter / player.itemAnimationMax * -180) + 55) * player.direction * (int)player.gravDir);
-			if (player.direction == 1)
-				degrees += 180;
-
-			Radians = degrees * (Math.PI / 180);
-			float amount = 0.2f * (player.HeldItem.useTime / player.itemTimeMax);
-			UseCounter = MathHelper.Lerp((float)UseCounter, player.itemAnimationMax, amount);
-
-			Projectile.position.X = player.Center.X - (int)(Math.Cos(Radians * 0.96) * Size) - (Projectile.width / 2);
-			Projectile.position.Y = player.Center.Y - (int)(Math.Sin(Radians * 0.96) * Size) - (Projectile.height / 2);
-
-			if (player.itemTime < 2)
-				Projectile.active = false;
-			player.itemRotation = MathHelper.WrapAngle((float)Radians + ((player.direction < 0) ? 0 : MathHelper.Pi));
-
-			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)Radians + 1.57f);
-			player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (float)Radians + 1.57f);
-
-			if (UseCounter < (player.itemTimeMax - 8)) //Do fancy dusts
-			{
-				Vector2 dustPos = player.Center + (player.DirectionTo(Projectile.Center) * (distance + 8)) + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(1.0f, 4.0f));
-				Dust dust = Dust.NewDustPerfect(dustPos, DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.5f, 1.0f));
-				dust.velocity = Vector2.Zero;
-				dust.noGravity = true;
-				dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
-			}
-
-			if (distance < Size)
-				distance++;
-
-			int maxDist = Size - 4;
-			bool collided = false;
-			//Allow the projectile to be pushed back by solid tiles
-			for (int i = 0; i < Size; i++)
-			{
-				Vector2 position = player.Center + (player.DirectionTo(Projectile.Center) * (distance - 8));
-				if (WorldGen.SolidOrSlopedTile(Main.tile[(position / 16).ToPoint()]) && distance > maxDist)
+				ParticleHandler.SpawnParticle(new OccultistDeathBoom(hitPos, Main.rand.NextFloat(0.5f, 1.0f), Main.rand.NextFloatDirection()));
+				for (int i = 0; i < 15; i++)
 				{
-					collided = true;
-					distance--;
+					Dust dust = Dust.NewDustPerfect(hitPos, DustID.LavaMoss, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.5f, 3.0f));
+					dust.velocity = (Vector2.UnitX * Main.rand.NextFloat() * 12f).RotatedBy(Projectile.velocity.ToRotation() + (1.57f * swingDirection)).RotatedByRandom(.8f);
+					dust.noGravity = true;
+					dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
 				}
-				else
+				if (Main.netMode != NetmodeID.Server)
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Slash1") with { PitchVariance = .5f, Volume = .5f }, Projectile.Center);
+
+				if (AiState == STATE_HEAVY)
+					Timer -= 2; //Stagger
+			}
+			else
+			{
+				for (int i = 0; i < 15; i++)
 				{
-					if (collided)
-						for (int d = 0; d < 3; d++)
-							Dust.NewDustPerfect(position, ModContent.DustType<NightmareDust>(), Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.5f, 2.0f), 0, default, Main.rand.NextFloat(1.0f, 2.0f));
-					break;
+					Vector2 velocity = (Vector2.UnitX * Main.rand.NextFloatDirection() * 8f).RotatedBy(Projectile.velocity.ToRotation() + (1.57f * swingDirection)).RotatedByRandom(.3f);
+					Dust dust = Dust.NewDustPerfect(hitPos, Main.rand.NextBool() ? DustID.GemRuby : DustID.LavaMoss, velocity, 0, Color.White, Main.rand.NextFloat(0.5f, 1.5f));
+					dust.noGravity = true;
+					dust.shader = GameShaders.Armor.GetSecondaryShader(93, Main.LocalPlayer);
 				}
+				if (Main.rand.NextBool(3))
+				{
+					if (!Main.dedServ)
+						ParticleHandler.SpawnParticle(new SplitterImpact(hitPos, 1f, ((swingDirection == -1) ? MathHelper.Pi : 0f) - (hitPos.DirectionTo(Main.player[Projectile.owner].Center).X / 5)));
+
+					target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 180);
+				}
+
+				Owner.GetModPlayer<HeadsplitterPlayer>().charge = Math.Min(Owner.GetModPlayer<HeadsplitterPlayer>().chargeMax, Owner.GetModPlayer<HeadsplitterPlayer>().charge + (damage / 2));
 			}
 		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Player player = Main.player[Projectile.owner];
+			Texture2D trail = Mod.Assets.Request<Texture2D>("Items/Sets/BloodcourtSet/Headsplitter/Trail").Value;
+			SpriteEffects effects = (swingDirection == 1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-			SpriteEffects effects = ((player.direction * (int)player.gravDir * Projectile.velocity.X) < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-			float rotation = (float)Radians + 3.9f + ((effects == SpriteEffects.FlipHorizontally) ? MathHelper.PiOver2 : 0);
+			float quoteant = (float)((float)Timer / Owner.itemAnimationMax);
+			Color color = Color.Lerp(Color.Magenta, Color.Red, quoteant) with { A = 0 } * Math.Min(1, Timer / 10);
+			Vector2 scale = new Vector2(.27f, (1f - quoteant) * .3f) * Projectile.scale;
 
-			float quoteant = (float)(distance / Size);
+			if (AiState != STATE_NORMAL)
+				lightColor = color;
 
-			Vector2 origin = new Vector2(Size * (float)(1f - quoteant), Size * quoteant);
-			if (effects == SpriteEffects.FlipHorizontally)
-				origin = new Vector2(Size, Size) * quoteant;
+			float rotation = Projectile.velocity.ToRotation() + ((effects == SpriteEffects.FlipHorizontally) ? 3.14f : 0);
+			Main.EntitySpriteDraw(trail, Projectile.Center + (Vector2.UnitX * 10).RotatedBy(Projectile.velocity.ToRotation()) - Main.screenPosition, null, Projectile.GetAlpha(color), rotation, new Vector2(trail.Width / 2, trail.Height), scale, effects, 0);
 
-			Texture2D trail = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/BloodcourtSet/Headsplitter/Trail").Value;
-
-			quoteant = (float)((float)UseCounter / player.itemAnimationMax);
-			Color color = Color.Lerp(Color.Magenta, Color.Red, quoteant) with { A = 0 };
-			Vector2 scale = new Vector2((1f - quoteant) * .5f, .27f) * Projectile.scale;
-			Vector2 trailPos = player.Center + (player.DirectionTo(Projectile.Center) * (distance - 14));
-
-			//Draw the trail
-			Main.EntitySpriteDraw(trail, trailPos - Main.screenPosition, null, color, (float)Radians - 4.71f, new Vector2(trail.Width * ((effects == SpriteEffects.FlipHorizontally) ? 0 : 1), trail.Height / 2), scale, effects, 0);
-			//Draw the projectile
-			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, player.Center - Main.screenPosition, new Rectangle(0, 0, Size, Size), Projectile.GetAlpha(lightColor), rotation, origin, Projectile.scale, effects, 0);
-			//Draw the projectile glowmask
-			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, player.Center - Main.screenPosition, new Rectangle(0, 0, Size, Size), Projectile.GetAlpha(Color.White), rotation, origin, Projectile.scale, effects, 0);
+			rotation += .785f * ((effects == SpriteEffects.FlipHorizontally) ? -1 : 1);
+			Projectile.QuickDraw(null, rotation, effects, Projectile.GetAlpha(lightColor));
+			Projectile.QuickDrawGlowTrail(null, 1f, Color.White, rotation, effects);
 
 			return false;
 		}

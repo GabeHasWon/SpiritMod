@@ -36,7 +36,7 @@ namespace SpiritMod.Mechanics.BoonSystem
 
 		public void ApplyBoon(NPC npc)
 		{
-			int chance = 12;
+			int chance = 8;
 
 			if (Main.netMode == NetmodeID.SinglePlayer) //Check if any player has the boon increase buff
 			{

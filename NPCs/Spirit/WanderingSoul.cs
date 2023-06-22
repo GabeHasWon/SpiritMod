@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using SpiritMod.Items.Sets.SpiritBiomeDrops;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Utilities;
+using Terraria.ModLoader.Utilities;
 
 namespace SpiritMod.NPCs.Spirit
 {
@@ -62,18 +63,17 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) 
 			=> GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Spirit/WanderingSoul_Glow").Value, screenPos);
-		
-		private static int[] SpawnTiles = System.Array.Empty<int>();
+
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            if (!spawnInfo.Player.ZoneSpirit() || spawnInfo.Player.ZoneRockLayerHeight)
-                return 0f;
+			Player player = spawnInfo.Player;
 
-            if (SpawnTiles.Length == 0) {
-				int[] Tiles = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>() };
-				SpawnTiles = Tiles;
+			if (player.ZoneSpirit() && !spawnInfo.PlayerSafe && spawnInfo.SpawnTileY < Main.rockLayer && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && (!(Main.pumpkinMoon || Main.snowMoon || Main.eclipse) || spawnInfo.Player.Center.Y / 16 > Main.worldSurface) && SpawnCondition.GoblinArmy.Chance == 0 && !spawnInfo.Invasion)
+			{
+				int[] spawnTiles = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<Spiritsand>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>() };
+				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 1.59f : 0f;
 			}
-			return SpawnTiles.Contains(spawnInfo.SpawnTileType) && !spawnInfo.PlayerSafe && !spawnInfo.Invasion && NPC.downedMechBossAny ? 1.59f : 0f;
+			return 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

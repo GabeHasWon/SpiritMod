@@ -60,7 +60,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
-				int p = Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center.X, NPC.Center.Y, Main.rand.NextFloat(-1.1f, 1.1f), Main.rand.NextFloat(-1.1f, 1.1f), ModContent.ProjectileType<JellyfishOrbiter>(), NPCUtils.ToActualDamage(15, 1.5f, 2f), 0.0f, Main.myPlayer, 0.0f, (float)NPC.whoAmI);
+				int p = Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center.X, NPC.Center.Y, Main.rand.NextFloat(-1.1f, 1.1f), Main.rand.NextFloat(-1.1f, 1.1f), ModContent.ProjectileType<JellyfishOrbiter>(), NPCUtils.ToActualDamage(15, 1.5f, 2f), 0, 255, ai1: (float)NPC.whoAmI);
 				Main.projectile[p].scale = NPC.scale;
 				Main.projectile[p].timeLeft = Main.rand.Next(55, 75);
 				for (int k = 0; k < 10; k++)
@@ -75,8 +75,8 @@ namespace SpiritMod.NPCs.MoonjellyEvent
         {
             NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) + 1.57f;
             Lighting.AddLight(NPC.Center, 0.075f * 2, 0.231f * 2, 0.255f * 2);
-
         }
+
         public override void FindFrame(int frameHeight)
 		{
 			NPC.frameCounter += 0.15f;
@@ -91,7 +91,8 @@ namespace SpiritMod.NPCs.MoonjellyEvent
         {
 			var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, SpriteEffects.None, 0);
-            return false;
+            
+			return false;
         }
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/MoonjellyEvent/TinyLunazoa_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame, Color.White, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, SpriteEffects.None, 0);

@@ -10,7 +10,6 @@
 		Dash,
 		PlayerGlyph,
 		BossSpawnFromClient,
-		SpawnGladeWraith,
 		SpawnNPCFromClient,
 		StartTide,
 		TideData,

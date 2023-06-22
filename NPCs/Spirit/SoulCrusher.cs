@@ -10,6 +10,7 @@ using System.Linq;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Utilities;
+using SpiritMod.Biomes;
 
 namespace SpiritMod.NPCs.Spirit
 {
@@ -60,24 +61,24 @@ namespace SpiritMod.NPCs.Spirit
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Spirit/SoulCrusher_Glow").Value, screenPos);
-		}
-
-        private static int[] SpawnTiles => new int[] { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>() };
+			=> GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Spirit/SoulCrusher_Glow").Value, screenPos);
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-            if (!player.ZoneSpirit())
-                return 0f;
 
-            return SpawnTiles.Contains(spawnInfo.SpawnTileType) && player.position.Y / 16 >= Main.maxTilesY - 330 && player.ZoneSpirit() && !spawnInfo.PlayerSafe ? 3f : 0f;
+			if (player.ZoneSpirit() && spawnInfo.SpawnTileY > SpiritUndergroundBiome.ThirdLayerHeight && !spawnInfo.PlayerSafe && !spawnInfo.Invasion)
+			{
+				int[] spawnTiles = new int[] { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>() };
+				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 3f : 0f;
+			}
+			return 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 12);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 11);

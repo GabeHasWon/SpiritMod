@@ -17,6 +17,7 @@ namespace SpiritMod.Projectiles.Arrow
 			Projectile.height = 12;
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.friendly = true;
+			Projectile.hostile = false;
 			Projectile.penetrate = -1;
 		}
 
@@ -69,8 +70,9 @@ namespace SpiritMod.Projectiles.Arrow
 								Main.dust[dust].velocity = Projectile.DirectionTo(Main.dust[num].position) * 6f;
 						}
 					}
-					int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center.X, target.Center.Y, 0, 0, ModContent.ProjectileType<GraniteSpike1>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
-					Main.projectile[proj].timeLeft = 2;
+
+					Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<GraniteSpike1>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+					proj.timeLeft = 2;
 				}
 				if (Projectile.localAI[0] >= (float)(60 * num996))
 					flag52 = true;
@@ -104,32 +106,34 @@ namespace SpiritMod.Projectiles.Arrow
 			Point[] array2 = new Point[num31];
 			int num32 = 0;
 
-			for (int n = 0; n < 1000; n++) {
-				if (n != Projectile.whoAmI && Main.projectile[n].active && Main.projectile[n].owner == Main.myPlayer && Main.projectile[n].type == Projectile.type && Main.projectile[n].ai[0] == 1f && Main.projectile[n].ai[1] == target.whoAmI) {
+			for (int n = 0; n < 1000; n++)
+			{
+				if (n != Projectile.whoAmI && Main.projectile[n].active && Main.projectile[n].owner == Main.myPlayer && Main.projectile[n].type == Projectile.type && Main.projectile[n].ai[0] == 1f && Main.projectile[n].ai[1] == target.whoAmI)
+				{
 					array2[num32++] = new Point(n, Main.projectile[n].timeLeft);
 					if (num32 >= array2.Length)
 						break;
 				}
 			}
 
-			if (num32 >= array2.Length) {
+			if (num32 >= array2.Length)
+			{
 				int num33 = 0;
-				for (int num34 = 1; num34 < array2.Length; num34++) {
+				for (int num34 = 1; num34 < array2.Length; num34++)
+				{
 					if (array2[num34].Y < array2[num33].Y)
 						num33 = num34;
 				}
 				Main.projectile[array2[num33].X].Kill();
 			}
-			if (target.life <= 0) {
-				if (Projectile.friendly && !Projectile.hostile) {
-					ProjectileExtras.Explode(Projectile.whoAmI, 30, 30,
-					delegate {
-					});
-
-				}
+			if (target.life <= 0)
+			{
+				if (Projectile.friendly && !Projectile.hostile)
+					ProjectileExtras.Explode(Projectile.whoAmI, 30, 30, delegate { });
 				SoundEngine.PlaySound(SoundID.Item109);
 				{
-					for (int i = 0; i < 20; i++) {
+					for (int i = 0; i < 20; i++)
+					{
 						int num = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric, 0f, -2f, 0, default, 2f);
 						Main.dust[num].noGravity = true;
 						Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
@@ -139,9 +143,10 @@ namespace SpiritMod.Projectiles.Arrow
 							Main.dust[num].velocity = Projectile.DirectionTo(Main.dust[num].position) * 6f;
 					}
 				}
-				int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center.X, target.Center.Y,
-					0, 0, ModContent.ProjectileType<GraniteSpike1>(), Projectile.damage / 3 * 2, Projectile.knockBack, Projectile.owner);
-				Main.projectile[proj].timeLeft = 2;
+
+				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<GraniteSpike1>(), Projectile.damage / 3 * 2, Projectile.knockBack, Projectile.owner);
+				proj.timeLeft = 2;
+				proj.netUpdate = true;
 			}
 		}
 		public override void Kill(int timeLeft)

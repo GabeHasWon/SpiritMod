@@ -113,7 +113,7 @@ namespace SpiritMod.NPCs.AncientApostle
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSkyHeight && !spawnInfo.Player.ZoneAsteroid() ? 0.16f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSkyHeight && !spawnInfo.Player.ZoneAsteroid() && !spawnInfo.PlayerInTown ? 0.16f : 0f;
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

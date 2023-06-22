@@ -57,12 +57,6 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 			});
 		}
 
-		public override bool PreKill()
-        {
-            SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
-            return true;
-        }
-
         public override void AI()
 		{
 			NPC.spriteDirection = NPC.direction;
@@ -347,6 +341,8 @@ namespace SpiritMod.NPCs.DarkfeatherMage
         {
 			if (NPC.life > 0 || Main.netMode == NetmodeID.Server)
 				return;
+
+			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
 
 			for (int i = 0; i < 6; i++)
 			{

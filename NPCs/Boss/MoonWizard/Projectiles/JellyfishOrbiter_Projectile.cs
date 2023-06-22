@@ -46,9 +46,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             Main.dust[num623].velocity = Projectile.velocity;
             Main.dust[num623].noGravity = true;
 			if (Projectile.timeLeft < 55)
-            {
                 Projectile.tileCollide = true;
-            }
+
             Player player = Main.player[Projectile.owner];
             Vector2 center = Projectile.Center;
             float num8 = (float)player.miscCounter / 40f;

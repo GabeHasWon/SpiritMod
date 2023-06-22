@@ -47,9 +47,6 @@ using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
 using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 using SpiritMod.Items.Accessory.ShieldCore;
-using System.Threading.Channels;
-using SpiritMod.NPCs.Boss;
-using SpiritMod.NPCs.Reach;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
 
 namespace SpiritMod
@@ -163,7 +160,7 @@ namespace SpiritMod
 		public int voidStacks = 1;
 		public int camoCounter;
 		public int veilCounter;
-		public int jellynautStacks;
+		public int jellynautStacks; //
 		public bool blazeBurn;
 		public bool phaseShift;
 		private readonly float[] phaseSlice = new float[60];
@@ -985,19 +982,10 @@ namespace SpiritMod
 						target.AddBuff(BuffID.OnFire, 120);
 						break;
 					case 1:
-						target.AddBuff(BuffID.Venom, 120);
-						break;
-					case 2:
-						target.AddBuff(BuffID.CursedInferno, 120);
-						break;
-					case 3:
-						target.AddBuff(BuffID.Frostburn, 120);
-						break;
-					case 4:
 						target.AddBuff(BuffID.Confused, 120);
 						break;
-					case 5:
-						target.AddBuff(BuffID.ShadowFlame, 120);
+					case 2:
+						target.AddBuff(BuffID.Frostburn, 120);
 						break;
 					default:
 						break;
@@ -1406,7 +1394,7 @@ namespace SpiritMod
 
 				if (Player.ownedProjectileCounts[type] < shieldCount)
 				{
-					for (int i = 0; i < 2; i++)
+					for (int i = 0; i < shieldCount; i++)
 					{
 						Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<InterstellarShield>(), 0, 0, Player.whoAmI, i * 360);
 						proj.ai[1] = -(InterstellarShield.cooldownTime * InterstellarShield.rechargeRate);
@@ -1806,8 +1794,6 @@ namespace SpiritMod
 			if (Player.manaFlower)
 				Player.manaFlower = !StarjinxSet;
 		}
-
-		public override void PostUpdateBuffs() => Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeMaxMultiplier);
 
 		public override void PostUpdateEquips()
 		{
@@ -2956,19 +2942,6 @@ namespace SpiritMod
 							proj.timeLeft = Main.rand.Next(10, 30);
 							proj.netUpdate = true;
 						}
-					}
-
-					jellynautStacks = 0;
-
-					for (int i = 0; i < 12; i++)
-					{
-						int num = Dust.NewDust(Player.Center, Player.width, Player.height, DustID.Electric, 0f, -2f, 0, default, 1f);
-						Main.dust[num].noGravity = true;
-						Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-						Main.dust[num].position.Y += Main.rand.Next(-50, 51) * .05f - 1.5f;
-						Main.dust[num].scale *= .25f;
-						if (Main.dust[num].position != Player.Center)
-							Main.dust[num].velocity = Player.DirectionTo(Main.dust[num].position) * 6f;
 					}
 				}
 				

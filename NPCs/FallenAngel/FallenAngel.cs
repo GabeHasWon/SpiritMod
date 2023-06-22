@@ -108,24 +108,19 @@ namespace SpiritMod.NPCs.FallenAngel
 			return false;
 		}
 
-		public override bool PreKill()
-		{
-			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
-			return true;
-		}
-
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/FallenAngel/FallenAngel_Glow").Value, screenPos);
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessory.FallenAngel>(), 5));
-		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessory.FallenAngel>(), 5));
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
+
 				for (int i = 0; i < 3; ++i)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 99);
+			}
 
 			for (int k = 0; k < 2; k++)
 			{

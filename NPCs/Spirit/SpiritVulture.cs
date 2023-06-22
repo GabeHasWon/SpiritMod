@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Biomes;
 using SpiritMod.Items.Material;
 using SpiritMod.Items.Sets.SpiritBiomeDrops;
 using SpiritMod.Projectiles.Hostile;
@@ -51,12 +52,11 @@ namespace SpiritMod.NPCs.Spirit
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-            if (!player.ZoneSpirit())
-                return 0f;
 
-            if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0)) {
-				int[] TileArray2 = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<Spiritsand>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>(), };
-				return TileArray2.Contains(Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType) && NPC.downedMechBossAny && spawnInfo.SpawnTileY > Main.rockLayer && player.position.Y / 16 < (Main.rockLayer + Main.maxTilesY - 330) / 2f && !spawnInfo.PlayerSafe && !spawnInfo.Invasion ? 2f : 0f;
+			if (player.ZoneSpirit() && player.ZoneRockLayerHeight && spawnInfo.SpawnTileY < SpiritUndergroundBiome.ThirdLayerHeight && !spawnInfo.PlayerInTown && !spawnInfo.Invasion)
+			{
+				int[] spawnTiles = { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<Spiritsand>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>() };
+				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 2f : 0f;
 			}
 			return 0f;
 		}

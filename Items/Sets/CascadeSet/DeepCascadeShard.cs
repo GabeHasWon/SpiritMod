@@ -9,6 +9,8 @@ namespace SpiritMod.Items.Sets.CascadeSet
 {
 	public class DeepCascadeShard : ModItem
 	{
+		private int subID = -1; //Controls the in-world sprite for this item
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Deep Cascade Shard");
@@ -21,28 +23,18 @@ namespace SpiritMod.Items.Sets.CascadeSet
 			Item.height = 18;
 			Item.value = 400;
 			Item.rare = ItemRarityID.Blue;
-
 			Item.maxStack = 999;
-		}
-
-		private bool chosenStyle = false;
-		private int _yFrame;
-
-		public override void Update(ref float gravity, ref float maxFallSpeed)
-		{
-			if (!chosenStyle)
-			{
-				_yFrame = Main.rand.Next(0, 3);
-				chosenStyle = true;
-			}
 		}
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
+			if (subID == -1)
+				subID = Main.rand.Next(3);
+
 			Lighting.AddLight(new Vector2(Item.Center.X, Item.Center.Y), 207 * 0.001f, 12 * 0.001f, 12 * 0.001f);
 
-			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_World", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			Rectangle frame = new Rectangle(0, _yFrame * 18, 10, 18);
+			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_World").Value;
+			Rectangle frame = new Rectangle(0, 18 * subID, 10, 16);
 			int num7 = 16;
 			float num8 = (float)(Math.Cos(Main.GlobalTimeWrappedHourly % 2.4 / 2.4 * MathHelper.TwoPi) / 5 + 0.5);
 			var color2 = new Color(252, 57, 3, 100);
@@ -57,10 +49,16 @@ namespace SpiritMod.Items.Sets.CascadeSet
 			return false;
 		}
 
+		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		{
+			subID = -1;
+			return true;
+		}
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Texture2D tex2 = ModContent.Request<Texture2D>(Texture + "_World_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			Rectangle frame = new Rectangle(0, _yFrame * 18, 10, 18);
+			Rectangle frame = new Rectangle(0, 18 * subID, 10, 16);
 
 			spriteBatch.Draw(tex2, Item.Center - Main.screenPosition, frame, Color.White, rotation, new Vector2(Item.width, Item.height) / 2, scale, SpriteEffects.None, 0f);
 		}

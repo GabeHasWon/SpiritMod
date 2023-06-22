@@ -205,8 +205,12 @@ namespace SpiritMod.NPCs.Mechromancer
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
-				for (int i = 1; i < 7; ++i)
+			{
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
+
+				for (int i = 1; i < 7; i++)
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Mech" + i).Type, 1f);
+			}
 		}
 
 		public override void FindFrame(int frameHeight)
@@ -218,7 +222,6 @@ namespace SpiritMod.NPCs.Mechromancer
         public override bool PreKill()
         {
             MyWorld.downedMechromancer = true;
-            SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
             return true;
         }
 

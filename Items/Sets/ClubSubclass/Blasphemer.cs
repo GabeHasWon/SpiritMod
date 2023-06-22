@@ -9,10 +9,10 @@ namespace SpiritMod.Items.Sets.ClubSubclass
     public class Blasphemer : ClubItem
     {
 		internal override int ChargeTime => 66;
-		internal override float Acceleration => 17f;
-		internal override int MinDamage => 62;
-		internal override int MaxDamage => 150;
-		internal override float MinKnockback => 6f;
+		internal override float Acceleration => 16f;
+		internal override int MinDamage => 65;
+		internal override int MaxDamage => 170;
+		internal override float MinKnockback => 8f;
 		internal override float MaxKnockback => 12f;
 
 		public override void SetStaticDefaults()

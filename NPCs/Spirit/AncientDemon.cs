@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.Spirit
 
 			Lighting.AddLight((int)((NPC.position.X + (NPC.width / 2f)) / 16f), (int)((NPC.position.Y + (NPC.height / 2f)) / 16f), 0f, 0.0675f, 0.250f);
 
-			if (Main.rand.NextBool(150)) //Fires desert feathers like a shotgun
+			if (Main.rand.NextBool(150))
 			{
 				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 				direction.Normalize();
@@ -111,14 +111,16 @@ namespace SpiritMod.NPCs.Spirit
 			}
 		}
 
-		private static int[] SpawnTiles => new[] { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>() };
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!player.ZoneSpirit())
-				return 0f;
-			return SpawnTiles.Contains(Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType) && player.position.Y / 16 >= Main.maxTilesY - 330 && player.ZoneSpirit() && !spawnInfo.PlayerSafe ? 2f : 0f;
+
+			if (player.ZoneSpirit() && spawnInfo.SpawnTileY > SpiritUndergroundBiome.ThirdLayerHeight && !spawnInfo.PlayerSafe)
+			{
+				int[] spawnTiles = new[] { ModContent.TileType<SpiritDirt>(), ModContent.TileType<SpiritStone>(), ModContent.TileType<SpiritGrass>(), ModContent.TileType<SpiritIce>() };
+				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 2f : 0f;
+			}
+			return 0f;
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(ModContent.ItemType<SoulShred>(), 3);

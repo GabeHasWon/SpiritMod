@@ -233,6 +233,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 				{
 					CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), CombatText.DamagedHostileCrit, 9999, true);
 					SoundEngine.PlaySound(NPC.DeathSound.Value, NPC.Center);
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);
 					ParticleHandler.SpawnParticle(new OccultistDeathBoom(NPC.Center, 0.8f));
 
 					//omnidirectional particle burst
@@ -251,10 +252,10 @@ namespace SpiritMod.NPCs.Boss.Occultist
 					EventManager.PlayEvent(new ScreenFlash(new Color(255, 99, 161), 0.1f, 0.23f, 0.3f));
 				}
 
-				if (Main.netMode != NetmodeID.Server)
-					Main.NewText(Language.GetTextValue("Announcement.HasBeenDefeated_Single", Lang.GetNPCNameValue(NPC.type)), 175, 75);
-				else
-					ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasBeenDefeated_Single", Lang.GetNPCNameValue(NPC.type)), new Color(175, 75, 0));
+				if (Main.netMode == NetmodeID.SinglePlayer)
+					Main.NewText(Language.GetTextValue("Announcement.HasBeenDefeated_Single", Lang.GetNPCNameValue(NPC.type)), 175, 75, 255);
+				else if (Main.netMode == NetmodeID.Server)
+					ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasBeenDefeated_Single", Lang.GetNPCNameValue(NPC.type)), new Color(175, 75, 255));
 			}
 			else
 			{
