@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Tiles.Block;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,6 +16,12 @@ namespace SpiritMod.Tiles.Ambient.Spirit
 			Main.tileSolid[Type] = false;
 			Main.tileLighted[Type] = true;
 
+			DustType = DustID.UnusedWhiteBluePurple;
+			HitSound = SoundID.Grass;
+
+			Terraria.GameContent.Metadata.TileMaterials.SetForTileId(Type, Terraria.GameContent.Metadata.TileMaterials._materialsByName["Plant"]);
+			TileID.Sets.SwaysInWindBasic[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.newTile.LavaDeath = true;
 			TileObjectData.newTile.WaterDeath = false;
@@ -25,6 +32,8 @@ namespace SpiritMod.Tiles.Ambient.Spirit
 			TileObjectData.newTile.Style = 0;
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.UsesCustomCanPlace = true;
+			TileObjectData.newTile.AnchorValidTiles = new int[] { ModContent.TileType<SpiritGrass>() };
+			TileObjectData.newTile.AnchorAlternateTiles = new int[] { TileID.ClayPot, TileID.PlanterBox };
 
 			for (int i = 0; i < 15; i++)
 			{
@@ -32,12 +41,6 @@ namespace SpiritMod.Tiles.Ambient.Spirit
 				TileObjectData.addSubTile(TileObjectData.newSubTile.Style);
 			}
 			TileObjectData.addTile(Type);
-
-			TileID.Sets.SwaysInWindBasic[Type] = true;
-
-			DustType = DustID.UnusedWhiteBluePurple;
-			HitSound = SoundID.Grass;
-
 			AddMapEntry(new Color(50, 90, 145));
 		}
 

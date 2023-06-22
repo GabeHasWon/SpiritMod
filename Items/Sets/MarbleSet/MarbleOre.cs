@@ -18,6 +18,8 @@ namespace SpiritMod.Items.Sets.MarbleSet
 			Main.tileBlendAll[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
+			Main.tileOreFinderPriority[Type] = 390;
+
 			ItemDrop = ModContent.ItemType<MarbleChunk>();
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Ancient Marble Chunk");
@@ -41,11 +43,6 @@ namespace SpiritMod.Items.Sets.MarbleSet
 			MinPick = NPC.downedBoss2 ? minPick : 10000; //Blockswap precaution
 		}
 
-		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-		{
-			r = .219f / 3;
-			g = .199f / 3;
-			b = .132f / 3;
-		}
+		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) => (r, g, b) = (.073f, .066f, .044f);
 	}
 }

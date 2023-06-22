@@ -53,19 +53,16 @@ namespace SpiritMod.NPCs.Reach
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && (!Main.pumpkinMoon && !Main.snowMoon) && (!Main.eclipse) && (SpawnCondition.GoblinArmy.Chance == 0))
-			{
-				return spawnInfo.Player.ZoneBriar() && player.ZoneOverworldHeight ? 0.35f : 0f;
-			}
-			return 0f;
+
+			return (spawnInfo.Player.ZoneBriar() && player.ZoneOverworldHeight && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && 
+				!(Main.pumpkinMoon || Main.snowMoon || Main.eclipse) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 0.35f : 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int k = 0; k < 20; k++)
-			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
-			}
+
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BlossomHound1").Type, 1f);
@@ -75,10 +72,9 @@ namespace SpiritMod.NPCs.Reach
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BlossomHound5").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BlossomHound6").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BlossomHound7").Type, 1f);
+				
 				for (int k = 0; k < 40; k++)
-				{
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
-				}
 			}
 		}
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

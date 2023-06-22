@@ -1,3 +1,4 @@
+using SpiritMod.Tiles.Block;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,7 +8,6 @@ namespace SpiritMod.Tiles.Ambient
 {
 	public class SpookyFoliage : ModTile
 	{
-
 		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
@@ -32,12 +32,14 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.Style = 0;
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.UsesCustomCanPlace = true;
+			TileObjectData.newTile.AnchorValidTiles = new int[] { ModContent.TileType<HalloweenGrass>() };
+			TileObjectData.newTile.AnchorAlternateTiles = new int[] { TileID.ClayPot, TileID.PlanterBox };
 
-			for (int i = 0; i < 23; i++) {
+			for (int i = 0; i < 23; i++)
+			{
 				TileObjectData.newSubTile.CopyFrom(TileObjectData.newTile);
 				TileObjectData.addSubTile(TileObjectData.newSubTile.Style);
 			}
-
 			TileObjectData.addTile(Type);
 		}
 

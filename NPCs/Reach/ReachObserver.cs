@@ -52,9 +52,9 @@ namespace SpiritMod.NPCs.Reach
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && (SpawnCondition.GoblinArmy.Chance == 0))
-				return spawnInfo.Player.ZoneBriar() ? 2.25f : 0f;
-			return 0f;
+
+			return (spawnInfo.Player.ZoneBriar() && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && 
+				(!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 2.25f : 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

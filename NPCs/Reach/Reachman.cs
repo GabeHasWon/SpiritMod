@@ -63,9 +63,9 @@ namespace SpiritMod.NPCs.Reach
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && !Main.pumpkinMoon && !Main.snowMoon && !Main.eclipse  && (SpawnCondition.GoblinArmy.Chance == 0))
-				return spawnInfo.Player.ZoneBriar() ? 1.7f : 0f;
-			return 0f;
+
+			return (spawnInfo.Player.ZoneBriar() && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && 
+				!(Main.pumpkinMoon || Main.snowMoon || Main.eclipse) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 1.7f : 0f;
 		}
 
 		public override void SendExtraAI(BinaryWriter writer)
@@ -157,7 +157,7 @@ namespace SpiritMod.NPCs.Reach
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		private void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
+		private static void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
 		{
 			float angle = Main.rand.NextFloat(-MathHelper.Pi, MathHelper.Pi);
 			Vector2 vec = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
@@ -198,12 +198,14 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			for (int k = 0; k < 30; k++) {
+			for (int k = 0; k < 30; k++)
+			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GrassBlades, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 2.5f * hitDirection, -2.5f, 0, default, .34f);
 			}
 
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Reach1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Reach2").Type, 1f);
 			}
