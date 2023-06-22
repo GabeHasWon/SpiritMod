@@ -17,6 +17,8 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			Main.tileSolid[Type] = true;
 			Main.tileBlockLight[Type] = false;
 			Main.tileLighted[Type] = false;
+			Main.tileOreFinderPriority[Type] = 390;
+
 			ItemDrop = ModContent.ItemType<GraniteChunk>();
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Enchanted Granite Chunk");
@@ -37,12 +39,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			MinPick = NPC.downedBoss2 ? minPick : 10000; //Blockswap precaution
 		}
 
-		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-		{
-			r = 0.155f / 2;
-			g = 0.215f / 2;
-			b = .4375f / 2;
-		}
+		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) => (r, g, b) = (.0775f, .1075f, .2188f);
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{

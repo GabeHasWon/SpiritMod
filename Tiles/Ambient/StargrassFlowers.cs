@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Systems;
+using SpiritMod.Tiles.Block;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -22,6 +23,8 @@ namespace SpiritMod.Tiles.Ambient
 			DustType = DustID.Grass;
 			HitSound = SoundID.Grass;
 
+			Terraria.GameContent.Metadata.TileMaterials.SetForTileId(Type, Terraria.GameContent.Metadata.TileMaterials._materialsByName["Plant"]);
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.newTile.LavaDeath = true;
 			TileObjectData.newTile.WaterDeath = false;
@@ -32,17 +35,17 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.Style = 0;
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.UsesCustomCanPlace = true;
+			TileObjectData.newTile.AnchorValidTiles = new int[] { ModContent.TileType<Stargrass>() };
+			TileObjectData.newTile.AnchorAlternateTiles = new int[] { TileID.ClayPot, TileID.PlanterBox };
 
-			for (int i = 0; i < 11; i++) {
+			for (int i = 0; i < 11; i++)
+			{
 				TileObjectData.newSubTile.CopyFrom(TileObjectData.newTile);
 				TileObjectData.addSubTile(TileObjectData.newSubTile.Style);
 			}
-
 			TileObjectData.addTile(Type);
 		}
 
-		public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawData) => base.DrawEffects(i, j, spriteBatch, ref drawData);
-		public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch) => base.SpecialDraw(i, j, spriteBatch);
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

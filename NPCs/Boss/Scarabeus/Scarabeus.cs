@@ -315,15 +315,15 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		private void Phase1(Player player)
 		{
-			Sandstorm.Happening = false;
+			if (Main.netMode != NetmodeID.MultiplayerClient && Sandstorm.Happening)
+				Sandstorm.StopSandstorm();
 
 			if (!NPC.noTileCollide && !Collision.CanHit(NPC.Center, 0, 0, player.Center, 0, 0) && AttackType < 4)
 			{ //check if it can't reach the player
 				if (++skipTimer > 180 || WorldGen.SolidTile((int)NPC.Center.X / 16, (int)(NPC.Center.Y / 16))) //wait 3 seconds before skipping to the attack, to mitigate cases where it isnt needed, instant skip if stuck in a tile
 					NextAttack(true);
 			}
-			else
-				skipTimer = 0;
+			else skipTimer = 0;
 
 			switch (AttackType)
 			{
@@ -812,10 +812,16 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		private void Phase2(Player player)
 		{
-			Sandstorm.Happening = true;
-			Sandstorm.TimeLeft = 2;
-			Sandstorm.Severity = 1;
-			Sandstorm.IntendedSeverity = 1;
+			if (Main.netMode != NetmodeID.MultiplayerClient && !Sandstorm.Happening)
+			{
+				Sandstorm.Happening = true;
+				Sandstorm.TimeLeft = 86400;
+				Sandstorm.Severity = 1;
+				Sandstorm.IntendedSeverity = 1;
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendData(MessageID.WorldData);
+			}
 			foreach (Player Player in Main.player.Where(x => x.active && !x.dead)) //probably a cleaner way to do visual only sandstorm??
 				Player.buffImmune[BuffID.WindPushed] = true;
 
@@ -1247,7 +1253,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 		public override bool PreKill()
 		{
 			MyWorld.downedScarabeus = true;
-			Sandstorm.Happening = false;
+			Sandstorm.StopSandstorm();
 
 			if (Main.netMode != NetmodeID.SinglePlayer)
 				NetMessage.SendData(MessageID.WorldData);

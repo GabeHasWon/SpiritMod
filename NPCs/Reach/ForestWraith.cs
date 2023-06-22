@@ -165,16 +165,15 @@ namespace SpiritMod.NPCs.Reach
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
+			if (NPC.AnyNPCs(ModContent.NPCType<ForestWraith>()) || !spawnInfo.Player.ZoneBriar() || !NPC.downedBoss1 || Main.dayTime)
+				return 0f;
+
 			Player player = spawnInfo.Player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust)
+
+			return (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust)
 				&& ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime)
 				&& (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime)
-				&& (SpawnCondition.GoblinArmy.Chance == 0))
-			{
-				if (!NPC.AnyNPCs(ModContent.NPCType<ForestWraith>()))
-					return spawnInfo.Player.ZoneBriar() && NPC.downedBoss1 && !Main.dayTime ? .05f : 0f;
-			}
-			return 0f;
+				&& !spawnInfo.PlayerSafe && !spawnInfo.Invasion && SpawnCondition.GoblinArmy.Chance == 0) ? 0.05f : 0f;
 		}
 
 		public override bool PreKill()

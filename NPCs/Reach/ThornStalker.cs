@@ -56,10 +56,11 @@ namespace SpiritMod.NPCs.Reach
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit7, NPC.Center);
-			for (int k = 0; k < 11; k++) {
+			for (int k = 0; k < 11; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hitDirection, -1f, 0, Color.Green, .61f);
-			}
-            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
+
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
                 SoundEngine.PlaySound(SoundID.Zombie7, NPC.Center);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ThornStalker1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ThornStalker2").Type, 1f);
@@ -73,19 +74,21 @@ namespace SpiritMod.NPCs.Reach
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0.024f, 0.088f, 0.026f);
 			NPC.spriteDirection = NPC.direction;
 			Player target = Main.player[NPC.target];
-			shootTimer++;
-			if (shootTimer % 200 == 150) {
+
+			if (++shootTimer % 200 == 150)
 				attack = true;
-			}
-			if (attack) {
+			if (attack)
+			{
 				NPC.velocity.Y = 6;
 				NPC.velocity.X = .008f * NPC.direction;
-				//shootTimer++;
-				if (frame == 11 && timer == 0) {
+
+				if (frame == 11 && timer == 0)
+				{
 					SoundEngine.PlaySound(SoundID.Item64, NPC.Center);
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						for (int i = 0; i < 2; i++) {
+						for (int i = 0; i < 2; i++)
+						{
 							Vector2 knifePos = new Vector2(NPC.Center.X + Main.rand.Next(-50, 50), NPC.Center.Y - Main.rand.Next(60));
 							Vector2 direction = Main.player[NPC.target].Center - knifePos;
 							direction.Normalize();
@@ -98,15 +101,13 @@ namespace SpiritMod.NPCs.Reach
 					timer++;
 				}
 
-				if (target.position.X > NPC.position.X) {
+				if (target.position.X > NPC.position.X)
 					NPC.direction = 1;
-				}
-				else {
+				else
 					NPC.direction = -1;
-				}
 			}
-			else {
-				//shootTimer = 0;
+			else
+			{
 				NPC.aiStyle = 3;
 				AIType = NPCID.WalkingAntlion;
 			}
@@ -150,19 +151,19 @@ namespace SpiritMod.NPCs.Reach
 		}
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height * 0.5f));
-			for (int k = 0; k < NPC.oldPos.Length; k++) {
-				var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);
+			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+			for (int k = 0; k < NPC.oldPos.Length; k++)
+			{
 				Vector2 drawPos = NPC.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, NPC.gfxOffY);
 				Color color = NPC.GetAlpha(drawColor) * (float)(((float)(NPC.oldPos.Length - k) / (float)NPC.oldPos.Length) / 2);
 				spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);
 			}
 			return true;
 		}
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Reach/ThornStalker_Glow").Value, screenPos);
-		}
+
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Reach/ThornStalker_Glow").Value, screenPos);
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
@@ -177,10 +178,9 @@ namespace SpiritMod.NPCs.Reach
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			Player player = spawnInfo.Player;
-			if (!(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon)) && (!Main.eclipse) && (SpawnCondition.GoblinArmy.Chance == 0)) {
-				return spawnInfo.Player.ZoneBriar() ? 0.36f : 0f;
-			}
-			return 0f;
+
+			return (spawnInfo.Player.ZoneBriar() && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && 
+				!(Main.pumpkinMoon || Main.snowMoon || Main.eclipse) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 0.36f : 0f;
 		}
 	}
 }
