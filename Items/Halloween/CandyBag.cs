@@ -8,6 +8,7 @@ using Terraria.ModLoader.IO;
 
 namespace SpiritMod.Items.Halloween
 {
+	[Sacrifice(1)]
 	class CandyBag : ModItem
 	{
 		public const ushort MaxCandy = 99;

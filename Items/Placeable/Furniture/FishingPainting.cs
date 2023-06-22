@@ -1,8 +1,10 @@
 using SpiritMod.Tiles.Furniture;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class FishingPainting : ModItem
 	{
 		public override void SetStaticDefaults()

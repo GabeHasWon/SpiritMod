@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable
 {
+	[Sacrifice(1)]
 	public class SuperSunFlowerItem : ModItem
 	{
 		public override void SetStaticDefaults()

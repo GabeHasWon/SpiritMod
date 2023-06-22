@@ -8,6 +8,7 @@ using Terraria.DataStructures;
 
 namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 {
+	[Sacrifice(1)]
 	public class Driftwood1Item : FloatingItem
 	{
 		public override float SpawnWeight => 0.9f;
@@ -74,6 +75,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 	}
 
+	[Sacrifice(1)]
 	public class Driftwood2Item : FloatingItem
 	{
 		public override float Weight => base.Weight * 0.9f;
@@ -139,6 +141,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 	}
 
+	[Sacrifice(1)]
 	public class Driftwood3Item : FloatingItem
 	{
 		public override float Weight => base.Weight * 0.9f;

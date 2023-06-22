@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(1)]
 	public class ScarabIdol : ModItem
 	{
 		public override void SetStaticDefaults()

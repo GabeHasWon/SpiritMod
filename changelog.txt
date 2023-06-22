@@ -1,4 +1,2 @@
-﻿- Made all Main.player[Main.myPlayer] references use Main.LocalPlayer
-- Made Sepulchre generation show progress as it runs
-- Fixed most sound during worldgen
-- Fixed StackOverflow caused by some bad Sepulchre worldgen when a Spirit world is loaded without Spirit
+﻿- Made MJW Trophy, Bottomless Ale, Scarab Idol, the rest of the paintings, Candy Bag, Pureglow, Seafoam Hairdye, and Driftwood pieces need only 1 research
+- Made Glade Wreath need only 3 researches

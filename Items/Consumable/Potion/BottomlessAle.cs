@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
+	[Sacrifice(1)]
 	public class BottomlessAle : ModItem
 	{
 		public override void SetStaticDefaults()

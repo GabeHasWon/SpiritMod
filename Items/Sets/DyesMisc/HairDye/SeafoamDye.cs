@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.DyesMisc.HairDye
 {
+	[Sacrifice(1)]
 	public class SeafoamDye : ModItem
 	{
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Seafoam Hair Dye");
