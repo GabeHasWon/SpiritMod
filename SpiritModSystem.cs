@@ -171,12 +171,6 @@ namespace SpiritMod
 				scale *= .96f;
 		}
 
-		/// <summary>Used to reset world bools.</summary>
-		public override void PreSaveAndQuit()
-		{
-
-		}
-
 		public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
 		{
 			if (ModContent.GetInstance<Biomes.BiomeTileCounts>().spiritCount > 0)

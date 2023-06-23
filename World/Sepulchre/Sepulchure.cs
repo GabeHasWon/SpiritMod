@@ -482,7 +482,7 @@ namespace SpiritMod.World.Sepulchre
 				WorldGen.KillTile(i, j, false, false, true);
 		}
 
-		private void ClearTile(int i, int j)
+		private static void ClearTile(int i, int j)
 		{
 			WorldGen.KillTile(i, j, false, false, true);
 			WorldGen.KillWall(i, j);
