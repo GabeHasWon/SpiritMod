@@ -51,6 +51,7 @@ using SpiritMod.Items.Glyphs;
 using ReLogic.Content;
 using SpiritMod.Items.Books.UI.MaterialUI;
 using SpiritMod.Mechanics.Fathomless_Chest;
+using SpiritMod.NPCs.Town.Oracle;
 
 namespace SpiritMod
 {
@@ -944,6 +945,34 @@ namespace SpiritMod
 				fargos.Call("AddSummon", 6.5f, "SpiritMod", "CursedCloth", () => MyWorld.downedInfernon, 100 * 500);
 				fargos.Call("AddSummon", 7.3f, "SpiritMod", "DuskCrown", () => MyWorld.downedDusking, 100 * 500);
 				fargos.Call("AddSummon", 12.4f, "SpiritMod", "StoneSkin", () => MyWorld.downedAtlas, 100 * 800);
+			}
+
+			if (ModLoader.TryGetMod("DialogueTweak", out Mod dialogue))
+			{
+				dialogue.Call("AddButton", ModContent.NPCType<Oracle>(), (Func<string>)(() => "Bless"), "Head",
+					(Action)(() =>
+					{
+						if (Main.mouseLeft)
+							Oracle.Bless();
+					}));
+				
+				// Since NPC types that may have quests are not certain, we add the button for all NPCs and check if they have a quest in the availability parameter
+				for (int i = 0; i < NPCLoader.NPCCount; i++)
+				{
+					dialogue.Call("AddButton", i, (Func<string>)(() => "Quest"),
+						"DialogueTweak/Interfaces/Assets/Icon_Help", // Directly referencing this mod's texture.
+						(Action)(() =>
+						{
+							if (Main.mouseLeft)
+								SpiritDetours.UnlockQuestFromNPC(Main.npc[Main.LocalPlayer.talkNPC]);
+						}),
+						(Func<bool>)(() =>
+						{
+							NPC talkNPC = Main.npc[Main.LocalPlayer.talkNPC];
+							var queue = ModContent.GetInstance<QuestWorld>().NPCQuestQueue;
+							return QuestManager.QuestBookUnlocked && queue.ContainsKey(talkNPC.type) && queue[talkNPC.type].Count > 0;
+						}));
+				}
 			}
 		}
 

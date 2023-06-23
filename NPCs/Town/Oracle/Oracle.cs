@@ -545,28 +545,7 @@ namespace SpiritMod.NPCs.Town.Oracle
 
 				if (Main.mouseLeft && Main.mouseLeftRelease)
 				{
-					var options = new List<string>
-					{
-						"You wish for a challenge? I may stop you not, as it benefits us both. I do hope you're prepared!",
-						"I shall consult the gods about their boons - these monsters will become relentless, I hope you are aware.",
-						"You want me to call them what?! Such foul battle language, yet I will deliver the message. The Gods won't be happy about this!",
-						"The boons cause slain foes to drop more tokens, yes, but do remember that the foes become stronger, too!",
-						"Do come back alive! I would enjoy hearing tales of your victories. Bring many tokens as well!"
-					};
-					for (int i = 0; i < 30; i++)
-					{
-						int num = Dust.NewDust(new Vector2(Main.LocalPlayer.Center.X + Main.rand.Next(-100, 100), Main.LocalPlayer.Center.Y + Main.rand.Next(-100, 100)), Main.LocalPlayer.width, Main.LocalPlayer.height, ModContent.DustType<Dusts.BlessingDust>(), 0f, -2f, 0, default, 2f);
-						Main.dust[num].noGravity = true;
-						Main.dust[num].scale = Main.rand.Next(70, 105) * 0.01f;
-						Main.dust[num].fadeIn = 1;
-					}
-					int glyphnum = Main.rand.Next(10);
-					DustHelper.DrawDustImage(new Vector2(Main.LocalPlayer.Center.X, Main.LocalPlayer.Center.Y - 25), ModContent.DustType<Dusts.MarbleDust>(), 0.05f, "SpiritMod/Effects/Glyphs/Glyph" + glyphnum, 1f);
-					Main.npcChatText = Main.rand.Next(options);
-					SoundEngine.PlaySound(SoundID.Item29 with { PitchVariance = 0.4f, Volume = 0.6f }, Main.LocalPlayer.Center);
-					SoundEngine.PlaySound(SoundID.NPCDeath6 with { PitchVariance = 0.4f, Volume = 0.2f }, Main.LocalPlayer.Center);
-
-					Main.LocalPlayer.AddBuff(ModContent.BuffType<OracleBoonBuff>(), 3600 * 5);
+					Bless();
 				}
 			}
 			else
@@ -578,6 +557,32 @@ namespace SpiritMod.NPCs.Town.Oracle
 			}
 
 			ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, font, text, position + new Vector2(16f, 14f), baseColor, 0f, stringSize * 0.5f, scale);
+		}
+
+		public static void Bless()
+		{
+			var options = new List<string>
+			{
+				"You wish for a challenge? I may stop you not, as it benefits us both. I do hope you're prepared!",
+				"I shall consult the gods about their boons - these monsters will become relentless, I hope you are aware.",
+				"You want me to call them what?! Such foul battle language, yet I will deliver the message. The Gods won't be happy about this!",
+				"The boons cause slain foes to drop more tokens, yes, but do remember that the foes become stronger, too!",
+				"Do come back alive! I would enjoy hearing tales of your victories. Bring many tokens as well!"
+			};
+			for (int i = 0; i < 30; i++)
+			{
+				int num = Dust.NewDust(new Vector2(Main.LocalPlayer.Center.X + Main.rand.Next(-100, 100), Main.LocalPlayer.Center.Y + Main.rand.Next(-100, 100)), Main.LocalPlayer.width, Main.LocalPlayer.height, ModContent.DustType<Dusts.BlessingDust>(), 0f, -2f, 0, default, 2f);
+				Main.dust[num].noGravity = true;
+				Main.dust[num].scale = Main.rand.Next(70, 105) * 0.01f;
+				Main.dust[num].fadeIn = 1;
+			}
+			int glyphnum = Main.rand.Next(10);
+			DustHelper.DrawDustImage(new Vector2(Main.LocalPlayer.Center.X, Main.LocalPlayer.Center.Y - 25), ModContent.DustType<Dusts.MarbleDust>(), 0.05f, "SpiritMod/Effects/Glyphs/Glyph" + glyphnum, 1f);
+			Main.npcChatText = Main.rand.Next(options);
+			SoundEngine.PlaySound(SoundID.Item29 with { PitchVariance = 0.4f, Volume = 0.6f }, Main.LocalPlayer.Center);
+			SoundEngine.PlaySound(SoundID.NPCDeath6 with { PitchVariance = 0.4f, Volume = 0.2f }, Main.LocalPlayer.Center);
+
+			Main.LocalPlayer.AddBuff(ModContent.BuffType<OracleBoonBuff>(), 3600 * 5);
 		}
 	}
 }
