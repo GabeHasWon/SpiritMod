@@ -949,7 +949,8 @@ namespace SpiritMod
 
 			if (ModLoader.TryGetMod("DialogueTweak", out Mod dialogue))
 			{
-				dialogue.Call("AddButton", ModContent.NPCType<Oracle>(), (Func<string>)(() => "Bless"), "Head",
+				dialogue.Call("AddButton", ModContent.NPCType<Oracle>(), (Func<string>)(() => "Bless"),
+					"SpiritMod/NPCs/Town/Oracle/OracleAuraLetter",
 					(Action)(() =>
 					{
 						if (Main.mouseLeft)
