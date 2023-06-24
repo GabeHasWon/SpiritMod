@@ -5,7 +5,6 @@ using System;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -48,13 +47,13 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 
 		public bool isHovering;
 
-		public override void OnSpawn(IEntitySource source) => PartnerIndex = -1;
-
 		public override void AI()
 		{
 			if (!Deployed)
 			{
-				if (WorldGen.SolidOrSlopedTile(Framing.GetTileSafely(Projectile.Center)))
+				PartnerIndex = -1;
+
+				if (WorldGen.SolidOrSlopedTile(Framing.GetTileSafely(Projectile.Center))) //Deploy; this should run once
 				{
 					if (TryPair())
 					{
@@ -65,6 +64,8 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 					Projectile.alpha = 0;
 					Projectile.extraUpdates = 0;
 					Projectile.velocity = Vector2.Zero;
+
+					Projectile.netUpdate = true;
 
 					if (!Main.dedServ)
 						ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center, Right ? Color.Orange : Color.Cyan, 50, 12));

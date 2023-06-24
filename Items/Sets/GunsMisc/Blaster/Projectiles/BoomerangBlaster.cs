@@ -28,6 +28,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 		private Player Player => Main.player[Projectile.owner];
 
 		public override string Texture => "SpiritMod/Items/Sets/GunsMisc/Blaster/Blaster";
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Boomerang Blaster");
@@ -48,7 +49,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			AIType = -1;
 		}
 
-		public override bool PreAI()
+		public override void AI()
 		{
 			if (Player.itemAnimation > 2)
 			{
@@ -61,18 +62,14 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				Projectile.rotation = Player.AngleTo(Projectile.Center);
 
 				Projectile.direction = Projectile.spriteDirection = (Projectile.velocity.X > 0) ? 1 : -1;
-				return false;
+				return;
 			}
 			else
 			{
 				Player.itemTime = 2;
 				Player.itemAnimation = 2;
-				return true;
 			}
-		}
 
-		public override void AI()
-		{
 			if (++Counter > 8)
 			{
 				if (Counter > counterMax * 1.5f)
@@ -153,5 +150,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(GetColor(Subtype)), Projectile.rotation, frame.Size() / 2, Projectile.scale, effects, 0);
 			return false;
 		}
+
+		public override bool DoAudiovisuals => false;
 	}
 }

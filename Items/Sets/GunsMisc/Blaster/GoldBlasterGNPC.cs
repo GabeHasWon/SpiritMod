@@ -73,8 +73,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					dust.noGravity = true;
 				}
 			}
-
-			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Shotgun2") with { Volume = 0.7f, PitchVariance = 0.3f }, npc.Center);
+			if (Main.netMode != NetmodeID.Server)
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Shotgun2") with { Volume = 0.7f, PitchVariance = 0.3f }, npc.Center);
 
 			success = true;
 			npc.StrikeNPC(numMarks * baseDamage, 0, 1);
@@ -100,7 +100,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					dust.noGravity = true;
 				}
 			}
-			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Ricochet") with { PitchVariance = 0.5f }, npc.Center);
+			if (Main.netMode != NetmodeID.Server)
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Ricochet") with { PitchVariance = 0.5f }, npc.Center);
 
 			numMarks = 0;
 		}

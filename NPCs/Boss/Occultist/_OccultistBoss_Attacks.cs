@@ -178,6 +178,9 @@ namespace SpiritMod.NPCs.Boss.Occultist
 
 		public void Teleport(Player player)
 		{
+			if (Main.netMode == NetmodeID.MultiplayerClient)
+				return;
+
 			Point desiredPos;
 			Point FindRandomPos() => (player.Center + new Vector2((Main.rand.NextBool() ? -1 : 1) * Main.rand.NextFloat(200, 300), Main.rand.NextFloat(-100, 0))).ToTileCoordinates();
 			desiredPos = FindRandomPos();

@@ -51,7 +51,10 @@ namespace SpiritMod.Items.Weapon.Summon
 			if (player.altFunctionUse == 2)
 			{
 				foreach (Projectile proj in Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == Hopper))
+				{
 					proj.Kill();
+					proj.netUpdate = true;
+				}
 
 				return false;
 			}
@@ -82,6 +85,8 @@ namespace SpiritMod.Items.Weapon.Summon
 						proj.Kill();
 					else
 						proj.ai[0]--; //Readjust all entries
+
+					proj.netUpdate = true;
 				}
 			}
 

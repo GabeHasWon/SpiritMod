@@ -101,8 +101,11 @@ namespace SpiritMod.Projectiles.Summon.LaserGate
 			if (!Paired)
 				return;
 
-			(Main.projectile[pairWhoAmI].ModProjectile as Hopper).pairWhoAmI = -1;
-			pairWhoAmI = -1;
+			if (Main.projectile[pairWhoAmI].ModProjectile is Hopper hopper)
+			{
+				hopper.pairWhoAmI = -1;
+				pairWhoAmI = -1;
+			}
 		}
 
 		public override void Kill(int timeLeft) => ClearPairs();

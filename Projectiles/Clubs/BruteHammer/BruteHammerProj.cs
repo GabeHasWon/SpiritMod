@@ -28,6 +28,8 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 
 		public override float TrueRotation => (float)radians + ((Effects == SpriteEffects.FlipHorizontally) ? MathHelper.PiOver2 + 3.6f : 4.2f);
 
+		public override bool? CanDamage() => null;
+
 		public override void Smash(Vector2 position)
 		{
 			for (int i = 0; i < 100; i++)
@@ -60,8 +62,6 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 
 			if (player.channel && !released)
 			{
-				Projectile.friendly = true;
-
 				float rate = 24f;
 				spinTimer += Projectile.ai[0] / ChargeTime * rate * player.direction;
 

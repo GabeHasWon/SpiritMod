@@ -116,7 +116,7 @@ namespace SpiritMod.Projectiles.Clubs
 				float flickerTime2 = ++_flickerTime / 20f;
 				float alpha = Math.Max(0, 1.5f - ((flickerTime2 * flickerTime2 / 2) + (2f * flickerTime2)));
 
-				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 1, 0, 0), Projectile.GetAlpha(Color.White * alpha), Projectile.rotation, Origin, Projectile.scale, Effects, 1);
+				Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Main.player[Projectile.owner].Center - Main.screenPosition, texture.Frame(1, Main.projFrames[Type], 0, 1, 0, 0), Projectile.GetAlpha(Color.White * alpha), Projectile.rotation, Origin, Projectile.scale, Effects, 0);
 			}
 			return false;
 		}
