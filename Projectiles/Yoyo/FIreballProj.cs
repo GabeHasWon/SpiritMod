@@ -18,8 +18,8 @@ namespace SpiritMod.Projectiles.Yoyo
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Valor);
-			Projectile.damage = 21;
 			Projectile.extraUpdates = 1;
+			Projectile.DamageType = DamageClass.Melee;
 			AIType = ProjectileID.Valor;
 		}
 
@@ -34,8 +34,8 @@ namespace SpiritMod.Projectiles.Yoyo
 				Main.projectile[proj].friendly = true;
 				Main.projectile[proj].hostile = false;
 				Main.projectile[proj].velocity *= 7f;
+				Main.projectile[proj].DamageType = DamageClass.Melee;
 			}
 		}
-
 	}
 }

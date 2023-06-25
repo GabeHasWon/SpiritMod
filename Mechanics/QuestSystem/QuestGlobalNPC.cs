@@ -25,7 +25,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 		public override void OnKill(NPC npc)
 		{
-			if (npc.type == NPCID.Zombie || npc.type == NPCID.BaldZombie || npc.type == NPCID.SlimedZombie || npc.type == NPCID.SwampZombie || npc.type == NPCID.TwiggyZombie || npc.type == NPCID.ZombieRaincoat || npc.type == NPCID.PincushionZombie || npc.type == NPCID.ZombieEskimo)
+			if (npc.type == NPCID.Zombie || npc.type == NPCID.BaldZombie || npc.type == NPCID.SlimedZombie || npc.type == NPCID.SwampZombie || npc.type == NPCID.TwiggyZombie || 
+				npc.type == NPCID.ZombieRaincoat || npc.type == NPCID.PincushionZombie || npc.type == NPCID.ZombieEskimo)
 			{
 				if (!QuestManager.GetQuest<ZombieOriginQuest>().IsUnlocked && QuestManager.GetQuest<FirstAdventure>().IsCompleted && Main.rand.NextBool(40))
 				{

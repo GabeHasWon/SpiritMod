@@ -64,11 +64,11 @@ namespace SpiritMod.NPCs.GraniTech
 
 		public override void SetDefaults()
 		{
-			NPC.width = 44; //Stats placeholder -->
+			NPC.width = 44;
 			NPC.height = 46;
 			NPC.damage = 0;
 			NPC.defense = 24;
-			NPC.lifeMax = 800; // <--
+			NPC.lifeMax = 800;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.value = 800;

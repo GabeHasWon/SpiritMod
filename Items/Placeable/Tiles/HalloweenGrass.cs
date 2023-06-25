@@ -5,10 +5,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class HalloweenGrass : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Spooky Grass");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Spooky Grass");
 
 		public override void SetDefaults()
 		{

@@ -95,9 +95,10 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 				Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, drawPos, drawFrame, Projectile.GetAlpha(Color.White) * alphaMod, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
 
 				float sineAdd = (float)Math.Sin(Main.timeForVisualEffects / 80) + 2;
+				Color col = new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0);
 
 				Texture2D ripple = Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value;
-                Main.EntitySpriteDraw(ripple, Projectile.Center - (Vector2.UnitY * 10) - Main.screenPosition, null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), Projectile.rotation, ripple.Size() / 2, Projectile.scale * .7f, SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(ripple, Projectile.Center - (Vector2.UnitY * 10) - Main.screenPosition, null, col, Projectile.rotation, ripple.Size() / 2, Projectile.scale * .7f, SpriteEffects.None, 0);
 			}
 
 			Lighting.AddLight(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);

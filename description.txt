@@ -32,7 +32,9 @@ Organizing help on in the comment section is near impossible.
 ---------------
 ----- FAQ -----
 Q: I'm getting a crash during world gen. How do I fix it?
-A: If you're using Remnants, disable it. Those mods are not compatible.
+A: If you're using Remnants or Builder's Essentials, disable them. Both mods stop Spirit from generating.
+If you're trying to use Polarities, there are some issues when selecting a world. 
+This should not affect anything, and worlds can be made as normal. Gameplay should also be unaffected.
 
 Q: How do I get the quest book?
 A: Find the Adventurer in the underground Briar, and get the quest book from him.

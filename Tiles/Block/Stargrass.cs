@@ -29,6 +29,12 @@ namespace SpiritMod.Tiles.Block
 			ItemDrop = ItemID.DirtBlock;
 		}
 
+		public override bool CanExplode(int i, int j)
+		{
+			WorldGen.KillTile(i, j, false, false, true); //Makes the tile completely go away instead of reverting to dirt
+			return true;
+		}
+
 		public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
 		{
 			if (!TileObject.CanPlace(x, y, type, style, direction, out TileObject toBePlaced, false))

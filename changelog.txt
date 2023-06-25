@@ -1,46 +1,6 @@
-﻿- Fixed G-TEK Turret always creating gores when struck
-- Fixed Blaster and Heartstrike hitscan projectile damage not updating on the DPS Meter
-- Greatly reduced Furnace Maw, Wrathful Soul, and Gluttonous Devourer spawn rates
-- Added a music box for the Underground Briar
-- Restricted Interstellar Shield Core projectile maximum scale
-- Tim's Scroll can no longer inflict hardmode debuffs
-- Slightly nerfed wooden club (min damage (12 > 10) and max damage (40 > 35)
-- Rearranged all the stats of the late pre-hardmode clubs slightly
-- Increased default boon rate
-- Prevented Ancient Apostle, Hookbat, Valkyrie, and the majority of Spirit biome enemies from spawning while the player is either in front of player-placed walls or in a town
-- Updated spawn conditions for several Spirit biome enemies
-- Fixed Spirit Rune only detonating to the right
-- Fixed Eleutherios providing a passive 100% increase in damage
-- Fixed Jellynaut's Bubble projectiles not firing at the wearer's cursor in multiplayer
-- Fixed Jellynaut's Bubble projectiles dealing damage to allied players in multiplayer
-- Jellynaut's Bubble projectiles now scale off the wearer's weapon damage
-- Jellynaut's Bubble projectiles now linger for a shorter time after the associated set bonus is no longer satisfied
-- Prevented Stymphalian Bat pairs from spawning inside tiles
-- Sulfur Deposits and G-TEK Components now pick a random variant every time they're dropped in the world
-- Fixed miniboss death jingles not playing in multiplayer
-- Fixed Occultist displaying two death messages in multiplayer
-- Iridescent Scales and Deep Cascade Shards now pick a random variant every time they're dropped in the world
-- Adjusted Iridescent Scale sprite dimensions
-- Reduced Spore Wheezer and Mycelial Botanist spawn rates
-- Reduced Glow Toad tongue damage curve for higher difficulties
-- Fixed Tiny Lunazoa creating a useless projectile on use
-- Gave Ancient Marble Chunk a sell value
-- Updated Headsplitter's swing visuals and reworked its alternate function
-- Tweaked Enchanted Leaf visuals
-- Allowed several tiles to be affected by the Gravedigger's Shovel
-- Spirit Sand now suffocates players and can be swam through by Sandsharks
-- Tweaked Bone Altar dust composition when struck
-- Made all Main.player[Main.myPlayer] references use Main.LocalPlayer
-- Made Sepulchre generation show progress as it runs
-- Fixed most sound during worldgen
-- Fixed StackOverflow caused by some bad Sepulchre worldgen when a Spirit world is loaded without Spirit
-- Made MJW Trophy, Bottomless Ale, Scarab Idol, the rest of the paintings, Candy Bag, Pureglow, Seafoam Hairdye, and Driftwood pieces need only 1 research
-- Made Glade Wreath need only 3 researches
-- Fixed several tall grasses persisting after their associated block has been removed
-- Gave Ancient Marble Chunk and Enchanted Granite Chunk tiles a metal detector value
-- Prevented Several Briar enemies from being able to spawn during events or in towns
-- Reduced the amount of unecessary packets being sent in multiplayer while Scarabeus is in second phase
-- Slot Machine now uses a glowmask
-- Corrosive Brick is now craftable in quantities of 25 using 1 Vial of Venom and 5 Stone Blocks at a Heavy Workbench
-- Removed Corrosive Acid
-- Vulture Matriarch now appears on the lifeform analyzer
+﻿- Made Crate Mimics not spawn in lava
+- Made Fireball projectiles be melee damage
+- Made all grasses die properly on explosion
+- Added temporary, hacky Polarities compatibility
+- Updated FaQ
+- Nerfed Glow Toad tongue damage (100 -> 80)

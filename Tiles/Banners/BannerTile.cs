@@ -131,7 +131,7 @@ namespace SpiritMod.Tiles.Banners
 			(nameof(SpiritMummyBanner), "SpiritMummy"),
 			(nameof(FurnaceMawBanner), "ChainedSinner"),
 			(nameof(MangroveDefenderBanner), "Mangrove_Defender"),
-			(nameof(MadHatterBanner), "MadHatter")
+			(nameof(MadHatterBanner), "MadHatter"),
 		};
 
 		public override void SetStaticDefaults()

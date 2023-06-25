@@ -714,8 +714,6 @@ namespace SpiritMod
 					attempt.playerFishingConditions.Bait.stack++;
 			}
 
-			MyPlayer modPlayer = Player.GetModPlayer<MyPlayer>();
-
 			if (config.EnemyFishing && (attempt.common || attempt.uncommon))
 			{
 				if (Main.bloodMoon && Main.rand.NextBool(20))
@@ -725,7 +723,7 @@ namespace SpiritMod
 					return;
 				}
 
-				if (!mimicRepellent && attempt.crate)
+				if (!mimicRepellent && attempt.crate && !attempt.inLava)
 				{
 					if (Main.rand.NextBool(20))
 					{

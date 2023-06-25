@@ -96,7 +96,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			if (tongueOut)
 			{
 				if (tongueProj == -1)
-					tongueProj = Projectile.NewProjectile(NPC.GetSource_FromAI(), TongueOffset, dir * 30, ModContent.ProjectileType<GlowToadTongue>(), NPCUtils.ToActualDamage(100, 1.5f, 2.5f), 0, player.whoAmI, NPC.whoAmI);
+					tongueProj = Projectile.NewProjectile(NPC.GetSource_FromAI(), TongueOffset, dir * 30, ModContent.ProjectileType<GlowToadTongue>(), NPCUtils.ToActualDamage(80, 1.5f, 2.5f), 0, player.whoAmI, NPC.whoAmI);
 				else if (!Main.projectile[tongueProj].active)
 				{
 					tongueProj = -1;
