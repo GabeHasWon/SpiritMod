@@ -136,7 +136,7 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 		}
 
-		public override bool? CanDamage() => (_lingerTimer == 0) && released;
+		public override bool? CanDamage() => ((_lingerTimer == 0) && released) ? null : false;
 
 		public sealed override bool PreAI()
 		{
