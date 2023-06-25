@@ -27,7 +27,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 
 		public override void SetDefaults()
 		{
-			Projectile.width = Projectile.height = 12;
+			Projectile.Size = new Vector2(12);
 			Projectile.DamageType = DamageClass.Melee;
 			Projectile.friendly = true;
 			Projectile.penetrate = 2;
@@ -52,6 +52,9 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 				if (player.channel)
 				{
 					Projectile.timeLeft++;
+
+					if (Counter < 1f && (Counter + ChargeRate) >= 1f)
+						SoundEngine.PlaySound(SoundID.MaxMana, Projectile.Center);
 					Counter = Math.Min(1f, Counter + ChargeRate);
 
 					if (player == Main.LocalPlayer)
@@ -81,11 +84,13 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 					SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
 
 					float magnitude = Math.Max(3f, quoteant * 10f);
-					Projectile.velocity *= magnitude;
+
+					Projectile.Center = player.Center + (Projectile.velocity *= magnitude);
 
 					Projectile.extraUpdates = 1;
 					Projectile.damage = (int)MathHelper.Lerp(Projectile.damage, Projectile.damage * maxDamageMult, quoteant);
 					Projectile.tileCollide = true;
+					Projectile.ignoreWater = false;
 
 					Projectile.netUpdate = true;
 				}
@@ -102,7 +107,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 					if (!npc.active)
 						Projectile.active = false;
 					else
-						Projectile.position = Projectile.position + npc.velocity - Projectile.velocity;
+						Projectile.position = Projectile.position + (npc.velocity / (Projectile.extraUpdates + 1));
 
 					if (Projectile.timeLeft % 30 == 0)
 						npc.HitEffect(Projectile.direction, 1.0);
@@ -165,16 +170,23 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 			{
 				Projectile.timeLeft = lingerTime;
 				Projectile.penetrate++;
+				Projectile.tileCollide = false;
+				Projectile.ignoreWater = true;
 				Projectile.position += Projectile.velocity;
+
+				if (Main.netMode != NetmodeID.Server)
+				{
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Stab") with { Volume = .25f, Pitch = -.15f }, Projectile.Center);
+					SoundEngine.PlaySound(SoundID.NPCHit18, Projectile.Center);
+				}
 
 				StruckNPCIndex = target.whoAmI;
 			}
 
-			if (crit)
-				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Stab") with { Volume = .7f }, Projectile.Center);
-
 			HitNPC(target, damage, knockback, crit);
 		}
+
+		public override bool ShouldUpdatePosition() => Released && !Embeded;
 
 		public override bool? CanDamage() => Released && !Embeded;
 

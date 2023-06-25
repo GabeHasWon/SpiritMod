@@ -60,6 +60,7 @@ namespace SpiritMod.NPCs.Shockhopper
 		{
 			DisplayName.SetDefault("Shockhopper");
 			Main.npcFrameCount[NPC.type] = 4;
+			NPCID.Sets.NoMultiplayerSmoothingByType[NPC.type] = true;
 			NPCHelper.ImmuneTo<ElectrifiedV2, FesteringWounds>(this, BuffID.Poisoned, BuffID.Confused);
 		}
 

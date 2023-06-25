@@ -1387,7 +1387,7 @@ namespace SpiritMod
 				new ChestInfo(ItemID.GoldCoin, WorldGen.genRand.Next(1, 3)),
 				new ChestInfo(ItemID.SilverCoin, WorldGen.genRand.Next(100)),
 			};
-			AddToModdedChest(sepulchreLootPool, ModContent.TileType<SepulchreChestTile1>());
+			AddToModdedChest(sepulchreLootPool, ModContent.TileType<SepulchreChestTile>());
 
 			List<ChestInfo> scarabChestPool = new List<ChestInfo> {
 				new ChestInfo(ModContent.ItemType<CleftHorn>()),

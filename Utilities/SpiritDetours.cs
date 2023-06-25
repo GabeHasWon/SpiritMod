@@ -224,20 +224,7 @@ namespace SpiritMod.Utilities
 
 						if (Main.mouseLeft && Main.mouseLeftRelease) //If clicked on, unlock a quest.
 						{
-							Quest q = queue[talkNPC.type].Dequeue();
-							QuestManager.UnlockQuest(q, true);
-
-							Main.npcChatText = q.QuestDescription;
-
-							if (Main.netMode == NetmodeID.MultiplayerClient)
-							{
-								ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
-								packet.Write((byte)QuestMessageType.SyncNPCQueue);
-								packet.Write(true);
-								packet.Write((ushort)talkNPC.type);
-								packet.Write((byte)Main.myPlayer);
-								packet.Send();
-							}
+							UnlockQuestFromNPC(talkNPC);
 						}
 					}
 					else
@@ -256,6 +243,24 @@ namespace SpiritMod.Utilities
 					Oracle.DrawBuffButton(superColor, numLines);
 			}
 			orig(superColor, chatColor, numLines, focusText, focusText3);
+		}
+		
+		public static void UnlockQuestFromNPC(NPC talkNPC) {
+			var queue = ModContent.GetInstance<QuestWorld>().NPCQuestQueue;
+			Quest q = queue[talkNPC.type].Dequeue();
+			QuestManager.UnlockQuest(q, true);
+
+			Main.npcChatText = q.QuestDescription;
+
+			if (Main.netMode == NetmodeID.MultiplayerClient)
+			{
+				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
+				packet.Write((byte)QuestMessageType.SyncNPCQueue);
+				packet.Write(true);
+				packet.Write((ushort)talkNPC.type);
+				packet.Write((byte)Main.myPlayer);
+				packet.Send();
+			}
 		}
 
 		private static void DrawPortraitName(NPC talkNPC, Point size)

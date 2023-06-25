@@ -85,8 +85,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Generate();
 		}
 
-		public override Vector2? HoldoutOffset() => Vector2.UnitX * -2f;
-
 		public override void UseItemFrame(Player player)
 		{
 			//Shot feedback
@@ -94,27 +92,43 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			player.itemLocation -= new Vector2(offset * player.direction, 0).RotatedBy(player.itemRotation);
 		}
 
+		public override Vector2? HoldoutOffset() => Vector2.UnitX * -2f;
+
 		public override bool AltFunctionUse(Player player) => auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge;
-		public override bool CanUseItem(Player player)
+
+		public override bool? UseItem(Player player)
 		{
 			if (auxillary == (int)AuxillaryType.Boomerang)
 				Item.useAnimation = Item.useTime = (player.altFunctionUse == 2) ? 14 : 24;
 
-			return base.CanUseItem(player);
-		}
-
-		public override bool? UseItem(Player player)
-		{
 			if (Main.netMode != NetmodeID.Server && !((auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge) && player.altFunctionUse == 2))
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 3 }, player.Center);
 
 			return base.UseItem(player);
 		}
 
-		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
+			Projectile SpawnProjectile(IEntitySource source, Vector2 position, Vector2 velocity, int type, int damage, float knockback, Player player, float ai0 = 0, float ai1 = 0)
+			{
+				Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 40f;
+				if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+					position += muzzleOffset;
+
+				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, ai0, ai1);
+
+				if (proj.ModProjectile is SubtypeProj)
+				{
+					var subtypeProj = proj.ModProjectile as SubtypeProj;
+
+					subtypeProj.Subtype = element;
+					subtypeProj.bouncy = auxillary == (int)AuxillaryType.Bouncy;
+					proj.netUpdate = true;
+				}
+				return proj;
+			}
+
 			type = Item.shoot;
-			IEntitySource source = Item.Source_ShootWithAmmo(player);
 
 			if (auxillary == (int)AuxillaryType.Frantic)
 				velocity = velocity.RotatedByRandom(0.42f);
@@ -128,7 +142,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					velocity *= 1.5f;
 					type = ModContent.ProjectileType<BlasterProj>();
 
-					SpawnProjectile(source, position, velocity, type, damage, knockback, player, 0, build switch
+					SpawnProjectile(source, position, velocity, type, damage, knockback, player, build switch
 					{
 						1 => ModContent.ProjectileType<PiercingBeam>(),
 						2 => ModContent.ProjectileType<LongRocket>(),
@@ -154,12 +168,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					else
 					{
 						for (int i = 0; i < 3; i++)
-						{
-							Vector2 newVel = (velocity * Main.rand.NextFloat(0.5f, 0.8f)).RotatedByRandom(1f);
-							Projectile starshot = Projectile.NewProjectileDirect(source, position, newVel, type, damage, knockback, player.whoAmI);
-							(starshot.ModProjectile as SubtypeProj).Subtype = element;
-							starshot.frame = 1;
-						}
+							SpawnProjectile(source, position, (velocity * Main.rand.NextFloat(0.5f, 0.8f)).RotatedByRandom(.75f), type, damage, knockback, player).frame = 1;
 					}
 
 					SpawnProjectile(source, position, velocity, type, damage, knockback, player);
@@ -167,7 +176,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				else if (build == (int)BuildType.Heavy)
 				{
 					velocity = (velocity * Main.rand.NextFloat(0.75f, 1.0f)).RotatedByRandom(0.2f);
-					SpawnProjectile(source, position, velocity, type, damage, knockback, player); 
+					SpawnProjectile(source, position, velocity, type, damage, knockback, player);
 				}
 				else if (build == (int)BuildType.Laser)
 				{
@@ -178,95 +187,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					SpawnProjectile(source, position, velocity, type, damage, knockback, player); //This counts as a generic case
 				}
 			}
-
-			if (!((auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge) && player.altFunctionUse == 2))
-			{
-				Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 36f;
-				if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-					position += muzzleOffset;
-
-				FireVisuals(position, velocity, element);
-			}
-		}
-
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => false;
-
-		private Projectile SpawnProjectile(IEntitySource source, Vector2 position, Vector2 velocity, int type, int damage, float knockback, Player player, float ai0 = 0, float ai1 = 0)
-		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 40f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-				position += muzzleOffset;
-
-			Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, ai0, ai1);
-
-			if (proj.ModProjectile is SubtypeProj)
-			{
-				var subtypeProj = proj.ModProjectile as SubtypeProj;
-
-				subtypeProj.Subtype = element;
-				subtypeProj.bouncy = auxillary == (int)AuxillaryType.Bouncy;
-			}
-			return proj;
-		}
-
-		public static void FireVisuals(Vector2 position, Vector2 velocity, int visualElement)
-		{
-			if (Main.dedServ)
-				return;
-			switch (visualElement)
-			{
-				case (int)Fire:
-					for (int i = 0; i < 10; i++)
-					{
-						if (i < 3)
-							ParticleHandler.SpawnParticle(new SmokeParticle(position, new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f)), Color.Lerp(Color.DarkGray, Color.Orange, Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.25f, 0.5f), 12));
-						Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.Torch : DustID.Flare, null);
-						dust.velocity = (velocity * Main.rand.NextFloat(0.15f, 0.3f)).RotatedByRandom(1f);
-						if (dust.type == DustID.Torch)
-							dust.fadeIn = 1.1f;
-						dust.noGravity = true;
-					}
-					break;
-				case (int)Poison:
-					for (int i = 0; i < 8; i++)
-					{
-						if (i < 3)
-							ParticleHandler.SpawnParticle(new SmokeParticle(position, new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f)), Color.Lerp(Color.White, Color.LimeGreen, Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.25f, 0.5f), 12));
-						Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.FartInAJar : DustID.GreenTorch, null);
-						dust.velocity = (velocity * Main.rand.NextFloat(0.15f, 0.3f)).RotatedByRandom(1f);
-						if (dust.type == DustID.GreenTorch)
-							dust.fadeIn = 1.1f;
-						dust.noGravity = true;
-					}
-					break;
-				case (int)Frost:
-					for (int i = 0; i < 8; i++)
-					{
-						if (i < 3)
-							ParticleHandler.SpawnParticle(new SmokeParticle(position, new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f)), Color.Lerp(new Color(25, 236, 255), Color.White, Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(0.5f, 1.0f), 14));
-						Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.FrostHydra : DustID.GemSapphire, null);
-						dust.velocity = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * .5f, Main.rand.NextFloat(-1.0f, 1.0f) * .5f);
-						dust.fadeIn = 1.1f;
-						dust.noGravity = true;
-					}
-					break;
-				case (int)Plasma:
-					for (int i = 0; i < 8; i++)
-					{
-						if (i == 0)
-							ParticleHandler.SpawnParticle(new PulseCircle(position, Color.Lerp(Color.Magenta, Color.White, Main.rand.NextFloat(1.0f)), Main.rand.NextFloat(20f, 40f), 14)
-							{
-								Angle = velocity.ToRotation(),
-								Velocity = velocity * Main.rand.NextFloat(0.04f, 0.08f),
-								ZRotation = 0.6f
-							});
-						Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool(2) ? DustID.Pixie : DustID.PinkTorch, null);
-						dust.velocity = (velocity * Main.rand.NextFloat(0.2f, 0.8f)).RotatedByRandom(1.2f);
-						dust.fadeIn = 1.1f;
-						dust.noGravity = true;
-					}
-					break;
-			}
+			return false;
 		}
 
 		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
@@ -293,7 +214,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			//Draw the item normally
 			spriteBatch.Draw(texture, position, frame, Item.GetAlpha(lightColor), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
 			//Draw a glowmask
-			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, SubtypeProj.GetColor(element).MultiplyRGBA(Color.White) * ((255f - Item.alpha) / 255f), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, position, frame, (SubtypeProj.GetColor(element) with { A = 0 }) * ((255f - Item.alpha) / 255f), rotation, frame.Size() / 2, scale, SpriteEffects.None, 0f);
 			return false;
 		}
 
@@ -385,7 +306,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			}
 		}
 
-		public override float UseTimeMultiplier(Player player) => (auxillary == (int)AuxillaryType.Burst) ? 0.3f : base.UseSpeedMultiplier(player);
+		public override float UseTimeMultiplier(Player player) => (auxillary == (int)AuxillaryType.Burst) ? 0.35f : base.UseSpeedMultiplier(player);
 
 		public override float UseSpeedMultiplier(Player player)
 		{

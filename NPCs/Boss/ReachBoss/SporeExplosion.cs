@@ -1,15 +1,11 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.Boss.ReachBoss
 {
 	public class SporeExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Exploding Spore");
-		}
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Exploding Spore");
 
 		public override void SetDefaults()
 		{

@@ -732,9 +732,10 @@ namespace SpiritMod.NPCs
 
 			if (player.ZoneAsteroid())
 			{
+				pool.Clear();
+
 				if (!spawnInfo.PlayerSafe)
 				{
-					pool.Clear();
 					pool.Add(ModContent.NPCType<Shockhopper.DeepspaceHopper>(), 0.30f);
 					pool.Add(ModContent.NPCType<AstralAmalgam.AstralAmalgam>(), 0.16f);
 
