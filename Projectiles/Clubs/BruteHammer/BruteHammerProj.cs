@@ -28,7 +28,7 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 
 		public override float TrueRotation => (float)radians + ((Effects == SpriteEffects.FlipHorizontally) ? MathHelper.PiOver2 + 3.6f : 4.2f);
 
-		public override bool? CanDamage() => null;
+		public override bool? CanDamage() => (_lingerTimer == 0) ? null : false;
 
 		public override void Smash(Vector2 position)
 		{
