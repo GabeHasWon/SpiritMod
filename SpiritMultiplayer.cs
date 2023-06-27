@@ -307,6 +307,21 @@ namespace SpiritMod
 				case MessageType.Quest:
 					QuestMultiplayer.HandlePacket(reader, (QuestMessageType)reader.ReadByte(), reader.ReadBoolean());
 					break;
+				case MessageType.SyncLuminousOcean:
+					byte luminousType = reader.ReadByte();
+					bool isActive = reader.ReadBoolean();
+
+					MyWorld.luminousType = luminousType;
+					MyWorld.luminousOcean = isActive;
+
+					if (Main.netMode == NetmodeID.Server) //If the server recieves the packet, send to other clients
+					{
+						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SyncLuminousOcean, 2);
+						packet.Write(luminousType);
+						packet.Write(isActive);
+						packet.Send(-1, whoAmI);
+					}
+					break;
 				case MessageType.Sports:
 					SportsSyncing.HandlePacket((SportMessageType)reader.ReadByte(), reader);
 					break;

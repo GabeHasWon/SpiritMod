@@ -24,27 +24,30 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.alpha = 255;
 			Projectile.timeLeft = 60;
 		}
+
 		int counter;
+
 		public override bool PreAI()
 		{
-			int num = 5;
-			for (int k = 0; k < 6; k++) {
-				int index2 = Dust.NewDust(Projectile.position, 1, 1, DustID.ScourgeOfTheCorruptor, 0.0f, 0.0f, 0, new Color(), 1f);
-				Main.dust[index2].position = Projectile.Center - Projectile.velocity / num * (float)k;
-				Main.dust[index2].scale = .75f;
-				Main.dust[index2].velocity *= 0f;
-				Main.dust[index2].noGravity = true;
-				Main.dust[index2].noLight = false;
-			}
-			counter++;
-			if (counter >= 1440) {
-				counter = -1440;
-			}
-			for (int i = 0; i < 20; i++) {
-				float x = Projectile.Center.X - Projectile.velocity.X / 10f * (float)i;
-				float y = Projectile.Center.Y - Projectile.velocity.Y / 10f * (float)i;
+			const int Repeats = 6;
 
-				int num2121 = Dust.NewDust(Projectile.Center + new Vector2(0, (float)Math.Cos(counter / 4.2f) * 9.2f).RotatedBy(Projectile.rotation), 6, 6, DustID.ScourgeOfTheCorruptor, 0f, 0f, 0, default, 1f);
+			for (int k = 0; k < Repeats; k++)
+			{
+				int dust = Dust.NewDust(Projectile.position, 1, 1, DustID.ScourgeOfTheCorruptor, 0.0f, 0.0f, 0, new Color(), 1f);
+				Main.dust[dust].position = Projectile.Center - Projectile.velocity / Repeats * k;
+				Main.dust[dust].scale = .75f;
+				Main.dust[dust].velocity *= 0f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].noLight = false;
+			}
+
+			if (++counter >= 1440)
+				counter = -1440;
+			
+			for (int i = 0; i < 20; i++)
+			{
+				var pos = Projectile.Center + new Vector2(0, (float)Math.Cos(counter / 4.2f) * 9.2f).RotatedBy(Projectile.rotation);
+				int num2121 = Dust.NewDust(pos, 6, 6, DustID.ScourgeOfTheCorruptor, 0f, 0f, 0, default, 1f);
 				Main.dust[num2121].velocity *= 0f;
 				Main.dust[num2121].scale *= .75f;
 				Main.dust[num2121].noGravity = true;
@@ -55,16 +58,15 @@ namespace SpiritMod.Projectiles.Magic
 		}
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if (target.life <= 0) {
-				int num24 = 307;
+			if (target.life <= 0)
+			{
 				int num3 = Main.rand.Next(0, 360);
-				for (int j = 0; j < 1; j++) {
-					float num4 = MathHelper.ToRadians((float)(270 / 1 * j + num3));
-					Vector2 vector = new Vector2(base.Projectile.velocity.X, base.Projectile.velocity.Y).RotatedBy((double)num4, default);
-					vector.Normalize();
-					vector.X *= 4.5f;
-					vector.Y *= 4.5f;
-					int p = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, num24, Projectile.damage / 5 * 4, 0f, 0);
+				for (int j = 0; j < 1; j++)
+				{
+					float num4 = MathHelper.ToRadians(270 / 1 * j + num3);
+					Vector2 vel = Vector2.Normalize(Projectile.velocity.RotatedBy(num4)) * 4.5f;
+					var src = Projectile.GetSource_OnHit(target);
+					int p = Projectile.NewProjectile(src, Projectile.Center.X, Projectile.Center.Y, vel.X, vel.Y, ProjectileID.TinyEater, Projectile.damage / 5 * 4, 0f, Projectile.owner);
 					Main.projectile[p].hostile = false;
 					Main.projectile[p].friendly = true;
 					Main.projectile[p].DamageType = DamageClass.Magic;

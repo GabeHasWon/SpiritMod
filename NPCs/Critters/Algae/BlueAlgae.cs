@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -11,6 +10,11 @@ namespace SpiritMod.NPCs.Critters.Algae
 {
 	public class BlueAlgae2 : ModNPC
 	{
+		private ref float DespawnTimer => ref NPC.ai[0];
+		private ref float LightTimer => ref NPC.ai[1];
+
+		bool collision = false;
+
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Blue Algae");
@@ -39,27 +43,8 @@ namespace SpiritMod.NPCs.Critters.Algae
 			NPC.dontTakeDamage = true;
 		}
 
-
-		public float num42;
-		int num = 0;
-		bool collision = false;
-		int num1232;
-
 		public override void OnSpawn(IEntitySource source)
 		{
-			int npcXTile = (int)(NPC.Center.X / 16);
-			int npcYTile = (int)(NPC.Center.Y / 16);
-			for (int y = npcYTile; y > Math.Max(0, npcYTile - 100); y--)
-			{
-				if (Main.tile[npcXTile, y].LiquidAmount != 255)
-				{
-					int liquid = Main.tile[npcXTile, y].LiquidAmount;
-					float up = (liquid / 255f) * 16f;
-					NPC.position.Y = (y + 1) * 16f - up + 8;
-					break;
-				}
-			}
-
 			if (NPC.type == ModContent.NPCType<BlueAlgae2>())
 			{
 				for (int i = 0; i < 5; ++i)
@@ -77,8 +62,8 @@ namespace SpiritMod.NPCs.Critters.Algae
 		{
 			if (Main.dayTime)
 			{
-				num1232++;
-				if (num1232 >= Main.rand.Next(100, 700))
+				DespawnTimer++;
+				if (DespawnTimer >= Main.rand.Next(100, 700))
 				{
 					NPC.active = false;
 					NPC.netUpdate = true;
@@ -89,10 +74,10 @@ namespace SpiritMod.NPCs.Critters.Algae
 
 		public override void AI()
 		{
-			num++;
+			LightTimer++;
 
-			if (num >= Main.rand.Next(100, 400))
-				num = 0;
+			if (LightTimer >= Main.rand.Next(100, 400))
+				LightTimer = 0;
 
 			if (!Main.dayTime)
 				Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0.148f * 2, 0.191f * 2, .255f * 2);
@@ -109,13 +94,20 @@ namespace SpiritMod.NPCs.Critters.Algae
 				NPC.velocity.X *= -1f;
 				collision = !collision;
 			}
+
+			if (!NPC.wet)
+				NPC.velocity.Y += 0.2f;
+			else if (Main.tile[(int)(NPC.Center.X / 16), (int)((NPC.Center.Y - 6) / 16)].LiquidAmount > 150)
+				NPC.velocity.Y = MathHelper.Lerp(NPC.velocity.Y, -5, 0.05f);
+			else
+				NPC.velocity.Y *= 0.95f;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			drawColor = new Color(148 - (int)(num / 3 * 4), 212 - (int)(num / 3 * 4), 255 - (int)(num / 3 * 4), 255 - num);
+			drawColor = new Color(148 - (int)(LightTimer / 3 * 4), 212 - (int)(LightTimer / 3 * 4), 255 - (int)(LightTimer / 3 * 4), 255 - LightTimer);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			var pos = NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY - 8);
+			var pos = NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY);
 
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;

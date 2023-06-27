@@ -26,6 +26,7 @@
 		RequestQuestManager,
 		RecieveQuestManager,
 		Quest,
+		SyncLuminousOcean
 		Sports,
 	}
 

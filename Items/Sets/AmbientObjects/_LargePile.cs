@@ -442,10 +442,8 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	{
 		// public override void SetStaticDefaults() => DisplayName.SetDefault("Old Tent");
 
-		public override void SafeSetDefaults()
-		{
-			Item.placeStyle = 26;
-		}
+		public override void SafeSetDefaults() => Item.placeStyle = 26;
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
