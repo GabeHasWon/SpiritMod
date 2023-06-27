@@ -43,7 +43,8 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteFlail
 			if (Projectile.timeLeft < 20) //Fade out
 				Projectile.alpha += 255 / 20;
 
-			if (Main.rand.NextBool(20 - (int)MathHelper.Clamp(Projectile.velocity.Length(), 0, 20)))
+			int consequent = Math.Max(20 - (int)MathHelper.Clamp(Projectile.velocity.Length(), 0, 20), 1);
+			if (Main.rand.NextBool(consequent))
 			{
 				Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.Electric, Vector2.Zero, 0, default, Main.rand.NextFloat(0.5f, 1.0f));
 				dust.noGravity = true;

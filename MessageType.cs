@@ -26,6 +26,7 @@
 		RequestQuestManager,
 		RecieveQuestManager,
 		Quest,
+		SyncLuminousOcean
 	}
 
 	public enum QuestMessageType : byte

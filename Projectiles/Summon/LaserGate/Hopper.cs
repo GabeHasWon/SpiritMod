@@ -140,7 +140,6 @@ namespace SpiritMod.Projectiles.Summon.LaserGate
 		}
 
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(pairWhoAmI);
-
-		public override void ReceiveExtraAI(BinaryReader reader) => pairWhoAmI = reader.Read();
+		public override void ReceiveExtraAI(BinaryReader reader) => pairWhoAmI = reader.ReadInt32();
 	}
 }

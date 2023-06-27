@@ -14,11 +14,11 @@ namespace SpiritMod.Tiles.Vanilla
 			if (Main.tile[i, j + 1].HasTile)
 				return;
 
-			float chance = 0.025f;
+			float chance = 0.005f;
 			if (type == TileID.RainCloud)
-				chance = 0.05f;
+				chance = 0.001f;
 			else if (type == TileID.SnowCloud)
-				chance = 0.01f;
+				chance = 0.0001f;
 
 			int y = j + 1;
 

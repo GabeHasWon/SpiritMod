@@ -1,4 +1,3 @@
-
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Tiles;
 using Terraria;
@@ -9,7 +8,6 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Ambient.IceSculpture.Hostile
 {
-	[TileTag(TileTags.Indestructible)]
 	public class IceFlinxHostile : ModTile
 	{
 		public override void SetStaticDefaults()
@@ -29,7 +27,6 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture.Hostile
 		}
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => !NPC.downedBoss3;
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
@@ -39,18 +36,17 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture.Hostile
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-
 			Player player = Main.LocalPlayer;
-			if (closer && NPC.downedBoss3) {
+			if (closer) {
 				int distance1 = (int)Vector2.Distance(new Vector2(i * 16, j * 16), player.Center);
 				if (distance1 < 56) {
 					SoundEngine.PlaySound(SoundID.Item27);
-					int n = NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileUpdate(i, j), (int)i * 16, (int)j * 16, NPCID.SnowFlinx, 0, 2, 1, 0, 0, Main.myPlayer);
+					int n = NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileUpdate(i, j), i * 16, j * 16, NPCID.SnowFlinx, 0, 0, 0, 0, 0, Main.myPlayer);
 					Main.npc[n].GivenName = "Icy Snow Flinx";
 					Main.npc[n].lifeMax = Main.npc[n].lifeMax * 2;
 					Main.npc[n].life = Main.npc[n].lifeMax;
 					Main.npc[n].damage = (int)(Main.npc[n].damage * 1.5f);
-					Main.npc[n].knockBackResist = 0.25f;
+					Main.npc[n].knockBackResist = 0.8f;
                     Main.npc[n].netUpdate = true;
 					WorldGen.KillTile(i, j);
 				}

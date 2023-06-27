@@ -1517,11 +1517,34 @@ namespace SpiritMod
 
 				if (!Main.dayTime && Main.rand.NextBool(6))
 				{
-					luminousType = Main.rand.Next(new int[] { 1, 2, 3 });
+					luminousType = Main.rand.Next(1, 4);
 					luminousOcean = true;
+
+					if (Main.netMode == NetmodeID.SinglePlayer)
+						Main.NewText("A glow blooms over the ocean...", 251, 255, 230);
+					else if (Main.netMode == NetmodeID.Server)
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("A glow blooms over the ocean..."), new Color(251, 255, 230));
+
+					if (Main.netMode != NetmodeID.SinglePlayer)
+					{
+						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SyncLuminousOcean, 2);
+						packet.Write((byte)luminousType);
+						packet.Write(true);
+						packet.Send();
+					}
 				}
 				else
+				{
 					luminousOcean = false;
+
+					if (Main.netMode != NetmodeID.SinglePlayer)
+					{
+						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SyncLuminousOcean, 2);
+						packet.Write((byte)luminousType);
+						packet.Write(false);
+						packet.Send();
+					}
+				}
 
 				if (!Main.dayTime && (Main.moonPhase == 2 || Main.moonPhase == 6) && !Main.bloodMoon && Main.rand.NextBool(2))
 					calmNight = true;

@@ -9,7 +9,7 @@ namespace SpiritMod.Buffs.Glyph
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Burning Rage");
-			Description.SetDefault("+17% damage and attack speed");
+			Description.SetDefault("+17% damage and attack speed, increased whip range");
 			Main.buffNoSave[Type] = true;
 			Main.debuff[Type] = true;
 		}

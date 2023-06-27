@@ -1,4 +1,3 @@
-
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Tiles;
 using Terraria;
@@ -9,7 +8,6 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Ambient.IceSculpture
 {
-	[TileTag(TileTags.Indestructible)]
 	public class IceFlinxPassive : ModTile
 	{
 		public override void SetStaticDefaults()
@@ -29,7 +27,6 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture
 		}
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => NPC.downedBoss3;
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{

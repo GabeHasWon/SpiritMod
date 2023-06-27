@@ -112,7 +112,7 @@ namespace SpiritMod.NPCs.Winterborn
 
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-			if (Main.rand.NextBool(10))
+			if (Main.rand.NextBool(target.HasBuff(BuffID.Frozen) ? 30 : 10))
 				target.AddBuff(BuffID.Frozen, 120);
 			else if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Chilled, 300);
