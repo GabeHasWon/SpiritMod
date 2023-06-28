@@ -15,7 +15,14 @@ namespace SpiritMod.Mechanics.QuestSystem
 	public class QuestPlayer : ModPlayer
 	{
 		public override void SaveData(TagCompound tag) => QuestSaving.SaveData(tag);
-		public override void LoadData(TagCompound tag) => QuestSaving.LoadData(tag);
+
+		public override void LoadData(TagCompound tag)
+		{
+			QuestManager.QuestBookUnlocked = false;
+			QuestManager.RestartEverything(); 
+			
+			QuestSaving.LoadData(tag);
+		}
 
 		public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
 		{

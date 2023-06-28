@@ -1268,8 +1268,7 @@ namespace SpiritMod
 
 		private void ResetWorldInfo(GenerationProgress progress, GameConfiguration config)
 		{
-			QuestManager.QuestBookUnlocked = false;
-			QuestManager.RestartEverything();
+
 		}
 
 		public override void PostWorldGen()

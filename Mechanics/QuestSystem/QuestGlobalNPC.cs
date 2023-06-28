@@ -12,6 +12,8 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Utilities;
+using System.Linq;
+using System.Reflection;
 
 namespace SpiritMod.Mechanics.QuestSystem
 {
@@ -20,8 +22,26 @@ namespace SpiritMod.Mechanics.QuestSystem
 		public static event Action<NPC> OnNPCLoot;
 		public static event Action<int, Chest, int> OnSetupShop;
 
-		public static Dictionary<int, QuestPoolData> SpawnPoolMods = new Dictionary<int, QuestPoolData>();
-		public static Dictionary<int, int> PoolModsCount = new Dictionary<int, int>();
+		public static Dictionary<int, List<QuestPoolData>> SpawnPoolMods = new();
+		public static Dictionary<string, Func<NPCSpawnInfo, bool>> SpawnConditions = new();
+
+		public override void Load()
+		{
+			//Autoload logic for getting quest spawn conditions
+			var quests = GetType().Assembly.GetTypes().Where(x => typeof(Quest).IsAssignableFrom(x));
+			foreach (var item in quests)
+			{
+				var methods = item.GetMethods(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+				foreach (var method in methods)
+				{
+					if (!Attribute.IsDefined(method, typeof(QuestSpawnConditionsKeyAttribute)))
+						continue;
+
+					string key = item.Name + "." + method.Name;
+					SpawnConditions.Add(key, Delegate.CreateDelegate(typeof(Func<NPCSpawnInfo, bool>), method) as Func<NPCSpawnInfo, bool>);
+				}
+			}
+		}
 
 		public override void OnKill(NPC npc)
 		{
@@ -169,70 +189,74 @@ namespace SpiritMod.Mechanics.QuestSystem
 			}
 		}
 
-		public static void AddToPool(int id, QuestPoolData data)
+		public static void AddToPool(int id, QuestPoolData data, string syncKey = null)
 		{
-			if (SpawnPoolMods.ContainsKey(id))
+			if (Main.netMode == NetmodeID.SinglePlayer)
 			{
-				QuestPoolData currentData = SpawnPoolMods[id];
-				if (SpawnPoolMods[id].NewRate is null || (data.NewRate != null && SpawnPoolMods[id].NewRate < data.NewRate))
-					currentData.NewRate = data.NewRate;
-
-				PoolModsCount[id]++;
+				if (SpawnPoolMods.ContainsKey(id))
+					SpawnPoolMods[id].Add(data);
+				else
+					SpawnPoolMods.Add(id, new() { data });
 			}
-			else
+			else if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
-				SpawnPoolMods.Add(id, data);
-				PoolModsCount.Add(id, 1);
+				if (syncKey is null)
+					throw new NullReferenceException("Provided syncKey to QuestGlobalNPC.AddToPool is null!");
+
+				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.QuestSpawnPool, 7);
+				packet.Write((short)id); //Might need to be an int32 if people go WILD
+				packet.Write(true);
+				data.Serialize(packet);
+				packet.Send();
 			}
 		}
 
-		public static void RemoveFromPool(int id)
+		public static void RemoveFromPool(int id, long poolIDToRemove)
 		{
 			if (SpawnPoolMods.ContainsKey(id))
 			{
-				PoolModsCount[id]--;
+				SpawnPoolMods[id].RemoveAll(x => x.ID == poolIDToRemove);
 
-				if (PoolModsCount[id] == 0)
-				{
+				if (!SpawnPoolMods[id].Any())
 					SpawnPoolMods.Remove(id);
-					PoolModsCount.Remove(id);
-				}
+			}
+
+			if (Main.netMode == NetmodeID.MultiplayerClient)
+			{
+				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.QuestSpawnPool, 2);
+				packet.Write((short)id); //Might need to be an int32 if people go WILD
+				packet.Write(false);
+				packet.Write(poolIDToRemove);
+				packet.Send();
 			}
 		}
 
-		public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+		public override void EditSpawnPool(IDictionary<int, float> spawnPool, NPCSpawnInfo spawnInfo)
 		{
-			foreach (int item in SpawnPoolMods.Keys)
+			foreach (int npcID in SpawnPoolMods.Keys)
 			{
-				var currentPool = SpawnPoolMods[item];
+				var currentPoolSet = SpawnPoolMods[npcID];
 
-				if (!pool.ContainsKey(item))
+				foreach (var pool in currentPoolSet)
 				{
-					if (currentPool.Forced)
+					bool conditionNull = pool.ConditionKey is null;
+
+					if (!spawnPool.ContainsKey(npcID))
 					{
-						if (((currentPool.Exclusive && !NPC.AnyNPCs(item)) || !currentPool.Exclusive) && (currentPool.Conditions == null || currentPool.Conditions.Invoke(spawnInfo)))
-							pool.Add(item, currentPool.NewRate.Value);
+						if (pool.Forced)
+						{
+							if (((pool.Exclusive && !NPC.AnyNPCs(npcID)) || !pool.Exclusive) && (conditionNull || SpawnConditions[pool.ConditionKey].Invoke(spawnInfo)))
+								spawnPool.Add(npcID, pool.NewRate.Value);
+						}
+						continue;
 					}
-					continue;
+
+					if (pool.NewRate is null) //We don't have a new rate to set to
+						continue;
+
+					if (((pool.Exclusive && !NPC.AnyNPCs(npcID)) || !pool.Exclusive) && (conditionNull || SpawnConditions[pool.ConditionKey].Invoke(spawnInfo)))
+						spawnPool[npcID] = pool.NewRate.Value;
 				}
-
-				if (currentPool.NewRate is null) //We don't have a new rate to set to
-					continue;
-
-				if (((currentPool.Exclusive && !NPC.AnyNPCs(item)) || !currentPool.Exclusive) && (currentPool.Conditions == null || currentPool.Conditions.Invoke(spawnInfo)))
-					pool[item] = currentPool.NewRate.Value;
-			}
-
-			if (QuestManager.GetQuest<SlayerQuestClown>().IsActive)
-			{
-				if (pool.ContainsKey(NPCID.Clown))
-					pool[NPCID.Clown] = 0.1f;
-			}
-
-			if (QuestManager.GetQuest<SlayerQuestDrBones>().IsActive)
-			{
-				if (!Main.dayTime && spawnInfo.Player.ZoneJungle && !spawnInfo.PlayerSafe && spawnInfo.SpawnTileY < Main.worldSurface && !NPC.AnyNPCs(NPCID.DoctorBones) && pool.ContainsKey(NPCID.DoctorBones))
-					pool[NPCID.DoctorBones] = 0.1f;
 			}
 		}
 	}

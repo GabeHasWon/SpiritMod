@@ -27,6 +27,7 @@
 		RequestQuestManager,
 		RecieveQuestManager,
 		Quest,
+		QuestSpawnPool,
 	}
 
 	public enum QuestMessageType : byte

@@ -98,16 +98,16 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 				_lastCount = Main.LocalPlayer.CountItem(_itemID, _itemsNeeded);
 				return _lastCount >= _itemsNeeded;
 			}
-			else if (Main.netMode == NetmodeID.MultiplayerClient)
-			{
-				_lastCount = 0;
-				for (int i = 0; i < Main.maxPlayers; i++)
-				{
-					Player p = Main.player[i];
-					if (p.active)
-						_lastCount += p.CountItem(_itemID, _itemsNeeded);
-				}
-			}
+			//else if (Main.netMode == NetmodeID.MultiplayerClient)
+			//{
+			//	_lastCount = 0;
+			//	for (int i = 0; i < Main.maxPlayers; i++)
+			//	{
+			//		Player p = Main.player[i];
+			//		if (p.active)
+			//			_lastCount += p.CountItem(_itemID, _itemsNeeded);
+			//	}
+			//}
 			return _lastCount >= _itemsNeeded;
 		}
 

@@ -26,10 +26,11 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private SlayerQuestClown()
         {
-            _tasks.AddTask(new SlayTask(NPCID.Clown, 3, null, new QuestPoolData(0.2f, true, true, SpawnConditions)));
+            _tasks.AddTask(new SlayTask(NPCID.Clown, 3, null, new QuestPoolData(0.2f, true, true, nameof(SlayerQuestClown) + ".SpawnConditions")));
         }
 
-		private bool SpawnConditions(NPCSpawnInfo arg) => Main.bloodMoon && arg.SpawnTileY < Main.worldSurface;
+		[QuestSpawnConditionsKey]
+		private static bool SpawnConditions(NPCSpawnInfo arg) => Main.bloodMoon && arg.SpawnTileY < Main.worldSurface;
 
 		public override bool IsQuestPossible() => Main.hardMode;
 	}

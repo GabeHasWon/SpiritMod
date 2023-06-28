@@ -36,10 +36,13 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 				.AddTask(new GiveNPCTask(NPCID.TravellingMerchant, ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.RoyalCrown>(), 1, "I didn't think you'd make it back alive, wow! I'm sure the folks on Xandar will love this! Thanks for helping me out, and here's your reward as promised. If you ever need a little bit of anything, give me a shout!", "Return the Royal Crown to the Travelling Merchant", true, true, ModContent.ItemType<Items.Placeable.Furniture.HourglassItem>()));
 
 			TaskBuilder branch1 = new TaskBuilder();
-			branch1.AddTask(new TalkNPCTask(ModContent.NPCType<NPCs.BloodstainedChest.BloodstainedChest>(), "The ancient chest seems to be covered in gold, blood, and bones. It surely contains great riches, but opening it may be perilous.", "Find the strange chest in the Desert and retrieve the Royal Crown", new QuestPoolData(0.85f, true, true, (info) => info.Player.ZoneDesert && info.Player.ZoneOverworldHeight)))
+			branch1.AddTask(new TalkNPCTask(ModContent.NPCType<NPCs.BloodstainedChest.BloodstainedChest>(), "The ancient chest seems to be covered in gold, blood, and bones. It surely contains great riches, but opening it may be perilous.", "Find the strange chest in the Desert and retrieve the Royal Crown", new QuestPoolData(0.85f, true, true, nameof(TravelingMerchantDesertQuest) + ".SpawnConditions")))
 			       .AddBranches(newBranch, newBranch2);
 			
 			_tasks.AddBranches(branch1);		
 		}
+
+		[QuestSpawnConditionsKey]
+		private static bool SpawnConditions(NPCSpawnInfo info) => info.Player.ZoneDesert && info.Player.ZoneOverworldHeight;
 	}
 }

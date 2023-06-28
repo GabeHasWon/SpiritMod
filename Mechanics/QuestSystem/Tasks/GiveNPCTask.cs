@@ -98,27 +98,27 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 					}
 				}
 			}
-			else if (Main.netMode == NetmodeID.MultiplayerClient)
-			{
-				for (int i = 0; i < Main.player.Length; i++)
-				{
-					Player player = Main.player[i];
-					if (player.active && player.talkNPC >= 0 && Main.npc[player.talkNPC].netID == _npcType)
-					{
-						if (ScanForItems(player))
-						{
-							if (TakeItems && !_takenItems)
-								RemoveItems(player);
+			//else if (Main.netMode == NetmodeID.MultiplayerClient)
+			//{
+			//	for (int i = 0; i < Main.player.Length; i++)
+			//	{
+			//		Player player = Main.player[i];
+			//		if (player.active && player.talkNPC >= 0 && Main.npc[player.talkNPC].netID == _npcType)
+			//		{
+			//			if (ScanForItems(player))
+			//			{
+			//				if (TakeItems && !_takenItems)
+			//					RemoveItems(player);
 
-							player.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), _optionalReward);
-							Main.npcChatText = NPCText;
+			//				player.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), _optionalReward);
+			//				Main.npcChatText = NPCText;
 
-							_givenToNPC = true;
-							return true;
-						}
-					}
-				}
-			}
+			//				_givenToNPC = true;
+			//				return true;
+			//			}
+			//		}
+			//	}
+			//}
 			return false;
 		}
 

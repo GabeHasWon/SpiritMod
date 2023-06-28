@@ -24,9 +24,10 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private SlayerQuestDrBones()
         {
-            _tasks.AddTask(new SlayTask(Terraria.ID.NPCID.DoctorBones, 1, null, new QuestPoolData(0.2f, true, true, SpawnConditions), true));    
+            _tasks.AddTask(new SlayTask(Terraria.ID.NPCID.DoctorBones, 1, null, new QuestPoolData(0.2f, true, true, nameof(SlayerQuestDrBones) + ".SpawnConditions"), true));    
         }
 
-		private bool SpawnConditions(NPCSpawnInfo arg) => arg.SpawnTileY < Main.worldSurface && arg.SpawnTileY > Main.worldSurface * 0.35f && arg.Player.ZoneJungle;
+		[QuestSpawnConditionsKey]
+		private static bool SpawnConditions(NPCSpawnInfo arg) => arg.SpawnTileY < Main.worldSurface && arg.SpawnTileY > Main.worldSurface * 0.35f && arg.Player.ZoneJungle;
 	}
 }
