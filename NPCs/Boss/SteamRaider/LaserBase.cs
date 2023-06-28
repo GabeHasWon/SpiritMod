@@ -46,15 +46,14 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		{
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame,
-							 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+				 drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+
 			return false;
 		}
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			if (NPC.alpha != 255)
-			{
 				GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/LaserBase_Glow").Value, screenPos);
-			}
 		}
 
 		public override bool PreAI()
@@ -62,28 +61,14 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.TargetClosest(true);
 			Player player = Main.player[NPC.target];
 
-			float num5 = NPC.position.X + (float)(NPC.width / 2) - player.position.X - (float)(player.width / 2);
-			float num6 = NPC.position.Y + (float)NPC.height - 59f - player.position.Y - (float)(player.height / 2);
-			float num7 = (float)Math.Atan2((double)num6, (double)num5) + 1.57f;
-			if (!(NPC.ai[0] >= 100 && NPC.ai[0] <= 130))
-			{
-				if (num7 < 0f)
-				{
-					num7 += 6.283f;
-				}
-				else if ((double)num7 > 6.283)
-				{
-					num7 -= 6.283f;
-				}
-			}
 			NPC.spriteDirection = NPC.direction;
-			if (NPC.ai[0] == 0)
+			if (NPC.ai[0] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				NPC.ai[1] = Main.rand.Next(160, 190);
 				NPC.netUpdate = true;
 			}
-			NPC.ai[0]++;
-			if (NPC.ai[0] >= NPC.ai[1])
+
+			if (++NPC.ai[0] >= NPC.ai[1])
 			{
 				SoundEngine.PlaySound(SoundID.Item110, NPC.Center);
 				for (int i = 0; i < 40; i++)
@@ -91,15 +76,17 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 					int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 0f, -2f, 117, new Color(0, 255, 142), .6f);
 					Main.dust[num].noGravity = true;
 					Dust dust = Main.dust[num];
-					dust.position.X += ((Main.rand.Next(-50, 51) / 20) - 1.5f);
-					dust.position.Y += ((Main.rand.Next(-50, 51) / 20) - 1.5f);
+					dust.position.X += (Main.rand.Next(-50, 51) / 20) - 1.5f;
+					dust.position.Y += (Main.rand.Next(-50, 51) / 20) - 1.5f;
 					if (Main.dust[num].position != NPC.Center)
 						Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 3f;
 				}
+
 				if (Main.expertMode)
 					NPC.Transform(ModContent.NPCType<SuicideLaser>());
 				else
 					NPC.active = false;
+
 				NPC.netUpdate = true;
 			}
 			else
@@ -107,6 +94,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				NPC.velocity.X = 0;
 				NPC.velocity.Y = 0;
 			}
+
 			if (NPC.ai[0] <= 75)
 			{
 				direction9 = player.Center - NPC.Center;

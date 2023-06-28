@@ -32,34 +32,42 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.value = 160f;
 			NPC.dontCountMe = true;
 		}
+
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if (NPC.alpha != 255) {
+			if (NPC.alpha != 255)
 				GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/LaserBase_Glow").Value, screenPos);
-			}
 		}
+
 		int lifeSpan = 250;
 		int distAbove = 150;
 		int fireRate = Main.rand.Next(27, 41);
+
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(fireRate);
 		public override void ReceiveExtraAI(BinaryReader reader) => fireRate = reader.ReadInt32();
+
 		public override bool PreAI()
 		{
-
 			NPC.TargetClosest(true);
-			if (lifeSpan <= 0) {
+			Player player = Main.player[NPC.target];
+
+			if (lifeSpan <= 0)
+			{
 				NPC.life = 0;
 				NPC.active = false;
 			}
-			Player player = Main.player[NPC.target];
-			if (lifeSpan % 250 == 0) {
+			
+			if (lifeSpan % 250 == 0)
+			{
 				distAbove = 375;
-				if (Main.rand.NextBool(2)) {
+				if (Main.rand.NextBool(2))
+				{
 					NPC.position.X = player.Center.X - Main.rand.Next(300, 500);
 					NPC.position.Y = player.Center.Y - distAbove;
 					NPC.velocity.X = 3f;
 				}
-				else {
+				else
+				{
 					NPC.position.X = player.Center.X + Main.rand.Next(300, 500);
 					NPC.position.Y = player.Center.Y - distAbove;
 					NPC.velocity.X = -3f;
@@ -68,9 +76,11 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				NPC.netUpdate = true;
 			}
 			NPC.velocity.Y = 0;
-			if (lifeSpan % fireRate == 0) {
+			if (lifeSpan % fireRate == 0)
+			{
 				SoundEngine.PlaySound(SoundID.Item91, NPC.Center);
-				for (int i = 0; i < 16; i++) {
+				for (int i = 0; i < 16; i++)
+				{
 					int dust = Dust.NewDust(NPC.Center, NPC.width, NPC.height, DustID.GoldCoin);
 
 					Main.dust[dust].velocity *= -1f;

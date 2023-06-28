@@ -1196,8 +1196,8 @@ namespace SpiritMod
 				Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-1000, 1000), Player.Center.Y + Main.rand.Next(-1200, -900), SpeedX, SpeedY, ModContent.ProjectileType<Meteor>(), 30, 3, Main.myPlayer, 0.0f, 1);
 			}
 
-			if (shieldCore)
-			{
+            if (shieldCore && Player.whoAmI == Main.myPlayer)
+            {
 				int shieldCount = 2;
 				int type = ModContent.ProjectileType<InterstellarShield>();
 
@@ -1207,6 +1207,7 @@ namespace SpiritMod
 					{
 						Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<InterstellarShield>(), 0, 0, Player.whoAmI, i * 360);
 						proj.ai[1] = -(InterstellarShield.cooldownTime * InterstellarShield.rechargeRate);
+						proj.netUpdate = true;
 					}
 				}
 			}
