@@ -48,6 +48,8 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 				modItem.firingAnimation = Item.useAnimation * 3;
 				modItem.firingTime = Item.useTime * 3;
 			}
+			projectile.netUpdate = true;
+
 			return false;
 		}
 	}
