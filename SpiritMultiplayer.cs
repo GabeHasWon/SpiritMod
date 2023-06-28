@@ -323,15 +323,17 @@ namespace SpiritMod
 				case MessageType.Quest:
 					QuestMultiplayer.HandlePacket(reader, (QuestMessageType)reader.ReadByte(), reader.ReadBoolean());
 					break;
-				case MessageType.QuestSpawnPool: //int32 npcid, bool add, QuestPoolData data
+				case MessageType.QuestSpawnPool: //int32 npcid, bool add, (add=false: QuestPoolData data) 
 					int poolNPCID = reader.ReadInt16();
 					bool add = reader.ReadBoolean();
-					QuestPoolData data = QuestPoolData.Deserialize(reader);
 
 					if (add)
+					{
+						QuestPoolData data = QuestPoolData.Deserialize(reader);
 						QuestGlobalNPC.AddToPool(poolNPCID, data);
+					}
 					else
-						QuestGlobalNPC.RemoveFromPool(poolNPCID, data.ID);
+						QuestGlobalNPC.RemoveFromPool(poolNPCID);
 					break;
 				default:
 					SpiritMod.Instance.Logger.Error("Unknown net message (" + id + ")");

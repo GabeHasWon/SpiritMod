@@ -22,7 +22,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 		public static event Action<NPC> OnNPCLoot;
 		public static event Action<int, Chest, int> OnSetupShop;
 
-		public static Dictionary<int, List<QuestPoolData>> SpawnPoolMods = new();
+		public static Dictionary<int, QuestPoolContainer> SpawnPoolMods = new();
 		public static Dictionary<string, Func<NPCSpawnInfo, bool>> SpawnConditions = new();
 
 		public override void Load()
@@ -189,44 +189,47 @@ namespace SpiritMod.Mechanics.QuestSystem
 			}
 		}
 
-		public static void AddToPool(int id, QuestPoolData data, string syncKey = null)
+		public static void AddToPool(int id, QuestPoolData data)
 		{
-			if (Main.netMode == NetmodeID.SinglePlayer)
+			if (Main.netMode == NetmodeID.SinglePlayer || Main.netMode == NetmodeID.Server) //Add only on singleplayer or server,
 			{
-				if (SpawnPoolMods.ContainsKey(id))
-					SpawnPoolMods[id].Add(data);
+				if (SpawnPoolMods.ContainsKey(id)) //Increment count and update data
+				{
+					SpawnPoolMods[id].count++;
+					SpawnPoolMods[id].data = data;
+				}
 				else
-					SpawnPoolMods.Add(id, new() { data });
+					SpawnPoolMods.Add(id, new(data));
 			}
-			else if (Main.netMode == NetmodeID.MultiplayerClient)
+			else if (Main.netMode == NetmodeID.MultiplayerClient) //Otherwise update server
 			{
-				if (syncKey is null)
-					throw new NullReferenceException("Provided syncKey to QuestGlobalNPC.AddToPool is null!");
-
 				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.QuestSpawnPool, 7);
-				packet.Write((short)id); //Might need to be an int32 if people go WILD
-				packet.Write(true);
-				data.Serialize(packet);
+				packet.Write((short)id); //npcid
+				packet.Write(true); //add
+				data.Serialize(packet); //data
 				packet.Send();
 			}
 		}
 
-		public static void RemoveFromPool(int id, long poolIDToRemove)
+		public static void RemoveFromPool(int id)
 		{
-			if (SpawnPoolMods.ContainsKey(id))
+			if (Main.netMode == NetmodeID.SinglePlayer || Main.netMode == NetmodeID.Server) //Only remove if in single player or server,
 			{
-				SpawnPoolMods[id].RemoveAll(x => x.ID == poolIDToRemove);
+				if (SpawnPoolMods.ContainsKey(id))
+				{
+					SpawnPoolMods[id].count--;
 
-				if (!SpawnPoolMods[id].Any())
-					SpawnPoolMods.Remove(id);
+					if (SpawnPoolMods[id].count == 0)
+						SpawnPoolMods.Remove(id);
+				}
+				else
+					SpiritMod.Instance.Logger.Error("Attempt to remove QuestPoolData from empty key.", new ArgumentException("Attempt to remove QuestPoolData from empty key."));
 			}
-
-			if (Main.netMode == NetmodeID.MultiplayerClient)
+			if (Main.netMode == NetmodeID.MultiplayerClient) //otherwise send to server
 			{
 				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.QuestSpawnPool, 2);
-				packet.Write((short)id); //Might need to be an int32 if people go WILD
-				packet.Write(false);
-				packet.Write(poolIDToRemove);
+				packet.Write((short)id); //npcid
+				packet.Write(false); //remove
 				packet.Send();
 			}
 		}
@@ -235,28 +238,24 @@ namespace SpiritMod.Mechanics.QuestSystem
 		{
 			foreach (int npcID in SpawnPoolMods.Keys)
 			{
-				var currentPoolSet = SpawnPoolMods[npcID];
+				var pool = SpawnPoolMods[npcID].data;
+				bool conditionNull = pool.ConditionKey is null;
 
-				foreach (var pool in currentPoolSet)
+				if (!spawnPool.ContainsKey(npcID))
 				{
-					bool conditionNull = pool.ConditionKey is null;
-
-					if (!spawnPool.ContainsKey(npcID))
+					if (pool.Forced)
 					{
-						if (pool.Forced)
-						{
-							if (((pool.Exclusive && !NPC.AnyNPCs(npcID)) || !pool.Exclusive) && (conditionNull || SpawnConditions[pool.ConditionKey].Invoke(spawnInfo)))
-								spawnPool.Add(npcID, pool.NewRate.Value);
-						}
-						continue;
+						if (((pool.Exclusive && !NPC.AnyNPCs(npcID)) || !pool.Exclusive) && (conditionNull || SpawnConditions[pool.ConditionKey].Invoke(spawnInfo)))
+							spawnPool.Add(npcID, pool.NewRate.Value);
 					}
-
-					if (pool.NewRate is null) //We don't have a new rate to set to
-						continue;
-
-					if (((pool.Exclusive && !NPC.AnyNPCs(npcID)) || !pool.Exclusive) && (conditionNull || SpawnConditions[pool.ConditionKey].Invoke(spawnInfo)))
-						spawnPool[npcID] = pool.NewRate.Value;
+					continue;
 				}
+
+				if (pool.NewRate is null) //We don't have a new rate to set to
+					continue;
+
+				if (((pool.Exclusive && !NPC.AnyNPCs(npcID)) || !pool.Exclusive) && (conditionNull || SpawnConditions[pool.ConditionKey].Invoke(spawnInfo)))
+					spawnPool[npcID] = pool.NewRate.Value;
 			}
 		}
 	}

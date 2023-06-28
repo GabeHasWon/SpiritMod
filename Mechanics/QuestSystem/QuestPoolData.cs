@@ -77,4 +77,16 @@ namespace SpiritMod.Mechanics.QuestSystem
 			return data;
 		}
 	}
+
+	public class QuestPoolContainer
+	{
+		public QuestPoolData data;
+		public int count;
+
+		public QuestPoolContainer(QuestPoolData data)
+		{
+			this.data = data;
+			count = 1;
+		}
+	}
 }

@@ -129,6 +129,9 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 		{
 			QuestGlobalNPC.OnNPCLoot += QuestGlobalNPC_OnNPCLoot;
 
+			if (_poolData is null)
+				return;
+
 			for (int i = 0; i < MonsterIDs.Length; i++)
 			{
 				if (_poolData != null)
@@ -139,6 +142,9 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 		public override void Deactivate()
 		{
 			QuestGlobalNPC.OnNPCLoot -= QuestGlobalNPC_OnNPCLoot;
+
+			if (_poolData is null)
+				return;
 
 			for (int i = 0; i < MonsterIDs.Length; i++)
 				QuestGlobalNPC.RemoveFromPool(MonsterIDs[i]);
