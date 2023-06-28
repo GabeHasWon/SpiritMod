@@ -124,7 +124,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			{
 				flag = true;
 
-				if (Main.LocalPlayer.RollLuck(10) == 0)
+				if (Main.LocalPlayer.RollLuck(32) == 0)
 					timer = symbolCounterOne;
 			}
 		}

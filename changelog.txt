@@ -1,10 +1,3 @@
-﻿- Updated FaQ more
-- Made all Ice Sculptures break anytime
-- Reduced the likelihood of a Winterborn re-freezing frozen players
-- Added Luminous Ocean announcement
-- Made Luminous Ocean event sync in multiplayer
-- Heavily improved Bioluminescent Algae behaviour, drawing, code
-- Fixed any master items that weren't marked as master items
-- Fixed Vile Wand mini-eaters not dealing damage
-- Reduced Cloudstalk spawn rate even more
-- Flipped Iggysaur's Mask sprite
+﻿- Reduced Slot Machine jackpot rate from 1/100 to 1/1024
+- Fixed fall damage being applied when a ziplining player hits a platform
+- Fixed Blood Blossom breaking when something is placed under it

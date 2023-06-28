@@ -120,7 +120,6 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 								if (progress > .5) //The second half of the chain is drawn by the partner projectile
 								{
 									zipline.HandleChainVisuals(1f - (float)progress);
-
 									zipline.vFadeout = 1f;
 
 									if (vFadeout > .5f)
