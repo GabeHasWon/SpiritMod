@@ -48,7 +48,6 @@ using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 using SpiritMod.Items.Accessory.ShieldCore;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
-using SpiritMod.Items.Accessory.TalismanTree;
 using SpiritMod.Items.Accessory.TalismanTree.GrislyTotem;
 
 namespace SpiritMod
@@ -226,15 +225,8 @@ namespace SpiritMod
 		public int infernalDash;
 		public bool longFuse;
 		public bool granitechDrones;
-
-		// Talisman booleans
 		public bool grislyTotem;
 		public int damageToRecover;
-		public bool amazonianCharm;
-		public bool vileCharm;
-		public bool hellMedallion;
-		public bool marrowPendant;
-		public bool twilightTalisman;
 
 		public bool windEffect;
 		public bool windEffect2;
@@ -504,11 +496,6 @@ namespace SpiritMod
 			usingHelios = false;
 
 			grislyTotem = false;
-			amazonianCharm = false;
-			vileCharm = false;
-			hellMedallion = false;
-			marrowPendant = false;
-			twilightTalisman = false; 
 	}
 
 	private void ResetMiscVariables()
@@ -1147,7 +1134,6 @@ namespace SpiritMod
 			}
 		}
 
-		public int dir;
 		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
 		{
 			if (soulPotion && Main.rand.NextBool(5))
@@ -1164,20 +1150,11 @@ namespace SpiritMod
 					for (int i = 0; i < 3; i++)
 					{
 						int item = Item.NewItem(Player.GetSource_FromThis("grislyTotem"), Player.position, ModContent.ItemType<GrislyBit>());
-						Main.item[item].velocity = Main.rand.NextVector2CircularEdge(25f, 10f);
+						Main.item[item].velocity = Main.rand.NextVector2CircularEdge(20f, 10f);
 					}
 				for (int i = 0; i < 10; i++)
 						Dust.NewDust(Player.position, Player.width, Player.height, DustID.Blood, 1f, 1f, 100, default, 2f);
 				}
-
-			//if (vileCharm)
-			//if (amazonianCharm)
-			if (marrowPendant)
-				SoundEngine.PlaySound(SoundID.DD2_SkeletonHurt);
-
-			//if (hellMedallion)
-			//if (twilightTalisman)
-
 		}
 
 

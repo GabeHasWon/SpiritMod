@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using SpiritMod.Items.Sets.BloodcourtSet;
 
 namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTotem
 {
@@ -9,7 +10,7 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTotem
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Grisly Totem");
-			Tooltip.SetDefault("Getting hit dislodges a chunk of meat that can be picked up to recover a portion of your lost health.\nThis pickup dissapears after a few seconds.");
+			Tooltip.SetDefault("Getting hit dislodges a chunk of meat that can be picked up to recover a portion of your lost health\nThis pickup dissapears after a few seconds");
 		}
 
 		public override void SetDefaults()
@@ -24,13 +25,11 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTotem
 
 		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().grislyTotem = true;
 
-
 		public override void AddRecipes()
 		{
 			Recipe modRecipe = CreateRecipe(1);
 			modRecipe.AddIngredient(ItemID.Vertebrae, 8);
-			modRecipe.AddIngredient(ItemID.TissueSample, 5);
-			modRecipe.AddIngredient(ItemID.Chain, 3);
+			modRecipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 4);
 			modRecipe.AddTile(TileID.Anvils);
 			modRecipe.Register();
 		}

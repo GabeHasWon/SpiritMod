@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTotem
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Grisly Bit");
-			Tooltip.SetDefault("You shouldn't see this.");
+			Tooltip.SetDefault("You shouldn't see this");
 			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
 		}
 		public override void SetDefaults()
