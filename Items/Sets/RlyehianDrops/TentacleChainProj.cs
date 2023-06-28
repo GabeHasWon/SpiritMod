@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Enums;
 using Terraria.GameContent;
@@ -10,7 +11,6 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 {
 	public class TentacleChainProj : ModProjectile
 	{
-		public Vector2 chainHeadPosition;
 		public float firingSpeed;
 		public float firingAnimation;
 		public float firingTime;
@@ -200,11 +200,22 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 			rectangle = chainHead;
 			// Draw the chain head. This is the fourth piece in the sprite.
 			Main.spriteBatch.Draw(texture, chainEnd - Main.screenPosition + yOffset, rectangle, Lighting.GetColor((int)chainEnd.X / 16, (int)chainEnd.Y / 16), rotation, texture.Frame().Top(), Projectile.scale, SpriteEffects.None, 0f);
-			// Because the chain head's draw position isn't determined in AI, it is set in PreDraw.
-			// This is so the smoke-spawning dust and white light are at the proper location.
-			chainHeadPosition = chainEnd;
 
 			return false;
+		}
+
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			writer.Write(firingSpeed);
+			writer.Write(firingAnimation);
+			writer.Write(firingTime);
+		}
+
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			firingSpeed = reader.Read();
+			firingAnimation = reader.Read();
+			firingTime = reader.Read();
 		}
 	}
 }
