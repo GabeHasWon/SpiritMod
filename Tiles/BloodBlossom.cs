@@ -21,7 +21,7 @@ namespace SpiritMod.Tiles
 			Main.tileLighted[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
-			TileObjectData.newTile.AnchorBottom = AnchorData.Empty; //Any anchor is valid
+			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.None, 0, 0); //No anchor is needed
 			TileObjectData.newTile.Origin = new Point16(1, 1);
 			TileObjectData.addTile(Type);
 
@@ -31,7 +31,7 @@ namespace SpiritMod.Tiles
 			AddMapEntry(new Color(234, 0, 0), name);
 		}
 
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => MyWorld.downedReachBoss;
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => false;
 		public override bool CanExplode(int i, int j) => false;
 
 		public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
@@ -50,6 +50,7 @@ namespace SpiritMod.Tiles
 				b = 0.126f * 1.5f;
 			}
 		}
+
 		public override void MouseOver(int i, int j)
 		{
 			Main.LocalPlayer.cursorItemIconEnabled = true; //Show text when hovering over this tile

@@ -34,6 +34,7 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 					Vector2 adjustment = Vector2.UnitY * -0.1f; //This keeps the player in position
 					float magnitude = Math.Sign(Player.velocity.X) * (7f * Player.moveSpeed);
 					Player.velocity = (directionUnit * magnitude) + adjustment;
+					Player.fallStart = (int)Player.position.Y / 16;
 
 					if (Player.velocity.Length() > .5f)
 						Dust.NewDustPerfect(Player.Center + (Vector2.UnitY * (Player.height / 2) * Player.gravDir), DustID.Torch, new Vector2(-Player.velocity.X * Main.rand.NextFloat(), -Main.rand.NextFloat()), 0, default, .75f);
