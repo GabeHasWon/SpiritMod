@@ -1,3 +1,6 @@
 ﻿- Moved quests to be saved per player
 - Synced NPC spawns in SlayTasks
 - Short-circuited removing/adding QuestPoolData if there is none to add/remove
+- Made Quests reset on switching player
+- Fixed SlayTasks not removing modified spawn rates after completion or disabling
+- Gutted now-useless syncing

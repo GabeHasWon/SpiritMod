@@ -18,10 +18,10 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 		public override void LoadData(TagCompound tag)
 		{
-			QuestManager.QuestBookUnlocked = false;
+			QuestManager.QuestBookUnlocked = false; //Reset data
 			QuestManager.RestartEverything(); 
 			
-			QuestSaving.LoadData(tag);
+			QuestSaving.LoadData(tag); //Load data
 		}
 
 		public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
@@ -32,12 +32,12 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 		public override void OnEnterWorld(Player player)
 		{
-			if (Main.netMode == NetmodeID.MultiplayerClient)
-			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.RequestQuestManager, 1);
-				packet.Write((byte)player.whoAmI);
-				packet.Send();
-			}
+			//if (Main.netMode == NetmodeID.MultiplayerClient)
+			//{
+			//	ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.RequestQuestManager, 1);
+			//	packet.Write((byte)player.whoAmI);
+			//	packet.Send();
+			//}
 		}
 
 		/// <summary>Handles syncing the QuestManager from server.</summary>
