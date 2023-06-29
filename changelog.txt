@@ -1,2 +1,1 @@
-﻿- Fixed Bottomless Healing Potion doing nothing
-- Reworked Cactus Staff to summon a short-lived cactus wall
+﻿- Adjusted Packing Crate spawn rates again
