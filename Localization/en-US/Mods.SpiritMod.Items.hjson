@@ -7807,8 +7807,7 @@ CactusStaff: {
 	DisplayName: Cactus Staff
 	Tooltip:
 		'''
-		Shoots two cactus needles at foes
-		These pins stick to enemies and poison them
+		Summons cactus walls to protect you
 		'''
 }
 
