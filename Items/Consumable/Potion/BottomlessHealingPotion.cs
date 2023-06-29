@@ -60,7 +60,6 @@ namespace SpiritMod.Items.Consumable.Potion
 
 		public override bool? UseItem(Player player)
 		{
-			Item.healLife = 0; //set item's heal life to 0 when actually used, so it doesnt heal player
 			if (!player.pStone)
 				player.AddBuff(BuffID.PotionSickness, 3600);
 			else
@@ -73,7 +72,6 @@ namespace SpiritMod.Items.Consumable.Potion
 
 		public override void GetHealLife(Player player, bool quickHeal, ref int healValue) => healValue = 100;
 		public override bool ConsumeItem(Player player) => false;
-		public override void UpdateInventory(Player player) => Item.healLife = 100; //update the heal life back to 120 for tooltip and quick heal purposes
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
