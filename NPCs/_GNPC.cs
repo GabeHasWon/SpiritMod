@@ -86,6 +86,10 @@ namespace SpiritMod.NPCs
 
 		public bool sFracture = false;
 		public bool blaze = false;
+
+		public float slowDegree;
+		private float slowAmt;
+		public bool BeingSlowed => slowDegree > 0;
 		#endregion
 
 		public override void ResetEffects(NPC npc)
@@ -121,6 +125,7 @@ namespace SpiritMod.NPCs
 
 			summonTag = 0;
 			sacrificialDaggerBuff = false;
+			slowDegree = 0;
 		}
 
 		public override bool PreAI(NPC npc)
@@ -162,7 +167,23 @@ namespace SpiritMod.NPCs
 			if (oakHeartStacks > 0)
 				oakHeartStacks--;
 
+			if (BeingSlowed)
+			{
+				if ((slowAmt += slowDegree) > 1)
+				{
+					slowAmt--;
+					return true;
+				}
+				return false;
+			}
+
 			return true;
+		}
+
+		public override void PostAI(NPC npc)
+		{
+			if (BeingSlowed)
+				npc.position -= npc.velocity * (float)(1f - slowAmt);
 		}
 
 		public override void HitEffect(NPC npc, int hitDirection, double damage)

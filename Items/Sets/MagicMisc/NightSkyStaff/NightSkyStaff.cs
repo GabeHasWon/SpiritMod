@@ -53,7 +53,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.NightSkyStaff
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<ZephyrBreath.BreathOfTheZephyr>(), 1);
-			recipe.AddIngredient(ModContent.ItemType<FrigidSet.HowlingScepter>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<FrigidSet.Frostbite.HowlingScepter>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<GraniteSet.GraniteWand>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<BossLoot.StarplateDrops.CosmiliteShard>(), 7);
 			recipe.AddTile(TileID.Anvils);
