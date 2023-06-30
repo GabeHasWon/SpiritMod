@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using SpiritMod.Items.Placeable.Furniture;
+using SpiritMod.Items.Sets.Vulture_Matriarch.Matriarch_Wings;
 
 namespace SpiritMod.Items.Sets.Vulture_Matriarch
 {
@@ -31,6 +32,9 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch
 
 				if (Main.rand.NextBool(7))
 					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), ModContent.ItemType<Vulture_Matriarch_Mask>(), 1);
+
+				if (Main.rand.NextBool(3))
+					player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), ModContent.ItemType<Matriarch_Wings.Matriarch_Wings>(), 1);
 
 				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), Main.rand.Next(new int[] { ModContent.ItemType<Tome_of_the_Great_Scavenger.Tome_of_the_Great_Scavenger>(), ModContent.ItemType<Sovereign_Talon.Sovereign_Talon>() }), 1);
 				player.QuickSpawnItem(player.GetSource_OpenItem(Item.type, "Pickup"), ItemID.GoldCoin, 1);
