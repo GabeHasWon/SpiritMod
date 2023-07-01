@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Pins
 		public TagCompound pins = new();
 
 		public void SetPin(string name, Vector2 pos) => pins[name] = pos;
-
 		public void RemovePin(string name) => pins.Remove(name);
 
 		public override void SaveWorldData(TagCompound tag) => tag.Add("pins", pins);

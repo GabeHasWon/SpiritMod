@@ -94,6 +94,7 @@ namespace SpiritMod.NPCs.Town
 				"We're pretty similar, you and I. I sense our shared thirst for adventure.",
 				"Buy my stuff and go out there! See what the world has to offer, like I have.",
 				"From the depths of temples and the heights of space, peruse my wares.",
+				"I've a knack for pins, I have to say. You find all these little trinkets on your travels..."
 			};
 
 			int merchant = NPC.FindFirstNPC(NPCID.Merchant);
@@ -113,7 +114,7 @@ namespace SpiritMod.NPCs.Town
 			dialogue.AddWithCondition("The goblins are more organized than you'd think- I saw their mages build a huge tower over yonder. You should check it out sometime!", MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
 			dialogue.AddWithCondition("My old business partner turned to the bandit life a few years ago. I wonder if he's doing okay. I think his associates have set up a bandit camp somewhere near the seas.", !MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
 			dialogue.AddWithCondition("A shimmering blue light's on the horizon. Wonder what that's about, huh?", NPC.downedMechBossAny);
-
+			
 			return Main.rand.Next(dialogue);
 		}
 
@@ -140,6 +141,10 @@ namespace SpiritMod.NPCs.Town
                     AddItem(ref shop, ref nextSlot, ItemID.UltrabrightTorch);
                     break;
             }
+
+			AddItem(ref shop, ref nextSlot, ItemType<PinScarab>(), check: MyWorld.downedScarabeus);
+			AddItem(ref shop, ref nextSlot, ItemType<PinMoonjelly>(), check: MyWorld.downedMoonWizard);
+			AddItem(ref shop, ref nextSlot, ItemType<PinTree>(), check: Main.hardMode);
 			AddItem(ref shop, ref nextSlot, ItemType<Items.Sets.GunsMisc.PolymorphGun.PolymorphGun>(), check: NPC.downedMechBossAny);
 		}
 

@@ -8,6 +8,7 @@ using Terraria.ID;
 using SpiritMod.Items.Consumable.Food;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using Terraria.Audio;
+using Terraria.Utilities;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 {
@@ -107,36 +108,29 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 				SoundEngine.PlaySound(SoundID.Dig, NPC.Center);
 			}
 			counter--;
+
 			if (counter == 0)
 			{
 				for (int i = 0; i < 30; i++)
 				{
 					int itemid;
-					int item = 0;
 					float val = Main.rand.NextFloat();
-					if (val < .214f)
-					{
-						itemid = ItemID.CopperCoin;
-					}
-					else if (val < .214f + .366f)
-					{
-						itemid = ItemID.SilverCoin;
-					}
-					else if (val < 0.991f)
-					{
-						itemid = ItemID.GoldCoin;
-					}
-					else
-					{
-						itemid = ItemID.PlatinumCoin;
-					}
 
-					item = Item.NewItem(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, itemid, 1);
+					if (val < .214f)
+						itemid = ItemID.CopperCoin;
+					else if (val < .580f)
+						itemid = ItemID.SilverCoin;
+					else if (val < 0.991f)
+						itemid = ItemID.GoldCoin;
+					else
+						itemid = ItemID.PlatinumCoin;
+
+					int item = Item.NewItem(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, itemid, 1);
 					Main.item[item].velocity = Vector2.UnitY.RotatedBy(Main.rand.NextFloat(1.57f, 4.71f)) * 4;
 					Main.item[item].velocity.Y /= 2;
+
 					if (Main.netMode != NetmodeID.SinglePlayer)
 						NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item);
-
 				}
 
 				var source = NPC.GetSource_FromAI();
@@ -147,6 +141,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 				NPC.DropItem(ItemID.AngelStatue, 0.01f, source);
 				NPC.DropItem(ModContent.ItemType<Champagne.Champagne>(), 0.1f, source, Main.rand.Next(1, 3));
 				NPC.DropItem(ModContent.ItemType<Mystical_Dice>(), 0.06f, source);
+
 				switch (Main.rand.NextBool())
 				{ //mutually exclusive
 					case true:
@@ -156,20 +151,20 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 						NPC.DropItem(ModContent.ItemType<RegalCane.RegalCane>(), 0.08f, source);
 						break;
 				}
+
 				string[] lootTable = { "DiverLegs", "DiverHead", "DiverBody", "AstronautBody", "AstronautHelm", "AstronautLegs", "BeekeeperBody", "BeekeeperHead", "BeekeeperLegs", 
 						"CapacitorBody", "CapacitorHead", "CapacitorLegs", "CenturionBody", "CenturionlLegs", "CenturionHead", "CommandoHead", "CommandoBody", "CommandoLegs", 
 						"CowboyBody", "CowboyLegs", "CowboyHead", "FreemanBody", "FreemanLegs", "FreemanHead", "GeodeHelmet", "GeodeChestplate", "GeodeLeggings", "SnowRangerBody", "SnowRangerHead", "SnowRangerLegs",
 						"JackBody", "JackLegs", "JackHead", "PlagueDoctorCowl", "PlagueDoctorRobe", "PlagueDoctorLegs", "ProtectorateBody", "ProtectorateLegs", "LeafPaddyHat", "PsychoMask", 
 						"OperativeBody", "OperativeHead", "OperativeLegs", "WitchBody", "WitchHead", "WitchLegs"};
+				
 				int loot = Main.rand.Next(lootTable.Length);
-
-
 				string[] donatorLootTable = { "WaasephiVanity", "MeteorVanity", "LightNovasVanity", "PixelatedFireballVanity" };
 				int donatorloot = Main.rand.Next(lootTable.Length);
+
 				if (Main.rand.NextBool(15))
-				{
 					NPC.DropItem(Mod.Find<ModItem>(donatorLootTable[donatorloot]).Type, source);
-				}
+
 				if (Main.rand.NextBool(20))
 				{
 					NPC.DropItem(Mod.Find<ModItem>(lootTable[loot]).Type, source);
@@ -183,6 +178,17 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 						Main.dust[num].fadeIn += .1f;
 					}
 				}
+
+				if (Main.rand.NextBool(15)) //pins
+				{
+					WeightedRandom<int> pins = new WeightedRandom<int>(Main.rand);
+					pins.Add(ModContent.ItemType<Pins.PinCopperCoin>(), 0.2f);
+					pins.Add(ModContent.ItemType<Pins.PinSilverCoin>(), 0.3f);
+					pins.Add(ModContent.ItemType<Pins.PinGoldCoin>(), 0.5f);
+
+					NPC.DropItem(pins, NPC.GetSource_FromAI());
+				}
+
 				NPC.active = false;
 				SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
 

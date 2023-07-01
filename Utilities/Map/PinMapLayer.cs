@@ -27,7 +27,14 @@ namespace SpiritMod.Utilities.Map
 				{ "Blue", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinBlueMap") },
 				{ "Red", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinRedMap") },
 				{ "Green", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinGreenMap") },
-				{ "Yellow", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinYellowMap") }
+				{ "Yellow", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinYellowMap") },
+				{ "Tree", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinTreeMap") },
+				{ "Star", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinStarMap") },
+				{ "Copper", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinCopperMap") },
+				{ "Silver", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinSilverMap") },
+				{ "Gold", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinGoldMap") },
+				{ "Scarab", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinScarabMap") },
+				{ "Moonjelly", ModContent.Request<Texture2D>($"SpiritMod/Items/Pins/Textures/PinMoonjellyMap") },
 			};
 
 			var pins = ModContent.GetInstance<PinWorld>().pins;

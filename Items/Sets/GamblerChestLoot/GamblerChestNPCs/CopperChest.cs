@@ -6,6 +6,7 @@ using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria.ID;
 using SpiritMod.Mechanics.Fathomless_Chest;
+using Terraria.Utilities;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 {
@@ -121,6 +122,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 							Main.dust[num].fadeIn += .1f;
 						}
 					}
+
 					NPC.DropItem(ModContent.ItemType<Jem.Jem>(), 0.0025f, NPC.GetSource_FromAI());
 					NPC.DropItem(ModContent.ItemType<Consumable.Food.GoldenCaviar>(), 0.05f, NPC.GetSource_FromAI());
 					NPC.DropItem(ModContent.ItemType<FunnyFirework.FunnyFirework>(), 0.05f, NPC.GetSource_FromAI(), Main.rand.Next(5, 9));
@@ -136,6 +138,16 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 						case false:
 							NPC.DropItem(ModContent.ItemType<RegalCane.RegalCane>(), 0.01f, NPC.GetSource_FromAI());
 							break;
+					}
+
+					if (Main.rand.NextBool(30)) //pins
+					{
+						WeightedRandom<int> pins = new WeightedRandom<int>(Main.rand);
+						pins.Add(ModContent.ItemType<Pins.PinCopperCoin>(), 0.80f);
+						pins.Add(ModContent.ItemType<Pins.PinSilverCoin>(), 0.175f);
+						pins.Add(ModContent.ItemType<Pins.PinGoldCoin>(), 0.025f);
+
+						NPC.DropItem(pins, NPC.GetSource_FromAI());
 					}
 				}
 			}

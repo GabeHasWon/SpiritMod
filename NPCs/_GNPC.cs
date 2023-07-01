@@ -39,6 +39,7 @@ using SpiritMod.Buffs.Pet;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Pets;
 using SpiritMod.Utilities;
+using SpiritMod.Items.Pins;
 
 namespace SpiritMod.NPCs
 {
@@ -628,6 +629,7 @@ namespace SpiritMod.NPCs
 			else if (type == NPCID.Wizard)
 			{
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SurrenderBell>(), false);
+				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<PinStar>(), false);
 			}
 			else if (type == NPCID.Steampunker)
 			{

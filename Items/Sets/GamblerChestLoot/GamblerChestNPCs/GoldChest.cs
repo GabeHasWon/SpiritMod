@@ -7,6 +7,7 @@ using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria.ID;
 using SpiritMod.Mechanics.Fathomless_Chest;
+using Terraria.Utilities;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 {
@@ -162,15 +163,16 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 						"CowboyBody", "CowboyLegs", "CowboyHead", "FreemanBody", "FreemanLegs", "FreemanHead", "GeodeHelmet", "GeodeChestplate", "GeodeLeggings", "SnowRangerBody", "SnowRangerHead", "SnowRangerLegs",
 						"JackBody", "JackLegs", "JackHead", "PlagueDoctorCowl", "PlagueDoctorRobe", "PlagueDoctorLegs", "ProtectorateBody", "ProtectorateLegs", "LeafPaddyHat", "PsychoMask", 
 						"OperativeBody", "OperativeHead", "OperativeLegs", "WitchBody", "WitchHead", "WitchLegs"};
+					
 					int loot = Main.rand.Next(lootTable.Length);
-
-
 					string[] donatorLootTable = { "WaasephiVanity", "MeteorVanity", "LightNovasVanity", "PixelatedFireballVanity" };
 					int donatorloot = Main.rand.Next(lootTable.Length);
+
 					if (Main.rand.NextBool(20))
 					{
 						NPC.DropItem(Mod.Find<ModItem>(donatorLootTable[donatorloot]).Type, source);
 					}
+
 					if (Main.rand.NextBool(50))
 					{
 						NPC.DropItem(Mod.Find<ModItem>(lootTable[loot]).Type, source);
@@ -183,6 +185,16 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 							Main.dust[num].scale *= .35f;
 							Main.dust[num].fadeIn += .1f;
 						}
+					}
+
+					if (Main.rand.NextBool(20)) //pins
+					{
+						WeightedRandom<int> pins = new WeightedRandom<int>(Main.rand);
+						pins.Add(ModContent.ItemType<Pins.PinCopperCoin>(), 0.4f);
+						pins.Add(ModContent.ItemType<Pins.PinSilverCoin>(), 0.4f);
+						pins.Add(ModContent.ItemType<Pins.PinGoldCoin>(), 0.2f);
+
+						NPC.DropItem(pins, NPC.GetSource_FromAI());
 					}
 				}
 			}

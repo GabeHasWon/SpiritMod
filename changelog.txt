@@ -1,6 +1,9 @@
-﻿- Made Crate Mimics not spawn in lava
-- Made Fireball projectiles be melee damage
-- Made all grasses die properly on explosion
-- Added temporary, hacky Polarities compatibility
-- Updated FaQ
-- Nerfed Glow Toad tongue damage (100 -> 80)
+﻿- Added new Map Pins: 
+	Tree - from Adventurer in Hardmode
+	Moonjelly - from Adventurer after Moon Jelly Wizard is defeated
+	Scarab - from Adventurer after Scarabeus is defeated
+	Star - from Wizard
+	Copper, Silver, Gold - from Gambler lootboxes. Rarer lootboxes drop pins more often and are more likely to drop better pins
+- Added Adventurer line that refers to the new pins
+- Added Forgotten King statue
+- Added Statue decor spam step

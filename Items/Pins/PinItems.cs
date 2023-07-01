@@ -29,4 +29,46 @@ namespace SpiritMod.Items.Pins
 		public override string PinName => "Yellow";
 		public override Color TextColor => Color.Gold;
 	}
+
+	public class PinTree : AMapPin
+	{
+		public override string PinName => "Tree";
+		public override Color TextColor => Color.ForestGreen;
+	}
+
+	public class PinStar : AMapPin
+	{
+		public override string PinName => "Star";
+		public override Color TextColor => Color.LightGoldenrodYellow;
+	}
+
+	public class PinCopperCoin : AMapPin
+	{
+		public override string PinName => "Copper";
+		public override Color TextColor => Color.SaddleBrown;
+	}
+
+	public class PinSilverCoin : AMapPin
+	{
+		public override string PinName => "Silver";
+		public override Color TextColor => Color.Silver;
+	}
+
+	public class PinGoldCoin : AMapPin
+	{
+		public override string PinName => "Gold";
+		public override Color TextColor => Color.Gold;
+	}
+
+	public class PinScarab : AMapPin
+	{
+		public override string PinName => "Scarab";
+		public override Color TextColor => Color.RoyalBlue;
+	}
+
+	public class PinMoonjelly : AMapPin
+	{
+		public override string PinName => "Moonjelly";
+		public override Color TextColor => Color.RoyalBlue;
+	}
 }
