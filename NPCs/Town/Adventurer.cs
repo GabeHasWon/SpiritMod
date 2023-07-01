@@ -17,6 +17,7 @@ using Terraria.ModLoader;
 using static SpiritMod.NPCUtils;
 using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Accessory.Leather;
 
 namespace SpiritMod.NPCs.Town
 {
@@ -128,7 +129,8 @@ namespace SpiritMod.NPCs.Town
 			AddItem(ref shop, ref nextSlot, ItemType<AncientBark>(), 200, Main.LocalPlayer.ZoneBriar());
 			AddItem(ref shop, ref nextSlot, ItemType<PinGreen>());
 			AddItem(ref shop, ref nextSlot, ItemType<PinYellow>());
-            AddItem(ref shop, ref nextSlot, ItemType<VitalityStone>(), check: Main.bloodMoon);
+			AddItem(ref shop, ref nextSlot, ItemType<ExplorerTreads>());
+			AddItem(ref shop, ref nextSlot, ItemType<VitalityStone>(), check: Main.bloodMoon);
             int glowStick = Main.moonPhase == 4 && !Main.dayTime ? ItemID.SpelunkerGlowstick : ItemID.StickyGlowstick;
             AddItem(ref shop, ref nextSlot, glowStick);
 			switch (Main.moonPhase)

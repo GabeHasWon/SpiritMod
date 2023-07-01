@@ -160,7 +160,7 @@ namespace SpiritMod
 		public int voidStacks = 1;
 		public int camoCounter;
 		public int veilCounter;
-		public int jellynautStacks; //
+		public int jellynautStacks;
 		public bool blazeBurn;
 		public bool phaseShift;
 		private readonly float[] phaseSlice = new float[60];
@@ -198,12 +198,8 @@ namespace SpiritMod
 		public bool clatterboneSet;
 		public bool talonSet;
 
-		//public bool ZoneAsteroid = false;
 		public bool ZoneSpider = false;
-		//public bool ZoneSynthwave = false;
 		public bool ZoneLantern = false;
-		//public bool ZoneSpirit = false;
-		//public bool ZoneReach = false;
 
 		public bool inGranite = false;
 		public bool inMarble = false;
@@ -224,6 +220,7 @@ namespace SpiritMod
 		public int infernalDash;
 		public bool longFuse;
 		public bool granitechDrones;
+		public bool explorerTreads;
 
 		public bool windEffect;
 		public bool windEffect2;
@@ -486,6 +483,7 @@ namespace SpiritMod
 			moonGauntlet = false;
 			longFuse = false;
 			granitechDrones = false;
+			explorerTreads = false;
 
 			WingTimeMaxMultiplier = 1f;
 			StarjinxSet = false;
@@ -1006,12 +1004,24 @@ namespace SpiritMod
 				CrystalFlowerItem.OnKillEffect(proj.GetSource_OnHit(target), Player, target, damage);
 		}
 
+		public override bool CanBeHitByProjectile(Projectile proj)
+		{
+			int[] trapTypes = new int[] { ProjectileID.PoisonDart, ProjectileID.PoisonDartTrap, ProjectileID.SporeTrap, ProjectileID.SporeTrap2, ProjectileID.SpearTrap, ProjectileID.GeyserTrap, ProjectileID.FlamethrowerTrap, ProjectileID.FlamesTrap, ProjectileID.SpikyBallTrap, ProjectileID.RollingCactus, ProjectileID.RollingCactusSpike, ProjectileID.Boulder };
+			if (explorerTreads && trapTypes.Contains(proj.type))
+				return false;
+
+			return base.CanBeHitByProjectile(proj);
+		}
+
 		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
 		{
 			if (bubbleTimer > 0)
 				return false;
 			
 			if (AnimeSword)
+				return false;
+
+			if (explorerTreads && damageSource.SourceOtherIndex == 3) //Spikes
 				return false;
 
 			if (Main.rand.NextBool(5) && sepulchreCharm)
@@ -2396,6 +2406,14 @@ namespace SpiritMod
 				speed -= .15f;
 				sprint -= .15f;
 				accel -= .3f;
+			}
+
+			if (explorerTreads)
+			{
+				float speedBonus = (10f - (int)(Player.statLife / (float)(Player.statLifeMax2 / 10f))) * .06f;
+
+				speed += speedBonus;
+				sprint += speedBonus;
 			}
 
 			Player.maxRunSpeed *= speed;

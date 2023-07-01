@@ -36,7 +36,6 @@ using SpiritMod.NPCs.BlueMoon.Lumantis;
 using SpiritMod.NPCs.BlueMoon.MadHatter;
 using SpiritMod.NPCs.BlueMoon.LunarSlime;
 using SpiritMod.Buffs.Pet;
-using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Pets;
 using SpiritMod.Utilities;
 using SpiritMod.Items.Pins;
@@ -87,6 +86,7 @@ namespace SpiritMod.NPCs
 
 		public bool sFracture = false;
 		public bool blaze = false;
+		public bool shadowbroken = false;
 
 		public float slowDegree;
 		private float slowAmt;
@@ -123,6 +123,7 @@ namespace SpiritMod.NPCs
 			blaze = false;
 			tracked = false;
 			iceCrush = false;
+			shadowbroken = false;
 
 			summonTag = 0;
 			sacrificialDaggerBuff = false;
@@ -945,6 +946,8 @@ namespace SpiritMod.NPCs
 				drawColor = new Color(115, 80, 57);
 			if (tracked)
 				drawColor = new Color(135, 245, 76);
+			if (shadowbroken)
+				drawColor = Color.Magenta;
 		}
 	}
 }
