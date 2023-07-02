@@ -1,9 +1,5 @@
-﻿- Added new Map Pins: 
-	Tree - from Adventurer in Hardmode
-	Moonjelly - from Adventurer after Moon Jelly Wizard is defeated
-	Scarab - from Adventurer after Scarabeus is defeated
-	Star - from Wizard
-	Copper, Silver, Gold - from Gambler lootboxes. Rarer lootboxes drop pins more often and are more likely to drop better pins
-- Added Adventurer line that refers to the new pins
-- Added Forgotten King statue
-- Added Statue decor spam step
+﻿- Added Ore Cart ambient object
+- Added Ore Cart decor spam step
+- Fixed Forgotten King Statue issue
+- Made Forgotten King Statue spawn Hemoglo(r)bs with wiring
+- Replaced Sorcerer's Wand with Eye of the Sorcerer accessory

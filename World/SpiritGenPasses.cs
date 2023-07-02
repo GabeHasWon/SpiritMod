@@ -1250,6 +1250,7 @@ namespace SpiritMod.World
 			AddDecorSpam("SnowFoliage", snowFoliage, new int[] { TileID.SnowBlock, TileID.IceBlock }, 140, (int)Main.worldSurface - 100, (int)Main.worldSurface + 30);
 			AddDecorSpam("IceCubes", GlobalExtensions.TileSet<IceCube1, IceCube2, IceCube3>(), new int[] { TileID.SnowBlock, TileID.IceBlock }, 120, (int)Main.worldSurface - 100, (int)Main.worldSurface + 30);
 			AddDecorSpam("Statues", new int[] { ModContent.TileType<ForgottenKingStatue>() }, TileSets.Mosses.With(TileID.Stone, TileID.Obsidian), 15, (int)Main.worldSurface + 100, (int)Main.maxTilesY - 200);
+			AddDecorSpam("OreCarts", new int[] { ModContent.TileType<OreCarts>() }, new int[] { TileID.MinecartTrack }, 80, (int)Main.worldSurface + 100, (int)Main.maxTilesY - 200);
 
 			float vol = Main.soundVolume; //Dumb sound workaround because it doesn't want to SHUT UP >:(
 			Main.soundVolume = 0;

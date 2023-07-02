@@ -10,11 +10,14 @@ namespace SpiritMod.Items.Weapon.Magic
 {
 	public class GoblinSorcererStaff : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sorcerer's Wand");
 			Tooltip.SetDefault("Launches a shadowflame orb into the sky");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Weapon/Magic/GoblinSorcererStaff_Glow");
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -25,7 +28,6 @@ namespace SpiritMod.Items.Weapon.Magic
 			Item.rare = ItemRarityID.Green;
 			Item.damage = 13;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.useTime = 24;
 			Item.useAnimation = 24;
 			Item.mana = 10;
