@@ -1,3 +1,4 @@
+using SpiritMod.Items.Material;
 using SpiritMod.Tiles.Furniture.Bamboo;
 using Terraria;
 using Terraria.ID;
@@ -23,12 +24,12 @@ namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 			Item.createTile = ModContent.TileType<BambooPot>();
 		}
 
-		/*public override void AddRecipes()
+		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<StrippedBamboo>(), 5);
 			recipe.AddTile(TileID.Sawmill);
 			recipe.Register();
-		}*/
+		}
 	}
 }

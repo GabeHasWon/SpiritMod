@@ -65,25 +65,6 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 
 		public override bool RightClick(int i, int j)
 		{
-			HitWire(i, j);
-			return true;
-		}
-
-		public override void MouseOver(int i, int j)
-		{
-			Player player = Main.LocalPlayer;
-
-			if (ContainsBird(i, j, out int birdType))
-				player.cursorItemIconID = birdType;
-			else
-				player.cursorItemIconID = ModContent.ItemType<BambooBirdCageItem>();
-
-			player.noThrow = 2;
-			player.cursorItemIconEnabled = true;
-		}
-
-		public override void HitWire(int i, int j)
-		{
 			int x = i - Framing.GetTileSafely(i, j).TileFrameX / 18 % 2;
 			int y = j - Framing.GetTileSafely(i, j).TileFrameY / 18 % 3;
 
@@ -129,23 +110,28 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 
 				Main.LocalPlayer.QuickSpawnItem(new EntitySource_TileInteraction(Main.LocalPlayer, i, j), birdType);
 			}
+			if (Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendTileSquare(-1, x, y + 1, 3);
 
-			if (Wiring.running)
-			{
-				Wiring.SkipWire(x, y);
-				Wiring.SkipWire(x, y + 1);
-				Wiring.SkipWire(x, y + 2);
+			return true;
+		}
 
-				Wiring.SkipWire(x + 1, y);
-				Wiring.SkipWire(x + 1, y + 1);
-				Wiring.SkipWire(x + 1, y + 2);
-			}
-			NetMessage.SendTileSquare(-1, x, y + 1, 3);
+		public override void MouseOver(int i, int j)
+		{
+			Player player = Main.LocalPlayer;
+
+			if (ContainsBird(i, j, out int birdType))
+				player.cursorItemIconID = birdType;
+			else
+				player.cursorItemIconID = ModContent.ItemType<BambooBirdCageItem>();
+
+			player.noThrow = 2;
+			player.cursorItemIconEnabled = true;
 		}
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-			if (closer && ContainsBird(i, j, out _) && Main.rand.NextBool(80))
+			if (closer && ContainsBird(i, j, out _) && Main.rand.NextBool(100))
 				SoundEngine.PlaySound(SoundID.Bird, new Vector2(i * 16, j * 16));
 		}
 	}

@@ -20,7 +20,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BambooKendoBlade
 
 		public override void SetDefaults()
 		{
-			Item.damage = 9;
+			Item.damage = 7;
+			Item.crit = 2;
 			Item.knockBack = 3;
 			Item.useTime = Item.useAnimation = 20;
 			Item.DamageType = DamageClass.Melee;

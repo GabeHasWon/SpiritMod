@@ -69,9 +69,9 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			bool PlayerColliding()
 			{
 				Vector2 pos = new Vector2(player.position.X, player.position.Y + (player.height - 8));
-				for (int i = 0; i < 2; i++)
+				for (int i = 0; i < 4; i++)
 				{
-					Tile tile = Framing.GetTileSafely((int)(pos.X / 16) + i, (int)(pos.Y / 16));
+					Tile tile = Framing.GetTileSafely((int)(pos.X / 16) + (i % 2), (int)(pos.Y / 16) - (i / 2));
 					if (tile.HasTile && tile.TileType == ModContent.TileType<BambooPikeTile>() && tile.TileFrameY == 0) //The tip of the pike
 						return true;
 				}
@@ -90,6 +90,8 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 				player.AddBuff(buffType, 500);
 
 				SoundEngine.PlaySound(SoundID.NPCDeath12, player.Center);
+				for (int d = 0; d < 20; d++)
+					Dust.NewDustPerfect(player.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 10), DustID.Blood);
 
 				if (!hadBuff && Main.netMode != NetmodeID.SinglePlayer)
 					NetMessage.SendData(MessageID.SyncPlayer, number: player.whoAmI);

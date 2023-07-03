@@ -16,6 +16,17 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 	public class BambooBarrel : ModTile
 	{
 		private const string tileName = "Stripped Bamboo Barrel";
+		private static Point GetMultiTilePos(int i, int j)
+		{
+			Tile tile = Framing.GetTileSafely(i, j);
+
+			if (tile.TileFrameX % 36 != 0)
+				i--;
+			if (tile.TileFrameY != 0)
+				j--;
+
+			return new Point(i, j);
+		}
 
 		public override void SetStaticDefaults()
         {
@@ -38,11 +49,13 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
 			TileObjectData.newTile.AnchorInvalidTiles = new int[] { 127 };
 			TileObjectData.newTile.LavaDeath = false;
+			TileObjectData.newTile.RandomStyleRange = 3;
+			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.addTile(Type);
 
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault(tileName);
-			AddMapEntry(new Color(100, 100, 60), name);
+			AddMapEntry(new Color(100, 100, 60), name, MapChestName);
 			DustType = -1;
 			AdjTiles = new int[] { TileID.Containers };
 			ChestDrop = ModContent.ItemType<BambooBarrelItem>();
@@ -51,22 +64,21 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
+		private static string MapChestName(string name, int i, int j)
+		{
+			(i, j) = (GetMultiTilePos(i, j).X, GetMultiTilePos(i, j).Y);
+
+			int chest = Chest.FindChest(i, j);
+			if (Main.chest[chest].name == string.Empty)
+				return name;
+			else
+				return name + ": " + Main.chest[chest].name;
+		}
+
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
 			Chest.DestroyChest(i, j);
-		}
-
-		private static Point GetMultiTilePos(int i, int j)
-		{
-			Tile tile = Framing.GetTileSafely(i, j);
-
-			if (tile.TileFrameX % 36 != 0)
-				i--;
-			if (tile.TileFrameY != 0)
-				j--;
-
-			return new Point(i, j);
 		}
 
 		public override bool RightClick(int i, int j)
@@ -172,7 +184,7 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 		{
 			Tile tile = Framing.GetTileSafely(i, j);
 			Texture2D texture = TextureAssets.Tile[Type].Value;
-			Rectangle source = new Rectangle(tile.TileFrameX % 36, tile.TileFrameY % 36, 16, (tile.TileFrameY > 0) ? 18 : 16);
+			Rectangle source = new Rectangle(tile.TileFrameX, tile.TileFrameY % 36, 16, (tile.TileFrameY > 0) ? 18 : 16);
 
 			Vector2 offset = Lighting.LegacyEngine.Mode > 1 ? Vector2.Zero : Vector2.One * 12;
 			Vector2 drawPos = ((new Vector2(i, j) + offset) * 16) - Main.screenPosition;
