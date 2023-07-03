@@ -34,14 +34,10 @@ namespace SpiritMod.Tiles.Furniture
 			AddMapEntry(Color.Red, name);
 		}
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
+			=> offsetY = 2;
 
-		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-		{
-			r = .122f;
-			g = .048f;
-			b = .063f;
-		}
+		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) => (r, g, b) = (.122f, .048f, .063f);
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
