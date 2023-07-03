@@ -35,16 +35,17 @@ namespace SpiritMod.Items.Weapon.Summon.ElectricGun
 			Item.shoot = ModContent.ProjectileType<ElectricGunProjectile>();
 			Item.shootSpeed = 12f;
 		}
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
         {
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y - 1)) * 45f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
 
-			velocity = velocity.RotatedByRandom(MathHelper.ToRadians(10)); //rotate it randomly, with a maximum spread of 30 degrees
-            Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, Item.damage, knockback, Item.playerIndexTheItemIsReservedFor, 0, 0);
-			proj.netUpdate = true; //sync velocity
-            for (int index1 = 0; index1 < 5; ++index1)
+			velocity = velocity.RotatedByRandom(MathHelper.ToRadians(10));
+            Projectile.NewProjectileDirect(source, position, velocity, type, Item.damage, knockback, player.whoAmI);
+
+			for (int index1 = 0; index1 < 5; ++index1)
             {
                 int index2 = Dust.NewDust(new Vector2(position.X, position.Y), Item.width - 60, Item.height - 28, DustID.Electric, velocity.X, velocity.Y, (int)byte.MaxValue, new Color(), Main.rand.Next(6, 10) * 0.1f);
                 Main.dust[index2].noGravity = true;
@@ -53,6 +54,7 @@ namespace SpiritMod.Items.Weapon.Summon.ElectricGun
             }
             return false;
         }
+
         public override Vector2? HoldoutOffset() => new Vector2(-7, 0);
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

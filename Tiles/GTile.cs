@@ -41,7 +41,9 @@ namespace SpiritMod.Tiles
 
 				if (type == TileID.Stone || type == 25 || type == 117 || type == 203 || type == 57)
 				{
-					if (Main.rand.NextBool(25) && modPlayer.gemPickaxe && !fail)
+					bool struckThisTile = player.ItemAnimationActive && ((new Vector2((int)(Main.MouseWorld.X / 16), (int)(Main.MouseWorld.Y / 16)) == new Vector2(i, j)) || (Main.SmartCursorIsUsed && new Vector2(Main.SmartCursorX, Main.SmartCursorY) == new Vector2(i, j)));
+					
+					if (modPlayer.gemPickaxe && struckThisTile && !fail)
 					{
 						int tremorItem = Main.rand.Next(new int[] { 11, 12, 13, 14, 699, 700, 701, 702, 999, 182, 178, 179, 177, 180, 181 });
 						if (Main.hardMode)
@@ -65,7 +67,7 @@ namespace SpiritMod.Tiles
 					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ItemID.VineRope);
 				if (Main.rand.NextBool(40) && type == ModContent.TileType<Ambient.HangingChimes.HangingChimes>())
 					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ItemID.CrystalShard);
-				if (player.inventory[player.selectedItem].type == ItemID.Sickle && (type == ModContent.TileType<Tiles.Ambient.Briar.BriarFoliage>() || type == ModContent.TileType<Tiles.Ambient.Briar.BriarFoliage1>()))
+				if (player.inventory[player.selectedItem].type == ItemID.Sickle && (type == ModContent.TileType<Ambient.Briar.BriarFoliage>() || type == ModContent.TileType<Tiles.Ambient.Briar.BriarFoliage1>()))
 					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ItemID.Hay);
 			}
 		}

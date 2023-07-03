@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture;
 using SpiritMod.NPCs.Enchanted_Armor;
 using SpiritMod.Projectiles;
+using SpiritMod.Tiles.BaseTile;
 using System;
 using System.Linq;
 using Terraria;
@@ -16,68 +17,21 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.World.Sepulchre
 {
-	public class SepulchreChestTile : ModTile
+	public class SepulchreChestTile : BaseChest
 	{
-		public override void SetStaticDefaults()
+		public override int ChestDrop => ModContent.ItemType<SepulchreChest>();
+
+		public override void StaticDefaults(LocalizedText name)
 		{
-			Main.tileSpelunker[Type] = true;
-			Main.tileContainer[Type] = true;
-			Main.tileShine2[Type] = true;
 			Main.tileShine[Type] = 1200;
-			Main.tileFrameImportant[Type] = true;
-			Main.tileNoAttach[Type] = true;
-			Main.tileOreFinderPriority[Type] = 500;
-
-			TileID.Sets.BasicChest[Type] = true;
-			TileID.Sets.HasOutlines[Type] = true;
-			TileID.Sets.DisableSmartCursor[Type] = true;
-
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
-			TileObjectData.newTile.Origin = new Point16(0, 1);
-			TileObjectData.newTile.Width = 2;
-			TileObjectData.newTile.Height = 2;
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
-			TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-			TileObjectData.newTile.AnchorInvalidTiles = new int[] { TileID.MagicalIceBlock };
-			TileObjectData.newTile.StyleHorizontal = true;
-			TileObjectData.newTile.LavaDeath = false;
-			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
-			TileObjectData.addTile(Type);
-
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Sepulchre Chest");
 			AddMapEntry(new Color(120, 82, 49), name);
-
-			DustType = DustID.Dirt;
-			AdjTiles = new int[] { TileID.Containers };
+			DustType = DustID.Asphalt;
 		}
-
-		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
-
-		public string MapChestName(string name, int i, int j)
-		{
-			int left = i;
-			int top = j;
-			Tile tile = Main.tile[i, j];
-			if (tile.TileFrameX % 36 != 0)
-				left--;
-			if (tile.TileFrameY != 0)
-				top--;
-			int chest = Chest.FindChest(left, top);
-			if (Main.chest[chest].name == "")
-				return name;
-			else
-				return name + ": " + Main.chest[chest].name;
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<SepulchreChest>());
-			Chest.DestroyChest(i, j);
 			SoundEngine.PlaySound(SoundID.NPCDeath6, new Vector2(i * 16, j * 16));
+			base.KillMultiTile(i, j, frameX, frameY);
 		}
 
 		public override bool IsLockedChest(int i, int j) => true;

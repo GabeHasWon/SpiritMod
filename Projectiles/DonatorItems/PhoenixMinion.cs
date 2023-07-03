@@ -9,7 +9,8 @@ namespace SpiritMod.Projectiles.DonatorItems
 {
 	public class PhoenixMinion : ModProjectile
 	{
-		int counter = 0;
+		public ref float Counter => ref Projectile.ai[0];
+
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Fiery Phoenix");
@@ -18,32 +19,38 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void SetDefaults()
 		{
-			Projectile.friendly = true;
-			Projectile.minion = true;
 			Projectile.width = 72;
 			Projectile.height = 64;
+			Projectile.friendly = false;
+			Projectile.hostile = false;
 			Projectile.sentry = true;
 			Projectile.penetrate = -1;
             Projectile.timeLeft = Projectile.SentryLifeTime;
-        }
+			Projectile.ignoreWater = true;
+		}
 
 		public override void AI()
 		{
 			Projectile.spriteDirection = Projectile.direction;
-			counter++;
-			if (counter >= 60) {
-				counter = 0;
+
+			if (++Counter >= 60)
+			{
+				Counter = 0;
+
 				float num = 8000f;
 				int num2 = -1;
-				for (int i = 0; i < 200; i++) {
+				for (int i = 0; i < 200; i++)
+				{
 					float num3 = Vector2.Distance(Projectile.Center, Main.npc[i].Center);
-					if (num3 < num && num3 < 640f && Main.npc[i].CanBeChasedBy(Projectile, false)) {
+					if (num3 < num && num3 < 640f && Main.npc[i].CanBeChasedBy(Projectile, false))
+					{
 						num2 = i;
 						num = num3;
 					}
 				}
 
-				if (num2 != -1) {
+				if (num2 != -1)
+				{
 					bool flag = Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[num2].position, Main.npc[num2].width, Main.npc[num2].height);
 					if (flag) {
 						Vector2 value = Main.npc[num2].Center - Projectile.Center;
@@ -62,10 +69,11 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 			Projectile.tileCollide = true;
 			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Torch, 0f, 0f);
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= 4) {
-				Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
+
+			if (++Projectile.frameCounter >= 4)
+			{
 				Projectile.frameCounter = 0;
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Type];
 			}
 		}
 
@@ -141,4 +149,3 @@ namespace SpiritMod.Projectiles.DonatorItems
 		}
 	}
 }
-

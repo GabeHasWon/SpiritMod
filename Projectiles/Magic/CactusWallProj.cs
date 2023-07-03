@@ -15,7 +15,7 @@ public class CactusWallProj : ModProjectile
 
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Wall Cactus");
+		//DisplayName.SetDefault("Wall Cactus");
 		Main.projFrames[Projectile.type] = 3;
 	}
 
@@ -65,8 +65,8 @@ public class CactusWallProj : ModProjectile
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 	}
 
-	public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) 
-		=> hitDirection = target.Center.X < Projectile.Center.X ? -1 : 1;
+	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+		=> modifiers.HitDirectionOverride = target.Center.X < Projectile.Center.X ? -1 : 1;
 
 	public override bool PreDraw(ref Color lightColor)
 	{

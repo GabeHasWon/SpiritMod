@@ -19,12 +19,9 @@ namespace SpiritMod.Projectiles.Summon
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.timeLeft = maxtimeleft;
-            Projectile.height = 8;
-            Projectile.minion = true;
-            Projectile.width = 8;
+			Projectile.Size = new Vector2(8);
             Projectile.alpha = 255;
             Projectile.hide = true;
-            Projectile.penetrate = 1;
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = false;
             Projectile.localNPCHitCooldown = 1;
@@ -52,9 +49,9 @@ namespace SpiritMod.Projectiles.Summon
             else
             {
                 Projectile.velocity.Y += numY;
-				if(Projectile.timeLeft <= (maxtimeleft * 0.9f)) {
+
+				if(Projectile.timeLeft <= (maxtimeleft * 0.9f))
 					Projectile.velocity.Y += 0.25f;
-				}
             }
         }
 
@@ -73,15 +70,15 @@ namespace SpiritMod.Projectiles.Summon
 			Player player = Main.player[Projectile.owner];
 			target.AddBuff(Mod.Find<ModBuff>("ElectricSummonTag").Type, 8 * 60 * 60, true);
 			target.AddBuff(Mod.Find<ModBuff>("SummonTag3").Type, 3 * 60 * 60, true);
+
 			int num1 = -1;
 			for (int i = 0; i < 200; i++)
-			{
 				if (Main.npc[i].CanBeChasedBy(player, false) && Main.npc[i] == target)
-				{
 					num1 = i;
-				}
-			}
+
 			player.MinionAttackTargetNPC = num1;
 		}
+
+		public override bool? CanCutTiles() => true;
 	}
 }
