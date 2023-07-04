@@ -33,6 +33,8 @@ using Terraria.ModLoader;
 
 using ContentItems = SpiritMod.Items; //Clears up Items and GlobalClasses.Items issue
 using SpiritMod.Items.Sets.AccessoriesMisc.EyeOfTheSorcerer;
+using SpiritMod.Items.Sets.BriarDrops;
+using SpiritMod.NPCs.Reach;
 
 namespace SpiritMod.GlobalClasses.NPCs
 {
@@ -130,6 +132,9 @@ namespace SpiritMod.GlobalClasses.NPCs
 			DropLoot(npcLoot, 50, 40, ModContent.ItemType<DemonTail>(), npc, NPCID.Demon, NPCID.VoodooDemon, NPCID.RedDevil);
 			DropLoot(npcLoot, 15, 15, ModContent.ItemType<ProtectorateBody>(), npc, ModContent.NPCType<PagodaGhostHostile>(), ModContent.NPCType<PagodaGhostPassive>(), ModContent.NPCType<CavernCrawler>(), ModContent.NPCType<Mineroid>());
 			DropLoot(npcLoot, 15, 15, ModContent.ItemType<ProtectorateLegs>(), npc, ModContent.NPCType<PagodaGhostHostile>(), ModContent.NPCType<PagodaGhostPassive>(), ModContent.NPCType<CavernCrawler>(), ModContent.NPCType<Mineroid>());
+
+			int[] briarEnemies = new int[] { ModContent.NPCType<BlossomHound>(), ModContent.NPCType<ForestWraith>(), ModContent.NPCType<Reachman>(), ModContent.NPCType<ReachObserver>(), ModContent.NPCType<ReachSlime>(), ModContent.NPCType<ThornStalker>() };
+			DropLoot(npcLoot, 110, 90, ModContent.ItemType<AnodyneHat>(), npc, briarEnemies);
 
 			if (new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }.Contains(npc.type)) //Drops for EoW here
 			{
