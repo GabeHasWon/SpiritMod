@@ -25,6 +25,9 @@ namespace SpiritMod.Tiles
 			if (type == TileID.Pearlstone)
 				PearlstoneRandomUpdate.OnTick(i, j);
 
+			if (type == TileID.IceBlock || type == TileID.SnowBlock)
+				IceRandomUpdate.OnTick(i, j);
+
 			if (type == TileID.CorruptGrass || type == TileID.Ebonstone)
 				CorpsebloomRandomUpdate.OnTick(i, j);
 		}
