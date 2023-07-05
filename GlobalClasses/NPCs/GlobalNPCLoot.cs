@@ -160,27 +160,6 @@ namespace SpiritMod.GlobalClasses.NPCs
 			}
 		}
 
-		/*/// <summary>Adds loot that only drops after a certain boss has been defeated. Uses NormalvsExpert if the condition is true.</summary>
-		/// <param name="npcLoot"></param>
-		/// <param name="boss"></param>
-		/// <param name="normal"></param>
-		/// <param name="expert"></param>
-		/// <param name="itemID"></param>
-		/// <param name="npc"></param>
-		/// <param name="types"></param>
-		private void DownedBossLoot(NPCLoot npcLoot, DropRuleConditions.BossDowned.Bosses boss, int normal, int expert, int itemID, int minStack, int maxStack, NPC npc, params int[] types)
-		{
-			if (types.Contains(npc.type))
-			{
-				LeadingConditionRule rule = new LeadingConditionRule(new DropRuleConditions.BossDowned(boss));
-				if (normal != expert)
-					rule.OnSuccess(DropRules.NormalvsExpertStacked(itemID, normal, expert, minStack, maxStack));
-				else
-					rule.OnSuccess(ItemDropRule.Common(itemID, normal, minStack, maxStack));
-				npcLoot.Add(rule);
-			}
-		}*/
-
 		private static void DownedBossLootCommon(NPCLoot npcLoot, DropRuleConditions.BossDowned.Bosses boss, int normal, int itemID, int minStack, int maxStack, NPC npc, params int[] types)
 		{
 			if (types.Contains(npc.type))

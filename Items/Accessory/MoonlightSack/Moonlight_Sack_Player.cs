@@ -31,6 +31,5 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 				}
 			}
 		}
-
 	}
 }

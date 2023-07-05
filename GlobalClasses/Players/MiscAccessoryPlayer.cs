@@ -212,6 +212,7 @@ namespace SpiritMod.GlobalClasses.Players
 				addDef = 0; 
 			}
 		}
+
 		public override void PostUpdateEquips()
 		{
 			if (!Player.dead && Player.active)
