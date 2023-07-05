@@ -37,10 +37,10 @@ public class ReachCrate : ModItem
 
 	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
-		itemLoot.Add(DropRules.LootPoolDrop.SameStack(3, 4, 1, 1, 1, ModContent.ItemType<AncientBark>(), ModContent.ItemType<EnchantedLeaf>(), 
-			ModContent.ItemType<BismiteCrystal>()));
+		itemLoot.Add(DropRules.LootPoolDrop.SameStack(3, 4, 1, 1, 1, ModContent.ItemType<AncientBark>(), ModContent.ItemType<EnchantedLeaf>(), ModContent.ItemType<BismiteCrystal>()));
 		itemLoot.AddOneFromOptions<ReachBrooch, ReachBoomerang, ThornHook, ReachChestMagic>(2);
-		itemLoot.AddOneFromOptions<ReachBrooch, ReachBoomerang, ThornHook, ReachChestMagic>(4);
+		itemLoot.AddOneFromOptions<LivingElderbarkWand, ThornyRod>(4);
+
 		itemLoot.AddCommon(ItemID.GoldCoin, 1, 5, 12);
 		itemLoot.Add(DropRules.LootPoolDrop.SameStack(10, 20, 1, 7, 1, ItemID.IronOre, ItemID.CopperOre, ItemID.GoldOre, ItemID.SilverOre, 
 			ItemID.TinOre, ItemID.LeadOre, ItemID.TungstenOre, ItemID.PlatinumOre));

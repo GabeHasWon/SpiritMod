@@ -87,6 +87,7 @@ namespace SpiritMod.NPCs
 		public bool sFracture = false;
 		public bool blaze = false;
 		public bool shadowbroken = false;
+		public bool impaled = false;
 
 		public float slowDegree;
 		private float slowAmt;
@@ -124,6 +125,7 @@ namespace SpiritMod.NPCs
 			tracked = false;
 			iceCrush = false;
 			shadowbroken = false;
+			impaled = false;
 
 			summonTag = 0;
 			sacrificialDaggerBuff = false;
@@ -168,10 +170,12 @@ namespace SpiritMod.NPCs
 
 			if (oakHeartStacks > 0)
 				oakHeartStacks--;
+			if (impaled)
+				npc.velocity = new Vector2(0, 1);
 
 			if (BeingSlowed)
 			{
-				if ((slowAmt += slowDegree) > 1)
+				if ((slowAmt += slowDegree) >= 1)
 				{
 					slowAmt--;
 					return true;

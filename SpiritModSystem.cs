@@ -70,23 +70,23 @@ namespace SpiritMod
 				return new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + Name, Items);
 			}
 
-			RecipeGroup.RegisterGroup("SpiritMod:GoldBars", BaseGroup(ItemID.GoldBar, new int[]
-				{ ItemID.GoldBar, ItemID.PlatinumBar }));
-
-			RecipeGroup.RegisterGroup("SpiritMod:EvilMaterial", BaseGroup(ItemID.CursedFlame, new int[]
-				{ ItemID.CursedFlame, ItemID.Ichor }));
-
-			RecipeGroup.RegisterGroup("SpiritMod:PHMEvilMaterial", BaseGroup(ItemID.ShadowScale, new int[]
-				{ ItemID.ShadowScale, ItemID.TissueSample }));
-
-			RecipeGroup.RegisterGroup("SpiritMod:Tier3HMBar", BaseGroup(ItemID.AdamantiteBar, new int[]
-				{ ItemID.AdamantiteBar, ItemID.TitaniumBar }));
+			RecipeGroup.RegisterGroup("SpiritMod:CopperBars", BaseGroup(ItemID.CopperBar, new int[]
+				{ ItemID.CopperBar, ItemID.TinBar }));
 
 			RecipeGroup.RegisterGroup("SpiritMod:SilverBars", BaseGroup(ItemID.SilverBar, new int[]
 				{ ItemID.SilverBar, ItemID.TungstenBar }));
 
-			RecipeGroup.RegisterGroup("SpiritMod:CopperBars", BaseGroup(ItemID.CopperBar, new int[]
-				{ ItemID.CopperBar, ItemID.TinBar }));
+			RecipeGroup.RegisterGroup("SpiritMod:GoldBars", BaseGroup(ItemID.GoldBar, new int[]
+				{ ItemID.GoldBar, ItemID.PlatinumBar }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:Tier3HMBar", BaseGroup(ItemID.AdamantiteBar, new int[]
+				{ ItemID.AdamantiteBar, ItemID.TitaniumBar }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:PHMEvilMaterial", BaseGroup(ItemID.ShadowScale, new int[]
+				{ ItemID.ShadowScale, ItemID.TissueSample }));
+
+			RecipeGroup.RegisterGroup("SpiritMod:EvilMaterial", BaseGroup(ItemID.CursedFlame, new int[]
+				{ ItemID.CursedFlame, ItemID.Ichor }));
 
 			RecipeGroup.RegisterGroup("SpiritMod:EmeraldBows", BaseGroup("Emerald or Ruby Bow", new int[]
 				{ ModContent.ItemType<Emerald_Bow>(), ModContent.ItemType<Ruby_Bow>() }));

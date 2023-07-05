@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Matriarch_Wings
 		{
 			Player drawPlayer = drawInfo.drawPlayer;
 
-			if (drawPlayer.GetModPlayer<Matriarch_Wings_Visuals>().IsDiving)
+			if (drawPlayer.active && !drawPlayer.dead && drawPlayer.GetModPlayer<Matriarch_Wings_Visuals>().IsDiving)
 			{
 				SpriteEffects spriteEffects;
 				if (drawPlayer.gravDir == 1.0)
