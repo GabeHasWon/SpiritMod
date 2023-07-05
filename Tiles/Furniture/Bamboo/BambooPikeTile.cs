@@ -68,10 +68,10 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 
 			bool PlayerColliding()
 			{
-				Vector2 pos = new Vector2(player.position.X, player.position.Y + (player.height - 8));
+				Vector2 pos = new Vector2(player.Center.X, player.position.Y);
 				for (int i = 0; i < 4; i++)
 				{
-					Tile tile = Framing.GetTileSafely((int)(pos.X / 16) + (i % 2), (int)(pos.Y / 16) - (i / 2));
+					Tile tile = Framing.GetTileSafely((int)(pos.X / 16), (int)(pos.Y / 16) + i);
 					if (tile.HasTile && tile.TileType == ModContent.TileType<BambooPikeTile>() && tile.TileFrameY == 0) //The tip of the pike
 						return true;
 				}

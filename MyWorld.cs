@@ -1417,7 +1417,7 @@ namespace SpiritMod
 
 			List<ChestInfo> briarPool = new List<ChestInfo> {
 				new ChestInfo(new int[] { ModContent.ItemType<ReachChestMagic>(), ModContent.ItemType<ThornHook>(), ModContent.ItemType<ReachBoomerang>(), ModContent.ItemType<ReachBrooch>() }),
-				new ChestInfo(new int[]{ ModContent.ItemType<Book_Briar>(), ModContent.ItemType<Book_BriarArt>(), ModContent.ItemType<GladeWreath>(), ModContent.ItemType<LivingElderbarkWand>() }, 1, 0.25f),
+				new ChestInfo(new int[]{ ModContent.ItemType<Book_Briar>(), ModContent.ItemType<Book_BriarArt>(), ModContent.ItemType<GladeWreath>(), ModContent.ItemType<LivingElderbarkWand>(), ModContent.ItemType<ThornyRod>() }, 1, 0.25f),
 				new ChestInfo(commonItems1, WorldGen.genRand.Next(3, 10)),
 				new ChestInfo(ammo1, WorldGen.genRand.Next(20, 50)),
 				new ChestInfo(potions, WorldGen.genRand.Next(2, 4)),

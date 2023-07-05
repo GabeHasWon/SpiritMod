@@ -209,7 +209,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BambooKendoBlade
 				return;
 
 			Texture2D texture = TextureAssets.Item[ModContent.ItemType<BambooKendoBlade>()].Value;
-			Vector2 drawPos = drawInfo.drawPlayer.Center + new Vector2(0, 6 * drawInfo.drawPlayer.gravDir - drawInfo.drawPlayer.gfxOffY);
+			Vector2 drawPos = drawInfo.drawPlayer.Center + new Vector2(0, 6 * drawInfo.drawPlayer.gravDir + drawInfo.drawPlayer.gfxOffY);
 			float rotation = (.5f * drawInfo.drawPlayer.direction) + MathHelper.Pi;
 
 			drawInfo.DrawDataCache.Add(new DrawData(texture,
