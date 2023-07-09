@@ -1,4 +1,2 @@
-﻿- Adjusted Packing Crate spawn rates again
-- Added coin drops to Glitterfly (30s), Rylehian (1g), Hydra (1g per head), Spirit Skull (10s), and Furnace Maw (20s)
-- Removed coin drops from Soul Orb
-- Fixed boss/event downed flags not being reset on world exit
+﻿- Fixed weird MJW drop chance issue
+- Updated Music Display support
