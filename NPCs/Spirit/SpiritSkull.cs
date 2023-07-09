@@ -34,6 +34,7 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.npcSlots = 0.75f;
+			NPC.value = Item.buyPrice(0, 0, 10, 0);
 
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.SpiritSkullBanner>();

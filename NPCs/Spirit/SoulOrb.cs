@@ -30,7 +30,7 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.lifeMax = 5;
 			NPC.HitSound = SoundID.NPCHit3;
 			NPC.DeathSound = SoundID.NPCDeath6;
-			NPC.value = 60f;
+			NPC.value = 0;
 			NPC.catchItem = (short)ModContent.ItemType<SoulOrbItem>();
 			NPC.knockBackResist = .45f;
 			NPC.aiStyle = 64;

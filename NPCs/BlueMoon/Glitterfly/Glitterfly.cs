@@ -39,6 +39,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 			NPC.defense = 16;
 			NPC.knockBackResist = 0.1f;
 			NPC.noGravity = true;
+			NPC.value = Item.buyPrice(0, 0, 30, 0);
 
 			AnimationType = NPCID.Pixie;
 			NPC.HitSound = SoundID.NPCHit44;
