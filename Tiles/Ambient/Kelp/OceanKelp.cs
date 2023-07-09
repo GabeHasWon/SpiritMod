@@ -144,8 +144,7 @@ namespace SpiritMod.Tiles.Ambient.Kelp
             if (realFrameX == 44)
                 source = new Rectangle(t.TileFrameX, t.TileFrameY, 26, 16);
 
-            Vector2 TileOffset = Lighting.LegacyEngine.Mode > 1 ? Vector2.Zero : Vector2.One * 12; //Draw offset
-            Vector2 drawPos = ((new Vector2(i, j) + TileOffset) * 16) - Main.screenPosition; //Draw position
+			Vector2 drawPos = this.DrawPosition(i, j); //Draw position
 
 			bool[] hasClumps = new bool[] { GetKelpTile(i, j - 1) >= ClumpFrameOffset, GetKelpTile(i, j - 1) >= ClumpFrameOffset * 2 }; //Checks for if there's a grown clump above this clump
 

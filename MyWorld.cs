@@ -99,7 +99,6 @@ namespace SpiritMod
 		public static bool downedMoonWizard = false;
 		public static bool downedReachBoss = false;
 		public static bool downedDusking = false;
-
 		public static bool downedMechromancer = false;
 		public static bool downedOccultist = false;
 		public static bool downedGladeWraith = false;
@@ -123,6 +122,13 @@ namespace SpiritMod
 		{
 			CorruptHazards = tileCounts[ModContent.TileType<Corpsebloom>()] + tileCounts[ModContent.TileType<Corpsebloom1>()] + tileCounts[ModContent.TileType<Corpsebloom2>()];
 			CrimHazards = tileCounts[ModContent.TileType<CrimsonPustuleTile>()];
+		}
+
+		public override void OnWorldUnload()
+		{
+			//Reset boss/event downed flags
+			downedScarabeus = downedAncientFlier = downedRaider = downedAtlas = downedInfernon = downedMoonWizard = downedReachBoss = downedDusking = downedMechromancer = downedOccultist =
+				downedGladeWraith = downedTome = downedSnaptrapper = downedBeholder = downedJellyDeluge = downedTide = downedBlueMoon = downedGazer = false;
 		}
 
 		public override void SaveWorldData(TagCompound tag)

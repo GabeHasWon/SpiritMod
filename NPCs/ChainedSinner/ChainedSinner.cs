@@ -42,6 +42,7 @@ namespace SpiritMod.NPCs.ChainedSinner
 			NPC.lavaImmune = true;
 			NPC.HitSound = SoundID.NPCHit41;
 			NPC.DeathSound = SoundID.NPCDeath27;
+			NPC.value = Item.buyPrice(0, 0, 20, 0);
 
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.FurnaceMawBanner>();

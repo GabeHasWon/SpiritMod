@@ -35,6 +35,8 @@ namespace SpiritMod.NPCs.Tides
 			NPC.noTileCollide = true;
 			NPC.HitSound = SoundID.NPCHit55;
 			NPC.DeathSound = SoundID.NPCDeath5;
+			NPC.value = Item.buyPrice(0, 1, 0, 0);
+
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.RlyehianBanner>();
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };

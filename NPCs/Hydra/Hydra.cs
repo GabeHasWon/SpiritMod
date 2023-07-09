@@ -176,7 +176,7 @@ namespace SpiritMod.NPCs.Hydra
 			NPC.lifeMax = 700;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath5;
-			NPC.value = 0f;
+			NPC.value = Item.buyPrice(0, 1, 0, 0);
 			NPC.knockBackResist = 0;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
