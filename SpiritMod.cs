@@ -99,6 +99,7 @@ namespace SpiritMod
 		public static Effect OutlinePrimShader;
 		public static Effect AnthemCircle;
 		public static Effect TeslaShader;
+		public static Effect GhostShader;
 
 		public static IDictionary<string, Effect> ShaderDict = new Dictionary<string, Effect>();
 
@@ -129,19 +130,18 @@ namespace SpiritMod
 			private set;
 		}
 
-		public static int GlyphCurrencyID;
-
 		internal static float deltaTime;
 
 		private Vector2 _lastScreenSize;
 		private Vector2 _lastViewSize;
 		private Viewport _lastViewPort;
 
+		public static int GlyphCurrencyID;
 		public static int OlympiumCurrencyID = 0;
 
 		/// <summary>Automatically returns false for every NPC ID inside of this list in <seealso cref="NPCs.GNPC.AllowTrickOrTreat(NPC)"/>.
 		/// Note that this should only be used in edge cases where an NPC is neither homeless nor has homeTileX/Y set.</summary>
-		public readonly List<int> NPCCandyBlacklist = new List<int>();
+		public readonly List<int> NPCCandyBlacklist = new();
 
 		public bool FinishedContentSetup { get; private set; }
 
@@ -621,6 +621,7 @@ namespace SpiritMod
 				GSaber = ModContent.Request<Effect>("SpiritMod/Effects/GSaber", AssetRequestMode.ImmediateLoad).Value;
 				AnthemCircle = ModContent.Request<Effect>("SpiritMod/Effects/AnthemCircle", AssetRequestMode.ImmediateLoad).Value;
 				TeslaShader = ModContent.Request<Effect>("SpiritMod/Effects/TeslaShader", AssetRequestMode.ImmediateLoad).Value;
+				GhostShader = ModContent.Request<Effect>("SpiritMod/Effects/GhostShader", AssetRequestMode.ImmediateLoad).Value;
 
 				SkyManager.Instance["SpiritMod:AuroraSky"] = new AuroraSky();
 				Filters.Scene["SpiritMod:AuroraSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryLow);
