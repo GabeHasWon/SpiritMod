@@ -12,11 +12,15 @@ using Terraria.GameContent;
 using Terraria.UI;
 using System;
 using System.Linq;
+using System.IO;
 
 namespace SpiritMod.NPCs.Critters.Ocean;
 
 public class Pelican : ModNPC
 {
+	/// <summary>
+	/// The item choices for this pelican. Set once on load, and unloaded.
+	/// </summary>
 	static WeightedRandom<int> choice;
 
 	private int _heldItemType = ItemID.None;
@@ -26,10 +30,12 @@ public class Pelican : ModNPC
 	private ref float WalkState => ref NPC.ai[2];
 	private ref float WalkTimer => ref NPC.ai[3];
 
+	private Vector2 HeldItemPosition => NPC.position + new Vector2(NPC.spriteDirection == 1 ? 25 : 0, -4);
+
 	public override void Load()
 	{
 		choice = new(Main.rand);
-		choice.Add(ItemID.None, 0.001);
+		choice.Add(ItemID.None, 6);
 		choice.Add(ModContent.ItemType<Kelp>(), 0.25f);
 		choice.Add(ModContent.ItemType<Items.Placeable.FishCrate>(), 0.05f);
 		choice.Add(ModContent.ItemType<Items.Sets.FloatingItems.Driftwood.DriftwoodTileItem>(), 0.1f);
@@ -45,7 +51,6 @@ public class Pelican : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 1;
-		Main.npcCatchable[NPC.type] = true;
 		NPCID.Sets.CountsAsCritter[Type] = true;
 	}
 
@@ -59,12 +64,9 @@ public class Pelican : ModNPC
 		NPC.lifeMax = 5;
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.DeathSound = SoundID.NPCDeath1;
-		NPC.catchItem = (short)ModContent.ItemType<CrinoidItem>();
-		NPC.knockBackResist = 0f;
+		NPC.knockBackResist = 1f;
 		NPC.aiStyle = -1;
 		NPC.npcSlots = 0;
-
-		AIType = NPCID.Duck2;
 	}
 
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -73,7 +75,7 @@ public class Pelican : ModNPC
 
 		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-			new FlavorTextBestiaryInfoElement("An above average size bird with a way above average size mouth. Often carries items around, which they drop when scared."),
+			new FlavorTextBestiaryInfoElement("A large sea bird with a special beak to hold its prey. Startling it could cause the bird to drop what it's caught, but that would be mean."),
 		});
 	}
 
@@ -82,6 +84,7 @@ public class Pelican : ModNPC
 		_heldItemType = choice;
 
 		NPC.direction = -1;
+		NPC.netUpdate = true;
 	}
 
 	public override void AI()
@@ -139,7 +142,7 @@ public class Pelican : ModNPC
 				}
 			}
 		}
-		else if (State == 1)
+		else if (State == 1) //Almost entirely cleaned up vanilla AI
 		{
 			if (Main.player[NPC.target].dead)
 				return;
@@ -236,10 +239,11 @@ public class Pelican : ModNPC
 	{
 		if (_heldItemType != ItemID.None)
 		{
+			Main.instance.LoadItem(_heldItemType);
+
 			Item theItem = ContentSamples.ItemsByType[_heldItemType];
-			Main.instance.LoadItem(theItem.type);
 			Texture2D value = TextureAssets.Item[theItem.type].Value;
-			Rectangle frame = ((Main.itemAnimations[theItem.type] == null) ? value.Frame() : Main.itemAnimations[theItem.type].GetFrame(value));
+			Rectangle frame = (Main.itemAnimations[theItem.type] == null) ? value.Frame() : Main.itemAnimations[theItem.type].GetFrame(value);
 			frame.Height /= 2;
 			float scale = theItem.scale;
 
@@ -250,7 +254,7 @@ public class Pelican : ModNPC
 
 			SpriteEffects effects = SpriteEffects.None;
 			Color currentColor = Lighting.GetColor(NPC.Center.ToTileCoordinates());
-			var pos = NPC.position + new Vector2(NPC.spriteDirection == 1 ? 25 : 0, -4) - screenPos;
+			var pos = HeldItemPosition - screenPos;
 
 			float modScale = 1f;
 			ItemSlot.GetItemLight(ref currentColor, ref modScale, theItem);
@@ -270,4 +274,9 @@ public class Pelican : ModNPC
 			
 		}
 	}
+
+	public override void SendExtraAI(BinaryWriter writer) => writer.Write(_heldItemType);
+	public override void ReceiveExtraAI(BinaryReader reader) => _heldItemType = reader.ReadInt32();
+
+	public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneBeach && Main.dayTime ? (spawnInfo.PlayerInTown ? 2f : 1f) : 0;
 }

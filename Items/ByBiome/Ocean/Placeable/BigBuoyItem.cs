@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.ByBiome.Ocean.Placeable;
 
+[Sacrifice(1)]
 public class BigBuoyItem : ModItem
 {
 	public override void SetStaticDefaults()
@@ -13,14 +14,18 @@ public class BigBuoyItem : ModItem
 		Tooltip.SetDefault("Must be placed atop water");
 	}
 
-	public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<BigBuoy>());
+	public override void SetDefaults()
+	{
+		Item.DefaultToPlaceableTile(ModContent.TileType<BigBuoy>());
+		Item.value = Item.buyPrice(copper: 80);
+	}
 
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-			.AddRecipeGroup(RecipeGroupID.IronBar, 6)
-			.AddIngredient(ItemID.Wire, 6)
-			.AddIngredient(ItemID.Glass, 6)
+			.AddRecipeGroup(RecipeGroupID.IronBar, 8)
+			.AddIngredient(ItemID.Wire, 7)
+			.AddIngredient(ItemID.Glass, 7)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}
