@@ -93,13 +93,14 @@ namespace SpiritMod.GlobalClasses.NPCs
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<Glyph>(), npc, NPCID.Tim, NPCID.RuneWizard);
 			DropLoot(npcLoot, 12, 12, ModContent.ItemType<ContentItems.Accessory.Ukelele.Ukelele>(), npc, NPCID.AngryNimbus);
 			DropLoot(npcLoot, 100, 100, ModContent.ItemType<ContentItems.Accessory.BowSummonItem.BowSummonItem>(), npc, NPCID.GoblinArcher);
-			DropLoot(npcLoot, 50, 50, ModContent.ItemType<ContentItems.Accessory.FlyingFishFin.Flying_Fish_Fin>(), npc, NPCID.FlyingFish);
+			DropLoot(npcLoot, 50, 50, ModContent.ItemType<Flying_Fish_Fin>(), npc, NPCID.FlyingFish);
 			DropLoot(npcLoot, 2, 1, ModContent.ItemType<ContentItems.Accessory.SeaSnailVenom.Sea_Snail_Poison>(), npc, NPCID.SeaSnail);
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<ContentItems.Sets.SlingHammerSubclass.PossessedHammer>(), npc, NPCID.PossessedArmor);
 			DropLoot(npcLoot, 80, 80, ModContent.ItemType<EyeOfTheSorcererItem>(), npc, NPCID.GoblinSorcerer);
 			DropLoot(npcLoot, 45, 45, ModContent.ItemType<ContentItems.Sets.BowsMisc.StarSpray.StarlightBow>(), npc, NPCID.Harpy);
 			DropLoot(npcLoot, 45, 45, ModContent.ItemType<ContentItems.Sets.MagicMisc.ZephyrBreath.BreathOfTheZephyr>(), npc, NPCID.Harpy);
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<TimScroll>(), npc, NPCID.Tim);
+			DropLoot(npcLoot, 1, 1, ModContent.ItemType<RuneWizardScroll>(), npc, NPCID.RuneWizard);
 			DropLoot(npcLoot, 30, 30, ItemID.SnowGlobe, npc, NPCID.IcyMerman);
 			DropLoot(npcLoot, 14, 10, ModContent.ItemType<SweetThrow>(), npc, NPCID.QueenBee);
 			DropLoot(npcLoot, 100, 100, ModContent.ItemType<IceVikingSculpture>(), npc, NPCID.UndeadViking);

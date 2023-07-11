@@ -369,9 +369,10 @@ namespace SpiritMod.Items
 			MyPlayer modPlayer = player.GetSpiritPlayer();
 			if (modPlayer.talonSet && (item.IsRanged() || item.IsMagic()) && Main.rand.NextBool(10))
 			{
-				int proj = Projectile.NewProjectile(source, position, new Vector2(velocity.X, velocity.Y + 2), ProjectileID.HarpyFeather, 10, 2f, player.whoAmI);
-				Main.projectile[proj].hostile = false;
-				Main.projectile[proj].friendly = true;
+				Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(velocity.X, velocity.Y + 2), ProjectileID.HarpyFeather, 10, 2f, player.whoAmI);
+				proj.hostile = false;
+				proj.friendly = true;
+				proj.netUpdate = true;
 			}
 			if (modPlayer.cultistScarf && item.IsMagic() && Main.rand.NextBool(8))
 			{
@@ -379,28 +380,37 @@ namespace SpiritMod.Items
 			}
 			if (modPlayer.timScroll && item.IsMagic() && Main.rand.NextBool(12))
 			{
-				int p = Main.rand.Next(9, 23);
-				if (p != 11 && p != 13 && p != 18 && p != 17 && p != 21)
-				{
-					int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, p, damage, knockback, player.whoAmI, 0f, 0f);
-					Main.projectile[proj].friendly = true;
-					Main.projectile[proj].hostile = false;
-				}
+				int[] projTypes = new int[] { ProjectileID.Starfury, ProjectileID.PurificationPowder, ProjectileID.FallingStar, ProjectileID.Bullet, ProjectileID.BallofFire, ProjectileID.MagicMissile, ProjectileID.Flamarang, ProjectileID.GreenLaser, ProjectileID.WaterStream, ProjectileID.WaterBolt, ProjectileID.ThornChakram, ProjectileID.Flamelash, ProjectileID.DemonScythe, ProjectileID.Stinger, ProjectileID.EnchantedBeam };
+
+				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, projTypes[Main.rand.Next(projTypes.Length)], damage, knockback, player.whoAmI);
+				proj.friendly = true;
+				proj.hostile = false;
+				proj.netUpdate = true;
+			}
+			if (modPlayer.runeWizardScroll && item.IsMagic() && Main.rand.NextBool(12))
+			{
+				int[] projTypes = new int[] { ProjectileID.SwordBeam, ProjectileID.TopazBolt, ProjectileID.EmeraldBolt, ProjectileID.TerraBeam, ProjectileID.NightBeam, ProjectileID.ChlorophyteOrb, ProjectileID.EyeFire, ProjectileID.HeatRay, ProjectileID.IchorBullet };
+
+				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, projTypes[Main.rand.Next(projTypes.Length)], damage, knockback, player.whoAmI);
+				proj.friendly = true;
+				proj.hostile = false;
+				proj.netUpdate = true;
 			}
 			if (modPlayer.fireMaw && item.IsMagic() && Main.rand.NextBool(4))
 			{
-				int proj = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<FireMaw>(), 30, 2f, player.whoAmI);
-				Main.projectile[proj].hostile = false;
-				Main.projectile[proj].friendly = true;
+				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<FireMaw>(), 30, 2f, player.whoAmI);
+				proj.hostile = false;
+				proj.friendly = true;
+				proj.netUpdate = true;
 			}
 			if (modPlayer.manaWings && item.IsMagic() && Main.rand.NextBool(7))
 			{
 				float d1 = 20 + ((player.statManaMax2 - player.statMana) / 3);
-				int proj = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ManaSpark>(), (int)d1, 2f, player.whoAmI);
-				Main.projectile[proj].hostile = false;
-				Main.projectile[proj].friendly = true;
+				Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<ManaSpark>(), (int)d1, 2f, player.whoAmI);
+				proj.hostile = false;
+				proj.friendly = true;
+				proj.netUpdate = true;
 			}
-
 			return true;
 		}
 

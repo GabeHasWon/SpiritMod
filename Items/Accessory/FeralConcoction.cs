@@ -8,14 +8,14 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Feral Concoction");
+			DisplayName.SetDefault("Brew of Immunity");
 			Tooltip.SetDefault("Immunity to Feral Bite");
 		}
 
 		public override void SetDefaults()
 		{
-			Item.width = 18;
-			Item.height = 18;
+			Item.width = 24;
+			Item.height = 24;
 			Item.value = Item.buyPrice(0, 4, 0, 0);
 			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;

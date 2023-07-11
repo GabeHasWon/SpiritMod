@@ -101,6 +101,7 @@ namespace SpiritMod
 		public bool scarabCharm = false;
 		public bool bloodCourtHead = false;
 		public bool timScroll = false;
+		public bool runeWizardScroll = false;
 		public bool cultistScarf = false;
 		public bool AnimeSword = false;
 		public bool geodeRanged = false;
@@ -544,6 +545,7 @@ namespace SpiritMod
 			fireMaw = false;
 			rogueSet = false;
 			timScroll = false;
+			runeWizardScroll = false;
 			wheezeScale = false;
 			HellGaze = false;
 			geodeRanged = false;
@@ -973,20 +975,29 @@ namespace SpiritMod
 
 			if (timScroll && proj.IsMagic())
 			{
-				switch (Main.rand.Next(12))
+				int buffType = Main.rand.Next(12) switch
 				{
-					case 0:
-						target.AddBuff(BuffID.OnFire, 120);
-						break;
-					case 1:
-						target.AddBuff(BuffID.Confused, 120);
-						break;
-					case 2:
-						target.AddBuff(BuffID.Frostburn, 120);
-						break;
-					default:
-						break;
-				}
+					0 => BuffID.OnFire,
+					1 => BuffID.Confused,
+					2 => BuffID.Frostburn,
+					_ => -1
+				};
+				if (buffType != -1)
+					target.AddBuff(buffType, 120);
+			}
+			if (runeWizardScroll && proj.IsMagic())
+			{
+				int buffType = Main.rand.Next(12) switch
+				{
+					0 => BuffID.OnFire3,
+					1 => BuffID.Venom,
+					2 => BuffID.Frostburn2,
+					3 => BuffID.CursedInferno,
+					4 => BuffID.Ichor,
+					_ => -1
+				};
+				if (buffType != -1)
+					target.AddBuff(buffType, 120);
 			}
 
 			if (winterbornCharmMage && Main.rand.NextBool(9))
