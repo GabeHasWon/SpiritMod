@@ -39,6 +39,8 @@ using SpiritMod.Buffs.Pet;
 using SpiritMod.Items.Pets;
 using SpiritMod.Utilities;
 using SpiritMod.Items.Pins;
+using Terraria.DataStructures;
+using Terraria.GameContent;
 
 namespace SpiritMod.NPCs
 {
@@ -925,6 +927,9 @@ namespace SpiritMod.NPCs
 		{
 			Player closest = Main.player[Player.FindClosest(npc.position, npc.width, npc.height)];
 
+			if (npc.townNPC && !GhostHandler.toBeGhosts.ContainsKey(npc.type))
+				GhostHandler.toBeGhosts.Add(npc.type, npc.homeless ? Point.Zero : new Point(npc.homeTileX, npc.homeTileY));
+
 			if (NPC.killCount[Item.NPCtoBanner(npc.BannerID())] == 50)
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BannerSfx"), npc.Center);
 
@@ -937,6 +942,12 @@ namespace SpiritMod.NPCs
 			bool lastTwin = (npc.type == NPCID.Retinazer && !NPC.AnyNPCs(NPCID.Spazmatism)) || (npc.type == NPCID.Spazmatism && !NPC.AnyNPCs(NPCID.Retinazer));
 			if ((npc.type == NPCID.SkeletronPrime || npc.type == NPCID.TheDestroyer || lastTwin) && !MyWorld.spiritBiome)
 				SpiritGeneration.SpawnSpiritBiome();
+		}
+
+		public override void OnSpawn(NPC npc, IEntitySource source)
+		{
+			if (npc.townNPC)
+				GhostHandler.toBeGhosts.Remove(npc.type);
 		}
 
 		public override void DrawEffects(NPC npc, ref Color drawColor)

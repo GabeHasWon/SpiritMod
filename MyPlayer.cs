@@ -48,6 +48,7 @@ using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 using SpiritMod.Items.Accessory.ShieldCore;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
+using SpiritMod.NPCs.Town;
 
 namespace SpiritMod
 {
@@ -1449,6 +1450,9 @@ namespace SpiritMod
 					}
 				}
 			}
+
+			if (!Main.dayTime && (Player.ZoneGraveyard || Player.ZoneSpirit()) && Main.netMode != NetmodeID.MultiplayerClient) //Spawn ghosts of Town NPCs
+				GhostHandler.TrySpawnGhosts(Player);
 
 			if (Player.ZoneAsteroid() && MyWorld.stardustWeather && Main.netMode != NetmodeID.Server)
 			{
