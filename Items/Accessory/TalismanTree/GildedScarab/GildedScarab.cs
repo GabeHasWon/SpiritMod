@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GildedScarab
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gilded Scarab");
-			Tooltip.SetDefault("Getting hit creates a protective scarab shield around you for 5 seconds\nThis shield provides more defense based on the damage taken");
+			Tooltip.SetDefault("Getting hit provides a temporary buff to defense\nThis shield provides more defense based on the damage taken");
 		}
 		public override void SetDefaults()
 		{

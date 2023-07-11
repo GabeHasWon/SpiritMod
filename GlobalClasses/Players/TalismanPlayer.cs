@@ -16,13 +16,18 @@ namespace SpiritMod.GlobalClasses.Players
 		public int scarabDefense;
 		public float slagDamageMultiplier;
 		private bool canActivate;
-		public int animTimer;
+		public int scarabTimer;
+		public int slagTimer;
 
 		public override void UpdateEquips()
 		{
-			animTimer++;
-			if (animTimer > 28)
-				animTimer = 0;
+			scarabTimer++; //for animating drawlayer
+			if (scarabTimer >= 32)
+				scarabTimer = 0;
+
+			slagTimer++; //for animating drawlayer
+			if (slagTimer >= 20)
+				slagTimer = 0;
 		}
 
 		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter) 
