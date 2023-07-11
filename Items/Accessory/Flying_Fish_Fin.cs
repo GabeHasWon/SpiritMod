@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Accessory.FlyingFishFin
+namespace SpiritMod.Items.Accessory
 {
 	public class Flying_Fish_Fin : ModItem
 	{

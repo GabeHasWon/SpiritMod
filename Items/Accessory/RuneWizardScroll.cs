@@ -5,12 +5,12 @@ using Terraria.ModLoader;
 namespace SpiritMod.Items.Accessory
 {
 	[AutoloadEquip(EquipType.Waist)]
-	public class TimScroll : ModItem
+	public class RuneWizardScroll : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tim's Scroll of Fumbling");
-			Tooltip.SetDefault("'Who knew Skeletons could write?'\nMagic attacks may inflict random debuffs on foes\nMagic attacks may shoot out a random projectile");
+			DisplayName.SetDefault("Rune Wizard's Scroll");
+			Tooltip.SetDefault("'We all knew skeletons could write.'\nMagic attacks may inflict random, powerful debuffs on foes\nMagic attacks may shoot out a random projectile");
 		}
 
 		public override void SetDefaults()
@@ -22,6 +22,6 @@ namespace SpiritMod.Items.Accessory
 			Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().timScroll = true;
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().runeWizardScroll = true;
 	}
 }

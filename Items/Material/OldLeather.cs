@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Material
 
 		public override void SetDefaults()
 		{
-			Item.width = 42;
+			Item.width = 30;
 			Item.height = 24;
 			Item.value = 500;
 			Item.rare = ItemRarityID.Blue;
