@@ -6,7 +6,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent.Bestiary;
 
-namespace SpiritMod.NPCs.Critters
+namespace SpiritMod.NPCs.Critters.Ocean
 {
 	public class ReaverShark : ModNPC
 	{
@@ -36,7 +36,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
 			{
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
 				new FlavorTextBestiaryInfoElement("This particular species of shark is remarkable for its potential as a tool. Not only is it small enough to hold, but its cleft chin and large forehorn excel at breaking the ice."),
@@ -53,10 +53,10 @@ namespace SpiritMod.NPCs.Critters
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-        public override void AI()
-        {
-            NPC.spriteDirection = NPC.direction;
-        }
+		public override void AI()
+		{
+			NPC.spriteDirection = NPC.direction;
+		}
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -68,7 +68,8 @@ namespace SpiritMod.NPCs.Critters
 		}
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-			if(Main.rand.NextBool(4)) {
+			if (Main.rand.NextBool(4))
+			{
 				target.AddBuff(BuffID.Bleeding, 200);
 			}
 		}

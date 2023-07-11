@@ -1,4 +1,4 @@
-using SpiritMod.NPCs.Critters;
+using SpiritMod.NPCs.Critters.Ocean;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

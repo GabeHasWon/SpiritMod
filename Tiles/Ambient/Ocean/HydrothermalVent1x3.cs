@@ -120,7 +120,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 				if (t.LiquidAmount > 155)
 				{
 					HydrothermalVent1x2.SpawnCritter<NPCs.Critters.TinyCrab>(i, j, 2200);
-					HydrothermalVent1x2.SpawnCritter<NPCs.Critters.Crinoid>(i, j, 300);
+					HydrothermalVent1x2.SpawnCritter<NPCs.Critters.Ocean.Crinoid>(i, j, 300);
 					HydrothermalVent1x2.SpawnCritter<NPCs.Critters.TubeWorm>(i, j, 85);
 				}
 			}

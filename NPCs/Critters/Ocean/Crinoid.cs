@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent.Bestiary;
 
-namespace SpiritMod.NPCs.Critters
+namespace SpiritMod.NPCs.Critters.Ocean
 {
 	public class Crinoid : ModNPC
 	{
@@ -37,7 +37,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.alpha = 255;
 
 			AIType = NPCID.WebbedStylist;
-        }
+		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
@@ -53,17 +53,17 @@ namespace SpiritMod.NPCs.Critters
 		int pickedType;
 
 		public override void AI()
-        {
+		{
 			if (NPC.alpha > 0)
 				NPC.alpha -= 5;
 
 			if (!hasPicked)
-            {
+			{
 				NPC.scale = Main.rand.NextFloat(.6f, 1f);
 				pickedType = Main.rand.Next(0, 3);
 				hasPicked = true;
 			}
-        }
+		}
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -97,7 +97,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height * 0.5f));
+			var drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);
 			Vector2 drawPos = NPC.Center - screenPos + drawOrigin + new Vector2(-26, -18);
 			Color color = !NPC.IsABestiaryIconDummy ? NPC.GetAlpha(drawColor) : Color.White;
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -107,8 +107,8 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
-            {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
 				for (int i = 0; i < 6; i++)
 				{
 					if (pickedType == 0)
@@ -127,7 +127,7 @@ namespace SpiritMod.NPCs.Critters
 						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("YellowCrionid2").Type, Main.rand.NextFloat(.5f, 1.2f));
 					}
 				}
-            }
-        }
+			}
+		}
 	}
 }

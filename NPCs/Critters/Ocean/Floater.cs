@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod;
 using SpiritMod.Items.Consumable;
 using SpiritMod.Items.Consumable.Fish;
 using SpiritMod.Mechanics.QuestSystem;
@@ -10,7 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 
-namespace SpiritMod.NPCs.Critters
+namespace SpiritMod.NPCs.Critters.Ocean
 {
 	public class Floater : ModNPC
 	{
@@ -21,7 +22,7 @@ namespace SpiritMod.NPCs.Critters
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -51,8 +52,8 @@ namespace SpiritMod.NPCs.Critters
 			{
 				for (int i = 0; i < 8; ++i)
 				{
-					Vector2 dir = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center);
-					int newNPC = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + (Main.rand.Next(-20, 20)), (int)NPC.Center.Y + (Main.rand.Next(-20, 20)), ModContent.NPCType<Floater1>(), NPC.whoAmI);
+					var dir = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center);
+					int newNPC = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + Main.rand.Next(-20, 20), (int)NPC.Center.Y + Main.rand.Next(-20, 20), ModContent.NPCType<Floater1>(), NPC.whoAmI);
 					Main.npc[newNPC].velocity = dir;
 				}
 				txt = true;
@@ -86,7 +87,7 @@ namespace SpiritMod.NPCs.Critters
 			return false;
 		}
 
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("SpiritMod/NPCs/Critters/Floater_Critter_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("SpiritMod/NPCs/Critters/Ocean/Floater_Critter_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
