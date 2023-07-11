@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Projectiles.Bullet;
 using SpiritMod.Utilities;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -41,7 +40,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 
 		public override bool AltFunctionUse(Player player) => player.ItemTimer<ShadowShot>() <= 0;
 
-		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+		public override Vector2? HoldoutOffset() => new Vector2(-10, -4);
+
+		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		{
+			if (!player.IsUsingAlt())
+				velocity = velocity.RotatedByRandom(.0785f);
+		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
@@ -49,41 +54,34 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 				position += muzzleOffset;
 
-			if (player.altFunctionUse == 2)
+			if (player.IsUsingAlt())
 			{
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(SoundID.Item94);
-
 				player.SetItemTimer<ShadowShot>(300);
-
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ShadowShotTracker>(), Item.damage / 3, knockback, player.whoAmI);
 			}
 			else
 			{
-				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(SoundID.Item11);
-
-				float spread = 30f * 0.0174f;//45 degrees converted to radians
-				float baseSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
-				double baseAngle = Math.Atan2(velocity.X, velocity.Y);
-
-				double randomAngle = baseAngle + (Main.rand.NextFloat() - 0.5f) * spread;
-				velocity.X = baseSpeed * (float)Math.Sin(randomAngle);
-				velocity.Y = baseSpeed * (float)Math.Cos(randomAngle);
-
-				if (type == ProjectileID.Bullet)
-					type = ModContent.ProjectileType<VileBullet>();
-
-				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, Item.damage, knockback, Item.playerIndexTheItemIsReservedFor, 0, 0);
+				if (type == ProjectileID.Bullet) type = ModContent.ProjectileType<VileBullet>();
+				Projectile.NewProjectile(source, position, velocity, type, Item.damage, knockback, player.whoAmI);
 			}
 			return false;
+		}
+
+		public override bool? UseItem(Player player)
+		{
+			if (player.IsUsingAlt())
+				SoundEngine.PlaySound(SoundID.Item94);
+			else
+				SoundEngine.PlaySound(SoundID.Item11);
+
+			return null;
 		}
 
 		public override void HoldItem(Player player)
 		{
 			if (player.ItemTimer<ShadowShot>() == 1)
 			{
-				if (Main.netMode != NetmodeID.Server)
+				if (player.whoAmI == Main.myPlayer)
 					SoundEngine.PlaySound(SoundID.MaxMana);
 
 				for (int index1 = 0; index1 < 5; ++index1)
