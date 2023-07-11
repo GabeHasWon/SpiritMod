@@ -48,7 +48,6 @@ using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 using SpiritMod.Items.Accessory.ShieldCore;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
-using SpiritMod.Items.Accessory.TalismanTree.GrislyTotem;
 
 namespace SpiritMod
 {
@@ -225,8 +224,6 @@ namespace SpiritMod
 		public int infernalDash;
 		public bool longFuse;
 		public bool granitechDrones;
-		public bool grislyTotem;
-		public int damageToRecover;
 
 		public bool windEffect;
 		public bool windEffect2;
@@ -494,8 +491,6 @@ namespace SpiritMod
 			StarjinxSet = false;
 			oldHelios = usingHelios;
 			usingHelios = false;
-
-			grislyTotem = false;
 	}
 
 	private void ResetMiscVariables()
@@ -1139,20 +1134,6 @@ namespace SpiritMod
 
 			if (spiritBuff && Main.rand.NextBool(3))
 				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, new Vector2(6, 6), ModContent.ProjectileType<StarSoul>(), 40, 0f, Main.myPlayer);
-
-			//Talismans
-			if (grislyTotem && damage > 8)
-				{
-					SoundEngine.PlaySound(SoundID.DD2_MonkStaffGroundImpact);
-					damageToRecover = (int)damage / 8;
-					for (int i = 0; i < 3; i++)
-					{
-						int item = Item.NewItem(Player.GetSource_FromThis("grislyTotem"), Player.position, ModContent.ItemType<GrislyBit>());
-						Main.item[item].velocity = Main.rand.NextVector2CircularEdge(20f, 10f);
-					}
-				for (int i = 0; i < 10; i++)
-						Dust.NewDust(Player.position, Player.width, Player.height, DustID.Blood, 1f, 1f, 100, default, 2f);
-				}
 		}
 
 

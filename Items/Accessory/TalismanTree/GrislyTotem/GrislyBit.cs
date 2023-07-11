@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using SpiritMod.GlobalClasses.Players;
 
 
 namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTotem
@@ -29,8 +30,8 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTotem
 		}
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
-			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_World", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			spriteBatch.Draw(tex, Item.position - Main.screenPosition, new Rectangle(0, 20 * subID, 28, 20), GetAlpha(lightColor) ?? lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
+			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_World").Value;
+			spriteBatch.Draw(tex, Item.position - Main.screenPosition, new Rectangle(0, 16 * subID, 20, 14), GetAlpha(lightColor) ?? lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
 			return false;
 		}
 		public override void Update(ref float gravity, ref float maxFallSpeed)
@@ -55,7 +56,7 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTotem
 		public override bool OnPickup(Player player)
 		{
 			SoundEngine.PlaySound(SoundID.Item171);
-			player.Heal(player.GetSpiritPlayer().damageToRecover);
+			player.Heal(player.GetModPlayer<TalismanPlayer>().totemHealthToRecover);
 			return false;
 		}
 	}
