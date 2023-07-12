@@ -14,14 +14,10 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 		{
 			// DisplayName.SetDefault("Yuurei");
 			Main.npcFrameCount[NPC.type] = 4;
-			NPCID.Sets.TownCritter[NPC.type] = true;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Hide = true,
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -40,6 +36,7 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.knockBackResist = 0f;
 		}
+
 		public override void FindFrame(int frameHeight)
 		{
 			NPC.frameCounter += 0.15f;
@@ -52,23 +49,17 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 		{
 			Player target = Main.player[NPC.target];
 
-			if (NPC.localAI[0] == 0f) {
+			if (NPC.localAI[0] == 0f)
 				NPC.localAI[0] = NPC.Center.Y;
-				NPC.netUpdate = true; //localAI probably isnt affected by this... buuuut might as well play it safe
-			}
-			if (NPC.Center.Y >= NPC.localAI[0]) {
+			if (NPC.Center.Y >= NPC.localAI[0])
 				NPC.localAI[1] = -1f;
-				NPC.netUpdate = true;
-			}
-			if (NPC.Center.Y <= NPC.localAI[0] - 2f) {
+			if (NPC.Center.Y <= NPC.localAI[0] - 2f)
 				NPC.localAI[1] = 1f;
-				NPC.netUpdate = true;
-			}
+
 			NPC.velocity.Y = MathHelper.Clamp(NPC.velocity.Y + 0.009f * NPC.localAI[1], -.5f, .5f);
 			int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
-			if (distance <= 540 || NPC.life < NPC.lifeMax && !target.dead) {
+			if (distance <= 540 || NPC.life < NPC.lifeMax && !target.dead)
 				NPC.Transform(ModContent.NPCType<PagodaGhostHostile>());
-			}
 		}
 
 		public override Color? GetAlpha(Color lightColor) => new Color(255, 255, 255, 100);

@@ -110,6 +110,8 @@ namespace SpiritMod.NPCs.Boss.Occultist
 				if (target.dead || !target.active)
 				{
 					NPC.TargetClosest(true); //look for another player
+					target = Main.player[NPC.target];
+
 					if (target.dead || !target.active)
 						UpdateAIState(AISTATE_DESPAWN); //despawn if still none alive
 				}
