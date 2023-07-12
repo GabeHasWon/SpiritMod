@@ -100,9 +100,10 @@ namespace SpiritMod.Tiles
 				player.AddBuff(ModContent.BuffType<PagodaCurse>(), 8);
 
 			//Increase spawn odds per player in range
-			int spawnOdds = 1100 * ((Main.netMode == NetmodeID.SinglePlayer) ? 1 : Main.player.Where(x => x.active && !x.dead && x.DistanceSQ(new Vector2(i, j).ToWorldCoordinates()) < 1500 * 1500).Count());
+			int spawnOdds = 1100 * ((Main.netMode == NetmodeID.SinglePlayer) ? 1 : Main.player.Where(x => x.active && !x.dead && x.DistanceSQ(new Vector2(i, j).ToWorldCoordinates()) < (1500 * 1500)).Count());
+			int totalNPCCount = NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<SamuraiHostile>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostHostile>());
 
-			if (Main.rand.NextBool(Math.Max(1, spawnOdds)) && NPC.CountNPCS(ModContent.NPCType<SamuraiPassive>()) + NPC.CountNPCS(ModContent.NPCType<PagodaGhostPassive>()) < 20)
+			if (Main.rand.NextBool(Math.Max(1, spawnOdds)) && totalNPCCount < 20)
 			{
 				Vector2 pos = new Vector2(i, j).ToWorldCoordinates() + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(350, 1000));
 

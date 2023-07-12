@@ -9,7 +9,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
-using SpiritMod.Buffs.Tiles;
 
 namespace SpiritMod.NPCs.Pagoda.Yuurei
 {
@@ -86,7 +85,13 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 		{
 			Player player = Main.player[NPC.target];
 			NPC.alpha += 1;
-			if (NPC.alpha >= 180)
+
+			if (NPC.Distance(player.Center) > 1500)
+			{
+				if ((NPC.alpha += 25) >= 255)
+					NPC.active = false;
+			}
+			else if (NPC.alpha >= 180)
 			{
 				int angle = Main.rand.Next(360);
 				int distX = (int)(Math.Sin(angle * (Math.PI / 180)) * 90);
