@@ -3,44 +3,39 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using SpiritMod.Mechanics.Trails;
 
 namespace SpiritMod.Projectiles.Bullet
 {
-	public class TerraBullet1 : ModProjectile
+	public class TerraBullet1 : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults()
-			=> DisplayName.SetDefault("Energy Bolt");
+		public void DoTrailCreation(TrailManager tManager)
+		{
+			tManager.CreateTrail(Projectile, new GradientTrail(Color.Green with { A = 0 }, Color.Blue with { A = 0 }), new RoundCap(), new DefaultTrailPosition(), 10f, 500f, new DefaultShader());
+			tManager.CreateTrail(Projectile, new StandardColorTrail(Color.White), new RoundCap(), new DefaultTrailPosition(), 5f, 500f, new DefaultShader());
+		}
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Bolt");
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 4;       //projectile width
-			Projectile.height = 4;  //projectile height
-			Projectile.friendly = true;      //make that the projectile will not damage you
-			Projectile.DamageType = DamageClass.Ranged;         // 
-			Projectile.tileCollide = true;   //make that the projectile will be destroed if it hits the terrain
-			Projectile.penetrate = 2;      //how many npc will penetrate
-			Projectile.timeLeft = 300;   //how many time projectile projectile has before disepire // projectile light
+			Projectile.width = Projectile.height = 4;
+			Projectile.friendly = true;
+			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.tileCollide = true;
+			Projectile.penetrate = 2;
+			Projectile.timeLeft = 300;
+			Projectile.extraUpdates = 1;
 			Projectile.ignoreWater = true;
-			Projectile.alpha = 255;
-			Projectile.aiStyle = -1;
-			Projectile.hide = true;
 		}
 
 		public override void AI()
 		{
-			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-
-			if (Projectile.alpha < 170) {
-				for (int i = 0; i < 10; i++) {
-					float x = Projectile.position.X - 3 - Projectile.velocity.X / 10f * i;
-					float y = Projectile.position.Y - 3 - Projectile.velocity.Y / 10f * i;
-					int num = Dust.NewDust(new Vector2(x, y), 2, 2, DustID.BlueCrystalShard);
-					Main.dust[num].alpha = Projectile.alpha;
-					Main.dust[num].velocity = Vector2.Zero;
-					Main.dust[num].noGravity = true;
-				}
-			}
-			Projectile.alpha = Math.Max(0, Projectile.alpha - 25);
+			Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.BlueCrystalShard, null, Projectile.alpha);
+			dust.velocity = (Projectile.velocity * Main.rand.NextFloat(.1f, .3f)).RotatedByRandom(.15f);
+			dust.noGravity = true;
 
 			bool flag25 = false;
 			int jim = 1;

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs;
+using SpiritMod.Mechanics.Trails;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -7,11 +8,18 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Bullet
 {
-	public class VileBullet : ModProjectile
+	public class VileBullet : ModProjectile, ITrailProjectile
 	{
+		public void DoTrailCreation(TrailManager tManager)
+		{
+			tManager.CreateTrail(Projectile, new GradientTrail(Color.Yellow with { A = 0 }, Color.Purple with { A = 0 }), new RoundCap(), new DefaultTrailPosition(), 10f, 500f, new DefaultShader());
+			tManager.CreateTrail(Projectile, new StandardColorTrail(Color.Magenta with { A = 0 }), new RoundCap(), new DefaultTrailPosition(), 6f, 500f, new DefaultShader());
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Vile Bullet");
+			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -25,9 +33,8 @@ namespace SpiritMod.Projectiles.Bullet
 			Projectile.timeLeft = 240;
 			Projectile.alpha = 255;
 			AIType = ProjectileID.Bullet;
-			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
-		int dustType;
+
 		public override void AI()
 		{
 			Projectile.alpha = 255;
@@ -45,7 +52,9 @@ namespace SpiritMod.Projectiles.Bullet
 				}
 			}
 
-			if (flag25) {
+			int dustType;
+			if (flag25)
+			{
 				float num1 = 12f;
 				Vector2 vector2 = new Vector2(Projectile.position.X + (float)Projectile.width * 0.5f, Projectile.position.Y + (float)Projectile.height * 0.5f);
 				float num2 = Main.npc[jim].Center.X - vector2.X;
@@ -55,23 +64,20 @@ namespace SpiritMod.Projectiles.Bullet
 				float num6 = num2 * num5;
 				float num7 = num3 * num5;
 				int num8 = 10;
+
 				dustType = 173;
+
 				Projectile.velocity.X = (Projectile.velocity.X * (float)(num8 - 1) + num6) / (float)num8;
 				Projectile.velocity.Y = (Projectile.velocity.Y * (float)(num8 - 1) + num7) / (float)num8;
 			}
-			if (!flag25) {
-				dustType = 27;
-			}
+			else dustType = 27;
+
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
+			for (int i = 0; i < 2; i++)
 			{
-				for (int i = 0; i < 10; i++) {
-					float x = Projectile.Center.X - Projectile.velocity.X / 10f * (float)i;
-					float y = Projectile.Center.Y - Projectile.velocity.Y / 10f * (float)i;
-					int num = Dust.NewDust(new Vector2(x, y), 2, 2, dustType);
-					Main.dust[num].alpha = Projectile.alpha;
-					Main.dust[num].velocity = Vector2.Zero;
-					Main.dust[num].noGravity = true;
-				}
+				Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType, null, Projectile.alpha);
+				dust.velocity = (Projectile.velocity * Main.rand.NextFloat(.1f, .3f)).RotatedByRandom(.15f);
+				dust.noGravity = true;
 			}
 		}
 	}

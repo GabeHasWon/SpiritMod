@@ -20,15 +20,13 @@ namespace SpiritMod.Projectiles.Bullet
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 12;
-			Projectile.height = 16;
-
+			Projectile.Size = new Vector2(10);
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.friendly = true;
 			Projectile.timeLeft = 300;
-
 			Projectile.penetrate = -1;
 		}
+
 		public override bool PreAI()
 		{
 			Lighting.AddLight(Projectile.Center, 0.230f, .035f, .06f);
@@ -62,14 +60,17 @@ namespace SpiritMod.Projectiles.Bullet
 				if (flag52)
 					Projectile.Kill();
 			}
-			int num = 5;
-			for (int k = 0; k < 3; k++) {
-				int index2 = Dust.NewDust(Projectile.position, 1, 1, DustID.CursedTorch, 0.0f, 0.0f, 0, new Color(), 1f);
-				Main.dust[index2].position = Projectile.Center - Projectile.velocity / num * (float)k;
-				Main.dust[index2].scale = .5f;
-				Main.dust[index2].velocity *= 0f;
-				Main.dust[index2].noGravity = true;
-				Main.dust[index2].noLight = false;
+
+			if (Projectile.ai[0] == 0)
+			{
+				for (int k = 0; k < 3; k++)
+				{
+					int index2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.CursedTorch, 0.0f, 0.0f, 0, new Color(), 1f);
+					Main.dust[index2].scale = .5f;
+					Main.dust[index2].velocity *= 0f;
+					Main.dust[index2].noGravity = true;
+					Main.dust[index2].noLight = false;
+				}
 			}
 			return false;
 		}
@@ -104,6 +105,7 @@ namespace SpiritMod.Projectiles.Bullet
 				Main.projectile[array2[num33].X].Kill();
 			}
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
@@ -114,6 +116,7 @@ namespace SpiritMod.Projectiles.Bullet
 			}
 			return true;
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			for (int i = 0; i < 5; i++)
