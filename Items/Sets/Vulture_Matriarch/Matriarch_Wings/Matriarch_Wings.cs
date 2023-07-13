@@ -77,7 +77,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Matriarch_Wings
 			ascentWhenFalling = 0.65f;
 			ascentWhenRising = 0.08f;
 			maxCanAscendMultiplier = 1.25f;
-			maxAscentMultiplier = 2.3f;
+			maxAscentMultiplier = 2f;
 			constantAscend = 0.09f;
 		}
 	}

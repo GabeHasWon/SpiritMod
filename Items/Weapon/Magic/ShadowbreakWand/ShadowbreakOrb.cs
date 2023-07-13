@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 			Projectile.extraUpdates = 1;
 			Projectile.friendly = true;
 			Projectile.DamageType = DamageClass.Magic;
-			Projectile.penetrate = -1;
+			Projectile.penetrate = 1;
 			Projectile.alpha = 100;
 			Projectile.timeLeft = 30;
 		}
@@ -141,10 +141,12 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			if (Counter < CounterMax || Projectile.timeLeft > 10)
-				damage = (int)(damage * .5f);
-			else
+			if (!(Counter < CounterMax || Projectile.timeLeft > 10))
+			{
+				damage = (int)(damage * 2f);
+				knockback = 10;
 				target.AddBuff(ModContent.BuffType<Shadowbroken>(), 300);
+			}
 		}
 
 		public override void Kill(int timeLeft)
@@ -159,7 +161,7 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 					SoundEngine.PlaySound(SoundID.Item103, Projectile.Center);
 					SoundEngine.PlaySound(SoundID.Item107, Projectile.Center);
 
-					ParticleHandler.SpawnParticle(new Shatter(Projectile.Center, 120) { Rotation = Main.rand.NextFloatDirection() * .2f });
+					ParticleHandler.SpawnParticle(new Shatter(Projectile.Center, 30) { Rotation = Main.rand.NextFloatDirection() * .2f });
 
 					for (int i = 0; i < 35; i++)
 					{
