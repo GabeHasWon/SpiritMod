@@ -2425,7 +2425,7 @@ namespace SpiritMod
 
 			if (explorerTreads)
 			{
-				float speedBonus = (10f - (int)(Player.statLife / (float)(Player.statLifeMax2 / 10f))) * .06f;
+				float speedBonus = (10f - (int)(Player.statLife / (float)(Player.statLifeMax2 / 10f))) * .05f;
 
 				speed += speedBonus;
 				sprint += speedBonus;

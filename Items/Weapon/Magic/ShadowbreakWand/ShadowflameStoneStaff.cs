@@ -25,8 +25,8 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 			Item.height = 46;
 			Item.value = Item.buyPrice(0, 1, 0, 0);
 			Item.rare = ItemRarityID.Green;
-			Item.damage = 18;
-			Item.knockBack = 6;
+			Item.damage = 16;
+			Item.knockBack = 5;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useTime = Item.useAnimation = 24;
 			Item.mana = 10;

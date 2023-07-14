@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.Leather
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Explorer's Treads");
-			Tooltip.SetDefault("+6% Movement speed for every 10% missing health\n" +
-				"You can avoid most traps and hazards\n" +
+			Tooltip.SetDefault("+5% Movement speed for every 10% missing health\n" +
+				"50% chance to avoid traps and hazards\n" +
 				"'Makes exploring temples like a walk in the park'");
 		}
 
