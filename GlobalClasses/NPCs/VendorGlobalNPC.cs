@@ -22,7 +22,8 @@ using SpiritMod.Items.Accessory;
 using SpiritMod.Items.Pets;
 using SpiritMod.Items.Sets.FlailsMisc.JadeDao;
 using SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon;
-using SpiritMod.Items.ByBiome.Ocean.Misc;
+using SpiritMod.Items.ByBiome.Ocean.Misc.VolleyballContent;
+using SpiritMod.Items.ByBiome.Ocean.Placeable;
 
 namespace SpiritMod.GlobalClasses.NPCs;
 
@@ -37,6 +38,12 @@ internal class VendorGlobalNPC : GlobalNPC
 
 			if (LanternNight.LanternsUp)
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritTiles.Furniture.FestivalLanternItem>(), false);
+
+			if (Main.LocalPlayer.ZoneBeach)
+			{
+				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<BeachUmbrellaItem>(), false);
+				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<LoungeChairItem>(), false);
+			}
 		}
 		else if (type == NPCID.ArmsDealer)
 		{

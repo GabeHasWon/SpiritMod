@@ -2,61 +2,32 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent.Bestiary;
 using Terraria.DataStructures;
-using Terraria.Utilities;
-using SpiritMod.Items.Sets.FloatingItems;
-using Terraria.GameContent;
-using Terraria.UI;
 using System;
-using System.IO;
 
 namespace SpiritMod.NPCs.Critters.Ocean;
 
-public class Pelican : ModNPC
+public class SandPiper : ModNPC
 {
-	/// <summary>
-	/// The item choices for this pelican. Set once on load, and unloaded.
-	/// </summary>
-	static WeightedRandom<int> choice;
-
-	private int _heldItemType = ItemID.None;
-
 	private ref float State => ref NPC.ai[0];
 	private ref float Timer => ref NPC.ai[1];
 	private ref float WalkState => ref NPC.ai[2];
 	private ref float WalkTimer => ref NPC.ai[3];
 
-	private Vector2 HeldItemPosition => NPC.position + new Vector2(NPC.spriteDirection == 1 ? 25 : 0, -4);
-
-	public override void Load()
-	{
-		choice = new(Main.rand);
-		choice.Add(ItemID.None, 6);
-		choice.Add(ModContent.ItemType<Kelp>(), 0.25f);
-		choice.Add(ModContent.ItemType<Items.Placeable.FishCrate>(), 0.05f);
-		choice.Add(ModContent.ItemType<Items.Sets.FloatingItems.Driftwood.DriftwoodTileItem>(), 0.1f);
-		choice.Add(ItemID.RedSnapper, 1f);
-		choice.Add(ItemID.Shrimp, 0.5f);
-		choice.Add(ItemID.Trout, 1.5f);
-		choice.Add(ItemID.Tuna, 1f);
-		choice.Add(ItemID.GoldenCarp, 0.01f);
-	}
-
-	public override void Unload() => choice = null;
-
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[Type] = 1;
+		Main.npcCatchable[Type] = true;
+
 		NPCID.Sets.CountsAsCritter[Type] = true;
 	}
 
 	public override void SetDefaults()
 	{
 		NPC.dontCountMe = true;
-		NPC.width = 22;
-		NPC.height = 22;
+		NPC.width = 24;
+		NPC.height = 20;
 		NPC.damage = 0;
 		NPC.defense = 0;
 		NPC.lifeMax = 5;
@@ -65,6 +36,7 @@ public class Pelican : ModNPC
 		NPC.knockBackResist = 1f;
 		NPC.aiStyle = -1;
 		NPC.npcSlots = 0;
+		NPC.catchItem = (short)ModContent.ItemType<SandPiperItem>();
 	}
 
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -73,14 +45,12 @@ public class Pelican : ModNPC
 
 		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-			new FlavorTextBestiaryInfoElement("A large sea bird with a special beak to hold its prey. Startling it could cause the bird to drop what it's caught, but that would be mean."),
+			new FlavorTextBestiaryInfoElement("A small, brave bird that patrols the shorelines looking for food uncovered by the waves"),
 		});
 	}
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		_heldItemType = choice;
-
 		NPC.direction = -1;
 		NPC.netUpdate = true;
 	}
@@ -108,14 +78,14 @@ public class Pelican : ModNPC
 				NPC.direction *= -1;
 
 			if (WalkState != 0)
-				NPC.velocity.X = WalkState * 1.2f;
+				NPC.velocity.X = WalkState * 2f;
 			else
-				NPC.velocity.X *= 0.95f;
+				NPC.velocity.X *= 0.92f;
 
 			if (WalkTimer == 0 || ++Timer % WalkTimer == 0)
 			{
 				WalkState = NPC.direction = WalkState == 0 ? (Main.rand.NextBool(2) ? -1 : 1) : 0;
-				WalkTimer = Main.rand.Next(120, 240);
+				WalkTimer = Main.rand.Next(80, 160);
 				NPC.netUpdate = true;
 			}
 
@@ -123,20 +93,21 @@ public class Pelican : ModNPC
 			{
 				Player player = Main.player[i];
 
-				if (player.active && !player.dead && player.DistanceSQ(NPC.Center) < 200 * 200 && player.velocity.LengthSquared() > 5 * 5)
+				if (player.active && !player.dead && player.DistanceSQ(NPC.Center) < 300 * 300)
 				{
-					State = 1;
-					Timer = 0;
+					float dist = player.Distance(NPC.Center);
 
-					NPC.direction = Math.Sign(NPC.Center.X - player.Center.X);
-					NPC.netUpdate = true;
+					if (dist > 150)
+						NPC.velocity.X = Math.Sign(NPC.Center.X - player.Center.X) * (1 - ((dist - 150f) / 150f)) * 5;
+					else 
+					{ 
+						State = 1;
+						Timer = 0;
 
-					if (_heldItemType != ItemID.None)
-					{
-						Item.NewItem(new EntitySource_Loot(NPC), NPC.Center, _heldItemType);
-						_heldItemType = ItemID.None;
+						NPC.direction = NPC.Center.X < player.Center.X ? -1 : 1;
+						NPC.netUpdate = true;
+						break;
 					}
-					return;
 				}
 			}
 		}
@@ -145,7 +116,18 @@ public class Pelican : ModNPC
 			if (Main.player[NPC.target].dead)
 				return;
 
-			if (++Timer >= 300f) //Fall down and switch states when landing
+			for (int i = 0; i < Main.maxPlayers; ++i) //Scare check
+			{
+				Player player = Main.player[i];
+
+				if (player.active && !player.dead && player.DistanceSQ(NPC.Center) < 400 * 400)
+				{
+					Timer--;
+					break;
+				}
+			}
+
+			if (++Timer >= 130f) //Fall down and switch states when landing
 			{
 				if (((NPC.velocity.Y == 0f || NPC.collideY) && Collision.SolidCollision(NPC.BottomLeft, NPC.width, 6)) || NPC.wet)
 				{
@@ -179,27 +161,27 @@ public class Pelican : ModNPC
 
 			if (NPC.direction == -1 && NPC.velocity.X > -3f)
 			{
-				NPC.velocity.X -= 0.1f;
+				NPC.velocity.X -= 0.15f;
 
-				if (NPC.velocity.X > 3f)
+				if (NPC.velocity.X > 4f)
 					NPC.velocity.X -= 0.1f;
 				else if (NPC.velocity.X > 0f)
 					NPC.velocity.X -= 0.05f;
 
-				if (NPC.velocity.X < -3f)
-					NPC.velocity.X = -3f;
+				if (NPC.velocity.X < -4f)
+					NPC.velocity.X = -4f;
 			}
 			else if (NPC.direction == 1 && NPC.velocity.X < 3f)
 			{
-				NPC.velocity.X += 0.1f;
+				NPC.velocity.X += 0.15f;
 
-				if (NPC.velocity.X < -3f)
+				if (NPC.velocity.X < -4f)
 					NPC.velocity.X += 0.1f;
 				else if (NPC.velocity.X < 0f)
 					NPC.velocity.X += 0.05f;
 
-				if (NPC.velocity.X > 3f)
-					NPC.velocity.X = 3f;
+				if (NPC.velocity.X > 4f)
+					NPC.velocity.X = 4f;
 			}
 
 			const int ScanCheck = 15;
@@ -222,46 +204,14 @@ public class Pelican : ModNPC
 			}
 
 			if (closeGround)
-				NPC.velocity.Y += 0.15f;
+				NPC.velocity.Y += 0.08f;
 			else
-				NPC.velocity.Y -= 0.15f;
+				NPC.velocity.Y -= 0.08f;
 
 			if (veryCloseGround)
-				NPC.velocity.Y -= 0.25f;
+				NPC.velocity.Y -= 0.15f;
 
 			NPC.velocity.Y = MathHelper.Clamp(NPC.velocity.Y, -4.5f, 4);
-		}
-	}
-
-	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-	{
-		if (_heldItemType != ItemID.None)
-		{
-			Main.instance.LoadItem(_heldItemType);
-
-			Item theItem = ContentSamples.ItemsByType[_heldItemType];
-			Texture2D value = TextureAssets.Item[theItem.type].Value;
-			Rectangle frame = (Main.itemAnimations[theItem.type] == null) ? value.Frame() : Main.itemAnimations[theItem.type].GetFrame(value);
-			frame.Height /= 2;
-			float scale = theItem.scale;
-
-			const float SizeLimit = 20;
-
-			if (frame.Width > SizeLimit || frame.Height > SizeLimit)
-				scale = ((frame.Width <= frame.Height) ? (SizeLimit / frame.Height) : (SizeLimit / frame.Width));
-
-			SpriteEffects effects = SpriteEffects.None;
-			Color currentColor = Lighting.GetColor(NPC.Center.ToTileCoordinates());
-			var pos = HeldItemPosition - screenPos;
-
-			float modScale = 1f;
-			ItemSlot.GetItemLight(ref currentColor, ref modScale, theItem);
-			scale *= modScale;
-
-			spriteBatch.Draw(value, pos, frame, currentColor, 0f, frame.Size() / 2f, scale, effects, 0f);
-
-			if (theItem.color != default)
-				spriteBatch.Draw(value, pos, frame, theItem.GetColor(currentColor), 0f, frame.Size() / 2f, scale, effects, 0f);
 		}
 	}
 
@@ -273,8 +223,28 @@ public class Pelican : ModNPC
 		}
 	}
 
-	public override void SendExtraAI(BinaryWriter writer) => writer.Write(_heldItemType);
-	public override void ReceiveExtraAI(BinaryReader reader) => _heldItemType = reader.ReadInt32();
-
 	public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneBeach && Main.dayTime ? (spawnInfo.PlayerInTown ? 2f : 1f) : 0;
+}
+
+[Sacrifice(1)]
+public class SandPiperItem : ModItem
+{
+	public override string Texture => base.Texture.Replace("Item", "");
+
+	public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Piper");
+
+	public override void SetDefaults()
+	{
+		Item.width = Item.height = 20;
+		Item.rare = ItemRarityID.White;
+		Item.maxStack = 99;
+		Item.value = Item.sellPrice(0, 0, 5, 0);
+		Item.noUseGraphic = true;
+		Item.useStyle = ItemUseStyleID.Swing;
+		Item.useTime = Item.useAnimation = 20;
+		Item.noMelee = true;
+		Item.consumable = true;
+		Item.autoReuse = true;
+		Item.makeNPC = ModContent.NPCType<SandPiper>();
+	}
 }
