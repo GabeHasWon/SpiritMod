@@ -55,29 +55,6 @@ public class LoungeChair : ModTile
 				player.sleeping.StartSleeping(player, i, j);
 			}
 		}
-		//else
-		//{
-		//	Tile tile = Main.tile[i, j];
-		//	int spawnX = i - tile.TileFrameX / 18;
-		//	int spawnY = j + 2;
-		//	spawnX += tile.TileFrameX >= 54 ? 5 : 2;
-
-		//	if (tile.TileFrameY % 38 != 0)
-		//		spawnY--;
-
-		//	player.FindSpawn();
-
-		//	if (player.SpawnX == spawnX && player.SpawnY == spawnY)
-		//	{
-		//		player.RemoveSpawn();
-		//		Main.NewText("Spawn point removed!", 255, 240, 20);
-		//	}
-		//	else if (Player.CheckSpawn(spawnX, spawnY))
-		//	{
-		//		player.ChangeSpawn(spawnX, spawnY);
-		//		Main.NewText("Spawn point set!", 255, 240, 20);
-		//	}
-		//}
 		return true;
 	}
 

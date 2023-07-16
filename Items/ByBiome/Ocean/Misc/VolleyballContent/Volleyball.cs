@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using SpiritMod.Mechanics.SportSystem;
+using SpiritMod.Mechanics.SportSystem.Volleyball;
 using System;
 using Terraria;
 using Terraria.Chat;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -26,6 +29,28 @@ internal class Volleyball : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.consumable = true;
 	}
+
+	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+	{
+		var court = SportCourts.CourtAt<VolleyballGameTracker>(player.Center.ToTileCoordinates());
+		if (court is not null)
+		{
+			VolleyballGameTracker tracker = court.tracker as VolleyballGameTracker;
+
+			if (!court.Active)
+				tracker.Start();
+
+			int proj = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+
+			if (tracker.volleyballWhoAmI == -1)
+			{
+				(Main.projectile[proj].ModProjectile as VolleyballProjectile).courtLocation = court.center;
+				tracker.volleyballWhoAmI = (short)proj;
+			}
+			return false;
+		}
+		return true;
+	}
 }
 
 internal class VolleyballProjectile : ModProjectile
@@ -34,6 +59,8 @@ internal class VolleyballProjectile : ModProjectile
 
 	private ref float HitTimer => ref Projectile.ai[0];
 	private ref float TimesHit => ref Projectile.ai[1];
+
+	internal Point? courtLocation = null;
 
 	public override void SetDefaults()
 	{
@@ -142,13 +169,28 @@ internal class VolleyballProjectile : ModProjectile
 		{
 			Projectile.velocity.Y = -oldVelocity.Y * 0.5f;
 
-			if (TimesHit > 10)
+			if (oldVelocity.Y > 0)
 			{
-				string text = $"The volley lasted {TimesHit} hits!";
-				if (Main.netMode == NetmodeID.SinglePlayer)
-					Main.NewText(text);
-				else if (Main.netMode == NetmodeID.Server)
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), Color.White);
+				if (courtLocation is not null)
+				{
+					var court = SportCourts.CourtAt<VolleyballGameTracker>(courtLocation.Value);
+
+					if (court is not null && court.Active)
+					{
+						VolleyballGameTracker tracker = court.tracker as VolleyballGameTracker;
+						tracker.OnScorePoint(Projectile.Center.X > court.center.X * 16);
+
+						Projectile.Kill();
+					}
+				}
+				else if (TimesHit > 10)
+				{
+					string text = $"The volley lasted {TimesHit} hits!";
+					if (Main.netMode == NetmodeID.SinglePlayer)
+						Main.NewText(text);
+					else if (Main.netMode == NetmodeID.Server)
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), Color.White);
+				}
 			}
 
 			TimesHit = 0;
@@ -160,5 +202,16 @@ internal class VolleyballProjectile : ModProjectile
 	{
 		int item = Item.NewItem(Projectile.GetSource_Death(), Projectile.Center - new Vector2(0, 2), ModContent.ItemType<Volleyball>());
 		Main.item[item].velocity = Vector2.Zero;
+
+		if (courtLocation is null)
+			return;
+
+		var court = SportCourts.CourtAt<VolleyballGameTracker>(courtLocation.Value);
+
+		if (court is not null && court.Active)
+		{
+			VolleyballGameTracker tracker = court.tracker as VolleyballGameTracker;
+			tracker.volleyballWhoAmI = -1;
+		}
 	}
 }

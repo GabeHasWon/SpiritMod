@@ -26,6 +26,7 @@
 		RequestQuestManager,
 		RecieveQuestManager,
 		Quest,
+		Sports,
 	}
 
 	public enum QuestMessageType : byte
@@ -38,5 +39,10 @@
 		ObtainQuestBook,
 		Unlock,
 		SyncNPCQueue
+	}
+
+	public enum SportMessageType : byte
+	{
+		PlaceCourt = 0,
 	}
 }

@@ -5,6 +5,7 @@ using SpiritMod.Items.Weapon.Summon.StardustBomb;
 using SpiritMod.Mechanics.BoonSystem;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.Mechanics.QuestSystem;
+using SpiritMod.Mechanics.SportSystem;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.NPCs.AuroraStag;
 using SpiritMod.NPCs.ExplosiveBarrel;
@@ -306,6 +307,9 @@ namespace SpiritMod
 					break;
 				case MessageType.Quest:
 					QuestMultiplayer.HandlePacket(reader, (QuestMessageType)reader.ReadByte(), reader.ReadBoolean());
+					break;
+				case MessageType.Sports:
+					SportsSyncing.HandlePacket((SportMessageType)reader.ReadByte(), reader);
 					break;
 				default:
 					SpiritMod.Instance.Logger.Error("Unknown net message (" + id + ")");

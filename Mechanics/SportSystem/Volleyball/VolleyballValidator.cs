@@ -1,15 +1,15 @@
-﻿using Microsoft.Xna.Framework;
-using SpiritMod.Tiles.Furniture.Volleyball;
-using Terraria;
+﻿using Terraria;
 using Terraria.Chat;
-using Terraria.Localization;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Terraria.Localization;
+using SpiritMod.Tiles.Furniture.Volleyball;
 
-namespace SpiritMod.Mechanics.VolleyballSystem;
+namespace SpiritMod.Mechanics.SportSystem.Volleyball;
 
-internal class Validator
+internal class VolleyballValidator : Validator
 {
-	internal static bool Validate(int x, int y, out int leftEdge, out int rightEdge, out int netCenter, out int top, out int bottom)
+	public override bool Validate(int x, int y, out int leftEdge, out int rightEdge, out int netCenter, out int top, out int bottom)
 	{
 		Tile tile = Main.tile[x, y];
 

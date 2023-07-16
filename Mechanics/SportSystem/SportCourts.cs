@@ -6,25 +6,25 @@ using Terraria.UI;
 using Terraria;
 using Terraria.ModLoader.IO;
 
-namespace SpiritMod.Mechanics.VolleyballSystem;
+namespace SpiritMod.Mechanics.SportSystem;
 
-internal class VolleyballCourts : ModSystem
+internal class SportCourts : ModSystem
 {
 	public List<Court> courts = new();
 
-	public static bool TryAddCourt(Point pos)
+	public static bool TryAddCourt(Point pos, CourtGameTracker tracker)
 	{
-		if (!Validator.Validate(pos.X, pos.Y, out int left, out int right, out int netCenter, out int top, out int bottom))
+		if (!tracker.Validator.Validate(pos.X, pos.Y, out int left, out int right, out int netCenter, out int top, out int bottom))
 			return false;
 
 		RemoveCourt(new(pos.X, netCenter));
-		ModContent.GetInstance<VolleyballCourts>().courts.Add(new Court(new Rectangle(left, top, right - left, bottom - top), new Point(pos.X, netCenter)));
+		ModContent.GetInstance<SportCourts>().courts.Add(new Court(new Rectangle(left, top, right - left, bottom - top), new Point(pos.X, netCenter), tracker));
 		return true;
 	}
 
 	public static bool RemoveCourt(Point center)
 	{
-		var courts = ModContent.GetInstance<VolleyballCourts>().courts;
+		var courts = ModContent.GetInstance<SportCourts>().courts;
 		var court = courts.FirstOrDefault(x => x.bounds.Contains(center));
 
 		if (court is not null)
@@ -33,6 +33,18 @@ internal class VolleyballCourts : ModSystem
 			return true;
 		}
 		return false;
+	}
+
+	public static IEnumerable<Court> CourtsAt(Point center)
+	{
+		IEnumerable<Court> validCourts = ModContent.GetInstance<SportCourts>().courts.Where(x => x.bounds.Contains(center));
+		return validCourts;
+	}
+
+	public static Court CourtAt<T>(Point center) where T : CourtGameTracker
+	{
+		var court = ModContent.GetInstance<SportCourts>().courts.FirstOrDefault(x => x.bounds.Contains(center) && x.tracker is T);
+		return court;
 	}
 
 	public override void SaveWorldData(TagCompound tag)
@@ -44,8 +56,6 @@ internal class VolleyballCourts : ModSystem
 			Court court = courts[i];
 			court.Save(tag, i);
 		}
-
-		courts.Clear();
 	}
 
 	public override void LoadWorldData(TagCompound tag)
@@ -59,6 +69,8 @@ internal class VolleyballCourts : ModSystem
 		}
 	}
 
+	public override void OnWorldUnload() => courts.Clear();
+
 	public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
 	{
 		int index = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Invasion Progress Bars"));
@@ -70,7 +82,7 @@ internal class VolleyballCourts : ModSystem
 				foreach (var court in courts)
 				{
 					if (Vector2.DistanceSquared(court.center.ToWorldCoordinates(), Main.LocalPlayer.Center) < 3000 * 3000)
-						CourtDrawer.Draw(court);
+						court.Draw();
 				}
 				return true;
 			},

@@ -115,6 +115,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 				}
 			}
 		}
+
 		private void DoLightningChain(NPC target, int damage)
 		{
 			overcharge += 15;
@@ -265,6 +266,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 			Projectile.netUpdate = true;
 		}
 	}
+
 	public class ElectricGuitarProjPlayer : ModProjectile
 	{
 		public float x = 0f;
