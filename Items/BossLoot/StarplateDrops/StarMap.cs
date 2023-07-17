@@ -58,10 +58,14 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 		private static void AstralTeleport(Player player)
 		{
-			if (player.whoAmI == Main.myPlayer && !Collision.SolidCollision(Main.MouseWorld, player.width, player.height))
+			if (player.whoAmI == Main.myPlayer)
 			{
-				RunTeleport(player, Main.MouseWorld);
-				player.AddBuff(ModContent.BuffType<Buffs.AstralMapCooldown>(), CooldownTime);
+				bool inTempleEarly = (Framing.GetTileSafely((Main.MouseWorld / 16).ToPoint()).WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
+				if (!Collision.SolidCollision(Main.MouseWorld, player.width, player.height) && !inTempleEarly)
+				{
+					RunTeleport(player, Main.MouseWorld);
+					player.AddBuff(ModContent.BuffType<Buffs.AstralMapCooldown>(), CooldownTime);
+				}
 			}
 		}
 
