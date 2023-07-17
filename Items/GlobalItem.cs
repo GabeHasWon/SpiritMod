@@ -252,13 +252,14 @@ namespace SpiritMod.Items
 
 		public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
 		{
-			if (item.type == ItemID.GoodieBag)
-			{
-				itemLoot.Add(ItemDropRule.OneFromOptions(1, ItemUtils.DropCandyTable()));
+			if (item.type != ItemID.GoodieBag)
+				return;
 
-				if (Main.rand.NextBool(3))
-				{
-					int[] lootTable = {
+			itemLoot.Add(ItemDropRule.OneFromOptions(1, ItemUtils.DropCandyTable()));
+
+			if (Main.rand.NextBool(3))
+			{
+				int[] lootTable = {
 						ModContent.ItemType<MaskSchmo>(),
 						ModContent.ItemType<MaskGraydee>(),
 						ModContent.ItemType<MaskLordCake>(),
@@ -270,11 +271,8 @@ namespace SpiritMod.Items
 						ModContent.ItemType<MaskYuyutsu>(),
 						ModContent.ItemType<MaskLeemyy>()
 					};
-					itemLoot.Add(ItemDropRule.OneFromOptions(3, lootTable));
-				}
+				itemLoot.Add(ItemDropRule.OneFromOptions(3, lootTable));
 			}
-			else if (item.type == ItemID.WoodenCrate || item.type == ItemID.WoodenCrateHard)
-				itemLoot.Add(ItemDropRule.Common(45, ModContent.ItemType<Sets.BriarChestLoot.TwigStaff>()));
 		}
 
 		public override float UseSpeedMultiplier(Item item, Player player)
