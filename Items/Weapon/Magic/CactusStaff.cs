@@ -35,14 +35,14 @@ namespace SpiritMod.Items.Weapon.Magic
 			Item.autoReuse = false;
 		}
 
-		public override bool CanUseItem(Player player) => !Collision.SolidCollision(Main.MouseWorld, 16, 72);
+		public override bool CanUseItem(Player player) => !Collision.SolidCollision(Main.MouseWorld, 16, 16);
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
 			velocity = Vector2.Zero;
 			position = Main.MouseWorld.ToTileCoordinates().ToWorldCoordinates(8, 4);
 
-			while (!WorldGen.SolidTile(position.ToTileCoordinates()))
+			while (!WorldGen.SolidTile(position.ToTileCoordinates()) && !Main.tileSolidTop[Framing.GetTileSafely(position.ToTileCoordinates()).TileType])
 				position.Y += 8;
 
 			position.Y -= 32;
@@ -50,18 +50,24 @@ namespace SpiritMod.Items.Weapon.Magic
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (player.ownedProjectileCounts[Item.shoot] >= 1)
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.ownedProjectileCounts[Item.shoot]);
+
+			if (player.ownedProjectileCounts[Item.shoot] >= 2)
 			{
 				for (int i = 0; i < Main.maxProjectiles; ++i)
 				{
 					Projectile p = Main.projectile[i];
 
-					if (p.active && p.owner == player.whoAmI && p.type == Item.shoot)
-						p.Kill();
+					if (p.active && p.owner == player.whoAmI && p.type == Item.shoot && p.ModProjectile is CactusWallProj cactusWall)
+					{
+						if (cactusWall.SpawnIndex == 0)
+							p.Kill();
+						else
+							cactusWall.SpawnIndex--;
+					}
 				}
 			}
-
-			return true;
+			return false;
 		}
 
 		public override void AddRecipes()

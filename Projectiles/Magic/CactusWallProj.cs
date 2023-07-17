@@ -11,6 +11,12 @@ namespace SpiritMod.Projectiles.Magic;
 
 public class CactusWallProj : ModProjectile
 {
+	public int SpawnIndex
+	{
+		get => (int)Projectile.ai[0];
+		set => Projectile.ai[0] = value;
+	}
+
 	private const int MaxTimeLeft = 15 * 60;
 
 	public override void SetStaticDefaults()
