@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Projectiles.Arrow;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
@@ -17,8 +16,6 @@ namespace SpiritMod.Items.Sets.BowsMisc.Morningtide
 			// Tooltip.SetDefault("Converts wooden arrows into Dawnstrike Shafts");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/BowsMisc/Morningtide/Morningtide_Glow");
         }
-
-
 
 		public override void SetDefaults()
 		{
@@ -39,8 +36,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.Morningtide
 			Item.value = Item.sellPrice(0, 5, 0, 0);
 			Item.autoReuse = true;
 			Item.shootSpeed = 17f;
-
 		}
+
         public override Vector2? HoldoutOffset() => new Vector2(-6, 0);
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -52,10 +49,6 @@ namespace SpiritMod.Items.Sets.BowsMisc.Morningtide
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            scale *= .85f;
-			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Items/Sets/BowsMisc/Morningtide/Morningtide_Glow").Value;
-			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
-		}
+			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 	}
 }

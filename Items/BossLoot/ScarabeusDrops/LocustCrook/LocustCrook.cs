@@ -216,7 +216,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 			{
 				locustInfo.SpawnTime--;
 
-				if (Main.rand.NextBool(3))
+				if (Main.rand.NextBool(3) && Main.netMode != NetmodeID.Server)
 					Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<SandDust>(), Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0.5f), 
 						Scale: Main.rand.NextFloat(0.8f, 1.3f));
 
@@ -320,10 +320,13 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 
 			SoundEngine.PlaySound(SoundID.NPCDeath1 with { PitchVariance = 0.2f, Volume = 0.15f }, Projectile.Center);
 
-			for (int j = 1; j <= 3; j++)
+			if (Main.netMode != NetmodeID.Server)
 			{
-				Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("SmallLocustGore" + j.ToString()).Type);
-				gore.timeLeft = 20;
+				for (int j = 1; j <= 3; j++)
+				{
+					Gore gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("SmallLocustGore" + j.ToString()).Type);
+					gore.timeLeft = 20;
+				}
 			}
 		}
 

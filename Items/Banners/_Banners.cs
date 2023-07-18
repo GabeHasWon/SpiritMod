@@ -270,6 +270,7 @@ namespace SpiritMod.Items.Banners
 	public class KakamoraGliderBanner : BaseBannerItem
 	{
 		protected override int Style => 43;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Kakamora Windglider Banner");
 	}
 
 	public class KakamoraThrowerBanner : BaseBannerItem
@@ -281,6 +282,7 @@ namespace SpiritMod.Items.Banners
     public class KakamoraBruteBanner : BaseBannerItem
 	{
 		protected override int Style => 45;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Kakamora Bruiser Banner");
 	}
 
 	public class KakamoraShielderBanner : BaseBannerItem
@@ -569,6 +571,7 @@ namespace SpiritMod.Items.Banners
 	public class SpiritTomeBanner : BaseBannerItem
 	{
 		protected override int Style => 99;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Tome Banner");
 	}
 
 	public class AncientSpectreBanner : BaseBannerItem
@@ -641,6 +644,7 @@ namespace SpiritMod.Items.Banners
 	public class SpiritGhoulBanner : BaseBannerItem
 	{
 		protected override int Style => 108;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Shadow Ghoul Banner");
 	}
 
 	public class SoulCrusherBanner : BaseBannerItem
@@ -671,6 +675,7 @@ namespace SpiritMod.Items.Banners
 	public class SpiritMummyBanner : BaseBannerItem
 	{
 		protected override int Style => 114;
+		public override void SetStaticDefaults() => DisplayName.SetDefault("Dusk Mummy Banner");
 	}
 
 	public class FurnaceMawBanner : BaseBannerItem
