@@ -19,6 +19,7 @@ namespace SpiritMod.Tiles.Furniture.Sculptures
 			TileObjectData.newTile.Width = 1;
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
+			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Marble Sculpture");

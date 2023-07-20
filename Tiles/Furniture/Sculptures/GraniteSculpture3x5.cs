@@ -19,6 +19,7 @@ namespace SpiritMod.Tiles.Furniture.Sculptures
 			TileObjectData.newTile.Width = 3;
 			TileObjectData.newTile.Height = 5;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 18 };
+			TileObjectData.newTile.Origin = new Point16(1, 4);
 			TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Granite Sculpture");
