@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Sculptures
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.GraniteBlock, 25);
+			recipe.AddIngredient(ItemID.GraniteBlock, 100);
 			recipe.AddTile(TileID.HeavyWorkBench);
 			recipe.Register();
 		}
