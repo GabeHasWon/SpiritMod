@@ -73,6 +73,14 @@ internal class VendorGlobalNPC : GlobalNPC
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.CommandoSet.CommandoBody>(), false);
 				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.CommandoSet.CommandoLegs>(), false);
 			}
+			if (Main.LocalPlayer.ZoneBeach)
+			{
+				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.TintedGlasses>(), false);
+				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.BeachTowel>(), false);
+				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.SwimmingTrunks>(), false);
+				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.BikiniTop>(), false);
+				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.BikiniBottom>(), false);
+			}
 		}
 		else if (type == NPCID.Dryad)
 		{
