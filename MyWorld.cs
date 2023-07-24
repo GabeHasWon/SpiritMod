@@ -1304,9 +1304,8 @@ namespace SpiritMod
 			AddToVanillaChest(new ChestInfo(new int[] {
 				ModContent.ItemType<CimmerianScepter>() },
 				1, 0.33f), lockedgoldChests, 1);
-			AddToVanillaChest(new ChestInfo(new int[] {
-				ModContent.ItemType<Items.Sets.SummonsMisc.FairyWhistle.FairyWhistleItem>(), ModContent.ItemType<TwigStaff>() },
-				1, 0.2f), woodChests, 1);
+			AddToVanillaChest(new ChestInfo(ModContent.ItemType<Items.Sets.SummonsMisc.FairyWhistle.FairyWhistleItem>(), 1, 0.2f), woodChests, 1);
+			AddToVanillaChest(new ChestInfo(ModContent.ItemType<Items.Sets.WhipsMisc.PoolNoodle.PoolNoodle>(), 1, 0.35f), waterChests, 1);
 			AddToVanillaChest(new ChestInfo(new int[] { ModContent.ItemType<MetalBand>(), ModContent.ItemType<ShortFuse>(), ModContent.ItemType<LongFuse>() }, 1, 0.1f), goldChests, 1);
 			AddToVanillaChest(new ChestInfo(ModContent.ItemType<HollowNail>()), spiderChests, 1);
 			AddToVanillaChest(new ChestInfo(new int[] {
@@ -1372,8 +1371,7 @@ namespace SpiritMod
 			};
 			AddToModdedChestWithOverlapCheck(AsteroidPool, ModContent.TileType<AsteroidChest>());
 
-			List<ChestInfo> sepulchreLootPool = new List<ChestInfo>
-			{
+			List<ChestInfo> sepulchreLootPool = new List<ChestInfo> {
 				new ChestInfo(new int[] { ModContent.ItemType<AccursedBlade>(), ModContent.ItemType<OldCross>() }),
 				new ChestInfo(ItemID.SuspiciousLookingEye, 1, 0.5f),
 				new ChestInfo(ModContent.ItemType<MysticalCage>(), 1, 0.15f),
