@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Accessory.Leather
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Turbo Cleats");
-			Tooltip.SetDefault("Slightly increases movement speed and acceleration\nGain a huge speed boost below half health");
+			Tooltip.SetDefault("Slightly increases movement speed and acceleration\n+5% movement speed and +15% acceleration for every 10% missing health");
 		}
 
 		public override void SetDefaults()
@@ -27,28 +27,31 @@ namespace SpiritMod.Items.Accessory.Leather
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.runAcceleration *= 1.25f;
-			player.maxRunSpeed *= 1.05f;
-			player.accRunSpeed *= 1.05f;
-
-			if (player.statLife <= player.statLifeMax2 / 2) {
-				player.maxRunSpeed *= 1.15f;
-				player.accRunSpeed *= 1.15f;
-				player.runAcceleration *= 1.75f;
-
-				if (player.velocity.X != 0f) {
-					int dust = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 0, DustID.Electric);
-					Main.dust[dust].velocity *= 0f;
-					Main.dust[dust].noGravity = true;
+			if (!hideVisual)
+			{
+				int chance = 20 - (int)MathHelper.Clamp(player.velocity.X, 0, 18);
+				if (player.velocity.X != 0 && Main.rand.NextBool(chance))
+				{
+					Dust dust = Dust.NewDustDirect(player.position + new Vector2(0, player.height - 4), player.width, 0, DustID.Electric);
+					dust.velocity = Vector2.Zero;
+					dust.noGravity = true;
 				}
 			}
+
+			float speedBonus = (10f - (int)(player.statLife / (float)(player.statLifeMax2 / 10f))) * .05f;
+			float accelBonus = (10f - (int)(player.statLife / (float)(player.statLifeMax2 / 10f))) * .15f;
+
+			player.maxRunSpeed *= speedBonus + 1.05f;
+			player.accRunSpeed *= speedBonus + 1.05f;
+			player.runAcceleration *= accelBonus + 1.25f;
 		}
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<LeatherBoots>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<TechDrive>(), 5);
 			recipe.AddTile(TileID.Anvils);

@@ -49,6 +49,7 @@ using SpiritMod.Items.Sets.RunicSet.RunicArmor;
 using SpiritMod.Items.Accessory.ShieldCore;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
 using SpiritMod.NPCs.Town;
+using SpiritMod.Items.Accessory.Leather;
 
 namespace SpiritMod
 {
@@ -1018,9 +1019,12 @@ namespace SpiritMod
 
 		public override bool CanBeHitByProjectile(Projectile proj)
 		{
-			int[] trapTypes = new int[] { ProjectileID.PoisonDart, ProjectileID.PoisonDartTrap, ProjectileID.SporeTrap, ProjectileID.SporeTrap2, ProjectileID.SpearTrap, ProjectileID.GeyserTrap, ProjectileID.FlamethrowerTrap, ProjectileID.FlamesTrap, ProjectileID.SpikyBallTrap, ProjectileID.RollingCactus, ProjectileID.RollingCactusSpike, ProjectileID.Boulder };
+			int[] trapTypes = new int[] { ProjectileID.PoisonDart, ProjectileID.PoisonDartTrap, ProjectileID.SporeTrap, ProjectileID.SporeTrap2, ProjectileID.SpearTrap, ProjectileID.GeyserTrap, ProjectileID.FlamethrowerTrap, ProjectileID.FlamesTrap, ProjectileID.SpikyBallTrap, ProjectileID.RollingCactus, ProjectileID.RollingCactusSpike, ProjectileID.Boulder, ModContent.ProjectileType<UnstableIcicleProj>() };
 			if (explorerTreads && trapTypes.Contains(proj.type))
+			{
+				if (ExplorerTreads.DoDodgeEffect(Player, Player.GetSource_OnHurt(proj)))
 				return false;
+			}
 
 			return base.CanBeHitByProjectile(proj);
 		}
@@ -1034,7 +1038,10 @@ namespace SpiritMod
 				return false;
 
 			if (explorerTreads && damageSource.SourceOtherIndex == 3) //Spikes
+			{
+				if (ExplorerTreads.DoDodgeEffect(Player, Player.GetSource_OnHurt(null)))
 				return false;
+			}
 
 			if (Main.rand.NextBool(5) && sepulchreCharm)
 			{
@@ -2421,14 +2428,6 @@ namespace SpiritMod
 				speed -= .15f;
 				sprint -= .15f;
 				accel -= .3f;
-			}
-
-			if (explorerTreads)
-			{
-				float speedBonus = (10f - (int)(Player.statLife / (float)(Player.statLifeMax2 / 10f))) * .05f;
-
-				speed += speedBonus;
-				sprint += speedBonus;
 			}
 
 			Player.maxRunSpeed *= speed;
