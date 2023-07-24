@@ -73,7 +73,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 		{
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<SolarRattle>(), npc, NPCID.SolarDrakomire, NPCID.SolarDrakomireRider);
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<ContentItems.Weapon.Summon.EngineeringRod>(), npc, NPCID.GrayGrunt, NPCID.RayGunner, NPCID.BrainScrambler);
-			DropLoot(npcLoot, 2, 2, ModContent.ItemType<Martian>(), npc, NPCID.MartianSaucer);
+			DropLoot(npcLoot, 2, 2, ModContent.ItemType<Martian>(), npc, NPCID.MartianSaucerCore);
 			DropLoot(npcLoot, 1, 1, Main.rand.NextBool(2) ? ModContent.ItemType<Ancient>() : ModContent.ItemType<CultistScarf>(), npc, NPCID.CultistBoss);
 			DropLoot(npcLoot, 50, 50, ModContent.ItemType<IchorPendant>(), npc, NPCID.IchorSticker);
 			DropLoot(npcLoot, 1, 1, ModContent.ItemType<Typhoon>(), npc, NPCID.DukeFishron);

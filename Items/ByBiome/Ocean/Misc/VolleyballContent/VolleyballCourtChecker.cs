@@ -28,15 +28,7 @@ internal class VolleyballCourtChecker : ModItem
 		if (player.whoAmI == Main.myPlayer)
 		{
 			if (SportCourts.TryAddCourt(new Point(Player.tileTargetX, Player.tileTargetY), new VolleyballGameTracker()) && Main.netMode == NetmodeID.MultiplayerClient)
-			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Sports, 5);
-				packet.Write((byte)SportMessageType.PlaceCourt);
-				packet.Write((short)Player.tileTargetX);
-				packet.Write((short)Player.tileTargetY);
-				packet.Write(typeof(VolleyballGameTracker).FullName);
-				packet.Write((byte)player.whoAmI);
-				packet.Send();
-			}
+				SportsSyncing.PlaceOrSyncCourt<VolleyballGameTracker>((byte)player.whoAmI, new(Player.tileTargetX, Player.tileTargetY));
 		}
 		return true;
 	}

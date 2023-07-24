@@ -175,7 +175,7 @@ internal class VolleyballProjectile : ModProjectile
 				{
 					var court = SportCourts.CourtAt<VolleyballGameTracker>(courtLocation.Value);
 
-					if (court is not null && court.Active)
+					if (court is not null && court.Active && Projectile.Center.Y / 16 > court.bounds.Bottom - 2)
 					{
 						VolleyballGameTracker tracker = court.tracker as VolleyballGameTracker;
 						tracker.OnScorePoint(Projectile.Center.X > court.center.X * 16);

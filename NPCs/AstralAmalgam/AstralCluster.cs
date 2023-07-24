@@ -62,6 +62,7 @@ namespace SpiritMod.NPCs.AstralAmalgam
 		{
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+
 			Texture2D bloom = TextureAssets.Extra[49].Value;
 			SpiritMod.SunOrbShader.Parameters["colorMod"].SetValue(new Color(120, 190, 255).ToVector4());
 			SpiritMod.SunOrbShader.Parameters["colorMod2"].SetValue(Color.LightBlue.ToVector4());
@@ -73,11 +74,10 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			Vector2 drawcenter = Projectile.Center - Main.screenPosition;
 
 			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor, Projectile.rotation, bloom.Size() / 2, Projectile.scale * 0.5f * MathHelper.Lerp(scale, 1, 0.25f), SpriteEffects.None, 0);
-
 			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor * 0.2f, Projectile.rotation, bloom.Size() / 2, Projectile.scale * scale, SpriteEffects.None, 0);
+
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
-
 			return false;
 		}
 

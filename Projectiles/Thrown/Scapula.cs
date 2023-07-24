@@ -171,12 +171,13 @@ namespace SpiritMod.Projectiles.Thrown
 			if (hitNPCIndex > -1)
 				return;
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
+
 			for (int i = 0; i < 10; i++)
 			{
 				Vector2 velocity = (Main.rand.NextVector2Unit() * Main.rand.NextFloat(1.0f, 3.0f)) + -(Projectile.oldVelocity * Main.rand.NextFloat(0.1f, 0.8f));
 				Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, DustID.Bone, velocity.X, velocity.Y);
 
-				if (i < 4 && Main.rand.NextBool(2))
+				if (Main.netMode != NetmodeID.Server && i < 4 && Main.rand.NextBool(2))
 					Gore.NewGorePerfect(Entity.GetSource_Death(), Projectile.Center, Main.rand.NextVector2Unit() * Main.rand.NextFloat(0.0f, 3.0f), Mod.Find<ModGore>("Scapula" + (i + 1)).Type);
 			}
 		}

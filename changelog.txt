@@ -1,5 +1,2 @@
-﻿- Added Ore Cart ambient object
-- Added Ore Cart decor spam step
-- Fixed Forgotten King Statue issue
-- Made Forgotten King Statue spawn Hemoglo(r)bs with wiring
-- Replaced Sorcerer's Wand with Eye of the Sorcerer accessory
+﻿- Fixed Martian Saucer drops not working
+- Fixed Soaring Scapula not checking server for gores

@@ -1,5 +1,5 @@
 ﻿using Terraria;
-using Terraria.Chat;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
@@ -17,7 +17,7 @@ internal class VolleyballValidator : Validator
 
 		if (tile.TileType != ModContent.TileType<VolleyballNet>())
 		{
-			ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You must choose a net!"), Color.Red);
+			Main.NewText(NetworkText.FromLiteral("You must choose a net!"), Color.Red);
 			return false;
 		}
 
@@ -37,13 +37,13 @@ internal class VolleyballValidator : Validator
 
 		if (height <= 10)
 		{
-			ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral($"Net must be higher than 10 blocks! ({height} blocks tall currently)"), Color.Red);
+			Main.NewText(NetworkText.FromLiteral($"Net must be higher than 10 blocks! ({height} blocks tall currently)"), Color.Red);
 			return false;
 		}
 
 		if (Main.tile[x, j].TileType != ModContent.TileType<VolleyballCourt>())
 		{
-			ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Net must be placed on a court!"), Color.Red);
+			Main.NewText(NetworkText.FromLiteral("Net must be placed on a court!"), Color.Red);
 			return false;
 		}
 
@@ -60,7 +60,7 @@ internal class VolleyballValidator : Validator
 			{
 				if (WorldGen.SolidOrSlopedTile(i, cY))
 				{
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Court must be an open space!"), Color.Red);
+					Main.NewText(NetworkText.FromLiteral("Court must be an open space!"), Color.Red);
 					return false;
 				}
 			}
@@ -78,7 +78,7 @@ internal class VolleyballValidator : Validator
 			{
 				if (WorldGen.SolidOrSlopedTile(i, cY))
 				{
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Court must be an open space!"), Color.Red);
+					Main.NewText(NetworkText.FromLiteral("Court must be an open space!"), Color.Red);
 					return false;
 				}
 			}
@@ -87,11 +87,15 @@ internal class VolleyballValidator : Validator
 
 		if (left + right < 60)
 		{
-			ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Court must be at least 60 tiles wide!"), Color.Red);
+			Main.NewText(NetworkText.FromLiteral("Court must be at least 60 tiles wide!"), Color.Red);
 			return false;
 		}
 
-		ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("This is a valid court!"), Color.Green);
+		if (Main.netMode != NetmodeID.Server)
+			Main.NewText(NetworkText.FromLiteral("This is a valid court!"), Color.Green);
+		else
+			ModContent.GetInstance<SpiritMod>().Logger.Debug($"Placed volleyball court at {x},{netCenter}.");
+
 		leftEdge = x - left;
 		rightEdge = x + right;
 		top = netCenter - openSpaceHeight;

@@ -44,5 +44,6 @@
 	public enum SportMessageType : byte
 	{
 		PlaceCourt = 0,
+		RequestCourtsFromServer,
 	}
 }
