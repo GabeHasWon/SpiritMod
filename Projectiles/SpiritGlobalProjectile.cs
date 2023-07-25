@@ -122,18 +122,6 @@ namespace SpiritMod.Projectiles
 				player.statLife += 4;
 			}
 
-			if (modPlayer.SpiritCloak && projectile.minion && Main.rand.NextBool(15))
-			{
-				player.HealEffect(9);
-				player.statLife += 9;
-			}
-
-			if (modPlayer.VampireCloak && projectile.minion && Main.rand.Next(100) < 30)
-			{
-				player.HealEffect(3);
-				player.statLife += 3;
-			}
-
 			if (shotFromBismiteBow && Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 120, true);
 

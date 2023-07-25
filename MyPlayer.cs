@@ -73,10 +73,8 @@ namespace SpiritMod
 		public int bismiteShieldStacks;
 		public bool MetalBand = false;
 		public bool KoiTotem = false;
-		public bool VampireCloak = false;
 		public bool starplateGlitchEffect = false;
 		public bool HealCloak = false;
-		public bool SpiritCloak = false;
 		public bool crystalFlower = false;
 		public bool nearLure = false;
 		public int clockX = 0;
@@ -95,11 +93,8 @@ namespace SpiritMod
 		public bool reachBrooch = false;
 		public bool cleftHorn = false;
 		public bool mimicRepellent = false;
-		public bool daybloomSet = false;
-		public bool ToxicExtract = false;
 		public bool vitaStone = false;
 		public bool scarabCharm = false;
-		public bool bloodCourtHead = false;
 		public bool timScroll = false;
 		public bool runeWizardScroll = false;
 		public bool cultistScarf = false;
@@ -119,7 +114,6 @@ namespace SpiritMod
 		public bool leatherGlove = false;
 		public bool forbiddenTome = false;
 		public bool teslaCoil = false;
-		public bool Phantom = false;
 		public bool illusionistEye = false;
 		public bool stoneplate = false;
 
@@ -140,19 +134,15 @@ namespace SpiritMod
 
 		public bool cragboundMinion = false;
 		public bool clatterboneShield = false;
-		public bool NebulaPearl = false;
-		public bool CursedPendant = false;
+		public bool cursedPendant = false;
 		public bool starMap = false;
 		public bool moonlightSack = false;
-		public bool DoomDestiny = false;
-		public bool daybloomGarb = false;
+		public bool doomDestiny = false;
 		public int frigidGloveStacks;
 		public bool gemPickaxe = false;
 		public bool butterflyMinion = false;
-		public bool DungeonSummon = false;
 		public int soulSiphon;
 		public bool oliveBranchBuff = false;
-		public bool leatherHood = false;
 		public int clatterStacks;
 		public bool strikeshield = false;
 
@@ -182,7 +172,6 @@ namespace SpiritMod
 		public bool duskSet;
 		public bool runicSet;
 		public bool darkfeatherVisage;
-		public bool elderbarkWoodSet;
 		public bool primalSet;
 		public bool spiritSet;
 		public bool leatherSet;
@@ -216,10 +205,6 @@ namespace SpiritMod
 		public int illusionistTimer;
 		public float cryoTimer = 0f;
 		public float marbleJump = 420f;
-		public bool moonGauntlet;
-		public bool starCharm;
-		public int infernalHit;
-		public int infernalDash;
 		public bool longFuse;
 		public bool granitechDrones;
 		public bool explorerTreads;
@@ -237,9 +222,6 @@ namespace SpiritMod
 		public int concentratedCooldown = 360;
 		public int stompCooldown = 30;
 		public bool basiliskMount;
-		public bool drakomireMount;
-		public int drakomireFlameTimer;
-		public bool drakinMount;
 		public bool spiritBuff;
 		public bool starBuff;
 		public bool runeBuff;
@@ -482,7 +464,6 @@ namespace SpiritMod
 			deathRose = false;
 			infernalShield = false;
 			illusionistEye = false;
-			moonGauntlet = false;
 			longFuse = false;
 			granitechDrones = false;
 			explorerTreads = false;
@@ -507,23 +488,18 @@ namespace SpiritMod
 			bloodcourtSet = false;
 			shieldCore = false;
 			bloodyBauble = false;
-			elderbarkWoodSet = false;
 			cleftHorn = false;
 			rabbitMinion = false;
-			VampireCloak = false;
-			SpiritCloak = false;
 			HealCloak = false;
 			vitaStone = false;
 			astralSet = false;
 			mushroomPotion = false;
 			ChaosCrystal = false;
 			teslaCoil = false;
-			ToxicExtract = false;
 			shadowFang = false;
 			gemPickaxe = false;
 			cultistScarf = false;
 			surferSet = false;
-			bloodCourtHead = false;
 			scarabCharm = false;
 			assassinMag = false;
 			stoneplate = false;
@@ -537,7 +513,6 @@ namespace SpiritMod
 			reachBrooch = false;
 			windEffect = false;
 			windEffect2 = false;
-			leatherHood = false;
 			floranSet = false;
 			SoulStone = false;
 			manaWings = false;
@@ -549,27 +524,19 @@ namespace SpiritMod
 			HellGaze = false;
 			geodeRanged = false;
 			bloodfireShield = false;
-			Phantom = false;
 			magnifyingGlass = false;
-			daybloomSet = false;
-			daybloomGarb = false;
-			CursedPendant = false;
-			starCharm = false;
+			cursedPendant = false;
 			starMap = false;
 			frigidGloves = false;
-			NebulaPearl = false;
 			bismiteShield = false;
 			winterbornCharmMage = false;
 			sepulchreCharm = false;
 			clatterboneShield = false;
 			leatherGlove = false;
 			cragboundMinion = false;
-			DungeonSummon = false;
 			butterflyMinion = false;
-			drakomireMount = false;
 			basiliskMount = false;
 			spiritBuff = false;
-			drakinMount = false;
 			poisonPotion = false;
 			starBuff = false;
 			runeBuff = false;
@@ -672,17 +639,7 @@ namespace SpiritMod
 			return true;
 		}
 
-		public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
-		{
-			BeginShotDetection(item);
-
-			if (daybloomGarb && item.IsMagic())
-				damage.Flat++;
-			if (leatherHood && item.IsRanged())
-				damage.Flat++;
-			if (elderbarkWoodSet)
-				damage.Flat++;
-		}
+		public override void ModifyWeaponDamage(Item item, ref StatModifier damage) => BeginShotDetection(item);
 
 		public override void PostItemCheck() => EndShotDetection();
 
@@ -859,9 +816,6 @@ namespace SpiritMod
 				Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center, vel, ModContent.ProjectileType<Wheeze>(), item.damage / 2, 0, Main.myPlayer);
 			}
 
-			if (ToxicExtract && Main.rand.NextBool(5) && item.IsMagic())
-				target.AddBuff(BuffID.Venom, 240);
-
 			if (infernalFlame && item.IsMelee() && crit && Main.rand.NextBool(12))
 				Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<PhoenixProjectile>(), 50, 4, Main.myPlayer);
 
@@ -999,14 +953,8 @@ namespace SpiritMod
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
 
-			if (ToxicExtract && Main.rand.NextBool(5) && proj.IsMagic())
-				target.AddBuff(BuffID.Venom, 240);
-
 			if (infernalFlame && proj.IsMelee() && crit && Main.rand.NextBool(8))
 				Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<PhoenixProjectile>(), 50, 4, Player.whoAmI);
-
-			if (NebulaPearl && Main.rand.NextBool(8) && proj.IsMagic())
-				Item.NewItem(proj.GetSource_OnHit(target), target.Hitbox, 3454);
 
 			if (crystalFlower && target.life <= 0 && (Main.rand.NextBool(3) || proj.type == ModContent.ProjectileType<CrystalFlowerProjectile>()))
 				CrystalFlowerItem.OnKillEffect(proj.GetSource_OnHit(target), Player, target, damage);
@@ -1129,38 +1077,6 @@ namespace SpiritMod
 
 			if (infernalSet && Main.rand.NextBool(10))
 				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.position, new Vector2(0, -2), ModContent.ProjectileType<InfernalBlast>(), 50, 7, Main.myPlayer);
-
-			if (starCharm)
-			{
-				int amount = Main.rand.Next(4, 6);
-				for (int i = 0; i < amount; ++i)
-				{
-					Vector2 position = new Vector2(Player.position.X + Player.width * 0.5f + Main.rand.Next(-200, 201), Player.Center.Y - 600f);
-					position.X = (position.X * 10f + Player.position.X) / 11f + Main.rand.Next(-100, 101);
-					position.Y -= 150;
-
-					float speedX = Player.position.X + Player.width * 0.5f + Main.rand.Next(-200, 201) - position.X;
-					float speedY = Player.Center.Y - position.Y;
-
-					if (speedY < 0f)
-						speedY *= -1f;
-
-					if (speedY < 20f)
-						speedY = 20f;
-
-					float length = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
-					length = 12 / length;
-
-					speedX *= length;
-					speedY *= length;
-					speedX += Main.rand.Next(-40, 41) * 0.03f;
-					speedY += Main.rand.Next(-40, 41) * 0.03f;
-					speedX *= Main.rand.Next(75, 150) * 0.01f;
-
-					position.X += Main.rand.Next(-50, 51);
-					Projectile.NewProjectile(Player.GetSource_OnHurt(null), position, new Vector2(speedX, speedY), ModContent.ProjectileType<Starshock1>(), 35, 1, Player.whoAmI);
-				}
-			}
 
 			if (starMap && Main.rand.NextBool(2))
 			{
@@ -1294,7 +1210,6 @@ namespace SpiritMod
 		}
 
 		int shroomtimer;
-		int bloodTimer;
 		int MinifishTimer = 0;
 
 		/// <summary>Helper method that checks how far underwater the player is, continuously. If a tile above the player is not watered enough but is solid, it will still count as submerged.</summary>
@@ -1381,16 +1296,6 @@ namespace SpiritMod
 					shroomtimer = 0;
 					int proj = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileID.Mushroom, 10, 1, Main.myPlayer, 0.0f, 1);
 					Main.projectile[proj].timeLeft = 120;
-				}
-			}
-
-			if (bloodCourtHead)
-			{
-				bloodTimer++;
-				if (bloodTimer >= 40)
-				{
-					bloodTimer = 0;
-					Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-30, 30), Player.Center.Y - Main.rand.Next(40, 50), Main.rand.Next(-1, 1), -1, ModContent.ProjectileType<BloodRuneEffect>(), 0, 0, Main.myPlayer, 0.0f, 1);
 				}
 			}
 
@@ -1785,7 +1690,7 @@ namespace SpiritMod
 			int before = Player.lifeRegen;
 			bool drain = false;
 
-			if (DoomDestiny)
+			if (doomDestiny)
 			{
 				drain = true;
 				Player.lifeRegen -= 16;
@@ -1855,12 +1760,6 @@ namespace SpiritMod
 
 			if (concentratedCooldown <= 0)
 				concentrated = true;
-
-			if (concentrated && leatherSet)
-				Yoraiz0rEye();
-
-			if (bloodCourtHead)
-				BloodCourtEye();
 
 			if (clatterboneShield)
 			{
@@ -2097,213 +1996,6 @@ namespace SpiritMod
 			if (duskSet && Player.ownedProjectileCounts[ModContent.ProjectileType<ShadowCircleRune1>()] <= 0)
 				Projectile.NewProjectile(Player.GetSource_NaturalSpawn(), Player.position, Vector2.Zero, ModContent.ProjectileType<ShadowCircleRune1>(), 18, 0, Player.whoAmI);
 
-			if (infernalDash > 0)
-				infernalDash--;
-
-			/*if (Player.dashDelay < 0)
-			{
-				for (int l = 0; l < 0; l++)
-				{
-					int num14;
-					if (Player.velocity.Y == 0f)
-						num14 = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + Player.height - 4f), Player.width, 8, DustID.Smoke, 0f, 0f, 100, default, 1.4f);
-					else
-						num14 = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + (Player.height / 2) - 8f), Player.width, 16, DustID.Smoke, 0f, 0f, 100, default, 1.4f);
-					Main.dust[num14].velocity *= 0.1f;
-					Main.dust[num14].scale *= 1f + Main.rand.Next(20) * 0.01f;
-					Main.dust[num14].shader = GameShaders.Armor.GetSecondaryShader(Player.shoe, Player);
-
-					int dust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Torch, 0f, 0f, 0, default, 1f);
-					Main.dust[dust].scale *= 10f;
-
-					int dust2 = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Torch, 0f, 0f, 0, default, 1f);
-					Main.dust[dust2].scale *= 10f;
-
-					int dust3 = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Torch, 0f, 0f, 0, default, 1f);
-					Main.dust[dust3].scale *= 10f;
-				}
-
-				for (int l = 0; l < 0; l++)
-				{
-					int dust;
-					if (Player.velocity.Y == 0f)
-						dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + Player.height - 4f), Player.width, 8, DustID.Smoke, 0f, 0f, 100, default, 1.4f);
-					else
-						dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + (Player.height / 2) - 8f), Player.width, 16, DustID.Smoke, 0f, 0f, 100, default, 1.4f);
-					Main.dust[dust].velocity *= 0.1f;
-					Main.dust[dust].scale *= 1f + Main.rand.Next(20) * 0.01f;
-					Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(Player.shoe, Player);
-				}
-
-				Player.vortexStealthActive = false;
-
-				//float maxSpeed = Math.Max(Player.accRunSpeed, Player.maxRunSpeed);
-
-				//if (Player.velocity.X > 12f || Player.velocity.X < -12f)
-				//{
-				//	Player.velocity.X = Player.velocity.X * 0.985f;
-				//	return;
-				//}
-
-				//if (Player.velocity.X > maxSpeed || Player.velocity.X < -maxSpeed)
-				//{
-				//	Player.velocity.X = Player.velocity.X * 0.94f;
-				//	return;
-				//}
-
-				//Player.dashDelay = 30;
-
-				//if (Player.velocity.X < 0f)
-				//{
-				//	Player.velocity.X = -maxSpeed;
-				//	return;
-				//}
-
-				//if (Player.velocity.X > 0f)
-				//{
-				//	Player.velocity.X = maxSpeed;
-				//	return;
-				//}
-			}
-
-			if (infernalDash > 0)
-				infernalDash--;
-
-			// Update accessories.
-			if (infernalShield)
-			{
-				if (infernalDash > 0)
-					infernalDash--;
-				else
-					infernalHit = -1;
-
-				if (infernalDash > 0 && infernalHit < 0)
-				{
-					int dust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Torch, 0f, 0f, 0, default, 1f);
-					Main.dust[dust].scale *= 2f;
-
-					int dust2 = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Torch, 0f, 0f, 0, default, 1f);
-					Main.dust[dust2].scale *= 2f;
-
-					int dust3 = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Torch, 0f, 0f, 0, default, 1f);
-					Main.dust[dust3].scale *= 2f;
-
-					var rectangle = new Rectangle((int)(Player.position.X + Player.velocity.X * 0.5 - 4.0), (int)(Player.position.Y + Player.velocity.Y * 0.5 - 4.0), Player.width + 8, Player.height + 8);
-					for (int i = 0; i < 200; i++)
-					{
-						if (Main.npc[i].active && !Main.npc[i].dontTakeDamage && !Main.npc[i].friendly)
-						{
-							NPC npc = Main.npc[i];
-							Rectangle rect = npc.getRect();
-							if (rectangle.Intersects(rect) && (npc.noTileCollide || Collision.CanHit(Player.position, Player.width, Player.height, npc.position, npc.width, npc.height)))
-							{
-								float damage = Player.GetDamage(DamageClass.Melee).ApplyTo(70);
-
-								float knockback = 12f;
-								if (Player.kbGlove)
-									knockback *= 2f;
-
-								if (Player.kbBuff)
-									knockback *= 1.5f;
-
-								bool crit = false;
-								if (Main.rand.Next(100) < Player.GetCritChance(DamageClass.Melee))
-									crit = true;
-
-								int hitDirection = Player.direction;
-								if (Player.velocity.X < 0f)
-									hitDirection = -1;
-
-								if (Player.velocity.X > 0f)
-									hitDirection = 1;
-
-								if (Player.whoAmI == Main.myPlayer)
-								{
-									npc.AddBuff(ModContent.BuffType<StackingFireBuff>(), 600);
-									npc.StrikeNPC((int)damage, knockback, hitDirection, crit, false, false);
-
-									if (Main.netMode != NetmodeID.SinglePlayer)
-										NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, i, damage, knockback, hitDirection, 0, 0, 0);
-								}
-
-								infernalDash = 10;
-								Player.dashDelay = 30;
-								Player.velocity.X = -hitDirection * 1f;
-								Player.velocity.Y = -4f;
-								Player.immune = true;
-								Player.immuneTime = 2;
-								infernalHit = i;
-							}
-						}
-					}
-				}
-
-				if (Player.dash <= 0 && Player.dashDelay == 0 && !Player.mount.Active)
-				{
-					int num21 = 0;
-					bool spawnDust = false;
-
-					if (Player.dashTime > 0)
-						Player.dashTime--;
-
-					if (Player.dashTime < 0)
-						Player.dashTime++;
-
-					if (Player.controlRight && Player.releaseRight)
-					{
-						if (Player.dashTime > 0)
-						{
-							num21 = 1;
-							spawnDust = true;
-							Player.dashTime = 0;
-						}
-						else
-							Player.dashTime = 15;
-					}
-					else if (Player.controlLeft && Player.releaseLeft)
-					{
-						if (Player.dashTime < 0)
-						{
-							num21 = -1;
-							spawnDust = true;
-							Player.dashTime = 0;
-						}
-						else
-							Player.dashTime = -15;
-					}
-
-					if (spawnDust)
-					{
-						int dust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Torch, 0f, 0f, 0, default, 1f);
-						Main.dust[dust].scale *= 2f;
-
-						int dust2 = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Torch, 0f, 0f, 0, default, 1f);
-						Main.dust[dust2].scale *= 2f;
-
-						Player.velocity.X = 15.5f * num21;
-
-						Point point3 = (Player.Center + new Vector2(num21 * Player.width / 2 + 2, Player.gravDir * -Player.height / 2f + Player.gravDir * 2f)).ToTileCoordinates();
-						Point point4 = (Player.Center + new Vector2(num21 * Player.width / 2 + 2, 0f)).ToTileCoordinates();
-
-						if (WorldGen.SolidOrSlopedTile(point3.X, point3.Y) || WorldGen.SolidOrSlopedTile(point4.X, point4.Y))
-							Player.velocity.X = Player.velocity.X / 2f;
-
-						Player.dashDelay = -1;
-						infernalDash = 15;
-
-						for (int num22 = 0; num22 < 0; num22++)
-						{
-							int num23 = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Smoke, 0f, 0f, 100, default, 2f);
-							Main.dust[num23].position.X = Main.dust[num23].position.X + Main.rand.Next(-5, 6);
-							Main.dust[num23].position.Y = Main.dust[num23].position.Y + Main.rand.Next(-5, 6);
-							Main.dust[num23].velocity *= 0.2f;
-							Main.dust[num23].scale *= 1f + Main.rand.Next(20) * 0.01f;
-							Main.dust[num23].shader = GameShaders.Armor.GetSecondaryShader(Player.shield, Player);
-						}
-					}
-				}
-			}*/
-
 			if (bubbleTimer > 0)
 				bubbleTimer--;
 
@@ -2316,80 +2008,6 @@ namespace SpiritMod
 				Player.lifeRegen += num;
 
 				soulSiphon = 0;
-			}
-
-			if (drakomireMount)
-			{
-				Player.statDefense += 40;
-				Player.noKnockback = true;
-
-				if (Player.dashDelay > 0)
-					Player.dashDelay--;
-				else
-				{
-					int num4 = 0;
-					bool flag = false;
-
-					if (Player.dashTime > 0)
-						Player.dashTime--;
-					else if (Player.dashTime < 0)
-						Player.dashTime++;
-
-					if (Player.controlRight && Player.releaseRight)
-					{
-						if (Player.dashTime > 0)
-						{
-							num4 = 1;
-							flag = true;
-							Player.dashTime = 0;
-						}
-						else
-							Player.dashTime = 15;
-					}
-					else if (Player.controlLeft && Player.releaseLeft)
-					{
-						if (Player.dashTime < 0)
-						{
-							num4 = -1;
-							flag = true;
-							Player.dashTime = 0;
-						}
-						else
-							Player.dashTime = -15;
-					}
-
-					if (flag)
-					{
-						Player.velocity.X = 16.9f * num4;
-						Point point = Utils.ToTileCoordinates(Player.Center + new Vector2(num4 * Player.width / 2 + 2, Player.gravDir * -Player.height / 2f + Player.gravDir * 2f));
-						Point point2 = Utils.ToTileCoordinates(Player.Center + new Vector2(num4 * Player.width / 2 + 2, 0f));
-
-						if (WorldGen.SolidOrSlopedTile(point.X, point.Y) || WorldGen.SolidOrSlopedTile(point2.X, point2.Y))
-							Player.velocity.X = Player.velocity.X / 2f;
-
-						Player.dashDelay = 600;
-					}
-				}
-
-				if (Player.velocity.X != 0f && Player.velocity.Y == 0f)
-				{
-					drakomireFlameTimer += (int)Math.Abs(Player.velocity.X);
-					if (drakomireFlameTimer >= 15)
-					{
-						Vector2 vector = Player.Center + new Vector2(26 * -(float)Player.direction, 26f * Player.gravDir);
-						Projectile.NewProjectile(Player.GetSource_FromThis(), vector.X, vector.Y, 0f, 0f, ModContent.ProjectileType<DrakomireFlame>(), Player.statDefense / 2, 0f, Player.whoAmI, 0f, 0f);
-						drakomireFlameTimer = 0;
-					}
-				}
-
-				if (Main.rand.NextBool(10))
-				{
-					Vector2 vector2 = Player.Center + new Vector2(-48 * Player.direction, -6f * Player.gravDir);
-					if (Player.direction == -1)
-						vector2.X -= 20f;
-
-					Dust.NewDust(vector2, 16, 16, DustID.Torch, 0f, 0f, 0, default, 1f);
-				}
 			}
 
 			if (oakHeartStacks > 0)
@@ -2529,7 +2147,7 @@ namespace SpiritMod
 			foreach (var effect in effects)
 				effect.PlayerModifyHitNPC(Player, item, target, ref damage, ref knockback, ref crit);
 
-			if (CursedPendant && Main.rand.NextBool(5))
+			if (cursedPendant && Main.rand.NextBool(5))
 				target.AddBuff(BuffID.CursedInferno, 180);
 
 			if (duskSet && item.IsMagic() && Main.rand.NextBool(4))
@@ -2537,21 +2155,6 @@ namespace SpiritMod
 
 			if (primalSet && item.IsMelee() && Main.rand.NextBool(2))
 				target.AddBuff(ModContent.BuffType<Afflicted>(), 120);
-
-			if (moonGauntlet && item.IsMelee())
-			{
-				if (Main.rand.NextBool(4))
-					target.AddBuff(BuffID.CursedInferno, 180);
-
-				if (Main.rand.NextBool(4))
-					target.AddBuff(BuffID.Ichor, 180);
-
-				if (Main.rand.NextBool(4))
-					target.AddBuff(BuffID.Daybreak, 180);
-
-				if (Main.rand.NextBool(8))
-					Player.AddBuff(ModContent.BuffType<OnyxWind>(), 120);
-			}
 
 			if (starBuff && crit && Main.rand.NextBool(10))
 				for (int i = 0; i < 3; ++i)
@@ -2606,18 +2209,6 @@ namespace SpiritMod
 			AddBuffWithCondition(primalSet && Main.rand.NextBool(2) && (proj.IsMagic() || proj.IsMelee()), target, ModContent.BuffType<Afflicted>(), 120);
 			AddBuffWithCondition(duskSet && proj.IsMagic() && Main.rand.NextBool(4), target, BuffID.ShadowFlame, 300);
 
-			if (moonGauntlet && proj.IsMelee())
-			{
-				if (Main.rand.NextBool(4))
-					target.AddBuff(BuffID.CursedInferno, 180);
-				if (Main.rand.NextBool(4))
-					target.AddBuff(BuffID.Ichor, 180);
-				if (Main.rand.NextBool(4))
-					target.AddBuff(BuffID.Daybreak, 180);
-				if (Main.rand.NextBool(8))
-					Player.AddBuff(ModContent.BuffType<OnyxWind>(), 120);
-			}
-
 			if (runeBuff && proj.IsMagic() && Main.rand.NextBool(10))
 			{
 				for (int h = 0; h < 3; h++)
@@ -2658,114 +2249,6 @@ namespace SpiritMod
 		}
 
 		private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
-
-		public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
-		{
-			if (npc.whoAmI == infernalHit)
-				damage = 0;
-		}
-
-		public void Yoraiz0rEye()
-		{
-			int index = 0 + Player.bodyFrame.Y / 56;
-			if (index >= Main.OffsetsPlayerHeadgear.Length)
-				index = 0;
-
-			Vector2 vector2_1 = Vector2.Zero;
-			if (Player.mount.Active && Player.mount.Cart)
-			{
-				int sign = Math.Sign(Player.velocity.X);
-				if (sign == 0)
-					sign = Player.direction;
-
-				vector2_1 = new Vector2(MathHelper.Lerp(0.0f, -8f, Player.fullRotation / 0.7853982f), MathHelper.Lerp(0.0f, 2f, Math.Abs(Player.fullRotation / 0.7853982f))).RotatedBy(Player.fullRotation, new Vector2());
-				if (sign == Math.Sign(Player.fullRotation))
-					vector2_1 *= MathHelper.Lerp(1f, 0.6f, Math.Abs(Player.fullRotation / 0.7853982f));
-			}
-
-			Vector2 spinningpoint1 = new Vector2(3 * Player.direction - (Player.direction == 1 ? 1 : 0), -11.5f * Player.gravDir) + Vector2.UnitY * Player.gfxOffY + Player.Size / 2f + Main.OffsetsPlayerHeadgear[index];
-			Vector2 spinningpoint2 = new Vector2(3 * Player.shadowDirection[1] - (Player.direction == 1 ? 1 : 0), -11.5f * Player.gravDir) + Player.Size / 2f + Main.OffsetsPlayerHeadgear[index];
-			if (Player.fullRotation != 0.0)
-			{
-				spinningpoint1 = spinningpoint1.RotatedBy(Player.fullRotation, Player.fullRotationOrigin);
-				spinningpoint2 = spinningpoint2.RotatedBy(Player.fullRotation, Player.fullRotationOrigin);
-			}
-
-			float offset = 0.0f;
-			if (Player.mount.Active)
-				offset = Player.mount.PlayerOffset;
-
-			Vector2 vector2_2 = Player.position + spinningpoint1 + vector2_1;
-			vector2_2.Y -= offset / 2f;
-
-			Vector2 vector2_3 = Player.oldPosition + spinningpoint2 + vector2_1;
-			vector2_3.Y -= offset / 2f;
-
-			int num3 = (int)Vector2.Distance(vector2_2, vector2_3) / 3 + 1;
-			if (Vector2.Distance(vector2_2, vector2_3) % 3.0 != 0.0)
-				++num3;
-
-			for (float num4 = 1f; num4 <= (double)num3; ++num4)
-			{
-				Dust dust = Main.dust[Dust.NewDust(Player.Center, 0, 0, DustID.GoldCoin, 0.0f, 0.0f, 0, new Color(), 1f)];
-				dust.position = Vector2.Lerp(vector2_3, vector2_2, num4 / num3);
-				dust.noGravity = true;
-				dust.velocity = Vector2.Zero;
-				dust.customData = Player;
-				dust.shader = GameShaders.Armor.GetSecondaryShader(Player.cYorai, Player);
-			}
-		}
-
-		public void BloodCourtEye()
-		{
-			int index = 0 + Player.bodyFrame.Y / 56;
-			if (index >= Main.OffsetsPlayerHeadgear.Length)
-				index = 0;
-
-			Vector2 vector2_1 = Vector2.Zero;
-			if (Player.mount.Active && Player.mount.Cart)
-			{
-				int num = Math.Sign(Player.velocity.X);
-				if (num == 0)
-					num = Player.direction;
-
-				vector2_1 = new Vector2(MathHelper.Lerp(0.0f, -8f, Player.fullRotation / 0.7853982f), MathHelper.Lerp(0.0f, 2f, Math.Abs(Player.fullRotation / 0.7853982f))).RotatedBy(Player.fullRotation, new Vector2());
-				if (num == Math.Sign(Player.fullRotation))
-					vector2_1 *= MathHelper.Lerp(1f, 0.6f, Math.Abs(Player.fullRotation / 0.7853982f));
-			}
-
-			Vector2 spinningpoint1 = new Vector2(3 * Player.direction - (Player.direction == 1 ? 1 : 0), -11.5f * Player.gravDir) + Vector2.UnitY * Player.gfxOffY + Player.Size / 2f + Main.OffsetsPlayerHeadgear[index];
-			Vector2 spinningpoint2 = new Vector2(3 * Player.shadowDirection[1] - (Player.direction == 1 ? 1 : 0), -11.5f * Player.gravDir) + Player.Size / 2f + Main.OffsetsPlayerHeadgear[index];
-			if (Player.fullRotation != 0.0)
-			{
-				spinningpoint1 = spinningpoint1.RotatedBy(Player.fullRotation, Player.fullRotationOrigin);
-				spinningpoint2 = spinningpoint2.RotatedBy(Player.fullRotation, Player.fullRotationOrigin);
-			}
-
-			float offset = 0.0f;
-			if (Player.mount.Active)
-				offset = Player.mount.PlayerOffset;
-
-			Vector2 vector2_2 = Player.position + spinningpoint1 + vector2_1;
-			vector2_2.Y -= offset / 2f;
-
-			Vector2 vector2_3 = Player.oldPosition + spinningpoint2 + vector2_1;
-			vector2_3.Y -= offset / 2f;
-
-			int num3 = (int)Vector2.Distance(vector2_2, vector2_3) / 4 + 1;
-			if (Vector2.Distance(vector2_2, vector2_3) % 3.0 != 0.0)
-				++num3;
-
-			for (float num4 = 1f; num4 <= (double)num3; ++num4)
-			{
-				Dust dust = Main.dust[Dust.NewDust(Player.Center, 0, 0, ModContent.DustType<NightmareDust>(), 0.0f, 0.0f, 0, new Color(), 1f)];
-				dust.position = Vector2.Lerp(vector2_3, vector2_2, num4 / num3);
-				dust.noGravity = true;
-				dust.velocity = Vector2.Zero;
-				dust.customData = Player;
-				dust.shader = GameShaders.Armor.GetSecondaryShader(Player.cYorai, Player);
-			}
-		}
 
 		public override void OnHitByNPC(NPC npc, int damage, bool crit)
 		{

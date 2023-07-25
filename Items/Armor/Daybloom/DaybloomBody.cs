@@ -22,7 +22,7 @@ namespace SpiritMod.Items.Armor.Daybloom
 			Item.defense = 2;
 		}
 
-		public override void UpdateEquip(Player player) => player.GetSpiritPlayer().daybloomGarb = true;
+		public override void UpdateEquip(Player player) => player.GetDamage(DamageClass.Magic).Flat++;
 
 		public override void AddRecipes()
 		{

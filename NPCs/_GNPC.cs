@@ -84,7 +84,7 @@ namespace SpiritMod.NPCs
 		public int oakHeartStacks;
 		public readonly int oakHeartStacksMax = 3;
 
-		public bool DoomDestiny = false;
+		public bool doomDestiny = false;
 
 		public bool sFracture = false;
 		public bool blaze = false;
@@ -116,7 +116,7 @@ namespace SpiritMod.NPCs
 			stormBurst = false;
 			vineTrap = false;
 			clatterPierce = false;
-			DoomDestiny = false;
+			doomDestiny = false;
 			sFracture = false;
 			death = false;
 			starDestiny = false;
@@ -296,7 +296,7 @@ namespace SpiritMod.NPCs
 				npc.lifeRegen -= 20;
 			}
 
-			if (DoomDestiny)
+			if (doomDestiny)
 			{
 				drain = true;
 				npc.lifeRegen -= 16;

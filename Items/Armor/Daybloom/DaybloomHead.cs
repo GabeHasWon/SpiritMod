@@ -25,6 +25,7 @@ namespace SpiritMod.Items.Armor.Daybloom
 		}
 
 		public override void UpdateEquip(Player player) => player.statManaMax2 += 20;
+
 		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<DaybloomBody>() && legs.type == ModContent.ItemType<DaybloomLegs>();
 
 		public override void UpdateArmorSet(Player player)

@@ -2,6 +2,7 @@
 using SpiritMod.Dusts;
 using SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor;
 using SpiritMod.Items.Equipment.AuroraSaddle;
+using SpiritMod.Mounts;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -20,7 +21,7 @@ internal class DashPlayer : ModPlayer
 	public int phaseCounter;
 	public bool chitinSet;
 
-	private int[] _horiTimers = new int[2];
+	private readonly int[] _horiTimers = new int[2];
 	private int _dashTimer = 0;
 	private int _dashCooldown = 0;
 
@@ -207,6 +208,12 @@ internal class DashPlayer : ModPlayer
 				_dashTimer = 15;
 				_dashCooldown = 20;
 				break;
+			case DashType.Drakomire:
+				horizontalSpeed *= 23f;
+
+				_dashTimer = 15;
+				_dashCooldown = 600;
+				break;
 			case DashType.AuroraStag:
 				horizontalSpeed *= 40;
 				for (int i = 0; i < 25; i++)
@@ -243,6 +250,8 @@ internal class DashPlayer : ModPlayer
 		{
 			if (Player.mount.Type == ModContent.MountType<AuroraStagMount>())
 				return DashType.AuroraStag;
+			else if (Player.mount.Type == ModContent.MountType<Drakomire>())
+				return DashType.Drakomire;
 			return DashType.None;
 		}
 

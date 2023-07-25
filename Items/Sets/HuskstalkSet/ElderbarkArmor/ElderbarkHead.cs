@@ -17,12 +17,15 @@ namespace SpiritMod.Items.Sets.HuskstalkSet.ElderbarkArmor
 			Item.rare = ItemRarityID.White;
 			Item.defense = 1;
 		}
+
 		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<ElderbarkChest>() && legs.type == ModContent.ItemType<ElderbarkLegs>();
+		
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = $"Increases all item damage by 1";
-			player.GetSpiritPlayer().elderbarkWoodSet = true;
+			player.GetDamage(DamageClass.Generic).Flat++;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
