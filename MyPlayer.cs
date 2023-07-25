@@ -50,6 +50,7 @@ using SpiritMod.Items.Accessory.ShieldCore;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
 using SpiritMod.NPCs.Town;
 using SpiritMod.Items.Accessory.Leather;
+using SpiritMod.Tiles.Ambient;
 
 namespace SpiritMod
 {
@@ -97,8 +98,6 @@ namespace SpiritMod
 		public bool daybloomSet = false;
 		public bool ToxicExtract = false;
 		public bool vitaStone = false;
-		public bool throwerGlove = false;
-		public int throwerStacks;
 		public bool scarabCharm = false;
 		public bool bloodCourtHead = false;
 		public bool timScroll = false;
@@ -510,7 +509,6 @@ namespace SpiritMod
 			bloodyBauble = false;
 			elderbarkWoodSet = false;
 			cleftHorn = false;
-			throwerGlove = false;
 			rabbitMinion = false;
 			VampireCloak = false;
 			SpiritCloak = false;
@@ -920,9 +918,6 @@ namespace SpiritMod
 				}
 			}
 
-			if (throwerGlove && proj.IsRanged())
-				throwerStacks++;
-
 			if (bloodyBauble)
 			{
 				if (Main.rand.Next(25) <= 1 && Player.statLife != Player.statLifeMax2)
@@ -1023,7 +1018,7 @@ namespace SpiritMod
 			if (explorerTreads && trapTypes.Contains(proj.type))
 			{
 				if (ExplorerTreads.DoDodgeEffect(Player, Player.GetSource_OnHurt(proj)))
-				return false;
+					return false;
 			}
 
 			return base.CanBeHitByProjectile(proj);
@@ -1040,7 +1035,7 @@ namespace SpiritMod
 			if (explorerTreads && damageSource.SourceOtherIndex == 3) //Spikes
 			{
 				if (ExplorerTreads.DoDodgeEffect(Player, Player.GetSource_OnHurt(null)))
-				return false;
+					return false;
 			}
 
 			if (Main.rand.NextBool(5) && sepulchreCharm)
@@ -1410,9 +1405,6 @@ namespace SpiritMod
 				float SpeedY = num17 + Main.rand.Next(-40, 41) * 0.02f;
 				Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X + Main.rand.Next(-1000, 1000), Player.Center.Y + Main.rand.Next(-1200, -900), SpeedX, SpeedY, ModContent.ProjectileType<Meteor>(), 30, 3, Main.myPlayer, 0.0f, 1);
 			}
-
-			if (!throwerGlove)
-				throwerStacks = 0;
 
 			if (shieldCore)
 			{

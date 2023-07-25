@@ -25,51 +25,10 @@ namespace SpiritMod.Projectiles
 		public bool shotFromTrueHolyBurst = false;
 		public bool shock = false;
 
-		public bool throwerGloveBoost = false;
-
 		public int storedUseTime = 0;
-
-		public override bool PreDraw(Projectile projectile, ref Color lightColor)
-		{
-			if (throwerGloveBoost)
-			{
-				Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[projectile.type].Value.Width * 0.5f, projectile.height * 0.5f);
-				for (int k = 0; k < projectile.oldPos.Length; k++)
-				{
-					Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-					Color color = projectile.GetAlpha(Color.Cyan with { A = 0 }) * ((float)(projectile.oldPos.Length - k) / projectile.oldPos.Length);
-
-					Main.EntitySpriteDraw(TextureAssets.Projectile[projectile.type].Value, drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0);
-				}
-			}
-
-			return base.PreDraw(projectile, ref lightColor);
-		}
-
-		public override void PostDraw(Projectile projectile, Color lightColor)
-		{
-			if (throwerGloveBoost)
-				projectile.QuickDraw(Main.spriteBatch, drawColor: projectile.GetAlpha(Color.Cyan with { A = 0 }));
-		}
 
 		public override void OnSpawn(Projectile projectile, IEntitySource source)
 		{
-			if (projectile.friendly)
-			{
-				MyPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<MyPlayer>();
-
-				if (projectile.IsRanged() && modPlayer.throwerGlove && modPlayer.throwerStacks >= 7) //Thrower glove functionality
-				{
-					projectile.extraUpdates += 1;
-					projectile.scale *= 1.1f;
-					projectile.damage = (int)(projectile.damage * 1.5f);
-					projectile.knockBack += 2;
-
-					throwerGloveBoost = true;
-					modPlayer.throwerStacks = 0;
-				}
-			}
-
 			if (source is EntitySource_ItemUse item)
 				storedUseTime = item.Item.useTime;
 		}
@@ -101,9 +60,6 @@ namespace SpiritMod.Projectiles
 					dust.velocity = Vector2.Zero;
 				}
 			}
-
-			if (throwerGloveBoost && Main.rand.NextBool(3))
-				Dust.NewDustPerfect(projectile.Center, DustID.Electric, (projectile.velocity * .5f).RotatedByRandom(.1f), 100, default, Main.rand.NextFloat(.2f, .5f)).noGravity = true;
 
 			if (projectile.owner >= Main.maxPlayers || projectile.owner <= -1) //Check if owner is invalid
 				return true;
