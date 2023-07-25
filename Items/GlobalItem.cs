@@ -417,7 +417,7 @@ namespace SpiritMod.Items
 			int[] metalItems = new int[] { ItemID.IronOre, ItemID.CopperOre, ItemID.SilverOre, ItemID.GoldOre, ItemID.TinOre, ItemID.LeadOre, ItemID.TungstenOre, ItemID.PlatinumOre, ItemID.Meteorite, ItemID.LunarOre, ItemID.ChlorophyteOre,
 				ItemID.DemoniteOre, ItemID.CrimtaneOre, ItemID.Obsidian, ItemID.Hellstone, ItemID.CobaltOre, ItemID.PalladiumOre, ItemID.MythrilOre, ItemID.OrichalcumOre, ItemID.AdamantiteOre, ItemID.TitaniumOre };
 
-			if (player.GetModPlayer<MyPlayer>().MetalBand)
+			if (player.GetModPlayer<MyPlayer>().metalBand)
 				if (metalItems.Contains(item.type))
 					grabRange *= 10;
 

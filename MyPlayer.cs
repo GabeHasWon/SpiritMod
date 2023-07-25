@@ -14,7 +14,6 @@ using SpiritMod.NPCs.Boss.Atlas;
 using SpiritMod.NPCs.Boss.MoonWizard;
 using SpiritMod.NPCs.Mimic;
 using SpiritMod.Projectiles;
-using SpiritMod.Projectiles.DonatorItems;
 using SpiritMod.Projectiles.Magic;
 using SpiritMod.Utilities;
 using System;
@@ -22,7 +21,6 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameInput;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.GameContent;
 using Terraria.ModLoader;
@@ -71,7 +69,7 @@ namespace SpiritMod
 		public bool bismiteShield = false;
 		public int shieldCounter = 0;
 		public int bismiteShieldStacks;
-		public bool MetalBand = false;
+		public bool metalBand = false;
 		public bool KoiTotem = false;
 		public bool starplateGlitchEffect = false;
 		public bool HealCloak = false;
@@ -103,10 +101,9 @@ namespace SpiritMod
 		public bool fireMaw = false;
 		public bool deathRose = false;
 		public bool manaWings = false;
-		public bool infernalFlame = false;
 		public bool floranSet = false;
 		public bool rogueSet = false;
-		public bool ChaosCrystal = false;
+		public bool chaosCrystal = false;
 		public bool wheezeScale = false;
 		public bool winterbornCharmMage = false;
 		public bool sepulchreCharm = false;
@@ -123,7 +120,6 @@ namespace SpiritMod
 		public float oakHeartStacks = 0;
 		public readonly int oakHeartStacksMax = 5;
 
-		private int attackTimer;
 		public int beetleStacks = 1;
 
 		public int miningStacks = 1;
@@ -135,7 +131,6 @@ namespace SpiritMod
 		public bool cragboundMinion = false;
 		public bool clatterboneShield = false;
 		public bool cursedPendant = false;
-		public bool starMap = false;
 		public bool moonlightSack = false;
 		public bool doomDestiny = false;
 		public int frigidGloveStacks;
@@ -477,7 +472,7 @@ namespace SpiritMod
 		private void ResetMiscVariables()
 		{
 			oliveBranchBuff = false;
-			MetalBand = false;
+			metalBand = false;
 			strikeshield = false;
 			KoiTotem = false;
 			setbonus = null;
@@ -494,7 +489,7 @@ namespace SpiritMod
 			vitaStone = false;
 			astralSet = false;
 			mushroomPotion = false;
-			ChaosCrystal = false;
+			chaosCrystal = false;
 			teslaCoil = false;
 			shadowFang = false;
 			gemPickaxe = false;
@@ -509,7 +504,6 @@ namespace SpiritMod
 
 			jellynautHelm = false;
 			starplateGlitchEffect = false;
-			infernalFlame = false;
 			reachBrooch = false;
 			windEffect = false;
 			windEffect2 = false;
@@ -526,7 +520,6 @@ namespace SpiritMod
 			bloodfireShield = false;
 			magnifyingGlass = false;
 			cursedPendant = false;
-			starMap = false;
 			frigidGloves = false;
 			bismiteShield = false;
 			winterbornCharmMage = false;
@@ -736,7 +729,6 @@ namespace SpiritMod
 			{
 				Item repel = new Item();
 				repel.SetDefaults(ModContent.ItemType<MimicRepellent>());
-				//repel.stack = 1;
 				rewardItems.Add(repel);
 			}
 			if (Main.rand.NextBool(5))
@@ -750,14 +742,13 @@ namespace SpiritMod
 
 		public override void OnHitAnything(float x, float y, Entity victim)
 		{
-			if (Player.HeldItem.type == ModContent.ItemType<Items.Sets.TideDrops.Minifish>() && MinifishTimer <= 0)
+			if (Player.whoAmI == Main.myPlayer && Player.HeldItem.type == ModContent.ItemType<Items.Sets.TideDrops.Minifish>() && MinifishTimer <= 0)
 			{
 				MinifishTimer = 120;
 				if (Player.ownedProjectileCounts[ModContent.ProjectileType<MinifishProj>()] < 3)
 				{
 					var spawnPos = Player.Center + Main.rand.NextVector2Square(-50, 50) - new Vector2(0, 50);
-					var p = Projectile.NewProjectileDirect(Player.GetSource_OnHit(victim), spawnPos, Vector2.Zero, ModContent.ProjectileType<MinifishProj>(), Player.HeldItem.damage, Player.HeldItem.knockBack, Player.whoAmI);
-					p.netUpdate = true;
+					Projectile.NewProjectile(Player.GetSource_OnHit(victim), spawnPos, Vector2.Zero, ModContent.ProjectileType<MinifishProj>(), Player.HeldItem.damage, Player.HeldItem.knockBack, Player.whoAmI);
 				}
 			}
 		}
@@ -815,9 +806,6 @@ namespace SpiritMod
 				Vector2 vel = new Vector2(0, -1).RotatedBy(rand) * 8f;
 				Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center, vel, ModContent.ProjectileType<Wheeze>(), item.damage / 2, 0, Main.myPlayer);
 			}
-
-			if (infernalFlame && item.IsMelee() && crit && Main.rand.NextBool(12))
-				Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<PhoenixProjectile>(), 50, 4, Main.myPlayer);
 
 			if (crystalFlower && target.life <= 0 && Main.rand.NextBool(3))
 				CrystalFlowerItem.OnKillEffect(item.GetSource_OnHit(target), Player, target, damage);
@@ -953,9 +941,6 @@ namespace SpiritMod
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
 
-			if (infernalFlame && proj.IsMelee() && crit && Main.rand.NextBool(8))
-				Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<PhoenixProjectile>(), 50, 4, Player.whoAmI);
-
 			if (crystalFlower && target.life <= 0 && (Main.rand.NextBool(3) || proj.type == ModContent.ProjectileType<CrystalFlowerProjectile>()))
 				CrystalFlowerItem.OnKillEffect(proj.GetSource_OnHit(target), Player, target, damage);
 		}
@@ -1051,14 +1036,14 @@ namespace SpiritMod
 				SoundEngine.PlaySound(SoundID.Item50, Player.position);
 			}
 
-			if (ChaosCrystal && Main.rand.NextBool(4))
+			if (chaosCrystal && Main.rand.NextBool(4))
 			{
 				bool canSpawn = false;
 				int teleportStartX = (int)(Main.LocalPlayer.position.X / 16) - 35;
 				int teleportRangeX = 70;
 				int teleportStartY = (int)(Main.LocalPlayer.position.Y / 16) - 35;
 				int teleportRangeY = 70;
-				Vector2 vector2 = TestTeleport(ref canSpawn, teleportStartX, teleportRangeX, teleportStartY, teleportRangeY);
+				Vector2 vector2 = ChaosCrystal.TestTeleport(ref canSpawn, teleportStartX, teleportRangeX, teleportStartY, teleportRangeY);
 
 				if (canSpawn)
 				{
@@ -1077,39 +1062,6 @@ namespace SpiritMod
 
 			if (infernalSet && Main.rand.NextBool(10))
 				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.position, new Vector2(0, -2), ModContent.ProjectileType<InfernalBlast>(), 50, 7, Main.myPlayer);
-
-			if (starMap && Main.rand.NextBool(2))
-			{
-				int amount = Main.rand.Next(2, 3);
-				for (int i = 0; i < amount; ++i)
-				{
-					Vector2 position = new Vector2(Player.position.X + Player.width * 0.5f + Main.rand.Next(-300, 301), Player.Center.Y - 800f);
-					position.X = (position.X * 10f + Player.position.X) / 11f + Main.rand.Next(-100, 101);
-					position.Y -= 150;
-
-					float speedX = Player.position.X + Player.width * 0.5f + Main.rand.Next(-200, 201) - position.X;
-					float speedY = Player.Center.Y - position.Y;
-
-					if (speedY < 0f)
-						speedY *= -1f;
-
-					if (speedY < 30f)
-						speedY = 30f;
-
-					float length = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
-					length = 12 / length;
-
-					speedX *= length;
-					speedY *= length;
-					speedX += Main.rand.Next(-40, 41) * 0.03f;
-					speedY += Main.rand.Next(-40, 41) * 0.03f;
-					speedX *= Main.rand.Next(75, 150) * 0.01f;
-
-					position.X += Main.rand.Next(-10, 11);
-					int p = Projectile.NewProjectile(Player.GetSource_OnHurt(null), position, new Vector2(speedX, speedY), ModContent.ProjectileType<Starshock1>(), 24, 1, Player.whoAmI);
-					Main.projectile[p].timeLeft = 600;
-				}
-			}
 		}
 
 		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
@@ -1272,20 +1224,9 @@ namespace SpiritMod
 
 			if (!Player.ZoneOverworldHeight)
 			{
-				if (Framing.GetTileSafely(x1, y1 + 1).WallType == 62 && Framing.GetTileSafely(x1, y1).WallType == 62)
-					ZoneSpider = true;
-				else
-					ZoneSpider = false;
-
-				if (Framing.GetTileSafely(x1, y1 + 1).WallType == 178 && Framing.GetTileSafely(x1, y1).WallType == 178)
-					inMarble = true;
-				else
-					inMarble = false;
-
-				if (Framing.GetTileSafely(x1, y1 + 1).WallType == 180 && Framing.GetTileSafely(x1, y1).WallType == 180)
-					inGranite = true;
-				else
-					inGranite = false;
+				ZoneSpider = Framing.GetTileSafely(x1, y1 + 1).WallType == 62 && Framing.GetTileSafely(x1, y1).WallType == 62;
+				inMarble = Framing.GetTileSafely(x1, y1 + 1).WallType == 178 && Framing.GetTileSafely(x1, y1).WallType == 178;
+				inGranite = Framing.GetTileSafely(x1, y1 + 1).WallType == 180 && Framing.GetTileSafely(x1, y1).WallType == 180;
 			}
 
 			if (mushroomPotion)
@@ -2089,9 +2030,6 @@ namespace SpiritMod
 				}
 			}
 
-			if (teslaCoil)
-				TeslaStrike(Player);
-
 			foreach (var effect in removedEffects)
 				if (!effects.Contains(effect)) effect.EffectRemoved(Player);
 
@@ -2114,31 +2052,6 @@ namespace SpiritMod
 			{
 				var textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
 				CombatText.NewText(textPos, new Color(121, 195, 237, 100), "Water Spout Charged!");
-			}
-		}
-
-		private void TeslaStrike(Player player)
-		{
-			attackTimer++;
-
-			int npcsHit = 0;
-			for (int i = 0; i < Main.npc.Length; i++)
-			{
-				NPC npc = Main.npc[i];
-
-				if (npc.active && player.DistanceSQ(npc.Center) <= 300f * 300f && npc.CanBeChasedBy())
-				{
-					if (attackTimer % 90 == 0)
-					{
-						int p = Projectile.NewProjectile(Player.GetSource_FromThis(), player.Center.X, player.Center.Y, 0f, 0f, ModContent.ProjectileType<Items.Accessory.UnstableTeslaCoil.Unstable_Tesla_Coil_Projectile>(), 18, 0f, player.whoAmI, 0.0f, 0.0f);
-						Main.projectile[p].ai[0] = npc.position.X;
-						Main.projectile[p].ai[1] = npc.position.Y;
-						Main.projectile[p].netUpdate = true;
-					}
-
-					if (npcsHit++ > 3)
-						break;
-				}
 			}
 		}
 
@@ -2296,75 +2209,6 @@ namespace SpiritMod
 
 			candyFromTown.Add(fullName);
 			return true;
-		}
-
-		private static Vector2 TestTeleport(ref bool canSpawn, int teleportStartX, int teleportRangeX, int teleportStartY, int teleportRangeY)
-		{
-			Player player = Main.LocalPlayer;
-
-			int repeats = 0;
-			int num2 = 0;
-			int num3 = 0;
-
-			Vector2 Position = new Vector2(num2, num3) * 16f + new Vector2(-player.width / 2 + 8, -player.height);
-			while (!canSpawn && repeats < 1000)
-			{
-				++repeats;
-
-				int index1 = teleportStartX + Main.rand.Next(teleportRangeX);
-				int index2 = teleportStartY + Main.rand.Next(teleportRangeY);
-				Position = new Vector2(index1, index2) * 16f + new Vector2(-player.width / 2 + 8, -player.height);
-
-				if (!Collision.SolidCollision(Position, player.width, player.height))
-				{
-					if ((Main.tile[index1, index2].WallType != 87 || index2 <= Main.worldSurface || NPC.downedPlantBoss) && (!Main.wallDungeon[Main.tile[index1, index2].WallType] || index2 <= Main.worldSurface || NPC.downedBoss3))
-					{
-						int num4 = 0;
-						while (num4 < 100)
-						{
-							Tile tile = Main.tile[index1, index2 + num4];
-							Position = new Vector2(index1, index2 + num4) * 16f + new Vector2(-player.width / 2 + 8, -player.height);
-							Collision.SlopeCollision(Position, player.velocity, player.width, player.height, player.gravDir, false);
-
-							bool flag = !Collision.SolidCollision(Position, player.width, player.height);
-
-							if (flag)
-								++num4;
-							else if (!tile.HasTile || tile.IsActuated || !Main.tileSolid[tile.TileType])
-								++num4;
-							else
-								break;
-						}
-						if (!Collision.LavaCollision(Position, player.width, player.height) && Collision.HurtTiles(Position, player.velocity, player.width, player.height, false).Y <= 0.0)
-						{
-							Collision.SlopeCollision(Position, player.velocity, player.width, player.height, player.gravDir, false);
-							if (Collision.SolidCollision(Position, player.width, player.height) && num4 < 99)
-							{
-								Vector2 Velocity1 = Vector2.UnitX * 16f;
-								if (!(Collision.TileCollision(Position - Velocity1, Velocity1, player.width, player.height, false, false, (int)player.gravDir) != Velocity1))
-								{
-									Vector2 Velocity2 = -Vector2.UnitX * 16f;
-									if (!(Collision.TileCollision(Position - Velocity2, Velocity2, player.width, player.height, false, false, (int)player.gravDir) != Velocity2))
-									{
-										Vector2 Velocity3 = Vector2.UnitY * 16f;
-										if (!(Collision.TileCollision(Position - Velocity3, Velocity3, player.width, player.height, false, false, (int)player.gravDir) != Velocity3))
-										{
-											Vector2 Velocity4 = -Vector2.UnitY * 16f;
-											if (!(Collision.TileCollision(Position - Velocity4, Velocity4, player.width, player.height, false, false, (int)player.gravDir) != Velocity4))
-											{
-												canSpawn = true;
-												break;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-
-			return Position;
 		}
 
 		public override void FrameEffects()

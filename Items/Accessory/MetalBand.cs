@@ -22,6 +22,6 @@ namespace SpiritMod.Items.Accessory
 			Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().MetalBand = true;
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().metalBand = true;
 	}
 }
