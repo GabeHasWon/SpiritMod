@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Turbo Cleats");
+			DisplayName.SetDefault("Heartbeat Cleats");
 			Tooltip.SetDefault("Slightly increases movement speed and acceleration\n+5% movement speed and +15% acceleration for every 10% missing health");
 		}
 
@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Accessory.Leather
 		{
 			if (!hideVisual)
 			{
-				int chance = 20 - (int)MathHelper.Clamp(player.velocity.X, 0, 18);
+				int chance = 10 - (int)(player.statLife / (float)(player.statLifeMax2 / 10f));
 				if (player.velocity.X != 0 && Main.rand.NextBool(chance))
 				{
 					Dust dust = Dust.NewDustDirect(player.position + new Vector2(0, player.height - 4), player.width, 0, DustID.Electric);
