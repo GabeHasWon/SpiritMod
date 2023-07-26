@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Accessory.Leather
 		{
 			if (!hideVisual)
 			{
-				int chance = 10 - (int)(player.statLife / (float)(player.statLifeMax2 / 10f));
+				int chance = (int)(10 - (10f - (int)(player.statLife / (float)(player.statLifeMax2 / 10f))));
 				if (player.velocity.X != 0 && Main.rand.NextBool(chance))
 				{
 					Dust dust = Dust.NewDustDirect(player.position + new Vector2(0, player.height - 4), player.width, 0, DustID.Electric);
