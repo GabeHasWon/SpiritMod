@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
+	[AutoloadEquip(EquipType.HandsOn)]
 	public class MetalBand : ModItem
 	{
 		public override void SetStaticDefaults()

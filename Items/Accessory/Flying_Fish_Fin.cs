@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
+	[AutoloadEquip(EquipType.Back)]
 	public class Flying_Fish_Fin : ModItem
 	{
 		public override void SetStaticDefaults()

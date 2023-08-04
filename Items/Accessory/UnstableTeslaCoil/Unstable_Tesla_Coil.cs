@@ -2,9 +2,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Sets.CoilSet;
+using Microsoft.Xna.Framework;
+using System.Linq;
 
 namespace SpiritMod.Items.Accessory.UnstableTeslaCoil
 {
+	[AutoloadEquip(EquipType.Back)]
 	public class Unstable_Tesla_Coil : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -27,7 +30,7 @@ namespace SpiritMod.Items.Accessory.UnstableTeslaCoil
 		{
 			player.GetSpiritPlayer().teslaCoil = true;
 
-			if (player.whoAmI == Main.myPlayer)
+			if (player.whoAmI == Main.myPlayer && player.miscCounter % 100 == 0)
 				TeslaStrike(player);
 		}
 
@@ -43,23 +46,24 @@ namespace SpiritMod.Items.Accessory.UnstableTeslaCoil
 		private static void TeslaStrike(Player player)
 		{
 			int npcsHit = 0;
-			for (int i = 0; i < Main.npc.Length; i++)
+			var targets = Main.npc.Where(x => x.active && player.DistanceSQ(x.Center) <= 300f * 300f && x.CanBeChasedBy());
+
+			foreach (NPC target in targets)
 			{
-				NPC npc = Main.npc[i];
+				Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, 0f, 0f, ModContent.ProjectileType<Unstable_Tesla_Coil_Projectile>(), 18, 0f, player.whoAmI, target.position.X, target.position.Y);
 
-				if (npc.active && player.DistanceSQ(npc.Center) <= 300f * 300f && npc.CanBeChasedBy())
+				if (npcsHit == 0)
 				{
-					if (player.miscCounter % 100 == 0)
+					for (int i = 0; i < 10; i++)
 					{
-						int p = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, 0f, 0f, ModContent.ProjectileType<Unstable_Tesla_Coil_Projectile>(), 18, 0f, player.whoAmI);
-						Main.projectile[p].ai[0] = npc.position.X;
-						Main.projectile[p].ai[1] = npc.position.Y;
-						Main.projectile[p].netUpdate = true;
-					}
+						Vector2 pos = player.position + new Vector2(player.width * Main.rand.NextFloat(), player.height);
+						float magnitude = Main.rand.NextFloat();
 
-					if (npcsHit++ > 3)
-						break;
+						Dust.NewDustPerfect(pos, DustID.Electric, magnitude * -3f * Vector2.UnitY, 0, default, MathHelper.Max(1f - magnitude, .3f));
+					} //Spawn additional dusts
 				}
+				if (++npcsHit > 3)
+					break;
 			}
 		}
 	}

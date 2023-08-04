@@ -128,14 +128,12 @@ namespace SpiritMod
 
 		public bool bloodfireShield;
 
-		public bool cragboundMinion = false;
 		public bool clatterboneShield = false;
 		public bool cursedPendant = false;
 		public bool moonlightSack = false;
 		public bool doomDestiny = false;
 		public int frigidGloveStacks;
 		public bool gemPickaxe = false;
-		public bool butterflyMinion = false;
 		public int soulSiphon;
 		public bool oliveBranchBuff = false;
 		public int clatterStacks;
@@ -526,8 +524,6 @@ namespace SpiritMod
 			sepulchreCharm = false;
 			clatterboneShield = false;
 			leatherGlove = false;
-			cragboundMinion = false;
-			butterflyMinion = false;
 			basiliskMount = false;
 			spiritBuff = false;
 			poisonPotion = false;

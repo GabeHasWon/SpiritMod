@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
+	[AutoloadEquip(EquipType.Neck)]
 	public class CursedPendant : ModItem
 	{
 		public override void SetStaticDefaults()
