@@ -20,6 +20,7 @@ namespace SpiritMod.Items.Accessory.Bauble
 			Projectile.penetrate = -1;
 			Projectile.alpha = 255;
 			Projectile.aiStyle = -1;
+			Projectile.timeLeft = Bauble.shieldTime;
 		}
 
 		public override void AI()
@@ -32,6 +33,7 @@ namespace SpiritMod.Items.Accessory.Bauble
 			dust.noLight = true;
 
 			Projectile.Center = Main.player[Projectile.owner].Center;
+			Projectile.gfxOffY = Main.player[Projectile.owner].gfxOffY;
 		}
 
 		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
