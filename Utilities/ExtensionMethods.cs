@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ModLoader;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Biomes;
-using SpiritMod.SceneEffects;
 
 namespace SpiritMod.Utilities
 {

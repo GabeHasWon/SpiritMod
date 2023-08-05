@@ -275,10 +275,10 @@ namespace SpiritMod.GlobalClasses.Players
 			//Bauble
 			if (Player.HasAccessory<Bauble>())
 			{
-				NPC npc = Main.npc[info.DamageSource.SourceNPCIndex];
+				NPC npc = (info.DamageSource.SourceNPCIndex > -1) ? Main.npc[info.DamageSource.SourceNPCIndex] : null;
 				bool destructableNPC = npc != null && npc.value == 0 && npc.lifeMax <= 1;
 
-				if (Player.ownedProjectileCounts[ModContent.ProjectileType<IceReflector>()] > 0 && (info.DamageSource.SourceProjectileLocalIndex > 0 || destructableNPC))
+				if ((Player.ownedProjectileCounts[ModContent.ProjectileType<IceReflector>()] > 0) && (info.DamageSource.SourceProjectileLocalIndex > -1 || destructableNPC))
 				{
 					if (destructableNPC)
 						npc.life = 0;
@@ -290,9 +290,7 @@ namespace SpiritMod.GlobalClasses.Players
 
 				if (Player.ItemTimer<Bauble>() <= 0 && hitBelowHalf)
 				{
-					Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_OnHurt(null), Player.Center, Vector2.Zero, ModContent.ProjectileType<IceReflector>(), 0, 0, Player.whoAmI);
-					proj.timeLeft = Bauble.shieldTime;
-					proj.netUpdate = true;
+					Projectile.NewProjectileDirect(Player.GetSource_OnHurt(null), Player.Center, Vector2.Zero, ModContent.ProjectileType<IceReflector>(), 0, 0, Player.whoAmI);
 
 					Player.AddBuff(ModContent.BuffType<BaubleResistance>(), Bauble.shieldTime);
 					Player.SetItemTimer<Bauble>(Bauble.cooldown);
