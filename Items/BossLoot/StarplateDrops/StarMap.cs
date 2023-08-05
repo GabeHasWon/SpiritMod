@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Buffs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 	[Sacrifice(1)]
 	public class StarMap : ModItem
 	{
-		private static int CooldownTime => Main.expertMode ? 1200 : 600;
+		private const int CooldownTime = 600;
 
 		public override void SetStaticDefaults()
 		{
@@ -48,7 +49,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.noUseGraphic = true;
 		}
 
-		public override bool CanUseItem(Player player) => !player.HasBuff(ModContent.BuffType<Buffs.AstralMapCooldown>());
+		public override bool CanUseItem(Player player) => !player.HasBuff<AstralMapCooldown>();
 
 		public override bool? UseItem(Player player)
 		{
@@ -60,11 +61,13 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 		{
 			if (player.whoAmI == Main.myPlayer)
 			{
+				Vector2 pos = Main.MouseWorld - (player.Size / 2);
 				bool inTempleEarly = (Framing.GetTileSafely((Main.MouseWorld / 16).ToPoint()).WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
-				if (!Collision.SolidCollision(Main.MouseWorld, player.width, player.height) && !inTempleEarly)
+				
+				if (!Collision.SolidCollision(pos, player.width, player.height) && !inTempleEarly)
 				{
-					RunTeleport(player, Main.MouseWorld);
-					player.AddBuff(ModContent.BuffType<Buffs.AstralMapCooldown>(), CooldownTime);
+					RunTeleport(player, pos);
+					player.AddBuff(ModContent.BuffType<AstralMapCooldown>(), CooldownTime);
 				}
 			}
 		}
