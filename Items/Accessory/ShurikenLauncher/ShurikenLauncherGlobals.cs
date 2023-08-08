@@ -32,9 +32,11 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 
 				if (player.Distance(target.Center) >= ShurikenLauncher.EffectiveDistance)
 				{
-					const float throwerStacksMax = .25f; //+25% bonus damage for sustaining consecutive hits
-					throwerStacks = Math.Min(throwerStacks + MathHelper.Clamp(damage * .0005f, 0, .05f), throwerStacksMax);
-
+					if (proj.type != ProjectileID.ChlorophyteBullet)
+					{
+						const float throwerStacksMax = .25f; //+25% bonus damage for sustaining consecutive hits
+						throwerStacks = Math.Min(throwerStacks + MathHelper.Clamp(damage * .0005f, 0, .05f), throwerStacksMax);
+					}
 					damageBonusMult += .2f + throwerStacks; //Allows 145% total bonus damage
 
 					for (int i = 0; i < 3; i++)
