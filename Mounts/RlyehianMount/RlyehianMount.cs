@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Mount;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -70,21 +71,19 @@ namespace SpiritMod.Mounts.RlyehianMount
 
 			ControlFloatHeight(player, floatHeight);
 
-			if (mountState == FLOAT)
+			if (mountState == FLOAT && GetTarget(player, floatHeight) is NPC target)
 			{
-				NPC target = GetTarget(player, floatHeight);
-				if (target != null)
+				mountState = ATTACKING;
+				int cooldownTime = 14;
+				attackCooldown = ++attackCooldown % cooldownTime;
+
+				if (attackCooldown == 0)
 				{
-					mountState = ATTACKING;
-					int cooldownTime = 14;
-					attackCooldown = ++attackCooldown % cooldownTime;
-					if (attackCooldown == 0)
-					{
-						int damage = (int)player.GetDamage(DamageClass.Summon).ApplyTo(20);
-						Projectile proj = Projectile.NewProjectileDirect(player.GetSource_FromThis("Mount"), player.Center, Vector2.Zero, ModContent.ProjectileType<RlyehianMount_Proj>(),
-							damage, 2, player.whoAmI, (int)(target.Center - player.Center).Length());
-						proj.rotation = player.AngleTo(target.Center);
-					}
+					int damage = (int)player.GetDamage(DamageClass.Summon).ApplyTo(20);
+					Projectile proj = Projectile.NewProjectileDirect(player.GetSource_FromThis("Mount"), player.Center, Vector2.Zero, ModContent.ProjectileType<RlyehianMount_Proj>(),
+						damage, 2, player.whoAmI, (int)(target.Center - player.Center).Length());
+					proj.rotation = player.AngleTo(target.Center);
+					proj.netUpdate = true;
 				}
 			}
 		}
@@ -95,8 +94,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 			float moveSpeed = 0.2f;
 			float maxSpeed = 2f;
 
-			Vector2 orig = player.Center;
-			int tileY = GetTileAt(orig, 0, out bool _, false) * 16;
+			int tileY = GetTileAt(player.Center, 12, 0, out bool _, false) * 16;
 			float gotoY = tileY - baseHeight;
 
 			Vector2 goPos = new Vector2(player.MountedCenter.X, gotoY - 16);
@@ -111,21 +109,19 @@ namespace SpiritMod.Mounts.RlyehianMount
 		{
 			int detectWidth = player.width * 3;
 			Rectangle detectRange = new Rectangle((int)player.getRect().Center.X - (detectWidth / 2), (int)player.getRect().Bottom, detectWidth, detectHeight);
-			foreach (NPC npc in Main.npc)
-			{
-				if (npc.active && !npc.friendly && npc.getRect().Bottom >= player.getRect().Bottom && 
-					detectRange.Intersects(npc.getRect()) && Collision.CanHitLine(npc.Center, 0, 0, player.Center, 0, 0))
-					return npc;
-			}
-			return null;
+			
+			var npc = Main.npc.Where(x => x.active && !x.CanDamage() && x.getRect().Bottom >= player.getRect().Bottom &&
+				detectRange.Intersects(x.getRect()) && Collision.CanHitLine(x.Center, 0, 0, player.Center, 0, 0)).FirstOrDefault();
+
+			return (npc != default) ? npc : null;
 		}
 
-		private static int GetTileAt(Vector2 searchPos, int xOffset, out bool liquid, bool up = false)
+		private static int GetTileAt(Vector2 searchPos, int tileLength, int xOffset, out bool liquid, bool up = false)
 		{
 			int tileDist = (int)(searchPos.Y / 16f);
 			liquid = true;
 
-			while (true)
+			for (int i = 0; i < tileLength; i++)
 			{
 				tileDist += !up ? 1 : -1;
 
@@ -153,14 +149,12 @@ namespace SpiritMod.Mounts.RlyehianMount
 			bool inTransition = (int)mountedPlayer.mount._frameCounter < (maxFrame - framesPerColumn);
 			mountedPlayer.mount._frameCounter %= maxFrame;
 			int lowerBound = inTransition ? (maxFrame - (framesPerColumn * 2)) : (maxFrame - framesPerColumn);
+			
 			if (lowerBound < 0)
 				lowerBound = 0;
-
-			//Apply the lower bound
 			if ((int)mountedPlayer.mount._frameCounter < lowerBound)
-			{
 				mountedPlayer.mount._frameCounter = lowerBound;
-			}
+
 			mountedPlayer.mount._frame = (int)mountedPlayer.mount._frameCounter;
 			return false;
 		}
@@ -193,12 +187,13 @@ namespace SpiritMod.Mounts.RlyehianMount
 			SpriteEffects effect = drawPlayer.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			int frameOffX = (drawPlayer.direction == 1) ? -30 : -24;
 
-			Vector2 position;
-			position.X = (int)(drawPlayer.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) + (float)MountData.xOffset);
-			position.Y = (int)(drawPlayer.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + (float)MountData.yOffset);
+			Vector2 position = new Vector2((int)(drawPlayer.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) + (float)MountData.xOffset),
+				(int)(drawPlayer.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + (float)MountData.yOffset));
 
-			DrawData data = new DrawData(texture, position + new Vector2(frameOffX, 0), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.Zero, 1f, effect, 0);
-			data.shader = drawPlayer.cMount;
+			DrawData data = new DrawData(texture, position + new Vector2(frameOffX, 0), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.Zero, 1f, effect, 0)
+			{
+				shader = drawPlayer.cMount
+			};
 			drawinfo.DrawDataCache.Add(data);
 		}
 	}
