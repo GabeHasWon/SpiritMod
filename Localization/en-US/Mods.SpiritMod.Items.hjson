@@ -1429,12 +1429,12 @@ KakamoraBanner: {
 }
 
 KakamoraBruteBanner: {
-	DisplayName: Kakamora Brute Banner
+	DisplayName: Kakamora Bruiser Banner
 	Tooltip: ""
 }
 
 KakamoraGliderBanner: {
-	DisplayName: Kakamora Glider Banner
+	DisplayName: Kakamora Windglider Banner
 	Tooltip: ""
 }
 
@@ -1604,12 +1604,12 @@ SpiritFloaterBanner: {
 }
 
 SpiritGhoulBanner: {
-	DisplayName: Spirit Ghoul Banner
+	DisplayName: Shadow Ghoul Banner
 	Tooltip: ""
 }
 
 SpiritMummyBanner: {
-	DisplayName: Spirit Mummy Banner
+	DisplayName: Dusk Mummy Banner
 	Tooltip: ""
 }
 
@@ -1619,7 +1619,7 @@ SpiritSkullBanner: {
 }
 
 SpiritTomeBanner: {
-	DisplayName: Spirit Tome Banner
+	DisplayName: Ancient Tome Banner
 	Tooltip: ""
 }
 

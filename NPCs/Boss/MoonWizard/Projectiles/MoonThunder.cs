@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -16,33 +14,30 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
         private List<List<Line>> lines;
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Lightning");
-        }
+		float fadeOutNum = 1f;
 
-        public override void SetDefaults()
+		//public override void SetStaticDefaults() => DisplayName.SetDefault("Lightning");
+
+		public override void SetDefaults()
         {
             Projectile.timeLeft = 4000;
             Projectile.penetrate = 5;
             Projectile.tileCollide = false;
             Projectile.width = Projectile.height = 30;
         }
-        float fadeOutNum = 1f;
+        
         public override bool PreAI()
         {
             if (Projectile.ai[0] == 0)
-            {
                 MakeLightning();
-            }
-            Projectile.ai[0]++;
+
             fadeOutNum -= .04f;
-            if (Projectile.ai[0] > 18)
-            {
+            if (++Projectile.ai[0] > 18)
                 Projectile.Kill();
-            }
+
             return false;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             if (Projectile.ai[0] <= 0f) return false;
@@ -57,9 +52,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             {
                 List<Line> line = lines[i];
                 for (int j = 0; j < line.Count; j++)
-                {
                     DrawLine(Main.spriteBatch, screen, line[j]);
-                }
             }
 
 			Main.spriteBatch.End();
@@ -67,12 +60,10 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
             return false;
         }
-        public override void OnHitPlayer(Player target, Player.HurtInfo info)
-        {
-            target.AddBuff(BuffID.Electrified, 180);
-        }
 
-        private void MakeLightning()
+		public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.Electrified, 180);
+
+		private void MakeLightning()
         {
             Vector2 start = new Vector2(Projectile.Center.X, 0);
             Point endTile = start.ToTileCoordinates();
@@ -87,17 +78,13 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             Vector2 end = endTile.ToVector2() * 16f + Vector2.UnitX * 8f;
             Line line = new Line(start, end);
 
-
-            lines = new List<List<Line>>();
-            lines.Add(new List<Line>());
-            lines[0].Add(line);
+			lines = new List<List<Line>> { new List<Line>() };
+			lines[0].Add(line);
 
             for (int steps = 0; steps < 5; steps++)
             {
                 for (int index = 0; index < lines[0].Count; index += 2)
-                {
                     JitterLine(index, lines[0]);
-                }
             }
 
             int sincePrev = 0;
@@ -118,9 +105,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                     for (int steps = 0; steps < 3; steps++)
                     {
                         for (int index2 = 0; index2 < lines[index].Count; index2 += 2)
-                        {
                             JitterLine(index2, lines[index]);
-                        }
                     }
 
                     sincePrev = Main.rand.Next(3, 7);
@@ -129,7 +114,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             }
         }
 
-        private void JitterLine(int index, List<Line> lines)
+        private static void JitterLine(int index, List<Line> lines)
         {
             Line line = lines[index];
             lines.RemoveAt(index);
