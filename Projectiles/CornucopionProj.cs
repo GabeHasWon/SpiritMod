@@ -5,102 +5,133 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.NPCs.Boss.MoonWizard.Projectiles;
+using SpiritMod.Projectiles.BaseProj;
+using System.Linq;
+using Terraria.GameContent;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpiritMod.Projectiles
 {
-	public class CornucopionProj : ModProjectile
+	public class CornucopionProj : BaseHeldProj
 	{
-		Vector2 direction = Vector2.Zero;
-		int counter = 0;
-		Vector2 holdOffset = new(0, -15);
-		int chargeStacks = 0;
+		private ref float Counter => ref Projectile.ai[0];
+		private bool StruckTarget { get => Projectile.ai[1] == 1; set => Projectile.ai[1] = value ? 1 : 0; }
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cornucop-ion");
+		private int Charge => (int)((float)Counter / chargeRate);
+
+		private readonly int chargeRate = 45;
+
+		private bool released = false;
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cornucop-ion");
+			Main.projFrames[Type] = 7;
+		}
 
 		public override void SetDefaults()
 		{
 			Projectile.hostile = false;
-			Projectile.DamageType = DamageClass.Ranged;
-			Projectile.width = 16;
-			Projectile.height = 16;
+			Projectile.friendly = true;
 			Projectile.aiStyle = -1;
-			Projectile.friendly = false;
-            Projectile.alpha = 255;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
-			Projectile.timeLeft = 999999;
+			Projectile.timeLeft = 2;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = -1;
 		}
 
-        public override bool PreAI()
+        public override void AbstractAI()
 		{
-            Player player = Main.player[Projectile.owner];
-            if (player.channel)
-            {
-				if (counter == 1)
-                {
-                    direction = Main.MouseWorld - (player.Center - new Vector2(4, 4));
-                    direction.Normalize();
-                    direction *= 5f;
-                }
-                player.itemTime = 5;
-                player.itemAnimation = 5;
-                Projectile.position = player.Center + holdOffset;
-                player.velocity.X *= 0.97f;
-                counter++;
+			void DoDusts()
+			{
+				float magnitude = Main.rand.NextFloat();
+				Vector2 startPos = Projectile.Center + new Vector2(25 * Owner.direction, -4 * Owner.gravDir);
+				Vector2 randomPos = startPos + (Main.rand.NextVector2Unit() * MathHelper.Lerp(20f, 30f, magnitude));
+				
+				Dust.NewDustPerfect(randomPos, DustID.Electric, randomPos.DirectionTo(startPos) * MathHelper.Lerp(2f, 3f, magnitude), 0, default, Main.rand.NextFloat(.3f, .7f)).noGravity = true;
+			}
 
-				if (counter % 45 == 0)
-                {
-                    chargeStacks++;
-                    SoundEngine.PlaySound(SoundID.Item5, Projectile.position);
-					for (int i = 0; i < 14; i++)
-                        DoDustEffect(player.Center, 40f);
-                }
+			if (!released)
+			{
+				Owner.velocity.X *= 0.97f;
 
-				if (counter > 240)
-                    player.AddBuff(BuffID.Electrified, (chargeStacks - 5) * 45);
-            }
-            else
-            {
-                if (chargeStacks > 0)
-                {
-                    for (int i = 0; i < chargeStacks; ++i)
-                    {
-                        for (int npcFinder = 0; npcFinder < 200; ++npcFinder)
-                        {
-                            int distance = (int)Vector2.Distance(player.Center, Main.npc[npcFinder].Center);
-                            if (!Main.npc[npcFinder].friendly && !Main.npc[npcFinder].townNPC && Main.npc[npcFinder].active && distance < 800 && Main.npc[npcFinder].CanBeChasedBy(this))
-                            {
-                                int p = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Main.npc[npcFinder].Center, Vector2.Zero, ModContent.ProjectileType<MoonThunder>(), 20, 8);
-                                SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Thunder2"), Main.projectile[p].Center);
-                                Main.npc[npcFinder].StrikeNPC(Projectile.damage + (2 * chargeStacks), 12, 0, false);
-                                SpiritMod.tremorTime = 18;
-                                Main.projectile[p].friendly = true;
-                                Main.projectile[p].hostile = false;
-                                break;
-                            }
-                        }
-                    }
-                }
-                
-                Projectile.active = false;
-            }
-            player.heldProj = Projectile.whoAmI;
-            player.itemTime = 2;
-            player.itemAnimation = 2;
-            return true;
+				if (++Counter % chargeRate == 0)
+				{
+					SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+					for (int i = 0; i < 10; i++)
+						DoDusts();
+				}
+				if (Counter > 240)
+					Owner.AddBuff(BuffID.Electrified, (Charge - 5) * 45);
+
+				if (Main.rand.NextBool(5))
+					DoDusts();
+			}
+			else
+			{
+				if (!StruckTarget)
+					Projectile.Kill();
+				else if (++Projectile.frameCounter >= 3)
+				{
+					Projectile.frameCounter = 0;
+					if (++Projectile.frame >= Main.projFrames[Type])
+						Projectile.Kill();
+				}
+			}
+			if (!Owner.channel)
+				released = true;
+
+			Projectile.rotation = Math.Min(Counter / chargeRate, 1) / 3 * -(Owner.direction * Owner.gravDir);
+			Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, -1.57f * Owner.direction);
 		}
 
-        private static void DoDustEffect(Vector2 position, float distance, float minSpeed = 2f, float maxSpeed = 3f, object follow = null)
-        {
-            float angle = Main.rand.NextFloat(-MathHelper.Pi, MathHelper.Pi);
-            Vector2 vec = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
-            Vector2 vel = vec * Main.rand.NextFloat(minSpeed, maxSpeed);
+		public override bool? CanDamage() => !Owner.channel && (Charge > 0);
 
-            int dust = Dust.NewDust(position - vec * distance, 0, 0, DustID.Electric);
-            Main.dust[dust].noGravity = true;
-            Main.dust[dust].scale *= .3f;
-            Main.dust[dust].velocity = vel;
-            Main.dust[dust].customData = follow;
-        }
-    }
+		public override bool? CanCutTiles() => false;
+		
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+		{
+			if (CanDamage() == false)
+				return false;
+
+			NPC pTarget = Main.npc.Where(x => x.Hitbox == targetHitbox).FirstOrDefault();
+			if (pTarget is NPC target && (target.Distance(Owner.Center) < 800))
+			{
+				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<MoonThunder>(), 20, 8);
+				proj.friendly = true;
+				proj.hostile = false;
+				proj.netUpdate = true;
+
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Thunder2"), Projectile.Center);
+				SpiritMod.tremorTime = 18;
+
+				Counter = Math.Max(Counter - chargeRate, 0);
+				StruckTarget = true;
+				Projectile.netUpdate = true;
+				return true;
+			}
+			return false;
+		}
+
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+			=> damage += 2 * Charge;
+
+		public override Vector2 HoldoutOffset() => new(6 * Owner.direction, 6 * Owner.gravDir);
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+			Rectangle frame = Projectile.DrawFrame();
+			float rotation = Projectile.rotation + ((Owner.gravDir == -1) ? MathHelper.Pi : 0);
+			SpriteEffects effects = ((Projectile.spriteDirection * Owner.gravDir) == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
+			Vector2 origin = (effects == SpriteEffects.None) ? new Vector2(0, frame.Height / 2) : new Vector2(frame.Width, frame.Height / 2);
+			
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Type].Value, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(lightColor),
+				rotation, origin, Projectile.scale, effects, 0);
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition, frame, Projectile.GetAlpha(Color.White),
+				rotation, origin, Projectile.scale, effects, 0);
+			return false;
+		}
+	}
 }

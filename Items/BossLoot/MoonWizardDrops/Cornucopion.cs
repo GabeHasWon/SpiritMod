@@ -21,8 +21,9 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
             Item.damage = 24;
             Item.knockBack = 8;
             Item.noMelee = true;
+			Item.noUseGraphic = true;
             Item.useTurn = true;
-            Item.channel = true; //Channel so that you can held the weapon [Important]
+            Item.channel = true;
             Item.rare = ItemRarityID.Pink;
             Item.width = 18;
             Item.height = 18;
@@ -32,9 +33,8 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
             Item.expert = true;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<CornucopionProj>();
-            Item.shootSpeed = 0f;
+            Item.shootSpeed = 1f;
             Item.value = 10000;
-            Item.noUseGraphic = false;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -43,8 +43,6 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 			Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, texture, rotation, scale);
 		}
-
-        public override Vector2? HoldoutOffset() => new Vector2(0, -1);
 
 		public override bool CanUseItem(Player player) => player.ZoneOverworldHeight || player.ZoneSkyHeight;
 	}
