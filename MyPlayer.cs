@@ -49,6 +49,7 @@ using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
 using SpiritMod.NPCs.Town;
 using SpiritMod.Items.Accessory.Leather;
 using SpiritMod.Tiles.Ambient;
+using SpiritMod.GlobalClasses.Items;
 
 namespace SpiritMod
 {
@@ -140,25 +141,11 @@ namespace SpiritMod
 		public bool strikeshield = false;
 
 		public float SpeedMPH { get; private set; }
-		public GlyphType glyph;
 
-		public int voidStacks = 1;
 		public int camoCounter;
-		public int veilCounter;
 		public int jellynautStacks;
-		public bool blazeBurn;
-		public bool phaseShift;
 		private readonly float[] phaseSlice = new float[60];
-		public int divineCounter;
-		public int divineStacks = 1;
-		public int stormStacks;
-		public int frostCooldown;
-		public float frostRotation;
-		public bool frostUpdate;
-		public int frostTally;
-		public int frostCount;
 		public bool jellynautHelm;
-
 		public int shadowCount;
 
 		// Armor set booleans.
@@ -415,38 +402,6 @@ namespace SpiritMod
 
 			if (Player.FindBuffIndex(ModContent.BuffType<ExplorerMine>()) < 0)
 				miningStacks = 1;
-
-			if (Player.FindBuffIndex(ModContent.BuffType<CollapsingVoid>()) < 0)
-				voidStacks = 1;
-
-			phaseShift = false;
-			blazeBurn = false;
-
-			if (glyph != GlyphType.Veil)
-				veilCounter = 0;
-
-			if (glyph != GlyphType.Radiant)
-				divineStacks = 1;
-
-			if (glyph != GlyphType.Storm)
-				stormStacks = 0;
-
-			if (frostCooldown > 0)
-				frostCooldown--;
-
-			frostRotation += Items.Glyphs.FrostGlyph.TURNRATE;
-			if (frostRotation > MathHelper.TwoPi)
-				frostRotation -= MathHelper.TwoPi;
-
-			if (frostUpdate)
-			{
-				frostUpdate = false;
-				if (glyph == GlyphType.Frost)
-					Items.Glyphs.FrostGlyph.UpdateIceSpikes(Player);
-			}
-
-			frostCount = frostTally;
-			frostTally = 0;
 		}
 
 		private void ResetAccBools()
@@ -984,16 +939,6 @@ namespace SpiritMod
 
 			if (Player.GetModPlayer<DashPlayer>().ActiveDash == DashType.Shinigami)
 				return false;
-
-			int index = Player.FindBuffIndex(ModContent.BuffType<PhantomVeil>());
-			if (index >= 0)
-			{
-				Player.DelBuff(index);
-				Items.Glyphs.VeilGlyph.Block(Player);
-				veilCounter = 0;
-
-				return false;
-			}
 			return true;
 		}
 
@@ -1008,11 +953,6 @@ namespace SpiritMod
 		{
 			foreach (var effect in effects)
 				effect.PlayerHurt(Player, pvp, quiet, damage, hitDirection, crit);
-
-			veilCounter = 0;
-
-			if (glyph == GlyphType.Daze && Main.rand.NextBool(2))
-				Player.AddBuff(BuffID.Confused, 180);
 
 			if (rogueSet && !Player.HasBuff<RogueCooldown>())
 			{
@@ -1502,52 +1442,6 @@ namespace SpiritMod
 
 			SpeedMPH = CalculateSpeed();
 
-			if (Player.whoAmI == Main.myPlayer)
-			{
-				var temp = glyph; //Store the previous tick glyph type
-				if (!Player.HeldItem.IsAir)
-				{
-					glyph = Player.HeldItem.GetGlobalItem<GItem>().Glyph;
-					if (glyph == GlyphType.None && Player.nonTorch >= 0 && Player.nonTorch != Player.selectedItem && !Player.inventory[Player.nonTorch].IsAir)
-						glyph = Player.inventory[Player.nonTorch].GetGlobalItem<Items.GItem>().Glyph;
-				}
-				else
-					glyph = GlyphType.None;
-
-				if (Main.netMode == NetmodeID.MultiplayerClient && temp != glyph) //If the glyph type has changed, sync
-				{
-					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.PlayerGlyph, 2);
-					packet.Write((byte)Main.myPlayer);
-					packet.Write((byte)glyph);
-					packet.Send();
-				}
-			}
-
-			if (glyph == GlyphType.Bee)
-				Player.AddBuff(BuffID.Honey, 2);
-			else if (glyph == GlyphType.Phase)
-				Player.GetModPlayer<DashPlayer>().UpdateShift();
-			else if (glyph == GlyphType.Veil)
-			{
-				veilCounter++;
-				if (veilCounter >= 8 * 60)
-				{
-					veilCounter = 0;
-					Player.AddBuff(ModContent.BuffType<PhantomVeil>(), 2);
-				}
-			}
-			else if (glyph == GlyphType.Void)
-				Items.Glyphs.VoidGlyph.DevouringVoid(Player);
-			else if (glyph == GlyphType.Radiant)
-			{
-				divineCounter++;
-				if (divineCounter >= 90)
-				{
-					divineCounter = 0;
-					Player.AddBuff(ModContent.BuffType<DivineStrike>(), 2);
-				}
-			}
-
 			if (Player.HeldItem.type == Mod.Find<ModItem>("Minifish").Type)
 				MinifishTimer--;
 			else
@@ -1632,24 +1526,11 @@ namespace SpiritMod
 				drain = true;
 				Player.lifeRegen -= 16;
 			}
-
-			if (blazeBurn)
-			{
-				drain = true;
-				Player.lifeRegen -= 10;
-			}
-
 			if (drain && before > 0)
 			{
 				Player.lifeRegenTime = 0;
 				Player.lifeRegen -= before;
 			}
-		}
-
-		public override void UpdateLifeRegen()
-		{
-			if (glyph == GlyphType.Sanguine)
-				Player.lifeRegen += 4;
 		}
 
 		public override void UpdateEquips()
@@ -1831,30 +1712,6 @@ namespace SpiritMod
 					Player.velocity.Y = 2f;
 			}
 
-			if (glyph == GlyphType.Void)
-				Player.endurance += .08f;
-
-			if (phaseShift)
-			{
-				Player.noKnockback = true;
-				Player.buffImmune[BuffID.Slow] = true;
-				Player.buffImmune[BuffID.Chilled] = true;
-				Player.buffImmune[BuffID.Frozen] = true;
-				Player.buffImmune[BuffID.Webbed] = true;
-				Player.buffImmune[BuffID.Stoned] = true;
-				Player.buffImmune[BuffID.OgreSpit] = true;
-				Player.buffImmune[BuffID.Confused] = true;
-
-				int dust;
-				if (Player.velocity.Y == 0f)
-					dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + Player.height - 4f), Player.width, 8, ModContent.DustType<TemporalDust>(), 0f, 0f, 100, default, 1.4f);
-				else
-					dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + (Player.height >> 1) - 8f), Player.width, 16, ModContent.DustType<TemporalDust>(), 0f, 0f, 100, default, 1.4f);
-
-				Main.dust[dust].velocity *= 0.1f;
-				Main.dust[dust].scale *= 1f + Main.rand.Next(20) * 0.01f;
-			}
-
 			if (clatterboneSet)
 				clatterboneTimer--;
 
@@ -1958,17 +1815,6 @@ namespace SpiritMod
 			float sprint = 1f;
 			float accel = 1f;
 			float slowdown = 1f;
-
-			if (glyph == GlyphType.Frost)
-				sprint += .05f;
-
-			if (phaseShift)
-			{
-				speed += 0.55f;
-				sprint += 0.55f;
-				accel += 3f;
-				slowdown += 3f;
-			}
 
 			if (stoneplate)
 			{

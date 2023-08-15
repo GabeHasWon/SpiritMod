@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.GlobalClasses.Players;
+using SpiritMod.GlobalClasses.Projectiles;
 using SpiritMod.Items.Pins;
 using SpiritMod.Items.Weapon.Summon.StardustBomb;
 using SpiritMod.Mechanics.BoonSystem;
@@ -116,7 +117,7 @@ namespace SpiritMod
 					MyWorld.auroraType = reader.ReadInt32();
 					break;
 				case MessageType.ProjectileData:
-					GlyphProj.ReceiveProjectileData(reader, whoAmI);
+					GlyphGlobalProjectile.ReceiveProjectileData(reader, whoAmI);
 					break;
 				case MessageType.PlaceMapPin:
 					int cursorX = reader.ReadInt32();
@@ -144,9 +145,7 @@ namespace SpiritMod
 						packet.Write(type);
 						packet.Send(-1, whoAmI);
 					}
-					if (type == 1)
-						Items.Glyphs.VeilGlyph.Block(Main.player[player]);
-					else
+					if (type != 1)
 						SpiritMod.Instance.Logger.Error("Unknown message (2:" + type + ")");
 					break;
 				case MessageType.Dash:
@@ -175,7 +174,7 @@ namespace SpiritMod
 					}
 					if (player == Main.myPlayer)
 						break;
-					Main.player[player].GetModPlayer<MyPlayer>().glyph = glyph;
+					Main.player[player].GetModPlayer<GlyphPlayer>().Glyph = glyph;
 					break;
 				case MessageType.BossSpawnFromClient:
 					if (Main.netMode == NetmodeID.Server)

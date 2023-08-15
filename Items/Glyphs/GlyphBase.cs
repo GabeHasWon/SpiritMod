@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.GlobalClasses.Items;
+using SpiritMod.Mechanics.SpecialSellItem;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -9,15 +11,13 @@ using Terraria.ModLoader;
 namespace SpiritMod.Items.Glyphs
 {
 	[Sacrifice(5)]
-	public abstract class GlyphBase : ModItem
+	public abstract class GlyphBase : ModItem, ISpecialSellItem
 	{
-		public const float GLOW_BIAS = 0.225f;
-
 		private static GlyphBase[] _lookup;
 		public static GlyphBase FromType(GlyphType type) => _lookup[(byte)type];
 
 		public abstract GlyphType Glyph { get; }
-		public abstract Texture2D Overlay { get; }
+		public virtual Texture2D Overlay => ModContent.Request<Texture2D>(Texture + "_Icon").Value;
 		public virtual Color Color => Color.White;
 		public virtual string ItemType => "weapon";
 		public abstract string Effect { get; }
@@ -25,19 +25,13 @@ namespace SpiritMod.Items.Glyphs
 
 		public virtual bool CanApply(Item item) => item.IsWeapon();
 
-		public sealed override bool CanRightClick()
+		public virtual void OnApply(Item item, Player player)
 		{
-			Item item = Main.LocalPlayer.HeldItem;
-			return !item.IsAir && item.GetGlobalItem<GItem>().Glyph != Glyph &&
-				item.maxStack == 1 && CanApply(item);
-		}
-
-		public override void RightClick(Player player)
-		{
-			Item item = EnchantmentTarget(player);
-			item.GetGlobalItem<GItem>().SetGlyph(item, Glyph);
+			item.GetGlobalItem<GlyphGlobalItem>().SetGlyph(item, Glyph);
 			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/GlyphAttach"), player.Center);
 		}
+
+		public override void SetStaticDefaults() => Tooltip.SetDefault(Addendum);
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -52,36 +46,20 @@ namespace SpiritMod.Items.Glyphs
 			color *= Main.mouseTextColor / 255f;
 			line = new TooltipLine(Mod, "GlyphTooltip",
 				"The enchanted " + ItemType + " will gain: [c/" +
-				string.Format("{0:X2}{1:X2}{2:X2}:", color.R, color.G, color.B) + Effect + "]");
-			line.OverrideColor = new Color(120, 190, 120);
+				string.Format("{0:X2}{1:X2}{2:X2}:", color.R, color.G, color.B) + Effect + "]")
+			{
+				OverrideColor = new Color(120, 190, 120)
+			};
 			tooltips.Insert(index, line);
 
-			if (Item.shopCustomPrice.HasValue) {
-				line = new TooltipLine(Mod, "GlyphHint",
-					"Can only be applied to " + ItemType + "s");
-			}
-			else if (CanRightClick()) {
-				Item held = player.HeldItem;
-				Color itemColor = held.RarityColor(Main.mouseTextColor / 255f);
-				line = new TooltipLine(Mod, "GlyphHint", "Right-click to enchant [i:" + held.type + "] [c/" +
-					string.Format("{0:X2}{1:X2}{2:X2}:", itemColor.R, itemColor.G, itemColor.B) +
-					held.Name + "]");
-			}
+			if (Item.shopCustomPrice.HasValue)
+				line = new TooltipLine(Mod, "GlyphHint", "Can only be applied to " + ItemType + "s");
 			else
-				line = new TooltipLine(Mod, "GlyphHint", "Hold the " + ItemType
-					+ " you want to enchant and right-click this glyph");
+				line = new TooltipLine(Mod, "GlyphHint", "Hold this glyph and right-click the " + ItemType + " you want to enchant");
+
 			line.OverrideColor = new Color(120, 190, 120);
 			tooltips.Insert(index, line);
 		}
-
-		public static Item EnchantmentTarget(Player player)
-		{
-			if (player.selectedItem == 58)
-				return Main.mouseItem;
-			else
-				return player.HeldItem;
-		}
-
 
 		internal static void InitializeGlyphLookup()
 		{
@@ -109,5 +87,14 @@ namespace SpiritMod.Items.Glyphs
 		}
 
 		internal static void UninitGlyphLookup() => _lookup = null;
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
+
+		public int CurrencyID() => SpiritMod.GlyphCurrencyID;
+
+		public int SellType() => ModContent.ItemType<Glyph>();
+
+		public string SellName() => "glyph";
 	}
 }

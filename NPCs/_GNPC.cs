@@ -1,17 +1,8 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs;
-using SpiritMod.Buffs.Glyph;
 using SpiritMod.Dusts;
-using SpiritMod.Items.Accessory;
-using SpiritMod.Items.Consumable;
-using SpiritMod.Items.DonatorItems;
 using SpiritMod.Items.Glyphs;
 using SpiritMod.Items.Halloween;
-using SpiritMod.Items.Material;
-using SpiritMod.Items.Placeable.Furniture;
-using SpiritMod.Items.Sets.FlailsMisc.JadeDao;
-using SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon;
-using SpiritMod.Items.BossLoot.MoonWizardDrops;
 using SpiritMod.NPCs.Critters.Algae;
 using SpiritMod.NPCs.Town;
 using SpiritMod.Projectiles.Arrow;
@@ -20,15 +11,10 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Linq;
-using SpiritMod.Items.Ammo.Rocket.Warhead;
 using SpiritMod.Projectiles.Summon.SacrificialDagger;
 using Terraria.Audio;
-using SpiritMod.Items.Sets.LaunchersMisc.Liberty;
-using SpiritMod.Items.Placeable.Furniture.Paintings;
 using SpiritMod.Buffs.DoT;
 using SpiritMod.World;
-using Terraria.GameContent.Events;
 using SpiritMod.NPCs.BlueMoon.Bloomshroom;
 using SpiritMod.NPCs.BlueMoon.Glitterfly;
 using SpiritMod.NPCs.BlueMoon.GlowToad;
@@ -36,11 +22,8 @@ using SpiritMod.NPCs.BlueMoon.Lumantis;
 using SpiritMod.NPCs.BlueMoon.MadHatter;
 using SpiritMod.NPCs.BlueMoon.LunarSlime;
 using SpiritMod.Buffs.Pet;
-using SpiritMod.Items.Pets;
 using SpiritMod.Utilities;
-using SpiritMod.Items.Pins;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 
 namespace SpiritMod.NPCs
 {
@@ -59,15 +42,6 @@ namespace SpiritMod.NPCs
 		public bool vineTrap = false;
 		public bool clatterPierce = false;
 		public bool tracked = false;
-		//Glyphs
-		public bool voidInfluence;
-		public int voidStacks;
-		public bool sanguineBleed;
-		public bool sanguinePrev;
-		public bool unholyPlague;
-		public int unholySource;
-		public bool frostChill;
-		public bool stormBurst;
 
 		public int summonTag;
 		public bool sacrificialDaggerBuff;
@@ -98,22 +72,7 @@ namespace SpiritMod.NPCs
 
 		public override void ResetEffects(NPC npc)
 		{
-			if (!voidInfluence)
-			{
-				if (voidStacks > VoidGlyph.DECAY)
-					voidStacks -= VoidGlyph.DECAY;
-				else
-					voidStacks = 0;
-			}
-			else
-				voidInfluence = false;
-
-			sanguinePrev = sanguineBleed;
 			bloodInfused = false;
-			sanguineBleed = false;
-			unholyPlague = false;
-			frostChill = false;
-			stormBurst = false;
 			vineTrap = false;
 			clatterPierce = false;
 			doomDestiny = false;
@@ -212,8 +171,6 @@ namespace SpiritMod.NPCs
 				Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
 				NPC.NewNPC(npc.GetSource_OnHurt(null), (int)spawnAt.X, (int)spawnAt.Y, ModContent.NPCType<NPCs.CracklingCore.GraniteCore>());
 			}
-			if (npc.life <= 0 && npc.FindBuffIndex(ModContent.BuffType<WanderingPlague>()) >= 0)
-				UnholyGlyph.ReleasePoisonClouds(npc, 0);
 		}
 
 		public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -277,24 +234,6 @@ namespace SpiritMod.NPCs
 				damage = Math.Max(damage, fireStacks * 20);
 			}
 			#endregion
-
-			if (voidStacks > 0)
-			{
-				damage += 5 + 5 * (voidStacks / VoidGlyph.DELAY);
-				npc.lifeRegen -= 20 + 20 * voidStacks / VoidGlyph.DELAY;
-			}
-
-			if (sanguineBleed)
-			{
-				damage += 4;
-				npc.lifeRegen -= 16;
-			}
-
-			if (unholyPlague)
-			{
-				damage += 5;
-				npc.lifeRegen -= 20;
-			}
 
 			if (doomDestiny)
 			{
@@ -731,43 +670,8 @@ namespace SpiritMod.NPCs
 			}
 		}
 
-		public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
-		{
-			if (stormBurst)
-			{
-				float before = knockback;
-				knockback *= 1.5f;
-
-				if (knockback > 8f)
-					knockback = before > 8 ? before : 8;
-			}
-		}
-
-		public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
-		{
-			if (stormBurst && npc.knockBackResist > 0 && npc.velocity.LengthSquared() > 1)
-			{
-				for (int i = 0; i < 8; i++)
-				{
-					var dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, ModContent.DustType<Wind>());
-					dust.customData = new WindAnchor(npc.Center, npc.velocity, dust.position);
-				}
-			}
-		}
-
 		public override void ModifyHitByProjectile(NPC target, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			if (stormBurst)
-			{
-				knockback = 0;
-				float before = knockback;
-				knockback *= 2f;
-				if (knockback > 0.5 && knockback < 2)
-					knockback = 2f;
-				else if (knockback > 8f)
-					knockback = before > 8 ? before : 8;
-			}
-
 			bool summon = (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry);
 			if (summon)
 				damage += summonTag;
@@ -788,18 +692,6 @@ namespace SpiritMod.NPCs
 						Projectile.NewProjectile(projectile.GetSource_OnHit(target), randPos.X, randPos.Y, dir.X, dir.Y, ModContent.ProjectileType<SacrificialDaggerProjectile>(), (int)(damage * 0.75f), 0, projectile.owner);
 
 					DustHelper.DrawTriangle(target.Center, 173, 5, 1.5f, 1f);
-				}
-			}
-		}
-
-		public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
-		{
-			if (stormBurst && npc.knockBackResist > 0 && npc.velocity.LengthSquared() > 1)
-			{
-				for (int i = 0; i < 8; i++)
-				{
-					var dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, ModContent.DustType<Wind>());
-					dust.customData = new WindAnchor(npc.Center, npc.velocity, dust.position);
 				}
 			}
 		}

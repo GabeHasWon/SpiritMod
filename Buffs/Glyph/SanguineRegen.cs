@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using SpiritMod.NPCs;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -17,7 +15,7 @@ namespace SpiritMod.Buffs.Glyph
 
 		public override bool ReApply(Player player, int time, int buffIndex)
 		{
-			player.buffTime[buffIndex] = Math.Min(player.buffTime[buffIndex] + time, 600);
+			player.buffTime[buffIndex] = Math.Min(player.buffTime[buffIndex] + time, 300);
 			return false;
 		}
 

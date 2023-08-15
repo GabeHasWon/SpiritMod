@@ -17,8 +17,6 @@ internal class DashPlayer : ModPlayer
 	public DashType ActiveDash { get; private set; }
 
 	public int chitinDashTicks;
-	public int phaseStacks;
-	public int phaseCounter;
 	public bool chitinSet;
 
 	private readonly int[] _horiTimers = new int[2];
@@ -29,12 +27,6 @@ internal class DashPlayer : ModPlayer
 	{
 		chitinDashTicks = Math.Max(chitinDashTicks - 1, 0);
 		chitinSet = false;
-
-		if (Player.GetModPlayer<MyPlayer>().glyph != GlyphType.Phase)
-		{
-			phaseStacks = 0;
-			phaseCounter = 0;
-		}
 	}
 
 	internal void DashMovement()
@@ -97,9 +89,6 @@ internal class DashPlayer : ModPlayer
 
 		switch (dash)
 		{
-			case DashType.Phase:
-				PhaseVisuals(out speedCap, out decayCapped, speedMax, out decayMax, out delay);
-				break;
 			case DashType.Chitin:
 				ChitinHelmet.ChitinDashVisuals(Player, out speedCap, out decayCapped, out speedMax, out decayMax, out delay);
 				break;
@@ -150,24 +139,6 @@ internal class DashPlayer : ModPlayer
 		delay = 40;
 	}
 
-	private void PhaseVisuals(out float speedCap, out float decayCapped, float speedMax, out float decayMax, out int delay)
-	{
-		for (int k = 0; k < 2; k++)
-		{
-			int dust;
-			if (Player.velocity.Y == 0f)
-				dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + Player.height - 4f), Player.width, 8, ModContent.DustType<TemporalDust>(), 0f, 0f, 100, default, 1.4f);
-			else
-				dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + (Player.height >> 1) - 8f), Player.width, 16, ModContent.DustType<TemporalDust>(), 0f, 0f, 100, default, 1.4f);
-			Main.dust[dust].velocity *= 0.1f;
-			Main.dust[dust].scale *= 1f + Main.rand.Next(20) * 0.01f;
-		}
-		speedCap = speedMax;
-		decayCapped = 0.985f;
-		decayMax = decayCapped;
-		delay = 30;
-	}
-
 	//private void DashEnd() { }
 
 	internal void PerformDash(DashType dash, sbyte dir, bool local = true)
@@ -176,24 +147,6 @@ internal class DashPlayer : ModPlayer
 
 		switch (dash)
 		{
-			case DashType.Phase:
-				horizontalSpeed *= 25f;
-				phaseStacks--;
-
-				if (local)
-					Player.AddBuff(ModContent.BuffType<Buffs.Glyph.TemporalShift>(), 3 * 60);
-
-				// vfx
-				for (int num17 = 0; num17 < 20; num17++)
-				{
-					int dust = Dust.NewDust(Player.position, Player.width, Player.height, ModContent.DustType<TemporalDust>(), 0f, 0f, 100, default, 2f);
-					Main.dust[dust].position.X += Main.rand.Next(-5, 6);
-					Main.dust[dust].position.Y += Main.rand.Next(-5, 6);
-					Main.dust[dust].velocity *= 0.2f;
-					Main.dust[dust].scale *= 1.4f + Main.rand.Next(20) * 0.01f;
-				}
-				_dashTimer = 30;
-				break;
 			case DashType.Chitin:
 				horizontalSpeed *= 20;
 
@@ -254,29 +207,9 @@ internal class DashPlayer : ModPlayer
 				return DashType.Drakomire;
 			return DashType.None;
 		}
-
-		if (phaseStacks > 0)
-			return DashType.Phase;
-		else if (chitinSet)
+		if (chitinSet)
 			return DashType.Chitin;
 
 		return DashType.None;
-	}
-
-	internal void UpdateShift()
-	{
-		if (phaseStacks < 3)
-		{
-			phaseCounter++;
-			if (phaseCounter >= 12 * 60)
-			{
-				phaseCounter = 0;
-				phaseStacks++;
-				Player.AddBuff(ModContent.BuffType<Buffs.Glyph.TemporalShift>(), 2);
-			}
-		}
-
-		if (phaseStacks > 3)
-			phaseStacks = 3;
 	}
 }

@@ -1,115 +1,58 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Projectiles;
-using System;
+using SpiritMod.Buffs.Glyph;
+using SpiritMod.Particles;
+using SpiritMod.Projectiles.Glyph;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
 {
-	public class FrostGlyph : GlyphBase, IGlowing
+	public class FrostGlyph : GlyphBase
 	{
-		public static Texture2D[] _textures;
-
-		public const int LIMIT = 5;
-		public const int COOLDOWN = 3;
-		public const float TURNRATE = (float)(0.4 * Math.PI / 30d);
-		public const float OFFSET = 50;
-
-
-		Texture2D IGlowing.Glowmask(out float bias)
-		{
-			bias = GLOW_BIAS;
-			return _textures[1];
-		}
-
 		public override GlyphType Glyph => GlyphType.Frost;
-		public override Texture2D Overlay => _textures[2];
-		public override Color Color => new Color { PackedValue = 0xee853a };
-		public override string Effect => "Stinging Cold";
-		public override string Addendum =>
-			"+5% Movement speed\n" +
-			"Critical strikes conjure Ice Spikes that orbit you\n" +
-			"Every Spike beyond the fifth will be shot towards the cursor";
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Frost Glyph");
-			Tooltip.SetDefault(
-				"+5% Movement speed\n" +
-				"Critical strikes conjure Ice Spikes that orbit you\n" +
-				"Every Spike beyond the fifth will be shot towards the cursor");
-		}
+		public override Color Color => new(49, 209, 215);
+		public override string Effect => "Freezing";
+		public override string Addendum => "Attacks have a chance to freeze enemies briefly";
 
 		public override void SetDefaults()
 		{
-			Item.width = 28;
-			Item.height = 28;
+			Item.width = Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.Green;
-
 			Item.maxStack = 999;
 		}
 
-		public static void CreateIceSpikes(Player player, NPC target, bool crit)
+		public static void FreezeEffect(Player owner, Entity target, Projectile proj)
 		{
-			if (!crit || player.whoAmI != Main.myPlayer || !target.CanLeech())
-				return;
+			bool projAttack = proj != null;
+			Vector2 position = projAttack ? proj.Center : target.Hitbox.ClosestPointInRect(owner.Center);
+			Vector2 velocity = (projAttack && proj.velocity != Vector2.Zero) ? -Vector2.Normalize(proj.velocity) : target.DirectionTo(owner.Center);
 
-			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
-			if (modPlayer.frostCooldown > 0)
-				return;
-
-			int damage = (int)(25 * player.GetDamageBoost());
-			int spikes = modPlayer.frostCount;
-			if (spikes >= LIMIT) {
-				Vector2 velocity = Main.MouseWorld - player.MountedCenter;
-				float length = velocity.Length();
-				length = 1 / length;
-				if (float.IsNaN(length))
-					velocity = new Vector2(player.direction > 0 ? 1 : -1, 0);
-				else
-					velocity *= length;
-				velocity *= 5;
-				if (Main.netMode != NetmodeID.MultiplayerClient)
-				{
-					Projectile.NewProjectileDirect(player.GetSource_OnHit(target), player.MountedCenter, velocity, ModContent.ProjectileType<FrostSpike>(),
-						damage, 2f, player.whoAmI, -1);
-				}
-				modPlayer.frostCooldown = 3 * COOLDOWN;
-				return;
-			}
-
-			float sector = MathHelper.TwoPi / (spikes + 1);
-			float rotation = modPlayer.frostRotation + spikes * sector;
-			if (Main.netMode != NetmodeID.MultiplayerClient)
+			for (int i = 0; i < 15; i++)
 			{
-				Projectile.NewProjectileDirect(player.GetSource_OnHit(target), player.Center, Vector2.Zero, ModContent.ProjectileType<FrostSpike>(),
-					damage, 2f, player.whoAmI, spikes)
-					.rotation = rotation;
+				Vector2 newVel = velocity * Main.rand.NextFloat(.25f, 2.5f);
+
+				if (i < 5)
+					ParticleHandler.SpawnParticle(new SmokeParticle(position, newVel.RotatedByRandom(1f), Color.LightBlue with { A = 0 }, Main.rand.NextFloat(.4f, .8f), Main.rand.Next(10, 20)));
+
+				Dust dust = Dust.NewDustPerfect(position, Main.rand.NextBool() ? DustID.AncientLight : DustID.IceGolem, newVel.RotatedByRandom(1.5f), 0, default, Main.rand.NextFloat(.5f, 1.5f));
+				dust.fadeIn = 1.2f;
+				dust.noGravity = true;
 			}
-			modPlayer.frostCount++;
-			modPlayer.frostCooldown = COOLDOWN;
-		}
+			for (int i = 0; i < 3; i++)
+				Projectile.NewProjectile(owner.GetSource_OnHit(target), position, (velocity * Main.rand.NextFloat(4f, 8f)).RotatedByRandom(2f), ModContent.ProjectileType<MagicSpiral>(), 0, 0, owner.whoAmI);
 
-		public static void UpdateIceSpikes(Player player)
-		{
-			int owner = player.whoAmI;
-			int type = ModContent.ProjectileType<FrostSpike>();
-			int tally = 0;
-			for (int i = 0; i < 1000; i++) {
-				Projectile projectile = Main.projectile[i];
-				if (!projectile.active || projectile.owner != owner)
-					continue;
-				if (projectile.type != type)
-					continue;
-				if (projectile.ai[1] != 0)
-					continue;
-
-				if (tally == 0)
-					player.GetModPlayer<MyPlayer>().frostRotation = projectile.rotation;
-				projectile.ai[0] = tally++;
+			float value = MathHelper.Max(owner.HeldItem.rare / ItemRarityID.Count, 0); //Increase in power based on the player's held item rarity
+			if (target is NPC npc)
+			{
+				float intensity = .002f - (.0015f * value);
+				npc.AddBuff(ModContent.BuffType<ArcaneFreeze>(), (int)MathHelper.Clamp((1f - (npc.lifeMax * intensity)) * 100, 30, 220));
+			}
+			else if (target is Player player)
+			{
+				float intensity = .01f - (.005f * value);
+				player.AddBuff(BuffID.Frozen, (int)MathHelper.Clamp((1f - (player.statLife * intensity)) * 100, 30, 220));
 			}
 		}
 	}

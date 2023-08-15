@@ -1,86 +1,49 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs.Glyph;
-using SpiritMod.NPCs;
-using SpiritMod.Projectiles;
-using System;
+using SpiritMod.Projectiles.Glyph;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
 {
-	public class VoidGlyph : GlyphBase, IGlowing
+	public class VoidGlyph : GlyphBase
 	{
-		public static Texture2D[] _textures;
-
-		public const int DELAY = 100;
-		public const int DECAY = 3;
-
-
-		Texture2D IGlowing.Glowmask(out float bias)
-		{
-			bias = GLOW_BIAS;
-			return _textures[1];
-		}
+		public const int CollapseDuration = 300;
 
 		public override GlyphType Glyph => GlyphType.Void;
-		public override Texture2D Overlay => _textures[2];
-		public override Color Color => new Color { PackedValue = 0xff057a };
-		public override string Effect => "Shadow Maelstrom";
-		public override string Addendum =>
-			"+8% damage reduction\n" +
-			"Nearby enemies will be consumed by Devouring Void\n" +
-			"This effect will grow in intensity over time";
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Void Glyph");
-			Tooltip.SetDefault(
-				"+8% damage reduction\n" +
-				"Nearby enemies will be consumed by Devouring Void\n" +
-				"This effect will grow in intensity over time");
-		}
-
+		public override Color Color => new(233, 89, 255);
+		public override string Effect => "Null";
+		public override string Addendum => "Attacks have a chance to inflict stacks of void collapse";
 
 		public override void SetDefaults()
 		{
-			Item.width = 28;
-			Item.height = 28;
+			Item.width = Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.LightPurple;
 			Item.maxStack = 999;
 		}
 
-		public static void DevouringVoid(Player player)
+		public static void VoidCollapse(Player owner, Entity target, Projectile proj, int damage)
 		{
-			float range = 22 * 16;
-			range *= range;
-			Vector2 pos = player.Center;
-			for (int i = 0; i < Main.maxNPCs; i++) {
-				NPC npc = Main.npc[i];
-				if (!npc.active || npc.lifeMax <= 5 || npc.friendly || npc.dontTakeDamage)
-					continue;
-				if (Vector2.DistanceSquared(npc.Center, pos) > range)
-					continue;
-				GNPC npcData = npc.GetGlobalNPC<GNPC>();
-				npcData.voidInfluence = true;
-				if (npcData.voidStacks < 4 * DELAY)
-					npcData.voidStacks++;
-				npc.AddBuff(ModContent.BuffType<DevouringVoid>(), 2, true);
-			}
-		}
+			int riftType = ModContent.ProjectileType<VoidRift>();
+			if (!(proj is Projectile shot && shot.type == riftType))
+			{
+				int riftDamage = damage / 2;
 
-		public static void CollapsingVoid(Player player, Entity target, int damage)
-		{
-			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
-			if (player.whoAmI == Main.myPlayer && modPlayer.voidStacks > 1 && Main.rand.NextBool(14)) {
-				Vector2 vel = Vector2.UnitY.RotatedByRandom(Math.PI * 2);
-				vel *= (float)Main.rand.NextDouble() * 3f;
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), target.Center, vel, ModContent.ProjectileType<VoidStar>(), damage >> 1, 0, Main.myPlayer);
+				if (owner.ownedProjectileCounts[riftType] > 0)
+				{
+					var onTarget = Main.projectile.Where(x => x.active && (x.type == riftType) && (x.owner == owner.whoAmI) && (x.ModProjectile is VoidRift voidRift) && (voidRift.TargetWhoAmI == target.whoAmI)).FirstOrDefault();
+					if (onTarget != default)
+					{
+						onTarget.damage += riftDamage;
+						onTarget.netUpdate = true;
+
+						return;
+					}
+				}
+				Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center, Vector2.Zero, riftType, riftDamage, 0, owner.whoAmI, target.whoAmI);
 			}
-			if (Main.rand.NextBool(10))
-				player.AddBuff(ModContent.BuffType<CollapsingVoid>(), 299);
 		}
 	}
 }

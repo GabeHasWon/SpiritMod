@@ -1,84 +1,34 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs.Glyph;
-using SpiritMod.Projectiles;
-using System;
+using SpiritMod.Projectiles.Glyph;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
 {
-	public class UnholyGlyph : GlyphBase, IGlowing
+	public class UnholyGlyph : GlyphBase
 	{
-		public static Texture2D[] _textures;
-
-		Texture2D IGlowing.Glowmask(out float bias)
-		{
-			bias = GLOW_BIAS;
-			return _textures[1];
-		}
-
 		public override GlyphType Glyph => GlyphType.Unholy;
-		public override Texture2D Overlay => _textures[2];
-		public override Color Color => new Color { PackedValue = 0x08dd5d };
-		public override string Effect => "Pestilence";
-		public override string Addendum =>
-			"+6 Armor Penetration\n" +
-			"Critical strikes can inflict Wandering Plague\n" +
-			"Afflicted will slowly lose life and release toxic clouds";
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Unholy Glyph");
-			Tooltip.SetDefault(
-				"+6 Armor Penetration\n" +
-				"Critical strikes can inflict Wandering Plague\n" +
-				"Afflicted will slowly lose life and release toxic clouds");
-		}
+		public override Color Color => new(176, 221, 44);
+		public override string Effect => "Cursed";
+		public override string Addendum => "Enemies erupt into cursed phantoms on death";
 
 		public override void SetDefaults()
 		{
-			Item.width = 28;
-			Item.height = 28;
+			Item.width = Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = 999;
 		}
 
-		public static void PlagueEffects(NPC target, int owner, ref int damage, bool crit)
+		public static void Erupt(Player owner, Entity entity, int damage)
 		{
-			damage += target.checkArmorPenetration(6);
-			if (!crit || !target.CanLeech())
+			if (owner.whoAmI != Main.myPlayer)
 				return;
-			if (Main.rand.NextDouble() < 0.5)
-			{
-				target.AddBuff(ModContent.BuffType<WanderingPlague>(), 360);
-				target.GetGlobalNPC<NPCs.GNPC>().unholySource = owner;
-			}
-		}
 
-		public static void ReleasePoisonClouds(NPC target, int time)
-		{
-			if (Main.netMode == NetmodeID.Server)
-				return;
-			if (time % 80 != 0)
-				return;
-			int owner = target.GetGlobalNPC<NPCs.GNPC>().unholySource;
-			if (!Main.player[owner].active)
-				return;
-			int max = time != 0 ? 1 : Main.hardMode ? 3 : 1;
-			for (int i = 0; i < max; i++)
-			{
-				Vector2 vel = Vector2.UnitY.RotatedByRandom(Math.PI * 2);
-				vel *= Main.rand.Next(8, 40) * .125f;
-				int projectile = Projectile.NewProjectile(Main.player[owner].GetSource_OnHit(target), target.Center, vel, ModContent.ProjectileType<PoisonCloud>(), Main.hardMode ? 35 : 20, 0, owner, target.whoAmI);
-				if (Main.netMode == NetmodeID.Server)
-				{
-					Main.projectile[projectile].ai[0] = target.whoAmI;
-					NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, projectile);
-				}
-			}
+			int count = Main.rand.Next(2, 5);
+			for (int i = 0; i < count; i++)
+				Projectile.NewProjectileDirect(owner.GetSource_OnHit(entity), entity.Center, (Vector2.UnitY * -Main.rand.NextFloat(8f, 12f)).RotatedByRandom(1.5f), ModContent.ProjectileType<CursedPhantom>(), damage, 4, owner.whoAmI, ai1: Main.rand.Next(100, 180)).scale = Main.rand.NextFloat(.8f, 1f);
 		}
 	}
 }

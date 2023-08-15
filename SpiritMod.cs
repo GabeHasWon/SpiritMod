@@ -52,6 +52,7 @@ using ReLogic.Content;
 using SpiritMod.Items.Books.UI.MaterialUI;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.NPCs.Town.Oracle;
+using SpiritMod.GlobalClasses.Items;
 
 namespace SpiritMod
 {
@@ -392,7 +393,7 @@ namespace SpiritMod
 			if (glyph < GlyphType.None || glyph >= GlyphType.Count)
 				throw new ArgumentException("Glyph must be in range [" +
 					(int)GlyphType.None + "," + (int)GlyphType.Count + ")");
-			item.GetGlobalItem<Items.GItem>().SetGlyph(item, glyph);
+			item.GetGlobalItem<GlyphGlobalItem>().SetGlyph(item, glyph);
 		}
 
 		private static int GetGlyph(object[] args)
@@ -401,7 +402,7 @@ namespace SpiritMod
 				throw new ArgumentException("Missing argument: Item");
 			if (args[1] is not Item item)
 				throw new ArgumentException("First argument must be of type Item");
-			return (int)item.GetGlobalItem<Items.GItem>().Glyph;
+			return (int)item.GetGlobalItem<GlyphGlobalItem>().Glyph;
 		}
 
 		public override void Load()
