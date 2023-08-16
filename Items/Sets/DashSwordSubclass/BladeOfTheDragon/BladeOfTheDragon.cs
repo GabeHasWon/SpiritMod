@@ -14,12 +14,10 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 {
     public class BladeOfTheDragon : DashSwordItem
     {
-		public int combo;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blade of the Dragon");
-            Tooltip.SetDefault("Hold and release to slice through nearby enemies\nBuild up a combo by repeatedly hitting enemies");
+            Tooltip.SetDefault("Hold to slice through nearby enemies");
             Item.staff[Item.type] = true;
 		}
 

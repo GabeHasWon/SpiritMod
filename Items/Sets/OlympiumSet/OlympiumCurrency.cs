@@ -15,13 +15,13 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 		{
 			Color color = Color.Gold * (Main.mouseTextColor / 255f);
 			lines[currentLine++] = string.Format("[c/{0:X2}{1:X2}{2:X2}:{3} {4} {5}]",
-								color.R,
-								color.G,
-								color.B,
-								Language.GetTextValue("LegacyTooltip.50"),
-								price,
-								price > 1 ? "Olympium Tokens" : "Olympium Token"
-							);
+					color.R,
+					color.G,
+					color.B,
+					Language.GetTextValue("LegacyTooltip.50"),
+					price,
+					price > 1 ? "Olympium Tokens" : "Olympium Token"
+				);
 		}
 	}
 }

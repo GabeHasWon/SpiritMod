@@ -29,6 +29,10 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, -1.1f * player.direction);
 		}
 
+		/// <summary>
+		/// Controls the drawn visual when this item is held by the player. Make sure that DashSwordPlayer.holdingSword returns true for this to be called.
+		/// </summary>
+		/// <param name="info"></param>
 		public virtual void DrawHeld(PlayerDrawSet info)
 		{
 			Item item = info.drawPlayer.HeldItem;
