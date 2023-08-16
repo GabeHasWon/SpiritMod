@@ -12,7 +12,6 @@ using SpiritMod.Utilities;
 using SpiritMod.Items.Pins;
 using SpiritMod.Items.Placeable.Furniture;
 using SpiritMod.Items.Material;
-
 using SpiritTiles = SpiritMod.Tiles;
 using SpiritItems = SpiritMod.Items;
 using SpiritNPCs = SpiritMod.NPCs;
@@ -21,9 +20,9 @@ using SpiritMod.Items.Sets.LaunchersMisc.Liberty;
 using SpiritMod.Items.Accessory;
 using SpiritMod.Items.Pets;
 using SpiritMod.Items.Sets.FlailsMisc.JadeDao;
-using SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon;
 using SpiritMod.Items.ByBiome.Ocean.Misc.VolleyballContent;
 using SpiritMod.Items.ByBiome.Ocean.Placeable;
+using SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon;
 
 namespace SpiritMod.GlobalClasses.NPCs;
 

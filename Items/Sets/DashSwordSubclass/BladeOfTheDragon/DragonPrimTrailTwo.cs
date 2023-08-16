@@ -5,7 +5,7 @@ using Terraria;
 using System;
 using SpiritMod.Prim;
 
-namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
+namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 {
     class DragonPrimTrailTwo : PrimTrail
     {

@@ -4,7 +4,7 @@ using Terraria;
 using System;
 using SpiritMod.Prim;
 
-namespace SpiritMod.Items.Weapon.Swung.AnimeSword
+namespace SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword
 {
     class AnimePrimTrailTwo : PrimTrail
     {

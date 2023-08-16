@@ -97,7 +97,6 @@ namespace SpiritMod
 		public bool timScroll = false;
 		public bool runeWizardScroll = false;
 		public bool cultistScarf = false;
-		public bool AnimeSword = false;
 		public bool geodeRanged = false;
 		public bool fireMaw = false;
 		public bool deathRose = false;
@@ -912,9 +911,6 @@ namespace SpiritMod
 		{
 			if (bubbleTimer > 0)
 				return false;
-			
-			if (AnimeSword)
-				return false;
 
 			if (explorerTreads && damageSource.SourceOtherIndex == 3) //Spikes
 			{
@@ -1476,9 +1472,6 @@ namespace SpiritMod
 						hoveredStag = null;
 				}
 			}
-
-			if (AnimeSword)
-				Player.maxFallSpeed = 2000f;
 		}
 
 		private float CalculateSpeed()

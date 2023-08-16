@@ -5,7 +5,7 @@ using Terraria;
 using System;
 using SpiritMod.Prim;
 
-namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
+namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 {
     class DragonPrimTrail : PrimTrail
     {
@@ -96,26 +96,19 @@ namespace SpiritMod.Items.Sets.SwordsMisc.BladeOfTheDragon
 			Counter++;
             PointCount = Points.Count * 6;
             if (Cap < PointCount / 6)
-            {
                 Points.RemoveAt(0);
-            }
-            if ((!Entity.active && Entity != null) || Destroyed || (Entity is Projectile x && x.ModProjectile is BladeOfTheDragonProj proj && proj.charge > proj.MAXCHARGE))
-            {
+
+            if ((!Entity.active && Entity != null) || Destroyed)
                 OnDestroy();
-            }
             else
-            {
                 Points.Add(Entity.Center);
-            }
         }
         public override void OnDestroy()
         {
             Destroyed = true;
             Width *= 0.93f;
             if (Width < 0.05f)
-            {
                 Dispose();
-            }
         }
     }
 }

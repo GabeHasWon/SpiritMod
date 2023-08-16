@@ -8,6 +8,7 @@ using Terraria.Enums;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using SpiritMod.Particles;
+using SpiritMod.Items.Sets.DashSwordSubclass;
 
 namespace SpiritMod.Items.Sets.GreatswordSubclass
 {
@@ -134,9 +135,9 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 			}
 			else
 			{
-				if (player.GetModPlayer<MyPlayer>().AnimeSword)
+				if (player.GetModPlayer<DashSwordPlayer>().dashing)
 				{
-					player.GetModPlayer<MyPlayer>().AnimeSword = false;
+					player.GetModPlayer<DashSwordPlayer>().dashing = false;
 					player.velocity = Vector2.Zero;
 				}
 				primCenter = player.Center;
@@ -325,8 +326,6 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
 		Vector2 oldVel = Vector2.Zero;
 
-		Player player => Main.player[Projectile.owner];
-
 		private bool dashing = false;
 
 		public override void SetStaticDefaults()
@@ -352,11 +351,11 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
 		public override bool PreAI()
 		{
-			if (Main.mouseRight && !dashing && player == Main.LocalPlayer)
+			Player player = Main.player[Projectile.owner];
+			if (Main.mouseRight && !dashing && player.whoAmI == Main.myPlayer)
 			{
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/slashdash") with { PitchVariance = 0.4f, Volume = 0.4f }, player.Center);
 				dashing = true;
-				player.GetModPlayer<MyPlayer>().AnimeSword = true;
 				Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<HeliosDash>(), Projectile.damage * 3, 0, player.whoAmI);
 			}
 
@@ -367,8 +366,8 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 				{
 					player.Center = Projectile.Center;
 					player.velocity = Vector2.Zero;
-					player.GetModPlayer<MyPlayer>().AnimeSword = false;
 				}
+				else player.GetModPlayer<DashSwordPlayer>().dashing = true;
 			}
 
 			if (!paused && Projectile.velocity.Length() <= 3 && !pausedBefore)
@@ -409,8 +408,6 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
 	public class HeliosDash : ModProjectile
 	{
-		private Player player => Main.player[Projectile.owner];
-
 		public override void SetStaticDefaults() => DisplayName.SetDefault("Helios");
 
 		public override void SetDefaults()
@@ -427,18 +424,16 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
 		public override void AI()
 		{
+			Player player = Main.player[Projectile.owner];
 			Projectile.Center = player.Center;
 
-			if (!player.GetModPlayer<MyPlayer>().AnimeSword)
+			if (!player.GetModPlayer<DashSwordPlayer>().dashing)
 				Projectile.active = false;
 			else
 			{
 				for (int i = 0; i < 3; i++)
-				{
-					ImpactLine line = new ImpactLine(Projectile.Center + Main.rand.NextVector2Circular(90, 90), Vector2.Normalize(player.velocity) * 0.5f, Color.Lerp(Color.Orange, Color.OrangeRed, Main.rand.NextFloat()), new Vector2(0.25f, Main.rand.NextFloat(0.5f, 1.5f)) * 5, 60);
-					line.TimeActive = 30;
-					ParticleHandler.SpawnParticle(line);
-				}
+					ParticleHandler.SpawnParticle(new ImpactLine(Projectile.Center + Main.rand.NextVector2Circular(90, 90), Vector2.Normalize(player.velocity) * 0.5f, Color.Lerp(Color.Orange, Color.OrangeRed, Main.rand.NextFloat()), new Vector2(0.25f, Main.rand.NextFloat(0.5f, 1.5f)) * 5, 60)
+					{ TimeActive = 30 });
 			}
 		}
 	}
