@@ -407,9 +407,6 @@ namespace SpiritMod
 
 		public override void Load()
 		{
-			//Always keep this call in the first line of Load!
-			LoadReferences();
-
 			QuestBookHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestBookToggle", Microsoft.Xna.Framework.Input.Keys.Q);
 			QuestHUDHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestHUDToggle", Microsoft.Xna.Framework.Input.Keys.V);
 
@@ -762,45 +759,6 @@ namespace SpiritMod
 					_lastViewSize = Main.ViewSize;
 					_lastViewPort = Main.graphics.GraphicsDevice.Viewport;
 				});
-			}
-		}
-
-		/// <summary>
-		/// Finds additional textures attached to things
-		/// Puts the textures in _textures array
-		/// </summary>
-		private void LoadReferences()
-		{
-			foreach (Type type in Code.GetTypes())
-			{
-				if (type.IsAbstract)
-					continue;
-
-				var types = new[]{ typeof(ModItem), typeof(ModNPC), typeof(ModProjectile), typeof(ModDust), typeof(ModTile), typeof(ModWall), typeof(ModBuff), typeof(ModMount) };
-				bool modType = types.Any(x => type.IsSubclassOf(x));
-
-				if (Main.dedServ || !modType)
-					continue;
-
-				FieldInfo _texField = type.GetField("_textures");
-				if (_texField == null || !_texField.IsStatic || _texField.FieldType != typeof(Texture2D[]))
-					continue;
-
-				string path = type.FullName.Replace('.', '/');
-				int texCount = 0;
-
-				while (ModContent.RequestIfExists<Texture2D>(path + "_" + (texCount + 1), out _))
-					texCount++;
-
-				Texture2D[] textures = new Texture2D[texCount + 1];
-
-				if (ModContent.RequestIfExists(path, out Asset<Texture2D> texture, AssetRequestMode.ImmediateLoad))
-					textures[0] = texture.Value;
-
-				for (int i = 1; i <= texCount; i++)
-					textures[i] = ModContent.Request<Texture2D>(path + "_" + i, AssetRequestMode.ImmediateLoad).Value;
-
-				_texField.SetValue(null, textures);
 			}
 		}
 
