@@ -18,8 +18,7 @@ namespace SpiritMod.Items.Glyphs
 		public override void SetDefaults()
 		{
 			Item.height = Item.width = 28;
-			Item.value = Item.sellPrice(0, 2, 0, 0);
-			Item.rare = ItemRarityID.Orange;
+			Item.rare = ItemRarityID.LightPurple;
 			Item.maxStack = 999;
 		}
 

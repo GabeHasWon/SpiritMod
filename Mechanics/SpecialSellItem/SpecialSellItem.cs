@@ -8,13 +8,15 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 {
 	public class SpecialSellItem : GlobalItem
 	{
+		private static bool IsSellItem(Item item) => item.ModItem is ISpecialSellItem sellItem && sellItem.SellAmount() > 0;
+
 		public override void Load() => On.Terraria.Player.SellItem += OnSell;
 
 		public override void Unload() => On.Terraria.Player.SellItem -= OnSell;
 
 		public override void UpdateInventory(Item item, Player player)
 		{
-			if (item.ModItem is ISpecialSellItem && (item.shopCustomPrice != null || item.shopSpecialCurrency != -1))
+			if (IsSellItem(item) && (item.shopCustomPrice != null || item.shopSpecialCurrency != -1))
 			{
 				item.shopCustomPrice = null;
 				item.shopSpecialCurrency = -1;
@@ -23,28 +25,32 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{
-			if (item.ModItem is not ISpecialSellItem)
+			if (!IsSellItem(item))
 				return;
 
 			var priceLine = tooltips.Where(x => x.Name == "Price").FirstOrDefault();
 			if (priceLine is TooltipLine priceTip)
 			{
-				int customPrice = item.shopCustomPrice ?? 1;
-				ModItem currencyItem = ItemLoader.GetItem((item.ModItem as ISpecialSellItem).SellType());
-				string name = ((item.ModItem as ISpecialSellItem).SellName() == string.Empty) ? currencyItem.DisplayName.GetDefault() : (item.ModItem as ISpecialSellItem).SellName();
+				var specialSell = item.ModItem as ISpecialSellItem;
+
+				int customPrice = specialSell.SellAmount();
+				ModItem currencyItem = ItemLoader.GetItem(specialSell.SellType());
+				string name = (specialSell.SellName() == string.Empty) ? currencyItem.DisplayName.GetDefault() : (item.ModItem as ISpecialSellItem).SellName();
 
 				priceLine.Text = $"Sell price: {customPrice} " + name + ((customPrice > 1) ? "s" : string.Empty);
-				priceLine.OverrideColor = (item.ModItem as ISpecialSellItem).SellColor();
+				priceLine.OverrideColor = specialSell.SellColor();
 			}
 		}
 
 		public static bool OnSell(On.Terraria.Player.orig_SellItem orig, Player self, Item item, int stack)
 		{
-			if (item.ModItem is ISpecialSellItem specialSell)
+			if (IsSellItem(item))
 			{
+				var specialSell = item.ModItem as ISpecialSellItem;
+
 				self.QuickSpawnItem(self.GetSource_Misc("SellItem"), specialSell.SellType(), item.stack * specialSell.SellAmount());
 				item.shopSpecialCurrency = specialSell.CurrencyID();
-				item.shopCustomPrice = 1;
+				item.shopCustomPrice = specialSell.SellAmount();
 			}
 			return orig(self, item, stack);
 		}

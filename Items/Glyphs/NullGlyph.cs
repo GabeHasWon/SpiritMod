@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.GlobalClasses.Items;
+using SpiritMod.Mechanics.SpecialSellItem;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
 {
-	public sealed class NullGlyph : GlyphBase
+	public sealed class NullGlyph : GlyphBase, ISpecialSellItem
 	{
 		public override GlyphType Glyph => GlyphType.None;
 		public override Color Color => new() { PackedValue = 0x9f9593 };
@@ -57,5 +57,7 @@ namespace SpiritMod.Items.Glyphs
 			line.OverrideColor = new Color(120, 190, 120);
 			tooltips.Insert(index + 1, line);
 		}
+
+		public int SellAmount() => 0;
 	}
 }

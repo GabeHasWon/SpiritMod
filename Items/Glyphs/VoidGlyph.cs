@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Mechanics.SpecialSellItem;
 using SpiritMod.Projectiles.Glyph;
 using System.Linq;
 using Terraria;
@@ -7,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
 {
-	public class VoidGlyph : GlyphBase
+	public class VoidGlyph : GlyphBase, ISpecialSellItem
 	{
 		public const int CollapseDuration = 300;
 
@@ -19,7 +20,6 @@ namespace SpiritMod.Items.Glyphs
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 28;
-			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.LightPurple;
 			Item.maxStack = 999;
 		}
@@ -45,5 +45,7 @@ namespace SpiritMod.Items.Glyphs
 				Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center, Vector2.Zero, riftType, riftDamage, 0, owner.whoAmI, target.whoAmI);
 			}
 		}
+
+		public int SellAmount() => 2;
 	}
 }
