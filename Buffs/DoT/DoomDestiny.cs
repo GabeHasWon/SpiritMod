@@ -15,14 +15,8 @@ namespace SpiritMod.Buffs.DoT
 			Terraria.ID.BuffID.Sets.LongerExpertDebuff[Type] = true;
 		}
 
-		public override void Update(Player player, ref int buffIndex)
-		{
-			player.GetSpiritPlayer().DoomDestiny = true;
-		}
+		public override void Update(Player player, ref int buffIndex) => player.GetSpiritPlayer().doomDestiny = true;
 
-		public override void Update(NPC npc, ref int buffIndex)
-		{
-			npc.GetGlobalNPC<GNPC>().DoomDestiny = true;
-		}
+		public override void Update(NPC npc, ref int buffIndex) => npc.GetGlobalNPC<GNPC>().doomDestiny = true;
 	}
 }

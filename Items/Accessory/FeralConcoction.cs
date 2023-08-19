@@ -4,7 +4,8 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
-    public class FeralConcoction : ModItem
+	[AutoloadEquip(EquipType.Waist)]
+	public class FeralConcoction : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

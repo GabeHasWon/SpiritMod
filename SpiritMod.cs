@@ -52,6 +52,7 @@ using ReLogic.Content;
 using SpiritMod.Items.Books.UI.MaterialUI;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.NPCs.Town.Oracle;
+using SpiritMod.GlobalClasses.Items;
 
 namespace SpiritMod
 {
@@ -392,7 +393,7 @@ namespace SpiritMod
 			if (glyph < GlyphType.None || glyph >= GlyphType.Count)
 				throw new ArgumentException("Glyph must be in range [" +
 					(int)GlyphType.None + "," + (int)GlyphType.Count + ")");
-			item.GetGlobalItem<Items.GItem>().SetGlyph(item, glyph);
+			item.GetGlobalItem<GlyphGlobalItem>().SetGlyph(item, glyph);
 		}
 
 		private static int GetGlyph(object[] args)
@@ -401,14 +402,11 @@ namespace SpiritMod
 				throw new ArgumentException("Missing argument: Item");
 			if (args[1] is not Item item)
 				throw new ArgumentException("First argument must be of type Item");
-			return (int)item.GetGlobalItem<Items.GItem>().Glyph;
+			return (int)item.GetGlobalItem<GlyphGlobalItem>().Glyph;
 		}
 
 		public override void Load()
 		{
-			//Always keep this call in the first line of Load!
-			LoadReferences();
-
 			QuestBookHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestBookToggle", Microsoft.Xna.Framework.Input.Keys.Q);
 			QuestHUDHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestHUDToggle", Microsoft.Xna.Framework.Input.Keys.V);
 
@@ -527,7 +525,7 @@ namespace SpiritMod
 			Filters.Scene["SpiritMod:WindEffect"] = new Filter((new BlizzardShaderData("FilterBlizzardForeground")).UseColor(0.4f, 0.4f, 0.4f).UseSecondaryColor(0.2f, 0.2f, 0.2f).UseImage("Images/Misc/noise", 0, null).UseOpacity(0.149f).UseImageScale(new Vector2(3f, 0.75f), 0), EffectPriority.High);
 			Filters.Scene["SpiritMod:WindEffect2"] = new Filter((new BlizzardShaderData("FilterBlizzardForeground")).UseColor(0.4f, 0.4f, 0.4f).UseSecondaryColor(0.2f, 0.2f, 0.2f).UseImage("Images/Misc/noise", 0, null).UseOpacity(0.549f).UseImageScale(new Vector2(3f, 0.75f), 0), EffectPriority.High);
 
-			GlyphCurrencyID = CustomCurrencyManager.RegisterCurrency(new Currency(ModContent.ItemType<Glyph>(), 999L));
+			GlyphCurrencyID = CustomCurrencyManager.RegisterCurrency(new GlyphCurrency(ModContent.ItemType<Glyph>(), 999L));
 
 			AutoloadMinionDictionary.AddBuffs(Code);
 
@@ -761,45 +759,6 @@ namespace SpiritMod
 					_lastViewSize = Main.ViewSize;
 					_lastViewPort = Main.graphics.GraphicsDevice.Viewport;
 				});
-			}
-		}
-
-		/// <summary>
-		/// Finds additional textures attached to things
-		/// Puts the textures in _textures array
-		/// </summary>
-		private void LoadReferences()
-		{
-			foreach (Type type in Code.GetTypes())
-			{
-				if (type.IsAbstract)
-					continue;
-
-				var types = new[]{ typeof(ModItem), typeof(ModNPC), typeof(ModProjectile), typeof(ModDust), typeof(ModTile), typeof(ModWall), typeof(ModBuff), typeof(ModMount) };
-				bool modType = types.Any(x => type.IsSubclassOf(x));
-
-				if (Main.dedServ || !modType)
-					continue;
-
-				FieldInfo _texField = type.GetField("_textures");
-				if (_texField == null || !_texField.IsStatic || _texField.FieldType != typeof(Texture2D[]))
-					continue;
-
-				string path = type.FullName.Replace('.', '/');
-				int texCount = 0;
-
-				while (ModContent.RequestIfExists<Texture2D>(path + "_" + (texCount + 1), out _))
-					texCount++;
-
-				Texture2D[] textures = new Texture2D[texCount + 1];
-
-				if (ModContent.RequestIfExists(path, out Asset<Texture2D> texture, AssetRequestMode.ImmediateLoad))
-					textures[0] = texture.Value;
-
-				for (int i = 1; i <= texCount; i++)
-					textures[i] = ModContent.Request<Texture2D>(path + "_" + i, AssetRequestMode.ImmediateLoad).Value;
-
-				_texField.SetValue(null, textures);
 			}
 		}
 

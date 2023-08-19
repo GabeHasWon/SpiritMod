@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.SeaSnailVenom
 {
+	[AutoloadEquip(EquipType.Back)]
 	public class Sea_Snail_Poison : ModItem
 	{
 		public override void SetStaticDefaults()

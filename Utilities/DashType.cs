@@ -3,8 +3,7 @@
 	public enum DashType : byte
 	{
 		None,
-		Phase,
-		Firewall,
+		Drakomire,
 		Shinigami,
 		Chitin,
 		AuroraStag

@@ -99,7 +99,7 @@ namespace SpiritMod.NPCs.Town
 			AddItem(ref shop, ref nextSlot, ModContent.ItemType<NullGlyph>());
 
 			CustomWare(shop.item[nextSlot++], ModContent.ItemType<FrostGlyph>());
-			CustomWare(shop.item[nextSlot++], ModContent.ItemType<EfficiencyGlyph>());
+			CustomWare(shop.item[nextSlot++], ModContent.ItemType<RageGlyph>());
 
 			if (NPC.downedBoss1)
 			{

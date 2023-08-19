@@ -15,9 +15,8 @@ namespace SpiritMod.Buffs.Potion
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			MyPlayer modPlayer = player.GetSpiritPlayer();
 			player.endurance += 0.05f;
-			modPlayer.soulPotion = true;
+			player.GetSpiritPlayer().soulPotion = true;
 		}
 	}
 }

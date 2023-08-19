@@ -130,7 +130,6 @@ namespace SpiritMod.NPCs.Town
 
 			AddItem(ref shop, ref nextSlot, ItemType<SkeletronHand>(), check: NPC.downedBoss3);
 			AddItem(ref shop, ref nextSlot, ItemType<PlagueVial>(), check: Main.hardMode);
-			AddItem(ref shop, ref nextSlot, ItemType<ShurikenLauncher>());
 			AddItem(ref shop, ref nextSlot, ItemType<SwiftRune>());
 			AddItem(ref shop, ref nextSlot, ItemType<AssassinMagazine>());
 			AddItem(ref shop, ref nextSlot, ItemType<TargetCan>());

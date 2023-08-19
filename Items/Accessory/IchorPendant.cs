@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
+	[AutoloadEquip(EquipType.Neck)]
 	public class IchorPendant : SpiritAccessory
 	{
 		public override string SetDisplayName => "Ichor Pendant";

@@ -1,59 +1,43 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 
 namespace SpiritMod.Items.Glyphs
 {
-	public class BeeGlyph : GlyphBase, IGlowing
+	public class BeeGlyph : GlyphBase
 	{
-		public static Texture2D[] _textures;
-
-		Texture2D IGlowing.Glowmask(out float bias)
-		{
-			bias = GLOW_BIAS;
-			return _textures[1];
-		}
-
 		public override GlyphType Glyph => GlyphType.Bee;
-		public override Texture2D Overlay => _textures[2];
-		public override Color Color => new Color { PackedValue = 0x5ca6eb };
+		public override Color Color => new(255, 184, 31);
 		public override string Effect => "Honeyed";
 		public override string Addendum =>
-			"Drenches the user in honey\n" +
-			"Attacks will release bees";
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Bee Glyph");
-			Tooltip.SetDefault(
-				"Drenches the user in honey\n" +
-				"Attacks will release bees");
-		}
+			"Grants honeyed when an enemy is slain\n" +
+			"Attacks periodically release bees";
 
 		public override void SetDefaults()
 		{
-			Item.width = 28;
-			Item.height = 28;
-			Item.value = Item.sellPrice(0, 2, 0, 0);
+			Item.width = Item.height = 28;
 			Item.rare = ItemRarityID.LightRed;
 			Item.maxStack = 999;
 		}
 
-		public static void ReleaseBees(Player owner, NPC target, int damage)
+		public static void ReleaseBees(Player owner, Entity target, int damage)
 		{
-			if (owner.whoAmI != Main.myPlayer || !target.CanLeech())
+			if ((owner.whoAmI != Main.myPlayer) || (target is NPC npc && !npc.CanLeech()) || (damage <= 0))
 				return;
-			damage = owner.beeDamage((int)(damage * .4f));
-			if (damage < 1)
-				return;
-			int count = Main.rand.Next(1, 2);
-			for (int i = 0; i < count; i++) {
-				Vector2 velocity = target.velocity;
-				velocity.X += (float)Main.rand.Next(-35, 36) * 0.02f;
-				velocity.Y += (float)Main.rand.Next(-35, 36) * 0.02f;
-				Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center, velocity, owner.beeType(), damage, owner.beeKB(0f), Main.myPlayer);
+
+			int count = Main.rand.Next(1, 3);
+			for (int i = 0; i < count; i++)
+			{
+				Vector2 velocity = target.velocity.RotatedByRandom(1f);
+				Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center + velocity, velocity, owner.beeType(), owner.beeDamage(damage), 0, owner.whoAmI);
 			}
+		}
+
+		public static void HoneyEffect(Player owner)
+		{
+			owner.AddBuff(BuffID.Honey, 300);
+			for (int i = 0; i < 12; i++)
+				Dust.NewDustDirect(owner.position, owner.width, owner.height, DustID.Honey, 0, 1, 100, default, Main.rand.NextFloat(1f, 2f)).noGravity = true;
 		}
 	}
 }

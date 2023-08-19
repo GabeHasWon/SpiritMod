@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
+	[AutoloadEquip(EquipType.Back)]
 	public class SwiftRune : ModItem
 	{
 		public override void SetStaticDefaults()

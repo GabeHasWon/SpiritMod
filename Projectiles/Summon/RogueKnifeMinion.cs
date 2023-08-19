@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Accessory;
-using SpiritMod.Items.Weapon.Swung.AnimeSword;
+using SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword;
 using SpiritMod.Projectiles.BaseProj;
 using SpiritMod.Utilities;
 using System;

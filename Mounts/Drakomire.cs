@@ -10,7 +10,6 @@ namespace SpiritMod.Mounts
 {
 	public class Drakomire : ModMount
 	{
-
 		public override void SetStaticDefaults()
 		{
 			MountData.buff = ModContent.BuffType<DrakomireMountBuff>();
@@ -72,61 +71,24 @@ namespace SpiritMod.Mounts
 		{
 			player.statDefense += 40;
 			player.noKnockback = true;
-			if (player.dashDelay > 0) {
-				player.dashDelay--;
-			}
-			else {
-				int num4 = 0;
-				bool flag = false;
-				if (player.dashTime > 0) {
-					player.dashTime--;
-				}
-				else if (player.dashTime < 0) {
-					player.dashTime++;
-				}
-				if (player.controlRight && player.releaseRight) {
-					if (player.dashTime > 0) {
-						num4 = 1;
-						flag = true;
-						player.dashTime = 0;
-					}
-					else {
-						player.dashTime = 15;
-					}
-				}
-				else if (player.controlLeft && player.releaseLeft) {
-					if (player.dashTime < 0) {
-						num4 = -1;
-						flag = true;
-						player.dashTime = 0;
-					}
-					else {
-						player.dashTime = -15;
-					}
-				}
-				if (flag) {
-					player.velocity.X = 16.9f * (float)num4;
-					Point point = Utils.ToTileCoordinates(player.Center + new Vector2((float)(num4 * player.width / 2 + 2), player.gravDir * -(float)player.height / 2f + player.gravDir * 2f));
-					Point point2 = Utils.ToTileCoordinates(player.Center + new Vector2((float)(num4 * player.width / 2 + 2), 0f));
-					if (WorldGen.SolidOrSlopedTile(point.X, point.Y) || WorldGen.SolidOrSlopedTile(point2.X, point2.Y)) {
-						player.velocity.X = player.velocity.X / 2f;
-					}
-					player.dashDelay = 600;
-				}
-			}
-			if (player.velocity.X != 0f && player.velocity.Y == 0f) {
+
+			if (player.velocity.X != 0f && player.velocity.Y == 0f)
+			{
 				player.mount._abilityCooldown -= (int)Math.Abs(player.velocity.X);
-				if (player.mount._abilityCooldown <= -15) {
+				if (player.mount._abilityCooldown <= -15)
+				{
 					Vector2 vector = player.Center + new Vector2((26 * -(float)player.direction), 26f * player.gravDir);
 					Projectile.NewProjectile(player.GetSource_Misc("Mount"), vector.X, vector.Y, 0f, 0f, ModContent.ProjectileType<DrakomireFlame>(), player.statDefense / 2, 0f, player.whoAmI, 0f, 0f);
 					player.mount._abilityCooldown = 0;
 				}
 			}
-			if (Main.rand.NextBool(10)) {
+
+			if (Main.rand.NextBool(10))
+			{
 				Vector2 vector2 = player.Center + new Vector2((-48 * player.direction), -6f * player.gravDir);
-				if (player.direction == -1) {
+				if (player.direction == -1)
 					vector2.X -= 20f;
-				}
+
 				Dust.NewDust(vector2, 16, 16, DustID.Torch, 0f, 0f, 0, default, 1f);
 			}
 		}

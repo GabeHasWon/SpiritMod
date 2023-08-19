@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.RabbitFoot
 {
+	[AutoloadEquip(EquipType.Waist)]
 	public class Rabbit_Foot : ModItem
 	{
 		public override void SetStaticDefaults()

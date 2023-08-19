@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.Items.Halloween;
-using SpiritMod.Projectiles.Thrown.Charge;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

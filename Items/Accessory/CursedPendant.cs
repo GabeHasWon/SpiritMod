@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory
 {
+	[AutoloadEquip(EquipType.Neck)]
 	public class CursedPendant : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -23,7 +24,7 @@ namespace SpiritMod.Items.Accessory
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetSpiritPlayer().CursedPendant = true;
+			player.GetSpiritPlayer().cursedPendant = true;
 			player.GetDamage(DamageClass.Melee) *= 1.06f;
 		}
 	}

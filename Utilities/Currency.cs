@@ -5,11 +5,9 @@ using Terraria.Localization;
 
 namespace SpiritMod.Utilities
 {
-	public class Currency : CustomCurrencySingleCoin
+	public class GlyphCurrency : CustomCurrencySingleCoin
 	{
-		public Currency(int coinItemID, long currencyCap) : base(coinItemID, currencyCap)
-		{
-		}
+		public GlyphCurrency(int coinItemID, long currencyCap) : base(coinItemID, currencyCap) { }
 
 		public override void GetPriceText(string[] lines, ref int currentLine, int price)
 		{

@@ -15,8 +15,7 @@ namespace SpiritMod.Buffs.Potion
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			MyPlayer modPlayer = player.GetSpiritPlayer();
-			modPlayer.runeBuff = true;
+			player.GetSpiritPlayer().runeBuff = true;
 			player.GetDamage(DamageClass.Magic) += 0.05f;
 		}
 	}

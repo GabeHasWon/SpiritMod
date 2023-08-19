@@ -9,13 +9,12 @@
 		Blaze = 4,
 		Bee = 5,
 		Phase = 6,
-		Daze = 7,
+		Rage = 7,
 		Veil = 8,
 		Void = 9,
 		Radiant = 10,
 		Storm = 11,
-		Haunt = 12,
-		Efficiency = 13,
+		Chaos = 12,
 		Count //Make sure this is always the last entry
 	}
 }
