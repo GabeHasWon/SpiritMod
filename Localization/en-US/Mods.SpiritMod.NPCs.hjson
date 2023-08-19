@@ -1,0 +1,254 @@
+﻿CopperChestBottom.DisplayName: Copper Chest
+GoldChestBottom.DisplayName: Gold Chest
+PlatinumChestBottom.DisplayName: Platinum Chest
+SilverChestBottom.DisplayName: Silver Chest
+StardustBombNPC.DisplayName: Supernova
+Alien.DisplayName: Alien
+BoneHarpy.DisplayName: Ancient Apostle
+AntlionAssassin.DisplayName: Antlion Assassin
+CrimsonTrapper.DisplayName: Arterial Grasper
+AsteroidDebris.DisplayName: Debris
+GoldDebris.DisplayName: Debris
+AstralAdventurer.DisplayName: Astral Adventurer
+AstralAmalgam.DisplayName: Astral Amalgam
+SpaceShield.DisplayName: Astral Buffer
+AuroraStag.DisplayName: Aurora Stag
+AutomataCreeper.DisplayName: Arachmaton
+AutomataSpinner.DisplayName: Trochmaton
+Beholder.DisplayName: Beholder
+BlazingSkull.DisplayName: Wrathful Soul
+BlizzardBandit.DisplayName: Blizzard Bandit
+BlizzardNimbus.DisplayName: Blizzard Nimbus
+Spewer.DisplayName: Bloater
+SwollenFish.DisplayName: Bloatfish
+BloodGazerEye.DisplayName: Blood Gazer
+Bloomshroom.DisplayName: Bloomshroom
+Glitterfly.DisplayName: Glitterfly
+GlowToad.DisplayName: Glow Toad
+Lumantis.DisplayName: Lumantis
+LunarSlime.DisplayName: Stargazer Slime
+MadHatter.DisplayName: Mad Hatter
+AncientFlyer.DisplayName: Ancient Avian
+Atlas.DisplayName: Atlas
+AtlasArmLeft.DisplayName: Atlas Arm
+AtlasArmRight.DisplayName: Atlas Arm
+CobbledEye.DisplayName: Cobbled Eye
+CobbledEye2.DisplayName: Cobbled Eye
+CobbledEye3.DisplayName: Cobbled Eye
+Dusking.DisplayName: Dusking
+ShadowBall.DisplayName: Penumbral Sphere
+Shadowflamer.DisplayName: Antumbral Skull
+FrostSaucer.DisplayName: Snow Monger
+Infernon.DisplayName: Infernon
+InfernonSkull.DisplayName: Infernus Skull
+InfernonSkullMini.DisplayName: Infernon Skull
+InfernoSkull.DisplayName: Infernus Skull
+MoonWizard.DisplayName: Moon Jelly Wizard
+AzureGemProj.DisplayName: Azure Gem
+MysticMJWClone.DisplayName: Mystic Clone
+OccultistBoss.DisplayName: Occultist
+ExplodingSpore.DisplayName: Exploding Spore
+ReachBoss.DisplayName: Vinewrath Bane
+ReachBoss1.DisplayName: Vinewrath Husk
+Scarab.DisplayName: Scarab
+Scarab_Wall.DisplayName: Scarab
+Scarabeus.DisplayName: Scarabeus
+SwarmScarab.DisplayName: Scarab
+ArcadeProbe.DisplayName: Starfarer
+LaserBase.DisplayName: Laser Launcher
+SteamRaiderBody.DisplayName: Starplate Voyager
+SteamRaiderBody2.DisplayName: Starplate Voyager
+SteamRaiderHead.DisplayName: Starplate Voyager
+SteamRaiderHeadDeath.DisplayName: Starplate Voyager
+SteamRaiderTail.DisplayName: Starplate Voyager
+SuicideLaser.DisplayName: Laser Bomber
+TailProbe.DisplayName: Starfarer
+BottomFeeder.DisplayName: Bottom Feeder
+Boulder_Termagant.DisplayName: Boulder Behemoth
+CavernBandit.DisplayName: Cavern Bandit
+CavernCrawler.DisplayName: Cavern Crawler
+ChainedSinner.DisplayName: Furnace Maw
+Chest_Zombie.DisplayName: Chest Zombie
+GraniteCore.DisplayName: Crackling Core
+BlueAlgae1.DisplayName: Blue Algae
+BlueAlgae2.DisplayName: Blue Algae
+BlueAlgae3.DisplayName: Blue Algae
+GreenAlgae1.DisplayName: Bioluminescent Algae
+GreenAlgae2.DisplayName: Bioluminescent Algae
+GreenAlgae3.DisplayName: Bioluminescent Algae
+PurpleAlgae1.DisplayName: Bioluminescent Algae
+PurpleAlgae2.DisplayName: Bioluminescent Algae
+PurpleAlgae3.DisplayName: Bioluminescent Algae
+AtlanticCod.DisplayName: Atlantic Cod
+Bladetongue.DisplayName: Bladetongue
+Blossmoon.DisplayName: Blossmoon
+Cavefish.DisplayName: Armored Cavefish
+Cleft.DisplayName: Cleft Hopper
+CrismonTigerfish.DisplayName: Crimson Tigerfish
+CrystalSerpent.DisplayName: Crystal Serpent
+CyberflyBlue.DisplayName: Cyberfly
+CyberflyPink.DisplayName: Cyberfly
+Damselfish.DisplayName: Damselfish
+DreamstrideWisp.DisplayName: Dreamstride Wisp
+Ebonkoi.DisplayName: Ebonkoi
+FrostMinnow.DisplayName: Frost Minnow
+GaleSnail.DisplayName: Gale Snail
+GildJelly.DisplayName: Gilded Jelly
+GoldenCarp.DisplayName: Golden Carp
+GoldLumoth.DisplayName: Gold Lumoth
+Grouper.DisplayName: Grouper
+Gulper.DisplayName: Gulper
+HailSnail.DisplayName: Hail Snail
+Hemoglob.DisplayName: Hemoglob
+Hemoglorb.DisplayName: Hemoglorb
+Lardfish.DisplayName: Variegated Lardfish
+Lumoth.DisplayName: Lumoth
+Luvdisc.DisplayName: Ardorfish
+Maggotfly.DisplayName: Maggotfly
+NeonTetra.DisplayName: Neon Tetra
+Crinoid.DisplayName: Crinoid
+Floater.DisplayName: Luminous Floater
+Floater1.DisplayName: Luminous Floater
+Pelican.DisplayName: Pelican
+ReaverShark.DisplayName: Reaver Shark
+SandPiper.DisplayName: Sand Piper
+Prismite.DisplayName: Prismite
+PurpleClubberfish.DisplayName: Purple Clubberfish
+RedSnapper.DisplayName: Red Snapper
+Rockfish.DisplayName: Rockfish
+Rotslug.DisplayName: Rotslug
+SawtoothShark.DisplayName: Sawtooth Shark
+SpecularFish.DisplayName: Specular Fish
+Swordfish.DisplayName: Swordfish
+TinyCrab.DisplayName: Palecrab
+Toxikarp.DisplayName: Toxikarp
+TubeWorm.DisplayName: Tubeworm
+Vibeshroom.DisplayName: Quivershroom
+CrystalDrifter.DisplayName: Crystal Drifter
+Cystal.DisplayName: Cystal
+Cystal_Shield.DisplayName: Cystal Shield
+DarkfeatherMage.DisplayName: Darkfeather Mage
+Dead_Scientist.DisplayName: Undead Scientist
+DeadArcher.DisplayName: Deadeye Marksman
+DesertBandit.DisplayName: Forsaken Bandit
+DiseasedSlime.DisplayName: Noxious Slime
+DungeonCubeBlue.DisplayName: Blue Dungeon Cube
+DungeonCubeGreen.DisplayName: Green Dungeon Cube
+DungeonCubePink.DisplayName: Pink Dungeon Cube
+ElectricEel.DisplayName: Electric Eel
+Enchanted_Armor.DisplayName: Draugr
+ExplosiveBarrel.DisplayName: Explosive Barrel
+FallenAngel.DisplayName: Fallen Angel
+Falling_Asteroid.DisplayName: Falling Asteroid
+Vilemoth.DisplayName: Festerfly
+VileWasp.DisplayName: Pesterfly
+FleshHound.DisplayName: Flesh Hound
+WintrySoul.DisplayName: Icebound Soul
+Illusionist.DisplayName: Ghast
+IllusionistSpectre.DisplayName: Ghast's Spectre
+GladiatorSpirit.DisplayName: Gladiator Spirit
+GloopGloop.DisplayName: Gloop
+Goblin_Grenadier.DisplayName: Goblin Grenadier
+GraniteSentry.DisplayName: G-TEK Turret
+GraniteSlime.DisplayName: Granite Slime
+HauntedTome.DisplayName: Haunted Tome
+HellEater.DisplayName: Gluttonous Devourer
+Hemophora.DisplayName: Hemophora
+Hookbat.DisplayName: Hookbat
+Horned_Crustacean.DisplayName: Luminous Prowler
+Hornetfish.DisplayName: Hornetfish
+Hydra.DisplayName: Lernean Hydra
+HydraHead.DisplayName: Lernean Hydra
+LostMime.DisplayName: Lost Mime
+Mangrove_Defender.DisplayName: Mangrove Defender
+Masticator.DisplayName: Masticator
+Mecromancer.DisplayName: Mechromancer
+GoldCrateMimic.DisplayName: Golden Crate Mimic
+IronCrateMimic.DisplayName: Iron Crate Mimic
+WoodCrateMimic.DisplayName: Wooden Crate Mimic
+Molten_Core.DisplayName: Molten Core
+DistressJelly.DisplayName: Distressed Jelly
+DreamlightJelly.DisplayName: Dreamlight Jelly
+ExplodingMoonjelly.DisplayName: Moonlight Rupturer
+MoonjellyGiant.DisplayName: Tethervolt Jelly
+MoonlightPreserver.DisplayName: Moonlight Preserver
+TinyLunazoa.DisplayName: Tiny Lunazoa
+MycelialBotanist.DisplayName: Mycelial Botanist
+OceanSlime.DisplayName: Coconut Slime
+Mineroid.DisplayName: Orbitite
+SamuraiHostile.DisplayName: Phantom Samurai
+SamuraiPassive.DisplayName: Phantom Samurai
+PagodaGhostHostile.DisplayName: Disturbed Yuurei
+PagodaGhostPassive.DisplayName: Yuurei
+Phantom.DisplayName: Phantom
+PirateLobber.DisplayName: Pirate Lobber
+PlagueDoctor.DisplayName: Dark Alchemist
+Pokey_Body.DisplayName: Stactus
+Teratoma.DisplayName: Putroma
+BlossomHound.DisplayName: Blossom Hound
+Blubby.DisplayName: Blubby
+BriarInchworm.DisplayName: Briar Inchworm
+Briarmoth.DisplayName: Briarmoth
+ForestWraith.DisplayName: Glade Wraith
+Noxophyll.DisplayName: Noxophyll
+Reachman.DisplayName: Feral Shambler
+ReachObserver.DisplayName: Wildwood Watcher
+ReachSlime.DisplayName: Briarthorn Slime
+ThornStalker.DisplayName: Thorn Stalker
+ScreechOwl.DisplayName: Screech Owl
+Sea_Mandrake.DisplayName: Sea Mandrake
+DeepspaceHopper.DisplayName: Shockhopper
+Skeleton_Brute.DisplayName: Skeleton Brute
+Snaptrapper.DisplayName: Snaptrapper
+AncientDemon.DisplayName: Ancient Specter
+HauntedBook.DisplayName: Ancient Tome
+NetherBane.DisplayName: Netherbane
+SeerBat.DisplayName: Spirit Bat
+SoulCrusher.DisplayName: Soul Crusher
+SoulOrb.DisplayName: Soul Orb
+SpiritGhoul.DisplayName: Shadow Ghoul
+SpiritMummy.DisplayName: Dusk Mummy
+SpiritSkull.DisplayName: Spirit Skull
+SpiritVulture.DisplayName: Spirit Floater
+UnstableWisp.DisplayName: Unstable Wisp
+WanderingSoul.DisplayName: Wandering Soul
+SporeWheezer.DisplayName: Spore Wheezer
+CogTrapperBody.DisplayName: Stardancer
+CogTrapperHead.DisplayName: Stardancer
+CogTrapperTail.DisplayName: Stardancer
+LargeComet.DisplayName: Large Starjinx Comet
+MediumComet.DisplayName: Medium Starjinx Comet
+SmallComet.DisplayName: Small Starjinx Comet
+StymphalianBat.DisplayName: Stymphalian Bat
+Crocomount.DisplayName: Crocosaur
+KakamoraParachuter.DisplayName: Kakamora Windglider
+KakamoraRider.DisplayName: Kakamoran Rider
+KakamoraRunner.DisplayName: Kakamora
+KakamoraShaman.DisplayName: Kakamora Shaman
+KakamoraShielder.DisplayName: Kakamora Shielder
+KakamoraShielderRare.DisplayName: Kakamora Guard
+LargeCrustecean.DisplayName: Bubble Brute
+MangoJelly.DisplayName: Mang-O War
+Rylheian.DisplayName: R'lyehian
+SpearKakamora.DisplayName: Kakamora Lobber
+SwordKakamora.DisplayName: Kakamora Bruiser
+Adventurer.DisplayName: Adventurer
+BoundAdventurer.DisplayName: Ensnared Adventurer
+BoundGambler.DisplayName: Bound Gambler
+BoundRogue.DisplayName: Bound Bandit
+Gambler.DisplayName: Gambler
+Ghost.DisplayName: Ghost
+Oracle.DisplayName: Oracle
+Rogue.DisplayName: Bandit
+RuneWizard.DisplayName: Enchanter
+Undead_Warlock.DisplayName: Undead Warlock
+Valkyrie.DisplayName: Valkyrie
+Vulture_Matriarch.DisplayName: Vulture Matriarch
+Wheezer.DisplayName: Wheezer
+WinterbornMelee.DisplayName: Winterborn
+IceBoltNPC.DisplayName: Ice Bolt
+WinterbornMagic.DisplayName: Winterborn Herald
+DiverZombie.DisplayName: Zombie
+KelpZombie.DisplayName: Zombie
+SailorZombie.DisplayName: Zombie
+TridentZombie.DisplayName: Zombie

@@ -1,0 +1,438 @@
+﻿SpiritPylon.MapEntry: Spirit Pylon
+AsteroidPylon.MapEntry: Asteroid Pylon
+BriarPylon.MapEntry: Briar Pylon
+KoiTotem_Tile.MapEntry: Koi Totem
+OpalFrog_Tile.MapEntry: Opal Frog
+Trophy8Tile.MapEntry: Atlas Trophy
+Trophy2Tile.MapEntry: Ancient Avian Trophy
+Trophy6Tile.MapEntry: Dusking Trophy
+Trophy4Tile.MapEntry: Infernon Trophy
+MJWTrophyTile.MapEntry: Moon Jelly Wizard Trophy
+Trophy1Tile.MapEntry: Scarabeus Trophy
+Glowstone.MapEntry: Astralite
+Trophy3Tile.MapEntry: Starplate Voyager Trophy
+Trophy5Tile.MapEntry: Vinewrath Bane Trophy
+BismiteCrystalOre.MapEntry: Bismite Crystal
+CoilEnergizerTile.MapEntry: Coiled Energizer
+CryoliteBarTile.MapEntry: Bar
+CryoliteOreTile.MapEntry: Cryolite Ore
+Driftwood1Tile.MapEntry: Driftwood
+Driftwood2Tile.MapEntry: Driftwood
+Driftwood3Tile.MapEntry: Driftwood
+FishLureTile.MapEntry: Lure
+SunkenTreasureTile.MapEntry: Sunken Treasure
+FloranBarTile.MapEntry: Bar
+FloranOreTile.MapEntry: Floran Ore
+GraniteOre.MapEntry: Enchanted Granite Chunk
+MarbleOre.MapEntry: Ancient Marble Chunk
+OlympiumToken_Tile.MapEntry: Olympium Token
+Trophy10Tile.MapEntry: R'lyehian Trophy
+SpiritBarTile.MapEntry: Bar
+SpiritOreTile.MapEntry: Spirit Ore
+Fathomless_Chest.MapEntry: Fathomless Vase
+AvianEgg.MapEntry: Avian Egg
+Blaststone_Grave.MapEntry: Gravestone
+SkullGrave.MapEntry: Gravestone
+Canvas_Tile.MapEntry: Canvas
+Coral1x2.MapEntry: Coral
+Coral2x2.MapEntry: Coral
+Coral3x3.MapEntry: Coral
+CrystalFlower.MapEntry: Crystal Flower
+Cloudstalk.MapEntry: Cloudstalk
+GoblinStandardTile.MapEntry: Goblin Battle Standard
+GoblinStatueTile.MapEntry: Goblin Statue
+Spike1Tile.MapEntry: Granite Formation
+Spike2Tile.MapEntry: Granite Formation
+Spike3Tile.MapEntry: Granite Formation
+Spike4Tile.MapEntry: Granite Formation
+Spike5Tile.MapEntry: Granite Formation
+Spike6Tile.MapEntry: Granite Formation
+Hourglass.MapEntry: Hourglass
+IceBatHostile.MapEntry: Frozen Ice Bats
+IceFlinxHostile.MapEntry: Frozen Snow Flinx
+IceVikingHostile.MapEntry: Frozen Undead Viking
+IceWheezerHostile.MapEntry: Frozen Wheezer
+IceBatDecor.MapEntry: Ice Bat Sculpture
+IceBatPassive.MapEntry: Frozen Ice Bats
+IceDeityDecor.MapEntry: Ice Deity Sculpture
+IceFlinxDecor.MapEntry: Frozen Snow Flinx Sculpture
+IceFlinxPassive.MapEntry: Frozen Snow Flinx
+IceVikingDecor.MapEntry: Undead Viking Sculpture
+IceVikingPassive.MapEntry: Frozen Undead Viking
+IceWheezerDecor.MapEntry: Frozen Wheezer Sculpture
+IceWheezerPassive.MapEntry: Frozen Wheezer
+WinterbornDecor.MapEntry: Winterborn Sculpture
+Kelp1x2.MapEntry: Kelp
+Kelp2x2.MapEntry: Kelp
+Kelp2x3.MapEntry: Kelp
+Breakable1x2Vent.MapEntry: Hydrothermal Vent
+Breakable1x3Vent.MapEntry: Hydrothermal Vent
+HydrothermalVent1x2.MapEntry: Hydrothermal Vent
+HydrothermalVent1x3.MapEntry: Hydrothermal Vent
+
+OceanPirateChest: {
+	MapEntry: Pirate Chest
+	ContainerName: Pirate Chest
+}
+
+OceanPirateChest_Locked.MapEntry: Locked Pirate Chest
+Pillar1Tile.MapEntry: Pillar
+Pillar2Tile.MapEntry: Pillar
+Pillar3Tile.MapEntry: Pillar
+Pillar4Tile.MapEntry: Pillar
+Pillar5Tile.MapEntry: Pillar
+Pillar6Tile.MapEntry: Pillar
+Pillar7Tile.MapEntry: Pillar
+Pillar8Tile.MapEntry: Pillar
+PottedSakuraTile.MapEntry: Sakura Bonsai
+PottedWillowTile.MapEntry: Yellow Willow Bonsai
+PrimePrint.MapEntry: Blueprint
+ProbePrint.MapEntry: Blueprint
+ReachGrass1.MapEntry: Spiky Grass
+ScarabIdol.MapEntry: Scarab Idol
+SepulchrePot1.MapEntry: Pot
+SepulchrePot2.MapEntry: Pot
+SepulchrePotDecor1.MapEntry: Pot
+SepulchrePotDecor2.MapEntry: Pot
+Shrine1_Tile.MapEntry: Ancient Shrine
+Shrine2_Tile.MapEntry: Ancient Shrine
+Shrine3_Tile.MapEntry: Ancient Shrine
+SkullPile1.MapEntry: Bone Pile
+SkullPile2.MapEntry: Bone Pile
+SkullStick.MapEntry: Skull on a Stick
+SkullStick3.MapEntry: Skull Stick
+SkullStick3Flip.MapEntry: Skull Stick
+SkullStickFlip.MapEntry: Skull Stick
+BlueShardBig.MapEntry: Giant Crystal
+GreenShardBig.MapEntry: Giant Crystal
+PurpleShardBig.MapEntry: Giant Crystal
+StarBeacon.MapEntry: Astralite Beacon
+TwinsPrint.MapEntry: Blueprint
+BannerTile.MapEntry: Banner
+Black_Stone.MapEntry: Blackrock
+BlastStone.MapEntry: Bedrock
+ReachSapling.MapEntry: Sapling
+SepulchreBrick.MapEntry: Sepulchre Roofing
+SpiritSapling.MapEntry: Sapling
+SpookySapling.MapEntry: Sapling
+StargrassSapling.MapEntry: Sapling
+BloodBlossom.MapEntry: Blood Blossom
+CrimsonPustuleTile.MapEntry: Crimson Pustule
+AcidACTile.MapEntry: Broken Air Conditioner
+AcidBarrelTile.MapEntry: Corrosive Barrel
+AcidBathtubTile.MapEntry: Corrosive Bathtub
+AcidBedTile.MapEntry: Corrosive Bed
+AcidBenchTile.MapEntry: Corrosive Work Bench
+AcidBookcaseTile.MapEntry: Corrosive Bookcase
+AcidCandelabraTile.MapEntry: Corrosive Candelabra
+AcidCandleTile.MapEntry: Corrosive Candle
+AcidChairTile.MapEntry: Corrosive Chair
+AcidChandelierTile.MapEntry: Corrosive Chandelier
+
+AcidChestTile: {
+	MapEntry: Corrosive Chest
+	ContainerName: Corrosive Chest
+}
+
+AcidClockTile.MapEntry: Corrosive Clock
+AcidDoorClosed.MapEntry: Corrosive Door
+AcidDoorOpen.MapEntry: Corrosive Door
+
+AcidDresserTile: {
+	MapEntry: Corrosive Dresser
+	ContainerName: Corrosive Dresser
+}
+
+AcidFanTile.MapEntry: Rusty Fan
+AcidKegTile.MapEntry: Corrosive Keg
+AcidLampTile.MapEntry: Corrosive Lamp
+AcidLanternTile.MapEntry: Corrosive Lantern
+AcidPianoTile.MapEntry: Corrosive Piano
+AcidSinkTile.MapEntry: Corrosive Sink
+AcidSofaTile.MapEntry: Corrosive Sofa
+AcidTableTile.MapEntry: Corrosive Table
+AdventurerMapTile.MapEntry: Map
+ArcadeMachine.MapEntry: Arcade Machine
+
+BambooBarrel: {
+	MapEntry: Stripped Bamboo Barrel
+	ContainerName: Stripped Bamboo Barrel
+}
+
+BambooBench.MapEntry: Stripped Bamboo Bench
+BambooBirdCage.MapEntry: Stripped Bamboo Bird Cage
+BambooPot.MapEntry: Stripped Bamboo Pot
+BismiteChair.MapEntry: Bismite Chair
+BismiteTable.MapEntry: Bismite Table
+BoneAltar.MapEntry: Bone Altar
+BriarCrate_Tile.MapEntry: Crate
+Blossom_Tile.MapEntry: Critter Cage
+Briarmoth_Tile.MapEntry: Critter Cage
+BrownCrinoid_Tile.MapEntry: Critter Cage
+Cleft_Tile.MapEntry: Critter Cage
+Gulper_Tile.MapEntry: Critter Cage
+Luvdisc_Tile.MapEntry: Critter Cage
+PaleCrinoid_Tile.MapEntry: Critter Cage
+RedCrinoid_Tile.MapEntry: Critter Cage
+Tubeworm_Tile.MapEntry: Critter Bowl
+VibeshroomJar_Tile.MapEntry: Critter Cage
+TheCouch.MapEntry: The Couch
+DurasilkSheafTile.MapEntry: Durasilk Sheaf
+DuskingPaintingTile.MapEntry: Painting
+FestivalLanternTile.MapEntry: Festival Lantern
+FishCrate_Tile.MapEntry: Crate
+FishingPaintingTile.MapEntry: Painting
+FloppaPainting_Tile.MapEntry: Painting
+ForagerTableTile.MapEntry: Naturalist's Workshop
+ForgottenKingStatue.MapEntry: Forgotten King Statue
+GemsPickaxeRuby.MapEntry: Lodged Pickaxe
+GemsPickaxeSapphire.MapEntry: Lodged Pickaxe
+Generator.MapEntry: Glowplate Generator
+GiantAnglerStatueTile.MapEntry: Giant, Buff, Half-Shark, Half-Angler Statue
+GlowplateBed.MapEntry: Glowplate Bed
+GlowplateChair.MapEntry: Glowplate Chair
+
+GlowplateChest: {
+	MapEntry: Glowplate Chest
+	ContainerName: Glowplate Chest
+}
+
+GlowplateTable.MapEntry: Glowplate Table
+
+GoblinChest: {
+	MapEntry: Dynasty Chest
+	ContainerName: Dynasty Chest
+}
+
+GoldScarabChest: {
+	MapEntry: Gold Chest
+	ContainerName: Gold Chest
+}
+
+HangingCloudstalkTile.MapEntry: Hanging Cloudstalk
+HangingSoulbloomTile.MapEntry: Hanging Soulbloom
+HangingSunPotTile.MapEntry: Sun in a Pot
+HerosMemorialStatueTile.MapEntry: A Hero's Memorial
+DragonStatue.MapEntry: Jade Dragon Statuette
+BlueLightsLarge.MapEntry: Neon Lantern
+BlueLightsSmall.MapEntry: Fairy Lights
+BlueNeonCandle.MapEntry: Neon Candle
+BlueNeonPlant.MapEntry: Neon Plant
+GreenLightsLarge.MapEntry: Neon Lantern
+GreenLightsSmall.MapEntry: Fairy Lights
+GreenNeonCandle.MapEntry: Neon Candle
+GreenNeonPlant.MapEntry: Neon Plant
+PurpleLightsLarge.MapEntry: Neon Lantern
+PurpleLightsSmall.MapEntry: Fairy Lights
+PurpleNeonCandle.MapEntry: Neon Candle
+PurpleNeonPlant.MapEntry: Neon Plant
+RedLightsLarge.MapEntry: Neon Lantern
+RedLightsSmall.MapEntry: Fairy Lights
+RedNeonCandle.MapEntry: Neon Candle
+RedNeonPlant.MapEntry: Neon Plant
+YellowLightsLarge.MapEntry: Neon Lantern
+YellowLightsSmall.MapEntry: Fairy Lights
+YellowNeonCandle.MapEntry: Neon Candle
+YellowNeonPlant.MapEntry: Neon Plant
+OccultistMapTile.MapEntry: Occult Wall Scroll
+OldTelescopeTile.MapEntry: Old Telescope
+AdvPainting10Tile.MapEntry: Painting
+AdvPainting11Tile.MapEntry: Painting
+AdvPainting12Tile.MapEntry: Painting
+AdvPainting13Tile.MapEntry: Painting
+AdvPainting14Tile.MapEntry: Painting
+AdvPainting15Tile.MapEntry: Painting
+AdvPainting16Tile.MapEntry: Painting
+AdvPainting17Tile.MapEntry: Painting
+AdvPainting18Tile.MapEntry: Painting
+AdvPainting19Tile.MapEntry: Painting
+AdvPainting1Tile.MapEntry: Painting
+AdvPainting20Tile.MapEntry: Painting
+AdvPainting21Tile.MapEntry: Painting
+AdvPainting22Tile.MapEntry: Painting
+AdvPainting23Tile.MapEntry: Painting
+AdvPainting2Tile.MapEntry: Painting
+AdvPainting3Tile.MapEntry: Painting
+AdvPainting4Tile.MapEntry: Painting
+AdvPainting5Tile.MapEntry: Painting
+AdvPainting6Tile.MapEntry: Painting
+AdvPainting7Tile.MapEntry: Painting
+AdvPainting8Tile.MapEntry: Painting
+AdvPainting9Tile.MapEntry: Painting
+AsteroidMap.MapEntry: Map
+GraniteMap.MapEntry: Map
+HiveMap.MapEntry: Map
+MarbleMap.MapEntry: Map
+MushroomMap.MapEntry: Map
+ScrunklyPainting.MapEntry: Scrunkly
+PirateCrate.MapEntry: Crate
+AsteroidPylonTile.MapEntry: $Mods.SpiritMod.MapObject.AsteroidPylon
+BriarPylonTile.MapEntry: $Mods.SpiritMod.MapObject.BriarPylon
+SpiritPylonTile.MapEntry: $Mods.SpiritMod.MapObject.SpiritPylon
+ReachBed.MapEntry: Elderbark Bed
+ReachBenchTile.MapEntry: Elderbark Work Bench
+ReachBookcase.MapEntry: Elderbark Bookcase
+ReachCandelabra.MapEntry: Elderbark Candelabra
+ReachCandle.MapEntry: Elderbark Candle
+ReachChair.MapEntry: Elderbark Chair
+ReachChandelier.MapEntry: Elderbark Chandelier
+
+ReachChest1: {
+	MapEntry: Elderbark Chest
+	ContainerName: Elderbark Chest
+}
+
+ReachClockTile.MapEntry: Elderbark Clock
+ReachDoorClosed.MapEntry: Elderbark Door
+ReachDoorOpen.MapEntry: Elderbark Door
+
+ReachDresser: {
+	MapEntry: Elderbark Dresser
+	ContainerName: Elderbark Dresser
+}
+
+ReachLamp.MapEntry: Elderbark Lamp
+ReachLanternTile.MapEntry: Elderbark Lantern
+ReachPiano.MapEntry: Elderbark Piano
+ReachPotTile.MapEntry: Elderbark Pot
+ReachSink.MapEntry: Elderbark Sink
+ReachSofa.MapEntry: Elderbark Sofa
+ReachTable.MapEntry: Elderbark Table
+ReachTub.MapEntry: Elderbark Bathtub
+TreemanStatue.MapEntry: Statue of the Old Gods
+
+ReachChest: {
+	MapEntry: Briar Chest
+	ContainerName: Briar Chest
+}
+
+ReachCrate_Tile.MapEntry: Crate
+ReachPaintingTile.MapEntry: Painting
+GraniteSculpture1x2.MapEntry: Granite Sculpture
+GraniteSculpture2x3.MapEntry: Granite Sculpture
+GraniteSculpture3x3.MapEntry: Granite Sculpture
+GraniteSculpture3x5.MapEntry: Granite Sculpture
+MarbleSculpture1x2.MapEntry: Marble Sculpture
+MarbleSculpture2x3.MapEntry: Marble Sculpture
+MarbleSculpture3x8.MapEntry: Marble Sculpture
+SepulchreBannerTile.MapEntry: Banner
+
+SepulchreChestTile1: {
+	MapEntry: Sepulchre Chest
+	ContainerName: Sepulchre Chest
+}
+
+ShadowflameStone.MapEntry: Goblin Weapon Rack
+ShiverbarkChairTile.MapEntry: Shiverbark Chair
+ShiverbarkFlagTile.MapEntry: Shiverbark Flag
+ShiverbarkTableTile.MapEntry: Shiverbark Table
+ShiverbarkTotemTile.MapEntry: Shiverbark Totem
+BlueSign.MapEntry: Sign
+GreenSign.MapEntry: Sign
+PurpleSign.MapEntry: Sign
+RedSign.MapEntry: Sign
+YellowSign.MapEntry: Sign
+SkullPileTile.MapEntry: Skull Pile
+SlotMachineTile.MapEntry: Slot Machine
+
+AsteroidChest: {
+	MapEntry: Asteroid Chest
+	ContainerName: Asteroid Chest
+}
+
+ScrapTile1.MapEntry: Space Scrap
+ScrapTile2.MapEntry: Space Scrap
+ScrapTile3.MapEntry: Space Scrap
+ScrapTile4.MapEntry: Space Scrap
+ScrapTile5.MapEntry: Space Scrap
+ScrapTile6.MapEntry: Space Scrap
+SpiritBed.MapEntry: Duskwood Bed
+SpiritBiomePaintingTile.MapEntry: Painting
+SpiritChair.MapEntry: Spirit Chair
+
+SpiritChest: {
+	MapEntry: Duskwood Chest
+	ContainerName: Duskwood Chest
+}
+
+SpiritCrate.MapEntry: Crate
+SpiritDoorClosed.MapEntry: Spirit Door
+SpiritDoorOpen.MapEntry: Spirit Door
+SpiritTable.MapEntry: Spirit Table
+SpiritWorkbench.MapEntry: Spirit Workbench
+StarplatePaintingTile.MapEntry: Painting
+StreamScaleBenchTile.MapEntry: Stream Work Bench
+StreamScaleCandleTile.MapEntry: Stream Scale Candle
+StreamScaleChairTile.MapEntry: Stream Scale Chair
+StreamScaleLanternTile.MapEntry: Stream Scale Lantern
+SunPotTile.MapEntry: Sun in a Pot
+SynthpalmTile.MapEntry: Synthpalm Panel
+SynthwaveHead.MapEntry: Hyperspace Bust
+SynthwaveHeadActive.MapEntry: Hyperspace Bust
+TechCrateBig.MapEntry: Glowplate Crate
+TechCrateSmall.MapEntry: Glowplate Crate
+TentOpposite.MapEntry: Tent
+TreasureChestTile.MapEntry: Loot Chest
+VaporwaveTile.MapEntry: Retrofuturist Panel
+WheezerPaintingTile.MapEntry: Painting
+WWPaintingTile.MapEntry: Painting
+JumpPadTile.MapEntry: Jump Pad
+AshfallBox.MapEntry: Music Box
+AsteroidBox.MapEntry: Music Box
+AtlasBox.MapEntry: Music Box
+AuroraBox.MapEntry: Music Box
+AvianBox.MapEntry: Music Box
+BlizzardBox.MapEntry: Music Box
+BlueMoonBox.MapEntry: Music Box
+BriarNightBox.MapEntry: Music Box
+BriarUndergroundBox.MapEntry: Music Box
+CalmNightBox.MapEntry: Music Box
+CorruptNightBox.MapEntry: Music Box
+CrimsonNightBox.MapEntry: Music Box
+DesertNightBox.MapEntry: Music Box
+FrostLegionBox.MapEntry: Music Box
+GraniteBox.MapEntry: Music Box
+HallowNightBox.MapEntry: Music Box
+HyperspaceDayBox.MapEntry: Music Box
+InfernonBox.MapEntry: Music Box
+JellyDelugeBox.MapEntry: Music Box
+LuminousNightBox.MapEntry: Music Box
+MarbleBox.MapEntry: Music Box
+MeteorBox.MapEntry: Music Box
+MJWBox.MapEntry: Music Box
+NeonMusicBox.MapEntry: Music Box
+OceanDepthsBox.MapEntry: Music Box
+ReachBox.MapEntry: Music Box
+ScarabBox.MapEntry: Music Box
+SnowNightBox.MapEntry: Music Box
+SpiderCaveBox.MapEntry: Music Box
+SpiritBox1.MapEntry: Music Box
+SpiritBox2.MapEntry: Music Box
+SpiritBox3.MapEntry: Music Box
+SpiritBox4.MapEntry: Music Box
+StarplateBox.MapEntry: Music Box
+TideBox.MapEntry: Music Box
+TranquilWindsBox.MapEntry: Music Box
+VictoryDayBox.MapEntry: Music Box
+VinewrathBox.MapEntry: Music Box
+CopperPile.MapEntry: Copper Pile
+GoldPile.MapEntry: Gold Pile
+IronPile.MapEntry: Iron Pile
+LeadPile.MapEntry: Lead Pile
+PlatinumPile.MapEntry: Platinum Pile
+SilverPile.MapEntry: Silver Pile
+TinPile.MapEntry: Tin Pile
+TungstenPile.MapEntry: Tungsten Pile
+SoulBloomTile.MapEntry: Soulbloom
+CursedArmor.MapEntry: Cursed Armor
+ScreamingTomeTile.MapEntry: Mysterious Tome
+SepulchreChandelier.MapEntry: Sepulchre Chandelier
+
+SepulchreChestTile: {
+	MapEntry: Sepulchre Chest
+	ContainerName: Sepulchre Chest
+}
+
+SepulchreMirror.MapEntry: Sepulchre Mirror
+SepulchreWindowOne.MapEntry: Sepulchre Window
+SepulchreWindowTwo.MapEntry: Sepulchre Window

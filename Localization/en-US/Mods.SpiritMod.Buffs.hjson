@@ -1,0 +1,883 @@
+﻿AceOfDiamondsBuff: {
+	DisplayName: Ace of Diamonds
+	Description: Damage increased by 20%
+}
+
+AngelLight: {
+	DisplayName: Angel's Light
+	Description: Mods.SpiritMod.BuffDescription.AngelLight
+}
+
+AngelWrath: {
+	DisplayName: Angel's Wrath
+	Description: Mods.SpiritMod.BuffDescription.AngelWrath
+}
+
+ExplorerFight: {
+	DisplayName: Strike Strength
+	Description: You're getting the hang of it!
+}
+
+ExplorerMine: {
+	DisplayName: Explorer's Strength
+	Description: Keep digging!
+}
+
+ExplorerPot: {
+	DisplayName: Explorer's Vigor
+	Description: You're eager for more!
+}
+
+FrigidCooldown: {
+	DisplayName: Below Zero
+	Description: "'It's too cold to keep this wall going...'"
+}
+
+MarbleDivineWinds: {
+	DisplayName: Divine Winds
+	Description: "'To the skies!'"
+}
+
+RogueCooldown: {
+	DisplayName: Dispelled Shadow
+	Description: "'Wait for the darkness to steal you away'"
+}
+
+AstralMapCooldown: {
+	DisplayName: Astral Cooldown
+	Description: Lightspeed travel is unstable!
+}
+
+BeetleFortitude: {
+	DisplayName: Beetle Fortitude
+	Description: Each strike strenghtens you...
+}
+
+BloodInfusion: {
+	DisplayName: Blood Infusion
+	Description: "'Extremely contagious'"
+}
+
+CandyBuff: {
+	DisplayName: Sugar Rush
+	Description: Slight increase to all stats
+}
+
+ChocolateBuff: {
+	DisplayName: Chocolate
+	Description: 10% Increased Speed
+}
+
+HealthBuffC: {
+	DisplayName: Healing Candy
+	Description: +25 health.
+}
+
+LollipopBuff: {
+	DisplayName: Lollipop
+	Description: Increased life regeneration
+}
+
+ManaBuffC: {
+	DisplayName: Mana Candy
+	Description: +40 Mana
+}
+
+TaffyBuff: {
+	DisplayName: Taffy
+	Description: +4 Defense
+}
+
+ClockBuff: {
+	DisplayName: Time power
+	Description: ZAWARUDO!!
+}
+
+CouchPotato: {
+	DisplayName: Couch potato
+	Description: "'Stop being so lazy!'"
+}
+
+CourtCooldown: {
+	DisplayName: Sanguine Cooldown
+	Description: Your blood needs time to heal
+}
+
+CrimsonSkullBuff: {
+	DisplayName: Crimson Skull
+	Description: Flask of gore now deals double damage
+}
+
+Death: {
+	DisplayName: Death
+	Description: Mods.SpiritMod.BuffDescription.Death
+}
+
+DeathRoseCooldown: {
+	DisplayName: Death Rose Cooldown
+	Description: The bramble needs time to regrow...
+}
+
+AcidBurn: {
+	DisplayName: Toxic Grasp
+	Description: Mods.SpiritMod.BuffDescription.AcidBurn
+}
+
+Afflicted: {
+	DisplayName: Unstable Affliction
+	Description: Falling to pieces
+}
+
+BloodCorrupt: {
+	DisplayName: Blood Corruption
+	Description: Your blood burns...
+}
+
+CryoCrush: {
+	DisplayName: Cryo Crush
+	Description: Mods.SpiritMod.BuffDescription.CryoCrush
+}
+
+DoomDestiny: {
+	DisplayName: Star Cut
+	Description: Mods.SpiritMod.BuffDescription.DoomDestiny
+}
+
+FesteringWounds: {
+	DisplayName: Festering Wounds
+	Description: Deals more damage if the victim is under half health
+}
+
+DrainLife: {
+	DisplayName: Drain Life
+	Description: Your life energy becomes theirs.
+}
+
+DynastyFanBuff: {
+	DisplayName: Windglider
+	Description: You're still falling, but slower
+}
+
+ElectrifiedV2: {
+	DisplayName: Electrified
+	Description: Mods.SpiritMod.BuffDescription.ElectrifiedV2
+}
+
+EleutheriosBuff: {
+	DisplayName: Eleutherios' Strength
+	Description: Damage increased by 0%
+}
+
+FateBlessing: {
+	DisplayName: Fate's Blessing
+	Description: You are protected by the fates
+}
+
+Frozen: {
+	DisplayName: Frozen
+	Description: Mods.SpiritMod.BuffDescription.Frozen
+}
+
+BurningRage: {
+	DisplayName: Burning Rage
+	Description: +17% damage and attack speed
+}
+
+CollapsingVoid.DisplayName: Collapsing Void
+
+DevouringVoid: {
+	DisplayName: Devouring Void
+	Description: Mods.SpiritMod.BuffDescription.DevouringVoid
+}
+
+DivineStrike: {
+	DisplayName: Divine Strike
+	Description: "Your next attack will deal "
+}
+
+PhantomVeil: {
+	DisplayName: Phantom Veil
+	Description: The next attack will be blocked
+}
+
+SanguineBleed: {
+	DisplayName: Crimson Bleed
+	Description: You are rapidly losing blood.
+}
+
+SanguineRegen: {
+	DisplayName: Sanguine Regeneration
+	Description: You are rapidly gaining blood.
+}
+
+TemporalShift: {
+	DisplayName: Temporal Shift
+	Description: Double tap to dash and gain a temporary speed boost
+}
+
+WanderingPlague: {
+	DisplayName: Wandering Plague
+	Description: Mods.SpiritMod.BuffDescription.WanderingPlague
+}
+
+WindBurst: {
+	DisplayName: Wind Burst
+	Description: Knockback is amplified
+}
+
+GraniteArrow_Debuff: {
+	DisplayName: Granite Arrow Debuff
+	Description: Mods.SpiritMod.BuffDescription.GraniteArrow_Debuff
+}
+
+GreekFire: {
+	DisplayName: Greek Fire
+	Description: Set ablaze by the Gods themselves
+}
+
+HighGravityBuff: {
+	DisplayName: High Gravity
+	Description: Gravity returns to normal
+}
+
+HolyLight: {
+	DisplayName: Holy Light
+	Description: Mods.SpiritMod.BuffDescription.HolyLight
+}
+
+IceBerryBuff: {
+	DisplayName: Ice Berries
+	Description: You are immune to being on fire
+}
+
+InfernalRage: {
+	DisplayName: Infernal Rage
+	Description: Greatly boosted damage at the cost of your soul...
+}
+
+MageFreeze: {
+	DisplayName: Chilly Grasp
+	Description: Mods.SpiritMod.BuffDescription.MageFreeze
+}
+
+MidasTouch: {
+	DisplayName: Midas Touch
+	Description: Enemies drop more gold when killed
+}
+
+DiabolicPlatformBuff: {
+	DisplayName: Diabolic Platform
+	Description: Command the Infernal
+}
+
+DrakomireMountBuff: {
+	DisplayName: Drakomire
+	Description: You have tamed a Celestial Invader!
+}
+
+Obolos_Buff: {
+	DisplayName: Obolos
+	Description: Pretty grimacing...
+}
+
+RlyehianMountBuff: {
+	DisplayName: Eldritch Cloak
+	Description: "'It really sweeps you off your feet'"
+}
+
+SnowmongerMountBuff: {
+	DisplayName: Snowmech
+	Description: Powerful
+}
+
+TideMountBuff: {
+	DisplayName: Crocodrillo Mount
+	Description: This cute lil' Crocodillo is your new best friend!
+}
+
+NebulaFlame: {
+	DisplayName: Nebula Flame
+	Description: Mods.SpiritMod.BuffDescription.NebulaFlame
+}
+
+OliveBranchBuff: {
+	DisplayName: Peaceful Resolution
+	Description: "'Make peace with your enemies'"
+}
+
+OnyxWind: {
+	DisplayName: Onyx Whirlwind
+	Description: 10% increased movement speed
+}
+
+OracleBoonBuff: {
+	DisplayName: Heresy
+	Description:
+		'''
+		The gods accept your challenge
+		Enchanted enemies appear more often
+		'''
+}
+
+OverDrive: {
+	DisplayName: Overdrive
+	Description: Your movement speed and melee speed are charged up!
+}
+
+AtlasPetBuff: {
+	DisplayName: Atlas Jr.
+	Description: He wants to lend a hand!
+}
+
+AvianPetBuff: {
+	DisplayName: Ancient Hatchling
+	Description: "'eg.'"
+}
+
+BladePetBuff: {
+	DisplayName: Possessed Blade
+	Description: "'Is this a dagger I see in front of me?'"
+}
+
+CaltfistPetBuff: {
+	DisplayName: Cultfish
+	Description: This little bugger lights the way!
+}
+
+CaptiveMaskPetBuff: {
+	DisplayName: Unbound Mask
+	Description: "'Once more unto the breach!'"
+}
+
+DuskingPetBuff: {
+	DisplayName: Minor Shadowflame
+	Description: "'You see something inside of the flames...'"
+}
+
+FaeriePetBuff: {
+	DisplayName: Waning Gibbous
+	Description: The Moonlit Faerie will protect you
+}
+
+HauntedBookPetBuff: {
+	DisplayName: Haunted Tome
+	Description: "'Haunted, yet comforting'"
+}
+
+InfernonPetBuff: {
+	DisplayName: Inferno
+	Description: "'You'd better stay out of his way'"
+}
+
+JellyfishBuff: {
+	DisplayName: Peaceful Jellyfish
+	Description: "'The Jellyfish is helping you relax'"
+}
+
+LanternBuff: {
+	DisplayName: Lantern Power Battery
+	Description: "'It illuminates the way!'"
+}
+
+LoomingPresence: {
+	DisplayName: Looming Presence
+	Description: It seems to attract a lot of attention.
+}
+
+MJWPetBuff: {
+	DisplayName: Moon Jelly Lightbulb
+	Description: "'No installation necessary!'"
+}
+
+OccultistPetBuff: {
+	DisplayName: Lil' Occultist
+	Description: "'Surprisingly mellow'"
+}
+
+OverseerPetBuff: {
+	DisplayName: Overseer
+	Description: "'Looks like a final boss to me'"
+}
+
+PhantomPetBuff: {
+	DisplayName: Phantom
+	Description: "'It blends into the night'"
+}
+
+SaucerPetBuff: {
+	DisplayName: Support Saucer
+	Description: "'It seems to only provide moral support...'"
+}
+
+ScarabPetBuff: {
+	DisplayName: Tiny Scarab
+	Description: "'It really loves to roll...'"
+}
+
+ShadowPetBuff: {
+	DisplayName: Shadow Pup
+	Description: "'Awww'"
+}
+
+StarplatePetBuff: {
+	DisplayName: Starplate Miniature
+	Description: Looking for something...
+}
+
+VinewrathPetBuff: {
+	DisplayName: Wrathful Seedling
+	Description: "'They love to pick a fight'"
+}
+
+BismitePotionBuff: {
+	DisplayName: Toxic Strike
+	Description:
+		'''
+		Critical strikes inflict Festering Wounds
+		4% increased critical strike chance
+		'''
+}
+
+DoubleJumpPotionBuff: {
+	DisplayName: Aether Jump
+	Description: Grants a temporary double jump
+}
+
+FlightPotionBuff: {
+	DisplayName: Soaring
+	Description: Increases flight duration by 25%.
+}
+
+MoonBlessing: {
+	DisplayName: Moon Jelly
+	Description: Extreme regeneration
+}
+
+MoonBlessingDonut: {
+	DisplayName: Moon Jelly Donut
+	Description: Extreme regeneration and a sugar high!
+}
+
+MushroomPotionBuff: {
+	DisplayName: Spore Release
+	Description: Leave behind a trail of damaging mushrooms
+}
+
+PinkPotionBuff: {
+	DisplayName: Jump Boost
+	Description: Increases jump height
+}
+
+RunePotionBuff: {
+	DisplayName: Runescribe
+	Description:
+		'''
+		Magic attacks may cause enemies to erupt into runes
+		5% increased magic damage
+		'''
+}
+
+SoulPotionBuff: {
+	DisplayName: Soul Guard
+	Description:
+		'''
+		Reduces damage taken by 5%
+		Getting hurt may cause all enemies to suffer 'Soul Burn' for a short time
+		'''
+}
+
+StarPotionBuff: {
+	DisplayName: Star Burn
+	Description:
+		'''
+		Critical hits may cause stars to fall from the sky
+		4% increased ranged damage and critical strike chance when moving
+		'''
+}
+
+TurtlePotionBuff: {
+	DisplayName: Steadfast
+	Description:
+		'''
+		Increases defense as health wanes
+		Reduces damage taken by 5%
+		'''
+}
+
+Shadowbroken: {
+	DisplayName: Shadowbroken
+	Description: Mods.SpiritMod.BuffDescription.Shadowbroken
+}
+
+Shadowflame: {
+	DisplayName: Shadowflame
+	Description: Mods.SpiritMod.BuffDescription.Shadowflame
+}
+
+Shocked.DisplayName: Shocked!
+
+SoulBurn: {
+	DisplayName: Soul Burn
+	Description: Mods.SpiritMod.BuffDescription.SoulBurn
+}
+
+SoulFlare: {
+	DisplayName: Soul Flare
+	Description: Your soul is fluctuating...
+}
+
+SpiritBuff: {
+	DisplayName: Spirit Aura
+	Description:
+		'''
+		Increases damage and critical strike chance by 5 % 
+			Getting hurt occasionally spawns a damaging bolt to chase enemies
+		'''
+}
+
+StackingFireBuff: {
+	DisplayName: Combustion Blaze
+	Description: Mods.SpiritMod.BuffDescription.StackingFireBuff
+}
+
+StarCooldown: {
+	DisplayName: Cosmic Cooldown
+	Description: The cosmic energies must stabilize...
+}
+
+StarFlame: {
+	DisplayName: Star Flame
+	Description: "'An astral force saps your vitality'"
+}
+
+StarFracture: {
+	DisplayName: Star Fracture
+	Description: Mods.SpiritMod.BuffDescription.StarFracture
+}
+
+StarplateGravity: {
+	DisplayName: Starplate Gravity
+	Description: The Starplate Voyager pulls you toward the earth...
+}
+
+Stopped: {
+	DisplayName: Stopped
+	Description: You are locked in place
+}
+
+Sturdy: {
+	DisplayName: Sturdy
+	Description: "'Your shell has been cracked'"
+}
+
+ElectricSummonTag: {
+	DisplayName: Summon Tag
+	Description: Mods.SpiritMod.BuffDescription.ElectricSummonTag
+}
+
+SacrificialDaggerBuff: {
+	DisplayName: Sacrificial Strike
+	Description: Mods.SpiritMod.BuffDescription.SacrificialDaggerBuff
+}
+
+SummonTag3: {
+	DisplayName: Summon Tag
+	Description: Mods.SpiritMod.BuffDescription.SummonTag3
+}
+
+SummonTag5: {
+	DisplayName: Summon Tag
+	Description: Mods.SpiritMod.BuffDescription.SummonTag5
+}
+
+SurgingAnguish: {
+	DisplayName: Surging Anguish
+	Description: "'Your mind and body are in great pain'"
+}
+
+Impaled: {
+	DisplayName: Impaled
+	Description: You've been impaled by a pike. Ouch!
+}
+
+KoiTotemBuff: {
+	DisplayName: Spirit of the Koi
+	Description: Increased fishing skill
+}
+
+PagodaCurse: {
+	DisplayName: Curse of the Pagoda
+	Description: You feel a ghostly presence nearby
+}
+
+SunPotBuff: {
+	DisplayName: Sun in a Pot
+	Description: Increased life regeneration
+}
+
+TopazMarked: {
+	DisplayName: Illuminated
+	Description: Mods.SpiritMod.BuffDescription.TopazMarked
+}
+
+Tracked: {
+	DisplayName: Tracked
+	Description: Mods.SpiritMod.BuffDescription.Tracked
+}
+
+TrueMarksman: {
+	DisplayName: True Marksman
+	Description: Gun damage is increased dramatically
+}
+
+UnstableAffliction: {
+	DisplayName: Unstable Affliction
+	Description: Reduces movement speed by 10%
+}
+
+VineTrap: {
+	DisplayName: Vine Trap
+	Description: Mods.SpiritMod.BuffDescription.VineTrap
+}
+
+VirulenceCooldown: {
+	DisplayName: Virulent Suppression
+	Description: "'The Putrid Humors must reset their energy'"
+}
+
+Wither: {
+	DisplayName: Wither
+	Description: Mods.SpiritMod.BuffDescription.Wither
+}
+
+WitheringLeaf: {
+	DisplayName: Withering Leaf
+	Description: Mods.SpiritMod.BuffDescription.WitheringLeaf
+}
+
+CryoZoneTimer: {
+	DisplayName: Slow Zone
+	Description: The Slow Zone is up!
+}
+
+DefenseZoneBuff: {
+	DisplayName: Fortification Zone
+	Description: You feel strong!
+}
+
+HealingZoneBuff: {
+	DisplayName: Healing Zone
+	Description: You feel invigorated!
+}
+
+HealthZoneTimer: {
+	DisplayName: Healing Zone
+	Description: The Healing Zone is up!
+}
+
+LowGravZoneBuff: {
+	DisplayName: Low Gravity Zone
+	Description: You feel light!
+}
+
+LowGravZoneTimer: {
+	DisplayName: Low Gravity Zone
+	Description: The Low Gravity Zone is up!
+}
+
+RepulsionZoneTimer: {
+	DisplayName: Repulsion Zone
+	Description: The Repulsion Zone is up!
+}
+
+ShieldZoneTimer: {
+	DisplayName: Fortification Zone
+	Description: The Fortification Zone is up!
+}
+
+StaminaZoneBuff: {
+	DisplayName: Stamina Zone
+	Description: You feel energized!
+}
+
+StaminaZoneTimer: {
+	DisplayName: Stamina Zone
+	Description: The Stamina Zone is up!
+}
+
+BaubleCooldown: {
+	DisplayName: Bauble Cooldown
+	Description: Bauble's shield is on cooldown
+}
+
+BaubleResistance: {
+	DisplayName: Bauble Resistance
+	Description: You feel protected
+}
+
+RunicSiphon: {
+	DisplayName: Runic Siphon
+	Description: Reduced damage resistance and losing HP rapidly
+}
+
+ManajinxBuff: {
+	DisplayName: Starlight Enchantment
+	Description: Magic weapons spawn additional homing stars, and mana usage is drastically decreased
+}
+
+PendantBuff: {
+	DisplayName: Pillbug Friend
+	Description: "'Rock and roll!'"
+}
+
+MirrorCoatBuff: {
+	DisplayName: Mirror Coat
+	Description: Immunity to Stoned
+}
+
+SaddleBuff.DisplayName: Aurora Stag Mount
+
+CosmicRattlerPetBuff: {
+	DisplayName: Starachnid
+	Description: "'Inside it you can see the depths of space'"
+}
+
+Empowered: {
+	DisplayName: Empowered
+	Description: Headsplitter is imbued with a fleeting strength
+}
+
+Mantaray_Buff: {
+	DisplayName: Manta Ray
+	Description: Swift as the tides!
+}
+
+BottleMountBuff: {
+	DisplayName: Raft
+	Description: Sending out an SOS
+}
+
+EmpoweredSwim: {
+	DisplayName: Empowered Swim
+	Description: You feel much faster in water
+}
+
+SwimmingFatigue: {
+	DisplayName: Swimming Fatigue
+	Description: You can't swim very well for a bit
+}
+
+CurseBreakerMark: {
+	DisplayName: Curse Mark
+	Description: Mods.SpiritMod.BuffDescription.CurseBreakerMark
+}
+
+MarbleMinecartBuff: {
+	DisplayName: Nemean Chariot
+	Description: "'You feel powerful!'"
+}
+
+Crystallization: {
+	DisplayName: Cystallization
+	Description: Rapidly losing life
+}
+
+Golden_Curse: {
+	DisplayName: Golden Curse
+	Description: Increased fall speed and damage
+}
+
+Crawlerock_Buff: {
+	DisplayName: Crawlerock
+	Description: A baby Cavern Crawler fights for you!
+}
+
+JellyfishMinion_Buff: {
+	DisplayName: Jellyfish
+	Description: A cute, bouncy Jellyfish fights for you!
+}
+
+LavaRockSummon_Buff: {
+	DisplayName: Slagtern
+	Description: The power of magma flows through this lantern
+}
+
+MangoJellyMinion_Buff: {
+	DisplayName: Mango Jelly
+	Description: A mini mango jelly fights for you!
+}
+
+Minior_Buff: {
+	DisplayName: Mini Meteor
+	Description: A mini meteor fights for you!
+}
+
+SnakeMinion_Buff: {
+	DisplayName: Flying Snake
+	Description: "'Quite venomous...'"
+}
+
+SnapsporeMinion_Buff: {
+	DisplayName: Snapspore
+	Description: A bouncy Snapspore fights for you!
+}
+
+MoonjellySummon_Buff: {
+	DisplayName: Moonlight Preserver
+	Description: This moonlight preserver summons tiny Lunazoa to fight for you!
+}
+
+QuacklingMinion_Buff: {
+	DisplayName: Quackling
+	Description: Born with a bandana!
+}
+
+RabbitOfCaerbannog_Buff: {
+	DisplayName: Rabbit of Caerbannog
+	Description: "'It's just a harmless little bunny, isn't it?'"
+}
+
+ButterflyMinion_Buff: {
+	DisplayName: Etherial Butterfly
+	Description: A glowing butterfly fights for you!
+}
+
+ToucanMinion_Buff: {
+	DisplayName: Toucans
+	Description: Despite all of my rage
+}
+
+SoulDaggerProj_Buff: {
+	DisplayName: Soul Dagger
+	Description: Reap their souls!
+}
+
+SandWarriorMinion_Buff: {
+	DisplayName: Sand Warrior
+	Description: The sand warrior will fight for you
+}
+
+PigronMinion_Buff: {
+	DisplayName: Pigrons
+	Description: Bacon!
+}
+
+FairyMinion_Buff: {
+	DisplayName: Fairies
+	Description: Hey! Watch out!
+}
+
+Jinxprobe_Buff: {
+	DisplayName: Tiny Jinxprobe
+	Description: The Jinxprobe will fight for you
+}
+
+StarplateDrone_Buff: {
+	DisplayName: Starplate Fighter Drone
+	Description: "'Sure to deliver a quick death for your foes'"
+}
+
+LocustBig_Buff: {
+	DisplayName: Locusts
+	Description: Bringer of a plague
+}

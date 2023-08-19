@@ -1,7 +1,0 @@
-﻿# This file contains all of the MapObject (map name) keys.
-# When possible, use keys to refer to existing localizations, i.e. {$Mods.ExampleMod.Items.ExamplePylonItem.DisplayName}
-# This'll cut down the work that localizers have to do and the work that you have to do writing it!
-
-SpiritPylon: Spirit Pylon
-AsteroidPylon: Asteroid Pylon
-BriarPylon: Briar Pylon

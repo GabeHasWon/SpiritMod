@@ -170,6 +170,7 @@ namespace SpiritMod.Projectiles.Thrown
 		{
 			if (hitNPCIndex > -1)
 				return;
+
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 
 			for (int i = 0; i < 10; i++)
