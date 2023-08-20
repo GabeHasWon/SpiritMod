@@ -75,7 +75,7 @@ namespace SpiritMod.NPCs.AuroraStag
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aurora Stag");
+			// DisplayName.SetDefault("Aurora Stag");
 			Main.npcFrameCount[NPC.type] = 10;
 			NPCHelper.BuffImmune(Type);
 		}
@@ -298,8 +298,8 @@ namespace SpiritMod.NPCs.AuroraStag
 			ParticleHandler.SpawnParticle(particle);
 		}
 
-		public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit) => Scared = true;
-		public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit) => Scared = true;
+		public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone) => Scared = true;
+		public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone) => Scared = true;
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

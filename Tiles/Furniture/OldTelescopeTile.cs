@@ -37,8 +37,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 			DustType = -1;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Old Telescope");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Old Telescope");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 		public override void AnimateTile(ref int frame, ref int frameCounter)

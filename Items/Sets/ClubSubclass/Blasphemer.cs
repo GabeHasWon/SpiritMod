@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Blasphemer");
-            Tooltip.SetDefault("Charged strikes create a fiery geyser");
+            // DisplayName.SetDefault("The Blasphemer");
+            // Tooltip.SetDefault("Charged strikes create a fiery geyser");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/ClubSubclass/Blasphemer_Glow");
         }
 

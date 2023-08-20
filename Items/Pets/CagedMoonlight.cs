@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Caged Moonlight");
-			Tooltip.SetDefault("Summons a faerie to protect you\n'Here resides a being comprised of pure starfire.'\n'Thine enemies shall be harassed by luminous lances.'");
+			// DisplayName.SetDefault("Caged Moonlight");
+			// Tooltip.SetDefault("Summons a faerie to protect you\n'Here resides a being comprised of pure starfire.'\n'Thine enemies shall be harassed by luminous lances.'");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Weapon.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Taoyo");
-			Tooltip.SetDefault("May confuse foes\n'But it keeps your mind clear'");
+			// DisplayName.SetDefault("Taoyo");
+			// Tooltip.SetDefault("May confuse foes\n'But it keeps your mind clear'");
 		}
 
 		public override void SetDefaults()

@@ -13,10 +13,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 	{
 		private int charger;
 
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Shoots elemental bullets and bombs that inflict powerful burns\n" +
+		/* public override void SetStaticDefaults() => Tooltip.SetDefault("Shoots elemental bullets and bombs that inflict powerful burns\n" +
 			"Right click while holding for a shotgun blast\n" +
 			"33% chance to not consume ammo\n" +
-			"'Nature goes out with a bang'");
+			"'Nature goes out with a bang'"); */
 
 		public override void SetDefaults()
 		{

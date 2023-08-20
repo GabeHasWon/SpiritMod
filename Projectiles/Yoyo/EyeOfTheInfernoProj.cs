@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eye of the Inferno");
+			// DisplayName.SetDefault("Eye of the Inferno");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -66,7 +66,7 @@ namespace SpiritMod.Projectiles.Yoyo
 			Main.dust[dust].scale = 0.9f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 280);
 			Projectile.velocity *= 0f;

@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Avian Hook");
-			Tooltip.SetDefault("Striking tiles allows the player to float briefly");
+			// DisplayName.SetDefault("Avian Hook");
+			// Tooltip.SetDefault("Striking tiles allows the player to float briefly");
 		}
 
 		public override void SetDefaults()
@@ -29,7 +29,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 	internal class AvianHookProjectile : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("${ProjectileName.GemHookAmethyst}");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("${ProjectileName.GemHookAmethyst}");
 
 		public override void SetDefaults() => Projectile.CloneDefaults(ProjectileID.GemHookAmethyst);
 

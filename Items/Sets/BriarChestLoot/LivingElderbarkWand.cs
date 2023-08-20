@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Living Elderbark Wand");
-			Tooltip.SetDefault("Places living elderbark");
+			// DisplayName.SetDefault("Living Elderbark Wand");
+			// Tooltip.SetDefault("Places living elderbark");
 		}
 
 		public override void SetDefaults()

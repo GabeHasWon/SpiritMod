@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Urchin");
+			// DisplayName.SetDefault("Urchin");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -90,7 +90,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[1] = target.whoAmI;
 			Projectile.tileCollide = false;
@@ -165,7 +165,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Urchin");
+			// DisplayName.SetDefault("Urchin");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -207,7 +207,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[1] = target.whoAmI;
 			Projectile.tileCollide = false;

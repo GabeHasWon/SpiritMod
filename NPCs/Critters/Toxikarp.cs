@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Toxikarp");
+			// DisplayName.SetDefault("Toxikarp");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
@@ -47,7 +47,7 @@ namespace SpiritMod.NPCs.Critters
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 2);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Poisoned, 1200);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.Poisoned, 1200);
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ToxikarpGore").Type, 1f);

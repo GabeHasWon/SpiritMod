@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Slab");
-			Tooltip.SetDefault("Provides immunity to the 'Mighty Wind' debuff during Sandstorms");
+			// DisplayName.SetDefault("Ancient Slab");
+			// Tooltip.SetDefault("Provides immunity to the 'Mighty Wind' debuff during Sandstorms");
 		}
 
 		public override void SetDefaults()

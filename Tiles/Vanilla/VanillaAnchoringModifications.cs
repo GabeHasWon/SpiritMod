@@ -11,7 +11,7 @@ namespace SpiritMod.Tiles.Vanilla;
 
 internal class VanillaAnchoringModifications : ILoadable
 {
-	public void Load(Mod mod) => IL.Terraria.WorldGen.CheckSunflower += WorldGen_CheckSunflower;
+	public void Load(Mod mod) { }// => Terraria.IL_WorldGen.CheckSunflower += WorldGen_CheckSunflower; //1.4.4PORT
 
 	private void WorldGen_CheckSunflower(ILContext il)
 	{

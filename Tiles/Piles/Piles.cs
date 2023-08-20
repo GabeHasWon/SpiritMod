@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 namespace SpiritMod.Tiles.Piles
@@ -22,8 +23,8 @@ namespace SpiritMod.Tiles.Piles
 			TileObjectData.newTile.CoordinatePadding = 2;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Copper Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Copper Pile");
 			AddMapEntry(new Color(70, 70, 70), name);
 			DustType = DustID.CopperCoin;
 			TileID.Sets.DisableSmartCursor[Type] = true;
@@ -49,8 +50,8 @@ namespace SpiritMod.Tiles.Piles
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 1;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Tin Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Tin Pile");
 			AddMapEntry(new Color(70, 70, 70), name);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
@@ -80,8 +81,8 @@ namespace SpiritMod.Tiles.Piles
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 2;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Iron Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Iron Pile");
 			AddMapEntry(new Color(70, 70, 70), name);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
@@ -111,8 +112,8 @@ namespace SpiritMod.Tiles.Piles
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 2;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Lead Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Lead Pile");
 			AddMapEntry(new Color(70, 70, 70), name);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
@@ -142,8 +143,8 @@ namespace SpiritMod.Tiles.Piles
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 3;
 			TileObjectData.newTile.Height = 2;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Silver Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Silver Pile");
 			AddMapEntry(new Color(70, 70, 70), name);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
@@ -174,8 +175,8 @@ namespace SpiritMod.Tiles.Piles
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 3;
 			TileObjectData.newTile.Height = 2;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Tungsten Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Tungsten Pile");
 			AddMapEntry(new Color(70, 70, 70), name);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
@@ -204,8 +205,8 @@ namespace SpiritMod.Tiles.Piles
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 3;
 			TileObjectData.newTile.Height = 2;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Gold Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Gold Pile");
 			AddMapEntry(new Color(70, 70, 70), name);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
@@ -235,8 +236,8 @@ namespace SpiritMod.Tiles.Piles
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 3;
 			TileObjectData.newTile.Height = 2;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Platinum Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Platinum Pile");
 			AddMapEntry(new Color(70, 70, 70), name);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;

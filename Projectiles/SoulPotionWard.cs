@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Soul Guard");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Soul Guard");
 
 		public override void SetDefaults()
 		{

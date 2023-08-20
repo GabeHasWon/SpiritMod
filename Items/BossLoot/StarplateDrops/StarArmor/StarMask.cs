@@ -14,8 +14,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astralite Visor");
-			Tooltip.SetDefault("6% increased ranged critical strike chance");
+			// DisplayName.SetDefault("Astralite Visor");
+			// Tooltip.SetDefault("6% increased ranged critical strike chance");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

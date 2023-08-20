@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.BismiteSet
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bismite Crystal Staff");
-            Tooltip.SetDefault("Summons a stationary Bismite Crystal that shoots poison shards at enemies\nRight-click to cause Bismite Crystals to emit a festering wave at the cost of mana");
+            // DisplayName.SetDefault("Bismite Crystal Staff");
+            // Tooltip.SetDefault("Summons a stationary Bismite Crystal that shoots poison shards at enemies\nRight-click to cause Bismite Crystals to emit a festering wave at the cost of mana");
         }
 
 		public override void SetDefaults()

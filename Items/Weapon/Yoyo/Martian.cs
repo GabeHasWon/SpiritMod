@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Weapon.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terrestrial Ultimatum");
-			Tooltip.SetDefault("Shoots electrospheres");
+			// DisplayName.SetDefault("Terrestrial Ultimatum");
+			// Tooltip.SetDefault("Shoots electrospheres");
 		}
 
 		public override void SetDefaults()

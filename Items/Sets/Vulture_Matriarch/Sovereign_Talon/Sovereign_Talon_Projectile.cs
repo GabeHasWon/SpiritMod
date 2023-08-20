@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
 {
 	public class Sovereign_Talon_Projectile : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sovereign Talon");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sovereign Talon");
 
 		public override void SetDefaults()
 		{

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Umbra Staff");
-			Tooltip.SetDefault("Shoots out homing Shadow Balls");
+			// DisplayName.SetDefault("Umbra Staff");
+			// Tooltip.SetDefault("Shoots out homing Shadow Balls");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/UmbraStaff_Glow");
 		}
 

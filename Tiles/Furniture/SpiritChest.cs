@@ -39,11 +39,10 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Duskwood Chest");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(70, 130, 180), name, MapChestName);
+
 			AdjTiles = new int[] { TileID.Containers };
-			ContainerName.SetDefault("Duskwood Chest");
 		}
 
 		public string MapChestName(string name, int i, int j)

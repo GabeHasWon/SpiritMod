@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.Carrion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Carrion");
-			Tooltip.SetDefault("Converts wooden arrows into Carrion Crows\nCarrion Crows grow stronger after hitting enemies");
+			// DisplayName.SetDefault("Carrion");
+			// Tooltip.SetDefault("Converts wooden arrows into Carrion Crows\nCarrion Crows grow stronger after hitting enemies");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

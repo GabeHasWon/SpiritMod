@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden.Projectiles
 
 		protected int teleported = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("aeaa");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("aeaa");
 
 		public override void SetDefaults()
 		{

@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Weapon.Summon.WyvernStaff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wyvern");
+			// DisplayName.SetDefault("Wyvern");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

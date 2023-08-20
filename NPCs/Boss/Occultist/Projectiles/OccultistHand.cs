@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Boss.Occultist.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dark Grasp");
+			// DisplayName.SetDefault("Dark Grasp");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

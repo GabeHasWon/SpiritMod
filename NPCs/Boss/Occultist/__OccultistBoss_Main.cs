@@ -38,7 +38,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Occultist");
+			// DisplayName.SetDefault("Occultist");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
 			NPCID.Sets.NoMultiplayerSmoothingByType[NPC.type] = true;
@@ -77,9 +77,9 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.75f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.75f * balance);
 			NPC.damage = (int)(NPC.damage * 0.75f);
 		}
 

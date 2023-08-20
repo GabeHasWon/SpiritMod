@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stone of Spirits Past");
-			Tooltip.SetDefault("Creates orbiting souls to hurt nearby enemies");
+			// DisplayName.SetDefault("Stone of Spirits Past");
+			// Tooltip.SetDefault("Creates orbiting souls to hurt nearby enemies");
 		}
 
 		public override void SetDefaults()

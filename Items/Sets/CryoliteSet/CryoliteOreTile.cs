@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.CryoliteSet
@@ -19,9 +20,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 
 			TileID.Sets.Ore[Type] = true;
 
-			ItemDrop = ModContent.ItemType<CryoliteOre>();   //put your CustomBlock name
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Cryolite Ore");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(40, 0, 205), name);
 			HitSound = SoundID.Tink;
 			MinPick = 65;

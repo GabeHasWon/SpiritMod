@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("High-Grav Boots");
-			Tooltip.SetDefault("Normalizes gravity in space\nHold DOWN to increase gravity and vertical momentum");
+			// DisplayName.SetDefault("High-Grav Boots");
+			// Tooltip.SetDefault("Normalizes gravity in space\nHold DOWN to increase gravity and vertical momentum");
 		}
 		public override void SetDefaults()
 		{

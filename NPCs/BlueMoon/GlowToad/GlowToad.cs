@@ -23,7 +23,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glow Toad");
+			// DisplayName.SetDefault("Glow Toad");
 			Main.npcFrameCount[NPC.type] = 2;
 			NPCHelper.ImmuneTo<StarFlame>(this, BuffID.Confused);
 		}
@@ -52,20 +52,20 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 11; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hitDirection, -1f, 1, default, .81f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hitDirection, -1f, 1, default, .51f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hit.HitDirection, -1f, 1, default, .81f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hit.HitDirection, -1f, 1, default, .51f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int k = 0; k < 11; k++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hitDirection, -1f, 1, default, .81f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hitDirection, -1f, 1, default, .71f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hit.HitDirection, -1f, 1, default, .81f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hit.HitDirection, -1f, 1, default, .71f);
 				}
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GlowToad1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GlowToad2").Type, 1f);
@@ -193,7 +193,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 
 		private Vector2 Origin => (Main.npc[(int)Projectile.ai[0]].ModNPC as GlowToad).TongueOffset;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Glow Tongue");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Glow Tongue");
 
 		public override void SetDefaults()
 		{

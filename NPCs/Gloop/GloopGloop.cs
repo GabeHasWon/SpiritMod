@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Gloop
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gloop");
+			// DisplayName.SetDefault("Gloop");
 			Main.npcFrameCount[NPC.type] = 3;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
@@ -84,14 +84,14 @@ namespace SpiritMod.NPCs.Gloop
 			npcLoot.AddOneFromOptions(67, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 11; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hitDirection, -1f, 0, default, .61f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hit.HitDirection, -1f, 0, default, .61f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				for (int k = 0; k < 20; k++) {
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hitDirection, -1f, 0, default, .91f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hit.HitDirection, -1f, 0, default, .91f);
 				}
 			}
 		}
@@ -104,7 +104,7 @@ namespace SpiritMod.NPCs.Gloop
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(6)) {
 				target.AddBuff(BuffID.Poisoned, 180);

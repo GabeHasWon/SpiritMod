@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood.DriftwoodArmor
 	[AutoloadEquip(EquipType.Body)]
 	public class DriftwoodChestplate : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Driftwood Chestplate");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Driftwood Chestplate");
 
 		public override void SetDefaults()
 		{

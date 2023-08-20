@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Drone Controller");
-			Tooltip.SetDefault("Summons a Starplate Fighter Drone to fight for you");
+			// DisplayName.SetDefault("Drone Controller");
+			// Tooltip.SetDefault("Summons a Starplate Fighter Drone to fight for you");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

@@ -11,8 +11,8 @@ namespace SpiritMod.Mounts.RlyehianMount
 {
 	public class RlyehianMount : ModMount
 	{
-		public override void Load() => On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
-		public override void Unload() => On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
+		public override void Load() => Terraria.DataStructures.On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
+		public override void Unload() => Terraria.DataStructures.On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
 
 		private int attackCooldown = 0;
 
@@ -177,7 +177,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 			return false;
 		}
 
-		private void DrawOverPlayer(On.Terraria.DataStructures.PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
+		private void DrawOverPlayer(Terraria.DataStructures.On_PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
 		{
 			orig(ref drawinfo);
 

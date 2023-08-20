@@ -9,7 +9,7 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusking Mask");
+			// DisplayName.SetDefault("Dusking Mask");
 		}
 
 		public override void SetDefaults()

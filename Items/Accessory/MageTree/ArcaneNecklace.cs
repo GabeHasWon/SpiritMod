@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory.MageTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Necklace");
-			Tooltip.SetDefault("Increases maximum mana by 20\nEnemies have 20% chance to drop an extra Mana Star");
+			// DisplayName.SetDefault("Arcane Necklace");
+			// Tooltip.SetDefault("Increases maximum mana by 20\nEnemies have 20% chance to drop an extra Mana Star");
 		}
 
 		public override void SetDefaults()

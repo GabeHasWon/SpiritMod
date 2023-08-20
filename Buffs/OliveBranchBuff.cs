@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Peaceful Resolution");
-			Description.SetDefault("'Make peace with your enemies'");
+			// DisplayName.SetDefault("Peaceful Resolution");
+			// Description.SetDefault("'Make peace with your enemies'");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

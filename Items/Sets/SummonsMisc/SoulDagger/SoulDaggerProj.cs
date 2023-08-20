@@ -63,7 +63,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Dagger");
+			// DisplayName.SetDefault("Soul Dagger");
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -196,7 +196,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 		protected virtual Color DrawColor => Color.White;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Dagger");
+			// DisplayName.SetDefault("Soul Dagger");
 			Main.projFrames[Projectile.type] = 10;
 		}
 

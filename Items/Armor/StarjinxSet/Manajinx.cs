@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Manajinx Pylon");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Manajinx Pylon");
 
 		public override void SetDefaults()
 		{

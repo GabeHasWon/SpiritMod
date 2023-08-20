@@ -446,9 +446,9 @@ namespace SpiritMod
 			#region configLabels
 			void AddTranslation(string name, string defaultValue)
 			{
-				ModTranslation config = LocalizationLoader.CreateTranslation(this, name);
-				config.SetDefault(defaultValue);
-				LocalizationLoader.AddTranslation(config);
+				LocalizedText config = Language.GetOrRegister(this, name); //1.4.4PORT
+				// config.SetDefault(defaultValue);
+				//LocalizationLoader.AddTranslation(config)/* tModPorter Note: Removed. Use Language.GetOrRegister */;
 			}
 
 			//Regular Config labels
@@ -471,9 +471,9 @@ namespace SpiritMod
 			//Music Config
 			void AddMusicTranslation(string name, string addedValue)
 			{
-				ModTranslation config = LocalizationLoader.CreateTranslation(this, name);
-				config.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  " + addedValue);
-				LocalizationLoader.AddTranslation(config);
+				LocalizedText config = Language.GetOrRegister(this, name); //1.4.4PORT
+				// config.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  " + addedValue);
+				//LocalizationLoader.AddTranslation(config)/* tModPorter Note: Removed. Use Language.GetOrRegister */;
 			}
 
 			AddMusicTranslation("BlizzardMusic", "Adds a unique track for Blizzards");

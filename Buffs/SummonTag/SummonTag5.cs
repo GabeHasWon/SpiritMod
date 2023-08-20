@@ -8,7 +8,7 @@ namespace SpiritMod.Buffs.SummonTag
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Summon Tag");
+			// DisplayName.SetDefault("Summon Tag");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

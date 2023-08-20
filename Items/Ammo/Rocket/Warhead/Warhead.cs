@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Ammo.Rocket.Warhead
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Warhead");
-			Tooltip.SetDefault("Can be used as ammo for rocket launchers");
+			// DisplayName.SetDefault("Warhead");
+			// Tooltip.SetDefault("Can be used as ammo for rocket launchers");
 		}
 
 		public override void SetDefaults()
@@ -55,7 +55,7 @@ namespace SpiritMod.Items.Ammo.Rocket.Warhead
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Warhead");
+			// DisplayName.SetDefault("Warhead");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}

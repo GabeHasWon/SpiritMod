@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Emerald_Bow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Emerald Bow");
-			Tooltip.SetDefault("Turns wooden arrows into emerald arrows\nEmerald arrows occasionally explode upon hitting enemies");
+			// DisplayName.SetDefault("Emerald Bow");
+			// Tooltip.SetDefault("Turns wooden arrows into emerald arrows\nEmerald arrows occasionally explode upon hitting enemies");
 		}
 
 		public override void SetDefaults()

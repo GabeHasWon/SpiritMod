@@ -13,7 +13,7 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Angel's Wrath");
+			// DisplayName.SetDefault("Angel's Wrath");
 		}
 
 		public override bool ReApply(NPC npc, int time, int buffIndex)

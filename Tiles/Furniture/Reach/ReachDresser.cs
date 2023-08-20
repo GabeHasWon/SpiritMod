@@ -34,13 +34,11 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Dresser");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Dresser");
 			AddMapEntry(new Color(179, 146, 107), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[] { TileID.Dressers };
-			ContainerName.SetDefault("Elderbark Dresser");
-			DresserDrop = ModContent.ItemType<Items.Placeable.Furniture.Reach.ReachDresser>();
             TileID.Sets.HasOutlines[Type] = true;
         }
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
@@ -152,11 +150,11 @@ namespace SpiritMod.Tiles.Furniture.Reach
 				player.cursorItemIconText = Language.GetTextValue("LegacyChestType.0");
 			else
 			{
-				string defaultName = TileLoader.ContainerName(tile.TileType);
+				string defaultName = TileLoader.DefaultContainerName(tile.TileType, tile.TileFrameX, tile.TileFrameY);
 				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : defaultName;
 				if (player.cursorItemIconText == defaultName)
 				{
-					player.cursorItemIconID = DresserDrop;
+					player.cursorItemIconID = TileLoader.GetItemDropFromTypeAndStyle(Type);
 					player.cursorItemIconText = "";
 				}
 			}
@@ -172,7 +170,7 @@ namespace SpiritMod.Tiles.Furniture.Reach
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, DresserDrop);
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, TileLoader.GetItemDropFromTypeAndStyle(Type));
 			Chest.DestroyChest(i, j);
 		}
 	}

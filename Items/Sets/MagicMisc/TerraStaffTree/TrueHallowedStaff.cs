@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Hallowed Staff");
-			Tooltip.SetDefault("Shoots out multiple swords with different effects.");
+			// DisplayName.SetDefault("True Hallowed Staff");
+			// Tooltip.SetDefault("Shoots out multiple swords with different effects.");
 			Item.staff[Item.type] = true;
 		}
 

@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Wheezer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wheezer");
+			// DisplayName.SetDefault("Wheezer");
 			Main.npcFrameCount[NPC.type] = 16;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
@@ -56,10 +56,10 @@ namespace SpiritMod.NPCs.Wheezer
 			return SpawnCondition.Cavern.Chance * 0.17f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 11; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, .61f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, .61f);
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("WheezerGore1").Type, 1f);

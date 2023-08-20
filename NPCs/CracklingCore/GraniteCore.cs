@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.CracklingCore
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crackling Core");
+			// DisplayName.SetDefault("Crackling Core");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 		}
@@ -56,12 +56,12 @@ namespace SpiritMod.NPCs.CracklingCore
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hitDirection, -2.5f, 0, default, 0.27f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hitDirection, -2.5f, 0, default, 0.87f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.27f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.87f);
 			}
 		}
 
@@ -115,7 +115,7 @@ namespace SpiritMod.NPCs.CracklingCore
 		}
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Confused, 160);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.Confused, 160);
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<GraniteChunk>();
 	}
 }

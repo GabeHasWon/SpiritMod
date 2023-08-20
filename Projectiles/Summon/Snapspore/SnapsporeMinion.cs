@@ -16,7 +16,7 @@ namespace SpiritMod.Projectiles.Summon.Snapspore
         int counter = 0;
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Snapspore");
+			// DisplayName.SetDefault("Snapspore");
 			Main.projPet[Type] = true;
             ProjectileID.Sets.TrailCacheLength[Type] = 6;
             ProjectileID.Sets.MinionSacrificable[Type] = true;

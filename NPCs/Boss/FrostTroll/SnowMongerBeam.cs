@@ -8,7 +8,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 {
 	public class SnowMongerBeam : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Icy Beam");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Icy Beam");
 
 		public override void SetDefaults()
 		{
@@ -30,7 +30,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			tManager.CreateTrail(Projectile, new StandardColorTrail(Color.White * 0.6f), new RoundCap(), new DefaultTrailPosition(), 12f, 80f, new DefaultShader());
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 180, true);

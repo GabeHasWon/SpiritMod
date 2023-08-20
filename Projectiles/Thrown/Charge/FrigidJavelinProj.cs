@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frigid Javelin");
+			// DisplayName.SetDefault("Frigid Javelin");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -22,7 +22,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 				Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BlueCrystalShard, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f).noGravity = true;
 		}
 
-		public override void HitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(BuffID.Frostburn, 180, true);
+		public override void HitNPC(NPC target, NPC.HitInfo hit, int damage) => target.AddBuff(BuffID.Frostburn, 180, true);
 
 		public override void Kill(int timeLeft)
 		{

@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.PirateStuff
 {
 	public class PirateChest : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Pirate Chest");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Pirate Chest");
 
 		public override void SetDefaults()
 		{

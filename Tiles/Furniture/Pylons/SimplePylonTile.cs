@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.Map;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Default;
@@ -23,6 +24,7 @@ namespace SpiritMod.Tiles.Furniture.Pylons
 		public Asset<Texture2D> mapIcon;
 
 		internal abstract string MapKeyName { get; }
+		internal abstract Condition CanBeSold { get; }
 
 		public override void Load()
 		{
@@ -51,13 +53,13 @@ namespace SpiritMod.Tiles.Furniture.Pylons
 
 			AddToArray(ref TileID.Sets.CountsAsPylon);
 
-			ModTranslation pylonName = CreateMapEntryName();
-			pylonName.SetDefault($"${MapKeyName}");
+			LocalizedText pylonName = CreateMapEntryName();
+			// pylonName.SetDefault($"${MapKeyName}");
 			AddMapEntry(Color.White, pylonName);
 		}
 
 		public virtual bool IsSold(int npcType, Player player, bool npcHappyEnough) => true;
-		public override int? IsPylonForSale(int npcType, Player player, bool isNPCHappyEnough) => IsSold(npcType, player, isNPCHappyEnough) ? ModContent.ItemType<T>() : null;
+		public override NPCShop.Entry GetNPCShopEntry() => new(ModContent.ItemType<T>(), Condition.AnotherTownNPCNearby, Condition.NotInEvilBiome, Condition.HappyEnoughToSellPylons, CanBeSold);
 
 		public override void MouseOver(int i, int j)
 		{

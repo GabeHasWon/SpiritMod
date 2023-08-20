@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Voyager");
+			// DisplayName.SetDefault("Starplate Voyager");
 
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);

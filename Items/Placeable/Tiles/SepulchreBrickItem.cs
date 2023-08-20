@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sepulchre Roofing");
+			// DisplayName.SetDefault("Sepulchre Roofing");
 		}
 
 

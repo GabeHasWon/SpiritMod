@@ -1,4 +1,4 @@
-﻿AceOfClubs: {
+AceOfClubs: {
 	DisplayName: Ace of Clubs
 	Tooltip: Critical hits make enemies drop money
 }
@@ -476,7 +476,10 @@ MimicRepellent: {
 		'''
 }
 
-Moonlight_Sack.DisplayName: Moonlight Sack
+Moonlight_Sack: {
+	DisplayName: Moonlight Sack
+	Tooltip: ""
+}
 
 OpalFrogItem: {
 	DisplayName: Opal Frog
@@ -701,9 +704,20 @@ SpiritSolution: {
 		'''
 }
 
-AstronautBody.DisplayName: Astronaut Suit
-AstronautHelm.DisplayName: Astronaut Helmet
-AstronautLegs.DisplayName: Astronaut Pants
+AstronautBody: {
+	DisplayName: Astronaut Suit
+	Tooltip: ""
+}
+
+AstronautHelm: {
+	DisplayName: Astronaut Helmet
+	Tooltip: ""
+}
+
+AstronautLegs: {
+	DisplayName: Astronaut Pants
+	Tooltip: ""
+}
 
 BeachTowel: {
 	DisplayName: Beach Towel
@@ -730,10 +744,25 @@ TintedGlasses: {
 	Tooltip: "'They help sell the look, so it's best to keep them on even when it's dark.'"
 }
 
-BeekeeperBody.DisplayName: Beekeeper's Suit
-BeekeeperHead.DisplayName: Beekeeper's Visor
-BeekeeperLegs.DisplayName: Beekeeper's Greaves
-BotanistBody.DisplayName: Botanist Apron
+BeekeeperBody: {
+	DisplayName: Beekeeper's Suit
+	Tooltip: ""
+}
+
+BeekeeperHead: {
+	DisplayName: Beekeeper's Visor
+	Tooltip: ""
+}
+
+BeekeeperLegs: {
+	DisplayName: Beekeeper's Greaves
+	Tooltip: ""
+}
+
+BotanistBody: {
+	DisplayName: Botanist Apron
+	Tooltip: ""
+}
 
 BotanistHat: {
 	DisplayName: Sunflower Strawhat
@@ -745,21 +774,80 @@ BotanistLegs: {
 	Tooltip: 10% increased move speed
 }
 
-CapacitorBody.DisplayName: Capacitor's Robes
-CapacitorHead.DisplayName: Capacitor's Hood
-CapacitorLegs.DisplayName: Capacitor's Leggings
-CenturionBody.DisplayName: Centurion's Platemail
-CenturionHead.DisplayName: Centurion's Helmet
-CenturionLegs.DisplayName: Centurion's Greaves
-CoiledChestplate.DisplayName: Autonaut's Chestplate
-CoiledLeggings.DisplayName: Autonaut's Leggings
-CoiledMask.DisplayName: Autonaut's Headgear
-CommandoBody.DisplayName: Commando's Suit
-CommandoHead.DisplayName: Commando's Visor
-CommandoLegs.DisplayName: Commando's Greaves
-CowboyBody.DisplayName: Outlaw's Vest
-CowboyHead.DisplayName: Outlaw's Hat
-CowboyLegs.DisplayName: Outlaw's Pants
+CapacitorBody: {
+	DisplayName: Capacitor's Robes
+	Tooltip: ""
+}
+
+CapacitorHead: {
+	DisplayName: Capacitor's Hood
+	Tooltip: ""
+}
+
+CapacitorLegs: {
+	DisplayName: Capacitor's Leggings
+	Tooltip: ""
+}
+
+CenturionBody: {
+	DisplayName: Centurion's Platemail
+	Tooltip: ""
+}
+
+CenturionHead: {
+	DisplayName: Centurion's Helmet
+	Tooltip: ""
+}
+
+CenturionLegs: {
+	DisplayName: Centurion's Greaves
+	Tooltip: ""
+}
+
+CoiledChestplate: {
+	DisplayName: Autonaut's Chestplate
+	Tooltip: ""
+}
+
+CoiledLeggings: {
+	DisplayName: Autonaut's Leggings
+	Tooltip: ""
+}
+
+CoiledMask: {
+	DisplayName: Autonaut's Headgear
+	Tooltip: ""
+}
+
+CommandoBody: {
+	DisplayName: Commando's Suit
+	Tooltip: ""
+}
+
+CommandoHead: {
+	DisplayName: Commando's Visor
+	Tooltip: ""
+}
+
+CommandoLegs: {
+	DisplayName: Commando's Greaves
+	Tooltip: ""
+}
+
+CowboyBody: {
+	DisplayName: Outlaw's Vest
+	Tooltip: ""
+}
+
+CowboyHead: {
+	DisplayName: Outlaw's Hat
+	Tooltip: ""
+}
+
+CowboyLegs: {
+	DisplayName: Outlaw's Pants
+	Tooltip: ""
+}
 
 DaybloomBody: {
 	DisplayName: Sunflower Garb
@@ -776,29 +864,95 @@ DaybloomLegs: {
 	Tooltip: 4% increased magic critical strike chance
 }
 
-DiverBody.DisplayName: Ancient Diver's Plate
-DiverHead.DisplayName: Ancient Diver's Helmet
-DiverLegs.DisplayName: Ancient Diver's Pants
-FreemanBody.DisplayName: The Hunted's Hazard Suit
-FreemanHead.DisplayName: The Hunted's Goggles
-FreemanLegs.DisplayName: The Hunted's Hazard Leggings
-GeodeChestplate.DisplayName: Geode Chestplate
-GeodeHelmet.DisplayName: Geode Helmet
-GeodeLeggings.DisplayName: Geode Leggings
-SnowRangerBody.DisplayName: Fur Coverings
-SnowRangerHead.DisplayName: Fur Helmet
-SnowRangerLegs.DisplayName: Fur Legwraps
-JackBody.DisplayName: Handsome Jack's Suit
-JackHead.DisplayName: Handsome Jack's Beautiful Visage
-JackLegs.DisplayName: Handsome Jack's Pants
+DiverBody: {
+	DisplayName: Ancient Diver's Plate
+	Tooltip: ""
+}
+
+DiverHead: {
+	DisplayName: Ancient Diver's Helmet
+	Tooltip: ""
+}
+
+DiverLegs: {
+	DisplayName: Ancient Diver's Pants
+	Tooltip: ""
+}
+
+FreemanBody: {
+	DisplayName: The Hunted's Hazard Suit
+	Tooltip: ""
+}
+
+FreemanHead: {
+	DisplayName: The Hunted's Goggles
+	Tooltip: ""
+}
+
+FreemanLegs: {
+	DisplayName: The Hunted's Hazard Leggings
+	Tooltip: ""
+}
+
+GeodeChestplate: {
+	DisplayName: Geode Chestplate
+	Tooltip: ""
+}
+
+GeodeHelmet: {
+	DisplayName: Geode Helmet
+	Tooltip: ""
+}
+
+GeodeLeggings: {
+	DisplayName: Geode Leggings
+	Tooltip: ""
+}
+
+SnowRangerBody: {
+	DisplayName: Fur Coverings
+	Tooltip: ""
+}
+
+SnowRangerHead: {
+	DisplayName: Fur Helmet
+	Tooltip: ""
+}
+
+SnowRangerLegs: {
+	DisplayName: Fur Legwraps
+	Tooltip: ""
+}
+
+JackBody: {
+	DisplayName: Handsome Jack's Suit
+	Tooltip: ""
+}
+
+JackHead: {
+	DisplayName: Handsome Jack's Beautiful Visage
+	Tooltip: ""
+}
+
+JackLegs: {
+	DisplayName: Handsome Jack's Pants
+	Tooltip: ""
+}
 
 LeatherHood: {
 	DisplayName: Marksman's Hood
 	Tooltip: Increases ranged weapon damage by 1
 }
 
-LeatherLegs.DisplayName: Marksman's Boots
-LeatherPlate.DisplayName: Marksman's Plate
+LeatherLegs: {
+	DisplayName: Marksman's Boots
+	Tooltip: ""
+}
+
+LeatherPlate: {
+	DisplayName: Marksman's Plate
+	Tooltip: ""
+}
 
 MadHat: {
 	DisplayName: Mad Hat
@@ -810,21 +964,55 @@ MadHat: {
 		'''
 }
 
-BeholderMask.DisplayName: Beholder Mask
-GladeWraithMask.DisplayName: Glade Wraith Mask
-HydraMaskAcid.DisplayName: Acidic Hydra Mask
-HydraMaskFire.DisplayName: Fiery Hydra Mask
-HydraMaskVenom.DisplayName: Venomous Hydra Mask
-LeafPaddyHat.DisplayName: Rice Paddy Hat
+BeholderMask: {
+	DisplayName: Beholder Mask
+	Tooltip: ""
+}
+
+GladeWraithMask: {
+	DisplayName: Glade Wraith Mask
+	Tooltip: ""
+}
+
+HydraMaskAcid: {
+	DisplayName: Acidic Hydra Mask
+	Tooltip: ""
+}
+
+HydraMaskFire: {
+	DisplayName: Fiery Hydra Mask
+	Tooltip: ""
+}
+
+HydraMaskVenom: {
+	DisplayName: Venomous Hydra Mask
+	Tooltip: ""
+}
+
+LeafPaddyHat: {
+	DisplayName: Rice Paddy Hat
+	Tooltip: ""
+}
 
 PsychoMask: {
 	DisplayName: Psycho Mask
 	Tooltip: "'A flower? For meeee?'"
 }
 
-SailorCap.DisplayName: Captain's Cap
-SnapperHat.DisplayName: Snapper's Hat
-TrapperGlove.DisplayName: Trapper's Glove
+SailorCap: {
+	DisplayName: Captain's Cap
+	Tooltip: ""
+}
+
+SnapperHat: {
+	DisplayName: Snapper's Hat
+	Tooltip: ""
+}
+
+TrapperGlove: {
+	DisplayName: Trapper's Glove
+	Tooltip: ""
+}
 
 WinterHat: {
 	DisplayName: Winter Hat
@@ -840,14 +1028,45 @@ MimeMask: {
 		'''
 }
 
-PlagueDoctorCowl.DisplayName: Plague Doctor's Mask
-PlagueDoctorLegs.DisplayName: Plague Doctor's Greaves
-PlagueDoctorRobe.DisplayName: Plague Doctor's Robe
-ProtectorateBody.DisplayName: Protectorate Uniform
-ProtectorateLegs.DisplayName: Protectorate Greaves
-ReachBossBody.DisplayName: Thornspeaker's Garb
-ReachBossHead.DisplayName: Thornspeaker's Helmet
-ReachBossLegs.DisplayName: Thornspeaker's Greaves
+PlagueDoctorCowl: {
+	DisplayName: Plague Doctor's Mask
+	Tooltip: ""
+}
+
+PlagueDoctorLegs: {
+	DisplayName: Plague Doctor's Greaves
+	Tooltip: ""
+}
+
+PlagueDoctorRobe: {
+	DisplayName: Plague Doctor's Robe
+	Tooltip: ""
+}
+
+ProtectorateBody: {
+	DisplayName: Protectorate Uniform
+	Tooltip: ""
+}
+
+ProtectorateLegs: {
+	DisplayName: Protectorate Greaves
+	Tooltip: ""
+}
+
+ReachBossBody: {
+	DisplayName: Thornspeaker's Garb
+	Tooltip: ""
+}
+
+ReachBossHead: {
+	DisplayName: Thornspeaker's Helmet
+	Tooltip: ""
+}
+
+ReachBossLegs: {
+	DisplayName: Thornspeaker's Greaves
+	Tooltip: ""
+}
 
 RogueHood: {
 	DisplayName: Rogue Hood
@@ -859,10 +1078,25 @@ RoguePants: {
 	Tooltip: Increases movement speed by 5%
 }
 
-RoguePlate.DisplayName: Rogue Plate
-Earrings.DisplayName: Earrings
-SilkSirwal.DisplayName: Sirwal
-SilkTop.DisplayName: Desert Top
+RoguePlate: {
+	DisplayName: Rogue Plate
+	Tooltip: ""
+}
+
+Earrings: {
+	DisplayName: Earrings
+	Tooltip: ""
+}
+
+SilkSirwal: {
+	DisplayName: Sirwal
+	Tooltip: ""
+}
+
+SilkTop: {
+	DisplayName: Desert Top
+	Tooltip: ""
+}
 
 Stoneplate: {
 	DisplayName: Stoneplate
@@ -884,120 +1118,575 @@ WayfarerLegs: {
 	Tooltip: 7% increased movement speed
 }
 
-WitchBody.DisplayName: Charmcaster's Robe
-WitchHead.DisplayName: Charmcaster's Hat
-WitchLegs.DisplayName: Charmcaster's Leggings
-AlienBanner.DisplayName: Alien Banner
-AncientApostleBanner.DisplayName: Ancient Apostle Banner
-AncientSpectreBanner.DisplayName: Ancient Spectre Banner
-AntlionAssassinBanner.DisplayName: Antlion Assassin Banner
-ArachmatonBanner.DisplayName: Arachmaton Banner
-ArterialGrasperBanner.DisplayName: Arterial Grasper Banner
-AstralAdventurerBanner.DisplayName: Astral Adventurer Banner
-AstralAmalgamBanner.DisplayName: Astral Amalgam Banner
-BeholderBanner.DisplayName: Beholder Banner
-BlazingSkullBanner.DisplayName: Wrathful Soul Banner
-BlizzardBanditBanner.DisplayName: Blizzard Bandit Banner
-BlizzardNimbusBanner.DisplayName: Blizzard Nimbus Banner
-BloaterBanner.DisplayName: Bloater Banner
-BloatfishBanner.DisplayName: Bloatfish Banner
-BloomshroomBanner.DisplayName: Bloomshroom Banner
-BlossomHoundBanner.DisplayName: Blossom Hound Banner
-BlueDungeonCubeBanner.DisplayName: Blue Dungeon Cube Banner
-BottomFeederBanner.DisplayName: Bottom Feeder Banner
-BoulderBehemothBanner.DisplayName: Boulder Behemoth Banner
-BriarthornSlimeBanner.DisplayName: Briarthorn Slime Banner
-BubbleBruteBanner.DisplayName: Bubble Brute Banner
-CavernBanditBanner.DisplayName: Cavern Bandit Banner
-CavernCrawlerBanner.DisplayName: Cavern Crawler Banner
-ChestZombieBanner.DisplayName: Chest Zombie Banner
-CoconutSlimeBanner.DisplayName: Coconut Slime Banner
-CracklingCoreBanner.DisplayName: Crackling Core Banner
-CrocosaurBanner.DisplayName: Crocosaur Banner
-CrystalDrifterBanner.DisplayName: Crystal Drifter Banner
-CystalBanner.DisplayName: Cystal Banner
-DarkAlchemistBanner.DisplayName: Dark Alchemist Banner
-DeadeyeMarksmanBanner.DisplayName: Deadeye Marksman Banner
-DiseasedSlimeBanner.DisplayName: Noxious Slime Banner
-DraugrBanner.DisplayName: Draugr Banner
-ElectricEelBanner.DisplayName: Electric Eel Banner
-FallenAngelBanner.DisplayName: Fallen Angel Banner
-FallingAsteroidBanner.DisplayName: Falling Asteroid Banner
-FesterflyBanner.DisplayName: Festerfly Banner
-FleshHoundBanner.DisplayName: Flesh Hound Banner
-FurnaceMawBanner.DisplayName: Furnace Maw Banner
-GhastBanner.DisplayName: Ghast Banner
-GiantJellyBanner.DisplayName: Tethervolt Jelly Banner
-GladeWraithBanner.DisplayName: Glade Wraith Banner
-GladiatorSpiritBanner.DisplayName: Gladiator Spirit Banner
-GlitterflyBanner.DisplayName: Glitterfly Banner
-GloopBanner.DisplayName: Gloop Banner
-GlowToadBanner.DisplayName: Glow Toad Banner
-GluttonousDevourerBanner.DisplayName: Gluttonous Devourer Banner
-GoblinGrenadierBanner.DisplayName: Goblin Grenadier Banner
-GoldCrateMimicBanner.DisplayName: Gold Crate Mimic Banner
-GranitecTurretBanner.DisplayName: G-TEK Turret Banner
-GraniteSlimeBanner.DisplayName: Granite Slime Banner
-GreenDungeonCubeBanner.DisplayName: Green Dungeon Cube Banner
-HauntedTomeBanner.DisplayName: Haunted Tome Banner
-HemaphoraBanner.DisplayName: Hemaphora Banner
-HydraGreenBanner.DisplayName: Poisonous Hydra Banner
-HydraPurpleBanner.DisplayName: Venomous Hydra Banner
-HydraRedBanner.DisplayName: Flaming Hydra Banner
-IronCrateMimicBanner.DisplayName: Iron Crate Mimic Banner
-KakamoraBanner.DisplayName: Kakamora Banner
-KakamoraBruteBanner.DisplayName: Kakamora Brute Banner
-KakamoraGliderBanner.DisplayName: Kakamora Glider Banner
-KakamoraShamanBanner.DisplayName: Kakamora Shaman Banner
-KakamoraShielderBanner.DisplayName: Kakamora Shielder Banner
-KakamoraShielderBanner1.DisplayName: Kakamora Guard Banner
-KakamoraThrowerBanner.DisplayName: Kakamora Lobber Banner
-LostMimeBanner.DisplayName: Lost Mime Banner
-LumantisBanner.DisplayName: Lumantis Banner
-LunarSlimeBanner.DisplayName: Stargazer Slime Banner
-MadHatterBanner.DisplayName: Mad Hatter Banner
-MangoWarBanner.DisplayName: Mang O' War Banner
-MangroveDefenderBanner.DisplayName: Mangrove Defender Banner
-MasticatorBanner.DisplayName: Masticator Banner
-MechromancerBanner.DisplayName: Mechromancer Banner
-MoltenCoreBanner.DisplayName: Molten Core Banner
-MoonlightPreserverBanner.DisplayName: Moonlight Preserver Banner
-MoonlightRupturerBanner.DisplayName: Moonlight Rupturer Banner
-MyceliumBotanistBanner.DisplayName: Mycelium Botanist Banner
-NetherbaneBanner.DisplayName: Netherbane Banner
-OccultistBanner.DisplayName: Occultist Banner
-OrbititeBanner.DisplayName: Orbitite Banner
-PhantomBanner.DisplayName: Phantom Banner
-PhantomSamuraiBanner.DisplayName: Phantom Samurai Banner
-PinkDungeonCubeBanner.DisplayName: Pink Dungeon Cube Banner
-PirateLobberBanner.DisplayName: Pirate Lobber Banner
-PokeyBanner.DisplayName: Stactus Banner
-PutromaBanner.DisplayName: Putroma Banner
-ReachmanBanner.DisplayName: Feral Shambler Banner
-RlyehianBanner.DisplayName: R'lyehian Banner
-ScreechOwlBanner.DisplayName: Screech Owl Banner
-ShockhopperBanner.DisplayName: Shockhopper Banner
-SkeletonBruteBanner.DisplayName: Skeleton Brute Banner
-SoulCrusherBanner.DisplayName: Soul Crusher Banner
-SpiritBatBanner.DisplayName: Spirit Bat Banner
-SpiritFloaterBanner.DisplayName: Spirit Floater Banner
-SpiritGhoulBanner.DisplayName: Spirit Ghoul Banner
-SpiritMummyBanner.DisplayName: Spirit Mummy Banner
-SpiritSkullBanner.DisplayName: Spirit Skull Banner
-SpiritTomeBanner.DisplayName: Spirit Tome Banner
-SporeWheezerBanner.DisplayName: Spore Wheezer Banner
-StardancerBanner.DisplayName: Stardancer Banner
-StymphalianBatBanner.DisplayName: Stymphalian Bat Banner
-ThornStalkerBanner.DisplayName: Thorn Stalker Banner
-TrochmatonBanner.DisplayName: Trochmaton Banner
-ValkyrieBanner.DisplayName: Valkyrie Banner
-WanderingSoulBanner.DisplayName: Wandering Soul Banner
-WheezerBanner.DisplayName: Wheezer Banner
-WildwoodWatcherBanner.DisplayName: Wildwood Watcher Banner
-WinterbornBanner.DisplayName: Winterborn Banner
-WinterbornHeraldBanner.DisplayName: Winterborn Herald Banner
-WoodCrateMimicBanner.DisplayName: Wooden Crate Mimic Banner
-YureiBanner.DisplayName: Yuurei Banner
+WitchBody: {
+	DisplayName: Charmcaster's Robe
+	Tooltip: ""
+}
+
+WitchHead: {
+	DisplayName: Charmcaster's Hat
+	Tooltip: ""
+}
+
+WitchLegs: {
+	DisplayName: Charmcaster's Leggings
+	Tooltip: ""
+}
+
+AlienBanner: {
+	DisplayName: Alien Banner
+	Tooltip: ""
+}
+
+AncientApostleBanner: {
+	DisplayName: Ancient Apostle Banner
+	Tooltip: ""
+}
+
+AncientSpectreBanner: {
+	DisplayName: Ancient Spectre Banner
+	Tooltip: ""
+}
+
+AntlionAssassinBanner: {
+	DisplayName: Antlion Assassin Banner
+	Tooltip: ""
+}
+
+ArachmatonBanner: {
+	DisplayName: Arachmaton Banner
+	Tooltip: ""
+}
+
+ArterialGrasperBanner: {
+	DisplayName: Arterial Grasper Banner
+	Tooltip: ""
+}
+
+AstralAdventurerBanner: {
+	DisplayName: Astral Adventurer Banner
+	Tooltip: ""
+}
+
+AstralAmalgamBanner: {
+	DisplayName: Astral Amalgam Banner
+	Tooltip: ""
+}
+
+BeholderBanner: {
+	DisplayName: Beholder Banner
+	Tooltip: ""
+}
+
+BlazingSkullBanner: {
+	DisplayName: Wrathful Soul Banner
+	Tooltip: ""
+}
+
+BlizzardBanditBanner: {
+	DisplayName: Blizzard Bandit Banner
+	Tooltip: ""
+}
+
+BlizzardNimbusBanner: {
+	DisplayName: Blizzard Nimbus Banner
+	Tooltip: ""
+}
+
+BloaterBanner: {
+	DisplayName: Bloater Banner
+	Tooltip: ""
+}
+
+BloatfishBanner: {
+	DisplayName: Bloatfish Banner
+	Tooltip: ""
+}
+
+BloomshroomBanner: {
+	DisplayName: Bloomshroom Banner
+	Tooltip: ""
+}
+
+BlossomHoundBanner: {
+	DisplayName: Blossom Hound Banner
+	Tooltip: ""
+}
+
+BlueDungeonCubeBanner: {
+	DisplayName: Blue Dungeon Cube Banner
+	Tooltip: ""
+}
+
+BottomFeederBanner: {
+	DisplayName: Bottom Feeder Banner
+	Tooltip: ""
+}
+
+BoulderBehemothBanner: {
+	DisplayName: Boulder Behemoth Banner
+	Tooltip: ""
+}
+
+BriarthornSlimeBanner: {
+	DisplayName: Briarthorn Slime Banner
+	Tooltip: ""
+}
+
+BubbleBruteBanner: {
+	DisplayName: Bubble Brute Banner
+	Tooltip: ""
+}
+
+CavernBanditBanner: {
+	DisplayName: Cavern Bandit Banner
+	Tooltip: ""
+}
+
+CavernCrawlerBanner: {
+	DisplayName: Cavern Crawler Banner
+	Tooltip: ""
+}
+
+ChestZombieBanner: {
+	DisplayName: Chest Zombie Banner
+	Tooltip: ""
+}
+
+CoconutSlimeBanner: {
+	DisplayName: Coconut Slime Banner
+	Tooltip: ""
+}
+
+CracklingCoreBanner: {
+	DisplayName: Crackling Core Banner
+	Tooltip: ""
+}
+
+CrocosaurBanner: {
+	DisplayName: Crocosaur Banner
+	Tooltip: ""
+}
+
+CrystalDrifterBanner: {
+	DisplayName: Crystal Drifter Banner
+	Tooltip: ""
+}
+
+CystalBanner: {
+	DisplayName: Cystal Banner
+	Tooltip: ""
+}
+
+DarkAlchemistBanner: {
+	DisplayName: Dark Alchemist Banner
+	Tooltip: ""
+}
+
+DeadeyeMarksmanBanner: {
+	DisplayName: Deadeye Marksman Banner
+	Tooltip: ""
+}
+
+DiseasedSlimeBanner: {
+	DisplayName: Noxious Slime Banner
+	Tooltip: ""
+}
+
+DraugrBanner: {
+	DisplayName: Draugr Banner
+	Tooltip: ""
+}
+
+ElectricEelBanner: {
+	DisplayName: Electric Eel Banner
+	Tooltip: ""
+}
+
+FallenAngelBanner: {
+	DisplayName: Fallen Angel Banner
+	Tooltip: ""
+}
+
+FallingAsteroidBanner: {
+	DisplayName: Falling Asteroid Banner
+	Tooltip: ""
+}
+
+FesterflyBanner: {
+	DisplayName: Festerfly Banner
+	Tooltip: ""
+}
+
+FleshHoundBanner: {
+	DisplayName: Flesh Hound Banner
+	Tooltip: ""
+}
+
+FurnaceMawBanner: {
+	DisplayName: Furnace Maw Banner
+	Tooltip: ""
+}
+
+GhastBanner: {
+	DisplayName: Ghast Banner
+	Tooltip: ""
+}
+
+GiantJellyBanner: {
+	DisplayName: Tethervolt Jelly Banner
+	Tooltip: ""
+}
+
+GladeWraithBanner: {
+	DisplayName: Glade Wraith Banner
+	Tooltip: ""
+}
+
+GladiatorSpiritBanner: {
+	DisplayName: Gladiator Spirit Banner
+	Tooltip: ""
+}
+
+GlitterflyBanner: {
+	DisplayName: Glitterfly Banner
+	Tooltip: ""
+}
+
+GloopBanner: {
+	DisplayName: Gloop Banner
+	Tooltip: ""
+}
+
+GlowToadBanner: {
+	DisplayName: Glow Toad Banner
+	Tooltip: ""
+}
+
+GluttonousDevourerBanner: {
+	DisplayName: Gluttonous Devourer Banner
+	Tooltip: ""
+}
+
+GoblinGrenadierBanner: {
+	DisplayName: Goblin Grenadier Banner
+	Tooltip: ""
+}
+
+GoldCrateMimicBanner: {
+	DisplayName: Gold Crate Mimic Banner
+	Tooltip: ""
+}
+
+GranitecTurretBanner: {
+	DisplayName: G-TEK Turret Banner
+	Tooltip: ""
+}
+
+GraniteSlimeBanner: {
+	DisplayName: Granite Slime Banner
+	Tooltip: ""
+}
+
+GreenDungeonCubeBanner: {
+	DisplayName: Green Dungeon Cube Banner
+	Tooltip: ""
+}
+
+HauntedTomeBanner: {
+	DisplayName: Haunted Tome Banner
+	Tooltip: ""
+}
+
+HemaphoraBanner: {
+	DisplayName: Hemaphora Banner
+	Tooltip: ""
+}
+
+HydraGreenBanner: {
+	DisplayName: Poisonous Hydra Banner
+	Tooltip: ""
+}
+
+HydraPurpleBanner: {
+	DisplayName: Venomous Hydra Banner
+	Tooltip: ""
+}
+
+HydraRedBanner: {
+	DisplayName: Flaming Hydra Banner
+	Tooltip: ""
+}
+
+IronCrateMimicBanner: {
+	DisplayName: Iron Crate Mimic Banner
+	Tooltip: ""
+}
+
+KakamoraBanner: {
+	DisplayName: Kakamora Banner
+	Tooltip: ""
+}
+
+KakamoraBruteBanner: {
+	DisplayName: Kakamora Brute Banner
+	Tooltip: ""
+}
+
+KakamoraGliderBanner: {
+	DisplayName: Kakamora Glider Banner
+	Tooltip: ""
+}
+
+KakamoraShamanBanner: {
+	DisplayName: Kakamora Shaman Banner
+	Tooltip: ""
+}
+
+KakamoraShielderBanner: {
+	DisplayName: Kakamora Shielder Banner
+	Tooltip: ""
+}
+
+KakamoraShielderBanner1: {
+	DisplayName: Kakamora Guard Banner
+	Tooltip: ""
+}
+
+KakamoraThrowerBanner: {
+	DisplayName: Kakamora Lobber Banner
+	Tooltip: ""
+}
+
+LostMimeBanner: {
+	DisplayName: Lost Mime Banner
+	Tooltip: ""
+}
+
+LumantisBanner: {
+	DisplayName: Lumantis Banner
+	Tooltip: ""
+}
+
+LunarSlimeBanner: {
+	DisplayName: Stargazer Slime Banner
+	Tooltip: ""
+}
+
+MadHatterBanner: {
+	DisplayName: Mad Hatter Banner
+	Tooltip: ""
+}
+
+MangoWarBanner: {
+	DisplayName: Mang O' War Banner
+	Tooltip: ""
+}
+
+MangroveDefenderBanner: {
+	DisplayName: Mangrove Defender Banner
+	Tooltip: ""
+}
+
+MasticatorBanner: {
+	DisplayName: Masticator Banner
+	Tooltip: ""
+}
+
+MechromancerBanner: {
+	DisplayName: Mechromancer Banner
+	Tooltip: ""
+}
+
+MoltenCoreBanner: {
+	DisplayName: Molten Core Banner
+	Tooltip: ""
+}
+
+MoonlightPreserverBanner: {
+	DisplayName: Moonlight Preserver Banner
+	Tooltip: ""
+}
+
+MoonlightRupturerBanner: {
+	DisplayName: Moonlight Rupturer Banner
+	Tooltip: ""
+}
+
+MyceliumBotanistBanner: {
+	DisplayName: Mycelium Botanist Banner
+	Tooltip: ""
+}
+
+NetherbaneBanner: {
+	DisplayName: Netherbane Banner
+	Tooltip: ""
+}
+
+OccultistBanner: {
+	DisplayName: Occultist Banner
+	Tooltip: ""
+}
+
+OrbititeBanner: {
+	DisplayName: Orbitite Banner
+	Tooltip: ""
+}
+
+PhantomBanner: {
+	DisplayName: Phantom Banner
+	Tooltip: ""
+}
+
+PhantomSamuraiBanner: {
+	DisplayName: Phantom Samurai Banner
+	Tooltip: ""
+}
+
+PinkDungeonCubeBanner: {
+	DisplayName: Pink Dungeon Cube Banner
+	Tooltip: ""
+}
+
+PirateLobberBanner: {
+	DisplayName: Pirate Lobber Banner
+	Tooltip: ""
+}
+
+PokeyBanner: {
+	DisplayName: Stactus Banner
+	Tooltip: ""
+}
+
+PutromaBanner: {
+	DisplayName: Putroma Banner
+	Tooltip: ""
+}
+
+ReachmanBanner: {
+	DisplayName: Feral Shambler Banner
+	Tooltip: ""
+}
+
+RlyehianBanner: {
+	DisplayName: R'lyehian Banner
+	Tooltip: ""
+}
+
+ScreechOwlBanner: {
+	DisplayName: Screech Owl Banner
+	Tooltip: ""
+}
+
+ShockhopperBanner: {
+	DisplayName: Shockhopper Banner
+	Tooltip: ""
+}
+
+SkeletonBruteBanner: {
+	DisplayName: Skeleton Brute Banner
+	Tooltip: ""
+}
+
+SoulCrusherBanner: {
+	DisplayName: Soul Crusher Banner
+	Tooltip: ""
+}
+
+SpiritBatBanner: {
+	DisplayName: Spirit Bat Banner
+	Tooltip: ""
+}
+
+SpiritFloaterBanner: {
+	DisplayName: Spirit Floater Banner
+	Tooltip: ""
+}
+
+SpiritGhoulBanner: {
+	DisplayName: Spirit Ghoul Banner
+	Tooltip: ""
+}
+
+SpiritMummyBanner: {
+	DisplayName: Spirit Mummy Banner
+	Tooltip: ""
+}
+
+SpiritSkullBanner: {
+	DisplayName: Spirit Skull Banner
+	Tooltip: ""
+}
+
+SpiritTomeBanner: {
+	DisplayName: Spirit Tome Banner
+	Tooltip: ""
+}
+
+SporeWheezerBanner: {
+	DisplayName: Spore Wheezer Banner
+	Tooltip: ""
+}
+
+StardancerBanner: {
+	DisplayName: Stardancer Banner
+	Tooltip: ""
+}
+
+StymphalianBatBanner: {
+	DisplayName: Stymphalian Bat Banner
+	Tooltip: ""
+}
+
+ThornStalkerBanner: {
+	DisplayName: Thorn Stalker Banner
+	Tooltip: ""
+}
+
+TrochmatonBanner: {
+	DisplayName: Trochmaton Banner
+	Tooltip: ""
+}
+
+ValkyrieBanner: {
+	DisplayName: Valkyrie Banner
+	Tooltip: ""
+}
+
+WanderingSoulBanner: {
+	DisplayName: Wandering Soul Banner
+	Tooltip: ""
+}
+
+WheezerBanner: {
+	DisplayName: Wheezer Banner
+	Tooltip: ""
+}
+
+WildwoodWatcherBanner: {
+	DisplayName: Wildwood Watcher Banner
+	Tooltip: ""
+}
+
+WinterbornBanner: {
+	DisplayName: Winterborn Banner
+	Tooltip: ""
+}
+
+WinterbornHeraldBanner: {
+	DisplayName: Winterborn Herald Banner
+	Tooltip: ""
+}
+
+WoodCrateMimicBanner: {
+	DisplayName: Wooden Crate Mimic Banner
+	Tooltip: ""
+}
+
+YureiBanner: {
+	DisplayName: Yuurei Banner
+	Tooltip: ""
+}
 
 Book_AccessoryGuide: {
 	DisplayName: The Beginner's Guide to Accessories
@@ -1212,7 +1901,10 @@ AtlasEye: {
 		'''
 }
 
-AtlasMask.DisplayName: Atlas Mask
+AtlasMask: {
+	DisplayName: Atlas Mask
+	Tooltip: ""
+}
 
 AtlasPetItem: {
 	DisplayName: Primordial Pebble
@@ -1292,7 +1984,10 @@ TitanboundBulwark: {
 		'''
 }
 
-Trophy8.DisplayName: Atlas Trophy
+Trophy8: {
+	DisplayName: Atlas Trophy
+	Tooltip: ""
+}
 
 TalonGarb: {
 	DisplayName: Apostle's Garb
@@ -1318,7 +2013,10 @@ AvianPetItem: {
 	Tooltip: Summons an Ancient Hatchling
 }
 
-FlierMask.DisplayName: Ancient Avian Mask
+FlierMask: {
+	DisplayName: Ancient Avian Mask
+	Tooltip: ""
+}
 
 FlyerBag: {
 	DisplayName: Treasure Bag (Ancient Avian)
@@ -1358,7 +2056,10 @@ TalonPiercer: {
 	Tooltip: Creates a flurry of homing feathers
 }
 
-Trophy2.DisplayName: Ancient Avian Trophy
+Trophy2: {
+	DisplayName: Ancient Avian Trophy
+	Tooltip: ""
+}
 
 DuskHood: {
 	DisplayName: Dusk Hood
@@ -1388,7 +2089,10 @@ DuskingBag: {
 		'''
 }
 
-DuskingMask.DisplayName: Dusking Mask
+DuskingMask: {
+	DisplayName: Dusking Mask
+	Tooltip: ""
+}
 
 DuskingPetItem: {
 	DisplayName: Skull Chime
@@ -1424,7 +2128,10 @@ ShadowSphere: {
 	Tooltip: Summons a slow shadow sphere that shoots out Crystal Shadows at foes
 }
 
-Trophy6.DisplayName: Dusking Trophy
+Trophy6: {
+	DisplayName: Dusking Trophy
+	Tooltip: ""
+}
 
 UmbraStaff: {
 	DisplayName: Umbra Staff
@@ -1507,7 +2214,10 @@ InfernonBag: {
 		'''
 }
 
-InfernonMask.DisplayName: Infernon Mask
+InfernonMask: {
+	DisplayName: Infernon Mask
+	Tooltip: ""
+}
 
 InfernonPetItem: {
 	DisplayName: Broken Horn
@@ -1519,7 +2229,10 @@ SevenSins: {
 	Tooltip: Occasionally shoots out a volley of flames
 }
 
-Trophy4.DisplayName: Infernon Trophy
+Trophy4: {
+	DisplayName: Infernon Trophy
+	Tooltip: ""
+}
 
 Cornucopion: {
 	DisplayName: Cornucop-ion
@@ -1552,14 +2265,20 @@ MJWBag: {
 		'''
 }
 
-MJWMask.DisplayName: Moon Jelly Wizard Mask
+MJWMask: {
+	DisplayName: Moon Jelly Wizard Mask
+	Tooltip: ""
+}
 
 MJWPetItem: {
 	DisplayName: Curious Lightbulb
 	Tooltip: Summons a Moon Jelly Lightbulb
 }
 
-MJWTrophy.DisplayName: Moon Jelly Wizard Trophy
+MJWTrophy: {
+	DisplayName: Moon Jelly Wizard Trophy
+	Tooltip: ""
+}
 
 MoonjellySummonStaff: {
 	DisplayName: Lunazoa Staff
@@ -1640,7 +2359,10 @@ ChitinChestplate: {
 	Tooltip: Increases movement speed by 5%
 }
 
-ChitinHelmet.DisplayName: Chitin Faceguard
+ChitinHelmet: {
+	DisplayName: Chitin Faceguard
+	Tooltip: ""
+}
 
 ChitinLeggings: {
 	DisplayName: Chitin Leggings
@@ -1694,14 +2416,20 @@ ScarabPendant: {
 		'''
 }
 
-ScarabMask.DisplayName: Scarabeus Mask
+ScarabMask: {
+	DisplayName: Scarabeus Mask
+	Tooltip: ""
+}
 
 ScarabPetItem: {
 	DisplayName: Scarab Food
 	Tooltip: Summons a little Scarab companion
 }
 
-Trophy1.DisplayName: Scarabeus Trophy
+Trophy1: {
+	DisplayName: Scarabeus Trophy
+	Tooltip: ""
+}
 
 AstralLens: {
 	DisplayName: Astral Convergence
@@ -1765,7 +2493,10 @@ StarplateGlove: {
 	Tooltip: Right click launch multiple punches outward
 }
 
-StarplateMask.DisplayName: Starplate Voyager Mask
+StarplateMask: {
+	DisplayName: Starplate Voyager Mask
+	Tooltip: ""
+}
 
 StarplatePetItem: {
 	DisplayName: Starplate Controller
@@ -1796,7 +2527,10 @@ SteamRaiderBag: {
 		'''
 }
 
-Trophy3.DisplayName: Starplate Voyager Trophy
+Trophy3: {
+	DisplayName: Starplate Voyager Trophy
+	Tooltip: ""
+}
 
 DeathRose: {
 	DisplayName: Briar Blossom
@@ -1827,7 +2561,10 @@ ReachBossSword: {
 		'''
 }
 
-ReachMask.DisplayName: Vinewrath Bane Mask
+ReachMask: {
+	DisplayName: Vinewrath Bane Mask
+	Tooltip: ""
+}
 
 ReachVineStaff: {
 	DisplayName: Bloodpetal Wand
@@ -1844,14 +2581,20 @@ ThornBow: {
 	Tooltip: Wooden arrows occasionally split into poisonous thorns
 }
 
-Trophy5.DisplayName: Vinewrath Bane Trophy
+Trophy5: {
+	DisplayName: Vinewrath Bane Trophy
+	Tooltip: ""
+}
 
 VinewrathPetItem: {
 	DisplayName: Withered Petal
 	Tooltip: Summons an angry Seedling companion
 }
 
-AsteroidPylonItem.DisplayName: Asteroid Pylon
+AsteroidPylonItem: {
+	DisplayName: Asteroid Pylon
+	Tooltip: ""
+}
 
 Durian: {
 	DisplayName: Durian
@@ -1867,7 +2610,10 @@ Guava: {
 	Tooltip: Minor improvements to all stats
 }
 
-BriarPylonItem.DisplayName: Briar Pylon
+BriarPylonItem: {
+	DisplayName: Briar Pylon
+	Tooltip: ""
+}
 
 EnchantedApple: {
 	DisplayName: Enchanted Apple
@@ -1892,11 +2638,30 @@ StarPowder: {
 	Tooltip: Throw onto grass to invigorate it with starlight!
 }
 
-CloudstalkItem.DisplayName: Cloudstalk
-CloudstalkSeed.DisplayName: Cloudstalk Seeds
-Volleyball.DisplayName: Volleyball
-VolleyballCourtChecker.DisplayName: Volleyball Court Checker
-BeachUmbrellaItem.DisplayName: Beach Umbrella
+CloudstalkItem: {
+	DisplayName: Cloudstalk
+	Tooltip: ""
+}
+
+CloudstalkSeed: {
+	DisplayName: Cloudstalk Seeds
+	Tooltip: ""
+}
+
+Volleyball: {
+	DisplayName: Volleyball
+	Tooltip: ""
+}
+
+VolleyballCourtChecker: {
+	DisplayName: Volleyball Court Checker
+	Tooltip: ""
+}
+
+BeachUmbrellaItem: {
+	DisplayName: Beach Umbrella
+	Tooltip: ""
+}
 
 BigBuoyItem: {
 	DisplayName: Large Buoy
@@ -1931,7 +2696,10 @@ LuminBerry: {
 		'''
 }
 
-SpiritPylonItem.DisplayName: Spirit Pylon
+SpiritPylonItem: {
+	DisplayName: Spirit Pylon
+	Tooltip: ""
+}
 
 BlackPearl: {
 	DisplayName: Seabreak Pearl
@@ -1948,7 +2716,10 @@ BlossmoonItem: {
 	Tooltip: "'It releases a soothing aroma'"
 }
 
-BlubbyItem.DisplayName: Blubby
+BlubbyItem: {
+	DisplayName: Blubby
+	Tooltip: ""
+}
 
 BlueMoonSpawn: {
 	DisplayName: Turquoise Lens
@@ -1960,8 +2731,15 @@ BriarCrate: {
 	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
-BriarInchwormItem.DisplayName: Briar Inchworm
-BriarmothItem.DisplayName: Briarmoth
+BriarInchwormItem: {
+	DisplayName: Briar Inchworm
+	Tooltip: ""
+}
+
+BriarmothItem: {
+	DisplayName: Briarmoth
+	Tooltip: ""
+}
 
 ChaosPearl: {
 	DisplayName: Windshear Pearl
@@ -1977,7 +2755,10 @@ CleftItem: {
 	Tooltip: "'Its shell is quite sturdy'"
 }
 
-CrinoidItem.DisplayName: Crinoid
+CrinoidItem: {
+	DisplayName: Crinoid
+	Tooltip: ""
+}
 
 CursedCloth: {
 	DisplayName: Pain Caller
@@ -2211,7 +2992,10 @@ TofuSatay: {
 		'''
 }
 
-GaleSnailItem.DisplayName: Gale Snail
+GaleSnailItem: {
+	DisplayName: Gale Snail
+	Tooltip: ""
+}
 
 GladeWreath: {
 	DisplayName: Glade Wreath
@@ -2232,9 +3016,20 @@ GulperItem: {
 	Tooltip: "'Quite the perky lil' fella'"
 }
 
-HailSnailItem.DisplayName: Hail Snail
-HemoglobItem.DisplayName: Hemoglob
-HemoglorbItem.DisplayName: Hemoglorb
+HailSnailItem: {
+	DisplayName: Hail Snail
+	Tooltip: ""
+}
+
+HemoglobItem: {
+	DisplayName: Hemoglob
+	Tooltip: ""
+}
+
+HemoglorbItem: {
+	DisplayName: Hemoglorb
+	Tooltip: ""
+}
 
 JewelCrown: {
 	DisplayName: Feather Crown
@@ -2251,7 +3046,10 @@ LuvdiscItem: {
 	Tooltip: "'It exudes affection'"
 }
 
-MaggotflyItem.DisplayName: Maggotfly
+MaggotflyItem: {
+	DisplayName: Maggotfly
+	Tooltip: ""
+}
 
 MapScroll: {
 	DisplayName: Cartographer's Map
@@ -2300,7 +3098,10 @@ BottomlessAle: {
 		'''
 }
 
-BottomlessHealingPotion.DisplayName: Bottomless Healing Potion
+BottomlessHealingPotion: {
+	DisplayName: Bottomless Healing Potion
+	Tooltip: ""
+}
 
 DoubleJumpPotion: {
 	DisplayName: Zephyr Potion
@@ -2317,8 +3118,15 @@ MirrorCoat: {
 	Tooltip: Immunity to Stoned
 }
 
-MoonJelly.DisplayName: Moon Jelly
-MoonJellyDonut.DisplayName: Moon Jelly Donut
+MoonJelly: {
+	DisplayName: Moon Jelly
+	Tooltip: ""
+}
+
+MoonJellyDonut: {
+	DisplayName: Moon Jelly Donut
+	Tooltip: ""
+}
 
 MushroomPotion: {
 	DisplayName: Sporecoid Potion
@@ -2375,18 +3183,65 @@ TurtlePotion: {
 		'''
 }
 
-DurasilkSheaf.DisplayName: Durasilk Sheaf
-ExplorerScrollAsteroidFull.DisplayName: Completed Surveyor's Scroll
-ExplorerScrollGraniteFull.DisplayName: Completed Surveyor's Scroll
-ExplorerScrollHiveFull.DisplayName: Completed Surveyor's Scroll
-ExplorerScrollMarbleFull.DisplayName: Completed Surveyor's Scroll
-ExplorerScrollMushroomFull.DisplayName: Completed Surveyor's Scroll
-HornetfishQuest.DisplayName: Hornetfish
-ScarabIdolQuest.DisplayName: Decrepit Idol
-ScientistLure.DisplayName: Grisly Science Experiment
-WarlockLureCorruption.DisplayName: Unholy Magic
-WarlockLureCrimson.DisplayName: Unholy Magic
-RawMeat.DisplayName: Raw Meat
+DurasilkSheaf: {
+	DisplayName: Durasilk Sheaf
+	Tooltip: ""
+}
+
+ExplorerScrollAsteroidFull: {
+	DisplayName: Completed Surveyor's Scroll
+	Tooltip: ""
+}
+
+ExplorerScrollGraniteFull: {
+	DisplayName: Completed Surveyor's Scroll
+	Tooltip: ""
+}
+
+ExplorerScrollHiveFull: {
+	DisplayName: Completed Surveyor's Scroll
+	Tooltip: ""
+}
+
+ExplorerScrollMarbleFull: {
+	DisplayName: Completed Surveyor's Scroll
+	Tooltip: ""
+}
+
+ExplorerScrollMushroomFull: {
+	DisplayName: Completed Surveyor's Scroll
+	Tooltip: ""
+}
+
+HornetfishQuest: {
+	DisplayName: Hornetfish
+	Tooltip: ""
+}
+
+ScarabIdolQuest: {
+	DisplayName: Decrepit Idol
+	Tooltip: ""
+}
+
+ScientistLure: {
+	DisplayName: Grisly Science Experiment
+	Tooltip: ""
+}
+
+WarlockLureCorruption: {
+	DisplayName: Unholy Magic
+	Tooltip: ""
+}
+
+WarlockLureCrimson: {
+	DisplayName: Unholy Magic
+	Tooltip: ""
+}
+
+RawMeat: {
+	DisplayName: Raw Meat
+	Tooltip: ""
+}
 
 ReachBossSummon: {
 	DisplayName: Bramble Tooth
@@ -2402,7 +3257,10 @@ ReachCrate: {
 	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
-RotSlugItem.DisplayName: Rotslug
+RotSlugItem: {
+	DisplayName: Rotslug
+	Tooltip: ""
+}
 
 SatchelReward: {
 	DisplayName: Mysterious Satchel
@@ -2461,14 +3319,20 @@ SurrenderBell: {
 		'''
 }
 
-TinyCrabItem.DisplayName: Palecrab
+TinyCrabItem: {
+	DisplayName: Palecrab
+	Tooltip: ""
+}
 
 TinyLunazoaItem: {
 	DisplayName: Tiny Lunazoa
 	Tooltip: Increases in bait power at night, and even further during the Jelly Deluge
 }
 
-TubewormItem.DisplayName: Tubeworm
+TubewormItem: {
+	DisplayName: Tubeworm
+	Tooltip: ""
+}
 
 VibeshroomItem: {
 	DisplayName: Quivershroom
@@ -2834,7 +3698,10 @@ CandyBag: {
 	Tooltip: Holds up to 99 pieces of candy
 }
 
-CandyBowl.DisplayName: Candy Bowl
+CandyBowl: {
+	DisplayName: Candy Bowl
+	Tooltip: ""
+}
 
 ChocolateBar: {
 	DisplayName: Chocolate Bar
@@ -2986,8 +3853,15 @@ Brightbulb: {
 	Tooltip: "'Intricate and versatile'"
 }
 
-Canvas.DisplayName: Blank Canvas
-GlowRoot.DisplayName: Glowroot
+Canvas: {
+	DisplayName: Blank Canvas
+	Tooltip: ""
+}
+
+GlowRoot: {
+	DisplayName: Glowroot
+	Tooltip: ""
+}
 
 HeartScale: {
 	DisplayName: Heart Scale
@@ -2999,7 +3873,10 @@ OldLeather: {
 	Tooltip: "'Musty, but useful'"
 }
 
-SoulBloom.DisplayName: Soulbloom
+SoulBloom: {
+	DisplayName: Soulbloom
+	Tooltip: ""
+}
 
 SpiritKoi: {
 	DisplayName: Spirit Koi
@@ -3011,7 +3888,10 @@ StarEnergy: {
 	Tooltip: "'It utilizes some kind of otherworldly power source'"
 }
 
-StrippedBamboo.DisplayName: Stripped Bamboo
+StrippedBamboo: {
+	DisplayName: Stripped Bamboo
+	Tooltip: ""
+}
 
 SynthMaterial: {
 	DisplayName: Discharge Tubule
@@ -3183,54 +4063,170 @@ FishCrate: {
 		'''
 }
 
-AcidAC.DisplayName: Broken Air Conditioner
-AcidBarrel.DisplayName: Corrosive Barrel
-AcidBathtub.DisplayName: Corrosive Bathtub
-AcidBed.DisplayName: Corrosive Bed
-AcidBench.DisplayName: Corrosive Work Bench
-AcidBookcase.DisplayName: Corrosive Bookcase
-AcidCandelabra.DisplayName: Corrosive Candelabra
-AcidCandle.DisplayName: Corrosive Candle
-AcidChair.DisplayName: Corrosive Chair
-AcidChandelier.DisplayName: Corrosive Chandelier
-AcidChest.DisplayName: Corrosive Chest
-AcidClock.DisplayName: Corrosive Clock
-AcidDoor.DisplayName: Corrosive Door
-AcidDresser.DisplayName: Corrosive Dresser
-AcidFan.DisplayName: Rusty Fan
-AcidKeg.DisplayName: Corrosive Keg
-AcidLamp.DisplayName: Corrosive Lamp
-AcidLantern.DisplayName: Corrosive Lantern
-AcidPiano.DisplayName: Corrosive Piano
-AcidSink.DisplayName: Corrosive Sink
-AcidSofa.DisplayName: Corrosive Sofa
-AcidTable.DisplayName: Corrosive Table
+AcidAC: {
+	DisplayName: Broken Air Conditioner
+	Tooltip: ""
+}
+
+AcidBarrel: {
+	DisplayName: Corrosive Barrel
+	Tooltip: ""
+}
+
+AcidBathtub: {
+	DisplayName: Corrosive Bathtub
+	Tooltip: ""
+}
+
+AcidBed: {
+	DisplayName: Corrosive Bed
+	Tooltip: ""
+}
+
+AcidBench: {
+	DisplayName: Corrosive Work Bench
+	Tooltip: ""
+}
+
+AcidBookcase: {
+	DisplayName: Corrosive Bookcase
+	Tooltip: ""
+}
+
+AcidCandelabra: {
+	DisplayName: Corrosive Candelabra
+	Tooltip: ""
+}
+
+AcidCandle: {
+	DisplayName: Corrosive Candle
+	Tooltip: ""
+}
+
+AcidChair: {
+	DisplayName: Corrosive Chair
+	Tooltip: ""
+}
+
+AcidChandelier: {
+	DisplayName: Corrosive Chandelier
+	Tooltip: ""
+}
+
+AcidChest: {
+	DisplayName: Corrosive Chest
+	Tooltip: ""
+}
+
+AcidClock: {
+	DisplayName: Corrosive Clock
+	Tooltip: ""
+}
+
+AcidDoor: {
+	DisplayName: Corrosive Door
+	Tooltip: ""
+}
+
+AcidDresser: {
+	DisplayName: Corrosive Dresser
+	Tooltip: ""
+}
+
+AcidFan: {
+	DisplayName: Rusty Fan
+	Tooltip: ""
+}
+
+AcidKeg: {
+	DisplayName: Corrosive Keg
+	Tooltip: ""
+}
+
+AcidLamp: {
+	DisplayName: Corrosive Lamp
+	Tooltip: ""
+}
+
+AcidLantern: {
+	DisplayName: Corrosive Lantern
+	Tooltip: ""
+}
+
+AcidPiano: {
+	DisplayName: Corrosive Piano
+	Tooltip: ""
+}
+
+AcidSink: {
+	DisplayName: Corrosive Sink
+	Tooltip: ""
+}
+
+AcidSofa: {
+	DisplayName: Corrosive Sofa
+	Tooltip: ""
+}
+
+AcidTable: {
+	DisplayName: Corrosive Table
+	Tooltip: ""
+}
 
 AdventurerMap: {
 	DisplayName: Adventurer's Treasure Map
 	Tooltip: "'South of Whiterun, east of Pelagia Farm'"
 }
 
-AsteroidChest.DisplayName: Asteroid Chest
-BambooBarrelItem.DisplayName: Stripped Bamboo Barrel
-BambooBenchItem.DisplayName: Stripped Bamboo Bench
+AsteroidChest: {
+	DisplayName: Asteroid Chest
+	Tooltip: ""
+}
+
+BambooBarrelItem: {
+	DisplayName: Stripped Bamboo Barrel
+	Tooltip: ""
+}
+
+BambooBenchItem: {
+	DisplayName: Stripped Bamboo Bench
+	Tooltip: ""
+}
 
 BambooBirdCageItem: {
 	DisplayName: Stripped Bamboo Bird Cage
 	Tooltip: Birds can be locked inside using right click
 }
 
-BambooPikeItem.DisplayName: Bamboo Pike
-BambooPotItem.DisplayName: Stripped Bamboo Pot
-BismiteChairItem.DisplayName: Bismite Chair
-BismiteTableItem.DisplayName: Bismite Table
+BambooPikeItem: {
+	DisplayName: Bamboo Pike
+	Tooltip: ""
+}
+
+BambooPotItem: {
+	DisplayName: Stripped Bamboo Pot
+	Tooltip: ""
+}
+
+BismiteChairItem: {
+	DisplayName: Bismite Chair
+	Tooltip: ""
+}
+
+BismiteTableItem: {
+	DisplayName: Bismite Table
+	Tooltip: ""
+}
 
 BlueprintTwins: {
 	DisplayName: Twins Blueprint
 	Tooltip: They can't kill what they can't see... They see everything.
 }
 
-BriarFlowerItem.DisplayName: Glowflower
+BriarFlowerItem: {
+	DisplayName: Glowflower
+	Tooltip: ""
+}
 
 DuskingPainting: {
 	DisplayName: Dusking's Wrath
@@ -3257,62 +4253,235 @@ ForgottenKingStatueItem: {
 	Tooltip: "'A memorial of an ancient conquerer'"
 }
 
-GiantAnglerStatue.DisplayName: Giant Manshark Statue
-GraniteSpike1.DisplayName: Granite Coral Formation
-GraniteSpike2.DisplayName: Granite Monolith Formation
-GraniteSpike3.DisplayName: Granite Spike Formation
-GraniteSpike4.DisplayName: Granite Stack Formation
-GraniteSpike5.DisplayName: Granite Tube Formation
-GraniteSpike6.DisplayName: Granite Zigzag Formation
-HangingCloudstalk.DisplayName: Hanging Cloudstalk
-HangingSoulbloom.DisplayName: Hanging Soulbloom
+GiantAnglerStatue: {
+	DisplayName: Giant Manshark Statue
+	Tooltip: ""
+}
+
+GraniteSpike1: {
+	DisplayName: Granite Coral Formation
+	Tooltip: ""
+}
+
+GraniteSpike2: {
+	DisplayName: Granite Monolith Formation
+	Tooltip: ""
+}
+
+GraniteSpike3: {
+	DisplayName: Granite Spike Formation
+	Tooltip: ""
+}
+
+GraniteSpike4: {
+	DisplayName: Granite Stack Formation
+	Tooltip: ""
+}
+
+GraniteSpike5: {
+	DisplayName: Granite Tube Formation
+	Tooltip: ""
+}
+
+GraniteSpike6: {
+	DisplayName: Granite Zigzag Formation
+	Tooltip: ""
+}
+
+HangingCloudstalk: {
+	DisplayName: Hanging Cloudstalk
+	Tooltip: ""
+}
+
+HangingSoulbloom: {
+	DisplayName: Hanging Soulbloom
+	Tooltip: ""
+}
 
 HangingSunPot: {
 	DisplayName: Hanging Sun in a Pot
 	Tooltip: Increases life regeneration during the day
 }
 
-HourglassItem.DisplayName: Ancient Hourglass
+HourglassItem: {
+	DisplayName: Ancient Hourglass
+	Tooltip: ""
+}
 
 MarbleObeliskItem: {
 	DisplayName: Enchanted Marble Obelisk
 	Tooltip: Emits ancient symbols
 }
 
-Pillar1.DisplayName: Large Corinthian Column
-Pillar2.DisplayName: Small Corinthian Column
-Pillar3.DisplayName: Large Doric Column
-Pillar4.DisplayName: Small Doric Column
-Pillar5.DisplayName: Large Ionic Column
-Pillar6.DisplayName: Small Ionic Column
-Pillar7.DisplayName: Large Ruined Column
-Pillar8.DisplayName: Small Ruined Column
-ArcadeMachineItem.DisplayName: Arcade Machine
-BlueFairyLights.DisplayName: Blue Fairy Lights
-BlueNeonLamp.DisplayName: Blue Neon Lantern
-BlueNeonSign.DisplayName: Blue Neon Sign
-GeneratorItem.DisplayName: Glowplate Generator
-GreenFairyLights.DisplayName: Green Fairy Lights
-GreenNeonLamp.DisplayName: Green Neon Lantern
-GreenNeonSign.DisplayName: Green Neon Sign
-LargeTechCrate.DisplayName: Large Glowplate Crate
-NeonCandleBlue.DisplayName: Blue Neon Candle
-NeonCandleGreen.DisplayName: Green Neon Candle
-NeonCandlePurple.DisplayName: Purple Neon Candle
-NeonCandleRed.DisplayName: Red Neon Candle
-NeonCandleYellow.DisplayName: Yellow Neon Candle
-NeonPlantBlue.DisplayName: Blue Neon Plant
-NeonPlantGreen.DisplayName: Green Neon Plant
-NeonPlantPurple.DisplayName: Purple Neon Plant
-NeonPlantRed.DisplayName: Red Neon Plant
-NeonPlantYellow.DisplayName: Yellow Neon Plant
-PurpleFairyLights.DisplayName: Purple Fairy Lights
-PurpleNeonLamp.DisplayName: Purple Neon Lantern
-PurpleNeonSign.DisplayName: Purple Neon Sign
-RedFairyLights.DisplayName: Red Fairy Lights
-RedNeonLamp.DisplayName: Red Neon Lantern
-RedNeonSign.DisplayName: Red Neon Sign
-SmallTechCrate.DisplayName: Small Glowplate Crate
+Pillar1: {
+	DisplayName: Large Corinthian Column
+	Tooltip: ""
+}
+
+Pillar2: {
+	DisplayName: Small Corinthian Column
+	Tooltip: ""
+}
+
+Pillar3: {
+	DisplayName: Large Doric Column
+	Tooltip: ""
+}
+
+Pillar4: {
+	DisplayName: Small Doric Column
+	Tooltip: ""
+}
+
+Pillar5: {
+	DisplayName: Large Ionic Column
+	Tooltip: ""
+}
+
+Pillar6: {
+	DisplayName: Small Ionic Column
+	Tooltip: ""
+}
+
+Pillar7: {
+	DisplayName: Large Ruined Column
+	Tooltip: ""
+}
+
+Pillar8: {
+	DisplayName: Small Ruined Column
+	Tooltip: ""
+}
+
+ArcadeMachineItem: {
+	DisplayName: Arcade Machine
+	Tooltip: ""
+}
+
+BlueFairyLights: {
+	DisplayName: Blue Fairy Lights
+	Tooltip: ""
+}
+
+BlueNeonLamp: {
+	DisplayName: Blue Neon Lantern
+	Tooltip: ""
+}
+
+BlueNeonSign: {
+	DisplayName: Blue Neon Sign
+	Tooltip: ""
+}
+
+GeneratorItem: {
+	DisplayName: Glowplate Generator
+	Tooltip: ""
+}
+
+GreenFairyLights: {
+	DisplayName: Green Fairy Lights
+	Tooltip: ""
+}
+
+GreenNeonLamp: {
+	DisplayName: Green Neon Lantern
+	Tooltip: ""
+}
+
+GreenNeonSign: {
+	DisplayName: Green Neon Sign
+	Tooltip: ""
+}
+
+LargeTechCrate: {
+	DisplayName: Large Glowplate Crate
+	Tooltip: ""
+}
+
+NeonCandleBlue: {
+	DisplayName: Blue Neon Candle
+	Tooltip: ""
+}
+
+NeonCandleGreen: {
+	DisplayName: Green Neon Candle
+	Tooltip: ""
+}
+
+NeonCandlePurple: {
+	DisplayName: Purple Neon Candle
+	Tooltip: ""
+}
+
+NeonCandleRed: {
+	DisplayName: Red Neon Candle
+	Tooltip: ""
+}
+
+NeonCandleYellow: {
+	DisplayName: Yellow Neon Candle
+	Tooltip: ""
+}
+
+NeonPlantBlue: {
+	DisplayName: Blue Neon Plant
+	Tooltip: ""
+}
+
+NeonPlantGreen: {
+	DisplayName: Green Neon Plant
+	Tooltip: ""
+}
+
+NeonPlantPurple: {
+	DisplayName: Purple Neon Plant
+	Tooltip: ""
+}
+
+NeonPlantRed: {
+	DisplayName: Red Neon Plant
+	Tooltip: ""
+}
+
+NeonPlantYellow: {
+	DisplayName: Yellow Neon Plant
+	Tooltip: ""
+}
+
+PurpleFairyLights: {
+	DisplayName: Purple Fairy Lights
+	Tooltip: ""
+}
+
+PurpleNeonLamp: {
+	DisplayName: Purple Neon Lantern
+	Tooltip: ""
+}
+
+PurpleNeonSign: {
+	DisplayName: Purple Neon Sign
+	Tooltip: ""
+}
+
+RedFairyLights: {
+	DisplayName: Red Fairy Lights
+	Tooltip: ""
+}
+
+RedNeonLamp: {
+	DisplayName: Red Neon Lantern
+	Tooltip: ""
+}
+
+RedNeonSign: {
+	DisplayName: Red Neon Sign
+	Tooltip: ""
+}
+
+SmallTechCrate: {
+	DisplayName: Small Glowplate Crate
+	Tooltip: ""
+}
 
 Synthpalm: {
 	DisplayName: Synthpalm Wall Panel
@@ -3324,9 +4493,20 @@ VaporwaveItem: {
 	Tooltip: "'A mix of the past and present'"
 }
 
-YellowFairyLights.DisplayName: Yellow Fairy Lights
-YellowNeonLamp.DisplayName: Yellow Neon Lantern
-YellowNeonSign.DisplayName: Yellow Neon Sign
+YellowFairyLights: {
+	DisplayName: Yellow Fairy Lights
+	Tooltip: ""
+}
+
+YellowNeonLamp: {
+	DisplayName: Yellow Neon Lantern
+	Tooltip: ""
+}
+
+YellowNeonSign: {
+	DisplayName: Yellow Neon Sign
+	Tooltip: ""
+}
 
 OccultistMap: {
 	DisplayName: Occult Wall Scroll
@@ -3462,8 +4642,15 @@ ScrunklyPaintingItem: {
 	Tooltip: "'B. F. Jinx'"
 }
 
-PottedSakura.DisplayName: Sakura Bonsai
-PottedWillow.DisplayName: Yellow Willow Bonsai
+PottedSakura: {
+	DisplayName: Sakura Bonsai
+	Tooltip: ""
+}
+
+PottedWillow: {
+	DisplayName: Yellow Willow Bonsai
+	Tooltip: ""
+}
 
 PrintPrime: {
 	DisplayName: Skeletron Prime Blueprint
@@ -3475,26 +4662,105 @@ PrintProbe: {
 	Tooltip: WARNING: Release may cause seismic anomalies exceeding 10f.
 }
 
-ReachBedItem.DisplayName: Elderbark Bed
-ReachBench.DisplayName: Elderbark Work Bench
-ReachBookcase.DisplayName: Elderbark Bookcase
-ReachCandelabra.DisplayName: Elderbark Candelabra
-ReachCandle.DisplayName: Elderbark Candle
-ReachChairItem.DisplayName: Elderbark Chair
-ReachChandelier.DisplayName: Elderbark Chandelier
-ReachChest.DisplayName: Elderbark Chest
-ReachClockItem.DisplayName: Elderbark Clock
-ReachDoorItem.DisplayName: Elderbark Door
-ReachDresser.DisplayName: Elderbark Dresser
-ReachLampItem.DisplayName: Elderbark Lamp
-ReachLantern.DisplayName: Elderbark Lantern
-ReachPiano.DisplayName: Elderbark Piano
-ReachPlatformTile.DisplayName: Elderbark Platform
-ReachPot.DisplayName: Elderbark Pot
-ReachSink.DisplayName: Elderbark Sink
-ReachSofa.DisplayName: Elderbark Sofa
-ReachTable.DisplayName: Elderbark Table
-ReachTub.DisplayName: Elderbark Bathtub
+ReachBedItem: {
+	DisplayName: Elderbark Bed
+	Tooltip: ""
+}
+
+ReachBench: {
+	DisplayName: Elderbark Work Bench
+	Tooltip: ""
+}
+
+ReachBookcase: {
+	DisplayName: Elderbark Bookcase
+	Tooltip: ""
+}
+
+ReachCandelabra: {
+	DisplayName: Elderbark Candelabra
+	Tooltip: ""
+}
+
+ReachCandle: {
+	DisplayName: Elderbark Candle
+	Tooltip: ""
+}
+
+ReachChairItem: {
+	DisplayName: Elderbark Chair
+	Tooltip: ""
+}
+
+ReachChandelier: {
+	DisplayName: Elderbark Chandelier
+	Tooltip: ""
+}
+
+ReachChest: {
+	DisplayName: Elderbark Chest
+	Tooltip: ""
+}
+
+ReachClockItem: {
+	DisplayName: Elderbark Clock
+	Tooltip: ""
+}
+
+ReachDoorItem: {
+	DisplayName: Elderbark Door
+	Tooltip: ""
+}
+
+ReachDresser: {
+	DisplayName: Elderbark Dresser
+	Tooltip: ""
+}
+
+ReachLampItem: {
+	DisplayName: Elderbark Lamp
+	Tooltip: ""
+}
+
+ReachLantern: {
+	DisplayName: Elderbark Lantern
+	Tooltip: ""
+}
+
+ReachPiano: {
+	DisplayName: Elderbark Piano
+	Tooltip: ""
+}
+
+ReachPlatformTile: {
+	DisplayName: Elderbark Platform
+	Tooltip: ""
+}
+
+ReachPot: {
+	DisplayName: Elderbark Pot
+	Tooltip: ""
+}
+
+ReachSink: {
+	DisplayName: Elderbark Sink
+	Tooltip: ""
+}
+
+ReachSofa: {
+	DisplayName: Elderbark Sofa
+	Tooltip: ""
+}
+
+ReachTable: {
+	DisplayName: Elderbark Table
+	Tooltip: ""
+}
+
+ReachTub: {
+	DisplayName: Elderbark Bathtub
+	Tooltip: ""
+}
 
 TreemanStatue: {
 	DisplayName: Statue of the Old Gods
@@ -3505,56 +4771,180 @@ TreemanStatue: {
 		'''
 }
 
-ReachChestTile.DisplayName: Briar Chest
+ReachChestTile: {
+	DisplayName: Briar Chest
+	Tooltip: ""
+}
 
 ReachPainting: {
 	DisplayName: Just out of Reach
 	Tooltip: "'M. Beigh'"
 }
 
-GraniteSculpture1x2Item.DisplayName: Ominous Granite Sculpture
-GraniteSculpture2x3Item.DisplayName: Wavy Granite Sculpture
-GraniteSculpture3x3Item.DisplayName: Exotic Granite Sculpture
-GraniteSculpture3x5Item.DisplayName: Angular Granite Sculpture
-MarbleSculpture1x2Item.DisplayName: Marble Statuette
-MarbleSculpture2x3Item.DisplayName: Marble Bust
-MarbleSculpture3x8Item.DisplayName: Marble Sculpture
-SepulchreBannerItem.DisplayName: Sepulchre Banner
-SepulchreChest.DisplayName: Sepulchre Chest
-SepulchrePotItem1.DisplayName: Sepulchre Pot
-SepulchrePotItem2.DisplayName: Sepulchre Pot
-ShiverbarkChair.DisplayName: Shiverbark Chair
-ShiverbarkFlag.DisplayName: Shiverbark Flag
-ShiverbarkTable.DisplayName: Shiverbark Table
-ShiverbarkTotem.DisplayName: Shiverbark Totem
-Shrine1.DisplayName: Ancient Shrine (Hachiman)
-Shrine2.DisplayName: Ancient Shrine (Kumano)
-Shrine3.DisplayName: Ancient Shrine (Yasaka)
-SkullPile.DisplayName: Pile of Skulls
-SkullStick.DisplayName: Skull on a Stick
-SpiritBedItem.DisplayName: Duskwood Bed
+GraniteSculpture1x2Item: {
+	DisplayName: Ominous Granite Sculpture
+	Tooltip: ""
+}
+
+GraniteSculpture2x3Item: {
+	DisplayName: Wavy Granite Sculpture
+	Tooltip: ""
+}
+
+GraniteSculpture3x3Item: {
+	DisplayName: Exotic Granite Sculpture
+	Tooltip: ""
+}
+
+GraniteSculpture3x5Item: {
+	DisplayName: Angular Granite Sculpture
+	Tooltip: ""
+}
+
+MarbleSculpture1x2Item: {
+	DisplayName: Marble Statuette
+	Tooltip: ""
+}
+
+MarbleSculpture2x3Item: {
+	DisplayName: Marble Bust
+	Tooltip: ""
+}
+
+MarbleSculpture3x8Item: {
+	DisplayName: Marble Sculpture
+	Tooltip: ""
+}
+
+SepulchreBannerItem: {
+	DisplayName: Sepulchre Banner
+	Tooltip: ""
+}
+
+SepulchreChest: {
+	DisplayName: Sepulchre Chest
+	Tooltip: ""
+}
+
+SepulchrePotItem1: {
+	DisplayName: Sepulchre Pot
+	Tooltip: ""
+}
+
+SepulchrePotItem2: {
+	DisplayName: Sepulchre Pot
+	Tooltip: ""
+}
+
+ShiverbarkChair: {
+	DisplayName: Shiverbark Chair
+	Tooltip: ""
+}
+
+ShiverbarkFlag: {
+	DisplayName: Shiverbark Flag
+	Tooltip: ""
+}
+
+ShiverbarkTable: {
+	DisplayName: Shiverbark Table
+	Tooltip: ""
+}
+
+ShiverbarkTotem: {
+	DisplayName: Shiverbark Totem
+	Tooltip: ""
+}
+
+Shrine1: {
+	DisplayName: Ancient Shrine (Hachiman)
+	Tooltip: ""
+}
+
+Shrine2: {
+	DisplayName: Ancient Shrine (Kumano)
+	Tooltip: ""
+}
+
+Shrine3: {
+	DisplayName: Ancient Shrine (Yasaka)
+	Tooltip: ""
+}
+
+SkullPile: {
+	DisplayName: Pile of Skulls
+	Tooltip: ""
+}
+
+SkullStick: {
+	DisplayName: Skull on a Stick
+	Tooltip: ""
+}
+
+SpiritBedItem: {
+	DisplayName: Duskwood Bed
+	Tooltip: ""
+}
 
 SpiritBiomePainting: {
 	DisplayName: Polaris Psyche
 	Tooltip: "'V. Kaiya'"
 }
 
-SpiritChairItem.DisplayName: Duskwood Chair
-SpiritChest.DisplayName: Duskwood Chest
-SpiritDoorItem.DisplayName: Duskwood Door
-SpiritPainting.DisplayName: The Milestone
-SpiritTableItem.DisplayName: Duskwood Table
-SpiritWorkbench.DisplayName: Duskwood Work Bench
+SpiritChairItem: {
+	DisplayName: Duskwood Chair
+	Tooltip: ""
+}
+
+SpiritChest: {
+	DisplayName: Duskwood Chest
+	Tooltip: ""
+}
+
+SpiritDoorItem: {
+	DisplayName: Duskwood Door
+	Tooltip: ""
+}
+
+SpiritPainting: {
+	DisplayName: The Milestone
+	Tooltip: ""
+}
+
+SpiritTableItem: {
+	DisplayName: Duskwood Table
+	Tooltip: ""
+}
+
+SpiritWorkbench: {
+	DisplayName: Duskwood Work Bench
+	Tooltip: ""
+}
 
 StarplatePainting: {
 	DisplayName: Grand Light Show
 	Tooltip: "'M. Sicano'"
 }
 
-StreamScaleBench.DisplayName: Stream Scale Work Bench
-StreamScaleCandle.DisplayName: Stream Scale Candle
-StreamScaleChair.DisplayName: Stream Scale Chair
-StreamScaleLantern.DisplayName: Stream Scale Lantern
+StreamScaleBench: {
+	DisplayName: Stream Scale Work Bench
+	Tooltip: ""
+}
+
+StreamScaleCandle: {
+	DisplayName: Stream Scale Candle
+	Tooltip: ""
+}
+
+StreamScaleChair: {
+	DisplayName: Stream Scale Chair
+	Tooltip: ""
+}
+
+StreamScaleLantern: {
+	DisplayName: Stream Scale Lantern
+	Tooltip: ""
+}
 
 SunPot: {
 	DisplayName: Sun in a Pot
@@ -3581,70 +4971,300 @@ WWPainting: {
 	Tooltip: "'E. Stern'"
 }
 
-HerosMemorialStatue.DisplayName: Hero's Memorial Statue
-IceBatSculpture.DisplayName: Ice Bat Sculpture
-IceDeitySculpture.DisplayName: Ice Deity Sculpture
-IceFlinxSculpture.DisplayName: Frozen Flinx Sculpture
-IceVikingSculpture.DisplayName: Undead Viking Sculpture
-IceWheezerSculpture.DisplayName: Frozen Wheezer Sculpture
-WinterbornSculpture.DisplayName: Winterborn Sculpture
+HerosMemorialStatue: {
+	DisplayName: Hero's Memorial Statue
+	Tooltip: ""
+}
+
+IceBatSculpture: {
+	DisplayName: Ice Bat Sculpture
+	Tooltip: ""
+}
+
+IceDeitySculpture: {
+	DisplayName: Ice Deity Sculpture
+	Tooltip: ""
+}
+
+IceFlinxSculpture: {
+	DisplayName: Frozen Flinx Sculpture
+	Tooltip: ""
+}
+
+IceVikingSculpture: {
+	DisplayName: Undead Viking Sculpture
+	Tooltip: ""
+}
+
+IceWheezerSculpture: {
+	DisplayName: Frozen Wheezer Sculpture
+	Tooltip: ""
+}
+
+WinterbornSculpture: {
+	DisplayName: Winterborn Sculpture
+	Tooltip: ""
+}
 
 JumpPadItem: {
 	DisplayName: Jump Pad
 	Tooltip: "'Take to the skies!'"
 }
 
-AshfallBox.DisplayName: Music Box (Ashfall)
-AsteroidBox.DisplayName: Music Box (Asteroid Field)
-AtlasBox.DisplayName: Music Box (Atlas)
-AuroraBox.DisplayName: Music Box (Aurora)
-AvianBox.DisplayName: Music Box (Ancient Avian)
-BlizzardBox.DisplayName: Music Box (Blizzard)
-BlueMoonBox.DisplayName: Music Box (Mystic Moon)
-BriarNightBox.DisplayName: Music Box (The Briar- Nighttime)
-BriarUndergroundBox.DisplayName: Music Box (The Briar- Underground)
-CalmNightBox.DisplayName: Music Box (Calm Nights)
-CorruptNightBox.DisplayName: Music Box (Corruption- Night)
-CrimsonNightBox.DisplayName: Music Box (Crimson- Night)
-DesertNightBox.DisplayName: Music Box (Desert- Night)
-FrostLegionBox.DisplayName: Music Box (Frost Legion)
-GraniteBox.DisplayName: Music Box (Granite Caverns)
-HallowNightBox.DisplayName: Music Box (Hallow- Night)
-HyperspaceDayBox.DisplayName: Music Box (Hyperspace- Day)
-InfernonBox.DisplayName: Music Box (Infernon)
-JellyDelugeBox.DisplayName: Music Box (Jelly Deluge)
-LuminousNightBox.DisplayName: Music Box (Luminous Ocean)
-MarbleBox.DisplayName: Music Box (Marble Caverns)
-MeteorBox.DisplayName: Music Box (Meteor)
-MJWBox.DisplayName: Music Box (Moon Jelly Wizard)
-NeonMusicBox.DisplayName: Music Box (Hyperspace- Day)
-OceanDepthsBox.DisplayName: Music Box (Ocean- Depths)
-ReachBox.DisplayName: Music Box (The Briar- Daytime)
-ScarabBox.DisplayName: Music Box (Scarabeus)
-SnowNightBox.DisplayName: Music Box (Snow Biome- Nighttime)
-SpiderCaveBox.DisplayName: Music Box (Spider Caves)
-SpiritBox1.DisplayName: Music Box (Spirit Biome- Overworld)
-SpiritBox2.DisplayName: Music Box (Spirit Biome- Underground)
-SpiritBox3.DisplayName: Music Box (Spirit Biome- Deep Underground)
-SpiritBox4.DisplayName: Music Box (Spirit Biome- Depths)
-StarplateBox.DisplayName: Music Box (Starplate Voyager)
-TideBox.DisplayName: Music Box (The Tide)
-TranquilWindsBox.DisplayName: Music Box (Tranquil Winds)
-VictoryDayBox.DisplayName: Music Box (Victory Day)
-VinewrathBox.DisplayName: Music Box (Vinewrath Bane)
-AtlasRelicItem.DisplayName: Atlas Relic
-AvianRelicItem.DisplayName: Ancient Avian Relic
-DuskingRelicItem.DisplayName: Dusking Relic
-FrostSaucerRelicItem.DisplayName: Snow Monger Relic
-InfernonRelicItem.DisplayName: Infernon Relic
-MJWRelicItem.DisplayName: Moon Jelly Wizard Relic
-OccultistRelicItem.DisplayName: Occultist Relic
-RlyehianRelicItem.DisplayName: R'lyehian Relic
-ScarabeusRelicItem.DisplayName: Scarabeus Relic
-StarplateRelicItem.DisplayName: Starplate Voyager Relic
-VinewrathRelicItem.DisplayName: Vinewrath Bane Relic
-SamuraiStatueItem.DisplayName: Samurai Statue
-SoulSeeds.DisplayName: Soulbloom Seeds
+AshfallBox: {
+	DisplayName: Music Box (Ashfall)
+	Tooltip: ""
+}
+
+AsteroidBox: {
+	DisplayName: Music Box (Asteroid Field)
+	Tooltip: ""
+}
+
+AtlasBox: {
+	DisplayName: Music Box (Atlas)
+	Tooltip: ""
+}
+
+AuroraBox: {
+	DisplayName: Music Box (Aurora)
+	Tooltip: ""
+}
+
+AvianBox: {
+	DisplayName: Music Box (Ancient Avian)
+	Tooltip: ""
+}
+
+BlizzardBox: {
+	DisplayName: Music Box (Blizzard)
+	Tooltip: ""
+}
+
+BlueMoonBox: {
+	DisplayName: Music Box (Mystic Moon)
+	Tooltip: ""
+}
+
+BriarNightBox: {
+	DisplayName: Music Box (The Briar- Nighttime)
+	Tooltip: ""
+}
+
+BriarUndergroundBox: {
+	DisplayName: Music Box (The Briar- Underground)
+	Tooltip: ""
+}
+
+CalmNightBox: {
+	DisplayName: Music Box (Calm Nights)
+	Tooltip: ""
+}
+
+CorruptNightBox: {
+	DisplayName: Music Box (Corruption- Night)
+	Tooltip: ""
+}
+
+CrimsonNightBox: {
+	DisplayName: Music Box (Crimson- Night)
+	Tooltip: ""
+}
+
+DesertNightBox: {
+	DisplayName: Music Box (Desert- Night)
+	Tooltip: ""
+}
+
+FrostLegionBox: {
+	DisplayName: Music Box (Frost Legion)
+	Tooltip: ""
+}
+
+GraniteBox: {
+	DisplayName: Music Box (Granite Caverns)
+	Tooltip: ""
+}
+
+HallowNightBox: {
+	DisplayName: Music Box (Hallow- Night)
+	Tooltip: ""
+}
+
+HyperspaceDayBox: {
+	DisplayName: Music Box (Hyperspace- Day)
+	Tooltip: ""
+}
+
+InfernonBox: {
+	DisplayName: Music Box (Infernon)
+	Tooltip: ""
+}
+
+JellyDelugeBox: {
+	DisplayName: Music Box (Jelly Deluge)
+	Tooltip: ""
+}
+
+LuminousNightBox: {
+	DisplayName: Music Box (Luminous Ocean)
+	Tooltip: ""
+}
+
+MarbleBox: {
+	DisplayName: Music Box (Marble Caverns)
+	Tooltip: ""
+}
+
+MeteorBox: {
+	DisplayName: Music Box (Meteor)
+	Tooltip: ""
+}
+
+MJWBox: {
+	DisplayName: Music Box (Moon Jelly Wizard)
+	Tooltip: ""
+}
+
+NeonMusicBox: {
+	DisplayName: Music Box (Hyperspace- Day)
+	Tooltip: ""
+}
+
+OceanDepthsBox: {
+	DisplayName: Music Box (Ocean- Depths)
+	Tooltip: ""
+}
+
+ReachBox: {
+	DisplayName: Music Box (The Briar- Daytime)
+	Tooltip: ""
+}
+
+ScarabBox: {
+	DisplayName: Music Box (Scarabeus)
+	Tooltip: ""
+}
+
+SnowNightBox: {
+	DisplayName: Music Box (Snow Biome- Nighttime)
+	Tooltip: ""
+}
+
+SpiderCaveBox: {
+	DisplayName: Music Box (Spider Caves)
+	Tooltip: ""
+}
+
+SpiritBox1: {
+	DisplayName: Music Box (Spirit Biome- Overworld)
+	Tooltip: ""
+}
+
+SpiritBox2: {
+	DisplayName: Music Box (Spirit Biome- Underground)
+	Tooltip: ""
+}
+
+SpiritBox3: {
+	DisplayName: Music Box (Spirit Biome- Deep Underground)
+	Tooltip: ""
+}
+
+SpiritBox4: {
+	DisplayName: Music Box (Spirit Biome- Depths)
+	Tooltip: ""
+}
+
+StarplateBox: {
+	DisplayName: Music Box (Starplate Voyager)
+	Tooltip: ""
+}
+
+TideBox: {
+	DisplayName: Music Box (The Tide)
+	Tooltip: ""
+}
+
+TranquilWindsBox: {
+	DisplayName: Music Box (Tranquil Winds)
+	Tooltip: ""
+}
+
+VictoryDayBox: {
+	DisplayName: Music Box (Victory Day)
+	Tooltip: ""
+}
+
+VinewrathBox: {
+	DisplayName: Music Box (Vinewrath Bane)
+	Tooltip: ""
+}
+
+AtlasRelicItem: {
+	DisplayName: Atlas Relic
+	Tooltip: ""
+}
+
+AvianRelicItem: {
+	DisplayName: Ancient Avian Relic
+	Tooltip: ""
+}
+
+DuskingRelicItem: {
+	DisplayName: Dusking Relic
+	Tooltip: ""
+}
+
+FrostSaucerRelicItem: {
+	DisplayName: Snow Monger Relic
+	Tooltip: ""
+}
+
+InfernonRelicItem: {
+	DisplayName: Infernon Relic
+	Tooltip: ""
+}
+
+MJWRelicItem: {
+	DisplayName: Moon Jelly Wizard Relic
+	Tooltip: ""
+}
+
+OccultistRelicItem: {
+	DisplayName: Occultist Relic
+	Tooltip: ""
+}
+
+RlyehianRelicItem: {
+	DisplayName: R'lyehian Relic
+	Tooltip: ""
+}
+
+ScarabeusRelicItem: {
+	DisplayName: Scarabeus Relic
+	Tooltip: ""
+}
+
+StarplateRelicItem: {
+	DisplayName: Starplate Voyager Relic
+	Tooltip: ""
+}
+
+VinewrathRelicItem: {
+	DisplayName: Vinewrath Bane Relic
+	Tooltip: ""
+}
+
+SamuraiStatueItem: {
+	DisplayName: Samurai Statue
+	Tooltip: ""
+}
+
+SoulSeeds: {
+	DisplayName: Soulbloom Seeds
+	Tooltip: ""
+}
 
 StarBeaconItem: {
 	DisplayName: Astralite Beacon
@@ -3660,14 +5280,20 @@ SuperSunFlowerItem: {
 		'''
 }
 
-AcidBrick.DisplayName: Corrosive Brick
+AcidBrick: {
+	DisplayName: Corrosive Brick
+	Tooltip: ""
+}
 
 AsteroidBlock: {
 	DisplayName: Asteroid Block
 	Tooltip: "'Ore-rich space debris'"
 }
 
-BlastStoneItem.DisplayName: Blast Stone
+BlastStoneItem: {
+	DisplayName: Blast Stone
+	Tooltip: ""
+}
 
 BriarGrassSeeds: {
 	DisplayName: Briar Grass Seeds
@@ -3679,16 +5305,55 @@ CreepingIce: {
 	Tooltip: Slows down nearby players and enemies
 }
 
-HalloweenGrass.DisplayName: Spooky Grass
-NeonBlockBlueItem.DisplayName: Blue Neon Block
-NeonBlockGreenItem.DisplayName: Green Neon Block
-NeonBlockPurpleItem.DisplayName: Purple Neon Block
-NeonBlockRedItem.DisplayName: Red Neon Block
-NeonBlockYellowItem.DisplayName: Yellow Neon Block
-ReachGrass.DisplayName: Strange Flora
-ScrapItem.DisplayName: Salvaged Scrap Block
-SepulchreBrickItem.DisplayName: Sepulchre Roofing
-SepulchreBrickTwoItem.DisplayName: Sepulchre Brick
+HalloweenGrass: {
+	DisplayName: Spooky Grass
+	Tooltip: ""
+}
+
+NeonBlockBlueItem: {
+	DisplayName: Blue Neon Block
+	Tooltip: ""
+}
+
+NeonBlockGreenItem: {
+	DisplayName: Green Neon Block
+	Tooltip: ""
+}
+
+NeonBlockPurpleItem: {
+	DisplayName: Purple Neon Block
+	Tooltip: ""
+}
+
+NeonBlockRedItem: {
+	DisplayName: Red Neon Block
+	Tooltip: ""
+}
+
+NeonBlockYellowItem: {
+	DisplayName: Yellow Neon Block
+	Tooltip: ""
+}
+
+ReachGrass: {
+	DisplayName: Strange Flora
+	Tooltip: ""
+}
+
+ScrapItem: {
+	DisplayName: Salvaged Scrap Block
+	Tooltip: ""
+}
+
+SepulchreBrickItem: {
+	DisplayName: Sepulchre Roofing
+	Tooltip: ""
+}
+
+SepulchreBrickTwoItem: {
+	DisplayName: Sepulchre Brick
+	Tooltip: ""
+}
 
 SpaceJunkItem: {
 	DisplayName: Space Junk
@@ -3699,20 +5364,75 @@ SpaceJunkItem: {
 		'''
 }
 
-SpiritDirtItem.DisplayName: Spirit Dirt
-SpiritIceItem.DisplayName: Spirit Ice
-SpiritSandItem.DisplayName: Spirit Sand
-SpiritStoneItem.DisplayName: Grimstone
-SpiritWoodItem.DisplayName: Duskwood
-TechBlockItem.DisplayName: Glowplate Block
-AcidWall.DisplayName: Corrosive Brick Wall
-AsteroidWall.DisplayName: Asteroid Wall
-BarkWall.DisplayName: Elderbark Wall
-ElderbarkFence.DisplayName: Elderbark Fence
-GlowplateWallItem.DisplayName: Smooth Glowplate Wall
-ScrapWallItem.DisplayName: Salvaged Scrap Wall
-SepulchreWallItem.DisplayName: Sepulchre Wall
-SpiritWallItem.DisplayName: Duskwood Wall
+SpiritDirtItem: {
+	DisplayName: Spirit Dirt
+	Tooltip: ""
+}
+
+SpiritIceItem: {
+	DisplayName: Spirit Ice
+	Tooltip: ""
+}
+
+SpiritSandItem: {
+	DisplayName: Spirit Sand
+	Tooltip: ""
+}
+
+SpiritStoneItem: {
+	DisplayName: Grimstone
+	Tooltip: ""
+}
+
+SpiritWoodItem: {
+	DisplayName: Duskwood
+	Tooltip: ""
+}
+
+TechBlockItem: {
+	DisplayName: Glowplate Block
+	Tooltip: ""
+}
+
+AcidWall: {
+	DisplayName: Corrosive Brick Wall
+	Tooltip: ""
+}
+
+AsteroidWall: {
+	DisplayName: Asteroid Wall
+	Tooltip: ""
+}
+
+BarkWall: {
+	DisplayName: Elderbark Wall
+	Tooltip: ""
+}
+
+ElderbarkFence: {
+	DisplayName: Elderbark Fence
+	Tooltip: ""
+}
+
+GlowplateWallItem: {
+	DisplayName: Smooth Glowplate Wall
+	Tooltip: ""
+}
+
+ScrapWallItem: {
+	DisplayName: Salvaged Scrap Wall
+	Tooltip: ""
+}
+
+SepulchreWallItem: {
+	DisplayName: Sepulchre Wall
+	Tooltip: ""
+}
+
+SpiritWallItem: {
+	DisplayName: Duskwood Wall
+	Tooltip: ""
+}
 
 CloakOfHealing: {
 	DisplayName: Cloak of Healing
@@ -3738,32 +5458,135 @@ EyeOfTheSorcererItem: {
 		'''
 }
 
-ChandelierPile.DisplayName: Broken Chandelier
-ChestPile.DisplayName: Abandoned Chest
-DirtPile.DisplayName: Pile of Dirt
-GranitePile.DisplayName: Granite Rubble
-GrassStonePile.DisplayName: Grassy Stone Rubble
-HellstonePile.DisplayName: Hellstone Rubble
-IcePile.DisplayName: Frozen Rubble
-LihzahrdPile.DisplayName: Lihzahrd Brick Rubble
-MahoganyCage.DisplayName: Mahogany Cage
-MahoganyCageFull.DisplayName: Mahogany Cage (Full)
-MarblePile.DisplayName: Marble Rubble
-MossMudPile.DisplayName: Mossy Mud Rubble
-MossStonePile.DisplayName: Mossy Stone Rubble
-MushroomPile.DisplayName: Glowing Mushroom Rubble
-OldTent.DisplayName: Old Tent
-OldWell.DisplayName: Old Well
-OldWheelbarrow.DisplayName: Old Wheelbarrow
-RustyMinecart.DisplayName: Rusty Minecart
-SandPile.DisplayName: Sandstone Rubble
-SkeletonPile.DisplayName: Skeleton Pile
-StonePile.DisplayName: Stone Rubble
-StonePileHelmet.DisplayName: Helmet Rubble
-StonePilePickaxe.DisplayName: Mining Rubble
-StonePileSword.DisplayName: Abandoned Sword Rubble
-WebPile.DisplayName: Webbed Rubble
-WoodRuinPile.DisplayName: Ruined Furniture
+ChandelierPile: {
+	DisplayName: Broken Chandelier
+	Tooltip: ""
+}
+
+ChestPile: {
+	DisplayName: Abandoned Chest
+	Tooltip: ""
+}
+
+DirtPile: {
+	DisplayName: Pile of Dirt
+	Tooltip: ""
+}
+
+GranitePile: {
+	DisplayName: Granite Rubble
+	Tooltip: ""
+}
+
+GrassStonePile: {
+	DisplayName: Grassy Stone Rubble
+	Tooltip: ""
+}
+
+HellstonePile: {
+	DisplayName: Hellstone Rubble
+	Tooltip: ""
+}
+
+IcePile: {
+	DisplayName: Frozen Rubble
+	Tooltip: ""
+}
+
+LihzahrdPile: {
+	DisplayName: Lihzahrd Brick Rubble
+	Tooltip: ""
+}
+
+MahoganyCage: {
+	DisplayName: Mahogany Cage
+	Tooltip: ""
+}
+
+MahoganyCageFull: {
+	DisplayName: Mahogany Cage (Full)
+	Tooltip: ""
+}
+
+MarblePile: {
+	DisplayName: Marble Rubble
+	Tooltip: ""
+}
+
+MossMudPile: {
+	DisplayName: Mossy Mud Rubble
+	Tooltip: ""
+}
+
+MossStonePile: {
+	DisplayName: Mossy Stone Rubble
+	Tooltip: ""
+}
+
+MushroomPile: {
+	DisplayName: Glowing Mushroom Rubble
+	Tooltip: ""
+}
+
+OldTent: {
+	DisplayName: Old Tent
+	Tooltip: ""
+}
+
+OldWell: {
+	DisplayName: Old Well
+	Tooltip: ""
+}
+
+OldWheelbarrow: {
+	DisplayName: Old Wheelbarrow
+	Tooltip: ""
+}
+
+RustyMinecart: {
+	DisplayName: Rusty Minecart
+	Tooltip: ""
+}
+
+SandPile: {
+	DisplayName: Sandstone Rubble
+	Tooltip: ""
+}
+
+SkeletonPile: {
+	DisplayName: Skeleton Pile
+	Tooltip: ""
+}
+
+StonePile: {
+	DisplayName: Stone Rubble
+	Tooltip: ""
+}
+
+StonePileHelmet: {
+	DisplayName: Helmet Rubble
+	Tooltip: ""
+}
+
+StonePilePickaxe: {
+	DisplayName: Mining Rubble
+	Tooltip: ""
+}
+
+StonePileSword: {
+	DisplayName: Abandoned Sword Rubble
+	Tooltip: ""
+}
+
+WebPile: {
+	DisplayName: Webbed Rubble
+	Tooltip: ""
+}
+
+WoodRuinPile: {
+	DisplayName: Ruined Furniture
+	Tooltip: ""
+}
 
 DefenseCodex: {
 	DisplayName: Arcane Codex: Fortification Zone
@@ -3775,7 +5598,10 @@ DefenseCodex: {
 		'''
 }
 
-EmptyCodex.DisplayName: Empty Arcane Codex
+EmptyCodex: {
+	DisplayName: Empty Arcane Codex
+	Tooltip: ""
+}
 
 HealingCodex: {
 	DisplayName: Arcane Codex: Healing Zone
@@ -3847,8 +5673,15 @@ BismiteCrystal: {
 	Tooltip: "'An oddly toxic metal'"
 }
 
-BismiteHamaxe.DisplayName: Bismite Hamaxe
-BismitePickaxe.DisplayName: Bismite Pickaxe
+BismiteHamaxe: {
+	DisplayName: Bismite Hamaxe
+	Tooltip: ""
+}
+
+BismitePickaxe: {
+	DisplayName: Bismite Pickaxe
+	Tooltip: ""
+}
 
 BismiteSpear: {
 	DisplayName: Bismite Pike
@@ -4039,14 +5872,20 @@ ReachChestMagic: {
 	Tooltip: Summons a sharp leaf that can be controlled with the cursor
 }
 
-ThornHook.DisplayName: Bramble Hook
+ThornHook: {
+	DisplayName: Bramble Hook
+	Tooltip: ""
+}
 
 ThornyRod: {
 	DisplayName: Thorny Rod
 	Tooltip: Creates briar grass on dirt
 }
 
-AnodyneHat.DisplayName: Anodyne Hat
+AnodyneHat: {
+	DisplayName: Anodyne Hat
+	Tooltip: ""
+}
 
 EnchantedLeaf: {
 	DisplayName: Enchanted Leaf
@@ -4122,7 +5961,10 @@ Reef_Wrath: {
 	Tooltip: Conjures harmful coral spires along the ground
 }
 
-BassSlapper.DisplayName: Bass Slapper
+BassSlapper: {
+	DisplayName: Bass Slapper
+	Tooltip: ""
+}
 
 Blasphemer: {
 	DisplayName: The Blasphemer
@@ -4173,14 +6015,20 @@ FloranBludgeon: {
 	Tooltip: Releases a shockwave along the ground
 }
 
-GoldClub.DisplayName: Golden Greathammer
+GoldClub: {
+	DisplayName: Golden Greathammer
+	Tooltip: ""
+}
 
 Macuahuitl: {
 	DisplayName: Macuahuitl
 	Tooltip: Charging increases armor penetration
 }
 
-PlatinumClub.DisplayName: Platinum Scepter
+PlatinumClub: {
+	DisplayName: Platinum Scepter
+	Tooltip: ""
+}
 
 RageBlazeDecapitator: {
 	DisplayName: Unstable Adze
@@ -4196,14 +6044,20 @@ SporeClub: {
 	Tooltip: Charged strikes release a field of toxins
 }
 
-WoodenClub.DisplayName: Wooden Club
+WoodenClub: {
+	DisplayName: Wooden Club
+	Tooltip: ""
+}
 
 CoilEnergizerItem: {
 	DisplayName: Coiled Energizer
 	Tooltip: Creates an electric field that energizes nearby players, greatly increasing movement speed and melee speed
 }
 
-CoilHook.DisplayName: Coil Hook
+CoilHook: {
+	DisplayName: Coil Hook
+	Tooltip: ""
+}
 
 CoilPistol: {
 	DisplayName: Coil Pistol
@@ -4238,7 +6092,10 @@ CryoGun: {
 		'''
 }
 
-CryoHamaxe.DisplayName: Cryolite Hamaxe
+CryoHamaxe: {
+	DisplayName: Cryolite Hamaxe
+	Tooltip: ""
+}
 
 CryoliteBody: {
 	DisplayName: Cryolite Chestplate
@@ -4259,14 +6116,20 @@ CryoliteLegs: {
 	Tooltip: 8% increased melee speed
 }
 
-CryoliteBar.DisplayName: Cryolite Bar
+CryoliteBar: {
+	DisplayName: Cryolite Bar
+	Tooltip: ""
+}
 
 CryoliteOre: {
 	DisplayName: Cryolite Ore
 	Tooltip: "'Veins of metal intertwined with ice'"
 }
 
-CryoPick.DisplayName: Cryolite Pickaxe
+CryoPick: {
+	DisplayName: Cryolite Pickaxe
+	Tooltip: ""
+}
 
 CryoStaff: {
 	DisplayName: Cryo Staff
@@ -4306,12 +6169,35 @@ WaasephiVanity: {
 	Tooltip: "'Great for impersonating patrons!'"
 }
 
-BrightbloodDye.DisplayName: Brightblood Hair Dye
-CystalDye.DisplayName: Vile Hair Dye
-MeteorDye.DisplayName: Flare Hair Dye
-SeafoamDye.DisplayName: Seafoam Hair Dye
-SnowMirageDye.DisplayName: Mirage Hair Dye
-ViciousDye.DisplayName: Vicious Hair Dye
+BrightbloodDye: {
+	DisplayName: Brightblood Hair Dye
+	Tooltip: ""
+}
+
+CystalDye: {
+	DisplayName: Vile Hair Dye
+	Tooltip: ""
+}
+
+MeteorDye: {
+	DisplayName: Flare Hair Dye
+	Tooltip: ""
+}
+
+SeafoamDye: {
+	DisplayName: Seafoam Hair Dye
+	Tooltip: ""
+}
+
+SnowMirageDye: {
+	DisplayName: Mirage Hair Dye
+	Tooltip: ""
+}
+
+ViciousDye: {
+	DisplayName: Vicious Hair Dye
+	Tooltip: ""
+}
 
 GastricGusher: {
 	DisplayName: Gastric Gusher
@@ -4376,12 +6262,35 @@ Driftwood3Item: {
 	Tooltip: "'Aesthetically pleasing'"
 }
 
-DriftwoodChestplate.DisplayName: Driftwood Chestplate
-DriftwoodHelmet.DisplayName: Driftwood Helmet
-DriftwoodLeggings.DisplayName: Driftwood Leggings
-DriftwoodSword.DisplayName: Driftwood Sword
-DriftwoodTileItem.DisplayName: Driftwood Block
-DriftwoodWallItem.DisplayName: Driftwood Wall
+DriftwoodChestplate: {
+	DisplayName: Driftwood Chestplate
+	Tooltip: ""
+}
+
+DriftwoodHelmet: {
+	DisplayName: Driftwood Helmet
+	Tooltip: ""
+}
+
+DriftwoodLeggings: {
+	DisplayName: Driftwood Leggings
+	Tooltip: ""
+}
+
+DriftwoodSword: {
+	DisplayName: Driftwood Sword
+	Tooltip: ""
+}
+
+DriftwoodTileItem: {
+	DisplayName: Driftwood Block
+	Tooltip: ""
+}
+
+DriftwoodWallItem: {
+	DisplayName: Driftwood Wall
+	Tooltip: ""
+}
 
 FishLure: {
 	DisplayName: Fish Lure
@@ -4435,7 +6344,10 @@ FPlate: {
 	Tooltip: Increases movement speed by 6%
 }
 
-FloranBar.DisplayName: Floran Bar
+FloranBar: {
+	DisplayName: Floran Bar
+	Tooltip: ""
+}
 
 FloranCharm: {
 	DisplayName: Floran Hunting Charm
@@ -4452,14 +6364,20 @@ Florang: {
 		'''
 }
 
-FloranHamaxe.DisplayName: Floran Hamaxe
+FloranHamaxe: {
+	DisplayName: Floran Hamaxe
+	Tooltip: ""
+}
 
 FloranOre: {
 	DisplayName: Floran Ore
 	Tooltip: "'A strange mixture of plant cells and metal'"
 }
 
-FloranPick.DisplayName: Floran Pickaxe
+FloranPick: {
+	DisplayName: Floran Pickaxe
+	Tooltip: ""
+}
 
 FloranReacher: {
 	DisplayName: Floran Reacher
@@ -4489,8 +6407,15 @@ FrigidChestplate: {
 	Tooltip: 3% increased critical strike chance
 }
 
-FrigidHelm.DisplayName: Frigid Faceplate
-FrigidLegs.DisplayName: Frigid Greaves
+FrigidHelm: {
+	DisplayName: Frigid Faceplate
+	Tooltip: ""
+}
+
+FrigidLegs: {
+	DisplayName: Frigid Greaves
+	Tooltip: ""
+}
 
 FrigidFragment: {
 	DisplayName: Frigid Fragment
@@ -4536,7 +6461,10 @@ FunnyFirework: {
 	Tooltip: Does a funny
 }
 
-GildedMustache.DisplayName: Gilded Mustache
+GildedMustache: {
+	DisplayName: Gilded Mustache
+	Tooltip: ""
+}
 
 GoldChest: {
 	DisplayName: Gold Coffer
@@ -4561,7 +6489,10 @@ PlatinumChest: {
 		'''
 }
 
-RegalCane.DisplayName: Gilded Cane
+RegalCane: {
+	DisplayName: Gilded Cane
+	Tooltip: ""
+}
 
 SilverChest: {
 	DisplayName: Silver Lockbox
@@ -4586,14 +6517,20 @@ OakHeart: {
 		'''
 }
 
-GranitechGun.DisplayName: Vector .109
+GranitechGun: {
+	DisplayName: Vector .109
+	Tooltip: ""
+}
 
 GranitechMaterial: {
 	DisplayName: G-TEK Components
 	Tooltip: "'An impressive combination of magic and science'"
 }
 
-GranitechStaffItem.DisplayName: Focus M-II
+GranitechStaffItem: {
+	DisplayName: Focus M-II
+	Tooltip: ""
+}
 
 GranitechSaberItem: {
 	DisplayName: Technobrand
@@ -4625,7 +6562,10 @@ GraniteLegs: {
 	Tooltip: Increases jump height slightly
 }
 
-GraniteAxe.DisplayName: Granite Axe
+GraniteAxe: {
+	DisplayName: Granite Axe
+	Tooltip: ""
+}
 
 GraniteBow: {
 	DisplayName: Unstable Boltcaster
@@ -4636,7 +6576,10 @@ GraniteBow: {
 		'''
 }
 
-GraniteChunk.DisplayName: Enchanted Granite Chunk
+GraniteChunk: {
+	DisplayName: Enchanted Granite Chunk
+	Tooltip: ""
+}
 
 GraniteFlail: {
 	DisplayName: Unstable Star
@@ -4647,8 +6590,15 @@ GraniteFlail: {
 		'''
 }
 
-GraniteHammer.DisplayName: Granite Hammer
-GranitePickaxe.DisplayName: Granite Pickaxe
+GraniteHammer: {
+	DisplayName: Granite Hammer
+	Tooltip: ""
+}
+
+GranitePickaxe: {
+	DisplayName: Granite Pickaxe
+	Tooltip: ""
+}
 
 GraniteWand: {
 	DisplayName: Unstable Conduit
@@ -4673,8 +6623,15 @@ BottomFeederGun: {
 	Tooltip: Converts regular bullets into clumps of rotting flesh
 }
 
-Blaster.DisplayName: Cosmic Blaster
-Exotic.DisplayName: Exotic Blaster
+Blaster: {
+	DisplayName: Cosmic Blaster
+	Tooltip: ""
+}
+
+Exotic: {
+	DisplayName: Exotic Blaster
+	Tooltip: ""
+}
 
 CaptainsRegards: {
 	DisplayName: Captain's Regards
@@ -4823,18 +6780,40 @@ TrueShadowShot: {
 	Tooltip: Summons extra shadow bullets
 }
 
-AncientBark.DisplayName: Elderbark
-ElderbarkChest.DisplayName: Elderbark Breastplate
-ElderbarkHead.DisplayName: Elderbark Helmet
-ElderbarkLegs.DisplayName: Elderbark Leggings
+AncientBark: {
+	DisplayName: Elderbark
+	Tooltip: ""
+}
+
+ElderbarkChest: {
+	DisplayName: Elderbark Breastplate
+	Tooltip: ""
+}
+
+ElderbarkHead: {
+	DisplayName: Elderbark Helmet
+	Tooltip: ""
+}
+
+ElderbarkLegs: {
+	DisplayName: Elderbark Leggings
+	Tooltip: ""
+}
 
 HuskstalkBow: {
 	DisplayName: Huskstalk Bow
 	Tooltip: Arrows shot inflict Withering Leaf
 }
 
-HuskstalkHammer.DisplayName: Huskstalk Hammer
-HuskstalkSword.DisplayName: Huskstalk Sword
+HuskstalkHammer: {
+	DisplayName: Huskstalk Hammer
+	Tooltip: ""
+}
+
+HuskstalkSword: {
+	DisplayName: Huskstalk Sword
+	Tooltip: ""
+}
 
 KnocbackGun: {
 	DisplayName: Freeman
@@ -4917,7 +6896,10 @@ AkaviriStaff: {
 	Tooltip: "'Any amount of light is enough'"
 }
 
-MagicDeck.DisplayName: Magic Deck
+MagicDeck: {
+	DisplayName: Magic Deck
+	Tooltip: ""
+}
 
 NightSkyStaff: {
 	DisplayName: Nova's Spark
@@ -5049,22 +7031,60 @@ MarbleChunk: {
 	Tooltip: "'Contains fragments of past civilizations'"
 }
 
-MarbleHamaxe.DisplayName: Gilded Hamaxe
-MarblePick.DisplayName: Gilded Pickaxe
+MarbleHamaxe: {
+	DisplayName: Gilded Hamaxe
+	Tooltip: ""
+}
+
+MarblePick: {
+	DisplayName: Gilded Pickaxe
+	Tooltip: ""
+}
 
 MarbleStaff: {
 	DisplayName: Gilded Tome
 	Tooltip: Rains down gilded stalactites from the sky
 }
 
-CorruptDyeMaterial.DisplayName: Violet Crystal
-CrimsonDyeMaterial.DisplayName: Bloody Tumor
-IceDeityShard1.DisplayName: Hyperborean Relic
-IceDeityShard2.DisplayName: Hyperborean Fragment
-IceDeityShard3.DisplayName: Hyperborean Artifact
-MeteorDyeMaterial.DisplayName: Photosphere Shard
-RoyalCrown.DisplayName: Royal Crown
-SeaMandrakeSac.DisplayName: Luminous Sac
+CorruptDyeMaterial: {
+	DisplayName: Violet Crystal
+	Tooltip: ""
+}
+
+CrimsonDyeMaterial: {
+	DisplayName: Bloody Tumor
+	Tooltip: ""
+}
+
+IceDeityShard1: {
+	DisplayName: Hyperborean Relic
+	Tooltip: ""
+}
+
+IceDeityShard2: {
+	DisplayName: Hyperborean Fragment
+	Tooltip: ""
+}
+
+IceDeityShard3: {
+	DisplayName: Hyperborean Artifact
+	Tooltip: ""
+}
+
+MeteorDyeMaterial: {
+	DisplayName: Photosphere Shard
+	Tooltip: ""
+}
+
+RoyalCrown: {
+	DisplayName: Royal Crown
+	Tooltip: ""
+}
+
+SeaMandrakeSac: {
+	DisplayName: Luminous Sac
+	Tooltip: ""
+}
 
 ArtemisHunt: {
 	DisplayName: Iokheira
@@ -5075,7 +7095,10 @@ ArtemisHunt: {
 		'''
 }
 
-BetrayersChains.DisplayName: Blades of Chaos
+BetrayersChains: {
+	DisplayName: Blades of Chaos
+	Tooltip: ""
+}
 
 Eleutherios: {
 	DisplayName: Eleutherios
@@ -5112,7 +7135,10 @@ DuelistLegacy: {
 		'''
 }
 
-PirateChest.DisplayName: Pirate Chest
+PirateChest: {
+	DisplayName: Pirate Chest
+	Tooltip: ""
+}
 
 PirateKey: {
 	DisplayName: Secret Key
@@ -5149,7 +7175,10 @@ SulfurDeposit: {
 	Tooltip: Highly explosive
 }
 
-UrchinStaff.DisplayName: Urchin Lobber
+UrchinStaff: {
+	DisplayName: Urchin Lobber
+	Tooltip: ""
+}
 
 RlyehianMountItem: {
 	DisplayName: Eldritch Cloak
@@ -5160,10 +7189,25 @@ RlyehianMountItem: {
 		'''
 }
 
-RlyehMask.DisplayName: R'lyehian Mask
-TentacleChain.DisplayName: Brine Barrage
-TomeOfRylien.DisplayName: Tome of R'lyeh
-Trophy10.DisplayName: R'lyehian Trophy
+RlyehMask: {
+	DisplayName: R'lyehian Mask
+	Tooltip: ""
+}
+
+TentacleChain: {
+	DisplayName: Brine Barrage
+	Tooltip: ""
+}
+
+TomeOfRylien: {
+	DisplayName: Tome of R'lyeh
+	Tooltip: ""
+}
+
+Trophy10: {
+	DisplayName: R'lyehian Trophy
+	Tooltip: ""
+}
 
 Rune: {
 	DisplayName: Ancient Rune
@@ -5257,7 +7301,10 @@ StarBow: {
 	Tooltip: Launches bolts of sporadic lunar energy
 }
 
-WayfinderTorch.DisplayName: Seraph's Light
+WayfinderTorch: {
+	DisplayName: Seraph's Light
+	Tooltip: ""
+}
 
 CarvedRock: {
 	DisplayName: Slagstone
@@ -5319,14 +7366,20 @@ SlagHammer: {
 		'''
 }
 
-BambooHalberd.DisplayName: Bamboo Halberd
+BambooHalberd: {
+	DisplayName: Bamboo Halberd
+	Tooltip: ""
+}
 
 DuskLance: {
 	DisplayName: Dusk Lance
 	Tooltip: Shoots out an apparition that inflicts Shadowflame
 }
 
-GhostJellyBomb.DisplayName: Ghost Jelly Bomb
+GhostJellyBomb: {
+	DisplayName: Ghost Jelly Bomb
+	Tooltip: ""
+}
 
 Gravehunter: {
 	DisplayName: Gravehunter
@@ -5358,7 +7411,10 @@ SpiritFlameStaff: {
 	Tooltip: Shoots out a spirit bolt that explodes in 4 directions
 }
 
-StarCutter.DisplayName: Star Cutter
+StarCutter: {
+	DisplayName: Star Cutter
+	Tooltip: ""
+}
 
 StoneOfSpiritsPast: {
 	DisplayName: Stone of Spirits Past
@@ -5395,35 +7451,50 @@ SpiritLeggings: {
 	Tooltip: 10% increased melee speed
 }
 
-SpiritBar.DisplayName: Spirit Bar
+SpiritBar: {
+	DisplayName: Spirit Bar
+	Tooltip: ""
+}
 
 SpiritBoomerang: {
 	DisplayName: Spirit Boomerang
 	Tooltip: Inflicts Soul Burn
 }
 
-SpiritDrill.DisplayName: Spirit Drill
+SpiritDrill: {
+	DisplayName: Spirit Drill
+	Tooltip: ""
+}
 
 SpiritGun: {
 	DisplayName: Spirit Burst
 	Tooltip: Turns regular bullets into Spirit Bullets
 }
 
-SpiritHamaxe.DisplayName: Spirit Hamaxe
+SpiritHamaxe: {
+	DisplayName: Spirit Hamaxe
+	Tooltip: ""
+}
 
 SpiritOre: {
 	DisplayName: Spirit Ore
 	Tooltip: "'Spirit-infused metal'"
 }
 
-SpiritPickaxe.DisplayName: Spirit Pickaxe
+SpiritPickaxe: {
+	DisplayName: Spirit Pickaxe
+	Tooltip: ""
+}
 
 SpiritSaber: {
 	DisplayName: Spirit Saber
 	Tooltip: Shoots out a homing bolt of souls that inflicts Soul Burn
 }
 
-SpiritSpear.DisplayName: Spirit Spear
+SpiritSpear: {
+	DisplayName: Spirit Spear
+	Tooltip: ""
+}
 
 SpiritWand: {
 	DisplayName: Spirit Wand
@@ -5659,19 +7730,45 @@ UnfellerOfEvergreens: {
 	Tooltip: Plants saplings when it chops trees down
 }
 
-AdamantiteWarhammer.DisplayName: Adamantite Warhammer
-CobaltWarhammer.DisplayName: Cobalt Warhammer
-MythrilWarhammer.DisplayName: Mythril Warhammer
-OrichalcumWarhammer.DisplayName: Orichalcum Warhammer
-PalladiumWarhammer.DisplayName: Palladium Warhammer
+AdamantiteWarhammer: {
+	DisplayName: Adamantite Warhammer
+	Tooltip: ""
+}
+
+CobaltWarhammer: {
+	DisplayName: Cobalt Warhammer
+	Tooltip: ""
+}
+
+MythrilWarhammer: {
+	DisplayName: Mythril Warhammer
+	Tooltip: ""
+}
+
+OrichalcumWarhammer: {
+	DisplayName: Orichalcum Warhammer
+	Tooltip: ""
+}
+
+PalladiumWarhammer: {
+	DisplayName: Palladium Warhammer
+	Tooltip: ""
+}
 
 ShellHammer: {
 	DisplayName: Shell Hammer
 	Tooltip: "'Lobs shells duuuude!'"
 }
 
-TitaniumWarhammer.DisplayName: Titanium Warhammer
-GoldenEgg.DisplayName: Vulture Matriarch's Golden Egg
+TitaniumWarhammer: {
+	DisplayName: Titanium Warhammer
+	Tooltip: ""
+}
+
+GoldenEgg: {
+	DisplayName: Vulture Matriarch's Golden Egg
+	Tooltip: ""
+}
 
 Matriarch_Wings: {
 	DisplayName: Matriarch Wings
@@ -5696,7 +7793,10 @@ Tome_of_the_Great_Scavenger: {
 		'''
 }
 
-Vulture_Matriarch_Mask.DisplayName: Vulture Matriarch Mask
+Vulture_Matriarch_Mask: {
+	DisplayName: Vulture Matriarch Mask
+	Tooltip: ""
+}
 
 PoolNoodle: {
 	DisplayName: Pool Noodle
@@ -5712,7 +7812,10 @@ CactusStaff: {
 		'''
 }
 
-CrystalWindpipe.DisplayName: Crystal Windchimes
+CrystalWindpipe: {
+	DisplayName: Crystal Windchimes
+	Tooltip: ""
+}
 
 DarkstarLantern: {
 	DisplayName: Darkstar Lantern
@@ -5925,14 +8028,20 @@ ExplosiveRum: {
 	Tooltip: "'Oh, there it is!'"
 }
 
-Kunai_Throwing.DisplayName: Kunai
+Kunai_Throwing: {
+	DisplayName: Kunai
+	Tooltip: ""
+}
 
 MartianGrenade: {
 	DisplayName: Electrosphere Grenade
 	Tooltip: "'WARNING- HIGH VOLTAGE'"
 }
 
-MimeBomb.DisplayName: Mime Bomb
+MimeBomb: {
+	DisplayName: Mime Bomb
+	Tooltip: ""
+}
 
 PiecesOfEight: {
 	DisplayName: Pieces of Eight
@@ -6053,8 +8162,15 @@ MarbleMinecartItem: {
 		'''
 }
 
-Zombie_Chest.DisplayName: Chest
-SandPiperItem.DisplayName: Sand Piper
+Zombie_Chest: {
+	DisplayName: Chest
+	Tooltip: ""
+}
+
+SandPiperItem: {
+	DisplayName: Sand Piper
+	Tooltip: ""
+}
 
 OracleScripture: {
 	DisplayName: Sacred Scripture
@@ -6065,97 +8181,432 @@ OracleScripture: {
 		'''
 }
 
-LargeKelpItem.DisplayName: Large Glowing Plant
-SmallKelpItem.DisplayName: Small Glowing Plant
-LargeVentItem.DisplayName: Large Hydrothermal Vent
-MusselItem.DisplayName: Mussel
-SmallVentItem.DisplayName: Small Hydrothermal Vent
-Black_Stone_Item.DisplayName: Blackrock
-AzureGemBlockItem.DisplayName: Azure Block
-BloodyFoliageItem.DisplayName: Bloody Foliage
-CaveDirtItem.DisplayName: Cave Dirt
-CinderstoneItem.DisplayName: Cinderstone
-CorruptMassItem.DisplayName: Corrupt Mass
-CorruptOvergrowthItem.DisplayName: Corrupt Overgrowth
-CorruptPustuleItem.DisplayName: Corrupt Pustule
-CorruptTendrilItem.DisplayName: Corrupt Tendril
-CrackedDirtItem.DisplayName: Cracked Dirt
-CragstoneItem.DisplayName: Cragstone
-CrimsonBlisterItem.DisplayName: Crimson Blister
-CrimsonPustuleItem.DisplayName: Crimson Pustule
-CrimsonScabItem.DisplayName: Crimson Scab
-CrumblingDirtItem.DisplayName: Crumbling Dirt
-DarkFoliageItem.DisplayName: Dark Foliage
-FloweryFoliageItem.DisplayName: Flowery Foliage
-ForestFoliageItem.DisplayName: Forest Foliage
-FracturedStoneItem.DisplayName: Fractured Stone
-HallowCavernstoneItem.DisplayName: Hallowed Cavernstone
-HallowCrystallineItem.DisplayName: Hallowed Crystalline Stone
-HallowFoliageItem.DisplayName: Hallowed Foliage
-HallowPrismstoneItem.DisplayName: Hallowed Prismstone
-HallowShardstoneItem.DisplayName: Hallowed Shardstone
-HiveBlockAltItem.DisplayName: Hive Hexblock
-IvyStoneItem.DisplayName: Ivy Stone
-JungleFoliageItem.DisplayName: Jungle Foliage
-KrampusHornBlockItem.DisplayName: Krampus Horn Block
-LayeredDirtItem.DisplayName: Layered Dirt
-LeafyDirtItem.DisplayName: Leafy Dirt
-MagmastoneItem.DisplayName: Magmastone
-MottledStoneItem.DisplayName: Mottled Stone
-ObsidianBlockItem.DisplayName: Obsidian Stone
-OldStoneItem.DisplayName: Old Stone
-OutlandStoneItem.DisplayName: Outland Stone
-RockyDirtItem.DisplayName: Rocky Dirt
-RoughDirtItem.DisplayName: Rough Dirt
-RuinstoneItem.DisplayName: Ruinstone
-RuneBlockItem.DisplayName: Arcane Rune Block
-SmolderingRockItem.DisplayName: Smoldering Rock
-StalactiteStoneItem.DisplayName: Stalactite Stone
-VinestoneItem.DisplayName: Vinestone
-WavyDirtItem.DisplayName: Wavy Dirt
-WornStoneItem.DisplayName: Worn Stone
-BloodMoonAuroraMonolithItem.DisplayName: Blood Moon Aurora Monolith
-FrostMoonAuroraMonolithItem.DisplayName: Frost Moon Aurora Monolith
-NormalAuroraMonolithItem.DisplayName: Aurora Monolith
-PumpkinAuroraMonolithItem.DisplayName: Pumpkin Moon Aurora Monolith
-SpiritBiomeAuroraMonolithItem.DisplayName: Spirit Biome Aurora Monolith
-BlossomCage.DisplayName: Blossmoon Cage
-BriarmothCage.DisplayName: Briarmoth in a Jar
-BrownCrinoidCage.DisplayName: Brown Crinoid Cage
-CleftCage.DisplayName: Cleft Hopper Cage
-GulperBowl.DisplayName: Gulper Bowl
-LuvdiscBowl.DisplayName: Ardorfish Bowl
-PaleCrinoidCage.DisplayName: Pale Crinoid Cage
-RedCrinoidCage.DisplayName: Red Crinoid Cage
-TubewormBowl.DisplayName: Tubeworm Bowl
-VibeshroomJarItem.DisplayName: Quivershroom Jar
+LargeKelpItem: {
+	DisplayName: Large Glowing Plant
+	Tooltip: ""
+}
+
+SmallKelpItem: {
+	DisplayName: Small Glowing Plant
+	Tooltip: ""
+}
+
+LargeVentItem: {
+	DisplayName: Large Hydrothermal Vent
+	Tooltip: ""
+}
+
+MusselItem: {
+	DisplayName: Mussel
+	Tooltip: ""
+}
+
+SmallVentItem: {
+	DisplayName: Small Hydrothermal Vent
+	Tooltip: ""
+}
+
+Black_Stone_Item: {
+	DisplayName: Blackrock
+	Tooltip: ""
+}
+
+AzureGemBlockItem: {
+	DisplayName: Azure Block
+	Tooltip: ""
+}
+
+BloodyFoliageItem: {
+	DisplayName: Bloody Foliage
+	Tooltip: ""
+}
+
+CaveDirtItem: {
+	DisplayName: Cave Dirt
+	Tooltip: ""
+}
+
+CinderstoneItem: {
+	DisplayName: Cinderstone
+	Tooltip: ""
+}
+
+CorruptMassItem: {
+	DisplayName: Corrupt Mass
+	Tooltip: ""
+}
+
+CorruptOvergrowthItem: {
+	DisplayName: Corrupt Overgrowth
+	Tooltip: ""
+}
+
+CorruptPustuleItem: {
+	DisplayName: Corrupt Pustule
+	Tooltip: ""
+}
+
+CorruptTendrilItem: {
+	DisplayName: Corrupt Tendril
+	Tooltip: ""
+}
+
+CrackedDirtItem: {
+	DisplayName: Cracked Dirt
+	Tooltip: ""
+}
+
+CragstoneItem: {
+	DisplayName: Cragstone
+	Tooltip: ""
+}
+
+CrimsonBlisterItem: {
+	DisplayName: Crimson Blister
+	Tooltip: ""
+}
+
+CrimsonPustuleItem: {
+	DisplayName: Crimson Pustule
+	Tooltip: ""
+}
+
+CrimsonScabItem: {
+	DisplayName: Crimson Scab
+	Tooltip: ""
+}
+
+CrumblingDirtItem: {
+	DisplayName: Crumbling Dirt
+	Tooltip: ""
+}
+
+DarkFoliageItem: {
+	DisplayName: Dark Foliage
+	Tooltip: ""
+}
+
+FloweryFoliageItem: {
+	DisplayName: Flowery Foliage
+	Tooltip: ""
+}
+
+ForestFoliageItem: {
+	DisplayName: Forest Foliage
+	Tooltip: ""
+}
+
+FracturedStoneItem: {
+	DisplayName: Fractured Stone
+	Tooltip: ""
+}
+
+HallowCavernstoneItem: {
+	DisplayName: Hallowed Cavernstone
+	Tooltip: ""
+}
+
+HallowCrystallineItem: {
+	DisplayName: Hallowed Crystalline Stone
+	Tooltip: ""
+}
+
+HallowFoliageItem: {
+	DisplayName: Hallowed Foliage
+	Tooltip: ""
+}
+
+HallowPrismstoneItem: {
+	DisplayName: Hallowed Prismstone
+	Tooltip: ""
+}
+
+HallowShardstoneItem: {
+	DisplayName: Hallowed Shardstone
+	Tooltip: ""
+}
+
+HiveBlockAltItem: {
+	DisplayName: Hive Hexblock
+	Tooltip: ""
+}
+
+IvyStoneItem: {
+	DisplayName: Ivy Stone
+	Tooltip: ""
+}
+
+JungleFoliageItem: {
+	DisplayName: Jungle Foliage
+	Tooltip: ""
+}
+
+KrampusHornBlockItem: {
+	DisplayName: Krampus Horn Block
+	Tooltip: ""
+}
+
+LayeredDirtItem: {
+	DisplayName: Layered Dirt
+	Tooltip: ""
+}
+
+LeafyDirtItem: {
+	DisplayName: Leafy Dirt
+	Tooltip: ""
+}
+
+MagmastoneItem: {
+	DisplayName: Magmastone
+	Tooltip: ""
+}
+
+MottledStoneItem: {
+	DisplayName: Mottled Stone
+	Tooltip: ""
+}
+
+ObsidianBlockItem: {
+	DisplayName: Obsidian Stone
+	Tooltip: ""
+}
+
+OldStoneItem: {
+	DisplayName: Old Stone
+	Tooltip: ""
+}
+
+OutlandStoneItem: {
+	DisplayName: Outland Stone
+	Tooltip: ""
+}
+
+RockyDirtItem: {
+	DisplayName: Rocky Dirt
+	Tooltip: ""
+}
+
+RoughDirtItem: {
+	DisplayName: Rough Dirt
+	Tooltip: ""
+}
+
+RuinstoneItem: {
+	DisplayName: Ruinstone
+	Tooltip: ""
+}
+
+RuneBlockItem: {
+	DisplayName: Arcane Rune Block
+	Tooltip: ""
+}
+
+SmolderingRockItem: {
+	DisplayName: Smoldering Rock
+	Tooltip: ""
+}
+
+StalactiteStoneItem: {
+	DisplayName: Stalactite Stone
+	Tooltip: ""
+}
+
+VinestoneItem: {
+	DisplayName: Vinestone
+	Tooltip: ""
+}
+
+WavyDirtItem: {
+	DisplayName: Wavy Dirt
+	Tooltip: ""
+}
+
+WornStoneItem: {
+	DisplayName: Worn Stone
+	Tooltip: ""
+}
+
+BloodMoonAuroraMonolithItem: {
+	DisplayName: Blood Moon Aurora Monolith
+	Tooltip: ""
+}
+
+FrostMoonAuroraMonolithItem: {
+	DisplayName: Frost Moon Aurora Monolith
+	Tooltip: ""
+}
+
+NormalAuroraMonolithItem: {
+	DisplayName: Aurora Monolith
+	Tooltip: ""
+}
+
+PumpkinAuroraMonolithItem: {
+	DisplayName: Pumpkin Moon Aurora Monolith
+	Tooltip: ""
+}
+
+SpiritBiomeAuroraMonolithItem: {
+	DisplayName: Spirit Biome Aurora Monolith
+	Tooltip: ""
+}
+
+BlossomCage: {
+	DisplayName: Blossmoon Cage
+	Tooltip: ""
+}
+
+BriarmothCage: {
+	DisplayName: Briarmoth in a Jar
+	Tooltip: ""
+}
+
+BrownCrinoidCage: {
+	DisplayName: Brown Crinoid Cage
+	Tooltip: ""
+}
+
+CleftCage: {
+	DisplayName: Cleft Hopper Cage
+	Tooltip: ""
+}
+
+GulperBowl: {
+	DisplayName: Gulper Bowl
+	Tooltip: ""
+}
+
+LuvdiscBowl: {
+	DisplayName: Ardorfish Bowl
+	Tooltip: ""
+}
+
+PaleCrinoidCage: {
+	DisplayName: Pale Crinoid Cage
+	Tooltip: ""
+}
+
+RedCrinoidCage: {
+	DisplayName: Red Crinoid Cage
+	Tooltip: ""
+}
+
+TubewormBowl: {
+	DisplayName: Tubeworm Bowl
+	Tooltip: ""
+}
+
+VibeshroomJarItem: {
+	DisplayName: Quivershroom Jar
+	Tooltip: ""
+}
 
 FestivalLanternItem: {
 	DisplayName: Festival Lantern
 	Tooltip: Starts a lantern festival nearby when placed
 }
 
-BriarFountainItem.DisplayName: Briar Water Fountain
-GlowplateBedItem.DisplayName: Glowplate Bed
-GlowplateChairItem.DisplayName: Glowplate Chair
-GlowplateChestItem.DisplayName: Glowplate Chest
-GlowplateTableItem.DisplayName: Glowplate Table
-DragonStatueItem.DisplayName: Jade Dragon Statuette
-SlotMachine.DisplayName: Slot Machine
-ScrapItem1.DisplayName: Salvaged Scrap
-ScrapItem2.DisplayName: Salvaged Scrap
-ScrapItem3.DisplayName: Salvaged Scrap
-ScrapItem4.DisplayName: Salvaged Scrap
-ScrapItem5.DisplayName: Salvaged Scrap
-ScrapItem6.DisplayName: Salvaged Scrap
-VolleyballCourtItem.DisplayName: Volleyball Court
-VolleyballNetItem.DisplayName: Volleyball Net
+BriarFountainItem: {
+	DisplayName: Briar Water Fountain
+	Tooltip: ""
+}
+
+GlowplateBedItem: {
+	DisplayName: Glowplate Bed
+	Tooltip: ""
+}
+
+GlowplateChairItem: {
+	DisplayName: Glowplate Chair
+	Tooltip: ""
+}
+
+GlowplateChestItem: {
+	DisplayName: Glowplate Chest
+	Tooltip: ""
+}
+
+GlowplateTableItem: {
+	DisplayName: Glowplate Table
+	Tooltip: ""
+}
+
+DragonStatueItem: {
+	DisplayName: Jade Dragon Statuette
+	Tooltip: ""
+}
+
+SlotMachine: {
+	DisplayName: Slot Machine
+	Tooltip: ""
+}
+
+ScrapItem1: {
+	DisplayName: Salvaged Scrap
+	Tooltip: ""
+}
+
+ScrapItem2: {
+	DisplayName: Salvaged Scrap
+	Tooltip: ""
+}
+
+ScrapItem3: {
+	DisplayName: Salvaged Scrap
+	Tooltip: ""
+}
+
+ScrapItem4: {
+	DisplayName: Salvaged Scrap
+	Tooltip: ""
+}
+
+ScrapItem5: {
+	DisplayName: Salvaged Scrap
+	Tooltip: ""
+}
+
+ScrapItem6: {
+	DisplayName: Salvaged Scrap
+	Tooltip: ""
+}
+
+VolleyballCourtItem: {
+	DisplayName: Volleyball Court
+	Tooltip: ""
+}
+
+VolleyballNetItem: {
+	DisplayName: Volleyball Net
+	Tooltip: ""
+}
 
 CursedArmorItem: {
 	DisplayName: Draugr Statue
 	Tooltip: "'Take caution...'"
 }
 
-SepulchreChandelierItem.DisplayName: Sepulchre Chandelier
-SepulchreMirrorItem.DisplayName: Sepulchre Mirror
-SepulchreWindowItem.DisplayName: Sepulchre Window
+SepulchreChandelierItem: {
+	DisplayName: Sepulchre Chandelier
+	Tooltip: ""
+}
+
+SepulchreMirrorItem: {
+	DisplayName: Sepulchre Mirror
+	Tooltip: ""
+}
+
+SepulchreWindowItem: {
+	DisplayName: Sepulchre Window
+	Tooltip: ""
+}
+
+ChaosGlyph: {
+	DisplayName: Chaos Glyph
+	Tooltip: ""
+}
+
+RageGlyph: {
+	DisplayName: Rage Glyph
+	Tooltip: ""
+}

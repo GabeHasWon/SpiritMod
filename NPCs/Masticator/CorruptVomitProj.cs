@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Masticator
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Corrupt Vomit");
+			// DisplayName.SetDefault("Corrupt Vomit");
 		}
 
 		public override void SetDefaults()

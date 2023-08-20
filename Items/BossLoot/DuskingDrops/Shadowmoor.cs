@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadowmoor");
-            Tooltip.SetDefault("Converts wooden arrows into Shadow Wisps");
+			// DisplayName.SetDefault("Shadowmoor");
+            // Tooltip.SetDefault("Converts wooden arrows into Shadow Wisps");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/Shadowmoor_Glow");
         }
 

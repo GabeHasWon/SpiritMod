@@ -34,15 +34,12 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Dresser");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(100, 122, 111), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			AdjTiles = new int[] { TileID.Dressers };
-			ContainerName.SetDefault("Corrosive Dresser");
-			DustType = -1;
-			DresserDrop = ModContent.ItemType<Items.Placeable.Furniture.Acid.AcidDresser>();
 			TileID.Sets.HasOutlines[Type] = true;
+			AdjTiles = new int[] { TileID.Dressers };
+			DustType = -1;
 		}
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
@@ -166,11 +163,11 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				player.cursorItemIconText = Language.GetTextValue("LegacyChestType.0");
 			else
 			{
-				string defaultName = TileLoader.ContainerName(tile.TileType);
+				string defaultName = TileLoader.DefaultContainerName(tile.TileType, tile.TileFrameX, tile.TileFrameY);
 				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : defaultName;
 				if (player.cursorItemIconText == defaultName)
 				{
-					player.cursorItemIconID = DresserDrop;
+					player.cursorItemIconID = TileLoader.GetItemDropFromTypeAndStyle(Type);
 					player.cursorItemIconText = "";
 				}
 			}
@@ -187,7 +184,7 @@ namespace SpiritMod.Tiles.Furniture.Acid
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, DresserDrop);
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, TileLoader.GetItemDropFromTypeAndStyle(Type));
 			Chest.DestroyChest(i, j);
 		}
 	}

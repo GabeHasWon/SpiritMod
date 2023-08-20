@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Monk by the Sea");
-			Tooltip.SetDefault("'S. Yaki'");
+			// DisplayName.SetDefault("Monk by the Sea");
+			// Tooltip.SetDefault("'S. Yaki'");
 		}
 
 		public override void SetDefaults()

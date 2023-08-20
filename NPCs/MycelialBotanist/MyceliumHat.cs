@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.MycelialBotanist
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mycelial Botanist");
+			// DisplayName.SetDefault("Mycelial Botanist");
 			Main.projFrames[base.Projectile.type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -77,7 +77,7 @@ namespace SpiritMod.NPCs.MycelialBotanist
 		float Xint = 0;
 		float Yint = 0;
 		bool initialized = false;
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int i = 0; i < 20; i++) {
 				int num = Dust.NewDust(target.position, target.width, target.height, DustID.Butterfly, 0f, -2f, 0, default, 2f);

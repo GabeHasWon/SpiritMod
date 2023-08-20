@@ -4,12 +4,14 @@ using SpiritMod.Items.Armor.BotanistSet;
 using SpiritMod.Items.Material;
 using SpiritMod.Items.Placeable;
 using SpiritMod.Systems;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -33,8 +35,8 @@ namespace SpiritMod.Tiles
 
 			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Soulbloom");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Soulbloom");
 			AddMapEntry(new Color(110, 158, 234), name);
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
@@ -95,12 +97,12 @@ namespace SpiritMod.Tiles
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch) => TileSwaySystem.DrawGrassSway(spriteBatch, Texture + "_Glow", i, j, Color.White * .5f, GetEffects(i));
 
-		public override bool Drop(int i, int j)
+		public override IEnumerable<Item> GetItemDrops(int i, int j)
 		{
 			PlantStage stage = GetStage(i, j);
 
 			if (stage == PlantStage.Planted)
-				return false;
+				yield break;
 
 			Vector2 worldPosition = new Vector2(i, j).ToWorldCoordinates();
 			Player nearestPlayer = Main.player[Player.FindClosest(worldPosition, 16, 16)];
@@ -126,13 +128,10 @@ namespace SpiritMod.Tiles
 				herbItemStack++;
 			}
 
-			var source = new EntitySource_TileBreak(i, j);
-
 			if (herbItemStack > 0)
-				Item.NewItem(source, worldPosition, ModContent.ItemType<SoulSeeds>(), herbItemStack);
+				yield return new Item(ModContent.ItemType<SoulBloom>()) { stack = herbItemStack };
 			if (seedItemStack > 0)
-				Item.NewItem(source, worldPosition, ModContent.ItemType<SoulBloom>(), seedItemStack);
-			return false;
+				yield return new Item(ModContent.ItemType<SoulSeeds>()) { stack = seedItemStack };
 		}
 
 		public override bool IsTileSpelunkable(int i, int j) => GetStage(i, j) == PlantStage.Grown;

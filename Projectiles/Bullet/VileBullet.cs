@@ -18,7 +18,7 @@ namespace SpiritMod.Projectiles.Bullet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vile Bullet");
+			// DisplayName.SetDefault("Vile Bullet");
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
 

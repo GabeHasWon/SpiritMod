@@ -9,7 +9,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Avian Mask");
+			// DisplayName.SetDefault("Ancient Avian Mask");
 		}
 
 

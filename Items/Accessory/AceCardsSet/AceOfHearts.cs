@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ace of Hearts");
-			Tooltip.SetDefault("Critical hits have a chance to drop hearts");
+			// DisplayName.SetDefault("Ace of Hearts");
+			// Tooltip.SetDefault("Critical hits have a chance to drop hearts");
 		}
 
 		public override void SetDefaults()

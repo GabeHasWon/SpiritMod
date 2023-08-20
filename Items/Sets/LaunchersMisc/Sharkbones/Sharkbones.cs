@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Sharkbones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sharkbones");
-			Tooltip.SetDefault("Fires homing rockets");
+			// DisplayName.SetDefault("Sharkbones");
+			// Tooltip.SetDefault("Fires homing rockets");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

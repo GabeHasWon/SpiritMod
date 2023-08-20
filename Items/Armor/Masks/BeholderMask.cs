@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.Masks
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Beholder Mask");
+			// DisplayName.SetDefault("Beholder Mask");
 		}
 
 		public override void SetDefaults()

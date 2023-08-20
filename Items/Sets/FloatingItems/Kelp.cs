@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.FloatingItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Kelp");
-			Tooltip.SetDefault("Must be planted in water");
+			// DisplayName.SetDefault("Kelp");
+			// Tooltip.SetDefault("Must be planted in water");
 		}
 
 		public override void SetDefaults()

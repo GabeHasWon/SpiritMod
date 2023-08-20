@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.CenturionSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Centurion's Platemail");
+			// DisplayName.SetDefault("Centurion's Platemail");
 		}
 		public override void SetDefaults()
 		{

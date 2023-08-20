@@ -8,7 +8,7 @@ namespace SpiritMod.NPCs.Wheezer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gas Cloud");
+			// DisplayName.SetDefault("Gas Cloud");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -37,7 +37,7 @@ namespace SpiritMod.NPCs.Wheezer
 					Projectile.frame = 0;
 			}
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.Poisoned, 300);

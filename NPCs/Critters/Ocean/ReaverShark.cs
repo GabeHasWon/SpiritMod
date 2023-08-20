@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Critters.Ocean
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Reaver Shark");
+			// DisplayName.SetDefault("Reaver Shark");
 			Main.npcFrameCount[NPC.type] = 6;
 		}
 
@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.Critters.Ocean
 		{
 			NPC.spriteDirection = NPC.direction;
 		}
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ReaverSharkGore").Type, 1f);
@@ -66,7 +66,7 @@ namespace SpiritMod.NPCs.Critters.Ocean
 			for (int k = 0; k < 5; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, NPC.direction, -1f, 1, default, .91f);
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(4))
 			{

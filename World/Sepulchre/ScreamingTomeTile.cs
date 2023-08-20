@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -23,8 +24,8 @@ namespace SpiritMod.World.Sepulchre
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleOnTable1x1);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Mysterious Tome");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Mysterious Tome");
 			AddMapEntry(new Color(179, 146, 107), name);
 			
 			DustType = -1;

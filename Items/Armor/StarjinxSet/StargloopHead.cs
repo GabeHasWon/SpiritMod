@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stargloop Head");
-			Tooltip.SetDefault("'Head beyond the clouds'");
+			// DisplayName.SetDefault("Stargloop Head");
+			// Tooltip.SetDefault("'Head beyond the clouds'");
 
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
 			ArmorIDs.Head.Sets.DrawHead[Item.headSlot] = false;

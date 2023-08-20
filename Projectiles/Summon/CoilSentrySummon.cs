@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Summon
 {
 	public class CoilSentrySummon : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Turret");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Turret");
 
 		public override void SetDefaults()
 		{

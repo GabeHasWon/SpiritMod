@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Packing Crate");
+			// DisplayName.SetDefault("Packing Crate");
 			Main.npcFrameCount[NPC.type] = 1;
 			Main.npcCatchable[NPC.type] = true;
 		}
@@ -71,7 +71,7 @@ namespace SpiritMod.NPCs.Critters
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life > 0 || Main.netMode == NetmodeID.Server)
 				return;

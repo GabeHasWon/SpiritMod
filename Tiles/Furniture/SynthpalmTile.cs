@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -41,8 +42,8 @@ namespace SpiritMod.Tiles.Furniture
             TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
             TileObjectData.addAlternate(1); //facing right will use the second texture style
             TileObjectData.addTile(Type);
-            ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Synthpalm Panel");
+            LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Synthpalm Panel");
 			AddMapEntry(new Color(100, 100, 100), name);
 			DustType = -1;
 		}

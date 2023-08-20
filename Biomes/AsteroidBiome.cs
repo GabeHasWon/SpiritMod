@@ -7,7 +7,7 @@ namespace SpiritMod.Biomes
 {
 	internal class AsteroidBiome : ModBiome
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Asteroids");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Asteroids");
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Asteroids");
 		public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;

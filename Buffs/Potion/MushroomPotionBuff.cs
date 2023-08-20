@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spore Release");
-			Description.SetDefault("Leave behind a trail of damaging mushrooms");
+			// DisplayName.SetDefault("Spore Release");
+			// Description.SetDefault("Leave behind a trail of damaging mushrooms");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

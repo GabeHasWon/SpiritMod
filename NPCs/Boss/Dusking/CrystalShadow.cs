@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Umbral Crystal");
+			// DisplayName.SetDefault("Umbral Crystal");
 			Main.projFrames[Projectile.type] = 5;
 		}
 
@@ -55,7 +55,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			target.AddBuff(ModContent.BuffType<Shadowflame>(), 150);
 		}

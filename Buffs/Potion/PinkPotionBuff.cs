@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jump Boost");
-			Description.SetDefault("Increases jump height");
+			// DisplayName.SetDefault("Jump Boost");
+			// Description.SetDefault("Increases jump height");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Leather Safeguard");
-			Tooltip.SetDefault("Increases max life by 10");
+			// DisplayName.SetDefault("Leather Safeguard");
+			// Tooltip.SetDefault("Increases max life by 10");
 		}
 
 		public override void SetDefaults()

@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			tManager.CreateTrail(Projectile, trail, new RoundCap(), new DefaultTrailPosition(), 8f, 300f, new DefaultShader());
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Shot");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Shot");
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;

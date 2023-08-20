@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floral Seed Bag");
-			Tooltip.SetDefault("Contains exotic grass seeds");
+			// DisplayName.SetDefault("Floral Seed Bag");
+			// Tooltip.SetDefault("Contains exotic grass seeds");
 		}
 
 

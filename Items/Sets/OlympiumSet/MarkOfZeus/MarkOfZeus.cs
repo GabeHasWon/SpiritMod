@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mark of Zeus");
-			Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage\nConsumes 20 mana per second while charging");
+			// DisplayName.SetDefault("Mark of Zeus");
+			// Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage\nConsumes 20 mana per second while charging");
 		}
 
 		public override void SetDefaults()
@@ -51,7 +51,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 
 	public class MarkOfZeusProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mark of Zeus");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mark of Zeus");
 
 		public override void SetDefaults()
 		{
@@ -221,7 +221,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mark Of Zeus");
+			// DisplayName.SetDefault("Mark Of Zeus");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -244,7 +244,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 			Projectile.alpha = 255;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.timeLeft = 0;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.timeLeft = 0;
 
 		public override void AI()
 		{
@@ -309,7 +309,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 		public MarkOfZeusPrimTrail trail;
 
 		private bool initialized = false;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mark of Zeus");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mark of Zeus");
 
 		public override void SetDefaults()
 		{

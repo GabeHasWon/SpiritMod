@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Armor.AstronautVanity
 	[AutoloadEquip(EquipType.Body, EquipType.Back)]
 	public class AstronautBody : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Astronaut Suit");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Astronaut Suit");
 
 		public override void SetDefaults()
 		{

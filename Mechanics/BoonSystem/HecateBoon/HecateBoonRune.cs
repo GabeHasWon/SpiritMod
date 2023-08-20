@@ -20,7 +20,7 @@ namespace SpiritMod.Mechanics.BoonSystem.HecateBoon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rune of Hecate");
+			// DisplayName.SetDefault("Rune of Hecate");
 			Main.projFrames[Projectile.type] = 6;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;

@@ -34,7 +34,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			{
 				if (Main.rand.NextBool(5) && drawInfo.shadow == 0f)
 				{
-					int index = Dust.NewDust(new Vector2((float)Player.getRect().X, (float)Player.getRect().Y), Player.getRect().Width, Player.getRect().Height, DustID.GoldFlame, 0.0f, 0.0f, 0, new Color(), 1f);
+					int index = Dust.NewDust(Player.position, Player.getRect().Width, Player.getRect().Height, DustID.GoldFlame, 0.0f, 0.0f, 0, new Color(), 1f);
 					Main.dust[index].scale = 1.5f;
 					Main.dust[index].noGravity = true;
 					Main.dust[index].velocity *= 1.1f;
@@ -44,15 +44,14 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			}
 		}
 
-		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 		{
 			if (goldified)
 			{
-				damageSource = PlayerDeathReason.ByCustomReason(Player.name + " died solid as a gold bar");
-				playSound = false;
+				modifiers.DisableSound(); //1.4.4PORT
+				//damageSource = PlayerDeathReason.ByCustomReason(Player.name + " died solid as a gold bar");
 				SoundEngine.PlaySound(SoundID.Item37, Player.position);
 			}
-			return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
 		}
 	}
 }

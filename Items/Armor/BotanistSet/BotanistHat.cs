@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Armor.BotanistSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sunflower Strawhat");
-			Tooltip.SetDefault("Keeps you happy");
+			// DisplayName.SetDefault("Sunflower Strawhat");
+			// Tooltip.SetDefault("Keeps you happy");
 
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}

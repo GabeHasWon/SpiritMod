@@ -27,8 +27,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Bone Altar");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Bone Altar");
 			AddMapEntry(Colors.RarityAmber, name);
 
 			DustType = DustID.Bone;

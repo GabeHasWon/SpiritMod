@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rogue's Crest");
-			Tooltip.SetDefault("Summons a rusted sword to fight for you\nThis sword does not take up minion slots");
+			// DisplayName.SetDefault("Rogue's Crest");
+			// Tooltip.SetDefault("Summons a rusted sword to fight for you\nThis sword does not take up minion slots");
 		}
 
 		public override void SetDefaults()

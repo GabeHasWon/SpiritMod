@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Dark Portal");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Dark Portal");
 
 		public override void SetDefaults()
 		{

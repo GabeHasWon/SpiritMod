@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skeletron Prime Blueprint");
-			Tooltip.SetDefault("Fore-Warned is Four-Armed.");
+			// DisplayName.SetDefault("Skeletron Prime Blueprint");
+			// Tooltip.SetDefault("Fore-Warned is Four-Armed.");
 		}
 
 

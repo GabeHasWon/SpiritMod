@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blood Petal");
+			// DisplayName.SetDefault("Blood Petal");
 		}
 
 		public override void SetDefaults()

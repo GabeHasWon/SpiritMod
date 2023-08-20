@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Elemental Wrath");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Elemental Wrath");
 
 		public override void SetDefaults()
 		{
@@ -42,7 +42,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position.X, Projectile.position.Y, 10f, 30f, ModContent.ProjectileType<TerraProj2>(), Projectile.damage / 2, 0f, Projectile.owner, 0f, 0f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.Ichor, 300, true);

@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bramble Hook");
+			// DisplayName.SetDefault("Bramble Hook");
 		}
 
 		public override void SetDefaults()
@@ -46,7 +46,7 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bramble Hook");
+			// DisplayName.SetDefault("Bramble Hook");
 		}
 
 		public override void SetDefaults()

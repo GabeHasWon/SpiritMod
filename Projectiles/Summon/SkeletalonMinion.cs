@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skeletal Harpy");
+			// DisplayName.SetDefault("Skeletal Harpy");
 			Main.projFrames[Type] = 5;
 			ProjectileID.Sets.MinionSacrificable[Type] = true;
 			ProjectileID.Sets.CultistIsResistantTo[Type] = true;
@@ -167,7 +167,7 @@ namespace SpiritMod.Projectiles.Summon
 				Projectile.alpha += 255 / fadeoutTime;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<Buffs.SummonTag.SummonTag5>(), 180, true);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<Buffs.SummonTag.SummonTag5>(), 180, true);
 
 		public override bool MinionContactDamage() => true;
 	}

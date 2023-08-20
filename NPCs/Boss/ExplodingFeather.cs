@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Exploding Feather");
+			// DisplayName.SetDefault("Exploding Feather");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

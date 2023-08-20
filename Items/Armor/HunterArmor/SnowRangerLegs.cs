@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.HunterArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fur Legwraps");
+			// DisplayName.SetDefault("Fur Legwraps");
 		}
 		public override void SetDefaults()
 		{

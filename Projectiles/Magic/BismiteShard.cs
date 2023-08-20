@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Energy");
+			// DisplayName.SetDefault("Bismite Energy");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -55,7 +55,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override Color? GetAlpha(Color lightColor) => new Color(155 - (int)(Projectile.alpha / 3f * 2), 204 - (int)(Projectile.alpha / 3f * 2), 92 - (int)(Projectile.alpha / 3f * 2), 255 - Projectile.alpha);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 180);

@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Holy Hellstorm");
-			Tooltip.SetDefault("Fires a five round burst of angelic energy\nBullets shot inflict 'Angel's Wrath', a stacking debuff\nDifferent amounts of holy light rains down on enemies based on the stacks of 'Angel's Wrath' they have");
+			// DisplayName.SetDefault("Holy Hellstorm");
+			// Tooltip.SetDefault("Fires a five round burst of angelic energy\nBullets shot inflict 'Angel's Wrath', a stacking debuff\nDifferent amounts of holy light rains down on enemies based on the stacks of 'Angel's Wrath' they have");
 		}
 
 

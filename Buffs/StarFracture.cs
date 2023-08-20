@@ -8,7 +8,7 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Fracture");
+			// DisplayName.SetDefault("Star Fracture");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.pvpBuff[Type] = false;
 		}

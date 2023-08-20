@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bone Club");
+			// DisplayName.SetDefault("Bone Club");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

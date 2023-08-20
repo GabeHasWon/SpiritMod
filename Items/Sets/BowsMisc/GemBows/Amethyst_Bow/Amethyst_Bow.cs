@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Amethyst_Bow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Amethyst Bow");
-			Tooltip.SetDefault("Turns wooden arrows into amethyst arrows\nAmethyst arrows have an increased critical strike chance");
+			// DisplayName.SetDefault("Amethyst Bow");
+			// Tooltip.SetDefault("Turns wooden arrows into amethyst arrows\nAmethyst arrows have an increased critical strike chance");
 		}
 
 		public override void SetDefaults()

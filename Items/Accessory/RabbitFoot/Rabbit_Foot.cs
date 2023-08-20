@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory.RabbitFoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rabbit's Foot");
-			Tooltip.SetDefault("You have 1% critical strike chance");
+			// DisplayName.SetDefault("Rabbit's Foot");
+			// Tooltip.SetDefault("You have 1% critical strike chance");
 		}
 
 		public override void SetDefaults()

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Quivershroom");
-			Tooltip.SetDefault("'It bounces back and forth'");
+			// DisplayName.SetDefault("Quivershroom");
+			// Tooltip.SetDefault("'It bounces back and forth'");
 		}
 
 		public override void SetDefaults()

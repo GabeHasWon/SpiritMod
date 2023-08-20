@@ -17,8 +17,8 @@ public abstract class BossBagItem : ModItem
 
 	public sealed override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault($"Treasure Bag ({BossName})");
-		Tooltip.SetDefault("Consumable\n{$CommonItemTooltip.RightClickToOpen}");
+		// DisplayName.SetDefault($"Treasure Bag ({BossName})");
+		// Tooltip.SetDefault("Consumable\n{$CommonItemTooltip.RightClickToOpen}");
 
 		StaticDefaults();
 	}

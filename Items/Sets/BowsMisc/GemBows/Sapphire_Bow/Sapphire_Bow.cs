@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Sapphire_Bow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sapphire Bow");
-			Tooltip.SetDefault("Turns wooden arrows into sapphire arrows\nSapphire arrows slightly home toward the cursor");
+			// DisplayName.SetDefault("Sapphire Bow");
+			// Tooltip.SetDefault("Turns wooden arrows into sapphire arrows\nSapphire arrows slightly home toward the cursor");
 		}
 
 		public override void SetDefaults()

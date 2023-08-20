@@ -6,7 +6,7 @@ namespace SpiritMod.Items.ByBiome.Spirit.Placeables.Furniture
 {
 	internal class SpiritPylonItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Pylon");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Pylon");
 
 		public override void SetDefaults()
 		{

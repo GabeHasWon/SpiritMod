@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.NightSkyStaff
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nova's Spark");
-			Tooltip.SetDefault("Shoots out a fast laser of starry energy\nEvery fifth strike on foes summons a more powerful homing beam of stars\nThat beam rains down homing bolts from the sky");
+			// DisplayName.SetDefault("Nova's Spark");
+			// Tooltip.SetDefault("Shoots out a fast laser of starry energy\nEvery fifth strike on foes summons a more powerful homing beam of stars\nThat beam rains down homing bolts from the sky");
 			Item.staff[Item.type] = true;
 		}
 

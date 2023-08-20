@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 
 		const int ChargeUp = 16; //How long it takes to start up
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Vector .109");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Vector .109");
 
 		public override void SetDefaults()
 		{

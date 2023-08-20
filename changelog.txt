@@ -1,2 +1,7 @@
-﻿- Fixed Martian Saucer drops not working
-- Fixed Soaring Scapula not checking server for gores
+﻿- Updated localization
+- Ported all necessary code
+- Fixed Soul Bloom using the seed drop stack for the herb, and vise-versa
+- Adventurer now sells Sticky Glowsticks during day only, Spelunker Glowsticks in specific moon phase at night only
+- Slightly changed when Adventurer sells Ultrabright Torches
+- Adjusted Shoot sources to use the proper source instead of not that
+- Updated Music Display crossmod

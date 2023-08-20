@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles
         protected int dustType;
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Sand");
+			// DisplayName.SetDefault("Spirit Sand");
 		}
 
         public override void SetDefaults()

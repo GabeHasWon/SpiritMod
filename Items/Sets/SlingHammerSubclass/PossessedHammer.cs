@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Possessed Hammer");
-			Tooltip.SetDefault("Throws a returning, vengeful hammer that will seek out enemies to hit additional times");
+			// DisplayName.SetDefault("Possessed Hammer");
+			// Tooltip.SetDefault("Throws a returning, vengeful hammer that will seek out enemies to hit additional times");
 		}
 
 		public override void SetDefaults()
@@ -44,7 +44,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Possessed Hammer");
+			// DisplayName.SetDefault("Possessed Hammer");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}
@@ -56,16 +56,20 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 		protected override float DamageMult => 1.25f;
 		protected override int ThrowSpeed => 46;
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage = (int)(damage * 0.75f);
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage *= 0.75f;
 
-		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) => damage = (int)(damage * 0.75f);
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{
+			if (modifiers.PvP)
+				modifiers.FinalDamage *= 0.75f;
+		}
 	}
 
 	public class PossessedHammerProjReturning : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Possessed Hammer");
+			// DisplayName.SetDefault("Possessed Hammer");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -180,7 +184,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player player = Main.player[Projectile.owner];
 			Projectile.damage = (int)(Projectile.damage * 0.9f);

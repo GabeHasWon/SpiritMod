@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Sets.StarjinxSet.StarfireLamp
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starfire Lantern");
-			Tooltip.SetDefault($"Emits embers of cosmic energy\nRight click to illuminate an enemy for {(int)(Item.mana * IlluminateManaRatio)} mana\nEmbers lock on to illuminated enemies");
+			// DisplayName.SetDefault("Starfire Lantern");
+			// Tooltip.SetDefault($"Emits embers of cosmic energy\nRight click to illuminate an enemy for {(int)(Item.mana * IlluminateManaRatio)} mana\nEmbers lock on to illuminated enemies");
 		}
 
 		private const int baseMana = 6;

@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Crusher");
+			// DisplayName.SetDefault("Soul Crusher");
 			Main.npcFrameCount[NPC.type] = 7;
 			NPCHelper.ImmuneTo(this, BuffID.OnFire);
 		}
@@ -75,7 +75,7 @@ namespace SpiritMod.NPCs.Spirit
 			return 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

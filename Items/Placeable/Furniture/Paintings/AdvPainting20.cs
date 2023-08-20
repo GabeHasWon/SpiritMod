@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terrarian Above a Sea of Fog");
-			Tooltip.SetDefault("'S. Yaki'");
+			// DisplayName.SetDefault("Terrarian Above a Sea of Fog");
+			// Tooltip.SetDefault("'S. Yaki'");
 		}
 
 		public override void SetDefaults()

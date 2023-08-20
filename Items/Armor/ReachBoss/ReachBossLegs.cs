@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Armor.ReachBoss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thornspeaker's Greaves");
+			// DisplayName.SetDefault("Thornspeaker's Greaves");
 		}
 
 		public override void SetDefaults()

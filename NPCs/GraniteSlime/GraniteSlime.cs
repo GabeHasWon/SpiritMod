@@ -19,7 +19,7 @@ namespace SpiritMod.NPCs.GraniteSlime
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granite Slime");
+			// DisplayName.SetDefault("Granite Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
@@ -114,14 +114,14 @@ namespace SpiritMod.NPCs.GraniteSlime
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == 368) && NPC.downedBoss2 && spawnInfo.SpawnTileY > Main.rockLayer ? 0.17f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hitDirection, -2.5f, 0, default, 0.27f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Granite, 2.5f * hitDirection, -2.5f, 0, default, 0.87f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.27f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Granite, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.87f);
 				}
 			}
 

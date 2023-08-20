@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloomshroom");
+			// DisplayName.SetDefault("Bloomshroom");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

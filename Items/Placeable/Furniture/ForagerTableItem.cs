@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Naturalist's Workshop");
-			Tooltip.SetDefault("Allows for the crafting of ambient objects and tiles");
+			// DisplayName.SetDefault("Naturalist's Workshop");
+			// Tooltip.SetDefault("Allows for the crafting of ambient objects and tiles");
 		}
 
 		public override void SetDefaults()

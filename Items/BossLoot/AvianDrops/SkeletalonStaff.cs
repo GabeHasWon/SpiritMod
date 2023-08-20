@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skeletalon Staff");
-			Tooltip.SetDefault("5 summon tag damage\nSummons an army of fossilized birds to fight for you");
+			// DisplayName.SetDefault("Skeletalon Staff");
+			// Tooltip.SetDefault("5 summon tag damage\nSummons an army of fossilized birds to fight for you");
 		}
 
 		public override void SetDefaults()

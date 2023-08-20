@@ -24,7 +24,7 @@ namespace SpiritMod.Mechanics.BoonSystem.AsclepiusBoon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault(""); //Boon Orb
+			// DisplayName.SetDefault(""); //Boon Orb
 			NPCID.Sets.TrailCacheLength[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
@@ -104,7 +104,7 @@ namespace SpiritMod.Mechanics.BoonSystem.AsclepiusBoon
 
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (Main.dedServ)
 				return;

@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.WitchSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Charmcaster's Leggings");
+			// DisplayName.SetDefault("Charmcaster's Leggings");
 		}
 		public override void SetDefaults()
 		{

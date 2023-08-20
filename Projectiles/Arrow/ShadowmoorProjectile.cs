@@ -40,7 +40,7 @@ namespace SpiritMod.Projectiles.Arrow
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Darklight Bolt");
+			// DisplayName.SetDefault("Darklight Bolt");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -103,7 +103,7 @@ namespace SpiritMod.Projectiles.Arrow
 
 		public override void Kill(int timLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Main.rand.NextBool(5))
                 target.AddBuff(BuffID.ShadowFlame, 180);

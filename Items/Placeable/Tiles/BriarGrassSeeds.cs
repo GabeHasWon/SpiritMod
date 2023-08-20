@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Briar Grass Seeds");
-			Tooltip.SetDefault("Can be placed");
+			// DisplayName.SetDefault("Briar Grass Seeds");
+			// Tooltip.SetDefault("Can be placed");
 		}
 
 		public override void SetDefaults()

@@ -50,7 +50,7 @@ namespace SpiritMod.NPCs.GraniTech
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("G-TEK Turret");
+			// DisplayName.SetDefault("G-TEK Turret");
 			Main.npcFrameCount[NPC.type] = 3;
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -133,7 +133,7 @@ namespace SpiritMod.NPCs.GraniTech
 				Vector2 adjPos = NPC.position + new Vector2(2, NPC.height - 8);
 				if (Collision.SolidCollision(adjPos, NPC.width - 4, 4))
 				{
-					NPC.StrikeNPCNoInteraction((int)(NPC.velocity.Y * 60), 0f, 0, true, false);
+					NPC.SimpleStrikeNPC((int)(NPC.velocity.Y * 60), 0, true, 0f, null, false);
 
 					if (NPC.life > 0)
 					{
@@ -321,7 +321,7 @@ namespace SpiritMod.NPCs.GraniTech
 			recoil = reader.ReadSingle();
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (Main.netMode != NetmodeID.Server && NPC.life <= 0)
 				for (int i = 1; i <= 2; i++)
@@ -442,7 +442,7 @@ namespace SpiritMod.NPCs.GraniTech
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Laser Bolt");
+			// DisplayName.SetDefault("Laser Bolt");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

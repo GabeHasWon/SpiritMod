@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Macuahuitl");
-            Tooltip.SetDefault("Charging increases armor penetration");
+            // DisplayName.SetDefault("Macuahuitl");
+            // Tooltip.SetDefault("Charging increases armor penetration");
         }
 
         public override void Defaults()

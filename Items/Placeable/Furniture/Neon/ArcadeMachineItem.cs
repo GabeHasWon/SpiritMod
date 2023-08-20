@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcade Machine");
+			// DisplayName.SetDefault("Arcade Machine");
 		}
 
 		public override void SetDefaults()

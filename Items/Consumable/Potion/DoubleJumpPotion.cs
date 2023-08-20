@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Zephyr Potion");
-			Tooltip.SetDefault("Temporarily grants a double jump");
+			// DisplayName.SetDefault("Zephyr Potion");
+			// Tooltip.SetDefault("Temporarily grants a double jump");
 		}
 
 		public override void SetDefaults()

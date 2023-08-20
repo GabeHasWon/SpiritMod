@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Glyph");
+			// DisplayName.SetDefault("Red Glyph");
 			ProjectileID.Sets.MinionShot[Projectile.type] = true;
 			Main.projFrames[Projectile.type] = 4;
         }

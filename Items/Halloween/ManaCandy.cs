@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Halloween
 		internal override Point Size => new(24, 24);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Mana Candy");
-			Tooltip.SetDefault("Increases mana");
+			// DisplayName.SetDefault("Mana Candy");
+			// Tooltip.SetDefault("Increases mana");
 		}
 
 		public override void Defaults()

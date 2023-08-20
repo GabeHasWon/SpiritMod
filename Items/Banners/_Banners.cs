@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Banners
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Yuurei Banner");
+			// DisplayName.SetDefault("Yuurei Banner");
 			ItemID.Sets.KillsToBanner[Type] = 25;
 		}
     }
@@ -134,7 +134,7 @@ namespace SpiritMod.Items.Banners
 		protected override int Style => 18;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wooden Crate Mimic Banner");
+			// DisplayName.SetDefault("Wooden Crate Mimic Banner");
 			ItemID.Sets.KillsToBanner[Type] = 25;
 		}
 	}
@@ -187,7 +187,7 @@ namespace SpiritMod.Items.Banners
 	public class DiseasedSlimeBanner : BaseBannerItem
 	{
 		protected override int Style => 28;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Noxious Slime Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Noxious Slime Banner");
 	}
 
 	//public class DiseasedBatBanner : BaseBannerItem //Removed as the NPC no longer exists
@@ -251,7 +251,7 @@ namespace SpiritMod.Items.Banners
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("R'lyehian Banner");
+			// DisplayName.SetDefault("R'lyehian Banner");
 			ItemID.Sets.KillsToBanner[Type] = 10;
 		}
 	}
@@ -259,7 +259,7 @@ namespace SpiritMod.Items.Banners
     public class MangoWarBanner : BaseBannerItem
     {
 		protected override int Style => 41;
-        public override void SetStaticDefaults() => DisplayName.SetDefault("Mang O' War Banner");
+        // public override void SetStaticDefaults() => DisplayName.SetDefault("Mang O' War Banner");
 	}
 
     public class CrocosaurBanner : BaseBannerItem
@@ -275,7 +275,7 @@ namespace SpiritMod.Items.Banners
 	public class KakamoraThrowerBanner : BaseBannerItem
     {
 		protected override int Style => 44;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Kakamora Lobber Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Kakamora Lobber Banner");
 	}
 
     public class KakamoraBruteBanner : BaseBannerItem
@@ -291,7 +291,7 @@ namespace SpiritMod.Items.Banners
 	public class KakamoraShielderBanner1 : BaseBannerItem
     {
 		protected override int Style => 47;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Kakamora Guard Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Kakamora Guard Banner");
     }
 
     public class KakamoraShamanBanner : BaseBannerItem
@@ -386,7 +386,7 @@ namespace SpiritMod.Items.Banners
 	public class ReachmanBanner : BaseBannerItem
 	{
 		protected override int Style => 65;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Feral Shambler Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Feral Shambler Banner");
 	}
 
 	public class HemaphoraBanner : BaseBannerItem
@@ -413,7 +413,7 @@ namespace SpiritMod.Items.Banners
 	public class GiantJellyBanner : BaseBannerItem
 	{
 		protected override int Style => 70;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Tethervolt Jelly Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Tethervolt Jelly Banner");
     }
 
     public class BloomshroomBanner : BaseBannerItem
@@ -439,7 +439,7 @@ namespace SpiritMod.Items.Banners
 	public class LunarSlimeBanner : BaseBannerItem
 	{
 		protected override int Style => 75;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Stargazer Slime Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Stargazer Slime Banner");
 	}
 
 	public class BlizzardBanditBanner : BaseBannerItem
@@ -478,7 +478,7 @@ namespace SpiritMod.Items.Banners
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stactus Banner");
+			// DisplayName.SetDefault("Stactus Banner");
 			ItemID.Sets.KillsToBanner[Type] = 200;
 		}
 	}
@@ -526,7 +526,7 @@ namespace SpiritMod.Items.Banners
 	public class BlazingSkullBanner : BaseBannerItem
 	{
 		protected override int Style => 91;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Wrathful Soul Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Wrathful Soul Banner");
 	}
 
 	public class StymphalianBatBanner : BaseBannerItem
@@ -553,7 +553,7 @@ namespace SpiritMod.Items.Banners
 	public class GranitecTurretBanner : BaseBannerItem
 	{
 		protected override int Style => 96;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("G-TEK Turret Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("G-TEK Turret Banner");
 	}
 
 	public class HauntedTomeBanner : BaseBannerItem
@@ -597,7 +597,7 @@ namespace SpiritMod.Items.Banners
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Poisonous Hydra Banner");
+			// DisplayName.SetDefault("Poisonous Hydra Banner");
 			ItemID.Sets.KillsToBanner[Type] = 25;
 		}
 	}
@@ -608,7 +608,7 @@ namespace SpiritMod.Items.Banners
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Venomous Hydra Banner");
+			// DisplayName.SetDefault("Venomous Hydra Banner");
 			ItemID.Sets.KillsToBanner[Type] = 25;
 		}
 	}
@@ -619,7 +619,7 @@ namespace SpiritMod.Items.Banners
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flaming Hydra Banner");
+			// DisplayName.SetDefault("Flaming Hydra Banner");
 			ItemID.Sets.KillsToBanner[Type] = 25;
 		}
 

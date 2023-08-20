@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Items.Placeable.Furniture.Neon;
@@ -60,8 +61,8 @@ namespace SpiritMod.Tiles.Furniture.Signs
 
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Sign");
+            LocalizedText name = CreateMapEntryName();
+            // name.SetDefault("Sign");
             AddMapEntry(new Color(139, 77, 255), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = -1;

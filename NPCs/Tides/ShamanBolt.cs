@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Healing Bolt");
+			// DisplayName.SetDefault("Healing Bolt");
 		}
 		int counter = -180;
 		float distance = 2;

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Scrunkly");
-			Tooltip.SetDefault("'B. F. Jinx'");
+			// DisplayName.SetDefault("The Scrunkly");
+			// Tooltip.SetDefault("'B. F. Jinx'");
 		}
 
 		public override void SetDefaults()

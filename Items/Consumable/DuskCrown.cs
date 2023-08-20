@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Crown");
-			Tooltip.SetDefault("Use at nighttime to summon Dusking");
+			// DisplayName.SetDefault("Dusk Crown");
+			// Tooltip.SetDefault("Use at nighttime to summon Dusking");
 		}
 
 		public override void SetDefaults()

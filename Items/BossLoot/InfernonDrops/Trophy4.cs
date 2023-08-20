@@ -6,7 +6,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	[Sacrifice(1)]
 	public class Trophy4 : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Infernon Trophy");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Infernon Trophy");
 
 		public override void SetDefaults()
 		{

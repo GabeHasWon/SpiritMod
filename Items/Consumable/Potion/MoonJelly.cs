@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Consumable.Potion
 
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Moon Jelly");
+			// DisplayName.SetDefault("Moon Jelly");
 
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}

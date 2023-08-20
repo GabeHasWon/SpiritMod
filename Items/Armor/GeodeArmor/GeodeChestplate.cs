@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Armor.GeodeArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Geode Chestplate");
+			// DisplayName.SetDefault("Geode Chestplate");
 		}
 		public override void SetDefaults()
 		{

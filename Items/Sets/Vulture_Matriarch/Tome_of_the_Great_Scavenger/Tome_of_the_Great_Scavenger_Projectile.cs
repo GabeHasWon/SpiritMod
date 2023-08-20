@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Tome_of_the_Great_Scavenger
     {
  		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gilded Feather");
+            // DisplayName.SetDefault("Gilded Feather");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         } 
@@ -94,9 +94,9 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Tome_of_the_Great_Scavenger
 			}
         }
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage += Math.Min(target.defense / 2, 15);
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage.Base += Math.Min(target.defense / 2, 15);
 
-		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit) => damage += Math.Min(target.statDefense / 2, 15);
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers) => modifiers.FinalDamage.Base += Math.Min(target.statDefense / 2, 15);
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{
@@ -159,7 +159,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Tome_of_the_Great_Scavenger
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4) && !target.SpawnedFromStatue) 
 				target.AddBuff(BuffID.Midas, 180);

@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fire Spike");
+			// DisplayName.SetDefault("Fire Spike");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

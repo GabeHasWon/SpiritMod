@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Synthpalm Wall Panel");
-			Tooltip.SetDefault("'A mix of natural and digital'");
+			// DisplayName.SetDefault("Synthpalm Wall Panel");
+			// Tooltip.SetDefault("'A mix of natural and digital'");
 		}
 
 		public override void SetDefaults()

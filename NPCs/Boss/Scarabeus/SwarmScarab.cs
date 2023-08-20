@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scarab");
+			// DisplayName.SetDefault("Scarab");
 			Main.npcFrameCount[NPC.type] = 2;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
@@ -35,7 +35,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			NPC.alpha = 0;
 			NPC.DeathSound = SoundID.NPCDeath16;
 		}
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = 5;
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */ => NPC.lifeMax = 5;
 		public override bool PreKill()
 		{
 			for (int i = 0; i < 10; i++) {

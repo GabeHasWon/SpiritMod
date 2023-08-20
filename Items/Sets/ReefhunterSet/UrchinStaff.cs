@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 {
 	public class UrchinStaff : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Urchin Lobber");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Urchin Lobber");
 
 		public override void SetDefaults()
 		{

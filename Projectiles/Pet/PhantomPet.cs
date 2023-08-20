@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Pet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phantom");
+			// DisplayName.SetDefault("Phantom");
 			Main.projFrames[Projectile.type] = 4;
 			Main.projPet[Projectile.type] = true;
 		}

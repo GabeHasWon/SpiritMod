@@ -9,7 +9,7 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Atlas Mask");
+			// DisplayName.SetDefault("Atlas Mask");
 		}
 
 		public override void SetDefaults()

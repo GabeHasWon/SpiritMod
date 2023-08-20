@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tiny Lunazoa");
-			Tooltip.SetDefault("Increases in bait power at night, and even further during the Jelly Deluge");
+			// DisplayName.SetDefault("Tiny Lunazoa");
+			// Tooltip.SetDefault("Increases in bait power at night, and even further during the Jelly Deluge");
 		}
 
 		public override void SetDefaults()

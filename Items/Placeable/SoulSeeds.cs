@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Placeable
 	[Sacrifice(25)]
 	public class SoulSeeds : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Soulbloom Seeds");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Soulbloom Seeds");
 
 		public override void SetDefaults()
 		{

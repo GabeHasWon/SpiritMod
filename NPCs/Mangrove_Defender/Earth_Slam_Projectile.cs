@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Earth Slam");
+			// DisplayName.SetDefault("Earth Slam");
 		}
 		public override void SetDefaults()
 		{
@@ -45,11 +45,11 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 				}
 			}
 		}
-		public override void OnHitPlayer (Player target, int damage, bool crit)
+		public override void OnHitPlayer (Player target, Player.HurtInfo info)
 		{
 			target.velocity.Y -= 10f;
 		}
-		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC (NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.velocity.Y -= 10f;
 		}

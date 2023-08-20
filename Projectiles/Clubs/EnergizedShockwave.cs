@@ -31,7 +31,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Shockwave");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Shockwave");
 		public override void SetDefaults()
 		{
 			Projectile.width = 20;

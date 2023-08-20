@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernal Wave");
+			// DisplayName.SetDefault("Infernal Wave");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -58,7 +58,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			return false;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.OnFire, 300);

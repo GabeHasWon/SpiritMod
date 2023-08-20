@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Silver Chest");
+			// DisplayName.SetDefault("Silver Chest");
 			Main.npcFrameCount[NPC.type] = 5;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };

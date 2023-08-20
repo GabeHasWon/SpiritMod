@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Weapon.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starlight Staff");
-			Tooltip.SetDefault("Summons a stationary twinkle popper");
+			// DisplayName.SetDefault("Starlight Staff");
+			// Tooltip.SetDefault("Summons a stationary twinkle popper");
 		}
 
 		public override void SetDefaults()

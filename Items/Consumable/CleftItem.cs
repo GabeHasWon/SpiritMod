@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cleft Hopper");
-			Tooltip.SetDefault("'Its shell is quite sturdy'");
+			// DisplayName.SetDefault("Cleft Hopper");
+			// Tooltip.SetDefault("'Its shell is quite sturdy'");
 		}
 
 		public override void SetDefaults()

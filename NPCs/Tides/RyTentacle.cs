@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tentacle Spike");
+			// DisplayName.SetDefault("Tentacle Spike");
 			ProjectileID.Sets.DontAttachHideToAlpha[Projectile.type] = true;
 		}
 

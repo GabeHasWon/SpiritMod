@@ -31,7 +31,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Boomerang Blaster");
+			// DisplayName.SetDefault("Boomerang Blaster");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -109,7 +109,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (!Main.dedServ)
 				for (int i = 0; i < 8; i++)

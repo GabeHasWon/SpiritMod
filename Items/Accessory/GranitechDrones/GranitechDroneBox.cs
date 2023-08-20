@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("G-TEK Drone Box");
-			Tooltip.SetDefault("Summons 3 drones to aid you\nHolding a pickaxe switches drones to mining mode\nIn mining mode, these drones will copy your pickaxe power and mine with you\nThese drones do not take up minion slots");
+			// DisplayName.SetDefault("G-TEK Drone Box");
+			// Tooltip.SetDefault("Summons 3 drones to aid you\nHolding a pickaxe switches drones to mining mode\nIn mining mode, these drones will copy your pickaxe power and mine with you\nThese drones do not take up minion slots");
 		}
 
 		public override void SetDefaults()

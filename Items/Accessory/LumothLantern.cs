@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Luminous Lantern");
-			Tooltip.SetDefault("Provides bright light\nWorks in the vanity slot, but less effectively\n'Adventure into the deepest caverns with a trusty lightsource!'");
+			// DisplayName.SetDefault("Luminous Lantern");
+			// Tooltip.SetDefault("Provides bright light\nWorks in the vanity slot, but less effectively\n'Adventure into the deepest caverns with a trusty lightsource!'");
 		}
 
 		public override void SetDefaults()

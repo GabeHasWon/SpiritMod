@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Ruby_Bow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ruby Bow");
-			Tooltip.SetDefault("Turns wooden arrows into ruby arrows\nRuby arrows bounce once");
+			// DisplayName.SetDefault("Ruby Bow");
+			// Tooltip.SetDefault("Turns wooden arrows into ruby arrows\nRuby arrows bounce once");
 		}
 
 		public override void SetDefaults()

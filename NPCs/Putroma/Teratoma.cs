@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Putroma
 {
 	public class Teratoma : ModNPC
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Putroma");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Putroma");
 
 		public override void SetDefaults()
 		{
@@ -55,11 +55,11 @@ namespace SpiritMod.NPCs.Putroma
 				drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, SpriteEffects.None, 0);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Pot, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ScourgeOfTheCorruptor, 2.5f * hitDirection, -2.5f, 0, Color.White, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Pot, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ScourgeOfTheCorruptor, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .34f);
 			}
 
 			if (Main.rand.NextBool(2)) {

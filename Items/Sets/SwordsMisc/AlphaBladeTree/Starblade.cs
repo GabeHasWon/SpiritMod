@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starblade");
-			Tooltip.SetDefault("'Harness the night sky'\nEvery third swing causes the blade to release multiple bright stars\nEach star explodes into homing star wisps");
+			// DisplayName.SetDefault("Starblade");
+			// Tooltip.SetDefault("'Harness the night sky'\nEvery third swing causes the blade to release multiple bright stars\nEach star explodes into homing star wisps");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SwordsMisc/AlphaBladeTree/Starblade_Glow");
 		}
 

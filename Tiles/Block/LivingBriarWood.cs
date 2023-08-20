@@ -20,7 +20,6 @@ namespace SpiritMod.Tiles.Block
 			Main.tileMerge[Type][TileID.LivingMahoganyLeaves] = true;
 
 			AddMapEntry(new Color(133, 104, 70));
-			ItemDrop = ModContent.ItemType<AncientBark>();
 		}
 	}
 }

@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Electricity Bolt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Electricity Bolt");
 
 		public override void SetDefaults()
 		{
@@ -96,7 +96,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			return target;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hitInfo, int damageDone)
 		{
 			Projectile.velocity = Vector2.Zero;
 			hit[Projectile.penetrate - 1] = target;

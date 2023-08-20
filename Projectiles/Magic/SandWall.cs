@@ -25,7 +25,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Wall");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Wall");
 
 		public override void SetDefaults()
 		{
@@ -72,7 +72,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.velocity = (initialVel * initialSpeedMult) + offset;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (!target.boss && target.velocity != Vector2.Zero && target.knockBackResist != 0)
 				target.velocity.Y = -4f;

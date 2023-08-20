@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bow of Ornaments");
-			Tooltip.SetDefault("Turns wooden arrows into ornament arrows\nOrnament Arrows create assorted gem arrows upon shattering");
+			// DisplayName.SetDefault("Bow of Ornaments");
+			// Tooltip.SetDefault("Turns wooden arrows into ornament arrows\nOrnament Arrows create assorted gem arrows upon shattering");
 		}
 
 		public override void SetDefaults()

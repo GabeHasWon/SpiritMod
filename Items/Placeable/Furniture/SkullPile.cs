@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pile of Skulls");
+			// DisplayName.SetDefault("Pile of Skulls");
 		}
 
 

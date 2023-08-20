@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.TideDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mango Jelly Staff");
-			Tooltip.SetDefault("Summons a mini Mango Jelly");
+			// DisplayName.SetDefault("Mango Jelly Staff");
+			// Tooltip.SetDefault("Summons a mini Mango Jelly");
 		}
 
 		public override void SetDefaults()

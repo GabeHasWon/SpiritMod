@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.CoilSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coil Pistol");
-			Tooltip.SetDefault("Converts regular bullets into electrified bullets that chain from enemy to enemy");
+			// DisplayName.SetDefault("Coil Pistol");
+			// Tooltip.SetDefault("Converts regular bullets into electrified bullets that chain from enemy to enemy");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

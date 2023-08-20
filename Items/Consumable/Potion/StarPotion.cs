@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starburn Potion");
-			Tooltip.SetDefault("Critical hits may cause stars to fall from the sky\nIncreases ranged damage and critical strike chance by 4% when moving");
+			// DisplayName.SetDefault("Starburn Potion");
+			// Tooltip.SetDefault("Critical hits may cause stars to fall from the sky\nIncreases ranged damage and critical strike chance by 4% when moving");
 		}
 
 		public override void SetDefaults()

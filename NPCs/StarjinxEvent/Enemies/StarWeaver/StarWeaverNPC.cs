@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Weaver");
+			// DisplayName.SetDefault("Star Weaver");
 			Main.npcFrameCount[NPC.type] = 6;
 		}
 
@@ -41,7 +41,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 			NPC.DeathSound = SoundID.NPCDeath51;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.66f * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * 0.66f * balance);
 
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => false;
 
@@ -311,10 +311,10 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<StargloopHead>(20);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int i = 0; i < 12; i++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VilePowder, 2.5f * hitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .75f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VilePowder, 2.5f * hit.HitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .75f));
 		}
 
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(_headIndex);

@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 		public Ornament_Arrow() : base(Main.DiscoColor, DustID.GemDiamond) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ornament Arrow");
+			// DisplayName.SetDefault("Ornament Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -100,8 +100,12 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 
 		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f }, Projectile.Center);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => SpawnArrows(Projectile.GetSource_OnHit(target));
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => SpawnArrows(Projectile.GetSource_OnHit(target));
 
-		public override void OnHitPvp(Player target, int damage, bool crit) => SpawnArrows(Projectile.GetSource_OnHit(target));
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
+		{
+			if (info.PvP)
+				SpawnArrows(Projectile.GetSource_OnHit(target));
+		}
 	}
 }

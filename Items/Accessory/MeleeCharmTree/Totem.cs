@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloody Bauble");
-			Tooltip.SetDefault("Increases melee speed by 5%\nIncreases damage reduction and damage dealt by 5%\nIncreases critical strike chance by 5%\nAttacks have a small chance to steal life");
+			// DisplayName.SetDefault("Bloody Bauble");
+			// Tooltip.SetDefault("Increases melee speed by 5%\nIncreases damage reduction and damage dealt by 5%\nIncreases critical strike chance by 5%\nAttacks have a small chance to steal life");
 		}
 
 

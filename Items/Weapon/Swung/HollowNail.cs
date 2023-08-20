@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Weapon.Swung
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hollow Nail");
-			Tooltip.SetDefault("Use it above enemies to bounce on them");
+			// DisplayName.SetDefault("Hollow Nail");
+			// Tooltip.SetDefault("Use it above enemies to bounce on them");
 		}
 
 		public override void SetDefaults()

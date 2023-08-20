@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flask Of Gore");
+			// DisplayName.SetDefault("Flask Of Gore");
 		}
 
 		public override void SetDefaults()

@@ -43,17 +43,13 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Pirate Chest");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Pirate Chest");
 			AddMapEntry(new Color(161, 115, 54), name, MapChestName);
-			name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
-			name.SetDefault("Locked Pirate Chest");
 			AddMapEntry(new Color(87, 64, 31), name, MapChestName);
 
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ModContent.ItemType<PirateChest>();
-			ContainerName.SetDefault("Pirate Chest");
         }
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
@@ -84,7 +80,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, TileLoader.GetItemDropFromTypeAndStyle(Type));
 			Chest.DestroyChest(i, j);
 		}
 
@@ -211,8 +207,8 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 				player.cursorItemIconText = Language.GetTextValue("LegacyChestType.0");
 			else
 			{
-				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Pirate Chest";
-				if (player.cursorItemIconText == "Pirate Chest")
+				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : DefaultContainerName(tile.TileFrameX, tile.TileFrameY).Value;
+				if (player.cursorItemIconText == DefaultContainerName(tile.TileFrameX, tile.TileFrameY).Value)
 				{
 					player.cursorItemIconID = IsLockedChest(left, top) ? ModContent.ItemType<PirateKey>() : ModContent.ItemType<PirateChest>();
 					player.cursorItemIconText = "";

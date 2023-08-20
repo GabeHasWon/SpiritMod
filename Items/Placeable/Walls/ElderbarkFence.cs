@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Walls
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Elderbark Fence");
+			// DisplayName.SetDefault("Elderbark Fence");
 		}
 
 

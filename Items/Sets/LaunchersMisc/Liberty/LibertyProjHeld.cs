@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Liberty
 {
 	public class LibertyProjHeld : Projectiles.BaseProj.BaseHeldProj
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Liberty");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Liberty");
 
 		public override void SetDefaults()
 		{

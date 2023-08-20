@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pink Cyberfly");
-			Tooltip.SetDefault("'Real or digital?'");
+			// DisplayName.SetDefault("Pink Cyberfly");
+			// Tooltip.SetDefault("'Real or digital?'");
 		}
 
 		public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Twinkle Popper");
+			// DisplayName.SetDefault("Twinkle Popper");
 			Main.projFrames[base.Projectile.type] = 6;
 		}
 

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skullspray Staff");
-			Tooltip.SetDefault("Summons a skull at the cursor position\nThe skull erupts into four bolts of energy");
+			// DisplayName.SetDefault("Skullspray Staff");
+			// Tooltip.SetDefault("Summons a skull at the cursor position\nThe skull erupts into four bolts of energy");
 		}
 
 

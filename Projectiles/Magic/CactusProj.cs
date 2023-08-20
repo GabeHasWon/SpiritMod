@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cactus Pin");
+			// DisplayName.SetDefault("Cactus Pin");
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -71,7 +71,7 @@ namespace SpiritMod.Projectiles.Magic
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[0] = 1f;
 			Projectile.ai[1] = (float)target.whoAmI;

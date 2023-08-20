@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			tManager.CreateTrail(Projectile, new StandardColorTrail(color), new RoundCap(), new DefaultTrailPosition(), 12f, 100f, new DefaultShader());
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Rocket");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Rocket");
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
@@ -90,9 +90,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center, color, 100, 8));
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			base.OnHitNPC(target, damage, knockback, crit);
+			base.OnHitNPC(target, hit, damageDone);
 
 			directNPCIndex = target.whoAmI;
 		}

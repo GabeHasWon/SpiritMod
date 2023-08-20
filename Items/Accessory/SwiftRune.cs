@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Swiftness Rune");
-			Tooltip.SetDefault("Massively increases unassisted aerial agility");
+			// DisplayName.SetDefault("Swiftness Rune");
+			// Tooltip.SetDefault("Massively increases unassisted aerial agility");
 		}
 
 		public override void SetDefaults()

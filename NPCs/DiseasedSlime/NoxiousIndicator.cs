@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Noxious Field");
+			// DisplayName.SetDefault("Noxious Field");
 			Main.projFrames[Projectile.type] = 6;
 
 		}

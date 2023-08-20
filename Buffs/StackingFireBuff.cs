@@ -7,7 +7,7 @@ namespace SpiritMod.Buffs
 {
 	public class StackingFireBuff : ModBuff
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Combustion Blaze");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Combustion Blaze");
 
 		public override bool ReApply(NPC npc, int time, int buffIndex)
 		{

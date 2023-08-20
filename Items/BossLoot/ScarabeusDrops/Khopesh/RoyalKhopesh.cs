@@ -14,8 +14,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Royal Khopesh");
-			Tooltip.SetDefault("Swings in a 3-hit combo\nThe last hit in the combo is bigger, does more damage, and ignores armor");
+			// DisplayName.SetDefault("Royal Khopesh");
+			// Tooltip.SetDefault("Swings in a 3-hit combo\nThe last hit in the combo is bigger, does more damage, and ignores armor");
 		}
 
 		public override void SetDefaults()
@@ -48,7 +48,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Royal Khopesh");
+			// DisplayName.SetDefault("Royal Khopesh");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -158,16 +158,16 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.Khopesh
 			hitbox.Inflate((int)(scalemod * Projectile.width), (int)(scalemod * Projectile.height));
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (BigSwing)
 			{
-				damage = (int)(damage * 1.5f);
-				damage += target.defense / 2;
-				knockback *= 1.5f;
+				modifiers.FinalDamage *= 1.5f;
+				modifiers.FinalDamage.Base += target.defense / 2f;
+				modifiers.Knockback *= 1.5f;
 			}
 
-			hitDirection = Player.direction;
+			modifiers.HitDirectionOverride = Player.direction;
 		}
 
 		public override Color? GetAlpha(Color lightColor) => Color.Lerp(lightColor, Color.White, 0.2f);

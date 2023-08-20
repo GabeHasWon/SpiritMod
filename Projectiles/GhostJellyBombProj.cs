@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ghost Jellybomb");
+			// DisplayName.SetDefault("Ghost Jellybomb");
 		}
 
 		public override void SetDefaults()
@@ -36,7 +36,7 @@ namespace SpiritMod.Projectiles
 			Main.projectile[proj].hostile = true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.Kill();
 		}

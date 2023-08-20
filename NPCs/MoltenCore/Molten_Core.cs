@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.MoltenCore
 		public int spawnedProjectiles = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Molten Core");
+			// DisplayName.SetDefault("Molten Core");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.OnFire);
 		}
@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.MoltenCore
 			});
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(24, 60 * 3);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(24, 60 * 3);
 
 		public override void AI()
 		{
@@ -191,7 +191,7 @@ namespace SpiritMod.NPCs.MoltenCore
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -201,9 +201,9 @@ namespace SpiritMod.NPCs.MoltenCore
 			}
 			for (int k = 0; k < 7; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 		}
 

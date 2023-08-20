@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stone Fist");
-			Tooltip.SetDefault("Use anywhere to summon Atlas");
+			// DisplayName.SetDefault("Stone Fist");
+			// Tooltip.SetDefault("Use anywhere to summon Atlas");
 		}
 
 		public override void SetDefaults()

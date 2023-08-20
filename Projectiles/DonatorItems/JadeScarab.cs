@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ornate Scarab");
+			// DisplayName.SetDefault("Ornate Scarab");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

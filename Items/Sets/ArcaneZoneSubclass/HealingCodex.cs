@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.ArcaneZoneSubclass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Codex: Healing Zone");
-			Tooltip.SetDefault("Summons a healing zone at the cursor position\nHealing zones increase player life regen while standing inside\nZones count as sentries");
+			// DisplayName.SetDefault("Arcane Codex: Healing Zone");
+			// Tooltip.SetDefault("Summons a healing zone at the cursor position\nHealing zones increase player life regen while standing inside\nZones count as sentries");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/ArcaneZoneSubclass/HealingCodex_Glow");
         }
 

@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Books
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Amea the Brigand");
-            Tooltip.SetDefault("by Solaki");
+            // DisplayName.SetDefault("Amea the Brigand");
+            // Tooltip.SetDefault("by Solaki");
         }
     }
 }

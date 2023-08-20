@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.IronBomber
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pulse Grenade");
+			// DisplayName.SetDefault("Pulse Grenade");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

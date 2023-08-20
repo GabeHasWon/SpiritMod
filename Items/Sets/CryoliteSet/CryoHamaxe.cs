@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolite Hamaxe");
+			// DisplayName.SetDefault("Cryolite Hamaxe");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/CryoliteSet/CryoHamaxe_Glow");
 		}
 

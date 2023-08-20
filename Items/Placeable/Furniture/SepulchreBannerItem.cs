@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 {
 	public class SepulchreBannerItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Banner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Banner");
 
 		public override void SetDefaults()
 		{

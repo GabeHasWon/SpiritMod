@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Overdrive");
-			Description.SetDefault("Your movement speed and melee speed are charged up!");
+			// DisplayName.SetDefault("Overdrive");
+			// Description.SetDefault("Your movement speed and melee speed are charged up!");
 
 			Main.buffNoTimeDisplay[Type] = true;
 		}

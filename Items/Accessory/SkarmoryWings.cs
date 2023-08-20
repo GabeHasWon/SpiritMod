@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Accessory
 		public int timer = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bladewings");
-			Tooltip.SetDefault("'It seems to originate from a metallic organism of unknown origin'\nGrants flight and slow fall\nLeaves behind a trail of quicksilver that homes in on foes");
+			// DisplayName.SetDefault("Bladewings");
+			// Tooltip.SetDefault("'It seems to originate from a metallic organism of unknown origin'\nGrants flight and slow fall\nLeaves behind a trail of quicksilver that homes in on foes");
 
 			ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new Terraria.DataStructures.WingStats(90, 9.4f, 1);
 		}

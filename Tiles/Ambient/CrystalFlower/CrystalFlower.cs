@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -23,12 +24,10 @@ namespace SpiritMod.Tiles.Ambient.CrystalFlower
 			TileObjectData.newTile.AnchorBottom = new Terraria.DataStructures.AnchorData(Terraria.Enums.AnchorType.AlternateTile, 1, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Crystal Flower");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(9, 170, 219), name);
 
 			MineResist = 1.2f;
-			ItemDrop = ModContent.ItemType<CrystalFlowerItem>();
 		}
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

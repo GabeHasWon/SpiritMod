@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Metal Band");
-			Tooltip.SetDefault("Increases pickup range for ores\n'No you can't listen to this'");
+			// DisplayName.SetDefault("Metal Band");
+			// Tooltip.SetDefault("Increases pickup range for ores\n'No you can't listen to this'");
 		}
 
 		public override void SetDefaults()

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cascade Greaves");
-			Tooltip.SetDefault("15% increased movement in water");
+			// DisplayName.SetDefault("Cascade Greaves");
+			// Tooltip.SetDefault("15% increased movement in water");
 		}
 
 		public override void SetDefaults()

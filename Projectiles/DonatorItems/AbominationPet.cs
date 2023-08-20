@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wishbone");
+			// DisplayName.SetDefault("Wishbone");
 			Main.projFrames[Projectile.type] = 7;
 			Main.projPet[Projectile.type] = true;
 		}

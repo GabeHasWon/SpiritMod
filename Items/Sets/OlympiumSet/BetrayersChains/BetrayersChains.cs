@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 	{
 		private byte combo = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blades of Chaos");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blades of Chaos");
 
 		public override void SetDefaults()
 		{
@@ -104,7 +104,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blades of Chaos");
+			// DisplayName.SetDefault("Blades of Chaos");
 
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -409,14 +409,14 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 
 		public override bool? CanDamage() => base.CanDamage();
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (Slam || PreSlam)
 				target.AddBuff(BuffID.OnFire3, 180);
 
 			if (Collision.CheckAABBvAABBCollision(target.position, target.Size, Projectile.position, Projectile.Size))
 			{
-				damage = (int)(damage * 1.3f);
+				modifiers.FinalDamage *= 1.3f;
 				for (int i = 0; i < 8; i++)
 				{
 					Vector2 vel = Main.rand.NextFloat(6.28f).ToRotationVector2();

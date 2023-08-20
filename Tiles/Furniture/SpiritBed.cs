@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -19,8 +20,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Duskwood Bed");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Duskwood Bed");
 			AddMapEntry(new Color(200, 200, 200), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[] { TileID.Beds };

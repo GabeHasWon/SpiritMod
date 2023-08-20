@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Light");
+			// DisplayName.SetDefault("Light");
 		}
 		public override void SetDefaults()
 		{

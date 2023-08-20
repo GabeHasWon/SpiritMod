@@ -9,8 +9,8 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shiver Wind");
-			Tooltip.SetDefault("Shoots a chilly bolt that morphs into an icy rune");
+			// DisplayName.SetDefault("Shiver Wind");
+			// Tooltip.SetDefault("Shoots a chilly bolt that morphs into an icy rune");
 		}
 
 		public override void SetDefaults()

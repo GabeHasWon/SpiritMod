@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Halloween.SpookySet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Haunting Claw");
-			Tooltip.SetDefault("Shoots a cluster of spooky fire.");
+			// DisplayName.SetDefault("Haunting Claw");
+			// Tooltip.SetDefault("Shoots a cluster of spooky fire.");
 		}
 
 

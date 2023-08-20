@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nightbane");
-			Tooltip.SetDefault("Summons extra shadow bullets");
+			// DisplayName.SetDefault("Nightbane");
+			// Tooltip.SetDefault("Summons extra shadow bullets");
 		}
 
 		public override void SetDefaults()
@@ -62,7 +62,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 
 			public override void SetStaticDefaults()
 			{
-				DisplayName.SetDefault("Night Bullet");
+				// DisplayName.SetDefault("Night Bullet");
 				ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 				ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 			}
@@ -90,7 +90,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
                 }
             }
 
-			public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+			public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 			{
 				var player = Main.player[Projectile.owner];
 				Vector2 offset = new Vector2(Main.rand.Next(-100, 100), Main.rand.Next(-100, 0));

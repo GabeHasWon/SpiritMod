@@ -12,7 +12,6 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoFail[Type] = true;
 			Main.tileLighted[Type] = true;
-			ItemDrop = ModContent.ItemType<Items.Sets.HuskstalkSet.AncientBark>();
 			DustType = 7;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);

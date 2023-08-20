@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Snowball");
+			// DisplayName.SetDefault("Snowball");
 		}
 
 		public override void SetDefaults()
@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 180, true);

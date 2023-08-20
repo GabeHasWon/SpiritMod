@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 {
 	public class ThornyRod : ModItem
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Creates briar grass on dirt");
+		// public override void SetStaticDefaults() => Tooltip.SetDefault("Creates briar grass on dirt");
 
 		public override void SetDefaults()
 		{

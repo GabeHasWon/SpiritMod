@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.WitchSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Charmcaster's Hat");
+			// DisplayName.SetDefault("Charmcaster's Hat");
 
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}

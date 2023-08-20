@@ -7,7 +7,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 {
 	public class ArterialBloodClump : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Clumped Blood");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Clumped Blood");
 
 		public override void SetDefaults()
 		{

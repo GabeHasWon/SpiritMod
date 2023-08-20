@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Fishing
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fisheye Gem");
-			Tooltip.SetDefault("Increases the sell price of fish by 50%\nWorks while in the inventory");
+			// DisplayName.SetDefault("Fisheye Gem");
+			// Tooltip.SetDefault("Increases the sell price of fish by 50%\nWorks while in the inventory");
 		}
 
 		public override void SetDefaults()

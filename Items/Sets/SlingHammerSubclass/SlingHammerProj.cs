@@ -127,15 +127,18 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
                 }
                 return false;
         }
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			SafeModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			SafeModifyHitNPC(target, ref modifiers);
 			Player player = Main.player[Projectile.owner];
+
 			if (target.Center.X > player.Center.X)
-				hitDirection = 1;
+				modifiers.HitDirectionOverride = 1;
 			else
-				hitDirection = -1;
+				modifiers.HitDirectionOverride = -1;
 		}
-		public virtual void SafeModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) { }
+
+		public virtual void SafeModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) { }
 	}
 }

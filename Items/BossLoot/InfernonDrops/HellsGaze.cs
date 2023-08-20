@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fiery Lash");
-			Tooltip.SetDefault("Nearby enemies are engulfed in flames\n6% increased critical strike chance\nYou emit a fiery glow");
+			// DisplayName.SetDefault("Fiery Lash");
+			// Tooltip.SetDefault("Nearby enemies are engulfed in flames\n6% increased critical strike chance\nYou emit a fiery glow");
 		}
 
 		public override void SetDefaults()

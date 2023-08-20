@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -27,8 +28,8 @@ namespace SpiritMod.World.Sepulchre
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Cursed Armor");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Cursed Armor");
 			AddMapEntry(Color.DarkSlateGray, name);
 
 			MineResist = 0.2f;
@@ -51,8 +52,8 @@ namespace SpiritMod.World.Sepulchre
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Draugr Statue");
-			Tooltip.SetDefault("'Take caution...'");
+			// DisplayName.SetDefault("Draugr Statue");
+			// Tooltip.SetDefault("'Take caution...'");
 		}
 
 		public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Salvaged Scrap Block");
+			// DisplayName.SetDefault("Salvaged Scrap Block");
 		}
 
 

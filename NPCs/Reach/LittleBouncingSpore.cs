@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thorn Ball");
+			// DisplayName.SetDefault("Thorn Ball");
 		}
 
 		public override void SetDefaults()
@@ -38,7 +38,7 @@ namespace SpiritMod.NPCs.Reach
 			Projectile.velocity.Y += 0.4f;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.Poisoned, 180);

@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Halloween.DevMasks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Kachow's Mask");
-			Tooltip.SetDefault("Vanity item \n'Great for impersonating devs!'");
+			// DisplayName.SetDefault("Kachow's Mask");
+			// Tooltip.SetDefault("Vanity item \n'Great for impersonating devs!'");
 
 		}
 

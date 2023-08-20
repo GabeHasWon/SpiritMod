@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.FleshHound
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flesh Hound");
+			// DisplayName.SetDefault("Flesh Hound");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -58,10 +58,10 @@ namespace SpiritMod.NPCs.FleshHound
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && (Main.bloodMoon) && NPC.downedBoss1 ? 0.12f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 40; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -69,7 +69,7 @@ namespace SpiritMod.NPCs.FleshHound
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Hound2").Type, 1f);
 
 				for (int k = 0; k < 40; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
 			}
 		}
 
@@ -154,6 +154,6 @@ namespace SpiritMod.NPCs.FleshHound
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(ModContent.BuffType<BloodCorrupt>(), 180);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(ModContent.BuffType<BloodCorrupt>(), 180);
 	}
 }

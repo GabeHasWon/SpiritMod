@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wooden Club");
+			// DisplayName.SetDefault("Wooden Club");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

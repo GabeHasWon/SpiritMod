@@ -6,7 +6,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	[AutoloadEquip(EquipType.Head)]
 	public class InfernonMask : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Infernon Mask");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Infernon Mask");
 
 
 		public override void SetDefaults()

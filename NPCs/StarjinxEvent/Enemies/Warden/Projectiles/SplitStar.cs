@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starjinx Star");
+			// DisplayName.SetDefault("Starjinx Star");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

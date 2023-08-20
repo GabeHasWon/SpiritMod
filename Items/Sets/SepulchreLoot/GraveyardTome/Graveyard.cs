@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.GraveyardTome
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Graveyard");
-			Tooltip.SetDefault("Creates a portal to the nether realm, releasing a torrent of skulls");
+			// DisplayName.SetDefault("Graveyard");
+			// Tooltip.SetDefault("Creates a portal to the nether realm, releasing a torrent of skulls");
 		}
 
 		public override void SetDefaults()

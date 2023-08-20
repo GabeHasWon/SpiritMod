@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Quivershroom");
+			// DisplayName.SetDefault("Quivershroom");
 			Main.npcFrameCount[NPC.type] = 14;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -45,10 +45,10 @@ namespace SpiritMod.NPCs.Critters
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CorruptPlants, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CorruptPlants, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Vibeshroom1").Type, 1f);

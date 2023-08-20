@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Talon's Fury");
-			Tooltip.SetDefault("Creates a flurry of homing feathers");
+			// DisplayName.SetDefault("Talon's Fury");
+			// Tooltip.SetDefault("Creates a flurry of homing feathers");
 			Item.staff[Item.type] = true;
 		}
 
@@ -44,7 +44,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 		{
 			int heldProj = ModContent.ProjectileType<TalonPiercerProj>();
 			if (player.ownedProjectileCounts[heldProj] < 1)
-				Projectile.NewProjectile(Entity.GetSource_ItemUse(Item), position, Vector2.Zero, heldProj, damage, knockback, player.whoAmI);
+				Projectile.NewProjectile(source, position, Vector2.Zero, heldProj, damage, knockback, player.whoAmI);
 
 			float randomRotation = Main.rand.NextFloat(-0.2f, 0.2f);
 			velocity *= Main.rand.NextFloat(0.8f, 1.0f);
@@ -66,7 +66,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 		public override string Texture => "SpiritMod/Items/BossLoot/AvianDrops/TalonPiercer";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Talon's Fury");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Talon's Fury");
 
 		public override void SetDefaults()
 		{

@@ -40,17 +40,15 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Asteroid Chest");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Asteroid Chest");
 			AddMapEntry(new Color(125, 116, 115), name);
 			
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ModContent.ItemType<Items.Placeable.Furniture.AsteroidChest>();
-			ContainerName.SetDefault("Asteroid Chest");
 		}
 
-		public string MapChestName(string name, int i, int j)
+		public static string MapChestName(string name, int i, int j)
 		{
 			int left = i;
 			int top = j;
@@ -70,16 +68,8 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			}
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = 1;
-		}
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
-			Chest.DestroyChest(i, j);
-		}
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Chest.DestroyChest(i, j);
 
 		public override bool RightClick(int i, int j)
         {

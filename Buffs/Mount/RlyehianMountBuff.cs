@@ -9,8 +9,8 @@ namespace SpiritMod.Buffs.Mount
         {
             Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
-			DisplayName.SetDefault("Eldritch Cloak");
-			Description.SetDefault("'It really sweeps you off your feet'");
+			// DisplayName.SetDefault("Eldritch Cloak");
+			// Description.SetDefault("'It really sweeps you off your feet'");
         }
  
         public override void Update(Player player, ref int buffIndex)

@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Essence of the Sun");
+			// DisplayName.SetDefault("Essence of the Sun");
 		}
 
 		public override void SetDefaults()
@@ -111,7 +111,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			Projectile.Kill();
 			Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<HostileWrath>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);

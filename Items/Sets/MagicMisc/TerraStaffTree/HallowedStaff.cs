@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hallowed Staff");
-			Tooltip.SetDefault("Rains down a barrage of magical swords");
+			// DisplayName.SetDefault("Hallowed Staff");
+			// Tooltip.SetDefault("Rains down a barrage of magical swords");
 		}
 
 

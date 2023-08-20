@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chaos Crystal");
-			Tooltip.SetDefault("Getting hit has a chance to teleport you to somewhere nearby");
+			// DisplayName.SetDefault("Chaos Crystal");
+			// Tooltip.SetDefault("Getting hit has a chance to teleport you to somewhere nearby");
 		}
 
 		public override void SetDefaults()
@@ -61,7 +61,7 @@ namespace SpiritMod.Items.Accessory
 							else
 								break;
 						}
-						if (!Collision.LavaCollision(Position, player.width, player.height) && Collision.HurtTiles(Position, player.velocity, player.width, player.height, false).Y <= 0.0)
+						if (!Collision.LavaCollision(Position, player.width, player.height) && Collision.HurtTiles(Position, player.width, player.height, player).y <= 0.0)
 						{
 							Collision.SlopeCollision(Position, player.velocity, player.width, player.height, player.gravDir, false);
 							if (Collision.SolidCollision(Position, player.width, player.height) && num4 < 99)

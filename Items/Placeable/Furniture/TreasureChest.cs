@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Loot Chest");
-			Tooltip.SetDefault("'It's already filled to the brim!'");
+			// DisplayName.SetDefault("Loot Chest");
+			// Tooltip.SetDefault("'It's already filled to the brim!'");
 
 		}
 

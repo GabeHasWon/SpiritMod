@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Boomerang");
-			Tooltip.SetDefault("Inflicts Soul Burn");
+			// DisplayName.SetDefault("Spirit Boomerang");
+			// Tooltip.SetDefault("Inflicts Soul Burn");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritBoomerang_Glow");
 		}
 

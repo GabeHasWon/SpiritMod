@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 	{
 		int TrapperID => ModContent.NPCType<CrimsonTrapper>();
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Flesh Tendon");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Flesh Tendon");
 
 		public override void SetDefaults()
 		{

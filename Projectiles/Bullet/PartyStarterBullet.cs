@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class PartyStarterBullet : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Party Bullet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Party Bullet");
 
 		public override void SetDefaults()
 		{
@@ -65,7 +65,7 @@ namespace SpiritMod.Projectiles.Bullet
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int i = 0; i < 10; i++) {
 				int num = Dust.NewDust(target.position, target.width, target.height, DustID.Electric, 0f, -2f, 0, default, 2f);

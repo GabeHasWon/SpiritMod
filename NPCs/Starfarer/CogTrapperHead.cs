@@ -26,7 +26,7 @@ namespace SpiritMod.NPCs.Starfarer
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stardancer");
+			// DisplayName.SetDefault("Stardancer");
 			Main.npcFrameCount[NPC.type] = 1;
 			NPCHelper.BuffImmune(Type, true);
 
@@ -177,10 +177,10 @@ namespace SpiritMod.NPCs.Starfarer
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<StarEnergy>(1);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hit.HitDirection, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

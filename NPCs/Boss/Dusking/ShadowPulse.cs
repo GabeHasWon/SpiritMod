@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Pulse");
+			// DisplayName.SetDefault("Shadow Pulse");
 		}
 
 		public override void SetDefaults()
@@ -54,7 +54,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			return Color.White;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(8))
 				target.AddBuff(ModContent.BuffType<Shadowflame>(), 200);

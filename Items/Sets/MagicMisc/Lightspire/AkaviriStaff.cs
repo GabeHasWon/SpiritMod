@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.Lightspire
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lightspire");
-			Tooltip.SetDefault("'Any amount of light is enough'");
+			// DisplayName.SetDefault("Lightspire");
+			// Tooltip.SetDefault("'Any amount of light is enough'");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/MagicMisc/Lightspire/AkaviriStaff_Glow");
 			Item.staff[Item.type] = true;
 		}
@@ -78,7 +78,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.Lightspire
 			if (Main.rand.NextBool(6))
             {
                 SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/CoilRocket"), player.Center);
-                int proj = Projectile.NewProjectile(Item.GetSource_ItemUse(Item), position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<DarkfeatherBomb>(), damage, knockback*2, player.whoAmI);
+                int proj = Projectile.NewProjectile(player.GetSource_ItemUse(Item), position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<DarkfeatherBomb>(), damage, knockback*2, player.whoAmI);
                 Main.projectile[proj].DamageType = DamageClass.Magic;
                 Main.projectile[proj].hostile = false;
                 Main.projectile[proj].friendly = true;

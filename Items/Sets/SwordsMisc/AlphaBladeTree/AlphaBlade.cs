@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Alpha Blade");
-			Tooltip.SetDefault("'The power of the universe sides with you'");
+			// DisplayName.SetDefault("Alpha Blade");
+			// Tooltip.SetDefault("'The power of the universe sides with you'");
 		}
 
 		public override void SetDefaults()

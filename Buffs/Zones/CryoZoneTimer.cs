@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Zones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slow Zone");
-			Description.SetDefault("The Slow Zone is up!");
+			// DisplayName.SetDefault("Slow Zone");
+			// Description.SetDefault("The Slow Zone is up!");
 			Main.pvpBuff[Type] = true;
 		}
 	}

@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Putroma
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cancerous Chunk");
+			// DisplayName.SetDefault("Cancerous Chunk");
 		}
 
 		public override void SetDefaults()

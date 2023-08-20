@@ -11,7 +11,7 @@ namespace SpiritMod.Utilities.ILEdits
 {
 	class SunflowerSpreadEdit : ILEdit
 	{
-		public override void Load(Mod mod) => IL.Terraria.WorldGen.hardUpdateWorld += WorldGen_hardUpdateWorld;
+		public override void Load(Mod mod) => Terraria.IL_WorldGen.hardUpdateWorld += WorldGen_hardUpdateWorld;
 
 		/// This IL edit is used to stop evil stones (ebonstone/crimstone) from spreading into areas protected by super sunflowers
 		/// Evil grass is also handled in a separate detour (WorldGen_SpreadGrass)

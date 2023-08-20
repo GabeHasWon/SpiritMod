@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hyperspace Bust");
-			Tooltip.SetDefault("Creates an artificial Hyperspace Biome on right-click");
+			// DisplayName.SetDefault("Hyperspace Bust");
+			// Tooltip.SetDefault("Creates an artificial Hyperspace Biome on right-click");
 		}
 
 		public override void SetDefaults()

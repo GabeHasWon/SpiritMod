@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cragbound Staff");
-			Tooltip.SetDefault("A tiny Earthen Guardian rains down energy for you \nOccasionally inflicts foes with 'Unstable Affliction'");
+			// DisplayName.SetDefault("Cragbound Staff");
+			// Tooltip.SetDefault("A tiny Earthen Guardian rains down energy for you \nOccasionally inflicts foes with 'Unstable Affliction'");
 		}
 
 		public override void SetDefaults()

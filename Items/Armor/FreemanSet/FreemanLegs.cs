@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.FreemanSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Hunted's Hazard Leggings");
+			// DisplayName.SetDefault("The Hunted's Hazard Leggings");
 		}
 		public override void SetDefaults()
 		{

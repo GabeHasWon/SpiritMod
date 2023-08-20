@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mime Mask");
-			Tooltip.SetDefault("Increases summon damage by 3%\nIncreases your max number of minions");
+			// DisplayName.SetDefault("Mime Mask");
+			// Tooltip.SetDefault("Increases summon damage by 3%\nIncreases your max number of minions");
 
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}

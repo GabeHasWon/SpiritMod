@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.FallenAngel
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fallen Angel");
+			// DisplayName.SetDefault("Fallen Angel");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.FlyingFish];
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -112,7 +112,7 @@ namespace SpiritMod.NPCs.FallenAngel
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessory.FallenAngel>(), 5));
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -132,7 +132,7 @@ namespace SpiritMod.NPCs.FallenAngel
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.Cursed, 300);

@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Olympium Token");
-			Tooltip.SetDefault("May be of interest to a collector...");
+			// DisplayName.SetDefault("Olympium Token");
+			// Tooltip.SetDefault("May be of interest to a collector...");
 		}
 
 		public override void SetDefaults()

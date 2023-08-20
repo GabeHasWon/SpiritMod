@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.FrigidArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frigid Greaves");
+			// DisplayName.SetDefault("Frigid Greaves");
 
 		}
 

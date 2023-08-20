@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadowflame Sword");
-			Tooltip.SetDefault("Causes explosions of Shadowflames to appear when hitting enemies\nShoots out Shadow Embers that damage nearby foes");
+			// DisplayName.SetDefault("Shadowflame Sword");
+			// Tooltip.SetDefault("Causes explosions of Shadowflames to appear when hitting enemies\nShoots out Shadow Embers that damage nearby foes");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/ShadowflameSword_Glow");
 		}
 
@@ -33,14 +33,14 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 			Item.UseSound = SoundID.Item1;
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5)) {
 				int dist = 80;
 				Vector2 targetExplosionPos = target.Center;
 				for (int i = 0; i < 200; ++i) {
 					if (Main.npc[i].active && (Main.npc[i].Center - targetExplosionPos).Length() < dist) {
-						Main.npc[i].HitEffect(0, damage);
+						Main.npc[i].HitEffect(0, damageDone);
 					}
 				}
 				for (int i = 0; i < 15; ++i) {

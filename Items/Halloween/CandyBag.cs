@@ -46,8 +46,8 @@ namespace SpiritMod.Items.Halloween
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Candy Bag");
-			Tooltip.SetDefault("Holds up to " + MaxCandy + " pieces of candy");
+			// DisplayName.SetDefault("Candy Bag");
+			// Tooltip.SetDefault("Holds up to " + MaxCandy + " pieces of candy");
 		}
 
 

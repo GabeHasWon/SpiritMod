@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rimehowl");
-			Tooltip.SetDefault("Every third swing creates a cryonic wave, which inflicts 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
+			// DisplayName.SetDefault("Rimehowl");
+			// Tooltip.SetDefault("Every third swing creates a cryonic wave, which inflicts 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
 		}
 
 		public override void SetDefaults()
@@ -81,7 +81,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 						}
 					}
 
-					Projectile.NewProjectile(Entity.GetSource_ItemUse(Item), position - new Vector2(0, 20) + (Vector2.UnitX * 50 * player.direction), velocity, ModContent.ProjectileType<IceWall>(), damage * 2, knockback * 2, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(Item), position - new Vector2(0, 20) + (Vector2.UnitX * 50 * player.direction), velocity, ModContent.ProjectileType<IceWall>(), damage * 2, knockback * 2, player.whoAmI);
 
 					if (Main.netMode != NetmodeID.Server)
 						SoundEngine.PlaySound(SoundID.DD2_MonkStaffGroundImpact, position);
@@ -114,7 +114,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 						float increment = 5;
 						Vector2 newVel = velocity.RotatedBy(MathHelper.ToRadians(-(increment * (numLoops / 2f)) + (float)((float)increment * i)));
 
-						Projectile proj = Projectile.NewProjectileDirect(Entity.GetSource_ItemUse(Item), position + (newVel * 10) + player.velocity, newVel, ModContent.ProjectileType<IceWave>(), damage * 2, knockback * 2, player.whoAmI);
+						Projectile proj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), position + (newVel * 10) + player.velocity, newVel, ModContent.ProjectileType<IceWave>(), damage * 2, knockback * 2, player.whoAmI);
 						proj.frame = i;
 						proj.ai[1] = (i == 2) ? 0 : 1; //This determines whether the projectile deals damage
 						proj.netUpdate = true;

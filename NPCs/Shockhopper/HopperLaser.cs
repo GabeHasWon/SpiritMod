@@ -16,8 +16,8 @@ namespace SpiritMod.NPCs.Shockhopper
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults()
-			=> DisplayName.SetDefault("Deepspace Hopper");
+		/* public override void SetStaticDefaults()
+			=> DisplayName.SetDefault("Deepspace Hopper"); */
 
 		public override void SetDefaults()
 		{

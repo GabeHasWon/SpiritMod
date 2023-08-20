@@ -21,7 +21,6 @@ namespace SpiritMod.Tiles.Block
 			AddMapEntry(new Color(53, 59, 74));
 			DustType = -1;
             HitSound = SoundID.Tink;
-            ItemDrop = ModContent.ItemType<NeonBlockPurpleItem>();
 		}
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

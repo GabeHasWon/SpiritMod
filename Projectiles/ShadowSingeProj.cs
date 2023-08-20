@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Singe");
+			// DisplayName.SetDefault("Shadow Singe");
 			Main.projFrames[Projectile.type] = 7;
 		}
 

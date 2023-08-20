@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bauble");
+			// DisplayName.SetDefault("Bauble");
 			Main.projFrames[Projectile.type] = 4;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

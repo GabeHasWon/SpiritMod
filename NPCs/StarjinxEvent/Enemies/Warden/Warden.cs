@@ -72,7 +72,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Warden");
+			// DisplayName.SetDefault("Warden");
 			Main.npcFrameCount[NPC.type] = 1;
 		}
 
@@ -602,7 +602,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden
 			}
 		}
 
-		public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+		public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone)
 		{
 			if (GetArchon.enchantment == Archon.Archon.Enchantment.Void && item.IsMelee() && blackHoleWhoAmI != -1)
 			{

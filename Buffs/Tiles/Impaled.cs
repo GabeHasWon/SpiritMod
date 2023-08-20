@@ -12,8 +12,8 @@ namespace SpiritMod.Buffs.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Impaled");
-			Description.SetDefault("You've been impaled by a pike. Ouch!");
+			// DisplayName.SetDefault("Impaled");
+			// Description.SetDefault("You've been impaled by a pike. Ouch!");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = false;
 			Main.buffNoSave[Type] = true;

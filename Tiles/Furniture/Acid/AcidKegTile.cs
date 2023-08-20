@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -17,8 +18,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Keg");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Corrosive Keg");
 			AddMapEntry(new Color(100, 122, 111), name);
 			AdjTiles = new int[] { TileID.Kegs };
 			DustType = -1;

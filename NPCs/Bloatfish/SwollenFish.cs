@@ -19,7 +19,7 @@ namespace SpiritMod.NPCs.Bloatfish
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloatfish");
+			// DisplayName.SetDefault("Bloatfish");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 
@@ -106,12 +106,12 @@ namespace SpiritMod.NPCs.Bloatfish
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GemAmber, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GemAmber, 2.5f * hitDirection, -2.5f, 0, Color.White, .67f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GemAmber, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GemAmber, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .67f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -126,6 +126,6 @@ namespace SpiritMod.NPCs.Bloatfish
 			return SpawnCondition.OceanMonster.Chance * 0.06f;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Bleeding, 1800);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.Bleeding, 1800);
 	}
 }

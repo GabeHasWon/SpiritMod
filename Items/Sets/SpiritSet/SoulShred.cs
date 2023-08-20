@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ethereal Ember");
-			Tooltip.SetDefault("'A part of the everburning Soul'");
+			// DisplayName.SetDefault("Ethereal Ember");
+			// Tooltip.SetDefault("'A part of the everburning Soul'");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 6));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true; 
 			ItemID.Sets.ItemNoGravity[Item.type] = true;

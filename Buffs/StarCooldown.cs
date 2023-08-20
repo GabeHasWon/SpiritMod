@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cosmic Cooldown");
-			Description.SetDefault("The cosmic energies must stabilize...");
+			// DisplayName.SetDefault("Cosmic Cooldown");
+			// Description.SetDefault("The cosmic energies must stabilize...");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.pvpBuff[Type] = false;
 			Main.debuff[Type] = true;

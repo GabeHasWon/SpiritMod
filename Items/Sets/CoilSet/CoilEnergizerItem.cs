@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.CoilSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coiled Energizer");
-			Tooltip.SetDefault("Creates an electric field that energizes nearby players, greatly increasing movement speed and melee speed");
+			// DisplayName.SetDefault("Coiled Energizer");
+			// Tooltip.SetDefault("Creates an electric field that energizes nearby players, greatly increasing movement speed and melee speed");
 		}
 
 		public override void SetDefaults()

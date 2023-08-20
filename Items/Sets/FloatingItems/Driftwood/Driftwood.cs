@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.ID;
@@ -17,8 +18,8 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Small Driftwood");
-			Tooltip.SetDefault("'Aesthetically pleasing'");
+			// DisplayName.SetDefault("Small Driftwood");
+			// Tooltip.SetDefault("'Aesthetically pleasing'");
 		}
 
 		public override void SetDefaults()
@@ -65,8 +66,8 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Driftwood");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Driftwood");
 			AddMapEntry(new Color(69, 54, 43), name);
 			DustType = DustID.Stone;
 		}
@@ -83,8 +84,8 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Medium Driftwood");
-			Tooltip.SetDefault("'Aesthetically pleasing'");
+			// DisplayName.SetDefault("Medium Driftwood");
+			// Tooltip.SetDefault("'Aesthetically pleasing'");
 		}
 
 		public override void SetDefaults()
@@ -131,8 +132,8 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Driftwood");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Driftwood");
 			AddMapEntry(new Color(69, 54, 43), name);
 			DustType = DustID.Stone;
 		}
@@ -149,8 +150,8 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Large Driftwood");
-			Tooltip.SetDefault("'Aesthetically pleasing'");
+			// DisplayName.SetDefault("Large Driftwood");
+			// Tooltip.SetDefault("'Aesthetically pleasing'");
 		}
 
 		public override void SetDefaults()
@@ -197,8 +198,8 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Driftwood");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Driftwood");
 			AddMapEntry(new Color(69, 54, 43), name);
 			DustType = DustID.Stone;
 		}

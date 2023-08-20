@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.HolySword
 		int charger;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Holy Sword");
+			// DisplayName.SetDefault("Holy Sword");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

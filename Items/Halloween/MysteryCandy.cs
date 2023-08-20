@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Halloween
 		internal override Point Size => new(24, 24);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Mystery Candy");
-			Tooltip.SetDefault("Either a great treat... or a nasty trick");
+			// DisplayName.SetDefault("Mystery Candy");
+			// Tooltip.SetDefault("Either a great treat... or a nasty trick");
 		}
 
 		public override void Defaults()

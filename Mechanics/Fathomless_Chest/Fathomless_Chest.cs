@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using System;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using System.Linq;
@@ -37,12 +38,10 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.newTile.Origin = new Point16(0, 2);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Fathomless Vase");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(112, 216, 238), name);
 
 			HitSound = SoundID.DD2_SkeletonDeath;
-			ItemDrop = ModContent.ItemType<Black_Stone_Item>();
 			DustType = -1;
 		}
 		public override bool CanExplode(int i, int j) => false;
@@ -205,8 +204,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fathomless Vase");
-			Tooltip.SetDefault("You aren't supposed to have this!");
+			// DisplayName.SetDefault("Fathomless Vase");
+			// Tooltip.SetDefault("You aren't supposed to have this!");
 		}
 
 		public override void SetDefaults()

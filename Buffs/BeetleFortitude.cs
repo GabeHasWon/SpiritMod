@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Beetle Fortitude");
-			Description.SetDefault("Each strike strenghtens you...");
+			// DisplayName.SetDefault("Beetle Fortitude");
+			// Description.SetDefault("Each strike strenghtens you...");
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 
@@ -28,7 +28,7 @@ namespace SpiritMod.Buffs
 			return false;
 		}
 
-		public override void ModifyBuffTip(ref string tip, ref int rare)
+		public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
 			tip += $"\nDamage taken is reduced by {modPlayer.beetleStacks}%";

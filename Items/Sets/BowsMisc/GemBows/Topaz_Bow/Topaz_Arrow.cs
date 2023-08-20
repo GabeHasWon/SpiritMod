@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Topaz_Bow
 		public Topaz_Arrow() : base(Color.Yellow, DustID.GemTopaz) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Topaz Arrow");
+			// DisplayName.SetDefault("Topaz Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

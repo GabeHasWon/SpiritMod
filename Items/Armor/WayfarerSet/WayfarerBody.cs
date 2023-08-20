@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Armor.WayfarerSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wayfarer's Rucksack");
-			Tooltip.SetDefault("5% increased movement speed");
+			// DisplayName.SetDefault("Wayfarer's Rucksack");
+			// Tooltip.SetDefault("5% increased movement speed");
 
 			ArmorIDs.Body.Sets.NeedsToDrawArm[Item.bodySlot] = true;
 		}

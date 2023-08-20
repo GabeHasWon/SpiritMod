@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 		public int dustTimer = 0;
  		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crownoak Javelin");
+            // DisplayName.SetDefault("Crownoak Javelin");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         } 

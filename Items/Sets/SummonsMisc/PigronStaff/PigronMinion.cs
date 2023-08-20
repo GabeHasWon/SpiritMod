@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pigron");
+			// DisplayName.SetDefault("Pigron");
 			Main.projFrames[Projectile.type] = 7;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
@@ -196,7 +196,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pigron Bubble");
+			// DisplayName.SetDefault("Pigron Bubble");
 			ProjectileID.Sets.MinionShot[Projectile.type] = true;
 		}
 
@@ -252,7 +252,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 			}
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage += Math.Min(target.defense / 2, 10);
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage.Base += Math.Min(target.defense / 2, 10);
 
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
 		{

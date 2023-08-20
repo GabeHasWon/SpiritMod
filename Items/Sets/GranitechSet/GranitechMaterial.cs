@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.GranitechSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("G-TEK Components");
-			Tooltip.SetDefault("'An impressive combination of magic and science'");
+			// DisplayName.SetDefault("G-TEK Components");
+			// Tooltip.SetDefault("'An impressive combination of magic and science'");
 		}
 
 		public override void SetDefaults()

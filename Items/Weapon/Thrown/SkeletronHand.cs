@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Weapon.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bone Cutter");
-			Tooltip.SetDefault("Dashes through the air in rapid bursts");
+			// DisplayName.SetDefault("Bone Cutter");
+			// Tooltip.SetDefault("Dashes through the air in rapid bursts");
 		}
 
 		public override void SetDefaults()

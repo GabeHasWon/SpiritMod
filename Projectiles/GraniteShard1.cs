@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granite Shard");
+			// DisplayName.SetDefault("Granite Shard");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

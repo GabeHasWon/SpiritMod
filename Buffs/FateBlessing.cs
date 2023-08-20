@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fate's Blessing");
-			Description.SetDefault("You are protected by the fates");
+			// DisplayName.SetDefault("Fate's Blessing");
+			// Description.SetDefault("You are protected by the fates");
 			Main.buffNoSave[Type] = true;
 			Terraria.ID.BuffID.Sets.NurseCannotRemoveDebuff[Type] = false;
 		}

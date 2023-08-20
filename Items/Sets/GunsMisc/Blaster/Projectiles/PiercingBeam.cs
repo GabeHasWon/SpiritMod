@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Beam");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Beam");
 
 		public override void SetDefaults()
 		{

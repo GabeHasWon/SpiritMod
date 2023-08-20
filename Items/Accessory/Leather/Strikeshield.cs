@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Strikeshield");
-			Tooltip.SetDefault("Enemies are struck when they hit you\nStruck enemies are targetted by minions and take 3 summon tag damage\n5 second duration");
+			// DisplayName.SetDefault("Strikeshield");
+			// Tooltip.SetDefault("Enemies are struck when they hit you\nStruck enemies are targetted by minions and take 3 summon tag damage\n5 second duration");
 		}
 
 		public override void SetDefaults()

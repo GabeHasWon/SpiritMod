@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.SporeWheezer
 		int moveSpeed = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spore");
+			// DisplayName.SetDefault("Spore");
 		}
 
 		public override void SetDefaults()
@@ -27,7 +27,7 @@ namespace SpiritMod.NPCs.SporeWheezer
 			Projectile.penetrate = 1;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			Projectile.Kill();
 		}

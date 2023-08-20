@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bat");
+			// DisplayName.SetDefault("Bat");
 			Main.projFrames[Projectile.type] = 5;
 		}
 

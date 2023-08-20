@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	[Sacrifice(1)]
 	public class SpiritWorkbench : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Duskwood Work Bench");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Duskwood Work Bench");
 
 		public override void SetDefaults()
 		{

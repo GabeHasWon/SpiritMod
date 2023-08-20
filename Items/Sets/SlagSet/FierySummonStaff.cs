@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SlagSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slagtern Staff");
-			Tooltip.SetDefault("Summons a hovering slag lantern that lobs lava at nearby foes");
+			// DisplayName.SetDefault("Slagtern Staff");
+			// Tooltip.SetDefault("Summons a hovering slag lantern that lobs lava at nearby foes");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

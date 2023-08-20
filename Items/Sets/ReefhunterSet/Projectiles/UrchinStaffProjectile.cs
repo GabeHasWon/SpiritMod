@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 {
 	public class UrchinStaffProjectile : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Urchin Staff");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Urchin Staff");
 
 		public override void SetDefaults()
 		{

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Weapon.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Putrid Splitter");
-			Tooltip.SetDefault("Splits into two smaller, homing eaters");
+			// DisplayName.SetDefault("Putrid Splitter");
+			// Tooltip.SetDefault("Splits into two smaller, homing eaters");
 		}
 
 		public override void SetDefaults()

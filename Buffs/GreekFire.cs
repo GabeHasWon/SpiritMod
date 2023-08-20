@@ -12,8 +12,8 @@ namespace SpiritMod.Buffs
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Greek Fire");
-			Description.SetDefault("Set ablaze by the Gods themselves");
+			// DisplayName.SetDefault("Greek Fire");
+			// Description.SetDefault("Set ablaze by the Gods themselves");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;

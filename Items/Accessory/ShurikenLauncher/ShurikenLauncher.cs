@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sharpshooter's Glove");
-			Tooltip.SetDefault("Increases ranged damage at a distance\nConsecutive shots at this range deal increased damage");
+			// DisplayName.SetDefault("Sharpshooter's Glove");
+			// Tooltip.SetDefault("Increases ranged damage at a distance\nConsecutive shots at this range deal increased damage");
 		}
 
 		public override void SetDefaults()

@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Pets.CosmicRattler
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cosmic Rattler");
-			Tooltip.SetDefault("Summons a Starachnid companion");
+			// DisplayName.SetDefault("Cosmic Rattler");
+			// Tooltip.SetDefault("Summons a Starachnid companion");
 		}
 
 		public override void SetDefaults()

@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cobalt Shard");
+			// DisplayName.SetDefault("Cobalt Shard");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

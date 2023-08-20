@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.Summon.LaserGate
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gate Laser");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gate Laser");
 
 		public override void SetDefaults()
 		{

@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 	{
 		int[] eyeWhoAmIs = null;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Maneater");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Maneater");
 
 		public override void SetDefaults()
 		{

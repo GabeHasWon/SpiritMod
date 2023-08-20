@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Huskstalk Bow");
-			Tooltip.SetDefault("Arrows shot inflict Withering Leaf");
+			// DisplayName.SetDefault("Huskstalk Bow");
+			// Tooltip.SetDefault("Arrows shot inflict Withering Leaf");
 		}
 
 		public override void SetDefaults()

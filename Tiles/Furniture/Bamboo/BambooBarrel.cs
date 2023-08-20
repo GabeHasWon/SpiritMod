@@ -53,13 +53,11 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault(tileName);
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault(tileName);
 			AddMapEntry(new Color(100, 100, 60), name, MapChestName);
 			DustType = -1;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ModContent.ItemType<BambooBarrelItem>();
-			ContainerName.SetDefault(tileName);
 		}
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
@@ -75,11 +73,7 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 				return name + ": " + Main.chest[chest].name;
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
-			Chest.DestroyChest(i, j);
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Chest.DestroyChest(i, j);
 
 		public override bool RightClick(int i, int j)
 		{
@@ -161,7 +155,7 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : tileName;
 				if (player.cursorItemIconText == tileName)
 				{
-					player.cursorItemIconID = ChestDrop;
+					player.cursorItemIconID = TileLoader.GetItemDropFromTypeAndStyle(Type);
 					player.cursorItemIconText = string.Empty;
 				}
 			}

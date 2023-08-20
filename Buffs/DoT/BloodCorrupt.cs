@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.DoT
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blood Corruption");
-			Description.SetDefault("Your blood burns...");
+			// DisplayName.SetDefault("Blood Corruption");
+			// Description.SetDefault("Your blood burns...");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;

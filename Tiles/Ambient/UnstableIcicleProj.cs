@@ -18,7 +18,7 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Icicle");
+			// DisplayName.SetDefault("Unstable Icicle");
 			Main.projFrames[Type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Type] = 5;
 			ProjectileID.Sets.TrailingMode[Type] = 0;

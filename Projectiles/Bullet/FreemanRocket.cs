@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coiled Rocket");
+			// DisplayName.SetDefault("Coiled Rocket");
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -162,7 +162,7 @@ namespace SpiritMod.Projectiles.Bullet
 			}
 		}
 
-		public override void AbstractHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(BuffID.OnFire, 480);
+		public override void AbstractHitNPC(NPC target, NPC.HitInfo mod) => target.AddBuff(BuffID.OnFire, 480);
 
 		public override void ExplodeEffect()
 		{

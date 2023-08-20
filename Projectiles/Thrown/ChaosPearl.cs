@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Windshear Pearl");
+			// DisplayName.SetDefault("Windshear Pearl");
 		}
 
 		public override void SetDefaults()

@@ -1,9 +1,44 @@
-﻿AsteroidBiome.DisplayName: Asteroids
-BriarSurfaceBiome.DisplayName: Briar
-BriarUndergroundBiome.DisplayName: Underground Briar
-JellyDelugeBiome.DisplayName: Jelly Deluge
-MysticMoonBiome.DisplayName: Mystic Moon
-TideBiome.DisplayName: The Tide
-SpiritSurfaceBiome.DisplayName: Spirit
-SpiritUndergroundBiome.DisplayName: Underground Spirit
-SynthwaveSurfaceBiome.DisplayName: Synthwave
+AsteroidBiome: {
+	DisplayName: Asteroids
+	TownNPCDialogueName: the Asteroid Biome
+}
+
+BriarSurfaceBiome: {
+	DisplayName: Briar
+	TownNPCDialogueName: the Briar Surface Biome
+}
+
+BriarUndergroundBiome: {
+	DisplayName: Underground Briar
+	TownNPCDialogueName: the Briar Underground Biome
+}
+
+JellyDelugeBiome: {
+	DisplayName: Jelly Deluge
+	TownNPCDialogueName: the Jelly Deluge Biome
+}
+
+MysticMoonBiome: {
+	DisplayName: Mystic Moon
+	TownNPCDialogueName: the Mystic Moon Biome
+}
+
+TideBiome: {
+	DisplayName: The Tide
+	TownNPCDialogueName: the Tide Biome
+}
+
+SpiritSurfaceBiome: {
+	DisplayName: Spirit
+	TownNPCDialogueName: the Spirit Surface Biome
+}
+
+SpiritUndergroundBiome: {
+	DisplayName: Underground Spirit
+	TownNPCDialogueName: the Spirit Underground Biome
+}
+
+SynthwaveSurfaceBiome: {
+	DisplayName: Synthwave
+	TownNPCDialogueName: the Synthwave Surface Biome
+}

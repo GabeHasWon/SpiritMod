@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class HemoglorbItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Hemoglorb");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hemoglorb");
 
 		public override void SetDefaults()
 		{

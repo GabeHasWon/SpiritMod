@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Neon Tetra");
+			// DisplayName.SetDefault("Neon Tetra");
 			Main.npcFrameCount[NPC.type] = 4;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -61,7 +61,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("NeonTetra1").Type, 1f);

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Weapon.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Khamsin");
-			Tooltip.SetDefault("Creats a violent sandnado from the player\nEnemies caught by the tornado are lifted upwards");
+			// DisplayName.SetDefault("Khamsin");
+			// Tooltip.SetDefault("Creats a violent sandnado from the player\nEnemies caught by the tornado are lifted upwards");
 		}
 
 		public override void SetDefaults()

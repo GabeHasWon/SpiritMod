@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Atlas Arm");
+			// DisplayName.SetDefault("Atlas Arm");
             NPCID.Sets.TrailCacheLength[NPC.type] = 5;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
         }
@@ -142,7 +142,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			return false;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
 			NPC.lifeMax = 10;
 			NPC.damage = (int)(NPC.damage * 0.65f);

@@ -26,7 +26,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Undead Warlock");
+			// DisplayName.SetDefault("Undead Warlock");
 			Main.npcFrameCount[NPC.type] = 5;
 		}
 
@@ -215,7 +215,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			npcLoot.AddCommon(ItemID.ZombieArm, 10);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -234,9 +234,9 @@ namespace SpiritMod.NPCs.Undead_Warlock
 
 			for (int k = 0; k < 7; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 		}
 

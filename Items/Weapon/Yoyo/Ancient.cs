@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Weapon.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient");
-			Tooltip.SetDefault("Shoots a cluster of Ancient Ice");
+			// DisplayName.SetDefault("Ancient");
+			// Tooltip.SetDefault("Shoots a cluster of Ancient Ice");
 		}
 
 		public override void SetDefaults()

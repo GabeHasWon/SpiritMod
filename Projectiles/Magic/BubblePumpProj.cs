@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class BubblePumpProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble Blaster");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble Blaster");
 
 		public override void SetDefaults()
 		{

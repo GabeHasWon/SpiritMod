@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class TinyCrabItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Palecrab");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Palecrab");
 
 		public override void SetDefaults()
 		{

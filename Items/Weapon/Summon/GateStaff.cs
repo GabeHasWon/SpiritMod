@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Weapon.Summon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gate Staff");
-			Tooltip.SetDefault("Summons an electric field\nRight click to remove summoned fields");
+			// DisplayName.SetDefault("Gate Staff");
+			// Tooltip.SetDefault("Summons an electric field\nRight click to remove summoned fields");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Item.staff[Item.type] = true;
 		}

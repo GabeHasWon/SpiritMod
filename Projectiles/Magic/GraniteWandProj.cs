@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Cascade");
+			// DisplayName.SetDefault("Unstable Cascade");
 		}
 
 		public override void SetDefaults()
@@ -84,7 +84,7 @@ namespace SpiritMod.Projectiles.Magic
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (target.life <= 0)
 			{

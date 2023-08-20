@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -37,8 +38,8 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.AnchorTop = default(AnchorData);
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Scarab Idol");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Scarab Idol");
 			AddMapEntry(new Color(245, 179, 66), name);
 			DustType = DustID.GoldCoin;
 		}

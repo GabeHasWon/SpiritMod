@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.RunicSet.RunicArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Runic Plate");
-			Tooltip.SetDefault("Increases magic critical strike chance by 8%");
+			// DisplayName.SetDefault("Runic Plate");
+			// Tooltip.SetDefault("Increases magic critical strike chance by 8%");
 
 		}
 		public override void SetDefaults()

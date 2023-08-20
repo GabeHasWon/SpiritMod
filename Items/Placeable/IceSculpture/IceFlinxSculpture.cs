@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.IceSculpture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frozen Flinx Sculpture");
+			// DisplayName.SetDefault("Frozen Flinx Sculpture");
 		}
 
 

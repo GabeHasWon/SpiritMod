@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.SpiritSet
@@ -18,13 +19,10 @@ namespace SpiritMod.Items.Sets.SpiritSet
 
 			TileID.Sets.Ore[Type] = true;
 
-			ItemDrop = ModContent.ItemType<SpiritOre>();
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Spirit Ore");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(30, 144, 255), name);
 			HitSound = SoundID.Tink;
 			MinPick = 180;
-
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

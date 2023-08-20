@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Floran Bludgeon");
-            Tooltip.SetDefault("Releases a shockwave along the ground");
+            // DisplayName.SetDefault("Floran Bludgeon");
+            // Tooltip.SetDefault("Releases a shockwave along the ground");
         }
 
         public override void Defaults()

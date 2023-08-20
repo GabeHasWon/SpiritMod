@@ -8,19 +8,19 @@ namespace SpiritMod.Projectiles.Arrow
 {
 	class BeetleArrow : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Beetle Arrow");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Beetle Arrow");
 
 		public override void SetDefaults() => Projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Projectile.owner == Main.myPlayer)
 				Main.LocalPlayer.AddBuff(ModContent.BuffType<BeetleFortitude>(), 180);
 		}
 
-		public override void OnHitPvp(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
-			if (Projectile.owner == Main.myPlayer)
+			if (info.PvP && Projectile.owner == Main.myPlayer)
 				Main.LocalPlayer.AddBuff(ModContent.BuffType<BeetleFortitude>(), 180);
 		}
 

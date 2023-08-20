@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gloomgus Mushroom");
+			// DisplayName.SetDefault("Gloomgus Mushroom");
 		}
 
 		public override void SetDefaults()
@@ -59,7 +59,7 @@ namespace SpiritMod.Projectiles.Summon
 		}
 
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 180);

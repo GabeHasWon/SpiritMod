@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.SkeletonBrute
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skeleton Brute");
+			// DisplayName.SetDefault("Skeleton Brute");
 			Main.npcFrameCount[NPC.type] = 10;
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -92,12 +92,12 @@ namespace SpiritMod.NPCs.SkeletonBrute
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{		
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Bone, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Bone, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -150,7 +150,7 @@ namespace SpiritMod.NPCs.SkeletonBrute
 					Player player = Main.player[NPC.target];
 					if (!NPC.IsABestiaryIconDummy && NPC.frameCounter == 13 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0) && player.DistanceSQ(NPC.Center) <= 150f * 150f)
 					{
-                        player.Hurt(PlayerDeathReason.LegacyDefault(), (int)(NPC.damage * 1.5f), 0, false, false, false, -1);
+                        player.Hurt(PlayerDeathReason.LegacyDefault(), (int)(NPC.damage * 1.5f), 0, false, false, -1, false);
                         SoundEngine.PlaySound(SoundID.Item37, NPC.Center);
                         player.velocity.X = NPC.direction * 13f;
                         player.velocity.Y = -9f;

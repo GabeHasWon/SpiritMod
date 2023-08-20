@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Mount
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crocodrillo Mount");
-			Description.SetDefault("This cute lil' Crocodillo is your new best friend!");
+			// DisplayName.SetDefault("Crocodrillo Mount");
+			// Description.SetDefault("This cute lil' Crocodillo is your new best friend!");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.buffNoSave[Type] = true;
 		}

@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Forbidden Letter");
+			// DisplayName.SetDefault("Forbidden Letter");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -32,7 +32,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			Projectile.alpha = 100;
 			Projectile.scale = 0.8f;
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit) 
+		public override void OnHitPlayer(Player target, Player.HurtInfo info) 
 		{
 			if (Main.npc[(int)Projectile.ai[1]].life < Main.npc[(int)Projectile.ai[1]].lifeMax - 10)
 			{

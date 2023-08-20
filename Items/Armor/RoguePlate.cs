@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rogue Plate");
+			// DisplayName.SetDefault("Rogue Plate");
 
 			ArmorIDs.Body.Sets.NeedsToDrawArm[Item.bodySlot] = true;
 		}

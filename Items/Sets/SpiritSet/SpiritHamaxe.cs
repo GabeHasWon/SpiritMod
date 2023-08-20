@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Hamaxe");
+			// DisplayName.SetDefault("Spirit Hamaxe");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritHamaxe_Glow");
 		}
 

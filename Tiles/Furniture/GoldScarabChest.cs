@@ -39,13 +39,11 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Gold Chest");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Gold Chest");
 			AddMapEntry(new Color(232, 193, 0), name, MapChestName);
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ItemID.GoldChest;
-			ContainerName.SetDefault("Gold Chest");
         }
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
@@ -74,11 +72,7 @@ namespace SpiritMod.Tiles.Furniture
 			num = 1;
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, 306);
-			Chest.DestroyChest(i, j);
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Chest.DestroyChest(i, j);
 
 		public override bool RightClick(int i, int j)
 		{
@@ -161,7 +155,7 @@ namespace SpiritMod.Tiles.Furniture
 			else {
 				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Gold Chest";
 				if (player.cursorItemIconText == "Gold Chest") {
-					player.cursorItemIconID = 306;
+					player.cursorItemIconID = ItemID.GoldChest;
 					player.cursorItemIconText = "";
 				}
 			}

@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gold Chest");
+			// DisplayName.SetDefault("Gold Chest");
 			Main.npcFrameCount[NPC.type] = 2;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
@@ -212,7 +212,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gold Chest");
+			// DisplayName.SetDefault("Gold Chest");
 			Main.projFrames[Projectile.type] = 12;
 		}
 

@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class RoyalCrown : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Royal Crown");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Royal Crown");
 
 		public override void SetDefaults()
 		{

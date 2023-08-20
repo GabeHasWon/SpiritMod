@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Armor.WayfarerSet
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wayfarer's Pants");
-            Tooltip.SetDefault("7% increased movement speed");
+            // DisplayName.SetDefault("Wayfarer's Pants");
+            // Tooltip.SetDefault("7% increased movement speed");
         }
 
         public override void SetDefaults()

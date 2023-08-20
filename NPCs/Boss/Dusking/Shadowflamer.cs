@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Antumbral Skull");
+			// DisplayName.SetDefault("Antumbral Skull");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.ShadowFlame);
 
@@ -120,7 +120,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			return false;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(ModContent.BuffType<Shadowflame>(), 150);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(ModContent.BuffType<Shadowflame>(), 150);
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 
 		public override void FindFrame(int frameHeight)

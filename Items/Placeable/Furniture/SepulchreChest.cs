@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sepulchre Chest");
+			// DisplayName.SetDefault("Sepulchre Chest");
 		}
 
 		public override void SetDefaults()

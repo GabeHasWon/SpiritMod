@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Throwing Regeneration Potion");
-			Tooltip.SetDefault("'No brewery required!'");
+			// DisplayName.SetDefault("Throwing Regeneration Potion");
+			// Tooltip.SetDefault("'No brewery required!'");
 		}
 
 		public override void SetDefaults()
@@ -56,7 +56,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 
 		public override string Texture => Mod.Name + "/Items/Sets/Explosives/Thrown/HealingGrenade";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Healing Grenade");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Healing Grenade");
 
 		public override void SetDefaults()
 		{
@@ -92,7 +92,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 			Gore.NewGore(Projectile.GetSource_Death(), pos, overrideVel ?? vel, 331, Main.rand.Next(80, 120) * 0.01f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Projectile.timeLeft > 4)
 				Projectile.timeLeft = 4;
@@ -107,7 +107,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 
 		public override string Texture => Mod.Name + "/Items/Sets/Explosives/Thrown/HealingGrenade";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Healing Splash");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Healing Splash");
 
 		public override void SetDefaults()
 		{
@@ -187,7 +187,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 			Gore.NewGore(Projectile.GetSource_Death(), pos, overrideVel ?? vel, 331, Main.rand.Next(80, 120) * 0.01f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Projectile.timeLeft > 4)
 				Projectile.timeLeft = 4;

@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Distressed Jelly");
+			// DisplayName.SetDefault("Distressed Jelly");
 			Main.npcFrameCount[NPC.type] = 6;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -51,7 +51,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 
 		public override bool? CanBeHitByProjectile(Projectile projectile) => projectile.minion ? false : null;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
         {
             for (int k = 0; k < 15; k++)
             {

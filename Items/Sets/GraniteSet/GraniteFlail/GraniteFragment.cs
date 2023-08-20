@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteFlail
 		public void DoTrailCreation(TrailManager tManager) 
 			=> tManager.CreateTrail(Projectile, new GradientTrail(Color.Cyan, Color.Blue * .7f), new RoundCap(), new DefaultTrailPosition(), 10f, 100f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_1").Value, Vector2.One, 0.75f, 0.1f));
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Fragment");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Fragment");
 
 		public override void SetDefaults()
 		{

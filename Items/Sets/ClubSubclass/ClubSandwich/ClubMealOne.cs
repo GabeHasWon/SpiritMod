@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Club Meal");
-			Tooltip.SetDefault("You shouldn't see this");
+			// DisplayName.SetDefault("Club Meal");
+			// Tooltip.SetDefault("You shouldn't see this");
 			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
 		}
 

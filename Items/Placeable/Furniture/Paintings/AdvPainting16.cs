@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Sun's Dawn");
-			Tooltip.SetDefault("'S. Tony'");
+			// DisplayName.SetDefault("Red Sun's Dawn");
+			// Tooltip.SetDefault("'S. Tony'");
 		}
 
 		public override void SetDefaults()

@@ -3,6 +3,7 @@ using Terraria.GameContent.ObjectInteractions;
 using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
@@ -34,8 +35,8 @@ namespace SpiritMod.Tiles.Furniture.Shiverbark
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Shiverbark Chair");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Shiverbark Chair");
 			AddMapEntry(new Color(118, 155, 163), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[] { TileID.Chairs };

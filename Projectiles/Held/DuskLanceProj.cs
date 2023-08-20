@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Held
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Lance");
+			// DisplayName.SetDefault("Dusk Lance");
 		}
 
 		int timer = 10;
@@ -68,7 +68,7 @@ namespace SpiritMod.Projectiles.Held
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 				target.AddBuff(BuffID.ShadowFlame, 300, false);
 		}

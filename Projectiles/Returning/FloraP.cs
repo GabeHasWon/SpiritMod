@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Returning
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Roller");
+			// DisplayName.SetDefault("Floran Roller");
 			Main.projFrames[Projectile.type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -31,7 +31,7 @@ namespace SpiritMod.Projectiles.Returning
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<VineTrap>(), 180);

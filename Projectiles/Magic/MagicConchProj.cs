@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Whirlpool");
+			// DisplayName.SetDefault("Whirlpool");
 		}
 
 		public override void SetDefaults()

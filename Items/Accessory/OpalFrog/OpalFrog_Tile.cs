@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -24,8 +25,8 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Opal Frog");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Opal Frog");
 			DustType = -1;
 			AddMapEntry(new Color(200, 200, 200), name);
 		}

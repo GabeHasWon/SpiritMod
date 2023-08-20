@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Adventurer's Treasure Map");
-			Tooltip.SetDefault("'South of Whiterun, east of Pelagia Farm'");
+			// DisplayName.SetDefault("Adventurer's Treasure Map");
+			// Tooltip.SetDefault("'South of Whiterun, east of Pelagia Farm'");
 		}
 
 		public override void SetDefaults()

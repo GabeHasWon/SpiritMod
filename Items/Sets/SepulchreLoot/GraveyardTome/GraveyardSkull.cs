@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.GraveyardTome
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Haunted Skull");
+			// DisplayName.SetDefault("Haunted Skull");
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
 
@@ -36,7 +36,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.GraveyardTome
 			tM.CreateTrail(Projectile, new OpacityUpdatingTrail(Projectile, Color.Red, new Color(181, 0, 116)), new NoCap(), new DefaultTrailPosition(), 100 * Projectile.scale, 200, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_3").Value, 0.2f, 1f, 1f));
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.immune[Projectile.owner] = 20;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.immune[Projectile.owner] = 20;
 
 		public struct SkullMovement
 		{

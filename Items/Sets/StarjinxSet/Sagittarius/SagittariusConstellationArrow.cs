@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Sagittarius
 	public class SagittariusConstellationArrow : ModProjectile, ITrailProjectile
 	{
 		public override string Texture => "Terraria/Images/Extra_89";
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Astral Arrow");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Astral Arrow");
 
 		private const int MaxTimeLeft = 600;
 		private const int TileIgnoreTime = 25;
@@ -88,9 +88,13 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Sagittarius
 				ParticleHandler.SpawnParticle(new StarParticle(Projectile.Center, Projectile.velocity.RotatedByRandom(MathHelper.Pi / 8) * Main.rand.NextFloat(0.2f), Color.White, Main.rand.NextFloat(0.08f, 0.12f), 25));
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => OnHitEffects();
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => OnHitEffects();
 
-		public override void OnHitPvp(Player target, int damage, bool crit) => OnHitEffects();
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
+		{
+			if (info.PvP)
+				OnHitEffects();
+		}
 
 		private void OnHitEffects()
 		{

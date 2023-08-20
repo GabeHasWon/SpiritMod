@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.CowboySet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Outlaw's Vest");
+			// DisplayName.SetDefault("Outlaw's Vest");
 
 			ArmorIDs.Body.Sets.NeedsToDrawArm[Item.bodySlot] = true;
 		}

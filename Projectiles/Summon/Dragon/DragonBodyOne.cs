@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jade Dragon");
+			// DisplayName.SetDefault("Jade Dragon");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

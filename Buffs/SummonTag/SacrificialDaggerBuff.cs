@@ -8,7 +8,7 @@ namespace SpiritMod.Buffs.SummonTag
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sacrificial Strike");
+			// DisplayName.SetDefault("Sacrificial Strike");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

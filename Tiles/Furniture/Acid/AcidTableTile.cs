@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -21,8 +22,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Table");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Corrosive Table");
 			AddMapEntry(new Color(100, 122, 111), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;

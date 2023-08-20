@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Boss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Desert Feather");
+			// DisplayName.SetDefault("Desert Feather");
 		}
 
 		public override void SetDefaults()

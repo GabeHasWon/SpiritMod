@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	[Sacrifice(1)]
 	public class HangingSoulbloom : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Hanging Soulbloom");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hanging Soulbloom");
 
 		public override void SetDefaults()
 		{

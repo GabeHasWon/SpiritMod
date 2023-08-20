@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Flames");
+			// DisplayName.SetDefault("Ancient Flames");
 			Main.projFrames[base.Projectile.type] = 4;
 		}
 

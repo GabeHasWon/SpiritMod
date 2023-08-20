@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 		private Vector2 posToBe = Vector2.Zero;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Azure Gem");
+			// DisplayName.SetDefault("Azure Gem");
 			Main.npcFrameCount[NPC.type] = 3;
 		}
 		

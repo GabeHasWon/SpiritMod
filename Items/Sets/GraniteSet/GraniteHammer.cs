@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 {
 	public class GraniteHammer : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Hammer");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Hammer");
 
 		public override void SetDefaults()
 		{

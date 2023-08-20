@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frostbite");
-			Tooltip.SetDefault("Creates a slow-moving blizzard that follows your cursor");
+			// DisplayName.SetDefault("Frostbite");
+			// Tooltip.SetDefault("Creates a slow-moving blizzard that follows your cursor");
 		}
 
 		public override void SetDefaults()

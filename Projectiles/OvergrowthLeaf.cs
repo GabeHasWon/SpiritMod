@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Overgrowth Leaf");
+			// DisplayName.SetDefault("Overgrowth Leaf");
 			Main.projFrames[Projectile.type] = 5;
 		}
 

@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Accessory.Bauble
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bauble Resistance");
-			Description.SetDefault("You feel protected");
+			// DisplayName.SetDefault("Bauble Resistance");
+			// Description.SetDefault("You feel protected");
 			Main.buffNoSave[Type] = true;
 		}
 	}

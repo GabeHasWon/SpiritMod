@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flying Snake");
+			// DisplayName.SetDefault("Flying Snake");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

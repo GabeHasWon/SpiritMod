@@ -10,7 +10,7 @@ namespace SpiritMod.Buffs.Glyph
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Freeze");
+			// DisplayName.SetDefault("Arcane Freeze");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = false;
 			Main.buffNoSave[Type] = true;

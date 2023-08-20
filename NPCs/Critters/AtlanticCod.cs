@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Atlantic Cod");
+			// DisplayName.SetDefault("Atlantic Cod");
 			Main.npcFrameCount[NPC.type] = 4;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -95,7 +95,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("AtlanticCod1").Type, 1f);

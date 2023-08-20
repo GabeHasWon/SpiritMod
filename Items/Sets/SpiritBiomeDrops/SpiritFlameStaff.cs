@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spiritflame Staff");
-			Tooltip.SetDefault("Shoots out a spirit bolt that explodes in 4 directions");
+			// DisplayName.SetDefault("Spiritflame Staff");
+			// Tooltip.SetDefault("Shoots out a spirit bolt that explodes in 4 directions");
 		}
 
 

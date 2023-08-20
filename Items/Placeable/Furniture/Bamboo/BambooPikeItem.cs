@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 	[Sacrifice(1)]
 	public class BambooPikeItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Pike");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Pike");
 
 		public override void SetDefaults()
 		{

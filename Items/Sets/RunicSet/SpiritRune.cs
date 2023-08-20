@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.RunicSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Rune");
-			Tooltip.SetDefault("'Contains ancient energy'\nShoots out an ancient book filled with dangerous runes");
+			// DisplayName.SetDefault("Spirit Rune");
+			// Tooltip.SetDefault("'Contains ancient energy'\nShoots out an ancient book filled with dangerous runes");
 		}
 
 		public override void SetDefaults()

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Electric Guitar");
-			Tooltip.SetDefault("Nearby enemies and enemies hit by attacks may be hit by chain lightning");
+			// DisplayName.SetDefault("Electric Guitar");
+			// Tooltip.SetDefault("Nearby enemies and enemies hit by attacks may be hit by chain lightning");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 6));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 		}
@@ -53,18 +53,18 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 				overcharge--;
 		}
 
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (active && proj.type != ModContent.ProjectileType<ElectricGuitarProj>() && proj.type != ModContent.ProjectileType<ElectricGuitarProjPlayer>() && Main.rand.NextBool(4) && overcharge < 30)
 			{
 				SoundEngine.PlaySound(SoundID.Item47 with { PitchVariance = .8f, Volume = 0.7f }, Player.Center);
 				SoundEngine.PlaySound(SoundID.Item12 with { Volume = 0.6f }, Player.Center);
 				SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.position);
-				DoLightningChain(target, damage);
+				DoLightningChain(target, damageDone);
 			}
 		}
 
-		public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (active && Main.rand.NextBool(4) && overcharge < 30)
 			{
@@ -72,7 +72,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 				SoundEngine.PlaySound(SoundID.Item12 with { Volume = 0.6f }, Player.Center);
 				SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.position);
 
-				DoLightningChain(target, damage);
+				DoLightningChain(target, damageDone);
 			}
 		}
 		int attackTimer;
@@ -143,7 +143,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Guitar");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Guitar");
 
 		public override void SetDefaults()
 		{
@@ -249,7 +249,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 
 		public override bool? CanHitNPC(NPC target) => CanTarget(target) && target == Target;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hitInfo, int damageDone)
 		{
 			Projectile.velocity = Vector2.Zero;
 			hit[Projectile.penetrate - 1] = target;
@@ -273,7 +273,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Lightning Zap");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Lightning Zap");
 
 		public override void SetDefaults()
 		{
@@ -321,7 +321,7 @@ namespace SpiritMod.Items.Accessory.ElectricGuitar
 				Projectile.velocity = new Vector2(randomSpeed.X * speed, randomSpeed.Y * speed);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.NewProjectile(target.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<ElectricGuitarProj>(), Projectile.damage / 2, 0, Projectile.owner);
 			SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.position);

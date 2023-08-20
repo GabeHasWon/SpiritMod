@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hemoglorb");
+			// DisplayName.SetDefault("Hemoglorb");
 			Main.npcFrameCount[NPC.type] = 7;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -44,11 +44,11 @@ namespace SpiritMod.NPCs.Critters
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
                 for (int k = 0; k < 20; k++)
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 1.75f * hitDirection, -1.75f, 0, new Color(), 0.86f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 1.75f * hit.HitDirection, -1.75f, 0, new Color(), 0.86f);
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCrimson && spawnInfo.Player.ZoneOverworldHeight ? .03f : 0f;

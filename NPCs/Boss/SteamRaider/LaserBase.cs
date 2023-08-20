@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Laser Launcher");
+			// DisplayName.SetDefault("Laser Launcher");
 			Main.npcFrameCount[NPC.type] = 1;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };

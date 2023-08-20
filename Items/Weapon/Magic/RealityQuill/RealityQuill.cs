@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Void Quill");
-			Tooltip.SetDefault("Creates a tear in reality, damaging enemies \n Write faster to deal more damage\n'Write your own destiny'");
+			// DisplayName.SetDefault("Void Quill");
+			// Tooltip.SetDefault("Creates a tear in reality, damaging enemies \n Write faster to deal more damage\n'Write your own destiny'");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

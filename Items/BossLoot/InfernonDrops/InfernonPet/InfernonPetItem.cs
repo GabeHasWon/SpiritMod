@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Broken Horn");
-			Tooltip.SetDefault("Summons a little inferno");
+			// DisplayName.SetDefault("Broken Horn");
+			// Tooltip.SetDefault("Summons a little inferno");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

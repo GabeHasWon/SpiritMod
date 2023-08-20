@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteFlail
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Star");
-			Tooltip.SetDefault("Builds momentum as it spins\nCreates a damaging blast when colliding at full momentum");
+			// DisplayName.SetDefault("Unstable Star");
+			// Tooltip.SetDefault("Builds momentum as it spins\nCreates a damaging blast when colliding at full momentum");
 			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2;
 		}
 

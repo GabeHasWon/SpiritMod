@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -28,8 +29,8 @@ namespace SpiritMod.World.Sepulchre
 
 			DustType = -1;
 			
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sepulchre Mirror");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sepulchre Mirror");
 			AddMapEntry(new Color(100, 100, 100), name);
 		}
 
@@ -39,7 +40,7 @@ namespace SpiritMod.World.Sepulchre
 
 	public class SepulchreMirrorItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Mirror");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Mirror");
 
 		public override void SetDefaults()
 		{

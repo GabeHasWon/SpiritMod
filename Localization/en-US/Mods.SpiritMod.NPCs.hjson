@@ -1,4 +1,4 @@
-﻿CopperChestBottom.DisplayName: Copper Chest
+CopperChestBottom.DisplayName: Copper Chest
 GoldChestBottom.DisplayName: Gold Chest
 PlatinumChestBottom.DisplayName: Platinum Chest
 SilverChestBottom.DisplayName: Silver Chest
@@ -232,15 +232,152 @@ MangoJelly.DisplayName: Mang-O War
 Rylheian.DisplayName: R'lyehian
 SpearKakamora.DisplayName: Kakamora Lobber
 SwordKakamora.DisplayName: Kakamora Bruiser
-Adventurer.DisplayName: Adventurer
-BoundAdventurer.DisplayName: Ensnared Adventurer
-BoundGambler.DisplayName: Bound Gambler
-BoundRogue.DisplayName: Bound Bandit
-Gambler.DisplayName: Gambler
+
+Adventurer: {
+	DisplayName: Adventurer
+
+	TownNPCMood: {
+		Content: "{$Mods.SpiritMod.TownNPCMood.Adventurer.Content}"
+		NoHome: "{$Mods.SpiritMod.TownNPCMood.Adventurer.NoHome}"
+		FarFromHome: "{$Mods.SpiritMod.TownNPCMood.Adventurer.FarFromHome}"
+		LoveSpace: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LoveSpace}"
+		DislikeCrowded: "{$Mods.SpiritMod.TownNPCMood.Adventurer.DislikeCrowded}"
+		HateCrowded: "{$Mods.SpiritMod.TownNPCMood.Adventurer.HateCrowded}"
+		LikeBiome: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LikeBiome}"
+		DislikeBiome: "{$Mods.SpiritMod.TownNPCMood.Adventurer.DislikeBiome}"
+		LoveNPC: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LoveNPC}"
+		LikeNPC: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LikeNPC}"
+		DislikeNPC: "{$Mods.SpiritMod.TownNPCMood.Adventurer.DislikeNPC}"
+		HateNPC: "{$Mods.SpiritMod.TownNPCMood.Adventurer.HateNPC}"
+		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LikeNPC_Princess}"
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
+BoundAdventurer: {
+	DisplayName: Ensnared Adventurer
+
+	TownNPCMood: {
+		Content: I am content.
+		NoHome: I hate not having a home.
+		FarFromHome: I am too far from home.
+		LoveSpace: I love having so much space.
+		DislikeCrowded: I dislike how crowded I am.
+		HateCrowded: I hate how crowded I am.
+		LikeNPC_Princess: I like {NPCName}.
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
+BoundGambler: {
+	DisplayName: Bound Gambler
+
+	TownNPCMood: {
+		Content: I am content.
+		NoHome: I hate not having a home.
+		FarFromHome: I am too far from home.
+		LoveSpace: I love having so much space.
+		DislikeCrowded: I dislike how crowded I am.
+		HateCrowded: I hate how crowded I am.
+		LikeNPC_Princess: I like {NPCName}.
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
+BoundRogue: {
+	DisplayName: Bound Bandit
+
+	TownNPCMood: {
+		Content: I am content.
+		NoHome: I hate not having a home.
+		FarFromHome: I am too far from home.
+		LoveSpace: I love having so much space.
+		DislikeCrowded: I dislike how crowded I am.
+		HateCrowded: I hate how crowded I am.
+		LikeNPC_Princess: I like {NPCName}.
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
+Gambler: {
+	DisplayName: Gambler
+
+	TownNPCMood: {
+		Content: "{$Mods.SpiritMod.TownNPCMood.Gambler.Content}"
+		NoHome: "{$Mods.SpiritMod.TownNPCMood.Gambler.NoHome}"
+		FarFromHome: "{$Mods.SpiritMod.TownNPCMood.Gambler.FarFromHome}"
+		LoveSpace: "{$Mods.SpiritMod.TownNPCMood.Gambler.LoveSpace}"
+		DislikeCrowded: "{$Mods.SpiritMod.TownNPCMood.Gambler.DislikeCrowded}"
+		HateCrowded: "{$Mods.SpiritMod.TownNPCMood.Gambler.HateCrowded}"
+		LikeBiome: "{$Mods.SpiritMod.TownNPCMood.Gambler.LikeBiome}"
+		DislikeBiome: "{$Mods.SpiritMod.TownNPCMood.Gambler.DislikeBiome}"
+		LoveNPC: "{$Mods.SpiritMod.TownNPCMood.Gambler.LoveNPC}"
+		LikeNPC: "{$Mods.SpiritMod.TownNPCMood.Gambler.LikeNPC}"
+		DislikeNPC: "{$Mods.SpiritMod.TownNPCMood.Gambler.DislikeNPC}"
+		HateNPC: "{$Mods.SpiritMod.TownNPCMood.Gambler.HateNPC}"
+		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Gambler.LikeNPC_Princess}"
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
 Ghost.DisplayName: Ghost
-Oracle.DisplayName: Oracle
-Rogue.DisplayName: Bandit
-RuneWizard.DisplayName: Enchanter
+
+Oracle: {
+	DisplayName: Oracle
+
+	TownNPCMood: {
+		Content: I am content.
+		NoHome: I hate not having a home.
+		FarFromHome: I am too far from home.
+		LoveSpace: I love having so much space.
+		DislikeCrowded: I dislike how crowded I am.
+		HateCrowded: I hate how crowded I am.
+		LikeNPC_Princess: I like {NPCName}.
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
+Rogue: {
+	DisplayName: Bandit
+
+	TownNPCMood: {
+		Content: "{$Mods.SpiritMod.TownNPCMood.Rogue.Content}"
+		NoHome: "{$Mods.SpiritMod.TownNPCMood.Rogue.NoHome}"
+		FarFromHome: "{$Mods.SpiritMod.TownNPCMood.Rogue.FarFromHome}"
+		LoveSpace: "{$Mods.SpiritMod.TownNPCMood.Rogue.LoveSpace}"
+		DislikeCrowded: "{$Mods.SpiritMod.TownNPCMood.Rogue.DislikeCrowded}"
+		HateCrowded: "{$Mods.SpiritMod.TownNPCMood.Rogue.HateCrowded}"
+		LikeBiome: "{$Mods.SpiritMod.TownNPCMood.Rogue.LikeBiome}"
+		DislikeBiome: "{$Mods.SpiritMod.TownNPCMood.Rogue.DislikeBiome}"
+		LoveNPC: "{$Mods.SpiritMod.TownNPCMood.Rogue.LoveNPC}"
+		LikeNPC: "{$Mods.SpiritMod.TownNPCMood.Rogue.LikeNPC}"
+		DislikeNPC: "{$Mods.SpiritMod.TownNPCMood.Rogue.DislikeNPC}"
+		HateNPC: "{$Mods.SpiritMod.TownNPCMood.Rogue.HateNPC}"
+		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Rogue.LikeNPC_Princess}"
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
+RuneWizard: {
+	DisplayName: Enchanter
+
+	TownNPCMood: {
+		Content: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.Content}"
+		NoHome: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.NoHome}"
+		FarFromHome: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.FarFromHome}"
+		LoveSpace: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LoveSpace}"
+		DislikeCrowded: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.DislikeCrowded}"
+		HateCrowded: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.HateCrowded}"
+		LikeBiome: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LikeBiome}"
+		DislikeBiome: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.DislikeBiome}"
+		LoveNPC: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LoveNPC}"
+		LikeNPC: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LikeNPC}"
+		HateNPC: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.HateNPC}"
+		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LikeNPC_Princess}"
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
 Undead_Warlock.DisplayName: Undead Warlock
 Valkyrie.DisplayName: Valkyrie
 Vulture_Matriarch.DisplayName: Vulture Matriarch
@@ -252,3 +389,6 @@ DiverZombie.DisplayName: Zombie
 KelpZombie.DisplayName: Zombie
 SailorZombie.DisplayName: Zombie
 TridentZombie.DisplayName: Zombie
+AsclepiusBoonOrb.DisplayName: Asclepius Boon Orb
+Fathomless_Chest_Gold.DisplayName: Fathomless_ Chest_ Gold
+Fathomless_Chest_Mimic.DisplayName: Fathomless_ Chest_ Mimic

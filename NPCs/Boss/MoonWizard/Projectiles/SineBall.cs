@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Focus Ball");
+			// DisplayName.SetDefault("Focus Ball");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

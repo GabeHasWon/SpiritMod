@@ -11,8 +11,8 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chillrend");
-			Tooltip.SetDefault("Fires three consecutive rounds of bullets\nShoots out a homing chilly blast occasionally");
+			// DisplayName.SetDefault("Chillrend");
+			// Tooltip.SetDefault("Fires three consecutive rounds of bullets\nShoots out a homing chilly blast occasionally");
 		}
 
 		int charger;

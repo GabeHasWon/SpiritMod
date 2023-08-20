@@ -34,7 +34,7 @@ namespace SpiritMod.NPCs.BloodGazer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blood Gazer");
+			// DisplayName.SetDefault("Blood Gazer");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 		}
@@ -60,10 +60,10 @@ namespace SpiritMod.NPCs.BloodGazer
 			NPC.netAlways = true;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale * 0.66f);
-			NPC.damage = (int)(NPC.damage * bossLifeScale * 0.66f);
+			NPC.lifeMax = (int)(NPC.lifeMax * balance * 0.66f);
+			NPC.damage = (int)(NPC.damage * balance * 0.66f);
 		}
 
 		private ref float AiState => ref NPC.ai[0];
@@ -346,7 +346,7 @@ namespace SpiritMod.NPCs.BloodGazer
 
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => trailing;
 
-		public override bool? CanHitNPC(NPC target) => trailing;
+		public override bool CanHitNPC(NPC target)/* tModPorter Suggestion: Return true instead of null */ => trailing;
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{
@@ -362,12 +362,12 @@ namespace SpiritMod.NPCs.BloodGazer
 			GlowmaskOpacity = reader.ReadSingle();
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 25; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.White, .97f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .97f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -380,8 +380,8 @@ namespace SpiritMod.NPCs.BloodGazer
 
 				for (int k = 0; k < 25; k++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.97f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.White, 1.27f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.97f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 1.27f);
 				}
 			}
 		}

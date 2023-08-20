@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Hostile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Corpsebloom Explosion");
+			// DisplayName.SetDefault("Corpsebloom Explosion");
 		}
 
 		public override void SetDefaults()

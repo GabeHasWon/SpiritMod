@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Boss.Occultist.Projectiles
 		public override string Texture => "SpiritMod/NPCs/Boss/Occultist/Projectiles/OccultistHand";
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dark Grasp");
+			// DisplayName.SetDefault("Dark Grasp");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -30,8 +31,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			};
 			TileObjectData.newTile.Origin = new Point16(0, 4);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Clock");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Clock");
 			AddMapEntry(new Color(179, 146, 107), name);
 			DustType = -1;
 			AdjTiles = new int[] { TileID.GrandfatherClocks };

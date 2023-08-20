@@ -30,7 +30,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 		public override string Texture => "SpiritMod/Items/Sets/BloodcourtSet/Heartstrike/Heartstrike";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Heartstrike");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Heartstrike");
 
 		public override void SetDefaults()
 		{
@@ -108,7 +108,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 200);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 200);
 
 		public override bool PreDraw(ref Color lightColor)
 		{

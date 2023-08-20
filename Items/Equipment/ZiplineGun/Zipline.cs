@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 {
 	public class Zipline : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Zipline");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Zipline");
 
 		public override void SetDefaults()
 		{

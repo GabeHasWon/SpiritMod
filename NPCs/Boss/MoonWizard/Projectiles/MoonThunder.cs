@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Lightning");
+            // DisplayName.SetDefault("Lightning");
         }
 
         public override void SetDefaults()
@@ -67,7 +67,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
             return false;
         }
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(BuffID.Electrified, 180);
         }

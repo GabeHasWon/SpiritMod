@@ -6,8 +6,8 @@
         
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dag Dinger");
-            Tooltip.SetDefault("by Explorer Trev Irwin");
+            // DisplayName.SetDefault("Dag Dinger");
+            // Tooltip.SetDefault("by Explorer Trev Irwin");
         }
     }
 }

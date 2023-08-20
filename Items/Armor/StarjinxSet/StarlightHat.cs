@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starlight Hat");
-			Tooltip.SetDefault("12% increased magic damage and 6% increased magic critical strike chance");
+			// DisplayName.SetDefault("Starlight Hat");
+			// Tooltip.SetDefault("12% increased magic damage and 6% increased magic critical strike chance");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;

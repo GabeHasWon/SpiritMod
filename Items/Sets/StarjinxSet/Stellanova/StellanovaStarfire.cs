@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Stellanova
 {
 	public class StellanovaStarfire : ModProjectile, ITrailProjectile, IDrawAdditive
     {
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Starfire");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Starfire");
 
 		private const int MAXTIMELEFT = 120;
 		public const float MAX_SPEED = 40f;
@@ -130,9 +130,13 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Stellanova
 			sB.Draw(bloom, Projectile.Center - Main.screenPosition, null, Color.White * Projectile.Opacity, 0, bloom.Size() / 2, 0.25f * Projectile.scale, SpriteEffects.None, 0);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => HitEffects();
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => HitEffects();
 
-		public override void OnHitPvp(Player target, int damage, bool crit) => HitEffects();
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
+		{
+			if (info.PvP)
+				HitEffects();
+		}
 
 		private void HitEffects()
 		{

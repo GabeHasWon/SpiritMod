@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Weapon.Thrown.PiecesOfEight
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pieces of Eight");
-			Tooltip.SetDefault("Critical hits cause enemies to drop more coins");
+			// DisplayName.SetDefault("Pieces of Eight");
+			// Tooltip.SetDefault("Critical hits cause enemies to drop more coins");
 		}
 
 		public override void SetDefaults()
@@ -53,7 +53,7 @@ namespace SpiritMod.Items.Weapon.Thrown.PiecesOfEight
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Piece of Eight");
+			// DisplayName.SetDefault("Piece of Eight");
 			Main.projFrames[Projectile.type] = 2;
 		}
 
@@ -91,9 +91,9 @@ namespace SpiritMod.Items.Weapon.Thrown.PiecesOfEight
 			}
 			return bounces <= 0;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if (crit && !target.SpawnedFromStatue)
+			if (hit.Crit && !target.SpawnedFromStatue)
 				target.AddBuff(BuffID.Midas, 180);
 		}
 		public override void Kill(int timeLeft)

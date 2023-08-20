@@ -82,7 +82,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Archon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Archon");
+			// DisplayName.SetDefault("Archon");
 			Main.npcFrameCount[NPC.type] = 6;
 		}
 

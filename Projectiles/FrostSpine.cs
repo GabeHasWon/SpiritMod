@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles
 {
 	class FrostSpine : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Frost Shard");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Frost Shard");
 
 		public override void SetDefaults()
 		{
@@ -36,7 +36,7 @@ namespace SpiritMod.Projectiles
 			Main.dust[dust].scale = 0.9f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(BuffID.Frostburn, 240);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffID.Frostburn, 240);
 		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.Item27);
 	}
 }

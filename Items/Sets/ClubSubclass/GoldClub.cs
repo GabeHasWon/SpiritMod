@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 		internal override float MinKnockback => 6f;
 		internal override float MaxKnockback => 10f;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Golden Greathammer");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Golden Greathammer");
 
 		public override void Defaults()
         {

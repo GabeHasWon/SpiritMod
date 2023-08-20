@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blue Ember");
+			// DisplayName.SetDefault("Blue Ember");
 		}
 
 		public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.timeLeft = 30;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 180);

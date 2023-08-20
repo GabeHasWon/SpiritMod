@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shockwave");
+			// DisplayName.SetDefault("Shockwave");
 		}
 
 		public override void SetDefaults()
@@ -62,7 +62,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
             }
             return false;
         }
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			int cooldown = 40;
             Projectile.localNPCImmunity[target.whoAmI] = 40;

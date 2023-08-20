@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodflames");
+			// DisplayName.SetDefault("Bloodflames");
 			Main.projFrames[base.Projectile.type] = 7;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

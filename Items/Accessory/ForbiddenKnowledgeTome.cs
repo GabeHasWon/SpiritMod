@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tome of Forbidden Knowledge");
-			Tooltip.SetDefault("Killing enemies releases homing spectral skulls");
+			// DisplayName.SetDefault("Tome of Forbidden Knowledge");
+			// Tooltip.SetDefault("Killing enemies releases homing spectral skulls");
 		}
 
 		public override void SetDefaults()

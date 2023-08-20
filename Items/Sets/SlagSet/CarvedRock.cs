@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.SlagSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slagstone");
-			Tooltip.SetDefault("'A seething piece of hardened magma'");
+			// DisplayName.SetDefault("Slagstone");
+			// Tooltip.SetDefault("'A seething piece of hardened magma'");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

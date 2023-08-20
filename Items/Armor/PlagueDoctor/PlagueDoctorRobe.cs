@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Armor.PlagueDoctor
 	[AutoloadEquip(EquipType.Body)]
 	public class PlagueDoctorRobe : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Doctor's Robe");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Doctor's Robe");
 
 		public override void SetDefaults()
 		{

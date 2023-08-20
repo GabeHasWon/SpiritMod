@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -28,8 +29,8 @@ namespace SpiritMod.Tiles.Furniture.Shiverbark
 				16
 			};
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Shiverbark Totem");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Shiverbark Totem");
 			AddMapEntry(new Color(118, 155, 163), name);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			DustType = -1;

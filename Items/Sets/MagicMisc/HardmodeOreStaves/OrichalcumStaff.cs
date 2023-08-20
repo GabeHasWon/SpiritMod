@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Orichalcum Staff");
-			Tooltip.SetDefault("Summons homing orichalcum blooms at the cursor positon");
+			// DisplayName.SetDefault("Orichalcum Staff");
+			// Tooltip.SetDefault("Summons homing orichalcum blooms at the cursor positon");
 			Item.staff[Item.type] = true;
 		}
 

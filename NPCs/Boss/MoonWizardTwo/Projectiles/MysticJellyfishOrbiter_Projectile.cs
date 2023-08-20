@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Star");
+			// DisplayName.SetDefault("Arcane Star");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

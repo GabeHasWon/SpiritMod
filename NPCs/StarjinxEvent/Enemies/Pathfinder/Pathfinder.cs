@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Pathfinder
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pathfinder");
+			// DisplayName.SetDefault("Pathfinder");
 			Main.npcFrameCount[NPC.type] = 7;
 		}
 

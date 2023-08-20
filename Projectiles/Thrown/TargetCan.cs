@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		private bool shot = false;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Target Can");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Target Can");
 
 		public override void SetDefaults()
 		{

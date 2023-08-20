@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hundred-Crack Fist");
-			Tooltip.SetDefault("Right click launch multiple punches outward");
+			// DisplayName.SetDefault("Hundred-Crack Fist");
+			// Tooltip.SetDefault("Right click launch multiple punches outward");
 		}
 
 		public override void SetDefaults()

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rogue Hood");
-			Tooltip.SetDefault("4% increased movement speed");
+			// DisplayName.SetDefault("Rogue Hood");
+			// Tooltip.SetDefault("4% increased movement speed");
 		}
 
 

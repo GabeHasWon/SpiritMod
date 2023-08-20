@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Boss.Occultist.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lost Soul");
+			// DisplayName.SetDefault("Lost Soul");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

@@ -18,8 +18,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass.ClubSandwich
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Club Sandwich");
-            Tooltip.SetDefault("Fully charged slams release sandwich bits\nCollect bits to boost stats");
+            // DisplayName.SetDefault("Club Sandwich");
+            // Tooltip.SetDefault("Fully charged slams release sandwich bits\nCollect bits to boost stats");
         }
 
         public override void Defaults()

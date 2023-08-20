@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.MoltenCore
 		protected int visualTimer = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Molten Lava");
+			// DisplayName.SetDefault("Molten Lava");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -29,7 +29,7 @@ namespace SpiritMod.NPCs.MoltenCore
 			Projectile.hostile = true;
 		}
 
-		public override void OnHitPlayer (Player target, int damage, bool crit)
+		public override void OnHitPlayer (Player target, Player.HurtInfo info)
 		{
 			target.AddBuff(24, 60*3);
 		}

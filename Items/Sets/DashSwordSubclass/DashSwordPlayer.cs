@@ -28,8 +28,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 				hasDashCharge = true;
 		}
 
-		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
-			=> !dashing;
+		public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable) => !dashing;
 	}
 
 	public class DashSwordLayer : PlayerDrawLayer

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Material
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Brightbulb");
-			Tooltip.SetDefault("'Intricate and versatile'");
+			// DisplayName.SetDefault("Brightbulb");
+			// Tooltip.SetDefault("'Intricate and versatile'");
 		}
 
 		public override void SetDefaults()

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.PrimalstoneArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Primalstone Leggings");
-			Tooltip.SetDefault("9% increased melee and magic damage\n5% reduced mana usage\n10% reduced movement speed");
+			// DisplayName.SetDefault("Primalstone Leggings");
+			// Tooltip.SetDefault("9% increased melee and magic damage\n5% reduced mana usage\n10% reduced movement speed");
 		}
 
 		public override void SetDefaults()

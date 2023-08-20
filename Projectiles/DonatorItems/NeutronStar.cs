@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Neutron Star");
+			// DisplayName.SetDefault("Neutron Star");
 			Main.projFrames[base.Projectile.type] = 10;
 		}
 

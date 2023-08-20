@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Talonginus");
-			Tooltip.SetDefault("Extremely quick, but inaccurate");
+			// DisplayName.SetDefault("Talonginus");
+			// Tooltip.SetDefault("Extremely quick, but inaccurate");
 		}
 
 		public override void SetDefaults()

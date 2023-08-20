@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cosmic Blaster");
+			// DisplayName.SetDefault("Cosmic Blaster");
 			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, (int)BuildType.Count) { NotActuallyAnimating = true });
 		}
 

@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Archon.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Fragment");
+			// DisplayName.SetDefault("Star Fragment");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rune");
+			// DisplayName.SetDefault("Rune");
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -159,7 +159,7 @@ namespace SpiritMod.Projectiles
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.velocity *= 0f;
 			Projectile.alpha = 255;

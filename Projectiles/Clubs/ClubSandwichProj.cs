@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Club Sandwich");
+			// DisplayName.SetDefault("Club Sandwich");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

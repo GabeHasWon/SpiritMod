@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blossmoon");
-			Tooltip.SetDefault("'It releases a soothing aroma'");
+			// DisplayName.SetDefault("Blossmoon");
+			// Tooltip.SetDefault("'It releases a soothing aroma'");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

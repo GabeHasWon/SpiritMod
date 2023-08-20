@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.CrystalDrifter
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crystal Drifter");
+			// DisplayName.SetDefault("Crystal Drifter");
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -129,12 +129,12 @@ namespace SpiritMod.NPCs.CrystalDrifter
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneOverworldHeight && spawnInfo.Player.ZoneSnow && Main.raining && !spawnInfo.PlayerSafe && !NPC.AnyNPCs(ModContent.NPCType<CrystalDrifter>()) && NPC.downedBoss3 ? 0.09f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			SoundEngine.PlaySound(SoundID.Item51, NPC.Center);
 
 			for (int k = 0; k < 20; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.BlueCrystalShard, hitDirection * 2f, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.BlueCrystalShard, hit.HitDirection * 2f, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -169,7 +169,7 @@ namespace SpiritMod.NPCs.CrystalDrifter
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.Frostburn, 150);

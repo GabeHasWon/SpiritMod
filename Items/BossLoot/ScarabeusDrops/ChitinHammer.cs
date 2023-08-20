@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chitin Hammer");
-			Tooltip.SetDefault("Breaks sand walls and desert related walls faster");
+			// DisplayName.SetDefault("Chitin Hammer");
+			// Tooltip.SetDefault("Breaks sand walls and desert related walls faster");
 		}
 
 

@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 		private Vector2 Location2;
 		public int healTimer = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Necromancer's Magic Crystal");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Necromancer's Magic Crystal");
 
 		public override void SetDefaults()
 		{

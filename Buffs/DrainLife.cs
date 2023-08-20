@@ -9,8 +9,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Drain Life");
-			Description.SetDefault("Your life energy becomes theirs.");
+			// DisplayName.SetDefault("Drain Life");
+			// Description.SetDefault("Your life energy becomes theirs.");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;

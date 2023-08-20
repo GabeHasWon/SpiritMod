@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Accessory
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Assassin's Magazine");
-			Tooltip.SetDefault("Double tap {0} while holding a ranged weapon to swap ammo types\nWorks while in the inventory");
+			// DisplayName.SetDefault("Assassin's Magazine");
+			// Tooltip.SetDefault("Double tap {0} while holding a ranged weapon to swap ammo types\nWorks while in the inventory");
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

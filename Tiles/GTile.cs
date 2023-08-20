@@ -79,7 +79,7 @@ namespace SpiritMod.Tiles
 				player.jumpSpeedBoost += .15f;
 		}
 
-		public override bool Drop(int i, int j, int type)
+		public override void Drop(int i, int j, int type)
 		{
 			if (!Main.dedServ)
 			{
@@ -100,7 +100,6 @@ namespace SpiritMod.Tiles
 				if ((type == TileID.MatureHerbs || type == TileID.BloomingHerbs) && player.GetModPlayer<Items.Armor.BotanistSet.BotanistPlayer>().active)
 					HerbBotanistCompat.BotanistDrops(i, j);
 			}
-			return true;
 		}
 
 		/// <summary>

@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cobbled Eye");
+			// DisplayName.SetDefault("Cobbled Eye");
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
@@ -102,12 +102,11 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			return false;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
-			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, hitDirection, -1f, 0, default, 1f);
-			}
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, hit.HitDirection, -1f, 0, default, 1f);
+			
 			if (NPC.life <= 0)
 			{
 				NPC.position.X = NPC.position.X + (float)(NPC.width / 2);
@@ -143,9 +142,9 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			return false;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.55f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * 0.55f * balance);
 			NPC.damage = (int)(NPC.damage * 0.75f);
 		}
 

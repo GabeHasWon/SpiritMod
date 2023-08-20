@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Steadfast Potion");
-			Tooltip.SetDefault("Increases defense as health wanes\nReduces damage taken by 5%");
+			// DisplayName.SetDefault("Steadfast Potion");
+			// Tooltip.SetDefault("Increases defense as health wanes\nReduces damage taken by 5%");
 		}
 
 		public override void SetDefaults()

@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mystic Moon Jelly Wizard");
+			// DisplayName.SetDefault("Mystic Moon Jelly Wizard");
 			Main.npcFrameCount[NPC.type] = 21;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -141,7 +141,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizardTwo/MoonWizardTwo_Glow").Value, vector33, NPC.frame, color29, NPC.rotation, NPC.frame.Size() / 2f, NPC.scale, spriteEffects3, 0f);
 
 		}
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * balance);
 		
 		//0-3: idle
 		//4-9 propelling

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Weapon.Swung.Punching_Bag
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Punching Bag");
-			Tooltip.SetDefault("Shoots a barrage of fists\n'The number one undead strength training method'");
+			// DisplayName.SetDefault("Punching Bag");
+			// Tooltip.SetDefault("Shoots a barrage of fists\n'The number one undead strength training method'");
 		}
 
 		public override void SetDefaults()

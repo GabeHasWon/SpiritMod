@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Floater");
+			// DisplayName.SetDefault("Spirit Floater");
 			Main.npcFrameCount[NPC.type] = 6;
 		}
 
@@ -69,7 +69,7 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.frame.Y = frame * (frameHeight - 1);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (Main.netMode != NetmodeID.Server && NPC.life <= 0) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);

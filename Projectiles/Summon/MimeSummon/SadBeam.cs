@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Summon.MimeSummon
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Beam");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Beam");
 
 		public override void SetDefaults()
 		{

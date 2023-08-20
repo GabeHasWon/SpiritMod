@@ -25,7 +25,7 @@ namespace SpiritMod.NPCs.ChainedSinner
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Furnace Maw");
+			// DisplayName.SetDefault("Furnace Maw");
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
 
@@ -132,7 +132,7 @@ namespace SpiritMod.NPCs.ChainedSinner
 			return true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

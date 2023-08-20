@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Brute Hammer");
-			Tooltip.SetDefault("Spins rapidly around the player, dealing a devastating blow on release");
+			// DisplayName.SetDefault("Brute Hammer");
+			// Tooltip.SetDefault("Spins rapidly around the player, dealing a devastating blow on release");
 		}
 
 		public override void Defaults()

@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.Toucane
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Toucan Feather");
+			// DisplayName.SetDefault("Toucan Feather");
 			ProjectileID.Sets.MinionShot[Projectile.type] = true;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -18,16 +19,12 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			AdjTiles = new int[] { TileID.Torches };
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Candle");
+
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(179, 146, 107), name);
-			ItemDrop = ModContent.ItemType<Items.Placeable.Furniture.Reach.ReachCandle>();
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{

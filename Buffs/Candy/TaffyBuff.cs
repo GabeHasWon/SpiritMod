@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Candy
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Taffy");
-			Description.SetDefault("+4 Defense");
+			// DisplayName.SetDefault("Taffy");
+			// Description.SetDefault("+4 Defense");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

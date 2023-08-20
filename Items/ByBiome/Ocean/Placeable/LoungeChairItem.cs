@@ -9,8 +9,8 @@ public class LoungeChairItem : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Lounge Chair");
-		Tooltip.SetDefault("'So comfortable you may just fall asleep! Lay in the shade to avoid sunburns.'");
+		// DisplayName.SetDefault("Lounge Chair");
+		// Tooltip.SetDefault("'So comfortable you may just fall asleep! Lay in the shade to avoid sunburns.'");
 	}
 
 	public override void SetDefaults()

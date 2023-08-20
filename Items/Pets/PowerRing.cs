@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ring of Willpower");
-			Tooltip.SetDefault("Summons a Lantern Power Battery to light the way");
+			// DisplayName.SetDefault("Ring of Willpower");
+			// Tooltip.SetDefault("Summons a Lantern Power Battery to light the way");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

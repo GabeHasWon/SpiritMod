@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.JackSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Handsome Jack's Beautiful Visage");
+			// DisplayName.SetDefault("Handsome Jack's Beautiful Visage");
 		}
 		public override void SetDefaults()
 		{

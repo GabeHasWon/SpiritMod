@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Putrid Splitter");
+			// DisplayName.SetDefault("Putrid Splitter");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

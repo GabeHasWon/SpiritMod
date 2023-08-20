@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.SpiritSet.SpiritArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Body Armor");
-			Tooltip.SetDefault("Increases melee damage and critical strike chance by 10%, as well as reducing damage taken by 10%");
+			// DisplayName.SetDefault("Spirit Body Armor");
+			// Tooltip.SetDefault("Increases melee damage and critical strike chance by 10%, as well as reducing damage taken by 10%");
 		}
 
 		public override void SetDefaults()

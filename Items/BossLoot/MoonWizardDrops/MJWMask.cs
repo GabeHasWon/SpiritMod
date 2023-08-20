@@ -11,7 +11,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moon Jelly Wizard Mask");
+			// DisplayName.SetDefault("Moon Jelly Wizard Mask");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/MoonWizardDrops/MJWMask_Head_Glow");
 		}
 

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sanguine Scutum");
-			Tooltip.SetDefault("Reduces life regen to 0\nIncreases maximum HP by 40");
+			// DisplayName.SetDefault("Sanguine Scutum");
+			// Tooltip.SetDefault("Reduces life regen to 0\nIncreases maximum HP by 40");
 		}
 
 		public override void SetDefaults()

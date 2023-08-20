@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class GunBubble1 : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble");
 
 		public override void SetDefaults()
 		{

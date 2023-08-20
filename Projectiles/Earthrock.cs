@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 {
 	class Earthrock : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Earth Shard");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Earth Shard");
 
 		public override void SetDefaults()
 		{
@@ -57,7 +57,7 @@ namespace SpiritMod.Projectiles
 			Main.dust[dust].scale = 1.9f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(ModContent.BuffType<Buffs.DoT.Afflicted>(), 240);

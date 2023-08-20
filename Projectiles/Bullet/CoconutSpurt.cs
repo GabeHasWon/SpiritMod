@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class CoconutSpurt : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Coconut Spurt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Coconut Spurt");
 
 		public override void SetDefaults()
 		{

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.IronBomber
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Iron Bomber");
-			Tooltip.SetDefault("Converts rockets into pulse grenades");
+			// DisplayName.SetDefault("Iron Bomber");
+			// Tooltip.SetDefault("Converts rockets into pulse grenades");
 		}
 
 		public override void SetDefaults()

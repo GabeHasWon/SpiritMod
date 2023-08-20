@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Diseased Spit");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Diseased Spit");
 
 		public override void SetDefaults()
 		{
@@ -53,7 +53,7 @@ namespace SpiritMod.Projectiles.Magic
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (target.life <= 0) {
 				int num24 = 307;

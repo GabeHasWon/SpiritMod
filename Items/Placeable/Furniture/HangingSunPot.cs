@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hanging Sun in a Pot");
-			Tooltip.SetDefault("Increases life regeneration during the day");
+			// DisplayName.SetDefault("Hanging Sun in a Pot");
+			// Tooltip.SetDefault("Increases life regeneration during the day");
 		}
 
 		public override void SetDefaults()

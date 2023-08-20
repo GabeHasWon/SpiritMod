@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Swordsplosion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Swordsplosion");
-			Tooltip.SetDefault("Shoots out a barrage of swords\nProjectiles fired count both as melee and ranged projectiles");
+			// DisplayName.SetDefault("Swordsplosion");
+			// Tooltip.SetDefault("Shoots out a barrage of swords\nProjectiles fired count both as melee and ranged projectiles");
 		}
 
 		public override void SetDefaults()

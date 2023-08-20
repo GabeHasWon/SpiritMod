@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Glyphs
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Zephyr Glyph");
+			// DisplayName.SetDefault("Zephyr Glyph");
 		}
 
 		public override void SetDefaults()

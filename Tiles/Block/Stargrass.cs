@@ -26,7 +26,6 @@ namespace SpiritMod.Tiles.Block
 
 			AddMapEntry(new Color(28, 216, 151));
 			DustType = DustID.Flare_Blue;
-			ItemDrop = ItemID.DirtBlock;
 		}
 
 		public override bool CanExplode(int i, int j)
@@ -51,7 +50,7 @@ namespace SpiritMod.Tiles.Block
 			{
 				int style = Main.rand.Next(12);
 				PlaceObject(i, j - 1, ModContent.TileType<StargrassFlowers>(), true, style);
-				NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<StargrassFlowers>(), style, 0, -1, -1);
+				NetMessage.SendObjectPlacement(-1, i, j - 1, ModContent.TileType<StargrassFlowers>(), style, 0, -1, -1);
 			}
 
 			if (SpreadHelper.Spread(i, j, Type, 4, TileID.Dirt) && Main.netMode != NetmodeID.SinglePlayer)

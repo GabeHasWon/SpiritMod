@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.DyesMisc.HairDye
 {
 	public class SnowMirageDye : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mirage Hair Dye");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mirage Hair Dye");
 
 		public override void SetDefaults()
 		{

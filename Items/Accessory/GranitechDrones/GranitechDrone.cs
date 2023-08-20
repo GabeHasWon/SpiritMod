@@ -41,7 +41,7 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Granitech Drone");
+            // DisplayName.SetDefault("Granitech Drone");
             Main.projPet[Projectile.type] = true;
             Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
@@ -233,7 +233,7 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
 
             shootTimer = 30 + Main.rand.Next(-5, 6);
 
-            target.StrikeNPC(Projectile.damage, 0f, 0);
+            target.StrikeNPC(target.CalculateHitInfo(Projectile.damage, 0, false, 0f));
             //owner.ApplyDamageToNPC(target, projectile.damage, 0.1f, projectile.spriteDirection, false);
         }
 

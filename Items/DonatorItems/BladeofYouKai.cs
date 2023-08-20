@@ -10,8 +10,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blade of the You-Kai");
-			Tooltip.SetDefault("Melee hits on enemies may emit Shadowflame Embers\nInflicts Shadowflame");
+			// DisplayName.SetDefault("Blade of the You-Kai");
+			// Tooltip.SetDefault("Melee hits on enemies may emit Shadowflame Embers\nInflicts Shadowflame");
 		}
 
 		public override void SetDefaults()
@@ -40,13 +40,13 @@ namespace SpiritMod.Items.DonatorItems
 			Main.dust[dust].velocity *= 0f;
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.ShadowFlame, 180, true);
 			if (Main.rand.NextBool(4)) {
-				Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ModContent.ProjectileType<ShadowEmber>(), damage, knockback, player.whoAmI, 0f, 0f);
-				Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center.X, target.Center.Y, 1f, 0f, ModContent.ProjectileType<ShadowEmber>(), damage, knockback, player.whoAmI, 0f, 0f);
-				Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center.X, target.Center.Y, -2f, 0f, ModContent.ProjectileType<ShadowEmber>(), damage, knockback, player.whoAmI, 0f, 0f);
+				Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ModContent.ProjectileType<ShadowEmber>(), damageDone, hit.Knockback, player.whoAmI, 0f, 0f);
+				Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center.X, target.Center.Y, 1f, 0f, ModContent.ProjectileType<ShadowEmber>(), damageDone, hit.Knockback, player.whoAmI, 0f, 0f);
+				Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center.X, target.Center.Y, -2f, 0f, ModContent.ProjectileType<ShadowEmber>(), damageDone, hit.Knockback, player.whoAmI, 0f, 0f);
 			}
 		}
 		public override void AddRecipes()

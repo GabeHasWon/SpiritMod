@@ -7,7 +7,7 @@ namespace SpiritMod.Mechanics.CollideableNPC
 {
 	class CollideableNPCDetours
 	{
-		internal static void SolidTopCollision(On.Terraria.Player.orig_Update_NPCCollision orig, Player self)
+		internal static void SolidTopCollision(Terraria.On_Player.orig_Update_NPCCollision orig, Player self)
 		{
 			var modSelf = self.GetModPlayer<CollideableNPCPlayer>();
 
@@ -63,7 +63,7 @@ namespace SpiritMod.Mechanics.CollideableNPC
 			orig(self);
 		}
 
-		internal static void Grappling(On.Terraria.Projectile.orig_VanillaAI orig, Projectile self)
+		internal static void Grappling(Terraria.On_Projectile.orig_VanillaAI orig, Projectile self)
 		{
 			if (self.aiStyle == 7 && false) //False as to not cause crashes
 			{

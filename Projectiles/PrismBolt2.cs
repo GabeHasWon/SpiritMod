@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Prismatic Energy");
+			// DisplayName.SetDefault("Prismatic Energy");
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
 

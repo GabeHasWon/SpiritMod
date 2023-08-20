@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jump Potion");
-			Tooltip.SetDefault("Greatly increases jump height");
+			// DisplayName.SetDefault("Jump Potion");
+			// Tooltip.SetDefault("Greatly increases jump height");
 		}
 
 		public override void SetDefaults()

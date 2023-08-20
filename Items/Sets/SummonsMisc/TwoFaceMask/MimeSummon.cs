@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.SummonsMisc.TwoFaceMask
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Two-Faced Mask");
-			Tooltip.SetDefault("Summons either a Soul of Happiness or Sadness at the cursor position with a left or right click\nThe Soul of Happiness shoots out beams at foes\nThe Soul of Sadness shoots out homing tears at foes");
+			// DisplayName.SetDefault("Two-Faced Mask");
+			// Tooltip.SetDefault("Summons either a Soul of Happiness or Sadness at the cursor position with a left or right click\nThe Soul of Happiness shoots out beams at foes\nThe Soul of Sadness shoots out homing tears at foes");
 			Item.staff[Item.type] = true;
 		}
 

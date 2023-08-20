@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -18,9 +19,9 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
+			LocalizedText name = CreateMapEntryName();
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			name.SetDefault("Elderbark Sofa");
+			// name.SetDefault("Elderbark Sofa");
 			AddMapEntry(new Color(179, 146, 107), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 		}

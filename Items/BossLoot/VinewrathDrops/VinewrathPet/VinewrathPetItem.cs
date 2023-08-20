@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Withered Petal");
-			Tooltip.SetDefault("Summons an angry Seedling companion");
+			// DisplayName.SetDefault("Withered Petal");
+			// Tooltip.SetDefault("Summons an angry Seedling companion");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

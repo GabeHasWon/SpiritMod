@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -17,6 +18,10 @@ namespace SpiritMod.Tiles.Furniture
 			Main.tileSolid[Type] = false;
 			Main.tileLavaDeath[Type] = true;
 			Main.tileNoSunLight[Type] = true;
+
+			TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
+			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.CloseDoorID[Type] = ModContent.TileType<SpiritDoorClosed>();
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Origin = new Point16(0, 0);
@@ -56,14 +61,12 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceLeft;
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
+
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-			TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Spirit Door");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(0, 0, 255), name);
-			TileID.Sets.DisableSmartCursor[Type] = true;
+
 			AdjTiles = new int[] { TileID.OpenDoor };
-			CloseDoorID = ModContent.TileType<SpiritDoorClosed>();
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

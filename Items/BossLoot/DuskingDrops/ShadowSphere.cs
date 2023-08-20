@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Sphere");
-			Tooltip.SetDefault("Summons a slow shadow sphere that shoots out Crystal Shadows at foes");
+			// DisplayName.SetDefault("Shadow Sphere");
+			// Tooltip.SetDefault("Summons a slow shadow sphere that shoots out Crystal Shadows at foes");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/ShadowSphere_Glow");
 		}
 

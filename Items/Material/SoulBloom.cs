@@ -5,7 +5,7 @@ namespace SpiritMod.Items.Material
 {
 	public class SoulBloom : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Soulbloom");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Soulbloom");
 
 		public override void SetDefaults()
 		{

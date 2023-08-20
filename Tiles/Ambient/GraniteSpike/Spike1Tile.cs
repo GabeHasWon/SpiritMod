@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Items.Placeable.Furniture.GraniteSpikes;
@@ -27,8 +28,8 @@ namespace SpiritMod.Tiles.Ambient.GraniteSpike
 				16
 			};
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Granite Formation");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Granite Formation");
 			AddMapEntry(new Color(100, 86, 145), name);
 			DustType = -1;
 			TileID.Sets.DisableSmartCursor[Type] = true;

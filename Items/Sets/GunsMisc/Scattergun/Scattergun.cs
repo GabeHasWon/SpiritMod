@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Scattergun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scattergun");
-			Tooltip.SetDefault("Converts regular bullets into neon pellets");
+			// DisplayName.SetDefault("Scattergun");
+			// Tooltip.SetDefault("Converts regular bullets into neon pellets");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

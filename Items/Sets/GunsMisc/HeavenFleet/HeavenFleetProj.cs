@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 		{
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-			DisplayName.SetDefault("Heaven Fleet");
+			// DisplayName.SetDefault("Heaven Fleet");
 		}
 
 		public override void SetDefaults()

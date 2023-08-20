@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles
 {
 	class WildMagic : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Magic");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Magic");
 
 		public override void SetDefaults()
 		{

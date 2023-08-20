@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Dagger");
-			Tooltip.SetDefault("Summons a soul dagger to fight for you \nMarks enemies on attack \nMarked enemies can be attacked by other minions for a damage boost");
+			// DisplayName.SetDefault("Soul Dagger");
+			// Tooltip.SetDefault("Summons a soul dagger to fight for you \nMarks enemies on attack \nMarked enemies can be attacked by other minions for a damage boost");
 		}
 
 		public override void SetDefaults()

@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Orichalcum Bloom");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Orichalcum Bloom");
 
 		public override void SetDefaults()
 		{

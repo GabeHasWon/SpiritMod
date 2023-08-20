@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Bullet.Crimbine
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Savage Bone");
+			// DisplayName.SetDefault("Savage Bone");
 		}
 
 		public override void SetDefaults()

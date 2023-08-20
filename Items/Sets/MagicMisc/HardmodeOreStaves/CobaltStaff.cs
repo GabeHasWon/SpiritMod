@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cobalt Staff");
-			Tooltip.SetDefault("Summons magnetized cobalt shards at the cursor");
+			// DisplayName.SetDefault("Cobalt Staff");
+			// Tooltip.SetDefault("Summons magnetized cobalt shards at the cursor");
 		}
 
 

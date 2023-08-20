@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nether Wings");
-			Tooltip.SetDefault("Allows for flight and slow fall.");
+			// DisplayName.SetDefault("Nether Wings");
+			// Tooltip.SetDefault("Allows for flight and slow fall.");
 
 			ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new Terraria.DataStructures.WingStats(90, 7.6f, 1.3f);
 		}

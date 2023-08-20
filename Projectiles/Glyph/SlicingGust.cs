@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Glyph
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slicing Gust");
+			// DisplayName.SetDefault("Slicing Gust");
 			ProjectileID.Sets.TrailCacheLength[Type] = 5;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
@@ -38,7 +38,7 @@ namespace SpiritMod.Projectiles.Glyph
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.velocity.Y -= knockback * target.knockBackResist;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.velocity.Y -= hit.Knockback * target.knockBackResist;
 
 		public override void Kill(int timeLeft)
 		{

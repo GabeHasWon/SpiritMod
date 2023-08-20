@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SeraphSet.SeraphArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Seraph's Greaves");
-			Tooltip.SetDefault("Increases maximum mana by 50");
+			// DisplayName.SetDefault("Seraph's Greaves");
+			// Tooltip.SetDefault("Increases maximum mana by 50");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SeraphSet/SeraphArmor/SeraphLegs_Glow");
 		}
 		public override void SetDefaults()

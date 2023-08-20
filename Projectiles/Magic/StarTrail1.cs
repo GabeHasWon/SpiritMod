@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Starry Wisp");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Starry Wisp");
 
 		public override void SetDefaults()
 		{

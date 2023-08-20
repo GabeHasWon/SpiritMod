@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Diabolic Horn");
-			Tooltip.SetDefault("Provides a fiery platform to fly on");
+			// DisplayName.SetDefault("Diabolic Horn");
+			// Tooltip.SetDefault("Provides a fiery platform to fly on");
 		}
 
 		public override void SetDefaults()

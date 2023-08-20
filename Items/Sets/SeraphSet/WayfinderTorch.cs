@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.SeraphSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Seraph's Light");
+			ItemID.Sets.Torches[Type] = true;
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -37,8 +37,6 @@ namespace SpiritMod.Items.Sets.SeraphSet
 			Vector2 position = player.RotatedRelativePoint(new Vector2(player.itemLocation.X + 12f * player.direction + player.velocity.X, player.itemLocation.Y - 14f + player.velocity.Y), true);
 			Lighting.AddLight(position, .3f, .2f, .6f);
 		}
-
-		public override void AutoLightSelect(ref bool dryTorch, ref bool wetTorch, ref bool glowstick) => dryTorch = true;
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) 
 			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);

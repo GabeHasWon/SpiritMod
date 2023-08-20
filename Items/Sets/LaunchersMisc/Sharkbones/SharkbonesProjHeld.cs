@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Sharkbones
 	{
 		public override string Texture => "SpiritMod/Items/Sets/LaunchersMisc/Sharkbones/Sharkbones";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sharkbones");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sharkbones");
 
 		public override void SetDefaults()
 		{

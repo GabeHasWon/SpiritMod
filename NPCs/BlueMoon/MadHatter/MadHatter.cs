@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mad Hatter");
+			// DisplayName.SetDefault("Mad Hatter");
 			Main.npcFrameCount[NPC.type] = 15;
 		}
 
@@ -47,10 +47,10 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, 1f);
 			}
 			if (NPC.life <= 0) {
 
@@ -125,7 +125,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200);

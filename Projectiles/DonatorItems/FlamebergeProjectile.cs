@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fiery Bolt");
+			// DisplayName.SetDefault("Fiery Bolt");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -80,6 +80,6 @@ namespace SpiritMod.Projectiles.DonatorItems
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(BuffID.OnFire, 300);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffID.OnFire, 300);
 	}
 }

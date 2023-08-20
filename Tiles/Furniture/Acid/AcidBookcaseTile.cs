@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -25,8 +26,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				16
 			};
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Bookcase");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Corrosive Bookcase");
 			AddMapEntry(new Color(100, 122, 111), name);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			DustType = -1;

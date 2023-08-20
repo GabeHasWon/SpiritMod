@@ -11,8 +11,8 @@ namespace SpiritMod.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault(SetDisplayName);
-			Tooltip.SetDefault(SetTooltip);
+			// DisplayName.SetDefault(SetDisplayName);
+			// Tooltip.SetDefault(SetTooltip);
 		}
 
 		public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > DontConsumeAmmoChance;

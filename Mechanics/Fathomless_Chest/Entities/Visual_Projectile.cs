@@ -10,7 +10,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Purity Light");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Purity Light");
 
 		public override void SetDefaults()
 		{

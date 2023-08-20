@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.FloatingItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ambergris");
-			Tooltip.SetDefault("'Highly valuable'\n'You don't want to know where this came from'");
+			// DisplayName.SetDefault("Ambergris");
+			// Tooltip.SetDefault("'Highly valuable'\n'You don't want to know where this came from'");
 		}
 
 		public override void SetDefaults()

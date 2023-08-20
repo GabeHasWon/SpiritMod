@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Weapon.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thorn Devilfish");
-			Tooltip.SetDefault("Shoots out poisonous bubbles");
+			// DisplayName.SetDefault("Thorn Devilfish");
+			// Tooltip.SetDefault("Shoots out poisonous bubbles");
 		}
 
 		public override void SetDefaults()

@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 {
 	public class ScarabSandball : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Ball");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Ball");
 
 		public override void SetDefaults()
 		{

@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
 {
 	public class Basking_Shark_Projectile : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Basking Shark");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Basking Shark");
 
 		public override void SetDefaults()
 		{

@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("R'lyehian");
+			// DisplayName.SetDefault("R'lyehian");
 			Main.npcFrameCount[NPC.type] = 9;
 		}
 
@@ -216,7 +216,7 @@ namespace SpiritMod.NPCs.Tides
 			npcLoot.AddOneFromOptions(1, ModContent.ItemType<TomeOfRylien>(), ModContent.ItemType<TentacleChain>());
 		}
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

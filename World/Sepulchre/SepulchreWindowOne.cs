@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -26,8 +27,8 @@ namespace SpiritMod.World.Sepulchre
 			TileObjectData.addTile(Type);
 
 			DustType = -1;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sepulchre Window");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sepulchre Window");
 			AddMapEntry(new Color(100, 100, 100), name);
 		}
 
@@ -38,7 +39,7 @@ namespace SpiritMod.World.Sepulchre
 
 	public class SepulchreWindowItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Window");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Window");
 
 		public override void SetDefaults()
 		{

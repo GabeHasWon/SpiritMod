@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.AncientApostle
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Apostle");
+			// DisplayName.SetDefault("Ancient Apostle");
 			Main.npcFrameCount[NPC.type] = 7;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 
@@ -121,12 +121,12 @@ namespace SpiritMod.NPCs.AncientApostle
 			npcLoot.Add(ItemDropRule.Common(ItemID.Feather, 2));
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hitDirection, -2.5f, 0, default, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hit.HitDirection, -2.5f, 0, default, .34f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

@@ -12,12 +12,7 @@ namespace SpiritMod.Items.Sets.CoilSet
 	{
 		private int charger;
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Coiled Blade");
-			Tooltip.SetDefault("Every six successful hits on an enemy releases an electrical explosion");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -42,12 +37,13 @@ namespace SpiritMod.Items.Sets.CoilSet
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			charger++;
 			if (charger >= 6) {
 				SoundEngine.PlaySound(SoundID.Item14, target.Center);
-				Projectile.NewProjectile(Item.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ModContent.ProjectileType<CoiledExplosion>(), damage, knockback, player.whoAmI);
+				int type = ModContent.ProjectileType<CoiledExplosion>();
+				Projectile.NewProjectile(Item.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, type, damageDone, hit.Knockback, player.whoAmI);
 				charger = 0;
 			}
 		}

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Shard");
-			Tooltip.SetDefault("'The stone sparkles with twilight energies'");
+			// DisplayName.SetDefault("Dusk Shard");
+			// Tooltip.SetDefault("'The stone sparkles with twilight energies'");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/DuskStone_Glow");
 		}
 

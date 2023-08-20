@@ -18,7 +18,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tentacle");
+			// DisplayName.SetDefault("Tentacle");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -56,11 +56,11 @@ namespace SpiritMod.Mounts.RlyehianMount
 			return projHitbox.Intersects(targetHitbox);
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			for (int i = 0; i < 6; i++)
 				Dust.NewDustPerfect(target.Center, DustID.Blood, (Projectile.DirectionFrom(target.Center) * Main.rand.NextFloat(2.0f, 4.0f)).RotatedByRandom(1f), 0, default, Main.rand.NextFloat(0.8f, 1.3f));
-			crit = false;
+			modifiers.DisableCrit();
 		}
 
 		public override bool PreDraw(ref Color lightColor)

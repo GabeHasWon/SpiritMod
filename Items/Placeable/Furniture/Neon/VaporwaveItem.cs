@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Retrofuturistic Wall Panel");
-			Tooltip.SetDefault("'A mix of the past and present'");
+			// DisplayName.SetDefault("Retrofuturistic Wall Panel");
+			// Tooltip.SetDefault("'A mix of the past and present'");
 		}
 
 		public override void SetDefaults()

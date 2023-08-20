@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fireball");
+			// DisplayName.SetDefault("Fireball");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

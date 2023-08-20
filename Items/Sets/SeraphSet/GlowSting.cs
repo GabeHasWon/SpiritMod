@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.SeraphSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Seraph's Strike");
-			Tooltip.SetDefault("Right-click to release a flurry of strikes");
+			// DisplayName.SetDefault("Seraph's Strike");
+			// Tooltip.SetDefault("Right-click to release a flurry of strikes");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.SeraphSet
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 180);

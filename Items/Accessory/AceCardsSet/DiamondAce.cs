@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Accessory.AceCardsSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Diamond Ace");
-			Tooltip.SetDefault("You shouldn't see this");
+			// DisplayName.SetDefault("Diamond Ace");
+			// Tooltip.SetDefault("You shouldn't see this");
 			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 5));
 			ItemID.Sets.AnimatesAsSoul[Type] = true;
 			ItemID.Sets.IgnoresEncumberingStone[Type] = true;

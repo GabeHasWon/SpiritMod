@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vile Charm");
-			Tooltip.SetDefault("Increases melee critical strike chance by 5%\nIncreases movement speed by 10%");
+			// DisplayName.SetDefault("Vile Charm");
+			// Tooltip.SetDefault("Increases melee critical strike chance by 5%\nIncreases movement speed by 10%");
 		}
 
 

@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dartboard");
-			Tooltip.SetDefault("13% reduced damage\n15% increased critical strike chance\n'Right on the mark'");
+			// DisplayName.SetDefault("Dartboard");
+			// Tooltip.SetDefault("13% reduced damage\n15% increased critical strike chance\n'Right on the mark'");
 		}
 
 		public override void SetDefaults()

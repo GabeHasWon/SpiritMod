@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Stomp");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Stomp");
 
 		public override void SetDefaults()
 		{
@@ -106,7 +106,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 				Projectile.alpha = 0;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Main.player[Projectile.owner].GetModPlayer<MyPlayer>().Shake += 5;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Main.player[Projectile.owner].GetModPlayer<MyPlayer>().Shake += 5;
 
 		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 			=> overPlayers.Add(index);
@@ -146,7 +146,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Stomp");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Stomp");
 		public override void SetDefaults()
 		{
 			Projectile.width = 100;

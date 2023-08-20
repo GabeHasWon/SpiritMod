@@ -17,7 +17,7 @@ namespace SpiritMod.Projectiles.Bullet
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Bolt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Energy Bolt");
 
 		public override void SetDefaults()
 		{

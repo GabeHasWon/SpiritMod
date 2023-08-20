@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture.Neon;
 using Terraria;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.ID;
@@ -33,8 +34,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Glowplate Crate");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Glowplate Crate");
 			AddMapEntry(new Color(60, 60, 60), name);
 			DustType = -1;
 		}

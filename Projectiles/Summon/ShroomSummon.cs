@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spore");
+			// DisplayName.SetDefault("Spore");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -155,7 +155,7 @@ namespace SpiritMod.Projectiles.Summon
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.velocity *= 0f;
 			Projectile.alpha = 255;

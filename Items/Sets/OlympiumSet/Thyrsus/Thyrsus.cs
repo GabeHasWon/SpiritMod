@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.OlympiumSet.Thyrsus
 		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thyrsus");
-			Tooltip.SetDefault("Throw at a surface to grow damaging vines");
+			// DisplayName.SetDefault("Thyrsus");
+			// Tooltip.SetDefault("Throw at a surface to grow damaging vines");
 		}
 
 		public override void SetDefaults()
@@ -49,7 +49,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.Thyrsus
 		float shrinkCounter = 0.25f;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thyrsus");
+			// DisplayName.SetDefault("Thyrsus");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -125,7 +125,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.Thyrsus
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vine");
+			// DisplayName.SetDefault("Vine");
 			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;

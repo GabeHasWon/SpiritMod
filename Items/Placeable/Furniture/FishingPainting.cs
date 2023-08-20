@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moonlight Deluge");
-			Tooltip.SetDefault("'P. Otat'");
+			// DisplayName.SetDefault("Moonlight Deluge");
+			// Tooltip.SetDefault("'P. Otat'");
 		}
 
 		public override void SetDefaults()

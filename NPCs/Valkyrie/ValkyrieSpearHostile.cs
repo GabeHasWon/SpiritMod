@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Valkyrie
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Valkyrie Spear");
+			// DisplayName.SetDefault("Valkyrie Spear");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

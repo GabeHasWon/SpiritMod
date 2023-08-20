@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Returning
 	{
 		private float hitCounter = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Cutter");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Cutter");
 
 		public override void SetDefaults()
 		{
@@ -42,7 +42,7 @@ namespace SpiritMod.Projectiles.Returning
 				hitCounter -= 0.01f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 			{

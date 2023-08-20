@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Magic Gloop");
+			// DisplayName.SetDefault("Magic Gloop");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -84,7 +84,7 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 			SpiritMod.Metaballs.NebulaLayer.Metaballs.Remove(this);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
             int cooldown = 20;
             Projectile.localNPCImmunity[target.whoAmI] = 20;
             target.immune[Projectile.owner] = cooldown;
@@ -102,10 +102,10 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 			}
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			float distance = (previousMousePosition - currentMousePosition).Length() * 5;
-			damage = (int)(damage * MathHelper.Clamp((float)Math.Sqrt(distance), 1, 7));
+			modifiers.FinalDamage *= MathHelper.Clamp((float)Math.Sqrt(distance), 1, 7);
 		}
 
 		public override bool PreDraw(ref Color lightColor) => false;

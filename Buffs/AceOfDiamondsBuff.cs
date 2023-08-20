@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ace of Diamonds");
-			Description.SetDefault("Damage increased by 20%");
+			// DisplayName.SetDefault("Ace of Diamonds");
+			// Description.SetDefault("Damage increased by 20%");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

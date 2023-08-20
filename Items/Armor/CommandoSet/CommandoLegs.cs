@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.CommandoSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Commando's Greaves");
+			// DisplayName.SetDefault("Commando's Greaves");
 		}
 		public override void SetDefaults()
 		{

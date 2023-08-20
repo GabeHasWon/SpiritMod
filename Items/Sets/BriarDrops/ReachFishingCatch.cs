@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.BriarDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Noxophyll");
-			Tooltip.SetDefault("'It reeks of poison'");
+			// DisplayName.SetDefault("Noxophyll");
+			// Tooltip.SetDefault("'It reeks of poison'");
 		}
 
 

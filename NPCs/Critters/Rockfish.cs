@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rockfish");
+			// DisplayName.SetDefault("Rockfish");
 			Main.npcFrameCount[NPC.type] = 6;
 		}
 
@@ -85,7 +85,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			SoundEngine.PlaySound(SoundID.DD2_WitherBeastHurt, NPC.Center);
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -18,8 +19,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Candelabra");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Candelabra");
 			AddMapEntry(new Color(179, 146, 107), name);
 			AdjTiles = new int[] { TileID.Torches };
 		}

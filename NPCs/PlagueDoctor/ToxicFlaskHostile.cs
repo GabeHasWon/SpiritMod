@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.PlagueDoctor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Plague Vial");
+			// DisplayName.SetDefault("Plague Vial");
 		}
 
 		public override void SetDefaults()

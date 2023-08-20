@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Shrine (Kumano)");
+			// DisplayName.SetDefault("Ancient Shrine (Kumano)");
 		}
 
 

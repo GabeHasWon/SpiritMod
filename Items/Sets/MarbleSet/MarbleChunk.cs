@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Sets.MarbleSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Marble Chunk");
-			Tooltip.SetDefault("'Contains fragments of past civilizations'");
+			// DisplayName.SetDefault("Ancient Marble Chunk");
+			// Tooltip.SetDefault("'Contains fragments of past civilizations'");
 		}
 
 

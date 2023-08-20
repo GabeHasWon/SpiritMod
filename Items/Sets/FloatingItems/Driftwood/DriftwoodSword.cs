@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Driftwood Sword");
+			// DisplayName.SetDefault("Driftwood Sword");
 		}
 
 

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Weapon.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Probe");
-			Tooltip.SetDefault("Fires lasers at surrounding enemies");
+			// DisplayName.SetDefault("The Probe");
+			// Tooltip.SetDefault("Fires lasers at surrounding enemies");
 		}
 
 		public override void SetDefaults()

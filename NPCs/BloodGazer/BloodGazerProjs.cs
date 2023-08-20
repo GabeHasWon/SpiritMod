@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.BloodGazer
 	public class BloodGazerEyeShot : ModProjectile
 	{
 		public override string Texture => "Terraria/Images/Projectile_1";
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Shot");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Shot");
 
 		public override void SetDefaults()
 		{
@@ -55,7 +55,7 @@ namespace SpiritMod.NPCs.BloodGazer
 	public class BloodGazerEyeShotWavy : BloodGazerEyeShot
 	{
 		public override string Texture => "Terraria/Images/Projectile_1";
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Shot");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Shot");
 
 		public override bool PreAI()
 		{
@@ -69,7 +69,7 @@ namespace SpiritMod.NPCs.BloodGazer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Runic Eye");
+			// DisplayName.SetDefault("Runic Eye");
 			Main.projFrames[Projectile.type] = 5;
 		}
 
@@ -201,7 +201,7 @@ namespace SpiritMod.NPCs.BloodGazer
 	{
 		public override string Texture => "Terraria/Images/Projectile_1";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Brimstone Laser");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Brimstone Laser");
 
 		public override void SetDefaults()
 		{
@@ -225,7 +225,7 @@ namespace SpiritMod.NPCs.BloodGazer
 	{
 		public override string Texture => "SpiritMod/NPCs/BloodGazer/BloodGazerEye";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Detatched Eye");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Detatched Eye");
 
 		public override void SetDefaults()
 		{

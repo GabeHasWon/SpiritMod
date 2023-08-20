@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cavern Boulder");
+			// DisplayName.SetDefault("Cavern Boulder");
 		}
 		public override void SetDefaults()
 		{

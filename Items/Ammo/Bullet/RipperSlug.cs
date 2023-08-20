@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Ammo.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ripper Slug");
-			Tooltip.SetDefault("Obeys gravity, but does extra damage");
+			// DisplayName.SetDefault("Ripper Slug");
+			// Tooltip.SetDefault("Obeys gravity, but does extra damage");
 		}
 
 		public override void SetDefaults()
@@ -45,7 +45,7 @@ namespace SpiritMod.Items.Ammo.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ripper Slug");
+			// DisplayName.SetDefault("Ripper Slug");
 
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -85,8 +85,12 @@ namespace SpiritMod.Items.Ammo.Bullet
 				Dust.NewDustPerfect(Projectile.Center, 5, Main.rand.NextFloat(0.25f, 0.5f) * Projectile.velocity.RotatedBy(3.14f + Main.rand.NextFloat(-0.4f, 0.4f)));
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage = (int)(damage * 1.15f);
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage *= 1.15f;
 
-		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) => damage = (int)(damage * 1.15f);
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{
+			if (modifiers.PvP)
+				modifiers.FinalDamage *= 1.15f;
+		}
 	}
 }

@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Bullet");
+			// DisplayName.SetDefault("Shadow Bullet");
 		}
 
 		public override void SetDefaults()

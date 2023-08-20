@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Shadow Ember");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Shadow Ember");
 
 		public override void SetDefaults()
 		{
@@ -22,7 +22,7 @@ namespace SpiritMod.Projectiles
 			Projectile.alpha = 255;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(BuffID.ShadowFlame, 180);

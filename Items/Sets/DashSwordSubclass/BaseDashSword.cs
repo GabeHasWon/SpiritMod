@@ -145,7 +145,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Owner.GetModPlayer<DashSwordPlayer>().hasDashCharge = true;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Owner.GetModPlayer<DashSwordPlayer>().hasDashCharge = true;
 
 		public override bool? CanDamage() => shouldDamage ? null : false;
 

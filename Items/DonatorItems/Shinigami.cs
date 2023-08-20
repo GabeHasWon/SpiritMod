@@ -12,8 +12,8 @@ namespace SpiritMod.Items.DonatorItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shinigami");
-			Tooltip.SetDefault("Right click to dash through enemies");
+			// DisplayName.SetDefault("Shinigami");
+			// Tooltip.SetDefault("Right click to dash through enemies");
 		}
 
 		public override void SetDefaults()

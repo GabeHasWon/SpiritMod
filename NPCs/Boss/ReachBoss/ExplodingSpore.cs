@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Exploding Spore");
+			// DisplayName.SetDefault("Exploding Spore");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Saber");
-			Tooltip.SetDefault("Shoots out a homing bolt of souls that inflicts Soul Burn");
+			// DisplayName.SetDefault("Spirit Saber");
+			// Tooltip.SetDefault("Shoots out a homing bolt of souls that inflicts Soul Burn");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritSaber_Glow");
 		}
 

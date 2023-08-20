@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.Rangefinder
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rangefinder");
-			Tooltip.SetDefault("Ranged weapons are now equipped with a laser sight\nWorks while in the inventory");
+			// DisplayName.SetDefault("Rangefinder");
+			// Tooltip.SetDefault("Ranged weapons are now equipped with a laser sight\nWorks while in the inventory");
 		}
 
 		public override void SetDefaults()

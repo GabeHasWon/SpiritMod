@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Sets.ArcaneZoneSubclass
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Codex: Repulsion Zone");
-			Tooltip.SetDefault("Summons a repulsion zone at the cursor position\nRepulsion zones push nearby enemies away\nRepulsion zones break after multiple enemy strikes\nOnly one repulsion zone can exist at once\nZones count as sentries");
+			// DisplayName.SetDefault("Arcane Codex: Repulsion Zone");
+			// Tooltip.SetDefault("Summons a repulsion zone at the cursor position\nRepulsion zones push nearby enemies away\nRepulsion zones break after multiple enemy strikes\nOnly one repulsion zone can exist at once\nZones count as sentries");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/ArcaneZoneSubclass/RepulsionCodex_Glow");
         }
 

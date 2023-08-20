@@ -7,8 +7,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernal Javelin");
-			Tooltip.SetDefault("'A spear forged with fire'\nCombusts hit foes, with additional hits causing the flame to intensify.");
+			// DisplayName.SetDefault("Infernal Javelin");
+			// Tooltip.SetDefault("'A spear forged with fire'\nCombusts hit foes, with additional hits causing the flame to intensify.");
 		}
 
 		public override void SetDefaults()

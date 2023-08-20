@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phase Blast");
+			// DisplayName.SetDefault("Phase Blast");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Halloween
 		internal override Point Size => new(20, 20);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Taffy");
-			Tooltip.SetDefault("Increases defense");
+			// DisplayName.SetDefault("Taffy");
+			// Tooltip.SetDefault("Increases defense");
 		}
 
 		public override void Defaults()

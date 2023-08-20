@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Masticator
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Masticator");
+			// DisplayName.SetDefault("Masticator");
 			Main.npcFrameCount[NPC.type] = 11;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -173,12 +173,12 @@ namespace SpiritMod.NPCs.Masticator
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight && NPC.CountNPCS(ModContent.NPCType<Masticator>()) < 2 ? .2f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Pot, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ScourgeOfTheCorruptor, 2.5f * hitDirection, -2.5f, 0, Color.White, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Pot, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ScourgeOfTheCorruptor, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .34f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

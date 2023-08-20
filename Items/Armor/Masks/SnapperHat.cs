@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.Masks
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Snapper's Hat");
+			// DisplayName.SetDefault("Snapper's Hat");
 		}
 
 		public override void SetDefaults()

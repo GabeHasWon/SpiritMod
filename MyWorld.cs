@@ -117,7 +117,7 @@ namespace SpiritMod
 
 		public static HashSet<Point16> superSunFlowerPositions = new HashSet<Point16>();
 
-		public override void Load() => On.Terraria.WorldGen.IslandHouse += SpiritGenPasses.StealIslandInfo;
+		public override void Load() => Terraria.On_WorldGen.IslandHouse += SpiritGenPasses.StealIslandInfo;
 
 		public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
 		{
@@ -1237,7 +1237,7 @@ namespace SpiritMod
 		}
 		#endregion
 
-		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 		{
 			tasks.Insert(3, new PassLegacy("SpiritReset", ResetWorldInfo));
 
@@ -1486,7 +1486,7 @@ namespace SpiritMod
 
 				if (!Main.dayTime && Main.hardMode)
 				{
-					if (!Main.fastForwardTime && !Main.bloodMoon && WorldGen.spawnHardBoss == 0 && ((Main.rand.NextBool(20) && !downedBlueMoon) || (Main.rand.NextBool(40) && !downedBlueMoon)))
+					if (!Main.IsFastForwardingTime() && !Main.bloodMoon && WorldGen.spawnHardBoss == 0 && ((Main.rand.NextBool(20) && !downedBlueMoon) || (Main.rand.NextBool(40) && !downedBlueMoon)))
 					{
 						if (Main.netMode == NetmodeID.SinglePlayer)
 							Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
@@ -1556,21 +1556,21 @@ namespace SpiritMod
 				for (int C = 0; C < Main.maxTilesX * 9; C++)
 				{
 					int X = WorldGen.genRand.Next(300, Main.maxTilesX - 300);
-					int Y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY);
+					int Y = WorldGen.genRand.Next((int)GenVars.rockLayer, Main.maxTilesY);
 					if (Main.tile[X, Y].TileType == TileID.Stone)
 					{
 						WorldGen.PlaceObject(X, Y, ModContent.TileType<GreenShardBig>());
-						NetMessage.SendObjectPlacment(-1, X, Y, ModContent.TileType<GreenShardBig>(), 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, X, Y, ModContent.TileType<GreenShardBig>(), 0, 0, -1, -1);
 					}
 				}
 				for (int C = 0; C < Main.maxTilesX * 9; C++)
 				{
 					int X = WorldGen.genRand.Next(300, Main.maxTilesX - 300);
-					int Y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY);
+					int Y = WorldGen.genRand.Next((int)GenVars.rockLayer, Main.maxTilesY);
 					if (Main.tile[X, Y].TileType == TileID.Stone)
 					{
 						WorldGen.PlaceObject(X, Y, ModContent.TileType<PurpleShardBig>());
-						NetMessage.SendObjectPlacment(-1, X, Y, ModContent.TileType<PurpleShardBig>(), 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, X, Y, ModContent.TileType<PurpleShardBig>(), 0, 0, -1, -1);
 					}
 				}
 			}

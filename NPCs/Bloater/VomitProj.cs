@@ -8,7 +8,7 @@ namespace SpiritMod.NPCs.Bloater
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloody Vomit");
+			// DisplayName.SetDefault("Bloody Vomit");
 		}
 
 		public override void SetDefaults()

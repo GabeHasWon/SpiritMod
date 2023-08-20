@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Leather Fistwraps");
-			Tooltip.SetDefault("Increases melee speed by 6%");
+			// DisplayName.SetDefault("Leather Fistwraps");
+			// Tooltip.SetDefault("Increases melee speed by 6%");
 		}
 
 		public override void SetDefaults()

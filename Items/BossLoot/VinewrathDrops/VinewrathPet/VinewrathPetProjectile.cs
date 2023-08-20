@@ -30,7 +30,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops.VinewrathPet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wrathful Seedling");
+			// DisplayName.SetDefault("Wrathful Seedling");
 			Main.projFrames[Projectile.type] = 7;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

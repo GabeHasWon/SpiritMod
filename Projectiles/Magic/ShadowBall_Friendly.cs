@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Ball");
+			// DisplayName.SetDefault("Shadow Ball");
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -44,7 +44,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.ShadowFlame, 180);

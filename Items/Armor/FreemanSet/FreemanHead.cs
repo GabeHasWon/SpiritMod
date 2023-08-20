@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.FreemanSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Hunted's Goggles");
+			// DisplayName.SetDefault("The Hunted's Goggles");
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}
 

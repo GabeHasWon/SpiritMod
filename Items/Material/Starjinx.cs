@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Material
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starjinx Cluster");
-			Tooltip.SetDefault("'Forged with the power of a billion stars!'");
+			// DisplayName.SetDefault("Starjinx Cluster");
+			// Tooltip.SetDefault("'Forged with the power of a billion stars!'");
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 

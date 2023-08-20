@@ -13,7 +13,7 @@ namespace SpiritMod.Buffs.SummonTag
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Summon Tag");
+			// DisplayName.SetDefault("Summon Tag");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
@@ -22,7 +22,7 @@ namespace SpiritMod.Buffs.SummonTag
 
 	public class ElecricSummonTagGProj : GlobalProjectile
 	{
-		public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			bool summon = (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry);
 			if (summon && target.HasBuff(ModContent.BuffType<ElectricSummonTag>()) && projectile.type != ModContent.ProjectileType<ElectricGunProjectile>())
@@ -52,7 +52,7 @@ namespace SpiritMod.Buffs.SummonTag
 						DustHelper.DrawElectricity(target.Center, finaltarget.Center, 226, 0.3f);
 
 					if (finaltarget != null)
-						finaltarget.StrikeNPC((int)(Math.Min(damage / 3, 12) * Main.rand.NextFloat(0.8f, 1.2f)), 1f, 0, false);
+						finaltarget.StrikeNPC(target.CalculateHitInfo((int)(Math.Min(damageDone / 3, 12) * Main.rand.NextFloat(0.8f, 1.2f)), 0, false, 1f, projectile.DamageType, false));
 				}
 			}
 		}

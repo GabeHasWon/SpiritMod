@@ -16,7 +16,7 @@ namespace SpiritMod.Items
 		public virtual void PlayerOnHitNPC(Player player, Item item, NPC target, int damage, float knockback, bool crit) { }
 		public virtual void PlayerOnHitNPCWithProj(Player player, Projectile proj, NPC target, int damage, float knockback, bool crit) { }
 		public virtual bool PlayerPreHurt(Player player, bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) => true;
-		public virtual void PlayerHurt(Player player, bool pvp, bool quiet, double damage, int hitDirection, bool crit) { }
+		public virtual void PlayerHurt(Player player, Player.HurtInfo info) { }
 		public virtual void PlayerPostHurt(Player player, bool pvp, bool quiet, double damage, int hitDirection, bool crit) { }
 		public virtual bool PlayerPreKill(Player player, double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) => true;
 		public virtual void PlayerPreUpdate(Player player) { }
@@ -24,7 +24,7 @@ namespace SpiritMod.Items
 		public virtual void PlayerUpdateLifeRegen(Player player) { }
 		public virtual void PlayerPostUpdateEquips(Player player) { }
 		public virtual void PlayerPostUpdate(Player player) { }
-		public virtual void PlayerModifyHitNPC(Player player, Item item, NPC target, ref int damage, ref float knockback, ref bool crit) { }
+		public virtual void PlayerModifyHitNPC(Player player, Item item, NPC target, ref NPC.HitModifiers modifiers) { }
 		public virtual void PlayerDrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright) { }
 
 		///<summary>Only runs if this is being used through an accessory.</summary>

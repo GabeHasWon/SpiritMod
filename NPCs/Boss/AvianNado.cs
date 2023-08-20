@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gustnado");
+			// DisplayName.SetDefault("Gustnado");
 		}
 
 		public override void SetDefaults()
@@ -139,7 +139,7 @@ namespace SpiritMod.NPCs.Boss
 			}
 			return false;
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			target.velocity.Y -= 16f;
 		}

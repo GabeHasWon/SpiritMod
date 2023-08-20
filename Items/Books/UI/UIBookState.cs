@@ -60,7 +60,7 @@ namespace SpiritMod.Items.Books.UI
 			//closeButton.Top.Set(0, 0f);
 			closeButton.Width = StyleDimension.FromPixels(15);
 			closeButton.Height = StyleDimension.FromPixels(15);
-			closeButton.OnClick += CloseButton_OnClick;
+			closeButton.OnLeftClick += CloseButton_OnClick;
 			panelBackground.Append(closeButton);
 
 			UIText titleLabel = new UIText(title, 1.2f);

@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Moonlight Lightning");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Moonlight Lightning");
 
 		public override void SetDefaults()
 		{
@@ -31,7 +31,7 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 			Projectile.tileCollide = false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap);
 
 		public override void AI()
 		{

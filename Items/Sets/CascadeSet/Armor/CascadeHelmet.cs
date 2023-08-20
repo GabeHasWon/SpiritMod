@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cascade Helmet");
-			Tooltip.SetDefault("Allows for breathing underwater");
+			// DisplayName.SetDefault("Cascade Helmet");
+			// Tooltip.SetDefault("Allows for breathing underwater");
 		}
 
 		public override void SetDefaults()

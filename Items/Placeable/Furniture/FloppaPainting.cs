@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Duality of Man");
-			Tooltip.SetDefault("'Tix A. Luna'");
+			// DisplayName.SetDefault("The Duality of Man");
+			// Tooltip.SetDefault("'Tix A. Luna'");
 		}
 
 		public override void SetDefaults()

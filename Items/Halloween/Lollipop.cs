@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Halloween
 		internal override Point Size => new(30, 30);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Lollipop");
-			Tooltip.SetDefault("Increases life regeneration");
+			// DisplayName.SetDefault("Lollipop");
+			// Tooltip.SetDefault("Increases life regeneration");
 		}
 
 		public override void Defaults()

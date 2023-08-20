@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Weapon.Summon.ElectricGun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcbolter");
-			Tooltip.SetDefault("Your summons will focus struck enemies\nHit enemies may create static links between each other when struck by minions, dealing additional damage");
+			// DisplayName.SetDefault("Arcbolter");
+			// Tooltip.SetDefault("Your summons will focus struck enemies\nHit enemies may create static links between each other when struck by minions, dealing additional damage");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Weapon/Summon/ElectricGun/ElectricGun_Glow");
         }
 

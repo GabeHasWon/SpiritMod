@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Rune Wall");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Rune Wall");
 
 		public override void SetDefaults()
 		{

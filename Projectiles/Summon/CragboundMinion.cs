@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cragbound");
+			// DisplayName.SetDefault("Cragbound");
 			Main.projFrames[Type] = 8;
 		}
 

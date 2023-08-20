@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pain Monger's Mask");
-			Tooltip.SetDefault("Increases magic damage by 15% and magic critical strike chance by 9%");
+			// DisplayName.SetDefault("Pain Monger's Mask");
+			// Tooltip.SetDefault("Increases magic damage by 15% and magic critical strike chance by 9%");
 		}
 
 

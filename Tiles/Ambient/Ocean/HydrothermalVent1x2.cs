@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -12,7 +13,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 	[Sacrifice(1)]
 	public class SmallVentItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Small Hydrothermal Vent");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Small Hydrothermal Vent");
 
 		public override void SetDefaults()
 		{
@@ -68,8 +69,8 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = DustID.Stone;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Hydrothermal Vent");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Hydrothermal Vent");
 			AddMapEntry(new Color(64, 54, 66), name);
 		}
 

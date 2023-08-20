@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class SurrenderBell : ModItem
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Stops any invasion when used\nCan only be used when the invasion has arrived, not when the invasion is approaching\n'A heavenly chime'");
+		// public override void SetStaticDefaults() => Tooltip.SetDefault("Stops any invasion when used\nCan only be used when the invasion has arrived, not when the invasion is approaching\n'A heavenly chime'");
 
 		public override void SetDefaults()
 		{

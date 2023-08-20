@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.Pokey
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stactus");
+			// DisplayName.SetDefault("Stactus");
             Main.npcFrameCount[NPC.type] = 3;
 
 			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.Pokey
 			});
 		}
 		
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = 95;
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */ => NPC.lifeMax = 95;
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{ 
@@ -301,11 +301,11 @@ namespace SpiritMod.NPCs.Pokey
             Main.npc[chain].ai[0] = UpperChain;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
 		{
             SoundEngine.PlaySound(SoundID.Dig, NPC.Center);
 
-            Tail.velocity.X = hitDirection * 2;
+            Tail.velocity.X = hit.HitDirection * 2;
 
 			if (Main.netMode != NetmodeID.Server && NPC.life <= 0)
 			{

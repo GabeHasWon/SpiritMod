@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class MimeBomb : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mime Bomb");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mime Bomb");
 
 		public override void SetDefaults()
 		{

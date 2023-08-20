@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Magmaspewer");
-			Tooltip.SetDefault("Spews meteorites that linger for a short time\n50% chance to not consume ammo");
+			// DisplayName.SetDefault("Magmaspewer");
+			// Tooltip.SetDefault("Spews meteorites that linger for a short time\n50% chance to not consume ammo");
 		}
 
 		public override void SetDefaults()

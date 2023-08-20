@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Interstellar Shield Core");
-			Tooltip.SetDefault("You are surrounded by reflective shields");
+			// DisplayName.SetDefault("Interstellar Shield Core");
+			// Tooltip.SetDefault("You are surrounded by reflective shields");
 		}
 
 		public override void SetDefaults()

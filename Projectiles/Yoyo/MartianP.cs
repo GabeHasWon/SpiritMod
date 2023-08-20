@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terrestrial Ultimatum");
+			// DisplayName.SetDefault("Terrestrial Ultimatum");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

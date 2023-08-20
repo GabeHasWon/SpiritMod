@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granitech Bullet");
+			// DisplayName.SetDefault("Granitech Bullet");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 			Main.projFrames[Projectile.type] = 1;

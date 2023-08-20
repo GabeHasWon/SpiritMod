@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glowflower");
+			// DisplayName.SetDefault("Glowflower");
 		}
 
 		public override void SetDefaults()

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Jem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jem");
-			Tooltip.SetDefault("Holds untold power");
+			// DisplayName.SetDefault("Jem");
+			// Tooltip.SetDefault("Holds untold power");
 		}
 
 		public override void SetDefaults()

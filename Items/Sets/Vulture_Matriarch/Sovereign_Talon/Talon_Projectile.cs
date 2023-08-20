@@ -12,7 +12,6 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gilded Wave");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         } 
@@ -63,11 +62,15 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
 
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage = (int)(damage * Projectile.scale * 1.5f);
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage *= Projectile.scale * 1.5f;
 
-		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) => damage = (int)(damage * Projectile.scale * 1.5f);
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{
+			if (modifiers.PvP)
+				modifiers.FinalDamage *= Projectile.scale * 1.5f;
+		}
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => Projectile.ai[0] == 0;
+		public override bool? CanDamage() => Projectile.ai[0] == 0;
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

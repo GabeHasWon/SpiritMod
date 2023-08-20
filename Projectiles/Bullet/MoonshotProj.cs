@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Moonshot");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Moonshot");
 
 		public override void SetDefaults()
 		{

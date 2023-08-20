@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sanguine Ward");
-			Tooltip.SetDefault("Creates a weakening runic aura\nKilling enemies inside your runic aura heals some life");
+			// DisplayName.SetDefault("Sanguine Ward");
+			// Tooltip.SetDefault("Creates a weakening runic aura\nKilling enemies inside your runic aura heals some life");
 		}
 
 		public override void SetDefaults()
@@ -140,14 +140,14 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 			});
 		}
 
-		public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
 		{
 			if (target.life <= 0 && target.Distance(Player.Center) < MAXRADIUS && !target.SpawnedFromStatue && Player.statLife < Player.statLifeMax2 && HasRuneCircle)
 				MakeRunicHeart(target.Center, Main.rand.Next(14, 17), item.GetSource_OnHit(target));
 			_combatTime = 180;
 		}
 
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
 		{
 			if (target.life <= 0 && target.Distance(Player.Center) < MAXRADIUS && !target.SpawnedFromStatue && Player.statLife < Player.statLifeMax2 && HasRuneCircle)
 				MakeRunicHeart(target.Center, Main.rand.Next(9, 12), proj.GetSource_OnHit(target));
@@ -160,6 +160,6 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 			Projectile.NewProjectileDirect(source, position, Player.DirectionTo(position).RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(2, 3), ModContent.ProjectileType<RuneHeart>(), healAmount, 0f, Player.whoAmI).netUpdate = true;
 		}
 
-		public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter) => _combatTime = 300;
+		public override void OnHurt(Player.HurtInfo info) => _combatTime = 300;
 	}
 }

@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Returning
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Briarheart Boomerang");
+			// DisplayName.SetDefault("Briarheart Boomerang");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;    //The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}

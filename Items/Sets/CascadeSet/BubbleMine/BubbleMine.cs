@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bubble Mine");
-			Tooltip.SetDefault("Right-click to make bubble mines detonate");
+			// DisplayName.SetDefault("Bubble Mine");
+			// Tooltip.SetDefault("Right-click to make bubble mines detonate");
 		}
 
 		public override void SetDefaults()
@@ -41,7 +41,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 	}
 	public class BubbleMineProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble Mine");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble Mine");
 
 		public override void SetDefaults()
 		{
@@ -67,7 +67,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 		}
 
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.immune[Projectile.owner] = 20;
 			Projectile.Kill();
@@ -106,7 +106,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 	public class BubbleMineBubble : ModProjectile
 	{
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble");
 
 		public override void SetDefaults()
 		{
@@ -130,7 +130,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 			Projectile.velocity.Y -= 0.012f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.Kill();
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.Kill();
 		public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item54, Projectile.Center);

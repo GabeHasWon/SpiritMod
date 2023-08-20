@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Martian Transmitter");
-			Tooltip.SetDefault("Summons the martian invasion \n'Broadcasting on strange frequencies'");
+			// DisplayName.SetDefault("Martian Transmitter");
+			// Tooltip.SetDefault("Summons the martian invasion \n'Broadcasting on strange frequencies'");
 		}
 
 		public override void SetDefaults()

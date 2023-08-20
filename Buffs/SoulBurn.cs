@@ -9,7 +9,7 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Burn");
+			// DisplayName.SetDefault("Soul Burn");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.pvpBuff[Type] = false;
 		}

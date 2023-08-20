@@ -11,12 +11,12 @@ namespace SpiritMod.Projectiles.BaseProj
 	{
 		private int _hitNPC = -1;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (_hitNPC == -1)
 				_hitNPC = target.whoAmI;
 
-			AbstractHitNPC(target, damage, knockback, crit);
+			AbstractHitNPC(target, hit);
 		}
 
 		public override bool? CanHitNPC(NPC target)
@@ -30,9 +30,8 @@ namespace SpiritMod.Projectiles.BaseProj
 			return base.CanHitNPC(target);
 		}
 
-		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit) => damage = NPCUtils.ToActualDamage(damage);
-
-		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) => damage = NPCUtils.ToActualDamage(damage);
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers) 
+			=> modifiers.FinalDamage.Base = NPCUtils.ToActualDamage(modifiers.FinalDamage.Base);
 
 		public override void Kill(int timeLeft)
 		{
@@ -51,7 +50,7 @@ namespace SpiritMod.Projectiles.BaseProj
 		/// <param name="damage"></param>
 		/// <param name="knockback"></param>
 		/// <param name="crit"></param>
-		public virtual void AbstractHitNPC(NPC target, int damage, float knockback, bool crit) { }
+		public virtual void AbstractHitNPC(NPC target, NPC.HitInfo mod) { }
 
 		/// <summary>
 		/// Use for client-side visual and sound effects after the projectile explodes.

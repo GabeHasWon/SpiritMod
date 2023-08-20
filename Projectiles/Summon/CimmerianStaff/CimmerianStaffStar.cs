@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Twilight Star");
+			// DisplayName.SetDefault("Twilight Star");
 			ProjectileID.Sets.MinionShot[Projectile.type] = true;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

@@ -43,9 +43,9 @@ namespace SpiritMod.Mechanics.BoonSystem
 		public virtual void PostDraw(SpriteBatch spriteBatch, Color lightColor) { }
 		public virtual void AI() { }
 
-		public virtual void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit) { }
+		public virtual void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone) { }
 
-		public virtual void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit) { }
+		public virtual void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone) { }
 
 		public virtual void OnDeath() { }
 

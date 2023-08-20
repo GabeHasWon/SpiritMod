@@ -21,7 +21,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ghost");
+			// DisplayName.SetDefault("Ghost");
 			NPCID.Sets.ActsLikeTownNPC[Type] = true;
 		}
 

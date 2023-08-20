@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Snaptrapper
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Poison Cloud");
+            // DisplayName.SetDefault("Poison Cloud");
             Main.projFrames[Projectile.type] = 5;
         }
 
@@ -38,7 +38,7 @@ namespace SpiritMod.NPCs.Snaptrapper
                     Projectile.frame = 0;
             }
         }
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             if (Main.rand.NextBool(2))
                 target.AddBuff(BuffID.Poisoned, 300);

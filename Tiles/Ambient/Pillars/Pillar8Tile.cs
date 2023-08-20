@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -29,8 +30,8 @@ namespace SpiritMod.Tiles.Ambient.Pillars
 				16
 			};
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Pillar");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Pillar");
 			AddMapEntry(new Color(179, 174, 161), name);
 			DustType = -1;
 			TileID.Sets.DisableSmartCursor[Type] = true;

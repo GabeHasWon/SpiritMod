@@ -45,14 +45,12 @@ namespace SpiritMod.World.Sepulchre
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sepulchre Chest");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sepulchre Chest");
 			AddMapEntry(new Color(120, 82, 49), name);
 
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ModContent.ItemType<SepulchreChest>();
-			ContainerName.SetDefault("Sepulchre Chest");
 		}
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;

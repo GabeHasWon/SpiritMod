@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using SpiritMod.Items.Placeable.Tiles;
 using Terraria.ObjectData;
@@ -22,8 +23,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Glowplate Table");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Glowplate Table");
 			AddMapEntry(new Color(50, 50, 50), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles = new int[] { TileID.Tables };
@@ -54,7 +55,7 @@ namespace SpiritMod.Tiles.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glowplate Table");
+			// DisplayName.SetDefault("Glowplate Table");
 		}
 
 		public override void SetDefaults()

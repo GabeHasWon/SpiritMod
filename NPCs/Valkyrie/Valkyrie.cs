@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Valkyrie
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Valkyrie");
+			// DisplayName.SetDefault("Valkyrie");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -134,7 +134,7 @@ namespace SpiritMod.NPCs.Valkyrie
 			return spawnInfo.Sky && !spawnInfo.PlayerInTown && !NPC.AnyNPCs(ModContent.NPCType<Valkyrie>()) ? 0.09f : 0;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -174,7 +174,7 @@ namespace SpiritMod.NPCs.Valkyrie
 			//spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, color, NPC.rotation, NPC.frame.Size() / 2f, NPC.scale, effects, 0f);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(BuffID.Bleeding, 300);

@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Combustion Blaze");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Combustion Blaze");
 
 		public override void SetDefaults()
 		{
@@ -35,7 +35,7 @@ namespace SpiritMod.Projectiles
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 180);

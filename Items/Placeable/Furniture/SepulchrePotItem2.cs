@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sepulchre Pot");
+			// DisplayName.SetDefault("Sepulchre Pot");
 		}
 
 

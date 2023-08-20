@@ -11,8 +11,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lihzahrd Wand");
-			Tooltip.SetDefault("Summons a friendly Flying Snake to shoot venom at foes");
+			// DisplayName.SetDefault("Lihzahrd Wand");
+			// Tooltip.SetDefault("Summons a friendly Flying Snake to shoot venom at foes");
 		}
 
 		public override void SetDefaults()

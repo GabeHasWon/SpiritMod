@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops.DuskArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Hood");
-			Tooltip.SetDefault("Increases magic damage by 10% and reduces mana cost by 10%");
+			// DisplayName.SetDefault("Dusk Hood");
+			// Tooltip.SetDefault("Increases magic damage by 10% and reduces mana cost by 10%");
 		}
 
 		public override void SetDefaults()

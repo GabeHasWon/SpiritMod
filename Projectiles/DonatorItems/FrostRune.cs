@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frost Rune");
+			// DisplayName.SetDefault("Frost Rune");
 		}
 
 		public override void SetDefaults()
@@ -40,7 +40,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 200, true);

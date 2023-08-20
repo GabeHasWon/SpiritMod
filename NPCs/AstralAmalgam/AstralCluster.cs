@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.AstralAmalgam
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Astral Cluster");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Astral Cluster");
 
 		public override void SetDefaults()
 		{

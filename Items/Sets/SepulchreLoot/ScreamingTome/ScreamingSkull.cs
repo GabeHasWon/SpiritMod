@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Screaming Skull");
+			// DisplayName.SetDefault("Screaming Skull");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 			Main.projFrames[Projectile.type] = 6;

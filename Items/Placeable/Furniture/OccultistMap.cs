@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Occult Wall Scroll");
-			Tooltip.SetDefault("'The ink is of questionable origin'");
+			// DisplayName.SetDefault("Occult Wall Scroll");
+			// Tooltip.SetDefault("'The ink is of questionable origin'");
 		}
 
 		public override void SetDefaults()

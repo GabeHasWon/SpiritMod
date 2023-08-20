@@ -10,7 +10,6 @@ namespace SpiritMod.Tiles.Walls.Natural
 		{
 			Main.wallHouse[Type] = true;
 			AddMapEntry(new Color(92, 76, 64));
-			ItemDrop = ModContent.ItemType<Items.Placeable.Walls.AsteroidWall>();
 		}
 	}
 }

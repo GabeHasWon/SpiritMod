@@ -8,8 +8,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Geyser");
-			Tooltip.SetDefault("'The rock overflows with energy'");
+			// DisplayName.SetDefault("Arcane Geyser");
+			// Tooltip.SetDefault("'The rock overflows with energy'");
 		}
 
 		public override void SetDefaults()

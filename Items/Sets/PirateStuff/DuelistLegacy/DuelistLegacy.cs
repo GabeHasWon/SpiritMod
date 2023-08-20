@@ -20,8 +20,8 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("First Mate");
-			Tooltip.SetDefault("Right click to fire a powerful shotgun blast \nCharges up a super attack after 2 swings\nRelease this special attack as either a slash or a blast");
+			// DisplayName.SetDefault("First Mate");
+			// Tooltip.SetDefault("Right click to fire a powerful shotgun blast \nCharges up a super attack after 2 swings\nRelease this special attack as either a slash or a blast");
 		}
 
 		public override void SetDefaults()
@@ -164,7 +164,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		public int SwingTime => MaxFrames * 2;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Duelist's Legacy");
+			// DisplayName.SetDefault("Duelist's Legacy");
 			Main.projFrames[Projectile.type] = 1;//11, 11, 9, 19
 		}
 
@@ -349,9 +349,9 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 			return false;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			hitDirection = Math.Sign(direction.X);
+			modifiers.HitDirectionOverride = Math.Sign(direction.X);
 		}
 	}
 
@@ -368,7 +368,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		private Player Player => Main.player[Projectile.owner];
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Duelist's Legacy");
+			// DisplayName.SetDefault("Duelist's Legacy");
 			Main.projFrames[Projectile.type] = 1;
 		}
 
@@ -442,7 +442,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		int direction = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Duelist's Legacy");
+			// DisplayName.SetDefault("Duelist's Legacy");
 			Main.projFrames[Projectile.type] = 6;
 		}
 
@@ -527,9 +527,9 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 			DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
 			Utils.PlotTileLine(Projectile.Center, Projectile.Center + (lineDirection * Projectile.width), Projectile.height, DelegateMethods.CutTiles);
 		}
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			hitDirection = direction;
+			modifiers.HitDirectionOverride = direction;
 		}
 	}
 
@@ -538,7 +538,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		protected override Color color => new Color(255, 255, 255, 120) * 0.8f;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Duelist's Legacy");
+			// DisplayName.SetDefault("Duelist's Legacy");
 			Main.projFrames[Projectile.type] = 11;
 		}
 		public override void SetDefaults()
@@ -569,7 +569,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Duelist's Legacy");
+			// DisplayName.SetDefault("Duelist's Legacy");
 			Main.projFrames[Projectile.type] = 19;
 		}
 

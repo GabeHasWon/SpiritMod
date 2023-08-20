@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Clubs
 {
 	public class NautilusBubbleProj : ModProjectile, IDrawAdditive
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bubble");
 
 		public override void SetDefaults()
 		{
@@ -54,7 +54,7 @@ namespace SpiritMod.Projectiles.Clubs
 			return false;
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!target.boss && !target.friendly && target.knockBackResist != 0f && !target.dontTakeDamage)
                 target.velocity.Y -= 5.6f;

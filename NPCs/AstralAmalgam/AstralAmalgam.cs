@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.AstralAmalgam
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astral Amalgam");
+			// DisplayName.SetDefault("Astral Amalgam");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo(this, ModContent.BuffType<FesteringWounds>(), BuffID.Poisoned, BuffID.Confused);
 		}
@@ -209,12 +209,12 @@ namespace SpiritMod.NPCs.AstralAmalgam
 			npcLoot.AddOneFromOptions(67, ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautLegs>());
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DungeonSpirit, 2.5f * hitDirection, -2.5f, 0, default, .74f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DungeonSpirit, 2.5f * hit.HitDirection, -2.5f, 0, default, .74f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

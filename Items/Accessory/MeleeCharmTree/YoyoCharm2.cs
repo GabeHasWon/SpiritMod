@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Amazonian Charm");
-			Tooltip.SetDefault("Increases melee speed by 7%\nAttacks may inflict poison");
+			// DisplayName.SetDefault("Amazonian Charm");
+			// Tooltip.SetDefault("Increases melee speed by 7%\nAttacks may inflict poison");
 		}
 
 		public override void SetDefaults()

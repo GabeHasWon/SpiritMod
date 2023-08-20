@@ -703,16 +703,13 @@ namespace SpiritMod
 			}
 		}
 
-		public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
 		{
 			foreach (var effect in effects)
-				effect.PlayerOnHitNPC(Player, item, target, damage, knockback, crit);
+				effect.PlayerOnHitNPC(Player, item, target, damageDone, hit.Knockback, hit.Crit);
 
 			if (winterbornCharmMage && Main.rand.NextBool(9))
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
-
-			if (astralSet && crit)
-				damage = (int)(damage + (.1f * astralSetStacks));
 
 			if (shadowFang)
 			{
@@ -738,13 +735,13 @@ namespace SpiritMod
 				}
 			}
 
-			if (frigidGloves && crit && item.IsMelee())
+			if (frigidGloves && hit.Crit && item.IsMelee())
 				target.AddBuff(BuffID.Frostburn, 180);
 
 			if (forbiddenTome)
 			{
 				if (target.life <= 0 && !target.SpawnedFromStatue && Player.ownedProjectileCounts[ModContent.ProjectileType<GhastSkullFriendly>()] <= 8)
-					SpawnForbiddenTomeGhasts(item.GetSource_OnHit(target), target, damage, knockback);
+					SpawnForbiddenTomeGhasts(item.GetSource_OnHit(target), target, damageDone, hit.Knockback);
 			}
 
 			if (midasTouch)
@@ -758,7 +755,15 @@ namespace SpiritMod
 			}
 
 			if (crystalFlower && target.life <= 0 && Main.rand.NextBool(3))
-				CrystalFlowerItem.OnKillEffect(item.GetSource_OnHit(target), Player, target, damage);
+				CrystalFlowerItem.OnKillEffect(item.GetSource_OnHit(target), Player, target, damageDone);
+
+			if (starBuff && hit.Crit && Main.rand.NextBool(10))
+				for (int i = 0; i < 3; ++i)
+					if (Main.myPlayer == Player.whoAmI)
+						Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center.X + Main.rand.Next(-140, 140), target.Center.Y - 1000 + Main.rand.Next(-50, 50), 0, Main.rand.Next(18, 28), ProjectileID.HallowStar, 40, 3, Player.whoAmI);
+
+			if (poisonPotion && hit.Crit)
+				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 180);
 		}
 
 		private void SpawnForbiddenTomeGhasts(IEntitySource src, NPC target, int damage, float knockback)
@@ -796,10 +801,10 @@ namespace SpiritMod
 			}
 		}
 
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
 		{
 			foreach (var effect in effects)
-				effect.PlayerOnHitNPCWithProj(Player, proj, target, damage, knockback, crit);
+				effect.PlayerOnHitNPCWithProj(Player, proj, target, damageDone, hit.Knockback, hit.Crit);
 
 			if (shadowFang)
 			{
@@ -830,7 +835,7 @@ namespace SpiritMod
 			if (forbiddenTome)
 			{
 				if (target.life <= 0 && !target.SpawnedFromStatue)
-					SpawnForbiddenTomeGhasts(proj.GetSource_OnHit(target), target, proj.damage, knockback);
+					SpawnForbiddenTomeGhasts(proj.GetSource_OnHit(target), target, proj.damage, hit.Knockback);
 			}
 
 			if (geodeRanged && proj.IsRanged() && Main.rand.NextBool(24))
@@ -892,7 +897,13 @@ namespace SpiritMod
 				target.AddBuff(ModContent.BuffType<MageFreeze>(), 180);
 
 			if (crystalFlower && target.life <= 0 && (Main.rand.NextBool(3) || proj.type == ModContent.ProjectileType<CrystalFlowerProjectile>()))
-				CrystalFlowerItem.OnKillEffect(proj.GetSource_OnHit(target), Player, target, damage);
+				CrystalFlowerItem.OnKillEffect(proj.GetSource_OnHit(target), Player, target, damageDone);
+
+			if (starBuff && hit.Crit && Main.rand.NextBool(10) && Main.myPlayer == Player.whoAmI)
+				for (int i = 0; i < 3; ++i)
+					Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center.X + Main.rand.Next(-140, 140), target.Center.Y - 1000 + Main.rand.Next(-50, 50), 0, Main.rand.Next(18, 28), ProjectileID.HallowStar, 40, 3, Player.whoAmI);
+
+			AddBuffWithCondition(poisonPotion && hit.Crit, target, ModContent.BuffType<FesteringWounds>(), 180);
 		}
 
 		public override bool CanBeHitByProjectile(Projectile proj)
@@ -907,17 +918,22 @@ namespace SpiritMod
 			return base.CanBeHitByProjectile(proj);
 		}
 
-		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+		public override bool FreeDodge(Player.HurtInfo info)
 		{
-			if (bubbleTimer > 0)
-				return false;
-
-			if (explorerTreads && damageSource.SourceOtherIndex == 3) //Spikes
+			if (explorerTreads && info.DamageSource.SourceOtherIndex == 3) //Spikes
 			{
 				if (ExplorerTreads.DoDodgeEffect(Player, Player.GetSource_OnHurt(null)))
-					return false;
+					return true;
 			}
 
+			if (Player.GetModPlayer<DashPlayer>().ActiveDash == DashType.Shinigami)
+				return true;
+
+			return bubbleTimer > 0;
+		}
+
+		public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
+		{
 			if (Main.rand.NextBool(5) && sepulchreCharm)
 			{
 				for (int k = 0; k < 5; k++)
@@ -932,10 +948,6 @@ namespace SpiritMod
 					}
 				}
 			}
-
-			if (Player.GetModPlayer<DashPlayer>().ActiveDash == DashType.Shinigami)
-				return false;
-			return true;
 		}
 
 		public override void ModifyScreenPosition()
@@ -945,10 +957,10 @@ namespace SpiritMod
 			if (Shake > 0) { Shake--; }
 		}
 
-		public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+		public override void OnHurt(Player.HurtInfo info)
 		{
 			foreach (var effect in effects)
-				effect.PlayerHurt(Player, pvp, quiet, damage, hitDirection, crit);
+				effect.PlayerHurt(Player, info);
 
 			if (rogueSet && !Player.HasBuff<RogueCooldown>())
 			{
@@ -987,7 +999,7 @@ namespace SpiritMod
 					if (Main.netMode == NetmodeID.Server)
 					{
 						RemoteClient.CheckSection(Main.myPlayer, Main.LocalPlayer.position, 1);
-						NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Main.myPlayer, newPos.X, newPos.Y, 3, 0, 0);
+						NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Main.myPlayer, newPos.X, newPos.Y, 3, 0, 0);
 					}
 				}
 			}
@@ -996,7 +1008,7 @@ namespace SpiritMod
 				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.position, new Vector2(0, -2), ModContent.ProjectileType<InfernalBlast>(), 50, 7, Main.myPlayer);
 		}
 
-		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+		public override void PostHurt(Player.HurtInfo info)
 		{
 			if (soulPotion && Main.rand.NextBool(5))
 				Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, Vector2.Zero, ModContent.ProjectileType<SoulPotionWard>(), 0, 0f, Main.myPlayer);
@@ -1890,10 +1902,13 @@ namespace SpiritMod
 			}
 		}
 
-		public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
 		{
 			foreach (var effect in effects)
-				effect.PlayerModifyHitNPC(Player, item, target, ref damage, ref knockback, ref crit);
+				effect.PlayerModifyHitNPC(Player, item, target, ref modifiers);
+
+			if (astralSet)
+				modifiers.CritDamage *= .1f * astralSetStacks;
 
 			if (cursedPendant && Main.rand.NextBool(5))
 				target.AddBuff(BuffID.CursedInferno, 180);
@@ -1903,14 +1918,6 @@ namespace SpiritMod
 
 			if (primalSet && item.IsMelee() && Main.rand.NextBool(2))
 				target.AddBuff(ModContent.BuffType<Afflicted>(), 120);
-
-			if (starBuff && crit && Main.rand.NextBool(10))
-				for (int i = 0; i < 3; ++i)
-					if (Main.myPlayer == Player.whoAmI)
-						Projectile.NewProjectile(item.GetSource_OnHit(target), target.Center.X + Main.rand.Next(-140, 140), target.Center.Y - 1000 + Main.rand.Next(-50, 50), 0, Main.rand.Next(18, 28), ProjectileID.HallowStar, 40, 3, Player.whoAmI);
-
-			if (poisonPotion && crit)
-				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 180);
 
 			if (runeBuff && item.IsMagic())
 			{
@@ -1944,16 +1951,15 @@ namespace SpiritMod
 					Main.dust[dust].position = target.Center - vector2_3;
 				}
 
-				damage = (int)(damage * 1.2f);
-				crit = true;
+				modifiers.FinalDamage *= 1.2f;
+				modifiers.SetCrit();
 				concentrated = false;
 				concentratedCooldown = 300;
 			}
 		}
 
-		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
 		{
-			AddBuffWithCondition(poisonPotion && crit, target, ModContent.BuffType<FesteringWounds>(), 180);
 			AddBuffWithCondition(primalSet && Main.rand.NextBool(2) && (proj.IsMagic() || proj.IsMelee()), target, ModContent.BuffType<Afflicted>(), 120);
 			AddBuffWithCondition(duskSet && proj.IsMagic() && Main.rand.NextBool(4), target, BuffID.ShadowFlame, 300);
 
@@ -1965,13 +1971,9 @@ namespace SpiritMod
 					float rand = Main.rand.NextFloat() * 6.283f;
 					vel = vel.RotatedBy(rand);
 					vel *= 8f;
-					Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center.X - 10, target.Center.Y - 10, vel.X, vel.Y, ModContent.ProjectileType<Projectiles.Magic.Rune>(), 27, 1, Player.whoAmI);
+					Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center.X - 10, target.Center.Y - 10, vel.X, vel.Y, ModContent.ProjectileType<Rune>(), 27, 1, Player.whoAmI);
 				}
 			}
-
-			if (starBuff && crit && Main.rand.NextBool(10) && Main.myPlayer == Player.whoAmI)
-				for (int i = 0; i < 3; ++i)
-					Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center.X + Main.rand.Next(-140, 140), target.Center.Y - 1000 + Main.rand.Next(-50, 50), 0, Main.rand.Next(18, 28), ProjectileID.HallowStar, 40, 3, Player.whoAmI);
 
 			if (concentrated)
 			{
@@ -1989,8 +1991,8 @@ namespace SpiritMod
 					Main.dust[dust].position = target.Center - vector2_3;
 				}
 
-				damage = (int)(damage * 1.2F);
-				crit = true;
+				modifiers.FinalDamage *= 1.2f;
+				modifiers.SetCrit();
 				concentrated = false;
 				concentratedCooldown = 300;
 			}
@@ -1998,7 +2000,7 @@ namespace SpiritMod
 
 		private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
 
-		public override void OnHitByNPC(NPC npc, int damage, bool crit)
+		public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
 		{
 			if (strikeshield)
 			{
@@ -2014,7 +2016,7 @@ namespace SpiritMod
 
 				for (int i = 0; i < 10; i++)
 					Dust.NewDust(npc.position, npc.width, npc.height, DustID.Dirt, 2.5f, -2.5f, 0, Color.Gray, 0.7f);
-				npc.StrikeNPCNoInteraction(30, 4f, 0, false, false, false);
+				npc.SimpleStrikeNPC(30, 0, false, 4f, DamageClass.Default, false, 0, true);
 
 			}
 
@@ -2023,8 +2025,8 @@ namespace SpiritMod
 
 			if (basiliskMount)
 			{
-				int num = Player.statDefense / 2;
-				npc.StrikeNPCNoInteraction(num, 0f, 0, false, false, false);
+				int damage = Player.statDefense / 2;
+				npc.SimpleStrikeNPC(damage, 0, false, 4f, DamageClass.Default, false, 0, true);
 			}
 		}
 

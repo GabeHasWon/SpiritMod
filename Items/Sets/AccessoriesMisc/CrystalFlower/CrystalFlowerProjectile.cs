@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower
 		{
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
-			DisplayName.SetDefault("Crystal Flower");
+			// DisplayName.SetDefault("Crystal Flower");
 		}
 
 		public override void SetDefaults()

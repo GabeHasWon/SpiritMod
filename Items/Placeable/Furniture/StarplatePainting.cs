@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Grand Light Show");
-			Tooltip.SetDefault("'M. Sicano'");
+			// DisplayName.SetDefault("Grand Light Show");
+			// Tooltip.SetDefault("'M. Sicano'");
 		}
 
 		public override void SetDefaults()

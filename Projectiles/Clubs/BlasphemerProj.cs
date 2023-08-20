@@ -16,7 +16,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blasphemer");
+			// DisplayName.SetDefault("Blasphemer");
 			Main.projFrames[Projectile.type] = 3;
         }
 
@@ -45,7 +45,7 @@ namespace SpiritMod.Projectiles.Clubs
             }
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Main.rand.NextBool(3))
                 target.AddBuff(BuffID.OnFire, 180);

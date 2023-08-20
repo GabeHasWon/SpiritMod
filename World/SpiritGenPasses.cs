@@ -91,7 +91,7 @@ namespace SpiritMod.World
 
 		private static readonly List<Point> houseLocations = new();
 
-		internal static void StealIslandInfo(On.Terraria.WorldGen.orig_IslandHouse orig, int i, int j, int islandStyle)
+		internal static void StealIslandInfo(Terraria.On_WorldGen.orig_IslandHouse orig, int i, int j, int islandStyle)
 		{
 			houseLocations.Add(new(i, j));
 			orig(i, j, islandStyle);
@@ -1243,9 +1243,9 @@ namespace SpiritMod.World
 			AddDecorSpam("LargeRock", new int[] { ModContent.TileType<LargeRock>() }, TileSets.Mosses.With(TileID.Stone), 55, (int)Main.worldSurface, Main.maxTilesY - 200);
 			AddDecorSpam("BlueShards", new[] { ModContent.TileType<BlueShardBig>() }, GlobalExtensions.TileSet<Asteroid, BigAsteroid>(), 14, 42, (int)Main.worldSurface);
 			int[] sculptures = GlobalExtensions.TileSet<IceWheezerPassive, IceFlinxPassive, IceBatPassive, IceVikingPassive, IceWheezerHostile, IceFlinxHostile, IceBatHostile, IceVikingHostile>();
-			AddDecorSpam("IceStatues", sculptures, new int[] { TileID.IceBlock, TileID.SnowBlock }, 120, (int)WorldGen.rockLayer, Main.maxTilesY);
+			AddDecorSpam("IceStatues", sculptures, new int[] { TileID.IceBlock, TileID.SnowBlock }, 120, (int)GenVars.rockLayer, Main.maxTilesY);
 			AddPileSpam(); //All ore pile decorspam info in a method for clarity
-			AddDecorSpam("ExplosiveBarrels", new int[] { ModContent.TileType<ExplosiveBarrelTile>() }, new int[] { TileID.Stone }, 75, (int)WorldGen.rockLayer, Main.maxTilesY - 200);
+			AddDecorSpam("ExplosiveBarrels", new int[] { ModContent.TileType<ExplosiveBarrelTile>() }, new int[] { TileID.Stone }, 75, (int)GenVars.rockLayer, Main.maxTilesY - 200);
 			int[] snowFoliage = GlobalExtensions.TileSet<SnowBush1, SnowBush2, SnowBush3, TundraBerries1x2, TundraBerries2x2>();
 			AddDecorSpam("SnowFoliage", snowFoliage, new int[] { TileID.SnowBlock, TileID.IceBlock }, 140, (int)Main.worldSurface - 100, (int)Main.worldSurface + 30);
 			AddDecorSpam("IceCubes", GlobalExtensions.TileSet<IceCube1, IceCube2, IceCube3>(), new int[] { TileID.SnowBlock, TileID.IceBlock }, 120, (int)Main.worldSurface - 100, (int)Main.worldSurface + 30);
@@ -1261,13 +1261,13 @@ namespace SpiritMod.World
 		private static void AddPileSpam()
 		{
 			int type = WorldGen.SavedOreTiers.Copper == TileID.Copper ? ModContent.TileType<CopperPile>() : ModContent.TileType<TinPile>();
-			AddDecorSpam("CopperPiles", new int[1] { type }, new int[] { TileID.Stone }, 125, (int)WorldGen.rockLayer, Main.maxTilesY - 200);
+			AddDecorSpam("CopperPiles", new int[1] { type }, new int[] { TileID.Stone }, 125, (int)GenVars.rockLayer, Main.maxTilesY - 200);
 			type = WorldGen.SavedOreTiers.Iron == TileID.Iron ? ModContent.TileType<IronPile>() : ModContent.TileType<LeadPile>();
-			AddDecorSpam("IronPiles", new int[1] { type }, new int[] { TileID.Stone }, 90, (int)WorldGen.rockLayer, Main.maxTilesY - 200);
+			AddDecorSpam("IronPiles", new int[1] { type }, new int[] { TileID.Stone }, 90, (int)GenVars.rockLayer, Main.maxTilesY - 200);
 			type = WorldGen.SavedOreTiers.Silver == TileID.Silver ? ModContent.TileType<SilverPile>() : ModContent.TileType<TungstenPile>();
-			AddDecorSpam("SilverPiles", new int[1] { type }, new int[] { TileID.Stone }, 90, (int)WorldGen.rockLayer, Main.maxTilesY - 200);
+			AddDecorSpam("SilverPiles", new int[1] { type }, new int[] { TileID.Stone }, 90, (int)GenVars.rockLayer, Main.maxTilesY - 200);
 			type = WorldGen.SavedOreTiers.Gold == TileID.Gold ? ModContent.TileType<GoldPile>() : ModContent.TileType<PlatinumPile>();
-			AddDecorSpam("GoldPiles", new int[1] { type }, new int[] { TileID.Stone }, 75, (int)WorldGen.rockLayer, Main.maxTilesY - 200);
+			AddDecorSpam("GoldPiles", new int[1] { type }, new int[] { TileID.Stone }, 75, (int)GenVars.rockLayer, Main.maxTilesY - 200);
 		}
 
 		private static void AddDecorSpam(string name, int[] types, int[] ground, int baseReps, int high, int low, bool forced = true)
@@ -1316,7 +1316,7 @@ namespace SpiritMod.World
 						if (didPlace)
 						{
 							repeatsByName[item.Name]++;
-							NetMessage.SendObjectPlacment(-1, x, y - height + originY, type, style, 0, -1, -1);
+							NetMessage.SendObjectPlacement(-1, x, y - height + originY, type, style, 0, -1, -1);
 						}
 						else
 						{

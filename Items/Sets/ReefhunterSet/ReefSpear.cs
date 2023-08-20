@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Reef Trident");
-			Tooltip.SetDefault("Right click to throw the trident, poisoning enemies for a short time");
+			// DisplayName.SetDefault("Reef Trident");
+			// Tooltip.SetDefault("Right click to throw the trident, poisoning enemies for a short time");
 		}
 
 		public override void SetDefaults()

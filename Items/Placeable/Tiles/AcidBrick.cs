@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class AcidBrick : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Corrosive Brick");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Corrosive Brick");
 
 		public override void SetDefaults()
 		{

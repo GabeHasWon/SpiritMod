@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SpiritSet.SpiritArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Leggings");
-			Tooltip.SetDefault("10% increased melee speed");
+			// DisplayName.SetDefault("Spirit Leggings");
+			// Tooltip.SetDefault("10% increased melee speed");
 
 		}
 

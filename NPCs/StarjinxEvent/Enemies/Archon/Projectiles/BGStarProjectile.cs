@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Archon.Projectiles
 		{
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-			DisplayName.SetDefault("Fleeing Star");
+			// DisplayName.SetDefault("Fleeing Star");
 		}
 
 		public override void SetDefaults()

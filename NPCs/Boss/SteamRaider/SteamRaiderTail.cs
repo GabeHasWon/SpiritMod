@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Voyager");
+			// DisplayName.SetDefault("Starplate Voyager");
 			NPCHelper.BuffImmune(Type, true);
 		}
 
@@ -41,9 +41,9 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			Music = MusicID.Boss3;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * balance);
 			NPC.damage = (int)(NPC.damage * 0.65f);
 		}
 
@@ -169,10 +169,10 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hit.HitDirection, -1f, 0, default, 1f);
 			}
 		}
 

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Halloween
 
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Chocolate Bar");
-			Tooltip.SetDefault("Increases speed");
+			// DisplayName.SetDefault("Chocolate Bar");
+			// Tooltip.SetDefault("Increases speed");
 		}
 
 		public override void Defaults()

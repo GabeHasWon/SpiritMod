@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Champagne");
-			Tooltip.SetDefault("Hold down and release to pop the cork");
+			// DisplayName.SetDefault("Champagne");
+			// Tooltip.SetDefault("Hold down and release to pop the cork");
 		}
 
 		public override void SetDefaults()
@@ -40,7 +40,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Champagne");
+			// DisplayName.SetDefault("Champagne");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 
@@ -156,7 +156,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Champagne");
+			// DisplayName.SetDefault("Champagne");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}
@@ -189,7 +189,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Champagne");
+			// DisplayName.SetDefault("Champagne");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}

@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -151,8 +152,8 @@ namespace SpiritMod.Tiles.Banners
 			DustType = -1;
 			TileID.Sets.DisableSmartCursor[Type] = true;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Banner");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Banner");
 			AddMapEntry(new Color(13, 88, 130), name);
 		}
 

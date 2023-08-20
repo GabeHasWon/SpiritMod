@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wayfinder's Torch");
+			// DisplayName.SetDefault("Wayfinder's Torch");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -36,7 +36,7 @@ namespace SpiritMod.Projectiles.Thrown
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200, true);

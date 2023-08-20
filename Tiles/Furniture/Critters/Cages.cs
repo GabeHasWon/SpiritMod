@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -13,7 +14,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blossmoon Cage");
+			// DisplayName.SetDefault("Blossmoon Cage");
 		}
 		public override void SetDefaults()
 		{
@@ -62,8 +63,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -94,7 +95,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
     }
     public class BriarmothCage : ModItem
     {
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Briarmoth in a Jar");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briarmoth in a Jar");
 		public override void SetDefaults()
         {
             Item.width = 22;
@@ -142,8 +143,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
             TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.addTile(Type);
             DustType = DustID.Glass;
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Critter Cage");
+            LocalizedText name = CreateMapEntryName();
+            // name.SetDefault("Critter Cage");
             AddMapEntry(new Color(200, 200, 200), name);
         }
 
@@ -168,7 +169,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
     }
     public class CleftCage : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cleft Hopper Cage");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cleft Hopper Cage");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
@@ -216,8 +217,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 		public override void AnimateTile(ref int frame, ref int frameCounter)
@@ -235,7 +236,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	}
 	public class PaleCrinoidCage : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Pale Crinoid Cage");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Pale Crinoid Cage");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
@@ -283,8 +284,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 		public override void AnimateTile(ref int frame, ref int frameCounter)
@@ -302,7 +303,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	}
 	public class RedCrinoidCage : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Red Crinoid Cage");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Red Crinoid Cage");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
@@ -350,8 +351,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 		public override void AnimateTile(ref int frame, ref int frameCounter)
@@ -369,7 +370,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	}
 	public class BrownCrinoidCage : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Brown Crinoid Cage");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Brown Crinoid Cage");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
@@ -417,8 +418,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 		public override void AnimateTile(ref int frame, ref int frameCounter)
@@ -436,7 +437,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	}
 	public class LuvdiscBowl : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Ardorfish Bowl");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Ardorfish Bowl");
 
 		public override void SetDefaults()
 		{
@@ -484,8 +485,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 		public override void AnimateTile(ref int frame, ref int frameCounter)
@@ -504,7 +505,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	}
 	public class GulperBowl : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gulper Bowl");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gulper Bowl");
 
 		public override void SetDefaults()
 		{
@@ -552,8 +553,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 
@@ -573,7 +574,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	}
 	public class TubewormBowl : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Tubeworm Bowl");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Tubeworm Bowl");
 
 		public override void SetDefaults()
 		{
@@ -621,8 +622,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Bowl");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Bowl");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 
@@ -642,7 +643,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	}
 	public class VibeshroomJarItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Quivershroom Jar");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Quivershroom Jar");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
@@ -690,8 +691,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Critter Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Buffs.Tiles;
@@ -32,8 +33,8 @@ namespace SpiritMod.Tiles.Furniture.Hanging
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sun in a Pot");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sun in a Pot");
 			AddMapEntry(new Color(28, 138, 72), name);
 			DustType = -1;
 		}

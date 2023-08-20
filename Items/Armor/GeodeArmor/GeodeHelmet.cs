@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Armor.GeodeArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Geode Helmet");
+			// DisplayName.SetDefault("Geode Helmet");
 		}
 		public override void SetDefaults()
 		{

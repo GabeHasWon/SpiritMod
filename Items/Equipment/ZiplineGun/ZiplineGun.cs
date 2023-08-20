@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rail-gun");
-			Tooltip.SetDefault("Left and right click latch tethers to tiles, connected by a rail\nRails carry players swiftly along them\nTethers can be removed when hovered over");
+			// DisplayName.SetDefault("Rail-gun");
+			// Tooltip.SetDefault("Left and right click latch tethers to tiles, connected by a rail\nRails carry players swiftly along them\nTethers can be removed when hovered over");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Terra Wrath");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Terra Wrath");
 
 		public override void SetDefaults()
 		{
@@ -72,7 +72,7 @@ namespace SpiritMod.Projectiles.Magic
 				vector *= 6f / magnitude;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			int debuff = Main.rand.Next(3);
 			if (debuff == 0)

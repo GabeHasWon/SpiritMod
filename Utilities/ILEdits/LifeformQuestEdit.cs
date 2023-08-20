@@ -14,7 +14,7 @@ namespace SpiritMod.Utilities.ILEdits
 	{
 		private static bool _changeInfoAccColor = false;
 
-		public override void Load(Mod mod) => IL.Terraria.Main.DrawInfoAccs += Main_DrawInfoAccs;
+		public override void Load(Mod mod) { }// => Terraria.IL_Main.DrawInfoAccs += Main_DrawInfoAccs; //1.4.4PORT
 
 		private static void Main_DrawInfoAccs(ILContext il)
 		{

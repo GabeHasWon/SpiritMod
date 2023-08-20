@@ -7,7 +7,7 @@ namespace SpiritMod.World.Micropasses;
 
 internal class MicropassSystem : ModSystem
 {
-	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 	{
 		foreach (var micropass in ModContent.GetContent<Micropass>())
 		{

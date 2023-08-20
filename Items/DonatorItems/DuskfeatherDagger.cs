@@ -11,8 +11,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Duskfeather Dagger");
-			Tooltip.SetDefault("Can throw up to eight Duskfeather blades\nRight-click to recall all deployed blades");
+			// DisplayName.SetDefault("Duskfeather Dagger");
+			// Tooltip.SetDefault("Can throw up to eight Duskfeather blades\nRight-click to recall all deployed blades");
 		}
 
 		public override void SetDefaults()

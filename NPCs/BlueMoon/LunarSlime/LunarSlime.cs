@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stargazer Slime");
+			// DisplayName.SetDefault("Stargazer Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
 			NPCHelper.ImmuneTo<StarFlame>(this, BuffID.Poisoned, BuffID.Venom);
 		}
@@ -54,10 +54,10 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 
 		public override Color? GetAlpha(Color lightColor) => new Color(200, 200, 200, 200);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 8; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedWhiteBluePurple, hitDirection, -1f, 0, default, 1.4f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedWhiteBluePurple, hit.HitDirection, -1f, 0, default, 1.4f);
 			}
 			if (NPC.life <= 0) {
 				NPC.position.X = NPC.position.X + (NPC.width / 2);
@@ -110,7 +110,7 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 			return true;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200);

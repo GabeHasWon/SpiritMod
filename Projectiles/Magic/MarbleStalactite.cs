@@ -30,7 +30,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gilded Stalactite");
+			// DisplayName.SetDefault("Gilded Stalactite");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -148,7 +148,7 @@ namespace SpiritMod.Projectiles.Magic
 	public class MarblePortal : ModProjectile
 	{
 		public override string Texture => "SpiritMod/Textures/StardustPillarStar";
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Marble Portal");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Marble Portal");
 
 		public const float MaxScale = 0.8f;
 

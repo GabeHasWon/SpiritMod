@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frigid Wraps");
-			Tooltip.SetDefault("Melee critical strikes inflict Frostburn\nGrants 4% increased attack speed for every nearby enemy\nThis effect stacks up to five times");
+			// DisplayName.SetDefault("Frigid Wraps");
+			// Tooltip.SetDefault("Melee critical strikes inflict Frostburn\nGrants 4% increased attack speed for every nearby enemy\nThis effect stacks up to five times");
 		}
 
 		public override void SetDefaults()

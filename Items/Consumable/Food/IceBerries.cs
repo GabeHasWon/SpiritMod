@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Consumable.Food
 
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Ice Berry");
-			Tooltip.SetDefault("Grants immunity to being on fire\nPerhaps some mystical creature would like this?");
+			// DisplayName.SetDefault("Ice Berry");
+			// Tooltip.SetDefault("Grants immunity to being on fire\nPerhaps some mystical creature would like this?");
 		}
 
 		public override bool AltFunctionUse(Player player) => true;

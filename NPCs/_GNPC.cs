@@ -153,7 +153,7 @@ namespace SpiritMod.NPCs
 				npc.position -= npc.velocity * (float)(1f - slowAmt);
 		}
 
-		public override void HitEffect(NPC npc, int hitDirection, double damage)
+		public override void HitEffect(NPC npc, NPC.HitInfo hit)
 		{
 			if ((npc.type == NPCID.GraniteFlyer || npc.type == NPCID.GraniteGolem) && NPC.downedBoss2 && Main.netMode != NetmodeID.MultiplayerClient && npc.life <= 0 && Main.rand.NextBool(3))
 			{
@@ -670,28 +670,34 @@ namespace SpiritMod.NPCs
 			}
 		}
 
-		public override void ModifyHitByProjectile(NPC target, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
 		{
 			bool summon = (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry);
-			if (summon)
-				damage += summonTag;
 
-			if (sacrificialDaggerBuff && summon && projectile.type != ModContent.ProjectileType<SacrificialDaggerProj>() && projectile.type != ModContent.ProjectileType<SacrificialDaggerProjectile>())
+			if (summon)
+				modifiers.FinalDamage.Flat += summonTag;
+		}
+
+		public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
+		{
+			bool summon = (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry);
+
+			if (sacrificialDaggerBuff && projectile.type != ModContent.ProjectileType<SacrificialDaggerProj>() && projectile.type != ModContent.ProjectileType<SacrificialDaggerProjectile>())
 			{
 				if (Main.rand.NextBool(4))
 				{
 					if (Main.netMode != NetmodeID.Server)
-						SoundEngine.PlaySound(SoundID.Item71 with { PitchVariance = 0.2f, Volume = 0.5f }, target.Center);
+						SoundEngine.PlaySound(SoundID.Item71 with { PitchVariance = 0.2f, Volume = 0.5f }, npc.Center);
 
-					int direction = target.position.X > Main.player[projectile.owner].position.X ? 1 : -1;
+					int direction = npc.position.X > Main.player[projectile.owner].position.X ? 1 : -1;
 
-					Vector2 randPos = target.Center + new Vector2(direction, 0).RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat(70, 121);
-					var dir = Vector2.Normalize(target.Center - randPos) * 6;
+					Vector2 randPos = npc.Center + new Vector2(direction, 0).RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat(70, 121);
+					var dir = Vector2.Normalize(npc.Center - randPos) * 6;
 
 					if (Main.netMode != NetmodeID.MultiplayerClient)
-						Projectile.NewProjectile(projectile.GetSource_OnHit(target), randPos.X, randPos.Y, dir.X, dir.Y, ModContent.ProjectileType<SacrificialDaggerProjectile>(), (int)(damage * 0.75f), 0, projectile.owner);
+						Projectile.NewProjectile(projectile.GetSource_OnHit(npc), randPos.X, randPos.Y, dir.X, dir.Y, ModContent.ProjectileType<SacrificialDaggerProjectile>(), (int)(damageDone * 0.75f), 0, projectile.owner);
 
-					DustHelper.DrawTriangle(target.Center, 173, 5, 1.5f, 1f);
+					DustHelper.DrawTriangle(npc.Center, 173, 5, 1.5f, 1f);
 				}
 			}
 		}

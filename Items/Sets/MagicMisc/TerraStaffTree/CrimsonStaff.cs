@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodletter");
-			Tooltip.SetDefault("Spurts a tentacle of blood from the player\nCritical hits steal a small amount of life");
+			// DisplayName.SetDefault("Bloodletter");
+			// Tooltip.SetDefault("Spurts a tentacle of blood from the player\nCritical hits steal a small amount of life");
 		}
 
 

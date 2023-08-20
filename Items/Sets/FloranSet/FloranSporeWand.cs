@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.FloranSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Spore Wand");
-			Tooltip.SetDefault("Shoots out a floating Floran Spore\nHit enemies are occasionally ensnared by vines and lose speed");
+			// DisplayName.SetDefault("Floran Spore Wand");
+			// Tooltip.SetDefault("Shoots out a floating Floran Spore\nHit enemies are occasionally ensnared by vines and lose speed");
 		}
 
 		public override void SetDefaults()

@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
 		readonly float gravity = 0.3f;
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wizard's Moonjelly Ball");
+            // DisplayName.SetDefault("Wizard's Moonjelly Ball");
         }
         public override void SetDefaults()
         {
@@ -28,7 +28,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
 			Projectile.scale = 0.6f;
 			Projectile.timeLeft = 900;
         }
-		public override void OnHitPlayer(Player target, int damage, bool crit) 
+		public override void OnHitPlayer(Player target, Player.HurtInfo info) 
 		{
 			Projectile.Kill();
 		}

@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pesterfly");
+			// DisplayName.SetDefault("Pesterfly");
 			Main.projFrames[Projectile.type] = 2;
 		}
 
@@ -62,7 +62,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (canAttach) //self explanatory
 			{

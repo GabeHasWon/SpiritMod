@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tentacle Spike");
+			// DisplayName.SetDefault("Tentacle Spike");
 		}
 
 		public override void SetDefaults()

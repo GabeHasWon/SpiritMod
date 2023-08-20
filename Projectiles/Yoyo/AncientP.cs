@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient");
+			// DisplayName.SetDefault("Ancient");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Azure Jelly");
+			// DisplayName.SetDefault("Azure Jelly");
 			Main.projFrames[Projectile.type] = 5;
 		}
 

@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Fire Spit");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Fire Spit");
 
 		public override void SetDefaults()
 		{
@@ -61,7 +61,7 @@ namespace SpiritMod.Projectiles
 			Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.Kill();
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.Kill();
 
 		public override void AI()
 		{

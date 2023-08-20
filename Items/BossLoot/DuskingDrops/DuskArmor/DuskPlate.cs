@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops.DuskArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Plate");
-			Tooltip.SetDefault("Increases ranged damage by 10%\n25% Chance to not consume ammo");
+			// DisplayName.SetDefault("Dusk Plate");
+			// Tooltip.SetDefault("Increases ranged damage by 10%\n25% Chance to not consume ammo");
 
 		}
 		public override void SetDefaults()

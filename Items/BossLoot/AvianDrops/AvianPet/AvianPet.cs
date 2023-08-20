@@ -18,7 +18,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Hatchling");
+			// DisplayName.SetDefault("Ancient Hatchling");
 			Main.projFrames[Projectile.type] = 2;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.TrailCacheLength[Type] = 6;

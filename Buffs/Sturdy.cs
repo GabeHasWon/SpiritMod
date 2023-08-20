@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sturdy");
-			Description.SetDefault("'Your shell has been cracked'");
+			// DisplayName.SetDefault("Sturdy");
+			// Description.SetDefault("'Your shell has been cracked'");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.pvpBuff[Type] = false;
 			Main.debuff[Type] = true;

@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fate Token");
-			Tooltip.SetDefault("Protects the user from fatal damage for 1 minute\n2 minute cooldown");
+			// DisplayName.SetDefault("Fate Token");
+			// Tooltip.SetDefault("Protects the user from fatal damage for 1 minute\n2 minute cooldown");
 		}
 
 		public override void SetDefaults()

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.StarjinxSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starjinx Summoner");
-			Tooltip.SetDefault("Placeholder! Summons the Starjinx event.");
+			// DisplayName.SetDefault("Starjinx Summoner");
+			// Tooltip.SetDefault("Placeholder! Summons the Starjinx event.");
 		}
 
 		public override void SetDefaults()

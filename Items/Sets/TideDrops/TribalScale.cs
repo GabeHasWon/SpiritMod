@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.TideDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stream Scale");
-			Tooltip.SetDefault("'Scales of old sea creatures'");
+			// DisplayName.SetDefault("Stream Scale");
+			// Tooltip.SetDefault("'Scales of old sea creatures'");
 		}
 
 

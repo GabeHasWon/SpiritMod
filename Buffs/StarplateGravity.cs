@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Gravity");
-			Description.SetDefault("The Starplate Voyager pulls you toward the earth...");
+			// DisplayName.SetDefault("Starplate Gravity");
+			// Description.SetDefault("The Starplate Voyager pulls you toward the earth...");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = false;

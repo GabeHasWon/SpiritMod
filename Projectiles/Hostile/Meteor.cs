@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Hostile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meteor");
+			// DisplayName.SetDefault("Meteor");
 		}
 
 		public override void SetDefaults()

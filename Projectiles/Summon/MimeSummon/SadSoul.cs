@@ -17,7 +17,7 @@ namespace SpiritMod.Projectiles.Summon.MimeSummon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul of Sadness");
+			// DisplayName.SetDefault("Soul of Sadness");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 13;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

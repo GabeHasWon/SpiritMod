@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Sharkbones
 			tM.CreateTrail(Projectile, new GradientTrail(Color.CornflowerBlue with { A = 50 }, Color.Transparent), new NoCap(), new DefaultTrailPosition(), 60, 500, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_1").Value, 0.05f, 1f, 1f));
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Super Mega Death Rocket");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Super Mega Death Rocket");
 
 		public override void SetDefaults()
 		{

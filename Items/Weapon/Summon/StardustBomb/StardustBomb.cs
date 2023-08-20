@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Supernova");
-			Tooltip.SetDefault("Summons a collapsing star\nThe star can be targeted\nDeal summon damage to the star to release a powerful explosion");
+			// DisplayName.SetDefault("Supernova");
+			// Tooltip.SetDefault("Summons a collapsing star\nThe star can be targeted\nDeal summon damage to the star to release a powerful explosion");
 		}
 
 		public override void SetDefaults()
@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 				}
 				else
 				{
-					int npcindex = NPC.NewNPC(Item.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
+					int npcindex = NPC.NewNPC(player.GetSource_ItemUse(Item), (int)position.X, (int)position.Y + 100, ModContent.NPCType<StardustBombNPC>(), 0, player.whoAmI);
 					Main.npc[npcindex].velocity = velocity;
 					Main.npc[npcindex].netUpdate = true;
 				}
@@ -78,14 +78,14 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Supernova");
+			// DisplayName.SetDefault("Supernova");
 			Main.npcFrameCount[NPC.type] = 7;
         }
 
 		int returnCounter;
 		readonly int returnCounterMax = 200;
 
-		int boomdamage;
+		int boomDamage;
 		float shrinkCounter = 0.25f;
 		bool shrinking;
         
@@ -161,7 +161,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 
 		private bool Explode()
 		{
-			if (boomdamage == 0)
+			if (boomDamage == 0)
 				return false;
 
 			Player player = Main.player[(int)NPC.ai[0]];
@@ -184,7 +184,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 				}
 			}
 
-			Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<StarShockwave>(), (int)player.GetDamage(DamageClass.Summon).ApplyTo(boomdamage * 0.5f), 0, player.whoAmI);
+			Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<StarShockwave>(), (int)player.GetDamage(DamageClass.Summon).ApplyTo(boomDamage * 0.5f), 0, player.whoAmI);
 			
 			if (Main.netMode != NetmodeID.Server)
 			{
@@ -205,7 +205,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			return false;
 		}
 
-		public override void HitEffect(int hitDirection, double damage) => boomdamage += (int)damage;
+		public override void HitEffect(NPC.HitInfo hit) => boomDamage += hit.Damage;
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {

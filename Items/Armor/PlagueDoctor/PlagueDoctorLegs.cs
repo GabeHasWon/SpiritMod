@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Armor.PlagueDoctor
 	[AutoloadEquip(EquipType.Legs)]
 	public class PlagueDoctorLegs : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Doctor's Greaves");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Doctor's Greaves");
 
 		public override void SetDefaults()
 		{

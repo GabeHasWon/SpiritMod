@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Grasp");
+			// DisplayName.SetDefault("Grasp");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -25,12 +25,12 @@ namespace SpiritMod.Projectiles.Yoyo
 			Projectile.height = 18;
 			Projectile.penetrate = 6;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<BloodCorrupt>(), 180);
 
-			if (crit)
+			if (hit.Crit)
 				target.AddBuff(BuffID.ShadowFlame, 180);
 		}
 

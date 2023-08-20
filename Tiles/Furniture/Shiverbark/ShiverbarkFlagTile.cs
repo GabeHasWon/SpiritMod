@@ -3,6 +3,7 @@ using SpiritMod.Items.Placeable.Furniture.Shiverbark;
 using Terraria;
 using Terraria.Enums;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -36,8 +37,8 @@ namespace SpiritMod.Tiles.Furniture.Shiverbark
 			DustType = -1;
 			AnimationFrameHeight = 74;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Shiverbark Flag");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Shiverbark Flag");
 			AddMapEntry(new Color(118, 155, 163), name);
 		}
 

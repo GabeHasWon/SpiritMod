@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Pet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Overseer");
+			// DisplayName.SetDefault("Overseer");
 			Main.projFrames[Projectile.type] = 3;
 			Main.projPet[Projectile.type] = true;
 		}

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.ID;
@@ -28,8 +29,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Skull Pile");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Skull Pile");
 			AddMapEntry(new Color(150, 150, 150), name);
 			DustType = DustID.Dirt;
 		}

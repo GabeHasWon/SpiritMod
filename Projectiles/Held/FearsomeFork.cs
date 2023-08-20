@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Held
 		int timer = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fearsome Fork");
+			// DisplayName.SetDefault("Fearsome Fork");
 		}
 
 		public override void SetDefaults()

@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Sword
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hollow Nail");
+			// DisplayName.SetDefault("Hollow Nail");
 			Main.projFrames[Type] = 8;
 		}
 
@@ -47,7 +47,7 @@ namespace SpiritMod.Projectiles.Sword
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<HollowDust>());
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player player = Main.player[Projectile.owner];
 			Vector2 angle = Vector2.Normalize(Projectile.velocity);

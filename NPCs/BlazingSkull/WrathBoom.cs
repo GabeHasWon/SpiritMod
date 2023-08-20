@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wrath explosion");
+			// DisplayName.SetDefault("Wrath explosion");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -49,6 +49,6 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 		public override bool CanHitPlayer(Player target) => Projectile.frame <= (Main.projFrames[Projectile.type] / 2);
 
-		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit) => target.AddBuff(BuffID.OnFire, 180);
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers) => target.AddBuff(BuffID.OnFire, 180);
 	}
 }

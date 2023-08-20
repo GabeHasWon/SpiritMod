@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Pet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Haunted Tome");
+			// DisplayName.SetDefault("Haunted Tome");
 			Main.projFrames[Type] = 6;
 			Main.projPet[Type] = true;
 		}

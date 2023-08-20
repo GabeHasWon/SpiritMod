@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Weapon.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Clatter Javelin");
-			Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage");
+			// DisplayName.SetDefault("Clatter Javelin");
+			// Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage");
 		}
 
 		public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 {
 	public class StarSting : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Sting");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Sting");
 
 		public override void SetDefaults()
 		{

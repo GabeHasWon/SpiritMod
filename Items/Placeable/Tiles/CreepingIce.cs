@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Placeable.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Creeping Ice");
-			Tooltip.SetDefault("Slows down nearby players and enemies");
+			// DisplayName.SetDefault("Creeping Ice");
+			// Tooltip.SetDefault("Slows down nearby players and enemies");
 		}
 
 		public override void SetDefaults()

@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bottomless Ale");
-			Tooltip.SetDefault("Non-consumable\nMinor improvements to melee stats & lowered defense\n'Down the hatch!'");
+			// DisplayName.SetDefault("Bottomless Ale");
+			// Tooltip.SetDefault("Non-consumable\nMinor improvements to melee stats & lowered defense\n'Down the hatch!'");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 6));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;

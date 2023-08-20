@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Prismatic Bolt");
+			// DisplayName.SetDefault("Prismatic Bolt");
 		}
 
 		public override void SetDefaults()

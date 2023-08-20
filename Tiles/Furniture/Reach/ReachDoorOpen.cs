@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -57,15 +58,17 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceLeft;
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
-			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+
 			TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Door");
-			AddMapEntry(new Color(179, 146, 107), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.HasOutlines[Type] = true;
+			TileID.Sets.CloseDoorID[Type] = ModContent.TileType<ReachDoorClosed>();
+
+			LocalizedText name = CreateMapEntryName();
+			AddMapEntry(new Color(179, 146, 107), name);
+			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+
 			AdjTiles = new int[] { TileID.OpenDoor };
-			CloseDoorID = ModContent.TileType<ReachDoorClosed>();
-            TileID.Sets.HasOutlines[Type] = true;
         }
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 

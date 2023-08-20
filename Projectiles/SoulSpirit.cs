@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Fiery Soul");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Fiery Soul");
 
 		public override void SetDefaults()
 		{
@@ -132,6 +132,6 @@ namespace SpiritMod.Projectiles
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<SoulBurn>(), 180, true);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<SoulBurn>(), 180, true);
 	}
 }

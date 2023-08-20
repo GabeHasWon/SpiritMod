@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Samurai Statue");
-			Tooltip.SetDefault("");
+			// DisplayName.SetDefault("Samurai Statue");
+			// Tooltip.SetDefault("");
 		}
 
 		public override void SetDefaults()

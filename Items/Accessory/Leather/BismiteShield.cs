@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Noxious Targe");
-			Tooltip.SetDefault("Being struck by an enemy inflicts festering wounds\nIncreases defense by 2 for every afflicted enemy near the player\nThis effect stacks up to five times");
+			// DisplayName.SetDefault("Noxious Targe");
+			// Tooltip.SetDefault("Being struck by an enemy inflicts festering wounds\nIncreases defense by 2 for every afflicted enemy near the player\nThis effect stacks up to five times");
 		}
 
 		public override void SetDefaults()

@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Noxophyll");
+			// DisplayName.SetDefault("Noxophyll");
 			Main.npcFrameCount[NPC.type] = 8;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -52,12 +52,12 @@ namespace SpiritMod.NPCs.Reach
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GrassBlades, 1.5f * hitDirection, -1.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 1.5f * hitDirection, -1.5f, 0, default, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GrassBlades, 1.5f * hit.HitDirection, -1.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 1.5f * hit.HitDirection, -1.5f, 0, default, .34f);
 			}
 		}
 

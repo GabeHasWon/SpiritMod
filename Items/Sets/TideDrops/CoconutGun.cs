@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.TideDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coconut Gun");
-			Tooltip.SetDefault("'Fires in Spurts' \n'If it shoots ya, it's gonna hurt!'");
+			// DisplayName.SetDefault("Coconut Gun");
+			// Tooltip.SetDefault("'Fires in Spurts' \n'If it shoots ya, it's gonna hurt!'");
 		}
 
 		public override void SetDefaults()

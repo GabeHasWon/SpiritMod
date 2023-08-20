@@ -52,7 +52,6 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 			AddMapEntry(new Color(200, 200, 200));
 			DustType = DustID.Stone;
-			ItemDrop = ModContent.ItemType<MusselItem>();
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = Main.rand.Next(1, 3);
@@ -60,7 +59,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 	public class MusselItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mussel");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mussel");
 
 		public override void SetDefaults()
 		{

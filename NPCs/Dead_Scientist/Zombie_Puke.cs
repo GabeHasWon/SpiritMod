@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Dead_Scientist
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Zombie's Puke");
+			// DisplayName.SetDefault("Zombie's Puke");
 		}
 		public override void SetDefaults()
 		{

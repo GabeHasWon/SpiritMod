@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Burn");
-			Description.SetDefault("Critical hits may cause stars to fall from the sky\n4% increased ranged damage and critical strike chance when moving");
+			// DisplayName.SetDefault("Star Burn");
+			// Description.SetDefault("Critical hits may cause stars to fall from the sky\n4% increased ranged damage and critical strike chance when moving");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

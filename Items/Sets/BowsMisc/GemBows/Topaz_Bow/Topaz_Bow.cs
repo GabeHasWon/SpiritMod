@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Topaz_Bow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Topaz Bow");
-			Tooltip.SetDefault("Turns wooden arrows into topaz arrows\nTopaz arrows have high velocity and are resistant to gravity");
+			// DisplayName.SetDefault("Topaz Bow");
+			// Tooltip.SetDefault("Turns wooden arrows into topaz arrows\nTopaz arrows have high velocity and are resistant to gravity");
 		}
 
 		public override void SetDefaults()

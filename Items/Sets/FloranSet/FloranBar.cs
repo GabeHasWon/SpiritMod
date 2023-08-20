@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Bar");
+			// DisplayName.SetDefault("Floran Bar");
 		}
 
 

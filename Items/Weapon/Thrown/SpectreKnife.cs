@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Weapon.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spectre Knife");
-			Tooltip.SetDefault("Upon hitting enemies or tiles, Spectre bolts are released");
+			// DisplayName.SetDefault("Spectre Knife");
+			// Tooltip.SetDefault("Upon hitting enemies or tiles, Spectre bolts are released");
 		}
 
 		public override void SetDefaults()

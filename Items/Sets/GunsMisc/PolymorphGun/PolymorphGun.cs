@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.PolymorphGun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Polymorph Gun");
-			Tooltip.SetDefault("Turns enemies into harmless bunnies!\nOnly works on enemies below half health");
+			// DisplayName.SetDefault("Polymorph Gun");
+			// Tooltip.SetDefault("Turns enemies into harmless bunnies!\nOnly works on enemies below half health");
 		}
 
 

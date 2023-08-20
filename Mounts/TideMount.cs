@@ -85,14 +85,10 @@ namespace SpiritMod.Mounts
 							atkFrames = true;
 							if (player.mount._frame == 10 && !attack) {
 								attack = true;
-								Main.npc[i].StrikeNPC(30, 2f, 0, false);
+								Main.npc[i].SimpleStrikeNPC(30, 0, false, 0);
 							}
 
 						}
-						/*if (((distance.X > 0 && player.direction == 1) || (distance.X < 0 && player.direction == -1)) && atkFrames)
-                        {
-                            Main.npc[i].StrikeNPC(30, 0f, 0, false);
-                        }*/
 					}
 					if (distance > 85) {
 						atkFrames = false;

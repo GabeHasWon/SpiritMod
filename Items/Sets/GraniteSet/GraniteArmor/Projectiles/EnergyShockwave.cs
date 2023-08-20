@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Energy Stomp");
+			// DisplayName.SetDefault("Energy Stomp");
 			Main.projFrames[Type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

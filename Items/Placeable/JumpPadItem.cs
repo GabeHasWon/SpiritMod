@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jump Pad");
-			Tooltip.SetDefault("'Take to the skies!'");
+			// DisplayName.SetDefault("Jump Pad");
+			// Tooltip.SetDefault("'Take to the skies!'");
 		}
 
 		public override void SetDefaults()

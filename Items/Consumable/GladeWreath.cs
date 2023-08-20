@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glade Wreath");
-			Tooltip.SetDefault("Summons a Glade Wraith\nCan only be used in the Briar");
+			// DisplayName.SetDefault("Glade Wreath");
+			// Tooltip.SetDefault("Summons a Glade Wraith\nCan only be used in the Briar");
 		}
 
 		public override void SetDefaults()

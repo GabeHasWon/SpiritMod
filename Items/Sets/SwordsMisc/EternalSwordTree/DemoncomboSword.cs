@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eternal Sword");
-			Tooltip.SetDefault("Shoots out apparitions of blades");
+			// DisplayName.SetDefault("Eternal Sword");
+			// Tooltip.SetDefault("Shoots out apparitions of blades");
 		}
 
 		public override void SetDefaults()
@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 			Item.shoot = ModContent.ProjectileType<DemonProj>();
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.CursedInferno, 180);

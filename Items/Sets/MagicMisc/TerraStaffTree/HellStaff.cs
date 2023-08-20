@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flarespark Staff");
-			Tooltip.SetDefault("Summons a geyser of flame");
+			// DisplayName.SetDefault("Flarespark Staff");
+			// Tooltip.SetDefault("Summons a geyser of flame");
 		}
 
 

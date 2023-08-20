@@ -40,13 +40,11 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Dynasty Chest");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Dynasty Chest");
 			AddMapEntry(new Color(120, 82, 49), name, MapChestName);
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ItemID.DynastyChest;
-			ContainerName.SetDefault("Dynasty Chest");
         }
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 

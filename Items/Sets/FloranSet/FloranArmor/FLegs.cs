@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.FloranSet.FloranArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Leggings");
-			Tooltip.SetDefault("Increases movement speed by 4%");
+			// DisplayName.SetDefault("Floran Leggings");
+			// Tooltip.SetDefault("Increases movement speed by 4%");
 
 		}
 

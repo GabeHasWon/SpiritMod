@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Starlux");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Starlux");
 
 		public override void SetDefaults()
 		{

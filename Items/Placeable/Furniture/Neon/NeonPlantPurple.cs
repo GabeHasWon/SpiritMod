@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 	[Sacrifice(1)]
 	public class NeonPlantPurple : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Purple Neon Plant");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Purple Neon Plant");
 
 		public override void SetDefaults()
 		{

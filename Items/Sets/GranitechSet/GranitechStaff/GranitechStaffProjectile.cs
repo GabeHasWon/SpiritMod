@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechStaff
 {
 	public class GranitechStaffProjectile : BaseHeldProj, IDrawAdditive
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Granitech Staff");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Granitech Staff");
 
 		public override string Texture => "SpiritMod/Items/Sets/GranitechSet/GranitechStaff/GranitechStaffItem";
 
@@ -234,7 +234,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechStaff
 			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + StaffTipDirection, Projectile.Center + StaffTipDirection + BeamDirection * BeamLength, 30, ref collisionPoint);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.netMode == NetmodeID.Server)
 				return;

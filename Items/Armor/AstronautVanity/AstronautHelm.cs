@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.AstronautVanity
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astronaut Helmet");
+			// DisplayName.SetDefault("Astronaut Helmet");
 
 		}
 		public override void SetDefaults()

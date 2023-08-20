@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.StarfireLamp
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Starfire");
+            // DisplayName.SetDefault("Starfire");
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
 
@@ -137,9 +137,9 @@ namespace SpiritMod.Items.Sets.StarjinxSet.StarfireLamp
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => OnCollision();
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => OnCollision();
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => OnCollision();
+		public override void OnHitPlayer(Player target, Player.HurtInfo info) => OnCollision();
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

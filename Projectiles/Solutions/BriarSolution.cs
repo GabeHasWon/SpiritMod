@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Solutions
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Spray");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Spray");
 		public override void SetDefaults()
 		{
 			Projectile.width = 6;

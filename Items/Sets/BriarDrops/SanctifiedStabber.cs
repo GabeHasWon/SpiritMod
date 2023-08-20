@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BriarDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sanctified Stabber");
-			Tooltip.SetDefault("Inflicts 'Withering Leaf'");
+			// DisplayName.SetDefault("Sanctified Stabber");
+			// Tooltip.SetDefault("Inflicts 'Withering Leaf'");
 		}
 
 		public override void SetDefaults()
@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Sets.BriarDrops
 			Item.useTurn = true;
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(ModContent.BuffType<WitheringLeaf>(), 180);
@@ -58,7 +58,7 @@ namespace SpiritMod.Items.Sets.BriarDrops
 			set => Projectile.ai[0] = value;
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Example Shortsword");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Example Shortsword");
 
 		public override void SetDefaults()
 		{

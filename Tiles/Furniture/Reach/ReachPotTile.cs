@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -15,8 +16,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Pot");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Pot");
 			AddMapEntry(new Color(179, 146, 107), name);
 		}
 

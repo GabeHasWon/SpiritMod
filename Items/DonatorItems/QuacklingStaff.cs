@@ -10,8 +10,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Quackling Staff");
-			Tooltip.SetDefault("Summons a friendly duck to launch aqua bolts at enemies");
+			// DisplayName.SetDefault("Quackling Staff");
+			// Tooltip.SetDefault("Summons a friendly duck to launch aqua bolts at enemies");
 		}
 
 		public override void SetDefaults()

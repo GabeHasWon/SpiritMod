@@ -25,7 +25,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vinewrath Husk");
+			// DisplayName.SetDefault("Vinewrath Husk");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 
@@ -239,10 +239,10 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			}
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.85f * bossLifeScale);
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Poisoned, 200);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * 0.85f * balance);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.Poisoned, 200);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0)
 			{
@@ -272,17 +272,17 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 					int a = Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(Main.rand.Next(-50, 50), Main.rand.Next(-50, 50)), NPC.velocity, 386, goreScale);
 					Main.gore[a].timeLeft = 15;
 					Main.gore[a].rotation = 10f;
-					Main.gore[a].velocity = new Vector2(hitDirection * 2.5f, Main.rand.NextFloat(1f, 2f));
+					Main.gore[a].velocity = new Vector2(hit.HitDirection * 2.5f, Main.rand.NextFloat(1f, 2f));
 
 					int a1 = Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(Main.rand.Next(-50, 50), Main.rand.Next(-50, 50)), NPC.velocity, 911, goreScale);
 					Main.gore[a1].timeLeft = 15;
 					Main.gore[a1].rotation = 1f;
-					Main.gore[a1].velocity = new Vector2(hitDirection * 2.5f, Main.rand.NextFloat(10f, 20f));
+					Main.gore[a1].velocity = new Vector2(hit.HitDirection * 2.5f, Main.rand.NextFloat(10f, 20f));
 				}
 			}
 
 			for (int k = 0; k < 12; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 		}
 
 		public override bool PreKill()

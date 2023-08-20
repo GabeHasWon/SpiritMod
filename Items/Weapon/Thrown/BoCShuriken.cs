@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Weapon.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Creeping Shuriken");
-			Tooltip.SetDefault("Shoots a revolving creeper\n'Fashioned after yet another fleshy eyeball'");
+			// DisplayName.SetDefault("Creeping Shuriken");
+			// Tooltip.SetDefault("Shoots a revolving creeper\n'Fashioned after yet another fleshy eyeball'");
 		}
 
 		public override void SetDefaults()

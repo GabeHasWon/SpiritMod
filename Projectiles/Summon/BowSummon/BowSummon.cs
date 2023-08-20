@@ -24,7 +24,7 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jinxbow");
+			// DisplayName.SetDefault("Jinxbow");
 
 			Main.projPet[Projectile.type] = true;
 			Main.projFrames[Projectile.type] = 4;

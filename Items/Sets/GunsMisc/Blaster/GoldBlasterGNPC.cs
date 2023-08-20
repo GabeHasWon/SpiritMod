@@ -77,7 +77,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Shotgun2") with { Volume = 0.7f, PitchVariance = 0.3f }, npc.Center);
 
 			success = true;
-			npc.StrikeNPC(numMarks * baseDamage, 0, 1);
+			npc.SimpleStrikeNPC(numMarks * baseDamage, 1, false, 0);
 
 			numMarks = 0;
 		}

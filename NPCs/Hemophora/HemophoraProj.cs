@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Hemophora
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Toxic Blood Clump");
+			// DisplayName.SetDefault("Toxic Blood Clump");
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -50,7 +50,7 @@ namespace SpiritMod.NPCs.Hemophora
 					Projectile.frame = 0;
 			}
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.Poisoned, 300);

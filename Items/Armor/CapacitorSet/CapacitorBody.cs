@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Armor.CapacitorSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Capacitor's Robes");
+			// DisplayName.SetDefault("Capacitor's Robes");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Armor/CapacitorSet/CapacitorBody_Glow");
         }
 

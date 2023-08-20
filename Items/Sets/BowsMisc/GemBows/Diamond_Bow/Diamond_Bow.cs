@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Diamond_Bow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Diamond Bow");
-			Tooltip.SetDefault("Turns wooden arrows into diamond arrows\nDiamond arrows pierce an additional enemy");
+			// DisplayName.SetDefault("Diamond Bow");
+			// Tooltip.SetDefault("Turns wooden arrows into diamond arrows\nDiamond arrows pierce an additional enemy");
 		}
 
 		public override void SetDefaults()

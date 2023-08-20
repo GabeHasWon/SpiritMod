@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cursed Flame");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cursed Flame");
 
 		public override void SetDefaults()
 		{
@@ -33,7 +33,7 @@ namespace SpiritMod.Projectiles.Magic
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.CursedInferno, 300, true);

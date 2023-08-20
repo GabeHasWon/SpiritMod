@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Candy
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lollipop");
-			Description.SetDefault("Increased life regeneration");
+			// DisplayName.SetDefault("Lollipop");
+			// Description.SetDefault("Increased life regeneration");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

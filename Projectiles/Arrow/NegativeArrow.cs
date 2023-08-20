@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Arrow
 {
 	public class NegativeArrow : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Negative Arrow");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Negative Arrow");
 
 		public void DoTrailCreation(TrailManager tM) => tM.CreateTrail(Projectile, new StandardColorTrail(new Color(255, 113, 36, 0)), new RoundCap(), new ZigZagTrailPosition(3f), 8f, 250f);
 

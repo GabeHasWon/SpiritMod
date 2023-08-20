@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stoneplate");
-			Tooltip.SetDefault("Encumbers the wearer");
+			// DisplayName.SetDefault("Stoneplate");
+			// Tooltip.SetDefault("Encumbers the wearer");
 		}
 
 		public override void SetDefaults()

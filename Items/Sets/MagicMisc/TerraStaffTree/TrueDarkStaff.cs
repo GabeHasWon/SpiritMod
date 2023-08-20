@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Horizon's Edge");
-			Tooltip.SetDefault("Shoots out a splitting volley of homing pestilence and cursed fire.");
+			// DisplayName.SetDefault("True Horizon's Edge");
+			// Tooltip.SetDefault("Shoots out a splitting volley of homing pestilence and cursed fire.");
 		}
 
 

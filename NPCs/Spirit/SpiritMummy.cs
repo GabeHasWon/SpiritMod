@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Mummy");
+			// DisplayName.SetDefault("Dusk Mummy");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Mummy];
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.Spirit
 			return 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -72,7 +72,7 @@ namespace SpiritMod.NPCs.Spirit
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(BuffID.Cursed, 150);

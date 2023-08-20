@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Sculptures
 	[Sacrifice(1)]
 	public class GraniteSculpture3x3Item : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Exotic Granite Sculpture");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Exotic Granite Sculpture");
 
 		public override void SetDefaults()
 		{

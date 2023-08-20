@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pigron Staff");
-			Tooltip.SetDefault("'Bacon now fights for you'");
+			// DisplayName.SetDefault("Pigron Staff");
+			// Tooltip.SetDefault("'Bacon now fights for you'");
 		}
 
 		public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Consumable.Quest
 	[Sacrifice(1)]
 	public class HornetfishQuest : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Hornetfish");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hornetfish");
 
 		public override void SetDefaults()
 		{

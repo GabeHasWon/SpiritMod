@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Furniture.StreamScale
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stream Scale Candle");
+			// DisplayName.SetDefault("Stream Scale Candle");
 		}
 
 

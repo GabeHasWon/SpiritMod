@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 		public int maxTimeLeft = 0;
 		public float maxRotation = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Reef Trident");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Reef Trident");
 
 		public override void SetDefaults()
 		{
@@ -71,7 +71,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			Projectile.Center = p.Center + new Vector2(0, p.gfxOffY) - Vector2.Lerp(Vector2.Zero, RealDirection, factor) + (RealDirection * 0.5f) + offset;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => hitDirection = Math.Sign(-direction.X);
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.HitDirectionOverride = Math.Sign(-direction.X);
 
 		public override void ModifyDamageHitbox(ref Rectangle hitbox)
 		{

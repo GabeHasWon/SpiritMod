@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soaring Scapula");
-			Tooltip.SetDefault("Pulls enemies towards the ground, causing them to take additional damage on collision");
+			// DisplayName.SetDefault("Soaring Scapula");
+			// Tooltip.SetDefault("Pulls enemies towards the ground, causing them to take additional damage on collision");
 		}
 
 		public override void SetDefaults()

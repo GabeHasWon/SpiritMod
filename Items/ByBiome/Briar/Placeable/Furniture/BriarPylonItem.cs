@@ -6,7 +6,7 @@ namespace SpiritMod.Items.ByBiome.Briar.Placeable.Furniture
 {
 	internal class BriarPylonItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Pylon");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Pylon");
 
 		public override void SetDefaults()
 		{

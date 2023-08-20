@@ -11,7 +11,7 @@ namespace SpiritMod.Utilities.ILEdits
 {
 	class NPCHoverHealthEdit : ILEdit
 	{
-		public override void Load(Mod mod) => IL.Terraria.Main.DrawMouseOver += Main_DrawMouseOver;
+		public override void Load(Mod mod) => Terraria.IL_Main.DrawMouseOver += Main_DrawMouseOver;
 
 		private static void Main_DrawMouseOver(ILContext il)
 		{

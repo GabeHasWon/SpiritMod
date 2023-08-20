@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Famished Wheezer");
-			Tooltip.SetDefault("'K. Rant'");
+			// DisplayName.SetDefault("Famished Wheezer");
+			// Tooltip.SetDefault("'K. Rant'");
 		}
 
 		public override void SetDefaults()

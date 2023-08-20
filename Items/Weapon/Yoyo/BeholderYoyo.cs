@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Weapon.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eye of the Beholder");
-			Tooltip.SetDefault("Consumes 10 mana per second\nRight click to cast fireballs at foes, consuming 10 additional mana");
+			// DisplayName.SetDefault("Eye of the Beholder");
+			// Tooltip.SetDefault("Consumes 10 mana per second\nRight click to cast fireballs at foes, consuming 10 additional mana");
 		}
 
 		public override void SetDefaults()

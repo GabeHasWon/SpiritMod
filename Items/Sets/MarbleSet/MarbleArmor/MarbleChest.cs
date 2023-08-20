@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gilded Robe");
-			Tooltip.SetDefault("10% increased movement speed\nDoubles acceleration\n'All that glitters is gold'");
+			// DisplayName.SetDefault("Gilded Robe");
+			// Tooltip.SetDefault("10% increased movement speed\nDoubles acceleration\n'All that glitters is gold'");
 
 			ArmorIDs.Body.Sets.HidesHands[Item.bodySlot] = false;
 			ArmorIDs.Body.Sets.NeedsToDrawArm[Item.bodySlot] = true;

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Ammo.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rubber Bullet");
-			Tooltip.SetDefault("Knocks enemies back farther");
+			// DisplayName.SetDefault("Rubber Bullet");
+			// Tooltip.SetDefault("Knocks enemies back farther");
 		}
 
 		public override void SetDefaults()

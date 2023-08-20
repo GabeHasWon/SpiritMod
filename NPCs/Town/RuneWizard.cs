@@ -12,6 +12,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using static SpiritMod.NPCUtils;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Armor.WitchSet;
 
 namespace SpiritMod.NPCs.Town
 {
@@ -22,7 +23,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Enchanter");
+			// DisplayName.SetDefault("Enchanter");
 			Main.npcFrameCount[NPC.type] = 26;
 			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
 			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -63,7 +64,7 @@ namespace SpiritMod.NPCs.Town
 			});
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => Main.player.Any(x => x.active && x.inventory.Any(y => y.type == ModContent.ItemType<Glyph>()));
+		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */ => Main.player.Any(x => x.active && x.inventory.Any(y => y.type == ModContent.ItemType<Glyph>()));
 
 		public override List<string> SetNPCNameList() => new() { "Malachai", "Nisarmah", "Moneque", "Tosalah", "Kentremah", "Salqueeh", "Oarno", "Cosimo" };
 
@@ -88,51 +89,43 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetChatButtons(ref string button, ref string button2) => button = Language.GetTextValue("LegacyInterface.28");
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
-				shop = true;
+				shopName = "Shop";
 		}
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
+		public override void AddShops()
 		{
-			AddItem(ref shop, ref nextSlot, ModContent.ItemType<NullGlyph>());
+			NPCShop shop = new NPCShop(Type);
+			shop.Add<NullGlyph>();
+			shop.Add<WitchHead>(Condition.TimeNight);
+			shop.Add<WitchBody>(Condition.TimeNight);
+			shop.Add<WitchLegs>(Condition.TimeNight);
 
-			CustomWare(shop.item[nextSlot++], ModContent.ItemType<FrostGlyph>());
-			CustomWare(shop.item[nextSlot++], ModContent.ItemType<RageGlyph>());
-
-			if (NPC.downedBoss1)
+			void CustomWare<T>(int price = 1, params Condition[] conditions) where T : ModItem
 			{
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<RadiantGlyph>());
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<SanguineGlyph>(), 3);
+				shop.Add(new Item(ModContent.ItemType<T>())
+				{
+					shopCustomPrice = price,
+					shopSpecialCurrency = SpiritMod.GlyphCurrencyID
+				}, conditions);
 			}
-			if (MyWorld.downedReachBoss)
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<StormGlyph>(), 2);
-			if (NPC.downedBoss2)
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<UnholyGlyph>(), 2);
-			if (NPC.downedBoss3)
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<VeilGlyph>(), 3);
-			if (NPC.downedQueenBee)
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<BeeGlyph>(), 3);
-			if (Main.hardMode)
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<BlazeGlyph>(), 3);
-			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<VoidGlyph>(), 4);
-			if (MyWorld.downedDusking)
-				CustomWare(shop.item[nextSlot++], ModContent.ItemType<PhaseGlyph>(), 4);
 
-			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchHead>(), 12000, !Main.dayTime);
-			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchBody>(), 15000, !Main.dayTime);
-			AddItem(ref shop, ref nextSlot, ModContent.ItemType<Items.Armor.WitchSet.WitchLegs>(), 10000, !Main.dayTime);
+			CustomWare<FrostGlyph>();
+			CustomWare<RageGlyph>();
+			CustomWare<RadiantGlyph>(1, Condition.DownedEyeOfCthulhu);
+			CustomWare<SanguineGlyph>(3, Condition.DownedEyeOfCthulhu);
+			CustomWare<StormGlyph>(2, SpiritConditions.VinewrathDown);
+			CustomWare<UnholyGlyph>(2, Condition.DownedEowOrBoc);
+			CustomWare<VeilGlyph>(3, Condition.DownedSkeletron);
+			CustomWare<BeeGlyph>(3, Condition.DownedQueenBee);
+			CustomWare<BlazeGlyph>(3, Condition.Hardmode);
+			CustomWare<VoidGlyph>(4, Condition.DownedMechBossAll);
+			CustomWare<PhaseGlyph>(4, SpiritConditions.DuskingDown);
+
+			shop.Register();
 		}
-
-		private static void CustomWare(Item item, int type, int price = 1)
-		{
-			item.SetDefaults(type);
-			item.shopCustomPrice = price;
-			item.shopSpecialCurrency = SpiritMod.GlyphCurrencyID;
-		}
-
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
@@ -158,7 +151,7 @@ namespace SpiritMod.NPCs.Town
 			randomOffset = 2f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life > 0 || Main.netMode == NetmodeID.Server)
 				return;

@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Halloween.DevMasks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Leemyy's Mask");
-			Tooltip.SetDefault("Vanity item \n'Great for impersonating devs!'");
+			// DisplayName.SetDefault("Leemyy's Mask");
+			// Tooltip.SetDefault("Vanity item \n'Great for impersonating devs!'");
 
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}

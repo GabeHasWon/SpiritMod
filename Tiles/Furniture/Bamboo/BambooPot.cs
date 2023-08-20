@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Placeable.Furniture.Bamboo;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -20,8 +21,8 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.newTile.Height = 1;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Stripped Bamboo Pot");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Stripped Bamboo Pot");
 			AddMapEntry(new Color(100, 100, 60), name);
 			DustType = -1;
 			AdjTiles = new int[] { TileID.ClayPot };
@@ -77,6 +78,6 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<BambooPotItem>());
 		}
 
-		public override bool Drop(int i, int j, int type) => !IsBambooPot(i, j) && base.Drop(i, j, type);
+		public override bool CanDrop(int i, int j, int type) => !IsBambooPot(i, j) && base.CanDrop(i, j, type);
 	}
 }

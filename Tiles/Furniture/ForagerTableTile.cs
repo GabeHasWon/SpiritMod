@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.ID;
@@ -32,8 +33,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Naturalist's Workshop");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Naturalist's Workshop");
 			AddMapEntry(new Color(140, 140, 140), name);
 			DustType = -1;
 		}

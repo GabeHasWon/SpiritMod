@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soulguard Potion");
-			Tooltip.SetDefault("Getting hurt may cause all nearby enemies to suffer 'Soul Burn' for a short while\nIncreases melee damage by 5%");
+			// DisplayName.SetDefault("Soulguard Potion");
+			// Tooltip.SetDefault("Getting hurt may cause all nearby enemies to suffer 'Soul Burn' for a short while\nIncreases melee damage by 5%");
 		}
 
 		public override void SetDefaults()

@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Furniture.StreamScale
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stream Scale Lantern");
+			// DisplayName.SetDefault("Stream Scale Lantern");
 		}
 
 

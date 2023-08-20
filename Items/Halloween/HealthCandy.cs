@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Halloween
 		internal override Point Size => new(24, 24);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Health Candy");
-			Tooltip.SetDefault("Increases health");
+			// DisplayName.SetDefault("Health Candy");
+			// Tooltip.SetDefault("Increases health");
 		}
 
 		public override void Defaults()

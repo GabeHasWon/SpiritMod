@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Armor.Daybloom
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sunflower Garb");
-			Tooltip.SetDefault("Increases magic damage by 1");
+			// DisplayName.SetDefault("Sunflower Garb");
+			// Tooltip.SetDefault("Increases magic damage by 1");
 		}
 
 		public override void SetDefaults()

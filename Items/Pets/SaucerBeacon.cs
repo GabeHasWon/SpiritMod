@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Support Beacon");
-			Tooltip.SetDefault("Calls in Martian Reinforcements!");
+			// DisplayName.SetDefault("Support Beacon");
+			// Tooltip.SetDefault("Calls in Martian Reinforcements!");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

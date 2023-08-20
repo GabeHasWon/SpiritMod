@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Coral_Catcher
     {		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bobber");
+			// DisplayName.SetDefault("Bobber");
 		}
 		
         public override void SetDefaults()

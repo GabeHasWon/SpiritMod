@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 
 		public override void SetStaticDefaults()
 		{ 
-			DisplayName.SetDefault("Bone Club");
-			Tooltip.SetDefault("Charged strikes launch bones forward");
+			// DisplayName.SetDefault("Bone Club");
+			// Tooltip.SetDefault("Charged strikes launch bones forward");
 		}
 
 		public override void Defaults()

@@ -30,7 +30,7 @@ namespace SpiritMod.NPCs.Automata
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arachmaton");
+			// DisplayName.SetDefault("Arachmaton");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 		}
@@ -61,7 +61,7 @@ namespace SpiritMod.NPCs.Automata
 			});
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(BuffID.BrokenArmor, 1800);
@@ -181,12 +181,12 @@ namespace SpiritMod.NPCs.Automata
 			NPC.velocity = Collide();
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .55f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hit.HitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .55f));
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -235,7 +235,7 @@ namespace SpiritMod.NPCs.Automata
 		{
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-			DisplayName.SetDefault("Cog");
+			// DisplayName.SetDefault("Cog");
 		}
 
 		public Vector2 dirUnit;

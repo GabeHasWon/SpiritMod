@@ -17,8 +17,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Locust Crook");
-			Tooltip.SetDefault("Conjures a friendly locust that dashes into enemies\nLocusts infest hit enemies, causing baby locusts to hatch from them");
+			// DisplayName.SetDefault("Locust Crook");
+			// Tooltip.SetDefault("Conjures a friendly locust that dashes into enemies\nLocusts infest hit enemies, causing baby locusts to hatch from them");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -58,7 +58,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 		private static readonly int traillength = 5;
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Locust");
+			// DisplayName.SetDefault("Locust");
 			Main.projFrames[Projectile.type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = traillength;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
@@ -146,7 +146,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 
 		private Vector2 LerpVel(Vector2 desiredvel, float lerpstrength = 0.05f) => Vector2.Lerp(Projectile.velocity, desiredvel, lerpstrength);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			LocustNPC lnpc = target.GetGlobalNPC<LocustNPC>();
 			lnpc.locustInfo = new LocustNPC.LocustInfo((int)(Projectile.damage * 0.65f), Main.rand.Next(40, 80), Projectile.owner, Projectile.GetSource_OnHit(target));
@@ -236,7 +236,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Baby Locust");
+			// DisplayName.SetDefault("Baby Locust");
 			Main.projFrames[Projectile.type] = 2;
 			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;

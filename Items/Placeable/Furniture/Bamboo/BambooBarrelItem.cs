@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 {
 	public class BambooBarrelItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Stripped Bamboo Barrel");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Stripped Bamboo Barrel");
 
 		public override void SetDefaults()
 		{

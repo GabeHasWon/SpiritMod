@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arc Lash");
-			Tooltip.SetDefault("Does more damage towards the end of its cycle");
+			// DisplayName.SetDefault("Arc Lash");
+			// Tooltip.SetDefault("Does more damage towards the end of its cycle");
 			Item.staff[Item.type] = true;
 		}
 
@@ -54,7 +54,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
     {
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Arc Lash");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Arc Lash");
 
 		private readonly int cycletime = 40;
 		private readonly float lengthmult = 50;
@@ -109,6 +109,6 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 			}
         }
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage = (int)(Owner.HeldItem.damage * (int)Math.Pow(Progress, 0.3f));
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage.Base = Owner.HeldItem.damage * (int)Math.Pow(Progress, 0.3f);
 	}
 }

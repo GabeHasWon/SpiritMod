@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Hornetfish
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hornetfish");
+			// DisplayName.SetDefault("Hornetfish");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
@@ -190,12 +190,12 @@ namespace SpiritMod.NPCs.Hornetfish
 			return false;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 1.14f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.2f, .8f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.14f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

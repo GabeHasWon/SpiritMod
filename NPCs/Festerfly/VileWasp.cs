@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Festerfly
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pesterfly");
+			// DisplayName.SetDefault("Pesterfly");
 			Main.npcFrameCount[NPC.type] = 2;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -67,10 +67,10 @@ namespace SpiritMod.NPCs.Festerfly
 			return true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hitDirection, -2.5f, 0, Color.Purple, 0.3f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hit.HitDirection, -2.5f, 0, Color.Purple, 0.3f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

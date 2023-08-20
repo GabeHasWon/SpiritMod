@@ -10,8 +10,8 @@ namespace SpiritMod.Projectiles.Bullet.Crimbine
 {
 	public class CrimbineBlob : ModProjectile
 	{
-		public override void SetStaticDefaults()
-			=> DisplayName.SetDefault("Bloody Clump");
+		/* public override void SetStaticDefaults()
+			=> DisplayName.SetDefault("Bloody Clump"); */
 
 		public override void SetDefaults()
 		{
@@ -70,7 +70,7 @@ namespace SpiritMod.Projectiles.Bullet.Crimbine
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(ModContent.BuffType<BloodCorrupt>(), 180);

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -21,8 +22,8 @@ namespace SpiritMod.Tiles.Ambient
 				16,
 			};
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Skull Stick");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Skull Stick");
 			AddMapEntry(new Color(107, 90, 64), name);
 			AdjTiles = new int[] { TileID.Lamps };
 			TileID.Sets.BreakableWhenPlacing[Type] = true;

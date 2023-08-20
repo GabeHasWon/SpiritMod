@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BismiteSet.BismiteArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Chestplate");
-			Tooltip.SetDefault("3% increased critical strike chance");
+			// DisplayName.SetDefault("Bismite Chestplate");
+			// Tooltip.SetDefault("3% increased critical strike chance");
 
 		}
 		public override void SetDefaults()

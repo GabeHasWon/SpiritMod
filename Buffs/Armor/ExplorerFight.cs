@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Strike Strength");
-			Description.SetDefault("You're getting the hang of it!");
+			// DisplayName.SetDefault("Strike Strength");
+			// Description.SetDefault("You're getting the hang of it!");
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 
@@ -28,7 +28,7 @@ namespace SpiritMod.Buffs.Armor
 			return false;
 		}
 
-		public override void ModifyBuffTip(ref string tip, ref int rare)
+		public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
 			tip += $"\nDamage dealt is increased by {modPlayer.damageStacks * 3}%";

@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Town
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bound Bandit");
+			// DisplayName.SetDefault("Bound Bandit");
 			NPCID.Sets.TownCritter[NPC.type] = true;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };

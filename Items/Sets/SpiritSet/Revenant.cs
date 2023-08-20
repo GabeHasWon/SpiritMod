@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Revenant");
-			Tooltip.SetDefault("Converts regular arrows into Revenant Arrows");
+			// DisplayName.SetDefault("Revenant");
+			// Tooltip.SetDefault("Converts regular arrows into Revenant Arrows");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/Revenant_Glow");
 		}
 

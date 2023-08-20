@@ -31,7 +31,6 @@ namespace SpiritMod.Tiles.Block
 
 			AddMapEntry(new Color(0, 191, 255));
 			DustType = DustID.Flare_Blue;
-			ItemDrop = ModContent.ItemType<SpiritDirtItem>();
 		}
 
 		public override bool CanExplode(int i, int j)
@@ -76,7 +75,7 @@ namespace SpiritMod.Tiles.Block
 						style = Main.rand.Next(10);
 
 					PlaceObject(i, j - 1, selection, true, style);
-					NetMessage.SendObjectPlacment(-1, i, j - 1, selection, style, 0, -1, -1);
+					NetMessage.SendObjectPlacement(-1, i, j - 1, selection, style, 0, -1, -1);
 				}
 			}
 

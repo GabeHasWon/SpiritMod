@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crawlerock");
+			// DisplayName.SetDefault("Crawlerock");
 			Main.projPet[Projectile.type] = true;
 			Main.projFrames[Projectile.type] = 4;
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;

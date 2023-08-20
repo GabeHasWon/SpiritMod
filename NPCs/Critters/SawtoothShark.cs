@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sawtooth Shark");
+			// DisplayName.SetDefault("Sawtooth Shark");
 			Main.npcFrameCount[NPC.type] = 6;
 		}
 
@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void AI() => NPC.spriteDirection = NPC.direction;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SawtoothSharkGore").Type, 1f);
@@ -61,7 +61,7 @@ namespace SpiritMod.NPCs.Critters
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, NPC.direction, -1f, 1, default, .91f);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Bleeding, 200);

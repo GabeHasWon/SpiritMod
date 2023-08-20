@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Winterborn
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Winterborn");
+			// DisplayName.SetDefault("Winterborn");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCHelper.ImmuneTo<CryoCrush>(this, BuffID.Frostburn, BuffID.OnFire);
 
@@ -55,12 +55,12 @@ namespace SpiritMod.NPCs.Winterborn
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon && ((spawnInfo.SpawnTileY > Main.rockLayer) || (Main.raining && spawnInfo.Player.ZoneOverworldHeight)) ? 0.12f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedWhiteBluePurple, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedWhiteBluePurple, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -110,7 +110,7 @@ namespace SpiritMod.NPCs.Winterborn
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(10))
 				target.AddBuff(BuffID.Frozen, 120);

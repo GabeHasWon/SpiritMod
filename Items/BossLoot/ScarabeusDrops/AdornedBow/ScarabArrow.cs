@@ -15,7 +15,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 		static readonly int traillength = 10;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scarab Arrow");
+			// DisplayName.SetDefault("Scarab Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = traillength;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -58,7 +58,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 			}
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if(Enchanted)
 				target.AddBuff(ModContent.BuffType<TopazMarked>(), 240);

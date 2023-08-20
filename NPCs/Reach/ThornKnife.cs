@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thorn Knife");
+			// DisplayName.SetDefault("Thorn Knife");
 		}
 
 		public override void SetDefaults()

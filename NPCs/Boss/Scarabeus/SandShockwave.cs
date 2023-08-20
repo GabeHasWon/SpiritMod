@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	public class SandShockwave : ModProjectile
 	{
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sand");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sand");
 
 		readonly int passivetime = 40;
 		readonly int activetime = 40;

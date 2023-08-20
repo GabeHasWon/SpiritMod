@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.MarbleSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gilded Bident");
-			Tooltip.SetDefault("Occasionally inflicts 'Midas', causing enemies to drop more gold\nHitting an enemy that has 'Midas' may release a fountain of gold");
+			// DisplayName.SetDefault("Gilded Bident");
+			// Tooltip.SetDefault("Occasionally inflicts 'Midas', causing enemies to drop more gold\nHitting an enemy that has 'Midas' may release a fountain of gold");
 		}
 
 		public override void SetDefaults()

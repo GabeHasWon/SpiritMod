@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -25,8 +26,8 @@ namespace SpiritMod.Tiles
 			TileObjectData.addTile(Type);
 
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Blood Blossom");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Blood Blossom");
 			AddMapEntry(new Color(234, 0, 0), name);
 		}
 

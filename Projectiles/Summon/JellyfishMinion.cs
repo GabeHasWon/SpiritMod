@@ -30,7 +30,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Little Jellyfish");
+			// DisplayName.SetDefault("Little Jellyfish");
 			Main.projFrames[Type] = 3;
 		}
 

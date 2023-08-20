@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wintry Charm");
-			Tooltip.SetDefault("Attacks may slow down hit enemies\nThis effect does not apply to bosses");
+			// DisplayName.SetDefault("Wintry Charm");
+			// Tooltip.SetDefault("Attacks may slow down hit enemies\nThis effect does not apply to bosses");
 		}
 
 		public override void SetDefaults()

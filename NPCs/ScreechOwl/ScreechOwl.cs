@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.ScreechOwl
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Screech Owl");
+			// DisplayName.SetDefault("Screech Owl");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.Frostburn);
 
@@ -169,7 +169,7 @@ namespace SpiritMod.NPCs.ScreechOwl
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 1; i < 5; ++i)

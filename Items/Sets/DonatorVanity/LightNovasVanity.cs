@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.DonatorVanity
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("LightNovas's Mask");
-			Tooltip.SetDefault("'Great for impersonating patrons!'");
+			// DisplayName.SetDefault("LightNovas's Mask");
+			// Tooltip.SetDefault("'Great for impersonating patrons!'");
 		}
 
 		public override void SetDefaults()

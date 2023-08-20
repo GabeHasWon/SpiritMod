@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astralite Shard");
-			Tooltip.SetDefault("'It seems that Starplate entities have been scouring the stars looking for this'");
+			// DisplayName.SetDefault("Astralite Shard");
+			// Tooltip.SetDefault("'It seems that Starplate entities have been scouring the stars looking for this'");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

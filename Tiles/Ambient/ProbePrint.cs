@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
@@ -23,8 +24,8 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.addTile(Type);
 
 			DustType = 7;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Blueprint");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Blueprint");
 			AddMapEntry(new Color(0, 80, 252), name);
 		}
 

@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -26,8 +27,8 @@ namespace SpiritMod.Tiles
 			Main.tileHammer[Type] = false; 
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Jump Pad");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Jump Pad");
 			DustType = -3;
 			AddMapEntry(new Color(200, 200, 200), name);
 		}

@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Explosive Rum");
-			Tooltip.SetDefault("'Oh, there it is!'");
+			// DisplayName.SetDefault("Explosive Rum");
+			// Tooltip.SetDefault("'Oh, there it is!'");
 		}
 
 		public override void SetDefaults()
@@ -45,7 +45,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 
 	public class ExplosiveRumProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Explosive Rum");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Explosive Rum");
 
 		public override void SetDefaults()
 		{
@@ -83,7 +83,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Explosive Rum");
+			// DisplayName.SetDefault("Explosive Rum");
 			Main.projFrames[Projectile.type] = 5;
 		}
 
@@ -185,7 +185,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.OnFire, 180);
@@ -203,7 +203,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rum Explosion");
+			// DisplayName.SetDefault("Rum Explosion");
 			Main.projFrames[Projectile.type] = 6;
 		}
 

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cloak of the Desert King");
-			Tooltip.SetDefault("Summons a killer bunny");
+			// DisplayName.SetDefault("Cloak of the Desert King");
+			// Tooltip.SetDefault("Summons a killer bunny");
 		}
 
 		public override void SetDefaults()

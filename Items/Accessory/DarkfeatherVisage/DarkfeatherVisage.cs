@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Accessory.DarkfeatherVisage
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Darkfeather Visage");
-            Tooltip.SetDefault("Increases magic and summon damage by 7%\nGrants a bonus when worn with a magic robe or fur coat");
+            // DisplayName.SetDefault("Darkfeather Visage");
+            // Tooltip.SetDefault("Increases magic and summon damage by 7%\nGrants a bonus when worn with a magic robe or fur coat");
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}
 

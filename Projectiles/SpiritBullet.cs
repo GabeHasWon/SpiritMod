@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Bullet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Bullet");
 
 		public override void SetDefaults()
 		{
@@ -49,7 +49,7 @@ namespace SpiritMod.Projectiles
 		}
 
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(ModContent.BuffType<SoulBurn>(), 300, true);

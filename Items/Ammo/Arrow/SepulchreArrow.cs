@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Ammo.Arrow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Accursed Arrow");
-			Tooltip.SetDefault("Pierces up to two enemies");
+			// DisplayName.SetDefault("Accursed Arrow");
+			// Tooltip.SetDefault("Pierces up to two enemies");
 		}
 
 		public override void SetDefaults()

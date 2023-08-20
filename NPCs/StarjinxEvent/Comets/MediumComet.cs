@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
 
 		protected override float BeamScale => 1f;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Medium Starjinx Comet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Medium Starjinx Comet");
 
 		public override void SetDefaults()
 		{

@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Iokheira");
-			Tooltip.SetDefault("Hit an enemy to mark them\nRight click to fire a volley of arrows at marked foes");
+			// DisplayName.SetDefault("Iokheira");
+			// Tooltip.SetDefault("Hit an enemy to mark them\nRight click to fire a volley of arrows at marked foes");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -81,7 +81,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 		float noiseRotation;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Celestial Arrow");
+			// DisplayName.SetDefault("Celestial Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -141,7 +141,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int i = 0; i < 8; i++)
 			{
@@ -192,7 +192,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 		bool Firing => frame > 4;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Artemis Hunt");
+			// DisplayName.SetDefault("Artemis Hunt");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -306,7 +306,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Celestial Arrow");
+			// DisplayName.SetDefault("Celestial Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -350,7 +350,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int i = 0; i < 6; i++)
 			{
@@ -389,10 +389,10 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 			ParticleHandler.SpawnParticle(particle2);
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (Main.player[Projectile.owner].GetModPlayer<ArtemisPlayer>().targetWhoAmI == target.whoAmI)
-				damage = (int)(damage * 1.5f);
+				modifiers.FinalDamage *= 1.5f;
 		}
 	}
 
@@ -403,7 +403,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.ArtemisHunt
 		private float counter;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Artemis Crescent");
+			// DisplayName.SetDefault("Artemis Crescent");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

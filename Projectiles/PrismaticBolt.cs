@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 {
 	public class PrismaticBolt : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Prismatic Bolt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Prismatic Bolt");
 
 		public override void SetDefaults()
 		{
@@ -71,6 +71,6 @@ namespace SpiritMod.Projectiles
 			Main.dust[dust].noGravity = true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<Buffs.DoT.Afflicted>(), 180);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<Buffs.DoT.Afflicted>(), 180);
 	}
 }

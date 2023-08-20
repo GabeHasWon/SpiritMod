@@ -52,7 +52,7 @@ public abstract class UIPageState : UIState
 			Width = StyleDimension.FromPixels(15),
 			Height = StyleDimension.FromPixels(15)
 		};
-		closeButton.OnClick += CloseButton_OnClick;
+		closeButton.OnLeftClick += CloseButton_OnClick;
 		panelBackground.Append(closeButton);
 
 		UIElement messageBoxPanel = new UIElement

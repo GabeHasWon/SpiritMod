@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.WitchSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Charmcaster's Robe");
+			// DisplayName.SetDefault("Charmcaster's Robe");
 
 			ArmorIDs.Body.Sets.HidesHands[Item.bodySlot] = false;
 		}

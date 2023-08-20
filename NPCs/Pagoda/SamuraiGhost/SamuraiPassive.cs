@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phantom Samurai");
+			// DisplayName.SetDefault("Phantom Samurai");
 			Main.npcFrameCount[NPC.type] = 9;
 			NPCID.Sets.TownCritter[NPC.type] = true;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;

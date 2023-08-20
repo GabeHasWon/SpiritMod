@@ -105,61 +105,67 @@ namespace SpiritMod.GlobalClasses.Players
 		}
 
 		#region hit overrides
-		public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit) => ModifyHitAnything(target, item, null, ref damage, ref knockback, ref crit);
+		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => ModifyHitAnything(target, null, ref modifiers.FinalDamage);
+		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) => ModifyHitAnything(target, proj, ref modifiers.FinalDamage);
 
-		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => ModifyHitAnything(target, null, proj, ref damage, ref knockback, ref crit);
-
-		public override void ModifyHitPvp(Item item, Player target, ref int damage, ref bool crit)
+		public override void OnHurt(Player.HurtInfo info)
 		{
-			float knockback = 0;
-			ModifyHitAnything(target, item, null, ref damage, ref knockback, ref crit);
+			OnHitPlayer(Player, null, info);
 		}
 
-		public override void ModifyHitPvpWithProj(Projectile proj, Player target, ref int damage, ref bool crit)
+		public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
 		{
-			float knockback = 0;
-			ModifyHitAnything(target, null, proj, ref damage, ref knockback, ref crit);
+			ModifyHitAnything(Player, null, ref modifiers.FinalDamage);
+
+			if (veilCounter > 0)
+			{
+				float resistance = .5f; //resist 50% damage at full charge
+				modifiers.FinalDamage *= resistance * veilCounter;
+			}
 		}
 
-		public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit) => OnHitAnything(target, item, null, damage, knockback, crit);
-
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) => OnHitAnything(target, null, proj, damage, knockback, crit);
-
-		public override void OnHitPvp(Item item, Player target, int damage, bool crit) => OnHitAnything(target, item, null, damage, 0, crit);
-
-		public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit) => OnHitAnything(target, null, proj, damage, 0, crit);
+		private void ModifyHitAnything(Entity target, Projectile proj, ref StatModifier finalDamage)
+		{
+			if (Glyph == GlyphType.Rage)
+			{
+				if (frenzyDamage > 0)
+				{
+					finalDamage.Base += frenzyDamage;
+					RageGlyph.RageEffect(Player, target, proj);
+				}
+				frenzyDamage = 0;
+			}
+		}
 		#endregion
 
-		private void OnHitAnything(Entity target, Item item, Projectile proj, int damage, float knockback, bool crit)
+		private void OnHitPlayer(Player player, Projectile proj, Player.HurtInfo info)
 		{
-			int life = (target is NPC npc) ? npc.life : ((target is Player player) ? player.statLife : 0);
+			int life = player.statLife;
+			int damage = info.Damage;
 
 			if (Glyph == GlyphType.Frost && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
-				FrostGlyph.FreezeEffect(Player, target, proj);
+				FrostGlyph.FreezeEffect(Player, player, proj);
 			if (Glyph == GlyphType.Void && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
-				VoidGlyph.VoidCollapse(Player, target, proj, damage);
+				VoidGlyph.VoidCollapse(Player, player, proj, damage);
 			if (Glyph == GlyphType.Radiant)
 			{
 				genericCounter = 0;
 
 				if (Player.HasBuff(ModContent.BuffType<DivineStrike>()))
-					RadiantGlyph.RadiantStrike(Player, target);
+					RadiantGlyph.RadiantStrike(Player, player);
 			}
 
-			if (target is NPC && ((target as NPC).value <= 0 || (target as NPC).SpawnedFromStatue || (target as NPC).friendly)) //Don't let useless NPCs trigger widely beneficial effects
-				return;
-
 			if (Glyph == GlyphType.Unholy && life <= 0)
-				UnholyGlyph.Erupt(Player, target, damage / 3);
+				UnholyGlyph.Erupt(Player, player, damage / 3);
 			if (Glyph == GlyphType.Sanguine)
-				SanguineGlyph.DrainEffect(Player, target);
+				SanguineGlyph.DrainEffect(Player, player);
 			if (Glyph == GlyphType.Blaze)
 				Player.AddBuff(ModContent.BuffType<BurningRage>(), 120);
 			if (Glyph == GlyphType.Bee)
 			{
 				if ((genericCounter = MathHelper.Clamp(genericCounter + (Player.HeldItem.useTime / 60f), 0, 1)) == 1)
 				{
-					BeeGlyph.ReleaseBees(Player, target, (int)(damage * .4f));
+					BeeGlyph.ReleaseBees(Player, player, (int)(damage * .4f));
 					genericCounter = 0;
 				}
 				if (life <= 0)
@@ -176,19 +182,6 @@ namespace SpiritMod.GlobalClasses.Players
 				veilCounter = MathHelper.Clamp(veilCounter + (Player.HeldItem.useTime / 300f), 0, 1);
 		}
 
-		private void ModifyHitAnything(Entity target, Item item, Projectile proj, ref int damage, ref float knockback, ref bool crit)
-		{
-			if (Glyph == GlyphType.Rage)
-			{
-				if (frenzyDamage > 0)
-				{
-					damage += frenzyDamage;
-					RageGlyph.RageEffect(Player, target, proj);
-				}
-				frenzyDamage = 0;
-			}
-		}
-
 		public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
 		{
 			if (Glyph == GlyphType.Phase)
@@ -200,17 +193,7 @@ namespace SpiritMod.GlobalClasses.Players
 				damage *= 1.5f;
 		}
 
-		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
-		{
-			if (veilCounter > 0)
-			{
-				float resistance = .5f; //resist 50% damage at full charge
-				damage -= (int)(damage * resistance * veilCounter);
-			}
-			return true;
-		}
-
-		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+		public override void PostHurt(Player.HurtInfo info)
 		{
 			if (veilCounter > 0)
 			{

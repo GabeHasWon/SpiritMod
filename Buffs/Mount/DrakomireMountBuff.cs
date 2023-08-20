@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Mount
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Drakomire");
-			Description.SetDefault("You have tamed a Celestial Invader!");
+			// DisplayName.SetDefault("Drakomire");
+			// Description.SetDefault("You have tamed a Celestial Invader!");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.buffNoSave[Type] = true;
 		}

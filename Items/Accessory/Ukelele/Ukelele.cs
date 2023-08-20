@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Accessory.Ukelele
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ukulele");
-			Tooltip.SetDefault("Hitting enemies has a chance to create a chain of lightning\n'...and his music was electric.'");
+			// DisplayName.SetDefault("Ukulele");
+			// Tooltip.SetDefault("Hitting enemies has a chance to create a chain of lightning\n'...and his music was electric.'");
 		}
 
 		public override void SetDefaults()
@@ -45,18 +45,18 @@ namespace SpiritMod.Items.Accessory.Ukelele
 				overcharge--;
 		}
 
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (active && proj.type != ModContent.ProjectileType<UkeleleProj>() && Main.rand.NextBool(4) && overcharge < 30)
 			{
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Ukulele") with { PitchVariance = 0.8f, Volume = 0.7f }, Player.Center);
 				SoundEngine.PlaySound(SoundID.Item12 with { Volume = 0.6f }, target.Center);
 				SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.position);
-				DoLightningChain(target, damage);
+				DoLightningChain(target, damageDone);
 			}
 		}
 
-		public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (active && Main.rand.NextBool(4) && overcharge < 30)
 			{
@@ -64,7 +64,7 @@ namespace SpiritMod.Items.Accessory.Ukelele
 				SoundEngine.PlaySound(SoundID.Item12 with { Volume = 0.6f }, target.Center);
 				SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.position);
 	
-				DoLightningChain(target, damage);
+				DoLightningChain(target, damageDone);
 			}
 		}
 
@@ -99,7 +99,7 @@ namespace SpiritMod.Items.Accessory.Ukelele
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ukulele");
+			// DisplayName.SetDefault("Ukulele");
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -208,7 +208,7 @@ namespace SpiritMod.Items.Accessory.Ukelele
 
 		public override bool? CanHitNPC(NPC target) => CanTarget(target) && target == Target;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hitInfo, int damageDone)
 		{
 			Projectile.velocity = Vector2.Zero;
 			hit[Projectile.penetrate - 1] = target;
@@ -232,7 +232,7 @@ namespace SpiritMod.Items.Accessory.Ukelele
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ukelele");
+			// DisplayName.SetDefault("Ukelele");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

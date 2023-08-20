@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Accessory.Bauble
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bauble Cooldown");
-			Description.SetDefault("Bauble's shield is on cooldown");
+			// DisplayName.SetDefault("Bauble Cooldown");
+			// Description.SetDefault("Bauble's shield is on cooldown");
 			Main.debuff[Type] = true;
 			Main.buffNoSave[Type] = true;
 			Main.persistentBuff[Type] = true;

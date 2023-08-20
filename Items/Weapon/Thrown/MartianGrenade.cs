@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Weapon.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Electrosphere Grenade");
-			Tooltip.SetDefault("'WARNING- HIGH VOLTAGE'");
+			// DisplayName.SetDefault("Electrosphere Grenade");
+			// Tooltip.SetDefault("'WARNING- HIGH VOLTAGE'");
 		}
 
 		public override void SetDefaults()

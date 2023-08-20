@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Accessory.SeaSnailVenom
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sea Snail's Poison");
+			// DisplayName.SetDefault("Sea Snail's Poison");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -46,6 +46,6 @@ namespace SpiritMod.Items.Accessory.SeaSnailVenom
 
 		public override bool? CanCutTiles() => false;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(70, 60 * 4);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(70, 60 * 4);
 	}
 }

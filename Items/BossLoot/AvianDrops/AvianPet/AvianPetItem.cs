@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Egg");
-			Tooltip.SetDefault("Summons an Ancient Hatchling");
+			// DisplayName.SetDefault("Ancient Egg");
+			// Tooltip.SetDefault("Summons an Ancient Hatchling");
 		}
 
 		public override void SetDefaults()

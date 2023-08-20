@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Belcher
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Belcher");
-			Tooltip.SetDefault("Converts regular bullets into clumps of rotting flesh");
+			// DisplayName.SetDefault("Belcher");
+			// Tooltip.SetDefault("Converts regular bullets into clumps of rotting flesh");
 		}
 
 		public override void SetDefaults()

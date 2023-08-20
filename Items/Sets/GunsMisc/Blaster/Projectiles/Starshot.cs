@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starshot");
+			// DisplayName.SetDefault("Starshot");
 			Main.projFrames[Projectile.type] = 2;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

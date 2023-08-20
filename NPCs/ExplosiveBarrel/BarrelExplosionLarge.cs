@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.ExplosiveBarrel
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Explosion");
+			// DisplayName.SetDefault("Explosion");
 			Main.projFrames[base.Projectile.type] = 10;
 		}
 

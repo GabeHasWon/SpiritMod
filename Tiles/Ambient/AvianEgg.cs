@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -24,8 +25,8 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16, 16, 16, 16 };
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Avian Egg");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Avian Egg");
 			AddMapEntry(new Color(227, 195, 124), name);
 		}
 

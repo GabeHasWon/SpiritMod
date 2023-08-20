@@ -9,8 +9,8 @@ namespace SpiritMod.Buffs.Mount
         {
             Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
-			DisplayName.SetDefault("Obolos");
-			Description.SetDefault("Pretty grimacing...");
+			// DisplayName.SetDefault("Obolos");
+			// Description.SetDefault("Pretty grimacing...");
         }
  
         public override void Update(Player player, ref int buffIndex)

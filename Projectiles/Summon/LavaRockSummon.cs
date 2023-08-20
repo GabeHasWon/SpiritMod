@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Magmarock");
+			// DisplayName.SetDefault("Magmarock");
 			Main.projPet[Projectile.type] = true;
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;

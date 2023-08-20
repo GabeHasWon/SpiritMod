@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 {
 	public class Moonlight_Sack : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Moonlight Sack");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Moonlight Sack");
 
 		public override void SetDefaults()
 		{

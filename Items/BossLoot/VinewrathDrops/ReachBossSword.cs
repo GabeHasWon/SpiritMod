@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodthorn Blade");
-			Tooltip.SetDefault("Increases in speed as health wanes\nOccasionally shoots out a bloody wave\nFires waves more frequently when below 1/2 health\nMelee critical hits poison enemies and inflict 'Withering Leaf'");
+			// DisplayName.SetDefault("Bloodthorn Blade");
+			// Tooltip.SetDefault("Increases in speed as health wanes\nOccasionally shoots out a bloody wave\nFires waves more frequently when below 1/2 health\nMelee critical hits poison enemies and inflict 'Withering Leaf'");
 		}
 
 		public override void SetDefaults()
@@ -70,9 +70,9 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 			return false;
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if (crit)
+			if (hit.Crit)
 			{
 				target.AddBuff(BuffID.Poisoned, 240);
 				target.AddBuff(ModContent.BuffType<WitheringLeaf>(), 120, true);

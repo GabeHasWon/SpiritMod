@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.Arrow
 {
 	public class FlayedExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Flayed Explosion");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Flayed Explosion");
 
 		public override void SetDefaults()
 		{
@@ -41,7 +41,7 @@ namespace SpiritMod.Projectiles.Arrow
 			Projectile.active = false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 200, true);

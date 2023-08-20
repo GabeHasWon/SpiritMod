@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.HellEater
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gluttonous Devourer");
+			// DisplayName.SetDefault("Gluttonous Devourer");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Pixie];
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -55,10 +55,10 @@ namespace SpiritMod.NPCs.HellEater
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.09f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 117, default, .6f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hit.HitDirection, -2.5f, 117, default, .6f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -124,7 +124,7 @@ namespace SpiritMod.NPCs.HellEater
 			return true;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.OnFire, 180);

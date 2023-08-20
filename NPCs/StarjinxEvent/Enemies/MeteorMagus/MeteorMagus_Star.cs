@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 		private const float RADIANS_PERTICK = MathHelper.Pi / 30;
 		private const int COLLIDING_TIME = 50;
 		
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Shooting Star");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Shooting Star");
 
 		public override void SetDefaults()
 		{

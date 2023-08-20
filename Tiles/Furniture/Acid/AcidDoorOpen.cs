@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -19,6 +20,7 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			Main.tileSolid[Type] = false;
 			Main.tileLavaDeath[Type] = true;
 			Main.tileNoSunLight[Type] = true;
+
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Origin = new Point16(0, 0);
@@ -58,15 +60,17 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceLeft;
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
-			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-			TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Door");
+
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(100, 122, 111), name);
+			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+
+			TileID.Sets.HasOutlines[Type] = true;
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
+			TileID.Sets.CloseDoorID[Type] = ModContent.TileType<AcidDoorClosed>();
+
 			AdjTiles = new int[] { TileID.OpenDoor };
-			CloseDoorID = ModContent.TileType<AcidDoorClosed>();
-            TileID.Sets.HasOutlines[Type] = true;
         }
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 

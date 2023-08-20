@@ -9,8 +9,8 @@ namespace SpiritMod.Buffs.Mount
         {
             Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
-			DisplayName.SetDefault("Snowmech");
-			Description.SetDefault("Powerful");
+			// DisplayName.SetDefault("Snowmech");
+			// Description.SetDefault("Powerful");
         }
  
         public override void Update(Player player, ref int buffIndex)

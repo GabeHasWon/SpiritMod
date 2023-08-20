@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Empowered Swim");
-			Description.SetDefault("You feel much faster in water");
+			// DisplayName.SetDefault("Empowered Swim");
+			// Description.SetDefault("You feel much faster in water");
 		}
 
 		public override void Update(Player player, ref int buffIndex)

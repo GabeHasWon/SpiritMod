@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Pet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Possessed Blade");
+			// DisplayName.SetDefault("Possessed Blade");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 			Main.projPet[Projectile.type] = true;

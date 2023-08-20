@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class FriendlyFeeder : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Rotten Meat");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Rotten Meat");
 
 		public override void SetDefaults()
 		{

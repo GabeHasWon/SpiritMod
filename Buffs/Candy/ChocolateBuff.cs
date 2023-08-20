@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Candy
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chocolate");
-			Description.SetDefault("10% Increased Speed");
+			// DisplayName.SetDefault("Chocolate");
+			// Description.SetDefault("10% Increased Speed");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

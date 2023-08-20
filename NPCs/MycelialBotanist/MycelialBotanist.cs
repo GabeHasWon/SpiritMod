@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.MycelialBotanist
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mycelial Botanist");
+			// DisplayName.SetDefault("Mycelial Botanist");
 			Main.npcFrameCount[NPC.type] = 11;
 		}
 
@@ -93,12 +93,12 @@ namespace SpiritMod.NPCs.MycelialBotanist
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.MushroomGrass) && spawnInfo.SpawnTileY > Main.rockLayer ? 0.07f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Rope, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.3f, 1.1f));
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Harpy, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.3f, 1.1f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Rope, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.3f, 1.1f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Harpy, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.3f, 1.1f));
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

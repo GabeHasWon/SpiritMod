@@ -9,8 +9,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Omniwrench");
-			Tooltip.SetDefault("Right click to throw");
+			// DisplayName.SetDefault("Omniwrench");
+			// Tooltip.SetDefault("Right click to throw");
 		}
 
 		public override void SetDefaults()

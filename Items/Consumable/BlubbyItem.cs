@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class BlubbyItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blubby");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blubby");
 
 		public override void SetDefaults()
 		{

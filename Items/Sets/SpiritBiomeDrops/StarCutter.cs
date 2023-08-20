@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Cutter");
+			// DisplayName.SetDefault("Star Cutter");
 		}
 
 

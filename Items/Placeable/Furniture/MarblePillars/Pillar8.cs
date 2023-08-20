@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Furniture.MarblePillars
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Small Ruined Column");
+			// DisplayName.SetDefault("Small Ruined Column");
 		}
 
 

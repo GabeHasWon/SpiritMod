@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tethervolt Jelly");
+			// DisplayName.SetDefault("Tethervolt Jelly");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
@@ -116,7 +116,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/MoonjellyEvent/MoonjellyGiant_Glow").Value, screenPos);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 15; k++)
 				Dust.NewDustPerfect(NPC.Center, 226, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(5), 0, default, 0.65f).noGravity = true;

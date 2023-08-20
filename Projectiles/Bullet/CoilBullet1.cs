@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Bullet
 	class CoilBullet1 : ModProjectile
 	{
 		NPC[] hit = new NPC[8];
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Coiled Bullet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Coiled Bullet");
 
 		public override void SetDefaults()
 		{
@@ -98,7 +98,7 @@ namespace SpiritMod.Projectiles.Bullet
 			return target;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hitInfo, int damageDone)
 		{
 			Projectile.velocity = Vector2.Zero;
 			hit[Projectile.penetrate - 1] = target;

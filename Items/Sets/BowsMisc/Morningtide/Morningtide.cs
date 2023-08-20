@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.Morningtide
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Morningtide");
-			Tooltip.SetDefault("Converts wooden arrows into Dawnstrike Shafts");
+			// DisplayName.SetDefault("Morningtide");
+			// Tooltip.SetDefault("Converts wooden arrows into Dawnstrike Shafts");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/BowsMisc/Morningtide/Morningtide_Glow");
         }
 

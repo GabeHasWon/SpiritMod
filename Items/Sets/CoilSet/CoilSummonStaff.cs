@@ -10,12 +10,7 @@ namespace SpiritMod.Items.Sets.CoilSet
 {
 	public class CoilSummonStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Coiled Rod");
-			Tooltip.SetDefault("Summons a stationary electric turret\nThis turret shoots beams of lightning that jump from enemy to enemy");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -46,7 +41,7 @@ namespace SpiritMod.Items.Sets.CoilSet
 		{
 			player.FindSentryRestingSpot(type, out int worldX, out int worldY, out int pushYUp);
 
-			Projectile.NewProjectile(Item.GetSource_ItemUse(Item), worldX, worldY - pushYUp, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, worldX, worldY - pushYUp, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
 			player.UpdateMaxTurrets();
 			return false;
 		}

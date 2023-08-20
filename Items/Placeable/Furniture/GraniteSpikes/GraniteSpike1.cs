@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Furniture.GraniteSpikes
 {
 	public class GraniteSpike1 : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Coral Formation");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Coral Formation");
 
 		public override void SetDefaults()
 		{

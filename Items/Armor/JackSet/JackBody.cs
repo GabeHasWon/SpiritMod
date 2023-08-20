@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Armor.JackSet
 	[AutoloadEquip(EquipType.Body)]
 	public class JackBody : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Handsome Jack's Suit");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Handsome Jack's Suit");
 
 		public override void SetDefaults()
 		{

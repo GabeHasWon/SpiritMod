@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class IceDeityShard1 : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Relic");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Relic");
 
 		public override void SetDefaults()
 		{
@@ -63,13 +63,13 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 
 	public class IceDeityShard2: IceDeityShard1
     {
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Fragment");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Fragment");
 		public override bool OnPickup(Player player) => !player.HasItem(ModContent.ItemType<IceDeityShard2>());
 	}
 
 	public class IceDeityShard3 : IceDeityShard1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Artifact");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Artifact");
 		public override bool OnPickup(Player player) => !player.HasItem(ModContent.ItemType<IceDeityShard2>());
 		public override void AddRecipes()
 		{

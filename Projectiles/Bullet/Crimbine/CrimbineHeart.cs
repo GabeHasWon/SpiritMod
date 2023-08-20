@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Bullet.Crimbine
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloody Heart");
+			// DisplayName.SetDefault("Bloody Heart");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -28,7 +28,7 @@ namespace SpiritMod.Projectiles.Bullet.Crimbine
 			Projectile.timeLeft = 240;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player player = Main.player[Projectile.owner];
 

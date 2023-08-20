@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("High Gravity");
-			Description.SetDefault("Gravity returns to normal");
+			// DisplayName.SetDefault("High Gravity");
+			// Description.SetDefault("Gravity returns to normal");
 
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.debuff[Type] = true;

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terravolt");
-			Tooltip.SetDefault("Launches a beam of electricity ");
+			// DisplayName.SetDefault("Terravolt");
+			// Tooltip.SetDefault("Launches a beam of electricity ");
 		}
 
 		public override void SetDefaults()

@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crimson Skull");
-			Description.SetDefault("Flask of gore now deals double damage");
+			// DisplayName.SetDefault("Crimson Skull");
+			// Description.SetDefault("Flask of gore now deals double damage");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

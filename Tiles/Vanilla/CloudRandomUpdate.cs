@@ -30,7 +30,7 @@ namespace SpiritMod.Tiles.Vanilla
 			if (Main.rand.NextFloat() < chance && validTiles && !ground.TopSlope)
 			{
 				WorldGen.PlaceTile(i, y - 1, ModContent.TileType<Cloudstalk>(), true, false);
-				NetMessage.SendObjectPlacment(-1, i, y - 1, ModContent.TileType<Cloudstalk>(), 0, 0, -1, -1);
+				NetMessage.SendObjectPlacement(-1, i, y - 1, ModContent.TileType<Cloudstalk>(), 0, 0, -1, -1);
 			}
 		}
 	}

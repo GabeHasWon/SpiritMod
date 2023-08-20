@@ -21,11 +21,10 @@ namespace SpiritMod.Tiles.Block
 			TileID.Sets.CanBeDugByShovel[Type] = true;
 			TileID.Sets.Conversion.Sand[Type] = true;
 			TileID.Sets.Falling[Type] = true;
-			TileID.Sets.TouchDamageSands[Type] = 15;
+			TileID.Sets.Suffocate[Type] = true;
 			TileID.Sets.ForAdvancedCollision.ForSandshark[Type] = true;
 
 			AddMapEntry(new Color(135, 206, 235));
-			ItemDrop = ModContent.ItemType<SpiritSandItem>();
 			DustType = DustID.Water_Space;
 		}
 

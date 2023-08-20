@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Polaris Psyche");
-			Tooltip.SetDefault("'V. Kaiya'");
+			// DisplayName.SetDefault("Polaris Psyche");
+			// Tooltip.SetDefault("'V. Kaiya'");
 		}
 
 		public override void SetDefaults()

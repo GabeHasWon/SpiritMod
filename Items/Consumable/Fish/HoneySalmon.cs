@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable.Fish
 		internal override Point Size => new(52, 38);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Honey-Glazed Salmon");
-			Tooltip.SetDefault("Minor improvements to all stats\nBoosts life regeneration");
+			// DisplayName.SetDefault("Honey-Glazed Salmon");
+			// Tooltip.SetDefault("Minor improvements to all stats\nBoosts life regeneration");
 		}
 
 		public override bool CanUseItem(Player player)

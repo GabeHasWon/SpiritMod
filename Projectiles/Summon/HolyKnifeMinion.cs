@@ -17,7 +17,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spellsword");
+			// DisplayName.SetDefault("Spellsword");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }

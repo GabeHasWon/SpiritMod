@@ -8,8 +8,8 @@ namespace SpiritMod.Mounts.Minecarts.MarbleMinecart
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nemean Chariot"); //name tbd?
-			Description.SetDefault("'You feel powerful!'");
+			// DisplayName.SetDefault("Nemean Chariot"); //name tbd?
+			// Description.SetDefault("'You feel powerful!'");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.buffNoSave[Type] = true;
 		}

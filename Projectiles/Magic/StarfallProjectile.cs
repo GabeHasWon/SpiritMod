@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Falling Star");
+			// DisplayName.SetDefault("Falling Star");
 		}
 
 		public override void SetDefaults()
@@ -29,7 +29,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.damage = 10;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<StarFracture>(), 280);

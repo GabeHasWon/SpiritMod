@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SpiritSet.SpiritArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Headgear");
-			Tooltip.SetDefault("Increases max life by 10 and increases melee damage by 12%");
+			// DisplayName.SetDefault("Spirit Headgear");
+			// Tooltip.SetDefault("Increases max life by 10 and increases melee damage by 12%");
 		}
 
 		public override void SetDefaults()

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rogue Greaves");
-			Tooltip.SetDefault("Increases movement speed by 5%");
+			// DisplayName.SetDefault("Rogue Greaves");
+			// Tooltip.SetDefault("Increases movement speed by 5%");
 
 		}
 		public override void SetDefaults()

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.PrimalstoneArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Primalstone Breastplate");
-			Tooltip.SetDefault("Increases life regeneration\n5% increased melee damage\n17% increased melee critical strike chance\n7% increased magic critical strike chance");
+			// DisplayName.SetDefault("Primalstone Breastplate");
+			// Tooltip.SetDefault("Increases life regeneration\n5% increased melee damage\n17% increased melee critical strike chance\n7% increased magic critical strike chance");
 		}
 
 		public override void SetDefaults()

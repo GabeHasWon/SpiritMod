@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Howling Bolt");
+			// DisplayName.SetDefault("Howling Bolt");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -76,7 +76,7 @@ namespace SpiritMod.Projectiles
 			Main.dust[dust].scale *= Main.rand.NextFloat(.4f, .6f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 180);

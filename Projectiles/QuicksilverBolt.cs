@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Quicksilver Droplet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Quicksilver Droplet");
 
 		public override void SetDefaults()
 		{

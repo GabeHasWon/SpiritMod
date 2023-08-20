@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starlight Mantle");
-			Tooltip.SetDefault("8% increased magic damage\n20% increased flight time");
+			// DisplayName.SetDefault("Starlight Mantle");
+			// Tooltip.SetDefault("8% increased magic damage\n20% increased flight time");
 		}
 
 		public override void SetDefaults()

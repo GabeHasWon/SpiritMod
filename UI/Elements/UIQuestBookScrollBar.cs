@@ -82,7 +82,7 @@ namespace SpiritMod.UI.Elements
 			return new Rectangle((int)innerDimensions.X, (int)(innerDimensions.Y + innerDimensions.Height * (ViewPos / MaxViewSize)) - 3, 8, (int)(innerDimensions.Height * (ViewSize / MaxViewSize)) + 7);
 		}
 
-		public override void MouseDown(UIMouseEvent evt)
+		public override void LeftMouseDown(UIMouseEvent evt)
 		{
 			UserInterface activeInstance = UserInterface.ActiveInstance;
 			UserInterface.ActiveInstance = _userInterface;
@@ -105,9 +105,9 @@ namespace SpiritMod.UI.Elements
 			UserInterface.ActiveInstance = activeInstance;
 		}
 
-		public override void MouseUp(UIMouseEvent evt)
+		public override void LeftMouseUp(UIMouseEvent evt)
 		{
-			base.MouseUp(evt);
+			base.LeftMouseUp(evt);
 			this._isDragging = false;
 		}
 	}

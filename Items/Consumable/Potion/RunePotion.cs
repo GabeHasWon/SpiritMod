@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Runescribe Potion");
-			Tooltip.SetDefault("Magic attacks may cause enemies to erupt into runes\nIncreases magic damage by 5%");
+			// DisplayName.SetDefault("Runescribe Potion");
+			// Tooltip.SetDefault("Magic attacks may cause enemies to erupt into runes\nIncreases magic damage by 5%");
 		}
 
 		public override void SetDefaults()

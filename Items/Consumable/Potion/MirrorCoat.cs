@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mirror Coat");
-			Tooltip.SetDefault("Immunity to Stoned");
+			// DisplayName.SetDefault("Mirror Coat");
+			// Tooltip.SetDefault("Immunity to Stoned");
 		}
 
 		public override void SetDefaults()
@@ -46,8 +46,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mirror Coat");
-			Description.SetDefault("Immunity to Stoned");
+			// DisplayName.SetDefault("Mirror Coat");
+			// Description.SetDefault("Immunity to Stoned");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sand Ball");
+			// DisplayName.SetDefault("Sand Ball");
 		}
 
 		public override void SetDefaults()

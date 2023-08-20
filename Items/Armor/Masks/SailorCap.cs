@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.Masks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Captain's Cap");
+			// DisplayName.SetDefault("Captain's Cap");
 
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}

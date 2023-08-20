@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.MagicDeck
 {
 	public class MagicDeck : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Magic Deck");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Magic Deck");
 
 		public override void SetDefaults()
 		{
@@ -68,7 +68,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.MagicDeck
 		}
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Magic Card");
+			// DisplayName.SetDefault("Magic Card");
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -122,7 +122,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.MagicDeck
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.penetrate++;
 			if (!stuck && target.life > 0)

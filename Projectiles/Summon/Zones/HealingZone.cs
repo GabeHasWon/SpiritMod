@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Summon.Zones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Healing Zone");
+			// DisplayName.SetDefault("Healing Zone");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }

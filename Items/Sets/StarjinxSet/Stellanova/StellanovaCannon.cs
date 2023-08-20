@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Stellanova
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stellanova Cannon");
-            Tooltip.SetDefault("Uses stars as ammo\nFires erratic starfire\nRight click to launch an explosive stellanova that draws in smaller stars\n50% chance not to consume ammo");
+            // DisplayName.SetDefault("Stellanova Cannon");
+            // Tooltip.SetDefault("Uses stars as ammo\nFires erratic starfire\nRight click to launch an explosive stellanova that draws in smaller stars\n50% chance not to consume ammo");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 

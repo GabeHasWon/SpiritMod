@@ -11,8 +11,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mystical Dice");
-			Tooltip.SetDefault("Teleports you to a Fathomless Shrine");
+			// DisplayName.SetDefault("Mystical Dice");
+			// Tooltip.SetDefault("Teleports you to a Fathomless Shrine");
 		}
 
 		public override void SetDefaults()

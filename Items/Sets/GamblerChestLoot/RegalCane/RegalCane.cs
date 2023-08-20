@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.RegalCane
 	[AutoloadEquip(EquipType.Front)] //EquipType.HandsOn does not work
 	public class RegalCane : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Cane");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Cane");
 
 		public override void SetDefaults()
 		{
@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.RegalCane
 			Item.rare = ItemRarityID.Blue;
 			Item.accessory = true;
 			Item.vanity = true;
-			Item.canBePlacedInVanityRegardlessOfConditions = true;
+			Item.hasVanityEffects = true;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

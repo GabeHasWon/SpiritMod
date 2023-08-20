@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -17,10 +18,8 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.addTile(Type);
-			ItemDrop = ModContent.ItemType<CryoliteBar>();
 			AdjTiles = new int[] { TileID.MetalBars };
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Bar");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 

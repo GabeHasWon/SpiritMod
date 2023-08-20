@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.TideDrops.StreamSurfer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stream Surfer Loincloth");
-			Tooltip.SetDefault("7% increased magic damage\n10% reduced mana usage");
+			// DisplayName.SetDefault("Stream Surfer Loincloth");
+			// Tooltip.SetDefault("7% increased magic damage\n10% reduced mana usage");
 
 		}
 		public override void SetDefaults()

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Armor.Masks
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Winter Hat");
-			Tooltip.SetDefault("Grants immunity to chilly water");
+			// DisplayName.SetDefault("Winter Hat");
+			// Tooltip.SetDefault("Grants immunity to chilly water");
 
 		}
 

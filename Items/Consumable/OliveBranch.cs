@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Olive Branch");
-			Tooltip.SetDefault("Greatly reduces enemy spawns");
+			// DisplayName.SetDefault("Olive Branch");
+			// Tooltip.SetDefault("Greatly reduces enemy spawns");
 		}
 
 		public override void SetDefaults()

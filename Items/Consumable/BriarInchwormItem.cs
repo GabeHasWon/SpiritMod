@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class BriarInchwormItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Inchworm");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Inchworm");
 
 		public override void SetDefaults()
 		{

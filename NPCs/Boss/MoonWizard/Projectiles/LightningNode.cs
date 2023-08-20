@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lightning Node");
+			// DisplayName.SetDefault("Lightning Node");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

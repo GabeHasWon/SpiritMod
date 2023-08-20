@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Horizon's Edge");
-			Tooltip.SetDefault("Summons a portal at the cursor position that shoots homing energy at enemies\nRight click to cause all portals to explode into a shower of stars\nUp to 2 portals can exist at once");
+			// DisplayName.SetDefault("Horizon's Edge");
+			// Tooltip.SetDefault("Summons a portal at the cursor position that shoots homing energy at enemies\nRight click to cause all portals to explode into a shower of stars\nUp to 2 portals can exist at once");
 		}
 
 

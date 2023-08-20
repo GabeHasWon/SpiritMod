@@ -3,6 +3,7 @@ using SpiritMod.GlobalClasses.Tiles;
 using SpiritMod.Tiles;
 using System.Linq;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +18,7 @@ internal class StaffOfRegrowthHarvestingItem : GlobalItem
 			Point target = new Point(Player.tileTargetX, Player.tileTargetY);
 			Tile tile = Main.tile[target.X, target.Y];
 
-			if (tile.HasTile && player.InInteractionRange(target.X, target.Y))
+			if (tile.HasTile && player.InInteractionRange(target.X, target.Y, TileReachCheckSettings.Simple))
 			{
 				var type = TagGlobalTile.HarvestableHerbs.FirstOrDefault(x => x == tile.TileType);
 

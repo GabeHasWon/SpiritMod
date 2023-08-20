@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Spore");
+			// DisplayName.SetDefault("Floran Spore");
 		}
 
 		public override void SetDefaults()
@@ -74,7 +74,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<VineTrap>(), 180);

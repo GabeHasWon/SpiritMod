@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Halloween.SpookySet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bat Blaster");
-			Tooltip.SetDefault("Turns bullets into bats");
+			// DisplayName.SetDefault("Bat Blaster");
+			// Tooltip.SetDefault("Turns bullets into bats");
 		}
 
 

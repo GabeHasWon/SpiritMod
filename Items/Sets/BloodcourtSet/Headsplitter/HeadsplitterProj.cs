@@ -36,7 +36,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Headsplitter");
+			// DisplayName.SetDefault("Headsplitter");
 			ProjectileID.Sets.TrailCacheLength[Type] = 5;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
@@ -138,15 +138,15 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Main.player[Projectile.owner].Center, Projectile.Center) ? true : base.Colliding(projHitbox, targetHitbox);
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			hitDirection = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
+			modifiers.HitDirectionOverride = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
 
 			if (AiState != STATE_NORMAL && target.HasBuff(ModContent.BuffType<SurgingAnguish>()))
-				damage = (int)(damage * 1.5f);
+				modifiers.FinalDamage *= 1.5f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Vector2 hitPos = target.getRect().ClosestPointInRect(Projectile.Center);
 
@@ -185,7 +185,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 					target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 180);
 				}
 
-				Owner.GetModPlayer<HeadsplitterPlayer>().charge = Math.Min(Owner.GetModPlayer<HeadsplitterPlayer>().chargeMax, Owner.GetModPlayer<HeadsplitterPlayer>().charge + (damage / 2));
+				Owner.GetModPlayer<HeadsplitterPlayer>().charge = Math.Min(Owner.GetModPlayer<HeadsplitterPlayer>().chargeMax, Owner.GetModPlayer<HeadsplitterPlayer>().charge + (damageDone / 2));
 			}
 		}
 

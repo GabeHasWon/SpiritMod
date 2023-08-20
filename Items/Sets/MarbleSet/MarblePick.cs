@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.MarbleSet
 {
 	public class MarblePick : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Pickaxe");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Pickaxe");
 
 		public override void SetDefaults()
 		{

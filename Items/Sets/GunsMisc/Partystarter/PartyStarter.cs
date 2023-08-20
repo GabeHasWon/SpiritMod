@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Partystarter
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Partystarter");
-			Tooltip.SetDefault("'Let's get this party started!'\nConverts regular bullets into VIP party bullets");
+			// DisplayName.SetDefault("Partystarter");
+			// Tooltip.SetDefault("'Let's get this party started!'\nConverts regular bullets into VIP party bullets");
 		}
 
 		public override void SetDefaults()

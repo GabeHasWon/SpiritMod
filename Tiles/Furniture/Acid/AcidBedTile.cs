@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -21,8 +22,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Bed");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Corrosive Bed");
 			AddMapEntry(new Color(100, 122, 111), name);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
             TileID.Sets.DisableSmartCursor[Type] = true;

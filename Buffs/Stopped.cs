@@ -9,8 +9,8 @@ namespace SpiritMod.Buffs
 		public override void SetStaticDefaults()
 		{
 			Main.buffNoTimeDisplay[Type] = false;
-			DisplayName.SetDefault("Stopped");
-			Description.SetDefault("You are locked in place");
+			// DisplayName.SetDefault("Stopped");
+			// Description.SetDefault("You are locked in place");
 		}
 
 		public override void Update(NPC npc, ref int buffIndex)

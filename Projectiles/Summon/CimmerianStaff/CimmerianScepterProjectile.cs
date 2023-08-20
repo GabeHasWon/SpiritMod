@@ -16,7 +16,7 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cimmerian Scepter");
+			// DisplayName.SetDefault("Cimmerian Scepter");
 			Main.projFrames[Projectile.type] = 1;
 			Main.projPet[Projectile.type] = true;
 
@@ -223,7 +223,7 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 							}
 							for (int i = 0; i < 3; i++)
 								DustHelper.DrawElectricity(Projectile.Center, target.Center, 226, 0.3f);
-							target.StrikeNPC((int)(Projectile.damage * 1.5f), 1f, 0, false);
+							target.SimpleStrikeNPC((int)(Projectile.damage * 1.5f), 0, false, 1f);
 							for (int k = 0; k < 10; k++)
 							{
 								Dust d = Dust.NewDustPerfect(target.Center, 226, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(2), 0, default, Main.rand.NextFloat(.2f, .4f));

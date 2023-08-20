@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.SilkArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Earrings");
+			// DisplayName.SetDefault("Earrings");
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}
 

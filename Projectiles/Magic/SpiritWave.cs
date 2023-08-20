@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Wave");
+			// DisplayName.SetDefault("Spirit Wave");
 		}
 
 		public override void SetDefaults()

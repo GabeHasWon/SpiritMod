@@ -6,7 +6,7 @@ namespace SpiritMod.Items.ByBiome.Forest.Placeable.Decorative
 {
 	public class CloudstalkItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cloudstalk");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cloudstalk");
 
 		public override void SetDefaults()
 		{

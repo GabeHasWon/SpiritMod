@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden.Projectiles
 
 		protected int teleported = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Void Portal");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Void Portal");
 
 		public override void SetDefaults()
 		{

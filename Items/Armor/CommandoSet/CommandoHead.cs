@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.CommandoSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Commando's Visor");
+			// DisplayName.SetDefault("Commando's Visor");
 		}
 		public override void SetDefaults()
 		{

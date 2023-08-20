@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.Phantom
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phantom");
+			// DisplayName.SetDefault("Phantom");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -145,21 +145,21 @@ namespace SpiritMod.NPCs.Phantom
 				GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Phantom/Phantom_Glow").Value, screenPos);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection * 2, -1f, 0, default, 1f);
 
 			if (trailbehind)
 				for (int k = 0; k < 20; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, hitDirection * 2, -1f, 0, default, 1f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, hit.HitDirection * 2, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int k = 0; k < 20; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, hitDirection * 2, -1f, 0, default, 1f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, hit.HitDirection * 2, -1f, 0, default, 1f);
 				for (int k = 0; k < 20; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2, -1f, 0, default, 1f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection * 2, -1f, 0, default, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Phantom1").Type, .5f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Phantom2").Type, .5f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Phantom2").Type, .5f);

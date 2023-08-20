@@ -13,8 +13,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Demon Sheath");
-			Tooltip.SetDefault("Summons a possessed katana that floats above you\nPoints towards the nearest enemy");
+			// DisplayName.SetDefault("Demon Sheath");
+			// Tooltip.SetDefault("Summons a possessed katana that floats above you\nPoints towards the nearest enemy");
 		}
 
 		public override void SetDefaults()

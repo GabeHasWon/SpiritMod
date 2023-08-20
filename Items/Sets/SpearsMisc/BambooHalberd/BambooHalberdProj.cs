@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Sets.SpearsMisc.BambooHalberd
 
 		private readonly int lungeLength = 60;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Halberd");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Halberd");
 
 		public override void SetDefaults()
 		{

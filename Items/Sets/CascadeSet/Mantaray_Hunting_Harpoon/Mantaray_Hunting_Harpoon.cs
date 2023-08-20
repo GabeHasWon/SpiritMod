@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Mantaray_Hunting_Harpoon
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Manta Harpoon");
-			Tooltip.SetDefault("Summons a rideable manta ray mount\nThe manta Ray is incapable of movement on land");
+			// DisplayName.SetDefault("Manta Harpoon");
+			// Tooltip.SetDefault("Summons a rideable manta ray mount\nThe manta Ray is incapable of movement on land");
 		}
 
 		public override void SetDefaults()

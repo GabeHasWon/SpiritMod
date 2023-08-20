@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Liberty
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Liberty");
-			Tooltip.SetDefault("Charges up to fire a rocket");
+			// DisplayName.SetDefault("Liberty");
+			// Tooltip.SetDefault("Charges up to fire a rocket");
 		}
 
 		public override void SetDefaults()

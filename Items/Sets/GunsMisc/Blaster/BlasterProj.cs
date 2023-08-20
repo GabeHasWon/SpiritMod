@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		}
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blaster");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blaster");
 
 		public override void SetDefaults()
 		{

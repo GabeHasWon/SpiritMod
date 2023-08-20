@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		public override void SetStaticDefaults()
 		{
 			NPCHelper.BuffImmune(Type, true);
-			DisplayName.SetDefault("Starplate Voyager");
+			// DisplayName.SetDefault("Starplate Voyager");
 
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
@@ -49,9 +49,9 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.dontCountMe = true;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * balance);
 			NPC.damage = (int)(NPC.damage * 0.65f);
 		}
 
@@ -217,10 +217,10 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hit.HitDirection, -1f, 0, default, 1f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				SoundEngine.PlaySound(SoundID.Item4, NPC.Center);

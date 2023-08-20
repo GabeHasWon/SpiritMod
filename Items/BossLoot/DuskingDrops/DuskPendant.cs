@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Pendant");
-			Tooltip.SetDefault("13% increased magic and ranged critical strike chance at night");
+			// DisplayName.SetDefault("Dusk Pendant");
+			// Tooltip.SetDefault("13% increased magic and ranged critical strike chance at night");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/DuskPendant_Glow");
 		}
 

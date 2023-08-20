@@ -9,7 +9,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vinewrath Bane Mask");
+			// DisplayName.SetDefault("Vinewrath Bane Mask");
 		}
 
 

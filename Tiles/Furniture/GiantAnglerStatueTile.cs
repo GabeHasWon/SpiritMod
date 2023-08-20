@@ -4,6 +4,7 @@ using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Enums;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -29,8 +30,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Giant, Buff, Half-Shark, Half-Angler Statue");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Giant, Buff, Half-Shark, Half-Angler Statue");
 			AddMapEntry(new Color(70, 50, 50), name);
 			DustType = -1;
 		}

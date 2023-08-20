@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mini Meteor");
+			// DisplayName.SetDefault("Mini Meteor");
 			ProjectileID.Sets.TrailCacheLength[Type] = 2;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 			ProjectileID.Sets.CultistIsResistantTo[Type] = true;

@@ -162,9 +162,9 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 			return false;
 		}
 
-		public virtual void HitNPC(NPC target, int damage, float knockback, bool crit) { }
+		public virtual void HitNPC(NPC target, NPC.HitInfo hit, int damage) { }
 
-		public sealed override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public sealed override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Projectile.numHits >= Projectile.penetrate)
 			{
@@ -183,7 +183,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 				StruckNPCIndex = target.whoAmI;
 			}
 
-			HitNPC(target, damage, knockback, crit);
+			HitNPC(target, hit, damageDone);
 		}
 
 		public override bool ShouldUpdatePosition() => Released && !Embeded;

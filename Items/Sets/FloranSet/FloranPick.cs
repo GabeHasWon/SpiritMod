@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranPick : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Pickaxe");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Pickaxe");
 
 		public override void SetDefaults()
 		{

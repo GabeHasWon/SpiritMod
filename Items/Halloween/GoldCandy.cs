@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Halloween
 		internal override Point Size => new(40, 38);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Golden Candy");
-			Tooltip.SetDefault("Can't be eaten, but may sell for a lot!");
+			// DisplayName.SetDefault("Golden Candy");
+			// Tooltip.SetDefault("Can't be eaten, but may sell for a lot!");
 		}
 
 		public override void Defaults()

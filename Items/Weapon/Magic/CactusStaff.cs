@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Weapon.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cactus Staff");
-			Tooltip.SetDefault("Shoots two cactus needles at foes\nThese pins stick to enemies and poison them");
+			// DisplayName.SetDefault("Cactus Staff");
+			// Tooltip.SetDefault("Shoots two cactus needles at foes\nThese pins stick to enemies and poison them");
 			Item.staff[Item.type] = true;
 		}
 

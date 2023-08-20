@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.ID;
@@ -32,8 +33,8 @@ public class ForgottenKingStatue : ModTile
 		TileObjectData.addAlternate(1);
 		TileObjectData.addTile(Type);
 
-		ModTranslation name = CreateMapEntryName();
-		name.SetDefault("Forgotten King Statue");
+		LocalizedText name = CreateMapEntryName();
+		// name.SetDefault("Forgotten King Statue");
 		AddMapEntry(new Color(140, 140, 140), name);
 
 		DustType = DustID.Stone;

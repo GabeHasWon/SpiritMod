@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Unstable Adze");
-            Tooltip.SetDefault("Charges rapidly\nCharged strikes create an energy shockwave on impact");
+            // DisplayName.SetDefault("Unstable Adze");
+            // Tooltip.SetDefault("Charges rapidly\nCharged strikes create an energy shockwave on impact");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/ClubSubclass/RageBlazeDecapitator_Glow");
         }
 

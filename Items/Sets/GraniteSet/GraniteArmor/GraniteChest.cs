@@ -10,9 +10,9 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granite Breastplate");
+			// DisplayName.SetDefault("Granite Breastplate");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-			Tooltip.SetDefault("Increases jump height slightly");
+			// Tooltip.SetDefault("Increases jump height slightly");
 		}
 
 		public override void SetDefaults()

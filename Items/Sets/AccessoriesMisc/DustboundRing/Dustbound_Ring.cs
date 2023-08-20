@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.DustboundRing
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dustbound Ring");
-			Tooltip.SetDefault("Shows the location of treasure and ore");
+			// DisplayName.SetDefault("Dustbound Ring");
+			// Tooltip.SetDefault("Shows the location of treasure and ore");
 		}
 
 		public override void SetDefaults()

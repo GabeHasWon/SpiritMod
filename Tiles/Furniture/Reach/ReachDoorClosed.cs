@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -19,6 +20,10 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			Main.tileSolid[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+
+			TileID.Sets.HasOutlines[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.OpenDoorID[Type] = ModContent.TileType<ReachDoorOpen>();
 			TileID.Sets.NotReallySolid[Type] = true;
 			TileID.Sets.DrawsWalls[Type] = true;
 			TileObjectData.newTile.Width = 1;
@@ -38,15 +43,14 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newAlternate.Origin = new Point16(0, 2);
 			TileObjectData.addAlternate(0);
 			TileObjectData.addTile(Type);
+
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Door");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(179, 146, 107), name);
-			TileID.Sets.DisableSmartCursor[Type] = true;
+
 			AdjTiles = new int[] { TileID.ClosedDoor };
-			OpenDoorID = ModContent.TileType<ReachDoorOpen>();
-            TileID.Sets.HasOutlines[Type] = true;
         }
+
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
         public override void NumDust(int i, int j, bool fail, ref int num)
 		{

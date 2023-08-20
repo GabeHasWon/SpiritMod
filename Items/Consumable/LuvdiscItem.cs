@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ardorfish");
-			Tooltip.SetDefault("'It exudes affection'");
+			// DisplayName.SetDefault("Ardorfish");
+			// Tooltip.SetDefault("'It exudes affection'");
 		}
 
 		public override void SetDefaults()

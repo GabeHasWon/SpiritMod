@@ -22,26 +22,25 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 
 		public override void ResetEffects() => setActive = false;
 
-		public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
 		{
 			if (setActive)
 				bubbleStrength = MathHelper.Clamp(bubbleStrength += 0.125f, 0, 1);
 		}
 
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
 		{
 			if (setActive)
 				bubbleStrength = MathHelper.Clamp(bubbleStrength += 0.125f, 0, 1);
 		}
 
-		public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit) => TryPopBubble(ref damage);
-		public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit) => TryPopBubble(ref damage);
+		public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers) => TryPopBubble(ref modifiers.FinalDamage);
+		public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers) => TryPopBubble(ref modifiers.FinalDamage);
 
-		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 		{
-			if (damageSource.SourceOtherIndex == 2 || damageSource.SourceOtherIndex == 3)
-				TryPopBubble(ref damage);
-			return true;
+			if (modifiers.DamageSource.SourceOtherIndex == 2 || modifiers.DamageSource.SourceOtherIndex == 3)
+				TryPopBubble(ref modifiers.FinalDamage);
 		}
 
 		public override void PostUpdate()
@@ -60,11 +59,11 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 			bubbleVisual = Math.Min(bubbleVisual, bubbleStrength); //Cap visual strength at real strength value
 		}
 
-		private void TryPopBubble(ref int damage)
+		private void TryPopBubble(ref StatModifier damage)
 		{
 			if (bubbleStrength > 0f)
 			{
-				damage = (int)(damage * (1 - (MaxResist * bubbleStrength)));
+				damage *= 1 - (MaxResist * bubbleStrength);
 				PopBubble();
 			}
 		}
@@ -86,7 +85,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 			{
 				NPC npc = Main.npc[i];
 				if (npc.active && npc.CanBeChasedBy() && npc.DistanceSQ(Player.Center) < radius * radius)
-					npc.StrikeNPC(1, 3f * bubbleStrength, Player.Center.X < npc.Center.X ? 1 : -1);
+					npc.SimpleStrikeNPC(1, Player.Center.X < npc.Center.X ? 1 : -1, false, 3f * bubbleStrength);
 			}
 
 			SoundEngine.PlaySound(SoundID.Item54 with { PitchVariance = 0.2f }, Player.Center);

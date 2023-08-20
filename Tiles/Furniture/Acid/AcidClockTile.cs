@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture.Acid;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using static Terraria.ModLoader.ModContent;
@@ -27,8 +28,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				16
 			};
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Clock");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Corrosive Clock");
 			AddMapEntry(new Color(100, 122, 111), name);
 			DustType = -1;
 			AdjTiles = new int[] { TileID.GrandfatherClocks };

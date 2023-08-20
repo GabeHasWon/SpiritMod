@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Explosion");
+			// DisplayName.SetDefault("Unstable Explosion");
 			Main.projFrames[Projectile.type] = 9;
 		}
 

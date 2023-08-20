@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Books
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Notes on Soulbloom");
-            Tooltip.SetDefault("by Lena Ashwood, Alchemist\nIt details the anatomy and uses of an extremely rare herb\n'Where could she have found this?'");
+            // DisplayName.SetDefault("Notes on Soulbloom");
+            // Tooltip.SetDefault("by Lena Ashwood, Alchemist\nIt details the anatomy and uses of an extremely rare herb\n'Where could she have found this?'");
         }
 
         public override void SetDefaults()

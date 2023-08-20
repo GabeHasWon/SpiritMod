@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Armor.LeatherArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Marksman's Hood");
-			Tooltip.SetDefault("Increases ranged weapon damage by 1");
+			// DisplayName.SetDefault("Marksman's Hood");
+			// Tooltip.SetDefault("Increases ranged weapon damage by 1");
 		}
 
 		public override void SetDefaults()

@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Armor.SilkArmor
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sirwal");
+			// DisplayName.SetDefault("Sirwal");
 			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, 2) { NotActuallyAnimating = true });
 		}
 

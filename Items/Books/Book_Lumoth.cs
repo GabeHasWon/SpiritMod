@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Books
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Notes on Lumoths");
-            Tooltip.SetDefault("by Calvin Reyes, Researcher\nIt explains the mechanisms behind bright Lumoths");
+            // DisplayName.SetDefault("Notes on Lumoths");
+            // Tooltip.SetDefault("by Calvin Reyes, Researcher\nIt explains the mechanisms behind bright Lumoths");
         }
 
         public override void SetDefaults()

@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Briarthorn Slime");
+			// DisplayName.SetDefault("Briarthorn Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
@@ -70,18 +70,18 @@ namespace SpiritMod.NPCs.Reach
 			npcLoot.AddCommon(ItemID.Bezoar, 200);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.Poisoned, 180);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 12; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SlimeBunny, 2.5f * hitDirection, -2.5f, 0, Color.Green, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SlimeBunny, 2.5f * hitDirection, -2.5f, 0, Color.Green, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SlimeBunny, 2.5f * hit.HitDirection, -2.5f, 0, Color.Green, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SlimeBunny, 2.5f * hit.HitDirection, -2.5f, 0, Color.Green, 0.7f);
 			}
 		}
 	}

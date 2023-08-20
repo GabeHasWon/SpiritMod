@@ -9,8 +9,8 @@ namespace SpiritMod.Mounts.Minecarts.MarbleMinecart
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nemean Chariot");
-			Tooltip.SetDefault("When charging, you gain defense.\n\"A good lookin' ride, to be sure\" - Professor Temp. O. Rary");
+			// DisplayName.SetDefault("Nemean Chariot");
+			// Tooltip.SetDefault("When charging, you gain defense.\n\"A good lookin' ride, to be sure\" - Professor Temp. O. Rary");
 
 			MountID.Sets.Cart[Item.mountType] = true;
 		}

@@ -14,12 +14,6 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop
 	[Sacrifice(1)]
 	public class ScarabPendant : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Scarab Pendant");
-			Tooltip.SetDefault("Summons a rideable giant pillbug that rolls through enemies at high speed\nRolling through an enemy protects against contact damage");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
@@ -42,8 +36,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop
 		{
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.buffNoSave[Type] = true;
-			DisplayName.SetDefault("Pillbug Friend");
-			Description.SetDefault("'Rock and roll!'");
+			// DisplayName.SetDefault("Pillbug Friend");
+			// Description.SetDefault("'Rock and roll!'");
 		}
 
 		public override void Update(Player player, ref int buffIndex)
@@ -114,7 +108,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop
 				var enemies = Main.npc.SkipLast(1).Where(x => x.Hitbox.Intersects(player.Hitbox) && x.CanBeChasedBy(this) && x.immune[player.whoAmI] == 0);
 				foreach (NPC npc in enemies)
 				{
-					npc.StrikeNPC((int)(player.GetDamage(DamageClass.Melee).ApplyTo(25 * Main.rand.NextFloat(0.9f, 1.2f))), 1, player.direction, Main.rand.NextBool(10));
+					npc.SimpleStrikeNPC((int)player.GetDamage(DamageClass.Melee).ApplyTo(25 * Main.rand.NextFloat(0.9f, 1.2f)), player.direction, Main.rand.NextBool(10), 1);
 					npc.immune[player.whoAmI] = 10;
 				}
 			}
@@ -131,7 +125,9 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop
 			}
 		}
 
-		public override bool Draw(List<DrawData> playerDrawData, int drawType, Player drawPlayer, ref Texture2D texture, ref Texture2D glowTexture, ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, ref Vector2 drawOrigin, ref float drawScale, float shadow)
+		public override bool Draw(List<DrawData> playerDrawData, int drawType, Player drawPlayer, ref Texture2D texture, ref Texture2D glowTexture, 
+			ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, 
+			ref Vector2 drawOrigin, ref float drawScale, float shadow)
 		{
 			ScarabMountPlayer modplayer = drawPlayer.GetModPlayer<ScarabMountPlayer>();
 			rotation = modplayer.scarabRotation;
@@ -143,10 +139,11 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop
 				for (int i = 0; i < modplayer.scarabOldPosition.Length; i++)
 				{
 					float opacity = (modplayer.scarabOldPosition.Length - i) / (float)modplayer.scarabOldPosition.Length;
-					DrawData drawdata = new DrawData(texture, modplayer.scarabOldPosition[i] - Main.screenPosition + heightoffset, null, drawColor * 0.2f * opacity, rotation, texture.Size() / 2, 1, SpriteEffects.None, 0);
+					var pos = modplayer.scarabOldPosition[i] - Main.screenPosition + heightoffset;
+					DrawData drawdata = new DrawData(texture, pos, null, drawColor * 0.2f * opacity, rotation, texture.Size() / 2, 1, SpriteEffects.None, 0);
 					playerDrawData.Add(drawdata);
 
-					DrawData drawdataglow = new DrawData(glowTexture, modplayer.scarabOldPosition[i] - Main.screenPosition + heightoffset, null, Color.White * 0.2f * opacity, rotation, texture.Size() / 2, 1, SpriteEffects.None, 0);
+					DrawData drawdataglow = new DrawData(glowTexture, pos, null, Color.White * 0.2f * opacity, rotation, texture.Size() / 2, 1, SpriteEffects.None, 0);
 					playerDrawData.Add(drawdataglow);
 				}
 			}

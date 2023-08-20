@@ -12,10 +12,10 @@ namespace SpiritMod.Items.Accessory.Bauble
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Winter's Bauble");
-			Tooltip.SetDefault("Defensive and movement abilities are increased when below half health" +
+			// DisplayName.SetDefault("Winter's Bauble");
+			/* Tooltip.SetDefault("Defensive and movement abilities are increased when below half health" +
 				"\nDropping below half health creates a shield that nullifies projectiles for 6 seconds" +
-				"\n1 minute cooldown");
+				"\n1 minute cooldown"); */
 		}
 
 		public override void SetDefaults()

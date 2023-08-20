@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Starfarer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stardancer");
+			// DisplayName.SetDefault("Stardancer");
 			Main.npcFrameCount[NPC.type] = 1;
 			NPCHelper.BuffImmune(Type, true);
 
@@ -133,10 +133,10 @@ namespace SpiritMod.NPCs.Starfarer
 		public override bool CheckActive() => false;
 		public override bool PreKill() => false;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hit.HitDirection, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -176,9 +176,9 @@ namespace SpiritMod.NPCs.Starfarer
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Starfarer/CogTrapperBody_Glow").Value, screenPos);
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.6f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * 0.6f * balance);
 			NPC.damage = (int)(NPC.damage * 0.65f);
 		}
 	}

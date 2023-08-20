@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 {
 	public class ElectrosphereGrenade : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Electrosphere Grenade");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Electrosphere Grenade");
 
 		public override void SetDefaults()
 		{
@@ -32,6 +32,6 @@ namespace SpiritMod.Projectiles
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.Kill();
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.Kill();
 	}
 }

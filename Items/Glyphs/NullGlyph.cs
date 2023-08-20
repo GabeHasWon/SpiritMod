@@ -19,8 +19,8 @@ namespace SpiritMod.Items.Glyphs
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Null Glyph");
-			Tooltip.SetDefault("Can be used to wipe a glyph off an item");
+			// DisplayName.SetDefault("Null Glyph");
+			// Tooltip.SetDefault("Can be used to wipe a glyph off an item");
 		}
 
 		public override void SetDefaults()

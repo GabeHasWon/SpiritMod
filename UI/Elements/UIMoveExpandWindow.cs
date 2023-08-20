@@ -48,7 +48,7 @@ namespace SpiritMod.UI.Elements
             _useBorder = useBorder;
         }
 
-        public override void MouseDown(UIMouseEvent evt)
+        public override void LeftMouseDown(UIMouseEvent evt)
         {
             if (evt.Target == this)
             {
@@ -71,7 +71,7 @@ namespace SpiritMod.UI.Elements
                 }
             }
 
-            base.MouseDown(evt);
+            base.LeftMouseDown(evt);
         }
 
         private bool CanResize()
@@ -116,7 +116,7 @@ namespace SpiritMod.UI.Elements
             return ResizeFrom.TL;
         }
 
-        public override void MouseUp(UIMouseEvent evt)
+        public override void LeftMouseUp(UIMouseEvent evt)
         {
             if (evt.Target == this)
             {
@@ -124,7 +124,7 @@ namespace SpiritMod.UI.Elements
                 _resizing = false;
             }
 
-            base.MouseUp(evt);
+            base.LeftMouseUp(evt);
         }
 
         public override void Update(GameTime gameTime)

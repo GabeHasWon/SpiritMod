@@ -22,7 +22,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blaster");
+			// DisplayName.SetDefault("Blaster");
 			Main.projFrames[Projectile.type] = 12;
 		}
 

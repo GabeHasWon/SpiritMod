@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Ghoul");
+			// DisplayName.SetDefault("Shadow Ghoul");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.DesertGhoul];
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
@@ -71,7 +71,7 @@ namespace SpiritMod.NPCs.Spirit
 			return 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (Main.netMode != NetmodeID.MultiplayerClient && NPC.life <= 0) {
 				NPC.position.X = NPC.position.X + (float)(NPC.width / 2);
@@ -92,7 +92,7 @@ namespace SpiritMod.NPCs.Spirit
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(12))
 				target.AddBuff(BuffID.Cursed, 150);

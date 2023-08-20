@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cursed Fire");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cursed Fire");
 
 		public override void SetDefaults()
 		{
@@ -48,7 +48,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position.X + 100, Projectile.position.Y - 100, 0f, 30f, ModContent.ProjectileType<NightSpit>(), Projectile.damage, 0f, Projectile.owner, 0f, 0f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.CursedInferno, 300, true);

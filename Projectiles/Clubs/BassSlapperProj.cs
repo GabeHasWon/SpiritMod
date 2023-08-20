@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bass Slapper");
+			// DisplayName.SetDefault("Bass Slapper");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

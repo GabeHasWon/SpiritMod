@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Quake Fist");
-			Tooltip.SetDefault("Launches Prismatic fire \nOccasionally inflicts foes with 'Unstable Affliction'");
+			// DisplayName.SetDefault("Quake Fist");
+			// Tooltip.SetDefault("Launches Prismatic fire \nOccasionally inflicts foes with 'Unstable Affliction'");
 		}
 
 

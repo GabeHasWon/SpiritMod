@@ -10,8 +10,8 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 		public int dustTimer = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Golden Curse");
-			Description.SetDefault("Increased fall speed and damage");
+			// DisplayName.SetDefault("Golden Curse");
+			// Description.SetDefault("Increased fall speed and damage");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = false;
 			Main.buffNoTimeDisplay[Type] = true;

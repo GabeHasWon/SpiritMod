@@ -12,6 +12,7 @@ using SpiritMod.Tiles.Furniture.SlotMachine;
 using SpiritMod.Items.Sets.MagicMisc.MagicDeck;
 using Terraria.GameContent.Personalities;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Buffs;
 
 namespace SpiritMod.NPCs.Town
 {
@@ -23,7 +24,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gambler");
+			// DisplayName.SetDefault("Gambler");
 			Main.npcFrameCount[NPC.type] = 26;
 			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
 			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -66,7 +67,7 @@ namespace SpiritMod.NPCs.Town
 			});
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
 		{
 			if (NPC.AnyNPCs(NPCType<BoundGambler>()))
 				return false;
@@ -104,52 +105,34 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetChatButtons(ref string button, ref string button2) => button = Language.GetTextValue("LegacyInterface.28");
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
-				shop = true;
+				shopName = "Shop";
 		}
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
+		public override void AddShops()
 		{
-			AddItem(ref shop, ref nextSlot, ItemType<CopperChest>());
-			AddItem(ref shop, ref nextSlot, ItemType<SilverChest>());
-			AddItem(ref shop, ref nextSlot, ItemType<GoldChest>());
-			AddItem(ref shop, ref nextSlot, ItemType<PlatinumChest>());
+			NPCShop shop = new NPCShop(Type);
+			shop.Add<CopperChest>();
+			shop.Add<SilverChest>();
+			shop.Add<GoldChest>();
+			shop.Add<PlatinumChest>();
 
-			nextSlot += 6;
+			shop.Add<AceOfClubs>(Condition.MoonPhaseFull); //Each of these have two entries for the 2 phases they're in
+			shop.Add<AceOfClubs>(Condition.MoonPhaseWaningGibbous);
+			shop.Add<AceOfHearts>(Condition.MoonPhaseThirdQuarter);
+			shop.Add<AceOfHearts>(Condition.MoonPhaseWaningCrescent);
+			shop.Add<AceOfDiamonds>(Condition.MoonPhaseNew);
+			shop.Add<AceOfDiamonds>(Condition.MoonPhaseWaxingCrescent);
+			shop.Add<AceOfSpades>(Condition.MoonPhaseFirstQuarter);
+			shop.Add<AceOfSpades>(Condition.MoonPhaseWaxingGibbous);
 
-			switch (Main.moonPhase)
-			{
-				case 0 when !Main.dayTime:
-					AddItem(ref shop, ref nextSlot, ItemType<AceOfClubs>());
-					break;
-				case 1 when !Main.dayTime:
-					AddItem(ref shop, ref nextSlot, ItemType<AceOfClubs>());
-					break;
-				case 2 when !Main.dayTime:
-					AddItem(ref shop, ref nextSlot, ItemType<AceOfHearts>());
-					break;
-				case 3 when !Main.dayTime:
-					AddItem(ref shop, ref nextSlot, ItemType<AceOfHearts>());
-					break;
-				case 4 when !Main.dayTime:
-					AddItem(ref shop, ref nextSlot, ItemType<AceOfDiamonds>());
-					break;
-				case 5 when !Main.dayTime:
-					AddItem(ref shop, ref nextSlot, ItemType<AceOfDiamonds>());
-					break;
-				case 6 when !Main.dayTime:
-					AddItem(ref shop, ref nextSlot, ItemType<AceOfSpades>());
-					break;
-				case 7 when !Main.dayTime:
-					AddItem(ref shop, ref nextSlot, ItemType<AceOfSpades>());
-					break;
-			}
+			shop.Add<Dartboard>();
+			shop.Add<SlotMachine>();
+			shop.Add<MagicDeck>(Condition.Hardmode);
 
-			AddItem(ref shop, ref nextSlot, ItemType<Dartboard>());
-			AddItem(ref shop, ref nextSlot, ItemType<SlotMachine>());
-			AddItem(ref shop, ref nextSlot, ItemType<MagicDeck>(), -1, Main.hardMode);
+			shop.Register();
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -175,7 +158,7 @@ namespace SpiritMod.NPCs.Town
 			multiplier = 8f;
 			randomOffset = 2f;
 		}
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Wave");
+			// DisplayName.SetDefault("Arcane Wave");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

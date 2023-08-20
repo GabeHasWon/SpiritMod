@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Books
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Beginner's Guide to Armor");
-            Tooltip.SetDefault("by Knight-Crusader Aurelius");
+            // DisplayName.SetDefault("The Beginner's Guide to Armor");
+            // Tooltip.SetDefault("by Knight-Crusader Aurelius");
         }
     }
 }

@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Pet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unbound Mask");
+			// DisplayName.SetDefault("Unbound Mask");
 			Main.projFrames[Projectile.type] = 4;
 			Main.projPet[Projectile.type] = true;
 		}

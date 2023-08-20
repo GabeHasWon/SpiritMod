@@ -32,7 +32,6 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 
 			AddMapEntry(new Color(80, 140, 35));
 			DustType = DustID.JunglePlants;
-			ItemDrop = ModContent.ItemType<BambooPikeItem>();
 		}
 
 		public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
@@ -124,7 +123,7 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 
 			if (tile.HasTile && tile.TileType == ModContent.TileType<BambooPikeTile>() && tile.TileFrameY == 0) //The tip of the pike
 			{
-				npc.StrikeNPC((int)damage, 0, 1);
+				npc.SimpleStrikeNPC((int)damage, 1, false, 0);
 				npc.AddBuff(ModContent.BuffType<Impaled>(), 500);
 
 				SoundEngine.PlaySound(SoundID.NPCDeath12, npc.Center);

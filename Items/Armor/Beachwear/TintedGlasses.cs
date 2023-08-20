@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Armor.Beachwear
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("'They help sell the look, so it's best to keep them on even when it's dark.'");
+			// Tooltip.SetDefault("'They help sell the look, so it's best to keep them on even when it's dark.'");
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}
 

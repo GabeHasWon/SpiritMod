@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Weapon.Magic.CreepingVine
 		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Creeping Vine");
-			Tooltip.SetDefault("Throw at a surface to grow damaging vines");
+			// DisplayName.SetDefault("Creeping Vine");
+			// Tooltip.SetDefault("Throw at a surface to grow damaging vines");
 		}
 
 		public override void SetDefaults()
@@ -48,7 +48,7 @@ namespace SpiritMod.Items.Weapon.Magic.CreepingVine
 		float shrinkCounter = 0.25f;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thyrsus");
+			// DisplayName.SetDefault("Thyrsus");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -117,7 +117,7 @@ namespace SpiritMod.Items.Weapon.Magic.CreepingVine
 	}
 	public class CreepingVineProjTwo : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Vine");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Vine");
 
 
 		public CreepingVinePrimTrail trail;

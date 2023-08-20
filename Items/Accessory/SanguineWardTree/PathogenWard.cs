@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pathogen Ward");
-			Tooltip.SetDefault("A bloody ward surrounds you, inflicting Blood Corruption to nearby enemies\nKilling enemies within the aura restores some life\nHearts are more likely to drop from enemies\nProvides immunity to the 'Poisoned' buff");
+			// DisplayName.SetDefault("Pathogen Ward");
+			// Tooltip.SetDefault("A bloody ward surrounds you, inflicting Blood Corruption to nearby enemies\nKilling enemies within the aura restores some life\nHearts are more likely to drop from enemies\nProvides immunity to the 'Poisoned' buff");
 		}
 
 		public override void SetDefaults()

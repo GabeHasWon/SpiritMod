@@ -17,7 +17,7 @@ namespace SpiritMod.Projectiles.Bullet
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Terra Bullet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Terra Bullet");
 
 		public override void SetDefaults()
 		{
@@ -35,7 +35,7 @@ namespace SpiritMod.Projectiles.Bullet
 			dust.velocity = (Projectile.velocity * Main.rand.NextFloat(.2f, .3f)).RotatedByRandom(.15f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			int debuffType = Main.rand.Next(3) switch
 			{

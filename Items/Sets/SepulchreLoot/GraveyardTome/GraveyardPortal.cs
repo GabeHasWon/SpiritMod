@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.GraveyardTome
 	public class GraveyardPortal : ModProjectile
 	{
 		public override string Texture => "SpiritMod/Textures/StardustPillarStar";
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Graveyard Portal");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Graveyard Portal");
 
 		public const float MaxScale = 1.2f;
 

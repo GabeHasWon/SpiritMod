@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Strange Flora");
+			// DisplayName.SetDefault("Strange Flora");
 		}
 
 

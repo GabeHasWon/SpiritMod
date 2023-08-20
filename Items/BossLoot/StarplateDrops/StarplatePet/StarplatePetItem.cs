@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Controller");
-			Tooltip.SetDefault("Summons a Starplate miniature");
+			// DisplayName.SetDefault("Starplate Controller");
+			// Tooltip.SetDefault("Summons a Starplate miniature");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

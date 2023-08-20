@@ -18,7 +18,6 @@ namespace SpiritMod.Tiles.Block
 			TileID.Sets.Conversion.Stone[Type] = true;
 			AddMapEntry(new Color(70, 130, 180));
 			HitSound = SoundID.Tink;
-			ItemDrop = ModContent.ItemType<SpiritStoneItem>();
 		}
 
 		public override bool CanExplode(int i, int j)

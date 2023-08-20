@@ -1,6 +1,7 @@
 
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -12,8 +13,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Koi Totem");
-			Tooltip.SetDefault("Increases fishing skill when worn or when placed nearby\nTotem occasionally spits out the bait that was used for reusability\n");
+			// DisplayName.SetDefault("Koi Totem");
+			// Tooltip.SetDefault("Increases fishing skill when worn or when placed nearby\nTotem occasionally spits out the bait that was used for reusability\n");
 		}
 
 		public override void SetDefaults()
@@ -54,8 +55,8 @@ namespace SpiritMod.Items.Accessory
 
             DustType = DustID.Stone;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Koi Totem");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Koi Totem");
 			AddMapEntry(new Color(107, 90, 64), name);
 		}
 

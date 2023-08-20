@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Weapon.Magic.LuminanceSeacone
 		public int b = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Luminance Ball");
+			// DisplayName.SetDefault("Luminance Ball");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -159,10 +159,12 @@ namespace SpiritMod.Items.Weapon.Magic.LuminanceSeacone
 				wetCheck = true;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			Player player = Main.player[Projectile.owner];
-			if (wetCheck) { damage = Main.rand.Next(7, 13) + player.HeldItem.damage; }
+
+			if (wetCheck)
+				modifiers.FinalDamage.Base = Main.rand.Next(7, 13) + player.HeldItem.damage;
 		}
 	}
 }

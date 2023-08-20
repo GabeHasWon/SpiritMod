@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rune Wizard's Scroll");
-			Tooltip.SetDefault("'We all knew Skeletons could write.'\nMagic attacks may inflict random, powerful debuffs on foes\nMagic attacks may shoot out a random projectile");
+			// DisplayName.SetDefault("Rune Wizard's Scroll");
+			// Tooltip.SetDefault("'We all knew Skeletons could write.'\nMagic attacks may inflict random, powerful debuffs on foes\nMagic attacks may shoot out a random projectile");
 		}
 
 		public override void SetDefaults()

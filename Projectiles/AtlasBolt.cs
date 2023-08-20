@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Earthen Energy");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Earthen Energy");
 
 		public override void SetDefaults()
 		{
@@ -94,7 +94,7 @@ namespace SpiritMod.Projectiles
 				});
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<SoulFlare>(), 180);

@@ -25,7 +25,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			_detatched);
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blood Gazer");
+			// DisplayName.SetDefault("Blood Gazer");
 			NPCHelper.BuffImmune(Type);
 		}
 
@@ -45,7 +45,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			NPC.netAlways = true;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.damage = (int)(NPC.damage * bossLifeScale * 0.66f);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.damage = (int)(NPC.damage * balance * 0.66f);
 
 		private const int chainSegments = 16;
 		public void InitializeChain(Vector2 position) => _chain = new Chain(8, chainSegments, position, new ChainPhysics(0.9f, 0.5f, 0f));
@@ -56,9 +56,9 @@ namespace SpiritMod.NPCs.BloodGazer
 
 		public override bool CheckDead() => !Active;
 
-		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage = 0;
+		public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage *= 0;
 
-		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit) => damage = 0;
+		public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage *= 0;
 
 		public override bool PreKill() => false;
 

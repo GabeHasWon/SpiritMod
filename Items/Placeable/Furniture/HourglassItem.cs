@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Hourglass");
+			// DisplayName.SetDefault("Ancient Hourglass");
         }
 
 		public override void SetDefaults()

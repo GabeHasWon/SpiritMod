@@ -32,7 +32,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ghost Feather");
+			// DisplayName.SetDefault("Ghost Feather");
 			Main.projFrames[Type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Type] = 5;
 			ProjectileID.Sets.TrailingMode[Type] = 2;
@@ -84,7 +84,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (!Main.dedServ)
 				for (int i = 0; i < 2; i++)

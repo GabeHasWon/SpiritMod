@@ -17,7 +17,7 @@ namespace SpiritMod.Projectiles.Pet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Pup");
+			// DisplayName.SetDefault("Shadow Pup");
 			Main.projFrames[Projectile.type] = 5;
 			Main.projPet[Projectile.type] = true;
 		}

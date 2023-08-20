@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gravehunter");
-			Tooltip.SetDefault("'You can't tell if you guide the trigger or it guides you'");
+			// DisplayName.SetDefault("Gravehunter");
+			// Tooltip.SetDefault("'You can't tell if you guide the trigger or it guides you'");
 		}
 
 

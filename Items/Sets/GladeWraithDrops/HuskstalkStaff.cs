@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.GladeWraithDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Huskstalk Staff");
-			Tooltip.SetDefault("Shoots consecutive leaves");
+			// DisplayName.SetDefault("Huskstalk Staff");
+			// Tooltip.SetDefault("Shoots consecutive leaves");
 		}
 
 		public override void SetDefaults()

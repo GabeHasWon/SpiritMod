@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops.DuskingPet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skull Chime");
-			Tooltip.SetDefault("Summons a minor shadowflame");
+			// DisplayName.SetDefault("Skull Chime");
+			// Tooltip.SetDefault("Summons a minor shadowflame");
 		}
 
 		public override void SetDefaults()

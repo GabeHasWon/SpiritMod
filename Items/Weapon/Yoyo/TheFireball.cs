@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Weapon.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fireball");
-			Tooltip.SetDefault("Shoots out bouncing fireballs");
+			// DisplayName.SetDefault("Fireball");
+			// Tooltip.SetDefault("Shoots out bouncing fireballs");
 		}
 
 		public override void SetDefaults()

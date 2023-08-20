@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Wisp");
+			// DisplayName.SetDefault("Unstable Wisp");
 			Main.npcFrameCount[NPC.type] = 4;
 		}
 

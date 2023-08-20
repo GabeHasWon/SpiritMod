@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodpetal Wand");
-			Tooltip.SetDefault("Rains down multiple blood petals from the sky around the cursor position");
+			// DisplayName.SetDefault("Bloodpetal Wand");
+			// Tooltip.SetDefault("Rains down multiple blood petals from the sky around the cursor position");
 		}
 
 

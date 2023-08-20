@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Couch potato");
-			Description.SetDefault("'Stop being so lazy!'");
+			// DisplayName.SetDefault("Couch potato");
+			// Description.SetDefault("'Stop being so lazy!'");
 			Main.debuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.pvpBuff[Type] = true;

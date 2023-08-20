@@ -21,7 +21,7 @@ namespace SpiritMod.Projectiles.Summon.LaserGate
 		private bool Paired => pairWhoAmI > -1;
 		public int pairWhoAmI = -1;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Right Gate");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Right Gate");
 
 		public override void SetDefaults()
 		{

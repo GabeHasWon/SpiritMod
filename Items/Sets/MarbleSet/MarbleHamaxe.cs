@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.MarbleSet
 {
 	public class MarbleHamaxe : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Hamaxe");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Hamaxe");
 
 		public override void SetDefaults()
 		{

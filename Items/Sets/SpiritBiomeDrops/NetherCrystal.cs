@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nether Crystal");
-			Tooltip.SetDefault("'Brimming with bright souls'");
+			// DisplayName.SetDefault("Nether Crystal");
+			// Tooltip.SetDefault("'Brimming with bright souls'");
 		}
 
 

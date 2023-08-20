@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.CascadeSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Deep Cascade Shard");
-			Tooltip.SetDefault("'Where magma meets seawater'");
+			// DisplayName.SetDefault("Deep Cascade Shard");
+			// Tooltip.SetDefault("'Where magma meets seawater'");
 		}
 
 		public override void SetDefaults()

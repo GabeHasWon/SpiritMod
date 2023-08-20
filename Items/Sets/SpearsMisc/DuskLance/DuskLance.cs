@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.SpearsMisc.DuskLance
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Lance");
-			Tooltip.SetDefault("Shoots out an apparition that inflicts Shadowflame");
+			// DisplayName.SetDefault("Dusk Lance");
+			// Tooltip.SetDefault("Shoots out an apparition that inflicts Shadowflame");
 		}
 		public override void SetDefaults()
 		{

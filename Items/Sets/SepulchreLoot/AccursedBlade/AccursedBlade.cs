@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Accursed Blade");
-            Tooltip.SetDefault("Kill enemies and collect their souls to build up charge\nRight click to release charge as a cursed bolt");
+            // DisplayName.SetDefault("Accursed Blade");
+            // Tooltip.SetDefault("Kill enemies and collect their souls to build up charge\nRight click to release charge as a cursed bolt");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -65,7 +65,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
             return true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
 			if (target.life <= 0 && target.lifeMax > 5 && !target.friendly && !target.SpawnedFromStatue)
 			{
@@ -93,8 +93,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Accursed Soul");
-			Tooltip.SetDefault("You shouldn't see this");
+			// DisplayName.SetDefault("Accursed Soul");
+			// Tooltip.SetDefault("You shouldn't see this");
 			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 7));
 			ItemID.Sets.AnimatesAsSoul[Type] = true;
 			ItemID.Sets.ItemNoGravity[Type] = true;
@@ -157,7 +157,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Accursed Bolt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Accursed Bolt");
 		public override void SetDefaults()
 		{
 			Projectile.width = 32;

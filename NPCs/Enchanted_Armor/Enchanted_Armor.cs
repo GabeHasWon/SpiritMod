@@ -34,7 +34,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Draugr");
+			// DisplayName.SetDefault("Draugr");
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -374,7 +374,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -385,9 +385,9 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 			}
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Clentaminator_Green, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Clentaminator_Green, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 		}
 
@@ -513,7 +513,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 				{
 					if (NPC.frameCounter == 30 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0))
 					{
-						player.Hurt(PlayerDeathReason.LegacyDefault(), (int)(NPC.damage * 1.5f), NPC.direction, false, false, false, -1);
+						player.Hurt(PlayerDeathReason.LegacyDefault(), (int)(NPC.damage * 1.5f), NPC.direction, false, false, -1, false);
 						NPC.frame.Y = 9 * frameHeight;
 					}
 					NPC.frame.Y = 11 * frameHeight;

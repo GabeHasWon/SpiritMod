@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Books
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fungal Pilferers");
-            Tooltip.SetDefault("by Dr. Charlie Maitake");
+            // DisplayName.SetDefault("Fungal Pilferers");
+            // Tooltip.SetDefault("by Dr. Charlie Maitake");
         }
     }
 }

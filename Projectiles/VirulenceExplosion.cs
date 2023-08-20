@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Virulent Explosion");
+			// DisplayName.SetDefault("Virulent Explosion");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -87,7 +87,7 @@ namespace SpiritMod.Projectiles
 					Projectile.frame = 0;
 			}
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.Poisoned, 240, true);
 		}

@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mimic Repellent");
-			Tooltip.SetDefault("Prevents Crate Mimics from being fished up\n'Keep those tentacled freaks at bay!'");
+			// DisplayName.SetDefault("Mimic Repellent");
+			// Tooltip.SetDefault("Prevents Crate Mimics from being fished up\n'Keep those tentacled freaks at bay!'");
 		}
 
 		public override void SetDefaults()

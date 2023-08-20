@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("R'ylheian");
+			// DisplayName.SetDefault("R'ylheian");
 			Main.projFrames[base.Projectile.type] = 4;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

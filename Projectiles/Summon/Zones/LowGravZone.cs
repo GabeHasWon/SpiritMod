@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Summon.Zones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Low Gravity Zone");
+			// DisplayName.SetDefault("Low Gravity Zone");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }

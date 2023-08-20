@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Pet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jellyfish");
+			// DisplayName.SetDefault("Jellyfish");
 			Main.projFrames[Projectile.type] = 3;
 			Main.projPet[Projectile.type] = true;
 		}

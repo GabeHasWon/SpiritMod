@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Bloater
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloater");
+			// DisplayName.SetDefault("Bloater");
 			Main.npcFrameCount[NPC.type] = 9;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
@@ -217,10 +217,10 @@ namespace SpiritMod.NPCs.Bloater
 			NPC.spriteDirection = NPC.direction;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 23; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 1.5f, -1f, 0, default, .91f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection * 1.5f, -1f, 0, default, .91f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

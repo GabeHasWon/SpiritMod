@@ -7,8 +7,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Torment Shard");
-			Tooltip.SetDefault("'Filled with suffering'");
+			// DisplayName.SetDefault("Torment Shard");
+			// Tooltip.SetDefault("'Filled with suffering'");
 		}
 
 

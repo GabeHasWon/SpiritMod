@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.DungeonCube
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault($"{CubeColor} Dungeon Cube");
+			// DisplayName.SetDefault($"{CubeColor} Dungeon Cube");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
@@ -47,7 +47,7 @@ namespace SpiritMod.NPCs.DungeonCube
 			});
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Cursed, 60, true);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.Cursed, 60, true);
 
 		public override bool PreAI()
 		{
@@ -174,7 +174,7 @@ namespace SpiritMod.NPCs.DungeonCube
 			npcLoot.AddCommon(TileDrop, 1, 2, 5);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) 
 				for (int i = 1; i <= 4; i++) 

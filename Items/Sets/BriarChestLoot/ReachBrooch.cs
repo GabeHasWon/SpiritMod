@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Forsworn Pendant");	
-			Tooltip.SetDefault("Generates a bright glow around the player\nGives increased vision in the Briar at night or underground");	
+			// DisplayName.SetDefault("Forsworn Pendant");	
+			// Tooltip.SetDefault("Generates a bright glow around the player\nGives increased vision in the Briar at night or underground");	
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/BriarChestLoot/ReachBrooch");
 		}
 

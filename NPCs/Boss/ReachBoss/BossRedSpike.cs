@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Needle Spike");
+			// DisplayName.SetDefault("Needle Spike");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -80,7 +80,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, vector29, null, color28, Projectile.rotation, TextureAssets.Projectile[Projectile.type].Value.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
 			}
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(15))
 				target.AddBuff(BuffID.Bleeding, 200);

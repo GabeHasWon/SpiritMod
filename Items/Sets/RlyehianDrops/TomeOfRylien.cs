@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 {
 	public class TomeOfRylien : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Tome of R'lyeh");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Tome of R'lyeh");
 
 		public override void SetDefaults()
 		{

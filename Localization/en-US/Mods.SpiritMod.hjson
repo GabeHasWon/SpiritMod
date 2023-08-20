@@ -32,3 +32,237 @@ OceanDepthsMusic: "[i:6076]  Adds a unique track for the Ocean depths"
 HyperspaceMusic: "[i:6076]  Adds two unique tracks for the artificial Hyperspace biome"
 AshfallMusic: "[i:6076]  Adds a unique track for the Ashfall weather in the Underworld"
 VictoryNightMusic: "[i:6076]  Adds a unique track for the Lantern Night event"
+
+Keybinds: {
+	"SpiritMod:QuestBookToggle.DisplayName": Spirit Mod: Quest Book Toggle
+	"SpiritMod:QuestHUDToggle.DisplayName": Spirit Mod: Quest H U D Toggle
+}
+
+Configs: {
+	SpiritClientConfig: {
+		DisplayName: Client Config
+
+		ScreenShake: {
+			Label: "{$Mods.SpiritMod.Screenshake}"
+			Tooltip:
+				'''
+				Modifies the intensity of screenshake applied by content within the mod
+				Set to 0 to completely disable
+				'''
+		}
+
+		DistortionConfig: {
+			Label: "{$Mods.SpiritMod.Distortion}"
+			Tooltip: Enables screen distortion while in the Spirit Biome or when fighting the Starplate Voyager
+		}
+
+		ForegroundParticles: {
+			Label: "{$Mods.SpiritMod.Particles}"
+			Tooltip: Enables extra particles in the foreground under certain conditions
+		}
+
+		AutoReuse: {
+			Label: "{$Mods.SpiritMod.Autoswing}"
+			Tooltip: Enables an extra line in weapon tooltips displaying if an item is auto-reuse/autoswing
+		}
+
+		QuickSell: {
+			Label: "{$Mods.SpiritMod.Quicksell}"
+			Tooltip: Enables the quick-sell feature, which allows for easily selling all unwanted items to NPCs
+		}
+
+		AmbientSounds: {
+			Label: "{$Mods.SpiritMod.AmbientSounds}"
+			Tooltip: Enables ambient sound effects for some biomes
+		}
+
+		LeafFall: {
+			Label: "{$Mods.SpiritMod.LeafFallAmbience}"
+			Tooltip:
+				'''
+				Enables falling leaf ambience during Calm Nights or while in the Briar
+				Disable this to prevent strange interactions while playing Terraria Overhaul
+				'''
+		}
+
+		QuestBookLocation: {
+			Label: "{$Mods.SpiritMod.QuestButton}"
+			Tooltip: Change where the quest book's button appears in your inventory
+		}
+
+		QuestBookSwitching: {
+			Label: "{$Mods.SpiritMod.QuestBookSwitching}"
+			Tooltip: Switches from the current tab to the Active or Complete tab when a quest is activated or completed
+		}
+
+		ShowNPCQuestNotice: {
+			Label: "{$Mods.SpiritMod.QuestIcons}"
+			Tooltip: Enables the showing of quest exclamation marks when a Town NPC has a new quest
+		}
+
+		DoubleHideoutGeneration: {
+			Label: "{$Mods.SpiritMod.ArcaneHideoutGen}"
+			Tooltip:
+				'''
+				Enables the generation of both the Bandit Hideout and Arcane Tower
+				Only one spawns per world by default
+				Recommended only for large worlds
+				'''
+		}
+
+		OceanShape: {
+			Label: "{$Mods.SpiritMod.OceanShape}"
+			Tooltip:
+				'''
+				Modifies the Ocean generation in certain ways
+				Defaults to a Piecewise_V generation
+				The Piecewise_V generation is recommended for Spirit playthroughs
+				'''
+		}
+
+		VentCritters: {
+			Label: "{$Mods.SpiritMod.OceanVents}"
+			Tooltip:
+				'''
+				Enables the spawning of numerous critters around Hydrothermal Vents
+				These critters do not interfere with regular enemy spawnrates
+				However, they do contribute to the maximum NPC limit
+				'''
+		}
+
+		SurfaceWaterTransparency: {
+			Label: "{$Mods.SpiritMod.OceanWater}"
+			Tooltip:
+				'''
+				Allows for transparent ocean water when on
+				This does not affect any other biome
+				'''
+		}
+
+		EnemyFishing: {
+			Label: "{$Mods.SpiritMod.WaterEnemies}"
+			Tooltip: Enables enemy encounters while fishing
+		}
+	}
+
+	QuestInvLocation: {
+		Tooltip: ""
+		Minimap.Label: Minimap
+		Trashcan.Label: Trashcan
+		FarLeft.Label: Far Left
+	}
+
+	OceanShape: {
+		Tooltip: ""
+		Default.Label: Default
+		SlantedSine.Label: Slanted Sine
+		Piecewise.Label: Piecewise
+		Piecewise_M.Label: Piecewise_ M
+		Piecewise_V.Label: Piecewise_ V
+	}
+
+	SpiritMusicConfig: {
+		DisplayName: Music Config
+
+		BlizzardMusic: {
+			Label: "{$Mods.SpiritMod.BlizzardMusic}"
+			Tooltip: Adds a unique track for Blizzards
+		}
+
+		SnowNightMusic: {
+			Label: "{$Mods.SpiritMod.SnowNightMusic}"
+			Tooltip: Adds a unique track for the Snow biome at night
+		}
+
+		DesertNightMusic: {
+			Label: "{$Mods.SpiritMod.DesertNightMusic}"
+			Tooltip: Adds a unique track for the Desert biome at night
+		}
+
+		HallowNightMusic: {
+			Label: "{$Mods.SpiritMod.HallowNightMusic}"
+			Tooltip: Adds a unique track for The Hallow at night
+		}
+
+		CorruptNightMusic: {
+			Label: "{$Mods.SpiritMod.CorruptNightMusic}"
+			Tooltip: Adds a unique track for the Corruption at nighttime
+		}
+
+		CrimsonNightMusic: {
+			Label: "{$Mods.SpiritMod.CrimsonNightMusic}"
+			Tooltip: Adds a unique track for the Crimson at nighttime
+		}
+
+		GraniteMusic: {
+			Label: "{$Mods.SpiritMod.GraniteMusic}"
+			Tooltip: Adds a unique track for the Granite biome
+		}
+
+		MarbleMusic: {
+			Label: "{$Mods.SpiritMod.MarbleMusic}"
+			Tooltip: Adds a unique track for the Marble biome
+		}
+
+		UnderwaterMusic: {
+			Label: "{$Mods.SpiritMod.OceanDepthsMusic}"
+			Tooltip: Enables unique music for the Ocean while deep underwater
+		}
+
+		SpiderCaveMusic: {
+			Label: "{$Mods.SpiritMod.SpiderMusic}"
+			Tooltip: Adds a unique track for Spider caverns
+		}
+
+		MeteorMusic: {
+			Label: "{$Mods.SpiritMod.MeteorMusic}"
+			Tooltip: Adds a unique track for the Meteorite biome
+		}
+
+		FrostLegionMusic: {
+			Label: "{$Mods.SpiritMod.FrostLegionMusic}"
+			Tooltip: Adds a unique track for the Frost Legion
+		}
+
+		SkeletronPrimeMusic: {
+			Label: "{$Mods.SpiritMod.SkeletonPrimeMusic}"
+			Tooltip: Adds a unique boss soundtrack for Skeletron Prime
+		}
+
+		AuroraMusic: {
+			Label: "{$Mods.SpiritMod.AuroraMusic}"
+			Tooltip: Enables unique music for Auroras
+		}
+
+		LuminousMusic: {
+			Label: "{$Mods.SpiritMod.LuminousMusic}"
+			Tooltip: Enables unique music for Luminous Oceans
+		}
+
+		CalmNightMusic: {
+			Label: "{$Mods.SpiritMod.CalmNightMusic}"
+			Tooltip: Enables unique music for Calm Nights
+		}
+
+		NeonBiomeMusic: {
+			Label: "{$Mods.SpiritMod.HyperspaceMusic}"
+			Tooltip: Enables two unique tracks while in Hyperspace
+		}
+
+		AshfallMusic: {
+			Label: "{$Mods.SpiritMod.AshfallMusic}"
+			Tooltip: Enables a unique track for the Ashfall weather in the Underworld
+		}
+
+		VictoryDayMusic: {
+			Label: "{$Mods.SpiritMod.VictoryDayMusic}"
+			Tooltip: Enables a unique track for the day after the Lantern Night event
+		}
+	}
+}
+
+Condition: {
+	InBriar: Mods.SpiritMod.Condition.InBriar
+	InAsteroids: Mods.SpiritMod.Condition.InAsteroids
+	InSpirit: Mods.SpiritMod.Condition.InSpirit
+}

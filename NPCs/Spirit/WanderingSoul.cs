@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wandering Soul");
+			// DisplayName.SetDefault("Wandering Soul");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Wraith];
 			NPCHelper.BuffImmune(Type, true);
 		}
@@ -76,7 +76,7 @@ namespace SpiritMod.NPCs.Spirit
 			return 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);

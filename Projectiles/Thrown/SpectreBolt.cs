@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spectre Bolt");
+			// DisplayName.SetDefault("Spectre Bolt");
 		}
 
 		public override void SetDefaults()

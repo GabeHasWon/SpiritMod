@@ -34,7 +34,7 @@ namespace SpiritMod.Tiles.Vanilla
 					ushort type = (ushort)types[Main.rand.Next(types.Count)];
 					WorldGen.PlaceObject(i, j + 1, type);
 					if (Main.netMode != NetmodeID.SinglePlayer)
-						NetMessage.SendObjectPlacment(-1, i, j + 1, type, 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, i, j + 1, type, 0, 0, -1, -1);
 				}
 			}
 

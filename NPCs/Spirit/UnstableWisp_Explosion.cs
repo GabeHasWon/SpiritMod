@@ -7,7 +7,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Wisp");
+			// DisplayName.SetDefault("Unstable Wisp");
 			Main.projFrames[base.Projectile.type] = 9;
 		}
 

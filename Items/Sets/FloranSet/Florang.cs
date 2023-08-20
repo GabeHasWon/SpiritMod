@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.FloranSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Cutter");
-			Tooltip.SetDefault("Rolls along the ground, cutting up enemies \nVines occasionally ensnare the foes, reducing their movement speed \n'Sharp as a razorleaf'");
+			// DisplayName.SetDefault("Floran Cutter");
+			// Tooltip.SetDefault("Rolls along the ground, cutting up enemies \nVines occasionally ensnare the foes, reducing their movement speed \n'Sharp as a razorleaf'");
 		}
 
 		public override void SetDefaults()

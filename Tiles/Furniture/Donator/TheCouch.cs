@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Buffs;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -20,8 +21,8 @@ namespace SpiritMod.Tiles.Furniture.Donator
 			TileObjectData.newTile.Direction = Terraria.Enums.TileObjectDirection.None;
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("The Couch");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("The Couch");
 			AddMapEntry(new Color(200, 200, 200), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			TileID.Sets.CanBeSleptIn[Type] = true;

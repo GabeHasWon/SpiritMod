@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Twins Blueprint");
-			Tooltip.SetDefault("They can't kill what they can't see... They see everything.");
+			// DisplayName.SetDefault("Twins Blueprint");
+			// Tooltip.SetDefault("They can't kill what they can't see... They see everything.");
 		}
 
 

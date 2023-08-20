@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.BottomFeeder
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rotten Meat");
+			// DisplayName.SetDefault("Rotten Meat");
 		}
 
 		public override void SetDefaults()

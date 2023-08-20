@@ -32,7 +32,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moon Jelly Wizard");
+			// DisplayName.SetDefault("Moon Jelly Wizard");
 			Main.npcFrameCount[NPC.type] = 21;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -82,9 +82,9 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.8f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.8f * balance);
 			NPC.damage = (int)(NPC.damage * (Main.masterMode ? 0.85f : 1.0f) * 0.8f);
 		}
 
@@ -333,12 +333,12 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			npcLoot.Add(notExpertRule);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hitDirection, -2.5f, 0, default, 0.27f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Granite, 2.5f * hitDirection, -2.5f, 0, default, 0.87f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.27f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Granite, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.87f);
 			}
 			if (NPC.life < 100)
 			{

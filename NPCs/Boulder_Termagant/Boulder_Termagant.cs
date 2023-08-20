@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Boulder Behemoth");
+			// DisplayName.SetDefault("Boulder Behemoth");
 			Main.npcFrameCount[NPC.type] = 11;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 
@@ -220,7 +220,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 			npcLoot.Add(r219Rule, r255Rule, r23Rule, r33Rule, r238Rule, r223Rule);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -231,9 +231,9 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 			}
 			for (int k = 0; k < 7; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 		}
 

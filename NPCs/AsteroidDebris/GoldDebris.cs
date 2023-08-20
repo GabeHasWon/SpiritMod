@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Debris");
+			// DisplayName.SetDefault("Debris");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
@@ -129,7 +129,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

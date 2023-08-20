@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Mechromancer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coiled Rocket");
+			// DisplayName.SetDefault("Coiled Rocket");
 		}
 
 		public override void SetDefaults()
@@ -109,7 +109,7 @@ namespace SpiritMod.NPCs.Mechromancer
 				Main.dust[index2].noLight = false;
 			}
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			target.AddBuff(BuffID.OnFire, 300);
 			Projectile.Kill();

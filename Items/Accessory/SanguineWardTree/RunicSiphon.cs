@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Runic Siphon");
-			Description.SetDefault("Reduced damage resistance and losing HP rapidly");
+			// DisplayName.SetDefault("Runic Siphon");
+			// Description.SetDefault("Reduced damage resistance and losing HP rapidly");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
@@ -33,16 +33,16 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 		private float _runeGlow;
 		protected override bool CloneNewInstances => true;
 		public override bool InstancePerEntity => true;
-		public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+		public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
 		{
 			if (npc.HasBuff(ModContent.BuffType<RunicSiphon>()))
-				damage = (int)(damage * 1.15);
+				modifiers.FinalDamage *= 1.15f;
 		}
 
-		public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
 		{
 			if (npc.HasBuff(ModContent.BuffType<RunicSiphon>()))
-				damage = (int)(damage * 1.15);
+				modifiers.FinalDamage *= 1.15f;
 		}
 
 		public override void PostAI(NPC npc) => _runeGlow = (npc.HasBuff(ModContent.BuffType<RunicSiphon>())) ? Math.Min(_runeGlow + 0.05f, 0.5f) : Math.Max(_runeGlow - 0.05f, 0);

@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.Masks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glade Wraith Mask");
+			// DisplayName.SetDefault("Glade Wraith Mask");
 		}
 
 		public override void SetDefaults()

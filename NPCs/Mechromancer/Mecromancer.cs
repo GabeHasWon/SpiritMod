@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.Mechromancer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mechromancer");
+			// DisplayName.SetDefault("Mechromancer");
 			Main.npcFrameCount[NPC.type] = 17;
 			NPCHelper.ImmuneTo<ElectrifiedV2>(this, BuffID.Confused, BuffID.OnFire);
 
@@ -202,7 +202,7 @@ namespace SpiritMod.NPCs.Mechromancer
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

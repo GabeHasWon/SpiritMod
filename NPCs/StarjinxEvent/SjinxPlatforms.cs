@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.StarjinxEvent
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Platform");
+			// DisplayName.SetDefault("Platform");
 			Main.npcFrameCount[NPC.type] = 1;
 		}
 

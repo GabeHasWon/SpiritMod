@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Equipment
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sands of Time");
-			Tooltip.SetDefault("Summons or ends a sandstorm\nOnly usable in a desert");
+			// DisplayName.SetDefault("Sands of Time");
+			// Tooltip.SetDefault("Summons or ends a sandstorm\nOnly usable in a desert");
 		}
 
 		public override void SetDefaults()

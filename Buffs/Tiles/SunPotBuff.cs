@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sun in a Pot");
-			Description.SetDefault("Increased life regeneration");
+			// DisplayName.SetDefault("Sun in a Pot");
+			// Description.SetDefault("Increased life regeneration");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

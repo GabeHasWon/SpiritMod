@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frost Portal");
+			// DisplayName.SetDefault("Frost Portal");
 		}
 
 		public override void SetDefaults()

@@ -49,7 +49,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Voyager");
+			// DisplayName.SetDefault("Starplate Voyager");
 			Main.npcFrameCount[NPC.type] = 1;
 			NPCHelper.BuffImmune(Type, true);
 
@@ -94,8 +94,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.6f * balance);
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{
@@ -701,10 +701,11 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		}
 
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => NPC.life >= NPC.lifeMax * .2f;
-		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+
+		public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
 		{
 			if (NPC.life < NPC.lifeMax * .2f)
-				damage = (int)(damage * 0.8f);
+				modifiers.FinalDamage *= 0.8f;
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -742,10 +743,10 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/SteamRaiderHead_Glow").Value, screenPos);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, hit.HitDirection, -1f, 0, default, 1f);
 		}
 
 		public override bool PreKill()

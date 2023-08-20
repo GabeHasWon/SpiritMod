@@ -95,7 +95,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Starachnid
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starachnid");
+			// DisplayName.SetDefault("Starachnid");
 			Main.npcFrameCount[NPC.type] = 8;
 		}
 
@@ -169,10 +169,10 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Starachnid
 				NewThread(false, true);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int i = 0; i < 12; i++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VilePowder, 2.5f * hitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .75f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VilePowder, 2.5f * hit.HitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .75f));
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -578,7 +578,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Starachnid
 
 	public class StarachnidProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Constellation");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Constellation");
 
 		public override void SetDefaults()
 		{

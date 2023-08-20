@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Old Coffin");
+			// DisplayName.SetDefault("Old Coffin");
 			Main.projFrames[Projectile.type] = 3;
 		}
 		public override void SetDefaults()

@@ -6,7 +6,7 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 	[Sacrifice(1)]
 	public class Trophy8 : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Atlas Trophy");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Atlas Trophy");
 
 		public override void SetDefaults()
 		{

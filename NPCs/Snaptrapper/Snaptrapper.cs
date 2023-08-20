@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Snaptrapper");
+			// DisplayName.SetDefault("Snaptrapper");
 			Main.npcFrameCount[NPC.type] = 6;
             NPCID.Sets.TrailCacheLength[NPC.type] = 5;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -74,7 +74,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddOneFromOptions<SnapsporeStaff, SporeClub>(2);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
         {
             for (int i = 0; i < 6; i++)
             {
@@ -404,7 +404,7 @@ namespace SpiritMod.NPCs.Snaptrapper
             }
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit) => target.velocity.X = 11f * -target.direction;
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.velocity.X = 11f * -target.direction;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {

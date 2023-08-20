@@ -13,7 +13,6 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mythril Pellet");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -29,12 +28,12 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.penetrate = 1;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if (Main.rand.NextBool(2)) {
-				target.StrikeNPC(Projectile.damage / 2, 0f, 0, false);
-			}
+			if (Main.rand.NextBool(2))
+				target.SimpleStrikeNPC(Projectile.damage / 2, 0, false, 0f);
 		}
+
 		public override void Kill(int timeLeft)
 		{
 			Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);

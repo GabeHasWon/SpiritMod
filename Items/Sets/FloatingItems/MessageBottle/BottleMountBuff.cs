@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Sets.FloatingItems.MessageBottle
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Raft");
-			Description.SetDefault("Sending out an SOS");
+			// DisplayName.SetDefault("Raft");
+			// Description.SetDefault("Sending out an SOS");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.buffNoSave[Type] = true;
 		}

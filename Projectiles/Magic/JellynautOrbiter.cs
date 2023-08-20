@@ -16,7 +16,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arcane Jellyfish");
+            // DisplayName.SetDefault("Arcane Jellyfish");
             Main.projFrames[Projectile.type] = 5;
         }
 

@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 {
 	public class Granite_Boulder : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Boulder");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Boulder");
 		public override void SetDefaults()
 		{
 			Projectile.width = 40;

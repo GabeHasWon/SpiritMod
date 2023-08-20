@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class SepulchreBrickTwoItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Brick");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Brick");
 
 		public override void SetDefaults()
 		{

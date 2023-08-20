@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.DesertBandit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Forsaken Bandit");
+			// DisplayName.SetDefault("Forsaken Bandit");
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCHelper.BuffImmune(Type);
 
@@ -160,7 +160,7 @@ namespace SpiritMod.NPCs.DesertBandit
 						frame = 6;
 
 					if (!NPC.IsABestiaryIconDummy && frame == 9 && NPC.frameCounter == 4 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0))
-						player.Hurt(PlayerDeathReason.LegacyDefault(), NPC.damage * 2, NPC.direction * -1, false, false, false, -1);
+						player.Hurt(PlayerDeathReason.LegacyDefault(), NPC.damage * 2, NPC.direction * -1, false, false, -1, false);
 				}
 			}
 			NPC.frame.Y = frameHeight * frame;
@@ -170,7 +170,7 @@ namespace SpiritMod.NPCs.DesertBandit
 		public override string GetChat() => "Please, spare me! I was so desperate...I haven't had food for days. You can leave me be if you want, but if you give me that crown, I'll give you what I have and be on my way. Promise.";
 		public override void SetChatButtons(ref string button, ref string button2) => button = "Spare";
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
 			{
@@ -190,11 +190,11 @@ namespace SpiritMod.NPCs.DesertBandit
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 11; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hitDirection, -1f, 1, default, .61f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hit.HitDirection, -1f, 1, default, .61f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -205,13 +205,13 @@ namespace SpiritMod.NPCs.DesertBandit
 			}
 			for (int k = 0; k < 7; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			SoundEngine.PlaySound(SoundID.Coins);
 			int num1 = 0;

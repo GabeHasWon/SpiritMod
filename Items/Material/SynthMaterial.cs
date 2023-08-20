@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Material
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Discharge Tubule");
-			Tooltip.SetDefault("'The colorful tubes are filled with energized gas'");
+			// DisplayName.SetDefault("Discharge Tubule");
+			// Tooltip.SetDefault("'The colorful tubes are filled with energized gas'");
 		}
 
 		public override void SetDefaults()

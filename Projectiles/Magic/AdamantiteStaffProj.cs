@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Adamantite Blast");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Adamantite Blast");
 
 		public override void SetDefaults()
 		{
@@ -35,7 +35,7 @@ namespace SpiritMod.Projectiles.Magic
 			tManager.CreateTrail(Projectile, new GradientTrail(new Color(252, 3, 57) * 0.75f, new Color(255, 201, 213) * 0.75f), new RoundCap(), new DefaultTrailPosition(), trailwidth, traillength);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.Kill();
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.Kill();
 
 		public override bool PreAI()
 		{

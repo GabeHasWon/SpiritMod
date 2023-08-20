@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Collar");
-			Tooltip.SetDefault("Summons a Shadow Pup companion");
+			// DisplayName.SetDefault("Shadow Collar");
+			// Tooltip.SetDefault("Summons a Shadow Pup companion");
 		}
 
 		public override void SetDefaults()

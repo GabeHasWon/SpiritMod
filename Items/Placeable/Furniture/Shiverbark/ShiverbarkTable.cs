@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Shiverbark
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shiverbark Table");
+			// DisplayName.SetDefault("Shiverbark Table");
 		}
 
 

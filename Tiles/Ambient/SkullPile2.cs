@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -10,9 +11,9 @@ namespace SpiritMod.Tiles.Ambient
 	{
 		public override void SetStaticDefaults()
 		{
-			Main.tileFrameImportant[(int)base.Type] = true;
-			Main.tileNoAttach[(int)base.Type] = true;
-			Main.tileLavaDeath[(int)base.Type] = true;
+			Main.tileFrameImportant[Type] = true;
+			Main.tileNoAttach[Type] = true;
+			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[]
@@ -20,14 +21,10 @@ namespace SpiritMod.Tiles.Ambient
 				16,
 				16
 			};
-			TileObjectData.addTile((int)base.Type);
-			ModTranslation modTranslation = base.CreateMapEntryName(null);
-			modTranslation.SetDefault("Bone Pile");
-			base.AddMapEntry(new Color(186, 149, 85), modTranslation);
-			this.AdjTiles = new int[]
-			{
-				93
-			};
+			TileObjectData.addTile(Type);
+			LocalizedText modTranslation = CreateMapEntryName();
+			AddMapEntry(new Color(186, 149, 85), modTranslation);
+			AdjTiles = new int[] { 93 };
 			TileID.Sets.BreakableWhenPlacing[Type] = true;
 		}
 

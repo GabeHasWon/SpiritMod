@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BismiteSet.BismiteArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Leggings");
-			Tooltip.SetDefault("6% increased movement speed");
+			// DisplayName.SetDefault("Bismite Leggings");
+			// Tooltip.SetDefault("6% increased movement speed");
 
 		}
 		public override void SetDefaults()

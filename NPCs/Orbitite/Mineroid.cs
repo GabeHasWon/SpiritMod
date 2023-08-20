@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Orbitite
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Orbitite");
+			// DisplayName.SetDefault("Orbitite");
 			Main.npcFrameCount[NPC.type] = 6;
 
 			NPCHelper.ImmuneTo(this, BuffID.OnFire, BuffID.Confused);
@@ -69,11 +69,11 @@ namespace SpiritMod.NPCs.Orbitite
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Orbitite/Mineroid_Glow").Value, screenPos);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			SoundEngine.PlaySound(SoundID.DD2_WitherBeastHurt, NPC.Center);
 			for (int k = 0; k < 11; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CorruptionThorns, hitDirection, -1f, 0, default, .61f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CorruptionThorns, hit.HitDirection, -1f, 0, default, .61f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Mineroid1").Type);

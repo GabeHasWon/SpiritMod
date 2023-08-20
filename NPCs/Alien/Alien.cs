@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Alien
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Alien");
+			// DisplayName.SetDefault("Alien");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Alien
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedMechBossAny && Main.eclipse && spawnInfo.Player.ZoneOverworldHeight ? 0.07f : 0;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.Alien
 
 		public override void AI() => NPC.spriteDirection = NPC.direction;
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(4)) {
 				target.AddBuff(BuffID.Venom, 260);

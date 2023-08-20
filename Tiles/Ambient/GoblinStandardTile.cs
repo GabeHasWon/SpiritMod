@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -18,8 +19,8 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Goblin Battle Standard");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Goblin Battle Standard");
 			DustType = DustID.Stone;
 			AddMapEntry(new Color(200, 200, 200), name);
 		}

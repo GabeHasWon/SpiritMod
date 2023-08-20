@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Aqua Ball");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Aqua Ball");
 
 		public override void SetDefaults()
 		{

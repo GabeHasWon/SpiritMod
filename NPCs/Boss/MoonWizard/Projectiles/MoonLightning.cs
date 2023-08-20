@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moon Lightning");
+			// DisplayName.SetDefault("Moon Lightning");
 		}
 
 		public override void SetDefaults()
@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 			Projectile.timeLeft = 10;
 			Projectile.tileCollide = false;
 		}
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             if (Main.rand.NextBool(8))
             {

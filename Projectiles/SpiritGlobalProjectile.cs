@@ -88,10 +88,10 @@ namespace SpiritMod.Projectiles
 			return true;
 		}
 
-		public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			foreach (var effect in effects)
-				effect.ProjectileOnHitNPC(projectile, target, damage, knockback, crit);
+				effect.ProjectileOnHitNPC(projectile, target, hit, damageDone);
 
 			Player player = Main.player[projectile.owner];
 			MyPlayer modPlayer = player.GetSpiritPlayer();
@@ -132,7 +132,7 @@ namespace SpiritMod.Projectiles
 				if (player.whoAmI == Main.myPlayer)
 				{
 					Vector2 position = projectile.position + (Main.rand.NextVector2Unit() * Main.rand.NextFloat() * 20);
-					Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), position, new Vector2(1, -1), orbiterType, Math.Max(16, (int)(damage * .75f)), 3, player.whoAmI);
+					Projectile proj = Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), position, new Vector2(1, -1), orbiterType, Math.Max(16, (int)(damageDone * .75f)), 3, player.whoAmI);
 					proj.scale = Main.rand.NextFloat(.5f, 1f);
 					proj.netUpdate = true;
 				}

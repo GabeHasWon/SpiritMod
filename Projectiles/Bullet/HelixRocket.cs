@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class HelixRocket : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Helix Rocket");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Helix Rocket");
 
 		public override void SetDefaults()
 		{

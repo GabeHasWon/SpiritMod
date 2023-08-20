@@ -16,7 +16,7 @@ namespace SpiritMod.Projectiles.Thrown
 		// USE THIS DUST: 261
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bone Cutter");
+			// DisplayName.SetDefault("Bone Cutter");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

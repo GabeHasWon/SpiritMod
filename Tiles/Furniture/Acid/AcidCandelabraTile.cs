@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -20,8 +21,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Candelabra");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Corrosive Candelabra");
 			DustType = -1;
 			AddMapEntry(new Color(63, 204, 68), name);
 			AdjTiles = new int[] { TileID.Torches };

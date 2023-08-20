@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.PlagueDoctor
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dark Alchemist");
+			// DisplayName.SetDefault("Dark Alchemist");
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.OnFire, BuffID.CursedInferno);
 		}
@@ -44,12 +44,12 @@ namespace SpiritMod.NPCs.PlagueDoctor
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Obsidian, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CursedTorch, 2.5f * hitDirection, -2.5f, 0, default, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Obsidian, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CursedTorch, 2.5f * hit.HitDirection, -2.5f, 0, default, .34f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

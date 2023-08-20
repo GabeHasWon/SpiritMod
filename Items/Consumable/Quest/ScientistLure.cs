@@ -6,13 +6,14 @@ using Terraria.ID;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
 	[Sacrifice(1)]
 	public class ScientistLure : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Grisly Science Experiment");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Grisly Science Experiment");
 
 		public override void SetDefaults()
 		{
@@ -55,7 +56,7 @@ namespace SpiritMod.Items.Consumable.Quest
 			recipe.Register();
 		}
 
-		public static Recipe.Condition QuestCondition() => new Recipe.Condition(Terraria.Localization.NetworkText.FromLiteral("During Unholy Undertaking"), (self) =>
+		public static Condition QuestCondition() => new Condition(Language.GetText("Mods.SpiritMod.Quests.Conditions.WarlockLure"), () =>
 		{
 			Mechanics.QuestSystem.Quest quest = QuestManager.GetQuest<ZombieOriginQuest>();
 			return (quest.CurrentTask is RetrievalTask task && task.GetItemID() == ModContent.ItemType<ScientistLure>());

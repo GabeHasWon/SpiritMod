@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Marksman");
-			Description.SetDefault("Gun damage is increased dramatically");
+			// DisplayName.SetDefault("True Marksman");
+			// Description.SetDefault("Gun damage is increased dramatically");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

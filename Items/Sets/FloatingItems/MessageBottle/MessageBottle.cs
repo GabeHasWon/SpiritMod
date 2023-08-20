@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Sets.FloatingItems.MessageBottle
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Message in a Bottle");
-			Tooltip.SetDefault("Summons a raft mount\nIncreased fishing power while on the raft");
+			// DisplayName.SetDefault("Message in a Bottle");
+			// Tooltip.SetDefault("Summons a raft mount\nIncreased fishing power while on the raft");
 		}
 
 		public override void SetDefaults()

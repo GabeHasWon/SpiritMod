@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Mountain");
-			Tooltip.SetDefault("'Swinging the blade strengthens you'\nOccasionally inflicts foes with 'Unstable Affliction'");
+			// DisplayName.SetDefault("The Mountain");
+			// Tooltip.SetDefault("'Swinging the blade strengthens you'\nOccasionally inflicts foes with 'Unstable Affliction'");
 		}
 
 		int charger;
@@ -53,6 +53,6 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 			return true;
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<Buffs.DoT.Afflicted>(), 180);
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<Buffs.DoT.Afflicted>(), 180);
 	}
 }

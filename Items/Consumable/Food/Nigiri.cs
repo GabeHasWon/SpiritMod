@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Consumable.Food
 	public class Nigiri : FoodItem
 	{
 		internal override Point Size => new(44, 28);
-		public override void StaticDefaults() => Tooltip.SetDefault("Minor improvements to all stats\nProvides free movement in water\n'The perfect cut'");
+		// public override void StaticDefaults() => Tooltip.SetDefault("Minor improvements to all stats\nProvides free movement in water\n'The perfect cut'");
 
 		public override bool CanUseItem(Player player)
 		{

@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Consumable.Quest
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Completed Surveyor's Scroll");
+			// DisplayName.SetDefault("Completed Surveyor's Scroll");
 		}
 
 		public override void SetDefaults()

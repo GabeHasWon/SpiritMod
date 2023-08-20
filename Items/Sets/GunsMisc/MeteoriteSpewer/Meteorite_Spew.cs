@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meteorite Spew");
+			// DisplayName.SetDefault("Meteorite Spew");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -33,7 +33,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 			Projectile.DamageType = DamageClass.Ranged;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(24, 60 * 3);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(24, 60 * 3);
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

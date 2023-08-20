@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Disturbed Yuurei");
+			// DisplayName.SetDefault("Disturbed Yuurei");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -59,7 +59,7 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

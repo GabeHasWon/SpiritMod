@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -25,8 +26,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			DustType = DustID.Dirt;//ModContent.DustType<Pixel>();
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Lantern");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Lantern");
 			AddMapEntry(new Color(179, 146, 107), name);
 			AdjTiles = new int[] { TileID.Torches };
 		}

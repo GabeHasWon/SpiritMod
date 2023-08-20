@@ -8,7 +8,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 {
 	class NoxiousGas : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Noxious Field");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Noxious Field");
 
 		public override void SetDefaults()
 		{

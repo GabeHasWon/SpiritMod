@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gladiator Spirit");
+			// DisplayName.SetDefault("Gladiator Spirit");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -51,10 +51,10 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && NPC.downedBoss2 ? 0.135f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 10; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hitDirection, -2.5f, 0, default, 0.27f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.27f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -120,7 +120,7 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 			}
 		}
 
-		public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+		public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
 		{
 			if (reflectPhase && !projectile.minion && !projectile.sentry && !Main.player[projectile.owner].channel)
 			{

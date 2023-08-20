@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ice Berries");
-			Description.SetDefault("You are immune to being on fire");
+			// DisplayName.SetDefault("Ice Berries");
+			// Description.SetDefault("You are immune to being on fire");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

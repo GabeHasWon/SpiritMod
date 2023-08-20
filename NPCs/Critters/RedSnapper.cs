@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Snapper");
+			// DisplayName.SetDefault("Red Snapper");
 			Main.npcFrameCount[NPC.type] = 4;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -85,7 +85,7 @@ namespace SpiritMod.NPCs.Critters
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0) {
 

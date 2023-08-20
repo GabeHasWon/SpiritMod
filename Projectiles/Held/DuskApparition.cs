@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Held
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Apparition");
+			// DisplayName.SetDefault("Dusk Apparition");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -66,7 +66,7 @@ namespace SpiritMod.Projectiles.Held
 				vector9 -= value19 * 8f;
 			}
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 				target.AddBuff(BuffID.ShadowFlame, 300, false);
 		}

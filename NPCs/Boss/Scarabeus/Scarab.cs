@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scarab");
+			// DisplayName.SetDefault("Scarab");
 			Main.npcFrameCount[Type] = 4;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 
@@ -50,15 +50,15 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			return true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 3; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int k = 0; k < 10; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, 1f);
 
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("TinyScarab1").Type, 1f);
 			}
@@ -81,7 +81,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scarab");
+			// DisplayName.SetDefault("Scarab");
 			Main.npcFrameCount[Type] = 8;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 
@@ -120,15 +120,15 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 				NPC.Transform(ModContent.NPCType<Scarab>());
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 3; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int k = 0; k < 10; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, 1f);
 
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("TinyScarab1").Type, 1f);
 			}

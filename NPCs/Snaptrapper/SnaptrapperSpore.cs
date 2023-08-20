@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Snaptrapper Spore");
+			// DisplayName.SetDefault("Snaptrapper Spore");
 		}
 
 		public override void SetDefaults()
@@ -37,7 +37,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 			Projectile.rotation += 0.3f;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.Poisoned, 180);

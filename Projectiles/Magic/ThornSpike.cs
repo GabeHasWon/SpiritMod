@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thorn Spike");
+			// DisplayName.SetDefault("Thorn Spike");
 		}
 		public override void SetDefaults()
 		{
@@ -44,7 +44,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 			return false;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 			for (int i = 0; i < 5; i++) {

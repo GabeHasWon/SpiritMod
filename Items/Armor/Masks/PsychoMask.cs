@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Armor.Masks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Psycho Mask");
-            Tooltip.SetDefault("'A flower? For meeee?'");
+			// DisplayName.SetDefault("Psycho Mask");
+            // Tooltip.SetDefault("'A flower? For meeee?'");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Armor/Masks/PsychoMask_Glow");
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 		}

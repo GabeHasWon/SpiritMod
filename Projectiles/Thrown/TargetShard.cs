@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Target Bottle");
+			// DisplayName.SetDefault("Target Bottle");
 		}
 		public override void SetDefaults()
 		{

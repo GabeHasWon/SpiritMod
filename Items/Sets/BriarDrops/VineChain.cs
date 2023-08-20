@@ -9,12 +9,6 @@ namespace SpiritMod.Items.Sets.BriarDrops
 {
 	public class VineChain : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Vine Chain");
-			Tooltip.SetDefault("Pulls enemies towards you");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 44;
@@ -38,7 +32,7 @@ namespace SpiritMod.Items.Sets.BriarDrops
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			Projectile.NewProjectile(Item.GetSource_ItemUse(Item), position, velocity, type, damage, knockback, player.whoAmI, velocity.X, velocity.Y);
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, velocity.X, velocity.Y);
 			return false;
 		}
 	}

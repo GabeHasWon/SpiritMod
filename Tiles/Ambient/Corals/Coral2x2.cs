@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -30,8 +31,8 @@ namespace SpiritMod.Tiles.Ambient.Corals
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = DustID.Coralstone;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Coral");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Coral");
 			AddMapEntry(new Color(87, 61, 51), name);
 		}
 

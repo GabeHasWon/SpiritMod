@@ -14,8 +14,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.RadiantCane
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sunrise Scepter");
-			Tooltip.SetDefault("Conjures a slow, controllable sun orb");
+			// DisplayName.SetDefault("Sunrise Scepter");
+			// Tooltip.SetDefault("Conjures a slow, controllable sun orb");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Item.staff[Item.type] = true;
 		}
@@ -70,7 +70,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.RadiantCane
 	{
 		public override string Name => base.Name.Remove(base.Name.Length - "RadiantOrb".Length, "RadiantOrb".Length) + "RadiantCane";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Radiant Orb");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Radiant Orb");
 
 		public override void SetDefaults()
 		{
@@ -139,7 +139,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.RadiantCane
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.immune[Projectile.owner] = 15;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.immune[Projectile.owner] = 15;
 
 		public override bool PreDraw(ref Color lightColor)
 		{

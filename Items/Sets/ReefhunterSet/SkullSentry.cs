@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 		const float MAX_DISTANCE = 600f;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Maneater Skull");
-			Tooltip.SetDefault("Summons a skull infested by maneater worms that fire red mucus at nearby enemies");
+			// DisplayName.SetDefault("Maneater Skull");
+			// Tooltip.SetDefault("Summons a skull infested by maneater worms that fire red mucus at nearby enemies");
 		}
 
 		public override void SetDefaults()

@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	public class LargeScarab : ModProjectile
 	{ 
 		public override void SetStaticDefaults() { 
-			DisplayName.SetDefault("Scarab");
+			// DisplayName.SetDefault("Scarab");
 			Main.projFrames[Projectile.type] = 4;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crimson Skull");
-			Tooltip.SetDefault("You shouldn't see this");
+			// DisplayName.SetDefault("Crimson Skull");
+			// Tooltip.SetDefault("You shouldn't see this");
 			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 7));
 			ItemID.Sets.AnimatesAsSoul[Type] = true;
 			ItemID.Sets.ItemNoGravity[Type] = true;

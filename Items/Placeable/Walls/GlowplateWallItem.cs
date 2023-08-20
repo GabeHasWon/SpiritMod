@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Walls
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Smooth Glowplate Wall");
+			// DisplayName.SetDefault("Smooth Glowplate Wall");
 		}
 
 

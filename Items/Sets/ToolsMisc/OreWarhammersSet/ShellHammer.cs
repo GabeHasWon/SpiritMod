@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.ToolsMisc.OreWarhammersSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shell Hammer");
-			Tooltip.SetDefault("'Lobs shells duuuude!'");
+			// DisplayName.SetDefault("Shell Hammer");
+			// Tooltip.SetDefault("'Lobs shells duuuude!'");
 		}
 
 

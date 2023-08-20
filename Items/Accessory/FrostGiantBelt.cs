@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frost Giant Belt");
-			Tooltip.SetDefault("50% knockback resistance while charging a club\nCharging a club gradually increases defense");
+			// DisplayName.SetDefault("Frost Giant Belt");
+			// Tooltip.SetDefault("50% knockback resistance while charging a club\nCharging a club gradually increases defense");
 		}
 
 		public override void SetDefaults()

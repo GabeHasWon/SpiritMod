@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SummonsMisc.FairyWhistle
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fairy Whistle");
-			Tooltip.SetDefault("Calls a protective fairy that hovers around you");
+			// DisplayName.SetDefault("Fairy Whistle");
+			// Tooltip.SetDefault("Calls a protective fairy that hovers around you");
 		}
 
 		public override void SetDefaults()

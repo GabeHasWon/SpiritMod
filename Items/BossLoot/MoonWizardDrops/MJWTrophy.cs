@@ -6,7 +6,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 	[Sacrifice(1)]
 	public class MJWTrophy : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Moon Jelly Wizard Trophy");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Moon Jelly Wizard Trophy");
 
 		public override void SetDefaults()
 		{

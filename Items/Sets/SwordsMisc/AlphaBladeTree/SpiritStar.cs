@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.AlphaBladeTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Star");
-			Tooltip.SetDefault("Rains down multiple starry bolts from the sky that inflict Star Fracture\nThese stars explode into multiple souls that inflict Soul Burn\n'The convergence of souls and the cosmos'");
+			// DisplayName.SetDefault("Soul Star");
+			// Tooltip.SetDefault("Rains down multiple starry bolts from the sky that inflict Star Fracture\nThese stars explode into multiple souls that inflict Soul Burn\n'The convergence of souls and the cosmos'");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SwordsMisc/AlphaBladeTree/SpiritStar_Glow");
 		}
 

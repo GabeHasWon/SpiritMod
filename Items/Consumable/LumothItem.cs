@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lumoth");
-			Tooltip.SetDefault("'Mechanically stunning'");
+			// DisplayName.SetDefault("Lumoth");
+			// Tooltip.SetDefault("'Mechanically stunning'");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

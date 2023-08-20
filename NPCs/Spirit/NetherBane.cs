@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Netherbane");
+			// DisplayName.SetDefault("Netherbane");
 			Main.npcFrameCount[NPC.type] = 4;
 		}
 
@@ -58,7 +58,7 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Spirit/NetherBane_Glow").Value, screenPos);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.ArcaneZoneSubclass
 {
 	public class EmptyCodex : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Empty Arcane Codex");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Empty Arcane Codex");
 
 		public override void SetDefaults()
 		{

@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernal Beam");
+			// DisplayName.SetDefault("Infernal Beam");
 			Main.projFrames[Projectile.type] = 3;
 		}
 
@@ -135,7 +135,7 @@ namespace SpiritMod.Projectiles.Magic
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			//projectile.npcImmune[target.whoAmI] = 10;
 			target.immune[Projectile.owner] = 0;

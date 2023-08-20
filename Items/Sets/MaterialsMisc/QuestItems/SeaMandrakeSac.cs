@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class SeaMandrakeSac : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Luminous Sac");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Luminous Sac");
 
 		public override void SetDefaults()
 		{

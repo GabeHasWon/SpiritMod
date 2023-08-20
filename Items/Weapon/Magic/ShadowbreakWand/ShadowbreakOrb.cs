@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadowbreak Orb");
+			// DisplayName.SetDefault("Shadowbreak Orb");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -139,12 +139,12 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 
 		public override bool? CanDamage() => Released;
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (!(Counter < CounterMax || Projectile.timeLeft > 10))
 			{
-				damage = (int)(damage * 2f);
-				knockback = 10;
+				modifiers.FinalDamage *= 2;
+				modifiers.Knockback.Base = 10;
 				target.AddBuff(ModContent.BuffType<Shadowbroken>(), 300);
 			}
 		}

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Old Telescope");
-			Tooltip.SetDefault("Right click when placed to check the phase of the moon\n'Look toward the stars'");
+			// DisplayName.SetDefault("Old Telescope");
+			// Tooltip.SetDefault("Right click when placed to check the phase of the moon\n'Look toward the stars'");
 		}
 
 		public override void SetDefaults()

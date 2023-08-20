@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Grisly Totem");
-			Tooltip.SetDefault("Increases critical strike chance by 6%");
+			// DisplayName.SetDefault("Grisly Totem");
+			// Tooltip.SetDefault("Increases critical strike chance by 6%");
 		}
 
 		public override void SetDefaults()

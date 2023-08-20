@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SpearsMisc.RotScourge
 		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rot Scourge");
-			Tooltip.SetDefault("Hitting foes may cause them to release multiple tiny, homing eaters");
+			// DisplayName.SetDefault("Rot Scourge");
+			// Tooltip.SetDefault("Hitting foes may cause them to release multiple tiny, homing eaters");
 		}
 
 		public override void SetDefaults()

@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Arrow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Revenant Arrow");
+			// DisplayName.SetDefault("Revenant Arrow");
 		}
 
 		public override void SetDefaults()
@@ -26,7 +26,7 @@ namespace SpiritMod.Projectiles.Arrow
 			Projectile.friendly = true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(ModContent.BuffType<SoulBurn>(), 180, false);

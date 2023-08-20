@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Zones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Low Gravity Zone");
-			Description.SetDefault("You feel light!");
+			// DisplayName.SetDefault("Low Gravity Zone");
+			// Description.SetDefault("You feel light!");
 			Main.pvpBuff[Type] = true;
 		}
 

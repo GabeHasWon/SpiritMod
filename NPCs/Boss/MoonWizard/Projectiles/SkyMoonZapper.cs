@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moon Zapper");
+			// DisplayName.SetDefault("Moon Zapper");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

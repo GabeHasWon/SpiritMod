@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Armor.BotanistSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Botanist Joggers");
-			Tooltip.SetDefault("10% increased move speed");
+			// DisplayName.SetDefault("Botanist Joggers");
+			// Tooltip.SetDefault("10% increased move speed");
 		}
 
 		public override void SetDefaults()

@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.BottomFeeder
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bottom Feeder");
+			// DisplayName.SetDefault("Bottom Feeder");
 			Main.npcFrameCount[NPC.type] = 11;
 			NPCHelper.ImmuneTo<BloodCorrupt, BloodInfusion>(this);
 
@@ -123,14 +123,14 @@ namespace SpiritMod.NPCs.BottomFeeder
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Consumable.Food.FishFingers>(), 20));
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 || NPC.life >= 0)
 			{
 				for (int k = 0; k < 25; k++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.White, .97f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .97f);
 				}
 			}
 

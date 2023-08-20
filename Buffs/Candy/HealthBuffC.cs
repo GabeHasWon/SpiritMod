@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Candy
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Healing Candy");
-			Description.SetDefault("+25 health.");
+			// DisplayName.SetDefault("Healing Candy");
+			// Description.SetDefault("+25 health.");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

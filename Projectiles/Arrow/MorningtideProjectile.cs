@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles.Arrow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dawnstrike Shafts");
+			// DisplayName.SetDefault("Dawnstrike Shafts");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -62,7 +62,7 @@ namespace SpiritMod.Projectiles.Arrow
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Vector2 mouse = Main.MouseWorld;
 			int amount = Main.rand.Next(1, 3);

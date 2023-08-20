@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.SporeWheezer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spore Wheezer");
+			// DisplayName.SetDefault("Spore Wheezer");
 			Main.npcFrameCount[NPC.type] = 12;
 		}
 
@@ -43,10 +43,10 @@ namespace SpiritMod.NPCs.SporeWheezer
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.MushroomGrass) && spawnInfo.SpawnTileY > Main.rockLayer ? 0.09f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 11; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Harpy, hitDirection, -1f, 0, default, .61f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Harpy, hit.HitDirection, -1f, 0, default, .61f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

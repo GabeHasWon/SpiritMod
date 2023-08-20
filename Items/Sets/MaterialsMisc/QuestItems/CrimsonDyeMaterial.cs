@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class CrimsonDyeMaterial : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bloody Tumor");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bloody Tumor");
 
 		public override void SetDefaults()
 		{

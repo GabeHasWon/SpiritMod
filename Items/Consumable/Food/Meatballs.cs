@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Consumable.Food
 	public class Meatballs : FoodItem
 	{
 		internal override Point Size => new(34, 28);
-		public override void StaticDefaults() => Tooltip.SetDefault("Medium improvements to all stats\n'Can't go wrong with the classics!'");
+		// public override void StaticDefaults() => Tooltip.SetDefault("Medium improvements to all stats\n'Can't go wrong with the classics!'");
 
 		public override bool CanUseItem(Player player)
 		{

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Adorned Bow");
-			Tooltip.SetDefault("Hold longer for more damage\nConverts wooden arrows into piercing adorned arrows, that get enchanted upon full charge");
+			// DisplayName.SetDefault("Adorned Bow");
+			// Tooltip.SetDefault("Hold longer for more damage\nConverts wooden arrows into piercing adorned arrows, that get enchanted upon full charge");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

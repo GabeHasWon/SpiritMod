@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 {
 	public class Starshock : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Starshock");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Starshock");
 
 		public override void SetDefaults()
 		{

@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class RotSlugItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Rotslug");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Rotslug");
 
 		public override void SetDefaults()
 		{

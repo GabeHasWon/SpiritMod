@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Huskstalk Hammer");
+			// DisplayName.SetDefault("Huskstalk Hammer");
 		}
 
 

@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Mimic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Iron Crate Mimic");
+			// DisplayName.SetDefault("Iron Crate Mimic");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -103,7 +103,7 @@ namespace SpiritMod.NPCs.Mimic
 			return true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -116,9 +116,9 @@ namespace SpiritMod.NPCs.Mimic
 			{
 				for (int k = 0; k < 6; k++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, Color.White, .57f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, Color.White, .77f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .57f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .77f);
 				}
 			}
 		}

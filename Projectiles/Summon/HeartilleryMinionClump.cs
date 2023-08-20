@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Clumped Blood");
+			// DisplayName.SetDefault("Clumped Blood");
 			ProjectileID.Sets.SentryShot[Projectile.type] = true;
 		}
 

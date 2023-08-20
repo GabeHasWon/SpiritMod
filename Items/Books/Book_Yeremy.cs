@@ -8,8 +8,8 @@
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("I'm Really Mad");
-            Tooltip.SetDefault("by Polius Crassus");
+            // DisplayName.SetDefault("I'm Really Mad");
+            // Tooltip.SetDefault("by Polius Crassus");
         }
     }
 }

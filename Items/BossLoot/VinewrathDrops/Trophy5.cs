@@ -6,7 +6,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 	[Sacrifice(1)]
 	public class Trophy5 : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Vinewrath Bane Trophy");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Vinewrath Bane Trophy");
 
 		public override void SetDefaults()
 		{

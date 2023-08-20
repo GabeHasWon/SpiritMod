@@ -68,12 +68,12 @@ namespace SpiritMod.Mechanics.QuestSystem
 				itemDrop = ModContent.ItemType<Items.Consumable.Quest.HornetfishQuest>();
 		}
 
-		public override void OnEnterWorld(Player player)
+		public override void OnEnterWorld()
 		{
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
 				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.RequestQuestManager, 1);
-				packet.Write((byte)player.whoAmI);
+				packet.Write((byte)Player.whoAmI);
 				packet.Send();
 			}
 		}

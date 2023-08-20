@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Heartbeat Cleats");
-			Tooltip.SetDefault("Slightly increases movement speed and acceleration\n+5% movement speed and +15% acceleration for every 10% missing health");
+			// DisplayName.SetDefault("Heartbeat Cleats");
+			// Tooltip.SetDefault("Slightly increases movement speed and acceleration\n+5% movement speed and +15% acceleration for every 10% missing health");
 		}
 
 		public override void SetDefaults()

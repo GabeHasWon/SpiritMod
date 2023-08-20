@@ -260,26 +260,23 @@ namespace SpiritMod.Items.Sets.FlailsMisc
 		public virtual float GetLaunchSpeed(Player player) => player.HeldItem.shootSpeed * MeleeSpeed;
 		#endregion
 
-		public override void ModifyDamageScaling(ref float damageScale)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			damageScale *= State switch
+			modifiers.FinalDamage *= State switch
 			{
 				SPINNING => 1.2f,
 				FALLING => 1.0f,
 				_ => 2.0f
 			};
-		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			knockback *= State switch
+			modifiers.Knockback *= State switch
 			{
 				SPINNING => 0.35f,
 				FALLING => 0.5f,
 				_ => 1.0f
 			};
 
-			hitDirection = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
+			modifiers.HitDirectionOverride = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
 		}
 
 		public override bool? CanDamage() => (State == SPINNING && Timer <= 12f) ? false : base.CanDamage(); //Don't hit targets in the first 12 ticks

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dancing Spirits, Starlit Sky");
-			Tooltip.SetDefault("'S. Yaki'");
+			// DisplayName.SetDefault("Dancing Spirits, Starlit Sky");
+			// Tooltip.SetDefault("'S. Yaki'");
 		}
 
 		public override void SetDefaults()

@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.AstralAdventurer
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astral Adventurer");
+			// DisplayName.SetDefault("Astral Adventurer");
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10; 
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -63,7 +63,7 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * balance);
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
@@ -466,13 +466,13 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Sets.GunsMisc.MeteoriteSpewer.Meteorite_Spewer>(), 33));
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 7; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Granite, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Granite, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Granite, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Granite, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
 			}
 		}
 

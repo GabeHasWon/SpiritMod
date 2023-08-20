@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class MaggotflyItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Maggotfly");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Maggotfly");
 
 		public override void SetDefaults()
 		{

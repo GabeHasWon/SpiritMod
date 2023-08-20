@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Consumable.Fish
 		internal override Point Size => new(42, 30);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Fish n' Chips");
-			Tooltip.SetDefault("Minor improvements to all stats\nMakes you sluggish");
+			// DisplayName.SetDefault("Fish n' Chips");
+			// Tooltip.SetDefault("Minor improvements to all stats\nMakes you sluggish");
 		}
 
 		public override bool CanUseItem(Player player)

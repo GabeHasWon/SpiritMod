@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Acid
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Broken Air Conditioner");
+			// DisplayName.SetDefault("Broken Air Conditioner");
 		}
 
 		public override void SetDefaults()

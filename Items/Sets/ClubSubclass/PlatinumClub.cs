@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 		internal override float MinKnockback => 6f;
 		internal override float MaxKnockback => 9f;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Platinum Scepter");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Platinum Scepter");
 
 		public override void Defaults()
         {

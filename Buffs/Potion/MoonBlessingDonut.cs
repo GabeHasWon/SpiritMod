@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moon Jelly Donut");
-			Description.SetDefault("Extreme regeneration and a sugar high!");
+			// DisplayName.SetDefault("Moon Jelly Donut");
+			// Description.SetDefault("Extreme regeneration and a sugar high!");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

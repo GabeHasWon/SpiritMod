@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ice Bolt");
+			// DisplayName.SetDefault("Ice Bolt");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage) => ImpactFX();
+		public override void HitEffect(NPC.HitInfo hit) => ImpactFX();
 
 		private void ImpactFX()
 		{

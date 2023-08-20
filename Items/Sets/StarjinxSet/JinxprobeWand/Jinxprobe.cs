@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.JinxprobeWand
 	{
 		public Jinxprobe() : base(800, 1600, new Vector2(32, 32)) { }
 
-		public override void AbstractSetStaticDefaults() => DisplayName.SetDefault("Jinxprobe");
+		// public override void AbstractSetStaticDefaults() => DisplayName.SetDefault("Jinxprobe");
 
 		Vector2 truePosition = Vector2.Zero;
 		Vector2 newCenter = Vector2.Zero;

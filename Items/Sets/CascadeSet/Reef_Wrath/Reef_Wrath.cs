@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Reef Wrath");
-			Tooltip.SetDefault("Conjures harmful coral spires along the ground");
+			// DisplayName.SetDefault("Reef Wrath");
+			// Tooltip.SetDefault("Conjures harmful coral spires along the ground");
 		}
 
 		public override void SetDefaults()

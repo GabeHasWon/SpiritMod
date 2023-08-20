@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.CoilSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coil Hook");
+			// DisplayName.SetDefault("Coil Hook");
 		}
 
 		public override void SetDefaults()
@@ -55,7 +55,7 @@ namespace SpiritMod.Items.Sets.CoilSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coil Hook");
+			// DisplayName.SetDefault("Coil Hook");
 		}
 
 		public override void SetDefaults()

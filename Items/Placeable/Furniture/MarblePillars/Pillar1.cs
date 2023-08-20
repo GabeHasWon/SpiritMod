@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Furniture.MarblePillars
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Large Corinthian Column");
+			// DisplayName.SetDefault("Large Corinthian Column");
 		}
 
 

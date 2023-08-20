@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.WhipsMisc.PoolNoodle
 		public override void SetStaticDefaults()
 		{
 			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, numStyles) { NotActuallyAnimating = true });
-			Tooltip.SetDefault("3 summon tag damage");
+			// Tooltip.SetDefault("3 summon tag damage");
 		}
 
 		public override void SetDefaults()

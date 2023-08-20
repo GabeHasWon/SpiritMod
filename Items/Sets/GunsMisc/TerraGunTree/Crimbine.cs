@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Harvester");
-			Tooltip.SetDefault("Converts regular bullets into bones\nRight-click to shoot a slow-moving bloody amalgam\nShooting the bloody amalgam creates an explosion of organs with different effects\n5 second cooldown");
+			// DisplayName.SetDefault("Harvester");
+			// Tooltip.SetDefault("Converts regular bullets into bones\nRight-click to shoot a slow-moving bloody amalgam\nShooting the bloody amalgam creates an explosion of organs with different effects\n5 second cooldown");
 		}
 
 		public override void SetDefaults()

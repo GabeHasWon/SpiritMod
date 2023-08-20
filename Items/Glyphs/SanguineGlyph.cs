@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Glyphs
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sanguine Glyph");
-			Tooltip.SetDefault($"{Addendum}\n-10% damage");
+			// DisplayName.SetDefault("Sanguine Glyph");
+			// Tooltip.SetDefault($"{Addendum}\n-10% damage");
 		}
 
 		public override void SetDefaults()

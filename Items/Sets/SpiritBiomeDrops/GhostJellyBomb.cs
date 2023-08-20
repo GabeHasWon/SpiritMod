@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 {
 	public class GhostJellyBomb : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Ghost Jelly Bomb");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Ghost Jelly Bomb");
 
 		public override void SetDefaults()
 		{

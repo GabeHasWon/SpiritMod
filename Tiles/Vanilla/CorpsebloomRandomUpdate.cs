@@ -16,19 +16,19 @@ namespace SpiritMod.Tiles.Vanilla
 					if (Main.rand.NextBool(450))
 					{
 						WorldGen.PlaceObject(i, j - 1, ModContent.TileType<Corpsebloom>());
-						NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<Corpsebloom>(), 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, i, j - 1, ModContent.TileType<Corpsebloom>(), 0, 0, -1, -1);
 					}
 
 					if (Main.rand.NextBool(450))
 					{
 						WorldGen.PlaceObject(i, j - 1, ModContent.TileType<Corpsebloom1>());
-						NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<Corpsebloom1>(), 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, i, j - 1, ModContent.TileType<Corpsebloom1>(), 0, 0, -1, -1);
 					}
 
 					if (Main.rand.NextBool(450))
 					{
 						WorldGen.PlaceObject(i, j - 1, ModContent.TileType<Corpsebloom2>());
-						NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<Corpsebloom2>(), 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, i, j - 1, ModContent.TileType<Corpsebloom2>(), 0, 0, -1, -1);
 					}
 				}
 			}

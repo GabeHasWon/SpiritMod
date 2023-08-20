@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Falling Asteroid");
+			// DisplayName.SetDefault("Falling Asteroid");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 30;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			Main.npcFrameCount[NPC.type] = 5;
@@ -58,7 +58,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			});
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.OnFire, 60 * 3);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.OnFire, 60 * 3);
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => SpawnCondition.Meteor.Chance * 0.15f;
 
@@ -233,7 +233,7 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 1; i < 5; ++i)
@@ -241,9 +241,9 @@ namespace SpiritMod.NPCs.FallingAsteroid
 
 			for (int k = 0; k < 7; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 		}
 

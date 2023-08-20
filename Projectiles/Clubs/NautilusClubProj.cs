@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nautilobber");
+			// DisplayName.SetDefault("Nautilobber");
 			Main.projFrames[Projectile.type] = 3;
 		}
 

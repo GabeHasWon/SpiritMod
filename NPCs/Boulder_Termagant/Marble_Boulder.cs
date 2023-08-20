@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Marble Pillar");
+			// DisplayName.SetDefault("Marble Pillar");
 		}
 		public override void SetDefaults()
 		{

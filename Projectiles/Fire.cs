@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Malevolent Wrath");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Malevolent Wrath");
 
 		public override void SetDefaults()
 		{
@@ -25,7 +25,7 @@ namespace SpiritMod.Projectiles
 
 		public override void AI() => Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.OnFire, 180);

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Enums;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Items.Placeable;
@@ -30,8 +31,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("A Hero's Memorial");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("A Hero's Memorial");
 			AddMapEntry(new Color(216, 216, 216), name);
 
 			DustType = Terraria.ID.DustID.Stone;

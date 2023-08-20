@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Hostile
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mech Bat");
+			// DisplayName.SetDefault("Mech Bat");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

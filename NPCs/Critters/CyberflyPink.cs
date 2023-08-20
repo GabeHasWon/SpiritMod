@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cyberfly");
+			// DisplayName.SetDefault("Cyberfly");
 			Main.npcFrameCount[NPC.type] = 2;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -76,13 +76,13 @@ namespace SpiritMod.NPCs.Critters
 			DrawSpecialGlow(spriteBatch);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0) 
 			{
 				for (int i = 0; i < 14; i++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, 2.5f * hitDirection, -2.5f, 0, default, 0.67f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.67f);
 					int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, 0f, -2f, 0, new Color(0, 255, 142), .6f);
 					Dust dust = Main.dust[num];
 					dust.noGravity = true;

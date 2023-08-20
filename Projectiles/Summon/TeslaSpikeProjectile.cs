@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tesla Spike");
+			// DisplayName.SetDefault("Tesla Spike");
 			Main.projFrames[Type] = 4;
 			ProjectileID.Sets.SentryShot[Type] = true;
 		}
@@ -32,6 +32,6 @@ namespace SpiritMod.Projectiles.Summon
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(Mod.Find<ModBuff>("ElectrifiedV2").Type, 540, true);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(Mod.Find<ModBuff>("ElectrifiedV2").Type, 540, true);
 	}
 }

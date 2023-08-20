@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Curious Lightbulb");
-			Tooltip.SetDefault("Summons a Moon Jelly Lightbulb");
+			// DisplayName.SetDefault("Curious Lightbulb");
+			// Tooltip.SetDefault("Summons a Moon Jelly Lightbulb");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

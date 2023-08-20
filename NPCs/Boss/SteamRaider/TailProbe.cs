@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starfarer");
+			// DisplayName.SetDefault("Starfarer");
 			Main.npcFrameCount[NPC.type] = 1;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
@@ -93,7 +93,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/TailProbe_Glow").Value, screenPos);
 		}
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				NPC.position.X = NPC.position.X + (NPC.width / 2.0f);

@@ -10,7 +10,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class ChitinHelmet : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Chitin Faceguard");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Chitin Faceguard");
 
 		public override void SetDefaults()
 		{

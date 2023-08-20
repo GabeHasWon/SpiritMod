@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Primordial Pebble");
-			Tooltip.SetDefault("Summons Atlas Jr.");
+			// DisplayName.SetDefault("Primordial Pebble");
+			// Tooltip.SetDefault("Summons Atlas Jr.");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

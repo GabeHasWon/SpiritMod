@@ -55,7 +55,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scarabeus");
+			// DisplayName.SetDefault("Scarabeus");
 			Main.npcFrameCount[NPC.type] = 22;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -93,9 +93,9 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.7143f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.7143f * balance);
 			NPC.damage = (int)(NPC.damage * 0.626f);
 		}
 
@@ -1187,10 +1187,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 				Color.White, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -1206,26 +1206,28 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			}
 		}
 
-		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
 		{
-			knockback *= 0.7f;
+			modifiers.Knockback *= 0.7f;
+
 			if (Main.player[projectile.owner].HeldItem.type == ItemID.Minishark)
 			{ //shadow nerfing minishark on scarab because meme balance weapon
-				knockback *= 0.5f;
+				modifiers.Knockback *= 0.5f;
 				int maxdamage = Main.rand.Next(3, 6);
 
-				while (damage - (NPC.defense / 2) + (Main.player[projectile.owner].GetArmorPenetration(DamageClass.Ranged) * 0.33f) > maxdamage)
-					damage--;
+				//1.4.4PORT
+				//while (damage - (NPC.defense / 2) + (Main.player[projectile.owner].GetArmorPenetration(DamageClass.Ranged) * 0.33f) > maxdamage)
+				//	damage--;
 			}
 
 			if (!Main.player[projectile.owner].ZoneDesert)
-				damage /= 3;
+				modifiers.FinalDamage /= 3;
 		}
 
-		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+		public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
 		{
 			if (!player.ZoneDesert)
-				damage /= 3;
+				modifiers.FinalDamage /= 3;
 		}
 
 		public override void FindFrame(int frameHeight)

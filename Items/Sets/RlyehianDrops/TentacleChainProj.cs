@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 		public float firingAnimation;
 		public float firingTime;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Brine Barrage");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Brine Barrage");
 
 		public override void SetDefaults()
 		{
@@ -96,7 +96,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 			Projectile.Center = player.RotatedRelativePoint(player.position + offset) - Projectile.velocity;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// Spawns an explosion when it hits an NPC.
 			int cooldown = 10;

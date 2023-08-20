@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Palladium Staff");
-			Tooltip.SetDefault("Summons a runic pillar at the cursor position\nIf below 1/3 HP, step inside the pillar to rapidly regenerate health");
+			// DisplayName.SetDefault("Palladium Staff");
+			// Tooltip.SetDefault("Summons a runic pillar at the cursor position\nIf below 1/3 HP, step inside the pillar to rapidly regenerate health");
 			Item.staff[Item.type] = true;
 		}
 

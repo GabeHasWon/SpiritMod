@@ -18,7 +18,6 @@ public class VolleyballNet : ModTile
 
 		DustType = -1;
         HitSound = SoundID.Tink;
-		ItemDrop = ModContent.ItemType<VolleyballNetItem>();
 	}
 
 	public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
@@ -38,7 +37,7 @@ public class VolleyballNet : ModTile
 
 public class VolleyballNetItem : ModItem
 {
-	public override void SetStaticDefaults() => DisplayName.SetDefault("Volleyball Net");
+	// public override void SetStaticDefaults() => DisplayName.SetDefault("Volleyball Net");
 	public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<VolleyballNet>());
 
 	public override void AddRecipes()

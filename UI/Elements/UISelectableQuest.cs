@@ -89,9 +89,9 @@ namespace SpiritMod.UI.Elements
 			base.MouseOver(evt);
 		}
 
-		public override void MouseDown(UIMouseEvent evt)
+		public override void LeftMouseDown(UIMouseEvent evt)
 		{
-			base.MouseDown(evt);
+			base.LeftMouseDown(evt);
 
 			_state.SelectQuest(MyQuest, false);
 			Exclamation.Color = Color.Transparent;

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops.DuskArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusk Leggings");
-			Tooltip.SetDefault("Increases critical strike chance by 7%");
+			// DisplayName.SetDefault("Dusk Leggings");
+			// Tooltip.SetDefault("Increases critical strike chance by 7%");
 
 		}
 		public override void SetDefaults()

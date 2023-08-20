@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Pets.CosmicRattler
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starachnid");
+			// DisplayName.SetDefault("Starachnid");
 			Main.projFrames[Projectile.type] = 5;
 			Main.projPet[Projectile.type] = true;
 		}

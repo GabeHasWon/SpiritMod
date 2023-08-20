@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Table");
+			// DisplayName.SetDefault("Bismite Table");
 		}
 
 

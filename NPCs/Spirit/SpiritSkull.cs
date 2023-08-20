@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Skull");
+			// DisplayName.SetDefault("Spirit Skull");
 			Main.npcFrameCount[NPC.type] = 8;
 		}
 
@@ -156,7 +156,7 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(ModContent.ItemType<Items.Sets.SpiritBiomeDrops.SpiritFlameStaff>(), 90);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phantom Arc");
+			// DisplayName.SetDefault("Phantom Arc");
 		}
 
 		public override void SetDefaults()

@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranHamaxe : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Hamaxe");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Hamaxe");
 
 		public override void SetDefaults()
 		{

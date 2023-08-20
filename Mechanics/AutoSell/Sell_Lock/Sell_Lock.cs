@@ -18,7 +18,7 @@ namespace SpiritMod.Mechanics.AutoSell.Sell_Lock
 			playButton.Top.Set(324, 0f);
 			playButton.Width.Set(32, 0f);
 			playButton.Height.Set(32, 0f);
-			playButton.OnClick += new MouseEvent(PlayButtonClicked);
+			playButton.OnLeftClick += new MouseEvent(PlayButtonClicked);
 
 			Append(playButton);
 		}

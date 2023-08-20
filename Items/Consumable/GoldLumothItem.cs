@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gold Lumoth");
-			Tooltip.SetDefault("'It glimmers beautifully'");
+			// DisplayName.SetDefault("Gold Lumoth");
+			// Tooltip.SetDefault("'It glimmers beautifully'");
 		}
 
 		public override void SetDefaults()

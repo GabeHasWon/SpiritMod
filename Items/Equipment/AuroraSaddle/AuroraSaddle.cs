@@ -17,8 +17,8 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aurora Saddle");
-			Tooltip.SetDefault("Summons a vibrant steed mount");
+			// DisplayName.SetDefault("Aurora Saddle");
+			// Tooltip.SetDefault("Summons a vibrant steed mount");
 		}
 
 		public override void SetDefaults()
@@ -82,8 +82,8 @@ namespace SpiritMod.Items.Equipment.AuroraSaddle
 		{
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.buffNoSave[Type] = true;
-			DisplayName.SetDefault("Aurora Stag Mount");
-			Description.SetDefault(""); //todo: put something here
+			// DisplayName.SetDefault("Aurora Stag Mount");
+			// Description.SetDefault(""); //todo: put something here
 		}
 
 		public override void Update(Player player, ref int buffIndex)

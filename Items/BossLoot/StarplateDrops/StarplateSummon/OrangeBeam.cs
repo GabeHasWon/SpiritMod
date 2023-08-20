@@ -12,7 +12,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Orange Beam");
+			// DisplayName.SetDefault("Orange Beam");
 			ProjectileID.Sets.TrailCacheLength[Type] = 4;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 			ProjectileID.Sets.MinionShot[Type] = true;

@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.SeraphSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Seraph's Storm");
-			Tooltip.SetDefault("Launches bolts of sporadic lunar energy");
+			// DisplayName.SetDefault("Seraph's Storm");
+			// Tooltip.SetDefault("Launches bolts of sporadic lunar energy");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

@@ -10,12 +10,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
 	public class InfernalPact : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Infernal Pact");
-			Tooltip.SetDefault("4% increased damage\nReduces your defense to 0\nIncreases damage by 0.75% per defense point lost");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 26;
@@ -29,7 +23,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.GetDamage(DamageClass.Generic) *= 1 + (player.statDefense * 0.0075f);
-			player.statDefense = 0;
+			player.statDefense.FinalMultiplier *= 0;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

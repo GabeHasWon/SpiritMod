@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Material
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Old Leather");
-			Tooltip.SetDefault("'Musty, but useful'");
+			// DisplayName.SetDefault("Old Leather");
+			// Tooltip.SetDefault("'Musty, but useful'");
 		}
 
 		public override void SetDefaults()

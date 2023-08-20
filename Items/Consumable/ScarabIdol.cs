@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scarab Idol");
-			Tooltip.SetDefault("Non-Consumable\nUse in the desert at daytime to summon Scarabeus");
+			// DisplayName.SetDefault("Scarab Idol");
+			// Tooltip.SetDefault("Non-Consumable\nUse in the desert at daytime to summon Scarabeus");
 		}
 
 		public override void SetDefaults()

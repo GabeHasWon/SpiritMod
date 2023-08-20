@@ -26,7 +26,7 @@ namespace SpiritMod.Items.BossLoot.OccultistDrops.OccultistPet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lil' Occultist");
+			// DisplayName.SetDefault("Lil' Occultist");
 			Main.projFrames[Projectile.type] = 2;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

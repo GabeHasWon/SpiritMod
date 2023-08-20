@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 {
 	public class Reef_Wrath_Projectile_1 : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Coral Reef");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Coral Reef");
 
 		readonly int maxtime = 50;
 		public override void SetDefaults()
@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 
 		int Number => int.Parse(Name.Remove(0, Name.Length - 1));
 		
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			int num2 = Main.rand.Next(20, 40);
 			for (int index1 = 0; index1 < num2; ++index1)

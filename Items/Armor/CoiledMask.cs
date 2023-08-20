@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Autonaut's Headgear");
+			// DisplayName.SetDefault("Autonaut's Headgear");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moonrise Over the Ocean");
-			Tooltip.SetDefault("'S. Yaki'");
+			// DisplayName.SetDefault("Moonrise Over the Ocean");
+			// Tooltip.SetDefault("'S. Yaki'");
 		}
 
 		public override void SetDefaults()

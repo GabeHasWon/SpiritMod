@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Sets.BismiteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Crystal");
-			Tooltip.SetDefault("'An oddly toxic metal'");
+			// DisplayName.SetDefault("Bismite Crystal");
+			// Tooltip.SetDefault("'An oddly toxic metal'");
 		}
 
 

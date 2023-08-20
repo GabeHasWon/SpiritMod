@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -29,8 +30,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.Origin = new Point16(1, 0);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Chandelier");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Chandelier");
 			AddMapEntry(new Color(179, 146, 107), name);
 			AdjTiles = new int[] { TileID.Chandeliers };
 		}

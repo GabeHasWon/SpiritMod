@@ -28,7 +28,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hundred-Crack Fist");
+			// DisplayName.SetDefault("Hundred-Crack Fist");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

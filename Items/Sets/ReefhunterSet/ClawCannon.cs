@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Claw Cannon");
-			Tooltip.SetDefault("'Clannon...clawnon...clawanon...'");
+			// DisplayName.SetDefault("Claw Cannon");
+			// Tooltip.SetDefault("'Clannon...clawnon...clawanon...'");
 		}
 
 		public override void SetDefaults()

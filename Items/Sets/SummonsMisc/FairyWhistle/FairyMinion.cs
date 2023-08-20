@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.FairyWhistle
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fairy");
+			// DisplayName.SetDefault("Fairy");
 			Main.projFrames[Projectile.type] = 4;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;

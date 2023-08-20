@@ -37,7 +37,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Inferno");
+			// DisplayName.SetDefault("Inferno");
 			Main.projFrames[Projectile.type] = 9;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

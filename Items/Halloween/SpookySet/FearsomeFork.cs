@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Halloween.SpookySet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fearsome Fork");
-			Tooltip.SetDefault("Launches pumpkins");
+			// DisplayName.SetDefault("Fearsome Fork");
+			// Tooltip.SetDefault("Launches pumpkins");
 		}
 
 

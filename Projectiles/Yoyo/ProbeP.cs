@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Probe");
+			// DisplayName.SetDefault("The Probe");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

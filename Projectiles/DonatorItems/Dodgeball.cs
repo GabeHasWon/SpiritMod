@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Super Dodgeball");
+			// DisplayName.SetDefault("Super Dodgeball");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

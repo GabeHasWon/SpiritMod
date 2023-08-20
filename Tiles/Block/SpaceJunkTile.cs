@@ -15,7 +15,6 @@ namespace SpiritMod.Tiles.Block
 			Main.tileBlendAll[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			AddMapEntry(new Color(87, 85, 81));
-			ItemDrop = ModContent.ItemType<SpaceJunkItem>();
 			DustType = DustID.Wraith;
 		}
 

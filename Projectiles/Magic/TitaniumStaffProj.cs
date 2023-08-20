@@ -17,7 +17,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Honed Sword");
+			// DisplayName.SetDefault("Honed Sword");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -222,14 +222,14 @@ namespace SpiritMod.Projectiles.Magic
 			return true;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			Player player = Main.player[Projectile.owner];
 			if (player.active && Offset >= 0)
-				hitDirection = target.position.X + (target.width >> 1) - player.position.X - (player.width >> 1) > 0 ? 1 : -1;
+				modifiers.HitDirectionOverride = target.position.X + (target.width >> 1) - player.position.X - (player.width >> 1) > 0 ? 1 : -1;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.immune[Projectile.owner] = 7;
 			if (Main.rand.NextBool(3))

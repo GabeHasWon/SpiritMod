@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shell");
+			// DisplayName.SetDefault("Shell");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

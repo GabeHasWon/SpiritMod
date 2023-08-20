@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Glyphs
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blaze Glyph");
-			Tooltip.SetDefault($"{Addendum}\n+25% damage and +10% critical strike chance");
+			// DisplayName.SetDefault("Blaze Glyph");
+			// Tooltip.SetDefault($"{Addendum}\n+25% damage and +10% critical strike chance");
 		}
 
 		public override void SetDefaults()

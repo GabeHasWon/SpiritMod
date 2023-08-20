@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chilly Bolt");
+			// DisplayName.SetDefault("Chilly Bolt");
 		}
 
 		public override void SetDefaults()
@@ -42,7 +42,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(BuffID.Frostburn, 200, true);

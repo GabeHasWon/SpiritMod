@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.FrozenSouls
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Icebound Soul");
+			// DisplayName.SetDefault("Icebound Soul");
 
 			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -66,7 +66,7 @@ namespace SpiritMod.NPCs.FrozenSouls
 			}
 		}
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
 			{

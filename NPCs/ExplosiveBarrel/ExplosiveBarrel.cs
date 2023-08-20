@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.ExplosiveBarrel
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Explosive Barrel");
+			// DisplayName.SetDefault("Explosive Barrel");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCHelper.BuffImmune(Type, true);
 		}
@@ -79,12 +79,12 @@ namespace SpiritMod.NPCs.ExplosiveBarrel
 
 			Lighting.AddLight(NPC.Center, 0.242f / 4 * 3, 0.132f / 4 * 3, 0.068f / 4 * 3);
         }
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
             NPC.ai[0] = 1;
             NPC.netUpdate = true;
         }
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
             NPC.ai[0] = 1;
             NPC.netUpdate = true;
@@ -96,7 +96,7 @@ namespace SpiritMod.NPCs.ExplosiveBarrel
             NPC.active = false;
         }
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0)
 				Explode();

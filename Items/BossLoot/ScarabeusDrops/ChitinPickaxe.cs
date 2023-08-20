@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chitin Pickaxe");
-			Tooltip.SetDefault("Mines sand and desert related blocks faster");
+			// DisplayName.SetDefault("Chitin Pickaxe");
+			// Tooltip.SetDefault("Mines sand and desert related blocks faster");
 		}
 
 

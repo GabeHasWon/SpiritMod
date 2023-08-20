@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Weapon.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Staff of the Jade Dragon");
-			Tooltip.SetDefault("Summons two revolving ethereal dragons");
+			// DisplayName.SetDefault("Staff of the Jade Dragon");
+			// Tooltip.SetDefault("Summons two revolving ethereal dragons");
 		}
 
 		public override void SetDefaults()
@@ -67,7 +67,7 @@ namespace SpiritMod.Items.Weapon.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Staff of the Jade Dragon");
+			// DisplayName.SetDefault("Staff of the Jade Dragon");
 			ProjectileID.Sets.TrailCacheLength[Type] = 4;
 			ProjectileID.Sets.TrailingMode[Type] = 2;
 		}

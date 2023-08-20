@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Twilight Talisman");
-			Tooltip.SetDefault("Increases melee speed by 5%\nIncreases damage reduction and damage dealt by 5%\nIncreases critical strike chance by 4%\nAttacks have a small chance of inflicting Shadowflame");
+			// DisplayName.SetDefault("Twilight Talisman");
+			// Tooltip.SetDefault("Increases melee speed by 5%\nIncreases damage reduction and damage dealt by 5%\nIncreases critical strike chance by 4%\nAttacks have a small chance of inflicting Shadowflame");
 		}
 
 		public override void SetDefaults()

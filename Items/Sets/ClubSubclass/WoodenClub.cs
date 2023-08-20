@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 		internal override float MinKnockback => 5f;
 		internal override float MaxKnockback => 8f;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Wooden Club");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Wooden Club");
 
 		public override void Defaults()
         {

@@ -31,7 +31,7 @@ namespace SpiritMod.Items.Glyphs
 			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/GlyphAttach"), player.Center);
 		}
 
-		public override void SetStaticDefaults() => Tooltip.SetDefault(Addendum);
+		// public override void SetStaticDefaults() => Tooltip.SetDefault(Addendum);
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{

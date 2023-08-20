@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 		int target;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glowflower");
+			// DisplayName.SetDefault("Glowflower");
 		}
 
 		public void DoTrailCreation(TrailManager tManager) => tManager.CreateTrail(Projectile, new GradientTrail(new Color(182, 66, 245) * .95f, new Color(91, 21, 150) * .7f), new RoundCap(), new DefaultTrailPosition(), 150f, 60f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_1").Value, 0.01f, 1f, 1f));

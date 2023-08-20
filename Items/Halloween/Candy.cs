@@ -22,8 +22,8 @@ namespace SpiritMod.Items.Halloween
 
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Candy");
-			Tooltip.SetDefault("Increases all stats slightly");
+			// DisplayName.SetDefault("Candy");
+			// Tooltip.SetDefault("Increases all stats slightly");
 		}
 
 		public override void Defaults()

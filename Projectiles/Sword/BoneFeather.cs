@@ -26,7 +26,7 @@ namespace SpiritMod.Projectiles.Sword
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bone Feather");
+			// DisplayName.SetDefault("Bone Feather");
 			Main.projFrames[Type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Type] = 4;
 			ProjectileID.Sets.TrailingMode[Type] = 2;
@@ -84,7 +84,7 @@ namespace SpiritMod.Projectiles.Sword
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.alpha = 80;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.alpha = 80;
 
 		public override bool? CanDamage() => Projectile.alpha <= 0;
 

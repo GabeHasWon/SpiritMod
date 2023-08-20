@@ -9,7 +9,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scarabeus Mask");
+			// DisplayName.SetDefault("Scarabeus Mask");
 
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}

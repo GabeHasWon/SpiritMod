@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -36,8 +37,8 @@ namespace SpiritMod.Tiles.Furniture.JadeDragonStatue
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Jade Dragon Statuette");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Jade Dragon Statuette");
 			AddMapEntry(Color.DarkOliveGreen, name);
 			DustType = DustID.Chlorophyte;
 		}

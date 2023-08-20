@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteFlail
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granite Mace");
+			// DisplayName.SetDefault("Granite Mace");
 			Main.projFrames[Type] = 2;
 		}
 
@@ -64,9 +64,9 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteFlail
 			return base.CanDamage();
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			base.OnHitNPC(target, damage, knockback, crit);
+			base.OnHitNPC(target, hit, damageDone);
 
 			if (State == SPINNING)
 			{

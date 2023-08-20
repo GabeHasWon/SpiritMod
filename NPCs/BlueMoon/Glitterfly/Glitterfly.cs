@@ -25,7 +25,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glitterfly");
+			// DisplayName.SetDefault("Glitterfly");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Pixie];
 			NPCHelper.ImmuneTo<StarFlame>(this, BuffID.Confused);
 		}
@@ -55,11 +55,11 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VilePowder, 1.5f * hitDirection, -1.5f, 0, default, 0.57f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Teleporter, 1.5f * hitDirection, -1.5f, 0, default, 0.52f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VilePowder, 1.5f * hit.HitDirection, -1.5f, 0, default, 0.57f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Teleporter, 1.5f * hit.HitDirection, -1.5f, 0, default, 0.52f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Glitterfly1").Type, 1f);
@@ -161,7 +161,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/BlueMoon/Glitterfly/Glitterfly_Glow").Value, screenPos);
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200);

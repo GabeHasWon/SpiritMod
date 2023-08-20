@@ -13,9 +13,12 @@
   <ItemGroup>
     <None Remove="Localization\en-US\Mods.SpiritMod.Biomes.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Buffs.hjson" />
+    <None Remove="Localization\en-US\Mods.SpiritMod.Conditions.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Items.hjson" />
+    <None Remove="Localization\en-US\Mods.SpiritMod.MusicDisplay.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.NPCs.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Projectiles.hjson" />
+    <None Remove="Localization\en-US\Mods.SpiritMod.Quests.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Tiles.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.TownNPCMood.hjson" />
   </ItemGroup>

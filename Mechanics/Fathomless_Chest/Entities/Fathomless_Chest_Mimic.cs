@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -19,7 +20,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault(string.Empty);
+			// DisplayName.SetDefault(string.Empty);
 			Main.npcFrameCount[Type] = 5;
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 
@@ -64,7 +65,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (Main.netMode == NetmodeID.Server)
 				return;
@@ -129,7 +130,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			if (player.lostCoins > 0)
 			{
 				SoundEngine.PlaySound(SoundID.Coins, player.Center);
-				NPC.extraValue = player.lostCoins;
+				NPC.extraValue = (int)Math.Min(player.lostCoins, int.MaxValue * 0.8f);
 			}
 		}
 

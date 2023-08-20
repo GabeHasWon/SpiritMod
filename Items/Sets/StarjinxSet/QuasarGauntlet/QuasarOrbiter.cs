@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.QuasarGauntlet
 {
 	public class QuasarOrbiter : ModProjectile, ITrailProjectile
     {
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Quasar Orb");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Quasar Orb");
 
 		public override void SetDefaults()
 		{

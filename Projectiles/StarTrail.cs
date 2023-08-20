@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles
 			set => Projectile.ai[0] = value;
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Trail");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Trail");
 		public override void SetDefaults()
 		{
 			Projectile.width = 10;

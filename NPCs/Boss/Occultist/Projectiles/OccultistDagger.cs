@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Boss.Occultist.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sacrificial Dagger");
+			// DisplayName.SetDefault("Sacrificial Dagger");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

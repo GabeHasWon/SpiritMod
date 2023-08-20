@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Ore");
-			Tooltip.SetDefault("'Spirit-infused metal'");
+			// DisplayName.SetDefault("Spirit Ore");
+			// Tooltip.SetDefault("'Spirit-infused metal'");
 		}
 
 		public override void SetDefaults()

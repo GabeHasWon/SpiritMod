@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Pickaxe");
+			// DisplayName.SetDefault("Bismite Pickaxe");
 		}
 
 

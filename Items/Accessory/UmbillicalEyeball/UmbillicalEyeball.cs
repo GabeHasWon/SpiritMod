@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Umbillical Eyeballs");
-			Tooltip.SetDefault("Summons 3 eyeballs attached to you\nThese eyeballs do not take up minion slots");
+			// DisplayName.SetDefault("Umbillical Eyeballs");
+			// Tooltip.SetDefault("Summons 3 eyeballs attached to you\nThese eyeballs do not take up minion slots");
 		}
 
 		public override void SetDefaults()
@@ -37,7 +37,7 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Umbillical Eyeball");
+			// DisplayName.SetDefault("Umbillical Eyeball");
 			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
@@ -183,7 +183,7 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 			Projectile.spriteDirection = -player.direction;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => attacking = false;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => attacking = false;
 	}
 
 	class UmbillicalPrimTrail : PrimTrail

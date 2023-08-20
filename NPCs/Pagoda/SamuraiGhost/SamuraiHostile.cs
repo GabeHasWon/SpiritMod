@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phantom Samurai");
+			// DisplayName.SetDefault("Phantom Samurai");
 			Main.npcFrameCount[NPC.type] = 9;
 			NPCID.Sets.TownCritter[NPC.type] = true;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
@@ -81,10 +81,10 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hitDirection, -2.5f, 54, new Color(0, 255, 142), .6f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hit.HitDirection, -2.5f, 54, new Color(0, 255, 142), .6f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

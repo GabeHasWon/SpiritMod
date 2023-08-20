@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.SummonsMisc.RodofDunes
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rod of Dunes");
-			Tooltip.SetDefault("Summons a sand warrior to fight for you");
+			// DisplayName.SetDefault("Rod of Dunes");
+			// Tooltip.SetDefault("Summons a sand warrior to fight for you");
 		}
 
 		public override void SetDefaults()

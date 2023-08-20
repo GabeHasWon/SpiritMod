@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gilded Jelly");
+			// DisplayName.SetDefault("Gilded Jelly");
 			Main.npcFrameCount[NPC.type] = 4;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.Critters
 			return SpawnCondition.OceanMonster.Chance * 0.008f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0) {
 				NPC.position.X = NPC.position.X + (float)(NPC.width / 2);

@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.GraveyardTome
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Accursed explosion");
+			// DisplayName.SetDefault("Accursed explosion");
 			Main.projFrames[Projectile.type] = 8;
 		}
 

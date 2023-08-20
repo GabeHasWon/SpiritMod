@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starshock");
+			// DisplayName.SetDefault("Starshock");
 		}
 
 		public override void SetDefaults()

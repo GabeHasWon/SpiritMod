@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Elderbark Door");
+			// DisplayName.SetDefault("Elderbark Door");
 		}
 
 

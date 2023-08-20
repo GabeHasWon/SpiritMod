@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -25,8 +26,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 				16
 			};
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Bookcase");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Bookcase");
 			AddMapEntry(new Color(179, 146, 107), name);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			TileID.Sets.DisableSmartCursor[Type] = true;

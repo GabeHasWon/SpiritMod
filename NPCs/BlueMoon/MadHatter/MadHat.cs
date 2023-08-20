@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mad Hat");
+			// DisplayName.SetDefault("Mad Hat");
 			Main.projFrames[base.Projectile.type] = 5;
 		}
 
@@ -28,7 +28,7 @@ namespace SpiritMod.NPCs.BlueMoon.MadHatter
 			Projectile.penetrate = 1;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			Projectile.Kill();
 		}

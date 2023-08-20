@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Hostile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Space Junk");
+			// DisplayName.SetDefault("Space Junk");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

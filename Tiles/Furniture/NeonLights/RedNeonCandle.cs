@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
@@ -26,10 +27,9 @@ namespace SpiritMod.Tiles.Furniture.NeonLights
             TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
             TileObjectData.addAlternate(1); //facing right will use the second texture style
             TileObjectData.addTile(Type);
-            ItemDrop = ModContent.ItemType<Items.Placeable.Furniture.Neon.NeonCandleRed>();
-			ModTranslation name = CreateMapEntryName();
+			LocalizedText name = CreateMapEntryName();
 			Main.tileLighted[Type] = true;
-			name.SetDefault("Neon Candle");
+			// name.SetDefault("Neon Candle");
             AddMapEntry(new Color(222, 31, 56), name);
             AdjTiles = new int[] { TileID.Torches };
             DustType = -1;

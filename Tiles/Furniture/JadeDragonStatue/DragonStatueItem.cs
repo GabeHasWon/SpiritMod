@@ -8,7 +8,7 @@ namespace SpiritMod.Tiles.Furniture.JadeDragonStatue
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jade Dragon Statuette");
+			// DisplayName.SetDefault("Jade Dragon Statuette");
 		}
 
 		public override void SetDefaults()

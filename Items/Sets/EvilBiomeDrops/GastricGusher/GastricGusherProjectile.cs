@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 		private float Scaling => ((_charge - MinimumCharge) * 0.03f) + 1f; //Scale factor for projectile damage, spread and speed
 		private float ScalingCapped => Scaling >= 4f ? 4f : Scaling; //Cap for scaling so there's not super OP charging lol
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gastric Gusher");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gastric Gusher");
 
 		public override void SetDefaults()
 		{

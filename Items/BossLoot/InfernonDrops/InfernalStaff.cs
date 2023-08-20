@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Seal of Torment");
-			Tooltip.SetDefault("Shoots three exploding, homing, fiery souls\n3 second cooldown");
+			// DisplayName.SetDefault("Seal of Torment");
+			// Tooltip.SetDefault("Shoots three exploding, homing, fiery souls\n3 second cooldown");
 		}
 
 		public override void SetDefaults()

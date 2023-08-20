@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moonburst");
+			// DisplayName.SetDefault("Moonburst");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -36,7 +36,7 @@ namespace SpiritMod.Projectiles.Yoyo
             }
         }
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.frameCounter++;
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.frameCounter++;
 
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
         {

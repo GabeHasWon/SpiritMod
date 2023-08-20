@@ -9,7 +9,7 @@ namespace SpiritMod.Utilities.ILEdits
 {
 	class KnockbackStatEdit : ILEdit
 	{
-		public override void Load(Mod mod) => IL.Terraria.Player.Hurt += Player_Hurt;
+		public override void Load(Mod mod) => IL_Player.Hurt_HurtInfo_bool += Player_Hurt;
 
 		private static void Player_Hurt(ILContext il)
 		{

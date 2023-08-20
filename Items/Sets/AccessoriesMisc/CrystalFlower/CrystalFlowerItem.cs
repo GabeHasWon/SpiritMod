@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crystal Flower");
-			Tooltip.SetDefault("Enemies have a chance to explode into damaging crystals on death");
+			// DisplayName.SetDefault("Crystal Flower");
+			// Tooltip.SetDefault("Enemies have a chance to explode into damaging crystals on death");
 		}
 
 		public override void SetDefaults()

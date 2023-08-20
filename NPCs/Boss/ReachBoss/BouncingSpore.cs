@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thorn Spore");
+			// DisplayName.SetDefault("Thorn Spore");
 		}
 
 		public override void SetDefaults()
@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			Lighting.AddLight(Projectile.Center, .075f, .179f,.084f);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.Poisoned, 180);

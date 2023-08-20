@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.BloodstainedChest
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodstained Chest");
+			// DisplayName.SetDefault("Bloodstained Chest");
             Main.npcFrameCount[NPC.type] = 1;
 			NPCHelper.BuffImmune(Type);
 
@@ -203,7 +203,7 @@ namespace SpiritMod.NPCs.BloodstainedChest
 		public override string GetChat() => "The ancient chest seems to be covered in gold, blood, and bones. It surely contains great riches, but opening it may be perilous.";
 		public override void SetChatButtons(ref string button, ref string button2) => button = "Open";
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
 			{

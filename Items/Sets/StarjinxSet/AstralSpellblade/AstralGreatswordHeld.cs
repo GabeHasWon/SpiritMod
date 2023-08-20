@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.AstralSpellblade
 {
     public class AstralGreatswordHeld : BaseHeldProj
     {
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Astral Spellblade");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Astral Spellblade");
 
 		public override string Texture => "SpiritMod/Items/Sets/StarjinxSet/AstralSpellblade/AstralGreatsword";
 
@@ -119,7 +119,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.AstralSpellblade
 
 		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => UseProgress > DRAWBACK_TIME && _hitPause == 0; //Only do damage when swinging
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if(!_hasHit)
 			{

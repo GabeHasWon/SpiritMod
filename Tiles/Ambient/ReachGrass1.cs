@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -18,13 +19,13 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
+			LocalizedText name = CreateMapEntryName();
 
 			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
 			TileID.Sets.SwaysInWindBasic[Type] = true;
 			TileID.Sets.BreakableWhenPlacing[Type] = true;
 
-			name.SetDefault("Spiky Grass");
+			// name.SetDefault("Spiky Grass");
 			AddMapEntry(new Color(200, 200, 200), name);
 			AdjTiles = new int[] { TileID.Lamps };
 		}

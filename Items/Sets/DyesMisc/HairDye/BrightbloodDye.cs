@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.DyesMisc.HairDye
 {
 	public class BrightbloodDye : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Brightblood Hair Dye");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Brightblood Hair Dye");
 
 		public override void SetDefaults()
 		{

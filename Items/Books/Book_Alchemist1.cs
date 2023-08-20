@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Books
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("An Alchemist's Observations");
-            Tooltip.SetDefault("by Lena Ashwood, Alchemist");
+            // DisplayName.SetDefault("An Alchemist's Observations");
+            // Tooltip.SetDefault("by Lena Ashwood, Alchemist");
         }
 	}
 }

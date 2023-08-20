@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Armor.WayfarerSet
 {
@@ -13,8 +14,8 @@ namespace SpiritMod.Items.Armor.WayfarerSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wayfarer's Hat");
-			Tooltip.SetDefault("Immunity to darkness");
+			// DisplayName.SetDefault("Wayfarer's Hat");
+			// Tooltip.SetDefault("Immunity to darkness");
 
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}
@@ -48,7 +49,7 @@ namespace SpiritMod.Items.Armor.WayfarerSet
 			recipe.Register();
 		}
 
-		public static Recipe.Condition QuestCondition() => new Recipe.Condition(Terraria.Localization.NetworkText.FromLiteral("Obtain 3 Durasilk Sheafs"), (self) =>
+		public static Condition QuestCondition() => new Condition(Language.GetText("Mods.SpiritMod.Quests.Conditions.DurasilkSheaf"), () =>
 		{
 			Quest quest = QuestManager.GetQuest<FirstAdventure>();
 			return quest.IsCompleted || quest.CurrentTask is ParallelTask || (quest.CurrentTask is RetrievalTask task && task.GetItemID() != ModContent.ItemType<Consumable.Quest.DurasilkSheaf>());

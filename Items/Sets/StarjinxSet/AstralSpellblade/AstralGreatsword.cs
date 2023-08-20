@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.StarjinxSet.AstralSpellblade
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Astral Spellblade");
-			Tooltip.SetDefault("Does a devastating spin attack after 2 swings\nReleases stars when swung or swinging");
+            // DisplayName.SetDefault("Astral Spellblade");
+			// Tooltip.SetDefault("Does a devastating spin attack after 2 swings\nReleases stars when swung or swinging");
             SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 

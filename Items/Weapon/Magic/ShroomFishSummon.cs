@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Weapon.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fungal Icthyoid");
-			Tooltip.SetDefault("Summons slow homing spores around the player\n5 summon tag damage");
+			// DisplayName.SetDefault("Fungal Icthyoid");
+			// Tooltip.SetDefault("Summons slow homing spores around the player\n5 summon tag damage");
 
 			Item.staff[Item.type] = true;
 		}

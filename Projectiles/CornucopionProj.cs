@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles
 		Vector2 holdOffset = new(0, -15);
 		int chargeStacks = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cornucop-ion");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cornucop-ion");
 
 		public override void SetDefaults()
 		{
@@ -72,7 +72,7 @@ namespace SpiritMod.Projectiles
                             {
                                 int p = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Main.npc[npcFinder].Center, Vector2.Zero, ModContent.ProjectileType<MoonThunder>(), 20, 8);
                                 SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Thunder2"), Main.projectile[p].Center);
-                                Main.npc[npcFinder].StrikeNPC(Projectile.damage + (2 * chargeStacks), 12, 0, false);
+                                Main.npc[npcFinder].SimpleStrikeNPC(Projectile.damage + (2 * chargeStacks), 0, false, 12f);
                                 SpiritMod.tremorTime = 18;
                                 Main.projectile[p].friendly = true;
                                 Main.projectile[p].hostile = false;

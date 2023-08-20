@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.FrigidSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frigid Fragment");
-			Tooltip.SetDefault("'Cold to the touch'");
+			// DisplayName.SetDefault("Frigid Fragment");
+			// Tooltip.SetDefault("'Cold to the touch'");
 		}
 
 		public override void SetDefaults()

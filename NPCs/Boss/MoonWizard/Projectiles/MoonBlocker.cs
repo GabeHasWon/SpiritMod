@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 	{
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moon Blocker");
+			// DisplayName.SetDefault("Moon Blocker");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

@@ -36,7 +36,7 @@ namespace SpiritMod.Projectiles.Thrown
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soaring Scapula");
+			// DisplayName.SetDefault("Soaring Scapula");
 			ProjectileID.Sets.TrailCacheLength[Type] = 2;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
@@ -81,7 +81,7 @@ namespace SpiritMod.Projectiles.Thrown
 						shouldKill = true;
 
 						player.GetSpiritPlayer().Shake += 5;
-						npc.StrikeNPC(Projectile.damage, 0f, Math.Sign(npc.velocity.X));
+						npc.StrikeNPC(npc.CalculateHitInfo(Projectile.damage, Math.Sign(Projectile.velocity.X), Main.rand.NextFloat() < Projectile.CritChance * 0.01f, Projectile.knockBack, Projectile.DamageType, true));
 						npc.velocity.Y = -3f; //Send the NPC upwards again
 
 						SoundEngine.PlaySound(SoundID.DD2_MonkStaffGroundImpact, npc.Center);
@@ -147,7 +147,7 @@ namespace SpiritMod.Projectiles.Thrown
 
 		public override bool? CanDamage() => ((Counter < counterMax) || (hitNPCIndex > -1)) ? false : null;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if ((!target.boss && target.velocity != Vector2.Zero && target.knockBackResist != 0) || target.type == NPCID.TargetDummy)
 			{

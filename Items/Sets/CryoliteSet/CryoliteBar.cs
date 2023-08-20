@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolite Bar");
+			// DisplayName.SetDefault("Cryolite Bar");
 		}
 
 		public override void SetDefaults()

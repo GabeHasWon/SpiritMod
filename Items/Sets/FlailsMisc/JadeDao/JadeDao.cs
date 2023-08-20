@@ -20,8 +20,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jade Daos");
-			Tooltip.SetDefault("Pulls enemies inward on release");
+			// DisplayName.SetDefault("Jade Daos");
+			// Tooltip.SetDefault("Pulls enemies inward on release");
 		}
 
 		public override void SetDefaults()
@@ -69,7 +69,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jade Daos");
+			// DisplayName.SetDefault("Jade Daos");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -397,7 +397,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 
 		public override bool? CanDamage() => AiState != STATE_RETRACT;
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			float progress = Timer / SwingTime; //How far the projectile is through its swing
 			progress = EaseFunction.EaseCubicInOut.Ease(progress);
@@ -434,12 +434,12 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 					if (trail != null)
 						trail.Destroyed = true;
 
-					crit = true;
+					modifiers.SetCrit();
 				}
 			}
 			else if (Collision.CheckAABBvAABBCollision(target.position, target.Size, Projectile.position, Projectile.Size))
 			{
-				damage = (int)(damage * 1.5f);
+				modifiers.FinalDamage *= 1.5f;
 
 				for (int i = 0; i < 8; i++)
 				{

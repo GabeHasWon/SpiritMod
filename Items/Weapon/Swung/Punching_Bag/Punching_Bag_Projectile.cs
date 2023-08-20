@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Weapon.Swung.Punching_Bag
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Zombie's Punch");
+			// DisplayName.SetDefault("Zombie's Punch");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -103,7 +103,7 @@ namespace SpiritMod.Items.Weapon.Swung.Punching_Bag
 			Projectile.velocity*=0.97f;
 		}
 		
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 			Vector2 vector9 = Projectile.position;

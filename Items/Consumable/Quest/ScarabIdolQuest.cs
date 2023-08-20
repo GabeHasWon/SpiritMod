@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Consumable.Quest
 	[Sacrifice(1)]
 	public class ScarabIdolQuest : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Decrepit Idol");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Decrepit Idol");
 
 		public override void SetDefaults()
 		{

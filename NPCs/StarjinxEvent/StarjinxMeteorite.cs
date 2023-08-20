@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.StarjinxEvent
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starjinx");
+			// DisplayName.SetDefault("Starjinx");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.BuffImmune(Type, true);
@@ -433,11 +433,11 @@ namespace SpiritMod.NPCs.StarjinxEvent
 			spriteBatch.End(); spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int k = 0; k < 14; k++)
-					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(0, Main.rand.NextFloat(42)).RotatedByRandom(MathHelper.Pi), new Vector2(2 * hitDirection, Main.rand.NextFloat(-1, 1f)), Mod.Find<ModGore>($"Gores/StarjinxEvent/Meteorite/Meteor_{Main.rand.Next(5)}").Type, Main.rand.NextFloat(.6f, 1f));
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(0, Main.rand.NextFloat(42)).RotatedByRandom(MathHelper.Pi), new Vector2(2 * hit.HitDirection, Main.rand.NextFloat(-1, 1f)), Mod.Find<ModGore>($"Gores/StarjinxEvent/Meteorite/Meteor_{Main.rand.Next(5)}").Type, Main.rand.NextFloat(.6f, 1f));
 		}
 
 		public override void OnKill()
@@ -455,15 +455,15 @@ namespace SpiritMod.NPCs.StarjinxEvent
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<Items.Material.Starjinx>();
 		public override bool CheckActive() => false;
 
-		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit) => CheckTakeDamage(ref damage, ref crit);
-		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => CheckTakeDamage(ref damage, ref crit);
+		public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers) => CheckTakeDamage(ref modifiers);
+		public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers) => CheckTakeDamage(ref modifiers);
 
-		private void CheckTakeDamage(ref int damage, ref bool crit)
+		private void CheckTakeDamage(ref NPC.HitModifiers damage)
 		{
 			if (!spawnedComets && !NPC.dontTakeDamage)
 			{
-				damage = 1;
-				crit = false;
+				damage.FinalDamage *= 0;
+				damage.DisableCrit();
 			}
 		}
 	}

@@ -18,7 +18,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rusted Sword");
+			// DisplayName.SetDefault("Rusted Sword");
 			Main.projFrames[Type] = 6;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Sets.ToolsMisc.OreWarhammersSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Adamantite Warhammer");
+			// DisplayName.SetDefault("Adamantite Warhammer");
 		}
 
 

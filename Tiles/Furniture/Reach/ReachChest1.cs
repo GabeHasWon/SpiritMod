@@ -40,13 +40,11 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Chest");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Chest");
 			AddMapEntry(new Color(179, 146, 107), name, MapChestName);
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ModContent.ItemType<Items.Placeable.Furniture.Reach.ReachChest>();
-			ContainerName.SetDefault("Elderbark Chest");
 		}
 
 		public static string MapChestName(string name, int i, int j)
@@ -73,12 +71,7 @@ namespace SpiritMod.Tiles.Furniture.Reach
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
-			Chest.DestroyChest(i, j);
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Chest.DestroyChest(i, j);
 
 		public override bool RightClick(int i, int j)
 		{

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gulper");
-			Tooltip.SetDefault("'Quite the perky lil' fella'");
+			// DisplayName.SetDefault("Gulper");
+			// Tooltip.SetDefault("'Quite the perky lil' fella'");
 		}
 
 		public override void SetDefaults()

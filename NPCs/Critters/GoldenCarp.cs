@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Golden Carp");
+			// DisplayName.SetDefault("Golden Carp");
 			Main.npcFrameCount[NPC.type] = 5;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0) {
 				NPC.position.X = NPC.position.X + (float)(NPC.width / 2);

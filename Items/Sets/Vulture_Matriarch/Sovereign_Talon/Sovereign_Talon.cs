@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sovereign Talon");
-			Tooltip.SetDefault("Thrusting continuously charges the talon\nAn arcane wave will be cast at full charge");
+			// DisplayName.SetDefault("Sovereign Talon");
+			// Tooltip.SetDefault("Thrusting continuously charges the talon\nAn arcane wave will be cast at full charge");
 		}
 
 		public override void SetDefaults()

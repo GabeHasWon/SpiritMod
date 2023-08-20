@@ -6,7 +6,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 	[Sacrifice(1)]
 	public class Trophy2 : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Avian Trophy");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Avian Trophy");
 
 		public override void SetDefaults()
 		{

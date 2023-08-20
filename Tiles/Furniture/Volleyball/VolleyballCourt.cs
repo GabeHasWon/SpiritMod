@@ -17,13 +17,12 @@ public class VolleyballCourt : ModTile
 
 		DustType = -1;
         HitSound = SoundID.Tink;
-		ItemDrop = ModContent.ItemType<VolleyballCourtItem>();
 	}
 }
 
 public class VolleyballCourtItem : ModItem
 {
-	public override void SetStaticDefaults() => DisplayName.SetDefault("Volleyball Court");
+	// public override void SetStaticDefaults() => DisplayName.SetDefault("Volleyball Court");
 	public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<VolleyballCourt>());
 
 	public override void AddRecipes()

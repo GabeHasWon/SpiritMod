@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hallowed Mageblade");
+			// DisplayName.SetDefault("Hallowed Mageblade");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -137,7 +137,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override Color? GetAlpha(Color lightColor) => new Color(155 + colortimer, 90 + colortimer, 90 + colortimer, 100);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int i = 0; i < 10; i++)
 			{

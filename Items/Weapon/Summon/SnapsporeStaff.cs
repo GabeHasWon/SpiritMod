@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Weapon.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Snapspore Wand");
-			Tooltip.SetDefault("Summons a Snapspore to fight for you\nSnapspores bounce toward enemies and emits poison clouds");
+			// DisplayName.SetDefault("Snapspore Wand");
+			// Tooltip.SetDefault("Summons a Snapspore to fight for you\nSnapspores bounce toward enemies and emits poison clouds");
 		}
 
 		public override void SetDefaults()

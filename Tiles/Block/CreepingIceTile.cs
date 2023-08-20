@@ -19,7 +19,6 @@ namespace SpiritMod.Tiles.Block
 			Main.tileBlendAll[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			AddMapEntry(new Color(163, 224, 240));
-			ItemDrop = ModContent.ItemType<CreepingIce>();
 			DustType = DustID.SnowBlock;
 		}
 		public override bool HasWalkDust()

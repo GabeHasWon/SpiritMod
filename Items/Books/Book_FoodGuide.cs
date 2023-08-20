@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Books
                 "[i:" + SpiritMod.Instance.Find<ModItem>("Popsicle").Type + "][c/80deed: Popsicle:] Going to the tundra during a storm is not a great vacation plan, especially when the locals are dissocial and probably want you dead. One entered the cave I snuggled in, and frankly never left. Bored, an idea popped into my head and a skinner in my hand. I gave one of its toothpicks some good whacks and it magically turned into a popsicle after hitting the floor with a poof, stick and all! Sadly it melted quick near my campfire, along with the buggers' remains and my mood.";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Meals On Wheels");
-            Tooltip.SetDefault("by Explorer Trev Irwin");
+            // DisplayName.SetDefault("Meals On Wheels");
+            // Tooltip.SetDefault("by Explorer Trev Irwin");
         }
     }
 }

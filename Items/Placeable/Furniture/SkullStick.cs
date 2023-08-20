@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skull on a Stick");
+			// DisplayName.SetDefault("Skull on a Stick");
 		}
 
 		public override void SetDefaults()

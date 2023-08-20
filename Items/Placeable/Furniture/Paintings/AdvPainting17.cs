@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dreams of a World Beyond");
-			Tooltip.SetDefault("'P. Otat'");
+			// DisplayName.SetDefault("Dreams of a World Beyond");
+			// Tooltip.SetDefault("'P. Otat'");
 		}
 
 		public override void SetDefaults()

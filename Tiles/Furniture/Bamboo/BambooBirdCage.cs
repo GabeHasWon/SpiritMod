@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -49,8 +50,8 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Stripped Bamboo Bird Cage");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Stripped Bamboo Bird Cage");
 			AddMapEntry(new Color(100, 100, 60), name);
 			DustType = -1;
 		}

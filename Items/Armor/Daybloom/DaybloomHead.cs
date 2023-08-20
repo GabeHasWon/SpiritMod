@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Armor.Daybloom
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sunflower Hat");
-			Tooltip.SetDefault("Increases maximum mana by 20");
+			// DisplayName.SetDefault("Sunflower Hat");
+			// Tooltip.SetDefault("Increases maximum mana by 20");
 
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}

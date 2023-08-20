@@ -26,7 +26,7 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Luminous Prowler");
+			// DisplayName.SetDefault("Luminous Prowler");
 			Main.npcFrameCount[NPC.type] = 10;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -265,7 +265,7 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 			npcLoot.AddCommon<IridescentScale>(1, 3, 5);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0)
 			{
@@ -281,9 +281,9 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 
 			for (int k = 0; k < 5; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.AncientLight, 2.5f * hitDirection, -2.5f, 0, new Color(r, g, b), 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.AncientLight, 2.5f * hitDirection, -2.5f, 0, new Color(r, g, b), 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.AncientLight, 2.5f * hitDirection, -2.5f, 0, new Color(r, g, b), 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.AncientLight, 2.5f * hit.HitDirection, -2.5f, 0, new Color(r, g, b), 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.AncientLight, 2.5f * hit.HitDirection, -2.5f, 0, new Color(r, g, b), 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.AncientLight, 2.5f * hit.HitDirection, -2.5f, 0, new Color(r, g, b), 0.7f);
 			}
 		}
 
@@ -328,7 +328,7 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 			{
 				if (!NPC.IsABestiaryIconDummy && NPC.frameCounter == 24 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0))
 				{
-					player.Hurt(PlayerDeathReason.LegacyDefault(), (int)(NPC.damage * 1.5f), NPC.direction, false, false, false, -1);
+					player.Hurt(PlayerDeathReason.LegacyDefault(), (int)(NPC.damage * 1.5f), NPC.direction, false, false, -1, false);
 					NPC.frame.Y = 9 * frameHeight;
 				}
 

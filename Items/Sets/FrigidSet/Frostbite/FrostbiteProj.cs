@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 	{
 		private bool Released { get => Projectile.ai[0] == 1; set => Projectile.ai[0] = value ? 1 : 0; }
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blizzard");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blizzard");
 
 		public override void SetDefaults()
 		{
@@ -98,12 +98,12 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 			owner.itemRotation = MathHelper.WrapAngle(owner.AngleTo(Projectile.Center) - owner.fullRotation - ((owner.direction < 0) ? MathHelper.Pi : 0));
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			int bonusDamageRange = (int)(Projectile.Size.Length() * .15f);
 
 			if (Projectile.Distance(target.Center) <= bonusDamageRange) //Deal more damage toward the projectile's center
-				damage = (int)(damage * 2f);
+				modifiers.FinalDamage *= 2f;
 
 			target.AddBuff(ModContent.BuffType<Frozen>(), 300);
 		}

@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fiery Soul");
+			// DisplayName.SetDefault("Fiery Soul");
 		}
 
 		public override void SetDefaults()
@@ -73,7 +73,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 180);
 		}

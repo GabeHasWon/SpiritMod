@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Zones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fortification Zone");
-			Description.SetDefault("You feel strong!");
+			// DisplayName.SetDefault("Fortification Zone");
+			// Description.SetDefault("You feel strong!");
 			Main.pvpBuff[Type] = true;
 		}
 

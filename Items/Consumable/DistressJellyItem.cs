@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Consumable
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Distress Jelly");
-            Tooltip.SetDefault("'It needs help!'\nUse at nighttime to summon the Jelly Deluge");
+            // DisplayName.SetDefault("Distress Jelly");
+            // Tooltip.SetDefault("'It needs help!'\nUse at nighttime to summon the Jelly Deluge");
         }
 
         public override void SetDefaults()

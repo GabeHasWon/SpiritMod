@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 	{
 		private int subID = -1; //Controls the in-world sprite for this item
 
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Highly explosive");
+		// public override void SetStaticDefaults() => Tooltip.SetDefault("Highly explosive");
 
 		public override void SetDefaults()
 		{

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Books
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Flora of the Spirit Biome");
-            Tooltip.SetDefault("by Field Researcher Laywatts\nIt seems to be a page of notes about the unknown Spirit Biome\n'There is a lot to be learned from this mysterious place'");
+            // DisplayName.SetDefault("Flora of the Spirit Biome");
+            // Tooltip.SetDefault("by Field Researcher Laywatts\nIt seems to be a page of notes about the unknown Spirit Biome\n'There is a lot to be learned from this mysterious place'");
         }
         public override void SetDefaults()
         {

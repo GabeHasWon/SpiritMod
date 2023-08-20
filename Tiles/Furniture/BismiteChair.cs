@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -36,8 +37,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addTile(Type);
 
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Bismite Chair");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Bismite Chair");
 			AddMapEntry(new Color(100, 100, 100), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;

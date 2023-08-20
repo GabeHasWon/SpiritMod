@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.ClatterMace
 
 		public override void PostAI() { if (hitCounter > 0) hitCounter--; }
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //Clattering Mace effect 
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) //Clattering Mace effect 
 		{
 			if (Main.rand.NextBool((State == LAUNCHING) ? 2 : 8))
 			{

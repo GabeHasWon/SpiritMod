@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Weapon.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Typhoon");
-			Tooltip.SetDefault("Shoots sharks at nearby enemies");
+			// DisplayName.SetDefault("Typhoon");
+			// Tooltip.SetDefault("Shoots sharks at nearby enemies");
 		}
 
 		public override void SetDefaults()

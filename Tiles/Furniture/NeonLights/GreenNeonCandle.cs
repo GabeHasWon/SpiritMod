@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
@@ -26,10 +27,9 @@ namespace SpiritMod.Tiles.Furniture.NeonLights
             TileObjectData.addAlternate(1); //facing right will use the second texture style
             TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-            ItemDrop = ModContent.ItemType<Items.Placeable.Furniture.Neon.NeonCandleGreen>();
-			ModTranslation name = CreateMapEntryName();
+			LocalizedText name = CreateMapEntryName();
 			Main.tileLighted[Type] = true;
-			name.SetDefault("Neon Candle");
+			// name.SetDefault("Neon Candle");
             AddMapEntry(new Color(77, 255, 88), name);
             AdjTiles = new int[] { TileID.Torches };
             DustType = -1;

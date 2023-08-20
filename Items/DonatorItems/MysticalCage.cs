@@ -12,8 +12,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mystical Cage");
-			Tooltip.SetDefault("Summons a Cultfish to follow you\nReveals nearby treasure");
+			// DisplayName.SetDefault("Mystical Cage");
+			// Tooltip.SetDefault("Summons a Cultfish to follow you\nReveals nearby treasure");
 		}
 
 		public override void SetDefaults()

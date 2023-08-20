@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Night Grasp");
+			// DisplayName.SetDefault("Night Grasp");
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
 
@@ -98,7 +98,7 @@ namespace SpiritMod.Projectiles.Magic
 				vector *= 6f / magnitude;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.Kill();
 		}

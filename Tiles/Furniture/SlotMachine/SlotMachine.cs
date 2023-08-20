@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.Enums;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,7 +14,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 	[Sacrifice(1)]
 	public class SlotMachine : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Slot Machine");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Slot Machine");
 
 		public override void SetDefaults()
 		{
@@ -56,8 +57,8 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Slot Machine");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Slot Machine");
 			AddMapEntry(new Color(200, 200, 200), name);
 
 			DustType = -1;

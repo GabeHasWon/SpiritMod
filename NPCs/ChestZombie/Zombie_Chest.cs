@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace SpiritMod.NPCs.ChestZombie
 {
@@ -15,7 +16,7 @@ namespace SpiritMod.NPCs.ChestZombie
 			Item.rare = ItemRarityID.White;
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Chest");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Chest");
 		public override void GrabRange(Player player, ref int grabRange) => grabRange *= 0;
 		public override bool ItemSpace(Player player) => true;
 
@@ -67,9 +68,9 @@ namespace SpiritMod.NPCs.ChestZombie
 					int num3 = Main.rand.Next(2);
 					int num4 = Main.rand.Next(8) + 3;
 					if (num3 == 0)
-						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), WorldGen.copperBar, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), GenVars.copperBar, num4);
 					if (num3 == 1)
-						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), WorldGen.ironBar, num4);
+						player.QuickSpawnItem(player.GetSource_Loot("Pickup"), GenVars.ironBar, num4);
 				}
 
 				if (Main.rand.NextBool(2))

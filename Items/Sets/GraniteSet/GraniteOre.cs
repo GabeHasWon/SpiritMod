@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Tiles;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GraniteSet
@@ -19,9 +20,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 			Main.tileLighted[Type] = false;
 			Main.tileOreFinderPriority[Type] = 390;
 
-			ItemDrop = ModContent.ItemType<GraniteChunk>();
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Enchanted Granite Chunk");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(30, 144, 255), name);
 			HitSound = SoundID.Tink;
 			DustType = DustID.Electric;

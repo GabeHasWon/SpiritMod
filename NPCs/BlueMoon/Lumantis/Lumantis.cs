@@ -21,7 +21,7 @@ namespace SpiritMod.NPCs.BlueMoon.Lumantis
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lumantis");
+			// DisplayName.SetDefault("Lumantis");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo<StarFlame>(this);
 		}
@@ -52,19 +52,19 @@ namespace SpiritMod.NPCs.BlueMoon.Lumantis
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 11; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hitDirection, -1f, 1, default, .81f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hitDirection, -1f, 1, default, .51f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hit.HitDirection, -1f, 1, default, .81f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hit.HitDirection, -1f, 1, default, .51f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int k = 0; k < 11; k++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hitDirection, -1f, 1, default, .81f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hitDirection, -1f, 1, default, .71f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, hit.HitDirection, -1f, 1, default, .81f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.VenomStaff, hit.HitDirection, -1f, 1, default, .71f);
 				}
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Lumantis1").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Lumantis2").Type, 1f);
@@ -121,16 +121,16 @@ namespace SpiritMod.NPCs.BlueMoon.Lumantis
 				NPC.frame.Y = frameHeight * 4;
 		}
 
-		public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+		public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone)
 		{
 			if (reflectPhase)
 			{
-				player.Hurt(PlayerDeathReason.LegacyEmpty(), item.damage, 0, true, false, false, -1);
+				player.Hurt(PlayerDeathReason.LegacyEmpty(), item.damage, 0, true, false, -1, false);
 				SoundEngine.PlaySound(SoundID.DD2_LightningBugZap, NPC.position);
 			}
 		}
 
-		public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+		public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
 		{
 			if (reflectPhase && !projectile.minion && !Main.player[projectile.owner].channel)
 			{

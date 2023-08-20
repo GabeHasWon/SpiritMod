@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Weaver");
-			Tooltip.SetDefault("Shoots out multiple Soul Shards in a spread");
+			// DisplayName.SetDefault("Soul Weaver");
+			// Tooltip.SetDefault("Shoots out multiple Soul Shards in a spread");
 
 		}
 

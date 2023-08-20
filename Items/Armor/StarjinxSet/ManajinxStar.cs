@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
     {
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Starlight Energy");
+            // DisplayName.SetDefault("Starlight Energy");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -79,12 +79,9 @@ namespace SpiritMod.Items.Armor.StarjinxSet
         }
         public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => Projectile.ai[0] == 0;
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            damage += Math.Max(target.defense / 2, 20); //ignore up to 40 defense
-        }
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage.Base += Math.Max(target.defense / 2, 20); //ignore up to 40 defense
 
-        private float Timer => Main.GlobalTimeWrappedHourly * 4 + Projectile.ai[1];
+		private float Timer => Main.GlobalTimeWrappedHourly * 4 + Projectile.ai[1];
         public override bool PreDraw(ref Color lightColor)
         {
             for (int i = 1; i < ProjectileID.Sets.TrailCacheLength[Projectile.type]; i++)

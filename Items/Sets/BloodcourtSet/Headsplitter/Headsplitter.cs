@@ -19,9 +19,9 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Headsplitter");
-			Tooltip.SetDefault("Strikes inflict 'Surging Anguish', slowly depleting enemy life\n" +
-				"Right click grants empowerement for a short time, dealing bonus damage to anguished foes");
+			// DisplayName.SetDefault("Headsplitter");
+			/* Tooltip.SetDefault("Strikes inflict 'Surging Anguish', slowly depleting enemy life\n" +
+				"Right click grants empowerement for a short time, dealing bonus damage to anguished foes"); */
 		}
 
 		public override void SetDefaults()

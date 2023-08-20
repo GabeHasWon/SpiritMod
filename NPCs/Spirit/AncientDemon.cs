@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		int timer = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Specter");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Ancient Specter");
 
 		public override void SetDefaults()
 		{
@@ -75,7 +75,7 @@ namespace SpiritMod.NPCs.Spirit
 			NPC.spriteDirection = NPC.direction;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Asphalt, 0f, 0f, 100, default, 1f);
 

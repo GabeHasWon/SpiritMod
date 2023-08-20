@@ -29,7 +29,7 @@ namespace SpiritMod.NPCs.Beholder
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Beholder");
+			// DisplayName.SetDefault("Beholder");
 			Main.npcFrameCount[NPC.type] = 9;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
@@ -289,7 +289,7 @@ namespace SpiritMod.NPCs.Beholder
 			return true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -301,7 +301,7 @@ namespace SpiritMod.NPCs.Beholder
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Bleeding, 180);

@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Ghast
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ghast's Spectre");
+			// DisplayName.SetDefault("Ghast's Spectre");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -109,15 +109,15 @@ namespace SpiritMod.NPCs.Ghast
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			int d1 = 180;
 			for (int k = 0; k < 30; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, d1, 2.5f * hitDirection, -2.5f, 0, default, .74f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, d1, 2.5f * hit.HitDirection, -2.5f, 0, default, .74f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				for (int k = 0; k < 30; k++) {
-					int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, d1, 2.5f * hitDirection, -4.5f, 0, default, .74f);
+					int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, d1, 2.5f * hit.HitDirection, -4.5f, 0, default, .74f);
 					Main.dust[d].noGravity = true;
 				}
 			}

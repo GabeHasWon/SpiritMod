@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.JinxprobeWand
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mini Star");
+            // DisplayName.SetDefault("Mini Star");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 16;
 			ProjectileID.Sets.MinionShot[Projectile.type] = true;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;

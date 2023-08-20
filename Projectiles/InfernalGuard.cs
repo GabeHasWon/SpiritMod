@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernal Guard");
+			// DisplayName.SetDefault("Infernal Guard");
 		}
 
 		public override void SetDefaults()

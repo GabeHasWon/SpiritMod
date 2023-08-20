@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Windshear Pearl");
-			Tooltip.SetDefault("Teleports you to the projectile's landing position\nYour body cannot sustain multiple uses");
+			// DisplayName.SetDefault("Windshear Pearl");
+			// Tooltip.SetDefault("Teleports you to the projectile's landing position\nYour body cannot sustain multiple uses");
 		}
 
 		public override void SetDefaults()

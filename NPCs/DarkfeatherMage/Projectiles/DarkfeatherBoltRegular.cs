@@ -8,7 +8,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
 {
 	public class DarkfeatherBoltRegular : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Darkfeather Bolt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Darkfeather Bolt");
 
 		public override void SetDefaults()
 		{

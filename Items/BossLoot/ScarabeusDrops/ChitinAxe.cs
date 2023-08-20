@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chitin Axe");
-			Tooltip.SetDefault("Cuts down palm wood and cactus faster");
+			// DisplayName.SetDefault("Chitin Axe");
+			// Tooltip.SetDefault("Cuts down palm wood and cactus faster");
 		}
 
 		public override void SetDefaults()

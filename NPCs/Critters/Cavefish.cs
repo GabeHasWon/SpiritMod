@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Armored Cavefish");
+			// DisplayName.SetDefault("Armored Cavefish");
 			Main.npcFrameCount[NPC.type] = 7;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -84,7 +84,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0)
 			{
@@ -92,7 +92,7 @@ namespace SpiritMod.NPCs.Critters
 				{
 					int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood);
 					Main.dust[dust].noGravity = false;
-					Main.dust[dust].velocity *= 0.5f * hitDirection;
+					Main.dust[dust].velocity *= 0.5f * hit.HitDirection;
 				}
 			}
 		}

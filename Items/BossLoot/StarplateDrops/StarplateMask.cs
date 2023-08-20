@@ -12,7 +12,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Voyager Mask");
+			// DisplayName.SetDefault("Starplate Voyager Mask");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/StarplateDrops/StarplateMask_Head_Glow");
 		}
 

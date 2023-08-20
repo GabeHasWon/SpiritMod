@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("True Blood Cluster");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("True Blood Cluster");
 
 		public override void SetDefaults()
 		{
@@ -76,7 +76,7 @@ namespace SpiritMod.Projectiles.Magic
 				vector *= 6f / magnitude;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.Next(10) <= 4)
 				Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, Projectile.owner, Projectile.owner, Main.rand.Next(4, 6));

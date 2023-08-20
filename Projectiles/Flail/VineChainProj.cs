@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.Flail
 {
 	public class VineChainProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Vine Chain");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Vine Chain");
 
 		public override void SetDefaults()
 		{
@@ -72,7 +72,7 @@ namespace SpiritMod.Projectiles.Flail
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (!target.boss && target.knockBackResist != 0) {
 				hooked = true;

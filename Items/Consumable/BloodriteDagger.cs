@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodrite Dagger");
-			Tooltip.SetDefault("Use at nighttime to summon the Blood Moon");
+			// DisplayName.SetDefault("Bloodrite Dagger");
+			// Tooltip.SetDefault("Use at nighttime to summon the Blood Moon");
 		}
 
 		public override void SetDefaults()

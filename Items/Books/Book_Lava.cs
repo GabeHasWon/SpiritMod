@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Books
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Is Lava Hot?");
-            Tooltip.SetDefault("by Field Researcher Ocano");
+            // DisplayName.SetDefault("Is Lava Hot?");
+            // Tooltip.SetDefault("by Field Researcher Ocano");
         }
     }
 }

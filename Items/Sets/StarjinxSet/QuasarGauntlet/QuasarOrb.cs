@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.QuasarGauntlet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Quasar Orb");
+			// DisplayName.SetDefault("Quasar Orb");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -140,13 +140,17 @@ namespace SpiritMod.Items.Sets.StarjinxSet.QuasarGauntlet
 			return false;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => IncreaseDamage(ref damage);
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => IncreaseDamage(ref modifiers.FinalDamage);
 
-		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) => IncreaseDamage(ref damage);
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{
+			if (modifiers.PvP)
+				IncreaseDamage(ref modifiers.FinalDamage);
+		}
 
-        private void IncreaseDamage(ref int damage)
+        private void IncreaseDamage(ref StatModifier damage)
         {
-            damage = (int)(damage * power);
+            damage *= power;
 
             if (power < MAXPOWER)
 			{

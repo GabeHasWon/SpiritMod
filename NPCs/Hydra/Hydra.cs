@@ -33,7 +33,7 @@ namespace SpiritMod.NPCs.Hydra
 		private int attackIndex = 0;
 		private int attackCounter = 0;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Lernean Hydra");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Lernean Hydra");
 
 		public override void SetDefaults()
 		{
@@ -84,7 +84,7 @@ namespace SpiritMod.NPCs.Hydra
 			if (heads.Count <= 0)
 			{
 				NPC.life = 0;
-				NPC.StrikeNPC(1, 0, 0);
+				NPC.SimpleStrikeNPC(1, 0, false, 0);
 				return;
 			}
 
@@ -154,7 +154,7 @@ namespace SpiritMod.NPCs.Hydra
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lernean Hydra");
+			// DisplayName.SetDefault("Lernean Hydra");
 			Main.npcFrameCount[NPC.type] = 3;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused, BuffID.OnFire, BuffID.Venom);
 
@@ -390,7 +390,7 @@ namespace SpiritMod.NPCs.Hydra
 			NPC.rotation = MathHelper.Lerp(currentRot, currentRot + rotDifference, 0.05f);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit1, NPC.Center);
 
@@ -535,7 +535,7 @@ namespace SpiritMod.NPCs.Hydra
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hydra Spit");
+			// DisplayName.SetDefault("Hydra Spit");
 			Main.projFrames[Projectile.type] = 4;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -605,7 +605,7 @@ namespace SpiritMod.NPCs.Hydra
 
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.OnFire, 200);
+		public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.OnFire, 200);
 
 		public override bool PreDraw(ref Color lightColor)
 		{
@@ -638,7 +638,7 @@ namespace SpiritMod.NPCs.Hydra
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hydra Spit");
+			// DisplayName.SetDefault("Hydra Spit");
 			Main.projFrames[Projectile.type] = 6;
 		}
 		public override void SetDefaults()
@@ -664,7 +664,7 @@ namespace SpiritMod.NPCs.Hydra
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.OnFire, 200);
+		public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.OnFire, 200);
 
 		public override bool PreDraw(ref Color lightColor)
 		{
@@ -680,7 +680,7 @@ namespace SpiritMod.NPCs.Hydra
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hydra Spit");
+			// DisplayName.SetDefault("Hydra Spit");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 			Main.projFrames[Projectile.type] = 5;
@@ -738,7 +738,7 @@ namespace SpiritMod.NPCs.Hydra
 			return false;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Poisoned, 200);
+		public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.Poisoned, 200);
 
 		public override void Kill(int timeLeft)
 		{
@@ -755,7 +755,7 @@ namespace SpiritMod.NPCs.Hydra
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hydra Spit");
+			// DisplayName.SetDefault("Hydra Spit");
 			Main.projFrames[Projectile.type] = 6;
 		}
 
@@ -807,7 +807,7 @@ namespace SpiritMod.NPCs.Hydra
 			return false;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Venom, 200);
+		public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.Venom, 200);
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 	}
 }

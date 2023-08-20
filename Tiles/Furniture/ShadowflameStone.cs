@@ -7,6 +7,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -34,8 +35,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.CoordinateWidth = 16;
 			TileObjectData.newTile.CoordinatePadding = 2;
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Goblin Weapon Rack");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Goblin Weapon Rack");
 			AddMapEntry(Colors.RarityPurple, name);
 			DustType = DustID.WoodFurniture;
 		}

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Tiles
@@ -17,9 +18,7 @@ namespace SpiritMod.Tiles
 			Main.tileLighted[Type] = true;
 			Main.tileSpelunker[Type] = true;
 			DustType = DustID.DungeonSpirit;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Blackrock");
-			ItemDrop = Mod.Find<ModItem>("Black_Stone_Item").Type;
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(133, 206, 181), name);
 			HitSound = SoundID.Item21;
 		}
@@ -55,7 +54,7 @@ namespace SpiritMod.Tiles
 
 	internal class Black_Stone_Item : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blackrock");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blackrock");
 
 		public override void SetDefaults()
 		{

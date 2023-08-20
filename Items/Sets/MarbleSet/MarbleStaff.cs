@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Sets.MarbleSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gilded Tome");
-			Tooltip.SetDefault("Rains down gilded stalactites from the sky");
+			// DisplayName.SetDefault("Gilded Tome");
+			// Tooltip.SetDefault("Rains down gilded stalactites from the sky");
 		}
 
 		public override void SetDefaults()
@@ -76,7 +76,7 @@ namespace SpiritMod.Items.Sets.MarbleSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gilded Tome");
+			// DisplayName.SetDefault("Gilded Tome");
 			Main.projFrames[Type] = 13;
 		}
 

@@ -6,8 +6,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Headsplitter
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Empowered");
-			Description.SetDefault("Headsplitter is imbued with a fleeting strength");
+			// DisplayName.SetDefault("Empowered");
+			// Description.SetDefault("Headsplitter is imbued with a fleeting strength");
 		}
 	}
 }

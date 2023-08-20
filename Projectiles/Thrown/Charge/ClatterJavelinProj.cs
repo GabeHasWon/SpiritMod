@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Clatter Javelin");
+			// DisplayName.SetDefault("Clatter Javelin");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

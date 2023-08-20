@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mysterious Satchel");
-			Tooltip.SetDefault("'The Painter's been feeling inspired!'\nContains two random paintings");
+			// DisplayName.SetDefault("Mysterious Satchel");
+			// Tooltip.SetDefault("'The Painter's been feeling inspired!'\nContains two random paintings");
 		}
 
 		public override void SetDefaults()

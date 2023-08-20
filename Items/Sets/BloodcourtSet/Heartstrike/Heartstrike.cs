@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Heartstrike");
-			Tooltip.SetDefault("Successful hits grant charges, which can fired using right click\nFired charges inflict 'Surging Anguish', slowly depleting enemy life");
+			// DisplayName.SetDefault("Heartstrike");
+			// Tooltip.SetDefault("Successful hits grant charges, which can fired using right click\nFired charges inflict 'Surging Anguish', slowly depleting enemy life");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -133,7 +133,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 		public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.arrow || (entity.ModProjectile != null && entity.ModProjectile.AIType == ProjectileID.WoodenArrowFriendly);
 
-		public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (heartStruck)
 			{

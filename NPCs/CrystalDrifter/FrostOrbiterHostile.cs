@@ -9,8 +9,8 @@ namespace SpiritMod.NPCs.CrystalDrifter
 {
 	public class FrostOrbiterHostile : ModProjectile
 	{
-		public override void SetStaticDefaults()
-			=> DisplayName.SetDefault("Frost Spirit");
+		/* public override void SetStaticDefaults()
+			=> DisplayName.SetDefault("Frost Spirit"); */
 
 		public override void SetDefaults()
 		{
@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.CrystalDrifter
 			}
 
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 			=> target.AddBuff(BuffID.Frostburn, 120);
 		public override void Kill(int timeLeft)
 		{

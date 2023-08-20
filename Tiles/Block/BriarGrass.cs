@@ -21,8 +21,6 @@ namespace SpiritMod.Tiles.Block
 			TileID.Sets.CanBeDugByShovel[Type] = true;
 			
 			AddMapEntry(new Color(104, 156, 70));
-
-			ItemDrop = ItemID.DirtBlock;
 		}
 
 		public override bool CanExplode(int i, int j)

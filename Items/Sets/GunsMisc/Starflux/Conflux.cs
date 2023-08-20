@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Starflux
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starflux");
-			Tooltip.SetDefault("Converts regular bullets into bouncing stars");
+			// DisplayName.SetDefault("Starflux");
+			// Tooltip.SetDefault("Converts regular bullets into bouncing stars");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

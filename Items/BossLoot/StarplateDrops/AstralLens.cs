@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astral Convergence");
-			Tooltip.SetDefault("Shoots out bursts of electrical stars that reconverge on the player");
+			// DisplayName.SetDefault("Astral Convergence");
+			// Tooltip.SetDefault("Shoots out bursts of electrical stars that reconverge on the player");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

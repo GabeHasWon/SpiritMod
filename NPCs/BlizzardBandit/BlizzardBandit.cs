@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.BlizzardBandit
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blizzard Bandit");
+            // DisplayName.SetDefault("Blizzard Bandit");
             Main.npcFrameCount[NPC.type] = 16;
 			NPCHelper.ImmuneTo(this, BuffID.Frostburn, ModContent.BuffType<MageFreeze>(), ModContent.BuffType<CryoCrush>());
 
@@ -98,10 +98,10 @@ namespace SpiritMod.NPCs.BlizzardBandit
             }
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             for (int k = 0; k < 30; k++)
-                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Rope, 2.5f * hitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.3f, 1.1f));
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Rope, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, Main.rand.NextFloat(.3f, 1.1f));
 
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 1; i < 5; ++i)

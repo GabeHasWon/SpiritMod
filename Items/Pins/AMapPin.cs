@@ -26,8 +26,8 @@ namespace SpiritMod.Items.Pins
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault($"Wayfinder's Pin ({PinName})");
-			Tooltip.SetDefault($"Places or moves a {DescName} map pin\nRight Click to delete pin\nPlaced pins can be interacted with on the map");
+			// DisplayName.SetDefault($"Wayfinder's Pin ({PinName})");
+			// Tooltip.SetDefault($"Places or moves a {DescName} map pin\nRight Click to delete pin\nPlaced pins can be interacted with on the map");
 		}
 
 		public override void SetDefaults()

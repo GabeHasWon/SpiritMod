@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Void Star");
+			// DisplayName.SetDefault("Void Star");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -41,7 +41,7 @@ namespace SpiritMod.Projectiles
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.ShadowFlame, 120, true);

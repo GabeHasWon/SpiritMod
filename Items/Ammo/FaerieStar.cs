@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Ammo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Faerie Star");
-			Tooltip.SetDefault("Can be used as ammunition");
+			// DisplayName.SetDefault("Faerie Star");
+			// Tooltip.SetDefault("Can be used as ammunition");
 		}
 
 		public override void SetDefaults()

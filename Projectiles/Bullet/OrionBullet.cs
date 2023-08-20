@@ -19,7 +19,7 @@ namespace SpiritMod.Projectiles.Bullet
 			tManager.CreateTrail(Projectile, new StandardColorTrail(Color.White), new TriangleCap(), new DefaultTrailPosition(), 8f, 700f, new DefaultShader());
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Orion Bullet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Orion Bullet");
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;

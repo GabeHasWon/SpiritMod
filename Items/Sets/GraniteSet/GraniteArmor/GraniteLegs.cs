@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granite Greaves");
-			Tooltip.SetDefault("Increases jump height slightly");
+			// DisplayName.SetDefault("Granite Greaves");
+			// Tooltip.SetDefault("Increases jump height slightly");
 
 		}
 		public override void SetDefaults()

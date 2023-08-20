@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Kunai");
+			// DisplayName.SetDefault("Kunai");
 		}
 		public override void SetDefaults()
 		{

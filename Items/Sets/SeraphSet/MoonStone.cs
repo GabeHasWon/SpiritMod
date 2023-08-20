@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SeraphSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Azure Gem");
-			Tooltip.SetDefault("'Holds a far away power'");
+			// DisplayName.SetDefault("Azure Gem");
+			// Tooltip.SetDefault("'Holds a far away power'");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 5));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 		}

@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Milestone");
+			// DisplayName.SetDefault("The Milestone");
 		}
 
 		public override void SetDefaults()

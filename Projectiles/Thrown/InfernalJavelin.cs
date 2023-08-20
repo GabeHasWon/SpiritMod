@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernal Javelin");
+			// DisplayName.SetDefault("Infernal Javelin");
 		}
 
 		public override void SetDefaults()
@@ -50,7 +50,7 @@ namespace SpiritMod.Projectiles.Thrown
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 300);
 		}

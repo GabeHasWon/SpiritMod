@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Hemophora
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hemophora");
+            // DisplayName.SetDefault("Hemophora");
             Main.npcFrameCount[NPC.type] = 11;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
@@ -90,7 +90,7 @@ namespace SpiritMod.NPCs.Hemophora
             return (spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneJungle) ? 0.0368f : 0f;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
 			if (Main.netMode != NetmodeID.Server)
 			{
@@ -113,7 +113,7 @@ namespace SpiritMod.NPCs.Hemophora
             }
             for (int k = 0; k < 20; k++)
             {
-                int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, .95f));
+                int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, .95f));
                 Main.dust[d].fadeIn = 1f;
                 Main.dust[d].noGravity = true;
             }

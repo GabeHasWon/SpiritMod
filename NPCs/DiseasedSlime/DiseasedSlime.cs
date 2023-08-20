@@ -21,7 +21,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Noxious Slime");
+			// DisplayName.SetDefault("Noxious Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
 			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.Poisoned, BuffID.Venom);
 		}
@@ -54,7 +54,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = 130;
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */ => NPC.lifeMax = 130;
 
 		public override void OnSpawn(IEntitySource source)
 		{
@@ -98,18 +98,18 @@ namespace SpiritMod.NPCs.DiseasedSlime
 			npcLoot.AddCommon<Cake>(25);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 240);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life > 0)
 			{
 				for (int k = 0; k < 12; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SlimeBunny, hitDirection, -2.5f, 0, Color.Green * .14f, 0.7f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SlimeBunny, hit.HitDirection, -2.5f, 0, Color.Green * .14f, 0.7f);
 			}
 			else
 			{
@@ -120,7 +120,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/GasHiss"), NPC.Center);
 				}
 				for (int k = 0; k < 25; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SlimeBunny, 2 * hitDirection, -2.5f, 0, Color.Green * .14f, 0.7f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SlimeBunny, 2 * hit.HitDirection, -2.5f, 0, Color.Green * .14f, 0.7f);
 			}
 		}
 	}

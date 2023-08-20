@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Boil");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Boil");
 
 		public override void SetDefaults()
 		{
@@ -24,7 +24,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.timeLeft = 80;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<Wither>(), 180);

@@ -25,8 +25,8 @@ namespace SpiritMod.Items.Sets.BismiteSet.BismiteArmor
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault(SetDisplayName);
-			Tooltip.SetDefault(SetTooltip);
+			// DisplayName.SetDefault(SetDisplayName);
+			// Tooltip.SetDefault(SetTooltip);
 
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}
@@ -73,7 +73,8 @@ namespace SpiritMod.Items.Sets.BismiteSet.BismiteArmor
 			if (virulence == 0f)
 				SoundEngine.PlaySound(SoundID.MaxMana);
 		}
-		public override void PlayerHurt(Player player, bool pvp, bool quiet, double damage, int hitDirection, bool crit) => virulence = 600f;
+
+		public override void PlayerHurt(Player player, Player.HurtInfo info) => virulence = 600f;
 
 		public override void PlayerOnHitNPC(Player player, Item item, NPC target, int damage, float knockback, bool crit)
 		{

@@ -15,7 +15,7 @@ namespace SpiritMod.Utilities.ILEdits
 	{
 		public static ushort LastAxedType = 0;
 
-		public override void Load(Mod mod) => IL.Terraria.Player.ItemCheck_UseMiningTools_ActuallyUseMiningTool += Player_ItemCheck;
+		public override void Load(Mod mod) => Terraria.IL_Player.ItemCheck_UseMiningTools_ActuallyUseMiningTool += Player_ItemCheck;
 
 		private static void Player_ItemCheck(ILContext il)
 		{

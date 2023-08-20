@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tiki Javelin");
+			// DisplayName.SetDefault("Tiki Javelin");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

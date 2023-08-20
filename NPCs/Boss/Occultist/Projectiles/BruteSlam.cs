@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Boss.Occultist.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Brutish Slam");
+			// DisplayName.SetDefault("Brutish Slam");
 			Main.projFrames[Projectile.type] = 10;
 		}
 

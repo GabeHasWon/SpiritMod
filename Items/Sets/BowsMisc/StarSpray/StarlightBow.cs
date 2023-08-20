@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.StarSpray
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Spray");
-			Tooltip.SetDefault("Converts wooden arrows into speeding stars");
+			// DisplayName.SetDefault("Star Spray");
+			// Tooltip.SetDefault("Converts wooden arrows into speeding stars");
 		}
 
 		public override void SetDefaults()

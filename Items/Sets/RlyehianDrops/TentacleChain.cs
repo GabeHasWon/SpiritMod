@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 {
 	public class TentacleChain : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Brine Barrage");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Brine Barrage");
 
 		public override void SetDefaults()
 		{

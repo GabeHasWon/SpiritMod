@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Arrow
 {
 	public class GraniteRepeaterArrow : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Unstable Bolt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Unstable Bolt");
 
 		public override void SetDefaults()
 		{
@@ -94,7 +94,7 @@ namespace SpiritMod.Projectiles.Arrow
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[0] = 1f;
 			Projectile.ai[1] = (float)target.whoAmI;

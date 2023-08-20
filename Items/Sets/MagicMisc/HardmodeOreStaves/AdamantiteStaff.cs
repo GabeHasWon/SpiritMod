@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Adamantite Staff");
-			Tooltip.SetDefault("Shoots out a cluster of energy that splits into different directions");
+			// DisplayName.SetDefault("Adamantite Staff");
+			// Tooltip.SetDefault("Shoots out a cluster of energy that splits into different directions");
 		}
 
 

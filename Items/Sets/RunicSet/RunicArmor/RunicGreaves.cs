@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.RunicSet.RunicArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Runic Greaves");
-			Tooltip.SetDefault("Reduces mana cost by 10% and increases magic damage by 10%");
+			// DisplayName.SetDefault("Runic Greaves");
+			// Tooltip.SetDefault("Reduces mana cost by 10% and increases magic damage by 10%");
 
 		}
 		public override void SetDefaults()

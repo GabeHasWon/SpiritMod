@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Consumable.Food
 	public class Sushi : FoodItem
 	{
 		internal override Point Size => new(26, 24);
-		public override void StaticDefaults() => Tooltip.SetDefault("Minor improvements to all stats\nProvides underwater breathing\n'Cold and fresh!'");
+		// public override void StaticDefaults() => Tooltip.SetDefault("Minor improvements to all stats\nProvides underwater breathing\n'Cold and fresh!'");
 
 		public override bool CanUseItem(Player player)
 		{

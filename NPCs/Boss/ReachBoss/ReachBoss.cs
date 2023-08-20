@@ -25,7 +25,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vinewrath Bane");
+			// DisplayName.SetDefault("Vinewrath Bane");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 4;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
@@ -52,9 +52,9 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			NPC.DeathSound = SoundID.NPCDeath1;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.66f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.66f * balance);
 			NPC.damage = (int)(NPC.damage * 0.6f);
 		}
 
@@ -430,7 +430,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0)
 			{
@@ -474,18 +474,18 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				int a = Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(Main.rand.Next(-50, 50), Main.rand.Next(-50, 50)), NPC.velocity, 386, goreScale);
 				Main.gore[a].timeLeft = 15;
 				Main.gore[a].rotation = 10f;
-				Main.gore[a].velocity = new Vector2(hitDirection * 2.5f, Main.rand.NextFloat(1f, 2f));
+				Main.gore[a].velocity = new Vector2(hit.HitDirection * 2.5f, Main.rand.NextFloat(1f, 2f));
 
 				int a1 = Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(Main.rand.Next(-50, 50), Main.rand.Next(-50, 50)), NPC.velocity, 911, goreScale);
 				Main.gore[a1].timeLeft = 15;
 				Main.gore[a1].rotation = 1f;
-				Main.gore[a1].velocity = new Vector2(hitDirection * 2.5f, Main.rand.NextFloat(10f, 20f));
+				Main.gore[a1].velocity = new Vector2(hit.HitDirection * 2.5f, Main.rand.NextFloat(10f, 20f));
 			}
 
 			for (int k = 0; k < 12; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.LavaMoss, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.LavaMoss, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 		}
 

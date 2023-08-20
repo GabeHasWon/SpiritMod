@@ -51,7 +51,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 
 	public class SkeletonPile : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Skeleton Pile");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Skeleton Pile");
 
 		public override void AddRecipes()
 		{
@@ -70,7 +70,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 
 	public class StonePile : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Stone Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Stone Rubble");
 		public override void SafeSetDefaults() => Item.placeStyle = 7;
 
 		public override void AddRecipes()
@@ -90,7 +90,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 
 	public class StonePileHelmet : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Helmet Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Helmet Rubble");
 		public override void SafeSetDefaults() => Item.placeStyle = 13;
 
 		public override void AddRecipes()
@@ -104,7 +104,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 
 	public class StonePilePickaxe : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mining Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mining Rubble");
 		public override void SafeSetDefaults() => Item.placeStyle = 14;
 
 		public override void AddRecipes()
@@ -117,7 +117,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class StonePileSword : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Abandoned Sword Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Abandoned Sword Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -134,7 +134,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 
 	public class WoodRuinPile : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Ruined Furniture");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Ruined Furniture");
 		public override void SafeSetDefaults() => Item.placeStyle = 22;
 
 		public override void AddRecipes()
@@ -153,7 +153,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class ChestPile : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Abandoned Chest");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Abandoned Chest");
 
 		public override void SafeSetDefaults()
 		{
@@ -169,7 +169,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class ChandelierPile : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Broken Chandelier");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Broken Chandelier");
 
 		public override void SafeSetDefaults()
 		{
@@ -186,7 +186,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class IcePile : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Frozen Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Frozen Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -207,7 +207,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class MushroomPile : DefaultLargePile1
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Glowing Mushroom Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Glowing Mushroom Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -229,7 +229,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class MossStonePile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mossy Stone Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mossy Stone Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -251,7 +251,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class MossMudPile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mossy Mud Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mossy Mud Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -272,7 +272,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class HellstonePile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Hellstone Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hellstone Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -294,7 +294,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class WebPile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Webbed Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Webbed Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -315,7 +315,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class GrassStonePile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Grassy Stone Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Grassy Stone Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -337,7 +337,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class LihzahrdPile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Lihzahrd Brick Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Lihzahrd Brick Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -358,7 +358,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class MahoganyCage : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mahogany Cage");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mahogany Cage");
 
 		public override void SafeSetDefaults()
 		{
@@ -374,7 +374,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class MahoganyCageFull : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mahogany Cage (Full)");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mahogany Cage (Full)");
 
 		public override void SafeSetDefaults()
 		{
@@ -391,7 +391,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class RustyMinecart : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Rusty Minecart");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Rusty Minecart");
 
 		public override void SafeSetDefaults()
 		{
@@ -408,7 +408,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class OldWell : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Old Well");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Old Well");
 
 		public override void SafeSetDefaults()
 		{
@@ -424,7 +424,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class DirtPile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Pile of Dirt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Pile of Dirt");
 
 		public override void SafeSetDefaults()
 		{
@@ -440,7 +440,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class OldTent : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Old Tent");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Old Tent");
 
 		public override void SafeSetDefaults()
 		{
@@ -456,7 +456,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class OldWheelbarrow : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Old Wheelbarrow");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Old Wheelbarrow");
 
 		public override void SafeSetDefaults()
 		{
@@ -473,7 +473,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class SandPile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sandstone Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sandstone Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -494,7 +494,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class GranitePile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Rubble");
 
 		public override void SafeSetDefaults()
 		{
@@ -515,7 +515,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	}
 	public class MarblePile : DefaultLargePile2
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Marble Rubble");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Marble Rubble");
 
 		public override void SafeSetDefaults()
 		{

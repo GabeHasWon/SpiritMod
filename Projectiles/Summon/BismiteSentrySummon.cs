@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public const int BurstAlpha = 210;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Crystal");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Crystal");
 
 		public override void SetDefaults()
 		{

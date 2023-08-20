@@ -169,7 +169,7 @@ namespace SpiritMod.World
 						int type = ModContent.TileType<Coral2x2>();
 
 						WorldGen.PlaceObject(i, j - 2, type, true, WorldGen.genRand.Next(3));
-						NetMessage.SendObjectPlacment(-1, i, j, type, 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, i, j, type, 0, 0, -1, -1);
 						continue;
 					}
 
@@ -187,7 +187,7 @@ namespace SpiritMod.World
 						int offset = type == ModContent.TileType<Kelp2x3>() ? 3 : 2;
 
 						WorldGen.PlaceObject(i, j - offset, type, true, 0);
-						NetMessage.SendObjectPlacment(-1, i, j, type, 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, i, j, type, 0, 0, -1, -1);
 						continue;
 					}
 
@@ -198,7 +198,7 @@ namespace SpiritMod.World
 
 						WorldGen.PlaceObject(i, j - 2, type, true, 0);
 						WorldGen.PlaceTile(i, j, TileID.Sand);
-						NetMessage.SendObjectPlacment(-1, i, j, type, 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, i, j, type, 0, 0, -1, -1);
 						continue;
 					}
 
@@ -209,7 +209,7 @@ namespace SpiritMod.World
 						int offset = type == ModContent.TileType<HydrothermalVent1x2>() ? 1 : 2;
 
 						WorldGen.PlaceObject(i, j - offset, type, true, WorldGen.genRand.Next(2));
-						NetMessage.SendObjectPlacment(-1, i, j, type, 0, 0, -1, -1);
+						NetMessage.SendObjectPlacement(-1, i, j, type, 0, 0, -1, -1);
 						continue;
 					}
 

@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -27,8 +28,8 @@ namespace SpiritMod.Tiles
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(ModContent.GetInstance<CrimsonPustuleTileEntity>().Hook_AfterPlacement, -1, 0, true);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Crimson Pustule");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Crimson Pustule");
 			AddMapEntry(new Color(242, 90, 60), name);
 
 			TileID.Sets.DisableSmartCursor[Type] = true;
@@ -145,7 +146,7 @@ namespace SpiritMod.Tiles
 
 			foreach (NPC npc in Main.npc)
 				if (npc.DistanceSQ(PustuleWorldCenter) < Range * Range)
-					npc.StrikeNPC(Damage, 0f, npc.Center.X > PustuleWorldCenter.X ? -1 : 1);
+					npc.SimpleStrikeNPC(Damage, npc.Center.X > PustuleWorldCenter.X ? -1 : 1, false, 0f);
 
 			for (int i = 0; i < 30; i++)
 				Dust.NewDustDirect(PustuleWorldCenter, 6, 6, DustID.Blood, Main.rand.NextFloat(3f, 6f) * Main.rand.NextFloatDirection(), Main.rand.NextFloat(3f, 6f) * Main.rand.NextFloatDirection(), Scale: Main.rand.NextFloat(1f, 2f));

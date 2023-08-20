@@ -13,6 +13,6 @@ namespace SpiritMod.Tiles.Furniture.Fountains
 	{
 		internal override int PlaceType => ModContent.TileType<BriarFountain>();
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Water Fountain");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Water Fountain");
 	}
 }

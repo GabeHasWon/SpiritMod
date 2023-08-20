@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.ElectricEel
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Electric Eel");
+			// DisplayName.SetDefault("Electric Eel");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo<ElectrifiedV2>(this);
 		}
@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.ElectricEel
 			return SpawnCondition.OceanMonster.Chance * 0.08f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -83,7 +83,7 @@ namespace SpiritMod.NPCs.ElectricEel
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/ElectricEel/ElectricEel_Glow").Value, screenPos);
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(8))
 				target.AddBuff(BuffID.Poisoned, 180, true);

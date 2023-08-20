@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gold Coffer");
-			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'May contain a fortune'");
+			// DisplayName.SetDefault("Gold Coffer");
+			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'May contain a fortune'");
 		}
 
 		public override void SetDefaults()

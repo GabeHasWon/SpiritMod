@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Mimic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Golden Crate Mimic");
+			// DisplayName.SetDefault("Golden Crate Mimic");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -96,7 +96,7 @@ namespace SpiritMod.NPCs.Mimic
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+		public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
 		{
 			Player target = Main.player[NPC.target];
 			int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
@@ -133,7 +133,7 @@ namespace SpiritMod.NPCs.Mimic
 			return true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -145,9 +145,9 @@ namespace SpiritMod.NPCs.Mimic
 			{
 				for (int k = 0; k < 6; k++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hitDirection, -2.5f, 0, Color.White, .57f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hitDirection, -2.5f, 0, Color.White, .77f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .57f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .77f);
 				}
 			}
 		}

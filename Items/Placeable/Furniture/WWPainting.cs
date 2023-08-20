@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Whirling Worlds");
-			Tooltip.SetDefault("'E. Stern'");
+			// DisplayName.SetDefault("Whirling Worlds");
+			// Tooltip.SetDefault("'E. Stern'");
 		}
 
 		public override void SetDefaults()

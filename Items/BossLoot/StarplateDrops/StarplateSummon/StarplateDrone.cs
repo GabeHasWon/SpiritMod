@@ -20,7 +20,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Fighter Drone");
+			// DisplayName.SetDefault("Starplate Fighter Drone");
 			Main.projFrames[Projectile.type] = 8;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -214,7 +214,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 			AiState = newState;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (AiState == MELEE)
 			{

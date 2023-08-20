@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aching Heart");
+			// DisplayName.SetDefault("Aching Heart");
             Main.projFrames[Projectile.type] = 9;
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
         }

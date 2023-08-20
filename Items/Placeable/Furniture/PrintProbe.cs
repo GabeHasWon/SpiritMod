@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Destroyer Blueprint");
-			Tooltip.SetDefault("WARNING: Release may cause seismic anomalies exceeding 10f.");
+			// DisplayName.SetDefault("Destroyer Blueprint");
+			// Tooltip.SetDefault("WARNING: Release may cause seismic anomalies exceeding 10f.");
 		}
 
 		public override void SetDefaults()

@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vitality Stone");
-			Tooltip.SetDefault("Hearts are more likely to drop from enemies\n'The night is dark and full of terrors'");
+			// DisplayName.SetDefault("Vitality Stone");
+			// Tooltip.SetDefault("Hearts are more likely to drop from enemies\n'The night is dark and full of terrors'");
 		}
 
 		public override void SetDefaults()

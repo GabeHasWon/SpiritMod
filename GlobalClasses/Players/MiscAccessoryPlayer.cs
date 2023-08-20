@@ -22,6 +22,7 @@ using Terraria.DataStructures;
 using SpiritMod.Items.Accessory.Bauble;
 using SpiritMod.Items.Accessory.AceCardsSet;
 using SpiritMod.Projectiles;
+using Terraria.WorldBuilding;
 
 namespace SpiritMod.GlobalClasses.Players
 {
@@ -78,11 +79,8 @@ namespace SpiritMod.GlobalClasses.Players
 			float totalKb = 1f;
 
 			// Frost Giant Belt
-			if (player.HasAccessory<FrostGiantBelt>() && player.channel)
-				if (HeldItemIsClub(player))
-				{
-					totalKb *= 0.5f;
-				}
+			if (player.HasAccessory<FrostGiantBelt>() && player.channel && HeldItemIsClub(player))
+				totalKb *= 0.5f;
 
 			// Cascade Chestplate
 			if (player.ChestplateEquipped<CascadeChestplate>() && horizontal)
@@ -93,40 +91,42 @@ namespace SpiritMod.GlobalClasses.Players
 			return totalKb;
 		}
 
-		public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
 		{
 			// Twilight Talisman
 			if (Player.HasAccessory<Twilight1>() && Main.rand.NextBool(13))
 				target.AddBuff(BuffID.ShadowFlame, 180);
 
 			// Ace of Spades
-			if ((Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>()) && crit)
+			if (Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>())
 			{
-				damage = (int)(damage * 1.2f);
+				modifiers.CritDamage *= 1.2f;
+
+				//1.4.4PORT
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
 			}
 		}
 
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) => OnHitNPCWithAnything(proj, target, damage, knockback, crit);
-		public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit) => OnHitNPCWithAnything(item, target, damage, knockback, crit);
+		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone) => OnHitNPCWithAnything(proj, target, hit);
+		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone) => OnHitNPCWithAnything(item, target, hit);
 
-		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
 		{
 			// Twilight Talisman
 			bool shadowFlameCondition = Player.HasAccessory<Twilight1>() && Main.rand.NextBool(15);
 			AddBuffWithCondition(shadowFlameCondition, target, BuffID.ShadowFlame, 180);
 
 			// Ace of Spades
-			if ((Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>()) && crit)
+			if ((Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>()))
 			{
-				damage = (int)(damage * 1.2f);
+				modifiers.CritDamage *= 1.2f;
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
 			}
 		}
 
-		public void OnHitNPCWithAnything(Entity weapon, NPC target, int damage, float knockback, bool crit)
+		public void OnHitNPCWithAnything(Entity weapon, NPC target, NPC.HitInfo hit)
 		{
 			// Hell Charm
 			if (Player.HasAccessory<HCharm>() && Main.rand.NextBool(11))
@@ -142,7 +142,7 @@ namespace SpiritMod.GlobalClasses.Players
 					target.AddBuff(BuffID.Poisoned, 120);
 			}
 
-			if (crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
+			if (hit.Crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
 				if (((weapon is Item item) && Main.rand.NextFloat() < (item.useTime / 100f)) || ((weapon is Projectile proj) && Main.rand.NextFloat() < (proj.GetGlobalProjectile<SpiritGlobalProjectile>().storedUseTime / 75f)))
 				{
@@ -170,7 +170,7 @@ namespace SpiritMod.GlobalClasses.Players
 					for (int i = 0; i < 3; i++)
 						Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<ClubDust>(), 0, -0.8f);
 
-					int money = damage;
+					int money = hit.Damage;
 
 					if (money / 1000000 > 0)
 						ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.PlatinumCoin, money / 1000000);
@@ -245,7 +245,7 @@ namespace SpiritMod.GlobalClasses.Players
 			}
 		}
 
-		public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+		public override void OnHurt(Player.HurtInfo info)
 		{
 			// Spectre Ring
 			if (Player.HasAccessory<SpectreRing>())
@@ -263,35 +263,31 @@ namespace SpiritMod.GlobalClasses.Players
 			// Mana Shield & Seraphim Bulwark
 			if (Player.HasAccessory<ManaShield>() || Player.HasAccessory<SeraphimBulwark>())
 			{
-				damage -= (int)damage / 10;
-				if (Player.statMana > (int)damage / 10 * 4)
+				if (Player.statMana > info.Damage / 10 * 4)
 				{
-					if ((Player.statMana - (int)damage / 10 * 4) > 0)
-						Player.statMana -= (int)damage / 10 * 4;
+					if ((Player.statMana - info.Damage / 10 * 4) > 0)
+						Player.statMana -= info.Damage / 10 * 4;
 					else
 						Player.statMana = 0;
 				}
 			}
-		}
 
-		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
-		{
 			//Bauble
 			if (Player.HasAccessory<Bauble>())
 			{
-				NPC npc = Main.npc[damageSource.SourceNPCIndex];
+				NPC npc = Main.npc[info.DamageSource.SourceNPCIndex];
 				bool destructableNPC = npc != null && npc.value == 0 && npc.lifeMax <= 1;
 
-				if (Player.ownedProjectileCounts[ModContent.ProjectileType<IceReflector>()] > 0 && (damageSource.SourceProjectileIndex > 0 || destructableNPC))
+				if (Player.ownedProjectileCounts[ModContent.ProjectileType<IceReflector>()] > 0 && (info.DamageSource.SourceProjectileLocalIndex > 0 || destructableNPC))
 				{
 					if (destructableNPC)
 						npc.life = 0;
 
-					return false;
+					return;
 				}
 
-				bool hitBelowHalf = Player.statLife > (Player.statLifeMax2 / 2) && (Player.statLife - damage) < (Player.statLifeMax2 / 2);
-				
+				bool hitBelowHalf = Player.statLife > (Player.statLifeMax2 / 2) && (Player.statLife - info.Damage) < (Player.statLifeMax2 / 2);
+
 				if (Player.ItemTimer<Bauble>() <= 0 && hitBelowHalf)
 				{
 					Projectile proj = Projectile.NewProjectileDirect(Player.GetSource_OnHurt(null), Player.Center, Vector2.Zero, ModContent.ProjectileType<IceReflector>(), 0, 0, Player.whoAmI);
@@ -302,11 +298,16 @@ namespace SpiritMod.GlobalClasses.Players
 					Player.SetItemTimer<Bauble>(Bauble.cooldown);
 				}
 			}
-
-			return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
 		}
 
-		public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
+		{
+			// Mana Shield & Seraphim Bulwark damage reduction
+			if (Player.HasAccessory<ManaShield>() || Player.HasAccessory<SeraphimBulwark>())
+				modifiers.FinalDamage *= 0.1f;
+		}
+
+		public override void PostHurt(Player.HurtInfo info)
 		{
 			// Spectre Ring
 			if (Player.HasAccessory<SpectreRing>())

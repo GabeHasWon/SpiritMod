@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terra Scepter");
-			Tooltip.SetDefault("'May the Wrath of the Elements consume your foes.'");
+			// DisplayName.SetDefault("Terra Scepter");
+			// Tooltip.SetDefault("'May the Wrath of the Elements consume your foes.'");
 		}
 
 

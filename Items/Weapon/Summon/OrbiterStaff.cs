@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Weapon.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Orbiter Staff");
-			Tooltip.SetDefault("Summons a mini meteor to charge at foes");
+			// DisplayName.SetDefault("Orbiter Staff");
+			// Tooltip.SetDefault("Summons a mini meteor to charge at foes");
 		}
 
 		public override void SetDefaults()

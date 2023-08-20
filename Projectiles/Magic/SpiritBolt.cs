@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Bolt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Bolt");
 
 		public override void SetDefaults()
 		{

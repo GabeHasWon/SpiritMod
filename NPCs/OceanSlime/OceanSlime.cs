@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.OceanSlime
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coconut Slime");
+			// DisplayName.SetDefault("Coconut Slime");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueSlime];
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
@@ -45,12 +45,12 @@ namespace SpiritMod.NPCs.OceanSlime
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<Coconut>(6, 9);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DynastyWood, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DynastyWood, 2.5f * hitDirection, -2.5f, 0, default, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DynastyWood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DynastyWood, 2.5f * hit.HitDirection, -2.5f, 0, default, .34f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

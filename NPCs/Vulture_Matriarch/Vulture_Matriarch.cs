@@ -25,7 +25,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vulture Matriarch");
+			// DisplayName.SetDefault("Vulture Matriarch");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -347,7 +347,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.ai[0] == 0)
 			{

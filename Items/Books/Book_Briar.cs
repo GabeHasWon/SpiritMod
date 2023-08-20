@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Books
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Notes on the Briar");
-            Tooltip.SetDefault("by Field Researcher Laywatts");
+            // DisplayName.SetDefault("Notes on the Briar");
+            // Tooltip.SetDefault("by Field Researcher Laywatts");
         }
     }
 }

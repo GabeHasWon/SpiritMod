@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 			throwerGlove = false;
 		}
 
-		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
 		{
 			if (throwerGlove && proj.IsRanged())
 			{
@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 					if (proj.type != ProjectileID.ChlorophyteBullet)
 					{
 						const float throwerStacksMax = .25f; //+25% bonus damage for sustaining consecutive hits
-						throwerStacks = Math.Min(throwerStacks + MathHelper.Clamp(damage * .0005f, 0, .05f), throwerStacksMax);
+						throwerStacks = Math.Min(throwerStacks + MathHelper.Clamp(modifiers.SourceDamage.Base * .0005f, 0, .05f), throwerStacksMax);
 					}
 					damageBonusMult += .2f + throwerStacks; //Allows 145% total bonus damage
 
@@ -48,7 +48,7 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 					ParticleHandler.SpawnParticle(new HyperlightParticle(target.Center, Main.rand.NextFloat(1.57f), Main.rand.NextFloat(.75f, 1f), target));
 				}
 
-				damage = (int)(damage * damageBonusMult);
+				modifiers.FinalDamage *= damageBonusMult;
 				target.GetGlobalNPC<ShurikenLauncherNPC>().hitDelay = 1f;
 			}
 		}

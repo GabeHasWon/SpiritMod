@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Armor.GeodeArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Geode Leggings");
+			// DisplayName.SetDefault("Geode Leggings");
 		}
 
 		public override void SetDefaults()

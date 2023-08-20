@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Toxin Potion");
-			Tooltip.SetDefault("Critical strikes inflict Festering Wounds\nIncreases critical strike chance by 4%");
+			// DisplayName.SetDefault("Toxin Potion");
+			// Tooltip.SetDefault("Critical strikes inflict Festering Wounds\nIncreases critical strike chance by 4%");
 		}
 
 		public override void SetDefaults()

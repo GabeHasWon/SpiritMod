@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blade of the Dragon");
-            Tooltip.SetDefault("Hold to slice through nearby enemies");
+            // DisplayName.SetDefault("Blade of the Dragon");
+            // Tooltip.SetDefault("Hold to slice through nearby enemies");
             Item.staff[Item.type] = true;
 		}
 
@@ -78,7 +78,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blade of the Dragon");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blade of the Dragon");
 
 		public override void SetDefaults()
 		{
@@ -117,7 +117,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 			}//The dash has just ended a tick before
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 			=> Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<DragonSlash>(), 0, 0, Main.player[Projectile.owner].whoAmI, target.whoAmI);
 	}
 
@@ -127,7 +127,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dragon Slash");
+			// DisplayName.SetDefault("Dragon Slash");
 			Main.projFrames[Projectile.type] = 3;
 		}
 

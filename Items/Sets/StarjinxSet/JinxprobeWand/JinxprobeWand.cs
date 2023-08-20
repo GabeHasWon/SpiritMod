@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.StarjinxSet.JinxprobeWand
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jinxprobe Wand");
-			Tooltip.SetDefault("Conjures a mini meteorite that orbits you, firing mini bouncing stars at nearby foes");
+			// DisplayName.SetDefault("Jinxprobe Wand");
+			// Tooltip.SetDefault("Conjures a mini meteorite that orbits you, firing mini bouncing stars at nearby foes");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/StarjinxSet/JinxprobeWand/JinxprobeWand_Glow");
 		}
 

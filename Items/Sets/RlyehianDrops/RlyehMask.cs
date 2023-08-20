@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 	[AutoloadEquip(EquipType.Head)]
 	public class RlyehMask : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("R'lyehian Mask");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("R'lyehian Mask");
 
 		public override void SetDefaults()
 		{

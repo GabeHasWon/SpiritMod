@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tiny Lunazoa");
+			// DisplayName.SetDefault("Tiny Lunazoa");
 			Main.npcFrameCount[NPC.type] = 5;
 			Main.npcCatchable[NPC.type] = true;
 		}
@@ -50,7 +50,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 
 		public override bool? CanBeHitByProjectile(Projectile projectile) => !projectile.minion;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 15; k++)
 			{

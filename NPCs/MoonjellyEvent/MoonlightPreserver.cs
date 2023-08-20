@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moonlight Preserver");
+			// DisplayName.SetDefault("Moonlight Preserver");
 			Main.npcFrameCount[NPC.type] = 7;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 		}
@@ -50,7 +50,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 15; k++)
 			{

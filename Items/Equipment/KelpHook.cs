@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Equipment
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Kelp Hook");
-			Tooltip.SetDefault("Provides faster mobility when underwater");
+			// DisplayName.SetDefault("Kelp Hook");
+			// Tooltip.SetDefault("Provides faster mobility when underwater");
 		}
 
 		public override void SetDefaults()
@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Equipment
 
 	internal class KelpHookProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Kelp Hook");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Kelp Hook");
 
 		public override void SetDefaults()
 		{

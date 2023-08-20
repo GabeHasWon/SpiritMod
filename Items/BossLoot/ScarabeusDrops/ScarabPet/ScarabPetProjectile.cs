@@ -20,7 +20,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lil' Scarab");
+			// DisplayName.SetDefault("Lil' Scarab");
 			Main.projFrames[Projectile.type] = 2;
 			Main.projPet[Projectile.type] = true;
 		}

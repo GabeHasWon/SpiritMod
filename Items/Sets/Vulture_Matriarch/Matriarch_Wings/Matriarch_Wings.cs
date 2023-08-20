@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Matriarch_Wings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Matriarch Wings");
-			Tooltip.SetDefault("Hold down to dive");
+			// DisplayName.SetDefault("Matriarch Wings");
+			// Tooltip.SetDefault("Hold down to dive");
 			ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new Terraria.DataStructures.WingStats(90, 9.4f, 1.15f);
 		}
 

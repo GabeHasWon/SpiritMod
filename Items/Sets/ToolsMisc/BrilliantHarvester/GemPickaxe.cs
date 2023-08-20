@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.ToolsMisc.BrilliantHarvester
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Brilliant Harvester");
-			Tooltip.SetDefault("Mining stone may also yield gems and ores\nCan mine Demonite and Crimtane");
+			// DisplayName.SetDefault("Brilliant Harvester");
+			// Tooltip.SetDefault("Mining stone may also yield gems and ores\nCan mine Demonite and Crimtane");
 		}
 
 		public override void SetDefaults()

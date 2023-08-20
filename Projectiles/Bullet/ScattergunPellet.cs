@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scattergun Pellet");
+			// DisplayName.SetDefault("Scattergun Pellet");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 13;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }

@@ -52,14 +52,14 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 		//	this.maxY = max;
 		//}
 
-		public override void MouseDown(UIMouseEvent evt) {
+		public override void LeftMouseDown(UIMouseEvent evt) {
 			DragStart(evt);
-			base.MouseDown(evt);
+			base.LeftMouseDown(evt);
 		}
 
-		public override void MouseUp(UIMouseEvent evt) {
+		public override void LeftMouseUp(UIMouseEvent evt) {
 			DragEnd(evt);
-			base.MouseUp(evt);
+			base.LeftMouseUp(evt);
 		}
 
 		private void DragStart(UIMouseEvent evt) {

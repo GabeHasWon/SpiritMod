@@ -8,8 +8,8 @@ public class EyeOfTheSorcererItem : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Eye of the Sorcerer");
-		Tooltip.SetDefault("Gain crit chance based on the amount of mana you have\nAt full mana gain an additional 10% crit");
+		// DisplayName.SetDefault("Eye of the Sorcerer");
+		// Tooltip.SetDefault("Gain crit chance based on the amount of mana you have\nAt full mana gain an additional 10% crit");
 	}
 
 	public override void SetDefaults()

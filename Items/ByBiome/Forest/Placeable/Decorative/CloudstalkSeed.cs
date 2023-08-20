@@ -8,7 +8,7 @@ namespace SpiritMod.Items.ByBiome.Forest.Placeable.Decorative
 	[Sacrifice(25)]
 	public class CloudstalkSeed : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cloudstalk Seeds");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cloudstalk Seeds");
 
 		public override void SetDefaults()
 		{

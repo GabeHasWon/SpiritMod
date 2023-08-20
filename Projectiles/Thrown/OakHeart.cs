@@ -31,7 +31,7 @@ namespace SpiritMod.Projectiles.Thrown
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Oak Heart");
+			// DisplayName.SetDefault("Oak Heart");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -94,7 +94,7 @@ namespace SpiritMod.Projectiles.Thrown
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			GNPC modNPC = target.GetGlobalNPC<GNPC>();
 			int increment = 60;

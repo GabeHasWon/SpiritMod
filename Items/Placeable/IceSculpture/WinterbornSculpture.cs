@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.IceSculpture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Winterborn Sculpture");
+			// DisplayName.SetDefault("Winterborn Sculpture");
 		}
 
 		public override void SetDefaults()

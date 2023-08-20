@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class MeteorDyeMaterial : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Photosphere Shard");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Photosphere Shard");
 
 		public override void SetDefaults()
 		{

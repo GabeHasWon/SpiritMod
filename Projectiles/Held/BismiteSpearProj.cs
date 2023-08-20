@@ -18,7 +18,7 @@ namespace SpiritMod.Projectiles.Held
 		}
 		private readonly int lungeLength = 36;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Pike");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Pike");
 
 		public override void SetDefaults()
 		{
@@ -89,7 +89,7 @@ namespace SpiritMod.Projectiles.Held
 			Projectile.Center = player.MountedCenter + Projectile.velocity;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 180);

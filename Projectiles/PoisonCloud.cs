@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Poison Cloud");
+			// DisplayName.SetDefault("Poison Cloud");
 			Main.projFrames[Projectile.type] = 5;
 		}
 
@@ -58,7 +58,7 @@ namespace SpiritMod.Projectiles
 
 		public override bool OnTileCollide(Vector2 oldVelocity) => false;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.Poisoned, 300);

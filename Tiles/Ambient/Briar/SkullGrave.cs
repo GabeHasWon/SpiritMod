@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -25,8 +26,8 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			};
 			TileObjectData.addTile(Type);
             DustType = 7;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Gravestone");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Gravestone");
 			AddMapEntry(new Color(107, 90, 64), name);
 			TileID.Sets.BreakableWhenPlacing[Type] = true;
 		}

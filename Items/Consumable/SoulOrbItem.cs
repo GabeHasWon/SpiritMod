@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Orb");
-			Tooltip.SetDefault("'Legend says touching it gives good luck'");
+			// DisplayName.SetDefault("Soul Orb");
+			// Tooltip.SetDefault("'Legend says touching it gives good luck'");
 		}
 
 

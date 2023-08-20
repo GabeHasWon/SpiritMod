@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernus Skull");
+			// DisplayName.SetDefault("Infernus Skull");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo(this, BuffID.CursedInferno, BuffID.OnFire);
 
@@ -43,8 +43,8 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/Infernon");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * balance);
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -180,10 +180,10 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, hit.HitDirection, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0)
 			{

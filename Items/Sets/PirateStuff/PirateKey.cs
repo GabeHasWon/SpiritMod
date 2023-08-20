@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.PirateStuff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Secret Key");
-			Tooltip.SetDefault("'The pirates must have hidden treasure somewhere...'");
+			// DisplayName.SetDefault("Secret Key");
+			// Tooltip.SetDefault("'The pirates must have hidden treasure somewhere...'");
 		}
 
 		public override void SetDefaults()

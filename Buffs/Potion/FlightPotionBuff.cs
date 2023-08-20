@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soaring");
-			Description.SetDefault("Increases flight duration by 25%.");
+			// DisplayName.SetDefault("Soaring");
+			// Description.SetDefault("Increases flight duration by 25%.");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

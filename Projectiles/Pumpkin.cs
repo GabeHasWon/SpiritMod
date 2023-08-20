@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles
 		bool launch = false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pumpkin");
+			// DisplayName.SetDefault("Pumpkin");
 		}
 
 		public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Void Singularity");
+			// DisplayName.SetDefault("Void Singularity");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

@@ -41,11 +41,10 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Glowplate Chest");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Glowplate Chest");
 			AddMapEntry(new Color(70, 130, 180), name, MapChestName);
 			AdjTiles = new int[] { TileID.Containers };
-			ContainerName.SetDefault("Glowplate Chest");
 		}
 
 		public string MapChestName(string name, int i, int j)
@@ -208,7 +207,7 @@ namespace SpiritMod.Tiles.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glowplate Chest");
+			// DisplayName.SetDefault("Glowplate Chest");
 		}
 
 		public override void SetDefaults()

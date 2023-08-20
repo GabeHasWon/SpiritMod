@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Snow Monger");
+			// DisplayName.SetDefault("Snow Monger");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			Main.npcFrameCount[NPC.type] = 5;
@@ -54,7 +54,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 10);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * balance);
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -64,7 +64,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -90,7 +90,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 
 				for (int j = 0; j < 17; j++)
 				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hitDirection, -2.5f, 0, default, 0.75f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.75f);
 
 					if (j < 5)
 						Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("FrostSaucer" + (j + 1)).Type, 1f);
@@ -98,7 +98,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			}
 
 			for (int k = 0; k < 7; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
 		}
 
 		public override void AI()

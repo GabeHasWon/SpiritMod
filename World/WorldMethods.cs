@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
+using Terraria.WorldBuilding;
 
 namespace SpiritMod.World
 {
@@ -145,10 +146,10 @@ namespace SpiritMod.World
 							if (type < 0)
 							{
 								Tile tile = Main.tile[k, l];
-								if (type == -2 && Main.tile[k, l].HasTile && (l < WorldGen.waterLine || l > WorldGen.lavaLine))
+								if (type == -2 && Main.tile[k, l].HasTile && (l < GenVars.waterLine || l > GenVars.lavaLine))
 								{
 									Main.tile[k, l].LiquidAmount = 255;
-									if (l > WorldGen.lavaLine)
+									if (l > GenVars.lavaLine)
 										tile.LiquidType = LiquidID.Lava;
 								}
 								tile.HasTile = false;
@@ -255,7 +256,7 @@ namespace SpiritMod.World
 									tile.LiquidAmount = 0;
 									tile.LiquidType = LiquidID.Lava;
 								}
-								if (type == 59 && l > WorldGen.waterLine && Main.tile[k, l].LiquidAmount > 0)
+								if (type == 59 && l > GenVars.waterLine && Main.tile[k, l].LiquidAmount > 0)
 								{
 									Tile tile = Main.tile[k, l];
 									tile.LiquidType = LiquidID.Lava;

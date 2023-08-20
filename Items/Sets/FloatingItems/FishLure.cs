@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.ObjectData;
@@ -15,8 +16,8 @@ namespace SpiritMod.Items.Sets.FloatingItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fish Lure");
-			Tooltip.SetDefault("Can only be placed in water\nAttracts schools of fish to nearby waters");
+			// DisplayName.SetDefault("Fish Lure");
+			// Tooltip.SetDefault("Can only be placed in water\nAttracts schools of fish to nearby waters");
 		}
 
 		public override void SetDefaults()
@@ -47,9 +48,7 @@ namespace SpiritMod.Items.Sets.FloatingItems
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.OnlyInFullLiquid;
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Lure");
-			ItemDrop = ModContent.ItemType<FishLure>();
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 

@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.CowboySet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Outlaw's Pants");
+			// DisplayName.SetDefault("Outlaw's Pants");
 		}
 		public override void SetDefaults()
 		{

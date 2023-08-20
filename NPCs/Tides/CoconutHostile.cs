@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coconut");
+			// DisplayName.SetDefault("Coconut");
 		}
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

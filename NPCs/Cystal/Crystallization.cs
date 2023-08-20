@@ -11,8 +11,8 @@ namespace SpiritMod.NPCs.Cystal
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cystallization");
-			Description.SetDefault("Rapidly losing life");
+			// DisplayName.SetDefault("Cystallization");
+			// Description.SetDefault("Rapidly losing life");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = false;
 			Main.buffNoTimeDisplay[Type] = true;

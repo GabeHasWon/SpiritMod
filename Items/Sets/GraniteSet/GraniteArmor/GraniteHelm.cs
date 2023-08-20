@@ -11,9 +11,9 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granite Visor");
+			// DisplayName.SetDefault("Granite Visor");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteArmor/GraniteHelm_Glow");
-			Tooltip.SetDefault("Increases jump height slightly");
+			// Tooltip.SetDefault("Increases jump height slightly");
 		}
 
 		public override void SetDefaults()

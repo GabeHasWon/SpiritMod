@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.DoT
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Festering Wounds");
-			Description.SetDefault("Deals more damage if the victim is under half health");
+			// DisplayName.SetDefault("Festering Wounds");
+			// Description.SetDefault("Deals more damage if the victim is under half health");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;

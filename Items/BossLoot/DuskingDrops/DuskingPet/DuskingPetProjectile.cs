@@ -13,7 +13,7 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops.DuskingPet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Minor Shadowflame");
+			// DisplayName.SetDefault("Minor Shadowflame");
 			Main.projFrames[Projectile.type] = 5;
 			Main.projPet[Projectile.type] = true;
 		}

@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -27,8 +28,8 @@ namespace SpiritMod.Tiles.Furniture.StreamScale
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			DustType = -1;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Stream Scale Lantern");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Stream Scale Lantern");
 			AddMapEntry(new Color(56, 181, 203), name);
 			AdjTiles = new int[] { TileID.Torches };
 		}

@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Golden Greathammer");
+			// DisplayName.SetDefault("Golden Greathammer");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

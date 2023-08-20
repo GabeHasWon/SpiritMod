@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.TideDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bubble Blaster");
-			Tooltip.SetDefault("Hold for a longer blast\nConsumes 20 mana each second");
+			// DisplayName.SetDefault("Bubble Blaster");
+			// Tooltip.SetDefault("Hold for a longer blast\nConsumes 20 mana each second");
 		}
 
 		public override void SetDefaults()

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Brew of Immunity");
-			Tooltip.SetDefault("Immunity to Feral Bite");
+			// DisplayName.SetDefault("Brew of Immunity");
+			// Tooltip.SetDefault("Immunity to Feral Bite");
 		}
 
 		public override void SetDefaults()

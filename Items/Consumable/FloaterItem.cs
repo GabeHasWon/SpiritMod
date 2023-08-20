@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Luminous Floater");
-			Tooltip.SetDefault("'A beacon at the beach'");
+			// DisplayName.SetDefault("Luminous Floater");
+			// Tooltip.SetDefault("'A beacon at the beach'");
 		}
 
 		public override void SetDefaults()

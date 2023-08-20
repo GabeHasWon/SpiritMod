@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Laser");
+			// DisplayName.SetDefault("Star Laser");
 		}
 		Vector2 startingpoint;
 

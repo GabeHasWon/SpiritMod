@@ -9,7 +9,6 @@ namespace SpiritMod.Tiles.Walls.Natural
 		public override void SetStaticDefaults()
 		{
 			Main.wallHouse[Type] = true;
-			ItemDrop = ModContent.ItemType<Items.Placeable.Walls.AcidWall>();
 			AddMapEntry(new Color(77, 84, 79));
 		}
 	}

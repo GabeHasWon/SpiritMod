@@ -9,7 +9,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault(string.Empty);
+			// DisplayName.SetDefault(string.Empty);
 			Main.npcFrameCount[Type] = 6;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
@@ -47,7 +47,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), .4f, .4f, .2f);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life > 0)
 				return;

@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Arrow
 {
 	public class AccursedArrow : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Accursed Arrow");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Accursed Arrow");
 
 		public override void SetDefaults()
 		{

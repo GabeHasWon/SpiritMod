@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thorn");
+			// DisplayName.SetDefault("Thorn");
 		}
 
 		public override void SetDefaults()
@@ -33,7 +33,7 @@ namespace SpiritMod.Projectiles
 			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Grass, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(8))
 				target.AddBuff(BuffID.Poisoned, 380);

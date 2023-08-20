@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Titanium Staff");
-			Tooltip.SetDefault("Surrounds the player in blades\nHold left-click to release a barrage of blades");
+			// DisplayName.SetDefault("Titanium Staff");
+			// Tooltip.SetDefault("Surrounds the player in blades\nHold left-click to release a barrage of blades");
 
 			Item.staff[Item.type] = true;
 		}

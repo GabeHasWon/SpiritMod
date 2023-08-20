@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moonshot");
-			Tooltip.SetDefault("Drains energy from tiny lunazoas for ammo\n33% chance to not consume ammo\n'Aim for the stars!'\n'I wonder if the Arms Dealer can scrounge up some more lunazoas...'");
+			// DisplayName.SetDefault("Moonshot");
+			// Tooltip.SetDefault("Drains energy from tiny lunazoas for ammo\n33% chance to not consume ammo\n'Aim for the stars!'\n'I wonder if the Arms Dealer can scrounge up some more lunazoas...'");
             SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 

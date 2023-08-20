@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Halloween.Biome
 		internal override Point Size => new(32, 38);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Birdhouse Gourd");
-			Tooltip.SetDefault("Minor improvements to all stats");
+			// DisplayName.SetDefault("Birdhouse Gourd");
+			// Tooltip.SetDefault("Minor improvements to all stats");
 		}
 	}
 }

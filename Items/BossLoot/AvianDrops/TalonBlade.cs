@@ -9,12 +9,6 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 {
 	public class TalonBlade : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Talon Blade");
-			Tooltip.SetDefault("Creates a flurry of damaging feathers");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 30;
@@ -36,20 +30,20 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			SpawnFeather(player);
+			SpawnFeather(player, source);
 			return false;
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.NextBool(18))
-				SpawnFeather(player);
+				SpawnFeather(player, player.GetSource_ItemUse(Item));
 		}
 
-		private void SpawnFeather(Player player)
+		private void SpawnFeather(Player player, IEntitySource source)
 		{
 			Vector2 velocity = Vector2.UnitX * Main.rand.NextFloat(0.5f, 1.0f) * Item.shootSpeed * player.direction;
-			Projectile.NewProjectile(Entity.GetSource_ItemUse(Item), player.MountedCenter, velocity, Item.shoot, Item.damage, Item.knockBack, player.whoAmI, Main.rand.Next(-20, 0), Main.rand.Next(30, 100));
+			Projectile.NewProjectile(source, player.MountedCenter, velocity, Item.shoot, Item.damage, Item.knockBack, player.whoAmI, Main.rand.Next(-20, 0), Main.rand.Next(30, 100));
 		}
 	}
 }

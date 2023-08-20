@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Wither Blast");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Wither Blast");
 
 		public override void SetDefaults()
 		{
@@ -40,7 +40,7 @@ namespace SpiritMod.Projectiles.Bullet
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(ModContent.BuffType<Wither>(), 180);

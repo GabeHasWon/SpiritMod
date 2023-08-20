@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Enchanted Granite Chunk");
+			// DisplayName.SetDefault("Enchanted Granite Chunk");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

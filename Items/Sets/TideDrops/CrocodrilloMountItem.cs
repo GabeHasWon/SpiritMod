@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.TideDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bag O' Bait");
-			Tooltip.SetDefault("Summons a friendly Crocodrillo mount");
+			// DisplayName.SetDefault("Bag O' Bait");
+			// Tooltip.SetDefault("Summons a friendly Crocodrillo mount");
 		}
 
 		public override void SetDefaults()

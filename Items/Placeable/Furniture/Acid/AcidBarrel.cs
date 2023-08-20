@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Acid
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Corrosive Barrel");
+			// DisplayName.SetDefault("Corrosive Barrel");
 		}
 
 

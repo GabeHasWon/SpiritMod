@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Armor.SilkArmor
 			EquipLoader.AddEquipTexture(Mod, "SpiritMod/Items/Armor/SilkArmor/SilkTopFemale_Body", EquipType.Body, null, "AltTop");
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Desert Top");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Desert Top");
 
 		public override void SetDefaults()
 		{

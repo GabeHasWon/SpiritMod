@@ -810,7 +810,7 @@ namespace SpiritMod.World
 			c3.Carve(_noise);
 
 			//place vinewarth hizouse
-			bool leftSide = _x < WorldGen.dungeonX ? true : false;
+			bool leftSide = _x < GenVars.dungeonX ? true : false;
 			float hizouseY = mainBottom.Y - WorldGen.genRand.NextFloat(2f, 20f);
 			for (int testX = (int)(mainBottom.X - 100); testX < (int)(mainBottom.X + 100); testX++)
 			{
@@ -1602,7 +1602,7 @@ namespace SpiritMod.World
 			return true;
 		}
 
-		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 		{
 			int index = tasks.FindIndex(genpass => genpass.Name.Equals("Jungle Chests"));
 			if (index == -1)

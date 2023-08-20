@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Char Fury");
-			Tooltip.SetDefault("Shoots out two blazes that cause foes to combust, multiple hits causing the combustion to deal more damage");
+			// DisplayName.SetDefault("Char Fury");
+			// Tooltip.SetDefault("Shoots out two blazes that cause foes to combust, multiple hits causing the combustion to deal more damage");
 		}
 
 
@@ -40,7 +40,7 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch);
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 300);

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.BismiteSet
@@ -14,9 +15,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Main.tileBlockLight[Type] = true;
 			Main.tileBrick[Type] = true;
 
-			ItemDrop = ModContent.ItemType<BismiteCrystal>();
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Bismite Crystal");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(30, 100, 25), name);
 			HitSound = SoundID.Tink;
 			DustType = DustID.Plantera_Green;

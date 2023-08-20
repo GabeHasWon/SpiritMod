@@ -8,8 +8,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eye of the Inferno");
-			Tooltip.SetDefault("Hit foes combust, with successful hits increasing the power of the debuff. \nAlso shoots out a spiky ball that inflicts broken armor");
+			// DisplayName.SetDefault("Eye of the Inferno");
+			// Tooltip.SetDefault("Hit foes combust, with successful hits increasing the power of the debuff. \nAlso shoots out a spiky ball that inflicts broken armor");
 		}
 
 		public override void SetDefaults()

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Weapon.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Valkyrie Spirit Spear");
-			Tooltip.SetDefault("Deals both magic and melee damage");
+			// DisplayName.SetDefault("Valkyrie Spirit Spear");
+			// Tooltip.SetDefault("Deals both magic and melee damage");
 			Item.staff[Item.type] = true;
 		}
 

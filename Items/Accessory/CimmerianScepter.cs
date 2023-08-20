@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cimmerian Scepter");
-			Tooltip.SetDefault("Summons a magic scepter to fight for you\nThe scepter uses a multitude of attacks against foes\nThis scepter does not take up minion slots");
+			// DisplayName.SetDefault("Cimmerian Scepter");
+			// Tooltip.SetDefault("Summons a magic scepter to fight for you\nThe scepter uses a multitude of attacks against foes\nThis scepter does not take up minion slots");
 		}
 
 		public override void SetDefaults()

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.CaptainsRegards
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Captain's Regards");
-			Tooltip.SetDefault("'Pirate diplomacy at its finest'");
+			// DisplayName.SetDefault("Captain's Regards");
+			// Tooltip.SetDefault("'Pirate diplomacy at its finest'");
 		}
 
 		public override void SetDefaults()

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Just out of Reach");
-			Tooltip.SetDefault("'M. Beigh'");
+			// DisplayName.SetDefault("Just out of Reach");
+			// Tooltip.SetDefault("'M. Beigh'");
 		}
 
 		public override void SetDefaults()

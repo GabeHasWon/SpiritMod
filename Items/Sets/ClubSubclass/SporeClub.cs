@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sporebreaker");
-            Tooltip.SetDefault("Charged strikes release a field of toxins");
+            // DisplayName.SetDefault("Sporebreaker");
+            // Tooltip.SetDefault("Charged strikes release a field of toxins");
         }
 
         public override void Defaults()

@@ -19,7 +19,6 @@ namespace SpiritMod.Tiles.Block
 			TileID.Sets.Conversion.Grass[Type] = true;
 
 			AddMapEntry(new Color(252, 161, 3));
-			ItemDrop = ModContent.ItemType<Items.Placeable.Tiles.HalloweenGrass>();
 		}
 
 		public override bool CanExplode(int i, int j)
@@ -47,7 +46,7 @@ namespace SpiritMod.Tiles.Block
 			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(20)) {
 				int style = Main.rand.Next(23);
 				if (PlaceObject(i, j - 1, ModContent.TileType<SpookyFoliage>(), false, style))
-					NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<SpookyFoliage>(), style, 0, -1, -1);
+					NetMessage.SendObjectPlacement(-1, i, j - 1, ModContent.TileType<SpookyFoliage>(), style, 0, -1, -1);
 			}
 
 			if (SpreadHelper.Spread(i, j, Type, 4, TileID.Dirt) && Main.netMode != NetmodeID.SinglePlayer)

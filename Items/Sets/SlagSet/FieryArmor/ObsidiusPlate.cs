@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slag Tyrant's Platemail");
-			Tooltip.SetDefault("4% increased minion damage\nIncreases your max number of minions");
+			// DisplayName.SetDefault("Slag Tyrant's Platemail");
+			// Tooltip.SetDefault("4% increased minion damage\nIncreases your max number of minions");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.Masks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Venomous Hydra Mask");
+			// DisplayName.SetDefault("Venomous Hydra Mask");
 		}
 
 		public override void SetDefaults()
@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Armor.Masks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Acidic Hydra Mask");
+			// DisplayName.SetDefault("Acidic Hydra Mask");
 		}
 
 		public override void SetDefaults()
@@ -42,7 +42,7 @@ namespace SpiritMod.Items.Armor.Masks
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fiery Hydra Mask");
+			// DisplayName.SetDefault("Fiery Hydra Mask");
 		}
 
 		public override void SetDefaults()

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starpowder");
-			Tooltip.SetDefault("Throw onto grass to invigorate it with starlight!");
+			// DisplayName.SetDefault("Starpowder");
+			// Tooltip.SetDefault("Throw onto grass to invigorate it with starlight!");
 		}
 
 		public override void SetDefaults()

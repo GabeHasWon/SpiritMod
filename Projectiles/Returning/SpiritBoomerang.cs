@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Returning
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Boomerang");
+			// DisplayName.SetDefault("Spirit Boomerang");
 		}
 
 		public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace SpiritMod.Projectiles.Returning
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(ModContent.BuffType<SoulBurn>(), 280);
 		}

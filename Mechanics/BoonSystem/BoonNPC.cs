@@ -109,16 +109,16 @@ namespace SpiritMod.Mechanics.BoonSystem
 			return true;
 		}
 
-		public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
+		public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
 		{
-			currentBoon?.OnHitByProjectile(projectile, damage, knockback, crit);
+			currentBoon?.OnHitByProjectile(projectile, hit, damageDone);
 			if (npc.life <= 0)
 				currentBoon?.OnDeath();
 		}
 
-		public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
+		public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
 		{
-			currentBoon?.OnHitByItem(player, item, damage, knockback, crit);
+			currentBoon?.OnHitByItem(player, item, hit, damageDone);
 			if (npc.life <= 0)
 				currentBoon?.OnDeath();
 		}

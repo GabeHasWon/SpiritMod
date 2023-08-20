@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.ZephyrBreath
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Breath of the Zephyr");
-			Tooltip.SetDefault("Creates a mighty gust of wind to damage your foes and knock them back\nRight-click to thrust like a spear, and leech mana from struck foes");
+			// DisplayName.SetDefault("Breath of the Zephyr");
+			// Tooltip.SetDefault("Creates a mighty gust of wind to damage your foes and knock them back\nRight-click to thrust like a spear, and leech mana from struck foes");
 			Item.staff[Item.type] = true;
 		}
 

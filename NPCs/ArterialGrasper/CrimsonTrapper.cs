@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arterial Grasper");
+			// DisplayName.SetDefault("Arterial Grasper");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 
@@ -56,7 +56,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = 250;
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */ => NPC.lifeMax = 250;
 
 		bool spawnedHooks = false;
 		//bool attack = false;
@@ -176,12 +176,12 @@ namespace SpiritMod.NPCs.ArterialGrasper
 				return 0;
 			return SpawnCondition.Crimson.Chance * 0.1f;
 		}
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.Purple, 0.3f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.Purple, 0.3f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, .34f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

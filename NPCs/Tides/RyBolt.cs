@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("R'ylheian");
+			// DisplayName.SetDefault("R'ylheian");
 		}
 
 		public override void SetDefaults()

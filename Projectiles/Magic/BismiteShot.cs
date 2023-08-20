@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class BismiteShot : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Shot");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Shot");
 
 		public override void SetDefaults()
 		{
@@ -64,7 +64,7 @@ namespace SpiritMod.Projectiles.Magic
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 180);

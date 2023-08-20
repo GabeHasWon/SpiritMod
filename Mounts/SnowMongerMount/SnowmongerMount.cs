@@ -16,14 +16,14 @@ namespace SpiritMod.Mounts.SnowMongerMount
 	{
 		public override void Load()
 		{
-			On.Terraria.Player.KeyDoubleTap += Player_KeyDoubleTap;
-			On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
+			Terraria.On_Player.KeyDoubleTap += Player_KeyDoubleTap;
+			Terraria.DataStructures.On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
 		}
 
 		public override void Unload()
 		{
-			On.Terraria.Player.KeyDoubleTap -= Player_KeyDoubleTap;
-			On.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
+			Terraria.On_Player.KeyDoubleTap -= Player_KeyDoubleTap;
+			Terraria.DataStructures.On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
 		}
 
 		const int DashTimeMax = 24;
@@ -32,7 +32,7 @@ namespace SpiritMod.Mounts.SnowMongerMount
 
 		bool Dashing => dashTime > 0;
 
-		private void Player_KeyDoubleTap(On.Terraria.Player.orig_KeyDoubleTap orig, Player self, int keyDir)
+		private void Player_KeyDoubleTap(Terraria.On_Player.orig_KeyDoubleTap orig, Player self, int keyDir)
 		{
 			if ((keyDir == 2 || keyDir == 3) && self.mount.Active && self.mount.Type == ModContent.MountType<SnowmongerMount>() && dashTime <= DashCooldownTime)
 				Dash(self, keyDir);
@@ -205,7 +205,7 @@ namespace SpiritMod.Mounts.SnowMongerMount
 
 		public override bool Draw(List<DrawData> playerDrawData, int drawType, Player drawPlayer, ref Texture2D texture, ref Texture2D glowTexture, ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, ref Vector2 drawOrigin, ref float drawScale, float shadow) => false;
 
-		private void DrawOverPlayer(On.Terraria.DataStructures.PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
+		private void DrawOverPlayer(Terraria.DataStructures.On_PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
 		{
 			orig(ref drawinfo);
 

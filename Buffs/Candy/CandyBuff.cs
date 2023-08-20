@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Candy
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sugar Rush");
-			Description.SetDefault("Slight increase to all stats");
+			// DisplayName.SetDefault("Sugar Rush");
+			// Description.SetDefault("Slight increase to all stats");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

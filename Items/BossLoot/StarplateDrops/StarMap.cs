@@ -17,8 +17,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astral Map");
-			Tooltip.SetDefault("Teleports you to the cursor location\n{N} second cooldown");
+			// DisplayName.SetDefault("Astral Map");
+			// Tooltip.SetDefault("Teleports you to the cursor location\n{N} second cooldown");
 
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/StarplateDrops/StarMap_Glow");
 		}

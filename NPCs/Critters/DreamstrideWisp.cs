@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dreamstride Wisp");
+			// DisplayName.SetDefault("Dreamstride Wisp");
 			Main.npcFrameCount[NPC.type] = 5;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;

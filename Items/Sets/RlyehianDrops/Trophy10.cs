@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("R'lyehian Trophy");
+			// DisplayName.SetDefault("R'lyehian Trophy");
 		}
 
 		public override void SetDefaults()

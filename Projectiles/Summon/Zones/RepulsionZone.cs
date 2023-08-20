@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Summon.Zones
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Repulsion Zone");
+			// DisplayName.SetDefault("Repulsion Zone");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }

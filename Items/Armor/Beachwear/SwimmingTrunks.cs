@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.Beachwear
 	[AutoloadEquip(EquipType.Legs)]
 	public class SwimmingTrunks : ModItem
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("'They don't provide much in the way of defense, but they're undeniably stylish.'");
+		// public override void SetStaticDefaults() => Tooltip.SetDefault("'They don't provide much in the way of defense, but they're undeniably stylish.'");
 
 		public override void SetDefaults()
 		{

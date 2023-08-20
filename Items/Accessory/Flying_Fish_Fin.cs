@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flying Fish Fin");
-			Tooltip.SetDefault("Increases jump height and descent speed");
+			// DisplayName.SetDefault("Flying Fish Fin");
+			// Tooltip.SetDefault("Increases jump height and descent speed");
 		}
 
 		public override void SetDefaults()

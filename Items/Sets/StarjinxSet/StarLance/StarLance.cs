@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.StarLance
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Lance");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Lance");
 
 		public override void SetDefaults()
 		{
@@ -71,7 +71,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.StarLance
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Lance");
+			// DisplayName.SetDefault("Star Lance");
 			Main.projFrames[Projectile.type] = 11;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -146,7 +146,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.StarLance
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.penetrate++;
 			if (!stuck && target.life > 0)

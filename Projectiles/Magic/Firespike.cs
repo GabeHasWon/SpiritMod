@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fire Spike");
+			// DisplayName.SetDefault("Fire Spike");
 			Main.projFrames[Projectile.type] = 1;
 		}
 
@@ -159,7 +159,7 @@ namespace SpiritMod.Projectiles.Magic
 				dust81.velocity.Y -= 0.2f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.OnFire, 120, true);

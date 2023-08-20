@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.HunterArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fur Helmet");
+			// DisplayName.SetDefault("Fur Helmet");
 		}
 		public override void SetDefaults()
 		{

@@ -59,7 +59,7 @@ namespace SpiritMod.Items.Books.UI
 			closeButton.Top.Set(5, 0f);
 			closeButton.Width.Set(15, 0f);
 			closeButton.Height.Set(15, 0f);
-			closeButton.OnClick += CloseButton_OnClick;
+			closeButton.OnLeftClick += CloseButton_OnClick;
 			panelBackground.Append(closeButton);
 
 

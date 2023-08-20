@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit of the Koi");
-			Description.SetDefault("Increased fishing skill");
+			// DisplayName.SetDefault("Spirit of the Koi");
+			// Description.SetDefault("Increased fishing skill");
 
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;

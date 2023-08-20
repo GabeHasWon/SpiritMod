@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.BeekeeperSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Beekeeper's Greaves");
+			// DisplayName.SetDefault("Beekeeper's Greaves");
 		}
 		public override void SetDefaults()
 		{

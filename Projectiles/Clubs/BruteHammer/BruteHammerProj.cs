@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Brute Hammer");
+			// DisplayName.SetDefault("Brute Hammer");
 			Main.projFrames[Projectile.type] = 2;
 		}
 
@@ -83,14 +83,13 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 			Projectile.rotation = TrueRotation; //This is set for drawing afterimages
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (!released)
 			{
-				hitDirection = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
-
-				damage = (int)(MinDamage * .6f);
-				knockback = MinKnockback * .5f;
+				modifiers.HitDirectionOverride = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
+				modifiers.FinalDamage.Flat = (int)(MinDamage * .6f);
+				modifiers.Knockback.Base = MinKnockback * .5f;
 
 				Projectile.numHits--;
 			}

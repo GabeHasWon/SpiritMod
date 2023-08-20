@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.DiverSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Diver's Plate");
+			// DisplayName.SetDefault("Ancient Diver's Plate");
 		}
 		public override void SetDefaults()
 		{

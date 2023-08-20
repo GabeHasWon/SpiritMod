@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arc-en-Ciel");
+			// DisplayName.SetDefault("Arc-en-Ciel");
 		}
 
 		public override void SetDefaults()

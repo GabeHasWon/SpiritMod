@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood.DriftwoodArmor
 	[AutoloadEquip(EquipType.Legs)]
 	public class DriftwoodLeggings : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Driftwood Leggings");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Driftwood Leggings");
 
 		public override void SetDefaults()
 		{

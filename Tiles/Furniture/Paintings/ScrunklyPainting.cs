@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -31,8 +32,8 @@ namespace SpiritMod.Tiles.Furniture.Paintings
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
 			DustType = -1;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Scrunkly");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Scrunkly");
 			AddMapEntry(new Color(23, 23, 23), name);
 		}
 

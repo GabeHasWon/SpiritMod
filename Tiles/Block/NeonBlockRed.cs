@@ -21,7 +21,6 @@ namespace SpiritMod.Tiles.Block
 			DustType = -1;
 			HitSound = SoundID.Tink;
 			TileID.Sets.NeedsGrassFraming[Type] = true;
-			ItemDrop = ModContent.ItemType<NeonBlockRedItem>();
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

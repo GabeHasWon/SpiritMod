@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.LadyLuck
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lucky Coin");
+			// DisplayName.SetDefault("Lucky Coin");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

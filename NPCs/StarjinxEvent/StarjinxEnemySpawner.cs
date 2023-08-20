@@ -25,7 +25,7 @@ namespace SpiritMod.NPCs.StarjinxEvent
 		private const int IDLETIME = 20; //How long it stays at full opacity before expanding and fading out
 		private int FADEOUTTIME => MINTIMELEFT - FADEINTIME - IDLETIME; //Remaining lifetime calculation, how long the projectile takes to fade out and expand
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Starjinx Enemy Spawner");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Starjinx Enemy Spawner");
 
 		public override void SetDefaults()
 		{

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Beacon");
-			Tooltip.SetDefault("Non-consumable\nUse at an Astralite Beacon to summon the Starplate Voyager");
+			// DisplayName.SetDefault("Starplate Beacon");
+			// Tooltip.SetDefault("Non-consumable\nUse at an Astralite Beacon to summon the Starplate Voyager");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Consumable/StarWormSummon_Glow");
 		}
 

@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Polyshot");
+			// DisplayName.SetDefault("Polyshot");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -50,7 +50,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 			return false;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (target.life <= target.lifeMax / 2 && !target.boss) {
 				target.life = 0;

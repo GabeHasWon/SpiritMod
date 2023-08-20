@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Zephyr");
+			// DisplayName.SetDefault("Zephyr");
 			Main.projFrames[Projectile.type] = 2;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

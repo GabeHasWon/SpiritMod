@@ -21,7 +21,7 @@ namespace SpiritMod.NPCs.HauntedTome
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Haunted Tome");
+			// DisplayName.SetDefault("Haunted Tome");
 			Main.npcFrameCount[NPC.type] = 19;
 			NPCHelper.ImmuneTo<BloodCorrupt, BloodInfusion>(this, BuffID.Poisoned, BuffID.Confused, BuffID.OnFire);
 		}
@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.HauntedTome
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.66f * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * 0.66f * balance);
 
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => false;
 
@@ -131,9 +131,8 @@ namespace SpiritMod.NPCs.HauntedTome
 			NPC.netUpdate = true;
 		}
 
-		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => knockback = (AiTimer < 180) ? knockback : 0;
-
-		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit) => knockback = (AiTimer < 180) ? knockback : 0;
+		public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers) => modifiers.Knockback *= (AiTimer < 180) ? 1 : 0;
+		public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers) => modifiers.Knockback *= (AiTimer < 180) ? 1 : 0;
 
 		private static void Skulls(Player player, NPC npc)
 		{
@@ -193,7 +192,7 @@ namespace SpiritMod.NPCs.HauntedTome
 				frame = minframe;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -276,7 +275,7 @@ namespace SpiritMod.NPCs.HauntedTome
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Haunted Skull");
+			// DisplayName.SetDefault("Haunted Skull");
 			Main.projFrames[Projectile.type] = 6;
 		}
 
@@ -390,7 +389,7 @@ namespace SpiritMod.NPCs.HauntedTome
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Paper Plane");
+			// DisplayName.SetDefault("Paper Plane");
 			Main.projFrames[Projectile.type] = 9;
 		}
 

@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Sapphire_Bow
 		public Sapphire_Arrow() : base(Color.Blue, DustID.GemSapphire) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sapphire Arrow");
+			// DisplayName.SetDefault("Sapphire Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

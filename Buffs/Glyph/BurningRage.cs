@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Glyph
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Burning Rage");
-			Description.SetDefault("You're taking damage");
+			// DisplayName.SetDefault("Burning Rage");
+			// Description.SetDefault("You're taking damage");
 			Main.buffNoSave[Type] = true;
 			Main.debuff[Type] = true;
 		}

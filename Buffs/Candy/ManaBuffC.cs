@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Candy
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mana Candy");
-			Description.SetDefault("+40 Mana");
+			// DisplayName.SetDefault("Mana Candy");
+			// Description.SetDefault("+40 Mana");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Orb");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Orb");
 
 		readonly Vector2[] points = new Vector2[] { Vector2.Zero, Vector2.Zero };
 		private static readonly int cycletimer = 50;
@@ -105,7 +105,7 @@ namespace SpiritMod.Projectiles
 		
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.Center.ToVector2() - targetHitbox.Size() / 2, targetHitbox.Size(), points[0], points[1]);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(10))
 				target.AddBuff(Mod.Find<ModBuff>("ElectrifiedV2").Type, 120, true);

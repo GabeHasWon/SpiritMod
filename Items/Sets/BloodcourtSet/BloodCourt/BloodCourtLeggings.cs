@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.BloodCourt
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodcourt's Leggings");
-			Tooltip.SetDefault("Increases movement speed by 10%\nIncreases maximum mana by 30");
+			// DisplayName.SetDefault("Bloodcourt's Leggings");
+			// Tooltip.SetDefault("Increases movement speed by 10%\nIncreases maximum mana by 30");
 		}
 
 		public override void SetDefaults()

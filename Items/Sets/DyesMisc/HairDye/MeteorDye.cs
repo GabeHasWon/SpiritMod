@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.DyesMisc.HairDye
 {
 	public class MeteorDye : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Flare Hair Dye");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Flare Hair Dye");
 
 		public override void SetDefaults()
 		{

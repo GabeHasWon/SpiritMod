@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Weapon.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Engineering Rod");
-			Tooltip.SetDefault("Summons a stationary Tesla Turret");
+			// DisplayName.SetDefault("Engineering Rod");
+			// Tooltip.SetDefault("Summons a stationary Tesla Turret");
 		}
 
 		public override void SetDefaults()

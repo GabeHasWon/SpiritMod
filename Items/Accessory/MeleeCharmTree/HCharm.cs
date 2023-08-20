@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hellstone Charm");
-			Tooltip.SetDefault("5% increased attack damage\nAttacks may burn enemies");
+			// DisplayName.SetDefault("Hellstone Charm");
+			// Tooltip.SetDefault("5% increased attack damage\nAttacks may burn enemies");
 		}
 
 		public override void SetDefaults()

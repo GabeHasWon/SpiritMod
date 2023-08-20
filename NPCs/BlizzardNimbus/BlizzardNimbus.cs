@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blizzard Nimbus");
+			// DisplayName.SetDefault("Blizzard Nimbus");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo(this, BuffID.Frostburn, BuffID.Confused, ModContent.BuffType<MageFreeze>(), ModContent.BuffType<CryoCrush>());
 		}
@@ -108,16 +108,16 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 			}
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * 0.6f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * 0.6f * balance);
 			NPC.damage = (int)(NPC.damage * 0.6f);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 3; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Demonite, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Demonite, hit.HitDirection, -1f, 0, default, 1f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 13);

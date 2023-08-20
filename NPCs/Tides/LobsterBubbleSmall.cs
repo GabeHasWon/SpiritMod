@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Tides
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lobster Bubble");
+			// DisplayName.SetDefault("Lobster Bubble");
 		}
 
 		public override void SetDefaults()

@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arcane Energy");
+            // DisplayName.SetDefault("Arcane Energy");
             Main.projFrames[Projectile.type] = 5;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

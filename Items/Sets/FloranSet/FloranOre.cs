@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Sets.FloranSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Ore");
-			Tooltip.SetDefault("'A strange mixture of plant cells and metal'");
+			// DisplayName.SetDefault("Floran Ore");
+			// Tooltip.SetDefault("'A strange mixture of plant cells and metal'");
 		}
 
 		public override void SetDefaults()

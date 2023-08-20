@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lunazoa");
+			// DisplayName.SetDefault("Lunazoa");
 			Main.projFrames[Projectile.type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

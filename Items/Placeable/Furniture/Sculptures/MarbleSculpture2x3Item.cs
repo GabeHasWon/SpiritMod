@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Sculptures
 	[Sacrifice(1)]
 	public class MarbleSculpture2x3Item : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Marble Bust");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Marble Bust");
 
 		public override void SetDefaults()
 		{

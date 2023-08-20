@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Held
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Drill");
+			// DisplayName.SetDefault("Spirit Drill");
 		}
 
 		public override void SetDefaults()

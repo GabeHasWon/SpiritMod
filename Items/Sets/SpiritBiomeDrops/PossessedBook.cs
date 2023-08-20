@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.SpiritBiomeDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Grimoire");
-			Tooltip.SetDefault("Summons a Haunted Tome to guide you");
+			// DisplayName.SetDefault("Ancient Grimoire");
+			// Tooltip.SetDefault("Summons a Haunted Tome to guide you");
 		}
 
 		public override void SetDefaults()

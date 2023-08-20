@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Glyph
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Temporal Shift");
-			Description.SetDefault("Your movement speed is increased");
+			// DisplayName.SetDefault("Temporal Shift");
+			// Description.SetDefault("Your movement speed is increased");
 			Main.buffNoSave[Type] = true;
 			Main.pvpBuff[Type] = true;
 		}

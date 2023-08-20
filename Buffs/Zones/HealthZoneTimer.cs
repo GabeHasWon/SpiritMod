@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Zones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Healing Zone");
-			Description.SetDefault("The Healing Zone is up!");
+			// DisplayName.SetDefault("Healing Zone");
+			// Description.SetDefault("The Healing Zone is up!");
 			Main.pvpBuff[Type] = true;
 		}
 	}

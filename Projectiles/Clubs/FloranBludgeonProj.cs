@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Bludgeon");
+			// DisplayName.SetDefault("Floran Bludgeon");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

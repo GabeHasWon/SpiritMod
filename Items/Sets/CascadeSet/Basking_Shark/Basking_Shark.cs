@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Basking Shark");
-			Tooltip.SetDefault("Converts bullets into chum chunks");
+			// DisplayName.SetDefault("Basking Shark");
+			// Tooltip.SetDefault("Converts bullets into chum chunks");
 		}
 
 		public override void SetDefaults()

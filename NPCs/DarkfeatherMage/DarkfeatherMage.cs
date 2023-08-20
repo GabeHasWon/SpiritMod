@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Darkfeather Mage");
+			// DisplayName.SetDefault("Darkfeather Mage");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 
@@ -337,7 +337,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 			return 0.0005f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
         {
 			if (NPC.life > 0 || Main.netMode == NetmodeID.Server)
 				return;
@@ -352,7 +352,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 			}
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.5f * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * 0.5f * balance);
 
 		public void Teleport()
         {

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crook of the Tormented");
-			Tooltip.SetDefault("Occasionally spawns ornate scarabs to defend you upon hitting enemies");
+			// DisplayName.SetDefault("Crook of the Tormented");
+			// Tooltip.SetDefault("Occasionally spawns ornate scarabs to defend you upon hitting enemies");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/DonatorItems/GoldJadeScythe_Glow");
 		}
 
@@ -43,11 +43,11 @@ namespace SpiritMod.Items.DonatorItems
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(8)) {
 				Vector2 velocity = new Vector2(player.direction, 0) * 4f;
-				int proj = Projectile.NewProjectile(Item.GetSource_ItemUse(Item), player.Center.X, player.position.Y + player.height + -35, velocity.X, velocity.Y, ModContent.ProjectileType<JadeScarab>(), Item.damage / 2, Item.playerIndexTheItemIsReservedFor, 0, 0f);
+				int proj = Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center.X, player.position.Y + player.height + -35, velocity.X, velocity.Y, ModContent.ProjectileType<JadeScarab>(), Item.damage / 2, Item.playerIndexTheItemIsReservedFor, 0, 0f);
 				Main.projectile[proj].friendly = true;
 				Main.projectile[proj].hostile = false;
 			}

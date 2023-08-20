@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ethereal Butterfly Staff");
-			Tooltip.SetDefault("Summons a magical butterfly to fight for you\nLeft-click to cause butterflies to dissipate and leave behind exploding arcane stars");
+			// DisplayName.SetDefault("Ethereal Butterfly Staff");
+			// Tooltip.SetDefault("Summons a magical butterfly to fight for you\nLeft-click to cause butterflies to dissipate and leave behind exploding arcane stars");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

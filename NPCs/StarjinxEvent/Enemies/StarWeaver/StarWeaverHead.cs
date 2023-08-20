@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 		private const int TrailLength = 10;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Weaver");
+			// DisplayName.SetDefault("Star Weaver");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = TrailLength;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 			Main.projFrames[Projectile.type] = 6;

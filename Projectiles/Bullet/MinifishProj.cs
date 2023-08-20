@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class MinifishProj : ModProjectile
     {
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Minifish");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Minifish");
 
 		public override void SetDefaults()
 		{

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eternal Ashes");
-			Tooltip.SetDefault("Summons a Phoenix Minion to rain down fireballs on your foes ");
+			// DisplayName.SetDefault("Eternal Ashes");
+			// Tooltip.SetDefault("Summons a Phoenix Minion to rain down fireballs on your foes ");
 		}
 
 

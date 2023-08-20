@@ -12,8 +12,8 @@ namespace SpiritMod.Items.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Demon Tail");
-			Tooltip.SetDefault("Summons an eldritch abomination to follow you");
+			// DisplayName.SetDefault("Demon Tail");
+			// Tooltip.SetDefault("Summons an eldritch abomination to follow you");
 		}
 
 		public override void SetDefaults()

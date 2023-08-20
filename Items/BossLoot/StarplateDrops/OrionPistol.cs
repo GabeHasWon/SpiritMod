@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Orion's Quickdraw");
-			Tooltip.SetDefault("Converts regular bullets into Orion Bullets\nOrion Bullets leave lingering stars in their wake\n'Historically accurate'");
+			// DisplayName.SetDefault("Orion's Quickdraw");
+			// Tooltip.SetDefault("Converts regular bullets into Orion Bullets\nOrion Bullets leave lingering stars in their wake\n'Historically accurate'");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

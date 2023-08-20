@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
@@ -22,8 +23,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 			TileObjectData.addTile(Type);
 
 			DustType = 7;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Scarabeus Trophy");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Scarabeus Trophy");
 			AddMapEntry(new Color(120, 85, 60), name);
 		}
 

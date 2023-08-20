@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.FloranSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Floran Bow");
-			Tooltip.SetDefault("'Primitive, yet useful'");
+			// DisplayName.SetDefault("Floran Bow");
+			// Tooltip.SetDefault("'Primitive, yet useful'");
 		}
 
 		public override void SetDefaults()

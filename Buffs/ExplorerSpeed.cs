@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Explorer's Speed");
-			Description.SetDefault("Your mobility is greatly improved");
+			// DisplayName.SetDefault("Explorer's Speed");
+			// Description.SetDefault("Your mobility is greatly improved");
 		}
 
 		public override void Update(Player player, ref int buffIndex)

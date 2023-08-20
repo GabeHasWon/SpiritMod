@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wheeze Gas");
+			// DisplayName.SetDefault("Wheeze Gas");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -26,14 +26,12 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 180;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			target.AddBuff(20, 150);
-		}
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(20, 150);
 
-		public override void OnHitPvp(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
-			target.AddBuff(20, 150);
+			if (info.PvP)
+				target.AddBuff(20, 150);
 		}
 
 		public override void AI()

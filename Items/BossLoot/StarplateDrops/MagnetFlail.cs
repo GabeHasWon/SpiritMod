@@ -15,8 +15,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Livewire");
-			Tooltip.SetDefault("Plugs into tiles and enemies, changing the chain into a shocking livewire");
+			// DisplayName.SetDefault("Livewire");
+			// Tooltip.SetDefault("Plugs into tiles and enemies, changing the chain into a shocking livewire");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -79,7 +79,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Projectile.penetrate = -1;
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Livewire");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Livewire");
 
 		public override bool PreAI()
 		{
@@ -126,7 +126,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (readyToStick && (State != SPINNING) && target.life > 0)
 			{
@@ -170,11 +170,12 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			return base.CanHitNPC(target);
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (stuck)
 			{
-				damage = (int)(damage * 0.5f);
+				modifiers.FinalDamage *= 0.5f;
+
 				if (stickTarget == target)
 				{
 					canHitTarget = false;
@@ -188,6 +189,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 					canHitTarget = true;
 			}
 		}
+		
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			if (!readyToStick)

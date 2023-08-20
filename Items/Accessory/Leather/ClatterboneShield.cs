@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fervent Protector");
-			Tooltip.SetDefault("Increases defense by 2 and slows movement speed by 3% for every nearby foe\nThis effect stacks up to five times\n'There is something special between us'");
+			// DisplayName.SetDefault("Fervent Protector");
+			// Tooltip.SetDefault("Increases defense by 2 and slows movement speed by 3% for every nearby foe\nThis effect stacks up to five times\n'There is something special between us'");
 		}
 
 		public override void SetDefaults()

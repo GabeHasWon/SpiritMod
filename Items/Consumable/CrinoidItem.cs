@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class CrinoidItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Crinoid");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Crinoid");
 
 		public override void SetDefaults()
 		{

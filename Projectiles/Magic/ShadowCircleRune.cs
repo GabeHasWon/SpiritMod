@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Circle Rune");
+			// DisplayName.SetDefault("Shadow Circle Rune");
 		}
 
 		public override void SetDefaults()
@@ -77,7 +77,7 @@ namespace SpiritMod.Projectiles.Magic
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 				target.AddBuff(BuffID.ShadowFlame, 300);
 		}

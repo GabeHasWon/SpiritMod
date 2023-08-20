@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ice Razor");
+			// DisplayName.SetDefault("Ice Razor");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 
@@ -42,7 +42,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			Projectile.velocity.X = MathHelper.Clamp(Projectile.velocity.X, -10, 10);
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(2)) {
 				target.AddBuff(BuffID.Frostburn, 120, true);

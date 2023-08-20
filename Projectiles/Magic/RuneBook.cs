@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rune Book");
+			// DisplayName.SetDefault("Rune Book");
 			Main.projFrames[Projectile.type] = 4;
 		}
 

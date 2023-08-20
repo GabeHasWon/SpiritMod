@@ -24,7 +24,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 			set => Projectile.ai[1] = value;
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cryo Pillar");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cryo Pillar");
 
 		public override void SetDefaults()
 		{
@@ -54,7 +54,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 				Projectile.Kill();
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<CryoCrush>(), 300);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<CryoCrush>(), 300);
 
 		public override void Kill(int timeLeft)
 		{

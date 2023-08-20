@@ -16,7 +16,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mango Jelly");
+			// DisplayName.SetDefault("Mango Jelly");
 			Main.projFrames[Type] = 4;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

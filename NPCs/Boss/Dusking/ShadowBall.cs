@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Penumbral Sphere");
+			// DisplayName.SetDefault("Penumbral Sphere");
 			Main.npcFrameCount[NPC.type] = 4;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
@@ -154,7 +154,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			bool expertMode = Main.expertMode;
 			int dam = expertMode ? 19 : 35;
@@ -201,7 +201,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 		{
 			return Color.White;
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			target.AddBuff(ModContent.BuffType<Shadowflame>(), 150);
 		}

@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Arrow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dark Anima");
+			// DisplayName.SetDefault("Dark Anima");
 		}
 
 		public override void SetDefaults()
@@ -42,7 +42,7 @@ namespace SpiritMod.Projectiles.Arrow
 			});
 			Projectile.active = false;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (target.type != NPCID.TargetDummy) {
 				target.AddBuff(ModContent.BuffType<DrainLife>(), 150, true);

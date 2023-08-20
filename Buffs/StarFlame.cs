@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Flame");
-			Description.SetDefault("'An astral force saps your vitality'");
+			// DisplayName.SetDefault("Star Flame");
+			// Description.SetDefault("'An astral force saps your vitality'");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

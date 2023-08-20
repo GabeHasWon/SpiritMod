@@ -17,7 +17,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Adze");
+			// DisplayName.SetDefault("Unstable Adze");
 			Main.projFrames[Projectile.type] = 3;
 		}
 

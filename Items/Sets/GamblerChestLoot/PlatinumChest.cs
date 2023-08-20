@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Platinum Strongbox");
-			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'May contain a fortune'");
+			// DisplayName.SetDefault("Platinum Strongbox");
+			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'May contain a fortune'");
 		}
 
 		public override void SetDefaults()

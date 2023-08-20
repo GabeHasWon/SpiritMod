@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Technobrand");
-			Tooltip.SetDefault("Swinging creates additional holographic blades");
+			// DisplayName.SetDefault("Technobrand");
+			// Tooltip.SetDefault("Swinging creates additional holographic blades");
 		}
 
 		public override void SetDefaults()

@@ -10,9 +10,9 @@ namespace SpiritMod.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pureglow");
-			Tooltip.SetDefault("Places a large plant able to halt the spread of evil and Hallow" +
-				"\nThis effect extends horizontally in a 5 block radius around the flower, and has an infinite vertical reach");
+			// DisplayName.SetDefault("Pureglow");
+			/* Tooltip.SetDefault("Places a large plant able to halt the spread of evil and Hallow" +
+				"\nThis effect extends horizontally in a 5 block radius around the flower, and has an infinite vertical reach"); */
 		}
 
 		public override void SetDefaults()

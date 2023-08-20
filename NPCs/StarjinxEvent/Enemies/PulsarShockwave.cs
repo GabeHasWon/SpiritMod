@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shockwave");
+			// DisplayName.SetDefault("Shockwave");
 		}
 
 		public override void SetDefaults()

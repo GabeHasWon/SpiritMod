@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranReacher : ModItem
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Grants improved fishing power at nighttime");
+		// public override void SetStaticDefaults() => Tooltip.SetDefault("Grants improved fishing power at nighttime");
 
 		public override void SetDefaults()
 		{
@@ -37,7 +37,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 
 	internal class FloranReacherProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bobber");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bobber");
 
 		public override void SetDefaults() => Projectile.CloneDefaults(ProjectileID.BobberGolden);
 

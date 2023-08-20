@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Placeable
 {
 	public class HerosMemorialStatue : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Hero's Memorial Statue");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hero's Memorial Statue");
 
 		public override void SetDefaults()
 		{

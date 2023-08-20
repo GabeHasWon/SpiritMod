@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Weapon.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Darkstar Lantern");
-			Tooltip.SetDefault("Creates a singularity at the cursor position that shoots out multiple void stars\nVoid stars home in on enemies and may inflict Shadowflame");
+			// DisplayName.SetDefault("Darkstar Lantern");
+			// Tooltip.SetDefault("Creates a singularity at the cursor position that shoots out multiple void stars\nVoid stars home in on enemies and may inflict Shadowflame");
 
 		}
 		public override void SetDefaults()

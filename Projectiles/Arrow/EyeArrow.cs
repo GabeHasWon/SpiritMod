@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Arrow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eye Arrow");
+			// DisplayName.SetDefault("Eye Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

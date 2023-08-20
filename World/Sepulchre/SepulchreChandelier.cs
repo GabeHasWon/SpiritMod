@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -28,8 +29,8 @@ namespace SpiritMod.World.Sepulchre
 
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sepulchre Chandelier");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sepulchre Chandelier");
 			AddMapEntry(new Color(179, 146, 107), name);
 
 			AdjTiles = new int[] { TileID.Chandeliers };
@@ -56,7 +57,7 @@ namespace SpiritMod.World.Sepulchre
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sepulchre Chandelier");
+			// DisplayName.SetDefault("Sepulchre Chandelier");
 		}
 
 		public override void SetDefaults()

@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
 		int rotationalSpeed = 4;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Focus Ball");
+			// DisplayName.SetDefault("Focus Ball");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

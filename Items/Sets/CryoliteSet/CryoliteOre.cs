@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolite Ore");
-			Tooltip.SetDefault("'Veins of metal intertwined with ice'");
+			// DisplayName.SetDefault("Cryolite Ore");
+			// Tooltip.SetDefault("'Veins of metal intertwined with ice'");
 		}
 
 

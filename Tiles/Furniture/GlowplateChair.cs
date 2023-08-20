@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using SpiritMod.Items.Placeable.Tiles;
 using Terraria.ObjectData;
@@ -37,8 +38,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addTile(Type);
 
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Glowplate Chair");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Glowplate Chair");
 			AddMapEntry(new Color(50, 50, 50), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[] { TileID.Chairs };
@@ -67,7 +68,7 @@ namespace SpiritMod.Tiles.Furniture
 
 	public class GlowplateChairItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Glowplate Chair");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Glowplate Chair");
 
 		public override void SetDefaults()
 		{

@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -24,8 +25,8 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			TileID.Sets.CanBeSatOnForPlayers[Type] = true;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Stripped Bamboo Bench");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Stripped Bamboo Bench");
 			AddMapEntry(new Color(100, 100, 60), name);
 			DustType = -1;
 		}

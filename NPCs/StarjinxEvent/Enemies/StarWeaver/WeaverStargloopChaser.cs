@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 	public class WeaverStargloopChaser : ModProjectile
 	{
 		public override string Texture => "Terraria/Images/Projectile_1";
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Gloop");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Gloop");
 
 		private const int MAXTIMELEFT = 160;
 		public override void SetDefaults()

@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -31,8 +32,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.addTile(Type);
 			Terraria.ID.TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType -= 1;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Rusty Fan");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Rusty Fan");
 			AddMapEntry(new Color(100, 122, 111), name);
 		}
 

@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 {
 	public class StarCutterProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Cutter");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Cutter");
 
 		public override void SetDefaults()
 		{
@@ -50,7 +50,7 @@ namespace SpiritMod.Projectiles
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[0] = 1f;
 			Projectile.ai[1] = (float)target.whoAmI;

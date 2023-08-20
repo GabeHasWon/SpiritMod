@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Weapon.Magic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sorcerer's Wand");
-			Tooltip.SetDefault("Launches a shadowflame orb into the sky");
+			// DisplayName.SetDefault("Sorcerer's Wand");
+			// Tooltip.SetDefault("Launches a shadowflame orb into the sky");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Weapon/Magic/GoblinSorcererStaff_Glow");
 			Item.staff[Item.type] = true;
 		}

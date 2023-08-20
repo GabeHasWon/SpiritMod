@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		private bool shot = false;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Target Bottle");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Target Bottle");
 
 		public override void SetDefaults()
 		{

@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.LeatherArmor
 	[AutoloadEquip(EquipType.Legs)]
 	public class LeatherLegs : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Marksman's Boots");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Marksman's Boots");
 
 		public override void SetDefaults()
 		{

@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meteor");
+			// DisplayName.SetDefault("Meteor");
 			Main.projFrames[Projectile.type] = 6;
 		}
 

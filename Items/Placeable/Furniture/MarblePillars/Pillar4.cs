@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Furniture.MarblePillars
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Small Doric Column");
+			// DisplayName.SetDefault("Small Doric Column");
 		}
 
 

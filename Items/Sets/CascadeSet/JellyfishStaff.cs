@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.CascadeSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jellyfish Staff");
-			Tooltip.SetDefault("Summons a tiny jellyfish to fight for you!");
+			// DisplayName.SetDefault("Jellyfish Staff");
+			// Tooltip.SetDefault("Summons a tiny jellyfish to fight for you!");
             SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 

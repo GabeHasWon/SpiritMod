@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Armor.LeatherArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Marksman's Plate");
+			// DisplayName.SetDefault("Marksman's Plate");
 
 			ArmorIDs.Body.Sets.NeedsToDrawArm[Item.bodySlot] = true;
 		}

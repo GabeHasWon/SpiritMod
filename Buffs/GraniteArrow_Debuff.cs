@@ -7,7 +7,7 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Granite Arrow Debuff");
+			// DisplayName.SetDefault("Granite Arrow Debuff");
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 

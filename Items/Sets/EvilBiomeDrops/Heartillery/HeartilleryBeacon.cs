@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.Heartillery
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aching Heart");
-			Tooltip.SetDefault("Summons a stationary heartillery that shoots blood at foes");
+			// DisplayName.SetDefault("Aching Heart");
+			// Tooltip.SetDefault("Summons a stationary heartillery that shoots blood at foes");
 		}
 
 		public override void SetDefaults()

@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.Carrion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Carrion Crow");
+			// DisplayName.SetDefault("Carrion Crow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 			Main.projFrames[Projectile.type] = 6;
@@ -173,7 +173,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.Carrion
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Projectile.penetrate > 4)
 				SoundEngine.PlaySound(SoundID.NPCDeath6 with { PitchVariance = 0.2f }, Projectile.Center);

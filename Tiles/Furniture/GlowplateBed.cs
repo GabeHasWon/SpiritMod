@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Items.Placeable.Tiles;
@@ -21,8 +22,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Glowplate Bed");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Glowplate Bed");
 			AddMapEntry(new Color(50, 50, 50), name);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
             TileID.Sets.DisableSmartCursor[Type] = true;
@@ -101,7 +102,7 @@ namespace SpiritMod.Tiles.Furniture
 	
 	public class GlowplateBedItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Glowplate Bed");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Glowplate Bed");
 
 		public override void SetDefaults()
 		{

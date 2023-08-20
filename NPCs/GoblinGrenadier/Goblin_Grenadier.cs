@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.GoblinGrenadier
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Goblin Grenadier");
+			// DisplayName.SetDefault("Goblin Grenadier");
 			Main.npcFrameCount[NPC.type] = 14;
 		}
 
@@ -79,13 +79,13 @@ namespace SpiritMod.NPCs.GoblinGrenadier
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(168, 1, 5, 14);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 7; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) //Kill gores
 				for (int i = 1; i < 5; ++i)

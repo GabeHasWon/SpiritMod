@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -36,8 +37,8 @@ namespace SpiritMod.Tiles.Block
 			TileID.Sets.CommonSapling[Type] = true;
 			TileID.Sets.SwaysInWindBasic[Type] = true;
 			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sapling");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sapling");
 			AddMapEntry(new Color(200, 200, 200), name);
 			DustType = DustID.Stone;
 			AdjTiles = new int[] { TileID.Saplings };

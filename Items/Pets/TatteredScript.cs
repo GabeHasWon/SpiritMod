@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tattered Script");
-			Tooltip.SetDefault("Summons an Unbound Mask to follow the player!");
+			// DisplayName.SetDefault("Tattered Script");
+			// Tooltip.SetDefault("Summons an Unbound Mask to follow the player!");
 		}
 
 		public override void SetDefaults()

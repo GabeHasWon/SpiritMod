@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phantom Arc");
-			Tooltip.SetDefault("Summons an infinitely piercing laser of lost souls");
+			// DisplayName.SetDefault("Phantom Arc");
+			// Tooltip.SetDefault("Summons an infinitely piercing laser of lost souls");
 		}
 
 		public override void SetDefaults()

@@ -5,6 +5,7 @@ using System;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -27,8 +28,8 @@ namespace SpiritMod.Tiles.Furniture.NeonLights
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			DustType = DustID.Dirt;//ModContent.DustType<Pixel>();
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Neon Lantern");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Neon Lantern");
 			AdjTiles = new int[] { TileID.Torches };
             AddMapEntry(new Color(82, 125, 255), name);
             TileID.Sets.DisableSmartCursor[Type] = true;

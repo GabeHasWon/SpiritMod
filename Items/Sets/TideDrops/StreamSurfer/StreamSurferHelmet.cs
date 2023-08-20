@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.TideDrops.StreamSurfer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stream Surfer Mask");
-			Tooltip.SetDefault("8% increased magic critical strike chance\nYou can breathe underwater");
+			// DisplayName.SetDefault("Stream Surfer Mask");
+			// Tooltip.SetDefault("8% increased magic critical strike chance\nYou can breathe underwater");
 		}
 
 		public override void SetDefaults()

@@ -6,6 +6,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -31,8 +32,8 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Ice Deity Sculpture");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Ice Deity Sculpture");
 			DustType = DustID.Ice;
 			AddMapEntry(new Color(200, 200, 200), name);
 		}

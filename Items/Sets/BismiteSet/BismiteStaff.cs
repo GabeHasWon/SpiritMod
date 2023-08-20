@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.BismiteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Staff");
-			Tooltip.SetDefault("Shoots a bolt of energy\nOccasionally causes foes to receive 'Festering Wounds,' which deal more damage to foes under half health");
+			// DisplayName.SetDefault("Bismite Staff");
+			// Tooltip.SetDefault("Shoots a bolt of energy\nOccasionally causes foes to receive 'Festering Wounds,' which deal more damage to foes under half health");
 			Item.staff[Item.type] = true;
 		}
 

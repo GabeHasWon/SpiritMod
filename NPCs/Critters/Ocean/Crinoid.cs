@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Critters.Ocean
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crinoid");
+			// DisplayName.SetDefault("Crinoid");
 			Main.npcFrameCount[NPC.type] = 6;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -105,7 +105,7 @@ namespace SpiritMod.NPCs.Critters.Ocean
 			return false;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

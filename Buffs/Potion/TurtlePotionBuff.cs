@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Steadfast");
-			Description.SetDefault("Increases defense as health wanes\nReduces damage taken by 5%");
+			// DisplayName.SetDefault("Steadfast");
+			// Description.SetDefault("Increases defense as health wanes\nReduces damage taken by 5%");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

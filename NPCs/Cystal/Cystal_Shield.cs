@@ -19,7 +19,7 @@ namespace SpiritMod.NPCs.Cystal
 		private Vector2 Location;
 		private Vector2 Location2;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cystal Shield");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cystal Shield");
 
 		public override void SetDefaults()
 		{
@@ -39,15 +39,15 @@ namespace SpiritMod.NPCs.Cystal
 			NPC.DeathSound = SoundID.DD2_SkeletonHurt;
 		}
 
-		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
 		{
 			if (!projectile.minion)
 				projectile.penetrate = 0;
 
-			damage = 0;
+			modifiers.FinalDamage *= 0;
 		}
 
-		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit) => damage = 0;
+		public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage *= 0;
 
 		public override bool CheckDead() => false;
 
@@ -124,7 +124,7 @@ namespace SpiritMod.NPCs.Cystal
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Cystal/Cystal_Shield").Value, screenPos);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

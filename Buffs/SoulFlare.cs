@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Flare");
-			Description.SetDefault("Your soul is fluctuating...");
+			// DisplayName.SetDefault("Soul Flare");
+			// Description.SetDefault("Your soul is fluctuating...");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

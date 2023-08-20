@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using SpiritMod.Dusts;
 
@@ -20,9 +21,7 @@ namespace SpiritMod.Items.Sets.MarbleSet
 			Main.tileLighted[Type] = true;
 			Main.tileOreFinderPriority[Type] = 390;
 
-			ItemDrop = ModContent.ItemType<MarbleChunk>();
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Ancient Marble Chunk");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(227, 191, 75), name);
 			HitSound = SoundID.Tink;
 			DustType = DustID.GoldCoin;

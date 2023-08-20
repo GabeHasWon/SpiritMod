@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Orb");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Orb");
 
 		public override void SetDefaults()
 		{
@@ -72,7 +72,7 @@ namespace SpiritMod.Projectiles
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<FloranDust>());
 			}
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<VineTrap>(), 180);

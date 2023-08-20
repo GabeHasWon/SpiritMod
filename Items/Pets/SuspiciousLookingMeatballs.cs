@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Suspicious Looking Meatballs");
-			Tooltip.SetDefault("Summons the Overseer");
+			// DisplayName.SetDefault("Suspicious Looking Meatballs");
+			// Tooltip.SetDefault("Summons the Overseer");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

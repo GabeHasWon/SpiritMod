@@ -3,6 +3,7 @@ using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -28,8 +29,8 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sakura Bonsai");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sakura Bonsai");
 			DustType = -1;
 			AddMapEntry(new Color(209, 82, 203), name);
 		}

@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.CavernCrawler
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cavern Crawler");
+			// DisplayName.SetDefault("Cavern Crawler");
 			Main.npcFrameCount[NPC.type] = 18;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -146,10 +146,10 @@ namespace SpiritMod.NPCs.CavernCrawler
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, .61f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, .61f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				SoundEngine.PlaySound(SoundID.DD2_WitherBeastDeath, NPC.Center);

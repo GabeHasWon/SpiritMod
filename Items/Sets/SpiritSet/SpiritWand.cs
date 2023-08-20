@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Wand");
-			Tooltip.SetDefault("Shoots out energy that travels along the ground");
+			// DisplayName.SetDefault("Spirit Wand");
+			// Tooltip.SetDefault("Shoots out energy that travels along the ground");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritWand_Glow");
 		}
 

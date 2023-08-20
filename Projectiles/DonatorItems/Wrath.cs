@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Arcane Wrath");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Arcane Wrath");
 
 		public override void SetDefaults()
 		{

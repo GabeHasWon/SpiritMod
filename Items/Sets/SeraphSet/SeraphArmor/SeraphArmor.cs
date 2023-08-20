@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.SeraphSet.SeraphArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Seraph's Breastplate");
-			Tooltip.SetDefault("10% increased magic damage");
+			// DisplayName.SetDefault("Seraph's Breastplate");
+			// Tooltip.SetDefault("10% increased magic damage");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

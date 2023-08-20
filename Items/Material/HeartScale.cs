@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Material
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Heart Scale");
-			Tooltip.SetDefault("'A lovely scale. It is coveted by collectors.'");
+			// DisplayName.SetDefault("Heart Scale");
+			// Tooltip.SetDefault("'A lovely scale. It is coveted by collectors.'");
 		}
 
 		public override void SetDefaults()

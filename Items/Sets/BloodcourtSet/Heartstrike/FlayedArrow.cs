@@ -24,7 +24,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flayed Bolt");
+			// DisplayName.SetDefault("Flayed Bolt");
 			Main.projFrames[Type] = 2;
 		}
 

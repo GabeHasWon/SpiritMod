@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sporecoid Potion");
-			Tooltip.SetDefault("Causes the player to leave behind a damaging trail of mushrooms");
+			// DisplayName.SetDefault("Sporecoid Potion");
+			// Tooltip.SetDefault("Causes the player to leave behind a damaging trail of mushrooms");
 		}
 
 		public override void SetDefaults()

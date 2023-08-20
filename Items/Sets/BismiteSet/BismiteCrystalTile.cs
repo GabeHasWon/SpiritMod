@@ -15,12 +15,8 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			//Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = false;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16,
-			};
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16 };
 			TileObjectData.addTile(Type);
-			ItemDrop = ModContent.ItemType<BismiteCrystal>();
 			DustType = DustID.Plantera_Green;
 			HitSound = SoundID.Tink;
 		}

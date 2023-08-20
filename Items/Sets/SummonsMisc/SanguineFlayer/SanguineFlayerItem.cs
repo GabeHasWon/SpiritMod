@@ -10,10 +10,10 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sanguine Flayer");
-			Tooltip.SetDefault("Hooks into hit enemies while the attack button is held, granting 7 summon tag damage while hooked\n" +
+			// DisplayName.SetDefault("Sanguine Flayer");
+			/* Tooltip.SetDefault("Hooks into hit enemies while the attack button is held, granting 7 summon tag damage while hooked\n" +
 				"Release the attack button while hooked into an enemy to rip the weapon out\n" +
-				"Summon damage on hooked enemies builds up sanguine energy, increasing the damage dealt when ripping the weapon out");
+				"Summon damage on hooked enemies builds up sanguine energy, increasing the damage dealt when ripping the weapon out"); */
 		}
 
 		public override void SetDefaults()

@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 {
 	public class RuneHeart : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Rune Heart");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Rune Heart");
 
 		public override void SetDefaults()
 		{

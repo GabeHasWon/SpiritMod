@@ -21,7 +21,7 @@ namespace SpiritMod.NPCs.Reach
 		bool attack = false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thorn Stalker");
+			// DisplayName.SetDefault("Thorn Stalker");
 			Main.npcFrameCount[NPC.type] = 13;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -53,11 +53,11 @@ namespace SpiritMod.NPCs.Reach
 		int frame = 0;
 		int timer = 0;
 		int shootTimer = 0;
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit7, NPC.Center);
 			for (int k = 0; k < 11; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hitDirection, -1f, 0, Color.Green, .61f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, hit.HitDirection, -1f, 0, Color.Green, .61f);
 
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

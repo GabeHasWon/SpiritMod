@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Equipment
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Magnet Hook");
-			Tooltip.SetDefault("Homes in on nearby blocks");
+			// DisplayName.SetDefault("Magnet Hook");
+			// Tooltip.SetDefault("Homes in on nearby blocks");
 		}
 
 		public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace SpiritMod.Items.Equipment
 
 	internal class MagnetHookProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("${ProjectileName.GemHookAmethyst}");
+		public override void SetStaticDefaults() => ProjectileID.Sets.SingleGrappleHook[Type] = true;
 
 		public override void SetDefaults()
 		{
@@ -36,8 +36,6 @@ namespace SpiritMod.Items.Equipment
 
 		int extendlength = 450;
 		public override float GrappleRange() => extendlength;
-
-		public override bool? SingleGrappleHook(Player player) => true;
 
 		public override void NumGrappleHooks(Player player, ref int numHooks) => numHooks = 1;
 

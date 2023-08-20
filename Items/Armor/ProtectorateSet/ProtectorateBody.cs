@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.ProtectorateSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Protectorate Uniform");
+			// DisplayName.SetDefault("Protectorate Uniform");
 		}
 		public override void SetDefaults()
 		{

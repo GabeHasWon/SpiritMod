@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phantom Egg");
-			Tooltip.SetDefault("A shadowy Phantom follows you...");
+			// DisplayName.SetDefault("Phantom Egg");
+			// Tooltip.SetDefault("A shadowy Phantom follows you...");
 		}
 
 		public override void SetDefaults()

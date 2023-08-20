@@ -36,8 +36,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.OrnamentStaff
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Staff of Ornaments");
-			Tooltip.SetDefault("Casts a bunch of gems that will track your cursor position");
+			// DisplayName.SetDefault("Staff of Ornaments");
+			// Tooltip.SetDefault("Casts a bunch of gems that will track your cursor position");
 			Item.staff[Item.type] = true;
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -100,7 +100,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.OrnamentStaff
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Amethyst Magic");
+			// DisplayName.SetDefault("Amethyst Magic");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 14;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -111,7 +111,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.OrnamentStaff
 		public Topaz_Projectile() : base(87, Color.Yellow) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Topaz Magic");
+			// DisplayName.SetDefault("Topaz Magic");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 14;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -121,7 +121,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.OrnamentStaff
 		public Sapphire_Projectile() : base(88, Color.Blue) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sapphire Magic");
+			// DisplayName.SetDefault("Sapphire Magic");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 14;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -132,7 +132,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.OrnamentStaff
 		public Emerald_Projectile() : base(89, Color.Green) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Emerald Magic");
+			// DisplayName.SetDefault("Emerald Magic");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 14;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -142,7 +142,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.OrnamentStaff
 		public Ruby_Projectile() : base(90, Color.Red) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ruby Magic");
+			// DisplayName.SetDefault("Ruby Magic");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 14;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -152,7 +152,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.OrnamentStaff
 		public Diamond_Projectile() : base(91, Color.White) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Diamond Magic");
+			// DisplayName.SetDefault("Diamond Magic");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 14;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

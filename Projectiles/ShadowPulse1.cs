@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Pulse");
+			// DisplayName.SetDefault("Shadow Pulse");
 		}
 
 		public override void SetDefaults()
@@ -52,7 +52,7 @@ namespace SpiritMod.Projectiles
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(8))
 				target.AddBuff(BuffID.ShadowFlame, 200);

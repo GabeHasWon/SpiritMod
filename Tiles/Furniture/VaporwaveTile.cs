@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
@@ -33,8 +34,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorTop = default(AnchorData);
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Retrofuturist Panel");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Retrofuturist Panel");
 			AddMapEntry(new Color(150, 150, 150), name);
 			DustType = -1;
 		}

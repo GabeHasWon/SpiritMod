@@ -4,6 +4,7 @@ using SpiritMod.Items.Placeable.Furniture.Reach;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -28,8 +29,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			};
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Lamp");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Corrosive Lamp");
 			DustType = -1;
 			AddMapEntry(new Color(63, 204, 68), name);
 		}

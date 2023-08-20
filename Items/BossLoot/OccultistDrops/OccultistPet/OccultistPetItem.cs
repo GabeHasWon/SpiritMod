@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.OccultistDrops.OccultistPet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ouija Board");
-			Tooltip.SetDefault("Summons a tiny occultist");
+			// DisplayName.SetDefault("Ouija Board");
+			// Tooltip.SetDefault("Summons a tiny occultist");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

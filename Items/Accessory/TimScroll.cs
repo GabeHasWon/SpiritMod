@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tim's Scroll of Fumbling");
-			Tooltip.SetDefault("'Who knew Skeletons could write?'\nMagic attacks may inflict random debuffs on foes\nMagic attacks may shoot out a random projectile");
+			// DisplayName.SetDefault("Tim's Scroll of Fumbling");
+			// Tooltip.SetDefault("'Who knew Skeletons could write?'\nMagic attacks may inflict random debuffs on foes\nMagic attacks may shoot out a random projectile");
 		}
 
 		public override void SetDefaults()

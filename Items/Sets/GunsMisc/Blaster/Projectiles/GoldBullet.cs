@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			tManager.CreateTrail(Projectile, new GradientTrail(Color.Orange, Color.Red * .5f), new TriangleCap(), new DefaultTrailPosition(), 5f, 704f, new DefaultShader());
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gold Bullet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gold Bullet");
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
@@ -46,7 +46,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (target.TryGetGlobalNPC(out GoldBlasterGNPC GNPC))
 			{

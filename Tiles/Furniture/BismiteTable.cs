@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -19,8 +20,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Bismite Table");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Bismite Table");
 			AddMapEntry(new Color(100, 100, 100), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;

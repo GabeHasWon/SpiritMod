@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Whirltide");
-			Tooltip.SetDefault("Sprouts tides from the ground below");
+			// DisplayName.SetDefault("Whirltide");
+			// Tooltip.SetDefault("Sprouts tides from the ground below");
 			Item.staff[Item.type] = true;
 		}
 

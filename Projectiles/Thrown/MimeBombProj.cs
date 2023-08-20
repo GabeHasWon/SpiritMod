@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Thrown
 {
 	public class MimeBombProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mime Bomb");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mime Bomb");
 
 		public override void SetDefaults()
 		{
@@ -23,7 +23,7 @@ namespace SpiritMod.Projectiles.Thrown
 			Projectile.penetrate = -1;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => Projectile.Kill();
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.Kill();
 
 		public override bool PreAI()
 		{

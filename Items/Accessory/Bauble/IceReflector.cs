@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Accessory.Bauble
 	{
 		private readonly int maxAlpha = 150;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Ice Reflector");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Ice Reflector");
 
 		public override void SetDefaults()
 		{

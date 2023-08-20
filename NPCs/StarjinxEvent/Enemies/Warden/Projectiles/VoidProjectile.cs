@@ -6,7 +6,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden.Projectiles
 {
 	public class VoidProjectile : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Void Haze");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Void Haze");
 
 		public override void SetDefaults()
 		{

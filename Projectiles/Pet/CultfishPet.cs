@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Pet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cultfish");
+			// DisplayName.SetDefault("Cultfish");
 			Main.projFrames[Projectile.type] = 8;
 			Main.projPet[Projectile.type] = true;
 		}

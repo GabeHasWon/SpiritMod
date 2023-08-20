@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolite Pickaxe");
+			// DisplayName.SetDefault("Cryolite Pickaxe");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/CryoliteSet/CryoPick_Glow");
 		}
 

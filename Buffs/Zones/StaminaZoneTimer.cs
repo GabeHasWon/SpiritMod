@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Zones
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stamina Zone");
-			Description.SetDefault("The Stamina Zone is up!");
+			// DisplayName.SetDefault("Stamina Zone");
+			// Description.SetDefault("The Stamina Zone is up!");
 			Main.pvpBuff[Type] = true;
 		}
 	}

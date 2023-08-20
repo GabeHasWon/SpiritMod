@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.LostMime
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lost Mime");
+			// DisplayName.SetDefault("Lost Mime");
 			Main.npcFrameCount[NPC.type] = 14;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 		}
@@ -59,14 +59,14 @@ namespace SpiritMod.NPCs.LostMime
 
 		public override void AI() => NPC.spriteDirection = NPC.direction;
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.Confused, 60);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.Confused, 60);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 0.27f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 0.87f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.27f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.87f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

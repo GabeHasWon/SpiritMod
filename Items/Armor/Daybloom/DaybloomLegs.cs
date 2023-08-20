@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Armor.Daybloom
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sunflower Leggings");
-			Tooltip.SetDefault("4% increased magic critical strike chance");
+			// DisplayName.SetDefault("Sunflower Leggings");
+			// Tooltip.SetDefault("4% increased magic critical strike chance");
 		}
 
 		public override void SetDefaults()

@@ -16,7 +16,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Slag Flare");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Slag Flare");
 
 		public override void SetDefaults()
 		{
@@ -52,7 +52,7 @@ namespace SpiritMod.Projectiles.Magic
 				Projectile.Kill();
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int j = 0; j < 14; j++) {
 				int dust = Dust.NewDust(target.Center, 0, 0, DustID.Torch);
@@ -63,7 +63,8 @@ namespace SpiritMod.Projectiles.Magic
 			}
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.OnFire, 180);
-			if (crit && Main.netMode != NetmodeID.MultiplayerClient) {
+
+			if (hit.Crit && Main.netMode != NetmodeID.MultiplayerClient) {
 				SoundEngine.PlaySound(SoundID.Item74, target.Center);
 				int n = 4;
 				int deviation = Main.rand.Next(0, 300);

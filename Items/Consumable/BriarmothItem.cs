@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class BriarmothItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Briarmoth");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briarmoth");
 
 		public override void SetDefaults()
 		{

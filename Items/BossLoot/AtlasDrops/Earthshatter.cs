@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Earthshatter");
-			Tooltip.SetDefault("Shoots out Earthen rocks along with arrows");
+			// DisplayName.SetDefault("Earthshatter");
+			// Tooltip.SetDefault("Shoots out Earthen rocks along with arrows");
 		}
 
 

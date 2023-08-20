@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Accessory.UnstableTeslaCoil
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Tesla Coil");
-			Tooltip.SetDefault("Electrocutes up to 3 nearby enemies\nIncreases pickup range for ores");
+			// DisplayName.SetDefault("Unstable Tesla Coil");
+			// Tooltip.SetDefault("Electrocutes up to 3 nearby enemies\nIncreases pickup range for ores");
 		}
 
 		public override void SetDefaults()

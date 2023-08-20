@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.BriarDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Anodyne Hat");
+			// DisplayName.SetDefault("Anodyne Hat");
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}
 

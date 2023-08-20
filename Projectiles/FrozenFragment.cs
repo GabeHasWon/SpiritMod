@@ -27,7 +27,7 @@ namespace SpiritMod.Projectiles
 
         public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Ice");
+            // DisplayName.SetDefault("Ice");
 			Main.projFrames[Type] = 3;
         }
 

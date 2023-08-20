@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Winterborn Herald");
+			// DisplayName.SetDefault("Winterborn Herald");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo<CryoCrush>(this, BuffID.Frostburn, BuffID.OnFire);
 
@@ -242,12 +242,12 @@ namespace SpiritMod.NPCs.WinterbornHerald
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon ? 0.035f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedWhiteBluePurple, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedWhiteBluePurple, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Flare_Blue, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

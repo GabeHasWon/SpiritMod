@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.AntlionAssassin
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Antlion Assassin");
+			// DisplayName.SetDefault("Antlion Assassin");
 			Main.npcFrameCount[NPC.type] = 6;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -61,10 +61,10 @@ namespace SpiritMod.NPCs.AntlionAssassin
 
 		int invisibilityTimer;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 11; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hitDirection, -1f, 1, default, .61f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hit.HitDirection, -1f, 1, default, .61f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -79,10 +79,9 @@ namespace SpiritMod.NPCs.AntlionAssassin
 				Main.gore[ing1].timeLeft = 30;
 				int ing2 = Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 827);
 				Main.gore[ing2].timeLeft = 30;
+
 				for (int k = 0; k < 11; k++)
-				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hitDirection, -1f, 1, default, .61f);
-				}
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hit.HitDirection, -1f, 1, default, .61f);
 			}
 		}
 
@@ -115,7 +114,7 @@ namespace SpiritMod.NPCs.AntlionAssassin
 			}
 		}
 
-		public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+		public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone)
 		{
 			for (int k = 0; k < 11; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, NPC.direction, -1f, 1, default, .61f);
@@ -137,7 +136,7 @@ namespace SpiritMod.NPCs.AntlionAssassin
 			NPC.alpha = 0;
 		}
 
-		public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+		public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
 		{
 			for (int k = 0; k < 11; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, NPC.direction, -1f, 1, default, .61f);

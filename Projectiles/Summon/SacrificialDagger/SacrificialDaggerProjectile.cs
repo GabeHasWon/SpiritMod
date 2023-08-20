@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Summon.SacrificialDagger
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sacrificial Dagger");
+			// DisplayName.SetDefault("Sacrificial Dagger");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 			ProjectileID.Sets.MinionShot[Projectile.type] = true;

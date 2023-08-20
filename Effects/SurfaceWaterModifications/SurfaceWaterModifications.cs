@@ -29,22 +29,22 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 		internal static int rightOceanHeight = 0;
 
 		public static ILog Logger => ModContent.GetInstance<SpiritMod>().Logger;
-		public static bool PlayerInValidOcean => Main.LocalPlayer.ZoneBeach && Main.waterStyle == WaterStyleID.Purity;
+		public static bool PlayerInValidOcean => Main.LocalPlayer.ZoneBeach;// && Main.waterStyle == WaterStyleID.Purity
 
 		public static void Load()
 		{
 			if (ModContent.GetInstance<SpiritClientConfig>().SurfaceWaterTransparency)
 			{
-				IL.Terraria.Main.DoDraw += AddWaterShader; //Transparency shader
+				IL_Main.DoDraw += AddWaterShader; //Transparency shader
 
 				//Slope fix garbage
-				IL.Terraria.GameContent.Liquid.LiquidRenderer.InternalDraw += LiquidRenderer_InternalDraw; //Draw over slopes
-				IL.Terraria.Main.DrawBlack += Main_DrawBlack; //Modify blackness to not draw in bad places
-				On.Terraria.GameContent.Drawing.TileDrawing.DrawPartialLiquid += TileDrawing_DrawPartialLiquid; //Only draw vanilla slopes in certain cases
+				IL_LiquidRenderer.DrawNormalLiquids += LiquidRenderer_InternalDraw; //Draw over slopes
+				//IL_Main.DrawBlack += Main_DrawBlack; //Modify blackness to not draw in bad places
+				On_TileDrawing.DrawPartialLiquid += On_TileDrawing_DrawPartialLiquid; //Only draw vanilla slopes in certain cases
 			}
 
-			IL.Terraria.GameContent.Shaders.WaterShaderData.QueueRipple_Vector2_Color_Vector2_RippleShape_float += IncreaseRippleSize; //Makes ripple bigger
-			IL.Terraria.GameContent.Shaders.WaterShaderData.DrawWaves += WaterShaderData_DrawWaves;
+			IL_WaterShaderData.QueueRipple_Vector2_Color_Vector2_RippleShape_float += IncreaseRippleSize; //Makes ripple bigger
+			IL_WaterShaderData.DrawWaves += WaterShaderData_DrawWaves;
 
 			if (!Main.dedServ)
 			{
@@ -53,10 +53,10 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			}
 		}
 
-		private static void TileDrawing_DrawPartialLiquid(On.Terraria.GameContent.Drawing.TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, Tile tileCache, Vector2 position, Rectangle liquidSize, int liquidType, Color aColor)
+		private static void On_TileDrawing_DrawPartialLiquid(On_TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, bool behindBlocks, Tile tileCache, ref Vector2 position, ref Rectangle liquidSize, int liquidType, ref VertexColors colors)
 		{
 			if (!PlayerInValidOcean || tileCache.LiquidType != LiquidID.Water || Main.waterStyle >= WaterStyleID.Count)
-				orig(self, tileCache, position, liquidSize, liquidType, aColor);
+				orig(self, behindBlocks, tileCache, ref position, ref liquidSize, liquidType, ref colors);
 		}
 
 		private static void Main_DrawBlack(ILContext il)

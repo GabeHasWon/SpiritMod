@@ -9,8 +9,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blood Infusion");
-			Description.SetDefault("'Extremely contagious'");
+			// DisplayName.SetDefault("Blood Infusion");
+			// Description.SetDefault("'Extremely contagious'");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

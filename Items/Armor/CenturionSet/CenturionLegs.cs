@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.CenturionSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Centurion's Greaves");
+			// DisplayName.SetDefault("Centurion's Greaves");
 		}
 		public override void SetDefaults()
 		{

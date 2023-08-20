@@ -6,23 +6,21 @@ namespace SpiritMod.Mounts.Minecarts
 {
 	public class MinecartPlayer : ModPlayer
 	{
-		public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
+		public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
 		{
 			if (Player.mount.Type == ModContent.MountType<MarbleMinecart.MarbleMinecart>() && Math.Abs(Player.velocity.X) > 3.5f) //reduces contact damage when ramming
 			{
-				damage -= (int)(Math.Abs(Player.velocity.X) - 5);
-				if (damage < 1) //idk if this is necessary but hey
-					damage = 1;
+				modifiers.FinalDamage.Base -= (int)(Math.Abs(Player.velocity.X) - 5);
 			}
 		}
 	}
 
 	public class MinecartNPC : GlobalNPC
 	{
-		public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
+		public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
 		{
 			if (target.mount.Type == ModContent.MountType<MarbleMinecart.MarbleMinecart>() && Math.Abs(target.velocity.X) > 3.5f) //does extra damage on hit
-				npc.StrikeNPC((int)target.velocity.X, 4f, target.direction, true, false, false);
+				npc.SimpleStrikeNPC((int)target.velocity.X, target.direction, true, 4f, null, false);
 		}
 	}
 }

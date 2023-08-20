@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Halloween
 		internal override Point Size => new(20, 20);
 		public override void StaticDefaults()
 		{
-			DisplayName.SetDefault("Apple");
-			Tooltip.SetDefault("'Who the hell gives these out?'");
+			// DisplayName.SetDefault("Apple");
+			// Tooltip.SetDefault("'Who the hell gives these out?'");
 		}
 
 		public override void Defaults()

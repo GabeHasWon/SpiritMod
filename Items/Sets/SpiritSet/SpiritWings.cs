@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Wings");
-			Tooltip.SetDefault("Allows for flight and slow fall.");
+			// DisplayName.SetDefault("Spirit Wings");
+			// Tooltip.SetDefault("Allows for flight and slow fall.");
 
 			ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new Terraria.DataStructures.WingStats(90, 7f, 2);
 		}

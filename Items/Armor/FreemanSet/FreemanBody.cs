@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Armor.FreemanSet
 	[AutoloadEquip(EquipType.Body)]
 	public class FreemanBody : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("The Hunted's Hazard Suit");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("The Hunted's Hazard Suit");
 
 		public override void SetDefaults()
 		{

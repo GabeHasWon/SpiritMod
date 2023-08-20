@@ -19,18 +19,18 @@ public static class EventManager
 	public static void Load()
 	{
 		_activeEvents = new List<Event>();
-		On.Terraria.Main.DoUpdate += Main_DoUpdate;
-		On.Terraria.Graphics.Effects.OverlayManager.Draw += OverlayManager_Draw; 
+		Terraria.On_Main.DoUpdate += Main_DoUpdate;
+		Terraria.Graphics.Effects.On_OverlayManager.Draw += OverlayManager_Draw; 
 	}
 
 	public static void Unload()
 	{
-		On.Terraria.Main.DoUpdate -= Main_DoUpdate;
-    		On.Terraria.Graphics.Effects.OverlayManager.Draw -= OverlayManager_Draw;
+		Terraria.On_Main.DoUpdate -= Main_DoUpdate;
+    		Terraria.Graphics.Effects.On_OverlayManager.Draw -= OverlayManager_Draw;
     		_activeEvents = null;
 	}
 
-	private static void OverlayManager_Draw(On.Terraria.Graphics.Effects.OverlayManager.orig_Draw orig, Terraria.Graphics.Effects.OverlayManager self, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Terraria.Graphics.Effects.RenderLayers layer, bool beginSpriteBatch)
+	private static void OverlayManager_Draw(Terraria.Graphics.Effects.On_OverlayManager.orig_Draw orig, Terraria.Graphics.Effects.OverlayManager self, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Terraria.Graphics.Effects.RenderLayers layer, bool beginSpriteBatch)
 	{
 		orig(self, spriteBatch, layer, beginSpriteBatch);
 
@@ -39,7 +39,7 @@ public static class EventManager
 				e.DrawAtLayer(spriteBatch, layer, beginSpriteBatch);
 	}
 
-	private static void Main_DoUpdate(On.Terraria.Main.orig_DoUpdate orig, Main self, ref GameTime gameTime)
+	private static void Main_DoUpdate(Terraria.On_Main.orig_DoUpdate orig, Main self, ref GameTime gameTime)
 	{
 		orig(self, ref gameTime);
 

@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Solar boom");
+			// DisplayName.SetDefault("Solar boom");
 		}
 
 		public override void SetDefaults()
@@ -44,7 +44,7 @@ namespace SpiritMod.Projectiles
 			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.CopperCoin, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.Daybreak, 300);
 		}

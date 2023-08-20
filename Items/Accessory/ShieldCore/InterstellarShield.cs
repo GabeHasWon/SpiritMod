@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Interstellar Shield");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Interstellar Shield");
 
 		public override void SetDefaults()
 		{

@@ -1,4 +1,4 @@
-﻿AceOfDiamondsBuff: {
+AceOfDiamondsBuff: {
 	DisplayName: Ace of Diamonds
 	Description: Damage increased by 20%
 }
@@ -514,7 +514,10 @@ Shadowflame: {
 	Description: Mods.SpiritMod.BuffDescription.Shadowflame
 }
 
-Shocked.DisplayName: Shocked!
+Shocked: {
+	DisplayName: Shocked!
+	Description: Mods.SpiritMod.Buffs.Shocked.Description
+}
 
 SoulBurn: {
 	DisplayName: Soul Burn
@@ -735,7 +738,10 @@ MirrorCoatBuff: {
 	Description: Immunity to Stoned
 }
 
-SaddleBuff.DisplayName: Aurora Stag Mount
+SaddleBuff: {
+	DisplayName: Aurora Stag Mount
+	Description: Mods.SpiritMod.Buffs.SaddleBuff.Description
+}
 
 CosmicRattlerPetBuff: {
 	DisplayName: Starachnid
@@ -880,4 +886,14 @@ StarplateDrone_Buff: {
 LocustBig_Buff: {
 	DisplayName: Locusts
 	Description: Bringer of a plague
+}
+
+ExplorerSpeed: {
+	DisplayName: Explorer Speed
+	Description: Mods.SpiritMod.Buffs.ExplorerSpeed.Description
+}
+
+ArcaneFreeze: {
+	DisplayName: Arcane Freeze
+	Description: Mods.SpiritMod.Buffs.ArcaneFreeze.Description
 }

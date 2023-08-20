@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starfarer");
+			// DisplayName.SetDefault("Starfarer");
 			Main.npcFrameCount[NPC.type] = 1;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };

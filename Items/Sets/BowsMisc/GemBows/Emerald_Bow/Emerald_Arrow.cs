@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Emerald_Bow
 		public Emerald_Arrow() : base(Color.Green, DustID.GemEmerald) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Emerald Arrow");
+			// DisplayName.SetDefault("Emerald Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

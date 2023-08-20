@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pulsar");
+			// DisplayName.SetDefault("Pulsar");
 			Main.npcFrameCount[NPC.type] = 9;
 		}
 
@@ -48,13 +48,13 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit4, NPC.Center);
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, .934f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, .934f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

@@ -18,8 +18,8 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nautilobber");
-            Tooltip.SetDefault("Generates a cascade of bubbles at the collision zone");
+            // DisplayName.SetDefault("Nautilobber");
+            // Tooltip.SetDefault("Generates a cascade of bubbles at the collision zone");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

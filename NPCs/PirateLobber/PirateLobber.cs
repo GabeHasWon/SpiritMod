@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.PirateLobber
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pirate Lobber");
+			// DisplayName.SetDefault("Pirate Lobber");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
@@ -136,18 +136,18 @@ namespace SpiritMod.NPCs.PirateLobber
 			npcLoot.AddOneFromOptions(333, GoldFurniture);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
 				for (int i = 0; i < 3; ++i)
-					Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), Vector2.UnitX * hitDirection * Main.rand.NextFloat(0.9f, 1f), Mod.Find<ModGore>("PirateLobber" + i).Type);
-				Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), Vector2.UnitX * hitDirection * Main.rand.NextFloat(0.9f, 1f), Mod.Find<ModGore>("PirateLobber1").Type);
+					Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), Vector2.UnitX * hit.HitDirection * Main.rand.NextFloat(0.9f, 1f), Mod.Find<ModGore>("PirateLobber" + i).Type);
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), Vector2.UnitX * hit.HitDirection * Main.rand.NextFloat(0.9f, 1f), Mod.Find<ModGore>("PirateLobber1").Type);
 			}
 
 			int dustCount = Main.rand.Next(2, 5);
 			for (int i = 0; i < dustCount; ++i)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2 * hitDirection, Main.rand.NextFloat(-0.8f, 0), 0, default, Main.rand.NextFloat(0.9f, 1.4f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2 * hit.HitDirection, Main.rand.NextFloat(-0.8f, 0), 0, default, Main.rand.NextFloat(0.9f, 1.4f));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => SpawnCondition.Pirates.Chance * 0.1f;
@@ -157,7 +157,7 @@ namespace SpiritMod.NPCs.PirateLobber
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pirate Barrel");
+			// DisplayName.SetDefault("Pirate Barrel");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

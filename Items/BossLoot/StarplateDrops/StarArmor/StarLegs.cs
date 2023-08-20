@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astralite Leggings");
-			Tooltip.SetDefault("5% increased ranged damage\nLeave a trail of stars where you walk");
+			// DisplayName.SetDefault("Astralite Leggings");
+			// Tooltip.SetDefault("5% increased ranged damage\nLeave a trail of stars where you walk");
 		}
 
 		public override void SetDefaults()

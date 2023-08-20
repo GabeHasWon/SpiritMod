@@ -21,7 +21,6 @@ namespace SpiritMod.Tiles.Block
 			TileID.Sets.CanBeDugByShovel[Type] = true;
 
 			AddMapEntry(new Color(104, 156, 70));
-			ItemDrop = ModContent.ItemType<ReachGrass>();
 		}
 
 		public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)

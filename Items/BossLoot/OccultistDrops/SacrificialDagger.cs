@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.OccultistDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sacrificial Dagger");
-			Tooltip.SetDefault("Your summons will target focus enemies\nSummons that hit tagged enemies may deal extra strikes of damage");
+			// DisplayName.SetDefault("Sacrificial Dagger");
+			// Tooltip.SetDefault("Your summons will target focus enemies\nSummons that hit tagged enemies may deal extra strikes of damage");
 		}
 
 		public override void SetDefaults()

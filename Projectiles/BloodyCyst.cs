@@ -21,7 +21,7 @@ namespace SpiritMod.Projectiles
 
         public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Cyst");
+            // DisplayName.SetDefault("Cyst");
 			Main.projFrames[Type] = 3;
         }
 

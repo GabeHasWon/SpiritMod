@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blank Glyph");
-			Tooltip.SetDefault("'The Enchanter could probably use this'");
+			// DisplayName.SetDefault("Blank Glyph");
+			// Tooltip.SetDefault("'The Enchanter could probably use this'");
 		}
 
 		public override void SetDefaults()

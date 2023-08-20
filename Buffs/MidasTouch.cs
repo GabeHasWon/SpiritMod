@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Midas Touch");
-			Description.SetDefault("Enemies drop more gold when killed");
+			// DisplayName.SetDefault("Midas Touch");
+			// Description.SetDefault("Enemies drop more gold when killed");
 			Main.debuff[Type] = false;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodstone Enclave");
-			Tooltip.SetDefault("'E. Sibelius'");
+			// DisplayName.SetDefault("Bloodstone Enclave");
+			// Tooltip.SetDefault("'E. Sibelius'");
 		}
 
 		public override void SetDefaults()

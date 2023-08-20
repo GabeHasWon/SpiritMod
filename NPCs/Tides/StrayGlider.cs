@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stray Glider");
+			// DisplayName.SetDefault("Stray Glider");
 			Main.projFrames[base.Projectile.type] = 3;
 		}
 

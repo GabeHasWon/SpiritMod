@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.FrigidSet.FrigidArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frigid Plate");
-			Tooltip.SetDefault("3% increased critical strike chance");
+			// DisplayName.SetDefault("Frigid Plate");
+			// Tooltip.SetDefault("3% increased critical strike chance");
 		}
 
 

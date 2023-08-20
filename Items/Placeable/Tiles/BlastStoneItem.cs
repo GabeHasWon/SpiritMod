@@ -5,6 +5,6 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class BlastStoneItem : AmbientStoneItem<BlastStoneTile>
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blast Stone");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blast Stone");
 	}
 }

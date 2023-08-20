@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.Tides
 		bool attack = false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crocosaur");
+			// DisplayName.SetDefault("Crocosaur");
 			Main.npcFrameCount[NPC.type] = 11;
 		}
 
@@ -42,12 +42,12 @@ namespace SpiritMod.NPCs.Tides
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.Green, 0.87f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.Green, .54f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.Green, 0.87f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.Green, .54f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -102,7 +102,7 @@ namespace SpiritMod.NPCs.Tides
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (attack)
 				target.AddBuff(BuffID.Bleeding, 600);

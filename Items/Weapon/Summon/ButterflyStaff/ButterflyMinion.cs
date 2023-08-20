@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 		public ButterflyMinion() : base(600, 800, new Vector2(16, 16)) { }
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ethereal Butterfly");
+			// DisplayName.SetDefault("Ethereal Butterfly");
 			Main.projFrames[Projectile.type] = 2;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;

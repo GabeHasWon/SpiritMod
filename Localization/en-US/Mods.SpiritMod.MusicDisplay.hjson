@@ -1,0 +1,185 @@
+ModName: Spirit Mod
+Salvati: Salvati
+Sbubby: Sbubby
+By: by
+BySalvati: "{$By} {$Salvati}"
+
+GraniteBiome: {
+	DisplayName: Resounding Stones (Granite Theme)
+	Author: "{$BySalvati}"
+}
+
+AuroraSnow: {
+	DisplayName: Aurora Borealis
+	Author: "{$BySalvati}"
+}
+
+DepthInvasion: {
+	DisplayName: Drowning Tides (Tide Theme)
+	Author: "{$BySalvati}"
+}
+
+SnowNighttime: {
+	DisplayName: Icy Stars (Snow Night Theme)
+	Author: "{$BySalvati}"
+}
+
+DesertNighttime: {
+	DisplayName: Kempt Dunes (Desert Night Theme)
+	Author: "{$BySalvati}"
+}
+
+OceanNighttime: {
+	DisplayName: Beyond the Horizon (Luminous Ocean Theme)
+	Author: "{$BySalvati}"
+}
+
+CrimsonNighttime: {
+	DisplayName: Razor's Edge (Crimson Night Theme)
+	Author: "{$BySalvati}, {$Sbubby}"
+}
+
+ReachUnderground: {
+	DisplayName: Lurking Vines (Underground Briar Theme)
+	Author: "{$By} {$Sbubby}"
+}
+
+Meteor: {
+	DisplayName: Space Rocks! (Meteorite Theme)
+	Author: "{$BySalvati}"
+}
+
+Infernon: {
+	DisplayName: Fiery Care (Infernon Theme)
+	Author: "{$BySalvati}"
+}
+
+CorruptNight: {
+	DisplayName: Nightmare Fuel (Corruption Night Theme)
+	Author: "{$BySalvati}"
+}
+
+NeonTech1: {
+	DisplayName: Spaced Out (Hyperspace Day Theme)
+	Author: "{$BySalvati}"
+}
+
+NeonTech: {
+	DisplayName: Techno Vibes (Hyperspace Night Theme)
+	Author: "{$BySalvati}"
+}
+
+BlueMoon: {
+	DisplayName: Nighttime Groove (Mystic Moon Theme)
+	Author: "{$BySalvati}"
+}
+
+JellySky: {
+	DisplayName: Sticky Situation (Jelly Deluge Theme)
+	Author: "{$BySalvati}"
+}
+
+FrostLegion: {
+	DisplayName: Tougher Chill (Frost Legion Theme)
+	Author: "{$BySalvati}"
+}
+
+SpiderCave: {
+	DisplayName: Xyresic Horrors (Spider Cave Theme)
+	Author: "{$BySalvati}"
+}
+
+MoonJelly: {
+	DisplayName: Mystical Mischief (Moon Jelly Wizard Theme)
+	Author: "{$BySalvati}"
+}
+
+HallowNight: {
+	DisplayName: Wonderous Landscape (Hallow Night Theme)
+	Author: "{$BySalvati}"
+}
+
+Atlas: {
+	DisplayName: Tremors Underneath (Atlas Theme)
+	Author: "{$BySalvati}"
+}
+
+SpiritLayer3: {
+	DisplayName: Hellish Atmosphere (Spirit Depths Theme)
+	Author: "{$BySalvati}"
+}
+
+ReachBoss: {
+	DisplayName: Monarch Husk (Vinewrath Bane Theme)
+	Author: "{$BySalvati}"
+}
+
+MarbleBiome: {
+	DisplayName: Regal Tunnel (Marble Theme)
+	Author: "{$BySalvati}"
+}
+
+Blizzard: {
+	DisplayName: Shivering Storms (Blizzard Theme)
+	Author: "{$BySalvati}"
+}
+
+SpiritLayer1: {
+	DisplayName: Fearful Atmosphere (Underground Spirit Theme)
+	Author: "{$BySalvati}"
+}
+
+Starplate: {
+	DisplayName: Lost Voyager (Starplate Voyager Theme)
+	Author: "{$BySalvati}"
+}
+
+SpiritOverworld: {
+	DisplayName: Enervating Atmosphere (Spirit Theme)
+	Author: "{$BySalvati}"
+}
+
+Reach: {
+	DisplayName: Floral Fiends (Briar Theme)
+	Author: "{$BySalvati}"
+}
+
+AncientAvian: {
+	DisplayName: Jettisoned Giant (Ancient Avian Theme)
+	Author: "{$BySalvati}"
+}
+
+UnderwaterMusic: {
+	DisplayName: Deep Ocean
+	Author: "{$BySalvati}"
+}
+
+VictoryDay: {
+	DisplayName: Overworld Alt Alt (Victory Day Theme)
+	Author: "{$BySalvati}"
+}
+
+AshStorm: {
+	DisplayName: Ash Storm
+	Author: "{$BySalvati}"
+}
+
+Asteroids: {
+	DisplayName: Above Islands (Asteroid Theme)
+	Author: "{$BySalvati}"
+}
+
+DuskingTheme: {
+	DisplayName: Dusking
+	Author: "{$By} LordCakeSpy"
+}
+
+Scarabeus: {
+	DisplayName: Crawling Complications (Scarabeus Theme)
+	Author: "{$BySalvati}"
+}
+
+TranquilWinds: {
+	DisplayName: Tranquil Winds
+	Author: "{$BySalvati}"
+}

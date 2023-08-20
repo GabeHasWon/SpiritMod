@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Grouper");
+			// DisplayName.SetDefault("Grouper");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
@@ -84,7 +84,7 @@ namespace SpiritMod.NPCs.Critters
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life > 0 || Main.netMode != NetmodeID.Server)
 				return;

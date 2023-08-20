@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Ruby_Bow
 		public Ruby_Arrow() : base(Color.Red, DustID.GemRuby) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ruby Arrow");
+			// DisplayName.SetDefault("Ruby Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

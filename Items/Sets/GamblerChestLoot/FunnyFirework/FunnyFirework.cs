@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Funny Firework");
-			Tooltip.SetDefault("Does a funny");
+			// DisplayName.SetDefault("Funny Firework");
+			// Tooltip.SetDefault("Does a funny");
 		}
 
 		public override void SetDefaults()
@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Funny Firework");
+			// DisplayName.SetDefault("Funny Firework");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

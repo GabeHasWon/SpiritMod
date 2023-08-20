@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shine Grenade");
-			Tooltip.SetDefault("Confuses enemies on detonation");
+			// DisplayName.SetDefault("Shine Grenade");
+			// Tooltip.SetDefault("Confuses enemies on detonation");
 		}
 
 		public override void SetDefaults()
@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 
 		public override string Texture => Mod.Name + "/Items/Sets/Explosives/Thrown/ShineGrenade";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Shine Grenade");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Shine Grenade");
 
 		public override void SetDefaults()
 		{
@@ -98,7 +98,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.timeLeft = Math.Min(Projectile.timeLeft, 2);
 

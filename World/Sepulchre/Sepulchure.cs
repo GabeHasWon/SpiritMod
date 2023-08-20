@@ -21,7 +21,7 @@ namespace SpiritMod.World.Sepulchre
 		private int Tile => ModContent.TileType<SepulchreBrick>();
 		private int TileTwo => ModContent.TileType<SepulchreBrickTwo>();
 
-		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 		{
 			int index = tasks.FindIndex(genpass => genpass.Name.Equals("Settle Liquids Again"));
 

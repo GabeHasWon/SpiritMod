@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Giant Manshark Statue");
+			// DisplayName.SetDefault("Giant Manshark Statue");
 		}
 
 

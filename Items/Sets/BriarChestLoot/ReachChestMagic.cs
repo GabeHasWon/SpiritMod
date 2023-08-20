@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Leafstrike Staff");
-			Tooltip.SetDefault("Summons a sharp leaf that can be controlled with the cursor");
+			// DisplayName.SetDefault("Leafstrike Staff");
+			// Tooltip.SetDefault("Summons a sharp leaf that can be controlled with the cursor");
 			Item.staff[Item.type] = true;
 		}
 

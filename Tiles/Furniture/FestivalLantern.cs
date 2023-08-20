@@ -5,6 +5,7 @@ using System;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -14,8 +15,8 @@ namespace SpiritMod.Tiles.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Festival Lantern");
-			Tooltip.SetDefault("Starts a lantern festival nearby when placed");
+			// DisplayName.SetDefault("Festival Lantern");
+			// Tooltip.SetDefault("Starts a lantern festival nearby when placed");
 		}
 
 
@@ -70,8 +71,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			DustType = -1;//ModContent.DustType<Pixel>();
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Festival Lantern");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Festival Lantern");
             AddMapEntry(new Color(100, 100, 100), name);
             AdjTiles = new int[] { TileID.Torches };
             DustType = -1;

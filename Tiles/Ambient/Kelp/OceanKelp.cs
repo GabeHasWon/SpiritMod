@@ -27,7 +27,6 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 			TileObjectData.newTile.AnchorAlternateTiles = new int[] { TileID.Sand, Type };
 			TileObjectData.addTile(Type);
 
-			ItemDrop = ModContent.ItemType<Items.Sets.FloatingItems.Kelp>();
 			AddMapEntry(new Color(21, 92, 19));
             DustType = DustID.Grass;
             HitSound = SoundID.Grass;

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stripped Bamboo Bird Cage");
-			Tooltip.SetDefault("Birds can be locked inside using right click");
+			// DisplayName.SetDefault("Stripped Bamboo Bird Cage");
+			// Tooltip.SetDefault("Birds can be locked inside using right click");
 		}
 
 		public override void SetDefaults()

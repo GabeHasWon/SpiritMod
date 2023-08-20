@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Boss
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Comet");
+			// DisplayName.SetDefault("Red Comet");
 			Main.projFrames[Projectile.type] = 5;
 		}
 

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.BossLoot.StarplateDrops
@@ -19,11 +20,10 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Main.tileSpelunker[Type] = true;
 			Main.tileOreFinderPriority[Type] = 300;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Astralite");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Astralite");
 			AddMapEntry(new Color(156, 102, 36), name);
 
-			ItemDrop = ModContent.ItemType<CosmiliteShard>();
 			HitSound = SoundID.Tink;
 			DustType = DustID.Electric;
 		}

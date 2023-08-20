@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.GoblinGrenadier
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Grenade");
+			// DisplayName.SetDefault("Grenade");
 		}
 
 		public override void SetDefaults()

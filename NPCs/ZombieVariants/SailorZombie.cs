@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.ZombieVariants
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Zombie");
+			// DisplayName.SetDefault("Zombie");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie];
 		}
 
@@ -42,12 +42,12 @@ namespace SpiritMod.NPCs.ZombieVariants
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.78f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, .54f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.78f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, .54f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

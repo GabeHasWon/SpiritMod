@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blue Neon Block");
+			// DisplayName.SetDefault("Blue Neon Block");
 		}
 
 

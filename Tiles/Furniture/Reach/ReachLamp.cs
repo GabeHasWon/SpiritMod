@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture.Reach;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -26,8 +27,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			};
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Elderbark Lamp");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Elderbark Lamp");
 			AddMapEntry(new Color(179, 146, 107), name);
 		}
 

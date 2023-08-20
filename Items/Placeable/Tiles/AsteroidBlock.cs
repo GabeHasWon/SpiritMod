@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("'Ore-rich space debris'");
+			// Tooltip.SetDefault("'Ore-rich space debris'");
         }
 
 		public override void SetDefaults()

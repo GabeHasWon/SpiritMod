@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gravity Modulator");
-			Tooltip.SetDefault("Reduces the player's gravity significantly");
+			// DisplayName.SetDefault("Gravity Modulator");
+			// Tooltip.SetDefault("Reduces the player's gravity significantly");
 		}
 
 		public override void SetDefaults()

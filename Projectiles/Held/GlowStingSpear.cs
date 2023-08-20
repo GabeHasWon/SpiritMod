@@ -18,7 +18,7 @@ namespace SpiritMod.Projectiles.Held
 			set => Projectile.ai[0] = value;
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Seraph Blade");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Seraph Blade");
 
 		public override void SetDefaults()
 		{
@@ -97,7 +97,7 @@ namespace SpiritMod.Projectiles.Held
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 180);

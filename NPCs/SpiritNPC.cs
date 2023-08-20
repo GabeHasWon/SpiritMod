@@ -87,12 +87,12 @@ namespace SpiritMod.NPCs
 		/// <returns></returns>
 		public virtual bool SafePreAI() => true;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0)
-				OnHitKill(hitDirection, damage);
+				OnHitKill(hit.HitDirection, hit.Damage);
 
-			SafeHitEffect(hitDirection, damage);
+			SafeHitEffect(hit.HitDirection, hit.Damage);
 		}
 
 		/// <summary>

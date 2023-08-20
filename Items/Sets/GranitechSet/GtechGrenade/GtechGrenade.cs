@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("G-TEK Grenade");
-			Tooltip.SetDefault("Slows and electrocutes enemies in its aura\nCan be destroyed by the player\nDestroying it causes an explosion");
+			// DisplayName.SetDefault("G-TEK Grenade");
+			// Tooltip.SetDefault("Slows and electrocutes enemies in its aura\nCan be destroyed by the player\nDestroying it causes an explosion");
 		}
 
 		public override void SetDefaults()
@@ -60,7 +60,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("G-TEK Grenade");
+			// DisplayName.SetDefault("G-TEK Grenade");
 			Main.projFrames[Projectile.type] = 15;
 		}
 
@@ -238,7 +238,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gtech Grenade");
+			// DisplayName.SetDefault("Gtech Grenade");
 			Main.projFrames[Projectile.type] = 9;
 		}
 

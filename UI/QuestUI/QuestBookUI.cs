@@ -127,7 +127,7 @@ namespace SpiritMod.UI.QuestUI
             for (int i = 0; i < _questSectionButtons.Length; i++)
             {
                 int index = i;
-                _questSectionButtons[i].OnMouseDown += (UIMouseEvent evt, UIElement el) =>
+                _questSectionButtons[i].OnLeftMouseDown += (UIMouseEvent evt, UIElement el) =>
 				{
 					ChangeFilter(0);
 					ChangeSection(index);
@@ -146,7 +146,7 @@ namespace SpiritMod.UI.QuestUI
             for (int i = 0; i < _questFilterButtons.Length; i++)
             {
                 int index = i;
-                _questFilterButtons[i].OnMouseDown += (UIMouseEvent evt, UIElement el) =>
+                _questFilterButtons[i].OnLeftMouseDown += (UIMouseEvent evt, UIElement el) =>
 				{
 					ChangeFilter(index);
 				};
@@ -184,7 +184,7 @@ namespace SpiritMod.UI.QuestUI
 			for (int i = 0; i < _allQuestButtons.Length; i++)
 			{
 				int index = i;
-				_allQuestButtons[i].OnMouseDown += (UIMouseEvent evt, UIElement el) =>
+				_allQuestButtons[i].OnLeftMouseDown += (UIMouseEvent evt, UIElement el) =>
 				{
 					_selectedQuestIndex = index;
 					ButtonArraySelect(index, _allQuestButtons);
@@ -253,7 +253,7 @@ namespace SpiritMod.UI.QuestUI
 			_questObjectivesLeftArrow.Left.Set(-60f, 1f);
 			_questObjectivesLeftArrow.Top.Set(188f, 0f);
 			_questObjectivesLeftArrow.SetVisibility(1f, 0.5f);
-			_questObjectivesLeftArrow.OnClick += (UIMouseEvent evt, UIElement listeningElement) =>
+			_questObjectivesLeftArrow.OnLeftClick += (UIMouseEvent evt, UIElement listeningElement) =>
 			{
 				int page = _questObjectivesText.Page;
 				page--;
@@ -267,7 +267,7 @@ namespace SpiritMod.UI.QuestUI
 			_questObjectivesRightArrow.Left.Set(-14f, 1f);
 			_questObjectivesRightArrow.Top.Set(188f, 0f);
 			_questObjectivesRightArrow.SetVisibility(1f, 0.5f);
-			_questObjectivesRightArrow.OnClick += (UIMouseEvent evt, UIElement listeningElement) =>
+			_questObjectivesRightArrow.OnLeftClick += (UIMouseEvent evt, UIElement listeningElement) =>
 			{
 				int page = _questObjectivesText.Page;
 				page++;
@@ -347,10 +347,10 @@ namespace SpiritMod.UI.QuestUI
 			_questInteractButton.SelectedOutlineColour = new Color(102, 86, 67) * 0.9f;
 			_questInteractButton.HoverOutlineColour = new Color(102, 86, 67) * 0.7f;
 
-			_questInteractButton.OnMouseDown += (UIMouseEvent evt, UIElement listeningElement) => _questInteractButton.IsSelected = true;
-			_questInteractButton.OnMouseUp += (UIMouseEvent evt, UIElement listeningElement) => _questInteractButton.IsSelected = false;
+			_questInteractButton.OnLeftMouseDown += (UIMouseEvent evt, UIElement listeningElement) => _questInteractButton.IsSelected = true;
+			_questInteractButton.OnLeftMouseUp += (UIMouseEvent evt, UIElement listeningElement) => _questInteractButton.IsSelected = false;
 
-			_questInteractButton.OnClick += (UIMouseEvent evt, UIElement listeningElement) =>
+			_questInteractButton.OnLeftClick += (UIMouseEvent evt, UIElement listeningElement) =>
 			{
 				if (Main.LocalPlayer.GetModPlayer<QuestPlayer>().HasRewardsForQuest(SelectedQuest.QuestName)) 
 					return;

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dreamlight Jelly");
-			Tooltip.SetDefault("'It exudes arcane energy'\nUse at nighttime to summon the Moon Jelly Wizard\nNot consumable");
+			// DisplayName.SetDefault("Dreamlight Jelly");
+			// Tooltip.SetDefault("'It exudes arcane energy'\nUse at nighttime to summon the Moon Jelly Wizard\nNot consumable");
 		}
 
 		public override void SetDefaults()

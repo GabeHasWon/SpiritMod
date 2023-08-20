@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Sets.FlailsMisc.ClatterMace
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Clattering Mace");
-			Tooltip.SetDefault("Has a chance to lower enemy defense on hit");
+			// DisplayName.SetDefault("Clattering Mace");
+			// Tooltip.SetDefault("Has a chance to lower enemy defense on hit");
 			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2;
 		}
 

@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Heresy");
-			Description.SetDefault("The gods accept your challenge\nEnchanted enemies appear more often");
+			// DisplayName.SetDefault("Heresy");
+			// Description.SetDefault("The gods accept your challenge\nEnchanted enemies appear more often");
 		}
 	}
 }

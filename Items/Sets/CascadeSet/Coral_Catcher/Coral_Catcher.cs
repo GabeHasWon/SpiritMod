@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Coral_Catcher
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coral Catcher");
-			Tooltip.SetDefault("Detects hooked fish");
+			// DisplayName.SetDefault("Coral Catcher");
+			// Tooltip.SetDefault("Detects hooked fish");
 		}
 		
         public override void SetDefaults()

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vessel Drainer");
-			Tooltip.SetDefault("Summons a blood tentacle that splits into life-stealing blood clots");
+			// DisplayName.SetDefault("Vessel Drainer");
+			// Tooltip.SetDefault("Summons a blood tentacle that splits into life-stealing blood clots");
 		}
 
 

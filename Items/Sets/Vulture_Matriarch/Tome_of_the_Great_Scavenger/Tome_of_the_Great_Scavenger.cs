@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Tome_of_the_Great_Scavenger
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tome of the Great Scavenger");
-			Tooltip.SetDefault("Casts a torrent of sharp, armor penetrating feathers\nHit enemies may drop more gold");
+			// DisplayName.SetDefault("Tome of the Great Scavenger");
+			// Tooltip.SetDefault("Casts a torrent of sharp, armor penetrating feathers\nHit enemies may drop more gold");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

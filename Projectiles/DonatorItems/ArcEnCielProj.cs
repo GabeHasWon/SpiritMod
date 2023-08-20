@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arc-en-Ciel");
+			// DisplayName.SetDefault("Arc-en-Ciel");
 		}
 
 		public override void SetDefaults()
@@ -127,7 +127,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(8))
 				target.AddBuff(ModContent.BuffType<ElectrifiedV2>(), 180);

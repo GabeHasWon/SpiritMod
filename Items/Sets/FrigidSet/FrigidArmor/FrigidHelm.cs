@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.FrigidArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class FrigidHelm : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Frigid Faceplate");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Frigid Faceplate");
 
 		public override void SetDefaults()
 		{

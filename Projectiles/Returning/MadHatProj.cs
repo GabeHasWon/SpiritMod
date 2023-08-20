@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Returning
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mad Hat");
+			// DisplayName.SetDefault("Mad Hat");
 			Main.projFrames[base.Projectile.type] = 5;
 		}
 
@@ -43,7 +43,7 @@ namespace SpiritMod.Projectiles.Returning
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 180);

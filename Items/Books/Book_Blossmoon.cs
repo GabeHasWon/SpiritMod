@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Books
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Notes on Blossmoons");
-            Tooltip.SetDefault("by Calvin Reyes, Researcher\nIt contains notes about cute little Blossmoons");
+            // DisplayName.SetDefault("Notes on Blossmoons");
+            // Tooltip.SetDefault("by Calvin Reyes, Researcher\nIt contains notes about cute little Blossmoons");
         }
 
         public override void SetDefaults()

@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Palladium Rune");
+			// DisplayName.SetDefault("Palladium Rune");
 			Main.projFrames[Projectile.type] = 10;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 16;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

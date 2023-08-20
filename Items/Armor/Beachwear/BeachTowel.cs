@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.Beachwear
 	[AutoloadEquip(EquipType.Body)]
 	public class BeachTowel : ModItem
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("'It keeps you dry, but make sure you don't jump in the water with it on!'");
+		// public override void SetStaticDefaults() => Tooltip.SetDefault("'It keeps you dry, but make sure you don't jump in the water with it on!'");
 
 		public override void SetDefaults()
 		{

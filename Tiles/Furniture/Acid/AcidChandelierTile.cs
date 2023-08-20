@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -30,8 +31,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			};
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Chandelier");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Corrosive Chandelier");
 			AddMapEntry(new Color(63, 204, 68), name);
 			AdjTiles = new int[] { TileID.Chandeliers };
 			DustType = -1;

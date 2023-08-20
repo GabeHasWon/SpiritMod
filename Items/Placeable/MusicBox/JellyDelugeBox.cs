@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Placeable.MusicBox
 	[Sacrifice(1)]
 	public class JellyDelugeBox : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Jelly Deluge)");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Jelly Deluge)");
 
 		public override void SetDefaults()
 		{
@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Placeable.MusicBox
 			Item.rare = ItemRarityID.LightRed;
 			Item.value = Terraria.Item.buyPrice(gold : 2);
 			Item.accessory = true;
-			Item.canBePlacedInVanityRegardlessOfConditions = true;
+			Item.hasVanityEffects = true;
 		}
 	}
 }

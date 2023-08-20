@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Yellow Willow Bonsai");
+			// DisplayName.SetDefault("Yellow Willow Bonsai");
 		}
 
 

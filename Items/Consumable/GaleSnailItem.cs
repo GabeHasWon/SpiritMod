@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class GaleSnailItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gale Snail");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gale Snail");
 
 		public override void SetDefaults()
 		{

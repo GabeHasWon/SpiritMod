@@ -17,8 +17,8 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blizzard's Edge");
-			Tooltip.SetDefault("Right-click after five swings to summon a blizzard");
+			// DisplayName.SetDefault("Blizzard's Edge");
+			// Tooltip.SetDefault("Right-click after five swings to summon a blizzard");
 			Item.staff[Type] = true; //This will only take effect when using right-click
 		}
 
@@ -41,7 +41,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 			Item.shoot = ModContent.ProjectileType<BlizzardProjectile>();
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 400, true);
@@ -121,7 +121,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blizzard");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blizzard");
 
 		public override void SetDefaults()
 		{
@@ -172,7 +172,7 @@ namespace SpiritMod.Items.DonatorItems.FrostTroll
 			}));
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Vector2 dirFactor = Vector2.Normalize(Projectile.velocity);
 

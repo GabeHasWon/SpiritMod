@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slag Tyrant's Helm");
-			Tooltip.SetDefault("5% increased minion damage\nIncreases your max number of sentries");
+			// DisplayName.SetDefault("Slag Tyrant's Helm");
+			// Tooltip.SetDefault("5% increased minion damage\nIncreases your max number of sentries");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

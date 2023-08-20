@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GildedMustache
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gilded Mustache");
+			// DisplayName.SetDefault("Gilded Mustache");
 			//ArmorIDs.Face.Sets.DrawInFaceUnderHairLayer[Item.faceSlot] = true;
 			ArmorIDs.Face.Sets.DrawInFaceFlowerLayer[Item.faceSlot] = true;
 		}

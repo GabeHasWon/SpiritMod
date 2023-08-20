@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Cluster");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blood Cluster");
 
 		public override void SetDefaults()
 		{
@@ -54,7 +54,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player player = Main.player[Projectile.owner];
 			if (Main.rand.Next(18) <= 9 && player.statLife != player.statLifeMax2) {

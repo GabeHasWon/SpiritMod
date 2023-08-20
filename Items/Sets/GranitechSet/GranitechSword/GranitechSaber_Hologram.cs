@@ -24,7 +24,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Technobrand");
+			// DisplayName.SetDefault("Technobrand");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -78,9 +78,13 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 				Projectile.Kill();
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => HitEffect(target.Center);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => HitEffect(target.Center);
 
-		public override void OnHitPvp(Player target, int damage, bool crit) => HitEffect(target.Center);
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
+		{
+			if (info.PvP)
+				HitEffect(target.Center);
+		}
 
 		public void HitEffect(Vector2 position)
 		{

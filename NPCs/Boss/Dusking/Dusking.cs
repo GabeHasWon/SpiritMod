@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusking");
+			// DisplayName.SetDefault("Dusking");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.ShadowFlame);
 
@@ -54,8 +54,8 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			Music = MusicLoader.GetMusicSlot(Mod,"Sounds/Music/DuskingTheme");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
+			=> NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * balance);
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
@@ -484,7 +484,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			npcLoot.Add(notExpertRule);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(ModContent.BuffType<Shadowflame>(), 150);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(ModContent.BuffType<Shadowflame>(), 150);
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryo Staff");
-			Tooltip.SetDefault("Casts a spread of icy magic bolts, which inflict 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
+			// DisplayName.SetDefault("Cryo Staff");
+			// Tooltip.SetDefault("Casts a spread of icy magic bolts, which inflict 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 			Item.staff[Item.type] = true;
 		}

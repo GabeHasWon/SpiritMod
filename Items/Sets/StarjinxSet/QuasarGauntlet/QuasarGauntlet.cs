@@ -18,8 +18,8 @@ namespace SpiritMod.Items.Sets.StarjinxSet.QuasarGauntlet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Quasar Glove");
-			Tooltip.SetDefault("Launches a ball of cosmic energy\nGrows in size and power with every enemy it hits \nRight click to recall it");
+			// DisplayName.SetDefault("Quasar Glove");
+			// Tooltip.SetDefault("Launches a ball of cosmic energy\nGrows in size and power with every enemy it hits \nRight click to recall it");
 		}
 
 		public override void SetDefaults()

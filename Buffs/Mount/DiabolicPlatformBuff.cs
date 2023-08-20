@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Mount
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Diabolic Platform");
-			Description.SetDefault("Command the Infernal");
+			// DisplayName.SetDefault("Diabolic Platform");
+			// Description.SetDefault("Command the Infernal");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

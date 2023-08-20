@@ -17,7 +17,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moon Jelly Lightbulb");
+			// DisplayName.SetDefault("Moon Jelly Lightbulb");
 			Main.projFrames[Type] = 6;
 			Main.projPet[Type] = true; 
 

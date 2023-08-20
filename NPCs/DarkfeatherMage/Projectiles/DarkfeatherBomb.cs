@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Darkfeather Bomb");
+			// DisplayName.SetDefault("Darkfeather Bomb");
         }
 
 		public override void SetDefaults()

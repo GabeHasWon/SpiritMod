@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Earth Slam");
+			// DisplayName.SetDefault("Earth Slam");
 		}
 
 		public override void SetDefaults()

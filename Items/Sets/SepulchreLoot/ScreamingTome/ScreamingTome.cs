@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Screaming Tome");
-			Tooltip.SetDefault("Creates orbiting skulls\nRelease to launch skulls");
+			// DisplayName.SetDefault("Screaming Tome");
+			// Tooltip.SetDefault("Creates orbiting skulls\nRelease to launch skulls");
 
 			Item.staff[Item.type] = false;
 		}
@@ -66,7 +66,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Screaming Tome");
+			// DisplayName.SetDefault("Screaming Tome");
 			Main.projFrames[Type] = 5;
 		}
 

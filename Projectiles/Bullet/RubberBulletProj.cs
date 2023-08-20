@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class RubberBulletProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Rubber Bullet");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Rubber Bullet");
 
 		public override void SetDefaults()
 		{
@@ -25,7 +25,7 @@ namespace SpiritMod.Projectiles.Bullet
 
 		public override Color? GetAlpha(Color lightColor) => Color.Cyan;
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height,
 				ModContent.DustType<RubberBulletDust>(), Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-3, 3));

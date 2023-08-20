@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scarab Food");
-			Tooltip.SetDefault("Summons a little Scarab companion");
+			// DisplayName.SetDefault("Scarab Food");
+			// Tooltip.SetDefault("Summons a little Scarab companion");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

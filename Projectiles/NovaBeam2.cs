@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Star Beam");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Beam");
 
 		public override void SetDefaults()
 		{
@@ -92,7 +92,7 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int i = 0; i < 4; ++i)
 				Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X + Main.rand.Next(-80, 80), target.Center.Y - 1400 + Main.rand.Next(-50, 50), 0, Main.rand.Next(8, 18), ModContent.ProjectileType<NovaBeam3>(), Projectile.damage / 5 * 2, Projectile.knockBack, Projectile.owner, 0f, 0f);

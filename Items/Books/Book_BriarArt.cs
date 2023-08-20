@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Books
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Flora of the Briar");
-            Tooltip.SetDefault("by Field Researcher Laywatts\nIt seems to be a page torn from a book about the Briar\nContains an intricate diagram of Briar ecology");
+            // DisplayName.SetDefault("Flora of the Briar");
+            // Tooltip.SetDefault("by Field Researcher Laywatts\nIt seems to be a page torn from a book about the Briar\nContains an intricate diagram of Briar ecology");
         }
 
         public override void SetDefaults()

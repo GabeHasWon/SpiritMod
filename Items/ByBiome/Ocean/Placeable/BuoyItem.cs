@@ -10,8 +10,8 @@ public class BuoyItem : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Small Buoy");
-		Tooltip.SetDefault("Must be placed atop water");
+		// DisplayName.SetDefault("Small Buoy");
+		// Tooltip.SetDefault("Must be placed atop water");
 	}
 
 	public override void SetDefaults()

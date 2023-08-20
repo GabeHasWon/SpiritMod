@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Infernal Ember");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Infernal Ember");
 
 		public override void SetDefaults()
 		{
@@ -42,6 +42,6 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 180);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 180);
 	}
 }

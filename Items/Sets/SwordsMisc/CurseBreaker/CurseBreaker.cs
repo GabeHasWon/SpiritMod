@@ -25,8 +25,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cursebreaker");
-			Tooltip.SetDefault("Every third swing curses nearby enemies\nStrike again to break the curse, dealing extra damage");
+			// DisplayName.SetDefault("Cursebreaker");
+			// Tooltip.SetDefault("Every third swing curses nearby enemies\nStrike again to break the curse, dealing extra damage");
 		}
 
 		public override void SetDefaults()
@@ -138,7 +138,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			}
 		}
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Cursebreaker");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cursebreaker");
 
 		public override void SetDefaults()
 		{
@@ -307,9 +307,9 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			}
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			hitDirection = Math.Sign(direction.X);
+			modifiers.HitDirectionOverride = Math.Sign(direction.X);
 
 			if (Empowered)
 			{
@@ -358,7 +358,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 		private float counter;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Curse");
+			// DisplayName.SetDefault("Curse");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -437,7 +437,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 		{
 			if (timeLeft > 4)
 			{
-				Target.StrikeNPC(Projectile.damage, 0, 0);
+				Target.SimpleStrikeNPC(Projectile.damage, 0, false, 0);
 
 				Projectile.NewProjectile(Projectile.GetSource_Death(), Target.Center, Vector2.Zero, ModContent.ProjectileType<CurseBreak>(), 0, 0, Projectile.owner, Target.whoAmI);
 				SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact, Projectile.Center);
@@ -449,7 +449,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Curse Break");
+			// DisplayName.SetDefault("Curse Break");
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -513,7 +513,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Curse Mark");
+			// DisplayName.SetDefault("Curse Mark");
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 	}

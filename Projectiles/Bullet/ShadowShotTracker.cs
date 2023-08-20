@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadow Tracker");
+			// DisplayName.SetDefault("Shadow Tracker");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -75,7 +75,7 @@ namespace SpiritMod.Projectiles.Bullet
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[0] = 1f;
 			Projectile.ai[1] = (float)target.whoAmI;

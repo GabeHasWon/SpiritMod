@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Material
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Energized Metal");
-			Tooltip.SetDefault("'It utilizes some kind of otherworldly power source'");
+			// DisplayName.SetDefault("Energized Metal");
+			// Tooltip.SetDefault("'It utilizes some kind of otherworldly power source'");
 
 			ItemID.Sets.ItemIconPulse[Item.type] = true;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;

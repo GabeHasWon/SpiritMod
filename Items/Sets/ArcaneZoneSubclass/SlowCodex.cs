@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.ArcaneZoneSubclass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Codex: Slow Zone");
-			Tooltip.SetDefault("Summons a slow zone at the cursor position\nSlow zones reduce enemy movement speed\nZones count as sentries");
+			// DisplayName.SetDefault("Arcane Codex: Slow Zone");
+			// Tooltip.SetDefault("Summons a slow zone at the cursor position\nSlow zones reduce enemy movement speed\nZones count as sentries");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/ArcaneZoneSubclass/SlowCodex_Glow");
         }
 

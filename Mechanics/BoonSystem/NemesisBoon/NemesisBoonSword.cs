@@ -43,7 +43,7 @@ namespace SpiritMod.Mechanics.BoonSystem.NemesisBoon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sword of Nemesis");
+			// DisplayName.SetDefault("Sword of Nemesis");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

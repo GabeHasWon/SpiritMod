@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch
             Item.vanity = true;
         }
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Vulture Matriarch Mask");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Vulture Matriarch Mask");
 
 		public override void UpdateEquip(Player player) => player.GetModPlayer<Vulture_Matriarch_Mask_Visuals>().maskEquipped = true;
 	}

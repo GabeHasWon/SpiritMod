@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.TideDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gatling Guppy");
-			Tooltip.SetDefault("Hitting enemies spawns temporary additional minifish that fire towards your cursor, and do not consume ammo\n'Strength in numbers'");
+			// DisplayName.SetDefault("Gatling Guppy");
+			// Tooltip.SetDefault("Hitting enemies spawns temporary additional minifish that fire towards your cursor, and do not consume ammo\n'Strength in numbers'");
         }
 		public override void SetDefaults()
 		{

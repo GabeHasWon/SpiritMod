@@ -5,7 +5,7 @@ namespace SpiritMod.Items.Material
 {
 	public class GlowRoot : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Glowroot");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Glowroot");
 
 		public override void SetDefaults()
 		{

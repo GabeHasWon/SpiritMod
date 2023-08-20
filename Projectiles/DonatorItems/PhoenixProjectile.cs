@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phoenix Essence");
+			// DisplayName.SetDefault("Phoenix Essence");
 		}
 
 		public override void SetDefaults()
@@ -90,7 +90,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			Main.dust[dust].scale = 0.6f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.Kill();
 			target.AddBuff(BuffID.OnFire, 300);

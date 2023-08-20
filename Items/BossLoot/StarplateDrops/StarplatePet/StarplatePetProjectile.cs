@@ -29,7 +29,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starplate Miniature");
+			// DisplayName.SetDefault("Starplate Miniature");
 			Main.projFrames[Projectile.type] = 2;
 			Main.projPet[Projectile.type] = true;
 		}

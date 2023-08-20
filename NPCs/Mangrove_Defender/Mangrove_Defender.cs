@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mangrove Defender");
+			// DisplayName.SetDefault("Mangrove Defender");
 			Main.npcFrameCount[NPC.type] = 14;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -283,7 +283,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (Main.netMode == NetmodeID.Server)
 				return;
@@ -291,14 +291,14 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			for (int i = 0; i < 4; i++)
 			{
 				float goreScale = 0.01f * Main.rand.Next(20, 70);
-				int a = Gore.NewGore(NPC.GetSource_OnHurt(null), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hitDirection * 3f, 0f), 386, goreScale);
+				int a = Gore.NewGore(NPC.GetSource_OnHurt(null), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hit.HitDirection * 3f, 0f), 386, goreScale);
 				Main.gore[a].timeLeft = 5;
 			}
 
 			for (int i = 0; i < 4; i++)
 			{
 				float goreScale = 0.01f * Main.rand.Next(20, 70);
-				int a = Gore.NewGore(NPC.GetSource_OnHurt(null), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hitDirection * 3f, 0f), 387, goreScale);
+				int a = Gore.NewGore(NPC.GetSource_OnHurt(null), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hit.HitDirection * 3f, 0f), 387, goreScale);
 				Main.gore[a].timeLeft = 5;
 			}
 

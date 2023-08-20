@@ -110,8 +110,8 @@ namespace SpiritMod.Buffs.Summon
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault(BuffName);
-			Description.SetDefault(BuffDescription);
+			// DisplayName.SetDefault(BuffName);
+			// Description.SetDefault(BuffDescription);
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

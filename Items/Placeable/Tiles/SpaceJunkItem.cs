@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable.Tiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Space Junk");
-			Tooltip.SetDefault("Can be used by the Extractinator\n'What's hidden behind this jumbled mess?'");
+			// DisplayName.SetDefault("Space Junk");
+			// Tooltip.SetDefault("Can be used by the Extractinator\n'What's hidden behind this jumbled mess?'");
 			ItemID.Sets.ExtractinatorMode[Item.type] = Item.type;
 		}
 
@@ -32,7 +32,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 			Item.createTile = ModContent.TileType<SpaceJunkTile>();
 		}
 
-		public override void ExtractinatorUse(ref int resultType, ref int resultStack)
+		public override void ExtractinatorUse(int extractinatorBlockType, ref int resultType, ref int resultStack)
 		{
 			if (Main.rand.NextBool(6))
 			{

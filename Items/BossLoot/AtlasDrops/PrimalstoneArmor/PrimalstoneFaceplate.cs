@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.PrimalstoneArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Primalstone Faceplate");
-			Tooltip.SetDefault("20% increased melee and magic damage\nIncreases maximum mana by 60\nReduces damage taken by 8%");
+			// DisplayName.SetDefault("Primalstone Faceplate");
+			// Tooltip.SetDefault("20% increased melee and magic damage\nIncreases maximum mana by 60\nReduces damage taken by 8%");
 		}
 
 		public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Armor.CowboySet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Outlaw's Hat");
+			// DisplayName.SetDefault("Outlaw's Hat");
 
 			ArmorIDs.Head.Sets.UseAltFaceHeadDraw[Item.headSlot] = true;
 		}

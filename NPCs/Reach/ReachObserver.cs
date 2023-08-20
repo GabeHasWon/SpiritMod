@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wildwood Watcher");
+			// DisplayName.SetDefault("Wildwood Watcher");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 6;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
@@ -57,12 +57,12 @@ namespace SpiritMod.NPCs.Reach
 				(!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 2.25f : 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GrassBlades, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 2.5f * hitDirection, -2.5f, 0, default, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GrassBlades, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 2.5f * hit.HitDirection, -2.5f, 0, default, .34f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -70,13 +70,13 @@ namespace SpiritMod.NPCs.Reach
 				for (int i = 0; i < 4; i++)
 				{
 					float goreScale = 0.01f * Main.rand.Next(20, 70);
-					int a = Gore.NewGore(NPC.GetSource_FromAI(), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hitDirection * 3f, 0f), 386, goreScale);
+					int a = Gore.NewGore(NPC.GetSource_FromAI(), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hit.HitDirection * 3f, 0f), 386, goreScale);
 					Main.gore[a].timeLeft = 5;
 				}
 				for (int i = 0; i < 4; i++)
 				{
 					float goreScale = 0.01f * Main.rand.Next(20, 70);
-					int a = Gore.NewGore(NPC.GetSource_FromAI(), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hitDirection * 3f, 0f), 387, goreScale);
+					int a = Gore.NewGore(NPC.GetSource_FromAI(), new Vector2(NPC.position.X, NPC.position.Y + (Main.rand.Next(-50, 10))), new Vector2(hit.HitDirection * 3f, 0f), 387, goreScale);
 					Main.gore[a].timeLeft = 5;
 				}
 			}

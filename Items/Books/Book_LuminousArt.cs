@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Books
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Glowing Ocean!");
-            Tooltip.SetDefault("By an unknown explorer\nIt seems to be a sketch of some strange ocurrance at coastal regions");
+            // DisplayName.SetDefault("The Glowing Ocean!");
+            // Tooltip.SetDefault("By an unknown explorer\nIt seems to be a sketch of some strange ocurrance at coastal regions");
         }
 
         public override void SetDefaults()

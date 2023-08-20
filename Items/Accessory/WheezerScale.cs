@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wheezer Scale");
-			Tooltip.SetDefault("Melee hits on foes may cause them to emit a cloud of poisonous gas\n5% increased melee speed");
+			// DisplayName.SetDefault("Wheezer Scale");
+			// Tooltip.SetDefault("Melee hits on foes may cause them to emit a cloud of poisonous gas\n5% increased melee speed");
 		}
 
 		public override void SetDefaults()

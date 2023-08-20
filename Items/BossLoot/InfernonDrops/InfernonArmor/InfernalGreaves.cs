@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pain Monger's Greaves");
-			Tooltip.SetDefault("Increases magic critical chance by 7% and reduces mana consumption by 10%");
+			// DisplayName.SetDefault("Pain Monger's Greaves");
+			// Tooltip.SetDefault("Increases magic critical chance by 7% and reduces mana consumption by 10%");
 		}
 		public override void SetDefaults()
 		{

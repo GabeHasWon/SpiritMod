@@ -215,7 +215,7 @@ public class SandPiper : ModNPC
 		}
 	}
 
-	public override void HitEffect(int hitDirection, double damage)
+	public override void HitEffect(NPC.HitInfo hit)
 	{
 		if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 		{
@@ -231,7 +231,7 @@ public class SandPiperItem : ModItem
 {
 	public override string Texture => base.Texture.Replace("Item", "");
 
-	public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Piper");
+	// public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Piper");
 
 	public override void SetDefaults()
 	{

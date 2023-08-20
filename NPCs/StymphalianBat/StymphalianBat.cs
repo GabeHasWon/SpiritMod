@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stymphalian Bat");
+			// DisplayName.SetDefault("Stymphalian Bat");
 			Main.npcFrameCount[NPC.type] = 7;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -76,7 +76,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		private int frame;
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(3))
 				target.AddBuff(BuffID.Bleeding, 3600);
@@ -246,12 +246,12 @@ namespace SpiritMod.NPCs.StymphalianBat
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.Marble) && spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.435f : 0f;
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hitDirection, -2.5f, 0, default, 0.27f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.27f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

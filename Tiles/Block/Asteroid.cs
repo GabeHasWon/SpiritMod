@@ -17,7 +17,6 @@ namespace SpiritMod.Tiles.Block
 			HitSound = SoundID.Tink;
 			Main.tileBlockLight[Type] = true;
 			MinPick = 40;
-			ItemDrop = ModContent.ItemType<AsteroidBlock>();
 		}
 
 		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => Main.LocalPlayer.HeldItem.type != ItemID.ReaverShark;

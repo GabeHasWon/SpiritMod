@@ -8,7 +8,7 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Withering Leaf");
+			// DisplayName.SetDefault("Withering Leaf");
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 

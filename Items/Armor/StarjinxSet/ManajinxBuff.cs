@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starlight Enchantment");
-			Description.SetDefault("Magic weapons spawn additional homing stars, and mana usage is drastically decreased");
+			// DisplayName.SetDefault("Starlight Enchantment");
+			// Description.SetDefault("Magic weapons spawn additional homing stars, and mana usage is drastically decreased");
 			Main.buffNoSave[Type] = true;
 		}
 		

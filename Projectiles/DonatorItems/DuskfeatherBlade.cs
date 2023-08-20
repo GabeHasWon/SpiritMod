@@ -22,7 +22,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Duskfeather Blade");
+			// DisplayName.SetDefault("Duskfeather Blade");
 			Main.projFrames[Projectile.type] = 8;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -272,7 +272,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (State == DuskfeatherState.Moving)
 				Stop();

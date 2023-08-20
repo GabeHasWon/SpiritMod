@@ -9,8 +9,8 @@ namespace SpiritMod.Buffs.DoT
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Affliction");
-			Description.SetDefault("Falling to pieces");
+			// DisplayName.SetDefault("Unstable Affliction");
+			// Description.SetDefault("Falling to pieces");
 			Main.buffNoTimeDisplay[Type] = false;
 		}
 

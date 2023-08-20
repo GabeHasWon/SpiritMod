@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Accessory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Long Fuse");
-			Tooltip.SetDefault("Explosives burn slower\nWorks while in the inventory");
+			// DisplayName.SetDefault("Long Fuse");
+			// Tooltip.SetDefault("Explosives burn slower\nWorks while in the inventory");
 		}
 
 		public override void SetDefaults()

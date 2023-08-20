@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glowplate Generator");
+			// DisplayName.SetDefault("Glowplate Generator");
 		}
 
 		public override void SetDefaults()

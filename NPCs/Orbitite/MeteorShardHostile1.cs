@@ -14,7 +14,7 @@ namespace SpiritMod.NPCs.Orbitite
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meteor Shard");
+			// DisplayName.SetDefault("Meteor Shard");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 		private const float PRE_LAUNCH_TIME = 30;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Comet");
+			// DisplayName.SetDefault("Comet");
 			Main.projFrames[Projectile.type] = 6;
 		}
 

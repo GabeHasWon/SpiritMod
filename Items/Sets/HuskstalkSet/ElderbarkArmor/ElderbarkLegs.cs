@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.HuskstalkSet.ElderbarkArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Elderbark Leggings");
+			// DisplayName.SetDefault("Elderbark Leggings");
 		}
 
 		public override void SetDefaults()

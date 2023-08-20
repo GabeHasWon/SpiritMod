@@ -6,7 +6,7 @@ namespace SpiritMod.Projectiles.Flail
 {
 	public class SpikeBall : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Spike Ball");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Spike Ball");
 
 		public override void SetDefaults()
 		{

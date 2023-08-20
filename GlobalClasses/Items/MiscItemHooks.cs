@@ -11,12 +11,12 @@ namespace SpiritMod.GlobalClasses.Items
 	{
 		private int[] FlowerBootsPlantSubIds = System.Array.Empty<int>();
 
-		public void Load(Mod mod) => On.Terraria.Player.DoBootsEffect_PlaceFlowersOnTile += Player_DoBootsEffect_PlaceFlowersOnTile;
+		public void Load(Mod mod) => Terraria.On_Player.DoBootsEffect_PlaceFlowersOnTile += Player_DoBootsEffect_PlaceFlowersOnTile;
 
 		/// <summary>
 		/// Stargrass hook detour for Flower Boots.
 		/// </summary>
-		private bool Player_DoBootsEffect_PlaceFlowersOnTile(On.Terraria.Player.orig_DoBootsEffect_PlaceFlowersOnTile orig, Player self, int X, int Y)
+		private bool Player_DoBootsEffect_PlaceFlowersOnTile(Terraria.On_Player.orig_DoBootsEffect_PlaceFlowersOnTile orig, Player self, int X, int Y)
 		{
 			Tile tile = Main.tile[X, Y];
 			if (!tile.HasTile && tile.LiquidAmount == 0 && WorldGen.SolidTile(X, Y + 1))

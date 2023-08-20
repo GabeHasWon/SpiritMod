@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles
 {
 	public class BrambleTrap : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bramble Trap");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bramble Trap");
 
 		public override void SetDefaults()
 		{
@@ -57,7 +57,7 @@ namespace SpiritMod.Projectiles
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (!stuck)
 			{

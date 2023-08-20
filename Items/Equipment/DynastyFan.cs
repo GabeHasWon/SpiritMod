@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Equipment
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dynasty Fan");
-			Tooltip.SetDefault("Launch yourself in any direction with a gust of wind");
+			// DisplayName.SetDefault("Dynasty Fan");
+			// Tooltip.SetDefault("Launch yourself in any direction with a gust of wind");
 
 			Item.staff[Item.type] = true;
 		}

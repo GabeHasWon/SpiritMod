@@ -24,12 +24,12 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 			_isHooked = Math.Max(_isHooked - 1, 0);
 		}
 
-		public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
+		public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
 		{
 			bool IsSummonDamage = projectile.minion || projectile.sentry || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type];
 			if (IsHooked && IsSummonDamage)
 			{
-				HookDamage += damage;
+				HookDamage += damageDone;
 			}
 		}
 

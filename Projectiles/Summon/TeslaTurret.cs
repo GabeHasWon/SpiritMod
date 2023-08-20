@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tesla Turret");
+			// DisplayName.SetDefault("Tesla Turret");
 			Main.projFrames[base.Projectile.type] = 4;
 		}
 

@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rosevine Staff");
-			Tooltip.SetDefault("Shoots a bouncing mass of vines and flowers");
+			// DisplayName.SetDefault("Rosevine Staff");
+			// Tooltip.SetDefault("Shoots a bouncing mass of vines and flowers");
 		}
 
 

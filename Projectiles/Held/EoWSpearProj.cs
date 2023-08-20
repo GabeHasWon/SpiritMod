@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Held
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rot Scourge");
+			// DisplayName.SetDefault("Rot Scourge");
 		}
 
 		public override void SetDefaults()
@@ -19,7 +19,7 @@ namespace SpiritMod.Projectiles.Held
 			AIType = ProjectileID.Trident;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(8)) {
 				int n = Main.rand.Next(1, 3);

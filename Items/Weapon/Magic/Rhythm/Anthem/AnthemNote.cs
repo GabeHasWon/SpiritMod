@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Weapon.Magic.Rhythm.Anthem
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Anthem Note");
+			// DisplayName.SetDefault("Anthem Note");
 		}
 
 		public override void SetDefaults()

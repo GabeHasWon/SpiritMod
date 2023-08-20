@@ -14,6 +14,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI.Chat;
 using Terraria.GameContent.Bestiary;
+using Microsoft.CodeAnalysis;
 
 namespace SpiritMod.NPCs.Town.Oracle
 {
@@ -42,7 +43,7 @@ namespace SpiritMod.NPCs.Town.Oracle
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Oracle");
+			// DisplayName.SetDefault("Oracle");
 
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true;
@@ -384,53 +385,44 @@ namespace SpiritMod.NPCs.Town.Oracle
 
 		public override List<string> SetNPCNameList() => new() { "Pythia", "Cassandra", "Chrysame", "Eritha", "Theoclea", "Hypatia", "Themistoclea", "Phemonoe" };
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
-				shop = true;
+				shopName = "Shop";
 		}
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
+		public override void AddShops()
 		{
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Sets.OlympiumSet.ArtemisHunt.ArtemisHunt>());
-			shop.item[nextSlot].shopCustomPrice = 25;
-			shop.item[nextSlot].shopSpecialCurrency = SpiritMod.OlympiumCurrencyID;
-			nextSlot++;
+			NPCShop shop = new NPCShop(Type);
 
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Sets.OlympiumSet.MarkOfZeus.MarkOfZeus>());
-			shop.item[nextSlot].shopCustomPrice = 25;
-			shop.item[nextSlot].shopSpecialCurrency = SpiritMod.OlympiumCurrencyID;
-			nextSlot++;
+			void AddOlympiumItem<T>(int price) where T : ModItem
+			{
+				shop.Add(new Item(ModContent.ItemType<T>())
+				{
+					shopCustomPrice = price,
+					shopSpecialCurrency = SpiritMod.OlympiumCurrencyID
+				});
+			}
 
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Sets.OlympiumSet.BetrayersChains.BetrayersChains>());
-			shop.item[nextSlot].shopCustomPrice = 25;
-			shop.item[nextSlot].shopSpecialCurrency = SpiritMod.OlympiumCurrencyID;
-			nextSlot++;
+			void VanillaOlympiumItem(int id, int price)
+			{
+				shop.Add(new Item(id)
+				{
+					shopCustomPrice = price,
+					shopSpecialCurrency = SpiritMod.OlympiumCurrencyID
+				});
+			}
 
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Sets.OlympiumSet.Eleutherios.Eleutherios>());
-			shop.item[nextSlot].shopCustomPrice = 20;
-			shop.item[nextSlot].shopSpecialCurrency = SpiritMod.OlympiumCurrencyID;
-			nextSlot++;
+			AddOlympiumItem<Items.Sets.OlympiumSet.ArtemisHunt.ArtemisHunt>(25);
+			AddOlympiumItem<Items.Sets.OlympiumSet.MarkOfZeus.MarkOfZeus>(25);
+			AddOlympiumItem<Items.Sets.OlympiumSet.BetrayersChains.BetrayersChains>(25);
+			AddOlympiumItem<Items.Sets.OlympiumSet.Eleutherios.Eleutherios>(20);
+			AddOlympiumItem<Items.Consumable.Potion.MirrorCoat>(2);
+			AddOlympiumItem<Items.Consumable.OliveBranch>(2);
+			AddOlympiumItem<OracleScripture>(1);
+			VanillaOlympiumItem(ItemID.PocketMirror, 10);
 
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Consumable.Potion.MirrorCoat>());
-			shop.item[nextSlot].shopCustomPrice = 2;
-			shop.item[nextSlot].shopSpecialCurrency = SpiritMod.OlympiumCurrencyID;
-			nextSlot ++;
-
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Consumable.OliveBranch>());
-			shop.item[nextSlot].shopCustomPrice = 2;
-			shop.item[nextSlot].shopSpecialCurrency = SpiritMod.OlympiumCurrencyID;
-			nextSlot++;
-
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<OracleScripture>());
-			shop.item[nextSlot].shopCustomPrice = 1;
-			shop.item[nextSlot].shopSpecialCurrency = SpiritMod.OlympiumCurrencyID;
-			nextSlot++;
-
-			shop.item[nextSlot].SetDefaults(ItemID.PocketMirror);
-			shop.item[nextSlot].shopCustomPrice = 10;
-			shop.item[nextSlot].shopSpecialCurrency = SpiritMod.OlympiumCurrencyID;
-			nextSlot++;
+			shop.Register();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2) => button = Language.GetTextValue("LegacyInterface.28");

@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -16,10 +17,9 @@ namespace SpiritMod.Tiles.Furniture.StreamScale
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.addTile(Type);
-			ItemDrop = ModContent.ItemType<Items.Placeable.Furniture.StreamScale.StreamScaleCandle>();
-			ModTranslation name = CreateMapEntryName();
+			LocalizedText name = CreateMapEntryName();
 			Main.tileLighted[Type] = true;
-			name.SetDefault("Stream Scale Candle");
+			// name.SetDefault("Stream Scale Candle");
 			AddMapEntry(new Color(56, 181, 203), name); ;
 		}
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

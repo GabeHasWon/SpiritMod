@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Reef Trident");
+			// DisplayName.SetDefault("Reef Trident");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -71,7 +71,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[0] = 0;
 			Projectile.ai[1] = target.whoAmI;

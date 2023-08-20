@@ -14,8 +14,8 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Briar Blossom");
-			Tooltip.SetDefault("Double tap {0} to ensnare an enemy at the cursor position\n4 second cooldown");
+			// DisplayName.SetDefault("Briar Blossom");
+			// Tooltip.SetDefault("Double tap {0} to ensnare an enemy at the cursor position\n4 second cooldown");
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

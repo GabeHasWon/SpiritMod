@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Arrow");
+			// DisplayName.SetDefault("Spirit Arrow");
 		}
 
 		public override void SetDefaults()

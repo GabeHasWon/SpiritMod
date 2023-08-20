@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Enums;
@@ -19,8 +20,8 @@ namespace SpiritMod.Items.Sets.FloatingItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sunken Treasure");
-			Tooltip.SetDefault("Right-click to open\n'Perhaps it is still full of valuable treasure''");
+			// DisplayName.SetDefault("Sunken Treasure");
+			// Tooltip.SetDefault("Right-click to open\n'Perhaps it is still full of valuable treasure''");
 		}
 		public override void SetDefaults()
 		{
@@ -79,8 +80,8 @@ namespace SpiritMod.Items.Sets.FloatingItems
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sunken Treasure");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sunken Treasure");
 			DustType = -1;
 			AddMapEntry(new Color(133, 106, 56), name);
 		}

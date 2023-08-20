@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rock Bolt");
+			// DisplayName.SetDefault("Rock Bolt");
 		}
 
 		public override void SetDefaults()

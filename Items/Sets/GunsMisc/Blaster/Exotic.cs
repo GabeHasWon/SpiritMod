@@ -42,7 +42,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Exotic Blaster");
+			// DisplayName.SetDefault("Exotic Blaster");
 			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, (int)StyleType.Count) { NotActuallyAnimating = true });
 		}
 
@@ -143,7 +143,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateHologram>()] < 2)
 					for (int i = 0; i < 2; i++)
 					{
-						Projectile proj = Projectile.NewProjectileDirect(Entity.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<StarplateHologram>(), damage, knockback, player.whoAmI);
+						Projectile proj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<StarplateHologram>(), damage, knockback, player.whoAmI);
 						proj.frame = i;
 					}
 			}

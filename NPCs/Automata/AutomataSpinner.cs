@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.Automata
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Trochmaton");
+			// DisplayName.SetDefault("Trochmaton");
 			Main.npcFrameCount[NPC.type] = 11;
             NPCID.Sets.TrailCacheLength[NPC.type] = 3;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -71,7 +71,7 @@ namespace SpiritMod.NPCs.Automata
 			frameTimer = reader.ReadInt32();
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(BuffID.BrokenArmor, 1800);
@@ -83,11 +83,11 @@ namespace SpiritMod.NPCs.Automata
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessory.GoldenApple>(), 85));
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 10; k++) {
-	            Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
-				 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .55f));
+	            Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
+				 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Wraith, 2.5f * hit.HitDirection, -2.5f, 0, default, Main.rand.NextFloat(.45f, .55f));
 			}
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
                 SoundEngine.PlaySound(SoundID.NPCDeath6 with { PitchVariance = 0.2f }, NPC.Center);

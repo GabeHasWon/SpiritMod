@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cartographer's Map");
-			Tooltip.SetDefault("Reveals a nearby portion of the minimap");
+			// DisplayName.SetDefault("Cartographer's Map");
+			// Tooltip.SetDefault("Reveals a nearby portion of the minimap");
 		}
 
 		public override void SetDefaults()

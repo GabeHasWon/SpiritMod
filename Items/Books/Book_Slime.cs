@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Books
 
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Where Do Slimes Come From?");
-            Tooltip.SetDefault("by Sorcerer Galen Arcturus");
+            // DisplayName.SetDefault("Where Do Slimes Come From?");
+            // Tooltip.SetDefault("by Sorcerer Galen Arcturus");
         }
 	}
 }

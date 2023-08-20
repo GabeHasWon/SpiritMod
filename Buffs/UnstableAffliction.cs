@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Affliction");
-			Description.SetDefault("Reduces movement speed by 10%");
+			// DisplayName.SetDefault("Unstable Affliction");
+			// Description.SetDefault("Reduces movement speed by 10%");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

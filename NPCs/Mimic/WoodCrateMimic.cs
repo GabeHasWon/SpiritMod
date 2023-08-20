@@ -12,7 +12,7 @@ namespace SpiritMod.NPCs.Mimic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wooden Crate Mimic");
+			// DisplayName.SetDefault("Wooden Crate Mimic");
 			Main.npcFrameCount[NPC.type] = 4;
 		}
 
@@ -95,7 +95,7 @@ namespace SpiritMod.NPCs.Mimic
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -105,7 +105,7 @@ namespace SpiritMod.NPCs.Mimic
 			}
 
 			for (int k = 0; k < 30; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.47f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(Terraria.GameContent.ItemDropRules.ItemDropRule.Common(ItemID.WoodenCrate));

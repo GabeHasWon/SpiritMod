@@ -9,7 +9,7 @@ namespace SpiritMod.Buffs.DoT
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryo Crush");
+			// DisplayName.SetDefault("Cryo Crush");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

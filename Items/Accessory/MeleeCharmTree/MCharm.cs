@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Accessory.MeleeCharmTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Marrow Pendant");
-			Tooltip.SetDefault("Reduces damage taken by 5%");
+			// DisplayName.SetDefault("Marrow Pendant");
+			// Tooltip.SetDefault("Reduces damage taken by 5%");
 		}
 
 

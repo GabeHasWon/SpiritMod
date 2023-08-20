@@ -41,13 +41,11 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Sepulchre Chest");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Sepulchre Chest");
 			AddMapEntry(new Color(120, 82, 49), name);
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ModContent.ItemType<SepulchreChest>();
-			ContainerName.SetDefault("Sepulchre Chest");
         }
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
@@ -67,15 +65,11 @@ namespace SpiritMod.Tiles.Furniture
                 return name + ": " + Main.chest[chest].name;
         }
 
-        public override void NumDust(int i, int j, bool fail, ref int num)
-        {
-            num = 1;
-        }
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             SoundEngine.PlaySound(SoundID.NPCHit4);
-            Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
             Chest.DestroyChest(i, j);
         }
 

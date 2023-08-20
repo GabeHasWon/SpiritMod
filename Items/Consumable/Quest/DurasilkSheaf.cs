@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Consumable.Quest
 	[Sacrifice(1)]
 	public class DurasilkSheaf : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Durasilk Sheaf");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Durasilk Sheaf");
 
 		public override void SetDefaults()
 		{

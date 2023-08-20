@@ -24,7 +24,7 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Atlas Jr.");
+			// DisplayName.SetDefault("Atlas Jr.");
 			Main.projFrames[Projectile.type] = 2;
 			Main.projPet[Projectile.type] = true;
 

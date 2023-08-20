@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.Dead_Scientist
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Undead Scientist");
+			// DisplayName.SetDefault("Undead Scientist");
 			Main.npcFrameCount[NPC.type] = 11;
 		}
 
@@ -121,7 +121,7 @@ namespace SpiritMod.NPCs.Dead_Scientist
 			npcLoot.AddCommon<Items.Sets.ThrownMisc.FlaskofGore.FlaskOfGore>(1, 108, 162);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -131,7 +131,7 @@ namespace SpiritMod.NPCs.Dead_Scientist
 			}
 
 			for (int k = 0; k < 20; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hitDirection, -2.5f, 0, default, Main.rand.NextFloat(0.5f, 1.2f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, default, Main.rand.NextFloat(0.5f, 1.2f));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

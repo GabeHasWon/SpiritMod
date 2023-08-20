@@ -28,7 +28,7 @@ namespace SpiritMod.NPCs.Tides
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mang-O War");
+			// DisplayName.SetDefault("Mang-O War");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 4;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -60,10 +60,10 @@ namespace SpiritMod.NPCs.Tides
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ShadowbeamStaff, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 1; i < 7; ++i)

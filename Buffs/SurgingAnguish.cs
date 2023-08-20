@@ -11,8 +11,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Surging Anguish");
-			Description.SetDefault("'Your mind and body are in great pain'");
+			// DisplayName.SetDefault("Surging Anguish");
+			// Description.SetDefault("'Your mind and body are in great pain'");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Weapon.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eel Tail");
-			Tooltip.SetDefault("Shoots a bolt of lightning that pauses occasionally and redirects to nearby foes\nSometimes electrifies hit foes");
+			// DisplayName.SetDefault("Eel Tail");
+			// Tooltip.SetDefault("Shoots a bolt of lightning that pauses occasionally and redirects to nearby foes\nSometimes electrifies hit foes");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Weapon/Magic/EelRod_Glow");
 		}
 

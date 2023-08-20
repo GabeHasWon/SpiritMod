@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Feral Shambler");
+			// DisplayName.SetDefault("Feral Shambler");
 			Main.npcFrameCount[NPC.type] = 16;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 
@@ -180,7 +180,7 @@ namespace SpiritMod.NPCs.Reach
 			npcLoot.Add(notDay);
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(10) && Main.expertMode)
 				target.AddBuff(148, 2000);
@@ -196,12 +196,12 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Reach/Reachman_Glow").Value, screenPos);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 30; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GrassBlades, 2.5f * hitDirection, -2.5f, 0, Color.White, 0.7f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 2.5f * hitDirection, -2.5f, 0, default, .34f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GrassBlades, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 2.5f * hit.HitDirection, -2.5f, 0, default, .34f);
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles.Bullet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spectre Bullet");
+			// DisplayName.SetDefault("Spectre Bullet");
 		}
 
 		public override void SetDefaults()
@@ -59,7 +59,7 @@ namespace SpiritMod.Projectiles.Bullet
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (!target.chaseable || target.lifeMax <= 5 || target.dontTakeDamage || target.friendly || target.immortal)
 				return;

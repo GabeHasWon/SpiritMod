@@ -62,7 +62,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 				Left = StyleDimension.FromPixelsAndPercent(-50, 1),
 				Top = StyleDimension.FromPixels(5)
 			};
-			closeButton.OnClick += CloseButton_OnClick;
+			closeButton.OnLeftClick += CloseButton_OnClick;
 			panelBackground.Append(closeButton);
 
 			UIImageButton pullButton = new UIImageButton(ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/SlotMachine/SlotMachineBaseFramer"))
@@ -72,7 +72,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 				Width = StyleDimension.FromPixels(40),
 				Height = StyleDimension.FromPixels(40),
 			};
-			pullButton.OnClick += PullButton_OnClick;
+			pullButton.OnLeftClick += PullButton_OnClick;
 			panelBackground.Append(pullButton);
 		}
 

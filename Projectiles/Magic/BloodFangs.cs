@@ -28,7 +28,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blood Fangs");
+			// DisplayName.SetDefault("Blood Fangs");
 			Main.projFrames[Type] = 2;
 			ProjectileID.Sets.TrailCacheLength[Type] = 4;
 			ProjectileID.Sets.TrailingMode[Type] = 2;
@@ -85,7 +85,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override bool? CanDamage() => (Counter + 1) == counterMax;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))
 				target.AddBuff(ModContent.BuffType<SurgingAnguish>(), 180);

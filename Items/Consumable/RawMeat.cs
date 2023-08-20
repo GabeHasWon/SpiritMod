@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override void SetStaticDefaults()
 		{ 
-			DisplayName.SetDefault("Raw Meat");
+			// DisplayName.SetDefault("Raw Meat");
 			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
 		}
 

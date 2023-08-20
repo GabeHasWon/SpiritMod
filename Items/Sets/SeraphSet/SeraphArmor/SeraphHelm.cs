@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SeraphSet.SeraphArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Seraph's Crown");
-			Tooltip.SetDefault("12% increased melee damage");
+			// DisplayName.SetDefault("Seraph's Crown");
+			// Tooltip.SetDefault("12% increased melee damage");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SeraphSet/SeraphArmor/SeraphHelm_Glow");
 		}
 

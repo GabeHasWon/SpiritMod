@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.GraniteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unstable Boltcaster");
-			Tooltip.SetDefault("Converts wooden arrows into Unstable Bolts which stick to hit enemies\nKilling stuck enemies causes them to explode into damaging energy wisps");
+			// DisplayName.SetDefault("Unstable Boltcaster");
+			// Tooltip.SetDefault("Converts wooden arrows into Unstable Bolts which stick to hit enemies\nKilling stuck enemies causes them to explode into damaging energy wisps");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 		public override void SetDefaults()

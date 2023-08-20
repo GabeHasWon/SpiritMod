@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 		internal override float MaxKnockback => 20f;
 		
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bass Slapper");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bass Slapper");
 
 		public override void Defaults()
         {

@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 		int frame2 = 1;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rabbit of Caerbannog");
+			// DisplayName.SetDefault("Rabbit of Caerbannog");
 			Main.projFrames[Projectile.type] = 8;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;

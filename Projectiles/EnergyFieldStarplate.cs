@@ -10,8 +10,8 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults()
-			=> DisplayName.SetDefault("Energizer Field");
+		/* public override void SetStaticDefaults()
+			=> DisplayName.SetDefault("Energizer Field"); */
 
 		public override void SetDefaults()
 		{

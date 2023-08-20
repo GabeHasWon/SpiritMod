@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Frigid Wall");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Frigid Wall");
 
 		public override void SetDefaults()
 		{
@@ -77,7 +77,7 @@ namespace SpiritMod.Projectiles.Magic
 			++Projectile.localAI[1];
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.Frostburn, 180, true);
 		}

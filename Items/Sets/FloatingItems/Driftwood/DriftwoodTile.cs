@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Driftwood Block");
+			// DisplayName.SetDefault("Driftwood Block");
 		}
 
 		public override void SetDefaults()
@@ -40,7 +40,6 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			Main.tileMerge[TileID.Sand][Type] = true;
 
 			AddMapEntry(new Color(138, 79, 45));
-			ItemDrop = ModContent.ItemType<DriftwoodTileItem>();
 		}
 
 		public override bool CanExplode(int i, int j) => true;

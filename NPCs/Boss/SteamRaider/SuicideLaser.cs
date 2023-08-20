@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Laser Bomber");
+			// DisplayName.SetDefault("Laser Bomber");
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
@@ -60,10 +60,10 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/LaserBase_Glow").Value, screenPos);
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 20; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hitDirection, -2.5f, 117, new Color(0, 255, 142), .6f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 117, new Color(0, 255, 142), .6f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
@@ -155,7 +155,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			NPC.rotation = direction9.ToRotation() + 1.57f + 3.14f;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			NPC.life = 0;
 			SoundEngine.PlaySound(SoundID.Item14, NPC.Center);

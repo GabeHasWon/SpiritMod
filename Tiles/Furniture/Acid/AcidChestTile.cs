@@ -40,13 +40,10 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Corrosive Chest");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(100, 122, 111), name);
 			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Containers };
-			ChestDrop = ModContent.ItemType<Items.Placeable.Furniture.Acid.AcidChest>();
-			ContainerName.SetDefault("Corrosive Chest");
 		}
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
@@ -74,7 +71,6 @@ namespace SpiritMod.Tiles.Furniture.Acid
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
 			Chest.DestroyChest(i, j);
 		}
 

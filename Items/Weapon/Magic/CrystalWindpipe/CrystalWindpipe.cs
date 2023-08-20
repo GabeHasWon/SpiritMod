@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Weapon.Magic.CrystalWindpipe
 {
 	public class CrystalWindpipe : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Crystal Windchimes");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Crystal Windchimes");
 
 		public override void SetDefaults()
 		{
@@ -77,7 +77,7 @@ namespace SpiritMod.Items.Weapon.Magic.CrystalWindpipe
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crystal Note");
+			// DisplayName.SetDefault("Crystal Note");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -150,7 +150,7 @@ namespace SpiritMod.Items.Weapon.Magic.CrystalWindpipe
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int index1 = 4; index1 < 31; ++index1)
 			{

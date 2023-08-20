@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.BriarDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Enchanted Leaf");
-			Tooltip.SetDefault("'Blessed with the magic of druids'");
+			// DisplayName.SetDefault("Enchanted Leaf");
+			// Tooltip.SetDefault("'Blessed with the magic of druids'");
 		}
 
 		public override void SetDefaults()

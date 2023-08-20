@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 		int counter = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fiery Phoenix");
+			// DisplayName.SetDefault("Fiery Phoenix");
 			Main.projFrames[Projectile.type] = 8;
 		}
 
@@ -69,7 +69,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.OnFire, 180);

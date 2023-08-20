@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pain Monger's Breasplate");
-			Tooltip.SetDefault("Increases maximum mana by 60");
+			// DisplayName.SetDefault("Pain Monger's Breasplate");
+			// Tooltip.SetDefault("Increases maximum mana by 60");
 		}
 
 		public override void SetDefaults()

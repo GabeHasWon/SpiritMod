@@ -7,7 +7,7 @@ namespace SpiritMod.NPCs.Tides
 {
 	class MangoLaser : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Mango Laser");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mango Laser");
 
 		public override void SetDefaults()
 		{

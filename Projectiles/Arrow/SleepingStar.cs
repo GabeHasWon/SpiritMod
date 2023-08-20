@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles.Arrow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sleeping Star");
+			// DisplayName.SetDefault("Sleeping Star");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -37,7 +37,7 @@ namespace SpiritMod.Projectiles.Arrow
 			tManager.CreateTrail(Projectile, new StandardColorTrail(purple ? new Color(218, 94, 255) : new Color(120, 217, 255)), new RoundCap(), new SleepingStarTrailPosition(), 8f, 250f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200, true);

@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.RodofDunes
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sand Warrior");
+			// DisplayName.SetDefault("Sand Warrior");
 			Main.projFrames[Type] = 4;
 		}
 

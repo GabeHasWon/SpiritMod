@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -40,8 +41,8 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = DustID.Grass;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Kelp");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Kelp");
 			AddMapEntry(new Color(24, 105, 25), name);
 		}
 

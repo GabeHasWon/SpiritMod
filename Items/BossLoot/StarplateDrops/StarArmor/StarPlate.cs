@@ -11,8 +11,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astralite Chestguard");
-			Tooltip.SetDefault("20% chance to not consume ammo\nIncreases ranged damage by 5%");
+			// DisplayName.SetDefault("Astralite Chestguard");
+			// Tooltip.SetDefault("20% chance to not consume ammo\nIncreases ranged damage by 5%");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

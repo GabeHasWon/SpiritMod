@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Accessory.SeaSnailVenom
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sea Snail Venom");
-			Tooltip.SetDefault("You leave a trail of mucus that envenoms enemies");
+			// DisplayName.SetDefault("Sea Snail Venom");
+			// Tooltip.SetDefault("You leave a trail of mucus that envenoms enemies");
 		}
 
 		public override void SetDefaults()

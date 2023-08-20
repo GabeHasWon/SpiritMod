@@ -4,6 +4,7 @@ using SpiritMod.Particles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -24,8 +25,8 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.RandomStyleRange = 3;
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Giant Crystal");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Giant Crystal");
 			DustType = DustID.DungeonSpirit;
 			AddMapEntry(new Color(110, 120, 255), name);
 		}

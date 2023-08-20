@@ -23,7 +23,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 		private static Color Orange = new Color(255, 98, 74);
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meteor Magus");
+			// DisplayName.SetDefault("Meteor Magus");
 			Main.npcFrameCount[NPC.type] = 6;
 		}
 
@@ -46,7 +46,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 			NPC.DeathSound = SoundID.NPCDeath51;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * 0.66f * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * 0.66f * balance);
 
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => false;
 
@@ -158,9 +158,8 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 			NPC.netUpdate = true;
 		}
 
-		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => knockback = (AiTimer < IDLETIME) ? knockback : 0;
-
-		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit) => knockback = (AiTimer < IDLETIME) ? knockback : 0;
+		public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers) => modifiers.Knockback *= (AiTimer < IDLETIME) ? 1 : 0;
+		public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers) => modifiers.Knockback *= (AiTimer < IDLETIME) ? 1 : 0;
 
 		private void PlayCastSound(Vector2 position)
 		{

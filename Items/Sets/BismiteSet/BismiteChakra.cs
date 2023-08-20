@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.BismiteSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Cutter");
-			Tooltip.SetDefault("Occasionally causes foes to receive 'Festering Wounds,' which deal more damage to enemies under half health");
+			// DisplayName.SetDefault("Bismite Cutter");
+			// Tooltip.SetDefault("Occasionally causes foes to receive 'Festering Wounds,' which deal more damage to enemies under half health");
 		}
 
 		public override void SetDefaults()

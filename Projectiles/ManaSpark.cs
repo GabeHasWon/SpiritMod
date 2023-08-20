@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Angelic Spark");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Angelic Spark");
 
 		public override void SetDefaults()
 		{

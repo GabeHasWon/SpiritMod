@@ -21,7 +21,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Infernal Blast");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Infernal Blast");
 
 		public override void SetDefaults()
 		{
@@ -104,7 +104,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			}
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.OnFire, 180, true);

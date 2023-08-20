@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Placeable.Walls
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sepulchre Wall");
+			// DisplayName.SetDefault("Sepulchre Wall");
 		}
 
 

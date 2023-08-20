@@ -21,7 +21,7 @@ namespace SpiritMod.NPCs.Spirit
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Tome");
+			// DisplayName.SetDefault("Ancient Tome");
 			Main.npcFrameCount[NPC.type] = 6;
 		}
 
@@ -70,7 +70,7 @@ namespace SpiritMod.NPCs.Spirit
 			return 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int i = 11; i < 14; ++i)

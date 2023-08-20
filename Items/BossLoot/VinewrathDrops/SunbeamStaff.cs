@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Photosynthestrike");
-			Tooltip.SetDefault("Shoots out a fast moving, homing solar bolt");
+			// DisplayName.SetDefault("Photosynthestrike");
+			// Tooltip.SetDefault("Shoots out a fast moving, homing solar bolt");
 
 			Item.staff[Item.type] = true;
 		}

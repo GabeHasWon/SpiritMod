@@ -16,6 +16,8 @@ using static SpiritMod.NPCUtils;
 using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Weapon.Thrown.PlagueVial;
+using SpiritMod.Items.Placeable.Furniture;
+using SpiritMod.Items.Armor.Masks;
 
 namespace SpiritMod.NPCs.Town
 {
@@ -26,7 +28,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bandit");
+			// DisplayName.SetDefault("Bandit");
 			Main.npcFrameCount[NPC.type] = 26;
 			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
 			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -68,7 +70,7 @@ namespace SpiritMod.NPCs.Town
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bandit1").Type);
@@ -77,7 +79,7 @@ namespace SpiritMod.NPCs.Town
 			}
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => Main.player.Any(x => x.active) && !NPC.AnyNPCs(NPCType<Rogue>()) && !NPC.AnyNPCs(NPCType<BoundRogue>());
+		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */ => Main.player.Any(x => x.active) && !NPC.AnyNPCs(NPCType<Rogue>()) && !NPC.AnyNPCs(NPCType<BoundRogue>());
 
 		public override List<string> SetNPCNameList() => new() { "Zane", "Carlos", "Tycho", "Damien", "Shane", "Daryl", "Shepard", "Sly" };
 
@@ -108,35 +110,34 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetChatButtons(ref string button, ref string button2) => button = Language.GetTextValue("LegacyInterface.28");
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton) {
-				shop = true;
+				shopName = "Shop";
 			}
 		}
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
+		public override void AddShops()
 		{
-			AddItem(ref shop, ref nextSlot, ItemID.Shuriken);
-			AddItem(ref shop, ref nextSlot, ItemType<RogueHood>());
-			AddItem(ref shop, ref nextSlot, ItemType<RoguePlate>());
-			AddItem(ref shop, ref nextSlot, ItemType<RoguePants>());
-            AddItem(ref shop, ref nextSlot, ItemType<RogueCrest>());
+			NPCShop shop = new NPCShop(Type);
+			shop.Add(ItemID.Shuriken);
+			shop.Add<RogueHood>();
+			shop.Add<RoguePlate>();
+			shop.Add<RoguePants>();
+			shop.Add<RogueCrest>();
+			shop.Add<EoWDagger>(Condition.CorruptWorld, Condition.DownedEaterOfWorlds);
+			shop.Add<BoCShuriken>(Condition.CrimsonWorld, Condition.DownedBrainOfCthulhu);
+			shop.Add<SkeletronHand>(Condition.DownedSkeletron);
+			shop.Add<PlagueVial>(Condition.Hardmode);
+			shop.Add<SwiftRune>();
+			shop.Add<AssassinMagazine>();
+			shop.Add<TargetCan>();
+			shop.Add<TargetBottle>();
+			shop.Add<TreasureChest>();
+			shop.Add<PsychoMask>();
 
-			if (!WorldGen.crimson)
-            	AddItem(ref shop, ref nextSlot, ItemType<EoWDagger>(), check: NPC.downedBoss2);
-			else
-				AddItem(ref shop, ref nextSlot, ItemType<BoCShuriken>(), check: NPC.downedBoss2);
-
-			AddItem(ref shop, ref nextSlot, ItemType<SkeletronHand>(), check: NPC.downedBoss3);
-			AddItem(ref shop, ref nextSlot, ItemType<PlagueVial>(), check: Main.hardMode);
-			AddItem(ref shop, ref nextSlot, ItemType<SwiftRune>());
-			AddItem(ref shop, ref nextSlot, ItemType<AssassinMagazine>());
-			AddItem(ref shop, ref nextSlot, ItemType<TargetCan>());
-			AddItem(ref shop, ref nextSlot, ItemType<TargetBottle>());
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Placeable.Furniture.TreasureChest>());
-            AddItem(ref shop, ref nextSlot, ItemType<Items.Armor.Masks.PsychoMask>());
-        }
+			shop.Register();
+		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{

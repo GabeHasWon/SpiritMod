@@ -23,121 +23,116 @@ using SpiritMod.Items.Sets.FlailsMisc.JadeDao;
 using SpiritMod.Items.ByBiome.Ocean.Misc.VolleyballContent;
 using SpiritMod.Items.ByBiome.Ocean.Placeable;
 using SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon;
+using SpiritMod.Items.Armor.FreemanSet;
+using SpiritMod.Items.Armor.Beachwear;
+using Terraria.GameContent.ItemDropRules;
+using SpiritMod.Items.Armor.CommandoSet;
+using Microsoft.CodeAnalysis;
+using SpiritMod.Items.Ammo;
+using SpiritMod.NPCs;
 
 namespace SpiritMod.GlobalClasses.NPCs;
 
 internal class VendorGlobalNPC : GlobalNPC
 {
-	public override void SetupShop(int type, Chest shop, ref int nextSlot)
+	public override void ModifyShop(NPCShop shop)
 	{
-		if (type == NPCID.Merchant)
+		if (shop.NpcType == NPCID.Merchant)
 		{
-			if (Main.halloween)
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<CandyBowl>(), false);
+			shop.Add<CandyBowl>(Condition.Halloween);
+			shop.Add<SpiritTiles.Furniture.FestivalLanternItem>(Condition.LanternNight);
+			shop.Add<BeachUmbrellaItem>(Condition.InBeach);
+			shop.Add<LoungeChairItem>(Condition.InBeach);
+		}
+		else if (shop.NpcType == NPCID.ArmsDealer)
+		{
+			shop.Add<SpiritItems.Ammo.Bullet.RubberBullet>();
+			shop.Add<Warhead>();
 
-			if (LanternNight.LanternsUp)
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritTiles.Furniture.FestivalLanternItem>(), false);
-
-			if (Main.LocalPlayer.ZoneBeach)
+			shop.Add<TinyLunazoaItem>(new Condition("Mods.SpiritMod.Conditions.HasMoonshot", () =>
 			{
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<BeachUmbrellaItem>(), false);
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<LoungeChairItem>(), false);
-			}
-		}
-		else if (type == NPCID.ArmsDealer)
-		{
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<SpiritItems.Ammo.Bullet.RubberBullet>(), false);
-			shop.item[nextSlot].SetDefaults(ModContent.ItemType<Warhead>(), false);
+				for (int i = 0; i < Main.maxPlayers; ++i)
+				{
+					Player plr = Main.player[i];
 
-			if (Main.player.Where(x => x.HasItem(ModContent.ItemType<Moonshot>())).Any())
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<TinyLunazoaItem>(), false);
+					if (plr.active && plr.HasItemInAnyInventory(ModContent.ItemType<Moonshot>()))
+						return true;
+				}
+				return false;
+			}));
 		}
-		else if (type == NPCID.Cyborg)
+		else if (shop.NpcType == NPCID.Cyborg)
 		{
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.FreemanSet.FreemanHead>(), false);
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.FreemanSet.FreemanBody>(), false);
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.FreemanSet.FreemanLegs>(), false);
+			shop.Add<FreemanHead>();
+			shop.Add<FreemanBody>();
+			shop.Add<FreemanLegs>();
 		}
-		else if (type == NPCID.Clothier)
+		else if (shop.NpcType == NPCID.Clothier)
 		{
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<TheCouch>(), false);
-			shop.item[nextSlot].SetDefaults(410, false);
-			shop.item[nextSlot++].shopCustomPrice = 200000;
-			shop.item[nextSlot].SetDefaults(411, false);
-			shop.item[nextSlot++].shopCustomPrice = 200000;
+			shop.Add<TheCouch>();
+			shop.Add(new Item(ItemID.MiningShirt) { shopCustomPrice = 200000 });
+			shop.Add(new Item(ItemID.MiningPants) { shopCustomPrice = 200000 });
 
-			if (MyWorld.downedRaider)
-			{
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.CommandoSet.CommandoHead>(), false);
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.CommandoSet.CommandoBody>(), false);
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.CommandoSet.CommandoLegs>(), false);
-			}
-			if (Main.LocalPlayer.ZoneBeach)
-			{
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.TintedGlasses>(), false);
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.BeachTowel>(), false);
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.SwimmingTrunks>(), false);
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.BikiniTop>(), false);
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Armor.Beachwear.BikiniBottom>(), false);
-			}
-		}
-		else if (type == NPCID.Dryad)
-		{
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Placeable.MusicBox.TranquilWindsBox>(), false);
+			shop.Add<TintedGlasses>(Condition.InBeach);
+			shop.Add<BeachTowel>(Condition.InBeach);
+			shop.Add<SwimmingTrunks>(Condition.InBeach);
+			shop.Add<BikiniTop>(Condition.InBeach);
+			shop.Add<BikiniBottom>(Condition.InBeach);
 
-			if (NPC.downedGolemBoss && Main.halloween)
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Placeable.Tiles.HalloweenGrass>(), false);
+			shop.Add<CommandoHead>(SpiritConditions.VoyagerDown);
+			shop.Add<CommandoBody>(SpiritConditions.VoyagerDown);
+			shop.Add<CommandoLegs>(SpiritConditions.VoyagerDown);
+		}
+		else if (shop.NpcType == NPCID.Dryad)
+		{
+			shop.Add<SpiritItems.Placeable.MusicBox.TranquilWindsBox>();
+			shop.Add<SpiritItems.Placeable.Tiles.HalloweenGrass>(Condition.DownedGolem, Condition.Halloween);
+			shop.Add<SpiritItems.Placeable.Tiles.BriarGrassSeeds>(SpiritConditions.InBriar);
+		}
+		else if (shop.NpcType == NPCID.Wizard)
+		{
+			shop.Add<SurrenderBell>();
+			shop.Add<PinStar>();
+		}
+		else if (shop.NpcType == NPCID.Steampunker)
+		{
+			shop.Add<SpiritSolution>();
+			shop.Add<OliveSolution>();
+		}
+		else if (shop.NpcType == NPCID.PartyGirl)
+		{
+			Condition downedMechAny = Condition.DownedMechBossAny;
+			shop.Add<SpiritItems.Sets.GunsMisc.Partystarter.PartyStarter>(downedMechAny);
+			shop.Add(new Item(ModContent.ItemType<SpiritItems.Placeable.MusicBox.NeonMusicBox>()) { shopCustomPrice = 50000 }, downedMechAny);
+			shop.Add<SpiritPainting>(downedMechAny);
 
-			if (Main.LocalPlayer.ZoneBriar())
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Placeable.Tiles.BriarGrassSeeds>(), false);
+			shop.Add<Volleyball>(Condition.InBeach);
 		}
-		else if (type == NPCID.Wizard)
+		else if (shop.NpcType == NPCID.WitchDoctor)
+			shop.Add<SpiritItems.Sets.ClubSubclass.Macuahuitl>();
+		else if (shop.NpcType == NPCID.Painter)
 		{
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SurrenderBell>(), false);
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<PinStar>(), false);
-		}
-		else if (type == NPCID.Steampunker)
-		{
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Ammo.SpiritSolution>());
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Ammo.OliveSolution>());
-		}
-		else if (type == NPCID.PartyGirl)
-		{
-			if (NPC.downedMechBossAny)
-			{
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Sets.GunsMisc.Partystarter.PartyStarter>(), false);
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<SpiritItems.Placeable.MusicBox.NeonMusicBox>(), false);
-				shop.item[nextSlot++].shopCustomPrice = 50000;
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritPainting>(), false);
-			}
+			shop.Add<Canvas>();
+			shop.Add<FloppaPainting>();
+			shop.Add<SatchelReward>();
 
-			if (Main.LocalPlayer.ZoneBeach)
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Volleyball>(), false);
+			shop.Add<ScrunklyPaintingItem>(new Condition("Mods.SpiritMod.Conditions.StarjinxDown", () =>
+				ModContent.GetInstance<SpiritNPCs.StarjinxEvent.StarjinxEventWorld>().StarjinxDefeated));
 		}
-		else if (type == NPCID.WitchDoctor)
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SpiritItems.Sets.ClubSubclass.Macuahuitl>());
-		else if (type == NPCID.Painter)
+		else if (shop.NpcType == NPCID.Demolitionist)
 		{
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Canvas>(), false);
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<FloppaPainting>(), false);
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SatchelReward>(), false);
+			shop.Add<LibertyItem>();
+			shop.Add<Warhead>();
+			shop.Add<ShortFuse>();
+			shop.Add<LongFuse>();
+		}
+		else if (shop.NpcType == NPCID.BestiaryGirl)
+		{
+			shop.Add<CagedMoonlight>(new Condition("Mods.SpiritMod.Conditions.HalfCompleteBestiary", () =>
+				Main.BestiaryDB.GetCompletedPercentByMod(Mod) >= 0.5f));
 
-			if (ModContent.GetInstance<SpiritNPCs.StarjinxEvent.StarjinxEventWorld>().StarjinxDefeated)
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<ScrunklyPaintingItem>(), false);
-		}
-		else if (type == NPCID.Demolitionist)
-		{
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<LibertyItem>(), false);
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Warhead>(), false);
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<ShortFuse>(), false);
-			shop.item[nextSlot++].SetDefaults(ModContent.ItemType<LongFuse>(), false);
-		}
-		else if (type == NPCID.BestiaryGirl)
-		{
-			if (Main.BestiaryDB.GetCompletedPercentByMod(Mod) >= 0.5f)
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<CagedMoonlight>(), false);
-			if (Main.BestiaryDB.GetCompletedPercentByMod(Mod) == 1)
-				shop.item[nextSlot++].SetDefaults(ModContent.ItemType<SuspiciousLookingMeatballs>(), false);
+			shop.Add<SuspiciousLookingMeatballs>(new Condition("Mods.SpiritMod.Conditions.FullCompleteBestiary", () =>
+				Main.BestiaryDB.GetCompletedPercentByMod(Mod) >= 1f));
 		}
 	}
 

@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Weapon.Magic.LuminanceSeacone
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Luminance Seacone");
-			Tooltip.SetDefault("Bursts into a cluster of luminescent bubbles\nLuminescent Bubbles deal increased damage after getting wet");
+			// DisplayName.SetDefault("Luminance Seacone");
+			// Tooltip.SetDefault("Bursts into a cluster of luminescent bubbles\nLuminescent Bubbles deal increased damage after getting wet");
 			Item.staff[Item.type] = true;
 		}
 

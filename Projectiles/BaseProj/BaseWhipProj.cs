@@ -29,14 +29,14 @@ namespace SpiritMod.Projectiles.BaseProj
 
 		public virtual void Defaults() { }
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(ModContent.BuffType<SummonTag3>(), 180, true);
 			Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
 			Projectile.damage = (int)(Projectile.damage * .5f);
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) { }
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) { }
 
 		public override bool PreDraw(ref Color lightColor)
 		{

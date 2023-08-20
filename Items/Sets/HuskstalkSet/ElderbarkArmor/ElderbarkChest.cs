@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.HuskstalkSet.ElderbarkArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Elderbark Breastplate");
+			// DisplayName.SetDefault("Elderbark Breastplate");
 
 			ArmorIDs.Body.Sets.NeedsToDrawArm[Item.bodySlot] = true;
 		}

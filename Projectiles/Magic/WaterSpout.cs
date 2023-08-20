@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.Magic
 {
 	public class WaterSpout : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Water Spout");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Water Spout");
 
 		public override void SetDefaults()
 		{

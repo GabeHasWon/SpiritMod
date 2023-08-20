@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vorpal Sword");
-			Tooltip.SetDefault("Shoots out an icy razor that clings to tiles upon hitting them");
+			// DisplayName.SetDefault("Vorpal Sword");
+			// Tooltip.SetDefault("Shoots out an icy razor that clings to tiles upon hitting them");
 
 		}
 
@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.EternalSwordTree
 			Item.shoot = ModContent.ProjectileType<DemonIceProj>();
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 180);

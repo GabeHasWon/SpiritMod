@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 {
 	public class BambooPotItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Stripped Bamboo Pot");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Stripped Bamboo Pot");
 
 		public override void SetDefaults()
 		{

@@ -21,7 +21,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wrathful Soul");
+			// DisplayName.SetDefault("Wrathful Soul");
 			Main.npcFrameCount[NPC.type] = 17;
 			NPC.gfxOffY = 50;
 			NPCHelper.ImmuneTo(this, BuffID.OnFire);
@@ -60,7 +60,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.damage = 60;
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */ => NPC.damage = 60;
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.09f : 0f;
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => NPC.ai[2] > rechargetime;
 		public override void AI()
@@ -231,7 +231,7 @@ namespace SpiritMod.NPCs.BlazingSkull
 			NPC.frame.Y = frameHeight * frame;
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(BuffID.OnFire, 180);
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.OnFire, 180);
 
 		public override void OnKill()
 		{

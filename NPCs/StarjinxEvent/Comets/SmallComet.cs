@@ -38,7 +38,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Small Starjinx Comet");
+			// DisplayName.SetDefault("Small Starjinx Comet");
 			NPCHelper.BuffImmune(Type, true);
 		}
 
@@ -248,7 +248,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
 			return originalSpawn - NPC.Center;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
         {
 			if (!Main.dedServ)
 				for (int i = 0; i < 8; i++)
@@ -262,7 +262,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int k = 0; k < NPC.lifeMax / 60; k++)
-					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(0, Main.rand.NextFloat(NPC.width / 2f)).RotatedByRandom(MathHelper.Pi), new Vector2(2 * hitDirection, Main.rand.NextFloat(-0.5f, 0.5f)), Mod.Find<ModGore>($"Gores/StarjinxEvent/Meteorite/Meteor_{Main.rand.Next(5)}").Type, Main.rand.NextFloat(.6f, 1f));
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + new Vector2(0, Main.rand.NextFloat(NPC.width / 2f)).RotatedByRandom(MathHelper.Pi), new Vector2(2 * hit.HitDirection, Main.rand.NextFloat(-0.5f, 0.5f)), Mod.Find<ModGore>($"Gores/StarjinxEvent/Meteorite/Meteor_{Main.rand.Next(5)}").Type, Main.rand.NextFloat(.6f, 1f));
 		}
 
         public float Timer => Main.GlobalTimeWrappedHourly + TimerOffset; //Used to offset the beam/sine wave motion

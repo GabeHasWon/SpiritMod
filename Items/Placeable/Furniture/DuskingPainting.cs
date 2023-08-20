@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dusking's Wrath");
-			Tooltip.SetDefault("'S. Kletony'");
+			// DisplayName.SetDefault("Dusking's Wrath");
+			// Tooltip.SetDefault("'S. Kletony'");
 		}
 
 		public override void SetDefaults()

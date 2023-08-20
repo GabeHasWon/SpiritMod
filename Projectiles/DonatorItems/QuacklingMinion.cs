@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Quackling Minion");
+			// DisplayName.SetDefault("Quackling Minion");
 			Main.projFrames[Projectile.type] = 4;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;

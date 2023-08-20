@@ -12,8 +12,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Seven Sins");
-			Tooltip.SetDefault("Occasionally shoots out a volley of flames");
+			// DisplayName.SetDefault("The Seven Sins");
+			// Tooltip.SetDefault("Occasionally shoots out a volley of flames");
 		}
 
 		public override void SetDefaults()

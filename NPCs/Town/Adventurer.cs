@@ -14,10 +14,10 @@ using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using static SpiritMod.NPCUtils;
 using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Accessory.Leather;
+using SpiritMod.Items.Sets.GunsMisc.PolymorphGun;
 
 namespace SpiritMod.NPCs.Town
 {
@@ -29,7 +29,6 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Adventurer");
 			Main.npcFrameCount[NPC.type] = 26;
 			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
 			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -70,9 +69,9 @@ namespace SpiritMod.NPCs.Town
 			});
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => Main.player.Any(x => x.active) && !NPC.AnyNPCs(NPCType<BoundAdventurer>()) && !NPC.AnyNPCs(NPCType<Adventurer>());
+		public override bool CanTownNPCSpawn(int numTownNPCs) => Main.player.Any(x => x.active) && !NPC.AnyNPCs(NPCType<BoundAdventurer>()) && !NPC.AnyNPCs(NPCType<Adventurer>());
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Adventurer1").Type);
@@ -119,35 +118,28 @@ namespace SpiritMod.NPCs.Town
 			return Main.rand.Next(dialogue);
 		}
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
+		public override void AddShops()
 		{
-			AddItem(ref shop, ref nextSlot, ItemID.TrapsightPotion, 5000);
-			AddItem(ref shop, ref nextSlot, ItemID.HunterPotion, 5000);
-			AddItem(ref shop, ref nextSlot, ItemID.Book, 200, NPC.downedBoss3);
-            AddItem(ref shop, ref nextSlot, ItemType<WWPainting>());
-            AddItem(ref shop, ref nextSlot, ItemType<SkullStick>(), 1000, Main.LocalPlayer.ZoneBriar());
-			AddItem(ref shop, ref nextSlot, ItemType<AncientBark>(), 200, Main.LocalPlayer.ZoneBriar());
-			AddItem(ref shop, ref nextSlot, ItemType<PinGreen>());
-			AddItem(ref shop, ref nextSlot, ItemType<PinYellow>());
-			AddItem(ref shop, ref nextSlot, ItemType<ExplorerTreads>());
-			AddItem(ref shop, ref nextSlot, ItemType<VitalityStone>(), check: Main.bloodMoon);
-            int glowStick = Main.moonPhase == 4 && !Main.dayTime ? ItemID.SpelunkerGlowstick : ItemID.StickyGlowstick;
-            AddItem(ref shop, ref nextSlot, glowStick);
-			switch (Main.moonPhase)
-            {
-                case 4 when !Main.dayTime:
-                    AddItem(ref shop, ref nextSlot, ItemID.CursedTorch);
-                    break;
-
-                case 7 when !Main.dayTime:
-                    AddItem(ref shop, ref nextSlot, ItemID.UltrabrightTorch);
-                    break;
-            }
-
-			AddItem(ref shop, ref nextSlot, ItemType<PinScarab>(), check: MyWorld.downedScarabeus);
-			AddItem(ref shop, ref nextSlot, ItemType<PinMoonjelly>(), check: MyWorld.downedMoonWizard);
-			AddItem(ref shop, ref nextSlot, ItemType<PinTree>(), check: Main.hardMode);
-			AddItem(ref shop, ref nextSlot, ItemType<Items.Sets.GunsMisc.PolymorphGun.PolymorphGun>(), check: NPC.downedMechBossAny);
+			NPCShop shop = new NPCShop(Type);
+			shop.Add(new Item(ItemID.TrapsightPotion) { shopCustomPrice = 5000 });
+			shop.Add(new Item(ItemID.HunterPotion) { shopCustomPrice = 5000 });
+			shop.Add(new Item(ItemID.Book) { shopCustomPrice = 200 }, Condition.DownedSkeletron);
+			shop.Add<WWPainting>();
+			shop.Add(new Item(ItemType<SkullStick>()) { shopCustomPrice = 1000 }, SpiritConditions.InBriar);
+			shop.Add(new Item(ItemType<AncientBark>()) { shopCustomPrice = 200 }, SpiritConditions.InBriar);
+			shop.Add<PinGreen>();
+			shop.Add<PinYellow>();
+			shop.Add<ExplorerTreads>();
+			shop.Add<VitalityStone>(Condition.BloodMoon);
+			shop.Add(ItemID.SpelunkerGlowstick, Condition.MoonPhases04, Condition.TimeNight);
+			shop.Add(ItemID.StickyGlowstick, Condition.TimeDay);
+			shop.Add(ItemID.CursedTorch, Condition.TimeNight, Condition.MoonPhases04);
+			shop.Add(ItemID.UltrabrightTorch, Condition.TimeNight, Condition.MoonPhases26);
+			shop.Add<PinScarab>(SpiritConditions.ScarabDown);
+			shop.Add<PinMoonjelly>(SpiritConditions.MJWDown);
+			shop.Add<PinTree>(Condition.Hardmode);
+			shop.Add<PolymorphGun>(Condition.DownedMechBossAny);
+			shop.Register();
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -184,10 +176,10 @@ namespace SpiritMod.NPCs.Town
 				button2 = "Quest Book";
 		}
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
-				shop = true;
+				shopName = "Shop";
 			else
 			{
 				Mechanics.QuestSystem.QuestManager.UnlockQuestBook();

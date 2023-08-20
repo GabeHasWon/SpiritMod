@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolite Bomb");
-			Tooltip.SetDefault("Occasionally inflicts 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
+			// DisplayName.SetDefault("Cryolite Bomb");
+			// Tooltip.SetDefault("Occasionally inflicts 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
 		}
 
 		public override void SetDefaults()
@@ -41,7 +41,7 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolite Bomb");
+			// DisplayName.SetDefault("Cryolite Bomb");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -67,7 +67,7 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0, 0, 0, default, .5f);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(ModContent.BuffType<CryoCrush>(), 240);
@@ -78,7 +78,7 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolite Bomb");
+			// DisplayName.SetDefault("Cryolite Bomb");
 			Main.projFrames[Projectile.type] = 3;
 		}
 
@@ -132,7 +132,7 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 			Projectile.scale -= .0025f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(ModContent.BuffType<CryoCrush>(), 240);

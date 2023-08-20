@@ -8,8 +8,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chitin");
-			Tooltip.SetDefault("'Gorgeous, iridescent beetle scales'");
+			// DisplayName.SetDefault("Chitin");
+			// Tooltip.SetDefault("'Gorgeous, iridescent beetle scales'");
 		}
 
 		public override void SetDefaults()

@@ -23,8 +23,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Old Cross");
-			Tooltip.SetDefault("Summons an ancient coffin full of angry skeletons");
+			// DisplayName.SetDefault("Old Cross");
+			// Tooltip.SetDefault("Summons an ancient coffin full of angry skeletons");
 		}
 
 		public override bool AltFunctionUse(Player player) => true;

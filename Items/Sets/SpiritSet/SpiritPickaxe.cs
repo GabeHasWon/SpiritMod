@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Pickaxe");
+			// DisplayName.SetDefault("Spirit Pickaxe");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritPickaxe_Glow");
 		}
 

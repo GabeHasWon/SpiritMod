@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Weapon.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glumshroom Staff");
-			Tooltip.SetDefault("Summons explosive mushrooms");
+			// DisplayName.SetDefault("Glumshroom Staff");
+			// Tooltip.SetDefault("Summons explosive mushrooms");
 		}
 
 		public override void SetDefaults()

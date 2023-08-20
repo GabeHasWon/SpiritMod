@@ -11,8 +11,8 @@ public class ForgottenKingStatueItem : ModItem
 {
 	public override void SetStaticDefaults()
 	{
-		DisplayName.SetDefault("Forgotten King Statue");
-		Tooltip.SetDefault("'A memorial of an ancient conquerer'");
+		// DisplayName.SetDefault("Forgotten King Statue");
+		// Tooltip.SetDefault("'A memorial of an ancient conquerer'");
 	}
 
 	public override void SetDefaults()

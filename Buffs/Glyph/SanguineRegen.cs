@@ -8,8 +8,8 @@ namespace SpiritMod.Buffs.Glyph
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sanguine Regeneration");
-			Description.SetDefault("You are rapidly gaining blood.");
+			// DisplayName.SetDefault("Sanguine Regeneration");
+			// Description.SetDefault("You are rapidly gaining blood.");
 			Main.buffNoSave[Type] = true;
 		}
 

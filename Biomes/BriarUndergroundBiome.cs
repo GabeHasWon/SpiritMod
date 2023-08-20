@@ -7,7 +7,7 @@ namespace SpiritMod.Biomes
 	internal class BriarUndergroundBiome : ModBiome
 	{
 		//public override ModUndergroundBackgroundStyle UndergroundBackgroundStyle => ModContent.Find<ModUndergroundBackgroundStyle>("SpiritMod/Biomes/SpiritUgBgStyle");
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Underground Briar");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Underground Briar");
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ReachUnderground");
 		public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("SpiritMod/ReachWaterStyle");
 

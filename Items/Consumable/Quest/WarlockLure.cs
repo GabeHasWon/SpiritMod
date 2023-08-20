@@ -7,6 +7,7 @@ using Terraria.ID;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
@@ -15,7 +16,7 @@ namespace SpiritMod.Items.Consumable.Quest
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unholy Magic");
+			// DisplayName.SetDefault("Unholy Magic");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 7));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
@@ -57,7 +58,7 @@ namespace SpiritMod.Items.Consumable.Quest
 			recipe.Register();
 		}
 
-		public static Recipe.Condition QuestCondition(int type) => new Recipe.Condition(Terraria.Localization.NetworkText.FromLiteral("During Unholy Undertaking"), (self) =>
+		public static Condition QuestCondition(int type) => new(Language.GetText("Mods.SpiritMod.Quests.Conditions.WarlockLure"), () =>
 		{
 			Mechanics.QuestSystem.Quest quest = QuestManager.GetQuest<ZombieOriginQuest>();
 			return (quest.CurrentTask is RetrievalTask task && task.GetItemID() == type);

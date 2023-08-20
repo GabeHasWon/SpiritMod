@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.CavernBandit
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cavern Bandit");
+			// DisplayName.SetDefault("Cavern Bandit");
 			Main.npcFrameCount[NPC.type] = 16;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -100,7 +100,7 @@ namespace SpiritMod.NPCs.CavernBandit
 			npcLoot.Add(ItemDropRule.Common(ItemID.Hook, 6));
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit4, NPC.Center);
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) 
@@ -108,9 +108,9 @@ namespace SpiritMod.NPCs.CavernBandit
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>($"CavernBanditGore{i}").Type, 1f);
 
 			for (int k = 0; k < 7; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 1.2f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 0.5f);
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 1.2f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.5f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Iron, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
 		}
 
@@ -155,7 +155,7 @@ namespace SpiritMod.NPCs.CavernBandit
 				{
 					IncrementFrame(5, 13, 7);
 					if (_frame == 9 && NPC.frameCounter == 4 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0)) //Damage target on specific frame
-						player.Hurt(PlayerDeathReason.LegacyDefault(), (int)NPC.damage * 2, NPC.direction * -1, false, false, false, -1);
+						player.Hurt(PlayerDeathReason.LegacyDefault(), NPC.damage * 2, NPC.direction * -1, false, false, -1, true);
 				}
 			}
 			else

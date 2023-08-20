@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Driftwood Wall");
+			// DisplayName.SetDefault("Driftwood Wall");
 		}
 
 		public override void SetDefaults()
@@ -50,7 +50,6 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 		public override void SetStaticDefaults()
 		{
 			Main.wallHouse[Type] = true;
-			ItemDrop = ModContent.ItemType<DriftwoodWallItem>();
 			AddMapEntry(new Color(87, 61, 44));
 		}
 	}

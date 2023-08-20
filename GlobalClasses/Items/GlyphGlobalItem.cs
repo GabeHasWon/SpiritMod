@@ -53,7 +53,7 @@ namespace SpiritMod.GlobalClasses.Items
 			}
 		}
 
-		public override bool PreReforge(Item item) => Glyph == GlyphType.None;
+		public override bool CanReforge(Item item) => Glyph == GlyphType.None;
 
 		private void AdjustStats(Item item)
 		{

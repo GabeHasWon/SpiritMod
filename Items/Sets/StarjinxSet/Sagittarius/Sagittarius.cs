@@ -15,8 +15,8 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Sagittarius
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sagittarius");
-			Tooltip.SetDefault("Creates a constellation behind you as you shoot\nConstellation stars will fire additional astral arrows towards the cursor");
+			// DisplayName.SetDefault("Sagittarius");
+			// Tooltip.SetDefault("Creates a constellation behind you as you shoot\nConstellation stars will fire additional astral arrows towards the cursor");
 			//SpiritGlowmask.AddGlowMask(item.type, Texture + "_glow");
 		}
 
@@ -55,7 +55,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Sagittarius
 					player.itemTime = 0;
 					player.itemAnimation = 0;
 					if (Main.netMode != NetmodeID.SinglePlayer)
-						NetMessage.SendData(MessageID.ItemAnimation, -1, -1, null, player.whoAmI);
+						NetMessage.SendData(MessageID.ShotAnimationAndSound, -1, -1, null, player.whoAmI);
 					return;
 				}
 
@@ -71,10 +71,10 @@ namespace SpiritMod.Items.Sets.StarjinxSet.Sagittarius
 				{
 					int type = ModContent.ProjectileType<SagittariusArrow>();
 					Vector2 shootDir = Vector2.UnitX.RotatedBy(player.AngleTo(Main.MouseWorld));
-					Projectile constellation = Projectile.NewProjectileDirect(Item.GetSource_ItemUse(Item), player.MountedCenter - shootDir.RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(70, 100), Vector2.Zero, ModContent.ProjectileType<SagittariusConstellation>(), (int)(Item.damage * 0.75f), Item.knockBack, player.whoAmI, 4, -1);
+					Projectile constellation = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.MountedCenter - shootDir.RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(70, 100), Vector2.Zero, ModContent.ProjectileType<SagittariusConstellation>(), (int)(Item.damage * 0.75f), Item.knockBack, player.whoAmI, 4, -1);
 
 					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Item/StarCast"), player.Center);
-					Projectile arrow = Projectile.NewProjectileDirect(Item.GetSource_ItemUse(Item), player.MountedCenter + (shootDir * 20), shootDir * Item.shootSpeed, type, Item.damage, Item.knockBack, player.whoAmI);
+					Projectile arrow = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.MountedCenter + (shootDir * 20), shootDir * Item.shootSpeed, type, Item.damage, Item.knockBack, player.whoAmI);
 
 					if (Main.netMode != NetmodeID.SinglePlayer)
 					{

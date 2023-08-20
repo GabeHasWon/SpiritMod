@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloodstone");
-			Tooltip.SetDefault("A bloody ward surrounds you, inflicting Blood Corruption to nearby enemies\nKilling enemies within the aura restores some life\nHearts are more likely to drop from enemies");
+			// DisplayName.SetDefault("Bloodstone");
+			// Tooltip.SetDefault("A bloody ward surrounds you, inflicting Blood Corruption to nearby enemies\nKilling enemies within the aura restores some life\nHearts are more likely to drop from enemies");
 		}
 
 		public override void SetDefaults()

@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Runescribe");
-			Description.SetDefault("Magic attacks may cause enemies to erupt into runes\n5% increased magic damage");
+			// DisplayName.SetDefault("Runescribe");
+			// Description.SetDefault("Magic attacks may cause enemies to erupt into runes\n5% increased magic damage");
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

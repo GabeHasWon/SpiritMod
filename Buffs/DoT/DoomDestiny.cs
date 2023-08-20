@@ -8,7 +8,7 @@ namespace SpiritMod.Buffs.DoT
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Star Cut");
+			// DisplayName.SetDefault("Star Cut");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

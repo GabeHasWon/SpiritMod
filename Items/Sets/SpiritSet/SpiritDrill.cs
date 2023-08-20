@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Drill");
+			// DisplayName.SetDefault("Spirit Drill");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritDrill_Glow");
 		}
 

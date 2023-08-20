@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BambooKendoBlade
 {
 	public class BambooKendoBlade : DashSwordItem
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Right click to dash forward");
+		// public override void SetStaticDefaults() => Tooltip.SetDefault("Right click to dash forward");
 
 		public override void SetDefaults()
 		{
@@ -102,7 +102,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BambooKendoBlade
 
 		public override string Texture => "SpiritMod/Items/Sets/DashSwordSubclass/BambooKendoBlade/BambooKendoBlade";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Kendo Blade");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Kendo Blade");
 
 		public override void SetDefaults()
 		{
@@ -147,9 +147,9 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BambooKendoBlade
 			Owner.ChangeDir(Projectile.velocity.X < 0 ? -1 : 1);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			base.OnHitNPC(target, damage, knockback, crit);
+			base.OnHitNPC(target, hit, damageDone);
 			SpiritMod.primitives.CreateTrail(new AnimePrimTrailTwo(target));
 		}
 

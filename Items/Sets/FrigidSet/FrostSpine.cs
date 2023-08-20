@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Sets.FrigidSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frigid Spine");
-			Tooltip.SetDefault("Occasionally shoots out a frost bolt");
+			// DisplayName.SetDefault("Frigid Spine");
+			// Tooltip.SetDefault("Occasionally shoots out a frost bolt");
 		}
 
 		public override void SetDefaults()

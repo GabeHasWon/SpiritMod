@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -30,8 +31,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			AdjTiles = new int[] { TileID.WorkBenches, TileID.Bookcases, TileID.Bottles };
 			DustType = DustID.Asphalt;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Statue of the Old Gods");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Statue of the Old Gods");
 			AddMapEntry(new Color(179, 146, 107), name);
 		}
 

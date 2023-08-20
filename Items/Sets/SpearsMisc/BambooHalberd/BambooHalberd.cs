@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Sets.SpearsMisc.BambooHalberd
 {
 	public class BambooHalberd : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Halberd");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Halberd");
 
 		public override void SetDefaults()
 		{

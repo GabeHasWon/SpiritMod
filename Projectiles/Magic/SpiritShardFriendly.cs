@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Essence");
+			// DisplayName.SetDefault("Spirit Essence");
 		}
 
 		public override void SetDefaults()

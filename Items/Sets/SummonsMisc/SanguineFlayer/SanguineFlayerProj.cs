@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 {
 	public class SanguineFlayerProj : ModProjectile, IDrawAdditive, IManualTrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Sanguine Flayer");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sanguine Flayer");
 
 		public override void SetDefaults()
 		{
@@ -147,7 +147,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 			_chainGravStrength = MathHelper.Lerp(_chainGravStrength, 1, 0.05f);
 			if (++Timer % HOOK_HITTIME == 0) //Strike hooked enemy periodically, lowering projectile damage
 			{
-				hookNPC.StrikeNPC(RandomizeDamage(Projectile.damage), Projectile.knockBack, Math.Sign(Owner.DirectionTo(Projectile.Center).X));
+				hookNPC.SimpleStrikeNPC(RandomizeDamage(Projectile.damage), Math.Sign(Owner.DirectionTo(Projectile.Center).X), false, Projectile.knockBack);
 				Projectile.damage = Math.Max((int)(Projectile.damage * 0.85f), 1);
 				if (!Main.dedServ)
 				{
@@ -204,7 +204,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 				baseDamage *= 0.75f;
 			Vector2 direction = Projectile.DirectionTo(Owner.Center);
 
-			hookNPC.StrikeNPC(RandomizeDamage(baseDamage), Projectile.knockBack, Math.Sign(Owner.DirectionTo(Projectile.Center).X), HighImpact);
+			hookNPC.SimpleStrikeNPC(RandomizeDamage(baseDamage), Math.Sign(Owner.DirectionTo(Projectile.Center).X), HighImpact, Projectile.knockBack);
 			if (!hookNPC.boss) //Pull ripped enemy to player, depending on kB resist
 				hookNPC.velocity += direction * hookNPC.knockBackResist * 10 * (HighImpact ? 1.5f : 1);
 
@@ -233,7 +233,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SanguineFlayer
 				Projectile.Kill();
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if(AiState == STATE_THROWOUT && Owner.channel) //Hook into npc on hit
 			{

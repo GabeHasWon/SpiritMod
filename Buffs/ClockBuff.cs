@@ -7,8 +7,8 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Time power");
-			Description.SetDefault("ZAWARUDO!!");
+			// DisplayName.SetDefault("Time power");
+			// Description.SetDefault("ZAWARUDO!!");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;

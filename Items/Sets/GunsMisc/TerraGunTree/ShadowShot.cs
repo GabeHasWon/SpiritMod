@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.TerraGunTree
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadeblaster");
-			Tooltip.SetDefault("Converts regular bullets into vile bullets\nRight-click to shoot out a cursed tracker that sticks to enemies\nVile bullets home onto tracked enemies");
+			// DisplayName.SetDefault("Shadeblaster");
+			// Tooltip.SetDefault("Converts regular bullets into vile bullets\nRight-click to shoot out a cursed tracker that sticks to enemies\nVile bullets home onto tracked enemies");
 		}
 
 		public override void SetDefaults()

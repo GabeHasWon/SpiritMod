@@ -27,9 +27,10 @@ namespace SpiritMod.Items.Accessory
 
 	public class IchorPendantEffect : SpiritPlayerEffect
 	{
-		public override void PlayerModifyHitNPC(Player player, Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+		public override void PlayerModifyHitNPC(Player player, Item item, NPC target, ref NPC.HitModifiers modifiers)
 		{
-			if (Main.rand.NextBool(10)) target.AddBuff(BuffID.Ichor, 180);
+			if (Main.rand.NextBool(10)) 
+				target.AddBuff(BuffID.Ichor, 180);
 		}
 	}
 }

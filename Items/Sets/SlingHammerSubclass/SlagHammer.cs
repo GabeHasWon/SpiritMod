@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slag Breaker");
-			Tooltip.SetDefault("Hold down and release to throw the Hammer like a boomerang\nCan be wound up to deal increased damage");
+			// DisplayName.SetDefault("Slag Breaker");
+			// Tooltip.SetDefault("Hold down and release to throw the Hammer like a boomerang\nCan be wound up to deal increased damage");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -58,7 +58,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slag Breaker");
+			// DisplayName.SetDefault("Slag Breaker");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}
@@ -86,7 +86,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			base.AI();
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.OnFire, 180);
@@ -101,16 +101,20 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			}
 		}
 
-		public override void SafeModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection) => damage = (int)(damage * 0.75f);
+		public override void SafeModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.FinalDamage *= 0.75f;
 
-		public override void ModifyHitPvp(Player target, ref int damage, ref bool crit) => damage = (int)(damage * 0.75f);
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{
+			if (modifiers.PvP)
+				modifiers.FinalDamage *= 0.75f;
+		}
 	}
 
 	public class SlagHammerProjReturning : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slag Breaker");
+			// DisplayName.SetDefault("Slag Breaker");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -127,7 +131,7 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player player = Main.player[Projectile.owner];
 			if (Projectile.tileCollide)
@@ -152,10 +156,10 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 			}
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (Projectile.tileCollide)
-				damage = (int)(damage * 1.5);
+				modifiers.FinalDamage *= 1.5f;
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)

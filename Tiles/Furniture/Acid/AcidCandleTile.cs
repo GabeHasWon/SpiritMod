@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -16,10 +17,9 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleOnTable1x1);
             TileObjectData.addTile(Type);
-			ItemDrop = ModContent.ItemType<Items.Placeable.Furniture.Acid.AcidCandle>();
-			ModTranslation name = CreateMapEntryName();
+			LocalizedText name = CreateMapEntryName();
 			Main.tileLighted[Type] = true;
-			name.SetDefault("Corrosive Candle");
+			// name.SetDefault("Corrosive Candle");
 			AddMapEntry(new Color(63, 204, 68), name); ;
 		}
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

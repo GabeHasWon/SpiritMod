@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blood Clump");
+			// DisplayName.SetDefault("Blood Clump");
 		}
 
 		//Warning : it's not my code. It's SpiritMod code. so i donnt fully understand it
@@ -25,11 +25,11 @@ namespace SpiritMod.Projectiles.Bullet
 			AIType = ProjectileID.Bullet;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (target.lifeMax <= 5 || target.dontTakeDamage || target.friendly || target.immortal)
 				return;
-			Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, Projectile.owner, Projectile.owner, (int)(damage * .2f));
+			Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, Projectile.owner, Projectile.owner, (int)(damageDone * .2f));
 		}
 
 		public override bool PreAI()

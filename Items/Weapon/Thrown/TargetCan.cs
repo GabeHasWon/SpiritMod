@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Weapon.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Target Can");
-			Tooltip.SetDefault("Hit it with a bullet in the air to do extremely high damage \n'Let's see what kind of a shot ya are, pilgrim!'");
+			// DisplayName.SetDefault("Target Can");
+			// Tooltip.SetDefault("Hit it with a bullet in the air to do extremely high damage \n'Let's see what kind of a shot ya are, pilgrim!'");
 		}
 		public override void SetDefaults()
 		{

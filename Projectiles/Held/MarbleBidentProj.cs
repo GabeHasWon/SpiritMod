@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles.Held
 {
 	public class MarbleBidentProj : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Bident");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gilded Bident");
 
 		public override void SetDefaults()
 		{
@@ -34,7 +34,7 @@ namespace SpiritMod.Projectiles.Held
 			newDust.noGravity = true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4) && !target.SpawnedFromStatue)
 				target.AddBuff(BuffID.Midas, 180);

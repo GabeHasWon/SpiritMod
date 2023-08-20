@@ -35,7 +35,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Atlas");
+			// DisplayName.SetDefault("Atlas");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			Main.npcFrameCount[NPC.type] = 6;
@@ -68,9 +68,9 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			});
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.85f * bossLifeScale);
+			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.85f * balance);
 			NPC.damage = (int)(NPC.damage * 0.65f);
 		}
 
@@ -326,10 +326,10 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			Main.dust[index2].noLight = false;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 5; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, hitDirection, -1f, 0, default, 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, hit.HitDirection, -1f, 0, default, 1f);
 
 			if (NPC.life <= 0) {
 				NPC.position = NPC.Center;

@@ -6,7 +6,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 {
 	public class GranitePickaxe : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Pickaxe");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Granite Pickaxe");
 
 		public override void SetDefaults()
 		{

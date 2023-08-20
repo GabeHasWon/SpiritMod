@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Clubs
 
 		public override void SafeSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Platinum Clobberer");
+			// DisplayName.SetDefault("Platinum Clobberer");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

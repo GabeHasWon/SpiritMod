@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Ammo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Olive Solution");
-			Tooltip.SetDefault("Used by the Clentaminator\nSpreads the Briar");
+			// DisplayName.SetDefault("Olive Solution");
+			// Tooltip.SetDefault("Used by the Clentaminator\nSpreads the Briar");
 		}
 
 		public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Drakomire Flame");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Drakomire Flame");
 
 		public override void SetDefaults()
 		{
@@ -57,6 +57,6 @@ namespace SpiritMod.Projectiles
 
 		public override bool OnTileCollide(Vector2 oldVelocity) => false;
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(24, 60);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(24, 60);
 	}
 }

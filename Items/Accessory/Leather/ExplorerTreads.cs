@@ -13,10 +13,10 @@ namespace SpiritMod.Items.Accessory.Leather
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Explorer's Treads");
-			Tooltip.SetDefault("50% chance to dodge traps and hazards\n" +
+			// DisplayName.SetDefault("Explorer's Treads");
+			/* Tooltip.SetDefault("50% chance to dodge traps and hazards\n" +
 				"Grants a short speed boost after touching traps or hazards\n" +
-				"'Makes exploring temples like a walk in the park'");
+				"'Makes exploring temples like a walk in the park'"); */
 		}
 
 		public override void SetDefaults()

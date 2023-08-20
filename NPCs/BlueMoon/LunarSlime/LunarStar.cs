@@ -15,7 +15,7 @@ namespace SpiritMod.NPCs.BlueMoon.LunarSlime
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lunar Star");
+			// DisplayName.SetDefault("Lunar Star");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

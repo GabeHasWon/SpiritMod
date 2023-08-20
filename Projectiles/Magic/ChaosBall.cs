@@ -10,7 +10,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chaos Ball");
+			// DisplayName.SetDefault("Chaos Ball");
 		}
 
 		public override void SetDefaults()

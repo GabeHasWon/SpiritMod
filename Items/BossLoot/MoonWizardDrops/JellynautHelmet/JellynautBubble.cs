@@ -12,9 +12,9 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops.JellynautHelmet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Jellynaut's Bubble");
+			// DisplayName.SetDefault("Jellynaut's Bubble");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/MoonWizardDrops/JellynautHelmet/JellynautBubble_Head_Glow");
-            Tooltip.SetDefault("Increases maximum mana by 20\nIncreases critical strike chance by 10%\nProvides a special set bonus with any magic robes");
+            // Tooltip.SetDefault("Increases maximum mana by 20\nIncreases critical strike chance by 10%\nProvides a special set bonus with any magic robes");
         }
         public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 			=> glowMaskColor = Color.White;

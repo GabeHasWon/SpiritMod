@@ -19,7 +19,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moonlight Preserver");
+			// DisplayName.SetDefault("Moonlight Preserver");
 			Main.projFrames[Projectile.type] = 10;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

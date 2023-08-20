@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Burst");
-			Tooltip.SetDefault("Turns regular bullets into Spirit Bullets");
+			// DisplayName.SetDefault("Spirit Burst");
+			// Tooltip.SetDefault("Turns regular bullets into Spirit Bullets");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritGun_Glow");
 		}
 

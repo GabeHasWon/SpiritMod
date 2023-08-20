@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.TideDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shankya");
-			Tooltip.SetDefault("Summons a whirlpool at the location of the cursor");
+			// DisplayName.SetDefault("Shankya");
+			// Tooltip.SetDefault("Summons a whirlpool at the location of the cursor");
 		}
 
 

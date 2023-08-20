@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.DonatorVanity
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meteor's Mask");
-			Tooltip.SetDefault("'Great for impersonating patrons!'");
+			// DisplayName.SetDefault("Meteor's Mask");
+			// Tooltip.SetDefault("'Great for impersonating patrons!'");
 
 			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 		}

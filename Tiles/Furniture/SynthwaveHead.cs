@@ -5,6 +5,7 @@ using System;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Items.Placeable.Furniture;
@@ -28,8 +29,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;
 			AdjTiles = new int[]{ TileID.LunarMonolith };
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Hyperspace Bust");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Hyperspace Bust");
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<SynthwaveHeadItem>());

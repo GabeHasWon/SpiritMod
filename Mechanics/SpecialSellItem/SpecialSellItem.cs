@@ -10,9 +10,9 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 	{
 		private static bool IsSellItem(Item item) => item.ModItem is ISpecialSellItem sellItem && sellItem.SellAmount() > 0;
 
-		public override void Load() => On.Terraria.Player.SellItem += OnSell;
+		public override void Load() => Terraria.On_Player.SellItem += OnSell;
 
-		public override void Unload() => On.Terraria.Player.SellItem -= OnSell;
+		public override void Unload() => Terraria.On_Player.SellItem -= OnSell;
 
 		public override void UpdateInventory(Item item, Player player)
 		{
@@ -35,14 +35,14 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 
 				int customPrice = specialSell.SellAmount();
 				ModItem currencyItem = ItemLoader.GetItem(specialSell.SellType());
-				string name = (specialSell.SellName() == string.Empty) ? currencyItem.DisplayName.GetDefault() : (item.ModItem as ISpecialSellItem).SellName();
+				string name = (specialSell.SellName() == string.Empty) ? currencyItem.DisplayName.Value : (item.ModItem as ISpecialSellItem).SellName();
 
 				priceLine.Text = $"Sell price: {customPrice} " + name + ((customPrice > 1) ? "s" : string.Empty);
 				priceLine.OverrideColor = specialSell.SellColor();
 			}
 		}
 
-		public static bool OnSell(On.Terraria.Player.orig_SellItem orig, Player self, Item item, int stack)
+		public static bool OnSell(Terraria.On_Player.orig_SellItem orig, Player self, Item item, int stack)
 		{
 			if (IsSellItem(item))
 			{

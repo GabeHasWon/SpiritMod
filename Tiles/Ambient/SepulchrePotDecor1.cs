@@ -4,6 +4,7 @@ using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -23,8 +24,8 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Pot");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Pot");
 			DustType = DustID.Wraith;
 			AddMapEntry(new Color(100, 100, 100), name);
 		}

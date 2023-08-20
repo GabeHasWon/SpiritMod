@@ -17,7 +17,7 @@ namespace SpiritMod.NPCs.Hookbat
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hookbat");
+			// DisplayName.SetDefault("Hookbat");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -125,10 +125,10 @@ namespace SpiritMod.NPCs.Hookbat
 			return ((spawnInfo.SpawnTileY < Main.rockLayer && !spawnInfo.Player.ZoneOverworldHeight) || (!Main.dayTime && spawnInfo.Player.ZoneOverworldHeight)) && !spawnInfo.PlayerInTown && !NPC.AnyNPCs(ModContent.NPCType<Hookbat>()) ? 0.01f : 0;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 10; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection * 2.5f, -1f, 0, default, Main.rand.NextFloat(.45f, 1.15f));
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{

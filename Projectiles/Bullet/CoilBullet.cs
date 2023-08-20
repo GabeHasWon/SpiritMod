@@ -9,7 +9,7 @@ namespace SpiritMod.Projectiles.Bullet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Coiled Bullet");
+			// DisplayName.SetDefault("Coiled Bullet");
 		}
 
 		public override void SetDefaults()
@@ -38,7 +38,7 @@ namespace SpiritMod.Projectiles.Bullet
 			Main.dust[dust].scale = 0.9f;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(24, 200);

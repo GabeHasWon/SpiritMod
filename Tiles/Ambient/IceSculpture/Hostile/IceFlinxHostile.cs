@@ -4,6 +4,7 @@ using SpiritMod.Items.Placeable.Tiles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -22,8 +23,8 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture.Hostile
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Frozen Snow Flinx");
+			LocalizedText name = CreateMapEntryName();
+			// name.SetDefault("Frozen Snow Flinx");
 			DustType = DustID.SnowBlock;
 			AddMapEntry(new Color(200, 200, 200), name);
 		}

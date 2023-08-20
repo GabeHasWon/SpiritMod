@@ -18,7 +18,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Bolt");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Electric Bolt");
 
 		public override void SetDefaults()
 		{
@@ -58,7 +58,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             for (int i = 0; i < 10; i++)
             {

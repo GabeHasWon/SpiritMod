@@ -9,7 +9,7 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 {
 	public class GastricAcid : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Gastric Acid");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gastric Acid");
 
 		public override void SetDefaults()
 		{

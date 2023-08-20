@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Halloween.SpookySet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spooky Scythe");
-			Tooltip.SetDefault("Launches homing pumpkins.");
+			// DisplayName.SetDefault("Spooky Scythe");
+			// Tooltip.SetDefault("Launches homing pumpkins.");
 		}
 
 		int counter = 0;

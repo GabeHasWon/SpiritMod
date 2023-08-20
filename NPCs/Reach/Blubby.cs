@@ -11,7 +11,7 @@ namespace SpiritMod.NPCs.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blubby");
+			// DisplayName.SetDefault("Blubby");
 			Main.npcFrameCount[NPC.type] = 2;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
@@ -43,11 +43,11 @@ namespace SpiritMod.NPCs.Reach
 			});
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 				for (int k = 0; k < 10; k++)
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Scarecrow, 2.75f * hitDirection, -2.75f, 0, new Color(), 0.6f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Scarecrow, 2.75f * hit.HitDirection, -2.75f, 0, new Color(), 0.6f);
 		}
 
 		public override void AI()

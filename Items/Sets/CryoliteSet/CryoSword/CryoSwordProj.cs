@@ -33,7 +33,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rimehowl");
+			// DisplayName.SetDefault("Rimehowl");
 			ProjectileID.Sets.TrailCacheLength[Type] = 10;
 			ProjectileID.Sets.TrailingMode[Type] = 2;
 		}
@@ -106,10 +106,9 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Main.player[Projectile.owner].Center, Projectile.Center) ? true : base.Colliding(projHitbox, targetHitbox);
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-			=> hitDirection = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.HitDirectionOverride = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Vector2 hitPos = target.getRect().ClosestPointInRect(Projectile.Center);
 			Player player = Main.player[Projectile.owner];

@@ -10,8 +10,8 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Thornshot");
-			Tooltip.SetDefault("Wooden arrows occasionally split into poisonous thorns");
+			// DisplayName.SetDefault("Thornshot");
+			// Tooltip.SetDefault("Wooden arrows occasionally split into poisonous thorns");
 		}
 
 		public override void SetDefaults()
@@ -47,7 +47,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 	{
 		public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.WoodenArrowFriendly;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Thorn Arrow");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Thorn Arrow");
 
 		public override void SetDefaults()
 		{
@@ -55,7 +55,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 			AIType = ProjectileID.WoodenArrowFriendly;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 			{

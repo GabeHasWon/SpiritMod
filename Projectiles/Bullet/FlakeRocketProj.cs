@@ -13,7 +13,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class FlakeRocketProj : BaseProj.BaseRocketProj, ITrailProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Flake Rocket");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Flake Rocket");
 
 		public override void SetDefaults()
 		{
@@ -45,7 +45,7 @@ namespace SpiritMod.Projectiles.Bullet
 			}
 		}
 
-		public override void AbstractHitNPC(NPC target, int damage, float knockback, bool crit) => target.AddBuff(ModContent.BuffType<CryoCrush>(), 300, true);
+		public override void AbstractHitNPC(NPC target, NPC.HitInfo mod) => target.AddBuff(ModContent.BuffType<CryoCrush>(), 300, true);
 
 		public override void ExplodeEffect()
 		{

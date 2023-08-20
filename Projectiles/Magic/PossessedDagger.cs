@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Possessed Dagger");
+			// DisplayName.SetDefault("Possessed Dagger");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -70,12 +70,12 @@ namespace SpiritMod.Projectiles.Magic
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[0] = 1f;
-			Projectile.ai[1] = (float)target.whoAmI;
+			Projectile.ai[1] = target.whoAmI;
 			target.AddBuff(ModContent.BuffType<BloodCorrupt>(), Projectile.timeLeft);
-			target.StrikeNPC(10, 0f, 0, crit);
+			target.SimpleStrikeNPC(10, 0, hit.Crit, 0f);
 			Projectile.velocity = (target.Center - Projectile.Center) * 0.75f;
 			Projectile.netUpdate = true;
 			Projectile.damage = 0;
@@ -84,7 +84,7 @@ namespace SpiritMod.Projectiles.Magic
 			Point[] array2 = new Point[num31];
 			int num32 = 0;
 
-			for (int n = 0; n < 1000; n++)
+			for (int n = 0; n < Main.maxProjectiles; n++)
 			{
 				if (n != Projectile.whoAmI && Main.projectile[n].active && Main.projectile[n].owner == Main.myPlayer && Main.projectile[n].type == Projectile.type && Main.projectile[n].ai[0] == 1f && Main.projectile[n].ai[1] == target.whoAmI)
 				{

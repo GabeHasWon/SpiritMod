@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chitin Leggings");
-			Tooltip.SetDefault("Increases movement speed by 7%");
+			// DisplayName.SetDefault("Chitin Leggings");
+			// Tooltip.SetDefault("Increases movement speed by 7%");
 		}
 		public override void SetDefaults()
 		{

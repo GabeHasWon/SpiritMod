@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Material
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spirit Koi");
-			Tooltip.SetDefault("'Is it past its expiry date?'");
+			// DisplayName.SetDefault("Spirit Koi");
+			// Tooltip.SetDefault("'Is it past its expiry date?'");
 		}
 
 		public override void SetDefaults()

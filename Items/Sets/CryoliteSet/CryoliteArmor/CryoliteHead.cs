@@ -10,8 +10,8 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolite Helmet");
-			Tooltip.SetDefault("8% increased melee speed");
+			// DisplayName.SetDefault("Cryolite Helmet");
+			// Tooltip.SetDefault("8% increased melee speed");
 		}
 
 		public override void SetDefaults()

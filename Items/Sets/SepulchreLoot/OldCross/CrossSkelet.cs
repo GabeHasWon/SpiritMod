@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("AngrySkeleton");
+			// DisplayName.SetDefault("AngrySkeleton");
 			Main.projFrames[Projectile.type] = 5;
 			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;

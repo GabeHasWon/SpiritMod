@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.KineticRailgun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tesla Cannon");
-			Tooltip.SetDefault("Consumes gel\nDoes more damage to single targets\n'Zap your enemies to oblivion!'");
+			// DisplayName.SetDefault("Tesla Cannon");
+			// Tooltip.SetDefault("Consumes gel\nDoes more damage to single targets\n'Zap your enemies to oblivion!'");
 		}
 
 		public override void SetDefaults()
@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.KineticRailgun
 		const int RANGE = 600;
 		const float CONE = 0.7f;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Tesla Cannon");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Tesla Cannon");
 
 		public override void SetDefaults()
 		{
@@ -170,7 +170,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.KineticRailgun
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int i = 0; i < 5; i++)
 			{
@@ -182,10 +182,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.KineticRailgun
 				Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<VortexExplosion>(), 0, 0);
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (targets.Count == 1)
-				damage *= 2;
+				modifiers.FinalDamage *= 2;
 		}
 
 		private bool AnglesWithinCone(float angle1, float angle2)
@@ -234,7 +234,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.KineticRailgun
 		int frameX = 0;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vortex Explosion");
+			// DisplayName.SetDefault("Vortex Explosion");
 			Main.projFrames[Projectile.type] = 7;
 		}
 

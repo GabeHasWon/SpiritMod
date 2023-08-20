@@ -13,7 +13,7 @@ namespace SpiritMod.NPCs.DeadeyeMarksman
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Deadeye Marksman");
+			// DisplayName.SetDefault("Deadeye Marksman");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.GoblinArcher];
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
@@ -66,18 +66,18 @@ namespace SpiritMod.NPCs.DeadeyeMarksman
 			return conditions ? 0.04f : 0f;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale) => NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale);
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * balance);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			for (int k = 0; k < 40; k++) {
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, .45f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, .45f);
 			}
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Archer2").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Archer1").Type, 1f);
 				for (int k = 0; k < 80; k++) {
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hitDirection, -1f, 0, default, .85f);
+					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, .85f);
 				}
 			}
 		}
@@ -92,7 +92,7 @@ namespace SpiritMod.NPCs.DeadeyeMarksman
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/DeadeyeMarksman/DeadArcher_Glow").Value, screenPos);
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Darkness, 180);

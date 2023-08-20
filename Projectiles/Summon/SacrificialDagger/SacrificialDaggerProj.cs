@@ -12,7 +12,7 @@ namespace SpiritMod.Projectiles.Summon.SacrificialDagger
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sacrificial Dagger");
+			// DisplayName.SetDefault("Sacrificial Dagger");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 			ProjectileID.Sets.MinionShot[Projectile.type] = true;
@@ -93,7 +93,7 @@ namespace SpiritMod.Projectiles.Summon.SacrificialDagger
             }
             return false;
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.ai[0] = 1f;
 			Projectile.ai[1] = (float)target.whoAmI;

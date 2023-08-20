@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starfleet");
-			Tooltip.SetDefault("Uses stars for ammo\nHold down for a bigger blast");
+			// DisplayName.SetDefault("Starfleet");
+			// Tooltip.SetDefault("Uses stars for ammo\nHold down for a bigger blast");
 		}
 
 		public override void SetDefaults()

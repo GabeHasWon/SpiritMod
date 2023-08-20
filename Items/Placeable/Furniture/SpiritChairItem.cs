@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Duskwood Chair");
+			// DisplayName.SetDefault("Duskwood Chair");
 		}
 
 

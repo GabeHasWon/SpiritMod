@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Consumable
 {
 	public class TubewormItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Tubeworm");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Tubeworm");
 
 		public override void SetDefaults()
 		{

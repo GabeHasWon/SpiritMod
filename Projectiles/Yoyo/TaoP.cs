@@ -11,7 +11,7 @@ namespace SpiritMod.Projectiles.Yoyo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Taoyo");
+			// DisplayName.SetDefault("Taoyo");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -26,7 +26,7 @@ namespace SpiritMod.Projectiles.Yoyo
 			return new Color(100, 100, 100, 100);
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.Confused, 240, true);

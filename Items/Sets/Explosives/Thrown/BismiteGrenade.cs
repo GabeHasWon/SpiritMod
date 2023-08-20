@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismite Grenade");
-			Tooltip.SetDefault("Explodes into a cloud of poison\nPoison lasts for 10 seconds");
+			// DisplayName.SetDefault("Bismite Grenade");
+			// Tooltip.SetDefault("Explodes into a cloud of poison\nPoison lasts for 10 seconds");
 		}
 
 		public override void SetDefaults()
@@ -55,7 +55,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 	{
 		public bool Exploded { get => Projectile.ai[0] != 0; set => Projectile.ai[0] = !value ? 0 : 1; }
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Grenade");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Grenade");
 
 		public override void SetDefaults()
 		{
@@ -107,7 +107,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 			return false;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(ModContent.BuffType<FesteringWounds>(), 600);
 

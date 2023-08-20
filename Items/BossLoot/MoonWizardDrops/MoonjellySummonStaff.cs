@@ -13,8 +13,8 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lunazoa Staff");
-			Tooltip.SetDefault("Summons a Moonlight Preserver\nMoonlight Preservers summon smaller jellyfish that explode\nOnly one Moonlight Preserver can exist at once\nUsing the staff multiple times takes up summon slots, but increases jellyfish spawn rates");
+			// DisplayName.SetDefault("Lunazoa Staff");
+			// Tooltip.SetDefault("Summons a Moonlight Preserver\nMoonlight Preservers summon smaller jellyfish that explode\nOnly one Moonlight Preserver can exist at once\nUsing the staff multiple times takes up summon slots, but increases jellyfish spawn rates");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 

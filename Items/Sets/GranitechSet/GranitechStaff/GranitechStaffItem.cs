@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechStaff
 {
 	public class GranitechStaffItem : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Focus M-II");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Focus M-II");
 
 		public override void SetDefaults()
 		{

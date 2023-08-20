@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.Spirit
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Scythe");
+			// DisplayName.SetDefault("Soul Scythe");
 			Main.projFrames[base.Projectile.type] = 6;
 		}
 

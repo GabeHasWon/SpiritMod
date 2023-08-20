@@ -24,7 +24,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 		private float dashDistance = 0f;
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mystic Clone");
+			// DisplayName.SetDefault("Mystic Clone");
 			Main.npcFrameCount[NPC.type] = 21;
 			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 

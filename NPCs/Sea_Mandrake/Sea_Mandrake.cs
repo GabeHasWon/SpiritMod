@@ -27,7 +27,7 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sea Mandrake");
+			// DisplayName.SetDefault("Sea Mandrake");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -168,7 +168,7 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 			if (validYDistance && Vector2.Distance(player.Center, NPC.Center) <= 120 && Collision.CanHitLine(NPC.Center, 0, 0, Main.player[NPC.target].Center, 0, 0))
 			{
 				player.AddBuff(BuffID.Darkness, 150);
-				player.Hurt(PlayerDeathReason.LegacyDefault(), (int)(NPC.damage / 1.5f), NPC.direction, false, false, false, -1);
+				player.Hurt(PlayerDeathReason.LegacyDefault(), (int)(NPC.damage / 1.5f), NPC.direction, false, false, -1, false);
 
 				for (int i = 0; i < 2; i++)
 				{
@@ -190,7 +190,7 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<LuminanceSeacone>(20);
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 			{
@@ -205,7 +205,7 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 			}
 
 			for (int k = 0; k < 18; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.AncientLight, 2.5f * hitDirection, -2.5f, 0, new Color(r, g, b), Main.rand.NextFloat(0.5f, 1.2f));
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.AncientLight, 2.5f * hit.HitDirection, -2.5f, 0, new Color(r, g, b), Main.rand.NextFloat(0.5f, 1.2f));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

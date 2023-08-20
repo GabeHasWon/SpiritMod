@@ -8,7 +8,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 {
 	public class Yikes : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Spore Spire");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Spore Spire");
 
 		public override void SetDefaults()
 		{
@@ -98,7 +98,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override Color? GetAlpha(Color lightColor) => new Color(92, 217, 61, 100);
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (Main.rand.NextBool(15))
 				target.AddBuff(BuffID.Poisoned, 200);

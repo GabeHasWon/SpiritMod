@@ -24,7 +24,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 		internal Projectile parent = null;
 		internal Chain chain = null;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Maneater");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Maneater");
 
 		public override void SetDefaults()
 		{

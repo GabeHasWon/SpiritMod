@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.Toucane
 
 		public override void AbstractSetStaticDefaults()
 		{
-			DisplayName.SetDefault("Toucan");
+			// DisplayName.SetDefault("Toucan");
 			Main.projFrames[Projectile.type] = 6;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;

@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Miracle Beam");
+			// DisplayName.SetDefault("Miracle Beam");
 		}
 
 		public override void SetDefaults()

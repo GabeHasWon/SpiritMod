@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Armor.PlagueDoctor
 	[AutoloadEquip(EquipType.Head)]
 	public class PlagueDoctorCowl : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Doctor's Mask");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Doctor's Mask");
 
 		public override void SetDefaults()
 		{

@@ -13,8 +13,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.AstralClock
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astral Clock");
-			Tooltip.SetDefault("Freezes time in a radius around the player \n60 second cooldown");
+			// DisplayName.SetDefault("Astral Clock");
+			// Tooltip.SetDefault("Freezes time in a radius around the player \n60 second cooldown");
 			Item.staff[Item.type] = true;
 		}
 

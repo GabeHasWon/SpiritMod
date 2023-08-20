@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Bullet
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Star");
+			// DisplayName.SetDefault("Arcane Star");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

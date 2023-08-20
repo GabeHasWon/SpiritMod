@@ -10,7 +10,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Infernon Skull");
+			// DisplayName.SetDefault("Infernon Skull");
 			Main.npcFrameCount[NPC.type] = 4;
 		}
 
@@ -137,7 +137,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 		public override void AI() => Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch);
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			if (Main.rand.NextBool(2))
 				target.AddBuff(BuffID.OnFire, 300);

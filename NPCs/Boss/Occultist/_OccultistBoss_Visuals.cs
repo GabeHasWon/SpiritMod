@@ -318,9 +318,6 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			for (int i = 0; i < 30; i++)
 				ParticleHandler.SpawnParticle(new GlowParticle(NPC.Center + Main.rand.NextVector2Circular(15, 20),
 					Main.rand.NextVector2Unit() * Main.rand.NextFloat(4), Color.Red, Main.rand.NextFloat(0.03f, 0.05f), 30));
-
-			//for (int j = 0; j < 12; j++)
-			//Gore.NewGore(npc.Center, Main.rand.NextVector2Unit() * Main.rand.NextFloat(6), ModContent.Find<ModGore>("grave" + Main.rand.Next(1, 5)));
 		}
 
 		#region Drawing

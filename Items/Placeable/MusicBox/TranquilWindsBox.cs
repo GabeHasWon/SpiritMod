@@ -7,7 +7,7 @@ namespace SpiritMod.Items.Placeable.MusicBox
 	[Sacrifice(1)]
 	public class TranquilWindsBox : ModItem
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Tranquil Winds)");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Tranquil Winds)");
 
 		public override void SetDefaults()
 		{
@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Placeable.MusicBox
 			Item.rare = ItemRarityID.LightRed;
 			Item.value = Terraria.Item.buyPrice(gold : 2);
 			Item.accessory = true;
-			Item.canBePlacedInVanityRegardlessOfConditions = true;
+			Item.hasVanityEffects = true;
 		}
 	}
 }

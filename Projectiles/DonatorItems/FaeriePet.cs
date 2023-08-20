@@ -21,7 +21,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Moonlit Faerie");
+			// DisplayName.SetDefault("Moonlit Faerie");
 			Main.projFrames[Projectile.type] = 6;
 			Main.projPet[Projectile.type] = true;
 		}
@@ -114,7 +114,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Faerie Bolt");
+			// DisplayName.SetDefault("Faerie Bolt");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

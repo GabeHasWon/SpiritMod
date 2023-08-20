@@ -9,7 +9,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glitter Dust");
+			// DisplayName.SetDefault("Glitter Dust");
 		}
 
 		public override void SetDefaults()

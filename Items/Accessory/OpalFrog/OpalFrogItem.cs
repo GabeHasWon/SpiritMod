@@ -9,10 +9,10 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Opal Frog");
-			Tooltip.SetDefault("15% increased hook speed" +
+			// DisplayName.SetDefault("Opal Frog");
+			/* Tooltip.SetDefault("15% increased hook speed" +
 				"\nAutomatically detatch from hooks upon reaching the end of the hook" +
-				"\nDisable accessory visibility to disable auto-unhooking");
+				"\nDisable accessory visibility to disable auto-unhooking"); */
 		}
 
 		public override void SetDefaults()

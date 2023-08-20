@@ -14,7 +14,7 @@ namespace SpiritMod.Projectiles.Bullet.Crimbine
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloody Amalgam");
+			// DisplayName.SetDefault("Bloody Amalgam");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

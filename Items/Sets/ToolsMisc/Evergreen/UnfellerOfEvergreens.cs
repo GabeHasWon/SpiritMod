@@ -7,8 +7,8 @@ namespace SpiritMod.Items.Sets.ToolsMisc.Evergreen
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Evergreen");
-			Tooltip.SetDefault("Plants saplings when it chops trees down");
+			// DisplayName.SetDefault("Evergreen");
+			// Tooltip.SetDefault("Plants saplings when it chops trees down");
 		}
 
 		public override void SetDefaults()

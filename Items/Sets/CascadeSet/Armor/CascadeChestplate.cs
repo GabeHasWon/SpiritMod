@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cascade Chestplate");
-			Tooltip.SetDefault("50% knockback resistance");
+			// DisplayName.SetDefault("Cascade Chestplate");
+			// Tooltip.SetDefault("50% knockback resistance");
 		}
 
 		public override void SetDefaults()

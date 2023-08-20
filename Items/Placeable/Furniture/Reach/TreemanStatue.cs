@@ -12,8 +12,8 @@ namespace SpiritMod.Items.Placeable.Furniture.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Statue of the Old Gods");
-			Tooltip.SetDefault("Provides the effects of a Workbench, Potion Crafting Station, and Bookcase\n'The Old Ones will protect you'");
+			// DisplayName.SetDefault("Statue of the Old Gods");
+			// Tooltip.SetDefault("Provides the effects of a Workbench, Potion Crafting Station, and Bookcase\n'The Old Ones will protect you'");
 		}
 
 		public override void SetDefaults()

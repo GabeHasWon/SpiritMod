@@ -8,7 +8,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Shard");
+			// DisplayName.SetDefault("Soul Shard");
 		}
 
 		public override void SetDefaults()

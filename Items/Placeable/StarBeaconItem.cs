@@ -9,8 +9,8 @@ namespace SpiritMod.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astralite Beacon");
-			Tooltip.SetDefault("'Powered by galactic energy'");
+			// DisplayName.SetDefault("Astralite Beacon");
+			// Tooltip.SetDefault("'Powered by galactic energy'");
 		}
 
 		public override void SetDefaults()

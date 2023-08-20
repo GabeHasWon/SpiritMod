@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.RunicSet.RunicArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Runic Hood");
-			Tooltip.SetDefault("Increases magic damage by 12% and movement speed by 5%");
+			// DisplayName.SetDefault("Runic Hood");
+			// Tooltip.SetDefault("Increases magic damage by 12% and movement speed by 5%");
 		}
 
 		public override void SetDefaults()

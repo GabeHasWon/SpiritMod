@@ -9,8 +9,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.ApostleArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Apostle's Headdress");
-			Tooltip.SetDefault("7% increased magic and ranged critical strike chance");
+			// DisplayName.SetDefault("Apostle's Headdress");
+			// Tooltip.SetDefault("7% increased magic and ranged critical strike chance");
 		}
 
 		public override void SetDefaults()

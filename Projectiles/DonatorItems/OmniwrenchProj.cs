@@ -7,7 +7,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 	{
 		public override string Texture => "SpiritMod/Items/DonatorItems/Omniwrench";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Omniwrench");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Omniwrench");
 
 		public override void SetDefaults()
 		{

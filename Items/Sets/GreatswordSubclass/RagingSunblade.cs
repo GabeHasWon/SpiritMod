@@ -16,8 +16,8 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Helios");
-			Tooltip.SetDefault("Hold and release to throw \nRight click to dash to it, destroying everything in your path");
+            // DisplayName.SetDefault("Helios");
+			// Tooltip.SetDefault("Hold and release to throw \nRight click to dash to it, destroying everything in your path");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
@@ -67,7 +67,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Helios");
+			// DisplayName.SetDefault("Helios");
         }
 
         public override void SetDefaults()
@@ -261,10 +261,10 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
             }
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			target.AddBuff(189, 180);
-			hitDirection = Math.Sign(target.Center.X - primCenter.X);
+			modifiers.HitDirectionOverride = Math.Sign(target.Center.X - primCenter.X);
 		}
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -330,7 +330,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Helios");
+			// DisplayName.SetDefault("Helios");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -408,7 +408,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
 	public class HeliosDash : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Helios");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Helios");
 
 		public override void SetDefaults()
 		{

@@ -11,8 +11,8 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starlight Sandals");
-			Tooltip.SetDefault("8% increased magic damage\n25% increased movement speed and fall speed\nIncreases jump speed");
+			// DisplayName.SetDefault("Starlight Sandals");
+			// Tooltip.SetDefault("8% increased magic damage\n25% increased movement speed and fall speed\nIncreases jump speed");
 		}
 
 		public override void SetDefaults()

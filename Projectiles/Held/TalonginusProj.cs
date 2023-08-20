@@ -19,7 +19,7 @@ namespace SpiritMod.Projectiles.Held
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Talonginus");
+			// DisplayName.SetDefault("Talonginus");
 			ProjectileID.Sets.TrailCacheLength[Type] = 4;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}

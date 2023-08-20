@@ -11,7 +11,7 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Whirltide Spout");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Whirltide Spout");
 
 		public override void SetDefaults()
 		{

@@ -122,7 +122,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			NPCCollision(target, 3, 0.5f, 2f);
 			OnCollideExtra();

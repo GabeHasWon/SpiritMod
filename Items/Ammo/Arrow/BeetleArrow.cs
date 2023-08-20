@@ -8,8 +8,8 @@ namespace SpiritMod.Items.Ammo.Arrow
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Beetle Arrow");
-			Tooltip.SetDefault("Successful hits on enemies reduces damage taken by 1%, maxing out at 15%");
+			// DisplayName.SetDefault("Beetle Arrow");
+			// Tooltip.SetDefault("Successful hits on enemies reduces damage taken by 1%, maxing out at 15%");
 		}
 
 		public override void SetDefaults()

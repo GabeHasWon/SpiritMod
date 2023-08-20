@@ -11,10 +11,10 @@ namespace SpiritMod.Items.Weapon.Thrown.PlagueVial
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Plague Vial");
-			Tooltip.SetDefault("A noxious mixture of flammable toxins\n" +
+			// DisplayName.SetDefault("Plague Vial");
+			/* Tooltip.SetDefault("A noxious mixture of flammable toxins\n" +
 				"Explodes into cursed embers upon hitting foes\n" +
-				"'We could make a class out of this!'");
+				"'We could make a class out of this!'"); */
 		}
 
 		public override void SetDefaults()
@@ -46,7 +46,7 @@ namespace SpiritMod.Items.Weapon.Thrown.PlagueVial
 	{
 		public override string Texture => "SpiritMod/Items/Weapon/Thrown/PlagueVial/PlagueVial";
 
-		public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Vial");
+		// public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Vial");
 
 		public override void SetDefaults()
 		{
@@ -76,7 +76,7 @@ namespace SpiritMod.Items.Weapon.Thrown.PlagueVial
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Plague Vial");
+			// DisplayName.SetDefault("Plague Vial");
 			Main.projFrames[Projectile.type] = 5;
 		}
 

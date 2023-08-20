@@ -14,8 +14,8 @@ namespace SpiritMod.Items.Sets.ArcaneZoneSubclass
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Arcane Codex: Fortification Zone");
-			Tooltip.SetDefault("Summons a fortification zone at the cursor position\nFortification zones increase player defense and damage resistance while standing inside\nZones count as sentries");
+			// DisplayName.SetDefault("Arcane Codex: Fortification Zone");
+			// Tooltip.SetDefault("Summons a fortification zone at the cursor position\nFortification zones increase player defense and damage resistance while standing inside\nZones count as sentries");
             SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/ArcaneZoneSubclass/DefenseCodex_Glow");
         }
 

@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows.Diamond_Bow
 		public Diamond_Arrow() : base(Color.White, DustID.GemDiamond) { }
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Diamond Arrow");
+			// DisplayName.SetDefault("Diamond Arrow");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
