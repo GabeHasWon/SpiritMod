@@ -86,7 +86,7 @@ namespace SpiritMod.Projectiles
 			Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, -1.57f * Owner.direction);
 		}
 
-		public override bool? CanDamage() => !Owner.channel && (Charge > 0);
+		public override bool? CanDamage() => (!Owner.channel && (Charge > 0)) ? null : false;
 
 		public override bool? CanCutTiles() => false;
 		
@@ -99,7 +99,7 @@ namespace SpiritMod.Projectiles
 			if (pTarget is NPC target && (target.Distance(Owner.Center) < 800))
 			{
 				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<MoonThunder>(), 20, 8);
-				proj.friendly = true;
+				proj.friendly = false;
 				proj.hostile = false;
 				proj.netUpdate = true;
 

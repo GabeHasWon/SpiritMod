@@ -81,7 +81,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Jem
 			SpiritMod.JemShaders.Parameters["opacity2"].SetValue(0.3f + (sineAdd / 10));
 			SpiritMod.JemShaders.CurrentTechnique.Passes[0].Apply();
 
-			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value, position + new Vector2(TextureAssets.Item[Item.type].Value.Width / 2, TextureAssets.Item[Item.type].Value.Height / 2), null, Color.White, 0f, new Vector2(50, 50), (1.1f + (sineAdd / 9)) * scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Effects/Masks/Extra_49").Value, position, null, Color.White, 0f, new Vector2(50, 50), (1.1f + (sineAdd / 9)) * scale, SpriteEffects.None, 0f);
 			spriteBatch.End();
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Main.UIScaleMatrix);
 

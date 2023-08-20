@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Sets.BriarDrops
 				float lerp = (float)Math.Sin(Main.timeForVisualEffects / (50f + (i * 5)) % Math.PI) * 1.3f;
 				Color color = Item.GetAlpha(new Color(152, 250, 132, 0)) * lerp;
 
-				spriteBatch.Draw(texture, position + (frame.Size() / 2 * scale), null, color, 0, texture.Size() / 2, scale * lerp, SpriteEffects.None, 0);
+				spriteBatch.Draw(texture, position, null, color, 0, texture.Size() / 2, scale * lerp, SpriteEffects.None, 0);
 			}
 			return true;
 		}

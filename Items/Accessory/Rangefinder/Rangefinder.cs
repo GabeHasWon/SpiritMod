@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.Rangefinder
 {
+	[Sacrifice(1)]
 	public class Rangefinder : ModItem
 	{
 		public override void SetStaticDefaults()

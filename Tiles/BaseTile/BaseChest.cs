@@ -83,6 +83,8 @@ namespace SpiritMod.Tiles.BaseTile
 			return name + ": " + Main.chest[chest].name;
 		}
 
+		public override LocalizedText DefaultContainerName(int frameX, int frameY) => this.GetLocalization("MapEntry");
+
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;

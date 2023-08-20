@@ -7805,10 +7805,7 @@ PoolNoodle: {
 
 CactusStaff: {
 	DisplayName: Cactus Staff
-	Tooltip:
-		'''
-		Summons cactus walls to protect you
-		'''
+	Tooltip: Summons cactus walls to protect you
 }
 
 CrystalWindpipe: {
