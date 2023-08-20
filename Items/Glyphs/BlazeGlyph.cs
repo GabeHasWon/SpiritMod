@@ -8,14 +8,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Blaze;
 		public override Color Color => new(233, 143, 26);
-		public override string Effect => "Blazing";
-		public override string Addendum => "Dealing damage sets you ablaze";
-
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Blaze Glyph");
-			// Tooltip.SetDefault($"{Addendum}\n+25% damage and +10% critical strike chance");
-		}
 
 		public override void SetDefaults()
 		{

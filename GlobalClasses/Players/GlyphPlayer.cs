@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs.Glyph;
 using SpiritMod.GlobalClasses.Items;
+using SpiritMod.Items;
 using SpiritMod.Items.Glyphs;
 using SpiritMod.Particles;
 using SpiritMod.Projectiles.Glyph;
@@ -36,7 +37,10 @@ namespace SpiritMod.GlobalClasses.Players
 						const int chaosRate = 60 * 7;
 
 						if ((Player.miscCounterNormalized % chaosRate) == 0)
+						{
 							Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().SetGlyph(Player.HeldItem, ChaosGlyph.Randomize(Glyph));
+							Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().randomGlyph = true;
+						}
 					} //Chaos glyph effect
 
 					Glyph = Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().Glyph;
@@ -105,67 +109,45 @@ namespace SpiritMod.GlobalClasses.Players
 		}
 
 		#region hit overrides
-		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => ModifyHitAnything(target, null, ref modifiers.FinalDamage);
-		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) => ModifyHitAnything(target, proj, ref modifiers.FinalDamage);
+		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => SmartModifyHitAnything(target, item, null, ref modifiers);
 
-		public override void OnHurt(Player.HurtInfo info)
-		{
-			OnHitPlayer(Player, null, info);
-		}
+		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) => SmartModifyHitAnything(target, null, proj, ref modifiers);
 
-		public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
-		{
-			ModifyHitAnything(Player, null, ref modifiers.FinalDamage);
+		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone) => SmartHitAnything(target, item, null, hit, damageDone);
 
-			if (veilCounter > 0)
-			{
-				float resistance = .5f; //resist 50% damage at full charge
-				modifiers.FinalDamage *= resistance * veilCounter;
-			}
-		}
-
-		private void ModifyHitAnything(Entity target, Projectile proj, ref StatModifier finalDamage)
-		{
-			if (Glyph == GlyphType.Rage)
-			{
-				if (frenzyDamage > 0)
-				{
-					finalDamage.Base += frenzyDamage;
-					RageGlyph.RageEffect(Player, target, proj);
-				}
-				frenzyDamage = 0;
-			}
-		}
+		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone) => SmartHitAnything(target, null, proj, hit, damageDone);
 		#endregion
 
-		private void OnHitPlayer(Player player, Projectile proj, Player.HurtInfo info)
+		private void SmartHitAnything(Entity target, Item item, Projectile proj, NPC.HitInfo info, int damage)
 		{
-			int life = player.statLife;
-			int damage = info.Damage;
+			int life = (target is NPC npc) ? npc.life : ((target is Player player) ? player.statLife : 0);
 
 			if (Glyph == GlyphType.Frost && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
-				FrostGlyph.FreezeEffect(Player, player, proj);
+				FrostGlyph.FreezeEffect(Player, target, proj);
 			if (Glyph == GlyphType.Void && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
-				VoidGlyph.VoidCollapse(Player, player, proj, damage);
+				VoidGlyph.VoidCollapse(Player, target, proj, damage);
 			if (Glyph == GlyphType.Radiant)
 			{
 				genericCounter = 0;
 
 				if (Player.HasBuff(ModContent.BuffType<DivineStrike>()))
-					RadiantGlyph.RadiantStrike(Player, player);
+					RadiantGlyph.RadiantStrike(Player, target);
 			}
 
+			if (target is NPC && ((target as NPC).value <= 0 || (target as NPC).SpawnedFromStatue || (target as NPC).friendly)) //Don't let useless NPCs trigger widely beneficial effects
+				return;
+
 			if (Glyph == GlyphType.Unholy && life <= 0)
-				UnholyGlyph.Erupt(Player, player, damage / 3);
+				UnholyGlyph.Erupt(Player, target, damage / 3);
 			if (Glyph == GlyphType.Sanguine)
-				SanguineGlyph.DrainEffect(Player, player);
+				SanguineGlyph.DrainEffect(Player, target);
 			if (Glyph == GlyphType.Blaze)
 				Player.AddBuff(ModContent.BuffType<BurningRage>(), 120);
 			if (Glyph == GlyphType.Bee)
 			{
 				if ((genericCounter = MathHelper.Clamp(genericCounter + (Player.HeldItem.useTime / 60f), 0, 1)) == 1)
 				{
-					BeeGlyph.ReleaseBees(Player, player, (int)(damage * .4f));
+					BeeGlyph.ReleaseBees(Player, target, (int)(damage * .4f));
 					genericCounter = 0;
 				}
 				if (life <= 0)
@@ -182,6 +164,19 @@ namespace SpiritMod.GlobalClasses.Players
 				veilCounter = MathHelper.Clamp(veilCounter + (Player.HeldItem.useTime / 300f), 0, 1);
 		}
 
+		private void SmartModifyHitAnything(Entity target, Item item, Projectile proj, ref NPC.HitModifiers mods)
+		{
+			if (Glyph == GlyphType.Rage)
+			{
+				if (frenzyDamage > 0)
+				{
+					mods.FinalDamage += frenzyDamage;
+					RageGlyph.RageEffect(Player, target, proj);
+				}
+				frenzyDamage = 0;
+			}
+		}
+
 		public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
 		{
 			if (Glyph == GlyphType.Phase)
@@ -193,13 +188,22 @@ namespace SpiritMod.GlobalClasses.Players
 				damage *= 1.5f;
 		}
 
+		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
+		{
+			if (veilCounter > 0)
+			{
+				float resistance = .5f; //Resist 50% damage at full charge
+				modifiers.FinalDamage *= resistance * veilCounter;
+			}
+		}
+
 		public override void PostHurt(Player.HurtInfo info)
 		{
 			if (veilCounter > 0)
 			{
 				veilCounter = 0;
 
-				for (int i = 0; i < (int)(20 * veilCounter); i++)
+				for (int i = 0; i < (int)(10 * veilCounter); i++)
 					Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Clentaminator_Cyan, 0, 0, 100).velocity = Vector2.UnitY * -2;
 			}
 		}

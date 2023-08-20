@@ -10,14 +10,6 @@ namespace SpiritMod.Items.Glyphs
 
 		public override GlyphType Glyph => GlyphType.Storm;
 		public override Color Color => new(142, 186, 231);
-		public override string Effect => "Billowed";
-		public override string Addendum => "Attacks occasionally release a forceful gust of wind";
-
-		public override void SetStaticDefaults()
-		{
-			base.SetStaticDefaults();
-			// DisplayName.SetDefault("Zephyr Glyph");
-		}
 
 		public override void SetDefaults()
 		{

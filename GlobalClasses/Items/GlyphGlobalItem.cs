@@ -27,9 +27,8 @@ namespace SpiritMod.GlobalClasses.Items
 		{
 			if (Glyph == glyph)
 				return;
-			if (glyph == GlyphType.None)
-				randomGlyph = false;
 
+			randomGlyph = false;
 			item.prefix = 0;
 			item.rare = item.OriginalRarity;
 
@@ -281,16 +280,7 @@ namespace SpiritMod.GlobalClasses.Items
 			if (Glyph == GlyphType.None)
 				return;
 
-			static float Rescale(Vector2 frame)
-			{
-				float scalar = 1f;
-				if (frame.X > 32 || frame.Y > 32)
-					scalar = 32f / Math.Max(frame.X, frame.Y);
-
-				return scalar;
-			}
-			float slotScale = Rescale(frame.Size()) * Main.inventoryScale;
-			Vector2 slotOrigin = position + frame.Size() * (.5f * slotScale) - (SlotDimensions * (.5f * Main.inventoryScale));
+			Vector2 slotOrigin = position - (SlotDimensions * (.5f * Main.inventoryScale));
 
 			Texture2D texture = GlyphBase.FromType(Glyph).Overlay;
 			if (texture != null)

@@ -12,14 +12,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Sanguine;
 		public override Color Color => new(255, 79, 56);
-		public override string Effect => "Leeching";
-		public override string Addendum => "Dealing damage boosts life regeneration briefly";
-
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sanguine Glyph");
-			// Tooltip.SetDefault($"{Addendum}\n-10% damage");
-		}
 
 		public override void SetDefaults()
 		{

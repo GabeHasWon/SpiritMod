@@ -12,8 +12,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Frost;
 		public override Color Color => new(49, 209, 215);
-		public override string Effect => "Freezing";
-		public override string Addendum => "Attacks have a chance to freeze enemies briefly";
 
 		public override void SetDefaults()
 		{

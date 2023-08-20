@@ -14,8 +14,6 @@ namespace SpiritMod.Items.Glyphs
 
 		public override GlyphType Glyph => GlyphType.Void;
 		public override Color Color => new(233, 89, 255);
-		public override string Effect => "Null";
-		public override string Addendum => "Attacks have a chance to inflict stacks of void collapse";
 
 		public override void SetDefaults()
 		{
