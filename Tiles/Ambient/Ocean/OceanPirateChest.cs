@@ -78,11 +78,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			return name;
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, TileLoader.GetItemDropFromTypeAndStyle(Type));
-			Chest.DestroyChest(i, j);
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Chest.DestroyChest(i, j);
 
 		public override bool RightClick(int i, int j)
 		{

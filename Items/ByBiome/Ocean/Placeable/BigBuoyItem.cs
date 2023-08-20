@@ -8,12 +8,6 @@ namespace SpiritMod.Items.ByBiome.Ocean.Placeable;
 [Sacrifice(1)]
 public class BigBuoyItem : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Large Buoy");
-		// Tooltip.SetDefault("Must be placed atop water");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<BigBuoy>());

@@ -61,12 +61,7 @@ namespace SpiritMod.Items.Sets.CoilSet
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<CoilEnergizerItem>());
-			SoundEngine.PlaySound(SoundID.NPCHit3, new Vector2(i + 1.5f, j + 1) * 16);
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit3, new Vector2(i + 1.5f, j + 1) * 16);
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{

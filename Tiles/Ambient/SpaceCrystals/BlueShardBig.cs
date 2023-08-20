@@ -25,10 +25,12 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.RandomStyleRange = 3;
 			TileObjectData.addTile(Type);
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Giant Crystal");
 			DustType = DustID.DungeonSpirit;
+
 			AddMapEntry(new Color(110, 120, 255), name);
+			RegisterItemDrop(ModContent.ItemType<RockCandy>());
 		}
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
@@ -41,7 +43,6 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<RockCandy>());
 			for (int e = 1; e < 8; e++)
 			{
 				Vector2 position = new Vector2(i, j).ToWorldCoordinates();

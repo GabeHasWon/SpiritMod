@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -27,11 +28,9 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override IEnumerable<Item> GetItemDrops(int i, int j)
 		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, 362);
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, 362);
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, 362);
+			yield return new Item(ItemID.TatteredCloth) { stack = 3 };
 		}
 	}
 }

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Ammo.Arrow;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -54,6 +55,44 @@ namespace SpiritMod.Tiles.Ambient
 			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Ambient/SepulchrePot1_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 
+		public override IEnumerable<Item> GetItemDrops(int i, int j)
+		{
+			int potionItem = Main.rand.Next(new int[] { 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305 });
+			if (Main.rand.NextBool(10))
+				yield return new Item(potionItem) { stack = Main.rand.Next(1, 3) };
+
+			int torchItem = Main.rand.Next(new int[] { 282, ItemID.CursedTorch });
+			int ammoItem = Main.rand.Next(new int[] { ModContent.ItemType<SepulchreArrow>(), ItemID.WoodenArrow });
+			int item = 0;
+			int coins = ItemID.SilverCoin;
+			int stack = 0;
+			switch (Main.rand.Next(5))
+			{
+				case 0:
+					item = torchItem;
+					stack = Main.rand.Next(2, 10);
+					break;
+				case 1:
+					item = ammoItem;
+					stack = Main.rand.Next(25, 50);
+					break;
+				case 2:
+					item = 28;
+					stack = Main.rand.Next(1, 3);
+					break;
+				case 3:
+					item = coins;
+					stack = Main.rand.Next(1, 3);
+					break;
+				case 4:
+					item = ammoItem;
+					stack = Main.rand.Next(15, 20);
+					break;
+			}
+
+			yield return new Item(item) { stack = stack };
+		}
+
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			SoundEngine.PlaySound(SoundID.Shatter, new Vector2(i, j) * 16);
@@ -65,39 +104,6 @@ namespace SpiritMod.Tiles.Ambient
 				if (Main.netMode != NetmodeID.Server)
 					Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i * 16 + Main.rand.Next(-10, 10), j * 16 + Main.rand.Next(-10, 10)), new Vector2(-1, 1), Mod.Find<ModGore>("Pot1").Type, 1f);
 			}
-
-			int potionitem = Main.rand.Next(new int[] { 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305 });
-			if (Main.rand.NextBool(10))
-				Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, potionitem, Main.rand.Next(1, 3));
-
-			int torchItem = Main.rand.Next(new int[] { 282, ItemID.CursedTorch });
-			int ammoItem = Main.rand.Next(new int[] { ModContent.ItemType<SepulchreArrow>(), ItemID.WoodenArrow });
-			int item = 0;
-			int coins = ItemID.SilverCoin;
-			int num = 0;
-			switch (Main.rand.Next(5)) {
-				case 0:
-					item = torchItem;
-					num = Main.rand.Next(2, 10);
-					break;
-				case 1:
-					item = ammoItem;
-					num = Main.rand.Next(25, 50);
-					break;
-				case 2:
-					item = 28;
-					num = Main.rand.Next(1, 3);
-					break;
-				case 3:
-					item = coins;
-					num = Main.rand.Next(1, 3);
-					break;
-				case 4:
-					item = ammoItem;
-					num = Main.rand.Next(15, 20);
-					break;
-			}
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, item, num);
 		}
 	}
 }

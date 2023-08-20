@@ -51,7 +51,6 @@ namespace SpiritMod.Tiles.Furniture
 				frame %= 14;
 			}
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<OldTelescope>());
 
 		public override bool RightClick(int i, int j)
 		{
@@ -62,27 +61,19 @@ namespace SpiritMod.Tiles.Furniture
 			return true;
 		}
 
-		public string GetMoonPhase()
+		public static string GetMoonPhase()
 		{
-			switch (Main.moonPhase)
+			return Main.moonPhase switch
 			{
-				case 0:
-					return Language.GetTextValue("GameUI.FullMoon");
-				case 1:
-					return Language.GetTextValue("GameUI.WaningGibbous");
-				case 2:
-					return Language.GetTextValue("GameUI.ThirdQuarter");
-				case 3:
-					return Language.GetTextValue("GameUI.ThirdQuarter");
-				case 4:
-					return Language.GetTextValue("GameUI.NewMoon");
-				case 5:
-					return Language.GetTextValue("GameUI.WaxingCrescent");
-				case 6:
-					return Language.GetTextValue("GameUI.FirstQuarter");
-				default:
-					return Language.GetTextValue("GameUI.WaxingGibbous");
-			}
+				0 => Language.GetTextValue("GameUI.FullMoon"),
+				1 => Language.GetTextValue("GameUI.WaningGibbous"),
+				2 => Language.GetTextValue("GameUI.ThirdQuarter"),
+				3 => Language.GetTextValue("GameUI.ThirdQuarter"),
+				4 => Language.GetTextValue("GameUI.NewMoon"),
+				5 => Language.GetTextValue("GameUI.WaxingCrescent"),
+				6 => Language.GetTextValue("GameUI.FirstQuarter"),
+				_ => Language.GetTextValue("GameUI.WaxingGibbous"),
+			};
 		}
 	}
 }

@@ -41,8 +41,6 @@ namespace SpiritMod.Tiles.Furniture
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) => (r, g, b) = (.052f * 1.25f, .229f * 1.25f, .235f * 1.25f);
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<ArcadeMachineItem>());
-
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.Items.Sets.ToolsMisc.BrilliantHarvester;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -31,7 +32,6 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.CoordinatePadding = 2;
 			TileObjectData.addTile(Type);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Lodged Pickaxe");
 			AddMapEntry(Color.Red, name);
 		}
 
@@ -40,12 +40,11 @@ namespace SpiritMod.Tiles.Furniture
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) => (r, g, b) = (.122f, .048f, .063f);
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override IEnumerable<Item> GetItemDrops(int i, int j)
 		{
 			if (Main.rand.NextBool(2))
-				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GemPickaxe>());
-			for (int k = 0; k < 3; k++)
-				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Ruby);
+				yield return new Item(ModContent.ItemType<GemPickaxe>());
+			yield return new Item(ItemID.Ruby, 3);
 		}
 	}
 }

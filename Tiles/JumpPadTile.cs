@@ -59,7 +59,6 @@ namespace SpiritMod.Tiles
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i * 16, j * 16));
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<JumpPadItem>());
 		}
 
 		/*public override void NearbyEffects(int i, int j, bool closer)

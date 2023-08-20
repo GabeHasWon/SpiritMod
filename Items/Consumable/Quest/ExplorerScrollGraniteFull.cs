@@ -9,11 +9,6 @@ namespace SpiritMod.Items.Consumable.Quest
 	[Sacrifice(1)]
 	public class ExplorerScrollGraniteFull : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Completed Surveyor's Scroll");
-		}
-
 		public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Swing;

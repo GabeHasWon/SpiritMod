@@ -31,9 +31,6 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			DustType = -1;
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-			=> Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<BambooBenchItem>());
-
 		public override bool RightClick(int i, int j)
 		{
 			Player player = Main.LocalPlayer;

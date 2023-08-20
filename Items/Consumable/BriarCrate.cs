@@ -13,12 +13,6 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(5)]
 	internal class BriarCrate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Thistle Crate");
-			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;

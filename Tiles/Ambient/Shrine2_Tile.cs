@@ -28,9 +28,5 @@ namespace SpiritMod.Tiles.Ambient
 		{
 			offsetY = 2;
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, Mod.Find<ModItem>("Shrine2").Type);
-		}
 	}
 }

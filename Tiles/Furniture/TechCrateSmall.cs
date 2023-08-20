@@ -33,22 +33,18 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Glowplate Crate");
 			AddMapEntry(new Color(60, 60, 60), name);
 			DustType = -1;
 		}
+
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = .052f;
             g = .229f;
             b = .235f;
         }
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<SmallTechCrate>());
-
-		}
-        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+        
+		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);

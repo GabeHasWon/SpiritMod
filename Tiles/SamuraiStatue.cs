@@ -36,8 +36,6 @@ namespace SpiritMod.Tiles
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = drawOffsetY;
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<SamuraiStatueItem>());
-
 		public override bool RightClick(int i, int j)
 		{
 			SoundEngine.PlaySound(SoundID.Mech, new Vector2(i * 16, j * 16));

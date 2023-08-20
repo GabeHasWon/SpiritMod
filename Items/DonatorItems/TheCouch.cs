@@ -5,14 +5,6 @@ namespace SpiritMod.Items.DonatorItems
 {
 	public class TheCouch : ModItem
 	{
-
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("The Couch");
-			// Tooltip.SetDefault("Defense is increased, but movement speed reduced, when nearby\n'Hello Terraria Enthusiasts'\nNot for masters!");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 52;
@@ -31,6 +23,5 @@ namespace SpiritMod.Items.DonatorItems
 
 			Item.createTile = ModContent.TileType<Tiles.Furniture.Donator.TheCouch>();
 		}
-
 	}
 }

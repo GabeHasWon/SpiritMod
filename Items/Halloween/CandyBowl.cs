@@ -5,8 +5,6 @@ namespace SpiritMod.Items.Halloween
 {
 	public class CandyBowl : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Candy Bowl");
-
 		public override void SetDefaults()
 		{
 			Item.width = 32;

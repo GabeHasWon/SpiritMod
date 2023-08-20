@@ -19,12 +19,6 @@ namespace SpiritMod.Items.Placeable
 		public override float Weight => base.Weight * 0.9f;
 		public override float Bouyancy => base.Bouyancy * 1.05f;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Packing Crate");
-			// Tooltip.SetDefault("'A logo from a popular fishing company can be seen'\n{$CommonItemTooltip.RightClickToOpen}\nContains different types of fish");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;

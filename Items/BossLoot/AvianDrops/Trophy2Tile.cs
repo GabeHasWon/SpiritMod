@@ -27,7 +27,5 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 			// name.SetDefault("Ancient Avian Trophy");
 			AddMapEntry(new Color(120, 85, 60), name);
 		}
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<Trophy2>());
 	}
 }

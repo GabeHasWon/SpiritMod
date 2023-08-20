@@ -33,15 +33,10 @@ namespace SpiritMod.Tiles.Furniture.Shiverbark
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Shiverbark Table");
 			AddMapEntry(new Color(118, 155, 163), name);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;
 			AdjTiles = new int[]{ TileID.Tables };
-		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Terraria.Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<Items.Placeable.Furniture.Shiverbark.ShiverbarkTable>());
 		}
 	}
 }

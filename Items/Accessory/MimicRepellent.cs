@@ -6,12 +6,6 @@ namespace SpiritMod.Items.Accessory
 {
 	public class MimicRepellent : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Mimic Repellent");
-			// Tooltip.SetDefault("Prevents Crate Mimics from being fished up\n'Keep those tentacled freaks at bay!'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 18;

@@ -49,11 +49,6 @@ public class BigBuoy : ModTile
 
 	public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
 
-	public override void KillMultiTile(int i, int j, int frameX, int frameY)
-	{
-		Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<Items.ByBiome.Ocean.Placeable.BigBuoyItem>());
-	}
-
     public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		if (Main.tile[i, j].TileFrameX == 0 && Main.tile[i, j].TileFrameY == 0)

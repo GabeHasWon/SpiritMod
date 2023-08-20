@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Items.Consumable.Food;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,10 +30,10 @@ namespace SpiritMod.Tiles.Ambient.Underground
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override IEnumerable<Item> GetItemDrops(int i, int j)
 		{
 			int itemID = ItemID.TungstenOre;
-			int frame = frameY / 36;
+			int frame = Main.tile[i, j].TileFrameY / 36;
 
 			if (frame == 1)
 				itemID = ItemID.SilverOre;
@@ -40,7 +42,7 @@ namespace SpiritMod.Tiles.Ambient.Underground
 			else if (frame == 3)
 				itemID = ItemID.GoldOre;
 
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, itemID, Main.rand.Next(22, 31));
+			yield return new Item(itemID, Main.rand.Next(22, 31));
 		}
 	}
 }

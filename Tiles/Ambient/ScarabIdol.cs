@@ -53,8 +53,6 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<ScarabIdolQuest>());
-
 			if (!Main.dedServ)
 				SoundEngine.PlaySound(SoundID.Zombie44, new Vector2(i, j) * 16);
 

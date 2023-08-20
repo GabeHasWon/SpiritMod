@@ -25,8 +25,6 @@ namespace SpiritMod.Tiles.Ambient
 			AdjTiles = new int[] { TileID.LunarMonolith };
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ItemType<Items.Placeable.Furniture.MarbleObeliskItem>());
-
 		public override void NearbyEffects(int i, int j, bool closer) {
 			if (Main.tile[i, j].TileFrameY >= 56) {
                 if (Main.rand.NextBool(100))

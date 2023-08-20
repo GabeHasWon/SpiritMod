@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Items.Consumable.Food;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -31,9 +33,9 @@ public class OreCarts : ModTile
 
 	public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 12;
 
-	public override void KillMultiTile(int i, int j, int frameX, int frameY)
+	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
-		int frame = frameX / 54;
+		int frame = Main.tile[i, j].TileFrameX / 54;
 		int itemID = frame switch
 		{
 			0 => ItemID.CopperOre,
@@ -47,7 +49,7 @@ public class OreCarts : ModTile
 			_ => ItemID.Amber
 		};
 
-		Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, itemID, Main.rand.Next(22, 31));
-		Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.Wood, Main.rand.Next(4, 12));
+		yield return new Item(itemID) { stack = Main.rand.Next(22, 31) };
+		yield return new Item(ItemID.Wood) { stack = Main.rand.Next(4, 12) };
 	}
 }

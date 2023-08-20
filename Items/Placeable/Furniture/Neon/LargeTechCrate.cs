@@ -9,11 +9,6 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 	[Sacrifice(1)]
 	public class LargeTechCrate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Large Glowplate Crate");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;

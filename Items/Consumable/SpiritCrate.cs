@@ -17,12 +17,7 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(5)]
 	public class SpiritCrate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Spirit Crate");
-			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{

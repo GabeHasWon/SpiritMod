@@ -48,18 +48,9 @@ namespace SpiritMod.World.Sepulchre
 		{
 			num = fail ? 1 : 3;
 		}
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<Sepulchre.SepulchreChandelierItem>());
-		}
 	}
 	public class SepulchreChandelierItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sepulchre Chandelier");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;

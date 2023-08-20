@@ -27,8 +27,5 @@ namespace SpiritMod.Tiles.Furniture.Sculptures
 			AddMapEntry(new Color(140, 140, 140), name);
 			DustType = DustID.Granite;
 		}
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) 
-			=> Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<GraniteSculpture2x3Item>());
 	}
 }

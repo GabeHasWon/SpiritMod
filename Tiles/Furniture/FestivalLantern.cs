@@ -85,10 +85,6 @@ namespace SpiritMod.Tiles.Furniture
             g = .243f * 1.5f;
             b = .074f * 1.5f;
         }
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<FestivalLanternItem>());
-		}
         public override void NearbyEffects(int i, int j, bool closer)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MyPlayer>();

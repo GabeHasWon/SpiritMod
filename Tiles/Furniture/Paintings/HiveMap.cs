@@ -35,14 +35,6 @@ namespace SpiritMod.Tiles.Furniture.Paintings
 			AddMapEntry(new Color(150, 150, 150), name);
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-            Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<Items.Consumable.Quest.ExplorerScrollHiveFull>());
-        }
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 }

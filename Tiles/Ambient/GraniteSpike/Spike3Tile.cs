@@ -28,12 +28,9 @@ namespace SpiritMod.Tiles.Ambient.GraniteSpike
 			};
 			TileObjectData.addTile(Type);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Granite Formation");
 			AddMapEntry(new Color(100, 86, 145), name);
 			DustType = -1;
 			TileID.Sets.DisableSmartCursor[Type] = true;
 		}
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<GraniteSpike3>());
 	}
 }

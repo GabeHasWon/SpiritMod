@@ -25,13 +25,13 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Opal Frog");
+
 			DustType = -1;
+
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<OpalFrogItem>());
 	}
 }

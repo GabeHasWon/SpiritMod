@@ -9,12 +9,6 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(5)]
 	public class PirateCrate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pirate Loot Crate");
-			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'Contains booty!'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;

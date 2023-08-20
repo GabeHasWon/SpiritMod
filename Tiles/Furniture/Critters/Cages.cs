@@ -88,10 +88,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		{
 			num = fail ? 1 : 3;
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<BlossomCage>());
-		}
     }
     public class BriarmothCage : ModItem
     {
@@ -162,10 +158,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
         {
             num = fail ? 1 : 3;
         }
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<BriarmothCage>());
-        }
     }
     public class CleftCage : ModItem
 	{
@@ -232,7 +224,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			}
 		}
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<CleftCage>());
 	}
 	public class PaleCrinoidCage : ModItem
 	{
@@ -299,7 +290,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			}
 		}
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<PaleCrinoidCage>());
 	}
 	public class RedCrinoidCage : ModItem
 	{
@@ -366,7 +356,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			}
 		}
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<RedCrinoidCage>());
 	}
 	public class BrownCrinoidCage : ModItem
 	{
@@ -433,7 +422,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			}
 		}
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<BrownCrinoidCage>());
 	}
 	public class LuvdiscBowl : ModItem
 	{
@@ -501,7 +489,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<LuvdiscBowl>());
 	}
 	public class GulperBowl : ModItem
 	{
@@ -570,7 +557,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<GulperBowl>());
 	}
 	public class TubewormBowl : ModItem
 	{
@@ -639,7 +625,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<TubewormBowl>());
 	}
 	public class VibeshroomJarItem : ModItem
 	{
@@ -708,6 +693,5 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<VibeshroomJarItem>());
 	}
 }

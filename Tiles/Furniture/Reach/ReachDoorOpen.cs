@@ -83,9 +83,5 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			player.cursorItemIconEnabled = true;
 			player.cursorItemIconID = ModContent.ItemType<ReachDoorItem>();
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<ReachDoorItem>());
-		}
 	}
 }

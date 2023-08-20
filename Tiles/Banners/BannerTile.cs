@@ -165,18 +165,6 @@ namespace SpiritMod.Tiles.Banners
 			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Banners/BannerTile_Glow").Value, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White * .8f, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			string banner = GetBannerItem(frameX);
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 48, Mod.Find<ModItem>(banner).Type);
-		}
-
-		private static string GetBannerItem(int frameX)
-		{
-			int style = frameX / 18;
-			return BannersIndex[style].item;
-		}
-
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			int style = Main.tile[i, j].TileFrameX / 18;

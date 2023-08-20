@@ -42,13 +42,8 @@ namespace SpiritMod.Tiles.Furniture
             TileObjectData.addAlternate(1); //facing right will use the second texture style
             TileObjectData.addTile(Type);
             LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Durasilk Sheaf");
 			AddMapEntry(new Color(100, 100, 100), name);
 			DustType = -1;
-		}
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<Items.Consumable.Quest.DurasilkSheaf>());
 		}
 	}
 }

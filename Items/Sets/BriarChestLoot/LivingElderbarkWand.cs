@@ -7,11 +7,7 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 {
 	public class LivingElderbarkWand : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Living Elderbark Wand");
-			// Tooltip.SetDefault("Places living elderbark");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.DisableAutomaticPlaceableDrop[Type] = true;
 
 		public override void SetDefaults()
 		{
@@ -20,7 +16,7 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 			Item.useAnimation = 15;
 			Item.useTime = 10;
 			Item.autoReuse = true;
-			Item.maxStack = 99;
+			Item.maxStack = 1;
 			Item.tileWand = ModContent.ItemType<Items.Sets.HuskstalkSet.AncientBark>();
 			Item.consumable = false;
 			Item.createTile = ModContent.TileType<LivingBriarWood>();

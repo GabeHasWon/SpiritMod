@@ -7,14 +7,6 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 {
 	public class OpalFrogItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Opal Frog");
-			/* Tooltip.SetDefault("15% increased hook speed" +
-				"\nAutomatically detatch from hooks upon reaching the end of the hook" +
-				"\nDisable accessory visibility to disable auto-unhooking"); */
-		}
-
 		public override void SetDefaults()
 		{
 			Item.Size = new Vector2(40, 34);

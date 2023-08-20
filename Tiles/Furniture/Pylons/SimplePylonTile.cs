@@ -67,12 +67,7 @@ namespace SpiritMod.Tiles.Furniture.Pylons
 			Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<T>();
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			ModContent.GetInstance<SimplePylonEntity>().Kill(i, j); //Kill pylon tile entity
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 2, 3, ModContent.ItemType<T>());
-		}
-
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => ModContent.GetInstance<SimplePylonEntity>().Kill(i, j); //Kill pylon tile entity
 		public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch) => DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, highlightTexture, new Vector2(0f, -12f), Color.White * 0.1f, Color.White, 4, CrystalVerticalFrameCount);
 
 		public override void DrawMapIcon(ref MapOverlayDrawContext context, ref string mouseOverText, TeleportPylonInfo pylonInfo, bool isNearPylon, Color drawColor, float deselectedScale, float selectedScale)

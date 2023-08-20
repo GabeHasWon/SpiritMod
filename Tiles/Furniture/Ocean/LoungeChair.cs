@@ -39,8 +39,6 @@ public class LoungeChair : ModTile
 		DustType = DustID.BlueCrystalShard;
 	}
 
-	public override void KillMultiTile(int i, int j, int frameX, int frameY) 
-		=> Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<LoungeChairItem>());
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
 	public override bool RightClick(int i, int j)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -38,15 +39,9 @@ namespace SpiritMod.Tiles.Ambient.Corals
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override IEnumerable<Item> GetItemDrops(int i, int j)
 		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ItemID.Coral, Main.rand.Next(3, 6));
-			//if (frameX < 36) //French fry coral
-			//	Item.NewItem(i * 16, j * 16, 32, 48, ModContent.ItemType<Items.Material.Canvas>());
-			//else if (frameX < 72) //Blue tabletop coral
-			//	Item.NewItem(i * 16, j * 16, 32, 48, ModContent.ItemType<Items.Material.Canvas>());
-			//else //Brain coral
-			//	Item.NewItem(i * 16, j * 16, 32, 48, ModContent.ItemType<Items.Material.Canvas>());
+			yield return new Item(ItemID.Coral) { stack = Main.rand.Next(3, 6) };
 		}
 	}
 }

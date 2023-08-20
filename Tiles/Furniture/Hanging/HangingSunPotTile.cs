@@ -39,7 +39,6 @@ namespace SpiritMod.Tiles.Furniture.Hanging
 			DustType = -1;
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<HangingSunPot>());
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) => (r, g, b) = (0.6f, 0.6f, 0.2f);
 
 		public override void NearbyEffects(int i, int j, bool closer)

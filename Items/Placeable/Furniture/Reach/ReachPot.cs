@@ -9,12 +9,6 @@ namespace SpiritMod.Items.Placeable.Furniture.Reach
 	[Sacrifice(1)]
 	public class ReachPot : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Elderbark Pot");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 32;

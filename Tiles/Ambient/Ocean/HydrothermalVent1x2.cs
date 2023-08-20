@@ -150,7 +150,6 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 	{
 		public override string Texture => base.Texture.Replace(nameof(Breakable1x2Vent), nameof(HydrothermalVent1x2));
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<LargeVentItem>());
 		public override bool CanExplode(int i, int j) => true;
 		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => true;
 	}

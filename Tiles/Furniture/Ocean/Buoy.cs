@@ -49,11 +49,6 @@ public class Buoy : ModTile
 
 	public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
 
-	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
-	{
-		Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<Items.ByBiome.Ocean.Placeable.BuoyItem>());
-	}
-
     public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		TileSwaySystem.DrawGrassSway(spriteBatch, Texture, i, j - 1, Lighting.GetColor(i, j), new Vector2(0, 4), new Point(16, 24), SpriteEffects.None);

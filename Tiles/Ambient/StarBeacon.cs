@@ -171,12 +171,7 @@ namespace SpiritMod.Tiles.Ambient
 		//public override bool CanKillTile(int i, int j, ref bool blockDamaged) => MyWorld.downedRaider; //The tile is indestructable
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<StarBeaconItem>());
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 
 		public override void MouseOver(int i, int j)
 		{

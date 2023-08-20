@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Furniture.Bamboo;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.Audio;
@@ -56,12 +57,10 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			DustType = -1;
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override IEnumerable<Item> GetItemDrops(int i, int j)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<BambooBirdCageItem>());
-
-			if (ContainsBird(i, j, out int birdType, frameX))
-				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, birdType);
+			if (ContainsBird(i, j, out int birdType, Main.tile[i, j].TileFrameX))
+				yield return new Item(birdType);
 		}
 
 		public override bool RightClick(int i, int j)

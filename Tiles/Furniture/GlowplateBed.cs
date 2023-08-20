@@ -38,8 +38,6 @@ namespace SpiritMod.Tiles.Furniture
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GlowplateBedItem>());
-
 		public override void ModifySleepingTargetInfo(int i, int j, ref TileRestingInfo info) => info.VisualOffset.Y -= 4f;
 
 		public override bool RightClick(int i, int j)

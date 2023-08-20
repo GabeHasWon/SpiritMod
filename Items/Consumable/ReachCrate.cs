@@ -13,12 +13,6 @@ namespace SpiritMod.Items.Consumable;
 [Sacrifice(5)]
 public class ReachCrate : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Thorny Crate");
-		// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 20;

@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using System.Collections.Generic;
 
 namespace SpiritMod.Tiles.Ambient.SurfaceIce
 {
@@ -33,11 +34,11 @@ namespace SpiritMod.Tiles.Ambient.SurfaceIce
         public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 		
 		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem) => SoundEngine.PlaySound(SoundID.Item27);
-		
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+
+		public override IEnumerable<Item> GetItemDrops(int i, int j)
 		{
 			if (Main.rand.NextBool(3))
-				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<Items.Sets.FrigidSet.FrigidFragment>());
+				yield return new Item(ModContent.ItemType<Items.Sets.FrigidSet.FrigidFragment>());
 		}
 	}
 }

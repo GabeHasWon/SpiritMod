@@ -37,7 +37,5 @@ namespace SpiritMod.Tiles.Furniture
 
 			DustType = Terraria.ID.DustID.Stone;
 		}
-
-		public override void KillMultiTile(int i, int j, int frX, int frY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<HerosMemorialStatue>());
 	}
 }

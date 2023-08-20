@@ -74,8 +74,6 @@ namespace SpiritMod.Tiles.Furniture.Signs
 			b = 0.088f * 1.5f;
 		}
 
-        public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ItemType<GreenNeonSign>());
-
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			Tile tile = Main.tile[i, j];

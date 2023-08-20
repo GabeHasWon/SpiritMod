@@ -2,20 +2,12 @@ using SpiritMod.Tiles.Furniture;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using SpiritMod.Mechanics.QuestSystem.Quests;
-using SpiritMod.Mechanics.QuestSystem;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
 	[Sacrifice(1)]
 	public class GiantAnglerStatue : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Giant Manshark Statue");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;

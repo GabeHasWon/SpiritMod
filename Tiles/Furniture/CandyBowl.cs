@@ -17,11 +17,6 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addTile(Type);
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Items.Halloween.CandyBowl>());
-		}
-
 		public override void AnimateTile(ref int frame, ref int frameCounter)
 		{
 			if (Main.dayTime || Main.gameMenu) {

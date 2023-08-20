@@ -23,8 +23,8 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 			TileObjectData.addTile(Type);
 			DustType = -3;
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Giant Crystal");
 			AddMapEntry(new Color(200, 200, 200), name);
+			RegisterItemDrop(ModContent.ItemType<RockCandy>());
 		}
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -33,10 +33,7 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 			g = 0.8f / 4;
 			b = 0.4f / 4;
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<RockCandy>());
-			SoundEngine.PlaySound(Terraria.ID.SoundID.Item27, new Vector2(i, j) * 16);
-		}
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(Terraria.ID.SoundID.Item27, new Vector2(i, j) * 16);
 	}
 }
