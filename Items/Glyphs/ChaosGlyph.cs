@@ -5,6 +5,7 @@ using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
 {
@@ -12,8 +13,8 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Chaos;
 		public override Color Color => Main.DiscoColor;
-		public override string Effect => "Unstable";
-		public override string Addendum => "Your weapon periodically switches between glyph effects";
+
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<Glyph>();
 
 		public override void SetDefaults()
 		{

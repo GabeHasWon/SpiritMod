@@ -3547,48 +3547,40 @@ BeeGlyph: {
 	DisplayName: Bee Glyph
 	Tooltip:
 		'''
-		Drenches the user in honey
-		Attacks will release bees
+		Grants honeyed when an enemy is slain
+		Attacks periodically release bees
 		'''
+	Addendum:
+		'''
+		Grants honeyed when an enemy is slain
+		Attacks periodically release bees
+		'''
+	Effect: Honeyed
 }
 
 BlazeGlyph: {
 	DisplayName: Blaze Glyph
 	Tooltip:
 		'''
-		+100% velocity and +3% damage
-		Attacking enemies may grant Burning Rage
-		Burning Rage increases attack speed and damage but sets you ablaze
+		Dealing damage sets you ablaze
+		+25% damage and +10% critical strike chance
 		'''
+	Addendum: Dealing damage sets you ablaze
+	Effect: Blazing
 }
 
-DazeGlyph: {
-	DisplayName: Daze Glyph
-	Tooltip:
-		'''
-		All attacks inflict confusion
-		Confused enemies take extra damage
-		Getting hurt may confuse the player
-		'''
-}
-
-EfficiencyGlyph: {
-	DisplayName: Efficiency Glyph
-	Tooltip:
-		'''
-		Can only be applied to tools
-		+30% speed and +2 range
-		'''
+ChaosGlyph: {
+	DisplayName: Chaos Glyph
+	Tooltip: Your weapon periodically switches between glyph effects
+	Addendum: Your weapon periodically switches between glyph effects
+	Effect: Unstable
 }
 
 FrostGlyph: {
 	DisplayName: Frost Glyph
-	Tooltip:
-		'''
-		+5% Movement speed
-		Critical strikes conjure Ice Spikes that orbit you
-		Every Spike beyond the fifth will be shot towards the cursor
-		'''
+	Tooltip: Attacks have a chance to freeze enemies briefly
+	Addendum: Attacks have a chance to freeze enemies briefly
+	Effect: Freezing
 }
 
 Glyph: {
@@ -3599,78 +3591,76 @@ Glyph: {
 NullGlyph: {
 	DisplayName: Null Glyph
 	Tooltip: Can be used to wipe a glyph off an item
+	Addendum: Invalid
+	Effect: Invalid
 }
 
 PhaseGlyph: {
 	DisplayName: Phase Glyph
 	Tooltip:
 		'''
-		+7% Crit chance
-		Weapon damage increases, the faster you move
-		Every 12 seconds you gain a stack of Temporal Shift
-		These stacks allow you to dash and gain a short burst of speed
+		Weapon damage increases the faster you move, but decreases when moving slowly
+		Consecutive hits grant a short burst of speed
 		'''
+	Addendum:
+		'''
+		Weapon damage increases the faster you move, but decreases when moving slowly
+		Consecutive hits grant a short burst of speed
+		'''
+	Effect: Temporal
 }
 
 RadiantGlyph: {
 	DisplayName: Radiant Glyph
-	Tooltip:
-		'''
-		+4% crit chance
-		Not attacking builds stacks of Divine Strike
-		The next hit is empowered by 11% per stack
-		'''
+	Tooltip: Builds radiant energy when not dealing damage, empowering your next attack
+	Addendum: Builds radiant energy when not dealing damage, empowering your next attack
+	Effect: Radiant
+}
+
+RageGlyph: {
+	DisplayName: Rage Glyph
+	Tooltip: Excess damage on kill is stored for your next attack
+	Addendum: Excess damage on kill is stored for your next attack
+	Effect: Frenzied
 }
 
 SanguineGlyph: {
 	DisplayName: Sanguine Glyph
 	Tooltip:
 		'''
-		+2 life regeneration per second
-		Attacks inflict Crimson Bleed
-		Attacking bleeding enemies leeches some life
+		Dealing damage boosts life regeneration briefly
+		-10% damage
 		'''
+	Addendum: Dealing damage boosts life regeneration briefly
+	Effect: Leeching
 }
 
 StormGlyph: {
-	DisplayName: Storm Glyph
-	Tooltip:
-		'''
-		+3 Defense
-		Every third attack will cause a Slicing Gust
-		This Gust will knock enemies in the air and inflict Wind Burst
-		Enemies afflicted with Wind Burst receive amplified knockback
-		'''
+	DisplayName: Zephyr Glyph
+	Tooltip: Attacks occasionally release a forceful gust of wind
+	Addendum: Attacks occasionally release a forceful gust of wind
+	Effect: Billowed
 }
 
 UnholyGlyph: {
 	DisplayName: Unholy Glyph
-	Tooltip:
-		'''
-		+6 Armor Penetration
-		Critical strikes can inflict Wandering Plague
-		Afflicted will slowly lose life and release toxic clouds
-		'''
+	Tooltip: Enemies erupt into cursed phantoms on death
+	Addendum: Enemies erupt into cursed phantoms on death
+	Effect: Cursed
 }
 
 VeilGlyph: {
 	DisplayName: Veil Glyph
-	Tooltip:
-		'''
-		+5% attack speed
-		After 8 seconds of not taking damage you gain Phantom Veil
-		This Veil will increase life regen and block the next attack
-		'''
+	Tooltip: Dealing damage builds a defensive veil around the user
+	Addendum: Dealing damage builds a defensive veil around the user
+	Effect: Guarding
 }
 
 VoidGlyph: {
 	DisplayName: Void Glyph
-	Tooltip:
-		'''
-		+8% damage reduction
-		Nearby enemies will be consumed by Devouring Void
-		This effect will grow in intensity over time
-		'''
+	Tooltip: Attacks have a chance to inflict stacks of void collapse
+	Addendum: Attacks have a chance to inflict stacks of void collapse
+	Effect: Null
 }
 
 CaramelApple: {
@@ -6149,6 +6139,21 @@ CryoSword: {
 		'''
 }
 
+AnimeSword: {
+	DisplayName: Anime Sword
+	Tooltip: Hold to slice through nearby enemies
+}
+
+BambooKendoBlade: {
+	DisplayName: Bamboo Kendo Blade
+	Tooltip: Right click to dash forward
+}
+
+BladeOfTheDragon: {
+	DisplayName: Blade of the Dragon
+	Tooltip: Hold to slice through nearby enemies
+}
+
 LightNovasVanity: {
 	DisplayName: LightNovas's Mask
 	Tooltip: "'Great for impersonating patrons!'"
@@ -7576,20 +7581,6 @@ Starblade: {
 		'''
 }
 
-BambooKendoBlade: {
-	DisplayName: Bamboo Kendo Blade
-	Tooltip: Right click to dash forward
-}
-
-BladeOfTheDragon: {
-	DisplayName: Blade of the Dragon
-	Tooltip:
-		'''
-		Hold and release to slice through nearby enemies
-		Build up a combo by repeatedly hitting enemies
-		'''
-}
-
 CurseBreaker: {
 	DisplayName: Cursebreaker
 	Tooltip:
@@ -7957,11 +7948,6 @@ StardustBomb: {
 StarlightStaff: {
 	DisplayName: Starlight Staff
 	Tooltip: Summons a stationary twinkle popper
-}
-
-AnimeSword: {
-	DisplayName: Anime Sword
-	Tooltip: Hold and release to slice through nearby enemies
 }
 
 HollowNail: {
@@ -8594,15 +8580,5 @@ SepulchreMirrorItem: {
 
 SepulchreWindowItem: {
 	DisplayName: Sepulchre Window
-	Tooltip: ""
-}
-
-ChaosGlyph: {
-	DisplayName: Chaos Glyph
-	Tooltip: ""
-}
-
-RageGlyph: {
-	DisplayName: Rage Glyph
 	Tooltip: ""
 }

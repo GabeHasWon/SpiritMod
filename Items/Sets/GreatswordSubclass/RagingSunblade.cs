@@ -356,6 +356,7 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 			{
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/slashdash") with { PitchVariance = 0.4f, Volume = 0.4f }, player.Center);
 				dashing = true;
+				player.GetModPlayer<DashSwordPlayer>().dashing = true;
 				Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<HeliosDash>(), Projectile.damage * 3, 0, player.whoAmI);
 			}
 
@@ -366,8 +367,8 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 				{
 					player.Center = Projectile.Center;
 					player.velocity = Vector2.Zero;
+					player.GetModPlayer<DashSwordPlayer>().dashing = false;
 				}
-				else player.GetModPlayer<DashSwordPlayer>().dashing = true;
 			}
 
 			if (!paused && Projectile.velocity.Length() <= 3 && !pausedBefore)

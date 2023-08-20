@@ -13,8 +13,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Radiant;
 		public override Color Color => new(234, 167, 51);
-		public override string Effect => "Radiant";
-		public override string Addendum => "Builds radiant energy when not dealing damage, empowering your next attack";
 
 		public override void SetDefaults()
 		{

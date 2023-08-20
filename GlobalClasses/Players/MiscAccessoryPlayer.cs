@@ -18,11 +18,9 @@ using SpiritMod.Projectiles.Summon;
 using SpiritMod.Items.Accessory.BowSummonItem;
 using SpiritMod.Projectiles.Summon.CimmerianStaff;
 using SpiritMod.Items.Accessory.GranitechDrones;
-using Terraria.DataStructures;
 using SpiritMod.Items.Accessory.Bauble;
 using SpiritMod.Items.Accessory.AceCardsSet;
 using SpiritMod.Projectiles;
-using Terraria.WorldBuilding;
 
 namespace SpiritMod.GlobalClasses.Players
 {

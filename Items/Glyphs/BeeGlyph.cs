@@ -8,10 +8,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Bee;
 		public override Color Color => new(255, 184, 31);
-		public override string Effect => "Honeyed";
-		public override string Addendum =>
-			"Grants honeyed when an enemy is slain\n" +
-			"Attacks periodically release bees";
 
 		public override void SetDefaults()
 		{

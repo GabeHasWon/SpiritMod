@@ -9,10 +9,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Phase;
 		public override Color Color => new(159, 122, 255);
-		public override string Effect => "Temporal";
-		public override string Addendum =>
-			"Weapon damage increases the faster you move, but decreases when moving slowly\n" +
-			"Consecutive hits grant a short burst of speed";
 
 		public override void SetDefaults()
 		{

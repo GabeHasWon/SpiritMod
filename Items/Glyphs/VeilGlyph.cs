@@ -8,8 +8,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Veil;
 		public override Color Color => new(53, 243, 82);
-		public override string Effect => "Guarding";
-		public override string Addendum => "Dealing damage builds a defensive veil around the user";
 
 		public override void SetDefaults()
 		{

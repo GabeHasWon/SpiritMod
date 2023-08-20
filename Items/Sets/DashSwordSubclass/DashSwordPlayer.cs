@@ -10,11 +10,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 		public bool dashing;
 		public bool hasDashCharge;
 
-		public override void ResetEffects()
-		{
-			holdingSword = false;
-			dashing = false;
-		}
+		public override void ResetEffects() => holdingSword = false;
 
 		public override void PreUpdate()
 		{
@@ -28,7 +24,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 				hasDashCharge = true;
 		}
 
-		public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable) => !dashing;
+		public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable) => dashing;
 	}
 
 	public class DashSwordLayer : PlayerDrawLayer

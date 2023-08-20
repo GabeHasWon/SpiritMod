@@ -10,8 +10,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Unholy;
 		public override Color Color => new(176, 221, 44);
-		public override string Effect => "Cursed";
-		public override string Addendum => "Enemies erupt into cursed phantoms on death";
 
 		public override void SetDefaults()
 		{

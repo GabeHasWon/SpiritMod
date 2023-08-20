@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
+using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Glyphs
@@ -20,8 +22,8 @@ namespace SpiritMod.Items.Glyphs
 		public virtual Texture2D Overlay => ModContent.Request<Texture2D>(Texture + "_Icon").Value;
 		public virtual Color Color => Color.White;
 		public virtual string ItemType => "weapon";
-		public abstract string Effect { get; }
-		public abstract string Addendum { get; }
+		public virtual string Effect => Language.GetTextValue($"Mods.SpiritMod.Items.{Name}.Effect");
+		public virtual string Addendum => Language.GetTextValue($"Mods.SpiritMod.Items.{Name}.Addendum");
 
 		public virtual bool CanApply(Item item) => item.IsWeapon();
 
@@ -31,7 +33,7 @@ namespace SpiritMod.Items.Glyphs
 			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/GlyphAttach"), player.Center);
 		}
 
-		// public override void SetStaticDefaults() => Tooltip.SetDefault(Addendum);
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<ChaosGlyph>();
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{

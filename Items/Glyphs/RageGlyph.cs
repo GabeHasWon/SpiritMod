@@ -9,8 +9,6 @@ namespace SpiritMod.Items.Glyphs
 	{
 		public override GlyphType Glyph => GlyphType.Rage;
 		public override Color Color => new(243, 102, 33);
-		public override string Effect => "Frenzied";
-		public override string Addendum => "Excess damage on kills is stored for your next attack";
 
 		public override void SetDefaults()
 		{
