@@ -89,8 +89,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 				if (Owner.HeldItem.channel && !Owner.channel) //Cancel the dash early
 					Counter = ChargeupTime + DashDuration - 1;
 
-				Owner.GetModPlayer<DashSwordPlayer>().dashing = true;
-				Owner.velocity = Vector2.Normalize(Projectile.velocity) * 80f; //* 16 * 8;
+				Owner.velocity = Vector2.Normalize(Projectile.velocity) * 80f;
 
 				float collisionPoint = 0;
 				var crossed = Main.npc.Where(x => (x.CanBeChasedBy(Projectile) || x.type == NPCID.TargetDummy) && x.active && Collision.CheckAABBvLineCollision(x.Hitbox.TopLeft(), x.Hitbox.Size(), startPos, Owner.Center, 50, ref collisionPoint)).OrderBy(x => x.Distance(startPos));
@@ -112,6 +111,8 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 				if (Counter >= (ChargeupTime + DashDuration + StrikeDelay + WaitTime))
 					Projectile.Kill();
 			}
+
+			Owner.GetModPlayer<DashSwordPlayer>().dashing = (Counter > ChargeupTime) && (Counter <= (ChargeupTime + DashDuration));
 
 			Owner.ChangeDir(Projectile.velocity.X < 0 ? -1 : 1);
 			Counter++;
@@ -150,6 +151,8 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 		public override bool? CanDamage() => shouldDamage ? null : false;
 
 		public override bool ShouldUpdatePosition() => false;
+
+		public override void Kill(int timeLeft) => Owner.GetModPlayer<DashSwordPlayer>().dashing = false; //Just in case the projectile dies before resetting this variable
 
 		public override bool AutoAimCursor() => Counter < ChargeupTime;
 	}

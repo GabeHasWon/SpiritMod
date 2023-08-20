@@ -13,7 +13,6 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword
 		{
 			// DisplayName.SetDefault("Anime Sword");
 			// Tooltip.SetDefault("Hold to slice through nearby enemies");
-			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()

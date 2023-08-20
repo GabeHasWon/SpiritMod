@@ -6139,6 +6139,21 @@ CryoSword: {
 		'''
 }
 
+AnimeSword: {
+	DisplayName: Anime Sword
+	Tooltip: Hold to slice through nearby enemies
+}
+
+BambooKendoBlade: {
+	DisplayName: Bamboo Kendo Blade
+	Tooltip: Right click to dash forward
+}
+
+BladeOfTheDragon: {
+	DisplayName: Blade of the Dragon
+	Tooltip: Hold to slice through nearby enemies
+}
+
 LightNovasVanity: {
 	DisplayName: LightNovas's Mask
 	Tooltip: "'Great for impersonating patrons!'"
@@ -7566,20 +7581,6 @@ Starblade: {
 		'''
 }
 
-BambooKendoBlade: {
-	DisplayName: Bamboo Kendo Blade
-	Tooltip: Right click to dash forward
-}
-
-BladeOfTheDragon: {
-	DisplayName: Blade of the Dragon
-	Tooltip:
-		'''
-		Hold and release to slice through nearby enemies
-		Build up a combo by repeatedly hitting enemies
-		'''
-}
-
 CurseBreaker: {
 	DisplayName: Cursebreaker
 	Tooltip:
@@ -7947,11 +7948,6 @@ StardustBomb: {
 StarlightStaff: {
 	DisplayName: Starlight Staff
 	Tooltip: Summons a stationary twinkle popper
-}
-
-AnimeSword: {
-	DisplayName: Anime Sword
-	Tooltip: Hold and release to slice through nearby enemies
 }
 
 HollowNail: {
