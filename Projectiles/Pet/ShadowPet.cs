@@ -18,9 +18,16 @@ namespace SpiritMod.Projectiles.Pet
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Shadow Pup");
-			Main.projFrames[Projectile.type] = 5;
-			Main.projPet[Projectile.type] = true;
+			Main.projFrames[Type] = 5;
+			Main.projPet[Type] = true;
+			ProjectileID.Sets.CharacterPreviewAnimations[Type] = ProjectileID.Sets.SimpleLoop(0, Main.projFrames[Type], 6)
+				.WithOffset(-8, 0)
+				.WithSpriteDirection(-1)
+				.WhenNotSelected(0, 0)
+				.WithCode(CustomAnimation);
 		}
+
+		public static void CustomAnimation(Projectile proj, bool walking) => (proj.ModProjectile as ShadowPet).State = walking ? STATE_RUNNING : STATE_IDLING;
 
 		public override void SetDefaults()
 		{
@@ -29,14 +36,14 @@ namespace SpiritMod.Projectiles.Pet
 			Projectile.penetrate = -1;
 		}
 
-		private int State
+		public int State
 		{
 			get => (int)Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-		private const int STATE_IDLING = 0;
-		private const int STATE_RUNNING = 1;
-		private const int STATE_FLYING = 2;
+		public const int STATE_IDLING = 0;
+		public const int STATE_RUNNING = 1;
+		public const int STATE_FLYING = 2;
 
 		private int pettingPlayer;
 

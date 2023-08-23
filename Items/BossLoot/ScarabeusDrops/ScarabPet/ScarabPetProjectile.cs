@@ -21,8 +21,27 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabPet
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Lil' Scarab");
-			Main.projFrames[Projectile.type] = 2;
-			Main.projPet[Projectile.type] = true;
+			Main.projFrames[Type] = 2;
+			Main.projPet[Type] = true;
+			ProjectileID.Sets.CharacterPreviewAnimations[Type]
+				.WithOffset(-12, 0)
+				.WithSpriteDirection(-1)
+				.WithCode(CustomAnimation);
+		}
+
+		public static void CustomAnimation(Projectile proj, bool walking)
+		{
+			if (walking)
+			{
+				if (++proj.frameCounter >= 5)
+				{
+					proj.frameCounter = 0;
+
+					if (++proj.frame > 11)
+						proj.frame = 9;
+				}
+			}
+			else proj.frame = 0;
 		}
 
 		public override void SetDefaults()
