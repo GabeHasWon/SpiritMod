@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Glyphs
 			Item.maxStack = 999;
 		}
 
-		public static void FreezeEffect(Player owner, Entity target, Projectile proj)
+		public static void FreezeEffect(Player owner, NPC target, Projectile proj)
 		{
 			bool projAttack = proj != null;
 			Vector2 position = projAttack ? proj.Center : target.Hitbox.ClosestPointInRect(owner.Center);
@@ -41,16 +41,8 @@ namespace SpiritMod.Items.Glyphs
 				Projectile.NewProjectile(owner.GetSource_OnHit(target), position, (velocity * Main.rand.NextFloat(4f, 8f)).RotatedByRandom(2f), ModContent.ProjectileType<MagicSpiral>(), 0, 0, owner.whoAmI);
 
 			float value = MathHelper.Max(owner.HeldItem.rare / ItemRarityID.Count, 0); //Increase in power based on the player's held item rarity
-			if (target is NPC npc)
-			{
-				float intensity = .002f - (.0015f * value);
-				npc.AddBuff(ModContent.BuffType<ArcaneFreeze>(), (int)MathHelper.Clamp((1f - (npc.lifeMax * intensity)) * 100, 30, 220));
-			}
-			else if (target is Player player)
-			{
-				float intensity = .01f - (.005f * value);
-				player.AddBuff(BuffID.Frozen, (int)MathHelper.Clamp((1f - (player.statLife * intensity)) * 100, 30, 220));
-			}
+			float intensity = .002f - (.0015f * value);
+			target.AddBuff(ModContent.BuffType<ArcaneFreeze>(), (int)MathHelper.Clamp((1f - (target.lifeMax * intensity)) * 100, 30, 220));
 		}
 	}
 }

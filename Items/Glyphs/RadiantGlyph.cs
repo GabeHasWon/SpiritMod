@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Glyphs
 			Item.maxStack = 999;
 		}
 
-		public static void RadiantStrike(Player owner, Entity target)
+		public static void RadiantStrike(Player owner, NPC target)
 		{
 			owner.ClearBuff(ModContent.BuffType<DivineStrike>());
 

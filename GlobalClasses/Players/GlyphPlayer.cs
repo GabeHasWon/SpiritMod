@@ -118,10 +118,8 @@ namespace SpiritMod.GlobalClasses.Players
 		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone) => SmartHitAnything(target, null, proj, hit, damageDone);
 		#endregion
 
-		private void SmartHitAnything(Entity target, Item item, Projectile proj, NPC.HitInfo info, int damage)
+		private void SmartHitAnything(NPC target, Item item, Projectile proj, NPC.HitInfo info, int damage)
 		{
-			int life = (target is NPC npc) ? npc.life : ((target is Player player) ? player.statLife : 0);
-
 			if (Glyph == GlyphType.Frost && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
 				FrostGlyph.FreezeEffect(Player, target, proj);
 			if (Glyph == GlyphType.Void && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
@@ -134,10 +132,10 @@ namespace SpiritMod.GlobalClasses.Players
 					RadiantGlyph.RadiantStrike(Player, target);
 			}
 
-			if (target is NPC && ((target as NPC).value <= 0 || (target as NPC).SpawnedFromStatue || (target as NPC).friendly)) //Don't let useless NPCs trigger widely beneficial effects
+			if (target.value <= 0 || target.SpawnedFromStatue || target.friendly) //Don't let useless NPCs trigger widely beneficial effects
 				return;
 
-			if (Glyph == GlyphType.Unholy && life <= 0)
+			if (Glyph == GlyphType.Unholy && target.life <= 0)
 				UnholyGlyph.Erupt(Player, target, damage / 3);
 			if (Glyph == GlyphType.Sanguine)
 				SanguineGlyph.DrainEffect(Player, target);
@@ -150,7 +148,7 @@ namespace SpiritMod.GlobalClasses.Players
 					BeeGlyph.ReleaseBees(Player, target, (int)(damage * .4f));
 					genericCounter = 0;
 				}
-				if (life <= 0)
+				if (target.life <= 0)
 					BeeGlyph.HoneyEffect(Player);
 			}
 			if (Glyph == GlyphType.Phase)
@@ -158,13 +156,13 @@ namespace SpiritMod.GlobalClasses.Players
 				if ((genericCounter = MathHelper.Clamp(genericCounter + (Player.HeldItem.useTime / 60f), 0, 1)) == 1)
 					Player.AddBuff(ModContent.BuffType<TemporalShift>(), (int)MathHelper.Clamp(Player.HeldItem.useTime * 2f, 30, 60));
 			}
-			if (Glyph == GlyphType.Rage && life <= 0)
-				frenzyDamage = Math.Max(damage - life, 0);
+			if (Glyph == GlyphType.Rage && target.life <= 0)
+				frenzyDamage = Math.Max(damage - target.life, 0);
 			if (Glyph == GlyphType.Veil)
 				veilCounter = MathHelper.Clamp(veilCounter + (Player.HeldItem.useTime / 300f), 0, 1);
 		}
 
-		private void SmartModifyHitAnything(Entity target, Item item, Projectile proj, ref NPC.HitModifiers mods)
+		private void SmartModifyHitAnything(NPC target, Item item, Projectile proj, ref NPC.HitModifiers mods)
 		{
 			if (Glyph == GlyphType.Rage)
 			{

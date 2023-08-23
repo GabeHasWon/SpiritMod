@@ -8,20 +8,7 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 {
 	public class SpecialSellItem : GlobalItem
 	{
-		private static bool IsSellItem(Item item) => item.ModItem is ISpecialSellItem sellItem && sellItem.SellAmount() > 0;
-
-		public override void Load() => Terraria.On_Player.SellItem += OnSell;
-
-		public override void Unload() => Terraria.On_Player.SellItem -= OnSell;
-
-		public override void UpdateInventory(Item item, Player player)
-		{
-			if (IsSellItem(item) && (item.shopCustomPrice != null || item.shopSpecialCurrency != -1))
-			{
-				item.shopCustomPrice = null;
-				item.shopSpecialCurrency = -1;
-			} //Fixes items displaying their SpecialPrice tooltip as if they're still being sold by an NPC
-		}
+		public static bool IsSellItem(Item item) => item.ModItem is ISpecialSellItem sellItem && sellItem.SellAmount() > 0;
 
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{
@@ -41,24 +28,38 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 				priceLine.OverrideColor = specialSell.SellColor();
 			}
 		}
+	}
 
-		public static bool OnSell(Terraria.On_Player.orig_SellItem orig, Player self, Item item, int stack)
+	public class SpecialSellPlayer : ModPlayer
+	{
+		public override void PostBuyItem(NPC vendor, Item[] shopInventory, Item item)
 		{
-			if (IsSellItem(item))
+			if (SpecialSellItem.IsSellItem(item))
+			{
+				item.shopCustomPrice = null;
+				item.shopSpecialCurrency = -1;
+			}
+		}
+
+		public override bool CanSellItem(NPC vendor, Item[] shopInventory, Item item)
+		{
+			if (SpecialSellItem.IsSellItem(item))
 			{
 				var specialSell = item.ModItem as ISpecialSellItem;
 
-				self.QuickSpawnItem(self.GetSource_Misc("SellItem"), specialSell.SellType(), item.stack * specialSell.SellAmount());
+				int numLoops = (item.stack / item.maxStack) + 1;
+				for (int i = 0; i < numLoops; i++)
+					Player.QuickSpawnItem(Player.GetSource_Misc("SellItem"), specialSell.SellType(), item.stack / numLoops * specialSell.SellAmount());
+				
 				item.shopSpecialCurrency = specialSell.CurrencyID();
 				item.shopCustomPrice = specialSell.SellAmount();
 			}
-			return orig(self, item, stack);
+			return base.CanSellItem(vendor, shopInventory, item);
 		}
 	}
 
 	/// <summary>
-	/// Allows an item to be sold and repurchased for the specified special currency. 
-	/// Remember that an item's default coin value is still considered here.
+	/// Allows an item to be sold and repurchased for the specified special currency.
 	/// </summary>
 	public interface ISpecialSellItem
 	{

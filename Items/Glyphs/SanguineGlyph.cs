@@ -20,19 +20,17 @@ namespace SpiritMod.Items.Glyphs
 			Item.maxStack = 999;
 		}
 
-		public static void DrainEffect(Player owner, Entity target)
+		public static void DrainEffect(Player owner, NPC target)
 		{
 			owner.AddBuff(ModContent.BuffType<SanguineRegen>(), (int)MathHelper.Clamp(owner.HeldItem.useTime * 2, 30, 120));
 
 			int cystType = ModContent.ProjectileType<BloodyCyst>();
-			if (target is NPC npc)
+			int numOnTarget = (owner.ownedProjectileCounts[cystType] > 0) ? Main.projectile.Where(x => x.active && (x.type == cystType) && (x.owner == owner.whoAmI) && (x.ModProjectile is BloodyCyst bloodyCyst) && (bloodyCyst.TargetWhoAmI == target.whoAmI)).Count() : 0;
+			
+			if (numOnTarget < 5)
 			{
-				int numOnTarget = (owner.ownedProjectileCounts[cystType] > 0) ? Main.projectile.Where(x => x.active && (x.type == cystType) && (x.owner == owner.whoAmI) && (x.ModProjectile is BloodyCyst bloodyCyst) && (bloodyCyst.TargetWhoAmI == target.whoAmI)).Count() : 0;
-				if (numOnTarget < 5)
-				{
-					Vector2 position = npc.position + new Vector2(npc.width * Main.rand.NextFloat(), npc.height * Main.rand.NextFloat());
-					Projectile.NewProjectile(owner.GetSource_OnHit(target), position, Vector2.UnitX.RotatedByRandom(5f), ModContent.ProjectileType<BloodyCyst>(), 0, 0, Main.myPlayer, npc.whoAmI);
-				}
+				Vector2 position = target.position + new Vector2(target.width * Main.rand.NextFloat(), target.height * Main.rand.NextFloat());
+				Projectile.NewProjectile(owner.GetSource_OnHit(target), position, Vector2.UnitX.RotatedByRandom(5f), ModContent.ProjectileType<BloodyCyst>(), 0, 0, Main.myPlayer, target.whoAmI);
 			}
 		}
 	}

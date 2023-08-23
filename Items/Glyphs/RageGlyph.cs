@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Glyphs
 			Item.maxStack = 999;
 		}
 
-		public static void RageEffect(Player owner, Entity target, Projectile proj)
+		public static void RageEffect(Player owner, NPC target, Projectile proj)
 		{
 			bool projAttack = proj != null;
 			Vector2 position = projAttack ? proj.Center : target.Hitbox.ClosestPointInRect(owner.Center);

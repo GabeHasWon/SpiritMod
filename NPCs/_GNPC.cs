@@ -569,8 +569,8 @@ namespace SpiritMod.NPCs
 
 			if (player.HasBuff(ModContent.BuffType<LoomingPresence>()))
 			{
-				spawnRate = (int)(spawnRate * 0.8);
-				maxSpawns += 2;
+				spawnRate = (int)(spawnRate * 0.8f);
+				maxSpawns = (int)(maxSpawns * 1.1f);
 			}
 		}
 

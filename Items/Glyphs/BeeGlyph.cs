@@ -16,9 +16,9 @@ namespace SpiritMod.Items.Glyphs
 			Item.maxStack = 999;
 		}
 
-		public static void ReleaseBees(Player owner, Entity target, int damage)
+		public static void ReleaseBees(Player owner, NPC target, int damage)
 		{
-			if ((owner.whoAmI != Main.myPlayer) || (target is NPC npc && !npc.CanLeech()) || (damage <= 0))
+			if ((owner.whoAmI != Main.myPlayer) || !target.CanLeech() || (damage <= 0))
 				return;
 
 			int count = Main.rand.Next(1, 3);
