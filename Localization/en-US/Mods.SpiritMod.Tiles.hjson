@@ -1,4 +1,4 @@
-﻿SpiritPylon.MapEntry: Spirit Pylon
+SpiritPylon.MapEntry: Spirit Pylon
 AsteroidPylon.MapEntry: Asteroid Pylon
 BriarPylon.MapEntry: Briar Pylon
 KoiTotem_Tile.MapEntry: Koi Totem
@@ -265,6 +265,8 @@ HiveMap.MapEntry: Map
 MarbleMap.MapEntry: Map
 MushroomMap.MapEntry: Map
 ScrunklyPainting.MapEntry: Scrunkly
+TheBadPainting.MapEntry: Painting
+TheGoodPainting.MapEntry: Painting
 PirateCrate.MapEntry: Crate
 AsteroidPylonTile.MapEntry: $Mods.SpiritMod.MapObject.AsteroidPylon
 BriarPylonTile.MapEntry: $Mods.SpiritMod.MapObject.BriarPylon

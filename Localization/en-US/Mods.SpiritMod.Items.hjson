@@ -4632,6 +4632,16 @@ ScrunklyPaintingItem: {
 	Tooltip: "'B. F. Jinx'"
 }
 
+TheBadPaintingItem: {
+	DisplayName: The Bad
+	Tooltip: "'Professor Jones'"
+}
+
+TheGoodPaintingItem: {
+	DisplayName: The Good
+	Tooltip: "'Professor Jones'"
+}
+
 PottedSakura: {
 	DisplayName: Sakura Bonsai
 	Tooltip: ""
