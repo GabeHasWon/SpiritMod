@@ -19,8 +19,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Ancient Hatchling");
-			Main.projFrames[Projectile.type] = 2;
-			Main.projPet[Projectile.type] = true;
+			Main.projFrames[Type] = 2;
+			Main.projPet[Type] = true;
 			ProjectileID.Sets.TrailCacheLength[Type] = 6;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
@@ -176,26 +176,39 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 		{
 			const int FrameOffsetY = 36;
 
+			SpriteEffects effects = (Projectile.spriteDirection == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			Rectangle source = new Rectangle(0, FrameOffsetY * Projectile.frame, 40, 34);
-
-			if (Projectile.frame == 0) //If frame is 0, adjust frame so it rolls properly
-				source = new(8, 8, 22, 26);
-
-			if (Projectile.frame > 1 && Projectile.frame <= 10) //If frame is between 2 and 10 inclusive, adjust frame and position
-			{
-				source.X = 34;
-				source.Y = FrameOffsetY * (Projectile.frame - 2);
-			}
-
 			Vector2 drawPos = Projectile.Center - Main.screenPosition + Vector2.UnitY * Projectile.gfxOffY; //Draw position
 
-			if (Projectile.frame == 0) //Up and down sine wave to match the egg shape
+			if (Projectile.isAPreviewDummy)
 			{
-				float sineY = (float)Math.Pow(Math.Sin(Projectile.rotation), 2) * 4;
-				drawPos.Y += 2 + sineY;
+				if (Projectile.frame > 0)
+					source.X = 36;
+				else
+					drawPos -= new Vector2(9, 4);
+
+				drawPos += new Vector2(10, -2);
+				source.Y = (int)MathHelper.Min(source.Y, (source.Height + 2) * 8);
+				effects = SpriteEffects.None;
+			}
+			else
+			{
+				if (Projectile.frame == 0) //If frame is 0, adjust frame so it rolls properly
+					source = new(8, 8, 22, 26);
+
+				if (Projectile.frame > 1 && Projectile.frame <= 10) //If frame is between 2 and 10 inclusive, adjust frame and position
+				{
+					source.X = 34;
+					source.Y = FrameOffsetY * (Projectile.frame - 2);
+				}
+
+				if (Projectile.frame == 0) //Up and down sine wave to match the egg shape
+				{
+					float sineY = (float)Math.Pow(Math.Sin(Projectile.rotation), 2) * 4;
+					drawPos.Y += 2 + sineY;
+				}
 			}
 
-			SpriteEffects effects = (Projectile.spriteDirection == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 			Main.spriteBatch.Draw(TextureAssets.Projectile[Type].Value, drawPos, source, lightColor, Projectile.rotation, Origin, Vector2.One, effects, 0);
 			//Draw a glowmask
 			Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, drawPos, source, Projectile.GetAlpha(Color.White), Projectile.rotation, Origin, Vector2.One, effects, 0);

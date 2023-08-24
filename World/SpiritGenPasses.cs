@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SpiritMod.Items;
 using SpiritMod.Items.BossLoot.StarplateDrops;
 using SpiritMod.Items.Sets.FloranSet;
 using SpiritMod.Items.Sets.GraniteSet;
@@ -11,6 +12,7 @@ using SpiritMod.Tiles.Ambient.SurfaceIce;
 using SpiritMod.Tiles.Ambient.Underground;
 using SpiritMod.Tiles.Block;
 using SpiritMod.Tiles.Furniture;
+using SpiritMod.Tiles.Furniture.Paintings;
 using SpiritMod.Tiles.Piles;
 using SpiritMod.Tiles.Walls.Natural;
 using SpiritMod.Utilities;
@@ -1236,6 +1238,33 @@ namespace SpiritMod.World
 						WorldGen.OreRunner(x, y, WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(4, 9), (ushort)ModContent.TileType<MarbleOre>());
 				}
 			}
+
+			int repeats = 0;
+			int maxRepeats = 3;
+			for (int i = 0; i < (maxRepeats * GlobalExtensions.WorldSize); ++i)
+			{
+				if (repeats >= (maxRepeats * GlobalExtensions.WorldSize))
+					continue;
+
+				retry:
+				int x = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
+				int y = WorldGen.genRand.Next(Main.UnderworldLayer, Main.maxTilesY);
+
+				if (Framing.GetTileSafely(x, y).WallType == WallID.ObsidianBrickUnsafe)
+				{
+					int type = ModContent.TileType<TheBadPainting>();
+					TileObjectData data = TileObjectData.GetTileData(type, 0);
+
+					int originY = data is not null ? data.Origin.Y : 1;
+					int height = data is not null ? data.Height : 1;
+
+					if (WorldGen.PlaceObject(x, y - height + originY, type, true))
+						NetMessage.SendObjectPlacement(-1, x, y - height + originY, type, 0, 0, -1, -1);
+
+					repeats++;
+				}
+				else goto retry;
+			} //Place "The Bad" paintings
 
 			int[] mushSet = GlobalExtensions.TileSet<WhiteMushroom2x2, WhiteMushroom2x3, RedMushroom1x1, RedMushroom2x2, RedMushroom3x2, BrownMushrooms, BrownMushroomLarge>();
 			AddDecorSpam("Mushrooms", mushSet, TileObjectData.GetTileData(ModContent.TileType<WhiteMushroom2x2>(), 0).AnchorValidTiles, 500, (int)Main.worldSurface, Main.maxTilesY - 200);

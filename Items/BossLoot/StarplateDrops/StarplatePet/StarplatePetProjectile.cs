@@ -4,6 +4,7 @@ using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Tiles.Ambient;
 using System;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,8 +31,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Starplate Miniature");
-			Main.projFrames[Projectile.type] = 2;
-			Main.projPet[Projectile.type] = true;
+			Main.projFrames[Type] = 16;
+			Main.projPet[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -177,38 +178,58 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplatePet
 		{
 			const int FRAME_WIDTH = 24;
 			const int FRAME_HEIGHT = 24;
+			Texture2D tex = TextureAssets.Projectile[Type].Value;
 
-			Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-			SpriteEffects effect = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-			int offset = 36 * Projectile.frame;
-			Rectangle rect = new Rectangle(0, 6 + offset, FRAME_WIDTH, FRAME_HEIGHT);
-
-			if (State >= BODY_VAR1 && State != TAIL)
-				rect = new Rectangle(State == BODY_VAR1 ? 26 : 48, 6 + offset, FRAME_WIDTH - 4, FRAME_HEIGHT);
-			else if (State == TAIL)
-				rect = new Rectangle(70, 6 + offset, FRAME_WIDTH - 8, FRAME_HEIGHT);
-
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter > 6)
+			if (Projectile.isAPreviewDummy)
 			{
-				Projectile.frameCounter = 0;
-
-				if (flipDir)
-				{
-					if (++Projectile.frame > 15)
-						Projectile.frame = 0;
-				}
-				else
-				{
-					if (--Projectile.frame < 0)
-						Projectile.frame = 15;
-				}
+				DrawCustomPreview(ref lightColor, tex);
 			}
+			else
+			{
+				SpriteEffects effect = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+				int offset = 36 * Projectile.frame;
+				Rectangle rect = new Rectangle(0, 6 + offset, FRAME_WIDTH, FRAME_HEIGHT);
 
-			Main.EntitySpriteDraw(tex, Projectile.position - Main.screenPosition, rect, lightColor, Projectile.rotation, rect.Size() / 2f, 1f, effect, 0);
-			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.position - Main.screenPosition, rect, Color.White, Projectile.rotation, rect.Size() / 2f, 1f, effect, 0);
+				if (State >= BODY_VAR1 && State != TAIL)
+					rect = new Rectangle(State == BODY_VAR1 ? 26 : 48, 6 + offset, FRAME_WIDTH - 4, FRAME_HEIGHT);
+				else if (State == TAIL)
+					rect = new Rectangle(70, 6 + offset, FRAME_WIDTH - 8, FRAME_HEIGHT);
 
+				Projectile.frameCounter++;
+				if (Projectile.frameCounter > 6)
+				{
+					Projectile.frameCounter = 0;
+
+					if (flipDir)
+					{
+						if (++Projectile.frame > 15)
+							Projectile.frame = 0;
+					}
+					else
+					{
+						if (--Projectile.frame < 0)
+							Projectile.frame = 15;
+					}
+				}
+
+				Main.EntitySpriteDraw(tex, Projectile.position - Main.screenPosition, rect, lightColor, Projectile.rotation, rect.Size() / 2f, 1f, effect, 0);
+				Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.position - Main.screenPosition, rect, Color.White, Projectile.rotation, rect.Size() / 2f, 1f, effect, 0);
+			}
 			return false;
+		}
+
+		private void DrawCustomPreview(ref Color lightColor, Texture2D tex)
+		{
+			int frame = (int)(++Projectile.localAI[0] / 5) % Main.projFrames[Type];
+
+			int numFramesX = 3;
+			for (int i = 0; i < numFramesX; i++)
+			{
+				Rectangle rect = tex.Frame(numFramesX, Main.projFrames[Type], i, frame, -2, -2);
+				Vector2 position = Projectile.Center + new Vector2(14, -10) - (Vector2.UnitX * ((rect.Width - 4) * i));
+
+				Main.EntitySpriteDraw(tex, position - Main.screenPosition, rect, lightColor, Projectile.rotation, rect.Size() / 2f, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
+			}
 		}
 	}
 }

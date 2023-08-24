@@ -22,6 +22,9 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops.MJWPet
 			Main.projPet[Type] = true; 
 
 			ProjectileID.Sets.LightPet[Type] = true;
+			ProjectileID.Sets.CharacterPreviewAnimations[Type] = ProjectileID.Sets.SimpleLoop(0, Main.projFrames[Type], 6)
+				.WithSpriteDirection(-1)
+				.WithCode(DelegateMethods.CharacterPreview.Float);
 		}
 
 		public override void SetDefaults()

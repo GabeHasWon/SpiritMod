@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -25,9 +26,8 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Atlas Jr.");
-			Main.projFrames[Projectile.type] = 2;
-			Main.projPet[Projectile.type] = true;
-
+			Main.projFrames[Type] = 8;
+			Main.projPet[Type] = true;
 			ProjectileID.Sets.TrailCacheLength[Type] = 8;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
@@ -165,16 +165,42 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Texture2D ray = Mod.Assets.Request<Texture2D>("Textures/Ray_2").Value;
-			Vector2 offset = new Vector2((Projectile.direction == -1) ? 4 : 0, -4);
-			Color color = (Color.Purple * 1.8f * (1f - (float)(Projectile.velocity.Length() * 0.2f))) with { A = 0 };
+			if (Projectile.isAPreviewDummy)
+			{
+				DrawCustomPreview(ref lightColor);
+			}
+			else
+			{
+				Texture2D ray = Mod.Assets.Request<Texture2D>("Textures/Ray_2").Value;
+				Vector2 offset = new Vector2((Projectile.direction == -1) ? 4 : 0, -4);
+				Color color = (Color.Purple * 1.8f * (1f - (float)(Projectile.velocity.Length() * 0.2f))) with { A = 0 };
 
-			Main.spriteBatch.Draw(ray, Projectile.oldPos[1] + (Projectile.Size / 2) + offset - Main.screenPosition, null, color, 
-				Projectile.rotation, new Vector2(ray.Width / 2, 0), new Vector2(1.2f, 0.3f) * Projectile.scale, SpriteEffects.None, 0);
+				Main.spriteBatch.Draw(ray, Projectile.oldPos[1] + (Projectile.Size / 2) + offset - Main.screenPosition, null, color,
+					Projectile.rotation, new Vector2(ray.Width / 2, 0), new Vector2(1.2f, 0.3f) * Projectile.scale, SpriteEffects.None, 0);
 
-			foreach (var item in _parts)
-				item.Draw();
+				foreach (var item in _parts)
+					item.Draw();
+			}
 			return false;
+		}
+
+		private void DrawCustomPreview(ref Color lightColor)
+		{
+			Texture2D tex = TextureAssets.Projectile[Type].Value;
+			int frame = (int)(++Projectile.localAI[0] / 5) % Main.projFrames[Type];
+			Vector2 position = Projectile.Center;
+
+			Texture2D ray = Mod.Assets.Request<Texture2D>("Textures/Ray_2").Value;
+			Color color = (Color.Purple * 1.8f) with { A = 0 };
+
+			Main.spriteBatch.Draw(ray, position - Main.screenPosition, null, color, Projectile.rotation, new Vector2(ray.Width / 2, 0), new Vector2(1.2f, 0.3f) * Projectile.scale, SpriteEffects.None, 0);
+
+			int numFramesX = 4;
+			for (int i = 0; i < numFramesX; i++)
+			{
+				Rectangle rect = tex.Frame(numFramesX, Main.projFrames[Type], i, frame, -2, -2);
+				Main.EntitySpriteDraw(tex, position - Main.screenPosition, rect, lightColor, Projectile.rotation, rect.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+			}
 		}
 	}
 }

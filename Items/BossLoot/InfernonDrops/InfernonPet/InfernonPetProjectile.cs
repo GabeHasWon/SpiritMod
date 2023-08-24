@@ -25,23 +25,25 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonPet
 			get => (int)Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
+
 		private const int WALKING = 0;
 		private const int IDLING = 1;
 		private const int RUNNING = 2;
 		private const int CHASING = 3;
-		private float Counter
-		{
-			get => Projectile.ai[1];
-			set => Projectile.ai[1] = value;
-		}
+
+		private ref float Counter => ref Projectile.ai[1];
 
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Inferno");
-			Main.projFrames[Projectile.type] = 9;
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-			Main.projPet[Projectile.type] = true;
+			Main.projFrames[Type] = 9;
+			ProjectileID.Sets.TrailCacheLength[Type] = 5;
+			ProjectileID.Sets.TrailingMode[Type] = 0;
+			Main.projPet[Type] = true;
+			ProjectileID.Sets.CharacterPreviewAnimations[Type] = ProjectileID.Sets.SimpleLoop(0, Main.projFrames[Type], 6)
+				.WithOffset(-20, 0)
+				.WithSpriteDirection(-1)
+				.WhenNotSelected(0, 0);
 		}
 
 		public override void SetDefaults()
