@@ -7,9 +7,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class AnglerStatueQuest : Quest
     {
-        public override string QuestName => "Fishy Business";
-		public override string QuestClient => "The Angler";
-		public override string QuestDescription => "I'd like to think that I'm the best fisherman in the world. Actually, I know I am! But I've heard some pesky rumors about crates washing ashore that are filled with way more fish than I could catch. I need you to go to the beach and prove those rumors wrong. Why? Because I said so! Hop to it!";
 		public override int Difficulty => 1;
 		public override string QuestCategory => "Forager";
 
@@ -24,8 +21,8 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		private AnglerStatueQuest()
         {
 			TaskBuilder branch1 = new TaskBuilder();
-			branch1.AddTask(new RetrievalTask(ItemID.RedSnapper, 3424, "Appease him by catching"))
-			       .AddTask(new GiveNPCTask(NPCID.Angler, ItemID.RedSnapper, 3424, "How is this supposed to make me feel better? Are you trying to show me up, too?! You should just stick to running my errands and catching my fish. Thanks for nothing!", "Give the Red Snappers to the Angler", true, true));
+			branch1.AddTask(new RetrievalTask(ItemID.RedSnapper, 3424, GetText(ShortLangKey + ".Appease")))
+			       .AddTask(new GiveNPCTask(NPCID.Angler, ItemID.RedSnapper, 3424, "", "Give the Red Snappers to the Angler", true, true));
 		
 			TaskBuilder branch2 = new TaskBuilder();
 			branch2.AddTask(new TalkNPCTask(NPCID.Guide, "The Angler's upset, huh? Well, he is just a kid- I suppose it makes sense for him to be hurt by something like this. This may be a bit, well, demanding, but I suppose you should check in with him to see if anything would make him feel better.", "Or ask the Guide what to do"))

@@ -7,9 +7,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class SlayerQuestClown : Quest
     {
-        public override string QuestName => "No Laughing Matter";
-		public override string QuestClient => "The Party Girl";
-		public override string QuestDescription => "I was planning a party last week when these DISGUSTING clowns showed up and cramped my style. They blew up my entire venue, so now it's personal. I want you to find those clowns and end them. There can only be one partyholic around these parts.";
+		public override int QuestClientID => NPCID.PartyGirl;
 		public override int Difficulty => 3;
 		public override string QuestCategory => "Slayer";
 

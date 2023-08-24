@@ -6,9 +6,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class SlayerQuestUGDesert : Quest
     {
-        public override string QuestName => "To Go Deeper";
-		public override string QuestClient => "The Adventurer";
-		public override string QuestDescription => "We need to go deeper! That's right, deeper into the desert to slay those pesky terrors that live down there. They've made spelunkin' so difficult for some local miners, and I need you to help clear the path for them!";
 		public override int Difficulty => 3;
 		public override string QuestCategory => "Slayer";
 
@@ -19,7 +16,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 			(ModContent.ItemType<Items.Armor.CowboySet.CowboyBody>(), 1),
 			(ModContent.ItemType<Items.Armor.CowboySet.CowboyLegs>(), 1),
 			(ModContent.ItemType<Items.Weapon.Thrown.TargetBottle>(), 25),
-			(Terraria.ID.ItemID.SilverCoin, 90)
+			(ItemID.SilverCoin, 90)
 		};
 
 

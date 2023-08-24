@@ -15,7 +15,7 @@ FullCompleteBestiary: All of Spirit's bestiary is complete
 IsCompleted: quest is completed
 FirstAdventureFinished: First Adventure {$IsCompleted}
 FishyBusinessFinished: Fishy Business {$IsCompleted}
-SanctuaryNightlightsFinished: Sanctuary Nightlights {$IsCompleted}
+SanctuaryNightlightsFinished: Sanctuary - Nightlights {$IsCompleted}
 SpaceRocksFinished: Space Rocks {$IsCompleted}
 RockyRoadFinished: Rocky Road {$IsCompleted}
 ForgottenCivilizationsFinished: Forgotten Civilizations {$IsCompleted}
@@ -27,7 +27,7 @@ UnholyUndertakingFinished: Unholy Undertaking {$IsCompleted}
 DecrepitDepthsFinished: Decrepit Depths {$IsCompleted}
 TowerOrHideoutQuestFinished: Breaking And Entering or Friend Safari are completed
 ItsNoSalmonFinished: It's No Salmon... {$IsCompleted}
-SanctuarySporeSalvageFinished: Sanctuary Spore Salvage {$IsCompleted}
+SanctuarySporeSalvageFinished: Sanctuary - Spore Salvage {$IsCompleted}
 WhyZombiesFinished: Zombies... Why Zombies {$IsCompleted}
 BeneathTheIceFinished: Beneath the Ice {$IsCompleted}
 FloweryFiendsFinished: Flowery Fiends {$IsCompleted}

@@ -114,7 +114,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 
 			// add a progress bracket at the end like: (x/y)
 			if (showProgress)
-				builder.Append(" [c/97E2E2:(").Append(_killCount).Append("/").Append(_killsRequired).Append(")]");
+				builder.Append(" [c/97E2E2:(").Append(_killCount).Append('/').Append(_killsRequired).Append(")]");
 
 			return builder.ToString();
 		}

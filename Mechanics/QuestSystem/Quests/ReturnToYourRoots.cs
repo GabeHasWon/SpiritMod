@@ -5,9 +5,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class ReturnToYourRoots : Quest
     {
-        public override string QuestName => "A Return to Your Roots";
-		public override string QuestClient => "The Adventurer";
-		public override string QuestDescription => "You know, while I was trapped down there, I noticed something...apparently, all the roots in the Briar connect to one central... thing. I don't know what it is, but I'm not going to find out for myself...at least not for a while. Could you take a look?";
 		public override int Difficulty => 4;
 		public override string QuestCategory => "Main";
 

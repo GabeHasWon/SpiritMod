@@ -3,14 +3,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
 using SpiritMod.Items.Sets.MaterialsMisc.QuestItems;
+using SpiritMod.NPCs.Town;
 
 namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class IceDeityQuest : Quest
     {
-        public override string QuestName => "Beneath the Ice";
-		public override string QuestClient => "The Enchanter";
-		public override string QuestDescription => "Welcome, friend! I've got a bit of an unusual request for you today. You see, I've sensed some strange energy emanating from the frozen tundra as of late. I'd like for you to venture there and learn more, but not before we gain some knowledge beforehand. First, let's ask around.";
+		public override int QuestClientID => ModContent.NPCType<RuneWizard>();
 		public override int Difficulty => 3;
 		public override string QuestCategory => "Explorer";
 

@@ -5,9 +5,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class AncestralWorship : Quest
     {
-        public override string QuestName => "Ancestral Worship";
-		public override string QuestClient => "The Adventurer";
-		public override string QuestDescription => "When I was explorin' the Briar with Professor Laywatts and her team, I remember her talkin' about some massive statues the old Briar dwellers used to construct. They've all been destroyed over time, but maybe we could create a replica right here?";
 		public override int Difficulty => 1;
 		public override string QuestCategory => "Designer";
 
@@ -22,7 +19,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private AncestralWorship()
         {
-            _tasks.AddTask(new RetrievalTask(ModContent.ItemType<Items.Placeable.Furniture.Reach.TreemanStatue>(), 1, "Craft"));
+            _tasks.AddTask(new RetrievalTask(ModContent.ItemType<Items.Placeable.Furniture.Reach.TreemanStatue>(), 1, QuestManager.Localization("Craft")));
         }
     }
 }

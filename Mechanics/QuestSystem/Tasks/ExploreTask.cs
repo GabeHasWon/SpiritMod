@@ -68,7 +68,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			{
 				float travelled = _distancedTravelled > _requiredDistance ? _requiredDistance : _distancedTravelled;
 				float progress = travelled / _requiredDistance * 100f;
-				builder.Append(" [c/97E2E2:(").Append(progress.ToString("N2")).Append("%").Append(")]");
+				builder.Append(" [c/97E2E2:(").Append(progress.ToString("N2")).Append('%').Append(")]");
 			}
 
 			return builder.ToString();

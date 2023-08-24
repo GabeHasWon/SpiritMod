@@ -174,18 +174,18 @@ namespace SpiritMod.NPCs.DesertBandit
 		{
 			if (firstButton)
 			{
-				if (Main.npcChatText == TravelingMerchantDesertQuest.ThankText && Main.LocalPlayer.HasItem(ModContent.ItemType<RoyalCrown>()))
-				{
-					NPC.localAI[2] = -1;
+				//if (Main.npcChatText == TravelingMerchantDesertQuest.ThankText && Main.LocalPlayer.HasItem(ModContent.ItemType<RoyalCrown>()))
+				//{
+				//	NPC.localAI[2] = -1;
 
-					for (int i = 0; i < Main.LocalPlayer.inventory.Length; ++i)
-					{
-						Item item = Main.LocalPlayer.inventory[i];
-						if (item.type == ModContent.ItemType<RoyalCrown>() && !item.IsAir)
-							item.TurnToAir();
-					}
-				}
-				else
+				//	for (int i = 0; i < Main.LocalPlayer.inventory.Length; ++i)
+				//	{
+				//		Item item = Main.LocalPlayer.inventory[i];
+				//		if (item.type == ModContent.ItemType<RoyalCrown>() && !item.IsAir)
+				//			item.TurnToAir();
+				//	}
+				//}
+				//else
 					Main.npcChatText = "Either leave me be or hand me the crown. It's up to you.";
 			}
 		}

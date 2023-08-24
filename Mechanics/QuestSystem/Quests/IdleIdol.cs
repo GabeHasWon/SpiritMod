@@ -5,9 +5,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
 	public class IdleIdol : Quest
     {
-        public override string QuestName => "Idle Idol";
-		public override string QuestClient => "The Adventurer";
-		public override string QuestDescription => "The sands of the desert hide a lot of secrets beneath 'em. There's supposed to be an Ancient Ziggurat buried near the surface of one of those wastelands. Could ya head down there and scavenge some relics from me? ";
 		public override int Difficulty => 2;
 		public override string QuestCategory => "Main";
 

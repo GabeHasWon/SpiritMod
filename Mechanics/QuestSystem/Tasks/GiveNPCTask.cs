@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace SpiritMod.Mechanics.QuestSystem.Tasks
 {
@@ -18,7 +19,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 		public readonly string NPCText = "Hey thanks for the stuff!";
 
 		private readonly int _npcType;
-		private readonly string _objective;
+		private readonly LocalizedText _objective;
 		private readonly int[] _itemIDs;
 		private readonly int[] _itemStacks;
 		private readonly int _optionalReward;
@@ -28,10 +29,10 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 
 		public GiveNPCTask() { }
 
-		public GiveNPCTask(int npcType, int[] giveItem, int[] stack, string text, string objective = null, bool requireAll = true, bool takeItems = true, int? optionalReward = null)
+		public GiveNPCTask(int npcType, int[] giveItem, int[] stack, string text, string objectiveKey = null, bool requireAll = true, bool takeItems = true, int? optionalReward = null)
 		{
 			_npcType = npcType;
-			_objective = objective;
+			_objective = QuestManager.Localization(objectiveKey);
 			_itemIDs = giveItem;
 			_itemStacks = stack;
 

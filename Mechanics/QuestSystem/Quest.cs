@@ -9,6 +9,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
 using SpiritMod.UI.Elements;
+using Terraria.Localization;
+using SpiritMod.NPCs.Town;
 
 namespace SpiritMod.Mechanics.QuestSystem
 {
@@ -27,11 +29,29 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 		public QuestTask CurrentTask => _currentTask;
 
-		public virtual int Difficulty => 1;
+		public virtual string QuestLangKey => GetType().Name;
+
+		/// <summary>
+		/// Full path: <code>"Mods.SpiritMod.Quests.QuestInfo." + QuestLangKey</code>
+		/// </summary>
+		public string FullLangKey => "Mods.SpiritMod.Quests.QuestInfo." + QuestLangKey;
+
+		/// <summary>
+		/// Quest-only path, mainly for use in <see cref="QuestManager.Localization(string)"/> or <see cref="QuestManager.LocalizationValue(string)"/>.<br/>
+		/// Path: <code>"QuestInfo." + QuestLangKey</code>
+		/// </summary>
+		public string ShortLangKey => "QuestInfo." + QuestLangKey;
+
+		public string QuestName => Language.GetTextValue(FullLangKey + ".Name");
+		public string QuestDescription => Language.GetTextValue(FullLangKey + ".Description");
+
+		public virtual int QuestClientID => ModContent.NPCType<Adventurer>();
+		public virtual string QuestClientOverride => null;
+		public string QuestClient => QuestClientOverride ?? QuestManager.LocalizationValue("The") + Lang.GetNPCNameValue(QuestClientID);
+
 		public virtual string QuestCategory => "";
-		public virtual string QuestName => "";
-		public virtual string QuestDescription => "";
-		public virtual string QuestClient => "";
+
+		public virtual int Difficulty => 1;
 		public virtual (int, int)[] QuestRewards => null;
 		public virtual bool TutorialActivateButton => false;
 		public virtual Texture2D QuestImage { get; set; }
@@ -74,6 +94,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 			_tasks = new TaskBuilder();
 		}
 
+		public LocalizedText GetText(string key) => QuestManager.Localization(ShortLangKey + "." + key);
+
 		public virtual string GetObjectivesBook()
 		{
 			var lines = new List<string>();
@@ -92,12 +114,15 @@ namespace SpiritMod.Mechanics.QuestSystem
 			StringBuilder builder = new StringBuilder();
 			for (int i = 0; i < final.Count; i++)
 			{
-				if (!final[i].Item2) builder.Append("[c/2B1C11:");
-				else builder.Append("[c/928269:");
+				if (!final[i].Item2) 
+					builder.Append("[c/2B1C11:");
+				else 
+					builder.Append("[c/928269:");
 
-				builder.Append("- ").Append(final[i].Item1).Append("]");
+				builder.Append("- ").Append(final[i].Item1).Append(']');
 
-				if (i < final.Count - 1) builder.Append("\n");
+				if (i < final.Count - 1) 
+					builder.Append('\n');
 			}
 
 			return builder.ToString();
@@ -113,7 +138,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			{
 				builder.Append("- ").Append(lines[i]);
 
-				if (i < lines.Count - 1) builder.Append("\n");
+				if (i < lines.Count - 1) builder.Append('\n');
 			}
 
 			return builder.ToString();
@@ -122,7 +147,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 		public virtual void OnQuestComplete()
 		{
 			IsCompleted = true;
-			QuestManager.SayInChat("You have completed a quest! [[sQ/" + WhoAmI + ":" + QuestName + "]]", Color.White, true);
+			QuestManager.SayInChat(QuestManager.Localization("QuestCompleteChat").WithFormatArgs(WhoAmI, QuestName).Value, Color.White, true);
 		}
 
 		public virtual void OnUnlock() { }
@@ -169,7 +194,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 				if (ActiveTime <= 0)
 				{
 					if (AnnounceDeactivation)
-						QuestManager.SayInChat("[[sQ/" + WhoAmI + ":" + QuestName + "]] has run out of time!", Color.White);
+						QuestManager.SayInChat(QuestManager.Localization("QuestOutOfTimeChat").WithFormatArgs(WhoAmI, QuestName).Value, Color.White);
+
 					QuestManager.DeactivateQuest(this);
 				}
 			}
@@ -184,7 +210,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			if (IsQuestPossible() && _previouslyUnavailable)
 			{
 				_previouslyUnavailable = false;
-				QuestManager.SayInChat("You have unlocked a new quest! [[sQ/" + WhoAmI + ":" + QuestName + "]]", Color.White);
+				QuestManager.SayInChat(QuestManager.Localization("NewQuestChat").WithFormatArgs(WhoAmI, QuestName).Value, Color.White);
 			}
 		}
 

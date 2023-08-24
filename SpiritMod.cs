@@ -227,7 +227,8 @@ namespace SpiritMod
 					return null;
 				}
 				else if (context == CallContext.AddQuest) //Adds a quest
-					return QuestManager.ModCallAddQuest(args);
+					//return QuestManager.ModCallAddQuest(args);
+					throw new InvalidOperationException("Crossmod quests have been removed for the time being. Sorry! Will be replaced or fixed in the future.");
 				else if (context == CallContext.UnlockQuest) //Unlocks a quest
 				{
 					QuestManager.ModCallUnlockQuest(args);

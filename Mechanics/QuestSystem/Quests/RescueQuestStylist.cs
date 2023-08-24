@@ -6,9 +6,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class RescueQuestStylist : Quest
     {
-        public override string QuestName => "Wrapped Up";
-		public override string QuestClient => "The Demolitionist";
-		public override string QuestDescription => "I heard a lass screamin' down in the spider filled caves. I'd go save her myself but, err... I've got business to do. I'm definitely not scared of those giant creepy crawlies or anything. Might ye go rescue her for me?";
+		public override int QuestClientID => NPCID.Demolitionist;
 		public override int Difficulty => 2;
 		public override string QuestCategory => "Other";
 

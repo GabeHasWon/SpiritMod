@@ -6,9 +6,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
 	public class BreakingAndEntering : Quest
     {
-        public override string QuestName => "Breaking and Entering";
-		public override string QuestClient => "The Adventurer";
-		public override string QuestDescription => "A couple of my scout friends spotted something troubling near the far shores of the world. They caught a glimpse of a bound woman up there. Would you mind headin' there and checking things out? Maybe she needs rescuing! If you're not feeling too altruistic, I'm sure there's plenty of loot for the taking, too!";
 		public override int Difficulty => 2;
 		public override string QuestCategory => "Main";
 

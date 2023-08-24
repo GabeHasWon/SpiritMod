@@ -106,7 +106,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 				return builder.ToString();
 			}
 
-			builder.Append("Talk to the ").Append(Lang.GetNPCNameValue(_npcType));
+			builder.Append(QuestManager.LocalizationValue("TalkToNPC")).Append(Lang.GetNPCNameValue(_npcType));
 			return builder.ToString();
 		}
 	}

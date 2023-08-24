@@ -55,7 +55,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			}
 
 			// add all quests from the assembly
-			IEnumerable<Type> questTypes = typeof(QuestManager).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Quest)) && t != typeof(InstancedQuest) && !Attribute.IsDefined(t, typeof(ObsoleteAttribute)));
+			IEnumerable<Type> questTypes = typeof(QuestManager).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Quest)) /*&& t != typeof(InstancedQuest)*/ && !Attribute.IsDefined(t, typeof(ObsoleteAttribute)));
             foreach (Type type in questTypes)
             {
 				Quest q = (Quest)Activator.CreateInstance(type, true);
@@ -203,7 +203,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 					{
 						quest.IsUnlocked = false;
 						if (quest.AnnounceRelocking)
-							SayInChat("[[sQ/" + quest.WhoAmI + ":" + quest.QuestName + "]] has been locked again.", Color.White);
+							SayInChat(Localization("QuestRelockedChat").WithFormatArgs(quest.WhoAmI, quest.QuestName).Value, Color.White);
 					}
 				}
 			}
@@ -253,7 +253,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			quest.OnUnlock();
 
 			if (showInChat && quest.IsQuestPossible() && Main.netMode != NetmodeID.Server)
-				SayInChat("You have unlocked a new quest! [[sQ/" + quest.WhoAmI + ":" + quest.QuestName + "]]", Color.White);
+				SayInChat(Localization("NewQuestChat").WithFormatArgs(quest.WhoAmI, quest.QuestName).Value, Color.White);
 
 			if (!Quiet && Main.netMode == NetmodeID.MultiplayerClient)
 			{
@@ -341,13 +341,13 @@ namespace SpiritMod.Mechanics.QuestSystem
 			}
 
 			// add the quest
-			Quest q = new InstancedQuest(questName, questCategory, questDifficulty, questClient, questDesc, questRewards, questImage, tasks);
-			q.WhoAmI = Quests.Count;
-			Quests.Add(q);
+			//Quest q = new InstancedQuest(questName, questCategory, questDifficulty, questClient, questDesc, questRewards, questImage, tasks);
+			//q.WhoAmI = Quests.Count;
+			//Quests.Add(q);
 
-			SpiritMod.Instance.Logger.Info("Added a cross-mod quest! Called: " + questName);
+			//SpiritMod.Instance.Logger.Info("Added a cross-mod quest! Called: " + questName);
 
-			return q.WhoAmI;
+			return -1;// q.WhoAmI;
 		}
 
 		public static void SyncToClient(int toClient)
@@ -402,13 +402,16 @@ namespace SpiritMod.Mechanics.QuestSystem
 			return task.Parse(args);
 		}
 
-		public static void SayInChat(string text, Color colour, bool noServer = false)
+		public static void SayInChat(string langKey, Color colour, bool noServer = false)
 		{
 			if (Main.netMode == NetmodeID.SinglePlayer || Main.netMode == NetmodeID.MultiplayerClient)
-				Main.NewText(text, colour.R, colour.G, colour.B);
+				Main.NewText(LocalizationValue(langKey), colour.R, colour.G, colour.B);
 			else if (Main.netMode == NetmodeID.Server && !noServer)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), colour, -1);
+				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(LocalizationValue(langKey)), colour, -1);
 		}
+
+		public static string LocalizationValue(string postfix) => Language.GetTextValue("Mods.SpiritMod.Quests." + postfix);
+		public static LocalizedText Localization(string postfix) => Language.GetText("Mods.SpiritMod.Quests." + postfix);
 
 		public static void UnlockQuestBook(bool openBook = true)
 		{
@@ -417,8 +420,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 				QuestBookUnlocked = true;
 				UnlockQuest<Quests.FirstAdventure>(true);
 
-				SayInChat("Press 'C' to open the Quest Journal!", Color.White, true);
-				SayInChat("Press 'V' to keep track of your progress wih the HUD!", Color.White, true);
+				SayInChat("OpenJournal", Color.White, true);
+				SayInChat("OpenHUD", Color.White, true);
 
 				if (openBook)
 					SetBookState(true);

@@ -5,9 +5,6 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
 	public class BlastFromThePast : Quest
     {
-        public override string QuestName => "Blast From The Past";
-		public override string QuestClient => "The Adventurer";
-		public override string QuestDescription => "I see you've got some Discharge Tubules there, lad. I'm glad you've taken my design advice, so let's take it one step further. Try grabbin' some Enchanted Marble Chunks to really set the scene with a Hyperspace Bust. I'm tellin' ya, it'll look spectacular!";
 		public override int Difficulty => 1;
 		public override string QuestCategory => "Designer";
 
@@ -22,7 +19,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private BlastFromThePast()
         {
-            _tasks.AddTask(new RetrievalTask(ModContent.ItemType<Items.Placeable.Furniture.SynthwaveHeadItem>(), 1, "Craft"));
+            _tasks.AddTask(new RetrievalTask(ModContent.ItemType<Items.Placeable.Furniture.SynthwaveHeadItem>(), 1, QuestManager.Localization("Craft")));
         }
     }
 }

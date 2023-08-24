@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Terraria;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
-using SpiritMod.Items.Sets.MaterialsMisc.QuestItems;
 
 namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class OlympiumQuest : Quest
     {
-        public override string QuestName => "Ancient Augury";
-		public override string QuestClient => "The Dryad";
-		public override string QuestDescription => "The world has changed for the worse. I sense foul magic growing stronger and stronger. If we must keep the forces of evil at bay, we must seek help. As of late, I've also sensed the presence of someone familiar in the depths of the Marble Caverns. Go to her; she will be able to offer you guidance.";
+		public override int QuestClientID => NPCID.Dryad;
 		public override int Difficulty => 3;
 		public override string QuestCategory => "Main";
 
