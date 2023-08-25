@@ -3,6 +3,8 @@ RecipeConditions: {
 	DurasilkSheaf: Obtain 3 Durasilk Sheafs
 }
 
+# I'm very sorry to whoever's translating this. Best of luck, and godspeed. - GabeHasWon
+
 # This formats to "You have completed a quest! <Quest Name>" in-game. The sQ?:{0} is a quest chat tag.
 QuestCompleteChat: You have completed a quest! [[sQ/{0}:{1}]]
 QuestOutOfTimeChat: "[[sQ/{0}:{1}]] has run out of time!"
