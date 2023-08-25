@@ -22,8 +22,8 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		private GranitechQuest()
 		{
 			_tasks.AddParallelTasks(new SlayTask(ModContent.NPCType<NPCs.GraniTech.GraniteSentry>(), 3),
-									new RetrievalTask(ModContent.ItemType<Items.Sets.GranitechSet.GranitechMaterial>(), 10, null))
-				  .AddTask(new GiveNPCTask(NPCID.Mechanic, ModContent.ItemType<Items.Sets.GranitechSet.GranitechMaterial>(), 10, "Wow! These parts are almost otherworldly! You said you fought a bunch of high-precision laser turrets to get these? I mean, that makes sense, but there's so much more that this circuitry could accomplish. It's a combination of magic and energy that I've never seen before, and I think the people behind those turrets are a force to be wary of. It's best you grab as many circuits as you can and prepare before they make their move!", "Return to the Mechanic with the circuits", true, false, ModContent.ItemType<NPCs.Town.Oracle.OracleScripture>()));
+				new RetrievalTask(ModContent.ItemType<Items.Sets.GranitechSet.GranitechMaterial>(), 10, null))
+				.AddTask(new GiveNPCTask(NPCID.Mechanic, ModContent.ItemType<Items.Sets.GranitechSet.GranitechMaterial>(), 10, GetText("Thanks"), GetText("BringBack"), true, false, ModContent.ItemType<NPCs.Town.Oracle.OracleScripture>()));
 		}
 	}
 }

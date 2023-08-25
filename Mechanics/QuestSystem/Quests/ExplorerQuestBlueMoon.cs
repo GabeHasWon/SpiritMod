@@ -20,7 +20,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestBlueMoon()
         {
-			_tasks.AddTask(new ExploreTask((Player player) => player.ZoneOverworldHeight && MyWorld.blueMoon, 5000f, "a Mystic Moon"));
+			_tasks.AddTask(new ExploreTask((Player player) => player.ZoneOverworldHeight && MyWorld.blueMoon, 5000f, GetText("Objective")));
         }
     }
 }

@@ -23,7 +23,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestGranite()
         {
-            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneGranite, 5000f, "granite caverns"));
+            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneGranite, 5000f, GetText("Objective")));
         }
     }
 }

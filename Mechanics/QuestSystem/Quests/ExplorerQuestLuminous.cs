@@ -20,7 +20,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestLuminous()
         {
-             _tasks.AddTask(new ExploreTask((Player player) => player.ZoneBeach && MyWorld.luminousOcean, 1500f, "a Luminous Ocean at the beach"));
+             _tasks.AddTask(new ExploreTask((Player player) => player.ZoneBeach && MyWorld.luminousOcean, 1500f, GetText("Objective")));
         }
     }
 }

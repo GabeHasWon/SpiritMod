@@ -16,7 +16,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 		/// <summary>If true, all items must be fulfilled in order to have this quest completed. Defaults to true.</summary>
 		public readonly bool RequireAllItems = true;
 		public readonly bool TakeItems = true;
-		public readonly string NPCText = "Hey thanks for the stuff!";
+		public readonly LocalizedText NPCText;
 
 		private readonly int _npcType;
 		private readonly LocalizedText _objective;
@@ -29,10 +29,10 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 
 		public GiveNPCTask() { }
 
-		public GiveNPCTask(int npcType, int[] giveItem, int[] stack, string text, string objectiveKey = null, bool requireAll = true, bool takeItems = true, int? optionalReward = null)
+		public GiveNPCTask(int npcType, int[] giveItem, int[] stack, LocalizedText text, LocalizedText objective, bool requireAll = true, bool takeItems = true, int? optionalReward = null)
 		{
 			_npcType = npcType;
-			_objective = QuestManager.Localization(objectiveKey);
+			_objective = objective;
 			_itemIDs = giveItem;
 			_itemStacks = stack;
 
@@ -52,8 +52,10 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			_givenToNPC = false;
 		}
 
-		public GiveNPCTask(int npcType, int giveItem, int stack, string text, string objective, bool requireAll = true, bool takeItems = true, int? optionalReward = null) : this(npcType, new int[] { giveItem }, new int[] { stack }, text, objective, requireAll, takeItems, optionalReward)
+		public GiveNPCTask(int npcType, int giveItem, int stack, LocalizedText text, LocalizedText objectiveKey, bool requireAll = true, bool takeItems = true, int? optionalReward = null) 
+			: this(npcType, new int[] { giveItem }, new int[] { stack }, text, objectiveKey, requireAll, takeItems, optionalReward)
 		{ }
+
 
 		public override QuestTask Parse(object[] args)
 		{
@@ -75,7 +77,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			}
 
 			// TODO: Make this parsing work for int arrays, not sure how to best do that.
-			return new GiveNPCTask(npcID, new int[] { 1 }, new int[] { 1 }, objective);
+			return new GiveNPCTask();// npcID, new int[] { 1 }, new int[] { 1 }, objective);
 		}
 
 		public override bool CheckCompletion()
@@ -94,7 +96,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 
 						if (_optionalReward != ItemID.None)
 							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), _optionalReward);
-						Main.npcChatText = NPCText;
+						Main.npcChatText = NPCText.Value;
 						return true;
 					}
 				}
@@ -112,7 +114,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 								RemoveItems(player);
 
 							player.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), _optionalReward);
-							Main.npcChatText = NPCText;
+							Main.npcChatText = NPCText.Value;
 
 							_givenToNPC = true;
 							return true;

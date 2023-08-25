@@ -28,7 +28,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private RescueQuestStylist()
         {
-            _tasks.AddTask(new TalkNPCTask(NPCID.Stylist, "Don't go exploring with scissors, they said. You won't get trapped in a spider's web, they said! Who got you to rescue me, by the way? Oh, the Demolitionist? Tell him haircuts are on the house for life!", "Go to the spider caverns and rescue the captive"));
+            _tasks.AddTask(new TalkNPCTask(NPCID.Stylist, GetText("Dialogue"), GetText("Objective")));
         }
     }
 }

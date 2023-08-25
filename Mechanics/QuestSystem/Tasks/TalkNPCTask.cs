@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Mechanics.QuestSystem.Tasks
@@ -10,17 +11,17 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 	public class TalkNPCTask : QuestTask
 	{
 		public override string ModCallName => "TalkNPC";
+		public readonly LocalizedText NPCText;
 
 		private int _npcType;
 		private QuestPoolData? _poolData;
 		private int _itemReceived;
-		private string _objective;
-		public readonly string NPCText = "Have a great day!";
+		private LocalizedText _objective;
 		private bool hasTakenItems;
 
 		public TalkNPCTask() { }
 
-		public TalkNPCTask(int npcType, string text, string objective = null, QuestPoolData? poolData = null, int? itemReceived = null)
+		public TalkNPCTask(int npcType, LocalizedText text, LocalizedText objective = null, QuestPoolData? poolData = null, int? itemReceived = null)
 		{
 			_npcType = npcType;
 			NPCText = text;
@@ -49,7 +50,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 					return null;
 			}
 
-			return new TalkNPCTask(npcID, objective);
+			return new TalkNPCTask();// npcID, objective);
 		}
 
 		public override bool CheckCompletion()
@@ -58,7 +59,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			{
 				if (Main.LocalPlayer.talkNPC != -1 && Main.npc[Main.LocalPlayer.talkNPC].type == _npcType)
 				{
-					Main.npcChatText = NPCText;
+					Main.npcChatText = NPCText.Value;
 					if (!hasTakenItems)
 					{
 						Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), _itemReceived);
@@ -73,7 +74,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 				{
 					if (Main.player[i].active && Main.player[i].talkNPC >= 0 && Main.npc[Main.player[i].talkNPC].netID == _npcType)
 					{
-						Main.npcChatText = NPCText;
+						Main.npcChatText = NPCText.Value;
 						if (!hasTakenItems)
 						{
 							Main.player[i].QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), _itemReceived);

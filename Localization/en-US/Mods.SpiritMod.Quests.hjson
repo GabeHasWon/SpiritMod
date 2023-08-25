@@ -13,6 +13,8 @@ OpenHUD: Press 'V' to keep track of your progress wih the HUD!
 # These are all used for minor parts of quests, such as "Catch 2 Fish" or similar.
 # The space is necessary. Formats to "Talk to the <NPC Name>" in-game.
 TalkToNPC: "Talk to the "
+# Same as above. Used for "Explore <area>" in-game.
+Explore: "Explore "
 Retrieve: Retrieve
 Catch: Catch
 Craft: Craft
@@ -23,6 +25,7 @@ OptionalGather: Optional - Gather
 The: "The "
 
 QuestInfo: {
+	# All quests will have a Name and a Description. The rest is dependent on what the quest does.
 	DefaultQuest: {
 		Name: Default Quest
 		Description: Placeholder for unlocalized quests.
@@ -36,14 +39,23 @@ QuestInfo: {
 	AnglerStatueQuest: {
 		Name: Fishy Business
 		Description: I'd like to think that I'm the best fisherman in the world. Actually, I know I am! But I've heard some pesky rumors about crates washing ashore that are filled with way more fish than I could catch. I need you to go to the beach and prove those rumors wrong. Why? Because I said so! Hop to it!
-		# Used in "Appease him by catching 3424 Red Snappers"
 		AppeaseLine: Appease him by catching
+		TalkLine: Talk to the Angler
+		AskGuide: Or ask the Guide what to do
+		AnglerStatueDemand: *sniff* What do you want? You want to try to cheer me up? What's that? You'll do ANYTHING? What do ya mean, that's not what you said? Too bad! I want you to melt those disgusting Packing Crates down and build a giant, buff, half-shark, half-angler statue to show my dominance over those factory losers! You said you'd do it, so shoo!
 		CatchTooManyFish: How is this supposed to make me feel better? Are you trying to show me up, too?! You should just stick to running my errands and catching my fish. Thanks for nothing!
+		GuideCheckin: The Angler's upset, huh? Well, he is just a kid- I suppose it makes sense for him to be hurt by something like this. This may be a bit, well, demanding, but I suppose you should check in with him to see if anything would make him feel better.
+		GiveToAngler: Give the Red Snappers to the Angler
+		ShowAnglerCreation: Show the Angler your creation
+		ShowAnglerCrates: Show the Packing Crates to the Angler
+		CheerUp: This is the most amazing thing ever! Industrial fishing will never break my spirit, and I'm sure they don't have a half-man, half-shark statue like this one! You've impressed me today, so I'll actually give you a reward. Make sure to put that statue up pronto! I'm going to ask the Merchant to sell copies, so tell your friends (if you have any)!
+		Defeated: WHAT?! Industrial... scale? Machine powered? Factory farming? I thought I was the best angler around! This sucks. *sniffle* Thanks for putting me in a rotten mood, loser. Leave me alone!
 	}
 
 	AuroraStagQuest: {
 		Name: Taming the Stars
 		Description: Hey there, lad! The world's gotten a lot more dangerous recently, but it's not all bad. My scouts have been hearin' about a big, beautiful creature that reveals itself under the light of the Aurora. It's a massive stag, an' I think you could tame it if you found the right food for it! It's a bit skittish, though, so try not to startle the beast.
+		Objective: Slowly approach an Aurora Stag and feed it Ice Berries
 	}
 
 	BareNecessities: {
@@ -74,26 +86,54 @@ QuestInfo: {
 	ZombieOriginQuest: {
 		Name: Unholy Undertaking
 		Description: I've found an odd wall scroll listing important information about Zombies and, potentially, their origins. I think I should talk to the Guide or Dryad about this. Maybe we can put a stop to this vile necromancy!
+		ShowGuideDialogue: Did you find that mysterious scroll there? I assume you did. It's an interesting lead on why these zombies have been appearing recently. I'd say we need to do more research on who's behind the zombie uprising. Maybe it's a crazed scientist, or something? There should be books on the matter near the Dungeon.
+		TalkGuide: Talk to the Guide about the mysterious scroll.
+		GetLureGuide: This research is ambiguous, but I think it points toward a maniacal scientist creating hordes of zombies. You may need to find a way to get their attention tonight. How about we stitch together a lure using some grisly zombie bits? I'm sure the researcher would find it interesting.
+		ReturnBooks: Return the books to the Guide
+		ShowDryadDialogue: This scroll is alarming. You found it on the remains of a zombie, no? Poor, wretched things. I think this scroll could help us understand why zombies have been plaguing our land. This faint powder on the scroll smells just like the evil that plagues our world. We should collect some herbs from that biome and compare.
+		TalkDryad: Or talk to the Dryad about the mysterious scroll.
+		GetLureDryad: I was right! I now think some kind of evil wizard may have a hand in creating these vile monstrosities. We need to get this horrible necromancer's attention tonight. I think that putrid powder you collected can help craft a lure for it. Dispatch them quickly, and perhaps we will be rid of zombies for good!
+		ReturnPowder: Return the powder to the Dryad
+		KillScientist: Kill the Undead Scientist
+		KillWarlock: Kill the Undead Warlock
 	}
 
 	BreakingAndEntering: {
 		Name: Breaking and Entering
 		Description: A couple of my scout friends spotted something troubling near the far shores of the world. They caught a glimpse of a bound woman up there. Would you mind headin' there and checking things out? Maybe she needs rescuing! If you're not feeling too altruistic, I'm sure there's plenty of loot for the taking, too!
+		Dialogue: Must be my lucky day to see a friendly face around here!\nThese goblins didn't take too kindly to me offering a, uh, rigged deal.\nAnyway, d'you have a place to stay? Let's flip for it.
+		Objective: Find the Arcane Goblin Tower and rescue the prisoner.
 	}
 
 	CritterCaptureBlossmoon: {
 		Name: Sanctuary - Peaceful Blossoms
 		Description: I have heard tales of a rare species of fauna that only emerges during the calmest of nights. When the moon is in its first or third quarter, and the leaves blow in the wind, little Blossmoons come out of their flowers and soak up the moonlight. They are quite defenseless on their own, though. We must catch and preserve one.
+		Thanks: Blossmoon actually have the ability to calm nearby monsters. I suspect they draw power from the moon to do so. It would be very beneficial for us all if we made sure all Blossmoon thrived. This is a good first step in that process!
+		BringBack: Bring the Blossmoon back to the Dryad
 	}
 
 	CritterCaptureFloater: {
 		Name: Sanctuary - Nightlights
 		Description: I have detected traces of another species in need of our protection. While most jellyfish in this world can protect themselves, these smaller ones cannot. They often travel in packs to appear larger than they are. Let us retrieve one of these Luminous Floaters so that we can preserve them. You can find them on the ocean floor at nighttime.
+		Thanks: These marvels of nature light up the ocean with their glow. I certainly would not want to see them perish by the hands of sea monsters and greedy fishermen. They will look beautiful in my arcane nature preserve. Thank you again.
+		BringBack: Bring the Luminous Floater back to the Dryad
+		AnglerThanks: This looks absolutely scrumptions! And they're all mine- oh, you're still here? Fine, I guess I'll thank you this once, but don't expect me to always be this nice!
+		ReturnAngler: Return the raw fish to the Angler
+		UpsetDryad: That rotten, spoiled child! I have let him off the hook time and time again for fishing up rare creatures, but now he has gone too far. These species are meant to be admired, not gobbled up! Thank you for telling me about his nasty plan- your commitment to the natural world is admirable. Take this as thanks! Don't forget those Luminous Floaters, now!
+		Tattle: Or tell the Dryad about the Angler's plans
+		HungryAngler: That high and mighty Dryad always thinks she knows what's best for the fish. Well, I don't care! What's best for me is those jellyfish in my tummy, stat! Don't let 'em go to waste- chop 'em up for me and I'll make us an a-MAZ-ing seafood dish. What're you waiting for?
+		AskAngler: Or ask the Angler about Luminous Floaters
 	}
 
 	LumothQuest: {
 		Name: Sanctuary - Luminous Luster
 		Description: As protectors of nature, we Dryads have an obligation to protect all flora and fauna- to 'look out for the little guy,' as you may put it. This applies especially to those creatures that cannot defend themselves. A prime example is the brilliant Lumoth. It shines in the darkness of caves. Bring it to me so we can preserve the species for future generations.
+		Thanks: Look at how beautiful this creature is. You truly are a kind soul for ensuring that such beauty will thrive for centuries to come. I will work my magic to start a little sanctuary for this Lumoth and its bretheren. Thank you again.
+		BringBack: Bring the Lumoth back to the Dryad
+		MerchantDialogue: Hear me out, friend. Don't get me wrong, I appreciate what the Dryad is doing for the environment, but this presents a wonderful business opportunity, if you're interested. Lumoths are rare, and I'm too feeble to procure them. If you were to, say, kill a Lumoth and bring me its Brightbulb instead of bringing it to the Dryad, I'd give you something special.
+		TalkMerchant: Or talk to the Merchant about Lumoths
+		ThanksMerchant: I'm sure exterminating just one Lumoth has no large-scale consequences, right? Er, just in case, don't tell the Dryad about this. We aren't monsters, of course- we're just meeting the needs of the economy. And as promised, here's your extra reward. Thanks, friend!
+		BringBackMerchant: Bring the Brightbulb back to the Merchant
 	}
 
 	SporeSalvage: {
@@ -104,6 +144,10 @@ QuestInfo: {
 	CritterCaptureSoulOrb: {
 		Name: Sanctuary - Soul Searching
 		Description: The strange new Spirit fields that have emerged over the horizon bear countless new plants and animals. But one little soul stands no chance if we do not go and capture it. These Soul Orbs light up the depths of the Underground Spirit, and I'd like to make sure they are kept safe. On the way, could you also be able to provide me with some Soulbloom cuttings?
+		Thanks: These orbs seem to posses the souls of restless creatures. Perhaps we can bring them some peace in my sanctuary. You have done a great service for this soul and myself, traveller. Thank you.
+		BringBack: Bring the Soul Orb back to the Dryad
+		ThanksSoulbloom: These flowers are so otherworldly and mesmerizing. Thank you for bringing them to me. I hope that you can plant a field full of these wonderful flowers.
+		BringBackSoulbloom: Bring the Soul Orb and Soulbloom back to the Dryad
 	}
 
 	DecrepitDepths: {
@@ -114,66 +158,84 @@ QuestInfo: {
 	ExplorerQuestAsteroid: {
 		Name: Space Rocks
 		Description: There's an asteroid field smack-dab above one of the oceans. Completely uncharted. How cool is that?! We have to learn everything we can about that place. If you stumble upon those asteroids, wander around for a while and take some notes for me, alright? Can you even write in space? Go find out, and don't fall off!
+		Objective: the Asteroid Field
 	}
 
 	ExplorerQuestAurora: {
 		Name: Lights in the Sky
 		Description: I don't really have a particular motive for this job except for sharin' the beauty of this world with more people. Have you seen a Boreal Aurora before? It might be the most magical thing in the world, and this world's actually got magic! You can find them at high altitudes and in the snowy tundra. Just go there and take in the sights.
+		Objective: boreal auroras in the snowy tundra or at high altitudes
 	}
 
 	ExplorerQuestBlueMoon: {
 		Name: Once in a...
 		Description: Just when you'd think this world's run out of things to kill you with, eh? We've all seen those disgusting Blood Moons, but recently, the moon's taken to turning a deep blue. I bet you may think that sounds sweet, but terrifyin' creatures come out during these Mystic Moons. Make sure none of 'em get too close to the town, you hear?
+		Objective: a Mystic Moon
 	}
 
 	ExplorerQuestCorrupt: {
 		Name: Vile Wastes
 		Description: So you're planning on staying in this world for a while, huh? We've got a lot of exploring to do before we can get a grasp of this region. We need to know how dangerous those Corrupt Chasms are and how to deal with those freaky Eaters. Tread with caution, you're going alone. If you can survive there, you can explore the other dangerous areas the Adventurer mentioned in his journal.
+		Objective: the Corruption
 	}
 
 	ExplorerQuestCrimson: {
 		Name: Body Horrors
 		Description: So you're planning on staying in this world for a while, huh? We've got a lot of exploring to do before we can get a grasp of this region. We need to know how dangerous the Crimson fields are. I'm not strong enough, so you'll need to handle this alone. If you can survive there, you can explore the other territories the Adventurer mentioned in his journal.
+		Objective: the Crimson
 	}
 
 	ExplorerQuestGranite: {
 		Name: Rocky Road
 		Description: A couple of underground cave systems seem to be made almost entirely of dark granite. Some kinda energy source seems to be bringin' the rocks to life, too. I'd like ya to go and investigate. After you stumble upon one of these Granite Caverns, wander around for a while and take some notes for me, alright?
+		Objective: granite caverns
 	}
 
 	ExplorerQuestHive: {
 		Name: Hive Hunting
 		Description: Have you checked out the lower parts of the Jungle? I've recently heard about a series of massive hives around there. I loathe bees... an' hornets... an' giant man eatin' plants, so would ya like to check one of these hives out for me?
+		Objective: giant beehives in the Jungle
 	}
 
 	ExplorerQuestLuminous: {
 		Name: High Tide, Glow Tide
 		Description: I love the beach. Now, you may be picturin' the sun and the sand, and I love that stuff too! But I'm talkin' about the beach at night. If you're lucky, you can see some beautiful glowing algae wash up on the shore and turn the water into pretty colors! I'd really recommend kicking back and relaxing at a Luminous Ocean.
+		Objective: a Luminous Ocean at the beach
 	}
 
 	ExplorerQuestMarble: {
 		Name: Forgotten Civilizations
 		Description: I'd like ya to head out there and map out the lower reaches of this land. A few caverns are covered in marble and the ruins of some ancient civilization. After you stumble upon one of these Marble Caverns, wander around for a while and take some notes for me, alright? Hopefully, those ruins are desolate, eh?
+		Objective: marble caverns
 	}
 
 	ExplorerQuestMushroom: {
 		Name: Glowing a Garden
 		Description: I'm looking for info on any nearby Glowing Mushroom Caverns. You see, I made a bet with the merchant that they DO exist an' that I don't hallucinate giant blue glowing mushroom trees. On second thought, I may not sound too sane sayin' that, but I swear they're real! Go prove me right!
+		Objective: glowing mushroom fields
 	}
 
 	ExplorerQuestOcean: {
 		Name: Below the Waves
 		Description: Do ya know why I love having you catch fish for me? I have the itch to see every darn fish on this planet before I kick the bucket. And I want you to feel that way, too! Take a dive and see how amazing the ocean can be. Grab me something off the ocean floor while you're there!
+		Finish: This smells...really bad! How do fish like this stuff? Why didn't you get me something cooler? Whatever...you can keep it. Go catch me some fish while you're out there next time!
+		Return: Return to the Angler
+		GetSulfur: Grab 5 Sulfur Deposits from hydrothermal vents
+		Ocean: the ocean depths
 	}
 
 	FriendSafari: {
 		Name: Friend Safari
 		Description: A few years ago, I was running a job with a friend of mine who's never really been on the good side of the law. He's a bandit, and a mighty fine one at that. We've kept in touch ever since, but he's been awfully silent as of late. Last I remember, he was holed up with a bandit group near the far shores of the world. Would you mind checkin' up on him?
+		Dialogue: Hey! Thanks for saving me- Now, mind getting us out of this pickle? They duped me, took all my cash and left me for dead here! Don't think it means I'll discount my wares for you, though. Just kidding! Not.
+		Objective: Find the bandit hideout and rescue the prisoner.
 	}
 
 	GranitechQuest: {
 		Name: Futuristic Forces
 		Description: You know, I've been seeing some strange parts in the scrap I've been buying lately. It's quite amazing, honestly! The circuitry is way out of my league, like it's from the future or something! I'd love to mess around with them and learn more, so would you get some for me? They're attached to some dangerous machinery, though. Come back in one piece!
+		BringBack: Return to the Mechanic with the circuits
+		Thanks: Wow! These parts are almost otherworldly! You said you fought a bunch of high-precision laser turrets to get these? I mean, that makes sense, but there's so much more that this circuitry could accomplish. It's a combination of magic and energy that I've never seen before, and I think the people behind those turrets are a force to be wary of. It's best you grab as many circuits as you can and prepare before they make their move!
 	}
 
 	HeartCrystalQuest: {
@@ -184,21 +246,42 @@ QuestInfo: {
 	IceDeityQuest: {
 		Name: Beneath the Ice
 		Description: Welcome, friend! I've got a bit of an unusual request for you today. You see, I've sensed some strange energy emanating from the frozen tundra as of late. I'd like for you to venture there and learn more, but not before we gain some knowledge beforehand. First, let's ask around.
+		KillWinterborn: Find clues about the past by killing Winterborn
+		KillCrystalDrifter: Kill a Crystal Drifter
+		CuriousRelic: What a curious relic! It seems to be part of a much larger statue. Perhaps the strange Winterborn worshipped this deity? Or perhaps not- it could just be the creation of another long-dead civilzation whose souls roam the frozen depths. Who knows? But it's intriguing, and I wish to reassemble the sculpture. Can you collect the other missing pieces? I'm sure one can be found on Crystal Drifters, strange ice entities that emerge during Blizzards. We could probably fashion the other pieces out of Creeping Ice and Cryolite, found underground.
+		ShowRelic: Show the Enchanter the strange relic
+		GiveAllArtifacts: Give all the artifacts to the Enchanter
+		Congrats: You've done a splendid job! These artifacts seem to create a giant statue that resembles a warrior-knight of some kind. Perhaps it's a deity. Perhaps it's just a passion project- there's so much we don't know! And though I'm not sure why the icy caverns have become so dangerous, I'm content with having learned more about our world. I do hope you put this statue up somewhere!
+		FrozenSoulScene: As I approach the spirit, the cave around me seems to shake. The walls collapse, leaving me standing in a boundless chasm. I am alone. Countless piles of gold and relics lay strewn about, covered in a thin layer of frost. The only light in the cavern seems to come from the soul beside me as it waits for me to make a decision.
+		FindFrozenSoul: Or try to find a soul in the Ice Biome
+		DryadMyths: So you wish to know about the icy caverns? Well, they have existed since before I was born- I'm not that old! However, I have heard tales about numerous civilizations rising and falling beneath the frozen surface. Some were peaceful, while others went so far as to freeze their enemies alive for sport! If you listen closely, I am sure that you could glean more information from the souls of the frozen caverns.
+		AskMyths: Ask the Dryad about the ancient myths
+		AdventurerMyths: I don't know much about ancient history, but a few of my associates have scouted a growing threat in the icy caverns. Sometimes, they even get bold enough to roam the surface durin' heavy blizzards. I'm not sure what's got 'em so riled up, but the frozen fields are more dangerous than ever.
+		AskAdventurer: Ask the Adventurer about the Snow Biome
+		ReturnToDialogue: I see! These leads are promising- perhaps killing some of these frozen creatures or trying to find one of these souls the Dryad mentioned could shed some light on the restlessness of the ice biome.
+		ReturnTo: Return to the Enchanter with what you know
 	}
 
 	IdleIdol: {
 		Name: Idle Idol
 		Description: The sands of the desert hide a lot of secrets beneath 'em. There's supposed to be an Ancient Ziggurat buried near the surface of one of those wastelands. Could ya head down there and scavenge some relics from me?
+		ReturnToAdventurer: Return to the Adventurer with what you've found
+		Warning: I knew it. I was polishin' up this old thing when it started to look real familiar. That's a Scarab Idol right there. I'm warning ya, don't mess with it until you get real strong. Me and some bounty hunters tried to take that thing on years ago. We barely escaped with our lives. Be safe, lad.
 	}
 
 	ItsNoSalmon: {
 		Name: It's No Salmon...
 		Description: I've got a, uh, perfectly normal quest for ya. Why don't you go ahead and head to the Jungle to fish up a Hornetfish for me? It's supposed to be a real delicacy. Be careful, though. I've heard it can be a... tough catch. Whaddya mean, this sounds exactly like something the Angler would want you to do?
+		ThanksAdventurer: Thanks a lot, lad. This is exactly what I've been cravin' as of late. I'm something of a chef, ya know. In fact, let me share this hornetfish with you! Thanks again.
+		BringBack: Bring the Hornetfish back to the Adventurer
+		GiveAngler: What?! You were going to catch fish without ME? I'm offended, and I demand your Hornetfish as compensation. Here, take this bait, and use it to catch me fish next time. The Adventurer can eat something else. Shoo!
+		BringBackAngler: Or give the Angler the Hornetfish
 	}
 
 	JellyfishHunter: {
 		Name: Jellyfish Hunter
 		Description: Hey there, lad! I was doing some diggin' into what makes these cute jellies tick, and I think they're all part of some kinda hivemind that feed on mystical energy. In fact, that one jellyfish you caught seems to be emitting a distress signal to its buddies. You may need to take on a mighty strong jellyfish soon, so stay prepared!
+		Objective: Kill the Moon Jelly Wizard
 	}
 
 	ManicMage: {
@@ -209,21 +292,29 @@ QuestInfo: {
 	OlympiumQuest: {
 		Name: Ancient Augury
 		Description: The world has changed for the worse. I sense foul magic growing stronger and stronger. If we must keep the forces of evil at bay, we must seek help. As of late, I've also sensed the presence of someone familiar in the depths of the Marble Caverns. Go to her; she will be able to offer you guidance.
+		Dialogue: I've been expecting you, traveler. My visions spoke of a time when a hero would need some guidance. I can offer you powerful armaments in exchange for Olympium, the currency of the Gods. To find some, seek out and defeat enemies that have been blessed by the Gods themselves. I can give you my blessing if you would like to find more of these creatures, but you risk incurring the wrath of the Gods.'
+		Objective: Find the mysterious woman in the Marble Caverns
+		ReturnDialogue: Ah, you've returned safe and sound! Wonderful. I'll exchange these tokens with you for some powerful weapons and equipment. And take this sacred parchment. If you need me, I will be by your side. Safe journey, hero.
+		ReturnTo: Return to the Oracle
 	}
 
 	RescueQuestStylist: {
 		Name: Wrapped Up
 		Description: I heard a lass screamin' down in the spider filled caves. I'd go save her myself but, err... I've got business to do. I'm definitely not scared of those giant creepy crawlies or anything. Might ye go rescue her for me?
+		Dialogue: Don't go exploring with scissors, they said. You won't get trapped in a spider's web, they said! Who got you to rescue me, by the way? Oh, the Demolitionist? Tell him haircuts are on the house for life!
+		Objective: Go to the spider caverns and rescue the captive
 	}
 
 	ReturnToYourRoots: {
 		Name: A Return to Your Roots
 		Description: You know, while I was trapped down there, I noticed something...apparently, all the roots in the Briar connect to one central... thing. I don't know what it is, but I'm not going to find out for myself...at least not for a while. Could you take a look?
+		Objective: Kill the Vinewrath Bane
 	}
 
 	SinisterSands: {
 		Name: Sinister Sands
 		Description: I knew it. I was polishin' up this relic you retreived when it started to look real familiar. That's a Scarab Idol right there. I'm warning ya, don't mess with it until you get real strong. Me and some bounty hunters tried to take that thing on years ago. We barely escaped with our lives. Be safe, lad.
+		Objective: Kill Scarabeus
 	}
 
 	SkyHigh: {
@@ -239,6 +330,7 @@ QuestInfo: {
 	SlayerQuestCavern: {
 		Name: Creepy Crawlies
 		Description: Some new creepy crawlies have taken to calling the caverns their home. Disgustin' little fellas that belch poison gas and some spiny little buggers. Do us all a favor and exterminate those nasty things. Killing a dozen of 'em will surely make the underground a less nasty place.
+		Objective: Kill 8 Wheezers, Spore Wheezers, Cavern Crawlers, Giant Shellys, Salamanders, or Crawdads
 	}
 
 	SlayerQuestClown: {
@@ -289,15 +381,19 @@ QuestInfo: {
 	StrangeSeas: {
 		Name: Strange Seas
 		Description: The mythical Seabreak Pearl... I've been hearin' rumors about it popping up recently. It's one of the rarest treasures out there, but it's almost like it has a mind of its own and wants to be found. I feel like somethin' deeper and more sinister is at work here. We should find the pearl an' get to the bottom of this mystery as soon as we can.
+		Objective: Slay the strange monster controlling the Tide
 	}
 
 	StylistQuestSeafoam: {
 		Name: Dye Pursuit - Seafoam
 		Description: If it isn't my favorite customer! I've got a job for you, and it isn't cutting hair. I need some rare materials to expand my dye collection ASAP! I love the Dye Trader's style, but his dyes don't cut it for me. Could you start by hunting Sea Mandrake? They have this special sac that would be wonderful to have. You're the best!
+		ReturnTo: Bring the Luminous Sac back to the Stylist
+		Dialogue: You're back in one piece! I'm glad you didn't dye trying to get the goods. Get it? Anyway, this ink sac is really pretty- I'll be able to synthesize a hair dye that brings out the ocean breeze in you! Am I great or what? Come to me anytime you'd like to try this new dye or anything else to glam you up!
 	}
 
 	UnidentifiedFloatingObjects: {
 		Name: Unidentified Floaters
 		Description: I quit drinkin' years ago, but I swear the sky's been lighting up something fierce recently! I've been doin' some research and I think the skies may be home to some mystical jellyfish swarms. Now, the only 'proof' I have are some sources of, er, ill repute, but I know I can count on you to check it out! And capture me the tastiest- I mean most interesting one!
+		Objective: the strange Jelly Deluge
 	}
 }

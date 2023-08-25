@@ -22,7 +22,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		private CritterCaptureBlossmoon()
         {
             _tasks.AddTask(new RetrievalTask(ModContent.ItemType<Items.Consumable.BlossmoonItem>(), 2, QuestManager.Localization("Capture")))
-				  .AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Consumable.BlossmoonItem>(), 2, "Blossmoon actually have the ability to calm nearby monsters. I suspect they draw power from the moon to do so. It would be very beneficial for us all if we made sure all Blossmoon thrived. This is a good first step in that process!", "Bring the Blossmoon back to the Dryad", true, true));
+				  .AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Consumable.BlossmoonItem>(), 2, GetText("Thanks"), GetText("BringBack"), true, true));
 		}
 	}
 }

@@ -30,7 +30,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		private StylistQuestSeafoam()
         {
 			_tasks.AddParallelTasks(new SlayTask(ModContent.NPCType<Sea_Mandrake>(), 1), new RetrievalTask(ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.SeaMandrakeSac>(), 1, QuestManager.Localization("Harvest")))
-				  .AddTask(new GiveNPCTask(NPCID.Stylist, ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.SeaMandrakeSac>(), 1, "You're back in one piece! I'm glad you didn't dye trying to get the goods. Get it? Anyway, this ink sac is really pretty- I'll be able to synthesize a hair dye that brings out the ocean breeze in you! Am I great or what? Come to me anytime you'd like to try this new dye or anything else to glam you up!", "Bring the Luminous Sac back to the Stylist", true, true));
+				  .AddTask(new GiveNPCTask(NPCID.Stylist, ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.SeaMandrakeSac>(), 1, GetText("Dialogue"), GetText("ReturnTo"), true, true));
 		}
 	}
 }

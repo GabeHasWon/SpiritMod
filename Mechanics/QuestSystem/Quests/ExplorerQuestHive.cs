@@ -23,7 +23,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestHive()
         {
-            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneHive, 2000f, "giant beehives in the Jungle"));
+            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneHive, 2000f, GetText("Objective")));
         }
     }
 }

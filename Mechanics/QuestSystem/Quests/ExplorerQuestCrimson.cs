@@ -19,7 +19,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestCrimson()
         {
-            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneCrimson, 4000f, "the Crimson"));
+            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneCrimson, 4000f, GetText("Objective")));
         }
 
 		public override bool IsQuestPossible() => WorldGen.crimson;

@@ -21,7 +21,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestAurora()
         {
-            _tasks.AddTask(new ExploreTask((Player player) => (player.ZoneSnow || player.ZoneSkyHeight) && MyWorld.aurora, 1500f, "boreal auroras in the snowy tundra or at high altitudes"));
+            _tasks.AddTask(new ExploreTask((Player player) => (player.ZoneSnow || player.ZoneSkyHeight) && MyWorld.aurora, 1500f, GetText("Objective")));
         }
     }
 }

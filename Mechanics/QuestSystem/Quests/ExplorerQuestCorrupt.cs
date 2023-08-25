@@ -19,7 +19,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestCorrupt()
         {
-            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneCorrupt, 4000f, "the Corruption"));
+            _tasks.AddTask(new ExploreTask((Player player) => player.ZoneCorrupt, 4000f, GetText("Objective")));
         }
 
 		public override bool IsQuestPossible() => !WorldGen.crimson;

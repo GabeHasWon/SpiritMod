@@ -22,12 +22,12 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		private CritterCaptureSoulOrb()
         {
 			TaskBuilder branch1 = new TaskBuilder();
-			branch1.AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Consumable.SoulOrbItem>(), 1, "These orbs seem to posses the souls of restless creatures. Perhaps we can bring them some peace in my sanctuary. You have done a great service for this soul and myself, traveller. Thank you.", "Bring the Soul Orb back to the Dryad", true, true));
+			branch1.AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Consumable.SoulOrbItem>(), 1, GetText("Thanks"), GetText("BringBack"), true, true));
 
 			TaskBuilder branch2 = new TaskBuilder();
 			branch2.AddTask(new RetrievalTask(ModContent.ItemType<Items.Material.SoulBloom>(), 1, QuestManager.Localization("OptionalGather")))
-				   .AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Material.SoulBloom>(), 1, "These flowers are so otherworldly and mesmerizing. Thank you for bringing them to me. I hope that you can plant a field full of these wonderful flowers.", "Bring the Soul Orb and Soulbloom back to the Dryad", true, true, ModContent.ItemType<Items.Books.Book_Soulbloom>()))
-				   .AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Consumable.SoulOrbItem>(), 1, "These orbs seem to posses the souls of restless creatures. Perhaps we can bring them some peace in my sanctuary. You have done a great service for this soul and myself, traveller. Thank you.", "Bring the Soul Orb and Soulbloom back to the Dryad", true, true));
+				   .AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Material.SoulBloom>(), 1, GetText("ThanksSoulbloom"), GetText("BringBackSoulbloom"), true, true, ModContent.ItemType<Items.Books.Book_Soulbloom>()))
+				   .AddTask(new GiveNPCTask(NPCID.Dryad, ModContent.ItemType<Items.Consumable.SoulOrbItem>(), 1, GetText("Thanks"), GetText("BringBack"), true, true));
 
 			_tasks.AddTask(new RetrievalTask(ModContent.ItemType<Items.Consumable.SoulOrbItem>(), 1, null));
 			_tasks.AddBranches(branch1, branch2);

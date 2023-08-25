@@ -21,7 +21,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
         {
             _tasks.AddTask(new SlayTask(new int[] { ModContent.NPCType<NPCs.Wheezer.Wheezer>(), ModContent.NPCType<NPCs.SporeWheezer.SporeWheezer>(), ModContent.NPCType<NPCs.CavernCrawler.CavernCrawler>(), 
 				NPCID.GiantShelly, NPCID.Salamander, NPCID.Crawdad, NPCID.Salamander2, NPCID.Salamander3, NPCID.Salamander4, NPCID.Salamander5, NPCID.Salamander6, NPCID.Salamander7, NPCID.Salamander8, 
-				NPCID.Salamander9, NPCID.GiantShelly2, NPCID.Crawdad2 }, 8, "Kill 8 Wheezers, Spore Wheezers, Cavern Crawlers, Giant Shellys, Salamanders, or Crawdads"));
+				NPCID.Salamander9, NPCID.GiantShelly2, NPCID.Crawdad2 }, 8, GetText("Objective")));
         }
     }
 }

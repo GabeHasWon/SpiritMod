@@ -22,7 +22,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		private AuroraStagQuest()
         {
 			_tasks.AddTask(new RetrievalTask(ModContent.ItemType<Items.Consumable.Food.IceBerries>(), 1))
-				  .AddTask(new RetrievalTask(ModContent.ItemType<Items.Equipment.AuroraSaddle.AuroraSaddle>(), 1, null, "Slowly approach an Aurora Stag and feed it Ice Berries"));
+				  .AddTask(new RetrievalTask(ModContent.ItemType<Items.Equipment.AuroraSaddle.AuroraSaddle>(), 1, null, GetText("Objective")));
 		}
 	}
 }

@@ -28,9 +28,9 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private ExplorerQuestOcean()
 		{
-			_tasks.AddTask(new ExploreTask((Player player) => player.ZoneBeach && player.GetModPlayer<MyPlayer>().Submerged(30), 5000f, "the ocean depths"))
-				.AddTask(new RetrievalTask(ModContent.ItemType<SulfurDeposit>(), 5, Language.GetText(""), "Grab 5 Sulfur Deposits from hydrothermal vents"))
-			    .AddTask(new GiveNPCTask(NPCID.Angler, ModContent.ItemType<SulfurDeposit>(), 5, "This smells...really bad! How do fish like this stuff? Why didn't you get me something cooler? Whatever...you can keep it. Go catch me some fish while you're out there next time!", "Return to the Angler", true, false));
+			_tasks.AddTask(new ExploreTask((Player player) => player.ZoneBeach && player.GetModPlayer<MyPlayer>().Submerged(30), 5000f, GetText("Ocean")))
+				.AddTask(new RetrievalTask(ModContent.ItemType<SulfurDeposit>(), 5, null, GetText("GetSulfur")))
+			    .AddTask(new GiveNPCTask(NPCID.Angler, ModContent.ItemType<SulfurDeposit>(), 5, GetText("Finish"), GetText("Return"), true, false));
 		}
 	}
 }
