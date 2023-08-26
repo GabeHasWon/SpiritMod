@@ -1,14 +1,12 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs.Glyph;
 using SpiritMod.GlobalClasses.Items;
-using SpiritMod.Items;
 using SpiritMod.Items.Glyphs;
 using SpiritMod.Particles;
 using SpiritMod.Projectiles.Glyph;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -88,24 +86,6 @@ namespace SpiritMod.GlobalClasses.Players
 			}
 
 			veilCounter = MathHelper.Max(veilCounter - .001f, 0);
-		}
-
-		public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-		{
-			if (zephyrStrike)
-				velocity *= StormGlyph.VelocityBoost;
-		}
-
-		public override bool CanUseItem(Item item)
-		{
-			if (Glyph == GlyphType.Storm && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2), 2, 10)))
-			{
-				zephyrStrike = true;
-
-				Vector2 velocity = Player.DirectionTo(Main.MouseWorld) * ((item.shootSpeed > 1) ? (item.shootSpeed * StormGlyph.VelocityBoost) : 12f);
-				Projectile.NewProjectile(Player.GetSource_ItemUse(item), Player.Center, velocity, ModContent.ProjectileType<SlicingGust>(), item.damage, 12f, Player.whoAmI);
-			}
-			return base.CanUseItem(item);
 		}
 
 		#region hit overrides
