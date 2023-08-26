@@ -147,7 +147,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 		public virtual void OnQuestComplete()
 		{
 			IsCompleted = true;
-			QuestManager.SayInChat(QuestManager.Localization("QuestCompleteChat").WithFormatArgs(WhoAmI, QuestName).Value, Color.White, true);
+			QuestManager.SayInChat(QuestManager.Localization("QuestCompleteChat").WithFormatArgs(WhoAmI, QuestName), Color.White, true);
 		}
 
 		public virtual void OnUnlock() { }
@@ -194,7 +194,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 				if (ActiveTime <= 0)
 				{
 					if (AnnounceDeactivation)
-						QuestManager.SayInChat(QuestManager.Localization("QuestOutOfTimeChat").WithFormatArgs(WhoAmI, QuestName).Value, Color.White);
+						QuestManager.SayInChat(QuestManager.Localization("QuestOutOfTimeChat").WithFormatArgs(WhoAmI, QuestName), Color.White);
 
 					QuestManager.DeactivateQuest(this);
 				}
@@ -210,7 +210,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			if (IsQuestPossible() && _previouslyUnavailable)
 			{
 				_previouslyUnavailable = false;
-				QuestManager.SayInChat(QuestManager.Localization("NewQuestChat").WithFormatArgs(WhoAmI, QuestName).Value, Color.White);
+				QuestManager.SayInChat(QuestManager.Localization("NewQuestChat").WithFormatArgs(WhoAmI, QuestName), Color.White);
 			}
 		}
 

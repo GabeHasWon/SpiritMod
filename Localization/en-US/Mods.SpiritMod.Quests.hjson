@@ -5,6 +5,10 @@ RecipeConditions: {
 
 # I'm very sorry to whoever's translating this. Best of luck, and godspeed. - GabeHasWon
 
+# This is actually only used for the Lifeform Analyzer's (Quest) <NPCName>.
+Quest: Quest
+Residents: Your residents want to talk to you. Chat with them to get more quests!
+ChatOpenBook: Click on quests in the chat to open them in the book!
 # This formats to "You have completed a quest! <Quest Name>" in-game. The sQ?:{0} is a quest chat tag.
 QuestCompleteChat: You have completed a quest! [[sQ/{0}:{1}]]
 QuestOutOfTimeChat: "[[sQ/{0}:{1}]] has run out of time!"

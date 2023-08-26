@@ -1211,13 +1211,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			modifiers.Knockback *= 0.7f;
 
 			if (Main.player[projectile.owner].HeldItem.type == ItemID.Minishark)
-			{ //shadow nerfing minishark on scarab because meme balance weapon
+			{ 
+				//shadow nerfing minishark on scarab because meme balance weapon
 				modifiers.Knockback *= 0.5f;
-				int maxdamage = Main.rand.Next(3, 6);
-
-				//1.4.4PORT
-				//while (damage - (NPC.defense / 2) + (Main.player[projectile.owner].GetArmorPenetration(DamageClass.Ranged) * 0.33f) > maxdamage)
-				//	damage--;
+				modifiers.FinalDamage *= 0.6f;
 			}
 
 			if (!Main.player[projectile.owner].ZoneDesert)

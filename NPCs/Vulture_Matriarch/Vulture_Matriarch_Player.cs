@@ -44,12 +44,18 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			}
 		}
 
+		public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
+		{
+			if (goldified)
+				damageSource = PlayerDeathReason.ByCustomReason(Player.name + Language.GetTextValue("Mods.SpiritMod.GoldifiedDeath"));
+			return true;
+		}
+
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 		{
 			if (goldified)
 			{
-				modifiers.DisableSound(); //1.4.4PORT
-				//damageSource = PlayerDeathReason.ByCustomReason(Player.name + " died solid as a gold bar");
+				modifiers.DisableSound();
 				SoundEngine.PlaySound(SoundID.Item37, Player.position);
 			}
 		}

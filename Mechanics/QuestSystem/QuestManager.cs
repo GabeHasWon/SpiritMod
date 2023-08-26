@@ -203,7 +203,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 					{
 						quest.IsUnlocked = false;
 						if (quest.AnnounceRelocking)
-							SayInChat(Localization("QuestRelockedChat").WithFormatArgs(quest.WhoAmI, quest.QuestName).Value, Color.White);
+							SayInChat(Localization("QuestRelockedChat").WithFormatArgs(quest.WhoAmI, quest.QuestName), Color.White);
 					}
 				}
 			}
@@ -253,7 +253,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			quest.OnUnlock();
 
 			if (showInChat && quest.IsQuestPossible() && Main.netMode != NetmodeID.Server)
-				SayInChat(Localization("NewQuestChat").WithFormatArgs(quest.WhoAmI, quest.QuestName).Value, Color.White);
+				SayInChat(Localization("NewQuestChat").WithFormatArgs(quest.WhoAmI, quest.QuestName), Color.White);
 
 			if (!Quiet && Main.netMode == NetmodeID.MultiplayerClient)
 			{
@@ -402,13 +402,15 @@ namespace SpiritMod.Mechanics.QuestSystem
 			return task.Parse(args);
 		}
 
-		public static void SayInChat(string langKey, Color colour, bool noServer = false)
+		public static void SayInChat(LocalizedText text, Color colour, bool noServer = false)
 		{
 			if (Main.netMode == NetmodeID.SinglePlayer || Main.netMode == NetmodeID.MultiplayerClient)
-				Main.NewText(LocalizationValue(langKey), colour.R, colour.G, colour.B);
+				Main.NewText(text.Value, colour.R, colour.G, colour.B);
 			else if (Main.netMode == NetmodeID.Server && !noServer)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(LocalizationValue(langKey)), colour, -1);
+				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text.Value), colour, -1);
 		}
+
+		public static void SayInChat(string langKey, Color colour, bool noServer = false) => SayInChat(Localization(langKey), colour, noServer);
 
 		public static string LocalizationValue(string postfix) => Language.GetTextValue("Mods.SpiritMod.Quests." + postfix);
 		public static LocalizedText Localization(string postfix) => Language.GetText("Mods.SpiritMod.Quests." + postfix);

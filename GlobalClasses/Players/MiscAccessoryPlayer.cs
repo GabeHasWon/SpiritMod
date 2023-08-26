@@ -100,7 +100,6 @@ namespace SpiritMod.GlobalClasses.Players
 			{
 				modifiers.CritDamage *= 1.2f;
 
-				//1.4.4PORT
 				for (int i = 0; i < 3; i++)
 					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
 			}

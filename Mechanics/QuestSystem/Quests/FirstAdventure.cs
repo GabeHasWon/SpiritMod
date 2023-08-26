@@ -45,8 +45,8 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 			else
 				ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.Guide, QuestManager.GetQuest<ExplorerQuestCorrupt>());
 
-			QuestManager.SayInChat("Your residents want to talk to you. Chat with them to get more quests!", Color.ForestGreen, true);
-			QuestManager.SayInChat("Click on quests in the chat to open them in the book!", Color.GreenYellow, true);
+			QuestManager.SayInChat("Residents", Color.ForestGreen, true);
+			QuestManager.SayInChat("ChatOpenBook", Color.GreenYellow, true);
 			base.OnQuestComplete();
 		}
 	}
