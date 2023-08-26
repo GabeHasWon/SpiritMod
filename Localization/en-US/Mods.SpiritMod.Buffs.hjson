@@ -718,6 +718,17 @@ BaubleResistance: {
 	Description: You feel protected
 }
 
+GildedScarab_buff: {
+	DisplayName: Scarab Shield
+	Description: Defense increased by {0}
+}
+
+SlagFury_buff: {
+	Tooltip: Slag Fury
+	Description: "{$CommonItemTooltip.PercentIncreasedDamage}"
+	DisplayName: Slag Fury_buff
+}
+
 RunicSiphon: {
 	DisplayName: Runic Siphon
 	Description: Reduced damage resistance and losing HP rapidly
