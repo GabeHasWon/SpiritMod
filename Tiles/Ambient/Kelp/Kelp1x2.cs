@@ -13,11 +13,6 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 	[Sacrifice(1)]
 	public class SmallKelpItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Small Glowing Plant");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -26,7 +21,7 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 			Item.value = 0;
 			Item.rare = ItemRarityID.Blue;
 			Item.createTile = ModContent.TileType<Kelp1x2>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;
@@ -40,6 +35,7 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 			recipe.Register();
 		}
 	}
+
 	public class Kelp1x2 : ModTile
 	{
 		readonly Texture2D glowmask;

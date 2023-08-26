@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Items.Placeable.Tiles;
-using SpiritMod.Tiles.Block;
+
 namespace SpiritMod.Items.Placeable.Furniture.Neon
 {
 	[Sacrifice(1)]
@@ -13,9 +13,9 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 		{
 			Item.width = 36;
 			Item.height = 28;
-			Item.value = Item.value = Terraria.Item.buyPrice(0, 0, 5, 0);
+			Item.value = Item.buyPrice(0, 0, 5, 0);
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

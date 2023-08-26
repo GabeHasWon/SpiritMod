@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Consumable
 			Item.rare = ItemRarityID.LightRed;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.createTile = ModContent.TileType<Tiles.Furniture.PirateCrate>();
 			Item.useTime = Item.useAnimation = 20;
 			Item.useAnimation = 15;

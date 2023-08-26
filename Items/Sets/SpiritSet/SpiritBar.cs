@@ -7,8 +7,6 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	[Sacrifice(25)]
 	public class SpiritBar : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Spirit Bar");
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -17,12 +15,13 @@ namespace SpiritMod.Items.Sets.SpiritSet
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
 			Item.rare = ItemRarityID.Pink;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.createTile = ModContent.TileType<SpiritBarTile>();
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

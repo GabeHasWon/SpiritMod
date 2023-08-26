@@ -59,8 +59,6 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 	public class MusselItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mussel");
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -69,7 +67,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			Item.value = 0;
 			Item.rare = ItemRarityID.Blue;
 			Item.createTile = ModContent.TileType<Mussel>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;

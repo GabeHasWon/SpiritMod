@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Consumable
 			Item.rare = ItemRarityID.Green;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.createTile = ModContent.TileType<BriarCrate_Tile>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;

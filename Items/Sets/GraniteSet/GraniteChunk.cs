@@ -8,19 +8,15 @@ namespace SpiritMod.Items.Sets.GraniteSet
 {
 	public class GraniteChunk : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Enchanted Granite Chunk");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 36;
 			Item.value = 5000;
-			Item.maxStack = 999;
 			Item.rare = ItemRarityID.Green;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

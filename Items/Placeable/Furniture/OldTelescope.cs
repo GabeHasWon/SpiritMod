@@ -8,18 +8,12 @@ namespace SpiritMod.Items.Placeable.Furniture
 	[Sacrifice(1)]
 	public class OldTelescope : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Old Telescope");
-			// Tooltip.SetDefault("Right click when placed to check the phase of the moon\n'Look toward the stars'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 34;
 			Item.value = 150;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

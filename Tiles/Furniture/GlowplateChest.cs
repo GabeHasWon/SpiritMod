@@ -34,15 +34,13 @@ namespace SpiritMod.Tiles.Furniture
 
 	public class GlowplateChestItem : ModItem
 	{
-		//public override void SetStaticDefaults() => DisplayName.SetDefault("Glowplate Chest");
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 28;
 			Item.value = Item.value = Item.buyPrice(0, 0, 5, 0);
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

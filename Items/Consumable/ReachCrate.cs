@@ -20,7 +20,7 @@ public class ReachCrate : ModItem
 		Item.rare = ItemRarityID.Green;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.createTile = ModContent.TileType<ReachCrate_Tile>();
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.autoReuse = true;
 		Item.useAnimation = 15;
 		Item.useTime = 10;

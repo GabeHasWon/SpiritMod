@@ -1,3 +1,2 @@
-﻿- Fixed all [most] tiles that dropped two items, ported multi-drops to GetItemDrops
-- Fixed Living Elderbark Wood dropping Living Elderbark Wands
-- Fixed Living Elderbark Wand being stackable
+﻿- Removed outdated translation loading for configs
+- 

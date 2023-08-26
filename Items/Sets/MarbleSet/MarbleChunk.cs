@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -5,19 +6,12 @@ namespace SpiritMod.Items.Sets.MarbleSet
 {
 	public class MarbleChunk : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Ancient Marble Chunk");
-			// Tooltip.SetDefault("'Contains fragments of past civilizations'");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 36;
 			Item.value = 5000;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Green;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;

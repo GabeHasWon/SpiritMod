@@ -13,20 +13,17 @@ namespace SpiritMod.Items.Placeable.Furniture
 			Item.width = 36;
 			Item.height = 34;
 			Item.value = 5000;
-
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.buyPrice(gold: 3);
-
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<GiantAnglerStatueTile>();
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

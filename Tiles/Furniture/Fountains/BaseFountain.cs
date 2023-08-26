@@ -110,7 +110,7 @@ namespace SpiritMod.Tiles.Furniture.Fountains
 		{
 			Item.width = 52;
 			Item.height = 58;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.useAnimation = 16;

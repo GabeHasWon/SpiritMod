@@ -15,12 +15,6 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 		private int _yFrame;
 		private float _alpha;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Olympium Token");
-			// Tooltip.SetDefault("May be of interest to a collector...");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 26;
@@ -29,7 +23,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet
 			Item.value = 300;
 			Item.rare = ItemRarityID.LightRed;
 			Item.createTile = ModContent.TileType<OlympiumToken_Tile>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;

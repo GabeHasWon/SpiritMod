@@ -15,9 +15,10 @@ namespace SpiritMod.NPCs.Critters
 	{
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Gold Lumoth");
             Main.npcFrameCount[NPC.type] = 4;
             Main.npcCatchable[NPC.type] = true;
+
+			NPCID.Sets.GoldCrittersCollection.Add(Type);
 			NPCID.Sets.CountsAsCritter[Type] = true;
 		}
 
@@ -36,8 +37,10 @@ namespace SpiritMod.NPCs.Critters
             NPC.aiStyle = 64;
             NPC.npcSlots = 0;
             NPC.noGravity = true;
-            AIType = NPCID.Firefly;
 			NPC.dontTakeDamageFromHostiles = false;
+			NPC.rarity = 2;
+
+			AIType = NPCID.Firefly;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

@@ -7,8 +7,6 @@ namespace SpiritMod.Items.Placeable.MusicBox
 	[Sacrifice(1)]
 	public class AtlasBox : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Atlas)");
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

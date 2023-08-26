@@ -13,32 +13,22 @@ namespace SpiritMod.Tiles.Furniture
 {
     public class FestivalLanternItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Festival Lantern");
-			// Tooltip.SetDefault("Starts a lantern festival nearby when placed");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 22;
 			Item.value = Item.sellPrice(0, 0, 40, 0);
 			Item.value = Item.buyPrice(gold: 2);
-
-			Item.maxStack = 99;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<FestivalLanternTile>();
 		}
+
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

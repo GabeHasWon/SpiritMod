@@ -13,8 +13,6 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 	[Sacrifice(1)]
 	public class LargeVentItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Large Hydrothermal Vent");
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -23,7 +21,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			Item.value = 0;
 			Item.rare = ItemRarityID.Blue;
 			Item.createTile = ModContent.TileType<Breakable1x3Vent>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;

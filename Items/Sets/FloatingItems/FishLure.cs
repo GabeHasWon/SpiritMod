@@ -14,19 +14,13 @@ namespace SpiritMod.Items.Sets.FloatingItems
 		public override float Weight => base.Weight * 0.9f;
 		public override float Bouyancy => base.Bouyancy * 1.08f;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Fish Lure");
-			// Tooltip.SetDefault("Can only be placed in water\nAttracts schools of fish to nearby waters");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Blue;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.createTile = ModContent.TileType<FishLureTile>();
 			Item.useTime = Item.useAnimation = 20;
 			Item.useAnimation = 15;
@@ -58,8 +52,10 @@ namespace SpiritMod.Items.Sets.FloatingItems
 		{
 			if (Framing.GetTileSafely(i, j + 1).LiquidAmount < 155 && Framing.GetTileSafely(i, j).LiquidAmount < 155) //Kill me if I'm thirsty (aka kill if there's no water)
 				WorldGen.KillTile(i, j);
+
 			Player player = Main.LocalPlayer;
 			MyPlayer modPlayer = player.GetSpiritPlayer();
+
 			if (closer)
 				modPlayer.nearLure = true;
 			else

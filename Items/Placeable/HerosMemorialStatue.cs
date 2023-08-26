@@ -7,8 +7,6 @@ namespace SpiritMod.Items.Placeable
 {
 	public class HerosMemorialStatue : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hero's Memorial Statue");
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
@@ -16,7 +14,7 @@ namespace SpiritMod.Items.Placeable
 			Item.rare = ItemRarityID.Orange;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.createTile = ModContent.TileType<HerosMemorialStatueTile>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;

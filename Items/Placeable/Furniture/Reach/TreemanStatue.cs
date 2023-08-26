@@ -10,18 +10,12 @@ namespace SpiritMod.Items.Placeable.Furniture.Reach
 	[Sacrifice(1)]
 	public class TreemanStatue : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Statue of the Old Gods");
-			// Tooltip.SetDefault("Provides the effects of a Workbench, Potion Crafting Station, and Bookcase\n'The Old Ones will protect you'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 32;
 			Item.height = 28;
 			Item.value = 25500;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Orange;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;

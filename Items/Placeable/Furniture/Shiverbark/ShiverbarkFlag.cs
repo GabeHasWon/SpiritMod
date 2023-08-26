@@ -9,17 +9,12 @@ namespace SpiritMod.Items.Placeable.Furniture.Shiverbark
 	[Sacrifice(1)]
 	public class ShiverbarkFlag : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Shiverbark Flag");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 32;
 			Item.height = 28;
 			Item.value = 500;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

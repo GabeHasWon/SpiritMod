@@ -12,12 +12,6 @@ namespace SpiritMod.Items.Sets.FloatingItems
 		public override float Weight => base.Weight * 0.9f;
 		public override float Bouyancy => base.Bouyancy * 1.15f;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Kelp");
-			// Tooltip.SetDefault("Must be planted in water");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -26,7 +20,7 @@ namespace SpiritMod.Items.Sets.FloatingItems
 			Item.value = 0;
 			Item.rare = ItemRarityID.Blue;
 			Item.createTile = ModContent.TileType<OceanKelp>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;

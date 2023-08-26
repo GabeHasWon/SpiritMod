@@ -7,8 +7,6 @@ namespace SpiritMod.Items.Placeable.MusicBox
 	[Sacrifice(1)]
 	public class HyperspaceDayBox : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Hyperspace- Day)");
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

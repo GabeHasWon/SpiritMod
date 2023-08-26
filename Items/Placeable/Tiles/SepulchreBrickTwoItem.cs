@@ -7,13 +7,11 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class SepulchreBrickTwoItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sepulchre Brick");
-
 		public override void SetDefaults()
 		{
 			Item.width = 16;
 			Item.height = 14;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

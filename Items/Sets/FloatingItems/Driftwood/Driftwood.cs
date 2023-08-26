@@ -5,7 +5,6 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.ID;
-using Terraria.DataStructures;
 
 namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 {
@@ -16,12 +15,6 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 		public override float Weight => base.Weight * 0.9f;
 		public override float Bouyancy => base.Bouyancy * 1.05f;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Small Driftwood");
-			// Tooltip.SetDefault("'Aesthetically pleasing'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -30,7 +23,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			Item.value = 0;
 			Item.rare = ItemRarityID.White;
 			Item.createTile = ModContent.TileType<Driftwood1Tile>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;
@@ -81,12 +74,6 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 		public override float Weight => base.Weight * 0.9f;
 		public override float Bouyancy => base.Bouyancy * 1.05f;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Medium Driftwood");
-			// Tooltip.SetDefault("'Aesthetically pleasing'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -95,7 +82,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			Item.value = 0;
 			Item.rare = ItemRarityID.White;
 			Item.createTile = ModContent.TileType<Driftwood2Tile>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;
@@ -146,12 +133,6 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 		public override float Weight => base.Weight * 0.9f;
 		public override float Bouyancy => base.Bouyancy * 1.05f;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Large Driftwood");
-			// Tooltip.SetDefault("'Aesthetically pleasing'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -160,7 +141,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			Item.value = 0;
 			Item.rare = ItemRarityID.White;
 			Item.createTile = ModContent.TileType<Driftwood3Tile>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;

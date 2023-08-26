@@ -7,8 +7,6 @@ namespace SpiritMod.Items.Placeable.MusicBox
 	[Sacrifice(1)]
 	public class SpiritBox2 : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Spirit Biome- Underground)");
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

@@ -10,28 +10,19 @@ namespace SpiritMod.Items.Placeable.Furniture
 	[Sacrifice(1)]
 	public class SpiritPainting : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("The Milestone");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 94;
 			Item.height = 62;
 			Item.value = Item.value = Item.buyPrice(0, 10, 1000, 10);
 			Item.rare = ItemRarityID.LightPurple;
-
-			Item.maxStack = 99;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<SpiritPaintingTile>();
 		}
 

@@ -8,13 +8,6 @@ namespace SpiritMod.Items.Placeable
 	[Sacrifice(1)]
 	public class SuperSunFlowerItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pureglow");
-			/* Tooltip.SetDefault("Places a large plant able to halt the spread of evil and Hallow" +
-				"\nThis effect extends horizontally in a 5 block radius around the flower, and has an infinite vertical reach"); */
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -22,7 +15,7 @@ namespace SpiritMod.Items.Placeable
 			Item.useAnimation = 15;
 			Item.useTime = 10;
 			Item.autoReuse = true;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.consumable = true;
 			Item.createTile = ModContent.TileType<SuperSunFlower>();
 			Item.width = 36;

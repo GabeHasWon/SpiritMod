@@ -26,7 +26,7 @@ namespace SpiritMod.Items.Placeable
 			Item.rare = ItemRarityID.Orange;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.createTile = ModContent.TileType<FishCrate_Tile>();
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;

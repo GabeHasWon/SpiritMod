@@ -202,17 +202,11 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 	[Sacrifice(0)]
 	internal class Fathomless_Chest_Item : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Fathomless Vase");
-			// Tooltip.SetDefault("You aren't supposed to have this!");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 12;
 			Item.height = 12;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useTurn = true;
 			Item.value = 0;
 			Item.autoReuse = true;

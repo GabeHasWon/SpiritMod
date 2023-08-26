@@ -22,6 +22,7 @@ namespace SpiritMod.Items.Consumable.Quest
             Item.createTile = ModContent.TileType<Tiles.Furniture.Paintings.HiveMap>();
 			Item.value = Item.buyPrice(0, 0, 50, 0);
 			Item.rare = ItemRarityID.Blue;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

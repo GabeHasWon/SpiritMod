@@ -8,14 +8,12 @@ namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 {
 	public class BambooBenchItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Stripped Bamboo Bench");
-
 		public override void SetDefaults()
 		{
 			Item.width = 38;
 			Item.height = 22;
 			Item.value = 50;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

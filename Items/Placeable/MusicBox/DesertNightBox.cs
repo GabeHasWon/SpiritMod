@@ -7,8 +7,6 @@ namespace SpiritMod.Items.Placeable.MusicBox
 	[Sacrifice(1)]
 	public class DesertNightBox : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Desert- Night)");
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

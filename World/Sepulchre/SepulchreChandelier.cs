@@ -44,30 +44,25 @@ namespace SpiritMod.World.Sepulchre
 			b = 0.4f;
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
+
 	public class SepulchreChandelierItem : ModItem
 	{
 		public override void SetDefaults()
 		{
 			Item.width = 20;
 			Item.height = 30;
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<SepulchreChandelier>();
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);

@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Enums;
 using Terraria.ObjectData;
-using Terraria.DataStructures;
 using SpiritMod.NPCs;
 using Terraria.GameContent.ItemDropRules;
 
@@ -18,18 +17,13 @@ namespace SpiritMod.Items.Sets.FloatingItems
 		public override float Weight => base.Weight * 0.9f;
 		public override float Bouyancy => base.Bouyancy * 1.08f;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sunken Treasure");
-			// Tooltip.SetDefault("Right-click to open\n'Perhaps it is still full of valuable treasure''");
-		}
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.LightRed;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.createTile = ModContent.TileType<SunkenTreasureTile>();
 			Item.useTime = Item.useAnimation = 20;
 			Item.useAnimation = 15;

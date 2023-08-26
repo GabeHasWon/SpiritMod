@@ -12,26 +12,18 @@ namespace SpiritMod.Tiles.Furniture.Critters
 {
 	public class BlossomCage : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Blossmoon Cage");
-		}
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 22;
 			Item.value = Item.buyPrice(0, 0, 30, 0);
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 15;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<Blossom_Tile>();
 		}
 
@@ -84,30 +76,24 @@ namespace SpiritMod.Tiles.Furniture.Critters
 				frame %= 5;
 			}
 		}
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
-    }
+
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
+	}
+
     public class BriarmothCage : ModItem
     {
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briarmoth in a Jar");
 		public override void SetDefaults()
         {
             Item.width = 22;
             Item.height = 22;
             Item.value = Item.buyPrice(0, 0, 30, 0);
-
-            Item.maxStack = 999;
-
+            Item.maxStack = Item.CommonMaxStack;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 15;
             Item.useAnimation = 15;
-
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.consumable = true;
-
             Item.createTile = ModContent.TileType<Briarmoth_Tile>();
         }
 
@@ -120,6 +106,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
             recipe.Register();
         }
     }
+
     public class Briarmoth_Tile : ModTile
     {
         public override void SetStaticDefaults()
@@ -140,7 +127,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
             TileObjectData.addTile(Type);
             DustType = DustID.Glass;
             LocalizedText name = CreateMapEntryName();
-            // name.SetDefault("Critter Cage");
             AddMapEntry(new Color(200, 200, 200), name);
         }
 
@@ -154,30 +140,24 @@ namespace SpiritMod.Tiles.Furniture.Critters
                 frame %= 16;
             }
         }
-        public override void NumDust(int i, int j, bool fail, ref int num)
-        {
-            num = fail ? 1 : 3;
-        }
-    }
+
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
+	}
+
     public class CleftCage : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cleft Hopper Cage");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 22;
 			Item.value = Item.buyPrice(0, 0, 30, 0);
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 15;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<Cleft_Tile>();
 		}
 
@@ -213,6 +193,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
+
 		public override void AnimateTile(ref int frame, ref int frameCounter)
 		{
 			frameCounter++;
@@ -223,27 +204,24 @@ namespace SpiritMod.Tiles.Furniture.Critters
 				frame %= 7;
 			}
 		}
+
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
+
 	public class PaleCrinoidCage : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Pale Crinoid Cage");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 22;
 			Item.value = Item.buyPrice(0, 0, 30, 0);
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 15;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<PaleCrinoid_Tile>();
 		}
 
@@ -276,9 +254,9 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
+
 		public override void AnimateTile(ref int frame, ref int frameCounter)
 		{
 			frameCounter++;
@@ -289,27 +267,24 @@ namespace SpiritMod.Tiles.Furniture.Critters
 				frame %= 6;
 			}
 		}
+
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
+
 	public class RedCrinoidCage : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Red Crinoid Cage");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 22;
 			Item.value = Item.buyPrice(0, 0, 30, 0);
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 15;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<RedCrinoid_Tile>();
 		}
 
@@ -342,9 +317,9 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
+
 		public override void AnimateTile(ref int frame, ref int frameCounter)
 		{
 			frameCounter++;
@@ -355,27 +330,24 @@ namespace SpiritMod.Tiles.Furniture.Critters
 				frame %= 6;
 			}
 		}
+
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
+
 	public class BrownCrinoidCage : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Brown Crinoid Cage");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 22;
 			Item.value = Item.buyPrice(0, 0, 30, 0);
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 15;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<BrownCrinoid_Tile>();
 		}
 
@@ -411,6 +383,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
+
 		public override void AnimateTile(ref int frame, ref int frameCounter)
 		{
 			frameCounter++;
@@ -421,28 +394,25 @@ namespace SpiritMod.Tiles.Furniture.Critters
 				frame %= 6;
 			}
 		}
+
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
+
 	public class LuvdiscBowl : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Ardorfish Bowl");
 
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 32;
 			Item.value = Item.buyPrice(0, 0, 30, 0); ;
-
-			Item.maxStack = 99;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<Luvdisc_Tile>();
 		}
 
@@ -455,6 +425,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			recipe.Register();
 		}
 	}
+
 	public class Luvdisc_Tile : ModTile
 	{
 		public override void SetStaticDefaults()
@@ -474,9 +445,9 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
+
 		public override void AnimateTile(ref int frame, ref int frameCounter)
 		{
 			frameCounter++;
@@ -492,24 +463,18 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	}
 	public class GulperBowl : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gulper Bowl");
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 32;
-			Item.value = Item.buyPrice(0, 0, 30, 0); ;
-
-			Item.maxStack = 99;
-
+			Item.value = Item.buyPrice(0, 0, 30, 0);
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = Mod.Find<ModTile>("Gulper_Tile").Type;
 		}
 
@@ -522,6 +487,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			recipe.Register();
 		}
 	}
+
 	public class Gulper_Tile : ModTile
 	{
 		public override void SetStaticDefaults()
@@ -541,7 +507,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 
@@ -558,26 +523,21 @@ namespace SpiritMod.Tiles.Furniture.Critters
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
+
 	public class TubewormBowl : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Tubeworm Bowl");
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 32;
 			Item.value = Item.buyPrice(0, 0, 30, 0); ;
-
-			Item.maxStack = 99;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = Mod.Find<ModTile>("Tubeworm_Tile").Type;
 		}
 
@@ -590,6 +550,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			recipe.Register();
 		}
 	}
+
 	public class Tubeworm_Tile : ModTile
 	{
 		public override void SetStaticDefaults()
@@ -626,25 +587,21 @@ namespace SpiritMod.Tiles.Furniture.Critters
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
+
 	public class VibeshroomJarItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Quivershroom Jar");
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 22;
 			Item.value = Item.buyPrice(0, 0, 30, 0);
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 15;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<VibeshroomJar_Tile>();
 		}
 
@@ -657,6 +614,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			recipe.Register();
 		}
 	}
+
 	public class VibeshroomJar_Tile : ModTile
 	{
 		public override void SetStaticDefaults()

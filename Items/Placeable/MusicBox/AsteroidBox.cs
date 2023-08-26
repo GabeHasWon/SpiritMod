@@ -7,8 +7,6 @@ namespace SpiritMod.Items.Placeable.MusicBox
 	[Sacrifice(1)]
 	public class AsteroidBox : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Music Box (Asteroid Field)");
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

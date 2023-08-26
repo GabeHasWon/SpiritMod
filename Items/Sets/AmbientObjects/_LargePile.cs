@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
 			Item.rare = ItemRarityID.White;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.createTile = TileID.LargePiles;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
@@ -37,7 +37,7 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
 			Item.rare = ItemRarityID.White;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.createTile = TileID.LargePiles2;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;

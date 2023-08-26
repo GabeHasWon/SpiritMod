@@ -9,15 +9,11 @@ namespace SpiritMod.Items.Placeable.Furniture.Reach
 	[Sacrifice(200)]
 	public class ReachPlatformTile : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Elderbark Platform");
-		}
 		public override void SetDefaults()
 		{
 			Item.width = 8;
 			Item.height = 10;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;

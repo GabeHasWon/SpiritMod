@@ -50,17 +50,11 @@ namespace SpiritMod.World.Sepulchre
 
 	public class CursedArmorItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Draugr Statue");
-			// Tooltip.SetDefault("'Take caution...'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 26;
 			Item.height = 42;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

@@ -11,7 +11,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 		{
 			Item.width = 16;
 			Item.height = 14;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

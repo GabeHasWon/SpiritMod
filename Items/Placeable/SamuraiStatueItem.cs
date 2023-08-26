@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Placeable
 	[Sacrifice(1)]
 	public class SamuraiStatueItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Samurai Statue");
-			// Tooltip.SetDefault("");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -21,7 +15,7 @@ namespace SpiritMod.Items.Placeable
 			Item.useAnimation = 15;
 			Item.useTime = 10;
 			Item.autoReuse = true;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.consumable = true;
 			Item.createTile = ModContent.TileType<SamuraiStatue>();
 			Item.width = 36;

@@ -1,17 +1,17 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using HalloweenGrassTile = SpiritMod.Tiles.Block.HalloweenGrass;
+
 namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class HalloweenGrass : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Spooky Grass");
-
 		public override void SetDefaults()
 		{
 			Item.width = 16;
 			Item.height = 14;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = 500;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;

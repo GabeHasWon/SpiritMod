@@ -7,28 +7,19 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class SpaceJunkItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Space Junk");
-			// Tooltip.SetDefault("Can be used by the Extractinator\n'What's hidden behind this jumbled mess?'");
-			ItemID.Sets.ExtractinatorMode[Item.type] = Item.type;
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ExtractinatorMode[Item.type] = Item.type;
 
 		public override void SetDefaults()
 		{
 			Item.width = 16;
 			Item.height = 14;
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<SpaceJunkTile>();
 		}
 

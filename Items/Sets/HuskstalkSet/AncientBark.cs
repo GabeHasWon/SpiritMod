@@ -7,12 +7,10 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 {
 	public class AncientBark : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Elderbark");
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 7;
 			Item.useAnimation = 15;

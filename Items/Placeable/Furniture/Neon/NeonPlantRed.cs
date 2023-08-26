@@ -9,35 +9,27 @@ namespace SpiritMod.Items.Placeable.Furniture.Neon
 	[Sacrifice(1)]
 	public class NeonPlantRed : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Red Neon Plant");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 28;
-			Item.value = Item.value = Terraria.Item.buyPrice(0, 0, 1, 0);
+			Item.value = Item.buyPrice(0, 0, 1, 0);
 			Item.rare = ItemRarityID.Blue;
-
-			Item.maxStack = 99;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<RedNeonPlant>();
 		}
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(2);
-            recipe.AddIngredient(ModContent.ItemType<Items.Placeable.Tiles.TechBlockItem>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<Items.Material.SynthMaterial>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Tiles.TechBlockItem>(), 5);
+            recipe.AddIngredient(ModContent.ItemType<SynthMaterial>(), 1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet
             Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
 			Item.rare = ItemRarityID.Orange;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.createTile = ModContent.TileType<CryoliteBarTile>();
 			Item.autoReuse = true;
 			Item.useAnimation = 15;

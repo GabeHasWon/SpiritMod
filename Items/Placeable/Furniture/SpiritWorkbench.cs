@@ -9,14 +9,12 @@ namespace SpiritMod.Items.Placeable.Furniture
 	[Sacrifice(1)]
 	public class SpiritWorkbench : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Duskwood Work Bench");
-
 		public override void SetDefaults()
 		{
 			Item.width = 44;
 			Item.height = 25;
 			Item.value = 150;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

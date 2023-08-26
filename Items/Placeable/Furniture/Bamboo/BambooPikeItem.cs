@@ -10,8 +10,6 @@ namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 	[Sacrifice(1)]
 	public class BambooPikeItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Pike");
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -19,7 +17,7 @@ namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 			Item.useAnimation = 15;
 			Item.useTime = 10;
 			Item.autoReuse = true;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.consumable = true;
 			Item.createTile = ModContent.TileType<BambooPikeTile>();
 			Item.width = 36;

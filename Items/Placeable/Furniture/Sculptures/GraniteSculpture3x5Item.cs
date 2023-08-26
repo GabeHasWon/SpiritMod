@@ -8,14 +8,12 @@ namespace SpiritMod.Items.Placeable.Furniture.Sculptures
 	[Sacrifice(1)]
 	public class GraniteSculpture3x5Item : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Angular Granite Sculpture");
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 34;
 			Item.value = 150;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

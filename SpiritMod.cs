@@ -444,60 +444,6 @@ namespace SpiritMod
 
 			OlympiumCurrencyID = CustomCurrencyManager.RegisterCurrency(new OlympiumCurrency(ModContent.ItemType<OlympiumToken>(), 999));
 
-			#region configLabels
-			void AddTranslation(string name, string defaultValue)
-			{
-				LocalizedText config = Language.GetOrRegister(this, name); //1.4.4PORT
-				// config.SetDefault(defaultValue);
-				//LocalizationLoader.AddTranslation(config)/* tModPorter Note: Removed. Use Language.GetOrRegister */;
-			}
-
-			//Regular Config labels
-			AddTranslation("Screenshake", $"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Screenshake");
-			AddTranslation("Distortion", $"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Screen Distortion");
-			AddTranslation("Particles", $"[i:" + Find<ModItem>("BlueNeonSign").Type + "]  Visuals: Foreground Particles");
-			AddTranslation("Quicksell", $"[i:" + Find<ModItem>("SeedBag").Type + "]  QoL: Quick-Sell Feature");
-			AddTranslation("Autoswing", $"[i:" + Find<ModItem>("PurpleNeonSign").Type + "]  QoL: Auto-Reuse Tooltip");
-			AddTranslation("AmbientSounds", $"[i:" + Find<ModItem>("SurrenderBell").Type + "]  Ambience: Ambient Sounds");
-			AddTranslation("LeafFallAmbience", $"[i:" + Find<ModItem>("EnchantedLeaf").Type + "]  Ambience: Falling Leaf Effects");
-			AddTranslation("QuestButton", $"[i:" + Find<ModItem>("Book_Slime").Type + "]  Quests: Quest Book Button Location");
-			AddTranslation("QuestBookSwitching", $"[i:" + Find<ModItem>("Book_Slime").Type + "]  Quests: Quest Book Tab Switching");
-			AddTranslation("QuestIcons", $"[i:" + Find<ModItem>("Brightbulb").Type + "]  Quests: Town NPC Quest Icons");
-			AddTranslation("ArcaneHideoutGen", $"[i:" + Find<ModItem>("JellyCandle").Type + "]  Worldgen: Arcane Tower and Bandit Hideout Generation");
-			AddTranslation("OceanShape", $"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Ocean Generation Shape");
-			AddTranslation("OceanVents", $"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Hydothermal Vent Ecosystems");
-			AddTranslation("OceanWater", $"[i:" + Find<ModItem>("BlackPearl").Type + "]  Oceans: Ocean Water Transparency");
-			AddTranslation("WaterEnemies", $"[i:" + Find<ModItem>("SpiritKoi").Type + "]  Fishing: Fishing Encounters");
-
-			//Music Config
-			void AddMusicTranslation(string name, string addedValue)
-			{
-				LocalizedText config = Language.GetOrRegister(this, name); //1.4.4PORT
-				// config.SetDefault($"[i:" + Find<ModItem>("NeonMusicBox").Type + "]  " + addedValue);
-				//LocalizationLoader.AddTranslation(config)/* tModPorter Note: Removed. Use Language.GetOrRegister */;
-			}
-
-			AddMusicTranslation("BlizzardMusic", "Adds a unique track for Blizzards");
-			AddMusicTranslation("SnowNightMusic", "Adds a unique track for the Snow biome at night");
-			AddMusicTranslation("DesertNightMusic", "Adds a unique track for the Desert biome at night");
-			AddMusicTranslation("HallowNightMusic", "Adds a unique track for The Hallow at night");
-			AddMusicTranslation("CorruptNightMusic", "Adds a unique track for The Corruption at night");
-			AddMusicTranslation("CrimsonNightMusic", "Adds a unique track for The Crimson at night");
-			AddMusicTranslation("GraniteMusic", "Adds a unique track for the Granite biome");
-			AddMusicTranslation("MarbleMusic", "Adds a unique track for the Marble biome");
-			AddMusicTranslation("SpiderMusic", "Adds a unique track for the Spider caverns");
-			AddMusicTranslation("MeteorMusic", "Adds a unique track for the Meteorite biome");
-			AddMusicTranslation("FrostLegionMusic", "Adds a unique track for the Frost Legion invasion");
-			AddMusicTranslation("SkeletonPrimeMusic", "Adds a unique track for Skeletron Prime");
-			AddMusicTranslation("AuroraMusic", "Adds a unique track for the Aurora");
-			AddMusicTranslation("LuminousMusic", "Adds a unique track for Luminous Oceans");
-			AddMusicTranslation("CalmNightMusic", "Adds a unique track for Calm Night mini-events");
-			AddMusicTranslation("OceanDepthsMusic", "Adds a unique track for the Ocean depths");
-			AddMusicTranslation("HyperspaceMusic", "Adds two unique tracks for the artificial Hyperspace biome");
-			AddMusicTranslation("AshfallMusic", "Adds a unique track for the Ashfall weather in the Underworld");
-			AddMusicTranslation("VictoryNightMusic", "Adds a unique track for the Lantern Night event");
-			#endregion
-
 			if (Main.netMode != NetmodeID.Server)
 			{
 				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(new Ref<Effect>(ModContent.Request<Effect>("SpiritMod/Effects/ShockwaveEffect", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value), "Shockwave"), EffectPriority.VeryHigh);

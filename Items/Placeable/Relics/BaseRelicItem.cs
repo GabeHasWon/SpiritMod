@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Placeable.Relics
 			Item.master = true;
 			Item.rare = ItemRarityID.Master;
 			Item.useTime = 15;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.consumable = true;
 			Item.width = 30;
 			Item.height = 44;

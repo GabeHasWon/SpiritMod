@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis.Operations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -54,13 +55,11 @@ namespace SpiritMod.Tiles
 
 	internal class Black_Stone_Item : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blackrock");
-
 		public override void SetDefaults()
 		{
 			Item.width = 12;
 			Item.height = 12;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useTurn = true;
 			Item.value = 1000;
 			Item.autoReuse = true;

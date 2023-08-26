@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Sets.FloranSet
 	[Sacrifice(25)]
 	public class FloranBar : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Floran Bar");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -21,7 +15,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 			Item.value = 550;
 			Item.rare = ItemRarityID.Blue;
 			Item.createTile = ModContent.TileType<FloranBarTile>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;

@@ -9,19 +9,13 @@ namespace SpiritMod.Items.Placeable.Furniture
 	[Sacrifice(1)]
 	public class HangingSunPot : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Hanging Sun in a Pot");
-			// Tooltip.SetDefault("Increases life regeneration during the day");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 28;
-			Item.value = Item.value = Item.sellPrice(0, 0, 3, 0);
+			Item.value = Item.sellPrice(0, 0, 3, 0);
 			Item.rare = ItemRarityID.White;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

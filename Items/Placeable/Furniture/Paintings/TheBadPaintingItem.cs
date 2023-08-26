@@ -1,4 +1,5 @@
 using SpiritMod.Tiles.Furniture.Paintings;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,9 +13,9 @@ namespace SpiritMod.Items.Placeable.Furniture.Paintings
 		public override void SetDefaults()
 		{
 			Item.Size = new Microsoft.Xna.Framework.Vector2(48);
-			Item.value = Item.value = Terraria.Item.buyPrice(0, 0, 40, 0);
+			Item.value = Item.buyPrice(0, 0, 40, 0);
 			Item.rare = ItemRarityID.White;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

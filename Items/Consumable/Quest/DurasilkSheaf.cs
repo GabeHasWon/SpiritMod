@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Consumable.Quest
 			Item.useTime = 15;
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.buyPrice(0, 0, 3, 0);
 			Item.createTile = ModContent.TileType<Tiles.Furniture.DurasilkSheafTile>();
 		}

@@ -43,7 +43,7 @@ namespace SpiritMod.World.Sepulchre
 		{
 			Item.width = 20;
 			Item.height = 30;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

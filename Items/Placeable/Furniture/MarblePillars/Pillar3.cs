@@ -8,30 +8,21 @@ namespace SpiritMod.Items.Placeable.Furniture.MarblePillars
 {
 	public class Pillar3 : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Large Doric Column");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 34;
 			Item.value = 150;
-
-			Item.maxStack = 99;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;
-
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-
 			Item.createTile = ModContent.TileType<Pillar3Tile>();
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

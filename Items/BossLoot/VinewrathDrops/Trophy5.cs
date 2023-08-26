@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -6,13 +7,11 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 	[Sacrifice(1)]
 	public class Trophy5 : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Vinewrath Bane Trophy");
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
 			Item.height = 30;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
