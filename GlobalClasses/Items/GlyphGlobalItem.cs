@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Items.Glyphs;
+using SpiritMod.Projectiles.Glyph;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -303,6 +305,24 @@ namespace SpiritMod.GlobalClasses.Items
 				Vector2 origin = new Vector2(texture.Width >> 1, texture.Height >> 1);
 				spriteBatch.Draw(texture, position, null, alphaColor, rotation, origin, scale, SpriteEffects.None, 0f);
 			}
+		}
+
+		public override bool? UseItem(Item item, Player player)
+		{
+			if (Glyph == GlyphType.Storm && player.whoAmI == Main.myPlayer && Main.rand.NextBool((int)MathHelper.Clamp(30 - (player.HeldItem.useTime / 2), 2, 10)))
+			{
+				player.GetModPlayer<GlyphPlayer>().zephyrStrike = true;
+
+				Vector2 velocity = player.DirectionTo(Main.MouseWorld) * ((item.shootSpeed > 1) ? (item.shootSpeed * StormGlyph.VelocityBoost) : 12f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, velocity, ModContent.ProjectileType<SlicingGust>(), item.damage, 12f, player.whoAmI);
+			}
+			return null;
+		}
+
+		public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		{
+			if (player.GetModPlayer<GlyphPlayer>().zephyrStrike)
+				velocity *= StormGlyph.VelocityBoost;
 		}
 
 		public override void SaveData(Item item, TagCompound tag)
