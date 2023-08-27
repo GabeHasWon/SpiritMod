@@ -21,12 +21,16 @@ namespace SpiritMod.GlobalClasses.Players
 		private int frenzyDamage;
 		private float genericCounter;
 		public float veilCounter;
+		public int voidStacks;
 		public bool zephyrStrike;
+		public int baseRarity;
 
 		public override void ResetEffects() => zephyrStrike = false;
 
 		public override void PreUpdate()
 		{
+			baseRarity = (Player.HeldItem.OriginalRarity > 0) ? Player.HeldItem.OriginalRarity : 1;
+
 			if (Player.whoAmI == Main.myPlayer)
 			{
 				var temp = Glyph; //Store the previous tick glyph type
@@ -103,7 +107,7 @@ namespace SpiritMod.GlobalClasses.Players
 				zephyrStrike = true;
 
 				Vector2 velocity = Player.DirectionTo(Main.MouseWorld) * ((item.shootSpeed > 1) ? (item.shootSpeed * StormGlyph.VelocityBoost) : 12f);
-				Projectile.NewProjectile(Player.GetSource_ItemUse(item), Player.Center, velocity, ModContent.ProjectileType<SlicingGust>(), item.damage, 12f, Player.whoAmI);
+				Projectile.NewProjectile(Player.GetSource_ItemUse(item), Player.Center, velocity, ModContent.ProjectileType<SlicingGust>(), 25 * baseRarity, 12f, Player.whoAmI);
 			}
 			return base.CanUseItem(item);
 		}
@@ -123,7 +127,10 @@ namespace SpiritMod.GlobalClasses.Players
 			if (Glyph == GlyphType.Frost && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
 				FrostGlyph.FreezeEffect(Player, target, proj);
 			if (Glyph == GlyphType.Void && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
-				VoidGlyph.VoidCollapse(Player, target, proj, damage);
+			{
+				voidStacks++;
+				VoidGlyph.VoidCollapse(Player, target, proj, damage, baseRarity, voidStacks); 
+			}
 			if (Glyph == GlyphType.Radiant)
 			{
 				genericCounter = 0;
@@ -136,7 +143,7 @@ namespace SpiritMod.GlobalClasses.Players
 				return;
 
 			if (Glyph == GlyphType.Unholy && target.life <= 0)
-				UnholyGlyph.Erupt(Player, target, damage / 3);
+				UnholyGlyph.Erupt(Player, target, 10 * baseRarity);
 			if (Glyph == GlyphType.Sanguine)
 				SanguineGlyph.DrainEffect(Player, target);
 			if (Glyph == GlyphType.Blaze)
@@ -166,6 +173,8 @@ namespace SpiritMod.GlobalClasses.Players
 		{
 			if (Glyph == GlyphType.Rage)
 			{
+				if (frenzyDamage > 1000)
+					frenzyDamage = 1000;
 				if (frenzyDamage > 0)
 				{
 					mods.FinalDamage += frenzyDamage;
@@ -179,11 +188,11 @@ namespace SpiritMod.GlobalClasses.Players
 		{
 			if (Glyph == GlyphType.Phase)
 			{
-				float boost = MathHelper.Clamp(0.005f * Player.GetModPlayer<MyPlayer>().SpeedMPH, 0, .7f);
+				float boost = MathHelper.Clamp(0.006f * Player.GetModPlayer<MyPlayer>().SpeedMPH, 0, 0.7f);
 				damage *= .8f + boost;
 			}
 			if (Glyph == GlyphType.Radiant && Player.HasBuff(ModContent.BuffType<DivineStrike>()))
-				damage *= 1.5f;
+				damage *= 2.5f;
 		}
 
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers)

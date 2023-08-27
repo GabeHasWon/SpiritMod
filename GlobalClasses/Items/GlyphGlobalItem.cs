@@ -22,9 +22,9 @@ namespace SpiritMod.GlobalClasses.Items
 
 		public bool randomGlyph = false;
 		public GlyphType Glyph { get; private set; }
-
 		public void SetGlyph(Item item, GlyphType glyph)
 		{
+
 			if (Glyph == glyph)
 				return;
 
@@ -87,6 +87,7 @@ namespace SpiritMod.GlobalClasses.Items
 			item.mana = norm.mana + (int)Math.Round(norm.mana * mana);
 			item.knockBack = norm.knockBack + knockBack;
 			item.scale = norm.scale + size;
+			item.rare = item.OriginalRarity;
 
 			if (item.shoot >= ProjectileID.None && !item.IsMelee()) //Don't change velocity for spears
 				item.shootSpeed = norm.shootSpeed + shootSpeed;

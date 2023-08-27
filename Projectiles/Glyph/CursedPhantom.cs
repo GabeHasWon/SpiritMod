@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.Projectiles.Glyph
 {
@@ -82,6 +83,15 @@ namespace SpiritMod.Projectiles.Glyph
 				return false;
 			}
 			return true;
+		}
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{
+			if (Main.masterMode)
+				modifiers.FinalDamage /= 6;
+			else if (Main.expertMode)
+				modifiers.FinalDamage /= 4;
+			else
+				modifiers.FinalDamage /= 2;
 		}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info) => Projectile.penetrate--;
