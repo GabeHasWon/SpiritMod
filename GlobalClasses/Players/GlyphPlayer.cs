@@ -5,6 +5,7 @@ using SpiritMod.Items.Glyphs;
 using SpiritMod.Particles;
 using SpiritMod.Projectiles.Glyph;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -21,27 +22,25 @@ namespace SpiritMod.GlobalClasses.Players
 		public float veilCounter;
 		public int voidStacks;
 		public bool zephyrStrike;
-		public int baseRarity;
+
+		public float ChaosCounter => Player.miscCounterNormalized;
 
 		public override void ResetEffects() => zephyrStrike = false;
 
 		public override void PreUpdate()
 		{
-			baseRarity = (Player.HeldItem.OriginalRarity > 0) ? Player.HeldItem.OriginalRarity : 1;
-
 			if (Player.whoAmI == Main.myPlayer)
 			{
 				var temp = Glyph; //Store the previous tick glyph type
 				if (!Player.HeldItem.IsAir)
 				{
-					if (Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().randomGlyph)
+					if (ChaosCounter == 0)
 					{
-						const int chaosRate = 60 * 7;
-
-						if ((Player.miscCounterNormalized % chaosRate) == 0)
+						var chaosItems = Player.inventory.Where(x => x != null && x.type != ItemID.None && x.GetGlobalItem<GlyphGlobalItem>().randomGlyph);
+						foreach (Item chaosItem in chaosItems)
 						{
-							Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().SetGlyph(Player.HeldItem, ChaosGlyph.Randomize(Glyph));
-							Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().randomGlyph = true;
+							chaosItem.GetGlobalItem<GlyphGlobalItem>().SetGlyph(chaosItem, ChaosGlyph.Randomize(Glyph));
+							chaosItem.GetGlobalItem<GlyphGlobalItem>().randomGlyph = true;
 						}
 					} //Chaos glyph effect
 
@@ -105,6 +104,8 @@ namespace SpiritMod.GlobalClasses.Players
 
 		private void SmartHitAnything(NPC target, Item item, Projectile proj, NPC.HitInfo info, int damage)
 		{
+			int baseRarity = Math.Max(Player.HeldItem.OriginalRarity, 1);
+
 			if (Glyph == GlyphType.Frost && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
 				FrostGlyph.FreezeEffect(Player, target, proj);
 			if (Glyph == GlyphType.Void && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))

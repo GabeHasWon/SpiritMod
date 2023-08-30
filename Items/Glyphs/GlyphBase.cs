@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Glyphs
 		public virtual string Effect => Language.GetTextValue($"Mods.SpiritMod.Items.{Name}.Effect");
 		public virtual string Addendum => Language.GetTextValue($"Mods.SpiritMod.Items.{Name}.Addendum");
 
-		public virtual bool CanApply(Item item) => item.IsWeapon();
+		public virtual bool CanApply(Item item) => item.IsWeapon() && (item.GetGlobalItem<GlyphGlobalItem>().Glyph != Glyph || item.GetGlobalItem<GlyphGlobalItem>().randomGlyph);
 
 		public virtual void OnApply(Item item, Player player)
 		{
