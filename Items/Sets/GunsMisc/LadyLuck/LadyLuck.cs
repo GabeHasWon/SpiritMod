@@ -6,17 +6,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using Terraria.DataStructures;
-using Mono.Cecil;
+using SpiritMod.Items.Sets.PirateStuff.DuelistLegacy;
 
 namespace SpiritMod.Items.Sets.GunsMisc.LadyLuck
 {
 	public class LadyLuck : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Lady Luck");
-			// Tooltip.SetDefault("Right click to throw out a lucky coin\nShoot this coin to ricochet the bullet towards nearby enemies\n'Luck favors the rich'");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<DuelistLegacy>();
 
 		public override void SetDefaults()
 		{

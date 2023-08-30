@@ -6,11 +6,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class CreepingIce : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Creeping Ice");
-			// Tooltip.SetDefault("Slows down nearby players and enemies");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.IceBlock;
 
 		public override void SetDefaults()
 		{

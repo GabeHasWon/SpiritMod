@@ -1,3 +1,4 @@
+using SpiritMod.Items.Sets.BriarDrops;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -5,11 +6,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranOre : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Floran Ore");
-			// Tooltip.SetDefault("'A strange mixture of plant cells and metal'");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<EnchantedLeaf>();
 
 		public override void SetDefaults()
 		{

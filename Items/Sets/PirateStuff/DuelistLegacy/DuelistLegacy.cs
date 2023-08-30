@@ -9,6 +9,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using SpiritMod.Items.Sets.GunsMisc.LadyLuck;
 
 namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 {
@@ -18,11 +19,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 
 		private int charge;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("First Mate");
-			// Tooltip.SetDefault("Right click to fire a powerful shotgun blast \nCharges up a super attack after 2 swings\nRelease this special attack as either a slash or a blast");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<LadyLuck>();
 
 		public override void SetDefaults()
 		{
