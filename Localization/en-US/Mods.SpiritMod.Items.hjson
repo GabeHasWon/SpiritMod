@@ -399,63 +399,36 @@ MedusaShield: {
 		'''
 }
 
-CCharm: {
-	DisplayName: Grisly Totem
-	Tooltip: Increases critical strike chance by 6%
-}
-
-DCharm: {
-	DisplayName: Vile Charm
+GildedScarab: {
+	DisplayName: Gilded Scarab
 	Tooltip:
 		'''
-		Increases melee critical strike chance by 5%
-		Increases movement speed by 10%
+		Getting hit provides a temporary buff to defense
+		This shield provides more defense based on the damage taken
 		'''
 }
 
-HCharm: {
-	DisplayName: Hellstone Charm
+GrislyTongue: {
+	DisplayName: Grisly Tongue
 	Tooltip:
 		'''
-		5% increased attack damage
-		Attacks may burn enemies
+		Getting hit dislodges a chunk of meat that can be picked up to recover a portion of your lost health
+		This pickup dissapears after a few seconds
 		'''
 }
 
-MCharm: {
-	DisplayName: Marrow Pendant
-	Tooltip: Reduces damage taken by 5%
-}
-
-Totem: {
-	DisplayName: Bloody Bauble
+SlagMedallion: {
+	DisplayName: Slag Medallion
 	Tooltip:
 		'''
-		Increases melee speed by 5%
-		Increases damage reduction and damage dealt by 5%
-		Increases critical strike chance by 5%
-		Attacks have a small chance to steal life
+		Getting hit grants a temporary damage buff
+		This buff scales with the damage taken
 		'''
 }
 
-Twilight1: {
-	DisplayName: Twilight Talisman
-	Tooltip:
-		'''
-		Increases melee speed by 5%
-		Increases damage reduction and damage dealt by 5%
-		Increases critical strike chance by 4%
-		Attacks have a small chance of inflicting Shadowflame
-		'''
-}
-
-YoyoCharm2: {
-	DisplayName: Amazonian Charm
-	Tooltip:
-		'''
-		Increases melee speed by 7%
-		Attacks may inflict poison
-		'''
+GrislyBit: {
+	DisplayName: Grisly Bit
+	Tooltip: You shouldn't see this
 }
 
 MetalBand: {

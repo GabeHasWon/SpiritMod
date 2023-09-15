@@ -23,10 +23,13 @@ namespace SpiritMod.Items.Glyphs
 			Item.maxStack = 999;
 		}
 
+		public override bool CanApply(Item item) => item.IsWeapon() && !item.GetGlobalItem<GlyphGlobalItem>().randomGlyph;
+
 		public override void OnApply(Item item, Player player)
 		{
 			item.GetGlobalItem<GlyphGlobalItem>().SetGlyph(item, Randomize());
 			item.GetGlobalItem<GlyphGlobalItem>().randomGlyph = true;
+
 			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/GlyphAttach"), player.Center);
 		}
 

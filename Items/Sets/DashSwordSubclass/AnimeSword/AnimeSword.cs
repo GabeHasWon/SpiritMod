@@ -4,16 +4,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.Linq;
+using SpiritMod.Items.Equipment;
 
 namespace SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword
 {
 	public class AnimeSword : DashSwordItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Anime Sword");
-			// Tooltip.SetDefault("Hold to slice through nearby enemies");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<DynastyFan>();
 
 		public override void SetDefaults()
 		{

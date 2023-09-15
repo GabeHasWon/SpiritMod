@@ -6,7 +6,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Accessory.MeleeCharmTree;
 using SpiritMod.Items.Accessory.MageTree;
 using SpiritMod.Items.Sets.CascadeSet.Armor;
 using System.Collections.Generic;
@@ -91,9 +90,6 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
 		{
-			// Twilight Talisman
-			if (Player.HasAccessory<Twilight1>() && Main.rand.NextBool(13))
-				target.AddBuff(BuffID.ShadowFlame, 180);
 
 			// Ace of Spades
 			if (Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>())
@@ -110,10 +106,6 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
 		{
-			// Twilight Talisman
-			bool shadowFlameCondition = Player.HasAccessory<Twilight1>() && Main.rand.NextBool(15);
-			AddBuffWithCondition(shadowFlameCondition, target, BuffID.ShadowFlame, 180);
-
 			// Ace of Spades
 			if ((Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>()))
 			{
@@ -125,19 +117,6 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public void OnHitNPCWithAnything(Entity weapon, NPC target, NPC.HitInfo hit)
 		{
-			// Hell Charm
-			if (Player.HasAccessory<HCharm>() && Main.rand.NextBool(11))
-			{
-				if ((weapon is Item i && i.IsMelee()) || weapon is Projectile)
-					target.AddBuff(BuffID.OnFire, 120);
-			}
-
-			// Amazon Charm
-			if (Player.HasAccessory<YoyoCharm2>() && Main.rand.NextBool(11))
-			{
-				if ((weapon is Item i && i.IsMelee()) || weapon is Projectile)
-					target.AddBuff(BuffID.Poisoned, 120);
-			}
 
 			if (hit.Crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{

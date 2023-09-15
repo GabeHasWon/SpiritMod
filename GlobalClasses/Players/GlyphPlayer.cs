@@ -1,14 +1,13 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs.Glyph;
 using SpiritMod.GlobalClasses.Items;
-using SpiritMod.Items;
 using SpiritMod.Items.Glyphs;
 using SpiritMod.Particles;
 using SpiritMod.Projectiles.Glyph;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +20,10 @@ namespace SpiritMod.GlobalClasses.Players
 		private int frenzyDamage;
 		private float genericCounter;
 		public float veilCounter;
+		public int voidStacks;
 		public bool zephyrStrike;
+
+		public float ChaosCounter => Player.miscCounterNormalized;
 
 		public override void ResetEffects() => zephyrStrike = false;
 
@@ -32,14 +34,13 @@ namespace SpiritMod.GlobalClasses.Players
 				var temp = Glyph; //Store the previous tick glyph type
 				if (!Player.HeldItem.IsAir)
 				{
-					if (Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().randomGlyph)
+					if (ChaosCounter == 0)
 					{
-						const int chaosRate = 60 * 7;
-
-						if ((Player.miscCounterNormalized % chaosRate) == 0)
+						var chaosItems = Player.inventory.Where(x => x != null && x.type != ItemID.None && x.GetGlobalItem<GlyphGlobalItem>().randomGlyph);
+						foreach (Item chaosItem in chaosItems)
 						{
-							Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().SetGlyph(Player.HeldItem, ChaosGlyph.Randomize(Glyph));
-							Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().randomGlyph = true;
+							chaosItem.GetGlobalItem<GlyphGlobalItem>().SetGlyph(chaosItem, ChaosGlyph.Randomize(Glyph));
+							chaosItem.GetGlobalItem<GlyphGlobalItem>().randomGlyph = true;
 						}
 					} //Chaos glyph effect
 
@@ -90,23 +91,6 @@ namespace SpiritMod.GlobalClasses.Players
 			veilCounter = MathHelper.Max(veilCounter - .001f, 0);
 		}
 
-		public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-		{
-			if (zephyrStrike)
-				velocity *= StormGlyph.VelocityBoost;
-		}
-
-		public override bool CanUseItem(Item item)
-		{
-			if (Glyph == GlyphType.Storm && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2), 2, 10)))
-			{
-				zephyrStrike = true;
-
-				Vector2 velocity = Player.DirectionTo(Main.MouseWorld) * ((item.shootSpeed > 1) ? (item.shootSpeed * StormGlyph.VelocityBoost) : 12f);
-				Projectile.NewProjectile(Player.GetSource_ItemUse(item), Player.Center, velocity, ModContent.ProjectileType<SlicingGust>(), item.damage, 12f, Player.whoAmI);
-			}
-			return base.CanUseItem(item);
-		}
 
 		#region hit overrides
 		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => SmartModifyHitAnything(target, item, null, ref modifiers);
@@ -120,10 +104,15 @@ namespace SpiritMod.GlobalClasses.Players
 
 		private void SmartHitAnything(NPC target, Item item, Projectile proj, NPC.HitInfo info, int damage)
 		{
+			int baseRarity = Math.Max(Player.HeldItem.OriginalRarity, 1);
+
 			if (Glyph == GlyphType.Frost && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
 				FrostGlyph.FreezeEffect(Player, target, proj);
 			if (Glyph == GlyphType.Void && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
-				VoidGlyph.VoidCollapse(Player, target, proj, damage);
+			{
+				voidStacks++;
+				VoidGlyph.VoidCollapse(Player, target, proj, damage, baseRarity, voidStacks); 
+			}
 			if (Glyph == GlyphType.Radiant)
 			{
 				genericCounter = 0;
@@ -136,7 +125,7 @@ namespace SpiritMod.GlobalClasses.Players
 				return;
 
 			if (Glyph == GlyphType.Unholy && target.life <= 0)
-				UnholyGlyph.Erupt(Player, target, damage / 3);
+				UnholyGlyph.Erupt(Player, target, 10 * baseRarity);
 			if (Glyph == GlyphType.Sanguine)
 				SanguineGlyph.DrainEffect(Player, target);
 			if (Glyph == GlyphType.Blaze)
@@ -166,6 +155,8 @@ namespace SpiritMod.GlobalClasses.Players
 		{
 			if (Glyph == GlyphType.Rage)
 			{
+				if (frenzyDamage > 1000)
+					frenzyDamage = 1000;
 				if (frenzyDamage > 0)
 				{
 					mods.FinalDamage += frenzyDamage;
@@ -179,11 +170,11 @@ namespace SpiritMod.GlobalClasses.Players
 		{
 			if (Glyph == GlyphType.Phase)
 			{
-				float boost = MathHelper.Clamp(0.005f * Player.GetModPlayer<MyPlayer>().SpeedMPH, 0, .7f);
+				float boost = MathHelper.Clamp(0.006f * Player.GetModPlayer<MyPlayer>().SpeedMPH, 0, 0.7f);
 				damage *= .8f + boost;
 			}
 			if (Glyph == GlyphType.Radiant && Player.HasBuff(ModContent.BuffType<DivineStrike>()))
-				damage *= 1.5f;
+				damage *= 2.5f;
 		}
 
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers)

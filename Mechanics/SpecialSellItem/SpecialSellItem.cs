@@ -56,6 +56,12 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 			}
 			return base.CanSellItem(vendor, shopInventory, item);
 		}
+
+		public override void PostSellItem(NPC vendor, Item[] shopInventory, Item item)
+		{
+			if (SpecialSellItem.IsSellItem(item))
+				Player.BuyItem(item.stack); //Fixes players gaining copper coins based on item stack when they shouldn't
+		}
 	}
 
 	/// <summary>

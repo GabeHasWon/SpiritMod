@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
 using System.Collections.Generic;
 using Terraria.DataStructures;
+using SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon;
 
 namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 {
@@ -18,11 +19,7 @@ namespace SpiritMod.Items.Sets.FlailsMisc.JadeDao
 	{
 		private bool reversed = false;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Jade Daos");
-			// Tooltip.SetDefault("Pulls enemies inward on release");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<BladeOfTheDragon>();
 
 		public override void SetDefaults()
 		{

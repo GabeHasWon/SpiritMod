@@ -22,12 +22,12 @@ namespace SpiritMod.Items.Glyphs
 			Item.maxStack = 999;
 		}
 
-		public static void VoidCollapse(Player owner, NPC target, Projectile proj, int damage)
+		public static void VoidCollapse(Player owner, NPC target, Projectile proj, int damage, int baseRarity, int voidStacks)
 		{
 			int riftType = ModContent.ProjectileType<VoidRift>();
 			if (!(proj is Projectile shot && shot.type == riftType))
 			{
-				int riftDamage = damage / 2;
+				int riftDamage = damage / 2 * baseRarity * voidStacks;
 
 				if (owner.ownedProjectileCounts[riftType] > 0)
 				{

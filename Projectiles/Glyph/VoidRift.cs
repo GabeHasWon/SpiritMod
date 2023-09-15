@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using SpiritMod.GlobalClasses.Players;
 
 namespace SpiritMod.Projectiles.Glyph
 {
@@ -82,6 +83,7 @@ namespace SpiritMod.Projectiles.Glyph
 				SoundEngine.PlaySound(SoundID.NPCDeath6 with { Volume = .5f }, Projectile.Center);
 				SoundEngine.PlaySound(SoundID.NPCDeath11, Projectile.Center);
 			}
+			Main.LocalPlayer.GetModPlayer<GlyphPlayer>().voidStacks = 0;
 		}
 
 		public override bool? CanCutTiles() => false;

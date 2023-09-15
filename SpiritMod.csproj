@@ -11,6 +11,16 @@
     <AdditionalFiles Remove="Localization\Mods.SpiritMod.hjson" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Items\Accessory\TalismanTree\GildedScarab\GildedScarab.png" />
+    <None Remove="Items\Accessory\TalismanTree\GildedScarab\GildedScarab_buff.png" />
+    <None Remove="Items\Accessory\TalismanTree\GildedScarab\GildedScarab_player.png" />
+    <None Remove="Items\Accessory\TalismanTree\GrislyTongue\GrislyBit.png" />
+    <None Remove="Items\Accessory\TalismanTree\GrislyTongue\GrislyBit_World.png" />
+    <None Remove="Items\Accessory\TalismanTree\GrislyTongue\GrislyTongue.png" />
+    <None Remove="Items\Accessory\TalismanTree\SlagMedallion\SlagFury_buff.png" />
+    <None Remove="Items\Accessory\TalismanTree\SlagMedallion\SlagFury_Player.png" />
+    <None Remove="Items\Accessory\TalismanTree\SlagMedallion\SlagMedallion.png" />
+    <None Remove="Items\Accessory\TalismanTree\SlagMedallion\SlagMedallion_Neck.png" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Biomes.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Buffs.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Conditions.hjson" />

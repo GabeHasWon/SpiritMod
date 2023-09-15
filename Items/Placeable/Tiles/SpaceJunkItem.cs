@@ -7,13 +7,17 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class SpaceJunkItem : ModItem
 	{
-		public override void SetStaticDefaults() => ItemID.Sets.ExtractinatorMode[Item.type] = Item.type;
+		public override void SetStaticDefaults()
+		{
+			ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<AsteroidBlock>();
+			ItemID.Sets.ExtractinatorMode[Item.type] = Item.type;
+		}
 
 		public override void SetDefaults()
 		{
 			Item.width = 16;
 			Item.height = 14;
-			Item.maxStack = Item.CommonMaxStack;
+			Item.maxStack = 999;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

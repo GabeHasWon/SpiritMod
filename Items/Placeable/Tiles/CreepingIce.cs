@@ -1,5 +1,4 @@
 using SpiritMod.Tiles.Block;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,11 +6,13 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class CreepingIce : ModItem
 	{
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.IceBlock;
+
 		public override void SetDefaults()
 		{
 			Item.width = 16;
 			Item.height = 14;
-			Item.maxStack = Item.CommonMaxStack;
+			Item.maxStack = 999;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

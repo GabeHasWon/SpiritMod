@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Utilities;
 using SpiritMod.Particles;
 using Terraria.DataStructures;
+using SpiritMod.Items.Sets.FlailsMisc.JadeDao;
 
 namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 {
@@ -16,8 +17,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Blade of the Dragon");
-            // Tooltip.SetDefault("Hold to slice through nearby enemies");
+			ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<JadeDao>();
             Item.staff[Item.type] = true;
 		}
 

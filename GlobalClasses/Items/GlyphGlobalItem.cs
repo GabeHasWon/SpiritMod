@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
+using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Items.Glyphs;
+using SpiritMod.Projectiles.Glyph;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -16,28 +18,26 @@ namespace SpiritMod.GlobalClasses.Items
 {
 	public class GlyphGlobalItem : GlobalItem
 	{
+		public bool randomGlyph = false;
+
+		public GlyphType Glyph { get; private set; }
+
 		public override bool InstancePerEntity => true;
 
 		protected override bool CloneNewInstances => true;
 
-		public bool randomGlyph = false;
-		public GlyphType Glyph { get; private set; }
-
 		public void SetGlyph(Item item, GlyphType glyph)
 		{
+			randomGlyph = false;
 			if (Glyph == glyph)
 				return;
-
-			randomGlyph = false;
-			item.prefix = 0;
-			item.rare = item.OriginalRarity;
 
 			Glyph = glyph;
 			AdjustStats(item);
 		}
 
 		private static bool CanBeAppliedTo(Player player, Item item)
-			=> item.maxStack == 1 && player.HeldItem.ModItem is GlyphBase glyph && glyph.CanApply(item) && item.GetGlobalItem<GlyphGlobalItem>().Glyph != glyph.Glyph;
+			=> item.maxStack == 1 && player.HeldItem.ModItem is GlyphBase glyph && glyph.CanApply(item);
 
 		public override bool CanRightClick(Item item) => CanBeAppliedTo(Main.LocalPlayer, item) || base.CanRightClick(item);
 
@@ -93,24 +93,26 @@ namespace SpiritMod.GlobalClasses.Items
 
 			item.crit = norm.crit + crit;
 			item.tileBoost = norm.tileBoost + tileBoost;
+
+			//Remove prefix data
+			item.prefix = 0;
+			item.rare = item.OriginalRarity;
+
+			item.ClearNameOverride();
+			if (Glyph != GlyphType.None)
+				item.SetNameOverride($"{GlyphBase.FromType(Glyph).Effect} " + item.Name);
+			//Set the glyph prefix
 		}
 
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{
-			bool insertStats = false;
+			if (Glyph == GlyphType.None)
+				return;
 
-			if (Glyph != GlyphType.None)
+			var lookup = GlyphBase.FromType(Glyph);
+			if (lookup.Effect != null && lookup.Addendum != null)
 			{
-				insertStats = true;
-
-				var lookup = GlyphBase.FromType(Glyph);
-				if (lookup.Effect != null && lookup.Addendum != null)
-				{
-					var nameLine = tooltips.Where(x => x.Name == "ItemName").FirstOrDefault();
-					if (nameLine is TooltipLine nameTip)
-						nameTip.Text = nameTip.Text.Insert(0, $"{lookup.Effect} "); //Insert the glyph's effect as a prefix
-
-					List<TooltipLine> tips = new()
+				List<TooltipLine> tips = new()
 					{
 						new TooltipLine(Mod, "GlyphAddendum", lookup.Effect)
 						{
@@ -118,12 +120,9 @@ namespace SpiritMod.GlobalClasses.Items
 						},
 						new TooltipLine(Mod, "GlyphAddendum", lookup.Addendum)
 					};
-					tooltips.AddRange(tips);
-				}
+				tooltips.AddRange(tips);
 			}
-
-			if (insertStats)
-				InsertStatInfo(item, tooltips);
+			InsertStatInfo(item, tooltips);
 		}
 
 		private void InsertStatInfo(Item item, List<TooltipLine> tooltips)
@@ -274,6 +273,35 @@ namespace SpiritMod.GlobalClasses.Items
 			}
 		}
 
+		public override bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		{
+			var modPlayer = Main.LocalPlayer.GetModPlayer<GlyphPlayer>();
+			float fadeIn = (MathHelper.Max((float)Math.Sin(modPlayer.ChaosCounter * 3.14f), 0) - .5f) * 10f;
+
+			if (item.GetGlobalItem<GlyphGlobalItem>().randomGlyph)
+			{
+				float alpha = (float)Main.timeForVisualEffects / 6f;
+				Texture2D texture = TextureAssets.Item[item.type].Value;
+
+				spriteBatch.End(); spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Main.UIScaleMatrix);
+
+				SpiritMod.JemShaders.Parameters["alpha"].SetValue(alpha * 2 % 6);
+				SpiritMod.JemShaders.Parameters["coloralpha"].SetValue(alpha);
+				SpiritMod.JemShaders.Parameters["shineSpeed"].SetValue(.1f);
+				SpiritMod.JemShaders.Parameters["map"].SetValue(texture);
+				SpiritMod.JemShaders.Parameters["lightColour"].SetValue(drawColor.ToVector3());
+				SpiritMod.JemShaders.Parameters["shaderLerp"].SetValue(1f);
+				SpiritMod.JemShaders.CurrentTechnique.Passes[1].Apply();
+
+				spriteBatch.Draw(texture, position, frame, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
+				spriteBatch.End(); spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+
+				spriteBatch.Draw(texture, position, frame, drawColor * fadeIn, 0, origin, scale, SpriteEffects.None, 0f);
+				return false;
+			}
+			return true;
+		}
+
 		private static readonly Vector2 SlotDimensions = new(52, 52);
 		public override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
@@ -302,6 +330,24 @@ namespace SpiritMod.GlobalClasses.Items
 				Vector2 origin = new Vector2(texture.Width >> 1, texture.Height >> 1);
 				spriteBatch.Draw(texture, position, null, alphaColor, rotation, origin, scale, SpriteEffects.None, 0f);
 			}
+		}
+
+		public override bool? UseItem(Item item, Player player)
+		{
+			if (Glyph == GlyphType.Storm && player.whoAmI == Main.myPlayer && Main.rand.NextBool((int)MathHelper.Clamp(30 - (player.HeldItem.useTime / 2), 2, 10)))
+			{
+				player.GetModPlayer<GlyphPlayer>().zephyrStrike = true;
+
+				Vector2 velocity = player.DirectionTo(Main.MouseWorld) * ((item.shootSpeed > 1) ? (item.shootSpeed * StormGlyph.VelocityBoost) : 12f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, velocity, ModContent.ProjectileType<SlicingGust>(), item.damage, 12f, player.whoAmI);
+			}
+			return null;
+		}
+
+		public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		{
+			if (player.GetModPlayer<GlyphPlayer>().zephyrStrike)
+				velocity *= StormGlyph.VelocityBoost;
 		}
 
 		public override void SaveData(Item item, TagCompound tag)

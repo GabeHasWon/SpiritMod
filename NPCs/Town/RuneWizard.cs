@@ -115,14 +115,14 @@ namespace SpiritMod.NPCs.Town
 			CustomWare<FrostGlyph>();
 			CustomWare<RageGlyph>();
 			CustomWare<RadiantGlyph>(1, Condition.DownedEyeOfCthulhu);
-			CustomWare<SanguineGlyph>(3, Condition.DownedEyeOfCthulhu);
+			CustomWare<SanguineGlyph>(3, Condition.BloodMoonOrHardmode);
 			CustomWare<StormGlyph>(2, SpiritConditions.VinewrathDown);
 			CustomWare<UnholyGlyph>(2, Condition.DownedEowOrBoc);
 			CustomWare<VeilGlyph>(3, Condition.DownedSkeletron);
 			CustomWare<BeeGlyph>(3, Condition.DownedQueenBee);
 			CustomWare<BlazeGlyph>(3, Condition.Hardmode);
+			CustomWare<PhaseGlyph>(3, Condition.Hardmode);
 			CustomWare<VoidGlyph>(4, Condition.DownedMechBossAll);
-			CustomWare<PhaseGlyph>(4, SpiritConditions.DuskingDown);
 
 			shop.Register();
 		}

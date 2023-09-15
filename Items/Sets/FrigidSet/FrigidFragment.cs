@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Placeable.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,11 +9,7 @@ namespace SpiritMod.Items.Sets.FrigidSet
 {
 	public class FrigidFragment : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Frigid Fragment");
-			// Tooltip.SetDefault("'Cold to the touch'");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<CreepingIce>();
 
 		public override void SetDefaults()
 		{

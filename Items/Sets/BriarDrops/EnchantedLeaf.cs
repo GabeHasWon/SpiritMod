@@ -5,16 +5,13 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.HuskstalkSet;
 
 namespace SpiritMod.Items.Sets.BriarDrops
 {
 	public class EnchantedLeaf : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Enchanted Leaf");
-			// Tooltip.SetDefault("'Blessed with the magic of druids'");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<AncientBark>();
 
 		public override void SetDefaults()
 		{

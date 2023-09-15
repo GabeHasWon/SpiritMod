@@ -16,8 +16,7 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Bottomless Healing Potion");
-			//Tooltip.SetDefault("Non-consumable");
+			ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<BottomlessAle>();
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 6));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
