@@ -42,15 +42,10 @@ namespace SpiritMod.NPCs.Spirit
 
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.SoulCrusherBanner>();
-			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
+			SpawnModBiomes = new int[1] { ModContent.GetInstance<SpiritUndergroundBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Stones given life by thousands of souls, they angrily ram into any nearby disturbances, as it is sensitive to them. It shares the senses and thoughts of every soul that composes it, causing it great pain."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

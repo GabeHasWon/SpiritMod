@@ -42,12 +42,7 @@ namespace SpiritMod.NPCs.Spirit
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Ghouls reanimated by the Spirit now leak ectoplasm from every crevice. Their bites have a chance of confusing their foes by briefly showing them glimpses of their former lives."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

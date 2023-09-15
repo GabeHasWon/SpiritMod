@@ -58,13 +58,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 			BannerItem = ModContent.ItemType<Items.Banners.AntlionAssassinBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Jungle,
-				new FlavorTextBestiaryInfoElement("Very little has been observed about this shrouded creature. It is six legged and bears claws, leading most to believe it is some form of arthropod."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Jungle");
 
 		public override bool PreKill()
         {

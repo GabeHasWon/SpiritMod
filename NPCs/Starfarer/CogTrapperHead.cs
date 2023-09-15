@@ -66,12 +66,7 @@ namespace SpiritMod.NPCs.Starfarer
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<AsteroidBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Strange mechanical constructs assemble around a beacon, calling attention to precious astral metals. It seems you aren't the only one who wants it."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void AI()
 		{

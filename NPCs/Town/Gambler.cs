@@ -59,13 +59,7 @@ namespace SpiritMod.NPCs.Town
 			AnimationType = NPCID.Guide;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
-				new FlavorTextBestiaryInfoElement("The Gambler has long lived life on the edge, lending herself to the whims of fate. While this makes her an ardent player, it also once bound her to the top of a goblin fortress."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Desert");
 
 		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
 		{

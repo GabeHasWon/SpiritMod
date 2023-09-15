@@ -38,12 +38,7 @@ namespace SpiritMod.NPCs.Tides
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("A Kakamora warrior with a nasty peel out! A bruiser lives up to their name, getting up close and personal while dishing out the pain."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		int timer = 0;
 		bool charging = false;

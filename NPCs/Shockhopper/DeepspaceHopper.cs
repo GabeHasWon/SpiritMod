@@ -85,12 +85,7 @@ namespace SpiritMod.NPCs.Shockhopper
 			Timer = 300; // start with 5 seconds to the first teleport
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Originally mistaken for machines, these shock happy organisms travel near asteroid belts to feed off the abundance of exposed minerals."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */ => NPC.lifeMax = 110;
 

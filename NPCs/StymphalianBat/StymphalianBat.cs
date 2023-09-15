@@ -65,14 +65,7 @@ namespace SpiritMod.NPCs.StymphalianBat
 			set => NPC.ai[3] = value ? 1 : 0;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
-			{
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Marble,
-				new FlavorTextBestiaryInfoElement("Ancient blueprints. Recent fabrication. These designs were perfected long ago, there is no need to deviate from his design."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Marble");
 
 		private int frame;
 

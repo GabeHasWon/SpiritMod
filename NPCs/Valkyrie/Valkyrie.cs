@@ -40,13 +40,7 @@ namespace SpiritMod.NPCs.Valkyrie
 			BannerItem = ModContent.ItemType<Items.Banners.ValkyrieBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("Righteous defenders of the sky, these winged warriors harness the power of the sun to protect the islands that float above the land."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Sky");
 
 		int aiTimer;
 		bool trailing;

@@ -66,13 +66,7 @@ namespace SpiritMod.NPCs.Town.Oracle
 			NPC.immortal = true;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Marble,
-				new FlavorTextBestiaryInfoElement("They offers blessings and goods in exchange for ancient currency. They wear a blindfold, as being enlightened and blessed by Olympus has made their vision unnecessary."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Marble");
 
 		public override void AI()
 		{

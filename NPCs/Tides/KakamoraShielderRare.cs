@@ -40,12 +40,7 @@ namespace SpiritMod.NPCs.Tides
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("A brave little nut kitted out with a shield and protective headgear, they protect the less aggressive Kakamora from harm."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		bool blocking = false;
 		int blockTimer = 0;

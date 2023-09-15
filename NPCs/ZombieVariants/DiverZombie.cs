@@ -32,15 +32,7 @@ namespace SpiritMod.NPCs.ZombieVariants
 			BannerItem = Item.BannerToItem(Banner);
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Moon,
-				new FlavorTextBestiaryInfoElement("Who knew those oxygen tanks needed to have actual oxygen in them?"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "NightTime Ocean Moon");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

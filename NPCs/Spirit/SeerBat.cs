@@ -39,12 +39,7 @@ namespace SpiritMod.NPCs.Spirit
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Chunks of spirit-infused metal concentrated into the vague shape of a bat. Likely a lost soul's attempt to emulate the common flying mammal."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void FindFrame(int frameHeight)
 		{

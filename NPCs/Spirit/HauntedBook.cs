@@ -45,12 +45,7 @@ namespace SpiritMod.NPCs.Spirit
 			BannerItem = ModContent.ItemType<Items.Banners.SpiritTomeBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("A mysterious tome possessed by ancient spirits. Each contains a strange set of pages written in an indecipherable language."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void FindFrame(int frameHeight)
 		{

@@ -44,14 +44,7 @@ namespace SpiritMod.NPCs.AncientApostle
 			BannerItem = ModContent.ItemType<Items.Banners.AncientApostleBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.AddInfo(this, "Sky");
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("The reanimated bones of a long extinct bird. Though dead, don't lower your guard near them, for these fowl fossils still have fight in them!"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Sky");
 
 		private ref float MoveSpeed => ref NPC.ai[1];
 		private ref float MoveSpeedY => ref NPC.ai[2];

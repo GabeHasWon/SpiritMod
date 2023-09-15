@@ -42,12 +42,7 @@ namespace SpiritMod.NPCs.Spirit
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Floating slabs of runic stone now given sentience by the Spirit. Despite seeming hostile, it only wishes for peace to lay and rest eternally once more."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

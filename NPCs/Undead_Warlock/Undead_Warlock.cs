@@ -45,13 +45,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			NPC.HitSound = SoundID.NPCHit1;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				new FlavorTextBestiaryInfoElement("Unlike the Undead Scientist, the Warlock practices more typical, but more powerful, magic and necromancy."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface");
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{

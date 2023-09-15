@@ -52,13 +52,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 			BannerItem = ModContent.ItemType<Items.Banners.WinterbornHeraldBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundSnow,
-				new FlavorTextBestiaryInfoElement("Long after forseeing the destruction of their tribe, these once elite mages now follow in the footsteps of their brethren, seeking to rebuild."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "UndergroundSnow");
 
 		public override void OnKill()
 		{

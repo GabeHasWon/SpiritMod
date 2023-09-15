@@ -802,55 +802,177 @@ ReachObserver: {
 
 ReachSlime: {
 	DisplayName: Briarthorn Slime
-	Entry: ""
+	Entry: Due to the perpetual rainfall in the Briar, these slimes are composed of 90% water. As a result, they often leak and lose volume when struck.
 }
 
 ThornStalker: {
 	DisplayName: Thorn Stalker
-	Entry: ""
+	Entry: Don't be fooled by its humanoid form, this creature is anything but. This beast will stalk its prey to the furthest reaches of the briar for the perfect chance to strike.
 }
 
 ScreechOwl: {
 	DisplayName: Screech Owl
-	Entry: ""
+	Entry: For ages, these simple birds have terrorized locals with their remarkably humanoid screeches. Today, few remain, as they were hunted to near extinction.
 }
 
-Sea_Mandrake.DisplayName: Sea Mandrake
-DeepspaceHopper.DisplayName: Shockhopper
-Skeleton_Brute.DisplayName: Skeleton Brute
-Snaptrapper.DisplayName: Snaptrapper
-AncientDemon.DisplayName: Ancient Specter
-HauntedBook.DisplayName: Ancient Tome
-NetherBane.DisplayName: Netherbane
-SeerBat.DisplayName: Spirit Bat
-SoulCrusher.DisplayName: Soul Crusher
-SoulOrb.DisplayName: Soul Orb
-SpiritGhoul.DisplayName: Shadow Ghoul
-SpiritMummy.DisplayName: Dusk Mummy
-SpiritSkull.DisplayName: Spirit Skull
-SpiritVulture.DisplayName: Spirit Floater
-UnstableWisp.DisplayName: Unstable Wisp
-WanderingSoul.DisplayName: Wandering Soul
-SporeWheezer.DisplayName: Spore Wheezer
+Sea_Mandrake: {
+	DisplayName: Sea Mandrake
+	Entry: An odd bioluminescent creature that dwells in the ocean. Not only does it glow, but the colors it takes on are vibrant and exotic.
+}
+
+DeepspaceHopper: {
+	DisplayName: Shockhopper
+	Entry: Originally mistaken for machines, these shock happy organisms travel near asteroid belts to feed off the abundance of exposed minerals.
+}
+
+Skeleton_Brute: {
+	DisplayName: Skeleton Brute
+	Entry: As a specimen, yes, they're intimidating. In a swinging match, nobody swings like a Skeleton Brute.
+}
+
+Snaptrapper: {
+	DisplayName: Snaptrapper
+	Entry: Very little has been observed about this shrouded creature. It is six legged and bears claws, leading most to believe it is some form of arthropod.
+}
+
+AncientDemon: {
+	DisplayName: Ancient Specter
+	Entry: Found only in the deepest depths of Spirit-touched Caverns, these malevolent wraiths hold one simple goal: Purloin the souls of living things.
+}
+
+HauntedBook: {
+	DisplayName: Ancient Tome
+	Entry: A mysterious tome possessed by ancient spirits. Each contains a strange set of pages written in an indecipherable language.
+}
+
+NetherBane: {
+	DisplayName: Netherbane
+	Entry: An ethereal winged beast that soars through the spirit biome. Legend has it that every flap of its wings signifies another soul dying.
+}
+
+SeerBat: {
+	DisplayName: Spirit Bat
+	Entry: Chunks of spirit-infused metal concentrated into the vague shape of a bat. Likely a lost soul's attempt to emulate the common flying mammal.
+}
+
+SoulCrusher: {
+	DisplayName: Soul Crusher
+	Entry: Stones given life by thousands of souls, they angrily ram into any nearby disturbances, as it is sensitive to them. It shares the senses and thoughts of every soul that composes it, causing it great pain.
+}
+
+SoulOrb: {
+	DisplayName: Soul Orb
+	Entry: A soft, flickering light anomaly drifting about the Spirit. They are said to be the wandering souls of departed travelers.
+}
+
+SpiritGhoul: {
+	DisplayName: Shadow Ghoul
+	Entry: Ghouls reanimated by the Spirit now leak ectoplasm from every crevice. Their bites have a chance of confusing their foes by briefly showing them glimpses of their former lives.
+}
+
+SpiritMummy: {
+	DisplayName: Dusk Mummy
+	Entry: Afflicted by ethereal powers, these carcasses are now vessels for not their own souls, but countless others in need of a corporeal form.
+}
+
+SpiritSkull: {
+	DisplayName: Spirit Skull
+	Entry: They only look like skulls, but in actuality are once again stones carved many centuries ago. These stones seem to be carved in such a way for souls to be able to inhabit it, yet there's seemingly no record of the Spirit existing prior to its release.
+}
+
+SpiritVulture: {
+	DisplayName: Spirit Floater
+	Entry: Floating slabs of runic stone now given sentience by the Spirit. Despite seeming hostile, it only wishes for peace to lay and rest eternally once more.
+}
+
+UnstableWisp: {
+	DisplayName: Unstable Wisp
+	Entry: A cluster of souls that was unable to find a vessel to inhabit. It is unable to hold itself together and any slight touch will cause it to explode, releasing the many clumped souls.
+}
+
+WanderingSoul: {
+	DisplayName: Wandering Soul
+	Entry: Now being free from its slumber, it aimlessly wanders, forever lost in a world it no longer recognizes.
+}
+
+SporeWheezer: {
+	DisplayName: Spore Wheezer
+	Entry: Usually parasitic, the glowing mushrooms formed a symbiotic relationship with wheezers as they consciously spread spores through their breath.
+}
+
 CogTrapperBody.DisplayName: Stardancer
-CogTrapperHead.DisplayName: Stardancer
+
+CogTrapperHead: {
+	DisplayName: Stardancer
+	Entry: Strange mechanical constructs assemble around a beacon, calling attention to precious astral metals. It seems you aren't the only one who wants it.
+}
+
 CogTrapperTail.DisplayName: Stardancer
 LargeComet.DisplayName: Large Starjinx Comet
 MediumComet.DisplayName: Medium Starjinx Comet
 SmallComet.DisplayName: Small Starjinx Comet
-StymphalianBat.DisplayName: Stymphalian Bat
-Crocomount.DisplayName: Crocosaur
-KakamoraParachuter.DisplayName: Kakamora Windglider
+
+StymphalianBat: {
+	DisplayName: Stymphalian Bat
+	Entry: Ancient blueprints. Recent fabrication. These designs were perfected long ago, there is no need to deviate from his design.
+}
+
+Crocomount: {
+	DisplayName: Crocosaur
+	Entry: A reptilian biped, tamed by the Kakamora and used for riding into battle. High-ho silver, away!
+}
+
+KakamoraParachuter: {
+	DisplayName: Kakamora Windglider
+	Entry: Any army needs air support! Only the strongest, glidiest palm leaves are selected for use by Kakamora Windgliders.
+}
+
 KakamoraRider.DisplayName: Kakamoran Rider
-KakamoraRunner.DisplayName: Kakamora
-KakamoraShaman.DisplayName: Kakamora Shaman
-KakamoraShielder.DisplayName: Kakamora Shielder
-KakamoraShielderRare.DisplayName: Kakamora Guard
-LargeCrustecean.DisplayName: Bubble Brute
-MangoJelly.DisplayName: Mang-O War
-Rylheian.DisplayName: R'lyehian
-SpearKakamora.DisplayName: Kakamora Lobber
-SwordKakamora.DisplayName: Kakamora Bruiser
+
+KakamoraRunner: {
+	DisplayName: Kakamora
+	Entry: A general, run of the mill Karamora soldier. They have no specializations, but make for good foot soldiers.
+}
+
+KakamoraShaman: {
+	DisplayName: Kakamora Shaman
+	Entry: Pint-sized mystics that attack using the arcane arts. They double as healers for their nearby Kakamora companions.
+}
+
+KakamoraShielder: {
+	DisplayName: Kakamora Shielder
+	Entry: A brave little nut kitted with a shield and protective headgear, they protect the less aggressive Kakamora from harm.
+}
+
+KakamoraShielderRare: {
+	DisplayName: Kakamora Guard
+	Entry: A brave little nut kitted out with a shield and protective headgear, they protect the less aggressive Kakamora from harm.
+}
+
+LargeCrustecean: {
+	DisplayName: Bubble Brute
+	Entry: We're on a baby hunt. And don't think we don't know how to weed em' out.
+}
+
+MangoJelly: {
+	DisplayName: Mang-O War
+	Entry: Small, airborne marine life. While named after their fruity smell and vibrant color, they are not in fact sweet.
+}
+
+Rylheian: {
+	DisplayName: R'lyehian
+	Entry: The maker of tides and caller of storms! They're a wicked elderly lich who's taken charge of the Kakamora Army.
+}
+
+SpearKakamora: {
+	DisplayName: Kakamora Lobber
+	Entry: These Kakamora specialize in throwing coconuts for long...ish...distance battles.
+}
+
+SwordKakamora: {
+	DisplayName: Kakamora Bruiser
+	Entry: A Kakamora warrior with a nasty peel out! A bruiser lives up to their name, getting up close and personal while dishing out the pain.
+}
 
 Adventurer: {
 	DisplayName: Adventurer
@@ -871,6 +993,8 @@ Adventurer: {
 		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LikeNPC_Princess}"
 		Princess_LovesNPC: I like {NPCName}.
 	}
+
+	Entry: An intrepid explorer driven by an ambition that has often landed him in danger. He's also an avid note-taker, his many accounts now scattered throughout the land.
 }
 
 BoundAdventurer: {
@@ -937,6 +1061,8 @@ Gambler: {
 		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Gambler.LikeNPC_Princess}"
 		Princess_LovesNPC: I like {NPCName}.
 	}
+
+	Entry: The Gambler has long lived life on the edge, lending herself to the whims of fate. While this makes her an ardent player, it also once bound her to the top of a goblin fortress.
 }
 
 Ghost.DisplayName: Ghost
@@ -954,6 +1080,8 @@ Oracle: {
 		LikeNPC_Princess: I like {NPCName}.
 		Princess_LovesNPC: I like {NPCName}.
 	}
+
+	Entry: They offers blessings and goods in exchange for ancient currency. They wear a blindfold, as being enlightened and blessed by Olympus has made their vision unnecessary.
 }
 
 Rogue: {
@@ -975,6 +1103,8 @@ Rogue: {
 		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Rogue.LikeNPC_Princess}"
 		Princess_LovesNPC: I like {NPCName}.
 	}
+
+	Entry: A dashing rogue with a past shrouded in mystery. Whether he can be trusted or not is unclear, but he would gladly teach you the tricks of the trade regardless.
 }
 
 RuneWizard: {
@@ -995,18 +1125,57 @@ RuneWizard: {
 		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LikeNPC_Princess}"
 		Princess_LovesNPC: I like {NPCName}.
 	}
+
+	Entry: This tired rune scribe has spent sleepless nights studying the ancient magic found in glyphs. He's not much of a conversationalist, but he'll gladly empower your arsenal.
 }
 
-Undead_Warlock.DisplayName: Undead Warlock
-Valkyrie.DisplayName: Valkyrie
-Vulture_Matriarch.DisplayName: Vulture Matriarch
-Wheezer.DisplayName: Wheezer
-WinterbornMelee.DisplayName: Winterborn
+Undead_Warlock: {
+	DisplayName: Undead Warlock
+	Entry: Unlike the Undead Scientist, the Warlock practices more typical, but more powerful, magic and necromancy.
+}
+
+Valkyrie: {
+	DisplayName: Valkyrie
+	Entry: Righteous defenders of the sky, these winged warriors harness the power of the sun to protect the islands that float above the land.
+}
+
+Vulture_Matriarch: {
+	DisplayName: Vulture Matriarch
+	Entry: The powerful elder of the vulture tribe, the Matriarch has a hold of ancient magics and abilities in order to destroy its prey.
+}
+
+Wheezer: {
+	DisplayName: Wheezer
+	Entry: A weezer is an extremely toxic relative of the salamander, known for aggressive behavior. Oddly enough, their favorite food is a budding holly plant, contradictory to their carnivorous tendencies.
+}
+
+WinterbornMelee: {
+	DisplayName: Winterborn
+	Entry: The last remnants of a bygone tribe. Encased in ice by a mysterious curse, they wander the tundra, looking for relics of their civilization.
+}
+
 IceBoltNPC.DisplayName: Ice Bolt
-WinterbornMagic.DisplayName: Winterborn Herald
-DiverZombie.DisplayName: Zombie
-KelpZombie.DisplayName: Zombie
-SailorZombie.DisplayName: Zombie
+
+WinterbornMagic: {
+	DisplayName: Winterborn Herald
+	Entry: Long after forseeing the destruction of their tribe, these once elite mages now follow in the footsteps of their brethren, seeking to rebuild.
+}
+
+DiverZombie: {
+	DisplayName: Zombie
+	Entry: Who knew those oxygen tanks needed to have actual oxygen in them?
+}
+
+KelpZombie: {
+	DisplayName: Zombie
+	Entry: Fish fear me, women fear me, men fear me, children fear me, for I am the undead.
+}
+
+SailorZombie: {
+	DisplayName: Zombie
+	Entry: Despite their current status, they used to run this really nice luxury cruiser you should check out sometime.
+}
+
 TridentZombie.DisplayName: Zombie
 AsclepiusBoonOrb.DisplayName: Asclepius Boon Orb
 Fathomless_Chest_Gold.DisplayName: Fathomless_ Chest_ Gold

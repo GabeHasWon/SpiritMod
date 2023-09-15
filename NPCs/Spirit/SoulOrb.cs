@@ -39,12 +39,7 @@ namespace SpiritMod.NPCs.Spirit
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritSurfaceBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("A soft, flickering light anomaly drifting about the Spirit. They are said to be the wandering souls of departed travelers."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 

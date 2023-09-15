@@ -39,13 +39,7 @@ namespace SpiritMod.NPCs.Wheezer
 			BannerItem = ModContent.ItemType<Items.Banners.WheezerBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-				new FlavorTextBestiaryInfoElement("A weezer is an extremely toxic relative of the salamander, known for aggressive behavior. Oddly enough, their favorite food is a budding holly plant, contradictory to their carnivorous tendencies."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Caverns");
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

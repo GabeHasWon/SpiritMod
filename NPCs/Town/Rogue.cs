@@ -62,13 +62,7 @@ namespace SpiritMod.NPCs.Town
 			AnimationType = NPCID.Guide;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Jungle,
-				new FlavorTextBestiaryInfoElement("A dashing rogue with a past shrouded in mystery. Whether he can be trusted or not is unclear, but he would gladly teach you the tricks of the trade regardless."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Jungle");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

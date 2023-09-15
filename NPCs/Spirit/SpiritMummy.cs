@@ -43,12 +43,7 @@ namespace SpiritMod.NPCs.Spirit
 			BannerItem = ModContent.ItemType<Items.Banners.SpiritMummyBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Afflicted by ethereal powers, these carcasses are now vessels for not their own souls, but countless others in need of a corporeal form. "),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

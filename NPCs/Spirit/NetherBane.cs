@@ -42,12 +42,7 @@ namespace SpiritMod.NPCs.Spirit
 			BannerItem = ModContent.ItemType<Items.Banners.NetherbaneBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("An ethereal winged beast that soars through the spirit biome. Legend has it that every flap of its wings signifies another soul dying."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

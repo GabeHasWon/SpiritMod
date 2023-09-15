@@ -41,12 +41,7 @@ namespace SpiritMod.NPCs.Tides
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("These Kakamora specialize in throwing coconuts for long...ish...distance battles."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		int timer = 0;
 		bool charging = false;

@@ -35,12 +35,7 @@ namespace SpiritMod.NPCs.Tides
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("A reptilian biped, tamed by the Kakamora and used for riding into battle. High-ho silver, away!"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

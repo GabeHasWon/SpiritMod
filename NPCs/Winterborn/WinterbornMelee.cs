@@ -45,13 +45,7 @@ namespace SpiritMod.NPCs.Winterborn
 		}
 
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => base.DrawHealthBar(hbPosition, ref scale, ref position);
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundSnow,
-				new FlavorTextBestiaryInfoElement("The last remnants of a bygone tribe. Encased in ice by a mysterious curse, they wander the tundra, looking for relics of their civilization."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "UndergroundSnow");
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon && ((spawnInfo.SpawnTileY > Main.rockLayer) || (Main.raining && spawnInfo.Player.ZoneOverworldHeight)) ? 0.12f : 0f;
 

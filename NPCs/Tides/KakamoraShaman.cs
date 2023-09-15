@@ -43,11 +43,7 @@ namespace SpiritMod.NPCs.Tides
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
-			{
-				new FlavorTextBestiaryInfoElement("Pint-sized mystics that attack using the arcane arts. They double as healers for their nearby Kakamora companions."),
-			});
-
+			bestiaryEntry.AddInfo(this, "");
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 

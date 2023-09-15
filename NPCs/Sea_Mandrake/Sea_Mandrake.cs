@@ -53,13 +53,7 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 			AIType = NPCID.Goldfish;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("An odd bioluminescent creature that dwells in the ocean. Not only does it glow, but the colors it takes on are vibrant and exotic."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Ocean");
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{

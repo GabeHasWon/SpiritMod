@@ -57,12 +57,7 @@ namespace SpiritMod.NPCs.Town
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<SpiritSurfaceBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("This tired rune scribe has spent sleepless nights studying the ancient magic found in glyphs. He's not much of a conversationalist, but he'll gladly empower your arsenal."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */ => Main.player.Any(x => x.active && x.inventory.Any(y => y.type == ModContent.ItemType<Glyph>()));
 

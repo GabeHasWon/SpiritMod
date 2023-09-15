@@ -61,13 +61,7 @@ namespace SpiritMod.NPCs.Town
 			AnimationType = NPCID.Guide;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				new FlavorTextBestiaryInfoElement("An intrepid explorer driven by an ambition that has often landed him in danger. He's also an avid note-taker, his many accounts now scattered throughout the land."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface");
 
 		public override bool CanTownNPCSpawn(int numTownNPCs) => Main.player.Any(x => x.active) && !NPC.AnyNPCs(NPCType<BoundAdventurer>()) && !NPC.AnyNPCs(NPCType<Adventurer>());
 

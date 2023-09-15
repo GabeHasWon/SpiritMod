@@ -38,13 +38,7 @@ namespace SpiritMod.NPCs.Tides
 			//SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.UIInfoProvider = new Terraria.GameContent.Bestiary.CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<KakamoraRunner>()], false);
-			/*bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("An esteemed rider of a Crocomount. Despite their small stature, this creature rides with the ferocity of a war general."),
-			});*/
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<KakamoraRunner>()], false);
 
 		// localai0 : 0 when spawned, 1 when otherNPC spawned. 
 		// ai0 = npc number of other NPC

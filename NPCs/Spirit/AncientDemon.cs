@@ -38,12 +38,7 @@ namespace SpiritMod.NPCs.Spirit
 			AIType = NPCID.FlyingAntlion;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Found only in the deepest depths of Spirit-touched Caverns, these malevolent wraiths hold one simple goal: Purloin the souls of living things."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void AI()
 		{
