@@ -11,7 +11,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<ScrapItem>();
+			// DisplayName.SetDefault("Astralite Shard");
+			// Tooltip.SetDefault("'It seems that Starplate entities have been scouring the stars looking for this'");
 			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 		}
 
@@ -24,7 +25,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			Item.height = 24;
 			Item.value = 100;
 			Item.rare = ItemRarityID.Orange;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.consumable = true;
 			Item.autoReuse = true;
 			Item.createTile = ModContent.TileType<Glowstone>();
