@@ -50,13 +50,7 @@ namespace SpiritMod.NPCs.CavernBandit
             BannerItem = ModContent.ItemType<Items.Banners.CavernBanditBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-				new FlavorTextBestiaryInfoElement("Some people go mining for the resources, others for the sport. These malicious marauders delve to hunt those people."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Caverns");
 
 		private const float SWING_RADIUS = 60f; //How far away from the targetted player the npc must be to begin its attack
 		private const float AWAKE_RADIUS = 100f; //How far away from the targetted player the npc must be to wake up

@@ -37,12 +37,7 @@ namespace SpiritMod.NPCs.Reach
 			AIType = NPCID.Goldfish;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("A fish with the ability to secrete a toxin that coats its scales. The only way to truly deter the smell is cooking it."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void FindFrame(int frameHeight)
 		{

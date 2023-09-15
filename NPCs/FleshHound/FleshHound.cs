@@ -48,14 +48,7 @@ namespace SpiritMod.NPCs.FleshHound
 			AIType = NPCID.WalkingAntlion;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
-				new FlavorTextBestiaryInfoElement("A nasty prowling canine that rears its head only under the vermillion light of a Blood Moon. Though it may feed, the hunger will always remain."),
-			});
-		}
-
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "BloodMoon");
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && (Main.bloodMoon) && NPC.downedBoss1 ? 0.12f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)

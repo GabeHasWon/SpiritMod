@@ -46,14 +46,7 @@ namespace SpiritMod.NPCs.FallenAngel
 			BannerItem = ModContent.ItemType<Items.Banners.FallenAngelBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("Banished from the heavens, this rogue cherub takes their frustrations out on the mortal beings of this realm."),
-			});
-		}
-
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Sky");
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Sky && Main.hardMode && !NPC.AnyNPCs(ModContent.NPCType<FallenAngel>()) ? 0.013f : 0f;
 
 		public override void AI()

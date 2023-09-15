@@ -66,6 +66,7 @@ namespace SpiritMod.NPCs.Boss
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.AddInfo(this, "Sky");
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 				new FlavorTextBestiaryInfoElement("The matriarch of an extinct avian predator species, brought back to life through sheer will to protect the yolk of its last remaining spawn."),

@@ -50,16 +50,8 @@ namespace SpiritMod.NPCs.FallingAsteroid
 			BannerItem = ModContent.ItemType<Items.Banners.FallingAsteroidBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Meteor,
-				new FlavorTextBestiaryInfoElement("What appears to be a sentient rock is really a small critter using a chunk of the meteor as a shell. It's able to float around with ease, despite the weight."),
-			});
-		}
-
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Meteor");
 		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.OnFire, 60 * 3);
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => SpawnCondition.Meteor.Chance * 0.15f;
 
 		public override void AI()

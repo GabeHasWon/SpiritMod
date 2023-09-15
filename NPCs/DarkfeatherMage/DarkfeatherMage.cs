@@ -49,15 +49,9 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 			NPC.DeathSound = SoundID.DD2_GoblinBomberHurt;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				new FlavorTextBestiaryInfoElement("Caww, caww! A large bird of prey who fancies themselves a mage. Whoever has been teaching these birds magic has left behind quite a mess."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface");
 
-        public override void AI()
+		public override void AI()
 		{
 			NPC.spriteDirection = NPC.direction;
             Lighting.AddLight((int)((NPC.position.X + (float)(NPC.width / 2)) / 16f), (int)((NPC.Center.Y + (float)(NPC.height / 2)) / 16f), 0.162f*2, 0.209f*2, .02f*2);

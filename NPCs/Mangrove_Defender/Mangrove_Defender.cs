@@ -47,12 +47,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			BannerItem = ModContent.ItemType<Items.Banners.MangroveDefenderBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Blessed by primal deities, these former Feral Shamblers are now fully connected with the Brair's will. With their new found strength, they protect their home with a savage fury."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void AI()
 		{

@@ -36,13 +36,7 @@ namespace SpiritMod.NPCs.PirateLobber
 			BannerItem = ModContent.ItemType<Items.Banners.PirateLobberBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Invasions.Pirates,
-				new FlavorTextBestiaryInfoElement("This pirate had found rolling to be a much more effective way to transport barrels along the deck. Funnily enough, it works pretty well on foes as well!"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Pirates");
 
 		int frame = 0;
 		bool attack = false;

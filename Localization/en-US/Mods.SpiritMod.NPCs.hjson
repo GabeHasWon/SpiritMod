@@ -3,73 +3,241 @@ GoldChestBottom.DisplayName: Gold Chest
 PlatinumChestBottom.DisplayName: Platinum Chest
 SilverChestBottom.DisplayName: Silver Chest
 StardustBombNPC.DisplayName: Supernova
-Alien.DisplayName: Alien
-BoneHarpy.DisplayName: Ancient Apostle
-AntlionAssassin.DisplayName: Antlion Assassin
-CrimsonTrapper.DisplayName: Arterial Grasper
+
+Alien: {
+	DisplayName: Alien
+	Entry: In space, no one can hear you make pop culture references.
+}
+
+BoneHarpy: {
+	DisplayName: Ancient Apostle
+	Entry: The reanimated bones of a long extinct bird. Though dead, don't lower your guard near them, for these fowl fossils still have fight in them!
+}
+
+AntlionAssassin: {
+	DisplayName: Antlion Assassin
+	Entry: These desert scavengers are lone wolves. They hunt antlions not to survive- but for sport, to establish dominance among their tribe.
+}
+
+CrimsonTrapper: {
+	DisplayName: Arterial Grasper
+	Entry: These beating organs are vital to the crimson's ensured survival � they pump blood into the biome's squelching stone, granting it the strength to spread and support its extremities.
+}
+
 AsteroidDebris.DisplayName: Debris
 GoldDebris.DisplayName: Debris
-AstralAdventurer.DisplayName: Astral Adventurer
-AstralAmalgam.DisplayName: Astral Amalgam
+
+AstralAdventurer: {
+	DisplayName: Astral Adventurer
+	Entry: A spectacle of alien life, composed of a substance beyond our understanding! Despite their small stature and gelatinous form, sturdy stones somehow orbit this strange body.
+}
+
+AstralAmalgam: {
+	DisplayName: Astral Amalgam
+	Entry: A spectacle of alien life, composed of a substance beyond our understanding! Despite their small stature and gelatinous form, sturdy stones somehow orbit this strange body.
+}
+
 SpaceShield.DisplayName: Astral Buffer
 AuroraStag.DisplayName: Aurora Stag
-AutomataCreeper.DisplayName: Arachmaton
-AutomataSpinner.DisplayName: Trochmaton
-Beholder.DisplayName: Beholder
-BlazingSkull.DisplayName: Wrathful Soul
-BlizzardBandit.DisplayName: Blizzard Bandit
-BlizzardNimbus.DisplayName: Blizzard Nimbus
-Spewer.DisplayName: Bloater
-SwollenFish.DisplayName: Bloatfish
+
+AutomataCreeper: {
+	DisplayName: Arachmaton
+	Entry: Forged from brass, a sturdy metal. Makes a lasting frame. A core from marble, containing untapped magic. This gives it mind. And at last, the spark of life. Roam free, new friend.
+}
+
+AutomataSpinner: {
+	DisplayName: Trochmaton
+	Entry: Times grow dire, and I must hurry. Dual blades, for attack. Four legs, for stability. Extra plating, for resistance. A marble core and at last the spark of life. Make haste o' guardian, you know your task. Defend these caves we call home.
+}
+
+Beholder: {
+	DisplayName: Beholder
+	Entry: These beasts roam the marble pits found within the world, judging you with each one of their many eyes.
+}
+
+BlazingSkull: {
+	DisplayName: Wrathful Soul
+	Entry: Easily angered, this soul is eternally ablaze because of its sheer rage. All this energy is then released as it charges forward to blow up at any little thing. What a hothead.
+}
+
+BlizzardBandit: {
+	DisplayName: Blizzard Bandit
+	Entry: Snowball fights can be fun, but these bandits don't play nice. They pack their snowballs around cores of ice, causing duress for any passerby.
+}
+
+BlizzardNimbus: {
+	DisplayName: Blizzard Nimbus
+	Entry: Having frozen over, this nimbus angrily rains down shards of ice in an attempt to expel all of it. What it doesn't know is that it could just leave the cold environment.
+}
+
+Spewer: {
+	DisplayName: Bloater
+	Entry: A particularly foul beast. It builds up pressure by sucking in air with the organs on its back and propels gastric fluids at anything it deems threatening.
+}
+
+SwollenFish: {
+	DisplayName: Bloatfish
+	Entry: In the past, these fish would inflate to intimidate predators. Now, however, they seem to have eaten their way so far up the food chain that they no longer need to.
+}
+
 BloodGazerEye.DisplayName: Blood Gazer
-Bloomshroom.DisplayName: Bloomshroom
-Glitterfly.DisplayName: Glitterfly
-GlowToad.DisplayName: Glow Toad
-Lumantis.DisplayName: Lumantis
-LunarSlime.DisplayName: Stargazer Slime
-MadHatter.DisplayName: Mad Hatter
-AncientFlyer.DisplayName: Ancient Avian
-Atlas.DisplayName: Atlas
+
+Bloomshroom: {
+	DisplayName: Bloomshroom
+	Entry: This aggressive mycelium only becomes lively once in a blue moon. They spread their spores to the skies, reproducing once they hit the ground or find a living host.
+}
+
+Glitterfly: {
+	DisplayName: Glitterfly
+	Entry: Glitterflies do not feed often, as their palette consists of a rare fungus. In addition, they possess a venomous sting that causes intense disorientation and vertigo.
+}
+
+GlowToad: {
+	DisplayName: Glow Toad
+	Entry: Psychedelic fungus grows upon the back of this toad. They are lost in delirium, as they find themselves snacking on it frequently.
+}
+
+Lumantis: {
+	DisplayName: Lumantis
+	Entry: Colossal bugs that attack with scythe-like claws. When threatened, as a warning to predators, they puff their underbellies.
+}
+
+LunarSlime: {
+	DisplayName: Stargazer Slime
+	Entry: Gelatinous nectar from the stars. Stargazer Slimes may be aggressive, but the oil they secrete makes for a delicious spread.
+}
+
+MadHatter: {
+	DisplayName: Mad Hatter
+	Entry: They've been driven mad, completely bonkers! But all the best people are.
+}
+
+AncientFlyer: {
+	DisplayName: Ancient Avian
+	Entry: The matriarch of an extinct avian predator species, brought back to life through sheer will to protect the yolk of its last remaining spawn.
+}
+
+Atlas: {
+	DisplayName: Atlas
+	Entry: A fractured sentinel built millenia ago to protect the land from those who would dare to scar its natural form. Now, it seems you have made yourself its target.
+}
+
 AtlasArmLeft.DisplayName: Atlas Arm
 AtlasArmRight.DisplayName: Atlas Arm
 CobbledEye.DisplayName: Cobbled Eye
 CobbledEye2.DisplayName: Cobbled Eye
 CobbledEye3.DisplayName: Cobbled Eye
-Dusking.DisplayName: Dusking
+
+Dusking: {
+	DisplayName: Dusking
+	Entry: The nightmarish consequence of a failed seance by goblin warlocks. This abominable spirit remains a burning reminder of the chaos shadowflame magic can bring.
+}
+
 ShadowBall.DisplayName: Penumbral Sphere
-Shadowflamer.DisplayName: Antumbral Skull
-FrostSaucer.DisplayName: Snow Monger
-Infernon.DisplayName: Infernon
+
+Shadowflamer: {
+	DisplayName: Antumbral Skull
+	Entry: End of dawns, bringer of nights, may the king of darkness rise to fight! May you cast the world to darkness and forever seal the light! O' king hear my cry, for may victory be yours tonight!
+}
+
+FrostSaucer: {
+	DisplayName: Snow Monger
+	Entry: A dangerous hovercraft made of spine-chillingly cold metal, and powered by Frost Cores. Playtime's over, no more mister ice guy!
+}
+
+Infernon: {
+	DisplayName: Infernon
+	Entry: This diabolical demon was once shackled in the depths of the underworld, but has finally broken free. Any mortal who would dare obstruct his rampage should prepare for one hell of a fight.
+}
+
 InfernonSkull.DisplayName: Infernus Skull
 InfernonSkullMini.DisplayName: Infernon Skull
 InfernoSkull.DisplayName: Infernus Skull
-MoonWizard.DisplayName: Moon Jelly Wizard
+
+MoonWizard: {
+	DisplayName: Moon Jelly Wizard
+	Entry: Those moon jellies are smarter than they seem. With only a bit of coordination and a sharp sense of fashion, they can become a far tougher adversary than any one jelly could ever be.
+}
+
 AzureGemProj.DisplayName: Azure Gem
 MysticMJWClone.DisplayName: Mystic Clone
-OccultistBoss.DisplayName: Occultist
+
+OccultistBoss: {
+	DisplayName: Occultist
+	Entry: An undead dream demon obsessed with the practice and perfection of so-called 'blood corruption.' For this practice, he only reveals himself when the moon shimmers sanguine.
+}
+
 ExplodingSpore.DisplayName: Exploding Spore
 ReachBoss.DisplayName: Vinewrath Bane
-ReachBoss1.DisplayName: Vinewrath Husk
-Scarab.DisplayName: Scarab
+
+ReachBoss1: {
+	DisplayName: Vinewrath Husk
+	Entry: The beating heart of the briar. Its innate instinct for self-preservation expresses itself in the hostile antibodies and endless torrential downpour within the biome.
+}
+
+Scarab: {
+	DisplayName: Scarab
+	Entry: The scrappy brethren of the larger Scarabeus, these little things follow their leader to the death.
+}
+
 Scarab_Wall.DisplayName: Scarab
-Scarabeus.DisplayName: Scarabeus
+
+Scarabeus: {
+	DisplayName: Scarabeus
+	Entry: Once thought to be a deity, this particular beetle comes from an elusive species that is equally massive.
+}
+
 SwarmScarab.DisplayName: Scarab
 ArcadeProbe.DisplayName: Starfarer
 LaserBase.DisplayName: Laser Launcher
 SteamRaiderBody.DisplayName: Starplate Voyager
 SteamRaiderBody2.DisplayName: Starplate Voyager
-SteamRaiderHead.DisplayName: Starplate Voyager
+
+SteamRaiderHead: {
+	DisplayName: Starplate Voyager
+	Entry: A strange automaton of unknown origin, designed for mining a precious metal from the stars. It utilizes the untapped energy found within the ore to power itself and perpetuate an endless search.
+}
+
 SteamRaiderHeadDeath.DisplayName: Starplate Voyager
 SteamRaiderTail.DisplayName: Starplate Voyager
 SuicideLaser.DisplayName: Laser Bomber
 TailProbe.DisplayName: Starfarer
-BottomFeeder.DisplayName: Bottom Feeder
-Boulder_Termagant.DisplayName: Boulder Behemoth
-CavernBandit.DisplayName: Cavern Bandit
-CavernCrawler.DisplayName: Cavern Crawler
-ChainedSinner.DisplayName: Furnace Maw
-Chest_Zombie.DisplayName: Chest Zombie
-GraniteCore.DisplayName: Crackling Core
+
+BottomFeeder: {
+	DisplayName: Bottom Feeder
+	Entry: A nasty bile sits in their guts, waiting to be unleashed. Exercise caution as they shamble toward you, and be prepared for a flood of sludge and soot.
+}
+
+Boulder_Termagant: {
+	DisplayName: Boulder Behemoth
+	Entry: Entranced by anything that glistens, this beast's eyes now serve only one purpose. Find any glint of light. This usually leads it to gems, but it will mistakenly eat anything that glows.
+}
+
+CavernBandit: {
+	DisplayName: Cavern Bandit
+	Entry: Some people go mining for the resources, others for the sport. These malicious marauders delve to hunt those people.
+}
+
+CavernCrawler: {
+	DisplayName: Cavern Crawler
+	Entry: Despite a timid outward appearance, these curious cave-dwellers should not be underestimated.
+}
+
+ChainedSinner: {
+	DisplayName: Furnace Maw
+	Entry: We forge the chains we bear in life and in death.
+}
+
+Chest_Zombie: {
+	DisplayName: Chest Zombie
+	Entry: It must have been a deadlift champion in its previous life, for if it isn't throwing heavy punches at you, it can be seen training with the chests scattered about the land.
+}
+
+GraniteCore: {
+	DisplayName: Crackling Core
+	Entry: Pent up energy that was once trapped inside the rocky, amorphous form of a Granite Slime. Now it's free, and it's about to go critical!
+}
+
 BlueAlgae1.DisplayName: Blue Algae
 BlueAlgae2.DisplayName: Blue Algae
 BlueAlgae3.DisplayName: Blue Algae
@@ -79,123 +247,574 @@ GreenAlgae3.DisplayName: Bioluminescent Algae
 PurpleAlgae1.DisplayName: Bioluminescent Algae
 PurpleAlgae2.DisplayName: Bioluminescent Algae
 PurpleAlgae3.DisplayName: Bioluminescent Algae
-AtlanticCod.DisplayName: Atlantic Cod
-Bladetongue.DisplayName: Bladetongue
-Blossmoon.DisplayName: Blossmoon
-Cavefish.DisplayName: Armored Cavefish
-Cleft.DisplayName: Cleft Hopper
-CrismonTigerfish.DisplayName: Crimson Tigerfish
-CrystalSerpent.DisplayName: Crystal Serpent
-CyberflyBlue.DisplayName: Cyberfly
-CyberflyPink.DisplayName: Cyberfly
-Damselfish.DisplayName: Damselfish
-DreamstrideWisp.DisplayName: Dreamstride Wisp
-Ebonkoi.DisplayName: Ebonkoi
-FrostMinnow.DisplayName: Frost Minnow
-GaleSnail.DisplayName: Gale Snail
-GildJelly.DisplayName: Gilded Jelly
-GoldenCarp.DisplayName: Golden Carp
-GoldLumoth.DisplayName: Gold Lumoth
-Grouper.DisplayName: Grouper
-Gulper.DisplayName: Gulper
-HailSnail.DisplayName: Hail Snail
-Hemoglob.DisplayName: Hemoglob
-Hemoglorb.DisplayName: Hemoglorb
-Lardfish.DisplayName: Variegated Lardfish
-Lumoth.DisplayName: Lumoth
-Luvdisc.DisplayName: Ardorfish
-Maggotfly.DisplayName: Maggotfly
-NeonTetra.DisplayName: Neon Tetra
-Crinoid.DisplayName: Crinoid
+
+AtlanticCod: {
+	DisplayName: Atlantic Cod
+	Entry: Atlantic Cod are uniquely native to the frigid waters of chilly tundras. Cuts of meat from these fish are flaky and sweet.
+}
+
+Bladetongue: {
+	DisplayName: Bladetongue
+	Entry: If you can manage to capture one, it may make for an excellent weapon. But do so carefully, for its fatal ichor spit can leave you defenseless.
+}
+
+Blossmoon: {
+	DisplayName: Blossmoon
+	Entry: These creatures are the size of a quarter, and only ever appear during the night. They can only be observed dancing, and emitting a low calming glow.
+}
+
+Cavefish: {
+	DisplayName: Armored Cavefish
+	Entry: You'd have to be tough as nails to chew meat from a fish like this, it's hard as diamonds!
+}
+
+Cleft: {
+	DisplayName: Cleft Hopper
+	Entry: A tiny living crag that roams the underground desert. They tend to get anxious amidst the antlions' chaos, rarely retreating from their outcoves.
+}
+
+CrismonTigerfish: {
+	DisplayName: Crimson Tigerfish
+	Entry: A carnivorous fish that has been tainted by the bloody waters of the Crimson. They are named after their lack of stripes, which resemble that of a tiger.
+}
+
+CrystalSerpent: {
+	DisplayName: Crystal Serpent
+	Entry: Living in the glistening waters of the Hallow, its body is now composed of mostly crystals. This allows for light to enter its body and channel it into a bolt that shatters on impact.
+}
+
+CyberflyBlue: {
+	DisplayName: Cyberfly
+	Entry: Small digital wisps that flutter about cyberspace.
+}
+
+CyberflyPink: {
+	DisplayName: Cyberfly
+	Entry: Small digital wisps that flutter about cyberspace.
+}
+
+Damselfish: {
+	DisplayName: Damselfish
+	Entry: Delicate fish that live at high altitudes. Despite the soothing qualities held within their scales, they are prone to distress.
+}
+
+DreamstrideWisp: {
+	DisplayName: Dreamstride Wisp
+	Entry: The essence of a nightmare, often appearing during the practice of 'blood corruption'. They wheeze and moan in silent pain.
+}
+
+Ebonkoi: {
+	DisplayName: Ebonkoi
+	Entry: A once a beautiful specimen now grotesque and nasty thanks to the insidious veins of the Corruption. Truly tragic.
+}
+
+FrostMinnow: {
+	DisplayName: Frost Minnow
+	Entry: Fretful minnows that can survive the intensely cold temperatures of the tundra's waters because of their unnaturally high body heat.
+}
+
+GaleSnail: {
+	DisplayName: Gale Snail
+	Entry: A modest little nimbus that can't get enough of the rain. Even its shell produces rain, when it gathers enough moisture.
+}
+
+GildJelly: {
+	DisplayName: Gilded Jelly
+	Entry: Gorgeous jellies with a shimmering hood that resembles gold. Tragically, they do not handle captivity well.
+}
+
+GoldenCarp: {
+	DisplayName: Golden Carp
+	Entry: A fish coated in absolutely gorgeous, shimmering scales that resemble pure gold. Their meat is no good for cooking, but may catch a high selling price.
+}
+
+GoldLumoth: {
+	DisplayName: Gold Lumoth
+	Entry: Rarely, critters are found coated entirely in gold! Shopkeepers will pay handsomely for these, or you can show them off in cages!
+}
+
+Grouper: {
+	DisplayName: Grouper
+	Entry: These fish are prized for their size and flavor. With a fish that big, you can feed an entire town, let alone yourself.
+}
+
+Gulper: {
+	DisplayName: Gulper
+	Entry: These small, domesticated fish are made of a springy substance, are often sold at festivals, and have an extremely short life expectancy.
+}
+
+HailSnail: {
+	DisplayName: Hail Snail
+	Entry: A small living snowball that can't get enough of the cold. It can get colder and colder, but it will never freeze.
+}
+
+Hemoglob: {
+	DisplayName: Hemoglob
+	Entry: A descendant of royalty and a wandering king. He observes your every action while moving with grace and dignity.
+}
+
+Hemoglorb: {
+	DisplayName: Hemoglorb
+	Entry: The forgotten kin of the Crimson, cast aside due to his abnormal shape and size. He never could, and likely never will, find love nor acceptance in this cruel world.
+}
+
+Lardfish: {
+	DisplayName: Variegated Lardfish
+	Entry: A bizarre fish sought after for its brewing potential. Those that harness magic for summoning find this fish particularly useful in enhancing their abilities.
+}
+
+Lumoth: {
+	DisplayName: Lumoth
+	Entry: The bulb only stays on while the Lumoth flaps its wings.
+}
+
+Luvdisc: {
+	DisplayName: Ardorfish
+	Entry: When the moon hits your eye like a big pizza pie... that's an Ardor.
+}
+
+Maggotfly: {
+	DisplayName: Maggotfly
+	Entry: A massive maggot that's somehow matured and grown wings, nasty little thing.
+}
+
+NeonTetra: {
+	DisplayName: Neon Tetra
+	Entry: True to their name, this species of tropical fish has bright and beautiful colors, making them sell for an exorbitant price.
+}
+
+Crinoid: {
+	DisplayName: Crinoid
+	Entry: These curious critters are closely related to starfish. They feed off of whatever sinks down to the bottom of the sea.
+}
+
 Floater.DisplayName: Luminous Floater
-Floater1.DisplayName: Luminous Floater
-Pelican.DisplayName: Pelican
-ReaverShark.DisplayName: Reaver Shark
-SandPiper.DisplayName: Sand Piper
-Prismite.DisplayName: Prismite
-PurpleClubberfish.DisplayName: Purple Clubberfish
-RedSnapper.DisplayName: Red Snapper
-Rockfish.DisplayName: Rockfish
-Rotslug.DisplayName: Rotslug
-SawtoothShark.DisplayName: Sawtooth Shark
-SpecularFish.DisplayName: Specular Fish
-Swordfish.DisplayName: Swordfish
-TinyCrab.DisplayName: Palecrab
-Toxikarp.DisplayName: Toxikarp
-TubeWorm.DisplayName: Tubeworm
-Vibeshroom.DisplayName: Quivershroom
-CrystalDrifter.DisplayName: Crystal Drifter
-Cystal.DisplayName: Cystal
+
+Floater1: {
+	DisplayName: Luminous Floater
+	Entry: Below the waves of the elusive glowing ocean, lies hundreds of small, glowing jellyfish, dancing among the luminescent tide.
+}
+
+Pelican: {
+	DisplayName: Pelican
+	Entry: A large sea bird with a special beak to hold its prey. Startling it could cause the bird to drop what it's caught, but that would be mean.
+}
+
+ReaverShark: {
+	DisplayName: Reaver Shark
+	Entry: This particular species of shark is remarkable for its potential as a tool. Not only is it small enough to hold, but its cleft chin and large forehorn excel at breaking the ice.
+}
+
+SandPiper: {
+	DisplayName: Sand Piper
+	Entry: A small, brave bird that patrols the shorelines looking for food uncovered by the waves.
+}
+
+Prismite: {
+	DisplayName: Prismite
+	Entry: An iridescent mineral fish that wades the waters of the Hallow. The prismatic gleam that reflects light from its scales is a natural beauty.
+}
+
+PurpleClubberfish: {
+	DisplayName: Purple Clubberfish
+	Entry: If you are trying to claim this weapon of mass destruction, beware of its power. It can and will use it against you!
+}
+
+RedSnapper: {
+	DisplayName: Red Snapper
+	Entry: Despite their name, they are actually quite docile! Perfect for capturing and cooking without issue.
+}
+
+Rockfish: {
+	DisplayName: Rockfish
+	Entry: Undeniably too tough to eat. For bludgeoning, however, these natural disasters have quite the potential.
+}
+
+Rotslug: {
+	DisplayName: Rotslug
+	Entry: Corruption has maimed and tainted this otherwise mundane mollusk. It makes for harmless and effective bait, despite its ghastly appearance.
+}
+
+SawtoothShark: {
+	DisplayName: Sawtooth Shark
+	Entry: A species of shark with a long cartilage appendage, barbed with sharp extremities. It is remarkably tough and durable, and surprisingly efficient at sawing logs.
+}
+
+SpecularFish: {
+	DisplayName: Specular Fish
+	Entry: Alchemists regard that there's never enough of this fish to go around in the heat of battle, as the potions they produce tend to empty fast.
+}
+
+Swordfish: {
+	DisplayName: Swordfish
+	Entry: It's a sword, it's a fish! It's a swordfish! Versatile fish that function as both pets and weapons, what a deal! These don't come with speakers though.
+}
+
+TinyCrab: {
+	DisplayName: Palecrab
+	Entry: These adorable little critters are not as hostile as their larger relatives. Living in deeper waters has made them lose coloration since they have less exposure to sunlight.
+}
+
+Toxikarp: {
+	DisplayName: Toxikarp
+	Entry: The Corruption twisted the innards of this fish to perpetually rot, releasing a noxious gas that forms bubbles with the excess mucus it now forms. It is surprisingly corrosive.
+}
+
+TubeWorm: {
+	DisplayName: Tubeworm
+	Entry: Deep below the glimmering tides, down where the light won't shine, live some fascinating creatures, able to feast off of the smog exuded from hydrothermal vents.
+}
+
+Vibeshroom: {
+	DisplayName: Quivershroom
+	Entry: This little guy's playlist consists of 80% lofi beats and hyperwave. Although some judge his taste, that won't stop him from dancing.
+}
+
+CrystalDrifter: {
+	DisplayName: Crystal Drifter
+	Entry: The howling winds of a blizzard give flight to this otherwise cumbersome entity composed of ice.
+}
+
+Cystal: {
+	DisplayName: Cystal
+	Entry: A ghastly creature that patrols the murky depths of the Corruption. Their crystalline bodies emit a disorienting, sense-obscuring frequency, so steer clear!
+}
+
 Cystal_Shield.DisplayName: Cystal Shield
-DarkfeatherMage.DisplayName: Darkfeather Mage
-Dead_Scientist.DisplayName: Undead Scientist
-DeadArcher.DisplayName: Deadeye Marksman
-DesertBandit.DisplayName: Forsaken Bandit
-DiseasedSlime.DisplayName: Noxious Slime
-DungeonCubeBlue.DisplayName: Blue Dungeon Cube
-DungeonCubeGreen.DisplayName: Green Dungeon Cube
-DungeonCubePink.DisplayName: Pink Dungeon Cube
-ElectricEel.DisplayName: Electric Eel
-Enchanted_Armor.DisplayName: Draugr
+
+DarkfeatherMage: {
+	DisplayName: Darkfeather Mage
+	Entry: Caww, caww! A large bird of prey who fancies themselves a mage. Whoever has been teaching these birds magic has left behind quite a mess.
+}
+
+Dead_Scientist: {
+	DisplayName: Undead Scientist
+	Entry: An unholy practitioner of a necro-alchemy, combining typical alchemy with a form of minor necromancy in order to keep its sick experiments going.
+}
+
+DeadArcher: {
+	DisplayName: Deadeye Marksman
+	Entry: Despite having one eye, this archer is deceptively adept compared to any other. Close your doors to this outsider!
+}
+
+DesertBandit: {
+	DisplayName: Forsaken Bandit
+	Entry: A roaming bandit, looking for anything that shines under the harsh sun. Not very fun at parties.
+}
+
+DiseasedSlime: {
+	DisplayName: Noxious Slime
+	Entry: Bismite toxins flow through the gel of this diseased mass, causing any contact to erode the skin and inflame open wounds.
+}
+
+DungeonCubeBlue: {
+	DisplayName: Blue Dungeon Cube
+	Entry: Mindless stone automatons built to be aware of their surroundings and attack on sight.
+}
+
+DungeonCubeGreen: {
+	DisplayName: Green Dungeon Cube
+	Entry: Mindless stone automatons built to be aware of their surroundings and attack on sight.
+}
+
+DungeonCubePink: {
+	DisplayName: Pink Dungeon Cube
+	Entry: Mindless stone automatons built to be aware of their surroundings and attack on sight.
+}
+
+ElectricEel: {
+	DisplayName: Electric Eel
+	Entry: Utilizing the energy it builds up as it swims, this slender fish can release it in one big jolt, packing quite the punch.
+}
+
+Enchanted_Armor: {
+	DisplayName: Draugr
+	Entry: These suits of armor were given life by cursed souls connected to the dark sepulchers' treasure. Now they wait frozen and inanimate for a brave adventurer to wander inside.
+}
+
 ExplosiveBarrel.DisplayName: Explosive Barrel
-FallenAngel.DisplayName: Fallen Angel
-Falling_Asteroid.DisplayName: Falling Asteroid
-Vilemoth.DisplayName: Festerfly
-VileWasp.DisplayName: Pesterfly
-FleshHound.DisplayName: Flesh Hound
-WintrySoul.DisplayName: Icebound Soul
-Illusionist.DisplayName: Ghast
-IllusionistSpectre.DisplayName: Ghast's Spectre
-GladiatorSpirit.DisplayName: Gladiator Spirit
-GloopGloop.DisplayName: Gloop
-Goblin_Grenadier.DisplayName: Goblin Grenadier
-GraniteSentry.DisplayName: G-TEK Turret
-GraniteSlime.DisplayName: Granite Slime
-HauntedTome.DisplayName: Haunted Tome
-HellEater.DisplayName: Gluttonous Devourer
-Hemophora.DisplayName: Hemophora
-Hookbat.DisplayName: Hookbat
-Horned_Crustacean.DisplayName: Luminous Prowler
-Hornetfish.DisplayName: Hornetfish
+
+FallenAngel: {
+	DisplayName: Fallen Angel
+	Entry: Banished from the heavens, this rogue cherub takes their frustrations out on the mortal beings of this realm.
+}
+
+Falling_Asteroid: {
+	DisplayName: Falling Asteroid
+	Entry: What appears to be a sentient rock is really a small critter using a chunk of the meteor as a shell. It's able to float around with ease, despite the weight.
+}
+
+Vilemoth: {
+	DisplayName: Festerfly
+	Entry: The putrid scent of the corruption was bound to attract flies, and sure enough, it did. Now corrupted and ravenous, they follow the scent of any fresh meat they can find.
+}
+
+VileWasp: {
+	DisplayName: Pesterfly
+	Entry: These pests infest the innards of the abominable Festerfly. If you flex hard enough while one is biting you, it might explode.
+}
+
+FleshHound: {
+	DisplayName: Flesh Hound
+	Entry: A nasty prowling canine that rears its head only under the vermillion light of a Blood Moon. Though it may feed, the hunger will always remain.
+}
+
+WintrySoul: {
+	DisplayName: Icebound Soul
+	Entry: A curious memory of time past, somehow preserved by the deep icy tundra.
+}
+
+Illusionist: {
+	DisplayName: Ghast
+	Entry: A master of illusionary spiritual arts. They will summon violent apparitions in an attempt to distract and overwhelm you.
+}
+
+IllusionistSpectre: {
+	DisplayName: Ghast's Spectre
+	Entry: A convincing apparition summoned by Ghasts, made to do their bidding. It's merely a mirror image of the real deal, don't be fooled!
+}
+
+GladiatorSpirit: {
+	DisplayName: Gladiator Spirit
+	Entry: Be wary of this spirit, they have the unique ability to fortify their nonexistent bodies, making them resistant to damage, destroy their armor and release their soul!
+}
+
+GloopGloop: {
+	DisplayName: Gloop
+	Entry: No one's quite sure what these things are made of. Whatever it is, it doesn't taste good.
+}
+
+Goblin_Grenadier: {
+	DisplayName: Goblin Grenadier
+	Entry: When spiky balls aren't cutting it, good old fashioned shrapnel-spitting explosives should do the trick.
+}
+
+GraniteSentry: {
+	DisplayName: G-TEK Turret
+	Entry: "'G-TEK Incorporated would like you to know that we take no responsibility for any death or dismemberment caused by our protection turrets. They are simply there to guard what is ours. Thank you.'"
+}
+
+GraniteSlime: {
+	DisplayName: Granite Slime
+	Entry: A gelatinous creature that's roamed the Granite caves for a long while, accumulating enough pebbles and dust to become one with the stone.
+}
+
+HauntedTome: {
+	DisplayName: Haunted Tome
+	Entry: A warding glyph was placed on this tome to protect it from improper use. Unfortunately for you, that means staring down a book with 20 canines.
+}
+
+HellEater: {
+	DisplayName: Gluttonous Devourer
+	Entry: You'd best avoid the searing hot jaws of these beasts. Devourers have a notoriously painful bite, but that makes it a sought after material for the bold.
+}
+
+Hemophora: {
+	DisplayName: Hemophora
+	Entry: This plant-like beast is quite the foe. It has sacks around its mouth-like opening that can fire acidic blood to dissolve both predators and prey.
+}
+
+Hookbat: {
+	DisplayName: Hookbat
+	Entry: These simple thieving pests decided 'divide and conquer' was a solid strategy after stealing the adventurer's cloth.
+}
+
+Horned_Crustacean: {
+	DisplayName: Luminous Prowler
+	Entry: Despite its size, this sea dweller packs a punch! It uses its sharp teeth-like spikes to hunt for fish and keep away intruders.
+}
+
+Hornetfish: {
+	DisplayName: Hornetfish
+	Entry: This fish wasn't content with just being caught. It chose to fight back, and armed with both wings and stingers, it did just that.
+}
+
 Hydra.DisplayName: Lernean Hydra
-HydraHead.DisplayName: Lernean Hydra
-LostMime.DisplayName: Lost Mime
-Mangrove_Defender.DisplayName: Mangrove Defender
-Masticator.DisplayName: Masticator
-Mecromancer.DisplayName: Mechromancer
-GoldCrateMimic.DisplayName: Golden Crate Mimic
-IronCrateMimic.DisplayName: Iron Crate Mimic
-WoodCrateMimic.DisplayName: Wooden Crate Mimic
-Molten_Core.DisplayName: Molten Core
-DistressJelly.DisplayName: Distressed Jelly
-DreamlightJelly.DisplayName: Dreamlight Jelly
-ExplodingMoonjelly.DisplayName: Moonlight Rupturer
-MoonjellyGiant.DisplayName: Tethervolt Jelly
-MoonlightPreserver.DisplayName: Moonlight Preserver
-TinyLunazoa.DisplayName: Tiny Lunazoa
-MycelialBotanist.DisplayName: Mycelial Botanist
-OceanSlime.DisplayName: Coconut Slime
-Mineroid.DisplayName: Orbitite
-SamuraiHostile.DisplayName: Phantom Samurai
+
+HydraHead: {
+	DisplayName: Lernean Hydra
+	Entry: A legendary creature, born of monster and god. Killing a head does nothing but worsen the fight.
+}
+
+LostMime: {
+	DisplayName: Lost Mime
+	Entry: What you really fought was the mask puppeting what's left of a man. These masks are rumored to whisper to their hosts, taking over anyone unfortunate enough to fall to their allure.
+}
+
+Mangrove_Defender: {
+	DisplayName: Mangrove Defender
+	Entry: Blessed by primal deities, these former Feral Shamblers are now fully connected with the Brair's will. With their new found strength, they protect their home with a savage fury.
+}
+
+Masticator: {
+	DisplayName: Masticator
+	Entry: What once began as a small rodent quickly formed into a vile amalgamation with an insatiable appetite for flesh.
+}
+
+Mecromancer: {
+	DisplayName: Mechromancer
+	Entry: One of the greatest minds among the Goblin Army's arsenal. A Mechromancer’s tinkering talents are nearly unmatched.
+}
+
+GoldCrateMimic: {
+	DisplayName: Golden Crate Mimic
+	Entry: While you may not enjoy their aggressive nature, you do respect their eye for fashion...at least, until you take it.
+}
+
+IronCrateMimic: {
+	DisplayName: Iron Crate Mimic
+	Entry: A fisherman is not alone in their hunt for the sea's vast riches. A slippery octopus seems to have beaten you to the punch.
+}
+
+WoodCrateMimic: {
+	DisplayName: Wooden Crate Mimic
+	Entry: These inconspicuous imposters are rather suspicious. Exercise caution before approaching them for what lies within.
+}
+
+Molten_Core: {
+	DisplayName: Molten Core
+	Entry: A bubbling mess that escaped from within the meteorite. It appears to have basic spatial awareness and even some sentience. Perhaps it was chased by the invaders to the meteor?
+}
+
+DistressJelly: {
+	DisplayName: Distressed Jelly
+	Entry: A stray space rock has popped this Lunazoa's protective bubble. The stone prevents the bubble from reforming, causing them distress.
+}
+
+DreamlightJelly: {
+	DisplayName: Dreamlight Jelly
+	Entry: A tiny Lunazoa that emits a gorgeous, dreamlike green glow. A genetic mutation is the source of their chartreuse gleam, but also prevents them from ever maturing.
+}
+
+ExplodingMoonjelly: {
+	DisplayName: Moonlight Rupturer
+	Entry: At the end of a Lunazoa's lifespan, obedient migrative drifting evolves into aggression towards foreign entities.
+}
+
+MoonjellyGiant: {
+	DisplayName: Tethervolt Jelly
+	Entry: Mature male Lunazoas have electrical abilities that are far more developed than any other jellies, leading their territorial tendencies to be much more lethal.
+}
+
+MoonlightPreserver: {
+	DisplayName: Moonlight Preserver
+	Entry: A mature female Lunazoa carries infantile jellies within their membrane until they are mature enough to migrate on their own.
+}
+
+TinyLunazoa: {
+	DisplayName: Tiny Lunazoa
+	Entry: Tiny, docile jellies that float aimlessly with their smack, following their moonlit migratory patterns.
+}
+
+MycelialBotanist: {
+	DisplayName: Mycelial Botanist
+	Entry: A gardener's hobbies are not to be ridiculed. Get in the way of these naturalists, and you'll face bloom and doom.
+}
+
+OceanSlime: {
+	DisplayName: Coconut Slime
+	Entry: Look out from above! These tricky slimes reside on the shore, inconspicuously camouflaged as this familiar fruit.
+}
+
+Mineroid: {
+	DisplayName: Orbitite
+	Entry: This insignificant asteroid orbits a larger body, but will one day leave the nest and drift into the vast universe.
+}
+
+SamuraiHostile: {
+	DisplayName: Phantom Samurai
+	Entry: The spirit of a deadly warrior that once lived many moons ago. Punished for breaking his honor code, he now swears to defend what's left of his dynasty to seek redemption.
+}
+
 SamuraiPassive.DisplayName: Phantom Samurai
-PagodaGhostHostile.DisplayName: Disturbed Yuurei
+
+PagodaGhostHostile: {
+	DisplayName: Disturbed Yuurei
+	Entry: Guardians of an abandoned skyward shrine. Despite being long forgotten, they fight with surprising agility.
+}
+
 PagodaGhostPassive.DisplayName: Yuurei
-Phantom.DisplayName: Phantom
-PirateLobber.DisplayName: Pirate Lobber
-PlagueDoctor.DisplayName: Dark Alchemist
-Pokey_Body.DisplayName: Stactus
-Teratoma.DisplayName: Putroma
-BlossomHound.DisplayName: Blossom Hound
-Blubby.DisplayName: Blubby
-BriarInchworm.DisplayName: Briar Inchworm
-Briarmoth.DisplayName: Briarmoth
-ForestWraith.DisplayName: Glade Wraith
-Noxophyll.DisplayName: Noxophyll
-Reachman.DisplayName: Feral Shambler
-ReachObserver.DisplayName: Wildwood Watcher
-ReachSlime.DisplayName: Briarthorn Slime
-ThornStalker.DisplayName: Thorn Stalker
-ScreechOwl.DisplayName: Screech Owl
+
+Phantom: {
+	DisplayName: Phantom
+	Entry: A typical cave bat, transformed into pure darkness by ancient magicks. When night falls, they take to the skies to feed on those unfortunate enough to still be awake.
+}
+
+PirateLobber: {
+	DisplayName: Pirate Lobber
+	Entry: This pirate had found rolling to be a much more effective way to transport barrels along the deck. Funnily enough, it works pretty well on foes too!
+}
+
+PlagueDoctor: {
+	DisplayName: Dark Alchemist
+	Entry: These bringers of plague roam the shadows of the dungeon. Don't let yourself be caught taking one of their many workplaces strewn about, lest you suffer acid burns.
+}
+
+Pokey_Body: {
+	DisplayName: Stactus
+	Entry: Stack a pack of cactus, now you got a stactus. Kick the stactus over, now you got a cactus. What does it all mean? Not entirely sure.
+}
+
+Teratoma: {
+	DisplayName: Putroma
+	Entry: Made up of multiple organisms, they clump together with the rotting remains of other beasts to survive falling down the chasms that litter the corruption.
+}
+
+BlossomHound: {
+	DisplayName: Blossom Hound
+	Entry: Blooming elderbark carved into the shape of a hound, fueled by an insatiable need to feed and nurture the flowers on its body.
+}
+
+Blubby: {
+	DisplayName: Blubby
+	Entry: A plump larva native to the Briar. They are adorned in stiff yellow hairs along their back, and fatten up even more in preparation for metamorphosis.
+}
+
+BriarInchworm: {
+	DisplayName: Briar Inchworm
+	Entry: A long, thin worm that evolved to thrive in the murky mud of the Briar. It primarily feeds on the decomposed tall grasses found on the surface.
+}
+
+Briarmoth: {
+	DisplayName: Briarmoth
+	Entry: From the moment a Briarmoth leaves its cocoon, it must hide from predators. It uses its deep green wings to blend into the trees of the Briar.
+}
+
+ForestWraith: {
+	DisplayName: Glade Wraith
+	Entry: Despite the Briar's unnatural creeping presence, it has left its mark on nature just long enough for these vengeful spirits to call it home.
+}
+
+Noxophyll: {
+	DisplayName: Noxophyll
+	Entry: A fish with the ability to secrete a toxin that coats its scales. The only way to truly deter the smell is cooking it.
+}
+
+Reachman: {
+	DisplayName: Feral Shambler
+	Entry: The line between flora and fauna is blurred in the briar. The reanimated bones of adventurers act animalistic, despite it being composed mostly of plants.
+}
+
+ReachObserver: {
+	DisplayName: Wildwood Watcher
+	Entry: These bramble beasts nest in the leaves of elderbark trees, waiting for an invasive body to set foot within the Briar's central cavity.
+}
+
+ReachSlime: {
+	DisplayName: Briarthorn Slime
+	Entry: ""
+}
+
+ThornStalker: {
+	DisplayName: Thorn Stalker
+	Entry: ""
+}
+
+ScreechOwl: {
+	DisplayName: Screech Owl
+	Entry: ""
+}
+
 Sea_Mandrake.DisplayName: Sea Mandrake
 DeepspaceHopper.DisplayName: Shockhopper
 Skeleton_Brute.DisplayName: Skeleton Brute

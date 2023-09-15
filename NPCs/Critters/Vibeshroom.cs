@@ -37,13 +37,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.dontTakeDamageFromHostiles = false;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundMushroom,
-				new FlavorTextBestiaryInfoElement("This little guy's playlist consists of 80% lofi beats and hyperwave. Although some judge his taste, that won't stop him from dancing."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "UndergroundMushroom");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

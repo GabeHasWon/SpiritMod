@@ -55,13 +55,7 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 			NPC.DeathSound = SoundID.NPCDeath32;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("Despite its size, this sea dweller packs a punch! It uses its sharp teeth-like spikes to hunt for fish and keep away intruders."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Ocean");
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{

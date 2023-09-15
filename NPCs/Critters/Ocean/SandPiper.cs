@@ -41,12 +41,8 @@ public class SandPiper : ModNPC
 
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 	{
+		bestiaryEntry.AddInfo(this, "Ocean");
 		bestiaryEntry.UIInfoProvider = new CritterUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type]);
-
-		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-			new FlavorTextBestiaryInfoElement("A small, brave bird that patrols the shorelines looking for food uncovered by the waves"),
-		});
 	}
 
 	public override void OnSpawn(IEntitySource source)

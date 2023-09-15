@@ -43,15 +43,7 @@ namespace SpiritMod.NPCs.CrystalDrifter
 			BannerItem = ModContent.ItemType<Items.Banners.CrystalDrifterBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Rain,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Blizzard,
-				new FlavorTextBestiaryInfoElement("The howling winds of a blizzard give flight to this otherwise cumbersome entity composed of ice."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Rain Snow Blizzard");
 
 		public override void FindFrame(int frameHeight)
 		{

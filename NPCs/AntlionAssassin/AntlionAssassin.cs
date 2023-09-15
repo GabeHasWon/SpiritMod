@@ -44,13 +44,7 @@ namespace SpiritMod.NPCs.AntlionAssassin
 			BannerItem = ModContent.ItemType<Items.Banners.AntlionAssassinBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
-				new FlavorTextBestiaryInfoElement("These desert scavengers are lone wolves. They hunt antlions not to survive- but for sport, to establish dominance among their tribe."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Desert");
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

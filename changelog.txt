@@ -1,2 +1,3 @@
-﻿- Removed outdated translation loading for configs
-- 
+﻿- Improved all NPC bestiary entry codes
+- All bestiary entries are now localized
+- Modified Pirate Lobber's entry slightly: from "it works pretty well on foes as well!" to "it works pretty well on foes too!"

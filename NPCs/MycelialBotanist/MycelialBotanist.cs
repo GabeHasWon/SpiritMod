@@ -40,13 +40,7 @@ namespace SpiritMod.NPCs.MycelialBotanist
 			AIType = NPCID.Skeleton;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundMushroom,
-				new FlavorTextBestiaryInfoElement("A gardener's hobbies are not to be ridiculed. Get in the way of these naturalists, and you'll face bloom and doom."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "UndergroundMushroom");
 
 		public override bool PreAI()
 		{

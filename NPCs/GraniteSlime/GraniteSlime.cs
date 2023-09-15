@@ -43,13 +43,7 @@ namespace SpiritMod.NPCs.GraniteSlime
 			BannerItem = ModContent.ItemType<Items.Banners.GraniteSlimeBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Granite,
-				new FlavorTextBestiaryInfoElement("A gelatinous creature that's roamed the Granite caves for a long while, accumulating enough pebbles and dust to become one with the stone."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Granite");
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

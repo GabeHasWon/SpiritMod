@@ -45,6 +45,7 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
+			bestiaryEntry.AddInfo(this, "");
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				new FlavorTextBestiaryInfoElement("Don't be fooled by its humanoid form, this creature is anything but. This beast will stalk its prey to the furthest reaches of the briar for the perfect chance to strike."),
 			});

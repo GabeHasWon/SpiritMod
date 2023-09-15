@@ -45,14 +45,7 @@ namespace SpiritMod.NPCs.HellEater
 			BannerItem = ModContent.ItemType<Items.Banners.GluttonousDevourerBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheUnderworld,
-				new FlavorTextBestiaryInfoElement("You'd best avoid the searing hot jaws of these beasts. Devourers have a notoriously painful bite, but that makes it a sought after material for the bold."),
-			});
-		}
-
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheUnderworld");
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.09f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)

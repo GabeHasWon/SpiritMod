@@ -34,13 +34,7 @@ namespace SpiritMod.NPCs.Critters
 			AIType = NPCID.PinkJellyfish;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("Gorgeous jellies with a shimmering hood that resembles gold. Tragically, they do not handle captivity well."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Ocean");
 
 		public override void FindFrame(int frameHeight)
 		{

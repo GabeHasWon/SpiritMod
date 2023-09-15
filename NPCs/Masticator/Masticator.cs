@@ -38,13 +38,7 @@ namespace SpiritMod.NPCs.Masticator
 			BannerItem = ModContent.ItemType<Items.Banners.MasticatorBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
-				new FlavorTextBestiaryInfoElement("What once began as a small rodent quickly formed into a vile amalgamation with an insatiable appetite for flesh."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheCorruption");
 
 		int frame;
 		bool vomitPhase;

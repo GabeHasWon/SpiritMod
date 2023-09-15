@@ -34,13 +34,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.dontTakeDamageFromHostiles = false;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundDesert,
-				new FlavorTextBestiaryInfoElement("A tiny living crag that roams the underground desert. They tend to get anxious amidst the antlions' chaos, rarely retreating from their outcoves."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "UndergroundDesert");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

@@ -41,15 +41,7 @@ namespace SpiritMod.NPCs.Festerfly
 			BannerItem = ModContent.ItemType<Items.Banners.FesterflyBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			//bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[ModContent.NPCType<VileWasp>()], false);
-
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
-				new FlavorTextBestiaryInfoElement("The putrid scent of the corruption was bound to attract flies, and sure enough, it did. Now corrupted and ravenous, they follow the scent of any fresh meat they can find."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheCorruption");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

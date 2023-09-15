@@ -81,13 +81,7 @@ namespace SpiritMod.NPCs.GraniTech
 			BannerItem = ModContent.ItemType<Items.Banners.GranitecTurretBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Granite,
-				new FlavorTextBestiaryInfoElement("'G-TEK Incorporated would like you to know that we take no responsibility for any death or dismemberment caused by our protection turrets. They are simply there to guard what is ours. Thank you.'"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Granite");
 
 		private const int GroundDistance = 80; //Distance it'll scan to look for a valid wall
 

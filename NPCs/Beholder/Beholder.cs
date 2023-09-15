@@ -63,12 +63,7 @@ namespace SpiritMod.NPCs.Beholder
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
-			{
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Marble,
-				new FlavorTextBestiaryInfoElement("These beasts roam the marble pits found within the world, judging you with each one of their many eyes."),
-			});
-
+			bestiaryEntry.AddInfo(this, "Marble");
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 

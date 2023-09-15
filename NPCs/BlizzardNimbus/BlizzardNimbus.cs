@@ -36,15 +36,7 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 			BannerItem = ModContent.ItemType<Items.Banners.BlizzardNimbusBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Rain,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Blizzard,
-				new FlavorTextBestiaryInfoElement("Having frozen over, this nimbus angrily rains down shards of ice in an attempt to expel all of it. What it doesn't know is that it could just leave the cold environment."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Snow Rain Blizzard");
 
 		public override void AI()
 		{

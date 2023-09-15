@@ -53,14 +53,7 @@ namespace SpiritMod.NPCs.BlizzardBandit
 			BannerItem = ModContent.ItemType<Items.Banners.BlizzardBanditBanner>();
         }
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Blizzard,
-				new FlavorTextBestiaryInfoElement("Snowball fights can be fun, but these bandits don't play nice. They pack their snowballs around cores of ice, causing duress for any passerby."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Snow Blizzard");
 
 		public override bool PreAI()
         {

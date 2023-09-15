@@ -36,13 +36,7 @@ namespace SpiritMod.NPCs.GoblinGrenadier
 			BannerItem = ModContent.ItemType<Items.Banners.GoblinGrenadierBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Invasions.Goblins,
-				new FlavorTextBestiaryInfoElement("When spiky balls aren't cutting it, good old fashioned shrapnel-spitting explosives should do the trick."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Goblins");
 
 		public override void AI()
 		{

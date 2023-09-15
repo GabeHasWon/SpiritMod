@@ -41,13 +41,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
             AIType = NPCID.Firefly;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("A stray space rock has popped this Lunazoa's protective bubble. The stone prevents the bubble from reforming, causing them distress."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Sky");
 
 		public override bool? CanBeHitByProjectile(Projectile projectile) => projectile.minion ? false : null;
 

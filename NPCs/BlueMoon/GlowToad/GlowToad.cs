@@ -45,12 +45,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Psychedelic fungus grows upon the back of this toad. They are lost in delirium, as they find themselves snacking on it frequently."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

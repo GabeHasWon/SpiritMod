@@ -41,12 +41,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("At the end of a Lunazoa's lifespan, obedient migrative drifting evolves into aggression towards foreign entities."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void HitEffect(NPC.HitInfo hit)
         {

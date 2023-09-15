@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Humanizer.DateTimeHumanizeStrategy;
+using Microsoft.Xna.Framework;
 using SpiritMod.Items.Accessory;
 using System;
 using Terraria;
@@ -46,13 +47,7 @@ namespace SpiritMod.NPCs.Ghast
 			BannerItem = ModContent.ItemType<Items.Banners.GhastBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
-				new FlavorTextBestiaryInfoElement("A master of illusionary spiritual arts. They will summon violent apparitions in an attempt to distract and overwhelm you."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheDungeon");
 
 		int frame = 0;
 		bool aggroed = false;

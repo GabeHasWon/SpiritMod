@@ -40,14 +40,7 @@ namespace SpiritMod.NPCs.DeadeyeMarksman
             BannerItem = ModContent.ItemType<Items.Banners.DeadeyeMarksmanBanner>();
         }
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
-				new FlavorTextBestiaryInfoElement("Despite having one eye, this archer is deceptively adept compared to any other. Close your doors to this outsider!"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface NightTime");
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

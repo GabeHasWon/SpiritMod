@@ -39,13 +39,7 @@ namespace SpiritMod.NPCs.Bloater
 			BannerItem = ModContent.ItemType<Items.Banners.BloaterBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCrimson,
-				new FlavorTextBestiaryInfoElement("A particularly foul beast. It builds up pressure by sucking in air with the organs on its back and propels gastric fluids at anything it deems threatening."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheCrimson");
 
 		public override void FindFrame(int frameHeight)
 		{

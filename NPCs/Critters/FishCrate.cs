@@ -42,11 +42,7 @@ namespace SpiritMod.NPCs.Critters
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.UIInfoProvider = new CritterUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type]);
-
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("Stray cargo washed ashore from who knows where. Nobody seems to be coming for it, best to net it out of the water. Finders keepers after all."),
-			});
+			bestiaryEntry.AddInfo(this, "Ocean");
 		}
 
 		public override void AI()

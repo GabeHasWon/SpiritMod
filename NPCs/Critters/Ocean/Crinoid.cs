@@ -42,11 +42,7 @@ namespace SpiritMod.NPCs.Critters.Ocean
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.UIInfoProvider = new CritterUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type]);
-
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("These curious critters are closely related to starfish. They feed off of whatever sinks down to the bottom of the sea."),
-			});
+			bestiaryEntry.AddInfo(this, "Ocean");
 		}
 
 		public bool hasPicked = false;

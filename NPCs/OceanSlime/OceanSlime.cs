@@ -35,13 +35,7 @@ namespace SpiritMod.NPCs.OceanSlime
 			BannerItem = ModContent.ItemType<Items.Banners.CoconutSlimeBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("Look out from above! These tricky slimes reside on the shore, inconspicuously camouflaged as this familiar fruit."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Ocean");
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<Coconut>(6, 9);
 

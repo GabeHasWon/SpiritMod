@@ -42,13 +42,7 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 			BannerItem = ModContent.ItemType<Items.Banners.YureiBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("Guardians of an abandoned skyward shrine. Despite being long forgotten, they fight with surprising agility."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Sky");
 
 		public override void FindFrame(int frameHeight)
 		{

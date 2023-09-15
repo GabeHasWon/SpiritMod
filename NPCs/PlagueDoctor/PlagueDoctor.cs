@@ -36,13 +36,7 @@ namespace SpiritMod.NPCs.PlagueDoctor
 			BannerItem = ModContent.ItemType<Items.Banners.DarkAlchemistBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
-				new FlavorTextBestiaryInfoElement("These bringers of plague roam the shadows of the dungeon. Don't let yourself be caught taking one of their many workplaces strewn about, lest you suffer acid burns."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheDungeon");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

@@ -40,13 +40,7 @@ namespace SpiritMod.NPCs.MoltenCore
 			BannerItem = ModContent.ItemType<Items.Banners.MoltenCoreBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Meteor,
-				new FlavorTextBestiaryInfoElement("A bubbling mess that escaped from within the meteorite. It appears to have basic spatial awareness and even some sentience. Perhaps it was chased by the invaders to the meteor?"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Meteor");
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(24, 60 * 3);
 

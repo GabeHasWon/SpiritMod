@@ -55,14 +55,7 @@ namespace SpiritMod.NPCs.AstralAdventurer
 			BannerItem = ModContent.ItemType<Items.Banners.AstralAdventurerBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Meteor,
-				new FlavorTextBestiaryInfoElement("It appears you weren't the only one after the meteor. These sharpshooters have been tracking it for a while and will stop at nothing to siphon its precious resources."),
-			});
-		}
-
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Meteor");
 		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = (int)(NPC.lifeMax * balance);
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

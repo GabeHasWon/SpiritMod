@@ -40,12 +40,7 @@ namespace SpiritMod.NPCs.Mimic
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] 
-			{
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("A fisherman is not alone in their hunt for the sea's vast riches. A slippery octopus seems to have beaten you to the punch."),
-			});
-
+			bestiaryEntry.AddInfo(this, "Ocean");
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 

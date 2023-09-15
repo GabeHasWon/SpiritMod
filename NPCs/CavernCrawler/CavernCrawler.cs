@@ -38,13 +38,7 @@ namespace SpiritMod.NPCs.CavernCrawler
 			BannerItem = ModContent.ItemType<Items.Banners.CavernCrawlerBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-				new FlavorTextBestiaryInfoElement("Despite a timid outward appearance, these curious cave-dwellers should not be underestimated."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Underground");
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

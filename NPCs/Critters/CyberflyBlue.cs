@@ -42,13 +42,8 @@ namespace SpiritMod.NPCs.Critters
 			AIType = NPCID.Firefly;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Small digital wisps that flutter about cyberspace."),
-			});
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
-		}
 		public override void AI()
 		{
 			NPC.spriteDirection = NPC.direction;

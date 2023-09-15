@@ -35,14 +35,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			NPC.noTileCollide = true;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
-				new FlavorTextBestiaryInfoElement("End of dawns, bringer of nights, may the king of darkness rise to fight! May you cast the world to darkness and forever seal the light! O' king hear my cry, for may victory be yours tonight!"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface NightTime");
 
 		public override bool PreAI()
 		{

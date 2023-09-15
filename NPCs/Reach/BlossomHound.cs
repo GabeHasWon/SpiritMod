@@ -43,12 +43,7 @@ namespace SpiritMod.NPCs.Reach
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.BriarSurfaceBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Blooming elderbark carved into the shape of a hound, fueled by an insatiable need to feed and nurture the flowers on its body."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{

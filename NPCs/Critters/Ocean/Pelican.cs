@@ -70,11 +70,7 @@ public class Pelican : ModNPC
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 	{
 		bestiaryEntry.UIInfoProvider = new CritterUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type]);
-
-		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-			new FlavorTextBestiaryInfoElement("A large sea bird with a special beak to hold its prey. Startling it could cause the bird to drop what it's caught, but that would be mean."),
-		});
+		bestiaryEntry.AddInfo(this, "Ocean");
 	}
 
 	public override void OnSpawn(IEntitySource source)

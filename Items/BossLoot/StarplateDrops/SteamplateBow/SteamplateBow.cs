@@ -82,7 +82,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 
 				int heldType = ModContent.ProjectileType<SteamplateBowProj>();
 				if (player.ownedProjectileCounts[heldType] < 1)
-					Projectile.NewProjectile(Entity.Source_ShootWithAmmo(player), position, velocity, heldType, (int)(damage * .3f), knockback, player.whoAmI);
+					Projectile.NewProjectile(source, position, velocity, heldType, (int)(damage * .3f), knockback, player.whoAmI);
 			}
 			return false;
 		}

@@ -36,13 +36,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.dontCountMe = true;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
-				new FlavorTextBestiaryInfoElement("A once a beautiful specimen now grotesque and nasty thanks to the insidious veins of the Corruption. Truly tragic."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheCorruption");
 
 		public override void FindFrame(int frameHeight)
 		{

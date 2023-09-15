@@ -34,10 +34,11 @@ namespace SpiritMod.NPCs.Alien
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Eclipse,
-				new FlavorTextBestiaryInfoElement("In space, no one can hear you make pop culture references."),
-			});
+			bestiaryEntry.AddInfo(this, "Eclipse");
+			//bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+			//	BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Eclipse,
+			//	new FlavorTextBestiaryInfoElement("In space, no one can hear you make pop culture references."),
+			//});
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedMechBossAny && Main.eclipse && spawnInfo.Player.ZoneOverworldHeight ? 0.07f : 0;

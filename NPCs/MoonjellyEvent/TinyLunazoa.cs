@@ -41,12 +41,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("Tiny, docile jellies that float aimlessly with their smack, following their moonlit migratory patterns."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override bool? CanBeHitByProjectile(Projectile projectile) => !projectile.minion;
 

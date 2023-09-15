@@ -50,13 +50,7 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
             BannerItem = ModContent.ItemType<Items.Banners.PhantomSamuraiBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-				new FlavorTextBestiaryInfoElement("The spirit of a deadly warrior that once lived many moons ago. Punished for breaking his honor code, he now swears to defend what's left of his dynasty to seek redemption."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Sky");
 
 		float frameCounter = 0;
 		public override void FindFrame(int frameHeight)

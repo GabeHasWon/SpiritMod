@@ -42,13 +42,7 @@ namespace SpiritMod.NPCs.Ghast
 			NPC.lavaImmune = true;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
-				new FlavorTextBestiaryInfoElement("A convincing apparition summoned by Ghasts, made to do their bidding. It's merely a mirror image of the real deal, don't be fooled!"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheDungeon");
 
 		int frame = 0;
 		int moveSpeed = 0;

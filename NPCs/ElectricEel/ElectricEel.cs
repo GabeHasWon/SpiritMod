@@ -39,13 +39,7 @@ namespace SpiritMod.NPCs.ElectricEel
 			BannerItem = ModContent.ItemType<Items.Banners.ElectricEelBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("Utilizing the energy it builds up as it swims, this slender fish can release it in one big jolt, packing quite the punch."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Ocean");
 
 		public override void FindFrame(int frameHeight)
 		{

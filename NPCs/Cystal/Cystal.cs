@@ -46,13 +46,7 @@ namespace SpiritMod.NPCs.Cystal
 			BannerItem = ModContent.ItemType<Items.Banners.CystalBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
-				new FlavorTextBestiaryInfoElement("A ghastly creature that patrols the murky depths of the Corruption. Their crystalline bodies emit a disorienting, sense-obscuring frequency, so steer clear!"),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheCorruption");
 
 		public override void AI()
 		{

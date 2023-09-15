@@ -39,13 +39,7 @@ namespace SpiritMod.NPCs.FrozenSouls
 			AIType = NPCID.Firefly;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundSnow,
-				new FlavorTextBestiaryInfoElement("A curious memory of time past, somehow preserved by the deep icy tundra."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "UndergroundSnow");
 
 		float decisionValue = 0f;
 		float outcomeValue = 0f;

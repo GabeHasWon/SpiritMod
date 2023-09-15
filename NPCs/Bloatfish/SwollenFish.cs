@@ -49,13 +49,7 @@ namespace SpiritMod.NPCs.Bloatfish
 			BannerItem = ModContent.ItemType<Items.Banners.BloatfishBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Ocean,
-				new FlavorTextBestiaryInfoElement("In the past, these fish would inflate to intimidate predators. Now, however, they seem to have eaten their way so far up the food chain that they no longer need to."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Ocean");
 
 		public override void AI()
 		{

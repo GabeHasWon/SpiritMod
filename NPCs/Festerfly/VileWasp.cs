@@ -36,13 +36,7 @@ namespace SpiritMod.NPCs.Festerfly
 			AIType = NPCID.FlyingAntlion;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
-				new FlavorTextBestiaryInfoElement("These pests infest the innards of the abominable Festerfly. If you flex hard enough while one is biting you, it might explode."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheCorruption");
 
 		public override void FindFrame(int frameHeight)
 		{

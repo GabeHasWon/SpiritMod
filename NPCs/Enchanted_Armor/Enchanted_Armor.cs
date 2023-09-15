@@ -61,13 +61,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 			BannerItem = ModContent.ItemType<Items.Banners.DraugrBanner>();
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-				new FlavorTextBestiaryInfoElement("These suits of armor were given life by cursed souls connected to the dark sepulchers' treasure. Now they wait frozen and inanimate for a brave adventurer to wander inside."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Caverns");
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{

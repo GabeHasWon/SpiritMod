@@ -37,13 +37,7 @@ namespace SpiritMod.NPCs.Critters
 			NPC.noGravity = false;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
-				new FlavorTextBestiaryInfoElement("These creatures are the size of a quarter, and only ever appear during the night. They can only be observed dancing, and emitting a low calming glow."),
-			});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "NightTime");
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{
