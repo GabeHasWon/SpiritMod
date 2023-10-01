@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.Beachwear
 	[AutoloadEquip(EquipType.Legs)]
 	public class BikiniBottom : ModItem
 	{
-		// public override void SetStaticDefaults() => Tooltip.SetDefault("'Who needs armor anyways when you can run free in the sun!'");
+		public override bool IsLoadingEnabled(Mod mod) => false;
 
 		public override void SetDefaults()
 		{

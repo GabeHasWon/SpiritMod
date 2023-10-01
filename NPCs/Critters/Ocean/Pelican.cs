@@ -16,6 +16,8 @@ namespace SpiritMod.NPCs.Critters.Ocean;
 
 public class Pelican : ModNPC
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	/// <summary>
 	/// The item choices for this pelican. Set once on load, and unloaded.
 	/// </summary>

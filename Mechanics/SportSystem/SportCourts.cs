@@ -10,6 +10,8 @@ namespace SpiritMod.Mechanics.SportSystem;
 
 internal class SportCourts : ModSystem
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public List<Court> courts = new();
 
 	public static bool TryAddCourt(Point pos, CourtGameTracker tracker)

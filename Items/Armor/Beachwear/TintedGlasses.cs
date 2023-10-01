@@ -8,11 +8,9 @@ namespace SpiritMod.Items.Armor.Beachwear
 	[AutoloadEquip(EquipType.Head)]
 	public class TintedGlasses : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// Tooltip.SetDefault("'They help sell the look, so it's best to keep them on even when it's dark.'");
-			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
-		}
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{

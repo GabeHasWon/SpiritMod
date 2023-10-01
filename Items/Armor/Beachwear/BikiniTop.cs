@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Armor.Beachwear
 	[AutoloadEquip(EquipType.Body)]
 	public class BikiniTop : ModItem
 	{
-		// public override void SetStaticDefaults() => Tooltip.SetDefault("'Despite what one may expect, it really doesn't provide any sort of defense.'");
+		public override bool IsLoadingEnabled(Mod mod) => false;
 
 		public override void SetDefaults()
 		{
