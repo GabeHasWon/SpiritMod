@@ -10,6 +10,8 @@ namespace SpiritMod.Items.ByBiome.Ocean.Misc.VolleyballContent;
 [Sacrifice(1)]
 internal class VolleyballCourtChecker : ModItem
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override void SetDefaults()
 	{
 		Item.width = Item.height = 26;

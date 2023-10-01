@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Systems;
-using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -12,6 +11,8 @@ namespace SpiritMod.Tiles.Furniture.Ocean;
 
 public class Buoy : ModTile
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override void SetStaticDefaults()
 	{
 		Main.tileFrameImportant[Type] = true;

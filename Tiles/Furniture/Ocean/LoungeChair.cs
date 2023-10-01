@@ -13,6 +13,8 @@ namespace SpiritMod.Tiles.Furniture.Ocean;
 
 public class LoungeChair : ModTile
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override void SetStaticDefaults()
 	{
 		Main.tileSolid[Type] = false;

@@ -14,6 +14,8 @@ namespace SpiritMod.Items.ByBiome.Ocean.Misc.VolleyballContent;
 [Sacrifice(1)]
 internal class Volleyball : ModItem
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override void SetDefaults()
 	{
 		Item.width = Item.height = 26;
@@ -55,6 +57,8 @@ internal class Volleyball : ModItem
 
 internal class VolleyballProjectile : ModProjectile
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override string Texture => base.Texture.Replace("Projectile", "");
 
 	private ref float HitTimer => ref Projectile.ai[0];

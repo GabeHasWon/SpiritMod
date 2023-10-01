@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
@@ -16,7 +14,6 @@ namespace SpiritMod.Mounts.Minecarts.MarbleMinecart
 				player_y_offsets[i] = 10;
 
 			MountData.Minecart = true;
-			MountData.MinecartDirectional = true;
 
 			MountData.runSpeed = 17;
 			MountData.dashSpeed = 14;

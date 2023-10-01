@@ -10,6 +10,8 @@ namespace SpiritMod.NPCs.Critters.Ocean;
 
 public class SandPiper : ModNPC
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	private ref float State => ref NPC.ai[0];
 	private ref float Timer => ref NPC.ai[1];
 	private ref float WalkState => ref NPC.ai[2];
@@ -225,9 +227,9 @@ public class SandPiper : ModNPC
 [Sacrifice(1)]
 public class SandPiperItem : ModItem
 {
-	public override string Texture => base.Texture.Replace("Item", "");
+	public override bool IsLoadingEnabled(Mod mod) => false;
 
-	// public override void SetStaticDefaults() => DisplayName.SetDefault("Sand Piper");
+	public override string Texture => base.Texture.Replace("Item", "");
 
 	public override void SetDefaults()
 	{

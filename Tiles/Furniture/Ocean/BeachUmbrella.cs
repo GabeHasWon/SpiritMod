@@ -11,6 +11,8 @@ namespace SpiritMod.Tiles.Furniture.Ocean;
 
 public class BeachUmbrella : ModTile
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override void SetStaticDefaults()
 	{
 		Main.tileSolid[Type] = false;

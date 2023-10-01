@@ -73,11 +73,11 @@ internal class VendorGlobalNPC : GlobalNPC
 			shop.Add(new Item(ItemID.MiningShirt) { shopCustomPrice = 200000 });
 			shop.Add(new Item(ItemID.MiningPants) { shopCustomPrice = 200000 });
 
-			shop.Add<TintedGlasses>(Condition.InBeach);
+			/*shop.Add<TintedGlasses>(Condition.InBeach);
 			shop.Add<BeachTowel>(Condition.InBeach);
 			shop.Add<SwimmingTrunks>(Condition.InBeach);
 			shop.Add<BikiniTop>(Condition.InBeach);
-			shop.Add<BikiniBottom>(Condition.InBeach);
+			shop.Add<BikiniBottom>(Condition.InBeach);*/
 
 			shop.Add<CommandoHead>(SpiritConditions.VoyagerDown);
 			shop.Add<CommandoBody>(SpiritConditions.VoyagerDown);
@@ -106,7 +106,7 @@ internal class VendorGlobalNPC : GlobalNPC
 			shop.Add(new Item(ModContent.ItemType<SpiritItems.Placeable.MusicBox.NeonMusicBox>()) { shopCustomPrice = 50000 }, downedMechAny);
 			shop.Add<SpiritPainting>(downedMechAny);
 
-			shop.Add<Volleyball>(Condition.InBeach);
+			//shop.Add<Volleyball>(Condition.InBeach);
 		}
 		else if (shop.NpcType == NPCID.WitchDoctor)
 			shop.Add<SpiritItems.Sets.ClubSubclass.Macuahuitl>();

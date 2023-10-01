@@ -12,7 +12,7 @@ namespace SpiritMod.GlobalClasses
 	{
 		private static string _name = null;
 
-		public override void ModifyDisplayValue(InfoDisplay currentDisplay, ref string displayValue)
+		public override void ModifyDisplayParameters(InfoDisplay currentDisplay, ref string displayValue, ref string displayName, ref Color displayColor, ref Color displayShadowColor)
 		{
 			if (currentDisplay == InfoDisplay.LifeformAnalyzer)
 			{
@@ -37,10 +37,7 @@ namespace SpiritMod.GlobalClasses
 				if (_name is not null)
 					displayValue = $"({QuestManager.LocalizationValue("Quest")}) " + _name;
 			}
-		}
 
-		public override void ModifyDisplayColor(InfoDisplay currentDisplay, ref Color displayColor)
-		{
 			if (currentDisplay == InfoDisplay.LifeformAnalyzer && _name is not null)
 				displayColor = Color.Orange;
 		}

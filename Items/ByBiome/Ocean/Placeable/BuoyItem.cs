@@ -8,6 +8,8 @@ namespace SpiritMod.Items.ByBiome.Ocean.Placeable;
 [Sacrifice(1)]
 public class BuoyItem : ModItem
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override void SetDefaults()
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<Buoy>());
