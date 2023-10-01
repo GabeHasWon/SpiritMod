@@ -1,15 +1,15 @@
 ﻿using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Mechanics.QuestSystem;
-using SpiritMod.Utilities;
 using Terraria;
+using SpiritMod.Biomes;
 
 namespace SpiritMod.NPCs;
 
 internal class SpiritConditions
 {
-	public static Condition InBriar = new("Mods.SpiritMod.Condition.InBriar", Main.LocalPlayer.ZoneBriar);
-	public static Condition InAsteroids = new("Mods.SpiritMod.Condition.InAsteroids", Main.LocalPlayer.ZoneAsteroid);
-	public static Condition InSpirit = new("Mods.SpiritMod.Condition.InSpirit", Main.LocalPlayer.ZoneSpirit);
+	public static Condition InBriar = new("Mods.SpiritMod.Condition.InBriar", () => Main.LocalPlayer.InModBiome<BriarSurfaceBiome>() || Main.LocalPlayer.InModBiome<BriarUndergroundBiome>());
+	public static Condition InAsteroids = new("Mods.SpiritMod.Condition.InAsteroids", Main.LocalPlayer.InModBiome<AsteroidBiome>);
+	public static Condition InSpirit = new("Mods.SpiritMod.Condition.InSpirit", () => Main.LocalPlayer.InModBiome<SpiritSurfaceBiome>() || Main.LocalPlayer.InModBiome<SpiritUndergroundBiome>());
 	public static Condition VoyagerDown = new("Mods.SpiritMod.Conditions.VoyagerDown", () => MyWorld.downedRaider);
 	public static Condition ScarabDown = new("Mods.SpiritMod.Conditions.ScarabDown", () => MyWorld.downedScarabeus);
 	public static Condition MJWDown = new("Mods.SpiritMod.Conditions.ScarabDown", () => MyWorld.downedMoonWizard);

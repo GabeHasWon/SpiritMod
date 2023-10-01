@@ -1,5 +1,4 @@
 ﻿using SpiritMod.World;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,23 +8,18 @@ namespace SpiritMod.NPCs
 	{
 		public static void BuffImmune(int type, bool whipsToo = false)
 		{
-			NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
-			{
-				ImmuneToAllBuffsThatAreNotWhips = true,
-				ImmuneToWhips = whipsToo
-			};
-			NPCID.Sets.DebuffImmunitySets.Add(type, debuffData);
+			if (whipsToo)
+				NPCID.Sets.ImmuneToAllBuffs[type] = true;
+			else
+				NPCID.Sets.ImmuneToRegularBuffs[type] = true;
 		}
 
 		public static void BuffImmune(ModNPC npc, bool whipsToo = false) => BuffImmune(npc.Type, whipsToo);
 
 		public static void ImmuneTo(ModNPC npc, params int[] buffs)
 		{
-			NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
-			{
-				SpecificallyImmuneTo = buffs
-			};
-			NPCID.Sets.DebuffImmunitySets.Add(npc.Type, debuffData);
+			foreach (int buff in buffs)
+				NPCID.Sets.SpecificDebuffImmunity[npc.Type][buff] = true;
 		}
 
 		public static void ImmuneTo<T>(ModNPC npc, params int[] buffs) where T : ModBuff => ImmuneTo(npc, buffs.With(ModContent.BuffType<T>()));

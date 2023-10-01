@@ -27,7 +27,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.ApostleArmor
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Wind Spirits guide you, granting you double jumps\nMagic and ranged attacks occasionally spawn feathers to attack foes.";
-			player.hasJumpOption_Cloud = true;
+			//player.hasJumpOption_Cloud = true;
 			player.GetSpiritPlayer().talonSet = true;
 		}
 
