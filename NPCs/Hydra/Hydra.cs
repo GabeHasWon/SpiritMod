@@ -619,7 +619,7 @@ namespace SpiritMod.NPCs.Hydra
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item45 with { PitchVariance = 0.2f }, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact, Projectile.Center);
@@ -736,7 +736,7 @@ namespace SpiritMod.NPCs.Hydra
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.Poisoned, 200);
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item54 with { PitchVariance = 0.2f }, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.NPCDeath3 with { PitchVariance = 0.2f }, Projectile.Center);
@@ -792,7 +792,7 @@ namespace SpiritMod.NPCs.Hydra
 			}
 		}
 
-		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.NPCDeath3 with { PitchVariance = 0.2f }, Projectile.Center);
+		public override void OnKill(int timeLeft) => SoundEngine.PlaySound(SoundID.NPCDeath3 with { PitchVariance = 0.2f }, Projectile.Center);
 
 		public override bool PreDraw(ref Color lightColor)
 		{

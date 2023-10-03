@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Tides
 			num395 *= 0.2f;
 			Projectile.scale = num395 + 0.95f;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCDeath1, Projectile.Center);
 			Vector2 vector9 = Projectile.position;

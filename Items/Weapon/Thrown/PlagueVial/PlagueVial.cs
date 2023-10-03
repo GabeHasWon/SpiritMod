@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Weapon.Thrown.PlagueVial
 			Projectile.DamageType = DamageClass.Ranged;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item107, Projectile.Center);
 

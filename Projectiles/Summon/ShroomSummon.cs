@@ -163,7 +163,7 @@ namespace SpiritMod.Projectiles.Summon
 			target.AddBuff(ModContent.BuffType<Buffs.SummonTag.SummonTag5>(), 180, true);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			{
 				for (int i = 0; i < 40; i++) {

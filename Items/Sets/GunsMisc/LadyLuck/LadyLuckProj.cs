@@ -93,7 +93,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.LadyLuck
 			Projectile.velocity.Y -= 0.1f;
         }
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.CoinPickup, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);

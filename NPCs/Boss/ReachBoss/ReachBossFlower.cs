@@ -98,7 +98,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				}
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Grass, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);

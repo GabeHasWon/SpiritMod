@@ -56,7 +56,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<CryoCrush>(), 300);
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 50; i++)
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.IceGolem, Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f), 80, default, Main.rand.NextFloat(1.0f, 2.0f));

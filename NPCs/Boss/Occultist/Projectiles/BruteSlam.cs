@@ -65,7 +65,7 @@ namespace SpiritMod.NPCs.Boss.Occultist.Projectiles
 			AiTimer++;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (!Main.dedServ)
 			{

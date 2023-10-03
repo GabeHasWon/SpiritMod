@@ -127,7 +127,7 @@ namespace SpiritMod.Items.Weapon.Swung.Punching_Bag
 				Main.dust[index2].velocity *= 0.8f;
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int index1 = 4; index1 < 31; ++index1)
 			{

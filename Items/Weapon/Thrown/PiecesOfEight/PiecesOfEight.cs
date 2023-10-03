@@ -96,7 +96,7 @@ namespace SpiritMod.Items.Weapon.Thrown.PiecesOfEight
 			if (hit.Crit && !target.SpawnedFromStatue)
 				target.AddBuff(BuffID.Midas, 180);
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.CoinPickup, Projectile.Center);
 			for (int i = 0; i < 5; i++)

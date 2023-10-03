@@ -41,7 +41,7 @@ namespace SpiritMod.Projectiles.Magic
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Firework_Yellow);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<Wrath>(), Projectile.damage / 3 * 2, Projectile.knockBack, Projectile.owner, 0f, 0f);
 

@@ -30,7 +30,7 @@ namespace SpiritMod.Projectiles
 			Projectile.Center = new Vector2(player.Center.X + (player.direction > 0 ? 0 : 0), player.position.Y);   // I dont know why I had to set it to -60 so that it would look right   (change to -40 to 40 so that it's on the floor)
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 6; i++) {
 				float rotation = (float)(Main.rand.Next(0, 361) * (Math.PI / 180));

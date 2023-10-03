@@ -57,7 +57,7 @@ namespace SpiritMod.Projectiles.Bullet
 			return true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			ProjectileExtras.Explode(Projectile.whoAmI, 120, 120, delegate

@@ -151,7 +151,7 @@ namespace SpiritMod.Mechanics.BoonSystem.NemesisBoon
 			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center + ((Projectile.rotation - 1.57f).ToRotationVector2() * 70), Projectile.width, ref collisionPoint);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Vector2 vector9 = Projectile.position;
 			for (int num257 = 0; num257 < 25; num257++)

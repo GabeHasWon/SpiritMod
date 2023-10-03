@@ -192,7 +192,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item94 with { PitchVariance = 0.2f, Volume = 0.6f }, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.DD2_SkyDragonsFurySwing, Projectile.Center);

@@ -40,7 +40,7 @@ namespace SpiritMod.Projectiles.Glyph
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.velocity.Y -= hit.Knockback * target.knockBackResist;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 6; i++)
 			{

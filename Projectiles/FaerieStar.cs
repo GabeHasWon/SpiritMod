@@ -58,7 +58,7 @@ namespace SpiritMod.Projectiles
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 			for (int i = 0; i < 16; i++) {

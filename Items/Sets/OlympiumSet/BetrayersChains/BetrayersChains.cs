@@ -429,7 +429,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.BetrayersChains
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (phantomProj != null)
 				phantomProj.active = false;

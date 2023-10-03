@@ -25,7 +25,7 @@ namespace SpiritMod.Projectiles
 			Projectile.alpha = 255;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<Fire>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);

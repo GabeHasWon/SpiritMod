@@ -68,7 +68,7 @@ namespace SpiritMod.Projectiles.Glyph
 			else Projectile.Kill();
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (timeLeft <= 0)
 			{

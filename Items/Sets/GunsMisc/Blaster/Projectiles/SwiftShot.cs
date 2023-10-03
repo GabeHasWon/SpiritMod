@@ -33,7 +33,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				origin = Projectile.Center;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (timeLeft <= 0)
 				return;

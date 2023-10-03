@@ -125,7 +125,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.OrnamentStaff
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Vector2 spinPoint = new Vector2(0f, -3f).RotatedByRandom(MathHelper.Pi);
 			float maxRepeats = 18 * Projectile.scale;

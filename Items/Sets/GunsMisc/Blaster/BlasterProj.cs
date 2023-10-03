@@ -67,7 +67,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override bool ShouldUpdatePosition() => false;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Player player = Main.player[Projectile.owner];
 			float magnitude = 15f;

@@ -49,7 +49,7 @@ namespace SpiritMod.Projectiles.Magic
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.oldVelocity.X * 0.2f, Projectile.oldVelocity.Y * 0.2f);
 

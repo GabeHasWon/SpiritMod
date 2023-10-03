@@ -166,7 +166,7 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 3;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			ProjectileExtras.Explode(Projectile.whoAmI, 120, 120,
 				delegate {

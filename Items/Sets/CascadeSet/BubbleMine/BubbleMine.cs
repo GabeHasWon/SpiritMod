@@ -56,7 +56,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 			Projectile.penetrate = 2;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			for (float i = 0; i <= 6.28f; i+= Main.rand.NextFloat(0.5f,2))
@@ -131,7 +131,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 		}
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => Projectile.Kill();
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item54, Projectile.Center);
 			for (int i = 0; i < 20; i++) {

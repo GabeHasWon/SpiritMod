@@ -37,6 +37,6 @@ namespace SpiritMod.Projectiles
 		}
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffID.Frostburn, 240);
-		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.Item27);
+		public override void OnKill(int timeLeft) => SoundEngine.PlaySound(SoundID.Item27);
 	}
 }

@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Boss
 			}
 			return true;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 20; i++) {
 				Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, DustID.Dirt, 0, 60, 133);

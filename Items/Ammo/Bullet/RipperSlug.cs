@@ -77,7 +77,7 @@ namespace SpiritMod.Items.Ammo.Bullet
 			Projectile.velocity.Y += 0.05f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit8 with { PitchVariance = 0.2f, Volume = 0.3f }, Projectile.Center);
 

@@ -313,7 +313,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.LocustCrook
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 8; i++)
 				Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Plantera_Green, Scale: Main.rand.NextFloat(0.7f, 1)).noGravity = true;

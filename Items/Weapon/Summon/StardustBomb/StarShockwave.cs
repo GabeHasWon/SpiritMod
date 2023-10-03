@@ -45,7 +45,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			}
 			return false;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.netMode != NetmodeID.Server && Filters.Scene["ShockwaveTwo"].IsActive()) {
 				Filters.Scene["ShockwaveTwo"].Deactivate();

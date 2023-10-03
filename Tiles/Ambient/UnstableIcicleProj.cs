@@ -55,7 +55,7 @@ namespace SpiritMod.Tiles.Ambient
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 10 * (Variant + 1); i++)
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Ice, 0, 0, 100, default, Main.rand.NextFloat(.5f, 1f));

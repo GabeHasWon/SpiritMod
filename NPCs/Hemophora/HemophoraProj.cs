@@ -59,7 +59,7 @@ namespace SpiritMod.NPCs.Hemophora
             if (Main.rand.NextBool(2))
                 target.AddBuff(BuffID.Confused, 120);
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 20; i++)
             {

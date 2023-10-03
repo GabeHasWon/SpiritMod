@@ -95,7 +95,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.velocity = Vector2.Lerp(Projectile.velocity, desiredvel, 0.05f);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 10; i++)
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Blood);

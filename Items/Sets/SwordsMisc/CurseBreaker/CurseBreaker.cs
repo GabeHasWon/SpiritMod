@@ -433,7 +433,7 @@ namespace SpiritMod.Items.Sets.SwordsMisc.CurseBreaker
 			spriteBatch.Draw(glow, Projectile.Center - Main.screenPosition, null,
 				color * glowScale, 0, glow.Size() / 2, Projectile.scale * scale, SpriteEffects.None, 0f);
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (timeLeft > 4)
 			{

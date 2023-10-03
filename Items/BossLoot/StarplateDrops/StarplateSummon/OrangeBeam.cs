@@ -32,7 +32,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateSummon
 
 		public override void AI() => Projectile.rotation = Projectile.velocity.ToRotation();
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
 

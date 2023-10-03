@@ -163,7 +163,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.StarLance
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 			Vector2 vector9 = Projectile.position;

@@ -57,7 +57,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Archon.Projectiles
 				}));
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 8; ++i)
 				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, new Vector2(0, Main.rand.NextFloat(7f, 14f)).RotatedByRandom(MathHelper.TwoPi), ModContent.ProjectileType<MeteorEnchantment_Meteor>(), 20, 1f);

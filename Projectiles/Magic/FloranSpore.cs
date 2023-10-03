@@ -66,7 +66,7 @@ namespace SpiritMod.Projectiles.Magic
 				Projectile.Kill();
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 20; i++) {
 				int d = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, DustID.JungleGrass, (float)(Main.rand.Next(8) - 4), (float)(Main.rand.Next(8) - 4), 133);

@@ -146,7 +146,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.OldCross
 
 		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI) => behindNPCs.Add(index);
 
-		public override void Kill(int timeLeft) => MakeDust();
+		public override void OnKill(int timeLeft) => MakeDust();
 
 		public void MakeDust()
 		{

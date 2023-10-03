@@ -115,7 +115,7 @@ namespace SpiritMod.Projectiles.Bullet
             return false;
         }
 
-		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
+		public override void OnKill(int timeLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
         {

@@ -64,7 +64,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			}
 			return false;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			//Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
 			Vector2 usePos = Projectile.position; 

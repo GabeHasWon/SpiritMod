@@ -47,7 +47,7 @@ namespace SpiritMod.NPCs.Reach
 				Dust.NewDustPerfect(Projectile.Center, ModContent.DustType<FloranDust2>());
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 		}

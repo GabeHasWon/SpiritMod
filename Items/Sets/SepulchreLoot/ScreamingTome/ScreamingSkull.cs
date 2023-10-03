@@ -157,7 +157,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCDeath3, Projectile.Center); 
 

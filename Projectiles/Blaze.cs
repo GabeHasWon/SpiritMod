@@ -55,7 +55,7 @@ namespace SpiritMod.Projectiles
 			target.immune[Projectile.owner] = 10;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item74, Projectile.Center);
 			ProjectileExtras.Explode(Projectile.whoAmI, 80, 80,

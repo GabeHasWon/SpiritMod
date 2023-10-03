@@ -61,7 +61,7 @@ namespace SpiritMod.Projectiles.Bullet
 			float sineAdd = (float)Math.Sin(0) + 3;
 			Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Effects/Masks/Extra_49", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, (Projectile.Center - Main.screenPosition), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + .3f), SpriteEffects.None, 0f);
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			ProjectileExtras.Explode(Projectile.whoAmI, 60, 60, delegate
 			{

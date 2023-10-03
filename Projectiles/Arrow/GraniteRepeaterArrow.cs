@@ -149,7 +149,7 @@ namespace SpiritMod.Projectiles.Arrow
 				proj.netUpdate = true;
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 

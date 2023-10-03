@@ -130,7 +130,7 @@ namespace SpiritMod.Projectiles.Bullet.Crimbine
 			return true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int k = 0; k < 26; k++)
 				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Blood, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);

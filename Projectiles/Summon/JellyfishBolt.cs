@@ -56,7 +56,7 @@ namespace SpiritMod.Projectiles.Summon
             }
         }
 
-		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
+		public override void OnKill(int timeLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

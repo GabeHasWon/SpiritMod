@@ -32,7 +32,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.velocity.Y -= 0.015f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item54, Projectile.Center);
 			for (int i = 0; i < 20; i++)

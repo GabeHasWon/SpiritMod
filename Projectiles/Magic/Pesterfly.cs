@@ -77,7 +77,7 @@ namespace SpiritMod.Projectiles.Magic
 			return true;
 		}
 
-		public override void Kill(int timeLeft) //on kill effect I literally stole from another projectile in the mod verbatim
+		public override void OnKill(int timeLeft) //on kill effect I literally stole from another projectile in the mod verbatim
 		{
 			SoundEngine.PlaySound(SoundID.Critter, Projectile.Center);
 			for (int i = 0; i < 10; i++) {

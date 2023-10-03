@@ -45,7 +45,7 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int k = 0; k < 3; k++) {
 				int d = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.DungeonSpirit, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f);

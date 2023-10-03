@@ -53,7 +53,7 @@ namespace SpiritMod.Projectiles.Summon.Zones
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos) => ZoneHelper.ZoneAdditiveDraw(spriteBatch, Projectile, new Color(194, 21, 85), "SpiritMod/Projectiles/Summon/Zones/HealingZone");
 		public override bool PreDraw(ref Color lightColor) => ZoneHelper.ZonePreDraw(Projectile, Mod.Assets.Request<Texture2D>("Projectiles/Summon/Zones/HealingZone_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 30; k++)
             {

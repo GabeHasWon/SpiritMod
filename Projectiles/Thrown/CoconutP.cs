@@ -42,7 +42,7 @@ namespace SpiritMod.Projectiles.Thrown
 				cracky = true;
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit7, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);

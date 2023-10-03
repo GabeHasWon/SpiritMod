@@ -88,7 +88,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 			Projectile.alpha = (int)MathHelper.Max(Projectile.alpha - 10, 0);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			//Main.PlaySound(SoundID.Item10, projectile.Center);
 

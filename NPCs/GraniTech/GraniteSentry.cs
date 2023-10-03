@@ -493,7 +493,7 @@ namespace SpiritMod.NPCs.GraniTech
 			});
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 14; i++)
 				ParticleHandler.SpawnParticle(new GranitechParticle(Projectile.Center, Projectile.oldVelocity.RotatedByRandom(MathHelper.Pi / 12) * Main.rand.NextFloat(0.66f),

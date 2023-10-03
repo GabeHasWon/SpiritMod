@@ -55,7 +55,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item54, Projectile.Center);
 			MakeDust(Main.rand.Next(10, 14), 3, 1.5f, 140, 9);

@@ -59,7 +59,7 @@ namespace SpiritMod.Projectiles
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int k = 0; k < 3; k++) {
 				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.GrassBlades, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);

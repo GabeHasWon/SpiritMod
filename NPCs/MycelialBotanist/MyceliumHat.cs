@@ -117,6 +117,6 @@ namespace SpiritMod.NPCs.MycelialBotanist
 			return true;
 		}
 
-		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
+		public override void OnKill(int timeLeft) => SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 	}
 }

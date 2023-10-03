@@ -82,7 +82,7 @@ namespace SpiritMod.NPCs.FallenAngel
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 			for (int i = 0; i < 10; i++) {

@@ -27,7 +27,7 @@ namespace SpiritMod.Projectiles.Hostile
 			Projectile.penetrate = 1;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			for (int k = 0; k < 15; k++) {

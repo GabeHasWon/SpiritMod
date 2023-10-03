@@ -26,7 +26,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 			AIType = ProjectileID.Bullet;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int I = 0; I < 8; I++)
 				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Blood, Projectile.oldVelocity.X * 0.2f, Projectile.oldVelocity.Y * 0.2f);

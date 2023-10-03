@@ -202,7 +202,7 @@ internal class VolleyballProjectile : ModProjectile
 		return false;
 	}
 
-	public override void Kill(int timeLeft)
+	public override void OnKill(int timeLeft)
 	{
 		int item = Item.NewItem(Projectile.GetSource_Death(), Projectile.Center - new Vector2(0, 2), ModContent.ItemType<Volleyball>());
 		Main.item[item].velocity = Vector2.Zero;

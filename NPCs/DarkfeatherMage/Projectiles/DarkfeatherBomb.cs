@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
             Main.dust[num623].velocity = Projectile.velocity;
             Main.dust[num623].scale = MathHelper.Clamp(1.6f, .9f, 10 / Projectile.ai[0]);
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             int num = 0;
 			if (Projectile.friendly)

@@ -34,7 +34,7 @@ namespace SpiritMod.Projectiles.Arrow
 				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(target.Center) * 10f, .08f);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 8; i++)
 			{

@@ -64,7 +64,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
 				//spriteBatch.Draw(tex, projectile.oldPos[k] + projectile.Size / 2 - Main.screenPosition, null, color, projectile.rotation, tex.Size() / 2, scale, default, default);
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
         {
 			float speed = Small ? 1.25f : 3;
             for (int k = 0; k < 18; k++)

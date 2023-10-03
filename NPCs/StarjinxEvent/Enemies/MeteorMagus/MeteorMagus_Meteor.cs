@@ -128,7 +128,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 			sb.Draw(telegraphTex, projectile.Center - Main.screenPosition, null, color * opacity, projectile.velocity.ToRotation(), origin, scale, SpriteEffects.None, 0);*/
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.netMode != NetmodeID.Server)
 			{

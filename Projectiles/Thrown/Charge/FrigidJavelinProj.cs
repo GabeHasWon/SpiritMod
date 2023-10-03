@@ -24,7 +24,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 
 		public override void HitNPC(NPC target, NPC.HitInfo hit, int damage) => target.AddBuff(BuffID.Frostburn, 180, true);
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (!Released)
 				return;

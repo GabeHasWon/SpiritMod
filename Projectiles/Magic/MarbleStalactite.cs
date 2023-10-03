@@ -119,7 +119,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override bool ShouldUpdatePosition() => !Collided;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 			for (int k = 0; k < 6; k++)

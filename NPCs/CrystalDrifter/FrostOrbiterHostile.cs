@@ -59,7 +59,7 @@ namespace SpiritMod.NPCs.CrystalDrifter
 		}
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 			=> target.AddBuff(BuffID.Frostburn, 120);
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			const int DustType = 51;
 

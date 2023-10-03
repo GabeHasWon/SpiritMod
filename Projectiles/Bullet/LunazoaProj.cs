@@ -79,7 +79,7 @@ namespace SpiritMod.Projectiles.Bullet
 					break;
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item122 with { PitchVariance = 0.2f, Volume = 0.5f }, Projectile.Center);
 			Vector2 vector9 = Projectile.position;

@@ -43,7 +43,7 @@ namespace SpiritMod.Projectiles.Arrow
 				target.AddBuff(ModContent.BuffType<StarFlame>(), 200, true);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 			int dusttype = purple ? 223 : 180;

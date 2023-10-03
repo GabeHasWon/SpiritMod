@@ -78,7 +78,7 @@ namespace SpiritMod.Projectiles.Magic
 			if (distance1 < 53 && player.statLife <= player.statLifeMax / 3)
 				player.AddBuff(BuffID.RapidHealing, 300);
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 10; i++)
 			{

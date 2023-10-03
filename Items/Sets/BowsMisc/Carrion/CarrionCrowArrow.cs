@@ -162,7 +162,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.Carrion
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Zombie53 with { PitchVariance = 0.3f }, Projectile.Center);
 			if (Projectile.penetrate <= 4)

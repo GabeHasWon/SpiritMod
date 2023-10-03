@@ -149,7 +149,7 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Counter >= CounterMax)
 			{

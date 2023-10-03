@@ -41,7 +41,7 @@ namespace SpiritMod.Projectiles
 				target.AddBuff(ModContent.BuffType<StackingFireBuff>(), 180);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 			=> Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 	}
 }

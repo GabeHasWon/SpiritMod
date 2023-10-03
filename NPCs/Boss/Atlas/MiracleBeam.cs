@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			Projectile.velocity.X *= 1.005f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 

@@ -28,7 +28,7 @@ namespace SpiritMod.Projectiles
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Grass, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 		}

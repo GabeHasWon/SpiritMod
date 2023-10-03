@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.HeavenFleet
 			Projectile.velocity.Y += .016f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if(timeLeft > 0) //Dying through pierce/tile collision rather than naturally
 			{

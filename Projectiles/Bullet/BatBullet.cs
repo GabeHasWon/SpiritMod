@@ -26,7 +26,7 @@ namespace SpiritMod.Projectiles.Bullet
 			Projectile.tileCollide = false;
 			Projectile.timeLeft = 200;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			for (int num623 = 0; num623 < 25; num623++) {

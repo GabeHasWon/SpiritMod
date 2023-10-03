@@ -173,7 +173,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 			Projectile.penetrate = 1;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 			for (int i = 0; i < 8; i++)

@@ -64,7 +64,7 @@ namespace SpiritMod.Projectiles.Summon.CimmerianStaff
 			}
 		}
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
             DustHelper.DrawStar(Projectile.Center, 272, pointAmount: 5, mainSize: .9425f, dustDensity: 2, dustSize: .5f, pointDepthMult: 0.3f, noGravity: true);
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);

@@ -61,7 +61,7 @@ namespace SpiritMod.Items.Accessory.UnstableTeslaCoil
 				Projectile.velocity = new Vector2(randomSpeed.X * speed, randomSpeed.Y * speed);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			int num = 22;
 			for (int index1 = 0; index1 < num; ++index1)

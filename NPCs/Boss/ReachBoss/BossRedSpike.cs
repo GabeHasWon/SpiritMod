@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxvel;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Grass, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);

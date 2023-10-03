@@ -166,7 +166,7 @@ namespace SpiritMod.Projectiles.Thrown
 			return WorldGen.SolidOrSlopedTile(Main.tile[(bottomLeft / 16).ToPoint()]);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (hitNPCIndex > -1)
 				return;

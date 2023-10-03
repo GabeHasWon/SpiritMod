@@ -53,7 +53,7 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			int n = 2;
 			int deviation = Main.rand.Next(0, 180);

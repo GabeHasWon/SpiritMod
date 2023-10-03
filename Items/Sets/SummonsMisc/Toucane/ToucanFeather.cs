@@ -44,7 +44,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.Toucane
 				Lighting.AddLight(Projectile.Center, Color.Red.ToVector3() / 2);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.netMode != NetmodeID.Server)
 				SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);

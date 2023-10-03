@@ -37,7 +37,7 @@ namespace SpiritMod.Projectiles.Returning
 				target.AddBuff(ModContent.BuffType<VineTrap>(), 180);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 40; i++)
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.JungleGrass, Main.rand.Next(-4, 5), Main.rand.Next(-4, 5), 133);

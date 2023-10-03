@@ -108,7 +108,7 @@ namespace SpiritMod.Projectiles.Summon.LaserGate
 			}
 		}
 
-		public override void Kill(int timeLeft) => ClearPairs();
+		public override void OnKill(int timeLeft) => ClearPairs();
 
 		public override void PostDraw(Color lightColor)
 		{

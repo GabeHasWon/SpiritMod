@@ -41,7 +41,7 @@ namespace SpiritMod.Projectiles.Thrown
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			ProjectileExtras.Explode(Projectile.whoAmI, 120, 45, delegate
 			{

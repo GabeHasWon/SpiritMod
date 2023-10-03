@@ -96,7 +96,7 @@ namespace SpiritMod.Projectiles.Glyph
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info) => Projectile.penetrate--;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (timeLeft <= 0)
 			{

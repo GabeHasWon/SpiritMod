@@ -88,7 +88,7 @@ namespace SpiritMod.NPCs.BottomFeeder
 			return true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.netMode != NetmodeID.Server)
 				SoundEngine.PlaySound(SoundID.NPCHit1, Projectile.Center);

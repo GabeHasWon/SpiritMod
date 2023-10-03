@@ -56,7 +56,7 @@ namespace SpiritMod.Projectiles.Magic
 			return new Color(255 - (int)num * 5, 255 - (int)num * 5, 255 - (int)num * 5, 100 - (int)num * 3);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 			// Vector2 vector9 = projectile.position;

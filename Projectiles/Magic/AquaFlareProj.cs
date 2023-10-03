@@ -203,7 +203,7 @@ namespace SpiritMod.Projectiles.Magic
 			if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.OnFire, 180);
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 			for (int k = 0; k < 16; k++) {

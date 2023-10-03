@@ -60,7 +60,7 @@ namespace SpiritMod.NPCs.Orbitite
 			}
 
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			float maxDistance = 500f; // max distance to search for a player
 			int index = -1;

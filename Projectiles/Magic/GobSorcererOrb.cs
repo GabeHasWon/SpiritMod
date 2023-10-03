@@ -54,7 +54,7 @@ namespace SpiritMod.Projectiles.Magic
 
         public override Color? GetAlpha(Color lightColor) => new Color(211, 181, 255, 100);
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
             SoundEngine.PlaySound(SoundID.DD2_WitherBeastHurt, Projectile.Center);
             for (int i = 0; i < 3; i++)

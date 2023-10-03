@@ -33,7 +33,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		public override bool CanHitPlayer(Player target) => Projectile.ai[1] >= 120;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height); 
 			for (int i = 0; i < 10; i++) {

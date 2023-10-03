@@ -63,7 +63,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3 with { PitchVariance = 0.4f }, Projectile.Center);
 			Vector2 spinningpoint1 = ((float)Main.rand.NextDouble() * 6.283185f).ToRotationVector2();

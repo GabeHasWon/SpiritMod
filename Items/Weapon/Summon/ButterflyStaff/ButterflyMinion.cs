@@ -93,7 +93,7 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 
 		public override Color? GetAlpha(Color lightColor) => Color.White * Projectile.Opacity;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			DustHelper.DrawStar(Projectile.Center, 223, pointAmount: 5, mainSize: 1.6425f, dustDensity: 1.5f, dustSize: .5f, pointDepthMult: 0.3f, noGravity: true);
 			for (int i = 0; i < 15; i++)

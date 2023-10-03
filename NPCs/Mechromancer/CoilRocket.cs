@@ -114,7 +114,7 @@ namespace SpiritMod.NPCs.Mechromancer
 			target.AddBuff(BuffID.OnFire, 300);
 			Projectile.Kill();
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			for (int i = 0; i < 40; i++) {

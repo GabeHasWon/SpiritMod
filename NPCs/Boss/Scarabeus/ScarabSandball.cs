@@ -23,7 +23,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			Projectile.scale = 0.75f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
 			for (int i = 0; i < 10; i++)

@@ -35,7 +35,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void AI() => Projectile.rotation += 0.2f;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 5; i++) {
 				int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.t_Honey);

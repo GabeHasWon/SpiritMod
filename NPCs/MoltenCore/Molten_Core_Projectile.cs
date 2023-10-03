@@ -41,7 +41,7 @@ namespace SpiritMod.NPCs.MoltenCore
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int index = 0; index < 5; ++index)
 			{

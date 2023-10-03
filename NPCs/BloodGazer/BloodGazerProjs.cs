@@ -43,7 +43,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit8 with { PitchVariance = 0.8f, Volume = 0.3f }, Projectile.Center);
 			for (int i = 0; i < 20; i++) {
@@ -266,7 +266,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.netMode != NetmodeID.Server)
 				SoundEngine.PlaySound(SoundID.NPCDeath22, Projectile.Center);

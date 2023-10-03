@@ -89,7 +89,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
             Main.spriteBatch.Draw(ripple, new Vector2(xpos, ypos), new Microsoft.Xna.Framework.Rectangle?(), new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), Projectile.rotation, ripple.Size() / 2f, .5f, spriteEffects, 0);
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             float maxDistance = 1000f; // max distance to search for a player
             int index = -1;

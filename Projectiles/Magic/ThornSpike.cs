@@ -67,7 +67,7 @@ namespace SpiritMod.Projectiles.Magic
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 5; i++) {
 				float goreScale = 0.01f * Main.rand.Next(20, 70);

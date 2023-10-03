@@ -38,7 +38,7 @@ namespace SpiritMod.Projectiles.Thrown
 			}
 		}
 
-		public override void Kill(int timeLeft) => ImpactFX();
+		public override void OnKill(int timeLeft) => ImpactFX();
 
 		private void ImpactFX()
 		{

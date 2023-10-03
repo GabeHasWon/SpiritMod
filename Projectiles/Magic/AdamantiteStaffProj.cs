@@ -43,7 +43,7 @@ namespace SpiritMod.Projectiles.Magic
 			return true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item110, Projectile.Center);
 			float maxprojs = 8;

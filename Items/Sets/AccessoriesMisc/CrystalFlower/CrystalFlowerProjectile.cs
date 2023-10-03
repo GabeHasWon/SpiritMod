@@ -39,7 +39,7 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower
 			Projectile.alpha += 255 / fadeoutTime;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (timeLeft <= 0)
 				return;

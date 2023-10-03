@@ -133,7 +133,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.GraveyardTome
 			Movement.Direction = reader.ReadInt32();
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (!Main.dedServ)
 			{

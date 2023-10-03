@@ -366,7 +366,7 @@ namespace SpiritMod.NPCs.HauntedTome
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCDeath3, Projectile.Center);
 
@@ -500,6 +500,6 @@ namespace SpiritMod.NPCs.HauntedTome
 					0);
 		}
 
-		public override void Kill(int timeLeft) => Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity, Mod.Find<ModGore>("HauntedPaperPlane_gore").Type);
+		public override void OnKill(int timeLeft) => Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity, Mod.Find<ModGore>("HauntedPaperPlane_gore").Type);
 	}
 }

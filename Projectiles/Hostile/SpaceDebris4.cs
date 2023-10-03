@@ -60,7 +60,7 @@ namespace SpiritMod.Projectiles.Hostile
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int num625 = 0; num625 < 2; num625++) {
 				float scaleFactor10 = 0.33f;

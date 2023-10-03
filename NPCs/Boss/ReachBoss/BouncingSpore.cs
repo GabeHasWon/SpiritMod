@@ -59,7 +59,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				target.AddBuff(BuffID.Poisoned, 180);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int j = 0; j < 2; j++)
 			{

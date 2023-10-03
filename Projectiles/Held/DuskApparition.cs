@@ -51,7 +51,7 @@ namespace SpiritMod.Projectiles.Held
 		{
 			return new Color(131, 61, 179, 100);
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
 			Vector2 vector9 = Projectile.position;

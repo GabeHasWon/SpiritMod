@@ -98,7 +98,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 			}
 		}
 
-		public override void Kill(int timeLeft) => SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f }, Projectile.Center);
+		public override void OnKill(int timeLeft) => SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f }, Projectile.Center);
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => SpawnArrows(Projectile.GetSource_OnHit(target));
 

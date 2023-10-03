@@ -64,7 +64,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 			dust.fadeIn = .75f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/rumboom"), Projectile.Center);
 			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);

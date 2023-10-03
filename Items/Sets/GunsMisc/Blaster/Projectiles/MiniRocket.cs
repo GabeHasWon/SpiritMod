@@ -78,7 +78,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			ProjectileExtras.Explode(Projectile.whoAmI, 80, 80, delegate
 			{

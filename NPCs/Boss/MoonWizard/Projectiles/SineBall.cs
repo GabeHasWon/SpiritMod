@@ -90,6 +90,6 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             Main.EntitySpriteDraw(Terraria.GameContent.TextureAssets.Extra[49].Value, (Projectile.Center - Main.screenPosition), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + .6f), SpriteEffects.None, 0);
         }
 
-		public override void Kill(int timeLeft) => DustHelper.DrawDustImage(Projectile.Center, 226, 0.15f, "SpiritMod/Effects/DustImages/MoonSigil3", 1f);
+		public override void OnKill(int timeLeft) => DustHelper.DrawDustImage(Projectile.Center, 226, 0.15f, "SpiritMod/Effects/DustImages/MoonSigil3", 1f);
 	}
 }

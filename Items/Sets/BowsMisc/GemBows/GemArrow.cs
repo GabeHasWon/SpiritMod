@@ -66,7 +66,7 @@ namespace SpiritMod.Items.Sets.BowsMisc.GemBows
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int index = 0; index < 5; ++index)
 			{

@@ -40,7 +40,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position.X, Projectile.position.Y, 14f, 0f, ModContent.ProjectileType<SunBlast>(), Projectile.damage, 0f, Projectile.owner, 0f, 0f);
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position.X, Projectile.position.Y, -14f, 0f, ModContent.ProjectileType<SunBlast>(), Projectile.damage, 0f, Projectile.owner, 0f, 0f);

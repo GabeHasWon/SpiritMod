@@ -37,7 +37,7 @@ namespace SpiritMod.Projectiles.Magic
 			return true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position.X, Projectile.position.Y, 30f, 0f, ModContent.ProjectileType<CursedFlames>(), Projectile.damage, 0f, Projectile.owner, 0f, 0f);
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.position.X, Projectile.position.Y, -30f, 0f, ModContent.ProjectileType<CursedFlames>(), Projectile.damage, 0f, Projectile.owner, 0f, 0f);

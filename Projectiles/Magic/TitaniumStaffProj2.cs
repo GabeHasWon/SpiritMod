@@ -28,7 +28,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.timeLeft = 120;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 10; i++) {
 				int num = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.SilverCoin, 0f, -2f, 0, default, .9f);

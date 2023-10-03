@@ -24,7 +24,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 				Dust.NewDustDirect(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 0, default, 1.85f).noGravity = true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (!Released)
 				return;

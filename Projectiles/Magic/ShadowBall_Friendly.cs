@@ -27,7 +27,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Wrath>(), (int)(Projectile.damage), 0, Main.myPlayer);
 

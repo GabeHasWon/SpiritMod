@@ -22,7 +22,7 @@ namespace SpiritMod.Projectiles
 			Projectile.friendly = true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			int n = 8;
 			int deviation = Main.rand.Next(0, 300);

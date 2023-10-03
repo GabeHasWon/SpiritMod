@@ -51,7 +51,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 			else if (++Projectile.ai[1] > 20)
 				Projectile.velocity.Y += 0.25f;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 10; i++) {
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.PlatinumCoin);

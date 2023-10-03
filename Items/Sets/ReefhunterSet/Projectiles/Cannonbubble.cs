@@ -104,7 +104,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 
 		private float GetSpeedRatio(float exponent = 1) => (float)Math.Pow(MathHelper.Min(Projectile.velocity.Length() / MAX_SPEED, 1), exponent);
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			int dustCount = Main.rand.Next(7, 12);
 			SoundEngine.PlaySound(SoundID.Item54, Projectile.Center);

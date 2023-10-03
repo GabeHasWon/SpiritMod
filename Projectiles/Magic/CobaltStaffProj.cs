@@ -68,7 +68,7 @@ namespace SpiritMod.Projectiles.Magic
 				Main.dust[index2].noLight = false;
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);

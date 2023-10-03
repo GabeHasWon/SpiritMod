@@ -274,7 +274,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SpiritMod.tremorTime = (int)(charge * 0.66f);
 			SoundEngine.PlaySound(SoundID.Item70, Projectile.Center);

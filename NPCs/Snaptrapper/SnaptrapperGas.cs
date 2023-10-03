@@ -43,7 +43,7 @@ namespace SpiritMod.NPCs.Snaptrapper
             if (Main.rand.NextBool(2))
                 target.AddBuff(BuffID.Poisoned, 300);
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int num621 = 0; num621 < 2; num621++)
             {

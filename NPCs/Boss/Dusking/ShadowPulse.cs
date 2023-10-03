@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			int num624 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 3f);
 			Main.dust[num624].velocity *= 0f;

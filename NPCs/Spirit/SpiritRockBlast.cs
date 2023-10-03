@@ -20,7 +20,7 @@ namespace SpiritMod.NPCs.Spirit
 			Projectile.height = 28;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 

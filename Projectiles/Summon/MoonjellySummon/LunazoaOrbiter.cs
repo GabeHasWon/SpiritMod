@@ -78,7 +78,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			NPC mainTarget = Projectile.OwnerMinionAttackTargetNPC;
 			if (mainTarget != null && mainTarget.CanBeChasedBy(Projectile))

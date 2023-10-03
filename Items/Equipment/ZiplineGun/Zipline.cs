@@ -157,7 +157,7 @@ namespace SpiritMod.Items.Equipment.ZiplineGun
 			playerProgress[0] = progress;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 12; i++)
 			{

@@ -45,7 +45,7 @@ namespace SpiritMod.Projectiles.Summon
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item50, Projectile.Center);
 

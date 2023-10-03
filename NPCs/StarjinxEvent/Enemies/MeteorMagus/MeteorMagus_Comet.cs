@@ -132,7 +132,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus
 			PrimitiveRenderer.DrawPrimitiveShape(blurLine, blurEffect);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.netMode != NetmodeID.Server)
 			{

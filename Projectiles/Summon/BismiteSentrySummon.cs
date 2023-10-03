@@ -153,7 +153,7 @@ namespace SpiritMod.Projectiles.Summon
             }
         }
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.DD2_WitherBeastHurt, Projectile.Center);
 

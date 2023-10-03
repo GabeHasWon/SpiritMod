@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies
 			}
 			return false;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.netMode != NetmodeID.Server && Filters.Scene["PulsarShockwave"].IsActive() && boom) {
 				Filters.Scene["PulsarShockwave"].Deactivate();

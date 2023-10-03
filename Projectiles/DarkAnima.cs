@@ -33,7 +33,7 @@ namespace SpiritMod.Projectiles
 		{
 			Projectile.Kill();
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<AnimaExplosion>(), 55, 0, Main.myPlayer);
 		}

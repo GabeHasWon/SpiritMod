@@ -102,7 +102,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			relativePoint = Projectile.Center - target.Center;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 8; ++i)
 			{

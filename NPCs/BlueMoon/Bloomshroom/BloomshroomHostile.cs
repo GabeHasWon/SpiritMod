@@ -96,7 +96,7 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 			Projectile.rotation = Projectile.velocity.X * .1f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 			for (int i = 0; i < 5; i++) {

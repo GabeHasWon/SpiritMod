@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			Main.dust[dust].scale = 0.9f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			Projectile.position.X = Projectile.position.X + (float)(Projectile.width / 4);

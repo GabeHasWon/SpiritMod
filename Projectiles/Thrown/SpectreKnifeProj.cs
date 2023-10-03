@@ -31,7 +31,7 @@ namespace SpiritMod.Projectiles.Thrown
 			AIType = ProjectileID.ThrowingKnife;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.rand.Next(0, 4) == 0)
 				Item.NewItem(Projectile.GetSource_DropAsItem(), (int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height, ModContent.ItemType<SpectreKnife>(), 1, false, 0, false, false);

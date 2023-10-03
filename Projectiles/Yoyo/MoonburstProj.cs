@@ -69,7 +69,7 @@ namespace SpiritMod.Projectiles.Yoyo
             return true;
         }
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
         {
             ProjectileExtras.Explode(Projectile.whoAmI, 150, 150, delegate
             {

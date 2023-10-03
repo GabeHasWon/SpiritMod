@@ -37,7 +37,7 @@ namespace SpiritMod.Projectiles
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			const int Repeats = 2;
 

@@ -167,7 +167,7 @@ namespace SpiritMod.Projectiles.Magic
 		{
 			return new Color(200, 200, 200, 100);
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 			for (int k = 0; k < 3; k++) {

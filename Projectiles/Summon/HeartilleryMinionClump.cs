@@ -38,7 +38,7 @@ namespace SpiritMod.Projectiles.Summon
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit8 with { PitchVariance = 0.2f, Volume = 0.3f }, Projectile.Center);
 			for (int i = 0; i < 20; i++)

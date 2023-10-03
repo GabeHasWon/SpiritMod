@@ -37,7 +37,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 			return Color.White;
 		}
 		
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 			DustHelper.DrawStar(Projectile.Center, 6, 5, 1.5f, 1,1,1,0.5f, true);

@@ -92,7 +92,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 			return true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int index = 0; index < 5; ++index)
 				Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, 0.0f, 0.0f, 0, new Color(), 2f);

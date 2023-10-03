@@ -65,7 +65,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo.Projectiles
                 }
             }
         }
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
         {
 			float speed = 3;
             for (int k = 0; k < 18; k++)

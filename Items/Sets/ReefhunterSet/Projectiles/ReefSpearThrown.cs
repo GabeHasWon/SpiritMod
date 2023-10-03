@@ -97,7 +97,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 			Vector2 goreVel = hasTarget ? Vector2.Zero : Projectile.oldVelocity / 3;

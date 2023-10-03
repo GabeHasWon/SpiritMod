@@ -29,8 +29,6 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Interstellar Shield");
-
 		public override void SetDefaults()
 		{
 			Projectile.Size = new Vector2(48);
@@ -43,7 +41,7 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 			Projectile.alpha = 255;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 

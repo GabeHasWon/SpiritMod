@@ -24,7 +24,7 @@ namespace SpiritMod.Projectiles
 			Projectile.height = 20;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			int proj = Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X - 10, Projectile.Center.Y - 10, 0, 0, ModContent.ProjectileType<SpiritBoom>(), (int)(Projectile.damage), 0, Main.myPlayer);

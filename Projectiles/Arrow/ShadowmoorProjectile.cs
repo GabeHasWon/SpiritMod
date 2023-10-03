@@ -101,7 +101,7 @@ namespace SpiritMod.Projectiles.Arrow
             }
 		}
 
-		public override void Kill(int timLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
+		public override void OnKill(int timLeft) => SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

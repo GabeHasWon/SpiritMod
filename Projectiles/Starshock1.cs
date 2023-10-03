@@ -89,7 +89,7 @@ namespace SpiritMod.Projectiles
 		}
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			int z = Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<Wrath>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             Main.projectile[z].DamageType = DamageClass.Magic;

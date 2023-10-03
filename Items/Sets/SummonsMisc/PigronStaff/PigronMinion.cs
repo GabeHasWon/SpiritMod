@@ -225,7 +225,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 			Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(target.Center) * 16, 0.05f);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.netMode != NetmodeID.Server)
 				SoundEngine.PlaySound(SoundID.Item54 with { PitchVariance = 0.3f }, Projectile.Center);

@@ -65,7 +65,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 				Projectile.velocity = Projectile.DirectionTo(targetPos) * 4;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
 

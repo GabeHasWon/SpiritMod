@@ -19,7 +19,7 @@ namespace SpiritMod.Projectiles.Bullet
 			Projectile.scale = Main.rand.NextFloat(1, 1.5f);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Vector2 goreVel = Projectile.velocity;
 			goreVel.Y *= -0.2f;

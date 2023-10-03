@@ -92,7 +92,7 @@ namespace SpiritMod.Items.Weapon.Magic.LuminanceSeacone
 				Main.spriteBatch.Draw(texture2D, new Vector2((float)((double)Projectile.oldPos[index].X - (double)Main.screenPosition.X + (double)(Projectile.width / 2) - (double)TextureAssets.Projectile[Projectile.type].Value.Width * (double)Projectile.scale / 2.0 + (double)vector2_3.X * (double)Projectile.scale) + addWidth, (float)((double)Projectile.oldPos[index].Y - (double)Main.screenPosition.Y + (double)Projectile.height - (double)TextureAssets.Projectile[Projectile.type].Value.Height * (double)Projectile.scale / (double)1 + 4.0 + (double)vector2_3.Y * (double)Projectile.scale) + addHeight), new Microsoft.Xna.Framework.Rectangle?(rectangle), color2, num2, origin, MathHelper.Lerp(0.05f, 1.2f, (float)((10.0 - (double)index) / 30.0)), spriteEffects, 0.0f);
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Vector2 spinningpoint = new Vector2(0.0f, -3f).RotatedByRandom(3.14159274101257);
 			float num1 = (float)28 * Projectile.scale;

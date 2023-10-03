@@ -61,7 +61,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			StruckNPC = true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.position);
 

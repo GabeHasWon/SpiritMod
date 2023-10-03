@@ -129,7 +129,7 @@ namespace SpiritMod.Projectiles.Arrow
 
 		public override Color? GetAlpha(Color lightColor) => Color.Orange;
 
-		public override void Kill(int timLeft)
+		public override void OnKill(int timLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
 

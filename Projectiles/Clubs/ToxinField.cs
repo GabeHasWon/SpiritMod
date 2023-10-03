@@ -49,7 +49,7 @@ namespace SpiritMod.Projectiles.Clubs
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int num621 = 0; num621 < 16; num621++)
 			{

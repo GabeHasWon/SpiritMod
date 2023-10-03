@@ -45,7 +45,7 @@ namespace SpiritMod.Items.Sets.SummonsMisc.FairyWhistle
 					}));
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (timeLeft <= 0)
 				return;

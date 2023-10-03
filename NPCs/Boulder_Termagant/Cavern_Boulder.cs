@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 				Projectile.tileCollide = true;
 		}
 		
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 20; i++) {
 				int num = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.UltraBrightTorch, 0f, -2f, 175, default, .6f);

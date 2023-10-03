@@ -27,7 +27,7 @@ namespace SpiritMod.Projectiles
 			Projectile.damage = 10;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			for (int num623 = 0; num623 < 25; num623++) {

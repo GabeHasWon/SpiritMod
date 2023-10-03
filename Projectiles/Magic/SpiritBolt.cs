@@ -33,7 +33,7 @@ namespace SpiritMod.Projectiles.Magic
 			return true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			int n = 4;
 			int deviation = Main.rand.Next(0, 60);

@@ -89,7 +89,7 @@ namespace SpiritMod.NPCs.Boss.Occultist.Projectiles
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Main.dedServ)
 				return;

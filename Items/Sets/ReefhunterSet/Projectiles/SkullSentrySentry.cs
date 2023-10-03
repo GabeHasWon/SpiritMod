@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 
 		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => false;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			DoDust();
 			if (eyeWhoAmIs is null)

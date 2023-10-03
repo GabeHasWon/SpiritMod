@@ -56,7 +56,7 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 			Projectile.DamageType = DamageClass.Ranged;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item69, Projectile.Center);
 			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
@@ -95,7 +95,7 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 			Projectile.tileCollide = false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 

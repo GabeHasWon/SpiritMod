@@ -20,7 +20,7 @@ namespace SpiritMod.Projectiles.Thrown.Charge
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (!Released)
 				return;

@@ -54,7 +54,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 				ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center + Projectile.velocity, GetColor(Subtype), 25, 10) { ZRotation = .5f, Angle = Projectile.rotation - 1.57f });
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			ProjectileExtras.Explode(Projectile.whoAmI, 100, 100, delegate
 			{

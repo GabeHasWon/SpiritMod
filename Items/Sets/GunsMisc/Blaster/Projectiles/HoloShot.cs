@@ -48,7 +48,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (timeLeft <= 0)
 				return;

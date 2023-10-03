@@ -73,7 +73,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 				Dust.NewDustPerfect(Projectile.Center - Projectile.velocity, DustID.Torch, null, 0, default, Main.rand.NextFloat(.5f, 2.5f)).noGravity = true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			string dustImage = "SpiritMod/Effects/DustImages/" + Main.rand.Next(4) switch
 			{

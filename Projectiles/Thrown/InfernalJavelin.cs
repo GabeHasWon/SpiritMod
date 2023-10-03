@@ -63,7 +63,7 @@ namespace SpiritMod.Projectiles.Thrown
 			return projHitbox.Intersects(targetHitbox);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
 			Vector2 vector9 = Projectile.position;

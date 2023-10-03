@@ -22,7 +22,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.tileCollide = false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 2; i++) {
 				int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Flare_Blue);

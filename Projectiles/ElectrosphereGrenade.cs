@@ -21,7 +21,7 @@ namespace SpiritMod.Projectiles
 			Projectile.height = 20;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ProjectileID.Electrosphere, Projectile.damage, 0, Main.myPlayer);
 			proj.friendly = true;

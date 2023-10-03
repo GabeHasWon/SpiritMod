@@ -33,7 +33,7 @@ namespace SpiritMod.Projectiles.BaseProj
 		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers) 
 			=> modifiers.FinalDamage.Base = NPCUtils.ToActualDamage(modifiers.FinalDamage.Base);
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Projectile.hostile = true;
 			ProjectileExtras.Explode(Projectile.whoAmI, ExplosionRange, ExplosionRange, delegate

@@ -23,7 +23,7 @@ namespace SpiritMod.Projectiles
 			Projectile.damage = 10;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.LifeDrain);
 			SoundEngine.PlaySound(SoundID.Grass, Projectile.Center);

@@ -152,7 +152,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass
 
 		public override bool ShouldUpdatePosition() => false;
 
-		public override void Kill(int timeLeft) => Owner.GetModPlayer<DashSwordPlayer>().dashing = false; //Just in case the projectile dies before resetting this variable
+		public override void OnKill(int timeLeft) => Owner.GetModPlayer<DashSwordPlayer>().dashing = false; //Just in case the projectile dies before resetting this variable
 
 		public override bool AutoAimCursor() => Counter < ChargeupTime;
 	}

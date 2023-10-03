@@ -30,7 +30,7 @@ namespace SpiritMod.Projectiles
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int i = 0; i < 20; i++) {
 				int num = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Clentaminator_Purple, 0f, -2f, 0, default, 2f);

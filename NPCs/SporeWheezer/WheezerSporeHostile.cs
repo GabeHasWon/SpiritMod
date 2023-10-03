@@ -32,7 +32,7 @@ namespace SpiritMod.NPCs.SporeWheezer
 			Projectile.Kill();
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCDeath1, Projectile.Center);
 			for (int k = 0; k < 15; k++) {

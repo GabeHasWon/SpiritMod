@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             return true;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Vector2 vector9 = Projectile.position;
 			Vector2 value19 = (Projectile.rotation - 1.57079637f).ToRotationVector2();

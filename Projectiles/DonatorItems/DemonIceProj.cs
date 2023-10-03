@@ -52,7 +52,7 @@ namespace SpiritMod.Projectiles.DonatorItems
 		{
 			return new Color(50, 180, 205, 100);
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item27);
 			for (int num257 = 0; num257 < 20; num257++) {

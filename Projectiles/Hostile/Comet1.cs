@@ -62,7 +62,7 @@ namespace SpiritMod.Projectiles.Hostile
 		{
 			return Color.White;
 		}
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
             if (Main.rand.NextBool(4))

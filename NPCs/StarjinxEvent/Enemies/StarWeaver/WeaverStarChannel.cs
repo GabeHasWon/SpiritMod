@@ -96,7 +96,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			if (Parent.type != ModContent.NPCType<StarWeaverNPC>() || !Parent.active || !Target.active)
 				return;

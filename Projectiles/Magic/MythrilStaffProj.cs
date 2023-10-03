@@ -34,7 +34,7 @@ namespace SpiritMod.Projectiles.Magic
 				target.SimpleStrikeNPC(Projectile.damage / 2, 0, false, 0f);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);

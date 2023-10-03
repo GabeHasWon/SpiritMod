@@ -81,7 +81,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet.JinxprobeWand
 			return false;
 		}
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             if (Main.netMode != NetmodeID.Server)
                 SoundEngine.PlaySound(SoundID.Item12 with { Volume = 0.25f, PitchVariance = 0.3f }, Projectile.Center);

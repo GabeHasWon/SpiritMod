@@ -70,7 +70,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoSword
 			hitbox = new Rectangle((int)Projectile.position.X + (Projectile.width / 2) - (int)(newSize.X / 2), (int)Projectile.position.Y + (Projectile.height / 2) - (int)(newSize.Y / 2), (int)newSize.X, (int)newSize.Y);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Vector2 velocity = Vector2.UnitX.RotatedBy(Projectile.rotation);
 

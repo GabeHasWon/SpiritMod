@@ -63,7 +63,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 		}
 	}

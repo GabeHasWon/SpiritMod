@@ -34,7 +34,7 @@ namespace SpiritMod.NPCs.Tides
 			Projectile.height = 14;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCHit18, Projectile.Center);
 		}

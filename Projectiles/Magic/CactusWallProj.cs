@@ -61,7 +61,7 @@ public class CactusWallProj : ModProjectile
 		Projectile.rotation = System.MathF.Sin((Projectile.timeLeft + Projectile.whoAmI) * 0.05f) * 0.05f;
 	}
 
-	public override void Kill(int timeLeft)
+	public override void OnKill(int timeLeft)
 	{
 		for (int i = 0; i < 4; ++i) //This is for offsetting position
 			for (int j = 0; j < 3; ++j) //This is for tripling per offset

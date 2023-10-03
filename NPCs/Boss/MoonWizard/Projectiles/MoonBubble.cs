@@ -77,7 +77,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 				Projectile.frame = (Projectile.frame + 1) % 5;
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item54, Projectile.Center);
 			for (int i = 0; i < 20; i++) {

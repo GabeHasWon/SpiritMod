@@ -171,6 +171,6 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 			return false;
 		}
 
-		public override void Kill(int timeLeft) => _endCharge = -1; //paranoia - I don't know if this is necessary
+		public override void OnKill(int timeLeft) => _endCharge = -1; //paranoia - I don't know if this is necessary
 	}
 }

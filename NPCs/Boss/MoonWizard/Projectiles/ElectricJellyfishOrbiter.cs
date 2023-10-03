@@ -117,7 +117,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCDeath28, Projectile.Center);
             for (int i = 0; i < 12; i++)

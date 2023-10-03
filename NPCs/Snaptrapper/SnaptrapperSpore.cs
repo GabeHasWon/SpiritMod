@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.Snaptrapper
 			if (Main.rand.NextBool(6))
 				target.AddBuff(BuffID.Poisoned, 180);
 		}
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			for (int num621 = 0; num621 < 8; num621++) {
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Grass, 0f, 0f, 100, default, .7f);
