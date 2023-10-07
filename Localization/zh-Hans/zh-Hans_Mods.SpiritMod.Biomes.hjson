@@ -1,0 +1,44 @@
+AsteroidBiome: {
+	DisplayName: 小行星带
+	TownNPCDialogueName: 小行星带
+}
+
+BriarSurfaceBiome: {
+	DisplayName: 荆棘之地
+	TownNPCDialogueName: 荆棘之地
+}
+
+BriarUndergroundBiome: {
+	DisplayName: 地下荆棘之地
+	TownNPCDialogueName: 地下荆棘之地
+}
+
+JellyDelugeBiome: {
+	DisplayName: 水母雨
+	TownNPCDialogueName: 水母雨
+}
+
+MysticMoonBiome: {
+	DisplayName: 苍蓝秘月
+	TownNPCDialogueName: 苍蓝秘月
+}
+
+TideBiome: {
+	DisplayName: 潮汐
+	TownNPCDialogueName: 潮汐
+}
+
+SpiritSurfaceBiome: {
+	DisplayName: 魂灵之地
+	TownNPCDialogueName: 魂灵之地
+}
+
+SpiritUndergroundBiome: {
+	DisplayName: 地下魂灵之地
+	TownNPCDialogueName: 地下魂灵之地
+}
+
+SynthwaveSurfaceBiome: {
+	DisplayName: 合成器浪潮
+	TownNPCDialogueName: 合成器浪潮
+}
