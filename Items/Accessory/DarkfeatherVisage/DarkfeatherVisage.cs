@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.NPCs.DarkfeatherMage.Projectiles;
-using SpiritMod.Projectiles;
 using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.DarkfeatherVisage
@@ -11,14 +11,9 @@ namespace SpiritMod.Items.Accessory.DarkfeatherVisage
     [AutoloadEquip(EquipType.Head)]
     public class DarkfeatherVisage : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Darkfeather Visage");
-            // Tooltip.SetDefault("Increases magic and summon damage by 7%\nGrants a bonus when worn with a magic robe or fur coat");
-			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
-		}
+        public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 
-        public override void SetDefaults()
+		public override void SetDefaults()
         {
             Item.width = 32;
             Item.height = 20;
@@ -38,7 +33,7 @@ namespace SpiritMod.Items.Accessory.DarkfeatherVisage
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Generates exploding darkfeather bolts around the player";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.DarkfeatherVisage");
 			player.GetSpiritPlayer().darkfeatherVisage = true;
 		}
 

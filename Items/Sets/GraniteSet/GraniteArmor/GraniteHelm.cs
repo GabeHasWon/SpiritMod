@@ -10,11 +10,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 	public class GraniteHelm : ModItem
 	{
 		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Granite Visor");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteArmor/GraniteHelm_Glow");
-			// Tooltip.SetDefault("Increases jump height slightly");
-		}
+			=> SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteArmor/GraniteHelm_Glow");
 
 		public override void SetDefaults()
 		{
@@ -34,7 +30,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 		public override void UpdateArmorSet(Player player)
 		{
 			string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-			player.setBonus = $"Double tap {tapDir} while falling to stomp downward\nHitting the ground releases a shockwave that scales with height";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Granite", tapDir);
 			player.GetSpiritPlayer().graniteSet = true;
 		}
 

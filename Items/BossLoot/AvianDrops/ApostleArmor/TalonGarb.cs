@@ -9,15 +9,8 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.ApostleArmor
 	{
 		public override void Load()
 		{
-			if (Main.netMode == NetmodeID.Server)
-				return;
-			EquipLoader.AddEquipTexture(Mod, "SpiritMod/Items/BossLoot/AvianDrops/ApostleArmor/TalonGarb_Legs", EquipType.Legs, null, "TalonGarb_Legs");
-		}
-
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Apostle's Garb");
-			// Tooltip.SetDefault("Increases magic and ranged damage by 7%\nIncreases movement speed by 10%");
+			if (Main.netMode != NetmodeID.Server)
+				EquipLoader.AddEquipTexture(Mod, "SpiritMod/Items/BossLoot/AvianDrops/ApostleArmor/TalonGarb_Legs", EquipType.Legs, null, "TalonGarb_Legs");
 		}
 
 		public override void SetDefaults()

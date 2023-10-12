@@ -10,12 +10,6 @@ namespace SpiritMod.Items.Sets.TideDrops.StreamSurfer
 	[AutoloadEquip(EquipType.Head)]
 	public class StreamSurferHelmet : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Stream Surfer Mask");
-			// Tooltip.SetDefault("8% increased magic critical strike chance\nYou can breathe underwater");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 22;
@@ -34,8 +28,8 @@ namespace SpiritMod.Items.Sets.TideDrops.StreamSurfer
 		public override void UpdateArmorSet(Player player)
 		{
 			string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.StreamSurfer", tapDir);
 			player.GetSpiritPlayer().surferSet = true;
-			player.setBonus = $"Double tap {tapDir} to create a ridable waterspout that damages enemies\n7 second cooldown";
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

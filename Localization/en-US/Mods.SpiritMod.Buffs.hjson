@@ -5,12 +5,12 @@ AceOfDiamondsBuff: {
 
 AngelLight: {
 	DisplayName: Angel's Light
-	Description: Mods.SpiritMod.BuffDescription.AngelLight
+	Description: Mods.SpiritMod.Buffs.AngelLight.Description
 }
 
 AngelWrath: {
 	DisplayName: Angel's Wrath
-	Description: Mods.SpiritMod.BuffDescription.AngelWrath
+	Description: Mods.SpiritMod.Buffs.AngelWrath.Description
 }
 
 ExplorerFight: {
@@ -110,7 +110,7 @@ CrimsonSkullBuff: {
 
 Death: {
 	DisplayName: Death
-	Description: Mods.SpiritMod.BuffDescription.Death
+	Description: Mods.SpiritMod.Buffs.Death.Description
 }
 
 DeathRoseCooldown: {
@@ -120,7 +120,7 @@ DeathRoseCooldown: {
 
 AcidBurn: {
 	DisplayName: Toxic Grasp
-	Description: Mods.SpiritMod.BuffDescription.AcidBurn
+	Description: Mods.SpiritMod.Buffs.AcidBurn.Description
 }
 
 Afflicted: {
@@ -135,12 +135,12 @@ BloodCorrupt: {
 
 CryoCrush: {
 	DisplayName: Cryo Crush
-	Description: Mods.SpiritMod.BuffDescription.CryoCrush
+	Description: Mods.SpiritMod.Buffs.CryoCrush.Description
 }
 
 DoomDestiny: {
 	DisplayName: Star Cut
-	Description: Mods.SpiritMod.BuffDescription.DoomDestiny
+	Description: Mods.SpiritMod.Buffs.DoomDestiny.Description
 }
 
 FesteringWounds: {
@@ -160,7 +160,7 @@ DynastyFanBuff: {
 
 ElectrifiedV2: {
 	DisplayName: Electrified
-	Description: Mods.SpiritMod.BuffDescription.ElectrifiedV2
+	Description: Mods.SpiritMod.Buffs.ElectrifiedV2.Description
 }
 
 EleutheriosBuff: {
@@ -175,20 +175,16 @@ FateBlessing: {
 
 Frozen: {
 	DisplayName: Frozen
-	Description: Mods.SpiritMod.BuffDescription.Frozen
+	Description: Mods.SpiritMod.Buffs.Frozen.Description
 }
 
 BurningRage: {
 	DisplayName: Burning Rage
-	Description: +17% damage and attack speed
+	Description: You're taking damage
 }
 
 CollapsingVoid.DisplayName: Collapsing Void
-
-DevouringVoid: {
-	DisplayName: Devouring Void
-	Description: Mods.SpiritMod.BuffDescription.DevouringVoid
-}
+DevouringVoid.DisplayName: Devouring Void
 
 DivineStrike: {
 	DisplayName: Divine Strike
@@ -215,10 +211,7 @@ TemporalShift: {
 	Description: Double tap to dash and gain a temporary speed boost
 }
 
-WanderingPlague: {
-	DisplayName: Wandering Plague
-	Description: Mods.SpiritMod.BuffDescription.WanderingPlague
-}
+WanderingPlague.DisplayName: Wandering Plague
 
 WindBurst: {
 	DisplayName: Wind Burst
@@ -227,7 +220,7 @@ WindBurst: {
 
 GraniteArrow_Debuff: {
 	DisplayName: Granite Arrow Debuff
-	Description: Mods.SpiritMod.BuffDescription.GraniteArrow_Debuff
+	Description: Mods.SpiritMod.Buffs.GraniteArrow_Debuff.Description
 }
 
 GreekFire: {
@@ -242,7 +235,7 @@ HighGravityBuff: {
 
 HolyLight: {
 	DisplayName: Holy Light
-	Description: Mods.SpiritMod.BuffDescription.HolyLight
+	Description: Mods.SpiritMod.Buffs.HolyLight.Description
 }
 
 IceBerryBuff: {
@@ -257,7 +250,7 @@ InfernalRage: {
 
 MageFreeze: {
 	DisplayName: Chilly Grasp
-	Description: Mods.SpiritMod.BuffDescription.MageFreeze
+	Description: Mods.SpiritMod.Buffs.MageFreeze.Description
 }
 
 MidasTouch: {
@@ -297,7 +290,7 @@ TideMountBuff: {
 
 NebulaFlame: {
 	DisplayName: Nebula Flame
-	Description: Mods.SpiritMod.BuffDescription.NebulaFlame
+	Description: Mods.SpiritMod.Buffs.NebulaFlame.Description
 }
 
 OliveBranchBuff: {
@@ -440,12 +433,12 @@ BismitePotionBuff: {
 
 DoubleJumpPotionBuff: {
 	DisplayName: Aether Jump
-	Description: Grants a temporary double jump
+	Description: Temporarily grants an additional jump
 }
 
 FlightPotionBuff: {
 	DisplayName: Soaring
-	Description: Increases flight duration by 25%.
+	Description: Increases flight duration by 25%
 }
 
 MoonBlessing: {
@@ -506,12 +499,12 @@ TurtlePotionBuff: {
 
 Shadowbroken: {
 	DisplayName: Shadowbroken
-	Description: Mods.SpiritMod.BuffDescription.Shadowbroken
+	Description: Mods.SpiritMod.Buffs.Shadowbroken.Description
 }
 
 Shadowflame: {
 	DisplayName: Shadowflame
-	Description: Mods.SpiritMod.BuffDescription.Shadowflame
+	Description: Mods.SpiritMod.Buffs.Shadowflame.Description
 }
 
 Shocked: {
@@ -521,7 +514,7 @@ Shocked: {
 
 SoulBurn: {
 	DisplayName: Soul Burn
-	Description: Mods.SpiritMod.BuffDescription.SoulBurn
+	Description: Mods.SpiritMod.Buffs.SoulBurn.Description
 }
 
 SoulFlare: {
@@ -534,13 +527,13 @@ SpiritBuff: {
 	Description:
 		'''
 		Increases damage and critical strike chance by 5 % 
-			Getting hurt occasionally spawns a damaging bolt to chase enemies
+		Getting hurt occasionally spawns a damaging bolt to chase enemies
 		'''
 }
 
 StackingFireBuff: {
 	DisplayName: Combustion Blaze
-	Description: Mods.SpiritMod.BuffDescription.StackingFireBuff
+	Description: Mods.SpiritMod.Buffs.StackingFireBuff.Description
 }
 
 StarCooldown: {
@@ -555,7 +548,7 @@ StarFlame: {
 
 StarFracture: {
 	DisplayName: Star Fracture
-	Description: Mods.SpiritMod.BuffDescription.StarFracture
+	Description: Mods.SpiritMod.Buffs.StarFracture.Description
 }
 
 StarplateGravity: {
@@ -575,22 +568,22 @@ Sturdy: {
 
 ElectricSummonTag: {
 	DisplayName: Summon Tag
-	Description: Mods.SpiritMod.BuffDescription.ElectricSummonTag
+	Description: Mods.SpiritMod.Buffs.ElectricSummonTag.Description
 }
 
 SacrificialDaggerBuff: {
 	DisplayName: Sacrificial Strike
-	Description: Mods.SpiritMod.BuffDescription.SacrificialDaggerBuff
+	Description: Mods.SpiritMod.Buffs.SacrificialDaggerBuff.Description
 }
 
 SummonTag3: {
 	DisplayName: Summon Tag
-	Description: Mods.SpiritMod.BuffDescription.SummonTag3
+	Description: Mods.SpiritMod.Buffs.SummonTag3.Description
 }
 
 SummonTag5: {
 	DisplayName: Summon Tag
-	Description: Mods.SpiritMod.BuffDescription.SummonTag5
+	Description: Mods.SpiritMod.Buffs.SummonTag5.Description
 }
 
 SurgingAnguish: {
@@ -620,12 +613,12 @@ SunPotBuff: {
 
 TopazMarked: {
 	DisplayName: Illuminated
-	Description: Mods.SpiritMod.BuffDescription.TopazMarked
+	Description: Mods.SpiritMod.Buffs.TopazMarked.Description
 }
 
 Tracked: {
 	DisplayName: Tracked
-	Description: Mods.SpiritMod.BuffDescription.Tracked
+	Description: Mods.SpiritMod.Buffs.Tracked.Description
 }
 
 TrueMarksman: {
@@ -640,7 +633,7 @@ UnstableAffliction: {
 
 VineTrap: {
 	DisplayName: Vine Trap
-	Description: Mods.SpiritMod.BuffDescription.VineTrap
+	Description: Mods.SpiritMod.Buffs.VineTrap.Description
 }
 
 VirulenceCooldown: {
@@ -650,12 +643,12 @@ VirulenceCooldown: {
 
 Wither: {
 	DisplayName: Wither
-	Description: Mods.SpiritMod.BuffDescription.Wither
+	Description: Mods.SpiritMod.Buffs.Wither.Description
 }
 
 WitheringLeaf: {
 	DisplayName: Withering Leaf
-	Description: Mods.SpiritMod.BuffDescription.WitheringLeaf
+	Description: Mods.SpiritMod.Buffs.WitheringLeaf.Description
 }
 
 CryoZoneTimer: {
@@ -786,7 +779,7 @@ SwimmingFatigue: {
 
 CurseBreakerMark: {
 	DisplayName: Curse Mark
-	Description: Mods.SpiritMod.BuffDescription.CurseBreakerMark
+	Description: Mods.SpiritMod.Buffs.CurseBreakerMark.Description
 }
 
 MarbleMinecartBuff: {

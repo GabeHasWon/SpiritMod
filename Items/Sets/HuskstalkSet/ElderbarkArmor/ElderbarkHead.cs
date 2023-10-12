@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.HuskstalkSet.ElderbarkArmor
@@ -7,8 +8,6 @@ namespace SpiritMod.Items.Sets.HuskstalkSet.ElderbarkArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class ElderbarkHead : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Elderbark Helmet");
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
@@ -22,7 +21,7 @@ namespace SpiritMod.Items.Sets.HuskstalkSet.ElderbarkArmor
 		
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = $"Increases all item damage by 1";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Elderbark");
 			player.GetDamage(DamageClass.Generic).Flat++;
 		}
 

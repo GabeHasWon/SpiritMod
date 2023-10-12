@@ -7,11 +7,7 @@ namespace SpiritMod.Items.Armor.SilkArmor
 	[AutoloadEquip(EquipType.Head, EquipType.Front)]
 	public class Earrings : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Earrings");
-			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{

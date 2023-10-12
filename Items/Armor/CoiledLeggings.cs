@@ -9,11 +9,7 @@ namespace SpiritMod.Items.Armor
 	[AutoloadEquip(EquipType.Legs)]
 	public class CoiledLeggings : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Autonaut's Leggings");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{

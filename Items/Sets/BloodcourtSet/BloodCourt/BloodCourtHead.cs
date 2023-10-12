@@ -15,13 +15,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.BloodCourt
 	[AutoloadEquip(EquipType.Head)]
 	public class BloodCourtHead : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Bloodcourt's Visage");
-			// Tooltip.SetDefault("4% increased damage\nIncreases your max number of minions");
-
-			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{
@@ -46,10 +40,8 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.BloodCourt
 		public override void UpdateArmorSet(Player player)
 		{
 			string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.BloodCourt", tapDir);
 			player.GetSpiritPlayer().bloodcourtSet = true;
-			player.setBonus = $"Double tap {tapDir} to sacrifice 8% of your maximum health\n" +
-				"and launch a bolt of Dark Anima dealing high damage in a radius\n" +
-				"This bolt siphons 10 additional health over 5 seconds";
 		}
 
 		public override void ArmorSetShadows(Player player) => player.armorEffectDrawShadow = true;

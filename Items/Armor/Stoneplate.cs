@@ -10,12 +10,6 @@ namespace SpiritMod.Items.Armor
 	[AutoloadEquip(EquipType.Body)]
 	public class Stoneplate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Stoneplate");
-			// Tooltip.SetDefault("Encumbers the wearer");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;

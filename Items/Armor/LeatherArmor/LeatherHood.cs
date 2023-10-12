@@ -4,6 +4,7 @@ using System;
 using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Armor.LeatherArmor
@@ -11,12 +12,6 @@ namespace SpiritMod.Items.Armor.LeatherArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class LeatherHood : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Marksman's Hood");
-			// Tooltip.SetDefault("Increases ranged weapon damage by 1");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 22;
@@ -33,7 +28,7 @@ namespace SpiritMod.Items.Armor.LeatherArmor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Wearing Marksman's Armor builds up concentration\nWhile concentrated, your next strike is a critical strike and deals more damage\nConcentration is disrupted when hurt, but charges faster while standing still";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Leather");
 			player.GetSpiritPlayer().leatherSet = true;
 
 			if (player.GetSpiritPlayer().concentrated)

@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 	[AutoloadEquip(EquipType.Body)]
 	public class CryoliteBody : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cryolite Chestplate");
-			// Tooltip.SetDefault("10% increased melee speed\nGrants immunity to knockback");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 38;
@@ -28,6 +22,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 			player.GetAttackSpeed(DamageClass.Melee) += 0.10f;
 			player.noKnockback = true;
         }
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

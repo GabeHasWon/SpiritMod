@@ -1,4 +1,3 @@
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -9,8 +8,6 @@ namespace SpiritMod.Items.Sets.FrigidSet.FrigidArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class FrigidHelm : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Frigid Faceplate");
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
@@ -25,7 +22,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.FrigidArmor
 		public override void UpdateArmorSet(Player player)
 		{
 			string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-			player.setBonus = $"Double tap {tapDir} to create an icy wall at the cursor position\n8 second cooldown";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Frigid", tapDir);
 			player.GetSpiritPlayer().frigidSet = true;
 
 			if (Main.rand.NextBool(6))

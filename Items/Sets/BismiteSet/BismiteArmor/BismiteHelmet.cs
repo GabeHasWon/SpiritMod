@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.BismiteSet.BismiteArmor
@@ -16,20 +17,10 @@ namespace SpiritMod.Items.Sets.BismiteSet.BismiteArmor
 		public override string SetTooltip => "4% increased movement speed";
 		public override bool SetBody(Item body) => body.type == ModContent.ItemType<BismiteChestplate>();
 		public override bool SetLegs(Item legs) => legs.type == ModContent.ItemType<BismiteLeggings>();
-		public override string SetbonusText
-			=> "Not getting hit builds up stacks of Virulence\n"
-			+ "Virulence charges up every 10 seconds\n"
-			+ "Striking while Virulence is charged releases a toxic explosion\n"
-			+ "Getting hit depletes Virulence entirely";
+		public override string SetbonusText => Language.GetTextValue("Mods.SpiritMod.SetBonuses.Bismite");
 		public override SpiritPlayerEffect SetbonusEffect => new BismiteSetbonusEffect();
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault(SetDisplayName);
-			// Tooltip.SetDefault(SetTooltip);
-
-			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{

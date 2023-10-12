@@ -29,6 +29,7 @@
     <None Remove="Localization\en-US\Mods.SpiritMod.NPCs.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Projectiles.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Quests.hjson" />
+    <None Remove="localization\en-us\Mods.SpiritMod.SetBonuses.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Tiles.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.TownNPCMood.hjson" />
   </ItemGroup>

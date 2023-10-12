@@ -10,12 +10,7 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class ObsidiusHelm : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Slag Tyrant's Helm");
-			// Tooltip.SetDefault("5% increased minion damage\nIncreases your max number of sentries");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -44,19 +39,19 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 			=> body.type == ModContent.ItemType<ObsidiusPlate>() && legs.type == ModContent.ItemType<ObsidiusGreaves>();
 
-		public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe(1);
-			recipe.AddIngredient(ModContent.ItemType<CarvedRock>(), 14);
-			recipe.AddTile(TileID.Anvils);
-			recipe.Register();
-		}
-
 		public override void UpdateArmorSet(Player player)
 		{
 			string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-			player.setBonus = $"Double tap {tapDir} to cause all sentries to release a burst of fireballs\n8 second cooldown";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Slag", tapDir);
 			player.GetSpiritPlayer().fierySet = true;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<CarvedRock>(), 14);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 }

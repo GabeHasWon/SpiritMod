@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Armor.Daybloom
@@ -7,13 +8,7 @@ namespace SpiritMod.Items.Armor.Daybloom
 	[AutoloadEquip(EquipType.Head)]
 	public class DaybloomHead : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sunflower Hat");
-			// Tooltip.SetDefault("Increases maximum mana by 20");
-
-			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{
@@ -30,8 +25,7 @@ namespace SpiritMod.Items.Armor.Daybloom
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Being outside during daytime increases defense, maximum mana,\nand life regeneration slightly";
-
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Daybloom");
 			if (Main.dayTime)
 			{
 				player.statDefense += 2;

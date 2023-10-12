@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
@@ -7,12 +8,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class MarbleHelm : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Gilded Laurel");
-			// Tooltip.SetDefault("10% increased movement speed");
-			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{
@@ -27,7 +23,7 @@ namespace SpiritMod.Items.Sets.MarbleSet.MarbleArmor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Press 'Up' to grant 'Divine Winds', allowing for limited flight\n10 second cooldown";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Marble");
 			player.GetSpiritPlayer().marbleSet = true;
 		}
 

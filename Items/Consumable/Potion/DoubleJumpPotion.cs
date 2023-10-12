@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Consumable.Potion
 	[Sacrifice(20)]
 	public class DoubleJumpPotion : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Zephyr Potion");
-			// Tooltip.SetDefault("Temporarily grants a double jump");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
@@ -28,6 +22,7 @@ namespace SpiritMod.Items.Consumable.Potion
 			Item.buffTime = 10800;
 			Item.UseSound = SoundID.Item3;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

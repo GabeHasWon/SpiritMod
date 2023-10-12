@@ -1,18 +1,13 @@
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.BossLoot.AtlasDrops.PrimalstoneArmor
 {
 	[AutoloadEquip(EquipType.Head)]
 	public class PrimalstoneFaceplate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Primalstone Faceplate");
-			// Tooltip.SetDefault("20% increased melee and magic damage\nIncreases maximum mana by 60\nReduces damage taken by 8%");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 40;
@@ -26,9 +21,9 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.PrimalstoneArmor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Melee and magic attacks inflict Unstable Affliction\n10% reduced movement speed";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Primalstone");
 			player.GetSpiritPlayer().primalSet = true;
-			player.moveSpeed -= 0.10F;
+			player.moveSpeed -= .10F;
 			int dust1 = Dust.NewDust(player.position, player.width, player.height - 38, DustID.UnusedWhiteBluePurple);
 			Main.dust[dust1].scale = 2f;
 		}

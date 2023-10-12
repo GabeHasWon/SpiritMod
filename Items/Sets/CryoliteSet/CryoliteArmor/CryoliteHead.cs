@@ -1,6 +1,6 @@
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class CryoliteHead : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cryolite Helmet");
-			// Tooltip.SetDefault("8% increased melee speed");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 38;
@@ -24,19 +18,16 @@ namespace SpiritMod.Items.Sets.CryoliteSet.CryoliteArmor
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return body.type == ModContent.ItemType<CryoliteBody>() && legs.type == ModContent.ItemType<CryoliteLegs>();
-		}
+			=> body.type == ModContent.ItemType<CryoliteBody>() && legs.type == ModContent.ItemType<CryoliteLegs>();
+
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Generates an icy aura that slows nearby enemies\nThis aura expands gradually, but resets when injured";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Cryolite");
 			player.GetSpiritPlayer().cryoSet = true;
 		}
 
-		public override void UpdateEquip(Player player)
-		{
-			player.GetAttackSpeed(DamageClass.Melee) += .08f;
-		}
+		public override void UpdateEquip(Player player) => player.GetAttackSpeed(DamageClass.Melee) += .08f;
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

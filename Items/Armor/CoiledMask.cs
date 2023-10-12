@@ -9,11 +9,7 @@ namespace SpiritMod.Items.Armor
 	[AutoloadEquip(EquipType.Head)]
 	public class CoiledMask : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Autonaut's Headgear");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{

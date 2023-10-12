@@ -1,0 +1,135 @@
+Apostle:
+	'''
+	Wind Spirits guide you, granting an additional jump
+	Magic and ranged attacks occasionally spawn feathers to attack foes
+	'''
+Bismite:
+	'''
+	Not getting hit builds up stacks of Virulence
+	Virulence charges up every 10 seconds
+	Striking while Virulence is charged releases a toxic explosion
+	Getting hit depletes Virulence entirely
+	'''
+BloodCourt:
+	'''
+	Double tap {tapDir} to sacrifice 8% of your maximum health
+	and launch a bolt of Dark Anima dealing high damage in a radius
+	This bolt siphons 10 additional health over 5 seconds
+	'''
+Botanist:
+	'''
+	You gain increased rewards from herbs of all kinds
+	You have a powerful eye for spotting herbs
+	'''
+Cascade:
+	'''
+	Dealing damage to enemies builds up a bubble shield,
+	which at full size grants heavy damage resistance against the next attack,
+	damaging and knocking back nearby enemies.
+	'''
+Chitin: Double tap in a direction to dash and envelop yourself in a tornado
+Cryolite:
+	'''
+	Generates an icy aura that slows nearby enemies
+	This aura expands gradually, but resets when injured
+	'''
+Daybloom:
+	'''
+	Being outside during daytime increases defense, maximum mana,
+	and life regeneration slightly
+	'''
+Dusk:
+	'''
+	8% Increased Magic and Ranged Damage at Night
+	You are surrounded by a rune that guides the way
+	Magic attacks inflict Shadowflame
+	'''
+DarkfeatherVisage: Generates exploding darkfeather bolts around the player
+Elderbark: Increases all item damage by 1
+Floran: Killing enemies may drop raw meat, restoring health and granting 'Well Fed'
+Frigid:
+	'''
+	Double tap {tapDir} to create an icy wall at the cursor position
+	8 second cooldown
+	'''
+Granite:
+	'''
+	Double tap {tapDir} while falling to stomp downward
+	Hitting the ground releases a shockwave that scales with height
+	'''
+Infernal:
+	'''
+	When under 25%, defense is decreased by 4, but Infernal Guardians surround you
+	Infernal Guardians vastly increase magic damage and reduce mana cost
+	Getting hurt may spawn multiple exploding Infernal Embers
+	'''
+JellynautBubble:
+	'''
+	Hitting or killing enemies with magic weapons generates arcane jellyfish around the player
+	Double tap {tapDir} to cause the jellyfish to attack the cursor position
+	'''
+Leather:
+	'''
+	Wearing Marksman's Armor builds up concentration
+	While concentrated, your next strike is a critical strike and deals more damage
+	Concentration is disrupted when hurt, but charges faster while standing still
+	'''
+Marble:
+	'''
+	Press 'Up' to grant 'Divine Winds', allowing for limited flight
+	10 second cooldown
+	'''
+Primalstone:
+	'''
+	Melee and magic attacks inflict Unstable Affliction
+	10% reduced movement speed
+	'''
+Rogue:
+	'''
+	Getting hit grants four seconds of invisibility and 100% increased damage
+	25 second cooldown
+	'''
+Runic: Leave behind dangerous explosive runes
+Seraph:
+	'''
+	Being near enemies increases life regen, increases mana regen, increases melee speed
+	and reduces mana cost by 6% per enemy
+	This effect stacks three times
+	'''
+Slag:
+	'''
+	Double tap {tapDir} to cause all sentries to release a burst of fireballs
+	8 second cooldown
+	'''
+Spirit:
+	'''
+	Spirits grant you various buffs based on your health
+	Increases damage by 8% when below 400 health
+	Increases defense by 6 when below 200 Health
+	Increases life regen when below 100 Health
+	Increases invincibility frames when below 50 Health
+	'''
+Starjinx:
+	'''
+	Greatly increases mana useage and prevents useage of mana potions
+	Running out of mana produces a manajinx pylon near you
+	Collecting the manajinx pylon restores all mana and temporarily enchants magic weapons with stars
+	'''
+Starplate:
+	'''
+	Double tap {tapDir} to deploy an energy field at the cursor position
+	This field lasts for five seconds and supercharges all ranged projectiles that pass through it
+	{cooldown} second cooldown
+	'''
+StreamSurfer:
+	'''
+	Double tap {tapDir} to create a ridable waterspout that damages enemies
+	7 second cooldown
+	'''
+Wayfarer:
+	'''
+	Killing enemies grants a stacking damage buff
+	Breaking pots grants a stacking movement speed buff
+	Mining ore grants a stacking mining speed buff
+	All buffs stack up to 4 times
+	'''

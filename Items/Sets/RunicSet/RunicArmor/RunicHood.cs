@@ -6,18 +6,13 @@ using Terraria.ModLoader;
 using SpiritMod.Projectiles;
 using Microsoft.Xna.Framework;
 using SpiritMod.NPCs.DarkfeatherMage.Projectiles;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.RunicSet.RunicArmor
 {
 	[AutoloadEquip(EquipType.Head)]
 	public class RunicHood : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Runic Hood");
-			// Tooltip.SetDefault("Increases magic damage by 12% and movement speed by 5%");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 34;
@@ -28,12 +23,11 @@ namespace SpiritMod.Items.Sets.RunicSet.RunicArmor
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return body.type == ModContent.ItemType<RunicPlate>() && legs.type == ModContent.ItemType<RunicGreaves>();
-		}
+			=> body.type == ModContent.ItemType<RunicPlate>() && legs.type == ModContent.ItemType<RunicGreaves>();
+
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Leave behind dangerous explosive runes";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Runic");
 			player.GetSpiritPlayer().runicSet = true;
 		}
 

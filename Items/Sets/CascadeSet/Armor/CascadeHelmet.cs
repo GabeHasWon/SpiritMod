@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.CascadeSet.Armor
@@ -7,12 +8,6 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 	[AutoloadEquip(EquipType.Head)]
 	public class CascadeHelmet : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cascade Helmet");
-			// Tooltip.SetDefault("Allows for breathing underwater");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
@@ -26,7 +21,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Armor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Dealing damage to enemies builds up a bubble shield,\nwhich at full size grants heavy damage resistance against the next attack,\ndamaging and knocking back nearby enemies.";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Cascade");
 			player.GetModPlayer<CascadeArmorPlayer>().setActive = true;
 		}
 

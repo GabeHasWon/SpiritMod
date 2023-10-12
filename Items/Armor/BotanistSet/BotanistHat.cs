@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Armor.BotanistSet
@@ -7,13 +8,7 @@ namespace SpiritMod.Items.Armor.BotanistSet
 	[AutoloadEquip(EquipType.Head)]
 	public class BotanistHat : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sunflower Strawhat");
-			// Tooltip.SetDefault("Keeps you happy");
-
-			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{
@@ -30,10 +25,8 @@ namespace SpiritMod.Items.Armor.BotanistSet
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "You gain increased rewards from herbs of all kinds\nYou have a powerful eye for spotting herbs";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Botanist");
 			player.GetModPlayer<BotanistPlayer>().active = true;
-
-			var tex = EquipLoader.GetEquipTexture(Mod, "AstronautBody", EquipType.Back);
 		}
 
 		public override void AddRecipes()

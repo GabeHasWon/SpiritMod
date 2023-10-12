@@ -12,13 +12,7 @@ namespace SpiritMod.Items.Armor.WayfarerSet
 	[AutoloadEquip(EquipType.Head)]
 	public class WayfarerHead : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Wayfarer's Hat");
-			// Tooltip.SetDefault("Immunity to darkness");
-
-			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{
@@ -33,8 +27,8 @@ namespace SpiritMod.Items.Armor.WayfarerSet
 
 		public override void UpdateArmorSet(Player player)
 		{
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Wayfarer");
 			player.GetSpiritPlayer().wayfarerSet = true;
-			player.setBonus = "Killing enemies grants a stacking damage buff\nBreaking pots grants a stacking movement speed buff\nMining ore grants a stacking mining speed buff\nAll buffs stack up to 4 times";
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<WayfarerBody>() && legs.type == ModContent.ItemType<WayfarerLegs>();

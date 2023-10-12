@@ -4,14 +4,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Dusts;
 using SpiritMod.GlobalClasses.Players;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 {
 	[AutoloadEquip(EquipType.Head)]
 	public class ChitinHelmet : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Chitin Faceguard");
-
 		public override void SetDefaults()
 		{
 			Item.width = 22;
@@ -25,7 +24,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Double tap in a direction to dash and envelop yourself in a tornado";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Chitin");
 			player.GetModPlayer<DashPlayer>().chitinSet = true;
 
 			if (player.velocity.X != 0f && player.velocity.Y == 0f && !player.mount.Active)
@@ -34,7 +33,6 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ChitinArmor
 				Main.dust[dust].velocity = (Vector2.UnitX * Main.rand.NextFloat(0.0f, 2.0f) * -player.direction).RotatedBy(Main.rand.NextFloat(0.0f, 0.8f) * player.direction);
 				Main.dust[dust].noGravity = true;
 			}
-
 		}
 
 		public override void AddRecipes()

@@ -7,13 +7,7 @@ namespace SpiritMod.Items.Armor
 	[AutoloadEquip(EquipType.Head)]
 	public class MimeMask : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Mime Mask");
-			// Tooltip.SetDefault("Increases summon damage by 3%\nIncreases your max number of minions");
-
-			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{

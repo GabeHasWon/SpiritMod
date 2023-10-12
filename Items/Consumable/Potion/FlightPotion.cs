@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Consumable.Potion
 	[Sacrifice(20)]
 	public class FlightPotion : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Soaring Potion");
-			// Tooltip.SetDefault("Increases the duration of flight by 25%");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 32;

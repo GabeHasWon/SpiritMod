@@ -8,13 +8,7 @@ namespace SpiritMod.Items.Armor
 	[AutoloadEquip(EquipType.Head)]
 	public class MadHat : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Mad Hat");
-			// Tooltip.SetDefault("Can be thrown or worn\nIncreases magic damage by 10%\nIncreases magical crit chance by 8%");
-
-			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{
