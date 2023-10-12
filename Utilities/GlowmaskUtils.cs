@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -48,9 +47,8 @@ namespace SpiritMod
 			{
 				case EquipType.Head:
 					{
-						Vector2 adjustedPosition = new Vector2((int)(info.Position.X - Main.screenPosition.X) + ((info.drawPlayer.width - info.drawPlayer.bodyFrame.Width) / 2), (int)(info.Position.Y - Main.screenPosition.Y) + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 4);
-						
-						DrawData drawData = new DrawData(texture, adjustedPosition + info.drawPlayer.headPosition + info.rotationOrigin, info.drawPlayer.bodyFrame, info.headGlowColor, info.drawPlayer.headRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
+						Vector2 adjPos = new Vector2((int)(info.Position.X - Main.screenPosition.X) + ((info.drawPlayer.width - info.drawPlayer.bodyFrame.Width) / 2), (int)(info.Position.Y - Main.screenPosition.Y) + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 4);
+						DrawData drawData = new DrawData(texture, adjPos + info.drawPlayer.headPosition + info.rotationOrigin, info.drawPlayer.bodyFrame, info.headGlowColor, info.drawPlayer.headRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
 						{
 							shader = info.cHead
 						};
@@ -64,10 +62,12 @@ namespace SpiritMod
 
 						if (!info.drawPlayer.invis)
 						{
-							Vector2 adjustedPos = info.Position - new Vector2((info.compTorsoFrame.Width / 2) + (info.drawPlayer.width / 2), info.drawPlayer.height) - Main.screenPosition;
-							Vector2 realPos = adjustedPos + info.drawPlayer.bodyPosition + (info.compTorsoFrame.Size() / 2f).ToPoint().ToVector2();
+							Vector2 adjPos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 2));
+							Vector2 bobOff = Main.OffsetsPlayerHeadgear[info.drawPlayer.bodyFrame.Y / info.drawPlayer.bodyFrame.Height] * info.drawPlayer.gravDir;
+							if (info.drawPlayer.gravDir == -1)
+								bobOff.Y += 4;
 
-							DrawData drawData = new DrawData(texture, realPos, bodyFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
+							DrawData drawData = new DrawData(texture, adjPos + bobOff + info.drawPlayer.bodyPosition + info.rotationOrigin, bodyFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
 							{
 								shader = info.cBody
 							};

@@ -52,15 +52,18 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.addTile(Type);
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Stripped Bamboo Bird Cage");
 			AddMapEntry(new Color(100, 100, 60), name);
 			DustType = -1;
 		}
 
 		public override IEnumerable<Item> GetItemDrops(int i, int j)
 		{
+			var drops = new List<Item>() { new Item(ModContent.ItemType<BambooBirdCageItem>()) };
 			if (ContainsBird(i, j, out int birdType, Main.tile[i, j].TileFrameX))
-				yield return new Item(birdType);
+				drops.Add(new Item(birdType));
+
+			foreach (Item item in drops)
+				yield return item;
 		}
 
 		public override bool RightClick(int i, int j)
@@ -91,7 +94,13 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 					}
 				}
 
-				Main.LocalPlayer.ConsumeItem(heldType);
+				if (!Main.LocalPlayer.ConsumeItem(heldType))
+				{
+					if (Main.mouseItem.stack > 1)
+						Main.mouseItem.stack--;
+					else
+						Main.mouseItem.TurnToAir();
+				}
 			}
 			else
 			{
