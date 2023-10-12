@@ -16,10 +16,10 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Cobbled Eye");
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
+
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 
 		public override void SetDefaults()
@@ -49,11 +49,11 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			timer++;
 			if (timer > 60) {
 				if (Main.rand.NextBool(8)) {
-					for (int num621 = 0; num621 < 5; num621++) {
-						int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, 2f);
-					}
+					for (int num621 = 0; num621 < 5; num621++)
+						Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, 2f);
+
 					int damage = expertMode ? 24 : 35;
-					int proj2 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<MiracleBeam>(), damage, 1f, NPC.target);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<MiracleBeam>(), damage, 1f, NPC.target);
 				}
 				timer = 0;
 			}
@@ -115,8 +115,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 				Texture2D texture = TextureAssets.Npc[NPC.type].Value;
 				Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
 				for (int i = 1; i < NPC.oldPos.Length; ++i) {
-					Vector2 vector2_2 = NPC.oldPos[i];
-					Microsoft.Xna.Framework.Color color2 = Color.White * NPC.Opacity;
+					Color color2 = Color.White * NPC.Opacity;
 					color2.R = (byte)(0.5 * color2.R * (10 - i) / 20.0);
 					color2.G = (byte)(0.5 * color2.G * (10 - i) / 20.0);
 					color2.B = (byte)(0.5 * color2.B * (10 - i) / 20.0);

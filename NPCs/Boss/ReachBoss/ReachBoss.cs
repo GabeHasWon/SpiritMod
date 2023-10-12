@@ -25,13 +25,12 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Vinewrath Bane");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 4;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

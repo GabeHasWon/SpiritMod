@@ -15,15 +15,14 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Tethervolt Jelly");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(0f, 20f),
-				PortraitPositionYOverride = 10f,
+				PortraitPositionYOverride = 10f
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}

@@ -29,13 +29,12 @@ namespace SpiritMod.NPCs.Beholder
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Beholder");
 			Main.npcFrameCount[NPC.type] = 9;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Rotation = MathHelper.PiOver2 };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Rotation = MathHelper.PiOver2 };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

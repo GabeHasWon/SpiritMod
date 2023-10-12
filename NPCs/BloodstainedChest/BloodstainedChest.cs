@@ -17,12 +17,11 @@ namespace SpiritMod.NPCs.BloodstainedChest
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Bloodstained Chest");
             Main.npcFrameCount[NPC.type] = 1;
 			NPCHelper.BuffImmune(Type);
 
 			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true; //Disables happiness
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -215,6 +214,6 @@ namespace SpiritMod.NPCs.BloodstainedChest
 			}
 		}
 
-		public override List<string> SetNPCNameList() => new List<string> { "" };
+		public override List<string> SetNPCNameList() => new() { "" };
 	}
 }

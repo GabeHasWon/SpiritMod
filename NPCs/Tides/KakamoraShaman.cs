@@ -15,10 +15,9 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Kakamora Shaman");
 			Main.npcFrameCount[NPC.type] = 7;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

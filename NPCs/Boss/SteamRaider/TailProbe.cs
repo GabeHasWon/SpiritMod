@@ -17,10 +17,9 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Starfarer");
 			Main.npcFrameCount[NPC.type] = 1;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 
@@ -56,9 +55,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		}
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Microsoft.Xna.Framework.Color color1 = Lighting.GetColor((int)((double)NPC.position.X + (double)NPC.width * 0.5) / 16, (int)(((double)NPC.position.Y + (double)NPC.height * 0.5) / 16.0));
 			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);
-			int r1 = (int)color1.R;
+
 			drawOrigin.Y += 30f;
 			drawOrigin.Y += 8f;
 			--drawOrigin.X;
@@ -76,20 +74,15 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				num14 = 1f - num13;
 			if ((double)num14 < 0.0)
 				num14 = 0.0f;
-			Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
+			Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
 			drawOrigin = r2.Size() / 2f;
 			Vector2 position3 = position1 + new Vector2(0.0f, -20f);
-			Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(255, 138, 36) * 1.6f;
+			Color color3 = new Color(255, 138, 36) * 1.6f;
 			Main.spriteBatch.Draw(texture2D2, position3, r2, color3, NPC.rotation, drawOrigin, NPC.scale * .75f, SpriteEffects.FlipHorizontally, 0.0f);
 			float num15 = 1f + num11 * 0.75f;
 			Main.spriteBatch.Draw(texture2D2, position3, r2, color3 * num12, NPC.rotation, drawOrigin, NPC.scale * .75f * num15, SpriteEffects.FlipHorizontally, 0.0f);
 			float num16 = 1f + num13 * 0.75f;
 			Main.spriteBatch.Draw(texture2D2, position3, r2, color3 * num14, NPC.rotation, drawOrigin, NPC.scale * .75f * num16, SpriteEffects.FlipHorizontally, 0.0f);
-			Texture2D texture2D3 = TextureAssets.Extra[89].Value;
-			Microsoft.Xna.Framework.Rectangle r3 = texture2D3.Frame(1, 1, 0, 0);
-			drawOrigin = r3.Size() / 2f;
-			Vector2 scale = new Vector2(0.75f, 1f + num16) * 1.5f;
-			float num17 = 1f + num13 * 0.75f;
 
 			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/SteamRaider/TailProbe_Glow").Value, screenPos);
 		}
@@ -229,24 +222,12 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				shoottimer = 0;
 
 			NPC.TargetClosest(true);
-			if (NPC.direction == -1) {
-				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-				direction.Normalize();
-				direction *= 12f;
-			}
-			if (NPC.direction == 1) {
-				Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-				direction.Normalize();
-				direction *= -12f;
-			}
-			if (NPC.Center.X >= player.Center.X && moveSpeed >= -80) // flies to players x position
-			{
-				moveSpeed--;
-			}
 
-			if (NPC.Center.X <= player.Center.X && moveSpeed <= 80) {
+			if (NPC.Center.X >= player.Center.X && moveSpeed >= -80) // flies to players x position
+				moveSpeed--;
+
+			if (NPC.Center.X <= player.Center.X && moveSpeed <= 80)
 				moveSpeed++;
-			}
 
 			NPC.velocity.X = moveSpeed * 0.12f;
 
@@ -256,14 +237,13 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				HomeY = 120f;
 			}
 
-			if (NPC.Center.Y <= player.Center.Y - HomeY && moveSpeedY <= 27) {
+			if (NPC.Center.Y <= player.Center.Y - HomeY && moveSpeedY <= 27)
 				moveSpeedY++;
-			}
 
 			NPC.velocity.Y = moveSpeedY * 0.14f;
-			if (Main.rand.NextBool(220)) {
+			if (Main.rand.NextBool(220))
 				HomeY = -35f;
-			}
+
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), .25f, .57f, .85f);
 			NPC.spriteDirection = NPC.direction;
 		}

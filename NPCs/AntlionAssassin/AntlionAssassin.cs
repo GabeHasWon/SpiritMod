@@ -17,13 +17,10 @@ namespace SpiritMod.NPCs.AntlionAssassin
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Antlion Assassin");
 			Main.npcFrameCount[NPC.type] = 6;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Velocity = 1f
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

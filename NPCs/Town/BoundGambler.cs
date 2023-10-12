@@ -13,7 +13,8 @@ namespace SpiritMod.NPCs.Town
 			// DisplayName.SetDefault("Bound Gambler");
 			NPCID.Sets.TownCritter[NPC.type] = true;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

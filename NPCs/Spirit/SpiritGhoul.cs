@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Spirit
 			// DisplayName.SetDefault("Shadow Ghoul");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.DesertGhoul];
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

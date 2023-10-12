@@ -25,11 +25,10 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Vinewrath Husk");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(36f, 60f),
 				PortraitPositionYOverride = 34f,

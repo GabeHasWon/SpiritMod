@@ -18,7 +18,7 @@ namespace SpiritMod.NPCs.Tides
 			// DisplayName.SetDefault("Kakamora Lobber");
 			Main.npcFrameCount[NPC.type] = 7;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

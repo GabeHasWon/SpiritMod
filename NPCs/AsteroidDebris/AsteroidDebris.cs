@@ -13,11 +13,11 @@ namespace SpiritMod.NPCs.AsteroidDebris
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Debris");
 			Main.npcFrameCount[NPC.type] = 5;
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.OnFire, BuffID.OnFire3, BuffID.Poisoned, BuffID.Venom);
+
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 		
 		public override void SetDefaults()

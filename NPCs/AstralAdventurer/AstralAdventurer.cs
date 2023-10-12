@@ -22,16 +22,13 @@ namespace SpiritMod.NPCs.AstralAdventurer
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Astral Adventurer");
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10; 
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo(this, BuffID.OnFire);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Velocity = 1f,
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -60,7 +57,6 @@ namespace SpiritMod.NPCs.AstralAdventurer
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			Texture2D tex = Mod.Assets.Request<Texture2D>("NPCs/AstralAdventurer/AstralAdventurer_Glow").Value;
 			spriteBatch.Draw(tex, new Vector2(NPC.Center.X, NPC.Center.Y + 5) - Main.screenPosition + new Vector2(0, NPC.gfxOffY), NPC.frame, Color.White, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);

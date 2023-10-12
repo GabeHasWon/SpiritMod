@@ -24,14 +24,13 @@ namespace SpiritMod.NPCs.Boulder_Termagant
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Boulder Behemoth");
 			Main.npcFrameCount[NPC.type] = 11;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 
 			NPCID.Sets.TrailCacheLength[NPC.type] = 30;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { PortraitPositionYOverride = -20 };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { PortraitPositionYOverride = -20 };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

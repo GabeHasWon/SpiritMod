@@ -15,11 +15,10 @@ namespace SpiritMod.NPCs.BottomFeeder
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Bottom Feeder");
 			Main.npcFrameCount[NPC.type] = 11;
 			NPCHelper.ImmuneTo<BloodCorrupt, BloodInfusion>(this);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(0f, 12f),
 				PortraitPositionYOverride = 0f,

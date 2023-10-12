@@ -20,10 +20,8 @@ namespace SpiritMod.NPCs.Winterborn
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCHelper.ImmuneTo<CryoCrush>(this, BuffID.Frostburn, BuffID.OnFire);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Velocity = 1f
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

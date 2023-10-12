@@ -9,10 +9,9 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault(string.Empty);
 			Main.npcFrameCount[Type] = 6;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 

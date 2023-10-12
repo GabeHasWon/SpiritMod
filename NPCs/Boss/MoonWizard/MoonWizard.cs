@@ -32,13 +32,12 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Moon Jelly Wizard");
 			Main.npcFrameCount[NPC.type] = 21;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(4f, 34f),
 				PortraitPositionYOverride = 20f,

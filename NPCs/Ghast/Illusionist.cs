@@ -14,14 +14,13 @@ namespace SpiritMod.NPCs.Ghast
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Ghast");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Velocity = 1f,
-				Position = new Vector2(0f, 20f),
+				Position = new Vector2(0f, 20f)
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}

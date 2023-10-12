@@ -15,11 +15,10 @@ namespace SpiritMod.NPCs.BlizzardBandit
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Blizzard Bandit");
             Main.npcFrameCount[NPC.type] = 16;
 			NPCHelper.ImmuneTo(this, BuffID.Frostburn, ModContent.BuffType<MageFreeze>(), ModContent.BuffType<CryoCrush>());
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(-4, 0),
 				Velocity = 1f

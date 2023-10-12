@@ -12,16 +12,12 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 	public class LaserBase : ModNPC
 	{
 		Vector2 direction9 = Vector2.Zero;
-		//private bool shooting;
-		//private bool inblock = true;
-		Vector2 target = Vector2.Zero;
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Laser Launcher");
 			Main.npcFrameCount[NPC.type] = 1;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 

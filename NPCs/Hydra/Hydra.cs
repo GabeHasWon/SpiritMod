@@ -154,15 +154,14 @@ namespace SpiritMod.NPCs.Hydra
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Lernean Hydra");
 			Main.npcFrameCount[NPC.type] = 3;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused, BuffID.OnFire, BuffID.Venom);
 
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				CustomTexturePath = $"{Texture}_Bestiary",
 				Position = new Vector2(28f, 8f),
-				PortraitPositionXOverride = 12f,
+				PortraitPositionXOverride = 12f
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
@@ -632,11 +631,8 @@ namespace SpiritMod.NPCs.Hydra
 
 	public class HydraExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Hydra Spit");
-			Main.projFrames[Projectile.type] = 6;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 6;
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 85;
@@ -749,11 +745,7 @@ namespace SpiritMod.NPCs.Hydra
 
 	public class HydraVenomGlob : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Hydra Spit");
-			Main.projFrames[Projectile.type] = 6;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 6;
 
 		public override void SetDefaults()
 		{

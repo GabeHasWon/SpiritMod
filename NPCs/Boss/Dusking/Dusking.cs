@@ -24,11 +24,10 @@ namespace SpiritMod.NPCs.Boss.Dusking
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Dusking");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.ShadowFlame);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(20, -10),
 				PortraitPositionYOverride = -14

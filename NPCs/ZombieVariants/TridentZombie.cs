@@ -12,10 +12,8 @@ namespace SpiritMod.NPCs.ZombieVariants
 			// DisplayName.SetDefault("Zombie");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.ArmedZombie];
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Hide = true
-			};
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 

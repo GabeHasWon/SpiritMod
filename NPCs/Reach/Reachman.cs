@@ -24,14 +24,10 @@ namespace SpiritMod.NPCs.Reach
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Feral Shambler");
 			Main.npcFrameCount[NPC.type] = 16;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Velocity = 1f
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

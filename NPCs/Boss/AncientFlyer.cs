@@ -22,7 +22,7 @@ namespace SpiritMod.NPCs.Boss
 	[AutoloadBossHead]
 	public class AncientFlyer : ModNPC, IBCRegistrable
 	{
-		private Point tornado = new Point();
+		private Point tornado = new();
 
 		int timer = 0;
 		int moveSpeed = 0;
@@ -31,16 +31,13 @@ namespace SpiritMod.NPCs.Boss
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Ancient Avian");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Position = new Vector2(18f, 24f)
-			};
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Position = new Vector2(18f, 24f) };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 

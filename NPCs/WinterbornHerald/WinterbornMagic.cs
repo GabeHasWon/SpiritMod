@@ -26,10 +26,8 @@ namespace SpiritMod.NPCs.WinterbornHerald
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo<CryoCrush>(this, BuffID.Frostburn, BuffID.OnFire);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Velocity = 1f
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -164,7 +162,7 @@ namespace SpiritMod.NPCs.WinterbornHerald
 				return false;
 			Dust dust = Main.dust[Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + 2f), NPC.width, NPC.height, DustID.Flare_Blue, NPC.velocity.X * 0.2f, NPC.velocity.Y * 0.2f, 100, new Color(), 0.9f)];
 			dust.noGravity = true;
-			dust.velocity.X = dust.velocity.X * 0.3f;
+			dust.velocity.X *= 0.3f;
 			dust.velocity.Y = (dust.velocity.Y * 0.2f) - 1;
 
 			return false;

@@ -16,14 +16,10 @@ namespace SpiritMod.NPCs.AncientApostle
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Ancient Apostle");
 			Main.npcFrameCount[NPC.type] = 7;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Position = new Vector2(0f, 14f),
-			};
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers() { Position = new Vector2(0f, 14f) };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 

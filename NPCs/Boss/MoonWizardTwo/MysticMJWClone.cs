@@ -24,14 +24,13 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 		private float dashDistance = 0f;
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Mystic Clone");
 			Main.npcFrameCount[NPC.type] = 21;
 			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.Confused, BuffID.Poisoned, BuffID.Venom);
 
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -65,8 +64,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 				spriteBatch.Draw(Mod.Assets.Request<Texture2D>("NPCs/Boss/MoonWizardTwo/MoonWizardTwo_Afterimage").Value, NPC.Center + offset - Main.screenPosition + new Vector2(0, NPC.gfxOffY) - NPC.velocity * (float)i * trailLengthModifier, NPC.frame, color, NPC.rotation, NPC.frame.Size() * 0.5f, MathHelper.Lerp(startScale, endScale, i / 10f), spriteEffects, 0f);
 			}
 		}
-		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) { return false; }
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) { drawSpecialGlow(spriteBatch, drawColor); }
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => false;
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => drawSpecialGlow(spriteBatch, drawColor);
 		public void drawSpecialGlow(SpriteBatch spriteBatch, Color drawColor)
 		{
 			SpriteEffects spriteEffects = SpriteEffects.None;
@@ -74,11 +73,11 @@ namespace SpiritMod.NPCs.Boss.MoonWizardTwo
 				spriteEffects = SpriteEffects.FlipHorizontally;
 			Texture2D texture = TextureAssets.Npc[NPC.type].Value;
 			float num99 = (float)(Math.Cos((double)Main.GlobalTimeWrappedHourly % 2.40000009536743 / 2.40000009536743 * 6.28318548202515) / 4.0 + 0.5);
-			Microsoft.Xna.Framework.Color AfterimageColor = new Microsoft.Xna.Framework.Color((int)sbyte.MaxValue, (int)sbyte.MaxValue, (int)sbyte.MaxValue, 0).MultiplyRGBA(new Color(255, 0, 236, 150)) * 5f;
+			Color AfterimageColor = new Color((int)sbyte.MaxValue, (int)sbyte.MaxValue, (int)sbyte.MaxValue, 0).MultiplyRGBA(new Color(255, 0, 236, 150)) * 5f;
 			Vector2 GlowPosition = new Vector2(NPC.Center.X, NPC.Center.Y - 18) - Main.screenPosition - new Vector2((float)texture.Width / 3, (float)(texture.Height / Main.npcFrameCount[NPC.type])) * NPC.scale / 2f + NPC.frame.Size() / 2 * NPC.scale + new Vector2(0.0f, NPC.gfxOffY);
 			for (int index2 = 0; index2 < 4; ++index2)
 			{
-				Microsoft.Xna.Framework.Color GlowColor = NPC.GetAlpha(AfterimageColor) * (1f - num99);
+				Color GlowColor = NPC.GetAlpha(AfterimageColor) * (1f - num99);
 				Vector2 GlowPosition2 = new Vector2(NPC.Center.X, NPC.Center.Y - 18) + ((float)((double)index2 / (double)4 * 6.28318548202515) + NPC.rotation).ToRotationVector2() * (float)(8.0 * (double)num99 + 2.0) - Main.screenPosition - new Vector2((float)texture.Width / 3, (float)(texture.Height / Main.npcFrameCount[NPC.type])) * NPC.scale / 2f + NPC.frame.Size() / 2 * NPC.scale + new Vector2(0.0f, NPC.gfxOffY);
 				Main.spriteBatch.Draw(texture, GlowPosition2, NPC.frame, GlowColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, spriteEffects, 0.0f);
 			}

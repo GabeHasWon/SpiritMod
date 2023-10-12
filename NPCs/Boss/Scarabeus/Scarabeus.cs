@@ -55,13 +55,12 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Scarabeus");
 			Main.npcFrameCount[NPC.type] = 22;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(8f, 12f),
 				PortraitPositionXOverride = 0f

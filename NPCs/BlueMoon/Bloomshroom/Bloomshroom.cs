@@ -22,11 +22,10 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Bloomshroom");
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCHelper.ImmuneTo<StarFlame>(this);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(2f, 0f),
 				Velocity = 1f

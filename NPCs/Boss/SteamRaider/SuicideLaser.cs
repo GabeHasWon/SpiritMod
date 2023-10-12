@@ -16,13 +16,12 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Laser Bomber");
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom);
 
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 
@@ -139,9 +138,6 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			if (NPC.localAI[0] == 12f) {
 				NPC.localAI[0] = 0f;
 				for (int j = 0; j < 12; j++) {
-					Vector2 vector21 = Vector2.UnitX * -NPC.width / 2f;
-					vector21 += -Utils.RotatedBy(Vector2.UnitY, ((float)j * 3.141591734f / 6f), default) * new Vector2(8f, 16f);
-					vector21 = Utils.RotatedBy(vector21, (NPC.rotation - 1.57079637f), default);
 					int num8 = Dust.NewDust(NPC.Center, 0, 0, DustID.Electric, 0f, 0f, 160, default, 1f);
 					Main.dust[num8].scale = .8f;
 					Main.dust[num8].noGravity = true;

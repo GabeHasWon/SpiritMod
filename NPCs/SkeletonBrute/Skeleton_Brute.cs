@@ -18,10 +18,9 @@ namespace SpiritMod.NPCs.SkeletonBrute
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Skeleton Brute");
 			Main.npcFrameCount[NPC.type] = 10;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(0, 40),
 				PortraitPositionYOverride = 0,

@@ -40,10 +40,9 @@ namespace SpiritMod.NPCs.AstralAmalgam
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Astral Buffer");
 			NPCHelper.BuffImmune(Type, true);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

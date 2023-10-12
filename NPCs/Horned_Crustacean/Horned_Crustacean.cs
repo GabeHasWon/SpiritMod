@@ -26,15 +26,12 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Luminous Prowler");
 			Main.npcFrameCount[NPC.type] = 10;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Position = new Vector2(-10, -10),
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Position = new Vector2(-10, -10) };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

@@ -30,7 +30,8 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			NPCID.Sets.TrailCacheLength[NPC.type] = 20;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Position = new Vector2(-8, 8) };
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Position = new Vector2(-8, 8) };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 

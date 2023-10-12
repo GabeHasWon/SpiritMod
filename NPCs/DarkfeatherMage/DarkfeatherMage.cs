@@ -22,14 +22,10 @@ namespace SpiritMod.NPCs.DarkfeatherMage
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Darkfeather Mage");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Position = new Vector2(0, 8)
-			};
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Position = new Vector2(0, 8) };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 

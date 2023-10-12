@@ -11,15 +11,15 @@ namespace SpiritMod.NPCs.Boss.Atlas
 {
 	public class CobbledEye : ModNPC
 	{
-		int timer = 0;
-		bool start = true;
+		private int timer = 0;
+		private bool start;
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Cobbled Eye");
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
+
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 
 		public override void SetDefaults()
@@ -38,9 +38,8 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			if (start)
 			{
 				for (int num621 = 0; num621 < 15; num621++)
-				{
-					int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Stone, 0f, 0f, 100, default, 2f);
-				}
+					Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Stone, 0f, 0f, 100, default, 2f);
+				
 				start = false;
 			}
 
@@ -55,9 +54,8 @@ namespace SpiritMod.NPCs.Boss.Atlas
 				if (Main.rand.NextBool(4))
 				{
 					for (int num621 = 0; num621 < 5; num621++)
-					{
 						Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Electric, 0f, 0f, 100, default, 2f);
-					}
+					
 					int damage = expertMode ? 39 : 55;
 					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<MiracleBeam>(), damage, 1f, NPC.target);
 				}
@@ -137,10 +135,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			}
 		}
 
-		public override bool CheckActive()
-		{
-			return false;
-		}
+		public override bool CheckActive() => false;
 
 		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
@@ -175,8 +170,6 @@ namespace SpiritMod.NPCs.Boss.Atlas
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/Atlas/CobbledEye_Glow").Value, screenPos);
-		}
+			=> GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/Atlas/CobbledEye_Glow").Value, screenPos);
 	}
 }

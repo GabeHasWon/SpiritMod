@@ -16,14 +16,13 @@ namespace SpiritMod.NPCs.Pagoda.SamuraiGhost
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Phantom Samurai");
 			Main.npcFrameCount[NPC.type] = 9;
 			NPCID.Sets.TownCritter[NPC.type] = true;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.BuffImmune(Type);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(-10, 16),
 				Velocity = 1f

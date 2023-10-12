@@ -17,14 +17,13 @@ namespace SpiritMod.NPCs.ArterialGrasper
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Arterial Grasper");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Velocity = 1f,
-				Position = new(0, 10f),
+				Position = new(0, 10f)
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}

@@ -25,11 +25,10 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Infernon");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCHelper.ImmuneTo(this, BuffID.CursedInferno, BuffID.OnFire);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(14, 80),
 				PortraitPositionYOverride = 60

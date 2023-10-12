@@ -16,10 +16,10 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Cobbled Eye");
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0) { Hide = true };
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
+
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 		}
 
 		public override void SetDefaults()
@@ -126,8 +126,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 				Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
 				for (int i = 1; i < NPC.oldPos.Length; ++i)
 				{
-					Vector2 vector2_2 = NPC.oldPos[i];
-					Microsoft.Xna.Framework.Color color2 = Color.White * NPC.Opacity;
+					Color color2 = Color.White * NPC.Opacity;
 					color2.R = (byte)(0.5 * color2.R * (10 - i) / 20.0);
 					color2.G = (byte)(0.5 * color2.G * (10 - i) / 20.0);
 					color2.B = (byte)(0.5 * color2.B * (10 - i) / 20.0);

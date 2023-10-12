@@ -12,14 +12,10 @@ namespace SpiritMod.NPCs.Starfarer
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Stardancer");
 			NPCHelper.BuffImmune(Type, true);
 			Main.npcFrameCount[NPC.type] = 1;
 			
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Hide = true,
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

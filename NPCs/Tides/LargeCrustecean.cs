@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.Tides
 			// DisplayName.SetDefault("Bubble Brute");
 			Main.npcFrameCount[NPC.type] = 9;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Velocity = 1f,
 				Position = new Vector2(16f, 28f),

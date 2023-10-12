@@ -17,10 +17,9 @@ namespace SpiritMod.NPCs.Tides
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Kakamora Shielder");
 			Main.npcFrameCount[NPC.type] = 5;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

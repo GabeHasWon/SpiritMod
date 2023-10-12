@@ -12,12 +12,11 @@ namespace SpiritMod.NPCs.Pagoda.Yuurei
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Yuurei");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

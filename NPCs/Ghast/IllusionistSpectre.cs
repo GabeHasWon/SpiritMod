@@ -12,15 +12,14 @@ namespace SpiritMod.NPCs.Ghast
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Ghast's Spectre");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Velocity = 1f,
-				Position = new Vector2(0f, 20f),
+				Position = new Vector2(0f, 20f)
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}

@@ -19,14 +19,11 @@ namespace SpiritMod.NPCs.Bloatfish
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Bloatfish");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Velocity = 1f
-			};
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+			{ Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

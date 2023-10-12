@@ -30,7 +30,7 @@ namespace SpiritMod.NPCs.Snaptrapper
             NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo<Buffs.DoT.FesteringWounds>(this, BuffID.Poisoned, BuffID.Venom);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(-10, 10),
 				PortraitPositionYOverride = 0,

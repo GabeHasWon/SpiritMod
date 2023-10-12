@@ -13,10 +13,9 @@ namespace SpiritMod.NPCs.DeadeyeMarksman
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Deadeye Marksman");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.GoblinArcher];
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

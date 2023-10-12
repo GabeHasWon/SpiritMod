@@ -17,12 +17,11 @@ namespace SpiritMod.NPCs.Critters.Ocean
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Luminous Floater");
 			Main.npcFrameCount[NPC.type] = 40;
 			Main.npcCatchable[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

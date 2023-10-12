@@ -46,14 +46,13 @@ namespace SpiritMod.NPCs.GraniTech
 		private const int FIRING_CHARGE_TIME = 20;
 		private const int FIRING_SHOOT_TIME = 6;
 
-		private List<(float, int)> laserRotations = new List<(float, int)>();
+		private List<(float, int)> laserRotations = new();
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("G-TEK Turret");
 			Main.npcFrameCount[NPC.type] = 3;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(0, 10),
 				PortraitPositionYOverride = 30
@@ -215,8 +214,7 @@ namespace SpiritMod.NPCs.GraniTech
 
 		private void ScanningAI()
 		{
-			if (laserRotations == null)
-				laserRotations = new List<(float, int)>();
+			laserRotations ??= new List<(float, int)>();
 
 			Vector2 delta = laserEdge - laserOrigin;
 			int length = (int)delta.Length();
@@ -430,9 +428,9 @@ namespace SpiritMod.NPCs.GraniTech
 
 	public class GraniteSentryBolt : ModProjectile, IDrawAdditive
 	{
-		private readonly Color lightCyan = new Color(99, 255, 229);
-		private readonly Color midBlue = new Color(25, 132, 247);
-		private readonly Color darkBlue = new Color(20, 8, 189);
+		private readonly Color lightCyan = new(99, 255, 229);
+		private readonly Color midBlue = new(25, 132, 247);
+		private readonly Color darkBlue = new(20, 8, 189);
 
 		public override void SetStaticDefaults()
 		{

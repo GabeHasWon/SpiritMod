@@ -11,11 +11,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Scarab");
 			Main.npcFrameCount[Type] = 4;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -77,11 +76,10 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Scarab");
 			Main.npcFrameCount[Type] = 8;
 			NPCID.Sets.CountsAsCritter[Type] = true;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 

@@ -12,11 +12,10 @@ namespace SpiritMod.NPCs.ScreechOwl
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Screech Owl");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCHelper.ImmuneTo(this, BuffID.Confused, BuffID.Frostburn);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(0, 10),
 				Velocity = 1f

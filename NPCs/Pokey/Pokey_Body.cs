@@ -17,13 +17,9 @@ namespace SpiritMod.NPCs.Pokey
 
         public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Stactus");
             Main.npcFrameCount[NPC.type] = 3;
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Position = new Vector2(0, 12)
-			};
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Position = new Vector2(0, 12) };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}
 

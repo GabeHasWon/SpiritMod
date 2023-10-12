@@ -16,13 +16,12 @@ namespace SpiritMod.NPCs.FleshHound
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Flesh Hound");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			NPCHelper.ImmuneTo<BloodCorrupt, BloodInfusion>(this);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(18f, 0f),
 				PortraitPositionXOverride = 8f

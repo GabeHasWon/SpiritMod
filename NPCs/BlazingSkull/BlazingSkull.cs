@@ -21,15 +21,14 @@ namespace SpiritMod.NPCs.BlazingSkull
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Wrathful Soul");
 			Main.npcFrameCount[NPC.type] = 17;
 			NPC.gfxOffY = 50;
 			NPCHelper.ImmuneTo(this, BuffID.OnFire);
 
-			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{
 				Position = new Vector2(0, 10),
-				PortraitPositionYOverride = 20,
+				PortraitPositionYOverride = 20
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);
 		}

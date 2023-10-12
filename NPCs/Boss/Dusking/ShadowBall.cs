@@ -13,10 +13,9 @@ namespace SpiritMod.NPCs.Boss.Dusking
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Penumbral Sphere");
 			Main.npcFrameCount[NPC.type] = 4;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
@@ -197,13 +196,9 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			}
 			return true;
 		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return Color.White;
-		}
-		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
-		{
-			target.AddBuff(ModContent.BuffType<Shadowflame>(), 150);
-		}
+
+		public override Color? GetAlpha(Color lightColor) => Color.White;
+
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(ModContent.BuffType<Shadowflame>(), 150);
 	}
 }

@@ -22,14 +22,13 @@ namespace SpiritMod.NPCs.Mechromancer
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Mechromancer");
 			Main.npcFrameCount[NPC.type] = 17;
 			NPCHelper.ImmuneTo<ElectrifiedV2>(this, BuffID.Confused, BuffID.OnFire);
 
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Velocity = 1f };
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers() { Velocity = 1f };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
