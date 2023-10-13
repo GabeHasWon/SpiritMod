@@ -12,7 +12,7 @@ Bismite:
 	'''
 BloodCourt:
 	'''
-	Double tap {tapDir} to sacrifice 8% of your maximum health
+	Double tap {0} to sacrifice 8% of your maximum health
 	and launch a bolt of Dark Anima dealing high damage in a radius
 	This bolt siphons 10 additional health over 5 seconds
 	'''
@@ -49,12 +49,12 @@ Elderbark: Increases all item damage by 1
 Floran: Killing enemies may drop raw meat, restoring health and granting 'Well Fed'
 Frigid:
 	'''
-	Double tap {tapDir} to create an icy wall at the cursor position
+	Double tap {0} to create an icy wall at the cursor position
 	8 second cooldown
 	'''
 Granite:
 	'''
-	Double tap {tapDir} while falling to stomp downward
+	Double tap {0} while falling to stomp downward
 	Hitting the ground releases a shockwave that scales with height
 	'''
 Infernal:
@@ -66,7 +66,7 @@ Infernal:
 JellynautBubble:
 	'''
 	Hitting or killing enemies with magic weapons generates arcane jellyfish around the player
-	Double tap {tapDir} to cause the jellyfish to attack the cursor position
+	Double tap {0} to cause the jellyfish to attack the cursor position
 	'''
 Leather:
 	'''
@@ -98,7 +98,7 @@ Seraph:
 	'''
 Slag:
 	'''
-	Double tap {tapDir} to cause all sentries to release a burst of fireballs
+	Double tap {0} to cause all sentries to release a burst of fireballs
 	8 second cooldown
 	'''
 Spirit:
@@ -117,13 +117,13 @@ Starjinx:
 	'''
 Starplate:
 	'''
-	Double tap {tapDir} to deploy an energy field at the cursor position
+	Double tap {0} to deploy an energy field at the cursor position
 	This field lasts for five seconds and supercharges all ranged projectiles that pass through it
-	{cooldown} second cooldown
+	{1} second cooldown
 	'''
 StreamSurfer:
 	'''
-	Double tap {tapDir} to create a ridable waterspout that damages enemies
+	Double tap {0} to create a ridable waterspout that damages enemies
 	7 second cooldown
 	'''
 Wayfarer:
