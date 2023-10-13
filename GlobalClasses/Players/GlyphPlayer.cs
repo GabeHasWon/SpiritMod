@@ -145,24 +145,24 @@ namespace SpiritMod.GlobalClasses.Players
 				if ((genericCounter = MathHelper.Clamp(genericCounter + (Player.HeldItem.useTime / 60f), 0, 1)) == 1)
 					Player.AddBuff(ModContent.BuffType<TemporalShift>(), (int)MathHelper.Clamp(Player.HeldItem.useTime * 2f, 30, 60));
 			}
-			if (Glyph == GlyphType.Rage && target.life <= 0)
-				frenzyDamage = Math.Max(damage - target.life, 0);
+			if (Glyph == GlyphType.Rage)
+			{
+				bool notCascading = frenzyDamage == 0;
+				frenzyDamage = 0;
+
+				if (target.life <= 0 && notCascading)
+					frenzyDamage = Math.Abs(target.life);
+			}
 			if (Glyph == GlyphType.Veil)
 				veilCounter = MathHelper.Clamp(veilCounter + (Player.HeldItem.useTime / 300f), 0, 1);
 		}
 
 		private void SmartModifyHitAnything(NPC target, Item item, Projectile proj, ref NPC.HitModifiers mods)
 		{
-			if (Glyph == GlyphType.Rage)
+			if (Glyph == GlyphType.Rage && frenzyDamage > 0)
 			{
-				if (frenzyDamage > 1000)
-					frenzyDamage = 1000;
-				if (frenzyDamage > 0)
-				{
-					mods.FinalDamage += frenzyDamage;
-					RageGlyph.RageEffect(Player, target, proj);
-				}
-				frenzyDamage = 0;
+				mods.FinalDamage.Base += frenzyDamage = Math.Min(frenzyDamage, 1000);
+				RageGlyph.RageEffect(Player, target, proj);
 			}
 		}
 

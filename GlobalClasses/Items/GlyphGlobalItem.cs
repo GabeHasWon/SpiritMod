@@ -327,7 +327,7 @@ namespace SpiritMod.GlobalClasses.Items
 				position.X += item.width >> 1;
 				position.Y += item.height - (TextureAssets.Item[item.type].Value.Height >> 1);
 
-				(alphaColor.R, alphaColor.G, alphaColor.B) = ((byte)Math.Min(alphaColor.R + 25, 255), (byte)Math.Min(alphaColor.G + 25, 255), (byte)Math.Min(alphaColor.B + 25, 255));
+				(alphaColor.R, alphaColor.G, alphaColor.B) = ((byte)Math.Min(alphaColor.R + 80, 255), (byte)Math.Min(alphaColor.G + 80, 255), (byte)Math.Min(alphaColor.B + 80, 255));
 				Vector2 origin = new Vector2(texture.Width >> 1, texture.Height >> 1);
 				spriteBatch.Draw(texture, position, null, alphaColor, rotation, origin, scale, SpriteEffects.None, 0f);
 			}

@@ -19,8 +19,7 @@ namespace SpiritMod.Items.Glyphs
 
 		public static void RageEffect(Player owner, NPC target, Projectile proj)
 		{
-			bool projAttack = proj != null;
-			Vector2 position = projAttack ? proj.Center : target.Hitbox.ClosestPointInRect(owner.Center);
+			Vector2 position = (proj != null) ? target.Hitbox.ClosestPointInRect(proj.Center) : target.Hitbox.ClosestPointInRect(owner.Center);
 
 			for (int i = 0; i < 15; i++)
 			{
