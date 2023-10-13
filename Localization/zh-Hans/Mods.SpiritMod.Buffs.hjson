@@ -5,12 +5,12 @@ AceOfDiamondsBuff: {
 
 AngelLight: {
 	DisplayName: 天使之光
-	Description: Mods.SpiritMod.BuffDescription.AngelLight
+	Description: Mods.SpiritMod.Buffs.AngelLight.Description
 }
 
 AngelWrath: {
 	DisplayName: 天使之怒
-	Description: Mods.SpiritMod.BuffDescription.AngelWrath
+	Description: Mods.SpiritMod.Buffs.AngelWrath.Description
 }
 
 ExplorerFight: {
@@ -110,7 +110,7 @@ CrimsonSkullBuff: {
 
 Death: {
 	DisplayName: 死亡
-	Description: Mods.SpiritMod.BuffDescription.Death
+	Description: Mods.SpiritMod.Buffs.Death.Description
 }
 
 DeathRoseCooldown: {
@@ -120,7 +120,7 @@ DeathRoseCooldown: {
 
 AcidBurn: {
 	DisplayName: 剧毒之握
-	Description: Mods.SpiritMod.BuffDescription.AcidBurn
+	Description: Mods.SpiritMod.Buffs.AcidBurn.Description
 }
 
 Afflicted: {
@@ -135,12 +135,12 @@ BloodCorrupt: {
 
 CryoCrush: {
 	DisplayName: 极寒爆破
-	Description: Mods.SpiritMod.BuffDescription.CryoCrush
+	Description: Mods.SpiritMod.Buffs.CryoCrush.Description
 }
 
 DoomDestiny: {
 	DisplayName: 裂星
-	Description: Mods.SpiritMod.BuffDescription.DoomDestiny
+	Description: Mods.SpiritMod.Buffs.DoomDestiny.Description
 }
 
 FesteringWounds: {
@@ -160,7 +160,7 @@ DynastyFanBuff: {
 
 ElectrifiedV2: {
 	DisplayName: 带电
-	Description: Mods.SpiritMod.BuffDescription.ElectrifiedV2
+	Description: Mods.SpiritMod.Buffs.ElectrifiedV2.Description
 }
 
 EleutheriosBuff: {
@@ -175,12 +175,12 @@ FateBlessing: {
 
 Frozen: {
 	DisplayName: 冰冻
-	Description: Mods.SpiritMod.BuffDescription.Frozen
+	Description: Mods.SpiritMod.Buffs.Frozen.Description
 }
 
 BurningRage: {
 	DisplayName: 炽燃之怒
-	Description: 增加17%伤害和攻击速度
+	Description: 你正受到伤害
 }
 
 CollapsingVoid.DisplayName: 坍塌虚空
@@ -220,7 +220,7 @@ WindBurst: {
 
 GraniteArrow_Debuff: {
 	DisplayName: 花岗岩箭矢减益
-	Description: Mods.SpiritMod.BuffDescription.GraniteArrow_Debuff
+	Description: Mods.SpiritMod.Buffs.GraniteArrow_Debuff.Description
 }
 
 GreekFire: {
@@ -235,7 +235,7 @@ HighGravityBuff: {
 
 HolyLight: {
 	DisplayName: 神圣之光
-	Description: Mods.SpiritMod.BuffDescription.HolyLight
+	Description: Mods.SpiritMod.Buffs.HolyLight.Description
 }
 
 IceBerryBuff: {
@@ -250,7 +250,7 @@ InfernalRage: {
 
 MageFreeze: {
 	DisplayName: 冰寒之握
-	Description: Mods.SpiritMod.BuffDescription.MageFreeze
+	Description: Mods.SpiritMod.Buffs.MageFreeze.Description
 }
 
 MidasTouch: {
@@ -290,7 +290,7 @@ TideMountBuff: {
 
 NebulaFlame: {
 	DisplayName: 星云之焰
-	Description: Mods.SpiritMod.BuffDescription.NebulaFlame
+	Description: Mods.SpiritMod.Buffs.NebulaFlame.Description
 }
 
 OliveBranchBuff: {
@@ -438,7 +438,7 @@ DoubleJumpPotionBuff: {
 
 FlightPotionBuff: {
 	DisplayName: 翱翔
-	Description: 增加25%飞行时间。
+	Description: 增加25%飞行时间
 }
 
 MoonBlessing: {
@@ -499,12 +499,12 @@ TurtlePotionBuff: {
 
 Shadowbroken: {
 	DisplayName: 破影
-	Description: Mods.SpiritMod.BuffDescription.Shadowbroken
+	Description: Mods.SpiritMod.Buffs.Shadowbroken.Description
 }
 
 Shadowflame: {
 	DisplayName: 暗影焰
-	Description: Mods.SpiritMod.BuffDescription.Shadowflame
+	Description: Mods.SpiritMod.Buffs.Shadowflame.Description
 }
 
 Shocked: {
@@ -514,7 +514,7 @@ Shocked: {
 
 SoulBurn: {
 	DisplayName: 灵魂灼烧
-	Description: Mods.SpiritMod.BuffDescription.SoulBurn
+	Description: Mods.SpiritMod.Buffs.SoulBurn.Description
 }
 
 SoulFlare: {
@@ -533,7 +533,7 @@ SpiritBuff: {
 
 StackingFireBuff: {
 	DisplayName: 燃烧之火
-	Description: Mods.SpiritMod.BuffDescription.StackingFireBuff
+	Description: Mods.SpiritMod.Buffs.StackingFireBuff.Description
 }
 
 StarCooldown: {
@@ -548,7 +548,7 @@ StarFlame: {
 
 StarFracture: {
 	DisplayName: 星辰崩塌
-	Description: Mods.SpiritMod.BuffDescription.StarFracture
+	Description: Mods.SpiritMod.Buffs.StarFracture.Description
 }
 
 StarplateGravity: {
@@ -568,22 +568,22 @@ Sturdy: {
 
 ElectricSummonTag: {
 	DisplayName: 召唤标记
-	Description: Mods.SpiritMod.BuffDescription.ElectricSummonTag
+	Description: Mods.SpiritMod.Buffs.ElectricSummonTag.Description
 }
 
 SacrificialDaggerBuff: {
 	DisplayName: 舍命一击
-	Description: Mods.SpiritMod.BuffDescription.SacrificialDaggerBuff
+	Description: Mods.SpiritMod.Buffs.SacrificialDaggerBuff.Description
 }
 
 SummonTag3: {
 	DisplayName: 召唤标记
-	Description: Mods.SpiritMod.BuffDescription.SummonTag3
+	Description: Mods.SpiritMod.Buffs.SummonTag3.Description
 }
 
 SummonTag5: {
 	DisplayName: 召唤标记
-	Description: Mods.SpiritMod.BuffDescription.SummonTag5
+	Description: Mods.SpiritMod.Buffs.SummonTag5.Description
 }
 
 SurgingAnguish: {
@@ -613,12 +613,12 @@ SunPotBuff: {
 
 TopazMarked: {
 	DisplayName: 发光
-	Description: Mods.SpiritMod.BuffDescription.TopazMarked
+	Description: Mods.SpiritMod.Buffs.TopazMarked.Description
 }
 
 Tracked: {
 	DisplayName: 追踪
-	Description: Mods.SpiritMod.BuffDescription.Tracked
+	Description: Mods.SpiritMod.Buffs.Tracked.Description
 }
 
 TrueMarksman: {
@@ -633,7 +633,7 @@ UnstableAffliction: {
 
 VineTrap: {
 	DisplayName: 藤蔓陷阱
-	Description: Mods.SpiritMod.BuffDescription.VineTrap
+	Description: Mods.SpiritMod.Buffs.VineTrap.Description
 }
 
 VirulenceCooldown: {
@@ -643,12 +643,12 @@ VirulenceCooldown: {
 
 Wither: {
 	DisplayName: 枯萎
-	Description: Mods.SpiritMod.BuffDescription.Wither
+	Description: Mods.SpiritMod.Buffs.Wither.Description
 }
 
 WitheringLeaf: {
 	DisplayName: 枯叶
-	Description: Mods.SpiritMod.BuffDescription.WitheringLeaf
+	Description: Mods.SpiritMod.Buffs.WitheringLeaf.Description
 }
 
 CryoZoneTimer: {
@@ -779,7 +779,7 @@ SwimmingFatigue: {
 
 CurseBreakerMark: {
 	DisplayName: 诅咒标记
-	Description: Mods.SpiritMod.BuffDescription.CurseBreakerMark
+	Description: Mods.SpiritMod.Buffs.CurseBreakerMark.Description
 }
 
 MarbleMinecartBuff: {

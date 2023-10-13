@@ -1,135 +1,135 @@
-/* Apostle:
+Apostle:
 	'''
-	Wind Spirits guide you, granting an additional jump
-	Magic and ranged attacks occasionally spawn feathers to attack foes
-	''' */
-/* Bismite:
+	风之魂灵指引你，使你获得额外的一段跳跃
+	魔法和远程攻击偶尔会生成羽毛攻击敌人
 	'''
-	Not getting hit builds up stacks of Virulence
-	Virulence charges up every 10 seconds
-	Striking while Virulence is charged releases a toxic explosion
-	Getting hit depletes Virulence entirely
-	''' */
-/* BloodCourt:
+Bismite:
 	'''
-	Double tap {0} to sacrifice 8% of your maximum health
-	and launch a bolt of Dark Anima dealing high damage in a radius
-	This bolt siphons 10 additional health over 5 seconds
-	''' */
-/* Botanist:
+	未受到攻击时会积蓄毒性
+	毒性每10秒充能一次
+	毒性充能后，攻击会释放剧毒爆炸
+	受到攻击时会耗尽所有的毒性
 	'''
-	You gain increased rewards from herbs of all kinds
-	You have a powerful eye for spotting herbs
-	''' */
-/* Cascade:
+BloodCourt:
 	'''
-	Dealing damage to enemies builds up a bubble shield,
-	which at full size grants heavy damage resistance against the next attack,
-	damaging and knocking back nearby enemies.
-	''' */
-// Chitin: Double tap in a direction to dash and envelop yourself in a tornado
-/* Cryolite:
+	双击{0}献祭8%生命值
+	并发射一束暗魂矢，在半径范围内造成高额伤害
+	暗魂矢会在5秒内额外吸取10点生命值
 	'''
-	Generates an icy aura that slows nearby enemies
-	This aura expands gradually, but resets when injured
-	''' */
-/* Daybloom:
+Botanist:
 	'''
-	Being outside during daytime increases defense, maximum mana,
-	and life regeneration slightly
-	''' */
-/* Dusk:
+	你从各种草药中获得奖励增加
+	你拥有一双发现草药的强大眼睛
 	'''
-	8% Increased Magic and Ranged Damage at Night
-	You are surrounded by a rune that guides the way
-	Magic attacks inflict Shadowflame
-	''' */
-// DarkfeatherVisage: Generates exploding darkfeather bolts around the player
-// Elderbark: Increases all item damage by 1
-// Floran: Killing enemies may drop raw meat, restoring health and granting 'Well Fed'
-/* Frigid:
+Cascade:
 	'''
-	Double tap {0} to create an icy wall at the cursor position
-	8 second cooldown
-	''' */
-/* Granite:
+	对敌人造成伤害时会构建起泡泡盾，
+	完整尺寸大小的泡泡盾对受到的下次攻击有着极高的伤害抗性，
+	伤害并击退附近的敌人。
 	'''
-	Double tap {0} while falling to stomp downward
-	Hitting the ground releases a shockwave that scales with height
-	''' */
-/* Infernal:
+Chitin: 双击方向键将你包裹在一股旋风中并进行冲刺
+Cryolite:
 	'''
-	When under 25%, defense is decreased by 4, but Infernal Guardians surround you
-	Infernal Guardians vastly increase magic damage and reduce mana cost
-	Getting hurt may spawn multiple exploding Infernal Embers
-	''' */
-/* JellynautBubble:
+	生成一个能减速附近敌人的冰环
+	冰环会逐渐扩大，但会在你受到伤害时重置大小
 	'''
-	Hitting or killing enemies with magic weapons generates arcane jellyfish around the player
-	Double tap {0} to cause the jellyfish to attack the cursor position
-	''' */
-/* Leather:
+Daybloom:
 	'''
-	Wearing Marksman's Armor builds up concentration
-	While concentrated, your next strike is a critical strike and deals more damage
-	Concentration is disrupted when hurt, but charges faster while standing still
-	''' */
-/* Marble:
+	在白天时小幅度增加防御力、最大魔力值、
+	和生命再生速度。
 	'''
-	Press 'Up' to grant 'Divine Winds', allowing for limited flight
-	10 second cooldown
-	''' */
-/* Primalstone:
+Dusk:
 	'''
-	Melee and magic attacks inflict Unstable Affliction
-	10% reduced movement speed
-	''' */
-/* Rogue:
+	在夜晚时增加8%魔法和远程伤害
+	指引道路的符文环绕着你
+	魔法攻击会造成暗影焰减益
 	'''
-	Getting hit grants four seconds of invisibility and 100% increased damage
-	25 second cooldown
-	''' */
-// Runic: Leave behind dangerous explosive runes
-/* Seraph:
+DarkfeatherVisage: 在你的周围生成爆炸性黑羽
+Elderbark: 所有物品的伤害增加1点
+Floran: 击杀敌人时有几率掉落生肉，生肉会回复生命值并给予“吃得好”增益
+Frigid:
 	'''
-	Being near enemies increases life regen, increases mana regen, increases melee speed
-	and reduces mana cost by 6% per enemy
-	This effect stacks three times
-	''' */
-/* Slag:
+	双击{0}在光标位置创造一面冰墙
+	此效果有8秒冷却时间
 	'''
-	Double tap {0} to cause all sentries to release a burst of fireballs
-	8 second cooldown
-	''' */
-/* Spirit:
+Granite:
 	'''
-	Spirits grant you various buffs based on your health
-	Increases damage by 8% when below 400 health
-	Increases defense by 6 when below 200 Health
-	Increases life regen when below 100 Health
-	Increases invincibility frames when below 50 Health
-	''' */
-/* Starjinx:
+	在下落时双击{0}进行下砸践踏
+	撞击地面时会释放随高度变化的冲击波
 	'''
-	Greatly increases mana useage and prevents useage of mana potions
-	Running out of mana produces a manajinx pylon near you
-	Collecting the manajinx pylon restores all mana and temporarily enchants magic weapons with stars
-	''' */
-/* Starplate:
+Infernal:
 	'''
-	Double tap {0} to deploy an energy field at the cursor position
-	This field lasts for five seconds and supercharges all ranged projectiles that pass through it
-	{1} second cooldown
-	''' */
-/* StreamSurfer:
+	生命值低于25%时，降低4点防御，但炎狱守卫会环绕着你
+	炎狱守卫会大幅度增加魔法伤害并降低魔力消耗
+	受到伤害时有几率生成多个爆炸性炎狱灰烬
 	'''
-	Double tap {0} to create a ridable waterspout that damages enemies
-	7 second cooldown
-	''' */
-/* Wayfarer:
+JellynautBubble:
 	'''
-	Killing enemies grants a stacking damage buff
-	Breaking pots grants a stacking movement speed buff
-	Mining ore grants a stacking mining speed buff
-	All buffs stack up to 4 times
-	''' */
+	使用魔法武器攻击或击杀敌人时会在你周围生成奥术水母
+	双击{0}会使水母向光标位置攻击
+	'''
+Leather:
+	'''
+	穿戴神射手盔甲时可以集中注意力
+	注意力集中时，你的下次攻击必定暴击并且会造成更多伤害
+	受到伤害时注意力会消失，但站定不动时会使注意力恢复的更快
+	'''
+Marble:
+	'''
+	按“上”获得“神性之风”增益，允许你进行有限制的飞行
+	此效果有10秒冷却时间
+	'''
+Primalstone:
+	'''
+	近战和魔法攻击会造成痛苦无常减益
+	降低10%移动速度
+	'''
+Rogue:
+	'''
+	受到攻击时会获得4秒的隐身和100%的伤害提升效果
+	此效果有25秒冷却时间
+	'''
+Runic: 在身后留下危险的爆炸符文
+Seraph:
+	'''
+	附近每有一名敌人，便会增加生命再生速度、魔力再生速度和近战攻速
+	并降低6%魔力消耗
+	此效果至多可叠加三次
+	'''
+Slag:
+	'''
+	双击{0}使所有哨兵释放火球
+	此效果有8秒冷却时间
+	'''
+Spirit:
+	'''
+	魂灵会基于你当前生命值赋予你各种增益
+	生命值低于400点时增加8%伤害
+	生命值低于000点时增加6点防御
+	生命值低于100点时增加生命再生速度
+	生命值低于50点时延长无敌帧时间
+	'''
+Starjinx:
+	'''
+	大幅度增加魔力消耗并禁用魔力药水
+	魔力值耗尽时会在你的附近生成一个魔厄塔
+	收集魔厄塔会回复所有的魔力值并短暂的使魔法武器被星星附魔
+	'''
+Starplate:
+	'''
+	双击{0}在光标位置部署一个能量场
+	能量场存在5秒，并会增压所有经过能量场的远程弹幕
+	此效果有{1}秒冷却时间
+	'''
+StreamSurfer:
+	'''
+	双击{0}创造一个可驾驭的水龙卷来伤害敌人
+	此效果有7秒冷却时间
+	'''
+Wayfarer:
+	'''
+	击杀敌人时会获得可叠加的伤害增益
+	打破罐子时会获得可叠加的移动速度增益
+	挖掘矿石时会获得可叠加的挖掘速度增益
+	上述增益至多可叠加4次
+	'''
