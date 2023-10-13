@@ -9,12 +9,7 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 	[AutoloadEquip(EquipType.Body)]
 	public class ObsidiusPlate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Slag Tyrant's Platemail");
-			// Tooltip.SetDefault("4% increased minion damage\nIncreases your max number of minions");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Body_Glow");
 
 		public override void SetDefaults()
 		{
@@ -29,8 +24,8 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Lighting.AddLight(Item.position, 0.4f, .12f, .028f);
-			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_ItemGlow").Value, rotation, scale);
+			Lighting.AddLight(Item.position, .4f, .12f, .028f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
 		public override void UpdateEquip(Player player)

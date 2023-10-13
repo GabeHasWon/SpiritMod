@@ -54,7 +54,7 @@
 	''' */
 /* Granite:
 	'''
-	Double tap {tapDir} while falling to stomp downward
+	"Double tap {tapDir} while falling to stomp downward"
 	Hitting the ground releases a shockwave that scales with height
 	''' */
 /* Infernal:

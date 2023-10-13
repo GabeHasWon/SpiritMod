@@ -8565,3 +8565,8 @@ SepulchreWindowItem: {
 	DisplayName: 坟葬窗
 	Tooltip: ""
 }
+
+TrollfaceMask: {
+	// DisplayName: Trollface Mask
+	// Tooltip: ""
+}

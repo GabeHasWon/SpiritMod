@@ -80,7 +80,7 @@ namespace SpiritMod
 					{
 						if (info.drawPlayer.shoe != 15 || info.drawPlayer.wearsRobe)
 						{
-							if (!info.drawPlayer.invis)
+							if (!info.drawPlayer.invis && !info.isSitting)
 							{
 								Vector2 adjPos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.legFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.legFrame.Height + 4));
 								DrawData drawData = new DrawData(texture, adjPos + info.drawPlayer.legPosition + info.rotationOrigin, info.drawPlayer.legFrame, info.legsGlowColor, info.drawPlayer.legRotation, info.rotationOrigin, 1f, info.playerEffect, 0)

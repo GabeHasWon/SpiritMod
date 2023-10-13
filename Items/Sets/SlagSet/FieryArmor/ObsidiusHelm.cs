@@ -10,7 +10,7 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class ObsidiusHelm : ModItem
 	{
-		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Head_Glow");
 
 		public override void SetDefaults()
 		{
@@ -26,8 +26,8 @@ namespace SpiritMod.Items.Sets.SlagSet.FieryArmor
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Lighting.AddLight(Item.position, 0.4f, .12f, .028f);
-			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_ItemGlow").Value, rotation, scale);
+			Lighting.AddLight(Item.position, .4f, .12f, .028f);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
 		public override void UpdateEquip(Player player)

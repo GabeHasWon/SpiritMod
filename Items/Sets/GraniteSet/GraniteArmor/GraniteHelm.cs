@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -9,8 +10,7 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 	[AutoloadEquip(EquipType.Head)]
 	public class GraniteHelm : ModItem
 	{
-		public override void SetStaticDefaults()
-			=> SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/GraniteSet/GraniteArmor/GraniteHelm_Glow");
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Head_Glow");
 
 		public override void SetDefaults()
 		{
@@ -22,6 +22,9 @@ namespace SpiritMod.Items.Sets.GraniteSet.GraniteArmor
 		}
 
 		public override void UpdateEquip(Player player) => Player.jumpSpeed += 1;
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor) => glowMaskColor = Color.White;
 

@@ -6,8 +6,6 @@ namespace SpiritMod.Items.Armor.Masks
 	[AutoloadEquip(EquipType.HandsOn)]
 	public class TrapperGlove : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Trapper's Glove");
-
 		public override void SetDefaults()
 		{
 			Item.width = 22;
