@@ -59,7 +59,7 @@ Granite:
 	'''
 Infernal:
 	'''
-	When under 25%, defense is decreased by 4, but Infernal Guardians surround you
+	When under 25% health, defense is decreased by 4, but Infernal Guardians surround you
 	Infernal Guardians vastly increase magic damage and reduce mana cost
 	Getting hurt may spawn multiple exploding Infernal Embers
 	'''
