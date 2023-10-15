@@ -63,7 +63,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Matriarch_Wings
 						Dust.NewDustPerfect(position, DustID.Smoke, velocity, 120, default, Main.rand.NextFloat(0.5f, 1.2f));
 
 						SoundEngine.PlaySound(SoundID.DD2_WyvernDiveDown with { Volume = .5f }, player.position);
-						SoundEngine.PlaySound(SoundID.NPCHit2 with { Volume = .25f, Pitch = -.5f }, player.position);
+						SoundEngine.PlaySound(SoundID.NPCHit11 with { Volume = .75f }, player.position);
 					}
 				}
 
