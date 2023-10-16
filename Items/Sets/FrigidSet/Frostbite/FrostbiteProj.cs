@@ -111,7 +111,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
-			Texture2D cursor = Mod.Assets.Request<Texture2D>("Items/Sets/FrigidSet/Frostbite/FrostbiteCursor").Value;
+			Texture2D cursor = TextureAssets.Projectile[917].Value;
 
 			static float LerpFunc(float frequency) => (float)Math.Sin(Main.timeForVisualEffects / frequency);
 
@@ -125,7 +125,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 
 				Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, color, rotation, texture.Size() / 2, scale, SpriteEffects.None, 0);
 
-				Main.EntitySpriteDraw(Mod.Assets.Request<Texture2D>("Items/Sets/FrigidSet/Frostbite/FrostbiteProj_Glow").Value, Projectile.Center - Main.screenPosition, null, color * .3f, rotation, texture.Size() / 2, scale, SpriteEffects.None, 0);
+				Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition, null, color * .3f, rotation, texture.Size() / 2, scale, SpriteEffects.None, 0);
 			}
 
 			scale = 1f + (Projectile.scale / 3);

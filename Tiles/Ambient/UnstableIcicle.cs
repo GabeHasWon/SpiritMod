@@ -38,7 +38,7 @@ namespace SpiritMod.Tiles.Ambient
 			DustType = -1;
 		}
 
-		public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawData)
+		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			if (Main.rand.NextBool(35))
 			{

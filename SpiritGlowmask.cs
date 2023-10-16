@@ -35,9 +35,9 @@ namespace SpiritMod
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.armor[12].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[12].type, out Texture2D vanity)) //Vanity Legs
-				GlowmaskUtils.DrawArmorGlowMask(EquipType.Legs, vanity, drawInfo);
+				GlowmaskUtils.DrawArmorGlowMask(GlowmaskUtils.ArmorContext.Legs, vanity, drawInfo);
 			else if (drawInfo.drawPlayer.armor[2].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[2].type, out Texture2D armor))
-				GlowmaskUtils.DrawArmorGlowMask(EquipType.Legs, armor, drawInfo);
+				GlowmaskUtils.DrawArmorGlowMask(GlowmaskUtils.ArmorContext.Legs, armor, drawInfo);
 		}
 	}
 
@@ -48,9 +48,22 @@ namespace SpiritMod
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.armor[11].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[11].type, out Texture2D vanity)) //Vanity Body
-				GlowmaskUtils.DrawArmorGlowMask(EquipType.Body, vanity, drawInfo);
+				GlowmaskUtils.DrawArmorGlowMask(GlowmaskUtils.ArmorContext.Body, vanity, drawInfo);
 			else if (drawInfo.drawPlayer.armor[1].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[1].type, out Texture2D armor))
-				GlowmaskUtils.DrawArmorGlowMask(EquipType.Body, armor, drawInfo);
+				GlowmaskUtils.DrawArmorGlowMask(GlowmaskUtils.ArmorContext.Body, armor, drawInfo);
+		}
+	}
+
+	public class SpiritGlowMaskArmsLayer : PlayerDrawLayer
+	{
+		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.ArmOverItem);
+
+		protected override void Draw(ref PlayerDrawSet drawInfo)
+		{
+			if (drawInfo.drawPlayer.armor[11].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[11].type, out Texture2D vanity)) //Vanity Body
+				GlowmaskUtils.DrawArmorGlowMask(GlowmaskUtils.ArmorContext.Arms, vanity, drawInfo);
+			else if (drawInfo.drawPlayer.armor[1].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[1].type, out Texture2D armor))
+				GlowmaskUtils.DrawArmorGlowMask(GlowmaskUtils.ArmorContext.Arms, armor, drawInfo);
 		}
 	}
 
@@ -61,9 +74,9 @@ namespace SpiritMod
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			if (drawInfo.drawPlayer.armor[10].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[10].type, out Texture2D vanity)) //Vanity Head
-				GlowmaskUtils.DrawArmorGlowMask(EquipType.Head, vanity, drawInfo);
+				GlowmaskUtils.DrawArmorGlowMask(GlowmaskUtils.ArmorContext.Head, vanity, drawInfo);
 			else if (drawInfo.drawPlayer.armor[0].type >= ItemID.Count && SpiritGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.armor[0].type, out Texture2D armor))
-				GlowmaskUtils.DrawArmorGlowMask(EquipType.Head, armor, drawInfo);
+				GlowmaskUtils.DrawArmorGlowMask(GlowmaskUtils.ArmorContext.Head, armor, drawInfo);
 		}
 	}
 }
