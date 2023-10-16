@@ -15,8 +15,6 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 	{
 		private bool Released { get => Projectile.ai[0] == 1; set => Projectile.ai[0] = value ? 1 : 0; }
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blizzard");
-
 		public override void SetDefaults()
 		{
 			Projectile.Size = new Vector2(120);
@@ -39,10 +37,6 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 			int fadeInTime = 120;
 			int fadeOutTime = 60;
 
-			owner.heldProj = Projectile.whoAmI;
-			owner.itemTime = owner.itemAnimation = 2;
-			owner.reuseDelay = owner.HeldItem.useTime;
-
 			if (Projectile.timeLeft > fadeOutTime) //One-time on spawn effects
 			{
 				Projectile.scale = 0;
@@ -54,6 +48,9 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 
 			if (owner.channel && !Released)
 			{
+				owner.itemTime = owner.itemAnimation = 2;
+				owner.reuseDelay = owner.HeldItem.useTime;
+
 				if (owner.whoAmI == Main.myPlayer)
 				{
 					if (Main.MouseWorld != Projectile.Center)

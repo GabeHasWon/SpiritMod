@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Sets.MarbleSet;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -13,14 +11,6 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 {
     public class ScreamingTome : ModItem
     {
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Screaming Tome");
-			// Tooltip.SetDefault("Creates orbiting skulls\nRelease to launch skulls");
-
-			Item.staff[Item.type] = false;
-		}
-
 		public override void SetDefaults()
         {
             Item.damage = 16;
@@ -64,11 +54,9 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 
 	public class ScreamingTomeProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Screaming Tome");
-			Main.projFrames[Type] = 5;
-		}
+		public Player Owner => Main.player[Projectile.owner];
+
+		public override void SetStaticDefaults() => Main.projFrames[Type] = 5;
 
 		public override void SetDefaults()
 		{
@@ -80,8 +68,6 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 			Projectile.tileCollide = false;
 		}
 
-		public Player Owner => Main.player[Projectile.owner];
-
 		public override void OnSpawn(IEntitySource source)
 		{
 			if (!Main.dedServ)
@@ -90,7 +76,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 
 		public override void AI()
 		{
-			Projectile.velocity = Vector2.Lerp(Projectile.velocity, new Vector2(Owner.direction * 10, -2 * Owner.gravDir), 0.1f);
+			Projectile.velocity = Vector2.Lerp(Projectile.velocity, new Vector2(Owner.direction * 20, -4 * Owner.gravDir), .1f);
 
 			Owner.itemRotation = MathHelper.WrapAngle(Projectile.velocity.ToRotation() + (Projectile.direction < 0 ? MathHelper.Pi : 0));
 			Owner.heldProj = Projectile.whoAmI;
@@ -119,12 +105,16 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 			Rectangle drawFrame = texture.Frame(1, Main.projFrames[Type], 0, Projectile.frame, 0, -2);
 			SpriteEffects effects = (Projectile.spriteDirection == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, drawFrame, Projectile.GetAlpha(lightColor), Projectile.rotation, drawFrame.Size() / 2, Projectile.scale, effects, 0);
-			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition, drawFrame, Projectile.GetAlpha(Color.White), Projectile.rotation, drawFrame.Size() / 2, Projectile.scale, effects, 0);
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0, Projectile.gfxOffY), drawFrame, Projectile.GetAlpha(lightColor), Projectile.rotation, drawFrame.Size() / 2, Projectile.scale, effects, 0);
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Projectile.Center - Main.screenPosition + new Vector2(0, Projectile.gfxOffY), drawFrame, Projectile.GetAlpha(Color.White), Projectile.rotation, drawFrame.Size() / 2, Projectile.scale, effects, 0);
 
 			return false;
 		}
 
 		public override bool? CanDamage() => false;
+
+		public override bool? CanCutTiles() => false;
+
+		public override bool ShouldUpdatePosition() => false;
 	}
 }
