@@ -102,7 +102,7 @@ namespace SpiritMod
 						if (info.usesCompositeTorso)
 						{
 							static Vector2 GetCompositeOffset_FrontArm(ref PlayerDrawSet drawinfo)
-								=> new Vector2(-5 * ((!drawinfo.playerEffect.HasFlag(SpriteEffects.FlipHorizontally)) ? 1 : (-1)), 0f);
+								=> new(-5 * ((!drawinfo.playerEffect.HasFlag(SpriteEffects.FlipHorizontally)) ? 1 : (-1)), 0f);
 
 							Vector2 pos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 2)) + info.drawPlayer.bodyPosition + (info.drawPlayer.bodyFrame.Size() / 2);
 							pos += GetCompositeOffset_FrontArm(ref info);
@@ -113,14 +113,14 @@ namespace SpiritMod
 								pos += new Vector2((!info.playerEffect.HasFlag(SpriteEffects.FlipHorizontally)) ? 1 : (-1), (!info.playerEffect.HasFlag(SpriteEffects.FlipVertically)) ? 1 : (-1));
 
 							float rotation = info.drawPlayer.bodyRotation + info.compositeFrontArmRotation;
-							DrawData drawData = new DrawData(texture, pos + bobOff, info.compFrontArmFrame, info.armGlowColor, rotation, bodyVect, 1f, info.playerEffect)
+							DrawData drawData = new DrawData(texture, pos + bobOff, info.compFrontArmFrame, info.bodyGlowColor, rotation, bodyVect, 1f, info.playerEffect)
 							{ shader = info.cBody };
 
 							info.DrawDataCache.Add(drawData);
 
 							if (!info.hideCompositeShoulders)
 							{
-								DrawData drawData2 = new DrawData(texture, shoulderPos + bobOff, info.compFrontShoulderFrame, info.armGlowColor, info.drawPlayer.bodyRotation, bodyVect, 1f, info.playerEffect)
+								DrawData drawData2 = new DrawData(texture, shoulderPos + bobOff, info.compFrontShoulderFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, bodyVect, 1f, info.playerEffect)
 								{ shader = info.cBody };
 
 								info.DrawDataCache.Add(drawData2);
@@ -129,7 +129,7 @@ namespace SpiritMod
 						else
 						{
 							Vector2 pos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 2)) + info.drawPlayer.bodyPosition + info.rotationOrigin;
-							DrawData drawData = new DrawData(texture, pos + bobOff, info.drawPlayer.bodyFrame, info.armGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
+							DrawData drawData = new DrawData(texture, pos + bobOff, info.drawPlayer.bodyFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
 							{ shader = info.cBody };
 
 							info.DrawDataCache.Add(drawData);
