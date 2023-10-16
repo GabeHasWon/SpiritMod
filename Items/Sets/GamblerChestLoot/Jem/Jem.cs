@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Armor.Masks;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -10,11 +11,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Jem
 {
 	public class Jem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Jem");
-			// Tooltip.SetDefault("Holds untold power");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<TrollfaceMask>();
 
 		public override void SetDefaults()
 		{

@@ -12,7 +12,9 @@ namespace SpiritMod.Tiles.Ambient
 {
 	public class UnstableIcicle : ModTile
 	{
-		public virtual int TileVariant => 0; //TileObjectData.GetTileData(Type, 0).Height;
+		public const int NumStyles = 12;
+
+		public virtual int TileVariant => 0;
 
 		public override string Texture => "SpiritMod/Tiles/Ambient/UnstableIcicle";
 
@@ -26,6 +28,7 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileNoFail[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.AnchorBottom = AnchorData.Empty;
 			TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide, 1, 0);
 			TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.IceBlock, TileID.SnowBlock };
@@ -35,7 +38,7 @@ namespace SpiritMod.Tiles.Ambient
 			DustType = -1;
 		}
 
-		public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawData)
+		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			if (Main.rand.NextBool(35))
 			{
@@ -47,10 +50,11 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 		{
-			if (Framing.GetTileSafely(i, j).TileFrameX == 0 && Framing.GetTileSafely(i, j).TileFrameY == 0 && !fail)
+			Tile tile = Framing.GetTileSafely(i, j);
+			if (tile.TileFrameY == 0 && !fail)
 			{
 				Projectile proj = Projectile.NewProjectileDirect(new EntitySource_TileBreak(i, j), new Vector2(i, j) * 16 + new Vector2(8, 8), Vector2.Zero, ModContent.ProjectileType<UnstableIcicleProj>(), NPCUtils.ToActualDamage(80, 1.5f, 2f), 0);
-				proj.ai[0] = TileVariant;
+				proj.frame = TileVariant + (tile.TileFrameX / 18 * 3);
 				proj.netUpdate = true;
 			}
 		}
@@ -60,9 +64,12 @@ namespace SpiritMod.Tiles.Ambient
 		public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			Tile tile = Framing.GetTileSafely(i, j);
+			if (tile.TileFrameY != 0)
+				return false; //Because we're specially drawing the entire frame from one tile
+
 			Texture2D texture = TextureAssets.Tile[Type].Value;
-			Rectangle source = new Rectangle(TileVariant * 18, tile.TileFrameY, 16, 16);
-			
+			Rectangle source = texture.Frame(NumStyles, 1, (tile.TileFrameX / 18 * 3) + TileVariant, 0, -2);
+
 			Vector2 offset = Lighting.LegacyEngine.Mode > 1 ? Vector2.Zero : Vector2.One * 12;
 			Vector2 drawPos = ((new Vector2(i, j) + offset) * 16) - Main.screenPosition - new Vector2(0, 2);
 
@@ -84,6 +91,8 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileCut[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
+			TileObjectData.newTile.Origin = Point16.Zero;
+			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.AnchorBottom = AnchorData.Empty;
 			TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide, 1, 0);
 			TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.IceBlock, TileID.SnowBlock };
@@ -107,6 +116,8 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileCut[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
+			TileObjectData.newTile.Origin = Point16.Zero;
+			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.Width = 1;
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };

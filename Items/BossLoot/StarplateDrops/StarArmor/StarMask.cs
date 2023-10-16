@@ -12,7 +12,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 	{
 		public const int CooldownTime = 720;
 
-		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Head_Glow");
 
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 			=> glowMaskColor = Color.White;
@@ -39,7 +39,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarArmor
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			Lighting.AddLight(Item.position, .08f, .28f, .38f);
-			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_ItemGlow").Value, rotation, scale);
+			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

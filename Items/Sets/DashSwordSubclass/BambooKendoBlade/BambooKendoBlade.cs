@@ -57,6 +57,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BambooKendoBlade
 			{
 				Item.noUseGraphic = false;
 				Item.noMelee = false;
+				return true;
 			}
 			return base.CanUseItem(player);
 		}

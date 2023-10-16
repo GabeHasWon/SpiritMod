@@ -11,15 +11,18 @@ namespace SpiritMod.Tiles.Ambient
 {
 	public class UnstableIcicleProj : ModProjectile
 	{
-		private int Variant { get => (int)Projectile.ai[0]; set => Projectile.ai[0] = value; }
-		private int Counter { get => (int)Projectile.ai[1]; set => Projectile.ai[1] = value; }
+		public int Counter { get => (int)Projectile.ai[1]; set => Projectile.ai[1] = value; }
 
-		private readonly int warnTime = 12;
+		private int Size => Projectile.frame % 3;
+
+
+		private const int WarnTime = 12;
+
+		public override string Texture => "SpiritMod/Tiles/Ambient/UnstableIcicle";
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Unstable Icicle");
-			Main.projFrames[Type] = 3;
+			Main.projFrames[Type] = 12;
 			ProjectileID.Sets.TrailCacheLength[Type] = 5;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
@@ -36,14 +39,12 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void AI()
 		{
-			Projectile.height = (16 * (Variant + 1)) - 6;
-			Projectile.frame = Variant;
-			Projectile.tileCollide = Counter > (warnTime + 10); //Allow tile collision after being alive for 10 ticks (after beginning to fall)
+			Projectile.height = (16 * (Size + 1)) - 6;
+			Projectile.tileCollide = Counter > (WarnTime + 10); //Allow tile collision after falling for 10 ticks
 
-			if (++Counter > warnTime)
+			if (++Counter > WarnTime)
 			{
-				const float maxSpeed = 15f;
-				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Vector2.UnitY * maxSpeed, .08f);
+				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Vector2.UnitY * 15f, .08f);
 				Projectile.rotation = 0;
 			}
 			else
@@ -57,8 +58,16 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void OnKill(int timeLeft)
 		{
-			for (int i = 0; i < 10 * (Variant + 1); i++)
-				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Ice, 0, 0, 100, default, Main.rand.NextFloat(.5f, 1f));
+			int type = (Projectile.frame / 3) switch
+			{
+				1 => DustID.Ice_Purple,
+				2 => DustID.Ice_Red,
+				3 => DustID.Ice_Pink,
+				_ => DustID.Ice
+			};
+
+			for (int i = 0; i < 10 * (Size + 1); i++)
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, type, 0, 0, 100, default, Main.rand.NextFloat(.5f, 1f));
 
 			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 		}
@@ -66,7 +75,7 @@ namespace SpiritMod.Tiles.Ambient
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
-			Rectangle frame = texture.Frame(1, Main.projFrames[Type], 0, Variant, 0, -2);
+			Rectangle frame = texture.Frame(Main.projFrames[Type], 1, Projectile.frame, 0, -2);
 			Vector2 drawOffset = new Vector2(Projectile.width / 2, 0);
 			Vector2 origin = new Vector2(frame.Width / 2, 0);
 

@@ -9,6 +9,14 @@ namespace SpiritMod
 {
 	public static class GlowmaskUtils
 	{
+		public enum ArmorContext
+		{
+			Head,
+			Body,
+			Arms,
+			Legs
+		}
+
 		public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture, Vector2 screenPos, Color? color = null)
 		{
 			var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -41,54 +49,106 @@ namespace SpiritMod
 			);
 		}
 
-		public static void DrawArmorGlowMask(EquipType type, Texture2D texture, PlayerDrawSet info)
+		public static void DrawArmorGlowMask(ArmorContext type, Texture2D texture, PlayerDrawSet info)
 		{
 			switch (type)
 			{
-				case EquipType.Head:
+				case ArmorContext.Head:
 					{
-						Vector2 adjPos = new Vector2((int)(info.Position.X - Main.screenPosition.X) + ((info.drawPlayer.width - info.drawPlayer.bodyFrame.Width) / 2), (int)(info.Position.Y - Main.screenPosition.Y) + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 4);
-						DrawData drawData = new DrawData(texture, adjPos + info.drawPlayer.headPosition + info.rotationOrigin, info.drawPlayer.bodyFrame, info.headGlowColor, info.drawPlayer.headRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
-						{
-							shader = info.cHead
-						};
+						Vector2 pos = new Vector2((int)(info.Position.X - Main.screenPosition.X) + ((info.drawPlayer.width - info.drawPlayer.bodyFrame.Width) / 2), (int)(info.Position.Y - Main.screenPosition.Y) + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 4) + info.drawPlayer.headPosition + info.rotationOrigin;
+						DrawData drawData = new DrawData(texture, pos, info.drawPlayer.bodyFrame, info.headGlowColor, info.drawPlayer.headRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
+						{ shader = info.cHead };
+
 						info.DrawDataCache.Add(drawData);
 					}
 					return;
 
-				case EquipType.Body:
+				case ArmorContext.Body:
 					{
-						var bodyFrame = info.compTorsoFrame;
+						if (info.drawPlayer.invis)
+							return;
 
-						if (!info.drawPlayer.invis)
+						Vector2 pos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 2)) + info.drawPlayer.bodyPosition + info.rotationOrigin;
+						Vector2 bobOff = Main.OffsetsPlayerHeadgear[info.drawPlayer.bodyFrame.Y / info.drawPlayer.bodyFrame.Height] * info.drawPlayer.gravDir;
+						if (info.drawPlayer.gravDir == -1)
+							bobOff.Y += 4;
+
+						if (info.usesCompositeTorso)
 						{
-							Vector2 adjPos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 2));
-							Vector2 bobOff = Main.OffsetsPlayerHeadgear[info.drawPlayer.bodyFrame.Y / info.drawPlayer.bodyFrame.Height] * info.drawPlayer.gravDir;
-							if (info.drawPlayer.gravDir == -1)
-								bobOff.Y += 4;
+							DrawData drawData = new DrawData(texture, pos + bobOff, info.compTorsoFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect)
+							{ shader = info.cBody };
 
-							DrawData drawData = new DrawData(texture, adjPos + bobOff + info.drawPlayer.bodyPosition + info.rotationOrigin, bodyFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
-							{
-								shader = info.cBody
-							};
+							info.DrawDataCache.Add(drawData);
+						}
+						else
+						{
+							DrawData drawData = new DrawData(texture, pos + bobOff, info.drawPlayer.bodyFrame, info.bodyGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
+							{ shader = info.cBody };
+
 							info.DrawDataCache.Add(drawData);
 						}
 					}
 					return;
 
-				case EquipType.Legs:
+				case ArmorContext.Arms:
 					{
+						if (info.drawPlayer.invis)
+							return;
+
+						Vector2 bobOff = Main.OffsetsPlayerHeadgear[info.drawPlayer.bodyFrame.Y / info.drawPlayer.bodyFrame.Height] * info.drawPlayer.gravDir;
+						if (info.drawPlayer.gravDir == -1)
+							bobOff.Y += 4;
+
+						if (info.usesCompositeTorso)
+						{
+							static Vector2 GetCompositeOffset_FrontArm(ref PlayerDrawSet drawinfo)
+								=> new Vector2(-5 * ((!drawinfo.playerEffect.HasFlag(SpriteEffects.FlipHorizontally)) ? 1 : (-1)), 0f);
+
+							Vector2 pos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 2)) + info.drawPlayer.bodyPosition + (info.drawPlayer.bodyFrame.Size() / 2);
+							pos += GetCompositeOffset_FrontArm(ref info);
+
+							Vector2 bodyVect = info.bodyVect + GetCompositeOffset_FrontArm(ref info);
+							Vector2 shoulderPos = pos + info.frontShoulderOffset;
+							if (info.compFrontArmFrame.X / info.compFrontArmFrame.Width >= 7)
+								pos += new Vector2((!info.playerEffect.HasFlag(SpriteEffects.FlipHorizontally)) ? 1 : (-1), (!info.playerEffect.HasFlag(SpriteEffects.FlipVertically)) ? 1 : (-1));
+
+							float rotation = info.drawPlayer.bodyRotation + info.compositeFrontArmRotation;
+							DrawData drawData = new DrawData(texture, pos + bobOff, info.compFrontArmFrame, info.armGlowColor, rotation, bodyVect, 1f, info.playerEffect)
+							{ shader = info.cBody };
+
+							info.DrawDataCache.Add(drawData);
+
+							if (!info.hideCompositeShoulders)
+							{
+								DrawData drawData2 = new DrawData(texture, shoulderPos + bobOff, info.compFrontShoulderFrame, info.armGlowColor, info.drawPlayer.bodyRotation, bodyVect, 1f, info.playerEffect)
+								{ shader = info.cBody };
+
+								info.DrawDataCache.Add(drawData2);
+							}
+						}
+						else
+						{
+							Vector2 pos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.bodyFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.bodyFrame.Height + 2)) + info.drawPlayer.bodyPosition + info.rotationOrigin;
+							DrawData drawData = new DrawData(texture, pos + bobOff, info.drawPlayer.bodyFrame, info.armGlowColor, info.drawPlayer.bodyRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
+							{ shader = info.cBody };
+
+							info.DrawDataCache.Add(drawData);
+						}
+					}
+					return;
+
+				case ArmorContext.Legs:
+					{
+						if (info.drawPlayer.invis || info.isSitting)
+							return;
+
 						if (info.drawPlayer.shoe != 15 || info.drawPlayer.wearsRobe)
 						{
-							if (!info.drawPlayer.invis)
-							{
-								Vector2 adjPos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.legFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.legFrame.Height + 4));
-								DrawData drawData = new DrawData(texture, adjPos + info.drawPlayer.legPosition + info.rotationOrigin, info.drawPlayer.legFrame, info.legsGlowColor, info.drawPlayer.legRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
-								{
-									shader = info.cLegs
-								};
-								info.DrawDataCache.Add(drawData);
-							}
+							Vector2 pos = new Vector2((int)(info.Position.X - Main.screenPosition.X - (info.drawPlayer.legFrame.Width / 2) + (info.drawPlayer.width / 2)), (int)(info.Position.Y - Main.screenPosition.Y + info.drawPlayer.height - info.drawPlayer.legFrame.Height + 4)) + info.drawPlayer.legPosition + info.rotationOrigin;
+							DrawData drawData = new DrawData(texture, pos, info.drawPlayer.legFrame, info.legsGlowColor, info.drawPlayer.legRotation, info.rotationOrigin, 1f, info.playerEffect, 0)
+							{ shader = info.cLegs };
+
+							info.DrawDataCache.Add(drawData);
 						}
 					}
 					return;

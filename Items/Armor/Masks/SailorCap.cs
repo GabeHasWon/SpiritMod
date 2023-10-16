@@ -6,18 +6,12 @@ namespace SpiritMod.Items.Armor.Masks
 	[AutoloadEquip(EquipType.Head)]
 	public class SailorCap : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Captain's Cap");
-
-			ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
-		}
+		public override void SetStaticDefaults() => ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true;
 
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 22;
-
 			Item.value = 500;
 			Item.rare = ItemRarityID.Blue;
 			Item.vanity = true;

@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Dusts;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Items.Glyphs;
 using SpiritMod.Projectiles.Glyph;
+using SpiritMod.Projectiles.Sword;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -325,7 +327,7 @@ namespace SpiritMod.GlobalClasses.Items
 				position.X += item.width >> 1;
 				position.Y += item.height - (TextureAssets.Item[item.type].Value.Height >> 1);
 
-				(alphaColor.R, alphaColor.G, alphaColor.B) = ((byte)Math.Min(alphaColor.R + 25, 255), (byte)Math.Min(alphaColor.G + 25, 255), (byte)Math.Min(alphaColor.B + 25, 255));
+				(alphaColor.R, alphaColor.G, alphaColor.B) = ((byte)Math.Min(alphaColor.R + 80, 255), (byte)Math.Min(alphaColor.G + 80, 255), (byte)Math.Min(alphaColor.B + 80, 255));
 				Vector2 origin = new Vector2(texture.Width >> 1, texture.Height >> 1);
 				spriteBatch.Draw(texture, position, null, alphaColor, rotation, origin, scale, SpriteEffects.None, 0f);
 			}
@@ -333,12 +335,15 @@ namespace SpiritMod.GlobalClasses.Items
 
 		public override bool? UseItem(Item item, Player player)
 		{
-			if (Glyph == GlyphType.Storm && player.whoAmI == Main.myPlayer && Main.rand.NextBool((int)MathHelper.Clamp(30 - (player.HeldItem.useTime / 2), 2, 10)))
+			if (Glyph == GlyphType.Storm && player.whoAmI == Main.myPlayer && player.ItemAnimationJustStarted && Main.rand.NextBool((int)MathHelper.Clamp(30 - (player.HeldItem.useTime / 2), 2, 10)))
 			{
 				player.GetModPlayer<GlyphPlayer>().zephyrStrike = true;
 
 				Vector2 velocity = player.DirectionTo(Main.MouseWorld) * ((item.shootSpeed > 1) ? (item.shootSpeed * StormGlyph.VelocityBoost) : 12f);
 				Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, velocity, ModContent.ProjectileType<SlicingGust>(), item.damage, 12f, player.whoAmI);
+
+				if (item.IsMelee() && !item.noUseGraphic)
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, velocity, ModContent.ProjectileType<ZephyrWave>(), 0, 0, player.whoAmI);
 			}
 			return null;
 		}
