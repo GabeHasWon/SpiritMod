@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -10,10 +11,6 @@ namespace SpiritMod.Projectiles
 	{
 		int timer = 0;
 		bool launch = false;
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pumpkin");
-		}
 
 		public override void SetDefaults()
 		{
@@ -25,12 +22,14 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 180;
 			Projectile.friendly = true;
 			Projectile.damage = 10;
+			Projectile.alpha = 255;
 		}
 
 		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-			for (int num623 = 0; num623 < 25; num623++) {
+			for (int num623 = 0; num623 < 25; num623++)
+			{
 				int num622 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Pumpkin, 0f, 0f, 100, default, 2f);
 				Main.dust[num622].noGravity = true;
 				Main.dust[num622].velocity *= 1.5f;
@@ -40,18 +39,22 @@ namespace SpiritMod.Projectiles
 
 		public override void AI()
 		{
-			Lighting.AddLight((int)(Projectile.position.X / 16f), (int)(Projectile.position.Y / 16f), 0.749019608f, 0.443137255f, 0.203921569f);
+			Projectile.alpha = Math.Clamp(Projectile.alpha - 10, 0, byte.MaxValue);
 			timer++;
+
 			Vector2 targetPos = Projectile.Center;
 			float targetDist = 1000f;
 			bool targetAcquired = false;
 
 			//loop through first 200 NPCs in Main.npc
 			//this loop finds the closest valid target NPC within the range of targetDist pixels
-			for (int i = 0; i < 200; i++) {
-				if (Main.npc[i].CanBeChasedBy(Projectile) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[i].Center, 1, 1)) {
+			for (int i = 0; i < 200; i++)
+			{
+				if (Main.npc[i].CanBeChasedBy(Projectile) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[i].Center, 1, 1))
+				{
 					float dist = Projectile.Distance(Main.npc[i].Center);
-					if (dist < targetDist) {
+					if (dist < targetDist)
+					{
 						targetDist = dist;
 						targetPos = Main.npc[i].Center;
 						targetAcquired = true;
@@ -61,13 +64,16 @@ namespace SpiritMod.Projectiles
 
 			//change trajectory to home in on target
 			Projectile.rotation += 0.1f;
-			if (timer > 60) {
+			if (timer > 60)
+			{
 				Projectile.rotation += 0.2f;
 				int num622 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X, Projectile.position.Y - Projectile.velocity.Y), Projectile.width, Projectile.height, DustID.Pumpkin, 0f, 0f, 100, default, 2f);
 				Main.dust[num622].noGravity = true;
 				Main.dust[num622].scale = 0.5f;
 			}
-			if (targetAcquired && timer > 90 && !launch) {
+
+			if (targetAcquired && timer > 90 && !launch)
+			{
 				float homingSpeedFactor = 15f;
 				Vector2 homingVect = targetPos - Projectile.Center;
 				homingVect.Normalize();
@@ -77,31 +83,7 @@ namespace SpiritMod.Projectiles
 				launch = true;
 			}
 
-
-			Vector3 RGB = new Vector3(1f, 0.32f, 0f);
-			float multiplier = 1;
-			float max = 2.25f;
-			float min = 1.0f;
-			RGB *= multiplier;
-			if (RGB.X > max) {
-				multiplier = 0.5f;
-			}
-			if (RGB.X < min) {
-				multiplier = 1.5f;
-			}
-			Lighting.AddLight(Projectile.position, RGB.X, RGB.Y, RGB.Z);
+			Lighting.AddLight((int)(Projectile.position.X / 16f), (int)(Projectile.position.Y / 16f), 0.749019608f, 0.443137255f, 0.203921569f);
 		}
-
-		//public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-		//{
-		//    Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
-		//    for (int k = 0; k < projectile.oldPos.Length; k++)
-		//    {
-		//        Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-		//        Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
-		//        spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
-		//    }
-		//    return true;
-		//}
 	}
 }

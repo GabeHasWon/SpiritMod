@@ -8,6 +8,8 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	[Sacrifice(1)]
 	public abstract class DefaultLargePile1 : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -30,6 +32,8 @@ namespace SpiritMod.Items.Sets.AmbientObjects
 	[Sacrifice(1)]
 	public abstract class DefaultLargePile2 : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetDefaults()
 		{
 			Item.width = 30;

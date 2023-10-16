@@ -1,6 +1,4 @@
-
 using Microsoft.Xna.Framework;
-
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -12,7 +10,6 @@ namespace SpiritMod.Projectiles.Held
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Dusk Lance");
 		}
 
 		int timer = 10;
@@ -68,10 +65,6 @@ namespace SpiritMod.Projectiles.Held
 			}
 		}
 
-		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-		{
-				target.AddBuff(BuffID.ShadowFlame, 300, false);
-		}
-
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffID.ShadowFlame, 300, false);
 	}
 }

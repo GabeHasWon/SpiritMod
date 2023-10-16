@@ -9,11 +9,7 @@ namespace SpiritMod.Items.Sets.SpiritSet
 {
 	public class SpiritSpear : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Spirit Spear");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritSpear_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritSpear_Glow");
 
 		public override void SetDefaults()
 		{

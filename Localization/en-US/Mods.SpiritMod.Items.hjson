@@ -8393,32 +8393,32 @@ WornStoneItem: {
 
 BloodMoonAuroraMonolithItem: {
 	DisplayName: Blood Moon Aurora Monolith
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 FrostMoonAuroraMonolithItem: {
 	DisplayName: Frost Moon Aurora Monolith
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 NormalAuroraMonolithItem: {
 	DisplayName: Aurora Monolith
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 PumpkinAuroraMonolithItem: {
 	DisplayName: Pumpkin Moon Aurora Monolith
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 SpiritBiomeAuroraMonolithItem: {
 	DisplayName: Spirit Biome Aurora Monolith
-	Tooltip: ""
+	Tooltip: Can be equipped to display a local aurora
 }
 
 BlossomCage: {
 	DisplayName: Blossmoon Cage
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 BriarmothCage: {

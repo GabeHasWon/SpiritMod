@@ -1,3 +1,3 @@
-﻿- Improved all NPC bestiary entry codes
-- All bestiary entries are now localized
-- Modified Pirate Lobber's entry slightly: from "it works pretty well on foes as well!" to "it works pretty well on foes too!"
+﻿- Added spear shockwaves to most spears
+- Minor touchups to Fearsome Fork's functionality and visuals
+- Fixed Spirit Spear's projectile literally not working at all

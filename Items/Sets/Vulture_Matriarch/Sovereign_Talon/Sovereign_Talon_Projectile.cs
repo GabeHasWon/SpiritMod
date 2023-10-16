@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
 {
 	public class Sovereign_Talon_Projectile : ModProjectile, ITrailProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Sovereign Talon");
+		private const int ExtensionSize = 20;
 
 		public override void SetDefaults()
 		{
@@ -40,7 +40,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
 		private ref float RotationOffset => ref Projectile.localAI[1];
 		private ref float Charge => ref Projectile.ai[0];
 
-		public const int TimePerSwing = 25;
+		public const int TimePerSwing = 100;
 		public const int maxcharge = 5;
 
 		public override void AI()
@@ -112,7 +112,23 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
 			RotationOffset = reader.ReadSingle();
 		}
 
-		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Main.player[Projectile.owner].Center, Projectile.Center) ? true : base.Colliding(projHitbox, targetHitbox);
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+		{
+			bool collidesWithStick = Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Main.player[Projectile.owner].Center, Projectile.Center);
+			
+			if (collidesWithStick)
+				return true;
+
+			const int HalfSize = ExtensionSize / 2;
+
+			float angle = Projectile.AngleFrom(Main.player[Projectile.owner].Center);
+			Point location = (Projectile.Center - new Vector2(HalfSize) + (angle.ToRotationVector2() * 46)).ToPoint();
+
+			if (targetHitbox.Intersects(new Rectangle(location.X, location.Y, ExtensionSize, ExtensionSize)))
+				return true;
+
+			return null;
+		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
@@ -136,7 +152,24 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
 			DrawGlow(Projectile.Center, timer / 2 + 0.5f, 1.1f);
 
 			Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, origin, Projectile.scale, effects, 0);
+
+			DrawShockwave();
 			return false;
+		}
+
+		private void DrawShockwave()
+		{
+			SpriteEffects effects = (Projectile.direction < 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			float rotation = Projectile.AngleFrom(Main.player[Projectile.owner].Center) + MathHelper.PiOver2;
+			Texture2D wave = TextureAssets.Extra[98].Value;
+			float scale = Projectile.Distance(Main.player[Projectile.owner].Center) / 120f;
+			var wavePos = Projectile.Center - Main.screenPosition - Projectile.velocity * 4;
+			Color baseColor = new(249, 81, 0);
+			Vector2 origin = new Vector2(wave.Width / 2f, wave.Height * 0.75f);
+
+			Main.EntitySpriteDraw(wave, wavePos, null, baseColor * 0.45f, rotation, origin, Projectile.scale * scale, effects, 0);
+			Main.EntitySpriteDraw(wave, wavePos, null, baseColor * 0.25f, rotation, origin, new Vector2(Projectile.scale * 0.9f, Projectile.scale * 1.25f) * scale, effects, 0);
+			Main.EntitySpriteDraw(wave, wavePos, null, baseColor * 0.15f, rotation, origin, new Vector2(Projectile.scale * 0.8f, Projectile.scale * 1.5f) * scale, effects, 0);
 		}
 	}
 

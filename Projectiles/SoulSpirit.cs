@@ -12,8 +12,6 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Fiery Soul");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 8;

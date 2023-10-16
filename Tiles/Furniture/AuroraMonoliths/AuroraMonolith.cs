@@ -9,8 +9,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace SpiritMod.Tiles.Furniture.AuroraMonoliths
-{
+namespace SpiritMod.Tiles.Furniture.AuroraMonoliths;
+
     public abstract class AuroraMonolith : ModTile
     {
         internal virtual int AuroraType => AuroraOverlay.UNUSED_BASIC;
@@ -36,9 +36,9 @@ namespace SpiritMod.Tiles.Furniture.AuroraMonoliths
 
         public sealed override void NearbyEffects(int i, int j, bool closer)
         {
-			if (Main.tile[i, j].TileFrameY >= AnimationFrameHeight)
-				Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[AuroraType] = 6;
-		}
+		if (Main.tile[i, j].TileFrameY >= AnimationFrameHeight)
+			Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[AuroraType] = 6;
+	}
 
         //public override void AnimateTile(ref int frame, ref int frameCounter)
         //{
@@ -71,11 +71,11 @@ namespace SpiritMod.Tiles.Furniture.AuroraMonoliths
             player.cursorItemIconEnabled = true;
             player.cursorItemIconID = DropType;
         }
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
-		}
-		public sealed override void HitWire(int i, int j)
+	public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
+	{
+		offsetY = 2;
+	}
+	public sealed override void HitWire(int i, int j)
         {
             int x = i - Main.tile[i, j].TileFrameX / 18 % 2;
             int y = j - Main.tile[i, j].TileFrameY / 18 % 4;
@@ -106,25 +106,31 @@ namespace SpiritMod.Tiles.Furniture.AuroraMonoliths
         }
     }
 
-	[Sacrifice(1)]
-    public abstract class AuroraMonolithItem : ModItem
-    {
-		public virtual int PlaceType => ModContent.TileType<NormalAuroraMonolith>();
+[Sacrifice(1)]
+public abstract class AuroraMonolithItem : ModItem
+{
+	public virtual int PlaceType => ModContent.TileType<NormalAuroraMonolith>();
 
-        public override void SetDefaults()
-        {
-            Item.width = 22;
-            Item.height = 32;
-            Item.maxStack = Item.CommonMaxStack;
-            Item.useTurn = true;
-            Item.autoReuse = true;
-            Item.useAnimation = 16;
-            Item.useTime = 16;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.buyPrice(0, 2, 0, 0);
-            Item.createTile = PlaceType;
-        }
-    }
+	public override void SetDefaults()
+	{
+		Item.width = 22;
+		Item.height = 32;
+		Item.maxStack = Item.CommonMaxStack;
+		Item.useTurn = true;
+		Item.autoReuse = true;
+		Item.useAnimation = 16;
+		Item.useTime = 16;
+		Item.useStyle = ItemUseStyleID.Swing;
+		Item.consumable = true;
+		Item.rare = ItemRarityID.LightRed;
+		Item.value = Item.buyPrice(0, 2, 0, 0);
+		Item.createTile = PlaceType;
+		Item.accessory = true;
+	}
+
+	public override void UpdateAccessory(Player player, bool hideVisual)
+	{
+		AuroraMonolith tile = ModContent.GetModTile(Item.createTile) as AuroraMonolith;
+		Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[tile.AuroraType] = 6;
+	}
 }
