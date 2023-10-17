@@ -16,6 +16,7 @@ using SpiritMod.Items.Consumable;
 using SpiritMod.Buffs.DoT;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss
 {
@@ -374,12 +375,12 @@ namespace SpiritMod.NPCs.Boss
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 4.2f;
-			name = "Ancient Avian";
+			name = nameof(AncientFlyer);
 			downedCondition = () => MyWorld.downedAncientFlier;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
@@ -391,21 +392,8 @@ namespace SpiritMod.NPCs.Boss
 				new List<int> {
 					ModContent.ItemType<Trophy2>(), ModContent.ItemType<FlierMask>(),
 					ModContent.ItemType<AvianBox>()
-				},
-				new List<int> {
-					ModContent.ItemType<AvianHook>(),
-					ModContent.ItemType<TalonBlade>(),
-					ModContent.ItemType<Talonginus>(),
-					ModContent.ItemType<SoaringScapula>(),
-					ModContent.ItemType<TalonPiercer>(),
-					ModContent.ItemType<SkeletalonStaff>(),
-					ModContent.ItemType<TalonHeaddress>(),
-					ModContent.ItemType<TalonGarb>(),
-					ItemID.LesserHealingPotion
 				});
-			spawnInfo = $"Use a[i:{ModContent.ItemType<JewelCrown>()}] in the sky biome at any time. Alternatively, smash a Giant Avian Egg, which is found on Avian Islands near the sky layer. The Ancient Avian can be fought at any time and any place in progression.";
-			texture = "SpiritMod/Textures/BossChecklist/AvianTexture";
-			headTextureOverride = "SpiritMod/NPCs/Boss/AncientFlyer_Head_Boss";
+			portrait = "SpiritMod/Textures/BossChecklist/AvianTexture";
 		}
 	}
 }

@@ -1,19 +1,13 @@
-using SpiritMod.Items.Material;
 using SpiritMod.NPCs.Tides.Tide;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
 	public class BlackPearl : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Seabreak Pearl");
-			// Tooltip.SetDefault("'Coveted by ancient horrors...'\nSummons The Tide\nCan only be used near the ocean");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
@@ -37,13 +31,13 @@ namespace SpiritMod.Items.Consumable
 
 			if (!player.ZoneBeach)
 			{
-				Main.NewText("The Tide only ebbs by the calm of the sea.", 85, 172, 247);
-				return true;
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.TheTide.NotOcean"), 85, 172, 247);
+				return false;
 			}
 			else if (TideWorld.TheTide)
 			{
-				Main.NewText("The Tide's already come in!", 85, 172, 247);
-				return true;
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.TheTide.AlreadyActive"), 85, 172, 247);
+				return false;
 			}
 			return true;
 		}
@@ -62,7 +56,7 @@ namespace SpiritMod.Items.Consumable
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.Coral, 5);
 			recipe.AddIngredient(ItemID.Bone, 10);
 			recipe.AddTile(TileID.Anvils);

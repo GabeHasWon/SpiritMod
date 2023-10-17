@@ -777,12 +777,12 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 5.9f;
-			name = "Starplate Voyager";
+			name = nameof(SteamRaiderHead);
 			downedCondition = () => MyWorld.downedRaider;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
@@ -795,16 +795,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 					ModContent.ItemType<Trophy3>(),
 					ModContent.ItemType<StarplateMask>(),
 					ModContent.ItemType<StarplateBox>()
-				},
-				new List<int> {
-					ModContent.ItemType<StarMap>(),
-					ModContent.ItemType<CosmiliteShard>(),
-					ItemID.LesserHealingPotion
 				});
-			spawnInfo =
-				$"Use a [i:{ModContent.ItemType<StarWormSummon>()}] at an Astralite Beacon, located in the Asteroids, at nighttime.";
-			texture = "SpiritMod/Textures/BossChecklist/StarplateTexture";
-			headTextureOverride = "SpiritMod/NPCs/Boss/SteamRaider/SteamRaiderHead_Head_Boss";
+			portrait = "SpiritMod/Textures/BossChecklist/StarplateTexture";
 		}
 	}
 }

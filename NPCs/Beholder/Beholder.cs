@@ -16,6 +16,7 @@ using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Beholder
 {
@@ -311,27 +312,18 @@ namespace SpiritMod.NPCs.Beholder
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Miniboss;
 			progression = 3.1f;
-			name = "Beholder";
+			name = nameof(Beholder);
 			downedCondition = () => MyWorld.downedBeholder;
 			identificationData = new BossChecklistDataHandler.BCIDData(
-				new List<int> {
-					ModContent.NPCType<Beholder>()
-				},
+				new List<int> { ModContent.NPCType<Beholder>() },
 				null,
-				null,
-				new List<int> {
-					ModContent.ItemType<BeholderYoyo>(),
-					ModContent.ItemType<MarbleChunk>()
-				});
-			spawnInfo =
-				"The Beholder spawns rarely in Marble Caverns after the Eater of Worlds or Brain of Cthulhu has been defeated.";
-			texture = "SpiritMod/Textures/BossChecklist/BeholderTexture";
-			headTextureOverride = "SpiritMod/NPCs/Beholder_Head_Boss";
+				null);
+			portrait = "SpiritMod/Textures/BossChecklist/BeholderTexture";
 		}
 	}
 }

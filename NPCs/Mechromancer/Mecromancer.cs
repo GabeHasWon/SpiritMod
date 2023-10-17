@@ -15,6 +15,7 @@ using SpiritMod.Buffs;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Projectiles.Hostile;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Mechromancer
 {
@@ -219,14 +220,14 @@ namespace SpiritMod.NPCs.Mechromancer
             return true;
         }
 
-        public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
-	        out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-	        ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
-	        ref Func<bool> isAvailable)
-        {
-	        entryType = BossChecklistDataHandler.EntryType.Miniboss;
+		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
+			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
+			ref Func<bool> isAvailable)
+		{
+			entryType = BossChecklistDataHandler.EntryType.Miniboss;
 	        progression = 3.5f;
-	        name = "Mechromancer";
+	        name = nameof(Mechromancer);
 	        downedCondition = () => MyWorld.downedMechromancer;
 	        identificationData = new BossChecklistDataHandler.BCIDData(
 		        new List<int> {
@@ -237,15 +238,9 @@ namespace SpiritMod.NPCs.Mechromancer
 			        ModContent.ItemType<CoiledMask>(),
 			        ModContent.ItemType<CoiledChestplate>(),
 			        ModContent.ItemType<CoiledLeggings>()
-		        },
-		        new List<int> {
-			        ModContent.ItemType<KnocbackGun>(),
-			        ModContent.ItemType<TechDrive>(),
-			        ItemID.RocketBoots
 		        });
-	        spawnInfo = "The Mechromancer spawns rarely during a Goblin Army after the Eye of Cthulhu has been defeated.";
-	        texture = "SpiritMod/Textures/BossChecklist/MechromancerTexture";
-	        headTextureOverride = "SpiritMod/NPCs/Mecromancer_Head_Boss";
-        }
+	        portrait = "SpiritMod/Textures/BossChecklist/MechromancerTexture";
+			headIcon = Texture + "_Head_Boss";
+		}
 	}
 }

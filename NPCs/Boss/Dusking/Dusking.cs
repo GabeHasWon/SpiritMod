@@ -15,6 +15,7 @@ using SpiritMod.Utilities.ModCompatibility.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Placeable.Relics;
 using SpiritMod.Items.BossLoot.DuskingDrops.DuskingPet;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss.Dusking
 {
@@ -494,12 +495,12 @@ namespace SpiritMod.NPCs.Boss.Dusking
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 11.4f;
-			name = "Dusking";
+			name = nameof(Dusking);
 			downedCondition = () => MyWorld.downedDusking;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> { ModContent.NPCType<Dusking>() },
@@ -508,21 +509,9 @@ namespace SpiritMod.NPCs.Boss.Dusking
 				{
 					ModContent.ItemType<Trophy6>(),
 					ModContent.ItemType<DuskingMask>()
-				},
-				new List<int>
-				{
-					ModContent.ItemType<DuskPendant>(),
-					ModContent.ItemType<ShadowflameSword>(),
-					ModContent.ItemType<UmbraStaff>(),
-					ModContent.ItemType<ShadowSphere>(),
-					ModContent.ItemType<Shadowmoor>(),
-					ModContent.ItemType<DuskStone>(),
-					ItemID.GreaterHealingPotion
 				});
-			spawnInfo =
-				$"Use a [i:{ModContent.ItemType<DuskCrown>()}] anywhere at nighttime.";
-			texture = "SpiritMod/Textures/BossChecklist/DuskingTexture";
-			headTextureOverride = "SpiritMod/NPCs/Boss/Dusking/Dusking_Head_Boss";
+			portrait = "SpiritMod/Textures/BossChecklist/DuskingTexture";
+			headIcon = "SpiritMod/NPCs/Boss/Dusking/Dusking_Head_Boss";
 		}
 	}
 }

@@ -28,6 +28,7 @@ using SpiritMod.Utilities.ModCompatibility.PhaseIndicatorCompat;
 using Terraria.GameContent.ItemDropRules;
 using ReLogic.Utilities;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss.Scarabeus
 {
@@ -1303,12 +1304,12 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 1.4f;
-			name = "Scarabeus";
+			name = nameof(Scarabeus);
 			downedCondition = () => MyWorld.downedScarabeus;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
@@ -1321,21 +1322,8 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 					ModContent.ItemType<Trophy1>(),
 					ModContent.ItemType<ScarabMask>(),
 					ModContent.ItemType<ScarabBox>()
-				},
-				new List<int> {
-					ModContent.ItemType<ScarabPendant>(),
-					ModContent.ItemType<Chitin>(),
-					ModContent.ItemType<ScarabBow>(),
-					ModContent.ItemType<LocustCrook>(),
-					ModContent.ItemType<RoyalKhopesh>(),
-					ModContent.ItemType<RadiantCane>(),
-					ModContent.ItemType<SandsOfTime>(),
-					ItemID.LesserHealingPotion
 				});
-			spawnInfo =
-				$"Use a [i:{ModContent.ItemType<ScarabIdol>()}] in the Desert during the daytime. A [i:{ModContent.ItemType<ScarabIdol>()}] can be found upon completing a certain Adventurer quest, or can be crafted, and is non-consumable.";
-			texture = "SpiritMod/Textures/BossChecklist/ScarabeusTexture";
-			headTextureOverride = "SpiritMod/NPCs/Boss/Scarabeus/Scarabeus_Head_Boss";
+			portrait = "SpiritMod/Textures/BossChecklist/ScarabeusTexture";
 		}
 	}
 }

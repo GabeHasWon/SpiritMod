@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpiritMod.Items.Armor;
 using SpiritMod.Items.Sets.RlyehianDrops;
-using SpiritMod.Items.Sets.SeraphSet;
 using SpiritMod.Items.Consumable;
-using SpiritMod.Items.Consumable.Potion;
 using SpiritMod.Items.Placeable.MusicBox;
-using SpiritMod.Items.Weapon.Summon.ElectricGun;
-using SpiritMod.Items.Sets.TideDrops;
-using SpiritMod.Items.Weapon.Summon;
 using SpiritMod.NPCs.MoonjellyEvent;
 using SpiritMod.NPCs.Tides;
 using Terraria.ModLoader;
-using SpiritMod.Items.BossLoot.MoonWizardDrops;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Localization;
 
 namespace SpiritMod.Utilities
 {
@@ -47,78 +44,77 @@ namespace SpiritMod.Utilities
 			public readonly List<int> npcIDs;
 			public readonly List<int> itemSpawnIDs;
 			public readonly List<int> itemCollectionIDs;
-			public readonly List<int> itemLootIDs;
 
-			public BCIDData(List<int> npcIDs, List<int> itemSpawnIDs, 
-				List<int> itemCollectionIDs, List<int> itemLootIDs)
+			public BCIDData(List<int> npcIDs, List<int> itemSpawnIDs, List<int> itemCollectionIDs)
 			{
 				this.npcIDs = npcIDs;
 				this.itemSpawnIDs = itemSpawnIDs;
 				this.itemCollectionIDs = itemCollectionIDs;
-				this.itemLootIDs = itemLootIDs;
 			}
 		}
 
-		public static void AddBoss(this Mod mod, float progression, string npcName, Func<bool> downedCondition,
-			BCIDData identificationData, string spawnInfo, string despawnMessage, string texture,
+		/*public static void LogBoss(this Mod mod, float progression, string npcName, Func<bool> downedCondition,
+			BCIDData identificationData, string spawnInfo, string despawnMessage, Action<SpriteBatch, Rectangle, Color> portrait,
 			string overrideHeadIconTexture, Func<bool> bossAvailable) =>
 			AddBCEntry(EntryType.Boss, mod, progression, npcName, downedCondition, identificationData, spawnInfo,
-				despawnMessage, texture, overrideHeadIconTexture, bossAvailable);
+				despawnMessage, portrait, overrideHeadIconTexture, bossAvailable);
 
-		public static void AddMiniBoss(this Mod mod, float progression, string npcName, Func<bool> downedCondition,
-			BCIDData identificationData, string spawnInfo, string despawnMessage, string texture,
+		public static void LogMiniBoss(this Mod mod, float progression, string npcName, Func<bool> downedCondition,
+			BCIDData identificationData, string spawnInfo, string despawnMessage, Action<SpriteBatch, Rectangle, Color> portrait,
 			string overrideHeadIconTexture, Func<bool> bossAvailable) =>
 			AddBCEntry(EntryType.Miniboss, mod, progression, npcName, downedCondition, identificationData, spawnInfo,
-				despawnMessage, texture, overrideHeadIconTexture, bossAvailable);
+				despawnMessage, portrait, overrideHeadIconTexture, bossAvailable);*/
 
-		public static void AddEvent(this Mod mod, float progression, string eventName, Func<bool> downedCondition,
-			BCIDData identificationData, string spawnInfo, string despawnMessage, string texture,
+		public static void LogEvent(this Mod mod, float progression, string eventName, Func<bool> downedCondition,
+			BCIDData identificationData, LocalizedText spawnInfo, string portrait,
 			string overrideHeadIconTexture,
 			Func<bool> eventAvailable) =>
 			AddBCEntry(EntryType.Event, mod, progression, eventName, downedCondition, identificationData, spawnInfo,
-				despawnMessage, texture, overrideHeadIconTexture, eventAvailable);
+				null, portrait, overrideHeadIconTexture, eventAvailable);
 
-		private static void AddBCEntry(EntryType entryType, Mod mod, float progression, string bcName,
-			Func<bool> downedCondition, BCIDData identificationData, string spawnInfo,
-			string despawnMessage, string texture, string overrideHeadIconTexture,
+		private static void AddBCEntry(EntryType entryType, Mod mod, float progression, string name,
+			Func<bool> downedCondition, BCIDData identificationData, LocalizedText spawnInfo,
+			LocalizedText despawnMessage, string portrait, string overrideHeadIconTexture,
 			Func<bool> bossAvailable)
 		{
-			string addType;
+			string logType = entryType switch
+			{
+				EntryType.Boss => "LogBoss",
+				EntryType.Miniboss => "LogMiniBoss",
+				EntryType.Event => "LogEvent",
+				_ => throw new ArgumentOutOfRangeException(nameof(entryType), entryType, null),
+			};
 
-			switch (entryType) {
-				case EntryType.Boss:
-					addType = "AddBoss";
-					break;
+			var extraData = new Dictionary<string, object>()
+			{
+				["spawnItems"] = identificationData.itemSpawnIDs ?? new List<int>(),
+				["collectibles"] = identificationData.itemCollectionIDs ?? new List<int>(),
+				["availability"] = bossAvailable ?? (() => true),
+			};
 
-				case EntryType.Miniboss:
-					addType = "AddMiniBoss";
-					break;
-
-				case EntryType.Event:
-					addType = "AddEvent";
-					break;
-
-				default:
-					throw new ArgumentOutOfRangeException(nameof(entryType), entryType, null);
+			if (overrideHeadIconTexture != string.Empty)
+				extraData.Add("overrideHeadTextures", overrideHeadIconTexture);
+			if (spawnInfo != null)
+				extraData.Add("spawnInfo", spawnInfo);
+			if (despawnMessage != null)
+				extraData.Add("despawnMessage", despawnMessage);
+			if (portrait != string.Empty)
+			{
+				extraData.Add("customPortrait", (SpriteBatch spriteBatch, Rectangle rect, Color color) => {
+					Texture2D texture = ModContent.Request<Texture2D>(portrait).Value;
+					Vector2 centered = rect.Location.ToVector2() + (rect.Size() / 2) - (texture.Size() / 2);
+					spriteBatch.Draw(texture, centered, color);
+				});
 			}
 
 			BossChecklistMod.Call(
-				addType,
-				progression,
-				identificationData.npcIDs ?? new List<int>(),
+				logType,
 				mod,
-				bcName,
+				name,
+				progression,
 				downedCondition,
-				identificationData.itemSpawnIDs ?? new List<int>(),
-				identificationData.itemCollectionIDs ?? new List<int>(),
-				identificationData.itemLootIDs ?? new List<int>(),
-				spawnInfo.IsNullOrEmptyFallback("Mods.BossChecklist.BossLog.DrawnText.NoInfo"),
-				despawnMessage.IsNullOrEmptyFallback(entryType == EntryType.Boss
-					? "Mods.BossChecklist.BossVictory.Generic"
-					: ""),
-				texture.IsNullOrEmptyFallback("BossChecklist/Resources/BossTextures/BossPlaceholder_byCorrina"),
-				overrideHeadIconTexture,
-				bossAvailable ?? (() => true)
+				identificationData.npcIDs ?? new List<int>(),
+				extraData
 			);
 		}
 		
@@ -133,9 +129,9 @@ namespace SpiritMod.Utilities
 
 		private static void RegisterSpiritEvents(Mod spiritMod)
 		{
-			spiritMod.AddEvent(
+			spiritMod.LogEvent(
 				2.4f,
-				"Jelly Deluge",
+				"JellyDeluge",
 				() => MyWorld.downedJellyDeluge,
 				new BCIDData(
 					new List<int> {
@@ -148,22 +144,16 @@ namespace SpiritMod.Utilities
 					},
 					new List<int> {
 						ModContent.ItemType<JellyDelugeBox>()
-					},
-					new List<int> {
-						ModContent.ItemType<NautilusClub>(), ModContent.ItemType<ElectricGun>(),
-						ModContent.ItemType<DreamlightJellyItem>(), ModContent.ItemType<TinyLunazoaItem>(),
-						ModContent.ItemType<MoonJelly>()
 					}),
-				"Naturally occurs aboveground after any boss has been defeated. Can also be summoned by using a Distress Jelly, found in Asteroid Biomes and caught using a bug net. Occurs less frequently after the Moon Jelly Wizard has been defeated.",
-				"",
+				Language.GetText("Mods.SpiritMod.Events.JellyDeluge.BossChecklistIntegration.Condition"),
 				"SpiritMod/Textures/BossChecklist/JellyDeluge",
 				"SpiritMod/Textures/BossChecklist/JellyDelugeIcon",
 				null
 			);
 
-			spiritMod.AddEvent(
+			spiritMod.LogEvent(
 				6.6f,
-				"The Tide",
+				"TheTide",
 				() => MyWorld.downedTide,
 				new BCIDData(
 					new List<int> {
@@ -186,27 +176,16 @@ namespace SpiritMod.Utilities
 						ModContent.ItemType<Trophy10>(),
 						ModContent.ItemType<RlyehMask>(),
 						ModContent.ItemType<TideBox>()
-					},
-					new List<int> {
-						ModContent.ItemType<TribalScale>(),
-						ModContent.ItemType<PumpBubbleGun>(),
-						ModContent.ItemType<MagicConch>(),
-						ModContent.ItemType<TikiJavelin>(),
-						ModContent.ItemType<MangoJellyStaff>(),
-						ModContent.ItemType<TomeOfRylien>(),
-						ModContent.ItemType<TentacleChain>(),
-						ModContent.ItemType<CoconutGun>()
 					}),
-				$"Use a [i:{ModContent.ItemType<BlackPearl>()}] at the Ocean at any time.",
-				"",
+				Language.GetText("Mods.SpiritMod.Events.TheTide.BossChecklistIntegration.Condition"),
 				"SpiritMod/Textures/BossChecklist/TideTexture",
-				"SpiritMod/Effects/InvasionIcons/Depths_Icon",
+				"SpiritMod/Textures/InvasionIcons/Depths_Icon",
 				null
 			);
 
-			spiritMod.AddEvent(
+			spiritMod.LogEvent(
 				7.5f,
-				"Mystic Moon",
+				"MysticMoon",
 				() => MyWorld.downedBlueMoon,
 				new BCIDData(
 					new List<int> {
@@ -220,16 +199,8 @@ namespace SpiritMod.Utilities
 					new List<int> {
 						ModContent.ItemType<BlueMoonSpawn>()
 					},
-					null,
-					new List<int> {
-						ModContent.ItemType<MoonStone>(),
-						ModContent.ItemType<Items.Sets.MagicMisc.AstralClock.StopWatch>(),
-						ModContent.ItemType<MagicConch>(),
-						ModContent.ItemType<GloomgusStaff>(),
-						ModContent.ItemType<MadHat>()
-					}),
-				$"Use a [i:{ModContent.ItemType<BlueMoonSpawn>()}] at nighttime.",
-				"",
+					null),
+				Language.GetText("Mods.SpiritMod.Events.BlueMoon.BossChecklistIntegration.Condition"),
 				"SpiritMod/Textures/BossChecklist/MysticMoonTexture",
 				"SpiritMod/Textures/BossChecklist/BlueMoonIcon",
 				null
@@ -239,21 +210,21 @@ namespace SpiritMod.Utilities
 		private static void RegisterInterfaces(Mod spiritMod)
 		{
 			foreach (Type type in spiritMod.Code.GetTypes().Where(x => x.GetInterfaces().Contains(typeof(IBCRegistrable)))) {
-				BCIDData identificationData = new BCIDData(null, null, null, null);
-				string spawnInfo = "";
-				string despawnMessage = "";
-				string texture = "";
+				BCIDData identificationData = new BCIDData(null, null, null);
+				LocalizedText spawnInfo = null;
+				LocalizedText despawnMessage = null;
+				string portrait = "";
 				string headTextureOverride = "";
 				Func<bool> isAvailable = null;
 
-				if (!(Activator.CreateInstance(type) is IBCRegistrable registrableType))
+				if (Activator.CreateInstance(type) is not IBCRegistrable registrableType)
 					continue;
 
 				registrableType.RegisterToChecklist(out EntryType entryType, out float progression, out string name,
 					out Func<bool> downedCondition, ref identificationData, ref spawnInfo, ref despawnMessage,
-					ref texture, ref headTextureOverride, ref isAvailable);
+					ref portrait, ref headTextureOverride, ref isAvailable);
 
-				AddBCEntry(entryType, spiritMod, progression, name, downedCondition, identificationData, spawnInfo, despawnMessage, texture, headTextureOverride, isAvailable);
+				AddBCEntry(entryType, spiritMod, progression, name, downedCondition, identificationData, spawnInfo, despawnMessage, portrait, headTextureOverride, isAvailable);
 			}
 		}
 	}

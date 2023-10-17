@@ -11,12 +11,6 @@ namespace SpiritMod.Items.Consumable
 {
 	public class CursedCloth : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pain Caller");
-			// Tooltip.SetDefault("Use in the Underworld to summon Infernon");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;

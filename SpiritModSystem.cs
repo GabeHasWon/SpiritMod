@@ -22,7 +22,6 @@ using SpiritMod.NPCs.Tides.Tide;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
 using SpiritMod.Utilities.Journey;
-using SpiritMod.Utilities.ModCompatibility.PhaseIndicatorCompat;
 using System;
 using System.Collections.Generic;
 using Terraria;

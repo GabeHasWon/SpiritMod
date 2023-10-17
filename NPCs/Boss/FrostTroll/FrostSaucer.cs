@@ -9,13 +9,17 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
-using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Placeable.Relics;
+using SpiritMod.Utilities;
+using SpiritMod.NPCs.Boss.Occultist;
+using System.Collections.Generic;
+using System;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss.FrostTroll
 {
 	[AutoloadBossHead]
-	public class FrostSaucer : ModNPC
+	public class FrostSaucer : ModNPC, IBCRegistrable
 	{
 		private bool trailBehind;
 		private bool canHitPlayer;
@@ -297,6 +301,24 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => Main.invasionType == 2 && !NPC.AnyNPCs(ModContent.NPCType<FrostSaucer>()) && spawnInfo.Player.ZoneOverworldHeight ? 0.018f : 0f;
+		
 		public override void BossLoot(ref string name, ref int potionType) => potionType = ItemID.GreaterHealingPotion;
+
+		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
+			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
+			ref Func<bool> isAvailable)
+		{
+			entryType = BossChecklistDataHandler.EntryType.Miniboss;
+			progression = 7.35f;
+			name = nameof(FrostSaucer);
+			downedCondition = () => MyWorld.downedOccultist;
+			identificationData = new BossChecklistDataHandler.BCIDData(
+				new List<int> { ModContent.NPCType<FrostSaucer>() },
+				null,
+				null);
+			headIcon = Texture + "_Head_Boss";
+			isAvailable = () => Main.xMas;
+		}
 	}
 }

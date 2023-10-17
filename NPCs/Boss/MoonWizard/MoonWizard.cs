@@ -22,6 +22,7 @@ using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Biomes.Events;
 using SpiritMod.Items.Placeable.Relics;
 using ReLogic.Content;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss.MoonWizard
 {
@@ -800,12 +801,12 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 2.5f;
-			name = "Moon Jelly Wizard";
+			name = nameof(MoonWizard);
 			downedCondition = () => MyWorld.downedMoonWizard;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
@@ -818,19 +819,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 					ModContent.ItemType<MJWTrophy>(),
 					ModContent.ItemType<MJWMask>(),
 					ModContent.ItemType<MJWBox>()
-				},
-				new List<int> {
-					ModContent.ItemType<Cornucopion>(),
-					ModContent.ItemType<MoonjellySummonStaff>(),
-					ModContent.ItemType<NautilusClub>(),
-					ModContent.ItemType<JellynautBubble>(),
-					ModContent.ItemType<Moonshot>(),
-					ModContent.ItemType<MoonJelly>()
 				});
-			spawnInfo =
-				$"Use a [i:{ModContent.ItemType<DreamlightJellyItem>()}] anywhere aboveground at nighttime. A [i:{ModContent.ItemType<DreamlightJellyItem>()}] can be caught with a bug net during the Jelly Deluge, and is non-consumable";
-			texture = "SpiritMod/Textures/BossChecklist/MoonWizardTexture";
-			headTextureOverride = "SpiritMod/NPCs/Boss/MoonWizard/MoonWizard_Head_Boss";
+			portrait = "SpiritMod/Textures/BossChecklist/MoonWizardTexture";
 		}
 	}
 }

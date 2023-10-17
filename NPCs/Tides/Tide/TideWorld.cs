@@ -59,9 +59,9 @@ namespace SpiritMod.NPCs.Tides.Tide
 			if (TideWave > 5)
 			{
 				if (Main.netMode == NetmodeID.Server)
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Tide has waned!"), new Color(61, 255, 142));
+					ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.TheTide.OnEnd"), new Color(61, 255, 142));
 				else if (Main.netMode == NetmodeID.SinglePlayer)
-					Main.NewText("The Tide has waned!", 61, 255, 142);
+					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.TheTide.OnEnd"), 61, 255, 142);
 
 				TheTide = false;
 				TideWave = 0;
@@ -99,13 +99,11 @@ namespace SpiritMod.NPCs.Tides.Tide
 
 		private static string GetWaveChatText(int wave)
 		{
-			string wavetext = "Wave " + wave + " : ";
+			string wavetext = Language.GetTextValue("Mods.SpiritMod.Events.TheTide.Wave", wave);
 			IDictionary<int, float> spawnpool = TideNPC.Spawnpool.ElementAt(wave - 1); //find the spawn pool dictionary corresponding to the current tide wave
 			wavetext += Lang.GetNPCName(spawnpool.First().Key); //write the first npc name in the spawn pool dictionary
 			foreach (KeyValuePair<int, float> key in spawnpool.Skip(1))
-			{ //then for ever npc name after it, add a comma and space before their name
-				wavetext += ", " + Lang.GetNPCName(key.Key);
-			}
+				wavetext += ", " + Lang.GetNPCName(key.Key); //then for ever npc name after it, add a comma and space before their name
 
 			return wavetext;
 		}

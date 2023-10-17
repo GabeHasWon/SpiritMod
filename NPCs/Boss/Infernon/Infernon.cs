@@ -431,12 +431,12 @@ namespace SpiritMod.NPCs.Boss.Infernon
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 7.5f;
-			name = "Infernon";
+			name = nameof(Infernon);
 			downedCondition = () => MyWorld.downedInfernon;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
@@ -449,23 +449,8 @@ namespace SpiritMod.NPCs.Boss.Infernon
 					ModContent.ItemType<Trophy4>(),
 					ModContent.ItemType<InfernonMask>(),
 					ModContent.ItemType<InfernonBox>()
-				},
-				new List<int> {
-					ModContent.ItemType<HellsGaze>(),
-					ModContent.ItemType<InfernalAppendage>(),
-					ModContent.ItemType<InfernalJavelin>(),
-					ModContent.ItemType<InfernalSword>(),
-					ModContent.ItemType<DiabolicHorn>(),
-					ModContent.ItemType<SevenSins>(),
-					ModContent.ItemType<InfernalStaff>(),
-					ModContent.ItemType<EyeOfTheInferno>(),
-					ModContent.ItemType<InfernalShield>(),
-					ItemID.GreaterHealingPotion
 				});
-			spawnInfo =
-				$"Use a [i:{ModContent.ItemType<CursedCloth>()}] in the Underworld at any time.";
-			texture = "SpiritMod/Textures/BossChecklist/InfernonTexture";
-			headTextureOverride = "SpiritMod/NPCs/Boss/Infernon/Infernon_Head_Boss";
+			portrait = "SpiritMod/Textures/BossChecklist/InfernonTexture";
 		}
 	}
 }

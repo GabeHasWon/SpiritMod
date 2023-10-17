@@ -56,6 +56,8 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 	{
 		public Player Owner => Main.player[Projectile.owner];
 
+		public override void SetStaticDefaults() => Main.projFrames[Type] = 4;
+
 		public override void SetDefaults()
 		{
 			Projectile.Size = new Vector2(20);
@@ -91,6 +93,13 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 				dust.noGravity = true;
 				dust.velocity = new Vector2(0, -Main.rand.NextFloat(2f));
 			}
+			if (++Projectile.frameCounter >= 4)
+			{
+				Projectile.frameCounter = 0;
+				if (Projectile.frame < (Main.projFrames[Type] - 1))
+					Projectile.frame++;
+			}
+
 			if (Owner.channel)
 				Projectile.timeLeft = 2;
 		}

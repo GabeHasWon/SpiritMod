@@ -34,6 +34,17 @@ HyperspaceMusic: "[i:6076]  Adds two unique tracks for the artificial Hyperspace
 AshfallMusic: "[i:6076]  Adds a unique track for the Ashfall weather in the Underworld"
 VictoryNightMusic: "[i:6076]  Adds a unique track for the Lantern Night event"
 
+MiscUI: {
+	AutoSell: Click to quick-sell your items
+	SellLock:
+		'''
+		Toggle this to lock quick-sell mechanic
+		You won't be able to use quick-sell while this is toggled
+		'''
+	SellWeapons: Toggle this to disable the selling of weapons
+	SellNoValue: Toggle this to sell 'no value' items with quick-sell
+}
+
 Keybinds: {
 	"SpiritMod:QuestBookToggle.DisplayName": Spirit Mod: Quest Book Toggle
 	"SpiritMod:QuestHUDToggle.DisplayName": Spirit Mod: Quest H U D Toggle
@@ -260,6 +271,35 @@ Configs: {
 			Tooltip: Enables a unique track for the day after the Lantern Night event
 		}
 	}
+}
+
+Events: {
+	BlueMoon: {
+		BossChecklistIntegration.Condition: Use a [i:SpiritMod/BlueMoonSpawn] at nighttime.
+		OnStart: The Mystic Moon is rising...
+		IsDay: The moon isn't powerful in daylight.
+	}
+
+	JellyDeluge: {
+		BossChecklistIntegration.Condition: Naturally occurs aboveground after any boss has been defeated. Can also be summoned by using a [i:SpiritMod/DistressJellyItem], found in Asteroid Biomes and caught using a bug net. Occurs less frequently after the Moon Jelly Wizard has been defeated.
+		OnStart: Strange jellyfish are raining from the sky!
+	}
+
+	LuminousOcean.OnStart: A glow blooms over the ocean...
+
+	TheTide: {
+		BossChecklistIntegration.Condition: Use a [i:SpiritMod/BlackPearl] at the Ocean at any time.
+		OnEnd: The Tide has waned!
+		NotOcean: The Tide only ebbs by the calm of the sea.
+		AlreadyActive: The Tide's already come in!
+		Wave: "Wave {0} : "
+	}
+}
+
+BossChecklistIntegration: {
+	JellyDeluge.EntryName: Jelly Deluge
+	TheTide.EntryName: The Tide
+	MysticMoon.EntryName: Mystic Moon
 }
 
 Condition: {

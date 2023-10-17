@@ -18,6 +18,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Placeable.Relics;
 using SpiritMod.Items.BossLoot.AtlasDrops.AtlasPet;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss.Atlas
 {
@@ -385,12 +386,12 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 12.4f;
-			name = "Atlas";
+			name = nameof(Atlas);
 			downedCondition = () => MyWorld.downedAtlas;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
@@ -403,21 +404,8 @@ namespace SpiritMod.NPCs.Boss.Atlas
 					ModContent.ItemType<Trophy8>(),
 					ModContent.ItemType<AtlasMask>(),
 					ModContent.ItemType<AtlasBox>()
-				},
-				new List<int> {
-					ModContent.ItemType<AtlasEye>(),
-					ModContent.ItemType<Mountain>(),
-					ModContent.ItemType<TitanboundBulwark>(),
-					ModContent.ItemType<CragboundStaff>(),
-					ModContent.ItemType<QuakeFist>(),
-					ModContent.ItemType<Earthshatter>(),
-					ModContent.ItemType<ArcaneGeyser>(),
-					ItemID.GreaterHealingPotion
 				});
-			spawnInfo =
-				$"Use a [i:{ModContent.ItemType<StoneSkin>()}] anywhere at any time.";
-			texture = "SpiritMod/Textures/BossChecklist/AtlasTexture";
-			headTextureOverride = "SpiritMod/NPCs/Boss/Atlas/Atlas_Head_Boss";
+			portrait = "SpiritMod/Textures/BossChecklist/AtlasTexture";
 		}
 	}
 }

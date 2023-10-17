@@ -53,6 +53,7 @@ AutomataSpinner: {
 Beholder: {
 	DisplayName: Beholder
 	Entry: These beasts roam the marble pits found within the world, judging you with each one of their many eyes.
+	BossChecklistIntegration.SpawnInfo: The Beholder spawns rarely in Marble Caverns after the Eater of Worlds or Brain of Cthulhu has been defeated.
 }
 
 BlazingSkull: {
@@ -115,11 +116,13 @@ MadHatter: {
 AncientFlyer: {
 	DisplayName: Ancient Avian
 	Entry: The matriarch of an extinct avian predator species, brought back to life through sheer will to protect the yolk of its last remaining spawn.
+	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/JewelCrown] in the sky biome at any time. Alternatively, smash a Giant Avian Egg, which is found on Avian Islands near the sky layer. The Ancient Avian can be fought at any time and any place in progression.
 }
 
 Atlas: {
 	DisplayName: Atlas
 	Entry: A fractured sentinel built millenia ago to protect the land from those who would dare to scar its natural form. Now, it seems you have made yourself its target.
+	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/StoneSkin] anywhere at any time.
 }
 
 AtlasArmLeft.DisplayName: Atlas Arm
@@ -131,6 +134,7 @@ CobbledEye3.DisplayName: Cobbled Eye
 Dusking: {
 	DisplayName: Dusking
 	Entry: The nightmarish consequence of a failed seance by goblin warlocks. This abominable spirit remains a burning reminder of the chaos shadowflame magic can bring.
+	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/DuskCrown] anywhere at nighttime.
 }
 
 ShadowBall.DisplayName: Penumbral Sphere
@@ -143,11 +147,13 @@ Shadowflamer: {
 FrostSaucer: {
 	DisplayName: Snow Monger
 	Entry: A dangerous hovercraft made of spine-chillingly cold metal, and powered by Frost Cores. Playtime's over, no more mister ice guy!
+	BossChecklistIntegration.SpawnInfo: The Snow Monger spawns rarely during the Frost Legion.
 }
 
 Infernon: {
 	DisplayName: Infernon
 	Entry: This diabolical demon was once shackled in the depths of the underworld, but has finally broken free. Any mortal who would dare obstruct his rampage should prepare for one hell of a fight.
+	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/CursedCloth] in the Underworld at any time.
 }
 
 InfernonSkull.DisplayName: Infernus Skull
@@ -157,6 +163,7 @@ InfernoSkull.DisplayName: Infernus Skull
 MoonWizard: {
 	DisplayName: Moon Jelly Wizard
 	Entry: Those moon jellies are smarter than they seem. With only a bit of coordination and a sharp sense of fashion, they can become a far tougher adversary than any one jelly could ever be.
+	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/DreamlightJellyItem] anywhere aboveground at nighttime. A [i:SpiritMod/DreamlightJellyItem] can be caught with a bug net during the Jelly Deluge, and is non-consumable
 }
 
 AzureGemProj.DisplayName: Azure Gem
@@ -165,10 +172,15 @@ MysticMJWClone.DisplayName: Mystic Clone
 OccultistBoss: {
 	DisplayName: Occultist
 	Entry: An undead dream demon obsessed with the practice and perfection of so-called 'blood corruption.' For this practice, he only reveals himself when the moon shimmers sanguine.
+	BossChecklistIntegration.SpawnInfo: The Occultist spawns rarely during a Blood Moon after any prehardmode boss has been defeated.
 }
 
 ExplodingSpore.DisplayName: Exploding Spore
-ReachBoss.DisplayName: Vinewrath Bane
+
+ReachBoss: {
+	DisplayName: Vinewrath Bane
+	BossChecklistIntegration.SpawnInfo: Right-click the Bloodblossom, a glowing flower found at the bottom of the Briar. The Vinewrath Bane can be fought at any time and any place in progression. If a Bloodblossom is not present, use a [i:SpiritMod/ReachBossSummon] in the Briar below the surface at any time.
+}
 
 ReachBoss1: {
 	DisplayName: Vinewrath Husk
@@ -185,6 +197,7 @@ Scarab_Wall.DisplayName: Scarab
 Scarabeus: {
 	DisplayName: Scarabeus
 	Entry: Once thought to be a deity, this particular beetle comes from an elusive species that is equally massive.
+	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/ScarabIdol] in the Desert during the daytime. A [i:SpiritMod/ScarabIdol] can be found upon completing a certain Adventurer quest, or can be crafted, and is non-consumable.
 }
 
 SwarmScarab.DisplayName: Scarab
@@ -196,6 +209,7 @@ SteamRaiderBody2.DisplayName: Starplate Voyager
 SteamRaiderHead: {
 	DisplayName: Starplate Voyager
 	Entry: A strange automaton of unknown origin, designed for mining a precious metal from the stars. It utilizes the untapped energy found within the ore to power itself and perpetuate an endless search.
+	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/StarWormSummon] at an Astralite Beacon, located in the Asteroids, at nighttime.
 }
 
 SteamRaiderHeadDeath.DisplayName: Starplate Voyager
@@ -602,6 +616,7 @@ GraniteSlime: {
 HauntedTome: {
 	DisplayName: Haunted Tome
 	Entry: A warding glyph was placed on this tome to protect it from improper use. Unfortunately for you, that means staring down a book with 20 canines.
+	BossChecklistIntegration.SpawnInfo: Haunted Tomes can be found while exploring Dark Sepulchres and interacting with certain items.
 }
 
 HellEater: {
@@ -654,6 +669,7 @@ Masticator: {
 Mecromancer: {
 	DisplayName: Mechromancer
 	Entry: One of the greatest minds among the Goblin Army's arsenal. A Mechromancer’s tinkering talents are nearly unmatched.
+	BossChecklistIntegration.SpawnInfo: The Mechromancer spawns rarely during a Goblin Army after the Eye of Cthulhu has been defeated.
 }
 
 GoldCrateMimic: {
@@ -783,6 +799,7 @@ Briarmoth: {
 ForestWraith: {
 	DisplayName: Glade Wraith
 	Entry: Despite the Briar's unnatural creeping presence, it has left its mark on nature just long enough for these vengeful spirits to call it home.
+	BossChecklistIntegration.SpawnInfo: Destroy a Bone Altar in the Underground Briar. The Glade Wraith also spawns naturally at nighttime after defeating the Eye of Cthulhu. Alternatively, find a [i:SpiritMod/GladeWreath] in Briar Chests and use it in the Briar at any time.
 }
 
 Noxophyll: {
@@ -833,6 +850,7 @@ Skeleton_Brute: {
 Snaptrapper: {
 	DisplayName: Snaptrapper
 	Entry: Very little has been observed about this shrouded creature. It is six legged and bears claws, leading most to believe it is some form of arthropod.
+	BossChecklistIntegration.SpawnInfo: The Snaptrapper spawns rarely on the Jungle surface after the Eater of Worlds or Brain of Cthulhu has been defeated.
 }
 
 AncientDemon: {

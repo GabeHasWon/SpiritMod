@@ -16,6 +16,7 @@ using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.BossLoot.OccultistDrops;
 using SpiritMod.Items.BossLoot.OccultistDrops.OccultistPet;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Boss.Occultist
 {
@@ -321,29 +322,19 @@ namespace SpiritMod.NPCs.Boss.Occultist
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Miniboss;
 			progression = 1.5f;
-			name = "Occultist";
+			name = nameof(Occultist);
 			downedCondition = () => MyWorld.downedOccultist;
 			identificationData = new BossChecklistDataHandler.BCIDData(
-				new List<int> {
-					ModContent.NPCType<OccultistBoss>()
-				},
+				new List<int> { ModContent.NPCType<OccultistBoss>() },
 				null,
-				null,
-				new List<int> {
-					ModContent.ItemType<Handball>(),
-					ModContent.ItemType<SacrificialDagger>(),
-					ModContent.ItemType<BloodWard>(),
-					ModContent.ItemType<DreamstrideEssence>()
-				});
-			spawnInfo =
-				"The Occultist spawns rarely during a Blood Moon after any prehardmode boss has been defeated.";
-			texture = "SpiritMod/Textures/BossChecklist/OccultistTexture";
-			headTextureOverride = "SpiritMod/NPCs/BloodMoon/Occultist_Head_Boss";
+				null);
+			portrait = "SpiritMod/Textures/BossChecklist/OccultistTexture";
+			headIcon = "SpiritMod/NPCs/BloodMoon/Occultist_Head_Boss";
 		}
 	}
 }

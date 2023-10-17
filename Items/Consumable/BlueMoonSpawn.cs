@@ -11,12 +11,6 @@ namespace SpiritMod.Items.Consumable
 {
 	public class BlueMoonSpawn : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Turquoise Lens");
-			// Tooltip.SetDefault("Use at nighttime to summon the Mystic Moon");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
@@ -36,7 +30,7 @@ namespace SpiritMod.Items.Consumable
 				return false;
 
 			if (Main.dayTime)
-				Main.NewText("The moon isn't powerful in daylight.", 80, 80, 150);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.BlueMoon.IsDay"), 80, 80, 150);
 
 			return !MyWorld.blueMoon && !Main.dayTime;
 		}
@@ -44,9 +38,9 @@ namespace SpiritMod.Items.Consumable
 		public override bool? UseItem(Player player)
 		{
 			if (Main.netMode == NetmodeID.SinglePlayer)
-				Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.BlueMoon.OnStart"), 61, 255, 142);
 			else if (Main.netMode == NetmodeID.Server)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mystic Moon is rising..."), new Color(61, 255, 142));
+				ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.BlueMoon.OnStart"), new Color(61, 255, 142));
 
 			SoundEngine.PlaySound(SoundID.Roar, player.Center);
 			
@@ -64,7 +58,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.CrystalShard, 6);
-			recipe.AddIngredient(ModContent.ItemType<Items.Placeable.Tiles.AsteroidBlock>(), 30);
+			recipe.AddIngredient(ModContent.ItemType<Placeable.Tiles.AsteroidBlock>(), 30);
 			recipe.AddIngredient(ItemID.SoulofLight, 10);
 			recipe.AddIngredient(ModContent.ItemType<CosmiliteShard>(), 4);
 			recipe.AddTile(TileID.MythrilAnvil);

@@ -14,6 +14,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Buffs.DoT;
 using Terraria.GameContent.Bestiary;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.HauntedTome
 {
@@ -21,7 +22,6 @@ namespace SpiritMod.NPCs.HauntedTome
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Haunted Tome");
 			Main.npcFrameCount[NPC.type] = 19;
 			NPCHelper.ImmuneTo<BloodCorrupt, BloodInfusion>(this, BuffID.Poisoned, BuffID.Confused, BuffID.OnFire);
 		}
@@ -244,24 +244,19 @@ namespace SpiritMod.NPCs.HauntedTome
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Miniboss;
 			progression = 0.9f;
-			name = "Haunted Tome";
+			name = nameof(HauntedTome);
 			downedCondition = () => MyWorld.downedTome;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> { ModContent.NPCType<HauntedTome>() },
 				null,
-				null,
-				new List<int> {
-					ModContent.ItemType<Items.Sets.SepulchreLoot.ScreamingTome.ScreamingTome>()
-				});
-			spawnInfo =
-				"Haunted Tomes can be found while exploring Dark Sepulchres and interacting with certain items.";
-			texture = "SpiritMod/Textures/BossChecklist/HauntedTomeTexture";
-			headTextureOverride = "SpiritMod/NPCs/HauntedTome/HauntedTome_Head_Boss";
+				null);
+			portrait = "SpiritMod/Textures/BossChecklist/HauntedTomeTexture";
+			headIcon = Texture + "_Head_Boss";
 		}
 	}
 
@@ -269,11 +264,7 @@ namespace SpiritMod.NPCs.HauntedTome
 	{
 		public override string Texture => "SpiritMod/Items/Sets/SepulchreLoot/ScreamingTome/ScreamingSkull";
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Haunted Skull");
-			Main.projFrames[Projectile.type] = 6;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 6;
 
 		public override void SetDefaults()
 		{
@@ -383,11 +374,7 @@ namespace SpiritMod.NPCs.HauntedTome
 
 	internal class HauntedPaperPlane : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Paper Plane");
-			Main.projFrames[Projectile.type] = 9;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 9;
 
 		public override void SetDefaults()
 		{

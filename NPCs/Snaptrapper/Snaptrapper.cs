@@ -11,20 +11,14 @@ using SpiritMod.Items.Sets.ClubSubclass;
 using SpiritMod.Items.Weapon.Summon;
 using SpiritMod.Utilities;
 using Terraria.GameContent.Bestiary;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Snaptrapper
 {
     public class Snaptrapper : ModNPC, IBCRegistrable
 	{
-		/*private int aiState;
-
-		private const int STATE_WALKING = 0;
-		private const int STATE_ATTACKING = 1;
-		private const int STATE_CHARGING = 2;*/
-
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Snaptrapper");
 			Main.npcFrameCount[NPC.type] = 6;
             NPCID.Sets.TrailCacheLength[NPC.type] = 5;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -422,28 +416,21 @@ namespace SpiritMod.NPCs.Snaptrapper
             return false;
         }
 
-        public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
-	        out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-	        ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
-	        ref Func<bool> isAvailable)
-        {
-	        entryType = BossChecklistDataHandler.EntryType.Miniboss;
+		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
+			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string portrait, ref string headIcon,
+			ref Func<bool> isAvailable)
+		{
+			entryType = BossChecklistDataHandler.EntryType.Miniboss;
 	        progression = 3.1f;
-	        name = "Snaptrapper";
+	        name = nameof(Snaptrapper);
 	        downedCondition = () => MyWorld.downedSnaptrapper;
 	        identificationData = new BossChecklistDataHandler.BCIDData(
-		        new List<int> {
-			        ModContent.NPCType<Snaptrapper>()
-		        },
+		        new List<int> { ModContent.NPCType<Snaptrapper>() },
 		        null,
-		        null,
-		        new List<int> {
-			        ModContent.ItemType<SnapsporeStaff>(),
-			        ModContent.ItemType<SporeClub>()
-		        });
-	        spawnInfo = "The Snaptrapper spawns rarely on the Jungle surface after the Eater of Worlds or Brain of Cthulhu has been defeated.";
-	        texture = "SpiritMod/Textures/BossChecklist/SnaptrapperTexture";
-	        headTextureOverride = "SpiritMod/NPCs/Snaptrapper_Head_Boss";
-        }
+		        null);
+	        portrait = "SpiritMod/Textures/BossChecklist/SnaptrapperTexture";
+			headIcon = Texture + "_Head_Boss";
+		}
 	}
 }

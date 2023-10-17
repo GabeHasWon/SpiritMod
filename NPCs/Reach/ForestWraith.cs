@@ -16,6 +16,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Reach
 {
@@ -23,9 +24,7 @@ namespace SpiritMod.NPCs.Reach
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Glade Wraith");
 			Main.npcFrameCount[NPC.type] = 6;
-
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 		}
 
@@ -209,27 +208,19 @@ namespace SpiritMod.NPCs.Reach
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,
-			ref string spawnInfo, ref string despawnMessage, ref string texture, ref string headTextureOverride,
+			ref LocalizedText spawnInfo, ref LocalizedText despawnMessage, ref string texture, ref string headTextureOverride,
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Miniboss;
 			progression = 0.8f;
-			name = "Glade Wraith";
+			name = nameof(ForestWraith);
 			downedCondition = () => MyWorld.downedGladeWraith;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> { ModContent.NPCType<ForestWraith>() },
-				new List<int> {
-					ModContent.ItemType<GladeWreath>()
-				},
-				null,
-				new List<int> {
-					ModContent.ItemType<HuskstalkStaff>(),
-					ModContent.ItemType<AncientBark>()
-				});
-			spawnInfo =
-				"Destroy a Bone Altar in the Underground Briar. The Glade Wraith also spawns naturally at nighttime after defeating the Eye of Cthulhu. Alternatively, find a Glade Wreath in Briar Chests and use it in the Briar at any time.";
+				new List<int> { ModContent.ItemType<GladeWreath>() },
+				null);
 			texture = "SpiritMod/Textures/BossChecklist/GladeWraithTexture";
-			headTextureOverride = "SpiritMod/NPCs/Reach/ForestWraith_Head_Boss";
+			headTextureOverride = Texture + "_Head_Boss";
 		}
 	}
 }

@@ -9,12 +9,6 @@ namespace SpiritMod.Items.Consumable
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Bloodrite Dagger");
-			// Tooltip.SetDefault("Use at nighttime to summon the Blood Moon");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
@@ -52,7 +46,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 5);
-			recipe.AddIngredient(ModContent.ItemType<Items.Sets.BloodcourtSet.DreamstrideEssence>(), 6);
+			recipe.AddIngredient(ModContent.ItemType<Sets.BloodcourtSet.DreamstrideEssence>(), 6);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}

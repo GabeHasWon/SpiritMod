@@ -1495,9 +1495,9 @@ namespace SpiritMod
 					if (!Main.IsFastForwardingTime() && !Main.bloodMoon && WorldGen.spawnHardBoss == 0 && ((Main.rand.NextBool(20) && !downedBlueMoon) || (Main.rand.NextBool(40) && !downedBlueMoon)))
 					{
 						if (Main.netMode == NetmodeID.SinglePlayer)
-							Main.NewText("The Mystic Moon is rising...", 61, 255, 142);
+							Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.BlueMoon.OnStart"), 61, 255, 142);
 						else if (Main.netMode == NetmodeID.Server)
-							ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Mystic Moon is rising..."), new Color(61, 255, 142));
+							ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.BlueMoon.OnStart"), new Color(61, 255, 142));
 
 						blueMoon = true;
 						downedBlueMoon = true;
@@ -1525,9 +1525,9 @@ namespace SpiritMod
 					luminousOcean = true;
 
 					if (Main.netMode == NetmodeID.SinglePlayer)
-						Main.NewText("A glow blooms over the ocean...", 251, 255, 230);
+						Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.LuminousOcean.OnStart"), 251, 255, 230);
 					else if (Main.netMode == NetmodeID.Server)
-						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("A glow blooms over the ocean..."), new Color(251, 255, 230));
+						ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.LuminousOcean.OnStart"), new Color(251, 255, 230));
 
 					if (Main.netMode != NetmodeID.SinglePlayer)
 					{
@@ -1564,9 +1564,9 @@ namespace SpiritMod
 				if (!Main.dayTime && anyValidBoss && (!downedMoonWizard && Main.rand.NextBool(8) || downedMoonWizard && Main.rand.NextBool(46)))
 				{
 					if (Main.netMode == NetmodeID.SinglePlayer)
-						Main.NewText("Strange jellyfish are raining from the skies!", 61, 255, 142);
+						Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.JellyDeluge.OnStart"), 61, 255, 142);
 					else if (Main.netMode == NetmodeID.Server)
-						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Strange jellyfish are raining from the skies!"), new Color(61, 255, 142));
+						ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.JellyDeluge.OnStart"), new Color(61, 255, 142));
 
 					jellySky = true;
 				}

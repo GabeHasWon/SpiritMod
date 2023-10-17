@@ -11,12 +11,6 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(1)]
     public class DistressJellyItem : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Distress Jelly");
-            // Tooltip.SetDefault("'It needs help!'\nUse at nighttime to summon the Jelly Deluge");
-        }
-
         public override void SetDefaults()
         {
             Item.width = Item.height = 16;
@@ -35,9 +29,9 @@ namespace SpiritMod.Items.Consumable
         public override bool? UseItem(Player player)
         {
 			if (Main.netMode == NetmodeID.SinglePlayer)
-				Main.NewText("Strange jellyfish are raining from the sky!", 61, 255, 142);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.JellyDeluge.OnStart"), 61, 255, 142);
 			else if (Main.netMode == NetmodeID.Server)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Strange jellyfish are raining from the sky!"), new Color(61, 255, 142));
+				ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.JellyDeluge.OnStart"), new Color(61, 255, 142));
 
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{

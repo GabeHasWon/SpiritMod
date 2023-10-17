@@ -903,7 +903,7 @@ namespace SpiritMod
 			{
 				Main.LocalPlayer.mouseInterface = true;
 				Main.HoverItem = new Item();
-				Main.hoverItemName = "Click to quick-sell your items";
+				Main.hoverItemName = Language.GetTextValue("Mods.SpiritMod.MiscUI.AutoSell");
 			}
 
 			Rectangle Sell_Lock_TOGGLERECTANGLE = new Rectangle(502, 324, 32, 32);
@@ -913,7 +913,7 @@ namespace SpiritMod
 			{
 				Main.LocalPlayer.mouseInterface = true;
 				Main.HoverItem = new Item();
-				Main.hoverItemName = "Toggle this to lock quick-sell mechanic\nYou won't be able to use quick-sell while this is toggled";
+				Main.hoverItemName = Language.GetTextValue("Mods.SpiritMod.MiscUI.SellLock");
 			}
 
 			Rectangle Sell_Weapons_TOGGLERECTANGLE = new Rectangle(502, 362, 32, 32);
@@ -923,7 +923,7 @@ namespace SpiritMod
 			{
 				Main.LocalPlayer.mouseInterface = true;
 				Main.HoverItem = new Item();
-				Main.hoverItemName = "Toggle this to disable the selling of weapons";
+				Main.hoverItemName = Language.GetTextValue("Mods.SpiritMod.MiscUI.SellWeapons");
 			}
 
 			Rectangle Sell_NoValue_TOGGLERECTANGLE = new Rectangle(502, 400, 32, 32);
@@ -933,7 +933,7 @@ namespace SpiritMod
 			{
 				Main.LocalPlayer.mouseInterface = true;
 				Main.HoverItem = new Item();
-				Main.hoverItemName = "Toggle this to sell 'no value' items with quick-sell";
+				Main.hoverItemName = Language.GetTextValue("Mods.SpiritMod.MiscUI.SellNoValue");
 			}
 		}
 
