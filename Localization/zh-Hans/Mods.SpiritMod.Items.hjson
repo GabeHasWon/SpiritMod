@@ -8393,32 +8393,32 @@ WornStoneItem: {
 
 BloodMoonAuroraMonolithItem: {
 	DisplayName: 血月极光巨石
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 FrostMoonAuroraMonolithItem: {
 	DisplayName: 霜月极光巨石
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 NormalAuroraMonolithItem: {
 	DisplayName: 极光巨石
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 PumpkinAuroraMonolithItem: {
 	DisplayName: 南瓜月极光巨石
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 SpiritBiomeAuroraMonolithItem: {
 	DisplayName: 魂灵群系极光巨石
-	Tooltip: ""
+	Tooltip: 装备后可以显示局部极光
 }
 
 BlossomCage: {
 	DisplayName: 月绽灵笼
-	Tooltip: ""
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 BriarmothCage: {
