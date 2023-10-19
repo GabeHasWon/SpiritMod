@@ -9,8 +9,6 @@ namespace SpiritMod.Projectiles.Arrow
 {
 	public class GraniteRepeaterArrow : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Unstable Bolt");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 6;
@@ -149,6 +147,7 @@ namespace SpiritMod.Projectiles.Arrow
 				proj.netUpdate = true;
 			}
 		}
+
 		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
