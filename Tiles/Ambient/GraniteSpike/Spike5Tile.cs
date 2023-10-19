@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.GraniteSpikes;
 using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;

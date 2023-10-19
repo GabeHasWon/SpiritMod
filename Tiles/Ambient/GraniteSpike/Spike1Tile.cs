@@ -5,7 +5,6 @@ using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using SpiritMod.Items.Placeable.Furniture.GraniteSpikes;
 
 namespace SpiritMod.Tiles.Ambient.GraniteSpike
 {

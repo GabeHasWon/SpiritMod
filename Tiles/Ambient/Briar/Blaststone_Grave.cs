@@ -1,5 +1,8 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Items.Placeable.Tiles;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -37,11 +40,24 @@ namespace SpiritMod.Tiles.Ambient.Briar
         {
             Tile tileBelow = Framing.GetTileSafely(i, j + 2);
             if (!tileBelow.HasTile || tileBelow.IsHalfBlock || tileBelow.TopSlope)
-            {
                 WorldGen.KillTile(i, j);
-            }
 
             return true;
         }
     }
+
+	public class Blaststone_GraveRubble : Blaststone_Grave
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementMedium.AddVariation(ModContent.ItemType<BlastStoneItem>(), Type, 0);
+			RegisterItemDrop(ModContent.ItemType<BlastStoneItem>());
+		}
+
+		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
+	}
 }

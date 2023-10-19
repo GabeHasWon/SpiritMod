@@ -6,6 +6,10 @@ using Terraria.ID;
 using SpiritMod.NPCs.Reach;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using SpiritMod.Items.Sets.HuskstalkSet;
+using System.Collections.Generic;
+using Terraria.GameContent;
+using SpiritMod.Items.Placeable.Tiles;
 
 namespace SpiritMod.Tiles.Ambient.Briar
 {
@@ -24,29 +28,6 @@ namespace SpiritMod.Tiles.Ambient.Briar
             TileObjectData.newTile.Height = 2;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
-            /*
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-			TileObjectData.newTile.LavaDeath = true;
-			TileObjectData.newTile.WaterDeath = false;
-
-			TileObjectData.newTile.CoordinatePadding = 2;
-			TileObjectData.newTile.CoordinateWidth = 16;
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16
-			};
-			TileObjectData.newTile.DrawYOffset = 2;
-			TileObjectData.newTile.Style = 0;
-			TileObjectData.newTile.StyleHorizontal = true;
-			TileObjectData.newTile.UsesCustomCanPlace = true;
-
-			for (int i = 0; i < 8; i++)
-			{
-				TileObjectData.newSubTile.CopyFrom(TileObjectData.newTile);
-				TileObjectData.addSubTile(i);
-			}
-
-			TileObjectData.addTile(Type);*/
 
             AddMapEntry(new Color(100, 150, 66));
 		}
@@ -58,9 +39,8 @@ namespace SpiritMod.Tiles.Ambient.Briar
 		public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
 		{
 			Tile tileBelow = Framing.GetTileSafely(i, j + 2);
-			if (!tileBelow.HasTile || tileBelow.IsHalfBlock || tileBelow.TopSlope) {
+			if (!tileBelow.HasTile || tileBelow.IsHalfBlock || tileBelow.TopSlope)
 				WorldGen.KillTile(i, j);
-			}
 
 			return true;
         }
@@ -87,5 +67,20 @@ namespace SpiritMod.Tiles.Ambient.Briar
 				spriteBatch.Draw(glow, new Vector2(i * 16, j * 16 + 2) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX - 108, 0, 16, 16), colour);
 			}
 		}
+	}
+
+	public class BriarFoliage1Rubble : BriarFoliage1
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementMedium.AddVariation(ModContent.ItemType<BriarGrassSeeds>(), Type, 0);
+			RegisterItemDrop(ModContent.ItemType<BriarGrassSeeds>());
+		}
+
+		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 	}
 }

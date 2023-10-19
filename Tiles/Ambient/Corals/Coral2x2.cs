@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -43,5 +44,20 @@ namespace SpiritMod.Tiles.Ambient.Corals
 		{
 			yield return new Item(ItemID.Coral) { stack = Main.rand.Next(3, 6) };
 		}
+	}
+
+	public class Coral2x2Rubble : Coral2x2
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementMedium.AddVariation(ItemID.Coral, Type, 0);
+			RegisterItemDrop(ItemID.Coral);
+		}
+
+		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 	}
 }
