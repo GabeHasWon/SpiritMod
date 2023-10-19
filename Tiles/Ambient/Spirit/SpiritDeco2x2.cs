@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Placeable;
 using SpiritMod.Items.Placeable.Tiles;
 using SpiritMod.Systems;
 using SpiritMod.Tiles.Block;
