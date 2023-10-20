@@ -34,6 +34,19 @@ namespace SpiritMod.Tiles.Ambient.Underground
 		}
 	}
 
+	public class BrownMushroomsRubble : BrownMushrooms
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementMedium.AddVariation(ItemID.Mushroom, Type, 0);
+			RegisterItemDrop(ItemID.Mushroom);
+		}
+	}
+
 	public class BrownMushroomLarge : ModTile
 	{
 		public override void SetStaticDefaults()
@@ -56,19 +69,6 @@ namespace SpiritMod.Tiles.Ambient.Underground
 			DustType = DustID.BrownMoss;
 
 			AddMapEntry(new Color(139, 81, 68));
-		}
-	}
-
-	public class BrownMushroomsRubble : BrownMushrooms
-	{
-		public override string Texture => base.Texture.Replace("Rubble", "");
-
-		public override void SetStaticDefaults()
-		{
-			base.SetStaticDefaults();
-
-			FlexibleTileWand.RubblePlacementMedium.AddVariation(ItemID.Mushroom, Type, 0);
-			RegisterItemDrop(ItemID.Mushroom);
 		}
 	}
 

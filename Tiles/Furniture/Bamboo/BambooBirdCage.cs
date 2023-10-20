@@ -53,7 +53,7 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(100, 100, 60), name);
-			DustType = -1;
+			DustType = DustID.PalmWood;
 		}
 
 		public override IEnumerable<Item> GetItemDrops(int i, int j)

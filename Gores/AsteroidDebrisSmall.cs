@@ -35,9 +35,8 @@ namespace SpiritMod.Gores
 				gore.velocity.Y += 0.2f * (dist / (float)(Main.worldSurface * 0.36f - top));
 			}
 
-			//Allow the player to "bump" asteroid debris
-			//if (Main.LocalPlayer.Hitbox.Intersects(new Rectangle((int)gore.position.X, (int)gore.position.Y, (int)gore.Width, (int)gore.Height)))
-			//	gore.velocity += Main.LocalPlayer.velocity * .5f;
+			if (Collision.SolidCollision(gore.position, 8, 8))
+				gore.velocity *= .9f;
 
 			if (gore.timeLeft <= 255)
 				if (++gore.alpha >= 255)

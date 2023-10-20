@@ -18,7 +18,7 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 4;
 			TileObjectData.newTile.Width = 2;
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 18 };
 			TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
 			TileObjectData.newTile.StyleWrapLimit = 2; //not really necessary but allows me to add more subtypes of chairs below the example chair texture
 			TileObjectData.newTile.StyleMultiplier = 2; //same as above
@@ -32,8 +32,6 @@ namespace SpiritMod.Tiles.Ambient
 			AddMapEntry(new Color(107, 90, 64), name);
 		}
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
-
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
 			if (!Main.dayTime) {
@@ -45,12 +43,13 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
-			if (!Main.dayTime) {
+			if (!Main.dayTime)
+			{
 				Tile tile = Main.tile[i, j];
 				Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-				if (Main.drawToScreen) {
+				if (Main.drawToScreen)
 					zero = Vector2.Zero;
-				}
+
 				int height = tile.TileFrameY == 36 ? 18 : 16;
 				Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Ambient/SkullStick_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), new Color(100, 100, 100, 100), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 			}

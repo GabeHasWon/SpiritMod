@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -23,7 +22,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.createTile = Mod.Find<ModTile>("ScrapTile1").Type;
+			Item.createTile = ModContent.TileType<ScrapTile1>();
 		}
 	}
 
@@ -60,7 +59,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.createTile = Mod.Find<ModTile>("ScrapTile2").Type;
+			Item.createTile = ModContent.TileType<ScrapTile2>();
 		}
 	}
 
@@ -75,7 +74,6 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.addTile(Type);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Space Scrap");
 			AddMapEntry(new Color(150, 150, 150), name);
 		}
 
@@ -98,7 +96,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.createTile = Mod.Find<ModTile>("ScrapTile3").Type;
+			Item.createTile = ModContent.TileType<ScrapTile3>();
 		}
 	}
 
@@ -115,16 +113,11 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.Width = 2;
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16,
-				16
-			};
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Space Scrap");
 			AddMapEntry(new Color(150, 150, 150), name);
-			TileObjectData.newTile.AnchorBottom = default(AnchorData);
-			TileObjectData.newTile.AnchorTop = default(AnchorData);
+			TileObjectData.newTile.AnchorBottom = default;
+			TileObjectData.newTile.AnchorTop = default;
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
 		}
@@ -148,7 +141,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.createTile = Mod.Find<ModTile>("ScrapTile4").Type;
+			Item.createTile = ModContent.TileType<ScrapTile4>();
 		}
 	}
 
@@ -165,17 +158,11 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Width = 3;
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16,
-				16,
-				16
-			};
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Space Scrap");
 			AddMapEntry(new Color(150, 150, 150), name);
-			TileObjectData.newTile.AnchorBottom = default(AnchorData);
-			TileObjectData.newTile.AnchorTop = default(AnchorData);
+			TileObjectData.newTile.AnchorBottom = default;
+			TileObjectData.newTile.AnchorTop = default;
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
 		}
@@ -199,7 +186,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.createTile = Mod.Find<ModTile>("ScrapTile5").Type;
+			Item.createTile = ModContent.TileType<ScrapTile5>();
 		}
 	}
 
@@ -236,7 +223,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.createTile = Mod.Find<ModTile>("ScrapTile6").Type;
+			Item.createTile = ModContent.TileType<ScrapTile6>();
 		}
 	}
 
@@ -252,13 +239,8 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.Width = 1;
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Space Scrap");
 			AddMapEntry(new Color(150, 150, 150), name);
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16,
-				16
-			};
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.addTile(Type);
 		}
 

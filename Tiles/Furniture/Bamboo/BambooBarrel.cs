@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Placeable.Furniture.Bamboo;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -54,10 +55,10 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.addTile(Type);
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault(tileName);
 			AddMapEntry(new Color(100, 100, 60), name, MapChestName);
-			DustType = -1;
+			DustType = DustID.PalmWood;
 			AdjTiles = new int[] { TileID.Containers };
+			RegisterItemDrop(ModContent.ItemType<BambooBarrelItem>());
 		}
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;

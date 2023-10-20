@@ -1,9 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Placeable.Tiles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -68,12 +70,12 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 			//Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
 			TileObjectData.addTile(Type);
 			DustType = DustID.DungeonSpirit;
 		}
 
-		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem) => SoundEngine.PlaySound(SoundID.Item27);
+		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem) => SoundEngine.PlaySound(SoundID.Item27, new Vector2(i, j).ToWorldCoordinates());
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
@@ -81,17 +83,22 @@ namespace SpiritMod.Tiles.Ambient.SpaceCrystals
 			g = .1f * 2;
 			b = .1275f * 2;
 		}
-		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
-		{
-			Tile tile = Main.tile[i, j];
-			Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-			if (Main.drawToScreen)
-			{
-				zero = Vector2.Zero;
-			}
-			int height = tile.TileFrameY == 36 ? 18 : 16;
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Ambient/SpaceCrystals/GlowShard2_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y + 2) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), new Color(100, 100, 100), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-		}
+
+		public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawData) => drawData.tileLight *= 1.5f;
+
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
+	}
+
+	public class GlowShard2Rubble : GlowShard2
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementSmall.AddVariation(ModContent.ItemType<AsteroidBlock>(), Type, 0);
+			RegisterItemDrop(ModContent.ItemType<AsteroidBlock>());
+		}
 	}
 }

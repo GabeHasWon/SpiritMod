@@ -35,6 +35,19 @@ namespace SpiritMod.Tiles.Ambient.Underground
 		}
 	}
 
+	public class WhiteMushroom2x2Rubble : WhiteMushroom2x2
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementMedium.AddVariation(ItemID.Mushroom, Type, 0);
+			RegisterItemDrop(ItemID.Mushroom);
+		}
+	}
+
 	public class WhiteMushroom2x3 : ModTile
 	{
 		public override void SetStaticDefaults()
@@ -57,19 +70,6 @@ namespace SpiritMod.Tiles.Ambient.Underground
 			DustType = DustID.Stone;
 
 			AddMapEntry(new Color(170, 166, 140));
-		}
-	}
-
-	public class WhiteMushroom2x2Rubble : WhiteMushroom2x2
-	{
-		public override string Texture => base.Texture.Replace("Rubble", "");
-
-		public override void SetStaticDefaults()
-		{
-			base.SetStaticDefaults();
-
-			FlexibleTileWand.RubblePlacementMedium.AddVariation(ItemID.Mushroom, Type, 0);
-			RegisterItemDrop(ItemID.Mushroom);
 		}
 	}
 
