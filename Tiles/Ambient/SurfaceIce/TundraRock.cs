@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -17,7 +16,7 @@ public class TundraRock : ModTile
 		Main.tileLavaDeath[Type] = true;
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-		TileObjectData.newTile.CoordinateHeights = new int[] { 16 };
+		TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.RandomStyleRange = 3;
 		TileObjectData.addTile(Type);
@@ -27,8 +26,6 @@ public class TundraRock : ModTile
 
 		AddMapEntry(new Color(98, 103, 112));
 	}
-
-	public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 }
 
 public class TundraRockRubble : TundraRock
@@ -37,11 +34,21 @@ public class TundraRockRubble : TundraRock
 
 	public override void SetStaticDefaults()
 	{
-		base.SetStaticDefaults();
+		Main.tileFrameImportant[Type] = true;
+		Main.tileNoAttach[Type] = true;
+		Main.tileLavaDeath[Type] = true;
 
-		FlexibleTileWand.RubblePlacementSmall.AddVariation(ItemID.StoneBlock, Type, 0);
+		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+		TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
+		TileObjectData.newTile.StyleHorizontal = true;
+		TileObjectData.addTile(Type);
+		TileID.Sets.BreakableWhenPlacing[Type] = true;
+
+		DustType = DustID.RedMoss;
+
+		AddMapEntry(new Color(98, 103, 112));
+
+		FlexibleTileWand.RubblePlacementSmall.AddVariations(ItemID.StoneBlock, Type, 0, 1, 2);
 		RegisterItemDrop(ItemID.StoneBlock);
 	}
-
-	public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 }

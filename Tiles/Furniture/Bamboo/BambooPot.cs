@@ -24,7 +24,7 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			LocalizedText name = CreateMapEntryName();
 			// name.SetDefault("Stripped Bamboo Pot");
 			AddMapEntry(new Color(100, 100, 60), name);
-			DustType = -1;
+			DustType = DustID.PalmWood;
 			AdjTiles = new int[] { TileID.ClayPot };
 		}
 

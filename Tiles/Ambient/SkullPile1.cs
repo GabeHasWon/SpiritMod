@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -15,22 +15,27 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
-			TileObjectData.newTile.Height = 3;
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16,
-				16,
-				16
-			};
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
+			TileObjectData.newTile.Height = 2;
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 
-			LocalizedText modTranslation = CreateMapEntryName();
-			AddMapEntry(new Color(186, 149, 85), modTranslation);
+			AddMapEntry(new Color(186, 149, 85));
 			AdjTiles = new int[] { 93 };
 			TileID.Sets.BreakableWhenPlacing[Type] = true;
 		}
+	}
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+	public class SkullPile1Rubble : SkullPile1
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementMedium.AddVariation(ItemID.Bone, Type, 0);
+			RegisterItemDrop(ItemID.Bone);
+		}
 	}
 }

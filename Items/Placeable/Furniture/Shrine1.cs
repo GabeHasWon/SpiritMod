@@ -1,3 +1,4 @@
+using SpiritMod.Tiles.Ambient;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,7 +19,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 			Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.createTile = Mod.Find<ModTile>("Shrine1_Tile").Type;
+			Item.createTile = ModContent.TileType<Shrine1_Tile>();
 		}
 	}
 }

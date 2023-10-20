@@ -28,7 +28,7 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			LocalizedText name = CreateMapEntryName();
 			// name.SetDefault("Stripped Bamboo Bench");
 			AddMapEntry(new Color(100, 100, 60), name);
-			DustType = -1;
+			DustType = DustID.PalmWood;
 		}
 
 		public override bool RightClick(int i, int j)

@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Consumable.Food;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;

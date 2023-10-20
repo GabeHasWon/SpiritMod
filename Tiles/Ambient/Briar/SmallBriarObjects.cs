@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Tiles;
-using SpiritMod.Tiles.Ambient.Corals;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -18,11 +16,13 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			Main.tileCut[Type] = false;
 			Main.tileNoFail[Type] = true;
 			Main.tileMergeDirt[Type] = true;
-            TileObjectData.newTile.RandomStyleRange = 10;
             DustType = DustID.Stone;
 			HitSound = SoundID.Grass;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-            TileObjectData.addTile(Type);
+			TileObjectData.newTile.RandomStyleRange = 10;
+			TileObjectData.newTile.StyleHorizontal = true;
+			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
+			TileObjectData.addTile(Type);
 
             AddMapEntry(new Color(105, 89, 74));
 			TileID.Sets.BreakableWhenPlacing[Type] = true;
@@ -38,8 +38,6 @@ namespace SpiritMod.Tiles.Ambient.Briar
         }
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
-
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 	}
 
 	public class SmallBriarObjectsRubble : SmallBriarObjects
@@ -48,12 +46,19 @@ namespace SpiritMod.Tiles.Ambient.Briar
 
 		public override void SetStaticDefaults()
 		{
-			base.SetStaticDefaults();
+			Main.tileFrameImportant[Type] = true;
+			Main.tileCut[Type] = false;
+			Main.tileNoFail[Type] = true;
+			Main.tileMergeDirt[Type] = true;
+			DustType = DustID.Stone;
+			HitSound = SoundID.Grass;
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+			TileObjectData.newTile.StyleHorizontal = true;
+			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
+			TileObjectData.addTile(Type);
 
-			FlexibleTileWand.RubblePlacementSmall.AddVariation(ModContent.ItemType<BlastStoneItem>(), Type, 0);
+			FlexibleTileWand.RubblePlacementSmall.AddVariations(ModContent.ItemType<BlastStoneItem>(), Type, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 			RegisterItemDrop(ModContent.ItemType<BlastStoneItem>());
 		}
-
-		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 	}
 }

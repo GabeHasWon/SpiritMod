@@ -25,15 +25,9 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			AddMapEntry(new Color(201, 110, 226));
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = 2;
-		}
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
 
-        public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
-		}
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{

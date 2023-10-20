@@ -68,19 +68,4 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			}
 		}
 	}
-
-	public class BriarFoliage1Rubble : BriarFoliage1
-	{
-		public override string Texture => base.Texture.Replace("Rubble", "");
-
-		public override void SetStaticDefaults()
-		{
-			base.SetStaticDefaults();
-
-			FlexibleTileWand.RubblePlacementMedium.AddVariation(ModContent.ItemType<BriarGrassSeeds>(), Type, 0);
-			RegisterItemDrop(ModContent.ItemType<BriarGrassSeeds>());
-		}
-
-		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
-	}
 }

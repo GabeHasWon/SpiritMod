@@ -1,12 +1,10 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Enums;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.ID;
-using Terraria.DataStructures;
 
 namespace SpiritMod.Tiles.Furniture
 {
