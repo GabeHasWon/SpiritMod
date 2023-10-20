@@ -1,8 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Placeable.Tiles;
+using SpiritMod.Items.Sets.HuskstalkSet;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -49,18 +53,8 @@ namespace SpiritMod.Tiles.Ambient.Briar
 		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 		{
 			if (Main.rand.NextBool(8))
-			{
 				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<Items.Placeable.Tiles.BriarGrassSeeds>());
-			}
 		}
-
-		/*public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
-		{
-			Tile tileBelow = Framing.GetTileSafely(i, j + 1);
-			if (!tileBelow.HasTile || tileBelow.IsHalfBlock || tileBelow.TopSlope || tileBelow.TileType != ModContent.TileType<Block.BriarGrass>()) 
-				WorldGen.KillTile(i, j);
-			return true;
-		}*/
 
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
@@ -74,5 +68,20 @@ namespace SpiritMod.Tiles.Ambient.Briar
 				spriteBatch.Draw(glow, new Vector2(i * 16, j * 16 + 2) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX - 108, 0, 16, 16), colour);
 			}
 		}
+	}
+
+	public class BriarFoliageRubble : BriarFoliage
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementSmall.AddVariation(ModContent.ItemType<BriarGrassSeeds>(), Type, 0);
+			RegisterItemDrop(ModContent.ItemType<BriarGrassSeeds>());
+		}
+
+		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 	}
 }

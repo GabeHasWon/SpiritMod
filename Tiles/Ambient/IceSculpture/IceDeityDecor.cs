@@ -1,6 +1,4 @@
-
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.IceSculpture;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

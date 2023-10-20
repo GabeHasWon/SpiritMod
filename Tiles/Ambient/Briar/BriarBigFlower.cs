@@ -1,9 +1,12 @@
 using Humanizer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Placeable.Tiles;
+using SpiritMod.Items.Sets.HuskstalkSet;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -58,5 +61,20 @@ namespace SpiritMod.Tiles.Ambient.Briar
 
 			spriteBatch.Draw(glow, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), colour);
 		}
+	}
+
+	public class BriarBigFlowerRubble : BriarBigFlower
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementLarge.AddVariation(ModContent.ItemType<BriarGrassSeeds>(), Type, 0);
+			RegisterItemDrop(ModContent.ItemType<BriarGrassSeeds>());
+		}
+
+		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 	}
 }
