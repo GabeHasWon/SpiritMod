@@ -20,20 +20,14 @@ public class SnowBush1 : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 		TileObjectData.newTile.Height = 2;
 		TileObjectData.newTile.Width = 3;
-		TileObjectData.newTile.Origin = new Point16(0, 2);
-		TileObjectData.newTile.CoordinateHeights = new int[]
-		{
-			16,
-			16
-		};
+		TileObjectData.newTile.Origin = new Point16(1, 1);
+		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 		HitSound = SoundID.Grass;
 		TileObjectData.addTile(Type);
 		DustType = DustID.GrassBlades;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.BreakableWhenPlacing[Type] = true;
 	}
-
-	public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
@@ -51,8 +45,10 @@ public class SnowBush1Rubble : SnowBush1
 		base.SetStaticDefaults();
 
 		FlexibleTileWand.RubblePlacementLarge.AddVariation(ItemID.SnowBlock, Type, 0);
-		RegisterItemDrop(ItemID.SnowBlock);
 	}
 
-	public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
+	public override IEnumerable<Item> GetItemDrops(int i, int j)
+	{
+		yield return new Item(ItemID.SnowBlock);
+	}
 }

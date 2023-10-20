@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Sets.HuskstalkSet;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
@@ -18,14 +17,13 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			DustType = 7;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 
 			AddMapEntry(new Color(79, 110, 79));
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
-
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 	}
 
 	public class BriarStumpRubble : BriarStump
@@ -36,10 +34,8 @@ namespace SpiritMod.Tiles.Ambient.Briar
 		{
 			base.SetStaticDefaults();
 
-			FlexibleTileWand.RubblePlacementLarge.AddVariation(ModContent.ItemType<AncientBark>(), Type, 0);
+			FlexibleTileWand.RubblePlacementLarge.AddVariations(ModContent.ItemType<AncientBark>(), Type, 0, 1);
 			RegisterItemDrop(ModContent.ItemType<AncientBark>());
 		}
-
-		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 	}
 }

@@ -24,7 +24,7 @@ namespace SpiritMod.Tiles.Ambient.Corals
 			TileObjectData.newTile.Width = 1;
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.StyleHorizontal = true;
-			TileObjectData.newTile.Origin = new Point16(0, 0);
+			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.Sand, TileID.Crimsand, TileID.Ebonsand };
@@ -35,7 +35,6 @@ namespace SpiritMod.Tiles.Ambient.Corals
 			DustType = DustID.Coralstone;
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Coral");
 			AddMapEntry(new Color(150, 199, 80), name);
 		}
 
@@ -49,12 +48,28 @@ namespace SpiritMod.Tiles.Ambient.Corals
 
 		public override void SetStaticDefaults()
 		{
-			base.SetStaticDefaults();
+			Main.tileFrameImportant[Type] = true;
+			Main.tileNoAttach[Type] = true;
+			Main.tileLavaDeath[Type] = true;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
+			TileObjectData.newTile.Width = 1;
+			TileObjectData.newTile.Height = 2;
+			TileObjectData.newTile.StyleHorizontal = true;
+			TileObjectData.newTile.Origin = new Point16(0, 1);
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
+			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
+			TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.Sand, TileID.Crimsand, TileID.Ebonsand };
+			TileObjectData.newTile.RandomStyleRange = 1;
+			TileObjectData.addTile(Type);
+
+			TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = DustID.Coralstone;
+
+			AddMapEntry(new Color(150, 199, 80), Language.GetText($"Mods.SpiritMod.Tiles.{Name}.MapEntry"));
 
 			FlexibleTileWand.RubblePlacementSmall.AddVariation(ItemID.Coral, Type, 0);
 			RegisterItemDrop(ItemID.Coral);
 		}
-
-		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 	}
 }

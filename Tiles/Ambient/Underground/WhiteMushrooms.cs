@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Tiles.Block;
+using Terraria.GameContent;
 
 namespace SpiritMod.Tiles.Ambient.Underground
 {
@@ -21,7 +22,7 @@ namespace SpiritMod.Tiles.Ambient.Underground
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Origin = new Terraria.DataStructures.Point16(0, 1);
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.RandomStyleRange = 2;
 			TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.Grass, TileID.Dirt, TileID.Mud, TileID.Stone, TileID.ClayBlock, TileID.ArgonMoss, TileID.BlueMoss, TileID.BrownMoss, 
@@ -32,8 +33,6 @@ namespace SpiritMod.Tiles.Ambient.Underground
 
 			AddMapEntry(new Color(170, 166, 140));
 		}
-
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 	}
 
 	public class WhiteMushroom2x3 : ModTile
@@ -48,7 +47,7 @@ namespace SpiritMod.Tiles.Ambient.Underground
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Origin = new Terraria.DataStructures.Point16(1, 1);
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
 			TileObjectData.newTile.RandomStyleRange = 1;
 			TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.Grass, TileID.Dirt, TileID.Mud, TileID.Stone, TileID.ClayBlock, TileID.ArgonMoss, TileID.BlueMoss, TileID.BrownMoss,
 				TileID.GreenMoss, TileID.KryptonMoss, TileID.LavaMoss, TileID.PurpleMoss, TileID.RedMoss, TileID.XenonMoss, ModContent.TileType<Stargrass>() };
@@ -59,7 +58,31 @@ namespace SpiritMod.Tiles.Ambient.Underground
 
 			AddMapEntry(new Color(170, 166, 140));
 		}
+	}
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+	public class WhiteMushroom2x2Rubble : WhiteMushroom2x2
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementMedium.AddVariation(ItemID.Mushroom, Type, 0);
+			RegisterItemDrop(ItemID.Mushroom);
+		}
+	}
+
+	public class WhiteMushroom2x3Rubble : WhiteMushroom2x3
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementLarge.AddVariation(ItemID.Mushroom, Type, 0);
+			RegisterItemDrop(ItemID.Mushroom);
+		}
 	}
 }

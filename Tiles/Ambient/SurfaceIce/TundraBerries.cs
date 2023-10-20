@@ -54,7 +54,7 @@ public class TundraBerries1x2 : ModTile
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
 		TileObjectData.newTile.Origin = new Point16(0, 1);
-		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
+		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 		TileObjectData.newTile.RandomStyleRange = 2;
 		TileObjectData.newTile.StyleHorizontal = true;
 
@@ -66,8 +66,6 @@ public class TundraBerries1x2 : ModTile
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.BreakableWhenPlacing[Type] = true;
 	}
-
-	public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 }
 
 public class TundraBerries1x2Rubble : TundraBerries1x2
