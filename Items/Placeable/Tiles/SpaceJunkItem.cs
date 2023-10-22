@@ -1,7 +1,10 @@
 using SpiritMod.Tiles.Block;
+using SpiritMod.Tiles.Furniture.SpaceJunk;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace SpiritMod.Items.Placeable.Tiles
 {
@@ -10,7 +13,7 @@ namespace SpiritMod.Items.Placeable.Tiles
 		public override void SetStaticDefaults()
 		{
 			ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<AsteroidBlock>();
-			ItemID.Sets.ExtractinatorMode[Item.type] = Item.type;
+			ItemID.Sets.ExtractinatorMode[Type] = Type;
 		}
 
 		public override void SetDefaults()
@@ -29,30 +32,37 @@ namespace SpiritMod.Items.Placeable.Tiles
 
 		public override void ExtractinatorUse(int extractinatorBlockType, ref int resultType, ref int resultStack)
 		{
-			if (Main.rand.NextBool(6))
-			{
-				string[] lootTable = { "ScrapItem2", "ScrapItem3", "ScrapItem5" };
-				int loot = Main.rand.Next(lootTable.Length);
-				resultType = Mod.Find<ModItem>(lootTable[loot]).Type;
+			WeightedRandom<int> drop = new();
+			drop.Add(ItemID.CopperOre);
+			drop.Add(ItemID.TinOre);
+			drop.Add(ItemID.IronOre);
+			drop.Add(ItemID.LeadOre);
+			drop.Add(ItemID.SilverOre);
+			drop.Add(ItemID.TungstenOre);
+			drop.Add(ItemID.GoldOre);
+			drop.Add(ItemID.PlatinumOre);
+			drop.Add(ItemID.Obsidian);
+
+			drop.Add(ModContent.ItemType<ScrapItem2>(), .17);
+			drop.Add(ModContent.ItemType<ScrapItem3>(), .17);
+			drop.Add(ModContent.ItemType<ScrapItem5>(), .17);
+
+			drop.Add(ModContent.ItemType<ScrapItem1>(), .1);
+			drop.Add(ModContent.ItemType<ScrapItem4>(), .1);
+			drop.Add(ModContent.ItemType<ScrapItem6>(), .1);
+
+			drop.Add(ItemID.OldShoe, .11);
+			drop.Add(ItemID.TinCan, .11);
+
+			int itemDrop = drop;
+			resultType = itemDrop;
+
+			if (new int[] { ModContent.ItemType<ScrapItem2>(), ModContent.ItemType<ScrapItem3>(), ModContent.ItemType<ScrapItem5>() }.Contains(itemDrop))
 				resultStack = Main.rand.Next(1, 4);
-			}
-			else if (Main.rand.NextBool(10))
-			{
-				string[] lootTable1 = { "ScrapItem1", "ScrapItem4", "ScrapItem6" };
-				int loot2 = Main.rand.Next(lootTable1.Length);
-				resultType = Mod.Find<ModItem>(lootTable1[loot2]).Type;
-				resultStack = 1;
-			}
-			else if (Main.rand.NextBool(9))
-			{
-				resultType = Main.rand.Next(new int[] { 2337, 2339 });
-				resultStack = 1;
-			}
-			else
-			{
-				resultType = Main.rand.Next(new int[] { ItemID.CopperOre, ItemID.TinOre, ItemID.IronOre, ItemID.LeadOre, ItemID.GoldOre, ItemID.Obsidian, ItemID.PlatinumOre, ItemID.SilverOre, ItemID.TungstenOre });
+			else if (new int[] { ItemID.CopperOre, ItemID.TinOre, ItemID.IronOre, ItemID.LeadOre, ItemID.SilverOre, ItemID.TungstenOre, ItemID.GoldOre, ItemID.PlatinumOre, ItemID.Obsidian }.Contains(itemDrop))
 				resultStack = Main.rand.Next(2, 4);
-			}
+			else
+				resultStack = 1;
 		}
 	}
 }
