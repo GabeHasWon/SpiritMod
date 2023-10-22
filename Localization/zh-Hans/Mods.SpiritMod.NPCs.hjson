@@ -53,7 +53,7 @@ AutomataSpinner: {
 Beholder: {
 	DisplayName: 守望者
 	Entry: 这些野兽在世界上发现的大理石矿坑里游荡，用它们的每只眼睛来评判你。
-	// BossChecklistIntegration.SpawnInfo: The Beholder spawns rarely in Marble Caverns after the Eater of Worlds or Brain of Cthulhu has been defeated.
+	BossChecklistIntegration.SpawnInfo: 在世界吞噬者或克苏鲁之脑被击败后，有小概率在大理石洞穴生成。
 }
 
 BlazingSkull: {
@@ -116,13 +116,13 @@ MadHatter: {
 AncientFlyer: {
 	DisplayName: 始祖骨翼
 	Entry: 一种已灭绝的鸟类捕食者的族长，通过纯粹的保护其最后一颗蛋的意志而复活。
-	// BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/JewelCrown] in the sky biome at any time. Alternatively, smash a Giant Avian Egg, which is found on Avian Islands near the sky layer. The Ancient Avian can be fought at any time and any place in progression.
+	BossChecklistIntegration.SpawnInfo: 在天空使用[i:SpiritMod/JewelCrown]召唤。也可以通过打碎一颗巨型骨翼蛋召唤，骨翼蛋位于靠近天空层的骨翼岛。始祖骨翼可以在任何时间、任何地点进行战斗。
 }
 
 Atlas: {
 	DisplayName: 擎元魔像
 	Entry: 数千年前建造的被破坏的哨兵，旨在保护这片土地免受那些敢于破坏其自然形态的人的侵害。现在看来，你已经成为了它的目标。
-	// BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/StoneSkin] anywhere at any time.
+	BossChecklistIntegration.SpawnInfo: 使用[i:SpiritMod/StoneSkin]召唤。
 }
 
 AtlasArmLeft.DisplayName: 擎元魔像之手
@@ -134,7 +134,7 @@ CobbledEye3.DisplayName: 擎元石眼
 Dusking: {
 	DisplayName: 薄暮焱魂
 	Entry: 哥布林术士的失败的降神会带来的噩梦般的后果。这个令人讨厌的魂灵仍然是混乱影焰魔法可能带来的后果的燃烧的警示。
-	// BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/DuskCrown] anywhere at nighttime.
+	BossChecklistIntegration.SpawnInfo: 在夜晚使用[i:SpiritMod/DuskCrown]召唤。
 }
 
 ShadowBall.DisplayName: 半影之球
@@ -147,13 +147,13 @@ Shadowflamer: {
 FrostSaucer: {
 	DisplayName: 雪霸王
 	Entry: 一艘危险的飞行船，由令人毛骨悚然的寒冷金属制造而成，由冰霜核心提供动力。游戏时间结束，寒冰人再也不会出现了！
-	// BossChecklistIntegration.SpawnInfo: The Snow Monger spawns rarely during the Frost Legion.
+	BossChecklistIntegration.SpawnInfo: 在雪人军团入侵期间有小概率生成。
 }
 
 Infernon: {
 	DisplayName: 炎狱之主
 	Entry: 这个恶魔曾被束缚在地狱的深处，但现在终于挣脱了束缚。任何敢于阻拦它肆虐的凡人都应该做好恶战一场的准备。
-	// BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/CursedCloth] in the Underworld at any time.
+	BossChecklistIntegration.SpawnInfo: 在地狱使用[i:SpiritMod/CursedCloth]召唤。
 }
 
 InfernonSkull.DisplayName: 炎狱之颅
@@ -163,7 +163,7 @@ InfernoSkull.DisplayName: 炎狱之颅
 MoonWizard: {
 	DisplayName: 海月巫师
 	Entry: 这些海月水母比看上去要聪明得多。只要稍加协调，再加上敏锐的时尚感，它们就能成为一个远比任何单独的水母更难对付的对手。
-	// BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/DreamlightJellyItem] anywhere aboveground at nighttime. A [i:SpiritMod/DreamlightJellyItem] can be caught with a bug net during the Jelly Deluge, and is non-consumable
+	BossChecklistIntegration.SpawnInfo: 在夜晚高于地表的位置使用[i:SpiritMod/DreamlightJellyItem]召唤。在水母雨期间可使用捕虫网捕捉[i:SpiritMod/DreamlightJellyItem]，并且不会消耗。
 }
 
 AzureGemProj.DisplayName: 蔚蓝宝石
@@ -172,14 +172,14 @@ MysticMJWClone.DisplayName: 神秘克隆体
 OccultistBoss: {
 	DisplayName: 玄虚术士
 	Entry: 一只不死梦魔，痴迷于所谓的完美“血液腐化”与实践。为了进行这种实践，它只会在月亮闪烁着红光时现身。
-	// BossChecklistIntegration.SpawnInfo: The Occultist spawns rarely during a Blood Moon after any prehardmode boss has been defeated.
+	BossChecklistIntegration.SpawnInfo: 在任意一个困难模式前Boss被击败后有小概率在血月期间生成。
 }
 
 ExplodingSpore.DisplayName: 爆炸孢子
 
 ReachBoss: {
 	DisplayName: 怒藤毒灵
-	// BossChecklistIntegration.SpawnInfo: Right-click the Bloodblossom, a glowing flower found at the bottom of the Briar. The Vinewrath Bane can be fought at any time and any place in progression. If a Bloodblossom is not present, use a [i:SpiritMod/ReachBossSummon] in the Briar below the surface at any time.
+	BossChecklistIntegration.SpawnInfo: 右键绽血花召唤，绽血花位于荆棘之地的底部。怒藤毒灵可以在任何时间、任何地点进行战斗。如果没有绽血花存在，则可以在荆棘之地的低于地表的位置使用[i:SpiritMod/ReachBossSummon]召唤。
 }
 
 ReachBoss1: {
@@ -197,7 +197,7 @@ Scarab_Wall.DisplayName: 小甲虫
 Scarabeus: {
 	DisplayName: 圣甲虫
 	Entry: 一度被当做神灵崇拜的甲虫，源于一个难以捉摸的物种，同样也具有巨大的体型。
-	// BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/ScarabIdol] in the Desert during the daytime. A [i:SpiritMod/ScarabIdol] can be found upon completing a certain Adventurer quest, or can be crafted, and is non-consumable.
+	BossChecklistIntegration.SpawnInfo: 在白天的沙漠使用[i:SpiritMod/ScarabIdol]召唤。在完成冒险家的某个任务后可用获得一个[i:SpiritMod/ScarabIdol]，也可以通过手工制作，并且不会消耗。
 }
 
 SwarmScarab.DisplayName: 小甲虫
@@ -209,7 +209,7 @@ SteamRaiderBody2.DisplayName: 星盘巡游者
 SteamRaiderHead: {
 	DisplayName: 星盘巡游者
 	Entry: 一个来历不明的奇异的自动装置，旨在从恒星中挖掘珍贵的金属。它利用矿石中未被利用的能量为自己提供动力，并永无止境地搜寻。
-	// BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/StarWormSummon] at an Astralite Beacon, located in the Asteroids, at nighttime.
+	BossChecklistIntegration.SpawnInfo: 在夜晚时，在星界信标处使用[i:SpiritMod/StarWormSummon]召唤，星界信标位于小行星带。
 }
 
 SteamRaiderHeadDeath.DisplayName: 星盘巡游者
@@ -616,7 +616,7 @@ GraniteSlime: {
 HauntedTome: {
 	DisplayName: 闹鬼之书
 	Entry: 这本书上被放置了一种符文，以防止它被不当使用。不幸的是，这意味着你要和20只狗一起盯着这本书。
-	// BossChecklistIntegration.SpawnInfo: Haunted Tomes can be found while exploring Dark Sepulchres and interacting with certain items.
+	BossChecklistIntegration.SpawnInfo: 在探索黑暗坟葬并于某些物品进行交互时可用找到闹鬼之书。
 }
 
 HellEater: {
@@ -669,7 +669,7 @@ Masticator: {
 Mecromancer: {
 	DisplayName: 机械术士
 	Entry: 哥布林军队武器库中最伟大的人物之一。机械术士的修补天赋几乎无人能及。
-	// BossChecklistIntegration.SpawnInfo: The Mechromancer spawns rarely during a Goblin Army after the Eye of Cthulhu has been defeated.
+	BossChecklistIntegration.SpawnInfo: 在克苏鲁之眼被击败后，机械术士有小概率在哥布林军队入侵事件中生成。
 }
 
 GoldCrateMimic: {
@@ -799,7 +799,7 @@ Briarmoth: {
 ForestWraith: {
 	DisplayName: 绿林怒魂
 	Entry: 尽管荆棘之地的存在不自然且令人毛骨悚然，但它已经在自然界中留下了印记，以至于这些复仇恶灵将它称之为家。
-	// BossChecklistIntegration.SpawnInfo: Destroy a Bone Altar in the Underground Briar. The Glade Wraith also spawns naturally at nighttime after defeating the Eye of Cthulhu. Alternatively, find a [i:SpiritMod/GladeWreath] in Briar Chests and use it in the Briar at any time.
+	BossChecklistIntegration.SpawnInfo: 摧毁地下荆棘之地的骨祭坛。在克苏鲁之眼被击败后，绿林怒魂在夜晚时有小概率生成。或者可以通过在荆棘之地使用[i:SpiritMod/GladeWreath]召唤，绿林花冠可在荆棘箱中找到。
 }
 
 Noxophyll: {
@@ -850,7 +850,7 @@ Skeleton_Brute: {
 Snaptrapper: {
 	DisplayName: 裂孢诱捕者
 	Entry: 关于这种被隐秘的生物，人们所知甚少。它有六条腿，长着爪子，这使得大多数人认为它是某种节肢动物。
-	// BossChecklistIntegration.SpawnInfo: The Snaptrapper spawns rarely on the Jungle surface after the Eater of Worlds or Brain of Cthulhu has been defeated.
+	BossChecklistIntegration.SpawnInfo: 在世界吞噬者或克苏鲁之脑被击败后，有小概率在丛林地表生成。
 }
 
 AncientDemon: {
