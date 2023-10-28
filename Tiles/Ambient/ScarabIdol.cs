@@ -22,24 +22,18 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileNoAttach[Type] = true;
 			Main.tileLighted[Type] = true;
 
-			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+			TileID.Sets.FramesOnKillWall[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 4;
 			TileObjectData.newTile.Width = 4;
-			TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16,
-				16,
-				16,
-				16
-			};
-			TileObjectData.newTile.AnchorBottom = default(AnchorData);
-			TileObjectData.newTile.AnchorTop = default(AnchorData);
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
+			TileObjectData.newTile.AnchorBottom = default;
+			TileObjectData.newTile.AnchorTop = default;
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Scarab Idol");
 			AddMapEntry(new Color(245, 179, 66), name);
 			DustType = DustID.GoldCoin;
 		}

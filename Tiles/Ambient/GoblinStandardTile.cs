@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Items.Placeable.Tiles;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -15,13 +17,14 @@ namespace SpiritMod.Tiles.Ambient
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 4;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
 			TileObjectData.addTile(Type);
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Goblin Battle Standard");
 			DustType = DustID.Stone;
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
@@ -32,5 +35,20 @@ namespace SpiritMod.Tiles.Ambient
 		{
 			yield return new Item(ItemID.TatteredCloth) { stack = 3 };
 		}
+	}
+
+	public class GoblinStandardTileRubble : GoblinStandardTile
+	{
+		public override string Texture => base.Texture.Replace("Rubble", "");
+
+		public override void SetStaticDefaults()
+		{
+			base.SetStaticDefaults();
+
+			FlexibleTileWand.RubblePlacementLarge.AddVariation(ItemID.TatteredCloth, Type, 0);
+			RegisterItemDrop(ItemID.TatteredCloth);
+		}
+
+		public override IEnumerable<Item> GetItemDrops(int i, int j) { yield break; }
 	}
 }

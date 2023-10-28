@@ -7,6 +7,8 @@ namespace SpiritMod.Tiles.Furniture.Volleyball;
 
 public class VolleyballNet : ModTile
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override void SetStaticDefaults()
 	{
 		Main.tileFrameImportant[Type] = true;
@@ -37,7 +39,7 @@ public class VolleyballNet : ModTile
 
 public class VolleyballNetItem : ModItem
 {
-	// public override void SetStaticDefaults() => DisplayName.SetDefault("Volleyball Net");
+	public override bool IsLoadingEnabled(Mod mod) => false;
 	public override void SetDefaults() => Item.DefaultToPlaceableTile(ModContent.TileType<VolleyballNet>());
 
 	public override void AddRecipes()
