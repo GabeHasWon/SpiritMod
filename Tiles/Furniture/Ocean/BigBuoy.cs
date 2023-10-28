@@ -22,7 +22,15 @@ public class BigBuoy : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 		TileObjectData.newTile.Height = 3;
 		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 10 };
-		TileObjectData.newTile.DrawYOffset = 4;
+		//TileObjectData.newTile.DrawYOffset = 4;
+		//TileObjectData.newTile.LavaDeath = true;
+		//TileObjectData.newTile.WaterDeath = false;
+		//TileObjectData.newTile.CoordinatePadding = 2;
+		//TileObjectData.newTile.CoordinateWidth = 16;
+		//TileObjectData.newTile.Style = 0;
+		//TileObjectData.newTile.StyleHorizontal = true;
+		//TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.OnlyInLiquid;
+		//TileObjectData.newTile.UsesCustomCanPlace = true;
 		TileObjectData.newTile.AnchorBottom = AnchorData.Empty;
 		TileObjectData.addTile(Type);
 
@@ -34,9 +42,11 @@ public class BigBuoy : ModTile
 		AddMapEntry(new Color(250, 67, 74));
 	}
 
-	public override bool CanPlace(int i, int j)
+	public override bool CanPlace(int i, int j) => CanPlaceStatic(i, j);
+
+	internal static bool CanPlaceStatic(int i, int j)
 	{
-		j++;
+		//j--;
 
 		for (int x = i; x < i + 2; ++x)
 		{

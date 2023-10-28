@@ -16,6 +16,8 @@ public class BigBuoyItem : ModItem
 		Item.value = Item.buyPrice(copper: 80);
 	}
 
+	public override bool CanUseItem(Player player) => BigBuoy.CanPlaceStatic(Player.tileTargetX, Player.tileTargetY);
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

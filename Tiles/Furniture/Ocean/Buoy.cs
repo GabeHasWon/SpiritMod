@@ -11,8 +11,6 @@ namespace SpiritMod.Tiles.Furniture.Ocean;
 
 public class Buoy : ModTile
 {
-	public override bool IsLoadingEnabled(Mod mod) => false;
-
 	public override void SetStaticDefaults()
 	{
 		Main.tileFrameImportant[Type] = true;
@@ -41,7 +39,9 @@ public class Buoy : ModTile
 		AddMapEntry(new Color(250, 67, 74));
 	}
 
-	public override bool CanPlace(int i, int j)
+	public override bool CanPlace(int i, int j) => CanPlaceStatic(i, j);
+
+	internal static bool CanPlaceStatic(int i, int j)
 	{
 		Tile tile = Main.tile[i, j];
 		Tile above = Main.tile[i, j - 1];

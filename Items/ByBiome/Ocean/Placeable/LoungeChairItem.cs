@@ -7,8 +7,6 @@ namespace SpiritMod.Items.ByBiome.Ocean.Placeable;
 [Sacrifice(1)]
 public class LoungeChairItem : ModItem
 {
-	public override bool IsLoadingEnabled(Mod mod) => false;
-
 	public override void SetDefaults()
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<LoungeChair>());

@@ -13,8 +13,6 @@ namespace SpiritMod.Tiles.Furniture.Ocean;
 
 public class LoungeChair : ModTile
 {
-	public override bool IsLoadingEnabled(Mod mod) => false;
-
 	public override void SetStaticDefaults()
 	{
 		Main.tileSolid[Type] = false;
@@ -22,6 +20,11 @@ public class LoungeChair : ModTile
 		Main.tileLavaDeath[Type] = false;
 		Main.tileFrameImportant[Type] = true;
 		Main.tileLighted[Type] = true;
+
+		//TileID.Sets.CanBeSleptIn[Type] = true;
+		//TileID.Sets.InteractibleByNPCs[Type] = true;
+		//TileID.Sets.HasOutlines[Type] = true;
+		//TileID.Sets.IsValidSpawnPoint[Type] = true;
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 		TileObjectData.newTile.Origin = new Point16(1, 1);
@@ -41,28 +44,26 @@ public class LoungeChair : ModTile
 		DustType = DustID.BlueCrystalShard;
 	}
 
-	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
+	// Sleeping will not work at all and I don't care to fix it - gabe
+	//public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
-	public override bool RightClick(int i, int j)
-	{
-		Player player = Main.LocalPlayer;
+	//public override bool RightClick(int i, int j)
+	//{
+	//	Player player = Main.LocalPlayer;
 
-		if (!Player.IsHoveringOverABottomSideOfABed(i, j))
-		{
-			if (player.IsWithinSnappngRangeToTile(i, j, PlayerSleepingHelper.BedSleepingMaxDistance))
-			{
-				player.GamepadEnableGrappleCooldown();
-				player.sleeping.StartSleeping(player, i, j);
-			}
-		}
-		return true;
-	}
+	//	if (player.IsWithinSnappngRangeToTile(i, j, PlayerSleepingHelper.BedSleepingMaxDistance))
+	//	{
+	//		player.GamepadEnableGrappleCooldown();
+	//		player.sleeping.StartSleeping(player, i, j);
+	//	}
+	//	return true;
+	//}
 
-	public override void MouseOver(int i, int j)
-	{
-		Player player = Main.LocalPlayer;
-		player.noThrow = 2;
-		player.cursorItemIconEnabled = true;
-		player.cursorItemIconID = ModContent.ItemType<LoungeChairItem>();
-	}
+	//public override void MouseOver(int i, int j)
+	//{
+	//	Player player = Main.LocalPlayer;
+	//	player.noThrow = 2;
+	//	player.cursorItemIconEnabled = true;
+	//	player.cursorItemIconID = ModContent.ItemType<LoungeChairItem>();
+	//}
 }

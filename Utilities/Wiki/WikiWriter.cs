@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Terraria;
-using Terraria.GameContent.Bestiary;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Utilities.Wiki
@@ -14,7 +10,7 @@ namespace SpiritMod.Utilities.Wiki
 	{
 		public override bool IsLoadingEnabled(Mod mod) =>
 #if DEBUG
-			true;
+			false;
 #else
 			false;
 #endif
