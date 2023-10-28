@@ -441,7 +441,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				{
 					if (!text)
 					{
-						CombatText.NewText(NPC.getRect(), new Color(0, 200, 80, 100), "You cannot stop the wrath of nature!");
+						CombatText.NewText(NPC.getRect(), new Color(0, 200, 80, 100), Language.GetTextValue("Mods.SpiritMod.Misc.VWBWrath"));
 						text = true;
 					}
 

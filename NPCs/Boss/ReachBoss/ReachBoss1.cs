@@ -134,7 +134,8 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				if (NPC.ai[3] == 0)
 				{
 					NPC.ai[0] = 0;
-					CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(0, 200, 80, 100), "The Bramble shall consume you...");
+					string text = Language.GetTextValue("Mods.SpiritMod.Misc.VWBConsume");
+					CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(0, 200, 80, 100), text);
 					SoundEngine.PlaySound(SoundID.Grass, NPC.Center);
 					SoundEngine.PlaySound(SoundID.DD2_WyvernScream, NPC.Center);
                     NPC.ai[3]++;
@@ -290,9 +291,9 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			if (!MyWorld.downedReachBoss)
 			{
 				if (Main.netMode == NetmodeID.SinglePlayer)
-					Main.NewText("The torrential downpour in the Briar has lifted!", 61, 255, 142);
+					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Misc.VWBRainOver"), 61, 255, 142);
 				else if (Main.netMode == NetmodeID.Server)
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The torrential downpour in the Briar has lifted!"), new Color(61, 255, 142));
+					ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Misc.VWBRainOver"), new Color(61, 255, 142));
 			}
 
             MyWorld.downedReachBoss = true;

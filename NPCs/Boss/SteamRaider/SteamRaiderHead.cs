@@ -748,9 +748,9 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			if (!MyWorld.downedRaider)
 			{
 				if (Main.netMode == NetmodeID.SinglePlayer)
-					Main.NewText("The Astralite in the Asteroids hums with energy.", new Color(61, 255, 142));
+					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Misc.StarplateAnnouncement"), new Color(61, 255, 142));
 				else if (Main.netMode == NetmodeID.Server)
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Astralite in the Asteroids hums with energy."), new Color(61, 255, 142), -1);
+					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Mods.SpiritMod.Misc.StarplateAnnouncement"), new Color(61, 255, 142), -1);
 			}
 
 			MyWorld.downedRaider = true;
