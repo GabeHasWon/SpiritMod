@@ -438,3 +438,7 @@ SepulchreChestTile: {
 SepulchreMirror.MapEntry: 坟葬镜
 SepulchreWindowOne.MapEntry: 坟葬窗
 SepulchreWindowTwo.MapEntry: 坟葬窗
+// GoblinStandardTileRubble.MapEntry: Goblin Standard Tile Rubble
+// SkullStick3FlipRubble.MapEntry: Skull Stick3 Flip Rubble
+// SkullStick3Rubble.MapEntry: Skull Stick3 Rubble
+// TentOppositeRubble.MapEntry: Tent Opposite Rubble

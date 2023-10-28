@@ -40,7 +40,7 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon
 		private ref float RotationOffset => ref Projectile.localAI[1];
 		private ref float Charge => ref Projectile.ai[0];
 
-		public const int TimePerSwing = 100;
+		public const int TimePerSwing = 30;
 		public const int maxcharge = 5;
 
 		public override void AI()
