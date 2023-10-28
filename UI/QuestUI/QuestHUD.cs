@@ -103,7 +103,7 @@ namespace SpiritMod.UI.QuestUI
 				var builder = new StringBuilder();
 				Color c = QuestManager.GetCategoryInfo(Quest.QuestCategory).Color;
 				string hex = $"{c.R:X2}{c.G:X2}{c.B:X2}";
-				builder.Append("[c/").Append(hex).Append(":").Append(Quest.QuestName).AppendLine("]");
+				builder.Append("[c/").Append(hex).Append(':').Append(Quest.QuestName).AppendLine("]");
 
 				if (Quest.IsActive)
 				{

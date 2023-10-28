@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace SpiritMod.Mechanics.SpecialSellItem
 {
@@ -24,7 +25,7 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 				ModItem currencyItem = ItemLoader.GetItem(specialSell.SellType());
 				string name = (specialSell.SellName() == string.Empty) ? currencyItem.DisplayName.Value : (item.ModItem as ISpecialSellItem).SellName();
 
-				priceLine.Text = $"Sell price: {customPrice} " + name + ((customPrice > 1) ? "s" : string.Empty);
+				priceLine.Text = $"{Language.GetTextValue("Mods.SpiritMod.Misc.SellPrice")} {customPrice} " + name + ((customPrice > 1) ? "s" : string.Empty);
 				priceLine.OverrideColor = specialSell.SellColor();
 			}
 		}

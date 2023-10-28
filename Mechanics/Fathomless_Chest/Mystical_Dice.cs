@@ -4,6 +4,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Tiles;
+using Terraria.Localization;
 
 namespace SpiritMod.Mechanics.Fathomless_Chest
 {
@@ -57,7 +58,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				RunTeleport(player, new Vector2(pos.X, pos.Y));
 			else
 			{
-				CombatText.NewText(new Rectangle((int)player.Center.X, (int)player.Center.Y, 2, 2), Color.Cyan, "No Shrines Left!");
+				string text = Language.GetTextValue("Mods.SpiritMod.Misc.NoShrines");
+				CombatText.NewText(new Rectangle((int)player.Center.X, (int)player.Center.Y, 2, 2), Color.Cyan, text);
 				player.QuickSpawnItem(player.GetSource_ItemUse(Item), ModContent.ItemType<Black_Stone_Item>(), 15);
 				SoundEngine.PlaySound(SoundID.Item110, player.Center);
 				return;

@@ -43,6 +43,8 @@ MiscUI: {
 		'''
 	SellWeapons: Toggle this to disable the selling of weapons
 	SellNoValue: Toggle this to sell 'no value' items with quick-sell
+	Autofire: Autofire
+	Autoswing: Autoswing
 }
 
 Keybinds: {

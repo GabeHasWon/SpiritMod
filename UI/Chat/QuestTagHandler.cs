@@ -64,7 +64,7 @@ namespace SpiritMod.UI.Chat
 
 				if (string.IsNullOrEmpty(Main.hoverItemName))
 				{
-					Main.instance.MouseText("Click here to view the quest!");
+					Main.instance.MouseText(QuestManager.LocalizationValue("ViewQuest"));
 					Main.mouseText = true;
 				}
 			}

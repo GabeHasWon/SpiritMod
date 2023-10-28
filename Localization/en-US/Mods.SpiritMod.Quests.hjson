@@ -16,6 +16,9 @@ QuestRelockedChat: "[[sQ/{0}:{1}]] has been locked again."
 NewQuestChat: You have a new quest! [[sQ/{0}:{1}]]
 OpenJournal: Press 'C' to open the Quest Journal!
 OpenHUD: Press 'V' to keep track of your progress wih the HUD!
+QuestsFull: You cannot activate any more quests.
+StopQuest: Are you sure? You will [c/910000:lose your progress].
+Undiscovered: This quest hasn't been discovered.
 # These are all used for minor parts of quests, such as "Catch 2 Fish" or similar.
 # The space is necessary. Formats to "Talk to the <NPC Name>" in-game.
 TalkToNPC: "Talk to the "
@@ -27,8 +30,31 @@ Craft: Craft
 Capture: Capture
 Harvest: Harvest
 OptionalGather: Optional - Gather
+Objectives: Objectives
+Activate: Activate
+Deactivate: Deactivate
+ClaimRewards: Claim rewards!
 # Used for quest clients. Formats to "The <NPC Title>" in-game. The space is necessary. This also looks like a meme.
 The: "The "
+# Same as above for both of the below, but less funny.
+Client: "Client - "
+Rewards: Rewards
+# Used for chat quest snippets.
+ViewQuest: Click here to view the quest!
+
+Buttons: {
+	# Quest states
+	Active: Active
+	Completed: Completed
+	Available: Available
+	# Quest types
+	All: All
+	Main: Main
+	Explorer: Explorer
+	Forager: Forager
+	Slayer: Slayer
+	Other: Other
+}
 
 QuestInfo: {
 	# All quests will have a Name and a Description. The rest is dependent on what the quest does.

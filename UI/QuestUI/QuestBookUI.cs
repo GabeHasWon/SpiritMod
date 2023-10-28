@@ -244,7 +244,7 @@ namespace SpiritMod.UI.QuestUI
 			rightPage.Append(_questImage);
 
 			// objectives title
-			_questObjectivesTitle = new UISimpleWrappableText("Objectives", 0.8f);
+			_questObjectivesTitle = new UISimpleWrappableText(QuestManager.LocalizationValue("Objectives"), 0.8f);
 			_questObjectivesTitle.Top.Set(189f, 0f);
 			_questObjectivesTitle.Colour = new Color(43, 28, 17);
             rightPage.Append(_questObjectivesTitle);
@@ -296,7 +296,7 @@ namespace SpiritMod.UI.QuestUI
             rightPage.Append(_questObjectivesText);
 
 			// client title
-			_questClientTitle = new UISimpleWrappableText("Client - ", 0.8f);
+			_questClientTitle = new UISimpleWrappableText(QuestManager.LocalizationValue("Client"), 0.8f);
 			_questClientTitle.Top.Set(288f, 0f);
 			_questClientTitle.Colour = new Color(43, 28, 17);
             rightPage.Append(_questClientTitle);
@@ -311,7 +311,7 @@ namespace SpiritMod.UI.QuestUI
             rightPage.Append(_questClientText);
 
             // rewards title
-            _questRewardsTitle = new UISimpleWrappableText("Rewards", 0.8f);
+            _questRewardsTitle = new UISimpleWrappableText(QuestManager.LocalizationValue("Rewards"), 0.8f);
 			_questRewardsTitle.Top.Set(426f, 0f);
 			_questRewardsTitle.Colour = new Color(43, 28, 17);
             rightPage.Append(_questRewardsTitle);
@@ -368,7 +368,7 @@ namespace SpiritMod.UI.QuestUI
 					else
 					{
 						if (QuestManager.ActiveQuests.Count >= QuestManager.MAX_QUESTS_ACTIVE)
-							_interactionWarningText.Text = "You cannot activate any more quests.";
+							_interactionWarningText.Text = QuestManager.LocalizationValue("QuestsFull");
 					}
 				}
 				else
@@ -382,12 +382,12 @@ namespace SpiritMod.UI.QuestUI
 					}
 
 					// show a warning
-					_interactionWarningText.Text = "Are you sure? You will [c/910000:lose your progress].";
+					_interactionWarningText.Text = QuestManager.LocalizationValue("StopQuest");
 					_showingWarning = true;
 				}
 			};
 
-			_questInteractText = new UISimpleWrappableText("Activate");
+			_questInteractText = new UISimpleWrappableText(QuestManager.LocalizationValue("Activate"));
 			_questInteractText.Centered = true;
 			_questInteractText.Top.Set(-9f, 0f);
 			_questInteractText.Width.Set(0f, 1f);
@@ -459,7 +459,7 @@ namespace SpiritMod.UI.QuestUI
             float[] widths = new float[texts.Length];
             for (int i = 0; i < texts.Length; i++)
             {
-                widths[i] = FontAssets.MouseText.Value.MeasureString(texts[i]).X + 10;
+                widths[i] = FontAssets.MouseText.Value.MeasureString(QuestManager.LocalizationValue("Buttons." + texts[i])).X + 10;
                 totalWidth += widths[i];
             }
             for (int i = 0; i < texts.Length; i++) 
@@ -474,11 +474,14 @@ namespace SpiritMod.UI.QuestUI
             float totalPrec = 0f;
             for (int i = 0; i < texts.Length; i++)
             {
-                UIQuestBookButtonTextPanel button = new UIQuestBookButtonTextPanel(texts[i]);
-                button.TextScale = textScale;
-				button.DrawFilled = true;
-				button.SelectedFillColour = new Color(102, 86, 67) * SELECTED_OPACITY;
-				button.HoverFillColour = new Color(102, 86, 67) * HOVERED_OPACITY;
+				UIQuestBookButtonTextPanel button = new(QuestManager.LocalizationValue("Buttons." + texts[i]))
+				{
+					TextScale = textScale,
+					DrawFilled = true,
+					SelectedFillColour = new Color(102, 86, 67) * SELECTED_OPACITY,
+					HoverFillColour = new Color(102, 86, 67) * HOVERED_OPACITY
+				};
+
 				button.Top.Set(y, 0f);
                 button.Left.Set(0f, totalPrec);
                 button.Width.Set(0f, widths[i]);
@@ -544,7 +547,7 @@ namespace SpiritMod.UI.QuestUI
 			if (!quest.IsUnlocked)
 			{
 				_questTitleText.Scale = 0.47f;
-				_questTitleText.Text = "This quest hasn't been discovered.";
+				_questTitleText.Text = QuestManager.LocalizationValue("Undiscovered");
 				_questTitleText.Top.Set(-28f, 0.5f);
 
 				_questImage.Texture = null;
@@ -587,11 +590,12 @@ namespace SpiritMod.UI.QuestUI
 				scale = 0.8f * (416.25f / titleWidth);
 
 			_questTitleText.Scale = scale;
-			_questObjectivesTitle.Text = "Objectives";
-			_questRewardsTitle.Text = "Rewards";
+			_questObjectivesTitle.Text = QuestManager.LocalizationValue("Objectives");
+			_questRewardsTitle.Text = QuestManager.LocalizationValue("Rewards");
 			_questImage.Texture = quest.QuestImage;
-			_questInteractText.Text = quest.IsCompleted ? "Claim rewards!" : (quest.IsActive ? "Deactivate" : "Activate");
-			_questClientTitle.Text = "Client - " + quest.QuestClient;
+			_questInteractText.Text = quest.IsCompleted ? QuestManager.LocalizationValue("ClaimRewards") : 
+				(quest.IsActive ? QuestManager.LocalizationValue("Deactivate") : QuestManager.LocalizationValue("Activate"));
+			_questClientTitle.Text = QuestManager.LocalizationValue("Client") + quest.QuestClient;
 			_questClientText.Text = quest.QuestDescription;
 			_questClientText.UpdateText();
 			var category = QuestManager.GetCategoryInfo(quest.QuestCategory);

@@ -44,7 +44,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 				Player localP = Main.LocalPlayer;
 
 				Color color = Unlucky ? new Color(255, 150, 150) : new Color(150, 255, 150);
-				string text = Unlucky ? "Bad Luck!" : "Good Luck!";
+				string text = Language.GetTextValue("Mods.SpiritMod.Misc." + (Unlucky ? "Bad" : "Good") + "Luck");
 
 				CombatText combatText = Main.combatText[CombatText.NewText(new Rectangle(tileCoords.X * 16, tileCoords.Y * 16, localP.width, localP.height), color, text, false, false)];
 				NetMessage.SendData(MessageID.CombatTextInt, -1, -1, NetworkText.FromLiteral(combatText.text), (int)combatText.color.PackedValue, combatText.position.X, combatText.position.Y, 0.0f, 0, 0, 0);
