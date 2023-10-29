@@ -16,9 +16,9 @@ QuestRelockedChat: "[[sQ/{0}:{1}]]再次被锁定。"
 NewQuestChat: 你有了一个新的任务！[[sQ/{0}:{1}]]
 OpenJournal: 按下'C'键打开任务日志
 OpenHUD: 按下'V键'通过HUD（抬头显示器）以追踪你的任务！
-// QuestsFull: You cannot activate any more quests.
-// StopQuest: Are you sure? You will [c/910000:lose your progress].
-// Undiscovered: This quest hasn't been discovered.
+QuestsFull: 你无法激活更多任务了。
+StopQuest: 你确定吗？你将[c/910000:失去你的当前进度]。
+Undiscovered: 该任务尚未被发现。
 # These are all used for minor parts of quests, such as "Catch 2 Fish" or similar.
 # The space is necessary. Formats to "Talk to the <NPC Name>" in-game.
 TalkToNPC: 交谈对象：
@@ -30,30 +30,30 @@ Craft: 制作
 Capture: 捕捉
 Harvest: 收割
 OptionalGather: 可选 - 采集
-// Objectives: Objectives
-// Activate: Activate
-// Deactivate: Deactivate
-// ClaimRewards: Claim rewards!
+Objectives: 目标
+Activate: 激活
+Deactivate: 失效
+ClaimRewards: 领取奖励！
 # Used for quest clients. Formats to "The <NPC Title>" in-game. The space is necessary. This also looks like a meme.
 The: " "
 # Same as above for both of the below, but less funny.
-// Client: "Client - "
-// Rewards: Rewards
+Client: "委托人 - "
+Rewards: 奖励
 # Used for chat quest snippets.
-// ViewQuest: Click here to view the quest!
+ViewQuest: 点击此处以查看奖励！
 
 Buttons: {
 	# Quest states
-	// Active: Active
-	// Completed: Completed
-	// Available: Available
+	Active: 激活
+	Completed: 已完成
+	Available: 可用
 	# Quest types
-	// All: All
-	// Main: Main
-	// Explorer: Explorer
-	// Forager: Forager
-	// Slayer: Slayer
-	// Other: Other
+	All: 全部
+	Main: 主要
+	Explorer: 探索
+	Forager: 掠夺
+	Slayer: 屠戮
+	Other: 其他
 }
 
 QuestInfo: {

@@ -35,16 +35,16 @@ AshfallMusic: "[i:6076]  为地狱的落烬雨天气添加一首独特的曲目"
 VictoryNightMusic: "[i:6076]  为灯笼夜事件添加一首独特的曲目"
 
 MiscUI: {
-	// AutoSell: Click to quick-sell your items
-	/* SellLock:
+	AutoSell: 点击以快速出售你的物品。
+	SellLock:
 		'''
-		Toggle this to lock quick-sell mechanic
-		You won't be able to use quick-sell while this is toggled
-		''' */
-	// SellWeapons: Toggle this to disable the selling of weapons
-	// SellNoValue: Toggle this to sell 'no value' items with quick-sell
-	// Autofire: Autofire
-	// Autoswing: Autoswing
+		开启或关闭快速出售机制
+		关闭后无法使用快速出售
+		'''
+	SellWeapons: 开启或关闭以决定是否禁用武器出售
+	SellNoValue: 开启或关闭以决定是否能够快速出售“无价值”物品
+	Autofire: 自动开火
+	Autoswing: 自动挥舞
 }
 
 Keybinds: {
