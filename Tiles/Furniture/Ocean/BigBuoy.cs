@@ -11,8 +11,6 @@ namespace SpiritMod.Tiles.Furniture.Ocean;
 
 public class BigBuoy : ModTile
 {
-	public override bool IsLoadingEnabled(Mod mod) => false;
-
 	public override void SetStaticDefaults()
 	{
 		Main.tileFrameImportant[Type] = true;
@@ -21,16 +19,9 @@ public class BigBuoy : ModTile
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 		TileObjectData.newTile.Height = 3;
-		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 10 };
-		//TileObjectData.newTile.DrawYOffset = 4;
-		//TileObjectData.newTile.LavaDeath = true;
-		//TileObjectData.newTile.WaterDeath = false;
-		//TileObjectData.newTile.CoordinatePadding = 2;
-		//TileObjectData.newTile.CoordinateWidth = 16;
-		//TileObjectData.newTile.Style = 0;
-		//TileObjectData.newTile.StyleHorizontal = true;
-		//TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.OnlyInLiquid;
-		//TileObjectData.newTile.UsesCustomCanPlace = true;
+		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
+		TileObjectData.newTile.Origin = new Point16(0, 2);
+		TileObjectData.newTile.DrawYOffset = -4;
 		TileObjectData.newTile.AnchorBottom = AnchorData.Empty;
 		TileObjectData.addTile(Type);
 
@@ -46,8 +37,6 @@ public class BigBuoy : ModTile
 
 	internal static bool CanPlaceStatic(int i, int j)
 	{
-		//j--;
-
 		for (int x = i; x < i + 2; ++x)
 		{
 			Tile tile = Main.tile[x, j];
@@ -65,7 +54,7 @@ public class BigBuoy : ModTile
 	{
 		if (Main.tile[i, j].TileFrameX == 0 && Main.tile[i, j].TileFrameY == 0)
 		{
-			TileSwaySystem.DrawGrassSway(spriteBatch, Texture, i, j - 1, Lighting.GetColor(i, j), new Vector2(0, 20), new Point(32, 42), SpriteEffects.None);
+			TileSwaySystem.DrawGrassSway(spriteBatch, Texture + "_Full", i, j - 1, Lighting.GetColor(i, j), new Vector2(0, 20), new Point(32, 42), SpriteEffects.None);
 			TileSwaySystem.DrawGrassSway(spriteBatch, Texture + "_Glow", i, j - 1, Color.White, new Vector2(0, 20), new Point(32, 42), SpriteEffects.None);
 		}
 		return false;

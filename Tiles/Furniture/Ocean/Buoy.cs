@@ -23,7 +23,7 @@ public class Buoy : ModTile
 		TileObjectData.newTile.CoordinatePadding = 2;
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.CoordinateHeights = new int[] { 24 };
-		TileObjectData.newTile.DrawYOffset = -8;
+		TileObjectData.newTile.DrawYOffset = -12;
 		TileObjectData.newTile.Style = 0;
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.OnlyInLiquid;
