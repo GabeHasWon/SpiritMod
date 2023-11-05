@@ -21,7 +21,6 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Bed");
 			AddMapEntry(new Color(179, 146, 107), name);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
 			TileID.Sets.DisableSmartCursor[Type] = true;
@@ -76,9 +75,22 @@ namespace SpiritMod.Tiles.Furniture.Reach
 		public override void MouseOver(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
-			player.noThrow = 2;
-			player.cursorItemIconEnabled = true;
-			player.cursorItemIconID = ModContent.ItemType<ReachBedItem>();
+
+			if (!Player.IsHoveringOverABottomSideOfABed(i, j))
+			{
+				if (player.IsWithinSnappngRangeToTile(i, j, PlayerSleepingHelper.BedSleepingMaxDistance))
+				{
+					player.noThrow = 2;
+					player.cursorItemIconEnabled = true;
+					player.cursorItemIconID = ItemID.SleepingIcon;
+				}
+			}
+			else
+			{
+				player.noThrow = 2;
+				player.cursorItemIconEnabled = true;
+				player.cursorItemIconID = ModContent.ItemType<ReachBedItem>();
+			}
 		}
 	}
 }

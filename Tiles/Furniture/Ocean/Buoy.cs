@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Systems;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,6 +38,13 @@ public class Buoy : ModTile
 		HitSound = SoundID.Dig;
 
 		AddMapEntry(new Color(250, 67, 74));
+	}
+
+	public override void PlaceInWorld(int i, int j, Item item)
+	{
+		SoundEngine.PlaySound(SoundID.Splash, new Vector2(i, j) * 16);
+		for (int x = 0; x < 10; x++)
+			Dust.NewDustDirect(new Vector2(i, j) * 16, 16, 16, Dust.dustWater(), 0, 0, 150, new Color(), Main.rand.NextFloat(1f, 2f)).velocity = Vector2.UnitY * -Main.rand.NextFloat();
 	}
 
 	public override bool CanPlace(int i, int j) => CanPlaceStatic(i, j);
