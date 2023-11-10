@@ -15,7 +15,6 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 {
 	public class BambooBarrel : ModTile
 	{
-		private const string tileName = "Stripped Bamboo Barrel";
 		private static Point GetMultiTilePos(int i, int j)
 		{
 			Tile tile = Framing.GetTileSafely(i, j);
@@ -152,8 +151,11 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 				player.cursorItemIconText = Language.GetTextValue("LegacyChestType.0");
 			else
 			{
-				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : tileName;
-				if (player.cursorItemIconText == tileName)
+				Tile tile = Framing.GetTileSafely(i, j);
+				string defaultName = TileLoader.DefaultContainerName(tile.TileType, tile.TileFrameX, tile.TileFrameY);
+
+				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : defaultName;
+				if (player.cursorItemIconText == defaultName)
 				{
 					player.cursorItemIconID = TileLoader.GetItemDropFromTypeAndStyle(Type);
 					player.cursorItemIconText = string.Empty;

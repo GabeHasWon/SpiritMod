@@ -12,8 +12,6 @@ using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using static SpiritMod.NPCUtils;
-using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Weapon.Thrown.PlagueVial;
 using SpiritMod.Items.Placeable.Furniture;
@@ -28,7 +26,6 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Bandit");
 			Main.npcFrameCount[NPC.type] = 26;
 			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
 			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -73,7 +70,7 @@ namespace SpiritMod.NPCs.Town
 			}
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */ => Main.player.Any(x => x.active) && !NPC.AnyNPCs(NPCType<Rogue>()) && !NPC.AnyNPCs(NPCType<BoundRogue>());
+		public override bool CanTownNPCSpawn(int numTownNPCs) => Main.player.Any(x => x.active) && !NPC.AnyNPCs(ModContent.NPCType<Rogue>()) && !NPC.AnyNPCs(ModContent.NPCType<BoundRogue>());
 
 		public override List<string> SetNPCNameList() => new() { "Zane", "Carlos", "Tycho", "Damien", "Shane", "Daryl", "Shepard", "Sly" };
 
@@ -91,14 +88,14 @@ namespace SpiritMod.NPCs.Town
 			};
 
 			int wizard = NPC.FindFirstNPC(NPCID.Wizard);
-			if (wizard >= 0) {
+			if (wizard >= 0)
 				dialogue.Add($"Tell {Main.npc[wizard].GivenName} to stop asking me where I got the charms. He doesn't need to know that. He would die of shock.");
-			}
+
 
 			int merchant = NPC.FindFirstNPC(NPCID.Merchant);
-			if (merchant >= 0) {
+			if (merchant >= 0)
 				dialogue.Add($"Why is {Main.npc[merchant].GivenName} so intent on selling shurikens? That's totally my thing.");
-			}
+
 			return Main.rand.Next(dialogue);
 		}
 
@@ -106,9 +103,8 @@ namespace SpiritMod.NPCs.Town
 
 		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
-			if (firstButton) {
+			if (firstButton)
 				shopName = "Shop";
-			}
 		}
 
 		public override void AddShops()
@@ -147,7 +143,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = ProjectileType<Projectiles.Thrown.Kunai_Throwing>();
+			projType = ModContent.ProjectileType<Projectiles.Thrown.Kunai_Throwing>();
 			attackDelay = 1;
 		}
 
@@ -184,9 +180,9 @@ namespace SpiritMod.NPCs.Town
 		public Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
 		{
 			if (npc.altTexture == 1 && !(npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn))
-				return Request<Texture2D>("SpiritMod/NPCs/Town/Rogue_Alt_1");
+				return ModContent.Request<Texture2D>("SpiritMod/NPCs/Town/Rogue_Alt_1");
 
-			return Request<Texture2D>("SpiritMod/NPCs/Town/Rogue");
+			return ModContent.Request<Texture2D>("SpiritMod/NPCs/Town/Rogue");
 		}
 
 		public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("SpiritMod/NPCs/Town/Rogue_Head");
