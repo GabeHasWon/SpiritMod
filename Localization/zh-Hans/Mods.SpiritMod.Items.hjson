@@ -8570,3 +8570,23 @@ TrollfaceMask: {
 	DisplayName: 怪脸面具
 	Tooltip: ""
 }
+
+DriftwoodChairItem: {
+	// DisplayName: Driftwood Chair
+	// Tooltip: ""
+}
+
+DriftwoodDoorItem: {
+	// DisplayName: Driftwood Door
+	// Tooltip: ""
+}
+
+DriftwoodTableItem: {
+	// DisplayName: Driftwood Table
+	// Tooltip: ""
+}
+
+DriftwoodWorkbenchItem: {
+	// DisplayName: Driftwood Workbench
+	// Tooltip: ""
+}
