@@ -135,8 +135,6 @@ AcidChestTile: {
 }
 
 AcidClockTile.MapEntry: Corrosive Clock
-AcidDoorClosed.MapEntry: Corrosive Door
-AcidDoorOpen.MapEntry: Corrosive Door
 
 AcidDresserTile: {
 	MapEntry: Corrosive Dresser
@@ -285,8 +283,6 @@ ReachChest1: {
 }
 
 ReachClockTile.MapEntry: Elderbark Clock
-ReachDoorClosed.MapEntry: Elderbark Door
-ReachDoorOpen.MapEntry: Elderbark Door
 
 ReachDresser: {
 	MapEntry: Elderbark Dresser
@@ -358,8 +354,6 @@ SpiritChest: {
 }
 
 SpiritCrate.MapEntry: Crate
-SpiritDoorClosed.MapEntry: Spirit Door
-SpiritDoorOpen.MapEntry: Spirit Door
 SpiritTable.MapEntry: Spirit Table
 SpiritWorkbench.MapEntry: Spirit Workbench
 StarplatePaintingTile.MapEntry: Painting
