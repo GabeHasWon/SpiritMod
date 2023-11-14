@@ -1,6 +1,4 @@
-
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Enums;
 using Terraria.Localization;
@@ -19,7 +17,7 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Width = 3;
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
 			TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
 			TileObjectData.newTile.StyleWrapLimit = 2; //not really necessary but allows me to add more subtypes of chairs below the example chair texture
 			TileObjectData.newTile.StyleMultiplier = 2; //same as above
@@ -29,13 +27,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Loot Chest");
 			AddMapEntry(new Color(196, 155, 18), name);
 			DustType = -1;
-		}
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
 		}
 	}
 }

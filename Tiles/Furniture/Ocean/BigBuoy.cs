@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Systems;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,8 +12,6 @@ namespace SpiritMod.Tiles.Furniture.Ocean;
 
 public class BigBuoy : ModTile
 {
-	public override bool IsLoadingEnabled(Mod mod) => false;
-
 	public override void SetStaticDefaults()
 	{
 		Main.tileFrameImportant[Type] = true;
@@ -21,16 +20,11 @@ public class BigBuoy : ModTile
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 		TileObjectData.newTile.Height = 3;
-		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 10 };
-		//TileObjectData.newTile.DrawYOffset = 4;
-		//TileObjectData.newTile.LavaDeath = true;
-		//TileObjectData.newTile.WaterDeath = false;
-		//TileObjectData.newTile.CoordinatePadding = 2;
-		//TileObjectData.newTile.CoordinateWidth = 16;
-		//TileObjectData.newTile.Style = 0;
-		//TileObjectData.newTile.StyleHorizontal = true;
-		//TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.OnlyInLiquid;
-		//TileObjectData.newTile.UsesCustomCanPlace = true;
+		TileObjectData.newTile.CoordinateHeights = new int[] { 44, 44, 44 };
+		TileObjectData.newTile.CoordinateWidth = 32;
+		TileObjectData.newTile.Origin = new Point16(0, 2);
+		TileObjectData.newTile.DrawXOffset = 8;
+		TileObjectData.newTile.DrawYOffset = 4;
 		TileObjectData.newTile.AnchorBottom = AnchorData.Empty;
 		TileObjectData.addTile(Type);
 
@@ -42,12 +36,17 @@ public class BigBuoy : ModTile
 		AddMapEntry(new Color(250, 67, 74));
 	}
 
+	public override void PlaceInWorld(int i, int j, Item item)
+	{
+		SoundEngine.PlaySound(SoundID.Splash, new Vector2(i, j) * 16);
+		for (int x = 0; x < 20; x++)
+			Dust.NewDustDirect(new Vector2(i, j) * 16, 32, 16, Dust.dustWater(), 0, 0, 150, new Color(), Main.rand.NextFloat(1f, 2f)).velocity = Vector2.UnitY * -Main.rand.NextFloat();
+	}
+
 	public override bool CanPlace(int i, int j) => CanPlaceStatic(i, j);
 
 	internal static bool CanPlaceStatic(int i, int j)
 	{
-		//j--;
-
 		for (int x = i; x < i + 2; ++x)
 		{
 			Tile tile = Main.tile[x, j];

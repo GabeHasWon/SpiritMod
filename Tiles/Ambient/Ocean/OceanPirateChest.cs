@@ -44,7 +44,6 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			TileObjectData.addTile(Type);
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Pirate Chest");
 			AddMapEntry(new Color(161, 115, 54), name, MapChestName);
 			AddMapEntry(new Color(87, 64, 31), name, MapChestName);
 
@@ -148,7 +147,6 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 							if (Main.netMode == NetmodeID.MultiplayerClient)
 								NetMessage.SendTileSquare(-1, left, top, 2);
-							//NetMessage.SendData(MessageID.Unlock, -1, -1, null, player.whoAmI, 1f, left, top);
 							break;
 						}
 					}
@@ -192,7 +190,6 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 			if (tile.TileFrameX % 36 != 0)
 				left--;
-
 			if (tile.TileFrameY != 0)
 				top--;
 
@@ -203,11 +200,12 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 				player.cursorItemIconText = Language.GetTextValue("LegacyChestType.0");
 			else
 			{
-				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : DefaultContainerName(tile.TileFrameX, tile.TileFrameY).Value;
-				if (player.cursorItemIconText == DefaultContainerName(tile.TileFrameX, tile.TileFrameY).Value)
+				string defaultName = TileLoader.DefaultContainerName(tile.TileType, tile.TileFrameX, tile.TileFrameY);
+				player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : defaultName;
+				if (player.cursorItemIconText == defaultName)
 				{
 					player.cursorItemIconID = IsLockedChest(left, top) ? ModContent.ItemType<PirateKey>() : ModContent.ItemType<PirateChest>();
-					player.cursorItemIconText = "";
+					player.cursorItemIconText = string.Empty;
 				}
 			}
 			player.noThrow = 2;
@@ -218,7 +216,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 		{
 			MouseOver(i, j);
 			Player player = Main.LocalPlayer;
-			if (player.cursorItemIconText == "")
+			if (player.cursorItemIconText == string.Empty)
 			{
 				player.cursorItemIconEnabled = false;
 				player.cursorItemIconID = 0;

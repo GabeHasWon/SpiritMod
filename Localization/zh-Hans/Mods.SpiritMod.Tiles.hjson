@@ -135,8 +135,6 @@ AcidChestTile: {
 }
 
 AcidClockTile.MapEntry: 酸蚀钟
-AcidDoorClosed.MapEntry: 酸蚀门
-AcidDoorOpen.MapEntry: 酸蚀门
 
 AcidDresserTile: {
 	MapEntry: 酸蚀梳妆台
@@ -285,8 +283,6 @@ ReachChest1: {
 }
 
 ReachClockTile.MapEntry: 古木钟
-ReachDoorClosed.MapEntry: 古木们
-ReachDoorOpen.MapEntry: 古木门
 
 ReachDresser: {
 	MapEntry: 古木梳妆台
@@ -358,8 +354,6 @@ SpiritChest: {
 }
 
 SpiritCrate.MapEntry: 宝匣
-SpiritDoorClosed.MapEntry: 魂灵门
-SpiritDoorOpen.MapEntry: 魂灵门
 SpiritTable.MapEntry: 魂灵桌
 SpiritWorkbench.MapEntry: 魂灵工作台
 StarplatePaintingTile.MapEntry: 画作
@@ -438,7 +432,7 @@ SepulchreChestTile: {
 SepulchreMirror.MapEntry: 坟葬镜
 SepulchreWindowOne.MapEntry: 坟葬窗
 SepulchreWindowTwo.MapEntry: 坟葬窗
-// GoblinStandardTileRubble.MapEntry: Goblin Standard Tile Rubble
-// SkullStick3FlipRubble.MapEntry: Skull Stick3 Flip Rubble
-// SkullStick3Rubble.MapEntry: Skull Stick3 Rubble
-// TentOppositeRubble.MapEntry: Tent Opposite Rubble
+GoblinStandardTileRubble.MapEntry: 哥布林雕像
+SkullStick3FlipRubble.MapEntry: 棍顶颅
+SkullStick3Rubble.MapEntry: 棍顶颅
+TentOppositeRubble.MapEntry: 帐篷

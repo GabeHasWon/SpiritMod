@@ -8,6 +8,8 @@ namespace SpiritMod.Items.Placeable.Furniture
 	[Sacrifice(1)]
 	public class TreasureChest : ModItem
 	{
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<TreasureChestSmall>();
+
 		public override void SetDefaults()
 		{
 			Item.width = 48;
@@ -15,7 +17,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 			Item.value = 850;
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = Item.CommonMaxStack;
-			Item.value = Terraria.Item.buyPrice(0, 0, 90, 0);
+			Item.value = Item.buyPrice(0, 0, 90, 0);
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

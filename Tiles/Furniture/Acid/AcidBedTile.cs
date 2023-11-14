@@ -23,7 +23,6 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Bed");
 			AddMapEntry(new Color(100, 122, 111), name);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
             TileID.Sets.DisableSmartCursor[Type] = true;
@@ -39,9 +38,7 @@ namespace SpiritMod.Tiles.Furniture.Acid
         public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+			=> SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 
 		public override void ModifySleepingTargetInfo(int i, int j, ref TileRestingInfo info) => info.VisualOffset.Y += 4f;
 
@@ -84,9 +81,22 @@ namespace SpiritMod.Tiles.Furniture.Acid
 		public override void MouseOver(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
-			player.noThrow = 2;
-			player.cursorItemIconEnabled = true;
-			player.cursorItemIconID = ModContent.ItemType<AcidBed>();
+
+			if (!Player.IsHoveringOverABottomSideOfABed(i, j))
+			{
+				if (player.IsWithinSnappngRangeToTile(i, j, PlayerSleepingHelper.BedSleepingMaxDistance))
+				{
+					player.noThrow = 2;
+					player.cursorItemIconEnabled = true;
+					player.cursorItemIconID = ItemID.SleepingIcon;
+				}
+			}
+			else
+			{
+				player.noThrow = 2;
+				player.cursorItemIconEnabled = true;
+				player.cursorItemIconID = ModContent.ItemType<AcidBed>();
+			}
 		}
 	}
 }
