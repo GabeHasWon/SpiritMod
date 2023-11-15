@@ -76,7 +76,7 @@ namespace SpiritMod.NPCs.Town
 		{
 			List<string> nameList = new();
 			for (int i = 1; i < 9; i++)
-				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Name" + i));
+				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Rogue.Name" + i));
 
 			return nameList;
 		}
@@ -85,15 +85,15 @@ namespace SpiritMod.NPCs.Town
 		{
 			List<string> dialogue = new();
 			for (int i = 1; i < 8; i++)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Dialogue.Basic" + i));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Rogue.Dialogue.Basic" + i));
 
 			int wizard = NPC.FindFirstNPC(NPCID.Wizard);
 			if (wizard >= 0)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Dialogue.Special1", Main.npc[wizard].GivenName));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Rogue.Dialogue.Special1", Main.npc[wizard].GivenName));
 
 			int merchant = NPC.FindFirstNPC(NPCID.Merchant);
 			if (merchant >= 0)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Dialogue.Special2", Main.npc[merchant].GivenName));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Rogue.Dialogue.Special2", Main.npc[merchant].GivenName));
 
 			return Main.rand.Next(dialogue);
 		}

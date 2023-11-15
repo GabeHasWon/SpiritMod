@@ -36,7 +36,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
-		public override string GetChat() => Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Bound");
+		public override string GetChat() => Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Bound");
 
 		public override void AI()
         {

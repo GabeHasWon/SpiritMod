@@ -63,7 +63,7 @@ namespace SpiritMod.NPCs.Town
 		{
 			List<string> nameList = new();
 			for (int i = 1; i < 9; i++)
-				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.RuneWizard.Name" + i));
+				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.RuneWizard.Name" + i));
 
 			return nameList;
 		}
@@ -72,10 +72,10 @@ namespace SpiritMod.NPCs.Town
 		{
 			List<string> dialogue = new();
 			for (int i = 1; i < 8; i++)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.RuneWizard.Dialogue.Basic" + i));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.RuneWizard.Dialogue.Basic" + i));
 
-			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.RuneWizard.Dialogue.Special1"), MyWorld.blueMoon);
-			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.RuneWizard.Dialogue.Special2"), Main.hardMode);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPC.RuneWizard.Dialogue.Special1"), MyWorld.blueMoon);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPC.RuneWizard.Dialogue.Special2"), Main.hardMode);
 
 			return Main.rand.Next(dialogue);
 		}

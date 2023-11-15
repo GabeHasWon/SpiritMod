@@ -996,19 +996,19 @@ Adventurer: {
 	DisplayName: 冒险家
 
 	TownNPCMood: {
-		Content: "{$Mods.SpiritMod.TownNPCMood.Adventurer.Content}"
-		NoHome: "{$Mods.SpiritMod.TownNPCMood.Adventurer.NoHome}"
-		FarFromHome: "{$Mods.SpiritMod.TownNPCMood.Adventurer.FarFromHome}"
-		LoveSpace: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LoveSpace}"
-		DislikeCrowded: "{$Mods.SpiritMod.TownNPCMood.Adventurer.DislikeCrowded}"
-		HateCrowded: "{$Mods.SpiritMod.TownNPCMood.Adventurer.HateCrowded}"
-		LikeBiome: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LikeBiome}"
-		DislikeBiome: "{$Mods.SpiritMod.TownNPCMood.Adventurer.DislikeBiome}"
-		LoveNPC: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LoveNPC}"
-		LikeNPC: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LikeNPC}"
-		DislikeNPC: "{$Mods.SpiritMod.TownNPCMood.Adventurer.DislikeNPC}"
-		HateNPC: "{$Mods.SpiritMod.TownNPCMood.Adventurer.HateNPC}"
-		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Adventurer.LikeNPC_Princess}"
+		Content: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.Content}"
+		NoHome: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.NoHome}"
+		FarFromHome: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.FarFromHome}"
+		LoveSpace: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LoveSpace}"
+		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.DislikeCrowded}"
+		HateCrowded: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.HateCrowded}"
+		LikeBiome: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LikeBiome}"
+		DislikeBiome: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.DislikeBiome}"
+		LoveNPC: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LoveNPC}"
+		LikeNPC: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LikeNPC}"
+		DislikeNPC: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.DislikeNPC}"
+		HateNPC: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.HateNPC}"
+		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LikeNPC_Princess}"
 		Princess_LovesNPC: I like {NPCName}.
 	}
 
@@ -1064,19 +1064,19 @@ Gambler: {
 	DisplayName: 赌徒
 
 	TownNPCMood: {
-		Content: "{$Mods.SpiritMod.TownNPCMood.Gambler.Content}"
-		NoHome: "{$Mods.SpiritMod.TownNPCMood.Gambler.NoHome}"
-		FarFromHome: "{$Mods.SpiritMod.TownNPCMood.Gambler.FarFromHome}"
-		LoveSpace: "{$Mods.SpiritMod.TownNPCMood.Gambler.LoveSpace}"
-		DislikeCrowded: "{$Mods.SpiritMod.TownNPCMood.Gambler.DislikeCrowded}"
-		HateCrowded: "{$Mods.SpiritMod.TownNPCMood.Gambler.HateCrowded}"
-		LikeBiome: "{$Mods.SpiritMod.TownNPCMood.Gambler.LikeBiome}"
-		DislikeBiome: "{$Mods.SpiritMod.TownNPCMood.Gambler.DislikeBiome}"
-		LoveNPC: "{$Mods.SpiritMod.TownNPCMood.Gambler.LoveNPC}"
-		LikeNPC: "{$Mods.SpiritMod.TownNPCMood.Gambler.LikeNPC}"
-		DislikeNPC: "{$Mods.SpiritMod.TownNPCMood.Gambler.DislikeNPC}"
-		HateNPC: "{$Mods.SpiritMod.TownNPCMood.Gambler.HateNPC}"
-		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Gambler.LikeNPC_Princess}"
+		Content: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.Content}"
+		NoHome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.NoHome}"
+		FarFromHome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.FarFromHome}"
+		LoveSpace: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LoveSpace}"
+		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.DislikeCrowded}"
+		HateCrowded: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.HateCrowded}"
+		LikeBiome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LikeBiome}"
+		DislikeBiome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.DislikeBiome}"
+		LoveNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LoveNPC}"
+		LikeNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LikeNPC}"
+		DislikeNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.DislikeNPC}"
+		HateNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.HateNPC}"
+		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LikeNPC_Princess}"
 		Princess_LovesNPC: I like {NPCName}.
 	}
 
@@ -1106,19 +1106,19 @@ Rogue: {
 	DisplayName: 盗贼
 
 	TownNPCMood: {
-		Content: "{$Mods.SpiritMod.TownNPCMood.Rogue.Content}"
-		NoHome: "{$Mods.SpiritMod.TownNPCMood.Rogue.NoHome}"
-		FarFromHome: "{$Mods.SpiritMod.TownNPCMood.Rogue.FarFromHome}"
-		LoveSpace: "{$Mods.SpiritMod.TownNPCMood.Rogue.LoveSpace}"
-		DislikeCrowded: "{$Mods.SpiritMod.TownNPCMood.Rogue.DislikeCrowded}"
-		HateCrowded: "{$Mods.SpiritMod.TownNPCMood.Rogue.HateCrowded}"
-		LikeBiome: "{$Mods.SpiritMod.TownNPCMood.Rogue.LikeBiome}"
-		DislikeBiome: "{$Mods.SpiritMod.TownNPCMood.Rogue.DislikeBiome}"
-		LoveNPC: "{$Mods.SpiritMod.TownNPCMood.Rogue.LoveNPC}"
-		LikeNPC: "{$Mods.SpiritMod.TownNPCMood.Rogue.LikeNPC}"
-		DislikeNPC: "{$Mods.SpiritMod.TownNPCMood.Rogue.DislikeNPC}"
-		HateNPC: "{$Mods.SpiritMod.TownNPCMood.Rogue.HateNPC}"
-		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.Rogue.LikeNPC_Princess}"
+		Content: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.Content}"
+		NoHome: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.NoHome}"
+		FarFromHome: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.FarFromHome}"
+		LoveSpace: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LoveSpace}"
+		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.DislikeCrowded}"
+		HateCrowded: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.HateCrowded}"
+		LikeBiome: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LikeBiome}"
+		DislikeBiome: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.DislikeBiome}"
+		LoveNPC: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LoveNPC}"
+		LikeNPC: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LikeNPC}"
+		DislikeNPC: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.DislikeNPC}"
+		HateNPC: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.HateNPC}"
+		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LikeNPC_Princess}"
 		Princess_LovesNPC: I like {NPCName}.
 	}
 
@@ -1129,18 +1129,18 @@ RuneWizard: {
 	DisplayName: 附魔师
 
 	TownNPCMood: {
-		Content: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.Content}"
-		NoHome: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.NoHome}"
-		FarFromHome: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.FarFromHome}"
-		LoveSpace: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LoveSpace}"
-		DislikeCrowded: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.DislikeCrowded}"
-		HateCrowded: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.HateCrowded}"
-		LikeBiome: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LikeBiome}"
-		DislikeBiome: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.DislikeBiome}"
-		LoveNPC: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LoveNPC}"
-		LikeNPC: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LikeNPC}"
-		HateNPC: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.HateNPC}"
-		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPCMood.RuneWizard.LikeNPC_Princess}"
+		Content: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.Content}"
+		NoHome: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.NoHome}"
+		FarFromHome: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.FarFromHome}"
+		LoveSpace: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LoveSpace}"
+		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.DislikeCrowded}"
+		HateCrowded: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.HateCrowded}"
+		LikeBiome: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LikeBiome}"
+		DislikeBiome: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.DislikeBiome}"
+		LoveNPC: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LoveNPC}"
+		LikeNPC: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LikeNPC}"
+		HateNPC: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.HateNPC}"
+		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LikeNPC_Princess}"
 		Princess_LovesNPC: I like {NPCName}.
 	}
 

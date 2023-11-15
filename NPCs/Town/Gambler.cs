@@ -82,7 +82,7 @@ namespace SpiritMod.NPCs.Town
 		{
 			List<string> nameList = new();
 			for (int i = 1; i < 8; i++)
-				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Gambler.Name" + i));
+				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Gambler.Name" + i));
 
 			return nameList;
 		}
@@ -91,7 +91,7 @@ namespace SpiritMod.NPCs.Town
 		{
 			List<string> dialogue = new();
 			for (int i = 1; i < 7; i++)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Gambler.Dialogue.Basic" + i));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Gambler.Dialogue.Basic" + i));
 
 			return Main.rand.Next(dialogue);
 		}
