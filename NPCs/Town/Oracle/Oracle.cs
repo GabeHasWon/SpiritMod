@@ -14,7 +14,6 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI.Chat;
 using Terraria.GameContent.Bestiary;
-using Microsoft.CodeAnalysis;
 
 namespace SpiritMod.NPCs.Town.Oracle
 {
@@ -43,8 +42,6 @@ namespace SpiritMod.NPCs.Town.Oracle
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Oracle");
-
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true;
 		}
@@ -64,6 +61,7 @@ namespace SpiritMod.NPCs.Town.Oracle
 			NPC.noGravity = true;
 			NPC.dontTakeDamage = true;
 			NPC.immortal = true;
+			TownNPCStayingHomeless = true;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Marble");
@@ -448,7 +446,7 @@ namespace SpiritMod.NPCs.Town.Oracle
 
 			if (runeSources == null) //Initialize runeSources
 			{
-				Rectangle IndividualRuneSource() => new Rectangle(0, 32 * Main.rand.Next(8), 32, 32);
+				static Rectangle IndividualRuneSource() => new(0, 32 * Main.rand.Next(8), 32, 32);
 
 				runeSources = new Rectangle[8];
 
