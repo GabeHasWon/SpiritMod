@@ -8590,3 +8590,8 @@ DriftwoodWorkbenchItem: {
 	DisplayName: Driftwood Workbench
 	Tooltip: ""
 }
+
+SwordStandItem: {
+	DisplayName: Sword Stand
+	Tooltip: Allows some swords to be displayed using right click
+}
