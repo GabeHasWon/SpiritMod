@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Placeable.Furniture;
 using SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword;
 using SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria;
@@ -82,7 +83,7 @@ public class SwordStand : ModTile
 			}
 			else if (CanPlace(Held(Main.LocalPlayer)))
 			{
-				entity.item = Held(Main.LocalPlayer);
+				entity.item = Held(Main.LocalPlayer).Clone();
 				Held(Main.LocalPlayer).TurnToAir();
 				return true;
 			}
@@ -104,16 +105,16 @@ public class SwordStand : ModTile
 			: ModContent.ItemType<SwordStandItem>();
 	}
 
-	public override void KillMultiTile(int i, int j, int frameX, int frameY)
-	{
-		if (TileEntityCheck(i, j, out SwordStandTileEntity entity) && entity.item != null)
-		{
-			int item = Item.NewItem(null, i * 16, j * 16, 16, 16, entity.item);
+	public override void KillMultiTile(int i, int j, int frameX, int frameY) => ModContent.GetInstance<SwordStandTileEntity>().Kill(i, j);
 
-			if (Main.netMode != NetmodeID.SinglePlayer)
-				NetMessage.SendData(MessageID.SyncItem, number: item);
-		}
-		ModContent.GetInstance<SwordStandTileEntity>().Kill(i, j);
+	public override IEnumerable<Item> GetItemDrops(int i, int j)
+	{
+		var drops = new List<Item>() { new Item(ModContent.ItemType<SwordStandItem>()) };
+		if (TileEntityCheck(i, j, out SwordStandTileEntity entity) && entity.item != null)
+			drops.Add(entity.item);
+
+		foreach (Item item in drops)
+			yield return item;
 	}
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
