@@ -10,7 +10,6 @@ using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using static SpiritMod.NPCUtils;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Armor.WitchSet;
 
@@ -23,7 +22,6 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Enchanter");
 			Main.npcFrameCount[NPC.type] = 26;
 			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
 			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -59,25 +57,25 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
-		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */ => Main.player.Any(x => x.active && x.inventory.Any(y => y.type == ModContent.ItemType<Glyph>()));
+		public override bool CanTownNPCSpawn(int numTownNPCs) => Main.player.Any(x => x.active && x.inventory.Any(y => y.type == ModContent.ItemType<Glyph>()));
 
-		public override List<string> SetNPCNameList() => new() { "Malachai", "Nisarmah", "Moneque", "Tosalah", "Kentremah", "Salqueeh", "Oarno", "Cosimo" };
+		public override List<string> SetNPCNameList()
+		{
+			List<string> nameList = new();
+			for (int i = 1; i < 9; i++)
+				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.RuneWizard.Name" + i));
+
+			return nameList;
+		}
 
 		public override string GetChat()
 		{
-			List<string> dialogue = new List<string>
-			{
-				"Power up your weapons with my strange Glyphs!",
-				"Sometimes, I just scribble a rune on a Glyph and see what happens. I don't recommend you do.",
-				"Before you ask, no, I'm not going to put a Honeyed Glyph on a bee. It'd be way too strong.",
-				"I forgot the essence of Hellebore! Don't touch that!",
-				"If you're unsure of how to stumble upon Glyphs, my master once told me powerful bosses hold many!",
-				"Fun fact - you can put runes on anything. They're just most powerful on Glyphs.",
-				"Anything can be enchanted if you possess the skill, wit, and essence!",
-			};
+			List<string> dialogue = new();
+			for (int i = 1; i < 8; i++)
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.RuneWizard.Dialogue.Basic" + i));
 
-			dialogue.AddWithCondition("I wonder what enchantements have been placed on the moon - It's all blue!", MyWorld.blueMoon);
-			dialogue.AddWithCondition("The resurgence of Spirits offer a whole level of enchanting possibility!", Main.hardMode);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.RuneWizard.Dialogue.Special1"), MyWorld.blueMoon);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.RuneWizard.Dialogue.Special2"), Main.hardMode);
 
 			return Main.rand.Next(dialogue);
 		}

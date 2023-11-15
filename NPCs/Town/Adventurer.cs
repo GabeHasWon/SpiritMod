@@ -75,39 +75,40 @@ namespace SpiritMod.NPCs.Town
 			}
 		}
 
-		public override List<string> SetNPCNameList() => new List<string>() { "Morgan", "Adam", "Aziz", "Temir", "Evan", "Senzen", "Johanovic", "Adrian", "Christopher" };
+		public override List<string> SetNPCNameList()
+		{
+			List<string> nameList = new();
+			for (int i = 1; i < 10; i++)
+				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Name" + i));
+
+			return nameList;
+		}
+
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<AdventurerMap>();
 
 		public override string GetChat()
 		{
-			var dialogue = new List<string>
-			{
-				"I've been all around this world, and I've got so many things for you to see.",
-				"Lovely house you've got here. It's much better lodging than when those savages from The Briar hung me over a spit.",
-				"Every dawn brings with it a new opportunity for a journey! You interested?",
-				"We're pretty similar, you and I. I sense our shared thirst for adventure.",
-				"Buy my stuff and go out there! See what the world has to offer, like I have.",
-				"From the depths of temples and the heights of space, peruse my wares.",
-				"I've a knack for pins, I have to say. You find all these little trinkets on your travels..."
-			};
+			List<string> dialogue = new();
+			for (int i = 1; i < 8; i++)
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Basic" + i));
 
 			int merchant = NPC.FindFirstNPC(NPCID.Merchant);
 			if (merchant >= 0)
-				dialogue.Add($"I swear I've got more goods for sale than {Main.npc[merchant].GivenName}!");
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Special1", Main.npc[merchant].GivenName));
 
 			int travellingMerchant = NPC.FindFirstNPC(NPCID.TravellingMerchant);
 			if (travellingMerchant >= 0)
-				dialogue.Add($"Ah! It's {Main.npc[travellingMerchant].GivenName}! We've often met on our journeys. I still haven't found all those exotic jungles he speaks of.");
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Special2", Main.npc[travellingMerchant].GivenName));
 
 			int armsDealer = NPC.FindFirstNPC(NPCID.ArmsDealer);
 			if (armsDealer >= 0)
-				dialogue.Add($"Got some great prices today! {Main.npc[armsDealer].GivenName}'s wares can't compete! They literally can't. I don't sell guns anymore.");
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Special3", Main.npc[armsDealer].GivenName));
 
-			dialogue.AddWithCondition("Like the moon, my merchandise is inconsistent.", !Main.dayTime);
-			dialogue.AddWithCondition("Everyone seems to be so aggressive tonight. With the zombies knocking at our door, I think you should buy stuff and head underground as quick as you can. Can you take me with you?", Main.bloodMoon);
-			dialogue.AddWithCondition("The goblins are more organized than you'd think- I saw their mages build a huge tower over yonder. You should check it out sometime!", MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
-			dialogue.AddWithCondition("My old business partner turned to the bandit life a few years ago. I wonder if he's doing okay. I think his associates have set up a bandit camp somewhere near the seas.", !MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
-			dialogue.AddWithCondition("A shimmering blue light's on the horizon. Wonder what that's about, huh?", NPC.downedMechBossAny);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Special4"), !Main.dayTime);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Special5"), Main.bloodMoon);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Special6"), MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Special7"), !MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Special8"), NPC.downedMechBossAny);
 			
 			return Main.rand.Next(dialogue);
 		}
@@ -167,7 +168,7 @@ namespace SpiritMod.NPCs.Town
 			button = Language.GetTextValue("LegacyInterface.28");
 
 			if (!Mechanics.QuestSystem.QuestManager.QuestBookUnlocked)
-				button2 = "Quest Book";
+				button2 = Language.GetTextValue("Mods.SpiritMod.Quests.QuestBook");
 		}
 
 		public override void OnChatButtonClicked(bool firstButton, ref string shopName)

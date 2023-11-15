@@ -1,0 +1,177 @@
+Adventurer: {
+	Dialogue: {
+		// Basic1: I've been all around this world, and I've got so many things for you to see.
+		// Basic2: Lovely house you've got here. It's much better lodging than when those savages from The Briar hung me over a spit.
+		// Basic3: Every dawn brings with it a new opportunity for a journey! You interested?
+		// Basic4: We're pretty similar, you and I. I sense our shared thirst for adventure.
+		// Basic5: Buy my stuff and go out there! See what the world has to offer, like I have.
+		// Basic6: From the depths of temples and the heights of space, peruse my wares.
+		// Basic7: I've a knack for pins, I have to say. You find all these little trinkets on your travels...
+		// Special1: I swear I've got more goods for sale than {0}!
+		// Special2: Ah! It's {0}! We've often met on our journeys. I still haven't found all those exotic jungles he speaks of.
+		// Special3: Got some great prices today! {0}'s wares can't compete! They literally can't. I don't sell guns anymore.
+		// Special4: Like the moon, my merchandise is inconsistent.
+		// Special5: Everyone seems to be so aggressive tonight. With the zombies knocking at our door, I think you should buy stuff and head underground as quick as you can. Can you take me with you?
+		// Special6: The goblins are more organized than you'd think- I saw their mages build a huge tower over yonder. You should check it out sometime!
+		// Special7: My old business partner turned to the bandit life a few years ago. I wonder if he's doing okay. I think his associates have set up a bandit camp somewhere near the seas.
+		// Special8: A shimmering blue light's on the horizon. Wonder what that's about, huh?
+		// Bound: I thought I was a real goner there! If you didn't butt in, I probably would've been fed to whatever those monsters were trying to conjure up over there. I wouldn't touch it if I were you... Look, you have my thanks; but just between you and me, it's been a long few months, and all I want is a vacation from adventuring for a while. Life is short, and I'd rather not make it shorter. D'you have a place to stay?
+	}
+
+	// Name1: Morgan
+	// Name2: Adam
+	// Name3: Aziz
+	// Name4: Temir
+	// Name5: Evan
+	// Name6: Senzen
+	// Name7: Johanovic
+	// Name8: Adrian
+	// Name9: Christopher
+}
+
+Gambler: {
+	Dialogue: {
+		// Basic1: Gambling is the sport of royals. Why don't you take a chance?
+		// Basic2: I should warn you, my game isn't for the faint of heart.
+		// Basic3: Gambling's bad for you. Unless you win.
+		// Basic4: Win or lose, the thrill of the game is worth the money.
+		// Basic5: You have the face of a winner. Step up!
+		// Basic6: Get a sense of pride and accomplishment for just a few coins!
+		/* Bound:
+			'''
+			Must be my lucky day to see a friendly face around here!
+			These goblins didn't take too kindly to me offering a, uh, rigged deal.
+			Anyway, d'you have a place to stay? Let's flip for it.
+			''' */
+	}
+
+	// Name1: Yumeko
+	// Name2: Vanessa
+	// Name3: Gray
+	// Name4: Alexandra
+	// Name5: Sasha
+	// Name6: Celine
+	// Name7: Aleksa
+}
+
+Rogue: {
+	Dialogue: {
+		// Basic1: Here to peruse my wares? They're quite sharp.
+		// Basic2: Trust me- the remains of those bosses you kill don't go to waste.
+		// Basic3: The world is filled with opportunity! Now go kill some things.
+		// Basic4: This mask is getting musky...
+		// Basic5: Look at that handsome devil! Oh, it's just a mirror.
+		// Basic6: Here to satisfy all your murdering needs!
+		// Basic7: Nice day we're having here! Now, who do you want dead?
+		// Special1: Tell {0} to stop asking me where I got the charms. He doesn't need to know that. He would die of shock.
+		// Special2: Why is {0} so intent on selling shurikens? That's totally my thing.
+		// Bound: Hey! Thanks for saving me- Now, mind getting us out of this pickle? They duped me, took all my cash and left me for dead here! Don't think it means I'll discount my wares for you, though. Just kidding! Not.
+	}
+
+	// Name1: Zane
+	// Name2: Carlos
+	// Name3: Tycho
+	// Name4: Damien
+	// Name5: Shane
+	// Name6: Daryl
+	// Name7: Shepard
+	// Name8: Sly
+}
+
+RuneWizard: {
+	Dialogue: {
+		// Basic1: Power up your weapons with my strange Glyphs!
+		// Basic2: Sometimes, I just scribble a rune on a Glyph and see what happens. I don't recommend you do.
+		// Basic3: Before you ask, no, I'm not going to put a Honeyed Glyph on a bee. It'd be way too strong.
+		// Basic4: I forgot the essence of Hellebore! Don't touch that!
+		// Basic5: If you're unsure of how to stumble upon Glyphs, my master once told me powerful bosses hold many!
+		// Basic6: Fun fact - you can put runes on anything. They're just most powerful on Glyphs.
+		// Basic7: Anything can be enchanted if you possess the skill, wit, and essence!
+		// Special1: I wonder what enchantements have been placed on the moon - It's all blue!
+		// Special2: The resurgence of Spirits offer a whole level of enchanting possibility!
+	}
+
+	// Name1: Malachai
+	// Name2: Nisarmah
+	// Name3: Moneque
+	// Name4: Tosalah
+	// Name5: Kentremah
+	// Name6: Salqueeh
+	// Name7: Oarno
+	// Name8: Cosimo
+}
+
+TownNPCMood: {
+	Adventurer: {
+		// Content: Relaxing at home is almost as nice as a good trek, isn't it?
+		// NoHome: While I'm an explorer, I'd like to relax for a while. Got a spare place I can hole up in?
+		// LoveSpace: Plenty of room to plan my next expedition, wonderful!
+		// FarFromHome: You could say I'm 'adventuring' a bit too far from my house...but seriously I don't have a map.
+		// DislikeCrowded: How am I supposed to chart undiscovered lands with all these people around?
+		// HateCrowded: I'd rather explore a lake of lava than live here with all these people!
+		// LikeBiome: "{BiomeName} is a relaxing place to be, good place to rest up."
+		// LoveBiome: You shouldn't see this.
+		// DislikeBiome: While I'd love to finish what I've started, it's far too soon for me to be back in the {BiomeName}.
+		// HateBiome: You houldn't see this either!
+		// LikeNPC: Me and {NPCName} go way back. I still remember our first journey together!
+		// LoveNPC: That {NPCName} is a fascinating character. His stories are trumped by nothing!
+		// DislikeNPC: "{NPCName} really knows how to bring down the mood. Maybe a hike would brighten him up?"
+		// HateNPC: While {NPCName} is a collector in spirit, he only offloads his work to others. A disappointment to explorers everywhere.
+		// Princess_LovesNPC: "{NPCName} has an air of her. An air of adventure."
+	}
+
+	Gambler: {
+		// Content: While we're both taking a minute here, why not open a box or two?
+		// NoHome: I need a place to call my own - where'll I setup a place otherwise?
+		// LoveSpace: I'm the gamblin' type but I'm not the casino type - I love it nice and calm.
+		// FarFromHome: Money is one thing, but I'm not about gambling with my life. Where's my home?
+		// DislikeCrowded: There's such a thing as too many cooks in the casino, if you catch my drift.
+		// HateCrowded: People keep knocking over my loot boxes! How am I supposed to sell here?
+		// LikeBiome: Ah, {BiomeName}. Just the perfect place to set up shop.
+		// LoveBiome: You shouldn't see this.
+		// DislikeBiome: No one likes to gamble in the humidity. The coins get all wet and gross!
+		// HateBiome: You houldn't see this either!
+		// LikeNPC: My hair? That's {NPCName}'s pride and joy. She does a wonderful job.
+		// LoveNPC: Once, I upsold a wooden chest to {NPCName} for a quick buck. He opened it and there were like, three hundred ducks in there. I've never been so confused and amazed.
+		// DislikeNPC: Unlike {NPCName}, I don't hoard my wealth.
+		// HateNPC: Say what you want about ME, but is what {NPCName} even legal?
+		// Princess_LovesNPC: Y'know, {NPCName} has some spunk. She's fierce, and you could be too!
+	}
+
+	Rogue: {
+		// Content: Three hundred...four hundred...nothing beats counting up a...hard day's work!
+		// NoHome: Where am I supposed to hide what I st- find, if I don't have a house?
+		// LoveSpace: Away from all prying eyes, perfect, perfect.
+		// FarFromHome: Did someone steal my house and take it? I'm not sure where it is.
+		// DislikeCrowded: Too many people, I'm getting some side eyes.
+		// HateCrowded: With this level of crowding, it's not my fault if an 'accident' happens and thins the herd, y'know?
+		// LikeBiome: So much cover! So many places to hide! A wonderful place.
+		// LoveBiome: You shouldn't see this.
+		// DislikeBiome: I have WAY too much competition here - get me OUT!
+		// HateBiome: You houldn't see this either!
+		// LikeNPC: "{NPCName} actually helped me cross some sketchy areas a couple of times - great guy."
+		// LoveNPC: I'm no engineer, but the stuff {NPCName} makes is so cool. I might even pay for it this time!
+		// DislikeNPC: Oh, {NPCName}? Let's just say he's not against testing a couple of his explosives.
+		// HateNPC: Let me tell you...that {NPCName} guy? On a hairpin trigger, literally. I only lifted a couple coins, I swear!
+		// Princess_LovesNPC: "{NPCName} said she'd keep my secret close to her heart...of which I have none. Shoo."
+	}
+
+	RuneWizard: {
+		// Content: The runes are coming along nicely today.
+		// NoHome: I don't have any space for my runes!
+		// LoveSpace: The magic flows much easier in the calm.
+		// FarFromHome: I don't know if you could guess, but I'd strongly prefer to be near my beloved runes.
+		// DislikeCrowded: It's hard to focus when there's so many people around!
+		// HateCrowded: With this many people around, I can only wish there were a Silence Glyph.
+		// LikeBiome: I've never been more in tune with the runic magic! This place is wonderful.
+		// LoveBiome: You shouldn't see this.
+		// DislikeBiome: This place is just too much. Way too much. Let me out.
+		// HateBiome: You houldn't see this either!
+		# LikeNPC: "Ah, {NPCName}? We know nothing of each other's craft - yet, still a fascinating man. Nice fashion too, unique." - Removed Witch Doctor dialogue
+		// LikeNPC: Sometimes, {NPCName} will ask me to enchant some of his wares...I always put a blank enchant on them. He is overjoyed every time.
+		// LoveNPC: "{NPCName} and I frequently talk of our work - it's fascinating how he can enchant without any knowledge of magic."
+		// DislikeNPC: I don't dislike anyone!
+		// HateNPC: "{NPCName} doesn't understand the power of runes...it's all 'Ice Rod this' and 'Crystal Ball' that..."
+		// Princess_LovesNPC: There's always a magic in {NPCName}'s eyes when I do a trick. It's the little things, haha.
+	}
+}

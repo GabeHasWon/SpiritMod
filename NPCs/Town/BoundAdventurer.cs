@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -35,7 +36,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
-		public override string GetChat() => "I thought I was a real goner there! If you didn't butt in, I probably would've been fed to whatever those monsters were trying to conjure up over there. I wouldn't touch it if I were you... Look, you have my thanks; but just between you and me, it's been a long few months, and all I want is a vacation from adventuring for a while. Life is short, and I'd rather not make it shorter. D'you have a place to stay?";
+		public override string GetChat() => Language.GetTextValue("Mods.SpiritMod.TownNPCText.Adventurer.Dialogue.Bound");
 
 		public override void AI()
         {

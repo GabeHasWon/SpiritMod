@@ -7,12 +7,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using static Terraria.ModLoader.ModContent;
-using static SpiritMod.NPCUtils;
 using SpiritMod.Tiles.Furniture.SlotMachine;
 using SpiritMod.Items.Sets.MagicMisc.MagicDeck;
 using Terraria.GameContent.Personalities;
 using Terraria.GameContent.Bestiary;
-using SpiritMod.Buffs;
 
 namespace SpiritMod.NPCs.Town
 {
@@ -24,7 +22,6 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Gambler");
 			Main.npcFrameCount[NPC.type] = 26;
 			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
 			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -61,7 +58,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Desert");
 
-		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
+		public override bool CanTownNPCSpawn(int numTownNPCs)
 		{
 			if (NPC.AnyNPCs(NPCType<BoundGambler>()))
 				return false;
@@ -81,19 +78,21 @@ namespace SpiritMod.NPCs.Town
 			return false;
 		}
 
-		public override List<string> SetNPCNameList() => new List<string>() { "Yumeko", "Vanessa", "Gray", "Alexandra", "Sasha", "Celine", "Aleksa" };
+		public override List<string> SetNPCNameList()
+		{
+			List<string> nameList = new();
+			for (int i = 1; i < 8; i++)
+				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Gambler.Name" + i));
+
+			return nameList;
+		}
 
 		public override string GetChat()
 		{
-			var dialogue = new List<string>
-			{
-				"Gambling is the sport of royals. Why don't you take a chance?",
-				"I should warn you, my game isn't for the faint of heart.",
-				"Gambling's bad for you. Unless you win.",
-				"Win or lose, the thrill of the game is worth the money.",
-				"You have the face of a winner. Step up!",
-				"Get a sense of pride and accomplishment for just a few coins!"
-			};
+			List<string> dialogue = new();
+			for (int i = 1; i < 7; i++)
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Gambler.Dialogue.Basic" + i));
+
 			return Main.rand.Next(dialogue);
 		}
 

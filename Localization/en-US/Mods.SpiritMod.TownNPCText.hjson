@@ -1,0 +1,102 @@
+Adventurer: {
+	Dialogue: {
+		Basic1: I've been all around this world, and I've got so many things for you to see.
+		Basic2: Lovely house you've got here. It's much better lodging than when those savages from The Briar hung me over a spit.
+		Basic3: Every dawn brings with it a new opportunity for a journey! You interested?
+		Basic4: We're pretty similar, you and I. I sense our shared thirst for adventure.
+		Basic5: Buy my stuff and go out there! See what the world has to offer, like I have.
+		Basic6: From the depths of temples and the heights of space, peruse my wares.
+		Basic7: I've a knack for pins, I have to say. You find all these little trinkets on your travels...
+		Special1: I swear I've got more goods for sale than {0}!
+		Special2: Ah! It's {0}! We've often met on our journeys. I still haven't found all those exotic jungles he speaks of.
+		Special3: Got some great prices today! {0}'s wares can't compete! They literally can't. I don't sell guns anymore.
+		Special4: Like the moon, my merchandise is inconsistent.
+		Special5: Everyone seems to be so aggressive tonight. With the zombies knocking at our door, I think you should buy stuff and head underground as quick as you can. Can you take me with you?
+		Special6: The goblins are more organized than you'd think- I saw their mages build a huge tower over yonder. You should check it out sometime!
+		Special7: My old business partner turned to the bandit life a few years ago. I wonder if he's doing okay. I think his associates have set up a bandit camp somewhere near the seas.
+		Special8: A shimmering blue light's on the horizon. Wonder what that's about, huh?
+		Bound: I thought I was a real goner there! If you didn't butt in, I probably would've been fed to whatever those monsters were trying to conjure up over there. I wouldn't touch it if I were you... Look, you have my thanks; but just between you and me, it's been a long few months, and all I want is a vacation from adventuring for a while. Life is short, and I'd rather not make it shorter. D'you have a place to stay?
+	}
+
+	Name1: Morgan
+	Name2: Adam
+	Name3: Aziz
+	Name4: Temir
+	Name5: Evan
+	Name6: Senzen
+	Name7: Johanovic
+	Name8: Adrian
+	Name9: Christopher
+}
+
+Gambler: {
+	Dialogue: {
+		Basic1: Gambling is the sport of royals. Why don't you take a chance?
+		Basic2: I should warn you, my game isn't for the faint of heart.
+		Basic3: Gambling's bad for you. Unless you win.
+		Basic4: Win or lose, the thrill of the game is worth the money.
+		Basic5: You have the face of a winner. Step up!
+		Basic6: Get a sense of pride and accomplishment for just a few coins!
+		Bound:
+			'''
+			Must be my lucky day to see a friendly face around here!
+			These goblins didn't take too kindly to me offering a, uh, rigged deal.
+			Anyway, d'you have a place to stay? Let's flip for it.
+			'''
+	}
+
+	Name1: Yumeko
+	Name2: Vanessa
+	Name3: Gray
+	Name4: Alexandra
+	Name5: Sasha
+	Name6: Celine
+	Name7: Aleksa
+}
+
+Rogue: {
+	Dialogue: {
+		Basic1: Here to peruse my wares? They're quite sharp.
+		Basic2: Trust me- the remains of those bosses you kill don't go to waste.
+		Basic3: The world is filled with opportunity! Now go kill some things.
+		Basic4: This mask is getting musky...
+		Basic5: Look at that handsome devil! Oh, it's just a mirror.
+		Basic6: Here to satisfy all your murdering needs!
+		Basic7: Nice day we're having here! Now, who do you want dead?
+		Special1: Tell {0} to stop asking me where I got the charms. He doesn't need to know that. He would die of shock.
+		Special2: Why is {0} so intent on selling shurikens? That's totally my thing.
+		Bound: Hey! Thanks for saving me- Now, mind getting us out of this pickle? They duped me, took all my cash and left me for dead here! Don't think it means I'll discount my wares for you, though. Just kidding! Not.
+	}
+
+	Name1: Zane
+	Name2: Carlos
+	Name3: Tycho
+	Name4: Damien
+	Name5: Shane
+	Name6: Daryl
+	Name7: Shepard
+	Name8: Sly
+}
+
+RuneWizard: {
+	Dialogue: {
+		Basic1: Power up your weapons with my strange Glyphs!
+		Basic2: Sometimes, I just scribble a rune on a Glyph and see what happens. I don't recommend you do.
+		Basic3: Before you ask, no, I'm not going to put a Honeyed Glyph on a bee. It'd be way too strong.
+		Basic4: I forgot the essence of Hellebore! Don't touch that!
+		Basic5: If you're unsure of how to stumble upon Glyphs, my master once told me powerful bosses hold many!
+		Basic6: Fun fact - you can put runes on anything. They're just most powerful on Glyphs.
+		Basic7: Anything can be enchanted if you possess the skill, wit, and essence!
+		Special1: I wonder what enchantements have been placed on the moon - It's all blue!
+		Special2: The resurgence of Spirits offer a whole level of enchanting possibility!
+	}
+
+	Name1: Malachai
+	Name2: Nisarmah
+	Name3: Moneque
+	Name4: Tosalah
+	Name5: Kentremah
+	Name6: Salqueeh
+	Name7: Oarno
+	Name8: Cosimo
+}

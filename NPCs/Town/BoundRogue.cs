@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -37,7 +38,7 @@ namespace SpiritMod.NPCs.Town
 
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
-		public override string GetChat() => "Hey! Thanks for saving me- Now, mind getting us out of this pickle? They duped me, took all my cash and left me for dead here! Don't think it means I'll discount my wares for you, though. Just kidding! Not.";
+		public override string GetChat() => Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Dialogue.Bound");
 
 		public override void AI()
 		{

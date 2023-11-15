@@ -72,29 +72,28 @@ namespace SpiritMod.NPCs.Town
 
 		public override bool CanTownNPCSpawn(int numTownNPCs) => Main.player.Any(x => x.active) && !NPC.AnyNPCs(ModContent.NPCType<Rogue>()) && !NPC.AnyNPCs(ModContent.NPCType<BoundRogue>());
 
-		public override List<string> SetNPCNameList() => new() { "Zane", "Carlos", "Tycho", "Damien", "Shane", "Daryl", "Shepard", "Sly" };
+		public override List<string> SetNPCNameList()
+		{
+			List<string> nameList = new();
+			for (int i = 1; i < 9; i++)
+				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Name" + i));
+
+			return nameList;
+		}
 
 		public override string GetChat()
 		{
-			List<string> dialogue = new List<string>
-			{
-				"Here to peruse my wares? They're quite sharp.",
-				"Trust me- the remains of those bosses you kill don't go to waste.",
-				"The world is filled with opportunity! Now go kill some things.",
-				"This mask is getting musky...",
-				"Look at that handsome devil! Oh, it's just a mirror.",
-				"Here to satisfy all your murdering needs!",
-				"Nice day we're having here! Now, who do you want dead?",
-			};
+			List<string> dialogue = new();
+			for (int i = 1; i < 8; i++)
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Dialogue.Basic" + i));
 
 			int wizard = NPC.FindFirstNPC(NPCID.Wizard);
 			if (wizard >= 0)
-				dialogue.Add($"Tell {Main.npc[wizard].GivenName} to stop asking me where I got the charms. He doesn't need to know that. He would die of shock.");
-
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Dialogue.Special1", Main.npc[wizard].GivenName));
 
 			int merchant = NPC.FindFirstNPC(NPCID.Merchant);
 			if (merchant >= 0)
-				dialogue.Add($"Why is {Main.npc[merchant].GivenName} so intent on selling shurikens? That's totally my thing.");
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPCText.Rogue.Dialogue.Special2", Main.npc[merchant].GivenName));
 
 			return Main.rand.Next(dialogue);
 		}

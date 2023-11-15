@@ -7,6 +7,7 @@ RecipeConditions: {
 
 # This is actually only used for the Lifeform Analyzer's (Quest) <NPCName>.
 Quest: Quest
+QuestBook: Quest Book
 Residents: Your residents want to talk to you. Chat with them to get more quests!
 ChatOpenBook: Click on quests in the chat to open them in the book!
 # This formats to "You have completed a quest! <Quest Name>" in-game. The sQ?:{0} is a quest chat tag.

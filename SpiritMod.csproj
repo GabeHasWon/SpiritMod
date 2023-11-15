@@ -33,6 +33,7 @@
     <None Remove="localization\en-us\Mods.SpiritMod.SetBonuses.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.Tiles.hjson" />
     <None Remove="Localization\en-US\Mods.SpiritMod.TownNPCMood.hjson" />
+    <None Remove="localization\en-us\Mods.SpiritMod.TownNPCText.hjson" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
