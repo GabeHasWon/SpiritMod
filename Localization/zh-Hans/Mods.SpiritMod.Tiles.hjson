@@ -436,4 +436,4 @@ GoblinStandardTileRubble.MapEntry: 哥布林雕像
 SkullStick3FlipRubble.MapEntry: 棍顶颅
 SkullStick3Rubble.MapEntry: 棍顶颅
 TentOppositeRubble.MapEntry: 帐篷
-// SwordStand.MapEntry: Sword Stand
+SwordStand.MapEntry: 剑架
