@@ -7075,7 +7075,7 @@ SeaMandrakeSac: {
 }
 
 ArtemisHunt: {
-	DisplayName: 覆天箭雨
+	DisplayName: 蔽天
 	Tooltip:
 		'''
 		标记被攻击的敌人
@@ -8592,6 +8592,6 @@ DriftwoodWorkbenchItem: {
 }
 
 SwordStandItem: {
-	// DisplayName: Sword Stand
-	// Tooltip: Allows some swords to be displayed using right click
+	DisplayName: 剑架
+	Tooltip: 右键剑架可将某些剑置于其上
 }
