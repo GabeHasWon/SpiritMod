@@ -21,8 +21,8 @@ namespace SpiritMod.Tiles.Furniture.Fountains
             Main.tileFrameImportant[Type] = true;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style5x4);
-            TileObjectData.newTile.Origin = new Point16(3, 2);
-            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 16 };
+            TileObjectData.newTile.Origin = new Point16(2, 3);
+            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 18 };
             TileObjectData.addTile(Type);
 
             AddMapEntry(new Color(75, 139, 166));
