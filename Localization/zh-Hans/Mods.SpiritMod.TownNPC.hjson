@@ -30,7 +30,7 @@ Adventurer: {
 		DislikeBiome: 虽然我很想完成我已经开始做的事情，但现在就回到{BiomeName}对我来说还为时过早。
 		HateBiome: You houldn't see this either!
 		LikeNPC: 我和{NPCName}是老交情了。我还记得我们第一次一起旅行的时候！
-		LoveNPC: {NPCName}是一个迷人的人物。他的故事一点价值也没有！
+		LoveNPC: "{NPCName}是一个迷人的人物。他的故事一点价值也没有！"
 		DislikeNPC: "{NPCName}真会让人扫兴。也许徒步旅行能让他振作起来？"
 		HateNPC: 虽然{NPCName}是一位精神上的收藏家，但他只是把自己的工作推卸给别人。令世界各地的探险家失望。
 		Princess_LovesNPC: "{NPCName}有她的气质。一种冒险的气质。"
@@ -145,7 +145,7 @@ RuneWizard: {
 		Special2: 魂灵的复生提供了一种全新的附魔可能性！
 	}
 
-	TownNPCMood: {
+	Mood: {
 		Content: 今天的符文进展的不错。
 		NoHome: 我没有地方放我的符文！
 		LoveSpace: 在宁静的地方，魔法会更容易流动。

@@ -28,7 +28,7 @@ Adventurer: {
 		LikeBiome: "{BiomeName} is a relaxing place to be, good place to rest up."
 		LoveBiome: You shouldn't see this.
 		DislikeBiome: While I'd love to finish what I've started, it's far too soon for me to be back in the {BiomeName}.
-		HateBiome: You houldn't see this either!
+		HateBiome: You shouldn't see this either!
 		LikeNPC: Me and {NPCName} go way back. I still remember our first journey together!
 		LoveNPC: That {NPCName} is a fascinating character. His stories are trumped by nothing!
 		DislikeNPC: "{NPCName} really knows how to bring down the mood. Maybe a hike would brighten him up?"
@@ -145,7 +145,7 @@ RuneWizard: {
 		Special2: The resurgence of Spirits offer a whole level of enchanting possibility!
 	}
 
-	TownNPCMood: {
+	Mood: {
 		Content: The runes are coming along nicely today.
 		NoHome: I don't have any space for my runes!
 		LoveSpace: The magic flows much easier in the calm.
