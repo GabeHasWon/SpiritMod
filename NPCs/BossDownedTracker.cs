@@ -12,6 +12,7 @@ using System.Linq;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -115,5 +116,5 @@ public class CanDropGlyph : IItemDropRuleCondition, IProvideItemConditionDescrip
 {
 	public bool CanDrop(DropAttemptInfo info) => !BossDownedTracker.IsBossDowned(info.npc);
 	public bool CanShowItemDropInUI() => true;
-	public string GetConditionDescription() => "On first kill";
+	public string GetConditionDescription() => Language.GetTextValue("Mods.SpiritMod.Condition.FirstDown");
 }

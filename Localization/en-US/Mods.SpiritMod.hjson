@@ -308,4 +308,5 @@ Condition: {
 	InBriar: Mods.SpiritMod.Condition.InBriar
 	InAsteroids: Mods.SpiritMod.Condition.InAsteroids
 	InSpirit: Mods.SpiritMod.Condition.InSpirit
+	FirstDown: Only on first defeat
 }
