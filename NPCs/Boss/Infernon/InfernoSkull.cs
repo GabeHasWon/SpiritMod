@@ -53,12 +53,6 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override bool PreKill()
-		{
-			MyWorld.downedInfernon = true;
-			return true;
-		}
-
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);

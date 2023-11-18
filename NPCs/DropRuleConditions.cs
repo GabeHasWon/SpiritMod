@@ -62,12 +62,12 @@ namespace SpiritMod.NPCs
 					return boss switch
 					{
 						Bosses.King_Slime => NPC.downedSlimeKing,
-						Bosses.Scarabeus => MyWorld.downedScarabeus,
+						Bosses.Scarabeus => MyWorld.DownedScarabeus,
 						Bosses.Eye_Of_Cthulhu => NPC.downedBoss1,
 						Bosses.Evil_Boss => NPC.downedBoss2,
 						Bosses.Skeletron => NPC.downedBoss3,
 						Bosses.Queen_Bee => NPC.downedQueenBee,
-						Bosses.Moon_Jelly_Wizard => MyWorld.downedMoonWizard,
+						Bosses.Moon_Jelly_Wizard => MyWorld.DownedMoonWizard,
 						Bosses.Any_Mech => NPC.downedMechBossAny,
 						_ => false,
 					};

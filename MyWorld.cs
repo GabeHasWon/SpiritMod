@@ -49,12 +49,21 @@ using SpiritMod.Items.Equipment.ZiplineGun;
 using SpiritMod.Items.DonatorItems;
 using Terraria.Localization;
 using Terraria.Chat;
+using SpiritMod.NPCs;
+using SpiritMod.NPCs.Boss.Scarabeus;
+using SpiritMod.NPCs.Boss;
+using SpiritMod.NPCs.Boss.SteamRaider;
+using SpiritMod.NPCs.Boss.Atlas;
+using SpiritMod.NPCs.Boss.Infernon;
+using SpiritMod.NPCs.Boss.MoonWizard;
+using SpiritMod.NPCs.Boss.ReachBoss;
+using SpiritMod.NPCs.Boss.Dusking;
 
 namespace SpiritMod
 {
 	public class MyWorld : ModSystem
 	{
-		public static float rottime = 0;
+		public static float rotationTime = 0;
 		private static bool dayTimeLast;
 		public static bool dayTimeSwitched;
 
@@ -91,14 +100,16 @@ namespace SpiritMod
 		public static bool gennedTower = false;
 		public static bool gennedBandits = false;
 
-		public static bool downedScarabeus = false;
-		public static bool downedAncientFlier = false;
-		public static bool downedRaider = false;
-		public static bool downedAtlas = false;
-		public static bool downedInfernon = false;
-		public static bool downedMoonWizard = false;
-		public static bool downedReachBoss = false;
-		public static bool downedDusking = false;
+		public static bool DownedScarabeus => BossDownedTracker.IsBossDowned<Scarabeus>();
+		public static bool DownedAncientAvian => BossDownedTracker.IsBossDowned<AncientFlyer>();
+		public static bool DownedStarplate => BossDownedTracker.IsBossDowned<SteamRaiderHead>();
+		public static bool DownedAtlas => BossDownedTracker.IsBossDowned<Atlas>();
+		public static bool DownedInfernon => BossDownedTracker.IsBossDowned<InfernoSkull>();
+		public static bool DownedMoonWizard => BossDownedTracker.IsBossDowned<MoonWizard>();
+		public static bool DownedVinewrath => BossDownedTracker.IsBossDowned<ReachBoss1>();
+		public static bool DownedDusking => BossDownedTracker.IsBossDowned<Dusking>();
+
+		// These aren't bosses and so aren't tracked with BossDownedTracker
 		public static bool downedMechromancer = false;
 		public static bool downedOccultist = false;
 		public static bool downedGladeWraith = false;
@@ -116,7 +127,7 @@ namespace SpiritMod
 
 		public static HashSet<Point16> superSunFlowerPositions = new HashSet<Point16>();
 
-		public override void Load() => Terraria.On_WorldGen.IslandHouse += SpiritGenPasses.StealIslandInfo;
+		public override void Load() => On_WorldGen.IslandHouse += SpiritGenPasses.StealIslandInfo;
 
 		public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
 		{
@@ -127,29 +138,14 @@ namespace SpiritMod
 		public override void OnWorldUnload()
 		{
 			//Reset boss/event downed flags
-			downedScarabeus = downedAncientFlier = downedRaider = downedAtlas = downedInfernon = downedMoonWizard = downedReachBoss = downedDusking = downedMechromancer = downedOccultist =
-				downedGladeWraith = downedTome = downedSnaptrapper = downedBeholder = downedJellyDeluge = downedTide = downedBlueMoon = downedGazer = false;
+			downedMechromancer = downedOccultist = downedGladeWraith = downedTome = downedSnaptrapper = downedBeholder = downedJellyDeluge = downedTide = 
+				downedBlueMoon = downedGazer = false;
 		}
 
 		public override void SaveWorldData(TagCompound tag)
 		{
 			var downed = new List<string>();
-			if (downedScarabeus)
-				downed.Add("scarabeus");
-			if (downedAncientFlier)
-				downed.Add("ancientFlier");
-			if (downedRaider)
-				downed.Add("starplateRaider");
-			if (downedInfernon)
-				downed.Add("infernon");
-			if (downedReachBoss)
-				downed.Add("vinewrathBane");
-			if (downedMoonWizard)
-				downed.Add("moonWizard");
-			if (downedDusking)
-				downed.Add("dusking");
-			if (downedAtlas)
-				downed.Add("atlas");
+
 			if (downedBlueMoon)
 				downed.Add("bluemoon");
 			if (downedJellyDeluge)
@@ -206,14 +202,7 @@ namespace SpiritMod
 		public override void LoadWorldData(TagCompound tag)
 		{
 			var downed = tag.GetList<string>("downed");
-			downedScarabeus = downed.Contains("scarabeus");
-			downedAncientFlier = downed.Contains("ancientFlier");
-			downedRaider = downed.Contains("starplateRaider");
-			downedInfernon = downed.Contains("infernon");
-			downedReachBoss = downed.Contains("vinewrathBane");
-			downedDusking = downed.Contains("dusking");
-			downedMoonWizard = downed.Contains("moonWizard");
-			downedAtlas = downed.Contains("atlas");
+
 			downedTide = downed.Contains("tide");
 			downedMechromancer = downed.Contains("mechromancer");
 			downedOccultist = downed.Contains("occultist");
@@ -255,50 +244,11 @@ namespace SpiritMod
 			SurfaceWaterModifications.rightOceanHeight = tag.Get<int>("rightOceanHeight");
 		}
 
-		//public override void LoadLegacy(BinaryReader reader)
-		//{
-		//	int loadVersion = reader.ReadInt32();
-		//	if (loadVersion == 0)
-		//	{
-		//		BitsByte flags = reader.ReadByte();
-		//		BitsByte flags1 = reader.ReadByte();
-		//		BitsByte flags2 = reader.ReadByte();
-		//		BitsByte flags3 = reader.ReadByte();
-		//		BitsByte flags4 = reader.ReadByte();
-
-		//		downedScarabeus = flags[0];
-		//		downedAncientFlier = flags[1];
-		//		downedRaider = flags[2];
-		//		downedInfernon = flags[3];
-		//		downedDusking = flags[4];
-		//		downedAtlas = flags[6];
-		//		downedBlueMoon = flags[8];
-
-		//		downedReachBoss = flags1[0];
-		//		downedMoonWizard = flags1[1];
-		//		downedTide = flags1[2];
-		//		downedMechromancer = flags1[3];
-		//		downedOccultist = flags2[4];
-		//		downedGladeWraith = flags2[5];
-		//		downedBeholder = flags2[6];
-		//		downedSnaptrapper = flags2[7];
-		//		downedJellyDeluge = flags2[8];
-
-		//		gennedBandits = flags2[0];
-		//		gennedTower = flags2[1];
-
-		//	}
-		//	else
-		//	{
-		//		Mod.Logger.Error("Unknown loadVersion: " + loadVersion);
-		//	}
-		//}
-
 		public override void NetSend(BinaryWriter writer)
 		{
-			BitsByte bosses1 = new BitsByte(downedScarabeus, downedAncientFlier, downedRaider, downedInfernon, downedDusking, downedAtlas, downedReachBoss, downedMoonWizard);
+			BitsByte bosses = new BitsByte(DownedScarabeus, DownedAncientAvian, DownedStarplate, DownedInfernon, DownedDusking, DownedAtlas, DownedVinewrath, DownedMoonWizard);
 			BitsByte bosses2 = new BitsByte(downedTide, downedMechromancer, downedOccultist, downedGladeWraith, downedBeholder, downedSnaptrapper, downedTome, downedGazer);
-			writer.Write(bosses1);
+			writer.Write(bosses);
 			writer.Write(bosses2);
 			BitsByte environment = new BitsByte(blueMoon, jellySky, downedBlueMoon, downedJellyDeluge);
 			BitsByte worldgen = new BitsByte(gennedBandits, gennedTower);
@@ -308,17 +258,9 @@ namespace SpiritMod
 
 		public override void NetReceive(BinaryReader reader)
 		{
-			BitsByte bosses1 = reader.ReadByte();
-			BitsByte bosses2 = reader.ReadByte();
+			BossDownedTrackingIO.HandleBossSyncing(reader.ReadByte());
 
-			downedScarabeus = bosses1[0];
-			downedAncientFlier = bosses1[1];
-			downedRaider = bosses1[2];
-			downedInfernon = bosses1[3];
-			downedDusking = bosses1[4];
-			downedAtlas = bosses1[5];
-			downedReachBoss = bosses1[6];
-			downedMoonWizard = bosses1[7];
+			BitsByte bosses2 = reader.ReadByte();
 
 			downedTide = bosses2[0];
 			downedMechromancer = bosses2[1];
@@ -342,8 +284,10 @@ namespace SpiritMod
 
 		public override void PreUpdateWorld()
 		{
-			rottime += (float)Math.PI / 60;
-			if (rottime >= Math.PI * 2) rottime = 0;
+			rotationTime += (float)Math.PI / 60;
+
+			if (rotationTime >= Math.PI * 2) 
+				rotationTime = 0;
 		}
 
 		public override void OnWorldLoad()
@@ -1560,8 +1504,8 @@ namespace SpiritMod
 				else
 					ashRain = false;
 
-				bool anyValidBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || downedScarabeus || downedReachBoss || downedRaider || downedAncientFlier;
-				if (!Main.dayTime && anyValidBoss && (!downedMoonWizard && Main.rand.NextBool(8) || downedMoonWizard && Main.rand.NextBool(46)))
+				bool anyValidBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || DownedScarabeus || DownedVinewrath || DownedStarplate || DownedAncientAvian;
+				if (!Main.dayTime && anyValidBoss && (!DownedMoonWizard && Main.rand.NextBool(8) || DownedMoonWizard && Main.rand.NextBool(46)))
 				{
 					if (Main.netMode == NetmodeID.SinglePlayer)
 						Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.JellyDeluge.OnStart"), 61, 255, 142);

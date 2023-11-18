@@ -360,12 +360,6 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/Boss/Atlas/Atlas_Glow").Value, screenPos);
 
-		public override bool PreKill()
-		{
-			MyWorld.downedAtlas = true;
-			return true;
-		}
-
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.AddMasterModeRelicAndPet<AtlasRelicItem, AtlasPetItem>();
@@ -392,7 +386,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 12.4f;
 			name = nameof(Atlas);
-			downedCondition = () => MyWorld.downedAtlas;
+			downedCondition = () => MyWorld.DownedAtlas;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
 					ModContent.NPCType<Atlas>()

@@ -791,7 +791,6 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 
 		public override bool PreKill()
 		{
-			MyWorld.downedMoonWizard = true;
 			if (Main.netMode != NetmodeID.SinglePlayer)
 				NetMessage.SendData(MessageID.WorldData);
 
@@ -807,7 +806,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 2.5f;
 			name = nameof(MoonWizard);
-			downedCondition = () => MyWorld.downedMoonWizard;
+			downedCondition = () => MyWorld.DownedMoonWizard;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
 					ModContent.NPCType<MoonWizard>()

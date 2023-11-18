@@ -103,7 +103,7 @@ namespace SpiritMod.NPCs.SkeletonBrute
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			bool downedAnyBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || MyWorld.downedScarabeus || MyWorld.downedAncientFlier || MyWorld.downedMoonWizard || MyWorld.downedRaider;
+			bool downedAnyBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || MyWorld.DownedScarabeus || MyWorld.DownedAncientAvian || MyWorld.DownedMoonWizard || MyWorld.DownedStarplate;
 			return spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon && !NPC.AnyNPCs(ModContent.NPCType<Skeleton_Brute>()) && downedAnyBoss ? 0.05f : 0f;
 		}
 

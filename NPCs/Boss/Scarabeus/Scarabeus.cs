@@ -1245,9 +1245,6 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 
 		public override bool PreKill()
 		{
-			MyWorld.downedScarabeus = true;
-			Sandstorm.StopSandstorm();
-
 			if (Main.netMode != NetmodeID.SinglePlayer)
 				NetMessage.SendData(MessageID.WorldData);
 
@@ -1310,7 +1307,7 @@ namespace SpiritMod.NPCs.Boss.Scarabeus
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 1.4f;
 			name = nameof(Scarabeus);
-			downedCondition = () => MyWorld.downedScarabeus;
+			downedCondition = () => MyWorld.DownedScarabeus;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
 					ModContent.NPCType<Scarabeus>()

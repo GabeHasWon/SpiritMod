@@ -288,17 +288,13 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 
 		public override bool PreKill()
 		{
-			if (!MyWorld.downedReachBoss)
+			if (!MyWorld.DownedVinewrath)
 			{
 				if (Main.netMode == NetmodeID.SinglePlayer)
 					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Misc.VWBRainOver"), 61, 255, 142);
 				else if (Main.netMode == NetmodeID.Server)
 					ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Misc.VWBRainOver"), new Color(61, 255, 142));
 			}
-
-            MyWorld.downedReachBoss = true;
-			if(Main.netMode != NetmodeID.SinglePlayer)
-				NetMessage.SendData(MessageID.WorldData);
 
 			NPC.PlayDeathSound("VinewrathDeathSound");
 			return true;

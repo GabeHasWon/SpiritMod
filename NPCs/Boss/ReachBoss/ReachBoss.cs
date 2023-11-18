@@ -515,7 +515,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 3.5f;
 			name = nameof(ReachBoss);
-			downedCondition = () => MyWorld.downedReachBoss;
+			downedCondition = () => MyWorld.DownedVinewrath;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
 					ModContent.NPCType<ReachBoss>()

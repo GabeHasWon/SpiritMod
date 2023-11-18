@@ -367,14 +367,14 @@ namespace SpiritMod
 
 			return name switch
 			{
-				"Scarabeus" => MyWorld.downedScarabeus,
-				"Moon Jelly Wizard" => MyWorld.downedMoonWizard,
-				"Vinewrath Bane" => MyWorld.downedReachBoss,
-				"Ancient Avian" => MyWorld.downedAncientFlier,
-				"Starplate Raider" => MyWorld.downedRaider,
-				"Infernon" => MyWorld.downedInfernon,
-				"Dusking" => MyWorld.downedDusking,
-				"Atlas" => MyWorld.downedAtlas,
+				"Scarabeus" => MyWorld.DownedScarabeus,
+				"Moon Jelly Wizard" => MyWorld.DownedMoonWizard,
+				"Vinewrath Bane" => MyWorld.DownedVinewrath,
+				"Ancient Avian" => MyWorld.DownedAncientAvian,
+				"Starplate Raider" => MyWorld.DownedStarplate,
+				"Infernon" => MyWorld.DownedInfernon,
+				"Dusking" => MyWorld.DownedDusking,
+				"Atlas" => MyWorld.DownedAtlas,
 				_ => throw new ArgumentException("Invalid boss name:" + name),
 			};
 		}
@@ -846,12 +846,12 @@ namespace SpiritMod
 			{
 				// AddSummon, order or value in terms of vanilla bosses, your mod internal name, summon   
 				//item internal name, inline method for retrieving downed value, price to sell for in copper
-				fargos.Call("AddSummon", 1.4f, "SpiritMod", "ScarabIdol", () => MyWorld.downedScarabeus, 100 * 200);
-				fargos.Call("AddSummon", 4.2f, "SpiritMod", "JewelCrown", () => MyWorld.downedAncientFlier, 100 * 200);
-				fargos.Call("AddSummon", 5.9f, "SpiritMod", "StarWormSummon", () => MyWorld.downedRaider, 100 * 400);
-				fargos.Call("AddSummon", 6.5f, "SpiritMod", "CursedCloth", () => MyWorld.downedInfernon, 100 * 500);
-				fargos.Call("AddSummon", 7.3f, "SpiritMod", "DuskCrown", () => MyWorld.downedDusking, 100 * 500);
-				fargos.Call("AddSummon", 12.4f, "SpiritMod", "StoneSkin", () => MyWorld.downedAtlas, 100 * 800);
+				fargos.Call("AddSummon", 1.4f, "SpiritMod", "ScarabIdol", () => MyWorld.DownedScarabeus, 100 * 200);
+				fargos.Call("AddSummon", 4.2f, "SpiritMod", "JewelCrown", () => MyWorld.DownedAncientAvian, 100 * 200);
+				fargos.Call("AddSummon", 5.9f, "SpiritMod", "StarWormSummon", () => MyWorld.DownedStarplate, 100 * 400);
+				fargos.Call("AddSummon", 6.5f, "SpiritMod", "CursedCloth", () => MyWorld.DownedInfernon, 100 * 500);
+				fargos.Call("AddSummon", 7.3f, "SpiritMod", "DuskCrown", () => MyWorld.DownedDusking, 100 * 500);
+				fargos.Call("AddSummon", 12.4f, "SpiritMod", "StoneSkin", () => MyWorld.DownedAtlas, 100 * 800);
 			}
 
 			if (ModLoader.TryGetMod("DialogueTweak", out Mod dialogue))

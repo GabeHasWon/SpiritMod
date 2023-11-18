@@ -745,17 +745,13 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override bool PreKill()
 		{
-			if (!MyWorld.downedRaider)
+			if (!MyWorld.DownedStarplate)
 			{
 				if (Main.netMode == NetmodeID.SinglePlayer)
 					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Misc.StarplateAnnouncement"), new Color(61, 255, 142));
 				else if (Main.netMode == NetmodeID.Server)
 					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Mods.SpiritMod.Misc.StarplateAnnouncement"), new Color(61, 255, 142), -1);
 			}
-
-			MyWorld.downedRaider = true;
-			if (Main.netMode != NetmodeID.SinglePlayer)
-				NetMessage.SendData(MessageID.WorldData);
 
 			NPC.PlayDeathSound("StarplateDeathSound");
 			NPC.NewNPC(NPC.GetSource_Death(), (int)NPC.position.X + NPC.width - 20, (int)NPC.position.Y + NPC.height, ModContent.NPCType<SteamRaiderHeadDeath>(), NPC.whoAmI);
@@ -783,7 +779,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 5.9f;
 			name = nameof(SteamRaiderHead);
-			downedCondition = () => MyWorld.downedRaider;
+			downedCondition = () => MyWorld.DownedStarplate;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
 					ModContent.NPCType<SteamRaiderHead>()

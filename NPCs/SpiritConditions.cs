@@ -10,11 +10,11 @@ internal class SpiritConditions
 	public static Condition InBriar = new("Mods.SpiritMod.Condition.InBriar", () => Main.LocalPlayer.InModBiome<BriarSurfaceBiome>() || Main.LocalPlayer.InModBiome<BriarUndergroundBiome>());
 	public static Condition InAsteroids = new("Mods.SpiritMod.Condition.InAsteroids", Main.LocalPlayer.InModBiome<AsteroidBiome>);
 	public static Condition InSpirit = new("Mods.SpiritMod.Condition.InSpirit", () => Main.LocalPlayer.InModBiome<SpiritSurfaceBiome>() || Main.LocalPlayer.InModBiome<SpiritUndergroundBiome>());
-	public static Condition VoyagerDown = new("Mods.SpiritMod.Conditions.VoyagerDown", () => MyWorld.downedRaider);
-	public static Condition ScarabDown = new("Mods.SpiritMod.Conditions.ScarabDown", () => MyWorld.downedScarabeus);
-	public static Condition MJWDown = new("Mods.SpiritMod.Conditions.ScarabDown", () => MyWorld.downedMoonWizard);
-	public static Condition VinewrathDown = new("Mods.SpiritMod.Conditions.VinewrathDown", () => MyWorld.downedReachBoss);
-	public static Condition DuskingDown = new("Mods.SpiritMod.Conditions.DuskingDown", () => MyWorld.downedReachBoss);
+	public static Condition VoyagerDown = new("Mods.SpiritMod.Conditions.VoyagerDown", () => MyWorld.DownedStarplate);
+	public static Condition ScarabDown = new("Mods.SpiritMod.Conditions.ScarabDown", () => MyWorld.DownedScarabeus);
+	public static Condition MJWDown = new("Mods.SpiritMod.Conditions.ScarabDown", () => MyWorld.DownedMoonWizard);
+	public static Condition VinewrathDown = new("Mods.SpiritMod.Conditions.VinewrathDown", () => MyWorld.DownedVinewrath);
+	public static Condition DuskingDown = new("Mods.SpiritMod.Conditions.DuskingDown", () => MyWorld.DownedVinewrath);
 
 	//Quest conditions
 	public static Condition FirstAdventureFinished = new("Mods.SpiritMod.Conditions.FirstAdventureFinished", () => QuestManager.GetQuest<FirstAdventure>().IsCompleted);

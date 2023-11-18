@@ -450,7 +450,6 @@ namespace SpiritMod.NPCs.Boss.Dusking
 
 		public override bool PreKill()
 		{
-			MyWorld.downedDusking = true;
 			for (int i = 0; i < 15; ++i)
 			{
 				int newDust = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Shadowflame, 0f, 0f, 100, default, 2.5f);
@@ -501,7 +500,7 @@ namespace SpiritMod.NPCs.Boss.Dusking
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 11.4f;
 			name = nameof(Dusking);
-			downedCondition = () => MyWorld.downedDusking;
+			downedCondition = () => MyWorld.DownedDusking;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> { ModContent.NPCType<Dusking>() },
 				new List<int> { ModContent.ItemType<DuskCrown>() },

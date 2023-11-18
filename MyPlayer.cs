@@ -235,7 +235,7 @@ namespace SpiritMod
 		public override void PostUpdateMiscEffects()
 		{
 			var config = ModContent.GetInstance<SpiritClientConfig>();
-			bool reach = (!Main.dayTime && Player.ZoneBriar() && !reachBrooch && Player.ZoneOverworldHeight) || (Player.ZoneBriar() && Player.ZoneOverworldHeight && MyWorld.downedReachBoss && Main.dayTime);
+			bool reach = (!Main.dayTime && Player.ZoneBriar() && !reachBrooch && Player.ZoneOverworldHeight) || (Player.ZoneBriar() && Player.ZoneOverworldHeight && MyWorld.DownedVinewrath && Main.dayTime);
 			bool spirit = Player.ZoneOverworldHeight && Player.ZoneSpirit();
 
 			bool region1 = Player.ZoneSpirit() && Player.ZoneRockLayerHeight && Player.position.Y / 16 > (Main.rockLayer + Main.maxTilesY - 330) / 2f;
@@ -1328,7 +1328,7 @@ namespace SpiritMod
 				}
 			}
 
-			if (Player.ZoneBriar() && !Main.raining && !MyWorld.downedReachBoss)
+			if (Player.ZoneBriar() && !Main.raining && !MyWorld.DownedVinewrath)
 			{
 				Main.cloudAlpha += .007f;
 				if (Main.cloudAlpha >= .4f)
@@ -1884,7 +1884,7 @@ namespace SpiritMod
 			foreach (var effect in effects)
 				effect.PlayerPostUpdate(Player);
 
-			if (Player.ZoneBriar() && Player.wet && Main.expertMode && !MyWorld.downedReachBoss)
+			if (Player.ZoneBriar() && Player.wet && Main.expertMode && !MyWorld.DownedVinewrath)
 				Player.AddBuff(BuffID.Poisoned, 120);
 
 			if (cryoSet)

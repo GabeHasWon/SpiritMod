@@ -277,7 +277,6 @@ namespace SpiritMod.NPCs.Boss
 
 		public override bool PreKill()
 		{
-			MyWorld.downedAncientFlier = true;
 			if (Main.netMode != NetmodeID.SinglePlayer)
 				NetMessage.SendData(MessageID.WorldData);
 
@@ -381,7 +380,7 @@ namespace SpiritMod.NPCs.Boss
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 4.2f;
 			name = nameof(AncientFlyer);
-			downedCondition = () => MyWorld.downedAncientFlier;
+			downedCondition = () => MyWorld.DownedAncientAvian;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
 					ModContent.NPCType<AncientFlyer>()

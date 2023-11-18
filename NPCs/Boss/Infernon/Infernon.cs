@@ -382,8 +382,6 @@ namespace SpiritMod.NPCs.Boss.Infernon
 		{
 			if (Main.expertMode)
 				return false;
-
-			MyWorld.downedInfernon = true;
 			return true;
 		}
 
@@ -437,7 +435,7 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			entryType = BossChecklistDataHandler.EntryType.Boss;
 			progression = 7.5f;
 			name = nameof(Infernon);
-			downedCondition = () => MyWorld.downedInfernon;
+			downedCondition = () => MyWorld.DownedInfernon;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> {
 					ModContent.NPCType<Infernon>()
