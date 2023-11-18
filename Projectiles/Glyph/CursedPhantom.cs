@@ -18,6 +18,7 @@ namespace SpiritMod.Projectiles.Glyph
 		private ref float IdleTime => ref Projectile.ai[1];
 
 		private Vector2? originPos = null;
+		private bool foundNPC; 
 
 		public override void SetStaticDefaults()
 		{
@@ -46,14 +47,28 @@ namespace SpiritMod.Projectiles.Glyph
 
 		public override void AI()
 		{
+			int maxRange = 400;
+			bool foundNPC = false;
+
 			Player owner = Main.player[Projectile.owner];
 			if (originPos == null)
 				originPos = Projectile.Center;
+
+			foreach (NPC npc in Main.npc) //Home in on nearby NPCs
+			{
+				if (npc.active && !npc.friendly && npc.CanBeChasedBy(Projectile) && Projectile.Distance(npc.Center) <= maxRange)
+				{
+					foundNPC = true;
+					break;
+				}
+			}
 
 			if (++Counter >= IdleTime)
 			{
 				if (Counter == IdleTime)
 					Projectile.netUpdate = true;
+				else if (foundNPC)
+					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(owner.Center) * 8f, .02f);
 				else
 					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(owner.Center) * 8f, .02f);
 
