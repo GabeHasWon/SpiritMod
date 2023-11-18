@@ -43,7 +43,7 @@ namespace SpiritMod.GlobalClasses.NPCs
 		public override void ModifyGlobalLoot(GlobalLoot globalLoot)
 		{
 			LeadingConditionRule glyphChance = new LeadingConditionRule(new DropRuleConditions.NPCConditional("Rarely", (npc) => !npc.SpawnedFromStatue && npc.CanDamage() && npc.type != ModContent.NPCType<ExplodingSpore>()));
-			glyphChance.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Glyph>(), 750));
+			glyphChance.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Glyph>(), 500));
 			globalLoot.Add(glyphChance);
 
 			LeadingConditionRule inAsteroids = new LeadingConditionRule(new DropRuleConditions.InBiome(DropRuleConditions.InBiome.Biome.Asteroid));
