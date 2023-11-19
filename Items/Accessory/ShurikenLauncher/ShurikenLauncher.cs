@@ -13,12 +13,6 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 	{
 		public const int EffectiveDistance = 480;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sharpshooter's Glove");
-			// Tooltip.SetDefault("Increases ranged damage at a distance\nConsecutive shots at this range deal increased damage");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 38;

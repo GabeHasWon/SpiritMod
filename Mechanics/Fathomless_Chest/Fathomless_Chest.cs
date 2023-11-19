@@ -44,7 +44,12 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			HitSound = SoundID.DD2_SkeletonDeath;
 			DustType = -1;
 		}
+
 		public override bool CanExplode(int i, int j) => false;
+
+		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => false;
+
+		public override bool CanDrop(int i, int j) => false;
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
@@ -52,8 +57,6 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			g = 0.2f + (1 * (Timer / 6));
 			b = 0.5f + (1 * (Timer / 9));
 		}
-
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged) => false;
 
 		public override bool RightClick(int i, int j)
 		{

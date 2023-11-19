@@ -43,7 +43,7 @@ namespace SpiritMod.Tiles
 				{
 					bool struckThisTile = player.ItemAnimationActive && ((new Vector2((int)(Main.MouseWorld.X / 16), (int)(Main.MouseWorld.Y / 16)) == new Vector2(i, j)) || (Main.SmartCursorIsUsed && new Vector2(Main.SmartCursorX, Main.SmartCursorY) == new Vector2(i, j)));
 					
-					if (modPlayer.gemPickaxe && struckThisTile && !fail)
+					if (Main.rand.NextBool(25) && modPlayer.gemPickaxe && struckThisTile && !fail)
 					{
 						int tremorItem = Main.rand.Next(new int[] { 11, 12, 13, 14, 699, 700, 701, 702, 999, 182, 178, 179, 177, 180, 181 });
 						if (Main.hardMode)
@@ -52,7 +52,6 @@ namespace SpiritMod.Tiles
 						SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/PositiveOutcome"), new Vector2(i * 16, j * 16));
 
 						int id = Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, tremorItem, Main.rand.Next(1, 3));
-
 						if (Main.netMode != NetmodeID.SinglePlayer)
 							NetMessage.SendData(MessageID.SyncItem, number: id);
 					}

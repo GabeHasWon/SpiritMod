@@ -7,8 +7,6 @@ namespace SpiritMod.Buffs.Glyph
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Divine Strike");
-			// Description.SetDefault("Your next attack will deal increased damage");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

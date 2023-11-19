@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Accessory.RabbitFoot
 	[AutoloadEquip(EquipType.Waist)]
 	public class Rabbit_Foot : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Rabbit's Foot");
-			// Tooltip.SetDefault("You have 1% critical strike chance");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;

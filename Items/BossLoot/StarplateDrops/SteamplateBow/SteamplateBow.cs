@@ -14,12 +14,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 {
 	public class SteamplateBow : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Starcharger");
-			// Tooltip.SetDefault("Left-click to shoot Positive Arrows\nRight-click to shoot Negative Arrows\nOppositely charged arrows explode upon touching each other");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -77,7 +72,6 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 			}
 			else
 			{
-				//type = ModContent.ProjectileType<PositiveArrow>();
 				modPlayer.negative = false;
 
 				int heldType = ModContent.ProjectileType<SteamplateBowProj>();
@@ -102,11 +96,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 
 		private int AiTimerMax => Owner.itemTimeMax;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Starcharger");
-			Main.projFrames[Type] = 6;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Type] = 6;
 
 		public override void SetDefaults()
 		{

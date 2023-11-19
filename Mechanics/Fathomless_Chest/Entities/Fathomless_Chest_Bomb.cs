@@ -19,8 +19,6 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 		}
 		private readonly int counterMax = 90;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Fathomless Vase");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 32;
