@@ -277,35 +277,36 @@ Configs: {
 
 Events: {
 	BlueMoon: {
-		// BossChecklistIntegration.Condition: Use a [i:SpiritMod/BlueMoonSpawn] at nighttime.
-		// OnStart: The Mystic Moon is rising...
-		// IsDay: The moon isn't powerful in daylight.
+		BossChecklistIntegration.Condition: 在夜晚使用[i:SpiritMod/BlueMoonSpawn]召唤。
+		OnStart: 苍蓝秘月正在升起……
+		IsDay: 月亮在白昼不够强大。
 	}
 
 	JellyDeluge: {
-		// BossChecklistIntegration.Condition: Naturally occurs aboveground after any boss has been defeated. Can also be summoned by using a [i:SpiritMod/DistressJellyItem], found in Asteroid Biomes and caught using a bug net. Occurs less frequently after the Moon Jelly Wizard has been defeated.
-		// OnStart: Strange jellyfish are raining from the sky!
+		BossChecklistIntegration.Condition: 在任意Boss被击败后，偶尔会在地表自然生成。也可以使用[i:SpiritMod/DistressJellyItem]召唤，[i:SpiritMod/DistressJellyItem]可在小行星带中找到，并可以通过使用捕虫网进行捕捉。在海月巫师被击败后生成的概率会变低。
+		OnStart: 天空中下起了奇怪的水母雨！
 	}
 
-	// LuminousOcean.OnStart: A glow blooms over the ocean...
+	LuminousOcean.OnStart: 光芒在海面上绽放了……
 
 	TheTide: {
-		// BossChecklistIntegration.Condition: Use a [i:SpiritMod/BlackPearl] at the Ocean at any time.
-		// OnEnd: The Tide has waned!
-		// NotOcean: The Tide only ebbs by the calm of the sea.
-		// AlreadyActive: The Tide's already come in!
-		// Wave: "Wave {0} : "
+		BossChecklistIntegration.Condition: 在海洋使用[i:SpiritMod/BlackPearl]召唤。
+		OnEnd: 潮汐退去了！
+		NotOcean: 潮汐只有在大海平静时才会退去。
+		AlreadyActive: 潮汐已至！
+		Wave: "波次 {0} ： "
 	}
 }
 
 BossChecklistIntegration: {
-	// JellyDeluge.EntryName: Jelly Deluge
-	// TheTide.EntryName: The Tide
-	// MysticMoon.EntryName: Mystic Moon
+	JellyDeluge.EntryName: 水母雨
+	TheTide.EntryName: 潮汐
+	MysticMoon.EntryName: 苍蓝秘月
 }
 
 Condition: {
 	InBriar: Mods.SpiritMod.Condition.InBriar
 	InAsteroids: Mods.SpiritMod.Condition.InAsteroids
 	InSpirit: Mods.SpiritMod.Condition.InSpirit
+	FirstDown: 仅在首次击败时
 }
