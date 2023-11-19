@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Sets.SummonsMisc.RodofDunes
 {
 	public class RodofDunes : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Rod of Dunes");
-			// Tooltip.SetDefault("Summons a sand warrior to fight for you");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 26;

@@ -52,7 +52,7 @@ namespace SpiritMod.Projectiles.Pet
 			Projectile.position.Y += Main.GlobalTimeWrappedHourly.ToRotationVector2().Y / 4f; //Cause the projectile to bob up and down
 
 			int maxRange = 1200;
-			int lastRarity = -1;
+			int lastRarity = 0;
 
 			TargetIndex = -1;
 			foreach (NPC npc in Main.npc)

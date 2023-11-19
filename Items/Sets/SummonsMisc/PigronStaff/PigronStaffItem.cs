@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Sets.SummonsMisc.PigronStaff
 {
 	public class PigronStaffItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pigron Staff");
-			// Tooltip.SetDefault("'Bacon now fights for you'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 26;

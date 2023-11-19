@@ -20,10 +20,11 @@ namespace SpiritMod.Tiles.MusicBox
 			TileObjectData.newTile.DrawYOffset = 2;
 			TileObjectData.addTile(Type);
 			Terraria.ID.TileID.Sets.DisableSmartCursor[Type] = true;
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Music Box");
 			AddMapEntry(new Color(200, 200, 200), name);
-            DustType = -1;
+			RegisterItemDrop(ModContent.ItemType<Items.Placeable.MusicBox.AtlasBox>());
+			DustType = -1;
         }
 
 		public override void MouseOver(int i, int j)
