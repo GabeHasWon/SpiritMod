@@ -188,7 +188,7 @@ DevouringVoid.DisplayName: 虚空吞噬
 
 DivineStrike: {
 	DisplayName: 神圣惩击
-	Description: "你的下次攻击会造成 "
+	Description: 你下次攻击造成的伤害增加
 }
 
 PhantomVeil: {
@@ -198,12 +198,12 @@ PhantomVeil: {
 
 SanguineBleed: {
 	DisplayName: 猩红血溢
-	Description: 你正在迅速失去血液。
+	Description: 你正在迅速失去血液
 }
 
 SanguineRegen: {
 	DisplayName: 血色再生
-	Description: 你正在迅速吸收血液。
+	Description: 你正在迅速吸收血液
 }
 
 TemporalShift: {
