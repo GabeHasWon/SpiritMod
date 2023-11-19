@@ -9,18 +9,12 @@ namespace SpiritMod.Items.ByBiome.Forest.Consumeable
 {
 	internal class StarPowder : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Starpowder");
-			// Tooltip.SetDefault("Throw onto grass to invigorate it with starlight!");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 22;
 			Item.height = 26;
 			Item.rare = ItemRarityID.White;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 15;
 			Item.useAnimation = 15;

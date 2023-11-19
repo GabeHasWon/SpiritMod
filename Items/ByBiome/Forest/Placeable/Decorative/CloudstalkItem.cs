@@ -6,8 +6,6 @@ namespace SpiritMod.Items.ByBiome.Forest.Placeable.Decorative
 {
 	public class CloudstalkItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Cloudstalk");
-
 		public override void SetDefaults()
 		{
 			Item.autoReuse = false;
@@ -16,7 +14,7 @@ namespace SpiritMod.Items.ByBiome.Forest.Placeable.Decorative
 			Item.rare = ItemRarityID.White;
 			Item.useAnimation = 15;
 			Item.useTime = 15;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.width = 22;
 			Item.height = 18;
 			Item.value = 0;

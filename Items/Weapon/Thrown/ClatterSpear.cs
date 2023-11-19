@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class ClatterSpear : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Clatter Javelin");
-			// Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 16;

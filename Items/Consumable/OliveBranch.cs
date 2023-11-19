@@ -8,17 +8,11 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(20)]
 	public class OliveBranch : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Olive Branch");
-			// Tooltip.SetDefault("Greatly reduces enemy spawns");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.LightRed;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;
 			Item.noMelee = true;

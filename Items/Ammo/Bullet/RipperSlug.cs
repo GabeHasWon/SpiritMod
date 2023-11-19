@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Ammo.Bullet
 {
 	public class RipperSlug : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Ripper Slug");
-			// Tooltip.SetDefault("Obeys gravity, but does extra damage");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 8;
@@ -21,7 +15,7 @@ namespace SpiritMod.Items.Ammo.Bullet
 			Item.value = 1000;
 			Item.rare = ItemRarityID.Blue;
 			Item.value = Item.buyPrice(0, 0, 0, 40);
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.damage = 8;
 			Item.knockBack = 1.5f;
 			Item.ammo = AmmoID.Bullet;

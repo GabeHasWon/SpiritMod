@@ -9,17 +9,11 @@ namespace SpiritMod.Items.Consumable
 {
 	public class JewelCrown : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Feather Crown");
-			// Tooltip.SetDefault("Use in the sky to summon the Ancient Avian");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;
 			Item.noMelee = true;

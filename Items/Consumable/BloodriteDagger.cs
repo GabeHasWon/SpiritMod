@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;
 			Item.noMelee = true;

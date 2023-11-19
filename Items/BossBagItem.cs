@@ -15,20 +15,14 @@ public abstract class BossBagItem : ModItem
 {
 	internal abstract string BossName { get; }
 
-	public sealed override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault($"Treasure Bag ({BossName})");
-		// Tooltip.SetDefault("Consumable\n{$CommonItemTooltip.RightClickToOpen}");
-
-		StaticDefaults();
-	}
+	public sealed override void SetStaticDefaults() => StaticDefaults();
 
 	public sealed override void SetDefaults()
 	{
 		Item.width = 20;
 		Item.height = 20;
 		Item.rare = -2;
-		Item.maxStack = 30;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.expert = true;
 		Defaults();
 	}

@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Material
 			Item.height = 20;
 			Item.value = 1;
 			Item.rare = ItemRarityID.White;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void AddRecipes()

@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			Item.height = Item.width = 28;
 			Item.rare = ItemRarityID.Pink;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 	}
 }

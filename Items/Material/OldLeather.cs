@@ -6,19 +6,13 @@ namespace SpiritMod.Items.Material
 {
 	public class OldLeather : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Old Leather");
-			// Tooltip.SetDefault("'Musty, but useful'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
 			Item.height = 24;
 			Item.value = 500;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void AddRecipes()

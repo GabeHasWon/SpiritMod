@@ -12,17 +12,11 @@ namespace SpiritMod.Items.Consumable
 {
 	public class FateToken : ModItem, ITimerItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Fate Token");
-			// Tooltip.SetDefault("Protects the user from fatal damage for 1 minute\n2 minute cooldown");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 36;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Red;
 			Item.value = Item.buyPrice(3, 0, 0, 0);
 			Item.useAnimation = 45;

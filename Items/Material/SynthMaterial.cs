@@ -8,11 +8,7 @@ namespace SpiritMod.Items.Material
 {
 	public class SynthMaterial : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Discharge Tubule");
-			// Tooltip.SetDefault("'The colorful tubes are filled with energized gas'");
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ItemIconPulse[Item.type] = true;
 
 		public override void SetDefaults()
 		{
@@ -20,8 +16,7 @@ namespace SpiritMod.Items.Material
 			Item.height = 42;
 			Item.value = 100;
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 999;
-			ItemID.Sets.ItemIconPulse[Item.type] = true;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);

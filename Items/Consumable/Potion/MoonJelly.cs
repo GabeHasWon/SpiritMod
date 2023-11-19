@@ -15,17 +15,12 @@ namespace SpiritMod.Items.Consumable.Potion
 	{
 		internal override Point Size => new(34, 26);
 
-		public override void StaticDefaults()
-		{
-			// DisplayName.SetDefault("Moon Jelly");
-
-			ItemID.Sets.ItemNoGravity[Item.type] = true;
-		}
+		public override void StaticDefaults() => ItemID.Sets.ItemNoGravity[Item.type] = true;
 
 		public override void Defaults()
 		{
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.potion = true;
 			Item.healLife = 120;
 			Item.UseSound = SoundID.Item3;

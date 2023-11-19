@@ -8,7 +8,7 @@ namespace SpiritMod.Items.Consumable.Food
 	public class GoldenCaviar : FoodItem
 	{
 		internal override Point Size => new(30, 34);
-		// public override void StaticDefaults() => Tooltip.SetDefault("Major improvements to all stats\nEmits an aura of light\n'It has an exquisite glow'");
+
 		public override void Defaults()
 		{
 			Item.buffType = BuffID.WellFed3;

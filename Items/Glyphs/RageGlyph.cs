@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			Item.height = Item.width = 28;
 			Item.rare = ItemRarityID.Orange;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public static void RageEffect(Player owner, NPC target, Projectile proj)

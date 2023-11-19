@@ -61,6 +61,8 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override bool KillSound(int i, int j, bool fail) => false;
 
+		public override bool IsTileDangerous(int i, int j, Player player) => true;
+
 		public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			Tile tile = Framing.GetTileSafely(i, j);
@@ -69,11 +71,15 @@ namespace SpiritMod.Tiles.Ambient
 
 			Texture2D texture = TextureAssets.Tile[Type].Value;
 			Rectangle source = texture.Frame(NumStyles, 1, (tile.TileFrameX / 18 * 3) + TileVariant, 0, -2);
-
 			Vector2 offset = Lighting.LegacyEngine.Mode > 1 ? Vector2.Zero : Vector2.One * 12;
 			Vector2 drawPos = ((new Vector2(i, j) + offset) * 16) - Main.screenPosition - new Vector2(0, 2);
 
-			spriteBatch.Draw(texture, drawPos, source, Lighting.GetColor(i, j), 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0f);
+			var red = Color.Red * .5f;
+			Color color = Lighting.GetColor(i, j);
+			if (Main.LocalPlayer.dangerSense)
+				color = new Color(color.R + red.R, color.G + red.G, color.B + red.B);
+
+			spriteBatch.Draw(texture, drawPos, source, color, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0f);
 			return false;
 		}
 	}

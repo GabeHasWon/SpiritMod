@@ -6,12 +6,6 @@ namespace SpiritMod.Items.Ammo.Arrow
 {
 	class BeetleArrow : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Beetle Arrow");
-			// Tooltip.SetDefault("Successful hits on enemies reduces damage taken by 1%, maxing out at 15%");
-		}
-
 		public override void SetDefaults()
 		{
 
@@ -19,7 +13,7 @@ namespace SpiritMod.Items.Ammo.Arrow
 			Item.height = 28;
 			Item.value = 450;
 			Item.rare = ItemRarityID.Yellow;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.damage = 16;
 			Item.knockBack = 2f;
 			Item.ammo = AmmoID.Arrow;

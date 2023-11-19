@@ -1,4 +1,3 @@
-
 using SpiritMod.NPCs.Reach;
 using SpiritMod.Utilities;
 using Terraria;
@@ -11,17 +10,11 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(3)]
 	public class GladeWreath : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Glade Wreath");
-			// Tooltip.SetDefault("Summons a Glade Wraith\nCan only be used in the Briar");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;
 			Item.noMelee = true;

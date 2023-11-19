@@ -8,17 +8,11 @@ namespace SpiritMod.Items.Consumable
 {
 	public class StoneSkin : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Stone Fist");
-			// Tooltip.SetDefault("Use anywhere to summon Atlas");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Cyan;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;
 			Item.noMelee = true;

@@ -9,18 +9,13 @@ namespace SpiritMod.Items.Halloween
 	public class MysteryCandy : CandyBase
 	{
 		internal override Point Size => new(24, 24);
-		public override void StaticDefaults()
-		{
-			// DisplayName.SetDefault("Mystery Candy");
-			// Tooltip.SetDefault("Either a great treat... or a nasty trick");
-		}
 
 		public override void Defaults()
 		{
 			Item.width = Size.X;
 			Item.height = Size.Y;
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override bool? UseItem(Player player)

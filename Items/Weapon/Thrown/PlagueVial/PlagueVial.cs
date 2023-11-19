@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -9,14 +8,6 @@ namespace SpiritMod.Items.Weapon.Thrown.PlagueVial
 {
 	public class PlagueVial : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Plague Vial");
-			/* Tooltip.SetDefault("A noxious mixture of flammable toxins\n" +
-				"Explodes into cursed embers upon hitting foes\n" +
-				"'We could make a class out of this!'"); */
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -31,7 +22,7 @@ namespace SpiritMod.Items.Weapon.Thrown.PlagueVial
 			Item.useAnimation = 24;
 			Item.useTime = 24;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.shootSpeed = 10.0f;
 			Item.damage = 25;
 			Item.knockBack = 4.5f;
@@ -45,8 +36,6 @@ namespace SpiritMod.Items.Weapon.Thrown.PlagueVial
 	public class PlagueVialProj : ModProjectile
 	{
 		public override string Texture => "SpiritMod/Items/Weapon/Thrown/PlagueVial/PlagueVial";
-
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Plague Vial");
 
 		public override void SetDefaults()
 		{

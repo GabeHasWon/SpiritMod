@@ -10,18 +10,12 @@ namespace SpiritMod.Items.Consumable.Potion
 	[Sacrifice(20)]
 	public class BismitePotion : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Toxin Potion");
-			// Tooltip.SetDefault("Critical strikes inflict Festering Wounds\nIncreases critical strike chance by 4%");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
 			Item.height = 30;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.DrinkLiquid;
 			Item.useTime = Item.useAnimation = 20;
 			Item.consumable = true;

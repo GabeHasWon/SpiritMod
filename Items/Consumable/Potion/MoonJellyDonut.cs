@@ -14,12 +14,11 @@ namespace SpiritMod.Items.Consumable.Potion
 	public class MoonJellyDonut : FoodItem
 	{
 		internal override Point Size => new(34, 20);
-		// public override void StaticDefaults() => DisplayName.SetDefault("Moon Jelly Donut");
 
 		public override void Defaults()
 		{
 			Item.rare = ItemRarityID.Pink;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.potion = true;
 			Item.healLife = 180;
 		}

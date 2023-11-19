@@ -9,11 +9,6 @@ namespace SpiritMod.Items.Consumable.Fish
 	public class CrystalFish : FoodItem
 	{
 		internal override Point Size => new(48, 34);
-		public override void StaticDefaults()
-		{
-			// DisplayName.SetDefault("Crystallized Salmon");
-			// Tooltip.SetDefault("Minor improvements to all stats\nBoosts magic power");
-		}
 
 		public override bool CanUseItem(Player player)
 		{

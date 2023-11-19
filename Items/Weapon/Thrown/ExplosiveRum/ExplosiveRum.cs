@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Linq;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -12,12 +11,6 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 {
 	public class ExplosiveRum : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Explosive Rum");
-			// Tooltip.SetDefault("'Oh, there it is!'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -28,7 +21,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 			Item.DamageType = DamageClass.Ranged;
 			Item.noMelee = true;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.shoot = ModContent.ProjectileType<ExplosiveRumProj>();
 			Item.useAnimation = 29;
 			Item.useTime = 29;
@@ -38,15 +31,12 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 			Item.value = Item.sellPrice(0, 0, 0, 50);
 			Item.rare = ItemRarityID.LightRed;
 			Item.autoReuse = true;
-			Item.maxStack = 999;
 			Item.consumable = true;
 		}
 	}
 
 	public class ExplosiveRumProj : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Explosive Rum");
-
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Shuriken);
@@ -81,11 +71,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 
 	public class RumFire : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Explosive Rum");
-			Main.projFrames[Projectile.type] = 5;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 5;
 
 		public override void SetDefaults()
 		{
@@ -201,11 +187,7 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 
 	public class RumExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Rum Explosion");
-			Main.projFrames[Projectile.type] = 6;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 6;
 
 		public override void SetDefaults()
 		{

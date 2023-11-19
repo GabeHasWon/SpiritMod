@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class SkeletronHand : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Bone Cutter");
-			// Tooltip.SetDefault("Dashes through the air in rapid bursts");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -23,7 +17,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.DamageType = DamageClass.Ranged;
 			Item.noMelee = true;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.shoot = ModContent.ProjectileType<SkeletronHandProj>();
 			Item.useAnimation = 27;
 			Item.useTime = 27;

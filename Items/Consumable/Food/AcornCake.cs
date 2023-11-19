@@ -8,7 +8,6 @@ namespace SpiritMod.Items.Consumable.Food
 	public class AcornCake : FoodItem
 	{
 		internal override Point Size => new(32, 30);
-		// public override void StaticDefaults() => Tooltip.SetDefault("'If you're really hungry, go for it'");
 
 		public override bool CanUseItem(Player player)
 		{

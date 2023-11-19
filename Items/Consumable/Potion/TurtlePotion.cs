@@ -9,18 +9,12 @@ namespace SpiritMod.Items.Consumable.Potion
 	[Sacrifice(20)]
 	public class TurtlePotion : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Steadfast Potion");
-			// Tooltip.SetDefault("Increases defense as health wanes\nReduces damage taken by 5%");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
 			Item.height = 30;
 			Item.rare = ItemRarityID.Lime;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.DrinkLiquid;
 			Item.useTime = Item.useAnimation = 20;
 			Item.consumable = true;

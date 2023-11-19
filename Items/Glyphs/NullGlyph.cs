@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Glyphs
 			Item.height = 28;
 			Item.value = Item.buyPrice(0, 5, 0, 0);
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

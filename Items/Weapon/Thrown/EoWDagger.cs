@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class EoWDagger : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Putrid Splitter");
-			// Tooltip.SetDefault("Splits into two smaller, homing eaters");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -26,7 +20,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.shoot = ModContent.ProjectileType<EoWDaggerProj>();
 			Item.useAnimation = 25;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useTime = 25;
 			Item.shootSpeed = 8.5f;
 			Item.damage = 15;
@@ -35,7 +29,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.value = Item.buyPrice(0, 0, 0, 60);
 			Item.rare = ItemRarityID.Green;
 			Item.autoReuse = false;
-			Item.maxStack = 999;
 			Item.consumable = true;
 		}
 	}

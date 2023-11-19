@@ -11,12 +11,6 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 {
 	public class CryoKnife : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cryolite Bomb");
-			// Tooltip.SetDefault("Occasionally inflicts 'Cryo Crush'\nCryo Crush deals increased damage to weakened enemies");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.Shuriken);
@@ -41,7 +35,6 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Cryolite Bomb");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -76,11 +69,7 @@ namespace SpiritMod.Items.Weapon.Thrown.CryoKnife
 
 	public class CryoExplosion : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cryolite Bomb");
-			Main.projFrames[Projectile.type] = 3;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 3;
 
 		public override void SetDefaults()
 		{

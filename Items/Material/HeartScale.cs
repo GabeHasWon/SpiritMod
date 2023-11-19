@@ -6,17 +6,11 @@ namespace SpiritMod.Items.Material
 {
 	public class HeartScale : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Heart Scale");
-			// Tooltip.SetDefault("'A lovely scale. It is coveted by collectors.'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 18;
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.noUseGraphic = true;
 			Item.value = Item.sellPrice(0, 0, 10, 0);
 			Item.noMelee = true;

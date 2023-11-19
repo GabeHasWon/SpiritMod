@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Halloween
@@ -17,7 +18,7 @@ namespace SpiritMod.Items.Halloween
 		public override void Defaults()
 		{
 			Item.rare = -1;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = false;
 		}
 	}

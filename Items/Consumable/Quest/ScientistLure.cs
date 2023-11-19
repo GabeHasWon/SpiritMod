@@ -13,13 +13,11 @@ namespace SpiritMod.Items.Consumable.Quest
 	[Sacrifice(1)]
 	public class ScientistLure : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Grisly Science Experiment");
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

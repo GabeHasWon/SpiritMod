@@ -16,7 +16,6 @@ namespace SpiritMod.Items.Consumable.Quest
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Unholy Magic");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 7));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
@@ -25,7 +24,7 @@ namespace SpiritMod.Items.Consumable.Quest
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

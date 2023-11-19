@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			Item.width = Item.height = 28;
 			Item.rare = ItemRarityID.LightPurple;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override bool CanApply(Item item) => item.IsWeapon() || item.useStyle > ItemUseStyleID.None && item.mountType < 0 && item.shoot <= ProjectileID.None;

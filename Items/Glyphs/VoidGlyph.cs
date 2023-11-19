@@ -19,7 +19,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			Item.width = Item.height = 28;
 			Item.rare = ItemRarityID.LightPurple;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public static void VoidCollapse(Player owner, NPC target, Projectile proj, int damage, int baseRarity, int voidStacks)

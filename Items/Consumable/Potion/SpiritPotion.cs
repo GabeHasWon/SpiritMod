@@ -9,18 +9,12 @@ namespace SpiritMod.Items.Consumable.Potion
 	[Sacrifice(20)]
 	public class SpiritPotion : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Spirit Potion");
-			// Tooltip.SetDefault("Increases damage and critical strike chance by 5%\nGetting hurt occasionally spawns a damaging bolt to chase enemies");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
 			Item.height = 30;
 			Item.rare = ItemRarityID.Pink;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.DrinkLiquid;
 			Item.useTime = Item.useAnimation = 20;
 			Item.consumable = true;

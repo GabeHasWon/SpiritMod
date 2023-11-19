@@ -8,17 +8,11 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(2)]
 	public class MapScroll : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cartographer's Map");
-			// Tooltip.SetDefault("Reveals a nearby portion of the minimap");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
 			Item.height = 40;
-			Item.maxStack = 20;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = 1000;
 			Item.rare = ItemRarityID.White;
 			Item.useAnimation = 30;

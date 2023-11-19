@@ -35,15 +35,11 @@ namespace SpiritMod.Tiles.Ambient
 
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(245, 179, 66), name);
+			RegisterItemDrop(ModContent.ItemType<ScarabIdolQuest>());
 			DustType = DustID.GoldCoin;
 		}
 
-		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-		{
-			r = .245f;
-			g = .179f;
-			b = .066f;
-		}
+		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) => (r, g, b) = (.245f, .179f, .066f);
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
@@ -61,9 +57,9 @@ namespace SpiritMod.Tiles.Ambient
 		{
 			Tile t = Main.tile[i, j];
 			Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-			if (t.TileFrameX % 72 == 0 && t.TileFrameY == 0) {
+			if (t.TileFrameX % 72 == 0 && t.TileFrameY == 0)
 				Main.spriteBatch.Draw(TextureAssets.Extra[89].Value, new Vector2(i * 16 - (int)Main.screenPosition.X - 6, j * 16 - (int)Main.screenPosition.Y - 9) + zero, null, new Color(245, 179, 66, 100), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-			}
+
 			return true;
 		}
 	}

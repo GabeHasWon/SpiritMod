@@ -1,4 +1,3 @@
-using SpiritMod.NPCs.Critters;
 using SpiritMod.NPCs.Reach;
 using Terraria;
 using Terraria.ID;
@@ -8,13 +7,11 @@ namespace SpiritMod.Items.Consumable
 {
 	public class BriarmothItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briarmoth");
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 20;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.sellPrice(0, 0, 3, 0);
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;

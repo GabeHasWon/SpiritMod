@@ -11,7 +11,6 @@ namespace SpiritMod.Items.Consumable.Food
 	public class CaesarSalad : FoodItem
 	{
 		internal override Point Size => new(30, 28);
-		// public override void StaticDefaults() => Tooltip.SetDefault("Minor improvements to all stats");
 
         public override bool CanUseItem(Player player)
         {

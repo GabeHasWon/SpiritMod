@@ -8,11 +8,6 @@ namespace SpiritMod.Items.Consumable.Fish
 	public class RawFish : FoodItem
 	{
 		internal override Point Size => new(34, 22);
-		public override void StaticDefaults()
-		{
-			// DisplayName.SetDefault("Raw Fish");
-			// Tooltip.SetDefault("'Can be eaten... Maybe cook it first?'");
-		}
 
 		public override bool CanUseItem(Player player)
 		{

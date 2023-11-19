@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -5,12 +6,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class TargetBottle : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Target Bottle");
-			// Tooltip.SetDefault("Hit it with a bullet in the air to do high bullet damage for a short time after\n'Take a crack at this bottle!'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -21,7 +16,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.DamageType = DamageClass.Ranged;
 			Item.noMelee = true;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.shoot = ModContent.ProjectileType<Projectiles.Thrown.TargetBottle>();
 			Item.useAnimation = 25;
 			Item.useTime = 25;
@@ -32,7 +27,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.crit = 8;
 			Item.rare = ItemRarityID.Blue;
 			Item.autoReuse = true;
-			Item.maxStack = 999;
 			Item.consumable = true;
 		}
 	}

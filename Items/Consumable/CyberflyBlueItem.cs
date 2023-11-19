@@ -7,17 +7,11 @@ namespace SpiritMod.Items.Consumable
 {
 	public class CyberflyBlueItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Blue Cyberfly");
-			// Tooltip.SetDefault("'Real or digital?'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 32;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.value = Item.sellPrice(0, 0, 1, 0);

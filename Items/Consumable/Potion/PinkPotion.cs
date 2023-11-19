@@ -8,18 +8,12 @@ namespace SpiritMod.Items.Consumable.Potion
 	[Sacrifice(20)]
 	public class PinkPotion : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Jump Potion");
-			// Tooltip.SetDefault("Greatly increases jump height");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
 			Item.height = 30;
 			Item.rare = ItemRarityID.Pink;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.DrinkLiquid;
 			Item.useTime = Item.useAnimation = 20;
 			Item.consumable = true;

@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Ammo.Bullet
 {
 	public class RubberBullet : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Rubber Bullet");
-			// Tooltip.SetDefault("Knocks enemies back farther");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 8;
@@ -20,7 +14,7 @@ namespace SpiritMod.Items.Ammo.Bullet
 			Item.value = 80;
 			Item.rare = ItemRarityID.Blue;
 			Item.value = Item.buyPrice(0, 0, 0, 15);
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.damage = 1;
 			Item.knockBack = 4.5f;
 			Item.ammo = AmmoID.Bullet;

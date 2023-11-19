@@ -6,12 +6,6 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 {
 	public class Chitin : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Chitin");
-			// Tooltip.SetDefault("'Gorgeous, iridescent beetle scales'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 32;
@@ -19,7 +13,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops
 			Item.value = 20;
 			Item.rare = ItemRarityID.Blue;
             Item.value = 700;
-            Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 	}
 }

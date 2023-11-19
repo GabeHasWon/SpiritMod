@@ -8,18 +8,12 @@ namespace SpiritMod.Items.Placeable.Walls
 {
 	public class BarkWall : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Elderbark Wall");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 12;
 			Item.height = 12;
 
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 7;

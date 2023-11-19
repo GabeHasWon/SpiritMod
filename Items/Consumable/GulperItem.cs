@@ -7,19 +7,13 @@ namespace SpiritMod.Items.Consumable
 {
 	public class GulperItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Gulper");
-			// Tooltip.SetDefault("'Quite the perky lil' fella'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
 			Item.height = 26;
 			Item.rare = ItemRarityID.Blue;
 			Item.value = Item.sellPrice(0, 0, 1, 0);
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = Item.useAnimation = 20;

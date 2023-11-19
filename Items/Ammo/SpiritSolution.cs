@@ -6,12 +6,6 @@ namespace SpiritMod.Items.Ammo
 {
 	public class SpiritSolution : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cyan Solution");
-			// Tooltip.SetDefault("Used by the Clentaminator\nSpreads the Spirit");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.shoot = ModContent.ProjectileType<Projectiles.Solutions.SpiritSolution>() - ProjectileID.PureSpray;
@@ -20,7 +14,7 @@ namespace SpiritMod.Items.Ammo
 			Item.height = 12;
 			Item.value = Item.buyPrice(0, 0, 7, 0);
 			Item.rare = ItemRarityID.Orange;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.consumable = true;
 		}
 	}

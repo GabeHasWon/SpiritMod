@@ -8,17 +8,11 @@ namespace SpiritMod.Items.Placeable.Walls
 {
 	public class SpiritWallItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Duskwood Wall");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 12;
 			Item.height = 12;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 7;
 			Item.useAnimation = 15;

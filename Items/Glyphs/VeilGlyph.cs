@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Glyphs
 			Item.width = Item.height = 28;
 			Item.value = Item.sellPrice(0, 2, 0, 0);
 			Item.rare = ItemRarityID.Orange;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 	}
 }

@@ -1,6 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -11,12 +9,6 @@ namespace SpiritMod.Items.Weapon.Thrown.PiecesOfEight
 {
 	public class PiecesOfEight : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pieces of Eight");
-			// Tooltip.SetDefault("Critical hits cause enemies to drop more coins");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -51,11 +43,7 @@ namespace SpiritMod.Items.Weapon.Thrown.PiecesOfEight
 	}
 	public class EightCoin : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Piece of Eight");
-			Main.projFrames[Projectile.type] = 2;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 2;
 
 		public override void SetDefaults()
 		{

@@ -6,12 +6,6 @@ namespace SpiritMod.Items.Ammo
 {
 	class FaerieStar : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Faerie Star");
-			// Tooltip.SetDefault("Can be used as ammunition");
-		}
-
 		public override void SetDefaults()
 		{
 
@@ -19,14 +13,10 @@ namespace SpiritMod.Items.Ammo
 			Item.height = 28;
 			Item.value = 50;
 			Item.rare = ItemRarityID.LightRed;
-
-			Item.maxStack = 999;
-
+			Item.maxStack = Item.CommonMaxStack;
 			Item.ammo = AmmoID.FallenStar;
-
 			Item.DamageType = DamageClass.Ranged;
 			Item.consumable = true;
-
 			Item.shoot = ModContent.ProjectileType<Projectiles.FaerieStar>();
 		}
 

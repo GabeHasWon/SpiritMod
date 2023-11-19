@@ -1,4 +1,3 @@
-
 using SpiritMod.Items.Sets.SlagSet;
 using SpiritMod.NPCs.Boss.Infernon;
 using Terraria;
@@ -15,7 +14,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.LightRed;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;
 			Item.noMelee = true;

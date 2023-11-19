@@ -7,11 +7,6 @@ namespace SpiritMod.Items.Halloween.Biome
 	public class JackOGourd : FoodItem
 	{
 		internal override Point Size => new(32, 38);
-		public override void StaticDefaults()
-		{
-			// DisplayName.SetDefault("Jack-o-Gourd");
-			// Tooltip.SetDefault("Minor improvements to all stats...kinda");
-		}
 
 		public override bool? UseItem(Player player)
 		{

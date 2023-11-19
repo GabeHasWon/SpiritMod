@@ -6,12 +6,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class MartianGrenade : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Electrosphere Grenade");
-			// Tooltip.SetDefault("'WARNING- HIGH VOLTAGE'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.Grenade);

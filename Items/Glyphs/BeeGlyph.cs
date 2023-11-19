@@ -13,7 +13,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			Item.width = Item.height = 28;
 			Item.rare = ItemRarityID.LightRed;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public static void ReleaseBees(Player owner, NPC target, int damage)

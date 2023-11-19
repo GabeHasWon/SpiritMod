@@ -8,17 +8,11 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(3)]
 	public class LuvdiscItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Ardorfish");
-			// Tooltip.SetDefault("'It exudes affection'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 22;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.value = Item.sellPrice(0, 0, 4, 0);

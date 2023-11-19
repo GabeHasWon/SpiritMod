@@ -9,18 +9,12 @@ namespace SpiritMod.Items.Consumable
 {
     public class ReachBossSummon : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Bramble Tooth");
-            // Tooltip.SetDefault("'A malevolent mixture of flora and fauna'\nUse in the Underground Briar to summon the Vinewrath Bane");
-        }
-
         public override void SetDefaults()
         {
             Item.width = Item.height = 16;
             Item.rare = ItemRarityID.Green;
-            Item.maxStack = 99;
-            Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.maxStack = Item.CommonMaxStack;
+			Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useTime = Item.useAnimation = 20;
             Item.noMelee = true;
             Item.consumable = true;

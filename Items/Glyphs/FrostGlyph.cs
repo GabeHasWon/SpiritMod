@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			Item.width = Item.height = 28;
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public static void FreezeEffect(Player owner, NPC target, Projectile proj)

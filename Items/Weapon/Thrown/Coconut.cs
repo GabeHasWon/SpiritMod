@@ -1,4 +1,5 @@
 using SpiritMod.Projectiles.Thrown;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -6,12 +7,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class Coconut : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Hard Coconut");
-			// Tooltip.SetDefault("Does more damage if dropped from high up\n'You're not brave enough to try eating it'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -23,7 +18,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.channel = true;
 			Item.noMelee = true;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.shoot = ModContent.ProjectileType<CoconutP>();
 			Item.useAnimation = 60;
 			Item.useTime = 60;
@@ -34,7 +29,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.crit = 8;
 			Item.rare = ItemRarityID.Green;
 			Item.autoReuse = true;
-			Item.maxStack = 999;
 			Item.consumable = true;
 		}
 	}

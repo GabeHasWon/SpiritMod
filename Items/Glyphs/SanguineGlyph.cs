@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			Item.width = Item.height = 28;
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public static void DrainEffect(Player owner, NPC target)

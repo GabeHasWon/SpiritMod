@@ -7,8 +7,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class MimeBomb : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mime Bomb");
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -22,7 +20,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.useAnimation = 46;
 			Item.useTime = 46;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.shootSpeed = 5f;
 			Item.damage = 40;
 			Item.knockBack = 9.5f;

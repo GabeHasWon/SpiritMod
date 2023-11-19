@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Mechanics.QuestSystem;
@@ -9,13 +10,11 @@ namespace SpiritMod.Items.Consumable.Quest
 	[Sacrifice(1)]
 	public class HornetfishQuest : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hornetfish");
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = -11;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

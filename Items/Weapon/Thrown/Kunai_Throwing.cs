@@ -8,10 +8,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class Kunai_Throwing : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Kunai");
-		}
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -23,7 +19,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.channel = true;
 			Item.noMelee = true;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.shoot = Mod.Find<ModProjectile>("Kunai_Throwing").Type;
 			Item.useAnimation = 25;
 			Item.useTime = 25;
@@ -34,7 +30,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.crit = 8;
 			Item.rare = ItemRarityID.Blue;
 			Item.autoReuse = true;
-			Item.maxStack = 999;
 			Item.consumable = true;
 		}
 

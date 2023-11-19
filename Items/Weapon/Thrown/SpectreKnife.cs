@@ -7,19 +7,13 @@ namespace SpiritMod.Items.Weapon.Thrown
 {
 	public class SpectreKnife : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Spectre Knife");
-			// Tooltip.SetDefault("Upon hitting enemies or tiles, Spectre bolts are released");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 16;
 			Item.height = 24;
 			Item.value = Item.buyPrice(0, 0, 3, 0);
 			Item.rare = ItemRarityID.Yellow;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.damage = 65;
 			Item.knockBack = 3.5f;
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -34,6 +28,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.shootSpeed = 11f;
 			Item.UseSound = SoundID.Item1;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(33);

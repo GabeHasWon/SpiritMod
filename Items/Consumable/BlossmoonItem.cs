@@ -9,18 +9,13 @@ namespace SpiritMod.Items.Consumable
 {
 	public class BlossmoonItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Blossmoon");
-			// Tooltip.SetDefault("'It releases a soothing aroma'");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 20;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.sellPrice(0, 0, 5, 0);
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;

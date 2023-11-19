@@ -11,18 +11,13 @@ namespace SpiritMod.Items.Material
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Starjinx Cluster");
-			// Tooltip.SetDefault("'Forged with the power of a billion stars!'");
-			ItemID.Sets.ItemNoGravity[Item.type] = true;
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[Item.type] = true;
 
 		public override void SetDefaults()
 		{
 			Item.width = 32;
 			Item.height = 32;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.sellPrice(silver : 10);
 			Item.rare = ItemRarityID.Pink;
 		}

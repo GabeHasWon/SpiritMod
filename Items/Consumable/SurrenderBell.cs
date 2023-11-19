@@ -10,14 +10,12 @@ namespace SpiritMod.Items.Consumable
 {
 	public class SurrenderBell : ModItem
 	{
-		// public override void SetStaticDefaults() => Tooltip.SetDefault("Stops any invasion when used\nCan only be used when the invasion has arrived, not when the invasion is approaching\n'A heavenly chime'");
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 30;
 			Item.rare = ItemRarityID.Cyan;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.buyPrice(gold: 25);
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;

@@ -8,11 +8,6 @@ namespace SpiritMod.Items.Consumable.Fish
 	public class SteamedMussels : FoodItem
 	{
 		internal override Point Size => new(46, 22);
-		public override void StaticDefaults()
-		{
-			// DisplayName.SetDefault("Steamed Mussels");
-			// Tooltip.SetDefault("Minor improvements to all stats");
-		}
 
 		public override void AddRecipes()
 		{

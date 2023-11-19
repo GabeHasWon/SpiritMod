@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Glyphs
 		{
 			Item.height = Item.width = 28;
 			Item.rare = ItemRarityID.LightPurple;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override bool CanApply(Item item) => item.IsWeapon() && !item.GetGlobalItem<GlyphGlobalItem>().randomGlyph;

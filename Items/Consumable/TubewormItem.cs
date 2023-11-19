@@ -7,13 +7,11 @@ namespace SpiritMod.Items.Consumable
 {
 	public class TubewormItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Tubeworm");
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 20;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.sellPrice(0, 0, 0, 2);
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;
