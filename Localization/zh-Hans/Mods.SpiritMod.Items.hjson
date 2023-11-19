@@ -324,7 +324,7 @@ Strikeshield: {
 }
 
 TechBoots: {
-	DisplayName: 涡轮防滑鞋
+	DisplayName: 心律防滑鞋
 	Tooltip:
 		'''
 		小幅度增加移动速度和加速度
@@ -537,7 +537,11 @@ ShortFuse: {
 
 ShurikenLauncher: {
 	DisplayName: 神射手手套
-	Tooltip: 每使用远程武器攻击7次便会使下次攻击获得额外的弹幕速度和25%伤害加成
+	Tooltip:
+		'''
+		增加在一定距离时的远程伤害
+		增加在此范围内连续射击时造成的伤害
+		'''
 }
 
 SkarmoryWings: {
@@ -2485,8 +2489,8 @@ SteamplateBow: {
 	DisplayName: 星体充能器
 	Tooltip:
 		'''
-		左键发射正极箭
-		右键发射负极箭
+		左键发射一列迅速的弱小的正极箭
+		右键发射一个强大的负极箭
 		两种箭矢在互相碰撞时会产生爆炸
 		'''
 }
@@ -3331,7 +3335,7 @@ DemonSheath: {
 	Tooltip:
 		'''
 		召唤一把浮在头顶的附魔武士刀
-		武士刀会指向最近的敌人
+		武士刀会指向范围内最稀有的敌人
 		'''
 }
 
@@ -5100,7 +5104,7 @@ MJWBox: {
 }
 
 NeonMusicBox: {
-	DisplayName: 音乐盒（超时空 - 昼）
+	DisplayName: 音乐盒（超时空 - 夜）
 	Tooltip: ""
 }
 
@@ -7835,7 +7839,7 @@ RealityQuill: {
 
 ShadowflameStoneStaff: {
 	DisplayName: 破影魔杖
-	Tooltip: 发射缥缈影焰
+	Tooltip: 充能并释放一道能够瓦解敌人护甲的强大暗影焰
 }
 
 ShroomFishSummon: {
