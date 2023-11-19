@@ -3335,7 +3335,7 @@ DemonSheath: {
 	Tooltip:
 		'''
 		Summons a possessed katana that floats above you
-		Points towards the nearest enemy
+		Points towards the rarest enemy in range
 		'''
 }
 
