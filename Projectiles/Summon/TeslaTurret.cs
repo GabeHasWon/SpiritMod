@@ -8,11 +8,7 @@ namespace SpiritMod.Projectiles.Summon
 {
 	public class TeslaTurret : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			//DisplayName.SetDefault("Tesla Turret");
-			Main.projFrames[Type] = 4;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Type] = 4;
 
 		public override void SetDefaults()
 		{
@@ -28,6 +24,12 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AI()
 		{
+			if (++Projectile.frameCounter >= 4)
+			{
+				Projectile.frameCounter = 0;
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Type];
+			}
+
 			Projectile.velocity.Y = 5;
 			//CONFIG INFO
 			int range = 30;   //How many tiles away the projectile targets NPCs

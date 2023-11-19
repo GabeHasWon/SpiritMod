@@ -10,12 +10,7 @@ namespace SpiritMod.Items.Sets.SlagSet
 {
 	public class FieryMagicLauncher : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Slag Breath");
-			// Tooltip.SetDefault("Expels spurts of magical flame\nCritical hits shower enemies in damaging sparks");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SlagSet/FieryMagicLauncher_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SlagSet/FieryMagicLauncher_Glow");
 
 		public override void SetDefaults()
 		{

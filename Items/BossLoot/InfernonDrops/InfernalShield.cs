@@ -9,12 +9,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Infernal Shield");
-			// Tooltip.SetDefault("Double tap a direction to dash in flames\nReduces damage taken by 5%");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 24;

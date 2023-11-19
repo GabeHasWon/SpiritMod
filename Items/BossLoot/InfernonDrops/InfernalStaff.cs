@@ -10,12 +10,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
 	public class InfernalStaff : ModItem, ITimerItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Seal of Torment");
-			// Tooltip.SetDefault("Shoots three exploding, homing, fiery souls\n3 second cooldown");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 42;
@@ -26,10 +20,10 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 			Item.knockBack = 5F;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.value = Item.sellPrice(0, 2, 50, 0);
-			Item.useTime = 24;
-			Item.useAnimation = 24;
+			Item.useTime = Item.useAnimation = 24;
 			Item.DamageType = DamageClass.Magic;
 			Item.autoReuse = true;
+			Item.UseSound = SoundID.Item34;
 			Item.shoot = ModContent.ProjectileType<FireSoul>();
 			Item.shootSpeed = 12f;
 		}

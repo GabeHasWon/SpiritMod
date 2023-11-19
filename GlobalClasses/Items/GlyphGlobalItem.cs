@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Dusts;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Items.Glyphs;
 using SpiritMod.Projectiles.Glyph;

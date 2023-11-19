@@ -10,12 +10,6 @@ namespace SpiritMod.Items.Pets
 	[Sacrifice(1)]
 	public class PhantomEgg : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Phantom Egg");
-			// Tooltip.SetDefault("A shadowy Phantom follows you...");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.Fish);

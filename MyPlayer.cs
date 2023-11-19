@@ -922,7 +922,7 @@ namespace SpiritMod
 		{
 			if (explorerTreads && info.DamageSource.SourceOtherIndex == 3) //Spikes
 			{
-				if (ExplorerTreads.DoDodgeEffect(Player, Player.GetSource_OnHurt(null)))
+				if (ExplorerTreads.DoDodgeEffect(Player, Player.GetSource_OnHurt(info.DamageSource)))
 					return true;
 			}
 

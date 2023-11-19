@@ -11,9 +11,8 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Umbra Staff");
-			// Tooltip.SetDefault("Shoots out homing Shadow Balls");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/UmbraStaff_Glow");
+			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -25,13 +24,13 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 			Item.damage = 44;
 			Item.knockBack = 3;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.useTime = 24;
 			Item.useAnimation = 24;
 			Item.mana = 6;
 			Item.DamageType = DamageClass.Magic;
 			Item.autoReuse = true;
 			Item.noMelee = true;
+			Item.UseSound = SoundID.Item20;
 			Item.shoot = ModContent.ProjectileType<ShadowBall_Friendly>();
 			Item.shootSpeed = 10f;
 		}

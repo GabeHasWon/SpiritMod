@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.DataStructures;
 
 namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
@@ -24,7 +23,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 
 			DustType = 7;
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Infernon Trophy");
 			AddMapEntry(new Color(120, 85, 60), name);
 		}
 	}

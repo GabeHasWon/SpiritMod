@@ -10,18 +10,11 @@ namespace SpiritMod.Projectiles.Thrown
 {
 	public class FlaskOfGoreProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Flask Of Gore");
-		}
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 20;
 			Projectile.height = 20;
-
 			Projectile.aiStyle = 2;
-
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.DamageType = DamageClass.Ranged;
@@ -31,8 +24,9 @@ namespace SpiritMod.Projectiles.Thrown
 		public override void OnKill(int timeLeft)
 		{
 			Player player = Main.player[Projectile.owner];
-			SoundEngine.PlaySound(SoundID.NPCDeath19);
-            SoundEngine.PlaySound(SoundID.Item107);
+			SoundEngine.PlaySound(SoundID.NPCDeath19, Projectile.Center);
+            SoundEngine.PlaySound(SoundID.Item107, Projectile.Center);
+
             for (int j = 0; j < 4; j++)
 				Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, new Vector2(), Main.rand.Next(134, 137), 1);
 			if (Main.rand.NextBool(4) && !player.HasBuff(ModContent.BuffType<CrimsonSkullBuff>()) && Projectile.friendly)

@@ -11,12 +11,7 @@ namespace SpiritMod.Items.Pets
 	[Sacrifice(1)]
 	public class SaucerBeacon : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Support Beacon");
-			// Tooltip.SetDefault("Calls in Martian Reinforcements!");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{

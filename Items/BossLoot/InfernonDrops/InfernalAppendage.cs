@@ -5,13 +5,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
 	public class InfernalAppendage : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Torment Shard");
-			// Tooltip.SetDefault("'Filled with suffering'");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;

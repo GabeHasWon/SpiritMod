@@ -7,12 +7,7 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 {
 	public class Whirltide : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Whirltide");
-			// Tooltip.SetDefault("Sprouts tides from the ground below");
-			Item.staff[Item.type] = true;
-		}
+		public override void SetStaticDefaults() => Item.staff[Item.type] = true;
 
 		public override void SetDefaults()
 		{
@@ -30,6 +25,7 @@ namespace SpiritMod.Items.Sets.TideDrops.Whirltide
 			Item.shootSpeed = 7f;
 			Item.autoReuse = true;
 			Item.rare = ItemRarityID.Green;
+			Item.UseSound = SoundID.Item20;
 			Item.value = Item.sellPrice(silver: 50);
 			Item.useTurn = true;
 			Item.mana = 10;

@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Projectiles.Bullet;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -9,12 +8,6 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Liberty
 {
 	public class LibertyItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Liberty");
-			// Tooltip.SetDefault("Charges up to fire a rocket");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 24;

@@ -11,14 +11,6 @@ namespace SpiritMod.Items.Accessory.Leather
 	[AutoloadEquip(EquipType.Shoes)]
 	public class ExplorerTreads : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Explorer's Treads");
-			/* Tooltip.SetDefault("50% chance to dodge traps and hazards\n" +
-				"Grants a short speed boost after touching traps or hazards\n" +
-				"'Makes exploring temples like a walk in the park'"); */
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;

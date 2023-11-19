@@ -11,8 +11,6 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Surging Anguish");
-			// Description.SetDefault("'Your mind and body are in great pain'");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
@@ -32,10 +30,7 @@ namespace SpiritMod.Buffs
 					dust.fadeIn = 1.5f;
 					dust.velocity = Vector2.Zero;
 				}
-				else
-				{
-					dust.velocity = new Vector2(0, -2);
-				}
+				else dust.velocity = new Vector2(0, -2);
 
 				dust.scale = npc.scale * Main.rand.NextFloat(0.8f, 1.3f);
 				dust.noGravity = true;

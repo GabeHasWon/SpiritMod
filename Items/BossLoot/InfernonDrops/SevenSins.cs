@@ -10,12 +10,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	{
 		int charger;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("The Seven Sins");
-			// Tooltip.SetDefault("Occasionally shoots out a volley of flames");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 44;

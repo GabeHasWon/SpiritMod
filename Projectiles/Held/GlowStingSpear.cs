@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,8 +18,6 @@ namespace SpiritMod.Projectiles.Held
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Seraph Blade");
 
 		public override void SetDefaults()
 		{
@@ -51,26 +50,21 @@ namespace SpiritMod.Projectiles.Held
 					if (Main.LocalPlayer == player)
 					{
 						Projectile.velocity = (player.HeldItem.shootSpeed * Vector2.UnitX).RotatedBy(player.AngleTo(Main.MouseWorld)).RotatedByRandom(0.12f);
-
 						Projectile.netUpdate = true;
 					}
 
 					Projectile.ResetLocalNPCHitImmunity();
 					Distance = 0;
 					Projectile.alpha = 255;
+					SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
 
 					player.itemAnimation = player.itemAnimationMax;
 					player.itemTime = player.itemTimeMax;
 				}
-				else
-				{
-					Projectile.active = false;
-				}
+				else Projectile.active = false;
 			}
 			else if (!player.ItemAnimationJustStarted && Projectile.alpha > 0)
-			{
 				Projectile.alpha -= 255 / 5;
-			}
 
 			float moveDist = Math.Min(8, player.itemAnimation);
 			Projectile.Center = player.Center + (Vector2.Normalize(Projectile.velocity) * (startDistance + (Distance += moveDist))) - Projectile.velocity;

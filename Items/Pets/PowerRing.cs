@@ -11,12 +11,7 @@ namespace SpiritMod.Items.Pets
 	[Sacrifice(1)]
 	public class PowerRing : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Ring of Willpower");
-			// Tooltip.SetDefault("Summons a Lantern Power Battery to light the way");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -28,6 +23,7 @@ namespace SpiritMod.Items.Pets
 			Item.useTime = 20;
 			Item.rare = ItemRarityID.Orange;
 			Item.noMelee = true;
+			Item.UseSound = SoundID.Item93;
 			Item.value = Item.sellPrice(0, 3, 50, 0);
 			Item.buffType = ModContent.BuffType<LanternBuff>();
 		}

@@ -10,12 +10,6 @@ namespace SpiritMod.Items.Pets
 	[Sacrifice(1)]
 	public class ShadowCollar : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Shadow Collar");
-			// Tooltip.SetDefault("Summons a Shadow Pup companion");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.Fish);

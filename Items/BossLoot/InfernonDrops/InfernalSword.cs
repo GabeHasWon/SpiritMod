@@ -10,13 +10,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 {
 	public class InfernalSword : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Char Fury");
-			// Tooltip.SetDefault("Shoots out two blazes that cause foes to combust, multiple hits causing the combustion to deal more damage");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = 52;

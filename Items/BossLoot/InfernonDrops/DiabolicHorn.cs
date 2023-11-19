@@ -7,12 +7,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 	[Sacrifice(1)]
 	public class DiabolicHorn : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Diabolic Horn");
-			// Tooltip.SetDefault("Provides a fiery platform to fly on");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 22;

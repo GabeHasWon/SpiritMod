@@ -11,12 +11,7 @@ namespace SpiritMod.Items.Pets
 	[Sacrifice(1)]
 	public class SuspiciousLookingMeatballs : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Suspicious Looking Meatballs");
-			// Tooltip.SetDefault("Summons the Overseer");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{

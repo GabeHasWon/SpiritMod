@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Accessory.Leather
 	[AutoloadEquip(EquipType.HandsOn)]
 	public class LeatherGlove : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Leather Fistwraps");
-			// Tooltip.SetDefault("Increases melee speed by 6%");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 24;

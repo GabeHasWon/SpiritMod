@@ -8,8 +8,6 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 {
 	public class ThornyRod : ModItem
 	{
-		// public override void SetStaticDefaults() => Tooltip.SetDefault("Creates briar grass on dirt");
-
 		public override void SetDefaults()
 		{
 			Item.damage = 5;
@@ -23,6 +21,7 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 			Item.maxStack = 1;
 			Item.width = Item.height = 36;
 			Item.rare = ItemRarityID.Green;
+			Item.UseSound = SoundID.Item1;
 			Item.value = Item.buyPrice(silver: 30);
 		}
 
