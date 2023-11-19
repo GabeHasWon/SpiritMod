@@ -7839,7 +7839,7 @@ RealityQuill: {
 
 ShadowflameStoneStaff: {
 	DisplayName: 破影魔杖
-	Tooltip: 施放一道能够摧毁敌人护甲的强大暗影焰
+	Tooltip: 充能并释放一道能够瓦解敌人护甲的强大暗影焰
 }
 
 ShroomFishSummon: {
