@@ -570,7 +570,7 @@ BloodFangs.DisplayName: 血牙
 BloodVessel.DisplayName: 血激
 BlueEmber.DisplayName: 蓝色余烬
 BubblePumpProj.DisplayName: 泡泡冲击波
-// CactusWallProj.DisplayName: Wall Cactus
+CactusWallProj.DisplayName: 墙上仙人掌
 ChaosBall.DisplayName: 混沌球
 Clock.DisplayName: 钟
 CobaltStaffProj.DisplayName: 钴蓝碎块
@@ -616,7 +616,7 @@ SandWall.DisplayName: 沙墙
 ShadowBall_Friendly.DisplayName: 暗影法球
 ShadowCircleRune.DisplayName: 影环符文
 ShadowflameOrbBolt.DisplayName: 暗矢
-// SpiritBolt.DisplayName: Spirit Bolt
+SpiritBolt.DisplayName: 魂灵矢
 SpiritShardFriendly.DisplayName: 魂灵精华
 SpiritWave.DisplayName: 魂灵波
 Spit.DisplayName: 疾病唾液
