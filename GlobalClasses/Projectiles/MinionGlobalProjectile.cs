@@ -10,7 +10,7 @@ namespace SpiritMod.GlobalClasses.Projectiles
 		public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (ProjectileID.Sets.MinionShot[projectile.type] && projectile.ModProjectile != null && projectile.ModProjectile.Mod == Mod)
-				modifiers.SetCrit();
+				modifiers.DisableCrit();
 		}
 	}
 }
