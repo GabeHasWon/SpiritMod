@@ -188,7 +188,7 @@ DevouringVoid.DisplayName: Devouring Void
 
 DivineStrike: {
 	DisplayName: Divine Strike
-	Description: "Your next attack will deal "
+	Description: Your next attack will deal increased damage
 }
 
 PhantomVeil: {
@@ -198,12 +198,12 @@ PhantomVeil: {
 
 SanguineBleed: {
 	DisplayName: Crimson Bleed
-	Description: You are rapidly losing blood.
+	Description: You are rapidly losing blood
 }
 
 SanguineRegen: {
 	DisplayName: Sanguine Regeneration
-	Description: You are rapidly gaining blood.
+	Description: You are rapidly gaining blood
 }
 
 TemporalShift: {

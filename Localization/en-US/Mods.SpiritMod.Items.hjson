@@ -324,7 +324,7 @@ Strikeshield: {
 }
 
 TechBoots: {
-	DisplayName: Turbo Cleats
+	DisplayName: Heartbeat Cleats
 	Tooltip:
 		'''
 		Slightly increases movement speed and acceleration
@@ -537,7 +537,11 @@ ShortFuse: {
 
 ShurikenLauncher: {
 	DisplayName: Sharpshooter's Glove
-	Tooltip: Every 7th ranged hit grants the next shot increased velocity and 25% more damage
+	Tooltip:
+		'''
+		Increases ranged damage at a distance
+		Consecutive shots at this range deal increased damage
+		'''
 }
 
 SkarmoryWings: {
@@ -2485,8 +2489,8 @@ SteamplateBow: {
 	DisplayName: Starcharger
 	Tooltip:
 		'''
-		Left-click to shoot Positive Arrows
-		Right-click to shoot Negative Arrows
+		Left-click to shoot a swift volley of weak Positive Arrows
+		Right-click to shoot a powerful Negative Arrow
 		Oppositely charged arrows explode upon touching each other
 		'''
 }
@@ -5100,7 +5104,7 @@ MJWBox: {
 }
 
 NeonMusicBox: {
-	DisplayName: Music Box (Hyperspace- Day)
+	DisplayName: Music Box (Hyperspace- Night)
 	Tooltip: ""
 }
 
@@ -7835,7 +7839,7 @@ RealityQuill: {
 
 ShadowflameStoneStaff: {
 	DisplayName: Shadowbreak Wand
-	Tooltip: Casts a piercing shadowflame bolt able to disrupt enemy armor
+	Tooltip: Charges a powerful shadowflame bolt able to disrupt enemy armor
 }
 
 ShroomFishSummon: {
