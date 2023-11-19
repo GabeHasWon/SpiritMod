@@ -11,12 +11,6 @@ namespace SpiritMod.Items.DonatorItems
 	[Sacrifice(1)]
 	public class DemonSheath : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Demon Sheath");
-			// Tooltip.SetDefault("Summons a possessed katana that floats above you\nPoints towards the nearest enemy");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.Fish);

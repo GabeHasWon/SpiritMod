@@ -20,8 +20,6 @@ namespace SpiritMod.Projectiles.Arrow
 
 		public void DoTrailCreation(TrailManager tM) => tM.CreateTrail(Projectile, new StandardColorTrail(Color.Cyan with { A = 0 }), new RoundCap(), new ZigZagTrailPosition(3f), 5f, 250f);
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Positive Arrow");
-
 		public override void SetDefaults()
 		{
 			Projectile.Size = new Vector2(16);

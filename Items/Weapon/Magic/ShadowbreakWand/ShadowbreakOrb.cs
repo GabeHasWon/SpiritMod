@@ -21,7 +21,6 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Shadowbreak Orb");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

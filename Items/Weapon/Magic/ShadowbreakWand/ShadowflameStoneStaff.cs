@@ -12,12 +12,7 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 {
 	public class ShadowflameStoneStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Shadowbreak Wand");
-			// Tooltip.SetDefault("Casts a piercing shadowflame bolt able to disrupt enemy armor");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -58,8 +53,6 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 		public ref float Counter => ref Projectile.ai[0];
 
 		public override string Texture => "SpiritMod/Items/Weapon/Magic/ShadowbreakWand/ShadowflameStoneStaff";
-
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Shadowbreak Wand");
 
 		public override void SetDefaults()
 		{

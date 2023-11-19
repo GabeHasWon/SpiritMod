@@ -1,10 +1,10 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Items.Placeable.MusicBox;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.MusicBox
 {
@@ -20,9 +20,10 @@ namespace SpiritMod.Tiles.MusicBox
 			TileObjectData.newTile.DrawYOffset = 2;
 			TileObjectData.addTile(Type);
 			Terraria.ID.TileID.Sets.DisableSmartCursor[Type] = true;
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Music Box");
 			AddMapEntry(new Color(200, 200, 200), name);
+			RegisterItemDrop(ModContent.ItemType<Items.Placeable.MusicBox.AshfallBox>());
             DustType = -1;
         }
 
@@ -31,7 +32,7 @@ namespace SpiritMod.Tiles.MusicBox
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
-			player.cursorItemIconID = ItemType<Items.Placeable.MusicBox.AshfallBox>();
+			player.cursorItemIconID = ModContent.ItemType<Items.Placeable.MusicBox.AshfallBox>();
 		}
 	}
 }

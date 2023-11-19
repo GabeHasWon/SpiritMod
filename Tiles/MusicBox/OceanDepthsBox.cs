@@ -5,7 +5,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.MusicBox
 {
@@ -15,16 +14,17 @@ namespace SpiritMod.Tiles.MusicBox
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileObsidianKill[Type] = true;
-			LocalizedText name = CreateMapEntryName();
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.DrawYOffset = 2;
 			TileObjectData.addTile(Type);
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			// name.SetDefault("Music Box");
+
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
-            DustType = -1;
+			RegisterItemDrop(ModContent.ItemType<Items.Placeable.MusicBox.OceanDepthsBox>());
+			DustType = -1;
         }
 
 		public override void MouseOver(int i, int j)
@@ -32,7 +32,7 @@ namespace SpiritMod.Tiles.MusicBox
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
-			player.cursorItemIconID = ItemType<Items.Placeable.MusicBox.OceanDepthsBox>();
+			player.cursorItemIconID = ModContent.ItemType<Items.Placeable.MusicBox.OceanDepthsBox>();
 		}
 	}
 }

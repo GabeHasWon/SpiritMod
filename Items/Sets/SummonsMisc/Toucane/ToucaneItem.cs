@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Sets.SummonsMisc.Toucane
 {
 	public class ToucaneItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Toucane");
-			// Tooltip.SetDefault("Summons an angry toucan to fight for you");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 20;

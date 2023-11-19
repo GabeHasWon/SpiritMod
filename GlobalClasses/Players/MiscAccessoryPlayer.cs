@@ -20,6 +20,7 @@ using SpiritMod.Items.Accessory.GranitechDrones;
 using SpiritMod.Items.Accessory.Bauble;
 using SpiritMod.Items.Accessory.AceCardsSet;
 using SpiritMod.Projectiles;
+using Terraria.WorldBuilding;
 
 namespace SpiritMod.GlobalClasses.Players
 {
@@ -88,37 +89,21 @@ namespace SpiritMod.GlobalClasses.Players
 			return totalKb;
 		}
 
-		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-
-			// Ace of Spades
 			if (Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>())
-			{
 				modifiers.CritDamage *= 1.2f;
-
-				for (int i = 0; i < 3; i++)
-					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
-			}
 		}
 
 		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone) => OnHitNPCWithAnything(proj, target, hit);
 		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone) => OnHitNPCWithAnything(item, target, hit);
 
-		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
-		{
-			// Ace of Spades
-			if ((Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>()))
-			{
-				modifiers.CritDamage *= 1.2f;
-				for (int i = 0; i < 3; i++)
-					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
-			}
-		}
-
 		public void OnHitNPCWithAnything(Entity weapon, NPC target, NPC.HitInfo hit)
 		{
+			if (!hit.Crit)
+				return;
 
-			if (hit.Crit && !target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
+			if (!target.friendly && target.lifeMax > 15 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
 			{
 				if (((weapon is Item item) && Main.rand.NextFloat() < (item.useTime / 100f)) || ((weapon is Projectile proj) && Main.rand.NextFloat() < (proj.GetGlobalProjectile<SpiritGlobalProjectile>().storedUseTime / 75f)))
 				{
@@ -164,15 +149,20 @@ namespace SpiritMod.GlobalClasses.Players
 						ItemUtils.NewItemWithSync(Player.GetSource_OnHit(target), Player.whoAmI, (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.CopperCoin, money);
 				}
 			}
+
+			if (Player.HasAccessory<AceOfSpades>() || Player.HasAccessory<FourOfAKind>())
+			{
+				for (int i = 0; i < 3; i++)
+					Dust.NewDust(target.position, target.width, target.height, ModContent.DustType<SpadeDust>(), 0, -0.8f);
+			}
 		}
 
-		private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
+		//private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }
 		
 		public int addDef = 0;
 		public int frostBeltTimer = 0;
 		public override void UpdateEquips()
 		{
-	
 			if (Player.HasAccessory<FrostGiantBelt>() && Player.channel)
 				if (HeldItemIsClub(Player))
 				{
@@ -266,7 +256,7 @@ namespace SpiritMod.GlobalClasses.Players
 
 				if (Player.ItemTimer<Bauble>() <= 0 && hitBelowHalf)
 				{
-					Projectile.NewProjectileDirect(Player.GetSource_OnHurt(null), Player.Center, Vector2.Zero, ModContent.ProjectileType<IceReflector>(), 0, 0, Player.whoAmI);
+					Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ModContent.ProjectileType<IceReflector>(), 0, 0, Player.whoAmI);
 
 					Player.AddBuff(ModContent.BuffType<BaubleResistance>(), Bauble.shieldTime);
 					Player.SetItemTimer<Bauble>(Bauble.cooldown);

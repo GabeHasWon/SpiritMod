@@ -13,10 +13,10 @@ namespace SpiritMod.Projectiles.Pet
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Possessed Blade");
 			ProjectileID.Sets.TrailCacheLength[Type] = 5;
 			ProjectileID.Sets.TrailingMode[Type] = 2;
 			Main.projPet[Type] = true;
+
 			ProjectileID.Sets.CharacterPreviewAnimations[Type] = ProjectileID.Sets.SimpleLoop(0, 0)
 				.WithCode(DelegateMethods.CharacterPreview.Float);
 		}
@@ -45,7 +45,7 @@ namespace SpiritMod.Projectiles.Pet
 
 			Vector2 restingPos = player.Center - new Vector2(50 * player.direction, 40 * player.gravDir);
 			if (Projectile.Distance(restingPos) > 60)
-				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(restingPos) * speedMult, 0.1f);
+				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(restingPos) * speedMult, .1f);
 			else
 				Projectile.velocity *= .95f;
 
