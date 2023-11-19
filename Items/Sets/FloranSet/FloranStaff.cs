@@ -11,12 +11,7 @@ namespace SpiritMod.Items.Sets.FloranSet
 {
 	public class FloranStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Floran Staff");
-			// Tooltip.SetDefault("Calls three guarding energies that surround the player before dissipating\nVines occasionally ensnare the foes, reducing their movement speed");
-			Item.staff[Item.type] = true;
-		}
+		public override void SetStaticDefaults() => Item.staff[Item.type] = true;
 
 		public override void SetDefaults()
 		{

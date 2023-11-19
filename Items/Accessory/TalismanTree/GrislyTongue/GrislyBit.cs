@@ -15,10 +15,8 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTongue
 		private int subID = 0; //Controls the in-world sprite for this item
 		private int timeLeft = 180;
 
-		public override void SetStaticDefaults()
-		{
-			ItemID.Sets.IgnoresEncumberingStone[Type] = true;
-		}
+		public override void SetStaticDefaults() => ItemID.Sets.IgnoresEncumberingStone[Type] = true;
+
 		public override void SetDefaults()
 		{
 			Item.width = 16;
@@ -26,12 +24,14 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTongue
 			Item.maxStack = 1;
 			subID = Main.rand.Next(3);
 		}
+
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
 			Texture2D tex = ModContent.Request<Texture2D>(Texture + "_World").Value;
 			spriteBatch.Draw(tex, Item.position - Main.screenPosition, new Rectangle(0, 16 * subID, 20, 14), GetAlpha(lightColor) ?? lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
 			return false;
 		}
+
 		public override void Update(ref float gravity, ref float maxFallSpeed)
 		{
 			timeLeft--;
@@ -43,6 +43,7 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTongue
 				Item.active = false;
 			}
 		}
+
 		public override bool CanPickup(Player player)
 		{
 			if (timeLeft >= 150)
@@ -50,7 +51,9 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTongue
 			else
 				return true;
 		}
+
 		public override bool ItemSpace(Player player) => true;
+
 		public override bool OnPickup(Player player)
 		{
 			SoundEngine.PlaySound(SoundID.Item171);

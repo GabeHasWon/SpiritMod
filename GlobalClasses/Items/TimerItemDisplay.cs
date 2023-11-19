@@ -41,17 +41,16 @@ internal class TimerItemDisplay : GlobalItem
 			Asset<Texture2D> texture = TextureAssets.InventoryBack18;
 
 			int timer = Main.LocalPlayer.ItemTimer(item.ModItem);
-			Vector2 drawPos = position + (frame.Size() / 2 * scale);
-
 			float quoteant = (float)timer / itemTimerMax;
 			Color color = Color.Red * .5f;
+
 			if (timer <= 5)
 			{
 				quoteant = 1f;
 				color = Color.White * (float)(timer / 5f);
 			}
 
-			spriteBatch.Draw(texture.Value, drawPos, texture.Frame(sizeOffsetY: (int)((float)(1f - quoteant) * -texture.Height())), color, MathHelper.Pi, texture.Size() / 2, Main.inventoryScale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(texture.Value, position, texture.Frame(sizeOffsetY: (int)((float)(1f - quoteant) * -texture.Height())), color, MathHelper.Pi, texture.Size() / 2, Main.inventoryScale, SpriteEffects.None, 0f);
 		}
 	}
 }

@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Projectiles.Magic;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,14 +8,7 @@ namespace SpiritMod.Items.Sets.BriarChestLoot
 {
 	public class ReachChestMagic : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Leafstrike Staff");
-			// Tooltip.SetDefault("Summons a sharp leaf that can be controlled with the cursor");
-			Item.staff[Item.type] = true;
-		}
-
-		protected override bool CloneNewInstances => true;
+		public override void SetStaticDefaults() => Item.staff[Item.type] = true;
 
 		public override void SetDefaults()
 		{

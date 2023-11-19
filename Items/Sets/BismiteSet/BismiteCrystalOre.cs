@@ -14,12 +14,13 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Main.tileSolid[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileBrick[Type] = true;
+			Main.tileBlendAll[Type] = true;
 
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(30, 100, 25), name);
+			RegisterItemDrop(ModContent.ItemType<BismiteCrystal>());
 			HitSound = SoundID.Tink;
 			DustType = DustID.Plantera_Green;
-			Main.tileBlendAll[Type] = true;
 		}
 	}
 }
