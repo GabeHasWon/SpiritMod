@@ -10,12 +10,6 @@ namespace SpiritMod.Items.Sets.LaunchersMisc.Freeman
 {
 	public class KnocbackGun : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Freeman");
-			// Tooltip.SetDefault("Converts rockets fired into coiled rockets that can be controlled by the cursor\n'The right man in the wrong place can make all the difference in the world'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 23;

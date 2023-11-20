@@ -16,11 +16,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Pathfinder
 {
 	public class Pathfinder : SpiritNPC, IDrawAdditive
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pathfinder");
-			Main.npcFrameCount[NPC.type] = 7;
-		}
+		public override void SetStaticDefaults() => Main.npcFrameCount[NPC.type] = 7;
 
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
@@ -264,6 +260,8 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Pathfinder
 
 	public class PathfinderGNPC : GlobalNPC
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override bool InstancePerEntity => true;
 
 		//ints are used here instead of bools, as using bools that are reset to false in reseteffects or postai causes them to sometimes be set to false before the npc's ai or drawing is called, hence an extra tick is needed

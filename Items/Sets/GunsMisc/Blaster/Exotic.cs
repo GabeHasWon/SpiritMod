@@ -13,7 +13,6 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 {
@@ -40,11 +39,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			return myClone;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Exotic Blaster");
-			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, (int)StyleType.Count) { NotActuallyAnimating = true });
-		}
+		public override void SetStaticDefaults() => Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, (int)StyleType.Count) { NotActuallyAnimating = true });
 
 		public override void SetDefaults()
 		{
@@ -130,7 +125,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{
 			type = Item.shoot;
-
 			bool muzzleFlare = style == (int)StyleType.Swift || (style == (int)StyleType.Golden && player.altFunctionUse != 2);
 
 			if (style == (int)StyleType.Festive)
@@ -140,8 +134,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			}
 			if (style == (int)StyleType.Starplate)
 			{
-				if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateHologram>()] < 2)
-					for (int i = 0; i < 2; i++)
+				for (int i = 0; i < 2; i++)
+					if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateHologram>()] < 2)
 					{
 						Projectile proj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), position, Vector2.Zero, ModContent.ProjectileType<StarplateHologram>(), damage, knockback, player.whoAmI);
 						proj.frame = i;

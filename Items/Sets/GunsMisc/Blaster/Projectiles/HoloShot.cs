@@ -11,27 +11,21 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 {
 	public class HoloShot : ModProjectile, ITrailProjectile
 	{
-		private bool Secondary
-		{
-			get => (int)Projectile.ai[0] != 0;
-			set => Projectile.ai[0] = value ? 1 : 0;
-		}
+		private bool Secondary { get => Projectile.ai[0] == 1; set => Projectile.ai[0] = value ? 1 : 0; }
 
 		public void DoTrailCreation(TrailManager tManager)
 		{
 			GradientTrail trail = Secondary ? new GradientTrail(Color.LightBlue, Color.DarkBlue) : new GradientTrail(Color.Orange, Color.Red);
-			tManager.CreateTrail(Projectile, trail, new RoundCap(), new DefaultTrailPosition(), 8f, 300f, new DefaultShader());
+			tManager.CreateTrail(Projectile, trail, new RoundCap(), new DefaultTrailPosition(), 8f, 80f, new DefaultShader());
 		}
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Star Shot");
 		public override void SetDefaults()
 		{
+			Projectile.Size = new Vector2(6);
 			Projectile.friendly = true;
 			Projectile.hostile = false;
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.timeLeft = 80;
-			Projectile.height = 6;
-			Projectile.width = 6;
 			AIType = ProjectileID.Bullet;
 			Projectile.extraUpdates = 1;
 		}
@@ -41,7 +35,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles
 			Vector2 position = Projectile.Center + new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 10f, Main.rand.NextFloat(-1.0f, 1.0f) * 10f);
 			for (int i = 0; i < 2; i++)
 			{
-				int num = Dust.NewDust(position, 0, 0, Secondary ? DustID.Flare_Blue : DustID.Flare, 0, 0, 100, default, 0.7f);
+				int num = Dust.NewDust(position, 0, 0, Secondary ? DustID.Flare_Blue : DustID.Flare, 0, 0, 100, default, .7f);
 				Main.dust[num].velocity = Vector2.Zero;
 				Main.dust[num].noGravity = true;
 			}

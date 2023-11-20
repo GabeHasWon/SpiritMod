@@ -55,11 +55,8 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			return myClone;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cosmic Blaster");
-			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, (int)BuildType.Count) { NotActuallyAnimating = true });
-		}
+		public override void SetStaticDefaults() 
+			=> Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, (int)BuildType.Count) { NotActuallyAnimating = true });
 
 		public override void SetDefaults()
 		{
@@ -306,16 +303,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			}
 		}
 
-		public override float UseTimeMultiplier(Player player) => (auxillary == (int)AuxillaryType.Burst) ? 0.35f : base.UseSpeedMultiplier(player);
+		public override float UseTimeMultiplier(Player player) => (auxillary == (int)AuxillaryType.Burst) ? .35f : base.UseSpeedMultiplier(player);
 
 		public override float UseSpeedMultiplier(Player player)
 		{
 			float value = base.UseSpeedMultiplier(player);
 
 			if (build == (int)BuildType.Wave && auxillary != (int)AuxillaryType.Burst)
-				value = 0.5f;
+				value = .5f;
 			if (auxillary == (int)AuxillaryType.Frantic)
-				value += 0.6f;
+				value += .6f;
 
 			return value;
 		}

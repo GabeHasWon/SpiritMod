@@ -30,11 +30,13 @@ namespace SpiritMod.Tiles.Block
 					NPC npc = NPC.NewNPCDirect(new Terraria.DataStructures.EntitySource_TileBreak(i, j), (i * 16) + 8, (j * 16) + 8, ModContent.NPCType<AsteroidDebris>());
 					npc.velocity = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f, Main.rand.NextFloat(-1.0f, 1.0f) * 1.5f);
 				}
-				
-				int randomAmount = Main.rand.Next(3) + 1;
-				for (int e = 0; e < randomAmount; e++)
-					Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i, j).ToWorldCoordinates(),
-						new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 3f, Main.rand.NextFloat(-1.0f, 1.0f) * 3f), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
+				if (Main.netMode != NetmodeID.Server)
+				{
+					int randomAmount = Main.rand.Next(3) + 1;
+					for (int e = 0; e < randomAmount; e++)
+						Gore.NewGore(new Terraria.DataStructures.EntitySource_TileBreak(i, j), new Vector2(i, j).ToWorldCoordinates(),
+							new Vector2(Main.rand.NextFloat(-1.0f, 1.0f) * 3f, Main.rand.NextFloat(-1.0f, 1.0f) * 3f), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
+				}
 			}
 		}
 

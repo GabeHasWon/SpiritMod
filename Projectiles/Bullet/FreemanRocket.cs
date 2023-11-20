@@ -11,11 +11,7 @@ namespace SpiritMod.Projectiles.Bullet
 {
 	public class FreemanRocket : BaseRocketProj
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Coiled Rocket");
-			Main.projFrames[Projectile.type] = 4;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 4;
 
 		public override void SetDefaults()
 		{

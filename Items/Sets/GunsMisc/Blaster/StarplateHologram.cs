@@ -22,28 +22,19 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			set => Projectile.ai[0] = value;
 		}
 
-		private float AnimCounter
-		{
-			get => Projectile.ai[1];
-			set => Projectile.ai[1] = value;
-		}
+		private ref float AnimCounter => ref Projectile.ai[1];
 
 		private bool released;
 		private Vector2 direction;
 		private bool Hologram => Projectile.frame == 0;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Blaster");
-			Main.projFrames[Type] = 2;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Type] = 2;
 
 		public override void SetDefaults()
 		{
 			Projectile.hostile = false;
 			Projectile.DamageType = DamageClass.Ranged;
-			Projectile.width = 28;
-			Projectile.height = 28;
+			Projectile.width = Projectile.height = 28;
 			Projectile.aiStyle = -1;
 			Projectile.friendly = false;
 			Projectile.penetrate = 1;
@@ -78,10 +69,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			if (!released && Counter == (Hologram ? (player.itemAnimationMax / 2) : 0))
 			{
 				SetDirection(player);
-				AnimCounter = 0.5f;
+				AnimCounter = .5f;
 
 				Vector2 position = Projectile.Center + (direction * 26) - (Vector2.UnitY * 2);
-
 				Projectile.NewProjectile(Entity.GetSource_FromAI(), position, direction * 10f, ModContent.ProjectileType<HoloShot>(), Projectile.damage, Projectile.knockBack, player.whoAmI, Hologram ? 1f : 0f);
 
 				if (!Main.dedServ)
@@ -89,21 +79,19 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					if (Hologram)
 					{
 						ParticleHandler.SpawnParticle(new HoloFlash(position, 1, direction.ToRotation()));
-
 						for (int i = 0; i < 3; i++)
-							ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(0.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Blue, Main.rand.NextFloat(0.2f, 0.5f), 12));
+							ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Blue, Main.rand.NextFloat(.2f, .5f), 12));
 					}
 					else
 					{
 						ParticleHandler.SpawnParticle(new BlasterFlash(position, 1, direction.ToRotation()));
-
 						for (int i = 0; i < 3; i++)
-							ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(0.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(0.2f, 0.5f), 12));
+							ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(.2f, .5f), 12));
 					}
 				}
 
 				if (Main.netMode != NetmodeID.Server)
-					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.5f, MaxInstances = 3 }, Projectile.Center);
+					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = .5f, MaxInstances = 3 }, Projectile.Center);
 			}
 
 			if (Counter > 0)
@@ -112,7 +100,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				Counter = player.itemAnimationMax;
 
 			if (AnimCounter > 0)
-				AnimCounter -= 0.05f;
+				AnimCounter -= .05f;
 		}
 
 		private void SetDirection(Player player)

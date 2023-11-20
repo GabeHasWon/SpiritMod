@@ -22,7 +22,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		private AnglerStatueQuest()
         {
 			TaskBuilder branch1 = new TaskBuilder();
-			branch1.AddTask(new RetrievalTask(ItemID.RedSnapper, 3424, GetText("Appease")))
+			branch1.AddTask(new RetrievalTask(ItemID.RedSnapper, 3424, GetText("AppeaseLine")))
 			       .AddTask(new GiveNPCTask(NPCID.Angler, ItemID.RedSnapper, 3424, LocalizedText.Empty, GetText("GiveToAngler"), true, true));
 		
 			TaskBuilder branch2 = new TaskBuilder();

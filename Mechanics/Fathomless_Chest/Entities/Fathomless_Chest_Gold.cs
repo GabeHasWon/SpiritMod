@@ -48,7 +48,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{
-			if (NPC.life > 0)
+			if (NPC.life > 0 || Main.netMode == NetmodeID.Server)
 				return;
 
 			for (int g = 0; g < 5; g++)

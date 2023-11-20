@@ -329,7 +329,7 @@ public static class SpiritDetours
 		SpiritMod.Metaballs.DrawEnemyLayer(Main.spriteBatch);
 		SpiritMod.Metaballs.DrawNebulaLayer(Main.spriteBatch);
 
-		PathfinderGNPC.DrawBuffedOutlines(Main.spriteBatch);
+		//PathfinderGNPC.DrawBuffedOutlines(Main.spriteBatch);
 		orig(self, behindTiles);
 	}
 

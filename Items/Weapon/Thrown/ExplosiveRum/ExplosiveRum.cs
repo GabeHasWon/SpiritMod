@@ -56,16 +56,21 @@ namespace SpiritMod.Items.Weapon.Thrown.ExplosiveRum
 
 		public override void OnKill(int timeLeft)
 		{
-			SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/rumboom"), Projectile.Center);
-			SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
+			if (Main.netMode != NetmodeID.Server)
+			{
+				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/rumboom"), Projectile.Center);
+				SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 
-			for (int i = 1; i < 5; ++i)
-				Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("RumGore" + i).Type, 1f);
+				for (int i = 1; i < 5; ++i)
+					Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("RumGore" + i).Type, 1f);
+			}
+			if (Projectile.owner == Main.myPlayer)
+			{
+				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<RumExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 
-			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<RumExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-
-			Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center - new Vector2(0, 15), new Vector2(0.25f, 15), ModContent.ProjectileType<RumFire>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner, 1, 12).timeLeft = 60;
-			Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center - new Vector2(0, 15), new Vector2(-0.25f, 15), ModContent.ProjectileType<RumFire>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner, -1, 12).timeLeft = 60;
+				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center - new Vector2(0, 15), new Vector2(.25f, 15), ModContent.ProjectileType<RumFire>(), (int)(Projectile.damage * .75f), Projectile.knockBack, Projectile.owner, 1, 12).timeLeft = 60;
+				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center - new Vector2(0, 15), new Vector2(-.25f, 15), ModContent.ProjectileType<RumFire>(), (int)(Projectile.damage * .75f), Projectile.knockBack, Projectile.owner, -1, 12).timeLeft = 60;
+			}
 		}
 	}
 
