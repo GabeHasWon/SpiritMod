@@ -365,11 +365,11 @@ namespace SpiritMod.GlobalClasses.Items
 
 			GlyphType glyph = (GlyphType)data.GetInt("glyph");
 			if (glyph > GlyphType.None && glyph < GlyphType.Count)
+			{
 				Glyph = glyph;
-			else
-				Glyph = GlyphType.None;
-
-			AdjustStats(item);
+				AdjustStats(item);
+			}
+			else Glyph = GlyphType.None;
 		}
 
 		public override void NetSend(Item item, BinaryWriter writer)
@@ -384,11 +384,11 @@ namespace SpiritMod.GlobalClasses.Items
 
 			GlyphType glyph = (GlyphType)reader.ReadByte();
 			if (glyph > GlyphType.None && glyph < GlyphType.Count)
+			{
 				Glyph = glyph;
-			else
-				Glyph = GlyphType.None;
-
-			AdjustStats(item);
+				AdjustStats(item);
+			}
+			else Glyph = GlyphType.None;
 		}
 	}
 }

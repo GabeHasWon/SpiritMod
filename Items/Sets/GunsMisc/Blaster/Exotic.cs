@@ -245,10 +245,10 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			Item.shoot = style switch
 			{
-				0 => Item.shoot = ModContent.ProjectileType<Bauble>(),
-				1 => Item.shoot = ModContent.ProjectileType<GoldBullet>(),
-				2 => Item.shoot = ModContent.ProjectileType<SwiftShot>(),
-				_ => Item.shoot = ModContent.ProjectileType<HoloShot>()
+				0 => ModContent.ProjectileType<Bauble>(),
+				1 => ModContent.ProjectileType<GoldBullet>(),
+				2 => ModContent.ProjectileType<SwiftShot>(),
+				_ => ModContent.ProjectileType<EnergyBurst>()
 			};
 			Item.channel = style == (int)StyleType.Starplate;
 

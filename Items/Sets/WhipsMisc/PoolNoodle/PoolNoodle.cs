@@ -16,16 +16,14 @@ namespace SpiritMod.Items.Sets.WhipsMisc.PoolNoodle
 		private byte style;
 
 		public override void SetStaticDefaults()
-		{
-			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, numStyles) { NotActuallyAnimating = true });
-			// Tooltip.SetDefault("3 summon tag damage");
-		}
+			=> Main.RegisterItemAnimation(Type, new DrawAnimationVertical(2, numStyles) { NotActuallyAnimating = true });
 
 		public override void SetDefaults()
 		{
 			Item.DefaultToWhip(ModContent.ProjectileType<PoolNoodleProj>(), 8, 0, 4);
 			Item.width = Item.height = 38;
 			Item.rare = ItemRarityID.Blue;
+			Item.value = Item.sellPrice(silver: 24);
 			style = (byte)Main.rand.Next(numStyles);
 		}
 

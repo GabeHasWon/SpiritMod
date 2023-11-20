@@ -28,11 +28,7 @@ namespace SpiritMod.Projectiles.Summon
 
 		private Color JellyColor => IsPink ? new Color(248, 148, 255) : new Color(133, 177, 255);
 
-		public override void AbstractSetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Little Jellyfish");
-			Main.projFrames[Type] = 3;
-		}
+		public override void AbstractSetStaticDefaults() => Main.projFrames[Type] = 3;
 
 		public override void AbstractSetDefaults()
 		{

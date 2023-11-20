@@ -10,14 +10,9 @@ namespace SpiritMod.Items.Sets.CascadeSet
 {
 	public class JellyfishStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Jellyfish Staff");
-			// Tooltip.SetDefault("Summons a tiny jellyfish to fight for you!");
-            SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-        }
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
-        public override void SetDefaults()
+		public override void SetDefaults()
 		{
 			Item.width = 34;
 			Item.height = 34;
@@ -35,19 +30,9 @@ namespace SpiritMod.Items.Sets.CascadeSet
             Item.UseSound = SoundID.Item44;
         }
 
-		public override bool AltFunctionUse(Player player) => true;
-
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) => position = Main.MouseWorld;
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => player.altFunctionUse != 2;
-
-		public override bool? UseItem(Player player)
-		{
-			if (player.altFunctionUse == 2)
-				player.MinionNPCTargetAim(true);
-
-			return base.UseItem(player);
-		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
@@ -58,7 +43,6 @@ namespace SpiritMod.Items.Sets.CascadeSet
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			//recipe.AddIngredient(ModContent.ItemType<DeepCascadeShard>(), 6);
 			recipe.AddIngredient(ItemID.Coral, 5);
 			recipe.AddIngredient(ItemID.Glowstick, 5);
 			recipe.AddTile(TileID.Anvils);
