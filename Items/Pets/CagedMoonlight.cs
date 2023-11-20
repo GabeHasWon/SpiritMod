@@ -15,18 +15,11 @@ namespace SpiritMod.Items.Pets
 
 		public override void SetDefaults()
 		{
-			Item.damage = 0;
-			Item.useStyle = ItemUseStyleID.Swing;
-			Item.shoot = ModContent.ProjectileType<FaeriePet>();
-			Item.width = 16;
-			Item.height = 30;
-			Item.useAnimation = 20;
-			Item.useTime = 20;
+			Item.CloneDefaults(ItemID.Fish);
 			Item.rare = ItemRarityID.Orange;
-			Item.noMelee = true;
-			Item.UseSound = SoundID.Item93;
 			Item.value = Item.sellPrice(0, 3, 50, 0);
 			Item.buffType = ModContent.BuffType<FaeriePetBuff>();
+			Item.shoot = ModContent.ProjectileType<FaeriePet>();
 		}
 
 		public override void UseStyle(Player player, Rectangle heldItemFrame)
@@ -41,6 +34,6 @@ namespace SpiritMod.Items.Pets
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 
-		public override bool CanUseItem(Player player) => player.miscEquips[1].IsAir;
+		public override bool CanUseItem(Player player) => player.miscEquips[0].IsAir;
 	}
 }

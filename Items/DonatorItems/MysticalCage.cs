@@ -25,6 +25,6 @@ namespace SpiritMod.Items.DonatorItems
 				player.AddBuff(Item.buffType, 3600, true);
 		}
 
-		public override bool CanUseItem(Player player) => player.miscEquips[0].IsAir;
+		public override bool CanUseItem(Player player) => player.miscEquips[1].IsAir;
 	}
 }

@@ -21,7 +21,6 @@ namespace SpiritMod.Projectiles.DonatorItems
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Moonlit Faerie");
 			Main.projFrames[Type] = 6;
 			Main.projPet[Type] = true;
 			ProjectileID.Sets.CharacterPreviewAnimations[Type] = ProjectileID.Sets.SimpleLoop(0, Main.projFrames[Type], 6)

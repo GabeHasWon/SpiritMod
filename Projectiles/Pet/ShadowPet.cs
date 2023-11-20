@@ -17,7 +17,6 @@ namespace SpiritMod.Projectiles.Pet
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Shadow Pup");
 			Main.projFrames[Type] = 5;
 			Main.projPet[Type] = true;
 			ProjectileID.Sets.CharacterPreviewAnimations[Type] = ProjectileID.Sets.SimpleLoop(0, Main.projFrames[Type], 6)
@@ -114,40 +113,37 @@ namespace SpiritMod.Projectiles.Pet
 
 		private void PettingBehaviour()
 		{
-			if (State == STATE_IDLING)
+			if (State == STATE_IDLING && Projectile.getRect().Contains(Main.MouseWorld.ToPoint()))
 			{
-				if (Projectile.getRect().Contains(Main.MouseWorld.ToPoint()))
+				Player player = Main.LocalPlayer;
+				int pettingRange = 70;
+
+				if (player.Distance(Projectile.Center) < pettingRange) //Pet the dog
 				{
-					Player player = Main.LocalPlayer;
-					int pettingRange = 70;
-
-					if (player.Distance(Projectile.Center) < pettingRange) //Pet the dog
+					if (Main.mouseRight && Main.mouseRightRelease)
 					{
-						if (Main.mouseRight && Main.mouseRightRelease)
-						{
-							if (!IsBeingPet)
-							{
-								player.Center = new Vector2(Projectile.Center.X, Projectile.position.Y + Projectile.height) + new Vector2(Math.Sign(Projectile.DirectionTo(player.Center).X) * 34, -(player.height / 2));
-								player.direction = Math.Sign(player.DirectionTo(Projectile.Center).X);
-								player.velocity = Vector2.Zero;
-
-								if (Main.netMode != NetmodeID.SinglePlayer)
-									NetMessage.SendData(MessageID.SyncPlayer, number: player.whoAmI);
-							}
-
-							if (pettingPlayer == -1)
-								pettingPlayer = Main.myPlayer;
-							else
-								pettingPlayer = -1;
-
-							Projectile.netUpdate = true;
-						}
 						if (!IsBeingPet)
 						{
-							player.noThrow = 2;
-							player.cursorItemIconEnabled = true;
-							player.cursorItemIconID = ModContent.ItemType<ShadowCollar>();
+							player.Center = new Vector2(Projectile.Center.X, Projectile.position.Y + Projectile.height) + new Vector2(Math.Sign(Projectile.DirectionTo(player.Center).X) * 34, -(player.height / 2));
+							player.direction = Math.Sign(player.DirectionTo(Projectile.Center).X);
+							player.velocity = Vector2.Zero;
+
+							if (Main.netMode != NetmodeID.SinglePlayer)
+								NetMessage.SendData(MessageID.SyncPlayer, number: player.whoAmI);
 						}
+
+						if (pettingPlayer == -1)
+							pettingPlayer = Main.myPlayer;
+						else
+							pettingPlayer = -1;
+
+						Projectile.netUpdate = true;
+					}
+					if (!IsBeingPet)
+					{
+						player.noThrow = 2;
+						player.cursorItemIconEnabled = true;
+						player.cursorItemIconID = ModContent.ItemType<ShadowCollar>();
 					}
 				}
 			}
