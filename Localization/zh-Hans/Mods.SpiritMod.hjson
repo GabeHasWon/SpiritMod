@@ -33,7 +33,7 @@ OceanDepthsMusic: "[i:6076]  为海洋深处添加一首独特的曲目"
 HyperspaceMusic: "[i:6076]  为人造超时空领域添加两首独特的曲目"
 AshfallMusic: "[i:6076]  为地狱的落烬雨天气添加一首独特的曲目"
 VictoryNightMusic: "[i:6076]  为灯笼夜事件添加一首独特的曲目"
-// VictoryDayMusic: "[i:6076]  Adds a unique track for the Victory Day event"
+VictoryDayMusic: "[i:6076]  为胜利日事件添加一首独特的曲目"
 
 MiscUI: {
 	AutoSell: 点击以快速出售你的物品。
