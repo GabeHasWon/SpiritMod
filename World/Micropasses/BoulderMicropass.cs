@@ -42,8 +42,9 @@ namespace SpiritMod.World.Micropasses
 				int x = WorldGen.genRand.NextBool(2) ? WorldGen.genRand.Next(100, Main.maxTilesX  / 3) : WorldGen.genRand.Next((int)(Main.maxTilesX / 1.5f), Main.maxTilesX - 100);
 				int y = (int)(Main.worldSurface * 0.35f);
 				bool fail = false;
+				int[] types = WorldGen.remixWorldGen ? new int[2] { TileID.CorruptGrass, TileID.CrimsonGrass } : new int[1] { TileID.Grass };
 
-				while (!Main.tile[x, y].HasTile || Main.tile[x, y].TileType != TileID.Grass)
+				while (!Main.tile[x, y].HasTile || types.Contains(Main.tile[x, y].TileType))
 				{
 					y++;
 

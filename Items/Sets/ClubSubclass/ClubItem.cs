@@ -37,6 +37,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 			Defaults();
 		}
 
+		public override bool? CanAutoReuseItem(Player player) => false;
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

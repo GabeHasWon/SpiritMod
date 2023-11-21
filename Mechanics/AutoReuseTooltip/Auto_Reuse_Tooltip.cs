@@ -13,47 +13,50 @@ namespace SpiritMod.Mechanics.AutoReuseTooltip
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{
 			var config = ModContent.GetInstance<SpiritClientConfig>();
-			if (config.AutoReuse && item.ammo == 0 && !item.accessory)
+			if (config.AutoReuse && !Main.SettingsEnabled_AutoReuseAllItems && item.ammo == 0 && !item.accessory)
 			{
-				if ((item.autoReuse || item.channel) && item.IsRanged())
+				bool? hookCanAutoreuse = ItemLoader.CanAutoReuseItem(item, Main.LocalPlayer);
+				bool autoReuse = hookCanAutoreuse is null ? item.autoReuse || item.channel : hookCanAutoreuse.Value;
+
+				if (autoReuse && item.IsRanged())
 				{
 					TooltipLine line = new TooltipLine(Mod, "isAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/64FF64:✔]");
 					tooltips.Add(line);
 				}
-				else if (!item.autoReuse && item.IsRanged())
+				else if (!autoReuse && item.IsRanged())
 				{
 					TooltipLine line2 = new TooltipLine(Mod, "isntAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/FF505A:✘]");
 					tooltips.Add(line2);
 				}	
 
-				if ((item.autoReuse || item.channel) && item.IsMelee())
+				if (autoReuse && item.IsMelee())
 				{
 					TooltipLine line = new TooltipLine(Mod, "isAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autoswing") + " [c/64FF64:✔]");
 					tooltips.Add(line);
 				}
-				else if (!item.autoReuse && item.IsMelee())
+				else if (!autoReuse && item.IsMelee())
 				{
 					TooltipLine line2 = new TooltipLine(Mod, "isntAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autoswing") + " [c/FF505A:✘]");
 					tooltips.Add(line2);
 				}	
 
-				if ((item.autoReuse || item.channel) && item.IsMagic())
+				if (autoReuse && item.IsMagic())
 				{
 					TooltipLine line = new TooltipLine(Mod, "isAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/64FF64:✔]");
 					tooltips.Add(line);
 				}
-				else if (!item.autoReuse && item.IsMagic())
+				else if (!autoReuse && item.IsMagic())
 				{
 					TooltipLine line2 = new TooltipLine(Mod, "isntAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/FF505A:✘]");
 					tooltips.Add(line2);
 				}	
 
-				if ((item.autoReuse || item.channel) && item.IsSummon())
+				if (autoReuse && item.IsSummon())
 				{
 					TooltipLine line = new TooltipLine(Mod, "isAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/64FF64:✔]");
 					tooltips.Add(line);
 				}
-				else if (!item.autoReuse && item.IsSummon())
+				else if (!autoReuse && item.IsSummon())
 				{
 					TooltipLine line2 = new TooltipLine(Mod, "isntAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/FF505A:✘]");
 					tooltips.Add(line2);

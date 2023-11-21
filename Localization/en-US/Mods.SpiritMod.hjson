@@ -33,6 +33,7 @@ OceanDepthsMusic: "[i:6076]  Adds a unique track for the Ocean depths"
 HyperspaceMusic: "[i:6076]  Adds two unique tracks for the artificial Hyperspace biome"
 AshfallMusic: "[i:6076]  Adds a unique track for the Ashfall weather in the Underworld"
 VictoryNightMusic: "[i:6076]  Adds a unique track for the Lantern Night event"
+VictoryDayMusic: "[i:6076]  Adds a unique track for the Victory Day event"
 
 MiscUI: {
 	AutoSell: Click to quick-sell your items
