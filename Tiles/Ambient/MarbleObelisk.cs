@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using SpiritMod.Dusts;
 using static Terraria.ModLoader.ModContent;
+using SpiritMod.Items.Placeable.Furniture;
 
 namespace SpiritMod.Tiles.Ambient
 {
@@ -19,7 +20,10 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.Origin = new Point16(1, 2);
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 18 };
 			TileObjectData.addTile(Type);
+
 			AddMapEntry(new Color(75, 139, 166));
+			RegisterItemDrop(ItemType<MarbleObeliskItem>());
+
 			DustType = DustID.Stone;
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[] { TileID.LunarMonolith };

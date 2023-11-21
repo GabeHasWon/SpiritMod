@@ -26,6 +26,7 @@ namespace SpiritMod.Tiles.Furniture.Fountains
             TileObjectData.addTile(Type);
 
             AddMapEntry(new Color(75, 139, 166));
+			RegisterItemDrop(DropType);
 
             DustType = DustID.Stone;
             AnimationFrameHeight = 72;
