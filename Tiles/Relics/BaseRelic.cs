@@ -52,6 +52,7 @@ namespace SpiritMod.Tiles.Relics
 			// Register map name and color
 			// "MapObject.Relic" refers to the translation key for the vanilla "Relic" text
 			AddMapEntry(new Color(233, 207, 94), Language.GetText("MapObject.Relic"));
+			RegisterItemDrop(ModContent.ItemType<T>());
 		}
 
 		public override bool CreateDust(int i, int j, ref int type) => false;

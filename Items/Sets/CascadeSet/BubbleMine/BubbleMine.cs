@@ -51,7 +51,8 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-			for (float i = 0; i <= 6.28f; i+= Main.rand.NextFloat(.5f, 2))
+
+			for (float i = 0; i <= 6.28f; i += Main.rand.NextFloat(.5f, 2))
 				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, i.ToRotationVector2() * Main.rand.NextFloat(), ModContent.ProjectileType<BubbleMineBubble>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 
 			for (int i = 0; i < 8; i++)
@@ -67,27 +68,12 @@ namespace SpiritMod.Items.Sets.CascadeSet.BubbleMine
 				Projectile.Kill();
 
 			Lighting.AddLight((int)(Projectile.position.X / 16f), (int)(Projectile.position.Y / 16f), .196f, .871f, .965f);
-			//Projectile.localAI[0] += 1f;
-			if (Main.mouseRight && Main.myPlayer == Projectile.owner)
-				Projectile.ai[1] = 7201;
-
-			/*if (Projectile.localAI[0] >= 10f)
+			
+			if (Main.myPlayer == Projectile.owner && Main.mouseRight)
 			{
-				Projectile.localAI[0] = 0f;
-				int num416 = 0;
-				int num419 = Projectile.type;
-				for (int num420 = 0; num420 < 1000; num420++) {
-					if (Main.projectile[num420].active && Main.projectile[num420].owner == Projectile.owner && Main.projectile[num420].type == num419) {
-						num416++;
-					}
-
-					if (num416 > 5) {
-						Projectile.netUpdate = true;
-						Projectile.Kill();
-						return;
-					}
-				}
-			}*/
+				Projectile.ai[1] = 7201;
+				Projectile.netUpdate = true;
+			}
 		}
 	}
 
