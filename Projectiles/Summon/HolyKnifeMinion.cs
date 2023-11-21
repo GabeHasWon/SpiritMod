@@ -17,7 +17,6 @@ namespace SpiritMod.Projectiles.Summon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Spellsword");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
@@ -45,7 +44,7 @@ namespace SpiritMod.Projectiles.Summon
 		{
 			float scale = Projectile.scale;
 			Texture2D tex = ModContent.Request<Texture2D>("SpiritMod/Projectiles/Summon/HolyKnifeMinion_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			Color color = new Color(255, 255, 200) * 0.75f;
+			Color color = new Color(255, 255, 200) * .75f;
 
 			if (Projectile.ai[1] == 1)
 			{
@@ -53,13 +52,13 @@ namespace SpiritMod.Projectiles.Summon
 				{
 					color = new Color(255, 255, 200) * 0.75f * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
 
-					spriteBatch.Draw(tex, Projectile.oldPos[k] + Projectile.Size / 2 - Main.screenPosition, null, color, Projectile.rotation, tex.Size() / 2, scale, default, default);
-					spriteBatch.Draw(tex, Projectile.oldPos[k] + Projectile.Size / 2 - Main.screenPosition, null, color * .56f, Projectile.rotation, tex.Size() / 2, scale * 1.762f, default, default);
+					Main.EntitySpriteDraw(tex, Projectile.oldPos[k] + Projectile.Size / 2 - Main.screenPosition, null, color, Projectile.rotation, tex.Size() / 2, scale, default, default);
+					Main.EntitySpriteDraw(tex, Projectile.oldPos[k] + Projectile.Size / 2 - Main.screenPosition, null, color * .56f, Projectile.rotation, tex.Size() / 2, scale * 1.762f, default, default);
 				}
 			}
 
-			spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, tex.Size() / 2, scale * 1.5f, default, default);
-			spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, tex.Size() / 2, scale * 1.33f, default, default);
+			Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, tex.Size() / 2, scale * 1.5f, default, default);
+			Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, tex.Size() / 2, scale * 1.33f, default, default);
 		}
 
 		private const int Returning = 0;
@@ -129,10 +128,10 @@ namespace SpiritMod.Projectiles.Summon
 				{
 					Vector2 drawPos = Projectile.oldPos[k] + Projectile.Size/2 - Main.screenPosition;
 					Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-					Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color * .6f, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
+					Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color * .6f, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None);
 				}
 			}
-			Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None);
 
 			return false;
         }

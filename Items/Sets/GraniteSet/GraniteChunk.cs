@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Sets.GraniteSet
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Lighting.AddLight(Item.position, 0.08f, .4f, .28f);
+			Lighting.AddLight(Item.position, .08f, .4f, .28f);
 			GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 		}
 	}

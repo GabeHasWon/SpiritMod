@@ -11,19 +11,13 @@ namespace SpiritMod.Items.Sets.CascadeSet
 	{
 		private int subID = -1; //Controls the in-world sprite for this item
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Deep Cascade Shard");
-			// Tooltip.SetDefault("'Where magma meets seawater'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 10;
 			Item.height = 18;
 			Item.value = 400;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

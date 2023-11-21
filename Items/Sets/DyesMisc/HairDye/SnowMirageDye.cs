@@ -6,13 +6,11 @@ namespace SpiritMod.Items.Sets.DyesMisc.HairDye
 {
 	public class SnowMirageDye : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mirage Hair Dye");
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
 			Item.height = 26;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.buyPrice(gold: 7);
 			Item.rare = ItemRarityID.Orange;
 			Item.UseSound = SoundID.Item3;

@@ -26,7 +26,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 	{
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.StoneBlock, 1);
 			recipe.AddTile(ModContent.TileType<Furniture.ForagerTableTile>());
 			recipe.Register();
@@ -42,7 +42,7 @@ namespace SpiritMod.Tiles.Block.Ambient
 	{
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.DirtBlock, 1);
 			recipe.AddTile(ModContent.TileType<Furniture.ForagerTableTile>());
 			recipe.Register();

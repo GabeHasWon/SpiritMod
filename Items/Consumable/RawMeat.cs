@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -33,7 +32,6 @@ namespace SpiritMod.Items.Consumable
 			return false;
 		}
 
-		public override Color? GetAlpha(Color lightColor) => new Color(189, 191, 174, 100);
 		public override bool ItemSpace(Player player) => true;
 	}
 }

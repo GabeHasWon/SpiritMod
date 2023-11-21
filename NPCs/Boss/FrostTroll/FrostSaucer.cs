@@ -11,7 +11,6 @@ using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Placeable.Relics;
 using SpiritMod.Utilities;
-using SpiritMod.NPCs.Boss.Occultist;
 using System.Collections.Generic;
 using System;
 using Terraria.Localization;
@@ -26,7 +25,6 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Snow Monger");
 			NPCID.Sets.TrailCacheLength[NPC.type] = 5;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
 			Main.npcFrameCount[NPC.type] = 5;
@@ -312,7 +310,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 			entryType = BossChecklistDataHandler.EntryType.Miniboss;
 			progression = 7.35f;
 			name = nameof(FrostSaucer);
-			downedCondition = () => MyWorld.downedOccultist;
+			downedCondition = () => NPC.downedFrost;
 			identificationData = new BossChecklistDataHandler.BCIDData(
 				new List<int> { ModContent.NPCType<FrostSaucer>() },
 				null,

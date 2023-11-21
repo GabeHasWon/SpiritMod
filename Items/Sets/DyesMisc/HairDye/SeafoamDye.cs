@@ -7,13 +7,11 @@ namespace SpiritMod.Items.Sets.DyesMisc.HairDye
 	[Sacrifice(1)]
 	public class SeafoamDye : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Seafoam Hair Dye");
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;
 			Item.height = 26;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.buyPrice(gold: 4);
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item3;

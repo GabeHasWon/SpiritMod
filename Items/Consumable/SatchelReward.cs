@@ -8,18 +8,12 @@ namespace SpiritMod.Items.Consumable
 	[Sacrifice(1)]
 	public class SatchelReward : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Mysterious Satchel");
-			// Tooltip.SetDefault("'The Painter's been feeling inspired!'\nContains two random paintings");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 52;
 			Item.height = 32;
 			Item.rare = -11;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;
@@ -31,7 +25,7 @@ namespace SpiritMod.Items.Consumable
 
 		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			for (int i = 0; i < 2; ++i) //Ugly but I don't care
+			for (int i = 0; i < 2; ++i)
 			{
 				itemLoot.AddOneFromOptions(1, ModContent.ItemType<AdvPainting1>(), ModContent.ItemType<AdvPainting1>(), ModContent.ItemType<AdvPainting2>(),
 					ModContent.ItemType<AdvPainting3>(), ModContent.ItemType<AdvPainting4>(), ModContent.ItemType<AdvPainting5>(), ModContent.ItemType<AdvPainting6>(),

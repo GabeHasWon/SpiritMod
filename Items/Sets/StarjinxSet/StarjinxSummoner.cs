@@ -10,15 +10,9 @@ namespace SpiritMod.Items.Sets.StarjinxSet
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Starjinx Summoner");
-			// Tooltip.SetDefault("Placeholder! Summons the Starjinx event.");
-		}
-
 		public override void SetDefaults()
 		{
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.width = Item.height = 16;
 			Item.useTime = Item.useAnimation = 20;
 

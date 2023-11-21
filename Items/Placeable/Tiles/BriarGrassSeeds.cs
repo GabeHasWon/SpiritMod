@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Placeable.Tiles
 {
 	public class BriarGrassSeeds : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Briar Grass Seeds");
-			// Tooltip.SetDefault("Can be placed");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.autoReuse = true;
@@ -21,12 +15,11 @@ namespace SpiritMod.Items.Placeable.Tiles
 			Item.useAnimation = 15;
 			Item.rare = ItemRarityID.Blue;
 			Item.useTime = 15;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.placeStyle = 0;
 			Item.width = 22;
 			Item.height = 20;
 			Item.value = Item.buyPrice(0, 0, 5, 0);
-			// TODO: find a way to make briar seeds icon show up under mouse
 		}
 
 		public override bool? UseItem(Player player)
@@ -39,7 +32,6 @@ namespace SpiritMod.Items.Placeable.Tiles
 				WorldGen.PlaceTile(Player.tileTargetX, Player.tileTargetY, ModContent.TileType<BriarGrass>(), forced: true);
 				player.inventory[player.selectedItem].stack--;
 			}
-
 			return null;
 		}
 	}

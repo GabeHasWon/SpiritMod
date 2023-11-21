@@ -5738,7 +5738,7 @@ Heartstrike: {
 	DisplayName: Heartstrike
 	Tooltip:
 		'''
-		Successful hits grant charges, which can fired using right click
+		Successful hits grant charges, which can be fired using right click
 		Fired charges inflict 'Surging Anguish', slowly depleting enemy life
 		'''
 }
