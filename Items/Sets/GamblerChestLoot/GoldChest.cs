@@ -8,19 +8,13 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot
 {
 	public class GoldChest : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Gold Coffer");
-			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'May contain a fortune'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;
 			Item.value = Item.buyPrice(gold: 5);
 			Item.rare = ItemRarityID.Orange;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 		}
 

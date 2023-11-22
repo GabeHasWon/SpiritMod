@@ -18,12 +18,11 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
 			Item.shoot = ModContent.ProjectileType<Projectiles.Thrown.TargetBottle>();
-			Item.useAnimation = 25;
-			Item.useTime = 25;
+			Item.useTime = Item.useAnimation = 25;
 			Item.shootSpeed = 10.5f;
 			Item.damage = 0;
 			Item.knockBack = 1.5f;
-			Item.value = Terraria.Item.sellPrice(0, 0, 0, 20);
+			Item.value = Item.sellPrice(0, 0, 0, 20);
 			Item.crit = 8;
 			Item.rare = ItemRarityID.Blue;
 			Item.autoReuse = true;

@@ -17,7 +17,6 @@ namespace SpiritMod.Tiles
 {
 	public class SamuraiStatue : ModTile
 	{
-
 		public readonly int drawOffsetY = 2;
 
 		public override void SetStaticDefaults()
@@ -28,7 +27,10 @@ namespace SpiritMod.Tiles
 			TileObjectData.newTile.Origin = new Point16(1, 2);
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 18 };
 			TileObjectData.addTile(Type);
+
 			AddMapEntry(new Color(75, 139, 166));
+			RegisterItemDrop(ModContent.ItemType<SamuraiStatueItem>());
+
 			DustType = DustID.Stone;
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[] { TileID.LunarMonolith };

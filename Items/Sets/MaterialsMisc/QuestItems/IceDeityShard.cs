@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Terraria.ModLoader;
 using System;
 using Terraria;
-using Terraria.ID;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 
@@ -13,13 +12,11 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class IceDeityShard1 : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Relic");
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = -11;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = 800;
 		}
 
@@ -63,14 +60,13 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 
 	public class IceDeityShard2: IceDeityShard1
     {
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Fragment");
 		public override bool OnPickup(Player player) => !player.HasItem(ModContent.ItemType<IceDeityShard2>());
 	}
 
 	public class IceDeityShard3 : IceDeityShard1
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Hyperborean Artifact");
 		public override bool OnPickup(Player player) => !player.HasItem(ModContent.ItemType<IceDeityShard2>());
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

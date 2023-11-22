@@ -12,12 +12,6 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 	[ItemTag(ItemTags.Explosive)]
 	public class BismiteGrenade : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Bismite Grenade");
-			// Tooltip.SetDefault("Explodes into a cloud of poison\nPoison lasts for 10 seconds");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 45;
@@ -38,7 +32,7 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 			Item.shootSpeed = 7.5f;
 			Item.noUseGraphic = true;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void AddRecipes()
@@ -54,8 +48,6 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 	public class BismiteGrenadeProj : ModProjectile
 	{
 		public bool Exploded { get => Projectile.ai[0] != 0; set => Projectile.ai[0] = !value ? 0 : 1; }
-
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Grenade");
 
 		public override void SetDefaults()
 		{

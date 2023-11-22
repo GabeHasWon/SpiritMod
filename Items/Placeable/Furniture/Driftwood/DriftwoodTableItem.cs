@@ -1,6 +1,4 @@
-using SpiritMod.Items.Placeable.Tiles;
 using SpiritMod.Items.Sets.FloatingItems.Driftwood;
-using SpiritMod.Tiles.Furniture;
 using SpiritMod.Tiles.Furniture.Driftwood;
 using Terraria;
 using Terraria.ID;

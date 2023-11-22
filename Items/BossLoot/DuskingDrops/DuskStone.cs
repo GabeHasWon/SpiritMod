@@ -8,18 +8,12 @@ namespace SpiritMod.Items.BossLoot.DuskingDrops
 {
 	public class DuskStone : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Dusk Shard");
-			// Tooltip.SetDefault("'The stone sparkles with twilight energies'");
-			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/DuskStone_Glow");
-		}
-
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/BossLoot/DuskingDrops/DuskStone_Glow");
 
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Pink;
 		}
 

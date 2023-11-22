@@ -10,16 +10,10 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 	{
 		private int subID = -1; //Controls the in-world sprite for this item
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Iridescent Scale");
-			// Tooltip.SetDefault("'Glints beautifully under the water'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.value = 100;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Blue;
 			Item.width = 26;
 			Item.height = 28;

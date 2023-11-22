@@ -8,19 +8,13 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot
 {
 	public class SilverChest : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Silver Lockbox");
-			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'May contain a fortune'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;
 			Item.value = Item.buyPrice(silver: 50);
 			Item.rare = ItemRarityID.Green;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 		}
 

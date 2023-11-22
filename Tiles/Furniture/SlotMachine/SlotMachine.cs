@@ -19,7 +19,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			Item.width = 36;
 			Item.height = 34;
 			Item.value = Item.buyPrice(0, 50, 0, 0);
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 10;
 			Item.useAnimation = 15;

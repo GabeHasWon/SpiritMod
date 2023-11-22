@@ -23,7 +23,7 @@ namespace SpiritMod.Items.Sets.SpiritSet.SpiritArmor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			Language.GetTextValue("Mods.SpiritMod.SetBonuses.Spirit");
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Spirit");
 
 			if (player.statLife < 400)
 			{

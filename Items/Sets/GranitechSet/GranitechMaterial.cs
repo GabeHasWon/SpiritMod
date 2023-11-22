@@ -10,16 +10,10 @@ namespace SpiritMod.Items.Sets.GranitechSet
 	{
 		private int subID = -1; //Controls the in-world sprite for this item
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("G-TEK Components");
-			// Tooltip.SetDefault("'An impressive combination of magic and science'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.value = Item.sellPrice(silver: 20);
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Pink;
 		}
 

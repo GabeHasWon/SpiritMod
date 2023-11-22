@@ -12,11 +12,10 @@ namespace SpiritMod.NPCs.ChestZombie
 		{
 			Item.width = 40;
 			Item.height = 32;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.White;
 		}
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Chest");
 		public override void GrabRange(Player player, ref int grabRange) => grabRange *= 0;
 		public override bool ItemSpace(Player player) => true;
 

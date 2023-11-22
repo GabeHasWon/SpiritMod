@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Accessory
 	[AutoloadEquip(EquipType.Neck)]
 	public class SpellswordCrest : MinionAccessory
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Spellsword's Crest");
-			// Tooltip.SetDefault("Summons a holy sword to fight for you\nThis sword does not take up minion slots");
-		}
-
 		public override void SetDefaults()
 		{
             Item.damage = 32;
@@ -28,7 +22,7 @@ namespace SpiritMod.Items.Accessory
 
 		public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(1);
+            Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<RogueCrest>(), 1);
             recipe.AddIngredient(ItemID.CrystalShard, 8);
             recipe.AddIngredient(ItemID.SoulofLight, 15);

@@ -3,20 +3,17 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using SpiritMod.Items.Placeable.Furniture;
-using SpiritMod.Items.Sets.Vulture_Matriarch.Matriarch_Wings;
 
 namespace SpiritMod.Items.Sets.Vulture_Matriarch
 {
 	[Sacrifice(0)]
 	public class GoldenEgg : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Vulture Matriarch's Golden Egg");
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 42;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = -11;
 		}
 

@@ -24,7 +24,7 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GildedScarab
 			modRecipe.Register();
 
 			modRecipe = CreateRecipe();
-			modRecipe.AddIngredient(ItemID.GoldBar, 10);
+			modRecipe.AddIngredient(ItemID.GoldBar, 5);
 			modRecipe.AddIngredient(ModContent.ItemType<Chitin>(), 8);
 			modRecipe.AddTile(TileID.Anvils);
 			modRecipe.Register();

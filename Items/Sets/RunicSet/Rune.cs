@@ -9,14 +9,11 @@ namespace SpiritMod.Items.Sets.RunicSet
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Ancient Rune");
-			// Tooltip.SetDefault("'It's inscribed in some archaic language'");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 5));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
 			ItemID.Sets.ItemIconPulse[Item.type] = true;
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -24,7 +21,7 @@ namespace SpiritMod.Items.Sets.RunicSet
 			Item.height = 42;
 			Item.value = 100;
 			Item.rare = ItemRarityID.Pink;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 	}
 }

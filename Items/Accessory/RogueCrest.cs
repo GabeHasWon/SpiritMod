@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Accessory
 	[AutoloadEquip(EquipType.Neck)]
 	public class RogueCrest : MinionAccessory
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Rogue's Crest");
-			// Tooltip.SetDefault("Summons a rusted sword to fight for you\nThis sword does not take up minion slots");
-		}
-
 		public override void SetDefaults()
 		{
             Item.damage = 5;

@@ -8,19 +8,13 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot
 {
 	public class CopperChest : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Copper Chest");
-			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\n'May contain a fortune'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;
 			Item.value = Item.buyPrice(silver: 10);
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 30;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.autoReuse = true;
 		}
 

@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			position = Main.MouseWorld;
+			position = player.Center - new Vector2(0, 40);
 			Projectile.NewProjectile(source, position, Main.rand.NextVector2Circular(3, 3), type, damage, knockback, player.whoAmI);
 			return false;
 		}

@@ -11,8 +11,6 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Dreamstride Essence");
-			// Tooltip.SetDefault("'The stuff of nightmares'");
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
@@ -25,7 +23,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 			Item.height = 28;
 			Item.value = 100;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) => Lighting.AddLight(Item.position, 0.92f, .14f, .24f);

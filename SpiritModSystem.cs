@@ -310,7 +310,7 @@ namespace SpiritMod
 									position = new Vector2(388, 258);
 									break;
 								case QuestUtils.QuestInvLocation.FarLeft:
-									position = new Vector2(20, 258);
+									position = new Vector2(20, Main.GameModeInfo.IsJourneyMode ? 310 : 258);
 									break;
 							}
 

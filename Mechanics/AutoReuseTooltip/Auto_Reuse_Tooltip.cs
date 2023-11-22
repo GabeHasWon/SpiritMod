@@ -13,12 +13,12 @@ namespace SpiritMod.Mechanics.AutoReuseTooltip
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{
 			var config = ModContent.GetInstance<SpiritClientConfig>();
-			if (config.AutoReuse && !Main.SettingsEnabled_AutoReuseAllItems && item.ammo == 0 && !item.accessory)
+			if (config.AutoReuse && item.ammo == 0 && !item.accessory)
 			{
 				bool? hookCanAutoreuse = ItemLoader.CanAutoReuseItem(item, Main.LocalPlayer);
 				bool autoReuse = hookCanAutoreuse is null ? item.autoReuse || item.channel : hookCanAutoreuse.Value;
 
-				if (autoReuse && item.IsRanged())
+				if (autoReuse && item.IsRanged() && !Main.SettingsEnabled_AutoReuseAllItems)
 				{
 					TooltipLine line = new TooltipLine(Mod, "isAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/64FF64:✔]");
 					tooltips.Add(line);
@@ -29,7 +29,7 @@ namespace SpiritMod.Mechanics.AutoReuseTooltip
 					tooltips.Add(line2);
 				}	
 
-				if (autoReuse && item.IsMelee())
+				if (autoReuse && item.IsMelee() && !Main.SettingsEnabled_AutoReuseAllItems)
 				{
 					TooltipLine line = new TooltipLine(Mod, "isAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autoswing") + " [c/64FF64:✔]");
 					tooltips.Add(line);
@@ -40,7 +40,7 @@ namespace SpiritMod.Mechanics.AutoReuseTooltip
 					tooltips.Add(line2);
 				}	
 
-				if (autoReuse && item.IsMagic())
+				if (autoReuse && item.IsMagic() && !Main.SettingsEnabled_AutoReuseAllItems)
 				{
 					TooltipLine line = new TooltipLine(Mod, "isAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/64FF64:✔]");
 					tooltips.Add(line);
@@ -51,7 +51,7 @@ namespace SpiritMod.Mechanics.AutoReuseTooltip
 					tooltips.Add(line2);
 				}	
 
-				if (autoReuse && item.IsSummon())
+				if (autoReuse && item.IsSummon() && !Main.SettingsEnabled_AutoReuseAllItems)
 				{
 					TooltipLine line = new TooltipLine(Mod, "isAutoreused", Language.GetTextValue("Mods.SpiritMod.MiscUI.Autofire") + " [c/64FF64:✔]");
 					tooltips.Add(line);

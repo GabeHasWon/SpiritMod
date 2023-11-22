@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Sets.BriarDrops
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = 500;
 			Item.rare = ItemRarityID.Blue;
 			Item.alpha = 50;

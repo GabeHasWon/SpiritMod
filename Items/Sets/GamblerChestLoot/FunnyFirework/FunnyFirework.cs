@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 {
 	public class FunnyFirework : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Funny Firework");
-			// Tooltip.SetDefault("Does a funny");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 44;
@@ -30,7 +24,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.noMelee = true; 
 		}
 	}

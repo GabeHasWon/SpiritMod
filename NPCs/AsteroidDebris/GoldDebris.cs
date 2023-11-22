@@ -16,7 +16,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 		public override void SetStaticDefaults()
 		{
 			Main.npcFrameCount[NPC.type] = 5;
-			NPCHelper.ImmuneTo<FesteringWounds>(this, BuffID.OnFire, BuffID.OnFire3, BuffID.Poisoned, BuffID.Venom);
+			NPCID.Sets.ImmuneToAllBuffs[Type] = true;
 
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new() { Hide = true };
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);

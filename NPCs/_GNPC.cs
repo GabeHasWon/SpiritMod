@@ -150,7 +150,7 @@ namespace SpiritMod.NPCs
 		public override void PostAI(NPC npc)
 		{
 			if (BeingSlowed)
-				npc.position -= npc.velocity * (float)(1f - slowAmt);
+				npc.position -= npc.velocity * (float)(1f - slowAmt) * (npc.boss ? 0.25f : 1f);
 		}
 
 		public override void HitEffect(NPC npc, NPC.HitInfo hit)
