@@ -22,7 +22,7 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 			Item.rare = ItemRarityID.Green;
 			Item.damage = 16;
 			Item.knockBack = 5;
-			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;
 			Item.useTime = Item.useAnimation = 24;
 			Item.mana = 10;
 			Item.DamageType = DamageClass.Magic;

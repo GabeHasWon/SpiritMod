@@ -22,7 +22,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 			Item.useTime = 30;
 			Item.mana = 4;
 			Item.useAnimation = 30;
-			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;
 			Item.knockBack = 0;
 			Item.value = Item.sellPrice(0, 0, 5, 0);
 			Item.rare = ItemRarityID.Blue;

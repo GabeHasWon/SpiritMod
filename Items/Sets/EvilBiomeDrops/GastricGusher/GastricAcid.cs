@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -9,8 +8,6 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 {
 	public class GastricAcid : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Gastric Acid");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 30;
@@ -27,9 +24,6 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 
 		public override void AI()
 		{
-			//if (projectile.timeLeft < 12) //Useless when the projectile is invisible
-			//	projectile.alpha = (int)((1 - projectile.timeLeft / 12f) * 255f); 
-
 			if (Projectile.timeLeft < 10)
 				Projectile.velocity *= 0.95f;
 

@@ -37,22 +37,16 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 			Projectile.penetrate = 1;
 			Projectile.alpha = 100;
 			Projectile.timeLeft = 30;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 30;
 		}
 
-		private int Counter
-		{
-			get => (int)Projectile.ai[0];
-			set => Projectile.ai[0] = value;
-		}
+		public ref float Counter => ref Projectile.ai[0];
 		public const int CounterMax = 60;
 
-		private bool Released
-		{
-			get => Projectile.ai[1] == 1;
-			set => Projectile.ai[1] = value ? 1 : 0;
-		}
+		public bool Released { get => Projectile.ai[1] == 1; set => Projectile.ai[1] = value ? 1 : 0; }
 
-		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Projectile.Distance(targetHitbox.Center.ToVector2()) < (50 * (Projectile.scale + 0.4f)); //circular collision
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => null;
 		
 		public override void AI()
 		{
@@ -138,9 +132,16 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 
 		public override bool? CanDamage() => Released;
 
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+		{
+			//Allow the projectile to pass through negligible NPCs, like imp fireballs
+			if (target.lifeMax <= 1)
+				Projectile.penetrate++;
+		}
+
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			if (!(Counter < CounterMax || Projectile.timeLeft > 10))
+			if (Counter >= CounterMax)
 			{
 				modifiers.FinalDamage *= 2;
 				modifiers.Knockback.Base = 10;

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -14,15 +15,14 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
     {
 		public override void SetDefaults()
         {
-            Item.damage = 16;
+            Item.damage = 20;
             Item.noMelee = true;
 			Item.noUseGraphic = true;
 			Item.DamageType = DamageClass.Magic;
             Item.width = 36;
             Item.height = 40;
-            Item.useTime = 35;
-            Item.useAnimation = 35;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useTime = Item.useAnimation = 30;
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;
             Item.shoot = ModContent.ProjectileType<ScreamingSkull>();
             Item.shootSpeed = 18f;
             Item.knockBack = 3f;
@@ -35,7 +35,11 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
             Item.channel = true;
         }
 
-		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ScreamingSkull>()] < 4;
+		public override bool CanUseItem(Player player)
+		{
+			int skulls = Main.projectile.Where(x => x.active && x.type == Item.shoot && x.ai[1] == 0).Count();
+			return skulls < 4;
+		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
         {
@@ -100,6 +104,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 
 			if (Owner.channel)
 				Projectile.timeLeft = 2;
+			else
+				Owner.reuseDelay = Owner.itemTimeMax;
 		}
 
 		public override bool PreDraw(ref Color lightColor)

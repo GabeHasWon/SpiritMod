@@ -6,23 +6,16 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 {
 	public class GastricGusher : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Gastric Gusher");
-			// Tooltip.SetDefault("Consumes gel\nSprays a cone of harmful acid\nCharge to increase range and damage");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 10;
 			Item.width = 20;
 			Item.height = 46;
-			Item.useTime = 20;
-			Item.useAnimation = 20;
+			Item.useTime = Item.useAnimation = 20;
 			Item.knockBack = 1;
 			Item.crit = 8;
 			Item.shootSpeed = 0f;
-			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;
 			Item.useAmmo = AmmoID.Gel;
 			Item.rare = ItemRarityID.Blue;
 			Item.shoot = ModContent.ProjectileType<GastricGusherProjectile>();
@@ -36,6 +29,7 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.GastricGusher
 		}
 
 		public override bool CanConsumeAmmo(Item item, Player player) => player.ownedProjectileCounts[Item.shoot] > 0;
+
 		public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
 	}
 }
