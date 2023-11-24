@@ -702,24 +702,6 @@ namespace SpiritMod.NPCs
 			}
 		}
 
-		/*private int GlyphsHeldBy(NPC boss)
-		{
-			if (boss.type == NPCID.KingSlime || boss.type == ModContent.NPCType<Scarabeus>() || boss.type == NPCID.EyeofCthulhu)
-				return 2;
-			else if (boss.type == ModContent.NPCType<ReachBoss1>() || boss.type == NPCID.QueenBee || boss.type == NPCID.SkeletronHead || boss.type == ModContent.NPCType<AncientFlyer>() || boss.type == ModContent.NPCType<SteamRaiderHead>())
-				return 3;
-			else if (boss.type == NPCID.WallofFlesh)
-				return 5;
-			else if (boss.type == NPCID.TheDestroyer || boss.type == ModContent.NPCType<Infernon>() || boss.type == ModContent.NPCType<InfernoSkull>() || boss.type == NPCID.SkeletronPrime || boss.type == ModContent.NPCType<Dusking>())
-				return 4;
-			else if (boss.type == NPCID.Plantera || boss.type == NPCID.Golem || boss.type == NPCID.DukeFishron || boss.type == NPCID.CultistBoss || boss.type == ModContent.NPCType<Atlas>())
-				return 5;
-			else if (boss.type == NPCID.MoonLordCore)
-				return 8;
-
-			return 2;
-		}*/
-
 		public override void OnKill(NPC npc)
 		{
 			Player closest = Main.player[Player.FindClosest(npc.position, npc.width, npc.height)];

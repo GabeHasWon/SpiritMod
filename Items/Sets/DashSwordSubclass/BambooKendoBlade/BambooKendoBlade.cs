@@ -9,14 +9,13 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.DashSwordSubclass.BambooKendoBlade
 {
 	public class BambooKendoBlade : DashSwordItem
 	{
-		// public override void SetStaticDefaults() => Tooltip.SetDefault("Right click to dash forward");
-
 		public override void SetDefaults()
 		{
 			Item.damage = 7;
@@ -103,7 +102,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BambooKendoBlade
 
 		public override string Texture => "SpiritMod/Items/Sets/DashSwordSubclass/BambooKendoBlade/BambooKendoBlade";
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Kendo Blade");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BambooKendoBlade.DisplayName");
 
 		public override void SetDefaults()
 		{

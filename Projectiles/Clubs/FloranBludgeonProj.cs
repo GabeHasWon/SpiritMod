@@ -2,12 +2,15 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using static Terraria.ModLoader.ModContent;
 using SpiritMod.Dusts;
+using Terraria.Localization;
 
 namespace SpiritMod.Projectiles.Clubs
 {
 	class FloranBludgeonProj : ClubProj
 	{
 		public FloranBludgeonProj() : base(new Vector2(80, 84)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.FloranBludgeon.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

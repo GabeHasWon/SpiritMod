@@ -4,6 +4,7 @@ using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon.Dragon
@@ -15,9 +16,10 @@ namespace SpiritMod.Projectiles.Summon.Dragon
 		float distance = 8;
 		readonly int rotationalSpeed = 4;
 
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.DragonBodyOne.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Jade Dragon");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

@@ -13,8 +13,6 @@ namespace SpiritMod.NPCs.Putroma
 {
 	public class Teratoma : ModNPC
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Putroma");
-
 		public override void SetDefaults()
 		{
 			NPC.width = 34;
@@ -56,15 +54,14 @@ namespace SpiritMod.NPCs.Putroma
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.ScourgeOfTheCorruptor, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .34f);
 			}
 
-			if (Main.rand.NextBool(2)) {
+			if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(2)) {
 				SoundEngine.PlaySound(SoundID.NPCHit19, NPC.Center);
-				int tomaProj;
-				tomaProj = Main.rand.Next(new int[] { ModContent.ProjectileType<Teratoma1>(), ModContent.ProjectileType<Teratoma2>(), ModContent.ProjectileType<Teratoma3>() });
 				SoundEngine.PlaySound(SoundID.Item20, NPC.Center);
 				int damagenumber = Main.expertMode ? 9 : 12;
-				int p = Projectile.NewProjectile(NPC.GetSource_OnHit(NPC), NPC.Center.X, NPC.Center.Y, Main.rand.Next(-4, 4), Main.rand.Next(-4, 0), tomaProj, damagenumber, 1, Main.myPlayer, 0, 0);
-				Main.projectile[p].friendly = false;
-				Main.projectile[p].hostile = true;
+
+				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_OnHit(NPC), NPC.Center, new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 0)), ModContent.ProjectileType<TeratomaProj>(), damagenumber, 1, Main.myPlayer, 0, 0);
+				proj.frame = Main.rand.Next(Main.projFrames[proj.type]);
+				proj.netUpdate = true;
 			}
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
@@ -74,10 +71,7 @@ namespace SpiritMod.NPCs.Putroma
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight ? .2f : 0f;
-		}
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight ? .2f : 0f;
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

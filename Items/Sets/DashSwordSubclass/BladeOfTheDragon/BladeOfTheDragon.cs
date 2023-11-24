@@ -10,6 +10,7 @@ using SpiritMod.Utilities;
 using SpiritMod.Particles;
 using Terraria.DataStructures;
 using SpiritMod.Items.Sets.FlailsMisc.JadeDao;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 {
@@ -78,7 +79,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Blade of the Dragon");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BladeOfTheDragon.DisplayName");
 
 		public override void SetDefaults()
 		{
@@ -125,11 +126,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 	{
 		int frameX = 0;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Dragon Slash");
-			Main.projFrames[Projectile.type] = 3;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 3;
 
 		public override void SetDefaults()
 		{

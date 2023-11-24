@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
@@ -9,7 +10,7 @@ namespace SpiritMod.Mechanics.AutoSell
 	public class AutoSellUI : UIState
 	{
 		public static bool visible = false;
-		private AutoSellUIElement fullBrightUI = new AutoSellUIElement();
+		private readonly AutoSellUIElement fullBrightUI = new();
 
 		public override void OnInitialize()
 		{

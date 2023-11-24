@@ -6,18 +6,14 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.SlingHammerSubclass
 {
 	public class SlagHammer : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Slag Breaker");
-			// Tooltip.SetDefault("Hold down and release to throw the Hammer like a boomerang\nCan be wound up to deal increased damage");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -56,12 +52,14 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 	
 	public class SlagHammerProj : SlingHammerProj
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.SlagHammer.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Slag Breaker");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}
+
 		protected override int Width => 60;
 		protected override int Height => 60;
 		protected override int ChargeTime => 50;
@@ -112,9 +110,10 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 
 	public class SlagHammerProjReturning : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.SlagHammer.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Slag Breaker");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

@@ -11,10 +11,6 @@ UkeleleProjTwo.DisplayName: Ukelele
 UmbillicalEyeballProj.DisplayName: Umbillical Eyeball
 Unstable_Tesla_Coil_Projectile.DisplayName: Lightning Zap
 RipperSlugProj.DisplayName: Ripper Slug
-Warhead_Grenade.DisplayName: Warhead
-Warhead_Proximity.DisplayName: Warhead
-Warhead_Snowman.DisplayName: Warhead
-WarheadProj.DisplayName: Warhead
 ManajinxStar.DisplayName: Starlight Energy
 AtlasPetProjectile.DisplayName: Atlas Jr.
 AvianHookProjectile.DisplayName: ${ProjectileName.GemHookAmethyst}
@@ -68,9 +64,6 @@ BubbleMineBubble.DisplayName: Bubble
 BubbleMineProj.DisplayName: Bubble Mine
 Coral_Catcher_Hook.DisplayName: Bobber
 Reef_Wrath_Projectile_1.DisplayName: Coral Reef
-Reef_Wrath_Projectile_2.DisplayName: Coral Reef
-Reef_Wrath_Projectile_3.DisplayName: Coral Reef
-Reef_Wrath_Projectile_Alt.DisplayName: Coral Reef
 CoilHookProj.DisplayName: Coil Hook
 CryoSwordProj.DisplayName: Rimehowl
 IceWall.DisplayName: Cryo Pillar
@@ -83,18 +76,8 @@ ClatterMaceProj.DisplayName: Clatter Mace Proj
 JadeDaoProj.DisplayName: Jade Daos
 FloranReacherProj.DisplayName: Bobber
 FrostbiteProj.DisplayName: Blizzard
-ChampagneCork.DisplayName: Champagne
-ChampagneLiquid.DisplayName: Champagne
-ChampagneProj.DisplayName: Champagne
-FunnyFireworkProj.DisplayName: Funny Firework
 GoldChestTop.DisplayName: Gold Chest
 GranitechGunBullet.DisplayName: Granitech Bullet
-GranitechGunProjectile.DisplayName: Vector .109
-GranitechStaffProjectile.DisplayName: Granitech Staff
-GranitechSaber_Hologram.DisplayName: Technobrand
-GranitechSaberProjectile.DisplayName: Technobrand
-GtechGrenadeExplode.DisplayName: Gtech Grenade
-GtechGrenadeProj.DisplayName: G-TEK Grenade
 EnergyShockwave.DisplayName: Energy Stomp
 EnergyStomp.DisplayName: Energy Stomp
 EnergyStomp_Explosion.DisplayName: Energy Stomp
@@ -143,19 +126,9 @@ ArtemisHuntArrow.DisplayName: Celestial Arrow
 ArtemisHuntProj.DisplayName: Artemis Hunt
 ArtemisHuntVolley.DisplayName: Celestial Arrow
 BetrayersChainsProj.DisplayName: Blades of Chaos
-MarkOfZeusProj.DisplayName: Mark of Zeus
-MarkOfZeusProj2.DisplayName: Mark Of Zeus
-MarkOfZeusProj3.DisplayName: Mark of Zeus
 ThyrsusProj.DisplayName: Thyrsus
 ThyrsusProjTwo.DisplayName: Vine
-DuelistActivation.DisplayName: Duelist's Legacy
-DuelistBlast.DisplayName: Duelist's Legacy
-DuelistBlastSpecial.DisplayName: Duelist's Legacy
-DuelistGun.DisplayName: Duelist's Legacy
-DuelistSlash.DisplayName: Duelist's Legacy
 Cannonbubble.DisplayName: Cannonbubble
-ReefSpearProjectile.DisplayName: Reef Trident
-ReefSpearThrown.DisplayName: Reef Trident
 SkullSentryEye.DisplayName: Maneater
 SkullSentryMucus.DisplayName: Skull Sentry Mucus
 SkullSentrySentry.DisplayName: Maneater
@@ -170,12 +143,6 @@ GraveyardSkull.DisplayName: Haunted Skull
 CrossCoffin.DisplayName: Old Coffin
 CrossSkelet.DisplayName: AngrySkeleton
 ScreamingSkull.DisplayName: Screaming Skull
-ScreamingTomeProj.DisplayName: Screaming Tome
-PossessedHammerProj.DisplayName: Possessed Hammer
-PossessedHammerProjReturning.DisplayName: Possessed Hammer
-SlagHammerProj.DisplayName: Slag Breaker
-SlagHammerProjReturning.DisplayName: Slag Breaker
-BambooHalberdProj.DisplayName: Bamboo Halberd
 AstralGreatswordHeld.DisplayName: Astral Spellblade
 Jinxprobe.DisplayName: Jinxprobe
 JinxprobeEnergy.DisplayName: Mini Star
@@ -198,8 +165,6 @@ SoulDaggerProj.DisplayName: Soul Dagger
 SoulDaggerSummon.DisplayName: Soul Dagger
 ToucanFeather.DisplayName: Toucan Feather
 ToucanMinion.DisplayName: Toucan
-BambooKendoBlade_Held.DisplayName: Bamboo Kendo Blade
-BladeOfTheDragonProj.DisplayName: Blade of the Dragon
 DragonSlash.DisplayName: Dragon Slash
 CurseBreak.DisplayName: Curse Break
 CurseBreakerCurse.DisplayName: Curse
@@ -224,7 +189,6 @@ JadeStaffProj.DisplayName: Staff of the Jade Dragon
 StarShockwave.DisplayName: Shockwave
 WyvernStaffBody.DisplayName: Wyvern
 WyvernStaffHead.DisplayName: Wyvern
-AnimeSwordProj.DisplayName: Anime Sword Proj
 Punching_Bag_Projectile.DisplayName: Zombie's Punch
 CryoExplosion.DisplayName: Cryolite Bomb
 CryoKnifeProj.DisplayName: Cryolite Bomb
@@ -340,12 +304,7 @@ GraniteSentryBolt.DisplayName: Laser Bolt
 HauntedPaperPlane.DisplayName: Paper Plane
 HauntedSkull.DisplayName: Haunted Skull
 HemophoraProj.DisplayName: Toxic Blood Clump
-HydraExplosion.DisplayName: Hydra Spit
-HydraFireGlob.DisplayName: Hydra Spit
-HydraPoisonGlob.DisplayName: Hydra Spit
 HydraVenomGlob.DisplayName: Hydra Spit
-Earth_Slam_Falling.DisplayName: Earth Slam
-Earth_Slam_Invisible.DisplayName: Earth Slam
 Earth_Slam_Projectile.DisplayName: Earth Slam
 CorruptVomitProj.DisplayName: Corrupt Vomit
 CoilRocket.DisplayName: Coiled Rocket
@@ -355,9 +314,7 @@ MeteorShardHostile1.DisplayName: Meteor Shard
 MeteorShardHostile2.DisplayName: Meteor Shard
 PirateLobberBarrel.DisplayName: Pirate Barrel
 ToxicFlaskHostile.DisplayName: Plague Vial
-Teratoma1.DisplayName: Cancerous Chunk
-Teratoma2.DisplayName: Cancerous Chunk
-Teratoma3.DisplayName: Cancerous Chunk
+TeratomaProj.DisplayName: Cancerous Chunk
 LittleBouncingSpore.DisplayName: Thorn Ball
 ThornKnife.DisplayName: Thorn Knife
 ScreechOwlNote.DisplayName: Cacophonous Note
@@ -397,10 +354,7 @@ RyTentacle.DisplayName: Tentacle Spike
 ShamanBolt.DisplayName: Healing Bolt
 StrayGlider.DisplayName: Stray Glider
 TentacleSquid.DisplayName: R'ylheian
-Letter_1.DisplayName: Forbidden Letter
-Letter_2.DisplayName: Forbidden Letter
-Letter_3.DisplayName: Forbidden Letter
-Letter_4.DisplayName: Forbidden Letter
+Letter.DisplayName: Forbidden Letter
 Undead_Warlock_Crystal.DisplayName: Necromancer's Magic Crystal
 ValkyrieSpearHostile.DisplayName: Valkyrie Spear
 Sharp_Feather.DisplayName: Crownoak Javelin
@@ -460,23 +414,10 @@ TerraBullet.DisplayName: Terra Bullet
 TerraBullet1.DisplayName: Energy Bolt
 VileBullet.DisplayName: Vile Bullet
 WitherBlast.DisplayName: Wither Blast
-BassSlapperProj.DisplayName: Bass Slapper
-BlasphemerProj.DisplayName: Blasphemer
-BoneClubProj.DisplayName: Bone Club
-BruteHammerProj.DisplayName: Brute Hammer
-ClubSandwichProj.DisplayName: Club Sandwich
-EnergizedAxeProj.DisplayName: Unstable Adze
 EnergizedShockwave.DisplayName: Energy Shockwave
-FloranBludgeonProj.DisplayName: Floran Bludgeon
 FloranShockwave.DisplayName: Shockwave
-GoldClubProj.DisplayName: Golden Greathammer
-MacuahuitlProj.DisplayName: Macuahuitl
 NautilusBubbleProj.DisplayName: Bubble
-NautilusClubProj.DisplayName: Nautilobber
-PlatinumClubProj.DisplayName: Platinum Clobberer
-SporeClubProj.DisplayName: Sporebreaker
 ToxinField.DisplayName: Toxin Field
-WoodClubProj.DisplayName: Wooden Club
 CoiledExplosion.DisplayName: Coiled Explosion
 CombustionBlaze.DisplayName: Combustion Blaze
 CornucopionProj.DisplayName: Cornucop-ion
@@ -701,11 +642,6 @@ CoilSentrySummon.DisplayName: Electric Turret
 CragboundMinion.DisplayName: Cragbound
 Crawlerock.DisplayName: Crawlerock
 DragonBodyOne.DisplayName: Jade Dragon
-DragonBodyTwo.DisplayName: Jade Dragon
-DragonHeadOne.DisplayName: Jade Dragon
-DragonHeadTwo.DisplayName: Jade Dragon
-DragonTailOne.DisplayName: Jade Dragon
-DragonTailTwo.DisplayName: Jade Dragon
 ElectricGunProjectile.DisplayName: Arcbolt
 GloomgusShroom.DisplayName: Gloomgus Mushroom
 HeartilleryMinion.DisplayName: Aching Heart
@@ -725,7 +661,6 @@ LunazoaOrbiter.DisplayName: Lunazoa
 MoonjellySummon.DisplayName: Moonlight Preserver
 RogueKnifeMinion.DisplayName: Rusted Sword
 SacrificialDaggerProj.DisplayName: Sacrificial Dagger
-SacrificialDaggerProjectile.DisplayName: Sacrificial Dagger
 ShroomSummon.DisplayName: Spore
 SkeletalonMinion.DisplayName: Skeletal Harpy
 SnakeMinion.DisplayName: Flying Snake
@@ -780,7 +715,6 @@ TaoP.DisplayName: Taoyo
 Typhoon.DisplayName: Typhoon
 UnstableIcicleProj.DisplayName: Unstable Icicle
 SteamplateBowProj.DisplayName: Steamplate Bow Proj
-BambooKendoBladeProj.DisplayName: Bamboo Kendo Blade Proj
 LadyLuckFlash.DisplayName: Lady Luck Flash
 BloodyCyst.DisplayName: Bloody Cyst
 CursedPhantom.DisplayName: Cursed Phantom
@@ -789,4 +723,4 @@ PhaseShield.DisplayName: Phase Shield
 RadiantEnergy.DisplayName: Radiant Energy
 VoidRift.DisplayName: Void Rift
 ZephyrWave.DisplayName: Zephyr Wave
-HowlingScepterProj.DisplayName: ""
+SacrificialDaggerProjectile.DisplayName: Sacrificial Dagger Projectile

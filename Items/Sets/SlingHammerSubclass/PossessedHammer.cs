@@ -5,17 +5,12 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.SlingHammerSubclass
 {
 	public class PossessedHammer : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Possessed Hammer");
-			// Tooltip.SetDefault("Throws a returning, vengeful hammer that will seek out enemies to hit additional times");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = 100;
@@ -42,12 +37,14 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 
 	public class PossessedHammerProj : SlingHammerProj
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.PossessedHammer.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Possessed Hammer");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}
+
 		protected override int Height => 46;
 		protected override int Width => 50;
 		protected override int ChargeTime => 40;
@@ -67,9 +64,10 @@ namespace SpiritMod.Items.Sets.SlingHammerSubclass
 
 	public class PossessedHammerProjReturning : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.PossessedHammer.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Possessed Hammer");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

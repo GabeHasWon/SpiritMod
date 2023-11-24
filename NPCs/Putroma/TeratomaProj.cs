@@ -6,18 +6,14 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.Putroma
 {
-	public class Teratoma1 : ModProjectile
+	public class TeratomaProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cancerous Chunk");
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Type] = 3;
 
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.WoodenArrowHostile);
-			Projectile.width = 10;
-			Projectile.height = 10;
+			Projectile.Size = new Vector2(10);
 			Projectile.friendly = false;
 			Projectile.hostile = true;
 			Projectile.penetrate = 3;

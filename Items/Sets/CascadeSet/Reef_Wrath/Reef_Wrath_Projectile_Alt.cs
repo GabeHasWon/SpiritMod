@@ -2,13 +2,14 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 {
 	public class Reef_Wrath_Projectile_Alt : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Coral Reef");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.Reef_Wrath_Projectile_1.DisplayName");
 
 		public override void SetDefaults()
 		{

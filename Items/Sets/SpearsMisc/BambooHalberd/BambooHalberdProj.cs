@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.SpearsMisc.BambooHalberd
@@ -17,7 +18,7 @@ namespace SpiritMod.Items.Sets.SpearsMisc.BambooHalberd
 
 		private readonly int lungeLength = 60;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bamboo Halberd");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BambooHalberd.DisplayName");
 
 		public override void SetDefaults()
 		{

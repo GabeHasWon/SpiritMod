@@ -3,12 +3,15 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using SpiritMod.Dusts;
+using Terraria.Localization;
 
 namespace SpiritMod.Projectiles.Clubs
 {
 	class MacuahuitlProj : ClubProj
 	{
 		public MacuahuitlProj() : base(new Vector2(82)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Macuahuitl.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

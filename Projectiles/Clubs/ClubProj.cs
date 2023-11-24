@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Clubs
@@ -262,7 +263,6 @@ namespace SpiritMod.Projectiles.Clubs
 
 			Projectile.rotation = TrueRotation;
 			owner.itemAnimation = owner.itemTime = 2;
-
 			return true;
 		}
 	}

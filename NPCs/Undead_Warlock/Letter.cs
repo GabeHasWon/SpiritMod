@@ -1,25 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.Undead_Warlock
 {
-	public class Letter_1 : ModProjectile
+	public class Letter : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Forbidden Letter");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+			ProjectileID.Sets.TrailCacheLength[Type] = 30; 
+			ProjectileID.Sets.TrailingMode[Type] = 0;
+			Main.projFrames[Type] = 4;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 24;
@@ -32,6 +31,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			Projectile.alpha = 100;
 			Projectile.scale = 0.8f;
 		}
+
 		public override void OnHitPlayer(Player target, Player.HurtInfo info) 
 		{
 			if (Main.npc[(int)Projectile.ai[1]].life < Main.npc[(int)Projectile.ai[1]].lifeMax - 10)
@@ -41,12 +41,12 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			}
 			Projectile.Kill();
 		}
+
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			if (targetHitbox.Width > 8 && targetHitbox.Height > 8)
-			{
 				targetHitbox.Inflate(-targetHitbox.Width / 8, -targetHitbox.Height / 8);
-			}
+
 			return projHitbox.Intersects(targetHitbox);
 		}
 		
@@ -56,6 +56,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			height = 8;
 			return true;
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			if (Projectile.timeLeft < 260)
@@ -80,9 +81,8 @@ namespace SpiritMod.NPCs.Undead_Warlock
 				int num3 = num1 % 4;
 				for (int index = 10; index >= 0; --index)
 				{
-					Vector2 oldPo = Projectile.oldPos[index];
-					Microsoft.Xna.Framework.Color color2 = Microsoft.Xna.Framework.Color.Lerp(Color.LightGreen, Color.Lime, amount);
-					color2 = Microsoft.Xna.Framework.Color.Lerp(color2, Color.PaleGreen, (float) index / 4f);
+					Color color2 = Color.Lerp(Color.LightGreen, Color.Lime, amount);
+					color2 = Color.Lerp(color2, Color.PaleGreen, (float) index / 4f);
 					color2.A = (byte) (5.0 * (double) amount);
 					color2.R = (byte) ((int) color2.R * (10 - index) / 20);
 					color2.G = (byte) ((int) color2.G * (10 - index) / 20);
@@ -92,16 +92,21 @@ namespace SpiritMod.NPCs.Undead_Warlock
 					int frameY = (num3 - index) % 4;
 					if (frameY < 0)
 						frameY += 4;
-					Microsoft.Xna.Framework.Rectangle rectangle = texture2D.Frame(1, 4, 0, frameY);
+					Rectangle rectangle = texture2D.Frame(1, 4, 0, frameY);
 					Main.spriteBatch.Draw(texture2D, new Vector2((float) ((double) Projectile.oldPos[index].X - (double) Main.screenPosition.X + (double) (Projectile.width / 2) - (double) TextureAssets.Projectile[Projectile.type].Value.Width * (double) Projectile.scale / 2.0 + (double) vector2_3.X * (double) Projectile.scale) + addWidth, (float) ((double) Projectile.oldPos[index].Y - (double) Main.screenPosition.Y + (double) Projectile.height - (double) TextureAssets.Projectile[Projectile.type].Value.Height * (double) Projectile.scale / (double) 1 + 4.0 + (double) vector2_3.Y * (double) Projectile.scale) + addHeight), new Microsoft.Xna.Framework.Rectangle?(rectangle), color2, num2, origin, MathHelper.Lerp(0.05f, 1.2f, (float) ((10.0 - (double) index) / 30.0)), spriteEffects, 0.0f);
 				}
 			}
 			return true;
 		}
-		public override Color? GetAlpha(Color lightColor)
+
+		public override Color? GetAlpha(Color lightColor) => new Color(255, 255, 255, 100);
+
+		public override void OnSpawn(IEntitySource source)
 		{
-			return new Color(255, 255, 255, 100);
+			Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
+			Projectile.netUpdate = true;
 		}
+
 		public override void AI()
 		{
 			Player player = Main.LocalPlayer;
@@ -109,9 +114,8 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			++Projectile.ai[1];
 			bool flag2 = (double) Vector2.Distance(Projectile.Center, player.Center) > (double) 0f && (double) Projectile.Center.Y == (double) player.Center.Y;
 			if ((double) Projectile.ai[1] >= (double) 10f && flag2)
-			{
 				Projectile.ai[1] = 0.0f;
-			}
+
 			if (Projectile.timeLeft == 260)
 			{
 				SoundEngine.PlaySound(SoundID.Item9, Projectile.Center);
@@ -131,7 +135,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 		}
 		public override void OnKill(int timeLeft)
         {
-			for (int i = 0; i<4; i++)
+			for (int i = 0; i < 4; i++)
 			{
 				int index4 = Gore.NewGore(Projectile.GetSource_Death(), new Vector2(Projectile.position.X, Projectile.position.Y), new Vector2(), Main.rand.Next(61, 64), 1f);
 				Main.gore[index4].velocity *= 0.4f;
@@ -141,10 +145,10 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			SoundEngine.PlaySound(SoundID.NPCDeath3, Projectile.Center);
 	
 			Vector2 spinningpoint = new Vector2(0f, -3f).RotatedByRandom(3.14159274101257);
-			float num1 = (float) 14*Projectile.scale;
-			float num5 = (float) 10*Projectile.scale;
+			float num1 = (float) 14 * Projectile.scale;
+			float num5 = (float) 10 * Projectile.scale;
 			Vector2 vector2 = new Vector2(1.1f, 1f);
-			for (float num2 = 0.0f; (double) num2 < (double) num1; ++num2)
+			for (float num2 = 0; (double) num2 < (double) num1; ++num2)
 			{
 				int dustIndex = Dust.NewDust(Projectile.Center, 0, 0, DustID.ShadowbeamStaff, 0.0f, 0.0f, 0, new Color(), 1f);
 				Main.dust[dustIndex].position = Projectile.Center;

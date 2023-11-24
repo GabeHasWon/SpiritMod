@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Buffs;
 using SpiritMod.Utilities;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 {
@@ -51,6 +52,8 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 		private const int DESPAWN_TIME = 10; //How long the projectile takes to shrink before despawning
 
 		private bool DamageAura => Projectile.frame > 4;
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.GtechGrenade.DisplayName");
 
 		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 15;
 
@@ -224,13 +227,11 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 
 	public class GtechGrenadeExplode : ModProjectile
 	{
-		private bool damaging => Projectile.frame >= 2 && Projectile.frame < 4;
+		private bool Damaging => Projectile.frame >= 2 && Projectile.frame < 4;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Gtech Grenade");
-			Main.projFrames[Projectile.type] = 9;
-		}
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.GtechGrenade.DisplayName");
+
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 9;
 
 		public override void SetDefaults()
 		{
@@ -257,7 +258,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
-			if (!damaging)
+			if (!Damaging)
 				return false;
 			float collisionPoint = 0f;
 			for (float i = 0; i < 6.28f; i += 0.392f)

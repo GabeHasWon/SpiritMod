@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Localization;
 using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Projectiles.Clubs
@@ -7,6 +8,8 @@ namespace SpiritMod.Projectiles.Clubs
 	class PlatinumClubProj : ClubProj
 	{
 		public PlatinumClubProj() : base(new Vector2(84)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.PlatinumClub.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

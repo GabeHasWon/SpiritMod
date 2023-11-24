@@ -147,15 +147,16 @@ namespace SpiritMod.NPCs.Masticator
 
 					if (Main.rand.NextBool(16))
 					{
-						int tomaProj;
-						tomaProj = Main.rand.Next(new int[] { ModContent.ProjectileType<Teratoma1>(), ModContent.ProjectileType<Teratoma2>(), ModContent.ProjectileType<Teratoma3>() });
 						bool expertMode = Main.expertMode;
 						SoundEngine.PlaySound(SoundID.Item20, NPC.Center);
 						int damagenumber = expertMode ? 12 : 17;
+
 						if (Main.netMode != NetmodeID.MultiplayerClient)
 						{
-							int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y + 6, Main.rand.Next(-3, 3), Main.rand.NextFloat(1f, 3f), tomaProj, damagenumber, 1, Main.myPlayer, 0, 0);
-							Main.projectile[p].penetrate = 1;
+							Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 6), new Vector2(Main.rand.Next(-3, 3), Main.rand.NextFloat(1f, 3f)), ModContent.ProjectileType<TeratomaProj>(), damagenumber, 1, Main.myPlayer, 0, 0);
+							proj.penetrate = 1;
+							proj.frame = Main.rand.Next(Main.projFrames[proj.type]);
+							proj.netUpdate = true;
 						}
 					}
 				}

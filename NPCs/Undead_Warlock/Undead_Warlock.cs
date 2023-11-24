@@ -115,14 +115,13 @@ namespace SpiritMod.NPCs.Undead_Warlock
 					{
 						if (Main.netMode != NetmodeID.MultiplayerClient)
 						{
-							int[] types = new int[] { ModContent.ProjectileType<Letter_1>(), ModContent.ProjectileType<Letter_2>(), ModContent.ProjectileType<Letter_3>(), ModContent.ProjectileType<Letter_4>() };
-							int chosenProjectile = Main.rand.Next(types);
-
 							spawnedProjectiles++;
 							SoundEngine.PlaySound(SoundID.Item28, NPC.Center);
 
-							int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + 2, NPC.Center.Y - 88, 0f, 0f, chosenProjectile, 20, 3f, 0);
-							Main.projectile[p].ai[1] = NPC.whoAmI;
+							Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(2, -88), Vector2.Zero, ModContent.ProjectileType<Letter>(), 20, 3f, 0);
+							proj.ai[1] = NPC.whoAmI;
+							proj.frame = Main.rand.Next(Main.projFrames[proj.type]);
+							proj.netUpdate = true;
 						}
 
 						int chosenDust = Main.rand.NextBool(2) ? 173 : 157;

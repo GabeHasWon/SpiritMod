@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
@@ -55,6 +56,8 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 	public class HowlingScepterProj : ModProjectile
 	{
 		public Player Owner => Main.player[Projectile.owner];
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.HowlingScepter.DisplayName");
 
 		public override void SetStaticDefaults() => Main.projFrames[Type] = 4;
 

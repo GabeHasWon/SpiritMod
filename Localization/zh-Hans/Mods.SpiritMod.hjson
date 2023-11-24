@@ -305,6 +305,12 @@ BossChecklistIntegration: {
 	MysticMoon.EntryName: 苍蓝秘月
 }
 
+MapObject: {
+	// SpiritPylon: Spirit Pylon
+	// BriarPylon: Briar Pylon
+	// AsteroidPylon: Asteroid Pylon
+}
+
 Condition: {
 	InBriar: Mods.SpiritMod.Condition.InBriar
 	InAsteroids: Mods.SpiritMod.Condition.InAsteroids

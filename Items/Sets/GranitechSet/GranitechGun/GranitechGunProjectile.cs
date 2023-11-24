@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
@@ -16,7 +17,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 
 		const int ChargeUp = 16; //How long it takes to start up
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Vector .109");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.GranitechGun.DisplayName");
 
 		public override void SetDefaults()
 		{

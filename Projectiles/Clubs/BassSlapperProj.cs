@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Projectiles.Clubs
@@ -9,6 +10,8 @@ namespace SpiritMod.Projectiles.Clubs
 	class BassSlapperProj : ClubProj
 	{
 		public BassSlapperProj() : base(new Vector2(76, 84)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BassSlapper.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

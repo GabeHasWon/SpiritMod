@@ -8,10 +8,6 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 {
 	public class Earth_Slam_Projectile : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Earth Slam");
-		}
 		public override void SetDefaults()
 		{
 			Projectile.width = 60;

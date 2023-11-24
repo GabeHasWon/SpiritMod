@@ -4,13 +4,14 @@ using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 {
 	public class Reef_Wrath_Projectile_1 : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Coral Reef");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.Reef_Wrath_Projectile_1.DisplayName");
 
 		readonly int maxtime = 50;
 		public override void SetDefaults()

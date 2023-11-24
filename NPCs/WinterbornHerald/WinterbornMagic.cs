@@ -149,9 +149,11 @@ namespace SpiritMod.NPCs.WinterbornHerald
 							{
 								Vector2 direction = Vector2.Normalize(target.Center - (NPC.Center - new Vector2(0, 30))) * 4.9f;
 								int somedamage = expertMode ? 17 : 34;
+
 								NPC npc = NPC.NewNPCDirect(NPC.GetSource_FromAI(), NPC.Center - new Vector2(0, 30), ModContent.NPCType<IceBoltNPC>());
 								npc.damage = somedamage;
 								npc.velocity = direction;
+								npc.netUpdate = true;
 							}
 						}
 					}

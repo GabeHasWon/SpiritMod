@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using SpiritMod.Items.Sets.GunsMisc.LadyLuck;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 {
@@ -159,11 +160,10 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		}
 
 		public int SwingTime => MaxFrames * 2;
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Duelist's Legacy");
-			Main.projFrames[Projectile.type] = 1;//11, 11, 9, 19
-		}
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.DuelistLegacy.DisplayName");
+
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 1;//11, 11, 9, 19
 
 		public override void SetDefaults()
 		{
@@ -363,11 +363,10 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		private bool initialized = false;
 
 		private Player Player => Main.player[Projectile.owner];
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Duelist's Legacy");
-			Main.projFrames[Projectile.type] = 1;
-		}
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.DuelistLegacy.DisplayName");
+
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 1;
 
 		public override void SetDefaults()
 		{
@@ -433,15 +432,13 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 
 	internal class DuelistBlast : ModProjectile
 	{
-
 		protected virtual Color color => Color.White;
 
 		int direction = 0;
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Duelist's Legacy");
-			Main.projFrames[Projectile.type] = 6;
-		}
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.DuelistLegacy.DisplayName");
+
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 6;
 
 		public override void SetDefaults()
 		{
@@ -533,11 +530,11 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 	internal class DuelistBlastSpecial : DuelistBlast
 	{
 		protected override Color color => new Color(255, 255, 255, 120) * 0.8f;
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Duelist's Legacy");
-			Main.projFrames[Projectile.type] = 11;
-		}
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.DuelistLegacy.DisplayName");
+
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 11;
+
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
@@ -564,11 +561,9 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 
 	internal class DuelistActivation : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Duelist's Legacy");
-			Main.projFrames[Projectile.type] = 19;
-		}
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.DuelistLegacy.DisplayName");
+
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 19;
 
 		public override void SetDefaults()
 		{

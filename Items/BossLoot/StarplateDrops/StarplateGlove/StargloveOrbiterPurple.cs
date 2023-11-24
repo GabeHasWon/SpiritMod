@@ -12,10 +12,10 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
     {
         public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Starfall");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 14; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 2;

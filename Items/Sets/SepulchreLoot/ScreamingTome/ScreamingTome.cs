@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
@@ -55,6 +56,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 	public class ScreamingTomeProj : ModProjectile
 	{
 		public Player Owner => Main.player[Projectile.owner];
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.ScreamingTome.DisplayName");
 
 		public override void SetStaticDefaults() => Main.projFrames[Type] = 5;
 

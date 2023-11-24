@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
@@ -17,7 +18,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 		public int maxTimeLeft = 0;
 		public float maxRotation = 0;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Reef Trident");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.ReefSpear.DisplayName");
 
 		public override void SetDefaults()
 		{

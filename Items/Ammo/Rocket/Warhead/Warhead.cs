@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Particles;
 using SpiritMod.Mechanics.Trails;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Ammo.Rocket.Warhead
 {
@@ -46,6 +47,8 @@ namespace SpiritMod.Items.Ammo.Rocket.Warhead
 			this.CopyProj = CopyProj;
 			this.usesaitype = usesaitype;
 		}
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Warhead.DisplayName");
 
 		public override void SetStaticDefaults()
 		{

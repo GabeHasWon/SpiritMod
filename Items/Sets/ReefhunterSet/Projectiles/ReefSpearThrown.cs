@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
@@ -14,6 +15,8 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 
 		private bool hasTarget = false;
 		private Vector2 relativePoint = Vector2.Zero;
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.ReefSpear.DisplayName");
 
 		public override void SetStaticDefaults()
 		{

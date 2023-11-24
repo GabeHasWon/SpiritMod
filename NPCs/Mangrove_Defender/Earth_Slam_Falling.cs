@@ -1,12 +1,13 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.Mangrove_Defender
 {
 	public class Earth_Slam_Falling : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Earth Slam");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.Earth_Slam_Projectile.DisplayName");
 
 		public override void SetDefaults()
 		{
