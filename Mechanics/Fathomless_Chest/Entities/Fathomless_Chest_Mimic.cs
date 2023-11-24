@@ -1,22 +1,24 @@
 using Microsoft.Xna.Framework;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 {
 	public class Fathomless_Chest_Mimic : ModNPC
 	{
-		private int Counter
-		{
-			get => (int)NPC.ai[0];
-			set => NPC.ai[0] = value;
-		}
+		private readonly List<Item> stored = new();
+
+		public ref float Counter => ref NPC.ai[0];
 
 		private const int IDLE_TIME = 20;
 		private const int OPEN_TIME = 30;
+
+		public override LocalizedText DisplayName => Language.GetText("NPCName.Mimic");
 
 		public override void SetStaticDefaults()
 		{
@@ -38,7 +40,6 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			NPC.knockBackResist = 0f;
 			NPC.DeathSound = SoundID.DD2_SkeletonDeath;
 			NPC.HitSound = SoundID.DD2_WitherBeastHurt;
-
 			DrawOffsetY = -2;
 		}
 
@@ -90,47 +91,38 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			}
 		}
 
+		public override void OnKill()
+		{
+			foreach (Item item in stored)
+			{
+				int id = Item.NewItem(NPC.GetSource_Death(), NPC.getRect(), item);
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendData(MessageID.SyncItem, number: id);
+			}
+		}
+
 		private void RemoveCoins(Player player)
 		{
-			int num1 = 0;
-			for (int index = 0; index < 59; ++index)
+			float mult = Main.masterMode ? 1f : Main.expertMode ? .75f : .4f;
+
+			for (int i = 0; i < Main.InventorySlotsTotal; ++i)
 			{
-				if (player.inventory[index].type >= ItemID.CopperCoin && player.inventory[index].type <= ItemID.PlatinumCoin)
+				int stack = (int)(player.inventory[i].stack * mult);
+				if (player.inventory[i].IsACoin)
 				{
-					int num2 = player.inventory[index].stack / 5;
-					if (Main.expertMode)
-						num2 = (int)(player.inventory[index].stack * 0.25f);
+					Item clone = player.inventory[i].Clone();
+					clone.stack = stack;
 
-					int num3 = player.inventory[index].stack - num2;
-					player.inventory[index].stack -= num3;
-					if (player.inventory[index].type == ItemID.CopperCoin)
-						num1 += num3;
+					if ((player.inventory[i].stack -= stack) <= 0)
+						player.inventory[i].TurnToAir();
 
-					if (player.inventory[index].type == ItemID.SilverCoin)
-						num1 += num3 * 100;
-
-					if (player.inventory[index].type == ItemID.GoldCoin)
-						num1 += num3 * 10000;
-
-					if (player.inventory[index].type == ItemID.PlatinumCoin)
-						num1 += num3 * 1000000;
-
-					if (player.inventory[index].stack <= 0)
-						player.inventory[index] = new Item();
-
-					if (index == 58)
-						Main.mouseItem = player.inventory[index].Clone();
+					stored.Add(clone);
 				}
 			}
 
-			player.lostCoins = num1;
-			player.lostCoinString = Main.ValueToCoins(player.lostCoins);
-
-			if (player.lostCoins > 0)
-			{
+			if (stored.Any())
 				SoundEngine.PlaySound(SoundID.Coins, player.Center);
-				NPC.extraValue = (int)Math.Min(player.lostCoins, int.MaxValue * 0.8f);
-			}
 		}
 
 		public override void FindFrame(int frameHeight)

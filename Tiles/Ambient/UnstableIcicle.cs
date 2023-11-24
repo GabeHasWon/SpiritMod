@@ -40,11 +40,13 @@ namespace SpiritMod.Tiles.Ambient
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-			if (Main.rand.NextBool(35))
+			if (closer && Main.rand.NextBool(35) && Lighting.Brightness(i, j) > .15f)
 			{
-				Dust dust = Dust.NewDustDirect(new Vector2(i, j) * 16, 16, 16, DustID.TreasureSparkle, 0, 0, 100, default, .75f);
+				Dust dust = Dust.NewDustDirect(new Vector2(i, j) * 16, 16, 16, DustID.SilverCoin, 0, 0, 150, default, .1f);
+				dust.noGravity = true;
 				dust.velocity = Vector2.Zero;
 				dust.noLightEmittence = true;
+				dust.fadeIn = .8f;
 			}
 		}
 

@@ -12,10 +12,10 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Moon Zapper");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.penetrate = 1;
@@ -25,12 +25,10 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 			Projectile.timeLeft = 100;
             Projectile.hide = true;
 			Projectile.damage = 13;
-			//projectile.extraUpdates = 1;
 			Projectile.width = Projectile.height = 32;
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 
 		}
+
         float alphaCounter;
 		public override void AI()
         {
@@ -47,11 +45,10 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                 Main.projectile[p].friendly = true;
             }
 		}
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
-        public override void PostDraw(Color lightColor)
+
+        public override Color? GetAlpha(Color lightColor) => Color.White;
+
+		public override void PostDraw(Color lightColor)
         {
             float sineAdd = (float)Math.Sin(alphaCounter) + 3;
             Main.spriteBatch.Draw(Terraria.GameContent.TextureAssets.Extra[49].Value, (Projectile.Center - Main.screenPosition), null, new Color((int)(7.5f * sineAdd), (int)(16.5f * sineAdd), (int)(18f * sineAdd), 0), 0f, new Vector2(50, 50), 0.25f * (sineAdd + .6f), SpriteEffects.None, 0f);

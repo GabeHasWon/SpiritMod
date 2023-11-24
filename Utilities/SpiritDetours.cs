@@ -18,10 +18,8 @@ using System.Collections.Generic;
 using SpiritMod.Mechanics.Trails;
 using SpiritMod.Effects.SurfaceWaterModifications;
 using SpiritMod.Items.Sets.FloatingItems.MessageBottle;
-using MonoMod.RuntimeDetour.HookGen;
 using System.Reflection;
 using SpiritMod.NPCs.Town.Oracle;
-using SpiritMod.NPCs.StarjinxEvent.Enemies.Pathfinder;
 using SpiritMod.Mechanics.CollideableNPC;
 using SpiritMod.GlobalClasses.Players;
 using System.Linq;
@@ -98,7 +96,7 @@ public static class SpiritDetours
 		return index;
 	}
 
-	private static void DrawPrimRTs(Terraria.On_Main.orig_CheckMonoliths orig)
+	private static void DrawPrimRTs(On_Main.orig_CheckMonoliths orig)
 	{
 		if (Main.spriteBatch != null && SpiritMod.primitives != null)
 		{
@@ -111,7 +109,7 @@ public static class SpiritDetours
 		}
 	}
 
-	private static void Main_DrawPlayers_AfterProjectiles(Terraria.On_Main.orig_DrawPlayers_AfterProjectiles orig, Main self)
+	private static void Main_DrawPlayers_AfterProjectiles(On_Main.orig_DrawPlayers_AfterProjectiles orig, Main self)
 	{
 		orig(self);
 
@@ -152,19 +150,18 @@ public static class SpiritDetours
 			target.wet = false;
 	}
 
-	private static void Main_Update(Terraria.On_Main.orig_Update orig, Main self, GameTime gameTime)
+	private static void Main_Update(On_Main.orig_Update orig, Main self, GameTime gameTime)
 	{
 		if (Main.PlayerLoaded && BackgroundItemManager.Loaded && !Main.gamePaused) //Update all background items
 			BackgroundItemManager.Update();
 
 		SpiritMod.deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-		if (SpiritMod.Instance != null)
-			SpiritMod.Instance.CheckScreenSize();
+		SpiritMod.Instance?.CheckScreenSize();
 
 		orig(self, gameTime);
 	}
 
-	private static void Main_DrawBackgroundBlackFill(Terraria.On_Main.orig_DrawBackgroundBlackFill orig, Main self)
+	private static void Main_DrawBackgroundBlackFill(On_Main.orig_DrawBackgroundBlackFill orig, Main self)
 	{
 		orig(self);
 
@@ -172,7 +169,7 @@ public static class SpiritDetours
 			BackgroundItemManager.Draw(); //Draw all background items
 	}
 
-	private static void AdditiveCalls(Terraria.On_Main.orig_DrawDust orig, Main self)
+	private static void AdditiveCalls(On_Main.orig_DrawDust orig, Main self)
 	{
 		AdditiveCallManager.DrawAdditiveCalls(Main.spriteBatch);
 		orig(self);
@@ -181,7 +178,7 @@ public static class SpiritDetours
 	private const float ProfileNameScale = 1f; //Profile name scale - 1f because the higher is poorly resized
 	public static bool HoveringQuestButton = false;
 
-	private static void Main_DrawNPCChatButtons(Terraria.On_Main.orig_DrawNPCChatButtons orig, int superColor, Color chatColor, int numLines, string focusText, string focusText3) //Portrait drawing - Gabe
+	private static void Main_DrawNPCChatButtons(On_Main.orig_DrawNPCChatButtons orig, int superColor, Color chatColor, int numLines, string focusText, string focusText3) //Portrait drawing - Gabe
 	{
 		if (Main.LocalPlayer.talkNPC != -1)
 		{
@@ -293,7 +290,7 @@ public static class SpiritDetours
 
 	}
 
-	private static void Main_DrawCachedProjs(Terraria.On_Main.orig_DrawCachedProjs orig, Main self, List<int> projCache, bool startSpriteBatch)
+	private static void Main_DrawCachedProjs(On_Main.orig_DrawCachedProjs orig, Main self, List<int> projCache, bool startSpriteBatch)
 	{
 		if (!Main.dedServ && projCache == Main.instance.DrawCacheProjsBehindNPCs)
 			SpiritMod.TrailManager.DrawTrails(Main.spriteBatch, TrailLayer.UnderCachedProjsBehindNPC);
@@ -301,7 +298,7 @@ public static class SpiritDetours
 		orig(self, projCache, startSpriteBatch);
 	}
 
-	private static void Main_DrawProjectiles(Terraria.On_Main.orig_DrawProjectiles orig, Main self)
+	private static void Main_DrawProjectiles(On_Main.orig_DrawProjectiles orig, Main self)
 	{
 		if (!Main.dedServ)
 		{
@@ -315,7 +312,7 @@ public static class SpiritDetours
 			SpiritMod.TrailManager.DrawTrails(Main.spriteBatch, TrailLayer.AboveProjectile);
 	}
 
-	private static void Main_DrawNPCs(Terraria.On_Main.orig_DrawNPCs orig, Main self, bool behindTiles)
+	private static void Main_DrawNPCs(On_Main.orig_DrawNPCs orig, Main self, bool behindTiles)
 	{
 		if (!Main.dedServ)
 			SpiritMod.primitives.DrawTargetNPC(Main.spriteBatch);
@@ -333,7 +330,7 @@ public static class SpiritDetours
 		orig(self, behindTiles);
 	}
 
-	private static void Player_KeyDoubleTap(Terraria.On_Player.orig_KeyDoubleTap orig, Player self, int keyDir)
+	private static void Player_KeyDoubleTap(On_Player.orig_KeyDoubleTap orig, Player self, int keyDir)
 	{
 		orig(self, keyDir);
 
@@ -343,7 +340,7 @@ public static class SpiritDetours
 			self.GetModPlayer<DoubleTapPlayer>().DoubleTapDown();
 	}
 
-	private static void Player_ToggleInv(Terraria.On_Player.orig_ToggleInv orig, Player self)
+	private static void Player_ToggleInv(On_Player.orig_ToggleInv orig, Player self)
 	{
 		SpiritMod spirit = ModContent.GetInstance<SpiritMod>();
 
@@ -364,7 +361,7 @@ public static class SpiritDetours
             return orig(self, key);
         }
 
-	private static void DrawParticles(Terraria.On_Main.orig_DrawInterface orig, Main self, GameTime gameTime)
+	private static void DrawParticles(On_Main.orig_DrawInterface orig, Main self, GameTime gameTime)
 	{
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, default, default, RasterizerState.CullNone, default, Main.GameViewMatrix.ZoomMatrix);
 		ParticleHandler.DrawAllParticles(Main.spriteBatch);

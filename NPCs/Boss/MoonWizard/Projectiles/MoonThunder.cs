@@ -16,8 +16,6 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
 		float fadeOutNum = 1f;
 
-		//public override void SetStaticDefaults() => DisplayName.SetDefault("Lightning");
-
 		public override void SetDefaults()
         {
             Projectile.timeLeft = 4000;
