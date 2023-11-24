@@ -13,12 +13,14 @@ namespace SpiritMod.Items.Sets.StarjinxSet.QuasarGauntlet
 {
 	public class QuasarOrb : ModProjectile, IDrawAdditive
 	{
+		public override string Texture => "SpiritMod/Textures/GlowLarge";
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Quasar Orb");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.Size = Vector2.One * 24;

@@ -399,12 +399,12 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			{
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/BossSFX/MoonWizard_Laugh1"), NPC.Center);
 				SkyPos = (int)(player.position.X - 1000);
-				SkyPosY = (int)(player.position.Y - 500);
+				SkyPosY = ((int)(player.position.Y / 16) - 30) * 16;
 			}
 			if (attackCounter % 4 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				Vector2 strikePos = new Vector2(SkyPos, SkyPosY);
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), strikePos, new Vector2(0, 0), ModContent.ProjectileType<SkyMoonZapper>(), NPCUtils.ToActualDamage(20, 1.5f, 2f), 0, NPC.target);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), strikePos, Vector2.Zero, ModContent.ProjectileType<SkyMoonZapper>(), NPCUtils.ToActualDamage(20, 1.5f, 2f), 0, NPC.target);
 				SkyPos += 170;
 			}
 			if (attackCounter == 60)

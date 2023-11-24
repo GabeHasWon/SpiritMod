@@ -61,6 +61,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.Electrified, 180);
 
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => base.Colliding(projHitbox, targetHitbox);
+
 		private void MakeLightning()
         {
             Vector2 start = new Vector2(Projectile.Center.X, 0);
@@ -71,9 +73,9 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                 endTile.Y++;
                 tile = Main.tile[endTile.X, endTile.Y];
             }
-            while (tile == null || (Main.tileSolid[tile.TileType] && !Main.tile[endTile.X, endTile.Y].HasTile) || TileID.Sets.Platforms[tile.TileType]);
+            while (endTile.Y < (int)((Projectile.Center.Y / 16) - 30) || !WorldGen.SolidTile(Framing.GetTileSafely(endTile.X, endTile.Y)));
 
-            Vector2 end = endTile.ToVector2() * 16f + Vector2.UnitX * 8f;
+            Vector2 end = (endTile.ToVector2() * 16f) + Vector2.UnitX * 8f;
             Line line = new Line(start, end);
 
 			lines = new List<List<Line>> { new List<Line>() };
@@ -112,7 +114,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             }
         }
 
-        private static void JitterLine(int index, List<Line> lines)
+        private void JitterLine(int index, List<Line> lines)
         {
             Line line = lines[index];
             lines.RemoveAt(index);
@@ -125,7 +127,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                 midPoint = line.start + ((line.end - line.start) * 0.5f).RotatedBy(Main.rand.NextFloat(-MIN_MAX_ANGLE, MIN_MAX_ANGLE));
                 tile = midPoint.ToTileCoordinates();
                 fails++;
-            } while (fails < 20 && WorldGen.InWorld(tile.X, tile.Y) && Main.tile[tile.X, tile.Y] != null && Main.tile[tile.X, tile.Y].HasTile);
+            }
+			while (fails < 20 && WorldGen.InWorld(tile.X, tile.Y) && Main.tile[tile.X, tile.Y] != null && Main.tile[tile.X, tile.Y].HasTile);
 
             Line newLine1 = new Line(line.start, midPoint);
             Line newLine2 = new Line(midPoint, line.end);
@@ -145,7 +148,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             float rotation = delta.ToRotation();
 
             //draw main line
-            spriteBatch.Draw(texture, line.start - Main.screenPosition, new Rectangle(16, 0, 2, 30), new Color(138, 235, 255) *fadeOutNum, rotation, new Vector2(0, 15f), new Vector2(length * 0.5f, 1.55f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, line.start - Main.screenPosition, new Rectangle(16, 0, 2, 30), new Color(138, 235, 255) * fadeOutNum, rotation, new Vector2(0, 15f), new Vector2(length * 0.5f, 1.55f), SpriteEffects.None, 0f);
             //draw ends
             spriteBatch.Draw(texture, line.start - normalised * 16f - Main.screenPosition, new Rectangle(0, 0, 16, 30), new Color(138, 235, 255) * .5f * fadeOutNum, rotation, new Vector2(0, 15f), 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(texture, line.end - Main.screenPosition, new Rectangle(18, 0, 16, 30), Color.White * .85f * fadeOutNum, rotation, new Vector2(0, 15f), 1f, SpriteEffects.None, 0f);

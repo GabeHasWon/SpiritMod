@@ -19,6 +19,8 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 		public void DoTrailCreation(TrailManager trailManager)
 			=> trailManager.CreateTrail(Projectile, new StandardColorTrail(Color.Purple with { A = 0 } * .75f), new RoundCap(), new DefaultTrailPosition(), 50, 100, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_4", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, 0.05f, 1f, 1f));
 
+		public override string Texture => "SpiritMod/Textures/GlowLarge";
+
 		public override void SetStaticDefaults()
 		{
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
@@ -183,8 +185,8 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 				scale = new Vector2(Projectile.scale);
 
 			Vector2 drawCenter = Projectile.Center - screenPos;
-			Texture2D bloom2 = ModContent.Request<Texture2D>(Texture + "_Bloom1").Value;
-			Vector2 bloom2Scale = scale * .5f * (float)Math.Sin(Main.timeForVisualEffects / 25);
+			Texture2D bloom2 = Mod.Assets.Request<Texture2D>("Items/Weapon/Magic/ShadowbreakWand/OrbBloom1").Value;
+			Vector2 bloom2Scale = scale * (float)Math.Sin(Main.timeForVisualEffects / 25);
 			sB.Draw(bloom2, drawCenter, null, Color.DeepPink * Projectile.Opacity, Projectile.rotation, bloom2.Size() / 2, bloom2Scale, SpriteEffects.None, 0);
 
 			sB.End(); sB.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, default, default, RasterizerState.CullNone, default, Main.GameViewMatrix.ZoomMatrix);
@@ -228,8 +230,8 @@ namespace SpiritMod.Items.Weapon.Magic.ShadowbreakWand
 			Effect circleAA = ModContent.Request<Effect>("SpiritMod/Effects/CirclePrimitiveAA", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 			PrimitiveRenderer.DrawPrimitiveShapeBatched(circles, circleAA);
 
-			Texture2D bloom = ModContent.Request<Texture2D>(Texture + "_Bloom").Value;
-			sB.Draw(bloom, drawCenter, null, new Color(164, 56, 253) * Projectile.Opacity, Projectile.rotation, bloom.Size() / 2, scale * .7f, SpriteEffects.None, 0);
+			Texture2D bloom = Mod.Assets.Request<Texture2D>("Items/Weapon/Magic/ShadowbreakWand/OrbBloom").Value;
+			sB.Draw(bloom, drawCenter, null, new Color(164, 56, 253) * Projectile.Opacity, Projectile.rotation, bloom.Size() / 2, scale * 1.4f, SpriteEffects.None, 0);
 		}
 	}
 }
