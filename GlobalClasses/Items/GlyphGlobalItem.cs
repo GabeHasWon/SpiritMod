@@ -275,7 +275,9 @@ namespace SpiritMod.GlobalClasses.Items
 
 		public override bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
-			var modPlayer = Main.LocalPlayer.GetModPlayer<GlyphPlayer>();
+			if (!Main.LocalPlayer.TryGetModPlayer<GlyphPlayer>(out var modPlayer))
+				return true;
+
 			float fadeIn = (MathHelper.Max((float)Math.Sin(modPlayer.ChaosCounter * 3.14f), 0) - .5f) * 10f;
 
 			if (item.GetGlobalItem<GlyphGlobalItem>().randomGlyph)
