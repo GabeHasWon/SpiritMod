@@ -7,11 +7,6 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 	[Sacrifice(25)]
 	public class CryoliteBar : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Cryolite Bar");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;
@@ -26,6 +21,7 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 			Item.useAnimation = 15;
 			Item.useTime = 10;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

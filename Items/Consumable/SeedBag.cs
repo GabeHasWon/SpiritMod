@@ -7,20 +7,13 @@ namespace SpiritMod.Items.Consumable
 {
 	public class SeedBag : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Floral Seed Bag");
-			// Tooltip.SetDefault("Contains exotic grass seeds");
-		}
-
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Green;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.buyPrice(0, 0, 10, 0);
 			Item.useTime = Item.useAnimation = 20;
 			Item.useAnimation = 15;

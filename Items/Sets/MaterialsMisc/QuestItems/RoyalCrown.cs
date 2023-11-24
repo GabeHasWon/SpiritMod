@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Terraria.ModLoader;
 using System;
 using Terraria;
-using Terraria.ID;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 
@@ -13,13 +12,11 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class RoyalCrown : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Royal Crown");
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = -11;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override bool OnPickup(Player player) => !player.HasItem(ModContent.ItemType<RoyalCrown>());

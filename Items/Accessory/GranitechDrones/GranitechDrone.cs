@@ -41,7 +41,6 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Granitech Drone");
             Main.projPet[Projectile.type] = true;
             Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
@@ -177,7 +176,7 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
             Projectile.rotation = Projectile.velocity.ToRotation();
         }
 
-        private Vector2 GetAnchorPoint(Player player, Vector2 offset)
+        private static Vector2 GetAnchorPoint(Player player, Vector2 offset)
 		{
             Vector2 v = player.Center + new Vector2(0, offset.Y);
             v += new Vector2(offset.X, 0) * player.direction;
@@ -233,8 +232,14 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
 
             shootTimer = 30 + Main.rand.Next(-5, 6);
 
-            target.StrikeNPC(target.CalculateHitInfo(Projectile.damage, 0, false, 0f));
-            //owner.ApplyDamageToNPC(target, projectile.damage, 0.1f, projectile.spriteDirection, false);
+			if (Main.netMode != NetmodeID.MultiplayerClient)
+			{
+				NPC.HitInfo info = target.CalculateHitInfo(Projectile.damage, 0, false, 0f);
+				target.StrikeNPC(info);
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendStrikeNPC(target, info);
+			}
         }
 
 		public override bool MinionContactDamage() => true;
@@ -250,15 +255,15 @@ namespace SpiritMod.Items.Accessory.GranitechDrones
             else if (Projectile.ai[0] == 1f) // MINING
                 color = MiningColor;
 
-            Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, new Vector2(16, 25), Projectile.scale, Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
-			Main.spriteBatch.Draw(ModContent.Request<Texture2D>("SpiritMod/Items/Accessory/GranitechDrones/GranitechDroneModeGlowmask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, new Vector2(16, 25), Projectile.scale, Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, new Vector2(16, 25), Projectile.scale, Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally);
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>("SpiritMod/Items/Accessory/GranitechDrones/GranitechDroneModeGlowmask", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, new Vector2(16, 25), Projectile.scale, Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally);
             
             foreach (var t in laserData)
 			{
                 Vector2 delta = t.endCoords - Projectile.Center;
                 float length = delta.Length();
                 float rotation = delta.ToRotation();
-                Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 1, 1), new Color(t.color.R, t.color.G, t.color.B, 180) * 0.75f, rotation, new Vector2(0f, 1f), new Vector2(length, t.timeLeft), SpriteEffects.None, 0f);
+				Main.EntitySpriteDraw(TextureAssets.MagicPixel.Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 1, 1), new Color(t.color.R, t.color.G, t.color.B, 180) * 0.75f, rotation, new Vector2(0f, 1f), new Vector2(length, t.timeLeft), SpriteEffects.None);
             }
             return false;
 		}

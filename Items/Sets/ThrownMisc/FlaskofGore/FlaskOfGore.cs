@@ -21,7 +21,7 @@ namespace SpiritMod.Items.Sets.ThrownMisc.FlaskofGore
 			Item.useAnimation = 24;
 			Item.useTime = 24;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.shootSpeed = 11f;
 			Item.damage = 17;
 			Item.knockBack = 4.5f;

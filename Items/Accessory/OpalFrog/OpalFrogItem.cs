@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 			Item.value = 550;
 			Item.rare = ItemRarityID.LightRed;
 			Item.createTile = ModContent.TileType<OpalFrog_Tile>();
-			Item.maxStack = 999;
+			Item.maxStack = 1;
 			Item.autoReuse = true;
 			Item.consumable = true;
 			Item.useAnimation = 15;

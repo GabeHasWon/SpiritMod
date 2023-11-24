@@ -10,17 +10,10 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 {
 	public class Mystical_Dice : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Mystical Dice");
-			// Tooltip.SetDefault("Teleports you to a Fathomless Shrine");
-		}
-
 		public override void SetDefaults()
 		{
-			Item.width = 20;
-			Item.height = 20;
-			Item.maxStack = 999;
+			Item.width = Item.height = 20;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Orange;
 			Item.useAnimation = 45;
 			Item.useTime = 45;

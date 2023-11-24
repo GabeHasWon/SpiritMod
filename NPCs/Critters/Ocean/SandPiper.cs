@@ -235,7 +235,7 @@ public class SandPiperItem : ModItem
 	{
 		Item.width = Item.height = 20;
 		Item.rare = ItemRarityID.White;
-		Item.maxStack = 99;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.value = Item.sellPrice(0, 0, 5, 0);
 		Item.noUseGraphic = true;
 		Item.useStyle = ItemUseStyleID.Swing;

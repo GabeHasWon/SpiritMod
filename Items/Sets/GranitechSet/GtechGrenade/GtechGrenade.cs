@@ -13,12 +13,6 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 {
 	public class GtechGrenade : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("G-TEK Grenade");
-			// Tooltip.SetDefault("Slows and electrocutes enemies in its aura\nCan be destroyed by the player\nDestroying it causes an explosion");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 70;
@@ -38,7 +32,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 			Item.shoot = ModContent.ProjectileType<GtechGrenadeProj>();
 			Item.shootSpeed = 22;
 			Item.noUseGraphic = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.consumable = true;
 		}
 
@@ -58,11 +52,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GtechGrenade
 
 		private bool DamageAura => Projectile.frame > 4;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("G-TEK Grenade");
-			Main.projFrames[Projectile.type] = 15;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 15;
 
 		public override void SetDefaults()
 		{

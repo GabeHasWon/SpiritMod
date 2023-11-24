@@ -17,7 +17,7 @@ namespace SpiritMod.Items.Sets.FrigidSet
 			Item.height = 28;
 			Item.value = 100;
 			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override void AddRecipes()

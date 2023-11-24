@@ -10,12 +10,6 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 {
 	public class Champagne : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Champagne");
-			// Tooltip.SetDefault("Hold down and release to pop the cork");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = 100;
@@ -32,7 +26,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 			Item.rare = ItemRarityID.Blue;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.shoot = ModContent.ProjectileType<ChampagneProj>();
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 	}
 

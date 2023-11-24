@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -9,34 +8,36 @@ namespace SpiritMod.Projectiles.Thrown
 {
 	public class TargetCan : ModProjectile
 	{
-		private bool shot = false;
-
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Target Can");
+		public bool struck = false;
 
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Shuriken);
-			Projectile.width = 25;
+			Projectile.width = Projectile.height = 25;
 			Projectile.damage = 0;
-			Projectile.height = 25;
 			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.penetrate = 2;
 		}
 
 		public override void AI()
 		{
-			var list = Main.projectile.Where(x => x.Hitbox.Intersects(Projectile.Hitbox));
-			foreach (var proj in list) {
-				if (proj.IsRanged() && proj.active && !shot && proj.friendly && !proj.hostile && (proj.width <= 6 || proj.height <= 6)) {
+			if (struck)
+				return;
+
+			float collisionPoint = 0f;
+			Rectangle hitbox = Projectile.getRect();
+
+			foreach(Projectile proj in Main.projectile)
+				if (proj.active && proj.whoAmI != Projectile.whoAmI && proj.IsRanged() && proj.friendly && Collision.CheckAABBvLineCollision(hitbox.TopLeft(), hitbox.Size(), proj.Center, proj.Center + (proj.velocity * (proj.extraUpdates + 1)), 10, ref collisionPoint))
+				{
 					ImpactFX();
-					shot = true;
+					struck = true;
 					Projectile.damage = 110;
 					Projectile.velocity = proj.velocity * 2;
 					proj.active = false;
-					CombatText.NewText(new Rectangle((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height), new Color(255, 155, 0, 100), "Bullseye!");
-					Projectile.DamageType = DamageClass.Ranged;
-					Projectile.penetrate = 2;
+					CombatText.NewText(hitbox, new Color(255, 155, 0, 100), "Bullseye!");
+					break;
 				}
-			}
 		}
 
 		public override void OnKill(int timeLeft) => ImpactFX();
@@ -48,18 +49,5 @@ namespace SpiritMod.Projectiles.Thrown
 			
 			SoundEngine.PlaySound(SoundID.NPCHit4 with { PitchVariance = 0.5f }, Projectile.Center);
 		}
-
-		//public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-		//{
-		//    Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
-		//    for (int k = 0; k < projectile.oldPos.Length; k++)
-		//    {
-		//        Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-		//        Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
-		//        spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
-		//    }
-		//    return true;
-		//}
-
 	}
 }

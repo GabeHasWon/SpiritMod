@@ -18,8 +18,7 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
 			Item.shoot = ModContent.ProjectileType<Projectiles.Thrown.TargetCan>();
-			Item.useAnimation = 25;
-			Item.useTime = 25;
+			Item.useTime = Item.useAnimation = 25;
 			Item.shootSpeed = 8.5f;
 			Item.damage = 0;
 			Item.knockBack = 1.5f;

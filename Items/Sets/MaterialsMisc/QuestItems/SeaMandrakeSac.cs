@@ -11,13 +11,11 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class SeaMandrakeSac : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Luminous Sac");
-
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Quest;
-			Item.maxStack = 99;
+			Item.maxStack = Item.CommonMaxStack;
 		}
 
 		public override bool OnPickup(Player player) => !player.HasItem(ModContent.ItemType<SeaMandrakeSac>());

@@ -10,12 +10,6 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Throwing Regeneration Potion");
-			// Tooltip.SetDefault("'No brewery required!'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 45;
@@ -36,18 +30,8 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 			Item.shootSpeed = 7.5f;
 			Item.noUseGraphic = true;
 			Item.consumable = true;
-			Item.maxStack = 999;
+			Item.maxStack = Item.CommonMaxStack;
 		}
-
-		//public override void AddRecipes()
-		//{
-		//	var recipe = new ModRecipe(mod);
-		//	recipe.AddIngredient(ItemID.Grenade, 5);
-		//	recipe.AddIngredient(ItemID.HealingPotion, 1);
-		//	recipe.AddTile(TileID.Anvils);
-		//	recipe.SetResult(this, 5);
-		//	recipe.AddRecipe();
-		//}
 	}
 
 	public class HealingGrenadeProj : ModProjectile
