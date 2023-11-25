@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Thrown
@@ -35,7 +36,7 @@ namespace SpiritMod.Projectiles.Thrown
 					Projectile.damage = 110;
 					Projectile.velocity = proj.velocity * 2;
 					proj.active = false;
-					CombatText.NewText(hitbox, new Color(255, 155, 0, 100), "Bullseye!");
+					CombatText.NewText(hitbox, new Color(255, 155, 0, 100), Language.GetTextValue("Mods.SpiritMod.Misc.Bullseye"));
 					break;
 				}
 		}

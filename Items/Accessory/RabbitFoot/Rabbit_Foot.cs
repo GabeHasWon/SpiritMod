@@ -17,11 +17,5 @@ namespace SpiritMod.Items.Accessory.RabbitFoot
 		}
 
 		public override void UpdateEquip(Player player) => player.GetModPlayer<MyPlayer>().rabbitFoot = true;
-
-		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) 
-		{
-			var b = new TooltipLine(Mod, "SpiritMod:Rabbit_Foot", "'This must be Lucky!'");
-			tooltips.Insert(2, b);
-		}
 	}
 }

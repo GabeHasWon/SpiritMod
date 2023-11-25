@@ -11,6 +11,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -241,8 +242,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public void ApplyStats()
 		{
-			string[] nameSelection = new string[] { "Bulb", "Golden", "Swift", "Starplate" };
-
 			Item.shoot = style switch
 			{
 				0 => ModContent.ProjectileType<Bauble>(),
@@ -252,23 +251,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			};
 			Item.channel = style == (int)StyleType.Starplate;
 
-			Item.SetNameOverride(nameSelection[style] + " Blaster");
+			Item.SetNameOverride($"{Language.GetTextValue("Mods.SpiritMod.Items.Exotic.Name" + (style + 1))} " 
+				+ Language.GetTextValue("Mods.SpiritMod.Items.Exotic.DisplayName"));
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
-		{
-			string text = style switch
-			{
-				1 => "Struck enemies are marked for damage\nRight click to detonate all marked enemies\nAll marks instantly expire after missing a shot",
-				2 => "Fires a rapid volley of energy",
-				3 => "Creates a hologram to supply additional fire",
-				_ => "Launches bouncing glass baubles...ouch!"
-			};
-			if (text == string.Empty)
-				return;
-
-			tooltips.Add(new TooltipLine(Mod, string.Empty, text));
-		}
+			=> tooltips.Add(new TooltipLine(Mod, string.Empty, Language.GetTextValue("Mods.SpiritMod.Items.Exotic.Tip" + (style + 1))));
 
 		public override float UseSpeedMultiplier(Player player)
 		{
