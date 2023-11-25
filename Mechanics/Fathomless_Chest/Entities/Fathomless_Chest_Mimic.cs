@@ -102,6 +102,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 			}
 		}
 
+		public override bool CheckActive() => !stored.Any();
+
 		private void RemoveCoins(Player player)
 		{
 			float mult = Main.masterMode ? 1f : Main.expertMode ? .75f : .4f;

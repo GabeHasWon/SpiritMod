@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Accessory.RabbitFoot
 			Item.accessory = true;
 		}
 
-		public override void UpdateEquip(Player player) => player.GetCritChance(DamageClass.Generic) = 1;
+		public override void UpdateEquip(Player player) => player.GetModPlayer<MyPlayer>().rabbitFoot = true;
 
 		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) 
 		{

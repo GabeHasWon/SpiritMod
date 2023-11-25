@@ -29,7 +29,6 @@ namespace SpiritMod.Tiles
 			TileObjectData.addTile(Type);
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Crimson Pustule");
 			AddMapEntry(new Color(242, 90, 60), name);
 
 			TileID.Sets.DisableSmartCursor[Type] = true;
@@ -46,7 +45,7 @@ namespace SpiritMod.Tiles
 			Tile tile = Framing.GetTileSafely(i, j);
 			Point16 tileEntityPos = new Point16(i - tile.TileFrameX / 18 % 2, j - tile.TileFrameY / 18 % 2);
 
-			var tileEntity = TileEntity.ByPosition[tileEntityPos] as CrimsonPustuleTileEntity;
+			float pulse = (TileEntity.ByPosition.TryGetValue(tileEntityPos, out TileEntity value) && value is CrimsonPustuleTileEntity tileEntity) ? tileEntity.Pulse : 0;
 
 			Color color = Main.LocalPlayer.dangerSense ? new Color(255, 50, 50, Main.mouseTextColor) : Lighting.GetColor(i, j);
 			Vector2 offScreenRange = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange);
@@ -54,10 +53,10 @@ namespace SpiritMod.Tiles
 			Vector2 drawPos = new Vector2(i * 16 + origin.X, j * 16) - Main.screenPosition + offScreenRange + Vector2.UnitY * 2;
 			Texture2D tileTexture = TextureAssets.Tile[Type].Value;
 			Texture2D flashTexture = Mod.Assets.Request<Texture2D>("Tiles/CrimsonPustuleTile_Flash").Value;
-			float scale = 1f + tileEntity.Pulse * 0.08f;
+			float scale = 1f + pulse * 0.08f;
 
 			spriteBatch.Draw(tileTexture, drawPos, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), color, 0f, origin, scale, SpriteEffects.None, 0);
-			spriteBatch.Draw(flashTexture, drawPos, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), color * tileEntity.Pulse, 0f, origin, scale, SpriteEffects.None, 0);
+			spriteBatch.Draw(flashTexture, drawPos, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), color * pulse, 0f, origin, scale, SpriteEffects.None, 0);
 			return false;
 		}
 
