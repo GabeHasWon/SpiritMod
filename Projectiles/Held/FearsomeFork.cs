@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held
@@ -14,7 +15,9 @@ namespace SpiritMod.Projectiles.Held
 		private float MeleeSpeed => (Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee) - 1) * 30 + 1;
 
 		int timer = 0;
-		
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.FearsomeFork.DisplayName");
+
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Trident);

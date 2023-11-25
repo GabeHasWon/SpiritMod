@@ -8,13 +8,12 @@ namespace SpiritMod.NPCs.Tides
 {
 	public class ShamanBolt : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Healing Bolt");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		int counter = -180;
 		float distance = 2;
-		int rotationalSpeed = 10;
+		bool summoned = false;
+
 		public override void SetDefaults()
 		{
 			Projectile.friendly = false;
@@ -28,12 +27,13 @@ namespace SpiritMod.NPCs.Tides
 			AIType = ProjectileID.Bullet;
 			Projectile.extraUpdates = 4;
 		}
-		bool summoned = false;
+
 		public override void AI()
 		{
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 			distance += 0.015f;
-			counter += rotationalSpeed;
+			counter += 10;
+
 			Vector2 initialSpeed = new Vector2(Projectile.ai[0], Projectile.ai[1]);
 			Vector2 offset = initialSpeed.RotatedBy(Math.PI / 2);
 			offset.Normalize();

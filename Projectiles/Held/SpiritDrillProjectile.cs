@@ -1,15 +1,13 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace SpiritMod.Projectiles.Held
 {
 	public class SpiritDrillProjectile : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Spirit Drill");
-		}
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.SpiritDrill.DisplayName");
 
 		public override void SetDefaults()
 		{

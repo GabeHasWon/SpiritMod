@@ -38,8 +38,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if (Projectile.ai[0] <= 0f) return false;
-            if (lines == null) return false;
+            if (Projectile.ai[0] <= 0f || lines == null)
+				return false;
 
             Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
@@ -65,18 +65,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
 		private void MakeLightning()
         {
-            Vector2 start = new Vector2(Projectile.Center.X, 0);
-            Point endTile = start.ToTileCoordinates();
-            Tile tile;
-            do
-            {
-                endTile.Y++;
-                tile = Main.tile[endTile.X, endTile.Y];
-            }
-            while (endTile.Y < (int)((Projectile.Center.Y / 16) - 30) || !WorldGen.SolidTile(Framing.GetTileSafely(endTile.X, endTile.Y)));
-
-            Vector2 end = (endTile.ToVector2() * 16f) + Vector2.UnitX * 8f;
-            Line line = new Line(start, end);
+            Line line = new Line(new Vector2(Projectile.Center.X, 0), Projectile.Center);
 
 			lines = new List<List<Line>> { new List<Line>() };
 			lines[0].Add(line);
@@ -114,7 +103,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             }
         }
 
-        private void JitterLine(int index, List<Line> lines)
+        private static void JitterLine(int index, List<Line> lines)
         {
             Line line = lines[index];
             lines.RemoveAt(index);
@@ -139,8 +128,6 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
         private void DrawLine(SpriteBatch spriteBatch, Rectangle screen, Line line)
         {
-            //if (!screen.Contains(line.start) && !screen.Contains(line.end)) return;
-
             Vector2 delta = line.end - line.start;
             Vector2 normalised = Vector2.Normalize(delta);
             float length = delta.Length();

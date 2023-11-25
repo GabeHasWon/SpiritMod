@@ -1,21 +1,18 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held
 {
 	public class EoWSpearProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Rot Scourge");
-		}
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.EoWSpear.DisplayName");
 
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Trident);
-
 			AIType = ProjectileID.Trident;
 		}
 

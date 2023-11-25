@@ -11,6 +11,8 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 
 		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.Earth_Slam_Projectile.DisplayName");
 
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 4;

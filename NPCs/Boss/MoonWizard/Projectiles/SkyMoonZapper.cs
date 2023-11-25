@@ -29,7 +29,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 				for (int i = 0; i < 80; i++)
 				{
 					Projectile.Center += new Vector2(0, 16);
-					if (WorldGen.SolidTile(Framing.GetTileSafely(Projectile.Center)))
+					if (WorldGen.SolidTile(Framing.GetTileSafely(Projectile.Center)) || TileID.Sets.Platforms[Framing.GetTileSafely(Projectile.Center).TileType])
 						break;
 				}
 			}
@@ -64,11 +64,5 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 					ParticleHandler.SpawnParticle(new SmokeParticle(Projectile.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(10)), Vector2.UnitY * -Main.rand.NextFloat(), Color.LightBlue with { A = 0 } * .15f, Main.rand.NextFloat(.8f, 1.2f), 20));
 			}
 		}
-
-		public override Color? GetAlpha(Color lightColor) => null;
-
-		public override void PostDraw(Color lightColor)
-        {
-        }
     }
 }

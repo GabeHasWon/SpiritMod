@@ -28,7 +28,7 @@ namespace SpiritMod.Projectiles.Thrown
 			Rectangle hitbox = Projectile.getRect();
 
 			foreach(Projectile proj in Main.projectile)
-				if (proj.active && proj.whoAmI != Projectile.whoAmI && proj.IsRanged() && proj.friendly && Collision.CheckAABBvLineCollision(hitbox.TopLeft(), hitbox.Size(), proj.Center, proj.Center + (proj.velocity * (proj.extraUpdates + 1)), 10, ref collisionPoint))
+				if (proj.active && proj.whoAmI != Projectile.whoAmI && proj.IsRanged() && proj.friendly && (proj.width <= 6 || proj.height <= 6) && Collision.CheckAABBvLineCollision(hitbox.TopLeft(), hitbox.Size(), proj.Center, proj.Center + (proj.velocity * (proj.extraUpdates + 1)), 10, ref collisionPoint))
 				{
 					ImpactFX();
 					struck = true;

@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held
@@ -18,6 +19,8 @@ namespace SpiritMod.Projectiles.Held
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.GlowSting.DisplayName");
 
 		public override void SetDefaults()
 		{

@@ -6,7 +6,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 {
 	public class GlitchLaser : ModProjectile, ITrailProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Glitch Laser");
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetDefaults()
 		{

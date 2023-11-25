@@ -1,20 +1,20 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held
 {
 	public class DuskApparition : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.DuskLance.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Dusk Apparition");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -32,11 +32,8 @@ namespace SpiritMod.Projectiles.Held
 			Projectile.extraUpdates = 1;
 		}
 
-		public override void AI()
-		{
-			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
+		public override void AI() => Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 
-		}
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
@@ -47,10 +44,9 @@ namespace SpiritMod.Projectiles.Held
 			}
 			return false;
 		}
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return new Color(131, 61, 179, 100);
-		}
+
+		public override Color? GetAlpha(Color lightColor) => new Color(131, 61, 179, 100);
+
 		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
@@ -66,10 +62,7 @@ namespace SpiritMod.Projectiles.Held
 				vector9 -= value19 * 8f;
 			}
 		}
-		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-		{
-				target.AddBuff(BuffID.ShadowFlame, 300, false);
-		}
 
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffID.ShadowFlame, 300, false);
 	}
 }

@@ -4,6 +4,7 @@ using SpiritMod.Buffs;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held;
@@ -13,6 +14,8 @@ public class SpiritSpearProjectile : ModProjectile
 	private const int ExtensionSize = 20;
 
 	private float MeleeSpeed => (Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee) - 1) * 10 + 1;
+
+	public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.SpiritSpear.DisplayName");
 
 	public override void SetDefaults()
 	{

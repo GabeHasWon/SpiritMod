@@ -8,7 +8,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
 {
 	public class SnowMongerBeam : ModProjectile, ITrailProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Icy Beam");
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetDefaults()
 		{
@@ -35,6 +35,7 @@ namespace SpiritMod.NPCs.Boss.FrostTroll
             if (Main.rand.NextBool(4))
 				target.AddBuff(BuffID.Frostburn, 180, true);
 		}
+
 		public override void AI()
         {
             if (Main.rand.NextBool(3))

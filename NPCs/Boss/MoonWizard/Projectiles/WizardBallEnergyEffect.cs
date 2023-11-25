@@ -8,8 +8,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 {
 	public class WizardBallEnergyEffect : ModProjectile
 	{
-		/* public override void SetStaticDefaults()
-			=> DisplayName.SetDefault("Arcane Energy"); */
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetDefaults()
 		{
