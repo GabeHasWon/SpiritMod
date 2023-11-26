@@ -53,7 +53,7 @@ namespace SpiritMod.Tiles.Ambient
 			Tile tile = Framing.GetTileSafely(i, j);
 			if (tile.TileFrameY == 0 && !fail)
 			{
-				Projectile proj = Projectile.NewProjectileDirect(new EntitySource_TileBreak(i, j), new Vector2(i, j) * 16 + new Vector2(8, 8), Vector2.Zero, ModContent.ProjectileType<UnstableIcicleProj>(), NPCUtils.ToActualDamage(80, 1.5f, 2f), 0);
+				Projectile proj = Projectile.NewProjectileDirect(new EntitySource_TileBreak(i, j), new Vector2(i, j) * 16 + new Vector2(8, 8), Vector2.Zero, ModContent.ProjectileType<UnstableIcicleProj>(), NPCUtils.ToActualDamage(60, 1.25f, 1.6f), 0);
 				proj.frame = TileVariant + (tile.TileFrameX / 18 * 3);
 				proj.netUpdate = true;
 			}

@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Tiles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -31,23 +30,8 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture.Hostile
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-			Player player = Main.LocalPlayer;
-			if (closer) {
-				int distance1 = (int)Vector2.Distance(new Vector2(i * 16, j * 16), player.Center);
-				if (distance1 < 72) {
-					SoundEngine.PlaySound(SoundID.Item27);
-					for (int o = 0; o < 2; o++) {
-						int n = NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileUpdate(i, j), (int)i * 16 + Main.rand.Next(-10, 10), (int)j * 16, NPCID.IceBat, 0, 0, 0, 0, 0, Main.myPlayer);
-						Main.npc[n].GivenName = "Frozen Ice Bat";
-						Main.npc[n].lifeMax = Main.npc[n].lifeMax * 2;
-						Main.npc[n].life = Main.npc[n].lifeMax;
-						Main.npc[n].damage = (int)(Main.npc[n].damage * 1.5f);
-						Main.npc[n].knockBackResist = 0.25f;
-                        Main.npc[n].netUpdate = true;
-                        WorldGen.KillTile(i, j);
-					}
-				}
-			}
+			if (closer)
+				FrozenSpawner.SpawnFrozenEnemy(i, j, NPCID.IceBat);
 		}
 	}
 }

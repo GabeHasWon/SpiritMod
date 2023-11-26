@@ -73,6 +73,14 @@ public class BossDownedTrackingIO : ModSystem
 {
 	public override void LoadWorldData(TagCompound tag)
 	{
+		int count = tag.GetInt("downedCount");
+
+		for (int i = 0; i < count; ++i)
+			BossDownedTracker.Downed.Add(tag.GetString("downed" + i), true);
+	}
+
+	public override void SaveWorldData(TagCompound tag)
+	{
 		int count = BossDownedTracker.Downed.Where(x => x.Value).Count();
 		tag.Add("downedCount", count);
 
@@ -85,13 +93,7 @@ public class BossDownedTrackingIO : ModSystem
 		}
 	}
 
-	public override void SaveWorldData(TagCompound tag)
-	{
-		int count = tag.GetInt("downedCount");
-
-		for (int i = 0; i < count; ++i)
-			BossDownedTracker.Downed.Add(tag.GetString("downed" + i), true);
-	}
+	public override void OnWorldUnload() => BossDownedTracker.Downed.Clear();
 
 	/// <summary>
 	/// Syncs boss downed, ported from old impl. in MyWorld.NetRecieve

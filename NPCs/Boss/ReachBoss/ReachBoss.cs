@@ -92,8 +92,19 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			if (!player.active || player.dead)
 			{
 				NPC.TargetClosest(false);
-				NPC.velocity.Y = -2000;
+
+				if (!player.active || player.dead)
+				{
+					NPC.velocity.Y -= 0.2f;
+					NPC.alpha += 2;
+
+					if (NPC.alpha >= 254)
+						NPC.active = false;
+				}
 			}
+			else
+				NPC.alpha = Math.Clamp(NPC.alpha - 2, 0, 255);
+
 			if (!player.ZoneBriar())
 			{
 				NPC.defense = 25;

@@ -76,13 +76,23 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0.075f, 0.184f, 0.062f);			
 			NPC.spriteDirection = NPC.direction;
 			Player player = Main.player[NPC.target];
-			bool expertMode = Main.expertMode;			
+			bool expertMode = Main.expertMode;
 
 			if (!player.active || player.dead)
 			{
 				NPC.TargetClosest(false);
-				NPC.velocity.Y = -2000;
+
+				if (!player.active || player.dead)
+				{
+					NPC.velocity.Y -= 0.2f;
+					NPC.alpha += 2;
+
+					if (NPC.alpha >= 254)
+						NPC.active = false;
+				}
 			}
+			else
+				NPC.alpha = Math.Clamp(NPC.alpha - 2, 0, 255);
 
 			if (NPC.life <= NPC.lifeMax/2)
 				NPC.ai[0]+= 1.5f;
@@ -100,10 +110,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
                 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
-                    direction.Normalize();
-                    direction.X *= 8f;
-                    direction.Y *= 8f;
+                    Vector2 direction = NPC.DirectionTo(Main.player[NPC.target].Center) * 8;
 
                     int amountOfProjectiles = 2;
 					if (NPC.life <= NPC.lifeMax / 2)

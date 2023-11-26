@@ -88,7 +88,22 @@ namespace SpiritMod.NPCs.BlizzardBandit
                 else if (NPC.velocity.X > 0f)
                     NPC.spriteDirection = 1;
             }
-        }
+
+			if ((frame == 11 || frame == 14) && NPC.frameCounter == 4)
+			{
+				SoundEngine.PlaySound(SoundID.Item19 with { Volume = 0.5f }, NPC.Center);
+
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					Vector2 direction = NPC.DirectionTo(Main.player[NPC.target].Center) * 8.5f;
+					float A = Main.rand.Next(-50, 50) * 0.02f;
+					float B = Main.rand.Next(-50, 50) * 0.02f;
+					int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (NPC.direction * 12), NPC.Center.Y, direction.X + A, direction.Y + B, ProjectileID.SnowBallFriendly, 5, 1, Main.myPlayer, 0, 0);
+					Main.projectile[p].hostile = true;
+					Main.projectile[p].friendly = false;
+				}
+			}
+		}
 
         public override void HitEffect(NPC.HitInfo hit)
         {
@@ -132,20 +147,6 @@ namespace SpiritMod.NPCs.BlizzardBandit
 
                 if (frame == 10)
                     gettingballs = false;
-
-                if ((frame == 11 || frame == 14) && NPC.frameCounter == 4)
-                {
-                    SoundEngine.PlaySound(SoundID.Item19 with { Volume = 0.5f }, NPC.Center);
-                    if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        Vector2 direction = NPC.DirectionTo(Main.player[NPC.target].Center) * 8.5f;
-                        float A = Main.rand.Next(-50, 50) * 0.02f;
-                        float B = Main.rand.Next(-50, 50) * 0.02f;
-                        int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (NPC.direction * 12), NPC.Center.Y, direction.X + A, direction.Y + B, ProjectileID.SnowBallFriendly, NPC.damage / 3, 1, Main.myPlayer, 0, 0);
-                        Main.projectile[p].hostile = true;
-                        Main.projectile[p].friendly = false;
-                    }
-                }
 
                 if (frame >= 16)
                 {

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Items.Placeable.Tiles;
+using SpiritMod.NPCs.Wheezer;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -33,21 +34,8 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture.Hostile
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-			Player player = Main.LocalPlayer;
-			if (closer) {
-				int distance1 = (int)Vector2.Distance(new Vector2(i * 16, j * 16), player.Center);
-				if (distance1 < 56) {
-					SoundEngine.PlaySound(SoundID.Item27);
-					int n = NPC.NewNPC(new Terraria.DataStructures.EntitySource_TileUpdate(i, j), i * 16, j * 16, ModContent.NPCType<NPCs.Wheezer.Wheezer>(), 0, 0, 0, 0, 0, Main.myPlayer);
-					Main.npc[n].GivenName = "Icy Wheezer";
-					Main.npc[n].lifeMax = Main.npc[n].lifeMax * 2;
-					Main.npc[n].life = Main.npc[n].lifeMax;
-					Main.npc[n].damage = (int)(Main.npc[n].damage * 1.5f);
-					Main.npc[n].knockBackResist = 0.4f;
-                    Main.npc[n].netUpdate = true;
-                    WorldGen.KillTile(i, j);
-				}
-			}
+			if (closer)
+				FrozenSpawner.SpawnFrozenEnemy(i, j, ModContent.NPCType<Wheezer>());
 		}
 	}
 }
