@@ -45,7 +45,6 @@ namespace SpiritMod.Tiles.Furniture
 			AdjTiles = new int[] { TileID.Chairs };
 		}
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => FurnitureHelper.HasSmartInteract(i, j, settings);

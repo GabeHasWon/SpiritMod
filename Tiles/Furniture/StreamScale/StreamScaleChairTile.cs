@@ -47,10 +47,7 @@ namespace SpiritMod.Tiles.Furniture.StreamScale
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => FurnitureHelper.HasSmartInteract(i, j, settings);
 		public override void ModifySittingTargetInfo(int i, int j, ref TileRestingInfo info) => FurnitureHelper.ModifySittingTargetInfo(i, j, ref info);
