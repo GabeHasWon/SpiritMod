@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using SpiritMod.Tiles.Furniture;
 using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace SpiritMod.World.Micropasses;
 
@@ -26,7 +27,7 @@ internal class HeroMemorialMicropass : Micropass
 
 	public override void Run(GenerationProgress progress, GameConfiguration config)
 	{
-		progress.Message = "Spirit Mod Microstructures: A Hero's Memorial";
+		progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.HerosMemorial");
 
 	retry:
 		int worldMod = (int)(250 * (Main.spawnTileX / 4200f));

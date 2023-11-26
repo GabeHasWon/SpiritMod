@@ -1,4 +1,6 @@
 GoldifiedDeath: " 死的时候像个金条一样"
+// Frozen: Frozen
+# Config stuff:
 Screenshake: "[i:5926]  视觉：屏幕震动"
 Distortion: "[i:5926]  视觉：屏幕扭曲"
 Particles: "[i:5926]  视觉：前景粒子"

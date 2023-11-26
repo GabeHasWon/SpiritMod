@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
@@ -23,7 +24,7 @@ namespace SpiritMod.World.Micropasses
 
 		public override void Run(GenerationProgress progress, Terraria.IO.GameConfiguration config)
 		{
-			progress.Message = "Spirit Mod Microstructures: Sunken Surface";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.SinkingSurface");
 
 			float worldSize = Main.maxTilesX / 4200f;
 			for (int i = 0; i < 16 * worldSize; i++)
