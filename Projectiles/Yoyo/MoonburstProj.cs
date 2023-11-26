@@ -4,15 +4,17 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Yoyo
 {
 	public class MoonburstProj : ModProjectile, IDrawAdditive
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Moonburst.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Moonburst");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

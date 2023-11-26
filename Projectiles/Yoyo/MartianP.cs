@@ -1,12 +1,15 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Yoyo
 {
 	public class MartianP : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Martian.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Terrestrial Ultimatum");

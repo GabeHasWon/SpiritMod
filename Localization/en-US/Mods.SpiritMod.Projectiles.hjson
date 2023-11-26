@@ -690,17 +690,6 @@ VirulenceExplosion.DisplayName: Virulent Explosion
 VoidStar.DisplayName: Void Star
 Wheeze.DisplayName: Wheeze Gas
 WildMagic.DisplayName: Ancient Magic
-AncientP.DisplayName: Ancient
-BeholderYoyoProj.DisplayName: Eye of the Beholder
-EyeOfTheInfernoProj.DisplayName: Eye of the Inferno
-FireballProj.DisplayName: Fireball
-GraspProj.DisplayName: Grasp
-MartianP.DisplayName: Terrestrial Ultimatum
-MoonburstProj.DisplayName: Moonburst
-ProbeP.DisplayName: The Probe
-SweetThrowProjectile.DisplayName: Sweet Throw
-TaoP.DisplayName: Taoyo
-Typhoon.DisplayName: Typhoon
 UnstableIcicleProj.DisplayName: Unstable Icicle
 SteamplateBowProj.DisplayName: Steamplate Bow Proj
 LadyLuckFlash.DisplayName: Lady Luck Flash
@@ -711,4 +700,3 @@ PhaseShield.DisplayName: Phase Shield
 RadiantEnergy.DisplayName: Radiant Energy
 VoidRift.DisplayName: Void Rift
 ZephyrWave.DisplayName: Zephyr Wave
-SacrificialDaggerProjectile.DisplayName: Sacrificial Dagger Projectile

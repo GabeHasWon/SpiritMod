@@ -18,7 +18,6 @@ namespace SpiritMod.Projectiles.Glyph
 		private ref float IdleTime => ref Projectile.ai[1];
 
 		private Vector2? originPos = null;
-		private bool foundNPC; 
 
 		public override void SetStaticDefaults()
 		{

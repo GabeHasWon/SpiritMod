@@ -17,6 +17,8 @@ namespace SpiritMod.Projectiles.Magic
 		public void DoTrailCreation(TrailManager tManager) => tManager.CreateTrail(Projectile, new StandardColorTrail(new Color(56, 194, 93)), 
 			new RoundCap(), new DefaultTrailPosition(), 6f, 210f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/noise").Value, 0.2f, .4f, 1f));
 
+		public override string Texture => "Terraria/Images/Projectile_206";
+
 		public override void SetStaticDefaults()
 		{
 			Main.projFrames[Type] = 5;

@@ -6646,15 +6646,15 @@ Exotic: {
 	// Name2: Golden
 	// Name3: Swift
 	// Name4: Starplate
-	/* Tip1:
+	// Tip1: Launches bouncing glass baubles...ouch!
+	/* Tip2:
 		'''
 		Struck enemies are marked for damage
 		Right click to detonate all marked enemies
 		All marks instantly expire after missing a shot
 		''' */
-	// Tip2: Fires a rapid volley of energy
-	// Tip3: Creates a hologram to supply additional fire
-	// Tip4: Launches bouncing glass baubles...ouch!
+	// Tip3: Fires a rapid volley of energy
+	// Tip4: Creates a hologram to supply additional fire
 }
 
 CaptainsRegards: {

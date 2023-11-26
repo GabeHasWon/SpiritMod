@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Sets.GladeWraithDrops
 {
 	public class OakHeart : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Oak Heart");
-			// Tooltip.SetDefault("Hitting foes in quick succession causes poisonous spores to rain down\nMore effective at close range");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Swing;

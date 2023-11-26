@@ -6622,7 +6622,6 @@ BottomFeederGun: {
 Blaster: {
 	DisplayName: Blaster
 	Tooltip: ""
-
 	Name1: Luminous
 	Name2: Ecliptic
 	Name3: Aphelaic
@@ -6647,12 +6646,10 @@ Blaster: {
 Exotic: {
 	DisplayName: Blaster
 	Tooltip: ""
-
 	Name1: Bulb
 	Name2: Golden
 	Name3: Swift
 	Name4: Starplate
-
 	Tip1: Launches bouncing glass baubles...ouch!
 	Tip2:
 		'''
@@ -6662,7 +6659,6 @@ Exotic: {
 		'''
 	Tip3: Fires a rapid volley of energy
 	Tip4: Creates a hologram to supply additional fire
-	
 }
 
 CaptainsRegards: {

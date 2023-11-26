@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Yoyo
@@ -15,9 +16,10 @@ namespace SpiritMod.Projectiles.Yoyo
 			set => Projectile.ai[0] = value;
 		}
 
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BeholderYoyo.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Eye of the Beholder");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

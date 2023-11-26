@@ -690,17 +690,6 @@ VirulenceExplosion.DisplayName: 剧毒爆炸
 VoidStar.DisplayName: 虚空之星
 Wheeze.DisplayName: 喘息气体
 WildMagic.DisplayName: 远古魔法
-AncientP.DisplayName: 远古
-BeholderYoyoProj.DisplayName: 守望者之眼
-EyeOfTheInfernoProj.DisplayName: 炎狱之眼
-FireballProj.DisplayName: 火球
-GraspProj.DisplayName: 抓握
-MartianP.DisplayName: 大陆之终
-MoonburstProj.DisplayName: 月能爆破
-ProbeP.DisplayName: 探针
-SweetThrowProjectile.DisplayName: 甜蜜投掷
-TaoP.DisplayName: 太阳
-Typhoon.DisplayName: 台风
 UnstableIcicleProj.DisplayName: 不稳定冰锥
 SteamplateBowProj.DisplayName: 蒸汽板弓
 LadyLuckFlash.DisplayName: 幸运女神闪光
@@ -711,4 +700,3 @@ PhaseShield.DisplayName: 相位护盾
 RadiantEnergy.DisplayName: 辐射能
 VoidRift.DisplayName: 虚空裂隙
 ZephyrWave.DisplayName: 西风波
-// SacrificialDaggerProjectile.DisplayName: Sacrificial Dagger Projectile
