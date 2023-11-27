@@ -33,6 +33,7 @@ namespace SpiritMod.Utilities
 		{
 			if (item != null && item is ITimerItem tItem)
 				return player.GetModPlayer<MiscAccessoryPlayer>().timers[tItem.GetType().Name + (slot == -1 ? "" : slot.ToString())];
+
 			throw new Exception("Item timer not found or invalid.");
 		}
 

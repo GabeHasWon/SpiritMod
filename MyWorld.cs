@@ -1254,7 +1254,6 @@ namespace SpiritMod
 			AddToVanillaChest(new ChestInfo(new int[] {
 				ModContent.ItemType<CimmerianScepter>() },
 				1, 0.33f), lockedgoldChests, 1);
-			AddToVanillaChest(new ChestInfo(ModContent.ItemType<Items.Sets.SummonsMisc.FairyWhistle.FairyWhistleItem>(), 1, 0.2f), woodChests, 1);
 			AddToVanillaChest(new ChestInfo(ModContent.ItemType<Items.Sets.WhipsMisc.PoolNoodle.PoolNoodle>(), 1, 0.35f), waterChests, 1);
 			AddToVanillaChest(new ChestInfo(new int[] { ModContent.ItemType<MetalBand>(), ModContent.ItemType<ShortFuse>(), ModContent.ItemType<LongFuse>() }, 1, 0.1f), goldChests, 1);
 			AddToVanillaChest(new ChestInfo(ModContent.ItemType<HollowNail>()), spiderChests, 1);
