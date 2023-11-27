@@ -85,7 +85,7 @@ ManaBuffC: {
 
 TaffyBuff: {
 	DisplayName: 太妃糖
-	Description: 增加4点防御力
+	Description: 增加4点防御
 }
 
 ClockBuff: {
@@ -713,7 +713,7 @@ BaubleResistance: {
 
 GildedScarab_buff: {
 	DisplayName: 圣甲虫护盾
-	Description: "增加{0}防御"
+	Description: 增加{0}点防御
 }
 
 SlagFury_buff: {
