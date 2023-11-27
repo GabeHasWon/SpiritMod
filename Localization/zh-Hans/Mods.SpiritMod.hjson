@@ -1,5 +1,5 @@
 GoldifiedDeath: " 死的时候像个金条一样"
-// Frozen: Frozen
+Frozen: 冻结
 # Config stuff:
 Screenshake: "[i:5926]  视觉：屏幕震动"
 Distortion: "[i:5926]  视觉：屏幕扭曲"
@@ -308,9 +308,9 @@ BossChecklistIntegration: {
 }
 
 MapObject: {
-	// SpiritPylon: Spirit Pylon
-	// BriarPylon: Briar Pylon
-	// AsteroidPylon: Asteroid Pylon
+	SpiritPylon: 魂灵之地晶塔
+	BriarPylon: 荆棘之地晶塔
+	AsteroidPylon: 小行星带晶塔
 }
 
 Condition: {

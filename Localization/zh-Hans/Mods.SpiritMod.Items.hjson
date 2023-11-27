@@ -465,8 +465,12 @@ OpalFrogItem: {
 }
 
 Rabbit_Foot: {
-	DisplayName: 兔兔玉足
-	Tooltip: 你有1%暴击率
+	DisplayName: 幸运兔脚
+	Tooltip:
+		'''
+		“这一定会带来好运！”
+		你有1%暴击率
+		'''
 }
 
 Rangefinder: {
@@ -6616,45 +6620,45 @@ BottomFeederGun: {
 }
 
 Blaster: {
-	DisplayName: 宇宙冲击波
+	DisplayName: 冲击波
 	Tooltip: ""
-	// Name1: Luminous
-	// Name2: Ecliptic
-	// Name3: Aphelaic
-	// Name4: Cosmic
-	// Name5: Perihelaic
-	// Name6: Ionized
-	// Name7: Axial
+	Name1: 流明
+	Name2: 黄道
+	Name3: 远日
+	Name4: 宇宙
+	Name5: 近日
+	Name6: 离子
+	Name7: 轴
 
 	Tips: {
-		// Auxillary1: Right click to fire an empowered shot
-		// Auxillary2: Right click to throw the gun out like a boomerang
-		// Auxillary3: Fires in bursts
-		// Auxillary4: Shots bounce off surfaces
-		// Auxillary5: Fires quickly at the cost of accuracy
-		// Element1: Inflicts fire damage
-		// Element2: Inflicts poison damage
-		// Element3: Attacks inflict Frostburn
-		// Element4: Attacks shock enemies
+		Auxillary1: 右键发射增幅弹
+		Auxillary2: 右键把枪当做回旋镖一样扔出
+		Auxillary3: 发射爆裂弹
+		Auxillary4: 发射弹跳弹
+		Auxillary5: 以准度为代价进行快速射击
+		Element1: 造成火焰伤害
+		Element2: 造成剧毒伤害
+		Element3: 攻击会造成霜冻减益
+		Element4: 攻击会电击敌人
 	}
 }
 
 Exotic: {
-	DisplayName: 异域冲击波
+	DisplayName: 冲击波
 	Tooltip: ""
-	// Name1: Bulb
-	// Name2: Golden
-	// Name3: Swift
-	// Name4: Starplate
-	// Tip1: Launches bouncing glass baubles...ouch!
-	/* Tip2:
+	Name1: 灯泡
+	Name2: 黄金
+	Name3: 迅疾
+	Name4: 星盘
+	Tip1: 发射弹跳玻璃灯泡……诶呦好疼！
+	Tip2:
 		'''
-		Struck enemies are marked for damage
-		Right click to detonate all marked enemies
-		All marks instantly expire after missing a shot
-		''' */
-	// Tip3: Fires a rapid volley of energy
-	// Tip4: Creates a hologram to supply additional fire
+		被击中的敌人会被伤害标记
+		右键引爆所有标记
+		在空枪时，所有的标记会消失
+		'''
+	Tip3: 发射快速的能量
+	Tip4: 创造一个全息投影，提供额外的火力
 }
 
 CaptainsRegards: {
