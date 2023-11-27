@@ -713,7 +713,7 @@ BaubleResistance: {
 
 GildedScarab_buff: {
 	DisplayName: Scarab Shield
-	Description: "Defense increased by {0}"
+	Description: Defense increased by {0}
 }
 
 SlagFury_buff: {

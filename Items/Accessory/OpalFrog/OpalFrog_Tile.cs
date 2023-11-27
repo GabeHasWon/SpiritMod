@@ -30,6 +30,7 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
+			RegisterItemDrop(ModContent.ItemType<OpalFrogItem>());
 		}
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;

@@ -717,9 +717,8 @@ GildedScarab_buff: {
 }
 
 SlagFury_buff: {
-	Tooltip: 熔渣之怒
-	Description: "{$CommonItemTooltip.PercentIncreasedDamage}"
 	DisplayName: 熔渣之怒
+	Description: "{$CommonItemTooltip.PercentIncreasedDamage}"
 }
 
 RunicSiphon: {
