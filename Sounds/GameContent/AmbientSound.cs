@@ -16,7 +16,7 @@ namespace SpiritMod.Sounds.GameContent
 	/// </summary>
 	internal class AmbientSound : ModSystem
 	{
-		Dictionary<string, SlotId> soundSlots = new();
+		private readonly Dictionary<string, SlotId> soundSlots = new();
 
 		public override void PostUpdateEverything()
 		{

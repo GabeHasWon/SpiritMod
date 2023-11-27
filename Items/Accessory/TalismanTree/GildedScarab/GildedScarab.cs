@@ -15,6 +15,7 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GildedScarab
 			Item.accessory = true;
 			Item.value = Item.sellPrice(0, 1, 0, 0);
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe modRecipe = CreateRecipe();
