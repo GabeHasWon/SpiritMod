@@ -7,10 +7,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 {
 	public class StarLaser : ModProjectile, ITrailProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Star Laser");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		Vector2 startingpoint;
 
 		public override void SetDefaults()
@@ -26,10 +24,8 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			Projectile.tileCollide = false;
 			Projectile.extraUpdates = 5;
 		}
-		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => Collision.CheckAABBvLineCollision(targetHitbox.Center.ToVector2() - targetHitbox.Size() / 2,
-																													 targetHitbox.Size(),
-																													 startingpoint,
-																													 Projectile.Center);
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) 
+			=> Collision.CheckAABBvLineCollision(targetHitbox.Center.ToVector2() - targetHitbox.Size() / 2, targetHitbox.Size(), startingpoint, Projectile.Center);
 
 		public void DoTrailCreation(TrailManager tManager) => tManager.CreateTrail(Projectile, new StandardColorTrail(new Color(66, 239, 245)), new RoundCap(), new DefaultTrailPosition(), 10f, 1950f);
 

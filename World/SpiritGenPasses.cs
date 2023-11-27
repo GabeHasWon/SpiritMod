@@ -23,6 +23,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.IO;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Utilities;
@@ -44,7 +45,7 @@ namespace SpiritMod.World
 		#region GENPASS: SPIRIT MICROS
 		public static void MicrosPass(GenerationProgress progress, GameConfiguration config)
 		{
-			progress.Message = "Spirit Mod Microstructures: Hideouts";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Hideouts");
 
 			if (ModContent.GetInstance<SpiritClientConfig>().DoubleHideoutGeneration)
 			{
@@ -67,7 +68,7 @@ namespace SpiritMod.World
 				}
 			}
 
-			progress.Message = "Spirit Mod Microstructures: Stashes, Caverns and Dungeons";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Caches");
 
 			int siz = (int)((Main.maxTilesX / 4200f) * 7);
 			int repeats = WorldGen.genRand.Next(siz, siz + 4);
@@ -85,7 +86,7 @@ namespace SpiritMod.World
 			for (int k = 0; k < WorldGen.genRand.Next(5, 7); k++)
 				GenerateGemStash();
 
-			progress.Message = "Spirit Mod Microstructures: Pagoda and Ziggurat";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Pagoda");
 
 			GeneratePagoda();
 			GenerateZiggurat();
@@ -101,7 +102,7 @@ namespace SpiritMod.World
 
 		public static void AvianIslandsPass(GenerationProgress progress, GameConfiguration config)
 		{
-			progress.Message = "Spirit Mod Microstructures: Avian Islands";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.AvianIslands");
 
 			float repeats = Main.maxTilesX / 4200f * 2f;
 			for (int i = 0; i < (int)repeats; i++)
@@ -1060,7 +1061,7 @@ namespace SpiritMod.World
 		#region GENPASS: ASTEROIDS
 		public static void AsteroidsPass(GenerationProgress progress, GameConfiguration config)
 		{
-			progress.Message = "Creating an asteroid belt";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Asteroids");
 			int width = 200 + (int)(((Main.maxTilesX / 4200f) - 1) * 75); //Automatically scales based on world size
 			int height = 50 + (int)(((Main.maxTilesX / 4200f) - 1) * 15);
 			int x = width + 80;
@@ -1223,7 +1224,7 @@ namespace SpiritMod.World
 		#region GENPASS: PILES/AMBIENT
 		public static void PilesPass(GenerationProgress progress, GameConfiguration config)
 		{
-			progress.Message = "Spirit Mod: Adding Ambient Objects...";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.AmbientObjects");
 
 			for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY * 78) * 15E-05); k++)
 			{
@@ -1283,7 +1284,7 @@ namespace SpiritMod.World
 
 			float vol = Main.soundVolume; //Dumb sound workaround because it doesn't want to SHUT UP >:(
 			Main.soundVolume = 0;
-			PopulateSpam();
+			PopulateSpam(progress);
 			Main.soundVolume = vol;
 		}
 
@@ -1305,7 +1306,7 @@ namespace SpiritMod.World
 			decorSpam.Add(data);
 		}
 
-		private static void PopulateSpam()
+		private static void PopulateSpam(GenerationProgress progress)
 		{
 			int maxReps = 0;
 			Dictionary<string, int> repeatsByName = new Dictionary<string, int>();
@@ -1320,12 +1321,21 @@ namespace SpiritMod.World
 
 			for (int i = 0; i < maxReps * GlobalExtensions.WorldSize; ++i)
 			{
+				progress.Set(i / (maxReps * (double)GlobalExtensions.WorldSize));
+
 				foreach (var item in decorSpam)
 				{
 					if (repeatsByName[item.Name] >= item.RealRepeats)
 						continue;
 
+					int individualRetries = 0;
+
 				retry:
+					individualRetries++;
+
+					if (individualRetries > maxReps)
+						continue;
+
 					int x = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
 					int y = WorldGen.genRand.Next(item.RangeY.high, item.RangeY.low);
 					Tile tile = Main.tile[x, y];

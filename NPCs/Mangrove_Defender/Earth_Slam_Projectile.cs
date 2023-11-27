@@ -8,10 +8,8 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 {
 	public class Earth_Slam_Projectile : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Earth Slam");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 60;
@@ -25,6 +23,7 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 			Projectile.scale = 1f;
 			Projectile.timeLeft = 1;
 		}
+
 		public override void AI()
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);

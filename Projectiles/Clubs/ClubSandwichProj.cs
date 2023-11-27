@@ -4,12 +4,15 @@ using Terraria.Audio;
 using Terraria.ID;
 using SpiritMod.Items.Sets.ClubSubclass.ClubSandwich;
 using static Terraria.ModLoader.ModContent;
+using Terraria.Localization;
 
 namespace SpiritMod.Projectiles.Clubs
 {
 	class ClubSandwichProj : ClubProj
 	{
 		public ClubSandwichProj() : base(new Vector2(64, 70)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.ClubSandwich.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

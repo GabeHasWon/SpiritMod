@@ -2,12 +2,15 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using SpiritMod.Dusts;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Projectiles.Clubs
 {
 	class WoodClubProj : ClubProj
 	{
 		public WoodClubProj() : base(new Vector2(58)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.WoodClub.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

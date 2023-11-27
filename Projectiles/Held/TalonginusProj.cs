@@ -4,6 +4,7 @@ using SpiritMod.Particles;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held;
@@ -20,6 +21,8 @@ public class TalonginusProj : ModProjectile
 
 	private const int LungeLength = 84;
 	private const int ExtensionSize = 20;
+
+	public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Talonginus.DisplayName");
 
 	public override void SetStaticDefaults()
 	{

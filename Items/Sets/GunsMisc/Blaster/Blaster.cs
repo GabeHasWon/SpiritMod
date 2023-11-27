@@ -9,6 +9,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using static SpiritMod.Items.Sets.GunsMisc.Blaster.Projectiles.SubtypeProj.Subtypes;
@@ -258,8 +259,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public void ApplyStats()
 		{
-			string[] nameSelection = new string[] { "Luminous", "Ecliptic", "Aphelaic", "Cosmic", "Perihelaic", "Ionized", "Axial" };
-
 			Item.shoot = build switch
 			{
 				1 => Item.shoot = ModContent.ProjectileType<EnergyBeam>(),
@@ -271,29 +270,16 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Item.channel = auxillary == (int)AuxillaryType.Charge;
 			Item.reuseDelay = (auxillary == (int)AuxillaryType.Burst) ? 60 : 0;
 
-			Item.SetNameOverride(nameSelection[element + build] + " Blaster");
+			Item.SetNameOverride($"{Language.GetTextValue("Mods.SpiritMod.Items.Blaster.Name" + ((element + build) % 8))} " 
+				+ Language.GetTextValue("Mods.SpiritMod.Items.Blaster.DisplayName"));
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			string[] text = new string[]
 			{
-				auxillary switch
-				{
-					1 => "Right click to fire an empowered shot",
-					2 => "Right click to throw the gun out like a boomerang",
-					3 => "Fires in bursts",
-					4 => "Shots bounce off surfaces",
-					5 => "Fires quickly at the cost of accuracy",
-					_ => string.Empty
-				},
-				element switch
-				{
-					0 => "Inflicts fire damage",
-					1 => "Inflicts poison damage",
-					2 => "Attacks inflict Frostburn",
-					_ => "Attacks shock enemies",
-				}
+				(auxillary == 0) ? string.Empty : Language.GetTextValue("Mods.SpiritMod.Items.Blaster.Tips.Auxillary" + auxillary),
+				Language.GetTextValue("Mods.SpiritMod.Items.Blaster.Tips.Element" + (element + 1))
 			};
 
 			for (int i = 0; i < text.Length; i++)

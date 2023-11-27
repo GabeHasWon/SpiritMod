@@ -2,15 +2,17 @@ using SpiritMod.Buffs;
 using SpiritMod.Projectiles.Flail;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Yoyo
 {
 	public class EyeOfTheInfernoProj : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.EyeOfTheInferno.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Eye of the Inferno");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}

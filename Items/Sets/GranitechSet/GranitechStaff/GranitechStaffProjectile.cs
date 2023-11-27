@@ -10,12 +10,13 @@ using SpiritMod.Prim;
 using Terraria.ModLoader;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GranitechStaff
 {
 	public class GranitechStaffProjectile : BaseHeldProj, IDrawAdditive
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Granitech Staff");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.GranitechStaffItem.DisplayName");
 
 		public override string Texture => "SpiritMod/Items/Sets/GranitechSet/GranitechStaff/GranitechStaffItem";
 

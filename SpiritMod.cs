@@ -140,6 +140,8 @@ namespace SpiritMod
 		public static int GlyphCurrencyID;
 		public static int OlympiumCurrencyID = 0;
 
+		internal static bool AutoTrashEnabled = false;
+
 		/// <summary>Automatically returns false for every NPC ID inside of this list in <seealso cref="NPCs.GNPC.AllowTrickOrTreat(NPC)"/>.
 		/// Note that this should only be used in edge cases where an NPC is neither homeless nor has homeTileX/Y set.</summary>
 		public readonly List<int> NPCCandyBlacklist = new();
@@ -858,11 +860,11 @@ namespace SpiritMod
 			{
 				dialogue.Call("AddButton", ModContent.NPCType<Oracle>(), (Func<string>)(() => "Bless"),
 					"SpiritMod/NPCs/Town/Oracle/OracleAuraLetter",
-					(Action)(() =>
+					() =>
 					{
 						if (Main.mouseLeft)
 							Oracle.Bless();
-					}));
+					});
 				
 				// Since NPC types that may have quests are not certain, we add the button for all NPCs and check if they have a quest in the availability parameter
 				for (int i = 0; i < NPCLoader.NPCCount; i++)
@@ -882,6 +884,9 @@ namespace SpiritMod
 						}));
 				}
 			}
+
+			if (ModLoader.TryGetMod("AutoTrash", out _))
+				AutoTrashEnabled = true;
 		}
 
 		internal bool _questBookHover;

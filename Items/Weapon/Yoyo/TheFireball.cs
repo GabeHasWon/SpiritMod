@@ -6,12 +6,6 @@ namespace SpiritMod.Items.Weapon.Yoyo
 {
 	public class TheFireball : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Fireball");
-			// Tooltip.SetDefault("Shoots out bouncing fireballs");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.WoodYoyo);

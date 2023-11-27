@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using Terraria.IO;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SpiritMod.World.Micropasses
 {
@@ -21,7 +22,7 @@ namespace SpiritMod.World.Micropasses
 
 		public override void Run(GenerationProgress progress, GameConfiguration config)
 		{
-			progress.Message = "Spirit Mod Microstructures: Waterfalls";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Waterfalls");
 
 			float worldSize = Main.maxTilesX / 4200f;
 			for (int i = 0; i < 16 * worldSize; i++)

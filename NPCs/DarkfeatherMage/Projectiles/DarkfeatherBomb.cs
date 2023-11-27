@@ -1,7 +1,5 @@
 ﻿using Terraria.Audio;
-using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,10 +11,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
 {
 	public class DarkfeatherBomb : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Darkfeather Bomb");
-        }
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetDefaults()
 		{
@@ -44,6 +39,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
             Main.dust[num623].velocity = Projectile.velocity;
             Main.dust[num623].scale = MathHelper.Clamp(1.6f, .9f, 10 / Projectile.ai[0]);
         }
+
         public override void OnKill(int timeLeft)
         {
             int num = 0;

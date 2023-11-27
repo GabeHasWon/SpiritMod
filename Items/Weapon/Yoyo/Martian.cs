@@ -6,12 +6,6 @@ namespace SpiritMod.Items.Weapon.Yoyo
 {
 	public class Martian : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Terrestrial Ultimatum");
-			// Tooltip.SetDefault("Shoots electrospheres");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.WoodYoyo);

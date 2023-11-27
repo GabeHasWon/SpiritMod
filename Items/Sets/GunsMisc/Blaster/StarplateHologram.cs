@@ -71,22 +71,24 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				SetDirection(player);
 				AnimCounter = .5f;
 
-				Vector2 position = Projectile.Center + (direction * 26) - (Vector2.UnitY * 2);
-				Projectile.NewProjectile(Entity.GetSource_FromAI(), position, direction * 10f, ModContent.ProjectileType<HoloShot>(), Projectile.damage, Projectile.knockBack, player.whoAmI, Hologram ? 1f : 0f);
+				Vector2 pos = Projectile.Center + (direction * 26) - (Vector2.UnitY * 2);
+
+				Projectile.NewProjectile(Entity.GetSource_FromAI(), Collision.CanHitLine(player.Center, player.width, player.height, pos, 2, 2) ? pos : player.Center, 
+					direction * 10f, ModContent.ProjectileType<HoloShot>(), Projectile.damage, Projectile.knockBack, player.whoAmI, Hologram ? 1f : 0f);
 
 				if (!Main.dedServ)
 				{
 					if (Hologram)
 					{
-						ParticleHandler.SpawnParticle(new HoloFlash(position, 1, direction.ToRotation()));
+						ParticleHandler.SpawnParticle(new HoloFlash(pos, 1, direction.ToRotation()));
 						for (int i = 0; i < 3; i++)
-							ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Blue, Main.rand.NextFloat(.2f, .5f), 12));
+							ParticleHandler.SpawnParticle(new FireParticle(pos, (direction * Main.rand.NextFloat(.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Blue, Main.rand.NextFloat(.2f, .5f), 12));
 					}
 					else
 					{
-						ParticleHandler.SpawnParticle(new BlasterFlash(position, 1, direction.ToRotation()));
+						ParticleHandler.SpawnParticle(new BlasterFlash(pos, 1, direction.ToRotation()));
 						for (int i = 0; i < 3; i++)
-							ParticleHandler.SpawnParticle(new FireParticle(position, (direction * Main.rand.NextFloat(.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(.2f, .5f), 12));
+							ParticleHandler.SpawnParticle(new FireParticle(pos, (direction * Main.rand.NextFloat(.5f, 1.2f)).RotatedByRandom(0.8f), Color.White, Color.Red, Main.rand.NextFloat(.2f, .5f), 12));
 					}
 				}
 

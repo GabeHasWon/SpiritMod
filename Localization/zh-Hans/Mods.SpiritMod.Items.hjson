@@ -6618,11 +6618,43 @@ BottomFeederGun: {
 Blaster: {
 	DisplayName: 宇宙冲击波
 	Tooltip: ""
+	// Name1: Luminous
+	// Name2: Ecliptic
+	// Name3: Aphelaic
+	// Name4: Cosmic
+	// Name5: Perihelaic
+	// Name6: Ionized
+	// Name7: Axial
+
+	Tips: {
+		// Auxillary1: Right click to fire an empowered shot
+		// Auxillary2: Right click to throw the gun out like a boomerang
+		// Auxillary3: Fires in bursts
+		// Auxillary4: Shots bounce off surfaces
+		// Auxillary5: Fires quickly at the cost of accuracy
+		// Element1: Inflicts fire damage
+		// Element2: Inflicts poison damage
+		// Element3: Attacks inflict Frostburn
+		// Element4: Attacks shock enemies
+	}
 }
 
 Exotic: {
 	DisplayName: 异域冲击波
 	Tooltip: ""
+	// Name1: Bulb
+	// Name2: Golden
+	// Name3: Swift
+	// Name4: Starplate
+	// Tip1: Launches bouncing glass baubles...ouch!
+	/* Tip2:
+		'''
+		Struck enemies are marked for damage
+		Right click to detonate all marked enemies
+		All marks instantly expire after missing a shot
+		''' */
+	// Tip3: Fires a rapid volley of energy
+	// Tip4: Creates a hologram to supply additional fire
 }
 
 CaptainsRegards: {

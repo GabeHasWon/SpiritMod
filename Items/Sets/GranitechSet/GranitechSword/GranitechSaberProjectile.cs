@@ -12,6 +12,7 @@ using SpiritMod.Particles;
 using SpiritMod.Utilities;
 using System.IO;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 {
@@ -20,9 +21,10 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 		private int swingTime; //Total time for weapon to be used
 		private Vector2 initialVelocity = Vector2.Zero; //Starting velocity, used for determining swing arc direction
 
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.GranitechSaberItem.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Technobrand");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}

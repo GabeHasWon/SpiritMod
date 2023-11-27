@@ -64,5 +64,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest.Entities
 				NPC.frameCounter += 0.2f;
 			NPC.frame.Y = frameHeight * (int)NPC.frameCounter;
 		}
+
+		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = Rectangle.Empty;
 	}
 }

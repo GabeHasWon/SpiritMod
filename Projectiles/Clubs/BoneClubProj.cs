@@ -3,12 +3,15 @@ using System;
 using Terraria;
 using static Terraria.ModLoader.ModContent;
 using SpiritMod.Dusts;
+using Terraria.Localization;
 
 namespace SpiritMod.Projectiles.Clubs
 {
 	class BoneClubProj : ClubProj
 	{
 		public BoneClubProj() : base(new Vector2(76, 82)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BoneClub.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

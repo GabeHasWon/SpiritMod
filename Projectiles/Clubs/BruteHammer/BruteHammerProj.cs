@@ -6,6 +6,7 @@ using System;
 using SpiritMod.Mechanics.Trails;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using Terraria.Localization;
 
 namespace SpiritMod.Projectiles.Clubs.BruteHammer
 {
@@ -13,11 +14,9 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 	{
 		public BruteHammerProj() : base(new Vector2(50, 80)) { }
 
-		public override void SafeSetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Brute Hammer");
-			Main.projFrames[Projectile.type] = 2;
-		}
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BruteHammer.DisplayName");
+
+		public override void SafeSetStaticDefaults() => Main.projFrames[Projectile.type] = 2;
 
 		public override void SafeSetDefaults() => animMax = 360;
 

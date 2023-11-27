@@ -44,7 +44,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 			}
 			if (Projectile.timeLeft < 585 && Projectile.timeLeft % 3 == 0 && Projectile.timeLeft > 500) 
 			{
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, throwLine * (dist / 20), ModContent.ProjectileType<MoonPredictorTrail>(), 0, 0);
+				//Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, throwLine * (dist / 20), ModContent.ProjectileType<MoonPredictorTrail>(), 0, 0);
 			}
 			if (Projectile.timeLeft <= 500 && Projectile.timeLeft > 464) {
 				radians += 0.0872664626f;

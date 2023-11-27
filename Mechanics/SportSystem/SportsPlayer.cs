@@ -6,6 +6,8 @@ namespace SpiritMod.Mechanics.SportSystem;
 
 internal class SportsPlayer : ModPlayer //funny name for a class ain't it
 {
+	public override bool IsLoadingEnabled(Mod mod) => false;
+
 	public override void OnEnterWorld()
 	{
 		if (Main.netMode == NetmodeID.MultiplayerClient)

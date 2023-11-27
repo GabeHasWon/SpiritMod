@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Dusts;
 using SpiritMod.Prim;
 using System;
 using Terraria;
@@ -14,7 +15,6 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Screaming Skull");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 			Main.projFrames[Projectile.type] = 6;
@@ -44,8 +44,8 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.ScreamingTome
 			Player player = Main.player[Projectile.owner];
 			Projectile.frameCounter++;
 
-			/*if (Main.rand.Next(10) == 1)
-				Dust.NewDustPerfect(projectile.Center + Main.rand.NextVector2Circular(24,24), ModContent.DustType<ScreamingDust>(), Vector2.Zero);*/
+			if (Main.rand.NextBool(12))
+				Dust.NewDustPerfect(Projectile.Center + Main.rand.NextVector2Circular(24, 24), ModContent.DustType<ScreamingDust>(), Vector2.Zero, 80, default, .5f);
 
 			if (mousePos == null)
 			{

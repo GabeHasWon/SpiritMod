@@ -1,6 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -12,10 +10,10 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Starfall");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 24;
@@ -31,17 +29,15 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.StarplateGlove
 			Projectile.timeLeft = 20;
 			Projectile.ignoreWater = true;
 		}
-		
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return Color.White;
-		}
+
+		public override Color? GetAlpha(Color lightColor) => Color.White;
 		
 		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 			DustHelper.DrawStar(Projectile.Center, 6, 5, 1.5f, 1,1,1,0.5f, true);
 		}
+
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];

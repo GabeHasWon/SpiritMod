@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Clubs
@@ -14,6 +15,8 @@ namespace SpiritMod.Projectiles.Clubs
 		private bool spawnedTrail = false;
 
 		public EnergizedAxeProj() : base(new Vector2(96)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.RageBlazeDecapitator.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

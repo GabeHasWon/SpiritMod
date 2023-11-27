@@ -1,6 +1,7 @@
 ﻿using SpiritMod.Items.Sets.BismiteSet;
 using SpiritMod.Items.Sets.BriarChestLoot;
 using SpiritMod.Items.Sets.BriarDrops;
+using SpiritMod.Items.Sets.FloranSet;
 using SpiritMod.Items.Sets.HuskstalkSet;
 using SpiritMod.NPCs;
 using SpiritMod.Tiles.Furniture;
@@ -37,12 +38,12 @@ namespace SpiritMod.Items.Consumable
 
 			itemLoot.AddCommon(ItemID.GoldCoin, 4, 5, 12);
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(10, 20, 1, 7, 1, ItemID.IronOre, ItemID.CopperOre, ItemID.GoldOre, ItemID.SilverOre,
-				ItemID.TinOre, ItemID.LeadOre, ItemID.TungstenOre, ItemID.PlatinumOre)); //Ores
+				ItemID.TinOre, ItemID.LeadOre, ItemID.TungstenOre, ItemID.PlatinumOre, ModContent.ItemType<FloranOre>())); //Ores
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(10, 20, 1, 7, 1, ItemID.CobaltOre, ItemID.MythrilOre, ItemID.AdamantiteOre, ItemID.PalladiumOre,
 				ItemID.OrichalcumOre, ItemID.TitaniumOre)); //Hardmode ores
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(2, 5, 1, 4, 1, ItemID.JourneymanBait, ItemID.MasterBait));
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(10, 20, 1, 4, 1, ItemID.GoldBar, ItemID.IronBar, ItemID.CopperBar, ItemID.SilverBar, ItemID.TinBar,
-				ItemID.LeadBar, ItemID.TungstenBar, ItemID.PlatinumBar)); //Bars
+				ItemID.LeadBar, ItemID.TungstenBar, ItemID.PlatinumBar, ModContent.ItemType<FloranBar>())); //Bars
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(10, 20, 1, 4, 1, ItemID.CobaltBar, ItemID.MythrilBar, ItemID.AdamantiteBar, ItemID.PalladiumBar, ItemID.OrichalcumBar,
 				ItemID.TitaniumBar)); //Hardmode bars
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(2, 3, 1, 2, 1, ItemID.ObsidianSkinPotion, ItemID.SwiftnessPotion, ItemID.IronskinPotion, ItemID.HunterPotion,

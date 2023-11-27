@@ -9,14 +9,9 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 {
     public class Cornucopion : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Cornucop-ion");
-            // Tooltip.SetDefault("Hold to charge up lightning that strikes nearby enemies\nCharging up for longer periods creates more strikes\nCharging up for too long electrifies the player\nCan only be used on the surface or higher\n'Shockingly effective'");
-            SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-        }
+        public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
-        public override void SetDefaults()
+		public override void SetDefaults()
         {
             Item.damage = 24;
             Item.knockBack = 8;

@@ -1,19 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Weapon.Magic;
 using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon.SacrificialDagger
 {
 	public class SacrificialDaggerProjectile : ModProjectile, IDrawAdditive
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.SacrificialDagger.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Sacrificial Dagger");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 			ProjectileID.Sets.MinionShot[Projectile.type] = true;

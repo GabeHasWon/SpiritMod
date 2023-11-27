@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,10 +6,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 {
 	public class MoonLightning : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Moon Lightning");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetDefaults()
 		{
@@ -22,12 +18,11 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 			Projectile.timeLeft = 10;
 			Projectile.tileCollide = false;
 		}
+
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             if (Main.rand.NextBool(8))
-            {
                 target.AddBuff(BuffID.Electrified, 180, true);
-            }
         }
     }
 }

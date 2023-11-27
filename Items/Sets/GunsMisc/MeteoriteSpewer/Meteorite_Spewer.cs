@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 {
 	public class Meteorite_Spewer : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Magmaspewer");
-			// Tooltip.SetDefault("Spews meteorites that linger for a short time\n50% chance to not consume ammo");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -34,9 +28,9 @@ namespace SpiritMod.Items.Sets.GunsMisc.MeteoriteSpewer
 		}
 
 		public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() >= .50f;
+
 		public override Vector2? HoldoutOffset() => new Vector2(-11, -2);
 
-		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 30f;

@@ -2,21 +2,20 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held
 {
 	public class DuskLanceProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-		}
-
 		int timer = 10;
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.DuskLance.DisplayName");
+
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.Trident);
-
 			AIType = ProjectileID.Trident;
 		}
 

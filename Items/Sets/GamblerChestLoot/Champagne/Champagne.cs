@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using SpiritMod.Prim;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 {
@@ -32,9 +33,10 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 
 	public class ChampagneProj : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Champagne.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Champagne");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 
@@ -148,9 +150,10 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 
 	public class ChampagneCork : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Champagne.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Champagne");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}
@@ -181,9 +184,10 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 
 	public class ChampagneLiquid : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Champagne.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Champagne");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
 		}

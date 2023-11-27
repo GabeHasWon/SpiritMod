@@ -7,17 +7,12 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Particles;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 {
 	public class MarkOfZeus : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Mark of Zeus");
-			// Tooltip.SetDefault("Hold and release to throw\nHold it longer for more velocity and damage\nConsumes 20 mana per second while charging");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 80;
@@ -51,7 +46,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 
 	public class MarkOfZeusProj : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mark of Zeus");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.MarkOfZeus.DisplayName");
 
 		public override void SetDefaults()
 		{
@@ -219,9 +214,10 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 	{
 		public MarkOfZeusPrimTrailTwo trail;
 
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.MarkOfZeus.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Mark Of Zeus");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -309,7 +305,8 @@ namespace SpiritMod.Items.Sets.OlympiumSet.MarkOfZeus
 		public MarkOfZeusPrimTrail trail;
 
 		private bool initialized = false;
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Mark of Zeus");
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.MarkOfZeus.DisplayName");
 
 		public override void SetDefaults()
 		{

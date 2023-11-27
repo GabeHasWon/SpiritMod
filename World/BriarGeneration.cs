@@ -9,6 +9,7 @@ using Terraria;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.IO;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
@@ -1621,7 +1622,7 @@ namespace SpiritMod.World
 			tasks.Insert(++index, new PassLegacy("Briar",
 				delegate (GenerationProgress progress, GameConfiguration config)
 				{
-					progress.Message = "Growing The Briar...";
+					progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Briar");
 
 					int tilePer = 10;
 					int safeInARow = 0;
@@ -1661,7 +1662,7 @@ namespace SpiritMod.World
 			tasks.Insert(index + 2, new PassLegacy("Briar Grass",
 				delegate (GenerationProgress progress, GameConfiguration config)
 				{
-					progress.Message = "Growing Hostile Settlements...";
+					progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.BriarTwo");
 
 					// BLOCK TYPES
 					ushort briarGrass = (ushort)ModContent.TileType<BriarGrass>();

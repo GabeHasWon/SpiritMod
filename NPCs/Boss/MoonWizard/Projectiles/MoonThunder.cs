@@ -16,8 +16,6 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
 		float fadeOutNum = 1f;
 
-		//public override void SetStaticDefaults() => DisplayName.SetDefault("Lightning");
-
 		public override void SetDefaults()
         {
             Projectile.timeLeft = 4000;
@@ -40,8 +38,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if (Projectile.ai[0] <= 0f) return false;
-            if (lines == null) return false;
+            if (Projectile.ai[0] <= 0f || lines == null)
+				return false;
 
             Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
@@ -63,20 +61,11 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.Electrified, 180);
 
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => base.Colliding(projHitbox, targetHitbox);
+
 		private void MakeLightning()
         {
-            Vector2 start = new Vector2(Projectile.Center.X, 0);
-            Point endTile = start.ToTileCoordinates();
-            Tile tile;
-            do
-            {
-                endTile.Y++;
-                tile = Main.tile[endTile.X, endTile.Y];
-            }
-            while (tile == null || (Main.tileSolid[tile.TileType] && !Main.tile[endTile.X, endTile.Y].HasTile) || TileID.Sets.Platforms[tile.TileType]);
-
-            Vector2 end = endTile.ToVector2() * 16f + Vector2.UnitX * 8f;
-            Line line = new Line(start, end);
+            Line line = new Line(new Vector2(Projectile.Center.X, 0), Projectile.Center);
 
 			lines = new List<List<Line>> { new List<Line>() };
 			lines[0].Add(line);
@@ -127,7 +116,8 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                 midPoint = line.start + ((line.end - line.start) * 0.5f).RotatedBy(Main.rand.NextFloat(-MIN_MAX_ANGLE, MIN_MAX_ANGLE));
                 tile = midPoint.ToTileCoordinates();
                 fails++;
-            } while (fails < 20 && WorldGen.InWorld(tile.X, tile.Y) && Main.tile[tile.X, tile.Y] != null && Main.tile[tile.X, tile.Y].HasTile);
+            }
+			while (fails < 20 && WorldGen.InWorld(tile.X, tile.Y) && Main.tile[tile.X, tile.Y] != null && Main.tile[tile.X, tile.Y].HasTile);
 
             Line newLine1 = new Line(line.start, midPoint);
             Line newLine2 = new Line(midPoint, line.end);
@@ -138,8 +128,6 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
 
         private void DrawLine(SpriteBatch spriteBatch, Rectangle screen, Line line)
         {
-            //if (!screen.Contains(line.start) && !screen.Contains(line.end)) return;
-
             Vector2 delta = line.end - line.start;
             Vector2 normalised = Vector2.Normalize(delta);
             float length = delta.Length();
@@ -147,7 +135,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             float rotation = delta.ToRotation();
 
             //draw main line
-            spriteBatch.Draw(texture, line.start - Main.screenPosition, new Rectangle(16, 0, 2, 30), new Color(138, 235, 255) *fadeOutNum, rotation, new Vector2(0, 15f), new Vector2(length * 0.5f, 1.55f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, line.start - Main.screenPosition, new Rectangle(16, 0, 2, 30), new Color(138, 235, 255) * fadeOutNum, rotation, new Vector2(0, 15f), new Vector2(length * 0.5f, 1.55f), SpriteEffects.None, 0f);
             //draw ends
             spriteBatch.Draw(texture, line.start - normalised * 16f - Main.screenPosition, new Rectangle(0, 0, 16, 30), new Color(138, 235, 255) * .5f * fadeOutNum, rotation, new Vector2(0, 15f), 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(texture, line.end - Main.screenPosition, new Rectangle(18, 0, 16, 30), Color.White * .85f * fadeOutNum, rotation, new Vector2(0, 15f), 1f, SpriteEffects.None, 0f);

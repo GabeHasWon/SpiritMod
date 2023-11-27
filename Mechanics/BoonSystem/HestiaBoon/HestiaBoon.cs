@@ -13,7 +13,7 @@ namespace SpiritMod.Mechanics.BoonSystem.HestiaBoon
 	{
 		public override bool CanApply => true;
 		public override string TexturePath => "SpiritMod/Mechanics/BoonSystem/HestiaBoon/HestiaBoon";
-		public override Vector2 SigilSize => new Vector2(26, 34);
+		public override Vector2 SigilSize => new(26, 34);
 
 		public override void SetStats() => npc.lifeMax = npc.life = (int)(npc.lifeMax * 1.5f);
 

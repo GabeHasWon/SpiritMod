@@ -14,6 +14,7 @@ using SpiritMod.Mechanics.BoonSystem;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Banners;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Hydra
 {
@@ -528,9 +529,10 @@ namespace SpiritMod.NPCs.Hydra
 
 	public class HydraFireGlob : ModProjectile, IDrawAdditive
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.HydraVenomGlob.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Hydra Spit");
 			Main.projFrames[Projectile.type] = 4;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -631,6 +633,8 @@ namespace SpiritMod.NPCs.Hydra
 
 	public class HydraExplosion : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.HydraVenomGlob.DisplayName");
+
 		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 6;
 
 		public override void SetDefaults()
@@ -670,6 +674,8 @@ namespace SpiritMod.NPCs.Hydra
 
 	public class HydraPoisonGlob : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.HydraVenomGlob.DisplayName");
+
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Hydra Spit");

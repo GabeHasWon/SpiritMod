@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using Terraria;
+﻿using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,7 +13,7 @@ namespace SpiritMod
 
 		public static bool CanDropLoot(this NPC npc) => npc.lifeMax > 5 && !npc.friendly && !npc.SpawnedFromStatue;
 
-		public static void AddItem(ref Chest shop, ref int nextSlot, int item, int price = -1, bool check = true)
+		/*public static void AddItem(ref Chest shop, ref int nextSlot, int item, int price = -1, bool check = true)
 		{
 			if (check)
 			{
@@ -25,7 +23,7 @@ namespace SpiritMod
 
 				nextSlot++;
 			}
-		}
+		}*/
 
 		public static int ToActualDamage(float damageValue, float expertScaling = 1, float masterScaling = 1)
 		{

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.Linq;
 using SpiritMod.Items.Equipment;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword
 {
@@ -46,7 +47,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Anime Sword");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.AnimeSword.DisplayName");
 
 		public override void SetDefaults()
 		{

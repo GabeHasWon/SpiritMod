@@ -7,12 +7,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using SpiritMod.Dusts;
+using Terraria.Localization;
 
 namespace SpiritMod.Projectiles.Clubs
 {
 	class BlasphemerProj : ClubProj
 	{
 		public BlasphemerProj() : base(new Vector2(104)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.Blasphemer.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

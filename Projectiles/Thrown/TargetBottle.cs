@@ -3,6 +3,7 @@ using SpiritMod.Buffs;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Thrown
@@ -23,12 +24,12 @@ namespace SpiritMod.Projectiles.Thrown
 			Rectangle hitbox = Projectile.getRect();
 
 			foreach (Projectile proj in Main.projectile)
-				if (proj.active && proj.whoAmI != Projectile.whoAmI && proj.IsRanged() && proj.friendly && Collision.CheckAABBvLineCollision(hitbox.TopLeft(), hitbox.Size(), proj.Center, proj.Center + (proj.velocity * (proj.extraUpdates + 1)), 10, ref collisionPoint))
+				if (proj.active && proj.whoAmI != Projectile.whoAmI && proj.IsRanged() && proj.friendly && (proj.width <= 6 || proj.height <= 6) && Collision.CheckAABBvLineCollision(hitbox.TopLeft(), hitbox.Size(), proj.Center, proj.Center + (proj.velocity * (proj.extraUpdates + 1)), 10, ref collisionPoint))
 				{
 					ImpactFX();
 					Main.player[Projectile.owner].AddBuff(ModContent.BuffType<TrueMarksman>(), 210);
 					Projectile.active = false;
-					CombatText.NewText(hitbox, new Color(255, 155, 0, 100), "Bullseye!");
+					CombatText.NewText(hitbox, new Color(255, 155, 0, 100), Language.GetTextValue("Mods.SpiritMod.Misc.Bullseye"));
 					break;
 				}
 		}

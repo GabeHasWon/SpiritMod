@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.Mangrove_Defender
@@ -8,10 +9,9 @@ namespace SpiritMod.NPCs.Mangrove_Defender
 	{
 		public int projectileTimer = 0;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Earth Slam");
-		}
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Projectiles.Earth_Slam_Projectile.DisplayName");
+
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetDefaults()
 		{

@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
@@ -21,7 +22,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 			Item.useTime = 30;
 			Item.mana = 4;
 			Item.useAnimation = 30;
-			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;
 			Item.knockBack = 0;
 			Item.value = Item.sellPrice(0, 0, 5, 0);
 			Item.rare = ItemRarityID.Blue;
@@ -55,6 +56,8 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 	public class HowlingScepterProj : ModProjectile
 	{
 		public Player Owner => Main.player[Projectile.owner];
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.HowlingScepter.DisplayName");
 
 		public override void SetStaticDefaults() => Main.projFrames[Type] = 4;
 

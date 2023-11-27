@@ -307,7 +307,7 @@ namespace SpiritMod
 										position.Y -= 60;
 									break;
 								case QuestUtils.QuestInvLocation.Trashcan:
-									position = new Vector2(388, 258);
+									position = new Vector2(SpiritMod.AutoTrashEnabled ? 334 : 388, 258);
 									break;
 								case QuestUtils.QuestInvLocation.FarLeft:
 									position = new Vector2(20, Main.GameModeInfo.IsJourneyMode ? 310 : 258);
@@ -358,7 +358,8 @@ namespace SpiritMod
 					"SpiritMod: SellUI",
 					delegate
 					{
-						SpiritMod.DrawUpdateToggles();
+						if (ModContent.GetInstance<SpiritClientConfig>().QuickSell)
+							SpiritMod.DrawUpdateToggles();
 						if (AutoSellUI.visible)
 						{
 							SpiritMod.Instance.AutoSellUI_INTERFACE.Update(Main._drawInterfaceGameTime);

@@ -2,6 +2,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
@@ -33,7 +34,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 	{
 		private const int timeLeftMax = 90;
 
-		//public override void SetStaticDefaults() => DisplayName.SetDefault("Funny Firework");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.FunnyFirework.DisplayName");
 
 		public override void SetDefaults()
 		{

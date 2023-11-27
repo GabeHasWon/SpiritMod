@@ -50,6 +50,7 @@ using SpiritMod.NPCs.Town;
 using SpiritMod.Items.Accessory.Leather;
 using SpiritMod.Tiles.Ambient;
 using SpiritMod.GlobalClasses.Items;
+using SpiritMod.Items.Accessory.RabbitFoot;
 
 namespace SpiritMod
 {
@@ -112,6 +113,7 @@ namespace SpiritMod
 		public bool forbiddenTome = false;
 		public bool teslaCoil = false;
 		public bool illusionistEye = false;
+		public bool rabbitFoot;
 		public bool stoneplate = false;
 
 		private bool canJustLand = false;
@@ -449,6 +451,7 @@ namespace SpiritMod
 			surferSet = false;
 			scarabCharm = false;
 			assassinMag = false;
+			rabbitFoot = false;
 			stoneplate = false;
 
 			justLanded = canJustLand && Player.velocity.Y == 0 && Player.grappling[0] == -1;
@@ -1997,6 +2000,12 @@ namespace SpiritMod
 				concentrated = false;
 				concentratedCooldown = 300;
 			}
+		}
+
+		public override void ModifyWeaponCrit(Item item, ref float crit)
+		{
+			if (rabbitFoot)
+				crit = 1;
 		}
 
 		private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) { if (condition) p.AddBuff(id, ticks); }

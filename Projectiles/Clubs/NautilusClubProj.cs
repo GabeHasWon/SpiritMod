@@ -4,6 +4,7 @@ using SpiritMod.Dusts;
 using System;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Clubs
@@ -11,6 +12,8 @@ namespace SpiritMod.Projectiles.Clubs
 	class NautilusClubProj : ClubProj
 	{
 		public NautilusClubProj() : base(new Vector2(80, 102)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.NautilusClub.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

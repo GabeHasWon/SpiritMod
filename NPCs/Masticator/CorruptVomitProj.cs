@@ -9,10 +9,7 @@ namespace SpiritMod.NPCs.Masticator
 {
 	public class CorruptVomitProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Corrupt Vomit");
-		}
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetDefaults()
 		{

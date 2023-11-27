@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Weapon.Yoyo
 {
 	public class Tao : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Taoyo");
-			// Tooltip.SetDefault("May confuse foes\n'But it keeps your mind clear'");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.WoodYoyo);
@@ -29,7 +23,7 @@ namespace SpiritMod.Items.Weapon.Yoyo
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.DarkShard, 1);
 			recipe.AddIngredient(ItemID.LightShard, 1);
 			recipe.AddIngredient(ItemID.SoulofLight, 5);

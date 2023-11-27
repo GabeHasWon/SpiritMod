@@ -5,20 +5,21 @@ using SpiritMod.Particles;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held
 {
 	public class BismiteSpearProj : ModProjectile
 	{
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BismiteSpear.DisplayName");
+
 		private int Counter
 		{
 			get => (int)Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
 		private readonly int lungeLength = 36;
-
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Bismite Pike");
 
 		public override void SetDefaults()
 		{

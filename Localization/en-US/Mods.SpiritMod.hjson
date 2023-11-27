@@ -1,4 +1,6 @@
 GoldifiedDeath: " died solid as a gold bar"
+Frozen: Frozen
+# Config stuff:
 Screenshake: "[i:5926]  Visuals: Screenshake"
 Distortion: "[i:5926]  Visuals: Screen Distortion"
 Particles: "[i:5926]  Visuals: Foreground Particles"
@@ -303,6 +305,12 @@ BossChecklistIntegration: {
 	JellyDeluge.EntryName: Jelly Deluge
 	TheTide.EntryName: The Tide
 	MysticMoon.EntryName: Mystic Moon
+}
+
+MapObject: {
+	SpiritPylon: Spirit Pylon
+	BriarPylon: Briar Pylon
+	AsteroidPylon: Asteroid Pylon
 }
 
 Condition: {

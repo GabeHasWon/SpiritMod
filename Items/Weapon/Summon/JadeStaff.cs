@@ -12,12 +12,6 @@ namespace SpiritMod.Items.Weapon.Summon
 {
 	public class JadeStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Staff of the Jade Dragon");
-			// Tooltip.SetDefault("Summons two revolving ethereal dragons");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 23;

@@ -8,7 +8,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
 {
 	public class DarkfeatherBoltRegular : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Darkfeather Bolt");
+		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
 		public override void SetDefaults()
 		{
@@ -20,6 +20,7 @@ namespace SpiritMod.NPCs.DarkfeatherMage.Projectiles
 			Projectile.width = 4;
 			Projectile.hide = true;
 		}
+
 		public override void AI()
 		{
             Projectile.ai[0] += .1135f;

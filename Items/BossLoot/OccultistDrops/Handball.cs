@@ -9,12 +9,6 @@ namespace SpiritMod.Items.BossLoot.OccultistDrops
 {
 	public class Handball : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Grasp");
-			// Tooltip.SetDefault("Inflicts 'Blood Corruption'\nCritical hits inflict 'Shadowflame'\n'And so I said, 'Catch these hands''");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.WoodYoyo);

@@ -1,6 +1,7 @@
 using SpiritMod.Items.Sets.BismiteSet;
 using SpiritMod.Items.Sets.BriarChestLoot;
 using SpiritMod.Items.Sets.BriarDrops;
+using SpiritMod.Items.Sets.FloranSet;
 using SpiritMod.Items.Sets.HuskstalkSet;
 using SpiritMod.NPCs;
 using SpiritMod.Tiles.Furniture;
@@ -37,10 +38,10 @@ public class ReachCrate : ModItem
 
 		itemLoot.AddCommon(ItemID.GoldCoin, 1, 5, 12);
 		itemLoot.Add(DropRules.LootPoolDrop.SameStack(10, 20, 1, 7, 1, ItemID.IronOre, ItemID.CopperOre, ItemID.GoldOre, ItemID.SilverOre, 
-			ItemID.TinOre, ItemID.LeadOre, ItemID.TungstenOre, ItemID.PlatinumOre));
+			ItemID.TinOre, ItemID.LeadOre, ItemID.TungstenOre, ItemID.PlatinumOre, ModContent.ItemType<FloranOre>()));
 		itemLoot.Add(DropRules.LootPoolDrop.SameStack(2, 5, 1, 4, 1, ItemID.JourneymanBait, ItemID.MasterBait));
 		itemLoot.Add(DropRules.LootPoolDrop.SameStack(10, 20, 1, 4, 1, ItemID.GoldBar, ItemID.IronBar, ItemID.CopperBar, ItemID.SilverBar, ItemID.TinBar, 
-			ItemID.LeadBar, ItemID.TungstenBar, ItemID.PlatinumBar));
+			ItemID.LeadBar, ItemID.TungstenBar, ItemID.PlatinumBar, ModContent.ItemType<FloranBar>()));
 		itemLoot.Add(DropRules.LootPoolDrop.SameStack(2, 3, 1, 2, 1, ItemID.ObsidianSkinPotion, ItemID.SwiftnessPotion, ItemID.IronskinPotion, ItemID.HunterPotion, 
 			ItemID.ShinePotion, ItemID.MiningPotion, ItemID.HeartreachPotion, ItemID.TrapsightPotion, ItemID.GillsPotion));
 		itemLoot.Add(DropRules.LootPoolDrop.SameStack(5, 16, 1, 2, 1, ItemID.HealingPotion, ItemID.ManaPotion));

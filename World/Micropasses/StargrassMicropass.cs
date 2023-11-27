@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SpiritMod.World.Micropasses;
 
@@ -15,7 +16,7 @@ internal class StargrassMicropass : Micropass
 
 	public override void Run(GenerationProgress progress, Terraria.IO.GameConfiguration config)
 	{
-		progress.Message = "Spirit Mod Microstructures: Stargrass";
+		progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Stargrass");
 
 		float worldSize = Main.maxTilesX / 4200f;
 

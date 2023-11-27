@@ -2,13 +2,14 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Held
 {
 	public class ZephyrSpearProj : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Breath of the Zephyr");
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BreathOfTheZephyr.DisplayName");
 
 		public override void SetDefaults()
 		{

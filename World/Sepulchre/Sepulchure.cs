@@ -12,14 +12,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using Terraria.IO;
+using Terraria.Localization;
 
 namespace SpiritMod.World.Sepulchre
 {
 	public class SepulchureSystem : ModSystem
 	{
-		private int Wall => ModContent.WallType<SepulchreWallTile>();
-		private int Tile => ModContent.TileType<SepulchreBrick>();
-		private int TileTwo => ModContent.TileType<SepulchreBrickTwo>();
+		private static int Wall => ModContent.WallType<SepulchreWallTile>();
+		private static int Tile => ModContent.TileType<SepulchreBrick>();
+		private static int TileTwo => ModContent.TileType<SepulchreBrickTwo>();
 
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 		{
@@ -30,7 +31,7 @@ namespace SpiritMod.World.Sepulchre
 
 			tasks.Insert(++index, new PassLegacy("Sepulchure", (GenerationProgress progress, GameConfiguration config) =>
 			{
-				progress.Message = "Spirit Mod: Generating Dark Sepulchres...";
+				progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Sepulchre");
 
 				float old = Main.soundVolume;
 				Main.soundVolume = 0;

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -8,6 +9,8 @@ namespace SpiritMod.Projectiles.Clubs
 	class SporeClubProj : ClubProj
 	{
 		public SporeClubProj() : base(new Vector2(86, 82)) { }
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.SporeClub.DisplayName");
 
 		public override void SafeSetStaticDefaults()
 		{

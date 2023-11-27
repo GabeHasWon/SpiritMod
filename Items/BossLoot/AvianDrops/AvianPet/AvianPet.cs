@@ -209,9 +209,9 @@ namespace SpiritMod.Items.BossLoot.AvianDrops.AvianPet
 				}
 			}
 
-			Main.spriteBatch.Draw(TextureAssets.Projectile[Type].Value, drawPos, source, lightColor, Projectile.rotation, Origin, Vector2.One, effects, 0);
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Type].Value, drawPos, source, lightColor, Projectile.rotation, Origin, Vector2.One, effects);
 			//Draw a glowmask
-			Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, drawPos, source, Projectile.GetAlpha(Color.White), Projectile.rotation, Origin, Vector2.One, effects, 0);
+			Main.EntitySpriteDraw(ModContent.Request<Texture2D>(Texture + "_Glow").Value, drawPos, source, Projectile.GetAlpha(Color.White), Projectile.rotation, Origin, Vector2.One, effects);
 			return false;
 		}
 	}

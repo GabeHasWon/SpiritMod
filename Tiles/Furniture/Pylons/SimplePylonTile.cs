@@ -54,7 +54,6 @@ namespace SpiritMod.Tiles.Furniture.Pylons
 			AddToArray(ref TileID.Sets.CountsAsPylon);
 
 			LocalizedText pylonName = CreateMapEntryName();
-			// pylonName.SetDefault($"${MapKeyName}");
 			AddMapEntry(Color.White, pylonName);
 		}
 

@@ -5,6 +5,7 @@ using Terraria.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria.WorldBuilding;
+using Terraria.Localization;
 
 namespace SpiritMod.World.Micropasses
 {
@@ -34,7 +35,7 @@ namespace SpiritMod.World.Micropasses
 
 		public override void Run(GenerationProgress progress, Terraria.IO.GameConfiguration config)
 		{
-			progress.Message = "Spirit Mod Microstructures: Boulders";
+			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Boulders");
 
 			float worldSize = Main.maxTilesX / 4200f;
 			for (int i = 0; i < 6 * worldSize; i++)

@@ -23,11 +23,7 @@ namespace SpiritMod.Projectiles
 
 		private bool released = false;
 
-		public override void SetStaticDefaults()
-		{
-			//DisplayName.SetDefault("Cornucop-ion");
-			Main.projFrames[Type] = 7;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Type] = 7;
 
 		public override void SetDefaults()
 		{
