@@ -8,7 +8,6 @@ namespace SpiritMod.Buffs
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Chilly Grasp");
 			Main.buffNoTimeDisplay[Type] = false;
 			Main.pvpBuff[Type] = false;
 		}

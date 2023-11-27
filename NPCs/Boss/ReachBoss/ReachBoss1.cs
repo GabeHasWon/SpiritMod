@@ -78,18 +78,14 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			Player player = Main.player[NPC.target];
 			bool expertMode = Main.expertMode;
 
-			if (!player.active || player.dead)
+			if (!player.active || player.dead || player.DistanceSQ(NPC.Center) > 20000 * 20000)
 			{
 				NPC.TargetClosest(false);
+				NPC.velocity.Y -= 0.2f;
+				NPC.alpha += 2;
 
-				if (!player.active || player.dead)
-				{
-					NPC.velocity.Y -= 0.2f;
-					NPC.alpha += 2;
-
-					if (NPC.alpha >= 254)
-						NPC.active = false;
-				}
+				if (NPC.alpha >= 254)
+					NPC.active = false;
 			}
 			else
 				NPC.alpha = Math.Clamp(NPC.alpha - 2, 0, 255);

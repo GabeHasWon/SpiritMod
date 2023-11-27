@@ -26,7 +26,7 @@ namespace SpiritMod.NPCs.Boss
 		private Point tornado = new();
 
 		int timer = 0;
-		int moveSpeed = 0;
+		int directionX = 0;
 		int moveSpeedY = 0;
 		float HomeY = 330f;
 
@@ -83,14 +83,32 @@ namespace SpiritMod.NPCs.Boss
 			NPC.rotation = NPC.velocity.X * 0.07f;
 
 			Player player = Main.player[NPC.target];
+
+			if (!player.active || player.dead || player.DistanceSQ(NPC.Center) > 24000 * 24000) // Despawn when the player is dead
+			{
+				if (timer > 0)
+					timer = 0;
+
+				NPC.TargetClosest(false);
+				NPC.velocity.Y -= 0.5f;
+				timer--;
+
+				if (timer <= -120)
+				{
+					NPC.active = false;
+					HitEffect(NPC.CalculateHitInfo(0, 0, true, 0));
+				}
+				return;
+			}
+
 			MyPlayer modPlayer = player.GetSpiritPlayer();
 
-			if (NPC.Center.X >= player.Center.X && moveSpeed >= -120) // flies to players x position
-				moveSpeed--;
-			else if (NPC.Center.X <= player.Center.X && moveSpeed <= 120)
-				moveSpeed++;
+			if (NPC.Center.X >= player.Center.X && directionX >= -120) // flies to players x position
+				directionX--;
+			else if (NPC.Center.X <= player.Center.X && directionX <= 120)
+				directionX++;
 
-			NPC.velocity.X = moveSpeed * 0.10f;
+			NPC.velocity.X = directionX * 0.10f;
 
 			if (NPC.Center.Y >= player.Center.Y - HomeY && moveSpeedY >= -30) //Flies to players Y position
 			{
@@ -101,7 +119,6 @@ namespace SpiritMod.NPCs.Boss
 				moveSpeedY++;
 
 			NPC.velocity.Y = moveSpeedY * 0.13f;
-
 			timer++;
 
 			if (timer == 200 || timer == 400 && NPC.life >= (NPC.lifeMax / 2)) //Fires desert feathers like a shotgun
@@ -257,13 +274,6 @@ namespace SpiritMod.NPCs.Boss
 						}
 					}
 				}
-			}
-
-			if (!player.active || player.dead) //despawns when player is ded
-			{
-				NPC.TargetClosest(false);
-				NPC.velocity.Y = -50;
-				timer = 0;
 			}
 		}
 

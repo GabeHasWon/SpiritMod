@@ -160,7 +160,7 @@ DynastyFanBuff: {
 
 ElectrifiedV2: {
 	DisplayName: Electrified
-	Description: Mods.SpiritMod.Buffs.ElectrifiedV2.Description
+	Description: The sequel we - wait
 }
 
 EleutheriosBuff: {
@@ -175,7 +175,7 @@ FateBlessing: {
 
 Frozen: {
 	DisplayName: Frozen
-	Description: Mods.SpiritMod.Buffs.Frozen.Description
+	Description: Frozen solid!
 }
 
 BurningRage: {
@@ -250,7 +250,7 @@ InfernalRage: {
 
 MageFreeze: {
 	DisplayName: Chilly Grasp
-	Description: Mods.SpiritMod.Buffs.MageFreeze.Description
+	Description: A cold hand traps you
 }
 
 MidasTouch: {
@@ -499,22 +499,22 @@ TurtlePotionBuff: {
 
 Shadowbroken: {
 	DisplayName: Shadowbroken
-	Description: Mods.SpiritMod.Buffs.Shadowbroken.Description
+	Description: Shade hides from you
 }
 
 Shadowflame: {
 	DisplayName: Shadowflame
-	Description: Mods.SpiritMod.Buffs.Shadowflame.Description
+	Description: A sequel we never knew we wanted
 }
 
 Shocked: {
 	DisplayName: Shocked!
-	Description: Mods.SpiritMod.Buffs.Shocked.Description
+	Description: Woah!
 }
 
 SoulBurn: {
 	DisplayName: Soul Burn
-	Description: Mods.SpiritMod.Buffs.SoulBurn.Description
+	Description: Your soul yearns for freedom
 }
 
 SoulFlare: {
@@ -533,7 +533,7 @@ SpiritBuff: {
 
 StackingFireBuff: {
 	DisplayName: Combustion Blaze
-	Description: Mods.SpiritMod.Buffs.StackingFireBuff.Description
+	Description: Burning, but worse!
 }
 
 StarCooldown: {
@@ -548,7 +548,7 @@ StarFlame: {
 
 StarFracture: {
 	DisplayName: Star Fracture
-	Description: Mods.SpiritMod.Buffs.StarFracture.Description
+	Description: Broken by the stars
 }
 
 StarplateGravity: {
@@ -568,22 +568,22 @@ Sturdy: {
 
 ElectricSummonTag: {
 	DisplayName: Summon Tag
-	Description: Mods.SpiritMod.Buffs.ElectricSummonTag.Description
+	Description: Tagged!
 }
 
 SacrificialDaggerBuff: {
 	DisplayName: Sacrificial Strike
-	Description: Mods.SpiritMod.Buffs.SacrificialDaggerBuff.Description
+	Description: Three (3) projectiles
 }
 
 SummonTag3: {
 	DisplayName: Summon Tag
-	Description: Mods.SpiritMod.Buffs.SummonTag3.Description
+	Description: Tagged!
 }
 
 SummonTag5: {
 	DisplayName: Summon Tag
-	Description: Mods.SpiritMod.Buffs.SummonTag5.Description
+	Description: Tagged!
 }
 
 SurgingAnguish: {
@@ -613,12 +613,12 @@ SunPotBuff: {
 
 TopazMarked: {
 	DisplayName: Illuminated
-	Description: Mods.SpiritMod.Buffs.TopazMarked.Description
+	Description: Like 10 million fireflies
 }
 
 Tracked: {
 	DisplayName: Tracked
-	Description: Mods.SpiritMod.Buffs.Tracked.Description
+	Description: You can run, but you can't hide
 }
 
 TrueMarksman: {
@@ -633,7 +633,7 @@ UnstableAffliction: {
 
 VineTrap: {
 	DisplayName: Vine Trap
-	Description: Mods.SpiritMod.Buffs.VineTrap.Description
+	Description: Escape is impossible
 }
 
 VirulenceCooldown: {
@@ -648,7 +648,7 @@ Wither: {
 
 WitheringLeaf: {
 	DisplayName: Withering Leaf
-	Description: Mods.SpiritMod.Buffs.WitheringLeaf.Description
+	Description: Wilting, wasting away...
 }
 
 CryoZoneTimer: {
@@ -713,13 +713,12 @@ BaubleResistance: {
 
 GildedScarab_buff: {
 	DisplayName: Scarab Shield
-	Description: Defense increased by {0}
+	Description: "Defense increased by {0}"
 }
 
 SlagFury_buff: {
-	Tooltip: Slag Fury
+	DisplayName: Slag Fury
 	Description: "{$CommonItemTooltip.PercentIncreasedDamage}"
-	DisplayName: Slag Fury_buff
 }
 
 RunicSiphon: {
@@ -744,7 +743,7 @@ MirrorCoatBuff: {
 
 SaddleBuff: {
 	DisplayName: Aurora Stag Mount
-	Description: Mods.SpiritMod.Buffs.SaddleBuff.Description
+	Description: You feel the power of the stars
 }
 
 CosmicRattlerPetBuff: {
@@ -779,7 +778,7 @@ SwimmingFatigue: {
 
 CurseBreakerMark: {
 	DisplayName: Curse Mark
-	Description: Mods.SpiritMod.Buffs.CurseBreakerMark.Description
+	Description: Marked for death!
 }
 
 MarbleMinecartBuff: {
@@ -894,10 +893,10 @@ LocustBig_Buff: {
 
 ExplorerSpeed: {
 	DisplayName: Explorer Speed
-	Description: Mods.SpiritMod.Buffs.ExplorerSpeed.Description
+	Description: Your mobility is greatly improved
 }
 
 ArcaneFreeze: {
 	DisplayName: Arcane Freeze
-	Description: Mods.SpiritMod.Buffs.ArcaneFreeze.Description
+	Description: A magical ice consumes you
 }
