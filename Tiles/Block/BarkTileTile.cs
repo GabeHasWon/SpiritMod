@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Sets.HuskstalkSet;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -15,11 +14,6 @@ namespace SpiritMod.Tiles.Block
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
 			AddMapEntry(new Color(133, 104, 70));
-		}
-
-		public override bool CanExplode(int i, int j)
-		{
-			return true;
 		}
 	}
 }

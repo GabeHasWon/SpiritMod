@@ -23,9 +23,15 @@ namespace SpiritMod.Items.Glyphs
 			if (owner.whoAmI != Main.myPlayer)
 				return;
 
+			int type = ModContent.ProjectileType<CursedPhantom>();
 			int count = Main.rand.Next(2, 5);
+
 			for (int i = 0; i < count; i++)
-				Projectile.NewProjectileDirect(owner.GetSource_OnHit(target), target.Center, (Vector2.UnitY * -Main.rand.NextFloat(8f, 12f)).RotatedByRandom(1.5f), ModContent.ProjectileType<CursedPhantom>(), damage, 4, owner.whoAmI, ai1: Main.rand.Next(100, 180)).scale = Main.rand.NextFloat(.8f, 1f);
+			{
+				if (owner.ownedProjectileCounts[type] >= 10)
+					break;
+				Projectile.NewProjectileDirect(owner.GetSource_OnHit(target), target.Center, (Vector2.UnitY * -Main.rand.NextFloat(8f, 12f)).RotatedByRandom(1.5f), type, damage, 4, owner.whoAmI, ai1: Main.rand.Next(100, 180)).scale = Main.rand.NextFloat(.8f, 1f);
+			}
 		}
 	}
 }

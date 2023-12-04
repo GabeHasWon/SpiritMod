@@ -59,7 +59,7 @@ namespace SpiritMod.NPCs
 			{
 				Range[] stacks = new Range[options.Length];
 
-				for (int i = 0; i < options.Length - 1; ++i)
+				for (int i = 0; i < options.Length; ++i)
 					stacks[i] = minStack..maxStack;
 
 				return new LootPoolDrop(stacks, amount, denominator, numerator, options);
