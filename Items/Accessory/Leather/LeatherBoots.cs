@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Accessory.Leather
 	[AutoloadEquip(EquipType.Shoes)]
 	public class LeatherBoots : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Leather Striders");
-			// Tooltip.SetDefault("Slightly increases movement speed and acceleration");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
