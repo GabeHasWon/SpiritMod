@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
@@ -13,9 +12,10 @@ namespace SpiritMod.NPCs.Mimic
 	{
 		bool jump = false;
 
+		private bool Defending => NPC.DistanceSQ(Main.player[NPC.target].Center) > 720 * 720;
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Golden Crate Mimic");
 			Main.npcFrameCount[NPC.type] = 5;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -50,73 +50,65 @@ namespace SpiritMod.NPCs.Mimic
 		{
 			NPC.spriteDirection = NPC.direction;
 
-			if (NPC.collideY && jump && NPC.velocity.Y > 0)
+			if (Defending)
 			{
-				if (Main.rand.NextBool(2))
-				{
-					jump = false;
-					for (int i = 0; i < 20; i++)
-					{
-						int dust = Dust.NewDust(NPC.position + NPC.velocity, NPC.width, NPC.height, DustID.SpookyWood, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f);
-						Main.dust[dust].noGravity = true;
-					}
-				}
+				NPC.TargetClosest();
+				NPC.spriteDirection = 1;
+				NPC.velocity = Vector2.UnitY * 7f;
+				NPC.defense = 100;
 			}
+			else
+			{
+				NPC.defense = NPC.defDefense;
 
-			if (!NPC.collideY)
-				jump = true;
+				if (NPC.collideY && jump && NPC.velocity.Y > 0)
+					if (Main.rand.NextBool(2))
+					{
+						jump = false;
+						for (int i = 0; i < 20; i++)
+						{
+							int dust = Dust.NewDust(NPC.position + NPC.velocity, NPC.width, NPC.height, DustID.SpookyWood, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f);
+							Main.dust[dust].noGravity = true;
+						}
+					}
+				if (!NPC.collideY)
+					jump = true;
+			}
 		}
 
 		public override void FindFrame(int frameHeight)
 		{
-			Player target = Main.player[NPC.target];
-			if (NPC.DistanceSQ(target.Center) < 720 * 720 || NPC.IsABestiaryIconDummy)
+			if (!Defending || NPC.IsABestiaryIconDummy)
 			{
-				NPC.frameCounter++;
-				if (NPC.frameCounter == 5)
+				if (++NPC.frameCounter == 5)
 				{
 					frame++;
 					NPC.frameCounter = 0;
 				}
-
 				if (frame >= 4)
 					frame = 1;
 			}
-			else
-			{
-				frame = 0;
-				NPC.velocity = Vector2.Zero;
-			}
+			else frame = 0;
 
 			NPC.frame.Y = frameHeight * frame;
 		}
 
 		public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
 		{
-			Player target = Main.player[NPC.target];
-			int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
-
-			if (distance > 720)
+			if (Defending && !projectile.minion && !projectile.sentry && !Main.player[projectile.owner].channel)
 			{
-				NPC.dontTakeDamage = true;
-				if (!projectile.minion)
-				{
-					projectile.hostile = true;
-					projectile.friendly = false;
-					projectile.penetrate = 2;
-					projectile.velocity.X *= -1f;
-				}
-				NPC.life = 100;
+				projectile.hostile = true;
+				projectile.friendly = false;
+				projectile.penetrate = 2;
+				projectile.velocity.X *= -1f;
 			}
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Player target = Main.player[NPC.target];
-			int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
-			if (distance < 720)
+			if (!Defending)
 			{
-				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, (NPC.height / Main.npcFrameCount[NPC.type]) * 0.5f);
+				Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height / Main.npcFrameCount[NPC.type] * 0.5f);
 				for (int k = 0; k < NPC.oldPos.Length; k++)
 				{
 					var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -136,14 +128,11 @@ namespace SpiritMod.NPCs.Mimic
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity / 6, 221);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity / 6, 222);
 			}
-			if (NPC.life <= 0 || NPC.life >= 0)
+			for (int k = 0; k < 6; k++)
 			{
-				for (int k = 0; k < 6; k++)
-				{
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .57f);
-					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .77f);
-				}
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.47f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .57f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .77f);
 			}
 		}
 

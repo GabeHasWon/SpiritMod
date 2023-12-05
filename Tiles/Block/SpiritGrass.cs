@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Placeable.Tiles;
 using Terraria;
 using Terraria.ModLoader;
 using System;
@@ -101,9 +100,16 @@ namespace SpiritMod.Tiles.Block
 			if (Main.tileSolid[tile.TileType] && tile.HasTile)
 				return;
 
-			r = 0.3f;
-			g = 0.45f;
-			b = 1.05f;
+			(r, g, b) = (.3f, .45f, 1.05f);
+		}
+
+		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
+		{
+			if (!fail) //Change self into dirt
+			{
+				fail = true;
+				Framing.GetTileSafely(i, j).TileType = (ushort)ModContent.TileType<SpiritDirt>();
+			}
 		}
 	}
 }

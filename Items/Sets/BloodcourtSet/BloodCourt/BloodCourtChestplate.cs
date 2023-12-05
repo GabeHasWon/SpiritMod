@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.BloodCourt
 	[AutoloadEquip(EquipType.Body)]
 	public class BloodCourtChestplate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Bloodcourt's Vestments");
-			// Tooltip.SetDefault("6% increased damage\n12% increased melee speed\n20% chance to not consume ammo");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 30;

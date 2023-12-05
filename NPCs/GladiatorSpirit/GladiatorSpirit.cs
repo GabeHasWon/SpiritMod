@@ -15,7 +15,6 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Gladiator Spirit");
 			Main.npcFrameCount[NPC.type] = 8;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -90,13 +89,12 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 			{
 				NPC.velocity = Vector2.Zero;
 				NPC.defense = 9999;
-				Vector2 vector2 = Vector2.UnitY.RotatedByRandom(6.28318548202515) * new Vector2((float)NPC.height, (float)NPC.height) * NPC.scale * 1.85f / 2f;
+				Vector2 vector2 = Vector2.UnitY.RotatedByRandom(MathHelper.TwoPi) * new Vector2((float)NPC.height, (float)NPC.height) * NPC.scale * 1.85f / 2f;
 				int index = Dust.NewDust(NPC.Center + vector2, 0, 0, DustID.GoldCoin, 0.0f, 0.0f, 0, new Color(), 1f);
 				Main.dust[index].position = NPC.Center + vector2;
 				Main.dust[index].velocity = Vector2.Zero;
 			}
-			else
-				NPC.defense = 9;
+			else NPC.defense = NPC.defDefense;
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

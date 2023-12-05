@@ -1,4 +1,3 @@
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,11 +7,6 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 	public class Bloodstone : ModItem
 	{
 		public override bool IsLoadingEnabled(Mod mod) => false;
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Bloodstone");
-			// Tooltip.SetDefault("A bloody ward surrounds you, inflicting Blood Corruption to nearby enemies\nKilling enemies within the aura restores some life\nHearts are more likely to drop from enemies");
-		}
 
 		public override void SetDefaults()
 		{
@@ -23,10 +17,7 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 			Item.accessory = true;
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			player.GetSpiritPlayer().vitaStone = true;
-		}
+		public override void UpdateAccessory(Player player, bool hideVisual) => player.GetSpiritPlayer().vitaStone = true;
 
 		public override void AddRecipes()
 		{

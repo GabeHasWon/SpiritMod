@@ -52,7 +52,7 @@ MiscUI: {
 
 Keybinds: {
 	"SpiritMod:QuestBookToggle.DisplayName": Spirit Mod: Quest Book Toggle
-	"SpiritMod:QuestHUDToggle.DisplayName": Spirit Mod: Quest H U D Toggle
+	"SpiritMod:QuestHUDToggle.DisplayName": Spirit Mod: Quest HUD Toggle
 }
 
 Configs: {

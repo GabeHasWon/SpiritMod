@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Accessory.Leather
 	[AutoloadEquip(EquipType.HandsOn)]
 	public class FrigidGloves : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Frigid Wraps");
-			// Tooltip.SetDefault("Melee critical strikes inflict Frostburn\nGrants 4% increased attack speed for every nearby enemy\nThis effect stacks up to five times");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 24;
@@ -27,7 +21,7 @@ namespace SpiritMod.Items.Accessory.Leather
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<LeatherGlove>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<FrigidFragment>(), 6);
 			recipe.AddRecipeGroup("SpiritMod:PHMEvilMaterial", 4);

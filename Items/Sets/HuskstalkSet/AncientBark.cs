@@ -23,8 +23,8 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(ModContent.ItemType<Items.Placeable.Furniture.Reach.ReachPlatformTile>(), 2);
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<Placeable.Furniture.Reach.ReachPlatformTile>(), 2);
             recipe.Register();
         }
     }

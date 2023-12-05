@@ -9,12 +9,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 {
 	public class FangTome : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Tome of the Thousand Fangs");
-			// Tooltip.SetDefault("Summon a set of gnashing teeth\nInflicts 'Surging Anguish', slowly depleting enemy life");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -48,7 +43,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<DreamstrideEssence>(), 8);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();

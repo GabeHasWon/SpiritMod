@@ -13,12 +13,6 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 {
 	public class BloodWard : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sanguine Ward");
-			// Tooltip.SetDefault("Creates a weakening runic aura\nKilling enemies inside your runic aura heals some life");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 18;

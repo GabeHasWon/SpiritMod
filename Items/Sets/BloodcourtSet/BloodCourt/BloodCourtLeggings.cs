@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.BloodCourt
 	[AutoloadEquip(EquipType.Legs)]
 	public class BloodCourtLeggings : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Bloodcourt's Leggings");
-			// Tooltip.SetDefault("Increases movement speed by 10%\nIncreases maximum mana by 30");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 22;

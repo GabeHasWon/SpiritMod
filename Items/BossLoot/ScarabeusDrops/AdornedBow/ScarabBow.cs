@@ -10,12 +10,7 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 {
 	public class ScarabBow : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Adorned Bow");
-			// Tooltip.SetDefault("Hold longer for more damage\nConverts wooden arrows into piercing adorned arrows, that get enchanted upon full charge");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -38,6 +33,8 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.AdornedBow
 			Item.crit = 8;
 			Item.channel = true;
 		}
+
+		public override bool? CanAutoReuseItem(Player player) => false;
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{

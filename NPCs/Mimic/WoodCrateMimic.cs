@@ -10,11 +10,7 @@ namespace SpiritMod.NPCs.Mimic
 	{
 		bool jump = false;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Wooden Crate Mimic");
-			Main.npcFrameCount[NPC.type] = 4;
-		}
+		public override void SetStaticDefaults() => Main.npcFrameCount[NPC.type] = 4;
 
 		public override void SetDefaults()
 		{

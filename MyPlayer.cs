@@ -1670,7 +1670,7 @@ namespace SpiritMod
 					}
 				}
 
-				Player.statDefense += (Player.GetSpiritPlayer().bismiteShieldStacks * 2);
+				Player.statDefense += Player.GetSpiritPlayer().bismiteShieldStacks * 2;
 				if (bismiteShieldStacks >= 5)
 					bismiteShieldStacks = 5;
 			}
@@ -1705,7 +1705,7 @@ namespace SpiritMod
 			{
 				if (Player.lifeRegen >= 0)
 					Player.lifeRegen = 0;
-			};
+			}
 
 			if (Player.controlUp && scarabCharm)
 			{

@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Accessory.Leather
 	[AutoloadEquip(EquipType.Shield)]
 	public class LeatherShield : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Leather Safeguard");
-			// Tooltip.SetDefault("Increases max life by 10");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 24;
