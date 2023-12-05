@@ -13,6 +13,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Terraria.Utilities;
 
 namespace SpiritMod.GlobalClasses.Items
 {
@@ -53,6 +54,8 @@ namespace SpiritMod.GlobalClasses.Items
 		}
 
 		public override bool CanReforge(Item item) => Glyph == GlyphType.None;
+
+		public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand) => Glyph == GlyphType.None ? null : false;
 
 		private void AdjustStats(Item item)
 		{
