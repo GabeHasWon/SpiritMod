@@ -6618,6 +6618,7 @@ BottomFeederGun: {
 Blaster: {
 	DisplayName: 宇宙冲击波
 	Tooltip: ""
+	// Name0: Flaming
 	// Name1: Luminous
 	// Name2: Ecliptic
 	// Name3: Aphelaic

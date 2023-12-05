@@ -6622,6 +6622,7 @@ BottomFeederGun: {
 Blaster: {
 	DisplayName: Blaster
 	Tooltip: ""
+	Name0: Flaming
 	Name1: Luminous
 	Name2: Ecliptic
 	Name3: Aphelaic
