@@ -12,11 +12,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		private bool canAttach = true;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pesterfly");
-			Main.projFrames[Projectile.type] = 2;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 2;
 
 		public override void SetDefaults()
 		{
@@ -42,6 +38,7 @@ namespace SpiritMod.Projectiles.Magic
 				Projectile.frame = 1;
 
 			Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(2)); //Makes it feel like a fly's flying :)
+			Projectile.direction = Projectile.spriteDirection = (Projectile.velocity.X < 0) ? -1 : 1;
 
 			if (AttachedNPC != -1) //"leeching"
 			{

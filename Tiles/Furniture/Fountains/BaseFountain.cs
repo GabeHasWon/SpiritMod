@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Effects.Waters.Reach;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -14,7 +13,8 @@ namespace SpiritMod.Tiles.Furniture.Fountains
     public abstract class BaseFountain : ModTile
     {
 		internal virtual int DropType => ModContent.ItemType<BriarFountainItem>();
-		internal virtual int WaterStyle => ModContent.GetInstance<ReachWaterStyle>().Slot;
+
+		//internal virtual int WaterStyle => ModContent.GetInstance<ReachWaterStyle>().Slot;
 
 		public sealed override void SetStaticDefaults()
         {
@@ -36,24 +36,21 @@ namespace SpiritMod.Tiles.Furniture.Fountains
 
 		public sealed override void NearbyEffects(int i, int j, bool closer)
 		{
-			if (Framing.GetTileSafely(i, j).TileFrameY >= 72)
+			if (Framing.GetTileSafely(i, j).TileFrameY >= AnimationFrameHeight)
 				Main.LocalPlayer.GetSpiritPlayer().fountainsActive["BRIAR"] = 4;
 		}
 
-		public sealed override void AnimateTile(ref int frame, ref int frameCounter)
-        {
-            frame = Main.tileFrame[TileID.WaterFountain];
-            frameCounter = Main.tileFrameCounter[TileID.WaterFountain];
-        }
+		public sealed override void AnimateTile(ref int frame, ref int frameCounter) => frame = Main.tileFrame[TileID.WaterFountain];
 
-        public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
+		public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            Tile tile = Main.tile[i, j];
+            Tile tile = Framing.GetTileSafely(i, j);
 
             Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
-            int animate = tile.TileFrameY >= 72 ? (Main.tileFrame[Type] * (AnimationFrameHeight + 2)) + 2 : 0;
+            int animate = tile.TileFrameY >= AnimationFrameHeight ? (Main.tileFrame[Type] * AnimationFrameHeight) : 0;
+			Vector2 pos = new Vector2(i * 16, j * 16) + new Vector2(0, 2) - Main.screenPosition + zero;
 
-			Main.spriteBatch.Draw(TextureAssets.Tile[Type].Value, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY + animate, 16, 16), Lighting.GetColor(i, j), 0f, default, 1f, SpriteEffects.None, 0f);
+			spriteBatch.Draw(TextureAssets.Tile[Type].Value, pos, new Rectangle(tile.TileFrameX, tile.TileFrameY + animate, 16, 16), Lighting.GetColor(i, j), 0f, default, 1f, SpriteEffects.None, 0f);
             return false;
         }
 
@@ -61,6 +58,7 @@ namespace SpiritMod.Tiles.Furniture.Fountains
         {
             SoundEngine.PlaySound(SoundID.Waterfall, new(i * 16, j * 16));
             HitWire(i, j);
+
             return true;
         }
 
@@ -74,32 +72,26 @@ namespace SpiritMod.Tiles.Furniture.Fountains
 
         public sealed override void HitWire(int i, int j)
         {
-            int x = i - Main.tile[i, j].TileFrameX / 18 % 5;
-            int y = j - Main.tile[i, j].TileFrameY / 18 % 4;
+			int x = i - Framing.GetTileSafely(i, j).TileFrameX / 18 % 5;
+            int y = j - Framing.GetTileSafely(i, j).TileFrameY / 18 % 4;
 
             for (int l = x; l < x + 5; l++)
-            {
                 for (int m = y; m < y + 4; m++)
                 {
-                    if (Main.tile[l, m].HasTile && Main.tile[l, m].TileType == Type)
+					Tile tile = Framing.GetTileSafely(l, m);
+					if (tile.HasTile && tile.TileType == Type)
                     {
-                        if (Main.tile[l, m].TileFrameY < 72)
-                            Main.tile[l, m].TileFrameY += 72;
+                        if (tile.TileFrameY < 72)
+							tile.TileFrameY += 72;
                         else
-                            Main.tile[l, m].TileFrameY -= 72;
+							tile.TileFrameY -= 72;
                     }
-                }
-            }
 
-            if (Wiring.running)
-            {
-                for (int k = 0; k < 3; ++k)
-                {
-                    Wiring.SkipWire(x, y + k);
-                    Wiring.SkipWire(x + 1, y + k);
-                }
-            }
-            NetMessage.SendTileSquare(-1, x, y + 1, 3);
+					if (Wiring.running)
+						Wiring.SkipWire(l, m);
+				}
+
+			NetMessage.SendTileSquare(-1, x, y + 1, 4);
         }
     }
 

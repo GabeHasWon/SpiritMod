@@ -8,19 +8,12 @@ namespace SpiritMod.Items.Accessory.Leather
 	[AutoloadEquip(EquipType.Shield)]
 	public class BismiteShield : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Noxious Targe");
-			// Tooltip.SetDefault("Being struck by an enemy inflicts festering wounds\nIncreases defense by 2 for every afflicted enemy near the player\nThis effect stacks up to five times");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 24;
 			Item.height = 28;
 			Item.rare = ItemRarityID.Green;
 			Item.defense = 1;
-			Item.DamageType = DamageClass.Melee;
             Item.value = Item.sellPrice(0, 0, 60, 0);
             Item.accessory = true;
 		}
@@ -29,7 +22,7 @@ namespace SpiritMod.Items.Accessory.Leather
 		
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<LeatherShield>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<BismiteCrystal>(), 6);
 			recipe.AddTile(TileID.Anvils);

@@ -11,12 +11,7 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.Heartstrike
 {
 	public class Heartstrike : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Heartstrike");
-			// Tooltip.SetDefault("Successful hits grant charges, which can fired using right click\nFired charges inflict 'Surging Anguish', slowly depleting enemy life");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{

@@ -8,12 +8,7 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.PesterflyCane
 {
 	public class PesterflyCane : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pesterfly Cane");
-			// Tooltip.SetDefault("Summons pesterflies that swarm around hit enemies");
-			Item.staff[Item.type] = true; //Set here since it's universal for this item
-		}
+		public override void SetStaticDefaults() => Item.staff[Item.type] = true;
 
 		public override void SetDefaults()
 		{

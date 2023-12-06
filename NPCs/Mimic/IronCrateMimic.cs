@@ -15,7 +15,6 @@ namespace SpiritMod.NPCs.Mimic
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Iron Crate Mimic");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 3;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
