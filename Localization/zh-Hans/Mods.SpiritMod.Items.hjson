@@ -6622,7 +6622,7 @@ BottomFeederGun: {
 Blaster: {
 	DisplayName: 冲击波
 	Tooltip: ""
-  Name0: 烈焰
+	Name0: 烈焰
 	Name1: 流明
 	Name2: 黄道
 	Name3: 远日
