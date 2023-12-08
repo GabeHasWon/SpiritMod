@@ -85,7 +85,7 @@ ManaBuffC: {
 
 TaffyBuff: {
 	DisplayName: 太妃糖
-	Description: 增加4点防御力
+	Description: 增加4点防御
 }
 
 ClockBuff: {
@@ -160,7 +160,7 @@ DynastyFanBuff: {
 
 ElectrifiedV2: {
 	DisplayName: 带电
-	Description: Mods.SpiritMod.Buffs.ElectrifiedV2.Description
+	Description: 后续部分我们 - 等下
 }
 
 EleutheriosBuff: {
@@ -175,7 +175,7 @@ FateBlessing: {
 
 Frozen: {
 	DisplayName: 冰冻
-	Description: Mods.SpiritMod.Buffs.Frozen.Description
+	Description: 冻成冰块！
 }
 
 BurningRage: {
@@ -250,7 +250,7 @@ InfernalRage: {
 
 MageFreeze: {
 	DisplayName: 冰寒之握
-	Description: Mods.SpiritMod.Buffs.MageFreeze.Description
+	Description: 一只寒冷的大手困住了你
 }
 
 MidasTouch: {
@@ -499,22 +499,22 @@ TurtlePotionBuff: {
 
 Shadowbroken: {
 	DisplayName: 破影
-	Description: Mods.SpiritMod.Buffs.Shadowbroken.Description
+	Description: 阴影躲避着你
 }
 
 Shadowflame: {
 	DisplayName: 暗影焰
-	Description: Mods.SpiritMod.Buffs.Shadowflame.Description
+	Description: 一个我们从未想要知道的后续部分
 }
 
 Shocked: {
 	DisplayName: 眩晕！
-	Description: Mods.SpiritMod.Buffs.Shocked.Description
+	Description: 哇！
 }
 
 SoulBurn: {
 	DisplayName: 灵魂灼烧
-	Description: Mods.SpiritMod.Buffs.SoulBurn.Description
+	Description: 你的灵魂渴望自由
 }
 
 SoulFlare: {
@@ -533,7 +533,7 @@ SpiritBuff: {
 
 StackingFireBuff: {
 	DisplayName: 燃烧之火
-	Description: Mods.SpiritMod.Buffs.StackingFireBuff.Description
+	Description: 烧起来了，但更加糟糕！
 }
 
 StarCooldown: {
@@ -548,7 +548,7 @@ StarFlame: {
 
 StarFracture: {
 	DisplayName: 星辰崩塌
-	Description: Mods.SpiritMod.Buffs.StarFracture.Description
+	Description: 被星辰破坏
 }
 
 StarplateGravity: {
@@ -568,22 +568,22 @@ Sturdy: {
 
 ElectricSummonTag: {
 	DisplayName: 召唤标记
-	Description: Mods.SpiritMod.Buffs.ElectricSummonTag.Description
+	Description: 已标记！
 }
 
 SacrificialDaggerBuff: {
 	DisplayName: 舍命一击
-	Description: Mods.SpiritMod.Buffs.SacrificialDaggerBuff.Description
+	Description: 三（3）弹幕
 }
 
 SummonTag3: {
 	DisplayName: 召唤标记
-	Description: Mods.SpiritMod.Buffs.SummonTag3.Description
+	Description: 已标记！
 }
 
 SummonTag5: {
 	DisplayName: 召唤标记
-	Description: Mods.SpiritMod.Buffs.SummonTag5.Description
+	Description: 已标记！
 }
 
 SurgingAnguish: {
@@ -613,12 +613,12 @@ SunPotBuff: {
 
 TopazMarked: {
 	DisplayName: 发光
-	Description: Mods.SpiritMod.Buffs.TopazMarked.Description
+	Description: 就像一千万只萤火虫
 }
 
 Tracked: {
 	DisplayName: 追踪
-	Description: Mods.SpiritMod.Buffs.Tracked.Description
+	Description: 你躲得了一时但躲不了一世
 }
 
 TrueMarksman: {
@@ -633,7 +633,7 @@ UnstableAffliction: {
 
 VineTrap: {
 	DisplayName: 藤蔓陷阱
-	Description: Mods.SpiritMod.Buffs.VineTrap.Description
+	Description: 逃跑是不可能的
 }
 
 VirulenceCooldown: {
@@ -648,7 +648,7 @@ Wither: {
 
 WitheringLeaf: {
 	DisplayName: 枯叶
-	Description: Mods.SpiritMod.Buffs.WitheringLeaf.Description
+	Description: 枯萎，日渐消瘦……
 }
 
 CryoZoneTimer: {
@@ -713,7 +713,7 @@ BaubleResistance: {
 
 GildedScarab_buff: {
 	DisplayName: 圣甲虫护盾
-	Description: 增加{0}防御
+	Description: 增加{0}点防御
 }
 
 SlagFury_buff: {
@@ -743,7 +743,7 @@ MirrorCoatBuff: {
 
 SaddleBuff: {
 	DisplayName: 极光鹿坐骑
-	Description: Mods.SpiritMod.Buffs.SaddleBuff.Description
+	Description: 你感受到了星星的力量
 }
 
 CosmicRattlerPetBuff: {
@@ -778,7 +778,7 @@ SwimmingFatigue: {
 
 CurseBreakerMark: {
 	DisplayName: 诅咒标记
-	Description: Mods.SpiritMod.Buffs.CurseBreakerMark.Description
+	Description: 死亡标记！
 }
 
 MarbleMinecartBuff: {
@@ -893,10 +893,10 @@ LocustBig_Buff: {
 
 ExplorerSpeed: {
 	DisplayName: 探险家之速
-	Description: Mods.SpiritMod.Buffs.ExplorerSpeed.Description
+	Description: 你的行动能力大幅度增加了
 }
 
 ArcaneFreeze: {
 	DisplayName: 奥术冻结
-	Description: Mods.SpiritMod.Buffs.ArcaneFreeze.Description
+	Description: 一块神奇的冰吞噬了你
 }
