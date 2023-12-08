@@ -47,9 +47,8 @@ namespace SpiritMod.Projectiles.Held
 				Projectile.Kill();
 
 			int halfTime = player.itemTimeMax / 2;
-
 			Vector2 desiredVel = new Vector2(lungeLength, 0).RotatedBy(Projectile.rotation);
-			float rate = 0.5f;
+			float rate = .5f;
 
 			if (Counter == halfTime) //The projectile is at the apex of its lunge
 			{
@@ -57,25 +56,21 @@ namespace SpiritMod.Projectiles.Held
 				{
 					for (int i = 0; i < 3; i++)
 					{
-						Vector2 velocity = -(Projectile.velocity * 0.08f);
-
-						ParticleHandler.SpawnParticle(new ImpactLine(Projectile.Center - (Projectile.velocity * 1.85f) + (Main.rand.NextVector2Unit() * 8), -velocity, Color.Lerp(Color.LimeGreen, Color.Green, Main.rand.NextFloat()) with { A = 100 }, new Vector2(.5f, Main.rand.NextFloat(0.9f, 1.5f)), 12, player)
-						{
-							Origin = ModContent.Request<Texture2D>(Texture).Size() / 2,
-						});
+						ParticleHandler.SpawnParticle(new ImpactLine(Projectile.Center - (Vector2.Normalize(Projectile.velocity) * 80f) + (Main.rand.NextVector2Unit() * 8), Projectile.velocity * .1f, Color.Lerp(Color.LimeGreen, Color.Green, Main.rand.NextFloat()) with { A = 100 }, new Vector2(.5f, Main.rand.NextFloat(.9f, 1.5f)), 12, player)
+						{ Origin = ModContent.Request<Texture2D>(Texture).Size() / 2, });
 					}
-
-					ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center - (Projectile.velocity / 3f), (Color.Lerp(Color.LimeGreen, Color.Green, Main.rand.NextFloat()) * 0.7f) with { A = 120 }, 40, 10)
+					ParticleHandler.SpawnParticle(new PulseCircle(Projectile.Center - (Projectile.velocity / 3f), (Color.Lerp(Color.LimeGreen, Color.Green, Main.rand.NextFloat()) * .5f) with { A = 120 }, 40, 10)
 					{
-						ZRotation = 0.7f,
-						Angle = Projectile.velocity.ToRotation() + MathHelper.Pi
+						ZRotation = .7f,
+						Angle = Projectile.velocity.ToRotation() + MathHelper.Pi,
+						RingColor = Color.DarkOliveGreen
 					});
 				}
 			}
 			else if (Counter > halfTime)
 			{
 				desiredVel = Vector2.Zero;
-				rate = 0.1f;
+				rate = .05f;
 			}
 
 			for (int i = 0; i < 2; ++i)
@@ -92,7 +87,7 @@ namespace SpiritMod.Projectiles.Held
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if (Main.rand.NextBool(5))
+			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 180);
 		}
 
@@ -105,7 +100,6 @@ namespace SpiritMod.Projectiles.Held
 			Vector2 origin = (effects == SpriteEffects.FlipHorizontally) ? new Vector2(texture.Width - (Projectile.width / 2), Projectile.height / 2) : Projectile.Size / 2;
 
 			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), rotation, origin, Projectile.scale, effects, 0);
-
 			return false;
 		}
 	}

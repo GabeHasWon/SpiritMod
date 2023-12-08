@@ -1,20 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using SpiritMod.Buffs;
-using System.Linq;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace SpiritMod.NPCs.DiseasedSlime
 {
 	class NoxiousIndicator : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Noxious Field");
-			Main.projFrames[Projectile.type] = 6;
-
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 6;
 
 		public override void SetDefaults()
 		{
@@ -29,14 +20,14 @@ namespace SpiritMod.NPCs.DiseasedSlime
 
 		public override void AI()
 		{
-			Projectile.alpha += 2;
-			Projectile.velocity.Y = -.9f * ((Projectile.timeLeft * 2) / 120f);
+			Projectile.alpha += 4;
+			Projectile.velocity.Y = -.9f * (Projectile.timeLeft * 2 / 120f);
 			Projectile.velocity *= .98f;
 
-			if (Projectile.frameCounter++ >= 6)
+			if (++Projectile.frameCounter >= 5)
 			{
-				Projectile.frame++;
 				Projectile.frameCounter = 0;
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Type];
 			}
 		}
 	}

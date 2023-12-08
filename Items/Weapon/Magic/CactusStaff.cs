@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Projectiles.Magic;
+using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -9,12 +10,6 @@ namespace SpiritMod.Items.Weapon.Magic
 {
 	public class CactusStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			//DisplayName.SetDefault("Cactus Staff");
-			//Tooltip.SetDefault("Summons cactus walls to protect you");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 6;
@@ -52,20 +47,11 @@ namespace SpiritMod.Items.Weapon.Magic
 		{
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.ownedProjectileCounts[Item.shoot]);
 
-			if (player.ownedProjectileCounts[Item.shoot] >= 2)
+			if (player.ownedProjectileCounts[Item.shoot] >= 4)
 			{
-				for (int i = 0; i < Main.maxProjectiles; ++i)
-				{
-					Projectile p = Main.projectile[i];
-
-					if (p.active && p.owner == player.whoAmI && p.type == Item.shoot && p.ModProjectile is CactusWallProj cactusWall)
-					{
-						if (cactusWall.SpawnIndex == 0)
-							p.Kill();
-						else
-							cactusWall.SpawnIndex--;
-					}
-				}
+				var projectile = Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == Item.shoot).OrderBy(x => x.timeLeft).FirstOrDefault();
+				if (projectile != default)
+					projectile.Kill();
 			}
 			return false;
 		}
