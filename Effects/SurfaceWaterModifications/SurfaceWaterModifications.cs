@@ -28,6 +28,8 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 		internal static int leftOceanHeight = 0;
 		internal static int rightOceanHeight = 0;
 
+		private static bool ImproperWaterStyle => Main.waterStyle > WaterStyleID.Count;
+
 		public static ILog Logger => ModContent.GetInstance<SpiritMod>().Logger;
 		public static bool PlayerInValidOcean => Main.LocalPlayer.ZoneBeach;// && Main.waterStyle == WaterStyleID.Purity
 
@@ -39,8 +41,8 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 				//Slope fix garbage
 				IL_LiquidRenderer.DrawNormalLiquids += LiquidRenderer_InternalDraw; //Draw over slopes
-				//IL_Main.DrawBlack += Main_DrawBlack; //Modify blackness to not draw in bad places
 				On_TileDrawing.DrawPartialLiquid += On_TileDrawing_DrawPartialLiquid; //Only draw vanilla slopes in certain cases
+				IL_Main.DrawBlack += HideSlopedBlack;
 			}
 
 			IL_WaterShaderData.QueueRipple_Vector2_Color_Vector2_RippleShape_float += IncreaseRippleSize; //Makes ripple bigger
@@ -53,63 +55,42 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			}
 		}
 
-		private static void On_TileDrawing_DrawPartialLiquid(On_TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, bool behindBlocks, Tile tileCache, ref Vector2 position, ref Rectangle liquidSize, int liquidType, ref VertexColors colors)
-		{
-			if (!PlayerInValidOcean || tileCache.LiquidType != LiquidID.Water || Main.waterStyle >= WaterStyleID.Count)
-				orig(self, behindBlocks, tileCache, ref position, ref liquidSize, liquidType, ref colors);
-		}
-
-		private static void Main_DrawBlack(ILContext il)
+		private static void HideSlopedBlack(ILContext il)
 		{
 			ILCursor c = new(il);
 
-			if (!c.TryGotoNext(x => x.MatchCallvirt<SpriteBatch>("Draw")))
+			if (!c.TryGotoNext(x => x.MatchCall(typeof(TimeLogger).GetMethod(nameof(TimeLogger.DrawTime), BindingFlags.Public | BindingFlags.Static))))
 				return;
 
-			if (!c.TryGotoPrev(x => x.MatchLdsfld<Main>("spriteBatch")))
+			if (!c.TryGotoPrev(x => x.MatchLdsfld<Main>(nameof(Main.spriteBatch))))
 				return;
 
-			ILLabel skipLabel = c.Prev.Operand as ILLabel;
-
-			c.Emit(OpCodes.Ldloca_S, (byte)13); //i (source num7)
-			c.Emit(OpCodes.Ldloc_S, (byte)10); //j (source i)
-			c.Emit(OpCodes.Ldloca_S, (byte)12); //adjX (source j)
-
-			c.EmitDelegate(DrawBlackMod);
-
-			c.Emit(OpCodes.Brfalse, skipLabel);
+			c.Emit(OpCodes.Ldloca_S, (byte)14); //num7 (startX)
+			c.Emit(OpCodes.Ldloc_S, (byte)11); //i (y)
+			c.Emit(OpCodes.Ldloca_S, (byte)13); //j (endX)
+			c.EmitDelegate(ModifyDrawBlack);
 		}
 
-		public static bool DrawBlackMod(ref int i, int j, ref int adjX)
+		private static void ModifyDrawBlack(ref int startX, int y, ref int endX)
 		{
-			if (Main.gameMenu || !Main.LocalPlayer.active || !PlayerInValidOcean)
-				return true;
+			if (!PlayerInValidOcean || ImproperWaterStyle)
+				return;
 
-			int oldAdjX = adjX;
-			Tile tile = Main.tile[oldAdjX, j];
+			Tile tile = Main.tile[startX, y];
 
-			while ((tile.HasTile && !Main.tileSolid[tile.TileType]) || !tile.HasTile)
-			{
-				oldAdjX--;
-				tile = Main.tile[oldAdjX, j];
+			if (tile.Slope != SlopeType.Solid || tile.IsHalfBlock)
+				startX++;
 
-				if (!WorldGen.InWorld(oldAdjX, j, 30))
-					break;
-			}
+			tile = Main.tile[endX - 1, y];
 
-			if (tile.Slope != SlopeType.Solid)
-				adjX--;
+			if (tile.Slope != SlopeType.Solid || tile.IsHalfBlock)
+				endX--;
+		}
 
-			tile = Main.tile[i, j];
-
-			if (tile.HasTile && tile.Slope != SlopeType.Solid)
-			{
-				if (!WorldGen.SolidTile(i + 1, j) && !WorldGen.SolidTile(i - 1, j))
-					return false;
-				else if (!WorldGen.SolidTile(i - 1, j) && WorldGen.SolidTile(i + 1, j))
-					i++;
-			}
-			return true; //DO draw the darkness
+		private static void On_TileDrawing_DrawPartialLiquid(On_TileDrawing.orig_DrawPartialLiquid orig, TileDrawing self, bool behindBlocks, Tile tileCache, ref Vector2 position, ref Rectangle liquidSize, int liquidType, ref VertexColors colors)
+		{
+			if (!PlayerInValidOcean || tileCache.LiquidType != LiquidID.Water || ImproperWaterStyle)
+				orig(self, behindBlocks, tileCache, ref position, ref liquidSize, liquidType, ref colors);
 		}
 
 		private static void LiquidRenderer_InternalDraw(ILContext il)
@@ -124,12 +105,12 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			c.Emit(OpCodes.Ldloc_S, (byte)9); //vertex colours
 			c.Emit(OpCodes.Ldarg_S, (byte)5); //isBackgroundDraw
 
-			c.EmitDelegate(DrawSlope);
+			c.EmitDelegate(DrawPartialWater);
 		}
 
-		public static void DrawSlope(int i, int j, VertexColors colours, bool isBackgroundDraw)
+		public static void DrawPartialWater(int i, int j, VertexColors colours, bool isBackgroundDraw)
 		{
-			if (Main.waterStyle >= WaterStyleID.Count || !PlayerInValidOcean)
+			if (ImproperWaterStyle || !PlayerInValidOcean)
 				return;
 
 			Tile tile = Main.tile[i, j];
@@ -152,8 +133,8 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 			if (openTile)
 			{
-				DrawSlopedLiquid(right, 1, true, factor, drawOffset, colours, texture, i, j);
-				DrawSlopedLiquid(left, -1, false, factor, drawOffset, colours, texture, i, j);
+				DrawSlopedLiquid(right, 1, true, factor, drawOffset, texture, i, j);
+				DrawSlopedLiquid(left, -1, false, factor, drawOffset, texture, i, j);
 
 				DrawHalfBrickLiquid(right, 1, drawOffset, colours, i, j);
 				DrawHalfBrickLiquid(left, -1, drawOffset, colours, i, j);
@@ -199,10 +180,12 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			}
 		}
 
-		static void DrawSlopedLiquid(Tile tile, int offset, bool left, float factor, Vector2 drawOffset, VertexColors colours, Asset<Texture2D> texture, int i, int j)
+		static void DrawSlopedLiquid(Tile tile, int offset, bool left, float factor, Vector2 drawOffset, Asset<Texture2D> texture, int i, int j)
 		{
 			if (tile.HasTile && ((left && tile.LeftSlope) || tile.RightSlope))
 			{
+				Lighting.GetCornerColors(i, j, out VertexColors colours);
+				colours.PerColor((ref Color col) => col = Color.Lerp(col, new Color(210, 210, 210, 255), 0.1f));
 				var pos = new Vector2((i + offset) << 4, (j + (1 - factor)) * 16f) + drawOffset;
 				var source = new Rectangle((int)(tile.Slope - 1) * 18, (int)(16 * (1 - factor)), 16, (int)(16 * factor));
 
