@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
 {
 	public class Basking_Shark : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Basking Shark");
-			// Tooltip.SetDefault("Converts bullets into chum chunks");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useStyle = ItemUseStyleID.Shoot;
@@ -23,10 +17,10 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
 			Item.width = 38;
 			Item.height = 6;
 			Item.shoot = ProjectileID.PurificationPowder;
-			Item.damage = 8;
+			Item.damage = 14;
 			Item.shootSpeed = 8f;
 			Item.noMelee = true;
-			Item.reuseDelay = 45;
+			Item.reuseDelay = 35;
 			Item.value = Item.sellPrice(silver: 30);
 			Item.knockBack = .25f;
 			Item.useAmmo = AmmoID.Bullet;
@@ -43,7 +37,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Basking_Shark
             recipe.Register();
         }
 
-		public override Vector2? HoldoutOffset() => new Vector2(-4, 2);
+		public override Vector2? HoldoutOffset() => new Vector2(-4);
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 		{

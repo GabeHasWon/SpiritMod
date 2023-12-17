@@ -4,17 +4,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using System.Linq;
 
 namespace SpiritMod.Items.Sets.BismiteSet
 {
 	public class BismiteSummonStaff : ModItem
 	{
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Bismite Crystal Staff");
-            // Tooltip.SetDefault("Summons a stationary Bismite Crystal that shoots poison shards at enemies\nRight-click to cause Bismite Crystals to emit a festering wave at the cost of mana");
-        }
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.QueenSpiderStaff);
@@ -30,31 +25,27 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Item.shootSpeed = 0f;
 		}
 
-		public override bool AltFunctionUse(Player player) => true;
+		public override bool AltFunctionUse(Player player)
+		{
+			var sentries = Main.projectile.Where(x => x.active && x.type == Item.shoot && x.owner == player.whoAmI && (x.ModProjectile as BismiteSentrySummon).Cooldown <= 0);
+			return sentries.Any();
+		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
             if (player.altFunctionUse != 2)
             {
-                Vector2 mouse = Main.MouseWorld;
-                float distance = Vector2.Distance(mouse, position);
-                if (distance < 600f)
+                if (Vector2.Distance(Main.MouseWorld, position) < 600f)
                 {
-                    Projectile.NewProjectile(source, mouse.X, mouse.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, Main.MouseWorld, velocity, type, damage, knockback, player.whoAmI);
                     player.UpdateMaxTurrets();
                 }
             }
             else
             {
-                for (int projectileFinder = 0; projectileFinder < 200; ++projectileFinder)
-                {
-					Projectile proj = Main.projectile[projectileFinder];
-					if (proj.type == Item.shoot && proj.alpha == 0 && proj.active)
-					{
-						proj.alpha = BismiteSentrySummon.BurstAlpha;
-						(proj.ModProjectile as BismiteSentrySummon).SpecialAttack();
-					}
-                }
+				var sentries = Main.projectile.Where(x => x.active && x.type == Item.shoot && x.owner == player.whoAmI);
+				foreach (Projectile sentry in sentries)
+					(sentry.ModProjectile as BismiteSentrySummon).SpecialAttack();
             }
             return false;
 		}

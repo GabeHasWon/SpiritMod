@@ -11,19 +11,9 @@ namespace SpiritMod.Projectiles.Magic;
 
 public class CactusWallProj : ModProjectile
 {
-	public int SpawnIndex
-	{
-		get => (int)Projectile.ai[0];
-		set => Projectile.ai[0] = value;
-	}
-
 	private const int MaxTimeLeft = 15 * 60;
 
-	public override void SetStaticDefaults()
-	{
-		//DisplayName.SetDefault("Wall Cactus");
-		Main.projFrames[Projectile.type] = 3;
-	}
+	public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 3;
 
 	public override void SetDefaults()
 	{
@@ -55,6 +45,11 @@ public class CactusWallProj : ModProjectile
 
 	public override void AI()
 	{
+		Tile tile = Framing.GetTileSafely(Projectile.Bottom.ToTileCoordinates());
+		if (!WorldGen.SolidOrSlopedTile(tile) && !Main.tileSolidTop[tile.TileType])
+			Projectile.Kill();
+		//If no solid tiles exist below the projectile, kill it
+
 		if (Projectile.timeLeft < 20)
 			Projectile.Opacity = Projectile.timeLeft / 10f;
 
@@ -63,6 +58,8 @@ public class CactusWallProj : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
+		if (timeLeft <= 0)
+			return;
 		for (int i = 0; i < 4; ++i) //This is for offsetting position
 			for (int j = 0; j < 3; ++j) //This is for tripling per offset
 				Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + (i * 16)), 16, 16, DustID.t_Cactus);
@@ -89,7 +86,7 @@ public class CactusWallProj : ModProjectile
 			pos.Y += frameHeight - src.Height;
 		}
 
-		Main.EntitySpriteDraw(tex, pos, src, lightColor, Projectile.rotation, new Vector2(0, frameHeight), 1f, SpriteEffects.None, 0);
+		Main.EntitySpriteDraw(tex, pos, src, Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(0, frameHeight), 1f, SpriteEffects.None, 0);
 		return false;
 	}
 }

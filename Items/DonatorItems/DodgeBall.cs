@@ -8,20 +8,13 @@ namespace SpiritMod.Items.DonatorItems
 {
 	public class DodgeBall : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Lightning Throw");
-			// Tooltip.SetDefault("Throw mach speed dodgeballs!");
-		}
-
 		public override void SetDefaults()
 		{
-			Item.damage = 12;
+			Item.damage = 18;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 30;
 			Item.height = 30;
-			Item.useTime = 22;
-			Item.useAnimation = 22;
+			Item.useTime = Item.useAnimation = 22;
 			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 0;
@@ -32,6 +25,7 @@ namespace SpiritMod.Items.DonatorItems
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = false;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

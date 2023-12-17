@@ -16,8 +16,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Item.UseSound = SoundID.Item1;
 			Item.DamageType = DamageClass.Melee;
 			Item.noMelee = true;
-			Item.useAnimation = 32;
-			Item.useTime = 32;
+			Item.useAnimation = Item.useTime = 32;
 			Item.shootSpeed = 3.8f;
 			Item.knockBack = 4f;
 			Item.damage = 11;
@@ -28,7 +27,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<BismiteCrystal>(), 8);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();

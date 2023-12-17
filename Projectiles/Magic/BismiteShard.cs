@@ -12,7 +12,6 @@ namespace SpiritMod.Projectiles.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Bismite Energy");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -47,7 +46,7 @@ namespace SpiritMod.Projectiles.Magic
 		{
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 			Projectile.alpha += 2;
-			Projectile.velocity *= 0.98f;
+			Projectile.velocity *= .98f;
 
 			Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.GreenFairy, Projectile.velocity, Projectile.alpha);
 			dust.noGravity = true;
@@ -57,7 +56,7 @@ namespace SpiritMod.Projectiles.Magic
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if (Main.rand.NextBool(5))
+			if (Main.rand.NextBool(3))
 				target.AddBuff(ModContent.BuffType<FesteringWounds>(), 180);
 		}
 	}

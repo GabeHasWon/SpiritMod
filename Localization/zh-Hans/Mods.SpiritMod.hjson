@@ -1,5 +1,5 @@
 GoldifiedDeath: " 死的时候像个金条一样"
-// Frozen: Frozen
+Frozen: 冰冻
 # Config stuff:
 Screenshake: "[i:5926]  视觉：屏幕震动"
 Distortion: "[i:5926]  视觉：屏幕扭曲"
@@ -35,7 +35,7 @@ OceanDepthsMusic: "[i:6076]  为海洋深处添加一首独特的曲目"
 HyperspaceMusic: "[i:6076]  为人造超时空领域添加两首独特的曲目"
 AshfallMusic: "[i:6076]  为地狱的落烬雨天气添加一首独特的曲目"
 VictoryNightMusic: "[i:6076]  为灯笼夜事件添加一首独特的曲目"
-// VictoryDayMusic: "[i:6076]  Adds a unique track for the Victory Day event"
+VictoryDayMusic: "[i:6076]  为胜利日事件添加一首独特的曲目"
 
 MiscUI: {
 	AutoSell: 点击以快速出售你的物品。
@@ -308,9 +308,9 @@ BossChecklistIntegration: {
 }
 
 MapObject: {
-	// SpiritPylon: Spirit Pylon
-	// BriarPylon: Briar Pylon
-	// AsteroidPylon: Asteroid Pylon
+	SpiritPylon: 魂灵之地晶塔
+	BriarPylon: 荆棘之地晶塔
+	AsteroidPylon: 小行星带晶塔
 }
 
 Condition: {

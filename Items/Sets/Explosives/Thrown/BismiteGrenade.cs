@@ -102,12 +102,11 @@ namespace SpiritMod.Items.Sets.Explosives.Thrown
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(ModContent.BuffType<FesteringWounds>(), 600);
-
-			if (Projectile.timeLeft > 4)
-				Projectile.timeLeft = 4;
+			Projectile.timeLeft = (int)MathHelper.Min(Projectile.timeLeft, 4);
 		}
 
 		public override bool CanHitPlayer(Player target) => target.whoAmI == Projectile.owner;
+
 		public override bool? CanHitNPC(NPC target) => !target.friendly;
 	}
 }

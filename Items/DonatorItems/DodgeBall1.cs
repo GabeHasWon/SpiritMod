@@ -8,15 +8,9 @@ namespace SpiritMod.Items.DonatorItems
 {
 	public class DodgeBall1 : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sluggy Throw");
-			// Tooltip.SetDefault("Throw a dodgeball at snail speed");
-		}
-
 		public override void SetDefaults()
 		{
-			Item.damage = 13;
+			Item.damage = 25;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 30;
 			Item.height = 30;
