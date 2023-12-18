@@ -52,7 +52,7 @@ public class BigBuoy : ModTile
 			Tile tile = Main.tile[x, j];
 			Tile above = Main.tile[x, j - 1];
 
-			if (tile.LiquidAmount < 50 || tile.LiquidType != LiquidID.Water || WorldGen.SolidOrSlopedTile(above) || above.LiquidAmount > 0)
+			if (tile.LiquidAmount < 50 || tile.LiquidType == LiquidID.Lava || WorldGen.SolidOrSlopedTile(above) || above.LiquidAmount > 0)
 				return false;
 		}
 		return true;

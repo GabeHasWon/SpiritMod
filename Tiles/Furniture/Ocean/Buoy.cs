@@ -53,7 +53,7 @@ public class Buoy : ModTile
 	{
 		Tile tile = Main.tile[i, j];
 		Tile above = Main.tile[i, j - 1];
-		return !tile.HasTile && tile.LiquidAmount > 50 && tile.LiquidType == LiquidID.Water && !WorldGen.SolidOrSlopedTile(above) && above.LiquidAmount <= 0;
+		return !tile.HasTile && tile.LiquidAmount > 50 && tile.LiquidType != LiquidID.Lava && !WorldGen.SolidOrSlopedTile(above) && above.LiquidAmount <= 0;
 	}
 
 	public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
