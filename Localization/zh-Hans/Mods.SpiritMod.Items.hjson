@@ -8636,3 +8636,28 @@ SwordStandItem: {
 	DisplayName: 剑架
 	Tooltip: 右键剑架可将某些剑置于其上
 }
+
+DriftwoodPlatformItem: {
+	// DisplayName: Driftwood Platform
+	// Tooltip: ""
+}
+
+SpiritPlatformItem: {
+	// DisplayName: Duskwood Platform
+	// Tooltip: ""
+}
+
+GlowplatePlatformItem: {
+	// DisplayName: Glowplate Platform
+	// Tooltip: ""
+}
+
+AcidPlatformItem: {
+	// DisplayName: Corrosive Platform
+	// Tooltip: ""
+}
+
+SepulchrePlatformItem: {
+	// DisplayName: Sepulchre Platform
+	// Tooltip: ""
+}

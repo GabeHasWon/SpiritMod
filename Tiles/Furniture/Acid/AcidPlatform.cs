@@ -4,9 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace SpiritMod.Tiles.Furniture.Reach
+namespace SpiritMod.Tiles.Furniture.Acid
 {
-	public class ReachPlatform : ModTile
+	public class AcidPlatform : ModTile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -34,7 +34,6 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
 			AddMapEntry(new Color(179, 146, 107));
 
-			DustType = DustID.Dirt;
 			AdjTiles = new int[] { TileID.Platforms };
 		}
 
