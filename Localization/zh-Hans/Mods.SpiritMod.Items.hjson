@@ -8638,26 +8638,26 @@ SwordStandItem: {
 }
 
 DriftwoodPlatformItem: {
-	// DisplayName: Driftwood Platform
-	// Tooltip: ""
+	DisplayName: 浮木平台
+	Tooltip: ""
 }
 
 SpiritPlatformItem: {
-	// DisplayName: Duskwood Platform
-	// Tooltip: ""
+	DisplayName: 黄昏木平台
+	Tooltip: ""
 }
 
 GlowplatePlatformItem: {
-	// DisplayName: Glowplate Platform
-	// Tooltip: ""
+	DisplayName: 辉光板平台
+	Tooltip: ""
 }
 
 AcidPlatformItem: {
-	// DisplayName: Corrosive Platform
-	// Tooltip: ""
+	DisplayName: 酸蚀平台
+	Tooltip: ""
 }
 
 SepulchrePlatformItem: {
-	// DisplayName: Sepulchre Platform
-	// Tooltip: ""
+	DisplayName: 坟葬平台
+	Tooltip: ""
 }
