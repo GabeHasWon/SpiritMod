@@ -33,8 +33,9 @@ namespace SpiritMod.Tiles.Furniture.Hanging
 			TileObjectData.addTile(Type);
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Hanging Cloudstalk");
 			AddMapEntry(new Color(28, 138, 72), name);
+			RegisterItemDrop(ModContent.ItemType<HangingCloudstalk>());
+
 			DustType = -1;
 		}
 

@@ -3,11 +3,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using MonoMod.RuntimeDetour;
 using ReLogic.Content;
 using SpiritMod.Effects.Waters;
 using SpiritMod.Mechanics.OceanWavesSystem;
 using SpiritMod.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Terraria;
 using Terraria.GameContent;
@@ -18,6 +20,7 @@ using Terraria.Graphics;
 using Terraria.Graphics.Light;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace SpiritMod.Effects.SurfaceWaterModifications
 {
@@ -27,6 +30,8 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 		internal static Texture2D rippleTex = null;
 		internal static int leftOceanHeight = 0;
 		internal static int rightOceanHeight = 0;
+
+		static Hook LoadGlobalHook;
 
 		private static bool ImproperWaterStyle => Main.waterStyle > WaterStyleID.Count;
 
@@ -52,6 +57,25 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			{
 				transparencyEffect = ModContent.Request<Effect>("SpiritMod/Effects/SurfaceWaterModifications/SurfaceWaterFX", AssetRequestMode.ImmediateLoad).Value;
 				rippleTex = ModContent.Request<Texture2D>("Terraria/Images/Misc/Ripples", AssetRequestMode.ImmediateLoad).Value;
+			}
+
+#if DEBUG
+			// This is for testing around an issue that happened with a couple of my characters, bricking them.
+			// This fixes the problem but shouldn't be run in production since it's hacky and may hide other issues.
+			LoadGlobalHook = new Hook(typeof(ItemIO).GetMethod("LoadGlobals", BindingFlags.NonPublic | BindingFlags.Static), HijackLoadGlobals);
+			LoadGlobalHook.Apply();
+#endif
+		}
+		
+		private static void HijackLoadGlobals(Action<Item, IList<TagCompound>> orig, Item item, IList<TagCompound> list)
+		{
+			try
+			{
+				orig(item, list);
+			}
+			catch (Exception e)
+			{
+				SpiritMod.Instance.Logger.Warn($"SurfaceWaterModifications.HijackLoadGlobals caught {e.Message} error at {e.StackTrace}. This should only run in DEBUG.");
 			}
 		}
 
