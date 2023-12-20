@@ -4,9 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace SpiritMod.Tiles.Furniture.Reach
+namespace SpiritMod.Tiles.Furniture.Driftwood
 {
-	public class ReachPlatform : ModTile
+	public class DriftwoodPlatform : ModTile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -34,7 +34,7 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
 			AddMapEntry(new Color(179, 146, 107));
 
-			DustType = DustID.Dirt;
+			DustType = DustID.WoodFurniture;
 			AdjTiles = new int[] { TileID.Platforms };
 		}
 
