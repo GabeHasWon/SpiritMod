@@ -39,11 +39,11 @@ namespace SpiritMod.Items.Sets.CoilSet
 
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			charger++;
-			if (charger >= 6) {
+			if (++charger >= 5)
+			{
 				SoundEngine.PlaySound(SoundID.Item14, target.Center);
-				int type = ModContent.ProjectileType<CoiledExplosion>();
-				Projectile.NewProjectile(Item.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, type, damageDone, hit.Knockback, player.whoAmI);
+				Projectile.NewProjectile(Item.GetSource_OnHit(target), target.Center.X, target.Center.Y, 0f, 0f, ModContent.ProjectileType<CoiledExplosion>(), (int)(damageDone * 1.2f), hit.Knockback, player.whoAmI);
+				
 				charger = 0;
 			}
 		}

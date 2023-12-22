@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Particles;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -10,12 +11,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 {
     public class AccursedBlade : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Accursed Blade");
-            // Tooltip.SetDefault("Kill enemies and collect their souls to build up charge\nRight click to release charge as a cursed bolt");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+        public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
         {
@@ -38,10 +34,11 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) 
 			=> GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "_Glow").Value, rotation, scale);
 
-		public override bool AltFunctionUse(Player player) => true;
+		public override bool AltFunctionUse(Player player) => player.GetModPlayer<AccursedBladePlayer>().charge > 0;
+
 		public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2 && player.GetModPlayer<AccursedBladePlayer>().charge != 0)
+            if (player.altFunctionUse == 2)
             {
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.staff[Item.type] = true;
@@ -56,9 +53,10 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-            if (player.altFunctionUse != 2 || player.GetModPlayer<AccursedBladePlayer>().charge == 0)
+            if (player.altFunctionUse != 2)
                 return false;
-            damage = 20 + (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 150);
+
+            damage += (int)(player.GetModPlayer<AccursedBladePlayer>().charge * 150);
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetModPlayer<AccursedBladePlayer>().charge);
             player.GetModPlayer<AccursedBladePlayer>().charge = 0;
             SoundEngine.PlaySound(SoundID.NPCDeath52 with { Pitch = 1.2f }, player.position);
@@ -93,8 +91,6 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
     {
         public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Accursed Soul");
-			// Tooltip.SetDefault("You shouldn't see this");
 			Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 7));
 			ItemID.Sets.AnimatesAsSoul[Type] = true;
 			ItemID.Sets.ItemNoGravity[Type] = true;
@@ -111,20 +107,31 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 		}
 
 		public override bool ItemSpace(Player player) => true;
+
 		public override void GrabRange(Player player, ref int grabRange) => grabRange = 20;
 
 		public override bool OnPickup(Player player)
 		{
-			player.GetModPlayer<AccursedBladePlayer>().charge += 0.15f;
+			player.GetModPlayer<AccursedBladePlayer>().charge += .2f;
+
 			SoundEngine.PlaySound(SoundID.NPCDeath52, player.Center);
+			for (int i = 0; i < 10; i++)
+			{
+				var velocity = Main.rand.NextVector2Unit() * Main.rand.NextFloat(3f);
+				ParticleHandler.SpawnParticle(new GlowParticle(player.Center, velocity / 2, Color.LimeGreen, Main.rand.NextFloat(.03f, .15f), Main.rand.Next(8, 15), 10));
+				Dust.NewDustPerfect(player.Center, DustID.CursedTorch, velocity, 0, default, 1.5f).noGravity = true;
+			}
 			return false;
 		}
 
 		public override void Update(ref float gravity, ref float maxFallSpeed)
         {
-            Item.alpha++;
-            if (Item.alpha > 255)
-                Item.active = false;
+			const int totalTime = 255;
+			const int fadeDur = 20;
+
+			if ((Item.timeSinceItemSpawned - ItemID.Sets.OverflowProtectionTimeOffset[Type]) > (totalTime - fadeDur))
+				if ((Item.alpha += 255 / fadeDur) > 255)
+					Item.active = false;
         }
 		public override void PostUpdate() => Lighting.AddLight(Item.position, 0.18f, .64f, .31f);
 
@@ -135,15 +142,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 	{
 		public float charge = 0;
 
-        public override void ResetEffects()
-		{
-            if (charge > 1)
-                charge = 1;
-            if (charge > 0)
-                charge -= 0.00025f;
-            else
-                charge = 0;
-        }
+        public override void ResetEffects() => charge = MathHelper.Clamp(charge - .00025f, 0, 1);
 
 		public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
 		{
@@ -157,7 +156,6 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Accursed Bolt");
 		public override void SetDefaults()
 		{
 			Projectile.width = 32;
@@ -172,34 +170,20 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 			Projectile.DamageType = DamageClass.Melee;
 		}
 
-		//bool primsCreated = false;
 		public override void AI()
 		{
-			//Player player = Main.player[projectile.owner];
-			/*if (!primsCreated)
-            {
-                primsCreated = true;
-                Starjinx.primitives.CreateTrail(new SkullPrimTrail(projectile, Color.Green, 10 + (int)(projectile.ai[0] * 15)));
-                projectile.penetrate = (int)(projectile.ai[0] * 5) + 1;
-            }*/
 			Projectile.ai[0] += 0.01f;
 			Projectile.rotation = Projectile.velocity.ToRotation();
-			if (Projectile.timeLeft > 250)
-			{
-				Projectile.tileCollide = false;
-			}
-			else
-			{
-				Projectile.tileCollide = true;
-			}
+			Projectile.tileCollide = Projectile.timeLeft <= 250;
+
 			if (Projectile.timeLeft < 25 || Projectile.penetrate <= 1)
 				Fadeout();
 
 			if (Projectile.ai[1] > 0)
 			{
-				Projectile.velocity *= 0.9f;
-				Projectile.alpha += 10;
-				if (Projectile.alpha > 255)
+				Projectile.velocity *= .9f;
+
+				if ((Projectile.alpha += 10) > 255)
 					Projectile.Kill();
 			}
 		}
@@ -217,6 +201,7 @@ namespace SpiritMod.Items.Sets.SepulchreLoot.AccursedBlade
 			Projectile.velocity = oldVelocity;
 			return false;
 		}
+
 		public override bool? CanDamage() => (Projectile.ai[1] == 0) ? null : false;
 
 		public override bool PreDraw(ref Color lightColor)

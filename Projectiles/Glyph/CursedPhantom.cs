@@ -4,18 +4,18 @@ using SpiritMod.Mechanics.Trails;
 using SpiritMod.Particles;
 using SpiritMod.Prim;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.Utilities;
 
 namespace SpiritMod.Projectiles.Glyph
 {
 	public class CursedPhantom : ModProjectile, ITrailProjectile
 	{
-		private ref float Counter => ref Projectile.ai[0];
-		private ref float IdleTime => ref Projectile.ai[1];
+		public ref float Counter => ref Projectile.ai[0];
+		public ref float IdleTime => ref Projectile.ai[1];
 
 		private Vector2? originPos = null;
 
@@ -29,7 +29,6 @@ namespace SpiritMod.Projectiles.Glyph
 		public override void SetDefaults()
 		{
 			Projectile.Size = new Vector2(20);
-			Projectile.penetrate = 1;
 			Projectile.friendly = true;
 			Projectile.hostile = true;
 			Projectile.ignoreWater = true;
@@ -46,31 +45,19 @@ namespace SpiritMod.Projectiles.Glyph
 
 		public override void AI()
 		{
-			int maxRange = 400;
-			bool foundNPC = false;
-
 			Player owner = Main.player[Projectile.owner];
 			if (originPos == null)
-				originPos = Projectile.Center;
-
-			foreach (NPC npc in Main.npc) //Home in on nearby NPCs
-			{
-				if (npc.active && !npc.friendly && npc.CanBeChasedBy(Projectile) && Projectile.Distance(npc.Center) <= maxRange)
-				{
-					foundNPC = true;
-					break;
-				}
-			}
+				originPos = Projectile.Center; //Set an origin for the projectile to orbit before becoming tangible
 
 			if (++Counter >= IdleTime)
 			{
 				if (Counter == IdleTime)
 					Projectile.netUpdate = true;
-				else if (foundNPC)
-					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(owner.Center) * 8f, .02f);
-				else
-					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(owner.Center) * 8f, .02f);
 
+				var target = Main.npc.Where(x => x.CanBeChasedBy(Projectile) && Projectile.Distance(x.Center) <= 400).FirstOrDefault();
+				Vector2 targetPos = (target != default) ? target.Center : owner.Center;
+
+				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(targetPos) * 8f, .02f);
 				Projectile.alpha = Math.Max(Projectile.alpha - 5, 0);
 			}
 			else
@@ -98,6 +85,7 @@ namespace SpiritMod.Projectiles.Glyph
 			}
 			return true;
 		}
+
 		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
 		{
 			if (Main.masterMode)
@@ -109,6 +97,8 @@ namespace SpiritMod.Projectiles.Glyph
 		}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info) => Projectile.penetrate--;
+
+		public override bool? CanDamage() => Counter > IdleTime;
 
 		public override void OnKill(int timeLeft)
 		{
