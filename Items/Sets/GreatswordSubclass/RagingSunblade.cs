@@ -14,14 +14,9 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 {
     public class RagingSunblade : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Helios");
-			// Tooltip.SetDefault("Hold and release to throw \nRight click to dash to it, destroying everything in your path");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-        }
+        public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
-        public override void SetDefaults()
+		public override void SetDefaults()
         {
             Item.channel = true;
             Item.damage = 180;
@@ -65,11 +60,6 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
     public class RagingSunbladeProj : ModProjectile
     {
-        public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Helios");
-        }
-
         public override void SetDefaults()
 		{
 			Projectile.width = 45;
@@ -330,7 +320,6 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Helios");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
@@ -409,8 +398,6 @@ namespace SpiritMod.Items.Sets.GreatswordSubclass
 
 	public class HeliosDash : ModProjectile
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Helios");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = Projectile.height = 180;

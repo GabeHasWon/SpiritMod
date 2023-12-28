@@ -11,12 +11,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 {
 	public class MoonjellySummonStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Lunazoa Staff");
-			// Tooltip.SetDefault("Summons a Moonlight Preserver\nMoonlight Preservers summon smaller jellyfish that explode\nOnly one Moonlight Preserver can exist at once\nUsing the staff multiple times takes up summon slots, but increases jellyfish spawn rates");
-			SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
-		}
+		public override void SetStaticDefaults() => SpiritGlowmask.AddGlowMask(Item.type, Texture + "_Glow");
 
 		public override void SetDefaults()
 		{
@@ -45,7 +40,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 			else if (FindSummon(player, out Projectile summon))
 				summon.minionSlots++;
 
-			return base.UseItem(player);
+			return null;
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -60,18 +55,10 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops
 
 		private bool FindSummon(Player player, out Projectile projectile)
 		{
-			var found = Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == Item.shoot);
+			var found = Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.type == Item.shoot).FirstOrDefault();
 
-			if (found.Any())
-			{
-				projectile = found.First();
-				return true;
-			}
-			else
-			{
-				projectile = null;
-				return false;
-			}
+			projectile = found;
+			return found != default;
 		}
 	}
 }
