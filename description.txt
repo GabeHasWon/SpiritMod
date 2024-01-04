@@ -1,13 +1,13 @@
 -- By Team Spirit --
 
 Spirit currently adds:
-- 1382 new items!
+- 1401 new items!
 - 41 new armor sets!
 - 8 new bosses​!
-- 2 brand new biomes, the Spirit Biome and the Briar!
+- 3 brand new biomes: the Spirit, the Asteroid Field and the Briar!
 - A complete rework of the Ocean biome!
 - A brand new Quest System!
-- 250 new enemies and minibosses!
+- 255 new enemies and minibosses!
 - 3 new events: the Tide, the Jelly Deluge, and the Mystic Moon!
 - A new Weapon Enchantment system!
 - 34 brand new music tracks for vanilla and modded events and biomes!
