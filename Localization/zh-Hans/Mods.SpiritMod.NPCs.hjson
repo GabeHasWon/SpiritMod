@@ -1013,6 +1013,7 @@ Adventurer: {
 	}
 
 	Entry: 一位勇敢的冒险家，他的野心常常令他置身于危险之中。他也是一个热衷于记笔记的人，他的许多报告如今散落在世界各地。
+	// Census.SpawnCondition: Rescue the Adventurer from a hut in the underground Briar.
 }
 
 BoundAdventurer: {
@@ -1081,6 +1082,11 @@ Gambler: {
 	}
 
 	Entry: 赌徒一直以来都在人生的边缘挣扎，将自身交给命运主宰。虽然这使她成为一名狂热的玩家，但也曾将她束缚在哥布林堡垒的顶部。
+	/* Census.SpawnCondition:
+		'''
+		Rescue the Gambler from a Goblin Tower
+		If your world does not have a Goblin Tower, have at least 1 Gold in your inventory
+		''' */
 }
 
 Ghost.DisplayName: 幽灵
@@ -1123,6 +1129,11 @@ Rogue: {
 	}
 
 	Entry: 一个充满神秘色彩的过去的有魅力的盗贼。他是否值得信任还不清楚，但他很乐意教你交易的技巧。
+	/* Census.SpawnCondition:
+		'''
+		Rescue the Bandit from the Bandit Hideout
+		If your world does not have a Goblin Tower, have at least 1 Gold in your inventory
+		''' */
 }
 
 RuneWizard: {
@@ -1145,6 +1156,7 @@ RuneWizard: {
 	}
 
 	Entry: 这位疲惫的符文抄写员彻夜未眠，研究着在图腾中发现的古老魔法。他不善于交际，但他很乐意强化你的武器。
+	// Census.SpawnCondition: Have a Blank Glyph in your inventory
 }
 
 Undead_Warlock: {

@@ -1013,6 +1013,7 @@ Adventurer: {
 	}
 
 	Entry: An intrepid explorer driven by an ambition that has often landed him in danger. He's also an avid note-taker, his many accounts now scattered throughout the land.
+	Census.SpawnCondition: Rescue the Adventurer from a hut in the underground Briar.
 }
 
 BoundAdventurer: {
@@ -1081,6 +1082,11 @@ Gambler: {
 	}
 
 	Entry: The Gambler has long lived life on the edge, lending herself to the whims of fate. While this makes her an ardent player, it also once bound her to the top of a goblin fortress.
+	Census.SpawnCondition:
+		'''
+		Rescue the Gambler from a Goblin Tower
+		If your world does not have a Goblin Tower, have at least 1 Gold in your inventory
+		'''
 }
 
 Ghost.DisplayName: Ghost
@@ -1123,6 +1129,11 @@ Rogue: {
 	}
 
 	Entry: A dashing rogue with a past shrouded in mystery. Whether he can be trusted or not is unclear, but he would gladly teach you the tricks of the trade regardless.
+	Census.SpawnCondition:
+		'''
+		Rescue the Bandit from the Bandit Hideout
+		If your world does not have a Goblin Tower, have at least 1 Gold in your inventory
+		'''
 }
 
 RuneWizard: {
@@ -1145,6 +1156,7 @@ RuneWizard: {
 	}
 
 	Entry: This tired rune scribe has spent sleepless nights studying the ancient magic found in glyphs. He's not much of a conversationalist, but he'll gladly empower your arsenal.
+	Census.SpawnCondition: Have a Blank Glyph in your inventory
 }
 
 Undead_Warlock: {
