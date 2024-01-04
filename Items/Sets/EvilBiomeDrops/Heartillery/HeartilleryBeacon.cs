@@ -9,12 +9,6 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.Heartillery
 {
 	public class HeartilleryBeacon : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Aching Heart");
-			// Tooltip.SetDefault("Summons a stationary heartillery that shoots blood at foes");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.QueenSpiderStaff);
@@ -34,9 +28,7 @@ namespace SpiritMod.Items.Sets.EvilBiomeDrops.Heartillery
 		public override bool CanUseItem(Player player)
 		{
 			player.FindSentryRestingSpot(Item.shoot, out int worldX, out int worldY, out _);
-			worldX /= 16;
-			worldY /= 16;
-			worldY--;
+			(worldX, worldY) = (worldX / 16, (worldY / 16) - 1);
 			return !WorldGen.SolidTile(worldX, worldY);
 		}
 

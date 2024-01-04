@@ -19,7 +19,6 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 
 		public override void AbstractSetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Moonlight Preserver");
 			Main.projFrames[Projectile.type] = 10;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -33,11 +32,11 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 		{
 			int summonTime = (int)MathHelper.Clamp(34 / (.33f * Projectile.minionSlots), 0, 110);
 
-			if ((AiTimer = ++AiTimer % summonTime) == 0)
+			if (Projectile.owner == Main.myPlayer && (++AiTimer % summonTime) == 0)
 			{
 				Vector2 vel = Vector2.UnitY.RotatedByRandom(MathHelper.PiOver2) * new Vector2(5f, 3f);
 
-				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + (Main.rand.NextVector2Unit() * Main.rand.Next(-50, 50)), vel, ModContent.ProjectileType<LunazoaOrbiter>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0.0f, (float)Projectile.whoAmI);
+				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + (Main.rand.NextVector2Unit() * Main.rand.Next(-50, 50)), vel, ModContent.ProjectileType<LunazoaOrbiter>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, Projectile.whoAmI);
 				proj.scale = Main.rand.NextFloat(.4f, 1f);
 				proj.timeLeft = (int)(62 / (.33f * Projectile.minionSlots));
 			}

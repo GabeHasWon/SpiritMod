@@ -4,6 +4,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.Utilities;
+using System.Linq;
 
 namespace SpiritMod.Projectiles.Summon
 {
@@ -11,7 +12,6 @@ namespace SpiritMod.Projectiles.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Aching Heart");
             Main.projFrames[Projectile.type] = 9;
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
         }
@@ -33,49 +33,16 @@ namespace SpiritMod.Projectiles.Summon
 
         public override void AI()
 		{
-            Projectile.scale = 1f;
-			//CONFIG INFO
-			int range = 22;   //How many tiles away the projectile targets NPCs
-            //TARGET NEAREST NPC WITHIN RANGE
-            float lowestDist = float.MaxValue;
-			NPC target = new NPC();
-			if (Projectile.OwnerMinionAttackTargetNPC != null && Projectile.Distance(Projectile.OwnerMinionAttackTargetNPC.Center) / 16 < range)
-				target = Projectile.OwnerMinionAttackTargetNPC;
-			else {
-				for (int i = 0; i < 200; ++i) {
-					NPC npc = Main.npc[i];
-					//if npc is a valid target (active, not friendly, and not a critter)
-					if (npc.active && npc.CanBeChasedBy(Projectile) && !npc.friendly) {
-						//if npc is within 50 blocks
-						float dist = Projectile.Distance(npc.Center);
-						if (dist / 16 < range) {
-							//if npc is closer than closest found npc
-							if (dist < lowestDist) {
-								lowestDist = dist;
+			float lerpScale = (Main.mouseTextColor / 200f - 0.35f) * .3f;
+			Projectile.scale = lerpScale + .85f;
 
-								//target this npc
-								target = npc;
-								Projectile.netUpdate = true;
-							}
-						}
-					}
-				}
-			}
-
-			Projectile.frameCounter++;
-			if (target.CanBeChasedBy(this))
+			if (++Projectile.frameCounter >= 6f)
 			{
-				float num395 = Main.mouseTextColor / 200f - 0.35f;
-				num395 *= 0.3f;
-				Projectile.scale = num395 + 0.85f;
-				if (Projectile.frameCounter >= 6f)
+				if ((Projectile.frame + 1) >= 8)
 				{
-					Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
-					Projectile.frameCounter = 0;
-					if (Projectile.frame >= 8)
+					var target = Projectile.OwnerMinionAttackTargetNPC ?? Main.npc.Where(x => x.CanBeChasedBy(Projectile) && (x.Distance(Projectile.Center) / 16) < 22).OrderBy(x => x.Distance(Projectile.Center)).FirstOrDefault();
+					if (target != default)
 					{
-						Projectile.frame = 0;
-
 						Vector2 vel = ArcVelocityHelper.GetArcVel(Projectile.Center, target.Center, .4325f, 100, heightabovetarget: 20);
 						for (int i = 0; i < 25; i++)
 						{
@@ -83,19 +50,20 @@ namespace SpiritMod.Projectiles.Summon
 							dust.velocity = vel.RotatedByRandom(MathHelper.Pi / 14) * Main.rand.NextFloat(0.1f, 0.6f);
 						}
 
-						if (Main.netMode != NetmodeID.MultiplayerClient)
+						if (Projectile.owner == Main.myPlayer)
 						{
-							Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<HeartilleryMinionClump>(), Projectile.damage, 0, Main.myPlayer);
+							Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<HeartilleryMinionClump>(), Projectile.damage, 0);
+							
 							int numproj = Main.rand.Next(1, 4);
 							for (int i = 0; i < numproj; i++)
-								Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel.RotatedByRandom(MathHelper.Pi / 8) * Main.rand.NextFloat(0.9f, 1.1f), ModContent.ProjectileType<HeartilleryMinionClump>(), Projectile.damage, 0, Main.myPlayer).netUpdate = true;
+								Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel.RotatedByRandom(MathHelper.Pi / 8) * Main.rand.NextFloat(0.9f, 1.1f), ModContent.ProjectileType<HeartilleryMinionClump>(), Projectile.damage, 0).netUpdate = true;
 						}
-						Projectile.netUpdate = true;
-						SoundEngine.PlaySound(SoundID.Item95, Projectile.Center);  //make bow shooty sound
+						SoundEngine.PlaySound(SoundID.Item95, Projectile.Center);
 					}
 				}
+				Projectile.frameCounter = 0;
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Type];
 			}
-
 			else if (Projectile.frameCounter >= 10f)
 			{
 				Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
@@ -104,18 +72,13 @@ namespace SpiritMod.Projectiles.Summon
 					Projectile.frame = 0;
 			}
 
-            for (int index1 = 0; index1 < 3; ++index1)
+            for (int i = 0; i < 3; ++i)
             {
-                float num1 = Projectile.velocity.X * 0.2f * index1;
-                float num2 = -(Projectile.velocity.Y * 0.2f) * index1;
-                int index2 = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), Projectile.width, Projectile.height, DustID.Blood, 0.0f, 0.0f, 100, new Color(), 1.3f);
-                Main.dust[index2].noGravity = false;
-                Main.dust[index2].velocity.X *= 0.0f;
-                Main.dust[index2].velocity.Y *= 0.5f;
-                Main.dust[index2].scale *= 0.7f;
-                Main.dust[index2].alpha = 100;
-                Main.dust[index2].position.X -= num1;
-                Main.dust[index2].position.Y -= num2;
+				Vector2 offset = new Vector2(Projectile.velocity.X, -Projectile.velocity.Y) * .2f * i;
+
+                Dust dust = Dust.NewDustDirect(Projectile.Center, Projectile.width, Projectile.height, DustID.Blood, 0f, .5f, 100, default, .7f);
+				dust.noGravity = false;
+				dust.position -= offset;
             }
         }
 
@@ -128,14 +91,14 @@ namespace SpiritMod.Projectiles.Summon
 		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCDeath22, Projectile.Center);
-			for (int i = 0; i < 10; i++) {
-				int num = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Blood, 0f, -2f, 0, default, .85f);
-				Main.dust[num].noGravity = false;
-				Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-				Main.dust[num].position.X += Main.rand.Next(-50, 51) * .05f - 1.5f;
-				if (Main.dust[num].position != Projectile.Center) {
-					Main.dust[num].velocity = Projectile.DirectionTo(Main.dust[num].position) * 1f;
-				}
+			for (int i = 0; i < 10; i++)
+			{
+				Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Blood, 0f, -2f, 0, default, .85f);
+				dust.noGravity = false;
+				dust.position += new Vector2(Main.rand.Next(-50, 51) * .05f - 1.5f, Main.rand.Next(-50, 51) * .05f - 1.5f);
+
+				if (dust.position != Projectile.Center)
+					dust.velocity = Projectile.DirectionTo(dust.position) * 1f;
 			}
 		}
 	}

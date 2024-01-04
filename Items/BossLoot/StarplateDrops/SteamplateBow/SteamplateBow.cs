@@ -45,35 +45,35 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 
 		public override bool CanUseItem(Player player)
 		{
+			var modPlayer = player.GetModPlayer<SteamplateBowPlayer>();
 			if (player.IsUsingAlt())
 			{
 				Item.noUseGraphic = false;
 				Item.UseSound = SoundID.Item5;
 				Item.useTime = Item.useAnimation = 26;
+
+				modPlayer.negative = true;
 			}
 			else
 			{
 				Item.noUseGraphic = true;
 				Item.UseSound = null;
 				Item.useTime = Item.useAnimation = 36;
+
+				modPlayer.negative = false;
 			}
 			return true;
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			SteamplateBowPlayer modPlayer = player.GetModPlayer<SteamplateBowPlayer>();
 			if (player.IsUsingAlt())
 			{
 				type = ModContent.ProjectileType<NegativeArrow>();
-				modPlayer.negative = true;
-
 				Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 			}
 			else
 			{
-				modPlayer.negative = false;
-
 				int heldType = ModContent.ProjectileType<SteamplateBowProj>();
 				if (player.ownedProjectileCounts[heldType] < 1)
 					Projectile.NewProjectile(source, position, velocity, heldType, (int)(damage * .3f), knockback, player.whoAmI);

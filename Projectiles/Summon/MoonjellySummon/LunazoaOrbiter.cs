@@ -8,14 +8,16 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using SpiritMod.NPCs.Boss.MoonWizard.Projectiles;
+using System.Linq;
 
 namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 {
 	public class LunazoaOrbiter : ModProjectile
 	{
+		public int ParentIndex { get => (int)Projectile.ai[1]; set => Projectile.ai[1] = value; }
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Lunazoa");
 			Main.projFrames[Projectile.type] = 3;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -37,99 +39,45 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 		public override void AI()
 		{
 			Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
-			Lighting.AddLight(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0.075f * 2, 0.231f * 2, 0.255f * 2);
-			Projectile.frameCounter++;
+			Lighting.AddLight(Projectile.Center, .075f * 2, .231f * 2, .255f * 2);
+
 			Projectile.spriteDirection = -Projectile.direction;
-			if (Projectile.frameCounter >= 10)
+			if (++Projectile.frameCounter >= 10)
 			{
-				Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
 				Projectile.frameCounter = 0;
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Projectile.type];
 			}
 
-			float x = 0.2f;
-			float y = 0.2f;
-			bool flag2 = false;
-
-			if ((double)Projectile.ai[0] < 60)
+			if (Main.projectile[ParentIndex] is Projectile parent && parent.active && parent.type == ModContent.ProjectileType<MoonjellySummon>())
 			{
-				bool flag4 = true;
-				int index1 = (int)Projectile.ai[1];
-				if (Main.projectile[index1].active && Main.projectile[index1].type == ModContent.ProjectileType<MoonjellySummon>())
-				{
-					if (!flag2 && Main.projectile[index1].oldPos[1] != Vector2.Zero)
-						Projectile.position = Projectile.position + Main.projectile[index1].position - Main.projectile[index1].oldPos[1];
-				}
-				else
-				{
-					Projectile.ai[0] = 60;
-					flag4 = false;
-					Projectile.Kill();
-					Projectile.netUpdate = true;
-				}
-				if (flag4 && !flag2)
-				{
-					Projectile parent = Main.projectile[index1];
-					Vector2 dirToParent = parent.Center - Projectile.Center;
+				if (parent.oldPos[1] != Vector2.Zero)
+					Projectile.position = Projectile.position + parent.position - parent.oldPos[1];
 
-					Projectile.velocity += Vector2.Normalize(dirToParent) * new Vector2(x, y);
-					if (Projectile.velocity.Length() > 4f)
-						Projectile.velocity *= 4f / Projectile.velocity.Length();
-				}
+				Vector2 dirToParent = parent.Center - Projectile.Center;
+
+				Projectile.velocity += Vector2.Normalize(dirToParent) * .2f;
+				if (Projectile.velocity.Length() > 4f)
+					Projectile.velocity *= 4f / Projectile.velocity.Length();
+			}
+			else if (Projectile.owner == Main.myPlayer)
+			{
+				Projectile.Kill();
+				Projectile.netUpdate = true;
 			}
 		}
 
 		public override void OnKill(int timeLeft)
 		{
-			NPC mainTarget = Projectile.OwnerMinionAttackTargetNPC;
-			if (mainTarget != null && mainTarget.CanBeChasedBy(Projectile))
+			var target = Projectile.OwnerMinionAttackTargetNPC ?? Main.npc.Where(x => x.CanBeChasedBy(Projectile) && (x.Distance(Projectile.Center) / 16) < 30).OrderBy(x => x.Distance(Projectile.Center)).FirstOrDefault();
+			if (target != default)
 			{
-				float dist = Projectile.Distance(mainTarget.Center);
-				if (dist / 16 < 30)
-				{
-					SoundEngine.PlaySound(SoundID.Item110, Projectile.position);
-					Vector2 direction = Vector2.Normalize(mainTarget.Center - Projectile.Center) * 15f;
-					Projectile p = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, direction, ModContent.ProjectileType<JellyfishOrbiter_Friendly>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
-					p.friendly = true;
-					p.hostile = false;
-					p.minion = true;
-					p.netUpdate = true;
-					p.scale = Projectile.scale;
-					Projectile.netUpdate = true;
-				}
+				SoundEngine.PlaySound(SoundID.Item110, Projectile.position);
+				Vector2 direction = Projectile.DirectionTo(target.Center) * 15f;
+
+				Projectile p = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, direction, ModContent.ProjectileType<JellyfishOrbiter_Friendly>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+				p.scale = Projectile.scale;
+				p.netUpdate = true;
 			}
-			else
-			{
-				for (int npcFinder = 0; npcFinder < 200; ++npcFinder)
-				{
-					NPC npc = Main.npc[npcFinder];
-					if (npc.active && npc.CanBeChasedBy(Projectile) && !npc.friendly)
-					{
-						//if npc is within 50 blocks
-						float dist = Projectile.Distance(npc.Center);
-						if (dist / 16 < 30)
-						{
-							if (!Main.npc[npcFinder].friendly && !Main.npc[npcFinder].townNPC && Main.npc[npcFinder].active)
-							{
-								SoundEngine.PlaySound(SoundID.Item110, Projectile.Center);
-								Vector2 direction = Vector2.Normalize(Main.npc[npcFinder].Center - Projectile.Center) * 15f;
-								Projectile p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, direction, ModContent.ProjectileType<JellyfishOrbiter_Friendly>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
-								p.friendly = true;
-								p.hostile = false;
-								p.minion = true;
-								p.netUpdate = true;
-								p.scale = Projectile.scale;
-
-								if (Main.netMode != NetmodeID.SinglePlayer)
-									NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, p.whoAmI);
-
-								break;
-							}
-							Projectile.netUpdate = true;
-						}
-					}
-				}
-			}
-
 			for (int k = 0; k < 10; k++)
 			{
 				Dust d = Dust.NewDustPerfect(Projectile.Center, 226, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f));
@@ -152,7 +100,6 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 
 				Main.spriteBatch.Draw(glow, drawPos, new Microsoft.Xna.Framework.Rectangle?(TextureAssets.Projectile[Projectile.type].Value.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame)), color1, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);
 				Main.spriteBatch.Draw(glow, drawPos, new Microsoft.Xna.Framework.Rectangle?(TextureAssets.Projectile[Projectile.type].Value.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame)), color1, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);
-
 
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Microsoft.Xna.Framework.Rectangle?(TextureAssets.Projectile[Projectile.type].Value.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame)), color, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);
 				Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, new Microsoft.Xna.Framework.Rectangle?(TextureAssets.Projectile[Projectile.type].Value.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame)), color, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);

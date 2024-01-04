@@ -36,7 +36,6 @@ namespace SpiritMod.Projectiles.Thrown
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Soaring Scapula");
 			ProjectileID.Sets.TrailCacheLength[Type] = 2;
 			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}

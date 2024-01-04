@@ -19,6 +19,7 @@ namespace SpiritMod.GlobalClasses.Players
 
 		private int frenzyDamage;
 		private float genericCounter;
+		private int unholyCooldown;
 		public float veilCounter;
 		public int voidStacks;
 		public bool zephyrStrike;
@@ -89,6 +90,7 @@ namespace SpiritMod.GlobalClasses.Players
 			}
 
 			veilCounter = MathHelper.Max(veilCounter - .001f, 0);
+			unholyCooldown = Math.Max(unholyCooldown - 1, 0);
 		}
 
 
@@ -124,8 +126,11 @@ namespace SpiritMod.GlobalClasses.Players
 			if (target.value <= 0 || target.SpawnedFromStatue || target.friendly) //Don't let useless NPCs trigger widely beneficial effects
 				return;
 
-			if (Glyph == GlyphType.Unholy && target.life <= 0)
+			if (Glyph == GlyphType.Unholy && unholyCooldown <= 0 && target.life <= 0)
+			{
 				UnholyGlyph.Erupt(Player, target, 10 * baseRarity);
+				unholyCooldown = 2;
+			}
 			if (Glyph == GlyphType.Sanguine)
 				SanguineGlyph.DrainEffect(Player, target);
 			if (Glyph == GlyphType.Blaze)
