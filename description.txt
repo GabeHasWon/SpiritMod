@@ -16,12 +16,11 @@ Spirit currently adds:
 Introducing a variety of bosses, biomes, weapons, events, and mechanics, Spirit is one of Terraria’s largest content mods. 
 Spirit has been developed by a team of passionate modders since 2015, with the goal of expanding the vanilla experience and breathing new immersive life into your world. 
 Since then, the mod has continued to grow and evolve, boasting over 3 million downloads in its lifetime on 1.3.5.
-Now, Spirit is making its debut in 1.4, with a bright future ahead. 
+After another long update, Spirit is ready to take on 1.4.4, and showcase what it can do in the future.
 
 We hope you enjoy!
 
 Discord: https://discord.gg/YUFGbSccSZ 
-
 Check out the mod's discord and forum page for more information! We hope you enjoy the mod, and please report any issues you encounter :)
 
 --------------
@@ -33,8 +32,8 @@ Organizing help on in the comment section is near impossible.
 ----- FAQ -----
 Q: Is this mod compatible with <Other Mod>?
 A: With the exception of Remnants and Builder's Essentials, and some minor visual issues with Polarities, yes.
-
-# This mod is compatible with Calamity and Thorium. Calamity WILL overshadow both Thorium and Spirit, however.
+This mod is compatible with Calamity and Thorium, and all other known content mods. 
+Calamity WILL overshadow both Thorium and Spirit, however, as it is balanced around itself instead of vanilla.
 
 Q: I'm getting a crash during world gen. How do I fix it?
 A: If you're using Remnants or Builder's Essentials, disable them. Both mods stop Spirit from generating.

@@ -162,13 +162,14 @@ namespace SpiritMod.World.Micropasses
 				{
 					Tile tile = Main.tile[x, y];
 
-					if ((x == i - lOffsetX - 1 || x == i + rOffsetX) && tile.HasTile) //Line the walls
+					if ((x == i - lOffsetX - 1 || x == i + rOffsetX) && tile.HasTile) // Line the walls
 						WorldGen.PlaceTile(x, y, type, true, true);
-					else if (y - j < height * 0.9f)//Clear the way
+					else if (y - j < height * 0.9f) // Clear the way
 					{
-						tile.ClearTile();
+						if (TileID.Sets.BasicChest[Main.tile[x, y - 1].TileType]) // Don't clear chest anchors
+							tile.ClearTile();
 
-						if (y - j > height * 0.75f) //(and add water at the bottom)
+						if (y - j > height * 0.75f) // (and add water at the bottom)
 						{
 							tile.LiquidAmount = 255;
 							tile.LiquidType = LiquidID.Water;
@@ -181,7 +182,7 @@ namespace SpiritMod.World.Micropasses
 					}
 				}
 
-				if (y - j > height * 0.75f) //Randomize sizes
+				if (y - j > height * 0.75f) // Randomize sizes
 				{
 					if (y - j > height * 0.8f)
 					{
