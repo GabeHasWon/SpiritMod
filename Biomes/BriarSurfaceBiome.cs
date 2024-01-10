@@ -24,8 +24,5 @@ namespace SpiritMod.Biomes
 			bool surface = player.ZoneSkyHeight || player.ZoneOverworldHeight;
 			return BiomeTileCounts.InBriar && surface;
 		}
-
-		//public override void OnEnter(Player player) => player.GetSpiritPlayer().ZoneReach = true;
-		//public override void OnLeave(Player player) => player.GetSpiritPlayer().ZoneReach = false;
 	}
 }
