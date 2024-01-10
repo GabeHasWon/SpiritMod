@@ -23,7 +23,7 @@ public abstract class AuroraMonolith : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 		TileObjectData.newTile.Height = 4;
 		TileObjectData.newTile.Origin = new Point16(1, 2);
-		TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 16 };
+		TileObjectData.newTile.CoordinateHeights = [16, 16, 16, 16];
 		TileObjectData.addTile(Type);
 
 		AddMapEntry(new Color(75, 139, 166));
@@ -32,7 +32,6 @@ public abstract class AuroraMonolith : ModTile
 		DustType = DustID.Stone;
 		AnimationFrameHeight = 72;
 		TileID.Sets.DisableSmartCursor[Type] = true;
-		//adjTiles = new int[] { TileID.LunarMonolith };
 	}
 
 	public sealed override void NearbyEffects(int i, int j, bool closer)
@@ -40,12 +39,6 @@ public abstract class AuroraMonolith : ModTile
 		if (Main.tile[i, j].TileFrameY >= AnimationFrameHeight)
 			Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[AuroraType] = 6;
 	}
-
-	//public override void AnimateTile(ref int frame, ref int frameCounter)
-	//{
-	//    //frame = Main.tileFrame[TileID.LunarMonolith];
-	//    //frameCounter = Main.tileFrameCounter[TileID.LunarMonolith];
-	//}
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
@@ -72,10 +65,9 @@ public abstract class AuroraMonolith : ModTile
 		player.cursorItemIconEnabled = true;
 		player.cursorItemIconID = DropType;
 	}
-	public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-	{
-		offsetY = 2;
-	}
+
+	public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+
 	public sealed override void HitWire(int i, int j)
 	{
 		int x = i - Main.tile[i, j].TileFrameX / 18 % 2;
@@ -134,4 +126,6 @@ public abstract class AuroraMonolithItem : ModItem
 		AuroraMonolith tile = ModContent.GetModTile(Item.createTile) as AuroraMonolith;
 		Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[tile.AuroraType] = 6;
 	}
+
+	public override void UpdateVanity(Player player) => UpdateAccessory(player, false);
 }

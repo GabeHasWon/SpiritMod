@@ -145,7 +145,7 @@ namespace SpiritMod.Tiles.Banners
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16 };
 			TileObjectData.newTile.StyleHorizontal = true;
-			TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
+			TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom | AnchorType.Platform, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.StyleWrapLimit = 118;
 			TileObjectData.addTile(Type);
 
@@ -153,8 +153,17 @@ namespace SpiritMod.Tiles.Banners
 			TileID.Sets.DisableSmartCursor[Type] = true;
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Banner");
 			AddMapEntry(new Color(13, 88, 130), name);
+		}
+
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
+		{
+			int offY = Main.tile[i, j].TileFrameY / 18;
+			bool isOnPlatform = TileID.Sets.Platforms[Main.tile[i, j - offY - 1].TileType];
+			bool isPlatformHammered = Main.tile[i, j - offY - 1].Slope != SlopeType.Solid;
+
+			if (isOnPlatform && !isPlatformHammered) // Offset banners on non-sloped platforms
+				offsetY -= 8;
 		}
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
