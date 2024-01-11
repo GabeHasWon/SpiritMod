@@ -5,7 +5,6 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Items.Consumable.Quest;
@@ -15,12 +14,16 @@ namespace SpiritMod.NPCs.Hookbat
 {
 	public class Hookbat : ModNPC
 	{
+		public const int DASH_RATE = 300;
+		public const int DASH_DELAY = 30;
+
+		public ref float Counter => ref NPC.ai[0];
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Hookbat");
-			Main.npcFrameCount[NPC.type] = 5;
-			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
-			NPCID.Sets.TrailingMode[NPC.type] = 0;
+			Main.npcFrameCount[Type] = 5;
+			NPCID.Sets.TrailCacheLength[Type] = 3;
+			NPCID.Sets.TrailingMode[Type] = 0;
 		}
 
 		public override void SetDefaults()
@@ -41,73 +44,43 @@ namespace SpiritMod.NPCs.Hookbat
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface NightTime");
 
-		int frame;
-
 		public override void AI()
 		{
-			NPC.ai[0]++;
+			NPC.TargetClosest(true);
 			NPC.spriteDirection = NPC.direction;
-			NPC.ai[3] = MathHelper.Lerp(NPC.ai[3], 5, 0.05f);
-
 			Player target = Main.player[NPC.target];
 
-			if (!target.dead && NPC.ai[1] < 2f)
+			if (!target.dead)
 			{
-				if (NPC.collideX)
+				var targetPos = target.Center - new Vector2(0, 16 * 5);
+				float speed = MathHelper.Clamp(NPC.Distance(targetPos) / 16, 0, 8);
+				NPC.velocity = Vector2.Lerp(NPC.velocity, NPC.DirectionTo(targetPos) * speed, .0075f);
+
+				if (Counter > DASH_RATE)
 				{
-					NPC.velocity.X = NPC.oldVelocity.X * -0.5f;
-					if (NPC.direction == -1 && NPC.velocity.X > 0f && NPC.velocity.X < 2f)
-						NPC.velocity.X = 2f;
-					if (NPC.direction == 1 && NPC.velocity.X < 0f && NPC.velocity.X > -2f)
-						NPC.velocity.X = -2f;
-				}
-				if (NPC.collideY)
-				{
-					NPC.velocity.Y = NPC.oldVelocity.Y * -0.5f;
-					if (NPC.velocity.Y > 0f && NPC.velocity.Y < 1f)
-						NPC.velocity.Y = 1f;
-					if (NPC.velocity.Y < 0f && NPC.velocity.Y > -1f)
-						NPC.velocity.Y = -1f;
-				}
-
-				NPC.TargetClosest(true);
-				NPC.velocity += NPC.DirectionTo(target.Center) * (0.6f + (NPC.whoAmI % 8 * 0.05f));
-
-				if (NPC.velocity.LengthSquared() > NPC.ai[3] * NPC.ai[3])
-					NPC.velocity = Vector2.Normalize(NPC.velocity) * NPC.ai[3];
-			}
-
-			if (NPC.ai[0] == 190)
-			{
-				NPC.ai[1] = 1f;
-				NPC.netUpdate = true;
-			}
-
-			if (NPC.ai[1] == 1f)
-			{
-				frame = 4;
-
-				if (NPC.DistanceSQ(target.Center) < 400 * 400)
-				{
-					if (NPC.ai[2] == 0)
+					NPC.velocity *= .93f;
+					if (Counter == (DASH_RATE + DASH_DELAY))
 					{
+						if (Main.netMode != NetmodeID.MultiplayerClient)
+						{
+							NPC.velocity = (NPC.DirectionTo(target.Center - target.velocity) * 17).RotatedByRandom(.13f);
+							NPC.netUpdate = true;
+						}
 						SoundEngine.PlaySound(SoundID.DD2_WyvernDiveDown, NPC.Center);
-						NPC.ai[2]++;
 					}
-					else
-						NPC.velocity.Y -= .0625f;
-
-					NPC.ai[3] = 8;
+					if (Counter > (DASH_RATE + DASH_DELAY + 20))
+						Counter = 0;
 				}
-
-				if (NPC.ai[0] > 235)
-				{
-					NPC.ai[0] = 0f;
-					NPC.ai[1] = 0f;
-					NPC.ai[2] = 0f;
-					NPC.netUpdate = true;
-				}
+				if (Counter != DASH_RATE || (NPC.Distance(target.Center) < (16 * 8)))
+					Counter++;
 			}
+
+			if (NPC.collideX)
+				NPC.velocity.X = NPC.oldVelocity.X * -.5f;
+			if (NPC.collideY)
+				NPC.velocity.Y = NPC.oldVelocity.Y * -.5f;
+
+			NPC.rotation = NPC.velocity.X * .1f;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -131,6 +104,10 @@ namespace SpiritMod.NPCs.Hookbat
 			}
 		}
 
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot) => Counter > (DASH_RATE + DASH_DELAY);
+
+		public override bool CanHitNPC(NPC target) => Counter > (DASH_RATE + DASH_DELAY);
+
 		public override void OnKill()
 		{
 			if (QuestManager.GetQuest<FirstAdventure>().IsActive)
@@ -139,7 +116,7 @@ namespace SpiritMod.NPCs.Hookbat
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if (NPC.ai[1] == 1f)
+			if (Counter > (DASH_RATE + DASH_DELAY))
 			{
 				Vector2 drawOrigin = NPC.frame.Size() / 2;
 				var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -156,20 +133,9 @@ namespace SpiritMod.NPCs.Hookbat
 
 		public override void FindFrame(int frameHeight)
 		{
-			NPC.frameCounter++;
-
-			if (NPC.frameCounter >= 6)
-			{
-				frame++;
-				NPC.frameCounter = 0;
-
-				if (!NPC.IsABestiaryIconDummy)
-					NPC.netUpdate = true;
-			}
-			if (frame > 3)
-				frame = 0;
-
-			NPC.frame.Y = frameHeight * frame;
+			float rate = 1f / (6 + (int)(MathHelper.Max(Counter - DASH_RATE, 0) * .2f));
+			NPC.frameCounter = (NPC.frameCounter + rate) % 4;
+			NPC.frame.Y = frameHeight * (int)NPC.frameCounter;
 		}
 	}
 }
