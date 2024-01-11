@@ -701,7 +701,7 @@ namespace SpiritMod.World
 
 			Point16 size = default;
 			StructureHelper.Generator.GetDimensions(structure, SpiritMod.Instance, ref size);
-			Point pos = FindBoneIslandPlacement(size); // Select a place in the inner 4/6ths of the world
+			Point pos = FindBoneIslandPlacement(size, WorldGen.remixWorldGen); // Select a place in the inner 4/6ths of the world
 			StructureHelper.Generator.GenerateStructure(structure, new Point16(pos.X, pos.Y), SpiritMod.Instance);
 
 			if (var == 1 && Main.tile[pos.X + 118, pos.Y + 35].TileType == TileID.TatteredWoodSign)
@@ -728,6 +728,9 @@ namespace SpiritMod.World
 				totalAttempts++;
 
 				if (totalAttempts > 3000)
+					break;
+
+				if (houseLocations.Count == 0)
 					break;
 
 				Point pos = WorldGen.genRand.Next(houseLocations);

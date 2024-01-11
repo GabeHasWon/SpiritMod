@@ -3,7 +3,6 @@ using System;
 using SpiritMod.Tiles.Block;
 using Terraria.ID;
 using Terraria.ModLoader;
-// If you are using c# 6, you can use: "using static Terraria.Localization.GameCulture;" which would mean you could just write "DisplayName.AddTranslation(German, "");"
 
 namespace SpiritMod.Items.Placeable.Tiles
 {

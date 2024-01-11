@@ -129,22 +129,22 @@ namespace SpiritMod.Items.BossLoot.ScarabeusDrops.ScarabExpertDrop
 			ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, 
 			ref Vector2 drawOrigin, ref float drawScale, float shadow)
 		{
-			ScarabMountPlayer modplayer = drawPlayer.GetModPlayer<ScarabMountPlayer>();
-			rotation = modplayer.scarabRotation;
+			ScarabMountPlayer mountPlayer = drawPlayer.GetModPlayer<ScarabMountPlayer>();
+			rotation = mountPlayer.scarabRotation;
 			glowTexture = Mod.Assets.Request<Texture2D>("Items/BossLoot/ScarabeusDrops/ScarabExpertDrop/ScarabMount_Glow").Value;
 			Vector2 heightoffset = new Vector2(0, MountData.heightBoost - 16);
 			drawPosition += heightoffset;
 			if (Math.Abs(drawPlayer.velocity.X) > 6)
 			{
-				for (int i = 0; i < modplayer.scarabOldPosition.Length; i++)
+				for (int i = 0; i < mountPlayer.scarabOldPosition.Length; i++)
 				{
-					float opacity = (modplayer.scarabOldPosition.Length - i) / (float)modplayer.scarabOldPosition.Length;
-					var pos = modplayer.scarabOldPosition[i] - Main.screenPosition + heightoffset;
-					DrawData drawdata = new DrawData(texture, pos, null, drawColor * 0.2f * opacity, rotation, texture.Size() / 2, 1, SpriteEffects.None, 0);
-					playerDrawData.Add(drawdata);
+					float opacity = (mountPlayer.scarabOldPosition.Length - i) / (float)mountPlayer.scarabOldPosition.Length;
+					var pos = mountPlayer.scarabOldPosition[i] - Main.screenPosition + heightoffset;
+					DrawData data = new DrawData(texture, pos, null, drawColor * 0.2f * opacity, rotation, texture.Size() / 2, 1, SpriteEffects.None, 0);
+					playerDrawData.Add(data);
 
-					DrawData drawdataglow = new DrawData(glowTexture, pos, null, Color.White * 0.2f * opacity, rotation, texture.Size() / 2, 1, SpriteEffects.None, 0);
-					playerDrawData.Add(drawdataglow);
+					DrawData dataGlow = new DrawData(glowTexture, pos, null, Color.White * 0.2f * opacity, rotation, glowTexture.Size() / 2, 1, SpriteEffects.None, 0);
+					playerDrawData.Add(dataGlow);
 				}
 			}
 			return true;

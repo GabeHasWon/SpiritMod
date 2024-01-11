@@ -25,7 +25,7 @@ Adventurer: {
 		FarFromHome: You could say I'm 'adventuring' a bit too far from my house...but seriously I don't have a map.
 		DislikeCrowded: How am I supposed to chart undiscovered lands with all these people around?
 		HateCrowded: I'd rather explore a lake of lava than live here with all these people!
-		LikeBiome: "{BiomeName} is a relaxing place to be, good place to rest up."
+		LikeBiome: Truly, {BiomeName} is a relaxing place to be. A nice place to rest up.
 		LoveBiome: You shouldn't see this.
 		DislikeBiome: While I'd love to finish what I've started, it's far too soon for me to be back in the {BiomeName}.
 		HateBiome: You shouldn't see this either!

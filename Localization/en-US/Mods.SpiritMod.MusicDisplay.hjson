@@ -183,3 +183,13 @@ TranquilWinds: {
 	DisplayName: Tranquil Winds
 	Author: "{$BySalvati}"
 }
+
+ReachNighttime: {
+	DisplayName: Briar Night
+	Author: "{$BySalvati}"
+}
+
+CrimsonNight: {
+	DisplayName: Razor's Edge (Crimson Night Theme)
+	Author: "{$BySalvati}, {$Sbubby}"
+}

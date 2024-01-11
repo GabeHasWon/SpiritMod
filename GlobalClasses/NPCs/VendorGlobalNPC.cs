@@ -91,7 +91,6 @@ internal class VendorGlobalNPC : GlobalNPC
 		}
 		else if (shop.NpcType == NPCID.Wizard)
 		{
-			shop.Add<SurrenderBell>();
 			shop.Add<PinStar>();
 		}
 		else if (shop.NpcType == NPCID.Steampunker)

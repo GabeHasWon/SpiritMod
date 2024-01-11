@@ -55,5 +55,6 @@ internal class MusicDisplayCalls : ModSystem
 		AddMusic("DuskingTheme");
 		AddMusic("Scarabeus");
 		AddMusic("TranquilWinds");
+		AddMusic("ReachNighttime");
 	}
 }

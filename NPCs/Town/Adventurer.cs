@@ -18,6 +18,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Items.Accessory.Leather;
 using SpiritMod.Items.Sets.GunsMisc.PolymorphGun;
+using SpiritMod.Items.Consumable;
 
 namespace SpiritMod.NPCs.Town
 {
@@ -134,6 +135,7 @@ namespace SpiritMod.NPCs.Town
 			shop.Add<PinMoonjelly>(SpiritConditions.MJWDown);
 			shop.Add<PinTree>(Condition.Hardmode);
 			shop.Add<PolymorphGun>(Condition.DownedMechBossAny);
+			shop.Add<SurrenderBell>();
 			shop.Register();
 		}
 

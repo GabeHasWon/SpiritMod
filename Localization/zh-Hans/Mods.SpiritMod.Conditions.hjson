@@ -7,6 +7,8 @@ DuskingDown: 薄暮焱魂被击败后
 InBriar: 位于荆棘之地时
 InAsteroids: 位于小行星带时
 InSpirit: 位于魂灵之地时
+// NotInSpirit: Not in the Spirit
+// NotInBriar: Not in the Briar
 StarjinxDown: 厄星事件被击败后
 HalfCompleteBestiary: 收集一半的魂灵图鉴后
 FullCompleteBestiary: 收集全部的魂灵图鉴后
