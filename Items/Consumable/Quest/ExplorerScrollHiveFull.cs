@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
@@ -27,7 +28,7 @@ namespace SpiritMod.Items.Consumable.Quest
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", "A giant Hive has been charted!");
+			TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", Language.GetTextValue("Mods.SpiritMod.Items.ExplorerScrollHiveFull.CustomTooltip"));
 			line1.OverrideColor = new Color(255, 255, 255);
 			tooltips.Add(line1);
 		}

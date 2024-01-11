@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Glyphs
 {
@@ -49,7 +50,7 @@ namespace SpiritMod.Items.Glyphs
 					held.Name + "]");
 			}
 			else
-				line = new TooltipLine(Mod, "GlyphHint", "Hold this glyph and right-click the item whose glyph you want to remove");
+				line = new TooltipLine(Mod, "GlyphHint", Language.GetTextValue("Mods.SpiritMod.Items.Glyph.Remove"));
 			line.OverrideColor = new Color(120, 190, 120);
 			tooltips.Insert(index + 1, line);
 		}

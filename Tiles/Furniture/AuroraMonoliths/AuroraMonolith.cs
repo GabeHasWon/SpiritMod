@@ -8,6 +8,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.Localization;
 
 namespace SpiritMod.Tiles.Furniture.AuroraMonoliths;
 
@@ -23,7 +24,7 @@ public abstract class AuroraMonolith : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 		TileObjectData.newTile.Height = 4;
 		TileObjectData.newTile.Origin = new Point16(1, 2);
-		TileObjectData.newTile.CoordinateHeights = [16, 16, 16, 16];
+		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
 		TileObjectData.addTile(Type);
 
 		AddMapEntry(new Color(75, 139, 166));

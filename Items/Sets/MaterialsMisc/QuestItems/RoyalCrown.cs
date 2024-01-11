@@ -6,6 +6,7 @@ using System;
 using Terraria;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 {
@@ -25,12 +26,12 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 		{
 			if (!QuestManager.GetQuest<StylistQuestSeafoam>().IsCompleted)
 			{
-				TooltipLine line = new TooltipLine(Mod, "FavoriteDesc", "Quest Item") {
+				TooltipLine line = new TooltipLine(Mod, "FavoriteDesc", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CommonName")) {
 					OverrideColor = new Color(100, 222, 122)
 				};
 				tooltips.Add(line);
 			}
-			TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", "'Stunningly ornate despite centuries of weathering'") {
+			TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", Language.GetTextValue("Mods.SpiritMod.Items.RoyalCrown.CustomTooltip")) {
 				OverrideColor = new Color(255, 255, 255)
 			};
 			tooltips.Add(line1);

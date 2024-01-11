@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable.Potion
 {
@@ -78,7 +79,7 @@ namespace SpiritMod.Items.Consumable.Potion
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			foreach (TooltipLine line in tooltips.Where(x => x.Mod == "Terraria" && x.Name == "HealLife"))
-				line.Text = "Restores 225 life over 15 seconds";
+				line.Text = Language.GetTextValue("Mods.SpiritMod.Items.MoonJellyDonut.CustomTooltip");
 		}
 
         public override void AddRecipes()

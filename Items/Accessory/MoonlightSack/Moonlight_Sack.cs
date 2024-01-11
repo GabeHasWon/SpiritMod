@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Accessory.MoonlightSack
 {
@@ -27,9 +28,9 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 			Player player = Main.player[Item.playerIndexTheItemIsReservedFor];
 			float num7 = 5E-06f;
 			float num8 = player.GetDamage(DamageClass.Summon).ApplyTo(15);
-			var aga = new TooltipLine(Mod, "summonDamageText", (int)(num8+num7) + " summon damage");
+			var aga = new TooltipLine(Mod, "summonDamageText", (int)(num8+num7) + "" + Language.GetText("LegacyTooltip.53"));
 			tooltips.Add(aga);
-			var aga2 = new TooltipLine(Mod, "summonDamageText2", "Creates a chain of lightning between you and your minions that deal damage");
+			var aga2 = new TooltipLine(Mod, "summonDamageText2", Language.GetTextValue("Mods.SpiritMod.Items.Moonlight_Sack.CustomTooltip"));
 			tooltips.Add(aga2);
 		}
 

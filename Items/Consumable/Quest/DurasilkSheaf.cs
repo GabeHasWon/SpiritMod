@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
@@ -30,12 +31,12 @@ namespace SpiritMod.Items.Consumable.Quest
 		{
 			if (!QuestManager.GetQuest<FirstAdventure>().IsCompleted)
 			{
-				TooltipLine line = new TooltipLine(Mod, "ItemName", "Quest Item") {
+				TooltipLine line = new TooltipLine(Mod, "ItemName", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CommonName")) {
 					OverrideColor = new Color(100, 222, 122)
 				};
 				tooltips.Add(line);
 			}
-			TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", "'The fabric is soft, but quite strong'") {
+			TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CustomTooltip")) {
 				OverrideColor = new Color(255, 255, 255)
 			};
 			tooltips.Add(line1);

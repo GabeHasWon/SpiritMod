@@ -9,6 +9,7 @@ using SpiritMod.Items.Material;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
@@ -38,7 +39,7 @@ namespace SpiritMod.Items.Consumable.Quest
 		}
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			TooltipLine line = new TooltipLine(mod, "ItemName", "Quest Item");
+			TooltipLine line = new TooltipLine(mod, "ItemName", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CommonName"));
 			line.overrideColor = new Color(100, 222, 122);
 			tooltips.Add(line);
 		}
