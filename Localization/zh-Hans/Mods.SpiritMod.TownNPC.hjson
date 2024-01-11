@@ -25,7 +25,7 @@ Adventurer: {
 		FarFromHome: 你可以说我在离家太远的地方“冒险”……但说真的，我没有地图。
 		DislikeCrowded: 我该如何在周围有这么多人的情况下绘制未被发现的土地？
 		HateCrowded: 我宁愿探索岩浆湖，也不愿和这些人住在这里！
-		LikeBiome: "{BiomeName}是一个放松和休息的好地方。"
+		LikeBiome: "{BiomeName}真是一个放松和休息的好地方。"
 		LoveBiome: You shouldn't see this.
 		DislikeBiome: 虽然我很想完成我已经开始做的事情，但现在就回到{BiomeName}对我来说还为时过早。
 		HateBiome: You houldn't see this either!
