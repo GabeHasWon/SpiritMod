@@ -12,12 +12,13 @@ namespace SpiritMod.NPCs.Bloater
 {
 	public class Spewer : ModNPC
 	{
-		int frame = 0;
+		public const int COOLDOWN = 180;
+
+		public ref float Counter => ref NPC.ai[1];
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Bloater");
-			Main.npcFrameCount[NPC.type] = 9;
+			Main.npcFrameCount[Type] = 9;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Confused);
 		}
 
@@ -43,172 +44,89 @@ namespace SpiritMod.NPCs.Bloater
 
 		public override void FindFrame(int frameHeight)
 		{
-			float distance = NPC.Distance(Main.player[NPC.target].Center);
-			if (NPC.ai[1] > 40 && NPC.ai[1] < 180)
+			if (Counter > COOLDOWN)
 			{
-				if (distance < 240)
+				if (NPC.frameCounter >= 7)
 				{
-					++NPC.ai[2];
-					if (NPC.ai[2] >= 4)
-					{
-						NPC.ai[2] = 0;
-						frame++;
-					}
-					if (frame >= 9 || frame < 5)
-						frame = 7;
+					if ((NPC.frameCounter += .2f) >= Main.npcFrameCount[Type])
+						NPC.frameCounter = 7;
 				}
-				else
-				{
-					++NPC.ai[2];
-					if (NPC.ai[2] >= 10)
-					{
-						NPC.ai[2] = 0;
-						frame++;
-					}
-					if (frame >= 4)
-						frame = 0;
-				}
+				else NPC.frameCounter = (NPC.frameCounter + .2f) % Main.npcFrameCount[Type];
 			}
-			else
-			{
-				++NPC.ai[2];
-				if (NPC.ai[2] >= 10)
-				{
-					NPC.ai[2] = 0;
-					frame++;
-				}
-				if (frame >= 4)
-					frame = 0;
-			}
+			else NPC.frameCounter = (NPC.frameCounter + .2f) % 4;
 
-			NPC.frame.Y = frameHeight * frame;
+			NPC.frame.Y = frameHeight * (int)NPC.frameCounter;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCrimson && spawnInfo.Player.ZoneOverworldHeight && !Main.eclipse ? .075f : 0f;
 
 		public override void AI()
 		{
-			NPC.rotation = NPC.velocity.X * .08f;
 			NPC.TargetClosest(true);
-			NPC.ai[1] += 1f;
+			var target = Main.player[NPC.target];
+			float distance = NPC.Distance(target.Center);
 
-			float velMax = 1f;
-			float acceleration = 0.011f;
-			float distance = NPC.Distance(Main.player[NPC.target].Center);
-
-			if (distance < 240)
+			if (Counter > COOLDOWN)
 			{
-				if (NPC.ai[1] >= 120 && NPC.ai[1] <= 180)
+				NPC.scale = 1f + (float)(Math.Sin(Main.timeForVisualEffects / 2f) * ((Counter - COOLDOWN) / 90f) * .07f);
+
+				var pos = NPC.Center - new Vector2((NPC.direction == -1) ? 20 : 0, 0);
+				Dust.NewDustDirect(pos, 20, 20, Main.rand.NextFromList(DustID.Blood, DustID.SomethingRed), 0, .3f, 0, default, (Counter - COOLDOWN) / 70f);
+
+				if (Counter == (COOLDOWN + 1))
+					SoundEngine.PlaySound(SoundID.Zombie40, NPC.Center); //Play a warning sound before the attack
+				if (Counter >= (COOLDOWN + 40))
 				{
-					if (Main.rand.NextBool(10) && Main.netMode != NetmodeID.MultiplayerClient)
+					if (Counter == (COOLDOWN + 40))
+						SoundEngine.PlaySound(SoundID.NPCDeath13, NPC.Center);
+					if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(10))
 					{
 						SoundEngine.PlaySound(SoundID.Item34, NPC.Center);
-						Vector2 direction = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center) * new Vector2(11.5f, 8);
-						int damage = Main.expertMode ? 11 : 13;
-						int vomit = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y + 4, direction.X, direction.Y + Main.rand.NextFloat(-.5f, .5f), ModContent.ProjectileType<VomitProj>(), damage, 1, Main.myPlayer, 0, 0);
-						Main.projectile[vomit].netUpdate = true;
-						NPC.netUpdate = true;
+
+						Vector2 dir = (NPC.DirectionTo(target.Center) * new Vector2(9.2f, 6.8f + Main.rand.NextFloat(-1f, 1f))).RotatedByRandom(.3f);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 4), dir, ModContent.ProjectileType<VomitProj>(), NPCUtils.ToActualDamage(26, 1.5f, 2f), 1);
 					}
+					if (Counter > (COOLDOWN + 100))
+						Counter = 0;
+
+					NPC.velocity = NPC.DirectionTo(target.Center) * -.5f;
 				}
+				else NPC.velocity *= .9f;
 			}
-
-			if (Main.rand.NextFloat() < 0.131579f)
+			else if (!target.dead)
 			{
-				int d = Dust.NewDust(NPC.position, NPC.width, NPC.height + 10, DustID.Blood, 0, 1f, 0, new Color(), 0.7f);
-				Main.dust[d].velocity *= .1f;
+				float amount = (distance < 120) ? .005f : .05f;
+				NPC.velocity = Vector2.Lerp(NPC.velocity, NPC.DirectionTo(target.Center) * MathHelper.Clamp(NPC.Distance(target.Center) / 100, 0, 5), amount);
 			}
+			if (Counter != COOLDOWN || ((distance < 240) && Collision.CanHit(NPC, target)))
+				Counter++;
 
-			if (NPC.ai[1] == 120 && distance < 240)
+			if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(30))
 			{
-				SoundEngine.PlaySound(SoundID.NPCDeath13, NPC.Center);
-				SoundEngine.PlaySound(SoundID.Zombie40, NPC.Center);
+				NPC.velocity.Y = NPC.velocity.Y + 0.439f * Main.rand.NextFloatDirection();
+				NPC.netUpdate = true;
 			}
-
-			if (NPC.ai[1] > 40 && NPC.ai[1] < 180)
+			if (distance < 120)
 			{
-				if (distance < 240)
-				{
-					float num395 = Main.mouseTextColor / 200f - 0.25f;
-					num395 *= 0.2f;
-					NPC.scale = num395 + 0.95f;
-				}
-			}
-
-			if (NPC.ai[1] > 200.0)
-			{
-				if (NPC.ai[1] > 300.0)
-					NPC.ai[1] = 0f;
-			}
-			else if (distance < 120.0)
-			{
-				NPC.ai[0] += 0.9f;
-
 				if (NPC.ai[0] > 0f)
-					NPC.velocity.Y = NPC.velocity.Y + 0.039f;
+					NPC.velocity.Y = NPC.velocity.Y + .039f;
 				else
-					NPC.velocity.Y = NPC.velocity.Y - 0.019f;
+					NPC.velocity.Y = NPC.velocity.Y - .019f;
 
 				if (NPC.ai[0] < -100f || NPC.ai[0] > 100f)
 					NPC.velocity.X = NPC.velocity.X + 0.029f;
 				else
 					NPC.velocity.X = NPC.velocity.X - 0.029f;
 
-				if (NPC.ai[0] > 25f)
+				if ((NPC.ai[0] += 0.9f) > 25f)
 					NPC.ai[0] = -200f;
 			}
+			if (Main.rand.NextFloat() < .131579f)
+				Dust.NewDustDirect(NPC.position, NPC.width, NPC.height + 10, DustID.Blood, 0, 1f, 0, new Color(), .7f).velocity *= .1f;
 
-			if (Main.rand.NextBool(30) && Main.netMode != NetmodeID.MultiplayerClient)
-			{
-				if (Main.rand.NextBool(2))
-					NPC.velocity.Y = NPC.velocity.Y + 0.439f;
-				else
-					NPC.velocity.Y = NPC.velocity.Y - 0.419f;
-				NPC.netUpdate = true;
-			}
-
-			if (distance > 350.0)
-			{
-				velMax = 5f;
-				acceleration = 0.2f;
-			}
-			else if (distance > 300.0)
-			{
-				velMax = 3f;
-				acceleration = 0.25f;
-			}
-			else if (distance > 250.0)
-			{
-				velMax = 2.5f;
-				acceleration = 0.13f;
-			}
-
-			if (distance > 500)
-				NPC.noTileCollide = true;
-			else
-				NPC.noTileCollide = false;
-
-			float deltaX = Main.player[NPC.target].Center.X - NPC.Center.X;
-			float deltaY = Main.player[NPC.target].Center.Y - NPC.Center.Y;
-			float stepRatio = velMax / distance;
-			float velLimitX = deltaX * stepRatio;
-			float velLimitY = deltaY * stepRatio;
-
-			if (Main.player[NPC.target].dead)
-			{
-				velLimitX = (float)((NPC.direction * velMax) / 2.0);
-				velLimitY = (float)((-velMax) / 2.0);
-			}
-
-			if (NPC.velocity.X < velLimitX)
-				NPC.velocity.X = NPC.velocity.X + acceleration;
-			else if (NPC.velocity.X > velLimitX)
-				NPC.velocity.X = NPC.velocity.X - acceleration;
-
-			if (NPC.velocity.Y < velLimitY)
-				NPC.velocity.Y = NPC.velocity.Y + acceleration;
-			else if (NPC.velocity.Y > velLimitY)
-				NPC.velocity.Y = NPC.velocity.Y - acceleration;
+			NPC.noTileCollide = distance > 500;
 			NPC.spriteDirection = NPC.direction;
+			NPC.rotation = NPC.velocity.X * .08f;
 		}
 
 		public override void HitEffect(NPC.HitInfo hit)

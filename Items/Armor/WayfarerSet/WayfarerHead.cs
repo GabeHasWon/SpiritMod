@@ -43,7 +43,7 @@ namespace SpiritMod.Items.Armor.WayfarerSet
 			recipe.Register();
 		}
 
-		public static Condition QuestCondition() => new Condition(Language.GetText("Mods.SpiritMod.Quests.Conditions.DurasilkSheaf"), () =>
+		public static Condition QuestCondition() => new(Language.GetText("Mods.SpiritMod.Quests.RecipeConditions.DurasilkSheaf"), () =>
 		{
 			Quest quest = QuestManager.GetQuest<FirstAdventure>();
 			return quest.IsCompleted || quest.CurrentTask is ParallelTask || (quest.CurrentTask is RetrievalTask task && task.GetItemID() != ModContent.ItemType<Consumable.Quest.DurasilkSheaf>());

@@ -16,7 +16,7 @@ namespace SpiritMod.Items.Consumable
 			Item.height = 30;
 			Item.rare = ItemRarityID.Cyan;
 			Item.maxStack = Item.CommonMaxStack;
-			Item.value = Item.buyPrice(gold: 25);
+			Item.value = Item.buyPrice(gold: 40);
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;
 			Item.noMelee = true;

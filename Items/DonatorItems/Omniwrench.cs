@@ -51,6 +51,12 @@ namespace SpiritMod.Items.DonatorItems
 			return player.ownedProjectileCounts[ModContent.ProjectileType<OmniwrenchProj>()] == 0;
 		}
 
+		public override void HoldItem(Player player)
+		{
+			if (player.itemTime == 1)
+				Item.noUseGraphic = false;
+		}
+
 		public override void AddRecipes()
 		{
 			var recipe = CreateRecipe();

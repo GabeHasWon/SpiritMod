@@ -9,9 +9,9 @@ namespace SpiritMod.NPCs.ArterialGrasper
 {
 	public class TendonEffect : ModProjectile
 	{
-		int TrapperID => ModContent.NPCType<CrimsonTrapper>();
+		public int Parent { get => (int)Projectile.ai[0]; set => Projectile.ai[0] = value; }
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Flesh Tendon");
+		int TrapperID => ModContent.NPCType<CrimsonTrapper>();
 
 		public override void SetDefaults()
 		{
@@ -28,30 +28,24 @@ namespace SpiritMod.NPCs.ArterialGrasper
 
 		public override void AI()
 		{
-			if (!Main.npc[(int)Projectile.ai[1]].active || Main.npc[(int)Projectile.ai[1]].type != TrapperID)
+			if (!Main.npc[Parent].active || Main.npc[Parent].type != TrapperID)
 			{
 				Projectile.Kill();
 				return;
 			}
-
 			Projectile.timeLeft++;
 
 			if (!stuck)
 				Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
-
 			else
 				Projectile.velocity = Vector2.Zero;
-
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{
-			NPC parent = Main.npc[(int)Projectile.ai[1]];
-			if (Main.npc[(int)Projectile.ai[1]].active && Main.npc[(int)Projectile.ai[1]].type == TrapperID)
-			{
+			NPC parent = Main.npc[Parent];
+			if (parent.active && parent.type == TrapperID)
 				ProjectileExtras.DrawChain(Projectile.whoAmI, parent.Center, "SpiritMod/NPCs/ArterialGrasper/" + Name + "_Chain");
-			}
 			return false;
-
 		}
 
 		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI) => behindNPCsAndTiles.Add(index);
