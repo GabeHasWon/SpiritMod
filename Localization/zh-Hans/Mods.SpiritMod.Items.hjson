@@ -19,7 +19,7 @@ AceOfHearts: {
 
 AceOfSpades: {
 	DisplayName: 黑桃王牌
-	Tooltip: 暴击有几率造成额外伤害。
+	Tooltip: 暴击有几率造成额外伤害
 }
 
 DiamondAce: {
@@ -451,6 +451,7 @@ MimicRepellent: {
 
 Moonlight_Sack: {
 	DisplayName: 月光宝袋
+	CustomTooltip: 在你和召唤物之间产生造成伤害的链状闪电
 	Tooltip: ""
 }
 
@@ -2128,7 +2129,7 @@ EyeOfTheInferno: {
 	DisplayName: 炎狱之眼
 	Tooltip:
 		'''
-		击中敌人时会燃烧，成功命中敌人时会增加减益的威力。
+		击中敌人时会燃烧，成功命中敌人时会增加减益的威力
 		还会发射一个能够造成破损盔甲的尖钉球
 		'''
 }
@@ -2143,7 +2144,7 @@ InfernalJavelin: {
 	Tooltip:
 		'''
 		“烈火锻铸之矛”
-		点燃被击中的敌人，额外命中时会使火焰更为强力。
+		点燃被击中的敌人，额外命中时会使火焰更为强力
 		'''
 }
 
@@ -2848,6 +2849,16 @@ Baguette: {
 CaesarSalad: {
 	DisplayName: 凯撒沙拉
 	Tooltip: 小幅度增加各项属性
+	CustomTooltip1:
+		'''
+		“凯撒沙拉通常直接用手拿着生菜叶或用叉子叉着吃”
+		大幅度增加生命再生速度
+		'''
+	CustomTooltip2:
+		'''
+		“凯撒沙拉通常直接用手拿着生菜叶或用叉子叉着吃”
+		增加生命再生速度
+		'''
 }
 
 Cake: {
@@ -3081,6 +3092,11 @@ BottomlessAle: {
 
 BottomlessHealingPotion: {
 	DisplayName: 无底治疗药水
+	CustomTooltip:
+		'''
+		不消耗
+		恢复100生命值
+		'''
 	Tooltip: ""
 }
 
@@ -3101,11 +3117,17 @@ MirrorCoat: {
 
 MoonJelly: {
 	DisplayName: 海月果冻
+	CustomTooltip:
+		'''
+		10秒内恢复150生命值
+		造成药水疾病
+		'''
 	Tooltip: ""
 }
 
 MoonJellyDonut: {
 	DisplayName: 海月甜甜圈
+	CustomTooltip: 15秒内恢复225生命值
 	Tooltip: ""
 }
 
@@ -3166,36 +3188,44 @@ TurtlePotion: {
 
 DurasilkSheaf: {
 	DisplayName: 柔和丝捆
+	CommonName: 任务物品
+	CustomTooltip: “面料柔软，但相当结实”
 	Tooltip: ""
 }
 
 ExplorerScrollAsteroidFull: {
 	DisplayName: 完成的勘探卷轴
+	CustomTooltip: 小行星带已经被绘制出来了！
 	Tooltip: ""
 }
 
 ExplorerScrollGraniteFull: {
 	DisplayName: 完成的勘探卷轴
+	CustomTooltip: 附近的一个花岗岩洞穴已经被绘制出来了！
 	Tooltip: ""
 }
 
 ExplorerScrollHiveFull: {
 	DisplayName: 完成的勘探卷轴
+	CustomTooltip: 一个巨大的蜂巢已经被绘制出来了！
 	Tooltip: ""
 }
 
 ExplorerScrollMarbleFull: {
 	DisplayName: 完成的勘探卷轴
+	CustomTooltip: 附近的一个大理石洞穴已经被绘制出来了！
 	Tooltip: ""
 }
 
 ExplorerScrollMushroomFull: {
 	DisplayName: 完成的勘探卷轴
+	CustomTooltip: 附近的一个发光蘑菇群落已经被绘制出来了！
 	Tooltip: ""
 }
 
 HornetfishQuest: {
 	DisplayName: 黄蜂鱼
+	CustomTooltip: “它同时发出嗡嗡声和咯咯声”
 	Tooltip: ""
 }
 
@@ -3206,11 +3236,23 @@ ScarabIdolQuest: {
 
 ScientistLure: {
 	DisplayName: 可怖的科学研究
+	CustomTooltip: “希望那位科学家对这可憎的东西感到满意”
+	MoreCustomTooltip:
+		'''
+		不死科学家不在了！
+		不再需要这种恶心的东西了
+		'''
 	Tooltip: ""
 }
 
 WarlockLureCorruption: {
 	DisplayName: 不洁魔法
+	CustomTooltip: “希望邪恶的不死术士对这奇怪的魔法感到满意”
+	MoreCustomTooltip:
+		'''
+		不死术士不在了！
+		不再需要这种令人反感的东西了
+		'''
 	Tooltip: ""
 }
 
@@ -3567,6 +3609,10 @@ FrostGlyph: {
 Glyph: {
 	DisplayName: 空白雕文
 	Tooltip: “附魔师应该能使用它”
+	Gain: 附魔的武器会获得效果：[c/{0}:{1}]
+	Target: 只能附魔于武器上
+	RightClick: 手持此雕文并右键你想要附魔的武器
+	Remove: 手持此雕文并右键你想要移除附魔的物品
 }
 
 NullGlyph: {
@@ -3806,12 +3852,12 @@ FearsomeFork: {
 
 HauntingClaw: {
 	DisplayName: 魂萦鬼爪
-	Tooltip: 发射大量鬼魂炎球。
+	Tooltip: 发射大量鬼魂炎球
 }
 
 SpookyScythe: {
 	DisplayName: 鬼魂魔镰
-	Tooltip: 发射追踪南瓜。
+	Tooltip: 发射追踪南瓜
 }
 
 Taffy: {
@@ -3836,7 +3882,7 @@ GlowRoot: {
 
 HeartScale: {
 	DisplayName: 心形鳞片
-	Tooltip: “一块可爱精致的鳞片。收藏家们无比垂涏它”
+	Tooltip: “一块可爱精致的鳞片，收藏家们无比垂涏它。”
 }
 
 OldLeather: {
@@ -4191,7 +4237,7 @@ BismiteTableItem: {
 
 BlueprintTwins: {
 	DisplayName: 双子魔眼蓝图
-	Tooltip: 他们无法杀死他们看不见的事物……但他们能看到一切。
+	Tooltip: 他们无法杀死他们看不见的事物……但他们能看到一切
 }
 
 BriarFlowerItem: {
@@ -4635,12 +4681,12 @@ PottedWillow: {
 
 PrintPrime: {
 	DisplayName: 机械骷髅王蓝图
-	Tooltip: 全副武装的四臂杀戮机器便是最好的预先警告。
+	Tooltip: 全副武装的四臂杀戮机器便是最好的预先警告
 }
 
 PrintProbe: {
 	DisplayName: 毁灭者蓝图
-	Tooltip: 警告：释放毁灭者将会引起10级地震异常现象。
+	Tooltip: 警告：释放毁灭者将会引起10级地震异常现象
 }
 
 ReachBedItem: {
@@ -4889,6 +4935,11 @@ SpiritDoorItem: {
 
 SpiritPainting: {
 	DisplayName: 里程碑
+	CustomTooltip:
+		'''
+		“这确实是一个里程碑！
+		从此，事情只会越来越好！”
+		'''
 	Tooltip: ""
 }
 
@@ -7014,12 +7065,12 @@ TrueBloodStaff: {
 
 TrueDarkStaff: {
 	DisplayName: 真·视界边缘
-	Tooltip: 发射会分裂成追踪弹和咒火的法球。
+	Tooltip: 发射会分裂成追踪弹和咒火的法球
 }
 
 TrueHallowedStaff: {
 	DisplayName: 真·神圣法杖
-	Tooltip: 发射多把具有不同效果的剑。
+	Tooltip: 发射多把具有不同效果的剑
 }
 
 BreathOfTheZephyr: {
@@ -7077,16 +7128,19 @@ MarbleStaff: {
 
 CorruptDyeMaterial: {
 	DisplayName: 紫罗兰水晶
+	CustomTooltip: “这块水晶既美丽又令人厌恶”
 	Tooltip: ""
 }
 
 CrimsonDyeMaterial: {
 	DisplayName: 血腥肿瘤
+	CustomTooltip: “这恶心的器官仍保留着奇怪的规律活动”
 	Tooltip: ""
 }
 
 IceDeityShard1: {
 	DisplayName: 极北遗物
+	CustomTooltip: “一块来自某种巨物的碎片”
 	Tooltip: ""
 }
 
@@ -7102,16 +7156,19 @@ IceDeityShard3: {
 
 MeteorDyeMaterial: {
 	DisplayName: 光球碎片
+	CustomTooltip: “岩球包裹的余烬仍在燃烧”
 	Tooltip: ""
 }
 
 RoyalCrown: {
 	DisplayName: 皇家冠冕
+	CustomTooltip: “经过几个世纪岁月的侵蚀，仍然华丽的令人惊叹”
 	Tooltip: ""
 }
 
 SeaMandrakeSac: {
 	DisplayName: 流明囊
+	CustomTooltip: “里面的墨水闪烁着不同的颜色”
 	Tooltip: ""
 }
 
@@ -7422,7 +7479,7 @@ NetherCrystal: {
 
 NetherWings: {
 	DisplayName: 下界之翼
-	Tooltip: 允许飞行和缓降。
+	Tooltip: 允许飞行和缓降
 }
 
 PossessedBook: {
@@ -7532,7 +7589,7 @@ SpiritWand: {
 
 SpiritWings: {
 	DisplayName: 魂灵之翼
-	Tooltip: 允许飞行和缓降。
+	Tooltip: 允许飞行和缓降
 }
 
 FairyWhistleItem: {
@@ -8163,7 +8220,7 @@ MarbleMinecartItem: {
 	DisplayName: 复仇战车
 	Tooltip:
 		'''
-		冲锋时，你会获得防御力加成。
+		冲锋时，你会获得防御力加成
 		“毫无疑问，这是辆炫酷的战车” - 麟鲥教授
 		'''
 }

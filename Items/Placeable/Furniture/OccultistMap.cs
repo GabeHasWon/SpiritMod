@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
@@ -34,7 +35,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 		{
 			if (!QuestManager.GetQuest<ZombieOriginQuest>().IsCompleted)
 			{
-				TooltipLine line = new TooltipLine(Mod, "ItemName", "Quest Item");
+				TooltipLine line = new TooltipLine(Mod, "ItemName", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CommonName"));
 				line.OverrideColor = new Color(100, 222, 122);
 				tooltips.Add(line);
 			}

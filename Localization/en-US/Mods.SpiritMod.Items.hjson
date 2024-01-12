@@ -451,6 +451,7 @@ MimicRepellent: {
 
 Moonlight_Sack: {
 	DisplayName: Moonlight Sack
+	CustomTooltip: Creates a chain of lightning between you and your minions that deal damage
 	Tooltip: ""
 }
 
@@ -2848,6 +2849,16 @@ Baguette: {
 CaesarSalad: {
 	DisplayName: Caesar Salad
 	Tooltip: Minor improvements to all stats
+	CustomTooltip1:
+		'''
+		"'Maybe don't use a knife to eat this one'"
+		Greatly increases life regeneration
+		'''
+	CustomTooltip2:
+		'''
+		"'Maybe don't use a knife to eat this one'"
+		Increases life regeneration
+		'''
 }
 
 Cake: {
@@ -3081,6 +3092,11 @@ BottomlessAle: {
 
 BottomlessHealingPotion: {
 	DisplayName: Bottomless Healing Potion
+	CustomTooltip:
+		'''
+		Non-consumable
+		Restores 100 health
+		'''
 	Tooltip: ""
 }
 
@@ -3101,11 +3117,17 @@ MirrorCoat: {
 
 MoonJelly: {
 	DisplayName: Moon Jelly
+	CustomTooltip:
+		'''
+		Restores 150 life over 10 seconds
+		Causes Potion Sickness
+		'''
 	Tooltip: ""
 }
 
 MoonJellyDonut: {
 	DisplayName: Moon Jelly Donut
+	CustomTooltip: Restores 225 life over 15 seconds
 	Tooltip: ""
 }
 
@@ -3166,36 +3188,44 @@ TurtlePotion: {
 
 DurasilkSheaf: {
 	DisplayName: Durasilk Sheaf
+	CommonName: Quest Item
+	CustomTooltip: "'The fabric is soft, but quite strong'"
 	Tooltip: ""
 }
 
 ExplorerScrollAsteroidFull: {
 	DisplayName: Completed Surveyor's Scroll
+	CustomTooltip: The Asteroid Fields have been charted!
 	Tooltip: ""
 }
 
 ExplorerScrollGraniteFull: {
 	DisplayName: Completed Surveyor's Scroll
+	CustomTooltip: A nearby Granite Cavern has been charted!
 	Tooltip: ""
 }
 
 ExplorerScrollHiveFull: {
 	DisplayName: Completed Surveyor's Scroll
+	CustomTooltip: A giant Hive has been charted!
 	Tooltip: ""
 }
 
 ExplorerScrollMarbleFull: {
 	DisplayName: Completed Surveyor's Scroll
+	CustomTooltip: A nearby Marble Cavern has been charted!
 	Tooltip: ""
 }
 
 ExplorerScrollMushroomFull: {
 	DisplayName: Completed Surveyor's Scroll
+	CustomTooltip: A nearby Glowing Mushroom Biome has been charted!
 	Tooltip: ""
 }
 
 HornetfishQuest: {
 	DisplayName: Hornetfish
+	CustomTooltip: "'It buzzes and blubs at the same time'"
 	Tooltip: ""
 }
 
@@ -3206,11 +3236,23 @@ ScarabIdolQuest: {
 
 ScientistLure: {
 	DisplayName: Grisly Science Experiment
+	CustomTooltip: "'Hopefully, the scientist is intrigued by this abomination'"
+	MoreCustomTooltip:
+		'''
+		The Undead Scientist is no more!
+		There's no need for this disgusting thing anymore
+		'''
 	Tooltip: ""
 }
 
 WarlockLureCorruption: {
 	DisplayName: Unholy Magic
+	CustomTooltip: "'Hopefully, the evil necromancer is intrigued by this strange magic'"
+	MoreCustomTooltip:
+		'''
+		The Undead Warlock is no more!
+		There's no need for this repulsive thing anymore
+		'''
 	Tooltip: ""
 }
 
@@ -3567,6 +3609,10 @@ FrostGlyph: {
 Glyph: {
 	DisplayName: Blank Glyph
 	Tooltip: "'The Enchanter could probably use this'"
+	Gain: The enchanted weapon will gain: [c/{0}:{1}]
+	Target: Can only be applied to weapons
+	RightClick: Hold this glyph and right-click the weapon you want to enchant
+	Remove: Hold this glyph and right-click the item whose glyph you want to remove
 }
 
 NullGlyph: {
@@ -4889,6 +4935,11 @@ SpiritDoorItem: {
 
 SpiritPainting: {
 	DisplayName: The Milestone
+	CustomTooltip:
+		'''
+		"'Quite a milestone indeed!"
+		"Things can only look up from here'"
+		'''
 	Tooltip: ""
 }
 
@@ -7077,16 +7128,19 @@ MarbleStaff: {
 
 CorruptDyeMaterial: {
 	DisplayName: Violet Crystal
+	CustomTooltip: "'The crystal is both beautiful and disgsting to look at'"
 	Tooltip: ""
 }
 
 CrimsonDyeMaterial: {
 	DisplayName: Bloody Tumor
+	CustomTooltip: "'The disgusting organ makes strange pulsating motions'"
 	Tooltip: ""
 }
 
 IceDeityShard1: {
 	DisplayName: Hyperborean Relic
+	CustomTooltip: "'A shard of something much larger'"
 	Tooltip: ""
 }
 
@@ -7102,16 +7156,19 @@ IceDeityShard3: {
 
 MeteorDyeMaterial: {
 	DisplayName: Photosphere Shard
+	CustomTooltip: "'The embers within the rock still burn'"
 	Tooltip: ""
 }
 
 RoyalCrown: {
 	DisplayName: Royal Crown
+	CustomTooltip: "'Stunningly ornate despite centuries of weathering'"
 	Tooltip: ""
 }
 
 SeaMandrakeSac: {
 	DisplayName: Luminous Sac
+	CustomTooltip: "'The ink within flashes different colors'"
 	Tooltip: ""
 }
 

@@ -5,6 +5,7 @@ using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
@@ -22,7 +23,7 @@ namespace SpiritMod.Items.Consumable.Quest
 		{
 			if (!QuestManager.GetQuest<IdleIdol>().IsCompleted)
 			{
-				TooltipLine line = new TooltipLine(Mod, "ItemName", "Quest Item");
+				TooltipLine line = new TooltipLine(Mod, "ItemName", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CommonName"));
 				line.OverrideColor = new Color(100, 222, 122);
 				tooltips.Add(line);
 			}

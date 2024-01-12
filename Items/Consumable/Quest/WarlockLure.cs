@@ -31,16 +31,16 @@ namespace SpiritMod.Items.Consumable.Quest
 		{
 			if (!QuestManager.GetQuest<ZombieOriginQuest>().IsCompleted)
 			{
-				TooltipLine line = new TooltipLine(Mod, "ItemName", "Quest Item");
+				TooltipLine line = new TooltipLine(Mod, "ItemName", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CommonName"));
 				line.OverrideColor = new Color(100, 222, 122);
 				tooltips.Add(line);
-				TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", "'Hopefully, the evil necromancer is intrigued by this strange magic'");
+				TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", Language.GetTextValue("Mods.SpiritMod.Items.WarlockLureCorruption.CustomTooltip"));
 				line1.OverrideColor = new Color(255, 255, 255);
 				tooltips.Add(line1);
 			}
 			else
 			{
-				TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", "The Undead Warlock is no more!\nThere's no need for this repulsive thing anymore");
+				TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", Language.GetTextValue("Mods.SpiritMod.Items.WarlockLureCorruption.MoreCustomTooltip"));
 				line1.OverrideColor = new Color(255, 255, 255);
 				tooltips.Add(line1);
 			}
