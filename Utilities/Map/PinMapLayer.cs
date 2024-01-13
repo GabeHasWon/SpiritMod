@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.Map;
 using Terraria.ModLoader;
 using Terraria.UI;
+using Terraria.Localization;
 
 namespace SpiritMod.Utilities.Map
 {
@@ -60,7 +61,7 @@ namespace SpiritMod.Utilities.Map
 						ModContent.GetInstance<PinWorld>().RemovePin(pair.Key);
 
 					if (heldPin == null)
-						text = "Click to move";
+						text = Language.GetTextValue("Mods.SpiritMod.Misc.PinMove");
 				}
 			}
 		}

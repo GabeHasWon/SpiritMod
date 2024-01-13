@@ -59,7 +59,7 @@ namespace SpiritMod.Tiles
 			if (NPC.AnyNPCs(ModContent.NPCType<ReachBoss>()) || NPC.AnyNPCs(ModContent.NPCType<ReachBoss1>()))
 				Main.LocalPlayer.cursorItemIconText = string.Empty;
 			else
-				Main.LocalPlayer.cursorItemIconText = "Disturbing this flower surely isn't a good idea...";
+				Main.LocalPlayer.cursorItemIconText = Language.GetTextValue("Mods.SpiritMod.NPCs.ReachBoss.PreSpawn");
 		}
 
 		public override bool RightClick(int i, int j)
@@ -69,7 +69,7 @@ namespace SpiritMod.Tiles
 
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				Main.NewText("The Vinewrath Bane has awoken!", 175, 75, 255);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.NPCs.ReachBoss.Spawn"), 175, 75, 255);
 				int npcID = NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, (j * 16) - 600, ModContent.NPCType<ReachBoss>());
 				Main.npc[npcID].netUpdate2 = true;
 			}

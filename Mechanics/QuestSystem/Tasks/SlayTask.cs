@@ -82,8 +82,8 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			StringBuilder builder = new StringBuilder();
 			if (_monsterNameOverride == null)
 			{
-				string count = _killsRequired > 1 ? _killsRequired.ToString() : (_Singular ? "" : "a");
-				builder.Append("Kill ").Append(count).Append(" ");
+				string count = _killsRequired > 1 ? _killsRequired.ToString() : (_Singular ? "" : "1");
+				builder.Append(Language.GetTextValue("Mods.SpiritMod.Quests.Kill")).Append(count).Append(" ");
 			}
 			// start with: - Kill x monster, monster or monster
 			if (_monsterNameOverride == null)

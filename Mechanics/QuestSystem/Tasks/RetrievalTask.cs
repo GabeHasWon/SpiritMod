@@ -77,7 +77,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			}
 
 			string itemName = Lang.GetItemNameValue(_itemID);
-			string count = _itemsNeeded > 1 ? _itemsNeeded.ToString() : "a";
+			string count = _itemsNeeded > 1 ? _itemsNeeded.ToString() : "1";
 			builder.Append(_wording).Append(' ').Append(count).Append(' ').Append(itemName);
 
 			// pluralness

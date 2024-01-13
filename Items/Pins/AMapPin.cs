@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Pins
 {
@@ -54,12 +55,12 @@ namespace SpiritMod.Items.Pins
 
 			if (player.altFunctionUse != 2)
 			{
-				text = "Location Pinned";
+				text = Language.GetTextValue("Mods.SpiritMod.Misc.Pinned");
 				ModContent.GetInstance<PinWorld>().SetPin(PinName, player.Center / 16);
 			}
 			else
 			{
-				text = "Pin Removed";
+				text = Language.GetTextValue("Mods.SpiritMod.Misc.PinRemoved");
 				ModContent.GetInstance<PinWorld>().RemovePin(PinName);
 			}
 

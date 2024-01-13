@@ -36,10 +36,10 @@ namespace SpiritMod.NPCs.SporeWheezer
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.AddInfo(this, "UndergroundMushroom");
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundMushroom,
-				new FlavorTextBestiaryInfoElement("Usually parasitic, the glowing mushrooms formed a symbiotic relationship with wheezers as they consciously spread spores through their breath."),
-			});
+			//bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+			//	BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.UndergroundMushroom,
+			//	new FlavorTextBestiaryInfoElement("Usually parasitic, the glowing mushrooms formed a symbiotic relationship with wheezers as they consciously spread spores through their breath."),
+			//});
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.MushroomGrass) && spawnInfo.SpawnTileY > Main.rockLayer ? 0.09f : 0f;

@@ -44,12 +44,12 @@ namespace SpiritMod.NPCs.ScreechOwl
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.AddInfo(this, "NightTime Snow Moon");
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Moon,
-				new FlavorTextBestiaryInfoElement("For ages, these simple birds have terrorized locals with their remarkably humanoid screeches. Today, few remain, as they were hunted to near extinction."),
-			});
+			//bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+			//	BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+			//	BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
+			//	BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Visuals.Moon,
+			//	new FlavorTextBestiaryInfoElement("For ages, these simple birds have terrorized locals with their remarkably humanoid screeches. Today, few remain, as they were hunted to near extinction."),
+			//});
 		}
 
         public override void AI()

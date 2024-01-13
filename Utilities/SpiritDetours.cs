@@ -25,6 +25,7 @@ using SpiritMod.GlobalClasses.Players;
 using System.Linq;
 using SpiritMod.Utilities.ILEdits;
 using MonoMod.RuntimeDetour;
+using Terraria.Localization;
 
 namespace SpiritMod.Utilities;
 
@@ -216,7 +217,7 @@ public static class SpiritDetours
 			if (QuestManager.QuestBookUnlocked && queue.ContainsKey(talkNPC.type) && queue[talkNPC.type].Count > 0) //If this NPC has a quest
 			{
 				// TODO: localization
-				string questText = "Quest";
+				string questText = Language.GetTextValue("Mods.SpiritMod.Quests.Quest");
 
 				DynamicSpriteFont font = FontAssets.MouseText.Value;
 				Vector2 scale = new Vector2(0.9f);
