@@ -1,17 +1,2 @@
-﻿- Fixed Waterfall micropass generating floating chests
-- Made Aurora Monoliths work in vanity slots
-- Made banners placeable on non-hammered platforms & made it look good
-- Added Chinese Steam Workshop description localization
-- Fixed music being poorly balanced & switched around file types (all .ogg now)
-- Added missing Music Display music
-- Fixed Omniwrench not showing up after right clicking
-- Surrender Bell is now sold by the Adventurer for 40g instead of 25g
-- Added biome priority to Briar
-- Fixed bad localization for Durasilk Sheaf
-- Potentially fixed issue where running out of floating island locations during worldgen causes a crash
-- Added SUPER minor change to worldgen in remix worlds regarding avian islands
-- Hookbat now follows the player less aggressively, telegraphs before charging and only deals contact damage while charging
-- Bloater now consistently telegraphs before attacking and will continue to attack regardless of player distance when started (this helps the player distance themselves before it starts dealing damage). 
-	- Vomit projectiles now have increased travel time
-- Fixed Scarab Pendant mount glowmask issue
-- Fixed Hookbats spawning in day
+﻿- Heavily reduced the amount of dust the Soul Star produces (from 60 dust/frame to 10 dust/frame)
+- Fixed banner glowmasks being offset on non-hammered banners

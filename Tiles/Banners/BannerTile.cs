@@ -158,12 +158,16 @@ namespace SpiritMod.Tiles.Banners
 
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
 		{
+			if (OnPlatform(i, j)) // Offset banners on non-sloped platforms
+				offsetY -= 8;
+		}
+
+		private static bool OnPlatform(int i, int j)
+		{
 			int offY = Main.tile[i, j].TileFrameY / 18;
 			bool isOnPlatform = TileID.Sets.Platforms[Main.tile[i, j - offY - 1].TileType];
 			bool isPlatformHammered = Main.tile[i, j - offY - 1].Slope != SlopeType.Solid;
-
-			if (isOnPlatform && !isPlatformHammered) // Offset banners on non-sloped platforms
-				offsetY -= 8;
+			return isOnPlatform && !isPlatformHammered;
 		}
 
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
@@ -171,7 +175,12 @@ namespace SpiritMod.Tiles.Banners
 			Tile tile = Main.tile[i, j];
 			Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange);
 			int height = tile.TileFrameY == 36 ? 18 : 16;
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Banners/BannerTile_Glow").Value, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White * .8f, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+			var pos = new Vector2(i * 16, j * 16) - Main.screenPosition + zero;
+
+			if (OnPlatform(i, j))
+				pos.Y -= 8;
+
+			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Banners/BannerTile_Glow").Value, pos, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White * .8f, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 
 		public override void NearbyEffects(int i, int j, bool closer)
