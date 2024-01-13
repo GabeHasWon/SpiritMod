@@ -297,7 +297,7 @@ Events: {
 		OnEnd: 潮汐退去了！
 		NotOcean: 潮汐只有在大海平静时才会退去。
 		AlreadyActive: 潮汐已至！
-		Wave: "波次 {0} ： "
+		Wave: 波次 {0} ：
 	}
 }
 

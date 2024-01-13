@@ -58,9 +58,9 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			bestiaryEntry.AddInfo(this, "");
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				new FlavorTextBestiaryInfoElement("The beating heart of the briar. Its innate instinct for self-preservation expresses itself in the hostile antibodies and endless torrential downpour within the biome."),
-			});
+			//bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+			//	new FlavorTextBestiaryInfoElement("The beating heart of the briar. Its innate instinct for self-preservation expresses itself in the hostile antibodies and endless torrential downpour within the biome."),
+			//});
 		}
 
 		public override void FindFrame(int frameHeight)

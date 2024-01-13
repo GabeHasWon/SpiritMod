@@ -51,10 +51,10 @@ namespace SpiritMod.NPCs.DesertBandit
 		{
 			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], quickUnlock: true);
 			bestiaryEntry.AddInfo(this, "Desert");
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
-				new FlavorTextBestiaryInfoElement("A roaming bandit, looking for anything that shines under the harsh sun. Not very fun at parties."),
-			});
+			//bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+			//	BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
+			//	new FlavorTextBestiaryInfoElement("A roaming bandit, looking for anything that shines under the harsh sun. Not very fun at parties."),
+			//});
 		}
 
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(NPC.localAI[2]);

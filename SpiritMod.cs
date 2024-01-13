@@ -962,7 +962,7 @@ namespace SpiritMod
 				Rectangle waveBackground = Utils.CenteredRectangle(new Vector2(Main.screenWidth - OffsetX - 100f, Main.screenHeight - OffsetY - 23f), new Vector2(width, height));
 				Utils.DrawInvBG(spriteBatch, waveBackground, new Color(63, 65, 151, 255) * 0.785f);
 
-				string waveText = "Wave " + TideWorld.TideWave + " : " + TideWorld.TidePoints + "%";
+				string waveText = Language.GetTextValue("Mods.SpiritMod.Events.TheTide.Wave", TideWorld.TideWave) + TideWorld.TidePoints + "%";
 				Utils.DrawBorderString(spriteBatch, waveText, new Vector2(waveBackground.Center.X, waveBackground.Y + 5), Color.White, Scale, 0.5f, -0.1f);
 				Rectangle waveProgressBar = Utils.CenteredRectangle(new Vector2(waveBackground.Center.X, waveBackground.Y + waveBackground.Height * 0.75f), TextureAssets.ColorBar.Size());
 
@@ -979,7 +979,7 @@ namespace SpiritMod
 				int descOffset = (descBackground.Height - (int)(32f * Scale)) / 2;
 				var icon = new Rectangle(descBackground.X + descOffset + 7, descBackground.Y + descOffset, (int)(32 * Scale), (int)(32 * Scale));
 				spriteBatch.Draw(EventIcon, icon, Color.White);
-				Utils.DrawBorderString(spriteBatch, "The Tide", new Vector2(barrierBackground.Center.X, barrierBackground.Y - InternalOffset - descSize.Y * 0.5f), Color.White, 0.8f, 0.3f, 0.4f);
+				Utils.DrawBorderString(spriteBatch, Language.GetTextValue("Mods.SpiritMod.BossChecklistIntegration.TheTide.EntryName"), new Vector2(barrierBackground.Center.X, barrierBackground.Y - InternalOffset - descSize.Y * 0.5f), Color.White, 0.8f, 0.3f, 0.4f);
 			}
 		}
 	}
