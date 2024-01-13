@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritPaintingTile = SpiritMod.Tiles.Furniture.SpiritPainting;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
@@ -28,7 +29,7 @@ namespace SpiritMod.Items.Placeable.Furniture
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			TooltipLine line = new TooltipLine(Mod, "ItemName", "'Quite a milestone indeed!\nThings can only look up from here'");
+			TooltipLine line = new TooltipLine(Mod, "ItemName", Language.GetTextValue("Mods.SpiritMod.Items.SpiritPainting.CustomTooltip"));
 			line.OverrideColor = new Color(50, 80, 200);
 			tooltips.Add(line);
 			foreach (TooltipLine line2 in tooltips) {

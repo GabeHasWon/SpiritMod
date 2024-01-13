@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 {
@@ -23,13 +24,13 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 		{
 			if (!QuestManager.GetQuest<StylistQuestSeafoam>().IsCompleted)
 			{
-				var line = new TooltipLine(Mod, "ItemName", "Quest Item")
+				var line = new TooltipLine(Mod, "ItemName", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CommonName"))
 				{
 					OverrideColor = new Color(100, 222, 122)
 				};
 				tooltips.Add(line);
 			}
-			var line1 = new TooltipLine(Mod, "FavoriteDesc", "'The embers within the rock still burn'")
+			var line1 = new TooltipLine(Mod, "FavoriteDesc", Language.GetTextValue("Mods.SpiritMod.Items.MeteorDyeMaterial.CustomTooltip"))
 			{
 				OverrideColor = new Color(255, 255, 255)
 			};

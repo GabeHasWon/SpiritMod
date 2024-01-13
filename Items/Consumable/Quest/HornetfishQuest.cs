@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Mechanics.QuestSystem;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable.Quest
 {
@@ -21,11 +22,11 @@ namespace SpiritMod.Items.Consumable.Quest
 		{
 			if (!QuestManager.GetQuest<ItsNoSalmon>().IsCompleted)
 			{
-				TooltipLine line = new TooltipLine(Mod, "ItemName", "Quest Item");
+				TooltipLine line = new TooltipLine(Mod, "ItemName", Language.GetTextValue("Mods.SpiritMod.Items.DurasilkSheaf.CommonName"));
 				line.OverrideColor = new Color(100, 222, 122);
 				tooltips.Add(line);
 			}
-			TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", "'It buzzes and blubs at the same time'");
+			TooltipLine line1 = new TooltipLine(Mod, "FavoriteDesc", Language.GetTextValue("Mods.SpiritMod.Items.HornetfishQuest.CustomTooltip"));
 			line1.OverrideColor = new Color(255, 255, 255);
 			tooltips.Add(line1);
 		}

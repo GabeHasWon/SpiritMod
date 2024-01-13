@@ -185,11 +185,11 @@ TranquilWinds: {
 }
 
 ReachNighttime: {
-	// DisplayName: Briar Night
-	// Author: "{$BySalvati}"
+	DisplayName: Briar Night
+	Author: "{$BySalvati}"
 }
 
 CrimsonNight: {
-	// DisplayName: Razor's Edge (Crimson Night Theme)
-	// Author: "{$BySalvati}, {$Sbubby}"
+	DisplayName: Razor's Edge（主题曲：猩红之地 - 夜）
+	Author: "{$BySalvati}, {$Sbubby}"
 }

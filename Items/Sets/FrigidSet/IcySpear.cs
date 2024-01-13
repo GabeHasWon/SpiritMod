@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.FrigidSet
 {
@@ -40,7 +41,7 @@ namespace SpiritMod.Items.Sets.FrigidSet
 			foreach (TooltipLine line in tooltips)
 			{
 				if (line.Mod == "Terraria" && line.Name == "Damage") //Replace the vanilla text with our own
-					line.Text = $"{(int)meleeStat.ApplyTo(Item.damage)}-{(int)meleeStat.ApplyTo(Item.damage * JavelinProj.maxDamageMult)} melee damage";
+					line.Text = $"{(int)meleeStat.ApplyTo(Item.damage)}-{(int)meleeStat.ApplyTo(Item.damage * JavelinProj.maxDamageMult)}" + Language.GetText("LegacyTooltip.2");
 			}
 		}
 

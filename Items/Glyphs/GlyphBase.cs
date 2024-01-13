@@ -9,6 +9,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Humanizer;
 
 namespace SpiritMod.Items.Glyphs
 {
@@ -21,7 +22,7 @@ namespace SpiritMod.Items.Glyphs
 		public abstract GlyphType Glyph { get; }
 		public virtual Texture2D Overlay => ModContent.Request<Texture2D>(Texture + "_Icon").Value;
 		public virtual Color Color => Color.White;
-		public virtual string ItemType => "weapon";
+		//public virtual string ItemType => "weapon";
 		public virtual string Effect => Language.GetTextValue($"Mods.SpiritMod.Items.{Name}.Effect");
 		public virtual string Addendum => Language.GetTextValue($"Mods.SpiritMod.Items.{Name}.Addendum");
 
@@ -47,17 +48,16 @@ namespace SpiritMod.Items.Glyphs
 			Color color = Color;
 			color *= Main.mouseTextColor / 255f;
 			line = new TooltipLine(Mod, "GlyphTooltip",
-				"The enchanted " + ItemType + " will gain: [c/" +
-				string.Format("{0:X2}{1:X2}{2:X2}:", color.R, color.G, color.B) + Effect + "]")
+				Language.GetTextValue("Mods.SpiritMod.Items.Glyph.Gain").FormatWith(string.Format("{0:X2}{1:X2}{2:X2}", color.R, color.G, color.B), Effect))
 			{
 				OverrideColor = new Color(120, 190, 120)
 			};
 			tooltips.Insert(index, line);
 
 			if (Item.shopCustomPrice.HasValue)
-				line = new TooltipLine(Mod, "GlyphHint", "Can only be applied to " + ItemType + "s");
+				line = new TooltipLine(Mod, "GlyphHint", Language.GetTextValue("Mods.SpiritMod.Items.Glyph.Target"));
 			else
-				line = new TooltipLine(Mod, "GlyphHint", "Hold this glyph and right-click the " + ItemType + " you want to enchant");
+				line = new TooltipLine(Mod, "GlyphHint", Language.GetTextValue("Mods.SpiritMod.Items.Glyph.RightClick"));
 
 			line.OverrideColor = new Color(120, 190, 120);
 			tooltips.Insert(index, line);

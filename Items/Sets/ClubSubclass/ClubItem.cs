@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria.DataStructures;
 using SpiritMod.Projectiles.Clubs;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.ClubSubclass
 {
@@ -70,7 +71,7 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 			foreach (TooltipLine line in tooltips)
 			{
 				if (line.Mod == "Terraria" && line.Name == "Damage") //Replace the vanilla text with our own
-					line.Text = $"{(int)meleeStat.ApplyTo(MinDamage)}-{(int)meleeStat.ApplyTo(MaxDamage)} melee damage";
+					line.Text = $"{(int)meleeStat.ApplyTo(MinDamage)}-{(int)meleeStat.ApplyTo(MaxDamage)}" + Language.GetText("LegacyTooltip.2");
 			}
 		}
 	}
