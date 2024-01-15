@@ -79,7 +79,7 @@ Gambler: {
 		LoveNPC: 有一次，我把一个木箱卖给{NPCName}，赚了一笔快钱。他打开一看，里面大概有300只鸭子。我从来没有这么困惑和惊讶过。
 		DislikeNPC: 不喜欢{NPCName}，我从来不会囤积财富。
 		HateNPC: 尽管你可以随意评价我，但{NPCName}也是合法的吗？
-		LikeNPC_Princess: 你知道的，{NPCName}有一些勇气。她很勇猛，你也可以的！
+		LikeNPC_Princess: "你知道的，{NPCName}有一些勇气。她很勇猛，你也可以的！"
 		Princess_LovesNPC: "{NPCName}的风格很棒。你可以看出她很自信。"
 	}
 
@@ -122,7 +122,7 @@ Rogue: {
 		DislikeNPC: 哦，{NPCName}？这么说吧，他从不反对测试他的炸药。
 		HateNPC: 让我告诉你……{NPCName}那个家伙？简直就像踩着钢丝一样容易激动，真的。我发誓，我只拿走了几枚硬币而已！
 		LikeNPC_Princess: "{NPCName}说会保守我的秘密，把它紧紧藏在心底……但其实我没有秘密可言。嘘。"
-		Princess_LovesNPC: {NPCName}有时会给我一些很酷的东西。他说这些东西都是免费的！
+		Princess_LovesNPC: "{NPCName}有时会给我一些很酷的东西。他说这些东西都是免费的！"
 	}
 
 	Name1: Zane
@@ -164,7 +164,7 @@ RuneWizard: {
 		LoveNPC: "{NPCName}和我经常谈论我们的工作 - 他不懂魔法也能施放魔法，真是太神奇了。"
 		DislikeNPC: 我不不喜欢任何人！
 		HateNPC: "{NPCName}不懂符文的力量……只关注这个“冰雪魔杖”和那个“水晶球”……"
-		LikeNPC_Princess: 我在耍魔术时，{NPCName}的眼睛里总是闪烁着魔法的光芒。都是些小把戏，哈哈。
+		LikeNPC_Princess: "我在耍魔术时，{NPCName}的眼睛里总是闪烁着魔法的光芒。都是些小把戏，哈哈。"
 		Princess_LovesNPC: "{NPCName}给了我一个闪光符文！耶！"
 	}
 
