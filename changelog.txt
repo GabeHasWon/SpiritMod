@@ -6,3 +6,9 @@
 - Fixed all town NPCs having a bad key for their Princess happiness dialogue
 - Fixed Ice Wheezer passive frozen statues not breaking before Skeletron
 - Fixed branching tasks not syncing properly, causing desync
+- Significantly reduced how often Hydrothermal Vents spawn critters
+- Fixed Stripped Bamboo Barrel placing incorrectly in multiplayer
+- Fixed Stripped Bamboo Barrel not selecting a random style in multiplayer
+- Stripped Bamboo Barrel now uses a default container name
+- Fixed Stripped Bamboo Pot dropping several of itself
+- A ton of various localization fixes

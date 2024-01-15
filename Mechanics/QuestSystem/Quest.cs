@@ -225,12 +225,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			// Set branched tasks's next task to complete properly
 			// This is hacky and I don't like it but it should work
 			if (QuestManager.Quiet && _currentTask is BranchingTask branchTask && taskArgument != byte.MaxValue)
-			{
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral($"{taskArgument} from {Main.myPlayer}"), Color.White);
-				Main.NewText($"LC: {taskArgument} from {Main.myPlayer}", Color.White);
-
 				_currentTask = branchTask.Tasks.ElementAt(taskArgument);
-			}
 
 			if (_currentTask is not null) //This should only be true when the quest is force-completed
 			{

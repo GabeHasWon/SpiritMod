@@ -115,9 +115,9 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			{
 				if (t.LiquidAmount > 155)
 				{
-					SpawnCritter<NPCs.Critters.TinyCrab>(i, j, 2200);
-					SpawnCritter<NPCs.Critters.Ocean.Crinoid>(i, j, 300);
-					SpawnCritter<NPCs.Critters.TubeWorm>(i, j, 85);
+					SpawnCritter<NPCs.Critters.TinyCrab>(i, j, 5000);
+					SpawnCritter<NPCs.Critters.Ocean.Crinoid>(i, j, 1100);
+					SpawnCritter<NPCs.Critters.TubeWorm>(i, j, 425);
 				}
 			}
 		}
