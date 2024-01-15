@@ -1,2 +1,8 @@
 ﻿- Heavily reduced the amount of dust the Soul Star produces (from 60 dust/frame to 10 dust/frame)
 - Fixed banner glowmasks being offset on non-hammered banners
+- Removed outdated Census calls
+- Fixed quest book objective page arrows not being clickable
+- Fixed the Meteorite biome hiding clouds
+- Fixed all town NPCs having a bad key for their Princess happiness dialogue
+- Fixed Ice Wheezer passive frozen statues not breaking before Skeletron
+- Fixed branching tasks not syncing properly, causing desync

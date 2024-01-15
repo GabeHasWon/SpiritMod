@@ -30,7 +30,10 @@ namespace SpiritMod.Mechanics.QuestSystem
 		public static event Action<Quest> OnQuestActivate;
 		public static event Action<Quest> OnQuestDeactivate;
 
-		public static bool Quiet = false;
+		/// <summary>
+		/// Orders quest-related calls to not sync their contents.
+		/// </summary>
+		public static bool Quiet { get; internal set; } = false;
 
         public static void Load()
         {

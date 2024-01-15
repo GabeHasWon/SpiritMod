@@ -29,7 +29,7 @@ namespace SpiritMod.Skies
 			}
 		}
 
-		public override float GetCloudAlpha() => 0f;
+		public override float GetCloudAlpha() => 1f;
 		public override void Activate(Vector2 position, params object[] args) => isActive = true;
 		public override void Deactivate(params object[] args) => isActive = false;
 		public override void Reset() => isActive = false;

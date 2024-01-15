@@ -11,6 +11,8 @@ using SpiritMod.Mechanics.QuestSystem.Tasks;
 using SpiritMod.UI.Elements;
 using Terraria.Localization;
 using SpiritMod.NPCs.Town;
+using System.Linq;
+using Terraria.Chat;
 
 namespace SpiritMod.Mechanics.QuestSystem
 {
@@ -203,6 +205,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			if (_currentTask.CheckCompletion())
 			{
 				_completedCounter++; //This counter is here so the HUD works. that's all.
+
 				if (_completedCounter >= 3)
 					RunCompletion();
 			}
@@ -214,13 +217,39 @@ namespace SpiritMod.Mechanics.QuestSystem
 			}
 		}
 
-		internal void RunCompletion()
+		internal void RunCompletion(int taskArgument = byte.MaxValue)
 		{
 			if (IsCompleted)
 				return;
 
+			// Set branched tasks's next task to complete properly
+			// This is hacky and I don't like it but it should work
+			if (QuestManager.Quiet && _currentTask is BranchingTask branchTask && taskArgument != byte.MaxValue)
+			{
+				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral($"{taskArgument} from {Main.myPlayer}"), Color.White);
+				Main.NewText($"LC: {taskArgument} from {Main.myPlayer}", Color.White);
+
+				_currentTask = branchTask.Tasks.ElementAt(taskArgument);
+			}
+
 			if (_currentTask is not null) //This should only be true when the quest is force-completed
 			{
+				if (!QuestManager.Quiet && Main.netMode == NetmodeID.MultiplayerClient) //Tell server to progress the quest.
+				{
+					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 5);
+					packet.Write((byte)QuestMessageType.ProgressOrComplete);
+					packet.Write(true);
+					packet.Write(QuestName);
+
+					if (_currentTask is not BranchingTask branch)
+						packet.Write(byte.MaxValue);
+					else
+						packet.Write(branch.taskSlotForMP);
+
+					packet.Write((byte)Main.myPlayer);
+					packet.Send();
+				}
+
 				_currentTask.Completed = true;
 				_currentTask.Deactivate();
 				_currentTask = _currentTask.NextTask;
@@ -233,16 +262,6 @@ namespace SpiritMod.Mechanics.QuestSystem
 			}
 			else //Quest continues
 				_currentTask.Activate(this);
-
-			if (!QuestManager.Quiet && Main.netMode == NetmodeID.MultiplayerClient) //Tell server to progress the quest.
-			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
-				packet.Write((byte)QuestMessageType.ProgressOrComplete);
-				packet.Write(true);
-				packet.Write(QuestName);
-				packet.Write((byte)Main.myPlayer);
-				packet.Send();
-			}
 		}
 
 		public virtual bool IsQuestPossible() => true;

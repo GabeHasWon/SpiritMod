@@ -48,6 +48,9 @@ namespace SpiritMod.Mechanics.QuestSystem
 				QuestManager.UnlockAll();
 				QuestManager.CompleteAll();
 			}
+
+			if (Main.mouseLeft && Main.mouseRight && Main.LocalPlayer.controlJump && Main.LocalPlayer.controlInv)
+				QuestManager.RestartEverything();
 #endif
 		}
 

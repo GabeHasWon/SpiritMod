@@ -33,7 +33,8 @@ Adventurer: {
 		LoveNPC: That {NPCName} is a fascinating character. His stories are trumped by nothing!
 		DislikeNPC: "{NPCName} really knows how to bring down the mood. Maybe a hike would brighten him up?"
 		HateNPC: While {NPCName} is a collector in spirit, he only offloads his work to others. A disappointment to explorers everywhere.
-		Princess_LovesNPC: "{NPCName} has an air of her. An air of adventure."
+		LikeNPC_Princess: "{NPCName} has an air of her. An air of adventure."
+		Princess_LovesNPC: "{NPCName} has so many cool stories!"
 	}
 
 	Name1: Morgan
@@ -78,7 +79,8 @@ Gambler: {
 		LoveNPC: Once, I upsold a wooden chest to {NPCName} for a quick buck. He opened it and there were like, three hundred ducks in there. I've never been so confused and amazed.
 		DislikeNPC: Unlike {NPCName}, I don't hoard my wealth.
 		HateNPC: Say what you want about ME, but is what {NPCName} even legal?
-		Princess_LovesNPC: Y'know, {NPCName} has some spunk. She's fierce, and you could be too!
+		LikeNPC_Princess: Y'know, {NPCName} has some spunk. She's fierce, and you could be too!
+		Princess_LovesNPC: "{NPCName}'s style is awesome. You can tell she's confident."
 	}
 
 	Name1: Yumeko
@@ -119,7 +121,8 @@ Rogue: {
 		LoveNPC: I'm no engineer, but the stuff {NPCName} makes is so cool. I might even pay for it this time!
 		DislikeNPC: Oh, {NPCName}? Let's just say he's not against testing a couple of his explosives.
 		HateNPC: Let me tell you...that {NPCName} guy? On a hairpin trigger, literally. I only lifted a couple coins, I swear!
-		Princess_LovesNPC: "{NPCName} said she'd keep my secret close to her heart...of which I have none. Shoo."
+		LikeNPC_Princess: "{NPCName} said she'd keep my secret close to her heart...of which I have none. Shoo."
+		Princess_LovesNPC: Sometimes {NPCName} gets me cool things. He says it's all free too!
 	}
 
 	Name1: Zane
@@ -161,7 +164,8 @@ RuneWizard: {
 		LoveNPC: "{NPCName} and I frequently talk of our work - it's fascinating how he can enchant without any knowledge of magic."
 		DislikeNPC: I don't dislike anyone!
 		HateNPC: "{NPCName} doesn't understand the power of runes...it's all 'Ice Rod this' and 'Crystal Ball' that..."
-		Princess_LovesNPC: There's always a magic in {NPCName}'s eyes when I do a trick. It's the little things, haha.
+		LikeNPC_Princess: There's always a magic in {NPCName}'s eyes when I do a trick. It's the little things, haha.
+		Princess_LovesNPC: "{NPCName} gave me a glitter rune! Yay!"
 	}
 
 	Name1: Malachai

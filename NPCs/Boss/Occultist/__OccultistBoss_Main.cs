@@ -269,7 +269,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 
 				MyWorld.downedOccultist = true;
 
-				if (QuestManager.GetQuest<SlayerQuestOccultist>().IsActive)
+				if (QuestManager.GetQuest<SlayerQuestOccultist>().IsActive) // Workaround for the animation not counting as a kill
 					QuestManager.ForceCompleteQuest<SlayerQuestOccultist>();
 				return false;
 			}

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace SpiritMod.Mechanics.QuestSystem.Tasks
 {
@@ -7,6 +8,13 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 	{
 		public override string ModCallName => "##";
         public IEnumerable<QuestTask> Tasks { get; }
+
+		/// <summary>
+		/// Stores the index of the completed task in this branching task, so that other clients can properly complete that specific task.<br/>
+		/// This stops "completed" <see cref="BranchingTask"/>s from being skipped altogether when synced in <see cref="Quest.RunCompletion(int)"/>.<br/>
+		/// This is also the value passed to <see cref="Quest.RunCompletion(int)"/>.
+		/// </summary>
+		internal byte taskSlotForMP = byte.MaxValue;
 
         public BranchingTask() { }
 
@@ -62,11 +70,12 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 
 		public override bool CheckCompletion()
 		{
-			foreach (QuestTask section in Tasks)
+			foreach (QuestTask task in Tasks)
 			{
-				if (section.CheckCompletion())
+				if (task.CheckCompletion())
 				{
-					NextTask = section.NextTask;
+					taskSlotForMP = (byte)Tasks.ToList().IndexOf(task);
+					NextTask = task.NextTask;
 					return true;
 				}
 			}

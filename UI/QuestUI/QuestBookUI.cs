@@ -74,29 +74,6 @@ namespace SpiritMod.UI.QuestUI
             // ensure the UI stays on screen when moved
             mainWindow.ForceScreenStick = true;
 
-			// DEBUGGING FEATURE
-			// TODO: REMOVE BEFORE RELEASE! -- you got it bud
-			//mainWindow.OnMiddleDoubleClick += (UIMouseEvent evt, UIElement listeningElement) =>
-			//{
-			//	if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) &&
-			//		Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftAlt) &&
-			//		Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift))
-			//	{
-			//		QuestManager.RestartEverything();
-			//		QuestManager.UnlockQuest<FirstAdventure>(false);
-			//	}
-			//};
-			//
-			//mainWindow.OnRightDoubleClick += (UIMouseEvent evt, UIElement listeningElement) =>
-			//{
-			//	if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl) &&
-			//		Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftAlt) &&
-			//		Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift))
-			//	{
-			//		foreach (Quest quest in QuestManager.Quests) QuestManager.UnlockQuest(quest, false);
-			//	}
-			//};
-
 			_bookOverlay = new UIShaderImage(null);
 			_bookOverlay.Left.Set(0f, 0f);
 			_bookOverlay.Top.Set(0f, 0f);
@@ -249,31 +226,41 @@ namespace SpiritMod.UI.QuestUI
 			_questObjectivesTitle.Colour = new Color(43, 28, 17);
             rightPage.Append(_questObjectivesTitle);
 
-			_questObjectivesLeftArrow = new UIImageButton(SpiritMod.Instance.Assets.Request<Texture2D>("UI/QuestUI/Textures/LeftArrow"));
-			_questObjectivesLeftArrow.Left.Set(-60f, 1f);
-			_questObjectivesLeftArrow.Top.Set(188f, 0f);
+			_questObjectivesLeftArrow = new UIImageButton(SpiritMod.Instance.Assets.Request<Texture2D>("UI/QuestUI/Textures/LeftArrow"))
+			{
+				Left = StyleDimension.FromPixelsAndPercent(-14, 1),
+				Top = StyleDimension.FromPixels(188),
+				Width = StyleDimension.FromPixels(12),
+				Height = StyleDimension.FromPixels(12),
+			};
 			_questObjectivesLeftArrow.SetVisibility(1f, 0.5f);
 			_questObjectivesLeftArrow.OnLeftClick += (UIMouseEvent evt, UIElement listeningElement) =>
 			{
-				int page = _questObjectivesText.Page;
-				page--;
-				if (page < 0) page = 0;
-				_questObjectivesText.Page = page;
-				UpdateArrows(page, _questObjectivesText.MaxPage);
+				_questObjectivesText.Page--;
+
+				if (_questObjectivesText.Page < 0)
+					_questObjectivesText.Page = 0;
+
+				UpdateArrows(_questObjectivesText.Page, _questObjectivesText.MaxPage);
 			};
 			rightPage.Append(_questObjectivesLeftArrow);
 
-			_questObjectivesRightArrow = new UIImageButton(SpiritMod.Instance.Assets.Request<Texture2D>("UI/QuestUI/Textures/RightArrow"));
-			_questObjectivesRightArrow.Left.Set(-14f, 1f);
-			_questObjectivesRightArrow.Top.Set(188f, 0f);
+			_questObjectivesRightArrow = new UIImageButton(SpiritMod.Instance.Assets.Request<Texture2D>("UI/QuestUI/Textures/RightArrow"))
+			{
+				Left = StyleDimension.FromPixelsAndPercent(-14, 1),
+				Top = StyleDimension.FromPixels(188),
+				Width = StyleDimension.FromPixels(12),
+				Height = StyleDimension.FromPixels(12),
+			};
 			_questObjectivesRightArrow.SetVisibility(1f, 0.5f);
 			_questObjectivesRightArrow.OnLeftClick += (UIMouseEvent evt, UIElement listeningElement) =>
 			{
-				int page = _questObjectivesText.Page;
-				page++;
-				if (page > _questObjectivesText.MaxPage) page = _questObjectivesText.MaxPage;
-				_questObjectivesText.Page = page;
-				UpdateArrows(page, _questObjectivesText.MaxPage);
+				_questObjectivesText.Page++;
+
+				if (_questObjectivesText.Page > _questObjectivesText.MaxPage)
+					_questObjectivesText.Page = _questObjectivesText.MaxPage;
+
+				UpdateArrows(_questObjectivesText.Page, _questObjectivesText.MaxPage);
 			};
 			rightPage.Append(_questObjectivesRightArrow);
 

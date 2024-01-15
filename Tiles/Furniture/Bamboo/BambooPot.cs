@@ -21,9 +21,10 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.newTile.Height = 1;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
 			TileObjectData.addTile(Type);
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Stripped Bamboo Pot");
 			AddMapEntry(new Color(100, 100, 60), name);
+
 			DustType = DustID.PalmWood;
 			AdjTiles = new int[] { TileID.ClayPot };
 		}
@@ -38,9 +39,6 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			if (Main.netMode != NetmodeID.SinglePlayer)
 				NetMessage.SendTileSquare(-1, i, j, 1);
 		}
-
-		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
-			=> Item.NewItem(new Terraria.DataStructures.EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<BambooPotItem>());
     }
 
 	internal class BambooPotTile : GlobalTile //Hacky solution for modded clay pot tiles not being feasable

@@ -36,14 +36,16 @@ namespace SpiritMod.Mechanics.QuestSystem
 				}
 				else if (messageType == QuestMessageType.ProgressOrComplete)
 				{
-					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
+					ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 5);
 					packet.Write((byte)QuestMessageType.ProgressOrComplete);
 					packet.Write(false);
 					string name = reader.ReadString();
 					packet.Write(name);
+					byte taskId = reader.ReadByte();
+					packet.Write(taskId); // Task ID for branching quests
 					packet.Send(-1, reader.ReadByte());
 
-					CompleteQuestOrTask(name);
+					CompleteQuestOrTask(name, taskId);
 				}
 				else if (messageType == QuestMessageType.ObtainQuestBook)
 				{
@@ -84,7 +86,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 				else if (messageType == QuestMessageType.Activate)
 					ActivateQuest(reader.ReadString());
 				else if (messageType == QuestMessageType.ProgressOrComplete)
-					CompleteQuestOrTask(reader.ReadString());
+					CompleteQuestOrTask(reader.ReadString(), reader.ReadByte());
 				else if (messageType == QuestMessageType.SyncOnNPCLoot) //Client only as this is only run on the server
 					ModContent.GetInstance<QuestGlobalNPC>().ClientNPCLoot(Main.npc[reader.ReadByte()]);
 				else if (messageType == QuestMessageType.ObtainQuestBook)
@@ -162,14 +164,14 @@ namespace SpiritMod.Mechanics.QuestSystem
 			}
 		}
 
-		internal static void CompleteQuestOrTask(string questName)
+		internal static void CompleteQuestOrTask(string questName, byte taskId)
 		{
 			var quest = QuestManager.Quests.FirstOrDefault(x => x.QuestName == questName);
 
 			if (quest != null)
 			{
 				QuestManager.Quiet = true;
-				quest.RunCompletion();
+				quest.RunCompletion(taskId);
 				QuestManager.Quiet = false;
 			}
 		}
