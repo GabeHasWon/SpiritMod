@@ -3591,6 +3591,7 @@ BlazeGlyph: {
 		'''
 	Addendum: Dealing damage sets you ablaze
 	Effect: Blazing
+	Death: "{0} was consumed by Rage..."
 }
 
 ChaosGlyph: {
@@ -7759,6 +7760,7 @@ StreamSurferHelmet: {
 		8% increased magic critical strike chance
 		You can breathe underwater
 		'''
+	BonusText: Water Spout Charged!
 }
 
 StreamSurferLeggings: {

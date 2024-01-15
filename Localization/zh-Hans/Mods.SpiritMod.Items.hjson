@@ -3591,6 +3591,7 @@ BlazeGlyph: {
 		'''
 	Addendum: 造成伤害时会将你点燃
 	Effect: 点燃
+	Death: "{0} 被怒火吞噬了。"
 }
 
 ChaosGlyph: {
@@ -7759,6 +7760,7 @@ StreamSurferHelmet: {
 		增加8%魔法暴击率
 		使你获得水下呼吸能力
 		'''
+	BonusText: 水龙卷冷却完毕！
 }
 
 StreamSurferLeggings: {
