@@ -3046,6 +3046,7 @@ MaggotflyItem: {
 MapScroll: {
 	DisplayName: Cartographer's Map
 	Tooltip: Reveals a nearby portion of the minimap
+	Effect: Map Revealed
 }
 
 MartianTransmitter: {

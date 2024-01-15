@@ -3046,6 +3046,7 @@ MaggotflyItem: {
 MapScroll: {
 	DisplayName: 制图师的地图
 	Tooltip: 揭露小地图上附近的一部分区域
+	Effect: 地图已揭露
 }
 
 MartianTransmitter: {

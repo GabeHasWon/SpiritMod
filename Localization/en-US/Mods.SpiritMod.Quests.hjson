@@ -135,7 +135,7 @@ QuestInfo: {
 	BreakingAndEntering: {
 		Name: Breaking and Entering
 		Description: A couple of my scout friends spotted something troubling near the far shores of the world. They caught a glimpse of a bound woman up there. Would you mind headin' there and checking things out? Maybe she needs rescuing! If you're not feeling too altruistic, I'm sure there's plenty of loot for the taking, too!
-		Dialogue: Must be my lucky day to see a friendly face around here!\nThese goblins didn't take too kindly to me offering a, uh, rigged deal.\nAnyway, d'you have a place to stay? Let's flip for it.
+		Dialogue: Must be my lucky day to see a friendly face around here! These goblins didn't take too kindly to me offering a, uh, rigged deal. Anyway, d'you have a place to stay? Let's flip for it.
 		Objective: Find the Arcane Goblin Tower and rescue the prisoner.
 	}
 

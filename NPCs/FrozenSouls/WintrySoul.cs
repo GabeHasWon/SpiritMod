@@ -8,6 +8,7 @@ using Terraria.Graphics.Shaders;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using Terraria.GameContent.Bestiary;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.FrozenSouls
 {
@@ -49,14 +50,15 @@ namespace SpiritMod.NPCs.FrozenSouls
 		public override bool? CanBeHitByItem(Player player, Item item) => false;
 		public override bool? CanBeHitByProjectile(Projectile projectile) => false;
 
-		public override string GetChat() => "As I approach the spirit, the cave around me seems to shake. The walls collapse, leaving me standing in a boundless chasm. I am alone. Countless piles of gold and relics lay strewn about, covered in a thin layer of frost. The only light in the cavern seems to come from the soul beside me as it waits for me to make a decision.";
+		public override string GetChat() => Language.GetTextValue("Mods.SpiritMod.Quests.QuestInfo.IceDeityQuest.FrozenSoulScene");
+		//"As I approach the spirit, the cave around me seems to shake. The walls collapse, leaving me standing in a boundless chasm. I am alone. Countless piles of gold and relics lay strewn about, covered in a thin layer of frost. The only light in the cavern seems to come from the soul beside me as it waits for me to make a decision.";
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
 			if (decisionValue == 0f)
 			{
-				button = "Take";
-				button2 = "Leave";
+				button = Language.GetTextValue("Mods.SpiritMod.NPCs.WintrySoul.ButtonTake");
+				button2 = Language.GetTextValue("Mods.SpiritMod.NPCs.WintrySoul.ButtonLeave");
 			}
 		}
 
@@ -93,7 +95,8 @@ namespace SpiritMod.NPCs.FrozenSouls
 					NPC.velocity = Vector2.Zero;
 					if (decisionValue == 2f)
 					{
-						Main.npcChatText = "My vision returns to normal. The soul flits around me, apparently pleased with my decision. It gives me an ancient relic and other resources for my journey.";
+						Main.npcChatText = Language.GetTextValue("Mods.SpiritMod.NPCs.WintrySoul.PositiveChat");
+						//"My vision returns to normal. The soul flits around me, apparently pleased with my decision. It gives me an ancient relic and other resources for my journey.";
 
 						if (outcomeValue == 0f)
 						{
@@ -112,7 +115,8 @@ namespace SpiritMod.NPCs.FrozenSouls
 					}
 					if (decisionValue == 1f)
 					{
-						Main.npcChatText = "My vision blurs. I start to shiver. I feel weak. The warmth that the soul gave me disappears slowly, and the soul melts away into the icy caverns. I should try looking elsewhere for the artifact. Perhaps I can scavenge the artifact from some Winterborn.";
+						Main.npcChatText = Language.GetTextValue("Mods.SpiritMod.NPCs.WintrySoul.NegativeChat");
+						//"My vision blurs. I start to shiver. I feel weak. The warmth that the soul gave me disappears slowly, and the soul melts away into the icy caverns. I should try looking elsewhere for the artifact. Perhaps I can scavenge the artifact from some Winterborn.";
 						if (outcomeValue == 0f)
 						{
 							DoExplosionDust();

@@ -578,6 +578,10 @@ FleshHound: {
 WintrySoul: {
 	DisplayName: Icebound Soul
 	Entry: A curious memory of time past, somehow preserved by the deep icy tundra.
+	ButtonTake: Take
+	ButtonLeave: Leave
+	PositiveChat: My vision returns to normal. The soul flits around me, apparently pleased with my decision. It gives me an ancient relic and other resources for my journey.
+	NegativeChat: My vision blurs. I start to shiver. I feel weak. The warmth that the soul gave me disappears slowly, and the soul melts away into the icy caverns. I should try looking elsewhere for the artifact. Perhaps I can scavenge the artifact from some Winterborn.
 }
 
 Illusionist: {
@@ -802,6 +806,7 @@ ForestWraith: {
 	DisplayName: Glade Wraith
 	Entry: Despite the Briar's unnatural creeping presence, it has left its mark on nature just long enough for these vengeful spirits to call it home.
 	BossChecklistIntegration.SpawnInfo: Destroy a Bone Altar in the Underground Briar. The Glade Wraith also spawns naturally at nighttime after defeating the Eye of Cthulhu. Alternatively, find a [i:SpiritMod/GladeWreath] in Briar Chests and use it in the Briar at any time.
+	BoneAltar: You have disturbed the ancient Nature Spirits!
 }
 
 Noxophyll: {
@@ -1105,6 +1110,38 @@ Oracle: {
 		HateCrowded: I hate how crowded I am.
 		LikeNPC_Princess: I like {NPCName}.
 		Princess_LovesNPC: I like {NPCName}.
+	}
+
+	Dialogue: {
+		Basic1: The heavens have certainly spoken of you, {0}.
+		Basic2: The divinity I offer isn't for any simple coin, traveler.
+		Basic3: Have you caught wind of a man named Zagreus? ...nevermind.
+		Basic4: Oh, how far I'd go for some ichor...
+		Basic5: I have a little scroll for sale, if you wish to find me elsewhere.
+		Basic6: Not having eyes is a blessing from the gods when you work where I work.
+		Basic7: Warm greetings, warrior. I sense power within you, perhaps I can aid in its growth. The creatures within these walls hold mighty tokens, in which I am interested. If you were to trade them with me, I would grant you a weapon enchanted by the gods themselves!
+		Basic8: Ah, what I would give for some aged wine... Has Anthesteria arrived already?
+		Basic9: My epic tale has no end, and may never have one!
+		Basic10: Mythology? What part of this makes you believe it is a myth?
+		Basic11: I have lost track of time, and the gods refuse to tell me where it is!
+		Basic12: Lorem ipsum dolor sit amet... be patient, I'm not finished.
+		Basic13: I am unable to die unless I am forgotten. I wonder who still remembers me...
+		Basic14: What do you need? I don't have unending time. Hm...on second thought...
+		Basic15: I had all life to write a glorious tale, but I cannot get past 'the'.
+		Basic16: Between you and me, reptiles cause me great distress.
+		Basic17: I ponder about the presence of ambient song in the distance, yet cannot stop myself from indulging in it.
+		Basic18: Boons? You want them? They're yours, my friend!
+		Basic19: Ah, I see. Or do I? Intriguing, is it not?
+		Basic20: The reason I float is simple - why should I not, if I can?
+	}
+
+	Bless: {
+		Button: Bless
+		Dialogue1: You wish for a challenge? I may stop you not, as it benefits us both. I do hope you're prepared!
+		Dialogue2: I shall consult the gods about their boons - these monsters will become relentless, I hope you are aware.
+		Dialogue3: You want me to call them what?! Such foul battle language, yet I will deliver the message. The Gods won't be happy about this!
+		Dialogue4: The boons cause slain foes to drop more tokens, yes, but do remember that the foes become stronger, too!
+		Dialogue5: Do come back alive! I would enjoy hearing tales of your victories. Bring many tokens as well!
 	}
 
 	Entry: They offers blessings and goods in exchange for ancient currency. They wear a blindfold, as being enlightened and blessed by Olympus has made their vision unnecessary.
