@@ -117,6 +117,7 @@ AncientFlyer: {
 	DisplayName: Ancient Avian
 	Entry: The matriarch of an extinct avian predator species, brought back to life through sheer will to protect the yolk of its last remaining spawn.
 	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/JewelCrown] in the sky biome at any time. Alternatively, smash a Giant Avian Egg, which is found on Avian Islands near the sky layer. The Ancient Avian can be fought at any time and any place in progression.
+	Spawn: The Ancient Avian has awoken!
 }
 
 Atlas: {
@@ -212,6 +213,8 @@ SteamRaiderHead: {
 	DisplayName: Starplate Voyager
 	Entry: A strange automaton of unknown origin, designed for mining a precious metal from the stars. It utilizes the untapped energy found within the ore to power itself and perpetuate an endless search.
 	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/StarWormSummon] at an Astralite Beacon, located in the Asteroids, at nighttime.
+	Spawn: The Starplate Voyager has awoken!
+	Laser: Initiating Laser Protocol
 }
 
 SteamRaiderHeadDeath.DisplayName: Starplate Voyager

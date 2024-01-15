@@ -577,7 +577,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 								NPC.netUpdate = true;
 							}
 						}
-						CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(255, 155, 0, 100), "Initiating Laser Protocol");
+						CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(255, 155, 0, 100), Language.GetTextValue("Mods.SpiritMod.NPCs.SteamRaiderHead.Laser"));
 					}
 					direction9 = Main.player[NPC.target].Center - NPC.Center;
 					direction9.Normalize();
@@ -750,7 +750,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				if (Main.netMode == NetmodeID.SinglePlayer)
 					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Misc.StarplateAnnouncement"), new Color(61, 255, 142));
 				else if (Main.netMode == NetmodeID.Server)
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Mods.SpiritMod.Misc.StarplateAnnouncement"), new Color(61, 255, 142), -1);
+					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.StarplateAnnouncement")), new Color(61, 255, 142), -1);
 			}
 
 			NPC.PlayDeathSound("StarplateDeathSound");

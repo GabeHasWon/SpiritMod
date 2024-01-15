@@ -117,6 +117,7 @@ AncientFlyer: {
 	DisplayName: 始祖骨翼
 	Entry: 一种已灭绝的鸟类捕食者的族长，通过纯粹的保护其最后一颗蛋的意志而复活。
 	BossChecklistIntegration.SpawnInfo: 在天空使用[i:SpiritMod/JewelCrown]召唤。也可以通过打碎一颗巨型骨翼蛋召唤，骨翼蛋位于靠近天空层的骨翼岛。始祖骨翼可以在任何时间、任何地点进行战斗。
+	Spawn: 始祖骨翼已苏醒！
 }
 
 Atlas: {
@@ -212,6 +213,8 @@ SteamRaiderHead: {
 	DisplayName: 星盘巡游者
 	Entry: 一个来历不明的奇异的自动装置，旨在从恒星中挖掘珍贵的金属。它利用矿石中未被利用的能量为自己提供动力，并永无止境地搜寻。
 	BossChecklistIntegration.SpawnInfo: 在夜晚时，在星界信标处使用[i:SpiritMod/StarWormSummon]召唤，星界信标位于小行星带。
+	Spawn: 星盘巡游者已苏醒！
+	Laser: 启动激光协议
 }
 
 SteamRaiderHeadDeath.DisplayName: 星盘巡游者
