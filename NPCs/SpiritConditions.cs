@@ -11,9 +11,9 @@ internal class SpiritConditions
 	// VS will mark this as needless, but removing the wrapping delegate will cause issues.
 	// This is because otherwise the condition used will capture an invalid LocalPlayer instance, causing a null ref.
 	// Fun!
-	public static Condition InBriar => new("Mods.SpiritMod.Condition.InBriar", () => Main.LocalPlayer.ZoneBriar());
-	public static Condition InAsteroids => new("Mods.SpiritMod.Condition.InAsteroids", () => Main.LocalPlayer.ZoneAsteroid());
-	public static Condition InSpirit => new("Mods.SpiritMod.Condition.InSpirit", () => Main.LocalPlayer.ZoneSpirit());
+	public static Condition InBriar => new("Mods.SpiritMod.Conditions.InBriar", () => Main.LocalPlayer.ZoneBriar());
+	public static Condition InAsteroids => new("Mods.SpiritMod.Conditions.InAsteroids", () => Main.LocalPlayer.ZoneAsteroid());
+	public static Condition InSpirit => new("Mods.SpiritMod.Conditions.InSpirit", () => Main.LocalPlayer.ZoneSpirit());
 
 	public static Condition VoyagerDown => new("Mods.SpiritMod.Conditions.VoyagerDown", () => MyWorld.DownedStarplate);
 	public static Condition ScarabDown => new("Mods.SpiritMod.Conditions.ScarabDown", () => MyWorld.DownedScarabeus);
