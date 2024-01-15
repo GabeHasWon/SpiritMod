@@ -4,6 +4,7 @@ using SpiritMod.Items.Placeable.Furniture.Bamboo;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.Enums;
 using Terraria.GameContent;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
@@ -41,15 +42,17 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileID.Sets.DisableSmartCursor[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
-			TileObjectData.newTile.Origin = new Point16(1, 1);
+			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.newTile.Height = 2;
+			TileObjectData.newTile.Width = 2;
+			TileObjectData.newTile.RandomStyleRange = 3;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
 			TileObjectData.newTile.AnchorInvalidTiles = new int[] { 127 };
-			TileObjectData.newTile.LavaDeath = false;
-			TileObjectData.newTile.RandomStyleRange = 3;
 			TileObjectData.newTile.StyleHorizontal = true;
+			TileObjectData.newTile.LavaDeath = false;
+			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
 
 			LocalizedText name = CreateMapEntryName();
@@ -59,6 +62,8 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			RegisterItemDrop(ModContent.ItemType<BambooBarrelItem>());
 		}
 
+		public override LocalizedText DefaultContainerName(int frameX, int frameY) => this.GetLocalization("MapEntry");
+
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
 		private static string MapChestName(string name, int i, int j)
@@ -66,13 +71,25 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			(i, j) = (GetMultiTilePos(i, j).X, GetMultiTilePos(i, j).Y);
 
 			int chest = Chest.FindChest(i, j);
+			if (chest < 0)
+				return Language.GetTextValue("LegacyChestType.0");
+
 			if (Main.chest[chest].name == string.Empty)
 				return name;
-			else
-				return name + ": " + Main.chest[chest].name;
+
+			return name + ": " + Main.chest[chest].name;
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Chest.DestroyChest(i, j);
+
+		public override void PlaceInWorld(int i, int j, Item item)
+		{
+			if (Main.netMode != NetmodeID.SinglePlayer)
+			{
+				Point tilePos = GetMultiTilePos(i, j);
+				NetMessage.SendTileSquare(-1, tilePos.X, tilePos.Y, 2, TileChangeType.None);
+			} //Sync random style for the chest
+		}
 
 		public override bool RightClick(int i, int j)
 		{

@@ -180,6 +180,8 @@ ExplodingSpore.DisplayName: Exploding Spore
 ReachBoss: {
 	DisplayName: Vinewrath Bane
 	BossChecklistIntegration.SpawnInfo: Right-click the Bloodblossom, a glowing flower found at the bottom of the Briar. The Vinewrath Bane can be fought at any time and any place in progression. If a Bloodblossom is not present, use a [i:SpiritMod/ReachBossSummon] in the Briar below the surface at any time.
+	PreSpawn: Disturbing this flower surely isn't a good idea...
+	Spawn: The Vinewrath Bane has awoken!
 }
 
 ReachBoss1: {

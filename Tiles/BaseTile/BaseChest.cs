@@ -13,9 +13,7 @@ namespace SpiritMod.Tiles.BaseTile
 {
 	public abstract class BaseChest : ModTile
 	{
-		/// <summary>
-		/// Primarily used for what item displays when the chest is hovered over, but also ensures the correct drop for natural tiles
-		/// </summary>
+		/// <summary> Primarily used for what item displays when the chest is hovered over, but also ensures the correct drop for natural tiles. </summary>
 		public abstract int ChestDrop { get; }
 
 		public sealed override void SetStaticDefaults()
@@ -44,9 +42,7 @@ namespace SpiritMod.Tiles.BaseTile
 			TileObjectData.addTile(Type);
 
 			LocalizedText name = CreateMapEntryName();
-			//name.SetDefault(DefaultName);
 			AdjTiles = new int[] { TileID.Containers };
-			//ContainerName.SetDefault(DefaultName);
 			RegisterItemDrop(ChestDrop);
 
 			StaticDefaults(name);
