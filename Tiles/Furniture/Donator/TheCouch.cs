@@ -1,10 +1,13 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs;
 using Terraria;
+using Terraria.GameContent.ObjectInteractions;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.DataStructures;
 
 namespace SpiritMod.Tiles.Furniture.Donator
 {
@@ -20,26 +23,46 @@ namespace SpiritMod.Tiles.Furniture.Donator
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.newTile.Direction = Terraria.Enums.TileObjectDirection.None;
 			TileObjectData.addTile(Type);
+			TileID.Sets.CanBeSatOnForNPCs[Type] = true;
+			TileID.Sets.CanBeSatOnForPlayers[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.HasOutlines[Type] = true;
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("The Couch");
+			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
 			AddMapEntry(new Color(200, 200, 200), name);
-			TileID.Sets.DisableSmartCursor[Type] = true;
-			TileID.Sets.CanBeSleptIn[Type] = true;
-			TileID.Sets.InteractibleByNPCs[Type] = true;
-			TileID.Sets.IsValidSpawnPoint[Type] = true;
+			DustType = -1;
 		}
+
+		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
+			=> settings.player.IsWithinSnappngRangeToTile(i, j, PlayerSittingHelper.ChairSittingMaxDistance);
+
+		public override bool RightClick(int i, int j)
+		{
+			Player player = Main.LocalPlayer;
+
+			if (player.IsWithinSnappngRangeToTile(i, j, PlayerSittingHelper.ChairSittingMaxDistance))
+			{
+				player.GamepadEnableGrappleCooldown();
+				player.sitting.SitDown(player, i, j);
+			}
+			return true;
+		}
+
+		public override void MouseOver(int i, int j)
+		{
+			Player player = Main.LocalPlayer;
+			player.cursorItemIconID = ModContent.ItemType<Items.DonatorItems.TheCouch>();
+			player.noThrow = 2;
+			player.cursorItemIconEnabled = true;
+		}
+
+		public override void ModifySittingTargetInfo(int i, int j, ref TileRestingInfo info) => info.VisualOffset.Y += 4;
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-			if (closer) {
-				Player player = Main.LocalPlayer;
-				if (!player.dead) {
-					player.AddBuff(ModContent.BuffType<CouchPotato>(), 60, true);
-				}
-			}
+			if (closer && !Main.LocalPlayer.dead)
+				Main.LocalPlayer.AddBuff(ModContent.BuffType<CouchPotato>(), 60);
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 	}
 }
