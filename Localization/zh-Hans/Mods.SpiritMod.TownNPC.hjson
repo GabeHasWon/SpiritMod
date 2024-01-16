@@ -164,7 +164,7 @@ RuneWizard: {
 		LoveNPC: "{NPCName}和我经常谈论我们的工作 - 他不懂魔法也能施放魔法，真是太神奇了。"
 		DislikeNPC: 我不不喜欢任何人！
 		HateNPC: "{NPCName}不懂符文的力量……只关注这个“冰雪魔杖”和那个“水晶球”……"
-		LikeNPC_Princess: "我在耍魔术时，{NPCName}的眼睛里总是闪烁着魔法的光芒。都是些小把戏，哈哈。"
+		LikeNPC_Princess: 我在耍魔术时，{NPCName}的眼睛里总是闪烁着魔法的光芒。都是些小把戏，哈哈。
 		Princess_LovesNPC: "{NPCName}给了我一个闪光符文！耶！"
 	}
 
@@ -176,4 +176,39 @@ RuneWizard: {
 	Name6: Salqueeh
 	Name7: Oarno
 	Name8: Cosimo
+}
+
+Vanilla: {
+	Wizard: {
+		RuneWizard: 你知道{N}吗？他卖的东西很有趣，我从未亲眼见过那样神奇的魔术。
+		Gambler1: 只需要一点变形魔法，{N}的箱子就可以变成鸽子。找个时间试试吧！
+		Gambler2: "{N}从来没有注意到我的牌是用魔法变得，它甚至不是真实存在的。她太专注了！"
+	}
+
+	Pirate: {
+		Adventurer: 唉，{N}那家伙又在吹嘘自己了。他可能是个菜鸟水手，但说实话，他表现的还真不错。
+		Rogue: 哦，{N}那家伙让我想起了自己的过去-啊，那些不好的回忆。
+		Gambler: 你知道吗，{N}总有一天会成为一名出色的海盗。是啊……她有一双黄金之眼。
+	}
+
+	GoblinTinkerer: {
+		RuneWizard: 我和{N}每天都交流经验-他的魔法令人着迷！和他聊天真愉快。
+		Gambler: "{N}让我想起了我的同胞。懒惰的卖家以荒谬的价格向你兜售更多的带刺的球……"
+	}
+
+	ArmsDealer: {
+		Rogue1: "{N}？那个小讨厌鬼。试图不付钱就拿走我的迷你鲨。"
+		Rogue2: 我从未见过像{N}那样讨厌的人。谢天谢地，我有办法让他离开。
+		Adventurer: 我了解{N}。那家伙并不太坏。特别是当他停止卖枪之后，呵呵。
+	}
+
+	Demolitionist: {
+		RuneWizard: 哈哈哈！{N}那家伙真不错。他免费给我的货物附魔！
+		Rogue: "{N}是个狡猾的家伙，但任何在买酒方面做得好的家伙都值得我的尊敬！"
+	}
+
+	Golfer.Gambler: "{N}是谁，为什么她想卖给我“[稀有]高尔夫战利品箱”？"
+	DD2Bartender.Adventurer: "{N}那家伙知道如何讲好故事。还没有喝几杯，我就沉迷其中了。"
+	Nurse.Gambler: 听着，“药水屯个够，百病生个球！”，{N}真的让我给你读这样的广告吗？
+	BestiaryGirl.Adventurer: 嗯哼，{N}真的知道很多关于动物的知识。他太酷了！
 }
