@@ -181,7 +181,7 @@ ExplodingSpore.DisplayName: 爆炸孢子
 ReachBoss: {
 	DisplayName: 怒藤毒灵
 	BossChecklistIntegration.SpawnInfo: 右键绽血花召唤，绽血花位于荆棘之地的底部。怒藤毒灵可以在任何时间、任何地点进行战斗。如果没有绽血花存在，则可以在荆棘之地的低于地表的位置使用[i:SpiritMod/ReachBossSummon]召唤。
-	PreSpawn: 打扰这朵花肯定不是个好主意...
+	PreSpawn: 打扰这朵花肯定不是个好主意……
 	Spawn: 怒藤毒灵已苏醒！
 }
 

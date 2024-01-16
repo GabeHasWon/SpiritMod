@@ -34,7 +34,7 @@ Adventurer: {
 		DislikeNPC: "{NPCName}真会让人扫兴。也许徒步旅行能让他振作起来？"
 		HateNPC: 虽然{NPCName}是一位精神上的收藏家，但他只是把自己的工作推卸给别人。令世界各地的探险家失望。
 		LikeNPC_Princess: "{NPCName}有她的气质。一种冒险的气质。"
-		Princess_LovesNPC: "{NPCName}有很多很酷的冒险故事！"
+		Princess_LovesNPC: "{NPCName}有如此多的故事！"
 	}
 
 	Name1: Morgan
@@ -164,8 +164,8 @@ RuneWizard: {
 		LoveNPC: "{NPCName}和我经常谈论我们的工作 - 他不懂魔法也能施放魔法，真是太神奇了。"
 		DislikeNPC: 我不不喜欢任何人！
 		HateNPC: "{NPCName}不懂符文的力量……只关注这个“冰雪魔杖”和那个“水晶球”……"
-		LikeNPC_Princess: 我在耍魔术时，{NPCName}的眼睛里总是闪烁着魔法的光芒。都是些小把戏，哈哈。
-		Princess_LovesNPC: "{NPCName}给了我一个闪闪发光的符文！耶！"
+		LikeNPC_Princess: "我在耍魔术时，{NPCName}的眼睛里总是闪烁着魔法的光芒。都是些小把戏，哈哈。"
+		Princess_LovesNPC: "{NPCName}给了我一个闪光符文！耶！"
 	}
 
 	Name1: Malachai
