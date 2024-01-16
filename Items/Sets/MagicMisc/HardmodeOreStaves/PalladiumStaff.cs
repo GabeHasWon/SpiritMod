@@ -9,12 +9,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 {
 	public class PalladiumStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Palladium Staff");
-			// Tooltip.SetDefault("Summons a runic pillar at the cursor position\nIf below 1/3 HP, step inside the pillar to rapidly regenerate health");
-			Item.staff[Item.type] = true;
-		}
+		public override void SetStaticDefaults() => Item.staff[Type] = true;
 
 		public override void SetDefaults()
 		{
@@ -37,24 +32,29 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 			Item.shootSpeed = 8f;
 		}
 
+		public override bool CanUseItem(Player player) => !Collision.SolidCollision(Main.MouseWorld, 16, 16);
+
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			for (int i = 0; i < Main.projectile.Length; i++) 
-			{
-				Projectile p = Main.projectile[i];
+			velocity = Vector2.Zero;
+			position = Main.MouseWorld.ToTileCoordinates().ToWorldCoordinates(8, 4);
 
-				if (p.active && p.type == Item.shoot && p.owner == player.whoAmI)
-					p.active = false;
-			}
+			while (!WorldGen.SolidTile(position.ToTileCoordinates()) && !Main.tileSolidTop[Framing.GetTileSafely(position.ToTileCoordinates()).TileType])
+				position.Y += 8;
 
-			Vector2 mouse = Main.MouseWorld;
-			Projectile.NewProjectile(source, mouse.X, mouse.Y, 0f, 100f, type, damage, knockback, player.whoAmI);
+			position.Y -= 32;
+
+			foreach (Projectile proj in Main.projectile)
+				if (proj.active && proj.type == Item.shoot && proj.owner == player.whoAmI)
+					proj.active = false;
+
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 			return false;
 		}
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.PalladiumBar, 12);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();

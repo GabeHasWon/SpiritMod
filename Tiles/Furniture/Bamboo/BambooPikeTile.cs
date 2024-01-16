@@ -30,6 +30,7 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.addTile(Type);
 
+			RegisterItemDrop(ModContent.ItemType<BambooPikeItem>());
 			AddMapEntry(new Color(80, 140, 35));
 			DustType = DustID.JunglePlants;
 		}
