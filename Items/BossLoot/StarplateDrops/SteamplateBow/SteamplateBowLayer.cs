@@ -14,7 +14,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops.SteamplateBow
 		protected override void Draw(ref PlayerDrawSet drawInfo)
 		{
 			Player drawPlayer = drawInfo.drawPlayer;
-			if (!drawPlayer.GetModPlayer<SteamplateBowPlayer>().active)
+			if (!drawPlayer.GetModPlayer<SteamplateBowPlayer>().active || drawPlayer.dead)
 				return;
 
 			Texture2D texture = ModContent.Request<Texture2D>("SpiritMod/Items/BossLoot/StarplateDrops/SteamplateBow/SteamplateBow_Backpack").Value;
