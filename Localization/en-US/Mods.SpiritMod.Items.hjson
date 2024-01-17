@@ -1673,21 +1673,78 @@ YureiBanner: {
 Book_AccessoryGuide: {
 	DisplayName: The Beginner's Guide to Accessories
 	Tooltip: by (former) Knight-Crusader Aurelius
+	Content:
+		'''
+		[c/95a3ab:The following is a transcript of a speech made by questionable adventurer Aurelius Finch, former Knight-Crusader.]
+		---
+		Aurelius here. Things aren't going too hot for me. The people were 'disappointed by my superiority complex' and 'excessive, almost comical indulgence'. I was stripped of my titles and- after going bankrupt- all my assets were seized. I've fallen into a pretty bad crowd now, and I'm just getting this book out there because I'm being strongarmed into endorsing their products. Is this an emotional plea to get your sympathy? Of course not! I still care about making sure you all sucee... who am I kidding? Let's get this over with.
+		[c/80deed:The Beginner's Guide to Accessories]
+		[i:SpiritMod/AceOfClubs] [i:SpiritMod/AceOfDiamonds] [i:SpiritMod/AceOfSpades] [i:SpiritMod/AceOfHearts] [c/80deed: Ace Cards:] Like I said, I've been approached by some pretty shady folks, and I've had to get acquainted with some dubious accessories lately. Aces are useful tools if you can land critical hits on foes. You can find them if you run across [c/72a4c2:the Gambler] when travelling. She sells different variations based on the moon phase. And if you see her, please tell her I sent you? Please?
+		[i:SpiritMod/AssassinMagazine] [c/80deed: Assassin's Magazine:] How low have I fallen? I can't believe I'm talking about items used by the same mercenaries I used to fight against. But that [c/72a4c2:Bandit] has eyes everywhere. If you're a long-range fighter like he is, this magazine should help you switch your ammo types quickly. I feel so much shame right now.
+		[i:SpiritMod/ArcaneNecklace] [c/80deed: Arcane Necklace:] You know what? I'm not going to live like this anymore. I hate who I've become. It's time for me to take my own advice and start adventuring again for the people I swore to protect. No more shady equipment. Instead, if you're a mage and have some [c/72a4c2:Fallen Stars] and [c/72a4c2:chains] lying around, make this pendant to fortify your magic attacks.
+		[i:SpiritMod/LeatherShield] [i:SpiritMod/LeatherGlove] [i:SpiritMod/LeatherBoots][c/80deed: Leather Equipment:] I guess you and I are on the same page now. I no longer have my enchanted gear, so I'm using these pieces of equipment made from [c/72a4c2:Old Leather]. Yes, they're ugly. Yes, they smell. But they'll keep us safe and light out there.
+		It's time for me to return to my roots. To slay monsters and fight for good again. If you've read all my books, I really do hope they help you and me both. Maybe I'll see you out there.
+		---
+		[c/95a3ab:Editor's Note: The night after this transcription, Aurelius Finch vanished, leaving only a note behind. In it, he promised to become worthy once again by journeying the world and defeating monsters. His current whereabouts are unknown.]
+		'''
 }
 
 Book_Alchemist1: {
 	DisplayName: An Alchemist's Observations
 	Tooltip: by Lena Ashwood, Alchemist
+	Content:
+		'''
+		After experimenting with ingredients from all around this world, I've decided to detail some of the more interesting concoctions that I've produced.
+		[i:SpiritMod/BismitePotion] [c/72a4c2:Toxin Potion:] I believe I made this nasty brew from a combination of a poisonous [c/95a3ab:Noxophyll] and some of those strange metallic [c/95a3ab:Bismite Crystals]. The poisons cancelled each other out and I was left with this foul-tasting, but drinkable, substance that proves to be quite potent in battle.
+		[i:SpiritMod/MushroomPotion] [c/72a4c2:Sporecoid Potion:] After obtaining a rare sample of [c/95a3ab:Glowroot] from a band of field researchers, I mixed it in with [c/95a3ab:Glowing Mushrooms] to produce this. The field researchers told me that they were never going back to that 'freaky place', but that I could retrieve more Glowroot by cutting down giant mushroom trees. I must investigate soon.
+		[i:SpiritMod/PinkPotion] [c/72a4c2:Jump Potion:] It was one of those days where I decided to throw stuff in a pot at random to see what would happen. Who would've thought that [c/95a3ab:Pink Gel] and [c/95a3ab:Daybloom] would cause me to feel so giddy! After downing this sweet stuff, I was jumping for joy- and jumping much higher than I normally would, too.
+		[i:SpiritMod/DoubleJumpPotion] [c/72a4c2:Zephyr Potion:] I couldn't help but notice an interesting new herb sprouting up in patches everywhere. I thought there might be some connection to the islands above, so I combined it some [c/95a3ab:Clouds] and [c/95a3ab:Harpy Feathers], and rather recklessly drank the concoction. I felt as light as the air! Perhaps the aerial properties of this stalk are to be studied further...
+		'''
 }
 
 Book_Amea: {
 	DisplayName: Amea the Brigand
 	Tooltip: by Solaki
+	Content:
+		'''
+		At the edge of the kingdom's borders lay a small cottage, surrounded by acres of forest. It was a small dwelling, home to a poor, middle-aged woman and her young son, Amea. The family was destitute and quite alone, but Amea's mother had been saving up money for years so that Amea could finally go to school and become a merchant. Upon giving the money to Amea, he became distraught. He did not want to leave his mother alone in the forest, but he soon relented. His mother did not want to see him follow the same path as she did. And so, Amea set off on his way to the small school nearby.
+		As it turns out, Amea was a smart and hardworking student. He had simply never been given the opportunity before. He was kind, helpful, and determined to succeed so that he could return home to his mother with riches in hand. He soon became his teacher's favorite, much to the dismay of his classmates. They soon grew to hate him, filled with jealousy and ire. His classmates then hatched a devious plan to turn their teacher against Amea. They slowly poisoned the teacher's mind with stray whispers and rumors, painting Amea as a cruel savage. The teacher fell into their trap, and so too did he begin to hate Amea. On the last day of teaching, when students were to receive their recommendations from their teacher to join different guilds, Amea was blindsided by a gruesome request from his teacher.
+		'In order to receive my recommendation, you must first bring me the pointer fingers of one thousand people. Otherwise, you will never be able to join the merchant guild you seek,' said he. Amea was taken aback by this horrifying task. He was not aware that everyone he knew despised him. But Amea needed to provide for his family
+		And so he set off on this task.
+		---
+		Amea used some of his money to buy a rusty sword, and made a camp in the middle of the woods. At first, he was too scared to carry out this vile mission. Amea was a kind man who wished no ill will on anyone, including the teacher who had assigned him this task. But he thought of his mother at home and swallowed his fear. And so it began. Amea stopped one traveller after another and cut off their fingers. Upon collecting too many to carry, Amea tried to bury them in the ground. But they either decomposed or were eaten by crows and vultures. Amea then decided to string the fingers on a garland and wear them. His infamy grew over time, and he was soon known as 'The Bandit with the Finger Necklace.' Amea was changing.
+		---
+		The once bright and kind student was no more. Amea relished in violence, and grew exceedingly cruel to his victims. The amount of fingers on his garland grew. He soon stole from and maimed his victims on top of dismembering them, and became the most feared bandit in the kingdom. Many squads of soldiers were sent into the forests to end Amea's reign of terror, but returned battered, empty-handed, and fingerless.
+		After years of ravaging the kingdom, the fateful day soon arrived when Amea had nine hundred ninety-nine fingers on his garland. He planned on returning to his teacher laden with fingers and then killing him before returning to the life of a brigand. This was Amea's path now. An unsuspecting ox-cart made its way through the forest, and Amea lay waiting in the trees. When the time was right, he jumped down and slashed the throat of the cart driver, quickly taking his finger. But no one screamed. Confused by the lack of panic, Amea turned around to see a lone woman sitting in the cart, looking at him with sheer horror, revulsion, and- most of all- disappointment. It was his mother. Amea opened his mouth, but could not speak. His mother said no words to him, but tears started cascading down her old and weary face. She was gaunt and looked starved, not having enough money to eat properly. Amea said nothing, and retreated deep into the woods. He found a clear pond and gazed into it. He saw what he had become: a wild savage draped in human fingers. He could scarcely recognize himself anymore. A sudden wave of shame and horror crashed down upon Amea. Sick to the stomach, he renounced his banditry and led a reclusive life within a cave in the woods."
+		---
+		For years, people in the kingdom steered clear of Amea's woods. Nobody knew where the bandit had gone, but no one wanted to be his next victim. That was until a great wizard arrived at the kingdom. This sage was well known for spreading teachings of peace to those who wanted to listen. He had overheard rumors about Amea and was curious to meet the man. The citizens of the kingdom warned him not to journey into the woods, but the wizard chose to do so anyway. He walked into the woods without a staff or any weapon, carefree as could be.
+		Amea soon heard footsteps from outside his cave and quickly grew angry that someone dared to disturb his solitude. He drew his sword and emerged from the cave to see the wizard nonchalantly walking away from him.
+		'You there!' Amea bellowed. 'Stop moving and surrender yourself.'
+		The wizard kept walking.
+		Furious, Amea chased after the mystic at full speed. Try as he might, though, he could never catch up. The wizard, walking slowly and calmly, always stayed ahead of Amea. Amea howled and kept running for what felt like days. The wizard did not say a word. Finally, Amea gave up. He dropped to his hands and knees and begged for the wizard to forgive him. A sudden outpouring of remorse and pain emerged from Amea, who wanted nothing more than to leave his past behind. But how could a killer ever escape his sins?
+		The wizard, sensing these emotions, turned to Amea and uttered his first words.
+		'We are all born heedless, and some of us choose to return to that state. But what makes us human is our capacity to grow and change.'
+		The wizard stopped moving, and reached his hand out to Amea. Amea found that he could finally approach the wizard. For the first time in years, Amea put down his sword. He took the mystic's hand and walked out of the forest into the light of day.
+		'''
 }
 
 Book_ArmorGuide: {
 	DisplayName: The Beginner's Guide to Armor
 	Tooltip: by Knight-Crusader Aurelius
+	Content:
+		'''
+		[c/95a3ab:The following is a transcript of an informational speech made by renowned adventurer Aurelius Finch, Knight-Crusader.]
+		---	
+		Hey, folks! Are you ready to become a grand adventurer, just like myself? It seems like a good life up here, and it is! I'm rolling in sponsorship money, and my dating life has never been better!"
+		But things weren't always this way. I was just like you all, once- dirt poor and owning nothing but the clothes on my back. It took everything I had to survive. But if you purchase my handy series of guides, you'll be just like me in no-time-flat! I can't wait for you to rise through the ranks, rookie.
+		[c/80deed:The Beginner's Guide to Armor]
+		So you're just setting out, and it's time to make your mark on the world. But what to wear? Armor is the most important tool in an adventurer's arsenal. Luckily for you, I've come across many different options for beginners that are easy to forge and effective.
+		[i:SpiritMod/DaybloomHead] [i:SpiritMod/DaybloomBody] [i:SpiritMod/DaybloomLegs][c/80deed: Sunflower Armor:] Are you an aspiring mage? Well, I'm not- haven't got a magical bone in my body! But this thin and comfortable set of armor, made from [c/72a4c2:Sunflowers] and [c/72a4c2:Fallen Stars], can give a boost to your magic power.
+		[i:SpiritMod/LeatherHood] [i:SpiritMod/LeatherPlate] [i:SpiritMod/LeatherLegs][c/80deed: Marskman's Armor:] If you're willing to venture out at night and take on some zombies, harvest some questionably sourced [c/72a4c2:Old Leather] and try your hand at archery. This lightweight (but smelly) armor allows you to focus on your strikes.
+		Those are some cheap and effective armor sets that'll keep you fighting for a long time. Best of luck, adventurer!
+		---
+		Whew. Thank god that's over. These suckers won't last a day out there, but they'll believe anything I tell them. Easiest money I've made in my life. Hey, why are you still writing this dow-
+		'''
 }
 
 Book_Blossmoon: {
@@ -1702,6 +1759,24 @@ Book_Blossmoon: {
 Book_Briar: {
 	DisplayName: Notes on the Briar
 	Tooltip: by Field Researcher Laywatts
+	Content:
+		'''
+		Our three month expedition into the scarcely explored Briar came to an end two weeks ago. The team consisted of I, Dr. Nisha Laywatts, Dr. Rathi Everest, and a hired adventurer whose name is unknown. Dr. Everest and I completed the expedition unharmed, but the adventurer went missing four days before the excursion was complete. We tried searching for him to no avail. What is more pertinent to this book, however, is the data we have accrued.
+		---
+		[c/7c9e5a:Climate and Ecology]
+		The Briar presents one of the most unique climate systems in the world: the entire region undergoes perpetual rainfall. Temperatures are warm and humid, and plant life is overgrown. So overgrown, in fact, that a giant root system seems to run across and under the entire ecosystem. The reason for this continued rainfall is unknown, but I hypothesize that some megaflora (or perhaps even megafauna) at the center of this root system exerts a form of arcane power over the area that causes this torrential downpour.
+		---
+		[i:SpiritMod/BriarFlowerItem] [c/7c9e5a:Flora] [i:SpiritMod/BriarFlowerItem]
+		As mentioned earlier, a complex and extensive root system spans the entire Briar. Data shows that every individual plant is connected via this expanse. This connection lets all plants in the Briar to share nutrients with one another, allowing for plant growth to occur far below the surface. Interestingly, plants in the Briar all display some form of bioluminescence. The underlying cause behind this is unknown, but I suspect that plants emit this alluring light to attract prey for the carnivorous beasts of the Briar. In turn, they absorb some of the detritus and use it for nutrition.
+		---
+		[i:SpiritMod/RawMeat] [c/7c9e5a:Fauna] [i:SpiritMod/RawMeat]
+		The Briar is dominated by feral, low-intelligence bipeds and quadrapeds. Every faunal organism in the Briar is carnivorous yet composed of a large percentage of plant matter. A few bipeds seem to exhibit higher intelligence and wield magic, but their origin and habits could not be discerned. All organisms in the briar are hyper-aggressive and should be approached with extreme caution.
+		---
+		[c/7c9e5a:Anomalies]
+		The underground Briar displays signs of inhabitation by some now-extinct civilization. Ruined brick and wood houses can be observed along with primitive weapons, tools, and trinkets. Many mysteries remain about these ruins and the Briar at large. Where did it come from? Why is it so hostile? And where are the people that once lived here?
+		---
+		Note: It seems as though a page of notes and diagrams is missing from the book. I probably lost it back in the depths of the Briar. Not worth a return journey, though.
+		'''
 }
 
 Book_BriarArt: {
@@ -1717,21 +1792,40 @@ Book_BriarArt: {
 Book_FoodGuide: {
 	DisplayName: Meals On Wheels
 	Tooltip: by Explorer Trev Irwin
+	Content:
+		'''
+		Despite the lack of cravings in this place, that won't stop us gettin' absolutely chockers, ey? Oddly enough, full course meals are a regular thing to find in most dead buggers, fresh and hot too - tell that to ya closest mate and they'll think you're off ya chops! Sane or not, I've noted down some sources for ya, so get ya runners on and your magical sword of death and destruction in your favorite hand, ready for a good hunt.
+		"[i:SpiritMod/Hummus][c/80deed: Hummus:] Travelling the desert unprepared could lead some shifty bandits to jump ya! Fortunately, it wasn't me. Unfortunately, it was some other wandering bloke. Dealin' with them proper rewarded me with a bowl of 'hummus' from their wrappings remains - that's what the turban bloke calls it, anyway. Think he sells dye or sum'n. Goes well on any sanger!
+		"[i:SpiritMod/Meatballs][c/80deed: Meatballs:] This place is rather cute compared to my home, smell included. Although, can't say I expected an angry rotting meatball to gun me down. After kindly telling it to rack off with my knife, its interiors revealed a fresh plate of meatballs. The irony couldn't be higher. After debating it, I gave it a chomp and it seemed solid enough, so you don't have to worry about spending your day on the dunny after having some.
+		"[i:SpiritMod/Popsicle][c/80deed: Popsicle:] Going to the tundra during a storm is not a great vacation plan, especially when the locals are dissocial and probably want you dead. One entered the cave I snuggled in, and frankly never left. Bored, an idea popped into my head and a skinner in my hand. I gave one of its toothpicks some good whacks and it magically turned into a popsicle after hitting the floor with a poof, stick and all! Sadly it melted quick near my campfire, along with the buggers' remains and my mood.
+		'''
 }
 
 Book_Gunslinger: {
 	DisplayName: The Gunslinger
 	Tooltip: by Usov Lynx
+	Content: I saw him walk through town yesterday. For some days now townsfolk have been talking about the lone gunslinger who only goes where the earth takes him. Sounded like a bunch of garbage to me. Nobody really knew what he did, only ever been seen for a few moments at a time like some sort of cryptid. One of the old fellas at the saloon recalled having spoken to someone with a similar look years prior. He was apparently a gambling man, kept to himself most of the time. Another claimed he came over a hill to see this gunslinger take out a pack of antlions. Said his iron was so powerful it caused those buggers to explode like a stick of dynamite. Still, it all felt like a whole lot of ghost stories until that moment I saw him. His revolver was marked with some symbol from a playing card. Instead of a hat, he wore a tattered cloak with mysterious lettering on the back. He saw me and gave a slow nod, before continuing on his path.
 }
 
 Book_Jellyfish: {
 	DisplayName: Jellyfish in the Sky!
 	Tooltip: by Jonah the Knave
+	Content:
+		'''
+		I'm not going insane, I promise! I was climbing up my favorite hill a few nights back and I swear I saw 'em! A school of glowing [c/72a4c2:bright blue jellyfish] darting across the sky! They were flying through the air like it was water, and I thought my time was up. Instead of preparing for my inevitable alien abduction, I scrammed! By the time I ran back down, I couldn't see 'em anymore. And no one I've talked to believes me! Why not? Because I tried sellin' them painted rocks disguised as gems? Bunch of babies. Stuff's not right, I'm telling you!
+		While you're readin', can I interest you in some 100% genuine diamonds?
+		'''
 }
 
 Book_Lava: {
 	DisplayName: Is Lava Hot?
 	Tooltip: by Field Researcher Ocano
+	Content:
+		'''
+		Today's a very exciting day; it's the first time I've been authorized to do independent field research! I'm really excited to test out my unique hypothesis: Is lava hot? I mean, how do we know? No one I've ever talked to has touched or even seen lava. But I'm here in a deep cavern, and I'm going to make my mark on the scientific community today! I see some lava over there, so I'm going to touch it. WOW, that is hot! We're making real discoveries here! My left hand is all gone, and it really, really hurts! I'll try my right hand just to be sure and report back my findings. 
+		[c/ff0000:_--_--+--=&&^^ ^&&]
+		[c/ff0000:^&____/~~~\\_-]
+		'''
 }
 
 Book_LuminousArt: {
@@ -1755,16 +1849,30 @@ Book_Lumoth: {
 Book_MJW: {
 	DisplayName: Dag Dinger
 	Tooltip: by Explorer Trev Irwin
+	Content: Either those boomer shroomies I had for brekky hit too hard or I'm way too buggered, but [c/72a4c2:some jellyfish with a hat and robe] is flying around tossin' wildlife in a bubble while havin' a giggle. To think the stingers in the bloody water ain't enough, this one's got the hand of a wizard and the heart of a dolphin. Stirrer's been causin' all sorts of trouble overnight, and I ain't got the tools to deal with 'em yet. Wonder how space stingers taste over a barby.
 }
 
 Book_Mushroom: {
 	DisplayName: Fungal Pilferers
 	Tooltip: by Dr. Charlie Maitake
+	Content:
+		'''
+		As my team and I rested up after a close encounter with those zombified [c/72a4c2:fungal botanists] the day before, I finally managed to find the sickly specimens that had been following us. I awoke to the sound of recurrent coughing somewhere in my camp, and I soon traced it to a pair of [c/72a4c2:one-eyed quadrupeds] that were scrounging around our storage tent. The darned things had a clear affinity for mushrooms, evidenced by how they had consumed almost ALL the specimens we had gathered in the glowing mushroom fields. I was lucky to chase the creatures away with little resistance.
+		I informed Dr.Cho about it earlier this morning, and we've gathered the remains of what fungal specimens we had left in order lure the sickly creatures back to us. I'll report again once we've captured one of them. This could be an exciting discovery of an undocumented monster!
+		'''
 }
 
 Book_Slime: {
 	DisplayName: Where Do Slimes Come From?
 	Tooltip: by Sorcerer Galen Arcturus
+	Content:
+		'''
+		They come from goo.
+		That's about it. At least, that's where conventional research ends. But as an accomplished mage, I must delve deeper!
+		First, it is important to take stock of what we know. Slimes are, scientifically speaking, big blobs of goo. They are highly flammable, possess no internal organs, and yet seem quite intelligent.
+		Their composition matches no other material my fellow mages and I have ever seen. Where then, do they come from? Could a rival mage be summoning them? And to what devious end?! Are they a punishment from the gods themselves? Are we forever trapped in this bouncy, slimy purgatory?
+		And most importantly- are they edible? We must keep searching for answers.
+		'''
 }
 
 Book_Soulbloom: {
@@ -1790,11 +1898,34 @@ Book_SpiritArt: {
 Book_WeaponGuide: {
 	DisplayName: The Beginner's Guide to Weaponry
 	Tooltip: by Knight-Crusader Aurelius
+	Content:
+		'''
+		[c/95a3ab:The following is a transcript of an informational speech made by adventurer Aurelius Finch, Knight-Crusader.]
+		---
+		Hey, all! Knight-Crusader Aurelius here, again. Before we get started (and on a completely unrelated note), my last guide on Armor didn't sell as well as I want to, and I have no clue why! But I need YOUR money to support my lavish hero lifestyle. So buy this new weapon guide for your dad, your grandma, and maybe even your cat. Please? I promise it'll be useful!
+		[c/80deed:The Beginner's Guide to Weaponry]
+		Aside from a strong set of armor, you'll need a trusty weapon by your side to really stand out as an adventurer. Now, not all of us can have a weapon that's as flashy as my trusted fireblade. And some of you never will! But that's okay. Let's start small, with weapons that are reliable and easy to forge.
+		[i:SpiritMod/IcySpear] [i:SpiritMod/FrigidFragment] [c/80deed: Frigid Javelin:] Do you live close to a snowy tundra or boreal forest? Then this weapon is perfect for you! Simply harvest some [c/72a4c2:Frigid Fragments] and temper them at an anvil to make this ice-cold, razor sharp weapon. Unlike other inaccurate throwing weapons (who uses those, anyway?), you can aim for precise strikes with javelins!
+		[i:SpiritMod/BismiteSummonStaff] [i:SpiritMod/BismiteCrystal] [c/80deed: Bismite Crystal Staff:] Normally, I wouldn't recommend summoned creatures, since they love to bite me and rip up my things. But you won't have that problem with a semi-sentient poisonous rock, that's for sure. Made of [c/72a4c2:Bismite Shards], it's sure to help deal with enemies for you.
+		[i:SpiritMod/ButterflyStaff] [i:1994] [c/80deed: Ethereal Butterfly Staff:] Again, familiars and I don't get along, but this one has no teeth or claws! All it takes is a wild [c/72a4c2:butterfly], [c/72a4c2:wood], and some [c/72a4c2:fallen stars], and you'll have yourself a new agile companion. Next time you see a [c/72a4c2:butterfly], get to netting!
+		[i:SpiritMod/ClawCannon] [i:SpiritMod/IridescentScale] [c/80deed: Claw Cannon:] The ocean can be terrifying. But there's no better way to fight your fears than by harnessing them. With some [c/72a4c2:iridescent scales] from hostile deep-sea creatures, [c/72a4c2:sulfur deposits], you can create the ultimate bubble blower. I think. A bubble gun, hypothetically, might be cooler.
+		[i:SpiritMod/Florang] [i:SpiritMod/FloranBar] [c/80deed: Floran Cutter:] Now, if you want a sleek, cool, and potent weapon, look no further. The caveat is that you'll need to venture into the depths of the dark Briar to harvest [c/72a4c2:Floran Bars]. Are you capable of doing that? Probably not! But if you do manage to luck out, throw these sharp disks along the ground and watch them cut up your foes.
+		[i:SpiritMod/CactusStaff] [i:276] [c/80deed: Cactus Staff:] Would you ever think that [c/72a4c2:cacti] would have magical properties? I sure wouldn't! The only interaction I've had with cacti is falling straight into a pit of pricklethorns when I was a novice adventurer, like you. But I've been told that Cactus Staves are quite powerful and poisonous.
+		---
+		I'm barely breaking even anymore. These pieces of junk better tide me over so I can afford that solid gold statue I commissioned. Well, the people still love me. I'm sure they'll buy my book this time. Hey, why are you still here? The speech is over. Shoo!
+		'''
 }
 
 Book_Yeremy: {
 	DisplayName: I'm Really Mad
 	Tooltip: by Polius Crassus
+	Content:
+		'''
+		I'm furious. This was supposed to be my masterpiece! I really put my heart and soul into this manuscript, and it got shot down instantly. It was supposed to be a gritty drama about a hero who transforms into a villain. Here's my favorite part:
+		[c/b5a493:Yeremy, the Rainforest Dictator]
+		[c/b5a493:And so, after witnessing his sixth home village be destroyed by evil necromancers, Yeremy decided that enough was enough. He was really mad this time. He was going to exact vengeance on all living things... And he'd start by summoning his accursed demon avatar, a hydra straight from the underworld. The only thoughts that ran through his mind were 'kill, kill, kill...']
+		But NOOOOO. My editor says it was 'too asinine' and 'so hyperbolic that I stopped at page three.' Well, his loss! I'm sure I'll find someone that'll like this manuscript.
+		'''
 }
 
 BismitePage: {
@@ -3046,6 +3177,7 @@ MaggotflyItem: {
 MapScroll: {
 	DisplayName: Cartographer's Map
 	Tooltip: Reveals a nearby portion of the minimap
+	Effect: Map Revealed
 }
 
 MartianTransmitter: {
@@ -3590,6 +3722,7 @@ BlazeGlyph: {
 		'''
 	Addendum: Dealing damage sets you ablaze
 	Effect: Blazing
+	Death: "{0} was consumed by Rage..."
 }
 
 ChaosGlyph: {
@@ -7758,6 +7891,7 @@ StreamSurferHelmet: {
 		8% increased magic critical strike chance
 		You can breathe underwater
 		'''
+	BonusText: Water Spout Charged!
 }
 
 StreamSurferLeggings: {

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable
 {
@@ -25,7 +26,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			if (Main.myPlayer == player.whoAmI && Main.netMode != NetmodeID.Server)
 			{
-				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 10, player.width, player.height), new Color(255, 255, 255, 100), "Map Revealed");
+				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 10, player.width, player.height), new Color(255, 255, 255, 100), Language.GetTextValue("Mods.SpiritMod.Items.MapScroll.Effect"));
 
 				Point center = (Main.LocalPlayer.Center / 16).ToPoint();
 

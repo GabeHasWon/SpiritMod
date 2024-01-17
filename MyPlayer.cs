@@ -51,6 +51,8 @@ using SpiritMod.Items.Accessory.Leather;
 using SpiritMod.Tiles.Ambient;
 using SpiritMod.GlobalClasses.Items;
 using SpiritMod.Items.Accessory.RabbitFoot;
+using Terraria.Localization;
+using Humanizer;
 
 namespace SpiritMod
 {
@@ -1105,7 +1107,7 @@ namespace SpiritMod
 		private void CustomDeath(ref PlayerDeathReason reason)
 		{
 			if (Player.FindBuffIndex(ModContent.BuffType<BurningRage>()) >= 0)
-				reason = PlayerDeathReason.ByCustomReason(Player.name + " was consumed by Rage.");
+				reason = PlayerDeathReason.ByCustomReason(Language.GetTextValue("Mods.SpiritMod.Items.BlazeGlyph.Death").FormatWith(Player.name));
 		}
 
 		int shroomtimer;
@@ -1902,7 +1904,7 @@ namespace SpiritMod
 			if (surferSet && surferTimer == 0)
 			{
 				var textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-				CombatText.NewText(textPos, new Color(121, 195, 237, 100), "Water Spout Charged!");
+				CombatText.NewText(textPos, new Color(121, 195, 237, 100), Language.GetTextValue("Mods.SpiritMod.Items.StreamSurferHelmet.BonusText"));
 			}
 		}
 

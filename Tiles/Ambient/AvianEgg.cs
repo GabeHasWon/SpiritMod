@@ -70,7 +70,7 @@ namespace SpiritMod.Tiles.Ambient
 
 			if (Main.netMode == NetmodeID.SinglePlayer)
 			{
-				Main.NewText("The Ancient Avian has awoken!", 175, 75, 255);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.NPCs.AncientFlyer.Spawn"), 175, 75, 255);
 
 				NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16 + Main.rand.Next(-60, 60), j * 16 - 120, ModContent.NPCType<AncientFlyer>(), 0, 2, 1, 0, 0, Main.myPlayer);
 			}

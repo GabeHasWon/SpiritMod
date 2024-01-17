@@ -177,3 +177,38 @@ RuneWizard: {
 	Name7: Oarno
 	Name8: Cosimo
 }
+
+Vanilla: {
+	Wizard: {
+		RuneWizard: You heard about {N}? His wares are interesting, I haven't seen that sort of magic myself.
+		Gambler1: With only a little transmutation spell, {N}'s boxes can ERUPT in doves. Try it sometime!
+		Gambler2: "{N} never notices that my deck is magic, it's not even real. She's too focused!"
+	}
+
+	Pirate: {
+		Adventurer: Aye, that {N} guy sure knows his swashbucklin'. He may be a landlubber but he's not o' bad one if I say so meself.
+		Rogue: Hmph. Ol' {N} ov'r there reminds me of days past. An' not good 'uns, mind ye.
+		Gambler: Y'know, {N} has it in her to be a good pirate on day. Aye...she's got an eye fer gold.
+	}
+
+	GoblinTinkerer: {
+		RuneWizard: Me and {N} share experience daily - his magic is fascinating! A wonder to speak to.
+		Gambler: "{N} reminds me of my people. Lazy sellers peddling you MORE spiky balls for ABSURD prices..."
+	}
+
+	ArmsDealer: {
+		Rogue1: "{N}? That little pest. Tried to take my Minishark without coughing up the cash."
+		Rogue2: I've never seen a man as annoying as that {N}. Thankfully, I have ways to keep him gone.
+		Adventurer: I know {N}. That guy's not too bad. Especially once he stopped selling guns, heh.
+	}
+
+	Demolitionist: {
+		RuneWizard: Bahaha! That {N} guy is a hoot. He enchants my goods free of charge!
+		Rogue: "{N}'s a bit of a wily fellow, but any fella who's good on buyin' a round gets my respect!"
+	}
+
+	Golfer.Gambler: Who's {N} and why does she want to sell me "[RARE] GOLF LOOTBOXES"?
+	DD2Bartender.Adventurer: That {N} knows how to tell a good story. Doesn't even buy that much drink, but I enjoy it nonetheless.
+	Nurse.Gambler: Ahem..."Buy yourself a couple boxes and you won't need healing!" Did {N} really tell me to read you an ad?
+	BestiaryGirl.Adventurer: Like, {N} really knows a lot about animals. He's totes cool!
+}

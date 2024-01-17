@@ -14,6 +14,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI.Chat;
 using Terraria.GameContent.Bestiary;
+using Humanizer;
 
 namespace SpiritMod.NPCs.Town.Oracle
 {
@@ -349,29 +350,10 @@ namespace SpiritMod.NPCs.Town.Oracle
 
 		public override string GetChat()
 		{
-			var options = new List<string>
-			{
-				$"The heavens have certainly spoken of you, {Main.LocalPlayer.name}.",
-				"The divinity I offer isn't for any simple coin, traveler.",
-				"Have you caught wind of a man named Zagreus? ...nevermind.",
-				"Oh, how far I'd go for some ichor...",
-				"I have a little scroll for sale, if you wish to find me elsewhere.",
-				"Not having eyes is a blessing from the gods when you work where I work.",
-				"Warm greetings, warrior. I sense power within you, perhaps I can aid in its growth. The creatures within these walls hold mighty tokens, in which I am interested. If you were to trade them with me, I would grant you a weapon enchanted by the gods themselves!",
-				"Ah, what I would give for some aged wine... Has Anthesteria arrived already?",
-				"My epic tale has no end, and may never have one!",
-				"Mythology? What part of this makes you believe it is a myth?",
-				"I have lost track of time, and the gods refuse to tell me where it is!",
-				"Lorem ipsum dolor sit amet... be patient, I'm not finished.",
-				"I am unable to die unless I am forgotten. I wonder who still remembers me...",
-				"What do you need? I don't have unending time. Hm...on second thought...",
-				"I had all life to write a glorious tale, but I cannot get past 'the'.",
-				"Between you and me, reptiles cause me great distress.",
-				"I ponder about the presence of ambient song in the distance, yet cannot stop myself from indulging in it.",
-				"Boons? You want them? They're yours, my friend!",
-				"Ah, I see. Or do I? Intriguing, is it not?",
-				"The reason I float is simple - why should I not, if I can?"
-			};
+			List<string> options = new();
+			for (int i = 1; i < 21; i++)
+				options.Add(Language.GetTextValue("Mods.SpiritMod.NPCs.Oracle.Dialogue.Basic" + i).FormatWith(Main.LocalPlayer.name));
+			
 			return Main.rand.Next(options);
 		}
 
@@ -507,7 +489,7 @@ namespace SpiritMod.NPCs.Town.Oracle
 		public static bool HoveringBuffButton = false;
 		public static void DrawBuffButton(int superColor, int numLines)
 		{
-			const string text = "Bless";
+			string text = Language.GetTextValue("Mods.SpiritMod.NPCs.Oracle.Bless.Button");
 
 			DynamicSpriteFont font = FontAssets.MouseText.Value;
 			Vector2 scale = new Vector2(0.9f);
@@ -545,14 +527,10 @@ namespace SpiritMod.NPCs.Town.Oracle
 
 		public static void Bless()
 		{
-			var options = new List<string>
-			{
-				"You wish for a challenge? I may stop you not, as it benefits us both. I do hope you're prepared!",
-				"I shall consult the gods about their boons - these monsters will become relentless, I hope you are aware.",
-				"You want me to call them what?! Such foul battle language, yet I will deliver the message. The Gods won't be happy about this!",
-				"The boons cause slain foes to drop more tokens, yes, but do remember that the foes become stronger, too!",
-				"Do come back alive! I would enjoy hearing tales of your victories. Bring many tokens as well!"
-			};
+			List<string> options = new();
+			for (int i = 1; i < 6; i++)
+				options.Add(Language.GetTextValue("Mods.SpiritMod.NPCs.Oracle.Bless.Dialogue" + i));
+
 			for (int i = 0; i < 30; i++)
 			{
 				int num = Dust.NewDust(new Vector2(Main.LocalPlayer.Center.X + Main.rand.Next(-100, 100), Main.LocalPlayer.Center.Y + Main.rand.Next(-100, 100)), Main.LocalPlayer.width, Main.LocalPlayer.height, ModContent.DustType<Dusts.BlessingDust>(), 0f, -2f, 0, default, 2f);
