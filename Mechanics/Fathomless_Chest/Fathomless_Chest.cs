@@ -205,6 +205,8 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 	[Sacrifice(0)]
 	internal class Fathomless_Chest_Item : ModItem
 	{
+		public override void SetStaticDefaults() => ItemID.Sets.DisableAutomaticPlaceableDrop[Type] = true;
+
 		public override void SetDefaults()
 		{
 			Item.width = 12;

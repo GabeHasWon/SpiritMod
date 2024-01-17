@@ -20,7 +20,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 			Item.width = 64;
 			Item.height = 64;
 			Item.useTime = 30;
-			Item.mana = 4;
+			Item.mana = 24;
 			Item.useAnimation = 30;
 			Item.useStyle = ItemUseStyleID.HiddenAnimation;
 			Item.knockBack = 0;
