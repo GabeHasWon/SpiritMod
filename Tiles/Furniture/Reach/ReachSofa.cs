@@ -1,5 +1,8 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.GameContent;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -19,20 +22,41 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.addTile(Type);
+			TileID.Sets.CanBeSatOnForNPCs[Type] = true;
+			TileID.Sets.CanBeSatOnForPlayers[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.HasOutlines[Type] = true;
+
 			LocalizedText name = CreateMapEntryName();
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			// name.SetDefault("Elderbark Sofa");
 			AddMapEntry(new Color(179, 146, 107), name);
-			TileID.Sets.DisableSmartCursor[Type] = true;
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
+		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
+			=> settings.player.IsWithinSnappngRangeToTile(i, j, PlayerSittingHelper.ChairSittingMaxDistance);
+
+		public override bool RightClick(int i, int j)
 		{
-			num = fail ? 1 : 3;
+			Player player = Main.LocalPlayer;
+
+			if (player.IsWithinSnappngRangeToTile(i, j, PlayerSittingHelper.ChairSittingMaxDistance))
+			{
+				player.GamepadEnableGrappleCooldown();
+				player.sitting.SitDown(player, i, j);
+			}
+			return true;
 		}
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
+
+		public override void MouseOver(int i, int j)
 		{
-			offsetY = 2;
+			Player player = Main.LocalPlayer;
+			player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Furniture.Reach.ReachSofa>();
+			player.noThrow = 2;
+			player.cursorItemIconEnabled = true;
 		}
+
+		public override void ModifySittingTargetInfo(int i, int j, ref TileRestingInfo info) => info.VisualOffset.Y += 2;
+
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 }

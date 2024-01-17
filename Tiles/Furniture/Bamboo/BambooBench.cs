@@ -3,6 +3,7 @@ using SpiritMod.Items.Placeable.Furniture.Bamboo;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -24,12 +25,18 @@ namespace SpiritMod.Tiles.Furniture.Bamboo
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
+			TileID.Sets.CanBeSatOnForNPCs[Type] = true;
 			TileID.Sets.CanBeSatOnForPlayers[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.HasOutlines[Type] = true;
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Stripped Bamboo Bench");
 			AddMapEntry(new Color(100, 100, 60), name);
 			DustType = DustID.PalmWood;
 		}
+
+		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
+			=> settings.player.IsWithinSnappngRangeToTile(i, j, PlayerSittingHelper.ChairSittingMaxDistance);
 
 		public override bool RightClick(int i, int j)
 		{

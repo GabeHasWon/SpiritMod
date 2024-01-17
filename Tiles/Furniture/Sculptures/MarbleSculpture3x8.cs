@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.ID;
 using Terraria.DataStructures;
-using SpiritMod.Items.Placeable.Furniture.Sculptures;
+using Terraria.Enums;
 
 namespace SpiritMod.Tiles.Furniture.Sculptures
 {
@@ -19,11 +19,18 @@ namespace SpiritMod.Tiles.Furniture.Sculptures
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x4);
 			TileObjectData.newTile.Width = 3;
 			TileObjectData.newTile.Height = 8;
+			TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
+			TileObjectData.newTile.StyleWrapLimit = 2;
+			TileObjectData.newTile.StyleMultiplier = 2;
+			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16, 16, 16, 18 };
 			TileObjectData.newTile.Origin = new Point16(1, 7);
+			TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
+			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
+			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Marble Sculpture");
 			AddMapEntry(new Color(140, 140, 140), name);
 			DustType = DustID.Marble;
 		}

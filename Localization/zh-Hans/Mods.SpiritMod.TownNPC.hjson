@@ -33,8 +33,8 @@ Adventurer: {
 		LoveNPC: "{NPCName}是一个令人着迷的人。他的故事一点价值也没有！"
 		DislikeNPC: "{NPCName}真会让人扫兴。也许徒步旅行能让他振作起来？"
 		HateNPC: 虽然{NPCName}是一位精神上的收藏家，但他只是把自己的工作推卸给别人。令世界各地的探险家失望。
-		// LikeNPC_Princess: "{NPCName} has an air of her. An air of adventure."
-		// Princess_LovesNPC: "{NPCName} has so many cool stories!"
+		LikeNPC_Princess: "{NPCName}有她的气质。一种冒险的气质。"
+		Princess_LovesNPC: "{NPCName}有如此多的故事！"
 	}
 
 	Name1: Morgan
@@ -79,8 +79,8 @@ Gambler: {
 		LoveNPC: 有一次，我把一个木箱卖给{NPCName}，赚了一笔快钱。他打开一看，里面大概有300只鸭子。我从来没有这么困惑和惊讶过。
 		DislikeNPC: 不喜欢{NPCName}，我从来不会囤积财富。
 		HateNPC: 尽管你可以随意评价我，但{NPCName}也是合法的吗？
-		// LikeNPC_Princess: Y'know, {NPCName} has some spunk. She's fierce, and you could be too!
-		// Princess_LovesNPC: "{NPCName}'s style is awesome. You can tell she's confident."
+		LikeNPC_Princess: "你知道的，{NPCName}有一些勇气。她很勇猛，你也可以的！"
+		Princess_LovesNPC: "{NPCName}的风格很棒。你可以看出她很自信。"
 	}
 
 	Name1: Yumeko
@@ -121,8 +121,8 @@ Rogue: {
 		LoveNPC: 我不是工程师，但{NPCName}制作的东西真是太酷了。我这次可能会付钱！
 		DislikeNPC: 哦，{NPCName}？这么说吧，他从不反对测试他的炸药。
 		HateNPC: 让我告诉你……{NPCName}那个家伙？简直就像踩着钢丝一样容易激动，真的。我发誓，我只拿走了几枚硬币而已！
-		// LikeNPC_Princess: "{NPCName} said she'd keep my secret close to her heart...of which I have none. Shoo."
-		// Princess_LovesNPC: Sometimes {NPCName} gets me cool things. He says it's all free too!
+		LikeNPC_Princess: "{NPCName}说会保守我的秘密，把它紧紧藏在心底……但其实我没有秘密可言。嘘。"
+		Princess_LovesNPC: "{NPCName}有时会给我一些很酷的东西。他说这些东西都是免费的！"
 	}
 
 	Name1: Zane
@@ -164,8 +164,8 @@ RuneWizard: {
 		LoveNPC: "{NPCName}和我经常谈论我们的工作 - 他不懂魔法也能施放魔法，真是太神奇了。"
 		DislikeNPC: 我不不喜欢任何人！
 		HateNPC: "{NPCName}不懂符文的力量……只关注这个“冰雪魔杖”和那个“水晶球”……"
-		// LikeNPC_Princess: There's always a magic in {NPCName}'s eyes when I do a trick. It's the little things, haha.
-		// Princess_LovesNPC: "{NPCName} gave me a glitter rune! Yay!"
+		LikeNPC_Princess: "我在耍魔术时，{NPCName}的眼睛里总是闪烁着魔法的光芒。都是些小把戏，哈哈。"
+		Princess_LovesNPC: "{NPCName}给了我一个闪光符文！耶！"
 	}
 
 	Name1: Malachai
