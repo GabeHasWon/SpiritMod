@@ -72,7 +72,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 			}
 			Projectile.rotation += (1.5f - Projectile.scale) * .1f;
 
-			if (!owner.channel || (++Projectile.localAI[0] % 10 == 0 && !owner.CheckMana(owner.HeldItem.mana, true)))
+			if (!owner.channel || (++Projectile.localAI[0] % 10 == 0 && !owner.CheckMana(owner.HeldItem.mana / 6, true)))
 				Released = true;
 
 			Vector2 dirUnit = Main.rand.NextVector2Unit() * 100 * Projectile.scale;

@@ -1,14 +1,6 @@
-﻿- Heavily reduced the amount of dust the Soul Star produces (from 60 dust/frame to 10 dust/frame)
-- Fixed banner glowmasks being offset on non-hammered banners
-- Removed outdated Census calls
-- Fixed quest book objective page arrows not being clickable
-- Fixed the Meteorite biome hiding clouds
-- Fixed all town NPCs having a bad key for their Princess happiness dialogue
-- Fixed Ice Wheezer passive frozen statues not breaking before Skeletron
-- Fixed branching tasks not syncing properly, causing desync
-- Significantly reduced how often Hydrothermal Vents spawn critters
-- Fixed Stripped Bamboo Barrel placing incorrectly in multiplayer
-- Fixed Stripped Bamboo Barrel not selecting a random style in multiplayer
-- Stripped Bamboo Barrel now uses a default container name
-- Fixed Stripped Bamboo Pot dropping several of itself
-- A ton of various localization fixes
+﻿- Fixed Living Elderbark Wand taking 100 research
+- Increased initial Frostbite mana cost to 24. 
+This is so spam clicking for higher DPS is an option but isn't anywhere near sustainable;
+the continuous mana usage of an existing Frostbite aura is unchanged.
+- Fixed Fathomless Vases dropping a copy infinitely
+- Picked open the softlock during the "Nesting eggs" generation step

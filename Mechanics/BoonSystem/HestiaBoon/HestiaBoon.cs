@@ -166,7 +166,6 @@ namespace SpiritMod.Mechanics.BoonSystem.HestiaBoon
 				npc.damage = (int)(baseDamage * 1.2f);
 				npc.defense = baseDefense + 15;
 
-
 				Vector2 pos = npc.Center;
 				for (int i = 0; i < 4; i++)
 				{
