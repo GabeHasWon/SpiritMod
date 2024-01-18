@@ -46,7 +46,7 @@ public static class SpiritDetours
 		On_Player.Update_NPCCollision += CollideableNPCDetours.SolidTopCollision;
 		On_Projectile.VanillaAI += CollideableNPCDetours.Grappling;
 		On_Main.DrawInterface += DrawParticles;
-		Terraria.Localization.On_LanguageManager.GetTextValue_string += LanguageManager_GetTextValue_string1;
+		On_LanguageManager.GetTextValue_string += LanguageManager_GetTextValue_string1;
 		On_Main.DrawNPCChatButtons += Main_DrawNPCChatButtons;
 		On_WorldGen.SpreadGrass += On_WorldGen_SpreadGrass;
 		On_Main.DrawBackgroundBlackFill += Main_DrawBackgroundBlackFill; //BackgroundItemManager.Draw()
@@ -123,7 +123,7 @@ public static class SpiritDetours
 		Main.OnPreDraw -= Main_OnPreDraw;
 
 		SurfaceWaterModifications.Unload();
-		NPCAIHook.Undo();
+		NPCAIHook?.Undo();
 	}
 
 	private static readonly MethodInfo NPCAIMethod = typeof(NPCLoader).GetMethod(nameof(NPCLoader.NPCAI));
