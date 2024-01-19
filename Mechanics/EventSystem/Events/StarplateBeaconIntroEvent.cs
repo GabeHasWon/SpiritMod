@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.NPCs.Boss.SteamRaider;
+using Terraria.Localization;
 
 namespace SpiritMod.Mechanics.EventSystem.Events
 {
@@ -121,7 +122,7 @@ namespace SpiritMod.Mechanics.EventSystem.Events
 				Player player = Main.LocalPlayer;
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Main.NewText("The Starplate Voyager has awoken!", 175, 75, 255);
+					Main.NewText(Language.GetTextValue("Mods.SpiritMod.NPCs.SteamRaiderHead.Spawn"), 175, 75, 255);
 					int npcID = NPC.NewNPC(player.GetSource_ReleaseEntity(), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<SteamRaiderHead>());
 					Main.npc[npcID].Center = player.Center - new Vector2(600, 600);
 					Main.npc[npcID].netUpdate2 = true;

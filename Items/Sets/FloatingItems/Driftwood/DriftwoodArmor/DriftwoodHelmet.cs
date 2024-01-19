@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.FloatingItems.Driftwood.DriftwoodArmor
 {
@@ -22,7 +23,7 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood.DriftwoodArmor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Allows the wearer to float on water\nIncreased fishing power";
+			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Driftwood");
 			player.fishingSkill += 5;
 
 			if (player.wet)

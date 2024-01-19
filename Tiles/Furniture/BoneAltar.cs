@@ -80,11 +80,11 @@ namespace SpiritMod.Tiles.Furniture
 				if (Main.netMode != NetmodeID.SinglePlayer)
 				{
 					NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcID);
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You have disturbed the ancient Nature Spirits!"), new Color(0, 170, 60));
+					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.NPCs.ForestWraith.BoneAltar")), new Color(0, 170, 60));
 				}
 				else
 				{
-					Main.NewText("You have disturbed the ancient Nature Spirits!", 0, 170, 60);
+					Main.NewText(Language.GetTextValue("Mods.SpiritMod.NPCs.ForestWraith.BoneAltar"), 0, 170, 60);
 				}
 			}
 		}

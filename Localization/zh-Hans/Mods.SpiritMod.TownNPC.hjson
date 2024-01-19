@@ -79,8 +79,8 @@ Gambler: {
 		LoveNPC: 有一次，我把一个木箱卖给{NPCName}，赚了一笔快钱。他打开一看，里面大概有300只鸭子。我从来没有这么困惑和惊讶过。
 		DislikeNPC: 不喜欢{NPCName}，我从来不会囤积财富。
 		HateNPC: 尽管你可以随意评价我，但{NPCName}也是合法的吗？
-		LikeNPC_Princess: 你知道的，{NPCName}有一些勇气。她很勇猛，你也可以的！
-		Princess_LovesNPC: "{NPCName}的风格很棒。你可以看出她很自信。"
+		LikeNPC_Princess: 你知道的，{NPCName}胆识过人。她很勇猛，你也可以的！
+		Princess_LovesNPC: "{NPCName}太酷了。你可以看出她很自信。"
 	}
 
 	Name1: Yumeko
@@ -122,7 +122,7 @@ Rogue: {
 		DislikeNPC: 哦，{NPCName}？这么说吧，他从不反对测试他的炸药。
 		HateNPC: 让我告诉你……{NPCName}那个家伙？简直就像踩着钢丝一样容易激动，真的。我发誓，我只拿走了几枚硬币而已！
 		LikeNPC_Princess: "{NPCName}说会保守我的秘密，把它紧紧藏在心底……但其实我没有秘密可言。嘘。"
-		Princess_LovesNPC: "{NPCName}有时会给我一些很酷的东西。他说这些东西都是免费的！"
+		Princess_LovesNPC: 有时候{NPCName}会给我一些很酷的东西。他说这些都是免费的！
 	}
 
 	Name1: Zane
@@ -176,4 +176,39 @@ RuneWizard: {
 	Name6: Salqueeh
 	Name7: Oarno
 	Name8: Cosimo
+}
+
+Vanilla: {
+	Wizard: {
+		RuneWizard: 你知道{N}吗？他卖的东西很有趣，我从未亲眼见过那样神奇的魔术。
+		Gambler1: 只需要一点变形魔法，{N}的箱子就可以变成鸽子。找个时间试试吧！
+		Gambler2: "{N}从来没有注意到我的牌是用魔法变得，它甚至不是真实存在的。她太专注了！"
+	}
+
+	Pirate: {
+		Adventurer: 唉，{N}那家伙又在吹嘘自己了。他可能是个菜鸟水手，但说实话，他表现的还真不错。
+		Rogue: 哦，{N}那家伙让我想起了自己的过去-啊，那些不好的回忆。
+		Gambler: 你知道吗，{N}总有一天会成为一名出色的海盗。是啊……她有一双黄金之眼。
+	}
+
+	GoblinTinkerer: {
+		RuneWizard: 我和{N}每天都交流经验-他的魔法令人着迷！和他聊天真愉快。
+		Gambler: "{N}让我想起了我的同胞。懒惰的卖家以荒谬的价格向你兜售更多的带刺的球……"
+	}
+
+	ArmsDealer: {
+		Rogue1: "{N}？那个小讨厌鬼。试图不付钱就拿走我的迷你鲨。"
+		Rogue2: 我从未见过像{N}那样讨厌的人。谢天谢地，我有办法让他离开。
+		Adventurer: 我了解{N}。那家伙并不太坏。特别是当他停止卖枪之后，呵呵。
+	}
+
+	Demolitionist: {
+		RuneWizard: 哈哈哈！{N}那家伙真不错。他免费给我的货物附魔！
+		Rogue: "{N}是个狡猾的家伙，但任何在买酒方面做得好的家伙都值得我的尊敬！"
+	}
+
+	Golfer.Gambler: "{N}是谁，为什么她想卖给我“[稀有]高尔夫战利品箱”？"
+	DD2Bartender.Adventurer: "{N}那家伙知道如何讲好故事。还没有喝几杯，我就沉迷其中了。"
+	Nurse.Gambler: 听着，“药水屯个够，百病生个球！”，{N}真的让我给你读这样的广告吗？
+	BestiaryGirl.Adventurer: 嗯哼，{N}真的知道很多关于动物的知识。他太酷了！
 }

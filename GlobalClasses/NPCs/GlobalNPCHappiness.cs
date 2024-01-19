@@ -6,6 +6,7 @@ using Terraria.GameContent;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.GlobalClasses.NPCs
 {
@@ -40,40 +41,40 @@ namespace SpiritMod.GlobalClasses.NPCs
 
 			if (npc.type == NPCID.Wizard)
 			{
-				AddDialogueAboutNPC<RuneWizard>(dialogue, "You heard about {N}? His wares are interesting, I haven't seen that sort of magic myself.", 0.3f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Gambler>(dialogue, "With only a little transmutation spell, {N}'s boxes can ERUPT in doves. Try it sometime!", 0.1f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Gambler>(dialogue, "{N} never notices that my deck is magic, it's not even real. She's too focused!", 0.1f, npc, ref replaceChance);
+				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Wizard.RuneWizard"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Wizard.Gambler1"), 0.1f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Wizard.Gambler2"), 0.1f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.Pirate)
 			{
-				AddDialogueAboutNPC<Adventurer>(dialogue, "Aye, that {N} guy sure knows his swashbucklin'. He may be a landlubber but he's not o' bad one if I say so meself.", 0.2f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Rogue>(dialogue, "Hmph. Ol' {N} ov'r there reminds me of days past. An' not good 'uns, mind ye.", 0.3f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Gambler>(dialogue, "Y'know, {N} has it in her to be a good pirate on day. Aye...she's got an eye fer gold.", 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Pirate.Adventurer"), 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Pirate.Rogue"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Pirate.Gambler"), 0.3f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.GoblinTinkerer)
 			{
-				AddDialogueAboutNPC<RuneWizard>(dialogue, "Me and {N} share experience daily - his magic is fascinating! A wonder to speak to.", 0.4f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Gambler>(dialogue, "{N} reminds me of my people. Lazy sellers peddling you MORE spiky balls for ABSURD prices...", 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.GoblinTinkerer.RuneWizard"), 0.4f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.GoblinTinkerer.Gambler"), 0.2f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.ArmsDealer)
 			{
-				AddDialogueAboutNPC<Rogue>(dialogue, "{N}? That little pest. Tried to take my Minishark without coughing up the cash.", 0.3f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Rogue>(dialogue, "I've never seen a man as annoying as that {N}. Thankfully, I have ways to keep him gone.", 0.3f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Adventurer>(dialogue, "I know {N}. That guy's not too bad. Especially once he stopped selling guns, heh.", 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.ArmsDealer.Rogue1"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.ArmsDealer.Rogue2"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.ArmsDealer.Adventurer"), 0.2f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.Demolitionist)
 			{
-				AddDialogueAboutNPC<RuneWizard>(dialogue, "Bahaha! That {N} guy is a hoot. He enchants my goods free of charge!", 0.4f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Rogue>(dialogue, "{N}'s a bit of a wily fellow, but any fella who's good on buyin' a round gets my respect!", 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Demolitionist.RuneWizard"), 0.4f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Demolitionist.Rogue"), 0.2f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.Golfer)
-				AddDialogueAboutNPC<Gambler>(dialogue, "Who's {N} and why does she want to sell me \"[RARE] GOLF LOOTBOXES\"?", 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Golfer.Gambler"), 0.3f, npc, ref replaceChance);
 			else if (npc.type == NPCID.DD2Bartender)
-				AddDialogueAboutNPC<Adventurer>(dialogue, "That {N} knows how to tell a good story. Doesn't even buy that much drink, but I enjoy it nonetheless.", 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.DD2Bartender.Adventurer"), 0.2f, npc, ref replaceChance);
 			else if (npc.type == NPCID.Nurse)
-				AddDialogueAboutNPC<Gambler>(dialogue, "Ahem...\"Buy yourself a couple boxes and you won't need healing!\" Did {N} really tell me to read you an ad?", 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Nurse.Gambler"), 0.2f, npc, ref replaceChance);
 			else if (npc.type == NPCID.BestiaryGirl && !Main.bloodMoon && Main.GetMoonPhase() != Terraria.Enums.MoonPhase.Full)
-				AddDialogueAboutNPC<Adventurer>(dialogue, "Like, {N} really knows a lot about animals. He's totes cool!", 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.BestiaryGirl.Adventurer"), 0.2f, npc, ref replaceChance);
 
 			if (Main.rand.NextFloat() < replaceChance)
 				chat = Main.rand.Next(dialogue);
