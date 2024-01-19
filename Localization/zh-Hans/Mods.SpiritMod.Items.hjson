@@ -2016,7 +2016,7 @@ Book_FoodGuide: {
 Book_Gunslinger: {
 	DisplayName: 神枪手
 	Tooltip: 作者：乌索夫·林克斯
-	Content: 
+	Content:
 		'''
 		昨天我看到他穿过小镇。 这些天来，镇上的
 		人们一直在谈论那个四处游荡的孤独枪手。
@@ -5694,6 +5694,11 @@ VictoryDayBox: {
 VinewrathBox: {
 	DisplayName: 音乐盒（怒藤毒灵）
 	Tooltip: ""
+}
+
+SkeletronPrimeBox: {
+	// DisplayName: Music Box (Skeletron Prime)
+	// Tooltip: ""
 }
 
 AtlasRelicItem: {

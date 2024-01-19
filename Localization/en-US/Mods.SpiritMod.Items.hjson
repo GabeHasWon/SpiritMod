@@ -5366,6 +5366,11 @@ VinewrathBox: {
 	Tooltip: ""
 }
 
+SkeletronPrimeBox: {
+	DisplayName: Music Box (Skeletron Prime)
+	Tooltip: ""
+}
+
 AtlasRelicItem: {
 	DisplayName: Atlas Relic
 	Tooltip: ""
