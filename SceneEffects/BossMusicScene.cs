@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using SpiritMod.Utilities;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,6 +9,6 @@ namespace SpiritMod.SceneEffects
 	{
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SkeletronPrime");
 		public override SceneEffectPriority Priority => SceneEffectPriority.BossLow;
-		public override bool IsSceneEffectActive(Player player) => NPC.AnyNPCs(NPCID.SkeletronPrime);
+		public override bool IsSceneEffectActive(Player player) => ModContent.GetInstance<SpiritMusicConfig>().SkeletronPrimeMusic && NPC.AnyNPCs(NPCID.SkeletronPrime);
 	}
 }
