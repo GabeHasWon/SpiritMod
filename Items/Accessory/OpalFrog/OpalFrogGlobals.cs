@@ -11,14 +11,7 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 		private static OpalFrogPlayer GetOpalFrogPlayer(Projectile projectile) => GetPlayer(projectile).GetModPlayer<OpalFrogPlayer>();
 
 		//Increase pull speed based on hook stats
-		public override void GrapplePullSpeed(Projectile projectile, Player player, ref float speed)
-		{
-			speed *= GetOpalFrogPlayer(projectile).HookStat;
-
-			//Bat hook in 1.3 in particular is way too strong of a synergy, so temporary hardcoded nerf until 1.4
-			if (projectile.type == ProjectileID.BatHook && GetOpalFrogPlayer(projectile).AutoUnhook)
-				speed *= 0.8f;
-		}
+		public override void GrapplePullSpeed(Projectile projectile, Player player, ref float speed) => speed *= GetOpalFrogPlayer(projectile).HookStat;
 
 		public override void GrappleRetreatSpeed(Projectile projectile, Player player, ref float speed) => speed *= GetOpalFrogPlayer(projectile).HookStat;
 

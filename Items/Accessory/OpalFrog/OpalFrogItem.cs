@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Accessory.OpalFrog
 {
+	[Sacrifice(1)]
 	public class OpalFrogItem : ModItem
 	{
 		public override void SetDefaults()
@@ -12,7 +13,6 @@ namespace SpiritMod.Items.Accessory.OpalFrog
 			Item.Size = new Vector2(40, 34);
 			Item.value = Item.sellPrice(gold: 8);
 			Item.useStyle = ItemUseStyleID.Swing;
-			Item.value = 550;
 			Item.rare = ItemRarityID.LightRed;
 			Item.createTile = ModContent.TileType<OpalFrog_Tile>();
 			Item.maxStack = 1;

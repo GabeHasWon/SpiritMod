@@ -654,6 +654,7 @@ namespace SpiritMod
 				LoadMusicBox("FrostLegionBox", "Sounds/Music/FrostLegion");
 				LoadMusicBox("AshfallBox", "Sounds/Music/AshStorm");
 				LoadMusicBox("VictoryDayBox", "Sounds/Music/VictoryDay");
+				LoadMusicBox("SkeletronPrimeBox", "Sounds/Music/SkeletronPrime");
 
 				AutoSellUI.visible = false;
 				Mechanics.AutoSell.Sell_NoValue.Sell_NoValue.visible = false;
