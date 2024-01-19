@@ -31,13 +31,6 @@ namespace SpiritMod.Items.Accessory.Leather
 					dust.noGravity = true;
 				}
 			}
-
-			float speedBonus = (10f - (int)(player.statLife / (float)(player.statLifeMax2 / 10f))) * .05f;
-			float accelBonus = (10f - (int)(player.statLife / (float)(player.statLifeMax2 / 10f))) * .15f;
-
-			player.maxRunSpeed *= speedBonus + 1.05f;
-			player.accRunSpeed *= speedBonus + 1.05f;
-			player.runAcceleration *= accelBonus + 1.25f;
 		}
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
@@ -50,6 +43,26 @@ namespace SpiritMod.Items.Accessory.Leather
 			recipe.AddIngredient(ModContent.ItemType<TechDrive>(), 5);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
+		}
+
+		private class TechBootsPlayer : ModPlayer
+		{
+			public bool hasBoots = false;
+
+			public override void ResetEffects() => hasBoots = false;
+
+			public override void PostUpdateRunSpeeds()
+			{
+				if (hasBoots)
+				{
+					float speedBonus = (10f - (int)(Player.statLife / (float)(Player.statLifeMax2 / 10f))) * .05f;
+					float accelBonus = (10f - (int)(Player.statLife / (float)(Player.statLifeMax2 / 10f))) * .15f;
+
+					Player.maxRunSpeed *= speedBonus + 1.1f;
+					Player.accRunSpeed *= speedBonus + 1.05f;
+					Player.runAcceleration *= accelBonus + 1.25f;
+				}
+			}
 		}
 	}
 }

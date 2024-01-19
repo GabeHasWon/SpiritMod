@@ -12,13 +12,13 @@ namespace SpiritMod.Items.Sets.BismiteSet
 
 		public override void SetDefaults()
 		{
-			Item.damage = 10;
+			Item.damage = 13;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 6;
 			Item.width = 34;
 			Item.height = 34;
-			Item.useTime = 24;
-			Item.useAnimation = 24;
+			Item.useTime = 22;
+			Item.useAnimation = 22;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.knockBack = 0;
@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Sets.BismiteSet
 			Item.UseSound = SoundID.Item20;
 			Item.autoReuse = false;
 			Item.shoot = ModContent.ProjectileType<BismiteShard>();
-			Item.shootSpeed = 8f;
+			Item.shootSpeed = 10f;
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

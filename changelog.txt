@@ -4,3 +4,6 @@ This is so spam clicking for higher DPS is an option but isn't anywhere near sus
 the continuous mana usage of an existing Frostbite aura is unchanged.
 - Fixed Fathomless Vases dropping a copy infinitely
 - Picked open the softlock during the "Nesting eggs" generation step
+- Buffed Bismite Staff (-2 use time, +3 damage, +2 shot velocity)
+- Fixed Leather Striders and Heartbeat Cleats not actually applying movement buffs
+- Slightly buffed both of the above (+5% max speed)
