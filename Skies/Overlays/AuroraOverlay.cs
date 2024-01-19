@@ -27,6 +27,8 @@ namespace SpiritMod.Skies.Overlays
 		public const int SPIRIT = 10;
 		public const int COUNT = 11;
 
+		public const int PREFERRED_TICK_TIME = 15;
+
 		public AuroraOverlay(EffectPriority priority = EffectPriority.High, RenderLayers layer = RenderLayers.Sky) : base(priority, layer) { }
 
 		public override void Activate(Vector2 position, params object[] args) => Mode = OverlayMode.FadeIn;

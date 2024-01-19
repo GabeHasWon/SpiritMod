@@ -38,7 +38,7 @@ public abstract class AuroraMonolith : ModTile
 	public sealed override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (Main.tile[i, j].TileFrameY >= AnimationFrameHeight)
-			Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[AuroraType] = 6;
+			Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[AuroraType] = AuroraOverlay.PREFERRED_TICK_TIME;
 	}
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
@@ -125,7 +125,7 @@ public abstract class AuroraMonolithItem : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		AuroraMonolith tile = ModContent.GetModTile(Item.createTile) as AuroraMonolith;
-		Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[tile.AuroraType] = 6;
+		Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[tile.AuroraType] = AuroraOverlay.PREFERRED_TICK_TIME;
 	}
 
 	public override void UpdateVanity(Player player) => UpdateAccessory(player, false);
