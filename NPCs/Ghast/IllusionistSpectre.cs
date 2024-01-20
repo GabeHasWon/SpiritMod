@@ -50,6 +50,7 @@ namespace SpiritMod.NPCs.Ghast
 
 		public override void AI()
 		{
+			NPC.TargetClosest();
 			NPC.spriteDirection = NPC.direction;
 			Player player = Main.player[NPC.target];
 

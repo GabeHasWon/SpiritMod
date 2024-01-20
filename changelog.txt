@@ -1,10 +1,3 @@
-﻿- Fixed Living Elderbark Wand taking 100 research
-- Increased initial Frostbite mana cost to 24. 
-This is so spam clicking for higher DPS is an option but isn't anywhere near sustainable;
-the continuous mana usage of an existing Frostbite aura is unchanged.
-- Fixed Fathomless Vases dropping a copy infinitely
-- Picked open the softlock during the "Nesting eggs" generation step
-- Buffed Bismite Staff (-2 use time, +3 damage, +2 shot velocity)
-- Fixed Leather Striders and Heartbeat Cleats not actually applying movement buffs
-- Slightly buffed both of the above (+5% max speed)
-- Increased tick time for Aurora Monolith forced aurora internal timers (should fix flashing issue)
+﻿- Fixed bad IO for downed boss tracking
+- Fixed Ghast & Ghast's Spectre not checking target properly
+- Fixed exceedingly low chance for Pirate Chest to not place but place on a chest, thus breaking progression

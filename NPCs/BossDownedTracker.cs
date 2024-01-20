@@ -76,20 +76,29 @@ public class BossDownedTrackingIO : ModSystem
 		int count = tag.GetInt("downedCount");
 
 		for (int i = 0; i < count; ++i)
-			BossDownedTracker.Downed.Add(tag.GetString("downed" + i), true);
+		{
+			string bossName = tag.GetString("downed" + i);
+
+			if (!BossDownedTracker.Downed.ContainsKey(bossName)) // Stop duplicates
+				BossDownedTracker.Downed.Add(tag.GetString("downed" + i), true);
+		}
 	}
 
 	public override void SaveWorldData(TagCompound tag)
 	{
 		int count = BossDownedTracker.Downed.Where(x => x.Value).Count();
 		tag.Add("downedCount", count);
+		HashSet<string> bosses = new();
 
 		int index = 0;
 
 		foreach (var pair in BossDownedTracker.Downed)
 		{
-			if (pair.Value)
+			if (pair.Value && !bosses.Contains(pair.Key))
+			{
 				tag.Add("downed" + index++, pair.Key);
+				bosses.Add(pair.Key);
+			}
 		}
 	}
 

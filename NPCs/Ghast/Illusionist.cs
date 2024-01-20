@@ -57,12 +57,15 @@ namespace SpiritMod.NPCs.Ghast
 		public override void AI()
 		{
 			NPC.spriteDirection = NPC.direction;
+			NPC.TargetClosest();
 			Player target = Main.player[NPC.target];
 			float distance = NPC.DistanceSQ(target.Center);
-			if (distance < 200 * 200)
+
+			if (distance < 250 * 250)
 			{
 				if (!aggroed)
 					SoundEngine.PlaySound(SoundID.Zombie53, NPC.Center);
+
 				aggroed = true;
 			}
 
@@ -83,6 +86,7 @@ namespace SpiritMod.NPCs.Ghast
 					NPC.localAI[1] = 1f;
 					NPC.netUpdate = true;
 				}
+
 				NPC.velocity.Y = MathHelper.Clamp(NPC.velocity.Y + 0.009f * NPC.localAI[1], -.25f, .25f);
 			}
 			else
