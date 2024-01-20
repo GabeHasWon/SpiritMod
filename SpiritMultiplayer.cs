@@ -180,14 +180,15 @@ namespace SpiritMod
 					if (Main.netMode == NetmodeID.Server)
 					{
 						player = reader.ReadByte();
-						int npcIndex = reader.ReadInt32();
+						int netNPCType = reader.ReadInt32();
 						int npcCenterX = reader.ReadInt32();
 						int npcCenterY = reader.ReadInt32();
 
-						if (NPC.AnyNPCs(npcIndex))
+						if (NPC.AnyNPCs(netNPCType))
 							return;
 
-						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, npcIndex);
+						int npcID = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), npcCenterX, npcCenterY, netNPCType);
+						Main.npc[npcID].netUpdate = true;
 						Main.npc[npcID].netUpdate2 = true;
 
 						ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", Main.npc[npcID].GetTypeNetName()), new Color(175, 75, 255));

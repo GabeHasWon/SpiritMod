@@ -15,6 +15,7 @@ using SpiritMod.Items.Sets.FloatingItems;
 using Terraria.Localization;
 using Terraria.WorldBuilding;
 using Terraria.IO;
+using ReLogic.Content;
 
 namespace SpiritMod.World
 {
@@ -298,7 +299,7 @@ namespace SpiritMod.World
 						WorldGen.KillTile(i, j - 1, false, false, true);
 
 			int ChestIndex = WorldGen.PlaceChest(x, y, (ushort)type, false, style);
-			if (ChestIndex != -1)
+			if (ChestIndex != -1 && Main.tile[x, y].TileType == type)
 			{
 				int main = r.Next(mainItems.Length);
 				Main.chest[ChestIndex].item[0].SetDefaults(mainItems[main].Item1);
