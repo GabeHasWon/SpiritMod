@@ -34,5 +34,11 @@ namespace SpiritMod.Tiles.MusicBox
 			player.cursorItemIconEnabled = true;
 			player.cursorItemIconID = ModContent.ItemType<Items.Placeable.MusicBox.HyperspaceDayBox>();
 		}
+
+		public override bool CanDrop(int i, int j) => false;
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+			=> Item.NewItem(null, new Rectangle(i * 16, j * 16, 32, 32), new Item(ModContent.ItemType<Items.Placeable.MusicBox.HyperspaceDayBox>()), false, true);
+		//Spawn in the drop manually to prevent a random prefix
 	}
 }
