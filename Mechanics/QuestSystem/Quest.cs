@@ -31,18 +31,21 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 		public QuestTask CurrentTask => _currentTask;
 
-		public virtual string QuestLangKey => GetType().Name;
+		/// <summary>
+		/// Used for localization (i.e. <see cref="FullLangKey"/>) and saving/loading, as <see cref="QuestName"/> is a localized value.
+		/// </summary>
+		public virtual string QuestKey => GetType().Name;
 
 		/// <summary>
-		/// Full path: <code>"Mods.SpiritMod.Quests.QuestInfo." + QuestLangKey</code>
+		/// Full path: <code>"Mods.SpiritMod.Quests.QuestInfo." + <see cref="QuestKey"/>;</code>
 		/// </summary>
-		public string FullLangKey => "Mods.SpiritMod.Quests.QuestInfo." + QuestLangKey;
+		public string FullLangKey => "Mods.SpiritMod.Quests.QuestInfo." + QuestKey;
 
 		/// <summary>
 		/// Quest-only path, mainly for use in <see cref="QuestManager.Localization(string)"/> or <see cref="QuestManager.LocalizationValue(string)"/>.<br/>
-		/// Path: <code>"QuestInfo." + QuestLangKey</code>
+		/// Path: <code>"QuestInfo." + <see cref="QuestKey"/>;</code>
 		/// </summary>
-		public string ShortLangKey => "QuestInfo." + QuestLangKey;
+		public string ShortLangKey => "QuestInfo." + QuestKey;
 
 		public string QuestName => Language.GetTextValue(FullLangKey + ".Name");
 		public string QuestDescription => Language.GetTextValue(FullLangKey + ".Description");

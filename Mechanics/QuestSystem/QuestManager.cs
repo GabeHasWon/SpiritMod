@@ -174,7 +174,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 		public static QuestCategory GetCategoryInfo(string category)
 		{
-			if (Categories.TryGetValue(category, out var data)) return data;
+			if (Categories.TryGetValue(category, out var data)) 
+				return data;
 			// if it doesn't exist, register
 			RegisterCategory(category, Color.White, null, null);
 			return Categories[category];
@@ -182,7 +183,8 @@ namespace SpiritMod.Mechanics.QuestSystem
 
 		public static void Update()
 		{
-			if (Main.gameMenu) return;
+			if (Main.gameMenu) 
+				return;
 
 			// test if we need to sync
 			bool syncMP = false;

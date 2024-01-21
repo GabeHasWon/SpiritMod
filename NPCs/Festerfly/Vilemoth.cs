@@ -18,7 +18,6 @@ namespace SpiritMod.NPCs.Festerfly
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Festerfly");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCHelper.ImmuneTo(this, BuffID.Confused);
 		}
@@ -73,6 +72,8 @@ namespace SpiritMod.NPCs.Festerfly
 				int d = Dust.NewDust(NPC.position, NPC.width, NPC.height + 10, DustID.ScourgeOfTheCorruptor, 0, 1f, 0, new Color(), 0.7f);
 				Main.dust[d].velocity *= .1f;
 			}
+
+			NPC.TargetClosest(true);
 			Player player = Main.player[NPC.target];
 			NPC.rotation = NPC.velocity.X * 0.1f;
 			if (NPC.Center.X >= player.Center.X && moveSpeed >= -60) // flies to players x position

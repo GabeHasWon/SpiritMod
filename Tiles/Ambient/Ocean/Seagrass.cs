@@ -42,7 +42,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			Color col = Lighting.GetColor(i, j);
 			Rectangle source = new Rectangle(t.TileFrameX, t.TileFrameY, 16, 16);
 
-			Vector2 TileOffset = Lighting.LegacyEngine.Mode > 1 ? Vector2.Zero : Vector2.One * 12; //Draw offset
+			Vector2 TileOffset = Lighting.LegacyEngine.Mode > 1 && Main.GameZoomTarget == 1 ? Vector2.Zero : Vector2.One * 12; //Draw offset
 			Vector2 drawPos = ((new Vector2(i + 0.4f, j + 1.15f) + TileOffset) * 16) - Main.screenPosition;
 
 			float rotation = (float)Math.Sin(Main.GlobalTimeWrappedHourly * 1.2f) * Main.windSpeedCurrent * .6f;

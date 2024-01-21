@@ -27,7 +27,7 @@ namespace SpiritMod.Projectiles.Summon.MimeSummon
 		public override void AI()
 		{
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 4; i++) {
 				float x = Projectile.Center.X - Projectile.velocity.X / 10f * (float)i;
 				float y = Projectile.Center.Y - Projectile.velocity.Y / 10f * (float)i;
 				int num = Dust.NewDust(new Vector2(x, y), 26, 26, DustID.DungeonSpirit, 0f, 0f, 0, default, 1f);
@@ -54,9 +54,8 @@ namespace SpiritMod.Projectiles.Summon.MimeSummon
 
 			if (flag25) {
 				float num1 = 10f;
-				Vector2 vector2 = new Vector2(Projectile.position.X + (float)Projectile.width * 0.5f, Projectile.position.Y + (float)Projectile.height * 0.5f);
-				float num2 = Main.npc[jim].Center.X - vector2.X;
-				float num3 = Main.npc[jim].Center.Y - vector2.Y;
+				float num2 = Main.npc[jim].Center.X - Projectile.Center.X;
+				float num3 = Main.npc[jim].Center.Y - Projectile.Center.Y;
 				float num4 = (float)Math.Sqrt((double)num2 * (double)num2 + (double)num3 * (double)num3);
 				float num5 = num1 / num4;
 				float num6 = num2 * num5;
@@ -69,7 +68,7 @@ namespace SpiritMod.Projectiles.Summon.MimeSummon
 
 		public override void OnKill(int timeLeft)
 		{
-			for (int i = 0; i < 40; i++) {
+			for (int i = 0; i < 20; i++) {
 				int dust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 				Main.dust[dust].noGravity = true;
 			}

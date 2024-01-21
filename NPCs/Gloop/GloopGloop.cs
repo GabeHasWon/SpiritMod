@@ -44,8 +44,10 @@ namespace SpiritMod.NPCs.Gloop
 
 		public override void AI()
 		{
+			NPC.TargetClosest(false);
 			Player player = Main.player[NPC.target];
 			NPC.ai[0]++;
+
 			if(player.position.X > NPC.position.X) {
 				xoffset = 16;
 			} else {

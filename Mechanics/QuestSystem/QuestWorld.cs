@@ -72,26 +72,24 @@ namespace SpiritMod.Mechanics.QuestSystem
 					Quest quest = QuestManager.Quests[i];
 					quest.ResetEverything();
 
-					// get the key for this quest
-					string key = "SpiritMod:" + quest.QuestName;
+					// Get the key for this quest
+					string key = "SpiritMod:" + quest.QuestKey;
+					TagCompound result = null;
+
 					if (!tag.ContainsKey(key))
 					{
-						bool failed = true;
-						foreach (string s in quest._altNames)
-						{
-							key = "SpiritMod:" + s;
-							if (tag.ContainsKey(key))
-							{
-								failed = false;
-								break;
-							}
-						}
-
-						if (failed) // this quest doesn't exist at all, so skip.
+						// Legacy load by-name
+						// This is deprecated as it's a localized value, but will stop
+						// Most people from complaining about lost progress
+						if (tag.ContainsKey("SpiritMod:" + quest.QuestName))
+							result = tag.Get<TagCompound>("SpiritMod:" + quest.QuestName);
+						else // Skip quest as it doesn't exist
 							continue;
 					}
+					else
+						result = tag.Get<TagCompound>(key);
 
-					StoredQuestData data = ConvertBack(tag.Get<TagCompound>(key));
+					StoredQuestData data = ConvertBack(result);
 
 					quest.IsUnlocked = data.IsUnlocked;
 					quest.IsCompleted = data.IsCompleted;
@@ -129,21 +127,22 @@ namespace SpiritMod.Mechanics.QuestSystem
 		{
 			tag.Add("downedWeaponsMaster", downedWeaponsMaster);
 
-			List<string> allQuestNames = new List<string>();
+			List<string> allQuestNames = [];
 
 			tag.Add("SpiritMod:QuestBookUnlocked", QuestManager.QuestBookUnlocked);
 
-			// save any quests necessary
+			// Save any quests necessary
 			for (int i = 0; i < QuestManager.Quests.Count; i++)
 			{
 				Quest quest = QuestManager.Quests[i];
 				var data = ToStoredQuest(quest);
 
-				allQuestNames.Add("SpiritMod:" + quest.QuestName);
+				allQuestNames.Add("SpiritMod:" + quest.QuestKey);
 				tag.Add(allQuestNames[i], Convert(data));
 			}
 
-			// add unloaded quests so their data is saved
+			// Add unloaded quests so their data is saved
+			// As of Spirit 1.5, this is unlikely to ever be used
 			foreach (var pair in QuestManager.UnloadedQuests)
 			{
 				allQuestNames.Add(pair.Key);

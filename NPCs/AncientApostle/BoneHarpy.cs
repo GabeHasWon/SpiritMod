@@ -52,6 +52,7 @@ namespace SpiritMod.NPCs.AncientApostle
 				NPC.ai[0] = 150;
 
 			Counter++;
+			NPC.TargetClosest(false);
 			Player player = Main.player[NPC.target];
 			NPC.rotation = NPC.velocity.X * 0.1f;
 			NPC.spriteDirection = NPC.direction;

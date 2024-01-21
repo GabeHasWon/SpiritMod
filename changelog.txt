@@ -1,3 +1,6 @@
-﻿- Fixed bad IO for downed boss tracking
-- Fixed Ghast & Ghast's Spectre not checking target properly
-- Fixed exceedingly low chance for Pirate Chest to not place but place on a chest, thus breaking progression
+﻿- Fixed Retro + zoom issue in Ocean
+- Fixed issue where quest saving/loading used a localized value, making it incompatible if you switch languages.
+	Loading for legacy localized saves still works, so if you go into an existing world, you'll still have your quests.
+	Saving & exiting the world will then update the save so you can switch languages freely.
+- Fixed Hemophora, Festerfly, Gloop, Glitterfly and Ancient Apostle broken AI
+- Reduced the amount of dust that the Two-Faced Masks's projectiles emit

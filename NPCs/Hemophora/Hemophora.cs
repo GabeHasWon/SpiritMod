@@ -43,6 +43,7 @@ namespace SpiritMod.NPCs.Hemophora
         {
             NPC.velocity.Y += .25f;
 
+			NPC.TargetClosest(true);
             Player target = Main.player[NPC.target];
             int distance = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
 

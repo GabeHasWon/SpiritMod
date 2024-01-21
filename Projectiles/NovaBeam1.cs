@@ -26,7 +26,7 @@ namespace SpiritMod.Projectiles
 
 		public override void AI()
 		{
-			for (int num447 = 0; num447 < 2; num447++) {
+			for (int num447 = 0; num447 < 1; num447++) {
 				Vector2 vector33 = Projectile.position;
 				vector33 -= Projectile.velocity * ((float)num447 * 0.25f);
 				Projectile.alpha = 255;

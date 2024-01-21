@@ -69,7 +69,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 		{
 			bool expertMode = Main.expertMode;
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0.0f, 0.04f, 0.8f);
-
+			NPC.TargetClosest(true);
 			Player player = Main.player[NPC.target];
 
             if (NPC.Center.X >= player.Center.X && moveSpeed >= Main.rand.Next(-60, -40)) // flies to players x position
@@ -102,28 +102,14 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0f, 0f, ModContent.ProjectileType<GlitterDust>(), 0, 0, Main.myPlayer, 0, 0);
                 NPC.ai[1] = 0;
 			}
-			//Vector2 center = NPC.Center;
-			//float num8 = (float)player.miscCounter / 40f;
-			//float num7 = 1.0471975512f * 2;
-			/*for (int k = 0; k < 3; k++) {
-				{
-					int num6 = Dust.NewDust(center, 0, 0, DustID.GoldCoin, 0f, 0f, 100, default, 1.3f);
-					Main.dust[num6].noGravity = true;
-					Main.dust[num6].velocity = Vector2.Zero;
-					Main.dust[num6].noLight = true;
-					Main.dust[num6].position = center + (num8 * 6.28318548f + num7 * (float)k).ToRotationVector2() * 12f;
-				}
-			}*/
+
 			int distance = (int)Math.Sqrt((NPC.Center.X - player.Center.X) * (NPC.Center.X - player.Center.X) + (NPC.Center.Y - player.Center.Y) * (NPC.Center.Y - player.Center.Y));
 			if (distance < 540) {
 				++NPC.ai[0];
 				if (NPC.ai[0] == 140 || NPC.ai[0] == 280 || NPC.ai[0] == 320) {
                     SoundEngine.PlaySound(SoundID.Item43, NPC.Center);
                     if (Main.netMode != NetmodeID.MultiplayerClient) {
-						Vector2 dir = Main.player[NPC.target].Center - NPC.Center;
-						dir.Normalize();
-						dir.X *= 9f;
-						dir.Y *= 9f;
+						Vector2 dir = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center) * 9;
 						float A = (float)Main.rand.Next(-200, 200) * 0.01f;
 						float B = (float)Main.rand.Next(-200, 200) * 0.01f;
 						int damage = expertMode ? 19 : 27;
