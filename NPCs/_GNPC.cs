@@ -529,13 +529,6 @@ namespace SpiritMod.NPCs
 		public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
 		{
 			bool surface = player.position.Y <= Main.worldSurface * 16 + NPC.sHeight;
-			int activePlayers = 0;
-
-			for (int i = 0; i < Main.maxPlayers; i++)
-			{
-				if (Main.player[i].active)
-					activePlayers++;
-			}
 
 			if (player.ZoneSpirit())
 			{
@@ -672,7 +665,7 @@ namespace SpiritMod.NPCs
 
 		public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
 		{
-			bool summon = (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry);
+			bool summon = projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry;
 
 			if (summon)
 				modifiers.FinalDamage.Flat += summonTag;
@@ -680,7 +673,7 @@ namespace SpiritMod.NPCs
 
 		public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
 		{
-			bool summon = (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry);
+			bool summon = projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry;
 
 			if (sacrificialDaggerBuff && projectile.type != ModContent.ProjectileType<SacrificialDaggerProj>() && projectile.type != ModContent.ProjectileType<SacrificialDaggerProjectile>())
 			{

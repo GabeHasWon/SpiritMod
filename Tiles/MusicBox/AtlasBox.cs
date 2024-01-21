@@ -4,7 +4,6 @@ using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.MusicBox
 {
@@ -32,7 +31,13 @@ namespace SpiritMod.Tiles.MusicBox
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
-			player.cursorItemIconID = ItemType<Items.Placeable.MusicBox.AtlasBox>();
+			player.cursorItemIconID = ModContent.ItemType<Items.Placeable.MusicBox.AtlasBox>();
 		}
+
+		public override bool CanDrop(int i, int j) => false;
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+			=> Item.NewItem(null, new Rectangle(i * 16, j * 16, 32, 32), new Item(ModContent.ItemType<Items.Placeable.MusicBox.AtlasBox>()), false, true);
+		//Spawn in the drop manually to prevent a random prefix
 	}
 }

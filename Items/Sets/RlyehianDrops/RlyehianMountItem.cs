@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Sets.RlyehianDrops
 	[Sacrifice(1)]
 	public class RlyehianMountItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Eldritch Cloak");
-			// Tooltip.SetDefault("Summons an eldritch cloak to carry you around\nHolding jump allows you to float higher, damaging enemies who pass below");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 34;

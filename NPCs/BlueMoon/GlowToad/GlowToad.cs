@@ -19,12 +19,19 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 	{
 		//TODO:
 		//smoother head rotation
-		private bool Jumping { get => NPC.ai[0] != 0; set => NPC.ai[0] = value ? 1 : 0; }
+		private bool tongueOut = false;
+		private bool mouthOpen = false;
+		private float headRotation;
+		private int tongueCooldown = 300;
+		private int tongueProj = -1;
+		private int direction;
+		private int jumpCounter = 0;
+
+		public bool Jumping { get => NPC.ai[0] != 0; set => NPC.ai[0] = value ? 1 : 0; }
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Glow Toad");
-			Main.npcFrameCount[NPC.type] = 2;
+			Main.npcFrameCount[Type] = 2;
 			NPCHelper.ImmuneTo<StarFlame>(this, BuffID.Confused);
 		}
 
@@ -42,7 +49,7 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.GlowToadBanner>();
-			SpawnModBiomes = new int[1] { ModContent.GetInstance<MysticMoonBiome>().Type };
+			SpawnModBiomes = new int[] { ModContent.GetInstance<MysticMoonBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
@@ -71,12 +78,6 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(tongueOut);
 		public override void ReceiveExtraAI(BinaryReader reader) => tongueOut = reader.ReadBoolean();
 
-		bool tongueOut = false;
-		bool mouthOpen = false;
-		float headRotation;
-		int tongueCooldown = 300;
-		int tongueProj = -1;
-
 		public Vector2 TongueOffset => NPC.Center + new Vector2(NPC.direction * 6, -6) + new Vector2(16 * NPC.direction, 10).RotatedBy(headRotation);
 
 		private void TongueStuff(Player player, Vector2 dir)
@@ -100,25 +101,19 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 			}
 		}
 
-		int direction;
-		int jumpCounter = 0;
-
 		public override void AI()
 		{
 			NPC.TargetClosest(true);
-			Player player = Main.player[NPC.target];
-			Vector2 dir = Vector2.Normalize(player.Center - NPC.Center);
+			Player target = Main.player[NPC.target];
+			Vector2 dir = Vector2.Normalize(target.Center - NPC.Center);
 
-			if (!NPC.collideY)
-				NPC.velocity.X *= 1.045f;
-
-			if (!tongueOut && tongueCooldown >= 60 && (NPC.velocity.Y == 0 || NPC.collideY))
+			if (!mouthOpen && (!Jumping || jumpCounter > 0))
 			{
 				//movement
 				if (++jumpCounter >= 45)
 				{
 					NPC.velocity.Y = -7;
-					NPC.velocity.X = NPC.direction * 10;
+					NPC.velocity.X = NPC.direction * MathHelper.Clamp(NPC.Distance(target.Center) / 32, 3, 9);
 					jumpCounter = 0;
 					Jumping = true;
 				}
@@ -132,13 +127,21 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 				if (NPC.direction == -1)
 					headRotation += 3.14f;
 			}
-			else
-				NPC.direction = direction;
+			else NPC.direction = direction;
 
-			if (Jumping && NPC.velocity.Y == 0)
-				Jumping = false;
+			if (Jumping)
+			{
+				if (NPC.velocity.X == 0)
+					NPC.velocity.X = NPC.direction;
+				else
+					NPC.velocity.X *= .98f;
 
-			TongueStuff(player, dir);
+				if (NPC.velocity.Y == 0)
+					Jumping = false;
+			}
+			else NPC.velocity.X *= .8f;
+
+			TongueStuff(target, dir);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -187,8 +190,6 @@ namespace SpiritMod.NPCs.BlueMoon.GlowToad
 		private int speed = -30;
 
 		private Vector2 Origin => (Main.npc[(int)Projectile.ai[0]].ModNPC as GlowToad).TongueOffset;
-
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Glow Tongue");
 
 		public override void SetDefaults()
 		{

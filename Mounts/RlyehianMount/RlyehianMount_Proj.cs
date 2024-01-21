@@ -16,11 +16,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 			set => Projectile.ai[0] = value;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Tentacle");
-			Main.projFrames[Projectile.type] = 8;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 8;
 
 		public override void SetDefaults()
 		{
@@ -38,15 +34,17 @@ namespace SpiritMod.Mounts.RlyehianMount
 
 		public override void AI()
 		{
-			if (Main.player[Projectile.owner].whoAmI == Main.myPlayer)
-				Projectile.Center = Main.player[Projectile.owner].Center;
-			int frameDur = 4;
-			if (++Projectile.frameCounter >= frameDur)
+			Projectile.Center = Main.player[Projectile.owner].Center;
+			Projectile.rotation = Projectile.velocity.ToRotation();
+
+			if (++Projectile.frameCounter >= 5)
 			{
 				Projectile.frameCounter = 0;
-				Projectile.frame = ++Projectile.frame % Main.projFrames[Projectile.type];
+				Projectile.frame = ++Projectile.frame % Main.projFrames[Type];
 			}
 		}
+
+		public override bool ShouldUpdatePosition() => false;
 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
