@@ -16,14 +16,14 @@ namespace SpiritMod.Mounts.SnowMongerMount
 	{
 		public override void Load()
 		{
-			Terraria.On_Player.KeyDoubleTap += Player_KeyDoubleTap;
-			Terraria.DataStructures.On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
+			On_Player.KeyDoubleTap += Player_KeyDoubleTap;
+			On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
 		}
 
 		public override void Unload()
 		{
-			Terraria.On_Player.KeyDoubleTap -= Player_KeyDoubleTap;
-			Terraria.DataStructures.On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
+			On_Player.KeyDoubleTap -= Player_KeyDoubleTap;
+			On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
 		}
 
 		const int DashTimeMax = 24;
@@ -87,7 +87,7 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			if (player.controlJump)
 				maxHeight = 38 * 16;
 			else if (player.controlDown)
-				maxHeight = 3 * 16;
+				maxHeight = 4 * 16;
 
 			if (!Dashing)
 				ControlFloatHeight(player, maxHeight);
@@ -100,9 +100,10 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			if (dashTime < DashTimeMax / 4)
 				player.velocity.X *= 0.8f;
 			player.velocity.Y = 0f;
+
 			if (dashTime % 4 == 0)
 			{
-				Vector2 vel = new Vector2(0, 10).RotatedByRandom(0.08f);
+				Vector2 vel = new Vector2(0, 10).RotatedByRandom(.08f);
 				int damage = (int)player.GetDamage(DamageClass.Summon).ApplyTo(40);
 				Projectile proj = Projectile.NewProjectileDirect(player.GetSource_FromThis("Mount"), player.MountedCenter + new Vector2(0, 40), vel, ModContent.ProjectileType<SnowMongerBeam>(), damage, 0.5f, player.whoAmI);
 				proj.hostile = false;
@@ -126,53 +127,56 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			dashTime = DashTimeMax;
 			player.direction = dir == 2 ? 1 : -1;
 			player.velocity = new Vector2(player.direction * 28, 0);
+			
 			for (int i = 0; i < 2; i++)
 				ParticleHandler.SpawnParticle(new PulseCircle(player.Center + (player.velocity * i * 2), Color.LightBlue, 100 - (i * 20), 15) 
 				{ Angle = player.velocity.ToRotation(), ZRotation = 0.5f });
 			SoundEngine.PlaySound(SoundID.Item67 with { Volume = 0.7f }, player.Center);
 		}
 
-		private static void ControlFloatHeight(Player player, float floatHeight)
+		private static void ControlFloatHeight(Player player, int height)
 		{
-			const float MaxSpeed = 5.8f;
-			const float MoveSpeed = 0.23f;
-
-			float baseHeight = floatHeight;
-
-			Vector2 orig = player.Center;
-			int tileY = GetTileAt(orig, 0, out bool _, false) * 16;
-			float gotoY = tileY - baseHeight;
-
-			Vector2 goPos = new Vector2(player.MountedCenter.X, gotoY - 16);
-
-			if (player.DistanceSQ(goPos) > 32 * 32)
-				player.velocity.Y += MathHelper.Clamp(player.DirectionTo(goPos).Y * MoveSpeed, -MaxSpeed, MaxSpeed);
-			else
-				player.velocity.Y *= 0.9f;
-		}
-
-		private static int GetTileAt(Vector2 searchPos, int xOffset, out bool liquid, bool up = false)
-		{
-			int tileDist = (int)(searchPos.Y / 16f);
-			liquid = true;
-
-			while (true)
+			//Gets the number of tiles between origin and the ground below it
+			static int GetTileAt(Vector2 origin, int tileLength)
 			{
-				tileDist += !up ? 1 : -1;
+				int add = 0;
 
-				if (tileDist < 20)
-					return -1;
-
-				Tile t = Framing.GetTileSafely((int)(searchPos.X / 16f) + xOffset, tileDist);
-				if (t.HasTile && Main.tileSolid[t.TileType])
+				for (int i = 0; i < tileLength; i++)
 				{
-					liquid = false;
-					break;
+					Tile t = Framing.GetTileSafely(new Vector2(origin.X, origin.Y + (16 * ++add)));
+					if ((t.HasTile && Main.tileSolid[t.TileType]) || t.LiquidAmount > 155)
+						break;
 				}
-				else if (t.LiquidAmount > 155)
-					break;
+				return add;
 			}
-			return tileDist;
+
+			int tiles = GetTileAt(player.MountedCenter, (height / 16) + 1) * 16;
+
+			float amount = -10f * (1f - ((float)tiles / height));
+			player.velocity.Y = MathHelper.Lerp(player.velocity.Y, amount, .1f);
+
+			if (player.velocity.Y <= -1)
+			{
+				int width = 50;
+				Vector2 pos = player.MountedCenter + new Vector2(-(width / 2), tiles);
+
+				Tile t = Framing.GetTileSafely(pos);
+				if ((t.HasTile && Main.tileSolid[t.TileType]) || t.LiquidAmount > 155)
+				{
+					float scale = Main.rand.NextFloat() * MathHelper.Clamp(player.velocity.Length(), 0, 1.5f);
+
+					Dust dust = Dust.NewDustDirect(pos, width, 2, Main.rand.NextFromList(DustID.IceTorch, DustID.Cloud), Scale: scale);
+					if (dust.type == DustID.Cloud)
+					{
+						dust.alpha = 150;
+						dust.scale *= 2;
+					}
+					dust.noGravity = true;
+					dust.velocity = (Vector2.UnitX * Main.rand.NextFloatDirection() * Main.rand.NextFloat(2f)).RotatedByRandom(.2f);
+					dust.noLightEmittence = true;
+					//Spawn fancy dusts
+				}
+			}
 		}
 
 		public override bool UpdateFrame(Player mountedPlayer, int state, Vector2 velocity)
@@ -205,7 +209,7 @@ namespace SpiritMod.Mounts.SnowMongerMount
 
 		public override bool Draw(List<DrawData> playerDrawData, int drawType, Player drawPlayer, ref Texture2D texture, ref Texture2D glowTexture, ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, ref Vector2 drawOrigin, ref float drawScale, float shadow) => false;
 
-		private void DrawOverPlayer(Terraria.DataStructures.On_PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
+		private void DrawOverPlayer(On_PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
 		{
 			orig(ref drawinfo);
 
@@ -225,13 +229,17 @@ namespace SpiritMod.Mounts.SnowMongerMount
 			position.X = (int)(drawPlayer.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) + (float)MountData.xOffset);
 			position.Y = (int)(drawPlayer.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + (float)MountData.yOffset);
 
-			var mount = new DrawData(texture, position - new Vector2(40 + frameOffX, 20), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.One, 1f, effect, 0);
-			mount.shader = drawPlayer.cMount;
+			var mount = new DrawData(texture, position - new Vector2(40 + frameOffX, 20), sourceRect, Lighting.GetColor(drawPlayer.position.ToTileCoordinates()), 0f, Vector2.One, 1f, effect, 0)
+			{
+				shader = drawPlayer.cMount
+			};
 			drawinfo.DrawDataCache.Add(mount);
 
-			var tex = ModContent.Request<Texture2D>("SpiritMod/Mounts/SnowMongerMount/SnowmongerMount_Glow").Value;
-			var glow = new DrawData(tex, position - new Vector2(40 + frameOffX, 20), sourceRect, Color.White, 0f, Vector2.One, 1f, effect, 0);
-			glow.shader = drawPlayer.cMount;
+			var tex = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+			var glow = new DrawData(tex, position - new Vector2(40 + frameOffX, 20), sourceRect, Color.White, 0f, Vector2.One, 1f, effect, 0)
+			{
+				shader = drawPlayer.cMount
+			};
 			drawinfo.DrawDataCache.Add(glow);
 		}
 	}

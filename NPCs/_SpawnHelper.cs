@@ -28,7 +28,6 @@ namespace SpiritMod.NPCs
 			currentTime = Main.time;
 			currentPlayer = player.whoAmI;
 
-			MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
 			currentZones = (SpawnZones)
 				((int)player.zone1 +
 				((int)player.zone2 << 1) +

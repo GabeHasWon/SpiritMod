@@ -12,8 +12,8 @@ namespace SpiritMod.Mounts.RlyehianMount
 {
 	public class RlyehianMount : ModMount
 	{
-		public override void Load() => Terraria.DataStructures.On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
-		public override void Unload() => Terraria.DataStructures.On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
+		public override void Load() => On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart += DrawOverPlayer;
+		public override void Unload() => On_PlayerDrawLayers.DrawPlayer_32_FrontAcc_FrontPart -= DrawOverPlayer;
 
 		private int attackCooldown = 0;
 
@@ -61,7 +61,8 @@ namespace SpiritMod.Mounts.RlyehianMount
 		{
 			player.gravity = 0;
 			player.fallStart = (int)(player.position.Y / 16.0);
-			int floatHeight = 18;
+			int floatHeight = 3 * 16;
+
 			if (player.controlJump)
 			{
 				floatHeight = 10 * 16;
@@ -74,35 +75,46 @@ namespace SpiritMod.Mounts.RlyehianMount
 			if (mountState == FLOAT && GetTarget(player, floatHeight) is NPC target)
 			{
 				mountState = ATTACKING;
-				int cooldownTime = 14;
-				attackCooldown = ++attackCooldown % cooldownTime;
+				attackCooldown = ++attackCooldown % 14;
 
-				if (attackCooldown == 0)
+				if (player.whoAmI == Main.myPlayer && attackCooldown == 0)
 				{
 					int damage = (int)player.GetDamage(DamageClass.Summon).ApplyTo(20);
-					Projectile proj = Projectile.NewProjectileDirect(player.GetSource_FromThis("Mount"), player.Center, Vector2.Zero, ModContent.ProjectileType<RlyehianMount_Proj>(),
+					Projectile.NewProjectileDirect(player.GetSource_FromThis("Mount"), player.Center, player.DirectionTo(target.Center), ModContent.ProjectileType<RlyehianMount_Proj>(),
 						damage, 2, player.whoAmI, (int)(target.Center - player.Center).Length());
-					proj.rotation = player.AngleTo(target.Center);
-					proj.netUpdate = true;
 				}
 			}
 		}
 
 		private static void ControlFloatHeight(Player player, int height)
 		{
-			float baseHeight = height;
-			float moveSpeed = 0.2f;
-			float maxSpeed = 2f;
+			//Gets the number of tiles between origin and the ground below it
+			static int GetTileAt(Vector2 origin, int tileLength)
+			{
+				int add = 0;
 
-			int tileY = GetTileAt(player.Center, 12, 0, out bool _, false) * 16;
-			float gotoY = tileY - baseHeight;
+				for (int i = 0; i < tileLength; i++)
+				{
+					Tile t = Framing.GetTileSafely(new Vector2(origin.X, origin.Y + (16 * ++add)));
+					if ((t.HasTile && Main.tileSolid[t.TileType]) || t.LiquidAmount > 155)
+						break;
+				}
+				return add;
+			}
 
-			Vector2 goPos = new Vector2(player.MountedCenter.X, gotoY - 16);
+			int tiles = GetTileAt(player.MountedCenter, (height / 16) + 1) * 16;
 
-			if (player.DistanceSQ(goPos) > (maxSpeed + 1) * (maxSpeed + 1))
-				player.velocity.Y += MathHelper.Clamp(player.DirectionTo(goPos).Y * moveSpeed, -maxSpeed, maxSpeed);
-			else
-				player.velocity.Y *= 0.5f;
+			float amount = -5f * (1f - ((float)tiles / height));
+			player.velocity.Y = MathHelper.Lerp(player.velocity.Y, amount, .08f);
+
+			if (player.velocity.Y <= -1)
+			{
+				float scale = Main.rand.NextFloat() * MathHelper.Clamp(System.Math.Abs(player.velocity.Y), 0, 1.5f);
+				Dust dust = Dust.NewDustDirect(player.MountedCenter - new Vector2(player.width / 2, 0), player.width, 5, DustID.Ash, 0, 0, 100, default, scale);
+				dust.noGravity = true;
+				dust.velocity = -player.velocity * Main.rand.NextFloat();
+				//Spawn fancy dusts
+			}
 		}
 
 		private static NPC GetTarget(Player player, int detectHeight)
@@ -110,34 +122,10 @@ namespace SpiritMod.Mounts.RlyehianMount
 			int detectWidth = player.width * 3;
 			Rectangle detectRange = new Rectangle((int)player.getRect().Center.X - (detectWidth / 2), (int)player.getRect().Bottom, detectWidth, detectHeight);
 			
-			var npc = Main.npc.Where(x => x.active && !x.CanDamage() && x.getRect().Bottom >= player.getRect().Bottom &&
+			var npc = Main.npc.Where(x => x.active && x.CanDamage() && x.getRect().Bottom >= player.getRect().Bottom &&
 				detectRange.Intersects(x.getRect()) && Collision.CanHitLine(x.Center, 0, 0, player.Center, 0, 0)).FirstOrDefault();
 
 			return (npc != default) ? npc : null;
-		}
-
-		private static int GetTileAt(Vector2 searchPos, int tileLength, int xOffset, out bool liquid, bool up = false)
-		{
-			int tileDist = (int)(searchPos.Y / 16f);
-			liquid = true;
-
-			for (int i = 0; i < tileLength; i++)
-			{
-				tileDist += !up ? 1 : -1;
-
-				if (tileDist < 20)
-					return -1;
-
-				Tile t = Framing.GetTileSafely((int)(searchPos.X / 16f) + xOffset, tileDist);
-				if (t.HasTile && Main.tileSolid[t.TileType])
-				{
-					liquid = false;
-					break;
-				}
-				else if (t.LiquidAmount > 155)
-					break;
-			}
-			return tileDist;
 		}
 
 		public override bool UpdateFrame(Player mountedPlayer, int state, Vector2 velocity)
@@ -171,7 +159,7 @@ namespace SpiritMod.Mounts.RlyehianMount
 			return false;
 		}
 
-		private void DrawOverPlayer(Terraria.DataStructures.On_PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
+		private void DrawOverPlayer(On_PlayerDrawLayers.orig_DrawPlayer_32_FrontAcc_FrontPart orig, ref PlayerDrawSet drawinfo)
 		{
 			orig(ref drawinfo);
 
