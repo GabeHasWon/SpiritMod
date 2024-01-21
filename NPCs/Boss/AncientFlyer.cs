@@ -79,6 +79,7 @@ namespace SpiritMod.NPCs.Boss
 
 		public override void AI()
 		{
+			NPC.TargetClosest(true);
 			NPC.spriteDirection = NPC.direction;
 			NPC.rotation = NPC.velocity.X * 0.07f;
 

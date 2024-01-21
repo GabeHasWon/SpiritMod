@@ -2,5 +2,5 @@
 - Fixed issue where quest saving/loading used a localized value, making it incompatible if you switch languages.
 	Loading for legacy localized saves still works, so if you go into an existing world, you'll still have your quests.
 	Saving & exiting the world will then update the save so you can switch languages freely.
-- Fixed Hemophora, Festerfly, Gloop, Glitterfly and Ancient Apostle broken AI
+- Fixed Hemophora, Festerfly, Gloop, Glitterfly, Ancient Apostle, Vinewrath Bane and Ancient Avian bad targetting/facing
 - Reduced the amount of dust that the Two-Faced Masks's projectiles emit

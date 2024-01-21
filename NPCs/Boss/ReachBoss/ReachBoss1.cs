@@ -55,13 +55,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.BriarSurfaceBiome>().Type };
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			bestiaryEntry.AddInfo(this, "");
-			//bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-			//	new FlavorTextBestiaryInfoElement("The beating heart of the briar. Its innate instinct for self-preservation expresses itself in the hostile antibodies and endless torrential downpour within the biome."),
-			//});
-		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void FindFrame(int frameHeight)
 		{
@@ -75,6 +69,7 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 		{
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0.075f, 0.184f, 0.062f);			
 			NPC.spriteDirection = NPC.direction;
+			NPC.TargetClosest(true);
 			Player player = Main.player[NPC.target];
 			bool expertMode = Main.expertMode;
 

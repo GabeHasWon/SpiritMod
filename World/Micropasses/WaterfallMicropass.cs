@@ -104,6 +104,7 @@ namespace SpiritMod.World.Micropasses
 		{
 			bool CanPlaceAt(int i, int j, int dir) => Main.tile[i, j].HasTile && Main.tile[i + dir, j].HasTile && Main.tile[i + dir + dir, j - 1].HasTile;
 
+			// Places the waterfall source tile
 			void PlaceAt(int i, int j, int dir)
 			{
 				Tile liquidTile = Main.tile[i + dir, j - 1];
@@ -166,8 +167,7 @@ namespace SpiritMod.World.Micropasses
 						WorldGen.PlaceTile(x, y, type, true, true);
 					else if (y - j < height * 0.9f) // Clear the way
 					{
-						if (TileID.Sets.BasicChest[Main.tile[x, y - 1].TileType]) // Don't clear chest anchors
-							tile.ClearTile();
+						WorldGen.KillTile(x, y, false, false, true);
 
 						if (y - j > height * 0.75f) // (and add water at the bottom)
 						{
