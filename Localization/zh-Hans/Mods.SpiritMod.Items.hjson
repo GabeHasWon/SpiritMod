@@ -5697,8 +5697,8 @@ VinewrathBox: {
 }
 
 SkeletronPrimeBox: {
-	// DisplayName: Music Box (Skeletron Prime)
-	// Tooltip: ""
+	DisplayName: 音乐盒（机械骷髅王）
+	Tooltip: ""
 }
 
 AtlasRelicItem: {
