@@ -11,11 +11,7 @@ namespace SpiritMod.NPCs.Tides
 {
 	public class KakamoraParachuter : ModNPC
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Kakamora Windglider");
-			Main.npcFrameCount[NPC.type] = 3;
-		}
+		public override void SetStaticDefaults() => Main.npcFrameCount[Type] = 3;
 
 		public override void SetDefaults()
 		{
@@ -32,79 +28,48 @@ namespace SpiritMod.NPCs.Tides
 			NPC.DeathSound = SoundID.NPCDeath1;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.KakamoraGliderBanner>();
-			SpawnModBiomes = new int[1] { ModContent.GetInstance<TideBiome>().Type };
+			SpawnModBiomes = new int[] { ModContent.GetInstance<TideBiome>().Type };
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
 
 		public override void AI()
 		{
-			if (NPC.ai[3] == 1 && NPC.velocity.Y == 0)
-			{
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(NPC.direction * -4, -0.5f), ModContent.ProjectileType<StrayGlider>(), 0, 0);
-				switch (Main.rand.Next(4))
-				{
-					case 0:
-						NPC.Transform(ModContent.NPCType<KakamoraRunner>());
-						break;
-					case 1:
-						NPC.Transform(ModContent.NPCType<SpearKakamora>());
-						break;
-					case 2:
-						NPC.Transform(ModContent.NPCType<SwordKakamora>());
-						break;
-					case 3:
-						NPC.Transform(ModContent.NPCType<KakamoraShielder>());
-						break;
-				}
-				NPC.netUpdate = true;
-			}
-			if (NPC.ai[3] == 0)
+			bool justSpawned = NPC.ai[3] == 0;
+			if (justSpawned)
 			{
 				NPC.ai[3] = 1;
 				NPC.position.Y -= Main.rand.Next(1300, 1700);
 				NPC.netUpdate = true;
 			}
-			if (NPC.wet)
-			{
-				NPC.noGravity = true;
-				NPC.velocity.Y -= .0965f;
-			}
-			else
-				NPC.noGravity = false;
 
+			NPC.TargetClosest();
 			NPC.spriteDirection = NPC.direction;
-			Player player = Main.player[NPC.target];
 
-			if (player.position.X > NPC.position.X)
-				NPC.velocity.X = MathHelper.Clamp(NPC.velocity.X + 0.2f, -4, 4);
-			else
-				NPC.velocity.X = MathHelper.Clamp(NPC.velocity.X - 0.2f, -4, 4);
+			NPC.velocity = new Vector2(MathHelper.Lerp(NPC.velocity.X, 4 * NPC.direction, .015f), 1);
+			NPC.rotation = NPC.velocity.X * -.08f;
 
-			NPC.velocity.Y = 1;
-
-			if (NPC.collideY)
+			if (NPC.collideY || (!justSpawned && NPC.velocity.Y == 0))
 			{
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(NPC.direction * -4, -0.5f), ModContent.ProjectileType<StrayGlider>(), 0, 0);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(NPC.direction * -4, -.5f), ModContent.ProjectileType<StrayGlider>(), 0, 0);
+				
+				float lostLife = NPC.life / (float)NPC.lifeMax;
 				switch (Main.rand.Next(4))
 				{
 					case 0:
 						NPC.Transform(ModContent.NPCType<KakamoraRunner>());
-						NPC.life = NPC.life;
 						break;
 					case 1:
 						NPC.Transform(ModContent.NPCType<SpearKakamora>());
-						NPC.life = NPC.life;
 						break;
 					case 2:
 						NPC.Transform(ModContent.NPCType<SwordKakamora>());
-						NPC.life = NPC.life;
 						break;
 					case 3:
 						NPC.Transform(ModContent.NPCType<KakamoraShielder>());
-						NPC.life = NPC.life;
 						break;
 				}
+				NPC.life = (int)(NPC.lifeMax * lostLife);
 				NPC.netUpdate = true;
 			}
 		}
@@ -117,8 +82,8 @@ namespace SpiritMod.NPCs.Tides
 
 		public override void FindFrame(int frameHeight)
 		{
-			NPC.frameCounter += 0.25f;
-			NPC.frameCounter %= Main.npcFrameCount[NPC.type];
+			NPC.frameCounter += .25f;
+			NPC.frameCounter %= Main.npcFrameCount[Type];
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
 		}
@@ -127,7 +92,7 @@ namespace SpiritMod.NPCs.Tides
 		{
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DynastyWood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DynastyWood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, .7f);
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DynastyWood, 2.5f * hit.HitDirection, -2.5f, 0, default, .34f);
 			}
 

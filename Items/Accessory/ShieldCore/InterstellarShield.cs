@@ -11,21 +11,12 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 {
 	public class InterstellarShield : ModProjectile, IDrawAdditive
 	{
-		public const float rechargeRate = 0.1f;
+		public const float rechargeRate = .1f;
 		public const int cooldownTime = 1200; //20 seconds
 
-		private float Degrees
-		{
-			get => Projectile.ai[0];
-			set => Projectile.ai[0] = value;
-		}
+		public ref float Degrees => ref Projectile.ai[0];
 
-		private float Counter
-		{
-			get => Projectile.ai[1];
-			set => Projectile.ai[1] = value;
-		}
-		private bool IsActive => Counter >= 0;
+		public ref float Life => ref Projectile.ai[1];
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
@@ -34,6 +25,7 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 			Projectile.Size = new Vector2(48);
 			Projectile.penetrate = -1;
 			Projectile.tileCollide = false;
+			Projectile.ignoreWater = true;
 			Projectile.hostile = false;
 			Projectile.friendly = true;
 			Projectile.timeLeft = 10;
@@ -56,44 +48,42 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 			if (player.GetSpiritPlayer().shieldCore)
 				Projectile.timeLeft = 10;
 
-			const int distance = 80;
-			int endurance = Math.Max(40, (int)(player.statDefense * 1.5f));
-			Counter = Math.Min(endurance, Counter + rechargeRate);
+			int lifeMax = Math.Max(40, (int)(player.statDefense * 1.5f));
+			Life = Math.Min(lifeMax, Life + rechargeRate);
 
-			float quoteant = MathHelper.Clamp(Counter / endurance, 0, 1);
-			Projectile.scale = quoteant;
-			Projectile.alpha = (int)(1f - (float)quoteant) * 255;
+			float quoteant = MathHelper.Clamp(Life / lifeMax, 0, 1);
+			Projectile.Opacity = Projectile.scale = quoteant;
 
-			Projectile.rotation += 0.02f;
-			Projectile.Center = player.Center + (Vector2.UnitX * distance).RotatedBy(++Degrees * .5f * (Math.PI / 180));
+			Projectile.rotation += .02f;
+			Degrees = (Degrees + .5f) % 360;
+			Projectile.Center = player.Center + new Vector2(80, 0).RotatedBy(MathHelper.ToRadians(Degrees));
 
-			if (!IsActive)
+			//If the shield is on cooldown, don't run functional logic
+			if (Life < 0)
 				return;
-
-			foreach (Projectile proj in Main.projectile)
-			{
-				if (proj.hostile && proj.active && proj.Hitbox.Intersects(Projectile.Hitbox))
-				{
-					if ((Counter -= proj.damage) < 0)
+			if (player.whoAmI == Main.myPlayer)
+				foreach (Projectile proj in Main.projectile)
+					if (proj.hostile && proj.active && proj.Hitbox.Intersects(Projectile.Hitbox))
 					{
-						Counter = -(cooldownTime * rechargeRate);
-						SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
-						Projectile.netUpdate = true;
+						if ((Life -= proj.damage) < 0)
+						{
+							Life = -(cooldownTime * rechargeRate);
+							SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
+							Projectile.netUpdate = true;
 
-						break;
+							break;
+						} //Destroy the shield
+						else 
+						{
+							SoundEngine.PlaySound(SoundID.Item93, Projectile.position);
+							proj.active = false;
+							proj.netUpdate = true;
+						} //Destroy the enemy projectile
 					}
-					else //Destroy the projectile
-					{
-						SoundEngine.PlaySound(SoundID.Item93, Projectile.position);
-						proj.active = false;
-					}
-				}
-			}
-
-			float rotUnit = player.miscCounter / 60f;
 
 			if (Main.rand.NextBool(Math.Max(1, 30 - (int)(quoteant * 30f))))
 			{
+				float rotUnit = player.miscCounter / 60f;
 				for (int i = 0; i < 3; i++)
 				{
 					Vector2 position = Projectile.Center + (rotUnit * 6.28f + 2.09f * i).ToRotationVector2() * 8f;
@@ -116,13 +106,13 @@ namespace SpiritMod.Items.Accessory.ShieldCore
 			SpiritMod.SunOrbShader.Parameters["timer"].SetValue(Main.GlobalTimeWrappedHourly / 3 % 1);
 			SpiritMod.SunOrbShader.CurrentTechnique.Passes[0].Apply();
 
-			float scale = MathHelper.Lerp(0.4f, 0.6f, (float)Math.Sin(Main.GlobalTimeWrappedHourly * 2) / 2 + 0.5f);
+			float scale = MathHelper.Lerp(.4f, .6f, (float)Math.Sin(Main.GlobalTimeWrappedHourly * 2) / 2 + 0.5f);
 			Color drawcolor = Projectile.GetAlpha(Color.Blue);
 			Vector2 drawcenter = Projectile.Center - Main.screenPosition;
 
-			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor, Projectile.rotation, bloom.Size() / 2, Projectile.scale * 0.66f * MathHelper.Lerp(scale, 1, 0.25f), SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor, Projectile.rotation, bloom.Size() / 2, Projectile.scale * .66f * MathHelper.Lerp(scale, 1, .25f), SpriteEffects.None, 0);
 
-			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor * 0.2f, Projectile.rotation, bloom.Size() / 2, Projectile.scale * scale, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(bloom, drawcenter, null, drawcolor * .2f, Projectile.rotation, bloom.Size() / 2, Projectile.scale * scale, SpriteEffects.None, 0);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
