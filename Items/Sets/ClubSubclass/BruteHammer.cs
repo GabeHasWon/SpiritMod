@@ -15,12 +15,6 @@ namespace SpiritMod.Items.Sets.ClubSubclass
 		internal override float MinKnockback => 4;
 		internal override float MaxKnockback => 12;
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Brute Hammer");
-			// Tooltip.SetDefault("Spins rapidly around the player, dealing a devastating blow on release");
-		}
-
 		public override void Defaults()
 		{
 			Item.width = 40;

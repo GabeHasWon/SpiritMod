@@ -87,8 +87,8 @@ namespace SpiritMod.Projectiles.Clubs.BruteHammer
 			if (!released)
 			{
 				modifiers.HitDirectionOverride = Math.Sign(target.Center.X - Main.player[Projectile.owner].Center.X);
-				modifiers.FinalDamage.Flat = (int)(MinDamage * .6f);
-				modifiers.Knockback.Base = MinKnockback * .5f;
+				modifiers.FinalDamage *= .23f;
+				modifiers.Knockback *= .23f;
 
 				Projectile.numHits--;
 			}

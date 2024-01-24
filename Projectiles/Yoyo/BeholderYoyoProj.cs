@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -10,18 +11,19 @@ namespace SpiritMod.Projectiles.Yoyo
 {
 	public class BeholderYoyoProj : ModProjectile
 	{
-		private int ManaCounter
+		public int ManaCounter
 		{
 			get => (int)Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
+		private int manaCounter;
 
 		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BeholderYoyo.DisplayName");
 
 		public override void SetStaticDefaults()
 		{
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+			ProjectileID.Sets.TrailCacheLength[Type] = 4;
+			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
 
 		public override void SetDefaults()
@@ -44,59 +46,53 @@ namespace SpiritMod.Projectiles.Yoyo
 				dust.position = Projectile.Center - (vector * 24f);
 			}
 
-			if (Main.myPlayer == Projectile.owner)
+			Player owner = Main.player[Projectile.owner];
+			if (owner.channel && owner.statMana > 0)
 			{
-				Player player = Main.player[Projectile.owner];
-				if (player.channel && player.statMana > 0)
+				manaCounter = ++manaCounter % 60;
+				if (manaCounter % (60 / 10) == 0)
+					owner.statMana--;
+
+				if (owner.whoAmI == Main.myPlayer && owner.controlUseTile && Projectile.frameCounter <= 0)
 				{
-					if (++ManaCounter >= 6)
+					var target = Main.npc.Where(x => x.Distance(Projectile.Center) < 640 && x.CanBeChasedBy(Projectile) 
+						&& Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, x.position, x.width, x.height)).OrderBy(x => x.Distance(Projectile.Center)).FirstOrDefault();
+					if (target != default)
 					{
-						ManaCounter = 0;
-						player.statMana--;
+						CastMagic(Projectile.DirectionTo(target.Center) * 10);
+
+						Projectile.velocity = Projectile.DirectionFrom(target.Center) * 8;
+						Projectile.frameCounter = 20;
+						Projectile.netUpdate = true;
 					}
-
-					if (player.controlUseTile && Projectile.frameCounter <= 0)
-					{
-						for (int n = 0; n < Main.maxNPCs; n++)
-						{
-							NPC npc = Main.npc[n];
-							if (Projectile.Distance(npc.Center) < 640 && npc.CanBeChasedBy(Projectile) && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height))
-							{
-								CastMagic(Projectile.DirectionTo(npc.Center) * 10);
-
-								Projectile.velocity = Projectile.DirectionFrom(npc.Center) * 8;
-								Projectile.frameCounter = 20;
-
-								Projectile.netUpdate = true;
-								break;
-							}
-						}
-					}
-					if (Projectile.frameCounter > 0)
-						Projectile.frameCounter--;
 				}
-				if (player.statMana <= 0)
-					player.channel = false;
+				if (Projectile.frameCounter > 0)
+					Projectile.frameCounter--;
 			}
+			if (owner.statMana <= 0)
+				owner.channel = false;
 		}
 
 		private void CastMagic(Vector2 velocity)
 		{
+			Player owner = Main.player[Projectile.owner];
+			owner.statMana = System.Math.Max(owner.statMana - 10, 0);
+
 			Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, velocity, ProjectileID.Fireball, Projectile.damage, Projectile.knockBack / 2f, Projectile.owner, 0f, 0f);
 			proj.friendly = true;
 			proj.hostile = false;
+			proj.netUpdate = true;
 		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+			Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-			Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
 			for (int k = 0; k < Projectile.oldPos.Length; k++)
 			{
-				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + (Projectile.Size / 2) + new Vector2(0f, Projectile.gfxOffY);
 				Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-				Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+				Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			}
 			return false;
 		}
