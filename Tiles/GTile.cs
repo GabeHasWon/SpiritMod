@@ -85,6 +85,7 @@ namespace SpiritMod.Tiles
 			if (!Main.dedServ)
 			{
 				Player player = Main.LocalPlayer;
+
 				if (type == TileID.PalmTree && Main.rand.NextBool(3) && player.ZoneBeach)
 				{
 					if (Main.rand.NextBool(2))
@@ -93,9 +94,20 @@ namespace SpiritMod.Tiles
 						NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, (j - 10) * 16, ModContent.NPCType<OceanSlime>(), 0, 0.0f, -8.5f, 0.0f, 0.0f, byte.MaxValue);
 				}
 
-				if (type == 72)
-					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<GlowRoot>(), Main.rand.Next(0, 2));
-				if (type == TileID.Trees && Main.rand.NextBool(25) && player.ZoneSnow && Main.rand.NextBool(4))
+				static int GetGroundType(int x, int y)
+				{
+					int newY = y;
+
+					while (Main.tile[x, newY].TileType == TileID.Trees || !Main.tile[x, newY].HasTile)
+						newY++;
+
+					return Main.tile[x, newY].TileType;
+				}
+				
+				if (type == TileID.Trees && Main.rand.NextBool(5) && GetGroundType(i, j) == TileID.MushroomGrass)
+					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<GlowRoot>(), Main.rand.Next(1, 4));
+
+				if (type == TileID.Trees && Main.rand.NextBool(20) && GetGroundType(i, j) == TileID.SnowBlock)
 					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<IceBerries>(), Main.rand.Next(1, 3));
 
 				if ((type == TileID.MatureHerbs || type == TileID.BloomingHerbs) && player.GetModPlayer<Items.Armor.BotanistSet.BotanistPlayer>().active)

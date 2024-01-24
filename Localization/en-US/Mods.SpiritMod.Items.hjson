@@ -4005,12 +4005,12 @@ Brightbulb: {
 
 Canvas: {
 	DisplayName: Blank Canvas
-	Tooltip: ""
+	Tooltip: "'So much opportunity!'"
 }
 
 GlowRoot: {
 	DisplayName: Glowroot
-	Tooltip: ""
+	Tooltip: "'Pulses in and out slightly'"
 }
 
 HeartScale: {
@@ -4025,7 +4025,7 @@ OldLeather: {
 
 SoulBloom: {
 	DisplayName: Soulbloom
-	Tooltip: ""
+	Tooltip: "'Subtle whispers resonate in languages you don't know'"
 }
 
 SpiritKoi: {

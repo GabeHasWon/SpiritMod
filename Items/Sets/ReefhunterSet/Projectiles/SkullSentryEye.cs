@@ -24,8 +24,6 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 		internal Projectile parent = null;
 		internal Chain chain = null;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Maneater");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 16;
@@ -34,13 +32,13 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			Projectile.penetrate = -1;
 			Projectile.aiStyle = -1;
 			Projectile.hide = true;
-			Projectile.tileCollide = true; 
+			Projectile.tileCollide = true;
 			Projectile.timeLeft = Projectile.SentryLifeTime;
 		}
 
-		public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of false */ => false;
+		public override bool? CanDamage() => false;
 
-		private bool ParentActive() => parent.active && parent != null && parent.type == ModContent.ProjectileType<SkullSentrySentry>() && parent.owner == Projectile.owner;
+		private bool ParentActive() => parent != null && parent.active && parent.type == ModContent.ProjectileType<SkullSentrySentry>() && parent.owner == Projectile.owner;
 
 		public override void AI()
 		{
@@ -64,10 +62,10 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			{
 				Vector2 displacement = Vector2.Normalize(anchor.RotatedBy(MathHelper.TwoPi * Timer / 240)) * 5 * distMod;
 				targetCenter += displacement;
-				if(Projectile.Center != targetCenter) //Prevent NaN (why is this necessary)
+				if (Projectile.Center != targetCenter) //Prevent NaN (why is this necessary)
 					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(targetCenter), 0.02f * distMod);
 
-				if(Projectile.velocity.LengthSquared() > 0)
+				if (Projectile.velocity.LengthSquared() > 0)
 					pupilPos = Vector2.Lerp(pupilPos, Vector2.Normalize(Projectile.velocity) * 2, 0.03f); //Look in direction of movement
 			}
 
@@ -88,7 +86,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 				if (Timer % SHOOT_TIME == 0) //Move with shot projectile 
 				{
 					Projectile shot = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<SkullSentryMucus>(), Projectile.damage, 10.2f, Projectile.owner);
-					if(shot.ModProjectile is SkullSentryMucus mucus)
+					if (shot.ModProjectile is SkullSentryMucus mucus)
 						mucus.MakeDust(Main.rand.Next(7, 10), 2, 1, 140, 5);
 
 					Projectile.velocity += movementDelta;
@@ -122,10 +120,10 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			List<int> lowPriority = new List<int>();
 			Player owner = Main.player[Projectile.owner];
 			if (owner.HasMinionAttackTargetNPC)
-				if(!InvalidTarget(owner.MinionAttackTargetNPC))
+				if (!InvalidTarget(owner.MinionAttackTargetNPC))
 					CheckOtherEyeTargets(ref lowPriority, ref tempTarget, owner.MinionAttackTargetNPC);
 
-			if(tempTarget == -1) //If no minion attack target or another eye is targetting it, iterate through main.npc to see if there are other targets
+			if (tempTarget == -1) //If no minion attack target or another eye is targetting it, iterate through main.npc to see if there are other targets
 			{
 				float dist = MAX_DISTANCE;
 				for (int i = 0; i < Main.maxNPCs; ++i)
@@ -142,7 +140,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			}
 
 			//If still no target, use the first element on the low priority list
-			if(lowPriority.Count > 0 && tempTarget == -1)
+			if (lowPriority.Count > 0 && tempTarget == -1)
 				tempTarget = lowPriority[0];
 
 			Target = tempTarget;
@@ -156,15 +154,15 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 		/// <param name="npc"></param>
 		private void CheckOtherEyeTargets(ref List<int> lowPriority, ref int tempTarget, int npc)
 		{
-			if(parent.ModProjectile is SkullSentrySentry skull)
+			if (parent.ModProjectile is SkullSentrySentry skull)
 			{
 				int temp = tempTarget;
-				foreach(Projectile proj in skull.GetEyeList())
+				foreach (Projectile proj in skull.GetEyeList())
 				{
 					if (proj == Projectile)
 						continue;
 
-					if(proj.ModProjectile is SkullSentryEye eye)
+					if (proj.ModProjectile is SkullSentryEye eye)
 					{
 						if (eye.Target == npc)
 						{
@@ -183,9 +181,9 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 		}
 
 		public void DrawChain(SpriteBatch spriteBatch)
-		{ 
+		{
 			if (chain != null)
-				chain.Draw(spriteBatch, ModContent.Request<Texture2D>(Texture + "_Segment", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, scale : Projectile.scale* 0.75f);
+				chain.Draw(spriteBatch, ModContent.Request<Texture2D>(Texture + "_Segment", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, scale: Projectile.scale * 0.75f);
 		}
 
 		public void Draw(SpriteBatch spriteBatch, Color lightColor)

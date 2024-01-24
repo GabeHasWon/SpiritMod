@@ -32,7 +32,7 @@ namespace SpiritMod.Projectiles.Summon
 		{
             Projectile.velocity.Y += .4325f;
 
-			if (!primsCreated) {
+			if (!primsCreated && Main.netMode != NetmodeID.Server) {
 				primsCreated = true;
 				SpiritMod.primitives.CreateTrail(new RipperPrimTrail(Projectile));
 			}

@@ -1,6 +1,8 @@
-﻿- Fixed Retro + zoom issue in Ocean
-- Fixed issue where quest saving/loading used a localized value, making it incompatible if you switch languages.
-	Loading for legacy localized saves still works, so if you go into an existing world, you'll still have your quests.
-	Saving & exiting the world will then update the save so you can switch languages freely.
-- Fixed Hemophora, Festerfly, Gloop, Glitterfly, Ancient Apostle, Vinewrath Bane and Ancient Avian bad targetting/facing
-- Reduced the amount of dust that the Two-Faced Masks's projectiles emit
+﻿- Fixed Clumped Blood minion trying to spawn a primtrail on servers
+- Fixed null check in Maneater's ParentAlive()
+- Synced the Maneater's child projectiles properly
+- Fixed issue with Glowroot possibly dropping in stacks of 0
+- Made custom drops from trees be more consistent
+- Glowroot from glowing mushroom trees has a 1/5 chance to drop instead of a 1/2, and drops in stacks of 1-3
+- Ice Berries from snow trees now have a 1/20 chance instead of a 1/100 (1/25 * 1/5) chance
+- Added flavor text to Glowroot, Blank Canvas, and Soulbloom
