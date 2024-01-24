@@ -20,8 +20,7 @@ namespace SpiritMod.Tiles.MusicBox
 			TileObjectData.addTile(Type);
 			Terraria.ID.TileID.Sets.DisableSmartCursor[Type] = true;
 
-			LocalizedText name = CreateMapEntryName();
-			AddMapEntry(new Color(200, 200, 200), name);
+			AddMapEntry(new Color(200, 200, 200), Language.GetText("ItemName.MusicBox"));
 			RegisterItemDrop(ModContent.ItemType<Items.Placeable.MusicBox.CrimsonNightBox>());
 			DustType = -1;
         }

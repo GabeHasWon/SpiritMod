@@ -27,9 +27,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			TileID.Sets.HasOutlines[Type] = true;
 
-			LocalizedText name = CreateMapEntryName();
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("ItemName.Sofa"));
 		}
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)

@@ -25,10 +25,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.AnchorBottom = default;
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			DustType = DustID.Dirt;//ModContent.DustType<Pixel>();
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Lantern");
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("MapObject.Lantern"));
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Torches };
 		}
 
@@ -38,7 +36,5 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			g = 0.8f;
 			b = 0.4f;
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 }

@@ -4,6 +4,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
+
 namespace SpiritMod.Tiles.Furniture.Paintings
 {
 	public class HiveMap : ModTile
@@ -30,11 +31,7 @@ namespace SpiritMod.Tiles.Furniture.Paintings
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
 			DustType = -1;
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Map");
-			AddMapEntry(new Color(150, 150, 150), name);
+			AddMapEntry(new Color(150, 150, 150), Language.GetText("Mods.SpiritMod.Tiles.Map"));
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 }

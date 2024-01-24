@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Items.Placeable.Furniture.Reach;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -28,11 +27,10 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				16
 			};
 			TileObjectData.addTile(Type);
-			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Lamp");
+
 			DustType = -1;
-			AddMapEntry(new Color(63, 204, 68), name);
+			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+			AddMapEntry(new Color(63, 204, 68), Language.GetText("MapObject.FloorLamp"));
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -41,6 +39,7 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			g = 0.75f;
 			b = 0.47f;
 		}
+
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			Tile tile = Main.tile[i, j];
@@ -49,12 +48,9 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				zero = Vector2.Zero;
 			}
 			int height = tile.TileFrameY == 36 ? 18 : 16;
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Furniture/Acid/AcidLampTile_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-			Tile t = Main.tile[i, j];
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Furniture/Acid/AcidLampTile_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 }

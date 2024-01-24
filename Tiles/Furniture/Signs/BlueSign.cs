@@ -7,8 +7,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using SpiritMod.Items.Placeable.Furniture.Neon;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.Furniture.Signs
 {
@@ -22,7 +20,7 @@ namespace SpiritMod.Tiles.Furniture.Signs
             Main.tileLavaDeath[Type] = false;
             Main.tileLighted[Type] = true;
 
-			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+			TileID.Sets.FramesOnKillWall[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
             TileObjectData.newTile.Height = 2;
@@ -61,7 +59,6 @@ namespace SpiritMod.Tiles.Furniture.Signs
             TileObjectData.addTile(Type);
 
             LocalizedText name = CreateMapEntryName();
-            // name.SetDefault("Sign");
             AddMapEntry(new Color(82, 125, 255), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = -1;

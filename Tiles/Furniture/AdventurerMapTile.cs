@@ -4,6 +4,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
+
 namespace SpiritMod.Tiles.Furniture
 {
 	public class AdventurerMapTile : ModTile
@@ -31,15 +32,8 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
 			Terraria.ID.TileID.Sets.DisableSmartCursor[Type] = true;
-			DustType -= 1;
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Map");
-			AddMapEntry(new Color(150, 150, 150), name);
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
+			DustType = -1;
+			AddMapEntry(new Color(150, 150, 150), Language.GetText("Mods.SpiritMod.Tiles.Map"));
 		}
 	}
 }

@@ -37,6 +37,6 @@ public class BeachUmbrella : ModTile
 		TileObjectData.addTile(Type);
 
 		AddMapEntry(new Color(155, 154, 171));
-		DustType = DustID.Chlorophyte;
+		DustType = -1;
 	}
 }

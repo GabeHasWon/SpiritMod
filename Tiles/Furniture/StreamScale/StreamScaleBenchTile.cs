@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.StreamScale;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -21,17 +20,13 @@ namespace SpiritMod.Tiles.Furniture.StreamScale
 			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Stream Work Bench");
-			AddMapEntry(new Color(56, 181, 203), name);
+
+			AddMapEntry(new Color(56, 181, 203), Language.GetText("ItemName.WorkBench"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[] { TileID.WorkBenches };
-			DustType = -1;
+			DustType = DustID.BlueMoss;
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
+		public override void NumDust(int x, int y, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 }

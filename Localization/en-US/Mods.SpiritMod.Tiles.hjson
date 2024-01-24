@@ -14,20 +14,17 @@ Trophy3Tile.MapEntry: Starplate Voyager Trophy
 Trophy5Tile.MapEntry: Vinewrath Bane Trophy
 BismiteCrystalOre.MapEntry: Bismite Crystal
 CoilEnergizerTile.MapEntry: Coiled Energizer
-CryoliteBarTile.MapEntry: Bar
 CryoliteOreTile.MapEntry: Cryolite Ore
 Driftwood1Tile.MapEntry: Driftwood
 Driftwood2Tile.MapEntry: Driftwood
 Driftwood3Tile.MapEntry: Driftwood
 FishLureTile.MapEntry: Lure
 SunkenTreasureTile.MapEntry: Sunken Treasure
-FloranBarTile.MapEntry: Bar
 FloranOreTile.MapEntry: Floran Ore
 GraniteOre.MapEntry: Enchanted Granite Chunk
 MarbleOre.MapEntry: Ancient Marble Chunk
 OlympiumToken_Tile.MapEntry: Olympium Token
 Trophy10Tile.MapEntry: R'lyehian Trophy
-SpiritBarTile.MapEntry: Bar
 SpiritOreTile.MapEntry: Spirit Ore
 Fathomless_Chest.MapEntry: Fathomless Vase
 AvianEgg.MapEntry: Avian Egg
@@ -90,10 +87,6 @@ PrimePrint.MapEntry: Blueprint
 ProbePrint.MapEntry: Blueprint
 ReachGrass1.MapEntry: Spiky Grass
 ScarabIdol.MapEntry: Scarab Idol
-SepulchrePot1.MapEntry: Pot
-SepulchrePot2.MapEntry: Pot
-SepulchrePotDecor1.MapEntry: Pot
-SepulchrePotDecor2.MapEntry: Pot
 Shrine1_Tile.MapEntry: Ancient Shrine
 Shrine2_Tile.MapEntry: Ancient Shrine
 Shrine3_Tile.MapEntry: Ancient Shrine
@@ -111,30 +104,16 @@ TwinsPrint.MapEntry: Blueprint
 BannerTile.MapEntry: Banner
 Black_Stone.MapEntry: Blackrock
 BlastStone.MapEntry: Bedrock
-ReachSapling.MapEntry: Sapling
 SepulchreBrick.MapEntry: Sepulchre Roofing
-SpiritSapling.MapEntry: Sapling
-SpookySapling.MapEntry: Sapling
-StargrassSapling.MapEntry: Sapling
 BloodBlossom.MapEntry: Blood Blossom
 CrimsonPustuleTile.MapEntry: Crimson Pustule
 AcidACTile.MapEntry: Broken Air Conditioner
 AcidBarrelTile.MapEntry: Corrosive Barrel
-AcidBathtubTile.MapEntry: Corrosive Bathtub
-AcidBedTile.MapEntry: Corrosive Bed
-AcidBenchTile.MapEntry: Corrosive Work Bench
-AcidBookcaseTile.MapEntry: Corrosive Bookcase
-AcidCandelabraTile.MapEntry: Corrosive Candelabra
-AcidCandleTile.MapEntry: Corrosive Candle
-AcidChairTile.MapEntry: Corrosive Chair
-AcidChandelierTile.MapEntry: Corrosive Chandelier
 
 AcidChestTile: {
 	MapEntry: Corrosive Chest
 	ContainerName: Corrosive Chest
 }
-
-AcidClockTile.MapEntry: Corrosive Clock
 
 AcidDresserTile: {
 	MapEntry: Corrosive Dresser
@@ -143,13 +122,6 @@ AcidDresserTile: {
 
 AcidFanTile.MapEntry: Rusty Fan
 AcidKegTile.MapEntry: Corrosive Keg
-AcidLampTile.MapEntry: Corrosive Lamp
-AcidLanternTile.MapEntry: Corrosive Lantern
-AcidPianoTile.MapEntry: Corrosive Piano
-AcidSinkTile.MapEntry: Corrosive Sink
-AcidSofaTile.MapEntry: Corrosive Sofa
-AcidTableTile.MapEntry: Corrosive Table
-AdventurerMapTile.MapEntry: Map
 ArcadeMachine.MapEntry: Arcade Machine
 
 BambooBarrel: {
@@ -160,8 +132,6 @@ BambooBarrel: {
 BambooBench.MapEntry: Stripped Bamboo Bench
 BambooBirdCage.MapEntry: Stripped Bamboo Bird Cage
 BambooPot.MapEntry: Stripped Bamboo Pot
-BismiteChair.MapEntry: Bismite Chair
-BismiteTable.MapEntry: Bismite Table
 BoneAltar.MapEntry: Bone Altar
 BriarCrate_Tile.MapEntry: Crate
 Blossom_Tile.MapEntry: Critter Cage
@@ -176,26 +146,19 @@ Tubeworm_Tile.MapEntry: Critter Bowl
 VibeshroomJar_Tile.MapEntry: Critter Cage
 TheCouch.MapEntry: The Couch
 DurasilkSheafTile.MapEntry: Durasilk Sheaf
-DuskingPaintingTile.MapEntry: Painting
 FestivalLanternTile.MapEntry: Festival Lantern
 FishCrate_Tile.MapEntry: Crate
-FishingPaintingTile.MapEntry: Painting
-FloppaPainting_Tile.MapEntry: Painting
 ForagerTableTile.MapEntry: Naturalist's Workshop
 ForgottenKingStatue.MapEntry: Forgotten King Statue
 GemsPickaxeRuby.MapEntry: Lodged Pickaxe
 GemsPickaxeSapphire.MapEntry: Lodged Pickaxe
 Generator.MapEntry: Glowplate Generator
 GiantAnglerStatueTile.MapEntry: Giant, Buff, Half-Shark, Half-Angler Statue
-GlowplateBed.MapEntry: Glowplate Bed
-GlowplateChair.MapEntry: Glowplate Chair
 
 GlowplateChest: {
 	MapEntry: Glowplate Chest
 	ContainerName: Glowplate Chest
 }
-
-GlowplateTable.MapEntry: Glowplate Table
 
 GoblinChest: {
 	MapEntry: Dynasty Chest
@@ -234,69 +197,24 @@ YellowNeonCandle.MapEntry: Neon Candle
 YellowNeonPlant.MapEntry: Neon Plant
 OccultistMapTile.MapEntry: Occult Wall Scroll
 OldTelescopeTile.MapEntry: Old Telescope
-AdvPainting10Tile.MapEntry: Painting
-AdvPainting11Tile.MapEntry: Painting
-AdvPainting12Tile.MapEntry: Painting
-AdvPainting13Tile.MapEntry: Painting
-AdvPainting14Tile.MapEntry: Painting
-AdvPainting15Tile.MapEntry: Painting
-AdvPainting16Tile.MapEntry: Painting
-AdvPainting17Tile.MapEntry: Painting
-AdvPainting18Tile.MapEntry: Painting
-AdvPainting19Tile.MapEntry: Painting
-AdvPainting1Tile.MapEntry: Painting
-AdvPainting20Tile.MapEntry: Painting
-AdvPainting21Tile.MapEntry: Painting
-AdvPainting22Tile.MapEntry: Painting
-AdvPainting23Tile.MapEntry: Painting
-AdvPainting2Tile.MapEntry: Painting
-AdvPainting3Tile.MapEntry: Painting
-AdvPainting4Tile.MapEntry: Painting
-AdvPainting5Tile.MapEntry: Painting
-AdvPainting6Tile.MapEntry: Painting
-AdvPainting7Tile.MapEntry: Painting
-AdvPainting8Tile.MapEntry: Painting
-AdvPainting9Tile.MapEntry: Painting
-AsteroidMap.MapEntry: Map
-GraniteMap.MapEntry: Map
-HiveMap.MapEntry: Map
-MarbleMap.MapEntry: Map
-MushroomMap.MapEntry: Map
-ScrunklyPainting.MapEntry: Scrunkly
-TheBadPainting.MapEntry: Painting
-TheGoodPainting.MapEntry: Painting
 PirateCrate.MapEntry: Crate
 AsteroidPylonTile.MapEntry: $Mods.SpiritMod.MapObject.AsteroidPylon
 BriarPylonTile.MapEntry: $Mods.SpiritMod.MapObject.BriarPylon
 SpiritPylonTile.MapEntry: $Mods.SpiritMod.MapObject.SpiritPylon
-ReachBed.MapEntry: Elderbark Bed
-ReachBenchTile.MapEntry: Elderbark Work Bench
-ReachBookcase.MapEntry: Elderbark Bookcase
-ReachCandelabra.MapEntry: Elderbark Candelabra
-ReachCandle.MapEntry: Elderbark Candle
-ReachChair.MapEntry: Elderbark Chair
-ReachChandelier.MapEntry: Elderbark Chandelier
 
 ReachChest1: {
 	MapEntry: Elderbark Chest
 	ContainerName: Elderbark Chest
 }
 
-ReachClockTile.MapEntry: Elderbark Clock
-
 ReachDresser: {
 	MapEntry: Elderbark Dresser
 	ContainerName: Elderbark Dresser
 }
 
-ReachLamp.MapEntry: Elderbark Lamp
 ReachLanternTile.MapEntry: Elderbark Lantern
-ReachPiano.MapEntry: Elderbark Piano
 ReachPotTile.MapEntry: Elderbark Pot
-ReachSink.MapEntry: Elderbark Sink
 ReachSofa.MapEntry: Elderbark Sofa
-ReachTable.MapEntry: Elderbark Table
-ReachTub.MapEntry: Elderbark Bathtub
 TreemanStatue.MapEntry: Statue of the Old Gods
 
 ReachChest: {
@@ -305,7 +223,6 @@ ReachChest: {
 }
 
 ReachCrate_Tile.MapEntry: Crate
-ReachPaintingTile.MapEntry: Painting
 GraniteSculpture1x2.MapEntry: Granite Sculpture
 GraniteSculpture2x3.MapEntry: Granite Sculpture
 GraniteSculpture3x3.MapEntry: Granite Sculpture
@@ -313,7 +230,6 @@ GraniteSculpture3x5.MapEntry: Granite Sculpture
 MarbleSculpture1x2.MapEntry: Marble Sculpture
 MarbleSculpture2x3.MapEntry: Marble Sculpture
 MarbleSculpture3x8.MapEntry: Marble Sculpture
-SepulchreBannerTile.MapEntry: Banner
 
 SepulchreChestTile1: {
 	MapEntry: Sepulchre Chest
@@ -321,9 +237,7 @@ SepulchreChestTile1: {
 }
 
 ShadowflameStone.MapEntry: Goblin Weapon Rack
-ShiverbarkChairTile.MapEntry: Shiverbark Chair
 ShiverbarkFlagTile.MapEntry: Shiverbark Flag
-ShiverbarkTableTile.MapEntry: Shiverbark Table
 ShiverbarkTotemTile.MapEntry: Shiverbark Totem
 BlueSign.MapEntry: Sign
 GreenSign.MapEntry: Sign
@@ -344,9 +258,6 @@ ScrapTile3.MapEntry: Space Scrap
 ScrapTile4.MapEntry: Space Scrap
 ScrapTile5.MapEntry: Space Scrap
 ScrapTile6.MapEntry: Space Scrap
-SpiritBed.MapEntry: Duskwood Bed
-SpiritBiomePaintingTile.MapEntry: Painting
-SpiritChair.MapEntry: Spirit Chair
 
 SpiritChest: {
 	MapEntry: Duskwood Chest
@@ -354,13 +265,6 @@ SpiritChest: {
 }
 
 SpiritCrate.MapEntry: Crate
-SpiritTable.MapEntry: Spirit Table
-SpiritWorkbench.MapEntry: Spirit Workbench
-StarplatePaintingTile.MapEntry: Painting
-StreamScaleBenchTile.MapEntry: Stream Work Bench
-StreamScaleCandleTile.MapEntry: Stream Scale Candle
-StreamScaleChairTile.MapEntry: Stream Scale Chair
-StreamScaleLanternTile.MapEntry: Stream Scale Lantern
 SunPotTile.MapEntry: Sun in a Pot
 SynthpalmTile.MapEntry: Synthpalm Panel
 SynthwaveHead.MapEntry: Hyperspace Bust
@@ -370,48 +274,7 @@ TechCrateSmall.MapEntry: Glowplate Crate
 TentOpposite.MapEntry: Tent
 TreasureChestTile.MapEntry: Loot Chest
 VaporwaveTile.MapEntry: Retrofuturist Panel
-WheezerPaintingTile.MapEntry: Painting
-WWPaintingTile.MapEntry: Painting
 JumpPadTile.MapEntry: Jump Pad
-AshfallBox.MapEntry: Music Box
-AsteroidBox.MapEntry: Music Box
-AtlasBox.MapEntry: Music Box
-AuroraBox.MapEntry: Music Box
-AvianBox.MapEntry: Music Box
-BlizzardBox.MapEntry: Music Box
-BlueMoonBox.MapEntry: Music Box
-BriarNightBox.MapEntry: Music Box
-BriarUndergroundBox.MapEntry: Music Box
-CalmNightBox.MapEntry: Music Box
-CorruptNightBox.MapEntry: Music Box
-CrimsonNightBox.MapEntry: Music Box
-DesertNightBox.MapEntry: Music Box
-FrostLegionBox.MapEntry: Music Box
-GraniteBox.MapEntry: Music Box
-HallowNightBox.MapEntry: Music Box
-HyperspaceDayBox.MapEntry: Music Box
-InfernonBox.MapEntry: Music Box
-JellyDelugeBox.MapEntry: Music Box
-LuminousNightBox.MapEntry: Music Box
-MarbleBox.MapEntry: Music Box
-MeteorBox.MapEntry: Music Box
-MJWBox.MapEntry: Music Box
-NeonMusicBox.MapEntry: Music Box
-OceanDepthsBox.MapEntry: Music Box
-ReachBox.MapEntry: Music Box
-ScarabBox.MapEntry: Music Box
-SnowNightBox.MapEntry: Music Box
-SpiderCaveBox.MapEntry: Music Box
-SpiritBox1.MapEntry: Music Box
-SpiritBox2.MapEntry: Music Box
-SpiritBox3.MapEntry: Music Box
-SpiritBox4.MapEntry: Music Box
-StarplateBox.MapEntry: Music Box
-TideBox.MapEntry: Music Box
-TranquilWindsBox.MapEntry: Music Box
-VictoryDayBox.MapEntry: Music Box
-VinewrathBox.MapEntry: Music Box
-SkeletronPrimeBox.MapEntry: Music Box
 CopperPile.MapEntry: Copper Pile
 GoldPile.MapEntry: Gold Pile
 IronPile.MapEntry: Iron Pile
@@ -423,7 +286,6 @@ TungstenPile.MapEntry: Tungsten Pile
 SoulBloomTile.MapEntry: Soulbloom
 CursedArmor.MapEntry: Cursed Armor
 ScreamingTomeTile.MapEntry: Mysterious Tome
-SepulchreChandelier.MapEntry: Sepulchre Chandelier
 
 SepulchreChestTile: {
 	MapEntry: Sepulchre Chest
@@ -438,3 +300,4 @@ SkullStick3FlipRubble.MapEntry: Skull Stick3 Flip Rubble
 SkullStick3Rubble.MapEntry: Skull Stick3 Rubble
 TentOppositeRubble.MapEntry: Tent Opposite Rubble
 SwordStand.MapEntry: Sword Stand
+Map: Map

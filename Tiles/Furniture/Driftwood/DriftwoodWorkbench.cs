@@ -16,12 +16,15 @@ namespace SpiritMod.Tiles.Furniture.Driftwood
 			Main.tileNoAttach[Type] = true;
 			Main.tileTable[Type] = true;
 			Main.tileLavaDeath[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
 			TileObjectData.addTile(Type);
+
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			AddMapEntry(new Color(165, 150, 0), Language.GetText("ItemName.WorkBench"));
-			TileID.Sets.DisableSmartCursor[Type] = true;
+
+			DustType = DustID.WoodFurniture;
 			AdjTiles = new int[] { TileID.WorkBenches };
 		}
 

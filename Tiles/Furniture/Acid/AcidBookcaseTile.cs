@@ -26,18 +26,12 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				16
 			};
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Bookcase");
-			AddMapEntry(new Color(100, 122, 111), name);
+
+			AddMapEntry(new Color(100, 122, 111), Language.GetText("ItemName.Bookcase"));
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			DustType = -1;
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[] { TileID.Bookcases };
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 	}
 }

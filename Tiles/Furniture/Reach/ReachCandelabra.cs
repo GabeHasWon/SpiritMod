@@ -19,15 +19,9 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Candelabra");
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("ItemName.Candelabra"));
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Torches };
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -36,6 +30,7 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			g = 0.8f;
 			b = 0.5f;
 		}
+
 		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
 		{
 			offsetY = 6;

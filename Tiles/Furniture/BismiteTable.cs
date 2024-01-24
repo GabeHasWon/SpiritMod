@@ -20,16 +20,10 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Bismite Table");
-			AddMapEntry(new Color(100, 100, 100), name);
+
+			AddMapEntry(new Color(100, 100, 100), Language.GetText("MapObject.Table"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 	}
 }

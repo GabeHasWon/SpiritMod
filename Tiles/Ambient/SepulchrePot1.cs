@@ -28,11 +28,8 @@ namespace SpiritMod.Tiles.Ambient
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.addTile(Type);
 
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Pot");
 			DustType = DustID.Wraith;
-
-			AddMapEntry(new Color(100, 100, 100), name);
+			AddMapEntry(new Color(100, 100, 100), Language.GetText("MapObject.Pot"));
 		}
 
 		public override void SetDrawPositions(int i, int j, ref int w, ref int offsetY, ref int h, ref short tFX, ref short tFY) => offsetY = 2;
@@ -52,7 +49,7 @@ namespace SpiritMod.Tiles.Ambient
 				zero = Vector2.Zero;
 
 			int height = tile.TileFrameY == 36 ? 18 : 16;
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Ambient/SepulchrePot1_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Ambient/SepulchrePot1_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 
 		public override IEnumerable<Item> GetItemDrops(int i, int j)

@@ -7,7 +7,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.Furniture.Signs
 {
@@ -21,7 +20,7 @@ namespace SpiritMod.Tiles.Furniture.Signs
             Main.tileLavaDeath[Type] = false;
             Main.tileLighted[Type] = true;
 
-			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+			TileID.Sets.FramesOnKillWall[Type] = true;
 
             TileObjectData.newTile = new TileObjectData(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 2;
@@ -60,18 +59,19 @@ namespace SpiritMod.Tiles.Furniture.Signs
             TileObjectData.addTile(Type);
 
             LocalizedText name = CreateMapEntryName();
-            // name.SetDefault("Sign");
             AddMapEntry(new Color(255, 243, 74), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = -1;
         }
-	   public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+
+		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
-            r = .255f*1.5f;
-			g = .243f*1.5f;
-			b = .074f*1.5f;
+			r = .255f * 1.5f;
+			g = .243f * 1.5f;
+			b = .074f * 1.5f;
 		}
-        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+
+		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
             Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange);

@@ -29,9 +29,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			TileID.Sets.HasOutlines[Type] = true;
 
-			LocalizedText name = CreateMapEntryName();
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			AddMapEntry(new Color(100, 122, 111), name);
+			AddMapEntry(new Color(100, 122, 111), Language.GetText("ItemName.Sofa"));
 			DustType = -1;
 		}
 
@@ -59,8 +58,6 @@ namespace SpiritMod.Tiles.Furniture.Acid
 		}
 
 		public override void ModifySittingTargetInfo(int i, int j, ref TileRestingInfo info) => info.VisualOffset.Y += 2;
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}

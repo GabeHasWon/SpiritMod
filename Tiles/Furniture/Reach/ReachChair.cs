@@ -35,16 +35,14 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			
+
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Chairs };
 
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("MapObject.Chair"));
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
 			RegisterItemDrop(ModContent.ItemType<ReachChairItem>());
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => FurnitureHelper.HasSmartInteract(i, j, settings);
 		public override void ModifySittingTargetInfo(int i, int j, ref TileRestingInfo info) => FurnitureHelper.ModifySittingTargetInfo(i, j, ref info);

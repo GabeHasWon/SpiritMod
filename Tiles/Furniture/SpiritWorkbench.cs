@@ -20,16 +20,13 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Spirit Workbench");
-			AddMapEntry(new Color(30, 144, 255), name);
+
+			AddMapEntry(new Color(30, 144, 255), Language.GetText("ItemName.WorkBench"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = DustID.Asphalt;
 			AdjTiles = new int[] { TileID.WorkBenches };
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
+		public override void NumDust(int x, int y, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 }

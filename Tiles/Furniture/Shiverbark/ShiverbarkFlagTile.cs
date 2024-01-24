@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.Shiverbark;
 using Terraria;
 using Terraria.Enums;
 using Terraria.DataStructures;
@@ -38,7 +37,6 @@ namespace SpiritMod.Tiles.Furniture.Shiverbark
 			AnimationFrameHeight = 74;
 
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Shiverbark Flag");
 			AddMapEntry(new Color(118, 155, 163), name);
 		}
 

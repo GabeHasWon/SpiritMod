@@ -7,8 +7,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using SpiritMod.Items.Placeable.Furniture.Neon;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.Furniture.Signs
 {
@@ -22,7 +20,7 @@ namespace SpiritMod.Tiles.Furniture.Signs
             Main.tileLavaDeath[Type] = false;
             Main.tileLighted[Type] = true;
 
-			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+			TileID.Sets.FramesOnKillWall[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
             TileObjectData.newTile.Height = 4;
@@ -61,7 +59,6 @@ namespace SpiritMod.Tiles.Furniture.Signs
             TileObjectData.addTile(Type);
 
             LocalizedText name = CreateMapEntryName();
-            // name.SetDefault("Sign");
             AddMapEntry(new Color(77, 255, 88), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = -1;
@@ -80,7 +77,7 @@ namespace SpiritMod.Tiles.Furniture.Signs
 			Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange);
 			int height = tile.TileFrameY == 36 ? 18 : 16;
 
-			spriteBatch.Draw(Request<Texture2D>("SpiritMod/Tiles/Furniture/Signs/GreenSign_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+			spriteBatch.Draw(ModContent.Request<Texture2D>("SpiritMod/Tiles/Furniture/Signs/GreenSign_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 	}
 }

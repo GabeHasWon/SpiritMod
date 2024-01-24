@@ -22,8 +22,7 @@ namespace SpiritMod.Tiles.Furniture.Driftwood
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			AddMapEntry(new Color(165, 150, 0), Language.GetText("MapObject.Table"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = -1;
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 }

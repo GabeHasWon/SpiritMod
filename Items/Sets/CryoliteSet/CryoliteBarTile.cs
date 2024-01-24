@@ -19,13 +19,10 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.addTile(Type);
 			AdjTiles = new int[] { TileID.MetalBars };
-			LocalizedText name = CreateMapEntryName();
-			AddMapEntry(new Color(200, 200, 200), name);
+			DustType = DustID.Ice;
+			AddMapEntry(new Color(200, 200, 200), Language.GetText("ItemName.Bar"));
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 3 : 10;
 	}
 }

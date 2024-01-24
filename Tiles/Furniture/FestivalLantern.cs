@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using System;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
@@ -34,13 +33,13 @@ namespace SpiritMod.Tiles.Furniture
 			Recipe recipe = CreateRecipe(1);
 			recipe.AddIngredient(ItemID.ChineseLantern, 1);
 			recipe.AddIngredient(ItemID.IronBar, 1);
-			recipe.AddTile(ModContent.TileType<Tiles.Furniture.ForagerTableTile>());
+			recipe.AddTile(ModContent.TileType<ForagerTableTile>());
 			recipe.Register();
 
 			Recipe recipe1 = CreateRecipe(1);
 			recipe1.AddIngredient(ItemID.ChineseLantern, 1);
 			recipe1.AddIngredient(ItemID.LeadBar, 1);
-			recipe1.AddTile(ModContent.TileType<Tiles.Furniture.ForagerTableTile>());
+			recipe1.AddTile(ModContent.TileType<ForagerTableTile>());
 			recipe1.Register();
 		}
 	}
@@ -88,7 +87,7 @@ namespace SpiritMod.Tiles.Furniture
 				zero = Vector2.Zero;
 			}
 			int height = tile.TileFrameY == 36 ? 18 : 16;
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Furniture/FestivalLantern_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Furniture/FestivalLantern_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
     }
 }
