@@ -4335,12 +4335,12 @@ Brightbulb: {
 
 Canvas: {
 	DisplayName: 空白画布
-	Tooltip: ""
+	Tooltip: "“如此多的机遇！”"
 }
 
 GlowRoot: {
 	DisplayName: 荧光根茎
-	Tooltip: ""
+	Tooltip: "“脉冲微弱地起伏”"
 }
 
 HeartScale: {
@@ -4355,7 +4355,7 @@ OldLeather: {
 
 SoulBloom: {
 	DisplayName: 绽魂花
-	Tooltip: ""
+	Tooltip: "“回荡着你不知道的语言的微妙低语”"
 }
 
 SpiritKoi: {
