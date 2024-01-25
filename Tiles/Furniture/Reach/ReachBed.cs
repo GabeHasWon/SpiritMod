@@ -20,10 +20,10 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("ItemName.Bed"));
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Beds };
 			TileID.Sets.CanBeSleptIn[Type] = true;
 			TileID.Sets.InteractibleByNPCs[Type] = true;
@@ -32,8 +32,6 @@ namespace SpiritMod.Tiles.Furniture.Reach
         }
 
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 
 		public override bool RightClick(int i, int j)
 		{

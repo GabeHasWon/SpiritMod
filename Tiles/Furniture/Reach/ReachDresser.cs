@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -33,11 +32,12 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
-			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Dresser");
 			AddMapEntry(new Color(179, 146, 107), name);
+			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Dressers };
             TileID.Sets.HasOutlines[Type] = true;
         }
@@ -161,11 +161,6 @@ namespace SpiritMod.Tiles.Furniture.Reach
 
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => Chest.DestroyChest(i, j);

@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.Reach;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -26,10 +25,9 @@ namespace SpiritMod.Tiles.Furniture.Reach
 				16
 			};
 			TileObjectData.addTile(Type);
+			DustType = -1;
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Lamp");
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("MapObject.FloorLamp"));
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -37,11 +35,6 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			r = 1.0f;
 			g = 0.9f;
 			b = 0.8f;
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 	}
 }

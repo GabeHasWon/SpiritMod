@@ -23,16 +23,10 @@ namespace SpiritMod.Tiles.Furniture.Reach
 				16
 			};
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Bathtub");
-			AddMapEntry(new Color(179, 146, 107), name);
+			DustType = -1;
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("ItemName.Bathtub"));
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			TileID.Sets.DisableSmartCursor[Type] = true;
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 	}
 }

@@ -1,12 +1,9 @@
-
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.Acid;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.Furniture.Acid
 {
@@ -28,9 +25,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				16
 			};
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Clock");
-			AddMapEntry(new Color(100, 122, 111), name);
+
+			AddMapEntry(new Color(100, 122, 111), Language.GetText("ItemName.GrandfatherClock"));
 			DustType = -1;
 			AdjTiles = new int[] { TileID.GrandfatherClocks };
 		}
@@ -82,14 +78,8 @@ namespace SpiritMod.Tiles.Furniture.Acid
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-			if (closer) {
+			if (closer)
 				Main.SceneMetrics.HasClock = true;
-			}
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 	}
 }

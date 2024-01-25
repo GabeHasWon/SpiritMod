@@ -19,14 +19,12 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.addTile(Type);
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Keg");
+
 			AddMapEntry(new Color(100, 122, 111), name);
 			AdjTiles = new int[] { TileID.Kegs };
 			DustType = -1;
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 }

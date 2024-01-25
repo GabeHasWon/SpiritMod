@@ -22,16 +22,13 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Table");
-			AddMapEntry(new Color(100, 122, 111), name);
+
+			AddMapEntry(new Color(100, 122, 111), Language.GetText("MapObject.Table"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;
 			AdjTiles = new int[]{ TileID.Tables };
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 }

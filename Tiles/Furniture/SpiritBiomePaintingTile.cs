@@ -4,6 +4,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
+
 namespace SpiritMod.Tiles.Furniture
 {
 	public class SpiritBiomePaintingTile : ModTile
@@ -32,15 +33,7 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
 			DustType = -1;
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Painting");
-			AddMapEntry(new Color(150, 150, 150), name);
+			AddMapEntry(new Color(150, 150, 150), Language.GetText("MapObject.Painting"));
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
-
 	}
 }

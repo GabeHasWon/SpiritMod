@@ -33,10 +33,7 @@ public class ForgottenKingStatue : ModTile
 		TileObjectData.addAlternate(1);
 		TileObjectData.addTile(Type);
 
-		LocalizedText name = CreateMapEntryName();
-		// name.SetDefault("Forgotten King Statue");
-		AddMapEntry(new Color(140, 140, 140), name);
-
+		AddMapEntry(new Color(140, 140, 140), Language.GetText("MapObject.Statue"));
 		DustType = DustID.Stone;
 	}
 

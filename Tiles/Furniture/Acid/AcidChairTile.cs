@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.Reach;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -38,19 +37,13 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.addTile(Type);
 
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Chair");
-			AddMapEntry(new Color(100, 122, 111), name);
+			AddMapEntry(new Color(100, 122, 111), Language.GetText("MapObject.Chair"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Chairs };
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
-
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => FurnitureHelper.HasSmartInteract(i, j, settings);
 		public override void ModifySittingTargetInfo(int i, int j, ref TileRestingInfo info) => FurnitureHelper.ModifySittingTargetInfo(i, j, ref info);

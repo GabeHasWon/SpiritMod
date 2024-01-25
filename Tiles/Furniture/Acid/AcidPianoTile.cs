@@ -20,20 +20,15 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
+
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Piano");
-			AddMapEntry(new Color(100, 122, 111), name);
+			AddMapEntry(new Color(100, 122, 111), Language.GetText("ItemName.Piano"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;
 		}
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = 2;
-		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+
+		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+		
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 }

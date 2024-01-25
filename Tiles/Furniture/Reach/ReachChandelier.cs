@@ -30,9 +30,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.Origin = new Point16(1, 0);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Chandelier");
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("MapObject.Chandelier"));
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Chandeliers };
 		}
 
@@ -41,11 +40,6 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			r = 1.0f;
 			g = 0.8f;
 			b = 0.4f;
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 	}
 }

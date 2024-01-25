@@ -52,7 +52,7 @@ public class LoungeChair : ModTile
 		TileObjectData.addTile(Type);
 
 		AddMapEntry(new Color(71, 185, 238), Language.GetText("ItemName.Bed"));
-		DustType = DustID.BlueCrystalShard;
+		DustType = -1;
 	}
 
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;

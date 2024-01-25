@@ -37,15 +37,11 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.addTile(Type);
 
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Bismite Chair");
-			AddMapEntry(new Color(100, 100, 100), name);
+			AddMapEntry(new Color(100, 100, 100), Language.GetText("MapObject.Chair"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;
 			AdjTiles = new int[] { TileID.Chairs };
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => FurnitureHelper.HasSmartInteract(i, j, settings);
 		public override void ModifySittingTargetInfo(int i, int j, ref TileRestingInfo info) => FurnitureHelper.ModifySittingTargetInfo(i, j, ref info);

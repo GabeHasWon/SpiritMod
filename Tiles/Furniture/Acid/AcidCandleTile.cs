@@ -1,11 +1,10 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 namespace SpiritMod.Tiles.Furniture.Acid
 {
 	public class AcidCandleTile : ModTile
@@ -17,21 +16,19 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleOnTable1x1);
             TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
+
 			Main.tileLighted[Type] = true;
-			// name.SetDefault("Corrosive Candle");
-			AddMapEntry(new Color(63, 204, 68), name); ;
+			AddMapEntry(new Color(63, 204, 68), Language.GetText("MapObject.Candle"));
+			DustType = -1;
 		}
+
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
 			r = 0.48f / 2;
 			g = 0.75f / 2;
 			b = 0.47f / 2;
 		}
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
+
 		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			Tile tile = Main.tile[i, j];
@@ -40,8 +37,7 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				zero = Vector2.Zero;
 			}
 			int height = tile.TileFrameY == 36 ? 18 : 16;
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Furniture/Acid/AcidCandleTile_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-			Tile t = Main.tile[i, j];
+			spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Furniture/Acid/AcidCandleTile_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 		}
 	}
 }

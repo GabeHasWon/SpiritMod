@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -174,11 +173,6 @@ namespace SpiritMod.Tiles.Furniture.Acid
 
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)

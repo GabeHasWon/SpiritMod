@@ -4,8 +4,8 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+using Terraria.ID;
+
 namespace SpiritMod.Tiles.Furniture
 {
 	public class WWPaintingTile : ModTile
@@ -17,7 +17,7 @@ namespace SpiritMod.Tiles.Furniture
 			Main.tileLavaDeath[Type] = true;
 			Main.tileLighted[Type] = false;
 
-			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
+			TileID.Sets.FramesOnKillWall[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Height = 5;
@@ -34,14 +34,10 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.AnchorTop = default(AnchorData);
 			TileObjectData.newTile.AnchorWall = true;
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Painting");
-			AddMapEntry(new Color(150, 150, 150), name);
-			DustType = -1;
+			DustType = DustID.WoodFurniture;
+			AddMapEntry(new Color(150, 150, 150), Language.GetText("MapObject.Painting"));
 		}
-        public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
+
+		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 3 : 10;
 	}
 }

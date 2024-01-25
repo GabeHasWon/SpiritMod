@@ -24,16 +24,12 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				16
 			};
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Corrosive Bathtub");
-			AddMapEntry(new Color(100, 122, 111), name);
+			AddMapEntry(new Color(100, 122, 111), Language.GetText("ItemName.Bathtub"));
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 }

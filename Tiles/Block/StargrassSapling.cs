@@ -41,9 +41,7 @@ namespace SpiritMod.Tiles.Block
 			TileID.Sets.SwaysInWindBasic[Type] = true;
 			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
 
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Sapling");
-			AddMapEntry(new Color(200, 200, 200), name);
+			AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.Sapling"));
 
 			DustType = DustID.WoodFurniture;
 			AdjTiles = new int[] { TileID.Saplings };

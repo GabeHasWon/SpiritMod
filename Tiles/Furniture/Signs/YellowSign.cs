@@ -58,18 +58,19 @@ namespace SpiritMod.Tiles.Furniture.Signs
             TileObjectData.addTile(Type);
 
             LocalizedText name = CreateMapEntryName();
-            // name.SetDefault("Sign");
             AddMapEntry(new Color(255, 243, 74), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = -1;
         }
-	   public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+
+		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
-            r = .255f*1.5f;
-			g = .243f*1.5f;
-			b = .074f*1.5f;
+			r = .255f * 1.5f;
+			g = .243f * 1.5f;
+			b = .074f * 1.5f;
 		}
-        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+
+		public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
             Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange);

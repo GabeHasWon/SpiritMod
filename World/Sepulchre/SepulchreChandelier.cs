@@ -28,10 +28,7 @@ namespace SpiritMod.World.Sepulchre
 			TileObjectData.addTile(Type);
 
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Sepulchre Chandelier");
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("MapObject.Chandelier"));
 
 			AdjTiles = new int[] { TileID.Chandeliers };
 			DustType = -1;

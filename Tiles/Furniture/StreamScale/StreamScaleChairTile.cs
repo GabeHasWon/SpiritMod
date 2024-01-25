@@ -38,14 +38,11 @@ namespace SpiritMod.Tiles.Furniture.StreamScale
 			TileObjectData.addTile(Type);
 
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Stream Scale Chair");
-			AddMapEntry(new Color(56, 181, 203), name);
+			AddMapEntry(new Color(56, 181, 203), Language.GetText("MapObject.Chair"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Chairs };
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 

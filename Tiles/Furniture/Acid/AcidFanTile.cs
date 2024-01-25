@@ -5,6 +5,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
+
 namespace SpiritMod.Tiles.Furniture.Acid
 {
 	public class AcidFanTile : ModTile
@@ -33,14 +34,9 @@ namespace SpiritMod.Tiles.Furniture.Acid
 			Terraria.ID.TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType -= 1;
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Rusty Fan");
 			AddMapEntry(new Color(100, 122, 111), name);
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
 		public override void AnimateTile(ref int frame, ref int frameCounter)
 		{
 			frameCounter++;
@@ -51,9 +47,7 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				frame %= 2;
 			}
 		}
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			SoundEngine.PlaySound(Terraria.ID.SoundID.NPCHit4, new Vector2(i, j) * 16);
-		}
+
+		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(Terraria.ID.SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 }

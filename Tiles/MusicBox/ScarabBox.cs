@@ -21,9 +21,8 @@ namespace SpiritMod.Tiles.MusicBox
 			TileObjectData.addTile(Type);
 			TileID.Sets.DisableSmartCursor[Type] = true;
 
-			LocalizedText name = CreateMapEntryName();
+			AddMapEntry(new Color(200, 200, 200), Language.GetText("ItemName.MusicBox"));
 			RegisterItemDrop(ModContent.ItemType<Items.Placeable.MusicBox.ScarabBox>());
-			AddMapEntry(new Color(200, 200, 200), name);
 			DustType = -1;
 		}
 

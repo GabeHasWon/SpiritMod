@@ -31,9 +31,7 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			};
 			TileObjectData.newTile.Origin = new Point16(0, 4);
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Clock");
-			AddMapEntry(new Color(179, 146, 107), name);
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("ItemName.GrandfatherClock"));
 			DustType = -1;
 			AdjTiles = new int[] { TileID.GrandfatherClocks };
 		}
@@ -85,11 +83,8 @@ namespace SpiritMod.Tiles.Furniture.Reach
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
-			if (closer) {
+			if (closer)
 				Main.SceneMetrics.HasClock = true;
-			}
 		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 }

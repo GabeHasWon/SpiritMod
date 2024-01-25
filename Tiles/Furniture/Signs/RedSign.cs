@@ -7,7 +7,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using static Terraria.ModLoader.ModContent;
 
 namespace SpiritMod.Tiles.Furniture.Signs
 {
@@ -60,7 +59,6 @@ namespace SpiritMod.Tiles.Furniture.Signs
             TileObjectData.addTile(Type);
 
             LocalizedText name = CreateMapEntryName();
-            // name.SetDefault("Sign");
             AddMapEntry(new Color(222, 31, 56), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = -1;
@@ -72,6 +70,7 @@ namespace SpiritMod.Tiles.Furniture.Signs
 			g = .031f*1.5f;
 			b = .054f*1.5f;
 		}
+
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];

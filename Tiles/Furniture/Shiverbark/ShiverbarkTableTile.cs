@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture.Shiverbark;
 using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
@@ -32,8 +31,8 @@ namespace SpiritMod.Tiles.Furniture.Shiverbark
 			TileObjectData.addAlternate(1); //facing right will use the second texture style
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			LocalizedText name = CreateMapEntryName();
-			AddMapEntry(new Color(118, 155, 163), name);
+
+			AddMapEntry(new Color(118, 155, 163), Language.GetText("MapObject.Table"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			DustType = -1;
 			AdjTiles = new int[]{ TileID.Tables };

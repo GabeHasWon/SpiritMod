@@ -22,20 +22,18 @@ namespace SpiritMod.Tiles.Furniture
 			TileObjectData.newTile.Height = 2;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
-			LocalizedText name = CreateMapEntryName();
-			AddMapEntry(new Color(50, 50, 50), name);
+			AddMapEntry(new Color(50, 50, 50), Language.GetText("ItemName.Bed"));
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
             TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = -1;
 			AdjTiles = new int[] { TileID.Beds };
 			TileID.Sets.CanBeSleptIn[Type] = true;
 			TileID.Sets.InteractibleByNPCs[Type] = true;
 			TileID.Sets.IsValidSpawnPoint[Type] = true;
 			TileID.Sets.HasOutlines[Type] = true;
-        }
+		}
 
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
-
-		public override void NumDust(int i, int j, bool fail, ref int num) => num = 1;
 
 		public override void ModifySleepingTargetInfo(int i, int j, ref TileRestingInfo info) => info.VisualOffset.Y -= 4f;
 

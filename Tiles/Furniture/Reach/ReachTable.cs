@@ -21,16 +21,11 @@ namespace SpiritMod.Tiles.Furniture.Reach
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Elderbark Table");
-			AddMapEntry(new Color(179, 146, 107), name);
+
+			AddMapEntry(new Color(179, 146, 107), Language.GetText("MapObject.Table"));
 			TileID.Sets.DisableSmartCursor[Type] = true;
+			DustType = -1;
             AdjTiles = new int[] { TileID.Tables };
         }
-
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = fail ? 1 : 3;
-		}
 	}
 }
