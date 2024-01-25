@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using System.IO;
+using SpiritMod.NPCs.BloodGazer;
 
 namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 {
@@ -116,14 +117,27 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{
+			writer.Write(eyeWhoAmIs is not null);
+
+			if (eyeWhoAmIs is null)
+				return;
+
 			for (int i = 0; i < EyeCount; ++i)
 				writer.Write(eyeWhoAmIs[i]);
 		}
 
 		public override void ReceiveExtraAI(BinaryReader reader)
 		{
-			for (int i = 0; i < EyeCount; ++i)
-				eyeWhoAmIs[i] = reader.ReadInt32();
+			bool read = reader.ReadBoolean();
+
+			if (read)
+			{
+				if (eyeWhoAmIs is null)
+					eyeWhoAmIs = new int[EyeCount];
+
+				for (int i = 0; i < EyeCount; ++i)
+					eyeWhoAmIs[i] = reader.ReadInt32();
+			}
 		}
 	}
 }

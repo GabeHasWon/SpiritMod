@@ -6,3 +6,4 @@
 - Glowroot from glowing mushroom trees has a 1/5 chance to drop instead of a 1/2, and drops in stacks of 1-3
 - Ice Berries from snow trees now have a 1/20 chance instead of a 1/100 (1/25 * 1/5) chance
 - Added flavor text to Glowroot, Blank Canvas, and Soulbloom
+- Fixed bad TileObjectData in SlotMachine & every color of sign

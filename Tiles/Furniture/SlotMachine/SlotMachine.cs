@@ -38,6 +38,7 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 3;
 			TileObjectData.newTile.Height = 3;

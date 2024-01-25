@@ -24,13 +24,13 @@ namespace SpiritMod.Tiles.Furniture.Signs
 
 			Terraria.ID.TileID.Sets.FramesOnKillWall[Type] = true;
 
-			TileObjectData.newTile.UsesCustomCanPlace = true;
             TileObjectData.newTile = new TileObjectData(TileObjectData.Style2xX);
+			TileObjectData.newTile.UsesCustomCanPlace = true;
             TileObjectData.newTile.Height = 2;
-            TileObjectData.newTile.Width = 3;
+			TileObjectData.newTile.Width = 3;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
-            TileObjectData.newAlternate.Origin = new Point16(1, 0);
-            TileObjectData.newTile.StyleHorizontal = true;
+            TileObjectData.newTile.Origin = new Point16(0, 1);
+			TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleMultiplier = 5;
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide, 2, 0);
 
@@ -52,7 +52,6 @@ namespace SpiritMod.Tiles.Furniture.Signs
             TileObjectData.newAlternate.AnchorBottom = AnchorData.Empty;
             TileObjectData.addAlternate(3);
 
-            TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
             TileObjectData.newAlternate.Origin = Point16.Zero;
             TileObjectData.newAlternate.AnchorWall = true;

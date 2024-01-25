@@ -43,7 +43,10 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 		public override void AI()
 		{
 			if (!ParentActive()) //parent active check
+			{
 				Projectile.Kill();
+				return;
+			}
 			else
 				Projectile.timeLeft = Projectile.SentryLifeTime;
 
@@ -214,6 +217,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet.Projectiles
 			pupilPos = reader.ReadVector2();
 
 			int parentwhoAmI = reader.ReadInt32();
+
 			if (parentwhoAmI == -1)
 				parent = null;
 			else
