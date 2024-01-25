@@ -33,10 +33,10 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 
 		static Hook LoadGlobalHook;
 
-		private static bool ImproperWaterStyle => Main.waterStyle > WaterStyleID.Count;
+		private static bool ImproperWaterStyle => Main.waterStyle != WaterStyleID.Count && Main.waterStyle != WaterStyleID.Purity;
 
 		public static ILog Logger => ModContent.GetInstance<SpiritMod>().Logger;
-		public static bool PlayerInValidOcean => Main.LocalPlayer.ZoneBeach;// && Main.waterStyle == WaterStyleID.Purity
+		public static bool PlayerInValidOcean => Main.LocalPlayer.ZoneBeach && !ImproperWaterStyle;// && Main.waterStyle == WaterStyleID.Purity
 
 		public static void Load()
 		{
@@ -395,7 +395,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 			var c = new ILCursor(il);
 
 			c.Emit(OpCodes.Ldarg_3);
-			c.Emit(OpCodes.Ldc_R4, 2f);
+			c.Emit(OpCodes.Ldc_R4, 1.5f);
 			var vec2Mul = typeof(Vector2).GetMethod("op_Multiply", new Type[2] { typeof(Vector2), typeof(float) }, new ParameterModifier[] { new ParameterModifier(3) });
 			c.Emit(OpCodes.Call, vec2Mul);
 			c.Emit(OpCodes.Starg, 3);
