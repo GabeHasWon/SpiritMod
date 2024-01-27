@@ -22,25 +22,23 @@ namespace SpiritMod.Items.Glyphs
 			Item.maxStack = Item.CommonMaxStack;
 		}
 
-		public static void VoidCollapse(Player owner, NPC target, Projectile proj, int damage, int baseRarity, int voidStacks)
+		public static void VoidCollapse(Player owner, NPC target, Projectile proj, int damage)
 		{
 			int riftType = ModContent.ProjectileType<VoidRift>();
 			if (!(proj is Projectile shot && shot.type == riftType))
 			{
-				int riftDamage = damage / 2 * baseRarity * voidStacks;
-
 				if (owner.ownedProjectileCounts[riftType] > 0)
 				{
 					var onTarget = Main.projectile.Where(x => x.active && (x.type == riftType) && (x.owner == owner.whoAmI) && (x.ModProjectile is VoidRift voidRift) && (voidRift.TargetWhoAmI == target.whoAmI)).FirstOrDefault();
 					if (onTarget != default)
 					{
-						onTarget.damage += riftDamage;
+						onTarget.damage += damage * (++(onTarget.ModProjectile as VoidRift).Stacks + 1);
 						onTarget.netUpdate = true;
 
 						return;
-					}
+					} //Update the damage of active rifts
 				}
-				Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center, Vector2.Zero, riftType, riftDamage, 0, owner.whoAmI, target.whoAmI);
+				Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center, Vector2.Zero, riftType, damage, 0, owner.whoAmI, target.whoAmI);
 			}
 		}
 

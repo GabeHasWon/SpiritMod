@@ -23,8 +23,6 @@ namespace SpiritMod.Items.Glyphs
 
 		public static void RadiantStrike(Player owner, NPC target)
 		{
-			owner.ClearBuff(ModContent.BuffType<DivineStrike>());
-
 			SoundEngine.PlaySound(SoundID.DD2_FlameburstTowerShot with { Volume = .4f, Pitch = .8f }, target.Center);
 			Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<RadiantEnergy>(), 0, 0, owner.whoAmI, target.whoAmI);
 			for (int i = 0; i < 5; i++)
