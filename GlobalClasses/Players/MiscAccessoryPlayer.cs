@@ -20,7 +20,6 @@ using SpiritMod.Items.Accessory.GranitechDrones;
 using SpiritMod.Items.Accessory.Bauble;
 using SpiritMod.Items.Accessory.AceCardsSet;
 using SpiritMod.Projectiles;
-using Terraria.WorldBuilding;
 
 namespace SpiritMod.GlobalClasses.Players
 {
@@ -190,7 +189,7 @@ namespace SpiritMod.GlobalClasses.Players
 					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<RogueKnifeMinion>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(5), .5f, Player.whoAmI);
 
 				if (Player.HasAccessory<BowSummonItem>() && Player.ownedProjectileCounts[ModContent.ProjectileType<BowSummon>()] < 1)
-					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<BowSummon>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(22), 1.5f, Player.whoAmI);
+					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<BowSummon>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(ContentSamples.ItemsByType[ModContent.ItemType<BowSummonItem>()].damage), 1.5f, Player.whoAmI);
 
 				if (Player.HasAccessory<SpellswordCrest>() && Player.ownedProjectileCounts[ModContent.ProjectileType<HolyKnifeMinion>()] < 1)
 					Projectile.NewProjectile(Terraria.Entity.GetSource_NaturalSpawn(), Player.Center, Vector2.Zero, ModContent.ProjectileType<HolyKnifeMinion>(), (int)Player.GetDamage(DamageClass.Summon).ApplyTo(32), 1.25f, Player.whoAmI);
@@ -228,15 +227,7 @@ namespace SpiritMod.GlobalClasses.Players
 
 			// Mana Shield & Seraphim Bulwark
 			if (Player.HasAccessory<ManaShield>() || Player.HasAccessory<SeraphimBulwark>())
-			{
-				if (Player.statMana > info.Damage / 10 * 4)
-				{
-					if ((Player.statMana - info.Damage / 10 * 4) > 0)
-						Player.statMana -= info.Damage / 10 * 4;
-					else
-						Player.statMana = 0;
-				}
-			}
+				Player.statMana = Math.Max(Player.statMana - (info.Damage / 10 * 4), 0);
 
 			//Bauble
 			if (Player.HasAccessory<Bauble>())
@@ -267,8 +258,8 @@ namespace SpiritMod.GlobalClasses.Players
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 		{
 			// Mana Shield & Seraphim Bulwark damage reduction
-			if (Player.HasAccessory<ManaShield>() || Player.HasAccessory<SeraphimBulwark>())
-				modifiers.FinalDamage *= 0.1f;
+			if ((Player.HasAccessory<ManaShield>() || Player.HasAccessory<SeraphimBulwark>()) && Player.statMana >= 20)
+				modifiers.FinalDamage *= .9f;
 		}
 
 		public override void PostHurt(Player.HurtInfo info)

@@ -1,46 +1,42 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items;
+using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Items.Accessory.BowSummonItem;
 using SpiritMod.Utilities;
 using System;
+using System.Linq;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles.Summon.BowSummon
 {
 	public class BowSummon : ModProjectile
 	{
-		private int Timer
-		{
-			get => (int)Projectile.ai[0];
-			set => Projectile.ai[0] = value;
-		}
-		private int TargetIndex
-		{
-			get => (int)Projectile.ai[1];
-			set => Projectile.ai[1] = value;
-		}
+		private Item ammoItem;
+
+		public ref float Counter => ref Projectile.ai[0];
+
+		public Player Owner => Main.player[Projectile.owner];
+
+		public override LocalizedText DisplayName => Language.GetText("Mods.SpiritMod.Items.BowSummonItem.DisplayName");
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Jinxbow");
+			Main.projPet[Type] = true;
+			Main.projFrames[Type] = 4;
 
-			Main.projPet[Projectile.type] = true;
-			Main.projFrames[Projectile.type] = 4;
-
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
-			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
-			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
-			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
+			ProjectileID.Sets.MinionSacrificable[Type] = true;
+			ProjectileID.Sets.CultistIsResistantTo[Type] = true;
+			ProjectileID.Sets.MinionTargettingFeature[Type] = true;
 		}
 
 		public override void SetDefaults()
 		{
 			Projectile.netImportant = true;
 			Projectile.width = 20;
-			Projectile.height = 40;
+			Projectile.height = 20;
 			Projectile.friendly = true;
 			Projectile.minion = true;
 			Projectile.penetrate = -1;
@@ -51,157 +47,93 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 
 		public override void AI()
 		{
-			Player player = Main.player[Projectile.owner];
-
-			if (player.HasAccessory<BowSummonItem>())
+			if (Owner.HasAccessory<BowSummonItem>())
 				Projectile.timeLeft = 2;
 
-			for (int i = 0; i < Main.maxProjectiles; i++)
+			NPC target = (Owner.MinionAttackTargetNPC > -1 && Main.npc[Owner.MinionAttackTargetNPC] is NPC npc) ? 
+				npc : 
+				Main.npc.Where(x => x.CanBeChasedBy(Projectile) && x.Distance(Projectile.Center) < 900 && Collision.CanHit(Projectile.Center, 0, 0, x.position, x.width, x.height)).OrderBy(x => x.Distance(Projectile.Center)).FirstOrDefault();
+
+			if (target != default)
 			{
-				if (i != Projectile.whoAmI && Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Math.Abs(Projectile.position.X - Main.projectile[i].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[i].position.Y) < (float)Projectile.width)
+				if (++Counter >= 70 && Projectile.Distance(target.Center) < (16 * 30))
 				{
-					if (Projectile.position.X < Main.projectile[i].position.X)
-						Projectile.velocity.X = Projectile.velocity.X - 0.05f;
-					else
-						Projectile.velocity.X = Projectile.velocity.X + 0.05f;
+					if (Counter == 70)
+						ammoItem = Owner.PickAmmo(ContentSamples.ItemsByType[ItemID.WoodenBow], out _, out _, out _, out _, out int type) ? ContentSamples.ItemsByType[type] : null;
+					//Select an ammo item to use in PreDraw before firing
 
-					if (Projectile.position.Y < Main.projectile[i].position.Y)
-						Projectile.velocity.Y = Projectile.velocity.Y - 0.05f;
-					else
-						Projectile.velocity.Y = Projectile.velocity.Y + 0.05f;
+					if (++Projectile.frameCounter % 5 == 0)
+						Projectile.frame++;
+					if (Projectile.frame >= Main.projFrames[Type])
+						Shoot(target);
 				}
-			}
-
-			float minDist = 900f;
-			bool foundTarget = false;
-
-			for (int n = 0; n < 200; n++)
-			{
-				if (Main.npc[n].CanBeChasedBy(Projectile, false))
-				{
-					float num532 = Main.npc[n].position.X + 40 + (Main.npc[n].width / 2);
-					float num533 = Main.npc[n].position.Y - 90 + (Main.npc[n].height / 2);
-					float num534 = Math.Abs(Projectile.position.X + (Projectile.width / 2) - num532) + Math.Abs(Projectile.position.Y + (Projectile.height / 2) - num533);
-
-					if (num534 < minDist && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[n].position, Main.npc[n].width, Main.npc[n].height))
-					{
-						minDist = num534;
-						foundTarget = true;
-					}
-				}
-			}
-
-			if (!foundTarget)
-			{
-				Projectile.friendly = true;
-				Projectile.position.X = player.Center.X - (Projectile.width * .5f);
-				Projectile.position.Y = player.Center.Y - (Projectile.width * .5f) - 60 - player.gfxOffY;
-				Projectile.rotation = player.velocity.X * 0.05f;
-				Projectile.spriteDirection = player.direction;
-				Projectile.frame = 0;
+				Projectile.rotation = Utils.AngleLerp(Projectile.rotation, Projectile.AngleTo(target.Center), .3f);
 			}
 			else
 			{
-				Projectile.spriteDirection = 1;
-				Timer++;
-				if (Timer >= 70)
-				{
-					int range = 30;   //How many tiles away the projectile targets NPCs
-					float shootVelocity = 16f; //magnitude of the shoot vector (speed of arrows shot)
-
-					//TARGET NEAREST NPC WITHIN RANGE
-					float lowestDist = float.MaxValue;
-					for (int i = 0; i < 200; ++i)
-					{
-						NPC npc = Main.npc[i];
-						//if npc is a valid target (active, not friendly, and not a critter)
-						if (npc.active && npc.CanBeChasedBy(Projectile) && !npc.friendly)
-						{
-							//if npc is within 50 blocks
-							float dist = Projectile.Distance(npc.Center);
-							if (dist / 16 < range)
-							{
-								//if npc is closer than closest found npc
-								if (dist < lowestDist)
-								{
-									lowestDist = dist;
-
-									//target this npc
-									TargetIndex = npc.whoAmI;
-									Projectile.netUpdate = true;
-								}
-							}
-						}
-					}
-
-					NPC target = Main.npc[TargetIndex];
-
-					if (target.CanBeChasedBy(Projectile, false))
-						Projectile.rotation = Projectile.DirectionTo(target.Center).ToRotation();
-
-					if (++Projectile.frameCounter >= 5)
-					{
-						Projectile.frameCounter = 0;
-						Projectile.frame++;
-					}
-
-					if (Projectile.frame > 3)
-					{
-						Vector2 ShootArea = new Vector2(Projectile.Center.X, Projectile.Center.Y);
-						Vector2 direction = Vector2.Normalize(target.Center - ShootArea) * shootVelocity;
-
-						int selectedIndex = 0;
-						bool itemChosen = false;
-						for (int i = 0; i < player.inventory.Length; ++i)
-						{
-							Item item = player.inventory[i];
-							Item selItem = player.inventory[selectedIndex];
-
-							if (!item.IsAir && item.ammo == AmmoID.Arrow && (selItem.ammo == AmmoID.None || item.damage > selItem.damage))
-							{
-								selectedIndex = i;
-								itemChosen = true;
-							}
-						}
-
-						Item selectedItem = player.inventory[selectedIndex];
-						int shootType = selectedItem.shoot;
-						int damage = (int)player.GetDamage(DamageClass.Summon).ApplyTo(16);
-
-						if (!itemChosen)
-						{
-							shootType = ProjectileID.JestersArrow;
-							damage = (int)(damage * 0.6f);
-							direction *= 0.5f;
-						}
-
-						if (Main.myPlayer == Projectile.owner)
-						{
-							int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, direction, shootType, damage, Projectile.knockBack, player.whoAmI);
-
-							Projectile newProj = Main.projectile[proj];
-							newProj.DamageType = DamageClass.Summon;
-							newProj.friendly = true;
-							newProj.netUpdate = true;
-
-							if (Main.netMode != NetmodeID.SinglePlayer)
-								NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, proj);
-
-							GItem.UseAmmoDirect(player, selectedIndex);
-						}
-
-						Projectile.frame = 0;
-						Timer = 0;
-
-						Projectile.netUpdate = true;
-					}
-				}
-
-				Projectile.position.X = player.Center.X - (Projectile.width * .5f);
-				Projectile.position.Y = player.Center.Y - (Projectile.width * .5f) - 40;
+				Projectile.rotation = Utils.AngleLerp(Projectile.rotation, (Owner.direction == -1) ? MathHelper.Pi : 0, .15f);
+				Projectile.frameCounter = Projectile.frame = 0;
 			}
+
+			float offY = (float)Math.Sin(Main.timeForVisualEffects / 30f) * 2f;
+			Projectile.Center = Owner.Center - new Vector2(0, 50 - Owner.gfxOffY + offY);
+			Projectile.spriteDirection = (Projectile.rotation.ToRotationVector2().X < 0) ? -1 : 1;
+			Projectile.velocity *= .95f;
 		}
 
-		public override bool MinionContactDamage() => false;
+		private void Shoot(NPC target)
+		{
+			#region stats
+			int type = ProjectileID.JestersArrow;
+			float speed = 8f;
+			int damage = Projectile.damage;
+			float knockback = Projectile.knockBack;
+
+			if (ammoItem != null)
+			{
+				type = ammoItem.shoot;
+				speed = MathHelper.Min(speed + ammoItem.shootSpeed, 20);
+				damage += ContentSamples.ItemsByType[ammoItem.type].damage;
+				knockback += ContentSamples.ItemsByType[ammoItem.type].knockBack;
+				//Avoid using Player.PickAmmo to assign stats because we don't want the projectile to benefit from ranged buffs
+			}
+			Vector2 velocity = Projectile.DirectionTo(target.Center + (target.velocity * (Projectile.Distance(target.Center) / speed))) * speed;
+			#endregion
+
+			if (Main.myPlayer == Projectile.owner)
+			{
+				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity, velocity, type, damage, knockback, Owner.whoAmI);
+				proj.DamageType = DamageClass.Summon;
+				proj.friendly = true;
+				proj.netUpdate = true;
+			}
+			Projectile.frame = Projectile.frameCounter = 0;
+			Counter = 0;
+			Projectile.velocity = Vector2.Normalize(velocity) * 4f;
+		}
+
+		public override bool? CanDamage() => false;
+
+		public override bool? CanCutTiles() => false;
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+			Projectile.QuickDraw(spriteEffects: (Projectile.spriteDirection == -1) ? SpriteEffects.FlipVertically : SpriteEffects.None);
+			if (Projectile.frame > 0)
+			{
+				int type = (ammoItem == null) ? ProjectileID.JestersArrow : ammoItem.shoot;
+				Texture2D arrow = TextureAssets.Projectile[type].Value;
+
+				float offX = (float)Projectile.frameCounter / (float)(Main.projFrames[Type] * 5f);
+
+				Rectangle frame = ContentSamples.ProjectilesByType[type].DrawFrame();
+				Color color = lightColor * MathHelper.Min(offX / .5f, 1);
+				Vector2 pos = Projectile.Center + new Vector2(0, Projectile.gfxOffY) - new Vector2((offX * offX * 15) - 10, 0).RotatedBy(Projectile.rotation);
+				float rotation = Projectile.rotation + MathHelper.PiOver2;
+
+				Main.EntitySpriteDraw(arrow, pos - Main.screenPosition, frame, Projectile.GetAlpha(color), rotation, frame.Size() / 2, 1, SpriteEffects.None);
+			}
+			return false;
+		}
 	}
 }

@@ -21,8 +21,7 @@ namespace SpiritMod
 		{
 			Texture2D tex = TextureAssets.Projectile[projectile.type].Value;
 			Color color = drawColor ?? Lighting.GetColor((int)projectile.Center.X / 16, (int)projectile.Center.Y / 16);
-			if(spriteEffects == null)
-				spriteEffects = projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			spriteEffects ??= projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
 			if (spriteBatch == null)
 				Main.EntitySpriteDraw(tex, projectile.Center - Main.screenPosition, projectile.DrawFrame(), projectile.GetAlpha(color), rotation ?? projectile.rotation, 
