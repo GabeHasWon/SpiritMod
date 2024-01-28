@@ -15,7 +15,6 @@ namespace SpiritMod.Items.Weapon.Thrown
 			Item.noUseGraphic = true;
 			Item.UseSound = SoundID.Item1;
 			Item.DamageType = DamageClass.Ranged;
-			Item.channel = true;
 			Item.noMelee = true;
 			Item.shoot = ModContent.ProjectileType<BrainProj>();
 			Item.useAnimation = 24;

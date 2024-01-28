@@ -11,7 +11,6 @@ namespace SpiritMod.Projectiles.Thrown
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Creeping Shruken");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
@@ -32,10 +31,16 @@ namespace SpiritMod.Projectiles.Thrown
 
 		public override void AI()
 		{
-			Projectile.alpha += 5;
-			if (Projectile.alpha >= 200) {
-				Projectile.alpha = 200;
+			if (Projectile.timeLeft > 20)
+			{
+				Projectile.alpha += 5;
+
+				if (Projectile.alpha >= 200)
+					Projectile.alpha = 200;
 			}
+			else
+				Projectile.Opacity *= 0.9f;
+
 			Projectile.velocity = Projectile.velocity.RotatedBy(System.Math.PI / 40);
 			Projectile.rotation += .3f;
 			Projectile.velocity *= 0.96f;

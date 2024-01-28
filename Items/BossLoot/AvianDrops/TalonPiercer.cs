@@ -11,12 +11,7 @@ namespace SpiritMod.Items.BossLoot.AvianDrops
 {
 	public class TalonPiercer : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Talon's Fury");
-			// Tooltip.SetDefault("Creates a flurry of homing feathers");
-			Item.staff[Item.type] = true;
-		}
+		public override void SetStaticDefaults() => Item.staff[Item.type] = true;
 
 		public override void SetDefaults()
 		{

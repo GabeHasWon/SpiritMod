@@ -50,6 +50,7 @@ namespace SpiritMod.Projectiles.Magic
 			Projectile.alpha = 255;
 			Projectile.tileCollide = false;
 			Projectile.aiStyle = -1;
+			Projectile.DamageType = DamageClass.Magic;
 		}
 
 		public override void AI()

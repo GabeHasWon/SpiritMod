@@ -283,6 +283,7 @@ Events: {
 		BossChecklistIntegration.Condition: Use a [i:SpiritMod/BlueMoonSpawn] at nighttime.
 		OnStart: The Mystic Moon is rising...
 		IsDay: The moon isn't powerful in daylight.
+		IsCalmNight: The night's too calm.
 	}
 
 	JellyDeluge: {

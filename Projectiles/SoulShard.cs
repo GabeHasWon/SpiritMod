@@ -6,11 +6,6 @@ namespace SpiritMod.Projectiles
 {
 	public class SoulShard : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Soul Shard");
-		}
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 10;
@@ -21,14 +16,14 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 300;
 			Projectile.tileCollide = true;
 			Projectile.aiStyle = 1;
+			Projectile.DamageType = DamageClass.Magic;
 			AIType = ProjectileID.Bullet;
 		}
 
 		public override void OnKill(int timeLeft)
 		{
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 20; i++)
 				Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, DustID.Flare_Blue, (float)(Main.rand.Next(8) - 4), (float)(Main.rand.Next(8) - 4), 187);
-			}
 		}
 
 	}

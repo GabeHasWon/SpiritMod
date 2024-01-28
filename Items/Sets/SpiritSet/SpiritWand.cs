@@ -11,9 +11,8 @@ namespace SpiritMod.Items.Sets.SpiritSet
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Spirit Wand");
-			// Tooltip.SetDefault("Shoots out energy that travels along the ground");
 			SpiritGlowmask.AddGlowMask(Item.type, "SpiritMod/Items/Sets/SpiritSet/SpiritWand_Glow");
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -26,7 +25,6 @@ namespace SpiritMod.Items.Sets.SpiritSet
 			Item.useTime = 27;
 			Item.useAnimation = 27;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.knockBack = 5;
 			Item.value = Item.sellPrice(0, 1, 0, 0);

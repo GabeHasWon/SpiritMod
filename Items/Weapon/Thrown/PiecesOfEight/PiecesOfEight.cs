@@ -50,10 +50,12 @@ namespace SpiritMod.Items.Weapon.Thrown.PiecesOfEight
 			Projectile.CloneDefaults(ProjectileID.Shuriken);
 			Projectile.width = 14;
 			Projectile.height = 14;
-			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.DamageType = DamageClass.Magic;
 			Projectile.penetrate = 1;
 		}
+
 		int bounces = 2;
+
 		public override void AI()
 		{
 			if (Main.rand.NextBool(10))

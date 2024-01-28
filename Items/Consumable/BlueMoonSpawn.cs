@@ -32,7 +32,10 @@ namespace SpiritMod.Items.Consumable
 			if (Main.dayTime)
 				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.BlueMoon.IsDay"), 80, 80, 150);
 
-			return !MyWorld.blueMoon && !Main.dayTime;
+			if (MyWorld.calmNight)
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.BlueMoon.IsCalmNight"), 80, 80, 150);
+
+			return !MyWorld.blueMoon && !Main.dayTime && !MyWorld.calmNight;
 		}
 
 		public override bool? UseItem(Player player)

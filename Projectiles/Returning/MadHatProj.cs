@@ -7,11 +7,7 @@ namespace SpiritMod.Projectiles.Returning
 {
 	public class MadHatProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Mad Hat");
-			Main.projFrames[base.Projectile.type] = 5;
-		}
+		public override void SetStaticDefaults() => Main.projFrames[Type] = 5;
 
 		public override void SetDefaults()
 		{
@@ -19,7 +15,7 @@ namespace SpiritMod.Projectiles.Returning
 			Projectile.height = 38;
 			Projectile.aiStyle = 3;
 			Projectile.friendly = true;
-			Projectile.DamageType = DamageClass.Throwing;
+			Projectile.DamageType = DamageClass.Magic;
 			Projectile.penetrate = 50;
 			Projectile.timeLeft = 700;
 			Projectile.tileCollide = false;

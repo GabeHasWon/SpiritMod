@@ -12,6 +12,12 @@ using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
 using Terraria.Chat;
 using Terraria.Localization;
+using SpiritMod.Items.BossLoot.AvianDrops;
+using Terraria.GameContent.ItemDropRules;
+using SpiritMod.Items.Sets.Vulture_Matriarch.Sovereign_Talon;
+using SpiritMod.Items.Sets.Vulture_Matriarch.Tome_of_the_Great_Scavenger;
+using SpiritMod.Items.Sets.Vulture_Matriarch.Matriarch_Wings;
+using SpiritMod.Items.Placeable.Furniture;
 
 namespace SpiritMod.NPCs.Vulture_Matriarch
 {
@@ -365,8 +371,15 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			npcLoot.AddCommon<Vulture_Matriarch_Mask>(12);
 			npcLoot.AddBossBag<GoldenEgg>();
+
+			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+			notExpertRule.AddCommon<Vulture_Matriarch_Mask>(7);
+			notExpertRule.AddOneFromOptions<Tome_of_the_Great_Scavenger, Sovereign_Talon>(1);
+			notExpertRule.AddCommon<Matriarch_Wings>(3);
+			notExpertRule.AddCommon<HourglassItem>(5);
+
+			npcLoot.Add(notExpertRule);
 		}
 
 		public override void FindFrame(int frameHeight)

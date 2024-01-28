@@ -15,8 +15,6 @@ namespace SpiritMod.Projectiles
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Floran Orb");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 18;
@@ -28,21 +26,23 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 900;
 			Projectile.light = 0;
 			Projectile.extraUpdates = 1;
+			Projectile.DamageType = DamageClass.Magic;
 		}
 
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
 			var list = Main.projectile.Where(x => x.Hitbox.Intersects(Projectile.Hitbox));
-			foreach (var proj in list) {
+			foreach (var proj in list)
+			{
 				counter++;
-				if (counter == 0) {
+				if (counter == 0)
 					counter = -1440;
-				}
 				Projectile.rotation = Projectile.velocity.ToRotation() + (float)(Math.PI / 2);
 			}
 			j = Projectile.ai[1] - 60;
-			for (int i = 0; i < 300; i += 20) {
+			for (int i = 0; i < 300; i += 20)
+			{
 				float xdist = (int)(Math.Sin((i + j) * (Math.PI / 180)) * 15);
 				float ydist = (int)(Math.Cos((i + j) * (Math.PI / 180)) * 15);
 				Vector2 offset = new Vector2(xdist, ydist);
@@ -68,10 +68,10 @@ namespace SpiritMod.Projectiles
 
 		public override void OnKill(int timeLeft)
 		{
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 5; i++)
 				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<FloranDust>());
-			}
 		}
+
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(5))

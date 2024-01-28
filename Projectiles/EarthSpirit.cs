@@ -11,8 +11,6 @@ namespace SpiritMod.Projectiles
 	{
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Earth Spirit");
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 8;
@@ -21,6 +19,7 @@ namespace SpiritMod.Projectiles
 			Projectile.timeLeft = 120;
 			Projectile.penetrate = 5;
 			Projectile.alpha = 255;
+			Projectile.DamageType = DamageClass.Magic;
 		}
 
 		public override bool PreAI()
@@ -28,7 +27,8 @@ namespace SpiritMod.Projectiles
 			Projectile.rotation = Projectile.velocity.ToRotation() + 1.57f;
 			Lighting.AddLight((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), 0.5f, 0.5f, 0.9f);
 
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 10; i++)
+			{
 				float x = Projectile.Center.X - Projectile.velocity.X / 10f * (float)i;
 				float y = Projectile.Center.Y - Projectile.velocity.Y / 10f * (float)i;
 				int num = Dust.NewDust(new Vector2(x, y), 1, 1, DustID.BlueCrystalShard, 0f, 0f, 0, default, 1f);
@@ -49,17 +49,19 @@ namespace SpiritMod.Projectiles
 		{
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 			ProjectileExtras.Explode(Projectile.whoAmI, 120, 120,
-				delegate {
-					for (int i = 0; i < 40; i++) {
+				delegate
+				{
+					for (int i = 0; i < 40; i++)
+					{
 						int num = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.BlueCrystalShard, 0f, -2f, 0, default, 2f);
 						Main.dust[num].noGravity = true;
 						Dust dust = Main.dust[num];
 						dust.position.X = dust.position.X + ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
 						Dust expr_92_cp_0 = Main.dust[num];
 						expr_92_cp_0.position.Y = expr_92_cp_0.position.Y + ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
-						if (Main.dust[num].position != Projectile.Center) {
+
+						if (Main.dust[num].position != Projectile.Center)
 							Main.dust[num].velocity = Projectile.DirectionTo(Main.dust[num].position) * 6f;
-						}
 					}
 				});
 		}

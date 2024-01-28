@@ -588,9 +588,6 @@ namespace SpiritMod.NPCs
 				pool.Clear();
 			}
 
-			if (spawnInfo.SpawnTileY <= Main.worldSurface && MyWorld.blueMoon && !Main.dayTime)
-				pool.Remove(0);
-
 			if (player.ZoneAsteroid())
 			{
 				pool.Clear();
@@ -631,6 +628,7 @@ namespace SpiritMod.NPCs
 
 			if (MyWorld.blueMoon && (player.ZoneOverworldHeight || player.ZoneSkyHeight))
 			{
+				pool.Remove(0);
 				pool.Add(ModContent.NPCType<MadHatter>(), 1f);
 				pool.Add(ModContent.NPCType<LunarSlime>(), 3.4f);
 
