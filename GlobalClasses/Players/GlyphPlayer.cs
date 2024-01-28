@@ -17,11 +17,10 @@ namespace SpiritMod.GlobalClasses.Players
 	{
 		public GlyphType Glyph { get; set; }
 
-		private int frenzyDamage;
-		private float genericCounter;
-		private int unholyCooldown;
+		public int frenzyDamage;
+		public float genericCounter;
+		public int unholyCooldown;
 		public float veilCounter;
-		public int voidStacks;
 		public bool zephyrStrike;
 
 		public float ChaosCounter => Player.miscCounterNormalized;
@@ -68,7 +67,7 @@ namespace SpiritMod.GlobalClasses.Players
 				Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Torch, 0, 0, 0, default, Main.rand.NextFloat(1f, 2f)).noGravity = true;
 			if (Glyph == GlyphType.Phase)
 				genericCounter = MathHelper.Max(genericCounter - .01f, 0);
-			if (Glyph == GlyphType.Veil && veilCounter > 0)
+			if (veilCounter > 0)
 			{
 				int shieldType = ModContent.ProjectileType<PhaseShield>();
 				if (Player.ownedProjectileCounts[shieldType] < 1) //Spawn a shield visual
@@ -93,101 +92,12 @@ namespace SpiritMod.GlobalClasses.Players
 			unholyCooldown = Math.Max(unholyCooldown - 1, 0);
 		}
 
-
-		#region hit overrides
-		public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) => SmartModifyHitAnything(target, item, null, ref modifiers);
-
-		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) => SmartModifyHitAnything(target, null, proj, ref modifiers);
-
-		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone) => SmartHitAnything(target, item, null, hit, damageDone);
-
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone) => SmartHitAnything(target, null, proj, hit, damageDone);
-		#endregion
-
-		private void SmartHitAnything(NPC target, Item item, Projectile proj, NPC.HitInfo info, int damage)
-		{
-			int baseRarity = Math.Max(Player.HeldItem.OriginalRarity, 1);
-
-			if (Glyph == GlyphType.Frost && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
-				FrostGlyph.FreezeEffect(Player, target, proj);
-			if (Glyph == GlyphType.Void && Main.rand.NextBool((int)MathHelper.Clamp(30 - (Player.HeldItem.useTime / 2f), 2, 12)))
-			{
-				voidStacks++;
-				VoidGlyph.VoidCollapse(Player, target, proj, damage, baseRarity, voidStacks); 
-			}
-			if (Glyph == GlyphType.Radiant)
-			{
-				genericCounter = 0;
-
-				if (Player.HasBuff(ModContent.BuffType<DivineStrike>()))
-					RadiantGlyph.RadiantStrike(Player, target);
-			}
-
-			if (target.value <= 0 || target.SpawnedFromStatue || target.friendly) //Don't let useless NPCs trigger widely beneficial effects
-				return;
-
-			if (Glyph == GlyphType.Unholy && unholyCooldown <= 0 && target.life <= 0)
-			{
-				UnholyGlyph.Erupt(Player, target, 10 * baseRarity);
-				unholyCooldown = 2;
-			}
-			if (Glyph == GlyphType.Sanguine)
-				SanguineGlyph.DrainEffect(Player, target);
-			if (Glyph == GlyphType.Blaze)
-				Player.AddBuff(ModContent.BuffType<BurningRage>(), 120);
-			if (Glyph == GlyphType.Bee)
-			{
-				if ((genericCounter = MathHelper.Clamp(genericCounter + (Player.HeldItem.useTime / 60f), 0, 1)) == 1)
-				{
-					BeeGlyph.ReleaseBees(Player, target, (int)(damage * .4f));
-					genericCounter = 0;
-				}
-				if (target.life <= 0)
-					BeeGlyph.HoneyEffect(Player);
-			}
-			if (Glyph == GlyphType.Phase)
-			{
-				if ((genericCounter = MathHelper.Clamp(genericCounter + (Player.HeldItem.useTime / 60f), 0, 1)) == 1)
-					Player.AddBuff(ModContent.BuffType<TemporalShift>(), (int)MathHelper.Clamp(Player.HeldItem.useTime * 2f, 30, 60));
-			}
-			if (Glyph == GlyphType.Rage)
-			{
-				bool notCascading = frenzyDamage == 0;
-				frenzyDamage = 0;
-
-				if (target.life <= 0 && notCascading)
-					frenzyDamage = Math.Abs(target.life);
-			}
-			if (Glyph == GlyphType.Veil)
-				veilCounter = MathHelper.Clamp(veilCounter + (Player.HeldItem.useTime / 300f), 0, 1);
-		}
-
-		private void SmartModifyHitAnything(NPC target, Item item, Projectile proj, ref NPC.HitModifiers mods)
-		{
-			if (Glyph == GlyphType.Rage && frenzyDamage > 0)
-			{
-				mods.FinalDamage.Base += frenzyDamage = Math.Min(frenzyDamage, 1000);
-				RageGlyph.RageEffect(Player, target, proj);
-			}
-		}
-
-		public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
-		{
-			if (Glyph == GlyphType.Phase)
-			{
-				float boost = MathHelper.Clamp(0.006f * Player.GetModPlayer<MyPlayer>().SpeedMPH, 0, 0.7f);
-				damage *= .8f + boost;
-			}
-			if (Glyph == GlyphType.Radiant && Player.HasBuff(ModContent.BuffType<DivineStrike>()))
-				damage *= 2.5f;
-		}
-
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 		{
 			if (veilCounter > 0)
 			{
 				float resistance = .5f; //Resist 50% damage at full charge
-				modifiers.FinalDamage *= resistance * veilCounter;
+				modifiers.FinalDamage *= 1f - (resistance * veilCounter);
 			}
 		}
 

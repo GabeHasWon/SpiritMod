@@ -44,13 +44,10 @@ using SpiritMod.Items.Sets.GraniteSet.GraniteArmor.Projectiles;
 using SpiritMod.Items.Sets.AccessoriesMisc.CrystalFlower;
 using SpiritMod.Items.Accessory.DarkfeatherVisage;
 using SpiritMod.Items.Sets.RunicSet.RunicArmor;
-using SpiritMod.Items.Accessory.ShieldCore;
 using SpiritMod.Items.BossLoot.StarplateDrops.StarArmor;
 using SpiritMod.NPCs.Town;
 using SpiritMod.Items.Accessory.Leather;
 using SpiritMod.Tiles.Ambient;
-using SpiritMod.GlobalClasses.Items;
-using SpiritMod.Items.Accessory.RabbitFoot;
 using Terraria.Localization;
 using Humanizer;
 

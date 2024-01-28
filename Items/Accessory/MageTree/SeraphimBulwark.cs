@@ -7,12 +7,6 @@ namespace SpiritMod.Items.Accessory.MageTree
     [AutoloadEquip(EquipType.Shield)]
     public class SeraphimBulwark : AccessoryItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Seraphim Bulwark");
-			// Tooltip.SetDefault("Increases maximum mana by 40\nAbsorbs 10% of the damage dealt by enemies\nThis damage is converted into a loss of mana instead");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;

@@ -8,12 +8,6 @@ namespace SpiritMod.Items.Accessory.MageTree
     [AutoloadEquip(EquipType.Shield)]
     public class ManaShield : AccessoryItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Mana Shield");
-			// Tooltip.SetDefault("Increases maximum mana by 20\nAbsorbs 10% of the damage dealt by enemies\nThis damage is converted into a loss of mana instead\nThe amount of mana lost is equal to 4x the damage absorbed");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 36;

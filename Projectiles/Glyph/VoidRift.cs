@@ -6,7 +6,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SpiritMod.GlobalClasses.Players;
 
 namespace SpiritMod.Projectiles.Glyph
 {
@@ -14,11 +13,8 @@ namespace SpiritMod.Projectiles.Glyph
 	{
 		private readonly int timeLeftMax = VoidGlyph.CollapseDuration;
 
-		public int TargetWhoAmI
-        {
-            get => (int)Projectile.ai[0];
-            set => Projectile.ai[0] = value;
-        }
+		public int Stacks { get => (int)Projectile.ai[1]; set => Projectile.ai[1] = value; }
+		public int TargetWhoAmI { get => (int)Projectile.ai[0]; set => Projectile.ai[0] = value; }
 
 		public override string Texture => SpiritMod.EMPTY_TEXTURE;
 
@@ -83,7 +79,6 @@ namespace SpiritMod.Projectiles.Glyph
 				SoundEngine.PlaySound(SoundID.NPCDeath6 with { Volume = .5f }, Projectile.Center);
 				SoundEngine.PlaySound(SoundID.NPCDeath11, Projectile.Center);
 			}
-			Main.LocalPlayer.GetModPlayer<GlyphPlayer>().voidStacks = 0;
 		}
 
 		public override bool? CanCutTiles() => false;

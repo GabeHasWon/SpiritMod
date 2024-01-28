@@ -4,7 +4,7 @@
 	{
 		None = 0,
 		AuroraData,
-		ProjectileData,
+		ProjGlyph,
 		PlaceMapPin,
 		Dodge,
 		Dash,

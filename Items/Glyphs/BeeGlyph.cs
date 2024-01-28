@@ -23,10 +23,11 @@ namespace SpiritMod.Items.Glyphs
 
 			int count = Main.rand.Next(1, 3);
 			for (int i = 0; i < count; i++)
-			{
-				Vector2 velocity = target.velocity.RotatedByRandom(1f);
-				Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center + velocity, velocity, owner.beeType(), owner.beeDamage(damage), 0, owner.whoAmI);
-			}
+				if (owner.ownedProjectileCounts[owner.beeType()] < 12)
+				{
+					Vector2 velocity = target.velocity.RotatedByRandom(1f);
+					Projectile.NewProjectile(owner.GetSource_OnHit(target), target.Center + velocity, velocity, owner.beeType(), owner.beeDamage(damage), 0, owner.whoAmI);
+				}
 		}
 
 		public static void HoneyEffect(Player owner)

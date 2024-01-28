@@ -60,8 +60,8 @@ BowSummonItem: {
 	Tooltip:
 		'''
 		Summons a possessed bow to fight for you
-		Uses the strongest arrows in your inventory
-		If the user has no arrows, shoots weaker Jester Arrows infinitely
+		Uses the first arrow in your inventory
+		If you have no arrows, shoots weaker Jester Arrows infinitely
 		'''
 }
 

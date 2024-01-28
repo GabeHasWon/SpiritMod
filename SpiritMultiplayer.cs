@@ -110,14 +110,37 @@ namespace SpiritMod
 		{
 			var id = (MessageType)reader.ReadByte();
 			byte player;
+			int proj;
+			byte glyph;
 
 			switch (id)
 			{
 				case MessageType.AuroraData:
 					MyWorld.auroraType = reader.ReadInt32();
 					break;
-				case MessageType.ProjectileData:
-					GlyphGlobalProjectile.ReceiveProjectileData(reader, whoAmI);
+				case MessageType.ProjGlyph:
+					proj = reader.ReadInt32();
+					glyph = reader.ReadByte();
+					byte rarity = reader.ReadByte();
+					int parent = reader.ReadInt32();
+					int pType = reader.ReadInt32();
+
+					if (Main.netMode == NetmodeID.Server)
+					{
+						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.ProjGlyph, 5);
+						packet.Write(proj);
+						packet.Write(glyph);
+						packet.Write(rarity);
+						packet.Write(parent);
+						packet.Write(pType);
+						packet.Send(ignoreClient: whoAmI);
+					}
+					if (Main.projectile[proj] is Projectile projectile && projectile.TryGetGlobalProjectile(out GlyphGlobalProjectile gProj))
+					{
+						gProj.Glyph = (GlyphType)glyph;
+						gProj.rarity = rarity;
+						gProj.parentData = new(parent, pType);
+					}
 					break;
 				case MessageType.PlaceMapPin:
 					int cursorX = reader.ReadInt32();
@@ -164,7 +187,8 @@ namespace SpiritMod
 					break;
 				case MessageType.PlayerGlyph:
 					player = reader.ReadByte();
-					GlyphType glyph = (GlyphType)reader.ReadByte();
+					glyph = reader.ReadByte();
+
 					if (Main.netMode == NetmodeID.Server)
 					{
 						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.PlayerGlyph, 2);
@@ -174,7 +198,7 @@ namespace SpiritMod
 					}
 					if (player == Main.myPlayer)
 						break;
-					Main.player[player].GetModPlayer<GlyphPlayer>().Glyph = glyph;
+					Main.player[player].GetModPlayer<GlyphPlayer>().Glyph = (GlyphType)glyph;
 					break;
 				case MessageType.BossSpawnFromClient:
 					if (Main.netMode == NetmodeID.Server)
@@ -221,16 +245,16 @@ namespace SpiritMod
 					(Main.npc[stagWhoAmI].ModNPC as AuroraStag).TameAnimationTimer = AuroraStag.TameAnimationLength;
 					break;
 				case MessageType.SpawnTrail:
-					int projindex = reader.ReadInt32();
+					proj = reader.ReadInt32();
 
 					if (Main.netMode == NetmodeID.Server)
 					{ 
 						//If received by the server, send to all clients instead
-						WriteToPacket(SpiritMod.Instance.GetPacket(), (byte)MessageType.SpawnTrail, projindex).Send();
+						WriteToPacket(SpiritMod.Instance.GetPacket(), (byte)MessageType.SpawnTrail, proj).Send();
 						break;
 					}
 
-					if (Main.projectile[projindex].ModProjectile is IManualTrailProjectile trailProj)
+					if (Main.projectile[proj].ModProjectile is IManualTrailProjectile trailProj)
 						trailProj.DoTrailCreation(SpiritMod.TrailManager);
 					break;
 				case MessageType.PlaceSuperSunFlower:
