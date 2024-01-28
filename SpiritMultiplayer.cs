@@ -121,20 +121,25 @@ namespace SpiritMod
 				case MessageType.ProjGlyph:
 					proj = reader.ReadInt32();
 					glyph = reader.ReadByte();
-					int rarity = reader.ReadInt32();
+					byte rarity = reader.ReadByte();
+					int parent = reader.ReadInt32();
+					int pType = reader.ReadInt32();
 
 					if (Main.netMode == NetmodeID.Server)
 					{
-						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.ProjGlyph, 3);
+						ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.ProjGlyph, 5);
 						packet.Write(proj);
 						packet.Write(glyph);
 						packet.Write(rarity);
+						packet.Write(parent);
+						packet.Write(pType);
 						packet.Send(ignoreClient: whoAmI);
 					}
 					if (Main.projectile[proj] is Projectile projectile && projectile.TryGetGlobalProjectile(out GlyphGlobalProjectile gProj))
 					{
 						gProj.Glyph = (GlyphType)glyph;
 						gProj.rarity = rarity;
+						gProj.parentData = new(parent, pType);
 					}
 					break;
 				case MessageType.PlaceMapPin:

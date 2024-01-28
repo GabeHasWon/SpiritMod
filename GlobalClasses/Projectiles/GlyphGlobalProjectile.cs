@@ -14,9 +14,15 @@ namespace SpiritMod.GlobalClasses.Projectiles
 {
 	public class GlyphGlobalProjectile : GlobalProjectile
 	{
-		public int rarity;
+		public float genericCounter;
+		public byte rarity;
+		public (int, int) parentData = new(-1, -1); //Used for minions and minion-fired projectiles to share data
 
-        public GlyphType Glyph { get; set; }
+		/// <returns> The <see cref="GlyphGlobalProjectile"/> instance of the parent projectile. </returns>
+		private GlyphGlobalProjectile Parent() => (parentData.Item1 != -1 && parentData.Item2 != -1 && parentData.Item2 == Main.projectile[parentData.Item1].type)
+				? Main.projectile[parentData.Item1].GetGlobalProjectile<GlyphGlobalProjectile>() : null;
+
+		public GlyphType Glyph { get; set; }
 
         public override bool InstancePerEntity => true;
 
@@ -27,15 +33,21 @@ namespace SpiritMod.GlobalClasses.Projectiles
 				if (entity is Item item)
 				{
 					Glyph = item.GetGlobalItem<GlyphGlobalItem>().Glyph;
-					rarity = item.OriginalRarity;
+					rarity = (byte)item.OriginalRarity;
 				}
 				else if (entity is Projectile parent)
 				{
+					if (ProjectileID.Sets.MinionShot[projectile.type])
+						parentData = new(parent.whoAmI, parent.type);
+
 					Glyph = parent.GetGlobalProjectile<GlyphGlobalProjectile>().Glyph;
 					rarity = parent.GetGlobalProjectile<GlyphGlobalProjectile>().rarity;
 				}
-				rarity = Math.Max(rarity, 1);
+				rarity = Math.Max(rarity, (byte)1);
 			}
+
+			if (projectile.minion)
+				parentData = new(projectile.whoAmI, projectile.type);
 
 			//Whether the projectile was spawned from item use, or another projectile
 			if (source is EntitySource_ItemUse item)
@@ -51,8 +63,17 @@ namespace SpiritMod.GlobalClasses.Projectiles
 				packet.Write(projectile.whoAmI);
 				packet.Write((byte)Glyph);
 				packet.Write(rarity);
+				packet.Write(parentData.Item1);
+				packet.Write(parentData.Item2);
 				packet.Send();
 			}
+		}
+
+		public override void AI(Projectile projectile)
+		{
+			if (Glyph == GlyphType.Radiant && Parent() != null && !ProjectileID.Sets.MinionShot[projectile.type])
+				Parent().genericCounter = MathHelper.Min(Parent().genericCounter + (1 / (25 * 3f)), 1);
+			//Called for minions to increment radiance, but not minion-fired projectiles
 		}
 
 		public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
@@ -70,12 +91,22 @@ namespace SpiritMod.GlobalClasses.Projectiles
 				VoidGlyph.VoidCollapse(player, target, projectile, damageDone / 2 * rarity);
 			if (Glyph == GlyphType.Radiant)
 			{
-				mPlayer.genericCounter = 0;
-
-				if (player.HasBuff(ModContent.BuffType<DivineStrike>()))
+				if (Parent() != null)
 				{
-					RadiantGlyph.RadiantStrike(player, target);
-					player.ClearBuff(ModContent.BuffType<DivineStrike>());
+					if (Parent().genericCounter >= 1)
+						RadiantGlyph.RadiantStrike(player, target);
+
+					Parent().genericCounter = 0;
+				}
+				else
+				{
+					mPlayer.genericCounter = 0;
+
+					if (player.HasBuff(ModContent.BuffType<DivineStrike>()))
+					{
+						RadiantGlyph.RadiantStrike(player, target);
+						player.ClearBuff(ModContent.BuffType<DivineStrike>());
+					}
 				}
 			}
 
@@ -93,11 +124,17 @@ namespace SpiritMod.GlobalClasses.Projectiles
 				player.AddBuff(ModContent.BuffType<BurningRage>(), 120);
 			if (Glyph == GlyphType.Bee)
 			{
-				if ((mPlayer.genericCounter = MathHelper.Clamp(mPlayer.genericCounter + (useTime / 60f), 0, 1)) == 1)
+				if (Parent() != null && (Parent().genericCounter = MathHelper.Clamp(Parent().genericCounter + (useTime / 60f), 0, 1)) == 1)
+				{
+					BeeGlyph.ReleaseBees(player, target, (int)(damageDone * .4f));
+					Parent().genericCounter = 0;
+				}
+				else if ((mPlayer.genericCounter = MathHelper.Clamp(mPlayer.genericCounter + (useTime / 60f), 0, 1)) == 1)
 				{
 					BeeGlyph.ReleaseBees(player, target, (int)(damageDone * .4f));
 					mPlayer.genericCounter = 0;
 				}
+
 				if (target.life <= 0)
 					BeeGlyph.HoneyEffect(player);
 			}
@@ -133,7 +170,7 @@ namespace SpiritMod.GlobalClasses.Projectiles
 				modifiers.FinalDamage.Base += mPlayer.frenzyDamage = Math.Min(mPlayer.frenzyDamage, 1000);
 				RageGlyph.RageEffect(player, target, projectile);
 			}
-			if (Glyph == GlyphType.Radiant && player.HasBuff(ModContent.BuffType<DivineStrike>()))
+			if (Glyph == GlyphType.Radiant && ((player.HasBuff(ModContent.BuffType<DivineStrike>()) && Parent() == null) || (Parent() != null && Parent().genericCounter >= 1)))
 				modifiers.FinalDamage *= 2.5f;
 		}
 	}

@@ -11,7 +11,7 @@ namespace SpiritMod
 
 		public static bool CanLeech(this NPC npc) => npc.lifeMax > 5 && !npc.friendly && !npc.dontTakeDamage && !npc.immortal;
 
-		public static bool CanDropLoot(this NPC npc) => npc.lifeMax > 5 && !npc.friendly && !npc.SpawnedFromStatue;
+		public static bool CanDropLoot(this NPC npc) => npc.lifeMax > 5 && npc.value > 0 && !npc.friendly && !npc.SpawnedFromStatue;
 
 		/*public static void AddItem(ref Chest shop, ref int nextSlot, int item, int price = -1, bool check = true)
 		{
