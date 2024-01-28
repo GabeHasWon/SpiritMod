@@ -24,7 +24,7 @@ namespace SpiritMod.Skies
 		}
 
 		public override void Activate(Vector2 position, params object[] args) => _isActive = true;
-		public override void Deactivate(params object[] args) => _isActive = true;
+		public override void Deactivate(params object[] args) => _isActive = false;
 		public override void Reset() => _isActive = false;
 
 		public override bool IsActive()

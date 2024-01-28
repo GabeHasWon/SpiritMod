@@ -145,10 +145,11 @@ namespace SpiritMod.Mechanics.BoonSystem.HestiaBoon
 		public int baseDefense;
 
 		public bool setStats = false;
+		public bool resetStats = false;
 
 		public override bool PreDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			if(!setStats)
+			if (!setStats)
 			{
 				baseDamage = npc.damage;
 				baseDefense = npc.defense;
@@ -156,13 +157,16 @@ namespace SpiritMod.Mechanics.BoonSystem.HestiaBoon
 				setStats = true;
 			}
 
-			if (drawHestiaRunes) runeAlpha += 0.05f;
-			else runeAlpha -= 0.05f;
+			if (drawHestiaRunes) 
+				runeAlpha += 0.05f;
+			else 
+				runeAlpha -= 0.05f;
 
 			runeAlpha = MathHelper.Clamp(runeAlpha, 0f, 1f);
 
 			if (npc != null && npc.active && runeAlpha > 0f && (npc.ModNPC is IBoonable || npc.type == NPCID.Medusa))
 			{
+				resetStats = true;
 				npc.damage = (int)(baseDamage * 1.2f);
 				npc.defense = baseDefense + 15;
 
@@ -187,7 +191,7 @@ namespace SpiritMod.Mechanics.BoonSystem.HestiaBoon
 
 						Color color = new Color(247, 117, 42, 0);
 
-						Texture2D glow = Terraria.GameContent.TextureAssets.Extra[49].Value;
+						Texture2D glow = TextureAssets.Extra[49].Value;
 						color.A = 0;
 
 						float glowScale = 1 + ((float)Math.Sin(Main.GameUpdateCount) / 4);
@@ -201,10 +205,11 @@ namespace SpiritMod.Mechanics.BoonSystem.HestiaBoon
 					runes[j] = rune;
 				}
 			}
-			else
+			else if (resetStats) // Reset stats once after getting them modified
 			{
 				npc.damage = baseDamage;
 				npc.defense = baseDefense;
+				resetStats = false;
 			}
 
 			return true;

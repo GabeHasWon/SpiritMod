@@ -272,6 +272,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.KineticRailgun
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 	}
+
 	public class TeslaCannonGNPC : GlobalNPC
 	{
 		public override bool InstancePerEntity => true;

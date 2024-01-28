@@ -47,6 +47,7 @@ namespace SpiritMod.NPCs.StarjinxEvent
 		{
 			if (Main.netMode != NetmodeID.Server)
 			{
+				return;
 				SpiritMod.vignetteShader.UseColor(_color);
 				SpiritMod.vignetteShader.UseIntensity(_opacity);
 				SpiritMod.vignetteEffect.Parameters["Radius"].SetValue(_radius);

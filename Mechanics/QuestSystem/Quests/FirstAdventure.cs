@@ -31,6 +31,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		public override void OnQuestComplete()
 		{
 			QuestManager.UnlockQuest<IdleIdol>(true);
+			QuestManager.UnlockQuest<JellyfishHunter>(true);
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.Demolitionist, QuestManager.GetQuest<RescueQuestStylist>());
 			ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.Dryad, QuestManager.GetQuest<LumothQuest>());
 			//ModContent.GetInstance<QuestWorld>().AddQuestQueue(NPCID.TravellingMerchant, QuestManager.GetQuest<TravelingMerchantDesertQuest>());

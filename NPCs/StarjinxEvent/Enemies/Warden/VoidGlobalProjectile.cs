@@ -27,7 +27,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden
 			return true;
 		}
 
-		public void OnTeleport(Projectile projectile)
+		public static void OnTeleport(Projectile projectile)
 		{
 			if (projectile.type == ModContent.ProjectileType<VoidProjectile>())
 			{

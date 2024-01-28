@@ -25,7 +25,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 				QuestManager.UnlockQuest<ExplorerQuestBlueMoon>(true);
 				QuestManager.UnlockQuest<SlayerQuestVultureMatriarch>(true);
 
-				if (Main.bloodMoon && QuestManager.GetQuest<SlayerQuestClown>().IsUnlocked)
+				if (Main.bloodMoon)
 					AddQuestQueue(NPCID.PartyGirl, QuestManager.GetQuest<SlayerQuestClown>());
 
 				AddQuestQueue(NPCID.Dryad, QuestManager.GetQuest<OlympiumQuest>());

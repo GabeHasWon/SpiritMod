@@ -837,14 +837,6 @@ namespace SpiritMod
 
 		private static void CrossModContent()
 		{
-			if (ModLoader.TryGetMod("Census", out Mod census))
-			{
-				census.Call("TownNPCCondition", ModContent.NPCType<Adventurer>());
-				census.Call("TownNPCCondition", ModContent.NPCType<Gambler>());
-				census.Call("TownNPCCondition", ModContent.NPCType<Rogue>());
-				census.Call("TownNPCCondition", ModContent.NPCType<RuneWizard>());
-			}
-
 			if (ModLoader.TryGetMod("Fargowiltas", out Mod fargos))
 			{
 				// AddSummon, order or value in terms of vanilla bosses, your mod internal name, summon   

@@ -1,28 +1,6 @@
-﻿- Fixed Clumped Blood minion trying to spawn a primtrail on servers
-- Fixed null check in Maneater's ParentAlive()
-- Synced the Maneater's child projectiles properly
-- Fixed issue with Glowroot possibly dropping in stacks of 0
-- Made custom drops from trees be more consistent
-- Glowroot from glowing mushroom trees has a 1/5 chance to drop instead of a 1/2, and drops in stacks of 1-3
-- Ice Berries from snow trees now have a 1/20 chance instead of a 1/100 (1/25 * 1/5) chance
-- Added flavor text to Glowroot, Blank Canvas, and Soulbloom
-- Fixed bad TileObjectData in SlotMachine & every color of sign
-- Fixed Stripped Bamboo Barrel and Bamboo Pike drawing incorrectly on retro lighting modes
-- Changed several tiles to use generic map names rather than their own unique name
-- Changed dust types emitted by several tiles when struck
-- Fixed Brute Hammer's spin attack doing more damage and knockback than intended
-- Fixed Eye of the Beholder not consuming the correct amount of mana on use
-- Fixed Kakamora Windglider not facing the player and tweaked AI slightly
-- Fixed VWB and Ancient Avian not facing the player
-- Fixed Waterfall micropass not breaking stuff properly
-- Fixed Spirit music boxes dropping with a random prefix when destroyed
-- Updated Glow Toad jump logic
-- Updated hover logic and tweaked visuals for Eldritch Cloak and Robotic Arm mounts
-- Fixed Eldritch Cloak mount attempting to attack non-hostile NPCs
-- Fixed Retro + zoom issue in Ocean
-- Fixed issue where quest saving/loading used a localized value, making it incompatible if you switch languages.
-    Loading for legacy (localized) saves still works, so if you go into an existing world, you'll still have your quests.
-    Saving & exiting the world will then update the save so you can switch languages freely.
-- Fixed Hemophora, Festerfly, Gloop, Glitterfly and Ancient Apostle broken AI
-- Reduced the amount of dust that the Two-Faced Masks's projectiles emit
-- Fixed ocean water transparency applying with invalid water styles
+﻿- Fixed Deep Ocean permenantly hiding clouds once entered
+- Removed old Census compatibility (since it is automatic now)
+- Changed how Vinewrath Bane modifies damage out of Briar, he now deals 2x contact damage when outside of the Briar
+- Fixed longstanding damage/defense immutability issue
+- Fixed the quest No Laughing Matter's requirement to be unlocked before being unlocked
+- Made Jellyfish Hunter quest obtainable

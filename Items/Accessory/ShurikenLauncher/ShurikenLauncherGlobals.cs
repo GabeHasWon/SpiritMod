@@ -72,6 +72,7 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 
 				opacity = 1f - MathHelper.Clamp(Main.MouseWorld.Distance(hoverBox.ClosestPointInRect(Main.MouseWorld)) / 100f, 0, 1);
 			}
+
 			hitDelay = Math.Max(hitDelay - .1f, 0);
 
 			return base.PreAI(npc);
@@ -80,6 +81,7 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 		public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			Player player = Main.LocalPlayer;
+
 			if (!player.GetModPlayer<ShurikenLauncherPlayer>().throwerGlove || !player.HeldItem.IsRanged() || !npc.CanDamage() || (player.Distance(npc.Center) < ShurikenLauncher.EffectiveDistance))
 				return;
 
@@ -93,6 +95,7 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 				int frame = i / 4;
 				Rectangle drawFrame = texture.Frame(1, 2, 0, frame);
 				float distance = (lerp * 2f) + (hitDelay * 8f);
+
 				if (i == 4)
 					distance = 0;
 

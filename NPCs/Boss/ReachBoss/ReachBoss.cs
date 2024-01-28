@@ -55,10 +55,10 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			NPC.DeathSound = SoundID.NPCDeath1;
 		}
 
-		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
 			NPC.lifeMax = (int)(NPC.lifeMax * (Main.masterMode ? 0.85f : 1.0f) * 0.66f * balance);
-			NPC.damage = (int)(NPC.damage * 0.6f);
+			NPC.damage = (int)(NPC.damage * 0.8f);
 		}
 
 		bool pulseTrail;
@@ -100,17 +100,6 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 			}
 			else
 				NPC.alpha = Math.Clamp(NPC.alpha - 2, 0, 255);
-
-			if (!player.ZoneBriar())
-			{
-				NPC.defense = 25;
-				NPC.damage = 45;
-			}
-			else
-			{
-				NPC.defense = 9;
-				NPC.damage = 28;
-			}
 
 			if (NPC.life <= (NPC.lifeMax / 10 * 4) && NPC.ai[3] == 0)
 			{
@@ -497,6 +486,12 @@ namespace SpiritMod.NPCs.Boss.ReachBoss
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Plantera_Green, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.LavaMoss, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
 			}
+		}
+
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{
+			if (!target.ZoneBriar())
+				modifiers.FinalDamage *= 2;
 		}
 
 		public override bool PreKill() => false;

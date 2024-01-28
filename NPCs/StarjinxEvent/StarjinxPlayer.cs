@@ -28,6 +28,7 @@ namespace SpiritMod.NPCs.StarjinxEvent
 
 			if (Main.netMode != NetmodeID.Server)
 			{
+				return;
 				Player.ManageSpecialBiomeVisuals("SpiritMod:StarjinxSky", zoneStarjinxEvent);
 				SpiritMod.starjinxBorderEffect.Parameters["Radius"].SetValue(StarjinxMeteorite.EVENT_RADIUS);
 				SpiritMod.starjinxBorderEffect.Parameters["NoiseTexture"].SetValue(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
