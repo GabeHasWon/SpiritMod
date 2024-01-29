@@ -1,12 +1,14 @@
 ﻿using SpiritMod.Tiles.Furniture.Pylons;
 using Terraria.Enums;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace SpiritMod.Items.ByBiome.Briar.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	internal class BriarPylonItem : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Briar Pylon");
+		public override LocalizedText Tooltip => Language.GetText("CommonItemTooltip.TeleportationPylon");
 
 		public override void SetDefaults()
 		{

@@ -59,7 +59,7 @@ namespace SpiritMod.GlobalClasses.Projectiles
 
 			if (Main.netMode != NetmodeID.SinglePlayer && Glyph != GlyphType.None)
 			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.ProjGlyph, 3);
+				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.ProjGlyph, 5);
 				packet.Write(projectile.whoAmI);
 				packet.Write((byte)Glyph);
 				packet.Write(rarity);

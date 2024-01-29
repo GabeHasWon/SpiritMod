@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
-	[Sacrifice(1)]
+	[Sacrifice(3)]
     public class DistressJellyItem : ModItem
     {
         public override void SetDefaults()
