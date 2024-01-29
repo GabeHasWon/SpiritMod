@@ -1,3 +1,4 @@
 ﻿- Fixed Infernal Pact doing math wrong
 - Fixed Cryolite Aura trying to apply a debuff to dummy NPC slot
 - Added additional check for Glyphs that only allows their GlobalItem to be applied if it has a max stack of one
+- Made the Adventurer always spawn in the top half of the Briar so he's easier to find

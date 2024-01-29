@@ -29,9 +29,12 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public override void PreUpdate()
 		{
+			if (!Player.HeldItem.TryGetGlobalItem(out GlyphGlobalItem glyphItem))
+
 			if (Player.whoAmI == Main.myPlayer)
 			{
 				var temp = Glyph; //Store the previous tick glyph type
+
 				if (!Player.HeldItem.IsAir)
 				{
 					if (ChaosCounter == 0)
@@ -44,7 +47,7 @@ namespace SpiritMod.GlobalClasses.Players
 						}
 					} //Chaos glyph effect
 
-					Glyph = Player.HeldItem.GetGlobalItem<GlyphGlobalItem>().Glyph;
+					Glyph = glyphItem.Glyph;
 					if (Glyph == GlyphType.None && Player.nonTorch >= 0 && Player.nonTorch != Player.selectedItem && !Player.inventory[Player.nonTorch].IsAir)
 						Glyph = Player.inventory[Player.nonTorch].GetGlobalItem<GlyphGlobalItem>().Glyph;
 				}
@@ -65,14 +68,17 @@ namespace SpiritMod.GlobalClasses.Players
 
 			if (Glyph == GlyphType.Blaze && Player.velocity.Length() > 1.5f && Main.rand.NextBool(2))
 				Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Torch, 0, 0, 0, default, Main.rand.NextFloat(1f, 2f)).noGravity = true;
+
 			if (Glyph == GlyphType.Phase)
 				genericCounter = MathHelper.Max(genericCounter - .01f, 0);
+
 			if (veilCounter > 0)
 			{
 				int shieldType = ModContent.ProjectileType<PhaseShield>();
 				if (Player.ownedProjectileCounts[shieldType] < 1) //Spawn a shield visual
 					Projectile.NewProjectile(null, Player.Center, Vector2.Zero, shieldType, 0, 0, Player.whoAmI);
 			}
+
 			if (Glyph == GlyphType.Radiant)
 			{
 				if ((genericCounter = MathHelper.Min(genericCounter + (1 / (Player.HeldItem.useTime * 3f)), 1)) == 1)

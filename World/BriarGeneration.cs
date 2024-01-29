@@ -811,16 +811,16 @@ namespace SpiritMod.World
 			c3.Carve(_noise);
 
 			//place vinewarth hizouse
-			bool leftSide = _x < GenVars.dungeonX ? true : false;
+			bool leftSide = _x < GenVars.dungeonX;
 			float hizouseY = mainBottom.Y - WorldGen.genRand.NextFloat(2f, 20f);
+
 			for (int testX = (int)(mainBottom.X - 100); testX < (int)(mainBottom.X + 100); testX++)
 			{
 				Tile tile = Framing.GetTileSafely(testX, (int)hizouseY);
 				if (tile.HasTile && (tile.TileType == TileID.BlueDungeonBrick || tile.TileType == TileID.GreenDungeonBrick || tile.TileType == TileID.PinkDungeonBrick || tile.TileType == TileID.LihzahrdBrick))
-				{
 					hizouseY -= 30;
-				}
 			}
+
 			int distanceFromMain = _halfSize.X / 2;
 			int width = WorldGen.genRand.Next(9);
 			float leftYOffset = WorldGen.genRand.NextFloat(-6, 6);
@@ -888,18 +888,19 @@ namespace SpiritMod.World
 			_testY = (int)endPillar.Point.Y;
 
 			//place floran ore
-			//FUCKIN
-			//FLOWER ORE
 			int veins = (int)(_size.X * _size.Y * 0.00045f); //vein area
+
 			for (int i = 0; i < veins; i++)
 			{
 				int x = WorldGen.genRand.Next(_x - _halfSize.X, _x + _halfSize.X);
 				int y = WorldGen.genRand.Next(_y + _halfSize.Y / 3, _y + _halfSize.Y);
+
 				if (!WithinEllipse(x, y, _center, _size))
 				{
 					i--;
 					continue;
 				}
+
 				DoFlowerOre(x, y, WorldGen.genRand.Next(1, 4) * 2 + 1, WorldGen.genRand.Next(4, 11));
 			}
 		}
@@ -1036,7 +1037,7 @@ namespace SpiritMod.World
 			return opps || count > total * 0.6;
 		}
 
-		private void CreateBuildingAt(EaseFunction function, int minX, int maxX, int minY, int maxY, ref bool placedAdventurer)
+		private void CreateBuildingAt(EaseFunction function, int minX, int maxX, int minY, int maxY, ref bool placedAdventurer, int maxYForAdventurer)
 		{
 			var polygonVertices = new List<Point>
 			{
@@ -1065,9 +1066,9 @@ namespace SpiritMod.World
 				polygonVertices.Add(p);
 			}
 
-			ushort boundaryTile = (ushort)ModContent.TileType<BlastStone>(); //TODO: CHANGE
-			ushort[] extras = new ushort[] { TileID.LivingMahoganyLeaves, (ushort)ModContent.TileType<BarkTileTile>() };
-			ushort[] wallTypes = new ushort[] { (ushort)ModContent.WallType<BarkWall>(), (ushort)ModContent.WallType<ReachWallNatural>(), WallID.MudstoneBrick }; //TODO: CHANGE
+			ushort boundaryTile = (ushort)ModContent.TileType<BlastStone>();
+			ushort[] extras = [TileID.LivingMahoganyLeaves, (ushort)ModContent.TileType<BarkTileTile>()];
+			ushort[] wallTypes = [(ushort)ModContent.WallType<BarkWall>(), (ushort)ModContent.WallType<ReachWallNatural>(), WallID.MudstoneBrick]; //TODO: CHANGE
 
 			//place shape
 			for (int i = 0; i < polygonVertices.Count; i++)
@@ -1083,14 +1084,12 @@ namespace SpiritMod.World
 			bool BreakInnerLoop(int x, int y, ref int ct)
 			{
 				Tile tile = Framing.GetTileSafely(x, y);
+
 				if (tile.HasTile && tile.TileType == boundaryTile)
-				{
 					ct++;
-				}
 				else if (ct > 0)
-				{
 					return true;
-				}
+
 				return false;
 			}
 
@@ -1099,17 +1098,20 @@ namespace SpiritMod.World
 			{
 				int ct = 0;
 				int leftX = minX;
+
 				for (; leftX <= maxX; leftX++)
-				{
-					if (BreakInnerLoop(leftX, y, ref ct)) break;
-				}
-				if (ct < 1) continue;
+					if (BreakInnerLoop(leftX, y, ref ct)) 
+						break;
+
+				if (ct < 1) 
+					continue;
 				int rightX = maxX;
 				ct = 0;
+
 				for (; rightX >= minX; rightX--)
-				{
-					if (BreakInnerLoop(rightX, y, ref ct)) break;
-				}
+					if (BreakInnerLoop(rightX, y, ref ct)) 
+						break;
+
 				if (leftX <= rightX)
 				{
 					interiorSections[y] = new Point(leftX, rightX);
@@ -1125,9 +1127,8 @@ namespace SpiritMod.World
 			bool WithinInterior(int x, int y)
 			{
 				if (interiorSections.TryGetValue(y, out Point bounds))
-				{
 					return x >= bounds.X && x <= bounds.Y;
-				}
+
 				return false;
 			}
 
@@ -1182,7 +1183,7 @@ namespace SpiritMod.World
 			bool topActuallyPlaced = BuildingAttemptTopEntrance(boundaryTile, extras, minX, maxX, minY, maxY, 20);
 
 			//try put bottom platforms in
-			bool doBottom = !doTop ? true : WorldGen.genRand.NextBool();
+			bool doBottom = !doTop || WorldGen.genRand.NextBool();
 			bool bottomActuallyPlaced = false;
 			if (doBottom)
 			{
@@ -1201,7 +1202,9 @@ namespace SpiritMod.World
 								break;
 							}
 						}
-						if (failed) break;
+
+						if (failed) 
+							break;
 
 						Tile tile = Framing.GetTileSafely(testX, maxY + 1);
 						if (tile.HasTile)
@@ -1210,8 +1213,11 @@ namespace SpiritMod.World
 							break;
 						}
 					}
+
 					attempts++;
-					if (failed) continue;
+
+					if (failed) 
+						continue;
 
 					Tile platform1 = Framing.GetTileSafely(x, maxY);
 					Tile platform2 = Framing.GetTileSafely(x + 1, maxY);
@@ -1227,30 +1233,30 @@ namespace SpiritMod.World
 				}
 			}
 
-			if (!topActuallyPlaced && !bottomActuallyPlaced)
-			{
-				//PANIC, try place top again but with more errors available
+			if (!topActuallyPlaced && !bottomActuallyPlaced) //PANIC, try place top again but with more errors available
 				BuildingAttemptTopEntrance(boundaryTile, extras, minX, maxX, minY, maxY, 60);
-			}
 
 			//type, width, height, frameX, frameY
 			List<Func<(ushort, int, int, int, int)>> furnituresAndTiles = GetFurnitureList();
 			//add statues
 
 			int furnitureX = minX;
+
 			while (furnitureX < maxX)
 			{
-				if (furnituresAndTiles.Count == 0) break;
+				if (furnituresAndTiles.Count == 0) 
+					break;
 
 				furnitureX++;
-				if (!WithinInterior(furnitureX, maxY - 1)) continue;
+				if (!WithinInterior(furnitureX, maxY - 1)) 
+					continue;
 
 				if (WorldGen.genRand.NextBool(3))
 				{
 					int index = WorldGen.genRand.Next(furnituresAndTiles.Count);
 					(ushort, int, int, int, int) data = furnituresAndTiles[index]();
-
 					bool failed = false;
+
 					for (int testX = furnitureX; testX < furnitureX + data.Item2; testX++)
 					{
 						for (int testY = maxY - data.Item3; testY < maxY; testY++)
@@ -1262,13 +1268,17 @@ namespace SpiritMod.World
 								break;
 							}
 						}
-						if (failed) break;
+						if (failed) 
+							break;
 					}
-					if (failed) continue;
+
+					if (failed) 
+						continue;
 
 					//place it
 					short fX = (short)data.Item4;
 					short fY = (short)data.Item5;
+
 					for (int tileX = furnitureX; tileX < furnitureX + data.Item2; tileX++)
 					{
 						for (int tileY = maxY - data.Item3; tileY < maxY; tileY++)
@@ -1281,47 +1291,53 @@ namespace SpiritMod.World
 							tile.Slope = 0;
 							fY += 18;
 						}
+
 						fX += 18;
 						fY = (short)data.Item5;
 					}
 
-					if (data.Item1 == ModContent.TileType<Tiles.Furniture.ReachChest>()) //TODO: Make specific chest
-					{
-						int cIndex = Chest.CreateChest(furnitureX, maxY - 2);
-					}
+					if (data.Item1 == ModContent.TileType<Tiles.Furniture.ReachChest>())
+						Chest.CreateChest(furnitureX, maxY - 2);
 
 					furnitureX += data.Item2 - 1;
-
 					furnituresAndTiles.RemoveAt(index);
 				}
 			}
 
-			if (!placedAdventurer)
+			if (!placedAdventurer && maxY < maxYForAdventurer)
 			{
 				for (int x = minX + 1; x < maxX - 2; x++)
 				{
+					if (Collision.WetCollision(new Vector2(x - 2, maxY - 3), 48, 48))
+						continue;
+
 					placedAdventurer = TryPlaceAdventurer(x, maxY - 1);
 
-					if (placedAdventurer) break;
+					if (placedAdventurer) 
+						break;
 				}
 			}
 		}
 
-		private bool TryPlaceAdventurer(int x, int y)
+		private static bool TryPlaceAdventurer(int x, int y)
 		{
 			for (int testX = x; testX < x + 3; testX++)
 			{
 				Tile test = Framing.GetTileSafely(testX, y + 1);
-				if (!test.HasTile) return false;
+
+				if (!test.HasTile) 
+					return false;
 
 				for (int testY = y - 3 + 1; testY <= y; testY++)
 				{
 					test = Framing.GetTileSafely(testX, testY);
-					if (test.HasTile) return false;
+
+					if (test.HasTile) 
+						return false;
 				}
 			}
 
-			int adv = NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (x + 1) * 16 + 8, (y - 1) * 16 + 8, ModContent.NPCType<NPCs.Town.BoundAdventurer>());
+			int adv = NPC.NewNPC(Entity.GetSource_NaturalSpawn(), (x + 1) * 16 + 8, (y - 1) * 16 + 8, ModContent.NPCType<NPCs.Town.BoundAdventurer>());
 			Main.npc[adv].homeTileX = -1;
 			Main.npc[adv].homeTileY = -1;
 			Main.npc[adv].direction = WorldGen.genRand.NextBool() ? 1 : -1;
@@ -1338,8 +1354,8 @@ namespace SpiritMod.World
 				{
 					return (TileID.Statues, 2, 3, 36 * WorldGen.genRand.Next(43), 0);
 				},
-				() => ((ushort)ModContent.TileType<Tiles.Furniture.ReachChest>(), 2, 2, 0, 0),  //TODO: make specific chest
-				() => ((ushort)ModContent.TileType<Tiles.Furniture.BoneAltar>(), 3, 3, 0, 0)  //TODO: make specific chest
+				() => ((ushort)ModContent.TileType<Tiles.Furniture.ReachChest>(), 2, 2, 0, 0),
+				() => ((ushort)ModContent.TileType<Tiles.Furniture.BoneAltar>(), 3, 3, 0, 0)
 			};
 			return furnituresAndTiles;
 		}
@@ -1628,6 +1644,7 @@ namespace SpiritMod.World
 					int safeInARow = 0;
 					int highestInARow = 0;
 					int prevSurfaceY = -1;
+					
 					for (int tileX = minX; tileX <= maxX; tileX += tilePer)
 					{
 						int surfaceY = FindSurfaceAt(tileX);
@@ -1789,11 +1806,12 @@ namespace SpiritMod.World
 					int maxBuildingX = _x + (int)(M_CAVE_RADIUS_TOP * 4);
 					int minBuildingY = (int)(_caveTop.Y + M_CAVE_RADIUS_TOP);
 					int maxBuildingY = (int)(_caveBottom.Y - 50);
+					int maxYForAdventurer = (maxBuildingY + minBuildingY) / 2;
 
 					int buildings = WorldGen.genRand.Next((int)(worldSizeBonus * 0.8), (int)(worldSizeBonus * 1.2));
-					List<Rectangle> buildingPositions = new List<Rectangle>();
-
+					List<Rectangle> buildingPositions = [];
 					int errorMax = 2000;
+
 					for (int i = 0; i < buildings; i++)
 					{
 						int errors = 0;
@@ -1807,13 +1825,16 @@ namespace SpiritMod.World
 							if (tile.HasTile)
 							{
 								int airSpaces = 0;
+
 								for (int x1 = x - 2; x1 <= x + 2; x1++)
 								{
 									for (int y1 = y - 2; y1 <= y; y1++)
 									{
-										if (x1 == x && y1 == y) continue;
+										if (x1 == x && y1 == y) 
+											continue;
 
 										Tile tile2 = Framing.GetTileSafely(x1, y1);
+
 										if (!tile2.HasTile)
 											airSpaces++;
 									}
@@ -1823,6 +1844,7 @@ namespace SpiritMod.World
 								{
 									bool valid = true;
 									Vector2 myPos = new Vector2(x, y);
+
 									foreach (Rectangle pos in buildingPositions)
 									{
 										if (Vector2.Distance(myPos, pos.Center()) < 40f)
@@ -1831,6 +1853,7 @@ namespace SpiritMod.World
 											break;
 										}
 									}
+
 									if (!valid)
 										continue;
 
@@ -1841,6 +1864,7 @@ namespace SpiritMod.World
 									int minBY = center.Y - height / 2;
 									int maxBX = minBX + width;
 									int maxBY = minBY + height;
+
 									if (CheckBuildingValid(minBX, maxBX, maxBY))
 									{
 										buildingPositions.Add(new Rectangle(minBX, minBY, width, height));
@@ -1852,18 +1876,19 @@ namespace SpiritMod.World
 					}
 
 					bool placedAdventurer = false;
+
 					foreach (Rectangle r in buildingPositions)
-					{
-						CreateBuildingAt(bezierPinchEase, r.X, r.X + r.Width, r.Y, r.Y + r.Height, ref placedAdventurer);
-					}
+						CreateBuildingAt(bezierPinchEase, r.X, r.X + r.Width, r.Y, r.Y + r.Height, ref placedAdventurer, maxYForAdventurer);
 
 					int error = 0;
 					while (!placedAdventurer && error < 10000)
 					{
 						int x = WorldGen.genRand.Next(_x - _halfSize.X, _x + _halfSize.X);
-						int y = WorldGen.genRand.Next(_y + _halfSize.Y / 3, _y + _halfSize.Y);
+						int y = WorldGen.genRand.Next(_y + _halfSize.Y / 3, _y + (int)(_halfSize.Y / 1.5f));
+
 						if (WithinEllipse(x, y, _center, _size))
 							placedAdventurer = TryPlaceAdventurer(x, y);
+
 						error++;
 					}
 
