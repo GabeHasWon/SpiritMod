@@ -7,7 +7,8 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
-    public class ReachBossSummon : ModItem
+	[Sacrifice(3)]
+	public class ReachBossSummon : ModItem
     {
         public override void SetDefaults()
         {

@@ -80,7 +80,7 @@ namespace SpiritMod.Items.Sets.FrigidSet.Frostbite
 			Vector2 dustVel = (Vector2.Normalize(dirUnit) * randomMagnitude).RotatedBy(Main.rand.NextFloat(1.0f, 2.0f));
 
 			Dust.NewDustPerfect(Projectile.Center + dirUnit, Main.rand.NextBool(2) ? DustID.ApprenticeStorm : DustID.Snow, dustVel, 180, Color.White with { A = 0 }, randomMagnitude).noGravity = true;
-			if (Main.rand.NextBool(3))
+			if (Main.netMode != NetmodeID.Server && Main.rand.NextBool(3))
 			{
 				Vector2 spawnPos = Projectile.Center + (dirUnit / 2);
 				Color color = (Color.Lerp(Color.White, Color.CornflowerBlue, Main.rand.NextFloat()) with { A = 0 }) * Main.rand.NextFloat(.10f, .28f) * Projectile.Opacity * Lighting.Brightness((int)(spawnPos.X / 16), (int)(spawnPos.Y / 16));

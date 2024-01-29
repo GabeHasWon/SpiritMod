@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(1)]
 	public class DreamlightJellyItem : ModItem
 	{
 		public override void SetDefaults()

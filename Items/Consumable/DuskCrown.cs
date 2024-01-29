@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(3)]
 	public class DuskCrown : ModItem
 	{
 		public override void SetDefaults()

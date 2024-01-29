@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(3)]
 	public class JewelCrown : ModItem
 	{
 		public override void SetDefaults()

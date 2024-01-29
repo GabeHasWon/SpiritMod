@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
+	[Sacrifice(3)]
 	public class MartianTransmitter : ModItem
 	{
 		public override void SetDefaults()
