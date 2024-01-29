@@ -28,6 +28,8 @@ namespace SpiritMod.GlobalClasses.Items
 
 		protected override bool CloneNewInstances => true;
 
+		public override bool AppliesToEntity(Item item, bool lateInstantiation) => item.maxStack == 1;
+
 		public void SetGlyph(Item item, GlyphType glyph)
 		{
 			randomGlyph = false;
@@ -447,12 +449,14 @@ namespace SpiritMod.GlobalClasses.Items
 			randomGlyph = data.GetBool("randomGlyph");
 
 			GlyphType glyph = (GlyphType)data.GetInt("glyph");
+
 			if (glyph > GlyphType.None && glyph < GlyphType.Count)
 			{
 				Glyph = glyph;
 				AdjustStats(item);
 			}
-			else Glyph = GlyphType.None;
+			else 
+				Glyph = GlyphType.None;
 		}
 
 		public override void NetSend(Item item, BinaryWriter writer)
@@ -466,12 +470,14 @@ namespace SpiritMod.GlobalClasses.Items
 			randomGlyph = reader.ReadBoolean();
 
 			GlyphType glyph = (GlyphType)reader.ReadByte();
+
 			if (glyph > GlyphType.None && glyph < GlyphType.Count)
 			{
 				Glyph = glyph;
 				AdjustStats(item);
 			}
-			else Glyph = GlyphType.None;
+			else 
+				Glyph = GlyphType.None;
 		}
 	}
 }

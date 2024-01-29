@@ -20,7 +20,8 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetDamage(DamageClass.Generic) *= 1 + (player.statDefense * 0.0075f);
+			player.GetDamage(DamageClass.Generic) += player.statDefense.Positive * 0.0075f;
+			player.GetDamage(DamageClass.Generic) += 0.04f;
 			player.statDefense.FinalMultiplier *= 0;
 		}
 

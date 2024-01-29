@@ -265,7 +265,9 @@ namespace SpiritMod.World
 				Main.npc[num].homeless = true;
 				placed = true;
 			}
-			if (!placed) SpiritMod.Instance.Logger.Error("Worldgen: FAILED to place Goblin Tower, ground not flat enough?");
+
+			if (!placed) 
+				SpiritMod.Instance.Logger.Error("Worldgen: FAILED to place Goblin Tower, ground not flat enough?");
 			return placed;
 		}
 

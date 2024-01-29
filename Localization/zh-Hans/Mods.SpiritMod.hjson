@@ -283,6 +283,7 @@ Events: {
 		BossChecklistIntegration.Condition: 在夜晚使用[i:SpiritMod/BlueMoonSpawn]召唤。
 		OnStart: 苍蓝秘月正在升起……
 		IsDay: 月亮在白昼不够强大。
+		// IsCalmNight: The night's too calm.
 	}
 
 	JellyDeluge: {

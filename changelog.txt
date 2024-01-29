@@ -1,13 +1,3 @@
-﻿- Fixed Deep Ocean permenantly hiding clouds once entered
-- Removed old Census compatibility (since it is automatic now)
-- Changed how Vinewrath Bane modifies damage out of Briar, he now deals 2x contact damage when outside of the Briar
-- Fixed longstanding damage/defense immutability issue
-- Fixed the quest No Laughing Matter's requirement to be unlocked before being unlocked
-- Made Jellyfish Hunter quest obtainable
-- Fixed Vulture Matriarch not dropping loot properly
-- Made the Soul Shard, Pieces of Eight, Mad Hat, Floran Staff projectile, Talon's Fury projectile, and Spirit Wand not being magic projectiles
-- Fixed Soul Weaver not having shot spread as intended, improved code
-- Fixed Creeping Shuriken not being auto-reusable when the Autofire option is on
-- Made Creeping Shuriken fade out properly
-- Made Tourquoise Lens not work during calm nights
-- Fixed spawns not working during Blue Moon events
+﻿- Fixed Infernal Pact doing math wrong
+- Fixed Cryolite Aura trying to apply a debuff to dummy NPC slot
+- Added additional check for Glyphs that only allows their GlobalItem to be applied if it has a max stack of one
