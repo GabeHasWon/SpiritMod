@@ -29,7 +29,8 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public override void PreUpdate()
 		{
-			if (!Player.HeldItem.TryGetGlobalItem(out GlyphGlobalItem glyphItem))
+			if (!Player.HeldItem.TryGetGlobalItem(out GlyphGlobalItem glyphItem)) // This item cannot be glyph'd
+				return;
 
 			if (Player.whoAmI == Main.myPlayer)
 			{
