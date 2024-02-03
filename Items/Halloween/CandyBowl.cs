@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Halloween
 {
+	[Sacrifice(1)]
 	public class CandyBowl : ModItem
 	{
 		public override void SetDefaults()

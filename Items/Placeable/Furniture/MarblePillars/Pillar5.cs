@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture.MarblePillars
 {
+	[Sacrifice(1)]
 	public class Pillar5 : ModItem
 	{
 		public override void SetDefaults()

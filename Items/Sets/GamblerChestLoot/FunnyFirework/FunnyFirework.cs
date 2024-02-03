@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot.FunnyFirework
 {
+	[Sacrifice(99)]
 	public class FunnyFirework : ModItem
 	{
 		public override void SetDefaults()

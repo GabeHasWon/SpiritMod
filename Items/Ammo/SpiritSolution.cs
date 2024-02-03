@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Ammo
 {
+	[Sacrifice(99)]
 	public class SpiritSolution : ModItem
 	{
 		public override void SetDefaults()

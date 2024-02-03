@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 {
+	[Sacrifice(1)]
 	public class BambooBenchItem : ModItem
 	{
 		public override void SetDefaults()

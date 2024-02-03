@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Material
 {
+	[Sacrifice(1)]
 	public class Canvas : ModItem
 	{
 		public override void SetDefaults()

@@ -30,9 +30,9 @@ namespace SpiritMod.GlobalClasses.Projectiles
 		{
 			void Share(Entity entity)
 			{
-				if (entity is Item item)
+				if (entity is Item item && item.TryGetGlobalItem<GlyphGlobalItem>(out var glyphItem))
 				{
-					Glyph = item.GetGlobalItem<GlyphGlobalItem>().Glyph;
+					Glyph = glyphItem.Glyph;
 					rarity = (byte)item.OriginalRarity;
 				}
 				else if (entity is Projectile parent)

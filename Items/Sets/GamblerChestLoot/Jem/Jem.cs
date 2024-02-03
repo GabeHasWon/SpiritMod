@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot.Jem
 {
+	[Sacrifice(1)]
 	public class Jem : ModItem
 	{
 		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<TrollfaceMask>();

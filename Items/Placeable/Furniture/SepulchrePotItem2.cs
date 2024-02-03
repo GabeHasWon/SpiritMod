@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SepulchrePotItem2 : ModItem
 	{
 		public override void SetDefaults()

@@ -7,14 +7,9 @@ using System;
 
 namespace SpiritMod.NPCs.Town.Oracle
 {
+	[Sacrifice(1)]
 	public class OracleScripture : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Sacred Scripture");
-			// Tooltip.SetDefault("Calls the Oracle to you\nCan only be used while in the Marble Caverns");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 46;

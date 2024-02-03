@@ -8,6 +8,7 @@ using Terraria.Localization;
 
 namespace SpiritMod.Mechanics.Fathomless_Chest
 {
+	[Sacrifice(3)]
 	public class Mystical_Dice : ModItem
 	{
 		public override void SetDefaults()

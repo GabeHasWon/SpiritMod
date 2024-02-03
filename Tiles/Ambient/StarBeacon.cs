@@ -19,6 +19,7 @@ using Terraria.ObjectData;
 namespace SpiritMod.Tiles.Ambient
 {
 	[TileTag(TileTags.Indestructible)]
+	[Sacrifice(1)]
 	public class StarBeacon : ModTile
 	{
 		private float alphaCounter = 1;

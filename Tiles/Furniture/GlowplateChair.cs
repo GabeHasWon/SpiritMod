@@ -62,6 +62,7 @@ namespace SpiritMod.Tiles.Furniture
 		public override void MouseOver(int i, int j) => FurnitureHelper.MouseOver(i, j, ModContent.ItemType<GlowplateChairItem>());
 	}
 
+	[Sacrifice(1)]
 	public class GlowplateChairItem : ModItem
 	{
 		public override void SetDefaults()

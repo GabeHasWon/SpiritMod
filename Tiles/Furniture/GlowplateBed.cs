@@ -107,7 +107,8 @@ namespace SpiritMod.Tiles.Furniture
             Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/Furniture/GlowplateBed_Glow").Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, height), new Color(150, 150, 150, 100), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 	}
-	
+
+	[Sacrifice(1)]
 	public class GlowplateBedItem : ModItem
 	{
 		public override void SetDefaults()

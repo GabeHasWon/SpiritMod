@@ -2,3 +2,9 @@
 - Fixed Cryolite Aura trying to apply a debuff to dummy NPC slot
 - Added additional check for Glyphs that only allows their GlobalItem to be applied if it has a max stack of one
 - Made the Adventurer always spawn in the top half of the Briar so he's easier to find
+- Fixed config item IDs being completely incorrect
+- Fixed Goblin Tower worldgen not including Shadowbreak wand & updated code
+- Extensively tested dontdigup worldgen, fixed issues and softlocks
+- Fixed poor Slag Fury tooltip
+- Fixed Work Benches being Workbenches in some places
+- Fixed a ton of incorrect/inconsistent research values

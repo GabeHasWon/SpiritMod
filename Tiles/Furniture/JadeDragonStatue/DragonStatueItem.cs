@@ -4,6 +4,7 @@ using Terraria;
 
 namespace SpiritMod.Tiles.Furniture.JadeDragonStatue
 {
+	[Sacrifice(1)]
 	public class DragonStatueItem : ModItem
 	{
 		public override void SetDefaults()

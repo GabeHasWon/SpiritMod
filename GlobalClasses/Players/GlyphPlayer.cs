@@ -40,7 +40,8 @@ namespace SpiritMod.GlobalClasses.Players
 				{
 					if (ChaosCounter == 0)
 					{
-						var chaosItems = Player.inventory.Where(x => x != null && x.type != ItemID.None && x.GetGlobalItem<GlyphGlobalItem>().randomGlyph);
+						var chaosItems = Player.inventory.Where(x => x != null && x.type != ItemID.None && x.TryGetGlobalItem<GlyphGlobalItem>(out var glyph) && glyph.randomGlyph);
+
 						foreach (Item chaosItem in chaosItems)
 						{
 							chaosItem.GetGlobalItem<GlyphGlobalItem>().SetGlyph(chaosItem, ChaosGlyph.Randomize(Glyph));

@@ -4,6 +4,7 @@ using Terraria;
 
 namespace SpiritMod.Items.Sets.PirateStuff
 {
+	[Sacrifice(1)]
 	public class PirateKey : ModItem
 	{
 		public override void SetDefaults()

@@ -10,6 +10,7 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Furniture
 {
+	[Sacrifice(1)]
     public class FestivalLanternItem : ModItem
 	{
 		public override void SetDefaults()

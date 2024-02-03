@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture.Bamboo
 {
+	[Sacrifice(1)]
 	public class BambooBirdCageItem : ModItem
 	{
 		public override void SetDefaults()

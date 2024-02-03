@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.Furniture
 {
+	[Sacrifice(1)]
 	public class SkullPile : ModItem
 	{
 		public override void SetDefaults()

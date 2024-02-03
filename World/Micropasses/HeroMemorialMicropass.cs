@@ -38,11 +38,14 @@ internal class HeroMemorialMicropass : Micropass
 
 		int y = (int)(Main.worldSurface * 0.5f);
 
+		if (WorldGen.remixWorldGen)
+			y = WorldGen.genRand.Next((int)(Main.maxTilesY / 1.5f), Main.maxTilesY - 200);
+
 		while (!Main.tile[x, y].HasTile || Main.tile[x, y].TileType != TileID.Grass) //Loop to valid ground
 		{
 			y++;
 
-			if (y > Main.worldSurface + 20)
+			if ((!WorldGen.remixWorldGen && y > Main.worldSurface + 20) || y > Main.maxTilesY - 150)
 				goto retry;
 		}
 

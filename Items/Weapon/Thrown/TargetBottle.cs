@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Weapon.Thrown
 {
+	[Sacrifice(99)]
 	public class TargetBottle : ModItem
 	{
 		public override void SetDefaults()

@@ -48,6 +48,7 @@ namespace SpiritMod.World.Sepulchre
 		}
 	}
 
+	[Sacrifice(1)]
 	public class CursedArmorItem : ModItem
 	{
 		public override void SetDefaults()

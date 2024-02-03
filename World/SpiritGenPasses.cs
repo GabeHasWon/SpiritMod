@@ -50,7 +50,7 @@ namespace SpiritMod.World
 			if (ModContent.GetInstance<SpiritClientConfig>().DoubleHideoutGeneration)
 			{
 				new BanditHideout().Generate();
-				new GoblinTower().Generate();
+				GoblinTower.Generate();
 				MyWorld.gennedBandits = true;
 				MyWorld.gennedTower = true;
 			}
@@ -63,7 +63,7 @@ namespace SpiritMod.World
 				}
 				else
 				{
-					new GoblinTower().Generate();
+					GoblinTower.Generate();
 					MyWorld.gennedTower = true;
 				}
 			}
@@ -739,10 +739,10 @@ namespace SpiritMod.World
 
 				while (true)
 				{
-					int repositionCount = 0;
-
 					if (!hugIsland)
 					{
+						int repositionCount = 0;
+
 						pos = new Point(WorldGen.genRand.Next(Main.maxTilesX / 6, (int)(Main.maxTilesX / 1.16f)), WorldGen.genRand.Next(80, (int)(Main.worldSurface * 0.34)));
 
 						while (pos.X > Main.maxTilesX / 2 - 360 && pos.X < Main.maxTilesX / 2 + 240)
@@ -751,10 +751,7 @@ namespace SpiritMod.World
 							repositionCount++;
 
 							if (repositionCount > 500) // Cut off loop if repeated a ton without success
-							{
-								houseLocations.Remove(pos); // Remove position from list so we don't retry this
 								goto fullRestart;
-							}
 						}
 					}
 
@@ -785,7 +782,7 @@ namespace SpiritMod.World
 					}
 
 					if (failed)
-						continue;
+						goto fullRestart;
 
 					if (hugIsland)
 						houseLocations.Remove(pos);

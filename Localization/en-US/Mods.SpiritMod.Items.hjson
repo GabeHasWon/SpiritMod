@@ -4926,7 +4926,7 @@ TreemanStatue: {
 	DisplayName: Statue of the Old Gods
 	Tooltip:
 		'''
-		Provides the effects of a Workbench, Potion Crafting Station, and Bookcase
+		Provides the effects of a Work Bench, Potion Crafting Station, and Bookcase
 		'The Old Ones will protect you'
 		'''
 }
@@ -8824,7 +8824,7 @@ DriftwoodTableItem: {
 }
 
 DriftwoodWorkbenchItem: {
-	DisplayName: Driftwood Workbench
+	DisplayName: Driftwood Work Bench
 	Tooltip: ""
 }
 

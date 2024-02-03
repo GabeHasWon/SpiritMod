@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.PirateStuff
 {
+	[Sacrifice(1)]
 	public class PirateChest : ModItem
 	{
 		public override void SetDefaults()

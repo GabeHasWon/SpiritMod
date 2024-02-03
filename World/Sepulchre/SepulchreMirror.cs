@@ -37,6 +37,7 @@ namespace SpiritMod.World.Sepulchre
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
+	[Sacrifice(1)]
 	public class SepulchreMirrorItem : ModItem
 	{
 		public override void SetDefaults()

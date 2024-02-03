@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Tiles.Furniture.Critters
 {
+	[Sacrifice(1)]
 	public class BlossomCage : ModItem
 	{
 		public override void SetDefaults()
@@ -76,7 +77,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
-    public class BriarmothCage : ModItem
+	[Sacrifice(1)]
+	public class BriarmothCage : ModItem
     {
 		public override void SetDefaults()
         {
@@ -140,7 +142,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
-    public class CleftCage : ModItem
+	[Sacrifice(1)]
+	public class CleftCage : ModItem
 	{
 		public override void SetDefaults()
 		{
@@ -204,6 +207,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
+	[Sacrifice(1)]
 	public class PaleCrinoidCage : ModItem
 	{
 		public override void SetDefaults()
@@ -267,6 +271,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
+	[Sacrifice(1)]
 	public class RedCrinoidCage : ModItem
 	{
 		public override void SetDefaults()
@@ -330,6 +335,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
+	[Sacrifice(1)]
 	public class BrownCrinoidCage : ModItem
 	{
 		public override void SetDefaults()
@@ -394,6 +400,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
+	[Sacrifice(1)]
 	public class LuvdiscBowl : ModItem
 	{
 
@@ -457,6 +464,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
+
+	[Sacrifice(1)]
 	public class GulperBowl : ModItem
 	{
 		public override void SetDefaults()
@@ -520,6 +529,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
+	[Sacrifice(1)]
 	public class TubewormBowl : ModItem
 	{
 		public override void SetDefaults()
@@ -584,6 +594,7 @@ namespace SpiritMod.Tiles.Furniture.Critters
 		public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 	}
 
+	[Sacrifice(1)]
 	public class VibeshroomJarItem : ModItem
 	{
 		public override void SetDefaults()

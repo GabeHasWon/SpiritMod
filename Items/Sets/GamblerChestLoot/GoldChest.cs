@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot
 {
+	[Sacrifice(5)]
 	public class GoldChest : ModItem
 	{
 		public override void SetDefaults()

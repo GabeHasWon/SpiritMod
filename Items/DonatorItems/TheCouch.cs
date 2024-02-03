@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.DonatorItems
 {
+	[Sacrifice(1)]
 	public class TheCouch : ModItem
 	{
 		public override void SetDefaults()

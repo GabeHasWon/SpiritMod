@@ -7,6 +7,7 @@ using SpiritMod.Tiles.Furniture;
 
 namespace SpiritMod.Items.Placeable.Furniture.GraniteSpikes
 {
+	[Sacrifice(1)]
 	public class GraniteSpike3 : ModItem
 	{
 		public override void SetDefaults()

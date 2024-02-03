@@ -32,6 +32,7 @@ namespace SpiritMod.Tiles.Furniture
         }
 	}
 
+	[Sacrifice(1)]
 	public class GlowplateChestItem : ModItem
 	{
 		public override void SetDefaults()

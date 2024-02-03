@@ -9,6 +9,7 @@ using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.GamblerChestLoot.Champagne
 {
+	[Sacrifice(99)]
 	public class Champagne : ModItem
 	{
 		public override void SetDefaults()

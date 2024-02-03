@@ -8,6 +8,7 @@ public class BriarFountain : BaseFountain
 	//internal override int WaterStyle => ModContent.GetInstance<ReachWaterStyle>().Slot;
 }
 
+[Sacrifice(1)]
 public class BriarFountainItem : BaseFountainItem
 {
 	internal override int PlaceType => ModContent.TileType<BriarFountain>();

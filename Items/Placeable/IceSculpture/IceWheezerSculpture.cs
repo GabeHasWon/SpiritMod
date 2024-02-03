@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Placeable.IceSculpture
 {
+	[Sacrifice(1)]
 	public class IceWheezerSculpture : ModItem
 	{
 		public override void SetDefaults()

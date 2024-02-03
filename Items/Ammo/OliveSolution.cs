@@ -4,6 +4,7 @@ using Terraria;
 
 namespace SpiritMod.Items.Ammo
 {
+	[Sacrifice(99)]
 	class OliveSolution : ModItem
 	{
 		public override void SetDefaults()

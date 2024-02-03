@@ -8,6 +8,7 @@ using Terraria.ObjectData;
 
 namespace SpiritMod.Tiles.Furniture.SpaceJunk
 {
+	[Sacrifice(1)]
 	public class ScrapItem1 : ModItem
 	{
 		public override void SetDefaults()
@@ -45,6 +46,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 
+	[Sacrifice(1)]
 	public class ScrapItem2 : ModItem
 	{
 		public override void SetDefaults()
@@ -82,6 +84,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 
+	[Sacrifice(1)]
 	public class ScrapItem3 : ModItem
 	{
 		public override void SetDefaults()
@@ -127,6 +130,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 
+	[Sacrifice(1)]
 	public class ScrapItem4 : ModItem
 	{
 		public override void SetDefaults()
@@ -172,6 +176,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 
+	[Sacrifice(1)]
 	public class ScrapItem5 : ModItem
 	{
 		public override void SetDefaults()
@@ -209,6 +214,7 @@ namespace SpiritMod.Tiles.Furniture.SpaceJunk
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) => SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j) * 16);
 	}
 
+	[Sacrifice(1)]
 	public class ScrapItem6 : ModItem
 	{
 		public override void SetDefaults()

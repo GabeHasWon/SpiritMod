@@ -6,14 +6,14 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Consumable
 {
-	[Sacrifice(3)]
+	[Sacrifice(1)]
 	public class StoneSkin : ModItem
 	{
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.Cyan;
-			Item.maxStack = Item.CommonMaxStack;
+			Item.maxStack = 1;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = Item.useAnimation = 20;
 			Item.noMelee = true;
