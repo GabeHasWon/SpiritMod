@@ -28,7 +28,7 @@ namespace SpiritMod.GlobalClasses.Items
 
 		protected override bool CloneNewInstances => true;
 
-		public override bool AppliesToEntity(Item item, bool lateInstantiation) => item.maxStack == 1;
+		public override bool AppliesToEntity(Item item, bool lateInstantiation) => lateInstantiation && item.maxStack == 1;
 
 		public void SetGlyph(Item item, GlyphType glyph)
 		{
