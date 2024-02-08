@@ -661,6 +661,14 @@ namespace SpiritMod.NPCs
 			}
 		}
 
+		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
+		{
+			if (npc.HasBuff(ModContent.BuffType<WitheringLeaf>()))
+				modifiers.Defense.Flat -= 2;
+			if (shadowbroken)
+				modifiers.Defense.Flat -= 25;
+		}
+
 		public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
 		{
 			bool summon = projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry;
