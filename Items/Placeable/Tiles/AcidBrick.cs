@@ -1,3 +1,5 @@
+using SpiritMod.Items.Placeable.Furniture;
+using SpiritMod.Items.Placeable.Furniture.Acid;
 using SpiritMod.Tiles.Block;
 using Terraria;
 using Terraria.ID;
@@ -28,6 +30,10 @@ namespace SpiritMod.Items.Placeable.Tiles
 			recipe.AddIngredient(ItemID.StoneBlock, 5);
 			recipe.AddTile(TileID.HeavyWorkBench);
 			recipe.Register();
+
+			Recipe recipe2 = CreateRecipe();
+			recipe2.AddIngredient(ModContent.ItemType<AcidPlatformItem>(), 2);
+			recipe2.Register();
 		}
 	}
 }

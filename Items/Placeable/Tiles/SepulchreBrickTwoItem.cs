@@ -1,3 +1,4 @@
+using SpiritMod.Items.Placeable.Furniture;
 using SpiritMod.World.Sepulchre;
 using Terraria;
 using Terraria.ID;
@@ -27,6 +28,10 @@ namespace SpiritMod.Items.Placeable.Tiles
 			recipe.AddIngredient(ItemID.GrayBrick, 5);
 			recipe.AddTile(TileID.HeavyWorkBench);
 			recipe.Register();
+
+			Recipe recipe2 = CreateRecipe();
+			recipe2.AddIngredient(ModContent.ItemType<SepulchrePlatformItem>(), 2);
+			recipe2.Register();
 		}
 	}
 }
