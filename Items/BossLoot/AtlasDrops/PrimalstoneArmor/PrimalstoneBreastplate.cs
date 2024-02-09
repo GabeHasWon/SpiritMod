@@ -1,18 +1,12 @@
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.BossLoot.AtlasDrops.PrimalstoneArmor
 {
 	[AutoloadEquip(EquipType.Body)]
 	public class PrimalstoneBreastplate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Primalstone Breastplate");
-			// Tooltip.SetDefault("Increases life regeneration\n5% increased melee damage\n17% increased melee critical strike chance\n7% increased magic critical strike chance");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 34;
