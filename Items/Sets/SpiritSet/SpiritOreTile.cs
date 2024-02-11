@@ -16,11 +16,13 @@ namespace SpiritMod.Items.Sets.SpiritSet
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
+			Main.tileOreFinderPriority[Type] = 655;
 
 			TileID.Sets.Ore[Type] = true;
 
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(30, 144, 255), name);
+
 			HitSound = SoundID.Tink;
 			MinPick = 180;
 		}

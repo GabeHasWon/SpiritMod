@@ -29,6 +29,8 @@ namespace SpiritMod.NPCs.BloodGazer
 			NPCHelper.BuffImmune(Type);
 		}
 
+		public override bool IsLoadingEnabled(Mod mod) => true;
+
 		public override void SetDefaults()
 		{
 			NPC.Size = new Vector2(26, 24);

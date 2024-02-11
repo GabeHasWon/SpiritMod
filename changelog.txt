@@ -1,10 +1,16 @@
-﻿- Fixed Infernal Pact doing math wrong
-- Fixed Cryolite Aura trying to apply a debuff to dummy NPC slot
-- Added additional check for Glyphs that only allows their GlobalItem to be applied if it has a max stack of one
-- Made the Adventurer always spawn in the top half of the Briar so he's easier to find
-- Fixed config item IDs being completely incorrect
-- Fixed Goblin Tower worldgen not including Shadowbreak wand & updated code
-- Extensively tested dontdigup worldgen, fixed issues and softlocks
-- Fixed poor Slag Fury tooltip
-- Fixed Work Benches being Workbenches in some places
-- Fixed a ton of incorrect/inconsistent research values
+﻿- Fixed Atlas spawning super far away in multiplayer when using Stone Fist
+- Fixed Wintry Soul being catchable despite never having a catch item
+- Made Wintry Soul despawn after being taken or left
+- Updated Wintry Soul leave text to include its despawning
+- Buffed Pool Noodle (8 base damage to 14 base damage), increased value by 6 silver
+- Disabled old Blood Gazer eye NPC
+- Centered the Starplate Beacon asteroid structure
+- Fixed burst Blaster weapons breaking with Glyphs
+- Increased Spirit Ore priority to slightly higher than Titanium
+- Added check that should stop certain visual issues with glowmasks from occuring
+- Halved Asteroid biome spawn rate increase (60% -> 30%)
+- Made MJW drop a consistent amount of Tiny Lunazoa, reduced to 20-29
+- Fixed Huskstalk Bow decreasing enemy defense each time Withering Leaf is inflicted
+- Fixed Unstable Affliction decreasing enemy defense each time it's inflicted
+- Fixed an error in Slag Fury's buff description
+- Corrosive, Driftwood, Glowplate, Sepulchre, and Spirit platforms can now be crafted back into their materials

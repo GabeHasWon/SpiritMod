@@ -323,7 +323,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard
 			notExpertRule.AddCommon<MJWMask>(7);
 			notExpertRule.AddCommon<MJWTrophy>(10);
 			notExpertRule.AddOneFromOptions<Moonshot, NautilusClub, JellynautBubble, MoonjellySummonStaff>(1);
-			notExpertRule.AddCommon<TinyLunazoaItem>(1, 30, 40);
+			notExpertRule.AddCommon<TinyLunazoaItem>(1, 20, 30);
 
 			npcLoot.Add(notExpertRule);
 		}

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using SpiritMod.Projectiles.Clubs;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -45,6 +46,11 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 
 		public override void PostAI(NPC npc) => _runeGlow = (npc.HasBuff(ModContent.BuffType<RunicSiphon>())) ? Math.Min(_runeGlow + 0.05f, 0.5f) : Math.Max(_runeGlow - 0.05f, 0);
 
-		public override Color? GetAlpha(NPC npc, Color drawColor) => Color.Lerp(drawColor, new Color(250, 85, 167), _runeGlow) * npc.Opacity;
+		public override Color? GetAlpha(NPC npc, Color drawColor)
+		{
+			if (_runeGlow > 0)
+				return Color.Lerp(drawColor, new Color(250, 85, 167), _runeGlow) * npc.Opacity;
+			return null;
+		}
 	}
 }

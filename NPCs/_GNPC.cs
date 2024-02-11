@@ -538,7 +538,7 @@ namespace SpiritMod.NPCs
 
 			if (player.ZoneAsteroid())
 			{
-				spawnRate = (int)(spawnRate * .4f);
+				spawnRate = (int)(spawnRate * .7f);
 				maxSpawns = (int)(maxSpawns * 1.1f);
 			}
 

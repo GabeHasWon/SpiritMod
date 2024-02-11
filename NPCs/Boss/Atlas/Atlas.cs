@@ -80,7 +80,6 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void AI()
 		{
-			bool expertMode = Main.expertMode; //expert mode bool
 			Player player = Main.player[NPC.target]; //player target
 			bool aiChange = NPC.life <= NPC.lifeMax * 0.75f; //ai change to phase 2
 			bool aiChange2 = NPC.life <= NPC.lifeMax * 0.5f; //ai change to phase 3
@@ -90,7 +89,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			int defenseBuff = (int)(35f * (1f - NPC.life / NPC.lifeMax));
 			NPC.defense = NPC.defDefense + defenseBuff;
 
-			if (NPC.ai[0] == 0f)
+			if (NPC.ai[0] == 0f) // Spawn arms
 			{
 				arms[0] = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X - 80 - Main.rand.Next(80, 160), (int)NPC.position.Y, ModContent.NPCType<AtlasArmRight>(), NPC.whoAmI, NPC.whoAmI);
 				arms[1] = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + 80 + Main.rand.Next(80, 160), (int)NPC.position.Y, ModContent.NPCType<AtlasArmLeft>(), NPC.whoAmI, NPC.whoAmI);
@@ -99,7 +98,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 				Main.npc[arms[0]].netUpdate = true;
 				Main.npc[arms[1]].netUpdate = true;
 			}
-			else if (NPC.ai[0] == 1f)
+			else if (NPC.ai[0] == 1f) // Fade in
 			{
 				NPC.ai[1] += 1f;
 				if (NPC.ai[1] >= 210f)
@@ -163,8 +162,8 @@ namespace SpiritMod.NPCs.Boss.Atlas
 					#region Flying Movement
 					if (Math.Sqrt((dist.X * dist.X) + (dist.Y * dist.Y)) < 325)
 					{
-						float speed = expertMode ? 21f : 18f; //made more aggressive.  expert mode is more.  dusking base value is 7
-						float acceleration = expertMode ? 0.16f : 0.13f; //made more aggressive.  expert mode is more.  dusking base value is 0.09
+						float speed = Main.expertMode ? 21f : 18f; //made more aggressive.  expert mode is more.  dusking base value is 7
+						float acceleration = Main.expertMode ? 0.16f : 0.13f; //made more aggressive.  expert mode is more.  dusking base value is 0.09
 						Vector2 vector2 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
 						float xDir = player.position.X + (player.width / 2) - vector2.X;
 						float yDir = (float)(player.position.Y + (player.height / 2) - 120) - vector2.Y;
@@ -215,13 +214,13 @@ namespace SpiritMod.NPCs.Boss.Atlas
 					#endregion
 
 					timer += phaseChange ? 2 : 1; //if below 20% life fire more often
-					int shootThings = expertMode ? 200 : 250; //fire more often in expert mode
+					int shootThings = Main.expertMode ? 200 : 250; //fire more often in expert mode
 					if (timer > shootThings)
 					{
 						direction.Normalize();
 						direction *= 8f;
 						int amountOfProjectiles = Main.rand.Next(6, 8);
-						int damageAmount = expertMode ? 54 : 62; //always account for expert damage values
+						int damageAmount = Main.expertMode ? 54 : 62; //always account for expert damage values
 						SoundEngine.PlaySound(SoundID.Item92, NPC.Center);
 
 						for (int i = 0; i < 30; i++)
@@ -297,6 +296,8 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			}
 
 			NPC.TargetClosest(true);
+			player = Main.player[NPC.target];
+
 			if (!player.active || player.dead)
 			{
 				NPC.TargetClosest(false);

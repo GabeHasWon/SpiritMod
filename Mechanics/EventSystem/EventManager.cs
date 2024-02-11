@@ -39,7 +39,7 @@ public static class EventManager
 				e.DrawAtLayer(spriteBatch, layer, beginSpriteBatch);
 	}
 
-	private static void Main_DoUpdate(Terraria.On_Main.orig_DoUpdate orig, Main self, ref GameTime gameTime)
+	private static void Main_DoUpdate(On_Main.orig_DoUpdate orig, Main self, ref GameTime gameTime)
 	{
 		orig(self, ref gameTime);
 

@@ -8011,7 +8011,11 @@ Vulture_Matriarch_Mask: {
 
 PoolNoodle: {
 	DisplayName: Pool Noodle
-	Tooltip: 3 summon tag damage
+	Tooltip:
+		'''
+		3 summon tag damage
+		{$CommonItemTooltip.Whips}
+		'''
 }
 
 CactusStaff: {

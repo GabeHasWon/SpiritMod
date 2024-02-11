@@ -3,9 +3,7 @@ using SpiritMod.NPCs.StarjinxEvent.Enemies.MeteorMagus;
 using SpiritMod.NPCs.StarjinxEvent.Enemies.Pathfinder;
 using SpiritMod.NPCs.StarjinxEvent.Enemies.Starachnid;
 using SpiritMod.NPCs.StarjinxEvent.Enemies.StarWeaver;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SpiritMod.NPCs.StarjinxEvent.Comets

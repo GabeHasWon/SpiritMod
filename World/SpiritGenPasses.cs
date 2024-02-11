@@ -1145,17 +1145,17 @@ namespace SpiritMod.World
 				WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 10), 2, ore, false, 0f, 0f, false, true);
 			}
 
-			StructureHelper.Generator.GenerateStructure("Structures/StarAltar", new Point16(i + (int)(WorldGen.genRand.Next(0 - width, width) / 1.5f), j + WorldGen.genRand.Next(-10, height)), SpiritMod.Instance);
+			StructureHelper.Generator.GenerateStructure("Structures/StarAltar", new Point16(i + width + WorldGen.genRand.Next(-20, 20), j + WorldGen.genRand.Next((int)(height * 0.33f), (int)(height * 0.66f))), SpiritMod.Instance);
 
-			//chest spawning
 			const int MaxChestTries = 10000;
 			int chestTries = 0;
 			int chestSuccesses = 0;
 
-			while (chestTries < MaxChestTries && chestSuccesses < 4)
+			while (chestTries < MaxChestTries && chestSuccesses < 4) // Chest spawning
 			{
 				int x = i + WorldGen.genRand.Next(0 - width, width);
 				int y = j + WorldGen.genRand.Next(0 - height, height);
+
 				if (WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<Tiles.Furniture.SpaceJunk.AsteroidChest>(), false, 0) != -1)
 				{
 					chestSuccesses++;
@@ -1164,10 +1164,10 @@ namespace SpiritMod.World
 				chestTries++;
 			}
 
-			// super lazy basic smoothing pass
 			ushort asteroidType = (ushort)ModContent.TileType<Asteroid>();
 			ushort junkType = (ushort)ModContent.TileType<SpaceJunkTile>();
-			for (int smoothX = i - width; smoothX < i + width; smoothX++)
+
+			for (int smoothX = i - width; smoothX < i + width; smoothX++) // Super lazy basic smoothing pass
 			{
 				for (int smoothY = j - height; smoothY < j + height; smoothY++)
 				{

@@ -186,7 +186,9 @@ namespace SpiritMod.Mechanics.EventSystem.Events
 			// spawn new particles
 			_gravEquationTop = G * _particleMass.Ease(_currentTime);
 			int count = (int)_particleSpawnCount.Ease(_currentTime);
-			if (_currentTime > BUILDUP_LENGTH) count = 0;
+
+			if (_currentTime > BUILDUP_LENGTH) 
+				count = 0;
 			for (int i = 0; i < count; i++)
 			{
 				float angle = Main.rand.NextFloat(-MathHelper.Pi, MathHelper.Pi);
@@ -198,28 +200,29 @@ namespace SpiritMod.Mechanics.EventSystem.Events
 			for (int i = 0; i < _particles.Count; i++)
 			{
 				Particle particle = _particles[i];
-
 				Vector2 newPos = particle.Position + particle.Velocity;
 				particle.Position = newPos;
-
 				Vector2 dir = _center - particle.Position;
 				float r = dir.Length();
 				float f = _gravEquationTop / (r * r);
 				particle.Velocity += Vector2.Normalize(dir) * f;
-
 				particle.Opacity = Math.Min(particle.Opacity, MathHelper.Clamp(EaseFunction.EaseQuadOut.Ease(r / 1024f), 0f, 1f));
+
 				if (particle.Opacity <= 0f)
 				{
 					_particles.RemoveAt(i--);
 					continue;
 				}
+
 				particle.Lifetime += deltaTime * 1.2f;
-				if (particle.Lifetime > 1f) particle.Lifetime = 1f;
+
+				if (particle.Lifetime > 1f) 
+					particle.Lifetime = 1f;
 
 				_particles[i] = particle;
 			}
 
-			return (_currentTime >= endTime);
+			return _currentTime >= endTime;
 		}
 
 		public override void DrawAtLayer(SpriteBatch spriteBatch, RenderLayers layer, bool beginSB)
@@ -245,9 +248,7 @@ namespace SpiritMod.Mechanics.EventSystem.Events
 				if (beginSB) 
 					spriteBatch.End();
 			}
-
-			// draw screen flash
-			if (layer == RenderLayers.All)
+			else if (layer == RenderLayers.All) // draw screen flash
 			{
 				if (beginSB) 
 					spriteBatch.Begin();
@@ -277,14 +278,9 @@ namespace SpiritMod.Mechanics.EventSystem.Events
 			}
 		}
 
-		public class BeaconShaderData : ScreenShaderData
+		public class BeaconShaderData(Ref<Effect> shader, string passName) : ScreenShaderData(shader, passName)
 		{
-			string passName = "";
-
-			public BeaconShaderData(Ref<Effect> shader, string passName) : base(shader, passName)
-			{
-				this.passName = passName;
-			}
+			string passName = passName;
 
 			public override void Update(GameTime gameTime)
 			{

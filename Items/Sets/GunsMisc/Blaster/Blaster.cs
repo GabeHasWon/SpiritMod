@@ -96,13 +96,15 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 		public override bool? UseItem(Player player)
 		{
+			Item.reuseDelay = (auxillary == (int)AuxillaryType.Burst) ? 60 : 0;
+
 			if (auxillary == (int)AuxillaryType.Boomerang)
 				Item.useAnimation = Item.useTime = (player.altFunctionUse == 2) ? 14 : 24;
 
 			if (Main.netMode != NetmodeID.Server && !((auxillary == (int)AuxillaryType.Boomerang || auxillary == (int)AuxillaryType.Charge) && player.altFunctionUse == 2))
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { MaxInstances = 3 }, player.Center);
 
-			return base.UseItem(player);
+			return null;
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -7,7 +7,6 @@ namespace SpiritMod.Biomes
 {
 	internal class AsteroidBiome : ModBiome
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Asteroids");
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Asteroids");
 		public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
@@ -22,8 +21,5 @@ namespace SpiritMod.Biomes
 			bool surface = player.ZoneSkyHeight || player.ZoneOverworldHeight;
 			return BiomeTileCounts.InAsteroids && surface;
 		}
-
-		//public override void OnEnter(Player player) => player.GetSpiritPlayer().ZoneAsteroid = true;
-		//public override void OnLeave(Player player) => player.GetSpiritPlayer().ZoneAsteroid = false;
 	}
 }

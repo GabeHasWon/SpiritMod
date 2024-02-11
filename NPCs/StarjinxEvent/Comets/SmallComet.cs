@@ -42,6 +42,8 @@ namespace SpiritMod.NPCs.StarjinxEvent.Comets
 			NPCHelper.BuffImmune(Type, true);
 		}
 
+		public override bool IsLoadingEnabled(Mod mod) => false;
+
 		public override void SetDefaults()
         {
             NPC.aiStyle = -1;

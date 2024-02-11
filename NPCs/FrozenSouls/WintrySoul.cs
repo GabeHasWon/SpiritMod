@@ -16,10 +16,9 @@ namespace SpiritMod.NPCs.FrozenSouls
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Icebound Soul");
-
 			NPCID.Sets.ActsLikeTownNPC[NPC.type] = true;
 			NPCID.Sets.CountsAsCritter[Type] = true;
+			NPCID.Sets.NoTownNPCHappiness[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -33,7 +32,6 @@ namespace SpiritMod.NPCs.FrozenSouls
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.value = 60f;
 			NPC.immortal = true;
-			NPC.catchItem = (short)ModContent.ItemType<SoulOrbItem>();
 			NPC.knockBackResist = .45f;
 			NPC.aiStyle = 64;
 			NPC.noGravity = true;
@@ -49,9 +47,7 @@ namespace SpiritMod.NPCs.FrozenSouls
 		public override bool CanChat() => true;
 		public override bool? CanBeHitByItem(Player player, Item item) => false;
 		public override bool? CanBeHitByProjectile(Projectile projectile) => false;
-
 		public override string GetChat() => Language.GetTextValue("Mods.SpiritMod.Quests.QuestInfo.IceDeityQuest.FrozenSoulScene");
-		//"As I approach the spirit, the cave around me seems to shake. The walls collapse, leaving me standing in a boundless chasm. I am alone. Countless piles of gold and relics lay strewn about, covered in a thin layer of frost. The only light in the cavern seems to come from the soul beside me as it waits for me to make a decision.";
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
@@ -83,10 +79,10 @@ namespace SpiritMod.NPCs.FrozenSouls
 			float num366 = num395 + .85f;
 			NPC.scale = num366;
 			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), .55f, .55f, .9f);
+
 			if (decisionValue == 0f)
-            {
 				DoPassiveDust();
-            }
+
 			foreach (var player in Main.player)
 			{
 				if (!player.active) continue;
@@ -96,38 +92,45 @@ namespace SpiritMod.NPCs.FrozenSouls
 					if (decisionValue == 2f)
 					{
 						Main.npcChatText = Language.GetTextValue("Mods.SpiritMod.NPCs.WintrySoul.PositiveChat");
-						//"My vision returns to normal. The soul flits around me, apparently pleased with my decision. It gives me an ancient relic and other resources for my journey.";
 
 						if (outcomeValue == 0f)
 						{
 							DoExplosionDust();
 							SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/PositiveOutcome"), NPC.Center);
 							outcomeValue = 1f;
-							Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 13);
-							Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 13);
-							Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 13);
+
+							for (int i = 0; i < 3; ++i)
+								Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 13);
+
 							if (!player.HasItem(ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.IceDeityShard1>()))
 							{ 
 								player.QuickSpawnItem(player.GetSource_GiftOrReward("Quest"), ItemID.WarmthPotion, 2);
 								player.QuickSpawnItem(player.GetSource_GiftOrReward("Quest"), ModContent.ItemType<Items.Sets.MaterialsMisc.QuestItems.IceDeityShard1>(), 1);
 							}
+
+							NPC.active = false;
+							NPC.netUpdate = true;
 						}
 					}
 					if (decisionValue == 1f)
 					{
 						Main.npcChatText = Language.GetTextValue("Mods.SpiritMod.NPCs.WintrySoul.NegativeChat");
-						//"My vision blurs. I start to shiver. I feel weak. The warmth that the soul gave me disappears slowly, and the soul melts away into the icy caverns. I should try looking elsewhere for the artifact. Perhaps I can scavenge the artifact from some Winterborn.";
+
 						if (outcomeValue == 0f)
 						{
 							DoExplosionDust();
 							SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/NegativeOutcome"), NPC.Center);
 							outcomeValue = 1f;
-							Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 99);
-							Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 99);
-							Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 99);
+
+							for (int i = 0; i < 3; ++i)
+								Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 99);
+
 							player.AddBuff(BuffID.Darkness, 3600);
 							player.AddBuff(BuffID.Weak, 3600);
 							player.AddBuff(BuffID.BrokenArmor, 3600);
+
+							NPC.active = false;
+							NPC.netUpdate = true;
 						}
 					}
 					return;
@@ -151,6 +154,7 @@ namespace SpiritMod.NPCs.FrozenSouls
 				Main.dust[index2].position = center + ((float)((double)(float)Main.player[NPC.target].miscCounter / 60f * 6.28318548202515 + (double)num4 * (double)index1)).ToRotationVector2() * NPC.height;
 			}
 		}
+
 		public void DoExplosionDust()
         {
 			for (int i = 0; i < 40; i++)
@@ -161,10 +165,10 @@ namespace SpiritMod.NPCs.FrozenSouls
 				dust.position.X = dust.position.X + ((float)(Main.rand.Next(-30, 31) / 20) - 1.5f);
 				Dust expr_92_cp_0 = Main.dust[num];
 				expr_92_cp_0.position.Y = expr_92_cp_0.position.Y + ((float)(Main.rand.Next(-30, 31) / 20) - 1.5f);
+
 				if (Main.dust[num].position != NPC.Center)
-				{
 					Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 4f;
-				}
+
 				Main.dust[num].shader = GameShaders.Armor.GetSecondaryShader(25, Main.LocalPlayer);
 			}
 		}

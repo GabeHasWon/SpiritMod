@@ -583,7 +583,7 @@ WintrySoul: {
 	Entry: A curious memory of time past, somehow preserved by the deep icy tundra.
 	ButtonTake: Take
 	ButtonLeave: Leave
-	PositiveChat: My vision returns to normal. The soul flits around me, apparently pleased with my decision. It gives me an ancient relic and other resources for my journey.
+	PositiveChat: My vision returns to normal. The soul flits around me, apparently pleased with my decision. It gives me an ancient relic and other resources for my journey, and disappears.
 	NegativeChat: My vision blurs. I start to shiver. I feel weak. The warmth that the soul gave me disappears slowly, and the soul melts away into the icy caverns. I should try looking elsewhere for the artifact. Perhaps I can scavenge the artifact from some Winterborn.
 }
 

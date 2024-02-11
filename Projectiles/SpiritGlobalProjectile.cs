@@ -15,7 +15,7 @@ namespace SpiritMod.Projectiles
 	{
 		public override bool InstancePerEntity => true;
 
-		public List<SpiritProjectileEffect> effects = new();
+		public List<SpiritProjectileEffect> effects = [];
 
 		public bool witherLeaf = false;
 		public bool shotFromBismiteBow = false;
