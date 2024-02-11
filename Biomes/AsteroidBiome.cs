@@ -3,23 +3,22 @@ using Terraria;
 using Terraria.Graphics.Capture;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Biomes
+namespace SpiritMod.Biomes;
+
+internal class AsteroidBiome : ModBiome
 {
-	internal class AsteroidBiome : ModBiome
+	public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Asteroids");
+	public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
+	public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
+
+	public override string BestiaryIcon => base.BestiaryIcon;
+	public override string BackgroundPath => MapBackground;
+	public override Color? BackgroundColor => base.BackgroundColor;
+	public override string MapBackground => "SpiritMod/Backgrounds/AsteroidMapBG";
+
+	public override bool IsBiomeActive(Player player)
 	{
-		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Asteroids");
-		public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
-		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
-
-		public override string BestiaryIcon => base.BestiaryIcon;
-		public override string BackgroundPath => MapBackground;
-		public override Color? BackgroundColor => base.BackgroundColor;
-		public override string MapBackground => "SpiritMod/Backgrounds/AsteroidMapBG";
-
-		public override bool IsBiomeActive(Player player)
-		{
-			bool surface = player.ZoneSkyHeight || player.ZoneOverworldHeight;
-			return BiomeTileCounts.InAsteroids && surface;
-		}
+		bool surface = player.ZoneSkyHeight || player.ZoneOverworldHeight;
+		return BiomeTileCounts.InAsteroids && surface;
 	}
 }

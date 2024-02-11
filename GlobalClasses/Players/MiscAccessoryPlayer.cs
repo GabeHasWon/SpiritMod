@@ -20,6 +20,7 @@ using SpiritMod.Items.Accessory.GranitechDrones;
 using SpiritMod.Items.Accessory.Bauble;
 using SpiritMod.Items.Accessory.AceCardsSet;
 using SpiritMod.Projectiles;
+using Terraria.DataStructures;
 
 namespace SpiritMod.GlobalClasses.Players
 {
@@ -217,11 +218,13 @@ namespace SpiritMod.GlobalClasses.Players
 			{
 				for (int h = 0; h < 3; h++)
 				{
-					Vector2 vel = new Vector2(0, -1);
-					float rand = Main.rand.NextFloat() * MathHelper.TwoPi;
-					vel = vel.RotatedBy(rand);
-					vel *= 2f;
-					Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, vel, ProjectileID.LostSoulFriendly, 45, 0, Main.myPlayer);
+					IEntitySource source = Player.GetSource_FromThis();
+
+					if (info.DamageSource.TryGetCausingEntity(out Entity entity))
+						source = Player.GetSource_OnHurt(entity);
+
+					Vector2 vel = new Vector2(0, -1).RotatedBy(Main.rand.NextFloat() * MathHelper.TwoPi) * 2;
+					Projectile.NewProjectile(source, Player.Center, vel, ProjectileID.LostSoulFriendly, 45, 0, Main.myPlayer);
 				}
 			}
 
@@ -267,7 +270,12 @@ namespace SpiritMod.GlobalClasses.Players
 			// Spectre Ring
 			if (Player.HasAccessory<SpectreRing>())
 			{
-				int newProj = Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, new Vector2(6, 6), ProjectileID.SpectreWrath, 40, 0f, Main.myPlayer);
+				IEntitySource source = Player.GetSource_FromThis();
+
+				if (info.DamageSource.TryGetCausingEntity(out Entity entity))
+					source = Player.GetSource_OnHurt(entity);
+
+				int newProj = Projectile.NewProjectile(source, Player.Center, new Vector2(6, 6), ProjectileID.SpectreWrath, 40, 0f, Main.myPlayer);
 
 				int dist = 800;
 				int target = -1;

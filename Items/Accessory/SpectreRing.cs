@@ -5,12 +5,6 @@ namespace SpiritMod.Items.Accessory
 {
 	public class SpectreRing : AccessoryItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Spectre Ring");
-			// Tooltip.SetDefault("Unleashes a bolt of Spectre Energy when the wearer is hurt");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 18;

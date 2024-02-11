@@ -61,22 +61,26 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{
-			for (int k = 0; k < 20; k++) {
+			for (int k = 0; k < 20; k++)
+			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 117, new Color(0, 255, 142), .6f);
 			}
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server) {
+			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+			{
 				SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
 				SoundEngine.PlaySound(SoundID.NPCDeath44, NPC.Center);
 				SoundEngine.PlaySound(SoundID.NPCHit4, NPC.Center);
-				for (int i = 0; i < 40; i++) {
+
+				for (int i = 0; i < 40; i++)
+				{
 					int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UltraBrightTorch, 0f, -2f, 117, new Color(0, 255, 142), .6f);
 					Main.dust[num].noGravity = true;
 					Dust dust = Main.dust[num];
-					dust.position.X += ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
-					dust.position.Y += ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
-					if (Main.dust[num].position != NPC.Center) {
+					dust.position.X += (Main.rand.Next(-50, 51) / 20) - 1.5f;
+					dust.position.Y += (Main.rand.Next(-50, 51) / 20) - 1.5f;
+
+					if (Main.dust[num].position != NPC.Center)
 						Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 6f;
-					}
 				}
 			}
 		}
@@ -85,22 +89,30 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		{
 			alphaCounter += .08f;
 			timer++;
-			if (timer >= 90) {
+
+			if (timer >= 90)
+			{
 				SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
 				SoundEngine.PlaySound(SoundID.NPCDeath44, NPC.Center);
 				SoundEngine.PlaySound(SoundID.NPCHit4, NPC.Center);
-				for (int i = 0; i < 40; i++) {
+				for (int i = 0; i < 40; i++)
+				{
 					int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 0f, -2f, 117, new Color(0, 255, 142), .6f);
 					Main.dust[num].noGravity = true;
 					Dust dust = Main.dust[num];
 					dust.position.X += (Main.rand.Next(-50, 51) / 20) - 1.5f;
 					dust.position.Y += (Main.rand.Next(-50, 51) / 20) - 1.5f;
-					if (Main.dust[num].position != NPC.Center) {
+					if (Main.dust[num].position != NPC.Center)
+					{
 						Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 6f;
 					}
 				}
+
 				NPC.active = false;
+				NPC.netUpdate = true;
+				return;
 			}
+
 			NPC.TargetClosest(true);
 			float speed = 16f;
 			float acceleration = 0.16f;
@@ -112,32 +124,38 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			float num10 = speed / length;
 			xDir *= num10;
 			yDir *= num10;
-			if (NPC.velocity.X < xDir) {
+			if (NPC.velocity.X < xDir)
+			{
 				NPC.velocity.X = NPC.velocity.X + acceleration;
 				if (NPC.velocity.X < 0 && xDir > 0)
 					NPC.velocity.X = NPC.velocity.X + acceleration;
 			}
-			else if (NPC.velocity.X > xDir) {
+			else if (NPC.velocity.X > xDir)
+			{
 				NPC.velocity.X = NPC.velocity.X - acceleration;
 				if (NPC.velocity.X > 0 && xDir < 0)
 					NPC.velocity.X = NPC.velocity.X - acceleration;
 			}
 
-			if (NPC.velocity.Y < yDir) {
+			if (NPC.velocity.Y < yDir)
+			{
 				NPC.velocity.Y = NPC.velocity.Y + acceleration;
 				if (NPC.velocity.Y < 0 && yDir > 0)
 					NPC.velocity.Y = NPC.velocity.Y + acceleration;
 			}
-			else if (NPC.velocity.Y > yDir) {
+			else if (NPC.velocity.Y > yDir)
+			{
 				NPC.velocity.Y = NPC.velocity.Y - acceleration;
 				if (NPC.velocity.Y > 0 && yDir < 0)
 					NPC.velocity.Y = NPC.velocity.Y - acceleration;
 			}
 			NPC.noTileCollide = true;
 			NPC.localAI[0] += 1f;
-			if (NPC.localAI[0] == 12f) {
+			if (NPC.localAI[0] == 12f)
+			{
 				NPC.localAI[0] = 0f;
-				for (int j = 0; j < 12; j++) {
+				for (int j = 0; j < 12; j++)
+				{
 					int num8 = Dust.NewDust(NPC.Center, 0, 0, DustID.Electric, 0f, 0f, 160, default, 1f);
 					Main.dust[num8].scale = .8f;
 					Main.dust[num8].noGravity = true;
@@ -146,6 +164,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 					Main.dust[num8].velocity = Vector2.Normalize(NPC.Center - NPC.velocity * 3f - Main.dust[num8].position) * 1.25f;
 				}
 			}
+
 			Vector2 direction9 = Main.player[NPC.target].Center - NPC.Center;
 			direction9.Normalize();
 			NPC.rotation = direction9.ToRotation() + 1.57f + 3.14f;
@@ -154,17 +173,21 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			NPC.life = 0;
+
 			SoundEngine.PlaySound(SoundID.Item14, NPC.Center);
 			SoundEngine.PlaySound(SoundID.NPCDeath44, NPC.Center);
 			SoundEngine.PlaySound(SoundID.NPCHit4, NPC.Center);
-			for (int i = 0; i < 40; i++) {
+
+			for (int i = 0; i < 40; i++)
+			{
 				int num = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 0f, -2f, 117, new Color(0, 255, 142), .6f);
 				Main.dust[num].noGravity = true;
 				Dust dust = Main.dust[num];
 				dust.position.X += ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
 				Dust expr_92_cp_0 = Main.dust[num];
 				expr_92_cp_0.position.Y += ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
-				if (Main.dust[num].position != NPC.Center) {
+				if (Main.dust[num].position != NPC.Center)
+				{
 					Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 6f;
 				}
 			}

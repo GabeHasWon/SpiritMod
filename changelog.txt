@@ -1,16 +1,3 @@
-﻿- Fixed Atlas spawning super far away in multiplayer when using Stone Fist
-- Fixed Wintry Soul being catchable despite never having a catch item
-- Made Wintry Soul despawn after being taken or left
-- Updated Wintry Soul leave text to include its despawning
-- Buffed Pool Noodle (8 base damage to 14 base damage), increased value by 6 silver
-- Disabled old Blood Gazer eye NPC
-- Centered the Starplate Beacon asteroid structure
-- Fixed burst Blaster weapons breaking with Glyphs
-- Increased Spirit Ore priority to slightly higher than Titanium
-- Added check that should stop certain visual issues with glowmasks from occuring
-- Halved Asteroid biome spawn rate increase (60% -> 30%)
-- Made MJW drop a consistent amount of Tiny Lunazoa, reduced to 20-29
-- Fixed Huskstalk Bow decreasing enemy defense each time Withering Leaf is inflicted
-- Fixed Unstable Affliction decreasing enemy defense each time it's inflicted
-- Fixed an error in Slag Fury's buff description
-- Corrosive, Driftwood, Glowplate, Sepulchre, and Spirit platforms can now be crafted back into their materials
+﻿- Made Pirate Chests significantly more likely to spawn in both oceans
+- Fixed Spectre Ring error
+- Changed Laser Launcher code to stop dust spam in rare circumstances

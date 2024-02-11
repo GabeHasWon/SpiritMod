@@ -78,12 +78,16 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 						Main.dust[num].velocity = NPC.DirectionTo(Main.dust[num].position) * 3f;
 				}
 
+				NPC.netUpdate = true;
+
 				if (Main.expertMode)
-					NPC.Transform(ModContent.NPCType<SuicideLaser>());
+				{
+					NPC.SetDefaults(ModContent.NPCType<SuicideLaser>());
+					return false;
+				}
 				else
 					NPC.active = false;
 
-				NPC.netUpdate = true;
 			}
 			else
 			{
@@ -98,19 +102,17 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 			}
 			if (NPC.ai[0] >= 60 && NPC.ai[0] <= 110 & NPC.ai[0] % 2 == 0)
 			{
-				{
-					int dust = Dust.NewDust(NPC.Center, NPC.width, NPC.height, DustID.Electric);
-					Main.dust[dust].velocity *= -1f;
-					Main.dust[dust].scale *= .8f;
-					Main.dust[dust].noGravity = true;
-					Vector2 vector2_1 = new Vector2((float)Main.rand.Next(-80, 81), (float)Main.rand.Next(-80, 81));
-					vector2_1.Normalize();
-					Vector2 vector2_2 = vector2_1 * ((float)Main.rand.Next(50, 100) * 0.04f);
-					Main.dust[dust].velocity = vector2_2;
-					vector2_2.Normalize();
-					Vector2 vector2_3 = vector2_2 * 34f;
-					Main.dust[dust].position = NPC.Center - vector2_3;
-				}
+				int dust = Dust.NewDust(NPC.Center, NPC.width, NPC.height, DustID.Electric);
+				Main.dust[dust].velocity *= -1f;
+				Main.dust[dust].scale *= .8f;
+				Main.dust[dust].noGravity = true;
+				Vector2 vector2_1 = new Vector2((float)Main.rand.Next(-80, 81), (float)Main.rand.Next(-80, 81));
+				vector2_1.Normalize();
+				Vector2 vector2_2 = vector2_1 * ((float)Main.rand.Next(50, 100) * 0.04f);
+				Main.dust[dust].velocity = vector2_2;
+				vector2_2.Normalize();
+				Vector2 vector2_3 = vector2_2 * 34f;
+				Main.dust[dust].position = NPC.Center - vector2_3;
 			}
 			if (NPC.alpha != 255)
 			{

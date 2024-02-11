@@ -251,6 +251,8 @@ namespace SpiritMod.World
 
 		public static void PlacePirateChest(int innerEdge, int side)
 		{
+			int placementRetries = 0;
+
 		retry:
 			int guaranteeChestX = innerEdge - WorldGen.genRand.Next(100, innerEdge - 60);
 			if (side == 1)
@@ -266,27 +268,39 @@ namespace SpiritMod.World
 			for (int i = 0; i < 2; ++i)
 			{
 				WorldGen.KillTile(chest.X + i, chest.Y, false, false, true);
-				WorldGen.PlaceTile(chest.X + i, chest.Y , TileID.HardenedSand, true, false);
+				WorldGen.PlaceTile(chest.X + i, chest.Y , TileID.Sand, true, false);
 				Framing.GetTileSafely(chest.X + i, chest.Y).Slope = 0;
 			}
 
-			int BarStack() => WorldGen.genRand.Next(3, 7);
+			static int BarStack() => WorldGen.genRand.Next(3, 7);
 
-			PlaceChest(chest.X, chest.Y - 1, ModContent.TileType<OceanPirateChest>(), 
-				new (int, int)[] //Primary items
-				{
+			placementRetries++;
+
+			bool success = PlaceChest(chest.X, chest.Y - 1, ModContent.TileType<OceanPirateChest>(), 
+				[
 					(side == 0 ? ModContent.ItemType<LadyLuck>() : ModContent.ItemType<DuelistLegacy>(), 1)
-				}, 
-				new (int, int)[] //Sub items (woo)
-				{   
+				], 
+				[   
 					(ItemID.GoldCoin, WorldGen.genRand.Next(12, 30)), (ItemID.Diamond, WorldGen.genRand.Next(12, 30)), (ItemID.GoldCrown, 1), (ItemID.GoldDust, WorldGen.genRand.Next(1, 3)),
 					(ItemID.GoldChest, 1), (ItemID.GoldenChair, 1), (ItemID.GoldChandelier, 1), (ItemID.GoldenPlatform, WorldGen.genRand.Next(12, 18)), (ItemID.GoldenSink, 1), (ItemID.GoldenSofa, 1),
 					(ItemID.GoldenTable, 1), (ItemID.GoldenToilet, 1), (ItemID.GoldenWorkbench, 1), (ItemID.GoldenPiano, 1), (ItemID.GoldenLantern, 1), (ItemID.GoldenLamp, 1), (ItemID.GoldenDresser, 1),
 					(ItemID.GoldenDoor, 1), (ItemID.GoldenCrate, 1), (ItemID.GoldenClock, 1), (ItemID.GoldenChest, 1), (ItemID.GoldenCandle, WorldGen.genRand.Next(2, 4)), (ItemID.GoldenBookcase, 1),
 					(ItemID.GoldenBed, 1), (ItemID.GoldenBathtub, 1), (ItemID.MythrilBar, BarStack()), (ItemID.AdamantiteBar, BarStack()), (ItemID.CobaltBar, BarStack()),
 					(ItemID.TitaniumBar, BarStack()), (ItemID.PalladiumBar, BarStack()), (ItemID.OrichalcumBar, BarStack())
-				},
+				],
 				true, WorldGen.genRand, WorldGen.genRand.Next(15, 21), 1, true, 2, 2);
+
+			if (!success && placementRetries < 200)
+				goto retry;
+			else
+			{
+				for (int i = 0; i < 2; ++i)
+				{
+					Tile tile = Main.tile[i, chest.Y];
+					tile.TileType = TileID.HardenedSand;
+					tile.HasTile = true;
+				}
+			}
 		}
 
 		public static bool PlaceChest(int x, int y, int type, (int, int)[] mainItems, (int, int)[] subItems, bool noTypeRepeat = true, UnifiedRandom r = null, int subItemLength = 6, int style = 0, bool overRide = false, int width = 2, int height = 2)

@@ -61,14 +61,10 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 
 			if (!released && player.channel)
 			{
-				if (player.statMana > 0)
-				{
-					player.statMana -= 2;
-					player.manaRegenDelay = 60;
-				}
-
 				if (player.statMana <= 0)
 					Projectile.Kill();
+
+				player.CheckMana(2, true);
 
 				player.itemTime = 5;
 				player.itemAnimation = 5;
