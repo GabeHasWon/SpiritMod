@@ -9,12 +9,6 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 {
 	public class HuskstalkBow : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Huskstalk Bow");
-			// Tooltip.SetDefault("Arrows shot inflict Withering Leaf");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 7;
@@ -37,14 +31,13 @@ namespace SpiritMod.Items.Sets.HuskstalkSet
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
-			int p = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
-			Main.projectile[p].GetGlobalProjectile<SpiritGlobalProjectile>().witherLeaf = true;
+			Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI).GetGlobalProjectile<SpiritGlobalProjectile>().witherLeaf = true;
 			return false;
 		}
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<AncientBark>(), 6);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();

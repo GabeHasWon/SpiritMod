@@ -10,12 +10,6 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 {
 	public class GranitechSaberItem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Technobrand");
-			// Tooltip.SetDefault("Swinging creates additional holographic blades");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.DamageType = DamageClass.Melee;

@@ -1,3 +1,4 @@
+using SpiritMod.Items.Placeable.Furniture;
 using SpiritMod.Tiles.Block;
 using Terraria;
 using Terraria.ID;
@@ -27,6 +28,10 @@ namespace SpiritMod.Items.Placeable.Tiles
 			recipe.AddIngredient(ModContent.ItemType<Walls.SpiritWallItem>(), 4);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
+
+			Recipe recipe2 = CreateRecipe();
+			recipe2.AddIngredient(ModContent.ItemType<SpiritPlatformItem>(), 2);
+			recipe2.Register();
 		}
 	}
 }

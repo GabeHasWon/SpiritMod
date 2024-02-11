@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using SpiritMod.Items.Placeable.Furniture.Driftwood;
 
 namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 {
@@ -17,6 +18,13 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 			Item.width = Item.height = 16;
 			Item.rare = ItemRarityID.White;
 			Item.maxStack = Item.CommonMaxStack;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<DriftwoodPlatformItem>(), 2);
+			recipe.Register();
 		}
 	}
 

@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria;
 using SpiritMod.Items.Accessory.TalismanTree.GrislyTongue;
+using Microsoft.Xna.Framework;
 
 namespace SpiritMod.GlobalClasses.Players
 {
@@ -22,12 +23,10 @@ namespace SpiritMod.GlobalClasses.Players
 
 		public override void UpdateEquips()
 		{
-			scarabTimer++; //for animating drawlayer sprites
-			if (scarabTimer >= 32)
+			//for animating drawlayer sprites
+			if (++scarabTimer >= 32)
 				scarabTimer = 0;
-
-			slagTimer++;
-			if (slagTimer >= 20)
+			if (++slagTimer >= 20)
 				slagTimer = 0;
 
 			if (Player.HasBuff(ModContent.BuffType<GildedScarab_buff>()))
@@ -43,6 +42,7 @@ namespace SpiritMod.GlobalClasses.Players
 			else
 				canActivate = true;
 		}
+
 		public override void OnHurt(Player.HurtInfo info)
 		{
 			if (Player.HasAccessory<GrislyTongue>() && info.Damage > 8)
@@ -64,12 +64,12 @@ namespace SpiritMod.GlobalClasses.Players
 				if (Player.HasBuff(ModContent.BuffType<GildedScarab_buff>()))
 				{
 					Player.ClearBuff(ModContent.BuffType<GildedScarab_buff>());
-					scarabDefense = (scarabDefense + ((int)info.Damage / 8) >= 50 || scarabDefense >= 50) ? 50 : scarabDefense + ((int)info.Damage / 8);
+					scarabDefense = (scarabDefense + (int)(info.Damage / 8f) >= 50 || scarabDefense >= 50) ? 50 : scarabDefense + (int)(info.Damage / 8f);
 				}
 				else
 				{
 					SoundEngine.PlaySound(SoundID.Item76);
-					scarabDefense = (info.Damage >= 400) ? 50 : 5 + ((int)info.Damage / 8);
+					scarabDefense = (info.Damage >= 400) ? 50 : 5 + (int)(info.Damage / 8f);
 				}
 				Player.AddBuff(ModContent.BuffType<GildedScarab_buff>(), 300);
 			}
@@ -80,12 +80,12 @@ namespace SpiritMod.GlobalClasses.Players
 				if (Player.HasBuff(ModContent.BuffType<SlagFury_buff>()))
 				{
 					Player.ClearBuff(ModContent.BuffType<SlagFury_buff>());
-					slagDamageMultiplier = ((slagDamageMultiplier + (float)(info.Damage / 800)) >= 0.5f || slagDamageMultiplier >= 0.5f) ? 0.5f : slagDamageMultiplier + (float)(info.Damage / 800);
+					slagDamageMultiplier = ((slagDamageMultiplier + (float)(info.Damage / 800f)) >= 0.5f || slagDamageMultiplier >= 0.5f) ? 0.5f : slagDamageMultiplier + (float)(info.Damage / 800f);
 				}
 				else
 				{
 					SoundEngine.PlaySound(SoundID.Item74);
-					slagDamageMultiplier = (info.Damage >= 400) ? 0.5f : 0.05f + (float)(info.Damage / 800);
+					slagDamageMultiplier = (info.Damage >= 400) ? 0.5f : 0.05f + (float)(info.Damage / 800f);
 				}
 				Player.AddBuff(ModContent.BuffType<SlagFury_buff>(), 300);
 			}

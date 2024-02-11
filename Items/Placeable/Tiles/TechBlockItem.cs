@@ -1,4 +1,6 @@
+using SpiritMod.Items.Placeable.Furniture;
 using SpiritMod.Tiles.Block;
+using SpiritMod.Tiles.Furniture;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,6 +29,10 @@ namespace SpiritMod.Items.Placeable.Tiles
             recipe.AddIngredient(ModContent.ItemType<Material.SynthMaterial>(), 1);
             recipe.AddTile(TileID.Anvils);
 			recipe.Register();
+
+			Recipe recipe2 = CreateRecipe();
+			recipe2.AddIngredient(ModContent.ItemType<GlowplatePlatformItem>(), 2);
+			recipe2.Register();
 		}
 	}
 }

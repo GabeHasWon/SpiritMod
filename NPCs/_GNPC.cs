@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs;
-using SpiritMod.Dusts;
-using SpiritMod.Items.Glyphs;
 using SpiritMod.Items.Halloween;
 using SpiritMod.NPCs.Critters.Algae;
 using SpiritMod.NPCs.Town;
@@ -659,6 +657,16 @@ namespace SpiritMod.NPCs
 						pool.Add(ModContent.NPCType<PurpleAlgae2>(), 3f);
 				}
 			}
+		}
+
+		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
+		{
+			if (npc.HasBuff(ModContent.BuffType<WitheringLeaf>()))
+				modifiers.Defense.Flat -= 2;
+			if (shadowbroken)
+				modifiers.Defense.Flat -= 25;
+			if (afflicted)
+				modifiers.Defense.Flat -= 5;
 		}
 
 		public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)

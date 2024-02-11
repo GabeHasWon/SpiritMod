@@ -129,7 +129,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 			SwingTime = reader.ReadInt32();
 			InitialVelocity = reader.ReadVector2();
 			BasePosition = reader.ReadVector2();
-			SwingRadians = reader.Read();
+			SwingRadians = reader.ReadSingle();
 			Distance = reader.ReadSingle();
 		}
 

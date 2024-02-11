@@ -50,8 +50,8 @@ namespace SpiritMod.GlobalClasses.Players
 					} //Chaos glyph effect
 
 					Glyph = glyphItem.Glyph;
-					if (Glyph == GlyphType.None && Player.nonTorch >= 0 && Player.nonTorch != Player.selectedItem && !Player.inventory[Player.nonTorch].IsAir)
-						Glyph = Player.inventory[Player.nonTorch].GetGlobalItem<GlyphGlobalItem>().Glyph;
+					if (Glyph == GlyphType.None && Player.nonTorch >= 0 && Player.nonTorch != Player.selectedItem && !Player.inventory[Player.nonTorch].IsAir && Player.inventory[Player.nonTorch].TryGetGlobalItem(out GlyphGlobalItem nonTorchGlyphItem))
+						Glyph = nonTorchGlyphItem.Glyph;
 				}
 				else Glyph = GlyphType.None;
 

@@ -1,18 +1,12 @@
-using SpiritMod.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace SpiritMod.Items.BossLoot.AtlasDrops.PrimalstoneArmor
 {
 	[AutoloadEquip(EquipType.Legs)]
 	public class PrimalstoneLeggings : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Primalstone Leggings");
-			// Tooltip.SetDefault("9% increased melee and magic damage\n5% reduced mana usage\n10% reduced movement speed");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 34;

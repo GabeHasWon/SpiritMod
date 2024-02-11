@@ -24,8 +24,7 @@ namespace SpiritMod.Items.BossLoot.AtlasDrops.PrimalstoneArmor
 			player.setBonus = Language.GetTextValue("Mods.SpiritMod.SetBonuses.Primalstone");
 			player.GetSpiritPlayer().primalSet = true;
 			player.moveSpeed -= .10F;
-			int dust1 = Dust.NewDust(player.position, player.width, player.height - 38, DustID.UnusedWhiteBluePurple);
-			Main.dust[dust1].scale = 2f;
+			Dust.NewDustDirect(player.position, player.width, player.height - 38, DustID.UnusedWhiteBluePurple).scale = 2f;
 		}
 
 		public override void UpdateEquip(Player player)
