@@ -8341,7 +8341,11 @@ Vulture_Matriarch_Mask: {
 
 PoolNoodle: {
 	DisplayName: 游泳浮条
-	Tooltip: 3点召唤标记伤害
+	Tooltip:
+		'''
+		3点召唤标记伤害
+		{$CommonItemTooltip.Whips}
+		'''
 }
 
 CactusStaff: {
