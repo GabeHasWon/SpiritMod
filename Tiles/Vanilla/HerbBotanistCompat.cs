@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using SpiritMod.Utilities.Helpers;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 
@@ -10,8 +11,8 @@ namespace SpiritMod.Tiles.Vanilla
 		{
 			(int type, int seed) = GetDropsByFrame(i, j);
 
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, type, 1);
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, seed, 2);
+			ItemHelper.SpawnItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, type, 1);
+			ItemHelper.SpawnItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, seed, 2);
 		}
 
 		internal static HerbType GetTypeByFrame(int i, int j) => (HerbType)(Main.tile[i, j].TileFrameX / 18);

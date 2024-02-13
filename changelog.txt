@@ -1,3 +1,6 @@
 ﻿- Made Pirate Chests significantly more likely to spawn in both oceans
 - Fixed Spectre Ring error
 - Changed Laser Launcher code to stop dust spam in rare circumstances
+- Fixed all GTile::Drop items not dropping in multiplayer
+- Made Auroras sync their activity & type in multiplayer
+- Made Botanist set bonus work in multiplayer

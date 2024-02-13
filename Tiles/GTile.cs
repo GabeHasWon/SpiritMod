@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using SpiritMod.Tiles.Vanilla;
+using SpiritMod.Utilities.Helpers;
 
 namespace SpiritMod.Tiles
 {
@@ -82,35 +83,42 @@ namespace SpiritMod.Tiles
 
 		public override void Drop(int i, int j, int type)
 		{
-			if (!Main.dedServ)
+			if (type == TileID.PalmTree && Main.rand.NextBool(3) && (i < 200 || i > Main.maxTilesX - 200))
 			{
-				Player player = Main.LocalPlayer;
+				if (Main.rand.NextBool(2))
+					ItemHelper.SpawnItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<Coconut>(), Main.rand.Next(5, 8));
 
-				if (type == TileID.PalmTree && Main.rand.NextBool(3) && player.ZoneBeach)
-				{
-					if (Main.rand.NextBool(2))
-						Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<Coconut>(), Main.rand.Next(5, 8));
-					if (NPC.CountNPCS(ModContent.NPCType<OceanSlime>()) < 1)
-						NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, (j - 10) * 16, ModContent.NPCType<OceanSlime>(), 0, 0.0f, -8.5f, 0.0f, 0.0f, byte.MaxValue);
-				}
+				if (NPC.CountNPCS(ModContent.NPCType<OceanSlime>()) < 1)
+					NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, (j - 10) * 16, ModContent.NPCType<OceanSlime>(), 0, 0.0f, -8.5f, 0.0f, 0.0f, byte.MaxValue);
+			}
 
-				static int GetGroundType(int x, int y)
-				{
-					int newY = y;
+			static int GetGroundType(int x, int y)
+			{
+				int newY = y;
 
-					while (Main.tile[x, newY].TileType == TileID.Trees || !Main.tile[x, newY].HasTile)
-						newY++;
+				while (Main.tile[x, newY].TileType == TileID.Trees || !Main.tile[x, newY].HasTile)
+					newY++;
 
-					return Main.tile[x, newY].TileType;
-				}
-				
-				if (type == TileID.Trees && Main.rand.NextBool(5) && GetGroundType(i, j) == TileID.MushroomGrass)
-					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<GlowRoot>(), Main.rand.Next(1, 4));
+				return Main.tile[x, newY].TileType;
+			}
 
-				if (type == TileID.Trees && Main.rand.NextBool(20) && GetGroundType(i, j) == TileID.SnowBlock)
-					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<IceBerries>(), Main.rand.Next(1, 3));
+			if (type == TileID.Trees)
+			{
+				int groundType = GetGroundType(i, j);
 
-				if ((type == TileID.MatureHerbs || type == TileID.BloomingHerbs) && player.GetModPlayer<Items.Armor.BotanistSet.BotanistPlayer>().active)
+				if (groundType == TileID.MushroomGrass && Main.rand.NextBool(5))
+					ItemHelper.SpawnItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<GlowRoot>(), Main.rand.Next(1, 4));
+
+				if (groundType == TileID.SnowBlock && Main.rand.NextBool(12))
+					ItemHelper.SpawnItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ModContent.ItemType<IceBerries>(), Main.rand.Next(1, 3));
+			}
+
+			if ((type == TileID.MatureHerbs || type == TileID.BloomingHerbs) && WorldGen.PlayerLOS(i, j))
+			{
+				int plr = Player.FindClosest(new Vector2(i, j).ToWorldCoordinates(), 16, 16);
+				bool hasBotany = Main.player[plr].GetModPlayer<Items.Armor.BotanistSet.BotanistPlayer>().active;
+
+				if (hasBotany)
 					HerbBotanistCompat.BotanistDrops(i, j);
 			}
 		}

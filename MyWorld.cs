@@ -250,7 +250,7 @@ namespace SpiritMod
 			BitsByte bosses2 = new BitsByte(downedTide, downedMechromancer, downedOccultist, downedGladeWraith, downedBeholder, downedSnaptrapper, downedTome, downedGazer);
 			writer.Write(bosses);
 			writer.Write(bosses2);
-			BitsByte environment = new BitsByte(blueMoon, jellySky, downedBlueMoon, downedJellyDeluge);
+			BitsByte environment = new BitsByte(blueMoon, jellySky, downedBlueMoon, downedJellyDeluge, aurora);
 			BitsByte worldgen = new BitsByte(gennedBandits, gennedTower);
 			writer.Write(environment);
 			writer.Write(worldgen);
@@ -276,6 +276,7 @@ namespace SpiritMod
 			jellySky = environment[1];
 			downedBlueMoon = environment[2];
 			downedJellyDeluge = environment[3];
+			aurora = environment[4];
 
 			BitsByte worldgen = reader.ReadByte();
 			gennedBandits = worldgen[0];
@@ -1381,27 +1382,7 @@ namespace SpiritMod
 		{
 			Player player = Main.LocalPlayer;
 
-			if (player.ZoneSpirit())
-			{
-				if (!aurora)
-					aurora = true;
-				auroraType = 10;
-			}
-
-			if (Main.bloodMoon)
-				auroraType = 6;
-
-			if (Main.pumpkinMoon)
-				auroraType = 7;
-
-			if (Main.snowMoon)
-				auroraType = 8;
-
-			if (blueMoon)
-				auroraType = 9;
-
-			if (!Main.bloodMoon && !Main.pumpkinMoon && !Main.snowMoon && !player.ZoneSpirit())
-				auroraType = auroraTypeFixed;
+			UpdateAurora(player);
 
 			if (Main.dayTime != dayTimeLast)
 				dayTimeSwitched = true;
@@ -1448,14 +1429,6 @@ namespace SpiritMod
 				}
 				else
 					blueMoon = false;
-
-				if (!Main.dayTime && Main.rand.NextBool(6))
-				{
-					auroraTypeFixed = Main.rand.Next(new int[] { 1, 2, 3, 5 });
-					aurora = true;
-				}
-				else
-					aurora = false;
 
 				if (!Main.dayTime && Main.rand.NextBool(32))
 					rareStarfallEvent = true;
@@ -1525,6 +1498,7 @@ namespace SpiritMod
 			if (Main.hardMode && !rockCandy)
 			{
 				rockCandy = true;
+
 				for (int C = 0; C < Main.maxTilesX * 9; C++)
 				{
 					int X = WorldGen.genRand.Next(300, Main.maxTilesX - 300);
@@ -1535,6 +1509,7 @@ namespace SpiritMod
 						NetMessage.SendObjectPlacement(-1, X, Y, ModContent.TileType<GreenShardBig>(), 0, 0, -1, -1);
 					}
 				}
+
 				for (int C = 0; C < Main.maxTilesX * 9; C++)
 				{
 					int X = WorldGen.genRand.Next(300, Main.maxTilesX - 300);
@@ -1546,6 +1521,45 @@ namespace SpiritMod
 					}
 				}
 			}
+		}
+
+		private static void UpdateAurora(Player player)
+		{
+			bool oldAurora = aurora;
+			byte oldAuroraType = (byte)auroraType;
+
+			if (player.ZoneSpirit())
+			{
+				if (!aurora)
+					aurora = true;
+				auroraType = 10;
+			}
+
+			if (Main.bloodMoon)
+				auroraType = 6;
+
+			if (Main.pumpkinMoon)
+				auroraType = 7;
+
+			if (Main.snowMoon)
+				auroraType = 8;
+
+			if (blueMoon)
+				auroraType = 9;
+
+			if (!Main.bloodMoon && !Main.pumpkinMoon && !Main.snowMoon && !player.ZoneSpirit())
+				auroraType = auroraTypeFixed;
+
+			if (!Main.dayTime && Main.rand.NextBool(6))
+			{
+				auroraTypeFixed = Main.rand.Next(new int[] { 1, 2, 3, 5 });
+				aurora = true;
+			}
+			else
+				aurora = false;
+
+			if (oldAurora != aurora || oldAuroraType != auroraType)
+				NetMessage.SendData(MessageID.WorldData);
 		}
 	}
 }
