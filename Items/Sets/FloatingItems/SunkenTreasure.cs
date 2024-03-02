@@ -47,7 +47,7 @@ namespace SpiritMod.Items.Sets.FloatingItems
 			};
 
 			itemLoot.AddOneFromOptions(3, lootTable);
-			itemLoot.Add(DropRules.LootPoolDrop.SameStack(6, 10, 1, 4, 1, ItemID.GoldBar, ItemID.SilverBar, ItemID.TungstenBar, ItemID.GoldBar));
+			itemLoot.Add(DropRules.LootPoolDrop.SameStack(6, 10, 1, 4, 1, ItemID.GoldBar, ItemID.SilverBar, ItemID.TungstenBar, ItemID.PlatinumBar));
 			itemLoot.Add(DropRules.LootPoolDrop.SameStack(5, 7, 1, 4, 1, ItemID.Ruby, ItemID.Emerald, ItemID.Topaz, ItemID.Amethyst, ItemID.Diamond, ItemID.Sapphire, ItemID.Amber));
 			itemLoot.AddCommon<Weapon.Thrown.ExplosiveRum.ExplosiveRum>(1, 45, 71);
 

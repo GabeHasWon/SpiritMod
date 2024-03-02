@@ -7,13 +7,8 @@ namespace SpiritMod.NPCs.Spirit
 {
 	class SpiritScythe : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Soul Scythe");
-			Main.projFrames[base.Projectile.type] = 6;
-		}
-
 		int timer = 0;
+
 		public override void SetDefaults()
 		{
 			Projectile.friendly = false;
@@ -31,14 +26,17 @@ namespace SpiritMod.NPCs.Spirit
 		{
 			Projectile.rotation += 0.2f;
 
-			int dust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X, Projectile.velocity.Y);
-			int dust2 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X, Projectile.velocity.Y);
-			Main.dust[dust].noGravity = true;
-			Main.dust[dust2].noGravity = true;
-			Main.dust[dust2].velocity *= 0f;
-			Main.dust[dust2].velocity *= 0f;
-			Main.dust[dust2].scale = 1.2f;
-			Main.dust[dust].scale = 1.2f;
+			if (timer % 2 == 0)
+			{
+				int dust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X, Projectile.velocity.Y);
+				int dust2 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X, Projectile.velocity.Y);
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust2].noGravity = true;
+				Main.dust[dust2].velocity *= 0f;
+				Main.dust[dust2].velocity *= 0f;
+				Main.dust[dust2].scale = 1.2f;
+				Main.dust[dust].scale = 1.2f;
+			}
 
 			timer++;
 			if (timer == 10)

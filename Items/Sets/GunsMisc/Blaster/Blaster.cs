@@ -272,8 +272,11 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			Item.channel = auxillary == (int)AuxillaryType.Charge;
 			Item.reuseDelay = (auxillary == (int)AuxillaryType.Burst) ? 60 : 0;
 
-			Item.SetNameOverride($"{Language.GetTextValue("Mods.SpiritMod.Items.Blaster.Name" + ((element + build) % 8))} " 
-				+ Language.GetTextValue("Mods.SpiritMod.Items.Blaster.DisplayName"));
+			if (Item.type == Type)
+				Item.SetNameOverride($"{Language.GetTextValue("Mods.SpiritMod.Items.Blaster.Name" + ((element + build) % 8))} "
+					+ Language.GetTextValue("Mods.SpiritMod.Items.Blaster.DisplayName"));
+			else if (Item.Name.StartsWith(Language.GetTextValue("Mods.SpiritMod.Items.Blaster.Name")))
+				Item.ClearNameOverride();
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

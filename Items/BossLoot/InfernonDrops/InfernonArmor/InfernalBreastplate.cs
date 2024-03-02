@@ -7,12 +7,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonArmor
 	[AutoloadEquip(EquipType.Body)]
 	public class InfernalBreastplate : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pain Monger's Breasplate");
-			// Tooltip.SetDefault("Increases maximum mana by 60");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;

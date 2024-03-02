@@ -2304,7 +2304,7 @@ InfernalSword: {
 }
 
 InfernalBreastplate: {
-	DisplayName: Pain Monger's Breasplate
+	DisplayName: Pain Monger's Breastplate
 	Tooltip: Increases maximum mana by 60
 }
 
@@ -6505,7 +6505,7 @@ SunkenTreasure: {
 	Tooltip:
 		'''
 		Right-click to open
-		'Perhaps it is still full of valuable treasure''
+		'Perhaps it is still full of valuable treasure'
 		'''
 }
 

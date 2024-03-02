@@ -31,7 +31,7 @@ namespace SpiritMod.Projectiles
 		}
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
-		public override bool? CanHitNPC(NPC target) => target.immune[Projectile.owner] == 0;
+		public override bool? CanHitNPC(NPC target) => target.immune[Projectile.owner] == 0 && !target.friendly;
 
 		public override void AI()
 		{
