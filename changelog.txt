@@ -1,11 +1,10 @@
-﻿v1.5.0.10
-- Made Pirate Chests significantly more likely to spawn in both oceans
-- Fixed Spectre Ring error
-- Changed Laser Launcher code to stop dust spam in rare circumstances
-- Fixed all GTile::Drop items not dropping in multiplayer
-- Made Auroras sync their activity & type in multiplayer
-- Made Botanist set bonus work in multiplayer
-- Fixed Slagtern Staff being able to hit friendly NPCs
-- Fixed Ancient Spectre broken projectile visual, reduced dust spam
-- Fixed really dumb Journey Mode duplication menu name issue
-- Fixed various minor spelling and tooltip issues
+﻿v1.5.0.11
+- Fixed Falling Asteroid pushing enemies with complete knockback resist, such as the Eternia Crystal
+- Made minion accessories not mutually exclusive
+- Made Jinxbow, Cimmeran Scepter explicitly not take a minion slot
+- Fixed typo in Mythril Staff
+- Fixed issue where Infernum (and other mods that detour Main.CheckMonoliths) would fail to draw or do certain things
+	This fixes both a lot of Infernum's (and other) visual issues, but also monoliths now work properly
+- Made True Vessel Drainer & True Hallowed Staff recipes consistent with vanilla recipes
+- Fixed Briar Grass Seeds not syncing in multiplayer
+- Fixed poor mining check in Cryolite

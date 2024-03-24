@@ -39,7 +39,9 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);
-			recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
+			recipe.AddIngredient(ItemID.SoulofMight, 1);
+			recipe.AddIngredient(ItemID.SoulofSight, 1);
+			recipe.AddIngredient(ItemID.SoulofFright, 1);
 			recipe.AddIngredient(ModContent.ItemType<HallowedStaff>(), 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();

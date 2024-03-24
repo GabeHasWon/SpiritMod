@@ -24,14 +24,20 @@ namespace SpiritMod.Items.Placeable.Tiles
 
 		public override bool? UseItem(Player player)
 		{
-			if (Main.netMode == NetmodeID.Server)
+			if (Main.myPlayer != player.whoAmI)
 				return false;
 
 			Tile tile = Framing.GetTileSafely(Player.tileTargetX, Player.tileTargetY);
-			if (tile.HasTile && tile.TileType == TileID.Dirt && player.WithinPlacementRange(Player.tileTargetX, Player.tileTargetY)) {
+
+			if (tile.HasTile && tile.TileType == TileID.Dirt && player.WithinPlacementRange(Player.tileTargetX, Player.tileTargetY))
+			{
 				WorldGen.PlaceTile(Player.tileTargetX, Player.tileTargetY, ModContent.TileType<BriarGrass>(), forced: true);
 				player.inventory[player.selectedItem].stack--;
+
+				if (Main.netMode != NetmodeID.SinglePlayer)
+					NetMessage.SendTileSquare(player.whoAmI, Player.tileTargetX, Player.tileTargetY);
 			}
+
 			return null;
 		}
 	}

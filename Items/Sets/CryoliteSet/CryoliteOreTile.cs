@@ -33,12 +33,13 @@ namespace SpiritMod.Items.Sets.CryoliteSet
 			g = .112f * 1.5f;
 			b = .128f * 1.5f;
 		}
+
 		public override bool CanKillTile(int i, int j, ref bool blockDamaged)
 		{
-			Player player = Main.LocalPlayer;
-			if (player.inventory[player.selectedItem].type == ItemID.ReaverShark) {
+			Player player = Main.player[Player.FindClosest(new Vector2(i, j).ToWorldCoordinates(0, 0), 16, 16)];
+
+			if (player.inventory[player.selectedItem].type == ItemID.ReaverShark)
 				return false;
-			}
 			return true;
 		}
 		public override bool CanExplode(int i, int j) => false;

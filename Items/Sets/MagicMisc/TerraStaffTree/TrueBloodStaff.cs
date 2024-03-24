@@ -9,11 +9,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 {
 	public class TrueBloodStaff : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("True Vessel Drainer");
-			// Tooltip.SetDefault("Shoots a clot that gathers power over time");
-		}
+		public override void SetStaticDefaults() => Item.staff[Item.type] = true;
 
 		public override void SetDefaults()
 		{
@@ -25,7 +21,6 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 			Item.useTime = 40;
 			Item.useAnimation = 40;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.staff[Item.type] = true;
 			Item.noMelee = true;
 			Item.knockBack = 2;
 			Item.crit = 15;
@@ -40,7 +35,9 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
+            recipe.AddIngredient(ItemID.SoulofMight, 1);
+            recipe.AddIngredient(ItemID.SoulofSight, 1);
+            recipe.AddIngredient(ItemID.SoulofFright, 1);
             recipe.AddIngredient(ModContent.ItemType<BloodStaff>(), 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();

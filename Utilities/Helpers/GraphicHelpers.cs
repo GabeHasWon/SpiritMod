@@ -2,9 +2,6 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using Terraria.ID;
-using System.Collections.Generic;
 
 namespace SpiritMod
 {
@@ -16,9 +13,10 @@ namespace SpiritMod
         {
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
-            Main.spriteBatch.Draw(tex, position, tex.Bounds, colour, 0f, tex.TextureCenter(), scale, SpriteEffects.None, 0f);
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.TransformationMatrix);
+            
+			Main.spriteBatch.Draw(tex, position, tex.Bounds, colour, 0f, tex.TextureCenter(), scale, SpriteEffects.None, 0f);
+			
+			Main.spriteBatch.RestartToDefault();
         }
         public static void DrawBezier(Texture2D Tex, Vector2 endPoints, Vector2 startingPos, Vector2 c1, float addonPerUse, float rotDis = 0f, float scale = 1, bool TrueRotation = false)
         {

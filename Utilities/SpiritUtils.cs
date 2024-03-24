@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Linq;
 using Terraria;
@@ -88,5 +89,15 @@ namespace SpiritMod
 
 		public static Vector2 GetClockwise90(this Vector2 vector) => new Vector2(vector.Y, -vector.X);
 		public static Vector2 GetAntiClockwise90(this Vector2 vector) => new Vector2(-vector.Y, vector.X);
+
+		/// <summary>
+		/// Ends & restarts the spriteBatch with default vanilla parameters.
+		/// </summary>
+		public static void RestartToDefault(this SpriteBatch batch)
+		{
+			batch.End();
+			batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, 
+				Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
+		}
 	}
 }

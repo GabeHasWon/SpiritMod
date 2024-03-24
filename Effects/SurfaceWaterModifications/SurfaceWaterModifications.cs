@@ -478,8 +478,7 @@ namespace SpiritMod.Effects.SurfaceWaterModifications
 				Terraria.Graphics.Effects.Overlays.Scene.Draw(Main.spriteBatch, Terraria.Graphics.Effects.RenderLayers.ForegroundWater);
 			}
 
-			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
+			Main.spriteBatch.RestartToDefault();
 		}
 
 		private static void SetShader(bool back)

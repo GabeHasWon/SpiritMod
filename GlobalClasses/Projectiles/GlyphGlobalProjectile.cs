@@ -26,6 +26,12 @@ namespace SpiritMod.GlobalClasses.Projectiles
 
         public override bool InstancePerEntity => true;
 
+		public override bool PreDraw(Projectile projectile, ref Color lightColor)
+		{
+			int i = 0;
+			return true;
+		}
+
 		public override void OnSpawn(Projectile projectile, IEntitySource source)
 		{
 			void Share(Entity entity)

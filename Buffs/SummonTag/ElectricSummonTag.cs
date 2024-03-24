@@ -1,4 +1,3 @@
-using SpiritMod.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -13,7 +12,6 @@ namespace SpiritMod.Buffs.SummonTag
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Summon Tag");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
@@ -24,21 +22,22 @@ namespace SpiritMod.Buffs.SummonTag
 	{
 		public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			bool summon = (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry);
+			bool summon = projectile.minion || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.sentry;
+
 			if (summon && target.HasBuff(ModContent.BuffType<ElectricSummonTag>()) && projectile.type != ModContent.ProjectileType<ElectricGunProjectile>())
 			{
 				float maxdist = 300;
 				var potentialtargets = Main.npc.Where(x => x.CanBeChasedBy(this) && x.active && x != null && x.Distance(target.Center) < maxdist && x != target);
 				if (potentialtargets.Any())
 				{
-					NPC finaltarget = null;
+					NPC hitTarget = null;
 
 					foreach (NPC potentialtarget in potentialtargets)
 					{
 						if (potentialtarget.Distance(target.Center) < maxdist)
 						{
 							maxdist = potentialtarget.Distance(target.Center);
-							finaltarget = potentialtarget;
+							hitTarget = potentialtarget;
 						}
 					}
 
@@ -49,10 +48,9 @@ namespace SpiritMod.Buffs.SummonTag
 					}
 
 					for (int i = 0; i < 3; i++)
-						DustHelper.DrawElectricity(target.Center, finaltarget.Center, 226, 0.3f);
+						DustHelper.DrawElectricity(target.Center, hitTarget.Center, 226, 0.3f);
 
-					if (finaltarget != null)
-						finaltarget.StrikeNPC(target.CalculateHitInfo((int)(Math.Min(damageDone / 3, 12) * Main.rand.NextFloat(0.8f, 1.2f)), 0, false, 1f, projectile.DamageType, false));
+					hitTarget?.StrikeNPC(target.CalculateHitInfo((int)(Math.Min(damageDone / 3, 12) * Main.rand.NextFloat(0.8f, 1.2f)), 0, false, 1f, projectile.DamageType, false));
 				}
 			}
 		}

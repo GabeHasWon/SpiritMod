@@ -12,7 +12,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.HardmodeOreStaves
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Mythril Staff");
-			// Tooltip.SetDefault("Shooots homing bolts that occasionally strike enemies twice");
+			// Tooltip.SetDefault("Shoots homing bolts that occasionally strike enemies twice");
 		}
 
 

@@ -26,6 +26,7 @@ using System.Linq;
 using SpiritMod.Utilities.ILEdits;
 using MonoMod.RuntimeDetour;
 using Terraria.Localization;
+using Terraria.ModLoader.Core;
 
 namespace SpiritMod.Utilities;
 
@@ -108,6 +109,8 @@ public static class SpiritDetours
 
 			Main.screenPosition -= Main.LocalPlayer.velocity;
 		}
+
+		orig();
 	}
 
 	private static void Main_DrawPlayers_AfterProjectiles(On_Main.orig_DrawPlayers_AfterProjectiles orig, Main self)
@@ -179,7 +182,7 @@ public static class SpiritDetours
 	private const float ProfileNameScale = 1f; //Profile name scale - 1f because the higher is poorly resized
 	public static bool HoveringQuestButton = false;
 
-	private static void Main_DrawNPCChatButtons(On_Main.orig_DrawNPCChatButtons orig, int superColor, Color chatColor, int numLines, string focusText, string focusText3) //Portrait drawing - Gabe
+	private static void Main_DrawNPCChatButtons(On_Main.orig_DrawNPCChatButtons orig, int superColor, Color chatColor, int numLines, string focusText, string focusText3)
 	{
 		if (Main.LocalPlayer.talkNPC != -1)
 		{
@@ -283,7 +286,8 @@ public static class SpiritDetours
 		string name = talkNPC.GivenName;
 		Vector2 centring = ChatManager.GetStringSize(FontAssets.ItemStack.Value, name, new Vector2(ProfileNameScale)) / 2; //Position centring
 		Vector2 textPos = new Vector2(Main.screenWidth / 2 - (198 + size.X), 114 + size.Y) - centring; //Real position
-		ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, FontAssets.ItemStack.Value, name, textPos, new Color(240, 240, 240), 0f, new Vector2(), new Vector2(ProfileNameScale), -1, 2f); //Name
+		ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, FontAssets.ItemStack.Value, name, textPos, new Color(240, 240, 240), 0f, 
+			Vector2.Zero, new Vector2(ProfileNameScale), -1, 2f); //Name
 	}
 
 	private static void Main_OnPreDraw(GameTime obj)
@@ -355,9 +359,10 @@ public static class SpiritDetours
 		orig(self);
 	}
 
-        private static string LanguageManager_GetTextValue_string1(Terraria.Localization.On_LanguageManager.orig_GetTextValue_string orig, Terraria.Localization.LanguageManager self, string key)
+        private static string LanguageManager_GetTextValue_string1(On_LanguageManager.orig_GetTextValue_string orig, LanguageManager self, string key)
         {
-            if (key == "GameUI.LightRain" || key == "GameUI.Rain" || key == "GameUI.HeavyRain" || key == "GameUI.Clear" || key == "GameUI.PartlyCloudy" || key == "GameUI.MostlyCloudy" || key == "GameUI.Overcast"|| key == "GameUI.Cloudy")
+            if (key == "GameUI.LightRain" || key == "GameUI.Rain" || key == "GameUI.HeavyRain" || key == "GameUI.Clear" || key == "GameUI.PartlyCloudy" || key == 
+			"GameUI.MostlyCloudy" || key == "GameUI.Overcast"|| key == "GameUI.Cloudy")
                 return SpiritMod.GetWeatherRadioText(key);
             return orig(self, key);
         }

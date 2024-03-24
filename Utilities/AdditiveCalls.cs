@@ -34,9 +34,10 @@ namespace SpiritMod
 			// Custom Additive calls do not. Use this for particles and such
 
 			for (int i = 0; i < MaxCalls; i++)
-				if (AdditiveCalls[i] != null) CallList.Add(AdditiveCalls[i]);
+				if (AdditiveCalls[i] != null) 
+					CallList.Add(AdditiveCalls[i]);
 
-			//Only restart spritebatch if needed
+			// Only restart spritebatch if needed
 			if (CallList.Count > 0)
 			{
 				Main.spriteBatch.Begin(default, BlendState.Additive, default, default, RasterizerState.CullNone, default, Main.GameViewMatrix.ZoomMatrix);

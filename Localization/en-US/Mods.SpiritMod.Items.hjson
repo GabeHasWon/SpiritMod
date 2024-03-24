@@ -62,6 +62,7 @@ BowSummonItem: {
 		Summons a possessed bow to fight for you
 		Uses the first arrow in your inventory
 		If you have no arrows, shoots weaker Jester Arrows infinitely
+		The bow does not take any minion slots
 		'''
 }
 
@@ -7083,7 +7084,7 @@ CobaltStaff: {
 
 MythrilStaff: {
 	DisplayName: Mythril Staff
-	Tooltip: Shooots homing bolts that occasionally strike enemies twice
+	Tooltip: Shoots homing bolts that occasionally strike enemies twice
 }
 
 OrichalcumStaff: {

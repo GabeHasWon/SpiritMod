@@ -14,29 +14,32 @@ namespace SpiritMod.Tiles.Furniture.Fountains
     {
 		internal virtual int DropType => ModContent.ItemType<BriarFountainItem>();
 
-		//internal virtual int WaterStyle => ModContent.GetInstance<ReachWaterStyle>().Slot;
-
 		public sealed override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
 
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style5x4);
+			TileID.Sets.InteractibleByNPCs[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
+			TileObjectData.newTile.Width = 5;
+			TileObjectData.newTile.Height = 4;
             TileObjectData.newTile.Origin = new Point16(2, 3);
-            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 18 };
+            TileObjectData.newTile.CoordinateHeights = [16, 16, 16, 18];
+			TileObjectData.newTile.StyleLineSkip = 1;
             TileObjectData.addTile(Type);
 
             AddMapEntry(new Color(75, 139, 166));
 			RegisterItemDrop(DropType);
 
-            DustType = DustID.Stone;
+			DustType = DustID.Stone;
             AnimationFrameHeight = 72;
-            TileID.Sets.DisableSmartCursor[Type] = true;
-            AdjTiles = new int[] { TileID.WaterFountain };
+            AdjTiles = [TileID.WaterFountain];
         }
 
 		public sealed override void NearbyEffects(int i, int j, bool closer)
 		{
-			if (Framing.GetTileSafely(i, j).TileFrameY >= AnimationFrameHeight)
+			if (Main.netMode != NetmodeID.Server && Framing.GetTileSafely(i, j).TileFrameY >= AnimationFrameHeight)
 				Main.LocalPlayer.GetSpiritPlayer().fountainsActive["BRIAR"] = 4;
 		}
 
@@ -56,13 +59,14 @@ namespace SpiritMod.Tiles.Furniture.Fountains
 
         public override bool RightClick(int i, int j)
         {
-            SoundEngine.PlaySound(SoundID.Waterfall, new(i * 16, j * 16));
-            HitWire(i, j);
-
+			SoundEngine.PlaySound(SoundID.Waterfall, new(i * 16, j * 16));
+            ToggleTile(i, j);
             return true;
         }
 
-        public sealed override void MouseOver(int i, int j)
+		public sealed override void HitWire(int i, int j) => ToggleTile(i, j);
+
+		public sealed override void MouseOver(int i, int j)
         {
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
@@ -70,30 +74,33 @@ namespace SpiritMod.Tiles.Furniture.Fountains
             player.cursorItemIconID = DropType;
         }
 
-        public sealed override void HitWire(int i, int j)
-        {
+		private void ToggleTile(int i, int j)
+		{
 			int x = i - Framing.GetTileSafely(i, j).TileFrameX / 18 % 5;
-            int y = j - Framing.GetTileSafely(i, j).TileFrameY / 18 % 4;
+			int y = j - Framing.GetTileSafely(i, j).TileFrameY / 18 % 4;
 
-            for (int l = x; l < x + 5; l++)
-                for (int m = y; m < y + 4; m++)
-                {
+			for (int l = x; l < x + 5; l++)
+			{
+				for (int m = y; m < y + 4; m++)
+				{
 					Tile tile = Framing.GetTileSafely(l, m);
 					if (tile.HasTile && tile.TileType == Type)
-                    {
-                        if (tile.TileFrameY < 72)
+					{
+						if (tile.TileFrameY < 72)
 							tile.TileFrameY += 72;
-                        else
+						else
 							tile.TileFrameY -= 72;
-                    }
+					}
 
 					if (Wiring.running)
 						Wiring.SkipWire(l, m);
 				}
+			}
 
-			NetMessage.SendTileSquare(-1, x, y + 1, 4);
-        }
-    }
+			if (Main.netMode != NetmodeID.SinglePlayer)
+				NetMessage.SendTileSquare(-1, x, y, 5, 4);
+		}
+	}
 
 	public abstract class BaseFountainItem : ModItem
 	{

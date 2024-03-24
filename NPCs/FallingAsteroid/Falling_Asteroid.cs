@@ -117,34 +117,35 @@ namespace SpiritMod.NPCs.FallingAsteroid
 				foreach (NPC npc in Main.npc)
 				{
 					if (Vector2.Distance(NPC.Center, npc.Center) <= 150f && npc.whoAmI != NPC.whoAmI)
-						MoveEntity(npc);
+						MoveEntity(npc, NPC.knockBackResist);
 				}
 				foreach (Item item in Main.item)
 				{
 					if (Vector2.Distance(NPC.Center, item.Center) <= 150f)
-						MoveEntity(item);
+						MoveEntity(item, 1f);
 				}
 				foreach (Player player in Main.player)
 				{
 					if (Vector2.Distance(NPC.Center, player.Center) <= 150f)
-						MoveEntity(player);
+						MoveEntity(player, 1f);
 				}
 				foreach (Projectile proj in Main.projectile)
 				{
 					if (Vector2.Distance(NPC.Center, proj.Center) <= 150f && proj.type != ProjectileID.IceBlock)
-						MoveEntity(proj);
+						MoveEntity(proj, 1f);
 				}
 				#endregion
 			}
 		}
 
-		public void MoveEntity(Entity entity)
+		public void MoveEntity(Entity entity, float speedModifier)
 		{
 			float num2 = NPC.position.X + Main.rand.Next(-10, 10) + (NPC.width / 2f) - entity.Center.X;
 			float num3 = NPC.position.Y + Main.rand.Next(-10, 10) + (NPC.height / 2f) - entity.Center.Y;
 			float num4 = 8f / (float)Math.Sqrt(num2 * num2 + num3 * num3);
 			entity.velocity.X = num2 * num4 * -1.7f;
 			entity.velocity.Y = num3 * num4 * -1.7f;
+			entity.velocity *= speedModifier;
 		}
 
 		public void Movement()

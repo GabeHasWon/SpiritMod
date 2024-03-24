@@ -39,6 +39,7 @@ namespace SpiritMod.Projectiles.Summon.BowSummon
 			Projectile.height = 20;
 			Projectile.friendly = true;
 			Projectile.minion = true;
+			Projectile.minionSlots = 0;
 			Projectile.penetrate = -1;
 			Projectile.timeLeft = 18000;
 			Projectile.tileCollide = false;

@@ -57,6 +57,7 @@ namespace SpiritMod.GlobalClasses.Players
 		{
 			List<ExtraDrawOnPlayer> additiveCallPlayers = new List<ExtraDrawOnPlayer>();
 			List<ExtraDrawOnPlayer> alphaBlendCallPlayers = new List<ExtraDrawOnPlayer>();
+
 			foreach (Player player in Main.player.Where(x => x.active && x != null))
 			{
 				if (player.GetModPlayer<ExtraDrawOnPlayer>().AnyOfType(DrawType.Additive))
