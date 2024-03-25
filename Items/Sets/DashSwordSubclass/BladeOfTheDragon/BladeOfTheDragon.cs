@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
             Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;
             Item.useTurn = false;
-			Item.value = Item.sellPrice(gold: 10);
+			Item.value = Item.buyPrice(gold: 50);
 			Item.rare = ItemRarityID.LightPurple;
             Item.shoot = ModContent.ProjectileType<BladeOfTheDragonProj>();
             Item.shootSpeed = 6f;
@@ -88,7 +88,7 @@ namespace SpiritMod.Items.Sets.DashSwordSubclass.BladeOfTheDragon
 			Projectile.DamageType = DamageClass.Melee;
 			Projectile.aiStyle = -1;
 			Projectile.friendly = true;
-			Projectile.penetrate = 12;
+			Projectile.penetrate = 20;
 			Projectile.tileCollide = false;
 		}
 

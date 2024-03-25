@@ -120,7 +120,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 			writer.Write(SwingTime);
 			writer.WriteVector2(InitialVelocity);
 			writer.WriteVector2(BasePosition);
-			writer.Write(SwingRadians);
+			writer.Write((Half)SwingRadians);
 			writer.Write(Distance);
 		}
 
@@ -129,7 +129,7 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechSword
 			SwingTime = reader.ReadInt32();
 			InitialVelocity = reader.ReadVector2();
 			BasePosition = reader.ReadVector2();
-			SwingRadians = reader.ReadSingle();
+			SwingRadians = (float)reader.ReadHalf();
 			Distance = reader.ReadSingle();
 		}
 

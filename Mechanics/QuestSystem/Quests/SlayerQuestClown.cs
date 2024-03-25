@@ -17,7 +17,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 		public override (int, int)[] QuestRewards => _rewards;
 		private readonly (int, int)[] _rewards = new[]
 		{
-			((int)ItemID.Bananarang, 5),
+			((int)ItemID.Bananarang, 1),
 			(ItemID.LightShard, 1),
 			(ItemID.GoldCoin, 3)
 		};

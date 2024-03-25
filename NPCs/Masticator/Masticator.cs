@@ -13,9 +13,11 @@ namespace SpiritMod.NPCs.Masticator
 {
 	public class Masticator : ModNPC
 	{
+		int frame;
+		bool vomitPhase;
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Masticator");
 			Main.npcFrameCount[NPC.type] = 11;
 			NPCID.Sets.TrailCacheLength[NPC.type] = 2;
 			NPCID.Sets.TrailingMode[NPC.type] = 0;
@@ -39,12 +41,9 @@ namespace SpiritMod.NPCs.Masticator
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheCorruption");
-
-		int frame;
-		bool vomitPhase;
-
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(vomitPhase);
 		public override void ReceiveExtraAI(BinaryReader reader) => vomitPhase = reader.ReadBoolean();
+		public override bool? CanFallThroughPlatforms() => true;
 
 		public override void AI()
 		{

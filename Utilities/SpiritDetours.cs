@@ -46,7 +46,7 @@ public static class SpiritDetours
 		On_Player.ToggleInv += Player_ToggleInv;
 		On_Player.Update_NPCCollision += CollideableNPCDetours.SolidTopCollision;
 		On_Projectile.VanillaAI += CollideableNPCDetours.Grappling;
-		On_Main.DrawInterface += DrawParticles;
+		On_Main.DrawInfernoRings += DrawParticles;
 		On_LanguageManager.GetTextValue_string += LanguageManager_GetTextValue_string1;
 		On_Main.DrawNPCChatButtons += Main_DrawNPCChatButtons;
 		On_WorldGen.SpreadGrass += On_WorldGen_SpreadGrass;
@@ -367,12 +367,13 @@ public static class SpiritDetours
             return orig(self, key);
         }
 
-	private static void DrawParticles(On_Main.orig_DrawInterface orig, Main self, GameTime gameTime)
+	private static void DrawParticles(On_Main.orig_DrawInfernoRings orig, Main self)
 	{
+		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, default, default, RasterizerState.CullNone, default, Main.GameViewMatrix.ZoomMatrix);
 		ParticleHandler.DrawAllParticles(Main.spriteBatch);
-		Main.spriteBatch.End();
+		Main.spriteBatch.RestartToDefault();
 
-		orig(self, gameTime);
+		orig(self);
 	}
 }

@@ -46,7 +46,7 @@ namespace SpiritMod.NPCs.Reach
 			AIType = NPCID.FlyingFish;
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.GladeWraithBanner>();
-			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.BriarSurfaceBiome>().Type };
+			SpawnModBiomes = [ModContent.GetInstance<Biomes.BriarSurfaceBiome>().Type];
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -65,10 +65,23 @@ namespace SpiritMod.NPCs.Reach
 			Lighting.AddLight((int)((NPC.position.X + (NPC.width / 2)) / 16f), (int)((NPC.position.Y + (NPC.height / 2)) / 16f), 0.46f, 0.32f, .1f);
 			
 			timer = ++timer % 750;
+
+			Player targetPlayer = Main.player[NPC.target];
+
+			if (timer % 30 == 0)
+			{
+				NPC.TargetClosest();
+
+				targetPlayer = Main.player[NPC.target];
+
+				if (!targetPlayer.active || targetPlayer.dead || targetPlayer.DistanceSQ(NPC.Center) > 2000 * 2000)
+					NPC.EncourageDespawn(10);
+			}
+
 			if (timer == 240 || timer == 280 || timer == 320)
 			{
 				SoundEngine.PlaySound(SoundID.Grass, NPC.Center);
-				Vector2 direction = NPC.DirectionTo(Main.player[NPC.target].Center) * 10f;
+				Vector2 direction = NPC.DirectionTo(targetPlayer.Center) * 10f;
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction.RotatedByRandom(0.02f), ModContent.ProjectileType<OvergrowthLeaf>(), 6, 1, Main.myPlayer);
@@ -81,15 +94,16 @@ namespace SpiritMod.NPCs.Reach
 			}
 			if (timer >= 500 && timer <= 720)
 			{
-				throwing = true;
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Torch, 0f, -2.5f, 0, default, 0.6f);
+
+				throwing = true;
 				NPC.defense = 0;
 				NPC.velocity = Vector2.Zero;
 
 				if ((int)NPC.frameCounter == 4 && !thrown)
 				{
 					thrown = true;
-					Vector2 direction = NPC.GetArcVel(Main.player[NPC.target].Center, 0.4f, 100, 500, maxXvel: 14);
+					Vector2 direction = NPC.GetArcVel(targetPlayer.Center, 0.4f, 100, 500, maxXvel: 14);
 					SoundEngine.PlaySound(SoundID.Item8, NPC.Center);
 
 					if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -106,7 +120,7 @@ namespace SpiritMod.NPCs.Reach
 
 			if (timer >= 730)
 			{
-				Vector2 direction = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center);
+				Vector2 direction = Vector2.Normalize(targetPlayer.Center - NPC.Center);
 				direction.X *= Main.rand.Next(6, 9);
 				direction.Y *= Main.rand.Next(6, 9);
 				NPC.velocity = direction *= 0.97f;
@@ -117,7 +131,7 @@ namespace SpiritMod.NPCs.Reach
 				NPC.netUpdate = true;
 			}
 			else if (WorldGen.SolidTile(Framing.GetTileSafely(NPC.Center)))
-				NPC.velocity = Vector2.Lerp(NPC.velocity, NPC.DirectionTo(Main.player[NPC.target].Center) * 8f, .05f);
+				NPC.velocity = Vector2.Lerp(NPC.velocity, NPC.DirectionTo(targetPlayer.Center) * 8f, .05f);
 
 			NPC.spriteDirection = NPC.direction;
 			return true;

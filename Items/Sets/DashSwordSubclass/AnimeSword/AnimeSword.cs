@@ -4,14 +4,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.Linq;
-using SpiritMod.Items.Equipment;
 using Terraria.Localization;
+using SpiritMod.Items.Weapon.Summon;
 
 namespace SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword
 {
 	public class AnimeSword : DashSwordItem
 	{
-		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<DynastyFan>();
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<JadeStaff>();
 
 		public override void SetDefaults()
 		{

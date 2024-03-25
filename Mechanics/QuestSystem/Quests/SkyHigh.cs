@@ -1,5 +1,7 @@
 ﻿using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem.Tasks;
+using SpiritMod.Items.Equipment;
+using SpiritMod.Items.Sets.DashSwordSubclass.AnimeSword;
 
 namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
@@ -19,7 +21,11 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 
 		private SkyHigh()
         {
-            _tasks.AddTask(new RetrievalTask(ModContent.ItemType<Items.Weapon.Summon.JadeStaff>(), 1));
+			TaskBuilder fanBranch = new TaskBuilder().AddTask(new RetrievalTask(ModContent.ItemType<DynastyFan>(), 1));
+			TaskBuilder bladeBranch = new TaskBuilder().AddTask(new RetrievalTask(ModContent.ItemType<AnimeSword>(), 1));
+			TaskBuilder jadeBranch = new TaskBuilder().AddTask(new RetrievalTask(ModContent.ItemType<Items.Weapon.Summon.JadeStaff>(), 1));
+
+			_tasks.AddBranches(fanBranch, bladeBranch, jadeBranch);
         }
     }
 }

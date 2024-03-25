@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Equipment;
 using SpiritMod.Projectiles.Summon.Dragon;
 using System;
 using Terraria;
@@ -12,6 +13,8 @@ namespace SpiritMod.Items.Weapon.Summon
 {
 	public class JadeStaff : ModItem
 	{
+		public override void SetStaticDefaults() => ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<DynastyFan>();
+
 		public override void SetDefaults()
 		{
 			Item.damage = 23;
