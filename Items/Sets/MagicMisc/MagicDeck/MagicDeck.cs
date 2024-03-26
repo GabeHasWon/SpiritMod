@@ -26,7 +26,7 @@ namespace SpiritMod.Items.Sets.MagicMisc.MagicDeck
 			Item.noMelee = true;
 			Item.knockBack = 2;
 			Item.useTurn = false;
-			Item.value = Item.sellPrice(0, 5, 0, 0);
+			Item.value = Item.buyPrice(0, 25, 0, 0);
 			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;

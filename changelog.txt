@@ -1,8 +1,3 @@
 ﻿v1.5.0.12
-- Made Sky High quest accept any Pagoda special item
-- Made Jade Staff shimmer into Dynasty Fan shimmer into Anime Blade shimmer into Jade Staff
-- Updated Sky High localization
-- Made Blade of the Dragon slice through 20 npcs per slash
-- Fixed Spirit's particle system not drawing when UI is turned off
-- Fixed Masticator & Gluttonous Devourer not falling through tiles
-- Fixed Glade Wraith never despawning for any reason
+- Fixed Sunset Spire being 2x as likely to show up in Mysterious Satchels
+- Made Soul Dagger drop from Shadow Ghouls

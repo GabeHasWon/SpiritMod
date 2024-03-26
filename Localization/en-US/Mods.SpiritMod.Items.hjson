@@ -7761,8 +7761,6 @@ SoulDagger: {
 	Tooltip:
 		'''
 		Summons a soul dagger to fight for you 
-		Marks enemies on attack 
-		Marked enemies can be attacked by other minions for a damage boost
 		'''
 }
 

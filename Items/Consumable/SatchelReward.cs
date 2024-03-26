@@ -27,7 +27,7 @@ namespace SpiritMod.Items.Consumable
 		{
 			for (int i = 0; i < 2; ++i)
 			{
-				itemLoot.AddOneFromOptions(1, ModContent.ItemType<AdvPainting1>(), ModContent.ItemType<AdvPainting1>(), ModContent.ItemType<AdvPainting2>(),
+				itemLoot.AddOneFromOptions(1, ModContent.ItemType<AdvPainting1>(), ModContent.ItemType<AdvPainting2>(),
 					ModContent.ItemType<AdvPainting3>(), ModContent.ItemType<AdvPainting4>(), ModContent.ItemType<AdvPainting5>(), ModContent.ItemType<AdvPainting6>(),
 					ModContent.ItemType<AdvPainting7>(), ModContent.ItemType<AdvPainting8>(), ModContent.ItemType<AdvPainting9>(), ModContent.ItemType<AdvPainting10>(),
 					ModContent.ItemType<AdvPainting11>(), ModContent.ItemType<AdvPainting12>(), ModContent.ItemType<AdvPainting13>(), ModContent.ItemType<AdvPainting14>(),
