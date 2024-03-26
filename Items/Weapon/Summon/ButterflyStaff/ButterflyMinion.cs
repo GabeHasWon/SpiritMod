@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Buffs.Summon;
+using SpiritMod.Projectiles;
 using SpiritMod.Projectiles.BaseProj;
 using System;
 using System.Linq;
@@ -15,10 +16,9 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 		public ButterflyMinion() : base(600, 800, new Vector2(16, 16)) { }
 		public override void AbstractSetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Ethereal Butterfly");
-			Main.projFrames[Projectile.type] = 2;
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+			Main.projFrames[Type] = 2;
+			ProjectileID.Sets.TrailCacheLength[Type] = 8;
+			ProjectileID.Sets.TrailingMode[Type] = 2;
 		}
 
 		public override bool PreAI()
@@ -91,13 +91,25 @@ namespace SpiritMod.Items.Weapon.Summon.ButterflyStaff
 			}
 		}
 
+		public override bool MinionContactDamage() => AiState != StuckToPlayer; //Don't deal damage when idling
+
 		public override Color? GetAlpha(Color lightColor) => Color.White * Projectile.Opacity;
 
 		public override void OnKill(int timeLeft)
 		{
-			DustHelper.DrawStar(Projectile.Center, 223, pointAmount: 5, mainSize: 1.6425f, dustDensity: 1.5f, dustSize: .5f, pointDepthMult: 0.3f, noGravity: true);
-			for (int i = 0; i < 15; i++)
-				Dust.NewDustPerfect(Projectile.Center, 223, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(3), 0, default, 0.5f);
+			//Explode for 200% damage in a 5 tile range
+			int oldDamage = Projectile.damage;
+			Projectile.damage *= 2;
+
+			ProjectileExtras.Explode(Projectile.whoAmI, 80, 80, delegate
+			{
+				DustHelper.DrawStar(Projectile.Center, 223, pointAmount: 5, mainSize: 1.6425f, dustDensity: 1.5f, dustSize: .5f, pointDepthMult: 0.3f, noGravity: true);
+				
+				for (int i = 0; i < 15; i++)
+					Dust.NewDustPerfect(Projectile.Center, 223, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(3), 0, default, 0.5f);
+			});
+
+			Projectile.damage = oldDamage;
 		}
 
 		public void AdditiveCall(SpriteBatch spriteBatch, Vector2 screenPos)
