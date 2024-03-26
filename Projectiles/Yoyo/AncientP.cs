@@ -27,17 +27,15 @@ namespace SpiritMod.Projectiles.Yoyo
 
 		public override void AI()
 		{
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= 130) {
-				Projectile.frameCounter = 0;
+			if (Main.myPlayer == Projectile.owner && ++Projectile.frameCounter % 130 == 0)
+			{
 				float rotation = (float)(Main.rand.Next(0, 361) * (Math.PI / 180));
-				Vector2 velocity = new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation));
-				int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y, velocity.X, velocity.Y, ProjectileID.CultistBossIceMist, Projectile.damage, Projectile.owner, 0, 0f);
-				Main.projectile[proj].friendly = true;
-				Main.projectile[proj].hostile = false;
-				Main.projectile[proj].velocity *= 7f;
+				Vector2 velocity = new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * 7;
+				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, velocity, ProjectileID.CultistBossIceMist, Projectile.damage, Projectile.owner, 0, 0f);
+				proj.friendly = true;
+				proj.hostile = false;
+				proj.netUpdate = true;
 			}
 		}
-
 	}
 }

@@ -55,7 +55,6 @@ namespace SpiritMod.NPCs.AncientApostle
 			NPC.TargetClosest(false);
 			Player player = Main.player[NPC.target];
 			NPC.rotation = NPC.velocity.X * 0.1f;
-			NPC.spriteDirection = NPC.direction;
 
 			if (NPC.Center.X >= player.Center.X && MoveSpeed >= -60) // flies to players x position
 				MoveSpeed--;
@@ -102,6 +101,7 @@ namespace SpiritMod.NPCs.AncientApostle
 					}
 				}
 			}
+			NPC.spriteDirection = NPC.direction = (NPC.velocity.X > 0) ? 1 : -1;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSkyHeight && !spawnInfo.Player.ZoneAsteroid() && !spawnInfo.PlayerInTown ? 0.16f : 0f;

@@ -16,7 +16,7 @@ namespace SpiritMod.GlobalClasses.Projectiles
 	{
 		public float genericCounter;
 		public byte rarity;
-		public (int, int) parentData = new(-1, -1); //Used for minions and minion-fired projectiles to share data
+		public (int, int) parentData = new(-1, -1); //Used by minions and minion-fired projectiles to share data
 
 		/// <returns> The <see cref="GlyphGlobalProjectile"/> instance of the parent projectile. </returns>
 		private GlyphGlobalProjectile Parent() => (parentData.Item1 != -1 && parentData.Item2 != -1 && parentData.Item2 == Main.projectile[parentData.Item1].type)
@@ -26,22 +26,16 @@ namespace SpiritMod.GlobalClasses.Projectiles
 
         public override bool InstancePerEntity => true;
 
-		public override bool PreDraw(Projectile projectile, ref Color lightColor)
-		{
-			int i = 0;
-			return true;
-		}
-
 		public override void OnSpawn(Projectile projectile, IEntitySource source)
 		{
-			void Share(Entity entity)
+			void Share(Entity source) //Share glyph data from items or projectiles to related projectiles
 			{
-				if (entity is Item item && item.TryGetGlobalItem<GlyphGlobalItem>(out var glyphItem))
+				if (source is Item item && item.TryGetGlobalItem<GlyphGlobalItem>(out var glyphItem))
 				{
 					Glyph = glyphItem.Glyph;
 					rarity = (byte)item.OriginalRarity;
 				}
-				else if (entity is Projectile parent)
+				else if (source is Projectile parent)
 				{
 					if (ProjectileID.Sets.MinionShot[projectile.type])
 						parentData = new(parent.whoAmI, parent.type);
@@ -97,7 +91,7 @@ namespace SpiritMod.GlobalClasses.Projectiles
 				VoidGlyph.VoidCollapse(player, target, projectile, damageDone / 2 * rarity);
 			if (Glyph == GlyphType.Radiant)
 			{
-				if (Parent() != null)
+				if (Parent() != null) //Check if projectile-firing minions (parents) should be in charge of radiance
 				{
 					if (Parent().genericCounter >= 1)
 						RadiantGlyph.RadiantStrike(player, target);

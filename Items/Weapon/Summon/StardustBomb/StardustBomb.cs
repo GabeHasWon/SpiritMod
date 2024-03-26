@@ -12,12 +12,6 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 {
 	public class StardustBomb : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Supernova");
-			// Tooltip.SetDefault("Summons a collapsing star\nThe star can be targeted\nDeal summon damage to the star to release a powerful explosion");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.CloneDefaults(ItemID.QueenSpiderStaff);
@@ -67,7 +61,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 
 		public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.FragmentStardust, 18);
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.Register();
@@ -76,18 +70,15 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 
 	internal class StardustBombNPC : ModNPC
     {
-        public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Supernova");
-			Main.npcFrameCount[NPC.type] = 7;
-        }
+        public override void SetStaticDefaults() => Main.npcFrameCount[Type] = 7;
 
-		int returnCounter;
-		readonly int returnCounterMax = 200;
+		public int OwnerWhoAmI { get => (int)NPC.ai[0]; set => NPC.ai[0] = value; }
 
-		int boomDamage;
-		float shrinkCounter = 0.25f;
-		bool shrinking;
+		public ref float TimeAlive => ref NPC.ai[1];
+		private readonly int timeAliveMax = 200;
+
+		private readonly int highDamage = 5000; //General damage threshold for visual effects
+		private int boomDamage;
         
 		public override void SetDefaults()
         {
@@ -106,102 +97,94 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 
 		public override void FindFrame(int frameHeight)
 		{
-			NPC.frameCounter += 0.25f;
-			NPC.frameCounter %= Main.npcFrameCount[NPC.type];
+			NPC.frameCounter += .25f;
+			NPC.frameCounter %= Main.npcFrameCount[Type];
 			int frame = (int)NPC.frameCounter;
 			NPC.frame.Y = frame * frameHeight;
 		}
 
 		public override void AI()
 		{
-			//Player player = Main.player[(int)NPC.ai[0]];
-			returnCounter++;
-			if (returnCounter >= returnCounterMax)
+			if (++TimeAlive >= timeAliveMax)
 			{
-				if (Explode())
-					NPC.active = false;
-				else
-					shrinking = true;
-
-				NPC.netUpdate = true;
-			}
-			else if (returnCounter % 40 == 1)
-			{
-				float scale = MathHelper.Clamp(LifeQuoteant * 25f, 0, 1);
-				DustHelper.DrawStar(NPC.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(100.0f)), 206, 5, scale, scale * 0.8f, scale * 1.5f);
-			}
-
-			NPC.velocity *= 0.97f;
-			NPC.rotation += 0.03f;
-
-			Lighting.AddLight(NPC.Center, Color.Cyan.R * 0.005f, Color.Cyan.G * 0.005f, Color.Cyan.B * 0.005f);
-
-			if (++NPC.ai[1] == 20 && Main.netMode != NetmodeID.Server)
-				SoundEngine.PlaySound(SoundID.DD2_EtherianPortalIdleLoop, NPC.Center);
-			if (shrinking)
-			{
-				shrinkCounter += 0.1f;
-				NPC.scale = 0.75f + (float)Math.Sin(shrinkCounter);
-				if (NPC.scale < 0.3f)
+				if (boomDamage > 0) //Explode instantly
 				{
-					NPC.active = false;
-					for (int j = 0; j < 14; j++)
-					{
-						int timeLeft = Main.rand.Next(20, 40);
+					Explode();
+				}
+				else //Shrink over shrinkTime before dying
+				{
+					const int shrinkTime = 20;
+					NPC.scale = 1f + (float)Math.Sin((TimeAlive - timeAliveMax) * .2f) * .75f;
 
-						ParticleHandler.SpawnParticle(new StarParticle(NPC.Center, Main.rand.NextVector2Circular(10, 7), Color.Cyan, Main.rand.NextFloat(0.15f, 0.3f), timeLeft));
+					if (TimeAlive > (timeAliveMax + shrinkTime))
+					{
+						NPC.active = false;
+
+						for (int j = 0; j < 14; j++)
+						{
+							int timeLeft = Main.rand.Next(20, 40);
+							ParticleHandler.SpawnParticle(new StarParticle(NPC.Center, Main.rand.NextVector2Circular(10, 7), Color.Cyan, Main.rand.NextFloat(0.15f, 0.3f), timeLeft));
+						}
 					}
 				}
-				else if (NPC.scale > 1)
-					NPC.scale = ((NPC.scale - 1) / 2f) + 1;
 			}
 			else
-				NPC.scale = MathHelper.Min(NPC.ai[1] / 15f, 1);
-		}
-
-		private bool Explode()
-		{
-			if (boomDamage == 0)
-				return false;
-
-			Player player = Main.player[(int)NPC.ai[0]];
-
-			for (int i = 0; i < 2; i++)
 			{
-				for (int j = 1; j < 5; ++j)
+				if ((int)TimeAlive % 40 == 1)
 				{
-					if (Main.netMode != NetmodeID.Server)
-					{
-						float randFloat = Main.rand.NextFloat(6.28f);
-						Gore.NewGore(NPC.GetSource_Death(), NPC.Center + (randFloat.ToRotationVector2() * 60), Main.rand.NextFloat(6.28f).ToRotationVector2() * 16, Mod.Find<ModGore>("StarbombGore" + j).Type, 1f);
-					}
-
-					if (i == 0)
-					{
-						float scale = Main.rand.NextFloat(1.0f, 2.5f);
-						DustHelper.DrawStar(NPC.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(120.0f)), 206, 5, scale, scale * 0.8f, Math.Min(scale, 1.8f));
-					}
+					float scale = MathHelper.Clamp((float)boomDamage / highDamage, 0, 1);
+					DustHelper.DrawStar(NPC.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(100.0f)), 206, 5, scale, scale * 0.8f, scale * 1.5f);
 				}
+				NPC.scale = MathHelper.Min(TimeAlive / 15f, 1);
 			}
 
-			Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<StarShockwave>(), (int)player.GetDamage(DamageClass.Summon).ApplyTo(boomDamage * 0.5f), 0, player.whoAmI);
+			NPC.velocity *= .97f;
+			NPC.rotation += .03f;
+			Lighting.AddLight(NPC.Center, Color.White.ToVector3() * .005f);
+
+			if ((int)TimeAlive == 20 && Main.netMode != NetmodeID.Server)
+				SoundEngine.PlaySound(SoundID.DD2_EtherianPortalIdleLoop, NPC.Center);
+		}
+
+		private void Explode()
+		{
+			Player owner = Main.player[OwnerWhoAmI];
+
+			if (owner.whoAmI == Main.myPlayer)
+				Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<StarShockwave>(), (int)owner.GetDamage(DamageClass.Summon).ApplyTo(boomDamage * .5f), 0, owner.whoAmI);
 			
 			if (Main.netMode != NetmodeID.Server)
 			{
 				SoundEngine.PlaySound(SoundID.Item92, NPC.Center);
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/Thunder"), NPC.Center);
 			}
+			for (int i = 0; i < 8; i++)
+			{
+				if (Main.netMode != NetmodeID.Server)
+				{
+					float randFloat = Main.rand.NextFloat(6.28f);
+					int goreType = Mod.Find<ModGore>("StarbombGore" + ((i % 4) + 1)).Type;
+					Gore.NewGore(NPC.GetSource_Death(), NPC.Center + (randFloat.ToRotationVector2() * 60), Main.rand.NextFloat(6.28f).ToRotationVector2() * 16, goreType, 1f);
+				}
+				if (i < 4)
+				{
+					float scale = Main.rand.NextFloat(1.0f, 2.5f);
+					DustHelper.DrawStar(NPC.Center + (Main.rand.NextVector2Unit() * Main.rand.NextFloat(120.0f)), 206, 5, scale, scale * 0.8f, Math.Min(scale, 1.8f));
+				}
+			}
 
 			SpiritMod.tremorTime = 15;
-			return true;
+			NPC.active = false;
 		}
 
-		public override bool? CanBeHitByItem(Player player, Item item) => false;
-
+		public override bool? CanBeHitByItem(Player player, Item item) => (item.DamageType == DamageClass.Summon || item.DamageType == DamageClass.SummonMeleeSpeed) ? null : false;
+		
 		public override bool? CanBeHitByProjectile(Projectile projectile)
 		{
-			if (ProjectileID.Sets.MinionShot[projectile.type] || projectile.minion)
-				return base.CanBeHitByProjectile(projectile);
+			//Most minion projectiles don't use a summon damage class
+			if (projectile.DamageType == DamageClass.Summon || projectile.DamageType == DamageClass.SummonMeleeSpeed || ProjectileID.Sets.MinionShot[projectile.type] || projectile.minion)
+				return null;
+
 			return false;
 		}
 
@@ -212,7 +195,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 
-			float breakCounter = (float)MathHelper.Clamp(LifeQuoteant, 0, 1);
+			float breakCounter = (float)MathHelper.Clamp((float)boomDamage / (highDamage * 2f), 0, .5f);
 
 			SpiritMod.CircleNoise.Parameters["breakCounter"].SetValue(breakCounter * 5f);
 			SpiritMod.CircleNoise.Parameters["rotation"].SetValue(0 - (NPC.rotation / 1.25f) + (breakCounter * 3.5f));
@@ -242,7 +225,7 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 					NPC.Center - Main.screenPosition + new Vector2(0, NPC.gfxOffY),
 					frame,
 					drawCol,
-					0 - (NPC.rotation / 2) + (LifeQuoteant * 30f),
+					0 - (NPC.rotation / 2) + ((float)boomDamage / highDamage * 30f),
 					frame.Size() / 2,
 					NPC.scale,
 					SpriteEffects.None, 0
@@ -296,7 +279,5 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
 
 		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = Rectangle.Empty;
-
-		private float LifeQuoteant => 1f - ((float)NPC.life / NPC.lifeMax);
 	}
 }
