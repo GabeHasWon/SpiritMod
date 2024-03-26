@@ -1,3 +1,15 @@
-﻿v1.5.0.12
+﻿Missed a version because of my mistake. Whoops!
+
+v1.5.0.14
 - Fixed Sunset Spire being 2x as likely to show up in Mysterious Satchels
 - Made Soul Dagger drop from Shadow Ghouls
+- Fixed missing Gambler happiness dialogue
+- Fixed Supernova not exploding when it should in multiplayer
+- Supernova now takes damage from any summon source rather than only minions and minion-fired projectiles
+- Ancient Apostle now faces the direction of their horizontal velocity
+- Fixed Yoyo Ancient not syncing spawned projectiles correctly in multiplayer
+- Fixed Ethereal Butterfly 'arcane stars' not dealing damage
+- Ethereal Butterfly no longer deals contact damage when stuck to the player
+- Fixed Spirit's cages not being solid top & stackable
+- Temporarily removed Briar Fountain water functionality until it's fixed
+- Updated StructureHelper reference

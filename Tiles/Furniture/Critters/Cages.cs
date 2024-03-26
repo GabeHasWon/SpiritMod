@@ -10,6 +10,27 @@ using Microsoft.Xna.Framework;
 
 namespace SpiritMod.Tiles.Furniture.Critters
 {
+	public static class CageData
+	{
+		public const AnchorType Anchor = AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.Platform | AnchorType.Table;
+
+		public static void SetData(ModTile tile)
+		{
+			Main.tileLighted[tile.Type] = true;
+			Main.tileFrameImportant[tile.Type] = true;
+			Main.tileNoAttach[tile.Type] = true;
+			Main.tileLavaDeath[tile.Type] = true;
+			Main.tileSolidTop[tile.Type] = true;
+			Main.tileTable[tile.Type] = true;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
+			TileObjectData.newTile.Width = 3;
+			TileObjectData.newTile.Origin = new Point16(1, 1);
+			TileObjectData.newTile.AnchorBottom = new AnchorData(TileObjectData.newTile.AnchorBottom.type, TileObjectData.newTile.Width, 0);
+			TileObjectData.addTile(tile.Type);
+		}
+	}
+
 	[Sacrifice(1)]
 	public class BlossomCage : ModItem
 	{
@@ -42,21 +63,11 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			Main.tileLighted[Type] = true;
-			Main.tileFrameImportant[Type] = true;
-			Main.tileNoAttach[Type] = true;
-			Main.tileLavaDeath[Type] = true;
+			CageData.SetData(this);
+
 			AnimationFrameHeight = 36;
-			TileObjectData.newTile.UsesCustomCanPlace = true;
-			TileObjectData.newTile.Width = 3;
-			TileObjectData.newTile.Height = 2;
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
-			TileObjectData.newTile.CoordinateWidth = 16;
-			TileObjectData.newTile.CoordinatePadding = 2;
-			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
-			TileObjectData.newTile.Origin = new Point16(1, 1);
-			TileObjectData.addTile(Type);
 			DustType = DustID.Glass;
+			
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
@@ -109,22 +120,12 @@ namespace SpiritMod.Tiles.Furniture.Critters
     {
         public override void SetStaticDefaults()
         {
-            Main.tileLighted[Type] = false;
-            Main.tileFrameImportant[Type] = true;
-            Main.tileNoAttach[Type] = true;
-            Main.tileLavaDeath[Type] = true;
-            AnimationFrameHeight = 36;
-            TileObjectData.newTile.UsesCustomCanPlace = true;
-            TileObjectData.newTile.Width = 3;
-            TileObjectData.newTile.Height = 2;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
-            TileObjectData.newTile.CoordinateWidth = 16;
-            TileObjectData.newTile.CoordinatePadding = 2;
-            TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
-            TileObjectData.newTile.Origin = new Point16(0, 1);
-            TileObjectData.addTile(Type);
-            DustType = DustID.Glass;
-            LocalizedText name = CreateMapEntryName();
+			CageData.SetData(this);
+
+			AnimationFrameHeight = 36;
+			DustType = DustID.Glass;
+            
+			LocalizedText name = CreateMapEntryName();
             AddMapEntry(new Color(200, 200, 200), name);
         }
 
@@ -174,22 +175,12 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	{
 		public override void SetStaticDefaults()
 		{
-			Main.tileFrameImportant[Type] = true;
-			Main.tileNoAttach[Type] = true;
-			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 36;
-			TileObjectData.newTile.UsesCustomCanPlace = true;
-			TileObjectData.newTile.Width = 3;
-			TileObjectData.newTile.Height = 2;
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
-			TileObjectData.newTile.CoordinateWidth = 16;
-			TileObjectData.newTile.CoordinatePadding = 2;
-			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
-			TileObjectData.newTile.Origin = new Point16(1, 1);
-			TileObjectData.addTile(Type);
+			CageData.SetData(this);
+
 			DustType = DustID.Glass;
+			AnimationFrameHeight = 36;
+
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 
@@ -242,17 +233,18 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 54;
-			TileObjectData.newTile.UsesCustomCanPlace = true;
+			Main.tileSolidTop[Type] = true;
+			Main.tileTable[Type] = true;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.newTile.Width = 6;
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
-			TileObjectData.newTile.CoordinateWidth = 16;
-			TileObjectData.newTile.CoordinatePadding = 2;
-			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.Origin = new Point16(3, 2);
 			TileObjectData.addTile(Type);
+
 			DustType = DustID.Glass;
+			AnimationFrameHeight = 54;
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
@@ -306,17 +298,23 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 54;
+			Main.tileSolidTop[Type] = true;
+			Main.tileTable[Type] = true;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 6;
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
 			TileObjectData.newTile.CoordinatePadding = 2;
-			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
+			TileObjectData.newTile.AnchorBottom = new AnchorData(CageData.Anchor, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.Origin = new Point16(3, 2);
 			TileObjectData.addTile(Type);
+			
 			DustType = DustID.Glass;
+			AnimationFrameHeight = 54;
+			
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
@@ -370,19 +368,24 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 54;
+			Main.tileSolidTop[Type] = true;
+			Main.tileTable[Type] = true;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 6;
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
 			TileObjectData.newTile.CoordinatePadding = 2;
-			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
+			TileObjectData.newTile.AnchorBottom = new AnchorData(CageData.Anchor, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.Origin = new Point16(3, 2);
 			TileObjectData.addTile(Type);
+
 			DustType = DustID.Glass;
+			AnimationFrameHeight = 54;
+			
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 
@@ -403,7 +406,6 @@ namespace SpiritMod.Tiles.Furniture.Critters
 	[Sacrifice(1)]
 	public class LuvdiscBowl : ModItem
 	{
-
 		public override void SetDefaults()
 		{
 			Item.width = 28;
@@ -436,7 +438,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 36;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 2;
@@ -446,7 +449,10 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
+			
 			DustType = DustID.Glass;
+			AnimationFrameHeight = 36;
+			
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
@@ -500,7 +506,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 36;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 2;
@@ -510,7 +517,10 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
+			
 			DustType = DustID.Glass;
+			AnimationFrameHeight = 36;
+			
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
@@ -564,7 +574,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 36;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 2;
@@ -574,9 +585,11 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
+
 			DustType = DustID.Glass;
+			AnimationFrameHeight = 36;
+			
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Critter Bowl");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 
@@ -630,7 +643,8 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			AnimationFrameHeight = 36;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.Width = 2;
 			TileObjectData.newTile.Height = 2;
@@ -640,9 +654,11 @@ namespace SpiritMod.Tiles.Furniture.Critters
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table | AnchorType.SolidTile | AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.addTile(Type);
+			
 			DustType = DustID.Glass;
+			AnimationFrameHeight = 36;
+			
 			LocalizedText name = CreateMapEntryName();
-			// name.SetDefault("Critter Cage");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 

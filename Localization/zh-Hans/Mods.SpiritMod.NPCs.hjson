@@ -1081,6 +1081,7 @@ Gambler: {
 		LoveSpace: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LoveSpace}"
 		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.DislikeCrowded}"
 		HateCrowded: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.HateCrowded}"
+		// HateBiome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.HateBiome}"
 		LikeBiome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LikeBiome}"
 		DislikeBiome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.DislikeBiome}"
 		LoveNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LoveNPC}"

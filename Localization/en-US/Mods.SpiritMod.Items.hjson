@@ -7758,10 +7758,7 @@ SanguineFlayerItem: {
 
 SoulDagger: {
 	DisplayName: Soul Dagger
-	Tooltip:
-		'''
-		Summons a soul dagger to fight for you 
-		'''
+	Tooltip: "Summons a soul dagger to fight for you "
 }
 
 ToucaneItem: {
@@ -8658,7 +8655,7 @@ SpiritBiomeAuroraMonolithItem: {
 
 BlossomCage: {
 	DisplayName: Blossmoon Cage
-	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
+	Tooltip: ""
 }
 
 BriarmothCage: {

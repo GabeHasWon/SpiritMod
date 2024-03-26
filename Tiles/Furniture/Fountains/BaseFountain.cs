@@ -60,11 +60,11 @@ namespace SpiritMod.Tiles.Furniture.Fountains
         public override bool RightClick(int i, int j)
         {
 			SoundEngine.PlaySound(SoundID.Waterfall, new(i * 16, j * 16));
-            ToggleTile(i, j);
+            //ToggleTile(i, j);
             return true;
         }
 
-		public sealed override void HitWire(int i, int j) => ToggleTile(i, j);
+		//public sealed override void HitWire(int i, int j) => ToggleTile(i, j);
 
 		public sealed override void MouseOver(int i, int j)
         {

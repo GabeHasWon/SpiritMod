@@ -66,7 +66,7 @@ Gambler: {
 
 	Mood: {
 		Content: While we're both taking a minute here, why not open a box or two?
-		NoHome: I need a place to call my own - where'll I setup a place otherwise?
+		NoHome: I need a place to call my own - where'll I setup a spot otherwise?
 		LoveSpace: I'm the gamblin' type but I'm not the casino type - I love it nice and calm.
 		FarFromHome: Money is one thing, but I'm not about gambling with my life. Where's my home?
 		DislikeCrowded: There's such a thing as too many cooks in the casino, if you catch my drift.
@@ -74,11 +74,11 @@ Gambler: {
 		LikeBiome: Ah, {BiomeName}. Just the perfect place to set up shop.
 		LoveBiome: You shouldn't see this.
 		DislikeBiome: No one likes to gamble in the humidity. The coins get all wet and gross!
-		HateBiome: You houldn't see this either!
+		HateBiome: I CANNOT be making cash flow here.
 		LikeNPC: My hair? That's {NPCName}'s pride and joy. She does a wonderful job.
 		LoveNPC: Once, I upsold a wooden chest to {NPCName} for a quick buck. He opened it and there were like, three hundred ducks in there. I've never been so confused and amazed.
 		DislikeNPC: Unlike {NPCName}, I don't hoard my wealth.
-		HateNPC: Say what you want about ME, but is what {NPCName} even legal?
+		HateNPC: Say what you want about ME, but is what {NPCName} does even legal?
 		LikeNPC_Princess: Y'know, {NPCName} has some spunk. She's fierce, and you could be too!
 		Princess_LovesNPC: "{NPCName}'s style is awesome. You can tell she's confident."
 	}

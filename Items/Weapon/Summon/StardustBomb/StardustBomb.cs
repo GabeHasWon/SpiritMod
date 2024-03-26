@@ -177,12 +177,12 @@ namespace SpiritMod.Items.Weapon.Summon.StardustBomb
 			NPC.active = false;
 		}
 
-		public override bool? CanBeHitByItem(Player player, Item item) => (item.DamageType == DamageClass.Summon || item.DamageType == DamageClass.SummonMeleeSpeed) ? null : false;
+		public override bool? CanBeHitByItem(Player player, Item item) => (item.DamageType.CountsAsClass(DamageClass.Summon)) ? null : false;
 		
 		public override bool? CanBeHitByProjectile(Projectile projectile)
 		{
 			//Most minion projectiles don't use a summon damage class
-			if (projectile.DamageType == DamageClass.Summon || projectile.DamageType == DamageClass.SummonMeleeSpeed || ProjectileID.Sets.MinionShot[projectile.type] || projectile.minion)
+			if (projectile.DamageType.CountsAsClass(DamageClass.Summon) || ProjectileID.Sets.MinionShot[projectile.type] || projectile.minion)
 				return null;
 
 			return false;
