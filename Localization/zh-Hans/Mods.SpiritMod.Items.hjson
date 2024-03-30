@@ -8088,12 +8088,7 @@ SanguineFlayerItem: {
 
 SoulDagger: {
 	DisplayName: 灵魂匕首
-	Tooltip:
-		'''
-		召唤灵魂匕首为你而战
-		标记被攻击的敌人
-		其他召唤物攻击被标记的敌人时会获得伤害增幅
-		'''
+	Tooltip: 召唤灵魂匕首为你而战
 }
 
 ToucaneItem: {
@@ -8990,7 +8985,7 @@ SpiritBiomeAuroraMonolithItem: {
 
 BlossomCage: {
 	DisplayName: 月绽灵笼
-	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
+	Tooltip: ""
 }
 
 BriarmothCage: {

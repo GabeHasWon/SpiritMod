@@ -66,7 +66,7 @@ Gambler: {
 
 	Mood: {
 		Content: 既然我们都要在此处休息，那为什么不开一个或两个盲盒呢？
-		NoHome: 我需要一个独属于我自己的地方 - 我还能在哪里拥有一个地方呢？
+		NoHome: 我需要一个独属于我自己的地方 - 否则我该在哪里安顿下来呢？
 		LoveSpace: 我是赌博的类型，但我不是赌场的类型 - 我喜欢它的美丽和宁静。
 		FarFromHome: 钱是一回事，但我不想拿我的生命赌博。我的家在哪里？
 		DislikeCrowded: 赌场里的大厨太多了，如果你能明白我的意思的话。
@@ -74,7 +74,7 @@ Gambler: {
 		LikeBiome: 啊，{BiomeName}。简直是开店的好地方。
 		LoveBiome: You shouldn't see this.
 		DislikeBiome: 没有人喜欢在潮湿的地方赌博。硬币会变得又湿又恶心！
-		HateBiome: You houldn't see this either!
+		HateBiome: 我没法在这里获得现金流.
 		LikeNPC: 我的头发？这是{NPCName}的骄傲和快乐。她做得很好。
 		LoveNPC: 有一次，我把一个木箱卖给{NPCName}，赚了一笔快钱。他打开一看，里面大概有300只鸭子。我从来没有这么困惑和惊讶过。
 		DislikeNPC: 不喜欢{NPCName}，我从来不会囤积财富。
