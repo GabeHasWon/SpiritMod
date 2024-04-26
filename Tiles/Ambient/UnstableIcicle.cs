@@ -73,13 +73,11 @@ namespace SpiritMod.Tiles.Ambient
 
 			Texture2D texture = TextureAssets.Tile[Type].Value;
 			Rectangle source = texture.Frame(NumStyles, 1, (tile.TileFrameX / 18 * 3) + TileVariant, 0, -2);
-			Vector2 offset = Lighting.LegacyEngine.Mode > 1 ? Vector2.Zero : Vector2.One * 12;
+
+			Vector2 offset = (Lighting.LegacyEngine.Mode > 1 && Main.GameZoomTarget == 1) ? Vector2.Zero : Vector2.One * 12;
 			Vector2 drawPos = ((new Vector2(i, j) + offset) * 16) - Main.screenPosition - new Vector2(0, 2);
 
-			var red = Color.Red * .5f;
-			Color color = Lighting.GetColor(i, j);
-			if (Main.LocalPlayer.dangerSense)
-				color = new Color(color.R + red.R, color.G + red.G, color.B + red.B);
+			Color color = (Main.LocalPlayer.dangerSense) ? new Color(255, 50, 50, Main.mouseTextColor) : Lighting.GetColor(i, j);
 
 			spriteBatch.Draw(texture, drawPos, source, color, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0f);
 			return false;
