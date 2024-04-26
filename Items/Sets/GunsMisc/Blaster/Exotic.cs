@@ -20,6 +20,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 	public class Exotic : ModItem
 	{
 		public byte style;
+
 		private enum StyleType : byte
 		{
 			Festive = 0,
@@ -30,13 +31,12 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 		}
 
 		protected override bool CloneNewInstances => true;
+
 		public override ModItem Clone(Item itemClone)
 		{
 			var myClone = (Exotic)base.Clone(itemClone);
 			myClone.style = style;
-
 			myClone.ApplyStats();
-
 			return myClone;
 		}
 
@@ -94,6 +94,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				Projectile.NewProjectile(Entity.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<GoldBlasterProj>(), (int)player.GetDamage(DamageClass.Ranged).ApplyTo(Item.damage), Item.knockBack, player.whoAmI);
 				return false;
 			}
+
 			return base.CanUseItem(player);
 		}
 
@@ -106,15 +107,15 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 			{
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, player.Center);
 			}
-			if (style == (int)StyleType.Golden)
+			else if (style == (int)StyleType.Golden)
 			{
 				SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/MaliwanShot1") with { PitchVariance = 0.3f }, player.Center);
 			}
-			if (style == (int)StyleType.Starplate)
+			else if (style == (int)StyleType.Starplate)
 			{
 				player.GetModPlayer<BlasterPlayer>().hide = true;
 			}
-			if (style == (int)StyleType.Swift)
+			else if (style == (int)StyleType.Swift)
 			{
 				SoundEngine.PlaySound(SoundID.Item41 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, player.Center);
 				SoundEngine.PlaySound(SoundID.Item45 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, player.Center);
@@ -133,7 +134,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 				for (int i = 0; i < 4; i++)
 					Dust.NewDustPerfect(position, DustID.Confetti, (velocity * Main.rand.NextFloat(0.4f, 0.8f)).RotatedByRandom(1f), 100);
 			}
-			if (style == (int)StyleType.Starplate)
+			else if (style == (int)StyleType.Starplate)
 			{
 				for (int i = 0; i < 2; i++)
 					if (player.ownedProjectileCounts[ModContent.ProjectileType<StarplateHologram>()] < 2)
@@ -142,7 +143,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						proj.frame = i;
 					}
 			}
-			if (style == (int)StyleType.Swift)
+			else if (style == (int)StyleType.Swift)
 			{
 				velocity = velocity.RotatedByRandom(0.25f);
 			}

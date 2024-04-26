@@ -74,24 +74,24 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 			int totalOffset = t.TileFrameX / ClumpFrameOffset;
 			int realFrameX = t.TileFrameX - (ClumpFrameOffset * totalOffset); //Adjusted so its easy to read
 
-			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(4) && t.LiquidAmount > 155 && t.TileFrameX < 36 && t.TileFrameY < 108) //Grows the kelp
+			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(6) && t.LiquidAmount > 155 && t.TileFrameX < 36 && t.TileFrameY < 108) //Grows the kelp
 			{
 				int height = 1;
 
 				while (Framing.GetTileSafely(i, j + height).HasTile && Framing.GetTileSafely(i, j + height).TileType == Type)
 					height++;
 
-				if (height < Main.rand.Next(17, 23))
+				if (height < Main.rand.Next(17, 23) && !WorldGen.SolidTile(i, j - 1))
 					WorldGen.PlaceTile(i, j - 1, Type, true, false);
 			}
 
             if (realFrameX == 18 && t.TileFrameY < 54 && t.LiquidAmount < 155) //Sprouts top
-                t.TileFrameY = (short)((Main.rand.Next(2) * 18) + 54);
+                t.TileFrameY = (short)(Main.rand.Next(2) * 18 + 54);
 
 			if (realFrameX == 0 && Main.rand.NextBool(3)) //"Places" side (just changes frame [we do a LOT of deception])
 			{
 				t.TileFrameY = (short)(18 * Main.rand.Next(8));
-				t.TileFrameX = (short)(44 + (totalOffset * ClumpFrameOffset));
+				t.TileFrameX = (short)(44 + totalOffset * ClumpFrameOffset);
 			}
 
 			bool validGrowthBelow = Framing.GetTileSafely(i, j + 1).TileType != Type || (Framing.GetTileSafely(i, j + 1).TileType == Type && Framing.GetTileSafely(i, j + 1).TileFrameX >= ClumpFrameOffset);
@@ -164,6 +164,7 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 						if (realSource.Y >= 108)
 							realSource.Y -= 108;
 					}
+
 					col = new Color(169, 169, 169); //Makes it darker for depth
 
 					if (!hasClumps[0]) //Adjust frame so it's a kelp top
@@ -185,6 +186,7 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 						if (realSource.Y < 0)
 							realSource.Y += 108;
 					}
+
 					col = new Color(140, 140, 140);
 
 					if (!hasClumps[1]) //Adjust frame to be a kelp top
@@ -201,6 +203,7 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 				col = Lighting.GetColor(i, j, col); 
 				spriteBatch.Draw(tile, realPos - new Vector2(xOff, 0), realSource, new Color(col.R, col.G, col.B, 255), 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0f);
 			}
+
             return false; //don't draw the BORING, STUPID vanilla tile
         }
 
@@ -214,8 +217,11 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 			else if (Framing.GetTileSafely(i, j + 3).TileType != Type)
 				sin *= 0.75f;
 
-			if (frameX > ClumpFrameOffset) frameX -= ClumpFrameOffset;
-			if (frameX > ClumpFrameOffset) frameX -= ClumpFrameOffset; //repeat twice to adjust properly
+			if (frameX > ClumpFrameOffset) 
+				frameX -= ClumpFrameOffset;
+
+			if (frameX > ClumpFrameOffset) 
+				frameX -= ClumpFrameOffset; //repeat twice to adjust properly
 
 			if (frameX == 44)
 				sin += 4; //Adjusts since the source is bigger here

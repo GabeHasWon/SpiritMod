@@ -11,457 +11,470 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Mechanics.QuestSystem
+namespace SpiritMod.Mechanics.QuestSystem;
+
+public static class QuestManager
 {
-    public static class QuestManager
-    {
-		public const int MAX_QUESTS_ACTIVE = 5;
+	public const int MAX_QUESTS_ACTIVE = 20;
 
-		public static List<Quest> Quests { get; private set; }
-		public static List<Quest> ActiveQuests { get; private set; }
-		public static bool QuestBookUnlocked { get; set; }
-		public static Dictionary<string, QuestCategory> Categories { get; private set; }
-		public static Dictionary<string, StoredQuestData> UnloadedQuests { get; private set; }
+	public static List<Quest> Quests { get; private set; }
+	public static List<Quest> ActiveQuests { get; private set; }
+	public static bool QuestBookUnlocked { get; set; }
+	public static Dictionary<string, QuestCategory> Categories { get; private set; }
+	public static Dictionary<string, StoredQuestData> UnloadedQuests { get; private set; }
 
-		private static Dictionary<Type, Quest> _questDict;
-		private static Dictionary<string, QuestTask> _tasksDict;
-		private static int _serverSyncCounter;
+	private static Dictionary<Type, Quest> _questDict;
+	private static Dictionary<string, QuestTask> _tasksDict;
+	private static int _serverSyncCounter;
 
-		public static event Action<Quest> OnQuestActivate;
-		public static event Action<Quest> OnQuestDeactivate;
+	public static event Action<Quest> OnQuestActivate;
+	public static event Action<Quest> OnQuestDeactivate;
 
-		/// <summary>
-		/// Orders quest-related calls to not sync their contents.
-		/// </summary>
-		public static bool Quiet { get; internal set; } = false;
+	/// <summary>
+	/// Orders quest-related calls to not sync their contents.
+	/// </summary>
+	public static bool Quiet { get; internal set; } = false;
 
-        public static void Load()
-        {
-			_questDict = new Dictionary<Type, Quest>();
-			_tasksDict = new Dictionary<string, QuestTask>();
-			Categories = new Dictionary<string, QuestCategory>();
+	public static void Load()
+	{
+		_questDict = new Dictionary<Type, Quest>();
+		_tasksDict = new Dictionary<string, QuestTask>();
+		Categories = new Dictionary<string, QuestCategory>();
 
-			Quests = new List<Quest>();
-            ActiveQuests = new List<Quest>();
-			UnloadedQuests = new Dictionary<string, StoredQuestData>();
+		Quests = new List<Quest>();
+		ActiveQuests = new List<Quest>();
+		UnloadedQuests = new Dictionary<string, StoredQuestData>();
 
-			// register our categories]
-			if (!Main.dedServ)
-			{
-				var iconTexture = ModContent.Request<Texture2D>("SpiritMod/UI/QuestUI/Textures/Icons", AssetRequestMode.ImmediateLoad);
-				RegisterCategory("Main", new Color(234, 194, 107), iconTexture, new Rectangle(0, 0, 18, 18));
-				RegisterCategory("Explorer", new Color(186, 141, 117), iconTexture, new Rectangle(54, 0, 18, 18));
-				RegisterCategory("Forager", new Color(153, 196, 102), iconTexture, new Rectangle(36, 0, 18, 18));
-				RegisterCategory("Slayer", new Color(196, 66, 77), iconTexture, new Rectangle(18, 0, 18, 18));
-				RegisterCategory("Designer", new Color(125, 183, 224), iconTexture, new Rectangle(72, 0, 18, 18));
-				RegisterCategory("Other", new Color(173, 117, 198), iconTexture, new Rectangle(90, 0, 18, 18));
-			}
-
-			// add all quests from the assembly
-			IEnumerable<Type> questTypes = typeof(QuestManager).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Quest)) /*&& t != typeof(InstancedQuest)*/ && !Attribute.IsDefined(t, typeof(ObsoleteAttribute)));
-            foreach (Type type in questTypes)
-            {
-				Quest q = (Quest)Activator.CreateInstance(type, true);
-
-				// load related quest image
-				string tex = "SpiritMod/UI/QuestUI/Textures/Quests/" + type.Name;
-				if (SpiritMod.Instance.HasAsset(tex.Remove(0, "SpiritMod/".Length)) && !Main.dedServ)
-					q.QuestImage = ModContent.Request<Texture2D>(tex, AssetRequestMode.ImmediateLoad).Value;
-
-				q.WhoAmI = Quests.Count;
-
-				// if it contains a unique category name, just add it to the list of categories.
-				if (!Categories.ContainsKey(q.QuestCategory))
-					RegisterCategory(q.QuestCategory, Color.White, null, null);
-
-				Quests.Add(q);
-				_questDict[type] = q;
-			}
-
-			// store an instance of all quest tasks for cross-mod compatibility purposes.
-			IEnumerable<Type> taskTypes = typeof(QuestManager).Assembly.GetTypes().Where(t => typeof(QuestTask).IsAssignableFrom(t));
-			foreach (Type type in taskTypes)
-			{
-				if (type.IsInterface) continue;
-
-				var task = (QuestTask)Activator.CreateInstance(type);
-				_tasksDict[task.ModCallName] = task;
-			}
-
-			Main.OnTickForThirdPartySoftwareOnly += Update;
-		}
-
-        public static void Unload()
-        {
-			Main.OnTickForThirdPartySoftwareOnly -= Update;
-
-            Quests = null;
-            ActiveQuests = null;
-			Categories = null;
-			_questDict = null;
-			_tasksDict = null;
-		}
-
-		public static bool ActivateQuest(int index) => ActivateQuest(Quests[index]);
-
-		public static bool ActivateQuest(Quest quest)
+		// register our categories]
+		if (!Main.dedServ)
 		{
-			if (quest.IsActive || ActiveQuests.Count >= MAX_QUESTS_ACTIVE)
-				return false;
-
-			quest.IsActive = true;
-
-			ActiveQuests.Add(quest);
-			OnQuestActivate?.Invoke(quest);
-
-			if (!Quiet && Main.netMode == NetmodeID.MultiplayerClient) //Tell server to activate the current quest. This only runs on host.
-			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
-				packet.Write((byte)QuestMessageType.Activate);
-				packet.Write(true);
-				packet.Write(quest.QuestName);
-				packet.Write((byte)Main.myPlayer);
-				packet.Send();
-			}
-			return true;
+			var iconTexture = ModContent.Request<Texture2D>("SpiritMod/UI/QuestUI/Textures/Icons", AssetRequestMode.ImmediateLoad);
+			RegisterCategory("Main", new Color(234, 194, 107), iconTexture, new Rectangle(0, 0, 18, 18));
+			RegisterCategory("Explorer", new Color(186, 141, 117), iconTexture, new Rectangle(54, 0, 18, 18));
+			RegisterCategory("Forager", new Color(153, 196, 102), iconTexture, new Rectangle(36, 0, 18, 18));
+			RegisterCategory("Slayer", new Color(196, 66, 77), iconTexture, new Rectangle(18, 0, 18, 18));
+			RegisterCategory("Designer", new Color(125, 183, 224), iconTexture, new Rectangle(72, 0, 18, 18));
+			RegisterCategory("Other", new Color(173, 117, 198), iconTexture, new Rectangle(90, 0, 18, 18));
 		}
 
-		public static void DeactivateQuest(int index) => DeactivateQuest(Quests[index]);
-
-		public static void DeactivateQuest(Quest quest)
+		// add all quests from the assembly
+		IEnumerable<Type> questTypes = typeof(QuestManager).Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Quest)) /*&& t != typeof(InstancedQuest)*/ && !Attribute.IsDefined(t, typeof(ObsoleteAttribute)));
+		foreach (Type type in questTypes)
 		{
-			if (!quest.IsActive || !ActiveQuests.Contains(quest))
-				return;
+			Quest q = (Quest)Activator.CreateInstance(type, true);
 
-			ActiveQuests.Remove(quest);
-			OnQuestDeactivate?.Invoke(quest);
+			// load related quest image
+			string tex = "SpiritMod/UI/QuestUI/Textures/Quests/" + type.Name;
+			if (SpiritMod.Instance.HasAsset(tex.Remove(0, "SpiritMod/".Length)) && !Main.dedServ)
+				q.QuestImage = ModContent.Request<Texture2D>(tex, AssetRequestMode.ImmediateLoad).Value;
 
-			quest.ResetAllProgress();
-			quest.IsActive = false;
+			q.WhoAmI = Quests.Count;
 
-			if (!Quiet && Main.netMode == NetmodeID.MultiplayerClient) //Tell server to deactivate the current quest. This only runs on host.
-			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
-				packet.Write((byte)QuestMessageType.Deactivate);
-				packet.Write(true);
-				packet.Write(quest.QuestName);
-				packet.Write((byte)Main.myPlayer);
-				packet.Send();
-			}
+			// if it contains a unique category name, just add it to the list of categories.
+			if (!Categories.ContainsKey(q.QuestCategory))
+				RegisterCategory(q.QuestCategory, Color.White, null, null);
+
+			Quests.Add(q);
+			_questDict[type] = q;
 		}
 
-		public static void RestartEverything()
+		// store an instance of all quest tasks for cross-mod compatibility purposes.
+		IEnumerable<Type> taskTypes = typeof(QuestManager).Assembly.GetTypes().Where(t => typeof(QuestTask).IsAssignableFrom(t));
+		foreach (Type type in taskTypes)
 		{
-			foreach (Quest quest in Quests)
-			{
-				DeactivateQuest(quest);
-				quest.ResetEverything();
-			}
+			if (type.IsInterface) 
+				continue;
+
+			var task = (QuestTask)Activator.CreateInstance(type);
+			_tasksDict[task.ModCallName] = task;
 		}
 
-		public static void GiveRewards(Quest quest)
-		{
-			quest.GiveRewards();
-			quest.RewardsGiven = true;
+		Main.OnTickForThirdPartySoftwareOnly += Update;
+	}
 
-			Main.LocalPlayer.GetModPlayer<QuestPlayer>().SetRewardsForQuest(quest.QuestName);
+	public static void Unload()
+	{
+		Main.OnTickForThirdPartySoftwareOnly -= Update;
+
+		Quests = null;
+		ActiveQuests = null;
+		Categories = null;
+		_questDict = null;
+		_tasksDict = null;
+	}
+
+	public static bool ActivateQuest(int index) => ActivateQuest(Quests[index]);
+
+	public static bool ActivateQuest(Quest quest)
+	{
+		if (quest.IsActive || ActiveQuests.Count >= MAX_QUESTS_ACTIVE)
+			return false;
+
+		quest.IsActive = true;
+
+		ActiveQuests.Add(quest);
+		OnQuestActivate?.Invoke(quest);
+
+		if (!Quiet && Main.netMode == NetmodeID.MultiplayerClient) //Tell server to activate the current quest. This only runs on host.
+		{
+			ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
+			packet.Write((byte)QuestMessageType.Activate);
+			packet.Write(true);
+			packet.Write(quest.QuestName);
+			packet.Write((byte)Main.myPlayer);
+			packet.Send();
 		}
 
-		private static void RegisterCategory(string category, Color colour, Asset<Texture2D> iconTexture, Rectangle? frame)
+		return true;
+	}
+
+	public static void DeactivateQuest(int index) => DeactivateQuest(Quests[index]);
+
+	public static void DeactivateQuest(Quest quest)
+	{
+		if (!quest.IsActive || !ActiveQuests.Contains(quest))
+			return;
+
+		ActiveQuests.Remove(quest);
+		OnQuestDeactivate?.Invoke(quest);
+
+		quest.ResetAllProgress();
+		quest.IsActive = false;
+
+		if (!Quiet && Main.netMode == NetmodeID.MultiplayerClient) //Tell server to deactivate the current quest. This only runs on host.
 		{
-			Categories[category] = new QuestCategory() { Index = Categories.Count, Name = category, Color = colour, Texture = iconTexture, Frame = frame };
-		}
-
-		public static QuestCategory GetCategoryInfo(string category)
-		{
-			if (Categories.TryGetValue(category, out var data)) 
-				return data;
-			// if it doesn't exist, register
-			RegisterCategory(category, Color.White, null, null);
-			return Categories[category];
-		}
-
-		public static void Update()
-		{
-			if (Main.gameMenu) 
-				return;
-
-			// test if we need to sync
-			bool syncMP = false;
-			if (Main.netMode != NetmodeID.SinglePlayer)
-			{
-				_serverSyncCounter++;
-				if (_serverSyncCounter >= 20)
-				{
-					_serverSyncCounter = 0;
-					syncMP = true;
-				}
-			}
-
-			// handle limited time unlock quests
-			foreach (Quest quest in Quests)
-			{
-				if (quest.IsUnlocked && quest.LimitedUnlock)
-				{
-					quest.UnlockTime--;
-					if (quest.UnlockTime <= 0)
-					{
-						quest.IsUnlocked = false;
-						if (quest.AnnounceRelocking)
-							SayInChat(Localization("QuestRelockedChat").WithFormatArgs(quest.WhoAmI, quest.QuestName), Color.White);
-					}
-				}
-			}
-
-			// update quests and sync if we're a mp client or server
-			var shallowCopy = new List<Quest>(ActiveQuests);
-			foreach (Quest quest in shallowCopy)
-			{
-				quest.Update();
-				if (syncMP)
-				{
-					if (Main.netMode == NetmodeID.MultiplayerClient)
-						quest.OnMPSync();
-				}
-			}
-		}
-
-		public static Quest GetQuest<T>() where T : Quest
-		{
-			if (_questDict.TryGetValue(typeof(T), out Quest q))
-				return q;
-            return null;
-		}
-
-		public static Quest GetQuest(Quest q)
-		{
-			if (_questDict.TryGetValue(q.GetType(), out Quest quest))
-				return quest;
-			return null;
-		}
-
-		public static void UnlockQuest<T>(bool showInChat = true) where T : Quest
-		{
-			Quest q = GetQuest<T>();
-			if (q == null)
-				return;
-
-			UnlockQuest(q, showInChat);
-		}
-
-		public static void UnlockQuest(Quest quest, bool showInChat = true)
-		{
-			if (quest.IsUnlocked)
-				return;
-
-			quest.IsUnlocked = true;
-			quest.OnUnlock();
-
-			if (showInChat && quest.IsQuestPossible() && Main.netMode != NetmodeID.Server)
-				SayInChat(Localization("NewQuestChat").WithFormatArgs(quest.WhoAmI, quest.QuestName), Color.White);
-
-			if (!Quiet && Main.netMode == NetmodeID.MultiplayerClient)
-			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
-				packet.Write((byte)QuestMessageType.Unlock);
-				packet.Write(true);
-				packet.Write(quest.QuestName);
-				packet.Write((byte)Main.myPlayer);
-				packet.Send();
-			}
-		}
-
-		public static void UnlockAll()
-		{
-			foreach (var quest in Quests)
-				UnlockQuest(quest, false);
-		}
-
-		public static void CompleteAll()
-		{
-			foreach (var quest in Quests)
-				ForceCompleteQuest(quest);
-		}
-
-		/// <summary>Forces a quest to complete a single task (or finish).</summary>
-		public static void ForceCompleteQuest<T>() where T : Quest
-		{
-			Quest q = GetQuest<T>();
-			if (q == null)
-				return;
-
-			ForceCompleteQuest(q);
-		}
-
-		/// <summary>Forces a quest to complete a single task (or finish).</summary>
-		public static void ForceCompleteQuest(Quest quest) => quest.RunCompletion();
-
-		public static void SetBookState(bool open) => SpiritMod.Instance.BookUserInterface.SetState(open ? SpiritMod.QuestBookUIState : null);
-
-		public static int ModCallAddQuest(object[] args)
-		{
-			if (args.Length < 9)
-			{
-				SpiritMod.Instance.Logger.Warn("Error adding custom quest! Less than 9 arguments means something must be missing, check you've added everything you need to add!");
-				return -1;
-			}
-
-			int index = 1;
-			// quest name
-			if (!QuestUtils.TryUnbox(args[index++], out string questName, "Quest name")) return -1;
-
-			// quest category
-			if (!QuestUtils.TryUnbox(args[index++], out string questCategory, "Quest category")) return -1;
-			// TODO: check if quest category exists. if it doesn't, add it, make the colour white.
-
-			// quest client
-			if (!QuestUtils.TryUnbox(args[index++], out string questClient, "Quest client")) return -1;
-
-			// quest description
-			if (!QuestUtils.TryUnbox(args[index++], out string questDesc, "Quest description")) return -1;
-
-			// quest rewards
-			if (!QuestUtils.TryUnbox(args[index++], out (int, int)[] questRewards, "Quest rewards")) return -1;
-
-			// quest difficulty
-			if (!QuestUtils.TryUnbox(args[index++], out int questDifficulty, "Quest difficulty")) return -1;
-
-			// quest image
-			if (!QuestUtils.TryUnbox(args[index++], out Texture2D questImage, "Quest image")) return -1;
-
-			// quest objectives
-			List<QuestTask> tasks = new List<QuestTask>();
-			for (int i = index; i < args.Length; i++)
-			{
-				if (!QuestUtils.TryUnbox(args[i], out object[] objectiveArgs, "Quest objective " + (i - index + 1))) return -1;
-
-				QuestTask task = ParseTaskFromArguments(objectiveArgs);
-				if (task == null)
-				{
-					SpiritMod.Instance.Logger.Warn("Task returned null.");
-					return -1;
-				}
-
-				tasks.Add(task);
-			}
-
-			// add the quest
-			//Quest q = new InstancedQuest(questName, questCategory, questDifficulty, questClient, questDesc, questRewards, questImage, tasks);
-			//q.WhoAmI = Quests.Count;
-			//Quests.Add(q);
-
-			//SpiritMod.Instance.Logger.Info("Added a cross-mod quest! Called: " + questName);
-
-			return -1;// q.WhoAmI;
-		}
-
-		public static void SyncToClient(int toClient)
-		{
-			var log = ModContent.GetInstance<SpiritMod>().Logger;
-			log.Debug("Sending manager...");
-
-			ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.RecieveQuestManager, 1);
-			packet.Write(QuestBookUnlocked);
-			packet.Write((short)Quests.Count);
-			Quests.ForEach(x => QuestMultiplayer.WriteQuestToPacket(packet, x));
-			packet.Send(toClient, -1);
-		}
-
-		public static void ModCallUnlockQuest(object[] args)
-		{
-			if (!QuestUtils.TryUnbox(args[1], out int questIndex, "Quest ID"))
-				return;
-
-			if (questIndex < 0 || questIndex >= Quests.Count) return;
-
-			UnlockQuest(Quests[questIndex]);
-		}
-
-		public static bool ModCallGetQuestValueFromContext(object[] args, int context)
-		{
-			if (!QuestUtils.TryUnbox(args[1], out int questIndex, "Quest ID"))
-				return false;
-
-			if (questIndex < 0 || questIndex >= Quests.Count) return false;
-
-			return context switch
-			{
-				1 => Quests[questIndex].IsActive,
-				2 => Quests[questIndex].IsCompleted,
-				3 => Quests[questIndex].RewardsGiven,
-				_ => Quests[questIndex].IsUnlocked,
-			};
-		}
-
-		public static QuestTask ParseTaskFromArguments(object[] args)
-		{
-			if (!QuestUtils.TryUnbox(args[0], out string name, "Quest Objective Type"))
-				return null;
-
-			if (!_tasksDict.TryGetValue(name, out QuestTask task))
-			{
-				SpiritMod.Instance.Logger.Warn("Quest task " + name + " does not exist.");
-				return null;
-			}
-
-			return task.Parse(args);
-		}
-
-		public static void SayInChat(LocalizedText text, Color colour, bool noServer = false)
-		{
-			if (Main.netMode == NetmodeID.SinglePlayer || Main.netMode == NetmodeID.MultiplayerClient)
-				Main.NewText(text.Value, colour.R, colour.G, colour.B);
-			else if (Main.netMode == NetmodeID.Server && !noServer)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text.Value), colour, -1);
-		}
-
-		public static void SayInChat(string langKey, Color colour, bool noServer = false) => SayInChat(Localization(langKey), colour, noServer);
-
-		public static string LocalizationValue(string postfix) => Language.GetTextValue("Mods.SpiritMod.Quests." + postfix);
-		public static LocalizedText Localization(string postfix) => Language.GetText("Mods.SpiritMod.Quests." + postfix);
-
-		public static void UnlockQuestBook(bool openBook = true)
-		{
-			if (!QuestBookUnlocked)
-			{
-				QuestBookUnlocked = true;
-				UnlockQuest<Quests.FirstAdventure>(true);
-
-				SayInChat("OpenJournal", Color.White, true);
-				SayInChat("OpenHUD", Color.White, true);
-
-				if (openBook)
-					SetBookState(true);
-			}
-		}
-
-		public struct QuestCategory
-		{
-			public int Index;
-			public string Name;
-			public Color Color;
-			public Asset<Texture2D> Texture;
-			public Rectangle? Frame;
+			ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
+			packet.Write((byte)QuestMessageType.Deactivate);
+			packet.Write(true);
+			packet.Write(quest.QuestName);
+			packet.Write((byte)Main.myPlayer);
+			packet.Send();
 		}
 	}
 
-	public struct StoredQuestData
+	public static void RestartEverything()
 	{
-		public bool IsUnlocked;
-		public bool IsActive;
-		public bool IsCompleted;
-		public bool RewardsGiven;
-		public short TimeLeftUnlocked;
-		public short TimeLeftActive;
-		public byte[] Buffer;
-
-		public override string ToString()
+		foreach (Quest quest in Quests)
 		{
-			string buffer = string.Empty;
-			if (Buffer != null && Buffer.Length > 0)
-				for (int i = 0; i < Buffer.Length; ++i)
-					buffer += Buffer[i] + " ";
-			return $"Unlocked: {IsUnlocked}\nActive: {IsActive}\nCompleted: {IsCompleted}\nRewarded: {RewardsGiven}\nTime Left U/A {TimeLeftUnlocked} / {TimeLeftActive}" + (buffer != string.Empty ? $"\nBuffer: {buffer}\n" : "\n");
+			DeactivateQuest(quest);
+			quest.ResetEverything();
 		}
+	}
+
+	public static void GiveRewards(Quest quest)
+	{
+		quest.GiveRewards();
+		quest.RewardsGiven = true;
+
+		Main.LocalPlayer.GetModPlayer<QuestPlayer>().SetRewardsForQuest(quest.QuestName);
+	}
+
+	private static void RegisterCategory(string category, Color colour, Asset<Texture2D> iconTexture, Rectangle? frame)
+	{
+		Categories[category] = new QuestCategory() { Index = Categories.Count, Name = category, Color = colour, Texture = iconTexture, Frame = frame };
+	}
+
+	public static QuestCategory GetCategoryInfo(string category)
+	{
+		if (Categories.TryGetValue(category, out var data))
+			return data;
+		// if it doesn't exist, register
+		RegisterCategory(category, Color.White, null, null);
+		return Categories[category];
+	}
+
+	public static void Update()
+	{
+		if (Main.gameMenu)
+			return;
+
+		// test if we need to sync
+		bool syncMP = false;
+		if (Main.netMode != NetmodeID.SinglePlayer)
+		{
+			_serverSyncCounter++;
+			if (_serverSyncCounter >= 20)
+			{
+				_serverSyncCounter = 0;
+				syncMP = true;
+			}
+		}
+
+		// handle limited time unlock quests
+		foreach (Quest quest in Quests)
+		{
+			if (quest.IsUnlocked && quest.LimitedUnlock)
+			{
+				quest.UnlockTime--;
+				if (quest.UnlockTime <= 0)
+				{
+					quest.IsUnlocked = false;
+					if (quest.AnnounceRelocking)
+						SayInChat(Localization("QuestRelockedChat").WithFormatArgs(quest.WhoAmI, quest.QuestName), Color.White);
+				}
+			}
+		}
+
+		// update quests and sync if we're a mp client or server
+		var shallowCopy = new List<Quest>(ActiveQuests);
+		foreach (Quest quest in shallowCopy)
+		{
+			quest.Update();
+			if (syncMP)
+			{
+				if (Main.netMode == NetmodeID.MultiplayerClient)
+					quest.OnMPSync();
+			}
+		}
+	}
+
+	public static Quest GetQuest<T>() where T : Quest
+	{
+		if (_questDict.TryGetValue(typeof(T), out Quest q))
+			return q;
+		return null;
+	}
+
+	public static Quest GetQuest(Quest q)
+	{
+		if (_questDict.TryGetValue(q.GetType(), out Quest quest))
+			return quest;
+		return null;
+	}
+
+	public static void UnlockQuest<T>(bool showInChat = true) where T : Quest
+	{
+		Quest q = GetQuest<T>();
+		if (q == null)
+			return;
+
+		UnlockQuest(q, showInChat);
+	}
+
+	public static void UnlockQuest(Quest quest, bool showInChat = true)
+	{
+		if (quest.IsUnlocked)
+			return;
+
+		quest.IsUnlocked = true;
+		quest.OnUnlock();
+
+		if (showInChat && quest.IsQuestPossible() && Main.netMode != NetmodeID.Server)
+			SayInChat(Localization("NewQuestChat").WithFormatArgs(quest.WhoAmI, quest.QuestName), Color.White);
+
+		if (!Quiet && Main.netMode == NetmodeID.MultiplayerClient)
+		{
+			ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.Quest, 4);
+			packet.Write((byte)QuestMessageType.Unlock);
+			packet.Write(true);
+			packet.Write(quest.QuestName);
+			packet.Write((byte)Main.myPlayer);
+			packet.Send();
+		}
+	}
+
+	public static void UnlockAll()
+	{
+		foreach (var quest in Quests)
+			UnlockQuest(quest, false);
+	}
+
+	public static void CompleteAll()
+	{
+		foreach (var quest in Quests)
+			ForceCompleteQuest(quest);
+	}
+
+	/// <summary>Forces a quest to complete a single task (or finish).</summary>
+	public static void ForceCompleteQuest<T>() where T : Quest
+	{
+		Quest q = GetQuest<T>();
+		if (q == null)
+			return;
+
+		ForceCompleteQuest(q);
+	}
+
+	/// <summary>Forces a quest to complete a single task (or finish).</summary>
+	public static void ForceCompleteQuest(Quest quest) => quest.RunCompletion();
+
+	public static void SetBookState(bool open) => SpiritMod.Instance.BookUserInterface.SetState(open ? SpiritMod.QuestBookUIState : null);
+
+	public static int ModCallAddQuest(object[] args)
+	{
+		if (args.Length < 9)
+		{
+			SpiritMod.Instance.Logger.Warn("Error adding custom quest! Less than 9 arguments means something must be missing, check you've added everything you need to add!");
+			return -1;
+		}
+
+		int index = 1;
+		// quest name
+		if (!QuestUtils.TryUnbox(args[index++], out string questName, "Quest name")) 
+			return -1;
+
+		// quest category
+		if (!QuestUtils.TryUnbox(args[index++], out string questCategory, "Quest category")) 
+			return -1;
+		// TODO: check if quest category exists. if it doesn't, add it, make the colour white.
+
+		// quest client
+		if (!QuestUtils.TryUnbox(args[index++], out string questClient, "Quest client")) 
+			return -1;
+
+		// quest description
+		if (!QuestUtils.TryUnbox(args[index++], out string questDesc, "Quest description")) 
+			return -1;
+
+		// quest rewards
+		if (!QuestUtils.TryUnbox(args[index++], out (int, int)[] questRewards, "Quest rewards")) 
+			return -1;
+
+		// quest difficulty
+		if (!QuestUtils.TryUnbox(args[index++], out int questDifficulty, "Quest difficulty")) 
+			return -1;
+
+		// quest image
+		if (!QuestUtils.TryUnbox(args[index++], out Texture2D questImage, "Quest image")) 
+			return -1;
+
+		// quest objectives
+		List<QuestTask> tasks = new List<QuestTask>();
+		for (int i = index; i < args.Length; i++)
+		{
+			if (!QuestUtils.TryUnbox(args[i], out object[] objectiveArgs, "Quest objective " + (i - index + 1))) 
+				return -1;
+
+			QuestTask task = ParseTaskFromArguments(objectiveArgs);
+			if (task == null)
+			{
+				SpiritMod.Instance.Logger.Warn("Task returned null.");
+				return -1;
+			}
+
+			tasks.Add(task);
+		}
+
+		// add the quest
+		//Quest q = new InstancedQuest(questName, questCategory, questDifficulty, questClient, questDesc, questRewards, questImage, tasks);
+		//q.WhoAmI = Quests.Count;
+		//Quests.Add(q);
+
+		//SpiritMod.Instance.Logger.Info("Added a cross-mod quest! Called: " + questName);
+
+		return -1;// q.WhoAmI;
+	}
+
+	public static void SyncToClient(int toClient)
+	{
+		var log = ModContent.GetInstance<SpiritMod>().Logger;
+		log.Debug("Sending manager...");
+
+		ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.RecieveQuestManager, 1);
+		packet.Write(QuestBookUnlocked);
+		packet.Write((short)Quests.Count);
+		Quests.ForEach(x => QuestMultiplayer.WriteQuestToPacket(packet, x));
+		packet.Send(toClient, -1);
+	}
+
+	public static void ModCallUnlockQuest(object[] args)
+	{
+		if (!QuestUtils.TryUnbox(args[1], out int questIndex, "Quest ID"))
+			return;
+
+		if (questIndex < 0 || questIndex >= Quests.Count) 
+			return;
+
+		UnlockQuest(Quests[questIndex]);
+	}
+
+	public static bool ModCallGetQuestValueFromContext(object[] args, int context)
+	{
+		if (!QuestUtils.TryUnbox(args[1], out int questIndex, "Quest ID"))
+			return false;
+
+		if (questIndex < 0 || questIndex >= Quests.Count) 
+			return false;
+
+		return context switch
+		{
+			1 => Quests[questIndex].IsActive,
+			2 => Quests[questIndex].IsCompleted,
+			3 => Quests[questIndex].RewardsGiven,
+			_ => Quests[questIndex].IsUnlocked,
+		};
+	}
+
+	public static QuestTask ParseTaskFromArguments(object[] args)
+	{
+		if (!QuestUtils.TryUnbox(args[0], out string name, "Quest Objective Type"))
+			return null;
+
+		if (!_tasksDict.TryGetValue(name, out QuestTask task))
+		{
+			SpiritMod.Instance.Logger.Warn("Quest task " + name + " does not exist.");
+			return null;
+		}
+
+		return task.Parse(args);
+	}
+
+	public static void SayInChat(LocalizedText text, Color colour, bool noServer = false)
+	{
+		if (Main.netMode == NetmodeID.SinglePlayer || Main.netMode == NetmodeID.MultiplayerClient)
+			Main.NewText(text.Value, colour.R, colour.G, colour.B);
+		else if (Main.netMode == NetmodeID.Server && !noServer)
+			ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text.Value), colour, -1);
+	}
+
+	public static void SayInChat(string langKey, Color colour, bool noServer = false) => SayInChat(Localization(langKey), colour, noServer);
+
+	public static string LocalizationValue(string postfix) => Language.GetTextValue("Mods.SpiritMod.Quests." + postfix);
+	public static LocalizedText Localization(string postfix) => Language.GetText("Mods.SpiritMod.Quests." + postfix);
+
+	public static void UnlockQuestBook(bool openBook = true)
+	{
+		if (!QuestBookUnlocked)
+		{
+			QuestBookUnlocked = true;
+			UnlockQuest<Quests.FirstAdventure>(true);
+
+			SayInChat("OpenJournal", Color.White, true);
+			SayInChat("OpenHUD", Color.White, true);
+
+			if (openBook)
+				SetBookState(true);
+		}
+	}
+
+	public struct QuestCategory
+	{
+		public int Index;
+		public string Name;
+		public Color Color;
+		public Asset<Texture2D> Texture;
+		public Rectangle? Frame;
+	}
+}
+
+public struct StoredQuestData
+{
+	public bool IsUnlocked;
+	public bool IsActive;
+	public bool IsCompleted;
+	public bool RewardsGiven;
+	public short TimeLeftUnlocked;
+	public short TimeLeftActive;
+	public byte[] Buffer;
+
+	public override readonly string ToString()
+	{
+		string buffer = string.Empty;
+
+		if (Buffer != null && Buffer.Length > 0)
+			for (int i = 0; i < Buffer.Length; ++i)
+				buffer += Buffer[i] + " ";
+
+		return $"Unlocked: {IsUnlocked}\nActive: {IsActive}\nCompleted: {IsCompleted}\nRewarded: {RewardsGiven}\nTime Left U/A {TimeLeftUnlocked} / {TimeLeftActive}" + (buffer != string.Empty ? $"\nBuffer: {buffer}\n" : "\n");
 	}
 }

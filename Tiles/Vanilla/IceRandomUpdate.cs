@@ -15,15 +15,18 @@ namespace SpiritMod.Tiles.Vanilla
 			if (!belowSurfaceLayer)
 				return;
 
-			if (WorldGen.genRand.NextBool(25) && !Framing.GetTileSafely(i, j).BottomSlope)
+			if (WorldGen.genRand.NextBool(150) && !Framing.GetTileSafely(i, j).BottomSlope)
 			{
 				List<int> types = new List<int>(); //Pick a valid length based on the amount of space available
+				int tilesBelow = EmptyTilesBelow(i, j);
 
-				if (EmptyTilesBelow(i, j) >= 3)
+				if (tilesBelow >= 3)
 					types.Add(ModContent.TileType<UnstableIcicle2>());
-				if (EmptyTilesBelow(i, j) >= 2)
+
+				if (tilesBelow >= 2)
 					types.Add(ModContent.TileType<UnstableIcicle1>());
-				if (EmptyTilesBelow(i, j) >= 1)
+
+				if (tilesBelow >= 1)
 					types.Add(ModContent.TileType<UnstableIcicle>());
 				else
 					return;
@@ -37,6 +40,7 @@ namespace SpiritMod.Tiles.Vanilla
 				};
 
 				ushort placeType = (ushort)types[Main.rand.Next(types.Count)];
+
 				if (WorldGen.PlaceObject(i, j + 1, placeType, false, style) && Main.netMode != NetmodeID.SinglePlayer)
 					NetMessage.SendObjectPlacement(-1, i, j + 1, placeType, style, 0, -1, -1);
 			}
@@ -49,6 +53,7 @@ namespace SpiritMod.Tiles.Vanilla
 					if (tile.HasTile || tile.LiquidType == LiquidID.Lava)
 						return t;
 				}
+
 				return 3;
 			}
 		}

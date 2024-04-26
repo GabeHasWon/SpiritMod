@@ -99,6 +99,7 @@ namespace SpiritMod.NPCs.Boss
 					NPC.active = false;
 					HitEffect(NPC.CalculateHitInfo(0, 0, true, 0));
 				}
+
 				return;
 			}
 
@@ -182,11 +183,11 @@ namespace SpiritMod.NPCs.Boss
 			{
 				NPC.defense = 26;
 
-				if (Main.expertMode)
-				{
-					player.AddBuff(BuffID.WindPushed, 90);
-					modPlayer.windEffect = true;
-				}
+				//if (Main.expertMode)
+				//{
+				//	player.AddBuff(BuffID.WindPushed, 90);
+				//	modPlayer.windEffect = true;
+				//}
 
 				frameNum = .4f;
 				NPC.velocity = Vector2.Zero;

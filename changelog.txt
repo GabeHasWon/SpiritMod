@@ -1,15 +1,10 @@
-﻿Missed a version because of my mistake. Whoops!
-
-v1.5.0.14
-- Fixed Sunset Spire being 2x as likely to show up in Mysterious Satchels
-- Made Soul Dagger drop from Shadow Ghouls
-- Fixed missing Gambler happiness dialogue
-- Fixed Supernova not exploding when it should in multiplayer
-- Supernova now takes damage from any summon source rather than only minions and minion-fired projectiles
-- Ancient Apostle now faces the direction of their horizontal velocity
-- Fixed Yoyo Ancient not syncing spawned projectiles correctly in multiplayer
-- Fixed Ethereal Butterfly 'arcane stars' not dealing damage
-- Ethereal Butterfly no longer deals contact damage when stuck to the player
-- Fixed Spirit's cages not being solid top & stackable
-- Temporarily removed Briar Fountain water functionality until it's fixed
-- Updated StructureHelper reference
+﻿v1.5.0.15
+- Increased max quest count to 20
+Note that the quest HUD will go off screen if you have this many quests.
+- Significantly reduced how much (normal) Kelp grows in the ocean
+- Added check to make sure Kelp doesn't grow into solid tiles
+- Removed Ancient Avian wind pushback debuff
+- Adjusted Blaster sound effect volume
+- Fixed Boulder Micropass placing boulders on non-solid tiles
+- Fixed Unstable Icicles drawing improperly on some lighting modes
+- Significantly reduced how often Unstable Icicles spawn (1/25 per random tick -> 1/150 per random tick)

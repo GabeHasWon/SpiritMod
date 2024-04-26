@@ -125,6 +125,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					subtypeProj.bouncy = auxillary == (int)AuxillaryType.Bouncy;
 					proj.netUpdate = true;
 				}
+
 				return proj;
 			}
 
@@ -149,6 +150,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 						_ => ModContent.ProjectileType<PhaseBlast>()
 					});
 				}
+
 				if (auxillary == (int)AuxillaryType.Boomerang)
 				{
 					velocity = velocity.RotatedBy(-0.3f * player.direction);
@@ -187,6 +189,7 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 					SpawnProjectile(source, position, velocity, type, damage, knockback, player); //This counts as a generic case
 				}
 			}
+
 			return false;
 		}
 

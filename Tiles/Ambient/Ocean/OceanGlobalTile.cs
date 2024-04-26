@@ -23,7 +23,7 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			{
 				if (Framing.GetTileSafely(i, j - 1).LiquidAmount > 200) //water stuff
 				{
-					if (Main.rand.NextBool(25))
+					if (Main.rand.NextBool(80))
 						WorldGen.PlaceTile(i, j - 1, ModContent.TileType<OceanKelp>()); //Kelp spawning
 
 					bool openSpace = !Framing.GetTileSafely(i, j - 2).HasTile;
@@ -48,7 +48,8 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 				{
 					for (int l = j - 1; l < j + 2; ++l)
 					{
-						if (k == i && l == j) continue; //Dont check myself
+						if (k == i && l == j) 
+							continue; //Dont check myself
 
 						Tile cur = Framing.GetTileSafely(k, l);
 						if (!cur.HasTile && woods.Contains(cur.TileType) && cur.LiquidAmount > 155 && cur.LiquidType == LiquidID.Water && Main.rand.NextBool(6))
