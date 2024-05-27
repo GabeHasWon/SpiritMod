@@ -23,10 +23,10 @@ namespace SpiritMod.Mechanics.BoonSystem.NemesisBoon
 
 		private const int NUMBEROFSWINGS = 3;
 
-		private bool activated => Projectile.ai[1] == 1;
+		private bool Activated => Projectile.ai[1] == 1;
+		private NPC Parent => Main.npc[(int)Projectile.ai[0]];
 
-		private NPC parent => Main.npc[(int)Projectile.ai[0]];
-		private List<float> oldRotation = new List<float>();
+		private readonly List<float> oldRotation = [];
 		private Player player;
 
 		private float hoverCounter;
@@ -64,13 +64,15 @@ namespace SpiritMod.Mechanics.BoonSystem.NemesisBoon
 			{
 				for (int i = 0; i < Projectile.oldPos.Length; i++)
 					oldRotation.Add(Projectile.rotation);
+
+				initialized = true;
 			}
 
 			oldRotation.Add(Projectile.rotation);
 			while (oldRotation.Count > Projectile.oldPos.Length)
 				oldRotation.RemoveAt(0);
 
-			if (activated)
+			if (Activated)
 			{
 				if (!swinging)
 				{
@@ -121,27 +123,29 @@ namespace SpiritMod.Mechanics.BoonSystem.NemesisBoon
 					Projectile.rotation = swingDirection.ToRotation() + MathHelper.Lerp(SWINGROTATION, -SWINGROTATION, progress) + 1.57f;
 				}
 
-				Projectile.Center = swingBase + ((Projectile.rotation - 1.57f).ToRotationVector2() * SWINGDISTANCE * Math.Min(swingWindup / 30f, 1));
+				Projectile.Center = swingBase + (Projectile.rotation - 1.57f).ToRotationVector2() * SWINGDISTANCE * Math.Min(swingWindup / 30f, 1);
 
 				swingBase += Projectile.velocity;
 			}
 			else
 			{
+				if (!Parent.active)
+				{
+					Projectile.active = false;
+					return;
+				}
+
 				swingBase = Projectile.Center;
 				player = Main.player[Player.FindClosest(swingBase, 0, 0)];
 				swingDirection = Projectile.DirectionTo(player.Center);
 				Projectile.velocity = Vector2.Zero;
 				hoverCounter += 0.05f;
 
-				Vector2 posToBe = parent.Center + new Vector2(parent.direction * (parent.width + (Projectile.width / 2)) * -1, (float)Math.Sin(hoverCounter) * 12).RotatedBy(parent.rotation);
-				if (!parent.active)
-					Projectile.active = false;
-
+				Vector2 posToBe = Parent.Center + new Vector2(Parent.direction * (Parent.width + (Projectile.width / 2)) * -1, (float)Math.Sin(hoverCounter) * 12).RotatedBy(Parent.rotation);
 				Vector2 newPos = Vector2.Lerp(Projectile.Center, posToBe, 0.1f);
 				Vector2 tiltDirection = Projectile.DirectionTo(newPos);
 				Projectile.rotation = tiltDirection.X * ((Projectile.Center - newPos).Length() / 10f);
 				Projectile.Center = newPos;
-
 			}
 		}
 
@@ -153,13 +157,11 @@ namespace SpiritMod.Mechanics.BoonSystem.NemesisBoon
 
 		public override void OnKill(int timeLeft)
 		{
-			Vector2 vector9 = Projectile.position;
 			for (int num257 = 0; num257 < 25; num257++)
 			{
-				int newDust = Dust.NewDust(Projectile.Center + ((Projectile.rotation - 1.57f).ToRotationVector2() * Main.rand.Next(70)) + Main.rand.NextVector2Circular(10, 10), Projectile.width, Projectile.height, DustID.Firework_Blue, 0f, 0f, 0, default, 1f);
+				int newDust = Dust.NewDust(Projectile.Center + (Projectile.rotation - 1.57f).ToRotationVector2() * Main.rand.Next(70) + Main.rand.NextVector2Circular(10, 10), Projectile.width, Projectile.height, DustID.Firework_Blue, 0f, 0f, 0, default, 1f);
 				Main.dust[newDust].velocity *= .125f;
 				Main.dust[newDust].noGravity = true;
-
 			}
 		}
 
@@ -172,7 +174,7 @@ namespace SpiritMod.Mechanics.BoonSystem.NemesisBoon
 				Main.spriteBatch.End(); 
 				Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 
-				List<PrimitiveSlashArc> slashArcs = new List<PrimitiveSlashArc>();
+				List<PrimitiveSlashArc> slashArcs = [];
 				Effect effect = ModContent.Request<Effect>("SpiritMod/Effects/NemesisBoonShader", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 				effect.Parameters["white"].SetValue(Color.White.ToVector4());
 				effect.Parameters["opacity"].SetValue(1);
@@ -215,27 +217,27 @@ namespace SpiritMod.Mechanics.BoonSystem.NemesisBoon
 		private void DrawSword(SpriteBatch spriteBatch, Texture2D tex, float transparency, float scale)
 		{
 			Vector2 origin = new Vector2(tex.Width / 2, tex.Height);
-
 			spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, Color.White * 0.8f * transparency, Projectile.rotation, origin, Projectile.scale * scale, SpriteEffects.None, 0f);
-			for (int k = Projectile.oldPos.Length - 1; k > 0; k--)
+			
+			for (int k = Projectile.oldPos.Length - 1; k >= 0; k--)
 			{
-				Vector2 drawPos = Projectile.oldPos[k] + (new Vector2(Projectile.width, Projectile.height) / 2);
-				Color color = Color.White * (float)(((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length));
-				float num108 = 4;
+				Vector2 drawPos = Projectile.oldPos[k] + Projectile.Size / 2f;
+				Color color = Color.White * ((Projectile.oldPos.Length - k) / Projectile.oldPos.Length);
 				float num107 = (float)Math.Cos((double)(Main.GlobalTimeWrappedHourly % 2.4f / 2.4f * 6.28318548f)) / 2f + 0.5f;
-				float num106 = 0f;
 				Color color29 = new Color(110 - Projectile.alpha, 94 - Projectile.alpha, 25 - Projectile.alpha, 0).MultiplyRGBA(color);
+
 				for (int num103 = 0; num103 < 4; num103++)
 				{
 					Color color28 = color29;
 					color28 = Projectile.GetAlpha(color28);
 					color28 *= 1.5f - num107;
-					color28 *= (float)Math.Pow((((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length) / 2), 1.5f);
-					Vector2 vector29 = drawPos + ((float)num103 / (float)num108 * 6.28318548f + Projectile.rotation + num106).ToRotationVector2() * (1.5f * num107 + 3f) - Main.screenPosition + new Vector2(0, Projectile.gfxOffY) - Projectile.velocity * (float)num103;
+					color28 *= (float)Math.Pow((Projectile.oldPos.Length - k) / Projectile.oldPos.Length / 2, 1.5f);
+					Vector2 vector29 = drawPos + (num103 / 4f * 6.28318548f + Projectile.rotation).ToRotationVector2() * (1.5f * num107 + 3f) - Main.screenPosition + new Vector2(0, Projectile.gfxOffY) - Projectile.velocity * num103;
 					spriteBatch.Draw(tex, vector29, null, color28 * .6f * transparency, oldRotation[k], origin, Projectile.scale * scale, SpriteEffects.None, 0f);
 				}
 			}
 		}
+
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 	}
 }

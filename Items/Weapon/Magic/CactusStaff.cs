@@ -10,6 +10,8 @@ namespace SpiritMod.Items.Weapon.Magic
 {
 	public class CactusStaff : ModItem
 	{
+		private bool fail = false;
+
 		public override void SetDefaults()
 		{
 			Item.damage = 6;
@@ -38,13 +40,27 @@ namespace SpiritMod.Items.Weapon.Magic
 			position = Main.MouseWorld.ToTileCoordinates().ToWorldCoordinates(8, 4);
 
 			while (!WorldGen.SolidTile(position.ToTileCoordinates()) && !Main.tileSolidTop[Framing.GetTileSafely(position.ToTileCoordinates()).TileType])
+			{
 				position.Y += 8;
+
+				if (position.Y > Main.MouseWorld.Y + 4000)
+				{
+					fail = true;
+					return;
+				}
+			}
 
 			position.Y -= 32;
 		}
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
+			if (fail)
+			{
+				fail = false;
+				return false;
+			}
+
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.ownedProjectileCounts[Item.shoot]);
 
 			if (player.ownedProjectileCounts[Item.shoot] >= 4)
@@ -53,6 +69,7 @@ namespace SpiritMod.Items.Weapon.Magic
 				if (projectile != default)
 					projectile.Kill();
 			}
+
 			return false;
 		}
 

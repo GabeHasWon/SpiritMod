@@ -77,6 +77,7 @@ namespace SpiritMod.NPCs.Spirit
 				NPC.height = 30;
 				NPC.position.X = NPC.position.X - (float)(NPC.width / 2);
 				NPC.position.Y = NPC.position.Y - (float)(NPC.height / 2);
+
 				for (int num621 = 0; num621 < 20; num621++)
 				{
 					int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.UnusedWhiteBluePurple, 0f, 0f, 100, default, 2f);
@@ -87,7 +88,6 @@ namespace SpiritMod.NPCs.Spirit
 						Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
 					}
 				}
-
 			}
 		}
 

@@ -44,9 +44,14 @@ namespace SpiritMod.Prim
 
 		public PrimTrail()
 		{
+			if (Main.dedServ)
+			{
+				Dispose();
+				return;
+			}
+
 			TrailShader = new DefaultShader();
 			GraphicsDevice = Main.graphics.GraphicsDevice;
-			// ReSharper disable once VirtualMemberCallInConstructor
 			SetDefaults();
 			Vertices = new VertexPositionColorTexture[Cap];
 		}

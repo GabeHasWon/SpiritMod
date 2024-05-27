@@ -28,6 +28,6 @@ namespace SpiritMod.Items.Books.MaterialPages
 		}
 
 		public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
-		public override bool CanUseItem(Player player) => !IsOpen;
+		public override bool CanUseItem(Player player) => player.whoAmI == Main.myPlayer && !IsOpen;
 	}
 }

@@ -53,14 +53,13 @@ namespace SpiritMod
 		{
 			Texture2D tex = TextureAssets.Projectile[projectile.type].Value;
 			Color color = drawColor ?? Lighting.GetColor((int)projectile.Center.X / 16, (int)projectile.Center.Y / 16);
-			if (spriteEffects == null)
-				spriteEffects = projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+			spriteEffects ??= projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
 			for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[projectile.type]; i++)
 			{
 				float opacityMod = (ProjectileID.Sets.TrailCacheLength[projectile.type] - i) / (float)ProjectileID.Sets.TrailCacheLength[projectile.type];
 				opacityMod *= baseOpacity;
-				Vector2 drawPosition = projectile.oldPos[i] + (projectile.Size / 2) - Main.screenPosition;
+				Vector2 drawPosition = projectile.oldPos[i] + projectile.Size / 2 - Main.screenPosition;
 
 				if (spriteBatch == null)
 					Main.EntitySpriteDraw(tex, drawPosition, projectile.DrawFrame(), projectile.GetAlpha(color) * opacityMod,
