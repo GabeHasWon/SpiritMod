@@ -371,7 +371,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		public override void SetDefaults()
 		{
 			Projectile.friendly = false;
-			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.tileCollide = false;
 			Projectile.Size = new Vector2(32, 32);
 			Projectile.penetrate = -1;
@@ -443,7 +443,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
-			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.tileCollide = false;
 			Projectile.Size = new Vector2(225, 75);
 			Projectile.penetrate = -1;
@@ -538,7 +538,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		public override void SetDefaults()
 		{
 			Projectile.friendly = true;
-			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.tileCollide = false;
 			Projectile.penetrate = -1;
 			Projectile.Size = new Vector2(300, 100);
@@ -568,7 +568,7 @@ namespace SpiritMod.Items.Sets.PirateStuff.DuelistLegacy
 		public override void SetDefaults()
 		{
 			Projectile.friendly = false;
-			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.tileCollide = false;
 			Projectile.Size = new Vector2(225, 75);
 			Projectile.penetrate = -1;
