@@ -39,6 +39,6 @@ SpiritUndergroundBiome: {
 }
 
 SynthwaveSurfaceBiome: {
-	DisplayName: 合成器浪潮
-	TownNPCDialogueName: 合成器浪潮
+	DisplayName: 合成浪潮
+	TownNPCDialogueName: 合成浪潮
 }

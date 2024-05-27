@@ -68,6 +68,9 @@ namespace SpiritMod.GlobalClasses.Players
 				}
 			}
 
+			if (Player.dead)
+				return;
+
 			if (Glyph == GlyphType.Blaze && Player.velocity.Length() > 1.5f && Main.rand.NextBool(2))
 				Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Torch, 0, 0, 0, default, Main.rand.NextFloat(1f, 2f)).noGravity = true;
 

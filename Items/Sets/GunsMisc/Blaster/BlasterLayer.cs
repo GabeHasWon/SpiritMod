@@ -50,13 +50,13 @@ namespace SpiritMod.Items.Sets.GunsMisc.Blaster
 
 			if (info.drawPlayer.direction == -1)
 				origin.X = drawFrame.Width + offset.X;
-			offset = new Vector2(drawFrame.Width / 2, offset.Y);
+			offset = new Vector2(0, offset.Y);
 
 			for (int i = 0; i < 2; i++)
 				info.DrawDataCache.Add(new DrawData
 				(
 					(i == 0) ? texture : ModContent.Request<Texture2D>(texturePath + "_Glow").Value,
-					info.ItemLocation - Main.screenPosition + offset,
+					new Vector2((int)(info.ItemLocation.X - Main.screenPosition.X + offset.X), (int)(info.ItemLocation.Y - Main.screenPosition.Y + offset.Y)),
 					drawFrame,
 					((i == 0) ? Lighting.GetColor((int)info.ItemLocation.X / 16, (int)info.ItemLocation.Y / 16) : glowColor) * alpha,
 					info.drawPlayer.itemRotation,

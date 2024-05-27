@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -183,11 +184,12 @@ namespace SpiritMod
 				{
 					offset = new Vector2(10, texture.Height / 2);
 					ItemLoader.HoldoutOffset(info.drawPlayer.gravDir, item.type, ref offset);
-					origin = new Vector2(-offset.X, texture.Height / 2);
+
+					origin = new Vector2((int)-offset.X, texture.Height / 2);
 					if (info.drawPlayer.direction == -1)
 						origin.X = texture.Width + offset.X;
 
-					offset = new Vector2(texture.Width / 2, offset.Y);
+					offset = new Vector2(0, offset.Y);
 				}
 			}
 			else
@@ -197,7 +199,7 @@ namespace SpiritMod
 
 			info.DrawDataCache.Add(new DrawData(
 				texture,
-				info.ItemLocation - Main.screenPosition + offset,
+				new Vector2((int)(info.ItemLocation.X - Main.screenPosition.X + offset.X), (int)(info.ItemLocation.Y - Main.screenPosition.Y + offset.Y)),
 				texture.Bounds,
 				Color.White * ((255f - item.alpha) / 255f),
 				info.drawPlayer.itemRotation + rotOffset,

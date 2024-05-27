@@ -57,7 +57,7 @@ Keybinds: {
 
 Configs: {
 	SpiritClientConfig: {
-		DisplayName: 客户端设置
+		DisplayName: 客户端配置
 
 		ScreenShake: {
 			Label: "{$Mods.SpiritMod.Screenshake}"
@@ -179,7 +179,7 @@ Configs: {
 	}
 
 	SpiritMusicConfig: {
-		DisplayName: 音乐设置
+		DisplayName: 音乐配置
 
 		BlizzardMusic: {
 			Label: "{$Mods.SpiritMod.BlizzardMusic}"
