@@ -1,10 +1,17 @@
-﻿v1.5.0.15
-- Increased max quest count to 20
-Note that the quest HUD will go off screen if you have this many quests.
-- Significantly reduced how much (normal) Kelp grows in the ocean
-- Added check to make sure Kelp doesn't grow into solid tiles
-- Removed Ancient Avian wind pushback debuff
-- Adjusted Blaster sound effect volume
-- Fixed Boulder Micropass placing boulders on non-solid tiles
-- Fixed Unstable Icicles drawing improperly on some lighting modes
-- Significantly reduced how often Unstable Icicles spawn (1/25 per random tick -> 1/150 per random tick)
+﻿v1.5.0.16
+- Fixed Nemesis Boon crash error, cleaned up file
+- Fixed Books and Material Pages opening UI on servers
+- Fixed Heartbeat Cleats freezing the player in certain situations
+- Fixed some item glowmasks and Blasters not drawing in their correct positions
+- Merged pull request by https://github.com/Antirhinnum, fixing Silk vanity not displaying correctly on Mannequins and Womannequins
+- Fixed Dusk Pendant receiving melee prefixes
+- Fixed various First Mate projectiles dealing ranged damage
+- Prevented some Glyph logic from running while the player is dead, such as cooldowns
+- Fixed a couple enemies spawning gores on the server
+- Stopped primtrails from starting on the server
+- Capped Cactus Staff placement range in order to stop freeze on servers
+- Reduced Lumoth spawn rate slightly
+- Made Fisheye Gem apply to a few Spirit fish
+- Made Fisheye Gem work in the Void Bag
+- Quadrupled Lost Mime spawn rate in prehardmode, doubled in hardmode
+- Quadrupled drop rate of all Lost Mime items, aside from Baguette - which was reduced from 1/30 to 1/8

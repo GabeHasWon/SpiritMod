@@ -31,14 +31,8 @@ Organizing help on in the comment section is near impossible.
 ---------------
 ----- FAQ -----
 Q: Is this mod compatible with <Other Mod>?
-A: With the exception of Remnants and Builder's Essentials, and some minor visual issues with Polarities, yes.
-This mod is compatible with Calamity and Thorium, and all other known content mods. 
+A: This mod is compatible with Calamity and Thorium, and all other known content mods. Report issues if there are any.
 Calamity WILL overshadow both Thorium and Spirit, however, as it is balanced around itself instead of vanilla.
-
-Q: I'm getting a crash during world gen. How do I fix it?
-A: If you're using Remnants or Builder's Essentials, disable them. Both mods stop Spirit from generating.
-If you're trying to use Polarities, there are some issues when selecting a world. 
-This should not affect anything, and worlds can be made as normal. Gameplay should also be unaffected.
 
 Q: How do I get the quest book?
 A: Find the Adventurer in the underground Briar, and get the quest book from him.
