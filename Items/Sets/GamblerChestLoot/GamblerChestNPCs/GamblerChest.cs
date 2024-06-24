@@ -57,7 +57,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 
 		public int[] genericVanityDrops = new int[] { ModContent.ItemType<DiverLegs>(), ModContent.ItemType<DiverBody>(), ModContent.ItemType<DiverHead>(), ModContent.ItemType<AstronautLegs>(), ModContent.ItemType<AstronautBody>(), ModContent.ItemType<AstronautHelm>(), ModContent.ItemType<BeekeeperLegs>(), ModContent.ItemType<BeekeeperBody>(), ModContent.ItemType<BeekeeperHead>(),
 				ModContent.ItemType<CapacitorLegs>(), ModContent.ItemType<CapacitorBody>(), ModContent.ItemType<CapacitorHead>(), ModContent.ItemType<CenturionLegs>(), ModContent.ItemType<CenturionBody>(), ModContent.ItemType<CenturionHead>(), ModContent.ItemType<CommandoLegs>(), ModContent.ItemType<CommandoBody>(), ModContent.ItemType<CommandoHead>(),
-				ModContent.ItemType<CowboyLegs>(), ModContent.ItemType<CowboyBody>(), ModContent.ItemType<CowboyHead>(), ModContent.ItemType<FreemanLegs>(), ModContent.ItemType<FreemanBody>(), ModContent.ItemType<FreemanHead>(), ModContent.ItemType<GeodeLeggings>(), ModContent.ItemType<GeodeChestplate>(), ModContent.ItemType<GeodeHelmet>(), ModContent.ItemType<SnowRangerLegs>(), ModContent.ItemType<SnowRangerBody>(), ModContent.ItemType<SnowRangerHead>(),
+				ModContent.ItemType<CowboyLegs>(), ModContent.ItemType<CowboyBody>(), ModContent.ItemType<CowboyHead>(), ModContent.ItemType<FreemanLegs>(), ModContent.ItemType<FreemanBody>(), ModContent.ItemType<FreemanHead>(), ModContent.ItemType<SnowRangerLegs>(), ModContent.ItemType<SnowRangerBody>(), ModContent.ItemType<SnowRangerHead>(),
 				ModContent.ItemType<JackLegs>(), ModContent.ItemType<JackBody>(), ModContent.ItemType<JackHead>(), ModContent.ItemType<PlagueDoctorLegs>(), ModContent.ItemType<PlagueDoctorRobe>(), ModContent.ItemType<PlagueDoctorCowl>(), ModContent.ItemType<ProtectorateLegs>(), ModContent.ItemType<ProtectorateBody>(), ModContent.ItemType<LeafPaddyHat>(), ModContent.ItemType<PsychoMask>(),
 				ModContent.ItemType<WitchLegs>(), ModContent.ItemType<WitchBody>(), ModContent.ItemType<WitchHead>()};
 
@@ -100,6 +100,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 
 					OnActivate();
 				}
+
 				return;
 			}
 

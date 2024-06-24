@@ -28,6 +28,8 @@
 		Quest,
 		SyncLuminousOcean,
 		Sports,
+		SearchForFathomless,
+		SearchForFathomlessFailure,
 	}
 
 	public enum QuestMessageType : byte

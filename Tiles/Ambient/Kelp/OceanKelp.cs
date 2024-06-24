@@ -72,9 +72,9 @@ namespace SpiritMod.Tiles.Ambient.Kelp
             Tile t = Framing.GetTileSafely(i, j);
 
 			int totalOffset = t.TileFrameX / ClumpFrameOffset;
-			int realFrameX = t.TileFrameX - (ClumpFrameOffset * totalOffset); //Adjusted so its easy to read
+			int realFrameX = t.TileFrameX - ClumpFrameOffset * totalOffset; //Adjusted so its easy to read
 
-			if (!Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(6) && t.LiquidAmount > 155 && t.TileFrameX < 36 && t.TileFrameY < 108) //Grows the kelp
+			if (WorldGen.InWorld(i, j - 1) && !Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(6) && t.LiquidAmount > 155 && t.TileFrameX < 36 && t.TileFrameY < 108) //Grows the kelp
 			{
 				int height = 1;
 
@@ -82,7 +82,12 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 					height++;
 
 				if (height < Main.rand.Next(17, 23) && !WorldGen.SolidTile(i, j - 1))
+				{
 					WorldGen.PlaceTile(i, j - 1, Type, true, false);
+
+					if (Main.netMode == NetmodeID.Server)
+						NetMessage.SendTileSquare(-1, i, j - 1);
+				}
 			}
 
             if (realFrameX == 18 && t.TileFrameY < 54 && t.LiquidAmount < 155) //Sprouts top
@@ -94,10 +99,13 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 				t.TileFrameX = (short)(44 + totalOffset * ClumpFrameOffset);
 			}
 
-			bool validGrowthBelow = Framing.GetTileSafely(i, j + 1).TileType != Type || (Framing.GetTileSafely(i, j + 1).TileType == Type && Framing.GetTileSafely(i, j + 1).TileFrameX >= ClumpFrameOffset);
+			bool validGrowthBelow = WorldGen.InWorld(i, j + 1) && (Framing.GetTileSafely(i, j + 1).TileType != Type || 
+				Framing.GetTileSafely(i, j + 1).TileType == Type && Framing.GetTileSafely(i, j + 1).TileFrameX >= ClumpFrameOffset);
+
 			if (realFrameX == 0 && t.TileFrameX < ClumpFrameOffset * 2 && validGrowthBelow) //grows "clumps"
 			{
 				bool validBelow = Framing.GetTileSafely(i, j + 1).TileFrameX >= ClumpFrameOffset && Framing.GetTileSafely(i, j + 1).TileFrameX < ClumpFrameOffset * 2 && t.TileFrameX < ClumpFrameOffset;
+				
 				if (Framing.GetTileSafely(i, j + 1).TileType != Type && t.TileFrameX < ClumpFrameOffset * 2) //Grows clump if above sand
 					t.TileFrameX += ClumpFrameOffset;
 				else if (validBelow) //grows clump 1

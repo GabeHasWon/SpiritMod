@@ -40,9 +40,9 @@ public class LostMime : ModNPC
 			return 0f;
 
 		if (Main.hardMode)
-			return SpawnCondition.Cavern.Chance * 0.03f;
+			return SpawnCondition.Cavern.Chance * 0.01f;
 
-		return SpawnCondition.Cavern.Chance * 0.4f;
+		return SpawnCondition.Cavern.Chance * 0.2f;
 	}
 
 	public override void FindFrame(int frameHeight)

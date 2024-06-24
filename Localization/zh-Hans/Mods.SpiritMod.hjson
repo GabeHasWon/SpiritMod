@@ -320,3 +320,16 @@ Condition: {
 	InSpirit: Mods.SpiritMod.Condition.InSpirit
 	FirstDown: 仅在首次击败时
 }
+
+GameTips: {
+	// SpiritGameTip0: Moon Jelly makes a great source of healing!
+	// SpiritGameTip1: Overseer isn't coming back!
+	// SpiritGameTip2: You can find the Adventurer in the Underground Briar at any time.
+	// SpiritGameTip3: Mystic Shrines offer many benefits - or threats!
+	// SpiritGameTip4: The Jem holds power untold. Do you have what it takes?
+	// SpiritGameTip5: Defeat the Starplate Voyager to obtain Astralite, a powerful space metal.
+	// SpiritGameTip6: The Ocean is full of many surprises. Check it out sometime!
+	// SpiritGameTip7: Clubs make for really nice short range weapons, especially if you need to keep a lot of enemies off of you.
+	// SpiritGameTip8: The Sepulchres deep underground are dangerous, but well worth it.
+	// SpiritGameTip9: Quests are an easy way to get a ton of rewards - talk to the Adventurer to get the book!
+}

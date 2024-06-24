@@ -14,7 +14,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 {
 	public class CopperChestBottom : GamblerChest
 	{
-		public override int TotalValue => Main.rand.Next(250, 700);
+		public override int TotalValue => Main.rand.Next(300, 500);
 		public override int CoinRate => 10;
 		public override int CounterMax => 100;
 
@@ -35,9 +35,11 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 							Main.dust[num].scale *= .35f;
 							Main.dust[num].fadeIn += .1f;
 						}
+
 						return true;
 					}
-					else return false;
+					else 
+						return false;
 				}),
 				new LootInfo(donatorVanityDrops,
 				() =>
@@ -53,9 +55,11 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 							Main.dust[num].scale *= .35f;
 							Main.dust[num].fadeIn += .1f;
 						}
+
 						return true;
 					}
-					else return false;
+					else 
+						return false;
 				}),
 				new LootInfo(ModContent.ItemType<Jem.Jem>(), () => Counter == (int)(CounterMax * .75f) && Main.rand.NextBool(400)),
 				new LootInfo(ModContent.ItemType<GoldenCaviar>(), () => Counter == (int)(CounterMax * .75f) && Main.rand.NextBool(20)),
@@ -77,7 +81,8 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 						NPC.DropItem(pins, NPC.GetSource_FromAI());
 						return true;
 					}
-					else return false;
+					else 
+						return false;
 				})
 			};
 		}

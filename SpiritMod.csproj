@@ -34,8 +34,9 @@
     <None Remove="Localization\en-US\Mods.SpiritMod.WorldGen.hjson" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
+    <Reference Include="NetEasy">
+      <HintPath>lib\NetEasy_v0.1.8.dll</HintPath>
+    </Reference>
     <Reference Include="StructureHelper">
       <HintPath>lib\StructureHelper.dll</HintPath>
     </Reference>

@@ -2,17 +2,17 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Items.Sets.BismiteSet
+namespace SpiritMod.Items.Sets.BismiteSet;
+
+public class BismiteCrystal : ModItem
 {
-	public class BismiteCrystal : ModItem
+	public override void SetDefaults()
 	{
-		public override void SetDefaults()
-		{
-			Item.width = 24;
-			Item.height = 28;
-			Item.value = 100;
-			Item.rare = ItemRarityID.Blue;
-			Item.maxStack = Item.CommonMaxStack;
-		}
+		Item.DefaultToPlaceableTile(ModContent.TileType<BismiteCrystalTile>());
+		Item.width = 24;
+		Item.height = 28;
+		Item.value = 100;
+		Item.rare = ItemRarityID.Blue;
+		Item.maxStack = Item.CommonMaxStack;
 	}
 }

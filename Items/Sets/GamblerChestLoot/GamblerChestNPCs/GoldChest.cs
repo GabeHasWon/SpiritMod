@@ -18,7 +18,7 @@ namespace SpiritMod.Items.Sets.GamblerChestLoot.GamblerChestNPCs
 		private bool Landed { get => NPC.localAI[0] == 1; set => NPC.localAI[0] = value ? 1 : 0; }
 		private float sineAdd = -1;
 
-		public override int TotalValue => Main.rand.Next(40000, 60000);
+		public override int TotalValue => Main.rand.Next(20000, 40000);
 		public override int CoinRate => 5;
 		public override int CounterMax => 200;
 

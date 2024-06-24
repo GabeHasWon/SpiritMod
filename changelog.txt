@@ -1,17 +1,10 @@
-﻿v1.5.0.16
-- Fixed Nemesis Boon crash error, cleaned up file
-- Fixed Books and Material Pages opening UI on servers
-- Fixed Heartbeat Cleats freezing the player in certain situations
-- Fixed some item glowmasks and Blasters not drawing in their correct positions
-- Merged pull request by https://github.com/Antirhinnum, fixing Silk vanity not displaying correctly on Mannequins and Womannequins
-- Fixed Dusk Pendant receiving melee prefixes
-- Fixed various First Mate projectiles dealing ranged damage
-- Prevented some Glyph logic from running while the player is dead, such as cooldowns
-- Fixed a couple enemies spawning gores on the server
-- Stopped primtrails from starting on the server
-- Capped Cactus Staff placement range in order to stop freeze on servers
-- Reduced Lumoth spawn rate slightly
-- Made Fisheye Gem apply to a few Spirit fish
-- Made Fisheye Gem work in the Void Bag
-- Quadrupled Lost Mime spawn rate in prehardmode, doubled in hardmode
-- Quadrupled drop rate of all Lost Mime items, aside from Baguette - which was reduced from 1/30 to 1/8
+﻿v1.5.0.17
+- Removed Geode vanity from Gambler's loot pool
+- Synced & safeguarded some Kelp updating code
+- Made Gold Lumoth require 3 research instead of 5
+- Increased Blossmoon spawn rate
+- Increased Hail Snail spawn rate
+- Decreased Lost Mime spawn rate
+- Significantly reduced coin output of Gambler chests - no longer turns profit
+- Mystical Dice now work in multiplayer properly (and are slightly faster)
+- Added a bunch of game tips in loading menus
