@@ -322,14 +322,14 @@ Condition: {
 }
 
 GameTips: {
-	// SpiritGameTip0: Moon Jelly makes a great source of healing!
-	// SpiritGameTip1: Overseer isn't coming back!
-	// SpiritGameTip2: You can find the Adventurer in the Underground Briar at any time.
-	// SpiritGameTip3: Mystic Shrines offer many benefits - or threats!
-	// SpiritGameTip4: The Jem holds power untold. Do you have what it takes?
-	// SpiritGameTip5: Defeat the Starplate Voyager to obtain Astralite, a powerful space metal.
-	// SpiritGameTip6: The Ocean is full of many surprises. Check it out sometime!
-	// SpiritGameTip7: Clubs make for really nice short range weapons, especially if you need to keep a lot of enemies off of you.
-	// SpiritGameTip8: The Sepulchres deep underground are dangerous, but well worth it.
-	// SpiritGameTip9: Quests are an easy way to get a ton of rewards - talk to the Adventurer to get the book!
+	SpiritGameTip0: 海月果冻是个很好的治疗来源！
+	SpiritGameTip1: 监察者不会再回来了！
+	SpiritGameTip2: 你可以在任何时候的地下荆棘之地找到冒险家。
+	SpiritGameTip3: 神秘神龛带来诸多益处 - 或是威胁！
+	SpiritGameTip4: 宝石蕴含的力量无穷无尽。你具备所需的条件吗？
+	SpiritGameTip5: 击败星盘巡游者以获得一种强大的太空金属 - 星界矿。
+	SpiritGameTip6: 海洋充满了许多惊喜。有空去看看吧！
+	SpiritGameTip7: 棍棒是极好的近战武器，尤其是当你需要让许多敌人远离你时。
+	SpiritGameTip8: 地下深处的坟葬很危险，但绝对值得一探。
+	SpiritGameTip9: 任务是获得大量奖励的简便方法 - 找到冒险家以取得任务书！
 }
