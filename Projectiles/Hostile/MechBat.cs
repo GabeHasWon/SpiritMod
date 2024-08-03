@@ -25,16 +25,17 @@ namespace SpiritMod.Projectiles.Hostile
 
 		public override void OnKill(int timeLeft)
 		{
-			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-			for (int k = 0; k < 15; k++)
-			{
-				int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch);
-				Main.dust[dust].scale = 2f;
-				Main.dust[dust].noGravity = true;
-			}
-
 			if (Main.netMode != NetmodeID.Server)
 			{
+				SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+
+				for (int k = 0; k < 15; k++)
+				{
+					int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+				}
+
 				Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity, Mod.Find<ModGore>("Mech7").Type, 1f);
 				Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity, Mod.Find<ModGore>("Mech8").Type, 1f);
 			}
@@ -67,7 +68,7 @@ namespace SpiritMod.Projectiles.Hostile
 		{
 			Vector2 vector207 = new Vector2((float)Projectile.width * 2, (float)Projectile.height * 2) * Projectile.scale * 0.85f;
 			vector207 /= 2f;
-			Vector2 value112 = Vector2.UnitY.RotatedByRandom(6.2831854820251465) * vector207;
+			Vector2 value112 = Vector2.UnitY.RotatedByRandom(MathHelper.TwoPi) * vector207;
 			Vector2 position178 = Projectile.Center + value112;
 			int num1442 = Dust.NewDust(position178, 0, 0, DustID.Electric, 0f, 0f, 0, default, .5f);
 			Main.dust[num1442].position = Projectile.Center + value112;

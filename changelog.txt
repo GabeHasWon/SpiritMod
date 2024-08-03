@@ -5,3 +5,9 @@
 - Added most Spirit structures into the GenVars.structure system, and added anti-overlap
 - Localized Avian Island sign text
 - Added a few more Avian Island sign texts
+- Made Avian Islands spawn randomly throughout the world with Remnants instead of always spawning at 0, 0
+- Significantly increased likelihood of a world generating properly with Remnants on
+- Fixed Spirit trees having difficulty growing
+- Fixed typo in unused Violet Crystal item
+- Raw Fish now only applies poison if used, no longer gives Well Fed
+- Fixed Mech Bat error on servers

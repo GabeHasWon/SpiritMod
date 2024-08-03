@@ -29,7 +29,7 @@ namespace SpiritMod.Items.Books
 
 		public override bool CanUseItem(Player player)
 		{
-			if (player.whoAmI == Main.myPlayer)
+			if (player.whoAmI == Main.myPlayer && Main.netMode != NetmodeID.Server)
 				return ModContent.GetInstance<SpiritMod>().BookUserInterface.CurrentState is not UI.UIBookState currentBookState || currentBookState.title != Item.Name;
 
 			return false;

@@ -22,6 +22,8 @@ namespace SpiritMod.Tiles.Ambient.Briar
 			Main.tileNoFail[Type] = true;
 			Main.tileMergeDirt[Type] = true;
 
+			TileID.Sets.IgnoredByGrowingSaplings[Type] = true;
+
 			DustType = DustID.Plantera_Green;
 			HitSound = SoundID.Grass;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1xX);
