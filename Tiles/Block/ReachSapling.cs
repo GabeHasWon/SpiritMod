@@ -51,7 +51,8 @@ namespace SpiritMod.Tiles.Block
 
 		public override void RandomUpdate(int i, int j)
 		{
-			if (WorldGen.genRand.NextBool(20)) {
+			if (WorldGen.genRand.NextBool(20)) 
+			{
 				bool isPlayerNear = WorldGen.PlayerLOS(i, j);
 				bool success = WorldGen.GrowTree(i, j);
 				if (success && isPlayerNear)

@@ -26,7 +26,7 @@ namespace SpiritMod.World.Sepulchre
 		{
 			int index = tasks.FindIndex(genpass => genpass.Name.Equals("Settle Liquids Again"));
 
-			if (index == -1)
+			if (index == -1)// && !ModLoader.HasMod("Remnants"))
 				return;
 
 			tasks.Insert(++index, new PassLegacy("Sepulchure", (GenerationProgress progress, GameConfiguration config) =>
@@ -38,8 +38,28 @@ namespace SpiritMod.World.Sepulchre
 
 				for (int i = 0; i < Main.maxTilesX / 250; i++)
 				{
-					CreateSepulchre(new Vector2(WorldGen.genRand.Next((int)(Main.maxTilesX * 0.2f), (int)(Main.maxTilesX * 0.8f)), WorldGen.genRand.Next(Main.maxTilesY - 500, Main.maxTilesY - 300)));
+					var position = new Vector2(WorldGen.genRand.NextFloat(Main.maxTilesX * 0.2f, Main.maxTilesX * 0.8f), 
+						WorldGen.genRand.Next(Main.maxTilesY - 500, Main.maxTilesY - 300));
+					int repeats = 0;
+
+					while (GenVars.structures.CanPlace(new Rectangle((int)position.X - 15, (int)position.Y - 25, 30, 50)))
+					{
+						repeats++;
+						position = new Vector2(WorldGen.genRand.NextFloat(Main.maxTilesX * 0.2f, Main.maxTilesX * 0.8f),
+						WorldGen.genRand.Next(Main.maxTilesY - 500, Main.maxTilesY - 300));
+
+						if (repeats > 2000)
+							break;
+					}
+
+					if (repeats > 2000)
+					{
+						continue;
+					}
+
+					CreateSepulchre(position);
 					progress.Value = i / (Main.maxTilesX / 250f);
+					GenVars.structures.AddProtectedStructure(new Rectangle((int)position.X - 15, (int)position.Y - 25, 30, 50), 10);
 				}
 
 				Main.soundVolume = old;

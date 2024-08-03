@@ -333,3 +333,11 @@ GameTips: {
 	// SpiritGameTip8: The Sepulchres deep underground are dangerous, but well worth it.
 	// SpiritGameTip9: Quests are an easy way to get a ton of rewards - talk to the Adventurer to get the book!
 }
+
+AvianIslandSigns: {
+	// 0: (the text is illegible)
+	// 1: Floating Resort - The only (scratch marks)
+	// 2: Overseer Spotted in Distance? More At 5
+	// 3: A Revival? More likely thank you think!
+	// 4: Find more (scratch marks) and for only 50g!
+}
