@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using SpiritMod.Items.Placeable.Furniture;
 using Terraria;
 using Terraria.Enums;
 using Terraria.Localization;
