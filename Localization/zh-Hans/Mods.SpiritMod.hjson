@@ -335,9 +335,9 @@ GameTips: {
 }
 
 AvianIslandSigns: {
-	// 0: (the text is illegible)
-	// 1: Floating Resort - The only (scratch marks)
-	// 2: Overseer Spotted in Distance? More At 5
-	// 3: A Revival? More likely thank you think!
-	// 4: Find more (scratch marks) and for only 50g!
+	0: （文字难以辨认）
+	1: 浮空度假胜地 - 唯一的（划痕）
+	2: 某地发现监察者身影？5点时了解更多
+	3: 一场复活？更有可能的是谢谢你的想法！
+	4: 寻找更多（划痕）仅需50克！
 }
