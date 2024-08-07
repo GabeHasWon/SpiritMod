@@ -31,6 +31,7 @@ namespace SpiritMod.Items.Placeable.IceSculpture
 			recipe.AddIngredient(ModContent.ItemType<CreepingIce>(), 20);
 			recipe.AddIngredient(ModContent.ItemType<CryoliteBar>(), 2);
 			recipe.AddTile(TileID.Anvils);
+			recipe.DisableDecraft();
 			recipe.Register();
 		}
 	}

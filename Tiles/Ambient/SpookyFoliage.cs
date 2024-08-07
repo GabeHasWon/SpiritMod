@@ -21,6 +21,7 @@ namespace SpiritMod.Tiles.Ambient
 
 			Terraria.GameContent.Metadata.TileMaterials.SetForTileId(Type, Terraria.GameContent.Metadata.TileMaterials._materialsByName["Plant"]);
 			TileID.Sets.SwaysInWindBasic[Type] = true;
+			TileID.Sets.IgnoredByGrowingSaplings[Type] = true;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.newTile.LavaDeath = true;

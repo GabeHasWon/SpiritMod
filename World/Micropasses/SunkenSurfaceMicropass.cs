@@ -65,6 +65,9 @@ namespace SpiritMod.World.Micropasses
 			if (y > Main.maxTilesY - 200)
 				return; //Hard stop if we're in the underworld
 
+			if (x < 0 || x > Main.maxTilesX)
+				return; //Hard stop if we're out of the world
+
 			int left = GetBound(x, y, -1);
 			int right = GetBound(x, y, 1);
 			int depth = 4;
@@ -147,7 +150,7 @@ namespace SpiritMod.World.Micropasses
 
 		private static int GetBound(int x, int y, int dir)
 		{
-			while (!Main.tile[x, y].HasTile || !WorldGen.SolidTile(x, y))
+			while (WorldGen.InWorld(x + dir, y) && (!Main.tile[x, y].HasTile || !WorldGen.SolidTile(x, y)))
 				x += dir;
 			return x;
 		}

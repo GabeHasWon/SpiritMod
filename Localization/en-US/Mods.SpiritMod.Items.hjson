@@ -7267,7 +7267,7 @@ MarbleStaff: {
 
 CorruptDyeMaterial: {
 	DisplayName: Violet Crystal
-	CustomTooltip: "'The crystal is both beautiful and disgsting to look at'"
+	CustomTooltip: "'The crystal is both beautiful and disgusting to look at'"
 	Tooltip: ""
 }
 

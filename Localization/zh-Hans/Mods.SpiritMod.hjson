@@ -333,3 +333,11 @@ GameTips: {
 	SpiritGameTip8: 地下深处的坟葬很危险，但绝对值得一探。
 	SpiritGameTip9: 任务是获得大量奖励的简便方法 - 找到冒险家以取得任务书！
 }
+
+AvianIslandSigns: {
+	// 0: (the text is illegible)
+	// 1: Floating Resort - The only (scratch marks)
+	// 2: Overseer Spotted in Distance? More At 5
+	// 3: A Revival? More likely thank you think!
+	// 4: Find more (scratch marks) and for only 50g!
+}

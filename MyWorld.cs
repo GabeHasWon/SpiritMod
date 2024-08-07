@@ -1204,8 +1204,9 @@ namespace SpiritMod
 			if (FinalCleanup != -1)
 				tasks.Insert(FinalCleanup + 1, new PassLegacy("Piles", SpiritGenPasses.PilesPass));
 
-			int TrapsIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Traps"));
-			tasks.Insert(TrapsIndex + 2, new PassLegacy("Asteroids", SpiritGenPasses.AsteroidsPass));
+			int trapIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Traps"));
+			if (trapIndex != -1)
+				tasks.Insert(trapIndex + 2, new PassLegacy("Asteroids", SpiritGenPasses.AsteroidsPass));
 
 			if (ModContent.GetInstance<SpiritClientConfig>().OceanShape != OceanGeneration.OceanShape.Default)
 			{

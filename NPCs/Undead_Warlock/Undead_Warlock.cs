@@ -45,7 +45,7 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			NPC.HitSound = SoundID.NPCHit1;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface");
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface NightTime");
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{

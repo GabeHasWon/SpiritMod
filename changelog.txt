@@ -1,10 +1,13 @@
-﻿v1.5.0.17
-- Removed Geode vanity from Gambler's loot pool
-- Synced & safeguarded some Kelp updating code
-- Made Gold Lumoth require 3 research instead of 5
-- Increased Blossmoon spawn rate
-- Increased Hail Snail spawn rate
-- Decreased Lost Mime spawn rate
-- Significantly reduced coin output of Gambler chests - no longer turns profit
-- Mystical Dice now work in multiplayer properly (and are slightly faster)
-- Added a bunch of game tips in loading menus
+﻿v1.5.0.18
+- Added extra check to Sunken Surface micropass to stop a gen crash
+- Disabled decrafting on all Ice Sculptures to stop Cryolite progression break
+- Added "Night" tag to Undead Warlock's bestiary
+- Added most Spirit structures into the GenVars.structure system, and added anti-overlap
+- Localized Avian Island sign text
+- Added a few more Avian Island sign texts
+- Made Avian Islands spawn randomly throughout the world with Remnants instead of always spawning at 0, 0
+- Significantly increased likelihood of a world generating properly with Remnants on
+- Fixed Spirit trees having difficulty growing
+- Fixed typo in unused Violet Crystal item
+- Raw Fish now only applies poison if used, no longer gives Well Fed
+- Fixed Mech Bat error on servers

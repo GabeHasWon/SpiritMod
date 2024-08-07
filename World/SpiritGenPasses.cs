@@ -94,7 +94,7 @@ namespace SpiritMod.World
 
 		private static readonly List<Point> houseLocations = new();
 
-		internal static void StealIslandInfo(Terraria.On_WorldGen.orig_IslandHouse orig, int i, int j, int islandStyle)
+		internal static void StealIslandInfo(On_WorldGen.orig_IslandHouse orig, int i, int j, int islandStyle)
 		{
 			houseLocations.Add(new(i, j));
 			orig(i, j, islandStyle);
@@ -116,22 +116,19 @@ namespace SpiritMod.World
 			int tries = 0;
 			failed = false;
 
-			int[] TileBlacklist = GlobalExtensions.TileSet<BriarGrass, FloranOreTile, BlastStone>().With(TileID.Ebonsand, TileID.Ebonstone, TileID.Crimstone, TileID.Crimsand, TileID.LihzahrdBrick);
-			int[] WallBlacklist = new int[]
-			{
-				ModContent.WallType<ReachWallNatural>(),
-				ModContent.WallType<ReachStoneWall>()
-			};
+			int[] TileBlacklist = GlobalExtensions.TileSet<BriarGrass, FloranOreTile, BlastStone>().With(TileID.Ebonsand, TileID.Ebonstone, TileID.Crimstone, 
+				TileID.Crimsand, TileID.LihzahrdBrick);
+			int[] WallBlacklist = [ModContent.WallType<ReachWallNatural>(), ModContent.WallType<ReachStoneWall>()];
 
 			do
 			{
 				tileCheckPos.X = WorldGen.genRand.Next(randomizationRange.X, randomizationRange.X + randomizationRange.Width);
 				tileCheckPos.Y = WorldGen.genRand.Next(randomizationRange.Y, randomizationRange.Y + randomizationRange.Height);
 
-				int xDist = width; //Increased due to chance at second floor
-				int yDist = height; //Increased due to chance at second floor
+				int xDist = width;
+				int yDist = height;
 				int xCenter = tileCheckPos.X;
-				int yCenter = tileCheckPos.Y; //Shifted up due to chance at second floor
+				int yCenter = tileCheckPos.Y;
 
 				bool blackListedTile = false;
 				for (int i = -xDist / 2; i <= xDist / 2; i++)
@@ -158,13 +155,19 @@ namespace SpiritMod.World
 						failed = true;
 						break;
 					}
+
+					continue;
+				}
+
+				if (!GenVars.structures.CanPlace(new Rectangle(xCenter - xDist / 2, yCenter - yDist / 2, xDist, yDist))) // Fail if on an existing structure
+				{
+					tries++;
 					continue;
 				}
 
 				break;
 			} while (true);
 		}
-
 
 		#region Campsite
 		private static void GenerateCampsite()
@@ -183,8 +186,8 @@ namespace SpiritMod.World
 			{
 				// Select a place in the first 6th of the world
 				int fireX = Main.spawnTileX + WorldGen.genRand.Next(-800, 800); // from 50 since there's a unaccessible area at the world's borders
-																		  // 50% of choosing the last 6th of the world
-				if (WorldGen.genRand.NextBool())
+				
+				if (WorldGen.genRand.NextBool()) // 50% of choosing the last 6th of the world
 					fireX = Main.maxTilesX - fireX;
 
 				int fireY = 0;
@@ -196,13 +199,18 @@ namespace SpiritMod.World
 				if (fireY > Main.worldSurface)
 					continue;
 
+				if (!GenVars.structures.CanPlace(new Rectangle(fireX, fireY + 1, CampShape1.GetLength(0), CampShape1.GetLength(1))))
+					continue;
+
 				Tile tile = Main.tile[fireX, fireY];
+
 				// If the type of the tile we are placing the tower on doesn't match what we want, try again
 				if (tile.TileType != TileID.Dirt && tile.TileType != TileID.Grass && tile.TileType != TileID.Stone)
 					continue;
 
 				// place the tower
 				PlaceCampsite(fireX, fireY + 1, CampShape1);
+				GenVars.structures.AddProtectedStructure(new Rectangle(fireX, fireY + 1, CampShape1.GetLength(0), CampShape1.GetLength(1)));
 				break;
 			}
 		}
@@ -295,11 +303,14 @@ namespace SpiritMod.World
 				int hideoutX = WorldGen.genRand.Next(300, Main.maxTilesX - 300); // from 50 since there's a unaccessible area at the world's borders
 				int hideoutY = WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 450);
 				Tile tile = Main.tile[hideoutX, hideoutY];
+				Point16 size = Point16.Zero;
+				StructureHelper.Generator.GetDimensions("Structures/CrateStashRegular", SpiritMod.Instance, ref size);
 
-				if (!tile.HasTile || tile.TileType != TileID.Stone)
+				if (!tile.HasTile || tile.TileType != TileID.Stone || !GenVars.structures.CanPlace(new(hideoutX, hideoutY, size.X, size.Y)))
 					continue;
 
 				StructureHelper.Generator.GenerateStructure("Structures/CrateStashRegular", new Point16(hideoutX, hideoutY), SpiritMod.Instance);
+				GenVars.structures.AddProtectedStructure(new(hideoutX, hideoutY, size.X, size.Y));
 				break;
 			}
 		}
@@ -311,11 +322,14 @@ namespace SpiritMod.World
 				int hideoutX = WorldGen.genRand.Next(300, Main.maxTilesX - 300); // from 50 since there's a unaccessible area at the world's borders
 				int hideoutY = WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 450);
 				Tile tile = Framing.GetTileSafely(hideoutX, hideoutY);
+				Point16 size = Point16.Zero;
+				StructureHelper.Generator.GetDimensions("Structures/CrateStashJungle", SpiritMod.Instance, ref size);
 
-				if (!tile.HasTile || tile.TileType != 60)
+				if (!tile.HasTile || tile.TileType != 60 || !GenVars.structures.CanPlace(new(hideoutX, hideoutY, size.X, size.Y)))
 					continue;
 
 				StructureHelper.Generator.GenerateStructure("Structures/CrateStashJungle", new Point16(hideoutX, hideoutY), SpiritMod.Instance);
+				GenVars.structures.AddProtectedStructure(new(hideoutX, hideoutY, size.X, size.Y));
 				break;
 			}
 		}
@@ -329,11 +343,14 @@ namespace SpiritMod.World
 				int hideoutX = WorldGen.genRand.Next(50, Main.maxTilesX - 200); // from 50 since there's a unaccessible area at the world's borders
 				int hideoutY = WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY);
 				Tile tile = Framing.GetTileSafely(hideoutX, hideoutY);
+				Point16 size = Point16.Zero;
+				StructureHelper.Generator.GetDimensions("Structures/StoneDungeon", SpiritMod.Instance, ref size);
 
-				if (!tile.HasTile || tile.TileType != TileID.Stone)
+				if (!tile.HasTile || tile.TileType != TileID.Stone || !GenVars.structures.CanPlace(new(hideoutX, hideoutY, size.X, size.Y)))
 					continue;
 
 				StructureHelper.Generator.GenerateStructure("Structures/StoneDungeon", new Point16(hideoutX, hideoutY), SpiritMod.Instance);
+				GenVars.structures.AddProtectedStructure(new(hideoutX, hideoutY, size.X, size.Y));
 				break;
 			}
 		}
@@ -463,6 +480,8 @@ namespace SpiritMod.World
 			if (failed) //Dont generate if tried too many times
 				return;
 
+			GenVars.structures.AddProtectedStructure(new Rectangle(center.X - width / 2, center.Y - height / 2, width, height), 2);
+
 			// place the hideout
 			if (WorldGen.genRand.NextBool(2))
 				PlaceGemStash(center.X, center.Y, StashRoomMain, StashMainWalls, StashMainLoot);
@@ -470,7 +489,11 @@ namespace SpiritMod.World
 				PlaceGemStash(center.X, center.Y, StashRoomMain1, StashMainWalls, StashMainLoot1);
 
 			if (WorldGen.genRand.NextBool(2))
-				PlaceGemStash(center.X + (WorldGen.genRand.Next(-5, 5)), center.Y - 8, StashRoom1, Stash1Walls, Stash1Loot);
+			{
+				int x = center.X + WorldGen.genRand.Next(-5, 5);
+				PlaceGemStash(x, center.Y - 8, StashRoom1, Stash1Walls, Stash1Loot);
+				GenVars.structures.AddProtectedStructure(new Rectangle(x - width / 2, center.Y - height / 2 - 8, width, height), 2);
+			}
 		}
 
 		private static void PlaceGemStash(int i, int j, int[,] BlocksArray, int[,] WallsArray, int[,] LootArray)
@@ -589,8 +612,6 @@ namespace SpiritMod.World
 
 					if (WorldGen.InWorld(k, l, 30))
 					{
-						Tile tile = Framing.GetTileSafely(k, l);
-
 						switch (WallsArray[y, x])
 						{
 							case 0:
@@ -704,6 +725,7 @@ namespace SpiritMod.World
 			StructureHelper.Generator.GetDimensions(structure, SpiritMod.Instance, ref size);
 			Point pos = FindBoneIslandPlacement(size, WorldGen.remixWorldGen); // Select a place in the inner 4/6ths of the world
 			StructureHelper.Generator.GenerateStructure(structure, new Point16(pos.X, pos.Y), SpiritMod.Instance);
+			GenVars.structures.AddProtectedStructure(new Rectangle(pos.X, pos.Y, size.X, size.Y), 8);
 
 			if (var == 1 && Main.tile[pos.X + 118, pos.Y + 35].TileType == TileID.TatteredWoodSign)
 			{
@@ -711,11 +733,13 @@ namespace SpiritMod.World
 
 				if (sign != -1)
 				{
-					WeightedRandom<string> lines = new();
-					lines.Add("(the text is illegible)", 0.9f);
-					lines.Add("Floating Resort - The only (scratch marks)", 0.09f);
-					lines.Add("Overseer Spotted in Distance? More At 5", 0.01f);
-					Sign.TextSign(sign, lines);
+					WeightedRandom<int> lines = new();
+					lines.Add(0, 0.6f);
+					lines.Add(1, 0.09f);
+					lines.Add(2, 0.01f);
+					lines.Add(3, 0.01f);
+					lines.Add(4, 0.29f);
+					Sign.TextSign(sign, Language.GetTextValue("Mods.SpiritMod.AvianIslandSigns" + lines));
 				}
 			}
 		}
@@ -723,6 +747,9 @@ namespace SpiritMod.World
 		private static Point FindBoneIslandPlacement(Point16 islandSize, bool hugIsland = false)
 		{
 			int totalAttempts = -1;
+
+			if (ModLoader.HasMod("Remnants"))
+				return RemnantsFindBoneIslandPlacement(islandSize);
 
 			while (true)
 			{
@@ -781,6 +808,9 @@ namespace SpiritMod.World
 						}
 					}
 
+					if (!GenVars.structures.CanPlace(new Rectangle(realPos.X, realPos.Y, islandSize.X, islandSize.Y)))
+						failed = true;
+
 					if (failed)
 						goto fullRestart;
 
@@ -789,7 +819,21 @@ namespace SpiritMod.World
 					return realPos;
 				}
 			}
+
 			return new Point(0, 0);
+		}
+
+		private static Point RemnantsFindBoneIslandPlacement(Point16 islandSize)
+		{
+			Point position;
+
+			do
+			{
+				position = new Point(WorldGen.genRand.Next(300, Main.maxTilesX - 300), WorldGen.genRand.Next(50, (int)(Main.worldSurface * 0.35f)));
+			} while (!WorldMethods.AreaClear(position.X, position.Y, islandSize.X, islandSize.Y) ||
+				!GenVars.structures.CanPlace(new Rectangle(position.X, position.Y, islandSize.X, islandSize.Y)));
+
+			return position;
 		}
 		#endregion Bone Island
 
@@ -803,6 +847,7 @@ namespace SpiritMod.World
 
 			MyWorld.pagodaLocation.Y = (int)(Main.worldSurface / 5.0);
 			StructureHelper.Generator.GenerateStructure("Structures/Pagoda", new(MyWorld.pagodaLocation.X, MyWorld.pagodaLocation.Y), SpiritMod.Instance);
+
 		}
 		#endregion Pagoda
 
