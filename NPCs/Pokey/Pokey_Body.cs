@@ -255,7 +255,7 @@ namespace SpiritMod.NPCs.Pokey
 
         private void GoTo(float pos) 
         {
-            float lerpspeed = (Math.Abs(NPC.position.Y - pos) > (NPC.height / 2)) ? 0.45f : 0.15f;
+            float lerpspeed = (Math.Abs(NPC.position.Y - pos) > NPC.height / 2) ? 0.45f : 0.15f;
             NPC.position.Y = MathHelper.Lerp(NPC.position.Y, pos, lerpspeed); 
         }
 
@@ -263,13 +263,16 @@ namespace SpiritMod.NPCs.Pokey
         {
             if (QueueFromTop() == 0)
                 return;
+
             if (QueueFromBottom() == 0)
             {
                 Tail = Main.npc[UpperChain];
                 return;
             }
+
             int chain = Head.whoAmI;
             int tries = 0;
+
             while (Main.npc[chain].ai[1] != NPC.whoAmI)
             {
                 chain = (int)Main.npc[chain].ai[1];
@@ -278,6 +281,7 @@ namespace SpiritMod.NPCs.Pokey
                 if (tries++ > segments * 2 || Main.npc[chain].ai[1] == -1)
                      break;
             }
+
             Main.npc[chain].ai[1] = LowerChain;
 
             chain = Tail.whoAmI;
@@ -290,6 +294,7 @@ namespace SpiritMod.NPCs.Pokey
                 if (tries++ > segments * 2 || Main.npc[chain].ai[0] == -1)
                     break;
             }
+
             Main.npc[chain].ai[0] = UpperChain;
         }
 
@@ -320,13 +325,16 @@ namespace SpiritMod.NPCs.Pokey
 
 		public override bool CheckDead()
 		{
-			try {
+			try 
+			{
 				if (QueueFromBottom() != 0 || (Head.active && Head.life > 0))
 					Delete();
 			}
-			catch (Exception) {
-				throw new Exception("[Stactus] It's in delete number " + QueueFromBottom().ToString());
+			catch (Exception exception) 
+			{
+				throw new Exception("[Stactus] Dele #" + QueueFromBottom().ToString() + $"\n{exception.GetType().Name}: {exception.Message}");
 			}
+
 			return true;
 		}
 
@@ -350,6 +358,7 @@ namespace SpiritMod.NPCs.Pokey
 		}
 
 		private float animCounter;
+
 		public override void FindFrame(int frameHeight)
 		{
 			if (NPC.IsABestiaryIconDummy)
@@ -362,7 +371,8 @@ namespace SpiritMod.NPCs.Pokey
 			{
 				Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 
-				for (int i = 3; i >= 0; --i) {
+				for (int i = 3; i >= 0; --i) 
+				{
 					Rectangle rect = new Rectangle(0, i % 2 * 32, tex.Width, 26);
 					float yOffset = (i - 4) * 16;
 					float sine = (float)Math.Sin((animCounter + i * 10) * 0.1f) * 2.5f;
@@ -377,8 +387,10 @@ namespace SpiritMod.NPCs.Pokey
 
 					Main.EntitySpriteDraw(tex, NPC.position - screenPos + new Vector2(sine, yOffset), rect, drawColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
 				}
+
 				return false;
 			}
+
 			return true;
 		}
 	}

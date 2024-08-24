@@ -1206,6 +1206,7 @@ namespace SpiritMod.World
 					chestSuccesses++;
 					chestTries = 0;
 				}
+
 				chestTries++;
 			}
 
@@ -1249,6 +1250,7 @@ namespace SpiritMod.World
 					{
 						distance--;
 					}
+
 					if (increase == 1)
 					{
 						distance++;
@@ -1298,14 +1300,14 @@ namespace SpiritMod.World
 				}
 			}
 
-			int repeats = 0;
+			int repeats = -1;
 			int maxRepeats = 3;
 			for (int i = 0; i < (maxRepeats * GlobalExtensions.WorldSize); ++i)
 			{
 				if (repeats >= (maxRepeats * GlobalExtensions.WorldSize))
 					continue;
 
-				retry:
+				repeats++;
 				int x = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
 				int y = WorldGen.genRand.Next(Main.UnderworldLayer, Main.maxTilesY);
 
@@ -1320,9 +1322,9 @@ namespace SpiritMod.World
 					if (WorldGen.PlaceObject(x, y - height + originY, type, true))
 						NetMessage.SendObjectPlacement(-1, x, y - height + originY, type, 0, 0, -1, -1);
 
-					repeats++;
 				}
-				else goto retry;
+				else 
+					continue;
 			} //Place "The Bad" paintings
 
 			int[] mushSet = GlobalExtensions.TileSet<WhiteMushroom2x2, WhiteMushroom2x3, RedMushroom1x1, RedMushroom2x2, RedMushroom3x2, BrownMushrooms, BrownMushroomLarge>();

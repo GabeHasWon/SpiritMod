@@ -17,8 +17,9 @@ namespace SpiritMod.World.Micropasses
 		private static int[] ValidTypes = new int[] { TileID.Stone, TileID.Dirt, TileID.ClayBlock, TileID.ArgonMoss, TileID.BlueMoss, TileID.BrownMoss, TileID.GreenMoss, TileID.KryptonMoss, 
 			TileID.LavaMoss, TileID.PurpleMoss, TileID.RedMoss, TileID.XenonMoss };
 
-		private static int[] DesertTypes = new int[] { TileID.Sand, TileID.Sandstone, TileID.HardenedSand, TileID.Ebonsand, TileID.Crimsand, TileID.CorruptSandstone, TileID.CrimsonSandstone, 
-			TileID.CorruptHardenedSand, TileID.CrimsonHardenedSand };
+		private static int[] InvalidTypes = [ TileID.Sand, TileID.Sandstone, TileID.HardenedSand, TileID.Ebonsand, TileID.Crimsand, TileID.CorruptSandstone, TileID.CrimsonSandstone, 
+			TileID.CorruptHardenedSand, TileID.CrimsonHardenedSand, TileID.BlueDungeonBrick, TileID.GreenDungeonBrick, TileID.PinkDungeonBrick, TileID.ObsidianBrick, TileID.GoldBrick, 
+			TileID.MinecartTrack, TileID.JungleGrass ];
 
 		public override int GetWorldGenIndexInsert(List<GenPass> passes, ref bool afterIndex) => passes.FindIndex(genpass => genpass.Name.Equals("Sunflowers"));
 
@@ -43,7 +44,7 @@ namespace SpiritMod.World.Micropasses
 				{
 					for (int j = y - 10; j < y + 10; ++j)
 					{
-						if (Main.tile[v, j].HasTile && DesertTypes.Contains(Main.tile[v, j].TileType))
+						if (Main.tile[v, j].HasTile && InvalidTypes.Contains(Main.tile[v, j].TileType))
 						{
 							i--;
 							goto retry;

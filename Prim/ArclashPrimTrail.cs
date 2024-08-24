@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Sets.MagicMisc.Arclash;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace SpiritMod.Prim
 {
@@ -33,7 +35,8 @@ namespace SpiritMod.Prim
 			if (PointCount <= 6 || Destroyed) 
 				return;
 
-			for (int i = 0; i < Points.Count; i++) {
+			for (int i = 0; i < Points.Count; i++) 
+			{
 				float widthVar;
 
 				if (i == 0) {
@@ -98,12 +101,14 @@ namespace SpiritMod.Prim
 			Counter++;
 			PointCount = Points.Count * 6;
 
-			if (!projectile.active || Destroyed)
+			if (!projectile.active || projectile.type != ModContent.ProjectileType<ArcLashProj>() || Destroyed)
 				OnDestroy();
-			else {
+			else 
+			{
 				Points.Clear();
 
-				foreach (Vector2 point in Helpers.GetBezier(position, position, c1, c2, _arcProgress + 6)) {
+				foreach (Vector2 point in Helpers.GetBezier(position, position, c1, c2, _arcProgress + 6)) 
+				{
 					Vector2 point2 = point;
 					point2.X += Main.rand.Next(-2, 2);
 					point2.Y += Main.rand.Next(-2, 2);

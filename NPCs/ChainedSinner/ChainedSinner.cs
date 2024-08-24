@@ -10,147 +10,150 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using ReLogic.Content;
 
-namespace SpiritMod.NPCs.ChainedSinner
+namespace SpiritMod.NPCs.ChainedSinner;
+
+internal class ChainedSinner : ModNPC
 {
-	internal class ChainedSinner : ModNPC
+	private static Asset<Texture2D> chainTex = null;
+
+	public Chain chain;
+
+	public float angularMomentum = 0;
+
+	private Vector2 arbitraryVelocity;
+	private Vector2 cachedVel;
+	private Vector2 spawnPos;
+
+	public override void SetStaticDefaults()
 	{
-		public Chain chain;
+		NPCHelper.ImmuneTo(this, BuffID.Poisoned);
 
-		public float angularMomentum = 0;
+		chainTex = Mod.Assets.Request<Texture2D>("NPCs/ChainedSinner/ChainedSinner_Chain");
+	}
 
-		private Vector2 arbitraryVelocity;
-		private Vector2 cachedVel;
-		private Vector2 spawnPos;
+	public override void SetDefaults()
+	{
+		NPC.width = 56;
+		NPC.height = 74;
+		NPC.aiStyle = -1;
+		NPC.knockBackResist = 0;
+		NPC.lifeMax = 175;
+		NPC.damage = 60;
+		NPC.defense = 20;
+		NPC.noTileCollide = true;
+		NPC.lavaImmune = true;
+		NPC.HitSound = SoundID.NPCHit41;
+		NPC.DeathSound = SoundID.NPCDeath27;
+		NPC.value = Item.buyPrice(0, 0, 20, 0);
 
-		public override void SetStaticDefaults()
+		Banner = NPC.type;
+		BannerItem = ModContent.ItemType<Items.Banners.FurnaceMawBanner>();
+	}
+
+	public override void OnSpawn(IEntitySource source)
+	{
+		const int Distance = 8;
+
+		int x = (int)(NPC.Center.X / 16f);
+		int y = (int)(NPC.Center.Y / 16f);
+		List<Point16> points = new();
+
+		for (int i = x - Distance; i < x + Distance; ++i)
 		{
-			// DisplayName.SetDefault("Furnace Maw");
-			NPCHelper.ImmuneTo(this, BuffID.Poisoned);
+			for (int j = y - Distance; j < y + Distance; ++j)
+			{
+				Tile tile = Main.tile[i, j];
+
+				if (tile.HasTile && (tile.TileType == TileID.Ash || tile.TileType == TileID.ObsidianBrick || tile.TileType == TileID.HellstoneBrick))
+					points.Add(new(i, j));
+			}
 		}
 
-		public override void SetDefaults()
+		if (points.Count == 0)
 		{
-			NPC.width = 56;
-			NPC.height = 74;
-			NPC.aiStyle = -1;
-			NPC.knockBackResist = 0;
-			NPC.lifeMax = 175;
-			NPC.damage = 60;
-			NPC.defense = 20;
-			NPC.noTileCollide = true;
-			NPC.lavaImmune = true;
-			NPC.HitSound = SoundID.NPCHit41;
-			NPC.DeathSound = SoundID.NPCDeath27;
-			NPC.value = Item.buyPrice(0, 0, 20, 0);
-
-			Banner = NPC.type;
-			BannerItem = ModContent.ItemType<Items.Banners.FurnaceMawBanner>();
+			NPC.active = false;
+			return;
 		}
 
-		public override void OnSpawn(IEntitySource source)
-		{
-			const int Distance = 8;
+		NPC.Center = Main.rand.Next(points).ToVector2() * 16;
+		NPC.netUpdate = true;
+		InitializeChain(NPC.Center);
+	}
 
-			int x = (int)(NPC.Center.X / 16f);
-			int y = (int)(NPC.Center.Y / 16f);
-			List<Point16> points = new();
+	public override void AI()
+	{
+		const int LoopLength = 120;
 
-			for (int i = x - Distance; i < x + Distance; ++i)
-			{
-				for (int j = y - Distance; j < y + Distance; ++j)
-				{
-					Tile tile = Main.tile[i, j];
+		NPC.TargetClosest(true);
+		NPC.ai[0]++;
 
-					if (tile.HasTile && (tile.TileType == TileID.Ash || tile.TileType == TileID.ObsidianBrick || tile.TileType == TileID.HellstoneBrick))
-						points.Add(new(i, j));
-				}
-			}
-
-			if (points.Count == 0)
-			{
-				NPC.active = false;
-				return;
-			}
-
-			NPC.Center = Main.rand.Next(points).ToVector2() * 16;
-			NPC.netUpdate = true;
+		if (chain is null)
 			InitializeChain(NPC.Center);
-		}
 
-		public override void AI()
+		chain.Update(spawnPos - new Vector2(0, 1), NPC.Center);
+
+		float X = (float)Math.Sin(NPC.ai[0] / 50f);
+
+		Player player = Main.player[NPC.target];
+
+		if (NPC.ai[0] % LoopLength < 30)
 		{
-			const int LoopLength = 120;
+			if (NPC.ai[0] % LoopLength == 1)
+				cachedVel = Vector2.Normalize(player.Center - NPC.Center);
 
-			NPC.TargetClosest(true);
-			NPC.ai[0]++;
-
-			if (chain is null)
-				InitializeChain(NPC.Center);
-
-			chain.Update(spawnPos - new Vector2(0, 1), NPC.Center);
-
-			float X = (float)Math.Sin(NPC.ai[0] / 50f);
-
-			Player player = Main.player[NPC.target];
-
-			if (NPC.ai[0] % LoopLength < 30)
-			{
-				if (NPC.ai[0] % LoopLength == 1)
-					cachedVel = Vector2.Normalize(player.Center - NPC.Center);
-
-				if (NPC.ai[0] % LoopLength > 1)
-					arbitraryVelocity += cachedVel / 1.5f;
-			}
-			else if (NPC.ai[0] % LoopLength > LoopLength / 3)
-			{
-				float timeSince = NPC.ai[0] % LoopLength - (LoopLength / 3);
-				arbitraryVelocity = new Vector2(X, 0) * timeSince / ((LoopLength / 3) * 0.75f);
-			}
-			else
-				arbitraryVelocity *= 0.42f;
-
-			chain.LastVertex.Position += arbitraryVelocity;
-			NPC.Center = chain.LastVertex.Position;
+			if (NPC.ai[0] % LoopLength > 1)
+				arbitraryVelocity += cachedVel / 1.5f;
 		}
-
-		public void InitializeChain(Vector2 position)
+		else if (NPC.ai[0] % LoopLength > LoopLength / 3)
 		{
-			chain = new Chain(16, 16, position, new ChainPhysics(0.95f, 0.5f, 0.4f), true, false);
-			spawnPos = position;
+			float timeSince = NPC.ai[0] % LoopLength - (LoopLength / 3);
+			arbitraryVelocity = new Vector2(X, 0) * timeSince / ((LoopLength / 3) * 0.75f);
 		}
+		else
+			arbitraryVelocity *= 0.42f;
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		chain.LastVertex.Position += arbitraryVelocity;
+		NPC.Center = chain.LastVertex.Position;
+	}
+
+	public void InitializeChain(Vector2 position)
+	{
+		chain = new Chain(16, 16, position, new ChainPhysics(0.95f, 0.5f, 0.4f), true, false);
+		spawnPos = position;
+	}
+
+	public override void ModifyNPCLoot(NPCLoot npcLoot)
+	{
+		npcLoot.AddCommon<CarvedRock>(1, 4, 9);
+		npcLoot.AddCommon(ItemID.Chain, 8, 2, 4);
+	}
+
+	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+	{
+		if (!NPC.IsABestiaryIconDummy)
+			chain.Draw(spriteBatch, chainTex.Value);
+		return true;
+	}
+
+	public override void HitEffect(NPC.HitInfo hit)
+	{
+		if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
 		{
-			npcLoot.AddCommon<CarvedRock>(1, 4, 9);
-			npcLoot.AddCommon(ItemID.Chain, 8, 2, 4);
-		}
+			for (int i = 0; i < 3; ++i)
+			Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, Mod.Find<ModGore>("ChainedSinner" + i).Type);
 
-		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			if (!NPC.IsABestiaryIconDummy)
-				chain.Draw(spriteBatch, Mod.Assets.Request<Texture2D>("NPCs/ChainedSinner/ChainedSinner_Chain").Value);
-			return true;
+			foreach (var item in chain.VerticesArray())
+				Gore.NewGoreDirect(NPC.GetSource_Death(), item, Vector2.Zero, Mod.Find<ModGore>("ChainedSinnerChain").Type);
 		}
+	}
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheUnderworld");
 
-		public override void HitEffect(NPC.HitInfo hit)
-		{
-			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
-			{
-				for (int i = 0; i < 3; ++i)
-				Gore.NewGoreDirect(NPC.GetSource_Death(), NPC.Center, Vector2.Zero, Mod.Find<ModGore>("ChainedSinner" + i).Type);
-
-				foreach (var item in chain.VerticesArray())
-					Gore.NewGoreDirect(NPC.GetSource_Death(), item, Vector2.Zero, Mod.Find<ModGore>("ChainedSinnerChain").Type);
-			}
-		}
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheUnderworld");
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) 
-		{
-			if (spawnInfo.SpawnTileY < Main.maxTilesY - 160 && spawnInfo.SpawnTileType == TileID.Ash || spawnInfo.SpawnTileType == TileID.ObsidianBrick || spawnInfo.SpawnTileType == TileID.HellstoneBrick)
-				return NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.05f : 0f;
-			return 0;
-		}
+	public override float SpawnChance(NPCSpawnInfo spawnInfo) 
+	{
+		if (spawnInfo.SpawnTileY < Main.maxTilesY - 160 && spawnInfo.SpawnTileType == TileID.Ash || spawnInfo.SpawnTileType == TileID.ObsidianBrick || spawnInfo.SpawnTileType == TileID.HellstoneBrick)
+			return NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.05f : 0f;
+		return 0;
 	}
 }

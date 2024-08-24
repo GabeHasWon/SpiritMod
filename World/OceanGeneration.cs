@@ -73,7 +73,7 @@ namespace SpiritMod.World
 
 			for (int side = 0; side < 2; side++)
 			{
-				PiecewiseVScale = 1f + (WorldGen.genRand.Next(-1000, 2500) * 0.0001f);
+				PiecewiseVScale = 1f + WorldGen.genRand.Next(-1000, 2500) * 0.0001f;
 				PiecewiseVMountFactor = WorldGen.genRand.Next(150, 750);
 
 				int worldEdge = side == 0 ? 0 : Main.maxTilesX - WorldGen.genRand.Next(125, 200) - 50;
@@ -92,8 +92,12 @@ namespace SpiritMod.World
 					CheckOceanHeight(ref oceanTop);
 
 					oceanTop += WorldGen.genRand.Next(1, 5);
-					for (int placeX = initialWidth - 1; placeX >= worldEdge; placeX--)
-						GenSingleOceanSingleStep(oceanTop, placeX, ref tilesFromInnerEdge);
+
+					if (!ModLoader.HasMod("Remnants"))
+					{
+						for (int placeX = initialWidth - 1; placeX >= worldEdge; placeX--)
+							GenSingleOceanSingleStep(oceanTop, placeX, ref tilesFromInnerEdge);
+					}
 
 					_oceanInfos.Item1 = new Rectangle(worldEdge, oceanTop - 5, initialWidth, (int)GetOceanSlope(tilesFromInnerEdge) + 20);
 				}
@@ -109,8 +113,12 @@ namespace SpiritMod.World
 					CheckOceanHeight(ref oceanTop);
 
 					oceanTop += WorldGen.genRand.Next(1, 5);
-					for (int placeX = worldEdge; placeX < initialWidth; placeX++) //repeat X loop
-						GenSingleOceanSingleStep(oceanTop, placeX, ref tilesFromInnerEdge);
+
+					if (!ModLoader.HasMod("Remnants"))
+					{
+						for (int placeX = worldEdge; placeX < initialWidth; placeX++) //repeat X loop
+							GenSingleOceanSingleStep(oceanTop, placeX, ref tilesFromInnerEdge);
+					}
 
 					_oceanInfos.Item2 = new Rectangle(worldEdge, oceanTop - 5, initialWidth - worldEdge, (int)GetOceanSlope(tilesFromInnerEdge) + 20);
 				}
@@ -130,6 +138,7 @@ namespace SpiritMod.World
 					if (!t.HasTile || t.TileType != type || t.TopSlope || !Main.tileSolid[t.TileType])
 						return false;
 				}
+
 				return true;
 			}
 
@@ -144,6 +153,7 @@ namespace SpiritMod.World
 							return false;
 					}
 				}
+
 				return true;
 			}
 
