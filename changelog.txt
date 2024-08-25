@@ -1,13 +1,13 @@
-﻿v1.5.0.18
-- Added extra check to Sunken Surface micropass to stop a gen crash
-- Disabled decrafting on all Ice Sculptures to stop Cryolite progression break
-- Added "Night" tag to Undead Warlock's bestiary
-- Added most Spirit structures into the GenVars.structure system, and added anti-overlap
-- Localized Avian Island sign text
-- Added a few more Avian Island sign texts
-- Made Avian Islands spawn randomly throughout the world with Remnants instead of always spawning at 0, 0
-- Significantly increased likelihood of a world generating properly with Remnants on
-- Fixed Spirit trees having difficulty growing
-- Fixed typo in unused Violet Crystal item
-- Raw Fish now only applies poison if used, no longer gives Well Fed
-- Fixed Mech Bat error on servers
+﻿v1.5.0.19
+- Fixed natural Auroras bugging out at night
+- Fixed The Depths softlocking on gen alongside Spirit
+- Fixed Chained Sinner maybe not loading assets on time, optimized a little
+- Removed overlapping Ocean generation with Remnants
+- Significantly improved the consistency of location finding for Sunken Surface minibiomes
+- Improved Pokey error reporting
+- Fixed bad syncing on Javelin projectiles
+- Fixed Arc Lash primitives not despawning properly
+- Adjusted how Hydrothermal Vent critters spawn
+- Reduced Hydrothermal Vent critter spawn cap
+- Fixed or improved Hydra in multiplayer
+- Fixed or improved Sword of Nemesis in multiplayer

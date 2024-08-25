@@ -127,13 +127,14 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 			int npcIndex = -1;
 			int type = ModContent.NPCType<T>();
 
-			if (Main.rand.NextBool(denominator) && NPC.MechSpawn((float)i * 16, (float)j * 16, type) && NPC.CountNPCS(type) < 10)
+			if (Main.rand.NextBool(denominator) && NPC.MechSpawn((float)i * 16, (float)j * 16, type) && NPC.CountNPCS(type) < 6)
 				npcIndex = NPC.NewNPC(new EntitySource_TileUpdate(i, j), i * 16, j * 16, type);
 
 			if (npcIndex >= 0)
 			{
 				Main.npc[npcIndex].value = 0f;
-				Main.npc[npcIndex].npcSlots = 0f;
+				Main.npc[npcIndex].npcSlots = 0.1f;
+				Main.npc[npcIndex].netUpdate = true;
 			}
 		}
 

@@ -104,7 +104,8 @@ namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 			Vector2 position = Owner.MountedCenter + (direction * (7 + (Progress / 30)));
 			Projectile.Center = position + (direction * Progress * 0.66f);
 
-			if (Main.netMode != NetmodeID.Server && ++Projectile.localAI[0] == 1) {
+			if (Main.netMode != NetmodeID.Server && ++Projectile.localAI[0] == 1) 
+			{
 				SpiritMod.primitives.CreateTrail(new ArclashPrimTrail(Projectile));
 			}
         }

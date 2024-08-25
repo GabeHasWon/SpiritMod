@@ -9,12 +9,6 @@ namespace SpiritMod.Items.Sets.FrigidSet
 {
 	public class IcySpear : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Frigid Javelin");
-			// Tooltip.SetDefault("Hold and release to throw\nHold longer for more velocity and damage\nInflicts Frostburn");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.damage = 12;

@@ -94,13 +94,17 @@ namespace SpiritMod.NPCs.Hydra
 				attackIndex %= heads.Count;
 				attackCounter = 0;
 				var modNPC = heads[attackIndex++].ModNPC as HydraHead;
-				modNPC.attacking = true;
-			}
 
+				if (modNPC is not null)
+				{
+					modNPC.attacking = true;
+				}
+			}
+		
 			if (--newHeadCountdown == 0)
 			{
 				for (int i = 0; i < headsDue; i++)
-					SpawnHead(Math.Max(NPC.lifeMax - (50 * headsSpawned), 100));
+					SpawnHead(Math.Max(NPC.lifeMax - 50 * headsSpawned, 100));
 
 				headsDue = 1;
 			}
