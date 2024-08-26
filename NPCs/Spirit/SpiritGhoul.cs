@@ -59,11 +59,11 @@ namespace SpiritMod.NPCs.Spirit
 		{
 			Player player = spawnInfo.Player;
 
-			if (player.ZoneSpirit() && spawnInfo.SpawnTileY > Main.rockLayer && !spawnInfo.PlayerInTown && !spawnInfo.Invasion)
+			if (player.ZoneSpirit() && spawnInfo.SpawnTileY > Main.rockLayer && !spawnInfo.PlayerInTown && !spawnInfo.Invasion && !spawnInfo.PlayerInTown)
 			{
-				int[] spawnTiles = { ModContent.TileType<Spiritsand>() };
-				return spawnTiles.Contains(spawnInfo.SpawnTileType) ? 4f : 0f;
+				return spawnInfo.SpawnTileType == ModContent.TileType<Spiritsand>() ? 4f : 0f;
 			}
+
 			return 0f;
 		}
 

@@ -59,7 +59,7 @@ namespace SpiritMod.NPCs.Hydra
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (NPC.AnyNPCs(NPC.type))
+			if (NPC.AnyNPCs(NPC.type) || spawnInfo.PlayerInTown)
 				return 0f;
 
 			int tile = Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].TileType;

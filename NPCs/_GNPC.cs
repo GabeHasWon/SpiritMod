@@ -481,6 +481,7 @@ namespace SpiritMod.NPCs
 					else
 						return "Wiping a counter all day has made me appreciate the little things in life, like candy. Care for a piece?";
 			}
+
 			if (npc.type == ModContent.NPCType<Adventurer>())
 			{
 				if (dialogue == 0)
@@ -597,16 +598,15 @@ namespace SpiritMod.NPCs
 
 					if (NPC.downedBoss2)
 						pool.Add(ModContent.NPCType<Orbitite.Mineroid>(), 0.3f);
+
+					pool.Add(ModContent.NPCType<Gloop.GloopGloop>(), 0.24f);
+
+					if (NPC.downedBoss3)
+						pool.Add(ModContent.NPCType<Starfarer.CogTrapperHead>(), 0.1f);
 				}
 
-				pool.Add(ModContent.NPCType<Gloop.GloopGloop>(), 0.24f);
-
-				if (NPC.downedBoss3)
-					pool.Add(ModContent.NPCType<Starfarer.CogTrapperHead>(), 0.1f);
-
-				if (NPC.downedBoss1 || NPC.downedBoss3 || NPC.downedBoss3)
-					if (!NPC.AnyNPCs(ModContent.NPCType<MoonjellyEvent.DistressJelly>()))
-						pool.Add(ModContent.NPCType<MoonjellyEvent.DistressJelly>(), .055f);
+				if ((NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3) && !NPC.AnyNPCs(ModContent.NPCType<MoonjellyEvent.DistressJelly>()))
+					pool.Add(ModContent.NPCType<MoonjellyEvent.DistressJelly>(), .055f);
 			}
 
 			if (MyWorld.jellySky && (player.ZoneOverworldHeight || player.ZoneSkyHeight))

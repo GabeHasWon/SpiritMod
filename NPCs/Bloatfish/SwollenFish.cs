@@ -110,12 +110,7 @@ namespace SpiritMod.NPCs.Bloatfish
 					Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bloatfish" + i).Type, 1f);
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			if (spawnInfo.PlayerSafe)
-				return 0f;
-			return SpawnCondition.OceanMonster.Chance * 0.06f;
-		}
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.PlayerSafe || spawnInfo.PlayerInTown ? 0f : SpawnCondition.OceanMonster.Chance * 0.06f;
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) => target.AddBuff(BuffID.Bleeding, 1800);
 	}

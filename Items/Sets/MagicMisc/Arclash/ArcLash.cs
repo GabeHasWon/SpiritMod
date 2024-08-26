@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using SpiritMod.Prim;
 using System;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 
 namespace SpiritMod.Items.Sets.MagicMisc.Arclash
 {

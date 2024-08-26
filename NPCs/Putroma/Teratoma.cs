@@ -71,7 +71,7 @@ namespace SpiritMod.NPCs.Putroma
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight ? .2f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.PlayerInTown ? .2f : 0f;
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{

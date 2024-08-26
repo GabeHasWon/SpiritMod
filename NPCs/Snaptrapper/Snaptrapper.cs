@@ -286,6 +286,8 @@ namespace SpiritMod.NPCs.Snaptrapper
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
+			if (spawnInfo.PlayerInTown)
+				return 0;
 			if (MyWorld.downedSnaptrapper)
                 return spawnInfo.Player.ZoneJungle && NPC.downedBoss2 && !NPC.AnyNPCs(ModContent.NPCType<Snaptrapper>()) && spawnInfo.Player.ZoneOverworldHeight ? 0.008125f : 0f;
             return spawnInfo.Player.ZoneJungle && NPC.downedBoss2 && !NPC.AnyNPCs(ModContent.NPCType<Snaptrapper>()) && spawnInfo.Player.ZoneOverworldHeight ? 0.036f : 0f;

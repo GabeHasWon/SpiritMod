@@ -111,9 +111,7 @@ namespace SpiritMod.NPCs.ArterialGrasper
 		{
 			bool wall = Framing.GetTileSafely(spawnInfo.SpawnTileX, spawnInfo.SpawnTileY).WallType > 0;
 			bool valid = wall && spawnInfo.Player.ZoneCrimson && (spawnInfo.Player.ZoneRockLayerHeight || spawnInfo.Player.ZoneDirtLayerHeight);
-			if (!valid)
-				return 0;
-			return SpawnCondition.Crimson.Chance * .1f;
+			return !valid || spawnInfo.PlayerInTown ? 0 : SpawnCondition.Crimson.Chance * .1f;
 		}
 		public override void HitEffect(NPC.HitInfo hit)
 		{

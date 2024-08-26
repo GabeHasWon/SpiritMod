@@ -204,6 +204,8 @@ namespace SpiritMod.NPCs.Sea_Mandrake
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
+			if (spawnInfo.PlayerInTown)
+				return 0;
 			if (QuestManager.GetQuest<StylistQuestSeafoam>().IsActive)
 				return SpawnCondition.OceanMonster.Chance * 0.2f;
 			return SpawnCondition.OceanMonster.Chance * 0.05f;

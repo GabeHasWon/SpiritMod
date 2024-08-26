@@ -237,7 +237,7 @@ namespace SpiritMod.NPCs.Beholder
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (NPC.AnyNPCs(ModContent.NPCType<Beholder>()) || !spawnInfo.Player.ZoneMarble || !NPC.downedBoss2 || spawnInfo.SpawnTileY <= Main.rockLayer)
+			if (NPC.AnyNPCs(ModContent.NPCType<Beholder>()) || !spawnInfo.Player.ZoneMarble || !NPC.downedBoss2 || spawnInfo.SpawnTileY <= Main.rockLayer || spawnInfo.PlayerInTown)
 				return 0;
 			if (QuestManager.GetQuest<SlayerQuestMarble>().IsActive)
 				return 0.15f;

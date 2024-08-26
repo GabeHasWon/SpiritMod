@@ -56,7 +56,8 @@ namespace SpiritMod.NPCs.Reach
 			Player player = spawnInfo.Player;
 
 			return (spawnInfo.Player.ZoneBriar() && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && 
-				!(Main.pumpkinMoon || Main.snowMoon || Main.eclipse) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 1.7f : 0f;
+				!(Main.pumpkinMoon || Main.snowMoon || Main.eclipse) && !spawnInfo.Invasion && SpawnCondition.GoblinArmy.Chance == 0) &&
+				!spawnInfo.PlayerInTown ? 1.7f : 0f;
 		}
 
 		public override void SendExtraAI(BinaryWriter writer)

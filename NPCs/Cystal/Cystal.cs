@@ -204,7 +204,8 @@ namespace SpiritMod.NPCs.Cystal
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			bool valid = !NPC.AnyNPCs(ModContent.NPCType<Cystal>()) && (NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || MyWorld.DownedScarabeus || MyWorld.DownedVinewrath || MyWorld.DownedStarplate || MyWorld.DownedAncientAvian);
+			bool valid = !NPC.AnyNPCs(ModContent.NPCType<Cystal>()) && (NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || MyWorld.DownedScarabeus || MyWorld.DownedVinewrath 
+				|| MyWorld.DownedStarplate || MyWorld.DownedAncientAvian) && !spawnInfo.PlayerInTown;
 			if (!valid)
 				return 0;
 			return SpawnCondition.Corruption.Chance * 0.065f;

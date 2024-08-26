@@ -85,7 +85,7 @@ namespace SpiritMod.NPCs.MycelialBotanist
 			return true;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.MushroomGrass) && spawnInfo.SpawnTileY > Main.rockLayer ? 0.07f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileType == TileID.MushroomGrass && spawnInfo.SpawnTileY > Main.rockLayer && !spawnInfo.PlayerInTown ? 0.07f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

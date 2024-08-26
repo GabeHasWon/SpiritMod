@@ -440,7 +440,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			if (Main.tileSand[spawnInfo.SpawnTileType] && Main.hardMode && !NPC.AnyNPCs(ModContent.NPCType<Vulture_Matriarch>()))
-				return SpawnCondition.OverworldDayDesert.Chance * .145f;
+				return !spawnInfo.PlayerInTown ? SpawnCondition.OverworldDayDesert.Chance * .145f : 0;
 			return 0;
 		}
 	}

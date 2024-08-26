@@ -278,7 +278,7 @@ namespace SpiritMod.NPCs.Horned_Crustacean
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => SpawnCondition.OceanMonster.Chance * 0.08f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !spawnInfo.PlayerInTown ? SpawnCondition.OceanMonster.Chance * 0.08f : 0;
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

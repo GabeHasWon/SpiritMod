@@ -467,6 +467,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && (Main.bloodMoon) && Main.hardMode && !NPC.AnyNPCs(ModContent.NPCType<BloodGazer>()) ? SpawnCondition.OverworldNightMonster.Chance * 0.05f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && (Main.bloodMoon) && 
+			Main.hardMode && !NPC.AnyNPCs(ModContent.NPCType<BloodGazer>()) ? SpawnCondition.OverworldNightMonster.Chance * 0.05f : 0f;
 	}
 }

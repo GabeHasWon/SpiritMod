@@ -45,9 +45,9 @@ namespace SpiritMod.NPCs.AntlionAssassin
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (Main.tileSand[spawnInfo.SpawnTileType] && !spawnInfo.Player.ZoneBeach)
-				return SpawnCondition.OverworldDayDesert.Chance * 1.145f;
-			return 0;
+			return Main.tileSand[spawnInfo.SpawnTileType] && !spawnInfo.Player.ZoneBeach && !spawnInfo.PlayerInTown
+				? SpawnCondition.OverworldDayDesert.Chance * 1.145f
+				: 0;
 		}
 
 		int invisibilityTimer;

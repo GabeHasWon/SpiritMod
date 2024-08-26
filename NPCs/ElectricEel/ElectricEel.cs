@@ -51,7 +51,7 @@ namespace SpiritMod.NPCs.ElectricEel
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (spawnInfo.PlayerSafe)
+			if (spawnInfo.PlayerSafe || !spawnInfo.PlayerInTown)
 				return 0f;
 			return SpawnCondition.OceanMonster.Chance * 0.08f;
 		}

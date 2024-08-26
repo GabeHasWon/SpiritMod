@@ -119,7 +119,8 @@ namespace SpiritMod.NPCs.CrystalDrifter
 			return true;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneOverworldHeight && spawnInfo.Player.ZoneSnow && Main.raining && !spawnInfo.PlayerSafe && !NPC.AnyNPCs(ModContent.NPCType<CrystalDrifter>()) && NPC.downedBoss3 ? 0.09f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneOverworldHeight && spawnInfo.Player.ZoneSnow && Main.raining && !spawnInfo.PlayerSafe 
+			&& !NPC.AnyNPCs(ModContent.NPCType<CrystalDrifter>()) && NPC.downedBoss3 ? 0.09f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

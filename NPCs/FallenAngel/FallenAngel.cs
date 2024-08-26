@@ -47,7 +47,8 @@ namespace SpiritMod.NPCs.FallenAngel
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Sky");
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Sky && Main.hardMode && !NPC.AnyNPCs(ModContent.NPCType<FallenAngel>()) ? 0.013f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Sky && Main.hardMode &&
+			!NPC.AnyNPCs(ModContent.NPCType<FallenAngel>()) && !spawnInfo.PlayerInTown ? 0.013f : 0f;
 
 		public override void AI()
 		{

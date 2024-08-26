@@ -165,7 +165,8 @@ namespace SpiritMod.NPCs.Masticator
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight && NPC.CountNPCS(ModContent.NPCType<Masticator>()) < 2 ? .2f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.PlayerInTown
+			&& NPC.CountNPCS(ModContent.NPCType<Masticator>()) < 2 ? .2f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

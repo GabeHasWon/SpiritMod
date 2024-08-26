@@ -46,7 +46,7 @@ namespace SpiritMod.NPCs.HellEater
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "TheUnderworld");
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.09f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && !spawnInfo.PlayerInTown ? SpawnCondition.Underworld.Chance * 0.09f : 0f;
 		public override bool? CanFallThroughPlatforms() => true;
 
 		public override void HitEffect(NPC.HitInfo hit)

@@ -48,7 +48,8 @@ namespace SpiritMod.NPCs.Reach
 		{
 			Player player = spawnInfo.Player;
 
-			return (spawnInfo.Player.ZoneBriar() && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && 
+			return (spawnInfo.Player.ZoneBriar() && !(player.ZoneTowerSolar || player.ZoneTowerVortex || player.ZoneTowerNebula || player.ZoneTowerStardust) && 
+				((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && 
 				(!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || !Main.dayTime) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 2.25f : 0f;
 		}
 

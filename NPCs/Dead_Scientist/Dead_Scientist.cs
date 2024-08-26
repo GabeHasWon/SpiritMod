@@ -129,7 +129,7 @@ namespace SpiritMod.NPCs.Dead_Scientist
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (NPC.AnyNPCs(ModContent.NPCType<Dead_Scientist>()))
+			if (NPC.AnyNPCs(ModContent.NPCType<Dead_Scientist>()) || spawnInfo.PlayerInTown)
 				return 0f;
 
 			if (spawnInfo.Player.HasItem(ModContent.ItemType<ScientistLure>()))

@@ -41,7 +41,7 @@ namespace SpiritMod.NPCs.ChestZombie
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Surface NightTime");
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => SpawnCondition.OverworldNightMonster.Chance * 0.011f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.PlayerInTown ? 0 : SpawnCondition.OverworldNightMonster.Chance * 0.011f;
 
 		public override void AI()
 		{

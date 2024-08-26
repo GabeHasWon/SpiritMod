@@ -36,7 +36,7 @@ public class LostMime : ModNPC
 
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
-		if (spawnInfo.PlayerSafe || spawnInfo.Player.ZoneJungle || spawnInfo.Player.ZoneSnow)
+		if (spawnInfo.PlayerSafe || spawnInfo.Player.ZoneJungle || spawnInfo.Player.ZoneSnow || spawnInfo.PlayerInTown)
 			return 0f;
 
 		if (Main.hardMode)

@@ -138,7 +138,8 @@ namespace SpiritMod.NPCs.FrozenSouls
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => QuestManager.GetQuest<IceDeityQuest>().IsActive && (spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow) && !NPC.AnyNPCs(ModContent.NPCType<WintrySoul>()) ? 0.00001f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => QuestManager.GetQuest<IceDeityQuest>().IsActive && 
+			spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneSnow && !NPC.AnyNPCs(ModContent.NPCType<WintrySoul>()) ? 0.00001f : 0f;
 		
 		public void DoPassiveDust()
 		{

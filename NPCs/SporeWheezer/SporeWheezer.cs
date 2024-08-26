@@ -42,7 +42,8 @@ namespace SpiritMod.NPCs.SporeWheezer
 			//});
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.MushroomGrass) && spawnInfo.SpawnTileY > Main.rockLayer ? 0.09f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.MushroomGrass) && spawnInfo.SpawnTileY > Main.rockLayer &&
+			!spawnInfo.PlayerInTown ? 0.09f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

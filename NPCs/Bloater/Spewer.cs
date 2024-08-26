@@ -51,14 +51,17 @@ namespace SpiritMod.NPCs.Bloater
 					if ((NPC.frameCounter += .2f) >= Main.npcFrameCount[Type])
 						NPC.frameCounter = 7;
 				}
-				else NPC.frameCounter = (NPC.frameCounter + .2f) % Main.npcFrameCount[Type];
+				else 
+					NPC.frameCounter = (NPC.frameCounter + .2f) % Main.npcFrameCount[Type];
 			}
-			else NPC.frameCounter = (NPC.frameCounter + .2f) % 4;
+			else 
+				NPC.frameCounter = (NPC.frameCounter + .2f) % 4;
 
 			NPC.frame.Y = frameHeight * (int)NPC.frameCounter;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCrimson && spawnInfo.Player.ZoneOverworldHeight && !Main.eclipse ? .075f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCrimson && spawnInfo.Player.ZoneOverworldHeight && 
+			!Main.eclipse && !spawnInfo.PlayerInTown ? .075f : 0f;
 
 		public override void AI()
 		{

@@ -62,7 +62,7 @@ namespace SpiritMod.NPCs.Mechromancer
 			bestiaryEntry.UIInfoProvider = new CustomEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type], false, 25);
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.AnyNPCs(ModContent.NPCType<Mecromancer>()) ? 0 : SpawnCondition.GoblinArmy.Chance * 0.0266f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.AnyNPCs(ModContent.NPCType<Mecromancer>()) || spawnInfo.PlayerInTown ? 0 : SpawnCondition.GoblinArmy.Chance * 0.0266f;
 
 		public override void OnKill()
 		{

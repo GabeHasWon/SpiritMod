@@ -68,7 +68,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (spawnInfo.PlayerSafe)
+			if (spawnInfo.PlayerSafe || spawnInfo.PlayerInTown)
 				return 0f;
 			return SpawnCondition.Underground.Chance * 0.27f;
 		}

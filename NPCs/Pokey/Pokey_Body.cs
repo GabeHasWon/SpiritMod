@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.Pokey
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{ 
-			if (Main.tileSand[spawnInfo.SpawnTileType] && spawnInfo.Player.ZoneDesert)
+			if (Main.tileSand[spawnInfo.SpawnTileType] && spawnInfo.Player.ZoneDesert && !spawnInfo.PlayerInTown)
 				return SpawnCondition.OverworldDayDesert.Chance * 0.27f;
 			return 0;
 		}

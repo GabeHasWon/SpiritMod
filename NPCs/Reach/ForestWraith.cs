@@ -174,7 +174,7 @@ namespace SpiritMod.NPCs.Reach
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (NPC.AnyNPCs(ModContent.NPCType<ForestWraith>()) || !spawnInfo.Player.ZoneBriar() || !NPC.downedBoss1 || Main.dayTime)
+			if (NPC.AnyNPCs(ModContent.NPCType<ForestWraith>()) || !spawnInfo.Player.ZoneBriar() || !NPC.downedBoss1 || Main.dayTime || spawnInfo.PlayerInTown)
 				return 0f;
 
 			Player player = spawnInfo.Player;

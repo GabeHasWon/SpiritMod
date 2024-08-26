@@ -42,7 +42,8 @@ namespace SpiritMod.NPCs.GladiatorSpirit
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Marble");
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && NPC.downedBoss2 ? 0.135f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && 
+			NPC.downedBoss2 && !spawnInfo.PlayerInTown ? 0.135f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

@@ -45,7 +45,8 @@ namespace SpiritMod.NPCs.Winterborn
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => base.DrawHealthBar(hbPosition, ref scale, ref position);
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "UndergroundSnow");
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon && ((spawnInfo.SpawnTileY > Main.rockLayer) || (Main.raining && spawnInfo.Player.ZoneOverworldHeight)) ? 0.12f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => NPC.downedBoss3 && spawnInfo.Player.ZoneSnow && !spawnInfo.Player.ZoneDungeon &&
+			((spawnInfo.SpawnTileY > Main.rockLayer) || (Main.raining && spawnInfo.Player.ZoneOverworldHeight)) && !spawnInfo.PlayerInTown ? 0.12f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

@@ -108,7 +108,8 @@ namespace SpiritMod.NPCs.CavernBandit
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !(spawnInfo.Player.ZoneDungeon || spawnInfo.Player.ZoneSnow || spawnInfo.Player.ZoneJungle) ? SpawnCondition.Cavern.Chance * 0.0234f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !(spawnInfo.Player.ZoneDungeon || spawnInfo.Player.ZoneSnow || spawnInfo.Player.ZoneJungle) 
+			&& !spawnInfo.PlayerInTown ? SpawnCondition.Cavern.Chance * 0.0234f : 0f;
 
 		public override void FindFrame(int frameHeight)
 		{

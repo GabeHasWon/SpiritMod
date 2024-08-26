@@ -48,7 +48,7 @@ namespace SpiritMod.NPCs.FleshHound
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "BloodMoon");
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && (Main.bloodMoon) && NPC.downedBoss1 ? 0.12f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon && NPC.downedBoss1 ? 0.12f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

@@ -42,7 +42,7 @@ namespace SpiritMod.NPCs.CavernCrawler
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (spawnInfo.PlayerSafe)
+			if (spawnInfo.PlayerSafe || spawnInfo.PlayerInTown)
 				return 0f;
 			if (Main.hardMode)
 				return SpawnCondition.Cavern.Chance * 0.02f;				

@@ -213,7 +213,7 @@ namespace SpiritMod.NPCs.MoltenCore
 			npcLoot.AddCommon(116, 10);
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => SpawnCondition.Meteor.Chance * 0.15f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !spawnInfo.PlayerInTown ? SpawnCondition.Meteor.Chance * 0.15f : 0;
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

@@ -50,7 +50,10 @@ namespace SpiritMod.NPCs.DeadeyeMarksman
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			bool conditions = spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !spawnInfo.PlayerSafe && spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.Player.ZoneDesert && !spawnInfo.Player.ZoneCorrupt && !spawnInfo.Player.ZoneCrimson && !spawnInfo.Player.ZoneBeach && !spawnInfo.Player.ZoneJungle && !Main.pumpkinMoon && !Main.snowMoon;
+			bool conditions = spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !spawnInfo.PlayerSafe && spawnInfo.Player.ZoneOverworldHeight 
+				&& !spawnInfo.Player.ZoneDesert && !spawnInfo.Player.ZoneCorrupt && !spawnInfo.Player.ZoneCrimson && !spawnInfo.Player.ZoneBeach && !spawnInfo.Player.ZoneJungle 
+				&& !Main.pumpkinMoon && !Main.snowMoon && !spawnInfo.PlayerInTown;
+
 			if (!NPC.downedBoss1)
 				return conditions ? 0.025f : 0f;
 			if (Main.hardMode)

@@ -132,6 +132,7 @@ namespace SpiritMod.NPCs.BlizzardNimbus
 			NPC.frame.Y = frame * frameHeight;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSnow && spawnInfo.Player.ZoneOverworldHeight && Main.raining && Main.hardMode ? 0.4f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSnow && spawnInfo.Player.ZoneOverworldHeight && Main.raining && Main.hardMode 
+			&& !spawnInfo.PlayerInTown ? 0.4f : 0f;
 	}
 }

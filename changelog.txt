@@ -1,13 +1,4 @@
-﻿v1.5.0.19
-- Fixed natural Auroras bugging out at night
-- Fixed The Depths softlocking on gen alongside Spirit
-- Fixed Chained Sinner maybe not loading assets on time, optimized a little
-- Removed overlapping Ocean generation with Remnants
-- Significantly improved the consistency of location finding for Sunken Surface minibiomes
-- Improved Pokey error reporting
-- Fixed bad syncing on Javelin projectiles
-- Fixed Arc Lash primitives not despawning properly
-- Adjusted how Hydrothermal Vent critters spawn
-- Reduced Hydrothermal Vent critter spawn cap
-- Fixed or improved Hydra in multiplayer
-- Fixed or improved Sword of Nemesis in multiplayer
+﻿v1.5.0.20
+- Removed terrible Glitch shader effect if you died in the Spirit biome's surface without entering the Underground
+- Improved spawn checks for everything
+- Fixed Distress Jelly spawn conditions being downed EoC, or downed Skeletron, or downed Skeletron

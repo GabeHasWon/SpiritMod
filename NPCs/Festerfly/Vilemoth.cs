@@ -130,7 +130,8 @@ namespace SpiritMod.NPCs.Festerfly
 			NPC.spriteDirection = NPC.direction;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight && !NPC.AnyNPCs(ModContent.NPCType<Vilemoth>()) ? .05f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneCorrupt && spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.PlayerInTown
+			&& !NPC.AnyNPCs(ModContent.NPCType<Vilemoth>()) ? .05f : 0f;
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<PesterflyCane>(30);
 	}

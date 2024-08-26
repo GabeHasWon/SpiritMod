@@ -106,7 +106,8 @@ namespace SpiritMod.NPCs.GraniteSlime
 			npcLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 10000));
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == 368) && NPC.downedBoss2 && spawnInfo.SpawnTileY > Main.rockLayer ? 0.17f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == 368) && NPC.downedBoss2 && !spawnInfo.PlayerInTown &&
+			spawnInfo.SpawnTileY > Main.rockLayer ? 0.17f : 0f;
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

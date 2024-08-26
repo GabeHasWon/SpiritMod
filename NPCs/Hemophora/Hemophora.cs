@@ -80,7 +80,7 @@ namespace SpiritMod.NPCs.Hemophora
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (SpawnHelper.SupressSpawns(spawnInfo, SpawnFlags.None))
+            if (SpawnHelper.SupressSpawns(spawnInfo, SpawnFlags.None) || !spawnInfo.PlayerInTown)
                 return 0;
 
             return (spawnInfo.SpawnTileY > Main.rockLayer && spawnInfo.Player.ZoneJungle) ? 0.0368f : 0f;

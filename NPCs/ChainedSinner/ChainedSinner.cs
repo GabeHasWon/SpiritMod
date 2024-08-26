@@ -153,7 +153,7 @@ internal class ChainedSinner : ModNPC
 	public override float SpawnChance(NPCSpawnInfo spawnInfo) 
 	{
 		if (spawnInfo.SpawnTileY < Main.maxTilesY - 160 && spawnInfo.SpawnTileType == TileID.Ash || spawnInfo.SpawnTileType == TileID.ObsidianBrick || spawnInfo.SpawnTileType == TileID.HellstoneBrick)
-			return NPC.downedBoss3 ? SpawnCondition.Underworld.Chance * 0.05f : 0f;
+			return NPC.downedBoss3 && !spawnInfo.PlayerInTown ? SpawnCondition.Underworld.Chance * 0.05f : 0f;
 		return 0;
 	}
 }
