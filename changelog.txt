@@ -1,4 +1,4 @@
-﻿v1.5.0.20
-- Removed terrible Glitch shader effect if you died in the Spirit biome's surface without entering the Underground
-- Improved spawn checks for everything
-- Fixed Distress Jelly spawn conditions being downed EoC, or downed Skeletron, or downed Skeletron
+﻿v1.5.0.21
+- Changed True Harvester's life steal to take 80% of damage done instead of whatever vanilla's VampireHeal does
+- Added structure map check & addition to the Fathomless Shrines, Ziggurat, Pagoda
+- Fixed Avian Island sign text
