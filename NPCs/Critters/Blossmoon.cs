@@ -47,12 +47,13 @@ namespace SpiritMod.NPCs.Critters
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			bool valid = spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && MyWorld.calmNight && !spawnInfo.Invasion && !spawnInfo.Sky && !Main.eclipse;
+			bool valid = spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && MyWorld.calmNight && !spawnInfo.Invasion 
+				&& !spawnInfo.Sky && !Main.eclipse && !spawnInfo.Water;
 
 			if (!valid)
 				return 0f;
 
-			return QuestManager.GetQuest<CritterCaptureBlossmoon>().IsActive && !NPC.AnyNPCs(NPC.type) ? 0.4f : 0.1f;
+			return QuestManager.GetQuest<CritterCaptureBlossmoon>().IsActive && !NPC.AnyNPCs(NPC.type) ? 0.6f : 0.3f;
 		}
 
 		public override void FindFrame(int frameHeight)

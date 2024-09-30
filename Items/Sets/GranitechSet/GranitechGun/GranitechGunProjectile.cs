@@ -92,7 +92,8 @@ namespace SpiritMod.Items.Sets.GranitechSet.GranitechGun
 
 				if (Main.myPlayer == Projectile.owner)
 				{
-					int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), pos, baseVel, ModContent.ProjectileType<GranitechGunBullet>(), player.HeldItem.damage, 0f, player.whoAmI);
+					int damage = (int)player.GetDamage(DamageClass.Ranged).ApplyTo(player.HeldItem.damage);
+					int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), pos, baseVel, ModContent.ProjectileType<GranitechGunBullet>(), damage, 0f, player.whoAmI);
 					var p = Main.projectile[proj];
 
 					if (p.ModProjectile is GranitechGunBullet bullet)

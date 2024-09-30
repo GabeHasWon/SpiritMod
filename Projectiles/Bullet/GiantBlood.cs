@@ -24,7 +24,7 @@ public class GiantBlood : ModProjectile
 		if (target.lifeMax <= 5 || target.dontTakeDamage || target.friendly || target.immortal)
 			return;
 
-		Main.player[Projectile.owner].Heal((int)(damageDone * 0.8f));
+		Main.player[Projectile.owner].Heal((int)(damageDone * 0.2f));
 	}
 
 	public override bool PreAI()

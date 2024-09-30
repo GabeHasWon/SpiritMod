@@ -1,4 +1,7 @@
-﻿v1.5.0.21
-- Changed True Harvester's life steal to take 80% of damage done instead of whatever vanilla's VampireHeal does
-- Added structure map check & addition to the Fathomless Shrines, Ziggurat, Pagoda
-- Fixed Avian Island sign text
+﻿v1.5.0.22
+- Added Fargo's Mutant Mod compatibility for ending the Jelly Deluge
+- Adjusted logic for Jelly Deluge spawn conditions
+- Significantly reduced the spawn rate of Lost Mimes
+- Lost Mimes now always drop their mask and bombs, and baguettes drop twice as often
+- Increased Blossmoon spawn rates, made them not spawn in water
+- Heavily nerfed True Harvester life steal (80% -> 20%)

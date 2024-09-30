@@ -12,7 +12,6 @@ public class LostMime : ModNPC
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Lost Mime");
 		Main.npcFrameCount[NPC.type] = 14;
 		NPCHelper.ImmuneTo(this, BuffID.Confused);
 	}
@@ -39,10 +38,7 @@ public class LostMime : ModNPC
 		if (spawnInfo.PlayerSafe || spawnInfo.Player.ZoneJungle || spawnInfo.Player.ZoneSnow || spawnInfo.PlayerInTown)
 			return 0f;
 
-		if (Main.hardMode)
-			return SpawnCondition.Cavern.Chance * 0.01f;
-
-		return SpawnCondition.Cavern.Chance * 0.2f;
+		return Main.hardMode ? SpawnCondition.Cavern.Chance * 0.008f : SpawnCondition.Cavern.Chance * 0.08f;
 	}
 
 	public override void FindFrame(int frameHeight)
@@ -76,8 +72,8 @@ public class LostMime : ModNPC
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
-		npcLoot.AddCommon(ModContent.ItemType<MimeMask>(), 4);
-		npcLoot.AddFood(ModContent.ItemType<Items.Consumable.Food.Baguette>(), 8);
-		npcLoot.AddCommon(ModContent.ItemType<MimeBomb>(), 4, 12, 22);
+		npcLoot.AddCommon(ModContent.ItemType<MimeMask>(), 1);
+		npcLoot.AddFood(ModContent.ItemType<Items.Consumable.Food.Baguette>(), 4);
+		npcLoot.AddCommon(ModContent.ItemType<MimeBomb>(), 1, 12, 22);
 	}
 }

@@ -1499,7 +1499,7 @@ public class MyWorld : ModSystem
 				ashRain = false;
 
 			bool anyValidBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || DownedScarabeus || DownedVinewrath || DownedStarplate || DownedAncientAvian;
-			if (!Main.dayTime && anyValidBoss && (!DownedMoonWizard && Main.rand.NextBool(8) || DownedMoonWizard && Main.rand.NextBool(46)))
+			if (!Main.dayTime && !anyValidBoss && Main.rand.NextBool(DownedMoonWizard ? 46 : 8))
 			{
 				if (Main.netMode == NetmodeID.SinglePlayer)
 					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.JellyDeluge.OnStart"), 61, 255, 142);
