@@ -438,9 +438,10 @@ namespace SpiritMod.World
 				{
 					airCount = 0;
 				}
+
 				surface--;
-				//if (surface <= (int)WorldGen.worldSurfaceLow) break;
 			}
+
 			return surface + checkAmt;
 		}
 
@@ -450,14 +451,17 @@ namespace SpiritMod.World
 			{
 				for (int i = 0; i < walls.Count; i++)
 				{
-					if (walls[i] == tile.WallType) return true;
+					if (walls[i] == tile.WallType) 
+						return true;
 				}
 			}
+
 			if (tile.HasTile)
 			{
 				for (int i = 0; i < types.Count; i++)
 				{
-					if (types[i] == tile.TileType) return true;
+					if (types[i] == tile.TileType) 
+						return true;
 				}
 			}
 			return false;
@@ -587,7 +591,9 @@ namespace SpiritMod.World
 				TileID.Ruby,
 				TileID.Sapphire,
 				TileID.Emerald,
-				TileID.Diamond
+				TileID.Diamond,
+				TileID.HardenedSand,
+				TileID.Sandstone
 			};
 
 			var ignoreWalls = new List<ushort>()
@@ -621,6 +627,7 @@ namespace SpiritMod.World
 			float a = -MathHelper.Pi;
 			Vector2 previous = PointOnEllipse(a, _center, _topSize.ToVector2() * 16f);
 			_estimates.Add(0);
+
 			for (int i = 0; i < pointCount; i++)
 			{
 				a += amt;
@@ -628,6 +635,7 @@ namespace SpiritMod.World
 				_estimates.Add(_estimates[i] + Vector2.Distance(previous, next));
 				previous = next;
 			}
+
 			float denseY = _center.Y + stoneDensityDepth * 16f;
 			float bottomY = _center.Y + _size.Y * 16f;
 			float stoneCompY = bottomY - denseY;
@@ -741,11 +749,13 @@ namespace SpiritMod.World
 			for (int i = 0; i < spikes; i++)
 			{
 				int spikeX = WorldGen.genRand.Next(_x - _halfSize.X, _x + _halfSize.X);
+
 				if (spikeX > flattestX - moundHalfWidth && spikeX < flattestX + moundHalfWidth)
 				{
 					i--;
 					continue;
 				}
+
 				Vector2 top = new Vector2(spikeX, FindSurfaceAt(spikeX, 5));
 				LinePoint spikeTopPoint = new LinePoint(top.X, top.Y, WorldGen.genRand.NextFloat(1f, 4f), 3f);
 				Vector2 bottom = top + new Vector2(0f, WorldGen.genRand.NextFloat(15f, 40f)).RotatedByRandom(0.5);
@@ -774,6 +784,7 @@ namespace SpiritMod.World
 			List<LinePoint> zigPoints = new List<LinePoint>() { mainTopPoint };
 			float zigAmount = _halfSize.X * WorldGen.genRand.NextFloat(0.02f, 0.05f);
 			bool zigLeft = WorldGen.genRand.NextBool();
+
 			for (int i = 0; i < zigZags; i++)
 			{
 				pos += perZig;
@@ -784,6 +795,7 @@ namespace SpiritMod.World
 
 				zigLeft = !zigLeft;
 			}
+
 			zigPoints.Add(mainSectionTemp.point2);
 
 			//Create and carve main cave
@@ -827,7 +839,10 @@ namespace SpiritMod.World
 			float startRadius = WorldGen.genRand.NextFloat(44f, 50f); //<------------ THIS HERE
 			float endRadius = startRadius * WorldGen.genRand.NextFloat(0.9f, 1.1f);
 			float hizouseX = mainBottom.X + (leftSide ? -distanceFromMain : distanceFromMain);
-			if (leftSide) hizouseX -= width;
+
+			if (leftSide) 
+				hizouseX -= width;
+
 			LineSection houseSection = new LineSection(new LinePoint(hizouseX, hizouseY + leftYOffset, startRadius, 3f), new LinePoint(hizouseX + width, hizouseY, endRadius, 3f));
 			houseSection.Place(_noise, TileID.Dirt);
 			houseSection.point1.Radius *= 0.7f;
@@ -841,7 +856,9 @@ namespace SpiritMod.World
 			float angle = -MathHelper.Pi;
 			for (; angle < MathHelper.Pi; angle += WorldGen.genRand.NextFloat(0.2f, 0.7f))
 			{
-				if (WorldGen.genRand.NextBool(3)) continue;
+				if (WorldGen.genRand.NextBool(3)) 
+					continue;
+
 				Vector2 rot = angle.ToRotationVector2();
 				Vector2 center = _houseCenter + rot * _houseGrassRadius;
 				LinePoint point = new LinePoint(center.X, center.Y, WorldGen.genRand.NextFloat(4f, 7f), 3f);
@@ -934,6 +951,7 @@ namespace SpiritMod.World
 					}
 				}
 			}
+
 			WorldGen.OreRunner(x, y, 3, 2, (ushort)ModContent.TileType<Items.Sets.FloranSet.FloranOreTile>());
 		}
 
@@ -972,24 +990,34 @@ namespace SpiritMod.World
 			//assume bottom left
 			//check solids below
 			Tile test = Framing.GetTileSafely(x, y);
-			if (test.HasTile) return;
+
+			if (test.HasTile) 
+				return;
 
 			for (int testX = x; testX < x + width; testX++)
 			{
 				test = Framing.GetTileSafely(testX, y + 1);
-				if (!test.HasTile || !Main.tileSolid[test.TileType]) return;
-				if (expectedFloorTile < 10000 && test.TileType != expectedFloorTile) return;
+
+				if (!test.HasTile || !Main.tileSolid[test.TileType]) 
+					return;
+
+				if (expectedFloorTile < 10000 && test.TileType != expectedFloorTile) 
+					return;
 
 				for (int testY = y - height + 1; testY <= y; testY++)
 				{
 					test = Framing.GetTileSafely(testX, testY);
-					if (test.HasTile) return;
+					if (test.HasTile) 
+						return;
 				}
 			}
 
 			//place
 			int frameX = 0;
-			if (type == TileID.Lamps) frameX = 1; //just a temp thing to turn lamps off
+
+			if (type == TileID.Lamps) 
+				frameX = 1; //just a temp thing to turn lamps off
+
 			for (int testX = x; testX < x + width; testX++)
 			{
 				int frameY = 0;
@@ -1009,6 +1037,7 @@ namespace SpiritMod.World
 					else
 						tile.Slope = 0;
 				}
+
 				frameX++;
 			}
 		}
@@ -1020,13 +1049,17 @@ namespace SpiritMod.World
 			int count = 0;
 			bool opps = false;
 			bool left = false;
+
 			for (int i = minX; i <= maxX; i++)
 			{
 				Tile tile = Framing.GetTileSafely(i, maxY + 1);
 				if (tile.HasTile && Main.tileSolid[tile.TileType])
 				{
 					count++;
-					if (i < minX / 2 - 2) left = true;
+
+					if (i < minX / 2 - 2) 
+						left = true;
+
 					else if (i > minX / 2 + 2 && left)
 					{
 						opps = true;
@@ -1034,6 +1067,7 @@ namespace SpiritMod.World
 					}
 				}
 			}
+
 			return opps || count > total * 0.6;
 		}
 
@@ -1061,6 +1095,7 @@ namespace SpiritMod.World
 					p.X += WorldGen.genRand.Next(-1, 2);
 					p.Y += WorldGen.genRand.Next(-1, 2);
 				}
+
 				p.X = ClampInt(p.X, minX, maxX);
 				p.Y = ClampInt(p.Y, minY, maxY);
 				polygonVertices.Add(p);
@@ -1350,10 +1385,7 @@ namespace SpiritMod.World
 		{
 			var furnituresAndTiles = new List<Func<(ushort, int, int, int, int)>>
 			{
-				() =>
-				{
-					return (TileID.Statues, 2, 3, 36 * WorldGen.genRand.Next(43), 0);
-				},
+				() => (TileID.Statues, 2, 3, 36 * WorldGen.genRand.Next(43), 0),
 				() => ((ushort)ModContent.TileType<Tiles.Furniture.ReachChest>(), 2, 2, 0, 0),
 				() => ((ushort)ModContent.TileType<Tiles.Furniture.BoneAltar>(), 3, 3, 0, 0)
 			};
@@ -1385,6 +1417,7 @@ namespace SpiritMod.World
 						if (tile.HasTile && tile2.HasTile)
 						{
 							List<Point> removals = new List<Point>();
+
 							for (int sX = xTest; sX <= xTest + 1; sX++)
 							{
 								for (int sY = y - 3; sY <= y + 2; sY++)
@@ -1403,18 +1436,24 @@ namespace SpiritMod.World
 										}
 									}
 								}
-								if (failed) break;
+
+								if (failed)
+									break;
 							}
+
 							if (Framing.GetTileSafely(xTest, y - 4).HasTile || Framing.GetTileSafely(xTest + 1, y - 4).HasTile)
 							{
 								failed = true;
 							}
-							if (failed) break;
+
+							if (failed) 
+								break;
 
 							foreach (Point p in removals)
 							{
 								Framing.GetTileSafely(p.X, p.Y).HasTile = false;
 							}
+
 							tile.HasTile = true;
 							tile2.HasTile = true;
 							tile.TileType = tile2.TileType = TileID.Platforms;
@@ -1431,10 +1470,12 @@ namespace SpiritMod.World
 							return true;
 						}
 					}
+
 					space++;
 					y--;
 				}
 			}
+
 			return false;
 		}
 
@@ -1455,28 +1496,34 @@ namespace SpiritMod.World
 				{
 					single = 0f;
 				}
+
 				num -= (double)WorldGen.genRand.Next(3);
 				single -= 1f;
 				int x = (int)((double)vector2.X - num * 0.5);
 				int x1 = (int)((double)vector2.X + num * 0.5);
 				int y = (int)((double)vector2.Y - num * 0.5);
 				int y1 = (int)((double)vector2.Y + num * 0.5);
+
 				if (x < 0)
 				{
 					x = 0;
 				}
+
 				if (x1 > Main.maxTilesX)
 				{
 					x1 = Main.maxTilesX;
 				}
+
 				if (y < 0)
 				{
 					y = 0;
 				}
+
 				if (y1 > Main.maxTilesY)
 				{
 					y1 = Main.maxTilesY;
 				}
+
 				num1 = num * (double)WorldGen.genRand.Next(80, 120) * 0.01;
 				int midX = (int)(x + (x1 - x) * 0.5f);
 				int midY = (int)(y + (y1 - y) * 0.5f);
@@ -1486,7 +1533,8 @@ namespace SpiritMod.World
 					{
 						for (int j1 = y; j1 < y1; j1++)
 						{
-							if (invalidCheck(i1, j1)) continue;
+							if (invalidCheck(i1, j1)) 
+								continue;
 
 							float single1 = Math.Abs((float)i1 - vector2.X);
 							float single2 = Math.Abs((float)j1 - vector2.Y);
@@ -1499,25 +1547,31 @@ namespace SpiritMod.World
 						}
 					}
 				}
+
 				vector2 += vector21;
 				vector21.X += (float)WorldGen.genRand.Next(-10, 11) * 0.05f;
 				vector21.Y += (float)WorldGen.genRand.Next(-10, 11) * 0.05f;
+
 				if ((double)vector21.X > 0.5)
 				{
 					vector21.X = 0.5f;
 				}
+
 				if ((double)vector21.X < -0.5)
 				{
 					vector21.X = -0.5f;
 				}
+
 				if ((double)vector21.Y > 1.5)
 				{
 					vector21.Y = 1.5f;
 				}
+
 				if ((double)vector21.Y >= 0.5)
 				{
 					continue;
 				}
+
 				vector21.Y = 0.5f;
 			}
 		}
@@ -1534,6 +1588,7 @@ namespace SpiritMod.World
 		private Point SelectPointOnRectEdge(int minX, int minY, int maxX, int maxY, bool roofWalls, bool topOrLeft)
 		{
 			int x, y;
+
 			if (roofWalls)
 			{
 				y = topOrLeft ? minY : maxY;
@@ -1544,6 +1599,7 @@ namespace SpiritMod.World
 				x = topOrLeft ? minX : maxX;
 				y = WorldGen.genRand.Next(minY, maxY + 1);
 			}
+
 			return new Point(x, y);
 		}
 
@@ -1608,14 +1664,16 @@ namespace SpiritMod.World
 				return false;
 
 			int y = FindSurfaceAt(tileX);
-			int spacing = 7;
+			int spacing = 4;
 
-			for (int yTest = y; yTest < y + spacing * 10; yTest += spacing) //checks 70 blocks below surface (too high?) 
+			for (int yTest = y; yTest < y + spacing * 20; yTest += spacing) //checks 80 blocks below surface (too high?) 
 			{
 				Tile tile = Framing.GetTileSafely(tileX, yTest);
+
 				if ((yTest == y && IsOneOf(tile, surfaceIds)) || (yTest != y && IsOneOf(tile, underIds)))
 					return false;
 			}
+
 			return true;
 		}
 
@@ -1625,8 +1683,11 @@ namespace SpiritMod.World
 			if (index == -1)
 				return;
 
-			var BadSurfaceIDs = new List<ushort>() { TileID.SnowBlock, TileID.Ebonstone, TileID.Crimstone, TileID.CrimsonGrass, TileID.CorruptGrass, TileID.IceBlock, TileID.HardenedSand, TileID.Sandstone, TileID.HardenedSand, TileID.JungleGrass, TileID.Sand };
-			var BadUndergroundIDs = new List<ushort>() { TileID.Ebonstone, TileID.Crimstone, TileID.CrimsonGrass, TileID.CorruptGrass, TileID.IceBlock, TileID.HardenedSand, TileID.Sandstone, TileID.HardenedSand, TileID.JungleGrass };
+			var BadSurfaceIDs = new List<ushort>() { TileID.SnowBlock, TileID.Ebonstone, TileID.Crimstone, TileID.CrimsonGrass, TileID.CorruptGrass, TileID.IceBlock, 
+				TileID.HardenedSand, TileID.Sandstone, TileID.JungleGrass, TileID.Sand, TileID.BlueDungeonBrick, TileID.GreenDungeonBrick, TileID.PinkDungeonBrick };
+			
+			var BadUndergroundIDs = new List<ushort>() { TileID.Ebonstone, TileID.Crimstone, TileID.CrimsonGrass, TileID.CorruptGrass, TileID.IceBlock, 
+				TileID.HardenedSand, TileID.Sandstone, TileID.JungleGrass, TileID.Sand, TileID.BlueDungeonBrick, TileID.GreenDungeonBrick, TileID.PinkDungeonBrick };
 
 			int worldSizeBonus = (int)(Main.maxTilesX / 4200f * 8f);
 			int minX = 500;
@@ -1648,10 +1709,7 @@ namespace SpiritMod.World
 					for (int tileX = minX; tileX <= maxX; tileX += tilePer)
 					{
 						int surfaceY = FindSurfaceAt(tileX);
-						bool safe = true;
-
-						if (prevSurfaceY != -1 && Math.Abs(surfaceY - prevSurfaceY) > 10)
-							safe = false;
+						bool safe = prevSurfaceY == -1 || Math.Abs(surfaceY - prevSurfaceY) <= 10;
 
 						if (safe)
 							safe = SafeCheck(tileX, BadSurfaceIDs, BadUndergroundIDs);
@@ -1663,7 +1721,13 @@ namespace SpiritMod.World
 								highestInARow = safeInARow;
 
 								if (highestInARow % 2 == 1)
+								{
 									_x = tileX - tilePer * (int)Math.Ceiling(highestInARow / 2.0);
+
+									for (int i = 0; i < 20; ++i)
+										for (int j = -1; j < 2; ++j)
+											WorldGen.PlaceTile(_x + j, 60 + i, TileID.Meteorite, true);
+								}
 							}
 						}
 						else
@@ -1901,6 +1965,7 @@ namespace SpiritMod.World
 						int wiggleTreeX = WorldGen.genRand.Next(_x - _halfSize.X, _x + _halfSize.X);
 						int wiggleY = FindSurfaceAt(wiggleTreeX);
 						bool failed = false;
+
 						for (int testX = wiggleTreeX - 20; testX <= wiggleTreeX + 20; testX++)
 						{
 							Tile test1 = Framing.GetTileSafely(testX, wiggleY);
@@ -1911,7 +1976,9 @@ namespace SpiritMod.World
 								continue;
 							}
 						}
-						if (failed) continue;
+
+						if (failed) 
+							continue;
 
 						GrowWigglyTree(wiggleTreeX, wiggleY, treesPlaced == 0 ? 5 : 2, treesPlaced == 0 ? 60 : 24);
 						treesPlaced += 1;

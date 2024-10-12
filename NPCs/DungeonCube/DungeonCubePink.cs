@@ -17,12 +17,11 @@ namespace SpiritMod.NPCs.DungeonCube
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			if (NPC.downedPlantBoss)
-			{
 				return spawnInfo.Player.ZoneDungeon && NPC.CountNPCS(ModContent.NPCType<DungeonCubePink>()) < 1 ? 0.0015f : 0f;
-			}
-			if (spawnInfo.SpawnTileType == 44) {
+
+			if (spawnInfo.SpawnTileType == TileID.PinkDungeonBrick)
 				return spawnInfo.Player.ZoneDungeon ? 0.04f : 0f;
-			}
+
 			return 0f;
 		}
 

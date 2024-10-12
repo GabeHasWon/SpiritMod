@@ -37,9 +37,10 @@ namespace SpiritMod.Items.Consumable
 			{
 				MyWorld.jellySky = true;
 
-				if (Main.netMode != NetmodeID.SinglePlayer)
+				if (Main.netMode == NetmodeID.Server)
 					NetMessage.SendData(MessageID.WorldData);
 			}
+
             return true;
         }
 

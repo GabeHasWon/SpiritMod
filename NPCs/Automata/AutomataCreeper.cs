@@ -211,7 +211,7 @@ namespace SpiritMod.NPCs.Automata
 			return false;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.Marble) && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode 
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneMarble && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode 
 			&& !spawnInfo.PlayerInTown ? 1f : 0f;
 
 		public override void FindFrame(int frameHeight)

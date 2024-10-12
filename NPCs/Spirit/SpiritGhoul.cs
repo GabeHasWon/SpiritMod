@@ -59,10 +59,8 @@ namespace SpiritMod.NPCs.Spirit
 		{
 			Player player = spawnInfo.Player;
 
-			if (player.ZoneSpirit() && spawnInfo.SpawnTileY > Main.rockLayer && !spawnInfo.PlayerInTown && !spawnInfo.Invasion && !spawnInfo.PlayerInTown)
-			{
+			if (player.ZoneSpirit() && !spawnInfo.PlayerInTown && !spawnInfo.Invasion)
 				return spawnInfo.SpawnTileType == ModContent.TileType<Spiritsand>() ? 4f : 0f;
-			}
 
 			return 0f;
 		}
@@ -71,12 +69,12 @@ namespace SpiritMod.NPCs.Spirit
 		{
 			if (Main.netMode != NetmodeID.MultiplayerClient && NPC.life <= 0)
 			{
-				NPC.position.X = NPC.position.X + (float)(NPC.width / 2);
-				NPC.position.Y = NPC.position.Y + (float)(NPC.height / 2);
+				NPC.position.X = NPC.position.X + NPC.width / 2;
+				NPC.position.Y = NPC.position.Y + NPC.height / 2;
 				NPC.width = 30;
 				NPC.height = 30;
-				NPC.position.X = NPC.position.X - (float)(NPC.width / 2);
-				NPC.position.Y = NPC.position.Y - (float)(NPC.height / 2);
+				NPC.position.X = NPC.position.X - NPC.width / 2;
+				NPC.position.Y = NPC.position.Y - NPC.height / 2;
 
 				for (int num621 = 0; num621 < 20; num621++)
 				{
@@ -85,7 +83,7 @@ namespace SpiritMod.NPCs.Spirit
 					if (Main.rand.NextBool(2))
 					{
 						Main.dust[num622].scale = 0.5f;
-						Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+						Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
 					}
 				}
 			}

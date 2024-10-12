@@ -322,7 +322,7 @@ namespace SpiritMod.NPCs.GraniTech
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<GranitechMaterial>(1, 1, 3);
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => (spawnInfo.SpawnTileType == TileID.Granite) && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.6f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneGranite && spawnInfo.SpawnTileY > Main.rockLayer && Main.hardMode ? 0.6f : 0f;
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{

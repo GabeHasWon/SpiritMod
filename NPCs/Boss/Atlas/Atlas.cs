@@ -262,11 +262,13 @@ namespace SpiritMod.NPCs.Boss.Atlas
 							SoundEngine.PlaySound(SoundID.Item93, NPC.Center);
 							float radius = 400;
 							float rot = MathHelper.TwoPi / 10;
+
 							for (int I = 0; I < 10; I++)
 							{
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye2>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
+
 							thirdStage = true;
 						}
 					}
@@ -283,6 +285,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye3>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
+
 							lastStage = true;
 						}
 					}
@@ -290,23 +293,30 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			}
 
 			collideTimer++;
+
 			if (collideTimer == 500)
-			{
 				NPC.noTileCollide = true;
-			}
 
 			NPC.TargetClosest(true);
-			player = Main.player[NPC.target];
+			bool anyNearbyActivePlayer = false;
 
-			if (!player.active || player.dead)
+			foreach (Player plr in Main.ActivePlayers)
 			{
-				NPC.TargetClosest(false);
-				NPC.velocity.Y = -100f;
+				if (!plr.dead && plr.DistanceSQ(NPC.Center) < 2500 * 2500)
+				{
+					anyNearbyActivePlayer = true;
+					break;
+				}
+			}
+
+			if (!anyNearbyActivePlayer)
+			{
+				NPC.TargetClosest(true);
+				NPC.velocity.Y -= 1;
 				timer = 0;
 			}
 
-			Counter++;
-			if (Counter > 400)
+			if (++Counter > 400)
 			{
 				SpiritMod.tremorTime = 20;
 				Counter = 0;
@@ -328,20 +338,27 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			for (int k = 0; k < 5; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Stone, hit.HitDirection, -1f, 0, default, 1f);
 
-			if (NPC.life <= 0) {
+			if (NPC.life <= 0) 
+			{
 				NPC.position = NPC.Center;
 				NPC.width = 300;
 				NPC.height = 500;
 				NPC.position = NPC.Center;
-				for (int num621 = 0; num621 < 200; num621++) {
+
+				for (int num621 = 0; num621 < 200; num621++) 
+				{
 					int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Stone, 0f, 0f, 100, default, 2f);
 					Main.dust[num622].velocity *= 3f;
-					if (Main.rand.NextBool(2)) {
+
+					if (Main.rand.NextBool(2)) 
+					{
 						Main.dust[num622].scale = 0.5f;
 						Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
 					}
 				}
-				for (int num623 = 0; num623 < 400; num623++) {
+
+				for (int num623 = 0; num623 < 400; num623++) 
+				{
 					int num624 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.Stone, 0f, 0f, 100, default, 3f);
 					Main.dust[num624].noGravity = true;
 					Main.dust[num624].velocity *= 5f;
