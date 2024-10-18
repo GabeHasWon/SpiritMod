@@ -1148,6 +1148,11 @@ Oracle: {
 		Dialogue5: Do come back alive! I would enjoy hearing tales of your victories. Bring many tokens as well!
 	}
 
+	Teleport: {
+		Wet: This water irks me...
+		Dry: I sense a call...
+	}
+
 	Entry: They offers blessings and goods in exchange for ancient currency. They wear a blindfold, as being enlightened and blessed by Olympus has made their vision unnecessary.
 }
 

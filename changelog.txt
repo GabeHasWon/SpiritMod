@@ -1,9 +1,5 @@
-﻿v1.5.0.23
-- Fixed bad check for Jelly Deluge spawns
-- Fixed chance for Auroras being 100%
-- Fixed check for if Atlas should despawn in multiplayer, now checks if anyone is nearby instead of if his target is dead
-- Atlas now rises up into the sky gradually (but quickly) instead of instantly rocketing off
-- Made Shadow Ghoul spawn above and belowground to make it easier to find
-- Changed all spawns that require a Marble or Granite spawn tile to spawn to instead just check that the player is in the respective biome
-- Significantly improved Briar spawn check, should avoid desert
-- Fixed the lack of cloning between SpiritAccessory items potentially causing issues
+﻿v1.5.0.24
+- Removes debug I left in by accident
+- Fixes some nonsense that Noxious Slime drawing did
+- Localized Oracle teleport dialogue
+- Added check for Oracle to teleport in-world if they are outside of the world

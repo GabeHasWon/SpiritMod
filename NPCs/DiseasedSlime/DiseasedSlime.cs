@@ -39,6 +39,7 @@ namespace SpiritMod.NPCs.DiseasedSlime
 			NPC.alpha = 45;
 			NPC.knockBackResist = .6f;
 			NPC.aiStyle = 1;
+			NPC.scale = Main.rand.NextFloat(.9f, 1f);
 
 			AIType = NPCID.BlueSlime;
 			AnimationType = NPCID.BlueSlime;
@@ -48,11 +49,10 @@ namespace SpiritMod.NPCs.DiseasedSlime
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Underground");
 
-		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */ => NPC.lifeMax = 130;
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment) => NPC.lifeMax = 130;
 
 		public override void OnSpawn(IEntitySource source)
 		{
-			NPC.scale = Main.rand.NextFloat(.9f, 1f);
 			pickedType = Main.rand.Next(0, 5);
 		}
 
@@ -70,14 +70,14 @@ namespace SpiritMod.NPCs.DiseasedSlime
 		{
 			if (spawnInfo.PlayerSafe || spawnInfo.PlayerInTown)
 				return 0f;
+
 			return SpawnCondition.Underground.Chance * 0.27f;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			Vector2 extraOffset = new Vector2(-26, -17);
-			Vector2 drawOrigin = new Vector2(TextureAssets.Npc[NPC.type].Value.Width * 0.5f, NPC.height * 0.5f);
-			Vector2 drawPos = NPC.Center - screenPos + drawOrigin + extraOffset;
+			Vector2 drawOrigin = NPC.frame.Size() / 2f;
+			Vector2 drawPos = NPC.Center - screenPos;
 			Color color = NPC.IsABestiaryIconDummy ? Color.White : NPC.GetNPCColorTintedByBuffs(NPC.GetAlpha(drawColor));
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, drawPos, NPC.frame, color, NPC.rotation, drawOrigin, NPC.scale, effects, 0f);

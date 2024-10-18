@@ -1148,6 +1148,11 @@ Oracle: {
 		Dialogue5: 一定要活着回来！我很想听你胜利的故事。也带回更多的图腾！
 	}
 
+	Teleport: {
+		// Wet: This water irks me...
+		// Dry: I sense a call...
+	}
+
 	Entry: 他们提供祝福和货物以换取古代货币。他们蒙上眼睛，因为被奥林匹斯开化和祝福，他们的视力已经没有必要了。
 }
 

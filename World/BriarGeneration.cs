@@ -1721,13 +1721,7 @@ namespace SpiritMod.World
 								highestInARow = safeInARow;
 
 								if (highestInARow % 2 == 1)
-								{
 									_x = tileX - tilePer * (int)Math.Ceiling(highestInARow / 2.0);
-
-									for (int i = 0; i < 20; ++i)
-										for (int j = -1; j < 2; ++j)
-											WorldGen.PlaceTile(_x + j, 60 + i, TileID.Meteorite, true);
-								}
 							}
 						}
 						else

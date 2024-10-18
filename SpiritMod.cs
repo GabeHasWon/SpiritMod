@@ -837,21 +837,9 @@ namespace SpiritMod
 
 		private static void CrossModContent()
 		{
-			if (ModLoader.TryGetMod("Fargowiltas", out Mod fargos))
-			{
-				// AddSummon, order or value in terms of vanilla bosses, your mod internal name, summon   
-				//item internal name, inline method for retrieving downed value, price to sell for in copper
-				fargos.Call("AddSummon", 1.4f, "SpiritMod", "ScarabIdol", () => MyWorld.DownedScarabeus, 100 * 200);
-				fargos.Call("AddSummon", 4.2f, "SpiritMod", "JewelCrown", () => MyWorld.DownedAncientAvian, 100 * 200);
-				fargos.Call("AddSummon", 5.9f, "SpiritMod", "StarWormSummon", () => MyWorld.DownedStarplate, 100 * 400);
-				fargos.Call("AddSummon", 6.5f, "SpiritMod", "CursedCloth", () => MyWorld.DownedInfernon, 100 * 500);
-				fargos.Call("AddSummon", 7.3f, "SpiritMod", "DuskCrown", () => MyWorld.DownedDusking, 100 * 500);
-				fargos.Call("AddSummon", 12.4f, "SpiritMod", "StoneSkin", () => MyWorld.DownedAtlas, 100 * 800);
-			}
-
 			if (ModLoader.TryGetMod("DialogueTweak", out Mod dialogue))
 			{
-				dialogue.Call("AddButton", ModContent.NPCType<Oracle>(), (Func<string>)(() => "Bless"),
+				dialogue.Call("AddButton", ModContent.NPCType<Oracle>(), () => "Bless",
 					"SpiritMod/NPCs/Town/Oracle/OracleAuraLetter",
 					() =>
 					{
@@ -862,19 +850,19 @@ namespace SpiritMod
 				// Since NPC types that may have quests are not certain, we add the button for all NPCs and check if they have a quest in the availability parameter
 				for (int i = 0; i < NPCLoader.NPCCount; i++)
 				{
-					dialogue.Call("AddButton", i, (Func<string>)(() => "Quest"),
+					dialogue.Call("AddButton", i, () => "Quest",
 						"DialogueTweak/Interfaces/Assets/Icon_Help", // Directly referencing this mod's texture.
-						(Action)(() =>
+						() =>
 						{
 							if (Main.mouseLeft)
 								SpiritDetours.UnlockQuestFromNPC(Main.npc[Main.LocalPlayer.talkNPC]);
-						}),
-						(Func<bool>)(() =>
+						},
+						() =>
 						{
 							NPC talkNPC = Main.npc[Main.LocalPlayer.talkNPC];
 							var queue = ModContent.GetInstance<QuestWorld>().NPCQuestQueue;
 							return QuestManager.QuestBookUnlocked && queue.ContainsKey(talkNPC.type) && queue[talkNPC.type].Count > 0;
-						}));
+						});
 				}
 			}
 
