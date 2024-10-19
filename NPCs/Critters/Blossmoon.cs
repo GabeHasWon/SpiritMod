@@ -53,7 +53,7 @@ namespace SpiritMod.NPCs.Critters
 			if (!valid)
 				return 0f;
 
-			return QuestManager.GetQuest<CritterCaptureBlossmoon>().IsActive && !NPC.AnyNPCs(NPC.type) ? 0.6f : 0.3f;
+			return QuestManager.GetQuest<CritterCaptureBlossmoon>().IsActive && !NPC.AnyNPCs(NPC.type) ? 0.7f : 0.4f;
 		}
 
 		public override void FindFrame(int frameHeight)
@@ -66,7 +66,7 @@ namespace SpiritMod.NPCs.Critters
 
 		public override bool PreAI()
 		{
-			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), .92f / 2, .632f / 2, 1.71f / 2);
+			Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), .72f, .532f, 1.51f);
 			Player target = Main.player[NPC.target];
 			if (NPC.DistanceSQ(target.Center) < 400 * 400)
 				target.AddBuff(BuffID.Calm, 300);

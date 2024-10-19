@@ -34,7 +34,7 @@ namespace SpiritMod.Items.Consumable
 			if (Main.netMode == NetmodeID.SinglePlayer)
 				NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<Atlas>());
 			else if (Main.netMode == NetmodeID.MultiplayerClient && player.whoAmI == Main.myPlayer)
-				SpiritMultiplayer.SpawnBossFromClient((byte)player.whoAmI, ModContent.NPCType<Atlas>(), (int)player.Center.X, (int)player.Center.Y - 200);
+				SpiritMultiplayer.SpawnBossFromClient((byte)player.whoAmI, ModContent.NPCType<Atlas>(), (int)player.Center.X, (int)player.Center.Y - 600);
 
 			SoundEngine.PlaySound(SoundID.Roar, player.Center);
 

@@ -15,7 +15,7 @@ namespace SpiritMod.Items.Halloween
 			Item.rare = ItemRarityID.Green;
 			Item.maxStack = Item.CommonMaxStack;
 			Item.value = 50000;
-			Item.consumable = false;
+			Item.consumable = true;
 		}
 	}
 }

@@ -3,3 +3,9 @@
 - Fixes some nonsense that Noxious Slime drawing did
 - Localized Oracle teleport dialogue
 - Added check for Oracle to teleport in-world if they are outside of the world
+- Adjusts Atlas spawn position
+- Adjusts Atlas despawn condition distance
+- Made Golden Candy not infinitely reusable
+- Made Atlas despawn when properly out of world instead of just going up forever
+- Increased Blossmoon spawn rate
+- Increased strength of Blossmoon light

@@ -251,6 +251,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 								Vector2 position = NPC.Center + radius * (I * rot).ToRotationVector2();
 								NPC.NewNPC(NPC.GetSource_FromAI(), (int)(position.X), (int)(position.Y), ModContent.NPCType<CobbledEye>(), NPC.whoAmI, NPC.whoAmI, I * rot, radius);
 							}
+
 							secondStage = true;
 						}
 					}
@@ -302,7 +303,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 			foreach (Player plr in Main.ActivePlayers)
 			{
-				if (!plr.dead && plr.DistanceSQ(NPC.Center) < 2500 * 2500)
+				if (!plr.dead && plr.DistanceSQ(NPC.Center) < 8500 * 8500)
 				{
 					anyNearbyActivePlayer = true;
 					break;
@@ -311,9 +312,14 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 			if (!anyNearbyActivePlayer)
 			{
-				NPC.TargetClosest(true);
-				NPC.velocity.Y -= 1;
+				NPC.velocity.Y -= 0.5f;
 				timer = 0;
+
+				if (NPC.position.Y < -2000)
+				{
+					NPC.active = false;
+					NPC.netUpdate = true;
+				}
 			}
 
 			if (++Counter > 400)
