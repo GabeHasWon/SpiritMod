@@ -1,11 +1,7 @@
-﻿v1.5.0.24
-- Removes debug I left in by accident
-- Fixes some nonsense that Noxious Slime drawing did
-- Localized Oracle teleport dialogue
-- Added check for Oracle to teleport in-world if they are outside of the world
-- Adjusts Atlas spawn position
-- Adjusts Atlas despawn condition distance
-- Made Golden Candy not infinitely reusable
-- Made Atlas despawn when properly out of world instead of just going up forever
-- Increased Blossmoon spawn rate
-- Increased strength of Blossmoon light
+﻿v1.5.0.25
+- Added a bunch of checks and additional conditions by Remnants dev Wombat, thanks!
+- Fixed Naturalists Workshop only needing a 2 tile anchor despite being 3 tiles wide
+- Made Soul Shred draw fullbright instead of 70% bright for some reason
+- Fixed Kelp generating on sloped tiles then breaking (lol)
+- Made Naturalist's Workshop not a "table" tile (only technically, it didn't count as a table for rooms anyways)
+- Made Gravestones not land on top of Naturalist's Workshops

@@ -56,7 +56,7 @@ internal class BoulderMicropass : Micropass
 				}
 			}
 
-			if (fail)
+			if (fail || Main.tileDungeon[Main.tile[x, y + 1].TileType])
 			{
 				i--;
 				continue;
@@ -139,36 +139,4 @@ internal class BoulderMicropass : Micropass
 		Tile.SmoothSlope(x, y);
 		return true;
 	}
-
-	//private static void PlaceSingleBoulder(int x, int y, bool doRepeat = true, int sizeOverride = -1)
-	//{
-	//	int radius = WorldGen.genRand.Next(3, 5);
-	//	int checkRadius = radius;
-
-	//	if (sizeOverride > -1)
-	//		radius = sizeOverride;
-
-	//	if (radius <= 0)
-	//		return;
-
-	//	for (int i = x - radius; i < x + radius; ++i)
-	//	{
-	//		for (int j = y - radius; j < y + radius; ++j)
-	//		{
-	//			Tile tile = Main.tile[i, j];
-	//			if (Vector2.DistanceSquared(new(i, j), new(x, y)) < checkRadius * checkRadius && TileID.Sets.CanBeClearedDuringGeneration[tile.TileType])
-	//			{
-	//				ushort type = (ushort)StoneType;
-	//				if (tile.HasTile)
-	//					WorldGen.ReplaceTile(i, j, type, 0);
-	//				else
-	//					WorldGen.PlaceTile(i, j, type, true, true);
-	//				tile.Slope = SlopeType.Solid;
-	//				tile.IsHalfBlock = false;
-	//			}
-	//		}
-	//	}
-
-	//	PlaceSingleBoulder(x - WorldGen.genRand.Next(-4, 5), y - WorldGen.genRand.Next(-1, 5), false, radius - WorldGen.genRand.Next(2));
-	//}
 }

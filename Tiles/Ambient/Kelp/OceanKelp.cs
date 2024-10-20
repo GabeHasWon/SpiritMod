@@ -74,7 +74,8 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 			int totalOffset = t.TileFrameX / ClumpFrameOffset;
 			int realFrameX = t.TileFrameX - ClumpFrameOffset * totalOffset; //Adjusted so its easy to read
 
-			if (WorldGen.InWorld(i, j - 1) && !Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(6) && t.LiquidAmount > 155 && t.TileFrameX < 36 && t.TileFrameY < 108) //Grows the kelp
+			if (WorldGen.InWorld(i, j - 1) && !Framing.GetTileSafely(i, j - 1).HasTile && Main.rand.NextBool(6) && t.LiquidAmount > 155 && t.TileFrameX < 36 && t.TileFrameY < 108
+				&& t.Slope == SlopeType.Solid) //Grows the kelp
 			{
 				int height = 1;
 

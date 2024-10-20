@@ -157,7 +157,8 @@ namespace SpiritMod.World
 						{
 							Tile tile = Framing.GetTileSafely(x, y);
 
-							if (tile.HasTile && DO_NOT_BREAK.Contains(tile.TileType)) continue;
+							if (tile.HasTile && DO_NOT_BREAK.Contains(tile.TileType)) 
+								continue;
 
 							bool wasActive = tile.HasTile;
 							tile.HasTile = false;
@@ -190,6 +191,7 @@ namespace SpiritMod.World
 								tile.Slope = 0;
 								tile.TileType = tileType;
 							}
+
 							if (wall)
 							{
 								tile.WallType = wallType;
@@ -229,6 +231,7 @@ namespace SpiritMod.World
 						//we've found the right sec and pos values
 						break;
 					}
+
 					pos -= sectionLength;
 				}
 
@@ -293,6 +296,7 @@ namespace SpiritMod.World
 						furthestPoint = point;
 					}
 				}
+
 				return furthestPoint;
 			}
 
@@ -310,12 +314,16 @@ namespace SpiritMod.World
 						furthestPoint = point;
 					}
 				}
+
 				return furthestPoint;
 			}
 
 			//check line collisions
 			float diff = angle - (float)Math.Atan2(linep1p2.Y, linep1p2.X);
-			if (diff < -MathHelper.Pi) diff += MathHelper.TwoPi;
+
+			if (diff < -MathHelper.Pi) 
+				diff += MathHelper.TwoPi;
+
 			if (diff < 0)
 			{
 				Vector2 line1A = point1.Point + Vector2.Normalize(linep1p2.GetClockwise90()) * point1.Radius;
@@ -451,7 +459,7 @@ namespace SpiritMod.World
 			{
 				for (int i = 0; i < walls.Count; i++)
 				{
-					if (walls[i] == tile.WallType) 
+					if (walls[i] == tile.WallType)
 						return true;
 				}
 			}
@@ -460,7 +468,7 @@ namespace SpiritMod.World
 			{
 				for (int i = 0; i < types.Count; i++)
 				{
-					if (types[i] == tile.TileType) 
+					if (types[i] == tile.TileType)
 						return true;
 				}
 			}
@@ -569,9 +577,6 @@ namespace SpiritMod.World
 
 			var ignoreTiles = new List<ushort>()
 			{
-				TileID.BlueDungeonBrick,
-				TileID.GreenDungeonBrick,
-				TileID.PinkDungeonBrick,
 				TileID.SandstoneBrick,
 				TileID.Hive,
 				TileID.LihzahrdBrick,
@@ -599,15 +604,6 @@ namespace SpiritMod.World
 			var ignoreWalls = new List<ushort>()
 			{
 				WallID.SandstoneBrick,
-				WallID.BlueDungeonSlabUnsafe,
-				WallID.BlueDungeonTileUnsafe,
-				WallID.BlueDungeonUnsafe,
-				WallID.GreenDungeonSlabUnsafe,
-				WallID.GreenDungeonTileUnsafe,
-				WallID.GreenDungeonUnsafe,
-				WallID.PinkDungeonSlabUnsafe,
-				WallID.PinkDungeonTileUnsafe,
-				WallID.PinkDungeonUnsafe,
 				WallID.LihzahrdBrickUnsafe,
 				WallID.HiveUnsafe,
 				WallID.HardenedSand,
@@ -672,16 +668,16 @@ namespace SpiritMod.World
 				{
 					bool valid;
 
-					if (tileY <= _y) 
+					if (tileY <= _y)
 						valid = WithinEllipseNoise(tileX, tileY, _center, _topSize, _estimates, _noise);
-					else 
+					else
 						valid = WithinEllipseNoise(tileX, tileY, _center, _size, _estimates, _noise);
 
 					if (valid)
 					{
 						Tile tile = Framing.GetTileSafely(tileX, tileY);
 
-						if (IsOneOf(tile, ignoreTiles, ignoreWalls))
+						if (IsOneOf(tile, ignoreTiles, ignoreWalls) || Main.tileDungeon[tile.TileType] || Main.wallDungeon[tile.WallType])
 							continue;
 
 						tile.TileType = TileID.Dirt;
@@ -840,7 +836,7 @@ namespace SpiritMod.World
 			float endRadius = startRadius * WorldGen.genRand.NextFloat(0.9f, 1.1f);
 			float hizouseX = mainBottom.X + (leftSide ? -distanceFromMain : distanceFromMain);
 
-			if (leftSide) 
+			if (leftSide)
 				hizouseX -= width;
 
 			LineSection houseSection = new LineSection(new LinePoint(hizouseX, hizouseY + leftYOffset, startRadius, 3f), new LinePoint(hizouseX + width, hizouseY, endRadius, 3f));
@@ -856,7 +852,7 @@ namespace SpiritMod.World
 			float angle = -MathHelper.Pi;
 			for (; angle < MathHelper.Pi; angle += WorldGen.genRand.NextFloat(0.2f, 0.7f))
 			{
-				if (WorldGen.genRand.NextBool(3)) 
+				if (WorldGen.genRand.NextBool(3))
 					continue;
 
 				Vector2 rot = angle.ToRotationVector2();
@@ -991,23 +987,23 @@ namespace SpiritMod.World
 			//check solids below
 			Tile test = Framing.GetTileSafely(x, y);
 
-			if (test.HasTile) 
+			if (test.HasTile)
 				return;
 
 			for (int testX = x; testX < x + width; testX++)
 			{
 				test = Framing.GetTileSafely(testX, y + 1);
 
-				if (!test.HasTile || !Main.tileSolid[test.TileType]) 
+				if (!test.HasTile || !Main.tileSolid[test.TileType])
 					return;
 
-				if (expectedFloorTile < 10000 && test.TileType != expectedFloorTile) 
+				if (expectedFloorTile < 10000 && test.TileType != expectedFloorTile)
 					return;
 
 				for (int testY = y - height + 1; testY <= y; testY++)
 				{
 					test = Framing.GetTileSafely(testX, testY);
-					if (test.HasTile) 
+					if (test.HasTile)
 						return;
 				}
 			}
@@ -1015,7 +1011,7 @@ namespace SpiritMod.World
 			//place
 			int frameX = 0;
 
-			if (type == TileID.Lamps) 
+			if (type == TileID.Lamps)
 				frameX = 1; //just a temp thing to turn lamps off
 
 			for (int testX = x; testX < x + width; testX++)
@@ -1057,7 +1053,7 @@ namespace SpiritMod.World
 				{
 					count++;
 
-					if (i < minX / 2 - 2) 
+					if (i < minX / 2 - 2)
 						left = true;
 
 					else if (i > minX / 2 + 2 && left)
@@ -1135,16 +1131,16 @@ namespace SpiritMod.World
 				int leftX = minX;
 
 				for (; leftX <= maxX; leftX++)
-					if (BreakInnerLoop(leftX, y, ref ct)) 
+					if (BreakInnerLoop(leftX, y, ref ct))
 						break;
 
-				if (ct < 1) 
+				if (ct < 1)
 					continue;
 				int rightX = maxX;
 				ct = 0;
 
 				for (; rightX >= minX; rightX--)
-					if (BreakInnerLoop(rightX, y, ref ct)) 
+					if (BreakInnerLoop(rightX, y, ref ct))
 						break;
 
 				if (leftX <= rightX)
@@ -1238,7 +1234,7 @@ namespace SpiritMod.World
 							}
 						}
 
-						if (failed) 
+						if (failed)
 							break;
 
 						Tile tile = Framing.GetTileSafely(testX, maxY + 1);
@@ -1251,7 +1247,7 @@ namespace SpiritMod.World
 
 					attempts++;
 
-					if (failed) 
+					if (failed)
 						continue;
 
 					Tile platform1 = Framing.GetTileSafely(x, maxY);
@@ -1279,11 +1275,11 @@ namespace SpiritMod.World
 
 			while (furnitureX < maxX)
 			{
-				if (furnituresAndTiles.Count == 0) 
+				if (furnituresAndTiles.Count == 0)
 					break;
 
 				furnitureX++;
-				if (!WithinInterior(furnitureX, maxY - 1)) 
+				if (!WithinInterior(furnitureX, maxY - 1))
 					continue;
 
 				if (WorldGen.genRand.NextBool(3))
@@ -1303,11 +1299,11 @@ namespace SpiritMod.World
 								break;
 							}
 						}
-						if (failed) 
+						if (failed)
 							break;
 					}
 
-					if (failed) 
+					if (failed)
 						continue;
 
 					//place it
@@ -1348,7 +1344,7 @@ namespace SpiritMod.World
 
 					placedAdventurer = TryPlaceAdventurer(x, maxY - 1);
 
-					if (placedAdventurer) 
+					if (placedAdventurer)
 						break;
 				}
 			}
@@ -1360,14 +1356,14 @@ namespace SpiritMod.World
 			{
 				Tile test = Framing.GetTileSafely(testX, y + 1);
 
-				if (!test.HasTile) 
+				if (!test.HasTile)
 					return false;
 
 				for (int testY = y - 3 + 1; testY <= y; testY++)
 				{
 					test = Framing.GetTileSafely(testX, testY);
 
-					if (test.HasTile) 
+					if (test.HasTile)
 						return false;
 				}
 			}
@@ -1446,7 +1442,7 @@ namespace SpiritMod.World
 								failed = true;
 							}
 
-							if (failed) 
+							if (failed)
 								break;
 
 							foreach (Point p in removals)
@@ -1533,7 +1529,7 @@ namespace SpiritMod.World
 					{
 						for (int j1 = y; j1 < y1; j1++)
 						{
-							if (invalidCheck(i1, j1)) 
+							if (invalidCheck(i1, j1))
 								continue;
 
 							float single1 = Math.Abs((float)i1 - vector2.X);
@@ -1654,13 +1650,13 @@ namespace SpiritMod.World
 			int minXUnsafeSpawn = midWorld - _halfSize.X - 100;
 			int maxXUnsafeSpawn = midWorld + _halfSize.X + 100;
 
-			if (tileX > minXUnsafeSpawn && tileX < maxXUnsafeSpawn) 
+			if (tileX > minXUnsafeSpawn && tileX < maxXUnsafeSpawn)
 				return false;
 
 			int dungeonMinUnsafe = Main.dungeonX - 150;
 			int dungeonMaxUnsafe = Main.dungeonX + 150;
 
-			if (tileX > dungeonMinUnsafe && tileX < dungeonMaxUnsafe) 
+			if (tileX > dungeonMinUnsafe && tileX < dungeonMaxUnsafe)
 				return false;
 
 			int y = FindSurfaceAt(tileX);
@@ -1683,10 +1679,10 @@ namespace SpiritMod.World
 			if (index == -1)
 				return;
 
-			var BadSurfaceIDs = new List<ushort>() { TileID.SnowBlock, TileID.Ebonstone, TileID.Crimstone, TileID.CrimsonGrass, TileID.CorruptGrass, TileID.IceBlock, 
+			var BadSurfaceIDs = new List<ushort>() { TileID.SnowBlock, TileID.Ebonstone, TileID.Crimstone, TileID.CrimsonGrass, TileID.CorruptGrass, TileID.IceBlock,
 				TileID.HardenedSand, TileID.Sandstone, TileID.JungleGrass, TileID.Sand, TileID.BlueDungeonBrick, TileID.GreenDungeonBrick, TileID.PinkDungeonBrick };
-			
-			var BadUndergroundIDs = new List<ushort>() { TileID.Ebonstone, TileID.Crimstone, TileID.CrimsonGrass, TileID.CorruptGrass, TileID.IceBlock, 
+
+			var BadUndergroundIDs = new List<ushort>() { TileID.Ebonstone, TileID.Crimstone, TileID.CrimsonGrass, TileID.CorruptGrass, TileID.IceBlock,
 				TileID.HardenedSand, TileID.Sandstone, TileID.JungleGrass, TileID.Sand, TileID.BlueDungeonBrick, TileID.GreenDungeonBrick, TileID.PinkDungeonBrick };
 
 			int worldSizeBonus = (int)(Main.maxTilesX / 4200f * 8f);
@@ -1705,7 +1701,7 @@ namespace SpiritMod.World
 					int safeInARow = 0;
 					int highestInARow = 0;
 					int prevSurfaceY = -1;
-					
+
 					for (int tileX = minX; tileX <= maxX; tileX += tilePer)
 					{
 						int surfaceY = FindSurfaceAt(tileX);
@@ -1888,7 +1884,7 @@ namespace SpiritMod.World
 								{
 									for (int y1 = y - 2; y1 <= y; y1++)
 									{
-										if (x1 == x && y1 == y) 
+										if (x1 == x && y1 == y)
 											continue;
 
 										Tile tile2 = Framing.GetTileSafely(x1, y1);
@@ -1971,7 +1967,7 @@ namespace SpiritMod.World
 							}
 						}
 
-						if (failed) 
+						if (failed)
 							continue;
 
 						GrowWigglyTree(wiggleTreeX, wiggleY, treesPlaced == 0 ? 5 : 2, treesPlaced == 0 ? 60 : 24);
@@ -2331,16 +2327,19 @@ namespace SpiritMod.World
 									break;
 							num5 = WorldGen.genRand.Next(10);
 						}
+
 						flag = false;
 						flag1 = false;
 						if (num5 == 5 || num5 == 7)
 						{
 							flag = true;
 						}
+
 						if (num5 == 6 || num5 == 7)
 						{
 							flag1 = true;
 						}
+
 						if (num5 == 1)
 						{
 							if (num == 0)
@@ -2348,11 +2347,13 @@ namespace SpiritMod.World
 								Main.tile[i, i1].TileFrameX = 0;
 								Main.tile[i, i1].TileFrameY = 66;
 							}
+
 							if (num == 1)
 							{
 								Main.tile[i, i1].TileFrameX = 0;
 								Main.tile[i, i1].TileFrameY = 88;
 							}
+
 							if (num == 2)
 							{
 								Main.tile[i, i1].TileFrameX = 0;
@@ -2366,11 +2367,13 @@ namespace SpiritMod.World
 								Main.tile[i, i1].TileFrameX = 22;
 								Main.tile[i, i1].TileFrameY = 0;
 							}
+
 							if (num == 1)
 							{
 								Main.tile[i, i1].TileFrameX = 22;
 								Main.tile[i, i1].TileFrameY = 22;
 							}
+
 							if (num == 2)
 							{
 								Main.tile[i, i1].TileFrameX = 22;
@@ -2384,11 +2387,13 @@ namespace SpiritMod.World
 								Main.tile[i, i1].TileFrameX = 44;
 								Main.tile[i, i1].TileFrameY = 66;
 							}
+
 							if (num == 1)
 							{
 								Main.tile[i, i1].TileFrameX = 44;
 								Main.tile[i, i1].TileFrameY = 88;
 							}
+
 							if (num == 2)
 							{
 								Main.tile[i, i1].TileFrameX = 44;
@@ -2402,11 +2407,13 @@ namespace SpiritMod.World
 								Main.tile[i, i1].TileFrameX = 22;
 								Main.tile[i, i1].TileFrameY = 66;
 							}
+
 							if (num == 1)
 							{
 								Main.tile[i, i1].TileFrameX = 22;
 								Main.tile[i, i1].TileFrameY = 88;
 							}
+
 							if (num == 2)
 							{
 								Main.tile[i, i1].TileFrameX = 22;
@@ -2420,11 +2427,13 @@ namespace SpiritMod.World
 								Main.tile[i, i1].TileFrameX = 88;
 								Main.tile[i, i1].TileFrameY = 0;
 							}
+
 							if (num == 1)
 							{
 								Main.tile[i, i1].TileFrameX = 88;
 								Main.tile[i, i1].TileFrameY = 22;
 							}
+
 							if (num == 2)
 							{
 								Main.tile[i, i1].TileFrameX = 88;
@@ -2438,11 +2447,13 @@ namespace SpiritMod.World
 								Main.tile[i, i1].TileFrameX = 66;
 								Main.tile[i, i1].TileFrameY = 66;
 							}
+
 							if (num == 1)
 							{
 								Main.tile[i, i1].TileFrameX = 66;
 								Main.tile[i, i1].TileFrameY = 88;
 							}
+
 							if (num == 2)
 							{
 								Main.tile[i, i1].TileFrameX = 66;
@@ -2456,11 +2467,13 @@ namespace SpiritMod.World
 								Main.tile[i, i1].TileFrameX = 0;
 								Main.tile[i, i1].TileFrameY = 0;
 							}
+
 							if (num == 1)
 							{
 								Main.tile[i, i1].TileFrameX = 0;
 								Main.tile[i, i1].TileFrameY = 22;
 							}
+
 							if (num == 2)
 							{
 								Main.tile[i, i1].TileFrameX = 0;
@@ -2474,17 +2487,20 @@ namespace SpiritMod.World
 								Main.tile[i, i1].TileFrameX = 110;
 								Main.tile[i, i1].TileFrameY = 66;
 							}
+
 							if (num == 1)
 							{
 								Main.tile[i, i1].TileFrameX = 110;
 								Main.tile[i, i1].TileFrameY = 88;
 							}
+
 							if (num == 2)
 							{
 								Main.tile[i, i1].TileFrameX = 110;
 								Main.tile[i, i1].TileFrameY = 110;
 							}
 						}
+
 						if (num5 == 5 || num5 == 7)
 						{
 							tile.HasTile = true;
@@ -2497,11 +2513,13 @@ namespace SpiritMod.World
 									Main.tile[i - 1, i1].TileFrameX = 66;
 									Main.tile[i - 1, i1].TileFrameY = 0;
 								}
+
 								if (num == 1)
 								{
 									Main.tile[i - 1, i1].TileFrameX = 66;
 									Main.tile[i - 1, i1].TileFrameY = 22;
 								}
+
 								if (num == 2)
 								{
 									Main.tile[i - 1, i1].TileFrameX = 66;
@@ -2515,11 +2533,13 @@ namespace SpiritMod.World
 									Main.tile[i - 1, i1].TileFrameX = 44;
 									Main.tile[i - 1, i1].TileFrameY = 198;
 								}
+
 								if (num == 1)
 								{
 									Main.tile[i - 1, i1].TileFrameX = 44;
 									Main.tile[i - 1, i1].TileFrameY = 220;
 								}
+
 								if (num == 2)
 								{
 									Main.tile[i - 1, i1].TileFrameX = 44;
@@ -2527,6 +2547,7 @@ namespace SpiritMod.World
 								}
 							}
 						}
+
 						if (num5 == 6 || num5 == 7)
 						{
 							Tile tile2 = Main.tile[i + 1, i1];
@@ -2540,11 +2561,13 @@ namespace SpiritMod.World
 									Main.tile[i + 1, i1].TileFrameX = 88;
 									Main.tile[i + 1, i1].TileFrameY = 66;
 								}
+
 								if (num == 1)
 								{
 									Main.tile[i + 1, i1].TileFrameX = 88;
 									Main.tile[i + 1, i1].TileFrameY = 88;
 								}
+
 								if (num == 2)
 								{
 									Main.tile[i + 1, i1].TileFrameX = 88;
@@ -2558,11 +2581,13 @@ namespace SpiritMod.World
 									Main.tile[i + 1, i1].TileFrameX = 66;
 									Main.tile[i + 1, i1].TileFrameY = 198;
 								}
+
 								if (num == 1)
 								{
 									Main.tile[i + 1, i1].TileFrameX = 66;
 									Main.tile[i + 1, i1].TileFrameY = 220;
 								}
+
 								if (num == 2)
 								{
 									Main.tile[i + 1, i1].TileFrameX = 66;
@@ -2615,39 +2640,46 @@ namespace SpiritMod.World
 							Main.tile[i + 1, num1 - 1].TileFrameX = 22;
 							Main.tile[i + 1, num1 - 1].TileFrameY = 132;
 						}
+
 						if (num == 1)
 						{
 							Main.tile[i + 1, num1 - 1].TileFrameX = 22;
 							Main.tile[i + 1, num1 - 1].TileFrameY = 154;
 						}
+
 						if (num == 2)
 						{
 							Main.tile[i + 1, num1 - 1].TileFrameX = 22;
 							Main.tile[i + 1, num1 - 1].TileFrameY = 176;
 						}
 					}
+
 					if (num6 == 0 || num6 == 2)
 					{
 						Tile tile = Main.tile[i - 1, num1 - 1];
 						tile.HasTile = true;
 						Main.tile[i - 1, num1 - 1].TileType = 5;
 						num = WorldGen.genRand.Next(3);
+
 						if (num == 0)
 						{
 							Main.tile[i - 1, num1 - 1].TileFrameX = 44;
 							Main.tile[i - 1, num1 - 1].TileFrameY = 132;
 						}
+
 						if (num == 1)
 						{
 							Main.tile[i - 1, num1 - 1].TileFrameX = 44;
 							Main.tile[i - 1, num1 - 1].TileFrameY = 154;
 						}
+
 						if (num == 2)
 						{
 							Main.tile[i - 1, num1 - 1].TileFrameX = 44;
 							Main.tile[i - 1, num1 - 1].TileFrameY = 176;
 						}
 					}
+
 					num = WorldGen.genRand.Next(3);
 					if (num6 == 0)
 					{
@@ -2656,11 +2688,13 @@ namespace SpiritMod.World
 							Main.tile[i, num1 - 1].TileFrameX = 88;
 							Main.tile[i, num1 - 1].TileFrameY = 132;
 						}
+
 						if (num == 1)
 						{
 							Main.tile[i, num1 - 1].TileFrameX = 88;
 							Main.tile[i, num1 - 1].TileFrameY = 154;
 						}
+
 						if (num == 2)
 						{
 							Main.tile[i, num1 - 1].TileFrameX = 88;
@@ -2674,11 +2708,13 @@ namespace SpiritMod.World
 							Main.tile[i, num1 - 1].TileFrameX = 0;
 							Main.tile[i, num1 - 1].TileFrameY = 132;
 						}
+
 						if (num == 1)
 						{
 							Main.tile[i, num1 - 1].TileFrameX = 0;
 							Main.tile[i, num1 - 1].TileFrameY = 154;
 						}
+
 						if (num == 2)
 						{
 							Main.tile[i, num1 - 1].TileFrameX = 0;
@@ -2692,17 +2728,20 @@ namespace SpiritMod.World
 							Main.tile[i, num1 - 1].TileFrameX = 66;
 							Main.tile[i, num1 - 1].TileFrameY = 132;
 						}
+
 						if (num == 1)
 						{
 							Main.tile[i, num1 - 1].TileFrameX = 66;
 							Main.tile[i, num1 - 1].TileFrameY = 154;
 						}
+
 						if (num == 2)
 						{
 							Main.tile[i, num1 - 1].TileFrameX = 66;
 							Main.tile[i, num1 - 1].TileFrameY = 176;
 						}
 					}
+
 					if (WorldGen.genRand.NextBool(8))
 					{
 						num = WorldGen.genRand.Next(3);
@@ -2711,11 +2750,13 @@ namespace SpiritMod.World
 							Main.tile[i, num1 - num4].TileFrameX = 0;
 							Main.tile[i, num1 - num4].TileFrameY = 198;
 						}
+
 						if (num == 1)
 						{
 							Main.tile[i, num1 - num4].TileFrameX = 0;
 							Main.tile[i, num1 - num4].TileFrameY = 220;
 						}
+
 						if (num == 2)
 						{
 							Main.tile[i, num1 - num4].TileFrameX = 0;
@@ -2730,23 +2771,27 @@ namespace SpiritMod.World
 							Main.tile[i, num1 - num4].TileFrameX = 22;
 							Main.tile[i, num1 - num4].TileFrameY = 198;
 						}
+
 						if (num == 1)
 						{
 							Main.tile[i, num1 - num4].TileFrameX = 22;
 							Main.tile[i, num1 - num4].TileFrameY = 220;
 						}
+
 						if (num == 2)
 						{
 							Main.tile[i, num1 - num4].TileFrameX = 22;
 							Main.tile[i, num1 - num4].TileFrameY = 242;
 						}
 					}
+
 					WorldGen.RangeFrame(i - 2, num1 - num4 - 1, i + 2, num1 + 1);
 					if (Main.netMode == NetmodeID.Server)
 						NetMessage.SendTileSquare(-1, i, (int)(num1 - num4 * 0.5), num4 + 1, TileChangeType.None);
 					return true;
 				}
 			}
+
 			return false;
 		}
 	}

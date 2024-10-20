@@ -24,6 +24,6 @@ namespace SpiritMod.Items.Sets.SpiritSet
 		}
 
 		public override void PostUpdate() => Lighting.AddLight(Item.Center, new Color(46, 255, 251).ToVector3() * 0.3f * Main.essScale);
-		public override Color? GetAlpha(Color lightColor) => new Color(180, 180, 180);
+		public override Color? GetAlpha(Color lightColor) => new Color(255, 255, 255);
 	}
 }
