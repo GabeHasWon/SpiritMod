@@ -382,6 +382,7 @@ namespace SpiritMod.World
 				points[0] = E;
 				return;
 			}
+
 			points = new Vector2[0];
 		}
 
@@ -472,12 +473,14 @@ namespace SpiritMod.World
 						return true;
 				}
 			}
+
 			return false;
 		}
 
 		private void RecurseRoots(int depth, int maxDepth, RadiusLine cave, PerlinNoise noise, float minDistance, float maxDistance, float minLength, float maxLength, float minRadius, float maxRadius)
 		{
-			if (depth >= maxDepth) return;
+			if (depth >= maxDepth) 
+				return;
 
 			float length = cave.Length;
 
@@ -489,6 +492,7 @@ namespace SpiritMod.World
 		{
 			float start = length * 0.1f;
 			float max = length * 0.9f;
+
 			for (float position = start; position < max; position += WorldGen.genRand.NextFloat(minDistance, maxDistance))
 			{
 				cave.TotalPositionToSectionAndPosition(position, out float localPos, out LineSection section);
@@ -506,7 +510,8 @@ namespace SpiritMod.World
 
 		private void RecurseRoots(int depth, int maxDepth, LineSection section, PerlinNoise noise, float minDistance, float maxDistance, float minLength, float maxLength, float minRadius, float maxRadius)
 		{
-			if (depth >= maxDepth) return;
+			if (depth >= maxDepth) 
+				return;
 
 			Vector2 between = section.point2.Point - section.point1.Point;
 			float length = between.Length();
@@ -705,10 +710,12 @@ namespace SpiritMod.World
 			{
 				int surf = FindSurfaceAt(tileX, 15, false);
 				int total = 0;
+
 				for (int xTest = tileX - flatCheckX; xTest <= tileX + flatCheckX; xTest++)
 				{
 					total += Math.Abs(surf - surfaceY[xTest - subX]);
 				}
+
 				if (total < flattestXFlatness)
 				{
 					flattestXFlatness = total;
@@ -726,6 +733,7 @@ namespace SpiritMod.World
 				int bottom = surfaceY[tileX - subX] + 1;
 				//int bottom = FindSurfaceAt(tileX - subX) + 1;
 				int top = (int)(MathHelper.Lerp(bottom, moundTop, sin) + _noise.Noise(sinAmt * 2.7f, 0.8f) * 4f);
+
 				for (int tileY = top; tileY <= bottom; tileY++)
 				{
 					Tile tile = Main.tile[tileX, tileY];
@@ -737,6 +745,7 @@ namespace SpiritMod.World
 						Main.tile[tileX, tileY].WallType = WallID.DirtUnsafe;
 					}
 				}
+
 				sinAmt += amtPer;
 			}
 
@@ -803,7 +812,10 @@ namespace SpiritMod.World
 
 			//Mound exit point
 			float exitOffX = WorldGen.genRand.NextFloat(moundHalfWidth * 0.8f, moundHalfWidth * 1.4f);
-			if (WorldGen.genRand.NextBool()) exitOffX *= -1f;
+
+			if (WorldGen.genRand.NextBool()) 
+				exitOffX *= -1f;
+
 			float exitOffY = WorldGen.genRand.NextFloat(-moundHeight * 0.4f, 0f);
 			LinePoint moundExit = new LinePoint(moundMiddle.Point.X + exitOffX, moundMiddle.Point.Y + exitOffY, moundMiddle.Radius * 1.3f, moundMiddle.Jaggedness);
 
@@ -875,12 +887,14 @@ namespace SpiritMod.World
 			LinePoint[] pathPoints = new LinePoint[pathCurvePoints.Count];
 			float pathStartRadius = 2f;
 			float pathEndRadius = startRadius * 0.17f;
+
 			for (int i = 0; i < pathCurvePoints.Count; i++)
 			{
 				float progress = i / (float)pathCurvePoints.Count;
 				Vector2 current = pathCurvePoints[i];
 				pathPoints[i] = new LinePoint(current.X, current.Y, MathHelper.Lerp(pathStartRadius, pathEndRadius, progress), 2f);
 			}
+
 			RadiusLine path = new RadiusLine(0.15f, pathPoints);
 			path.Carve(_noise);
 
@@ -1167,7 +1181,9 @@ namespace SpiritMod.World
 			bool BuildingOwned(int x, int y)
 			{
 				Tile tile = Framing.GetTileSafely(x, y);
-				if (tile.HasTile && tile.TileType == boundaryTile) return true;
+				if (tile.HasTile && tile.TileType == boundaryTile) 
+					return true;
+
 				return WithinInterior(x, y);
 			}
 
@@ -1182,9 +1198,11 @@ namespace SpiritMod.World
 				BezierCurve stripCurve = new BezierCurve(start, mid, end);
 				int pointCt = WorldGen.genRand.Next(3, 7);
 				List<Vector2> stripPoints = stripCurve.GetPoints(pointCt);
+
 				for (int j = 1; j < pointCt; j++)
 				{
-					if (i >= 2 && i <= pointCt - 2 && WorldGen.genRand.NextBool(4)) continue;
+					if (i >= 2 && i <= pointCt - 2 && WorldGen.genRand.NextBool(4)) 
+						continue;
 
 					Point sStart = stripPoints[j - 1].ToPoint();
 					Point sEnd = stripPoints[j].ToPoint();
@@ -1299,6 +1317,7 @@ namespace SpiritMod.World
 								break;
 							}
 						}
+
 						if (failed)
 							break;
 					}
@@ -1774,8 +1793,10 @@ namespace SpiritMod.World
 						{
 							bool valid = tileY < Main.worldSurface;
 
-							if (tileY <= _y) valid |= WithinEllipseNoise(tileX, tileY, _center, _topSize, _estimates, _noise);
-							else valid |= WithinEllipseNoise(tileX, tileY, _center, _size, _estimates, _noise);
+							if (tileY <= _y) 
+								valid |= WithinEllipseNoise(tileX, tileY, _center, _topSize, _estimates, _noise);
+							else 
+								valid |= WithinEllipseNoise(tileX, tileY, _center, _size, _estimates, _noise);
 
 							if (valid)
 							{
@@ -1827,8 +1848,10 @@ namespace SpiritMod.World
 						{
 							bool valid = tileY < Main.worldSurface;
 
-							if (tileY <= _y) valid |= WithinEllipseNoise(tileX, tileY, _center, _topSize, _estimates, _noise);
-							else valid |= WithinEllipseNoise(tileX, tileY, _center, _size, _estimates, _noise);
+							if (tileY <= _y) 
+								valid |= WithinEllipseNoise(tileX, tileY, _center, _topSize, _estimates, _noise);
+							else 
+								valid |= WithinEllipseNoise(tileX, tileY, _center, _size, _estimates, _noise);
 
 							if (valid)
 							{
@@ -1843,6 +1866,7 @@ namespace SpiritMod.World
 											neighbours++;
 									}
 								}
+
 								if (tile.HasTile && neighbours < 3)
 									tile.HasTile = false;
 							}
@@ -2072,6 +2096,7 @@ namespace SpiritMod.World
 						neighbours++;
 				}
 			}
+
 			if (tile.HasTile && neighbours < 3)
 			{
 				tile.HasTile = false;
@@ -2130,16 +2155,19 @@ namespace SpiritMod.World
 			{
 				float progress = 1f - ((y - testY) / (float)height);
 				float xOffset = GenerateXOffset(testY);
+
 				if (xOffset > -0.2 && xOffset < 0.2)
 				{
 					topMiddlestXIndex = index;
 					topY = testY;
 				}
+
 				if (add)
 				{
 					treePoints.Add(new LinePoint(x + xOffset * halfWidth, testY, startRadius * Math.Max(0.2f, progress), 0.4f));
 					index++;
 				}
+
 				add = !add;
 			}
 
@@ -2245,7 +2273,10 @@ namespace SpiritMod.World
 				perStep?.Invoke((int)x, (int)y, i);
 
 				strength *= WorldGen.genRand.NextFloat(stepSettings.strengthModMin, stepSettings.strengthModMax);
-				if (strength < 0.6) strength = 0.6;
+
+				if (strength < 0.6) 
+					strength = 0.6;
+
 				velocity.X += WorldGen.genRand.NextFloat(stepSettings.velXModMin, stepSettings.velXModMax);
 				velocity.Y += WorldGen.genRand.NextFloat(stepSettings.velYModMin, stepSettings.velYModMax);
 

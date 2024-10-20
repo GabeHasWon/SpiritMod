@@ -5,3 +5,4 @@
 - Fixed Kelp generating on sloped tiles then breaking (lol)
 - Made Naturalist's Workshop not a "table" tile (only technically, it didn't count as a table for rooms anyways)
 - Made Gravestones not land on top of Naturalist's Workshops
+- Updated Chinese localization
