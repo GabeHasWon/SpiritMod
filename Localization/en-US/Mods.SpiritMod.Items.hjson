@@ -8857,3 +8857,8 @@ SepulchrePlatformItem: {
 	DisplayName: Sepulchre Platform
 	Tooltip: ""
 }
+
+GildJellyItem: {
+	DisplayName: Gilded Jelly
+	Tooltip: ""
+}

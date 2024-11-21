@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Consumable;
 
 namespace SpiritMod.NPCs.Critters
 {
@@ -32,6 +33,8 @@ namespace SpiritMod.NPCs.Critters
 			NPC.noGravity = true;
 			NPC.npcSlots = 0;
 			AIType = NPCID.PinkJellyfish;
+			NPC.catchItem = (short)ModContent.ItemType<GildJellyItem>();
+
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Ocean");

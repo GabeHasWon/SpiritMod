@@ -9187,3 +9187,8 @@ SepulchrePlatformItem: {
 	DisplayName: 坟葬平台
 	Tooltip: ""
 }
+
+GildJellyItem: {
+	// DisplayName: 镀金果冻
+	// Tooltip: ""
+}
