@@ -105,12 +105,12 @@ namespace SpiritMod.NPCs.Wheezer
 						SoundEngine.PlaySound(SoundID.Item95, NPC.Center);
 						Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 						direction.Normalize();
-						direction.X *= 5f;
-						direction.Y *= 5f;
+						direction.X *= 8.5f;
+						direction.Y *= 8.5f;
 
 						float A = Main.rand.Next(-50, 50) * 0.02f;
 						float B = Main.rand.Next(-50, 50) * 0.02f;
-						int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (NPC.direction * 20), NPC.Center.Y - 10, direction.X + A, direction.Y + B, ModContent.ProjectileType<WheezerCloud>(), NPC.damage / 3, 1, Main.myPlayer, 0, 0);
+						int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (NPC.direction * 20), NPC.Center.Y - 15, direction.X + A, direction.Y + B, ModContent.ProjectileType<WheezerCloud>(), NPC.damage / 3, 1, Main.myPlayer, 0, 0);
 						for (int k = 0; k < 11; k++)
 							Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, direction.X + A, direction.Y + B, 0, default, .61f);
 						Main.projectile[p].hostile = true;

@@ -14,11 +14,8 @@ namespace SpiritMod.NPCs.Wheezer
 
 		public override void SetDefaults()
 		{
-			Projectile.CloneDefaults(ProjectileID.Bullet);
-			Projectile.extraUpdates = 1;
 			Projectile.light = 0;
 			Projectile.timeLeft = 255;
-			AIType = ProjectileID.Bullet;
 			Projectile.friendly = false;
 			Projectile.hostile = true;
 			Projectile.scale *= .8f;
@@ -26,7 +23,9 @@ namespace SpiritMod.NPCs.Wheezer
 
 		public override void AI()
 		{
-			Projectile.velocity *= .98f;
+			Projectile.velocity *= .95f;
+
+			Projectile.alpha += 1;
 
 			Projectile.spriteDirection = Projectile.direction;
 			Projectile.frameCounter++;
