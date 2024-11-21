@@ -9189,6 +9189,15 @@ SepulchrePlatformItem: {
 }
 
 GildJellyItem: {
-	// DisplayName: 镀金果冻
+	// DisplayName: Gilded Jelly
 	// Tooltip: ""
+}
+
+ToxicTooth: {
+	// DisplayName: Toxic Tooth
+	/* Tooltip:
+		'''
+		Increases armor penetration by 3 and melee speed by 5%
+		Melee attacks occasionally strike enemies twice and release poisonous gas
+		''' */
 }
