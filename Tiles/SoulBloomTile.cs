@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items;
 using SpiritMod.Items.Armor.BotanistSet;
 using SpiritMod.Items.Material;
 using SpiritMod.Items.Placeable;
@@ -109,8 +110,9 @@ namespace SpiritMod.Tiles
 
 			int herbItemStack = 0;
 			int seedItemStack = 0;
+			Item item = nearestPlayer.HeldItem;
 
-			if (nearestPlayer.active && nearestPlayer.HeldItem.type == ItemID.StaffofRegrowth) // Increased yields with Staff of Regrowth, even when not fully grown
+			if (nearestPlayer.active && item.type == ItemID.StaffofRegrowth || item.type == ItemID.AcornAxe) // Increased yields with Staff of Regrowth, even when not fully grown
 			{
 				if (stage == PlantStage.Grown)
 					(herbItemStack, seedItemStack) = (2, Main.rand.Next(2, 5));

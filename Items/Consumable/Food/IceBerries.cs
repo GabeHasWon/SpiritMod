@@ -22,7 +22,8 @@ namespace SpiritMod.Items.Consumable.Food
 			MyPlayer myPlayer = player.GetModPlayer<MyPlayer>();
 			AuroraStag auroraStag = myPlayer.hoveredStag;
 
-			if (player.altFunctionUse == 2 && auroraStag != null && !auroraStag.Scared && !auroraStag.NPC.immortal && auroraStag.TameAnimationTimer == 0) {
+			if (player.altFunctionUse == 2 && auroraStag != null && !auroraStag.Scared && !auroraStag.NPC.immortal && auroraStag.TameAnimationTimer == 0) 
+			{
 				auroraStag.TameAnimationTimer = AuroraStag.TameAnimationLength;
 				myPlayer.hoveredStag = null;
 

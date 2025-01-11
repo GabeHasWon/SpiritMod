@@ -5,12 +5,11 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.NPCs.MoonjellyEvent;
-using System.Linq;
 
-namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
+namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles;
+
+public class ElectricJellyfishOrbiter : ModProjectile
 {
-	public class ElectricJellyfishOrbiter : ModProjectile
-	{
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Arcane Energy");
@@ -19,27 +18,23 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
-		public override void SetDefaults()
-		{
-			Projectile.aiStyle = -1;
-			Projectile.width = 18;
-			Projectile.height = 34;
-			Projectile.friendly = false;
-			Projectile.tileCollide = false;
-			Projectile.hostile = true;
-			Projectile.penetrate = 2;
-            Projectile.hide = false;
-			Projectile.timeLeft = 30000;
-		}
+	public override void SetDefaults()
+	{
+		Projectile.aiStyle = -1;
+		Projectile.width = 18;
+		Projectile.height = 34;
+		Projectile.friendly = false;
+		Projectile.tileCollide = false;
+		Projectile.hostile = true;
+		Projectile.penetrate = 2;
+		Projectile.timeLeft = 30000;
+	}
 
-        int num1;
-
-		public override void AI()
+	public override void AI()
         {
-            var list = Main.projectile.Where(x1 => x1.Hitbox.Intersects(Projectile.Hitbox));
-            foreach (var proj in list)
+            foreach (var proj in Main.ActiveProjectiles)
             {
-                if (Projectile != proj && proj.friendly)
+                if (proj.Hitbox.Intersects(Projectile.Hitbox) && Projectile != proj && proj.friendly)
                 {
                     Projectile.Kill();
                 }
@@ -55,18 +50,20 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                 Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
                 Projectile.frameCounter = 0;
             }
-            num1 = ModContent.NPCType<MoonjellyGiant>();
+
+            int giantType = ModContent.NPCType<MoonjellyGiant>();
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
             float num2 = 60f;
             float x = 0.8f * Projectile.scale;
             float y = 0.5f * Projectile.scale;
             bool flag2 = false;
 
-            if ((double)Projectile.ai[0] < (double)num2)
+            if (Projectile.ai[0] < (double)num2)
             {
                 bool flag4 = true;
                 int index1 = (int)Projectile.ai[1];
-                if (Main.npc[index1].active && Main.npc[index1].type == num1)
+
+                if (Main.npc[index1].active && Main.npc[index1].type == giantType)
                 {
                     if (!flag2 && Main.npc[index1].oldPos[1] != Vector2.Zero)
                         Projectile.position = Projectile.position + Main.npc[index1].position - Main.npc[index1].oldPos[1];
@@ -74,6 +71,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                     {
                         DustHelper.DrawElectricity(Projectile.Center + (Projectile.velocity * 4), Main.npc[index1].Center + (Main.npc[index1].velocity * 4), 226, 0.35f, 30, default, 0.12f);
                     }
+
                     if (Projectile.Distance(Main.npc[index1].Center) > 600)
                     {
                         for (int i = 0; i < 12; i++)
@@ -81,6 +79,7 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                             Dust d = Dust.NewDustPerfect(Projectile.Center, 226, Vector2.One.RotatedByRandom(6.28f) * Main.rand.NextFloat(3), 0, default, 0.65f);
                             d.noGravity = true;
                         }
+
                         Projectile.position = Main.npc[index1].position + new Vector2(Main.rand.Next(-125, 126), Main.rand.Next(-125, 126));
 
                     }
@@ -91,9 +90,10 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                     Projectile.timeLeft = 300;
                     flag4 = false;
                 }
+
                 if (flag4 && !flag2)
                 {
-                    Projectile.velocity = Projectile.velocity + new Vector2((float)Math.Sign(Main.npc[index1].Center.X - Projectile.Center.X), (float)Math.Sign(Main.npc[index1].Center.Y - Projectile.Center.Y)) * new Vector2(x *.5f, y);
+                    Projectile.velocity = Projectile.velocity + new Vector2(Math.Sign(Main.npc[index1].Center.X - Projectile.Center.X), Math.Sign(Main.npc[index1].Center.Y - Projectile.Center.Y)) * new Vector2(x *.5f, y);
                 }
             }
         }
@@ -112,12 +112,13 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                     return true;
                 }
             }
+
             return false;
         }
 
-		public override Color? GetAlpha(Color lightColor) => Color.White;
+	public override Color? GetAlpha(Color lightColor) => Color.White;
 
-		public override void OnKill(int timeLeft)
+	public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCDeath28, Projectile.Center);
             for (int i = 0; i < 12; i++)
@@ -126,5 +127,4 @@ namespace SpiritMod.NPCs.Boss.MoonWizard.Projectiles
                 d.noGravity = true;
             }
         }
-	}
 }

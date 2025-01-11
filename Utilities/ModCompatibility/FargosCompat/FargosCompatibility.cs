@@ -1,4 +1,5 @@
-﻿using Terraria.ModLoader;
+﻿using System;
+using Terraria.ModLoader;
 
 namespace SpiritMod.Utilities.ModCompatibility.FargosCompat;
 
@@ -18,7 +19,11 @@ internal class FargosCompatibility : ModSystem
 			fargos.Call("AddSummon", 12.4f, "SpiritMod", "StoneSkin", () => MyWorld.DownedAtlas, 100 * 800);
 
 			// AddAbominationnEvent, takes the disable Action and then the check Func<bool> in that order
-			fargos.Call("AddAbominationnEvent", () => MyWorld.jellySky = false, () => MyWorld.jellySky);
+			fargos.Call("AddAbominationnEvent", () =>
+			{
+				// Needs to be spaced like this in order to be an Action not a Func<bool>.
+				MyWorld.jellySky = false;
+			}, () => MyWorld.jellySky);
 		}
 	}
 }

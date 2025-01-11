@@ -45,7 +45,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.GiantJellyBanner>();
-			SpawnModBiomes = new int[1] { ModContent.GetInstance<JellyDelugeBiome>().Type };
+			SpawnModBiomes = [ModContent.GetInstance<JellyDelugeBiome>().Type];
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
@@ -89,7 +89,9 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 				for (int i = 0; i < 5; i++)
 				{
 					Vector2 vel = Vector2.UnitY.RotatedByRandom(MathHelper.Pi) * new Vector2(Main.rand.Next(3, 8), Main.rand.Next(3, 8));
-					int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + Main.rand.Next(-20, 20), NPC.Center.Y + Main.rand.Next(-20, 20), vel.X, vel.Y, ModContent.ProjectileType<ElectricJellyfishOrbiter>(), NPCUtils.ToActualDamage(30, 1.5f, 2f), 0.0f, Main.myPlayer, 0.0f, NPC.whoAmI);
+					Vector2 pos = new(NPC.Center.X + Main.rand.Next(-20, 20), NPC.Center.Y + Main.rand.Next(-20, 20));
+					int type = ModContent.ProjectileType<ElectricJellyfishOrbiter>();
+					int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), pos.X, pos.Y, vel.X, vel.Y, type, NPCUtils.ToActualDamage(30, 1.5f, 2f), 0.0f, Main.myPlayer, 0.0f, NPC.whoAmI);
 					Main.projectile[p].scale = Main.rand.NextFloat(.6f, .95f);
 					Main.projectile[p].ai[0] = NPC.whoAmI;
 
@@ -97,6 +99,7 @@ namespace SpiritMod.NPCs.MoonjellyEvent
 					NPC.netUpdate = true;
 				}
 			}
+
 			return false;
 		}
 

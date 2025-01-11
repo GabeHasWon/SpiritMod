@@ -1555,17 +1555,33 @@ public class MyWorld : ModSystem
 
 	private static void UpdateAurora()
 	{
-		Player player = Main.LocalPlayer;
+		bool inSnow = false;
+		bool inSpirit = false;
+
+		if (Main.netMode == NetmodeID.SinglePlayer) 
+		{ 
+			Player player = Main.LocalPlayer;
+
+			inSnow = player.ZoneSnow;
+			inSpirit = player.ZoneSpirit();
+		}
+		else
+		{
+			foreach (Player player in Main.ActivePlayers)
+			{
+				if (player.ZoneSnow)
+					inSnow = true;
+
+				if (player.ZoneSpirit())
+					inSpirit = true;
+
+				if (inSnow && inSpirit)
+					break;
+			}
+		}
 
 		bool oldAurora = aurora;
 		byte oldAuroraType = (byte)auroraType;
-
-		if (player.ZoneSpirit())
-		{
-			if (!aurora)
-				aurora = true;
-			auroraType = 10;
-		}
 
 		if (Main.bloodMoon)
 			auroraType = 6;
@@ -1579,10 +1595,13 @@ public class MyWorld : ModSystem
 		if (blueMoon)
 			auroraType = 9;
 
-		if (!Main.bloodMoon && !Main.pumpkinMoon && !Main.snowMoon && !player.ZoneSpirit())
+		if (inSpirit)
+			auroraType = 10;
+
+		if (!Main.bloodMoon && !Main.pumpkinMoon && !Main.snowMoon && !inSpirit)
 			auroraType = auroraTypeFixed;
 
-		if (!Main.dayTime && Main.rand.NextBool(8))
+		if (!Main.dayTime && Main.rand.NextBool(inSnow ? 3 : 8))
 		{
 			auroraTypeFixed = Main.rand.Next(new int[] { 1, 2, 3, 5 });
 			aurora = true;

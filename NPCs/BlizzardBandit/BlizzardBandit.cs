@@ -157,6 +157,7 @@ namespace SpiritMod.NPCs.BlizzardBandit
                 if (frame < 6)
                     frame = 6;
             }
+
             NPC.frame.Y = frameHeight * frame;
 		}
 

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Equipment;
 using SpiritMod.Items.Sets.SpiritSet;
 using SpiritMod.Tiles.Block;
 using SpiritMod.Utilities;
@@ -36,7 +37,7 @@ namespace SpiritMod.NPCs.Spirit
 			Banner = NPC.type;
 			BannerItem = ModContent.ItemType<Items.Banners.SpiritBatBanner>();
 			AIType = NPCID.CaveBat;
-			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type };
+			SpawnModBiomes = [ModContent.GetInstance<Biomes.SpiritUndergroundBiome>().Type];
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");

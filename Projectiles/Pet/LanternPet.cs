@@ -49,7 +49,8 @@ namespace SpiritMod.Projectiles.Pet
 				dust.velocity = Vector2.Zero;
 				dust.noGravity = true;
 			}
-			Lighting.AddLight((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), 0.75f / 2, 1.5f / 2, 0.75f / 2);
+
+			Lighting.AddLight((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), 0.75f / 1.5f, 1.5f / 1.5f, 0.75f / 1.5f);
 			Projectile.frame = (int)(frameCounter += .2f) % Main.projFrames[Type];
 		}
 

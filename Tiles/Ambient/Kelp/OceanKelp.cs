@@ -23,8 +23,8 @@ namespace SpiritMod.Tiles.Ambient.Kelp
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 			TileObjectData.newTile.WaterPlacement = LiquidPlacement.OnlyInLiquid;
 			TileObjectData.newTile.AnchorBottom = new Terraria.DataStructures.AnchorData(AnchorType.SolidTile | AnchorType.AlternateTile, 1, 0);
-			TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.Sand, Type };
-			TileObjectData.newTile.AnchorAlternateTiles = new int[] { TileID.Sand, Type };
+			TileObjectData.newTile.AnchorValidTiles = [TileID.Sand, Type];
+			TileObjectData.newTile.AnchorAlternateTiles = [TileID.Sand, Type];
 			TileObjectData.addTile(Type);
 
 			AddMapEntry(new Color(21, 92, 19));

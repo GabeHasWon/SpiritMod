@@ -7,11 +7,6 @@ namespace SpiritMod.NPCs.Spirit
 {
 	public class SpiritRainHostile : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Spirit Arrow");
-		}
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 22;

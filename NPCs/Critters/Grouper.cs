@@ -80,8 +80,9 @@ namespace SpiritMod.NPCs.Critters
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{
-			if (NPC.life > 0 || Main.netMode != NetmodeID.Server)
+			if (NPC.life > 0 || Main.netMode == NetmodeID.Server)
 				return;
+
 			for (int i = 0; i < 30; i++)
 			{
 				if (i < 3)

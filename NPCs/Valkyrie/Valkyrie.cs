@@ -125,7 +125,7 @@ namespace SpiritMod.NPCs.Valkyrie
 			if (QuestManager.GetQuest<SlayerQuestValkyrie>().IsActive && !spawnInfo.PlayerInTown)
 				return 0.15f;
 
-			return spawnInfo.Sky && !spawnInfo.PlayerInTown && !NPC.AnyNPCs(ModContent.NPCType<Valkyrie>()) ? 0.09f : 0;
+			return spawnInfo.Sky && !spawnInfo.PlayerInTown && !NPC.AnyNPCs(ModContent.NPCType<Valkyrie>()) && !spawnInfo.Water ? 0.09f : 0;
 		}
 
 		public override void HitEffect(NPC.HitInfo hit)

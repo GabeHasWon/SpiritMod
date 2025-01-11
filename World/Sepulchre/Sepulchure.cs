@@ -304,12 +304,7 @@ public class SepulchureSystem : ModSystem
 			{
 				if (WorldGen.genRand.NextBool(30)&& (Main.tile[x - 1, y].TileType == Tile || Main.tile[x - 1, y].TileType == TileTwo) && Main.tile[x - 1, y].HasTile)
 				{
-					int windowType = Main.rand.Next(2) switch
-					{
-						0 => ModContent.TileType<SepulchreWindowOne>(),
-						_ => ModContent.TileType<SepulchreWindowTwo>(),
-					};
-					CreateWindowRow(x, y, 50, windowType);
+					CreateWindowRow(x, y, 50, ModContent.TileType<SepulchreWindowOne>());
 				}
 			},
 			delegate (int x, int y) //shelves
@@ -382,7 +377,7 @@ public class SepulchureSystem : ModSystem
 		{
 			for (int j = y - 6; j < y + 6; j++)
 			{
-				if (Main.tile[i, j].TileType == ModContent.TileType<SepulchreMirror>() || Main.tile[i, j].TileType == ModContent.TileType<SepulchreWindowOne>() || Main.tile[i, j].TileType == ModContent.TileType<SepulchreWindowTwo>())
+				if (Main.tile[i, j].TileType == ModContent.TileType<SepulchreMirror>() || Main.tile[i, j].TileType == ModContent.TileType<SepulchreWindowOne>())
 					return true;
 			}
 		}

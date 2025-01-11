@@ -13,7 +13,7 @@ internal class StaffOfRegrowthHarvestingItem : GlobalItem
 {
 	public override bool? UseItem(Item item, Player player)
 	{
-		if (item.type == ItemID.StaffofRegrowth)
+		if (item.type == ItemID.StaffofRegrowth || item.type == ItemID.AcornAxe)
 		{
 			Point target = new Point(Player.tileTargetX, Player.tileTargetY);
 			Tile tile = Main.tile[target.X, target.Y];

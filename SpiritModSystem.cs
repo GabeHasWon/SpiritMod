@@ -423,6 +423,7 @@ namespace SpiritMod
 							Vector2 origin = new Vector2(itemTexture.Width / 2, 0);
 							Main.spriteBatch.Draw(itemTexture, itemPos, new Rectangle(0, 0, itemTexture.Width, itemTexture.Height / 3), Color.White, (float)Math.Sin(Main.GlobalTimeWrappedHourly * 1.5f) * 0.2f, origin, 1f, SpriteEffects.None, 0f);
 						}
+
 						return true;
 					},
 					InterfaceScaleType.UI)

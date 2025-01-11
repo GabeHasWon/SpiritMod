@@ -38,7 +38,11 @@ AstralAmalgam: {
 }
 
 SpaceShield.DisplayName: Astral Buffer
-AuroraStag.DisplayName: Aurora Stag
+
+AuroraStag: {
+	DisplayName: Aurora Stag
+	Entry: A gourgeous stag known to frolic under the aurora's sky. Loves ice berries, scared by most other things. Especially people.
+}
 
 AutomataCreeper: {
 	DisplayName: Arachmaton

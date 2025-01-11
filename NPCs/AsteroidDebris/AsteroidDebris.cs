@@ -75,7 +75,8 @@ namespace SpiritMod.NPCs.AsteroidDebris
 					NPC.netUpdate = true;
 				}
 			}
-			else return true;
+			else 
+				return true;
 
 			return false;
 		}
@@ -107,7 +108,8 @@ namespace SpiritMod.NPCs.AsteroidDebris
 					NPC.netUpdate = true;
 				}
 			}
-			else HitCooldown--;
+			else 
+				HitCooldown--;
 
 			NPC.rotation += 0.002f + NPC.velocity.Length() / 40;
 
@@ -123,6 +125,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 						static float Direction() => Main.rand.NextFloat(-1.0f, 1.0f) * 3f;
 
 						int randomAmount = Main.rand.Next(4, 7);
+
 						for (int i = 0; i < randomAmount; i++)
 							Gore.NewGore(NPC.GetSource_Death(), NPC.Center, new Vector2(Direction(), Direction()), Mod.Find<ModGore>("AsteroidDebrisSmall").Type);
 					}
@@ -136,9 +139,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 				NPC.velocity.Y += 0.2f * (dist / (float)(Main.worldSurface * 0.36f - top));
 			}
 			else //Decelerate otherwise
-			{
 				NPC.velocity *= 0.99f;
-			}
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -152,9 +153,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 		}
 
 		public override bool? CanBeHitByProjectile(Projectile projectile) => false;
-
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
-
 		public override void ModifyHoverBoundingBox(ref Rectangle boundingBox) => boundingBox = NPC.Hitbox;
 	}
 }

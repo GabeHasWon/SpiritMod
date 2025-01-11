@@ -24,21 +24,28 @@ namespace SpiritMod.NPCs.Undead_Warlock
 			Projectile.width = 24;
 			Projectile.height = 22;
 			Projectile.aiStyle = 1;
-			AIType = ProjectileID.Bullet;
 			Projectile.hostile = true;
 			Projectile.friendly = false;
 			Projectile.timeLeft = 360;
 			Projectile.alpha = 100;
 			Projectile.scale = 0.8f;
+
+			AIType = ProjectileID.Bullet;
 		}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info) 
 		{
-			if (Main.npc[(int)Projectile.ai[1]].life < Main.npc[(int)Projectile.ai[1]].lifeMax - 10)
+			if (Projectile.ai[1] >= 0 && Projectile.ai[1] < Main.maxNPCs)
 			{
-				Main.npc[(int)Projectile.ai[1]].life += 10;
-				Main.npc[(int)Projectile.ai[1]].HealEffect(10, true);
+				NPC npc = Main.npc[(int)Projectile.ai[1]];
+
+				if (npc.life < npc.lifeMax - 10)
+				{
+					Main.npc[(int)Projectile.ai[1]].life += 10;
+					Main.npc[(int)Projectile.ai[1]].HealEffect(10, true);
+				}
 			}
+
 			Projectile.Kill();
 		}
 

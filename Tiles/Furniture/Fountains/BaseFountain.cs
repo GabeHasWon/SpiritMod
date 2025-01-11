@@ -64,7 +64,7 @@ namespace SpiritMod.Tiles.Furniture.Fountains
             return true;
         }
 
-		//public sealed override void HitWire(int i, int j) => ToggleTile(i, j);
+		public sealed override void HitWire(int i, int j) => ToggleTile(i, j);
 
 		public sealed override void MouseOver(int i, int j)
         {

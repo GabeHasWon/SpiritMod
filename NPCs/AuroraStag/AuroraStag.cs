@@ -10,6 +10,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -92,6 +93,13 @@ namespace SpiritMod.NPCs.AuroraStag
 			NPC.knockBackResist = .85f;
 			NPC.aiStyle = -1;
 			NPC.chaseable = false;
+			NPC.friendly = true;
+		}
+
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+		{
+			bestiaryEntry.UIInfoProvider = new CritterUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[Type]);
+			bestiaryEntry.AddInfo(this, "Snow");
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

@@ -1,5 +1,20 @@
-﻿v1.5.0.27
-- Nerfed spawn rate for Unstable Icicles to the ground (from 1/120 per random tick to 1/1750 per random tick)...except for notraps worlds
-- Fixed Marble and Granite music config options being unused
-- Fix typo in Cacophonous Cries description
-- Fixed Toucane feather projectiles dealing melee damage
+﻿v1.5.0.32
+- Significantly changed Ancient Tome:
+	Made Ancient Tome fire rate consistent & lower
+	Fixed Ancient Tome firing between 2 and 3 minus 1 projectiles, both of which behave the exact same way - now only one
+	Removed Ancient Tome contact damage
+	Ancient Tome now recoils on firing a projectile
+	Ancient Tome animation speed increases the lower its health is
+	The projectile Ancient Tome fires now dies quicker, explodes, and slows down a second before doing so
+	Reduced spawn rate of Ancient Tomes on the surface
+- Reduced ranged damage of all Spirit enemies
+- Made Ancient Spectre projectile fire rate consistent, slower, and reduced fire rate
+- Made Ancient Spectre projectiles much easier to read and react to
+- Reduced Ancient Spectre spawn rate, boosted health
+- Removed weird Ancient Spectre "explosion" functionality
+- Added drop for Obolos on the following enemies: Ancient Spectre, Ancient Tome, Shadow Ghoul
+	All of these are 1/300, aside from Ancient Tome, which - as penance for being the worst enemy in the biome - has a 1/100 chance
+- Removed Spirit Floater projectile firing capability
+	Now, Netherbane will release a shotgun spread of projectiles on death
+- Added multiplayer sync to all of the projectiles above
+- Jesus christ this code is bad

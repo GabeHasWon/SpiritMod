@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Equipment;
 using SpiritMod.Items.Sets.SummonsMisc.SoulDagger;
 using SpiritMod.Tiles.Block;
 using SpiritMod.Utilities;
@@ -101,6 +102,7 @@ namespace SpiritMod.NPCs.Spirit
 		{
 			npcLoot.AddCommon<Items.Sets.RunicSet.Rune>();
 			npcLoot.AddCommon<SoulDagger>(25);
+			npcLoot.AddCommon<Obolos>(300);
 		}
 	}
 }

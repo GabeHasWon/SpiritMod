@@ -16,7 +16,7 @@ namespace SpiritMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			MyPlayer modPlayer = player.GetSpiritPlayer();
-			player.GetDamage(DamageClass.Generic) *= 1.05f;
+			player.GetDamage(DamageClass.Generic) += 1.05f;
 			player.GetCritChance(DamageClass.Generic) += 5;
 			modPlayer.spiritBuff = true;
 		}

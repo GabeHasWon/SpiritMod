@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Items.Equipment;
 using SpiritMod.Tiles.Block;
 using SpiritMod.Utilities;
 using System.Linq;
@@ -73,7 +74,11 @@ namespace SpiritMod.NPCs.Spirit
 				target.AddBuff(BuffID.Cursed, 150);
 		}
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon(ModContent.ItemType<Items.Sets.RunicSet.Rune>(), 3);
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.AddCommon(ModContent.ItemType<Items.Sets.RunicSet.Rune>(), 3);
+			npcLoot.AddCommon(ModContent.ItemType<Obolos>(), 300);
+		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
