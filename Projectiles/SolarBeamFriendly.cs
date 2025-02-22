@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Mechanics.Trails;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -26,7 +28,7 @@ namespace SpiritMod.Projectiles
 			Projectile.alpha = 255;
 			Projectile.timeLeft = 180;
 			Projectile.light = 0;
-			Projectile.extraUpdates = 20;
+			Projectile.extraUpdates = 28;
 		}
 
 		public override void AI()
@@ -62,25 +64,27 @@ namespace SpiritMod.Projectiles
 			}
 
 			Projectile.localAI[0] += 1f;
-			if (Projectile.localAI[0] > 9f) {
-				for (int num447 = 0; num447 < 2; num447++) {
+			if (Projectile.localAI[0] > 9f)
+			{
+				for (int num447 = 0; num447 < 2; num447++)
+				{
 					Vector2 vector33 = Projectile.position;
 					vector33 -= Projectile.velocity * ((float)num447 * 0.25f);
 					Projectile.alpha = 255;
 					int num448 = Dust.NewDust(vector33, 1, 1, DustID.CopperCoin, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 0.25f);
 					Main.dust[num448].noGravity = true;
 					Main.dust[num448].position = vector33;
-					Main.dust[num448].scale = (float)Main.rand.Next(70, 110) * 0.013f;
+					Main.dust[num448].scale = (float)Main.rand.Next(40, 70) * 0.01f;
 					Main.dust[num448].velocity *= 0.2f;
 				}
 				return;
 			}
-		}
 
+		}
 		public override void OnKill(int timeLeft)
 		{
 			for (int num621 = 0; num621 < 5; num621++) {
-				Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
+				Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.CopperCoin, 0f, 0f, 100, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), .25f);
 			}
 		}
 	}

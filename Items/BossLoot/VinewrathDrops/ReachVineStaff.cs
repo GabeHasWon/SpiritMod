@@ -20,13 +20,13 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 
 		public override void SetDefaults()
 		{
-			Item.damage = 17;
+			Item.damage = 19;
 			Item.DamageType = DamageClass.Magic;
 			Item.mana = 6;
 			Item.width = 44;
 			Item.height = 48;
-			Item.useTime = 25;
-			Item.useAnimation = 25;
+			Item.useTime = 16;
+			Item.useAnimation = 16;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.staff[Item.type] = true;
 			Item.noMelee = true;
@@ -35,7 +35,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 			Item.rare = ItemRarityID.Green;
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<ReachPetal>();
-			Item.shootSpeed = 15f;
+			Item.shootSpeed = 18f;
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) 
 		{
@@ -57,7 +57,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 				length = 12 / length;
 				spX *= length;
 				spY *= length;
-				spX = spX - (float)Main.rand.Next(-10, 11) * 0.02f;
+				spX = spX - (float)Main.rand.Next(-20, 21) * 0.02f;
 				spY = spY + (float)Main.rand.Next(-40, 41) * 0.2f;
 				spX *= (float)Main.rand.Next(-10, 10) * 0.006f;
 				pos.X += (float)Main.rand.Next(-10, 11);
