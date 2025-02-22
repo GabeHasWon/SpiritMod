@@ -114,6 +114,7 @@ internal class VendorGlobalNPC : GlobalNPC
 			shop.Add<Canvas>();
 			shop.Add<FloppaPainting>();
 			shop.Add<SatchelReward>();
+			shop.Add<ScarabeusAnatomyItem>(SpiritConditions.ScarabDown);
 
 			shop.Add<ScrunklyPaintingItem>(new Condition("Mods.SpiritMod.Conditions.StarjinxDown", () =>
 				ModContent.GetInstance<SpiritNPCs.StarjinxEvent.StarjinxEventWorld>().StarjinxDefeated));

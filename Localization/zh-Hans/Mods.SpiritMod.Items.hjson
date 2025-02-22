@@ -9201,3 +9201,8 @@ ToxicTooth: {
 		Melee attacks occasionally strike enemies twice and release poisonous gas
 		''' */
 }
+
+ScarabeusAnatomyItem: {
+	// DisplayName: Anatomy of Scarabeus
+	// Tooltip: "'M. Bee'"
+}
