@@ -21,8 +21,8 @@ public class LostMime : ModNPC
 		NPC.width = 24;
 		NPC.height = 42;
 		NPC.damage = 30;
-		NPC.defense = 10;
-		NPC.lifeMax = 200;
+		NPC.defense = 6;
+		NPC.lifeMax = 100;
 		NPC.value = 80f;
 		NPC.knockBackResist = .25f;
 		NPC.aiStyle = 3;

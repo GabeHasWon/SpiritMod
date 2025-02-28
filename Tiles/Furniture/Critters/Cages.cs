@@ -7,6 +7,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
+using SpiritMod.Buffs.Tiles;
 
 namespace SpiritMod.Tiles.Furniture.Critters
 {
@@ -74,6 +75,15 @@ namespace SpiritMod.Tiles.Furniture.Critters
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) => (r, g, b) = (.33f, .025f, 1.15f);
 
+		public override void NearbyEffects(int i, int j, bool closer)
+		{
+			if (closer)
+			{
+				Player player = Main.LocalPlayer;
+				if (!player.dead)
+					player.AddBuff(BuffID.Calm, 8, true);
+			}
+		}
 		public override void AnimateTile(ref int frame, ref int frameCounter)
 		{
 			frameCounter++;

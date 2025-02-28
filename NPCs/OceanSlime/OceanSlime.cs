@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using SpiritMod.Items.Consumable.Food;
 
 namespace SpiritMod.NPCs.OceanSlime
 {
@@ -37,7 +38,13 @@ namespace SpiritMod.NPCs.OceanSlime
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "Ocean");
 
-		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<Coconut>(6, 9);
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.AddCommon<Coconut>(12, 15);
+			npcLoot.AddCommon(ItemID.Gel, 1, 2, 3);
+			npcLoot.AddCommon(ItemID.SlimeStaff, 10000);
+			npcLoot.AddCommon(ItemID.Coconut, 10);
+		}
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{

@@ -28,7 +28,7 @@ namespace SpiritMod.Mechanics.Fathomless_Chest
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = false;
-			Main.tileOreFinderPriority[Type] = 1000;
+			Main.tileOreFinderPriority[Type] = 500;
 			Main.tileSpelunker[Type] = true;
 			Main.tileLighted[Type] = true;
 			TileID.Sets.DisableSmartCursor[Type] = true;
