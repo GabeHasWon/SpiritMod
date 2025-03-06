@@ -96,6 +96,7 @@ public class MyWorld : ModSystem
 
 	public static bool spiritBiome = false;
 	public static bool rockCandy = false;
+	/// <summary> The side of the world that the asteroid biome will generate on. 0 = left, 1 = right. </summary>
 	public static int asteroidSide = 0;
 	public static bool gennedTower = false;
 	public static bool gennedBandits = false;
@@ -1215,6 +1216,7 @@ public class MyWorld : ModSystem
 	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 	{
 		tasks.Insert(3, new PassLegacy("SpiritReset", ResetWorldInfo));
+		asteroidSide = WorldGen.genRand.Next(2);
 
 		int microPassIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Smooth World"));
 

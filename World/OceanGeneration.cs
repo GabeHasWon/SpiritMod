@@ -15,7 +15,6 @@ using SpiritMod.Items.Sets.FloatingItems;
 using Terraria.Localization;
 using Terraria.WorldBuilding;
 using Terraria.IO;
-using ReLogic.Content;
 
 namespace SpiritMod.World
 {

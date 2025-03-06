@@ -35,7 +35,7 @@ public static class SpiritGenPasses
 	// Please organize fields with the proper comment, i.e.
 	// type field = value; //Allows y to do x
 
-	private static List<DecorSpamData> decorSpam = new List<DecorSpamData>(); //For ambient decor spam genpass merging
+	private static readonly List<DecorSpamData> decorSpam = []; //For ambient decor spam genpass merging
 
 	// Please put all your methods in regions
 	// Genpass methods should have their region name be "GENPASS: CAPITALIZED GENPASS NAME"
@@ -69,7 +69,7 @@ public static class SpiritGenPasses
 
 		progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Caches");
 
-		int siz = (int)((Main.maxTilesX / 4200f) * 7);
+		int siz = (int)(Main.maxTilesX / 4200f * 7);
 		int repeats = WorldGen.genRand.Next(siz, siz + 4);
 
 		for (int k = 0; k < repeats - 2; k++)
@@ -1126,18 +1126,13 @@ public static class SpiritGenPasses
 	public static void AsteroidsPass(GenerationProgress progress, GameConfiguration config)
 	{
 		progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Asteroids");
+
 		int width = 200 + (int)(((Main.maxTilesX / 4200f) - 1) * 75); //Automatically scales based on world size
 		int height = 50 + (int)(((Main.maxTilesX / 4200f) - 1) * 15);
-		int x = width + 80;
-		MyWorld.asteroidSide = 0;
 
-		if (WorldGen.genRand.NextBool())
-		{
-			x = Main.maxTilesX - (width + 80);
-			MyWorld.asteroidSide = 1;
-		}
-
+		int x = (MyWorld.asteroidSide == 0) ? (width + 80) : (Main.maxTilesX - (width + 80));
 		int y = height + WorldGen.genRand.Next(36, 50); //If you want to change the top of the asteroid biome, change this
+
 		PlaceAsteroids(x, y, width, height);
 	}
 	#endregion GENPASS: ASTEROIDS

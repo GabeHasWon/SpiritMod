@@ -12,16 +12,14 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 {
 	public class RealityQuillProjectile : ModProjectile, IMetaball
 	{
-		bool start;
-
-		Vector2 previousMousePosition = Vector2.Zero;
-		Vector2 currentMousePosition = Vector2.Zero;
+		private bool _start;
+		private Vector2 _previousMousePosition;
+		private Vector2 _currentMousePosition;
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Magic Gloop");
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30; 
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+			ProjectileID.Sets.TrailCacheLength[Type] = 30; 
+			ProjectileID.Sets.TrailingMode[Type] = 0;
 		}
 
 		public override void SetDefaults()
@@ -44,14 +42,17 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 		
 		public override void AI()
 		{
-			if (!start)
+			if (!_start)
 			{
 				SpiritMod.Metaballs.NebulaLayer.Metaballs.Add(this);
 
 				Projectile.scale = 0.1f * Projectile.ai[0];
 				Projectile.timeLeft = 150;
-				previousMousePosition = currentMousePosition = Main.MouseWorld;
-				start = true;
+
+				if (Projectile.owner == Main.myPlayer)
+					_previousMousePosition = _currentMousePosition = Main.MouseWorld;
+
+				_start = true;
 			}
 
 			if (Projectile.timeLeft >= 140)
@@ -69,8 +70,15 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 			if (Projectile.timeLeft < 10)
 				Projectile.scale *= 0.8f;
 
-			previousMousePosition = currentMousePosition;
-			currentMousePosition = Main.MouseWorld;
+			_previousMousePosition = _currentMousePosition;
+
+			if (Projectile.owner == Main.myPlayer)
+			{
+				_currentMousePosition = Main.MouseWorld;
+
+				if (_previousMousePosition != _currentMousePosition)
+					Projectile.netUpdate = true;
+			}
 		}
 
 		public override void OnKill(int timeLeft)
@@ -98,13 +106,12 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 				ImpactLine line = new ImpactLine(target.Center - (vel * 5), vel, Color.Purple, new Vector2(0.25f, Main.rand.NextFloat(0.75f, 1.75f)), 70);
 				line.TimeActive = 30;
 				ParticleHandler.SpawnParticle(line);
-
 			}
 		}
 
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			float distance = (previousMousePosition - currentMousePosition).Length() * 5;
+			float distance = (_previousMousePosition - _currentMousePosition).Length() * 5;
 			modifiers.FinalDamage *= MathHelper.Clamp((float)Math.Sqrt(distance), 1, 7);
 		}
 

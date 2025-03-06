@@ -31,7 +31,7 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 			Projectile.tileCollide = false;
 		}
 
-		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap);
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.Center);
 
 		public override void AI()
 		{

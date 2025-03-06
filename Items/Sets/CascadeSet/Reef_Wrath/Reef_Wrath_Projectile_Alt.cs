@@ -35,7 +35,7 @@ namespace SpiritMod.Items.Sets.CascadeSet.Reef_Wrath
 				Projectile.NewProjectile(Projectile.GetSource_Death(), position, Projectile.velocity, Mod.Find<ModProjectile>("Reef_Wrath_Projectile_" + i).Type, Projectile.damage, Projectile.knockBack, Projectile.owner);
 			}
 
-			SoundEngine.PlaySound(SoundID.LiquidsWaterLava);
+			SoundEngine.PlaySound(SoundID.LiquidsWaterLava, Projectile.Center);
 		}
 	}
 }

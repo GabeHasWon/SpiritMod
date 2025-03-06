@@ -47,7 +47,7 @@ namespace SpiritMod.GlobalClasses.Players
 		{
 			if (Player.HasAccessory<GrislyTongue>() && info.Damage > 8)
 			{
-				SoundEngine.PlaySound(SoundID.DD2_MonkStaffGroundImpact);
+				SoundEngine.PlaySound(SoundID.DD2_MonkStaffGroundImpact, Player.Center);
 				totemHealthToRecover = (int)info.Damage / 8;
 				for (int i = 0; i < 3; i++)
 				{
@@ -68,7 +68,7 @@ namespace SpiritMod.GlobalClasses.Players
 				}
 				else
 				{
-					SoundEngine.PlaySound(SoundID.Item76);
+					SoundEngine.PlaySound(SoundID.Item76, Player.Center);
 					scarabDefense = (info.Damage >= 400) ? 50 : 5 + (int)(info.Damage / 8f);
 				}
 				Player.AddBuff(ModContent.BuffType<GildedScarab_buff>(), 300);
@@ -84,7 +84,7 @@ namespace SpiritMod.GlobalClasses.Players
 				}
 				else
 				{
-					SoundEngine.PlaySound(SoundID.Item74);
+					SoundEngine.PlaySound(SoundID.Item74, Player.Center);
 					slagDamageMultiplier = (info.Damage >= 400) ? 0.5f : 0.05f + (float)(info.Damage / 800f);
 				}
 				Player.AddBuff(ModContent.BuffType<SlagFury_buff>(), 300);

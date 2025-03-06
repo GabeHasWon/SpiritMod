@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.NPCs.Town;
 using SpiritMod.NPCs.Boss.Atlas;
 using SpiritMod.NPCs.Tides.Tide;
 using SpiritMod.Skies;
@@ -672,7 +671,6 @@ namespace SpiritMod
 				primitives.LoadContent(Main.graphics.GraphicsDevice);
 
 				InitStargoop();
-				Boids.LoadContent();
 				AdditiveCallManager.Load();
 
 				RhythmMinigame.LoadStatic();
@@ -770,9 +768,6 @@ namespace SpiritMod
 			AutoloadMinionDictionary.Unload();
 			Mechanics.BackgroundSystem.BackgroundItemManager.Unload();
 
-			if (Boids != null)
-				Boids.UnloadContent();
-
 			glitchEffect = null;
 			glitchScreenShader = null;
 			TrailManager = null;
@@ -785,7 +780,6 @@ namespace SpiritMod
 
 			PortraitManager.Unload(); //Idk if this is necessary but it seems like a good move - Gabe
 									  //UnloadDetours();
-
 			// remove any custom chat tag handlers
 			var handlerDict = (ConcurrentDictionary<string, ITagHandler>)typeof(ChatManager).GetField("_handlers", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
 			handlerDict.TryRemove("spiritQuest", out var _);

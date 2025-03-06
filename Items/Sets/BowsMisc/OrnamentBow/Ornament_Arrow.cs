@@ -44,7 +44,8 @@ namespace SpiritMod.Items.Sets.BowsMisc.OrnamentBow
 				int i = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.RainbowTorch, 0.0f, 0.0f, 0, Main.DiscoColor, 1f);
 				Main.dust[i].noGravity = true;
 			}
-			SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f });
+
+			SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.4f }, Projectile.Center);
 
 			Player player = Main.player[Projectile.owner];
 			int extraArrows = Main.rand.Next(5);

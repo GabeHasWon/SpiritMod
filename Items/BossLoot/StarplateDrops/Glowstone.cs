@@ -32,9 +32,8 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 
 		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 		{
-			Player player = Main.LocalPlayer;
-			if (Vector2.DistanceSquared(new Vector2(i * 16, j * 16), player.Center) < 54 * 54)
-				SoundEngine.PlaySound(SoundID.NPCHit4);
+			if (!effectOnly)
+				SoundEngine.PlaySound(SoundID.NPCHit4, new Vector2(i, j).ToWorldCoordinates());
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

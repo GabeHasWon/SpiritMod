@@ -74,9 +74,11 @@ namespace SpiritMod.Items.Sets.BloodcourtSet.BloodCourt
 					Main.dust[num].velocity = player.DirectionTo(Main.dust[num].position) * 6f;
 			}
 
-			SoundEngine.PlaySound(SoundID.Item109);
-
-			Projectile.NewProjectile(player.GetSource_FromThis("DoubleTap"), player.Center, dir, ModContent.ProjectileType<DarkAnima>(), 70, 0, player.whoAmI);
+			if (player.whoAmI == Main.myPlayer)
+			{
+				SoundEngine.PlaySound(SoundID.Item109);
+				Projectile.NewProjectile(player.GetSource_FromThis("DoubleTap"), player.Center, dir, ModContent.ProjectileType<DarkAnima>(), 70, 0, player.whoAmI);
+			}
 		}
 
 		private static void BloodCourtEye(Player player)

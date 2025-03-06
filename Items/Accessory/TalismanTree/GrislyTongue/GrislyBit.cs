@@ -56,7 +56,7 @@ namespace SpiritMod.Items.Accessory.TalismanTree.GrislyTongue
 
 		public override bool OnPickup(Player player)
 		{
-			SoundEngine.PlaySound(SoundID.Item171);
+			SoundEngine.PlaySound(SoundID.Item171, player.Center);
 			player.Heal(player.GetModPlayer<TalismanPlayer>().totemHealthToRecover);
 			return false;
 		}

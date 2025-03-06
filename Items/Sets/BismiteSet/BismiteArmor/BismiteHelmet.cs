@@ -61,7 +61,8 @@ namespace SpiritMod.Items.Sets.BismiteSet.BismiteArmor
 		{
 			if (player.HasBuff(ModContent.BuffType<VirulenceCooldown>()) || virulence >= 0)
 				virulence--;
-			if (virulence == 0f)
+
+			if (player.whoAmI == Main.myPlayer && virulence == 0f)
 				SoundEngine.PlaySound(SoundID.MaxMana);
 		}
 

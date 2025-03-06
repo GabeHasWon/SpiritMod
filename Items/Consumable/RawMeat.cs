@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool OnPickup(Player player)
 		{
-			SoundEngine.PlaySound(SoundID.Item2);
+			SoundEngine.PlaySound(SoundID.Item2, player.Center);
 			player.statLife += 10;
 			player.HealEffect(10, true);
 			player.AddBuff(BuffID.WellFed, 540);
