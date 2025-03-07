@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using SpiritMod.Utilities.Noise;
-using SpiritMod.World.Sepulchre;
 using SpiritMod.Tiles.Ambient;
 using SpiritMod.Tiles.Block;
 using SpiritMod.Tiles.Walls.Natural;
@@ -68,15 +67,14 @@ public class SepulchureSystem : ModSystem
 
 	public void CreateSepulchre(Vector2 position)
 	{
-		int[] invalidTypes = new int[]
-		{
+		int[] invalidTypes = [
 			TileID.BeeHive,
 			TileID.BlueDungeonBrick,
 			TileID.GreenDungeonBrick,
 			TileID.PinkDungeonBrick,
 			TileID.LihzahrdBrick,
 			TileTwo
-		};
+		];
 
 		const int CheckDistanceX = 75;
 		const int CheckDistanceY = 125;
@@ -200,31 +198,47 @@ public class SepulchureSystem : ModSystem
 			LoopThroughTiles(i, j, atTile);
 	}
 
-	public void CreateChests(int i, int j)
+	private static void CreateChests(int i, int j)
 	{
-		for (int x = i - 50; x < i + 50; x++)
+		const int attempts = 300;
+
+		for (int a = 0; a < attempts; a++)
 		{
-			for (int y = j - 90; y < j + 50; y++)
+			Point pt = new Point(Main.rand.Next(i - 50, i + 51), Main.rand.Next(j - 90, j + 51));
+			if (Framing.GetTileSafely(pt).WallType != Wall)
 			{
-				Tile me = Main.tile[x, y];
-				Tile below = Main.tile[x, y + 1];
+				a--;
+				continue;
+			}
 
-				if ((below.TileType == Tile || below.TileType == TileTwo) && Main.rand.NextBool(100) && me.WallType == Wall && !WorldGen.SolidOrSlopedTile(x, y))
-				{
-					WorldGen.PlaceTile(x + 1, y + 1, below.TileType);
-					WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<SepulchreChestTile>(), false, 0);
+			while (!WorldGen.SolidOrSlopedTile(pt.X, pt.Y + 1))
+				pt.Y++;
 
-					if (Main.tile[x, y - 1].TileType == (ushort)ModContent.TileType<SepulchreChestTile>())
-						goto skipLoops;
-				}
+			if (validFloor(pt.X, pt.Y + 1) && Framing.GetTileSafely(pt).WallType == Wall)
+			{
+				WorldGen.PlaceChest(pt.X, pt.Y, (ushort)ModContent.TileType<SepulchreChestTile>());
+
+				if (Framing.GetTileSafely(pt.X, pt.Y).TileType == (ushort)ModContent.TileType<SepulchreChestTile>())
+					break;
 			}
 		}
 
-	skipLoops:
-		return;
+		static bool validFloor(int i, int j)
+		{
+			for (int x = i; x < i + 2; x++)
+			{
+				var t = Main.tile[x, j];
+				int type = t.TileType;
+
+				if (!((type == Tile || type == TileTwo) && t.Slope == SlopeType.Solid && !t.IsHalfBlock))
+					return false;
+			}
+
+			return true;
+		}
 	}
 
-	public void PlaceEnemies(int i, int j)
+	private static void PlaceEnemies(int i, int j)
 	{
 		bool success = false;
 		bool draugrSuccess = false;
@@ -261,7 +275,7 @@ public class SepulchureSystem : ModSystem
 		}
 	}
 
-	public void PolishSepulchre(int i, int j)
+	public static void PolishSepulchre(int i, int j)
 	{
 		var noiseType2 = new PerlinNoiseTwo(WorldGen._genRandSeed);
 
@@ -343,7 +357,7 @@ public class SepulchureSystem : ModSystem
 				atTile.Invoke(x, y);
 	}
 
-	public void CreateHalfCircle(int x, int y, int diameter)
+	public static void CreateHalfCircle(int x, int y, int diameter)
 	{
 		for (float i = -3.14f; i < 0f; i += 0.01f)
 		{
@@ -398,7 +412,7 @@ public class SepulchureSystem : ModSystem
 		}
 	}
 
-	public void CreateShelf(int i, int j, int length, int platformType, bool placeobjects)
+	public static void CreateShelf(int i, int j, int length, int platformType, bool placeobjects)
 	{
 		for (int x = i; x < i + length; x++)
 		{
@@ -412,7 +426,7 @@ public class SepulchureSystem : ModSystem
 		}
 	}
 
-	public void CreateShelfBackwards(int i, int j, int length, int platformType, bool placeobjects)
+	public static void CreateShelfBackwards(int i, int j, int length, int platformType, bool placeobjects)
 	{
 		for (int x = i; x > i - length; x--)
 		{
@@ -426,7 +440,7 @@ public class SepulchureSystem : ModSystem
 		}
 	}
 
-	public void CreateWindowRow(int i, int j, int length, int windowType)
+	public static void CreateWindowRow(int i, int j, int length, int windowType)
 	{
 		for (int x = i + 2; x < i + length; x += 5)
 		{
@@ -438,7 +452,7 @@ public class SepulchureSystem : ModSystem
 		}
 	}
 
-	public void CreateRoom(int i, int j, int width, int height)
+	public static void CreateRoom(int i, int j, int width, int height)
 	{
 		for (int x = i - (width / 2); x <= i + (width * 2); x++)
 		{
@@ -465,7 +479,7 @@ public class SepulchureSystem : ModSystem
 		}
 	}
 
-	public void DeleteWallVertical(int i, int j, int width)
+	public static void DeleteWallVertical(int i, int j, int width)
 	{
 		width /= 2;
 
@@ -479,7 +493,7 @@ public class SepulchureSystem : ModSystem
 		}
 	}
 
-	public void DeleteWallHorizontal(int i, int j, int width)
+	public static void DeleteWallHorizontal(int i, int j, int width)
 	{
 		width /= 2;
 
@@ -493,7 +507,7 @@ public class SepulchureSystem : ModSystem
 		}
 	}
 
-	public void DeleteOrphan(int i, int j)
+	public static void DeleteOrphan(int i, int j)
 	{
 		if (!Main.tile[i - 1, j].HasTile && !Main.tile[i + 1, j].HasTile && !Main.tile[i, j - 1].HasTile && !Main.tile[i, j + 1].HasTile &&
 			(Main.tile[i, j].TileType == Tile || Main.tile[i, j].TileType == TileTwo))
