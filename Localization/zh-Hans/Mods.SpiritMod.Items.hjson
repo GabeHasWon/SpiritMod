@@ -3757,6 +3757,16 @@ SatchelReward: {
 		'''
 }
 
+MJWPainting: {
+	// DisplayName: Moonlit Mischief
+	// Tooltip: "'M. Joon'"
+}
+
+SadSlimePainting: {
+	// DisplayName: The Other Side
+	// Tooltip: "'P. Polaris'"
+}
+
 ScarabIdol: {
 	DisplayName: 圣甲虫崇符
 	Tooltip:
@@ -9205,4 +9215,9 @@ ToxicTooth: {
 ScarabeusAnatomyItem: {
 	// DisplayName: Anatomy of Scarabeus
 	// Tooltip: "'M. Bee'"
+}
+
+ToweringStactus: {
+	// DisplayName: Towering Stactus
+	// Tooltip: "'A. Knight'"
 }
