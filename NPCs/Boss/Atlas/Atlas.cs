@@ -36,10 +36,9 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Atlas");
-			NPCID.Sets.TrailCacheLength[NPC.type] = 6;
-			NPCID.Sets.TrailingMode[NPC.type] = 0;
-			Main.npcFrameCount[NPC.type] = 6;
+			NPCID.Sets.TrailCacheLength[Type] = 6;
+			NPCID.Sets.TrailingMode[Type] = 0;
+			Main.npcFrameCount[Type] = 6;
 			NPCHelper.ImmuneTo(this, BuffID.Poisoned, BuffID.Venom, BuffID.Confused, ModContent.BuffType<FesteringWounds>(), ModContent.BuffType<BloodCorrupt>(), ModContent.BuffType<BloodInfusion>());
 		}
 
@@ -59,7 +58,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			NPC.DeathSound = SoundID.NPCDeath5;
 
             Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Atlas");
-			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SpiritSurfaceBiome>().Type };
+			SpawnModBiomes = [ModContent.GetInstance<Biomes.SpiritSurfaceBiome>().Type];
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) => bestiaryEntry.AddInfo(this, "");
@@ -368,7 +367,8 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 			int offset = NPC.IsABestiaryIconDummy ? 170 : 0;
-			spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY + offset), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+
+			spriteBatch.Draw(TextureAssets.Npc[Type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY + offset), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 			return false;
 		}
 
