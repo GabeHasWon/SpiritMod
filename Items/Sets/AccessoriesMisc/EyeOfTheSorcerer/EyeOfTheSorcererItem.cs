@@ -6,12 +6,6 @@ namespace SpiritMod.Items.Sets.AccessoriesMisc.EyeOfTheSorcerer;
 
 public class EyeOfTheSorcererItem : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Eye of the Sorcerer");
-		// Tooltip.SetDefault("Gain crit chance based on the amount of mana you have\nAt full mana gain an additional 10% crit");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 32;
@@ -29,6 +23,6 @@ public class EyeOfTheSorcererItem : ModItem
 		if (player.statMana == player.statManaMax2)
 			increase += 10;
 
-		player.GetCritChance(DamageClass.Magic) += increase;
+		player.GetCritChance(DamageClass.Generic) += increase;
 	}
 }

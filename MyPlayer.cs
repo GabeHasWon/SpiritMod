@@ -587,8 +587,13 @@ public class MyPlayer : ModPlayer
 		return true;
 	}
 
-	public override void ModifyWeaponDamage(Item item, ref StatModifier damage) => BeginShotDetection(item);
+	public override void ModifyWeaponCrit(Item item, ref float crit)
+	{
+		if (rabbitFoot)
+			crit = 1;
+	}
 
+	public override void ModifyWeaponDamage(Item item, ref StatModifier damage) => BeginShotDetection(item);
 	public override void PostItemCheck() => EndShotDetection();
 
 	private void PrepareShotDetection()
@@ -1019,11 +1024,17 @@ public class MyPlayer : ModPlayer
 
 	public override void PostHurt(Player.HurtInfo info)
 	{
-		if (soulPotion && Main.rand.NextBool(5))
-			Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, Vector2.Zero, ModContent.ProjectileType<SoulPotionWard>(), 0, 0f, Player.whoAmI);
+		if (soulPotion && Main.rand.NextBool(3))
+		{
+			foreach (var npc in Main.ActiveNPCs)
+			{
+				if (npc.DistanceSQ(Player.Center) < 300 * 300 && npc.CanBeChasedBy(Player))
+					npc.AddBuff(ModContent.BuffType<SoulBurn>(), 240);
+			}
+		}
 
 		if (spiritBuff && Main.rand.NextBool(3))
-			Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, new Vector2(6, 6), ModContent.ProjectileType<StarSoul>(), 40, 0f, Player.whoAmI);
+			Projectile.NewProjectile(Player.GetSource_OnHurt(info.DamageSource), Player.Center, new Vector2(6, 6), ModContent.ProjectileType<StarSoul>(), 40, 0f, Player.whoAmI);
 	}
 
 	public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -1811,6 +1822,9 @@ public class MyPlayer : ModPlayer
 
 		if (oakHeartStacks > 0)
 			oakHeartStacks -= 0.025f;
+
+		if (soulPotion)
+			Player.GetDamage(DamageClass.Melee) *= 1.05f;
 	}
 
 	public override void PostUpdateRunSpeeds()
@@ -1997,12 +2011,6 @@ public class MyPlayer : ModPlayer
 			concentrated = false;
 			concentratedCooldown = 300;
 		}
-	}
-
-	public override void ModifyWeaponCrit(Item item, ref float crit)
-	{
-		if (rabbitFoot)
-			crit = 1;
 	}
 
 	private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) 
@@ -2205,11 +2213,12 @@ public class MyPlayer : ModPlayer
 			if (bloodcourtSet && !Player.HasBuff(ModContent.BuffType<CourtCooldown>()) && Player.statLife > (int)(Player.statLifeMax * .08f))
 				BloodCourtHead.DoubleTapEffect(Player);
 
-			if (frigidSet && !Player.HasBuff(ModContent.BuffType<FrigidCooldown>()))
+			if (frigidSet && !Player.HasBuff<FrigidCooldown>())
 			{
-				Vector2 mouse = Main.MouseScreen + Main.screenPosition;
+				var mouse = Main.MouseScreen + Main.screenPosition;
 				Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), mouse, Vector2.Zero, ModContent.ProjectileType<FrigidWall>(), 14, 8, Player.whoAmI);
-				Player.AddBuff(ModContent.BuffType<FrigidCooldown>(), 500);
+
+				Player.AddBuff(ModContent.BuffType<FrigidCooldown>(), 480);
 			}
 		}
 	}

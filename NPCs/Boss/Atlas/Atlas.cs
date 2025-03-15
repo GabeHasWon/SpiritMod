@@ -80,12 +80,14 @@ namespace SpiritMod.NPCs.Boss.Atlas
 
 		public override void AI()
 		{
-			Player player = Main.player[NPC.target]; //player target
+			NPC.TargetClosest(false);
+			var target = Main.player[NPC.target]; //player target
+
 			bool aiChange = NPC.life <= NPC.lifeMax * 0.75f; //ai change to phase 2
 			bool aiChange2 = NPC.life <= NPC.lifeMax * 0.5f; //ai change to phase 3
 			bool aiChange3 = NPC.life <= NPC.lifeMax * 0.25f; //ai change to phase 4
 			bool phaseChange = NPC.life <= NPC.lifeMax * 0.1f; //aggression increase
-			player.AddBuff(ModContent.BuffType<UnstableAffliction>(), 2); //buff that causes gravity shit
+			target.AddBuff(ModContent.BuffType<UnstableAffliction>(), 2); //buff that causes gravity shit
 			int defenseBuff = (int)(35f * (1f - NPC.life / NPC.lifeMax));
 			NPC.defense = NPC.defDefense + defenseBuff;
 
@@ -118,12 +120,12 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			{
 				if (NPC.alpha == 0)
 				{
-					Vector2 dist = player.Center - NPC.Center;
-					Vector2 direction = player.Center - NPC.Center;
+					Vector2 dist = target.Center - NPC.Center;
+					Vector2 direction = target.Center - NPC.Center;
 
 					NPC.netUpdate = true;
 					NPC.TargetClosest(true);
-					if (!player.active || player.dead)
+					if (!target.active || target.dead)
 					{
 						NPC.TargetClosest(false);
 						NPC.velocity.Y = -100f;
@@ -165,8 +167,8 @@ namespace SpiritMod.NPCs.Boss.Atlas
 						float speed = Main.expertMode ? 21f : 18f; //made more aggressive.  expert mode is more.  dusking base value is 7
 						float acceleration = Main.expertMode ? 0.16f : 0.13f; //made more aggressive.  expert mode is more.  dusking base value is 0.09
 						Vector2 vector2 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-						float xDir = player.position.X + (player.width / 2) - vector2.X;
-						float yDir = (float)(player.position.Y + (player.height / 2) - 120) - vector2.Y;
+						float xDir = target.position.X + (target.width / 2) - vector2.X;
+						float yDir = (float)(target.position.Y + (target.height / 2) - 120) - vector2.Y;
 						float length = (float)Math.Sqrt(xDir * xDir + yDir * yDir);
 						if (length > 400f)
 						{
@@ -298,24 +300,12 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			if (collideTimer == 500)
 				NPC.noTileCollide = true;
 
-			NPC.TargetClosest(true);
-			bool anyNearbyActivePlayer = false;
-
-			foreach (Player plr in Main.ActivePlayers)
-			{
-				if (!plr.dead && plr.DistanceSQ(NPC.Center) < 8500 * 8500)
-				{
-					anyNearbyActivePlayer = true;
-					break;
-				}
-			}
-
-			if (!anyNearbyActivePlayer)
+			if (!NPC.HasValidTarget) //Rise into the sky and despawn
 			{
 				NPC.velocity.Y -= 0.5f;
 				timer = 0;
 
-				if (NPC.position.Y < -2000)
+				if (NPC.position.Y < -2000 && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					NPC.active = false;
 					NPC.netUpdate = true;
@@ -408,7 +398,7 @@ namespace SpiritMod.NPCs.Boss.Atlas
 			ref Func<bool> isAvailable)
 		{
 			entryType = BossChecklistDataHandler.EntryType.Boss;
-			progression = 12.4f;
+			progression = 13.4f;
 			name = nameof(Atlas);
 			downedCondition = () => MyWorld.DownedAtlas;
 			identificationData = new BossChecklistDataHandler.BCIDData(

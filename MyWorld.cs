@@ -94,6 +94,7 @@ public class MyWorld : ModSystem
 	public static int CorruptHazards = 0;
 	public static int CrimHazards = 0;
 
+	/// <summary> Whether the Spirit biome has generated. Handled on server/singleplayer. </summary>
 	public static bool spiritBiome = false;
 	public static bool rockCandy = false;
 	/// <summary> The side of the world that the asteroid biome will generate on. 0 = left, 1 = right. </summary>

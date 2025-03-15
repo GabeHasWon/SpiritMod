@@ -44,7 +44,6 @@ namespace SpiritMod.NPCs
 		public int summonTag;
 		public bool sacrificialDaggerBuff;
 
-		public bool soulBurn = false;
 		public bool Stopped = false;
 		public bool afflicted = false;
 		public bool starDestiny = false;
@@ -79,7 +78,6 @@ namespace SpiritMod.NPCs
 			starDestiny = false;
 			afflicted = false;
 			Stopped = false;
-			soulBurn = false;
 			blaze = false;
 			tracked = false;
 			iceCrush = false;
@@ -255,7 +253,7 @@ namespace SpiritMod.NPCs
 				damage = 3;
 			}
 
-			if (soulBurn)
+			if (npc.HasBuff<SoulBurn>())
 			{
 				drain = true;
 				npc.lifeRegen -= 15;
