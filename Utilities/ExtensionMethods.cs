@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Biomes;
+using SpiritMod.Systems.Aurora;
 
 namespace SpiritMod.Utilities
 {
@@ -45,5 +46,11 @@ namespace SpiritMod.Utilities
 		public static bool ZoneAsteroid(this Player player) => player.InModBiome<AsteroidBiome>();
 		public static bool ZoneBriar(this Player player) => player.InModBiome<BriarSurfaceBiome>() || player.InModBiome<BriarUndergroundBiome>();
 		public static bool ZoneSpirit(this Player player) => player.InModBiome<SpiritSurfaceBiome>() || player.InModBiome<SpiritUndergroundBiome>();
+
+		/// <inheritdoc cref="AuroraPlayer.SetLocalAurora"/>
+		public static void SetLocalAurora(this Player player, int type) => player.GetModPlayer<AuroraPlayer>().SetLocalAurora(type);
+
+		/// <inheritdoc cref="AuroraPlayer.AuroraActive"/>
+		public static bool ZoneAurora(this Player player) => player.GetModPlayer<AuroraPlayer>().AuroraActive;
 	}
 }

@@ -6,6 +6,8 @@ using SpiritMod.Mechanics.EventSystem.Events;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.QuestSystem.Quests;
 using SpiritMod.Particles;
+using SpiritMod.Systems.Aurora;
+using SpiritMod.Utilities;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -104,11 +106,13 @@ namespace SpiritMod.NPCs.AuroraStag
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			bool valid = spawnInfo.Player.ZoneSnow && MyWorld.aurora && Main.hardMode && !spawnInfo.PlayerInTown;
+			bool valid = spawnInfo.Player.ZoneSnow && spawnInfo.Player.ZoneAurora() && Main.hardMode && !spawnInfo.PlayerInTown;
+
 			if (NPC.AnyNPCs(NPC.type) || !valid)
 				return 0f;
 			if (QuestManager.GetQuest<AuroraStagQuest>().IsActive)
 				return 0.05f;
+
 			return 0.0015f;
 		}
 
