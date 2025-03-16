@@ -58,13 +58,12 @@ using SpiritMod.NPCs.Boss.Infernon;
 using SpiritMod.NPCs.Boss.MoonWizard;
 using SpiritMod.NPCs.Boss.ReachBoss;
 using SpiritMod.NPCs.Boss.Dusking;
+using SpiritMod.Systems;
 
 namespace SpiritMod;
 
 public class MyWorld : ModSystem
 {
-	public static event Action DayTimeSwitched;
-
 	public static float rotationTime = 0;
 	private static bool dayTimeLast;
 
@@ -129,7 +128,7 @@ public class MyWorld : ModSystem
 	public override void Load()
 	{
 		On_WorldGen.IslandHouse += SpiritGenPasses.StealIslandInfo;
-		DayTimeSwitched += OnDaySwitch;
+		TimeSystem.TimeChanged += OnTimeSwitch;
 	}
 
 	public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
@@ -254,6 +253,7 @@ public class MyWorld : ModSystem
 		BitsByte bosses2 = new BitsByte(downedTide, downedMechromancer, downedOccultist, downedGladeWraith, downedBeholder, downedSnaptrapper, downedTome, downedGazer);
 		writer.Write(bosses);
 		writer.Write(bosses2);
+
 		BitsByte environment = new BitsByte(blueMoon, jellySky, downedBlueMoon, downedJellyDeluge);
 		BitsByte worldgen = new BitsByte(gennedBandits, gennedTower);
 		writer.Write(environment);
@@ -1445,15 +1445,7 @@ public class MyWorld : ModSystem
 		}
 	}
 
-	public override void PostUpdateEverything()
-	{
-		if (Main.dayTime != dayTimeLast)
-			DayTimeSwitched?.Invoke();
-
-		dayTimeLast = Main.dayTime;
-	}
-
-	private static void OnDaySwitch()
+	private static void OnTimeSwitch(bool day)
 	{
 		if (Main.netMode == NetmodeID.MultiplayerClient)
 			return;
@@ -1479,7 +1471,7 @@ public class MyWorld : ModSystem
 		else
 			meteorShowerWeather = false;
 
-		if (!Main.dayTime && Main.hardMode)
+		if (!day && Main.hardMode)
 		{
 			if (!Main.IsFastForwardingTime() && !Main.bloodMoon && WorldGen.spawnHardBoss == 0 && ((Main.rand.NextBool(20) && !downedBlueMoon) || (Main.rand.NextBool(40) && !downedBlueMoon)))
 			{
@@ -1495,12 +1487,12 @@ public class MyWorld : ModSystem
 		else
 			blueMoon = false;
 
-		if (!Main.dayTime && Main.rand.NextBool(32))
+		if (!day && Main.rand.NextBool(32))
 			rareStarfallEvent = true;
 		else
 			rareStarfallEvent = false;
 
-		if (!Main.dayTime && Main.rand.NextBool(6))
+		if (!day && Main.rand.NextBool(6))
 		{
 			luminousType = Main.rand.Next(1, 4);
 			luminousOcean = true;
@@ -1531,7 +1523,7 @@ public class MyWorld : ModSystem
 			}
 		}
 
-		if (!Main.dayTime && (Main.moonPhase == 2 || Main.moonPhase == 6) && !Main.bloodMoon && Main.rand.NextBool(2))
+		if (!day && (Main.moonPhase == 2 || Main.moonPhase == 6) && !Main.bloodMoon && Main.rand.NextBool(2))
 			calmNight = true;
 		else
 			calmNight = false;
@@ -1542,7 +1534,7 @@ public class MyWorld : ModSystem
 			ashRain = false;
 
 		bool anyValidBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || DownedScarabeus || DownedVinewrath || DownedStarplate || DownedAncientAvian;
-		if (!Main.dayTime && anyValidBoss && Main.rand.NextBool(DownedMoonWizard ? 46 : 8))
+		if (!day && anyValidBoss && Main.rand.NextBool(DownedMoonWizard ? 46 : 8))
 		{
 			if (Main.netMode == NetmodeID.SinglePlayer)
 				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.JellyDeluge.OnStart"), 61, 255, 142);

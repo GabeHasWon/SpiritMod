@@ -16,18 +16,17 @@ public class AuroraWorld : ModSystem
 	/// <summary> A randomly-selected aurora localized to specific biomes or locations. </summary>
 	public static byte AuroraType { get; private set; } = Default;
 
-	public override void Load() => MyWorld.DayTimeSwitched += UpdateAurora;
+	public override void Load() => TimeSystem.TimeChanged += UpdateAurora;
 
-	private static void UpdateAurora()
+	private static void UpdateAurora(bool day)
 	{
-		if (Main.netMode == NetmodeID.MultiplayerClient)
+		if (Main.netMode == NetmodeID.MultiplayerClient || day)
 			return;
 
-		if (!Main.dayTime && Main.rand.NextBool(3))
-			AuroraType = (byte)Main.rand.Next([1, 2, 3, 5]);
+		AuroraType = Default;
 
-		if (Main.netMode == NetmodeID.Server)
-			NetMessage.SendData(MessageID.WorldData);
+		if (Main.rand.NextBool(3))
+			AuroraType = (byte)Main.rand.Next([1, 2, 3, 5]);
 	}
 
 	public override void ResetNearbyTileEffects() => Main.LocalPlayer.GetModPlayer<AuroraPlayer>().Reset();

@@ -50,6 +50,7 @@ using SpiritMod.Items.Accessory.Leather;
 using SpiritMod.Tiles.Ambient;
 using Terraria.Localization;
 using Humanizer;
+using SpiritMod.Systems;
 
 namespace SpiritMod;
 
@@ -225,11 +226,11 @@ public class MyPlayer : ModPlayer
 		{ "BRIAR", 0 }
 	};
 
-	public override void Load() => MyWorld.DayTimeSwitched += ResetCandy;
+	public override void Load() => TimeSystem.TimeChanged += ResetCandy;
 
-	private void ResetCandy()
+	private void ResetCandy(bool day)
 	{
-		if (!Main.dayTime)
+		if (!day)
 		{
 			candyInBowl = 2;
 			candyFromTown.Clear();
