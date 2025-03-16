@@ -67,7 +67,7 @@ internal class AuroraPlayer : ModPlayer
 
 	private int GetAuroraType()
 	{
-		if (Main.dayTime || (Main.raining && !Player.ZoneSnow) || Player.ZoneCorrupt || Player.ZoneCrimson)
+		if (Main.dayTime || !AuroraWorld.AuroraActive || (Main.raining && !Player.ZoneSnow) || Player.ZoneCorrupt || Player.ZoneCrimson)
 			return -1;
 
 		if (Main.bloodMoon)
@@ -85,7 +85,7 @@ internal class AuroraPlayer : ModPlayer
 		if (Player.ZoneSpirit())
 			return AuroraOverlay.SPIRIT;
 
-		if ((Player.ZoneSnow || Player.ZoneSkyHeight) && AuroraWorld.AuroraActive)
+		if (Player.ZoneSnow || Player.ZoneSkyHeight)
 			return AuroraWorld.AuroraType;
 
 		return -1;
