@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Skies.Overlays;
+using SpiritMod.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -8,7 +9,6 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.Localization;
 
 namespace SpiritMod.Tiles.Furniture.AuroraMonoliths;
 
@@ -24,7 +24,7 @@ public abstract class AuroraMonolith : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 		TileObjectData.newTile.Height = 4;
 		TileObjectData.newTile.Origin = new Point16(1, 2);
-		TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
+		TileObjectData.newTile.CoordinateHeights = [16, 16, 16, 16];
 		TileObjectData.addTile(Type);
 
 		AddMapEntry(new Color(75, 139, 166));
@@ -37,8 +37,8 @@ public abstract class AuroraMonolith : ModTile
 
 	public sealed override void NearbyEffects(int i, int j, bool closer)
 	{
-		if (Main.tile[i, j].TileFrameY >= AnimationFrameHeight)
-			Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[AuroraType] = AuroraOverlay.PREFERRED_TICK_TIME;
+		if (closer && TileObjectData.IsTopLeft(i, j) && Main.tile[i, j].TileFrameY >= AnimationFrameHeight)
+			Main.LocalPlayer.SetLocalAurora(AuroraType);
 	}
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
@@ -125,7 +125,7 @@ public abstract class AuroraMonolithItem : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		AuroraMonolith tile = ModContent.GetModTile(Item.createTile) as AuroraMonolith;
-		Main.LocalPlayer.GetSpiritPlayer().auroraMonoliths[tile.AuroraType] = AuroraOverlay.PREFERRED_TICK_TIME;
+		Main.LocalPlayer.SetLocalAurora(tile.AuroraType);
 	}
 
 	public override void UpdateVanity(Player player) => UpdateAccessory(player, false);

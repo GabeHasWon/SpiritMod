@@ -50,6 +50,7 @@ using SpiritMod.Items.Accessory.Leather;
 using SpiritMod.Tiles.Ambient;
 using Terraria.Localization;
 using Humanizer;
+using SpiritMod.Systems;
 
 namespace SpiritMod;
 
@@ -218,20 +219,23 @@ public class MyPlayer : ModPlayer
 	public AuroraStag hoveredStag;
 
 	public int candyInBowl;
-	private IList<string> candyFromTown = new List<string>();
-
-	public Dictionary<int, int> auroraMonoliths = new()
-	{
-		{ AuroraOverlay.UNUSED_BASIC, 0 }, { AuroraOverlay.PRIMARY, 0 }, { AuroraOverlay.PRIMARY_ALT1, 0 },
-		{ AuroraOverlay.PRIMARY_ALT2, 0 }, { AuroraOverlay.PRIMARY_ALT3, 0 }, { AuroraOverlay.BLOODMOON, 0 },
-		{ AuroraOverlay.PUMPKINMOON, 0 }, { AuroraOverlay.FROSTMOON, 0 }, { AuroraOverlay.BLUEMOON, 0 },
-		{ AuroraOverlay.SPIRIT, 0 }
-	};
+	private IList<string> candyFromTown = [];
 
 	public Dictionary<string, int> fountainsActive = new()
 	{
 		{ "BRIAR", 0 }
 	};
+
+	public override void Load() => TimeSystem.TimeChanged += ResetCandy;
+
+	private void ResetCandy(bool day)
+	{
+		if (!day)
+		{
+			candyInBowl = 2;
+			candyFromTown.Clear();
+		}
+	}
 
 	public override void PostUpdateMiscEffects()
 	{
@@ -273,11 +277,11 @@ public class MyPlayer : ModPlayer
 			else
 				Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 
-			bool showAurora = (Player.ZoneSnow || Player.ZoneSpirit() || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
+			//bool showAurora = (Player.ZoneSnow || Player.ZoneSpirit() || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
 
 			ManageAshrainShader();
 
-			Player.ManageSpecialBiomeVisuals("SpiritMod:AuroraSky", showAurora || auroraMonoliths.Any(x => x.Value >= 1));
+			//Player.ManageSpecialBiomeVisuals("SpiritMod:AuroraSky", showAurora || auroraMonoliths.Any(x => x.Value >= 1)); //See AuroraPlayer
 			Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritBiomeSky", spirit);
 			Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", Player.ZoneAsteroid());
 
@@ -316,6 +320,7 @@ public class MyPlayer : ModPlayer
 			{
 				ashrain.GetShader().UseIntensity(Math.Max(ashrain.GetShader().Intensity - deltaintensity, 0));
 				ashrain.GetShader().UseProgress(Main.GlobalTimeWrappedHourly * 10 * deltaProgress);
+
 				if (ashrain.GetShader().Intensity <= 0)
 					ashrain.Deactivate();
 			}
@@ -323,11 +328,13 @@ public class MyPlayer : ModPlayer
 			return;
 		}
 		else if (!ashrain.IsActive())
+		{
 			Filters.Scene.Activate("SpiritMod:AshRain", Vector2.Zero).GetShader()
 				.UseColor(0.15f, 0.1f, 0.15f)
 				.UseIntensity(deltaintensity)
 				.UseImage(Mod.Assets.Request<Texture2D>("Textures/noise").Value)
 				.UseImage(Mod.Assets.Request<Texture2D>("Textures/3dNoise").Value, 1);
+		}
 		else
 		{
 			float intensity = Math.Min(ashrain.GetShader().Intensity + deltaintensity, maxIntensity);
@@ -383,12 +390,13 @@ public class MyPlayer : ModPlayer
 		// Reset accessory booleans.
 		ResetAccBools();
 
-		for (int i = 0; i < AuroraOverlay.COUNT; ++i) //Reset aurora monolith values
+		/*for (int i = 0; i < AuroraOverlay.COUNT; ++i) //Reset aurora monolith values
 		{
 			if (i == AuroraOverlay.COMPLETELY_UNIMPLEMENTED)
 				continue;
-			auroraMonoliths[i]--;
-		}
+
+			auroraMonoliths[i] = (byte)Math.Max(auroraMonoliths[i] - 1, 0);
+		}*/ //See AuroraPlayer
 
 		fountainsActive["BRIAR"]--;
 
@@ -587,8 +595,13 @@ public class MyPlayer : ModPlayer
 		return true;
 	}
 
-	public override void ModifyWeaponDamage(Item item, ref StatModifier damage) => BeginShotDetection(item);
+	public override void ModifyWeaponCrit(Item item, ref float crit)
+	{
+		if (rabbitFoot)
+			crit = 1;
+	}
 
+	public override void ModifyWeaponDamage(Item item, ref StatModifier damage) => BeginShotDetection(item);
 	public override void PostItemCheck() => EndShotDetection();
 
 	private void PrepareShotDetection()
@@ -1019,11 +1032,17 @@ public class MyPlayer : ModPlayer
 
 	public override void PostHurt(Player.HurtInfo info)
 	{
-		if (soulPotion && Main.rand.NextBool(5))
-			Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, Vector2.Zero, ModContent.ProjectileType<SoulPotionWard>(), 0, 0f, Player.whoAmI);
+		if (soulPotion && Main.rand.NextBool(3))
+		{
+			foreach (var npc in Main.ActiveNPCs)
+			{
+				if (npc.DistanceSQ(Player.Center) < 300 * 300 && npc.CanBeChasedBy(Player))
+					npc.AddBuff(ModContent.BuffType<SoulBurn>(), 240);
+			}
+		}
 
 		if (spiritBuff && Main.rand.NextBool(3))
-			Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.Center, new Vector2(6, 6), ModContent.ProjectileType<StarSoul>(), 40, 0f, Player.whoAmI);
+			Projectile.NewProjectile(Player.GetSource_OnHurt(info.DamageSource), Player.Center, new Vector2(6, 6), ModContent.ProjectileType<StarSoul>(), 40, 0f, Player.whoAmI);
 	}
 
 	public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -1405,12 +1424,6 @@ public class MyPlayer : ModPlayer
 
 		if (graniteSet && stompCooldown > 0)
 			stompCooldown--;
-
-		if (!Main.dayTime && MyWorld.dayTimeSwitched)
-		{
-			candyInBowl = 2;
-			candyFromTown.Clear();
-		}
 
 		if (Player.ZoneAsteroid())
 			Main.numCloudsTemp = 0;
@@ -1811,6 +1824,9 @@ public class MyPlayer : ModPlayer
 
 		if (oakHeartStacks > 0)
 			oakHeartStacks -= 0.025f;
+
+		if (soulPotion)
+			Player.GetDamage(DamageClass.Melee) *= 1.05f;
 	}
 
 	public override void PostUpdateRunSpeeds()
@@ -1997,12 +2013,6 @@ public class MyPlayer : ModPlayer
 			concentrated = false;
 			concentratedCooldown = 300;
 		}
-	}
-
-	public override void ModifyWeaponCrit(Item item, ref float crit)
-	{
-		if (rabbitFoot)
-			crit = 1;
 	}
 
 	private static void AddBuffWithCondition(bool condition, NPC p, int id, int ticks) 
@@ -2205,11 +2215,12 @@ public class MyPlayer : ModPlayer
 			if (bloodcourtSet && !Player.HasBuff(ModContent.BuffType<CourtCooldown>()) && Player.statLife > (int)(Player.statLifeMax * .08f))
 				BloodCourtHead.DoubleTapEffect(Player);
 
-			if (frigidSet && !Player.HasBuff(ModContent.BuffType<FrigidCooldown>()))
+			if (frigidSet && !Player.HasBuff<FrigidCooldown>())
 			{
-				Vector2 mouse = Main.MouseScreen + Main.screenPosition;
+				var mouse = Main.MouseScreen + Main.screenPosition;
 				Projectile.NewProjectile(Player.GetSource_FromThis("DoubleTap"), mouse, Vector2.Zero, ModContent.ProjectileType<FrigidWall>(), 14, 8, Player.whoAmI);
-				Player.AddBuff(ModContent.BuffType<FrigidCooldown>(), 500);
+
+				Player.AddBuff(ModContent.BuffType<FrigidCooldown>(), 480);
 			}
 		}
 	}

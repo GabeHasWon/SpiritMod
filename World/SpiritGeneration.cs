@@ -9,114 +9,108 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace SpiritMod.World
+namespace SpiritMod.World;
+
+/// <summary> Generates the Spirit biome in the world using <see cref="SpawnSpiritBiome"/>. </summary>
+internal static class SpiritGeneration
 {
-	internal static class SpiritGeneration
+	internal static void SpawnSpiritBiome()
 	{
-		internal static void SpawnSpiritBiome()
+		int firstX = WorldGen.genRand.Next(100, (Main.maxTilesX / 2) - 500);
+		if (Main.dungeonX > Main.maxTilesX / 2) //rightside dungeon
+			firstX = WorldGen.genRand.Next((Main.maxTilesX / 2) + 300, Main.maxTilesX - 500);
+
+		int x = firstX;
+		int y = 0;
+
+		int xAxisMid = x + 70;
+		int xAxisEdge = x + 380;
+
+		int distanceFromCenter = 0;
+
+		for (int i = 0; i < Main.maxTilesY; i++)
 		{
-			int firstX = WorldGen.genRand.Next(100, (Main.maxTilesX / 2) - 500);
-			if (Main.dungeonX > Main.maxTilesX / 2) //rightside dungeon
-				firstX = WorldGen.genRand.Next((Main.maxTilesX / 2) + 300, Main.maxTilesX - 500);
+			y++;
+			x = firstX;
 
-			int xAxis = firstX;
-			int xAxisMid = xAxis + 70;
-			int xAxisEdge = xAxis + 380;
-			int yAxis = 0;
-
-			int distanceFromCenter = 0;
-
-			int[] Grasses = { TileID.Grass, TileID.CorruptGrass, TileID.HallowedGrass, TileID.CrimsonGrass };
-			int[] Ices = { TileID.IceBlock, TileID.CorruptIce, TileID.HallowedIce, TileID.FleshIce };
-			int[] Stones = { TileID.Stone, TileID.Ebonstone, TileID.Pearlstone, TileID.Crimstone, TileID.GreenMoss, TileID.BrownMoss, TileID.RedMoss, TileID.BlueMoss, TileID.PurpleMoss };
-			int[] Sands = { TileID.Sand, TileID.Ebonsand, TileID.Pearlsand, TileID.Crimsand };
-
-			int[] Decors = { TileID.CorruptThorns, TileID.Vines, TileID.JungleVines, TileID.HallowedVines, TileID.Stalactite, TileID.LargePiles2, TileID.CrimsonVines };
-			int[] Plants = { TileID.Plants, TileID.CorruptPlants, TileID.CrimsonPlants, TileID.HallowedPlants };
-			int[] TallPlants = { TileID.Plants2, TileID.HallowedPlants2 };
-
-			for (int y = 0; y < Main.maxTilesY; y++)
+			for (int j = 0; j < 450; j++)
 			{
-				yAxis++;
-				xAxis = firstX;
+				x++;
 
-				for (int i = 0; i < 450; i++)
+				if (WorldGen.InWorld(x, y, 30))
 				{
-					xAxis++;
+					if (x < xAxisMid - 1)
+						distanceFromCenter = xAxisMid - x;
+					else if (x > xAxisEdge + 1)
+						distanceFromCenter = x - xAxisEdge;
 
-					if (WorldGen.InWorld(xAxis, yAxis, 30) && Framing.GetTileSafely(xAxis, yAxis).HasTile)
+					if (Main.rand.Next(distanceFromCenter) < 18)
 					{
-						int type = -1;
+						DoConversion(x, y);
 
-						int requiredDist = 10;
-
-						#region set types
-						//Blocks
-						if (Main.tile[xAxis, yAxis].TileType == TileID.Dirt)
-							type = ModContent.TileType<SpiritDirt>();
-						if (Grasses.Contains(Main.tile[xAxis, yAxis].TileType))
-							type = ModContent.TileType<SpiritGrass>();
-						else if (Ices.Contains(Main.tile[xAxis, yAxis].TileType))
-							type = ModContent.TileType<SpiritIce>();
-						else if (Stones.Contains(Main.tile[xAxis, yAxis].TileType))
-							type = ModContent.TileType<SpiritStone>();
-						else if (Sands.Contains(Main.tile[xAxis, yAxis].TileType))
-							type = ModContent.TileType<Spiritsand>();
-
-						if (type == -1)
-							requiredDist = 18;
-
-						if (Plants.Contains(Main.tile[xAxis, yAxis].TileType))
-							type = ModContent.TileType<SpiritFoliage>();
-						else if (TallPlants.Contains(Main.tile[xAxis, yAxis].TileType))
-							type = ModContent.TileType<SpiritTallgrass>();
-						else if (Main.tile[xAxis, yAxis].TileType == TileID.SmallPiles)
-						{
-							if (Main.tile[xAxis, yAxis].TileFrameY > 0)
-								type = ModContent.TileType<SpiritRockMedium>();
-							else
-								type = ModContent.TileType<SpiritRock>();
-						}
-						else if (Main.tile[xAxis, yAxis].TileType == TileID.LargePiles)
-							type = ModContent.TileType<SpiritDeco2x2>();
-						#endregion
-
-						if (xAxis < xAxisMid - 1)
-							distanceFromCenter = xAxisMid - xAxis;
-						else if (xAxis > xAxisEdge + 1)
-							distanceFromCenter = xAxis - xAxisEdge;
-
-						if (type != -1 && Main.rand.Next(distanceFromCenter) < requiredDist)
-							Main.tile[xAxis, yAxis].TileType = (ushort)type; //Converts tiles
-
-						if (WallID.Sets.Conversion.Grass[Main.tile[xAxis, yAxis].WallType] && Main.rand.Next(distanceFromCenter) < 18)
-							Main.tile[xAxis, yAxis].WallType = (ushort)ModContent.WallType<SpiritWallNatural>(); //Converts walls
-
-						if (Decors.Contains(Main.tile[xAxis, yAxis].TileType) && Main.rand.Next(distanceFromCenter) < 18)
-						{
-							Tile tile = Main.tile[xAxis, yAxis];
-							tile.HasTile = false; //Removes remaining decor
-						}
-
-						if (Main.tile[xAxis, yAxis].TileType == ModContent.TileType<SpiritStone>() && yAxis > (int)((Main.rockLayer + Main.maxTilesY - 500) / 2f) && Main.rand.NextBool(300))
-							WorldGen.TileRunner(xAxis, yAxis, WorldGen.genRand.Next(5, 7), 1, ModContent.TileType<Items.Sets.SpiritSet.SpiritOreTile>(), false, 0f, 0f, true, true); //Adds ore
+						if (Main.netMode != NetmodeID.SinglePlayer)
+							NetMessage.SendTileSquare(-1, x, y);
 					}
-				}
-			}
 
-			if (Main.netMode != NetmodeID.MultiplayerClient)
-			{
-				string message = "The Spirits spread through the Land...";
-				MyWorld.spiritBiome = true;
-
-				if (Main.netMode == NetmodeID.SinglePlayer)
-					Main.NewText(message, Color.Orange);
-				else
-				{
-					NetMessage.SendData(MessageID.WorldData);
-					ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(message), Color.Orange, -1);
+					if (Main.tile[x, y].TileType == ModContent.TileType<SpiritStone>() && y > (int)((Main.rockLayer + Main.maxTilesY - 500) / 2f) && Main.rand.NextBool(300))
+						WorldGen.OreRunner(x, y, WorldGen.genRand.Next(5, 7), 1, (ushort)ModContent.TileType<Items.Sets.SpiritSet.SpiritOreTile>()); //Adds ore
 				}
 			}
 		}
+
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			string message = "The Spirits spread through the land...";
+			MyWorld.spiritBiome = true;
+
+			if (Main.netMode == NetmodeID.SinglePlayer)
+				Main.NewText(message, Color.Orange);
+			else
+				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(message), Color.Orange);
+		}
+	}
+
+	private static void DoConversion(int i, int j)
+	{
+		var tile = Main.tile[i, j];
+		int tileType = tile.TileType;
+		int wallType = tile.WallType;
+
+		int[] invalidDecor = [TileID.CorruptThorns, TileID.Vines, TileID.JungleVines, TileID.HallowedVines, TileID.Stalactite, TileID.LargePiles2, TileID.CrimsonVines];
+		int[] plants = [TileID.Plants, TileID.CorruptPlants, TileID.CrimsonPlants, TileID.HallowedPlants];
+		int[] tallPlants = [TileID.Plants2, TileID.HallowedPlants2];
+
+		if (tile.HasTile)
+		{
+			if (TileID.Sets.Conversion.Grass[tileType]) //Convert tiles
+				tileType = ModContent.TileType<SpiritGrass>();
+			else if (TileID.Sets.Conversion.Stone[tileType])
+				tileType = ModContent.TileType<SpiritStone>();
+			else if (TileID.Sets.Conversion.Ice[tileType])
+				tileType = ModContent.TileType<SpiritIce>();
+			else if (TileID.Sets.Conversion.Sand[tileType])
+				tileType = ModContent.TileType<Spiritsand>();
+			else if (tileType == TileID.Dirt)
+				tileType = ModContent.TileType<SpiritDirt>();
+			else if (plants.Contains(tileType)) //Frame importants
+				tileType = ModContent.TileType<SpiritFoliage>();
+			else if (tallPlants.Contains(tileType))
+				tileType = ModContent.TileType<SpiritTallgrass>();
+			else if (tileType == TileID.SmallPiles)
+			{
+				if (tile.TileFrameY > 0)
+					tileType = ModContent.TileType<SpiritRockMedium>();
+				else
+					tileType = ModContent.TileType<SpiritRock>();
+			}
+			else if (invalidDecor.Contains(tile.TileType))
+				tile.HasTile = false; //Remove the invalid decor tile
+		}
+
+		if (WallID.Sets.Conversion.Grass[wallType]) //Convert walls
+			wallType = ModContent.WallType<SpiritWallNatural>();
+
+		tile.TileType = (ushort)tileType;
+		tile.WallType = (ushort)wallType;
 	}
 }

@@ -52,6 +52,7 @@ using SpiritMod.Items.Books.UI.MaterialUI;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.NPCs.Town.Oracle;
 using SpiritMod.GlobalClasses.Items;
+using SpiritMod.Systems.Aurora;
 
 namespace SpiritMod
 {
@@ -678,7 +679,7 @@ namespace SpiritMod
 			}
 
 			// using a mildly specific name to avoid mod clashes
-			ChatManager.Register<UI.Chat.QuestTagHandler>(new string[] { "sq", "spiritQuest" });
+			ChatManager.Register<UI.Chat.QuestTagHandler>(["sq", "spiritQuest"]);
 		}
 
 		private void LoadMusicBox(string name, string path) => MusicLoader.AddMusicBox(this, MusicLoader.GetMusicSlot(this, path), Find<ModItem>(name).Type, Find<ModTile>(name).Type);
@@ -809,7 +810,7 @@ namespace SpiritMod
 		internal static string GetWeatherRadioText(string key)
 		{
 			if (MyWorld.ashRain) return "Ashfall";
-			else if (MyWorld.aurora) return "Aurora";
+			else if (Main.LocalPlayer.ZoneAurora()) return "Aurora";
 			else if (MyWorld.blueMoon) return "Mystic Moon";
 			else if (MyWorld.jellySky) return "Jelly Deluge";
 			else if (MyWorld.luminousOcean) return "Luminous Seas";

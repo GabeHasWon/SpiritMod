@@ -127,9 +127,6 @@ public static class SpiritMultiplayer
 
 		switch (id)
 		{
-			case MessageType.AuroraData:
-				MyWorld.auroraType = reader.ReadInt32();
-				break;
 			case MessageType.ProjGlyph:
 				proj = reader.ReadInt32();
 				glyph = reader.ReadByte();

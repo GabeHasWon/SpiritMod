@@ -1,4 +1,5 @@
-﻿using SpiritMod.Utilities;
+﻿using SpiritMod.Systems.Aurora;
+using SpiritMod.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,7 +18,7 @@ namespace SpiritMod.SceneEffects
 		private static bool ValidCrimson => Config.CrimsonNightMusic && Player.ZoneCrimson && Player.ZoneOverworldHeight && !Main.dayTime
 				&& !Player.ZoneHallow && !Player.ZoneMeteor && !Main.bloodMoon;
 		private static bool ValidSnow => Config.SnowNightMusic && Player.ZoneSnow && Player.ZoneOverworldHeight && !Main.dayTime && !Player.ZoneCorrupt
-				&& !Player.ZoneMeteor && !Player.ZoneCrimson && !Player.ZoneHallow && !MyWorld.aurora && !Main.raining && !Main.bloodMoon;
+				&& !Player.ZoneMeteor && !Player.ZoneCrimson && !Player.ZoneHallow && !Player.ZoneAurora() && !Main.raining && !Main.bloodMoon;
 		private static bool ValidDesert => Config.DesertNightMusic && Player.ZoneDesert && Player.ZoneOverworldHeight && !Main.dayTime && !Player.ZoneCorrupt
 				&& !Player.ZoneCrimson && !Player.ZoneBeach;
 

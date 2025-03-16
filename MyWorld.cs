@@ -58,6 +58,7 @@ using SpiritMod.NPCs.Boss.Infernon;
 using SpiritMod.NPCs.Boss.MoonWizard;
 using SpiritMod.NPCs.Boss.ReachBoss;
 using SpiritMod.NPCs.Boss.Dusking;
+using SpiritMod.Systems;
 
 namespace SpiritMod;
 
@@ -65,13 +66,8 @@ public class MyWorld : ModSystem
 {
 	public static float rotationTime = 0;
 	private static bool dayTimeLast;
-	public static bool dayTimeSwitched;
 
-	public static bool aurora = false;
 	public static bool ashRain = false;
-	public static int auroraType = 1;
-	public static int auroraTypeFixed;
-	public static int auroraChance = 4;
 
 	public static bool luminousOcean = false;
 	public static bool calmNight = false;
@@ -94,6 +90,7 @@ public class MyWorld : ModSystem
 	public static int CorruptHazards = 0;
 	public static int CrimHazards = 0;
 
+	/// <summary> Whether the Spirit biome has generated. Handled on server/singleplayer. </summary>
 	public static bool spiritBiome = false;
 	public static bool rockCandy = false;
 	/// <summary> The side of the world that the asteroid biome will generate on. 0 = left, 1 = right. </summary>
@@ -128,7 +125,11 @@ public class MyWorld : ModSystem
 
 	public static HashSet<Point16> superSunFlowerPositions = new HashSet<Point16>();
 
-	public override void Load() => On_WorldGen.IslandHouse += SpiritGenPasses.StealIslandInfo;
+	public override void Load()
+	{
+		On_WorldGen.IslandHouse += SpiritGenPasses.StealIslandInfo;
+		TimeSystem.TimeChanged += OnTimeSwitch;
+	}
 
 	public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
 	{
@@ -252,7 +253,8 @@ public class MyWorld : ModSystem
 		BitsByte bosses2 = new BitsByte(downedTide, downedMechromancer, downedOccultist, downedGladeWraith, downedBeholder, downedSnaptrapper, downedTome, downedGazer);
 		writer.Write(bosses);
 		writer.Write(bosses2);
-		BitsByte environment = new BitsByte(blueMoon, jellySky, downedBlueMoon, downedJellyDeluge, aurora);
+
+		BitsByte environment = new BitsByte(blueMoon, jellySky, downedBlueMoon, downedJellyDeluge);
 		BitsByte worldgen = new BitsByte(gennedBandits, gennedTower);
 		writer.Write(environment);
 		writer.Write(worldgen);
@@ -278,7 +280,6 @@ public class MyWorld : ModSystem
 		jellySky = environment[1];
 		downedBlueMoon = environment[2];
 		downedJellyDeluge = environment[3];
-		aurora = environment[4];
 
 		BitsByte worldgen = reader.ReadByte();
 		gennedBandits = worldgen[0];
@@ -299,7 +300,7 @@ public class MyWorld : ModSystem
 		jellySky = false;
 		ashRain = false;
 		dayTimeLast = Main.dayTime;
-		dayTimeSwitched = false;
+		//dayTimeSwitched = false;
 
 		if (!Main.dedServ)
 			AdditiveCallManager.Load();
@@ -1409,22 +1410,6 @@ public class MyWorld : ModSystem
 
 	public override void PostUpdateWorld()
 	{
-		if (Main.dayTime != dayTimeLast)
-			dayTimeSwitched = true;
-		else
-			dayTimeSwitched = false;
-
-		dayTimeLast = Main.dayTime;
-
-		if (blueMoon && dayTimeSwitched && !downedBlueMoon)
-			downedBlueMoon = true;
-
-		if (jellySky && dayTimeSwitched && !downedJellyDeluge)
-			downedJellyDeluge = true;
-
-		if (dayTimeSwitched)
-			OnDaySwitch();
-
 		if (LanternNight.LanternsUp)
 			wasLanternNight = true;
 		else if (!Main.dayTime)
@@ -1460,8 +1445,17 @@ public class MyWorld : ModSystem
 		}
 	}
 
-	private static void OnDaySwitch()
+	private static void OnTimeSwitch(bool day)
 	{
+		if (Main.netMode == NetmodeID.MultiplayerClient)
+			return;
+
+		if (blueMoon && !downedBlueMoon)
+			downedBlueMoon = true;
+
+		if (jellySky && !downedJellyDeluge)
+			downedJellyDeluge = true;
+
 		if (Main.rand.NextBool(2) && !spaceJunkWeather)
 			stardustWeather = true;
 		else
@@ -1477,7 +1471,7 @@ public class MyWorld : ModSystem
 		else
 			meteorShowerWeather = false;
 
-		if (!Main.dayTime && Main.hardMode)
+		if (!day && Main.hardMode)
 		{
 			if (!Main.IsFastForwardingTime() && !Main.bloodMoon && WorldGen.spawnHardBoss == 0 && ((Main.rand.NextBool(20) && !downedBlueMoon) || (Main.rand.NextBool(40) && !downedBlueMoon)))
 			{
@@ -1493,12 +1487,12 @@ public class MyWorld : ModSystem
 		else
 			blueMoon = false;
 
-		if (!Main.dayTime && Main.rand.NextBool(32))
+		if (!day && Main.rand.NextBool(32))
 			rareStarfallEvent = true;
 		else
 			rareStarfallEvent = false;
 
-		if (!Main.dayTime && Main.rand.NextBool(6))
+		if (!day && Main.rand.NextBool(6))
 		{
 			luminousType = Main.rand.Next(1, 4);
 			luminousOcean = true;
@@ -1529,7 +1523,7 @@ public class MyWorld : ModSystem
 			}
 		}
 
-		if (!Main.dayTime && (Main.moonPhase == 2 || Main.moonPhase == 6) && !Main.bloodMoon && Main.rand.NextBool(2))
+		if (!day && (Main.moonPhase == 2 || Main.moonPhase == 6) && !Main.bloodMoon && Main.rand.NextBool(2))
 			calmNight = true;
 		else
 			calmNight = false;
@@ -1540,7 +1534,7 @@ public class MyWorld : ModSystem
 			ashRain = false;
 
 		bool anyValidBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || DownedScarabeus || DownedVinewrath || DownedStarplate || DownedAncientAvian;
-		if (!Main.dayTime && anyValidBoss && Main.rand.NextBool(DownedMoonWizard ? 46 : 8))
+		if (!day && anyValidBoss && Main.rand.NextBool(DownedMoonWizard ? 46 : 8))
 		{
 			if (Main.netMode == NetmodeID.SinglePlayer)
 				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.JellyDeluge.OnStart"), 61, 255, 142);
@@ -1552,66 +1546,6 @@ public class MyWorld : ModSystem
 		else
 			jellySky = false;
 
-		UpdateAurora();
-	}
-
-	private static void UpdateAurora()
-	{
-		bool inSnow = false;
-		bool inSpirit = false;
-
-		if (Main.netMode == NetmodeID.SinglePlayer) 
-		{ 
-			Player player = Main.LocalPlayer;
-
-			inSnow = player.ZoneSnow;
-			inSpirit = player.ZoneSpirit();
-		}
-		else
-		{
-			foreach (Player player in Main.ActivePlayers)
-			{
-				if (player.ZoneSnow)
-					inSnow = true;
-
-				if (player.ZoneSpirit())
-					inSpirit = true;
-
-				if (inSnow && inSpirit)
-					break;
-			}
-		}
-
-		bool oldAurora = aurora;
-		byte oldAuroraType = (byte)auroraType;
-
-		if (Main.bloodMoon)
-			auroraType = 6;
-
-		if (Main.pumpkinMoon)
-			auroraType = 7;
-
-		if (Main.snowMoon)
-			auroraType = 8;
-
-		if (blueMoon)
-			auroraType = 9;
-
-		if (inSpirit)
-			auroraType = 10;
-
-		if (!Main.bloodMoon && !Main.pumpkinMoon && !Main.snowMoon && !inSpirit)
-			auroraType = auroraTypeFixed;
-
-		if (!Main.dayTime && Main.rand.NextBool(inSnow ? 3 : 8))
-		{
-			auroraTypeFixed = Main.rand.Next(new int[] { 1, 2, 3, 5 });
-			aurora = true;
-		}
-		else
-			aurora = false;
-
-		if (oldAurora != aurora || oldAuroraType != auroraType)
-			NetMessage.SendData(MessageID.WorldData);
+		//UpdateAurora(); //See AuroraSystem
 	}
 }

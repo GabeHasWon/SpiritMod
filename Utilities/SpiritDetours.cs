@@ -349,7 +349,7 @@ public static class SpiritDetours
 	{
 		SpiritMod spirit = ModContent.GetInstance<SpiritMod>();
 
-		if (spirit.BookUserInterface.CurrentState != null) 
+		if (spirit.BookUserInterface.CurrentState != null)
 		{
 			spirit.BookUserInterface.SetState(null);
 			SoundEngine.PlaySound(SoundID.MenuClose);
@@ -359,13 +359,14 @@ public static class SpiritDetours
 		orig(self);
 	}
 
-        private static string LanguageManager_GetTextValue_string1(On_LanguageManager.orig_GetTextValue_string orig, LanguageManager self, string key)
-        {
-            if (key == "GameUI.LightRain" || key == "GameUI.Rain" || key == "GameUI.HeavyRain" || key == "GameUI.Clear" || key == "GameUI.PartlyCloudy" || key == 
-			"GameUI.MostlyCloudy" || key == "GameUI.Overcast"|| key == "GameUI.Cloudy")
-                return SpiritMod.GetWeatherRadioText(key);
-            return orig(self, key);
-        }
+	private static string LanguageManager_GetTextValue_string1(On_LanguageManager.orig_GetTextValue_string orig, LanguageManager self, string key)
+	{
+		if (key == "GameUI.LightRain" || key == "GameUI.Rain" || key == "GameUI.HeavyRain" || key == "GameUI.Clear" || key == "GameUI.PartlyCloudy" || key ==
+		"GameUI.MostlyCloudy" || key == "GameUI.Overcast" || key == "GameUI.Cloudy")
+			return SpiritMod.GetWeatherRadioText(key);
+
+		return orig(self, key);
+	}
 
 	private static void DrawParticles(On_Main.orig_DrawInfernoRings orig, Main self)
 	{
