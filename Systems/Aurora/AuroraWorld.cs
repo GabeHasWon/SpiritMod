@@ -2,6 +2,7 @@
 using Terraria.ModLoader;
 using Terraria;
 using System.IO;
+using Terraria.ModLoader.IO;
 
 namespace SpiritMod.Systems.Aurora;
 
@@ -33,4 +34,7 @@ public class AuroraWorld : ModSystem
 
 	public override void NetSend(BinaryWriter writer) => writer.Write(AuroraType);
 	public override void NetReceive(BinaryReader reader) => AuroraType = reader.ReadByte();
+
+	public override void SaveWorldData(TagCompound tag) => tag[nameof(AuroraType)] = AuroraType;
+	public override void LoadWorldData(TagCompound tag) => AuroraType = tag.GetByte(nameof(AuroraType));
 }

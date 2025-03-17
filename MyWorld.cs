@@ -167,11 +167,9 @@ public class MyWorld : ModSystem
 
 		tag.Add("downed", downed);
 
-		TagCompound droppedGlyphTag = new TagCompound();
+		TagCompound droppedGlyphTag = [];
 		foreach (KeyValuePair<string, bool> entry in droppedGlyphs)
-		{
 			droppedGlyphTag.Add(entry.Key, entry.Value);
-		}
 
 		tag.Add("droppedGlyphs", droppedGlyphTag);
 
@@ -182,8 +180,6 @@ public class MyWorld : ModSystem
 
 		tag.Add("pagodaX", pagodaLocation.X);
 		tag.Add("pagodaY", pagodaLocation.Y);
-
-		//SaveSpecialNPCs(data);
 
 		tag.Add("superSunFlowerPositions", superSunFlowerPositions.ToList());
 

@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.IO;
+using Terraria.ModLoader.IO;
 
 namespace SpiritMod.Systems.LuminousOcean;
 
@@ -42,4 +43,7 @@ public class LuminousWorld : ModSystem
 
 	public override void NetSend(BinaryWriter writer) => writer.Write(LuminousType);
 	public override void NetReceive(BinaryReader reader) => LuminousType = reader.ReadByte();
+
+	public override void SaveWorldData(TagCompound tag) => tag[nameof(LuminousType)] = LuminousType;
+	public override void LoadWorldData(TagCompound tag) => LuminousType = tag.GetByte(nameof(LuminousType));
 }
