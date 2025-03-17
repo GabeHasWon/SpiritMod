@@ -17,7 +17,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 
 		public override void SetDefaults()
 		{
-			Item.damage = 14;
+			Item.damage = 16;
 			Item.noMelee = true;
 			Item.DamageType = DamageClass.Magic;
 			Item.width = 64;

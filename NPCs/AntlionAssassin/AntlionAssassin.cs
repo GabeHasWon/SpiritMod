@@ -28,12 +28,12 @@ namespace SpiritMod.NPCs.AntlionAssassin
 		{
 			NPC.width = 22;
 			NPC.height = 32;
-			NPC.damage = 21;
-			NPC.defense = 8;
-			NPC.lifeMax = 74;
+			NPC.damage = 12;
+			NPC.defense = 5;
+			NPC.lifeMax = 40;
 			NPC.HitSound = SoundID.NPCHit32;
-			NPC.DeathSound = SoundID.NPCDeath6;
-			NPC.value = 329f;
+			NPC.DeathSound = SoundID.NPCDeath1;
+			NPC.value = 85f;
 			NPC.knockBackResist = .45f;
 			NPC.aiStyle = 3;
 			AIType = NPCID.SnowFlinx;
@@ -46,7 +46,7 @@ namespace SpiritMod.NPCs.AntlionAssassin
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return Main.tileSand[spawnInfo.SpawnTileType] && !spawnInfo.Player.ZoneBeach && !spawnInfo.PlayerInTown
-				? SpawnCondition.OverworldDayDesert.Chance * 1.145f
+				? SpawnCondition.OverworldDayDesert.Chance * 1.1f
 				: 0;
 		}
 
@@ -54,7 +54,7 @@ namespace SpiritMod.NPCs.AntlionAssassin
 
 		public override void HitEffect(NPC.HitInfo hit)
 		{
-			for (int k = 0; k < 11; k++)
+			for (int k = 0; k < 5; k++)
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hit.HitDirection, -1f, 1, default, .61f);
 
 			if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -64,15 +64,30 @@ namespace SpiritMod.NPCs.AntlionAssassin
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Assassin3").Type, 1f);
 				Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Assassin4").Type, 1f);
 
-				int ing = Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 825);
-				Main.gore[ing].timeLeft = 30;
-				int ing1 = Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 826);
-				Main.gore[ing1].timeLeft = 30;
-				int ing2 = Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 827);
-				Main.gore[ing2].timeLeft = 30;
+				int g = Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 825);
+				Main.gore[g].timeLeft = 30;
+				int g1 = Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 826);
+				Main.gore[g1].timeLeft = 30;
+				int g2 = Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, 827);
+				Main.gore[g2].timeLeft = 30;
 
 				for (int k = 0; k < 11; k++)
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, hit.HitDirection, -1f, 1, default, .61f);
+			}
+			if (NPC.alpha > 0)
+			{
+				SoundEngine.PlaySound(SoundID.NPCDeath6, NPC.Center);
+
+				int g = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 825);
+				Main.gore[g].timeLeft = 50;
+				Main.gore[g].scale = Main.rand.NextFloat(.5f, .9f);
+				int g1 = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 826);
+				Main.gore[g1].timeLeft = 50;
+				Main.gore[g1].scale = Main.rand.NextFloat(.5f, .9f);
+				int g2 = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 827);
+				Main.gore[g2].timeLeft = 50;
+				Main.gore[g2].scale = Main.rand.NextFloat(.5f, .9f);
+				NPC.alpha = 0;
 			}
 		}
 
@@ -87,61 +102,8 @@ namespace SpiritMod.NPCs.AntlionAssassin
 		public override void AI()
 		{
 			NPC.spriteDirection = NPC.direction;
-			NPC.alpha++;
-			invisibilityTimer++;
-			if (invisibilityTimer >= 500)
-			{
-				for (int k = 0; k < 11; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, NPC.direction, -1f, 1, default, .61f);
-				SoundEngine.PlaySound(SoundID.NPCDeath6, NPC.Center);
-				int ing = Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 825);
-				Main.gore[ing].timeLeft = 130;
-				int ing1 = Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 826);
-				Main.gore[ing1].timeLeft = 130;
-				int ing2 = Gore.NewGore(NPC.GetSource_FromAI(), NPC.position, NPC.velocity, 827);
-				Main.gore[ing2].timeLeft = 130;
-				NPC.alpha = 0;
-				invisibilityTimer = 0;
-			}
-		}
-
-		public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone)
-		{
-			for (int k = 0; k < 11; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, NPC.direction, -1f, 1, default, .61f);
-
-			if (NPC.alpha >= 220)
-				SoundEngine.PlaySound(SoundID.NPCDeath6, NPC.Center);
-
-			int ing = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 825);
-			Main.gore[ing].timeLeft = 50;
-			Main.gore[ing].scale = Main.rand.NextFloat(.5f, .9f);
-			int ing1 = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 826);
-			Main.gore[ing1].timeLeft = 50;
-			Main.gore[ing].scale = Main.rand.NextFloat(.5f, .9f);
-			int ing2 = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 827);
-			Main.gore[ing2].timeLeft = 50;
-			Main.gore[ing].scale = Main.rand.NextFloat(.5f, .9f);
-			NPC.alpha = 0;
-			invisibilityTimer = 0;
-			NPC.alpha = 0;
-		}
-
-		public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
-		{
-			for (int k = 0; k < 11; k++)
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.UnusedBrown, NPC.direction, -1f, 1, default, .61f);
-			if (NPC.alpha >= 220)
-				SoundEngine.PlaySound(SoundID.NPCDeath6, NPC.Center);
-			int ing = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 825);
-			Main.gore[ing].timeLeft = 130;
-			int ing1 = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 826);
-			Main.gore[ing1].timeLeft = 130;
-			int ing2 = Gore.NewGore(NPC.GetSource_OnHit(NPC), NPC.position, NPC.velocity, 827);
-			Main.gore[ing2].timeLeft = 130;
-			NPC.alpha = 0;
-			invisibilityTimer = 0;
-			NPC.alpha = 0;
+			if (NPC.life == NPC.lifeMax && NPC.alpha < 255)
+				NPC.alpha++;
 		}
 
 		public override void SendExtraAI(BinaryWriter writer) => writer.Write(invisibilityTimer);

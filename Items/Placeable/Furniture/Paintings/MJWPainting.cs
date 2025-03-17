@@ -1,4 +1,4 @@
-using SpiritMod.Tiles.Furniture.Paintings;
+﻿using SpiritMod.Tiles.Furniture.Paintings;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,13 +6,13 @@ using Terraria.ModLoader;
 namespace SpiritMod.Items.Placeable.Furniture.Paintings;
 
 [Sacrifice(1)]
-public class AdvPainting1 : ModItem
+public class MJWPainting : ModItem
 {
 	public override void SetDefaults()
 	{
-		Item.width = 22;
-		Item.height = 32;
-		Item.value = Item.value = Item.buyPrice(0, 0, 10, 0);
+		Item.height = 34;
+		Item.width = 60;
+		Item.value = Item.buyPrice(0, 2, 0, 0);
 		Item.rare = ItemRarityID.White;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -21,6 +21,6 @@ public class AdvPainting1 : ModItem
 		Item.useTurn = true;
 		Item.autoReuse = true;
 		Item.consumable = true;
-		Item.createTile = ModContent.TileType<AdvPainting1Tile>();
+		Item.createTile = ModContent.TileType<MJWPainting_Tile>();
 	}
 }

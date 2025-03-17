@@ -3427,6 +3427,16 @@ SatchelReward: {
 		'''
 }
 
+MJWPainting: {
+	DisplayName: Moonlit Mischief
+	Tooltip: "'M. Joon'"
+}
+
+SadSlimePainting: {
+	DisplayName: The Other Side
+	Tooltip: "'P. Polaris'"
+}
+
 ScarabIdol: {
 	DisplayName: Scarab Idol
 	Tooltip:
@@ -8856,4 +8866,28 @@ AcidPlatformItem: {
 SepulchrePlatformItem: {
 	DisplayName: Sepulchre Platform
 	Tooltip: ""
+}
+
+GildJellyItem: {
+	DisplayName: Gilded Jelly
+	Tooltip: ""
+}
+
+ToxicTooth: {
+	DisplayName: Toxic Tooth
+	Tooltip:
+		'''
+		Increases armor penetration by 3 and melee speed by 5%
+		Melee attacks occasionally strike enemies twice and release poisonous gas
+		'''
+}
+
+ScarabeusAnatomyItem: {
+	DisplayName: Anatomy of Scarabeus
+	Tooltip: "'M. Bee'"
+}
+
+ToweringStactus: {
+	DisplayName: Towering Stactus
+	Tooltip: "'A. Knight'"
 }

@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Mechanics.Trails;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -6,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Projectiles
 {
-	public class ReachPetal : ModProjectile
+	public class ReachPetal : ModProjectile, ITrailProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -21,6 +23,7 @@ namespace SpiritMod.Projectiles
 			Projectile.height = 14;
 			Projectile.friendly = true;
 			Projectile.damage = 10;
+			Projectile.extraUpdates = 1;
 		}
 
 		public override void OnKill(int timeLeft)
@@ -42,6 +45,11 @@ namespace SpiritMod.Projectiles
 				Main.dust[index2].noGravity = true;
 				Main.dust[index2].noLight = true;
 			}
+		}
+
+		public void DoTrailCreation(TrailManager tManager)
+		{
+			tManager.CreateTrail(Projectile, new StandardColorTrail(new Color(255, 61, 64)), new RoundCap(), new DefaultTrailPosition(), 4f, 800f, new ImageShader(Mod.Assets.Request<Texture2D>("Textures/Trails/Trail_2").Value, 0.01f, 1f, 1f));
 		}
 
 		//public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

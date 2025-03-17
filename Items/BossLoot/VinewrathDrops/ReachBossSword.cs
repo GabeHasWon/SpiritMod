@@ -39,18 +39,18 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 		{
 			if (player.statLife <= player.statLifeMax2 / 4)
 			{
-				Item.useTime = 32;
-				Item.useAnimation = 32;
+				Item.useTime = 28;
+				Item.useAnimation = 28;
 			}
 			else if (player.statLife <= player.statLifeMax2 / 3)
 			{
-				Item.useTime = 34;
-				Item.useAnimation = 34;
+				Item.useTime = 30;
+				Item.useAnimation = 30;
 			}
 			else if (player.statLife <= player.statLifeMax2 / 2)
 			{
-				Item.useTime = 36;
-				Item.useAnimation = 36;
+				Item.useTime = 33;
+				Item.useAnimation = 33;
 			}
 			else
 			{
@@ -63,9 +63,9 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			SoundEngine.PlaySound(SoundID.Item20, position);
-			if (Main.rand.NextBool(4) && player.statLife >= player.statLifeMax2 / 2)
+			if (Main.rand.NextBool(3) && player.statLife >= player.statLifeMax2 / 3)
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, 0, player.whoAmI);
-			else if (Main.rand.NextBool(2))
+			else
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, 0, player.whoAmI);
 			return false;
 		}

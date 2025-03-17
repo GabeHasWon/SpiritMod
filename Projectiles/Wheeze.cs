@@ -17,13 +17,9 @@ namespace SpiritMod.Projectiles
 			Projectile.hostile = false;
 			Projectile.width = 22;
 			Projectile.height = 22;
-			Projectile.aiStyle = 1;
 			Projectile.DamageType = DamageClass.Melee;
-			AIType = ProjectileID.Bullet;
 			Projectile.friendly = true;
 			Projectile.penetrate = 5;
-			Projectile.alpha = 60;
-			Projectile.timeLeft = 180;
 		}
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(20, 150);
@@ -33,10 +29,16 @@ namespace SpiritMod.Projectiles
 			if (info.PvP)
 				target.AddBuff(20, 150);
 		}
+		public override bool PreAI() 
+		{
+			Projectile.alpha += 2;
+			if (Projectile.alpha >= 255)
+				Projectile.Kill();
+			return true;
+		}
 
 		public override void AI()
 		{
-			Projectile.alpha += 3;
 			Projectile.velocity *= 0.92f;
 			Projectile.spriteDirection = Projectile.direction;
 			Projectile.frameCounter++;
