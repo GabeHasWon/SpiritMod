@@ -22,6 +22,7 @@ using SpiritMod.NPCs.BlueMoon.LunarSlime;
 using SpiritMod.Buffs.Pet;
 using SpiritMod.Utilities;
 using Terraria.DataStructures;
+using SpiritMod.Systems.LuminousOcean;
 
 namespace SpiritMod.NPCs
 {
@@ -641,17 +642,17 @@ namespace SpiritMod.NPCs
 					pool.Add(ModContent.NPCType<Lumantis>(), .6f);
 			}
 
-			if (player.active && player.ZoneBeach && MyWorld.luminousOcean && !Main.dayTime)
+			if (player.active && player.ZoneLuminous() && !Main.dayTime)
 			{
 				pool.Clear();
 
 				if (spawnInfo.Water)
 				{
-					if (MyWorld.luminousType == 1)
+					if (LuminousWorld.LuminousType == LuminousWorld.GREEN)
 						pool.Add(ModContent.NPCType<GreenAlgae2>(), 3f);
-					else if (MyWorld.luminousType == 2)
+					else if (LuminousWorld.LuminousType == LuminousWorld.BLUE)
 						pool.Add(ModContent.NPCType<BlueAlgae2>(), 3f);
-					else if (MyWorld.luminousType == 3)
+					else if (LuminousWorld.LuminousType == LuminousWorld.PURPLE)
 						pool.Add(ModContent.NPCType<PurpleAlgae2>(), 3f);
 				}
 			}

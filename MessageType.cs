@@ -26,7 +26,6 @@
 		RequestQuestManager,
 		RecieveQuestManager,
 		Quest,
-		SyncLuminousOcean,
 		Sports,
 		SearchForFathomless,
 		SearchForFathomlessFailure,

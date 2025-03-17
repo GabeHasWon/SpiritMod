@@ -20,12 +20,12 @@ public class AuroraWorld : ModSystem
 
 	private static void UpdateAurora(bool day)
 	{
-		if (Main.netMode == NetmodeID.MultiplayerClient || day)
+		if (Main.netMode == NetmodeID.MultiplayerClient)
 			return;
 
 		AuroraType = Default;
 
-		if (Main.rand.NextBool(3))
+		if (!day && Main.rand.NextBool(3))
 			AuroraType = (byte)Main.rand.Next([1, 2, 3, 5]);
 	}
 

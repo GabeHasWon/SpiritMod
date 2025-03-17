@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Biomes;
 using SpiritMod.Systems.Aurora;
+using SpiritMod.Systems.LuminousOcean;
 
 namespace SpiritMod.Utilities
 {
@@ -52,5 +53,8 @@ namespace SpiritMod.Utilities
 
 		/// <inheritdoc cref="AuroraPlayer.AuroraActive"/>
 		public static bool ZoneAurora(this Player player) => player.GetModPlayer<AuroraPlayer>().AuroraActive;
+
+		/// <inheritdoc cref="LuminousPlayer.LuminousOceanActive"/>
+		public static bool ZoneLuminous(this Player player) => player.GetModPlayer<LuminousPlayer>().LuminousOceanActive;
 	}
 }

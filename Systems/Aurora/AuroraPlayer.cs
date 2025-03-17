@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Systems.Aurora;
 
-internal class AuroraPlayer : ModPlayer
+public class AuroraPlayer : ModPlayer
 {
 	/// <summary> Whether this player is present in a natural aurora.</summary>
 	public bool AuroraActive => GetAuroraType() != -1;

@@ -249,10 +249,6 @@ public class MyPlayer : ModPlayer
 		bool showJellies = ((Player.ZoneOverworldHeight || Player.ZoneSkyHeight) && MyWorld.jellySky) || NPC.AnyNPCs(ModContent.NPCType<MoonWizard>());
 		bool underwater = Player.ZoneBeach && Submerged(30);
 
-		bool greenOcean = Player.ZoneBeach && MyWorld.luminousType == 1 && MyWorld.luminousOcean;
-		bool blueOcean = Player.ZoneBeach && MyWorld.luminousType == 2 && MyWorld.luminousOcean;
-		bool purpleOcean = Player.ZoneBeach && MyWorld.luminousType == 3 && MyWorld.luminousOcean;
-
 		bool blueMoon = MyWorld.blueMoon && (Player.ZoneOverworldHeight || Player.ZoneSkyHeight);
 
 		if (Main.netMode != NetmodeID.Server)
@@ -277,17 +273,10 @@ public class MyPlayer : ModPlayer
 			else
 				Player.ManageSpecialBiomeVisuals("SpiritMod:Glitch", false);
 
-			//bool showAurora = (Player.ZoneSnow || Player.ZoneSpirit() || Player.ZoneSkyHeight) && !Main.dayTime && !Main.raining && !Player.ZoneCorrupt && !Player.ZoneCrimson && MyWorld.aurora;
-
 			ManageAshrainShader();
 
-			//Player.ManageSpecialBiomeVisuals("SpiritMod:AuroraSky", showAurora || auroraMonoliths.Any(x => x.Value >= 1)); //See AuroraPlayer
 			Player.ManageSpecialBiomeVisuals("SpiritMod:SpiritBiomeSky", spirit);
 			Player.ManageSpecialBiomeVisuals("SpiritMod:AsteroidSky2", Player.ZoneAsteroid());
-
-			Player.ManageSpecialBiomeVisuals("SpiritMod:GreenAlgaeSky", greenOcean);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:BlueAlgaeSky", blueOcean);
-			Player.ManageSpecialBiomeVisuals("SpiritMod:PurpleAlgaeSky", purpleOcean);
 
 			Player.ManageSpecialBiomeVisuals("SpiritMod:JellySky", showJellies);
 

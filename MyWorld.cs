@@ -65,13 +65,9 @@ namespace SpiritMod;
 public class MyWorld : ModSystem
 {
 	public static float rotationTime = 0;
-	private static bool dayTimeLast;
 
 	public static bool ashRain = false;
-
-	public static bool luminousOcean = false;
 	public static bool calmNight = false;
-	public static int luminousType = 1;
 
 	private static bool wasLanternNight = false;
 	public static bool VictoryDay => wasLanternNight && Main.dayTime;
@@ -299,8 +295,6 @@ public class MyWorld : ModSystem
 		blueMoon = false;
 		jellySky = false;
 		ashRain = false;
-		dayTimeLast = Main.dayTime;
-		//dayTimeSwitched = false;
 
 		if (!Main.dedServ)
 			AdditiveCallManager.Load();
@@ -1415,33 +1409,44 @@ public class MyWorld : ModSystem
 		else if (!Main.dayTime)
 			wasLanternNight = false;
 
-		if (Main.hardMode && !rockCandy)
+		GenRockCandy();
+	}
+
+	private static void GenRockCandy()
+	{
+		if (!Main.hardMode || rockCandy)
+			return;
+
+		rockCandy = true;
+
+		for (int t = 0; t < 2; t++)
 		{
-			rockCandy = true;
-
 			for (int i = 0; i < Main.maxTilesX * 9; i++)
 			{
 				int x = WorldGen.genRand.Next(300, Main.maxTilesX - 300);
 				int y = WorldGen.genRand.Next((int)GenVars.rockLayer, Main.maxTilesY);
 
-				if (Main.tile[x, y].TileType == TileID.Stone)
+				if (ValidFloor(x, y))
 				{
-					WorldGen.PlaceObject(x, y, ModContent.TileType<GreenShardBig>());
-					NetMessage.SendObjectPlacement(-1, x, y, ModContent.TileType<GreenShardBig>(), 0, 0, -1, -1);
+					int type = (t == 0) ? ModContent.TileType<GreenShardBig>() : ModContent.TileType<PurpleShardBig>();
+					WorldGen.PlaceObject(x, y, type);
+
+					if (Main.tile[x, y].TileType == type && Main.netMode == NetmodeID.Server)
+						NetMessage.SendObjectPlacement(-1, x, y, type, 0, 0, -1, -1);
 				}
 			}
+		}
 
-			for (int i = 0; i < Main.maxTilesX * 9; i++)
+		static bool ValidFloor(int x, int y)
+		{
+			for (int i = 0; i < 2; i++)
 			{
-				int x = WorldGen.genRand.Next(300, Main.maxTilesX - 300);
-				int y = WorldGen.genRand.Next((int)GenVars.rockLayer, Main.maxTilesY);
-
-				if (Main.tile[x, y].TileType == TileID.Stone)
-				{
-					WorldGen.PlaceObject(x, y, ModContent.TileType<PurpleShardBig>());
-					NetMessage.SendObjectPlacement(-1, x, y, ModContent.TileType<PurpleShardBig>(), 0, 0, -1, -1);
-				}
+				var t = Main.tile[x + i, y + 1];
+				if (!t.HasTile || t.TileType != TileID.Stone)
+					return false;
 			}
+
+			return true;
 		}
 	}
 
@@ -1471,14 +1476,16 @@ public class MyWorld : ModSystem
 		else
 			meteorShowerWeather = false;
 
-		if (!day && Main.hardMode)
+		if (!day && Main.hardMode) //Random blue moon occurrence
 		{
 			if (!Main.IsFastForwardingTime() && !Main.bloodMoon && WorldGen.spawnHardBoss == 0 && ((Main.rand.NextBool(20) && !downedBlueMoon) || (Main.rand.NextBool(40) && !downedBlueMoon)))
 			{
+				var color = new Color(61, 255, 142);
+
 				if (Main.netMode == NetmodeID.SinglePlayer)
-					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.BlueMoon.OnStart"), 61, 255, 142);
+					Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.BlueMoon.OnStart"), color);
 				else if (Main.netMode == NetmodeID.Server)
-					ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.BlueMoon.OnStart"), new Color(61, 255, 142));
+					ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.BlueMoon.OnStart"), color);
 
 				blueMoon = true;
 				downedBlueMoon = true;
@@ -1491,37 +1498,6 @@ public class MyWorld : ModSystem
 			rareStarfallEvent = true;
 		else
 			rareStarfallEvent = false;
-
-		if (!day && Main.rand.NextBool(6))
-		{
-			luminousType = Main.rand.Next(1, 4);
-			luminousOcean = true;
-
-			if (Main.netMode == NetmodeID.SinglePlayer)
-				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.LuminousOcean.OnStart"), 251, 255, 230);
-			else if (Main.netMode == NetmodeID.Server)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.LuminousOcean.OnStart"), new Color(251, 255, 230));
-
-			if (Main.netMode != NetmodeID.SinglePlayer)
-			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SyncLuminousOcean, 2);
-				packet.Write((byte)luminousType);
-				packet.Write(true);
-				packet.Send();
-			}
-		}
-		else
-		{
-			luminousOcean = false;
-
-			if (Main.netMode != NetmodeID.SinglePlayer)
-			{
-				ModPacket packet = SpiritMod.Instance.GetPacket(MessageType.SyncLuminousOcean, 2);
-				packet.Write((byte)luminousType);
-				packet.Write(false);
-				packet.Send();
-			}
-		}
 
 		if (!day && (Main.moonPhase == 2 || Main.moonPhase == 6) && !Main.bloodMoon && Main.rand.NextBool(2))
 			calmNight = true;
@@ -1536,16 +1512,16 @@ public class MyWorld : ModSystem
 		bool anyValidBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || DownedScarabeus || DownedVinewrath || DownedStarplate || DownedAncientAvian;
 		if (!day && anyValidBoss && Main.rand.NextBool(DownedMoonWizard ? 46 : 8))
 		{
+			var color = new Color(61, 255, 142);
+
 			if (Main.netMode == NetmodeID.SinglePlayer)
-				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.JellyDeluge.OnStart"), 61, 255, 142);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.JellyDeluge.OnStart"), color);
 			else if (Main.netMode == NetmodeID.Server)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.JellyDeluge.OnStart"), new Color(61, 255, 142));
+				ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.JellyDeluge.OnStart"), color);
 
 			jellySky = true;
 		}
 		else
 			jellySky = false;
-
-		//UpdateAurora(); //See AuroraSystem
 	}
 }

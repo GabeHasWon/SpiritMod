@@ -53,6 +53,7 @@ using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.NPCs.Town.Oracle;
 using SpiritMod.GlobalClasses.Items;
 using SpiritMod.Systems.Aurora;
+using SpiritMod.Systems.LuminousOcean;
 
 namespace SpiritMod
 {
@@ -810,10 +811,10 @@ namespace SpiritMod
 		internal static string GetWeatherRadioText(string key)
 		{
 			if (MyWorld.ashRain) return "Ashfall";
-			else if (Main.LocalPlayer.ZoneAurora()) return "Aurora";
+			else if (AuroraWorld.AuroraActive) return "Aurora";
 			else if (MyWorld.blueMoon) return "Mystic Moon";
 			else if (MyWorld.jellySky) return "Jelly Deluge";
-			else if (MyWorld.luminousOcean) return "Luminous Seas";
+			else if (LuminousWorld.LuminousOceanActive) return "Luminous Seas";
 			else if (MyWorld.calmNight) return "Calm Night";
 			else if (MyWorld.rareStarfallEvent) return "Starfall";
 
