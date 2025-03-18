@@ -1,20 +1,30 @@
-﻿v1.5.0.32
-- Significantly changed Ancient Tome:
-	Made Ancient Tome fire rate consistent & lower
-	Fixed Ancient Tome firing between 2 and 3 minus 1 projectiles, both of which behave the exact same way - now only one
-	Removed Ancient Tome contact damage
-	Ancient Tome now recoils on firing a projectile
-	Ancient Tome animation speed increases the lower its health is
-	The projectile Ancient Tome fires now dies quicker, explodes, and slows down a second before doing so
-	Reduced spawn rate of Ancient Tomes on the surface
-- Reduced ranged damage of all Spirit enemies
-- Made Ancient Spectre projectile fire rate consistent, slower, and reduced fire rate
-- Made Ancient Spectre projectiles much easier to read and react to
-- Reduced Ancient Spectre spawn rate, boosted health
-- Removed weird Ancient Spectre "explosion" functionality
-- Added drop for Obolos on the following enemies: Ancient Spectre, Ancient Tome, Shadow Ghoul
-	All of these are 1/300, aside from Ancient Tome, which - as penance for being the worst enemy in the biome - has a 1/100 chance
-- Removed Spirit Floater projectile firing capability
-	Now, Netherbane will release a shotgun spread of projectiles on death
-- Added multiplayer sync to all of the projectiles above
-- Jesus christ this code is bad
+﻿v1.5.0.33
+- Made the Asteroid biome avoid generating over the Pagoda
+- Refactored BoidManager and prevented boids from updating while the game is paused
+- Added origins to some sound effects
+- Prevented Reality Quill from following non-owner client cursors
+- Made Sepulchure chest gen more consistent
+- Frigid armor's set bonus cooldown no longer scales with difficulty
+- Eye of the Sorcerer now provides a general crit bonus, as the item describes
+- Spirit biome generation now properly syncs in multiplayer, and should no longer cause tile corruption
+- Fixed issues with Soulguard potion effects
+- Fixed Valkyrie drawing in the wrong color
+- Moved Atlas after Golem in Boss Checklist
+- Spirit dresser tiles now function normally
+- Auroras can now fade in and out over eachother
+- Reorganized aurora logic to play nicer in multiplayer
+- Added Contest Winners
+- Nerfed Lost Mimes significantly
+- Gave Blossmoon Cages Calm nearby effects
+- Made Phantoms spawn slightly more frequently
+- Made Fathomless chests less prio on metal detector
+- Made Coconut Slime drop stuff that wasn't coconuts
+- Improved All Vinewrath Bane Drops
+- Wheezers now shoot projectiles closer to their mouth
+- Wheezer Clouds (friendly and hostile) now slowly fade out instead of abruptly dying
+- Added the toxic tooth; the toxic tooth is a combination of the Cleft Horn and the Wheezer Scale
+- Gilded Jellies can now be caught and used as bait/sold
+- Antlion Assassin Reworks:
+1. No longer de-cloaks becomes re-invisible on a timer. Instead, starts out invisible, and remains visible once players hit it once.
+2. Nerfed damage, defense, spawnrate, and max life significantly
+- Updated textures for Infernal Javelin, Seal of Torment, Char Fury, The Seven Sins, Eye of the Inferno, Pain Caller, and Treasure Bag (Infernon)
