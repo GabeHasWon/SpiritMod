@@ -3758,13 +3758,13 @@ SatchelReward: {
 }
 
 MJWPainting: {
-	// DisplayName: Moonlit Mischief
-	// Tooltip: "'M. Joon'"
+	DisplayName: 月光恶作剧
+	Tooltip: "'M. Joon'"
 }
 
 SadSlimePainting: {
-	// DisplayName: The Other Side
-	// Tooltip: "'P. Polaris'"
+	DisplayName: 彼岸
+	Tooltip: "'P. Polaris'"
 }
 
 ScarabIdol: {
@@ -9198,26 +9198,21 @@ SepulchrePlatformItem: {
 	Tooltip: ""
 }
 
-GildJellyItem: {
-	// DisplayName: Gilded Jelly
-	// Tooltip: ""
-}
-
 ToxicTooth: {
-	// DisplayName: Toxic Tooth
-	/* Tooltip:
+	DisplayName: 剧毒尖牙
+	Tooltip:
 		'''
-		Increases armor penetration by 3 and melee speed by 5%
-		Melee attacks occasionally strike enemies twice and release poisonous gas
-		''' */
+		增加3点护甲穿透和5%近战攻速
+		近战攻击偶尔会击中敌人两次并释放毒气
+		'''
 }
 
 ScarabeusAnatomyItem: {
-	// DisplayName: Anatomy of Scarabeus
-	// Tooltip: "'M. Bee'"
+	DisplayName: 圣甲虫解剖图
+	Tooltip: "'M. Bee'"
 }
 
 ToweringStactus: {
-	// DisplayName: Towering Stactus
-	// Tooltip: "'A. Knight'"
+	DisplayName: 参天小仙人球
+	Tooltip: "'A. Knight'"
 }
