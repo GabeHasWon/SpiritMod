@@ -35,11 +35,13 @@ public class LuminousWorld : ModSystem
 			LuminousType = (byte)Main.rand.Next(0, 3);
 
 			if (Main.netMode == NetmodeID.SinglePlayer)
-				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.LuminousOcean.OnStart"), color.R, color.G, color.B);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.LuminousOcean.OnStart"), color);
 			else if (Main.netMode == NetmodeID.Server)
 				ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.SpiritMod.Events.LuminousOcean.OnStart"), color);
 		}
 	}
+
+	public override void ClearWorld() => LuminousType = Default;
 
 	public override void NetSend(BinaryWriter writer) => writer.Write(LuminousType);
 	public override void NetReceive(BinaryReader reader) => LuminousType = reader.ReadByte();

@@ -31,6 +31,7 @@ public class AuroraWorld : ModSystem
 	}
 
 	public override void ResetNearbyTileEffects() => Main.LocalPlayer.GetModPlayer<AuroraPlayer>().Reset();
+	public override void ClearWorld() => AuroraType = Default;
 
 	public override void NetSend(BinaryWriter writer) => writer.Write(AuroraType);
 	public override void NetReceive(BinaryReader reader) => AuroraType = reader.ReadByte();

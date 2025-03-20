@@ -379,14 +379,6 @@ public class MyPlayer : ModPlayer
 		// Reset accessory booleans.
 		ResetAccBools();
 
-		/*for (int i = 0; i < AuroraOverlay.COUNT; ++i) //Reset aurora monolith values
-		{
-			if (i == AuroraOverlay.COMPLETELY_UNIMPLEMENTED)
-				continue;
-
-			auroraMonoliths[i] = (byte)Math.Max(auroraMonoliths[i] - 1, 0);
-		}*/ //See AuroraPlayer
-
 		fountainsActive["BRIAR"]--;
 
 		if (Player.FindBuffIndex(ModContent.BuffType<BeetleFortitude>()) < 0)

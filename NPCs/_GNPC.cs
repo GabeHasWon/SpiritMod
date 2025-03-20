@@ -642,7 +642,7 @@ namespace SpiritMod.NPCs
 					pool.Add(ModContent.NPCType<Lumantis>(), .6f);
 			}
 
-			if (player.active && player.ZoneLuminous() && !Main.dayTime)
+			if (player.active && player.ZoneLuminous())
 			{
 				pool.Clear();
 

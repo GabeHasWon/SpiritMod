@@ -5,19 +5,18 @@ namespace SpiritMod.Systems.LuminousOcean;
 
 public class LuminousPlayer : ModPlayer
 {
-	/// <summary> Whether this player is present in a luminous ocean. </summary>
-	public bool LuminousOceanActive => Player.ZoneBeach && LuminousWorld.LuminousOceanActive;
+	/// <summary> Whether this player is present in a luminous ocean at night. </summary>
+	public bool LuminousOceanActive => Player.ZoneBeach && !Main.dayTime && LuminousWorld.LuminousOceanActive;
 
 	public override void PostUpdateMiscEffects()
 	{
 		if (Main.dedServ)
 			return;
 
-		if (LuminousWorld.LuminousType == LuminousWorld.GREEN)
-			Player.ManageSpecialBiomeVisuals("SpiritMod:GreenAlgaeSky", true);
-		else if (LuminousWorld.LuminousType == LuminousWorld.BLUE)
-			Player.ManageSpecialBiomeVisuals("SpiritMod:BlueAlgaeSky", true);
-		else if (LuminousWorld.LuminousType == LuminousWorld.PURPLE)
-			Player.ManageSpecialBiomeVisuals("SpiritMod:PurpleAlgaeSky", true);
+		Player.ManageSpecialBiomeVisuals("SpiritMod:GreenAlgaeSky", Matching(LuminousWorld.GREEN));
+		Player.ManageSpecialBiomeVisuals("SpiritMod:BlueAlgaeSky", Matching(LuminousWorld.BLUE));
+		Player.ManageSpecialBiomeVisuals("SpiritMod:PurpleAlgaeSky", Matching(LuminousWorld.PURPLE));
+
+		bool Matching(int type) => LuminousOceanActive && LuminousWorld.LuminousType == type;
 	}
 }
