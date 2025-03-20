@@ -8868,11 +8868,6 @@ SepulchrePlatformItem: {
 	Tooltip: ""
 }
 
-GildJellyItem: {
-	DisplayName: Gilded Jelly
-	Tooltip: ""
-}
-
 ToxicTooth: {
 	DisplayName: Toxic Tooth
 	Tooltip:
