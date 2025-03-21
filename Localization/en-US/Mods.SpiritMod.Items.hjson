@@ -8886,3 +8886,8 @@ ToweringStactus: {
 	DisplayName: Towering Stactus
 	Tooltip: "'A. Knight'"
 }
+
+GildJellyItem: {
+	DisplayName: "{$Mods.SpiritMod.NPCs.GildJelly.DisplayName}"
+	Tooltip: ""
+}

@@ -9216,3 +9216,8 @@ ToweringStactus: {
 	DisplayName: 参天小仙人球
 	Tooltip: "'A. Knight'"
 }
+
+GildJellyItem: {
+	DisplayName: "{$Mods.SpiritMod.NPCs.GildJelly.DisplayName}"
+	Tooltip: ""
+}
