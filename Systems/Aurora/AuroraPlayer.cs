@@ -54,7 +54,7 @@ public class AuroraPlayer : ModPlayer
 
 	public override void PostUpdateMiscEffects()
 	{
-		if (Main.dedServ)
+		if (Main.dedServ || Player.whoAmI != Main.myPlayer)
 			return;
 
 		int type = GetAuroraType();

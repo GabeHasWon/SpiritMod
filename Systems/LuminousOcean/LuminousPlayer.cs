@@ -10,7 +10,7 @@ public class LuminousPlayer : ModPlayer
 
 	public override void PostUpdateMiscEffects()
 	{
-		if (Main.dedServ)
+		if (Main.dedServ || Player.whoAmI != Main.myPlayer)
 			return;
 
 		Player.ManageSpecialBiomeVisuals("SpiritMod:GreenAlgaeSky", Matching(LuminousWorld.GREEN));
