@@ -1,3 +1,3 @@
-﻿v1.5.0.34
-- Updated Chinese localization
-- Prevented Luminous Ocean sky visuals from persisting beyond the event
+﻿v1.5.0.35
+- Renamed the mod to Spirit Classic
+- Update the small icon
