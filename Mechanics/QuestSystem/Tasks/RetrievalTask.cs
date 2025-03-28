@@ -5,12 +5,28 @@ using System.Text;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace SpiritMod.Mechanics.QuestSystem.Tasks
 {
 	public class RetrievalTask : QuestTask
 	{
 		public override string ModCallName => "Retrieve";
+
+		/// <summary>
+		/// Lazy hardcoded check for Spirit Reforged compatibility.<br/>
+		/// Just replaces the fish crate ID with Reforged's fish crate ID.
+		/// </summary>
+		private int ActualItemId
+		{
+			get
+			{
+				if (_itemID == ModContent.ItemType<Items.Placeable.FishCrate>() && ModLoader.TryGetMod("SpiritReforged", out var reforged))
+					return reforged.Find<ModItem>("FishCrate").Type;
+
+				return _itemID;
+			}
+		}
 
 		private readonly int _itemID;
 		private readonly int _itemsNeeded;
@@ -76,7 +92,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 				return builder.ToString();
 			}
 
-			string itemName = Lang.GetItemNameValue(_itemID);
+			string itemName = Lang.GetItemNameValue(ActualItemId);
 			string count = _itemsNeeded > 1 ? _itemsNeeded.ToString() : "1";
 			builder.Append(_wording).Append(' ').Append(count).Append(' ').Append(itemName);
 
@@ -97,7 +113,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 		{
 			if (Main.netMode == NetmodeID.SinglePlayer)
 			{
-				_lastCount = Main.LocalPlayer.CountItem(_itemID, _itemsNeeded);
+				_lastCount = Main.LocalPlayer.CountItem(ActualItemId, _itemsNeeded);
 				return _lastCount >= _itemsNeeded;
 			}
 			else if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -107,12 +123,12 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 				{
 					Player p = Main.player[i];
 					if (p.active)
-						_lastCount += p.CountItem(_itemID, _itemsNeeded);
+						_lastCount += p.CountItem(ActualItemId, _itemsNeeded);
 				}
 			}
 			return _lastCount >= _itemsNeeded;
 		}
 
-		internal int GetItemID() => _itemID;
+		internal int GetItemID() => ActualItemId;
 	}
 }
