@@ -7638,7 +7638,7 @@ PossessedBook: {
 
 SoulWeaver: {
 	DisplayName: Soul Weaver
-	Tooltip: Shoots out multiple Soul Shards in a spread
+	Tooltip: Shoots out Soul Shards
 }
 
 SpiritFlameStaff: {
