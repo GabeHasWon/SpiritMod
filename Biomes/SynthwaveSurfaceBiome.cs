@@ -13,7 +13,7 @@ namespace SpiritMod.Biomes
 		public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
 		public override int Music => MusicLoader.GetMusicSlot(Mod, Main.dayTime ? "Sounds/Music/NeonTech1" : "Sounds/Music/NeonTech");
-
+		public override float GetWeight(Player player) => 2f;
 		public override string BestiaryIcon => base.BestiaryIcon;
 		public override string BackgroundPath => MapBackground;
 		public override Color? BackgroundColor => base.BackgroundColor;
