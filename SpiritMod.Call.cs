@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.Mechanics.PortraitSystem;
 using SpiritMod.GlobalClasses.Items;
+using SpiritMod.Utilities;
 
 namespace SpiritMod;
 
@@ -75,6 +76,11 @@ public partial class SpiritMod : Mod
 			}
 			else if (context == CallContext.Events) //Gets or sets event bools
 				return EventCall(args);
+			else if (context == CallContext.AddItemDefinition)
+			{
+				if (args[1] is int from && args[2] is int to)
+					ContentDefinition.ItemDefinitions.Add(from, to);
+			}
 		}
 		catch (Exception e)
 		{
@@ -180,6 +186,7 @@ public partial class SpiritMod : Mod
 			"IsQuestCompleted" => CallContext.GetQuestIsCompleted,
 			"QuestRewardsGiven" => CallContext.GetQuestRewardsGiven,
 			"Portrait" => CallContext.Portrait,
+			"AddItemDefinition" => CallContext.AddItemDefinition,
 			_ => CallContext.Invalid,
 		};
 	}
@@ -247,5 +254,6 @@ internal enum CallContext
 	GetQuestRewardsGiven,
 	Portrait,
 	Events,
+	AddItemDefinition,
 	Limit
 }

@@ -37,13 +37,13 @@ public static class QuestManager
 
 	public static void Load()
 	{
-		_questDict = new Dictionary<Type, Quest>();
-		_tasksDict = new Dictionary<string, QuestTask>();
-		Categories = new Dictionary<string, QuestCategory>();
+		_questDict = [];
+		_tasksDict = [];
+		Categories = [];
 
-		Quests = new List<Quest>();
-		ActiveQuests = new List<Quest>();
-		UnloadedQuests = new Dictionary<string, StoredQuestData>();
+		Quests = [];
+		ActiveQuests = [];
+		UnloadedQuests = [];
 
 		// register our categories]
 		if (!Main.dedServ)

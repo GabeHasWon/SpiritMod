@@ -598,12 +598,12 @@ namespace SpiritMod.UI.QuestUI
 			{
 				foreach (var reward in quest.QuestRewards)
 				{
-					_questRewardList.Add(new UIRewardItem(reward.Item1, reward.Item2));
+					_questRewardList.Add(new UIRewardItem(ContentDefinition.GetItemDefinition(reward.Item1), reward.Item2));
 				}
 			}
 
 			// pick a "random" mask
-			int maskIndex = (quest.QuestName.Length * quest.QuestDescription.Length) % _imageMasks.Length;
+			int maskIndex = quest.QuestName.Length * quest.QuestDescription.Length % _imageMasks.Length;
 			_questImage.Effect.Parameters["AlphaMaskTexture"].SetValue(_imageMasks[maskIndex]);
 
 			SelectedQuest = quest;
