@@ -6,7 +6,7 @@ namespace SpiritMod.Utilities;
 /// <summary> Allows overriding various <see cref="ModType"/> definitions for cross-mod compatibility purposes. </summary>
 public static class ContentDefinition
 {
-	private static readonly Dictionary<int, int> ItemDefinitions = [];
+	public static readonly Dictionary<int, int> ItemDefinitions = [];
 
 	public static int ItemType<T>() where T : ModItem => GetItemDefinition(ModContent.GetInstance<T>()?.Type ?? 0);
 
