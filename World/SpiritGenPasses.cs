@@ -1371,7 +1371,7 @@ public static class SpiritGenPasses
 	private static void PopulateSpam(GenerationProgress progress)
 	{
 		int maxReps = 0;
-		Dictionary<string, int> repeatsByName = new Dictionary<string, int>();
+		Dictionary<string, int> repeatsByName = [];
 
 		foreach (var item in decorSpam)
 		{

@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using SpiritMod.Tiles.Vanilla;
 using SpiritMod.Utilities.Helpers;
+using System.Collections.Generic;
 
 namespace SpiritMod.Tiles;
 
@@ -18,19 +19,21 @@ public class GTile : GlobalTile
 {
 	internal static readonly int[] DirtAndDecor = [TileID.Dirt, TileID.Plants, TileID.SmallPiles, TileID.LargePiles, TileID.LargePiles2, TileID.MushroomPlants, TileID.Pots];
 
+	private static readonly int[] array = [11, 12, 13, 14, 699, 700, 701, 702, 999, 182, 178, 179, 177, 180, 181];
+	private static readonly int[] array0 = [11, 12, 13, 14, 699, 700, 701, 702, 999, 182, 178, 179, 177, 180, 181, 364, 365, 366, 1104, 1105, 1106];
+
+	private static readonly HashSet<RandomUpdate> Tasks = [];
+
+	public override void SetStaticDefaults()
+	{
+		foreach (var c in Mod.GetContent<RandomUpdate>())
+			Tasks.Add(c);
+	}
+
 	public override void RandomUpdate(int i, int j, int type)
 	{
-		if (type == TileID.Cloud || type == TileID.RainCloud || type == TileID.SnowCloud)
-			CloudRandomUpdate.OnTick(i, j, type);
-
-		if (type == TileID.Pearlstone)
-			PearlstoneRandomUpdate.OnTick(i, j);
-
-		if (type == TileID.SnowBlock || type == TileID.IceBlock || type == TileID.CorruptIce || type == TileID.FleshIce || type == TileID.HallowedIce)
-			IceRandomUpdate.OnTick(i, j, type);
-
-		if (type == TileID.CorruptGrass || type == TileID.Ebonstone)
-			CorpsebloomRandomUpdate.OnTick(i, j);
+		foreach (var t in Tasks)
+			t.OnTick(i, j, type);
 	}
 
 	public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
@@ -46,9 +49,9 @@ public class GTile : GlobalTile
 				
 				if (Main.rand.NextBool(25) && modPlayer.gemPickaxe && struckThisTile && !fail)
 				{
-					int tremorItem = Main.rand.Next(new int[] { 11, 12, 13, 14, 699, 700, 701, 702, 999, 182, 178, 179, 177, 180, 181 });
+					int tremorItem = Main.rand.Next(array);
 					if (Main.hardMode)
-						tremorItem = Main.rand.Next(new int[] { 11, 12, 13, 14, 699, 700, 701, 702, 999, 182, 178, 179, 177, 180, 181, 364, 365, 366, 1104, 1105, 1106 });
+						tremorItem = Main.rand.Next(array0);
 
 					SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/PositiveOutcome"), new Vector2(i * 16, j * 16));
 

@@ -4,11 +4,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Tiles.Vanilla
+namespace SpiritMod.Tiles.Vanilla;
+
+internal class IceRandomUpdate : RandomUpdate
 {
-	internal class IceRandomUpdate
+	public override void OnTick(int i, int j, int type)
 	{
-		public static void OnTick(int i, int j, int type)
+		if (type is TileID.SnowBlock or TileID.IceBlock or TileID.CorruptIce or TileID.FleshIce or TileID.HallowedIce)
 		{
 			bool belowSurfaceLayer = j > (int)Main.worldSurface && j < Main.maxTilesY - 250;
 
@@ -44,18 +46,18 @@ namespace SpiritMod.Tiles.Vanilla
 				if (WorldGen.PlaceObject(i, j + 1, placeType, false, style) && Main.netMode != NetmodeID.SinglePlayer)
 					NetMessage.SendObjectPlacement(-1, i, j + 1, placeType, style, 0, -1, -1);
 			}
+		}
 
-			static int EmptyTilesBelow(int i, int j)
+		static int EmptyTilesBelow(int i, int j)
+		{
+			for (int t = 0; t < 3; t++)
 			{
-				for (int t = 0; t < 3; t++)
-				{
-					Tile tile = Framing.GetTileSafely(i, j + t + 1);
-					if (tile.HasTile || tile.LiquidType == LiquidID.Lava)
-						return t;
-				}
-
-				return 3;
+				Tile tile = Framing.GetTileSafely(i, j + t + 1);
+				if (tile.HasTile || tile.LiquidType == LiquidID.Lava)
+					return t;
 			}
+
+			return 3;
 		}
 	}
 }

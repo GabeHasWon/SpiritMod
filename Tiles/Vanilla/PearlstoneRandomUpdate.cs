@@ -2,11 +2,13 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SpiritMod.Tiles.Vanilla
+namespace SpiritMod.Tiles.Vanilla;
+
+internal class PearlstoneRandomUpdate : RandomUpdate
 {
-	internal class PearlstoneRandomUpdate
+	public override void OnTick(int i, int j, int type)
 	{
-		public static void OnTick(int i, int j)
+		if (type is TileID.Pearlstone)
 		{
 			bool inLavaLayer = j > (int)Main.rockLayer && j < Main.maxTilesY - 250;
 

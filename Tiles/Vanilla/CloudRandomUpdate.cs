@@ -5,11 +5,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace SpiritMod.Tiles.Vanilla
+namespace SpiritMod.Tiles.Vanilla;
+
+internal class CloudRandomUpdate : RandomUpdate
 {
-	internal class CloudRandomUpdate
+	public override void OnTick(int i, int j, int type)
 	{
-		public static void OnTick(int i, int j, int type)
+		if (type is TileID.Cloud or TileID.RainCloud or TileID.SnowCloud)
 		{
 			if (Main.tile[i, j + 1].HasTile)
 				return;
