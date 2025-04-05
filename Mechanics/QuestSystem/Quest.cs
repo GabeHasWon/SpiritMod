@@ -13,6 +13,7 @@ using Terraria.Localization;
 using SpiritMod.NPCs.Town;
 using System.Linq;
 using Terraria.Chat;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.Mechanics.QuestSystem
 {
@@ -164,13 +165,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			_currentTask.Activate(this);
 		}
 
-		public virtual void OnDeactivate()
-		{
-			if (_currentTask != null)
-			{
-				_currentTask.Deactivate();
-			}
-		}
+		public virtual void OnDeactivate() => _currentTask?.Deactivate();
 
 		public virtual void ResetEverything()
 		{
@@ -184,9 +179,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 		public virtual void ResetAllProgress()
 		{
 			for (QuestTask task = _tasks.Start; task != null; task = task.NextTask)
-			{
 				task.ResetProgress();
-			}
 		}
 
 		public virtual void UpdateBookOverlay(UIShaderImage image) => image.Texture = null;
@@ -267,9 +260,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 		public virtual void OnMPSync()
 		{
 			for (QuestTask task = _tasks.Start; task != null; task = task.NextTask)
-			{
 				task.OnMPSyncTick();
-			}
 		}
 
 		public virtual byte[] GetTaskDataBuffer()
@@ -277,28 +268,22 @@ namespace SpiritMod.Mechanics.QuestSystem
 			byte[] buffer = new byte[16];
 			using (var stream = new MemoryStream(buffer))
 			{
-				using (var writer = new BinaryWriter(stream))
-				{
-					writer.Write(_currentTask.TaskID);
-					_currentTask.WriteData(writer);
-				}
+				using var writer = new BinaryWriter(stream);
+				writer.Write(_currentTask.TaskID);
+				_currentTask.WriteData(writer);
 			}
 			return buffer;
 		}
 
 		public virtual void ReadFromDataBuffer(byte[] buffer)
 		{
-			using (var stream = new MemoryStream(buffer))
-			{
-				using (var reader = new BinaryReader(stream))
-				{
-					int taskId = reader.ReadInt32();
+			using var stream = new MemoryStream(buffer);
+			using var reader = new BinaryReader(stream);
+			int taskId = reader.ReadInt32();
 
-					_currentTask = _tasks[taskId];
-					_currentTask.ReadData(reader);
-					_currentTask.Activate(this); //Fixes branch quests being poorly reloaded
-				}
-			}
+			_currentTask = _tasks[taskId];
+			_currentTask.ReadData(reader);
+			_currentTask.Activate(this); //Fixes branch quests being poorly reloaded
 		}
 
 		public void GiveRewards()
@@ -307,12 +292,12 @@ namespace SpiritMod.Mechanics.QuestSystem
 				return;
 
 			foreach (var itemPair in QuestRewards)
-				ItemUtils.NewItemWithSync(Main.LocalPlayer.GetSource_GiftOrReward(), Main.myPlayer, Main.LocalPlayer.getRect(), itemPair.Item1, itemPair.Item2);
+				ItemUtils.NewItemWithSync(Main.LocalPlayer.GetSource_GiftOrReward(), Main.myPlayer, Main.LocalPlayer.getRect(), ContentDefinition.GetItemDefinition(itemPair.Item1), itemPair.Item2);
 		}
 
-		public void ModifySpawnRateUnique(IDictionary<int, float> pool, int id, float rate)
+		public static void ModifySpawnRateUnique(IDictionary<int, float> pool, int id, float rate)
 		{
-			if (pool.ContainsKey(id) && pool[id] > 0f && !NPC.AnyNPCs(id))
+			if (pool.TryGetValue(id, out float value) && value > 0f && !NPC.AnyNPCs(id))
 				pool[id] = rate;
 		}
 
