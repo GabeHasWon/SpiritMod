@@ -4,7 +4,6 @@ using System.Text;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace SpiritMod.Mechanics.QuestSystem.Tasks
 {
@@ -62,7 +61,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 					Main.npcChatText = NPCText.Value;
 					if (!hasTakenItems)
 					{
-						Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), _itemReceived);
+						Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ItemType);
 						hasTakenItems = true;
 					}
 					return Main.npc[Main.LocalPlayer.talkNPC].type == _npcType;
@@ -77,7 +76,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 						Main.npcChatText = NPCText.Value;
 						if (!hasTakenItems)
 						{
-							Main.player[i].QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), _itemReceived);
+							Main.player[i].QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ItemType);
 							hasTakenItems = true;
 						}
 						return true;
@@ -110,5 +109,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			builder.Append(QuestManager.LocalizationValue("TalkToNPC")).Append(Lang.GetNPCNameValue(_npcType));
 			return builder.ToString();
 		}
+
+		internal int ItemType => ContentDefinition.GetItemDefinition(_itemReceived);
 	}
 }
