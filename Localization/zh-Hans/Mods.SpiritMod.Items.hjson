@@ -7968,7 +7968,7 @@ PossessedBook: {
 
 SoulWeaver: {
 	DisplayName: 灵魂编织者
-	Tooltip: 发射多枚灵魂碎片
+	Tooltip: 发射灵魂碎片
 }
 
 SpiritFlameStaff: {
