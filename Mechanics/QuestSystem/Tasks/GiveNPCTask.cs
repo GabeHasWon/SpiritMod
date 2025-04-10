@@ -139,9 +139,9 @@ public class GiveNPCTask : QuestTask
 	{
 		int seekIndex = -1;
 
-		for (int i = 0; i < _itemIDs.Length; ++i)
+		for (int i = 0; i < ItemTypes.Length; ++i)
 		{
-			if (p.CountItem(_itemIDs[i], _itemStacks[i]) >= _itemStacks[i])
+			if (p.CountItem(ItemTypes[i], _itemStacks[i]) >= _itemStacks[i])
 			{
 				seekIndex = i;
 				break;
@@ -182,16 +182,16 @@ public class GiveNPCTask : QuestTask
 	private void RemoveItems_AllItems(Player p)
 	{
 		int[] requiredStacks = (int[])_itemStacks.Clone(); //cache all stacks
-		bool[] requirements = new bool[_itemIDs.Length]; //cache all conditions
+		bool[] requirements = new bool[ItemTypes.Length]; //cache all conditions
 
 		for (int i = 0; i < p.inventory.Length; ++i) //scan through inventory
 		{
 			Item item = p.inventory[i];
 			if (!item.IsAir) //if item exists
 			{
-				for (int j = 0; j < _itemIDs.Length; ++j) //look through all IDs
+				for (int j = 0; j < ItemTypes.Length; ++j) //look through all IDs
 				{
-					if (item.type == ItemTypes[i] && !requirements[j])
+					if (item.type == ItemTypes[j] && !requirements[j])
 					{
 						if (requiredStacks[j] > item.stack)
 						{
