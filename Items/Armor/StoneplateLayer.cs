@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -8,6 +9,9 @@ namespace SpiritMod.Items.Armor
 {
 	public class StoneplateLayer : PlayerDrawLayer
 	{
+		private static Asset<Texture2D> SweatOverlay;
+
+		public override void Load() => SweatOverlay = Mod.Assets.Request<Texture2D>("Items/Armor/SweatOverlay");
 		public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.FaceAcc);
 
 		protected override void Draw(ref PlayerDrawSet drawInfo)
@@ -15,7 +19,7 @@ namespace SpiritMod.Items.Armor
 			if (!drawInfo.drawPlayer.GetModPlayer<MyPlayer>().stoneplate)
 				return;
 
-			Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Armor/SweatOverlay").Value;
+			Texture2D texture = SweatOverlay.Value;
 			Vector2 headPos = new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X) + ((drawInfo.drawPlayer.width - drawInfo.drawPlayer.bodyFrame.Width) / 2), (int)(drawInfo.Position.Y - Main.screenPosition.Y) + drawInfo.drawPlayer.height - drawInfo.drawPlayer.bodyFrame.Height + 4) + drawInfo.drawPlayer.headPosition + drawInfo.rotationOrigin;
 
 			bool steppingUp = (drawInfo.drawPlayer.bodyFrame.Y >= 392 && drawInfo.drawPlayer.bodyFrame.Y <= 504) || (drawInfo.drawPlayer.bodyFrame.Y >= 784 && drawInfo.drawPlayer.bodyFrame.Y <= 896);

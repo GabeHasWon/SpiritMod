@@ -7,12 +7,15 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria.Localization;
+using ReLogic.Content;
 
 namespace SpiritMod.Items.Accessory.MoonlightSack
 {
 	public class Moonlight_Sack : ModItem
 	{
-		// public override void SetStaticDefaults() => DisplayName.SetDefault("Moonlight Sack");
+		private static Asset<Texture2D> Glow;
+
+		public override void Load() => Glow = Mod.Assets.Request<Texture2D>("Items/Accessory/MoonlightSack/Moonlight_Sack_Glow");
 
 		public override void SetDefaults()
 		{
@@ -55,16 +58,16 @@ namespace SpiritMod.Items.Accessory.MoonlightSack
 			for (int index2 = 0; index2 < num7; ++index2)
 			{
 				Vector2 position2 = Item.Center + ((float) (index2 / (double)num7 * 6.28318548202515) + rotation).ToRotationVector2() * (float) (2.0 * (double)2.0) - Main.screenPosition - new Vector2(texture.Width, texture.Height / 1) * Item.scale / 2f + vector2_3 * Item.scale + drawOff;
-				Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Items/Accessory/MoonlightSack/Moonlight_Sack_Glow").Value, position2, texture.Frame(), Item.GetAlpha(color2), rotation, vector2_3, Item.scale, spriteEffects, 0.0f);
+				Main.spriteBatch.Draw(Glow.Value, position2, texture.Frame(), Item.GetAlpha(color2), rotation, vector2_3, Item.scale, spriteEffects, 0.0f);
 			}
 			
 			for (int index2 = 0; index2 < 4; ++index2)
 			{
 				Vector2 pos2 = Item.Center + ((float) (index2 / (double) 4 * 6.28318548202515) + rotation).ToRotationVector2() * (float) (2.0 * (double) num9 + 2.0) - Main.screenPosition - new Vector2(texture.Width, texture.Height / 1) * Item.scale / 2f + vector2_3 * Item.scale + drawOff;
-				Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Items/Accessory/MoonlightSack/Moonlight_Sack_Glow").Value, pos2, texture.Frame(), color2, rotation, vector2_3, Item.scale, spriteEffects, 0.0f);
+				Main.spriteBatch.Draw(Glow.Value, pos2, texture.Frame(), color2, rotation, vector2_3, Item.scale, spriteEffects, 0.0f);
 			}
 			
-			Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Items/Accessory/MoonlightSack/Moonlight_Sack_Glow").Value, bb, texture.Frame(), color2, rotation, vector2_3, Item.scale, spriteEffects, 0.0f);
+			Main.spriteBatch.Draw(Glow.Value, bb, texture.Frame(), color2, rotation, vector2_3, Item.scale, spriteEffects, 0.0f);
 			return false;
 		}
 	}

@@ -1,6 +1,5 @@
-﻿v1.5.0.36
-- Fix Packing Crate incompatibility issue w/ Reforged (and add a system to streamline this in the future if needed)
-- Update Soul Weaver tooltip
-- Gave the Hyperspace surface scene slightly more weight to stop collisions
-- Random small cleanup and tiny optimization
-- Update Chinese localization
+﻿v1.5.0.37
+- Fixed an issue with certain quest types not recognizing item IDs with Reforged enabled
+- Fixed special visuals for Matriarch Wings drawing incorrectly in various scenarios
+- Floating items no longer float in Shimmer
+- Fixed Void Quill occasionally not consuming any mana

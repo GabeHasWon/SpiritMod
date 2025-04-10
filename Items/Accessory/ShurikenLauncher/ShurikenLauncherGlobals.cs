@@ -5,6 +5,7 @@ using System;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Particles;
+using ReLogic.Content;
 
 namespace SpiritMod.Items.Accessory.ShurikenLauncher
 {
@@ -56,10 +57,14 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 
 	public class ShurikenLauncherNPC : GlobalNPC
 	{
+		private static Asset<Texture2D> Reticle;
+
 		public float hitDelay;
 		private float opacity;
 
 		public override bool InstancePerEntity => true;
+
+		public override void Load() => Reticle = Mod.Assets.Request<Texture2D>("Items/Accessory/ShurikenLauncher/ShurikenLauncher_Reticle");
 
 		public override bool PreAI(NPC npc)
 		{
@@ -85,7 +90,7 @@ namespace SpiritMod.Items.Accessory.ShurikenLauncher
 			if (!player.GetModPlayer<ShurikenLauncherPlayer>().throwerGlove || !player.HeldItem.IsRanged() || !npc.CanDamage() || (player.Distance(npc.Center) < ShurikenLauncher.EffectiveDistance))
 				return;
 
-			Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Accessory/ShurikenLauncher/ShurikenLauncher_Reticle").Value;
+			Texture2D texture = Reticle.Value;
 
 			float lerp = (float)Math.Sin(Main.timeForVisualEffects / 40f);
 			float scale = 1 + (lerp * .2f);

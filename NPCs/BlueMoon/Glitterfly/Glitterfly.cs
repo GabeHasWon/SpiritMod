@@ -12,11 +12,14 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes.Events;
+using ReLogic.Content;
 
 namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 {
 	public class Glitterfly : ModNPC
 	{
+		private static Asset<Texture2D> Glow;
+
 		//int timer = 0;
 		int moveSpeed = 0;
 		int moveSpeedY = 0;
@@ -25,6 +28,8 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 
 		public override void SetStaticDefaults()
 		{
+			Glow = Mod.Assets.Request<Texture2D>("NPCs/BlueMoon/Glitterfly/Glitterfly_Glow");
+
 			// DisplayName.SetDefault("Glitterfly");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Pixie];
 			NPCHelper.ImmuneTo<StarFlame>(this, BuffID.Confused);
@@ -141,7 +146,7 @@ namespace SpiritMod.NPCs.BlueMoon.Glitterfly
 			return false;
 		}
 
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/BlueMoon/Glitterfly/Glitterfly_Glow").Value, screenPos);
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Glow.Value, screenPos);
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{

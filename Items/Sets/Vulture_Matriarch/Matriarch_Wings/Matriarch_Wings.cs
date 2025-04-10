@@ -10,10 +10,11 @@ namespace SpiritMod.Items.Sets.Vulture_Matriarch.Matriarch_Wings
 	[AutoloadEquip(EquipType.Wings)]
 	public class Matriarch_Wings : ModItem
 	{
+		public static int EquipSlot { get; private set; }
+
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Matriarch Wings");
-			// Tooltip.SetDefault("Hold down to dive");
+			EquipSlot = EquipLoader.GetEquipSlot(Mod, nameof(Matriarch_Wings), EquipType.Wings);
 			ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new Terraria.DataStructures.WingStats(90, 9.4f, 1.15f);
 		}
 

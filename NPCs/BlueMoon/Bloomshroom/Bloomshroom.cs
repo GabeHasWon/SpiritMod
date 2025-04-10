@@ -13,15 +13,19 @@ using SpiritMod.Buffs;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
 using SpiritMod.Biomes.Events;
+using ReLogic.Content;
 
 namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 {
 	public class Bloomshroom : ModNPC
 	{
+		private static Asset<Texture2D> Glow;
 		bool attack = false;
 
 		public override void SetStaticDefaults()
 		{
+			Glow = Mod.Assets.Request<Texture2D>("NPCs/BlueMoon/Bloomshroom/Bloomshroom_Glow");
+
 			Main.npcFrameCount[NPC.type] = 12;
 			NPCHelper.ImmuneTo<StarFlame>(this);
 
@@ -119,7 +123,7 @@ namespace SpiritMod.NPCs.BlueMoon.Bloomshroom
 			return false;
 		}
 
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>("NPCs/BlueMoon/Bloomshroom/Bloomshroom_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmaskUtils.DrawNPCGlowMask(spriteBatch, NPC, Glow.Value, screenPos);
 
 		public override void FindFrame(int frameHeight)
 		{

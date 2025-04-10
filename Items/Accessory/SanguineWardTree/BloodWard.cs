@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Particles;
 using SpiritMod.Utilities;
@@ -30,11 +31,22 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 		private const float MAXRADIUS = 150;
 		private const int MAXFLASHTIME = 50;
 
+		private static Asset<Texture2D> Bloom;
+		private static Asset<Texture2D> RuneOutline;
+		private static Asset<Texture2D> RuneMask;
+
 		public bool HasRuneCircle { get; set; }
 
 		private RuneCircle _circle = null;
 		private int _flashTime = 0;
 		private int _combatTime = 0;
+
+		public override void Load()
+		{
+			Bloom = Mod.Assets.Request<Texture2D>("Effects/Masks/CircleGradient");
+			RuneOutline = Mod.Assets.Request<Texture2D>("Textures/Runes_Outline");
+			RuneMask = Mod.Assets.Request<Texture2D>("Textures/Runes_Mask");
+		}
 
 		public override void ResetEffects() => HasRuneCircle = false;
 
@@ -97,7 +109,7 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 
 			float flashprogress = (float)Math.Sin((_flashTime / (float)MAXFLASHTIME) * MathHelper.Pi) / 2;
 			Color color = Color.Lerp(new Color(252, 3, 98), Color.White, flashprogress);
-			Texture2D bloom = Mod.Assets.Request<Texture2D>("Effects/Masks/CircleGradient").Value;
+			Texture2D bloom = Bloom.Value;
 
 			_circle.DelegateDraw(spriteBatch, Player.MountedCenter, 0.3f, delegate (int runeNumber)
 			{
@@ -122,7 +134,7 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 				Vector2 drawPos = Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / Repeats) * timer * 8;
 				_circle.DelegateDraw(spriteBatch, Player.MountedCenter + drawPos, Scale, delegate(int runeNumber) 
 				{ 
-					return new RuneCircle.RuneDrawInfo(Mod.Assets.Request<Texture2D>("Textures/Runes_Outline").Value, color * (1 - timer)); 
+					return new RuneCircle.RuneDrawInfo(RuneOutline.Value, color * (1 - timer)); 
 				});
 			}
 
@@ -130,7 +142,7 @@ namespace SpiritMod.Items.Accessory.SanguineWardTree
 
 			_circle.DelegateDraw(spriteBatch, Player.MountedCenter, Scale, delegate (int runeNumber)
 			{
-				return new RuneCircle.RuneDrawInfo(Mod.Assets.Request<Texture2D>("Textures/Runes_Mask").Value, Color.White * flashprogress);
+				return new RuneCircle.RuneDrawInfo(RuneMask.Value, Color.White * flashprogress);
 			});
 		}
 
