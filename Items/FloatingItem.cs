@@ -17,6 +17,9 @@ namespace SpiritMod.Items
 
 		public override void Update(ref float gravity, ref float maxFallSpeed)
 		{
+			if (Item.shimmerWet)
+				return;
+
 			if (Item.wet)
 			{
 				gravity = Bouyancy;

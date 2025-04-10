@@ -51,6 +51,7 @@ using SpiritMod.Tiles.Ambient;
 using Terraria.Localization;
 using Humanizer;
 using SpiritMod.Systems;
+using SpiritMod.Items.Sets.FloatingItems.Driftwood;
 
 namespace SpiritMod;
 
@@ -676,17 +677,14 @@ public class MyPlayer : ModPlayer
 	{
 		if (Main.rand.NextBool(10))
 		{
-			Item repel = new Item();
-			repel.SetDefaults(ModContent.ItemType<MimicRepellent>());
+			var repel = new Item(ContentDefinition.GetItemDefinition(ModContent.ItemType<MimicRepellent>()));
 			rewardItems.Add(repel);
 		}
 
 		if (Main.rand.NextBool(5))
 		{
-			Item wood = new Item();
-			wood.SetDefaults(ModContent.ItemType<Items.Sets.FloatingItems.Driftwood.DriftwoodTileItem>());
-			wood.stack = Main.rand.Next(10, 20);
-			rewardItems.Add(wood);
+			var driftwood = new Item(ContentDefinition.GetItemDefinition(ModContent.ItemType<DriftwoodTileItem>()), Main.rand.Next(10, 20));
+			rewardItems.Add(driftwood);
 		}
 	}
 

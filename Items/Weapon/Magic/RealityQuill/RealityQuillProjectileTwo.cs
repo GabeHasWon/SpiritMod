@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Linq;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -20,10 +19,10 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Magic Gloop");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 2;
@@ -45,6 +44,7 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 
 		public override void AI()
 		{
+			const int manaCost = 2;
 			Player player = Main.player[Projectile.owner];
 
 			foreach (Vector2 point in points)
@@ -54,21 +54,29 @@ namespace SpiritMod.Items.Weapon.Magic.RealityQuill
 			{
 				trail = new RealityQuillPrimTrail(Projectile);
 
-				previousMousePosition = currentMousePosition = Main.MouseWorld;
+				if (Projectile.owner == Main.myPlayer)
+					previousMousePosition = currentMousePosition = Main.MouseWorld;
+
 				SpiritMod.primitives.CreateTrail(trail);
 				primsCreated = true;
 			}
 
 			if (!released && player.channel)
 			{
-				if (player.statMana <= 0)
+				if (player.statMana <= manaCost)
 					Projectile.Kill();
 
-				player.CheckMana(2, true);
+				player.CheckMana(manaCost, true);
 
 				player.itemTime = 5;
 				player.itemAnimation = 5;
-				Projectile.position = Main.MouseWorld;
+
+				if (Projectile.owner == Main.myPlayer && previousMousePosition != Main.MouseWorld)
+				{
+					Projectile.position = Main.MouseWorld;
+					Projectile.netUpdate = true;
+				}
+
 				points.Add(Projectile.position);
 
 				if (points.Count > 100)

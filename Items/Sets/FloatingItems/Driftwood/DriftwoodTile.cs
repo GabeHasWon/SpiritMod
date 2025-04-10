@@ -12,6 +12,12 @@ namespace SpiritMod.Items.Sets.FloatingItems.Driftwood
 		public override float Weight => base.Weight * 0.9f;
 		public override float Bouyancy => base.Bouyancy * 1.05f;
 
+		public override void SetStaticDefaults()
+		{
+			if (ModLoader.TryGetMod("SpiritReforged", out Mod mod) && mod.TryFind("DriftwoodItem", out ModItem item))
+				ItemID.Sets.ShimmerTransformToItem[Type] = item.Type; //Temporary fix. Can be removed after Reforged v0.1.0.8 is updated
+		}
+
 		public override void SetDefaults()
 		{
 			Item.DefaultToPlaceableTile(ModContent.TileType<DriftwoodTile>());
