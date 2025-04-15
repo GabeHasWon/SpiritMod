@@ -9,11 +9,6 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonArmor
 	[AutoloadEquip(EquipType.Legs)]
 	public class InfernalGreaves : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Pain Monger's Greaves");
-			// Tooltip.SetDefault("Increases magic critical chance by 7% and reduces mana consumption by 10%");
-		}
 		public override void SetDefaults()
 		{
 			Item.width = 28;
@@ -21,12 +16,12 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonArmor
 			Item.rare = ItemRarityID.Pink;
 			Item.value = 42000;
 
-			Item.defense = 9;
+			Item.defense = 1;
 		}
 		public override void UpdateEquip(Player player)
 		{
-			player.GetCritChance(DamageClass.Magic) += 7;
-			player.manaCost -= 0.10f;
+			player.GetDamage(DamageClass.Summon) += 0.1f;
+			player.maxMinions += 1;
 		}
 		public override void AddRecipes()
 		{

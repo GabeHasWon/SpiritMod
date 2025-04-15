@@ -2306,17 +2306,21 @@ InfernalSword: {
 
 InfernalBreastplate: {
 	DisplayName: Pain Monger's Breastplate
-	Tooltip: Increases maximum mana by 60
+	Tooltip:
+		'''
+		Increases minion damage by 10% and maximum minion slots by 1 
+		Increases whip range by 10%
+		'''
 }
 
 InfernalGreaves: {
 	DisplayName: Pain Monger's Greaves
-	Tooltip: Increases magic critical chance by 7% and reduces mana consumption by 10%
+	Tooltip: Increases minion damage by 10% and maximum minion slots by 1
 }
 
 InfernalVisor: {
 	DisplayName: Pain Monger's Mask
-	Tooltip: Increases magic damage by 15% and magic critical strike chance by 9%
+	Tooltip: Increases minion damage by 15% and maximum minion slots by 2
 }
 
 InfernonBag: {

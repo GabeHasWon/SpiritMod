@@ -1719,8 +1719,7 @@ public class MyPlayer : ModPlayer
 			if (percentageLifeLeft <= 0.25f)
 			{
 				Player.statDefense -= 4;
-				Player.manaCost += 0.25F;
-				Player.GetDamage(DamageClass.Magic) += 0.5F;
+				Player.GetDamage(DamageClass.Summon) += 0.25F;
 
 				bool spawnProj = true;
 				for (int i = 0; i < 1000; ++i)

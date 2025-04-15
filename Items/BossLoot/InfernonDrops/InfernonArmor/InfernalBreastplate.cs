@@ -13,10 +13,15 @@ namespace SpiritMod.Items.BossLoot.InfernonDrops.InfernonArmor
 			Item.height = 20;
 			Item.rare = ItemRarityID.Pink;
 			Item.value = 62000;
-			Item.defense = 10;
+			Item.defense = 3;
 		}
 
-		public override void UpdateEquip(Player player) => player.statManaMax2 += 60;
+		public override void UpdateEquip(Player player)
+		{
+			player.whipRangeMultiplier *= 1.1f;
+			player.GetDamage(DamageClass.Summon) += 0.1f;
+			player.maxMinions += 1;
+		}
 
 		public override void AddRecipes()
 		{

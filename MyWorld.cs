@@ -1506,7 +1506,7 @@ public class MyWorld : ModSystem
 			ashRain = false;
 
 		bool anyValidBoss = NPC.downedBoss1 || NPC.downedBoss2 || NPC.downedBoss3 || DownedScarabeus || DownedVinewrath || DownedStarplate || DownedAncientAvian;
-		if (!day && anyValidBoss && Main.rand.NextBool(DownedMoonWizard ? 46 : 8))
+		if (!day && anyValidBoss && Main.rand.NextBool(DownedMoonWizard ? 46 : 8) && !Main.bloodMoon)
 		{
 			var color = new Color(61, 255, 142);
 

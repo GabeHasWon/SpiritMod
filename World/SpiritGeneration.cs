@@ -105,6 +105,52 @@ internal static class SpiritGeneration
 			}
 			else if (invalidDecor.Contains(tile.TileType))
 				tile.HasTile = false; //Remove the invalid decor tile
+
+			//savanna overlap
+			if (ModLoader.TryGetMod("SpiritReforged", out Mod mod))
+			{
+				//for specifically hardened sand in the savanna, since it shouldn't ever touch the main desert bc it's on dungeon side
+				if (tileType == TileID.HardenedSand || tileType == TileID.CorruptHardenedSand || tileType == TileID.CrimsonHardenedSand || tileType == TileID.HallowHardenedSand)
+				{
+					tileType = ModContent.TileType<SpiritDirt>();
+				}
+				if (mod.TryFind("SavannaDirt", out ModTile coarseDirt))
+				{
+					if (tileType == coarseDirt.Type)
+						tileType = ModContent.TileType<SpiritDirt>();
+				}
+				if (mod.TryFind("SavannaGrass", out ModTile grass) && mod.TryFind("SavannaGrassCorrupt", out ModTile corruptGrass) && mod.TryFind("SavannaGrassCrimson", out ModTile crimsonGrass) && mod.TryFind("SavannaGrassHallow", out ModTile hallowGrass))
+				{
+					if (tileType == grass.Type || tileType == corruptGrass.Type || tileType == crimsonGrass.Type || tileType == hallowGrass.Type)
+						tileType = ModContent.TileType<SpiritGrass>();
+				}
+				if (mod.TryFind("SavannaRockSmall", out ModTile savannaRocksSmall))
+				{
+					if (tileType == savannaRocksSmall.Type)
+						tileType = ModContent.TileType<SpiritRock>();
+				}
+				if (mod.TryFind("SavannaShrubs", out ModTile shrubs) && mod.TryFind("SavannaShrubsCorrupt", out ModTile corruptShrubs) && mod.TryFind("SavannaShrubsCrimson", out ModTile crimsonShrubs)&& mod.TryFind("SavannaShrubsHallow", out ModTile hallowShrubs))
+				{
+					if (tileType == shrubs.Type || tileType == corruptShrubs.Type || tileType == crimsonShrubs.Type || tileType == hallowShrubs.Type)
+						tileType = ModContent.TileType<SpiritRockMedium>();
+				}
+				if (mod.TryFind("ElephantGrass", out ModTile elephantGrass) && mod.TryFind("ElephantGrassCorrupt", out ModTile corruptElephantGrass) && mod.TryFind("ElephantGrassCrimson", out ModTile crimsonElephantGrass) && mod.TryFind("ElephantGrassHallow", out ModTile hallowElephantGrass))
+				{
+					if (tileType == grass.Type || tileType == corruptElephantGrass.Type || tileType == crimsonElephantGrass.Type || tileType == hallowElephantGrass.Type)
+						tileType = ModContent.TileType<SpiritTallgrass>();
+				}
+				if (mod.TryFind("SavannaFoliage", out ModTile foliage) && mod.TryFind("SavannaFoliageCorrupt", out ModTile corruptFoliage) && mod.TryFind("SavannaFoliageCrimson", out ModTile crimsonFoliage) && mod.TryFind("SavannaFoliageHallow", out ModTile hallowFoliage))
+				{
+					if (tileType == foliage.Type || tileType == corruptFoliage.Type || tileType == crimsonFoliage.Type || tileType == hallowFoliage.Type)
+						tileType = ModContent.TileType<SpiritFoliage>();
+				}
+				if (mod.TryFind("TermiteMound", out ModTile termite) && mod.TryFind("SavannaRockLarge", out ModTile bigRock) && mod.TryFind("SavannaVine", out ModTile vine) && mod.TryFind("SavannaVineCorrupt", out ModTile corruptVine) && mod.TryFind("SavannaVineCrimson", out ModTile crimsonVine) && mod.TryFind("SavannaVineHallow", out ModTile hallowVine))
+				{
+					if (tileType == termite.Type || tileType == bigRock.Type || tileType == vine.Type || tileType == corruptVine.Type || tileType == crimsonVine.Type || tileType == hallowVine.Type)
+						tile.HasTile = false;
+				}
+			}
+
 		}
 
 		if (WallID.Sets.Conversion.Grass[wallType]) //Convert walls
