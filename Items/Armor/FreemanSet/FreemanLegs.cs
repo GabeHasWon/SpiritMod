@@ -18,6 +18,7 @@ namespace SpiritMod.Items.Armor.FreemanSet
 			Item.value = Item.buyPrice(0, 1, 0, 0);
 			Item.rare = ItemRarityID.Green;
 
+			Item.vanity = true;
 		}
     }
 }
