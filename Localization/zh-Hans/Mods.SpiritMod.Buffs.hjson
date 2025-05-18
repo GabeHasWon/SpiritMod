@@ -19,12 +19,12 @@ ExplorerFight: {
 }
 
 ExplorerMine: {
-	DisplayName: 探险家之力
+	DisplayName: 探险家的活力
 	Description: 挖下去吧！
 }
 
 ExplorerPot: {
-	DisplayName: 探险家之智
+	DisplayName: 探险家的兴奋
 	Description: 你渴望更多！
 }
 
