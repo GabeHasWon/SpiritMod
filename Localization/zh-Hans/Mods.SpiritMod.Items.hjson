@@ -6953,8 +6953,8 @@ FrigidFragment: {
 }
 
 HowlingScepter: {
-	DisplayName: 严寒权杖
-	Tooltip: ""
+	DisplayName: 寒霜
+	Tooltip: 创造一片跟随光标移动的暴风雪
 }
 
 FrostSpine: {
