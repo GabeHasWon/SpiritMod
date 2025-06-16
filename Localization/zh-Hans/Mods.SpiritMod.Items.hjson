@@ -290,7 +290,7 @@ ExplorerTreads: {
 }
 
 FrigidGloves: {
-	DisplayName: 严寒护膝
+	DisplayName: 严寒护手
 	Tooltip:
 		'''
 		近战攻击会造成霜冻减益
