@@ -713,7 +713,7 @@ BaubleResistance: {
 
 GildedScarab_buff: {
 	DisplayName: 圣甲虫护盾
-	Description: 防御增加{0}点
+	Description: 防御力增加{0}
 }
 
 SlagFury_buff: {
