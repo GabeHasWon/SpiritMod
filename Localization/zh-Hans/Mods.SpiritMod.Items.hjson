@@ -4072,8 +4072,8 @@ BlazeGlyph: {
 
 ChaosGlyph: {
 	DisplayName: 混乱雕文
-	Tooltip: 你的武器会定期在两种雕文的效果之间切换
-	Addendum: 你的武器会定期在两种雕文的效果之间切换
+	Tooltip: 你的武器会定期的在雕文效果之间切换
+	Addendum: 你的武器会定期的在雕文效果之间切换
 	Effect: 不稳定
 }
 
