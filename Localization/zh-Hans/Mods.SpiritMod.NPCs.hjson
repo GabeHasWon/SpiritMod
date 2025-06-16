@@ -204,7 +204,7 @@ Scarab_Wall.DisplayName: 小甲虫
 Scarabeus: {
 	DisplayName: 圣甲虫
 	Entry: 一度被当做神灵崇拜的甲虫，源于一个难以捉摸的物种，同样也具有巨大的体型。
-	BossChecklistIntegration.SpawnInfo: 在白天的沙漠使用[i:SpiritMod/ScarabIdol]召唤。在完成冒险家的某个任务后可用获得一个[i:SpiritMod/ScarabIdol]，也可以通过手工制作，并且不会消耗。
+	BossChecklistIntegration.SpawnInfo: 在白天的沙漠使用[i:SpiritMod/ScarabIdol]召唤。在完成冒险家的某个任务后可以获得一个[i:SpiritMod/ScarabIdol]，也可以通过手工制作，并且不会消耗。
 }
 
 SwarmScarab.DisplayName: 小甲虫

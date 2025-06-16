@@ -19,7 +19,7 @@ AceOfHearts: {
 
 AceOfSpades: {
 	DisplayName: 黑桃王牌
-	Tooltip: 暴击有几率造成额外伤害
+	Tooltip: 暴击会造成额外伤害。
 }
 
 DiamondAce: {
@@ -62,7 +62,7 @@ BowSummonItem: {
 		召唤一个附魔弓为你而战
 		使用你物品栏中的第一个箭矢
 		如果你没有任何箭矢，则会发射较弱的弄臣箭
-		附魔弓不占据任何召唤栏位
+		附魔弓不占用任何召唤栏位
 		'''
 }
 
@@ -77,7 +77,7 @@ CimmerianScepter: {
 		'''
 		召唤魔法权杖为你而战
 		权杖会多次攻击敌人
-		权杖不会占据召唤栏位
+		权杖不会占用召唤栏位
 		'''
 }
 
@@ -192,8 +192,8 @@ GranitechDroneBox: {
 		'''
 		召唤三架无人机来协助你
 		手持镐子时无人机会切换至挖掘模式
-		处于挖掘模式时，无人机会获得你镐子的镐力并与你一同挖掘
-		无人机不会占据召唤栏位
+		处于挖掘模式时，无人机会获得手持镐子的镐力并与你一同挖掘
+		无人机不会占用召唤栏位
 		'''
 }
 
@@ -234,7 +234,7 @@ IllusionistEye: {
 	Tooltip:
 		'''
 		受到致命伤害时会将你传送回重生点
-		此效果在附近Boss存活时失效
+		此效果在附近有Boss存活时失效
 		此效果有10分钟冷却时间
 		“无家可归的魔术师只是一个幽灵罢了”
 		'''
@@ -357,7 +357,7 @@ ArcaneNecklace: {
 	Tooltip:
 		'''
 		增加20点最大魔力值
-		敌人有20%几率掉落一颗额外的魔力星
+		敌人有20%几率额外掉落一颗魔力星
 		'''
 }
 
@@ -452,7 +452,7 @@ MimicRepellent: {
 
 Moonlight_Sack: {
 	DisplayName: 月光宝袋
-	CustomTooltip: 在你和召唤物之间产生造成伤害的链状闪电
+	CustomTooltip: 在你和召唤物之间产生能够造成伤害的链状闪电
 	Tooltip: ""
 }
 
@@ -489,7 +489,7 @@ RogueCrest: {
 	Tooltip:
 		'''
 		召唤一把生锈的剑为你而战
-		剑不会占据召唤栏位
+		剑不会占用召唤栏位
 		'''
 }
 
@@ -514,7 +514,7 @@ BloodWard: {
 
 Sea_Snail_Poison: {
 	DisplayName: 海蜗之毒
-	Tooltip: 你会留下能够使敌人中毒的粘液尾痕
+	Tooltip: 你会留下能够使敌人中毒的粘液尾迹
 }
 
 ShadowSingeFang: {
@@ -570,13 +570,13 @@ SpellswordCrest: {
 	Tooltip:
 		'''
 		召唤一把神圣之剑为你而战
-		剑不会占据召唤栏位
+		剑不会占用召唤栏位
 		'''
 }
 
 SwiftRune: {
 	DisplayName: 迅捷符文
-	Tooltip: 大幅度增加独立的空中能力
+	Tooltip: 大幅度增加独立的空中灵活性
 }
 
 TimScroll: {
@@ -1083,7 +1083,7 @@ SilkTop: {
 
 Stoneplate: {
 	DisplayName: 石板甲
-	Tooltip: 使佩戴者感到烦恼
+	Tooltip: 拖累佩戴者
 }
 
 WayfarerBody: {
@@ -2340,7 +2340,7 @@ AtlasEye: {
 	DisplayName: 擎元魔像之眼
 	Tooltip:
 		'''
-		生命值低于50%时，增加20%防御，但降低1/3移动速度
+		生命值低于50%时，增加20点防御，但降低1/3移动速度
 		降低12%所受伤害
 		'''
 }
@@ -2356,7 +2356,7 @@ AtlasPetItem: {
 }
 
 CragboundStaff: {
-	DisplayName: 岩石封锁
+	DisplayName: 崖缚法杖
 	Tooltip:
 		'''
 		召唤一个倾泻能量的小型大地守护者
@@ -2419,7 +2419,7 @@ QuakeFist: {
 }
 
 TitanboundBulwark: {
-	DisplayName: 泰坦壁垒
+	DisplayName: 泰坦之缚壁垒
 	Tooltip:
 		'''
 		魔力再生速度会随着生命值的降低而增加
@@ -2592,7 +2592,7 @@ EyeOfTheInferno: {
 	Tooltip:
 		'''
 		击中敌人时会燃烧，成功命中敌人时会增加减益的威力
-		还会发射一个能够造成破损盔甲的尖钉球
+		还会发射一个能够造成破损盔甲减益的尖钉球
 		'''
 }
 
@@ -2636,17 +2636,21 @@ InfernalSword: {
 
 InfernalBreastplate: {
 	DisplayName: 苦痛散播者胸甲
-	Tooltip: 增加60点最大魔力值
+	Tooltip:
+		'''
+		增加10%召唤伤害和1格最大召唤栏位
+		增加10%鞭子攻击范围
+		'''
 }
 
 InfernalGreaves: {
 	DisplayName: 苦痛散播者护胫
-	Tooltip: 增加7%魔法暴击率并降低10%魔力消耗
+	Tooltip: 增加10%召唤伤害和1格最大召唤栏位
 }
 
 InfernalVisor: {
 	DisplayName: 苦痛散播者面具
-	Tooltip: 增加15%魔法伤害和9%魔法暴击率
+	Tooltip: 增加15%召唤伤害和2格最大召唤栏位
 }
 
 InfernonBag: {
@@ -2696,7 +2700,7 @@ JellynautBubble: {
 		'''
 		增加20点最大魔力值
 		增加10%暴击率
-		当穿戴魔法长袍时会获得套装奖励
+		当穿戴任意魔法长袍时会获得套装奖励
 		'''
 }
 
@@ -2731,7 +2735,7 @@ MoonjellySummonStaff: {
 		召唤一位月光守护者
 		月光守护者会召唤爆炸小水母
 		同时存在至多一位月光守护者
-		多次使用法杖会占据更多的召唤栏位，但会增加水母的生成速率
+		多次使用法杖会占用更多的召唤栏位，但会增加水母的生成速率
 		'''
 }
 
@@ -2756,7 +2760,7 @@ Handball: {
 	Tooltip:
 		'''
 		造成腐化之血减益
-		暴击时会造成暗影焰减益
+		暴击会造成暗影焰减益
 		“于是我说‘抓住这些手’”
 		'''
 }
@@ -2780,7 +2784,7 @@ ScarabBow: {
 	Tooltip:
 		'''
 		长按充能，时间越长，伤害便越高
-		将木箭转化为在完全充能时会被附魔的穿刺华饰箭
+		将木箭转化为穿刺华饰箭，其在完全充能时会附魔
 		'''
 }
 
@@ -2956,7 +2960,7 @@ SteamplateBow: {
 	DisplayName: 星体充能器
 	Tooltip:
 		'''
-		左键发射一列迅速的弱小的正极箭
+		左键发射一列迅速的微弱正极箭
 		右键发射一个强大的负极箭
 		两种箭矢在互相碰撞时会产生爆炸
 		'''
@@ -3538,7 +3542,7 @@ BismitePotion: {
 	DisplayName: 剧毒药水
 	Tooltip:
 		'''
-		暴击时会造成溃烂伤口减益
+		暴击会造成溃烂伤口减益
 		增加4%暴击率
 		'''
 }
@@ -3583,7 +3587,7 @@ MoonJelly: {
 	CustomTooltip:
 		'''
 		10秒内恢复150生命值
-		造成药水疾病
+		造成药水疾病减益
 		'''
 	Tooltip: ""
 }
@@ -3917,7 +3921,7 @@ SnowmongerMountItem: {
 
 GoldJadeScythe: {
 	DisplayName: 苦痛欺诈者
-	Tooltip: 在击中敌人时偶尔会生成华饰圣甲虫来保护你
+	Tooltip: 击中敌人时偶尔会生成华饰圣甲虫来保护你
 }
 
 HeroBow: {
@@ -4068,8 +4072,8 @@ BlazeGlyph: {
 
 ChaosGlyph: {
 	DisplayName: 混乱雕文
-	Tooltip: 你的武器会定期在两种雕文的效果之间切换
-	Addendum: 你的武器会定期在两种雕文的效果之间切换
+	Tooltip: 你的武器会定期的切换雕文效果
+	Addendum: 你的武器会定期的切换雕文效果
 	Effect: 不稳定
 }
 
@@ -4435,112 +4439,112 @@ TatteredScript: {
 }
 
 PinBlue: {
-	DisplayName: 引路大头钉（蓝）
+	DisplayName: 引路图钉（蓝）
 	Tooltip:
 		'''
-		放置或移动蓝色地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动蓝色地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinCopperCoin: {
-	DisplayName: 引路大头钉（铜）
+	DisplayName: 引路图钉（铜）
 	Tooltip:
 		'''
-		放置或移动铜质地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动铜质地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinGoldCoin: {
-	DisplayName: 引路大头钉（金）
+	DisplayName: 引路图钉（金）
 	Tooltip:
 		'''
-		放置或移动金质地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动金质地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinGreen: {
-	DisplayName: 引路大头钉（绿）
+	DisplayName: 引路图钉（绿）
 	Tooltip:
 		'''
-		放置或移动绿色地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动绿色地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinMoonjelly: {
-	DisplayName: 引路大头钉（海月水母）
+	DisplayName: 引路图钉（海月水母）
 	Tooltip:
 		'''
-		放置或移动海月水母地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动海月水母地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinRed: {
-	DisplayName: 引路大头钉（红）
+	DisplayName: 引路图钉（红）
 	Tooltip:
 		'''
-		放置或移动红色地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动红色地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinScarab: {
-	DisplayName: 引路大头钉（圣甲虫）
+	DisplayName: 引路图钉（圣甲虫）
 	Tooltip:
 		'''
-		放置或移动圣甲虫地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动圣甲虫地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinSilverCoin: {
-	DisplayName: 引路大头钉（银）
+	DisplayName: 引路图钉（银）
 	Tooltip:
 		'''
-		放置或移动银质地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动银质地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinStar: {
-	DisplayName: 引路大头钉（星星）
+	DisplayName: 引路图钉（星星）
 	Tooltip:
 		'''
-		放置或移动星星地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动星星地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinTree: {
-	DisplayName: 引路大头钉（树木）
+	DisplayName: 引路图钉（树木）
 	Tooltip:
 		'''
-		放置或移动树木地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动树木地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
 PinYellow: {
-	DisplayName: 引路大头钉（黄）
+	DisplayName: 引路图钉（黄）
 	Tooltip:
 		'''
-		放置或移动黄色地图大头钉
-		右键删除大头钉
-		放置的大头钉可在地图上进行交互
+		放置或移动黄色地图图钉
+		右键删除图钉
+		放置的图钉可在地图上进行交互
 		'''
 }
 
@@ -6213,7 +6217,7 @@ BismiteSummonStaff: {
 	Tooltip:
 		'''
 		召唤一个固定的铋华晶体，向敌人发射剧毒碎片
-		右键消耗魔力值来使铋华晶体散发腐化波
+		右键消耗魔力以使铋华晶体散发腐化波
 		'''
 }
 
@@ -6300,7 +6304,7 @@ Diamond_Bow: {
 	Tooltip:
 		'''
 		将木箭转化为钻石箭
-		钻石箭会额外穿越一次敌人
+		钻石箭会额外穿透一次敌人
 		'''
 }
 
@@ -6394,7 +6398,7 @@ ThornyRod: {
 }
 
 AnodyneHat: {
-	DisplayName: 止痛帽
+	DisplayName: 不会令人觉得冒犯的帽子
 	Tooltip: ""
 }
 
@@ -6473,18 +6477,18 @@ Reef_Wrath: {
 }
 
 BassSlapper: {
-	DisplayName: 鲈鱼拍打
+	DisplayName: 低音鲈打
 	Tooltip: ""
 }
 
 Blasphemer: {
 	DisplayName: 渎神者
-	Tooltip: 充能攻击会释放火焰间歇泉
+	Tooltip: 蓄力攻击会释放火焰间歇泉
 }
 
 BoneClub: {
 	DisplayName: 骨棒
-	Tooltip: 充能攻击会发射骨头
+	Tooltip: 蓄力攻击会发射骨头
 }
 
 BruteHammer: {
@@ -6769,7 +6773,7 @@ Ambergris: {
 	Tooltip:
 		'''
 		“非常有价值”
-		“你不想知道这是从哪来的”
+		“你不会想知道这是从哪来的”
 		'''
 }
 
@@ -6949,8 +6953,8 @@ FrigidFragment: {
 }
 
 HowlingScepter: {
-	DisplayName: 严寒权杖
-	Tooltip: ""
+	DisplayName: 寒霜
+	Tooltip: 创造一片跟随光标移动的暴风雪
 }
 
 FrostSpine: {
@@ -7299,8 +7303,8 @@ ShadowShot: {
 	Tooltip:
 		'''
 		将普通子弹转化为恶毒弹
-		右键发射一个会附着在敌人身上的诅咒追踪器
-		恶毒弹会追踪带有诅咒追踪器的敌人
+		右键发射一个会附着在敌人身上的诅咒追踪者
+		恶毒弹会追踪带有诅咒追踪者的敌人
 		'''
 }
 
@@ -7494,7 +7498,7 @@ CrimsonStaff: {
 	Tooltip:
 		'''
 		释放鲜血触手
-		暴击时会汲取些许生命值
+		暴击会汲取些许生命值
 		'''
 }
 
@@ -7666,7 +7670,7 @@ BetrayersChains: {
 }
 
 Eleutherios: {
-	DisplayName: 厄琉忒瑞俄斯
+	DisplayName: 自由者
 	Tooltip:
 		'''
 		降低15%治疗物品的效力
@@ -7907,8 +7911,8 @@ FieryMagicLauncher: {
 	DisplayName: 熔渣之息
 	Tooltip:
 		'''
-		发射一簇簇的魔法火焰
-		暴击时会使敌人沐浴在火花之中
+		发射一簇簇魔法火焰
+		暴击会使敌人沐浴在火花之中
 		'''
 }
 
@@ -7926,8 +7930,8 @@ SlagHammer: {
 	DisplayName: 熔渣击碎者
 	Tooltip:
 		'''
-		长按蓄力，松开以向回旋镖一样投掷锤子
-		击中物块后会增加伤害
+		长按蓄力，松开以像回旋镖一样投掷锤子
+		击中物块后会增加造成的伤害
 		'''
 }
 
@@ -8699,7 +8703,7 @@ MarbleMinecartItem: {
 	DisplayName: 复仇战车
 	Tooltip:
 		'''
-		冲锋时，你会获得防御力加成
+		冲锋时，你会获得防御力加成。
 		“毫无疑问，这是辆炫酷的战车” - 麟鲥教授
 		'''
 }
@@ -8989,7 +8993,7 @@ PumpkinAuroraMonolithItem: {
 }
 
 SpiritBiomeAuroraMonolithItem: {
-	DisplayName: 魂灵群系极光巨石
+	DisplayName: 魂灵之地极光巨石
 	Tooltip: 装备后可以显示局部极光
 }
 
