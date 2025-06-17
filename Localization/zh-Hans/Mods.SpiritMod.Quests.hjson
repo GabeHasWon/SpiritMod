@@ -34,7 +34,7 @@ Harvest: 收割
 OptionalGather: 可选 - 采集
 Objectives: 目标
 Activate: 激活
-Deactivate: 失效
+Deactivate: 停用
 ClaimRewards: 领取奖励！
 # Used for quest clients. Formats to "The <NPC Title>" in-game. The space is necessary. This also looks like a meme.
 The: " "

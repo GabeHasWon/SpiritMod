@@ -1,6 +1,6 @@
 AceOfDiamondsBuff: {
-	DisplayName: 方片A
-	Description: 增加20%伤害
+	DisplayName: 方块王牌
+	Description: 伤害增加20%
 }
 
 AngelLight: {
@@ -19,12 +19,12 @@ ExplorerFight: {
 }
 
 ExplorerMine: {
-	DisplayName: 探险家之力
+	DisplayName: 探险家的活力
 	Description: 挖下去吧！
 }
 
 ExplorerPot: {
-	DisplayName: 探险家之智
+	DisplayName: 探险家的兴奋
 	Description: 你渴望更多！
 }
 
@@ -65,12 +65,12 @@ CandyBuff: {
 
 ChocolateBuff: {
 	DisplayName: 巧克力
-	Description: 增加10%移动速度
+	Description: 移动速度增加10%
 }
 
 HealthBuffC: {
 	DisplayName: 治愈糖果
-	Description: 增加25点最大生命值。
+	Description: 最大生命值增加25点。
 }
 
 LollipopBuff: {
@@ -80,12 +80,12 @@ LollipopBuff: {
 
 ManaBuffC: {
 	DisplayName: 魔法糖果
-	Description: 增加40点最大魔力值
+	Description: 最大魔力值增加40点
 }
 
 TaffyBuff: {
 	DisplayName: 太妃糖
-	Description: 增加4点防御
+	Description: 防御增加4点
 }
 
 ClockBuff: {
@@ -105,7 +105,7 @@ CourtCooldown: {
 
 CrimsonSkullBuff: {
 	DisplayName: 猩红之颅
-	Description: 淤血烧瓶造成双倍伤害
+	Description: 淤血烧瓶现在会造成双倍伤害
 }
 
 Death: {
@@ -150,7 +150,7 @@ FesteringWounds: {
 
 DrainLife: {
 	DisplayName: 生命汲取
-	Description: 它们正在汲取你的生命能量。
+	Description: 你的生命能量正在变成它们的。
 }
 
 DynastyFanBuff: {
@@ -165,7 +165,7 @@ ElectrifiedV2: {
 
 EleutheriosBuff: {
 	DisplayName: 厄琉忒瑞俄斯之力
-	Description: 增加0%伤害
+	Description: 伤害增加0%
 }
 
 FateBlessing: {
@@ -184,7 +184,7 @@ BurningRage: {
 }
 
 CollapsingVoid.DisplayName: 坍塌虚空
-DevouringVoid.DisplayName: 虚空吞噬
+DevouringVoid.DisplayName: 吞噬虚空
 
 DivineStrike: {
 	DisplayName: 神圣惩击
@@ -300,7 +300,7 @@ OliveBranchBuff: {
 
 OnyxWind: {
 	DisplayName: 玛瑙旋风
-	Description: 增加10%移动速度
+	Description: 移动速度增加10%
 }
 
 OracleBoonBuff: {
@@ -426,8 +426,8 @@ BismitePotionBuff: {
 	DisplayName: 剧毒打击
 	Description:
 		'''
-		暴击时会造成溃烂伤口减益
-		增加4%暴击率
+		暴击会造成溃烂伤口减益
+		暴击率增加4%
 		'''
 }
 
@@ -438,7 +438,7 @@ DoubleJumpPotionBuff: {
 
 FlightPotionBuff: {
 	DisplayName: 翱翔
-	Description: 增加25%飞行时间
+	Description: 飞行时间增加25%
 }
 
 MoonBlessing: {
@@ -447,13 +447,13 @@ MoonBlessing: {
 }
 
 MoonBlessingDonut: {
-	DisplayName: 苍月果冻甜甜圈
+	DisplayName: 苍月甜甜圈
 	Description: 极速生命再生，以及高糖分！
 }
 
 MushroomPotionBuff: {
 	DisplayName: 孢子释放
-	Description: 在身后留下伤害性蘑菇
+	Description: 在身后留下伤害性蘑菇尾迹
 }
 
 PinkPotionBuff: {
@@ -466,7 +466,7 @@ RunePotionBuff: {
 	Description:
 		'''
 		魔法攻击有几率使敌人爆发出符文
-		增加5%魔法伤害
+		魔法伤害增加5%
 		'''
 }
 
@@ -474,8 +474,8 @@ SoulPotionBuff: {
 	DisplayName: 灵魂守卫
 	Description:
 		'''
-		降低5%所受伤害
-		受到伤害时会使敌人受到短时间的“灵魂灼烧”折磨
+		所受伤害降低5%
+		受到伤害时有几率使敌人受到短时间的“灵魂灼烧”折磨
 		'''
 }
 
@@ -484,7 +484,7 @@ StarPotionBuff: {
 	Description:
 		'''
 		暴击有几率使星星从天而降
-		移动时增加4%远程伤害和远程暴击率
+		移动时远程伤害和远程暴击率增加4%
 		'''
 }
 
@@ -493,7 +493,7 @@ TurtlePotionBuff: {
 	Description:
 		'''
 		防御力会随着生命值的降低而增加
-		降低5%所受伤害
+		所受伤害降低5%
 		'''
 }
 
@@ -526,8 +526,8 @@ SpiritBuff: {
 	DisplayName: 魂灵之环
 	Description:
 		'''
-		增加5%伤害和暴击率
-		受到伤害时有几率会生成一个伤害性弹幕追击敌人
+		伤害和暴击率增加5%
+		受到伤害时有几率生成一个伤害性弹幕追击敌人
 		'''
 }
 
@@ -628,7 +628,7 @@ TrueMarksman: {
 
 UnstableAffliction: {
 	DisplayName: 痛苦无常
-	Description: 降低10%移动速度
+	Description: 移动速度降低10%
 }
 
 VineTrap: {
@@ -713,7 +713,7 @@ BaubleResistance: {
 
 GildedScarab_buff: {
 	DisplayName: 圣甲虫护盾
-	Description: 增加{0}点防御
+	Description: 防御力增加{0}
 }
 
 SlagFury_buff: {
