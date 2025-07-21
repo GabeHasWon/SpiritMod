@@ -522,7 +522,7 @@ ShadowSingeFang: {
 	Tooltip:
 		'''
 		增加4%暴击率
-		在夜晚或地底时增加4%暴击率
+		在夜晚或地下时增加4%暴击率
 		攻击生命值低于一半的敌人时有几率以自己的生命为代价释放一个暗影攻击敌人
 		'''
 }
@@ -5562,7 +5562,7 @@ BriarNightBox: {
 }
 
 BriarUndergroundBox: {
-	DisplayName: 音乐盒（荆棘之地 - 地底）
+	DisplayName: 音乐盒（荆棘之地 - 地下）
 	Tooltip: ""
 }
 
@@ -5677,7 +5677,7 @@ SpiritBox2: {
 }
 
 SpiritBox3: {
-	DisplayName: 音乐盒（魂灵之地 - 地底深处）
+	DisplayName: 音乐盒（魂灵之地 - 地下深处）
 	Tooltip: ""
 }
 
@@ -6378,7 +6378,7 @@ ReachBrooch: {
 	Tooltip:
 		'''
 		在玩家周围生成明亮的辉光
-		在夜晚或地底时强化在荆棘之地的视野
+		在夜晚或地下时强化在荆棘之地的视野
 		'''
 }
 
