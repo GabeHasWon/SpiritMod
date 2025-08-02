@@ -2729,7 +2729,7 @@ MJWTrophy: {
 }
 
 MoonjellySummonStaff: {
-	DisplayName: 月蜇权杖
+	DisplayName: 月蜇法杖
 	Tooltip:
 		'''
 		召唤一位月光守护者
