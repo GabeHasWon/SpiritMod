@@ -3772,7 +3772,7 @@ SadSlimePainting: {
 }
 
 ScarabIdol: {
-	DisplayName: 圣甲虫崇符
+	DisplayName: 甲虫崇符
 	Tooltip:
 		'''
 		不消耗
