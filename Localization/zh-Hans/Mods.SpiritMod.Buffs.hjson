@@ -403,7 +403,7 @@ SaucerPetBuff: {
 }
 
 ScarabPetBuff: {
-	DisplayName: 微小圣甲虫
+	DisplayName: 小甲虫
 	Description: “它真的喜欢摇滚……”
 }
 
@@ -712,7 +712,7 @@ BaubleResistance: {
 }
 
 GildedScarab_buff: {
-	DisplayName: 圣甲虫护盾
+	DisplayName: 甲虫护盾
 	Description: 防御力增加{0}
 }
 

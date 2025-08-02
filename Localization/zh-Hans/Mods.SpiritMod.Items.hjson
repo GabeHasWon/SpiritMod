@@ -2856,7 +2856,7 @@ RadiantCane: {
 }
 
 ScarabPendant: {
-	DisplayName: 圣甲虫吊坠
+	DisplayName: 甲虫吊坠
 	Tooltip:
 		'''
 		召唤一只可骑乘的巨型鼠妇，鼠妇可以高速滚向敌人
@@ -2870,8 +2870,8 @@ ScarabMask: {
 }
 
 ScarabPetItem: {
-	DisplayName: 圣甲虫食物
-	Tooltip: 召唤一位小圣甲虫伙伴
+	DisplayName: 甲虫食物
+	Tooltip: 召唤一位小甲虫伙伴
 }
 
 Trophy1: {
