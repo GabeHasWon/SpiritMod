@@ -282,7 +282,7 @@ Bladetongue: {
 }
 
 Blossmoon: {
-	DisplayName: 月绽草
+	DisplayName: 月绽灵
 	Entry: 这些生物只有25美分硬币大小，只在在夜间才会出现。只能观察到它们在跳舞，并发出低沉而平静的光芒。
 }
 
@@ -800,7 +800,7 @@ Blubby: {
 }
 
 BriarInchworm: {
-	DisplayName: 荆棘蠕虫
+	DisplayName: 荆棘尺蠖
 	Entry: 一种细长的蠕虫，演化成能够在荆棘之地的淤泥中生存的形态。它主要以地表腐烂的高草为食。
 }
 

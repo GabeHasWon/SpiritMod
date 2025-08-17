@@ -2851,7 +2851,7 @@ LocustCrook: {
 }
 
 RadiantCane: {
-	DisplayName: 升阳权杖
+	DisplayName: 日升权杖
 	Tooltip: 召唤一个可控且缓慢的太阳法球
 }
 
@@ -4409,8 +4409,8 @@ JellyCandle: {
 }
 
 PhantomEgg: {
-	DisplayName: 幻蝠之卵
-	Tooltip: 一个神秘的幻影正跟着你……
+	DisplayName: 幻影蝠之卵
+	Tooltip: 一只幻影蝠正跟着你……
 }
 
 PowerRing: {
@@ -4549,7 +4549,7 @@ PinYellow: {
 }
 
 FishCrate: {
-	DisplayName: 包装宝匣
+	DisplayName: 包装匣
 	Tooltip:
 		'''
 		“一个知名渔业公司的标签在上面”
@@ -4684,7 +4684,7 @@ BambooBarrelItem: {
 }
 
 BambooBenchItem: {
-	DisplayName: 条纹竹凳
+	DisplayName: 条纹竹长椅
 	Tooltip: ""
 }
 
@@ -5148,12 +5148,12 @@ TheGoodPaintingItem: {
 }
 
 PottedSakura: {
-	DisplayName: 樱花盆景
+	DisplayName: 樱花盆栽
 	Tooltip: ""
 }
 
 PottedWillow: {
-	DisplayName: 黄柳盆景
+	DisplayName: 黄柳盆栽
 	Tooltip: ""
 }
 
@@ -6531,7 +6531,7 @@ FloranBludgeon: {
 }
 
 GoldClub: {
-	DisplayName: 黄金巨锤
+	DisplayName: 黄金大锤
 	Tooltip: ""
 }
 
@@ -6823,7 +6823,7 @@ DriftwoodWallItem: {
 }
 
 FishLure: {
-	DisplayName: 鱼饵
+	DisplayName: 鱼诱
 	Tooltip:
 		'''
 		只能放置在水中
@@ -7750,7 +7750,7 @@ UrchinStaff: {
 }
 
 RlyehianMountItem: {
-	DisplayName: 怪异时钟
+	DisplayName: 怪异斗篷
 	Tooltip:
 		'''
 		召唤一个怪异斗篷带你到处走

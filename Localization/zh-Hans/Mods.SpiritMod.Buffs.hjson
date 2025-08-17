@@ -19,12 +19,12 @@ ExplorerFight: {
 }
 
 ExplorerMine: {
-	DisplayName: 探险家的活力
+	DisplayName: 探险家的毅力
 	Description: 挖下去吧！
 }
 
 ExplorerPot: {
-	DisplayName: 探险家的兴奋
+	DisplayName: 探险家的活力
 	Description: 你渴望更多！
 }
 
@@ -79,7 +79,7 @@ LollipopBuff: {
 }
 
 ManaBuffC: {
-	DisplayName: 魔法糖果
+	DisplayName: 魔力糖果
 	Description: 最大魔力值增加40点
 }
 
@@ -104,7 +104,7 @@ CourtCooldown: {
 }
 
 CrimsonSkullBuff: {
-	DisplayName: 猩红之颅
+	DisplayName: 猩红颅骨
 	Description: 淤血烧瓶现在会造成双倍伤害
 }
 
@@ -393,7 +393,7 @@ OverseerPetBuff: {
 }
 
 PhantomPetBuff: {
-	DisplayName: 幻影
+	DisplayName: 幻影蝠
 	Description: “它融入了黑夜”
 }
 
@@ -442,12 +442,12 @@ FlightPotionBuff: {
 }
 
 MoonBlessing: {
-	DisplayName: 苍月果冻
+	DisplayName: 海月果冻
 	Description: 极速生命再生
 }
 
 MoonBlessingDonut: {
-	DisplayName: 苍月甜甜圈
+	DisplayName: 海月甜甜圈
 	Description: 极速生命再生，以及高糖分！
 }
 
