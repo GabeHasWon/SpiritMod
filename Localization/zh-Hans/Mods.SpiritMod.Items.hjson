@@ -401,7 +401,7 @@ MedusaShield: {
 }
 
 GildedScarab: {
-	DisplayName: 镀金圣甲虫
+	DisplayName: 镀金甲虫
 	Tooltip:
 		'''
 		受到攻击时会获得一个短暂的防御增益
@@ -3921,7 +3921,7 @@ SnowmongerMountItem: {
 
 GoldJadeScythe: {
 	DisplayName: 苦痛欺诈者
-	Tooltip: 击中敌人时偶尔会生成华饰圣甲虫来保护你
+	Tooltip: 击中敌人时偶尔会生成华饰甲虫来保护你
 }
 
 HeroBow: {
@@ -4499,10 +4499,10 @@ PinRed: {
 }
 
 PinScarab: {
-	DisplayName: 引路图钉（圣甲虫）
+	DisplayName: 引路图钉（甲虫）
 	Tooltip:
 		'''
-		放置或移动圣甲虫地图图钉
+		放置或移动甲虫地图图钉
 		右键删除图钉
 		放置的图钉可在地图上进行交互
 		'''
