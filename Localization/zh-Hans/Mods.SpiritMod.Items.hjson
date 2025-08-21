@@ -3826,7 +3826,7 @@ TinyCrabItem: {
 
 TinyLunazoaItem: {
 	DisplayName: 小月蜇
-	Tooltip: 在夜晚或水母雨时增加渔力
+	Tooltip: 在夜晚或水母雨时增加鱼饵力
 }
 
 TubewormItem: {
