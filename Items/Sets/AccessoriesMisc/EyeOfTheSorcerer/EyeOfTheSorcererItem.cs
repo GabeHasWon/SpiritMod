@@ -23,6 +23,6 @@ public class EyeOfTheSorcererItem : ModItem
 		if (player.statMana == player.statManaMax2)
 			increase += 10;
 
-		player.GetCritChance(DamageClass.Generic) += increase;
+		player.GetCritChance(DamageClass.Magic) += increase;
 	}
 }
