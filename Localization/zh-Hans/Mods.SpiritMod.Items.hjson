@@ -2833,7 +2833,7 @@ ChitinPickaxe: {
 }
 
 RoyalKhopesh: {
-	DisplayName: 皇家弯刀
+	DisplayName: 皇家镰形剑
 	Tooltip:
 		'''
 		挥舞会打出一段三连击
