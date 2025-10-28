@@ -161,9 +161,9 @@ Infernon: {
 	BossChecklistIntegration.SpawnInfo: 在地狱使用[i:SpiritMod/CursedCloth]召唤。
 }
 
-InfernonSkull.DisplayName: 狱火之颅
+InfernonSkull.DisplayName: 地狱之颅
 InfernonSkullMini.DisplayName: 炎狱之颅
-InfernoSkull.DisplayName: 狱火之颅
+InfernoSkull.DisplayName: 地狱之颅
 
 MoonWizard: {
 	DisplayName: 海月巫师
