@@ -57,7 +57,7 @@ AutomataSpinner: {
 Beholder: {
 	DisplayName: 守望者
 	Entry: 这些野兽在世界上发现的大理石矿坑里游荡，用它们的每只眼睛来评判你。
-	BossChecklistIntegration.SpawnInfo: 在世界吞噬者或克苏鲁之脑被击败后，有小概率在大理石洞穴生成。
+	BossChecklistIntegration.SpawnInfo: 在世界吞噬者或克苏鲁之脑被击败后，有小概率在大理石洞生成。
 }
 
 BlazingSkull: {
@@ -623,7 +623,7 @@ GraniteSentry: {
 
 GraniteSlime: {
 	DisplayName: 花岗岩史莱姆
-	Entry: 一种凝胶生物在花岗岩洞穴中游荡了很长时间，积累了足够的鹅卵石和灰尘，并最终与石头融为一体。
+	Entry: 一种凝胶生物在花岗岩洞中游荡了很长时间，积累了足够的鹅卵石和灰尘，并最终与石头融为一体。
 }
 
 HauntedTome: {

@@ -2300,7 +2300,7 @@ GranitePage: {
 	Tooltip:
 		'''
 		作者：亚里克斯·塔尼斯教授
-		记载了一种在花岗岩洞穴中发现的奇怪矿石
+		记载了一种在花岗岩洞中发现的奇怪矿石
 		'''
 }
 
@@ -2318,7 +2318,7 @@ MarblePage: {
 	Tooltip:
 		'''
 		作者：亚里克斯·塔尼斯教授
-		记载了一种在大理石洞穴中发现的奇怪矿石
+		记载了一种在大理石洞中发现的奇怪矿石
 		'''
 }
 
@@ -3668,7 +3668,7 @@ ExplorerScrollAsteroidFull: {
 
 ExplorerScrollGraniteFull: {
 	DisplayName: 完成的勘探卷轴
-	CustomTooltip: 附近的一个花岗岩洞穴已经被绘制出来了！
+	CustomTooltip: 附近的一个花岗岩洞已经被绘制出来了！
 	Tooltip: ""
 }
 
@@ -3680,7 +3680,7 @@ ExplorerScrollHiveFull: {
 
 ExplorerScrollMarbleFull: {
 	DisplayName: 完成的勘探卷轴
-	CustomTooltip: 附近的一个大理石洞穴已经被绘制出来了！
+	CustomTooltip: 附近的一个大理石洞已经被绘制出来了！
 	Tooltip: ""
 }
 
@@ -5592,7 +5592,7 @@ FrostLegionBox: {
 }
 
 GraniteBox: {
-	DisplayName: 音乐盒（花岗岩洞穴）
+	DisplayName: 音乐盒（花岗岩洞）
 	Tooltip: ""
 }
 
@@ -5622,7 +5622,7 @@ LuminousNightBox: {
 }
 
 MarbleBox: {
-	DisplayName: 音乐盒（大理石洞穴）
+	DisplayName: 音乐盒（大理石洞）
 	Tooltip: ""
 }
 
@@ -8723,7 +8723,7 @@ OracleScripture: {
 	Tooltip:
 		'''
 		召唤神谕者
-		只能在大理石洞穴中使用
+		只能在大理石洞中使用
 		'''
 }
 
