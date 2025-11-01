@@ -238,42 +238,42 @@ Configs: {
 
 		FrostLegionMusic: {
 			Label: "{$Mods.SpiritMod.FrostLegionMusic}"
-			Tooltip: 为雪人军团入侵添加一首独特的曲目
+			Tooltip: 为雪人军团添加一首独特的曲目
 		}
 
 		SkeletronPrimeMusic: {
 			Label: "{$Mods.SpiritMod.SkeletonPrimeMusic}"
-			Tooltip: 为机械骷髅王添加一首独特的曲目
+			Tooltip: 为机械骷髅王添加一首独特的Boss原声带
 		}
 
 		AuroraMusic: {
 			Label: "{$Mods.SpiritMod.AuroraMusic}"
-			Tooltip: 为极光启用一首独特的音乐
+			Tooltip: 为极光启用独特的音乐
 		}
 
 		LuminousMusic: {
 			Label: "{$Mods.SpiritMod.LuminousMusic}"
-			Tooltip: 为流明瀚海启用一首独特的音乐
+			Tooltip: 为流明瀚海启用独特的音乐
 		}
 
 		CalmNightMusic: {
 			Label: "{$Mods.SpiritMod.CalmNightMusic}"
-			Tooltip: 为安宁夜启用一首独特的音乐
+			Tooltip: 为安宁夜启用独特的音乐
 		}
 
 		NeonBiomeMusic: {
 			Label: "{$Mods.SpiritMod.HyperspaceMusic}"
-			Tooltip: 为人造超时空领域启用两首独特的音乐
+			Tooltip: 为人造超时空领域启用两首独特的曲目
 		}
 
 		AshfallMusic: {
 			Label: "{$Mods.SpiritMod.AshfallMusic}"
-			Tooltip: 为地狱的落烬雨天气启用一首独特的音乐
+			Tooltip: 为地狱的落烬雨天气启用一首独特的曲目
 		}
 
 		VictoryDayMusic: {
 			Label: "{$Mods.SpiritMod.VictoryDayMusic}"
-			Tooltip: 为灯笼夜事件启用一首独特的音乐
+			Tooltip: 为灯笼夜事件启用一首独特的曲目
 		}
 	}
 }
