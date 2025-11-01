@@ -1,2 +1,4 @@
-﻿v1.5.0.38
-- Fixed a potential freeze when completing quest steps
+﻿v1.5.0.39
+- Fix now actively harmful liquid slope "fixes" (thank god) - transparent water looks good now
+- All chests now are also considered containers
+- Add some localization for ocean shapes

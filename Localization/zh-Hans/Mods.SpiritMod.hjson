@@ -164,18 +164,50 @@ Configs: {
 
 	QuestInvLocation: {
 		Tooltip: ""
-		Minimap.Label: 小地图
-		Trashcan.Label: 垃圾桶
-		FarLeft.Label: 最左边
+
+		Minimap: {
+			Label: 小地图
+			// Tooltip: ""
+		}
+
+		Trashcan: {
+			Label: 垃圾桶
+			// Tooltip: ""
+		}
+
+		FarLeft: {
+			Label: 最左边
+			// Tooltip: ""
+		}
 	}
 
 	OceanShape: {
 		Tooltip: ""
-		Default.Label: 默认
-		SlantedSine.Label: 倾斜正弦
-		Piecewise.Label: 分段
-		Piecewise_M.Label: 分段_ M
-		Piecewise_V.Label: 分段_ V
+
+		Default: {
+			Label: 默认
+			// Tooltip: Vanilla's default ocean generation. Disables Spirit Classic's generation.
+		}
+
+		SlantedSine: {
+			Label: 倾斜正弦
+			// Tooltip: Adjusted slope that uses a diagonal sine wave for generation.
+		}
+
+		Piecewise: {
+			Label: 分段
+			// Tooltip: Piecewise generation combining a few slopes. Original piecewise generation, but a little rough.
+		}
+
+		Piecewise_M: {
+			Label: 分段_ M
+			// Tooltip: Modified piecewise generation, slightly improved.
+		}
+
+		Piecewise_V: {
+			Label: 分段_ V
+			// Tooltip: Final piecewise generation, the intended Spirit ocean generation.
+		}
 	}
 
 	SpiritMusicConfig: {
