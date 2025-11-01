@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Systems;
 
-internal class TimeSystem : ILoadable
+public sealed class TimeSystem : ModSystem
 {
 	/// <param name="day"> Whether it is day. use this instead of <see cref="Main.dayTime"/>. </param>
 	public delegate void TimeDelegate(bool day);
@@ -12,23 +12,17 @@ internal class TimeSystem : ILoadable
 	/// Some mods that force time progression may prevent this from being invoked at all. </summary>
 	public static event TimeDelegate TimeChanged;
 
-	public void Load(Mod mod)
+	private bool _wasDayTime;
+
+	public override void OnWorldLoad() => _wasDayTime = Main.dayTime;
+
+	public override void PostUpdateEverything()
 	{
-		On_Main.UpdateTime_StartDay += StartDay;
-		On_Main.UpdateTime_StartNight += StartNight;
+		if (Main.dayTime != _wasDayTime)
+			TimeChanged?.Invoke(Main.dayTime);
+
+		_wasDayTime = Main.dayTime;
 	}
 
-	private static void StartDay(On_Main.orig_UpdateTime_StartDay orig, ref bool stopEvents)
-	{
-		TimeChanged?.Invoke(true);
-		orig(ref stopEvents);
-	}
-
-	private static void StartNight(On_Main.orig_UpdateTime_StartNight orig, ref bool stopEvents)
-	{
-		TimeChanged?.Invoke(false);
-		orig(ref stopEvents);
-	}
-
-	public void Unload() => TimeChanged = null;
+	public override void Unload() => TimeChanged = null;
 }
