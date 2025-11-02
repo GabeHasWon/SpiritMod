@@ -21,12 +21,12 @@ InfernonPetProjectile.DisplayName: 炎狱之主
 MJWPetProjectile.DisplayName: 海月灯泡
 OccultistPetProjectile.DisplayName: 小玄虚术士
 AdornedBowProj.DisplayName: 华饰弓
-ScarabArrow.DisplayName: 圣甲虫箭
+ScarabArrow.DisplayName: 甲虫箭
 KhopeshSlash.DisplayName: 皇家弯刀
 LocustBig.DisplayName: 蝗虫
 LocustSmall.DisplayName: 蝗虫宝宝
 RadiantCane.DisplayName: 光辉法球
-ScarabPetProjectile.DisplayName: 小圣甲虫
+ScarabPetProjectile.DisplayName: 小甲虫
 LivewireProj.DisplayName: 输电线
 StargloveChargeOrange.DisplayName: 星坠
 StargloveChargePurple.DisplayName: 星坠
@@ -276,7 +276,7 @@ ReachBossFlower.DisplayName: 辉光花
 SporeExplosion.DisplayName: 爆炸性孢子
 Yikes.DisplayName: 孢子尖
 RedComet.DisplayName: 赤色彗星
-LargeScarab.DisplayName: 圣甲虫
+LargeScarab.DisplayName: 甲虫
 SandShockwave.DisplayName: 沙
 ScarabSandball.DisplayName: 沙球
 SwarmTelegraph.DisplayName: 沙球
@@ -440,7 +440,7 @@ FlamebergeProjectile.DisplayName: 炽焰
 FrostBolt.DisplayName: 冰霜矢
 FrostRune.DisplayName: 冰霜符文
 HarpyBolt.DisplayName: 精灵
-JadeScarab.DisplayName: 华饰圣甲虫
+JadeScarab.DisplayName: 华饰甲虫
 NeutronStar.DisplayName: 中子星
 OmniwrenchProj.DisplayName: 多功能扳手
 PhoenixMinion.DisplayName: 火焰菲尼克斯
