@@ -4163,8 +4163,8 @@ VeilGlyph: {
 
 VoidGlyph: {
 	DisplayName: 虚空雕文
-	Tooltip: 攻击有几率造成可叠加的吞噬虚空减益
-	Addendum: 攻击有几率造成可叠加的吞噬虚空减益
+	Tooltip: 攻击有几率造成可叠加的虚空坍塌
+	Addendum: 攻击有几率造成可叠加的虚空坍塌
 	Effect: 空无
 }
 
