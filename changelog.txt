@@ -1,4 +1,3 @@
-﻿v1.5.0.39
-- Fix now actively harmful liquid slope "fixes" (thank god) - transparent water looks good now
-- All chests now are also considered containers
-- Add some localization for ocean shapes
+﻿v1.5.0.40
+- Added config option to toggle Aurora visuals
+- Updated internal "Explosives" ID set to use the existing ID set instead of a custom one - this should improve crossmod compatibility

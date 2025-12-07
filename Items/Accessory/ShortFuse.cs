@@ -28,7 +28,7 @@ namespace SpiritMod.Items.Accessory
 			for (int i = 0; i < Main.maxProjectiles; ++i) 
 			{
 				Projectile p = Main.projectile[i];
-				if (p.active && p.owner == player.whoAmI && ExplosivesCache.AllExplosives.Contains(p.type) && p.timeLeft % 12 == 0)
+				if (p.active && p.owner == player.whoAmI && ProjectileID.Sets.Explosive[p.type] && p.timeLeft % 12 == 0)
 					p.timeLeft -= 5; //5/12ths faster I think. Or 7/12ths. idk
 			} 
 		}

@@ -39,7 +39,6 @@ namespace SpiritMod
 	{
 		public override void PostAddRecipes()
 		{
-			ExplosivesCache.Initialize(Mod);
 			ModContent.GetInstance<TagGlobalTile>().Load(Mod);
 			SacrificeAutoloader.Load(Mod);
 		}
@@ -365,21 +364,25 @@ namespace SpiritMod
 							SpiritMod.Instance.AutoSellUI_INTERFACE.Update(Main._drawInterfaceGameTime);
 							SpiritMod.Instance.AutoSellUI_SHORTCUT.Draw(Main.spriteBatch);
 						}
+
 						if (Mechanics.AutoSell.Sell_NoValue.Sell_NoValue.visible)
 						{
 							SpiritMod.Instance.SellNoValue_INTERFACE.Update(Main._drawInterfaceGameTime);
 							SpiritMod.Instance.SellNoValue_SHORTCUT.Draw(Main.spriteBatch);
 						}
+
 						if (Mechanics.AutoSell.Sell_Lock.Sell_Lock.visible)
 						{
 							SpiritMod.Instance.SellLock_INTERFACE.Update(Main._drawInterfaceGameTime);
 							SpiritMod.Instance.SellLock_SHORTCUT.Draw(Main.spriteBatch);
 						}
+
 						if (Mechanics.AutoSell.Sell_Weapons.Sell_Weapons.visible)
 						{
 							SpiritMod.Instance.SellWeapons_INTERFACE.Update(Main._drawInterfaceGameTime);
 							SpiritMod.Instance.SellWeapons_SHORTCUT.Draw(Main.spriteBatch);
 						}
+
 						return true;
 					},
 					InterfaceScaleType.UI)

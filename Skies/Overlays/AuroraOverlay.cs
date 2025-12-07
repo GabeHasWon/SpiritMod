@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpiritMod.Systems.Aurora;
+using SpiritMod.Utilities;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.Graphics.Effects;
+using Terraria.ModLoader;
 
 namespace SpiritMod.Skies.Overlays;
 
@@ -29,7 +31,7 @@ public class AuroraOverlay(EffectPriority priority = EffectPriority.High, Render
 
 	public override void Activate(Vector2 position, params object[] args) => Mode = OverlayMode.FadeIn;
 	public override void Deactivate(params object[] args) => Mode = OverlayMode.FadeOut;
-	public override bool IsVisible() => !Main.gameMenu;
+	public override bool IsVisible() => !Main.gameMenu && ModContent.GetInstance<SpiritClientConfig>().AuroraEnabled;
 	public override void Update(GameTime gameTime) => time = (float)gameTime.TotalGameTime.TotalSeconds * 3f;
 
 	public override void Draw(SpriteBatch spriteBatch)

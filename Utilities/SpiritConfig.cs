@@ -23,6 +23,9 @@ namespace SpiritMod.Utilities
 		public bool ForegroundParticles { get; set; }
 
 		[DefaultValue(true)]
+		public bool AuroraEnabled { get; set; }
+
+		[DefaultValue(true)]
 		public bool AutoReuse { get; set; }
 
 		[DefaultValue(true)]
@@ -40,11 +43,6 @@ namespace SpiritMod.Utilities
 
 		[DefaultValue(true)]
 		public bool QuestBookSwitching { get; set; }
-
-		/*[Label("Town NPC Portraits")]
-		[Tooltip("Enables the showing of NPC portraits when talking to a Town NPC")]
-		[DefaultValue(true)]
-		public bool ShowNPCPortraits { get; set; }*/
 
 		[DefaultValue(true)]
 		public bool ShowNPCQuestNotice { get; set; }

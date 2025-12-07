@@ -160,6 +160,11 @@ Configs: {
 			Label: "{$Mods.SpiritMod.WaterEnemies}"
 			Tooltip: Enables enemy encounters while fishing
 		}
+
+		AuroraEnabled: {
+			Label: "[i:SpiritMod/MoonStone]  Visuals: Aurora Enabled"
+			Tooltip: Enables or disables the Aurora visuals. This does not stop Aurora-based effects or enemies from appearing
+		}
 	}
 
 	QuestInvLocation: {
