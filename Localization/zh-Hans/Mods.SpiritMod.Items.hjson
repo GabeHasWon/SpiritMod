@@ -1,34 +1,34 @@
 AceOfClubs: {
-	DisplayName: 梅花王牌
-	Tooltip: 暴击会使敌人掉落更多钱币
+	DisplayName: 梅花A
+	Tooltip: 暴击会使敌人掉落钱币
 }
 
 AceOfDiamonds: {
-	DisplayName: 方块王牌
+	DisplayName: 方块A
 	Tooltip:
 		'''
-		暴击有几率掉落方块王牌
+		暴击有几率掉落方块A
 		拾取方块王牌会增加20%伤害，持续5秒
 		'''
 }
 
 AceOfHearts: {
-	DisplayName: 红心王牌
+	DisplayName: 红心A
 	Tooltip: 暴击有几率掉落红心
 }
 
 AceOfSpades: {
-	DisplayName: 黑桃王牌
+	DisplayName: 黑桃A
 	Tooltip: 暴击会造成额外伤害。
 }
 
 DiamondAce: {
-	DisplayName: 方块王牌
+	DisplayName: 方块A
 	Tooltip: 你不该看见这个
 }
 
 FourOfAKind: {
-	DisplayName: 四牌同点
+	DisplayName: 四条
 	Tooltip:
 		'''
 		暴击会造成额外伤害并掉落钱币
@@ -61,7 +61,7 @@ BowSummonItem: {
 		'''
 		召唤一个附魔弓为你而战
 		使用你物品栏中的第一个箭矢
-		如果你没有任何箭矢，则会发射较弱的弄臣箭
+		如果你没有任何箭矢，则会发射较弱的小丑之箭
 		附魔弓不占用任何召唤栏位
 		'''
 }
@@ -159,7 +159,7 @@ Flying_Fish_Fin: {
 }
 
 ForbiddenKnowledgeTome: {
-	DisplayName: 禁忌学识之作
+	DisplayName: 禁忌学识巨著
 	Tooltip: 击杀敌人时会释放追踪幽魂颅骨
 }
 
@@ -387,7 +387,7 @@ MagnifyingGlass: {
 	Tooltip:
 		'''
 		增加4%暴击率
-		当手持一把武器时按右键扩大视野
+		未手持武器时按右键可拉远视野
 		'''
 }
 
@@ -401,7 +401,7 @@ MedusaShield: {
 }
 
 GildedScarab: {
-	DisplayName: 镀金圣甲虫
+	DisplayName: 镀金甲虫
 	Tooltip:
 		'''
 		受到攻击时会获得一个短暂的防御增益
@@ -452,7 +452,7 @@ MimicRepellent: {
 
 Moonlight_Sack: {
 	DisplayName: 月光宝袋
-	CustomTooltip: 在你和召唤物之间产生能够造成伤害的链状闪电
+	CustomTooltip: 在你和仆从之间产生能够造成伤害的链状闪电
 	Tooltip: ""
 }
 
@@ -522,7 +522,7 @@ ShadowSingeFang: {
 	Tooltip:
 		'''
 		增加4%暴击率
-		在夜晚或地底时增加4%暴击率
+		在夜晚或地下时增加4%暴击率
 		攻击生命值低于一半的敌人时有几率以自己的生命为代价释放一个暗影攻击敌人
 		'''
 }
@@ -545,8 +545,8 @@ ShurikenLauncher: {
 	DisplayName: 神射手手套
 	Tooltip:
 		'''
-		增加在一定距离时的远程伤害
-		增加在此范围内连续射击时造成的伤害
+		在特定距离外时会增加远程伤害
+		在该范围外连续射击时会逐渐增加造成的伤害
 		'''
 }
 
@@ -594,7 +594,7 @@ Ukelele: {
 	Tooltip:
 		'''
 		击中敌人时有几率生成连锁闪电
-		“……他甚至能弹出电音！”
+		“……他的音乐还是电音。”
 		'''
 }
 
@@ -998,7 +998,7 @@ TrapperGlove: {
 }
 
 WinterHat: {
-	DisplayName: 寒冬帽
+	DisplayName: 严冬帽
 	Tooltip: 使你免疫冷冻减益
 }
 
@@ -1007,7 +1007,7 @@ MimeMask: {
 	Tooltip:
 		'''
 		增加3%召唤伤害
-		增加最大召唤栏位
+		增加最大仆从栏位
 		'''
 }
 
@@ -1602,7 +1602,7 @@ SpiritSkullBanner: {
 }
 
 SpiritTomeBanner: {
-	DisplayName: 魂灵之书旗
+	DisplayName: 远古之书旗
 	Tooltip: ""
 }
 
@@ -2300,7 +2300,7 @@ GranitePage: {
 	Tooltip:
 		'''
 		作者：亚里克斯·塔尼斯教授
-		记载了一种在花岗岩洞穴中发现的奇怪矿石
+		记载了一种在花岗岩洞中发现的奇怪矿石
 		'''
 }
 
@@ -2318,7 +2318,7 @@ MarblePage: {
 	Tooltip:
 		'''
 		作者：亚里克斯·塔尼斯教授
-		记载了一种在大理石洞穴中发现的奇怪矿石
+		记载了一种在大理石洞中发现的奇怪矿石
 		'''
 }
 
@@ -2638,19 +2638,19 @@ InfernalBreastplate: {
 	DisplayName: 苦痛散播者胸甲
 	Tooltip:
 		'''
-		增加10%召唤伤害和1格最大召唤栏位
+		增加10%召唤伤害和1格最大仆从栏位
 		增加10%鞭子攻击范围
 		'''
 }
 
 InfernalGreaves: {
 	DisplayName: 苦痛散播者护胫
-	Tooltip: 增加10%召唤伤害和1格最大召唤栏位
+	Tooltip: 增加10%召唤伤害和1格最大仆从栏位
 }
 
 InfernalVisor: {
 	DisplayName: 苦痛散播者面具
-	Tooltip: 增加15%召唤伤害和2格最大召唤栏位
+	Tooltip: 增加15%召唤伤害和2格最大仆从栏位
 }
 
 InfernonBag: {
@@ -2729,13 +2729,13 @@ MJWTrophy: {
 }
 
 MoonjellySummonStaff: {
-	DisplayName: 月蜇权杖
+	DisplayName: 月蜇法杖
 	Tooltip:
 		'''
 		召唤一位月光守护者
 		月光守护者会召唤爆炸小水母
 		同时存在至多一位月光守护者
-		多次使用法杖会占用更多的召唤栏位，但会增加水母的生成速率
+		多次使用法杖会占用更多的仆从栏位，但会增加水母的生成速率
 		'''
 }
 
@@ -2833,7 +2833,7 @@ ChitinPickaxe: {
 }
 
 RoyalKhopesh: {
-	DisplayName: 皇家弯刀
+	DisplayName: 皇家镰形剑
 	Tooltip:
 		'''
 		挥舞会打出一段三连击
@@ -2851,12 +2851,12 @@ LocustCrook: {
 }
 
 RadiantCane: {
-	DisplayName: 升阳权杖
+	DisplayName: 日升权杖
 	Tooltip: 召唤一个可控且缓慢的太阳法球
 }
 
 ScarabPendant: {
-	DisplayName: 圣甲虫吊坠
+	DisplayName: 甲虫吊坠
 	Tooltip:
 		'''
 		召唤一只可骑乘的巨型鼠妇，鼠妇可以高速滚向敌人
@@ -2870,8 +2870,8 @@ ScarabMask: {
 }
 
 ScarabPetItem: {
-	DisplayName: 圣甲虫食物
-	Tooltip: 召唤一位小圣甲虫伙伴
+	DisplayName: 甲虫食物
+	Tooltip: 召唤一位小甲虫伙伴
 }
 
 Trophy1: {
@@ -2905,7 +2905,7 @@ OrionPistol: {
 }
 
 StarLegs: {
-	DisplayName: 星界胸甲
+	DisplayName: 星界护胫
 	Tooltip:
 		'''
 		增加5%远程伤害
@@ -3668,7 +3668,7 @@ ExplorerScrollAsteroidFull: {
 
 ExplorerScrollGraniteFull: {
 	DisplayName: 完成的勘探卷轴
-	CustomTooltip: 附近的一个花岗岩洞穴已经被绘制出来了！
+	CustomTooltip: 附近的一个花岗岩洞已经被绘制出来了！
 	Tooltip: ""
 }
 
@@ -3680,7 +3680,7 @@ ExplorerScrollHiveFull: {
 
 ExplorerScrollMarbleFull: {
 	DisplayName: 完成的勘探卷轴
-	CustomTooltip: 附近的一个大理石洞穴已经被绘制出来了！
+	CustomTooltip: 附近的一个大理石洞已经被绘制出来了！
 	Tooltip: ""
 }
 
@@ -3772,7 +3772,7 @@ SadSlimePainting: {
 }
 
 ScarabIdol: {
-	DisplayName: 圣甲虫崇符
+	DisplayName: 甲虫崇符
 	Tooltip:
 		'''
 		不消耗
@@ -3826,7 +3826,7 @@ TinyCrabItem: {
 
 TinyLunazoaItem: {
 	DisplayName: 小月蜇
-	Tooltip: 在夜晚或水母雨时增加渔力
+	Tooltip: 在夜晚或水母雨时增加鱼饵力
 }
 
 TubewormItem: {
@@ -3921,7 +3921,7 @@ SnowmongerMountItem: {
 
 GoldJadeScythe: {
 	DisplayName: 苦痛欺诈者
-	Tooltip: 击中敌人时偶尔会生成华饰圣甲虫来保护你
+	Tooltip: 击中敌人时偶尔会生成华饰甲虫来保护你
 }
 
 HeroBow: {
@@ -4163,8 +4163,8 @@ VeilGlyph: {
 
 VoidGlyph: {
 	DisplayName: 虚空雕文
-	Tooltip: 攻击有几率造成可叠加的吞噬虚空减益
-	Addendum: 攻击有几率造成可叠加的吞噬虚空减益
+	Tooltip: 攻击有几率造成可叠加的虚空坍塌
+	Addendum: 攻击有几率造成可叠加的虚空坍塌
 	Effect: 空无
 }
 
@@ -4409,8 +4409,8 @@ JellyCandle: {
 }
 
 PhantomEgg: {
-	DisplayName: 幻蝠之卵
-	Tooltip: 一个神秘的幻影正跟着你……
+	DisplayName: 幻影蝠之卵
+	Tooltip: 一只幻影蝠正跟着你……
 }
 
 PowerRing: {
@@ -4499,10 +4499,10 @@ PinRed: {
 }
 
 PinScarab: {
-	DisplayName: 引路图钉（圣甲虫）
+	DisplayName: 引路图钉（甲虫）
 	Tooltip:
 		'''
-		放置或移动圣甲虫地图图钉
+		放置或移动甲虫地图图钉
 		右键删除图钉
 		放置的图钉可在地图上进行交互
 		'''
@@ -4549,7 +4549,7 @@ PinYellow: {
 }
 
 FishCrate: {
-	DisplayName: 包装宝匣
+	DisplayName: 包装匣
 	Tooltip:
 		'''
 		“一个知名渔业公司的标签在上面”
@@ -4684,7 +4684,7 @@ BambooBarrelItem: {
 }
 
 BambooBenchItem: {
-	DisplayName: 条纹竹凳
+	DisplayName: 条纹竹长椅
 	Tooltip: ""
 }
 
@@ -5148,12 +5148,12 @@ TheGoodPaintingItem: {
 }
 
 PottedSakura: {
-	DisplayName: 樱花盆景
+	DisplayName: 樱花盆栽
 	Tooltip: ""
 }
 
 PottedWillow: {
-	DisplayName: 黄柳盆景
+	DisplayName: 黄柳盆栽
 	Tooltip: ""
 }
 
@@ -5562,7 +5562,7 @@ BriarNightBox: {
 }
 
 BriarUndergroundBox: {
-	DisplayName: 音乐盒（荆棘之地 - 地底）
+	DisplayName: 音乐盒（荆棘之地 - 地下）
 	Tooltip: ""
 }
 
@@ -5592,7 +5592,7 @@ FrostLegionBox: {
 }
 
 GraniteBox: {
-	DisplayName: 音乐盒（花岗岩洞穴）
+	DisplayName: 音乐盒（花岗岩洞）
 	Tooltip: ""
 }
 
@@ -5622,7 +5622,7 @@ LuminousNightBox: {
 }
 
 MarbleBox: {
-	DisplayName: 音乐盒（大理石洞穴）
+	DisplayName: 音乐盒（大理石洞）
 	Tooltip: ""
 }
 
@@ -5677,7 +5677,7 @@ SpiritBox2: {
 }
 
 SpiritBox3: {
-	DisplayName: 音乐盒（魂灵之地 - 地底深处）
+	DisplayName: 音乐盒（魂灵之地 - 地下深处）
 	Tooltip: ""
 }
 
@@ -6236,7 +6236,7 @@ BloodCourtHead: {
 	Tooltip:
 		'''
 		增加4%伤害
-		增加最大召唤栏位
+		增加最大仆从栏位
 		'''
 }
 
@@ -6378,7 +6378,7 @@ ReachBrooch: {
 	Tooltip:
 		'''
 		在玩家周围生成明亮的辉光
-		在夜晚或地底时强化在荆棘之地的视野
+		在夜晚或地下时强化在荆棘之地的视野
 		'''
 }
 
@@ -6531,7 +6531,7 @@ FloranBludgeon: {
 }
 
 GoldClub: {
-	DisplayName: 黄金巨锤
+	DisplayName: 黄金大锤
 	Tooltip: ""
 }
 
@@ -6823,7 +6823,7 @@ DriftwoodWallItem: {
 }
 
 FishLure: {
-	DisplayName: 鱼饵
+	DisplayName: 鱼诱
 	Tooltip:
 		'''
 		只能放置在水中
@@ -7670,7 +7670,7 @@ BetrayersChains: {
 }
 
 Eleutherios: {
-	DisplayName: 自由者
+	DisplayName: 厄琉忒瑞俄斯
 	Tooltip:
 		'''
 		降低15%治疗物品的效力
@@ -7750,7 +7750,7 @@ UrchinStaff: {
 }
 
 RlyehianMountItem: {
-	DisplayName: 怪异时钟
+	DisplayName: 怪异斗篷
 	Tooltip:
 		'''
 		召唤一个怪异斗篷带你到处走
@@ -7885,7 +7885,7 @@ ObsidiusGreaves: {
 	Tooltip:
 		'''
 		增加5%召唤伤害
-		增加最大召唤栏位
+		增加最大仆从栏位
 		'''
 }
 
@@ -7903,7 +7903,7 @@ ObsidiusPlate: {
 	Tooltip:
 		'''
 		增加4%召唤伤害
-		增加最大召唤栏位
+		增加最大仆从栏位
 		'''
 }
 
@@ -7966,8 +7966,8 @@ NetherWings: {
 }
 
 PossessedBook: {
-	DisplayName: 远古咒书
-	Tooltip: 召唤远古魔典来指引你
+	DisplayName: 远古魔法书
+	Tooltip: 召唤一本闹鬼之书来指引你
 }
 
 SoulWeaver: {
@@ -8336,7 +8336,7 @@ Sovereign_Talon: {
 }
 
 Tome_of_the_Great_Scavenger: {
-	DisplayName: 伟大清道夫的法典
+	DisplayName: 伟大食腐者巨著
 	Tooltip:
 		'''
 		施放一连串锋利的穿甲羽毛
@@ -8723,7 +8723,7 @@ OracleScripture: {
 	Tooltip:
 		'''
 		召唤神谕者
-		只能在大理石洞穴中使用
+		只能在大理石洞中使用
 		'''
 }
 
@@ -8943,7 +8943,7 @@ RuinstoneItem: {
 }
 
 RuneBlockItem: {
-	DisplayName: 极光符文块
+	DisplayName: 奥术神符块
 	Tooltip: ""
 }
 
@@ -8973,27 +8973,27 @@ WornStoneItem: {
 }
 
 BloodMoonAuroraMonolithItem: {
-	DisplayName: 血月极光巨石
+	DisplayName: 血月极光天塔柱
 	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 FrostMoonAuroraMonolithItem: {
-	DisplayName: 霜月极光巨石
+	DisplayName: 霜月极光天塔柱
 	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 NormalAuroraMonolithItem: {
-	DisplayName: 极光巨石
+	DisplayName: 极光天塔柱
 	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 PumpkinAuroraMonolithItem: {
-	DisplayName: 南瓜月极光巨石
+	DisplayName: 南瓜月极光天塔柱
 	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
 }
 
 SpiritBiomeAuroraMonolithItem: {
-	DisplayName: 魂灵之地极光巨石
+	DisplayName: 魂灵之地极光天塔柱
 	Tooltip: 装备后可以显示局部极光
 }
 

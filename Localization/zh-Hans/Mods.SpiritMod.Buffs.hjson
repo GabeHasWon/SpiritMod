@@ -1,5 +1,5 @@
 AceOfDiamondsBuff: {
-	DisplayName: 方块王牌
+	DisplayName: 方块A
 	Description: 伤害增加20%
 }
 
@@ -19,12 +19,12 @@ ExplorerFight: {
 }
 
 ExplorerMine: {
-	DisplayName: 探险家的活力
+	DisplayName: 探险家的毅力
 	Description: 挖下去吧！
 }
 
 ExplorerPot: {
-	DisplayName: 探险家的兴奋
+	DisplayName: 探险家的活力
 	Description: 你渴望更多！
 }
 
@@ -50,7 +50,7 @@ AstralMapCooldown: {
 
 BeetleFortitude: {
 	DisplayName: 甲虫之毅力
-	Description: 杀不死你的只会使你更强……
+	Description: 每次打击都会使你变得更强……
 }
 
 BloodInfusion: {
@@ -79,7 +79,7 @@ LollipopBuff: {
 }
 
 ManaBuffC: {
-	DisplayName: 魔法糖果
+	DisplayName: 魔力糖果
 	Description: 最大魔力值增加40点
 }
 
@@ -104,7 +104,7 @@ CourtCooldown: {
 }
 
 CrimsonSkullBuff: {
-	DisplayName: 猩红之颅
+	DisplayName: 猩红颅骨
 	Description: 淤血烧瓶现在会造成双倍伤害
 }
 
@@ -393,7 +393,7 @@ OverseerPetBuff: {
 }
 
 PhantomPetBuff: {
-	DisplayName: 幻影
+	DisplayName: 幻影蝠
 	Description: “它融入了黑夜”
 }
 
@@ -403,7 +403,7 @@ SaucerPetBuff: {
 }
 
 ScarabPetBuff: {
-	DisplayName: 微小圣甲虫
+	DisplayName: 小甲虫
 	Description: “它真的喜欢摇滚……”
 }
 
@@ -442,12 +442,12 @@ FlightPotionBuff: {
 }
 
 MoonBlessing: {
-	DisplayName: 苍月果冻
+	DisplayName: 海月果冻
 	Description: 极速生命再生
 }
 
 MoonBlessingDonut: {
-	DisplayName: 苍月甜甜圈
+	DisplayName: 海月甜甜圈
 	Description: 极速生命再生，以及高糖分！
 }
 
@@ -712,7 +712,7 @@ BaubleResistance: {
 }
 
 GildedScarab_buff: {
-	DisplayName: 圣甲虫护盾
+	DisplayName: 甲虫护盾
 	Description: 防御力增加{0}
 }
 
