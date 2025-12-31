@@ -29,17 +29,13 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 		{
 			get
 			{
-				switch (phase)
+				return phase switch
 				{
-					case Phases.IDLE:
-						return 21;
-					case Phases.TRANSITIONING:
-						return 9;
-					case Phases.ATTACKING:
-						return 9;
-					default:
-						return 1;
-				}
+					Phases.IDLE => 21,
+					Phases.TRANSITIONING => 9,
+					Phases.ATTACKING => 9,
+					_ => 1,
+				};
 			}
 		}
 
@@ -84,14 +80,28 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 					phase = Phases.IDLE;
 					break;
 			}
+
 			Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(player.Center - new Vector2(player.direction * 30, 0)) * 10, 0.03f);
 			Projectile.rotation = Projectile.velocity.X / 20f;
 			Projectile.frameCounter++;
+
 			if (Projectile.frameCounter % 3 == 2)
 			{
 				frameY++;
 			}
+
 			frameY %= NumFrames;
+
+			if (Projectile.DistanceSQ(Main.player[Projectile.owner].Center) > 1500 * 1500)
+			{
+				for (int i = 0; i < 5; ++i)
+					Dust.NewDustPerfect(Projectile.Center, DustID.UltraBrightTorch, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f)).noGravity = true;
+
+				Projectile.Center = Main.player[Projectile.owner].Center - new Vector2(0, 50);
+
+				for (int i = 0; i < 5; ++i)
+					Dust.NewDustPerfect(Projectile.Center, DustID.UltraBrightTorch, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f)).noGravity = true;
+			}
 		}
 
 		public override void TargettingBehavior(Player player, NPC target)
@@ -190,9 +200,9 @@ namespace SpiritMod.Items.Sets.SummonsMisc.SoulDagger
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;
 	}
+
 	internal class SoulDaggerSummon : ModProjectile
 	{
-
 		protected virtual Color DrawColor => Color.White;
 		public override void SetStaticDefaults()
 		{

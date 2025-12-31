@@ -43,6 +43,17 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 
 			Projectile.scale = MathHelper.Min(1.3f, baseScale + ((Projectile.minionSlots - 1) * .062f));
 			Projectile.rotation = Projectile.velocity.X * 0.025f;
+
+			if (Projectile.DistanceSQ(Main.player[Projectile.owner].Center) > 1500 * 1500)
+			{
+				for (int i = 0; i < 5; ++i)
+					Dust.NewDustPerfect(Projectile.Center, DustID.Electric, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f)).noGravity = true;
+
+				Projectile.Center = Main.player[Projectile.owner].Center - new Vector2(0, 50);
+
+				for (int i = 0; i < 5; ++i)
+					Dust.NewDustPerfect(Projectile.Center, DustID.Electric, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f)).noGravity = true;
+			}
 		}
 
 		public override void IdleMovement(Player player)

@@ -2146,7 +2146,7 @@ SkeletalonStaff: {
 	Tooltip:
 		'''
 		5 summon tag damage
-		Summons an army of fossilized birds to fight for you
+		Summons an army of temporary fossilized birds to fight for you
 		'''
 }
 
@@ -2239,7 +2239,7 @@ Shadowmoor: {
 
 ShadowSphere: {
 	DisplayName: Shadow Sphere
-	Tooltip: Summons a slow shadow sphere that shoots out Crystal Shadows at foes
+	Tooltip: Summons a stationary shadow sphere that shoots out Crystal Shadows at foes
 }
 
 Trophy6: {
@@ -3558,7 +3558,7 @@ DuskfeatherDagger: {
 
 EternalAsh: {
 	DisplayName: Eternal Ashes
-	Tooltip: "Summons a Phoenix Minion to rain down fireballs on your foes "
+	Tooltip: Summons a Phoenix sentry to rain down fireballs on your foes
 }
 
 BlizzardEdge: {
@@ -7406,7 +7406,7 @@ ReefSpear: {
 
 SkullSentry: {
 	DisplayName: Maneater Skull
-	Tooltip: Summons a skull infested by maneater worms that fire red mucus at nearby enemies
+	Tooltip: Summons a stationary skull infested by maneater worms that fire red mucus at nearby enemies
 }
 
 SulfurDeposit: {
@@ -7784,7 +7784,7 @@ MimeSummon: {
 	DisplayName: Two-Faced Mask
 	Tooltip:
 		'''
-		Summons either a Soul of Happiness or Sadness at the cursor position with a left or right click
+		Summons a stationary Soul of Happiness or Sadness at the cursor position with a left or right click
 		The Soul of Happiness shoots out beams at foes
 		The Soul of Sadness shoots out homing tears at foes
 		'''
@@ -8093,7 +8093,7 @@ ShroomFishSummon: {
 	DisplayName: Fungal Icthyoid
 	Tooltip:
 		'''
-		Summons slow homing spores around the player
+		Summons slow-homing, temporary spores around the player
 		5 summon tag damage
 		'''
 }
@@ -8140,14 +8140,14 @@ GateStaff: {
 	DisplayName: Gate Staff
 	Tooltip:
 		'''
-		Summons an electric field
-		Right click to remove summoned fields
+		Summons a stationary electric field node, which links to other nodes
+		Right click to remove summoned nodes
 		'''
 }
 
 GloomgusStaff: {
 	DisplayName: Glumshroom Staff
-	Tooltip: Summons explosive mushrooms
+	Tooltip: Summons temporary explosive mushrooms
 }
 
 JadeStaff: {

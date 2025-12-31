@@ -1,3 +1,6 @@
-﻿v1.5.0.40
-- Added config option to toggle Aurora visuals
-- Updated internal "Explosives" ID set to use the existing ID set instead of a custom one - this should improve crossmod compatibility
+﻿v1.5.0.41
+- Made sure all items tagged as doing Summon damage who have non-temporary summons have their summons teleport to the player if the player is too distant
+- Adjusted some localization to be more clear on what certain summon weapons do or how they behave
+- Added config option to disable Dark Sepulchres in worldgen since they're very dumb and bad in crossmod
+- Stopped Lihzahrds from dropping the Lihzahrd Staff in pre-hardmode
+- Added torches around the Adventurer's spawn location in the underground Briar to hopefully reduce frustration

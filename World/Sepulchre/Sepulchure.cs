@@ -1,17 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
-using SpiritMod.Utilities.Noise;
 using SpiritMod.Tiles.Ambient;
 using SpiritMod.Tiles.Block;
 using SpiritMod.Tiles.Walls.Natural;
+using SpiritMod.Utilities;
+using SpiritMod.Utilities.Noise;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 using Terraria.IO;
 using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace SpiritMod.World.Sepulchre;
 
@@ -25,7 +26,7 @@ public class SepulchureSystem : ModSystem
 	{
 		int index = tasks.FindIndex(genpass => genpass.Name.Equals("Cave Walls"));
 
-		if (index == -1 || ModLoader.HasMod("Remnants"))
+		if (index == -1 || ModLoader.HasMod("Remnants") || !ModContent.GetInstance<SpiritClientConfig>().EnableSepulchres)
 			return;
 
 		tasks.Insert(++index, new PassLegacy("Sepulchure", (GenerationProgress progress, GameConfiguration config) =>

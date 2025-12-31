@@ -165,6 +165,11 @@ Configs: {
 			// Label: "[i:SpiritMod/MoonStone]  Visuals: Aurora Enabled"
 			// Tooltip: Enables or disables the Aurora visuals. This does not stop Aurora-based effects or enemies from appearing
 		}
+
+		EnableSepulchres: {
+			// Label: "[i:SpiritMod/CursedArmorItem]  World Generation: Enable Dark Sepulchres"
+			// Tooltip: Enables or disables the Dark Sepulchre structures found underground. Useful to turn off if you experience generation issues with other mods
+		}
 	}
 
 	QuestInvLocation: {
