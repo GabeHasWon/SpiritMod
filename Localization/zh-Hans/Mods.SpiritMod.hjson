@@ -165,6 +165,11 @@ Configs: {
 			Label: "[i:SpiritMod/MoonStone]  视觉：极光"
 			Tooltip: 启用或禁用极光视觉效果。这并不能阻止基于极光的效果或敌人的出现
 		}
+
+		EnableSepulchres: {
+			// Label: "[i:SpiritMod/CursedArmorItem]  World Generation: Enable Dark Sepulchres"
+			// Tooltip: Enables or disables the Dark Sepulchre structures found underground. Useful to turn off if you experience generation issues with other mods
+		}
 	}
 
 	QuestInvLocation: {

@@ -80,8 +80,7 @@ namespace SpiritMod.Projectiles.Summon.MoonjellySummon
 			}
 			for (int k = 0; k < 10; k++)
 			{
-				Dust d = Dust.NewDustPerfect(Projectile.Center, 226, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f));
-				d.noGravity = true;
+				Dust.NewDustPerfect(Projectile.Center, DustID.Electric, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f)).noGravity = true;
 			}
 		}
 

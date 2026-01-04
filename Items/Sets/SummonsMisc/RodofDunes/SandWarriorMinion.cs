@@ -60,7 +60,19 @@ namespace SpiritMod.Items.Sets.SummonsMisc.RodofDunes
 				if (Main.rand.NextBool(12 - dustAmt) && Projectile.velocity.Length() > 1.5f)
 					Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Sand, Projectile.velocity.X / 3, Projectile.velocity.Y / 3, 0, default, Main.rand.NextFloat(.8f, 1.3f)).noGravity = true;
 			}
+
 			Projectile.rotation = Projectile.velocity.X / 20;
+
+			if (Projectile.DistanceSQ(Main.player[Projectile.owner].Center) > 1500 * 1500)
+			{
+				for (int i = 0; i < 5; ++i)
+					Dust.NewDustPerfect(Projectile.Center, DustID.Sand, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f)).noGravity = true;
+
+				Projectile.Center = Main.player[Projectile.owner].Center - new Vector2(0, 50);
+
+				for (int i = 0; i < 5; ++i)
+					Dust.NewDustPerfect(Projectile.Center, DustID.Sand, Vector2.One.RotatedByRandom(3.28f) * Main.rand.NextFloat(5), 0, default, Main.rand.NextFloat(.4f, .8f)).noGravity = true;
+			}
 
 			return AiState != STATE_SAND;
 		}
