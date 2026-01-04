@@ -167,8 +167,8 @@ Configs: {
 		}
 
 		EnableSepulchres: {
-			// Label: "[i:SpiritMod/CursedArmorItem]  World Generation: Enable Dark Sepulchres"
-			// Tooltip: Enables or disables the Dark Sepulchre structures found underground. Useful to turn off if you experience generation issues with other mods
+			Label: "[i:SpiritMod/CursedArmorItem]  世界生成：黑暗坟葬"
+			Tooltip: 启用或禁用在地下发现的黑暗坟葬结构。如果你遇到了其他模组的生成问题，可以关闭此功能
 		}
 	}
 
