@@ -2476,7 +2476,7 @@ SkeletalonStaff: {
 	Tooltip:
 		'''
 		5点召唤标记伤害
-		召唤骷髅鸟军团为你而战
+		召唤短暂存在的骷髅鸟军团为你而战
 		'''
 }
 
@@ -2569,7 +2569,7 @@ Shadowmoor: {
 
 ShadowSphere: {
 	DisplayName: 暗影法球
-	Tooltip: 召唤一个会向敌人发射暗影水晶的缓慢暗影法球
+	Tooltip: 召唤一颗固定不动的暗影法球向敌人发射暗影水晶
 }
 
 Trophy6: {
@@ -3888,7 +3888,7 @@ DuskfeatherDagger: {
 
 EternalAsh: {
 	DisplayName: 永燃余烬
-	Tooltip: "召唤菲尼克斯召唤物向你的敌人倾泻火球 "
+	Tooltip: 召唤菲尼克斯哨兵向你的敌人倾泻火球
 }
 
 BlizzardEdge: {
@@ -7736,7 +7736,7 @@ ReefSpear: {
 
 SkullSentry: {
 	DisplayName: 食人颅骨
-	Tooltip: 召唤一个被食人虫感染的颅骨，食人虫会向附近的敌人发射红色粘液
+	Tooltip: 召唤一个被食人虫感染的固定不动的颅骨向附近的敌人发射红色粘液
 }
 
 SulfurDeposit: {
@@ -8114,7 +8114,7 @@ MimeSummon: {
 	DisplayName: 双面面具
 	Tooltip:
 		'''
-		左键或右键点击以在光标位置召唤一个欢乐之魂或悲伤之魂
+		左键或右键点击以在光标位置召唤一个固定不动的欢乐之魂或悲伤之魂
 		欢乐之魂会向敌人发射光束
 		悲伤之魂会向敌人发射追踪眼泪
 		'''
@@ -8423,7 +8423,7 @@ ShroomFishSummon: {
 	DisplayName: 真菌鱼
 	Tooltip:
 		'''
-		在周围召唤缓慢的追踪孢子
+		在周围召唤短暂存在的孢子，缓慢追踪敌人
 		5点召唤标记伤害
 		'''
 }
@@ -8470,14 +8470,14 @@ GateStaff: {
 	DisplayName: 门户法杖
 	Tooltip:
 		'''
-		召唤一个带电力场
-		右键移除力场
+		召唤一个固定不动的的电场节点，其会与其他节点相连
+		右键移除召唤的节点
 		'''
 }
 
 GloomgusStaff: {
 	DisplayName: 忧郁菇法杖
-	Tooltip: 召唤爆炸蘑菇
+	Tooltip: 召唤短暂存在的爆炸蘑菇
 }
 
 JadeStaff: {
