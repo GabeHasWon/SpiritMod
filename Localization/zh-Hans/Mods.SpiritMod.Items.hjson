@@ -2798,7 +2798,7 @@ BagOScarabs: {
 }
 
 Chitin: {
-	DisplayName: 甲壳
+	DisplayName: 甲壳质
 	Tooltip: “华丽，斑斓的甲虫外壳”
 }
 
