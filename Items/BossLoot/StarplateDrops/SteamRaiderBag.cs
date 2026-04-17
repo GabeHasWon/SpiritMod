@@ -4,17 +4,17 @@ using Terraria.ModLoader;
 using SpiritMod.Items.Sets.DonatorVanity;
 using SpiritMod.NPCs;
 
-namespace SpiritMod.Items.BossLoot.StarplateDrops
-{
-	public class SteamRaiderBag : BossBagItem
-	{
-		internal override string BossName => "Starplate Voyager";
+namespace SpiritMod.Items.BossLoot.StarplateDrops;
 
-		public override void ModifyItemLoot(ItemLoot itemLoot)
-		{
-			itemLoot.AddCommon<StarMap>();
-			itemLoot.AddCommon<CosmiliteShard>(1, 6, 10);
-			AddBossItems<StarplateMask, Trophy3>(itemLoot, 4..6);
-		}
+public class SteamRaiderBag : BossBagItem
+{
+	internal override string BossName => "Starplate Voyager";
+	internal override bool Prehardmode => true;
+
+	public override void ModifyItemLoot(ItemLoot itemLoot)
+	{
+		itemLoot.AddCommon<StarMap>();
+		itemLoot.AddCommon<CosmiliteShard>(1, 6, 10);
+		AddBossItems<StarplateMask, Trophy3>(itemLoot, 4..6);
 	}
 }

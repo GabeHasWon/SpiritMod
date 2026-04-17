@@ -161,6 +161,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 					DeathAnim();
 					break;
 			}
+
 			++AiTimer;
 		}
 
@@ -273,6 +274,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 					QuestManager.ForceCompleteQuest<SlayerQuestOccultist>();
 				return false;
 			}
+
 			return true;
 		}
 
@@ -318,7 +320,11 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			npcLoot.AddCommon(ItemID.BloodMoonStarter, 2);
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => !NPC.AnyNPCs(Type) && Main.bloodMoon && spawnInfo.Player.Center.Y / 16f < Main.worldSurface ? 0.02f : 0f;
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		{
+			float chance = MyWorld.downedOccultist ? 0.005f : 0.02f;
+			return !NPC.AnyNPCs(Type) && Main.bloodMoon && spawnInfo.Player.Center.Y / 16f < Main.worldSurface ? chance : 0f;
+		}
 
 		public void RegisterToChecklist(out BossChecklistDataHandler.EntryType entryType, out float progression,
 			out string name, out Func<bool> downedCondition, ref BossChecklistDataHandler.BCIDData identificationData,

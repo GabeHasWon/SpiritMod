@@ -29,6 +29,7 @@ public class SepulchureSystem : ModSystem
 		if (index == -1 || ModLoader.HasMod("Remnants") || !ModContent.GetInstance<SpiritClientConfig>().EnableSepulchres)
 			return;
 
+		// I hate you sepulchres
 		tasks.Insert(++index, new PassLegacy("Sepulchure", (GenerationProgress progress, GameConfiguration config) =>
 		{
 			progress.Message = Language.GetTextValue("Mods.SpiritMod.WorldGen.Sepulchre");

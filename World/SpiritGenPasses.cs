@@ -855,6 +855,9 @@ public static class SpiritGenPasses
 	#region Ziggurat
 	private static void GenerateZiggurat()
 	{
+		if (ModLoader.HasMod("SpiritReforged"))
+			return;
+
 		int[,] ZigguratShape = new int[,]
 		{
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

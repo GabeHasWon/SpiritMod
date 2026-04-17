@@ -47,6 +47,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 			if (AiTimer > attacktelegraphtime + chargetime)
 			{
 				UpdateYFrame(11, 4, 8);
+
 				if (AiTimer % 6 == 0)
 				{
 					Vector2 spawnPos = NPC.Center + (Vector2.UnitX * NPC.direction).RotatedByRandom(MathHelper.Pi / 4) * Main.rand.NextFloat(20, 40);

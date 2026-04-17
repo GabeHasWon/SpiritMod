@@ -22,6 +22,8 @@ namespace SpiritMod.Items.Consumable.Potion
 			Item.maxStack = Item.CommonMaxStack;
 			Item.potion = true;
 			Item.healLife = 180;
+			Item.buffType = 0;
+			Item.buffTime = 0;
 		}
 
 		public override bool CanUseItem(Player player) => player.FindBuffIndex(BuffID.PotionSickness) == -1;
@@ -71,6 +73,9 @@ namespace SpiritMod.Items.Consumable.Potion
 				player.AddBuff(BuffID.PotionSickness, 3600);
 			else
 				player.AddBuff(BuffID.PotionSickness, 2700);
+
+			if (!player.HasBuff(BuffID.WellFed2) && !player.HasBuff(BuffID.WellFed3))
+				player.AddBuff(BuffID.WellFed, 5 * 60 * 60);
 
 			player.AddBuff(ModContent.BuffType<MoonBlessingDonut>(), 900);
 			return true;

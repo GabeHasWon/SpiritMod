@@ -1,6 +1,7 @@
-﻿v1.5.0.41
-- Made sure all items tagged as doing Summon damage who have non-temporary summons have their summons teleport to the player if the player is too distant
-- Adjusted some localization to be more clear on what certain summon weapons do or how they behave
-- Added config option to disable Dark Sepulchres in worldgen since they're very dumb and bad in crossmod
-- Stopped Lihzahrds from dropping the Lihzahrd Staff in pre-hardmode
-- Added torches around the Adventurer's spawn location in the underground Briar to hopefully reduce frustration
+﻿v1.5.0.43
+- Fixed bad Thorium Mod.Call causing log spam in ocean
+- Significantly reduced Occultist spawn rate if the Occultist has been defeated at least once
+- Added additional safety check for Arc Lash visuals so they don't persist...probably
+- Fixed Spirit Aura granting 105% increased damage, instead of 5%
+- Improved Occultist drawing code, should fix *some* issues
+- Made all boss bags count internally as boss bags (and prehardmode ones count as such as well)

@@ -14,8 +14,17 @@ namespace SpiritMod.Items;
 public abstract class BossBagItem : ModItem
 {
 	internal abstract string BossName { get; }
+	internal virtual bool Prehardmode => false;
 
-	public sealed override void SetStaticDefaults() => StaticDefaults();
+	public sealed override void SetStaticDefaults()
+	{
+		ItemID.Sets.BossBag[Type] = true;
+
+		if (Prehardmode)
+			ItemID.Sets.PreHardmodeLikeBossBag[Type] = true;
+
+		StaticDefaults();
+	}
 
 	public sealed override void SetDefaults()
 	{

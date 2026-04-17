@@ -9,6 +9,7 @@ namespace SpiritMod.Items.BossLoot.MoonWizardDrops;
 public class MJWBag : BossBagItem
 {
 	internal override string BossName => "Moon Jelly Wizard";
+	internal override bool Prehardmode => true;
 
 	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
