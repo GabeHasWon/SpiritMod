@@ -59,7 +59,7 @@ namespace SpiritMod.World.Sepulchre
 
 			if (anyCursedArmor)
 			{
-				CombatText.NewText(new Rectangle(i * 16, j * 16, 20, 10), Color.GreenYellow, "Cursed!");
+				CombatText.NewText(new Rectangle(i * 16, j * 16, 20, 10), Color.GreenYellow, Language.GetTextValue("Mods.SpiritMod.Misc.Cursed"));
 				return true;
 			}
 			else if (NPC.AnyNPCs(ModContent.NPCType<Enchanted_Armor>()))

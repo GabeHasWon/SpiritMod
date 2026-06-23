@@ -1,4 +1,6 @@
+ModName: Spirit Classic
 GoldifiedDeath: " 死的时候像个金条一样"
+CrimsonPustuleDeath: "{0}荒诞的爆炸了"
 Frozen: 冰冻
 # Config stuff:
 Screenshake: "[i:SpiritMod/MoonStone]  视觉：屏幕震动"
@@ -17,15 +19,15 @@ OceanVents: "[i:SpiritMod/BlackPearl]  海洋：热液喷口生态系统"
 OceanWater: "[i:SpiritMod/BlackPearl]  海洋：海水透明度"
 WaterEnemies: "[i:SpiritMod/HornetfishQuest]  钓鱼：钓鱼遭遇"
 BlizzardMusic: "[i:SpiritMod/TranquilWindsBox]  为暴雪添加一首独特的曲目"
-SnowNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的雪原生物群落添加一首独特的曲目"
-DesertNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的沙漠生物群落添加一首独特的曲目"
+SnowNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的雪原生物群系添加一首独特的曲目"
+DesertNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的沙漠生物群系添加一首独特的曲目"
 HallowNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的神圣之地添加一首独特的曲目"
 CorruptNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的腐化之地添加一首独特的曲目"
 CrimsonNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的猩红之地添加一首独特的曲目"
-GraniteMusic: "[i:SpiritMod/TranquilWindsBox]  为花岗岩生物群落添加一首独特的曲目"
-MarbleMusic: "[i:SpiritMod/TranquilWindsBox]  为大理石生物群落添加一首独特的曲目"
+GraniteMusic: "[i:SpiritMod/TranquilWindsBox]  为花岗岩生物群系添加一首独特的曲目"
+MarbleMusic: "[i:SpiritMod/TranquilWindsBox]  为大理石生物群系添加一首独特的曲目"
 SpiderMusic: "[i:SpiritMod/TranquilWindsBox]  为蜘蛛洞添加一首独特的曲目"
-MeteorMusic: "[i:SpiritMod/TranquilWindsBox]  为陨石生物群落添加一首独特的曲目"
+MeteorMusic: "[i:SpiritMod/TranquilWindsBox]  为陨石生物群系添加一首独特的曲目"
 FrostLegionMusic: "[i:SpiritMod/TranquilWindsBox]  为雪人军团入侵添加一首独特的曲目"
 SkeletonPrimeMusic: "[i:SpiritMod/TranquilWindsBox]  为机械骷髅王添加一首独特的曲目"
 AuroraMusic: "[i:SpiritMod/TranquilWindsBox]  为极光添加一首独特的曲目"
@@ -90,7 +92,7 @@ Configs: {
 
 		AmbientSounds: {
 			Label: "{$Mods.SpiritMod.AmbientSounds}"
-			Tooltip: 为某些生物群落启用环境音效
+			Tooltip: 为某些生物群系启用环境音效
 		}
 
 		LeafFall: {
@@ -152,7 +154,7 @@ Configs: {
 			Tooltip:
 				'''
 				启用后，允许海水透明
-				不会影响任其他生物群落
+				不会影响任其他生物群系
 				'''
 		}
 
@@ -162,13 +164,13 @@ Configs: {
 		}
 
 		AuroraEnabled: {
-			// Label: "[i:SpiritMod/MoonStone]  Visuals: Aurora Enabled"
-			// Tooltip: Enables or disables the Aurora visuals. This does not stop Aurora-based effects or enemies from appearing
+			Label: "[i:SpiritMod/MoonStone]  视觉：极光"
+			Tooltip: 启用或禁用极光视觉效果。这并不能阻止基于极光的效果或敌人的出现
 		}
 
 		EnableSepulchres: {
-			// Label: "[i:SpiritMod/CursedArmorItem]  World Generation: Enable Dark Sepulchres"
-			// Tooltip: Enables or disables the Dark Sepulchre structures found underground. Useful to turn off if you experience generation issues with other mods
+			Label: "[i:SpiritMod/CursedArmorItem]  世界生成：黑暗坟葬"
+			Tooltip: 启用或禁用在地下发现的黑暗坟葬结构。如果你遇到了其他模组的生成问题，可以关闭此功能
 		}
 	}
 
@@ -177,17 +179,17 @@ Configs: {
 
 		Minimap: {
 			Label: 小地图
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Trashcan: {
 			Label: 垃圾桶
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		FarLeft: {
 			Label: 最左边
-			// Tooltip: ""
+			Tooltip: ""
 		}
 	}
 
@@ -196,27 +198,27 @@ Configs: {
 
 		Default: {
 			Label: 默认
-			// Tooltip: Vanilla's default ocean generation. Disables Spirit Classic's generation.
+			Tooltip: 原版的默认海洋生成。禁用魂灵的生成。
 		}
 
 		SlantedSine: {
 			Label: 倾斜正弦
-			// Tooltip: Adjusted slope that uses a diagonal sine wave for generation.
+			Tooltip: 调整后的坡度，使用对角线正弦波生成。
 		}
 
 		Piecewise: {
 			Label: 分段
-			// Tooltip: Piecewise generation combining a few slopes. Original piecewise generation, but a little rough.
+			Tooltip: 结合了少许坡度的分段生成，原始的分段生成，但略显粗糙。
 		}
 
 		Piecewise_M: {
 			Label: 分段_ M
-			// Tooltip: Modified piecewise generation, slightly improved.
+			Tooltip: 调整的分段生成，略有改善。
 		}
 
 		Piecewise_V: {
 			Label: 分段_ V
-			// Tooltip: Final piecewise generation, the intended Spirit ocean generation.
+			Tooltip: 最终的分段生成，预期中的魂灵海洋生成。
 		}
 	}
 
@@ -230,12 +232,12 @@ Configs: {
 
 		SnowNightMusic: {
 			Label: "{$Mods.SpiritMod.SnowNightMusic}"
-			Tooltip: 为夜晚的雪原生物群落添加一首独特的曲目
+			Tooltip: 为夜晚的雪原生物群系添加一首独特的曲目
 		}
 
 		DesertNightMusic: {
 			Label: "{$Mods.SpiritMod.DesertNightMusic}"
-			Tooltip: 为夜晚的沙漠生物群落添加一首独特的曲目
+			Tooltip: 为夜晚的沙漠生物群系添加一首独特的曲目
 		}
 
 		HallowNightMusic: {
@@ -255,12 +257,12 @@ Configs: {
 
 		GraniteMusic: {
 			Label: "{$Mods.SpiritMod.GraniteMusic}"
-			Tooltip: 为花岗岩生物群落添加一首独特的曲目
+			Tooltip: 为花岗岩生物群系添加一首独特的曲目
 		}
 
 		MarbleMusic: {
 			Label: "{$Mods.SpiritMod.MarbleMusic}"
-			Tooltip: 为大理石生物群落添加一首独特的曲目
+			Tooltip: 为大理石生物群系添加一首独特的曲目
 		}
 
 		UnderwaterMusic: {
@@ -275,47 +277,47 @@ Configs: {
 
 		MeteorMusic: {
 			Label: "{$Mods.SpiritMod.MeteorMusic}"
-			Tooltip: 为陨石生物群落添加一首独特的曲目
+			Tooltip: 为陨石生物群系添加一首独特的曲目
 		}
 
 		FrostLegionMusic: {
 			Label: "{$Mods.SpiritMod.FrostLegionMusic}"
-			Tooltip: 为雪人军团入侵添加一首独特的曲目
+			Tooltip: 为雪人军团添加一首独特的曲目
 		}
 
 		SkeletronPrimeMusic: {
 			Label: "{$Mods.SpiritMod.SkeletonPrimeMusic}"
-			Tooltip: 为机械骷髅王添加一首独特的曲目
+			Tooltip: 为机械骷髅王添加一首独特的Boss原声带
 		}
 
 		AuroraMusic: {
 			Label: "{$Mods.SpiritMod.AuroraMusic}"
-			Tooltip: 为极光启用一首独特的音乐
+			Tooltip: 为极光启用独特的音乐
 		}
 
 		LuminousMusic: {
 			Label: "{$Mods.SpiritMod.LuminousMusic}"
-			Tooltip: 为流明瀚海启用一首独特的音乐
+			Tooltip: 为流明瀚海启用独特的音乐
 		}
 
 		CalmNightMusic: {
 			Label: "{$Mods.SpiritMod.CalmNightMusic}"
-			Tooltip: 为安宁夜启用一首独特的音乐
+			Tooltip: 为安宁夜启用独特的音乐
 		}
 
 		NeonBiomeMusic: {
 			Label: "{$Mods.SpiritMod.HyperspaceMusic}"
-			Tooltip: 为人造超时空领域启用两首独特的音乐
+			Tooltip: 为人造超时空领域启用两首独特的曲目
 		}
 
 		AshfallMusic: {
 			Label: "{$Mods.SpiritMod.AshfallMusic}"
-			Tooltip: 为地狱的落烬雨天气启用一首独特的音乐
+			Tooltip: 为地狱的落烬雨天气启用一首独特的曲目
 		}
 
 		VictoryDayMusic: {
 			Label: "{$Mods.SpiritMod.VictoryDayMusic}"
-			Tooltip: 为灯笼夜事件启用一首独特的音乐
+			Tooltip: 为灯笼夜事件启用一首独特的曲目
 		}
 	}
 }
@@ -334,6 +336,8 @@ Events: {
 	}
 
 	LuminousOcean.OnStart: 光芒在海面上绽放了……
+	BloodMoon.DayTime: 血月只会在夜晚出现。
+	StarjinxSummon: 一颗附魔彗星出现在了空中！
 
 	TheTide: {
 		BossChecklistIntegration.Condition: 在海洋使用[i:SpiritMod/BlackPearl]召唤。
@@ -342,6 +346,8 @@ Events: {
 		AlreadyActive: 潮汐已至！
 		Wave: 波次 {0} ：
 	}
+
+	Starjinx.Wave: 波次进度 ：{0}%
 }
 
 BossChecklistIntegration: {

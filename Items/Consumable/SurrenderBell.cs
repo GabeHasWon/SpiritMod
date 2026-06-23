@@ -35,9 +35,9 @@ namespace SpiritMod.Items.Consumable
 			NetMessage.SendData(MessageID.InvasionProgressReport, -1, -1, null, Main.invasionProgress, Main.invasionProgressMax, Main.invasionProgressIcon, 0f, 0, 0, 0);
 
 			if (Main.netMode == NetmodeID.SinglePlayer)
-				Main.NewText("The invaders have called off their attack!", Color.MediumPurple);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Items.SurrenderBell.Surrender"), Color.MediumPurple);
 			else if (Main.netMode == NetmodeID.Server)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The invaders have called off their attack!"), Color.MediumPurple, -1);
+				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Items.SurrenderBell.Surrender")), Color.MediumPurple, -1);
 			return true;
 		}
 	}

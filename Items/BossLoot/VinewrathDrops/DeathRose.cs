@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Buffs;
 using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.BossLoot.VinewrathDrops
 {
@@ -20,7 +21,7 @@ namespace SpiritMod.Items.BossLoot.VinewrathDrops
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			string down = !Main.ReversedUpDownArmorSetBonuses ? "UP" : "DOWN";
+			string down = Language.GetTextValue(!Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
 
 			foreach (TooltipLine line in tooltips)
 			{

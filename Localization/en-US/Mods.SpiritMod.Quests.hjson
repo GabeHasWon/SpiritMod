@@ -23,6 +23,7 @@ Undiscovered: This quest hasn't been discovered.
 # These are all used for minor parts of quests, such as "Catch 2 Fish" or similar.
 # The space is necessary. Formats to "Talk to the <NPC Name>" in-game.
 TalkToNPC: "Talk to the "
+TalkTo: Talk to the {0}
 # Same as above. Used for "Explore <area>" in-game.
 Explore: "Explore "
 Retrieve: Retrieve
@@ -43,6 +44,9 @@ Client: "Client - "
 Rewards: Rewards
 # Used for chat quest snippets.
 ViewQuest: Click here to view the quest!
+QuesTime: "{0}m {1}s"
+Comma: ", "
+Or: " or "
 
 Buttons: {
 	# Quest states
@@ -55,6 +59,7 @@ Buttons: {
 	Explorer: Explorer
 	Forager: Forager
 	Slayer: Slayer
+	Designer: Designer
 	Other: Other
 }
 

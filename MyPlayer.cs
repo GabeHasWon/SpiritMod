@@ -1093,7 +1093,7 @@ public class MyPlayer : ModPlayer
 			Player.AddBuff(ModContent.BuffType<Sturdy>(), 21600);
 
 			Rectangle textPos = new Rectangle((int)Main.LocalPlayer.position.X, (int)Main.LocalPlayer.position.Y - 60, Main.LocalPlayer.width, Main.LocalPlayer.height);
-			CombatText.NewText(textPos, new Color(100, 240, 0, 100), "Sturdy Activated!");
+			CombatText.NewText(textPos, new Color(100, 240, 0, 100), Language.GetTextValue("Mods.SpiritMod.Misc.SturdyActivated"));
 
 			Player.statLife += (int)damage;
 			Projectile.NewProjectile(Player.GetSource_OnHurt(null), Player.position.X, Player.position.Y, 0, 0, ModContent.ProjectileType<Shockwave>(), 0, 0, Player.whoAmI);

@@ -21,7 +21,7 @@ AntlionAssassin: {
 
 CrimsonTrapper: {
 	DisplayName: Arterial Grasper
-	Entry: These beating organs are vital to the crimson's ensured survival � they pump blood into the biome's squelching stone, granting it the strength to spread and support its extremities.
+	Entry: These beating organs are vital to the crimson's ensured survival * they pump blood into the biome's squelching stone, granting it the strength to spread and support its extremities.
 }
 
 AsteroidDebris.DisplayName: Debris
@@ -219,6 +219,8 @@ SteamRaiderHead: {
 	BossChecklistIntegration.SpawnInfo: Use a [i:SpiritMod/StarWormSummon] at an Astralite Beacon, located in the Asteroids, at nighttime.
 	Spawn: The Starplate Voyager has awoken!
 	Laser: Initiating Laser Protocol
+	Detected: Instability Detected
+	Engaged: Target Engaged
 }
 
 SteamRaiderHeadDeath.DisplayName: Starplate Voyager
@@ -523,6 +525,8 @@ DeadArcher: {
 DesertBandit: {
 	DisplayName: Forsaken Bandit
 	Entry: A roaming bandit, looking for anything that shines under the harsh sun. Not very fun at parties.
+	Thank: Thank you again!
+	Spare: Please spare me!
 }
 
 DiseasedSlime: {
@@ -1224,6 +1228,7 @@ Valkyrie: {
 Vulture_Matriarch: {
 	DisplayName: Vulture Matriarch
 	Entry: The powerful elder of the vulture tribe, the Matriarch has a hold of ancient magics and abilities in order to destroy its prey.
+	Disturbed: The Vulture Matriarch has been disturbed!
 }
 
 Wheezer: {

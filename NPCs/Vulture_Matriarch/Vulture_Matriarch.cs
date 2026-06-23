@@ -90,7 +90,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 			NPC.rotation = NPC.velocity.X * 0.05f;
 			NPC.spriteDirection = NPC.direction;
 			NPC.defDamage = 0;
-
+			string disturbedMessage = Language.GetTextValue("Mods.SpiritMod.NPCs.Vulture_Matriarch.Disturbed");
 			if (NPC.Distance(player.Center) <= 140 && NPC.ai[0] == 0)
 			{
 				NPC.ai[0] = 1;
@@ -107,9 +107,9 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 					NPC.ai[2] = 1;
 
 					if (Main.netMode == NetmodeID.SinglePlayer)
-						Main.NewText("The Vulture Matriarch has been disturbed!", 175, 75, 255);
+						Main.NewText(disturbedMessage, 175, 75, 255);
 					else if (Main.netMode == NetmodeID.Server)
-						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Vulture Matriarch has been disturbed!"), new Color(175, 75, 255));
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(disturbedMessage), new Color(175, 75, 255));
 
 					SoundEngine.PlaySound(SoundID.NPCHit28, NPC.Center);
 					NPC.netUpdate = true;

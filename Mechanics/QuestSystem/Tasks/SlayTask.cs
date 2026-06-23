@@ -73,9 +73,9 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 					{
 						builder.Append(monsterName);
 						if (i < MonsterIDs.Count - 2)
-							builder.Append(", ");
+							builder.Append(Language.GetTextValue("Mods.SpiritMod.Quests.Comma"));
 						else if (i == MonsterIDs.Count - 2)
-							builder.Append(" or ");
+							builder.Append(Language.GetTextValue("Mods.SpiritMod.Quests.Or"));
 					}
 				}
 			}

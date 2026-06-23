@@ -2,6 +2,7 @@
 using System;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs
 {
@@ -17,7 +18,7 @@ namespace SpiritMod.NPCs
 			}
 
 			public bool CanShowItemDropInUI() => true;
-			public string GetConditionDescription() => "Drops only at night";
+			public string GetConditionDescription() => Language.GetTextValue("Mods.SpiritMod.Conditions.NotDay");
 		}
 
 		public class Day : IItemDropRuleCondition, IProvideItemConditionDescription
@@ -30,7 +31,7 @@ namespace SpiritMod.NPCs
 			}
 
 			public bool CanShowItemDropInUI() => true;
-			public string GetConditionDescription() => "Drops only during day";
+			public string GetConditionDescription() => Language.GetTextValue("Mods.SpiritMod.Conditions.Day");
 		}
 
 		public class BossDowned : IItemDropRuleCondition, IProvideItemConditionDescription
@@ -79,17 +80,31 @@ namespace SpiritMod.NPCs
 
 			public string GetConditionDescription()
 			{
-				string def = "Drops only after {X} has been defeated";
-				if (boss != Bosses.Evil_Boss && boss != Bosses.Any_Mech)
+				string bossstr = GetBossDisplayName();
+				string prefix = ShouldUseThePrefix() ? Language.GetTextValue("Mods.SpiritMod.Conditions.PrefixThe") : "";
+    
+				return Language.GetTextValue("Mods.SpiritMod.Conditions.DefBoss", prefix + bossstr);
+			}
+
+			private string GetBossDisplayName()
+			{
+				return boss switch
 				{
-					string plural = (int)boss < (int)Bosses.SingularCutoff ? "" : "the ";
-					def = def.Replace("{X}", plural + boss.ToString().Replace("_", " "));
-				}
-				else if (boss == Bosses.Evil_Boss)
-					def = def.Replace("{X}", WorldGen.crimson ? "the Brain Of Cthulhu" : "the Eater of Worlds");
-				else if (boss == Bosses.Any_Mech)
-					def = def.Replace("{X}", "any mechanical boss");
-				return def;
+					Bosses.Moon_Jelly_Wizard => Language.GetTextValue("Mods.SpiritMod.NPCs.MoonWizard.DisplayName"),
+					Bosses.Scarabeus => Language.GetTextValue("Mods.SpiritMod.NPCs.Scarabeus.DisplayName"),
+					Bosses.King_Slime => Language.GetTextValue("NPCName.KingSlime"),
+					Bosses.Skeletron => Language.GetTextValue("NPCName.SkeletronHead"),
+					Bosses.Queen_Bee => Language.GetTextValue("NPCName.QueenBee"),
+					Bosses.Eye_Of_Cthulhu => Language.GetTextValue("NPCName.EyeOfCthulhu"),
+					Bosses.Evil_Boss => WorldGen.crimson ? Language.GetTextValue("NPCName.BrainofCthulhu") : Language.GetTextValue("NPCName.EaterofWorldsHead"),
+					Bosses.Any_Mech => Language.GetTextValue("Mods.SpiritMod.Conditions.AnyMech"),
+					_ => boss.ToString().Replace("_", " ")
+				};
+			}
+
+			private bool ShouldUseThePrefix()
+			{
+				return boss != Bosses.Any_Mech && (int)boss >= (int)Bosses.SingularCutoff;
 			}
 		}
 
@@ -132,11 +147,11 @@ namespace SpiritMod.NPCs
 
 			public string GetConditionDescription()
 			{
-				string def = "Drops only in the ";
+				string def = Language.GetTextValue("Mods.SpiritMod.Conditions.DropFrom");
 				if (biome.ToString().Contains("Purity")) 
-					return def + "Purity";
+					return def + Language.GetTextValue("Mods.SpiritMod.Conditions.Purity");
 				else
-					return def + biome.ToString();
+					return def + Language.GetTextValue("Mods.SpiritMod.Conditions." + biome.ToString());
 			}
 		}
 

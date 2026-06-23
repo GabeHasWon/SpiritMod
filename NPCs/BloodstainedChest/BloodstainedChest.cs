@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.BloodstainedChest
 {
@@ -199,8 +200,8 @@ namespace SpiritMod.NPCs.BloodstainedChest
 			}
 		}
 
-		public override string GetChat() => "The ancient chest seems to be covered in gold, blood, and bones. It surely contains great riches, but opening it may be perilous.";
-		public override void SetChatButtons(ref string button, ref string button2) => button = "Open";
+		public override string GetChat() => Language.GetTextValue("Mods.SpiritMod.Misc.BloodstainedChestChat");
+		public override void SetChatButtons(ref string button, ref string button2) => button = Language.GetTextValue("Mods.SpiritMod.Misc.Open");
 
 		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{

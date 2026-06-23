@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using SpiritMod.NPCs.StarjinxEvent.Comets;
 using System.Linq;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.StarjinxEvent
 {
@@ -449,7 +450,7 @@ namespace SpiritMod.NPCs.StarjinxEvent
 			NetMessage.SendData(MessageID.WorldData);
 
 			int drops = Main.expertMode ? 9 : 7;
-			Main.NewText("The asteroids return to their tranquil state...", 252, 150, 255);
+			Main.NewText(Language.GetTextValue("Mods.SpiritMod.Misc.StarjinxMeteoriteOnKill"), 252, 150, 255);
 		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.AddCommon<Items.Material.Starjinx>();

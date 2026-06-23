@@ -6,6 +6,7 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
+using Terraria.Localization;
 
 namespace SpiritMod.Tiles.Furniture.SlotMachine
 {
@@ -139,35 +140,35 @@ namespace SpiritMod.Tiles.Furniture.SlotMachine
 				switch ((int)symbolCounterThree % numberOfSymbols)
 				{
 					case 0: //bell
-						CombatText.NewText(loc, Color.Gold, "You win a bell!");
+						CombatText.NewText(loc, Color.Gold, Language.GetTextValue("Mods.SpiritMod.Items.SlotMachine.Win.1"));
 						Main.LocalPlayer.QuickSpawnItem(src, ModContent.ItemType<Items.Consumable.SurrenderBell>(), 1);
 						break;
 					case 1: //mjw
-						CombatText.NewText(loc, Color.Gray, "You win a...jelly?");
+						CombatText.NewText(loc, Color.Gray, Language.GetTextValue("Mods.SpiritMod.Items.SlotMachine.Win.2"));
 						Main.LocalPlayer.QuickSpawnItem(src, ModContent.ItemType<Items.Consumable.DistressJellyItem>(), 1);
 						break;
 					case 2: //lemon
-						CombatText.NewText(loc, Color.Gray, "You win lemons!");
+						CombatText.NewText(loc, Color.Gray, Language.GetTextValue("Mods.SpiritMod.Items.SlotMachine.Win.3"));
 						Main.LocalPlayer.QuickSpawnItem(src, ItemID.Lemon, 5);
 						break;
 					case 3: //diamond
-						CombatText.NewText(loc, Color.Green, "You win diamonds!");
+						CombatText.NewText(loc, Color.Green, Language.GetTextValue("Mods.SpiritMod.Items.SlotMachine.Win.4"));
 						Main.LocalPlayer.QuickSpawnItem(src, ItemID.Diamond, 15);
 						break;
 					case 4: //bomb
-						CombatText.NewText(loc, Color.Red, "You win a...bomb!");
+						CombatText.NewText(loc, Color.Red, Language.GetTextValue("Mods.SpiritMod.Items.SlotMachine.Win.5"));
 						Main.LocalPlayer.QuickSpawnItem(src, ItemID.Bomb, 1);
 						break;
 					case 5: //cherry
-						CombatText.NewText(loc, Color.Red, "You win a ch- apple!");
+						CombatText.NewText(loc, Color.Red, Language.GetTextValue("Mods.SpiritMod.Items.SlotMachine.Win.6"));
 						Main.LocalPlayer.QuickSpawnItem(src, ItemID.Apple, 1);
 						break;
 					case 6: //bar
-						CombatText.NewText(loc, Color.Green, "You win a brick of gold!");
+						CombatText.NewText(loc, Color.Green, Language.GetTextValue("Mods.SpiritMod.Items.SlotMachine.Win.7"));
 						Main.LocalPlayer.QuickSpawnItem(src, ItemID.GoldBar, 1);
 						break;
 					case 7: //seven
-						CombatText.NewText(loc, Color.Gold, "You win the JACKPOT!");
+						CombatText.NewText(loc, Color.Gold, Language.GetTextValue("Mods.SpiritMod.Items.SlotMachine.Win.8"));
 						Main.LocalPlayer.QuickSpawnItem(src, ItemID.PlatinumCoin, 3);
 						Main.LocalPlayer.QuickSpawnItem(src, ItemID.EnchantedSword, 1);
 						Main.LocalPlayer.QuickSpawnItem(src, ItemID.DiscountCard, 1);

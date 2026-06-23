@@ -45,19 +45,19 @@ AuroraStag: {
 }
 
 AutomataCreeper: {
-	DisplayName: 机工械蛛
+	DisplayName: 织机蛛
 	Entry: 由黄铜铸造而成，这种坚固的金属可以制作出经久耐用的框架。采用大理石核心，其中蕴藏着未经利用的魔法。赋予它意识。最后点燃生命的火花。自由漫游吧，新朋友。
 }
 
 AutomataSpinner: {
-	DisplayName: 自旋机魔
-	Entry: 时光如梭，我必须加快速度。双刀用于攻击，四足用于稳定。额外的装甲用于抵抗。一颗大理石核心，最后点燃生命的火花。快点吧，守护者啊，你知晓你的任务。保卫我们称之为家的洞穴。
+	DisplayName: 镟机卫
+	Entry: 时局渐危，我须加块。双刃，用于攻击。四足，用于稳定。覆甲，用于抵抗。一颗大理石核心，最后点燃生命的火花。速速行动吧，守护者，你知晓你的任务。保卫我们称之为家的洞穴。
 }
 
 Beholder: {
 	DisplayName: 守望者
 	Entry: 这些野兽在世界上发现的大理石矿坑里游荡，用它们的每只眼睛来评判你。
-	BossChecklistIntegration.SpawnInfo: 在世界吞噬者或克苏鲁之脑被击败后，有小概率在大理石洞穴生成。
+	BossChecklistIntegration.SpawnInfo: 在世界吞噬者或克苏鲁之脑被击败后，有小概率在大理石洞生成。
 }
 
 BlazingSkull: {
@@ -113,7 +113,7 @@ LunarSlime: {
 }
 
 MadHatter: {
-	DisplayName: 疯狂礼帽
+	DisplayName: 疯狂帽匠
 	Entry: 他们被逼疯了，完全疯了！但所有最优秀的人都这样。
 }
 
@@ -161,9 +161,9 @@ Infernon: {
 	BossChecklistIntegration.SpawnInfo: 在地狱使用[i:SpiritMod/CursedCloth]召唤。
 }
 
-InfernonSkull.DisplayName: 炎狱之颅
-InfernonSkullMini.DisplayName: 炎狱头颅
-InfernoSkull.DisplayName: 炎狱之颅
+InfernonSkull.DisplayName: 地狱之颅
+InfernonSkullMini.DisplayName: 炎狱之颅
+InfernoSkull.DisplayName: 地狱之颅
 
 MoonWizard: {
 	DisplayName: 海月巫师
@@ -184,7 +184,7 @@ ExplodingSpore.DisplayName: 爆炸孢子
 
 ReachBoss: {
 	DisplayName: 怒藤毒灵
-	BossChecklistIntegration.SpawnInfo: 右键绽血花召唤，绽血花位于荆棘之地的底部。怒藤毒灵可以在任何时间、任何地点进行战斗。如果没有绽血花存在，则可以在荆棘之地的低于地表的位置使用[i:SpiritMod/ReachBossSummon]召唤。
+	BossChecklistIntegration.SpawnInfo: 右键血绽花召唤，绽血花位于荆棘之地的底部。怒藤毒灵可以在任何时间、任何地点进行战斗。如果没有血绽花存在，则可以在荆棘之地的低于地表的位置使用[i:SpiritMod/ReachBossSummon]召唤。
 	PreSpawn: 打扰这朵花肯定不是个好主意……
 	Spawn: 怒藤毒灵已苏醒！
 }
@@ -195,11 +195,11 @@ ReachBoss1: {
 }
 
 Scarab: {
-	DisplayName: 小甲虫
-	Entry: 这些小甲虫是大圣甲虫的同胞，这些小东西会追随它们的领袖，至死方休。
+	DisplayName: 甲虫
+	Entry: 大圣甲虫小而好斗的兄弟们，这些小东西会追随它们的领袖，至死方休。
 }
 
-Scarab_Wall.DisplayName: 小甲虫
+Scarab_Wall.DisplayName: 甲虫
 
 Scarabeus: {
 	DisplayName: 圣甲虫
@@ -207,7 +207,7 @@ Scarabeus: {
 	BossChecklistIntegration.SpawnInfo: 在白天的沙漠使用[i:SpiritMod/ScarabIdol]召唤。在完成冒险家的某个任务后可以获得一个[i:SpiritMod/ScarabIdol]，也可以通过手工制作，并且不会消耗。
 }
 
-SwarmScarab.DisplayName: 小甲虫
+SwarmScarab.DisplayName: 甲虫
 ArcadeProbe.DisplayName: 星旅者
 LaserBase.DisplayName: 激光发射器
 SteamRaiderBody.DisplayName: 星盘巡游者
@@ -219,6 +219,8 @@ SteamRaiderHead: {
 	BossChecklistIntegration.SpawnInfo: 在夜晚时，在星界信标处使用[i:SpiritMod/StarWormSummon]召唤，星界信标位于小行星带。
 	Spawn: 星盘巡游者已苏醒！
 	Laser: 启动激光协议
+	Detected: 检测到不稳定
+	Engaged: 目标已锁定
 }
 
 SteamRaiderHeadDeath.DisplayName: 星盘巡游者
@@ -227,7 +229,7 @@ SuicideLaser.DisplayName: 激光轰炸机
 TailProbe.DisplayName: 星旅者
 
 BottomFeeder: {
-	DisplayName: 渊恐噬魔
+	DisplayName: 底渊噬魔
 	Entry: 他们的内脏里有一股令人作呕的胆汁，等待着被释放出来。当它们蹒跚着靠近你时，要谨慎行事，并做好准备迎接泥浆和油烟的洪流。
 }
 
@@ -277,12 +279,12 @@ AtlanticCod: {
 }
 
 Bladetongue: {
-	DisplayName: 巨刃舔舐者
+	DisplayName: 舌锋鱼
 	Entry: 如果你能捕获一只，它可能会成为一件很好的武器。但要小心，因为它致命的灵液会让你毫无防御能力。
 }
 
 Blossmoon: {
-	DisplayName: 月绽草
+	DisplayName: 月绽灵
 	Entry: 这些生物只有25美分硬币大小，只在在夜间才会出现。只能观察到它们在跳舞，并发出低沉而平静的光芒。
 }
 
@@ -307,12 +309,12 @@ CrystalSerpent: {
 }
 
 CyberflyBlue: {
-	DisplayName: 霓萤
+	DisplayName: 赛博荧蝇
 	Entry: 在赛博空间中飞来飞去的小数字精灵。
 }
 
 CyberflyPink: {
-	DisplayName: 霓萤
+	DisplayName: 赛博荧蝇
 	Entry: 在赛博空间中飞来飞去的小数字精灵。
 }
 
@@ -342,7 +344,7 @@ GaleSnail: {
 }
 
 GildJelly: {
-	DisplayName: 金水母
+	DisplayName: 镀金水母
 	Entry: 华丽的水母有着黄金般闪闪发光的风帽。可悲的是，它们并不适合圈养。
 }
 
@@ -377,12 +379,12 @@ Hemoglob: {
 }
 
 Hemoglorb: {
-	DisplayName: 小血红蛋白
+	DisplayName: 血红畸蛋
 	Entry: 被遗忘的猩红血亲，由于他的畸形身材而被抛弃。在这个残酷的世界里，他永远也找不到爱，也不可能被接纳。
 }
 
 Lardfish: {
-	DisplayName: 斑斓脂鱼
+	DisplayName: 斑驳油鱼
 	Entry: 一种奇特的鱼类，因其酿酒潜力而备受追捧。那些利用魔法进行召唤的人发现这种鱼在增强自身能力的方面特别有用。
 }
 
@@ -397,7 +399,7 @@ Luvdisc: {
 }
 
 Maggotfly: {
-	DisplayName: 嗜肉蝇
+	DisplayName: 蛆蝇
 	Entry: 一只巨大的蛆虫，不知怎么地成熟了，长出了翅膀，讨厌的小东西。
 }
 
@@ -490,11 +492,11 @@ TubeWorm: {
 
 Vibeshroom: {
 	DisplayName: 摇曳菇
-	Entry: 这个小家伙的播放列表里有80%都是lofi beat和hyperwave。尽管有些人评判他的品味，但这并不能阻止他跳舞。
+	Entry: 这个小家伙的播放列表里有80%都是低保真节拍和超波。尽管有些人评判他的品味，但这并不能阻止他跳舞。
 }
 
 CrystalDrifter: {
-	DisplayName: 流浪水晶
+	DisplayName: 乘风水晶
 	Entry: 暴风雪呼啸的风让这个由冰组成的笨重实体飞了起来。
 }
 
@@ -523,6 +525,8 @@ DeadArcher: {
 DesertBandit: {
 	DisplayName: 遗忘强盗
 	Entry: 一个四处流浪的强盗，在严酷的阳光下寻找任何可以换取金钱的东西。一个在派对上不太有趣的人。
+	Thank: 再次感谢！
+	Spare: 请放过我吧！
 }
 
 DiseasedSlime: {
@@ -531,17 +535,17 @@ DiseasedSlime: {
 }
 
 DungeonCubeBlue: {
-	DisplayName: 蓝色地牢陷阱块
+	DisplayName: 蓝色地牢方块
 	Entry: 这些无意识的石块自动机被制造出来以感知周围环境并攻击视线内的敌人。
 }
 
 DungeonCubeGreen: {
-	DisplayName: 绿色地牢陷阱块
+	DisplayName: 绿色地牢方块
 	Entry: 这些无意识的石块自动机被制造出来以感知周围环境并攻击视线内的敌人。
 }
 
 DungeonCubePink: {
-	DisplayName: 粉色地牢陷阱块
+	DisplayName: 粉色地牢方块
 	Entry: 这些无意识的石块自动机被制造出来以感知周围环境并攻击视线内的敌人。
 }
 
@@ -564,17 +568,17 @@ FallenAngel: {
 
 Falling_Asteroid: {
 	DisplayName: 陨落小行星
-	Entry: 看似有者感知能力的岩石其实是一个用一块陨石当作外壳的小动物。尽管重量很大，它依然能够轻易地在空中漂浮。
+	Entry: 看似有着感知能力的岩石其实是一个用一块陨石当作外壳的小动物。尽管重量很大，它依然能够轻易地在空中漂浮。
 }
 
 Vilemoth: {
-	DisplayName: 溃烂母蝇
-	Entry: 腐化之地的腐臭气味一定会招来苍蝇，果不其然，它们真的来了。现在，这些被腐蚀、贪婪的苍蝇会追踪它们所能找到的任何新鲜血肉的气味。
+	DisplayName: 溃烂飞蛾
+	Entry: 腐化之地的腐臭气味一定会招来各种飞虫，果不其然，它们真的来了。现在，腐化、饥饿的它们会追踪所能找到的任何新鲜血肉的气味。
 }
 
 VileWasp: {
-	DisplayName: 溃烂幼虫
-	Entry: 这些害虫侵扰着溃烂母蝇的内脏。如果你在其中一只咬你的时候肌肉收缩的足够猛烈，它可能会爆炸。
+	DisplayName: 缠扰飞虫
+	Entry: 这些害虫侵扰着溃烂飞蛾的内脏。如果你在其中一只咬你的时候将肌肉收缩的足够猛烈，它可能会爆炸。
 }
 
 FleshHound: {
@@ -583,7 +587,7 @@ FleshHound: {
 }
 
 WintrySoul: {
-	DisplayName: 冰缚灵魂
+	DisplayName: 冰缚之魂
 	Entry: 一段过去的奇怪记忆，不知何故被冰冷的苔原保存了下来。
 	ButtonTake: 夺取
 	ButtonLeave: 离去
@@ -593,7 +597,7 @@ WintrySoul: {
 
 Illusionist: {
 	DisplayName: 恶魂
-	Entry: 一位幻觉精神艺术大师。他们会召唤暴力的幻影，试图分散你的注意力并压倒你。
+	Entry: 一位幻觉精神艺术大师。他们会召唤暴力的幻影，试图分散你的注意力并压制你。
 }
 
 IllusionistSpectre: {
@@ -623,13 +627,13 @@ GraniteSentry: {
 
 GraniteSlime: {
 	DisplayName: 花岗岩史莱姆
-	Entry: 一种凝胶生物在花岗岩洞穴中游荡了很长时间，积累了足够的鹅卵石和灰尘，并最终与石头融为一体。
+	Entry: 一种凝胶生物在花岗岩洞中游荡了很长时间，积累了足够的鹅卵石和灰尘，并最终与石头融为一体。
 }
 
 HauntedTome: {
 	DisplayName: 闹鬼之书
 	Entry: 这本书上被放置了一种符文，以防止它被不当使用。不幸的是，这意味着你要和20只狗一起盯着这本书。
-	BossChecklistIntegration.SpawnInfo: 在探索黑暗坟葬并于某些物品进行交互时可用找到闹鬼之书。
+	BossChecklistIntegration.SpawnInfo: 在探索黑暗坟葬并于某些物品进行互动时可用找到闹鬼之书。
 }
 
 HellEater: {
@@ -638,7 +642,7 @@ HellEater: {
 }
 
 Hemophora: {
-	DisplayName: 血红菌
+	DisplayName: 血红髭蟾
 	Entry: 这些像植物的野兽相当难对付。它的嘴状开口周围有囊状物，可以喷出酸性血液来溶解捕食者和猎物。
 }
 
@@ -648,7 +652,7 @@ Hookbat: {
 }
 
 Horned_Crustacean: {
-	DisplayName: 荧光徊兽
+	DisplayName: 流明徊兽
 	Entry: 尽管体型庞大，这种海洋生物却威力惊人！它用锋利的齿状刺来捕食鱼类并赶走入侵者。
 }
 
@@ -657,10 +661,10 @@ Hornetfish: {
 	Entry: 这条鱼并不满足于被捕捉的现状，它选择了反击，并用翅膀和刺进行武装，而它确实做到了这一点。
 }
 
-Hydra.DisplayName: 勒纳九头蛇
+Hydra.DisplayName: 勒纳多头蛇
 
 HydraHead: {
-	DisplayName: 勒纳九头蛇
+	DisplayName: 勒纳多头蛇
 	Entry: 传说中的生物，由怪物和神所生。砍掉一个头只会让战斗更加激烈。
 }
 
@@ -702,12 +706,12 @@ WoodCrateMimic: {
 
 Molten_Core: {
 	DisplayName: 熔火核心
-	Entry: 从陨石内部逃逸出来的气泡。似乎具有基础的空间感知能力，以及一些感知能力。也许它是被入侵者追赶到陨石上的？
+	Entry: 从陨石内部逃逸出来的气泡。似乎具有基础的空间感知能力，以及一些自我意识。也许它是被入侵者追赶到陨石上的？
 }
 
 DistressJelly: {
 	DisplayName: 忧蓝水母
-	Entry: 一颗偏离轨道的太空岩石打破了月蜇的保护罩。石头阻止了气泡的形成，造成了它们的痛苦。
+	Entry: 一颗偏离轨道的太空岩石打破了月蜇的保护罩。石头阻止了气泡的形成，给它带来了困扰。
 }
 
 DreamlightJelly: {
@@ -721,7 +725,7 @@ ExplodingMoonjelly: {
 }
 
 MoonjellyGiant: {
-	DisplayName: 栓状水母
+	DisplayName: 缚特水母
 	Entry: 成熟的雄性月蜇拥有比其他任何水母都发达得多的放电能力，导致它们的领地倾向更加致命。
 }
 
@@ -758,7 +762,7 @@ SamuraiHostile: {
 SamuraiPassive.DisplayName: 幻象武士
 
 PagodaGhostHostile: {
-	DisplayName: 恼怒幽灵
+	DisplayName: 受扰幽灵
 	Entry: 守护着一座被遗弃的天空神殿。尽管它们早已被遗忘，但它们的战斗能力却出奇地敏捷。
 }
 
@@ -770,7 +774,7 @@ Phantom: {
 }
 
 PirateLobber: {
-	DisplayName: 海盗吊船工
+	DisplayName: 掷桶海盗
 	Entry: 这个海盗发现滚动是沿着甲板运输桶的更有效的方法。有趣的是，它对敌人也相当有效！
 }
 
@@ -780,8 +784,8 @@ PlagueDoctor: {
 }
 
 Pokey_Body: {
-	DisplayName: 小仙人球
-	Entry: 堆一堆仙人掌，现在你就有了一堆仙人球。把一堆仙人球踢散，现在你得到了一堆仙人掌。这一切意味着什么？不太确定。
+	DisplayName: 刺角株
+	Entry: 堆一堆仙人掌，现在你就有了一堆刺角株。把一堆刺角株踢散，现在你得到了一堆仙人掌。这一切意味着什么？不太确定。
 }
 
 Teratoma: {
@@ -800,7 +804,7 @@ Blubby: {
 }
 
 BriarInchworm: {
-	DisplayName: 荆棘蠕虫
+	DisplayName: 荆棘尺蠖
 	Entry: 一种细长的蠕虫，演化成能够在荆棘之地的淤泥中生存的形态。它主要以地表腐烂的高草为食。
 }
 
@@ -813,11 +817,11 @@ ForestWraith: {
 	DisplayName: 绿林怒魂
 	Entry: 尽管荆棘之地的存在不自然且令人毛骨悚然，但它已经在自然界中留下了印记，以至于这些复仇恶灵将它称之为家。
 	BossChecklistIntegration.SpawnInfo: 摧毁地下荆棘之地的骨祭坛。在克苏鲁之眼被击败后，绿林怒魂在夜晚时有小概率生成。或者可以通过在荆棘之地使用[i:SpiritMod/GladeWreath]召唤，绿林花冠可在荆棘箱中找到。
-	BoneAltar: 你扰乱了古老的绿林怒魂！
+	BoneAltar: 你惊扰了古老的自然之灵！
 }
 
 Noxophyll: {
-	DisplayName: 绿毒鲤
+	DisplayName: 夜叶鱼
 	Entry: 这种鱼能够分泌一种覆盖鳞片的毒素，唯一真正能抑制这种气味的方法就是烹饪它。
 }
 
@@ -878,7 +882,7 @@ HauntedBook: {
 }
 
 NetherBane: {
-	DisplayName: 狱祸魔物
+	DisplayName: 下界祸兽
 	Entry: 一只在魂灵之地翱翔的空灵翼兽。传说它每煽动一次翅膀都意味着一个灵魂的逝去。
 }
 
@@ -888,7 +892,7 @@ SeerBat: {
 }
 
 SoulCrusher: {
-	DisplayName: 碎灵体
+	DisplayName: 灵魂碾碎者
 	Entry: 万千灵魂赋予了石头生命，它会愤怒的冲向附近的任何有骚乱的地方，因为它对骚乱很敏感。它共享着组成它的每个灵魂的感官和思想，使它处于极大的痛苦中。
 }
 
@@ -898,7 +902,7 @@ SoulOrb: {
 }
 
 SpiritGhoul: {
-	DisplayName: 食魂鬼
+	DisplayName: 暗影食尸鬼
 	Entry: 被魂灵之地复活的食尸鬼现在每个缝隙都会泄露出灵质。它们的噬咬有几率令敌人看到自己的前世幻象，从而令其困惑。
 }
 
@@ -913,12 +917,12 @@ SpiritSkull: {
 }
 
 SpiritVulture: {
-	DisplayName: 浮魂体
+	DisplayName: 魂灵浮物
 	Entry: 漂浮的符文石板现在被魂灵之地赋予了感知能力。尽管看起来充满敌意，但它只希望再次找到永远的安宁与安息。
 }
 
 UnstableWisp: {
-	DisplayName: 失衡能量体
+	DisplayName: 失衡游魂
 	Entry: 一群无法找到栖身之地的灵魂。它无法保持自身完整，任何轻微的触碰都会导致它爆炸，释放出许多聚集的灵魂。
 }
 
@@ -928,8 +932,8 @@ WanderingSoul: {
 }
 
 SporeWheezer: {
-	DisplayName: 真菌响尾兽
-	Entry: 通常，发光蘑菇会寄生在响尾兽的身上，但响尾兽会有意识地通过呼吸传播孢子，这使得它们成为了共生关系。
+	DisplayName: 真菌息鸣螈
+	Entry: 通常，发光蘑菇会寄生在息鸣螈的身上，但息鸣螈会有意识地通过呼吸传播孢子，这使得它们成为了共生关系。
 }
 
 CogTrapperBody.DisplayName: 星舞者
@@ -940,9 +944,9 @@ CogTrapperHead: {
 }
 
 CogTrapperTail.DisplayName: 星舞者
-LargeComet.DisplayName: 大厄星陨石
-MediumComet.DisplayName: 中厄星陨石
-SmallComet.DisplayName: 小厄星陨石
+LargeComet.DisplayName: 大型星厄彗星
+MediumComet.DisplayName: 中型星厄彗星
+SmallComet.DisplayName: 小型星厄彗星
 
 StymphalianBat: {
 	DisplayName: 斯廷法罗斯蝙蝠
@@ -950,8 +954,8 @@ StymphalianBat: {
 }
 
 Crocomount: {
-	DisplayName: 巨口龙
-	Entry: 一种爬行类两足动物，被椰子海盗驯服，用于骑行作战。冲啊，骏龙，去远方！
+	DisplayName: 鳄恐龙
+	Entry: 一种爬行类两足动物，被椰子海盗驯服，用于骑行作战。嗨吼，希尔弗，出发！
 }
 
 KakamoraParachuter: {
@@ -963,7 +967,7 @@ KakamoraRider.DisplayName: 椰子海盗骑骑兵
 
 KakamoraRunner: {
 	DisplayName: 椰子海盗
-	Entry: 一个将军，普通的椰子海盗士兵。他们没有任何专业知识，但却是优秀的步兵。
+	Entry: 一名普通的、常见的椰子海盗士兵。他们没有特定的专长，但却是优秀的步兵。
 }
 
 KakamoraShaman: {
@@ -983,7 +987,7 @@ KakamoraShielderRare: {
 
 LargeCrustecean: {
 	DisplayName: 狂暴吹泡者
-	Entry: 我们在找狩猎婴儿。别以为我们不知道怎么淘汰他们。
+	Entry: 我们在找那个小宝贝。别以为我们不知道该怎么把它找出来。
 }
 
 MangoJelly: {
@@ -1031,7 +1035,7 @@ Adventurer: {
 }
 
 BoundAdventurer: {
-	DisplayName: 被捕的冒险家
+	DisplayName: 受缚冒险家
 
 	TownNPCMood: {
 		Content: I am content.
@@ -1123,20 +1127,20 @@ Oracle: {
 	Dialogue: {
 		Basic1: 众神已经向你传达了天启，{0}。
 		Basic2: 我提供的神物不是任何普通的钱币能买到的，旅行者。
-		Basic3: 你听说过一个叫Zagreus的人吗？算了……当我没问。
+		Basic3: 你听说过一个叫扎格柔斯的人吗？算了……当我没问。
 		Basic4: 哦，我多么渴望一些灵液啊……
 		Basic5: 我有一小卷经文出售，可以让你在其它地方召唤我。
 		Basic6: 当你在我工作的地方时就会明白，没有眼睛是一种神明祝福。
-		Basic7: 热情的问候，战士。我感觉到你体内的力量，也许我能帮助它成长。这些墙后的生物拥有强大的图腾，我对此很感兴趣。如果你愿意和我交换它们，我会赐予你一把被众神亲自赐福的武器！
-		Basic8: 啊，我真的想要一些陈年葡萄酒……Anthesteria已经到了吗？
+		Basic7: 热情的问候，战士。我感觉到你体内的力量，也许我能帮助它成长。这些墙后的生物拥有强大的代币，我对此很感兴趣。如果你愿意和我交换它们，我会赐予你一把被众神亲自赐福的武器！
+		Basic8: 啊，我真的想要一些陈年葡萄酒……安塞斯特里昂节已经到了吗？
 		Basic9: 我的传奇史诗没有尽头，也许永远不会有！
 		Basic10: 神话？是什么让你认为它是神话？
 		Basic11: 我已经失去了时间的概念，众神也拒绝告诉我时间的尽头在哪里！
 		Basic12: 排版测试排版测试排版测试排版测试……耐心点，我还没说完。
 		Basic13: 除非我被人遗忘，否则我是不会死的。我想知道还有谁记得我……
 		Basic14: 你需要什么？我没有无尽的时间。嗯……再想想……
-		Basic15: 我一生都在写作一个光辉的故事，但我就是分不清该用“这个”和“那个”。
-		Basic16: 你我之间，这些低劣的动物让我很烦恼。
+		Basic15: 我有一生的时间来书写一个辉煌的故事，但光是'the'这个字我就写不下去。
+		Basic16: 私下跟你说，爬行动物让我非常苦恼。
 		Basic17: 我在远方风鸣虫叫的伴奏下沉思，但总是分神沉迷其中。
 		Basic18: 祝福？你想要它们吗？它们是你的了，我的朋友！
 		Basic19: 啊，我懂了，还是没懂？很费解，不是吗？
@@ -1148,8 +1152,8 @@ Oracle: {
 		Dialogue1: 你想接受挑战吗？我可能不会阻止你，因为这对我们都有好处。我真的希望你已经准备好了！
 		Dialogue2: 我会向众神祈求他们的恩赐—这些怪物会变得冷酷无情，我希望你意识到这一点。
 		Dialogue3: 你想让我叫他们什么？！如此恶毒的言语，但我会传达这个信息。众神不会对此感到高兴的！
-		Dialogue4: 恩赐导致被杀的敌人掉落更多的图腾，但请记住，敌人也会变得更强大！
-		Dialogue5: 一定要活着回来！我很想听你胜利的故事。也带回更多的图腾！
+		Dialogue4: 恩赐导致被杀的敌人掉落更多的代币，但请记住，敌人也会变得更强大！
+		Dialogue5: 一定要活着回来！我很想听你胜利的故事。也带回更多的代币！
 	}
 
 	Teleport: {
@@ -1157,7 +1161,7 @@ Oracle: {
 		Dry: 我感受到了召唤……
 	}
 
-	Entry: 他们提供祝福和货物以换取古代货币。他们蒙上眼睛，因为被奥林匹斯开化和祝福，他们的视力已经没有必要了。
+	Entry: 祂提供祝福和货物以换取古代货币。祂蒙上眼睛，因为被奥林匹斯开化和祝福，视力已非必须。
 }
 
 Rogue: {
@@ -1213,7 +1217,7 @@ RuneWizard: {
 
 Undead_Warlock: {
 	DisplayName: 不死术士
-	Entry: 与 不死科学家不同，术士实践的是更为典型但威力更强大的魔法和巫术。
+	Entry: 与不死科学家不同，术士实践的是更为典型但威力更强大的魔法和巫术。
 }
 
 Valkyrie: {
@@ -1224,11 +1228,12 @@ Valkyrie: {
 Vulture_Matriarch: {
 	DisplayName: 砂鹫之主
 	Entry: 作为秃鹫部落的强大长老，女族长掌握着古老的魔法和能力，用以摧毁其猎物。
+	Disturbed: 砂鹫之主被惊扰了！
 }
 
 Wheezer: {
-	DisplayName: 响尾兽
-	Entry: 响尾兽是蝾螈的一个毒性极强的近亲，以具有攻击性而知名。奇怪的是，它们的最爱食物是刚萌芽的冬青植物，与它们的食肉倾向相矛盾。
+	DisplayName: 息鸣螈
+	Entry: 息鸣螈是蝾螈的一个毒性极强的近亲，以具有攻击性而知名。奇怪的是，它们的最爱食物是刚萌芽的冬青植物，与它们的食肉倾向相矛盾。
 }
 
 WinterbornMelee: {

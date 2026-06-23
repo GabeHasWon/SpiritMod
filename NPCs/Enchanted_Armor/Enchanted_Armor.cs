@@ -12,6 +12,7 @@ using SpiritMod.World.Sepulchre;
 using System.Linq;
 using SpiritMod.Buffs.DoT;
 using Terraria.GameContent.Bestiary;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Enchanted_Armor
 {
@@ -408,7 +409,7 @@ namespace SpiritMod.NPCs.Enchanted_Armor
 					});
 					if (!anyarmor)
 					{ //if not, display text and play miniboss jingle
-						CombatText.NewText(new Rectangle(x * 16, y * 16, 20, 10), Color.GreenYellow, "Unlocked!");
+						CombatText.NewText(new Rectangle(x * 16, y * 16, 20, 10), Color.GreenYellow, Language.GetTextValue("Mods.SpiritMod.Misc.Unlocked"));
 
 						if (Main.netMode != NetmodeID.Server) //custom sounds bad on server
 							SoundEngine.PlaySound(new SoundStyle("SpiritMod/Sounds/DownedMiniboss"), NPC.Center);

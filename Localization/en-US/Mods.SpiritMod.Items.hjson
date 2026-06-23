@@ -1736,7 +1736,7 @@ Book_ArmorGuide: {
 		'''
 		[c/95a3ab:The following is a transcript of an informational speech made by renowned adventurer Aurelius Finch, Knight-Crusader.]
 		---	
-		Hey, folks! Are you ready to become a grand adventurer, just like myself? It seems like a good life up here, and it is! I'm rolling in sponsorship money, and my dating life has never been better!"
+		Hey, folks! Are you ready to become a grand adventurer, just like myself? It seems like a good life up here, and it is! I'm rolling in sponsorship money, and my dating life has never been better!
 		But things weren't always this way. I was just like you all, once- dirt poor and owning nothing but the clothes on my back. It took everything I had to survive. But if you purchase my handy series of guides, you'll be just like me in no-time-flat! I can't wait for you to rise through the ranks, rookie.
 		[c/80deed:The Beginner's Guide to Armor]
 		So you're just setting out, and it's time to make your mark on the world. But what to wear? Armor is the most important tool in an adventurer's arsenal. Luckily for you, I've come across many different options for beginners that are easy to forge and effective.
@@ -2262,7 +2262,7 @@ EyeOfTheInferno: {
 	Tooltip:
 		'''
 		Hit foes combust, with successful hits increasing the power of the debuff. 
-		Also shoots out a spiky ball that inflicts broken armor
+		Also shoots out a spiky ball
 		'''
 }
 
@@ -2696,7 +2696,7 @@ SunbeamStaff: {
 
 ThornBow: {
 	DisplayName: Thornshot
-	Tooltip: Wooden arrows occasionally split into poisonous thorns
+	Tooltip: Wooden arrows split into poisonous thorns upon hitting enemies
 }
 
 Trophy5: {
@@ -3487,6 +3487,7 @@ SurrenderBell: {
 		Can only be used when the invasion has arrived, not when the invasion is approaching
 		'A heavenly chime'
 		'''
+	Surrender: The invaders have called off their attack!
 }
 
 TinyCrabItem: {
@@ -3861,11 +3862,15 @@ Candy: {
 CandyBag: {
 	DisplayName: Candy Bag
 	Tooltip: Holds up to 99 pieces of candy
+	ContainsSingle: Contains {0} piece of Candy
+	ContainsPlural: Contains {0} pieces of Candy
+	Take: Right click to take a piece of Candy
 }
 
 CandyBowl: {
 	DisplayName: Candy Bowl
 	Tooltip: ""
+	Take: Take a piece of candy
 }
 
 ChocolateBar: {
@@ -3986,6 +3991,38 @@ ManaCandy: {
 MysteryCandy: {
 	DisplayName: Mystery Candy
 	Tooltip: Either a great treat... or a nasty trick
+
+	Positive: {
+		1: Sweet and filling. You feel restored.
+		2: The sugar rush hits hard.
+		3: Mmm, the fluffiest of nougats. You feel light as a feather.
+		4: Magic is sparking from your fingertips. Maybe the candy was enchanted after all.
+		5: Has a bit of a metallic taste, but your skin is now tough as titanium.
+		6: It's a great time to go exploring.
+		7: You can see all.
+		8: Your hands are perfectly steady now.
+		9: That was delicious.
+		10: The conditions are perfect for a bit of building.
+		11: Your wish is their command.
+		12: New strength surges through your body.
+		13: The ground drops beneath your feet.
+		14: You feel like you're gonna make a big catch.
+	}
+
+	Negative: {
+		Hurt: "{0} bit on a razorblade."
+		1: Ouch, there was a razorblade in there!
+		2: Your legs can barely hold you.
+		3: You are encased in stone.
+		4: Every last spark of magic left your body. Maybe the candy was enchanted after all.
+		5: Your armor is crumpling at the slightest touch.
+		6: You can barely think straight.
+		7: You are frozen in place. Maybe mint was a bad idea...
+		8: You can't feel your arms.
+		9: Your limbs ache with the slightest movement.
+		10: You've been drugged.
+		11: You feel sick.
+	}
 }
 
 BatBlaster: {
@@ -5980,11 +6017,7 @@ Diamond_Bow: {
 
 Emerald_Bow: {
 	DisplayName: Emerald Bow
-	Tooltip:
-		'''
-		Turns wooden arrows into emerald arrows
-		Emerald arrows occasionally explode upon hitting enemies
-		'''
+	Tooltip: Turns wooden arrows into emerald arrows
 }
 
 Ruby_Bow: {
@@ -8755,6 +8788,17 @@ DragonStatueItem: {
 SlotMachine: {
 	DisplayName: Slot Machine
 	Tooltip: ""
+
+	Win: {
+		1: You win a bell!
+		2: You win a...jelly?
+		3: You win lemons!
+		4: You win diamonds!
+		5: You win a...bomb!
+		6: You win a ch- apple!
+		7: You win a brick of gold!
+		8: You win the JACKPOT!
+	}
 }
 
 ScrapItem1: {
