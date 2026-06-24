@@ -11,6 +11,7 @@ using Terraria.UI;
 using SpiritMod.Mechanics.QuestSystem;
 using SpiritMod.UI.QuestUI;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.UI.Elements
 {
@@ -110,7 +111,7 @@ namespace SpiritMod.UI.Elements
 			{
 				int seconds = (MyQuest.UnlockTime / 60) % 60;
 				int minutes = MyQuest.UnlockTime / 3600;
-				Title.Text = MyQuest.QuestName + $" ({minutes}m {seconds}s)";
+				Title.Text = MyQuest.QuestName + Language.GetTextValue("Mods.SpiritMod.Quests.QuesTime", minutes, seconds);
 				SetExclamationPosition();
 			}
 		}

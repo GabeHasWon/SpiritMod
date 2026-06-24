@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Buffs.Armor
 {
@@ -32,7 +33,7 @@ namespace SpiritMod.Buffs.Armor
 		public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			tip += $"\nMovement speed is increased by {modPlayer.movementStacks * 5/4}%";
+			tip += "\n" + Language.GetTextValue("Mods.SpiritMod.Buffs.ExplorerPot.Description2", modPlayer.movementStacks * 5/4);
 			rare = modPlayer.movementStacks >> 1;
 		}
 	}

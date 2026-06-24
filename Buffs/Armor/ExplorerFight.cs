@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Buffs.Armor
 {
@@ -31,7 +32,7 @@ namespace SpiritMod.Buffs.Armor
 		public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			tip += $"\nDamage dealt is increased by {modPlayer.damageStacks * 3}%";
+			tip += "\n" + Language.GetTextValue("Mods.SpiritMod.Buffs.ExplorerFight.Description2", modPlayer.damageStacks * 3);
 			rare = modPlayer.damageStacks >> 1;
 		}
 	}

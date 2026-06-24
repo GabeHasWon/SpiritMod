@@ -63,12 +63,12 @@ namespace SpiritMod.Tiles.Furniture
 				if (player.SpawnX == spawnX && player.SpawnY == spawnY)
 				{
 					player.RemoveSpawn();
-					Main.NewText("Spawn point removed!", 255, 240, 20);
+					Main.NewText(Language.GetTextValue("Game.SpawnPointRemoved"), 255, 240, 20);
 				}
 				else if (Player.CheckSpawn(spawnX, spawnY))
 				{
 					player.ChangeSpawn(spawnX, spawnY);
-					Main.NewText("Spawn point set!", 255, 240, 20);
+					Main.NewText(Language.GetTextValue("Game.SpawnPointRemoved"), 255, 240, 20);
 				}
 			}
 			return true;

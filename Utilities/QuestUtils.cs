@@ -13,6 +13,7 @@ using Terraria.GameContent.UI.Elements;
 using SpiritMod.UI.Elements;
 using ReLogic.Graphics;
 using Terraria.UI.Chat;
+using Terraria.Localization;
 
 namespace SpiritMod.Utilities
 {
@@ -37,7 +38,7 @@ namespace SpiritMod.Utilities
 		{
 			if (value > 1)
 			{
-				if (word.Last() != 's') return "s";
+				if (word.Last() != 's') return Language.GetTextValue("Mods.SpiritMod.Misc.PluralSuffix");
 				return "\'";
 			}
 			return "";

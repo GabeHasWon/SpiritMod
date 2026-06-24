@@ -141,7 +141,7 @@ namespace SpiritMod.Tiles
 		{
 			foreach (Player player in Main.player)
 				if (player.active && !player.dead && player.DistanceSQ(PustuleWorldCenter) < Range * Range)
-					player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " was grotesquely detonated"), Damage, player.Center.X > PustuleWorldCenter.X ? -1 : 1);
+					player.Hurt(PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.CrimsonPustuleDeath", player.name))), Damage, player.Center.X > PustuleWorldCenter.X ? -1 : 1);
 
 			foreach (NPC npc in Main.npc)
 				if (npc.DistanceSQ(PustuleWorldCenter) < Range * Range)

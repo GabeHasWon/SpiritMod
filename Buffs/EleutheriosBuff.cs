@@ -1,6 +1,7 @@
 using SpiritMod.Items.Sets.OlympiumSet;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Buffs
 {
@@ -15,7 +16,7 @@ namespace SpiritMod.Buffs
 		}
 
 		public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare) => //MIGHT be bad for MP but I don't know how to get player otherwise
-			tip = $"Damage increased by {System.Math.Truncate(Main.LocalPlayer.GetModPlayer<OlympiumPlayer>().eleutheoriosStrength * 100)}%";
+			tip = Language.GetTextValue("Mods.SpiritMod.Buffs.EleutheriosBuff.Description2", System.Math.Truncate(Main.LocalPlayer.GetModPlayer<OlympiumPlayer>().eleutheoriosStrength * 100));
 
 		public override void Update(Player player, ref int buffIndex) => player.GetModPlayer<OlympiumPlayer>().eleutheoriosStrength = player.buffTime[buffIndex] * 0.025f / 60f;
 	}

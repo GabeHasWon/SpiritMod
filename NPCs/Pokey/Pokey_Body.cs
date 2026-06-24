@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader.Utilities;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Bestiary;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.Pokey
 {
@@ -349,7 +350,7 @@ namespace SpiritMod.NPCs.Pokey
 			LeadingConditionRule headfulRule = new LeadingConditionRule(new DropRuleConditions.NPCConditional("", (npc) => npc.ModNPC is Pokey_Body body && body.Head.active && Head.life > 0));
 			headfulRule.OnSuccess(ItemDropRule.Common(ItemID.Cactus, 1, 1, 3));
 
-			LeadingConditionRule headlessRule = new LeadingConditionRule(new DropRuleConditions.NPCConditional("Drops only from the last segment", (npc) => npc.ModNPC is Pokey_Body body && Head.life <= 0));
+			LeadingConditionRule headlessRule = new LeadingConditionRule(new DropRuleConditions.NPCConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.PokeyBodyLastSegment"), (npc) => npc.ModNPC is Pokey_Body body && Head.life <= 0));
 			headlessRule.OnSuccess(ItemDropRule.Common(ItemID.CopperCoin, 1, 16, 25));
 			headlessRule.OnSuccess(ItemDropRule.Common(ItemID.PinkPricklyPear));
 

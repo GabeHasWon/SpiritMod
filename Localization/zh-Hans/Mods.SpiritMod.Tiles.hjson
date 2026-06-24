@@ -81,8 +81,8 @@ Pillar5Tile.MapEntry: 柱子
 Pillar6Tile.MapEntry: 柱子
 Pillar7Tile.MapEntry: 柱子
 Pillar8Tile.MapEntry: 柱子
-PottedSakuraTile.MapEntry: 樱花盆景
-PottedWillowTile.MapEntry: 黄柳盆景
+PottedSakuraTile.MapEntry: 樱花盆栽
+PottedWillowTile.MapEntry: 黄柳盆栽
 PrimePrint.MapEntry: 蓝图
 ProbePrint.MapEntry: 蓝图
 ReachGrass1.MapEntry: 针刺草
@@ -126,7 +126,7 @@ ArcadeMachine.MapEntry: 街机
 
 BambooBarrel: {
 	MapEntry: 条纹竹桶
-	ContainerName: S条纹竹桶
+	ContainerName: 条纹竹桶
 }
 
 BambooBench.MapEntry: 条纹竹凳
@@ -152,7 +152,7 @@ ForagerTableTile.MapEntry: 自然学家的作坊
 ForgottenKingStatue.MapEntry: 遗忘之王雕像
 GemsPickaxeRuby.MapEntry: 石中镐
 GemsPickaxeSapphire.MapEntry: 石中镐
-Generator.MapEntry: 辉光板生产机
+Generator.MapEntry: 辉光板发电机
 GiantAnglerStatueTile.MapEntry: 巨大的肌肉半鲨鱼半渔夫雕像
 
 GlowplateChest: {
@@ -275,14 +275,14 @@ TentOpposite.MapEntry: 帐篷
 TreasureChestTile.MapEntry: 战利品箱
 VaporwaveTile.MapEntry: 复古未来墙板
 JumpPadTile.MapEntry: 跳板
-CopperPile.MapEntry: 铜矿石堆
-GoldPile.MapEntry: 金矿石堆
-IronPile.MapEntry: 铁矿石堆
-LeadPile.MapEntry: 铅矿石堆
-PlatinumPile.MapEntry: 铂金矿石堆
-SilverPile.MapEntry: 银矿石堆
-TinPile.MapEntry: 锡矿石堆
-TungstenPile.MapEntry: 钨矿石堆
+CopperPile.MapEntry: 铜矿堆
+GoldPile.MapEntry: 金矿堆
+IronPile.MapEntry: 铁矿堆
+LeadPile.MapEntry: 铅矿堆
+PlatinumPile.MapEntry: 铂金矿堆
+SilverPile.MapEntry: 银矿堆
+TinPile.MapEntry: 锡矿堆
+TungstenPile.MapEntry: 钨矿堆
 SoulBloomTile.MapEntry: 绽魂花
 CursedArmor.MapEntry: 诅咒盔甲
 ScreamingTomeTile.MapEntry: 神秘法典

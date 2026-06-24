@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.GlobalClasses.Players;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.ReefhunterSet
 {
@@ -19,7 +20,7 @@ namespace SpiritMod.Items.Sets.ReefhunterSet
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			string down = Main.ReversedUpDownArmorSetBonuses ? "UP" : "DOWN";
+			string down = Language.GetTextValue(!Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
 
 			foreach (TooltipLine line in tooltips)
 			{

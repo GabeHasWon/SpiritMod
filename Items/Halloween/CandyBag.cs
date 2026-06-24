@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Halloween
 {
@@ -178,10 +179,10 @@ namespace SpiritMod.Items.Halloween
 			if (!ContainsCandy)
 				return;
 
-			TooltipLine line = new TooltipLine(Mod, "BagContents", "Contains " + pieces + (pieces == 1 ? " piece" : " pieces") + " of Candy");
-			tooltips.Add(line);
-			line = new TooltipLine(Mod, "RightclickHint", "Right click to take a piece of Candy");
-			tooltips.Add(line);
+			string text = Language.GetTextValue($"Mods.SpiritMod.Items.CandyBag.{(pieces == 1 ? "ContainsSingle" : "ContainsPlural")}", pieces);
+			tooltips.Add(new TooltipLine(Mod, "BagContents", text));
+
+			tooltips.Add(new TooltipLine(Mod, "RightclickHint", Language.GetTextValue("Mods.SpiritMod.Items.CandyBag.Take")));
 		}
 
 		public override void SaveData(TagCompound tag)

@@ -7,6 +7,7 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden
 {
@@ -592,7 +593,7 @@ namespace SpiritMod.NPCs.StarjinxEvent.Enemies.Warden
 			if (timers["ENCHANT"] == EnchantMaxTime / 2)
 			{
 				GetArchon.SetRandomEnchantment();
-				CombatText.NewText(NPC.getRect(), Color.Gold, $"Enchant moment - we got {GetArchon.enchantment}");
+				CombatText.NewText(NPC.getRect(), Color.Gold, Language.GetTextValue("Mods.SpiritMod.Misc.WardenEnchant", GetArchon.enchantment));
 			}
 			else if (timers["ENCHANT"] >= EnchantMaxTime)
 			{

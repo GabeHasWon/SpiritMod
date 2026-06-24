@@ -11,6 +11,7 @@ using Terraria.GameContent.Bestiary;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using SpiritMod.Items.Sets.MaterialsMisc.QuestItems;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.DesertBandit
 {
@@ -105,7 +106,7 @@ namespace SpiritMod.NPCs.DesertBandit
 
 				if (NPC.localAI[2] == -1)
 				{
-					CombatText.NewText(textPos, new Color(61, 255, 142, 100), "Thank you again!");
+					CombatText.NewText(textPos, new Color(61, 255, 142, 100), Language.GetTextValue("Mods.SpiritMod.NPCs.DesertBandit.Thank"));
 					NPC.DropItem(ModContent.ItemType<Items.Sets.AccessoriesMisc.DustboundRing.Dustbound_Ring>(), NPC.GetSource_FromAI());
 
 					for (int i = 0; i < 3; ++i)
@@ -119,7 +120,7 @@ namespace SpiritMod.NPCs.DesertBandit
 
 			if (NPC.CountNPCS(ModContent.NPCType<DesertBandit>()) == 1 && NPC.localAI[2] == 0f)
 			{
-				CombatText.NewText(textPos, new Color(61, 255, 142, 100), "Please spare me!");
+				CombatText.NewText(textPos, new Color(61, 255, 142, 100), Language.GetTextValue("Mods.SpiritMod.NPCs.DesertBandit.Spare"));
 				NPC.localAI[2] = 1f;
 				NPC.netUpdate = true;
 			}

@@ -16,16 +16,19 @@ AngelWrath: {
 ExplorerFight: {
 	DisplayName: Strike Strength
 	Description: You're getting the hang of it!
+	Description2: Damage dealt is increased by {0}%
 }
 
 ExplorerMine: {
 	DisplayName: Explorer's Strength
 	Description: Keep digging!
+	Description2: Mining speed is increased: {0} stacks
 }
 
 ExplorerPot: {
 	DisplayName: Explorer's Vigor
 	Description: You're eager for more!
+	Description2: Movement speed is increased by {0}%
 }
 
 FrigidCooldown: {
@@ -51,6 +54,7 @@ AstralMapCooldown: {
 BeetleFortitude: {
 	DisplayName: Beetle Fortitude
 	Description: Each strike strenghtens you...
+	Description2: Damage taken is reduced by {0}%
 }
 
 BloodInfusion: {
@@ -166,6 +170,7 @@ ElectrifiedV2: {
 EleutheriosBuff: {
 	DisplayName: Eleutherios' Strength
 	Description: Damage increased by 0%
+	Description2: Damage increased by {0}%
 }
 
 FateBlessing: {

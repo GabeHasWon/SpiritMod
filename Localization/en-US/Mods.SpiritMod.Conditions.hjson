@@ -1,3 +1,22 @@
+NotDay: Drops only at night
+Day: Drops only during day
+DropFrom: "Drops only in the "
+Purity: Purity
+Snow: Snow
+Asteroid: Asteroid
+DefBoss: Drops only after {0} has been defeated
+RrefixThe: "the "
+AnyMech: any mechanical boss
+FromVHead: From venomous heads
+FromFHead: From flaming heads
+FromAHead: From acidic heads
+PokeyBodyLastSegment: Drops only from the last segment
+Enchanted: Drops when enemy is enchanted
+Rarely: Rarely
+WearingFloran: Wearing the full Floran set
+WearingArcaneNecklace: Wearing the Arcane Necklace and is using a magic weapon
+WearingVitalityStone: Wearing the Vitality Stone (or an upgrade)
+Uncommonly: Uncommonly from Shadow Mimics
 HasMoonshot: Any player has a Moonshot
 VoyagerDown: Starplate Voyager is defeated
 ScarabDown: Scarabeus is defeated

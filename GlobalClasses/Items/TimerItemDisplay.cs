@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using ReLogic.Content;
+using Terraria.Localization;
 
 namespace SpiritMod.GlobalClasses.Items;
 
@@ -29,7 +30,7 @@ internal class TimerItemDisplay : GlobalItem
 		{
 			int tooltipTime = Main.LocalPlayer.ItemTimer(item.ModItem) / 60;
 
-			string text = (tooltipTime < 60) ? $"({tooltipTime}s remaining)" : $"({tooltipTime / 60}m remaining)";
+			string text = (tooltipTime < 60) ? Language.GetTextValue("Mods.SpiritMod.Misc.RemainingS", tooltipTime) : Language.GetTextValue("Mods.SpiritMod.Misc.RemainingM", tooltipTime / 60);
 			tooltips.Add(new TooltipLine(Mod, "Cooldown", text) { OverrideColor = Color.HotPink });
 		}
 	}

@@ -20,12 +20,12 @@ DepthInvasion: {
 }
 
 SnowNighttime: {
-	DisplayName: Icy Stars（主题曲：雪原- 夜）
+	DisplayName: Icy Stars（主题曲：雪原 - 夜）
 	Author: "{$BySalvati}"
 }
 
 DesertNighttime: {
-	DisplayName: Kempt Dunes（主题曲：沙漠- 夜）
+	DisplayName: Kempt Dunes（主题曲：沙漠 - 夜）
 	Author: "{$BySalvati}"
 }
 
@@ -60,12 +60,12 @@ CorruptNight: {
 }
 
 NeonTech1: {
-	DisplayName: Spaced Out（主题曲：超时空 - 昼）
+	DisplayName: Spaced Out（主题曲：超空间 - 昼）
 	Author: "{$BySalvati}"
 }
 
 NeonTech: {
-	DisplayName: Techno Vibes（主题曲：超时空 - 夜）
+	DisplayName: Techno Vibes（主题曲：超空间 - 夜）
 	Author: "{$BySalvati}"
 }
 

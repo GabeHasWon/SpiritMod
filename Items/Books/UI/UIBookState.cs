@@ -23,7 +23,11 @@ namespace SpiritMod.Items.Books.UI
 		{
 			this.title = title;
 			this.author = author;
-			this.bookContents = bookContents;
+			this.bookContents = System.Text.RegularExpressions.Regex.Replace(
+			bookContents, 
+			@"[\u4e00-\u9fff]", 
+			"$0 "
+			);
 		}
 
 		public override void OnInitialize()
