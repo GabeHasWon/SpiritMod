@@ -21,7 +21,7 @@ AntlionAssassin: {
 
 CrimsonTrapper: {
 	DisplayName: Arterial Grasper
-	Entry: These beating organs are vital to the crimson's ensured survival * they pump blood into the biome's squelching stone, granting it the strength to spread and support its extremities.
+	Entry: These beating organs are vital to the crimson's ensured survival - they pump blood into the biome's squelching stone, granting it the strength to spread and support its extremities.
 }
 
 AsteroidDebris.DisplayName: Debris

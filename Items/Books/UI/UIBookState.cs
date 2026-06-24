@@ -25,7 +25,7 @@ namespace SpiritMod.Items.Books.UI
 			this.author = author;
 			this.bookContents = System.Text.RegularExpressions.Regex.Replace(
 			bookContents, 
-			@"[\u4e00-\u9fff\u3000-\u303f\uff00-\uffef]", 
+			@"[\u4e00-\u9fff]", 
 			"$0 "
 			);
 		}
