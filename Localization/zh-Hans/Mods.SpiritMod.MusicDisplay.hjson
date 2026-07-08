@@ -34,11 +34,6 @@ OceanNighttime: {
 	Author: "{$BySalvati}"
 }
 
-CrimsonNighttime: {
-	DisplayName: Razor's Edge（主题曲：猩红之地 - 夜）
-	Author: "{$BySalvati}, {$Sbubby}"
-}
-
 ReachUnderground: {
 	DisplayName: Lurking Vines（主题曲：地下荆棘之地）
 	Author: "{$By} {$Sbubby}"

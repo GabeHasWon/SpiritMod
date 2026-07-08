@@ -170,6 +170,11 @@ Configs: {
 			Label: "[i:SpiritMod/CursedArmorItem]  World Generation: Enable Dark Sepulchres"
 			Tooltip: Enables or disables the Dark Sepulchre structures found underground. Useful to turn off if you experience generation issues with other mods
 		}
+
+		ForceClassicZiggurat: {
+			Label: "[i:607]  Force Classic Ziggurat"
+			Tooltip: Enables Spirit Classic's Ziggurat to spawn even if Spirit Reforged is on. Note that the Classic Ziggurat may overlap other structures.
+		}
 	}
 
 	QuestInvLocation: {

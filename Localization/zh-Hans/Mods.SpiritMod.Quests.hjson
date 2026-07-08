@@ -709,6 +709,7 @@ QuestInfo: {
 			几年前，我和一些赏金猎人试图拿下那东西。而我们最终逃过一劫。
 			注意安全，小伙子。
 			'''
+		// ReforgedCompatLine: Craft an Idol with Red Sandstone Brick and Polished Amber, from the Underground Desert and Ziggurat
 	}
 
 	ItsNoSalmon: {

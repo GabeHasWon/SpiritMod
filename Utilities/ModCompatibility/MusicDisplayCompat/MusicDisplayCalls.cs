@@ -25,7 +25,7 @@ internal class MusicDisplayCalls : ModSystem
 		AddMusic("SnowNighttime");
 		AddMusic("DesertNighttime");
 		AddMusic("OceanNighttime");
-		AddMusic("CrimsonNighttime");
+		AddMusic("CrimsonNight");
 		AddMusic("ReachUnderground");
 		AddMusic("Meteor");
 		AddMusic("Infernon");

@@ -564,13 +564,13 @@ public class BriarGeneration : ModSystem
 		//----------------------------------------------------------
 
 		// PARAMETERS
-		float tunnelCenterDistance = 0.25f; //25% from center
-		float tunnelFlatCheckDistance = 0.2f;
-		int pointCount = 40;
-		int topThickness = 50;
-		int stoneDensityDepth = 80;
-		int moundHalfWidth = 35;
-		int moundHeight = 32;
+		const float tunnelCenterDistance = 0.25f; //25% from center
+		const float tunnelFlatCheckDistance = 0.2f;
+		const int pointCount = 40;
+		const int topThickness = 50;
+		const int stoneDensityDepth = 80;
+		const int moundHalfWidth = 35;
+		const int moundHeight = 32;
 
 		var ignoreTiles = new List<ushort>()
 		{
@@ -609,11 +609,12 @@ public class BriarGeneration : ModSystem
 
 		const int MainCaveFromTop = 70;
 		const int MainCaveFromBottom = 50;
+
 		//-
 
 		_topSize = new Point(_size.X, topThickness * 2);
 		_center = new Vector2(_x * 16f + 8f, _y * 16f + 8f);
-		_noise = new PerlinNoise(WorldGen._genRandSeed);
+		_noise = new PerlinNoise(WorldGen.genRand.Next());
 		_estimates = new List<float>();
 		int halfCount = pointCount / 2;
 		float amt = MathHelper.TwoPi / pointCount;
@@ -651,10 +652,9 @@ public class BriarGeneration : ModSystem
 			if (curX > 0)
 			{
 				prevSurface = surfaceY[curX - 1];
+
 				if (Math.Abs(prevSurface - surface) > 3)
-				{
 					surface = (int)MathHelper.Lerp(surface, prevSurface, WorldGen.genRand.NextFloat(0.35f, 0.65f));
-				}
 			}
 
 			//get the first tile on the surface
@@ -796,7 +796,7 @@ public class BriarGeneration : ModSystem
 		zigPoints.Add(mainSectionTemp.point2);
 
 		//Create and carve main cave
-		RadiusLine mainCave = new RadiusLine(0.15f, zigPoints.ToArray());
+		RadiusLine mainCave = new RadiusLine(0.15f, [.. zigPoints]);
 		mainCave.Carve(_noise);
 
 		//Mound point
@@ -854,6 +854,7 @@ public class BriarGeneration : ModSystem
 
 		//place extra blobs
 		float angle = -MathHelper.Pi;
+
 		for (; angle < MathHelper.Pi; angle += WorldGen.genRand.NextFloat(0.2f, 0.7f))
 		{
 			if (WorldGen.genRand.NextBool(3))

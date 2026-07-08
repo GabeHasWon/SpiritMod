@@ -34,11 +34,6 @@ OceanNighttime: {
 	Author: "{$BySalvati}"
 }
 
-CrimsonNighttime: {
-	DisplayName: Razor's Edge (Crimson Night Theme)
-	Author: "{$BySalvati}, {$Sbubby}"
-}
-
 ReachUnderground: {
 	DisplayName: Lurking Vines (Underground Briar Theme)
 	Author: "{$By} {$Sbubby}"

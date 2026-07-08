@@ -16,8 +16,8 @@ class SpiritClientConfig : ModConfig
 	[Slider]
 	public float ScreenShake { get; set; }
 
-        [DefaultValue(true)]
-        public bool DistortionConfig { get; set; }
+    [DefaultValue(true)]
+    public bool DistortionConfig { get; set; }
 
 	[DefaultValue(true)]
 	public bool ForegroundParticles { get; set; }
@@ -31,8 +31,8 @@ class SpiritClientConfig : ModConfig
 	[DefaultValue(true)]
 	public bool QuickSell { get; set; }
 
-        [DefaultValue(true)]
-        public bool AmbientSounds { get; set; }
+    [DefaultValue(true)]
+    public bool AmbientSounds { get; set; }
 
 	[DefaultValue(true)]
 	public bool LeafFall { get; set; }
@@ -66,6 +66,9 @@ class SpiritClientConfig : ModConfig
 
 	[DefaultValue(true)]
 	public bool EnableSepulchres { get; set; }
+
+	[DefaultValue(false)]
+	public bool ForceClassicZiggurat { get; set; }
 
 	[OnDeserialized]
 	internal void OnDeserializedMethod(StreamingContext context) => ScreenShake = Utils.Clamp(ScreenShake, 0f, 1f);

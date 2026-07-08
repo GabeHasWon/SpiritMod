@@ -301,6 +301,7 @@ QuestInfo: {
 		Description: The sands of the desert hide a lot of secrets beneath 'em. There's supposed to be an Ancient Ziggurat buried near the surface of one of those wastelands. Could ya head down there and scavenge some relics from me?
 		ReturnToAdventurer: Return to the Adventurer with what you've found
 		Warning: I knew it. I was polishin' up this old thing when it started to look real familiar. That's a Scarab Idol right there. I'm warning ya, don't mess with it until you get real strong. Me and some bounty hunters tried to take that thing on years ago. We barely escaped with our lives. Be safe, lad.
+		ReforgedCompatLine: Craft an Idol with Red Sandstone Brick and Polished Amber, from the Underground Desert and Ziggurat
 	}
 
 	ItsNoSalmon: {

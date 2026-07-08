@@ -1,7 +1,7 @@
-﻿v1.5.0.43
-- Fixed bad Thorium Mod.Call causing log spam in ocean
-- Significantly reduced Occultist spawn rate if the Occultist has been defeated at least once
-- Added additional safety check for Arc Lash visuals so they don't persist...probably
-- Fixed Spirit Aura granting 105% increased damage, instead of 5%
-- Improved Occultist drawing code, should fix *some* issues
-- Made all boss bags count internally as boss bags (and prehardmode ones count as such as well)
+﻿v1.5.0.45
+- Fixed error caused by better error reporting in Music Display
+- Fixed error that stopped the Briar from being seeded properly
+- Fixed extremely niche issue with Spirit biome generation not replacing Elephant Grass properly
+- Added config option to enable generating the pitiful Classic Ziggurat when Reforged is turned on (note: it may overlap with other structures)
+- Reduced Occultist spawn rates when one has already been defeated
+- Allowed the Idol for the Idle Idol quest to be crafted with Reforged content if both mods are enabled; adjusted Quest dialogue to match

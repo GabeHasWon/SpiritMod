@@ -322,7 +322,7 @@ namespace SpiritMod.NPCs.Boss.Occultist
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			float chance = MyWorld.downedOccultist ? 0.005f : 0.02f;
+			float chance = MyWorld.downedOccultist ? 0.0025f : 0.02f;
 			return !NPC.AnyNPCs(Type) && Main.bloodMoon && spawnInfo.Player.Center.Y / 16f < Main.worldSurface ? chance : 0f;
 		}
 
