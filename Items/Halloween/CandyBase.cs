@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Halloween
 {
@@ -39,7 +40,7 @@ namespace SpiritMod.Items.Halloween
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			if (CanRightClick())
-				tooltips.Add(new TooltipLine(Mod, "RightclickHint", "Right click to put into Candy Bag"));
+				tooltips.Add(new TooltipLine(Mod, "RightclickHint", Language.GetTextValue("Mods.SpiritMod.Misc.Put")));
 		}
 
 		public override bool CanRightClick() => ItemSpace(Main.LocalPlayer);

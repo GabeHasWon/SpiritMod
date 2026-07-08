@@ -407,17 +407,17 @@ namespace SpiritMod.NPCs.Hydra
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			LeadingConditionRule greenCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional("From venomous heads", (npc) => CheckHeadColor(npc, HeadColor.Green)));
+			LeadingConditionRule greenCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.FromVHead"), (npc) => CheckHeadColor(npc, HeadColor.Green)));
 			greenCondition.OnSuccess(ItemDropRule.Common(ItemID.PoisonStaff, 50));
 			greenCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<HydraMaskVenom>(), 33));
 
-			LeadingConditionRule redCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional("From flaming heads", (npc) => CheckHeadColor(npc, HeadColor.Red)));
+			LeadingConditionRule redCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.FromFHead"), (npc) => CheckHeadColor(npc, HeadColor.Red)));
 			redCondition.OnSuccess(ItemDropRule.Common(ItemID.MagmaStone, 50));
 			redCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<HydraMaskFire>(), 33));
 
-			LeadingConditionRule purpleCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional("From acidic heads", (npc) => CheckHeadColor(npc, HeadColor.Purple) && NPC.downedPlantBoss));
+			LeadingConditionRule purpleCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.FromAHead"), (npc) => CheckHeadColor(npc, HeadColor.Purple) && NPC.downedPlantBoss));
 			purpleCondition.OnSuccess(ItemDropRule.Common(ItemID.VialofVenom, 3, 1, 3));
-			LeadingConditionRule purpleMaskCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional("From acidic heads", (npc) => CheckHeadColor(npc, HeadColor.Purple)));
+			LeadingConditionRule purpleMaskCondition = new LeadingConditionRule(new DropRuleConditions.NPCConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.FromAHead"), (npc) => CheckHeadColor(npc, HeadColor.Purple)));
 			purpleMaskCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<HydraMaskAcid>(), 33));
 
 			npcLoot.Add(greenCondition);

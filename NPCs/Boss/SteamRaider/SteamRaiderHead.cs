@@ -163,7 +163,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 					NPC.netUpdate = true;
 					SoundEngine.PlaySound(SoundID.Roar, NPC.Center);
 
-					CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(255, 155, 0, 100), "Target Engaged");
+					CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(255, 155, 0, 100), Language.GetTextValue("Mods.SpiritMod.NPCs.SteamRaiderHead.Engaged"));
 				}
 				if (chargetimer >= 700 && chargetimer <= 900)
 				{
@@ -508,8 +508,7 @@ namespace SpiritMod.NPCs.Boss.SteamRaider
 				}
 				if (NPC.localAI[2] == 0)
 				{
-					CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(255, 155, 0, 100),
-	"Instability Detected");
+					CombatText.NewText(new Rectangle((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height), new Color(255, 155, 0, 100), Language.GetTextValue("Mods.SpiritMod.NPCs.SteamRaiderHead.Detected"));
 					NPC.localAI[2]++;
 					NPC.netUpdate = true;
 				}

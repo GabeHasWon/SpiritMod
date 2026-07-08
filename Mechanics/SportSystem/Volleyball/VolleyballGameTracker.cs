@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.Chat;
 using Terraria.GameContent;
 using Terraria.UI.Chat;
+using Terraria.Localization;
 
 namespace SpiritMod.Mechanics.SportSystem.Volleyball;
 
@@ -45,9 +46,9 @@ internal class VolleyballGameTracker : CourtGameTracker
 
 			pos = new Point(court.center.X, court.center.Y + AllYOffset).ToWorldCoordinates() - Main.screenPosition;
 			size = font.MeasureString("Points");
-			ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, font, "Points", pos, Color.White, 0f, size / 2f, Vector2.One * 0.55f);
+			ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, font, Language.GetTextValue("Mods.SpiritMod.Misc.Point"), pos, Color.White, 0f, size / 2f, Vector2.One * 0.55f);
 			size = font.MeasureString("Wins");
-			ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, font, "Wins", pos + new Vector2(0, WinYOffset), Color.Green, 0f, size / 2f, Vector2.One * 0.5f);
+			ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, font, Language.GetTextValue("Mods.SpiritMod.Misc.Win"), pos + new Vector2(0, WinYOffset), Color.Green, 0f, size / 2f, Vector2.One * 0.5f);
 
 			pos = new Point(court.center.X + PointXOffsets, court.center.Y + AllYOffset).ToWorldCoordinates() - Main.screenPosition;
 			size = font.MeasureString(wins.left.ToString());

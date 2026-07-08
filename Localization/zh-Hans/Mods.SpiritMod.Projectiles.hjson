@@ -21,12 +21,12 @@ InfernonPetProjectile.DisplayName: 炎狱之主
 MJWPetProjectile.DisplayName: 海月灯泡
 OccultistPetProjectile.DisplayName: 小玄虚术士
 AdornedBowProj.DisplayName: 华饰弓
-ScarabArrow.DisplayName: 圣甲虫箭
+ScarabArrow.DisplayName: 甲虫箭
 KhopeshSlash.DisplayName: 皇家弯刀
 LocustBig.DisplayName: 蝗虫
 LocustSmall.DisplayName: 蝗虫宝宝
 RadiantCane.DisplayName: 光辉法球
-ScarabPetProjectile.DisplayName: 小圣甲虫
+ScarabPetProjectile.DisplayName: 小甲虫
 LivewireProj.DisplayName: 输电线
 StargloveChargeOrange.DisplayName: 星坠
 StargloveChargePurple.DisplayName: 星坠
@@ -91,7 +91,7 @@ GoldBlasterProj.DisplayName: 冲击波
 Bauble.DisplayName: 冲击波
 BoomerangBlaster.DisplayName: 回旋镖冲击波
 EnergyBeam.DisplayName: 能量光束
-EnergyBurst.DisplayName: 能量爆裂
+EnergyBurst.DisplayName: 能量脉冲
 GoldBullet.DisplayName: 金子弹
 HoloShot.DisplayName: 击星
 LongRocket.DisplayName: 火箭
@@ -276,7 +276,7 @@ ReachBossFlower.DisplayName: 辉光花
 SporeExplosion.DisplayName: 爆炸性孢子
 Yikes.DisplayName: 孢子尖
 RedComet.DisplayName: 赤色彗星
-LargeScarab.DisplayName: 圣甲虫
+LargeScarab.DisplayName: 甲虫
 SandShockwave.DisplayName: 沙
 ScarabSandball.DisplayName: 沙球
 SwarmTelegraph.DisplayName: 沙球
@@ -304,14 +304,14 @@ GraniteSentryBolt.DisplayName: 激光矢
 HauntedPaperPlane.DisplayName: 纸飞机
 HauntedSkull.DisplayName: 缭魂颅骨
 HemophoraProj.DisplayName: 剧毒血块
-HydraVenomGlob.DisplayName: 九头蛇唾液
+HydraVenomGlob.DisplayName: 多头蛇唾液
 Earth_Slam_Projectile.DisplayName: 裂地猛击
 CorruptVomitProj.DisplayName: 腐化呕吐物
 CoilRocket.DisplayName: 盘绕火箭
 Molten_Core_Projectile.DisplayName: 熔岩
 MyceliumHat.DisplayName: Mycelial 植物学家
-MeteorShardHostile1.DisplayName: 陨石碎块
-MeteorShardHostile2.DisplayName: 陨石碎块
+MeteorShardHostile1.DisplayName: 流星碎块
+MeteorShardHostile2.DisplayName: 流星碎块
 PirateLobberBarrel.DisplayName: 海盗桶
 ToxicFlaskHostile.DisplayName: 文艺瓶
 TeratomaProj.DisplayName: 癌细胞块
@@ -329,10 +329,10 @@ UnstableWisp_Explosion.DisplayName: 不稳定之物
 WheezerSporeHostile.DisplayName: 孢子
 ArchonStarFragment.DisplayName: 星辰碎片
 BGStarProjectile.DisplayName: 流迅之星
-MeteorCastProjectile.DisplayName: 陨星
-MeteorEnchantment_Meteor.DisplayName: 陨星
+MeteorCastProjectile.DisplayName: 流星
+MeteorEnchantment_Meteor.DisplayName: 流星
 MeteorMagus_Comet.DisplayName: 彗星
-MeteorMagus_Meteor.DisplayName: 陨星
+MeteorMagus_Meteor.DisplayName: 流星
 MeteorMagus_Star.DisplayName: 流星
 PulsarShockwave.DisplayName: 冲击波
 StarachnidProj.DisplayName: 星座
@@ -440,7 +440,7 @@ FlamebergeProjectile.DisplayName: 炽焰
 FrostBolt.DisplayName: 冰霜矢
 FrostRune.DisplayName: 冰霜符文
 HarpyBolt.DisplayName: 精灵
-JadeScarab.DisplayName: 华饰圣甲虫
+JadeScarab.DisplayName: 华饰甲虫
 NeutronStar.DisplayName: 中子星
 OmniwrenchProj.DisplayName: 多功能扳手
 PhoenixMinion.DisplayName: 火焰菲尼克斯
@@ -552,7 +552,7 @@ Spit.DisplayName: 疾病唾液
 StarfallProjectile.DisplayName: 落星
 StarTrail1.DisplayName: 幽微星光
 TentacleSpike.DisplayName: 触手刺
-TerraProj.DisplayName: 元素值怒
+TerraProj.DisplayName: 元素之怒
 TerraProj2.DisplayName: 泰拉之怒
 ThornSpike.DisplayName: 荆棘打击
 TitaniumStaffProj.DisplayName: 亮磨之剑
@@ -572,7 +572,7 @@ OrichHoming.DisplayName: 山铜绽放
 OvergrowthLeaf.DisplayName: 繁茂之叶
 BladePet.DisplayName: 附魔之刃
 CaptiveMaskPet.DisplayName: 无拘面具
-CultfishPet.DisplayName: 猫面鱼
+CultfishPet.DisplayName: 邪教鱼
 HauntedBookPet.DisplayName: 闹鬼之书
 JellyfishPet.DisplayName: 水母
 LanternPet.DisplayName: 灯笼
@@ -626,7 +626,7 @@ CimmerianRedGlyph.DisplayName: 红色雕文
 CimmerianScepterProjectile.DisplayName: 西米里权杖
 CimmerianStaffStar.DisplayName: 启明星
 CoilSentrySummon.DisplayName: 电炮塔
-CragboundMinion.DisplayName: 岩石封锁
+CragboundMinion.DisplayName: 崖缚
 Crawlerock.DisplayName: 岩穴爬虫
 DragonBodyOne.DisplayName: 玉龙
 ElectricGunProjectile.DisplayName: 电弧
@@ -654,7 +654,7 @@ SnakeMinion.DisplayName: 飞蛇
 SnapsporeMinion.DisplayName: 裂孢
 TeslaSpikeProjectile.DisplayName: 特斯拉尖刺
 TeslaTurret.DisplayName: 特斯拉炮塔
-TwinklePopperMinion.DisplayName: 闪亮炮手
+TwinklePopperMinion.DisplayName: 闪耀炮手
 DefenseZone.DisplayName: 防御领域
 HealingZone.DisplayName: 治疗领域
 LowGravZone.DisplayName: 低重力领域

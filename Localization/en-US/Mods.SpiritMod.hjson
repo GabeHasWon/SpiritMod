@@ -1,4 +1,5 @@
 GoldifiedDeath: " died solid as a gold bar"
+CrimsonPustuleDeath: "{0} was grotesquely detonated"
 Frozen: Frozen
 # Config stuff:
 Screenshake: "[i:SpiritMod/MoonStone]  Visuals: Screenshake"
@@ -339,6 +340,8 @@ Events: {
 	}
 
 	LuminousOcean.OnStart: A glow blooms over the ocean...
+	BloodMoon.DayTime: The Blood Moon only emerges at night.
+	StarjinxSummon: An enchanted comet has appeared in the sky!
 
 	TheTide: {
 		BossChecklistIntegration.Condition: Use a [i:SpiritMod/BlackPearl] at the Ocean at any time.
@@ -347,6 +350,8 @@ Events: {
 		AlreadyActive: The Tide's already come in!
 		Wave: "Wave {0} : "
 	}
+
+	Starjinx.Wave: Wave Progress : {0}%
 }
 
 BossChecklistIntegration: {

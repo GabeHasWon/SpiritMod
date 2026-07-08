@@ -29,6 +29,7 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 using ContentItems = SpiritMod.Items; //Clears up Items and GlobalClasses.Items issue
 using SpiritMod.Items.Sets.AccessoriesMisc.EyeOfTheSorcerer;
@@ -41,7 +42,7 @@ internal class GlobalNPCLoot : GlobalNPC
 {
 	public override void ModifyGlobalLoot(GlobalLoot globalLoot)
 	{
-		LeadingConditionRule glyphChance = new LeadingConditionRule(new DropRuleConditions.NPCConditional("Rarely", 
+		LeadingConditionRule glyphChance = new LeadingConditionRule(new DropRuleConditions.NPCConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.Rarely"), 
 			(npc) => !npc.SpawnedFromStatue && npc.CanDamage() && npc.type != ModContent.NPCType<ExplodingSpore>()));
 		glyphChance.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Glyph>(), 500));
 		globalLoot.Add(glyphChance);
@@ -52,21 +53,21 @@ internal class GlobalNPCLoot : GlobalNPC
 		inAsteroids.OnSuccess(ItemDropRule.Common(ModContent.ItemType<PowerRing>(), 65));
 		globalLoot.Add(inAsteroids);
 
-		LeadingConditionRule wearingArcaneNecklace = new LeadingConditionRule(new DropRuleConditions.PlayerConditional("Wearing the Arcane Necklace and is using a magic weapon", 
+		LeadingConditionRule wearingArcaneNecklace = new LeadingConditionRule(new DropRuleConditions.PlayerConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.WearingFloran"), 
 			(player) => player.HasAccessory<ArcaneNecklace>() && player.HeldItem.IsMagic() && player.statMana < player.statManaMax2));
 		wearingArcaneNecklace.OnSuccess(ItemDropRule.Common(ItemID.Star, 5));
 		globalLoot.Add(wearingArcaneNecklace);
 
-		LeadingConditionRule floranSet = new LeadingConditionRule(new DropRuleConditions.PlayerConditional("Wearing the full Floran set", (player) => player.GetSpiritPlayer().floranSet));
+		LeadingConditionRule floranSet = new LeadingConditionRule(new DropRuleConditions.PlayerConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.WearingArcaneNecklace"), (player) => player.GetSpiritPlayer().floranSet));
 		floranSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<RawMeat>(), 9));
 		globalLoot.Add(floranSet);
 
-		LeadingConditionRule vitaStoneEquipped = new LeadingConditionRule(new DropRuleConditions.PlayerConditional("Wearing the Vitality Stone (or an upgrade)", 
+		LeadingConditionRule vitaStoneEquipped = new LeadingConditionRule(new DropRuleConditions.PlayerConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.WearingVitalityStone"), 
 			(player) => player.GetSpiritPlayer().vitaStone));
 		vitaStoneEquipped.OnSuccess(ItemDropRule.Common(ItemID.Heart, 9));
 		globalLoot.Add(vitaStoneEquipped);
 
-		LeadingConditionRule demonSheathChance = new LeadingConditionRule(new DropRuleConditions.NPCConditional("Uncommonly from Shadow Mimics", 
+		LeadingConditionRule demonSheathChance = new LeadingConditionRule(new DropRuleConditions.NPCConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.Uncommonly"), 
 			(npc) => npc.type == NPCID.Mimic && npc.frame.Y >= (npc.frame.Height * 12)));
 		demonSheathChance.OnSuccess(ItemDropRule.Common(ModContent.ItemType<DemonSheath>(), 10));
 		globalLoot.Add(demonSheathChance);

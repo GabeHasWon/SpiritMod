@@ -60,7 +60,7 @@ internal static class SpiritGeneration
 
 		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			string message = "The Spirits spread through the land...";
+			string message = Language.GetTextValue("Mods.SpiritMod.Misc.SpiritSpread");
 			MyWorld.spiritBiome = true;
 
 			if (Main.netMode == NetmodeID.SinglePlayer)

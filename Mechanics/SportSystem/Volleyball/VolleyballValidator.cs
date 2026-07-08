@@ -17,7 +17,7 @@ internal class VolleyballValidator : Validator
 
 		if (tile.TileType != ModContent.TileType<VolleyballNet>())
 		{
-			Main.NewText(NetworkText.FromLiteral("You must choose a net!"), Color.Red);
+			Main.NewText(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.NeedNet")), Color.Red);
 			return false;
 		}
 
@@ -37,13 +37,13 @@ internal class VolleyballValidator : Validator
 
 		if (height <= 10)
 		{
-			Main.NewText(NetworkText.FromLiteral($"Net must be higher than 10 blocks! ({height} blocks tall currently)"), Color.Red);
+			Main.NewText(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.NeedHeight", height)), Color.Red);
 			return false;
 		}
 
 		if (Main.tile[x, j].TileType != ModContent.TileType<VolleyballCourt>())
 		{
-			Main.NewText(NetworkText.FromLiteral("Net must be placed on a court!"), Color.Red);
+			Main.NewText(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.NeedCourt")), Color.Red);
 			return false;
 		}
 
@@ -60,7 +60,7 @@ internal class VolleyballValidator : Validator
 			{
 				if (WorldGen.SolidOrSlopedTile(i, cY))
 				{
-					Main.NewText(NetworkText.FromLiteral("Court must be an open space!"), Color.Red);
+					Main.NewText(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.NeedSpace")), Color.Red);
 					return false;
 				}
 			}
@@ -78,7 +78,7 @@ internal class VolleyballValidator : Validator
 			{
 				if (WorldGen.SolidOrSlopedTile(i, cY))
 				{
-					Main.NewText(NetworkText.FromLiteral("Court must be an open space!"), Color.Red);
+					Main.NewText(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.NeedSpace")), Color.Red);
 					return false;
 				}
 			}
@@ -87,12 +87,12 @@ internal class VolleyballValidator : Validator
 
 		if (left + right < 60)
 		{
-			Main.NewText(NetworkText.FromLiteral("Court must be at least 60 tiles wide!"), Color.Red);
+			Main.NewText(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.NeedWide")), Color.Red);
 			return false;
 		}
 
 		if (Main.netMode != NetmodeID.Server)
-			Main.NewText(NetworkText.FromLiteral("This is a valid court!"), Color.Green);
+			Main.NewText(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.ValidCourt")), Color.Green);
 		else
 			ModContent.GetInstance<SpiritMod>().Logger.Debug($"Placed volleyball court at {x},{netCenter}.");
 

@@ -1,5 +1,5 @@
 AceOfDiamondsBuff: {
-	DisplayName: 方块王牌
+	DisplayName: 方块A
 	Description: 伤害增加20%
 }
 
@@ -16,16 +16,19 @@ AngelWrath: {
 ExplorerFight: {
 	DisplayName: 强力打击
 	Description: 你已掌握诀窍！
+	Description2: 造成的伤害增加{0}%
 }
 
 ExplorerMine: {
-	DisplayName: 探险家的活力
+	DisplayName: 探险家的毅力
 	Description: 挖下去吧！
+	Description2: 挖掘速度增加：{0}层
 }
 
 ExplorerPot: {
-	DisplayName: 探险家的兴奋
+	DisplayName: 探险家的活力
 	Description: 你渴望更多！
+	Description2: 移动速度增加{0}%
 }
 
 FrigidCooldown: {
@@ -40,7 +43,7 @@ MarbleDivineWinds: {
 
 RogueCooldown: {
 	DisplayName: 阴影消散
-	Description: “待黑暗把你偷走”
+	Description: “待黑暗将你悄然带走”
 }
 
 AstralMapCooldown: {
@@ -50,7 +53,8 @@ AstralMapCooldown: {
 
 BeetleFortitude: {
 	DisplayName: 甲虫之毅力
-	Description: 杀不死你的只会使你更强……
+	Description: 每次打击都会使你变得更强……
+	Description2: 所受伤害降低{0}%
 }
 
 BloodInfusion: {
@@ -59,7 +63,7 @@ BloodInfusion: {
 }
 
 CandyBuff: {
-	DisplayName: 甜蜜冲击
+	DisplayName: 糖果冲刺
 	Description: 所有属性小幅度增加
 }
 
@@ -75,11 +79,11 @@ HealthBuffC: {
 
 LollipopBuff: {
 	DisplayName: 棒棒糖
-	Description: 生命再生速度增加
+	Description: 生命再生增加
 }
 
 ManaBuffC: {
-	DisplayName: 魔法糖果
+	DisplayName: 魔力糖果
 	Description: 最大魔力值增加40点
 }
 
@@ -104,7 +108,7 @@ CourtCooldown: {
 }
 
 CrimsonSkullBuff: {
-	DisplayName: 猩红之颅
+	DisplayName: 猩红颅骨
 	Description: 淤血烧瓶现在会造成双倍伤害
 }
 
@@ -166,6 +170,7 @@ ElectrifiedV2: {
 EleutheriosBuff: {
 	DisplayName: 厄琉忒瑞俄斯之力
 	Description: 伤害增加0%
+	Description2: 伤害增加{0}%
 }
 
 FateBlessing: {
@@ -224,7 +229,7 @@ GraniteArrow_Debuff: {
 }
 
 GreekFire: {
-	DisplayName: 希腊火
+	DisplayName: 希腊烈火
 	Description: 被诸神点燃
 }
 
@@ -284,8 +289,8 @@ SnowmongerMountBuff: {
 }
 
 TideMountBuff: {
-	DisplayName: 椰龙坐骑
-	Description: 这个可爱的小椰龙将是你最好的新朋友！
+	DisplayName: 鳄恐龙坐骑
+	Description: 这个可爱的小鳄恐龙将是你最好的新朋友！
 }
 
 NebulaFlame: {
@@ -328,12 +333,12 @@ AvianPetBuff: {
 }
 
 BladePetBuff: {
-	DisplayName: 弑君之刃
+	DisplayName: 附魔刀刃
 	Description: “在我面前摇晃着的，不是一把刀子吗？”
 }
 
 CaltfistPetBuff: {
-	DisplayName: 猫面鱼
+	DisplayName: 邪教鱼
 	Description: 这个小家伙照亮了你的道路！
 }
 
@@ -369,7 +374,7 @@ JellyfishBuff: {
 
 LanternBuff: {
 	DisplayName: 绿灯能源电池
-	Description: “它照亮了道路”
+	Description: “它照亮了道路！”
 }
 
 LoomingPresence: {
@@ -393,7 +398,7 @@ OverseerPetBuff: {
 }
 
 PhantomPetBuff: {
-	DisplayName: 幻影
+	DisplayName: 幻影蝠
 	Description: “它融入了黑夜”
 }
 
@@ -403,7 +408,7 @@ SaucerPetBuff: {
 }
 
 ScarabPetBuff: {
-	DisplayName: 微小圣甲虫
+	DisplayName: 小甲虫
 	Description: “它真的喜欢摇滚……”
 }
 
@@ -442,12 +447,12 @@ FlightPotionBuff: {
 }
 
 MoonBlessing: {
-	DisplayName: 苍月果冻
+	DisplayName: 月冻
 	Description: 极速生命再生
 }
 
 MoonBlessingDonut: {
-	DisplayName: 苍月甜甜圈
+	DisplayName: 月冻甜甜圈
 	Description: 极速生命再生，以及高糖分！
 }
 
@@ -462,7 +467,7 @@ PinkPotionBuff: {
 }
 
 RunePotionBuff: {
-	DisplayName: 符文爆发
+	DisplayName: 符文铭刻
 	Description:
 		'''
 		魔法攻击有几率使敌人爆发出符文
@@ -471,7 +476,7 @@ RunePotionBuff: {
 }
 
 SoulPotionBuff: {
-	DisplayName: 灵魂守卫
+	DisplayName: 灵魂之护
 	Description:
 		'''
 		所受伤害降低5%
@@ -608,7 +613,7 @@ PagodaCurse: {
 
 SunPotBuff: {
 	DisplayName: 太阳花盆
-	Description: 生命再生速度增加
+	Description: 生命再生增加
 }
 
 TopazMarked: {
@@ -627,7 +632,7 @@ TrueMarksman: {
 }
 
 UnstableAffliction: {
-	DisplayName: 痛苦无常
+	DisplayName: 无常苦痛
 	Description: 移动速度降低10%
 }
 
@@ -657,7 +662,7 @@ CryoZoneTimer: {
 }
 
 DefenseZoneBuff: {
-	DisplayName: 要塞领域
+	DisplayName: 堡垒领域
 	Description: 你浑身充满了力量！
 }
 
@@ -687,8 +692,8 @@ RepulsionZoneTimer: {
 }
 
 ShieldZoneTimer: {
-	DisplayName: 要塞领域
-	Description: 要塞领域正在运转！
+	DisplayName: 堡垒领域
+	Description: 堡垒领域正在运转！
 }
 
 StaminaZoneBuff: {
@@ -712,7 +717,7 @@ BaubleResistance: {
 }
 
 GildedScarab_buff: {
-	DisplayName: 圣甲虫护盾
+	DisplayName: 甲虫护盾
 	Description: 防御力增加{0}
 }
 
@@ -757,7 +762,7 @@ Empowered: {
 }
 
 Mantaray_Buff: {
-	DisplayName: 鳐鱼
+	DisplayName: 蝠鲼
 	Description: 迅疾如潮！
 }
 
@@ -782,7 +787,7 @@ CurseBreakerMark: {
 }
 
 MarbleMinecartBuff: {
-	DisplayName: 复仇战车
+	DisplayName: 尼米亚战车
 	Description: “你感觉充满了力量！”
 }
 
@@ -833,7 +838,7 @@ SnapsporeMinion_Buff: {
 
 MoonjellySummon_Buff: {
 	DisplayName: 月光守护者
-	Description: 月光守护者召唤小型月光蜘蛛为你而战！
+	Description: 月光守护者召唤小月哲为你而战！
 }
 
 QuacklingMinion_Buff: {

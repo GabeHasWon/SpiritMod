@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria.GameContent;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.StarjinxEvent
 {
@@ -130,7 +131,7 @@ namespace SpiritMod.NPCs.StarjinxEvent
 
 			//Display the % for how much of the wave has been cleared
 			int progress = (int)(100 * StarjinxEventWorld.KilledEnemies / (float)StarjinxEventWorld.MaxEnemies);
-			string waveText = "Wave Progress : " + progress + "%";
+			string waveText = Language.GetTextValue("Mods.SpiritMod.Events.Starjinx.Wave", progress);
 			Utils.DrawBorderString(spriteBatch, waveText, new Vector2(progressBarBackground.Center.X, progressBarBackground.Y + 2.5f), TextColor, Scale, 0.5f, -0.1f);
 			Rectangle waveProgressBar = Utils.CenteredRectangle(new Vector2(progressBarBackground.Center.X, progressBarBackground.Y + progressBarBackground.Height * 0.75f), TextureAssets.ColorBar.Size());
 

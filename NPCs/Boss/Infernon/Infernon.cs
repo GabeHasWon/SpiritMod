@@ -325,9 +325,9 @@ namespace SpiritMod.NPCs.Boss.Infernon
 				if (Main.expertMode)
 				{
 					if (Main.netMode == NetmodeID.SinglePlayer)
-						Main.NewText("You have yet to defeat the true master of Hell...", 220, 100, 100);
+						Main.NewText(Language.GetTextValue("Mods.SpiritMod.Misc.NotDefeat"), 220, 100, 100);
 					else
-						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You have yet to defeat the true master of Hell..."), new Color(220, 100, 100));
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.NotDefeat")), new Color(220, 100, 100));
 
 					Vector2 spawnAt = NPC.Center + new Vector2(0f, (float)NPC.height);
 					NPC.NewNPC(NPC.GetSource_Death(), (int)spawnAt.X, (int)spawnAt.Y, ModContent.NPCType<InfernoSkull>());

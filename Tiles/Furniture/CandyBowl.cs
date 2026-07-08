@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.Localization;
 
 namespace SpiritMod.Tiles.Furniture
 {
@@ -38,7 +39,7 @@ namespace SpiritMod.Tiles.Furniture
 
 			player.noThrow = 2;
 			//player.showItemIcon = true;
-			player.cursorItemIconText = "Take a piece of candy";
+			player.cursorItemIconText = Language.GetTextValue("Mods.SpiritMod.Items.CandyBowl.Tooltip.Take");
 		}
 
 		public override bool RightClick(int i, int j)

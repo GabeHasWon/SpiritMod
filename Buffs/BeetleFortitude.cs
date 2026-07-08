@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Buffs
 {
@@ -31,7 +32,7 @@ namespace SpiritMod.Buffs
 		public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			tip += $"\nDamage taken is reduced by {modPlayer.beetleStacks}%";
+			tip += "\n" + Language.GetTextValue("Mods.SpiritMod.Buffs.BeetleFortitude.Description2", modPlayer.beetleStacks);
 			rare = modPlayer.beetleStacks >> 1;
 		}
 	}

@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Consumable
 {
@@ -25,7 +26,7 @@ namespace SpiritMod.Items.Consumable
 		public override bool CanUseItem(Player player)
 		{
 			if (Main.dayTime) {
-				Main.NewText("The Blood Moon only emerges at night.", 150, 80, 80);
+				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.BloodMoon.DayTime"), 150, 80, 80);
 				return false;
 			}
 			if (Main.bloodMoon)
@@ -35,7 +36,7 @@ namespace SpiritMod.Items.Consumable
 
 		public override bool? UseItem(Player player)
 		{
-			Main.NewText("The Blood Moon is Rising...", 220, 0, 51);
+			Main.NewText(Language.GetTextValue("LegacyMisc.8"), 220, 0, 51);
 			SoundEngine.PlaySound(SoundID.Roar, player.Center);
 			if (!Main.dayTime)
 				Main.bloodMoon = true;

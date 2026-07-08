@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SpiritMod.NPCs.StarjinxEvent;
 using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace SpiritMod.Items.Sets.StarjinxSet
 {
@@ -32,7 +33,7 @@ namespace SpiritMod.Items.Sets.StarjinxSet
 			int centreX = Main.rand.Next(Main.maxTilesX * 6, Main.maxTilesX * 10);
 			Vector2 finalPos = GetOpenSpace(centreX, (int)(Main.worldSurface * 0.35f) + 1000);
 
-			Main.NewText("An enchanted comet has appeared in the sky!", 252, 150, 255);
+			Main.NewText(Language.GetTextValue("Mods.SpiritMod.Events.StarjinxSummon"), 252, 150, 255);
 
 			int id = NPC.NewNPC(player.GetSource_ItemUse(Item), (int)finalPos.X, (int)finalPos.Y, ModContent.NPCType<StarjinxMeteorite>());
 

@@ -245,7 +245,7 @@ public class GiveNPCTask : QuestTask
 			return builder.ToString();
 		}
 
-		builder.Append("Talk to the ").Append(Lang.GetNPCNameValue(_npcType));
+		builder.Append(Language.GetTextValue("Mods.SpiritMod.Quests.TalkTo", Lang.GetNPCNameValue(_npcType)));
 		return builder.ToString();
 	}
 

@@ -189,7 +189,7 @@ internal class VolleyballProjectile : ModProjectile
 				}
 				else if (TimesHit > 10)
 				{
-					string text = $"The volley lasted {TimesHit} hits!";
+					string text = Language.GetTextValue("Mods.SpiritMod.Misc.VolleyHit", TimesHit);
 					if (Main.netMode == NetmodeID.SinglePlayer)
 						Main.NewText(text);
 					else if (Main.netMode == NetmodeID.Server)

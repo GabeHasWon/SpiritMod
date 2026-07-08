@@ -9,6 +9,7 @@ using SpiritMod.Buffs;
 using SpiritMod.NPCs;
 using Terraria.GameContent.ItemDropRules;
 using SpiritMod.Items.Sets.OlympiumSet;
+using Terraria.Localization;
 
 namespace SpiritMod.Mechanics.BoonSystem
 {
@@ -127,7 +128,7 @@ namespace SpiritMod.Mechanics.BoonSystem
 		{
 			if (npc.ModNPC is IBoonable) //Adds tokens to boonable drop table
 			{
-				LeadingConditionRule token = new LeadingConditionRule(new DropRuleConditions.NPCConditional("Drops when enemy is enchanted", CanDropTokens));
+				LeadingConditionRule token = new LeadingConditionRule(new DropRuleConditions.NPCConditional(Language.GetTextValue("Mods.SpiritMod.Conditions.Enchanted"), CanDropTokens));
 				token.OnSuccess(ItemDropRule.Common(ModContent.ItemType<OlympiumToken>(), 1, 3, 6));
 				npcLoot.Add(token);
 			}
