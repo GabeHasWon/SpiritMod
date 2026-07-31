@@ -3762,6 +3762,7 @@ Glyph: {
 	Target: 只能附魔于武器上
 	RightClick: 手持此雕文并右键你想要附魔的武器
 	Remove: 手持此雕文并右键你想要移除附魔的物品
+	PriceText: "{0} 雕文" # @Lin please check if this translation is OK
 }
 
 NullGlyph: {
@@ -7395,6 +7396,7 @@ MarkOfZeus: {
 OlympiumToken: {
 	DisplayName: 奥林匹克代币
 	Tooltip: 可能会引起收藏家的兴趣……
+	PriceText: "{0} 奥林匹克代币"
 }
 
 DuelistLegacy: {
