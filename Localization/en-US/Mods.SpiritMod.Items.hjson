@@ -3762,6 +3762,7 @@ Glyph: {
 	Target: Can only be applied to weapons
 	RightClick: Hold this glyph and right-click the weapon you want to enchant
 	Remove: Hold this glyph and right-click the item whose glyph you want to remove
+	PriceText: "{0} {^0:glyph;glyphs}"
 }
 
 NullGlyph: {
@@ -7395,6 +7396,7 @@ MarkOfZeus: {
 OlympiumToken: {
 	DisplayName: Olympium Token
 	Tooltip: May be of interest to a collector...
+	PriceText: "{0} {^0:Olympium Token;Olympium Tokens}"
 }
 
 DuelistLegacy: {
