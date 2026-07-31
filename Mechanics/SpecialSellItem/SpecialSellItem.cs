@@ -22,10 +22,12 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 				var specialSell = item.ModItem as ISpecialSellItem;
 
 				int customPrice = specialSell.SellAmount();
-				ModItem currencyItem = ItemLoader.GetItem(specialSell.SellType());
-				string name = (specialSell.SellName() == string.Empty) ? currencyItem.DisplayName.Value : (item.ModItem as ISpecialSellItem).SellName();
+				string nameKey = specialSell.SellNameKey();
+				string priceText = (nameKey == string.Empty)
+					? $"{customPrice} {ItemLoader.GetItem(specialSell.SellType()).DisplayName.Value}"
+					: Language.GetText(nameKey).Format(customPrice);
 
-				priceLine.Text = $"{Language.GetTextValue("LegacyTooltip.49")} {customPrice} " + name + ((customPrice > 1) ? Language.GetTextValue("Mods.SpiritMod.Misc.PluralSuffix") : string.Empty);
+				priceLine.Text = $"{Language.GetTextValue("LegacyTooltip.49")} {priceText}";
 				priceLine.OverrideColor = specialSell.SellColor();
 			}
 		}
@@ -76,7 +78,8 @@ namespace SpiritMod.Mechanics.SpecialSellItem
 
 		int SellAmount() => 1;
 
-		string SellName() => string.Empty;
+		/// <summary> Localization key for the pluralizable sell amount text (e.g. "5 glyphs"), formatted via <see cref="LocalizedText.Format"/> with the sell amount as arg 0. Empty to fall back to the currency item's display name. </summary>
+		string SellNameKey() => string.Empty;
 
 		Color SellColor() => Color.Orange;
 	}
