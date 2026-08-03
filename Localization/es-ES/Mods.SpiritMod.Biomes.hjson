@@ -1,0 +1,44 @@
+AsteroidBiome: {
+	DisplayName: Asteroides
+	TownNPCDialogueName: el bioma de asteroides
+}
+
+BriarSurfaceBiome: {
+	DisplayName: Briar
+	TownNPCDialogueName: el bioma de la superficie del brezo
+}
+
+BriarUndergroundBiome: {
+	DisplayName: Briar subterráneo
+	TownNPCDialogueName: el bioma subterráneo de brezo
+}
+
+JellyDelugeBiome: {
+	DisplayName: Diluvio de gelatina
+	TownNPCDialogueName: el bioma Diluvio de gelatina
+}
+
+MysticMoonBiome: {
+	DisplayName: Luna Mística
+	TownNPCDialogueName: el Bioma de la Luna Mística
+}
+
+TideBiome: {
+	DisplayName: La marea
+	TownNPCDialogueName: el Bioma de la Marea
+}
+
+SpiritSurfaceBiome: {
+	DisplayName: Espíritu
+	TownNPCDialogueName: el Bioma de la Superficie Espiritual
+}
+
+SpiritUndergroundBiome: {
+	DisplayName: Espíritu subterráneo
+	TownNPCDialogueName: el Bioma Subterráneo de los Espíritus
+}
+
+SynthwaveSurfaceBiome: {
+	DisplayName: Onda sintética
+	TownNPCDialogueName: el Bioma de Superficie de onda sintética
+}
