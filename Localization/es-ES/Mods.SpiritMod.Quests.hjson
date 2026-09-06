@@ -19,13 +19,13 @@ Undiscovered: No se ha descubierto esta búsqueda.
 TalkTo: Habla con {0}
 # Same as above. Used for "Explore <area>" in-game.
 Explore: "Explora "
-Retrieve: Recuperar
-Catch: Captura
-Kill: "Mata a "
-Craft: Elabora
-Capture: Captura
-Harvest: Cosecha
-OptionalGather: Opcional - Recoger
+Retrieve: Recuperar {0} {1}
+Catch: Captura {0} {1}
+Kill: Mata a {0} {1}
+Craft: Elabora {0} {1}
+Capture: Captura {0} {1}
+Harvest: Cosecha {0} {1}
+OptionalGather: Opcional - Recoger {0} {1}
 // PluralSuffix: s
 // Comma: ", "
 // Or: " or "
