@@ -26,7 +26,7 @@ Craft: 制作{0}{1}
 Capture: 捕获{0}{1}
 Harvest: 收获{0}{1}
 OptionalGather: 可选 - 采集{0}{1}
-PluralSuffix: ""
+PluralSuffix: " "
 Comma: "， "
 Or: "或"
 Objectives: 目标
@@ -34,7 +34,7 @@ Activate: 激活
 Deactivate: 停用
 ClaimRewards: 领取奖励！
 # Used for quest clients. Formats to "The <NPC Title>" in-game. The space is necessary. This also looks like a meme.
-The: ""
+The: " "
 # Same as above for both of the below, but less funny.
 Client: "委托人 - "
 Rewards: 奖励
