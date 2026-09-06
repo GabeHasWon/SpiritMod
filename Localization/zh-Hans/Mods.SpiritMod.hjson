@@ -65,7 +65,7 @@ Events: {
 BossChecklistIntegration: {
 	JellyDeluge: {
 		EntryName: 水母雨
-		SpawnInfo: 在任意Boss被击败后，偶尔会在地表自然生成。也可以使用[i:SpiritMod/DistressJellyItem]召唤，[i:SpiritMod/DistressJellyItem]可在小行星带中找到，并可以通过使用捕虫网进行捕捉。在海月巫师被击败后生成的概率会变低。
+		SpawnInfo: 在任意Boss被击败后，偶尔会在地表自然发生。也可以使用[i:SpiritMod/DistressJellyItem]召唤，其可在小行星带中找到，并可以通过使用虫网捕获。在海月巫师被击败后生成的概率会变低。
 	}
 
 	TheTide: {

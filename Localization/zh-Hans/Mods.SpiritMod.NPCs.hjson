@@ -21,7 +21,7 @@ VanillaDialogue: {
 
 	Pirate: {
 		Adventurer: 唉，{N}那家伙又在吹嘘自己了。他可能是个菜鸟水手，但说实话，他表现的还真不错。
-		Rogue: 哦，{N}那家伙让我想起了自己的过去-啊，那些不好的回忆。
+		Rogue: 哦，{N}那家伙让我想起了自己的过去。啊，那些不好的回忆。
 		Gambler: 你知道吗，{N}总有一天会成为一名出色的海盗。是啊……她有一双黄金之眼。
 		Halloween0: 哟吼吼，还有一瓶……糖果。拿一些吧！
 		Halloween1: 这颗糖果可花了我一条胳膊和一条腿。现在就好好享用，不然就把你扔下跳板！
@@ -29,7 +29,7 @@ VanillaDialogue: {
 	}
 
 	GoblinTinkerer: {
-		RuneWizard: 我和{N}每天都交流经验-他的魔法令人着迷！和他聊天真愉快。
+		RuneWizard: 我和{N}每天都交流经验——他的魔法令人着迷！和他聊天真愉快。
 		Gambler: "{N}让我想起了我的同胞。懒惰的卖家以荒谬的价格向你兜售更多的带刺的球……"
 		Halloween0: 我试过把火箭靴和糖果混在一起，但效果不太理想。剩下的你要吗？
 		Halloween1: 事实证明，把所有口味的糖果混在一起后吃起来味道很糟糕。我知道，我也很失望。
@@ -1152,7 +1152,7 @@ SwordKakamora: {
 
 Adventurer: {
 	DisplayName: 冒险家
-
+	
 	Names: {
 		1: Morgan
 		2: Adam
@@ -1164,7 +1164,7 @@ Adventurer: {
 		8: Adrian
 		9: Christopher
 	}
-
+	
 	Dialogue: {
 		Basic1: 我走遍了世界各地，而且我有很多东西要给你看。
 		Basic2: 你住的房子真漂亮。这可比那些来自荆棘之地的野人把我吊在烤架上时住的强多了。
@@ -1181,7 +1181,7 @@ Adventurer: {
 		Special6: 哥布林比你想象中更有组织性——我看到他们的法师在那边建了一座巨大的塔。你应该找个时间去看看！
 		Special7: 我的老商业伙伴几年前转向了盗贼的生活。我想知道他是否还好。我想他的同伙已经在海边附近某个地方建立了盗贼营地。
 		Special8: 地平线上闪烁着蓝光。想知道那是什么，嗯？
-		Halloween0: 如果我告诉你这是从一个由糖果组成的遥远国度弄来的，你肯定不会信！我保证它的味
+		Halloween0: 如果我告诉你这是从一个由糖果组成的遥远国度弄来的，你肯定不会信！我保证它的味道非常好。
 		Halloween1: 我听说你能从怪物手中的礼袋里得到更多糖果。说得好像我杀僵尸还需要什么借口似的！
 		Bound: 我刚才以为自己死定了！如果你没有插手，我可能已经被那些怪物吃掉了。如果我是你，我不会碰它……瞧，我已经很感激你了；但请别告诉别人，这几个月太漫长了，我只想放个假，不再冒险了。人生苦短，我不想让它变得更短。你有地方住吗？
 	}
@@ -1254,7 +1254,7 @@ BoundRogue: {
 
 Gambler: {
 	DisplayName: 赌徒
-
+	
 	Names: {
 		1: Yumeko
 		2: Vanessa
@@ -1264,7 +1264,7 @@ Gambler: {
 		6: Celine
 		7: Aleksa
 	}
-
+	
 	Dialogue: {
 		Basic1: 赌博是一项皇家运动。你为什么不碰碰运气呢？
 		Basic2: 我要提醒你，我的游戏不适合胆小的人。
@@ -1366,7 +1366,7 @@ Oracle: {
 
 Rogue: {
 	DisplayName: 盗贼
-
+	
 	Names: {
 		1: Zane
 		2: Carlos
@@ -1377,7 +1377,7 @@ Rogue: {
 		7: Shepard
 		8: Sly
 	}
-
+	
 	Dialogue: {
 		Basic1: 来看看我的货？它们挺锋利的。
 		Basic2: 请相信我——被你击杀的Boss的遗体是不会被浪费的。
@@ -1420,7 +1420,7 @@ Rogue: {
 
 RuneWizard: {
 	DisplayName: 附魔师
-
+	
 	Names: {
 		1: Malachai
 		2: Nisarmah
@@ -1431,7 +1431,7 @@ RuneWizard: {
 		7: Oarno
 		8: Cosimo
 	}
-
+	
 	Dialogue: {
 		Basic1: 用我的奇怪雕文来强化你的武器吧！
 		Basic2: 有时，我只是在雕文上乱写一个符文，看看会发生什么。我不建议你这么做。
