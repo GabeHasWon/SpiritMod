@@ -97,6 +97,6 @@ namespace SpiritMod.Items.Glyphs
 
 		public int SellType() => ModContent.ItemType<Glyph>();
 
-		public string SellName() => "glyph";
+		public string SellNameKey() => "Mods.SpiritMod.Items.Glyph.PriceText";
 	}
 }
