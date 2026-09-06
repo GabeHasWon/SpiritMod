@@ -1,8 +1,3 @@
-RecipeConditions: {
-	WarlockLure: 在不洁事业期间
-	DurasilkSheaf: 获得3个柔和丝捆
-}
-
 # I'm very sorry to whoever's translating this. Best of luck, and godspeed. - GabeHasWon
 
 # This is actually only used for the Lifeform Analyzer's (Quest) <NPCName>.
@@ -21,8 +16,6 @@ QuestsFull: 你无法激活更多任务了。
 StopQuest: 你确定吗？你将[c/910000:失去你的当前进度]。
 Undiscovered: 该任务尚未被发现。
 # These are all used for minor parts of quests, such as "Catch 2 Fish" or similar.
-# The space is necessary. Formats to "Talk to the <NPC Name>" in-game.
-TalkToNPC: 交谈对象：
 TalkTo: 与{0}交谈
 # Same as above. Used for "Explore <area>" in-game.
 Explore: 探索
@@ -33,6 +26,9 @@ Craft: 制作
 Capture: 捕捉
 Harvest: 收获
 OptionalGather: 可选 - 采集
+// PluralSuffix: s
+Comma: "， "
+Or: 或
 Objectives: 目标
 Activate: 激活
 Deactivate: 停用
@@ -44,9 +40,6 @@ Client: "委托人 - "
 Rewards: 奖励
 # Used for chat quest snippets.
 ViewQuest: 点击此处以查看任务！
-QuesTime: "{1}秒{0}分"
-Comma: "， "
-Or: 或
 
 Buttons: {
 	# Quest states
@@ -209,6 +202,7 @@ QuestInfo: {
 
 	ZombieOriginQuest: {
 		Name: 不洁事业
+		// Client: Unknown
 		Description:
 			'''
 			我发现了一卷奇怪的条幅，

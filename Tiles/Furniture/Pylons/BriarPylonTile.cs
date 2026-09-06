@@ -9,10 +9,10 @@ namespace SpiritMod.Tiles.Furniture.Pylons
 {
 	internal class BriarPylonTile : SimplePylonTile<BriarPylonItem>
 	{
-		internal override string MapKeyName => "Mods.SpiritMod.MapObject.BriarPylon";
+		internal override string MapKeyName => "Mods.SpiritMod.Items.BriarPylonItem.DisplayName";
 		internal override Condition CanBeSold => SpiritConditions.InBriar;
 
-		public override void StaticDefaults(LocalizedText name) => AddMapEntry(new Color(217, 250, 49), name);
+		public override void StaticDefaults() => AddMapEntry(new Color(217, 250, 49), Language.GetText(MapKeyName));
 
 		public override bool ValidTeleportCheck_BiomeRequirements(TeleportPylonInfo pylonInfo, SceneMetrics sceneData) => Biomes.BiomeTileCounts.InBriar;
 		public override bool IsSold(int npcType, Player player, bool npcHappyEnough) => npcHappyEnough && Biomes.BiomeTileCounts.InBriar;

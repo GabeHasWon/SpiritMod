@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Graphics;
 using SpiritMod.Mechanics.QuestSystem;
+using SpiritMod.UI.Elements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
-using Terraria.UI;
 using Terraria.GameContent.UI.Elements;
-using SpiritMod.UI.Elements;
-using ReLogic.Graphics;
+using Terraria.Localization;
+using Terraria.UI;
 using Terraria.UI.Chat;
 using Terraria.Localization;
 
@@ -38,7 +39,7 @@ namespace SpiritMod.Utilities
 		{
 			if (value > 1)
 			{
-				if (word.Last() != 's') return Language.GetTextValue("Mods.SpiritMod.Misc.PluralSuffix");
+				if (word.Last() != 's') return Language.GetTextValue("Mods.SpiritMod.Quests.PluralSuffix", word);
 				return "\'";
 			}
 			return "";

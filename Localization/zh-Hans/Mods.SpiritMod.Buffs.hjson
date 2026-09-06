@@ -5,30 +5,39 @@ AceOfDiamondsBuff: {
 
 AngelLight: {
 	DisplayName: 天使之光
-	Description: Mods.SpiritMod.Buffs.AngelLight.Description
+	Description: ""
 }
 
 AngelWrath: {
 	DisplayName: 天使之怒
-	Description: Mods.SpiritMod.Buffs.AngelWrath.Description
+	Description: ""
 }
 
 ExplorerFight: {
 	DisplayName: 强力打击
-	Description: 你已掌握诀窍！
-	Description2: 造成的伤害增加{0}%
+	Description:
+		'''
+		你已掌握诀窍！
+		造成的伤害增加{0}%
+		'''
 }
 
 ExplorerMine: {
 	DisplayName: 探险家的毅力
-	Description: 挖下去吧！
-	Description2: 挖掘速度增加：{0}层
+	Description:
+		'''
+		挖下去吧！
+		挖掘速度增加：{0}层
+		'''
 }
 
 ExplorerPot: {
 	DisplayName: 探险家的活力
-	Description: 你渴望更多！
-	Description2: 移动速度增加{0}%
+	Description:
+		'''
+		你渴望更多！
+		移动速度增加{0}%
+		'''
 }
 
 FrigidCooldown: {
@@ -53,8 +62,11 @@ AstralMapCooldown: {
 
 BeetleFortitude: {
 	DisplayName: 甲虫之毅力
-	Description: 每次打击都会使你变得更强……
-	Description2: 所受伤害降低{0}%
+	Description:
+		'''
+		每次打击都会使你变得更强……
+		所受伤害降低{0}%
+		'''
 }
 
 BloodInfusion: {
@@ -114,7 +126,7 @@ CrimsonSkullBuff: {
 
 Death: {
 	DisplayName: 死亡
-	Description: Mods.SpiritMod.Buffs.Death.Description
+	Description: ""
 }
 
 DeathRoseCooldown: {
@@ -124,7 +136,7 @@ DeathRoseCooldown: {
 
 AcidBurn: {
 	DisplayName: 剧毒之握
-	Description: Mods.SpiritMod.Buffs.AcidBurn.Description
+	Description: ""
 }
 
 Afflicted: {
@@ -139,12 +151,12 @@ BloodCorrupt: {
 
 CryoCrush: {
 	DisplayName: 极寒爆破
-	Description: Mods.SpiritMod.Buffs.CryoCrush.Description
+	Description: ""
 }
 
 DoomDestiny: {
 	DisplayName: 裂星
-	Description: Mods.SpiritMod.Buffs.DoomDestiny.Description
+	Description: ""
 }
 
 FesteringWounds: {
@@ -169,8 +181,7 @@ ElectrifiedV2: {
 
 EleutheriosBuff: {
 	DisplayName: 厄琉忒瑞俄斯之力
-	Description: 伤害增加0%
-	Description2: 伤害增加{0}%
+	Description: 伤害增加{0}%
 }
 
 FateBlessing: {
@@ -188,22 +199,9 @@ BurningRage: {
 	Description: 你正受到伤害
 }
 
-CollapsingVoid.DisplayName: 坍塌虚空
-DevouringVoid.DisplayName: 吞噬虚空
-
 DivineStrike: {
 	DisplayName: 神圣惩击
 	Description: 你下次攻击造成的伤害增加
-}
-
-PhantomVeil: {
-	DisplayName: 幻影面纱
-	Description: 格挡下次攻击
-}
-
-SanguineBleed: {
-	DisplayName: 猩红血溢
-	Description: 你正在迅速失去血液
 }
 
 SanguineRegen: {
@@ -216,16 +214,9 @@ TemporalShift: {
 	Description: 双击方向键以冲击并获得临时的移动速度加成
 }
 
-WanderingPlague.DisplayName: 游荡瘟疫
-
-WindBurst: {
-	DisplayName: 狂风破
-	Description: 受到的击退更强
-}
-
 GraniteArrow_Debuff: {
 	DisplayName: 花岗岩箭矢减益
-	Description: Mods.SpiritMod.Buffs.GraniteArrow_Debuff.Description
+	Description: ""
 }
 
 GreekFire: {
@@ -233,14 +224,9 @@ GreekFire: {
 	Description: 被诸神点燃
 }
 
-HighGravityBuff: {
-	DisplayName: 超重力
-	Description: 重力复原
-}
-
 HolyLight: {
 	DisplayName: 神圣之光
-	Description: Mods.SpiritMod.Buffs.HolyLight.Description
+	Description: ""
 }
 
 IceBerryBuff: {
@@ -295,17 +281,12 @@ TideMountBuff: {
 
 NebulaFlame: {
 	DisplayName: 星云之焰
-	Description: Mods.SpiritMod.Buffs.NebulaFlame.Description
+	Description: ""
 }
 
 OliveBranchBuff: {
 	DisplayName: 和平解决
 	Description: “与你的敌人讲和”
-}
-
-OnyxWind: {
-	DisplayName: 玛瑙旋风
-	Description: 移动速度增加10%
 }
 
 OracleBoonBuff: {
@@ -566,11 +547,6 @@ Stopped: {
 	Description: 你被时间锁在原地
 }
 
-Sturdy: {
-	DisplayName: 坚韧
-	Description: “你的外壳裂开了”
-}
-
 ElectricSummonTag: {
 	DisplayName: 召唤标记
 	Description: 已标记！
@@ -648,7 +624,7 @@ VirulenceCooldown: {
 
 Wither: {
 	DisplayName: 枯萎
-	Description: Mods.SpiritMod.Buffs.Wither.Description
+	Description: ""
 }
 
 WitheringLeaf: {
@@ -684,11 +660,6 @@ LowGravZoneBuff: {
 LowGravZoneTimer: {
 	DisplayName: 低重力领域
 	Description: 低重力领域正在运转！
-}
-
-RepulsionZoneTimer: {
-	DisplayName: 排斥领域
-	Description: 排斥领域正在运转！
 }
 
 ShieldZoneTimer: {
@@ -731,11 +702,6 @@ RunicSiphon: {
 	Description: 伤害减免降低并且生命快速流失
 }
 
-ManajinxBuff: {
-	DisplayName: 星光附魔
-	Description: 魔法武器会额外生成追踪星辰，并且魔力消耗大幅度降低
-}
-
 PendantBuff: {
 	DisplayName: 鼠妇伙伴
 	Description: “摇滚起来！”
@@ -749,11 +715,6 @@ MirrorCoatBuff: {
 SaddleBuff: {
 	DisplayName: 极光鹿坐骑
 	Description: 你感受到了星星的力量
-}
-
-CosmicRattlerPetBuff: {
-	DisplayName: 星蛛
-	Description: “在内部，你可以看到太空深处”
 }
 
 Empowered: {
@@ -799,6 +760,7 @@ Crystallization: {
 Golden_Curse: {
 	DisplayName: 金色诅咒
 	Description: 伤害和下落速度增加
+	Death: "{0} 死的时候像个金条一样"
 }
 
 Crawlerock_Buff: {
@@ -879,11 +841,6 @@ PigronMinion_Buff: {
 FairyMinion_Buff: {
 	DisplayName: 仙灵
 	Description: 嘿！当心点！
-}
-
-Jinxprobe_Buff: {
-	DisplayName: 微型厄劫探测器
-	Description: 厄劫探测器会为你而战
 }
 
 StarplateDrone_Buff: {

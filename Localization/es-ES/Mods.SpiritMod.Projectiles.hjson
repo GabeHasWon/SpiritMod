@@ -8,10 +8,8 @@ Sea_Snail_Poison_Projectile.DisplayName: Veneno de caracol marino
 InterstellarShield.DisplayName: Escudo interestelar
 UkeleleProj.DisplayName: Ukulele
 UkeleleProjTwo.DisplayName: Ukelele
-UmbillicalEyeballProj.DisplayName: Globo ocular umbilical
 Unstable_Tesla_Coil_Projectile.DisplayName: Descarga relámpago
 RipperSlugProj.DisplayName: Bala desgarradora
-ManajinxStar.DisplayName: Energía de la luz de las estrellas
 AtlasPetProjectile.DisplayName: Atlas Jr.
 AvianHookProjectile.DisplayName: ${ProjectileName.GemHookAmethyst}
 AvianPet.DisplayName: Cría antigua
@@ -39,7 +37,6 @@ StarplateDrone.DisplayName: Dron de combate Starplate
 ThornArrow.DisplayName: Flecha de espina
 VinewrathPetProjectile.DisplayName: Plántula iracunda
 StarPowderProj.DisplayName: Proyectil de pólvora estelar
-VolleyballProjectile.DisplayName: Proyectil de voleibol
 BlizzardProjectile.DisplayName: Ventisca
 KelpHookProj.DisplayName: Gancho de algas marinas
 MagnetHookProj.DisplayName: ${ProjectileName.GemHookAmethyst}
@@ -69,7 +66,6 @@ CryoSwordProj.DisplayName: Aullido de escarcha
 IceWall.DisplayName: Pilar criogénico
 IceWave.DisplayName: Pilar criogénico
 GastricAcid.DisplayName: Jugo gástrico
-GastricGusherProjectile.DisplayName: Chorro Gástrico
 BismiteGrenadeProj.DisplayName: Granada de bismita
 HealingSplash.DisplayName: Salpicadura curativa
 ClatterMaceProj.DisplayName: Proyectil de Maza Ruidosa
@@ -126,8 +122,6 @@ ArtemisHuntArrow.DisplayName: Flecha celestial
 ArtemisHuntProj.DisplayName: Caza de Artemisa
 ArtemisHuntVolley.DisplayName: Flecha celestial
 BetrayersChainsProj.DisplayName: Espadas del Caos
-ThyrsusProj.DisplayName: Tirso
-ThyrsusProjTwo.DisplayName: Enredadera
 Cannonbubble.DisplayName: Burbuja de cañón
 SkullSentryEye.DisplayName: Devorador de hombres
 SkullSentryMucus.DisplayName: Mucosidad del centinela de cráneo

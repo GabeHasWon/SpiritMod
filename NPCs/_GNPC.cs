@@ -315,7 +315,7 @@ namespace SpiritMod.NPCs
 			{
 				if (npc.type == NPCID.Guide && !player.HasItem(ModContent.ItemType<CandyBag>()))
 				{
-					chat = Language.GetTextValue("Mods.SpiritMod.TownNPC.Guide.Halloween");
+					chat = Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Guide.HalloweenCandyBag");
 					player.QuickSpawnItem(npc.GetSource_GiftOrReward(), ModContent.ItemType<CandyBag>());
 				}
 				else
@@ -340,7 +340,7 @@ namespace SpiritMod.NPCs
 				else if (npc.type == ModContent.NPCType<Gambler>()) modKey = "Gambler";
     
 			if (modKey != null)
-				return Language.GetTextValue($"Mods.SpiritMod.TownNPC.{modKey}.Halloween.Dialogue{dialogue}");
+				return Language.GetTextValue($"Mods.SpiritMod.NPCs.{modKey}.Dialogue.Halloween{dialogue}");
 
 			var vanillaKeys = new Dictionary<int, (string key, int maxDialogue)>()
 			{
@@ -374,11 +374,11 @@ namespace SpiritMod.NPCs
 			if (vanillaKeys.TryGetValue(npc.type, out var info))
 			{
 				dialogue = Main.rand.Next(info.maxDialogue);
-				string path = $"Mods.SpiritMod.TownNPC.Vanilla.{info.key}.Halloween.Dialogue{dialogue}";
+				string path = $"Mods.SpiritMod.NPCs.VanillaDialogue.{info.key}.Halloween{dialogue}";
 				if (npc.type == NPCID.ArmsDealer && dialogue == 0 && player.Player.HeldItem.type == ItemID.CandyCornRifle)
-					return Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.ArmsDealer.Halloween.DialogueSpecial");
+					return Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.ArmsDealer.HalloweenCandyRifle");
 				else if (npc.type == NPCID.Truffle && dialogue == 1 && (name = NPC.GetFirstNPCNameOrNull(NPCID.Nurse)) != null)
-					return Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Truffle.Halloween.DialogueSpecial", name);
+					return Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Truffle.HalloweenNurse", name);
 				else if (npc.type == NPCID.Painter && dialogue == 1)
 					return Language.GetTextValue(path, player.Player.name);
 				else if (npc.type == NPCID.WitchDoctor && dialogue == 1)
@@ -389,7 +389,7 @@ namespace SpiritMod.NPCs
 				return Language.GetTextValue(path);
 			}
 
-			return Language.GetTextValue($"Mods.SpiritMod.TownNPC.Default.Halloween.Dialogue{dialogue}", player.Player.name);
+			return Language.GetTextValue($"Mods.SpiritMod.NPCs.VanillaDialogue.HalloweenGeneric.{dialogue}", player.Player.name);
 		}
 
 		public override Color? GetAlpha(NPC npc, Color drawColor)

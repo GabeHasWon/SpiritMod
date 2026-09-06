@@ -80,7 +80,7 @@ namespace SpiritMod.NPCs.Town
 		{
 			List<string> nameList = new();
 			for (int i = 1; i < 10; i++)
-				nameList.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Name" + i));
+				nameList.Add(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Names." + i));
 
 			return nameList;
 		}
@@ -91,25 +91,25 @@ namespace SpiritMod.NPCs.Town
 		{
 			List<string> dialogue = new();
 			for (int i = 1; i < 8; i++)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Basic" + i));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Basic" + i));
 
 			int merchant = NPC.FindFirstNPC(NPCID.Merchant);
 			if (merchant >= 0)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Special1", Main.npc[merchant].GivenName));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Special1", Main.npc[merchant].GivenName));
 
 			int travellingMerchant = NPC.FindFirstNPC(NPCID.TravellingMerchant);
 			if (travellingMerchant >= 0)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Special2", Main.npc[travellingMerchant].GivenName));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Special2", Main.npc[travellingMerchant].GivenName));
 
 			int armsDealer = NPC.FindFirstNPC(NPCID.ArmsDealer);
 			if (armsDealer >= 0)
-				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Special3", Main.npc[armsDealer].GivenName));
+				dialogue.Add(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Special3", Main.npc[armsDealer].GivenName));
 
-			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Special4"), !Main.dayTime);
-			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Special5"), Main.bloodMoon);
-			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Special6"), MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
-			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Special7"), !MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
-			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.TownNPC.Adventurer.Dialogue.Special8"), NPC.downedMechBossAny);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Special4"), !Main.dayTime);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Special5"), Main.bloodMoon);
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Special6"), MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Special7"), !MyWorld.gennedTower && !NPC.AnyNPCs(NPCType<Rogue>()) && NPC.AnyNPCs(NPCType<BoundRogue>()));
+			dialogue.AddWithCondition(Language.GetTextValue("Mods.SpiritMod.NPCs.Adventurer.Dialogue.Special8"), NPC.downedMechBossAny);
 			
 			return Main.rand.Next(dialogue);
 		}

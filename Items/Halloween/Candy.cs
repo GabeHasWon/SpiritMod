@@ -1,12 +1,10 @@
 using Microsoft.Xna.Framework;
 using SpiritMod.Buffs.Candy;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -17,6 +15,8 @@ namespace SpiritMod.Items.Halloween
 		protected override bool CloneNewInstances => true;
 
 		public int Variant { get; internal set; }
+
+		public const int VariantCount = 31;
 
 		internal override Point Size => new(34, 16);
 
@@ -29,45 +29,10 @@ namespace SpiritMod.Items.Halloween
 			Item.buffType = ModContent.BuffType<CandyBuff>();
 			Item.buffTime = 14400;
 
-			Variant = Main.rand.Next(CandyNames.Count);
+			Variant = Main.rand.Next(VariantCount);
 		}
 
-
-		internal static readonly ReadOnlyCollection<string> CandyNames =
-			Array.AsReadOnly(new string[]
-		{
-			"Popstone",
-			"Three Muskets",
-			"Lhizzlers",
-			"Moon Jelly Beans",
-			"Silk Duds",
-			"Necro Wafers",
-			"Blinkroot Pop",
-			"Gummy Slimes",
-			"Cry Goblin",
-			"Sour patch Slimes",
-			"Stardust Burst",
-			"Hellfire Tamales",
-			"Blinkroot Patty",
-			"Xenowhoppers",
-			"Gem&Ms",
-			"100,000 copper bar",
-			"Toblerbone",
-			"Delicious Looking Eye",
-			"Silky Way",
-			"Malted Silk Balls",
-			"Cloudheads",
-			"Red Devil Hots",
-			"Rune Pop",
-			"Nursey Kisses",
-			"Skullies",
-			"Firebolts",
-			"Vinewrath Cane",
-			"Candy Acorn",
-			"Bunnyfinger",
-			"Ichorice",
-			"Lunatic-tac"
-		});
+		internal static string GetCandyName(int variant) => Language.GetTextValue($"Mods.SpiritMod.Items.Candy.Names.{variant}");
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -75,8 +40,8 @@ namespace SpiritMod.Items.Halloween
 
 			int index = tooltips.FindIndex(tooltip => tooltip.Name.Equals("ItemName"));
 			if (index >= 0) {
-				TooltipLine name = tooltips.ElementAt(index);
-				TooltipLine line = new TooltipLine(Mod, "ItemNameSub", "'" + CandyNames[Variant] + "'");
+
+				TooltipLine line = new TooltipLine(Mod, "ItemNameSub", GetCandyName(Variant));
 				tooltips.Insert(index + 1, line);
 			}
 		}

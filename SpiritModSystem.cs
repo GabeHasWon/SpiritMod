@@ -86,19 +86,19 @@ namespace SpiritMod
 			RecipeGroup.RegisterGroup("SpiritMod:EvilMaterial", BaseGroup(ItemID.CursedFlame, new int[]
 				{ ItemID.CursedFlame, ItemID.Ichor }));
 
-			RecipeGroup.RegisterGroup("SpiritMod:EmeraldBows", BaseGroup(Language.GetTextValue("Mods.SpiritMod.Misc.RecipeGroup.EoRBow"), new int[]
+			RecipeGroup.RegisterGroup("SpiritMod:EmeraldBows", BaseGroup(Language.GetTextValue("Mods.SpiritMod.RecipeGroup.EoRBow"), new int[]
 				{ ModContent.ItemType<Emerald_Bow>(), ModContent.ItemType<Ruby_Bow>() }));
 
-			RecipeGroup.RegisterGroup("SpiritMod:TopazBows", BaseGroup(Language.GetTextValue("Mods.SpiritMod.Misc.RecipeGroup.SoTBow"), new int[]
+			RecipeGroup.RegisterGroup("SpiritMod:TopazBows", BaseGroup(Language.GetTextValue("Mods.SpiritMod.RecipeGroup.SoTBow"), new int[]
 				{ ModContent.ItemType<Sapphire_Bow>(), ModContent.ItemType<Topaz_Bow>() }));
 
-			RecipeGroup.RegisterGroup("SpiritMod:AmethystStaffs", BaseGroup(Language.GetTextValue("Mods.SpiritMod.Misc.RecipeGroup.AoTStaff"), new int[]
+			RecipeGroup.RegisterGroup("SpiritMod:AmethystStaffs", BaseGroup(Language.GetTextValue("Mods.SpiritMod.RecipeGroup.AoTStaff"), new int[]
 				{ ItemID.AmethystStaff, ItemID.TopazStaff }));
 
-			RecipeGroup.RegisterGroup("SpiritMod:SapphireStaffs", BaseGroup(Language.GetTextValue("Mods.SpiritMod.Misc.RecipeGroup.SoEStaff"), new int[]
+			RecipeGroup.RegisterGroup("SpiritMod:SapphireStaffs", BaseGroup(Language.GetTextValue("Mods.SpiritMod.RecipeGroup.SoEStaff"), new int[]
 				{ ItemID.SapphireStaff, ItemID.EmeraldStaff }));
 
-			RecipeGroup.RegisterGroup("SpiritMod:RubyStaffs", BaseGroup(Language.GetTextValue("Mods.SpiritMod.Misc.RecipeGroup.RoDStaff"), new int[]
+			RecipeGroup.RegisterGroup("SpiritMod:RubyStaffs", BaseGroup(Language.GetTextValue("Mods.SpiritMod.RecipeGroup.RoDStaff"), new int[]
 				{ ItemID.RubyStaff, ItemID.DiamondStaff }));
 		}
 

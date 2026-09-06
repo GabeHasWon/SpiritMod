@@ -8,6 +8,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests;
 
 public class AnglerStatueQuest : Quest
 {
+	public override int QuestClientID => NPCID.Angler;
 	public override int Difficulty => 1;
 	public override string QuestCategory => "Forager";
 

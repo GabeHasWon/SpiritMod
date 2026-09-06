@@ -10,6 +10,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 {
     public class ManajinxStar : ModProjectile
     {
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Starlight Energy");

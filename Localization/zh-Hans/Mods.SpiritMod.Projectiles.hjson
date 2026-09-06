@@ -8,10 +8,8 @@ Sea_Snail_Poison_Projectile.DisplayName: 海蜗之毒
 InterstellarShield.DisplayName: 星界护盾
 UkeleleProj.DisplayName: 尤克里里
 UkeleleProjTwo.DisplayName: 尤克里里
-UmbillicalEyeballProj.DisplayName: 脐带眼球
 Unstable_Tesla_Coil_Projectile.DisplayName: 闪电电击
 RipperSlugProj.DisplayName: 开膛弹
-ManajinxStar.DisplayName: 星光能量
 AtlasPetProjectile.DisplayName: 小擎元魔像
 AvianHookProjectile.DisplayName: ${ProjectileName.GemHookAmethyst}
 AvianPet.DisplayName: 远古雏鸟
@@ -39,7 +37,6 @@ StarplateDrone.DisplayName: 星盘战斗无人机
 ThornArrow.DisplayName: 荆棘箭
 VinewrathPetProjectile.DisplayName: 愤怒的幼苗
 StarPowderProj.DisplayName: 星之尘
-VolleyballProjectile.DisplayName: 排球
 BlizzardProjectile.DisplayName: 暴雪
 KelpHookProj.DisplayName: 海带钩
 MagnetHookProj.DisplayName: ${ProjectileName.GemHookAmethyst}
@@ -69,7 +66,6 @@ CryoSwordProj.DisplayName: 白霜雾嚎
 IceWall.DisplayName: 冰晶柱
 IceWave.DisplayName: 冰晶柱
 GastricAcid.DisplayName: 胃酸
-GastricGusherProjectile.DisplayName: 胃液喷流
 BismiteGrenadeProj.DisplayName: 铋华手榴弹
 HealingSplash.DisplayName: 治疗溅液
 ClatterMaceProj.DisplayName: 颤响链锤
@@ -126,8 +122,6 @@ ArtemisHuntArrow.DisplayName: 天界箭矢
 ArtemisHuntProj.DisplayName: 阿尔忒弥斯之狩
 ArtemisHuntVolley.DisplayName: 天界箭矢
 BetrayersChainsProj.DisplayName: 混沌之刃
-ThyrsusProj.DisplayName: 手杖
-ThyrsusProjTwo.DisplayName: 藤蔓
 Cannonbubble.DisplayName: 炮泡
 SkullSentryEye.DisplayName: 食人兽
 SkullSentryMucus.DisplayName: 颅骨哨卫粘液

@@ -702,29 +702,9 @@ AstronautLegs: {
 	Tooltip: ""
 }
 
-BeachTowel: {
-	DisplayName: 沙滩浴巾
-	Tooltip: “它能让你保持干燥，但一定不要戴着它跳进水里！”
-}
-
-BikiniBottom: {
-	DisplayName: 比基尼泳裤
-	Tooltip: “当你可以在阳光下自由奔跑时，谁还需要盔甲呢！”
-}
-
-BikiniTop: {
-	DisplayName: 比基尼上衣
-	Tooltip: “不管人们怎么想，它确实不能提供任何形式的防御。”
-}
-
 SwimmingTrunks: {
 	DisplayName: 泳裤
 	Tooltip: “它们并没有提供太多的防御，但不可否认的是，它们很时尚。”
-}
-
-TintedGlasses: {
-	DisplayName: 有色眼镜
-	Tooltip: “它们有助于卖相，所以即便是在天黑的时候也最好戴上它们。”
 }
 
 BeekeeperBody: {
@@ -1748,15 +1728,6 @@ Book_ArmorGuide: {
 		'''
 }
 
-Book_Blossmoon: {
-	DisplayName: 月绽灵笔记
-	Tooltip:
-		'''
-		作者：研究员卡尔文·瑞伊斯
-		内含和可爱的月绽灵相关的笔记
-		'''
-}
-
 Book_Briar: {
 	DisplayName: 荆棘之地笔记
 	Tooltip: 作者：实地研究员雷沃兹
@@ -1777,16 +1748,6 @@ Book_Briar: {
 		地下荆棘之地显示出某个现已灭绝的文明曾在此居住的痕迹。可以观察到废弃的砖木房屋，以及原始的武器、工具和饰品。关于这些废墟以及整个荆棘之地，还有许多未解之谜。它从何而来？为何如此危险？曾经居住在这里的人们又去了哪里？
 		---
 		附注：这本笔记似乎少了一页笔记和示意图。我大概是在荆棘之地的深处把它弄丢了。不过，这不值得回程去取。
-		'''
-}
-
-Book_BriarArt: {
-	DisplayName: 荆棘之地植物群系
-	Tooltip:
-		'''
-		作者：实地研究员雷沃兹
-		似乎是一本关于荆棘之地的书的残页
-		内有叶族生态群系的示意图
 		'''
 }
 
@@ -1829,24 +1790,6 @@ Book_Lava: {
 		'''
 }
 
-Book_LuminousArt: {
-	DisplayName: 发光之海！
-	Tooltip:
-		'''
-		作者：某不知名探险家
-		似乎是海边某种奇怪景象的草图
-		'''
-}
-
-Book_Lumoth: {
-	DisplayName: 萤火蛾笔记
-	Tooltip:
-		'''
-		作者：研究员卡尔文·瑞伊斯
-		解释了萤火蛾的发光原理
-		'''
-}
-
 Book_MJW: {
 	DisplayName: 怪响怪咖
 	Tooltip: 作者：探险家特雷弗·欧文
@@ -1873,26 +1816,6 @@ Book_Slime: {
 		首先，对我们所知道的进行总结是很重要的。从科学角度讲，史莱姆是大块的粘稠物。它们高度易燃，没有内脏，但似乎相当聪明。
 		它们的组成与我和我的法师同伴所见过的任何已知物质都不匹配。那么，它们是从哪里来的？是不是一个敌对的法师在召唤它们？目的是什么？！它们是神降下的惩罚吗？我们是否永远被困在这个弹跳的粘液炼狱中？
 		最重要的是——它们能吃吗？我们必须继续寻找答案。
-		'''
-}
-
-Book_Soulbloom: {
-	DisplayName: 绽魂花笔记
-	Tooltip:
-		'''
-		作者：炼金术士列娜·阿什伍德
-		详细记载了一种珍稀草药的结构与作用
-		“她是在哪找到绽魂花的？”
-		'''
-}
-
-Book_SpiritArt: {
-	DisplayName: 魂灵之地植物群系
-	Tooltip:
-		'''
-		作者：实地研究员雷沃兹
-		未知魂灵之地的一页笔记
-		“这个神秘之地仍有太多未知等待我们去发掘”
 		'''
 }
 
@@ -1929,6 +1852,71 @@ Book_Yeremy: {
 		'''
 }
 
+# Do not localize image paths unless you have your own localized png files
+
+Book_Blossmoon: {
+	DisplayName: 月绽灵笔记
+	Tooltip:
+		'''
+		作者：研究员卡尔文·瑞伊斯
+		内含和可爱的月绽灵相关的笔记
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/BlossmoonPage
+}
+
+Book_BriarArt: {
+	DisplayName: 荆棘之地植物群系
+	Tooltip:
+		'''
+		作者：实地研究员雷沃兹
+		似乎是一本关于荆棘之地的书的残页
+		内有叶族生态群系的示意图
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/TheBriar
+}
+
+Book_Soulbloom: {
+	DisplayName: 绽魂花笔记
+	Tooltip:
+		'''
+		作者：炼金术士列娜·阿什伍德
+		详细记载了一种珍稀草药的结构与作用
+		“她是在哪找到绽魂花的？”
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/SoulbloomPage
+}
+
+Book_SpiritArt: {
+	DisplayName: 魂灵之地植物群系
+	Tooltip:
+		'''
+		作者：实地研究员雷沃兹
+		未知魂灵之地的一页笔记
+		“这个神秘之地仍有太多未知等待我们去发掘”
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/TheSpirit
+}
+
+Book_LuminousArt: {
+	DisplayName: 发光之海！
+	Tooltip:
+		'''
+		作者：某不知名探险家
+		似乎是海边某种奇怪景象的草图
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/LuminousOcean
+}
+
+Book_Lumoth: {
+	DisplayName: 萤火蛾笔记
+	Tooltip:
+		'''
+		作者：研究员卡尔文·瑞伊斯
+		解释了萤火蛾的发光原理
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/LumothPage
+}
+
 BismitePage: {
 	DisplayName: 铋华晶体笔记
 	Tooltip:
@@ -1936,6 +1924,7 @@ BismitePage: {
 		作者：亚里克斯·塔尼斯教授
 		记载了一种洞穴中的有毒矿物
 		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/BismiteMaterialPage
 }
 
 EnchantedLeafPage: {
@@ -1945,6 +1934,7 @@ EnchantedLeafPage: {
 		作者：亚里克斯·塔尼斯教授
 		记载了荆棘之地的一种神奇的树叶
 		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/EnchantedLeafMaterialPage
 }
 
 FrigidFragmentPage: {
@@ -1954,6 +1944,7 @@ FrigidFragmentPage: {
 		作者：亚里克斯·塔尼斯教授
 		记载了一种在苔原发现的冰冻水晶
 		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/FrigidFragmentMaterialPage
 }
 
 GlowrootPage: {
@@ -1963,6 +1954,7 @@ GlowrootPage: {
 		作者：亚里克斯·塔尼斯教授
 		记载了一种在高大蘑菇树下发现的奇怪根茎
 		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/GlowrootPage
 }
 
 GranitePage: {
@@ -1972,6 +1964,7 @@ GranitePage: {
 		作者：亚里克斯·塔尼斯教授
 		记载了一种在花岗岩洞中发现的奇怪矿石
 		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/GraniteMaterialPage
 }
 
 HeartScalePage: {
@@ -1981,6 +1974,7 @@ HeartScalePage: {
 		作者：亚里克斯·塔尼斯教授
 		记载了红心鱼身上的闪光鳞片
 		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/HeartScaleMaterialPage
 }
 
 MarblePage: {
@@ -1990,6 +1984,7 @@ MarblePage: {
 		作者：亚里克斯·塔尼斯教授
 		记载了一种在大理石洞中发现的奇怪矿石
 		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/MarbleMaterialPage
 }
 
 ArcaneGeyser: {
@@ -2766,16 +2761,6 @@ CloudstalkSeed: {
 	Tooltip: ""
 }
 
-Volleyball: {
-	DisplayName: 排球
-	Tooltip: ""
-}
-
-VolleyballCourtChecker: {
-	DisplayName: 排球场检测器
-	Tooltip: ""
-}
-
 BeachUmbrellaItem: {
 	DisplayName: 遮阳伞
 	Tooltip: ""
@@ -3487,7 +3472,7 @@ SurrenderBell: {
 		只能在入侵到来时使用，无法在入侵临近时使用
 		“天国的钟声”
 		'''
-	Surrender: 侵略者取消了他们的进攻！
+	Message: 侵略者取消了他们的进攻！
 }
 
 TinyCrabItem: {
@@ -3727,6 +3712,14 @@ BeeGlyph: {
 		攻击时会定期释放蜜蜂
 		'''
 	Effect: 涂蜜
+
+	# Russian-only localization - feel free to leave unset.
+	# The Effect key above is the masculine/default form
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 BlazeGlyph: {
@@ -3739,6 +3732,12 @@ BlazeGlyph: {
 	Addendum: 造成伤害时会将你点燃
 	Effect: 点燃
 	Death: "{0} 被怒火吞噬了……"
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 ChaosGlyph: {
@@ -3746,6 +3745,12 @@ ChaosGlyph: {
 	Tooltip: 你的武器会定期的切换雕文效果
 	Addendum: 你的武器会定期的切换雕文效果
 	Effect: 不稳定
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 FrostGlyph: {
@@ -3753,6 +3758,12 @@ FrostGlyph: {
 	Tooltip: 攻击有几率短暂的冻结敌人
 	Addendum: 攻击有几率短暂的冻结敌人
 	Effect: 冻结
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 Glyph: {
@@ -3762,7 +3773,7 @@ Glyph: {
 	Target: 只能附魔于武器上
 	RightClick: 手持此雕文并右键你想要附魔的武器
 	Remove: 手持此雕文并右键你想要移除附魔的物品
-	PriceText: "{0} 雕文" # @Lin please check if this translation is OK
+	PriceText: "{0} 雕文"
 }
 
 NullGlyph: {
@@ -3785,6 +3796,12 @@ PhaseGlyph: {
 		连续击中敌人时会获得短时移动速度加成
 		'''
 	Effect: 时域
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 RadiantGlyph: {
@@ -3792,6 +3809,12 @@ RadiantGlyph: {
 	Tooltip: 不造成伤害时会积蓄神圣能量，强化你的下次攻击
 	Addendum: 不造成伤害时会积蓄神圣能量，强化你的下次攻击
 	Effect: 辐光
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 RageGlyph: {
@@ -3799,6 +3822,12 @@ RageGlyph: {
 	Tooltip: 击杀敌人时会存储造成的过量伤害并应用于下次攻击
 	Addendum: 击杀敌人时会存储造成的过量伤害并应用于下次攻击
 	Effect: 狂暴
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 SanguineGlyph: {
@@ -3810,6 +3839,12 @@ SanguineGlyph: {
 		'''
 	Addendum: 造成伤害时会短暂的增加生命再生
 	Effect: 汲血
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 StormGlyph: {
@@ -3817,6 +3852,12 @@ StormGlyph: {
 	Tooltip: 攻击偶尔会释放一阵烈风
 	Addendum: 攻击偶尔会释放一阵烈风
 	Effect: 风涌
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 UnholyGlyph: {
@@ -3824,6 +3865,12 @@ UnholyGlyph: {
 	Tooltip: 敌人在死亡时会爆发出诅咒幻影
 	Addendum: 敌人在死亡时会爆发出诅咒幻影
 	Effect: 诅咒
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 VeilGlyph: {
@@ -3831,6 +3878,12 @@ VeilGlyph: {
 	Tooltip: 造成伤害时会构建一面防御性面纱
 	Addendum: 造成伤害时会构建一面防御性面纱
 	Effect: 守卫
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 VoidGlyph: {
@@ -3838,6 +3891,12 @@ VoidGlyph: {
 	Tooltip: 攻击有几率造成可叠加的虚空坍塌
 	Addendum: 攻击有几率造成可叠加的虚空坍塌
 	Effect: 空无
+
+	Gendered: {
+		Fem: ""
+		Neutral: ""
+		Plural: ""
+	}
 }
 
 CaramelApple: {
@@ -3858,14 +3917,50 @@ TreeGourd: {
 Candy: {
 	DisplayName: 糖果
 	Tooltip: 小幅度增加各项属性
+
+	Names: {
+		// 0: "'Popstone'"
+		// 1: "'Three Muskets'"
+		// 2: "'Lhizzlers'"
+		// 3: "'Moon Jelly Beans'"
+		// 4: "'Silk Duds'"
+		// 5: "'Necro Wafers'"
+		// 6: "'Blinkroot Pop'"
+		// 7: "'Gummy Slimes'"
+		// 8: "'Cry Goblin'"
+		// 9: "'Sour Patch Slimes'"
+		// 10: "'Stardust Burst'"
+		// 11: "'Hellfire Tamales'"
+		// 12: "'Blinkroot Patty'"
+		// 13: "'Xenowhoppers'"
+		// 14: "'Gem&Ms'"
+		// 15: "'100,000 copper bar'"
+		// 16: "'Toblerbone'"
+		// 17: "'Delicious Looking Eye'"
+		// 18: "'Silky Way'"
+		// 19: "'Malted Silk Balls'"
+		// 20: "'Cloudheads'"
+		// 21: "'Red Devil Hots'"
+		// 22: "'Rune Pop'"
+		// 23: "'Nursey Kisses'"
+		// 24: "'Skullies'"
+		// 25: "'Firebolts'"
+		// 26: "'Vinewrath Cane'"
+		// 27: "'Candy Acorn'"
+		// 28: "'Bunnyfinger'"
+		// 29: "'Ichorice'"
+		// 30: "'Lunatic-tac'"
+	}
 }
 
 CandyBag: {
 	DisplayName: 糖果袋
 	Tooltip: 最多装有99颗糖果
-	ContainsSingle: 内含{0}颗糖果
-	ContainsPlural: 内含{0}颗糖果
-	Take: 右键拿一颗糖果
+	BagContents:
+		'''
+		内含{0}颗糖果
+		右键拿一颗糖果
+		'''
 }
 
 CandyBowl: {
@@ -5681,136 +5776,6 @@ EyeOfTheSorcererItem: {
 		'''
 }
 
-ChandelierPile: {
-	DisplayName: 破损吊灯
-	Tooltip: ""
-}
-
-ChestPile: {
-	DisplayName: 废弃宝箱
-	Tooltip: ""
-}
-
-DirtPile: {
-	DisplayName: 土堆
-	Tooltip: ""
-}
-
-GranitePile: {
-	DisplayName: 花岗岩堆
-	Tooltip: ""
-}
-
-GrassStonePile: {
-	DisplayName: 长草石堆
-	Tooltip: ""
-}
-
-HellstonePile: {
-	DisplayName: 狱石堆
-	Tooltip: ""
-}
-
-IcePile: {
-	DisplayName: 冰冻石堆
-	Tooltip: ""
-}
-
-LihzahrdPile: {
-	DisplayName: 神庙砖石堆
-	Tooltip: ""
-}
-
-MahoganyCage: {
-	DisplayName: 红木笼
-	Tooltip: ""
-}
-
-MahoganyCageFull: {
-	DisplayName: 红木笼（满）
-	Tooltip: ""
-}
-
-MarblePile: {
-	DisplayName: 大理石堆
-	Tooltip: ""
-}
-
-MossMudPile: {
-	DisplayName: 多苔泥堆
-	Tooltip: ""
-}
-
-MossStonePile: {
-	DisplayName: 多苔石堆
-	Tooltip: ""
-}
-
-MushroomPile: {
-	DisplayName: 发光蘑菇石堆
-	Tooltip: ""
-}
-
-OldTent: {
-	DisplayName: 旧帐篷
-	Tooltip: ""
-}
-
-OldWell: {
-	DisplayName: 古井
-	Tooltip: ""
-}
-
-OldWheelbarrow: {
-	DisplayName: 旧手推车
-	Tooltip: ""
-}
-
-RustyMinecart: {
-	DisplayName: 锈蚀矿车
-	Tooltip: ""
-}
-
-SandPile: {
-	DisplayName: 沙岩堆
-	Tooltip: ""
-}
-
-SkeletonPile: {
-	DisplayName: 骷髅堆
-	Tooltip: ""
-}
-
-StonePile: {
-	DisplayName: 石头堆
-	Tooltip: ""
-}
-
-StonePileHelmet: {
-	DisplayName: 头盔石堆
-	Tooltip: ""
-}
-
-StonePilePickaxe: {
-	DisplayName: 矿镐石堆
-	Tooltip: ""
-}
-
-StonePileSword: {
-	DisplayName: 被遗弃的剑石堆
-	Tooltip: ""
-}
-
-WebPile: {
-	DisplayName: 蛛网堆
-	Tooltip: ""
-}
-
-WoodRuinPile: {
-	DisplayName: 废墟家具
-	Tooltip: ""
-}
-
 DefenseCodex: {
 	DisplayName: 奥术法典：堡垒领域
 	Tooltip:
@@ -7313,18 +7278,6 @@ MarbleStaff: {
 	Tooltip: 使镀金钟乳石从天而降
 }
 
-CorruptDyeMaterial: {
-	DisplayName: 紫罗兰水晶
-	CustomTooltip: “这块水晶既美丽又令人厌恶”
-	Tooltip: ""
-}
-
-CrimsonDyeMaterial: {
-	DisplayName: 血腥肿瘤
-	CustomTooltip: “这恶心的器官仍保留着奇怪的规律活动”
-	Tooltip: ""
-}
-
 IceDeityShard1: {
 	DisplayName: 极北遗物
 	CustomTooltip: “一块来自某种巨物的碎片”
@@ -7338,18 +7291,6 @@ IceDeityShard2: {
 
 IceDeityShard3: {
 	DisplayName: 极北造物
-	Tooltip: ""
-}
-
-MeteorDyeMaterial: {
-	DisplayName: 光球碎片
-	CustomTooltip: “岩球包裹的余烬仍在燃烧”
-	Tooltip: ""
-}
-
-RoyalCrown: {
-	DisplayName: 皇家冠冕
-	CustomTooltip: “经过几个世纪岁月的侵蚀，仍然华丽的令人惊叹”
 	Tooltip: ""
 }
 
@@ -8418,11 +8359,6 @@ Zombie_Chest: {
 	Tooltip: ""
 }
 
-SandPiperItem: {
-	DisplayName: 矶鹬
-	Tooltip: ""
-}
-
 OracleScripture: {
 	DisplayName: 神圣经文
 	Tooltip:
@@ -8830,16 +8766,6 @@ ScrapItem5: {
 
 ScrapItem6: {
 	DisplayName: 星间废料
-	Tooltip: ""
-}
-
-VolleyballCourtItem: {
-	DisplayName: 排球场
-	Tooltip: ""
-}
-
-VolleyballNetItem: {
-	DisplayName: 排球网
 	Tooltip: ""
 }
 

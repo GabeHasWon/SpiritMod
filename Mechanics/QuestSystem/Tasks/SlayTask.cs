@@ -1,8 +1,9 @@
-﻿using SpiritMod.Utilities;
+﻿using SpiritMod.Projectiles.Hostile;
+using SpiritMod.Utilities;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.IO;
 using Terraria;
 using Terraria.Localization;
 
@@ -49,42 +50,45 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 		public string GetObjectives(bool showProgress)
 		{
 			StringBuilder builder = new StringBuilder();
+
 			if (_monsterNameOverride == null)
 			{
-				string count = _killsRequired > 1 ? _killsRequired.ToString() : (_Singular ? "" : "1");
-				builder.Append(Language.GetTextValue("Mods.SpiritMod.Quests.Kill")).Append(count).Append(" ");
-			}
-			// start with: - Kill x monster, monster or monster
-			if (_monsterNameOverride == null)
-			{
-				for (int i = 0; i < MonsterIDs.Count; i++)
+				int count = _killsRequired;
+				List<string> names = new List<string>();
+
+				foreach (int id in MonsterIDs)
 				{
-					string monsterName = Lang.GetNPCNameValue(MonsterIDs.ElementAt(i));
-
-					monsterName += QuestUtils.GetPluralEnding(_killsRequired, monsterName);
-
-					if (MonsterIDs.Count == 1)
-					{
-						// if there's multiple monsters, add a character to show plurality
-						builder.Append(monsterName);
-						break;
-					}
-					else
-					{
-						builder.Append(monsterName);
-						if (i < MonsterIDs.Count - 2)
-							builder.Append(Language.GetTextValue("Mods.SpiritMod.Quests.Comma"));
-						else if (i == MonsterIDs.Count - 2)
-							builder.Append(Language.GetTextValue("Mods.SpiritMod.Quests.Or"));
-					}
+					string baseName = Lang.GetNPCNameValue(id);
+					if (LanguageManager.Instance.ActiveCulture.Name == "ru-RU")
+						baseName = char.ToLowerInvariant(baseName[0]) + baseName.Substring(1);
+					names.Add(baseName + QuestUtils.GetPluralEnding(count, baseName));
 				}
+
+				string combinedName = "";
+
+				for (int i = 0; i < names.Count; i++)
+				{
+					combinedName += names[i];
+
+					if (i < names.Count - 2)
+						combinedName += Language.GetTextValue("Mods.SpiritMod.Quests.Comma");
+					else if (i == names.Count - 2)
+						combinedName += Language.GetTextValue("Mods.SpiritMod.Quests.Or");
+				}
+
+				builder.Append(Language.GetTextValue("Mods.SpiritMod.Quests.Kill", count, combinedName));
 			}
 			else
 				builder.Append(_monsterNameOverride);
 
 			// add a progress bracket at the end like: (x/y)
 			if (showProgress)
-				builder.Append(" [c/97E2E2:(").Append(_killCount).Append('/').Append(_killsRequired).Append(")]");
+			{
+				if (LanguageManager.Instance.ActiveCulture.Name == "ru-RU")
+					builder.Replace($"({_killsRequired} шт.)", $"[c/97E2E2:({_killCount}/{_killsRequired})]");
+				else
+					builder.Append($" [c/97E2E2:({_killCount}/{_killsRequired})]");
+			}
 
 			return builder.ToString();
 		}

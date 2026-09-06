@@ -1,3 +1,19 @@
+// NotDay: Drops only at night
+// Day: Drops only during day
+// DropFrom: "Drops only in the "
+// Purity: Purity
+// Snow: Snow
+// Asteroid: Asteroid
+// DefBoss: Drops only after {0} has been defeated
+// RrefixThe: "the "
+// AnyMech: any mechanical boss
+// FromVHead: From venomous heads
+// FromFHead: From flaming heads
+// FromAHead: From acidic heads
+// PokeyBodyLastSegment: Drops only from the last segment
+// Enchanted: Drops when enemy is enchanted
+// Rarely: Rarely
+// Uncommonly: Uncommonly from Shadow Mimics
 HasMoonshot: Cualquier jugador tiene un Moonshot
 VoyagerDown: Starplate Voyager fue derrotado
 ScarabDown: Scarabeus fue derrotado
@@ -7,11 +23,11 @@ DuskingDown: Dusking fue derrotado
 InBriar: En la zarza
 InAsteroids: En Asteroides
 InSpirit: En el Espíritu
-NotInSpirit: No en el Espíritu
-NotInBriar: No en la zarza
-StarjinxDown: El evento Starjinx fue derrotado
+// FirstDown: Only on first defeat
 HalfCompleteBestiary: La mitad del bestario de Spirit está completo
 FullCompleteBestiary: Todo el bestiario de Spirit está completo
+DurasilkSheaf: Obtener 3 Hojas de Durasilk
+WarlockLure: Durante el Compromiso Impío
 # Quest conditions are below here
 # IsCompleted is used to shorten translation
 IsCompleted: la misión se ha completado

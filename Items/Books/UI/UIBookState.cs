@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.UI;
 using Terraria.UI;
@@ -32,11 +33,20 @@ namespace SpiritMod.Items.Books.UI
 
 		public override void OnInitialize()
 		{
+			var ImagePath = "SpiritMod/Items/Books/UI/BookBackground";
+			int IamgeWidth = 400;
+
+			if (LanguageManager.Instance.ActiveCulture.Name == "ru-RU")
+			{
+				ImagePath = "SpiritMod/Items/Books/UI/BookBackgroundLarge";
+				IamgeWidth = 500;
+			}
+
 			mainPanel = new UIDragableElement
 			{
 				HAlign = 0.5f,
 				VAlign = 0.5f,
-				Width = StyleDimension.FromPixels(400),
+				Width = StyleDimension.FromPixels(IamgeWidth),
 				Height = StyleDimension.FromPixels(600)
 			};
 
@@ -49,7 +59,7 @@ namespace SpiritMod.Items.Books.UI
 				mainPanel.Top.Set(offsetY, 0f);
 			}
 
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/BookBackground"))
+			var panelBackground = new UIImage(ModContent.Request<Texture2D>(ImagePath))
 			{ 
 				Width = StyleDimension.FromPercent(1),
 				Height = StyleDimension.FromPercent(1)

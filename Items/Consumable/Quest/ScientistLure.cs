@@ -54,7 +54,7 @@ namespace SpiritMod.Items.Consumable.Quest
 			recipe.Register();
 		}
 
-		public static Condition QuestCondition() => new Condition(Language.GetText("Mods.SpiritMod.Quests.RecipeConditions.WarlockLure"), () =>
+		public static Condition QuestCondition() => new Condition(Language.GetText("Mods.SpiritMod.Conditions.WarlockLure"), () =>
 		{
 			Mechanics.QuestSystem.Quest quest = QuestManager.GetQuest<ZombieOriginQuest>();
 			return quest.CurrentTask is RetrievalTask task && task.ItemType == ModContent.ItemType<ScientistLure>();

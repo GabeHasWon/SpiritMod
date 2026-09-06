@@ -1,6 +1,3 @@
-SpiritPylon.MapEntry: Pilón espiritual
-AsteroidPylon.MapEntry: Pilón de asteroides
-BriarPylon.MapEntry: Pilón de brezo
 KoiTotem_Tile.MapEntry: Tótem Koi
 OpalFrog_Tile.MapEntry: Rana de ópalo
 Trophy8Tile.MapEntry: Trofeo Atlas
@@ -72,7 +69,6 @@ OceanPirateChest: {
 	ContainerName: Cofre pirata
 }
 
-OceanPirateChest_Locked.MapEntry: Cofre pirata bloqueado
 Pillar1Tile.MapEntry: Pilar
 Pillar2Tile.MapEntry: Pilar
 Pillar3Tile.MapEntry: Pilar
@@ -198,9 +194,6 @@ YellowNeonPlant.MapEntry: Planta de neón
 OccultistMapTile.MapEntry: Pergamino de pared oculta
 OldTelescopeTile.MapEntry: Viejo telescopio
 PirateCrate.MapEntry: Caja
-AsteroidPylonTile.MapEntry: $Mods.SpiritMod.MapObject.AsteroidPylon
-BriarPylonTile.MapEntry: $Mods.SpiritMod.MapObject.BriarPylon
-SpiritPylonTile.MapEntry: $Mods.SpiritMod.MapObject.SpiritPylon
 
 ReachChest1: {
 	MapEntry: Cofre de corteza de saúco

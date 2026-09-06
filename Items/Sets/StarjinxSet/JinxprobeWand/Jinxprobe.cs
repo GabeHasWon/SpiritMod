@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 
 namespace SpiritMod.Items.Sets.StarjinxSet.JinxprobeWand
 {
-	[AutoloadMinionBuff("Tiny Jinxprobe", "The Jinxprobe will fight for you")]
+	//[AutoloadMinionBuff("Tiny Jinxprobe", "The Jinxprobe will fight for you")]
 	public class Jinxprobe : BaseMinion
 	{
 		public Jinxprobe() : base(800, 1600, new Vector2(32, 32)) { }

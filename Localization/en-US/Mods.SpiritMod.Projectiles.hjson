@@ -8,10 +8,8 @@ Sea_Snail_Poison_Projectile.DisplayName: Sea Snail's Poison
 InterstellarShield.DisplayName: Interstellar Shield
 UkeleleProj.DisplayName: Ukulele
 UkeleleProjTwo.DisplayName: Ukelele
-UmbillicalEyeballProj.DisplayName: Umbillical Eyeball
 Unstable_Tesla_Coil_Projectile.DisplayName: Lightning Zap
 RipperSlugProj.DisplayName: Ripper Slug
-ManajinxStar.DisplayName: Starlight Energy
 AtlasPetProjectile.DisplayName: Atlas Jr.
 AvianHookProjectile.DisplayName: ${ProjectileName.GemHookAmethyst}
 AvianPet.DisplayName: Ancient Hatchling
@@ -39,7 +37,6 @@ StarplateDrone.DisplayName: Starplate Fighter Drone
 ThornArrow.DisplayName: Thorn Arrow
 VinewrathPetProjectile.DisplayName: Wrathful Seedling
 StarPowderProj.DisplayName: Star Powder Proj
-VolleyballProjectile.DisplayName: Volleyball Projectile
 BlizzardProjectile.DisplayName: Blizzard
 KelpHookProj.DisplayName: Kelp Hook
 MagnetHookProj.DisplayName: ${ProjectileName.GemHookAmethyst}
@@ -69,7 +66,6 @@ CryoSwordProj.DisplayName: Rimehowl
 IceWall.DisplayName: Cryo Pillar
 IceWave.DisplayName: Cryo Pillar
 GastricAcid.DisplayName: Gastric Acid
-GastricGusherProjectile.DisplayName: Gastric Gusher
 BismiteGrenadeProj.DisplayName: Bismite Grenade
 HealingSplash.DisplayName: Healing Splash
 ClatterMaceProj.DisplayName: Clatter Mace Proj
@@ -126,8 +122,6 @@ ArtemisHuntArrow.DisplayName: Celestial Arrow
 ArtemisHuntProj.DisplayName: Artemis Hunt
 ArtemisHuntVolley.DisplayName: Celestial Arrow
 BetrayersChainsProj.DisplayName: Blades of Chaos
-ThyrsusProj.DisplayName: Thyrsus
-ThyrsusProjTwo.DisplayName: Vine
 Cannonbubble.DisplayName: Cannonbubble
 SkullSentryEye.DisplayName: Maneater
 SkullSentryMucus.DisplayName: Skull Sentry Mucus

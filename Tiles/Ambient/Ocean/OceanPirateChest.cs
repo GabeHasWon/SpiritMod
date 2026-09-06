@@ -58,6 +58,11 @@ namespace SpiritMod.Tiles.Ambient.Ocean
 
 		public override bool IsLockedChest(int i, int j) => Main.tile[i, j] != null && Main.tile[i, j].TileFrameX > 18;
 
+		public override LocalizedText DefaultContainerName(int frameX, int frameY)
+		{
+			return Language.GetText("Mods.SpiritMod.Items.PirateChest.DisplayName");
+		}
+
 		public static string MapChestName(string name, int i, int j)
 		{
 			Tile tile = Main.tile[i, j];

@@ -71,7 +71,7 @@ namespace SpiritMod.Tiles.Furniture.Acid
 				else if (Player.CheckSpawn(spawnX, spawnY))
 				{
 					player.ChangeSpawn(spawnX, spawnY);
-					Main.NewText(Language.GetTextValue("Game.SpawnPointRemoved"), 255, 240, 20);
+					Main.NewText(Language.GetTextValue("Game.SpawnPointSet"), 255, 240, 20);
 				}
 			}
 			return true;
