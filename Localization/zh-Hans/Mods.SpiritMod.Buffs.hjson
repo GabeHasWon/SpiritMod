@@ -758,9 +758,9 @@ Crystallization: {
 }
 
 Golden_Curse: {
-	DisplayName: 金色诅咒
+	DisplayName: 黄金诅咒
 	Description: 伤害和下落速度增加
-	Death: "{0} 死的时候像个金条一样"
+	Death: "{0}死的时候像个金条一样"
 }
 
 Crawlerock_Buff: {
