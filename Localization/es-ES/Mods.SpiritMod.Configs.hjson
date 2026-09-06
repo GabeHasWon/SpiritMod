@@ -221,7 +221,7 @@ SpiritMusicConfig: {
 	}
 
 	UnderwaterMusic: {
-		Label: [i:SpiritMod/OceanDepthsBox] Añade una pista única para las profundidades del océano"
+		Label: "[i:SpiritMod/OceanDepthsBox] Añade una pista única para las profundidades del océano"
 		Tooltip: Habilita música única para el Océano al estar bajo el agua profunda
 	}
 
