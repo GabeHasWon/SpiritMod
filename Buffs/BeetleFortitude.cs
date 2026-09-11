@@ -32,7 +32,7 @@ namespace SpiritMod.Buffs
 		public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			tip += "\n" + Language.GetTextValue("Mods.SpiritMod.Buffs.BeetleFortitude.Description2", modPlayer.beetleStacks);
+			tip = Language.GetTextValue("Mods.SpiritMod.Buffs.BeetleFortitude.Description", modPlayer.beetleStacks);
 			rare = modPlayer.beetleStacks >> 1;
 		}
 	}

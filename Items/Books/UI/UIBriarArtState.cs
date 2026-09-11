@@ -10,6 +10,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.UI;
 using Terraria.UI;
@@ -48,7 +49,7 @@ namespace SpiritMod.Items.Books.UI
 
 			//mainPanel.BackgroundColor = UICommon.DefaultUIBlue;
 
-			var panelBackground = new UIImage(ModContent.Request<Texture2D>("SpiritMod/Items/Books/UI/TheBriar"));
+			var panelBackground = new UIImage(ModContent.Request<Texture2D>(Language.GetTextValue("Mods.SpiritMod.Items.Book_BriarArt.ImagePath")));
 			panelBackground.SetPadding(12);
 			mainPanel.Append(panelBackground);
 			mainPanel.AddDragTarget(panelBackground);

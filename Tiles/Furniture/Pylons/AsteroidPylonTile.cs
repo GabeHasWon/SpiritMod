@@ -9,10 +9,10 @@ namespace SpiritMod.Tiles.Furniture.Pylons
 {
 	internal class AsteroidPylonTile : SimplePylonTile<AsteroidPylonItem>
 	{
-		internal override string MapKeyName => "Mods.SpiritMod.MapObject.AsteroidPylon";
+		internal override string MapKeyName => "Mods.SpiritMod.Items.AsteroidPylonItem.DisplayName";
 		internal override Condition CanBeSold => SpiritConditions.InAsteroids;
 
-		public override void StaticDefaults(LocalizedText name) => AddMapEntry(new Color(153, 108, 111), name);
+		public override void StaticDefaults() => AddMapEntry(new Color(153, 108, 111), Language.GetText(MapKeyName));
 
 		public override bool ValidTeleportCheck_BiomeRequirements(TeleportPylonInfo pylonInfo, SceneMetrics sceneData) => Biomes.BiomeTileCounts.InAsteroids;
 		public override bool IsSold(int npcType, Player player, bool npcHappyEnough) => npcHappyEnough && Biomes.BiomeTileCounts.InAsteroids;

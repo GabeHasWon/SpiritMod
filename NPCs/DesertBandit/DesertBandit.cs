@@ -17,6 +17,7 @@ namespace SpiritMod.NPCs.DesertBandit
 {
 	public class DesertBandit : ModNPC
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Forsaken Bandit");

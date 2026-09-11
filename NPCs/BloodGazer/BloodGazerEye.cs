@@ -29,7 +29,7 @@ namespace SpiritMod.NPCs.BloodGazer
 			NPCHelper.BuffImmune(Type);
 		}
 
-		public override bool IsLoadingEnabled(Mod mod) => true;
+		public override bool IsLoadingEnabled(Mod mod) => false;
 
 		public override void SetDefaults()
 		{

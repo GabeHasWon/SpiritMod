@@ -1,42 +1,29 @@
-GoldifiedDeath: " 死的时候像个金条一样"
-CrimsonPustuleDeath: "{0}荒诞的爆炸了"
-Frozen: 冰冻
-# Config stuff:
-Screenshake: "[i:SpiritMod/MoonStone]  视觉：屏幕震动"
-Distortion: "[i:SpiritMod/MoonStone]  视觉：屏幕扭曲"
-Particles: "[i:SpiritMod/MoonStone]  视觉：前景粒子"
-Quicksell: "[i:SpiritMod/PirateCrate]  QoL：快速出售功能"
-Autoswing: "[i:SpiritMod/Minifish]  QoL：自动使用描述"
-AmbientSounds: "[i:SpiritMod/GladeWreath]  环境：环境音"
-LeafFallAmbience: "[i:SpiritMod/GladeWreath]  环境：落叶效果"
-QuestButton: "[i:SpiritMod/MapScroll]  任务：任务书按钮位置"
-QuestBookSwitching: "[i:SpiritMod/MapScroll]  任务：任务书标签切换"
-QuestIcons: "[i:SpiritMod/MapScroll]  任务：城镇NPC任务图标"
-ArcaneHideoutGen: "[i:SpiritMod/BismiteCrystal]  世界生成：奥术塔和盗贼藏身处生成"
-OceanShape: "[i:SpiritMod/BlackPearl]  海洋：海洋生成形状"
-OceanVents: "[i:SpiritMod/BlackPearl]  海洋：热液喷口生态系统"
-OceanWater: "[i:SpiritMod/BlackPearl]  海洋：海水透明度"
-WaterEnemies: "[i:SpiritMod/HornetfishQuest]  钓鱼：钓鱼遭遇"
-BlizzardMusic: "[i:SpiritMod/TranquilWindsBox]  为暴雪添加一首独特的曲目"
-SnowNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的雪原生物群系添加一首独特的曲目"
-DesertNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的沙漠生物群系添加一首独特的曲目"
-HallowNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的神圣之地添加一首独特的曲目"
-CorruptNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的腐化之地添加一首独特的曲目"
-CrimsonNightMusic: "[i:SpiritMod/TranquilWindsBox]  为夜晚的猩红之地添加一首独特的曲目"
-GraniteMusic: "[i:SpiritMod/TranquilWindsBox]  为花岗岩生物群系添加一首独特的曲目"
-MarbleMusic: "[i:SpiritMod/TranquilWindsBox]  为大理石生物群系添加一首独特的曲目"
-SpiderMusic: "[i:SpiritMod/TranquilWindsBox]  为蜘蛛洞添加一首独特的曲目"
-MeteorMusic: "[i:SpiritMod/TranquilWindsBox]  为陨石生物群系添加一首独特的曲目"
-FrostLegionMusic: "[i:SpiritMod/TranquilWindsBox]  为雪人军团入侵添加一首独特的曲目"
-SkeletonPrimeMusic: "[i:SpiritMod/TranquilWindsBox]  为机械骷髅王添加一首独特的曲目"
-AuroraMusic: "[i:SpiritMod/TranquilWindsBox]  为极光添加一首独特的曲目"
-LuminousMusic: "[i:SpiritMod/TranquilWindsBox]  为流明瀚海添加一首独特的曲目"
-CalmNightMusic: "[i:SpiritMod/TranquilWindsBox]  为安宁夜小事件添加一首独特的曲目"
-OceanDepthsMusic: "[i:SpiritMod/TranquilWindsBox]  为海洋深处添加一首独特的曲目"
-HyperspaceMusic: "[i:SpiritMod/TranquilWindsBox]  为人造超时空领域添加两首独特的曲目"
-AshfallMusic: "[i:SpiritMod/TranquilWindsBox]  为地狱的落烬雨天气添加一首独特的曲目"
-VictoryNightMusic: "[i:SpiritMod/TranquilWindsBox]  为灯笼夜事件添加一首独特的曲目"
-VictoryDayMusic: "[i:SpiritMod/TranquilWindsBox]  为胜利日事件添加一首独特的曲目"
+Misc: {
+	BadLuck: 坏运气！
+	GoodLuck: 好运气！
+	NoShrines: 没有神龛！
+	Bullseye: 正中靶心！
+	VWBConsume: 荆棘将吞噬你……
+	VWBRainOver: 荆棘之地的倾盆大雨已消退！
+	VWBWrath: 你无法阻止自然之怒！
+	StarplateAnnouncement: 小行星带中的星界矿石充盈着能量。
+	Pinned: 图钉已放置
+	PinRemoved: 图钉已移除
+	PinMove: 点击以移动
+	Put: 右键放入糖果袋
+	SpiritSpread: 魂灵蔓延于大地……
+	Cursed: 被诅咒了！
+	Unlocked: 已解锁！
+	RemainingS: （剩余{0}秒）
+}
+
+RecipeGroup: {
+	EoRBow: 翡翠或红玉弓
+	SoTBow: 蓝玉或黄玉弓
+	AoTStaff: 紫晶或黄玉法杖
+	SoEStaff: 蓝玉或翡翠法杖
+	RoDStaff: 红玉或钻石法杖
+}
 
 MiscUI: {
 	AutoSell: 点击以快速出售你的物品。
@@ -52,325 +39,44 @@ MiscUI: {
 }
 
 Keybinds: {
-	"SpiritMod:QuestBookToggle.DisplayName": 魂灵Mod：任务书开关
-	"SpiritMod:QuestHUDToggle.DisplayName": 魂灵Mod：任务HUD开关
-}
-
-Configs: {
-	SpiritClientConfig: {
-		DisplayName: 客户端配置
-
-		ScreenShake: {
-			Label: "{$Mods.SpiritMod.Screenshake}"
-			Tooltip:
-				'''
-				修改由模组内容引起的屏幕震动的强度
-				设为0以完全禁用
-				'''
-		}
-
-		DistortionConfig: {
-			Label: "{$Mods.SpiritMod.Distortion}"
-			Tooltip: 启用后，当处于魂灵之地或与星盘巡游者的战斗时会具有屏幕失真效果
-		}
-
-		ForegroundParticles: {
-			Label: "{$Mods.SpiritMod.Particles}"
-			Tooltip: 启用后，在某些条件下，前景中会有额外的粒子
-		}
-
-		AutoReuse: {
-			Label: "{$Mods.SpiritMod.Autoswing}"
-			Tooltip: 在武器的物品说明中增加一行显示物品是否能够自动重新使用/自动挥舞的描述
-		}
-
-		QuickSell: {
-			Label: "{$Mods.SpiritMod.Quicksell}"
-			Tooltip: 启用快速出售功能，可以轻松地将所有不需要的物品出售给NPC
-		}
-
-		AmbientSounds: {
-			Label: "{$Mods.SpiritMod.AmbientSounds}"
-			Tooltip: 为某些生物群系启用环境音效
-		}
-
-		LeafFall: {
-			Label: "{$Mods.SpiritMod.LeafFallAmbience}"
-			Tooltip:
-				'''
-				启用后，在安宁夜持续期间或处于荆棘之地时会具有落叶氛围
-				禁用此功能以防止在游玩Terraria大修时发生奇怪的交互
-				'''
-		}
-
-		QuestBookLocation: {
-			Label: "{$Mods.SpiritMod.QuestButton}"
-			Tooltip: 更改任务书按钮在物品栏中的显示位置
-		}
-
-		QuestBookSwitching: {
-			Label: "{$Mods.SpiritMod.QuestBookSwitching}"
-			Tooltip: 当任务被激活或完成时，从当前选项卡切换到激活选项卡或已完成选项卡
-		}
-
-		ShowNPCQuestNotice: {
-			Label: "{$Mods.SpiritMod.QuestIcons}"
-			Tooltip: 启用后，当城镇NPC有新任务时会有一个任务感叹号
-		}
-
-		DoubleHideoutGeneration: {
-			Label: "{$Mods.SpiritMod.ArcaneHideoutGen}"
-			Tooltip:
-				'''
-				启用后，会同时生成盗贼藏身处和奥术塔
-				默认情况下每个世界仅会生成二者中的一个
-				仅推荐在游玩大世界时启用
-				'''
-		}
-
-		OceanShape: {
-			Label: "{$Mods.SpiritMod.OceanShape}"
-			Tooltip:
-				'''
-				以某些方式修改海洋生成
-				默认为分段_V生成
-				仅推荐在游玩魂灵模组时使用分段_V生成
-				'''
-		}
-
-		VentCritters: {
-			Label: "{$Mods.SpiritMod.OceanVents}"
-			Tooltip:
-				'''
-				启用后，允许小动物在热液喷口附近生成
-				这些生物不会干扰敌人的正常生成
-				然而，它们确实对最大NPC数量限制有所贡献
-				'''
-		}
-
-		SurfaceWaterTransparency: {
-			Label: "{$Mods.SpiritMod.OceanWater}"
-			Tooltip:
-				'''
-				启用后，允许海水透明
-				不会影响任其他生物群系
-				'''
-		}
-
-		EnemyFishing: {
-			Label: "{$Mods.SpiritMod.WaterEnemies}"
-			Tooltip: 启用后，在钓鱼时会遭遇宝匣模仿者
-		}
-
-		AuroraEnabled: {
-			Label: "[i:SpiritMod/MoonStone]  视觉：极光"
-			Tooltip: 启用或禁用极光视觉效果。这并不能阻止基于极光的效果或敌人的出现
-		}
-
-		EnableSepulchres: {
-			Label: "[i:SpiritMod/CursedArmorItem]  世界生成：黑暗坟葬"
-			Tooltip: 启用或禁用在地下发现的黑暗坟葬结构。如果你遇到了其他模组的生成问题，可以关闭此功能
-		}
-
-		ForceClassicZiggurat: {
-			// Label: "[i:607]  Force Classic Ziggurat"
-			// Tooltip: Enables Spirit Classic's Ziggurat to spawn even if Spirit Reforged is on. Note that the Classic Ziggurat may overlap other structures.
-		}
-	}
-
-	QuestInvLocation: {
-		Tooltip: ""
-
-		Minimap: {
-			Label: 小地图
-			Tooltip: ""
-		}
-
-		Trashcan: {
-			Label: 垃圾桶
-			Tooltip: ""
-		}
-
-		FarLeft: {
-			Label: 最左边
-			Tooltip: ""
-		}
-	}
-
-	OceanShape: {
-		Tooltip: ""
-
-		Default: {
-			Label: 默认
-			Tooltip: 原版的默认海洋生成。禁用魂灵的生成。
-		}
-
-		SlantedSine: {
-			Label: 倾斜正弦
-			Tooltip: 调整后的坡度，使用对角线正弦波生成。
-		}
-
-		Piecewise: {
-			Label: 分段
-			Tooltip: 结合了少许坡度的分段生成，原始的分段生成，但略显粗糙。
-		}
-
-		Piecewise_M: {
-			Label: 分段_ M
-			Tooltip: 调整的分段生成，略有改善。
-		}
-
-		Piecewise_V: {
-			Label: 分段_ V
-			Tooltip: 最终的分段生成，预期中的魂灵海洋生成。
-		}
-	}
-
-	SpiritMusicConfig: {
-		DisplayName: 音乐配置
-
-		BlizzardMusic: {
-			Label: "{$Mods.SpiritMod.BlizzardMusic}"
-			Tooltip: 为暴雪添加一首独特的曲目
-		}
-
-		SnowNightMusic: {
-			Label: "{$Mods.SpiritMod.SnowNightMusic}"
-			Tooltip: 为夜晚的雪原生物群系添加一首独特的曲目
-		}
-
-		DesertNightMusic: {
-			Label: "{$Mods.SpiritMod.DesertNightMusic}"
-			Tooltip: 为夜晚的沙漠生物群系添加一首独特的曲目
-		}
-
-		HallowNightMusic: {
-			Label: "{$Mods.SpiritMod.HallowNightMusic}"
-			Tooltip: 为夜晚的神圣之地添加一首独特的曲目
-		}
-
-		CorruptNightMusic: {
-			Label: "{$Mods.SpiritMod.CorruptNightMusic}"
-			Tooltip: 为夜晚的腐化之地添加一首独特的曲目
-		}
-
-		CrimsonNightMusic: {
-			Label: "{$Mods.SpiritMod.CrimsonNightMusic}"
-			Tooltip: 为夜晚的猩红之地添加一首独特的曲目
-		}
-
-		GraniteMusic: {
-			Label: "{$Mods.SpiritMod.GraniteMusic}"
-			Tooltip: 为花岗岩生物群系添加一首独特的曲目
-		}
-
-		MarbleMusic: {
-			Label: "{$Mods.SpiritMod.MarbleMusic}"
-			Tooltip: 为大理石生物群系添加一首独特的曲目
-		}
-
-		UnderwaterMusic: {
-			Label: "{$Mods.SpiritMod.OceanDepthsMusic}"
-			Tooltip: 为海洋深处启用独特的音乐
-		}
-
-		SpiderCaveMusic: {
-			Label: "{$Mods.SpiritMod.SpiderMusic}"
-			Tooltip: 为蜘蛛洞添加一首独特的曲目
-		}
-
-		MeteorMusic: {
-			Label: "{$Mods.SpiritMod.MeteorMusic}"
-			Tooltip: 为陨石生物群系添加一首独特的曲目
-		}
-
-		FrostLegionMusic: {
-			Label: "{$Mods.SpiritMod.FrostLegionMusic}"
-			Tooltip: 为雪人军团添加一首独特的曲目
-		}
-
-		SkeletronPrimeMusic: {
-			Label: "{$Mods.SpiritMod.SkeletonPrimeMusic}"
-			Tooltip: 为机械骷髅王添加一首独特的Boss原声带
-		}
-
-		AuroraMusic: {
-			Label: "{$Mods.SpiritMod.AuroraMusic}"
-			Tooltip: 为极光启用独特的音乐
-		}
-
-		LuminousMusic: {
-			Label: "{$Mods.SpiritMod.LuminousMusic}"
-			Tooltip: 为流明瀚海启用独特的音乐
-		}
-
-		CalmNightMusic: {
-			Label: "{$Mods.SpiritMod.CalmNightMusic}"
-			Tooltip: 为安宁夜启用独特的音乐
-		}
-
-		NeonBiomeMusic: {
-			Label: "{$Mods.SpiritMod.HyperspaceMusic}"
-			Tooltip: 为人造超时空领域启用两首独特的曲目
-		}
-
-		AshfallMusic: {
-			Label: "{$Mods.SpiritMod.AshfallMusic}"
-			Tooltip: 为地狱的落烬雨天气启用一首独特的曲目
-		}
-
-		VictoryDayMusic: {
-			Label: "{$Mods.SpiritMod.VictoryDayMusic}"
-			Tooltip: 为灯笼夜事件启用一首独特的曲目
-		}
-	}
+	QuestBookToggle.DisplayName: 任务书开关
+	QuestHUDToggle.DisplayName: 任务HUD开关
 }
 
 Events: {
 	BlueMoon: {
-		BossChecklistIntegration.Condition: 在夜晚使用[i:SpiritMod/BlueMoonSpawn]召唤。
 		OnStart: 苍蓝秘月正在升起……
 		IsDay: 月亮在白昼不够强大。
 		IsCalmNight: 夜晚过于宁静。
 	}
 
-	JellyDeluge: {
-		BossChecklistIntegration.Condition: 在任意Boss被击败后，偶尔会在地表自然生成。也可以使用[i:SpiritMod/DistressJellyItem]召唤，[i:SpiritMod/DistressJellyItem]可在小行星带中找到，并可以通过使用捕虫网进行捕捉。在海月巫师被击败后生成的概率会变低。
-		OnStart: 天空中下起了奇怪的水母雨！
-	}
-
-	LuminousOcean.OnStart: 光芒在海面上绽放了……
-	BloodMoon.DayTime: 血月只会在夜晚出现。
-	StarjinxSummon: 一颗附魔彗星出现在了空中！
-
 	TheTide: {
-		BossChecklistIntegration.Condition: 在海洋使用[i:SpiritMod/BlackPearl]召唤。
 		OnEnd: 潮汐退去了！
 		NotOcean: 潮汐只有在大海平静时才会退去。
 		AlreadyActive: 潮汐已至！
 		Wave: 波次 {0} ：
 	}
 
-	Starjinx.Wave: 波次进度 ：{0}%
+	JellyDeluge.OnStart: 天空中下起了奇怪的水母雨！
+	LuminousOcean.OnStart: 光芒在海面上绽放了……
+	BloodMoon.DayTime: 血月只会在夜晚出现。
 }
 
 BossChecklistIntegration: {
-	JellyDeluge.EntryName: 水母雨
-	TheTide.EntryName: 潮汐
-	MysticMoon.EntryName: 苍蓝秘月
-}
+	JellyDeluge: {
+		EntryName: 水母雨
+		SpawnInfo: 在任意Boss被击败后，偶尔会在地表自然发生。也可以使用[i:SpiritMod/DistressJellyItem]召唤，其可在小行星带中找到，并可以通过使用虫网捕获。在海月巫师被击败后生成的概率会变低。
+	}
 
-MapObject: {
-	SpiritPylon: 魂灵之地晶塔
-	BriarPylon: 荆棘之地晶塔
-	AsteroidPylon: 小行星带晶塔
-}
+	TheTide: {
+		EntryName: 潮汐
+		SpawnInfo: 在海洋使用[i:SpiritMod/BlackPearl]召唤。
+	}
 
-Condition: {
-	InBriar: Mods.SpiritMod.Condition.InBriar
-	InAsteroids: Mods.SpiritMod.Condition.InAsteroids
-	InSpirit: Mods.SpiritMod.Condition.InSpirit
-	FirstDown: 仅在首次击败时
+	MysticMoon: {
+		EntryName: 苍蓝秘月
+		SpawnInfo: 在夜晚使用[i:SpiritMod/BlueMoonSpawn]召唤。
+	}
 }
 
 GameTips: {
@@ -392,4 +98,11 @@ AvianIslandSigns: {
 	2: 某地发现监察者身影？5点时了解更多
 	3: 一场复活？比你想的更有可能！
 	4: 寻找更多（划痕）仅需50克！
+}
+
+FrozenEnemies: {
+	IceBat: 冰冻{$NPCName.IceBat}
+	SnowFlinx: 冰冻{$NPCName.SnowFlinx}
+	UndeadViking: 冰冻{$NPCName.UndeadViking}
+	Wheezer: 冰冻{$NPCs.Wheezer.DisplayName}
 }

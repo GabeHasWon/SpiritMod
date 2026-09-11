@@ -1,6 +1,3 @@
-SpiritPylon.MapEntry: 魂灵之地晶塔
-AsteroidPylon.MapEntry: 小行星带晶塔
-BriarPylon.MapEntry: 荆棘之地晶塔
 KoiTotem_Tile.MapEntry: 锦鲤图腾
 OpalFrog_Tile.MapEntry: 欧珀青蛙
 Trophy8Tile.MapEntry: 擎元魔像纪念章
@@ -23,7 +20,7 @@ SunkenTreasureTile.MapEntry: 沉没的宝藏
 FloranOreTile.MapEntry: 叶族矿
 GraniteOre.MapEntry: 附魔花岗岩块
 MarbleOre.MapEntry: 远古大理石块
-OlympiumToken_Tile.MapEntry: 奥林匹克图腾
+OlympiumToken_Tile.MapEntry: 奥林匹克代币
 Trophy10Tile.MapEntry: 拉莱耶纪念章
 SpiritOreTile.MapEntry: 魂灵矿
 Fathomless_Chest.MapEntry: 诡秘花瓶
@@ -56,8 +53,8 @@ IceFlinxDecor.MapEntry: 冰冻小雪怪雕像
 IceFlinxPassive.MapEntry: 冰冻小雪怪
 IceVikingDecor.MapEntry: 亡灵维京海盗雕像
 IceVikingPassive.MapEntry: 冰冻亡灵维京海盗
-IceWheezerDecor.MapEntry: 冰冻响尾兽雕像
-IceWheezerPassive.MapEntry: 冰冻响尾兽
+IceWheezerDecor.MapEntry: 冰冻息鸣螈雕像
+IceWheezerPassive.MapEntry: 冰冻息鸣螈
 WinterbornDecor.MapEntry: 冰封造物雕像
 Kelp1x2.MapEntry: 海带
 Kelp2x2.MapEntry: 海带
@@ -72,7 +69,6 @@ OceanPirateChest: {
 	ContainerName: 海盗箱
 }
 
-OceanPirateChest_Locked.MapEntry: 上锁的海盗箱
 Pillar1Tile.MapEntry: 柱子
 Pillar2Tile.MapEntry: 柱子
 Pillar3Tile.MapEntry: 柱子
@@ -198,9 +194,6 @@ YellowNeonPlant.MapEntry: 霓虹植物
 OccultistMapTile.MapEntry: 神秘学条幅
 OldTelescopeTile.MapEntry: 古老望远镜
 PirateCrate.MapEntry: 宝匣
-AsteroidPylonTile.MapEntry: $Mods.SpiritMod.MapObject.AsteroidPylon
-BriarPylonTile.MapEntry: $Mods.SpiritMod.MapObject.BriarPylon
-SpiritPylonTile.MapEntry: $Mods.SpiritMod.MapObject.SpiritPylon
 
 ReachChest1: {
 	MapEntry: 古木箱

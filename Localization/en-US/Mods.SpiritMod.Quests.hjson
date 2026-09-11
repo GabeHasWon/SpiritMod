@@ -1,8 +1,3 @@
-RecipeConditions: {
-	WarlockLure: During Unholy Undertaking
-	DurasilkSheaf: Obtain 3 Durasilk Sheafs
-}
-
 # I'm very sorry to whoever's translating this. Best of luck, and godspeed. - GabeHasWon
 
 # This is actually only used for the Lifeform Analyzer's (Quest) <NPCName>.
@@ -21,18 +16,19 @@ QuestsFull: You cannot activate any more quests.
 StopQuest: Are you sure? You will [c/910000:lose your progress].
 Undiscovered: This quest hasn't been discovered.
 # These are all used for minor parts of quests, such as "Catch 2 Fish" or similar.
-# The space is necessary. Formats to "Talk to the <NPC Name>" in-game.
-TalkToNPC: "Talk to the "
 TalkTo: Talk to the {0}
 # Same as above. Used for "Explore <area>" in-game.
 Explore: "Explore "
-Retrieve: Retrieve
-Catch: Catch
-Kill: "Kill "
-Craft: Craft
-Capture: Capture
-Harvest: Harvest
-OptionalGather: Optional - Gather
+Retrieve: Retrieve {0} {1}
+Catch: Catch {0} {1}
+Kill: Kill {0} {1}
+Craft: Craft {0} {1}
+Capture: Capture {0} {1}
+Harvest: Harvest {0} {1}
+OptionalGather: Optional - Gather {0} {1}
+PluralSuffix: s
+Comma: ", "
+Or: " or "
 Objectives: Objectives
 Activate: Activate
 Deactivate: Deactivate
@@ -44,9 +40,6 @@ Client: "Client - "
 Rewards: Rewards
 # Used for chat quest snippets.
 ViewQuest: Click here to view the quest!
-QuesTime: "{0}m {1}s"
-Comma: ", "
-Or: " or "
 
 Buttons: {
 	# Quest states
@@ -124,6 +117,7 @@ QuestInfo: {
 
 	ZombieOriginQuest: {
 		Name: Unholy Undertaking
+		Client: Unknown
 		Description: I've found an odd wall scroll listing important information about Zombies and, potentially, their origins. I think I should talk to the Guide or Dryad about this. Maybe we can put a stop to this vile necromancy!
 		ShowGuideDialogue: Did you find that mysterious scroll there? I assume you did. It's an interesting lead on why these zombies have been appearing recently. I'd say we need to do more research on who's behind the zombie uprising. Maybe it's a crazed scientist, or something? There should be books on the matter near the Dungeon.
 		TalkGuide: Talk to the Guide about the mysterious scroll.

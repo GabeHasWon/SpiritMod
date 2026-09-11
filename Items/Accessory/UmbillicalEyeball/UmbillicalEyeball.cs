@@ -35,6 +35,7 @@ namespace SpiritMod.Items.Accessory.UmbillicalEyeball
 
 	public class UmbillicalEyeballProj : ModProjectile
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Umbillical Eyeball");

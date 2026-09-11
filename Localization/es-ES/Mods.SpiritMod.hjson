@@ -1,0 +1,108 @@
+Misc: {
+	BadLuck: ¡Mala suerte!
+	GoodLuck: ¡Buena suerte!
+	NoShrines: ¡Ya no quedan santuarios!
+	Bullseye: Bullseye!
+	VWBConsume: La zarza te consumirá...
+	VWBRainOver: ¡El aguacero torrencial en el Briar se ha levantado!
+	VWBWrath: ¡No puedes detener la ira de la naturaleza!
+	StarplateAnnouncement: La Astralita en los Asteroides zumba con energía.
+	Pinned: Ubicación anclada
+	PinRemoved: Pin Quitado
+	PinMove: Haga clic para mover
+	// Put: Right click to put into Candy Bag
+	// SpiritSpread: The Spirits spread through the land...
+	// Cursed: Cursed!
+	// Unlocked: Unlocked!
+	// RemainingS: ({0}s remaining)
+}
+
+RecipeGroup: {
+	// EoRBow: Emerald or Ruby Bow
+	// SoTBow: Sapphire or Topaz Bow
+	// AoTStaff: Amethyst or Topaz Staff
+	// SoEStaff: Sapphire or Emerald Staff
+	// RoDStaff: Ruby or Diamond Staff
+}
+
+MiscUI: {
+	AutoSell: Haz clic para vender rápidamente tus artículos
+	SellLock:
+		'''
+		Cambia esto para bloquear la mecánica de venta rápida
+		No podrás usar la venta rápida mientras esté activada
+		'''
+	SellWeapons: Activa esta opción para desactivar la venta de armas
+	SellNoValue: Cambia esto para vender artículos "sin valor" con venta rápida
+	Autofire: Disparo automático
+	Autoswing: Oscilación automática
+}
+
+Keybinds: {
+	// QuestBookToggle.DisplayName: Quest Book Toggle
+	// QuestHUDToggle.DisplayName: Quest HUD Toggle
+}
+
+Events: {
+	BlueMoon: {
+		OnStart: La Luna Mística está saliendo...
+		IsDay: La luna no es poderosa a la luz del día.
+		IsCalmNight: La noche es demasiado tranquila.
+	}
+
+	TheTide: {
+		OnEnd: ¡La marea ha disminuido!
+		NotOcean: La marea solo sube en la calma del mar.
+		AlreadyActive: ¡La marea ya ha subido!
+		Wave: "Oleada {0} : "
+	}
+
+	JellyDeluge.OnStart: ¡Unas extrañas medusas están lloviendo del cielo!
+	LuminousOcean.OnStart: Un resplandor ilumina el océano…
+	// BloodMoon.DayTime: The Blood Moon only emerges at night.
+}
+
+BossChecklistIntegration: {
+	JellyDeluge: {
+		EntryName: Diluvio de gelatina
+		// SpawnInfo: Naturally occurs aboveground after any boss has been defeated. Can also be summoned by using a [i:SpiritMod/DistressJellyItem], found in Asteroid Biomes and caught using a bug net. Occurs less frequently after the Moon Jelly Wizard has been defeated.
+	}
+
+	TheTide: {
+		EntryName: La marea
+		// SpawnInfo: Use a [i:SpiritMod/BlackPearl] at the Ocean at any time.
+	}
+
+	MysticMoon: {
+		EntryName: Luna Mística
+		// SpawnInfo: Use a [i:SpiritMod/BlueMoonSpawn] at nighttime.
+	}
+}
+
+GameTips: {
+	SpiritGameTip0: ¡La jalea lunar es una gran fuente de curación!
+	SpiritGameTip1: ¡El supervisor no va a volver!
+	SpiritGameTip2: Puedes encontrar al aventurero en la zarza subterránea en cualquier momento.
+	SpiritGameTip3: Los santuarios místicos ofrecen muchos beneficios, ¡o amenazas!
+	SpiritGameTip4: El Jem tiene un poder incalculable. ¿Tienes lo que se necesita?
+	SpiritGameTip5: Derrota al Starplate Voyager para obtener Astralita, un poderoso metal espacial.
+	SpiritGameTip6: El océano está lleno de muchas sorpresas. ¡Compruébalo alguna vez!
+	SpiritGameTip7: Los garrotes son armas de corto alcance muy agradables, especialmente si necesitas mantener a muchos enemigos alejados de ti.
+	SpiritGameTip8: Los sepulcros subterráneos son peligrosos, pero valen la pena.
+	SpiritGameTip9: Las misiones son una forma fácil de obtener un montón de recompensas: ¡habla con el aventurero para obtener el libro!
+}
+
+AvianIslandSigns: {
+	0: (El texto es ilegible)
+	1: Complejo flotante — Lo único que… (marcas de arañazos)
+	2: ¿Supervisor visto a lo lejos? Más en 5
+	3: ¿Un avivamiento? ¡Más probable que un gracias!
+	4: ¡Encuentra más… (marcas de arañazos) por solo 50 g!
+}
+
+FrozenEnemies: {
+	// IceBat: Frozen {$NPCName.IceBat}
+	// SnowFlinx: Frozen {$NPCName.SnowFlinx}
+	// UndeadViking: Frozen {$NPCName.UndeadViking}
+	// Wheezer: Frozen {$NPCs.Wheezer.DisplayName}
+}

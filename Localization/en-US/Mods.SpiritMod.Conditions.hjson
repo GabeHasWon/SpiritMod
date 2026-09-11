@@ -13,9 +13,6 @@ FromAHead: From acidic heads
 PokeyBodyLastSegment: Drops only from the last segment
 Enchanted: Drops when enemy is enchanted
 Rarely: Rarely
-WearingFloran: Wearing the full Floran set
-WearingArcaneNecklace: Wearing the Arcane Necklace and is using a magic weapon
-WearingVitalityStone: Wearing the Vitality Stone (or an upgrade)
 Uncommonly: Uncommonly from Shadow Mimics
 HasMoonshot: Any player has a Moonshot
 VoyagerDown: Starplate Voyager is defeated
@@ -26,11 +23,11 @@ DuskingDown: Dusking is defeated
 InBriar: In the Briar
 InAsteroids: In Asteroids
 InSpirit: In the Spirit
-NotInSpirit: Not in the Spirit
-NotInBriar: Not in the Briar
-StarjinxDown: Starjinx event is defeated
+FirstDown: Only on first defeat
 HalfCompleteBestiary: Half of Spirit's bestiary is complete
 FullCompleteBestiary: All of Spirit's bestiary is complete
+DurasilkSheaf: Obtain 3 Durasilk Sheafs
+WarlockLure: During Unholy Undertaking
 # Quest conditions are below here
 # IsCompleted is used to shorten translation
 IsCompleted: quest is completed

@@ -76,8 +76,10 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			}
 
 			string itemName = Lang.GetItemNameValue(ItemType);
+			if (LanguageManager.Instance.ActiveCulture.Name == "ru-RU")
+				itemName = char.ToLowerInvariant(itemName[0]) + itemName.Substring(1);
 			string count = _itemsNeeded > 1 ? _itemsNeeded.ToString() : "1";
-			builder.Append(_wording).Append(' ').Append(count).Append(' ').Append(itemName);
+			builder.Append(_wording.Format(count, itemName));
 
 			// pluralness
 			builder.Append(QuestUtils.GetPluralEnding(_itemsNeeded, itemName));
@@ -86,7 +88,11 @@ namespace SpiritMod.Mechanics.QuestSystem.Tasks
 			if (showProgress)
 			{
 				int showAmount = System.Math.Min(_itemsNeeded, _lastCount);
-				builder.Append(" [c/97E2E2:(").Append(showAmount).Append('/').Append(_itemsNeeded).Append(")]");
+
+				if (LanguageManager.Instance.ActiveCulture.Name == "ru-RU")
+					builder.Replace($"({count} шт.)", $"[c/97E2E2:({showAmount}/{_itemsNeeded})]");
+				else
+					builder.Append($" [c/97E2E2:({showAmount}/{_itemsNeeded})]");
 			}
 
 			return builder.ToString();

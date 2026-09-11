@@ -34,10 +34,12 @@ namespace SpiritMod.Items.Consumable
 
 			NetMessage.SendData(MessageID.InvasionProgressReport, -1, -1, null, Main.invasionProgress, Main.invasionProgressMax, Main.invasionProgressIcon, 0f, 0, 0, 0);
 
+			string message = Language.GetTextValue("Mods.SpiritMod.Items.SurrenderBell.Message");
+
 			if (Main.netMode == NetmodeID.SinglePlayer)
-				Main.NewText(Language.GetTextValue("Mods.SpiritMod.Items.SurrenderBell.Surrender"), Color.MediumPurple);
+				Main.NewText(message, Color.MediumPurple);
 			else if (Main.netMode == NetmodeID.Server)
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Items.SurrenderBell.Surrender")), Color.MediumPurple, -1);
+				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(message), Color.MediumPurple, -1);
 			return true;
 		}
 	}

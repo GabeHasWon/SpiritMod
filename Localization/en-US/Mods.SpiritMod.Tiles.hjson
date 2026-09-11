@@ -1,6 +1,3 @@
-SpiritPylon.MapEntry: Spirit Pylon
-AsteroidPylon.MapEntry: Asteroid Pylon
-BriarPylon.MapEntry: Briar Pylon
 KoiTotem_Tile.MapEntry: Koi Totem
 OpalFrog_Tile.MapEntry: Opal Frog
 Trophy8Tile.MapEntry: Atlas Trophy
@@ -72,7 +69,6 @@ OceanPirateChest: {
 	ContainerName: Pirate Chest
 }
 
-OceanPirateChest_Locked.MapEntry: Locked Pirate Chest
 Pillar1Tile.MapEntry: Pillar
 Pillar2Tile.MapEntry: Pillar
 Pillar3Tile.MapEntry: Pillar
@@ -198,9 +194,6 @@ YellowNeonPlant.MapEntry: Neon Plant
 OccultistMapTile.MapEntry: Occult Wall Scroll
 OldTelescopeTile.MapEntry: Old Telescope
 PirateCrate.MapEntry: Crate
-AsteroidPylonTile.MapEntry: $Mods.SpiritMod.MapObject.AsteroidPylon
-BriarPylonTile.MapEntry: $Mods.SpiritMod.MapObject.BriarPylon
-SpiritPylonTile.MapEntry: $Mods.SpiritMod.MapObject.SpiritPylon
 
 ReachChest1: {
 	MapEntry: Elderbark Chest

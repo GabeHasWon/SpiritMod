@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Terraria.Localization;
 
 namespace SpiritMod.Items.Halloween
 {
@@ -51,7 +51,6 @@ namespace SpiritMod.Items.Halloween
 			// Tooltip.SetDefault("Holds up to " + MaxCandy + " pieces of candy");
 		}
 
-
 		private int pieces;
 		private readonly byte[] candy;
 		private readonly byte[] variants;
@@ -62,7 +61,7 @@ namespace SpiritMod.Items.Halloween
 		public CandyBag()
 		{
 			pieces = 0;
-			variants = new byte[Candy.CandyNames.Count];
+			variants = new byte[Candy.VariantCount];
 			candy = new byte[CandyTypes];
 		}
 
@@ -120,7 +119,7 @@ namespace SpiritMod.Items.Halloween
 			Main.NewText("Candy: " + candy[0]);
 			for (int i = variants.Length - 1; i >= 0; i--) {
 				if (variants[i] > 0)
-					Main.NewText("[" + i + "]" + Candy.CandyNames[i] + ": " + variants[i]);
+					Main.NewText("[" + i + "]" + Candy.GetCandyName(i) + ": " + variants[i]);
 			}
 		}
 
@@ -179,10 +178,7 @@ namespace SpiritMod.Items.Halloween
 			if (!ContainsCandy)
 				return;
 
-			string text = Language.GetTextValue($"Mods.SpiritMod.Items.CandyBag.{(pieces == 1 ? "ContainsSingle" : "ContainsPlural")}", pieces);
-			tooltips.Add(new TooltipLine(Mod, "BagContents", text));
-
-			tooltips.Add(new TooltipLine(Mod, "RightclickHint", Language.GetTextValue("Mods.SpiritMod.Items.CandyBag.Take")));
+			tooltips.Add(new TooltipLine(Mod, "BagContents", Language.GetTextValue("Mods.SpiritMod.Items.CandyBag.BagContents", pieces)));
 		}
 
 		public override void SaveData(TagCompound tag)

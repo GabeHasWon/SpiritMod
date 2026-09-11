@@ -6,6 +6,7 @@ namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
 	public class CritterCaptureFloater : Quest
     {
+		public override int QuestClientID => NPCID.Dryad;
 		public override int Difficulty => 1;
 		public override string QuestCategory => "Forager";
 

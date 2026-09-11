@@ -1,0 +1,190 @@
+ModName: Spirit Mod
+Salvati: Salvati
+Sbubby: Sbubby
+By: by
+BySalvati: "{$By} {$Salvati}"
+
+GraniteBiome: {
+	DisplayName: Piedras Resonantes (Tema Granito)
+	Author: "{$BySalvati}"
+}
+
+AuroraSnow: {
+	DisplayName: Aurora Borealis
+	Author: "{$BySalvati}"
+}
+
+DepthInvasion: {
+	DisplayName: Mareas Ahogantes (Tema Marea)
+	Author: "{$BySalvati}"
+}
+
+SnowNighttime: {
+	DisplayName: Estrellas Heladas (Tema Noche Nieve)
+	Author: "{$BySalvati}"
+}
+
+DesertNighttime: {
+	DisplayName: Dunas Impecables (Tema Noche Desierto)
+	Author: "{$BySalvati}"
+}
+
+OceanNighttime: {
+	DisplayName: Más Allá del Horizonte (Tema Océano Luminoso)
+	Author: "{$BySalvati}"
+}
+
+ReachUnderground: {
+	DisplayName: Enredaderas Subterráneas (Tema Zarzas Subterráneas)
+	Author: "{$By} {$Sbubby}"
+}
+
+Meteor: {
+	DisplayName: ¡Rocas espaciales! (Tema Meteoritos)
+	Author: "{$BySalvati}"
+}
+
+Infernon: {
+	DisplayName: Cuidado Ardiente (Tema Infernon)
+	Author: "{$BySalvati}"
+}
+
+CorruptNight: {
+	DisplayName: Combustible de pesadillas (Tema Noche Corrupción)
+	Author: "{$BySalvati}"
+}
+
+NeonTech1: {
+	DisplayName: Despegando (Tema Día Hiperespacio)
+	Author: "{$BySalvati}"
+}
+
+NeonTech: {
+	DisplayName: Vibraciones Tecnológicas (Tema Noche Hiperespacial)
+	Author: "{$BySalvati}"
+}
+
+BlueMoon: {
+	DisplayName: Groove Nocturno (Tema Luna Mística)
+	Author: "{$BySalvati}"
+}
+
+JellySky: {
+	DisplayName: Situación Pegajosa (Tema  Diluvio Medusas)
+	Author: "{$BySalvati}"
+}
+
+FrostLegion: {
+	DisplayName: Fríos Implacables (Tema Legión Escarcha)
+	Author: "{$BySalvati}"
+}
+
+SpiderCave: {
+	DisplayName: Horrores de Xyresic (Tema Cueva Arañas)
+	Author: "{$BySalvati}"
+}
+
+MoonJelly: {
+	DisplayName: Travesuras Místicas (Tema Hechicero Medusas Lunares)
+	Author: "{$BySalvati}"
+}
+
+HallowNight: {
+	DisplayName: Paisaje Maravilloso (Tema Noche de Bendición)
+	Author: "{$BySalvati}"
+}
+
+Atlas: {
+	DisplayName: Temblores Subterráneos (Tema Atlas)
+	Author: "{$BySalvati}"
+}
+
+SpiritLayer3: {
+	DisplayName: Atmósfera infernal (Tema Profundidades Espirituales)
+	Author: "{$BySalvati}"
+}
+
+ReachBoss: {
+	DisplayName: Caparazón del Monarca (Tema Perdición Vinewrath)
+	Author: "{$BySalvati}"
+}
+
+MarbleBiome: {
+	DisplayName: Túnel Real (Tema Mármol)
+	Author: "{$BySalvati}"
+}
+
+Blizzard: {
+	DisplayName: Tormentas Heladas (Tema Ventisca)
+	Author: "{$BySalvati}"
+}
+
+SpiritLayer1: {
+	DisplayName: Atmósfera Temible (Tema Espíritu Subterráneo)
+	Author: "{$BySalvati}"
+}
+
+Starplate: {
+	DisplayName: Viajero Perdido (Tema Starplate Voyager)
+	Author: "{$BySalvati}"
+}
+
+SpiritOverworld: {
+	DisplayName: Atmósfera Agobiante (Tema Spirit)
+	Author: "{$BySalvati}"
+}
+
+Reach: {
+	DisplayName: Demonios Florales (Tema Zarza)
+	Author: "{$BySalvati}"
+}
+
+AncientAvian: {
+	DisplayName: Gigante Descartado (Tema del Ave Antigua)
+	Author: "{$BySalvati}"
+}
+
+UnderwaterMusic: {
+	DisplayName: Océano Profundo
+	Author: "{$BySalvati}"
+}
+
+VictoryDay: {
+	DisplayName: Mundo Principal Alternativo (Tema Día Victoria)
+	Author: "{$BySalvati}"
+}
+
+AshStorm: {
+	DisplayName: Tormenta de Ceniza
+	Author: "{$BySalvati}"
+}
+
+Asteroids: {
+	DisplayName: Islas Superiores (Tema Asteroides)
+	Author: "{$BySalvati}"
+}
+
+DuskingTheme: {
+	DisplayName: Atardeciendo
+	Author: "{$By} LordCakeSpy"
+}
+
+Scarabeus: {
+	DisplayName: Complicaciones Reptantes (Tema de Scarabeus)
+	Author: "{$BySalvati}"
+}
+
+TranquilWinds: {
+	DisplayName: Vientos Tranquilos
+	Author: "{$BySalvati}"
+}
+
+ReachNighttime: {
+	DisplayName: Noche del Zarzal
+	Author: "{$BySalvati}"
+}
+
+CrimsonNight: {
+	DisplayName: Filo Afilado (Tema Noche Carmesí)
+	Author: "{$BySalvati}, {$Sbubby}"
+}

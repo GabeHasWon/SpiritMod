@@ -1,0 +1,51 @@
+NotDay: Только ночью
+Day: Только днём
+DropFrom: "В "
+Purity: чистых биомах
+Snow: снегах
+Asteroid: поле астероидов
+DefBoss: После победы над: {0}
+RrefixThe: ""
+AnyMech: любым механическим боссом
+FromVHead: С ядовитой головы гидры
+FromFHead: С огненной головы гидры
+FromAHead: С кислотной головы гидры
+PokeyBodyLastSegment: Только с последнего сегмента
+Enchanted: Если зачарован
+Rarely: Редко
+Uncommonly: Изредка с теневых мимиков
+HasMoonshot: Если хотя бы у одного игрока есть лунострел
+VoyagerDown: После победы над Звездопанцирным странником
+ScarabDown: После победы над Скарабеусом
+MJWDown: После победы над Лунной медузой-волшебником
+VinewrathDown: После победы над Гневоплющем
+DuskingDown: После победы над Сумрачным королём
+InBriar: В терновнике
+InAsteroids: В поле астероидов
+InSpirit: В биоме духов
+FirstDown: Только при первом убийстве
+HalfCompleteBestiary: Когда бестиарий Spirit заполнен хотя бы на 50%
+FullCompleteBestiary: Когда бестиарий Spirit полностью заполнен
+DurasilkSheaf: Получено 3 полотна прочной ткани
+WarlockLure: Во время задания «{$Quests.QuestInfo.ZombieOriginQuest.Name}»
+# Quest conditions are below here
+# IsCompleted is used to shorten translation
+IsCompleted: После выполнения задания
+FirstAdventureFinished: "{$IsCompleted} «{$Quests.QuestInfo.FirstAdventure.Name}»"
+FishyBusinessFinished: "{$IsCompleted} «{$Quests.QuestInfo.AnglerStatueQuest.Name}»"
+SanctuaryNightlightsFinished: "{$IsCompleted} «{$Quests.QuestInfo.CritterCaptureFloater.Name}»"
+SpaceRocksFinished: "{$IsCompleted} «{$Quests.QuestInfo.ExplorerQuestAsteroid.Name}»"
+RockyRoadFinished: "{$IsCompleted} «{$Quests.QuestInfo.ExplorerQuestGranite.Name}»"
+ForgottenCivilizationsFinished: "{$IsCompleted} «{$Quests.QuestInfo.ExplorerQuestMarble.Name}»"
+HiveHuntingFinished: "{$IsCompleted} «{$Quests.QuestInfo.ExplorerQuestHive.Name}»"
+GlowingAGardenFinished: "{$IsCompleted} «{$Quests.QuestInfo.ExplorerQuestMushroom.Name}»"
+ManicMageFinished: "{$IsCompleted} «{$Quests.QuestInfo.ManicMage.Name}»"
+SkyHighFinished: "{$IsCompleted} «{$Quests.QuestInfo.SkyHigh.Name}»"
+UnholyUndertakingFinished: "{$IsCompleted} «{$Quests.QuestInfo.ZombieOriginQuest.Name}»"
+DecrepitDepthsFinished: "{$IsCompleted} «{$Quests.QuestInfo.DecrepitDepths.Name}»"
+TowerOrHideoutQuestFinished: "{$IsCompleted} «{$Quests.QuestInfo.BreakingAndEntering.Name}» или «{$Quests.QuestInfo.FriendSafari.Name}»"
+ItsNoSalmonFinished: "{$IsCompleted} «{$Quests.QuestInfo.ItsNoSalmon.Name}»"
+SanctuarySporeSalvageFinished: "{$IsCompleted} «{$Quests.QuestInfo.SporeSalvage.Name}»"
+WhyZombiesFinished: "{$IsCompleted} «{$Quests.QuestInfo.SlayerQuestDrBones.Name}»"
+BeneathTheIceFinished: "{$IsCompleted} «{$Quests.QuestInfo.IceDeityQuest.Name}»"
+FloweryFiendsFinished: "{$IsCompleted} «{$Quests.QuestInfo.SlayerQuestBriar.Name}»"

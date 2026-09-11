@@ -41,40 +41,40 @@ namespace SpiritMod.GlobalClasses.NPCs
 
 			if (npc.type == NPCID.Wizard)
 			{
-				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Wizard.RuneWizard"), 0.3f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Wizard.Gambler1"), 0.1f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Wizard.Gambler2"), 0.1f, npc, ref replaceChance);
+				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Wizard.RuneWizard"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Wizard.Gambler1"), 0.1f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Wizard.Gambler2"), 0.1f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.Pirate)
 			{
-				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Pirate.Adventurer"), 0.2f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Pirate.Rogue"), 0.3f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Pirate.Gambler"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Pirate.Adventurer"), 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Pirate.Rogue"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Pirate.Gambler"), 0.3f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.GoblinTinkerer)
 			{
-				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.GoblinTinkerer.RuneWizard"), 0.4f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.GoblinTinkerer.Gambler"), 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.GoblinTinkerer.RuneWizard"), 0.4f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.GoblinTinkerer.Gambler"), 0.2f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.ArmsDealer)
 			{
-				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.ArmsDealer.Rogue1"), 0.3f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.ArmsDealer.Rogue2"), 0.3f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.ArmsDealer.Adventurer"), 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.ArmsDealer.Rogue1"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.ArmsDealer.Rogue2"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.ArmsDealer.Adventurer"), 0.2f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.Demolitionist)
 			{
-				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Demolitionist.RuneWizard"), 0.4f, npc, ref replaceChance);
-				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Demolitionist.Rogue"), 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<RuneWizard>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Demolitionist.RuneWizard"), 0.4f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Rogue>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Demolitionist.Rogue"), 0.2f, npc, ref replaceChance);
 			}
 			else if (npc.type == NPCID.Golfer)
-				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Golfer.Gambler"), 0.3f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Golfer.Gambler"), 0.3f, npc, ref replaceChance);
 			else if (npc.type == NPCID.DD2Bartender)
-				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.DD2Bartender.Adventurer"), 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.DD2Bartender.Adventurer"), 0.2f, npc, ref replaceChance);
 			else if (npc.type == NPCID.Nurse)
-				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.Nurse.Gambler"), 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Gambler>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.Nurse.Gambler"), 0.2f, npc, ref replaceChance);
 			else if (npc.type == NPCID.BestiaryGirl && !Main.bloodMoon && Main.GetMoonPhase() != Terraria.Enums.MoonPhase.Full)
-				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.TownNPC.Vanilla.BestiaryGirl.Adventurer"), 0.2f, npc, ref replaceChance);
+				AddDialogueAboutNPC<Adventurer>(dialogue, Language.GetTextValue("Mods.SpiritMod.NPCs.VanillaDialogue.BestiaryGirl.Adventurer"), 0.2f, npc, ref replaceChance);
 
 			if (Main.rand.NextFloat() < replaceChance)
 				chat = Main.rand.Next(dialogue);

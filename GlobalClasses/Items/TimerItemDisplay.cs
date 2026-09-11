@@ -30,7 +30,7 @@ internal class TimerItemDisplay : GlobalItem
 		{
 			int tooltipTime = Main.LocalPlayer.ItemTimer(item.ModItem) / 60;
 
-			string text = (tooltipTime < 60) ? Language.GetTextValue("Mods.SpiritMod.Misc.RemainingS", tooltipTime) : Language.GetTextValue("Mods.SpiritMod.Misc.RemainingM", tooltipTime / 60);
+			string text = Language.GetTextValue("Mods.SpiritMod.Misc.RemainingS", tooltipTime);
 			tooltips.Add(new TooltipLine(Mod, "Cooldown", text) { OverrideColor = Color.HotPink });
 		}
 	}

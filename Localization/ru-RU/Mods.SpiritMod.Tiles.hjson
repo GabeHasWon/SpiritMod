@@ -1,0 +1,296 @@
+KoiTotem_Tile.MapEntry: "{$Items.KoiTotem.DisplayName}"
+OpalFrog_Tile.MapEntry: "{$Items.OpalFrogItem.DisplayName}"
+Trophy8Tile.MapEntry: Трофей
+Trophy2Tile.MapEntry: Трофей
+Trophy6Tile.MapEntry: Трофей
+Trophy4Tile.MapEntry: Трофей
+MJWTrophyTile.MapEntry: Трофей
+Trophy1Tile.MapEntry: Трофей
+Glowstone.MapEntry: Астралит
+Trophy3Tile.MapEntry: Трофей
+Trophy5Tile.MapEntry: Трофей
+BismiteCrystalOre.MapEntry: Бисмит
+CoilEnergizerTile.MapEntry: "{$Items.CoilEnergizerItem.DisplayName}"
+CryoliteOreTile.MapEntry: Криолит
+Driftwood1Tile.MapEntry: "{$Items.DriftwoodTileItem.DisplayName}"
+Driftwood2Tile.MapEntry: "{$Items.DriftwoodTileItem.DisplayName}"
+Driftwood3Tile.MapEntry: "{$Items.DriftwoodTileItem.DisplayName}"
+FishLureTile.MapEntry: "{$Items.FishLure.DisplayName}"
+SunkenTreasureTile.MapEntry: "{$Items.SunkenTreasure.DisplayName}"
+FloranOreTile.MapEntry: Флоран
+GraniteOre.MapEntry: Зачарованный гранит
+MarbleOre.MapEntry: Древний мрамор
+OlympiumToken_Tile.MapEntry: "{$Items.OlympiumToken.DisplayName}"
+Trophy10Tile.MapEntry: Трофей
+SpiritOreTile.MapEntry: Руда духов
+Fathomless_Chest.MapEntry: "{$Items.Fathomless_Chest_Item.DisplayName}"
+AvianEgg.MapEntry: Птичье яйцо
+Blaststone_Grave.MapEntry: Надгробие
+SkullGrave.MapEntry: Надгробие
+Canvas_Tile.MapEntry: Холст
+Coral1x2.MapEntry: Коралл
+Coral2x2.MapEntry: Коралл
+Coral3x3.MapEntry: Коралл
+CrystalFlower.MapEntry: "{$Items.CrystalFlowerItem.DisplayName}"
+Cloudstalk.MapEntry: "{$Items.CloudstalkItem.DisplayName}"
+GoblinStandardTile.MapEntry: Боевое знамя гоблинов
+GoblinStatueTile.MapEntry: Статуя гоблина
+Spike1Tile.MapEntry: Гранитное образование
+Spike2Tile.MapEntry: Гранитное образование
+Spike3Tile.MapEntry: Гранитное образование
+Spike4Tile.MapEntry: Гранитное образование
+Spike5Tile.MapEntry: Гранитное образование
+Spike6Tile.MapEntry: Гранитное образование
+Hourglass.MapEntry: "{$Items.HourglassItem.DisplayName}"
+IceBatHostile.MapEntry: Замороженная летучая мышь
+IceFlinxHostile.MapEntry: Замороженный снежный флинкс
+IceVikingHostile.MapEntry: Замороженный нежить-викинг
+IceWheezerHostile.MapEntry: Замороженный пыхтельник
+IceBatDecor.MapEntry: "{$Items.IceBatSculpture.DisplayName}"
+IceBatPassive.MapEntry: Замороженная летучая мышь
+IceDeityDecor.MapEntry: "{$Items.IceDeitySculpture.DisplayName}"
+IceFlinxDecor.MapEntry: "{$Items.IceFlinxSculpture.DisplayName}"
+IceFlinxPassive.MapEntry: Замороженный снежный флинкс
+IceVikingDecor.MapEntry: "{$Items.IceVikingSculpture.DisplayName}"
+IceVikingPassive.MapEntry: Замороженный нежить-викинг
+IceWheezerDecor.MapEntry: "{$Items.IceWheezerSculpture.DisplayName}"
+IceWheezerPassive.MapEntry: Замороженный пыхтельник
+WinterbornDecor.MapEntry: "{$Items.WinterbornSculpture.DisplayName}"
+Kelp1x2.MapEntry: Светящееся растение
+Kelp2x2.MapEntry: Светящееся растение
+Kelp2x3.MapEntry: Светящееся растение
+Breakable1x2Vent.MapEntry: Гидротермальное жерло
+Breakable1x3Vent.MapEntry: Гидротермальное жерло
+HydrothermalVent1x2.MapEntry: Гидротермальное жерло
+HydrothermalVent1x3.MapEntry: Гидротермальное жерло
+
+OceanPirateChest: {
+	MapEntry: "{$Items.PirateChest.DisplayName}"
+	ContainerName: "{$Items.PirateChest.DisplayName}"
+}
+
+Pillar1Tile.MapEntry: Колонна
+Pillar2Tile.MapEntry: Колонна
+Pillar3Tile.MapEntry: Колонна
+Pillar4Tile.MapEntry: Колонна
+Pillar5Tile.MapEntry: Колонна
+Pillar6Tile.MapEntry: Колонна
+Pillar7Tile.MapEntry: Колонна
+Pillar8Tile.MapEntry: Колонна
+PottedSakuraTile.MapEntry: Бонсай
+PottedWillowTile.MapEntry: Бонсай
+PrimePrint.MapEntry: Чертёж
+ProbePrint.MapEntry: Чертёж
+ReachGrass1.MapEntry: Колючая трава
+ScarabIdol.MapEntry: "{$Items.ScarabIdol.DisplayName}"
+Shrine1_Tile.MapEntry: Древнее святилище
+Shrine2_Tile.MapEntry: Древнее святилище
+Shrine3_Tile.MapEntry: Древнее святилище
+SkullPile1.MapEntry: Груда костей
+SkullPile2.MapEntry: Груда костей
+SkullStick.MapEntry: Череп на палке
+SkullStick3.MapEntry: Череп на палке
+SkullStick3Flip.MapEntry: Череп на палке
+SkullStickFlip.MapEntry: Череп на палке
+BlueShardBig.MapEntry: Огромный кристалл
+GreenShardBig.MapEntry: Огромный кристалл
+PurpleShardBig.MapEntry: Огромный кристалл
+StarBeacon.MapEntry: "{$Items.StarBeaconItem.DisplayName}"
+TwinsPrint.MapEntry: Чертёж
+BannerTile.MapEntry: Знамя
+Black_Stone.MapEntry: ""
+BlastStone.MapEntry: ""
+SepulchreBrick.MapEntry: ""
+BloodBlossom.MapEntry: Кровоцвет
+CrimsonPustuleTile.MapEntry: ""
+AcidACTile.MapEntry: "{$Items.AcidAC.DisplayName}"
+AcidBarrelTile.MapEntry: Бочка
+
+AcidChestTile: {
+	MapEntry: "{$Items.AcidChest.DisplayName}"
+	ContainerName: "{$Items.AcidChest.DisplayName}"
+}
+
+AcidDresserTile: {
+	MapEntry: "{$Items.AcidDresser.DisplayName}"
+	ContainerName: "{$Items.AcidDresser.DisplayName}"
+}
+
+AcidFanTile.MapEntry: Вентилятор
+AcidKegTile.MapEntry: Кег
+ArcadeMachine.MapEntry: "{$Items.ArcadeMachineItem.DisplayName}"
+
+BambooBarrel: {
+	MapEntry: "{$Items.BambooBarrelItem.DisplayName}"
+	ContainerName: "{$Items.BambooBarrelItem.DisplayName}"
+}
+
+BambooBench.MapEntry: Скамья
+BambooBirdCage.MapEntry: Птичья клетка
+BambooPot.MapEntry: Горшок
+BoneAltar.MapEntry: Костяной алтарь
+BriarCrate_Tile.MapEntry: Ящик
+Blossom_Tile.MapEntry: "{$Items.BlossomCage.DisplayName}"
+Briarmoth_Tile.MapEntry: "{$Items.BriarmothCage.DisplayName}"
+BrownCrinoid_Tile.MapEntry: "{$Items.BrownCrinoidCage.DisplayName}"
+Cleft_Tile.MapEntry: "{$Items.CleftCage.DisplayName}"
+Gulper_Tile.MapEntry: "{$Items.GulperBowl.DisplayName}"
+Luvdisc_Tile.MapEntry: "{$Items.LuvdiscBowl.DisplayName}"
+PaleCrinoid_Tile.MapEntry: "{$Items.PaleCrinoidCage.DisplayName}"
+RedCrinoid_Tile.MapEntry: "{$Items.RedCrinoidCage.DisplayName}"
+Tubeworm_Tile.MapEntry: "{$Items.TubewormBowl.DisplayName}"
+VibeshroomJar_Tile.MapEntry: "{$Items.VibeshroomJarItem.DisplayName}"
+TheCouch.MapEntry: Диван
+DurasilkSheafTile.MapEntry: "{$Items.DurasilkSheaf.DisplayName}"
+FestivalLanternTile.MapEntry: "{$Items.FestivalLanternItem.DisplayName}"
+FishCrate_Tile.MapEntry: Ящик
+ForagerTableTile.MapEntry: "{$Items.ForagerTableItem.DisplayName}"
+ForgottenKingStatue.MapEntry: Статуя
+GemsPickaxeRuby.MapEntry: Застрявшая кирка
+GemsPickaxeSapphire.MapEntry: Застрявшая кирка
+Generator.MapEntry: Генератор
+GiantAnglerStatueTile.MapEntry: Огромная статуя сильной полуакулы-полурыбака
+
+GlowplateChest: {
+	MapEntry: "{$Items.GlowplateChestItem.DisplayName}"
+	ContainerName: "{$Items.GlowplateChestItem.DisplayName}"
+}
+
+GoblinChest: {
+	MapEntry: "{$ItemName.DynastyChest}"
+	ContainerName: "{$ItemName.DynastyChest}"
+}
+
+GoldScarabChest: {
+	MapEntry: "{$ItemName.GoldChest}"
+	ContainerName: "{$ItemName.GoldChest}"
+}
+
+HangingCloudstalkTile.MapEntry: ""
+HangingSoulbloomTile.MapEntry: ""
+HangingSunPotTile.MapEntry: ""
+HerosMemorialStatueTile.MapEntry: "{$Items.HerosMemorialStatue.DisplayName}"
+DragonStatue.MapEntry: "{$Items.DragonStatueItem.DisplayName}"
+BlueLightsLarge.MapEntry: Фонарь
+BlueLightsSmall.MapEntry: Гирлянда
+BlueNeonCandle.MapEntry: Свеча
+BlueNeonPlant.MapEntry: Растение
+GreenLightsLarge.MapEntry: Фонарь
+GreenLightsSmall.MapEntry: Гирлянда
+GreenNeonCandle.MapEntry: Свеча
+GreenNeonPlant.MapEntry: Растение
+PurpleLightsLarge.MapEntry: Фонарь
+PurpleLightsSmall.MapEntry: Гирлянда
+PurpleNeonCandle.MapEntry: Свеча
+PurpleNeonPlant.MapEntry: Растение
+RedLightsLarge.MapEntry: Фонарь
+RedLightsSmall.MapEntry: Гирлянда
+RedNeonCandle.MapEntry: Свеча
+RedNeonPlant.MapEntry: Растение
+YellowLightsLarge.MapEntry: Фонарь
+YellowLightsSmall.MapEntry: Гирлянда
+YellowNeonCandle.MapEntry: Свеча
+YellowNeonPlant.MapEntry: Растение
+OccultistMapTile.MapEntry: "{$Items.OccultistMap.DisplayName}"
+OldTelescopeTile.MapEntry: "{$Items.OldTelescope.DisplayName}"
+PirateCrate.MapEntry: Ящик
+
+ReachChest1: {
+	MapEntry: "{$Items.ReachChest.DisplayName}"
+	ContainerName: "{$Items.ReachChest.DisplayName}"
+}
+
+ReachDresser: {
+	MapEntry: "{$Items.ReachDresser.DisplayName}"
+	ContainerName: "{$Items.ReachDresser.DisplayName}"
+}
+
+ReachLanternTile.MapEntry: Фонарь
+ReachPotTile.MapEntry: Горшок
+ReachSofa.MapEntry: Диван
+TreemanStatue.MapEntry: "{$Items.TreemanStatue.DisplayName}"
+
+ReachChest: {
+	MapEntry: "{$Items.ReachChest.DisplayName}"
+	ContainerName: "{$Items.ReachChest.DisplayName}"
+}
+
+ReachCrate_Tile.MapEntry: Ящик
+GraniteSculpture1x2.MapEntry: Гранитная скульптура
+GraniteSculpture2x3.MapEntry: Гранитная скульптура
+GraniteSculpture3x3.MapEntry: Гранитная скульптура
+GraniteSculpture3x5.MapEntry: Гранитная скульптура
+MarbleSculpture1x2.MapEntry: Мраморная скульптура
+MarbleSculpture2x3.MapEntry: Мраморная скульптура
+MarbleSculpture3x8.MapEntry: Мраморная скульптура
+
+SepulchreChestTile1: {
+	MapEntry: "{$Items.SepulchreChest.DisplayName}"
+	ContainerName: "{$Items.SepulchreChest.DisplayName}"
+}
+
+ShadowflameStone.MapEntry: Оружейная стойка гоблинов
+ShiverbarkFlagTile.MapEntry: Флаг
+ShiverbarkTotemTile.MapEntry: Тотем
+BlueSign.MapEntry: Табличка
+GreenSign.MapEntry: Табличка
+PurpleSign.MapEntry: Табличка
+RedSign.MapEntry: Табличка
+YellowSign.MapEntry: Табличка
+SkullPileTile.MapEntry: Груда черепов
+SlotMachineTile.MapEntry: "{$Items.SlotMachine.DisplayName}"
+
+AsteroidChest: {
+	MapEntry: "{$Items.AsteroidChest.DisplayName}"
+	ContainerName: "{$Items.AsteroidChest.DisplayName}"
+}
+
+ScrapTile1.MapEntry: "{$Items.ScrapItem1.DisplayName}"
+ScrapTile2.MapEntry: "{$Items.ScrapItem1.DisplayName}"
+ScrapTile3.MapEntry: "{$Items.ScrapItem1.DisplayName}"
+ScrapTile4.MapEntry: "{$Items.ScrapItem1.DisplayName}"
+ScrapTile5.MapEntry: "{$Items.ScrapItem1.DisplayName}"
+ScrapTile6.MapEntry: "{$Items.ScrapItem1.DisplayName}"
+
+SpiritChest: {
+	MapEntry: "{$Items.SpiritChest.DisplayName}"
+	ContainerName: "{$Items.SpiritChest.DisplayName}"
+}
+
+SpiritCrate.MapEntry: Ящик
+SunPotTile.MapEntry: "{$Items.SunPot.DisplayName}"
+SynthpalmTile.MapEntry: "{$Items.Synthpalm.DisplayName}"
+SynthwaveHead.MapEntry: "{$Items.SynthwaveHeadItem.DisplayName}"
+SynthwaveHeadActive.MapEntry: "{$Items.SynthwaveHeadItem.DisplayName}"
+TechCrateBig.MapEntry: Ящик
+TechCrateSmall.MapEntry: Ящик
+TentOpposite.MapEntry: Палатка
+TreasureChestTile.MapEntry: "{$Items.TreasureChest.DisplayName}"
+VaporwaveTile.MapEntry: "{$Items.VaporwaveItem.DisplayName}"
+JumpPadTile.MapEntry: "{$Items.JumpPadItem.DisplayName}"
+CopperPile.MapEntry: Груда меди
+GoldPile.MapEntry: Груда золота
+IronPile.MapEntry: Груда железа
+LeadPile.MapEntry: Груда олова
+PlatinumPile.MapEntry: Груда платины
+SilverPile.MapEntry: Груда серебра
+TinPile.MapEntry: Груда олова
+TungstenPile.MapEntry: Груда вольфрама
+SoulBloomTile.MapEntry: "{$Items.SoulBloom.DisplayName}"
+CursedArmor.MapEntry: Статуя
+ScreamingTomeTile.MapEntry: Загадочная книга
+
+SepulchreChestTile: {
+	MapEntry: "{$Items.SepulchreChest.DisplayName}"
+	ContainerName: "{$Items.SepulchreChest.DisplayName}"
+}
+
+SepulchreMirror.MapEntry: Зеркало
+SepulchreWindowOne.MapEntry: Окно
+SepulchreWindowTwo.MapEntry: Окно
+GoblinStandardTileRubble.MapEntry: Боевое знамя гоблинов
+SkullStick3FlipRubble.MapEntry: Череп на палке
+SkullStick3Rubble.MapEntry: Череп на палке
+TentOppositeRubble.MapEntry: Палатка
+SwordStand.MapEntry: Подставка для меча
+Map: Карта

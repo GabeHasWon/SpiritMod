@@ -1,0 +1,51 @@
+// NotDay: Drops only at night
+// Day: Drops only during day
+// DropFrom: "Drops only in the "
+// Purity: Purity
+// Snow: Snow
+// Asteroid: Asteroid
+// DefBoss: Drops only after {0} has been defeated
+// RrefixThe: "the "
+// AnyMech: any mechanical boss
+// FromVHead: From venomous heads
+// FromFHead: From flaming heads
+// FromAHead: From acidic heads
+// PokeyBodyLastSegment: Drops only from the last segment
+// Enchanted: Drops when enemy is enchanted
+// Rarely: Rarely
+// Uncommonly: Uncommonly from Shadow Mimics
+HasMoonshot: Cualquier jugador tiene un Moonshot
+VoyagerDown: Starplate Voyager fue derrotado
+ScarabDown: Scarabeus fue derrotado
+MJWDown: Mago de gelatina lunar fue derrotado
+VinewrathDown: La Perdición de Vinewrath fue derrotado
+DuskingDown: Dusking fue derrotado
+InBriar: En la zarza
+InAsteroids: En Asteroides
+InSpirit: En el Espíritu
+// FirstDown: Only on first defeat
+HalfCompleteBestiary: La mitad del bestario de Spirit está completo
+FullCompleteBestiary: Todo el bestiario de Spirit está completo
+DurasilkSheaf: Obtener 3 Hojas de Durasilk
+WarlockLure: Durante el Compromiso Impío
+# Quest conditions are below here
+# IsCompleted is used to shorten translation
+IsCompleted: la misión se ha completado
+FirstAdventureFinished: Primera Aventura {$IsCompleted}
+FishyBusinessFinished: Negocio sospechoso {$IsCompleted}
+SanctuaryNightlightsFinished: Santuario - Luces nocturnas {$IsCompleted}
+SpaceRocksFinished: Rocas espaciales {$IsCompleted}
+RockyRoadFinished: Camino rocoso {$IsCompleted}
+ForgottenCivilizationsFinished: Civilizaciones olvidadas {$IsCompleted}
+HiveHuntingFinished: Caza de colmenas {$IsCompleted}
+GlowingAGardenFinished: Un jardín resplandeciente {$IsCompleted}
+ManicMageFinished: El mago maníaco {$IsCompleted}
+SkyHighFinished: Por las nubes {$IsCompleted}
+UnholyUndertakingFinished: Compromiso impío {$IsCompleted}
+DecrepitDepthsFinished: Profundidades decrépitas {$IsCompleted}
+TowerOrHideoutQuestFinished: Allanamiento de morada o safari de amigos completada
+ItsNoSalmonFinished: No es salmón... {$IsCompleted}
+SanctuarySporeSalvageFinished: Santuario - Salvamento de esporas {$IsCompleted}
+WhyZombiesFinished: Zombis... ¿Por qué zombis? {$IsCompleted}
+BeneathTheIceFinished: Bajo el hielo {$IsCompleted}
+FloweryFiendsFinished: Demonios floridos {$IsCompleted}

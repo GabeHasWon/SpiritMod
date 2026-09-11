@@ -3,10 +3,11 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace SpiritMod.Items.Books.UI.MaterialUI;
+namespace SpiritMod.Items.Books.UI;
 
 public abstract class UIPageState : UIState
 {
@@ -89,35 +90,35 @@ public abstract class UIPageState : UIState
 
 class UIGraniteMaterialPageState : UIPageState
 {
-	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/GraniteMaterialPage";
+	protected override string BackgroundTexturePath => Language.GetTextValue("Mods.SpiritMod.Items.GranitePage.ImagePath");
 }
 
 class UIMarbleMaterialPageState : UIPageState
 {
-	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/MarbleMaterialPage";
+	protected override string BackgroundTexturePath => Language.GetTextValue("Mods.SpiritMod.Items.MarblePage.ImagePath");
 }
 
 class UIGlowrootPageState : UIPageState
 {
-	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/GlowrootPage";
+	protected override string BackgroundTexturePath => Language.GetTextValue("Mods.SpiritMod.Items.GlowrootPage.ImagePath");
 }
 
 class UIBismitePageStsate : UIPageState
 {
-	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/BismiteMaterialPage";
+	protected override string BackgroundTexturePath => Language.GetTextValue("Mods.SpiritMod.Items.BismitePage.ImagePath");
 }
 
 class UIFrigidFragmentPageState : UIPageState
 {
-	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/FrigidFragmentMaterialPage";
+	protected override string BackgroundTexturePath => Language.GetTextValue("Mods.SpiritMod.Items.FrigidFragmentPage.ImagePath");
 }
 
 class UIHeartScalePageState : UIPageState
 {
-	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/HeartScaleMaterialPage";
+	protected override string BackgroundTexturePath => Language.GetTextValue("Mods.SpiritMod.Items.HeartScalePage.ImagePath");
 }
 
 class UIEnchantedLeafPageState : UIPageState
 {
-	protected override string BackgroundTexturePath => "SpiritMod/Items/Books/UI/MaterialUI/EnchantedLeafMaterialPage";
+	protected override string BackgroundTexturePath => Language.GetTextValue("Mods.SpiritMod.Items.EnchantedLeafPage.ImagePath");
 }

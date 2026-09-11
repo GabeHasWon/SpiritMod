@@ -324,10 +324,12 @@ namespace SpiritMod.NPCs.Boss.Infernon
 			{
 				if (Main.expertMode)
 				{
+					string message = Language.GetTextValue("Mods.SpiritMod.NPCs.Infernon.ExpertDialogue");
+
 					if (Main.netMode == NetmodeID.SinglePlayer)
-						Main.NewText(Language.GetTextValue("Mods.SpiritMod.Misc.NotDefeat"), 220, 100, 100);
+						Main.NewText(message, 220, 100, 100);
 					else
-						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.SpiritMod.Misc.NotDefeat")), new Color(220, 100, 100));
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(message), new Color(220, 100, 100));
 
 					Vector2 spawnAt = NPC.Center + new Vector2(0f, (float)NPC.height);
 					NPC.NewNPC(NPC.GetSource_Death(), (int)spawnAt.X, (int)spawnAt.Y, ModContent.NPCType<InfernoSkull>());

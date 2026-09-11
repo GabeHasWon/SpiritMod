@@ -119,8 +119,8 @@ internal class VendorGlobalNPC : GlobalNPC
 			shop.Add<SadSlimePainting>(SpiritConditions.InBriar);
 			shop.Add<ToweringStactus>(Condition.InDesert);
 
-			shop.Add<ScrunklyPaintingItem>(new Condition("Mods.SpiritMod.Conditions.StarjinxDown", () =>
-				ModContent.GetInstance<SpiritNPCs.StarjinxEvent.StarjinxEventWorld>().StarjinxDefeated));
+			/*shop.Add<ScrunklyPaintingItem>(new Condition("Mods.SpiritMod.Conditions.StarjinxDown", () =>
+				ModContent.GetInstance<SpiritNPCs.StarjinxEvent.StarjinxEventWorld>().StarjinxDefeated));*/
 		}
 		else if (shop.NpcType == NPCID.Demolitionist)
 		{

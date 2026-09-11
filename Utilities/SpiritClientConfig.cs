@@ -14,6 +14,7 @@ class SpiritClientConfig : ModConfig
 	[Increment(.01f)]
 	[DefaultValue(1f)]
 	[Slider]
+	[Header("Visuals")]
 	public float ScreenShake { get; set; }
 
     [DefaultValue(true)]
@@ -25,18 +26,21 @@ class SpiritClientConfig : ModConfig
 	[DefaultValue(true)]
 	public bool AuroraEnabled { get; set; }
 
+	[Header("QoL")]
 	[DefaultValue(true)]
 	public bool AutoReuse { get; set; }
 
 	[DefaultValue(true)]
 	public bool QuickSell { get; set; }
 
-    [DefaultValue(true)]
+	[Header("Ambience")]
+	[DefaultValue(true)]
     public bool AmbientSounds { get; set; }
 
 	[DefaultValue(true)]
 	public bool LeafFall { get; set; }
 
+	[Header("Quests")]
 	[DefaultValue(QuestUtils.QuestInvLocation.Minimap)]
 	[DrawTicks]
 	public QuestUtils.QuestInvLocation QuestBookLocation { get; set; }
@@ -47,9 +51,18 @@ class SpiritClientConfig : ModConfig
 	[DefaultValue(true)]
 	public bool ShowNPCQuestNotice { get; set; }
 
+	[Header("Generation")]
 	[DefaultValue(false)]
 	public bool DoubleHideoutGeneration { get; set; }
 
+	[DefaultValue(true)]
+	public bool EnableSepulchres { get; set; }
+
+	[DefaultValue(false)]
+	public bool ForceClassicZiggurat { get; set; }
+
+
+	[Header("Oceans")]
 	[DefaultValue(OceanGeneration.OceanShape.Piecewise_V)]
 	public OceanGeneration.OceanShape OceanShape { get; set; }
 
@@ -60,15 +73,10 @@ class SpiritClientConfig : ModConfig
 	[DefaultValue(true)]
 	public bool SurfaceWaterTransparency { get; set; }
 
+	[Header("Fishing")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool EnemyFishing { get; set; }
-
-	[DefaultValue(true)]
-	public bool EnableSepulchres { get; set; }
-
-	[DefaultValue(false)]
-	public bool ForceClassicZiggurat { get; set; }
 
 	[OnDeserialized]
 	internal void OnDeserializedMethod(StreamingContext context) => ScreenShake = Utils.Clamp(ScreenShake, 0f, 1f);
