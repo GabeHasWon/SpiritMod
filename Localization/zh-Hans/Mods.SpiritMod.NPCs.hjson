@@ -1152,7 +1152,7 @@ SwordKakamora: {
 
 Adventurer: {
 	DisplayName: 冒险家
-	
+
 	Names: {
 		1: Morgan
 		2: Adam
@@ -1164,7 +1164,7 @@ Adventurer: {
 		8: Adrian
 		9: Christopher
 	}
-	
+
 	Dialogue: {
 		Basic1: 我走遍了世界各地，而且我有很多东西要给你看。
 		Basic2: 你住的房子真漂亮。这可比那些来自荆棘之地的野人把我吊在烤架上时住的强多了。
@@ -1254,7 +1254,7 @@ BoundRogue: {
 
 Gambler: {
 	DisplayName: 赌徒
-	
+
 	Names: {
 		1: Yumeko
 		2: Vanessa
@@ -1264,7 +1264,7 @@ Gambler: {
 		6: Celine
 		7: Aleksa
 	}
-	
+
 	Dialogue: {
 		Basic1: 赌博是一项皇家运动。你为什么不碰碰运气呢？
 		Basic2: 我要提醒你，我的游戏不适合胆小的人。
@@ -1366,7 +1366,7 @@ Oracle: {
 
 Rogue: {
 	DisplayName: 盗贼
-	
+
 	Names: {
 		1: Zane
 		2: Carlos
@@ -1377,7 +1377,7 @@ Rogue: {
 		7: Shepard
 		8: Sly
 	}
-	
+
 	Dialogue: {
 		Basic1: 来看看我的货？它们挺锋利的。
 		Basic2: 请相信我——被你击杀的Boss的遗体是不会被浪费的。
@@ -1420,7 +1420,7 @@ Rogue: {
 
 RuneWizard: {
 	DisplayName: 附魔师
-	
+
 	Names: {
 		1: Malachai
 		2: Nisarmah
@@ -1431,7 +1431,7 @@ RuneWizard: {
 		7: Oarno
 		8: Cosimo
 	}
-	
+
 	Dialogue: {
 		Basic1: 用我的奇怪雕文来强化你的武器吧！
 		Basic2: 有时，我只是在雕文上乱写一个符文，看看会发生什么。我不建议你这么做。

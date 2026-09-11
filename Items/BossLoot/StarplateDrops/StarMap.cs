@@ -62,7 +62,7 @@ namespace SpiritMod.Items.BossLoot.StarplateDrops
 			if (player.whoAmI == Main.myPlayer)
 			{
 				Vector2 pos = Main.MouseWorld - (player.Size / 2);
-				bool inTempleEarly = (Framing.GetTileSafely((Main.MouseWorld / 16).ToPoint()).WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
+				bool inTempleEarly = Framing.GetTileSafely(Main.MouseWorld.ToTileCoordinates()).WallType == WallID.LihzahrdBrickUnsafe && !NPC.downedGolemBoss;
 				
 				if (!Collision.SolidCollision(pos, player.width, player.height) && !inTempleEarly)
 				{

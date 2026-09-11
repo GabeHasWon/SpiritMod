@@ -1,7 +1,6 @@
 ﻿v1.5.0.45
-- Fixed error caused by better error reporting in Music Display
-- Fixed error that stopped the Briar from being seeded properly
-- Fixed extremely niche issue with Spirit biome generation not replacing Elephant Grass properly
-- Added config option to enable generating the pitiful Classic Ziggurat when Reforged is turned on (note: it may overlap with other structures)
-- Reduced Occultist spawn rates when one has already been defeated
-- Allowed the Idol for the Idle Idol quest to be crafted with Reforged content if both mods are enabled; adjusted Quest dialogue to match
+- Gargantuan improvements to localization throughout the entire mod, thanks to alinahvoshch and aemisigna
+- Complete Russian localization, again thanks to Nana Team
+- Complete Spanish localization, thanks to Ningunomas
+- Improvements to Chinese localization
+- Fixed Terra Staff not matching the new recipes of the Terra Blade and thus being sequence broken

@@ -28,7 +28,7 @@ Harvest: 收获{0}{1}
 OptionalGather: 可选 - 采集{0}{1}
 PluralSuffix: " "
 Comma: "， "
-Or: "或"
+Or: 或
 Objectives: 目标
 Activate: 激活
 Deactivate: 停用
