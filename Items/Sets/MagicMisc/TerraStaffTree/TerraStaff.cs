@@ -41,12 +41,14 @@ namespace SpiritMod.Items.Sets.MagicMisc.TerraStaffTree
 			Recipe modRecipe = CreateRecipe(1);
 			modRecipe.AddIngredient(ModContent.ItemType<TrueDarkStaff>(), 1);
 			modRecipe.AddIngredient(ModContent.ItemType<TrueHallowedStaff>(), 1);
+			modRecipe.AddIngredient(ItemID.BrokenHeroSword, 1);
 			modRecipe.AddTile(TileID.MythrilAnvil);
 			modRecipe.Register();
 
 			modRecipe = CreateRecipe(1);
 			modRecipe.AddIngredient(ModContent.ItemType<TrueBloodStaff>(), 1);
 			modRecipe.AddIngredient(ModContent.ItemType<TrueHallowedStaff>(), 1);
+			modRecipe.AddIngredient(ItemID.BrokenHeroSword, 1);
 			modRecipe.AddTile(TileID.MythrilAnvil);
 			modRecipe.Register();
 		}
