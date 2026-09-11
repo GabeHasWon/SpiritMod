@@ -5,12 +5,12 @@ AceOfDiamondsBuff: {
 
 AngelLight: {
 	DisplayName: Luz del ángel
-	Description: Mods.SpiritMod.Buffs.AngelLight.Description
+	Description: ""
 }
 
 AngelWrath: {
 	DisplayName: Cólera del ángel
-	Description: Mods.SpiritMod.Buffs.AngelWrath.Description
+	Description: ""
 }
 
 ExplorerFight: {
@@ -110,7 +110,7 @@ CrimsonSkullBuff: {
 
 Death: {
 	DisplayName: Muerte
-	Description: Mods.SpiritMod.Buffs.Death.Description
+	Description: ""
 }
 
 DeathRoseCooldown: {
@@ -120,7 +120,7 @@ DeathRoseCooldown: {
 
 AcidBurn: {
 	DisplayName: Agarre tóxico
-	Description: Mods.SpiritMod.Buffs.AcidBurn.Description
+	Description: ""
 }
 
 Afflicted: {
@@ -135,12 +135,12 @@ BloodCorrupt: {
 
 CryoCrush: {
 	DisplayName: Trituración criogénica
-	Description: Mods.SpiritMod.Buffs.CryoCrush.Description
+	Description: ""
 }
 
 DoomDestiny: {
 	DisplayName: Corte de estrella
-	Description: Mods.SpiritMod.Buffs.DoomDestiny.Description
+	Description: ""
 }
 
 FesteringWounds: {
@@ -183,22 +183,9 @@ BurningRage: {
 	Description: Estás recibiendo daño
 }
 
-CollapsingVoid.DisplayName: Vacío colapsado
-DevouringVoid.DisplayName: Vacío devorador
-
 DivineStrike: {
 	DisplayName: Golpe divino
 	Description: Tu próximo ataque infligirá más daño
-}
-
-PhantomVeil: {
-	DisplayName: Velo fantasma
-	Description: El próximo ataque será bloqueado
-}
-
-SanguineBleed: {
-	DisplayName: Sangrado carmesí
-	Description: Estás perdiendo sangre rápidamente
 }
 
 SanguineRegen: {
@@ -211,16 +198,9 @@ TemporalShift: {
 	Description: Toca dos veces para correr y obtener un aumento de velocidad temporal
 }
 
-WanderingPlague.DisplayName: Plaga errante
-
-WindBurst: {
-	DisplayName: Ráfaga de viento
-	Description: El retroceso se amplifica
-}
-
 GraniteArrow_Debuff: {
 	DisplayName: Desventaja de flecha de granito
-	Description: Mods.SpiritMod.Buffs.GraniteArrow_Debuff.Description
+	Description: ""
 }
 
 GreekFire: {
@@ -228,14 +208,9 @@ GreekFire: {
 	Description: Incendiado por los propios dioses
 }
 
-HighGravityBuff: {
-	DisplayName: Alta gravedad
-	Description: La gravedad vuelve a la normalidad
-}
-
 HolyLight: {
 	DisplayName: Luz sagrada
-	Description: Mods.SpiritMod.Buffs.HolyLight.Description
+	Description: ""
 }
 
 IceBerryBuff: {
@@ -290,17 +265,12 @@ TideMountBuff: {
 
 NebulaFlame: {
 	DisplayName: Llama de nebulosa
-	Description: Mods.SpiritMod.Buffs.NebulaFlame.Description
+	Description: ""
 }
 
 OliveBranchBuff: {
 	DisplayName: Resolución pacífica
 	Description: "'Haz las paces con tus enemigos'"
-}
-
-OnyxWind: {
-	DisplayName: Torbellino de ónix
-	Description: Velocidad de movimiento aumentada un 10%
 }
 
 OracleBoonBuff: {
@@ -561,11 +531,6 @@ Stopped: {
 	Description: Estás bloqueado en su lugar
 }
 
-Sturdy: {
-	DisplayName: Sólido
-	Description: "'Tu caparazón se ha agrietado'"
-}
-
 ElectricSummonTag: {
 	DisplayName: Invocación Eléctrica
 	Description: ¡Etiquetado!
@@ -643,7 +608,7 @@ VirulenceCooldown: {
 
 Wither: {
 	DisplayName: Marchito
-	Description: Mods.SpiritMod.Buffs.Wither.Description
+	Description: ""
 }
 
 WitheringLeaf: {
@@ -679,11 +644,6 @@ LowGravZoneBuff: {
 LowGravZoneTimer: {
 	DisplayName: Zona de baja gravedad
 	Description: ¡La zona de baja gravedad está lista!
-}
-
-RepulsionZoneTimer: {
-	DisplayName: Zona de repulsión
-	Description: ¡La zona de repulsión ha terminado!
 }
 
 ShieldZoneTimer: {
@@ -726,11 +686,6 @@ RunicSiphon: {
 	Description: Se ha reducido la resistencia al daño y se han perdido puntos de vida rápidamente.
 }
 
-ManajinxBuff: {
-	DisplayName: Encantamiento de luz estelar
-	Description: Las armas mágicas generan estrellas guiadas adicionales y el uso de maná se reduce drásticamente.
-}
-
 PendantBuff: {
 	DisplayName: Amigo Pillbug
 	Description: "'Rock and roll!'"
@@ -744,11 +699,6 @@ MirrorCoatBuff: {
 SaddleBuff: {
 	DisplayName: Montura de ciervo aurora
 	Description: Sientes el poder de las estrellas
-}
-
-CosmicRattlerPetBuff: {
-	DisplayName: Starachnid
-	Description: "'En su interior se pueden ver las profundidades del espacio'"
 }
 
 Empowered: {
@@ -794,6 +744,7 @@ Crystallization: {
 Golden_Curse: {
 	DisplayName: Maldición dorada
 	Description: Aumento de la velocidad de caída y el daño.
+	// Death: "{0} died solid as a gold bar"
 }
 
 Crawlerock_Buff: {
@@ -874,11 +825,6 @@ PigronMinion_Buff: {
 FairyMinion_Buff: {
 	DisplayName: Hadas
 	Description: ¡Eh! ¡Cuidado!
-}
-
-Jinxprobe_Buff: {
-	DisplayName: Pequeña sonda Jinxprobe
-	Description: El Jinxprobe luchará por ti
 }
 
 StarplateDrone_Buff: {

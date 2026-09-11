@@ -5,6 +5,7 @@ namespace SpiritMod.Buffs
 {
 	public class HighGravityBuff : ModBuff
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("High Gravity");

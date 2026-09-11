@@ -1,0 +1,190 @@
+ModName: Spirit Mod
+Salvati: Salvati
+Sbubby: Sbubby
+By: от
+BySalvati: "{$By} {$Salvati}"
+
+GraniteBiome: {
+	DisplayName: Гранитная пещера: Resounding Stones
+	Author: "{$BySalvati}"
+}
+
+AuroraSnow: {
+	DisplayName: Северное сияние: Aurora Borealis
+	Author: "{$BySalvati}"
+}
+
+DepthInvasion: {
+	DisplayName: Прилив: Drowning Tides
+	Author: "{$BySalvati}"
+}
+
+SnowNighttime: {
+	DisplayName: Ночные снега: Icy Stars
+	Author: "{$BySalvati}"
+}
+
+DesertNighttime: {
+	DisplayName: Ночная пустыня: Kempt Dunes
+	Author: "{$BySalvati}"
+}
+
+OceanNighttime: {
+	DisplayName: Сияющий океан: Beyond the Horizon
+	Author: "{$BySalvati}"
+}
+
+ReachUnderground: {
+	DisplayName: Подземный терновник: Lurking Vines
+	Author: "{$By} {$Sbubby}"
+}
+
+Meteor: {
+	DisplayName: Метеорит: Space Rocks!
+	Author: "{$BySalvati}"
+}
+
+Infernon: {
+	DisplayName: Инфернон: Fiery Care
+	Author: "{$BySalvati}"
+}
+
+CorruptNight: {
+	DisplayName: Ночное искажение: Nightmare Fuel
+	Author: "{$BySalvati}"
+}
+
+NeonTech1: {
+	DisplayName: Дневное гиперпространство: Spaced Out
+	Author: "{$BySalvati}"
+}
+
+NeonTech: {
+	DisplayName: Ночное гиперпространство: Techno Vibes
+	Author: "{$BySalvati}"
+}
+
+BlueMoon: {
+	DisplayName: Таинственная луна: Nighttime Groove
+	Author: "{$BySalvati}"
+}
+
+JellySky: {
+	DisplayName: Медузное наводнение: Sticky Situation
+	Author: "{$BySalvati}"
+}
+
+FrostLegion: {
+	DisplayName: Морозный легион: Tougher Chill
+	Author: "{$BySalvati}"
+}
+
+SpiderCave: {
+	DisplayName: Паучье гнездо: Xyresic Horrors
+	Author: "{$BySalvati}"
+}
+
+MoonJelly: {
+	DisplayName: Лунная медуза-волшебник: Mystical Mischief
+	Author: "{$BySalvati}"
+}
+
+HallowNight: {
+	DisplayName: Ночное освящение: Wonderous Landscape
+	Author: "{$BySalvati}"
+}
+
+Atlas: {
+	DisplayName: Атлант: Tremors Underneath
+	Author: "{$BySalvati}"
+}
+
+SpiritLayer3: {
+	DisplayName: Глубины духов: Hellish Atmosphere
+	Author: "{$BySalvati}"
+}
+
+ReachBoss: {
+	DisplayName: Гневоплющ: Monarch Husk
+	Author: "{$BySalvati}"
+}
+
+MarbleBiome: {
+	DisplayName: Мраморная пещера: Regal Tunnel
+	Author: "{$BySalvati}"
+}
+
+Blizzard: {
+	DisplayName: Метель: Shivering Storms
+	Author: "{$BySalvati}"
+}
+
+SpiritLayer1: {
+	DisplayName: Подземелье духов: Fearful Atmosphere
+	Author: "{$BySalvati}"
+}
+
+Starplate: {
+	DisplayName: Звездопанцирный странник: Lost Voyager
+	Author: "{$BySalvati}"
+}
+
+SpiritOverworld: {
+	DisplayName: Лес духов: Enervating Atmosphere
+	Author: "{$BySalvati}"
+}
+
+Reach: {
+	DisplayName: Терновник: Floral Fiends
+	Author: "{$BySalvati}"
+}
+
+AncientAvian: {
+	DisplayName: Древняя птица: Jettisoned Giant
+	Author: "{$BySalvati}"
+}
+
+UnderwaterMusic: {
+	DisplayName: Океанические глубины: Undersea Adventure
+	Author: "{$BySalvati}"
+}
+
+VictoryDay: {
+	DisplayName: День победы: Adventurer's Triumph
+	Author: "{$BySalvati}"
+}
+
+AshStorm: {
+	DisplayName: Пеплопад: Ash Storm
+	Author: "{$BySalvati}"
+}
+
+Asteroids: {
+	DisplayName: Поле астероидов: Above Islands
+	Author: "{$BySalvati}"
+}
+
+DuskingTheme: {
+	DisplayName: Сумрачный король: Dusking
+	Author: "{$By} LordCakeSpy"
+}
+
+Scarabeus: {
+	DisplayName: Скарабеус: Crawling Complications
+	Author: "{$BySalvati}"
+}
+
+TranquilWinds: {
+	DisplayName: Безмятежные ветра: Tranquil Winds
+	Author: "{$BySalvati}"
+}
+
+ReachNighttime: {
+	DisplayName: Ночной терновник: Briar Night
+	Author: "{$BySalvati}"
+}
+
+CrimsonNight: {
+	DisplayName: Ночной багрянец: Razor's Edge
+	Author: "{$BySalvati} и {$Sbubby}"
+}

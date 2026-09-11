@@ -1,15 +1,16 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using SpiritMod.Mechanics.QuestSystem.Tasks;
-using SpiritMod.Items.Consumable.Quest;
+﻿using SpiritMod.Items.Consumable.Quest;
 using SpiritMod.Items.Weapon.Swung.Punching_Bag;
+using SpiritMod.Mechanics.QuestSystem.Tasks;
+using Terraria;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace SpiritMod.Mechanics.QuestSystem.Quests
 {
     public class ZombieOriginQuest : Quest
     {
-		public override string QuestClientOverride => "Unknown";
+		public override string QuestClientOverride => Language.GetTextValue("Mods.SpiritMod.Quests.QuestInfo.ZombieOriginQuest.Client");
 		public override int Difficulty => 3;
 		public override string QuestCategory => "Slayer";
 

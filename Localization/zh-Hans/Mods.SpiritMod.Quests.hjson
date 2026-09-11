@@ -1,8 +1,3 @@
-RecipeConditions: {
-	WarlockLure: 在不洁事业期间
-	DurasilkSheaf: 获得3个柔和丝捆
-}
-
 # I'm very sorry to whoever's translating this. Best of luck, and godspeed. - GabeHasWon
 
 # This is actually only used for the Lifeform Analyzer's (Quest) <NPCName>.
@@ -16,23 +11,24 @@ QuestOutOfTimeChat: "[[sQ/{0}:{1}]]已超时！"
 QuestRelockedChat: "[[sQ/{0}:{1}]]再次被锁定。"
 NewQuestChat: 你有了一个新的任务！[[sQ/{0}:{1}]]
 OpenJournal: 按下'C'键打开任务日志
-OpenHUD: 按下'V键'通过HUD（抬头显示器）以追踪你的任务！
+OpenHUD: 按下'V键'通过HUD来追踪你的任务！
 QuestsFull: 你无法激活更多任务了。
 StopQuest: 你确定吗？你将[c/910000:失去你的当前进度]。
 Undiscovered: 该任务尚未被发现。
 # These are all used for minor parts of quests, such as "Catch 2 Fish" or similar.
-# The space is necessary. Formats to "Talk to the <NPC Name>" in-game.
-TalkToNPC: 交谈对象：
 TalkTo: 与{0}交谈
 # Same as above. Used for "Explore <area>" in-game.
 Explore: 探索
-Retrieve: 寻找
-Catch: 捕获
-Kill: 击杀
-Craft: 制作
-Capture: 捕捉
-Harvest: 收获
-OptionalGather: 可选 - 采集
+Retrieve: 寻得{0}{1}
+Catch: 捕捉{0}{1}
+Kill: 击杀{0}{1}
+Craft: 制作{0}{1}
+Capture: 捕获{0}{1}
+Harvest: 收获{0}{1}
+OptionalGather: 可选 - 采集{0}{1}
+PluralSuffix: " "
+Comma: "， "
+Or: "或"
 Objectives: 目标
 Activate: 激活
 Deactivate: 停用
@@ -44,9 +40,6 @@ Client: "委托人 - "
 Rewards: 奖励
 # Used for chat quest snippets.
 ViewQuest: 点击此处以查看任务！
-QuesTime: "{1}秒{0}分"
-Comma: "， "
-Or: 或
 
 Buttons: {
 	# Quest states
@@ -209,6 +202,7 @@ QuestInfo: {
 
 	ZombieOriginQuest: {
 		Name: 不洁事业
+		Client: 未知
 		Description:
 			'''
 			我发现了一卷奇怪的条幅，
@@ -577,7 +571,7 @@ QuestInfo: {
 			'''
 		Return: 返回至渔夫处
 		GetSulfur: 在热液喷口抓取5个含硫沉积物
-		Ocean: 海洋深处
+		Ocean: 深海
 	}
 
 	FriendSafari: {
@@ -714,7 +708,7 @@ QuestInfo: {
 			几年前，我和一些赏金猎人试图拿下那东西。而我们最终逃过一劫。
 			注意安全，小伙子。
 			'''
-		// ReforgedCompatLine: Craft an Idol with Red Sandstone Brick and Polished Amber, from the Underground Desert and Ziggurat
+		ReforgedCompatLine: 使用来自地下沙漠和庙塔的赤沙岩砖和抛光琥珀制作崇符
 	}
 
 	ItsNoSalmon: {
@@ -875,7 +869,7 @@ QuestInfo: {
 			帮帮我们，把这些讨厌的东西消灭掉。
 			杀掉十几只肯定会让地下世界变得不那么恶心。
 			'''
-		Objective: 击杀8只响尾兽、真菌响尾兽、岩穴爬虫、巨型卷壳怪、蝾螈或龙虾
+		Objective: 击杀8只息鸣螈、真菌息鸣螈、岩穴爬虫、巨型卷壳怪、蝾螈或龙虾
 	}
 
 	SlayerQuestClown: {

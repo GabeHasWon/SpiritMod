@@ -120,12 +120,7 @@ namespace SpiritMod.Mechanics.QuestSystem
 			StringBuilder builder = new StringBuilder();
 			for (int i = 0; i < final.Count; i++)
 			{
-				if (!final[i].Item2) 
-					builder.Append("[c/2B1C11:");
-				else 
-					builder.Append("[c/928269:");
-
-				builder.Append("- ").Append(final[i].Item1).Append(']');
+				builder.Append("- ").Append(final[i].Item1);
 
 				if (i < final.Count - 1) 
 					builder.Append('\n');

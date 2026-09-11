@@ -114,12 +114,6 @@ Spirit:
 	Aumenta la regeneración de vida cuando tienes menos de 100 de salud
 	Aumenta los marcos de invencibilidad cuando tienes menos de 50 de salud.
 	'''
-Starjinx:
-	'''
-	Aumenta en gran medida el uso de maná y evita el uso de pociones de maná
-	Si te quedas sin maná, tendrás un pilón de manajinx cerca de ti
-	Recoger el pilón de manajinx restaura todo el maná y encanta temporalmente las armas mágicas con estrellas
-	'''
 Starplate:
 	'''
 	Toque dos veces {0} para desplegar un campo de energía en la posición del cursor

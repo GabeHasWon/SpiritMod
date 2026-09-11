@@ -53,11 +53,11 @@ namespace SpiritMod.Tiles.Furniture.Pylons
 
 			DustType = -1;
 			AddToArray(ref TileID.Sets.CountsAsPylon);
-			StaticDefaults(Language.GetText(MapKeyName));
+			StaticDefaults();
 		}
 
 		/// <param name="name"> The default name associated with the pylon. </param>
-		public virtual void StaticDefaults(LocalizedText name) => AddMapEntry(Color.White, name);
+		public virtual void StaticDefaults() => AddMapEntry(Color.White, Language.GetText(MapKeyName));
 
 		public virtual bool IsSold(int npcType, Player player, bool npcHappyEnough) => true;
 		public override NPCShop.Entry GetNPCShopEntry() => new(ModContent.ItemType<T>(), Condition.AnotherTownNPCNearby, Condition.NotInEvilBiome, Condition.HappyEnoughToSellPylons, CanBeSold);

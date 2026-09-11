@@ -1,8 +1,3 @@
-RecipeConditions: {
-	WarlockLure: Durante el Compromiso Impío
-	DurasilkSheaf: Obtener 3 Hojas de Durasilk
-}
-
 # I'm very sorry to whoever's translating this. Best of luck, and godspeed. - GabeHasWon
 
 # This is actually only used for the Lifeform Analyzer's (Quest) <NPCName>.
@@ -21,17 +16,19 @@ QuestsFull: No puedes activar más misiones.
 StopQuest: ¿Está seguro? [c/910000:Perderás tu progreso].
 Undiscovered: No se ha descubierto esta búsqueda.
 # These are all used for minor parts of quests, such as "Catch 2 Fish" or similar.
-# The space is necessary. Formats to "Talk to the <NPC Name>" in-game.
-TalkToNPC: "Habla con "
+TalkTo: Habla con {0}
 # Same as above. Used for "Explore <area>" in-game.
 Explore: "Explora "
-Retrieve: Recuperar
-Catch: Captura
-Kill: "Mata a "
-Craft: Elabora
-Capture: Captura
-Harvest: Cosecha
-OptionalGather: Opcional - Recoger
+Retrieve: Recuperar {0} {1}
+Catch: Captura {0} {1}
+Kill: Mata a {0} {1}
+Craft: Elabora {0} {1}
+Capture: Captura {0} {1}
+Harvest: Cosecha {0} {1}
+OptionalGather: Opcional - Recoger {0} {1}
+// PluralSuffix: s
+// Comma: ", "
+// Or: " or "
 Objectives: Objetivos
 Activate: Activar
 Deactivate: Desactivar
@@ -55,6 +52,7 @@ Buttons: {
 	Explorer: Explorar
 	Forager: Buscador
 	Slayer: Cazador
+	// Designer: Designer
 	Other: Otro
 }
 
@@ -119,6 +117,7 @@ QuestInfo: {
 
 	ZombieOriginQuest: {
 		Name: Compromiso impío
+		// Client: Unknown
 		Description: He encontrado un extraño pergamino de pared con información importante sobre los zombis y, posiblemente, sus orígenes. Creo que debería hablar con el Guía o con la dríade sobre esto. Tal vez podamos poner fin a esta vil nigromancia.
 		ShowGuideDialogue: ¿Encontraste ese misterioso pergamino? Supongo que sí. Es una pista interesante sobre por qué estos zombis han estado apareciendo recientemente. Yo diría que necesitamos investigar más sobre quién está detrás del levantamiento zombi. ¿Tal vez es un científico loco, o algo así? Debería haber libros sobre el tema cerca de la Mazmorra.
 		TalkGuide: Habla con el guía sobre el pergamino misterioso.

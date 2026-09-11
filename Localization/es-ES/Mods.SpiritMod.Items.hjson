@@ -702,29 +702,9 @@ AstronautLegs: {
 	Tooltip: ""
 }
 
-BeachTowel: {
-	DisplayName: Toalla de playa
-	Tooltip: "'Te mantiene seco, ¡pero asegúrate de no saltar al agua con él puesto!'"
-}
-
-BikiniBottom: {
-	DisplayName: Braguita de bikini
-	Tooltip: "'¡Quién necesita armadura de todos modos cuando puedes correr libre bajo el sol!'"
-}
-
-BikiniTop: {
-	DisplayName: Bikini Top
-	Tooltip: "'A pesar de lo que uno pueda esperar, realmente no proporciona ningún tipo de defensa.'"
-}
-
 SwimmingTrunks: {
 	DisplayName: Bañador
 	Tooltip: "'No proporcionan mucho en cuanto a defensa, pero son innegablemente elegantes.'"
-}
-
-TintedGlasses: {
-	DisplayName: Gafas tintadas
-	Tooltip: "'Ayudan a vender el look, por lo que es mejor mantenerlos puestos incluso cuando está oscuro.'"
 }
 
 BeekeeperBody: {
@@ -1748,15 +1728,6 @@ Book_ArmorGuide: {
 		'''
 }
 
-Book_Blossmoon: {
-	DisplayName: Notas sobre las Lunas en Flor
-	Tooltip:
-		'''
-		por Calvin Reyes, Investigador
-		Contiene notas sobre las lindas florecillas
-		'''
-}
-
 Book_Briar: {
 	DisplayName: Notas sobre la zarza
 	Tooltip: por el investigador de campo Laywatts
@@ -1777,16 +1748,6 @@ Book_Briar: {
 		La zarza subterránea muestra signos de haber sido habitado por alguna civilización ahora extinta. Se pueden observar casas de ladrillo y madera en ruinas junto con armas primitivas, herramientas y baratijas. Quedan muchos misterios sobre estas ruinas y la zarza en general. ¿De dónde salió? ¿Por qué es tan hostil? ¿Y dónde está la gente que una vez vivió aquí?
 		---
 		Nota: Parece que falta una página de notas y diagramas en el libro. Probablemente lo perdí en las profundidades de la zarza. Sin embargo, no vale la pena un viaje de regreso.
-		'''
-}
-
-Book_BriarArt: {
-	DisplayName: Flora de la zarza
-	Tooltip:
-		'''
-		por el investigador de campo Laywatts
-		Parece una página arrancada de un libro sobre la zarza
-		Contiene un intrincado diagrama de la ecología de la zarza
 		'''
 }
 
@@ -1829,24 +1790,6 @@ Book_Lava: {
 		'''
 }
 
-Book_LuminousArt: {
-	DisplayName: ¡El océano resplandeciente!
-	Tooltip:
-		'''
-		Por un explorador desconocido
-		Parece ser un esbozo de alguna extraña ocurrencia en las regiones costeras
-		'''
-}
-
-Book_Lumoth: {
-	DisplayName: Notas sobre Lumoths
-	Tooltip:
-		'''
-		por Calvin Reyes, Investigador
-		Explica los mecanismos detrás de los Lumoths brillantes
-		'''
-}
-
 Book_MJW: {
 	DisplayName: Dag Dinger
 	Tooltip: por el explorador Trev Irwin
@@ -1873,26 +1816,6 @@ Book_Slime: {
 		En primer lugar, es importante hacer un balance de lo que sabemos. Los slimes son, científicamente hablando, grandes gotas de sustancia pegajosa. Son altamente inflamables, no poseen órganos internos y, sin embargo, parecen bastante inteligentes.
 		Su composición no coincide con ningún otro material que mis compañeros magos y yo hayamos visto jamás. ¿De dónde, entonces, vienen? ¿Podría un mago rival estar invocándolos? ¡¿Y con qué fin tortuoso?! ¿Son un castigo de los propios dioses? ¿Estamos atrapados para siempre en este purgatorio saltarín y viscoso?
 		Y lo más importante: ¿son comestibles? Hay que seguir buscando respuestas.
-		'''
-}
-
-Book_Soulbloom: {
-	DisplayName: Notas sobre la floración del alma
-	Tooltip:
-		'''
-		por Lena Ashwood, Alquimista
-		Detalla la anatomía y los usos de una hierba extremadamente rara
-		'¿Dónde podría haber encontrado esto?'
-		'''
-}
-
-Book_SpiritArt: {
-	DisplayName: Flora del Bioma de los Espíritus
-	Tooltip:
-		'''
-		por el investigador de campo Laywatts
-		Parece ser una página de notas sobre el desconocido Bioma Espiritual
-		'Hay mucho que aprender de este misterioso lugar'
 		'''
 }
 
@@ -1929,6 +1852,71 @@ Book_Yeremy: {
 		'''
 }
 
+# Do not localize image paths unless you have your own localized png files
+
+Book_Blossmoon: {
+	DisplayName: Notas sobre las Lunas en Flor
+	Tooltip:
+		'''
+		por Calvin Reyes, Investigador
+		Contiene notas sobre las lindas florecillas
+		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/BlossmoonPage
+}
+
+Book_BriarArt: {
+	DisplayName: Flora de la zarza
+	Tooltip:
+		'''
+		por el investigador de campo Laywatts
+		Parece una página arrancada de un libro sobre la zarza
+		Contiene un intrincado diagrama de la ecología de la zarza
+		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/TheBriar
+}
+
+Book_Soulbloom: {
+	DisplayName: Notas sobre la floración del alma
+	Tooltip:
+		'''
+		por Lena Ashwood, Alquimista
+		Detalla la anatomía y los usos de una hierba extremadamente rara
+		'¿Dónde podría haber encontrado esto?'
+		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/SoulbloomPage
+}
+
+Book_SpiritArt: {
+	DisplayName: Flora del Bioma de los Espíritus
+	Tooltip:
+		'''
+		por el investigador de campo Laywatts
+		Parece ser una página de notas sobre el desconocido Bioma Espiritual
+		'Hay mucho que aprender de este misterioso lugar'
+		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/TheSpirit
+}
+
+Book_LuminousArt: {
+	DisplayName: ¡El océano resplandeciente!
+	Tooltip:
+		'''
+		Por un explorador desconocido
+		Parece ser un esbozo de alguna extraña ocurrencia en las regiones costeras
+		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/LuminousOcean
+}
+
+Book_Lumoth: {
+	DisplayName: Notas sobre Lumoths
+	Tooltip:
+		'''
+		por Calvin Reyes, Investigador
+		Explica los mecanismos detrás de los Lumoths brillantes
+		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/LumothPage
+}
+
 BismitePage: {
 	DisplayName: Notas sobre los cristales de bismita
 	Tooltip:
@@ -1936,6 +1924,7 @@ BismitePage: {
 		por el profesor Alex Tannis
 		Contiene información sobre un mineral tóxico que se encuentra en las cavernas
 		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/BismiteMaterialPage
 }
 
 EnchantedLeafPage: {
@@ -1945,6 +1934,7 @@ EnchantedLeafPage: {
 		por el profesor Alex Tannis
 		Contiene información sobre las hojas místicas que se encuentran en la zarza
 		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/EnchantedLeafMaterialPage
 }
 
 FrigidFragmentPage: {
@@ -1954,6 +1944,7 @@ FrigidFragmentPage: {
 		por el profesor Alex Tannis
 		Contiene información sobre un cristal helado que se encuentra en la tundra congelada
 		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/FrigidFragmentMaterialPage
 }
 
 GlowrootPage: {
@@ -1963,6 +1954,7 @@ GlowrootPage: {
 		por el profesor Alex Tannis
 		Contiene información sobre una extraña raíz que se encuentra en la base de los altos árboles de hongos
 		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/GlowrootPage
 }
 
 GranitePage: {
@@ -1972,6 +1964,7 @@ GranitePage: {
 		por el profesor Alex Tannis
 		Contiene información sobre un extraño mineral encontrado en las Cavernas de Granito
 		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/GraniteMaterialPage
 }
 
 HeartScalePage: {
@@ -1981,6 +1974,7 @@ HeartScalePage: {
 		por el profesor Alex Tannis
 		Contiene información sobre una escama brillante que a menudo se encuentra cerca del pez ardor
 		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/HeartScaleMaterialPage
 }
 
 MarblePage: {
@@ -1990,6 +1984,7 @@ MarblePage: {
 		por el profesor Alex Tannis
 		Contiene información sobre un extraño mineral encontrado en las Cavernas de Mármol
 		'''
+	// ImagePath: SpiritMod/Localization/BooksUI/en-US/MarbleMaterialPage
 }
 
 ArcaneGeyser: {
@@ -2762,16 +2757,6 @@ CloudstalkSeed: {
 	Tooltip: ""
 }
 
-Volleyball: {
-	DisplayName: Volleyball
-	Tooltip: ""
-}
-
-VolleyballCourtChecker: {
-	DisplayName: Volleyball Court Checker
-	Tooltip: ""
-}
-
 BeachUmbrellaItem: {
 	DisplayName: Sombrilla
 	Tooltip: ""
@@ -3483,6 +3468,7 @@ SurrenderBell: {
 		Solo se puede usar cuando ha llegado la invasión, no cuando la invasión se acerca.
 		'Una campanilla celestial'
 		'''
+	// Message: The invaders have called off their attack!
 }
 
 TinyCrabItem: {
@@ -3722,6 +3708,14 @@ BeeGlyph: {
 		Los ataques liberan abejas periódicamente
 		'''
 	Effect: Meloso
+
+	# Russian-only localization - feel free to leave unset.
+	# The Effect key above is the masculine/default form
+	Gendered: {
+		// Fem: Feminine
+		// Neutral: Neutral
+		// Plural: Plural
+	}
 }
 
 BlazeGlyph: {
@@ -3734,6 +3728,12 @@ BlazeGlyph: {
 	Addendum: Infligir daño te prende en llamas
 	Effect: Llameante
 	Death: "{0} fue consumido por la Rabia..."
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 ChaosGlyph: {
@@ -3741,6 +3741,12 @@ ChaosGlyph: {
 	Tooltip: Tu arma cambia periódicamente entre los efectos de glifo
 	Addendum: Tu arma cambia periódicamente entre los efectos de glifo
 	Effect: Inestable
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 FrostGlyph: {
@@ -3748,6 +3754,12 @@ FrostGlyph: {
 	Tooltip: Los ataques tienen una probabilidad de congelar a los enemigos brevemente
 	Addendum: Los ataques tienen una probabilidad de congelar a los enemigos brevemente
 	Effect: Congelación
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 Glyph: {
@@ -3757,6 +3769,7 @@ Glyph: {
 	Target: Solo se puede aplicar a armas
 	RightClick: Mantén pulsado este glifo y haz clic derecho en el arma que quieras encantar
 	Remove: Mantén pulsado este glifo y haga clic derecho en el arma cuyo glifo desea eliminar
+	// PriceText: "{0} {^0:glyph;glyphs}"
 }
 
 NullGlyph: {
@@ -3779,6 +3792,12 @@ PhaseGlyph: {
 		Los golpes consecutivos otorgan una breve ráfaga de velocidad
 		'''
 	Effect: Temporal
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 RadiantGlyph: {
@@ -3786,6 +3805,12 @@ RadiantGlyph: {
 	Tooltip: Acumula energía radiante cuando no inflige daño, lo que potencia tu próximo ataque.
 	Addendum: Acumula energía radiante cuando no inflige daño, lo que potencia tu próximo ataque.
 	Effect: Radiante
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 RageGlyph: {
@@ -3793,6 +3818,12 @@ RageGlyph: {
 	Tooltip: El exceso de daño al matar se almacena para tu próximo ataque
 	Addendum: El exceso de daño al matar se almacena para tu próximo ataque
 	Effect: Frenético
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 SanguineGlyph: {
@@ -3804,6 +3835,12 @@ SanguineGlyph: {
 		'''
 	Addendum: Infligir daño aumenta brevemente la regeneración de vida
 	Effect: Sanguijuelas
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 StormGlyph: {
@@ -3811,6 +3848,12 @@ StormGlyph: {
 	Tooltip: Los ataques ocasionalmente liberan una fuerte ráfaga de viento
 	Addendum: Los ataques ocasionalmente liberan una fuerte ráfaga de viento
 	Effect: Ondulado
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 UnholyGlyph: {
@@ -3818,6 +3861,12 @@ UnholyGlyph: {
 	Tooltip: Los enemigos estallan en fantasmas malditos al morir
 	Addendum: Los enemigos estallan en fantasmas malditos al morir
 	Effect: Maldito
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 VeilGlyph: {
@@ -3825,6 +3874,12 @@ VeilGlyph: {
 	Tooltip: Infligir daño crea un velo defensivo alrededor del usuario
 	Addendum: Infligir daño crea un velo defensivo alrededor del usuario
 	Effect: Guardia
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 VoidGlyph: {
@@ -3832,6 +3887,12 @@ VoidGlyph: {
 	Tooltip: Los ataques tienen una probabilidad de infligir acumulaciones de colapso del vacío
 	Addendum: Los ataques tienen una probabilidad de infligir acumulaciones de colapso del vacío
 	Effect: Nulo
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
 }
 
 CaramelApple: {
@@ -3852,16 +3913,56 @@ TreeGourd: {
 Candy: {
 	DisplayName: Caramelo
 	Tooltip: Aumenta ligeramente todas las estadísticas
+
+	Names: {
+		// 0: "'Popstone'"
+		// 1: "'Three Muskets'"
+		// 2: "'Lhizzlers'"
+		// 3: "'Moon Jelly Beans'"
+		// 4: "'Silk Duds'"
+		// 5: "'Necro Wafers'"
+		// 6: "'Blinkroot Pop'"
+		// 7: "'Gummy Slimes'"
+		// 8: "'Cry Goblin'"
+		// 9: "'Sour Patch Slimes'"
+		// 10: "'Stardust Burst'"
+		// 11: "'Hellfire Tamales'"
+		// 12: "'Blinkroot Patty'"
+		// 13: "'Xenowhoppers'"
+		// 14: "'Gem&Ms'"
+		// 15: "'100,000 copper bar'"
+		// 16: "'Toblerbone'"
+		// 17: "'Delicious Looking Eye'"
+		// 18: "'Silky Way'"
+		// 19: "'Malted Silk Balls'"
+		// 20: "'Cloudheads'"
+		// 21: "'Red Devil Hots'"
+		// 22: "'Rune Pop'"
+		// 23: "'Nursey Kisses'"
+		// 24: "'Skullies'"
+		// 25: "'Firebolts'"
+		// 26: "'Vinewrath Cane'"
+		// 27: "'Candy Acorn'"
+		// 28: "'Bunnyfinger'"
+		// 29: "'Ichorice'"
+		// 30: "'Lunatic-tac'"
+	}
 }
 
 CandyBag: {
 	DisplayName: Bolsa de caramelos
 	Tooltip: Tiene capacidad para hasta 99 caramelos
+	/* BagContents:
+		'''
+		Contains {0} {^0:piece;pieces} of Candy
+		Right click to take a piece of Candy
+		''' */
 }
 
 CandyBowl: {
 	DisplayName: Bowl de caramelos
 	Tooltip: ""
+	// Take: Take a piece of candy
 }
 
 ChocolateBar: {
@@ -3982,6 +4083,38 @@ ManaCandy: {
 MysteryCandy: {
 	DisplayName: Caramelo misterioso
 	Tooltip: O un gran regalo ... o un truco desagradable
+
+	Positive: {
+		// 1: Sweet and filling. You feel restored.
+		// 2: The sugar rush hits hard.
+		// 3: Mmm, the fluffiest of nougats. You feel light as a feather.
+		// 4: Magic is sparking from your fingertips. Maybe the candy was enchanted after all.
+		// 5: Has a bit of a metallic taste, but your skin is now tough as titanium.
+		// 6: It's a great time to go exploring.
+		// 7: You can see all.
+		// 8: Your hands are perfectly steady now.
+		// 9: That was delicious.
+		// 10: The conditions are perfect for a bit of building.
+		// 11: Your wish is their command.
+		// 12: New strength surges through your body.
+		// 13: The ground drops beneath your feet.
+		// 14: You feel like you're gonna make a big catch.
+	}
+
+	Negative: {
+		// Hurt: "{0} bit on a razorblade."
+		// 1: Ouch, there was a razorblade in there!
+		// 2: Your legs can barely hold you.
+		// 3: You are encased in stone.
+		// 4: Every last spark of magic left your body. Maybe the candy was enchanted after all.
+		// 5: Your armor is crumpling at the slightest touch.
+		// 6: You can barely think straight.
+		// 7: You are frozen in place. Maybe mint was a bad idea...
+		// 8: You can't feel your arms.
+		// 9: Your limbs ache with the slightest movement.
+		// 10: You've been drugged.
+		// 11: You feel sick.
+	}
 }
 
 BatBlaster: {
@@ -5639,136 +5772,6 @@ EyeOfTheSorcererItem: {
 		'''
 }
 
-ChandelierPile: {
-	DisplayName: Lámpara de araña rota
-	Tooltip: ""
-}
-
-ChestPile: {
-	DisplayName: Cofre abandonado
-	Tooltip: ""
-}
-
-DirtPile: {
-	DisplayName: Montón de tierra
-	Tooltip: ""
-}
-
-GranitePile: {
-	DisplayName: Escombros de granito
-	Tooltip: ""
-}
-
-GrassStonePile: {
-	DisplayName: Escombros de piedra herbácea
-	Tooltip: ""
-}
-
-HellstonePile: {
-	DisplayName: Escombros de Hellstone
-	Tooltip: ""
-}
-
-IcePile: {
-	DisplayName: Escombros congelados
-	Tooltip: ""
-}
-
-LihzahrdPile: {
-	DisplayName: Escombros de ladrillo de Lihzahrd
-	Tooltip: ""
-}
-
-MahoganyCage: {
-	DisplayName: Jaula de caoba
-	Tooltip: ""
-}
-
-MahoganyCageFull: {
-	DisplayName: Jaula de caoba (llena)
-	Tooltip: ""
-}
-
-MarblePile: {
-	DisplayName: Escombros de mármol
-	Tooltip: ""
-}
-
-MossMudPile: {
-	DisplayName: Escombros de barro musgoso
-	Tooltip: ""
-}
-
-MossStonePile: {
-	DisplayName: Escombros de piedra musgosa
-	Tooltip: ""
-}
-
-MushroomPile: {
-	DisplayName: Escombros de hongos incandescentes
-	Tooltip: ""
-}
-
-OldTent: {
-	DisplayName: Tienda Vieja
-	Tooltip: ""
-}
-
-OldWell: {
-	DisplayName: Pozo Viejo
-	Tooltip: ""
-}
-
-OldWheelbarrow: {
-	DisplayName: Carretilla vieja
-	Tooltip: ""
-}
-
-RustyMinecart: {
-	DisplayName: Vagoneta oxidada
-	Tooltip: ""
-}
-
-SandPile: {
-	DisplayName: Escombros de arenisca
-	Tooltip: ""
-}
-
-SkeletonPile: {
-	DisplayName: Pila de esqueletos
-	Tooltip: ""
-}
-
-StonePile: {
-	DisplayName: Escombros de piedra
-	Tooltip: ""
-}
-
-StonePileHelmet: {
-	DisplayName: Casco de escombros
-	Tooltip: ""
-}
-
-StonePilePickaxe: {
-	DisplayName: Escombros mineros
-	Tooltip: ""
-}
-
-StonePileSword: {
-	DisplayName: Escombros de la espada abandonada
-	Tooltip: ""
-}
-
-WebPile: {
-	DisplayName: Escombros palmeados
-	Tooltip: ""
-}
-
-WoodRuinPile: {
-	DisplayName: Muebles arruinados
-	Tooltip: ""
-}
-
 DefenseCodex: {
 	DisplayName: Códice Arcano: Zona de Fortificación
 	Tooltip:
@@ -7275,18 +7278,6 @@ MarbleStaff: {
 	Tooltip: Llueve estalactitas doradas del cielo
 }
 
-CorruptDyeMaterial: {
-	DisplayName: Cristal violeta
-	CustomTooltip: "'El cristal es a la vez hermoso y repugnante a la vista'"
-	Tooltip: ""
-}
-
-CrimsonDyeMaterial: {
-	DisplayName: Tumor sangriento
-	CustomTooltip: "'El repugnante órgano hace extraños movimientos pulsantes'"
-	Tooltip: ""
-}
-
 IceDeityShard1: {
 	DisplayName: Reliquia hiperbórea
 	CustomTooltip: "'Un fragmento de algo mucho más grande'"
@@ -7300,18 +7291,6 @@ IceDeityShard2: {
 
 IceDeityShard3: {
 	DisplayName: Artefacto hiperbóreo
-	Tooltip: ""
-}
-
-MeteorDyeMaterial: {
-	DisplayName: Fragmento de fotosfera
-	CustomTooltip: "'Las brasas dentro de la roca aún arden'"
-	Tooltip: ""
-}
-
-RoyalCrown: {
-	DisplayName: Corona Real
-	CustomTooltip: "'Impresionantemente ornamentado a pesar de siglos de intemperie'"
 	Tooltip: ""
 }
 
@@ -7358,6 +7337,7 @@ MarkOfZeus: {
 OlympiumToken: {
 	DisplayName: Ficha del olimpo
 	Tooltip: Puede ser de interés para un coleccionista...
+	// PriceText: "{0} {^0:Olympium Token;Olympium Tokens}"
 }
 
 DuelistLegacy: {
@@ -8379,11 +8359,6 @@ Zombie_Chest: {
 	Tooltip: ""
 }
 
-SandPiperItem: {
-	DisplayName: Flautista de arena
-	Tooltip: ""
-}
-
 OracleScripture: {
 	DisplayName: Sagrada Escritura
 	Tooltip:
@@ -8751,6 +8726,17 @@ DragonStatueItem: {
 SlotMachine: {
 	DisplayName: Máquina tragamonedas
 	Tooltip: ""
+
+	Win: {
+		// 1: You win a bell!
+		// 2: You win a...jelly?
+		// 3: You win lemons!
+		// 4: You win diamonds!
+		// 5: You win a...bomb!
+		// 6: You win a ch- apple!
+		// 7: You win a brick of gold!
+		// 8: You win the JACKPOT!
+	}
 }
 
 ScrapItem1: {
@@ -8780,16 +8766,6 @@ ScrapItem5: {
 
 ScrapItem6: {
 	DisplayName: Chatarra recuperada
-	Tooltip: ""
-}
-
-VolleyballCourtItem: {
-	DisplayName: Cancha de voleibol
-	Tooltip: ""
-}
-
-VolleyballNetItem: {
-	DisplayName: Red de voleibol
 	Tooltip: ""
 }
 

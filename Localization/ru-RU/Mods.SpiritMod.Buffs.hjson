@@ -1,0 +1,872 @@
+AceOfDiamondsBuff: {
+	DisplayName: Туз бубен
+	Description: Наносимый урон увеличен на 20%
+}
+
+AngelLight: {
+	DisplayName: Ангельский свет
+	Description: ""
+}
+
+AngelWrath: {
+	DisplayName: Ангельский гнев
+	Description: ""
+}
+
+ExplorerFight: {
+	DisplayName: Сила удара
+	Description:
+		'''
+		У вас начинает получаться!
+		Наносимый урон увеличен на {0}%
+		'''
+}
+
+ExplorerMine: {
+	DisplayName: Скорость исследователя
+	Description:
+		'''
+		Продолжайте копать!
+		Скорость копания увеличена ({0} ур.)
+		'''
+}
+
+ExplorerPot: {
+	DisplayName: Трепет исследователя
+	Description:
+		'''
+		Вы жаждете большего!
+		Скорость передвижения увеличена на {0}%
+		'''
+}
+
+FrigidCooldown: {
+	DisplayName: Ниже нуля
+	Description: «Сейчас слишком холодно, чтобы продолжать поддерживать эту стену...»
+}
+
+MarbleDivineWinds: {
+	DisplayName: Божественные ветра
+	Description: «К небесам!»
+}
+
+RogueCooldown: {
+	DisplayName: Рассеянная тень
+	Description: «Жди, пока тьма не унесёт тебя прочь»
+}
+
+AstralMapCooldown: {
+	DisplayName: Астральная перезарядка
+	Description: Путешествие со скоростью света нестабильно!
+}
+
+BeetleFortitude: {
+	DisplayName: Жучья стойкость
+	Description:
+		'''
+		Каждый удар делает вас сильнее...
+		Сопротивление урону увеличено на {0}%
+		'''
+}
+
+BloodInfusion: {
+	DisplayName: Переливание крови
+	Description: «Крайне заразно»
+}
+
+CandyBuff: {
+	DisplayName: Сахарная лихорадка
+	Description: Все характеристики немного увеличены
+}
+
+ChocolateBuff: {
+	DisplayName: Шоколад
+	Description: Скорость передвижения увеличена на 10%
+}
+
+HealthBuffC: {
+	DisplayName: Целебная конфетка
+	Description: Максимальный запас здоровья увеличен на 25 ед.
+}
+
+LollipopBuff: {
+	DisplayName: Леденец
+	Description: Регенерация здоровья увеличена
+}
+
+ManaBuffC: {
+	DisplayName: Конфетка маны
+	Description: Максимальный запас маны увеличен на 40 ед.
+}
+
+TaffyBuff: {
+	DisplayName: Ириска
+	Description: Защита увеличена на 4 ед.
+}
+
+ClockBuff: {
+	DisplayName: Сила времени
+	Description: ZAWARUDO!!
+}
+
+CouchPotato: {
+	DisplayName: Ленивая картошка
+	Description: «Перестань быть таким ленивым!»
+}
+
+CourtCooldown: {
+	DisplayName: Кровавая перезарядка
+	Description: Вашей крови нужно время для восстановления
+}
+
+CrimsonSkullBuff: {
+	DisplayName: Багровый череп
+	Description: Урон колбы со внутренностями увеличен вдвое
+}
+
+Death: {
+	DisplayName: Смерть
+	Description: ""
+}
+
+DeathRoseCooldown: {
+	DisplayName: Перезарядка цветка терновника
+	Description: Лозе нужно время, чтобы вырасти вновь...
+}
+
+AcidBurn: {
+	DisplayName: Токсичная хватка
+	Description: ""
+}
+
+Afflicted: {
+	DisplayName: Нестабильный
+	Description: Вы разваливаетесь на куски
+}
+
+BloodCorrupt: {
+	DisplayName: Заражение крови
+	Description: Ваша кровь пылает...
+}
+
+CryoCrush: {
+	DisplayName: Крио-давление
+	Description: ""
+}
+
+DoomDestiny: {
+	DisplayName: Звёздный разрез
+	Description: ""
+}
+
+FesteringWounds: {
+	DisplayName: Гноящиеся раны
+	Description: Вы начинаете получать больше урона, если у вас менее половины здоровья
+}
+
+DrainLife: {
+	DisplayName: Похищение жизни
+	Description: Ваша жизненная энергия уходит другому
+}
+
+DynastyFanBuff: {
+	DisplayName: Ветропланёр
+	Description: Вы всё ещё падаете, но теперь медленнее
+}
+
+ElectrifiedV2: {
+	DisplayName: "{$BuffName.Electrified}"
+	Description: Продолжение, которое мы... подождите
+}
+
+EleutheriosBuff: {
+	DisplayName: Сила Елевферия
+	Description: Наносимый урон увеличен на {0}%
+}
+
+FateBlessing: {
+	DisplayName: Благоволение судьбы
+	Description: Судьба снисходительна к вам
+}
+
+Frozen: {
+	DisplayName: Заморозка
+	Description: Вы превратились в ледышку!
+}
+
+BurningRage: {
+	DisplayName: Полыхающая ярость
+	Description: Вы получаете урон
+}
+
+DivineStrike: {
+	DisplayName: Божественный удар
+	Description: Ваша следующая атака нанесёт больше урона
+}
+
+SanguineRegen: {
+	DisplayName: Кровавая регенерация
+	Description: Вы быстро восполняете свою кровь
+}
+
+TemporalShift: {
+	DisplayName: Временной сдвиг
+	Description:
+		'''
+		Дважды нажмите в нужном направлении, чтобы совершить рывок
+		Скорость передвижения увеличена
+		'''
+}
+
+GraniteArrow_Debuff: {
+	DisplayName: Дебафф гранитной стрелы
+	Description: ""
+}
+
+GreekFire: {
+	DisplayName: Греческий огонь
+	Description: В огне самих богов
+}
+
+HolyLight: {
+	DisplayName: Святой свет
+	Description: ""
+}
+
+IceBerryBuff: {
+	DisplayName: Мерзлоягода
+	Description: Вы невосприимчивы к горению
+}
+
+InfernalRage: {
+	DisplayName: Инфернальная ярость
+	Description: Урон значительно увеличен... ценой вашей души
+}
+
+MageFreeze: {
+	DisplayName: Холодная хватка
+	Description: Вас сковывает холод
+}
+
+MidasTouch: {
+	DisplayName: Прикосновение Мидаса
+	Description: С убитых врагов выпадает больше монет
+}
+
+DiabolicPlatformBuff: {
+	DisplayName: Дьявольская платформа
+	Description: Повелитель преисподней
+}
+
+DrakomireMountBuff: {
+	DisplayName: Дракотоп
+	Description: Вы приручили небесного захватчика!
+}
+
+Obolos_Buff: {
+	DisplayName: Обол
+	Description: Ну и гримаса...
+}
+
+RlyehianMountBuff: {
+	DisplayName: Потусторонний плащ
+	Description: «Действительно сметает с ног»
+}
+
+SnowmongerMountBuff: {
+	DisplayName: Снежный мех
+	Description: Сильный
+}
+
+TideMountBuff: {
+	DisplayName: Ездовой Крокодилло
+	Description: Теперь этот малыш Крокодилло ваш новый лучший друг!
+}
+
+NebulaFlame: {
+	DisplayName: Пламя туманности
+	Description: ""
+}
+
+OliveBranchBuff: {
+	DisplayName: Мирное разрешение
+	Description: «Вы заключили мир со своими врагами»
+}
+
+OracleBoonBuff: {
+	DisplayName: Ересь
+	Description:
+		'''
+		Боги принимают ваш вызов
+		Шанс появления зачарованных врагов увеличен
+		'''
+}
+
+OverDrive: {
+	DisplayName: Энергофицирован
+	Description: Скорость передвижения и скорость атаки ближнего боя увеличены!
+}
+
+AtlasPetBuff: {
+	DisplayName: Атлант-младший
+	Description: Протягивает руку помощи!
+}
+
+AvianPetBuff: {
+	DisplayName: Древный невылуплёныш
+	Description: «Невдуплёныш»
+}
+
+BladePetBuff: {
+	DisplayName: Одержимый клинок
+	Description: «Кинжал ли вижу я перед собою?»
+}
+
+CaltfistPetBuff: {
+	DisplayName: Рыба-культсит
+	Description: Этот маленький негодник осветит ваш путь!
+}
+
+CaptiveMaskPetBuff: {
+	DisplayName: Освобождённая маска
+	Description: «К пролому!»
+}
+
+DuskingPetBuff: {
+	DisplayName: Маленькое теневое пламя
+	Description: «В этом огне можно различить силуэт...»
+}
+
+FaeriePetBuff: {
+	DisplayName: Убывающая луна
+	Description: Вас защищает луносветная фея
+}
+
+HauntedBookPetBuff: {
+	DisplayName: Одержимый фолиант
+	Description: «Одержимый, но тихий»
+}
+
+InfernonPetBuff: {
+	DisplayName: Инферно
+	Description: «Тебе лучше держаться от него подальше»
+}
+
+JellyfishBuff: {
+	DisplayName: Умиротворяющая медуза
+	Description: «Эта медуза помогает вам расслабиться»
+}
+
+LanternBuff: {
+	DisplayName: Фонарь-батарея
+	Description: «Да осветит он ваш путь»
+}
+
+LoomingPresence: {
+	DisplayName: Зловещее присутствие
+	Description: Похоже, оно привлекает много внимания
+}
+
+MJWPetBuff: {
+	DisplayName: Лунная медуза-лампочка
+	Description: «Даже закручивать не нужно!»
+}
+
+OccultistPetBuff: {
+	DisplayName: Малой оккультист
+	Description: «Он на удивление добродушный»
+}
+
+OverseerPetBuff: {
+	DisplayName: Оверсиер
+	Description: «Выглядит как финальный босс»
+}
+
+PhantomPetBuff: {
+	DisplayName: Фантом
+	Description: «Растворяется во мраке ночи»
+}
+
+SaucerPetBuff: {
+	DisplayName: Член поддержки
+	Description: «Единственная поддержка, которую он может оказать — это, разве что, моральная...»
+}
+
+ScarabPetBuff: {
+	DisplayName: Крошка-скарабей
+	Description: «Ему очень нравится кататься...»
+}
+
+ShadowPetBuff: {
+	DisplayName: Теневой щенок
+	Description: «Рар-р-р»
+}
+
+StarplatePetBuff: {
+	DisplayName: Миниатюрный звездопанцирник
+	Description: Что-то ищет...
+}
+
+VinewrathPetBuff: {
+	DisplayName: Иссохший проросток
+	Description: «Из него вырос не самый благополучный ребёнок»
+}
+
+BismitePotionBuff: {
+	DisplayName: Токсичный удар
+	Description:
+		'''
+		Критические удары накладывают на врагов дебафф «{$Buffs.FesteringWounds.DisplayName}»
+		Шанс критического удара увеличен на 4%
+		'''
+}
+
+DoubleJumpPotionBuff: {
+	DisplayName: Эфирный прыжок
+	Description: Вы можете совершать дополнительный прыжок
+}
+
+FlightPotionBuff: {
+	DisplayName: Парение
+	Description: Время полёта увеличено на 25%
+}
+
+MoonBlessing: {
+	DisplayName: Лунное желе
+	Description: Невероятная скорость регенерации
+}
+
+MoonBlessingDonut: {
+	DisplayName: Лунноглазированный пончик
+	Description: Невероятная скорость регенерации вместе с сахарной передозировкой!
+}
+
+MushroomPotionBuff: {
+	DisplayName: Споровый выброс
+	Description: Вы оставляете за собой след из наносящих урон грибов
+}
+
+PinkPotionBuff: {
+	DisplayName: Усиление прыжка
+	Description: Высота прыжка увеличена
+}
+
+RunePotionBuff: {
+	DisplayName: Рунописание
+	Description:
+		'''
+		Магические атаки иногда будут разбрасывать руны
+		Магический урон увеличен на 5%
+		'''
+}
+
+SoulPotionBuff: {
+	DisplayName: Духовная сила
+	Description:
+		'''
+		Получении урона иногда будет накладывать на ближайших врагов дебафф «{$Buffs.SoulBurn.DisplayName}»
+		Сопротивление урону увеличено на 5%
+		'''
+}
+
+StarPotionBuff: {
+	DisplayName: Пылание звезды
+	Description:
+		'''
+		Нанесение критических ударов иногда будет вызывать падение звёзд с неба
+		Стрелковый урон и шанс критического удара увеличены на 4% во время движения
+		'''
+}
+
+TurtlePotionBuff: {
+	DisplayName: Стойкость
+	Description:
+		'''
+		Защита увеличивается по мере снижения здоровья
+		Сопротивление урону увеличено на 5%
+		'''
+}
+
+Shadowbroken: {
+	DisplayName: Теневой разрыв
+	Description: В вас скрывается тьма
+}
+
+Shadowflame: {
+	DisplayName: Теневое пламя
+	Description: Продолжение о котором никто не просил
+}
+
+Shocked: {
+	DisplayName: Наэлектризован!
+	Description: Ого!
+}
+
+SoulBurn: {
+	DisplayName: Горение души
+	Description: Ваша душа жаждет свободы
+}
+
+SoulFlare: {
+	DisplayName: Полыхание души
+	Description: Ваша душа неустойчива...
+}
+
+SpiritBuff: {
+	DisplayName: Аура духов
+	Description:
+		'''
+		Урон и шанс критического удара увеличены на 5%
+		Вы иногда будете выпускать самонаводящиеся заряды душ при получении урона
+		'''
+}
+
+StackingFireBuff: {
+	DisplayName: Выжигающее пламя
+	Description: "{$BuffName.Burning}, но хуже!"
+}
+
+StarCooldown: {
+	DisplayName: Космическая перезарядка
+	Description: Энергии космоса нужно стабилизироваться...
+}
+
+StarFlame: {
+	DisplayName: Звёздное пламя
+	Description: «Звёздная сила высасывает ваши жизненные силы»
+}
+
+StarFracture: {
+	DisplayName: Звёздный разлом
+	Description: Разорван звёздами
+}
+
+StarplateGravity: {
+	DisplayName: Звездопанцирная гравитация
+	Description: Звездопанцирный странник притягивает вас к земле...
+}
+
+Stopped: {
+	DisplayName: Остановленный
+	Description: Вы застряли на месте
+}
+
+ElectricSummonTag: {
+	DisplayName: Метка призывателя
+	Description: Вы отмечены!
+}
+
+SacrificialDaggerBuff: {
+	DisplayName: Жертвенный удар
+	Description: Три (3) снаряда
+}
+
+SummonTag3: {
+	DisplayName: Метка призывателя
+	Description: Вы отмечены!
+}
+
+SummonTag5: {
+	DisplayName: Метка призывателя
+	Description: Вы отмечены!
+}
+
+SurgingAnguish: {
+	DisplayName: Пронзительные муки
+	Description: «Ваше тело и разум испытывают невыносимую боль»
+}
+
+Impaled: {
+	DisplayName: Пронзённый
+	Description: Вас пронзили пикой. Ай!
+}
+
+KoiTotemBuff: {
+	DisplayName: Дух кои
+	Description: Навык рыбной ловли увеличен
+}
+
+PagodaCurse: {
+	DisplayName: Проклятие пагоды
+	Description: Вы чувствуете потустороннее присутствие
+}
+
+SunPotBuff: {
+	DisplayName: Солнце в горшке
+	Description: Регенерация здоровья увеличена
+}
+
+TopazMarked: {
+	DisplayName: Освещённый
+	Description: Словно 10 миллионов светлячков
+}
+
+Tracked: {
+	DisplayName: Слежка
+	Description: Вы можете бежать, но прятаться бесполезно
+}
+
+TrueMarksman: {
+	DisplayName: Истинный стрелок
+	Description: Урон огнестрельного оружия значительно увеличен
+}
+
+UnstableAffliction: {
+	DisplayName: Нестабильный
+	Description: Скорость передвижения снижена на 10%
+}
+
+VineTrap: {
+	DisplayName: Обвитый лозой
+	Description: Вы не можете сбежать
+}
+
+VirulenceCooldown: {
+	DisplayName: Подавление болезнетворности
+	Description: Гнилостным испарениям необходимо накопить свою энергию
+}
+
+Wither: {
+	DisplayName: Иссушение
+	Description: ""
+}
+
+WitheringLeaf: {
+	DisplayName: Лиственное увядание
+	Description: Угасает и чахнет...
+}
+
+CryoZoneTimer: {
+	DisplayName: Зона замедления
+	Description: Зона замедления активна!
+}
+
+DefenseZoneBuff: {
+	DisplayName: Зона укрепления
+	Description: Вы чувствуете силу!
+}
+
+HealingZoneBuff: {
+	DisplayName: Зона исцеления
+	Description: Вы полны сил!
+}
+
+HealthZoneTimer: {
+	DisplayName: Зона исцеления
+	Description: Зона исцеления активна!
+}
+
+LowGravZoneBuff: {
+	DisplayName: Зона низкой гравитации
+	Description: Вы чувствуете лёгкость!
+}
+
+LowGravZoneTimer: {
+	DisplayName: Зона низкой гравитации
+	Description: Зона низкой гравитации активна!
+}
+
+ShieldZoneTimer: {
+	DisplayName: Зона укрепления
+	Description: Зона укрепления активна!
+}
+
+StaminaZoneBuff: {
+	DisplayName: Зона выносливости
+	Description: Вы полны энергии!
+}
+
+StaminaZoneTimer: {
+	DisplayName: Зона выносливости
+	Description: Зона выносливости активна!
+}
+
+BaubleCooldown: {
+	DisplayName: Пузырьковая перезарядка
+	Description: Пузырьковый щит перезаряжается
+}
+
+BaubleResistance: {
+	DisplayName: Пузырьковое сопротивление
+	Description: Вы чувствуете себя несокрушимым
+}
+
+GildedScarab_buff: {
+	DisplayName: Скарабейный щит
+	Description: Защита увеличена на {0} ед.
+}
+
+SlagFury_buff: {
+	DisplayName: Шлаковая ярость
+	Description: Урон увеличен на {0}%
+}
+
+RunicSiphon: {
+	DisplayName: Руническое ослабление
+	Description:
+		'''
+		Быстрая потеря здоровья
+		Сопротивление урону снижено
+		'''
+}
+
+PendantBuff: {
+	DisplayName: Дружелюбный жук-пилюльщик
+	Description: «Это реальный вид жуков, если что»
+}
+
+MirrorCoatBuff: {
+	DisplayName: Зеркальное покрытие
+	Description: Вы невосприимчивы к дебаффу «{$BuffName.Stoned}»
+}
+
+SaddleBuff: {
+	DisplayName: Верховой полярный олень
+	Description: Вы чувствуете силу звёзд
+}
+
+Empowered: {
+	DisplayName: Усиленный
+	Description: Раскольник наполнен кратковременной силой
+}
+
+Mantaray_Buff: {
+	DisplayName: Скат
+	Description: Стремительный, как волна!
+}
+
+BottleMountBuff: {
+	DisplayName: Плот
+	Description: Посылаем сигнал бедствия
+}
+
+EmpoweredSwim: {
+	DisplayName: Усиленное плавание
+	Description: Вы чувствуете себя гораздо быстрее в воде
+}
+
+SwimmingFatigue: {
+	DisplayName: Усталость от плаванья
+	Description: Вы не сможете плавать также хорошо некоторое время
+}
+
+CurseBreakerMark: {
+	DisplayName: Проклятое клеймо
+	Description: Клеймённый на смерть!
+}
+
+MarbleMinecartBuff: {
+	DisplayName: Немейская колесница
+	Description: «Почувствуйте себя императором!»
+}
+
+Crystallization: {
+	DisplayName: Кристаллизация
+	Description: Быстрая потеря здоровья
+}
+
+Golden_Curse: {
+	DisplayName: Золотое проклятье
+	Description: Скорость падения и урон увеличены
+	Death: Игрок {0} грохнулся на землю как золотой слиток.
+}
+
+Crawlerock_Buff: {
+	DisplayName: Пещерный ползунчик
+	Description: За вас сражается маленький пещерный ползун!
+}
+
+JellyfishMinion_Buff: {
+	DisplayName: Медуза
+	Description: За вас сражается милая и упругая медуза!
+}
+
+LavaRockSummon_Buff: {
+	DisplayName: Шлаковый фонарь
+	Description: «Из этого фонаря сочится сила магмы»
+}
+
+MangoJellyMinion_Buff: {
+	DisplayName: Манговая медуза
+	Description: За вас сражается манговая медузка!
+}
+
+Minior_Buff: {
+	DisplayName: Маленький метеор
+	Description: За вас сражается маленький метеор!
+}
+
+SnakeMinion_Buff: {
+	DisplayName: Крылатый змей
+	Description: «Очень ядовит...»
+}
+
+SnapsporeMinion_Buff: {
+	DisplayName: Цепкоспора
+	Description: За вас сражается прыгучая цепкоспора!
+}
+
+MoonjellySummon_Buff: {
+	DisplayName: Луносветная носительница
+	Description: Луносветная носительница призывает маленьких луназой сражаться за вас!
+}
+
+QuacklingMinion_Buff: {
+	DisplayName: Кряква
+	Description: С банданой с рождения!
+}
+
+RabbitOfCaerbannog_Buff: {
+	DisplayName: Кролик-убийца
+	Description: «Это просто маленький безобидный крольчонок, что может случиться?»
+}
+
+ButterflyMinion_Buff: {
+	DisplayName: Эфирная бабочка
+	Description: За вас сражается сияющая эфирная бабочка!
+}
+
+ToucanMinion_Buff: {
+	DisplayName: Тукан
+	Description: За вас сражается тукан
+}
+
+SoulDaggerProj_Buff: {
+	DisplayName: Призрачный кинжал
+	Description: Поглоти их души!
+}
+
+SandWarriorMinion_Buff: {
+	DisplayName: Песчаный воин
+	Description: За вас сражается песчаный воин
+}
+
+PigronMinion_Buff: {
+	DisplayName: Свинрон
+	Description: Бекон!
+}
+
+FairyMinion_Buff: {
+	DisplayName: Феи
+	Description: Эй! Осторожно!
+}
+
+StarplateDrone_Buff: {
+	DisplayName: Звездопанцирный боевой дрон
+	Description: «В прекрасном будущем всё физическое насилие будет выглядеть именно так»
+}
+
+LocustBig_Buff: {
+	DisplayName: Саранча
+	Description: Разносчица чумы
+}
+
+ExplorerSpeed: {
+	DisplayName: Скорость исследователя
+	Description: Мобильность значительно увеличена
+}
+
+ArcaneFreeze: {
+	DisplayName: Мистическая заморозка
+	Description: Вас сковывает магический лёд
+}

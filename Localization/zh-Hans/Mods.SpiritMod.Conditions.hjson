@@ -13,9 +13,6 @@ FromAHead: 来自酸性头
 PokeyBodyLastSegment: 仅掉落自最后一段体节
 Enchanted: 敌人被附魔后掉落
 Rarely: 罕见
-WearingFloran: 穿戴全套叶族套装时
-WearingArcaneNecklace: 穿戴奥术项链并使用魔法武器时
-WearingVitalityStone: 穿戴生息灵石（及其升级）时
 Uncommonly: 不常见的掉落自暗影模仿者
 HasMoonshot: 任意玩家拥有月之击
 VoyagerDown: 星盘巡游者被击败后
@@ -26,11 +23,11 @@ DuskingDown: 薄暮焱魂被击败后
 InBriar: 位于荆棘之地时
 InAsteroids: 位于小行星带时
 InSpirit: 位于魂灵之地时
-NotInSpirit: 不位于魂灵之地时
-NotInBriar: 不位于荆棘之地时
-StarjinxDown: 厄星事件被击败后
+FirstDown: 仅在首次击败时
 HalfCompleteBestiary: 收集一半的魂灵图鉴后
 FullCompleteBestiary: 收集全部的魂灵图鉴后
+DurasilkSheaf: 获得3个柔和丝捆
+WarlockLure: 在不洁事业期间
 # Quest conditions are below here
 # IsCompleted is used to shorten translation
 IsCompleted: 任务完成后

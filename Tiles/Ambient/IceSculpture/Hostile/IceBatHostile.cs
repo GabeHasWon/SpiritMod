@@ -31,7 +31,7 @@ namespace SpiritMod.Tiles.Ambient.IceSculpture.Hostile
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			if (closer)
-				FrozenSpawner.SpawnFrozenEnemy(i, j, NPCID.IceBat);
+				FrozenSpawner.SpawnFrozenEnemy(i, j, NPCID.IceBat, "IceBat");
 		}
 	}
 }

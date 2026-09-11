@@ -1,15 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.CodeAnalysis.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SpiritMod.Mechanics.QuestSystem;
+using SpiritMod.UI.Elements;
+using SpiritMod.Utilities;
+using SpiritMod.Utilities.ModCompatibility.RussianLocalization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
-using Terraria.UI;
-using SpiritMod.UI.Elements;
-using SpiritMod.Mechanics.QuestSystem;
+using Terraria.Localization;
 using Terraria.ModLoader;
-using SpiritMod.Utilities;
+using Terraria.ModLoader.Config;
+using Terraria.UI;
 
 namespace SpiritMod.UI.QuestUI
 {
@@ -119,7 +125,12 @@ namespace SpiritMod.UI.QuestUI
             // bottom buttons
             #region bottom buttons
             _questFilterIndex = 0;
-            _questFilterButtons = CreateButtons(26f, 0.7f, false, "All", "Main", "Explorer", "Forager", "Slayer", "Other");
+
+			float textSсale = 0.7f;
+			if (LanguageManager.Instance.ActiveCulture.Name == "ru-RU")
+				textSсale = 0.59f;
+
+			_questFilterButtons = CreateButtons(26f, textSсale, false, "All", "Main", "Explorer", "Forager", "Slayer", "Other");
             for (int i = 0; i < _questFilterButtons.Length; i++)
             {
                 int index = i;
@@ -290,7 +301,10 @@ namespace SpiritMod.UI.QuestUI
 
             rightPage.Append(CreateLine(302f));
 
-            _questClientText = new UISimpleWrappableText("", 0.7f, false, true);
+			float textScale = 0.7f;
+			if (RussianTranslateCompat.IsNotRussianFont)
+				textScale = 0.655f;
+			_questClientText = new UISimpleWrappableText("", textScale, false, true);
 			_questClientText.Top.Set(306f, 0f);
 			_questClientText.Width.Set(0f, 1f);
 			_questClientText.MinWidth.Set(0f, 1f);
@@ -582,7 +596,12 @@ namespace SpiritMod.UI.QuestUI
 			_questImage.Texture = quest.QuestImage;
 			_questInteractText.Text = quest.IsCompleted ? QuestManager.LocalizationValue("ClaimRewards") : 
 				(quest.IsActive ? QuestManager.LocalizationValue("Deactivate") : QuestManager.LocalizationValue("Activate"));
-			_questClientTitle.Text = QuestManager.LocalizationValue("Client") + quest.QuestClient;
+
+			string client = quest.QuestClient;
+			if (LanguageManager.Instance.ActiveCulture.Name == "ru-RU")
+				client = char.ToLower(client[0]) + client.Substring(1);
+			_questClientTitle.Text = QuestManager.LocalizationValue("Client") + client;
+
 			_questClientText.Text = quest.QuestDescription;
 			_questClientText.UpdateText();
 			var category = QuestManager.GetCategoryInfo(quest.QuestCategory);

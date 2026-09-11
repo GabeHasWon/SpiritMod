@@ -45,6 +45,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.Thyrsus
 	}
 	public class ThyrsusProj : ModProjectile
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		bool stuck = false;
 		float shrinkCounter = 0.25f;
 		public override void SetStaticDefaults()
@@ -112,6 +113,7 @@ namespace SpiritMod.Items.Sets.OlympiumSet.Thyrsus
 	}
 	public class ThyrsusProjTwo : ModProjectile
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public Vector2 initialVelocity;
 		private Chain _chain;
 

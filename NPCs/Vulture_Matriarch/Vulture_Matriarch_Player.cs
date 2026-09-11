@@ -47,7 +47,7 @@ namespace SpiritMod.NPCs.Vulture_Matriarch
 		public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
 		{
 			if (goldified)
-				damageSource = PlayerDeathReason.ByCustomReason(Player.name + Language.GetTextValue("Mods.SpiritMod.GoldifiedDeath"));
+				damageSource = PlayerDeathReason.ByCustomReason(NetworkText.FromKey("Mods.SpiritMod.Buffs.Golden_Curse.Death", Player.name));
 			return true;
 		}
 

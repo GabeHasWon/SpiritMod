@@ -5,6 +5,7 @@ namespace SpiritMod.Items.Armor.StarjinxSet
 {
 	public class ManajinxBuff : ModBuff
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Starlight Enchantment");

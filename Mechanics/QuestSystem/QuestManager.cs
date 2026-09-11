@@ -451,6 +451,7 @@ public static class QuestManager
 	{
 		public int Index;
 		public string Name;
+		public string DisplayName => LocalizationValue($"Buttons.{Name}");
 		public Color Color;
 		public Asset<Texture2D> Texture;
 		public Rectangle? Frame;

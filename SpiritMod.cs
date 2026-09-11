@@ -48,7 +48,7 @@ using static Terraria.ModLoader.Core.TmodFile;
 using SpiritMod.Items.Sets.DyesMisc.HairDye;
 using SpiritMod.Items.Glyphs;
 using ReLogic.Content;
-using SpiritMod.Items.Books.UI.MaterialUI;
+using SpiritMod.Items.Books.UI;
 using SpiritMod.Mechanics.Fathomless_Chest;
 using SpiritMod.NPCs.Town.Oracle;
 using SpiritMod.GlobalClasses.Items;
@@ -190,8 +190,8 @@ public partial class SpiritMod : Mod
 
 	public override void Load()
 	{
-		QuestBookHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestBookToggle", Microsoft.Xna.Framework.Input.Keys.Q);
-		QuestHUDHotkey = KeybindLoader.RegisterKeybind(this, "SpiritMod:QuestHUDToggle", Microsoft.Xna.Framework.Input.Keys.V);
+		QuestBookHotkey = KeybindLoader.RegisterKeybind(this, "QuestBookToggle", Microsoft.Xna.Framework.Input.Keys.Q);
+		QuestHUDHotkey = KeybindLoader.RegisterKeybind(this, "QuestHUDToggle", Microsoft.Xna.Framework.Input.Keys.V);
 
 		QuestManager.Load();
 		if (!Main.dedServ)
@@ -199,8 +199,6 @@ public partial class SpiritMod : Mod
 			ParticleHandler.RegisterParticles();
 
 			BookUserInterface = new UserInterface();
-			BookUserInterface.SetState(new UIBismitePageStsate());
-			BookUserInterface.SetState(null);
 
 			QuestBookUIState = new QuestBookUI();
 			QuestHUD = new QuestHUD();

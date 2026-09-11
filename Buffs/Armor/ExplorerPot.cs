@@ -33,7 +33,7 @@ namespace SpiritMod.Buffs.Armor
 		public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
 		{
 			MyPlayer modPlayer = Main.LocalPlayer.GetSpiritPlayer();
-			tip += "\n" + Language.GetTextValue("Mods.SpiritMod.Buffs.ExplorerPot.Description2", modPlayer.movementStacks * 5/4);
+			tip = Language.GetTextValue("Mods.SpiritMod.Buffs.ExplorerPot.Description", modPlayer.movementStacks * 5 / 4);
 			rare = modPlayer.movementStacks >> 1;
 		}
 	}

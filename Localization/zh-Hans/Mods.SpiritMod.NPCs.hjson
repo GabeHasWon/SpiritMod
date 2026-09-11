@@ -1,3 +1,164 @@
+VanillaDialogue: {
+	HalloweenGeneric: {
+		1: 嘿，{0}。拿些糖果吧！
+		2: 给，我有些糖果要给你。
+	}
+
+	Merchant: {
+		Halloween0: 哦，这里有一些糖果。你不知道弄到这些有多难。
+		Halloween1: 我虽然贪心，但也喜欢过节。给你！
+		Halloween2: 这颗我免费送你。下一颗我可不敢保证。
+	}
+
+	Wizard: {
+		RuneWizard: 你知道{N}吗？他卖的东西很有趣，我从未亲眼见过那样神奇的魔术。
+		Gambler1: 只需要一点变形魔法，{N}的箱子就可以变成鸽子。找个时间试试吧！
+		Gambler2: "{N}从来没有注意到我的牌是用魔法变得，它甚至不是真实存在的。她太专注了！"
+		Halloween0: 我挺确定这不是魔法糖果，不过你要是想要的话，我可以做一些！不要？好吧……
+		Halloween1: 我有些糖果给你，不过如果你想的话，我也可以给它附个魔……不要？好吧。
+		Halloween2: 你确定不想要魔法糖果吗？我顺手就……不要？行吧……
+	}
+
+	Pirate: {
+		Adventurer: 唉，{N}那家伙又在吹嘘自己了。他可能是个菜鸟水手，但说实话，他表现的还真不错。
+		Rogue: 哦，{N}那家伙让我想起了自己的过去。啊，那些不好的回忆。
+		Gambler: 你知道吗，{N}总有一天会成为一名出色的海盗。是啊……她有一双黄金之眼。
+		Halloween0: 哟吼吼，还有一瓶……糖果。拿一些吧！
+		Halloween1: 这颗糖果可花了我一条胳膊和一条腿。现在就好好享用，不然就把你扔下跳板！
+		Halloween2: 啊啊，有句老话说得好：“随心所欲，因为海盗是自由的。”我倒觉得这话也适用于吃糖！
+	}
+
+	GoblinTinkerer: {
+		RuneWizard: 我和{N}每天都交流经验——他的魔法令人着迷！和他聊天真愉快。
+		Gambler: "{N}让我想起了我的同胞。懒惰的卖家以荒谬的价格向你兜售更多的带刺的球……"
+		Halloween0: 我试过把火箭靴和糖果混在一起，但效果不太理想。剩下的你要吗？
+		Halloween1: 事实证明，把所有口味的糖果混在一起后吃起来味道很糟糕。我知道，我也很失望。
+	}
+
+	ArmsDealer: {
+		Rogue1: "{N}？那个小讨厌鬼。试图不付钱就拿走我的迷你鲨。"
+		Rogue2: 我从未见过像{N}那样讨厌的人。谢天谢地，我有办法让他离开。
+		Adventurer: 我了解{N}。那家伙并不太坏。特别是当他停止卖枪之后，呵呵。
+		Halloween0: 我听说有种枪能发射糖果。天哪，我真想要一把。什么？哦，对了，给你糖。
+		Halloween1: 说了你都不信。我本来要的是弹药，结果供货商给我送了一堆糖果！你要来点吗？
+		HalloweenCandyRifle: 那是……真的是！一把玉米糖步枪！给，就凭你把它拿给我看，这个送你了。
+	}
+
+	Dryad: {
+		Halloween0: 你知道那些糖果里都放了些什么吗？给，这个对你的身体更好。我自己做的。
+		Halloween1: 又到一年中的这个时候了吗？像我这种年纪，时间真是过得飞快……哦，来，拿点糖果吧。
+		Halloween2: 我真希望自己有糖果种子可以卖给你。自己种糖果可比挨家挨户去要可持续多了。
+	}
+
+	Guide: {
+		Halloween0: 给你。在万圣节期间，你每晚可以从每位村民那里收集一颗糖果。
+		Halloween1: 糖果在任何季节都可以使用，以获得特殊效果。
+		HalloweenCandyBag: 拿着这个袋子，你可以用它来装糖果。“怎么才能得到糖果？”，你问我？去和其他村民聊聊看。
+	}
+
+	Demolitionist: {
+		RuneWizard: 哈哈哈！{N}那家伙真不错。他免费给我的货物附魔！
+		Rogue: "{N}是个狡猾的家伙，但任何在买酒方面做得好的家伙都值得我的尊敬！"
+		Halloween0: 我刚才在做糖火箭，这是剩下的部分。你要来点吗？
+		Halloween1: 呃，这颗糖果里面可能有炸药，也可能没有，我记不清了。
+	}
+
+	Nurse: {
+		Gambler: 听着，“药水屯个够，百病生个球！”，{N}真的让我给你读这样的广告吗？
+		Halloween0: 喏，小家伙。记得检查一下里面有没有刀片！
+		Halloween1: 虽然糖果不一定是最健康的选择，但还是很不错的。拿一些吧。
+		Halloween2: 我挺确定这种糖果吃了能让你更健康。大概吧。别到处说是我说的。
+	}
+
+	Clothier: {
+		Halloween0: 我妈总跟我说，糖果就像人生。还是说像个盒子来着？……呃，大概是那类的话吧。来，拿一颗。
+		Halloween1: 我可算是个糖果爱好者了。要来一颗吗？
+	}
+
+	Mechanic: {
+		Halloween0: 别在意糖果上的液压油。其实，就当它是额外的风味吧。
+		Halloween1: 如果你把这颗糖果放在口袋里，它可以监测你的心率、血压，还能记录你走了多少步！
+		Halloween2: 事实证明，你不能用糖果来驱动引擎。鸟类倒还行，但糖果？显然太勉强了。
+	}
+
+	SantaClaus: {
+		Halloween0: 有点不对劲。感觉太对劲了。
+		Halloween1: 吼吼吼！又到了这个季节——等等，现在不是这个季节！我在这儿干嘛呢？
+	}
+
+	Truffle: {
+		Halloween0: 这糖是素食的吗？当然不是，你这精神病！
+		Halloween1: 你说这颗上面有霉菌？那明明是蘑菇！
+		HalloweenNurse: "{0}想要一些这些东西来补充她的物资。不知道是关于什么的？"
+	}
+
+	Steampunker: {
+		Halloween0: 你说万圣节前夜？哎呀，我正好有你要的东西！来，拿点糖浆！
+		Halloween1: 我猜你是想要些布丁吧？给你，亲爱的！
+	}
+
+	DyeTrader: {
+		Halloween0: 我在这颗糖里加了些特殊的染料。它会让你的舌头变成鲜艳的颜色！
+		Halloween1: 重点不在于味道……而在于颜色的饱和度。拿一颗吧，为什么不呢？
+	}
+
+	PartyGirl: {
+		Halloween0: 我最喜欢每年的这个时候了！现在我连发免费糖果的借口都不用找了！来，拿一颗！
+		Halloween1: 谁说开派对非要嗑药？糖果可比那玩意儿好多了！
+	}
+
+	Cyborg: {
+		Halloween0: 我的日历程序已经判定当前大约是万圣节；请享用你的蔗糖基食品！
+		Halloween1: 糖总是会让我的内部零件粘糊糊的。来，帮我拿一下这颗糖，我来试着修修看。
+	}
+
+	Painter: {
+		Halloween0: 我可能不小心在这颗糖上滴了一点点颜料，不过大概是无铅的吧。希望如此。
+		Halloween1: 哦，{0}，你想要糖果？先让我给你画张肖像画，然后你就能拿一些了。
+	}
+
+	WitchDoctor: {
+		Halloween0: 我决定不给你柠檬头……或者，我该说，柠檬味的头。享用吧！
+		Halloween1: 当心，{0}，因为现在是恶鬼与亡灵出没的季节。这个可食用的护符会保护你。
+	}
+
+	Stylist: {
+		Halloween0: 我通常会把这些留到剪完头发之后再发，不过没关系，拿一颗吧，亲爱的。
+		Halloween1: 我这儿的糖果多的是，甜心！你想拿多少就拿多少。
+	}
+
+	TravellingMerchant: {
+		Halloween0: 我有来自{0}各地的稀有糖果。来，拿一些去。
+		Halloween1: 我听说在遥远的地方有种糖果，酸得能把舌头融化掉！可惜，我这儿只有些普通糖果给你。
+	}
+
+	Angler: {
+		Halloween0: 什么？你想要我的糖果？我想我这儿某处有些灵液草糖……
+		Halloween1: 这颗是从一条鱼里弄出来的。给你吧，我不想要了。
+		Halloween2: 老兄，你不能跟小孩子要糖。真的不能。
+	}
+
+	TaxCollector: {
+		Halloween0: 万圣节？哼，无聊！拿着你的糖果走开。
+		Halloween1: 你到我这儿来要糖吃？那行啊，拿去吧！
+		Halloween2: 给你，拿着这个。这是我能买到的最便宜的牌子了。
+	}
+
+	SkeletonMerchant: {
+		Halloween0: 我很开心，这是属于我族人的季节！拿点糖果吧！
+		Halloween1: 你知道冰糖其实不是长在地下的吗？哦，你知道？哼。
+	}
+
+	DD2Bartender: {
+		Adventurer: "{N}那家伙知道如何讲好故事。还没有喝几杯，我就沉迷其中了。"
+		Halloween0: 我设法找到了一些啤酒味的糖果！也许这个世界也没那么糟嘛。
+		Halloween1: 整天擦柜台让我学会了珍惜生活中的小确幸，比如糖果。来一颗吗？
+	}
+
+	Golfer.Gambler: "{N}是谁，为什么她想卖给我“[稀有]高尔夫战利品箱”？"
+	BestiaryGirl.Adventurer: 嗯哼，{N}真的知道很多关于动物的知识。他太酷了！
+}
+
 CopperChestBottom.DisplayName: 铜箱
 GoldChestBottom.DisplayName: 金箱
 PlatinumChestBottom.DisplayName: 铂金箱
@@ -85,8 +246,6 @@ SwollenFish: {
 	Entry: 在过去，这些鱼会膨胀身体来吓退捕食者。然而现在，它们似乎已经在食物链中获得了很高的地位，不再需要这么做。
 }
 
-BloodGazerEye.DisplayName: 鲜血凝望者
-
 Bloomshroom: {
 	DisplayName: 绽耀菇
 	Entry: 这种具有侵略性的菌丝体只有在千载难逢的机会下才会变得活跃起来。它们会将孢子扩散到天空中，一旦它们落到地面上或找到一个活体寄主就会进行繁殖。
@@ -159,6 +318,7 @@ Infernon: {
 	DisplayName: 炎狱之主
 	Entry: 这个恶魔曾被束缚在地狱的深处，但现在终于挣脱了束缚。任何敢于阻拦它肆虐的凡人都应该做好恶战一场的准备。
 	BossChecklistIntegration.SpawnInfo: 在地狱使用[i:SpiritMod/CursedCloth]召唤。
+	ExpertDialogue: 你还没有击败真正的地狱之主……
 }
 
 InfernonSkull.DisplayName: 地狱之颅
@@ -420,19 +580,9 @@ Floater1: {
 	Entry: 在难以捉摸的发光海洋的波浪之下，有着数千只小小的发光水母，在发光潮汐的中起舞。
 }
 
-Pelican: {
-	DisplayName: 鹈鹕
-	Entry: 一种大型海鸟，有着特殊的喙来捕捉猎物。如果受到惊吓，它会丢下已经抓住的东西，但那样就太残忍了。
-}
-
 ReaverShark: {
 	DisplayName: 掠夺鲨
 	Entry: 这种鲨鱼因其作为工具的潜力而非常出色。它不仅足够小，可以拿在手里，而且它的裂颚和大前角也很适合破冰。
-}
-
-SandPiper: {
-	DisplayName: 矶鹬
-	Entry: 一种勇敢的小鸟，沿着海岸线巡逻，寻找着被海浪冲刷出来的食物。
 }
 
 Prismite: {
@@ -520,13 +670,6 @@ Dead_Scientist: {
 DeadArcher: {
 	DisplayName: 死眼射手
 	Entry: 尽管只有一只眼睛，但与其他人相比，这位弓箭手都显得游刃有余。把这个人赶出去！
-}
-
-DesertBandit: {
-	DisplayName: 遗忘强盗
-	Entry: 一个四处流浪的强盗，在严酷的阳光下寻找任何可以换取金钱的东西。一个在派对上不太有趣的人。
-	Thank: 再次感谢！
-	Spare: 请放过我吧！
 }
 
 DiseasedSlime: {
@@ -944,9 +1087,6 @@ CogTrapperHead: {
 }
 
 CogTrapperTail.DisplayName: 星舞者
-LargeComet.DisplayName: 大型星厄彗星
-MediumComet.DisplayName: 中型星厄彗星
-SmallComet.DisplayName: 小型星厄彗星
 
 StymphalianBat: {
 	DisplayName: 斯廷法罗斯蝙蝠
@@ -1012,22 +1152,55 @@ SwordKakamora: {
 
 Adventurer: {
 	DisplayName: 冒险家
+	
+	Names: {
+		1: Morgan
+		2: Adam
+		3: Aziz
+		4: Temir
+		5: Evan
+		6: Senzen
+		7: Johanovic
+		8: Adrian
+		9: Christopher
+	}
+	
+	Dialogue: {
+		Basic1: 我走遍了世界各地，而且我有很多东西要给你看。
+		Basic2: 你住的房子真漂亮。这可比那些来自荆棘之地的野人把我吊在烤架上时住的强多了。
+		Basic3: 每个黎明都会为旅途带来新的机遇！你感兴趣吗？
+		Basic4: 你和我非常相似。我感觉到我们对冒险的共同渴望。
+		Basic5: 买我的东西，然后出去看看！看看这个世界能给予什么，就像我一样。
+		Basic6: 从神庙的深处到宇宙的高处，细看我的货物。
+		Basic7: 我不得不说，我对图钉很有天赋。你在旅途中发现的这些小玩意……
+		Special1: 我发誓我有比{0}更多好的商品可供出售！
+		Special2: 啊！是{0}！我们在旅途中经常相遇。我还没有找到他所说的那些奇异的丛林。
+		Special3: 今天的价格不错！{0}的商品无法与之竞争！真的无法竞争。我不再卖枪了。
+		Special4: 我的商品就像月亮一样，时圆时缺。
+		Special5: 今夜的每个人似乎都很有攻击性。僵尸正在敲门，我认为你应该尽快买些物资并前往地下。你能带着我一起去吗？
+		Special6: 哥布林比你想象中更有组织性——我看到他们的法师在那边建了一座巨大的塔。你应该找个时间去看看！
+		Special7: 我的老商业伙伴几年前转向了盗贼的生活。我想知道他是否还好。我想他的同伙已经在海边附近某个地方建立了盗贼营地。
+		Special8: 地平线上闪烁着蓝光。想知道那是什么，嗯？
+		Halloween0: 如果我告诉你这是从一个由糖果组成的遥远国度弄来的，你肯定不会信！我保证它的味道非常好。
+		Halloween1: 我听说你能从怪物手中的礼袋里得到更多糖果。说得好像我杀僵尸还需要什么借口似的！
+		Bound: 我刚才以为自己死定了！如果你没有插手，我可能已经被那些怪物吃掉了。如果我是你，我不会碰它……瞧，我已经很感激你了；但请别告诉别人，这几个月太漫长了，我只想放个假，不再冒险了。人生苦短，我不想让它变得更短。你有地方住吗？
+	}
 
 	TownNPCMood: {
-		Content: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.Content}"
-		NoHome: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.NoHome}"
-		FarFromHome: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.FarFromHome}"
-		LoveSpace: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LoveSpace}"
-		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.DislikeCrowded}"
-		HateCrowded: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.HateCrowded}"
-		LikeBiome: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LikeBiome}"
-		DislikeBiome: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.DislikeBiome}"
-		LoveNPC: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LoveNPC}"
-		LikeNPC: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LikeNPC}"
-		DislikeNPC: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.DislikeNPC}"
-		HateNPC: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.HateNPC}"
-		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPC.Adventurer.Mood.LikeNPC_Princess}"
-		Princess_LovesNPC: I like {NPCName}.
+		Content: 在家放松几乎和徒步旅行一样好，不是吗？
+		NoHome: 虽然我是一名冒险家，但我想放松一下。有多余的地方让我藏身吗？
+		FarFromHome: 你可以说我在离家太远的地方“冒险”……但说真的，我没有地图。
+		LoveSpace: 有足够的空间来计划我的下一次探险，太棒了！
+		DislikeCrowded: 我该如何在周围有这么多人的情况下绘制未被发现的土地？
+		HateCrowded: 我宁愿探索岩浆湖，也不愿和这些人住在这里！
+		LikeBiome: "{BiomeName}真是一个放松和休息的好地方。"
+		DislikeBiome: 虽然我很想完成我已经开始做的事情，但现在就回到{BiomeName}对我来说还为时过早。
+		LoveNPC: "{NPCName}是一个令人着迷的人。他的故事无人能比！"
+		LikeNPC: 我和{NPCName}是老交情了。我还记得我们第一次一起旅行的时候！
+		DislikeNPC: "{NPCName}真会让人扫兴。也许徒步旅行能让他振作起来？"
+		HateNPC: 虽然{NPCName}是一位精神上的收藏家，但他只是把自己的工作推卸给别人。令世界各地的探险家失望。
+		LikeNPC_Princess: "{NPCName}有她的气质。一种冒险的气质。"
+		Princess_LovesNPC: "{NPCName}有如此多的故事！"
 	}
 
 	Entry: 一位勇敢的冒险家，他的野心常常令他置身于危险之中。他也是一个热衷于记笔记的人，他的许多报告如今散落在世界各地。
@@ -1081,23 +1254,50 @@ BoundRogue: {
 
 Gambler: {
 	DisplayName: 赌徒
+	
+	Names: {
+		1: Yumeko
+		2: Vanessa
+		3: Gray
+		4: Alexandra
+		5: Sasha
+		6: Celine
+		7: Aleksa
+	}
+	
+	Dialogue: {
+		Basic1: 赌博是一项皇家运动。你为什么不碰碰运气呢？
+		Basic2: 我要提醒你，我的游戏不适合胆小的人。
+		Basic3: 赌博对你不好。除非你赢了。
+		Basic4: 无论输赢，游戏的刺激都是物有所值的。
+		Basic5: 你有一张赢家的脸。加码吧！
+		Basic6: 只需几枚硬币就能获得自豪感和成就感！
+		Halloween0: 把手伸进碗里。你永远不知道自己会摸出什么。
+		Halloween1: 我可以用任何一颗糖果换你一个随机派——不要？好吧。
+		Bound:
+			'''
+			今天一定是我的幸运日，在这儿看到了一张友好的脸！
+			这些哥布林可不太喜欢我提出的，呃，不公平交易。
+			不管怎样，你有地方住吗？让我们抛硬币吧。
+			'''
+	}
 
 	TownNPCMood: {
-		Content: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.Content}"
-		NoHome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.NoHome}"
-		FarFromHome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.FarFromHome}"
-		LoveSpace: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LoveSpace}"
-		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.DislikeCrowded}"
-		HateCrowded: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.HateCrowded}"
-		HateBiome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.HateBiome}"
-		LikeBiome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LikeBiome}"
-		DislikeBiome: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.DislikeBiome}"
-		LoveNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LoveNPC}"
-		LikeNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LikeNPC}"
-		DislikeNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.DislikeNPC}"
-		HateNPC: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.HateNPC}"
-		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPC.Gambler.Mood.LikeNPC_Princess}"
-		Princess_LovesNPC: I like {NPCName}.
+		Content: 既然我们都要在此处休息，那为什么不开一个或两个盲盒呢？
+		NoHome: 我需要一个独属于我自己的地方 - 否则我该在哪里安顿下来呢？
+		FarFromHome: 钱是一回事，但我不想拿我的生命赌博。我的家在哪里？
+		LoveSpace: 我是喜欢赌博的那种人，但不是喜欢赌场的那种人 - 我喜欢它的美丽和宁静。
+		DislikeCrowded: 赌场里厨师太多可不行，你懂我的意思吧。
+		HateCrowded: 人们总是打翻我的战利品箱！我要怎么在这里卖货？
+		HateBiome: 我没法在这里获得现金流。
+		LikeBiome: 啊，{BiomeName}。简直是开店的好地方。
+		DislikeBiome: 没有人喜欢在潮湿的地方赌博。硬币会变得又湿又恶心！
+		LoveNPC: 有一次，我把一个木箱卖给{NPCName}，赚了一笔快钱。他打开一看，里面大概有300只鸭子。我从来没有这么困惑和惊讶过。
+		LikeNPC: 我的头发？这是{NPCName}的骄傲和快乐。她做得很好。
+		DislikeNPC: 不像{NPCName}，我从来不会囤积财富。
+		HateNPC: 尽管你可以随意评价我，但{NPCName}干的事真的合法吗？
+		LikeNPC_Princess: 你知道的，{NPCName}胆识过人。她很勇猛，你也可以的！
+		Princess_LovesNPC: "{NPCName}太酷了。你可以看出她很自信。"
 	}
 
 	Entry: 赌徒一直以来都在人生的边缘挣扎，将自身交给命运主宰。虽然这使她成为一名狂热的玩家，但也曾将她束缚在哥布林堡垒的顶部。
@@ -1112,17 +1312,6 @@ Ghost.DisplayName: 幽灵
 
 Oracle: {
 	DisplayName: 神谕者
-
-	TownNPCMood: {
-		Content: I am content.
-		NoHome: I hate not having a home.
-		FarFromHome: I am too far from home.
-		LoveSpace: I love having so much space.
-		DislikeCrowded: I dislike how crowded I am.
-		HateCrowded: I hate how crowded I am.
-		LikeNPC_Princess: I like {NPCName}.
-		Princess_LovesNPC: I like {NPCName}.
-	}
 
 	Dialogue: {
 		Basic1: 众神已经向你传达了天启，{0}。
@@ -1147,6 +1336,17 @@ Oracle: {
 		Basic20: 我保持漂浮的原因很简单——如果我能做到的话，为什么我不这么做呢？
 	}
 
+	TownNPCMood: {
+		Content: I am content.
+		NoHome: I hate not having a home.
+		FarFromHome: I am too far from home.
+		LoveSpace: I love having so much space.
+		DislikeCrowded: I dislike how crowded I am.
+		HateCrowded: I hate how crowded I am.
+		LikeNPC_Princess: I like {NPCName}.
+		Princess_LovesNPC: I like {NPCName}.
+	}
+
 	Bless: {
 		Button: 祝福
 		Dialogue1: 你想接受挑战吗？我可能不会阻止你，因为这对我们都有好处。我真的希望你已经准备好了！
@@ -1166,22 +1366,48 @@ Oracle: {
 
 Rogue: {
 	DisplayName: 盗贼
+	
+	Names: {
+		1: Zane
+		2: Carlos
+		3: Tycho
+		4: Damien
+		5: Shane
+		6: Daryl
+		7: Shepard
+		8: Sly
+	}
+	
+	Dialogue: {
+		Basic1: 来看看我的货？它们挺锋利的。
+		Basic2: 请相信我——被你击杀的Boss的遗体是不会被浪费的。
+		Basic3: 这个世界充满了机遇！现在去杀一些东西吧。
+		Basic4: 这个面具变得香香的……
+		Basic5: 看看那个英俊的魔鬼！哦，它只是一面镜子。
+		Basic6: 这里能满足你所有的谋杀需求！
+		Basic7: 今天天气真好！现在，你想让谁死？
+		Special1: 告诉{0}不要再问我从哪里搞来的符咒。他不需要知道这些。他会休克而死。
+		Special2: 为什么{0}如此热衷于出售手里剑？那完全是我该做的事。
+		Halloween0: 你想要一些糖果吗？接着！
+		Halloween1: 嗨呀！糖果攻击！哦，是你啊。抱歉。
+		Bound: 嘿！谢谢你救了我——现在能帮我摆脱困境吗？他们骗了我，拿走了我所有的现金，把我丢在这里等死！但别以为我会为你打折。开玩笑的！并不。
+	}
 
 	TownNPCMood: {
-		Content: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.Content}"
-		NoHome: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.NoHome}"
-		FarFromHome: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.FarFromHome}"
-		LoveSpace: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LoveSpace}"
-		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.DislikeCrowded}"
-		HateCrowded: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.HateCrowded}"
-		LikeBiome: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LikeBiome}"
-		DislikeBiome: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.DislikeBiome}"
-		LoveNPC: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LoveNPC}"
-		LikeNPC: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LikeNPC}"
-		DislikeNPC: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.DislikeNPC}"
-		HateNPC: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.HateNPC}"
-		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPC.Rogue.Mood.LikeNPC_Princess}"
-		Princess_LovesNPC: I like {NPCName}.
+		Content: 三百……四百……没有什么比数一天辛苦工作的收获更棒了！
+		NoHome: 如果我没有房子，那我应该把我找到的东西藏在哪里？
+		FarFromHome: 有人偷走了我的房子吗？我不确定它在哪里。
+		LoveSpace: 远离所有窥探的目光，完美，完美。
+		DislikeCrowded: 人太多了，我都被人侧目了。
+		HateCrowded: 在这种拥挤的情况下，如果发生了“意外”，导致人群变少，那不是我的错，你知道吗？
+		LikeBiome: 这么多遮挡物！这么多可以躲藏的地方！一个很棒的地方。
+		DislikeBiome: 我在这里有太多的竞争对手 - 让我出去！
+		LoveNPC: 我不是工程师，但{NPCName}制作的东西真是太酷了。我这次可能会付钱！
+		LikeNPC: "{NPCName}实际上帮我穿过了一些危险的区域 - 人挺不错。"
+		DislikeNPC: 哦，{NPCName}？这么说吧，他从不反对测试他的炸药。
+		HateNPC: 让我告诉你……{NPCName}那个家伙？简直就像踩着钢丝一样容易激动，真的。我发誓，我只拿走了几枚硬币而已！
+		LikeNPC_Princess: "{NPCName}说会保守我的秘密，把它紧紧藏在心底……但其实我没有秘密可言。嘘。"
+		Princess_LovesNPC: 有时候{NPCName}会给我一些很酷的东西。他说这些都是免费的！
 	}
 
 	Entry: 一个充满神秘色彩的过去的有魅力的盗贼。他是否值得信任还不清楚，但他很乐意教你交易的技巧。
@@ -1194,21 +1420,46 @@ Rogue: {
 
 RuneWizard: {
 	DisplayName: 附魔师
+	
+	Names: {
+		1: Malachai
+		2: Nisarmah
+		3: Moneque
+		4: Tosalah
+		5: Kentremah
+		6: Salqueeh
+		7: Oarno
+		8: Cosimo
+	}
+	
+	Dialogue: {
+		Basic1: 用我的奇怪雕文来强化你的武器吧！
+		Basic2: 有时，我只是在雕文上乱写一个符文，看看会发生什么。我不建议你这么做。
+		Basic3: 在你询问之前，不，我是不会把蜂蜜雕文放在蜜蜂身上的。它会变得过于强大的。
+		Basic4: 我忘了嚏根草的精华！不要碰！
+		Basic5: 如果你不确定如何在偶然间发现雕文，我的主人曾经告诉我，强大的Boss拥有很多雕文！
+		Basic6: 有趣的事实 - 你可以在任何东西上附加符文。它们只是附加在雕文上时是最强大的。
+		Basic7: 只要你拥有技巧、智慧和精华，任何东西都可以被附魔！
+		Special1: 我想知道月亮被附了什么魔法 - 它变成蓝色了！
+		Special2: 魂灵的复生提供了一种全新的附魔可能性！
+		Halloween0: 看啊！附魔糖果！也就是说，味道好极了！
+		Halloween1: 仔细看好，因为我要引导魂灵的力量来召唤……糖果！
+	}
 
 	TownNPCMood: {
-		Content: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.Content}"
-		NoHome: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.NoHome}"
-		FarFromHome: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.FarFromHome}"
-		LoveSpace: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LoveSpace}"
-		DislikeCrowded: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.DislikeCrowded}"
-		HateCrowded: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.HateCrowded}"
-		LikeBiome: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LikeBiome}"
-		DislikeBiome: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.DislikeBiome}"
-		LoveNPC: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LoveNPC}"
-		LikeNPC: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LikeNPC}"
-		HateNPC: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.HateNPC}"
-		LikeNPC_Princess: "{$Mods.SpiritMod.TownNPC.RuneWizard.Mood.LikeNPC_Princess}"
-		Princess_LovesNPC: I like {NPCName}.
+		Content: 今天的符文进展的不错。
+		NoHome: 我没有地方放我的符文！
+		FarFromHome: 我不知道你是否能猜到，但我强烈希望能靠近我心爱的符文。
+		LoveSpace: 在宁静的地方，魔法会更容易流动。
+		DislikeCrowded: 周围有那么多人，很难集中注意力！
+		HateCrowded: 周围有这么多人，我只希望存在寂静雕文。
+		LikeBiome: 我从来没有像现在这样适应符文魔法！这个地方太棒了。
+		DislikeBiome: 这地方真是太过分了。太过分了。放我出去。
+		LoveNPC: "{NPCName}和我经常谈论我们的工作 - 他不懂魔法也能施放魔法，真是太神奇了。"
+		LikeNPC: 有时，{NPCName}会让我给他的货物附魔……而我每次都会附上空的魔法。他每次都欣喜若狂。
+		HateNPC: "{NPCName}不懂符文的力量……只关注这个“冰雪魔杖”和那个“水晶球”……"
+		LikeNPC_Princess: 我在耍魔术时，{NPCName}的眼睛里总是闪烁着魔法的光芒。都是些小把戏，哈哈。
+		Princess_LovesNPC: "{NPCName}给了我一个闪光符文！耶！"
 	}
 
 	Entry: 这位疲惫的符文抄写员彻夜未眠，研究着在图腾中发现的古老魔法。他不善于交际，但他很乐意强化你的武器。
@@ -1228,7 +1479,7 @@ Valkyrie: {
 Vulture_Matriarch: {
 	DisplayName: 砂鹫之主
 	Entry: 作为秃鹫部落的强大长老，女族长掌握着古老的魔法和能力，用以摧毁其猎物。
-	Disturbed: 砂鹫之主被惊扰了！
+	SpawnMessage: 砂鹫之主被惊扰了！
 }
 
 Wheezer: {

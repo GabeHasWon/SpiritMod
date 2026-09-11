@@ -13,6 +13,7 @@ namespace SpiritMod.Items.Sets.MaterialsMisc.QuestItems
 	[Sacrifice(1)]
 	public class RoyalCrown : ModItem
 	{
+		public override bool IsLoadingEnabled(Mod mod) => false;
 		public override void SetDefaults()
 		{
 			Item.width = Item.height = 16;

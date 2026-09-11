@@ -145,7 +145,7 @@ namespace SpiritMod.Utilities
 					new List<int> {
 						ModContent.ItemType<JellyDelugeBox>()
 					}),
-				Language.GetText("Mods.SpiritMod.Events.JellyDeluge.BossChecklistIntegration.Condition"),
+				Language.GetText("Mods.SpiritMod.BossChecklistIntegration.JellyDeluge.SpawnInfo"),
 				"SpiritMod/Textures/BossChecklist/JellyDeluge",
 				"SpiritMod/Textures/BossChecklist/JellyDelugeIcon",
 				null
@@ -177,7 +177,7 @@ namespace SpiritMod.Utilities
 						ModContent.ItemType<RlyehMask>(),
 						ModContent.ItemType<TideBox>()
 					}),
-				Language.GetText("Mods.SpiritMod.Events.TheTide.BossChecklistIntegration.Condition"),
+				Language.GetText("Mods.SpiritMod.BossChecklistIntegration.TheTide.SpawnInfo"),
 				"SpiritMod/Textures/BossChecklist/TideTexture",
 				"SpiritMod/Textures/InvasionIcons/Depths_Icon",
 				null
@@ -200,7 +200,7 @@ namespace SpiritMod.Utilities
 						ModContent.ItemType<BlueMoonSpawn>()
 					},
 					null),
-				Language.GetText("Mods.SpiritMod.Events.BlueMoon.BossChecklistIntegration.Condition"),
+				Language.GetText("Mods.SpiritMod.BossChecklistIntegration.MysticMoon.SpawnInfo"),
 				"SpiritMod/Textures/BossChecklist/MysticMoonTexture",
 				"SpiritMod/Textures/BossChecklist/BlueMoonIcon",
 				null

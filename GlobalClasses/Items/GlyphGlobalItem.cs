@@ -5,6 +5,7 @@ using SpiritMod.GlobalClasses.Players;
 using SpiritMod.Items.Glyphs;
 using SpiritMod.Projectiles.Glyph;
 using SpiritMod.Projectiles.Sword;
+using SpiritReforged.Common.ModCompat.LocalizationTools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -105,9 +106,32 @@ namespace SpiritMod.GlobalClasses.Items
 			item.rare = item.OriginalRarity;
 
 			item.ClearNameOverride();
+
 			if (Glyph != GlyphType.None)
-				item.SetNameOverride($"{GlyphBase.FromType(Glyph).Effect} " + item.Name);
+			{
+				string itemName = item.Name;
+
+				if (ModLoader.HasMod("CalamityRuTranslate") && Language.ActiveCulture.Name == "ru-RU")
+					itemName = itemName.ToLowerInvariant();
+
+				item.SetNameOverride($"{GenderItemEffect(item, GlyphBase.FromType(Glyph).GetLocalizationKey(""))} " + itemName);
+			}
 			//Set the glyph prefix
+		}
+		private static string GenderItemEffect(Item item, string baseKey)
+		{
+			if (!ModLoader.HasMod("CalamityRuTranslate") || Language.ActiveCulture.Name != "ru-RU")
+				return Language.GetTextValue(baseKey + "Effect");
+
+			string gender = RussianGendering.GetGender(item.type);
+
+			return gender switch
+			{
+				"Feminine" => Language.GetTextValue(baseKey + "Gendered.Fem"),
+				"Neuter" => Language.GetTextValue(baseKey + "Gendered.Neutral"),
+				"Plural" => Language.GetTextValue(baseKey + "Gendered.Plural"),
+				_ => Language.GetTextValue(baseKey + "Effect"),
+			};
 		}
 
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

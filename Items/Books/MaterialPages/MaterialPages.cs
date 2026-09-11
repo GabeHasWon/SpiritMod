@@ -1,4 +1,4 @@
-﻿using SpiritMod.Items.Books.UI.MaterialUI;
+﻿using SpiritMod.Items.Books.UI;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

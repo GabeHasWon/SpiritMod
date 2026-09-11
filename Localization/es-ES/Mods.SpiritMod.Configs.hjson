@@ -1,0 +1,277 @@
+SpiritClientConfig: {
+	DisplayName: Client Config
+
+	ScreenShake: {
+		Label: Sacudida de pantalla
+		Tooltip:
+			'''
+			Modifica la intensidad del movimiento de pantalla aplicado por el contenido dentro del mod
+			Establézcalo en 0 para deshabilitarlo por completo
+			'''
+	}
+
+	DistortionConfig: {
+		Label: Distorsión de pantalla
+		Tooltip: Habilita la distorsión de la pantalla mientras estás en el Bioma Espiritual o cuando luchas contra el Starplate Voyager.
+	}
+
+	ForegroundParticles: {
+		Label: Partículas en primer plano
+		Tooltip: Habilita partículas adicionales en primer plano bajo ciertas condiciones
+	}
+
+	AutoReuse: {
+		Label: Descripción de autouso
+		Tooltip: Habilita una línea adicional en las descripciones emergentes de las armas que se muestra si un objeto se reutiliza automáticamente/se balancea automáticamente.
+	}
+
+	QuickSell: {
+		Label: Función de venta rápida
+		Tooltip: Habilita la función de venta rápida, que permite vender fácilmente todos los artículos no deseados a los NPC
+	}
+
+	AmbientSounds: {
+		Label: Sonidos ambientales
+		Tooltip: Habilita efectos de sonido ambiental para algunos biomas
+	}
+
+	LeafFall: {
+		Label: Efectos de hojas cayendo
+		Tooltip:
+			'''
+			Permite el ambiente de hojas que caen durante las noches tranquilas o mientras se está en la zarza
+			Desactívalo para evitar interacciones extrañas mientras juegas a Terraria Overhaul
+			'''
+	}
+
+	QuestBookLocation: {
+		Label: Ubicación del botón del libro de misiones
+		Tooltip: Cambia la ubicación del botón del libro de misiones en tu inventario
+	}
+
+	QuestBookSwitching: {
+		Label: Cambio de pestañas del libro de misiones
+		Tooltip: Cambia de la pestaña actual a la pestaña Activa o Completa cuando se activa o completa una misión.
+	}
+
+	ShowNPCQuestNotice: {
+		Label: Iconos de misión para PNJ de ciudad
+		Tooltip: Habilita la visualización de signos de exclamación de misión cuando un PNJ de la ciudad tiene una nueva misión.
+	}
+
+	DoubleHideoutGeneration: {
+		Label: Generación de la Torre Arcana y del Refugio Bandido
+		Tooltip:
+			'''
+			Permite la generación tanto del Escondite de Bandidos como de la Torre Arcana.
+			Solo aparece uno por mundo de forma predeterminada
+			Recomendado solo para mundos grandes
+			'''
+	}
+
+	OceanShape: {
+		Label: Forma de la generación del océano
+		Tooltip:
+			'''
+			Modifica la generación Oceánica de ciertas maneras.
+			Por defecto usa una generación del tipo Piecewise_V
+			Se recomienda la generación Piecewise_V para partidas con el mod Spirit
+			'''
+	}
+
+	VentCritters: {
+		Label: Ecosistemas de respiraderos hidrotermales
+		Tooltip:
+			'''
+			Permite la reaparición de numerosos bichos alrededor de los respiraderos hidrotermales
+			Estos bichos no interfieren con las tasas de aparición regulares de los enemigos
+			Sin embargo, contribuyen al límite máximo de NPC
+			'''
+	}
+
+	SurfaceWaterTransparency: {
+		Label: Transparencia del agua del océano
+		Tooltip:
+			'''
+			Permite que el agua del océano sea transparente cuando está encendido
+			Esto no afecta a ningún otro bioma
+			'''
+	}
+
+	EnemyFishing: {
+		Label: Encuentros de pesca
+		Tooltip: Permite encuentros con enemigos mientras se pesca
+	}
+
+	AuroraEnabled: {
+		Label: Aurora activada
+		Tooltip: Activa o desactiva los efectos visuales de la aurora. Esto no evita que aparezcan efectos o enemigos basados en la aurora
+	}
+
+	EnableSepulchres: {
+		Label: Habilitar sepulcros oscuros
+		Tooltip: Activa o desactiva la generación de los sepulcros oscuros que aparecen bajo tierra. Resulta útil desactivarlo si se producen conflictos de generación con otros mods
+	}
+
+	ForceClassicZiggurat: {
+		Label: Forzar Zigurat clásico
+		Tooltip: Permite que aparezca el Zigurat de Spirit Classic incluso si Spirit Reforged está activo. Ten en cuenta que el Zigurat clásico podría solaparse con otras estructuras.
+	}
+
+	Headers: {
+		// Visuals: "[i:SpiritMod/MoonStone] Visuals"
+		// QoL: "[i:SpiritMod/PirateCrate] QoL"
+		// Ambience: "[i:SpiritMod/GladeWreath] Ambience"
+		// Quests: "[i:SpiritMod/MapScroll] Quests"
+		// Generation: "[i:SpiritMod/BismiteCrystal] Generation"
+		// Oceans: "[i:SpiritMod/BlackPearl] Oceans"
+		// Fishing: "[i:SpiritMod/HornetfishQuest] Fishing"
+	}
+}
+
+QuestInvLocation: {
+	Tooltip: ""
+
+	Minimap: {
+		Label: Minimapa
+		Tooltip: ""
+	}
+
+	Trashcan: {
+		Label: Cubo de basura
+		Tooltip: ""
+	}
+
+	FarLeft: {
+		Label: Extremo izquierdo
+		Tooltip: ""
+	}
+}
+
+OceanShape: {
+	Tooltip: ""
+
+	Default: {
+		Label: Predeterminado
+		Tooltip: Generación oceánica predeterminada de Terraria (vanilla). Desactiva la generación de Spirit Classic.
+	}
+
+	SlantedSine: {
+		Label: Seno Inclinado
+		Tooltip: Pendiente ajustada que utiliza una onda sinusoidal diagonal para la generación.
+	}
+
+	Piecewise: {
+		Label: Piecewise
+		Tooltip: Generación por tramos que combina varias pendientes. Generación original por tramos, aunque algo irregular.
+	}
+
+	Piecewise_M: {
+		Label: Piecewise_ M
+		Tooltip: Generación por tramos modificada, ligeramente mejorada.
+	}
+
+	Piecewise_V: {
+		Label: Piecewise_ V
+		Tooltip: Generación por tramos final, la generación oceánica prevista para Spirit.
+	}
+}
+
+SpiritMusicConfig: {
+	DisplayName: Configuración de Música
+
+	BlizzardMusic: {
+		Label: "[i:SpiritMod/BlizzardBox] Añade una pista única para las ventiscas"
+		Tooltip: Agrega una pista única para las ventiscas
+	}
+
+	SnowNightMusic: {
+		Label: "[i:SpiritMod/SnowNightBox] Añade una pista única para la nieve por la noche"
+		Tooltip: Agrega una pista única para el bioma de Nieve durante la noche
+	}
+
+	DesertNightMusic: {
+		Label: "[i:SpiritMod/DesertNightBox] Añade una pista única para el desierto por la noche"
+		Tooltip: Agrega una pista única para el bioma del Desierto durante la noche
+	}
+
+	HallowNightMusic: {
+		Label: "[i:SpiritMod/HallowNightBox] Añade una pista única para el Sagrado por la noche"
+		Tooltip: Agrega una pista única para El Sagrado durante la noche
+	}
+
+	CorruptNightMusic: {
+		Label: "[i:SpiritMod/CorruptNightBox] Añade una pista única para la Corrupción por la noche"
+		Tooltip: Agrega una pista única para la Corrupción durante la noche
+	}
+
+	CrimsonNightMusic: {
+		Label: "[i:SpiritMod/CrimsonNightBox] Añade una pista única para el Carmesí por la noche"
+		Tooltip: Agrega una pista única para el Carmesí durante la noche
+	}
+
+	GraniteMusic: {
+		Label: "[i:SpiritMod/GraniteBox] Añade una pista única para el bioma de granito"
+		Tooltip: Agrega una pista única para el bioma de Granito
+	}
+
+	MarbleMusic: {
+		Label: "[i:SpiritMod/MarbleBox] Añade una pista única para el bioma de mármol"
+		Tooltip: Agrega una pista única para el bioma de Mármol
+	}
+
+	UnderwaterMusic: {
+		Label: "[i:SpiritMod/OceanDepthsBox] Añade una pista única para las profundidades del océano"
+		Tooltip: Habilita música única para el Océano al estar bajo el agua profunda
+	}
+
+	SpiderCaveMusic: {
+		Label: "[i:SpiritMod/SpiderCaveBox] Añade una pista única para las cavernas de arañas"
+		Tooltip: Agrega una pista única para las cavernas de Arañas
+	}
+
+	MeteorMusic: {
+		Label: "[i:SpiritMod/MeteorBox] Añade una pista única para el bioma de meteorito"
+		Tooltip: Agrega una pista única para el bioma de Meteorito
+	}
+
+	FrostLegionMusic: {
+		Label: "[i:SpiritMod/FrostLegionBox] Añade una pista única para la invasión de la Legión Helada"
+		Tooltip: Agrega una pista única para la Legión Helada
+	}
+
+	SkeletronPrimeMusic: {
+		Label: "[i:SpiritMod/SkeletronPrimeBox] Añade una pista única para Esqueletrón Mayor"
+		Tooltip: Agrega una pista única de jefe para Skeletron Prime.
+	}
+
+	AuroraMusic: {
+		Label: "[i:SpiritMod/AuroraBox] Añade una pista única para la aurora"
+		Tooltip: Habilita música única para las Auroras
+	}
+
+	LuminousMusic: {
+		Label: "[i:SpiritMod/LuminousNightBox] Añade una pista única para los océanos luminosos"
+		Tooltip: Habilita música única para los Océanos Luminosos
+	}
+
+	CalmNightMusic: {
+		Label: "[i:SpiritMod/CalmNightBox] Añade una pista única para los minieventos de noche tranquila"
+		Tooltip: Habilita música única para las Noches Tranquilas
+	}
+
+	NeonBiomeMusic: {
+		Label: "[i:SpiritMod/HyperspaceDayBox] Añade dos pistas únicas para el bioma artificial de Hiperespacio"
+		Tooltip: Habilita dos pistas únicas al estar en el bioma Hiperspacio
+	}
+
+	AshfallMusic: {
+		Label: "[i:SpiritMod/AshfallBox] ñade una pista única para la ceniza volcánica en el Inframundo"
+		Tooltip: Habilita una pista única para el clima de Ceniza en el Inframundo
+	}
+
+	VictoryDayMusic: {
+		Label: "[i:SpiritMod/VictoryDayBox] Añade una pista única para el Día de la Victoria"
+		Tooltip: Habilita una pista única para el día después del evento de la Noche de los Faroles
+	}
+}

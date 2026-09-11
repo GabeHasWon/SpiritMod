@@ -1,0 +1,44 @@
+AsteroidBiome: {
+	DisplayName: Поле астероидов
+	TownNPCDialogueName: Поле астероидов
+}
+
+BriarSurfaceBiome: {
+	DisplayName: Терновник
+	TownNPCDialogueName: Терновник
+}
+
+BriarUndergroundBiome: {
+	DisplayName: Подземный терновник
+	TownNPCDialogueName: Подземный терновник
+}
+
+JellyDelugeBiome: {
+	DisplayName: Медузное наводнение
+	TownNPCDialogueName: Медузное наводнение
+}
+
+MysticMoonBiome: {
+	DisplayName: Таинственная луна
+	TownNPCDialogueName: Таинственная луна
+}
+
+TideBiome: {
+	DisplayName: Прилив
+	TownNPCDialogueName: Прилив
+}
+
+SpiritSurfaceBiome: {
+	DisplayName: Лес духов
+	TownNPCDialogueName: Лес духов
+}
+
+SpiritUndergroundBiome: {
+	DisplayName: Подземелье духов
+	TownNPCDialogueName: Подземелье духов
+}
+
+SynthwaveSurfaceBiome: {
+	DisplayName: Гиперпространство
+	TownNPCDialogueName: Гиперпространство
+}

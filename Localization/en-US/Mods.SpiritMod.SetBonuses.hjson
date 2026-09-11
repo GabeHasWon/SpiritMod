@@ -114,12 +114,6 @@ Spirit:
 	Increases life regen when below 100 Health
 	Increases invincibility frames when below 50 Health
 	'''
-Starjinx:
-	'''
-	Greatly increases mana useage and prevents useage of mana potions
-	Running out of mana produces a manajinx pylon near you
-	Collecting the manajinx pylon restores all mana and temporarily enchants magic weapons with stars
-	'''
 Starplate:
 	'''
 	Double tap {0} to deploy an energy field at the cursor position
