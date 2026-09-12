@@ -151,9 +151,8 @@ public class Oracle : ModNPC
 			}
 		}
 
-		int tileDist = GetTileAt(0, out bool liquid);
-
-		HandleFloatHeight(tileDist);
+		GetTileAt(0, out bool liquid);
+		HandleFloatHeight();
 
 		if (!liquid)
 		{
@@ -227,12 +226,14 @@ public class Oracle : ModNPC
 		TeleportY = pos.Y;
 	}
 
-	private void HandleFloatHeight(int tileDist)
+	private void HandleFloatHeight()
 	{
-		int[] ceilingHeights = new int[5];
+		Span<int> ceilingHeights = stackalloc int[5];
+
 		for (int i = -2; i < 3; ++i)
 			ceilingHeights[i + 2] = GetTileAt(-1, out _, true);
 
+		int tileDist = ceilingHeights[2];
 		int avgCeilingHeight = 0;
 
 		for (int i = 0; i < ceilingHeights.Length; ++i)
@@ -309,13 +310,20 @@ public class Oracle : ModNPC
 	{
 		int tileDist = (int)(NPC.Center.Y / 16f);
 		liquid = true;
+		int tileX = (int)(NPC.Center.X / 16);
+
+		if (Main.netMode == NetmodeID.MultiplayerClient && !Main.sectionManager.SectionLoaded(Netplay.GetSectionX(tileX), Netplay.GetSectionY(tileDist)))
+			return -1; // Avoid infinite recursion (check one)
 
 		while (true)
 		{
 			tileDist += !up ? 1 : -1;
 
-			if (tileDist < 20)
+			if (tileDist < 20 || tileDist > Main.maxTilesY - 20)
 				return -1;
+
+			if (Main.netMode == NetmodeID.MultiplayerClient && !Main.sectionManager.SectionLoaded(Netplay.GetSectionX(tileX), Netplay.GetSectionY(tileDist)))
+				return -1; // Avoid high recursion (check two)
 
 			Tile t = Framing.GetTileSafely((int)(NPC.Center.X / 16f) + xOffset, tileDist);
 			if (t.HasTile && Main.tileSolid[t.TileType])

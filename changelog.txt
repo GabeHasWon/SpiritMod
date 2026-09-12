@@ -1,6 +1,2 @@
-﻿v1.5.0.45
-- Gargantuan improvements to localization throughout the entire mod, thanks to alinahvoshch and aemisigna
-- Complete Russian localization, again thanks to Nana Team
-- Complete Spanish localization, thanks to Ningunomas
-- Improvements to Chinese localization
-- Fixed Terra Staff not matching the new recipes of the Terra Blade and thus being sequence broken
+﻿v1.5.0.46
+- Fixed issue with infinite recursion/OOB from the Oracle's ground detection code in multiplayer
