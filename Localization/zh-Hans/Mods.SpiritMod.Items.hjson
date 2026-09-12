@@ -3492,7 +3492,7 @@ SurrenderBell: {
 		只能在入侵到来时使用，无法在入侵临近时使用
 		“天国的钟声”
 		'''
-	Surrender: 侵略者取消了他们的进攻！
+	Message: 侵略者取消了他们的进攻！
 }
 
 TinyCrabItem: {
