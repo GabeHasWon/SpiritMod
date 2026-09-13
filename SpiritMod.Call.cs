@@ -86,6 +86,7 @@ public partial class SpiritMod : Mod
 		{
 			Logger.Error("Call Error: " + e.Message + "\n" + e.StackTrace);
 		}
+
 		return null;
 	}
 
@@ -150,8 +151,10 @@ public partial class SpiritMod : Mod
 					TideWorld.TheTide = true;
 					TideWorld.TideWaveIncrease();
 				}
+
 				return true;
 			}
+
 			return false;
 		}
 		else if (name == "CALMNIGHT")
@@ -166,6 +169,7 @@ public partial class SpiritMod : Mod
 			MyWorld.blueMoon = value;
 			return oldBlueMoon != value;
 		}
+
 		return null;
 	}
 
@@ -218,26 +222,37 @@ public partial class SpiritMod : Mod
 			throw new ArgumentException("Missing argument: Item");
 		else if (args.Length < 3)
 			throw new ArgumentException("Missing argument: Glyph");
+
 		if (args[1] is not Item item)
 			throw new ArgumentException("First argument must be of type Item");
+
 		int? glyphID = args[2] as int?;
 		if (!glyphID.HasValue)
 			throw new ArgumentException("Second argument must be of type int");
+
+		if (!item.TryGetGlobalItem(out GlyphGlobalItem glyphItem))
+			return;
+
 		GlyphType glyph = (GlyphType)glyphID;
+
 		if (glyph < GlyphType.None || glyph >= GlyphType.Count)
-			throw new ArgumentException("Glyph must be in range [" +
-				(int)GlyphType.None + "," + (int)GlyphType.Count + ")");
-		item.GetGlobalItem<GlyphGlobalItem>().SetGlyph(item, glyph);
+			throw new ArgumentException("Glyph must be in range [" + (int)GlyphType.None + "," + (int)GlyphType.Count + ")");
+
+		glyphItem.SetGlyph(item, glyph);
 	}
 
 	private static int GetGlyph(object[] args)
 	{
 		if (args.Length < 2)
 			throw new ArgumentException("Missing argument: Item");
-		if (args[1] is not Item item)
-			throw new ArgumentException("First argument must be of type Item");
 
-		return (int)item.GetGlobalItem<GlyphGlobalItem>().Glyph;
+		if (args[1] is not Item item)
+			throw new ArgumentException("First argument for GetGlyph must be an Item (item)!");
+
+		if (item.TryGetGlobalItem(out GlyphGlobalItem glyphItem))
+			return (int)glyphItem.Glyph;
+
+		return 0;
 	}
 }
 
