@@ -42,7 +42,12 @@ namespace SpiritMod.GlobalClasses.Items
 		}
 
 		private static bool CanBeAppliedTo(Player player, Item item)
-			=> item.maxStack == 1 && player.HeldItem.ModItem is GlyphBase glyph && glyph.CanApply(item);
+		{
+			if (ModLoader.TryGetMod("SpiritReforged", out Mod reforged) && reforged.Call("HasGlyph", item) is true)
+				return false;
+
+			return item.maxStack == 1 && player.HeldItem.ModItem is GlyphBase glyph && glyph.CanApply(item);
+		}
 
 		public override bool CanRightClick(Item item) => CanBeAppliedTo(Main.LocalPlayer, item) || base.CanRightClick(item);
 
@@ -315,7 +320,8 @@ namespace SpiritMod.GlobalClasses.Items
 				float alpha = (float)Main.timeForVisualEffects / 6f;
 				Texture2D texture = TextureAssets.Item[item.type].Value;
 
-				spriteBatch.End(); spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Main.UIScaleMatrix);
+				spriteBatch.End(); 
+				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Main.UIScaleMatrix);
 
 				SpiritMod.JemShaders.Parameters["alpha"].SetValue(alpha * 2 % 6);
 				SpiritMod.JemShaders.Parameters["coloralpha"].SetValue(alpha);
@@ -326,7 +332,8 @@ namespace SpiritMod.GlobalClasses.Items
 				SpiritMod.JemShaders.CurrentTechnique.Passes[1].Apply();
 
 				spriteBatch.Draw(texture, position, frame, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-				spriteBatch.End(); spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+				spriteBatch.End(); 
+				spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
 
 				spriteBatch.Draw(texture, position, frame, drawColor * fadeIn, 0, origin, scale, SpriteEffects.None, 0f);
 				return false;
