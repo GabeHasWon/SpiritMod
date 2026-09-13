@@ -236,6 +236,7 @@ public partial class SpiritMod : Mod
 			throw new ArgumentException("Missing argument: Item");
 		if (args[1] is not Item item)
 			throw new ArgumentException("First argument must be of type Item");
+
 		return (int)item.GetGlobalItem<GlyphGlobalItem>().Glyph;
 	}
 }

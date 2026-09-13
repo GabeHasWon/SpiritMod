@@ -1,2 +1,4 @@
 ﻿v1.5.0.46
-- Fixed issue with infinite recursion/OOB from the Oracle's ground detection code in multiplayer
+- Fixed crash issue with infinite recursion/OOB from the Oracle's ground detection code in multiplayer
+- Added support for Spirit Reforged glyphs to not apply to weapons with Classic glyphs
+- Fixed minor regression in Chinese localization
