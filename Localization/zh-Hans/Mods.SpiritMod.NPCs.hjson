@@ -189,7 +189,7 @@ AsteroidDebris.DisplayName: 星骸
 
 GoldDebris: {
 	DisplayName: 星骸
-	// AltName: Hit Me!
+	AltName: 打我！
 }
 
 AstralAdventurer: {
