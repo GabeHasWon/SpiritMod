@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpiritMod.Buffs.DoT;
 using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace SpiritMod.NPCs.AsteroidDebris
 {
@@ -39,7 +39,7 @@ namespace SpiritMod.NPCs.AsteroidDebris
 			NPC.npcSlots = 0;
 			NPC.HitSound = SoundID.NPCHit42;
 			NPC.DeathSound = SoundID.NPCDeath44;
-			NPC.GivenName = "Hit Me! ";
+			NPC.GivenName = $"{Language.GetTextValue("Mods.SpiritMod.NPCs.GoldDebris.AltName")} ";
 			NPC.alpha = 255; //The NPC will fade in on spawn
 
 			AIType = 0;
