@@ -186,7 +186,11 @@ CrimsonTrapper: {
 }
 
 AsteroidDebris.DisplayName: Обломки
-GoldDebris.DisplayName: Обломки
+
+GoldDebris: {
+	DisplayName: Обломки
+	AltName: Разбей меня!
+}
 
 AstralAdventurer: {
 	DisplayName: Звёздный разведчик

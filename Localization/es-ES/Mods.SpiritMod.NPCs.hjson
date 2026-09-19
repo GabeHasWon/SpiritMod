@@ -186,7 +186,11 @@ CrimsonTrapper: {
 }
 
 AsteroidDebris.DisplayName: Debris
-GoldDebris.DisplayName: Debris
+
+GoldDebris: {
+	DisplayName: Debris
+	// AltName: Hit Me!
+}
 
 AstralAdventurer: {
 	DisplayName: Aventurero astral
