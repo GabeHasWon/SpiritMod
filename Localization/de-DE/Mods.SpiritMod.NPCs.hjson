@@ -1,0 +1,1524 @@
+VanillaDialogue: {
+	HalloweenGeneric: {
+		1: Hallo, {0}. Nimm etwas Süßes!
+		2: Hier, ich hab etwas Süßes für dich.
+	}
+
+	Merchant: {
+		Halloween0: Oh, hier ist etwas Süßes. Du hast keine Ahnung, wie schwer das zu bekommen war.
+		Halloween1: Ich kann gierig sein, aber ich feiere gern mit. Hier, bitte!
+		Halloween2: Ich geb dir dieses Stück umsonst. Für das nächste kann ich nichts versprechen.
+	}
+
+	Wizard: {
+		RuneWizard: Du hast von {N} gehört? Seine Waren sind interessant, so eine Magie hab ich selbst noch nicht gesehen.
+		Gambler1: Mit nur einem kleinen Transmutationszauber können {N}s Kisten in Tauben AUSBRECHEN. Probier's mal aus!
+		Gambler2: "{N} merkt nie, dass mein Kartendeck magisch ist, es ist nicht mal echt. Sie ist zu abgelenkt!"
+		Halloween0: Ich bin mir ziemlich sicher, dass das keine verzauberten Süßigkeiten sind, aber ich könnte welche machen, wenn du willst! Nein? Ok...
+		Halloween1: Ich hab etwas Süßes für dich, aber ich könnte es verzaubern, wenn du möcht... Nein? Ok.
+		Halloween2: Bist du sicher, dass du keine verzauberten Süßigkeiten willst? Wär kein Problem, wenn ich nur... Nein? Gut...
+	}
+
+	Pirate: {
+		Adventurer: Aye, dieser {N} kennt sich mit dem Säbelrasseln aus. Er mag ein Landratte sein, aber kein schlechter Kerl, wenn ich's mir recht überleg.
+		Rogue: Hmph. Der alte {N} da drüben erinnert mich an vergangene Zeiten. Und nicht an gute, merk dir das.
+		Gambler: Weißt du, {N} hätt's in sich, eine gute Piratin zu werden. Aye... sie hat ein Auge für Gold.
+		Halloween0: Yo ho ho und ne Flasche voll... Süßigkeiten. Nimm dir was!
+		Halloween1: Diese Süßigkeit hat mich einen Arm und ein Bein gekostet. Genieß sie jetzt, oder es geht auf die Planke mit dir!
+		Halloween2: Arrr, es gibt ein altes Sprichwort: "Tu, was du willst, denn ein Pirat ist frei." Ich denk, das gilt auch fürs Süßigkeitenessen!
+	}
+
+	GoblinTinkerer: {
+		RuneWizard: Ich und {N} teilen täglich Erfahrungen - seine Magie ist faszinierend! Ein Wunder, mit ihm zu sprechen.
+		Gambler: "{N} erinnert mich an mein Volk. Faule Verkäufer, die dir MEHR Stachelkugeln zu ABSURDEN Preisen andrehen..."
+		Halloween0: Ich hab versucht, Raketenstiefel und Süßigkeiten zu kombinieren, hat aber nicht so geklappt. Willst du, was übrig ist?
+		Halloween1: Stellt sich raus, jeden Geschmack an Süßigkeiten zu kombinieren, schmeckt ziemlich schlecht. Ich weiß, ich bin auch enttäuscht.
+	}
+
+	ArmsDealer: {
+		Rogue1: "{N}? Dieser kleine Nervensäge. Hat versucht, meinen Minishark zu klauen, ohne dafür zu blechen."
+		Rogue2: Ich hab noch nie jemanden gesehen, der so nervig ist wie dieser {N}. Zum Glück hab ich Wege, ihn fernzuhalten.
+		Adventurer: Ich kenn {N}. Der Typ ist gar nicht so übel. Besonders, seit er aufgehört hat, Waffen zu verkaufen, heh.
+		Halloween0: Ich hör, es gibt eine Waffe, die Süßigkeiten schießt. Oh, was ich nicht alles dafür geben würde. Was? Oh, ja, hier ist deine Süßigkeit.
+		Halloween1: Du würdest es nicht glauben. Ich hab um Munition gebeten, aber meine Lieferanten haben mir stattdessen Süßigkeiten gegeben! Willst du ein Stück?
+		HalloweenCandyRifle: Ist das... es ist tatsächlich! Ein Zuckermais-Gewehr! Hier, dafür, dass du's mir gezeigt hast, sollst du das haben.
+	}
+
+	Dryad: {
+		Halloween0: Hast du eine Ahnung, was in diesen Süßigkeiten steckt? Hier, das Zeug ist viel besser für dich. Ich hab's selbst gemacht.
+		Halloween1: Ist es schon wieder diese Zeit des Jahres? Die Zeit vergeht so schnell, wenn man so alt ist wie ich... Oh, hier, nimm etwas Süßes.
+		Halloween2: Ich wünschte, ich hätte Süßigkeitensamen, die ich dir verkaufen könnte. Süßigkeiten anzubauen wäre viel nachhaltiger, als von Tür zu Tür danach zu fragen.
+	}
+
+	Guide: {
+		Halloween0: Hier. Du darfst an Halloween ein Stück Süßes pro Nacht von jedem Dorfbewohner sammeln.
+		Halloween1: Süßigkeiten können zu jeder Jahreszeit für besondere Effekte genutzt werden.
+		HalloweenCandyBag: Nimm diesen Beutel; du kannst darin deine Süßigkeiten aufbewahren. "Wie bekomm ich Süßigkeiten?", fragst du? Versuch, mit den anderen Dorfbewohnern zu reden.
+	}
+
+	Demolitionist: {
+		RuneWizard: Bahaha! Dieser {N} ist urkomisch. Er verzaubert meine Waren kostenlos!
+		Rogue: "{N} ist ein bisschen ein durchtriebener Kerl, aber jeder Kerl, der gut im Bezahlen einer Runde ist, hat meinen Respekt!"
+		Halloween0: Ich hab eine Zuckerrakete gebaut, und das ist übrig geblieben. Willst du was?
+		Halloween1: Ach, diese Süßigkeit hat vielleicht Sprengstoff drin, ich erinner mich nicht mehr.
+	}
+
+	Nurse: {
+		Gambler: Ahem..."Kauf dir ein paar Kisten und du brauchst keine Heilung mehr!" Hat {N} mir wirklich gesagt, ich soll dir eine Werbung vorlesen?
+		Halloween0: Hier, Kleines. Achte drauf, dass keine Rasierklingen drin sind!
+		Halloween1: Vielleicht nicht die gesündeste Option, aber Süßigkeiten sind ziemlich nett. Nimm etwas.
+		Halloween2: Ich bin mir ziemlich sicher, diese Süßigkeit macht dich gesünder. Vielleicht. Zitier mich da nicht.
+	}
+
+	Clothier: {
+		Halloween0: Meine Mama hat mir immer gesagt, Süßigkeiten sind wie das Leben. Oder war's eine Schachtel? ... äh, sowas in der Art. Hier, nimm ein Stück.
+		Halloween1: Ich bin ein ziemlicher Süßigkeitenliebhaber. Willst du ein Stück?
+	}
+
+	Mechanic: {
+		Halloween0: Stör dich nicht an der Hydraulikflüssigkeit auf der Süßigkeit. Betrachte es als Extra-Geschmack.
+		Halloween1: Wenn du diese Süßigkeit in deiner Tasche behältst, kann sie deine Herzfrequenz, deinen Blutdruck überwachen und dir sagen, wie viele Schritte du machst!
+		Halloween2: Stellt sich raus, man kann keinen Motor bauen, der mit Süßigkeiten läuft. Vögel gehen, aber Süßigkeiten? Anscheinend zu viel.
+	}
+
+	SantaClaus: {
+		Halloween0: Irgendwas stimmt nicht. Das fühlt sich völlig falsch an.
+		Halloween1: Ho ho ho! 'S ist die Zeit -- Moment, 's ist nicht die Zeit! Was mach ich hier?
+	}
+
+	Truffle: {
+		Halloween0: Ist diese Süßigkeit vegan? Natürlich nicht, du Kranker!
+		Halloween1: Wie meinst du, da ist Schimmel auf dem Stück? Das ist eindeutig Pilzkultur!
+		HalloweenNurse: "{0} wollte ein paar davon für ihren Vorrat. Frag mich, worum's da ging?"
+	}
+
+	Steampunker: {
+		Halloween0: All Hallows Eve, sagst du? Verflixt, ich hab genau das Richtige! Hier, nimm etwas Sirupgebäck!
+		Halloween1: Ich nehm an, du willst etwas Pudding, ja? Hier, mein Lieber!
+	}
+
+	DyeTrader: {
+		Halloween0: Ich hab besondere Farben in diese Süßigkeit getan. Sie wird deine Zunge in leuchtende Farben tauchen!
+		Halloween1: Es geht nicht darum, wie's schmeckt... Es geht darum, wie satt die Farben aussehen. Nimm ein Stück, warum nicht?
+	}
+
+	PartyGirl: {
+		Halloween0: Ich liebe diese Zeit des Jahres! Jetzt brauch ich keine Ausrede, um kostenlos Süßes zu verteilen! Hier, nimm ein Stück!
+		Halloween1: Wer hat je gesagt, man braucht Drogen zum Feiern? Süßigkeiten sind sooo viel besser!
+	}
+
+	Cyborg: {
+		Halloween0: Meine Kalender-Programmierung hat festgestellt, dass es ungefähr Halloween ist; genieß dein Zucker-basiertes Essen!
+		Halloween1: Zucker scheint immer meine Innereien zu verkleben. Hier, halt diese Süßigkeit, während ich versuch, das zu reparieren.
+	}
+
+	Painter: {
+		Halloween0: Ich hab vielleicht ein bisschen Farbe auf diese Süßigkeit getropft, aber wahrscheinlich bleifrei. Hoffentlich.
+		Halloween1: Oh, {0}, du willst Süßigkeiten? Lass mich erst dein Porträt malen, dann kriegst du welche.
+	}
+
+	WitchDoctor: {
+		Halloween0: Ich hab mich entschieden, dir keine Zitronenköpfe zu geben... oder soll ich sagen, zitronig schmeckende Köpfe. Genieß!
+		Halloween1: Sei gewarnt, {0}, denn es ist die Saison der Ghule und Geister. Dieses essbare Talisman wird dich beschützen.
+	}
+
+	Stylist: {
+		Halloween0: Normalerweise heb ich die für nach dem Haareschneiden auf, aber nimm ruhig ein Stück, Schätzchen.
+		Halloween1: Ich hab jede Menge Süßigkeiten, Süßer! Nimm so viel, wie du willst.
+	}
+
+	TravellingMerchant: {
+		Halloween0: Ich hab seltene Süßigkeiten aus der ganzen {0}. Hier, nimm etwas.
+		Halloween1: Ich hör, in fernen Ländern haben sie Süßigkeiten so sauer, dass sie einem die Zunge schmelzen! Leider hab ich für dich nur gewöhnliche Süßigkeiten.
+	}
+
+	Angler: {
+		Halloween0: Was? Du willst was von MEINEN Süßigkeiten? Ich glaub, ich hab hier irgendwo Ichorlakritz...
+		Halloween1: Die hier kam aus einem Fisch. Hier, du kannst sie haben, ich will sie nicht.
+		Halloween2: Alter, man bittet keinen Jugendlichen um Süßigkeiten. Man tut's einfach nicht.
+	}
+
+	TaxCollector: {
+		Halloween0: Halloween? Bah, Humbug! Nimm deine Süßigkeiten und verschwinde.
+		Halloween1: Du kommst an meine Tür, um meine Süßigkeiten zu nehmen? Na gut, dann nimm sie!
+		Halloween2: Hier, nimm das. Es ist die billigste Marke, die ich finden konnte.
+	}
+
+	SkeletonMerchant: {
+		Halloween0: Ich fühl mich glücklich, es ist die Saison meines Volkes! Nimm etwas Süßes!
+		Halloween1: Wusstest du, dass Steinzucker eigentlich nicht unter der Erde wächst? Oh, wusstest du? Hmph.
+	}
+
+	DD2Bartender: {
+		Adventurer: Dieser {N} weiß, wie man eine gute Geschichte erzählt. Kauft nicht mal viel zu trinken, aber ich genieß es trotzdem.
+		Halloween0: Ich hab ale-geschmackige Süßigkeit gefunden! Vielleicht ist diese Welt doch nicht so schlecht.
+		Halloween1: Den ganzen Tag Theke zu wischen hat mich die kleinen Dinge im Leben schätzen lassen, wie Süßigkeiten. Lust auf ein Stück?
+	}
+
+	Golfer.Gambler: Wer ist {N}, und warum will sie mir "[SELTENE] GOLF-LOOTBOXEN" verkaufen?
+	BestiaryGirl.Adventurer: Wie, {N} weiß echt viel über Tiere. Er ist voll cool!
+}
+
+CopperChestBottom.DisplayName: Kupfertruhe
+GoldChestBottom.DisplayName: Goldtruhe
+PlatinumChestBottom.DisplayName: Platintruhe
+SilverChestBottom.DisplayName: Silbertruhe
+StardustBombNPC.DisplayName: Supernova
+
+Alien: {
+	DisplayName: Alien
+	Entry: Im Weltraum kann dich niemand Popkultur-Referenzen machen hören.
+}
+
+BoneHarpy: {
+	DisplayName: Uralter Apostel
+	Entry: Die wiederbelebten Knochen eines lange ausgestorbenen Vogels. Auch wenn tot, lass die Wachsamkeit nicht sinken, denn diese Federfossilien haben noch Kampfgeist in sich!
+}
+
+AntlionAssassin: {
+	DisplayName: Ameisenlöwen-Assassine
+	Entry: Diese Wüstenaasfresser sind Einzelgänger. Sie jagen Ameisenlöwen nicht zum Überleben - sondern zum Sport, um Dominanz in ihrem Stamm zu etablieren.
+}
+
+CrimsonTrapper: {
+	DisplayName: Arterienpacker
+	Entry: Diese schlagenden Organe sind lebenswichtig für das gesicherte Überleben des Crimson - sie pumpen Blut in das schwappende Gestein des Bioms und verleihen ihm die Kraft, sich auszubreiten und seine Extremitäten zu unterstützen.
+}
+
+AsteroidDebris.DisplayName: Trümmer
+
+GoldDebris: {
+	DisplayName: Trümmer
+	// AltName: Hit Me!
+}
+
+AstralAdventurer: {
+	DisplayName: Astraler Abenteurer
+	Entry: Ein Schauspiel außerirdischen Lebens, bestehend aus einer Substanz jenseits unseres Verständnisses! Trotz ihrer geringen Größe und gallertartigen Form umkreisen stabile Steine irgendwie diesen seltsamen Körper.
+}
+
+AstralAmalgam: {
+	DisplayName: Astrales Amalgam
+	Entry: Ein Schauspiel außerirdischen Lebens, bestehend aus einer Substanz jenseits unseres Verständnisses! Trotz ihrer geringen Größe und gallertartigen Form umkreisen stabile Steine irgendwie diesen seltsamen Körper.
+}
+
+SpaceShield.DisplayName: Astraler Puffer
+
+AuroraStag: {
+	DisplayName: Aurora-Hirsch
+	Entry: Ein prächtiger Hirsch, bekannt dafür, unter dem Himmel der Aurora zu tollen. Liebt Eisbeeren, ängstlich vor fast allem anderen. Besonders Menschen.
+}
+
+AutomataCreeper: {
+	DisplayName: Arachmaton
+	Entry: Geschmiedet aus Messing, einem robusten Metall. Formt einen dauerhaften Rahmen. Ein Kern aus Marmor, unerschlossene Magie enthaltend. Das verleiht ihm einen Geist. Und zuletzt der Funke des Lebens. Streif frei umher, neuer Freund.
+}
+
+AutomataSpinner: {
+	DisplayName: Trochmaton
+	Entry: Die Zeiten werden düster, und ich muss mich beeilen. Doppelklingen, für den Angriff. Vier Beine, für Stabilität. Zusätzliche Panzerung, für Widerstand. Ein Marmorkern und zuletzt der Funke des Lebens. Beeil dich, o Wächter, du kennst deine Aufgabe. Verteidige diese Höhlen, die wir Heimat nennen.
+}
+
+Beholder: {
+	DisplayName: Beholder
+	Entry: Diese Bestien streifen durch die Marmorgruben in der Welt und richten dich mit jedem ihrer vielen Augen.
+	BossChecklistIntegration.SpawnInfo: Der Beholder spawnt selten in Marmorhöhlen, nachdem der Weltenfresser oder das Gehirn von Cthulhu besiegt wurde.
+}
+
+BlazingSkull: {
+	DisplayName: Zornige Seele
+	Entry: Leicht zu erzürnen, diese Seele brennt ewig aufgrund ihrer schieren Wut. All diese Energie wird dann freigesetzt, während sie vorwärts stürmt, um bei jeder Kleinigkeit zu explodieren. Was für ein Hitzkopf.
+}
+
+BlizzardBandit: {
+	DisplayName: Blizzard-Bandit
+	Entry: Schneeballschlachten können Spaß machen, aber diese Banditen spielen nicht fair. Sie packen ihre Schneebälle um Eiskerne, was für jeden Vorbeigehenden zur Belastung wird.
+}
+
+BlizzardNimbus: {
+	DisplayName: Blizzard-Nimbus
+	Entry: Nachdem er zugefroren ist, regnet dieser Nimbus wütend Eissplitter herab in dem Versuch, alles loszuwerden. Was er nicht weiß: Er könnte einfach die kalte Umgebung verlassen.
+}
+
+Spewer: {
+	DisplayName: Speiübel
+	Entry: Eine besonders üble Bestie. Sie baut Druck auf, indem sie mit den Organen auf ihrem Rücken Luft einsaugt, und schleudert Magenflüssigkeit auf alles, was ihr bedrohlich erscheint.
+}
+
+SwollenFish: {
+	DisplayName: Blähfisch
+	Entry: In der Vergangenheit haben sich diese Fische aufgebläht, um Raubtiere einzuschüchtern. Heute jedoch scheinen sie sich so weit die Nahrungskette hinaufgefressen zu haben, dass sie das nicht mehr brauchen.
+}
+
+Bloomshroom: {
+	DisplayName: Blütenpilz
+	Entry: Dieses aggressive Myzel wird nur einmal im Vollmond lebendig. Sie verstreuen ihre Sporen in den Himmel und vermehren sich, sobald sie auf dem Boden landen oder einen lebenden Wirt finden.
+}
+
+Glitterfly: {
+	DisplayName: Glitzerfalter
+	Entry: Glitzerfalter ernähren sich selten, da ihre Palette aus einem seltenen Pilz besteht. Zusätzlich besitzen sie einen giftigen Stachel, der starke Desorientierung und Schwindel verursacht.
+}
+
+GlowToad: {
+	DisplayName: Leuchtkröte
+	Entry: Psychedelischer Pilz wächst auf dem Rücken dieser Kröte. Sie sind im Delirium verloren, da sie sich häufig daran laben.
+}
+
+Lumantis: {
+	DisplayName: Lumantis
+	Entry: Kolossale Käfer, die mit sensenartigen Klauen angreifen. Wenn bedroht, blähen sie ihren Unterleib als Warnung an Raubtiere auf.
+}
+
+LunarSlime: {
+	DisplayName: Sternenglotzer-Schleim
+	Entry: Gallertartiger Nektar von den Sternen. Sternenglotzer-Schleime können aggressiv sein, aber das Öl, das sie absondern, ergibt einen köstlichen Brotaufstrich.
+}
+
+MadHatter: {
+	DisplayName: Verrückter Hutmacher
+	Entry: Sie wurden in den Wahnsinn getrieben, komplett übergeschnappt! Aber die besten Leute sind das.
+}
+
+AncientFlyer: {
+	DisplayName: Uralter Vogel
+	Entry: Die Matriarchin einer ausgestorbenen Raubvogel-Art, durch schieren Willen zurück ins Leben gebracht, um das Eigelb ihres letzten verbliebenen Nachwuchses zu schützen.
+	BossChecklistIntegration.SpawnInfo: Verwende ein [i:SpiritMod/JewelCrown] jederzeit im Himmelsbiom. Alternativ zerschmettere ein Riesiges Vogelei, das man auf Vogelinseln nahe der Himmelsschicht findet. Der Uralte Vogel kann jederzeit und an jedem Ort im Fortschritt bekämpft werden.
+	Spawn: Der Uralte Vogel ist erwacht!
+}
+
+Atlas: {
+	DisplayName: Atlas
+	Entry: Ein zersplitterter Wächter, vor Jahrtausenden erbaut, um das Land vor jenen zu schützen, die es wagen würden, seine natürliche Form zu vernarben. Nun scheint es, dass du dich selbst zu seinem Ziel gemacht hast.
+	BossChecklistIntegration.SpawnInfo: Verwende ein [i:SpiritMod/StoneSkin] überall zu jeder Zeit.
+}
+
+AtlasArmLeft.DisplayName: Atlas-Arm
+AtlasArmRight.DisplayName: Atlas-Arm
+CobbledEye.DisplayName: Gepflastertes Auge
+CobbledEye2.DisplayName: Gepflastertes Auge
+CobbledEye3.DisplayName: Gepflastertes Auge
+
+Dusking: {
+	DisplayName: Dusking
+	Entry: Die alptraumhafte Konsequenz einer gescheiterten Séance von Goblin-Hexenmeistern. Dieser abscheuliche Geist bleibt eine brennende Erinnerung an das Chaos, das Schattenflammenmagie bringen kann.
+	BossChecklistIntegration.SpawnInfo: Verwende ein [i:SpiritMod/DuskCrown] überall bei Nacht.
+}
+
+ShadowBall.DisplayName: Halbschattenkugel
+
+Shadowflamer: {
+	DisplayName: Antumbraler Schädel
+	Entry: Ende der Morgendämmerungen, Bringer der Nächte, möge der König der Dunkelheit sich zum Kampf erheben! Mögest du die Welt in Dunkelheit stürzen und das Licht für immer versiegeln! O König, hör meinen Ruf, möge heute Nacht der Sieg dein sein!
+}
+
+FrostSaucer: {
+	DisplayName: Schneemech
+	Entry: Ein gefährliches Hovercraft aus eiskaltem Metall, angetrieben von Frostkernen. Spielzeit vorbei, kein netter Herr Eis mehr!
+	BossChecklistIntegration.SpawnInfo: Der Schneemech spawnt selten während der Frostlegion.
+}
+
+Infernon: {
+	DisplayName: Infernon
+	Entry: Dieser teuflische Dämon war einst in den Tiefen der Unterwelt gefesselt, hat sich aber endlich befreit. Jeder Sterbliche, der es wagt, seinen Amoklauf zu behindern, sollte sich auf einen höllischen Kampf vorbereiten.
+	BossChecklistIntegration.SpawnInfo: Verwende ein [i:SpiritMod/CursedCloth] jederzeit in der Unterwelt.
+	ExpertDialogue: Du musst den wahren Meister der Hölle noch besiegen...
+}
+
+InfernonSkull.DisplayName: Infernus-Schädel
+InfernonSkullMini.DisplayName: Infernon-Schädel
+InfernoSkull.DisplayName: Infernus-Schädel
+
+MoonWizard: {
+	DisplayName: Mondgelee-Zauberer
+	Entry: Diese Mondgelees sind schlauer, als sie scheinen. Mit nur etwas Koordination und einem scharfen Modebewusstsein können sie ein viel härterer Gegner werden, als es eine einzelne Qualle je sein könnte.
+	BossChecklistIntegration.SpawnInfo: Verwende ein [i:SpiritMod/DreamlightJellyItem] jederzeit über der Erde bei Nacht. Ein [i:SpiritMod/DreamlightJellyItem] kann während der Gelee-Flut mit einem Insektennetz gefangen werden und ist nicht verbrauchbar
+}
+
+AzureGemProj.DisplayName: Azurblauer Edelstein
+MysticMJWClone.DisplayName: Mystischer Klon
+
+OccultistBoss: {
+	DisplayName: Okkultist
+	Entry: Ein untoter Traumdämon, besessen von der Praxis und Perfektion der sogenannten "Blutverderbnis." Für diese Praxis zeigt er sich nur, wenn der Mond blutrot schimmert.
+	BossChecklistIntegration.SpawnInfo: Der Okkultist spawnt selten während eines Blutmonds, nachdem irgendein Vor-Hardmode-Boss besiegt wurde.
+}
+
+ExplodingSpore.DisplayName: Explodierende Spore
+
+ReachBoss: {
+	DisplayName: Rankenzorn
+	BossChecklistIntegration.SpawnInfo: Rechtsklick auf die Blutblüte, eine leuchtende Blume am Boden des Dorngestrüpps. Der Rankenzorn kann jederzeit und an jedem Ort im Fortschritt bekämpft werden. Falls keine Blutblüte vorhanden ist, verwende ein [i:SpiritMod/ReachBossSummon] jederzeit im Dorngestrüpp unter der Oberfläche.
+	PreSpawn: Diese Blume zu stören ist sicher keine gute Idee...
+	Spawn: Der Rankenzorn ist erwacht!
+}
+
+ReachBoss1: {
+	DisplayName: Rankenzorn-Hülle
+	Entry: Das schlagende Herz des Dorngestrüpps. Sein angeborener Selbsterhaltungstrieb äußert sich in den feindseligen Antikörpern und dem endlosen sintflutartigen Regen innerhalb des Bioms.
+}
+
+Scarab: {
+	DisplayName: Skarabäus
+	Entry: Die schäbigen Artgenossen des größeren Scarabeus, diese kleinen Dinger folgen ihrem Anführer bis in den Tod.
+}
+
+Scarab_Wall.DisplayName: Skarabäus
+
+Scarabeus: {
+	DisplayName: Scarabeus
+	Entry: Einst als Gottheit gedacht, stammt dieser bestimmte Käfer aus einer schwer fassbaren Art, die ebenso massiv ist.
+	BossChecklistIntegration.SpawnInfo: Verwende ein [i:SpiritMod/ScarabIdol] tagsüber in der Wüste. Ein [i:SpiritMod/ScarabIdol] kann nach Abschluss einer bestimmten Abenteurer-Quest gefunden oder hergestellt werden und ist nicht verbrauchbar.
+}
+
+SwarmScarab.DisplayName: Skarabäus
+ArcadeProbe.DisplayName: Sternenfahrer
+LaserBase.DisplayName: Laser-Abschussrampe
+SteamRaiderBody.DisplayName: Starplate Voyager
+SteamRaiderBody2.DisplayName: Starplate Voyager
+
+SteamRaiderHead: {
+	DisplayName: Starplate Voyager
+	Entry: Ein seltsamer Automat unbekannten Ursprungs, entworfen, um ein kostbares Metall aus den Sternen abzubauen. Er nutzt die ungenutzte Energie im Erz, um sich selbst anzutreiben und eine endlose Suche fortzusetzen.
+	BossChecklistIntegration.SpawnInfo: Verwende ein [i:SpiritMod/StarWormSummon] an einem Astralit-Leuchtfeuer in den Asteroiden bei Nacht.
+	Spawn: Der Starplate Voyager ist erwacht!
+	Laser: Laser-Protokoll wird gestartet
+	Detected: Instabilität erkannt
+	Engaged: Ziel erfasst
+}
+
+SteamRaiderHeadDeath.DisplayName: Starplate Voyager
+SteamRaiderTail.DisplayName: Starplate Voyager
+SuicideLaser.DisplayName: Laserbomber
+TailProbe.DisplayName: Sternenfahrer
+
+BottomFeeder: {
+	DisplayName: Grundfresser
+	Entry: Eine üble Galle sitzt in ihrem Bauch, bereit, entfesselt zu werden. Sei vorsichtig, wenn sie auf dich zu schlurfen, und bereite dich auf eine Flut aus Schlamm und Ruß vor.
+}
+
+Boulder_Termagant: {
+	DisplayName: Felsbrocken-Behemoth
+	Entry: Verzaubert von allem, was glänzt, dienen die Augen dieses Biests jetzt nur noch einem Zweck. Jeden Glanz von Licht finden. Das führt es meist zu Edelsteinen, aber es wird versehentlich alles fressen, was leuchtet.
+}
+
+CavernBandit: {
+	DisplayName: Höhlenbandit
+	Entry: Manche gehen zum Abbauen wegen der Rohstoffe unter Tage, andere zum Sport. Diese boshaften Plünderer graben sich hinab, um diese Leute zu jagen.
+}
+
+CavernCrawler: {
+	DisplayName: Höhlenkriecher
+	Entry: Trotz ihres schüchternen äußeren Erscheinungsbilds sollten diese neugierigen Höhlenbewohner nicht unterschätzt werden.
+}
+
+ChainedSinner: {
+	DisplayName: Ofenmaul
+	Entry: Wir schmieden die Ketten, die wir im Leben und im Tod tragen.
+}
+
+Chest_Zombie: {
+	DisplayName: Truhen-Zombie
+	Entry: Er muss in seinem früheren Leben Kreuzheben-Champion gewesen sein, denn wenn er dir nicht gerade schwere Schläge verpasst, sieht man ihn mit den über das Land verstreuten Truhen trainieren.
+}
+
+GraniteCore: {
+	DisplayName: Knisternder Kern
+	Entry: Aufgestaute Energie, die einst in der felsigen, amorphen Form eines Granitschleims gefangen war. Jetzt ist sie frei, und sie steht kurz davor, kritisch zu werden!
+}
+
+BlueAlgae1.DisplayName: Blaue Algen
+BlueAlgae2.DisplayName: Blaue Algen
+BlueAlgae3.DisplayName: Blaue Algen
+GreenAlgae1.DisplayName: Biolumineszente Algen
+GreenAlgae2.DisplayName: Biolumineszente Algen
+GreenAlgae3.DisplayName: Biolumineszente Algen
+PurpleAlgae1.DisplayName: Biolumineszente Algen
+PurpleAlgae2.DisplayName: Biolumineszente Algen
+PurpleAlgae3.DisplayName: Biolumineszente Algen
+
+AtlanticCod: {
+	DisplayName: Atlantischer Kabeljau
+	Entry: Atlantischer Kabeljau ist einzigartig heimisch in den eisigen Gewässern kalter Tundren. Fleischstücke dieser Fische sind flockig und süßlich.
+}
+
+Bladetongue: {
+	DisplayName: Klingenzunge
+	Entry: Wenn du eine fangen kannst, könnte sie eine ausgezeichnete Waffe abgeben. Aber sei vorsichtig dabei, denn ihre tödliche Ichor-Spucke kann dich wehrlos machen.
+}
+
+Blossmoon: {
+	DisplayName: Blossmoon
+	Entry: Diese Kreaturen sind so groß wie eine Münze und erscheinen nur nachts. Man kann sie nur tanzen sehen, während sie ein sanft beruhigendes Leuchten aussenden.
+}
+
+Cavefish: {
+	DisplayName: Gepanzerter Höhlenfisch
+	Entry: Du müsstest zäh wie Nägel sein, um von so einem Fisch Fleisch zu kauen, es ist hart wie Diamanten!
+}
+
+Cleft: {
+	DisplayName: Spalthüpfer
+	Entry: Ein winziger lebender Fels, der durch die unterirdische Wüste streift. Sie werden nervös inmitten des Chaos der Ameisenlöwen und ziehen sich selten aus ihren Felsnischen zurück.
+}
+
+CrismonTigerfish: {
+	DisplayName: Crimson-Tigerfisch
+	Entry: Ein fleischfressender Fisch, der von den blutigen Gewässern des Crimson verdorben wurde. Sie sind nach ihrem Mangel an Streifen benannt, die dem eines Tigers ähneln.
+}
+
+CrystalSerpent: {
+	DisplayName: Kristallschlange
+	Entry: Lebend in den glitzernden Gewässern des Hallow besteht ihr Körper nun größtenteils aus Kristallen. Das erlaubt es Licht, in ihren Körper einzudringen und es in einen Bolzen zu kanalisieren, der beim Aufprall zerschellt.
+}
+
+CyberflyBlue: {
+	DisplayName: Cyberfliege
+	Entry: Kleine digitale Irrlichter, die durch den Cyberspace flattern.
+}
+
+CyberflyPink: {
+	DisplayName: Cyberfliege
+	Entry: Kleine digitale Irrlichter, die durch den Cyberspace flattern.
+}
+
+Damselfish: {
+	DisplayName: Preisfisch
+	Entry: Zarte Fische, die in großen Höhen leben. Trotz der beruhigenden Eigenschaften ihrer Schuppen neigen sie zu Stress.
+}
+
+DreamstrideWisp: {
+	DisplayName: Traumwandler-Irrlicht
+	Entry: Die Essenz eines Alptraums, die oft während der Praxis der "Blutverderbnis" erscheint. Sie röcheln und stöhnen in stillem Schmerz.
+}
+
+Ebonkoi: {
+	DisplayName: Ebonkoi
+	Entry: Einst ein wunderschönes Exemplar, jetzt grotesk und widerlich dank der heimtückischen Adern der Korruption. Wahrhaft tragisch.
+}
+
+FrostMinnow: {
+	DisplayName: Frostelritze
+	Entry: Ängstliche Elritzen, die dank ihrer unnatürlich hohen Körperwärme die extrem kalten Temperaturen der Tundragewässer überleben können.
+}
+
+GaleSnail: {
+	DisplayName: Windböenschnecke
+	Entry: Ein bescheidener kleiner Nimbus, der vom Regen nicht genug bekommt. Sogar ihre Schale erzeugt Regen, wenn sie genug Feuchtigkeit gesammelt hat.
+}
+
+GildJelly: {
+	DisplayName: Vergoldete Qualle
+	Entry: Wunderschöne Quallen mit einer schimmernden Haube, die Gold ähnelt. Tragischerweise vertragen sie Gefangenschaft nicht gut.
+}
+
+GoldenCarp: {
+	DisplayName: Goldkarpfen
+	Entry: Ein Fisch, überzogen mit absolut wunderschönen, schimmernden Schuppen, die reinem Gold ähneln. Ihr Fleisch taugt nicht zum Kochen, könnte aber einen hohen Verkaufspreis erzielen.
+}
+
+GoldLumoth: {
+	DisplayName: Gold-Lumoth
+	Entry: Selten findet man Kleinviecher, die vollständig mit Gold überzogen sind! Ladenbesitzer zahlen gut dafür, oder du kannst sie in Käfigen zur Schau stellen!
+}
+
+Grouper: {
+	DisplayName: Zackenbarsch
+	Entry: Diese Fische werden für ihre Größe und ihren Geschmack geschätzt. Mit einem so großen Fisch kannst du eine ganze Stadt ernähren, ganz zu schweigen von dir selbst.
+}
+
+Gulper: {
+	DisplayName: Schlinger
+	Entry: Diese kleinen, domestizierten Fische bestehen aus einer federnden Substanz, werden oft auf Festen verkauft und haben eine extrem kurze Lebenserwartung.
+}
+
+HailSnail: {
+	DisplayName: Hagelschnecke
+	Entry: Ein kleiner lebender Schneeball, der von der Kälte nicht genug bekommt. Er kann immer kälter werden, wird aber nie einfrieren.
+}
+
+Hemoglob: {
+	DisplayName: Hämoglob
+	Entry: Ein Nachfahre königlichen Bluts und eines wandernden Königs. Er beobachtet jede deiner Handlungen, während er sich mit Anmut und Würde bewegt.
+}
+
+Hemoglorb: {
+	DisplayName: Hämoglorb
+	Entry: Der vergessene Verwandte des Crimson, beiseitegeworfen wegen seiner ungewöhnlichen Form und Größe. Er konnte nie, und wird wahrscheinlich nie, Liebe oder Akzeptanz in dieser grausamen Welt finden.
+}
+
+Lardfish: {
+	DisplayName: Bunter Fettfisch
+	Entry: Ein bizarrer Fisch, begehrt für sein Brau-Potenzial. Wer Magie zum Beschwören nutzt, findet diesen Fisch besonders nützlich, um seine Fähigkeiten zu verstärken.
+}
+
+Lumoth: {
+	DisplayName: Lumoth
+	Entry: Die Glühbirne bleibt nur an, solange der Lumoth mit den Flügeln schlägt.
+}
+
+Luvdisc: {
+	DisplayName: Sehnsuchtsfisch
+	Entry: Wenn der Mond dein Auge trifft wie eine große Pizza... das ist Sehnsucht.
+}
+
+Maggotfly: {
+	DisplayName: Madenfliege
+	Entry: Eine massive Made, die irgendwie herangewachsen ist und Flügel bekommen hat, ein widerliches kleines Ding.
+}
+
+NeonTetra: {
+	DisplayName: Neonsalmler
+	Entry: Wie der Name schon sagt, hat diese tropische Fischart leuchtende und wunderschöne Farben, was sie zu einem exorbitanten Preis verkaufbar macht.
+}
+
+Crinoid: {
+	DisplayName: Seelilie
+	Entry: Diese neugierigen Kleinviecher sind eng mit Seesternen verwandt. Sie fressen alles, was auf den Meeresgrund sinkt.
+}
+
+Floater.DisplayName: Leuchtender Schweber
+
+Floater1: {
+	DisplayName: Leuchtender Schweber
+	Entry: Unterhalb der Wellen des schwer fassbaren leuchtenden Ozeans liegen Hunderte kleiner, leuchtender Quallen, die in der lumineszenten Flut tanzen.
+}
+
+ReaverShark: {
+	DisplayName: Plünderhai
+	Entry: Diese besondere Haiart ist bemerkenswert für ihr Potenzial als Werkzeug. Sie ist nicht nur klein genug, um sie zu halten, sondern ihr gespaltenes Kinn und großes Stirnhorn sind hervorragend darin, Eis zu brechen.
+}
+
+Prismite: {
+	DisplayName: Prismit
+	Entry: Ein schillernder Mineralfisch, der die Gewässer des Hallow durchwatet. Der prismatische Glanz, der Licht von seinen Schuppen reflektiert, ist eine natürliche Schönheit.
+}
+
+PurpleClubberfish: {
+	DisplayName: Lila Keulenfisch
+	Entry: Wenn du versuchst, diese Massenvernichtungswaffe zu beanspruchen, hüte dich vor ihrer Macht. Sie kann und wird sie gegen dich einsetzen!
+}
+
+RedSnapper: {
+	DisplayName: Red Snapper
+	Entry: Trotz ihres Namens sind sie tatsächlich ziemlich zahm! Perfekt zum problemlosen Fangen und Kochen.
+}
+
+Rockfish: {
+	DisplayName: Steinfisch
+	Entry: Unbestreitbar zu zäh zum Essen. Zum Zuschlagen jedoch haben diese Naturkatastrophen einiges an Potenzial.
+}
+
+Rotslug: {
+	DisplayName: Fäulnisschnecke
+	Entry: Die Korruption hat diese ansonsten gewöhnliche Weichtierart verstümmelt und verdorben. Sie eignet sich als harmloser und effektiver Köder, trotz ihres grässlichen Aussehens.
+}
+
+SawtoothShark: {
+	DisplayName: Sägezahnhai
+	Entry: Eine Haiart mit einem langen Knorpelanhang, bewehrt mit scharfen Widerhaken. Er ist bemerkenswert zäh und robust, und überraschend effizient beim Zersägen von Baumstämmen.
+}
+
+SpecularFish: {
+	DisplayName: Glanzfisch
+	Entry: Alchemisten meinen, es gibt nie genug von diesem Fisch, wenn es hitzig im Kampf zugeht, da die Tränke, die sie herstellen, schnell aufgebraucht sind.
+}
+
+Swordfish: {
+	DisplayName: Schwertfisch
+	Entry: Es ist ein Schwert, es ist ein Fisch! Es ist ein Schwertfisch! Vielseitige Fische, die sowohl als Haustiere als auch Waffen dienen, was für ein Angebot! Lautsprecher sind aber nicht inklusive.
+}
+
+TinyCrab: {
+	DisplayName: Blasskrabbe
+	Entry: Diese entzückenden kleinen Kleinviecher sind nicht so aggressiv wie ihre größeren Verwandten. Das Leben in tieferen Gewässern hat sie aufgrund geringerer Sonnenlichtexposition ihre Farbe verlieren lassen.
+}
+
+Toxikarp: {
+	DisplayName: Toxikarpfen
+	Entry: Die Korruption hat die Innereien dieses Fisches so verdreht, dass sie ständig verrotten und ein giftiges Gas freisetzen, das mit dem überschüssigen Schleim, den er jetzt bildet, Blasen formt. Es ist überraschend ätzend.
+}
+
+TubeWorm: {
+	DisplayName: Röhrenwurm
+	Entry: Tief unter den glitzernden Gezeiten, dort, wo kein Licht scheint, leben faszinierende Kreaturen, die sich vom Rauch ernähren können, der aus Hydrothermalschloten austritt.
+}
+
+Vibeshroom: {
+	DisplayName: Zitterpilz
+	Entry: Die Playlist dieses kleinen Kerls besteht zu 80% aus Lofi-Beats und Hyperwave. Auch wenn manche seinen Geschmack beurteilen, hält ihn das nicht vom Tanzen ab.
+}
+
+CrystalDrifter: {
+	DisplayName: Kristalldrifter
+	Entry: Die heulenden Winde eines Blizzards verleihen dieser ansonsten schwerfälligen Entität aus Eis Flügel.
+}
+
+Cystal: {
+	DisplayName: Cystal
+	Entry: Eine grässliche Kreatur, die die trüben Tiefen der Korruption patrouilliert. Ihre kristallinen Körper senden eine desorientierende, sinnesvernebelnde Frequenz aus, also halt dich fern!
+}
+
+Cystal_Shield.DisplayName: Cystal-Schild
+
+DarkfeatherMage: {
+	DisplayName: Dunkelfeder-Magier
+	Entry: Krah, krah! Ein großer Raubvogel, der sich für einen Magier hält. Wer auch immer diese Vögel Magie gelehrt hat, hat ein ziemliches Chaos hinterlassen.
+}
+
+Dead_Scientist: {
+	DisplayName: Untoter Wissenschaftler
+	Entry: Ein unheiliger Praktizierender einer Nekro-Alchemie, der typische Alchemie mit einer Form geringer Nekromantie kombiniert, um seine kranken Experimente am Laufen zu halten.
+}
+
+DeadArcher: {
+	DisplayName: Todesäugiger Schütze
+	Entry: Trotz nur eines Auges ist dieser Schütze trügerisch geschickt im Vergleich zu jedem anderen. Verschließ deine Türen vor diesem Außenseiter!
+}
+
+DiseasedSlime: {
+	DisplayName: Giftiger Schleim
+	Entry: Bismit-Toxine fließen durch das Gel dieser erkrankten Masse und verursachen bei Kontakt Hauterosion und entzündete offene Wunden.
+}
+
+DungeonCubeBlue: {
+	DisplayName: Blauer Kerkerwürfel
+	Entry: Geistlose Steinautomaten, gebaut, um ihre Umgebung wahrzunehmen und auf Sicht anzugreifen.
+}
+
+DungeonCubeGreen: {
+	DisplayName: Grüner Kerkerwürfel
+	Entry: Geistlose Steinautomaten, gebaut, um ihre Umgebung wahrzunehmen und auf Sicht anzugreifen.
+}
+
+DungeonCubePink: {
+	DisplayName: Pinker Kerkerwürfel
+	Entry: Geistlose Steinautomaten, gebaut, um ihre Umgebung wahrzunehmen und auf Sicht anzugreifen.
+}
+
+ElectricEel: {
+	DisplayName: Zitteraal
+	Entry: Indem er die Energie nutzt, die er beim Schwimmen aufbaut, kann dieser schlanke Fisch sie in einem großen Stoß freisetzen und ordentlich zuschlagen.
+}
+
+Enchanted_Armor: {
+	DisplayName: Draugr
+	Entry: Diesen Rüstungsanzügen wurde Leben eingehaucht von verfluchten Seelen, verbunden mit dem Schatz der dunklen Grabmäler. Jetzt warten sie erstarrt und leblos auf einen mutigen Abenteurer, der hineinwandert.
+}
+
+ExplosiveBarrel.DisplayName: Explosives Fass
+
+FallenAngel: {
+	DisplayName: Gefallener Engel
+	Entry: Verbannt aus dem Himmel, lässt dieser abtrünnige Cherub seinen Frust an den sterblichen Wesen dieses Reichs aus.
+}
+
+Falling_Asteroid: {
+	DisplayName: Fallender Asteroid
+	Entry: Was wie ein empfindungsfähiger Fels aussieht, ist tatsächlich ein kleines Kleinvieh, das einen Brocken des Meteors als Schale nutzt. Trotz des Gewichts kann es mühelos umherschweben.
+}
+
+Vilemoth: {
+	DisplayName: Fäulnisfalter
+	Entry: Der faulige Geruch der Korruption musste einfach Fliegen anziehen, und tatsächlich tat er das. Jetzt korrumpiert und gierig folgen sie dem Geruch von jedem frischen Fleisch, das sie finden können.
+}
+
+VileWasp: {
+	DisplayName: Plagegeist
+	Entry: Diese Schädlinge befallen die Innereien des abscheulichen Fäulnisfalters. Wenn du fest genug anspannst, während einer dich beißt, könnte er explodieren.
+}
+
+FleshHound: {
+	DisplayName: Fleischhund
+	Entry: Ein übler streunender Hund, der seinen Kopf nur unter dem zinnoberroten Licht eines Blutmonds erhebt. Auch wenn er frisst, bleibt der Hunger stets bestehen.
+}
+
+WintrySoul: {
+	DisplayName: Eisumhüllte Seele
+	Entry: Eine merkwürdige Erinnerung an vergangene Zeit, irgendwie bewahrt von der tiefen eisigen Tundra.
+	ButtonTake: Nehmen
+	ButtonLeave: Zurücklassen
+	PositiveChat: Meine Sicht kehrt zur Normalität zurück. Die Seele flattert um mich herum, offenbar erfreut über meine Entscheidung. Sie gibt mir ein uraltes Relikt und andere Ressourcen für meine Reise, und verschwindet.
+	NegativeChat: Meine Sicht wird trüb. Ich beginne zu zittern. Ich fühle mich schwach. Die Wärme, die mir die Seele gab, verschwindet langsam, und die Seele schmilzt in die eisigen Höhlen davon. Ich sollte woanders nach dem Artefakt suchen. Vielleicht kann ich es von einem Winterborn erbeuten.
+}
+
+Illusionist: {
+	DisplayName: Ghast
+	Entry: Ein Meister illusionärer geistlicher Künste. Sie beschwören gewalttätige Erscheinungen, um dich abzulenken und zu überwältigen.
+}
+
+IllusionistSpectre: {
+	DisplayName: Ghast-Gespenst
+	Entry: Eine überzeugende Erscheinung, beschworen von Ghasts, geschaffen, um ihren Willen auszuführen. Es ist nur ein Spiegelbild des echten Deals, lass dich nicht täuschen!
+}
+
+GladiatorSpirit: {
+	DisplayName: Gladiatorengeist
+	Entry: Sei wachsam bei diesem Geist, er hat die einzigartige Fähigkeit, seinen nicht-existenten Körper zu verstärken, wodurch er resistent gegen Schaden wird - zerstöre seine Rüstung und setze seine Seele frei!
+}
+
+GloopGloop: {
+	DisplayName: Gloop
+	Entry: Niemand weiß so recht, woraus diese Dinger bestehen. Was auch immer es ist, es schmeckt nicht gut.
+}
+
+Goblin_Grenadier: {
+	DisplayName: Goblin-Grenadier
+	Entry: Wenn Stachelkugeln nicht reichen, sollten gute alte schrapnellspuckende Sprengstoffe den Job erledigen.
+}
+
+GraniteSentry: {
+	DisplayName: G-TEK-Geschützturm
+	Entry: "'G-TEK Incorporated möchte Sie wissen lassen, dass wir keine Verantwortung für Tod oder Verstümmelung durch unsere Schutzgeschütztürme übernehmen. Sie sind lediglich dazu da, zu bewachen, was uns gehört. Danke.'"
+}
+
+GraniteSlime: {
+	DisplayName: Granitschleim
+	Entry: Eine gallertartige Kreatur, die lange durch die Granithöhlen streifte und genug Kiesel und Staub angesammelt hat, um eins mit dem Gestein zu werden.
+}
+
+HauntedTome: {
+	DisplayName: Verfluchtes Foliant
+	Entry: Ein Schutzglyphe wurde auf dieses Foliant gelegt, um es vor unsachgemäßem Gebrauch zu schützen. Für dich bedeutet das leider, einem Buch mit 20 Zähnen ins Auge zu blicken.
+	BossChecklistIntegration.SpawnInfo: Verfluchte Foliante findet man beim Erkunden Dunkler Grabmäler und beim Interagieren mit bestimmten Gegenständen.
+}
+
+HellEater: {
+	DisplayName: Gieriger Verschlinger
+	Entry: Du solltest die sengend heißen Kiefer dieser Bestien am besten meiden. Verschlinger haben einen notorisch schmerzhaften Biss, was ihn aber zu einem begehrten Material für die Mutigen macht.
+}
+
+Hemophora: {
+	DisplayName: Hemophora
+	Entry: Diese pflanzenartige Bestie ist ein ordentlicher Gegner. Sie hat Säcke um ihre mundähnliche Öffnung, die ätzendes Blut abfeuern können, um sowohl Raubtiere als auch Beute aufzulösen.
+}
+
+Hookbat: {
+	DisplayName: Hakenfledermaus
+	Entry: Diese einfachen diebischen Schädlinge entschieden sich für "teile und herrsche" als solide Strategie, nachdem sie die Seide des Abenteurers gestohlen hatten.
+}
+
+Horned_Crustacean: {
+	DisplayName: Leuchtender Schleicher
+	Entry: Trotz seiner Größe hat dieser Meeresbewohner es faustdick hinter den Ohren! Er nutzt seine scharfen, zahnähnlichen Stacheln, um Fische zu jagen und Eindringlinge fernzuhalten.
+}
+
+Hornetfish: {
+	DisplayName: Hornetfish
+	Entry: Dieser Fisch war nicht zufrieden damit, nur gefangen zu werden. Er entschied sich zurückzuschlagen, und bewaffnet mit sowohl Flügeln als auch Stacheln tat er genau das.
+}
+
+Hydra.DisplayName: Lernäische Hydra
+
+HydraHead: {
+	DisplayName: Lernäische Hydra
+	Entry: Eine legendäre Kreatur, geboren aus Monster und Gott. Einen Kopf zu töten macht den Kampf nur schlimmer.
+}
+
+LostMime: {
+	DisplayName: Verlorener Pantomime
+	Entry: Was du wirklich bekämpft hast, war die Maske, die die Überreste eines Mannes steuert. Diesen Masken wird nachgesagt, ihren Trägern zuzuflüstern und jeden zu übernehmen, der unglücklich genug ist, ihrer Verlockung zu erliegen.
+}
+
+Mangrove_Defender: {
+	DisplayName: Mangroven-Verteidiger
+	Entry: Gesegnet von urzeitlichen Gottheiten, sind diese ehemaligen Wilden Schlurfer nun vollständig mit dem Willen des Dorngestrüpps verbunden. Mit ihrer neu gefundenen Stärke verteidigen sie ihre Heimat mit wilder Wut.
+}
+
+Masticator: {
+	DisplayName: Kauer
+	Entry: Was einst als kleines Nagetier begann, formte sich schnell zu einem widerlichen Amalgam mit unstillbarem Appetit auf Fleisch.
+}
+
+Mecromancer: {
+	DisplayName: Mechromant
+	Entry: Einer der größten Köpfe im Arsenal der Goblin-Armee. Die Bastelfähigkeiten eines Mechromanten sind fast unübertroffen.
+	BossChecklistIntegration.SpawnInfo: Der Mechromant spawnt selten während einer Goblin-Armee, nachdem das Auge von Cthulhu besiegt wurde.
+}
+
+GoldCrateMimic: {
+	DisplayName: Goldene Kisten-Nachahmerin
+	Entry: Auch wenn dir ihre aggressive Natur nicht gefällt, respektierst du ihren Sinn für Mode... zumindest, bis du ihn dir nimmst.
+}
+
+IronCrateMimic: {
+	DisplayName: Eisen-Kisten-Nachahmer
+	Entry: Ein Fischer ist nicht allein auf der Jagd nach den enormen Reichtümern des Meeres. Ein glitschiger Oktopus scheint dir zuvorgekommen zu sein.
+}
+
+WoodCrateMimic: {
+	DisplayName: Holzkisten-Nachahmer
+	Entry: Diese unauffälligen Betrüger sind ziemlich verdächtig. Sei vorsichtig, bevor du dich ihnen wegen ihres Inhalts näherst.
+}
+
+Molten_Core: {
+	DisplayName: Geschmolzener Kern
+	Entry: Eine blubbernde Masse, die aus dem Meteoriten entkommen ist. Sie scheint ein grundlegendes Raumbewusstsein zu haben und sogar etwas Empfindungsfähigkeit. Vielleicht wurde sie von den Eindringlingen zum Meteoriten getrieben?
+}
+
+DistressJelly: {
+	DisplayName: Notleidende Qualle
+	Entry: Ein verirrter Weltraumfelsen hat die Schutzblase dieses Lunazoa zum Platzen gebracht. Der Stein verhindert, dass sich die Blase neu bildet, was ihnen Not bereitet.
+}
+
+DreamlightJelly: {
+	DisplayName: Traumlicht-Qualle
+	Entry: Eine winzige Lunazoa, die ein wunderschönes, traumhaftes grünes Leuchten aussendet. Eine genetische Mutation ist die Quelle ihres gelbgrünen Glanzes, verhindert aber auch, dass sie je erwachsen wird.
+}
+
+ExplodingMoonjelly: {
+	DisplayName: Mondlicht-Zerreißer
+	Entry: Am Ende der Lebensspanne eines Lunazoa entwickelt sich gehorsames migratives Treiben zu Aggression gegenüber fremden Wesen.
+}
+
+MoonjellyGiant: {
+	DisplayName: Fesselvolt-Qualle
+	Entry: Ausgewachsene männliche Lunazoas haben elektrische Fähigkeiten, die weit entwickelter sind als bei allen anderen Quallen, was ihre Territorialität deutlich tödlicher macht.
+}
+
+MoonlightPreserver: {
+	DisplayName: Mondlicht-Bewahrer
+	Entry: Eine ausgewachsene weibliche Lunazoa trägt unreife Quallen in ihrer Membran, bis diese reif genug sind, um selbstständig zu wandern.
+}
+
+TinyLunazoa: {
+	DisplayName: Kleine Lunazoa
+	Entry: Winzige, zahme Quallen, die ziellos mit ihrem Schwarm treiben und ihren mondbeschienenen Wanderungsmustern folgen.
+}
+
+MycelialBotanist: {
+	DisplayName: Myzel-Botaniker
+	Entry: Über die Hobbys eines Gärtners sollte man sich nicht lustig machen. Steh diesen Naturforschern im Weg, und du wirst Blüte und Verderben erleben.
+}
+
+OceanSlime: {
+	DisplayName: Kokosnuss-Schleim
+	Entry: Pass von oben auf! Diese trickreichen Schleime hausen am Ufer, unauffällig als diese vertraute Frucht getarnt.
+}
+
+Mineroid: {
+	DisplayName: Orbitit
+	Entry: Dieser unbedeutende Asteroid umkreist einen größeren Körper, wird aber eines Tages das Nest verlassen und in das weite Universum hinaustreiben.
+}
+
+SamuraiHostile: {
+	DisplayName: Phantom-Samurai
+	Entry: Der Geist eines tödlichen Kriegers, der vor vielen Monden lebte. Bestraft dafür, seinen Ehrenkodex gebrochen zu haben, schwört er nun, den Rest seiner Dynastie zu verteidigen, um Erlösung zu suchen.
+}
+
+SamuraiPassive.DisplayName: Phantom-Samurai
+
+PagodaGhostHostile: {
+	DisplayName: Gestörter Yuurei
+	Entry: Wächter eines verlassenen himmelwärts gerichteten Schreins. Obwohl lange vergessen, kämpfen sie mit überraschender Beweglichkeit.
+}
+
+PagodaGhostPassive.DisplayName: Yuurei
+
+Phantom: {
+	DisplayName: Phantom
+	Entry: Eine gewöhnliche Höhlenfledermaus, durch uralte Magie in reine Dunkelheit verwandelt. Wenn die Nacht hereinbricht, ziehen sie in den Himmel, um sich an jenen zu laben, die das Pech haben, noch wach zu sein.
+}
+
+PirateLobber: {
+	DisplayName: Piraten-Werfer
+	Entry: Dieser Pirat fand Rollen als viel effektiveren Weg, Fässer über das Deck zu transportieren. Witzigerweise funktioniert es auch ziemlich gut gegen Feinde!
+}
+
+PlagueDoctor: {
+	DisplayName: Dunkler Alchemist
+	Entry: Diese Bringer der Pest streifen durch die Schatten des Kerkers. Lass dich nicht dabei erwischen, wie du einen ihrer vielen über das Land verstreuten Arbeitsplätze übernimmst, sonst erleidest du Säureverätzungen.
+}
+
+Pokey_Body: {
+	DisplayName: Stachtus
+	Entry: Stapel eine Packung Kaktus, jetzt hast du einen Stachtus. Tritt den Stachtus um, jetzt hast du einen Kaktus. Was bedeutet das alles? Nicht ganz sicher.
+}
+
+Teratoma: {
+	DisplayName: Putroma
+	Entry: Zusammengesetzt aus mehreren Organismen, klumpen sie sich mit den verrottenden Überresten anderer Bestien zusammen, um den Sturz durch die Schluchten der Korruption zu überleben.
+}
+
+BlossomHound: {
+	DisplayName: Blütenhund
+	Entry: Blühendes Elderbark, geschnitzt in Hundeform, angetrieben von einem unstillbaren Bedürfnis, die Blumen auf seinem Körper zu füttern und zu pflegen.
+}
+
+Blubby: {
+	DisplayName: Blubby
+	Entry: Eine pummelige Larve, heimisch im Dorngestrüpp. Sie sind mit steifen gelben Haaren am Rücken geschmückt und mästen sich noch mehr zur Vorbereitung auf die Metamorphose.
+}
+
+BriarInchworm: {
+	DisplayName: Dorngestrüpp-Spannerraupe
+	Entry: Ein langer, dünner Wurm, der sich entwickelt hat, um im trüben Schlamm des Dorngestrüpps zu gedeihen. Er ernährt sich hauptsächlich von den verwesten hohen Gräsern an der Oberfläche.
+}
+
+Briarmoth: {
+	DisplayName: Dornmotte
+	Entry: Vom Moment an, in dem eine Dornmotte ihren Kokon verlässt, muss sie sich vor Raubtieren verstecken. Sie nutzt ihre tiefgrünen Flügel, um sich in den Bäumen des Dorngestrüpps zu tarnen.
+}
+
+ForestWraith: {
+	DisplayName: Lichtungsgeist
+	Entry: Trotz der unnatürlichen kriechenden Präsenz des Dorngestrüpps hat es lange genug seine Spuren in der Natur hinterlassen, damit diese rachsüchtigen Geister es Heimat nennen.
+	BossChecklistIntegration.SpawnInfo: Zerstöre einen Knochenaltar im Unterirdischen Dorngestrüpp. Der Lichtungsgeist spawnt auch natürlich nachts, nachdem das Auge von Cthulhu besiegt wurde. Alternativ finde ein [i:SpiritMod/GladeWreath] in Dorngestrüpp-Truhen und verwende es jederzeit im Dorngestrüpp.
+	BoneAltar: Du hast die uralten Naturgeister gestört!
+}
+
+Noxophyll: {
+	DisplayName: Noxophyll
+	Entry: Ein Fisch mit der Fähigkeit, ein Toxin abzusondern, das seine Schuppen bedeckt. Der einzige Weg, den Geruch wirklich loszuwerden, ist ihn zu kochen.
+}
+
+Reachman: {
+	DisplayName: Wilder Schlurfer
+	Entry: Die Grenze zwischen Flora und Fauna verschwimmt im Dorngestrüpp. Die wiederbelebten Knochen von Abenteurern verhalten sich animalisch, obwohl sie größtenteils aus Pflanzen bestehen.
+}
+
+ReachObserver: {
+	DisplayName: Wildholz-Wächter
+	Entry: Diese Dornenbestien nisten in den Blättern von Elderbark-Bäumen und warten darauf, dass ein eindringender Körper einen Fuß in die zentrale Höhlung des Dorngestrüpps setzt.
+}
+
+ReachSlime: {
+	DisplayName: Dornenschleim
+	Entry: Aufgrund des ständigen Regenfalls im Dorngestrüpp bestehen diese Schleime zu 90% aus Wasser. Dadurch lecken sie oft und verlieren an Volumen, wenn sie getroffen werden.
+}
+
+ThornStalker: {
+	DisplayName: Dornenlauerer
+	Entry: Lass dich nicht von seiner humanoiden Form täuschen, diese Kreatur ist alles andere als das. Diese Bestie wird ihre Beute bis in die entlegensten Winkel des Dorngestrüpps verfolgen, für die perfekte Gelegenheit zuzuschlagen.
+}
+
+ScreechOwl: {
+	DisplayName: Schreieule
+	Entry: Seit Ewigkeiten terrorisieren diese einfachen Vögel Einheimische mit ihren bemerkenswert humanoiden Schreien. Heute sind nur noch wenige übrig, da sie fast bis zur Ausrottung gejagt wurden.
+}
+
+Sea_Mandrake: {
+	DisplayName: Meermandragora
+	Entry: Eine seltsame biolumineszente Kreatur, die im Ozean wohnt. Sie leuchtet nicht nur, sondern die Farben, die sie annimmt, sind lebhaft und exotisch.
+}
+
+DeepspaceHopper: {
+	DisplayName: Schockhüpfer
+	Entry: Ursprünglich für Maschinen gehalten, reisen diese schockfreudigen Organismen in der Nähe von Asteroidengürteln, um sich von der Fülle freiliegender Mineralien zu ernähren.
+}
+
+Skeleton_Brute: {
+	DisplayName: Skelett-Schläger
+	Entry: Als Exemplar, ja, sie sind einschüchternd. In einem Schlagabtausch schlägt niemand wie ein Skelett-Schläger.
+}
+
+Snaptrapper: {
+	DisplayName: Schnappfalle
+	Entry: Sehr wenig wurde über diese verhüllte Kreatur beobachtet. Sie hat sechs Beine und Klauen, weshalb die meisten glauben, es handle sich um eine Art Gliederfüßer.
+	BossChecklistIntegration.SpawnInfo: Die Schnappfalle spawnt selten an der Dschungeloberfläche, nachdem der Weltenfresser oder das Gehirn von Cthulhu besiegt wurde.
+}
+
+AncientDemon: {
+	DisplayName: Uraltes Gespenst
+	Entry: Nur in den tiefsten Tiefen von Geist-berührten Höhlen zu finden, verfolgen diese bösartigen Wraiths ein einfaches Ziel: die Seelen lebender Dinge stehlen.
+}
+
+HauntedBook: {
+	DisplayName: Uraltes Foliant
+	Entry: Ein mysteriöses Foliant, besessen von uralten Geistern. Jedes enthält eine seltsame Reihe von Seiten, geschrieben in einer unentzifferbaren Sprache.
+}
+
+NetherBane: {
+	DisplayName: Netherbane
+	Entry: Eine ätherische geflügelte Bestie, die durch das Geist-Biom fliegt. Die Legende besagt, dass jeder Flügelschlag eine weitere sterbende Seele bedeutet.
+}
+
+SeerBat: {
+	DisplayName: Geistfledermaus
+	Entry: Brocken von geist-durchtränktem Metall, konzentriert in die vage Form einer Fledermaus. Wahrscheinlich der Versuch einer verlorenen Seele, das gewöhnliche fliegende Säugetier nachzuahmen.
+}
+
+SoulCrusher: {
+	DisplayName: Seelenzerschmetterer
+	Entry: Steine, denen durch tausende Seelen Leben verliehen wurde, sie rammen wütend in jede nahe Störung, da sie empfindlich darauf reagieren. Sie teilen die Sinne und Gedanken jeder Seele, aus der sie bestehen, was ihnen großen Schmerz bereitet.
+}
+
+SoulOrb: {
+	DisplayName: Seelenkugel
+	Entry: Eine sanfte, flackernde Lichtanomalie, die durch den Geist treibt. Man sagt, sie seien die wandernden Seelen verstorbener Reisender.
+}
+
+SpiritGhoul: {
+	DisplayName: Schattenghul
+	Entry: Ghule, wiederbelebt durch den Geist, sondern nun aus jeder Ritze Ektoplasma ab. Ihre Bisse haben eine Chance, ihre Feinde zu verwirren, indem sie ihnen kurz Einblicke in ihr früheres Leben zeigen.
+}
+
+SpiritMummy: {
+	DisplayName: Dämmerungsmumie
+	Entry: Betroffen von ätherischen Kräften, sind diese Leichname nun Gefäße nicht für ihre eigenen Seelen, sondern für zahllose andere, die eine körperliche Form benötigen.
+}
+
+SpiritSkull: {
+	DisplayName: Geistschädel
+	Entry: Sie sehen nur wie Schädel aus, sind aber tatsächlich wieder Steine, vor vielen Jahrhunderten geschnitzt. Diese Steine scheinen so geschnitzt zu sein, dass Seelen sie bewohnen können, doch gibt es scheinbar keine Aufzeichnung, dass der Geist vor seiner Freisetzung existierte.
+}
+
+SpiritVulture: {
+	DisplayName: Geistschweber
+	Entry: Schwebende Platten aus runischem Stein, denen nun durch den Geist Empfindungsfähigkeit verliehen wurde. Trotz scheinbar feindseliger Natur wünscht er sich nur, wieder für immer in Frieden zu ruhen.
+}
+
+UnstableWisp: {
+	DisplayName: Instabiles Irrlicht
+	Entry: Ein Cluster von Seelen, der kein Gefäß fand, das er bewohnen konnte. Er kann sich nicht zusammenhalten, und jede leichte Berührung wird ihn zur Explosion bringen und die vielen zusammengeballten Seelen freisetzen.
+}
+
+WanderingSoul: {
+	DisplayName: Wandernde Seele
+	Entry: Nun frei von ihrem Schlummer, wandert sie ziellos, für immer verloren in einer Welt, die sie nicht mehr erkennt.
+}
+
+SporeWheezer: {
+	DisplayName: Sporen-Wheezer
+	Entry: Normalerweise parasitär, bildeten die leuchtenden Pilze eine symbiotische Beziehung mit Wheezern, während diese bewusst Sporen durch ihren Atem verbreiten.
+}
+
+CogTrapperBody.DisplayName: Sterntänzer
+
+CogTrapperHead: {
+	DisplayName: Sterntänzer
+	Entry: Seltsame mechanische Konstrukte versammeln sich um ein Leuchtfeuer und lenken Aufmerksamkeit auf wertvolle astrale Metalle. Es scheint, du bist nicht der Einzige, der es haben will.
+}
+
+CogTrapperTail.DisplayName: Sterntänzer
+
+StymphalianBat: {
+	DisplayName: Stymphalische Fledermaus
+	Entry: Uralte Baupläne. Neuere Fertigung. Diese Entwürfe wurden vor langer Zeit perfektioniert, es besteht keine Notwendigkeit, von seinem Design abzuweichen.
+}
+
+Crocomount: {
+	DisplayName: Crocosaurus
+	Entry: Ein zweibeiniger Reptilienbewohner, gezähmt von den Kakamora und zum Reiten in die Schlacht genutzt. Hi-Ho Silber, auf geht's!
+}
+
+KakamoraParachuter: {
+	DisplayName: Kakamora-Windgleiter
+	Entry: Jede Armee braucht Luftunterstützung! Nur die stärksten, gleitfähigsten Palmblätter werden für den Einsatz durch Kakamora-Windgleiter ausgewählt.
+}
+
+KakamoraRider.DisplayName: Kakamora-Reiter
+
+KakamoraRunner: {
+	DisplayName: Kakamora
+	Entry: Ein allgemeiner, gewöhnlicher Kakamora-Soldat. Sie haben keine Spezialisierungen, geben aber gute Fußsoldaten ab.
+}
+
+KakamoraShaman: {
+	DisplayName: Kakamora-Schamane
+	Entry: Winzige Mystiker, die mit arkanen Künsten angreifen. Sie fungieren gleichzeitig als Heiler für ihre nahen Kakamora-Gefährten.
+}
+
+KakamoraShielder: {
+	DisplayName: Kakamora-Schildträger
+	Entry: Eine mutige kleine Nuss, ausgestattet mit Schild und Schutzhelm, sie beschützen die weniger aggressiven Kakamora vor Schaden.
+}
+
+KakamoraShielderRare: {
+	DisplayName: Kakamora-Wächter
+	Entry: Eine mutige kleine Nuss, ausgestattet mit Schild und Schutzhelm, sie beschützen die weniger aggressiven Kakamora vor Schaden.
+}
+
+LargeCrustecean: {
+	DisplayName: Blasenbrutale
+	Entry: Wir sind auf der Suche nach dem Baby. Und denk nicht, wir wissen nicht, wie man sie aussortiert.
+}
+
+MangoJelly: {
+	DisplayName: Mang-O-Krieg
+	Entry: Kleines, in der Luft treibendes Meeresleben. Auch wenn sie nach ihrem fruchtigen Geruch und ihrer lebhaften Farbe benannt sind, sind sie tatsächlich nicht süß.
+}
+
+Rylheian: {
+	DisplayName: R'lyehianer
+	Entry: Der Schöpfer der Gezeiten und Rufer der Stürme! Ein boshafter, betagter Lich, der die Führung der Kakamora-Armee übernommen hat.
+}
+
+SpearKakamora: {
+	DisplayName: Kakamora-Werfer
+	Entry: Diese Kakamora sind auf das Werfen von Kokosnüssen über lange... ige... Distanzen im Kampf spezialisiert.
+}
+
+SwordKakamora: {
+	DisplayName: Kakamora-Schläger
+	Entry: Ein Kakamora-Krieger mit einer üblen Schale! Ein Schläger macht seinem Namen alle Ehre, geht nah heran und teilt persönlich Schmerz aus.
+}
+
+Adventurer: {
+	DisplayName: Abenteurer
+
+	Names: {
+		1: Morgan
+		2: Adam
+		3: Aziz
+		4: Temir
+		5: Evan
+		6: Senzen
+		7: Johanovic
+		8: Adrian
+		9: Christopher
+	}
+
+	Dialogue: {
+		Basic1: Ich war überall auf dieser Welt, und ich hab so viele Dinge für dich zu sehen.
+		Basic2: Schönes Haus, das du hier hast. Viel besseres Quartier als damals, als mich diese Wilden aus dem Dorngestrüpp am Spieß aufgehängt haben.
+		Basic3: Jede Morgendämmerung bringt eine neue Gelegenheit für eine Reise! Interesse?
+		Basic4: Wir sind uns ziemlich ähnlich, du und ich. Ich spür unseren gemeinsamen Abenteuerdurst.
+		Basic5: Kauf mein Zeug und zieh los! Sieh, was die Welt zu bieten hat, so wie ich.
+		Basic6: Von den Tiefen der Tempel bis zu den Höhen des Weltraums, stöber durch meine Waren.
+		Basic7: Ich hab ein Händchen für Anstecknadeln, muss ich sagen. Man findet all diese kleinen Schätzchen auf seinen Reisen...
+		Special1: Ich schwör, ich hab mehr Waren im Angebot als {0}!
+		Special2: Ah! Das ist {0}! Wir sind uns auf unseren Reisen oft begegnet. Ich hab immer noch nicht all diese exotischen Dschungel gefunden, von denen er spricht.
+		Special3: Heute gibt's tolle Preise! {0}s Waren können nicht mithalten! Können sie buchstäblich nicht. Ich verkauf keine Waffen mehr.
+		Special4: Wie der Mond ist meine Ware unbeständig.
+		Special5: Alle scheinen heute Nacht so aggressiv zu sein. Mit den Zombies, die an unsere Tür klopfen, denk ich, du solltest Sachen kaufen und so schnell wie möglich unter die Erde gehen. Kannst du mich mitnehmen?
+		Special6: Die Goblins sind organisierter, als man denken würde - ich hab gesehen, wie ihre Magier drüben einen riesigen Turm gebaut haben. Solltest du dir mal ansehen!
+		Special7: Mein alter Geschäftspartner ist vor ein paar Jahren zum Banditenleben übergegangen. Ich frag mich, ob es ihm gut geht. Ich glaub, seine Kumpels haben irgendwo an der Küste ein Banditenlager errichtet.
+		Special8: Ein schimmerndes blaues Licht steht am Horizont. Frag mich, was das zu bedeuten hat, hm?
+		Halloween0: Du würdest mir nicht glauben, wenn ich dir sagen würde, ich hab das von einem fernen Königreich aus SÜSSIGKEIT bekommen! Ich verspreche, es schmeckt exquisit.
+		Halloween1: Ich hör, man kann mehr Süßes aus den Beutebeuteln von Monstern bekommen. Als bräuchte ich eine Ausrede, ein paar Zombies zu erschlagen!
+		Bound: Ich dachte, ich wär hier wirklich erledigt! Wärst du nicht dazwischengegangen, wär ich wahrscheinlich an das verfüttert worden, was diese Monster dort drüben zu beschwören versuchten. Ich würd's nicht anfassen, wär ich du... Schau, du hast meinen Dank; aber unter uns gesagt, es waren ein paar lange Monate, und alles, was ich will, ist eine Weile Urlaub vom Abenteuern. Das Leben ist kurz, und ich würd's lieber nicht noch kürzer machen. Hast du einen Platz zum Übernachten?
+	}
+
+	TownNPCMood: {
+		Content: Zuhause zu entspannen ist fast so schön wie eine gute Wanderung, nicht wahr?
+		NoHome: Auch wenn ich ein Entdecker bin, würd ich mich gern mal ausruhen. Hast du eine freie Bleibe für mich?
+		FarFromHome: Man könnte sagen, ich "erforsche" ein bisschen zu weit weg von meinem Haus... aber im Ernst, ich hab keine Karte.
+		LoveSpace: Jede Menge Platz, um meine nächste Expedition zu planen, wunderbar!
+		DislikeCrowded: Wie soll ich unentdecktes Land kartieren mit all diesen Leuten hier rum?
+		HateCrowded: Ich würd lieber einen Lavasee erkunden, als hier mit all diesen Leuten zu leben!
+		LikeBiome: Wahrlich, {BiomeName} ist ein entspannender Ort. Ein schöner Platz, um sich auszuruhen.
+		DislikeBiome: So gern ich beenden würd, was ich begonnen hab, es ist viel zu früh für mich, wieder im {BiomeName} zu sein.
+		LoveNPC: Dieser {NPCName} ist ein faszinierender Charakter. Seine Geschichten schlägt nichts!
+		LikeNPC: Ich und {NPCName} kennen uns schon lange. Ich erinner mich noch an unsere erste gemeinsame Reise!
+		DislikeNPC: "{NPCName} versteht es wirklich, die Stimmung zu drücken. Vielleicht würd ihn eine Wanderung aufheitern?"
+		HateNPC: Auch wenn {NPCName} im Herzen ein Sammler ist, gibt er seine Arbeit nur an andere ab. Eine Enttäuschung für Entdecker überall.
+		LikeNPC_Princess: "{NPCName} hat so eine Aura an sich. Eine Aura des Abenteuers."
+		Princess_LovesNPC: "{NPCName} hat so viele coole Geschichten!"
+	}
+
+	Entry: Ein unerschrockener Entdecker, angetrieben von einem Ehrgeiz, der ihn oft in Gefahr gebracht hat. Er ist auch ein eifriger Notizenmacher, seine vielen Berichte nun über das Land verstreut.
+	Census.SpawnCondition: Rette den Abenteurer aus einer Hütte im unterirdischen Dorngestrüpp.
+}
+
+BoundAdventurer: {
+	DisplayName: Gefesselter Abenteurer
+
+	TownNPCMood: {
+		Content: Ich bin zufrieden.
+		NoHome: Ich hasse es, kein Zuhause zu haben.
+		FarFromHome: Ich bin zu weit weg von zu Hause.
+		LoveSpace: Ich liebe es, so viel Platz zu haben.
+		DislikeCrowded: Mir missfällt, wie überfüllt es hier ist.
+		HateCrowded: Ich hasse, wie überfüllt es hier ist.
+		LikeNPC_Princess: Ich mag {NPCName}.
+		Princess_LovesNPC: Ich mag {NPCName}.
+	}
+}
+
+BoundGambler: {
+	DisplayName: Gefesselte Glücksspielerin
+
+	TownNPCMood: {
+		Content: Ich bin zufrieden.
+		NoHome: Ich hasse es, kein Zuhause zu haben.
+		FarFromHome: Ich bin zu weit weg von zu Hause.
+		LoveSpace: Ich liebe es, so viel Platz zu haben.
+		DislikeCrowded: Mir missfällt, wie überfüllt es hier ist.
+		HateCrowded: Ich hasse, wie überfüllt es hier ist.
+		LikeNPC_Princess: Ich mag {NPCName}.
+		Princess_LovesNPC: Ich mag {NPCName}.
+	}
+}
+
+BoundRogue: {
+	DisplayName: Gefesselter Bandit
+
+	TownNPCMood: {
+		Content: Ich bin zufrieden.
+		NoHome: Ich hasse es, kein Zuhause zu haben.
+		FarFromHome: Ich bin zu weit weg von zu Hause.
+		LoveSpace: Ich liebe es, so viel Platz zu haben.
+		DislikeCrowded: Mir missfällt, wie überfüllt es hier ist.
+		HateCrowded: Ich hasse, wie überfüllt es hier ist.
+		LikeNPC_Princess: Ich mag {NPCName}.
+		Princess_LovesNPC: Ich mag {NPCName}.
+	}
+}
+
+Gambler: {
+	DisplayName: Glücksspielerin
+
+	Names: {
+		1: Yumeko
+		2: Vanessa
+		3: Gray
+		4: Alexandra
+		5: Sasha
+		6: Celine
+		7: Aleksa
+	}
+
+	Dialogue: {
+		Basic1: Glücksspiel ist der Sport der Könige. Warum wagst du's nicht?
+		Basic2: Ich sollt dich warnen, mein Spiel ist nichts für schwache Nerven.
+		Basic3: Glücksspiel ist schlecht für dich. Außer du gewinnst.
+		Basic4: Gewinn oder Verlust, der Nervenkitzel des Spiels ist das Geld wert.
+		Basic5: Du hast das Gesicht eines Gewinners. Komm her!
+		Basic6: Erleb Stolz und Erfolgsgefühl für nur ein paar Münzen!
+		Halloween0: Greif in die Schale. Man weiß nie, was man rauszieht.
+		Halloween1: Ich tausch dir jede Süßigkeit gegen eine zufällige Torte - nein? Ok.
+		Bound:
+			'''
+			Muss mein Glückstag sein, hier ein freundliches Gesicht zu sehen!
+			Diese Goblins fanden es gar nicht witzig, dass ich ihnen einen, äh, manipulierten Deal angeboten hab.
+			Wie auch immer, hast du einen Platz zum Übernachten? Lass uns dafür würfeln.
+			'''
+	}
+
+	TownNPCMood: {
+		Content: Solange wir beide hier kurz Pause machen, warum nicht ein oder zwei Kisten öffnen?
+		NoHome: Ich brauch einen Platz, den ich mein Eigen nennen kann - wo soll ich sonst meinen Stand aufschlagen?
+		FarFromHome: Geld ist eine Sache, aber ich zock nicht mit meinem Leben. Wo ist mein Zuhause?
+		LoveSpace: Ich bin der Zockertyp, aber nicht der Casinotyp - ich mag's schön ruhig.
+		DislikeCrowded: Es gibt sowas wie zu viele Köche im Casino, wenn du verstehst, was ich meine.
+		HateCrowded: Die Leute stoßen dauernd meine Lootboxen um! Wie soll ich hier verkaufen?
+		HateBiome: Ich kann hier UNMÖGLICH Geld machen.
+		LikeBiome: Ah, {BiomeName}. Genau der richtige Ort, um Laden aufzumachen.
+		DislikeBiome: Niemand mag bei dieser Feuchtigkeit zocken. Die Münzen werden alle nass und eklig!
+		LoveNPC: Einmal hab ich {NPCName} eine Holztruhe für schnelles Geld angedreht. Er hat sie geöffnet, und da waren wie dreihundert Enten drin. Ich war noch nie so verwirrt und erstaunt.
+		LikeNPC: Meine Haare? Das ist {NPCName}s Stolz und Freude. Sie macht einen wunderbaren Job.
+		DislikeNPC: Anders als {NPCName} hort ich mein Vermögen nicht.
+		HateNPC: Sag, was du willst, über MICH, aber ist das, was {NPCName} tut, überhaupt legal?
+		LikeNPC_Princess: Weißt du, {NPCName} hat was drauf. Sie ist wild, und du könntest es auch sein!
+		Princess_LovesNPC: "{NPCName}s Stil ist super. Man merkt, dass sie selbstbewusst ist."
+	}
+
+	Entry: Die Glücksspielerin hat lange am Limit gelebt und sich den Launen des Schicksals hingegeben. Das macht sie zu einer leidenschaftlichen Spielerin, band sie aber auch einmal an die Spitze einer Goblin-Festung.
+	Census.SpawnCondition:
+		'''
+		Rette die Glücksspielerin von einem Goblinturm
+		Falls deine Welt keinen Goblinturm hat, hab mindestens 1 Gold im Inventar
+		'''
+}
+
+Ghost.DisplayName: Geist
+
+Oracle: {
+	DisplayName: Orakel
+
+	Dialogue: {
+		Basic1: Der Himmel hat gewiss von dir gesprochen, {0}.
+		Basic2: Die Göttlichkeit, die ich anbiete, ist für keine einfache Münze zu haben, Reisender.
+		Basic3: Hast du von einem Mann namens Zagreus gehört? ...vergiss es.
+		Basic4: Oh, was ich für etwas Ichor geben würde...
+		Basic5: Ich hab eine kleine Schriftrolle zu verkaufen, falls du mich anderswo finden willst.
+		Basic6: Keine Augen zu haben ist ein Segen der Götter, wenn man dort arbeitet, wo ich arbeite.
+		Basic7: Warme Grüße, Krieger. Ich spür Macht in dir, vielleicht kann ich zu ihrem Wachstum beitragen. Die Kreaturen innerhalb dieser Mauern tragen mächtige Marken, an denen ich interessiert bin. Würdest du sie mit mir tauschen, würd ich dir eine von den Göttern selbst verzauberte Waffe gewähren!
+		Basic8: Ah, was ich für etwas gealterten Wein geben würde... Ist Anthesteria schon angekommen?
+		Basic9: Meine epische Erzählung hat kein Ende, und wird vielleicht nie eins haben!
+		Basic10: Mythologie? Was daran lässt dich glauben, es sei ein Mythos?
+		Basic11: Ich hab die Zeit aus den Augen verloren, und die Götter weigern sich, mir zu sagen, wo sie ist!
+		Basic12: Lorem ipsum dolor sit amet... hab Geduld, ich bin noch nicht fertig.
+		Basic13: Ich kann nicht sterben, es sei denn, ich werde vergessen. Ich frag mich, wer sich noch an mich erinnert...
+		Basic14: Was brauchst du? Ich hab keine unendliche Zeit. Hm... beim zweiten Nachdenken...
+		Basic15: Ich hatte ein ganzes Leben, um eine ruhmreiche Erzählung zu schreiben, aber ich komm nicht über "der" hinaus.
+		Basic16: Unter uns gesagt, Reptilien bereiten mir große Sorge.
+		Basic17: Ich sinniere über die Präsenz von Umgebungsgesang in der Ferne, kann mich aber nicht davon abhalten, mich darin zu ergehen.
+		Basic18: Segnungen? Du willst sie? Sie sind dein, mein Freund!
+		Basic19: Ah, ich verstehe. Oder doch nicht? Faszinierend, nicht wahr?
+		Basic20: Der Grund, warum ich schwebe, ist einfach - warum sollt ich nicht, wenn ich kann?
+	}
+
+	TownNPCMood: {
+		Content: Ich bin zufrieden.
+		NoHome: Ich hasse es, kein Zuhause zu haben.
+		FarFromHome: Ich bin zu weit weg von zu Hause.
+		LoveSpace: Ich liebe es, so viel Platz zu haben.
+		DislikeCrowded: Mir missfällt, wie überfüllt es hier ist.
+		HateCrowded: Ich hasse, wie überfüllt es hier ist.
+		LikeNPC_Princess: Ich mag {NPCName}.
+		Princess_LovesNPC: Ich mag {NPCName}.
+	}
+
+	Bless: {
+		Button: Segnen
+		Dialogue1: Du wünschst dir eine Herausforderung? Ich werd dich nicht aufhalten, denn es nützt uns beiden. Ich hoffe wirklich, du bist vorbereitet!
+		Dialogue2: Ich werd die Götter über ihre Segnungen befragen - diese Monster werden gnadenlos werden, hoffe ich, dir ist das bewusst.
+		Dialogue3: Du willst, dass ich sie WAS nenne?! Solch grobe Kampfsprache, doch ich werd die Botschaft überbringen. Die Götter werden davon nicht begeistert sein!
+		Dialogue4: Die Segnungen sorgen dafür, dass erschlagene Feinde mehr Marken fallen lassen, ja, aber denk daran, dass die Feinde auch stärker werden!
+		Dialogue5: Komm lebendig zurück! Ich würd gern Geschichten von deinen Siegen hören. Bring auch viele Marken mit!
+	}
+
+	Teleport: {
+		Wet: Dieses Wasser stört mich...
+		Dry: Ich spüre einen Ruf...
+	}
+
+	Entry: Sie bieten Segnungen und Waren im Austausch für uralte Währung. Sie tragen eine Augenbinde, denn erleuchtet und gesegnet von Olympus zu sein, hat ihre Sicht überflüssig gemacht.
+}
+
+Rogue: {
+	DisplayName: Bandit
+
+	Names: {
+		1: Zane
+		2: Carlos
+		3: Tycho
+		4: Damien
+		5: Shane
+		6: Daryl
+		7: Shepard
+		8: Sly
+	}
+
+	Dialogue: {
+		Basic1: Hier, um meine Waren zu durchstöbern? Sie sind ziemlich scharf.
+		Basic2: Vertrau mir - die Überreste der Bosse, die du tötest, verschwenden wir nicht.
+		Basic3: Die Welt ist voller Gelegenheiten! Jetzt geh und töte ein paar Dinge.
+		Basic4: Diese Maske wird langsam muffig...
+		Basic5: Sieh dir diesen gutaussehenden Teufel an! Oh, das ist nur ein Spiegel.
+		Basic6: Hier, um all deine Mordbedürfnisse zu befriedigen!
+		Basic7: Schöner Tag heute! Also, wen willst du tot sehen?
+		Special1: Sag {0}, er soll aufhören, mich zu fragen, woher ich die Anhänger hab. Er muss das nicht wissen. Er würd vor Schreck sterben.
+		Special2: Warum ist {0} so scharf darauf, Shuriken zu verkaufen? Das ist total mein Ding.
+		Halloween0: Willst du etwas Süßes? Hier, fang!
+		Halloween1: Hiyah! Süßigkeiten-Angriff! Oh, du bist's. Sorry.
+		Bound: Hey! Danke, dass du mich gerettet hast - würd's dir was ausmachen, uns jetzt aus dieser Zwickmühle zu holen? Die haben mich reingelegt, mein ganzes Geld genommen und mich hier zum Sterben zurückgelassen! Denk aber nicht, dass ich dir deswegen Rabatt auf meine Waren gebe. Nur Spaß! Nicht wirklich.
+	}
+
+	TownNPCMood: {
+		Content: Dreihundert... vierhundert... nichts geht über das Zusammenzählen einer... harten Tagesarbeit!
+		NoHome: Wo soll ich verstecken, was ich ges- gefunden hab, wenn ich kein Haus hab?
+		FarFromHome: Hat jemand mein Haus gestohlen und mitgenommen? Ich bin nicht sicher, wo es ist.
+		LoveSpace: Weg von allen neugierigen Blicken, perfekt, perfekt.
+		DislikeCrowded: Zu viele Leute, ich krieg schon Seitenblicke.
+		HateCrowded: Bei dieser Überfüllung ist es nicht meine Schuld, wenn ein "Unfall" passiert und die Herde ausdünnt, weißt du?
+		LikeBiome: So viel Deckung! So viele Verstecke! Ein wunderbarer Ort.
+		DislikeBiome: Ich hab HIER viel zu viel Konkurrenz - hol mich RAUS!
+		LoveNPC: Ich bin kein Ingenieur, aber das Zeug, das {NPCName} baut, ist so cool. Vielleicht bezahl ich diesmal sogar dafür!
+		LikeNPC: "{NPCName} hat mir tatsächlich ein paar Mal geholfen, über heikle Gebiete zu kommen - toller Kerl."
+		DislikeNPC: Oh, {NPCName}? Sagen wir einfach, er hat nichts dagegen, ein paar seiner Sprengstoffe zu testen.
+		HateNPC: Lass mich dir sagen... dieser {NPCName}-Typ? Buchstäblich auf dem Sprung. Ich hab nur ein paar Münzen geklaut, ich schwör!
+		LikeNPC_Princess: "{NPCName} sagte, sie würd mein Geheimnis nah an ihrem Herzen behalten... von dem ich keins hab. Husch."
+		Princess_LovesNPC: Manchmal besorgt mir {NPCName} coole Sachen. Er sagt, es ist auch alles umsonst!
+	}
+
+	Entry: Ein verwegener Schurke mit einer in Geheimnis gehüllten Vergangenheit. Ob man ihm trauen kann oder nicht, ist unklar, aber er würde dir trotzdem gern die Tricks des Handwerks beibringen.
+	Census.SpawnCondition:
+		'''
+		Rette den Banditen aus dem Banditenversteck
+		Falls deine Welt keinen Goblinturm hat, hab mindestens 1 Gold im Inventar
+		'''
+}
+
+RuneWizard: {
+	DisplayName: Verzauberer
+
+	Names: {
+		1: Malachai
+		2: Nisarmah
+		3: Moneque
+		4: Tosalah
+		5: Kentremah
+		6: Salqueeh
+		7: Oarno
+		8: Cosimo
+	}
+
+	Dialogue: {
+		Basic1: Verstärk deine Waffen mit meinen seltsamen Glyphen!
+		Basic2: Manchmal kritzel ich einfach eine Rune auf eine Glyphe und schau, was passiert. Ich empfehl dir das nicht.
+		Basic3: Bevor du fragst, nein, ich werd keine Honigglyphe auf eine Biene setzen. Das wär viel zu stark.
+		Basic4: Ich hab die Essenz von Nieswurz vergessen! Fass das nicht an!
+		Basic5: Wenn du dir nicht sicher bist, wie man über Glyphen stolpert, mein Meister sagte mir mal, mächtige Bosse tragen viele!
+		Basic6: Lustige Tatsache - man kann Runen auf alles setzen. Sie sind nur auf Glyphen am mächtigsten.
+		Basic7: Alles kann verzaubert werden, wenn du das Können, den Witz und die Essenz besitzt!
+		Special1: Ich frag mich, welche Verzauberungen auf den Mond gelegt wurden - er ist ganz blau!
+		Special2: Die Wiederkehr der Geister bietet eine ganz neue Ebene an Verzauberungsmöglichkeiten!
+		Halloween0: Sieh nur! Verzauberte Süßigkeit! Bezaubernd lecker, das ist sie!
+		Halloween1: Schau genau hin, denn ich werd die Macht der Geister kanalisieren, um zu beschwören... Süßigkeiten!
+	}
+
+	TownNPCMood: {
+		Content: Die Runen kommen heute gut voran.
+		NoHome: Ich hab keinen Platz für meine Runen!
+		FarFromHome: Ich weiß nicht, ob du's erraten könntest, aber ich würd stark bevorzugen, in der Nähe meiner geliebten Runen zu sein.
+		LoveSpace: Die Magie fließt viel leichter in der Ruhe.
+		DislikeCrowded: Es ist schwer, sich zu konzentrieren, wenn so viele Leute rumstehen!
+		HateCrowded: Bei so vielen Leuten hier kann ich mir nur eine Stille-Glyphe wünschen.
+		LikeBiome: Ich war noch nie so im Einklang mit der runischen Magie! Dieser Ort ist wunderbar.
+		DislikeBiome: Dieser Ort ist einfach zu viel. Viel zu viel. Lass mich raus.
+		LoveNPC: "{NPCName} und ich reden oft über unsere Arbeit - faszinierend, wie er verzaubern kann ohne jegliches Wissen über Magie."
+		LikeNPC: Manchmal bittet mich {NPCName}, ein paar seiner Waren zu verzaubern... ich leg immer eine leere Verzauberung drauf. Er ist jedes Mal überglücklich.
+		HateNPC: "{NPCName} versteht die Macht der Runen nicht... es ist immer 'Eisrute dies' und 'Kristallkugel' das..."
+		LikeNPC_Princess: Da liegt immer etwas Magisches in {NPCName}s Augen, wenn ich einen Trick mach. Es sind die kleinen Dinge, haha.
+		Princess_LovesNPC: "{NPCName} hat mir eine Glitzerrune gegeben! Juhu!"
+	}
+
+	Entry: Dieser müde Runenschreiber hat schlaflose Nächte damit verbracht, die uralte in Glyphen gefundene Magie zu studieren. Er ist kein großer Gesprächspartner, aber er wird dein Arsenal gern stärken.
+	Census.SpawnCondition: Hab eine Leere Glyphe im Inventar
+}
+
+Undead_Warlock: {
+	DisplayName: Untoter Hexenmeister
+	Entry: Anders als der Untote Wissenschaftler praktiziert der Hexenmeister typischere, aber mächtigere Magie und Nekromantie.
+}
+
+Valkyrie: {
+	DisplayName: Walküre
+	Entry: Rechtschaffene Verteidiger des Himmels, diese geflügelten Kriegerinnen nutzen die Kraft der Sonne, um die über dem Land schwebenden Inseln zu beschützen.
+}
+
+Vulture_Matriarch: {
+	DisplayName: Geier-Matriarchin
+	Entry: Die mächtige Älteste des Geierstamms, die Matriarchin verfügt über uralte Magie und Fähigkeiten, um ihre Beute zu vernichten.
+	SpawnMessage: Die Geier-Matriarchin wurde gestört!
+}
+
+Wheezer: {
+	DisplayName: Wheezer
+	Entry: Ein Wheezer ist ein extrem giftiger Verwandter des Salamanders, bekannt für aggressives Verhalten. Merkwürdigerweise ist ihre Lieblingsspeise eine knospende Stechpalme, was ihren fleischfressenden Neigungen widerspricht.
+}
+
+WinterbornMelee: {
+	DisplayName: Winterborn
+	Entry: Die letzten Überreste eines vergangenen Stammes. Durch einen mysteriösen Fluch in Eis eingeschlossen, wandern sie durch die Tundra auf der Suche nach Relikten ihrer Zivilisation.
+}
+
+IceBoltNPC.DisplayName: Eisbolzen
+
+WinterbornMagic: {
+	DisplayName: Winterborn-Herold
+	Entry: Lange nachdem sie die Zerstörung ihres Stammes vorhergesehen hatten, folgen diese einst erlesenen Magier nun in die Fußstapfen ihrer Brüder und suchen danach, wieder aufzubauen.
+}
+
+DiverZombie: {
+	DisplayName: "{$NPCName.Zombie}"
+	Entry: Wer hätte gedacht, dass diese Sauerstofftanks tatsächlich Sauerstoff drin haben müssen?
+}
+
+KelpZombie: {
+	DisplayName: "{$NPCName.Zombie}"
+	Entry: Fische fürchten mich, Frauen fürchten mich, Männer fürchten mich, Kinder fürchten mich, denn ich bin die Untoten.
+}
+
+SailorZombie: {
+	DisplayName: "{$NPCName.Zombie}"
+	Entry: Trotz ihres jetzigen Zustands haben sie früher diesen wirklich schönen Luxuskreuzer gefahren, den du dir mal ansehen solltest.
+}
+
+TridentZombie.DisplayName: "{$NPCName.Zombie}"
+AsclepiusBoonOrb.DisplayName: Asklepios-Segenskugel
+Fathomless_Chest_Gold.DisplayName: ""
+Fathomless_Chest_Mimic.DisplayName: ""

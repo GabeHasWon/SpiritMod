@@ -1,2 +1,4 @@
-﻿v1.5.0.47
-- Fixed an issue where the Mod.Call functionality for Set/GetGlyph doesn't check if the item can actually have a glyph attached, causing issues throughout the game
+﻿v1.5.0.48
+- Added German localization (thank you @BardSmard!)
+- Updated Russian and Chinese localizations
+- Added missing localization for hittable asteroids "Hit me!" text

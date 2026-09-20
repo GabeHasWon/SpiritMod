@@ -1,0 +1,41 @@
+﻿--- Spirit Classic ---
+von Team Spirit
+
+Englisch (von Team Spirit)
+Spanisch (von Ningunomas)
+Russisch (von Nana Team)
+Vereinfachtes Chinesisch (von 矿君, 羽曦 und Lin)
+Deutsch  (von BardSmard)
+
+Spirit Classic fügt folgendes hinzu:
+1401 neue Items!
+41 neue Rüstungssets!
+8 neue Bosse!
+3 brandneue Biome: das Spirit-Biom (Geist-Biom), das Asteroidenfeld und den Dornenwald (Briar)!
+Eine komplette Überarbeitung des Ozean-Bioms!
+Ein brandneues Quest-System!
+255 neue Gegner und Miniboss!
+3 neue Events: die Gezeiten (Tide), die Quallenflut (Jelly Deluge) und den Mystischen Mond (Mystic Moon)!
+Ein neues Waffen-Verzauberungssystem!
+34 brandneue Musikstücke für vanilla und modifizierte Events und Biome!
+...und es ist noch viel mehr zu entdecken!
+
+Mit einer Vielzahl an Bossen, Biomen, Waffen,Verzauberungssystem, Events und Mechaniken ist Spirit Classic einer der größten Content-Mods für Terraria.
+Spirit wird seit 2015 von einem leidenschaftlichen Team von Moddern entwickelt, mit dem Ziel, das Vanilla-Erlebnis zu erweitern und deinem Spielerlebnis neues, immersives Leben einzuhauchen.
+Seitdem ist der Mod stetig gewachsen und hat sich weiterentwickelt – mit über 3 Millionen Downloads in seiner Lebenszeit auf Version 1.3.5.
+Nach einem weiteren langen Update ist Spirit nun bereit für 1.4.4 und zeigt, was in Zukunft noch alles möglich ist.
+Wir hoffen, es gefällt euch!
+
+Discord: https://discord.gg/YUFGbSccSZ
+Schaut auf dem Discord-Server und der Forumsseite des Mods vorbei, um mehr Informationen zu erhalten! Wir hoffen, euch gefällt der Mod, und bitte meldet uns jegliche Probleme, die euch begegnen :)
+Für alle, die den Mod über den Workshop nutzen: Bitte tretet dem Discord bei, falls ihr Probleme habt!
+Support über den Kommentarbereich zu organisieren, ist so gut wie unmöglich.
+
+----- FAQ -----
+F: Ist dieser Mod mit anderen kompatibel?
+A: Dieser Mod ist mit Calamity und Thorium sowie allen anderen bekannten Content-Mods kompatibel. Bitte meldet Probleme, falls welche auftreten.
+Calamity wird jedoch sowohl Thorium als auch Spirit optisch/inhaltlich überschatten, da er auf sich selbst statt auf Vanilla ausbalanciert ist.
+F: Wie bekomme ich das Questbuch?
+A: Sucht den Abenteurer im unterirdischen Dornenwald (Briar) auf und holt euch das Questbuch von ihm.
+
+Großes Dankeschön an aemisigna und alinahvoshch für ihre verschiedenen Code-Beiträge!

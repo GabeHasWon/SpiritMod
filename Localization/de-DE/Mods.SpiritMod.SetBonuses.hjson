@@ -1,0 +1,134 @@
+Apostle:
+	'''
+	Windgeister leiten dich und gewähren einen zusätzlichen Sprung
+	Magie- und Fernkampfangriffe lassen gelegentlich Federn erscheinen, die Gegner angreifen
+	'''
+Bismite:
+	'''
+	Nicht getroffen zu werden baut Stapel von Virulenz auf
+	Virulenz lädt sich alle 10 Sekunden auf
+	Ein Treffer bei voll aufgeladener Virulenz löst eine toxische Explosion aus
+	Ein Treffer erschöpft die Virulenz vollständig
+	'''
+BloodCourt:
+	'''
+	Doppeltipp {0}, um 8% deines maximalen Lebens zu opfern
+	und einen Bolzen aus Dunkler Anima abzufeuern, der in einem Radius hohen Schaden verursacht
+	Dieser Bolzen entzieht über 5 Sekunden zusätzlich 10 Leben
+	'''
+Botanist:
+	'''
+	Du erhältst erhöhte Belohnungen von Kräutern aller Art
+	Du hast ein geschultes Auge zum Aufspüren von Kräutern
+	'''
+Cascade:
+	'''
+	Schaden an Gegnern zu verursachen baut einen Blasenschild auf,
+	der bei voller Größe starke Schadensresistenz gegen den nächsten Angriff gewährt
+	und nahe Gegner beschädigt und zurückstößt.
+	'''
+Chitin: Doppeltipp einer Richtung, um zu sprinten und dich in einen Tornado zu hüllen
+Cryolite:
+	'''
+	Erzeugt eine eisige Aura, die nahe Gegner verlangsamt
+	Diese Aura wächst allmählich, setzt sich aber bei einem Treffer zurück
+	'''
+Daybloom:
+	'''
+	Draußen zu sein tagsüber erhöht Verteidigung, maximales Mana
+	und Lebensregeneration leicht
+	'''
+Driftwood:
+	'''
+	Ermöglicht es dem Träger, auf Wasser zu schweben
+	Erhöhte Angelkraft
+	'''
+Dusk:
+	'''
+	8% erhöhter Magie- und Fernkampfschaden bei Nacht
+	Du bist von einer Rune umgeben, die den Weg weist
+	Magieangriffe verursachen Schattenflamme
+	'''
+DarkfeatherVisage: Erzeugt explodierende Dunkelfeder-Bolzen um den Spieler
+Elderbark: Erhöht allen Gegenstandsschaden um 1
+Floran: Das Töten von Gegnern kann rohes Fleisch fallen lassen, das Leben wiederherstellt und "Gut genährt" gewährt
+Frigid:
+	'''
+	Doppeltipp {0}, um eine eisige Wand an der Cursor-Position zu erzeugen
+	8 Sekunden Abklingzeit
+	'''
+Granite:
+	'''
+	Doppeltipp {0} während des Falls, um nach unten zu stampfen
+	Der Aufprall auf dem Boden löst eine Schockwelle aus, die mit der Höhe skaliert
+	'''
+Infernal:
+	'''
+	Unter 25% Leben wird die Verteidigung um 4 verringert, aber Höllische Wächter umgeben dich
+	Höllische Wächter erhöhen den Beschwörungsschaden stark
+	Ein Treffer kann mehrere explodierende Höllenglut-Partikel erzeugen
+	'''
+JellynautBubble:
+	'''
+	Gegner mit Magiewaffen zu treffen oder zu töten erzeugt arkane Quallen um den Spieler
+	Doppeltipp {0}, damit die Quallen die Cursor-Position angreifen
+	'''
+Leather:
+	'''
+	Das Tragen der Scharfschützen-Rüstung baut Konzentration auf
+	Bei voller Konzentration ist dein nächster Treffer ein kritischer Treffer und verursacht mehr Schaden
+	Konzentration wird bei einem Treffer unterbrochen, lädt sich aber schneller auf, während du stillstehst
+	'''
+Marble:
+	'''
+	Drücke 'Hoch', um 'Göttliche Winde' zu erhalten, die begrenzten Flug ermöglichen
+	10 Sekunden Abklingzeit
+	'''
+Primalstone:
+	'''
+	Nahkampf- und Magieangriffe verursachen Instabiles Leiden
+	10% verringerte Bewegungsgeschwindigkeit
+	'''
+Rogue:
+	'''
+	Ein Treffer gewährt vier Sekunden Unsichtbarkeit und 100% erhöhten Schaden
+	25 Sekunden Abklingzeit
+	'''
+Runic: Hinterlässt gefährliche explosive Runen
+Seraph:
+	'''
+	In der Nähe von Gegnern erhöht sich Lebensregeneration, Manaregeneration und Nahkampfgeschwindigkeit
+	und die Manakosten verringern sich um 6% pro Gegner
+	Dieser Effekt stapelt sich dreifach
+	'''
+Slag:
+	'''
+	Doppeltipp {0}, damit alle Wachposten einen Schwall Feuerbälle freisetzen
+	8 Sekunden Abklingzeit
+	'''
+Spirit:
+	'''
+	Geister gewähren dir verschiedene Buffs basierend auf deinem Leben
+	Erhöht den Schaden um 8%, wenn du unter 400 Leben hast
+	Erhöht die Verteidigung um 6, wenn du unter 200 Leben hast
+	Erhöht die Lebensregeneration, wenn du unter 100 Leben hast
+	Erhöht die Unverwundbarkeitsframes, wenn du unter 50 Leben hast
+	'''
+Starplate:
+	'''
+	Doppeltipp {0}, um ein Energiefeld an der Cursor-Position zu erzeugen
+	Dieses Feld hält fünf Sekunden und lädt alle Fernkampfprojektile auf, die es durchqueren
+	{1} Sekunden Abklingzeit
+	'''
+StreamSurfer:
+	'''
+	Doppeltipp {0}, um eine reitbare Wasserhose zu erzeugen, die Gegner beschädigt
+	7 Sekunden Abklingzeit
+	'''
+Wayfarer:
+	'''
+	Das Töten von Gegnern gewährt einen stapelbaren Schadensbuff
+	Das Zerbrechen von Töpfen gewährt einen stapelbaren Bewegungsgeschwindigkeitsbuff
+	Das Abbauen von Erz gewährt einen stapelbaren Abbaugeschwindigkeitsbuff
+	Alle Buffs stapeln sich bis zu 4-mal
+	'''

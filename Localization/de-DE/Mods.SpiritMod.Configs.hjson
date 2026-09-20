@@ -1,0 +1,277 @@
+SpiritClientConfig: {
+	DisplayName: Client-Konfiguration
+
+	ScreenShake: {
+		Label: Bildschirmwackeln
+		Tooltip:
+			'''
+			Verändert die Intensität des Bildschirmwackelns, das durch Inhalte des Mods ausgelöst wird
+			Auf 0 setzen, um es komplett zu deaktivieren
+			'''
+	}
+
+	DistortionConfig: {
+		Label: Bildschirmverzerrung
+		Tooltip: Aktiviert Bildschirmverzerrung im Geist-Biom oder beim Kampf gegen den Starplate Voyager
+	}
+
+	ForegroundParticles: {
+		Label: Vordergrundpartikel
+		Tooltip: Aktiviert zusätzliche Partikel im Vordergrund unter bestimmten Bedingungen
+	}
+
+	AutoReuse: {
+		Label: Auto-Wiederverwendung-Tooltip
+		Tooltip: Aktiviert eine zusätzliche Zeile in Waffen-Tooltips, die anzeigt, ob ein Gegenstand automatisch wiederverwendet/geschwungen wird
+	}
+
+	QuickSell: {
+		Label: Schnellverkauf-Funktion
+		Tooltip: Aktiviert die Schnellverkauf-Funktion, mit der du unerwünschte Gegenstände einfach an NPCs verkaufen kannst
+	}
+
+	AmbientSounds: {
+		Label: Umgebungsgeräusche
+		Tooltip: Aktiviert Umgebungsgeräusche für einige Biome
+	}
+
+	LeafFall: {
+		Label: Fallende-Blätter-Effekte
+		Tooltip:
+			'''
+			Aktiviert fallende Blätter als Ambiente während Ruhiger Nächte oder im Dorngestrüpp
+			Deaktiviere dies, um seltsame Wechselwirkungen mit Terraria Overhaul zu vermeiden
+			'''
+	}
+
+	QuestBookLocation: {
+		Label: Position des Questbuch-Buttons
+		Tooltip: Ändert, wo der Button des Questbuchs in deinem Inventar erscheint
+	}
+
+	QuestBookSwitching: {
+		Label: Questbuch-Tab-Wechsel
+		Tooltip: Wechselt vom aktuellen Tab zum Aktiv- oder Abgeschlossen-Tab, wenn eine Quest aktiviert oder abgeschlossen wird
+	}
+
+	ShowNPCQuestNotice: {
+		Label: Stadt-NPC-Quest-Symbole
+		Tooltip: Aktiviert die Anzeige von Quest-Ausrufezeichen, wenn ein Stadt-NPC eine neue Quest hat
+	}
+
+	DoubleHideoutGeneration: {
+		Label: Generierung von Arkanem Turm und Banditenversteck
+		Tooltip:
+			'''
+			Aktiviert die Generierung sowohl des Banditenverstecks als auch des Arkanen Turms
+			Standardmäßig spawnt nur einer pro Welt
+			Nur für große Welten empfohlen
+			'''
+	}
+
+	OceanShape: {
+		Label: Ozean-Generierungsform
+		Tooltip:
+			'''
+			Verändert die Ozean-Generierung auf bestimmte Weise
+			Standardmäßig wird Piecewise_V-Generierung verwendet
+			Die Piecewise_V-Generierung wird für Spirit-Durchgänge empfohlen
+			'''
+	}
+
+	VentCritters: {
+		Label: Hydrothermalschlot-Ökosysteme
+		Tooltip:
+			'''
+			Aktiviert das Erscheinen zahlreicher Kleinkreaturen um Hydrothermalschlote
+			Diese Kleinkreaturen beeinflussen nicht die regulären Gegner-Spawnraten
+			Sie zählen jedoch zum maximalen NPC-Limit
+			'''
+	}
+
+	SurfaceWaterTransparency: {
+		Label: Ozeanwasser-Transparenz
+		Tooltip:
+			'''
+			Ermöglicht transparentes Ozeanwasser, wenn aktiviert
+			Dies betrifft kein anderes Biom
+			'''
+	}
+
+	EnemyFishing: {
+		Label: Angel-Begegnungen
+		Tooltip: Aktiviert Gegnerbegegnungen beim Angeln
+	}
+
+	AuroraEnabled: {
+		Label: Aurora aktiviert
+		Tooltip: Aktiviert oder deaktiviert die Aurora-Visualisierung. Dies stoppt nicht das Erscheinen von Aurora-basierten Effekten oder Gegnern
+	}
+
+	EnableSepulchres: {
+		Label: Dunkle Grabmäler aktivieren
+		Tooltip: Aktiviert oder deaktiviert die unterirdisch zu findenden Dunklen-Grabmal-Strukturen. Nützlich zum Deaktivieren, falls du bei anderen Mods Generierungsprobleme hast
+	}
+
+	ForceClassicZiggurat: {
+		Label: Klassische Zikkurat erzwingen
+		Tooltip: Lässt Spirit Classics Zikkurat auch dann erscheinen, wenn Spirit Reforged aktiv ist. Beachte, dass die Klassische Zikkurat andere Strukturen überlappen kann.
+	}
+
+	Headers: {
+		Visuals: "[i:SpiritMod/MoonStone] Visuelles"
+		QoL: "[i:SpiritMod/PirateCrate] Komfort"
+		Ambience: "[i:SpiritMod/GladeWreath] Ambiente"
+		Quests: "[i:SpiritMod/MapScroll] Quests"
+		Generation: "[i:SpiritMod/BismiteCrystal] Generierung"
+		Oceans: "[i:SpiritMod/BlackPearl] Ozeane"
+		Fishing: "[i:SpiritMod/HornetfishQuest] Angeln"
+	}
+}
+
+QuestInvLocation: {
+	Tooltip: ""
+
+	Minimap: {
+		Label: Minikarte
+		Tooltip: ""
+	}
+
+	Trashcan: {
+		Label: Papierkorb
+		Tooltip: ""
+	}
+
+	FarLeft: {
+		Label: Ganz links
+		Tooltip: ""
+	}
+}
+
+OceanShape: {
+	Tooltip: ""
+
+	Default: {
+		Label: Standard
+		Tooltip: Vanilla-Standard-Ozeangenerierung. Deaktiviert Spirit Classics Generierung.
+	}
+
+	SlantedSine: {
+		Label: Geneigte Sinuskurve
+		Tooltip: Angepasste Neigung, die eine diagonale Sinuswelle zur Generierung verwendet.
+	}
+
+	Piecewise: {
+		Label: Stückweise
+		Tooltip: Stückweise Generierung, die mehrere Neigungen kombiniert. Ursprüngliche stückweise Generierung, aber etwas grob.
+	}
+
+	Piecewise_M: {
+		Label: Stückweise_M
+		Tooltip: Modifizierte stückweise Generierung, leicht verbessert.
+	}
+
+	Piecewise_V: {
+		Label: Stückweise_V
+		Tooltip: Finale stückweise Generierung, die beabsichtigte Spirit-Ozeangenerierung.
+	}
+}
+
+SpiritMusicConfig: {
+	DisplayName: Musik-Konfiguration
+
+	BlizzardMusic: {
+		Label: "[i:SpiritMod/BlizzardBox]  Fügt einen einzigartigen Titel für Blizzards hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für Blizzards hinzu
+	}
+
+	SnowNightMusic: {
+		Label: "[i:SpiritMod/SnowNightBox]  Fügt einen einzigartigen Titel für das Schnee-Biom bei Nacht hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für das Schnee-Biom bei Nacht hinzu
+	}
+
+	DesertNightMusic: {
+		Label: "[i:SpiritMod/DesertNightBox]  Fügt einen einzigartigen Titel für das Wüsten-Biom bei Nacht hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für das Wüsten-Biom bei Nacht hinzu
+	}
+
+	HallowNightMusic: {
+		Label: "[i:SpiritMod/HallowNightBox]  Fügt einen einzigartigen Titel für den Hallow bei Nacht hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für den Hallow bei Nacht hinzu
+	}
+
+	CorruptNightMusic: {
+		Label: "[i:SpiritMod/CorruptNightBox]  Fügt einen einzigartigen Titel für die Korruption bei Nacht hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für die Korruption bei Nacht hinzu
+	}
+
+	CrimsonNightMusic: {
+		Label: "[i:SpiritMod/CrimsonNightBox]  Fügt einen einzigartigen Titel für den Crimson bei Nacht hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für den Crimson bei Nacht hinzu
+	}
+
+	GraniteMusic: {
+		Label: "[i:SpiritMod/GraniteBox]  Fügt einen einzigartigen Titel für das Granit-Biom hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für das Granit-Biom hinzu
+	}
+
+	MarbleMusic: {
+		Label: "[i:SpiritMod/MarbleBox]  Fügt einen einzigartigen Titel für das Marmor-Biom hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für das Marmor-Biom hinzu
+	}
+
+	UnderwaterMusic: {
+		Label: "[i:SpiritMod/OceanDepthsBox]  Fügt einen einzigartigen Titel für die Ozeantiefen hinzu"
+		Tooltip: Aktiviert einzigartige Musik für den Ozean in großer Tiefe
+	}
+
+	SpiderCaveMusic: {
+		Label: "[i:SpiritMod/SpiderCaveBox]  Fügt einen einzigartigen Titel für Spinnenhöhlen hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für Spinnenhöhlen hinzu
+	}
+
+	MeteorMusic: {
+		Label: "[i:SpiritMod/MeteorBox]  Fügt einen einzigartigen Titel für das Meteoriten-Biom hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für das Meteoriten-Biom hinzu
+	}
+
+	FrostLegionMusic: {
+		Label: "[i:SpiritMod/FrostLegionBox]  Fügt einen einzigartigen Titel für die Frostlegion-Invasion hinzu"
+		Tooltip: Fügt einen einzigartigen Titel für die Frostlegion hinzu
+	}
+
+	SkeletronPrimeMusic: {
+		Label: "[i:SpiritMod/SkeletronPrimeBox]  Fügt einen einzigartigen Titel für Skeletron Prime hinzu"
+		Tooltip: Fügt einen einzigartigen Boss-Soundtrack für Skeletron Prime hinzu
+	}
+
+	AuroraMusic: {
+		Label: "[i:SpiritMod/AuroraBox]  Fügt einen einzigartigen Titel für die Aurora hinzu"
+		Tooltip: Aktiviert einzigartige Musik für Auroras
+	}
+
+	LuminousMusic: {
+		Label: "[i:SpiritMod/LuminousNightBox]  Fügt einen einzigartigen Titel für Leuchtende Ozeane hinzu"
+		Tooltip: Aktiviert einzigartige Musik für Leuchtende Ozeane
+	}
+
+	CalmNightMusic: {
+		Label: "[i:SpiritMod/CalmNightBox]  Fügt einen einzigartigen Titel für Ruhige-Nacht-Mini-Events hinzu"
+		Tooltip: Aktiviert einzigartige Musik für Ruhige Nächte
+	}
+
+	NeonBiomeMusic: {
+		Label: "[i:SpiritMod/HyperspaceDayBox]  Fügt zwei einzigartige Titel für das künstliche Hyperraum-Biom hinzu"
+		Tooltip: Aktiviert zwei einzigartige Titel im Hyperraum
+	}
+
+	AshfallMusic: {
+		Label: "[i:SpiritMod/AshfallBox]  Fügt einen einzigartigen Titel für das Aschefall-Wetter in der Unterwelt hinzu"
+		Tooltip: Aktiviert einen einzigartigen Titel für das Aschefall-Wetter in der Unterwelt
+	}
+
+	VictoryDayMusic: {
+		Label: "[i:SpiritMod/VictoryDayBox]  Fügt einen einzigartigen Titel für das Sieges-Tag-Event hinzu"
+		Tooltip: Aktiviert einen einzigartigen Titel für den Tag nach dem Laternen-Nacht-Event
+	}
+}

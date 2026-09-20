@@ -1,0 +1,864 @@
+AceOfDiamondsBuff: {
+	DisplayName: Karo-Ass
+	Description: Schaden um 20% erhöht
+}
+
+AngelLight: {
+	DisplayName: Licht des Engels
+	Description: ""
+}
+
+AngelWrath: {
+	DisplayName: Zorn des Engels
+	Description: ""
+}
+
+ExplorerFight: {
+	DisplayName: Schlagkraft
+	Description:
+		'''
+		Du bekommst allmählich den Dreh raus!
+		Verursachter Schaden ist um {0}% erhöht
+		'''
+}
+
+ExplorerMine: {
+	DisplayName: Kraft des Entdeckers
+	Description:
+		'''
+		Grab weiter!
+		Abbaugeschwindigkeit ist erhöht: {0} Stapel
+		'''
+}
+
+ExplorerPot: {
+	DisplayName: Tatendrang des Entdeckers
+	Description:
+		'''
+		Du bist hungrig nach mehr!
+		Bewegungsgeschwindigkeit ist um {0}% erhöht
+		'''
+}
+
+FrigidCooldown: {
+	DisplayName: Unter Null
+	Description: "'Es ist zu kalt, um diese Wand aufrechtzuerhalten...'"
+}
+
+MarbleDivineWinds: {
+	DisplayName: Göttliche Winde
+	Description: "'In den Himmel!'"
+}
+
+RogueCooldown: {
+	DisplayName: Vertriebener Schatten
+	Description: "'Warte, bis die Dunkelheit dich davonträgt'"
+}
+
+AstralMapCooldown: {
+	DisplayName: Astrale Abklingzeit
+	Description: Die Lichtgeschwindigkeitsreise ist instabil!
+}
+
+BeetleFortitude: {
+	DisplayName: Käfer-Standhaftigkeit
+	Description:
+		'''
+		Jeder Treffer stärkt dich...
+		Erlittener Schaden ist um {0}% verringert
+		'''
+}
+
+BloodInfusion: {
+	DisplayName: Blutinfusion
+	Description: "'Extrem ansteckend'"
+}
+
+CandyBuff: {
+	DisplayName: Zuckerrausch
+	Description: Leichte Erhöhung aller Werte
+}
+
+ChocolateBuff: {
+	DisplayName: Schokolade
+	Description: 10% erhöhte Geschwindigkeit
+}
+
+HealthBuffC: {
+	DisplayName: Heil-Süßigkeit
+	Description: +25 Leben
+}
+
+LollipopBuff: {
+	DisplayName: Lutscher
+	Description: Erhöhte Lebensregeneration
+}
+
+ManaBuffC: {
+	DisplayName: Mana-Süßigkeit
+	Description: +40 Mana
+}
+
+TaffyBuff: {
+	DisplayName: Karamellbonbon
+	Description: +4 Verteidigung
+}
+
+ClockBuff: {
+	DisplayName: Zeitkraft
+	Description: ZAWARUDO!!
+}
+
+CouchPotato: {
+	DisplayName: Stubenhocker
+	Description: "'Hör auf, so faul zu sein!'"
+}
+
+CourtCooldown: {
+	DisplayName: Blutrote Abklingzeit
+	Description: Dein Blut braucht Zeit zum Heilen
+}
+
+CrimsonSkullBuff: {
+	DisplayName: Crimson-Schädel
+	Description: Die Phiole des Blutbads verursacht jetzt doppelten Schaden
+}
+
+Death: {
+	DisplayName: Tod
+	Description: ""
+}
+
+DeathRoseCooldown: {
+	DisplayName: Todesrosen-Abklingzeit
+	Description: Das Dorngestrüpp braucht Zeit zum Nachwachsen...
+}
+
+AcidBurn: {
+	DisplayName: Toxischer Griff
+	Description: ""
+}
+
+Afflicted: {
+	DisplayName: Instabiles Leiden
+	Description: Fällt auseinander
+}
+
+BloodCorrupt: {
+	DisplayName: Blutverderbnis
+	Description: Dein Blut brennt...
+}
+
+CryoCrush: {
+	DisplayName: Kryo-Zermalmung
+	Description: ""
+}
+
+DoomDestiny: {
+	DisplayName: Sternenschnitt
+	Description: ""
+}
+
+FesteringWounds: {
+	DisplayName: Eiternde Wunden
+	Description: Verursacht mehr Schaden, wenn das Opfer unter der Hälfte seines Lebens ist
+}
+
+DrainLife: {
+	DisplayName: Leben entziehen
+	Description: Deine Lebensenergie wird zu ihrer
+}
+
+DynastyFanBuff: {
+	DisplayName: Windgleiter
+	Description: Du fällst immer noch, aber langsamer
+}
+
+ElectrifiedV2: {
+	DisplayName: Elektrifiziert
+	Description: Die Fortsetzung, die wir - warte
+}
+
+EleutheriosBuff: {
+	DisplayName: Kraft des Eleutherios
+	Description: Schaden um {0}% erhöht
+}
+
+FateBlessing: {
+	DisplayName: Segen des Schicksals
+	Description: Du wirst von den Schicksalsgöttinnen beschützt
+}
+
+Frozen: {
+	DisplayName: Eingefroren
+	Description: Steif gefroren!
+}
+
+BurningRage: {
+	DisplayName: Brennende Wut
+	Description: Du erleidest Schaden
+}
+
+DivineStrike: {
+	DisplayName: Göttlicher Schlag
+	Description: Dein nächster Angriff verursacht erhöhten Schaden
+}
+
+SanguineRegen: {
+	DisplayName: Blutregeneration
+	Description: Du gewinnst rasch Blut hinzu
+}
+
+TemporalShift: {
+	DisplayName: Zeitverschiebung
+	Description: Doppeltipp zum Sprinten und Erhalt eines vorübergehenden Geschwindigkeitsschubs
+}
+
+GraniteArrow_Debuff: {
+	DisplayName: Granitpfeil-Debuff
+	Description: ""
+}
+
+GreekFire: {
+	DisplayName: Griechisches Feuer
+	Description: Von den Göttern selbst entfacht
+}
+
+HolyLight: {
+	DisplayName: Heiliges Licht
+	Description: ""
+}
+
+IceBerryBuff: {
+	DisplayName: Eisbeeren
+	Description: Du bist immun gegen Feuer
+}
+
+InfernalRage: {
+	DisplayName: Höllischer Zorn
+	Description: Stark erhöhter Schaden auf Kosten deiner Seele...
+}
+
+MageFreeze: {
+	DisplayName: Eisiger Griff
+	Description: Eine kalte Hand hält dich gefangen
+}
+
+MidasTouch: {
+	DisplayName: Midas-Berührung
+	Description: Gegner lassen beim Tod mehr Gold fallen
+}
+
+DiabolicPlatformBuff: {
+	DisplayName: Teuflische Plattform
+	Description: Befehlige das Höllische
+}
+
+DrakomireMountBuff: {
+	DisplayName: Drakomire
+	Description: Du hast einen himmlischen Eindringling gezähmt!
+}
+
+Obolos_Buff: {
+	DisplayName: Obolos
+	Description: Ganz schön grimmig...
+}
+
+RlyehianMountBuff: {
+	DisplayName: Unheimlicher Umhang
+	Description: "'Er reißt einen wirklich mit'"
+}
+
+SnowmongerMountBuff: {
+	DisplayName: Schneemech
+	Description: Mächtig
+}
+
+TideMountBuff: {
+	DisplayName: Crocodrillo-Reittier
+	Description: Dieses niedliche kleine Crocodillo ist dein neuer bester Freund!
+}
+
+NebulaFlame: {
+	DisplayName: Nebelflamme
+	Description: ""
+}
+
+OliveBranchBuff: {
+	DisplayName: Friedliche Lösung
+	Description: "'Schließe Frieden mit deinen Feinden'"
+}
+
+OracleBoonBuff: {
+	DisplayName: Ketzerei
+	Description:
+		'''
+		Die Götter nehmen deine Herausforderung an
+		Verzauberte Gegner erscheinen häufiger
+		'''
+}
+
+OverDrive: {
+	DisplayName: Overdrive
+	Description: Deine Bewegungs- und Nahkampfgeschwindigkeit sind aufgeladen!
+}
+
+AtlasPetBuff: {
+	DisplayName: Atlas Jr.
+	Description: Er will dir eine Hand geben!
+}
+
+AvianPetBuff: {
+	DisplayName: Uraltes Küken
+	Description: "'eg.'"
+}
+
+BladePetBuff: {
+	DisplayName: Besessene Klinge
+	Description: "'Ist das ein Dolch, den ich vor mir sehe?'"
+}
+
+CaltfistPetBuff: {
+	DisplayName: Kultfisch
+	Description: Dieser kleine Kerl erhellt den Weg!
+}
+
+CaptiveMaskPetBuff: {
+	DisplayName: Entfesselte Maske
+	Description: "'Noch einmal in die Bresche!'"
+}
+
+DuskingPetBuff: {
+	DisplayName: Kleine Schattenflamme
+	Description: "'Du siehst etwas in den Flammen...'"
+}
+
+FaeriePetBuff: {
+	DisplayName: Abnehmender Mond
+	Description: Die Mondlicht-Fee wird dich beschützen
+}
+
+HauntedBookPetBuff: {
+	DisplayName: Verfluchtes Foliant
+	Description: "'Verflucht, aber tröstlich'"
+}
+
+InfernonPetBuff: {
+	DisplayName: Inferno
+	Description: "'Du solltest ihm besser aus dem Weg gehen'"
+}
+
+JellyfishBuff: {
+	DisplayName: Friedliche Qualle
+	Description: "'Die Qualle hilft dir zu entspannen'"
+}
+
+LanternBuff: {
+	DisplayName: Laternen-Energiebatterie
+	Description: "'Sie erleuchtet den Weg!'"
+}
+
+LoomingPresence: {
+	DisplayName: Bedrohliche Präsenz
+	Description: Sie scheint viel Aufmerksamkeit zu erregen.
+}
+
+MJWPetBuff: {
+	DisplayName: Mondgelee-Glühbirne
+	Description: "'Keine Installation nötig!'"
+}
+
+OccultistPetBuff: {
+	DisplayName: Kleiner Okkultist
+	Description: "'Überraschend entspannt'"
+}
+
+OverseerPetBuff: {
+	DisplayName: Aufseher
+	Description: "'Sieht für mich aus wie ein Endboss'"
+}
+
+PhantomPetBuff: {
+	DisplayName: Phantom
+	Description: "'Es verschmilzt mit der Nacht'"
+}
+
+SaucerPetBuff: {
+	DisplayName: Unterstützungs-Untertasse
+	Description: "'Sie scheint nur moralische Unterstützung zu bieten...'"
+}
+
+ScarabPetBuff: {
+	DisplayName: Kleiner Skarabäus
+	Description: "'Er liebt es wirklich zu rollen...'"
+}
+
+ShadowPetBuff: {
+	DisplayName: Schattenwelpe
+	Description: "'Awww'"
+}
+
+StarplatePetBuff: {
+	DisplayName: Starplate-Miniatur
+	Description: Sucht nach etwas...
+}
+
+VinewrathPetBuff: {
+	DisplayName: Zorniger Setzling
+	Description: "'Sie suchen gerne Streit'"
+}
+
+BismitePotionBuff: {
+	DisplayName: Toxischer Schlag
+	Description:
+		'''
+		Kritische Treffer verursachen Eiternde Wunden
+		4% erhöhte kritische Trefferchance
+		'''
+}
+
+DoubleJumpPotionBuff: {
+	DisplayName: Ätherischer Sprung
+	Description: Gewährt vorübergehend einen zusätzlichen Sprung
+}
+
+FlightPotionBuff: {
+	DisplayName: Höhenflug
+	Description: Erhöht die Flugdauer um 25%
+}
+
+MoonBlessing: {
+	DisplayName: Mondgelee
+	Description: Extreme Regeneration
+}
+
+MoonBlessingDonut: {
+	DisplayName: Mondgelee-Donut
+	Description: Extreme Regeneration und ein Zuckerrausch!
+}
+
+MushroomPotionBuff: {
+	DisplayName: Sporenfreisetzung
+	Description: Hinterlässt eine Spur schädlicher Pilze
+}
+
+PinkPotionBuff: {
+	DisplayName: Sprungschub
+	Description: Erhöht die Sprunghöhe
+}
+
+RunePotionBuff: {
+	DisplayName: Runenschrift
+	Description:
+		'''
+		Magieangriffe können Gegner in Runen ausbrechen lassen
+		5% erhöhter Magieschaden
+		'''
+}
+
+SoulPotionBuff: {
+	DisplayName: Seelenschutz
+	Description:
+		'''
+		Verringert erlittenen Schaden um 5%
+		Ein Treffer kann bei allen Gegnern kurzzeitig "Seelenbrand" auslösen
+		'''
+}
+
+StarPotionBuff: {
+	DisplayName: Sternenbrand
+	Description:
+		'''
+		Kritische Treffer können Sterne vom Himmel fallen lassen
+		4% erhöhter Fernkampfschaden und kritische Trefferchance bei Bewegung
+		'''
+}
+
+TurtlePotionBuff: {
+	DisplayName: Unerschütterlich
+	Description:
+		'''
+		Erhöht die Verteidigung, während das Leben sinkt
+		Verringert erlittenen Schaden um 5%
+		'''
+}
+
+Shadowbroken: {
+	DisplayName: Schattengebrochen
+	Description: Der Schatten versteckt sich vor dir
+}
+
+Shadowflame: {
+	DisplayName: Schattenflamme
+	Description: Eine Fortsetzung, von der wir nicht wussten, dass wir sie wollten
+}
+
+Shocked: {
+	DisplayName: Geschockt!
+	Description: Whoa!
+}
+
+SoulBurn: {
+	DisplayName: Seelenbrand
+	Description: Deine Seele sehnt sich nach Freiheit
+}
+
+SoulFlare: {
+	DisplayName: Seelenflamme
+	Description: Deine Seele flackert...
+}
+
+SpiritBuff: {
+	DisplayName: Geist-Aura
+	Description:
+		'''
+		Erhöht Schaden und kritische Trefferchance um 5%
+		Ein Treffer lässt gelegentlich einen schädlichen Bolzen entstehen, der Gegner verfolgt
+		'''
+}
+
+StackingFireBuff: {
+	DisplayName: Verbrennungsblaze
+	Description: Brennt, aber schlimmer!
+}
+
+StarCooldown: {
+	DisplayName: Kosmische Abklingzeit
+	Description: Die kosmischen Energien müssen sich stabilisieren...
+}
+
+StarFlame: {
+	DisplayName: Sternenflamme
+	Description: "'Eine astrale Kraft entzieht dir Vitalität'"
+}
+
+StarFracture: {
+	DisplayName: Sternenbruch
+	Description: Von den Sternen zerbrochen
+}
+
+StarplateGravity: {
+	DisplayName: Starplate-Schwerkraft
+	Description: Der Starplate Voyager zieht dich zur Erde...
+}
+
+Stopped: {
+	DisplayName: Gestoppt
+	Description: Du bist an Ort und Stelle festgehalten
+}
+
+ElectricSummonTag: {
+	DisplayName: Beschwörungsmarkierung
+	Description: Markiert!
+}
+
+SacrificialDaggerBuff: {
+	DisplayName: Opferschlag
+	Description: Drei (3) Projektile
+}
+
+SummonTag3: {
+	DisplayName: Beschwörungsmarkierung
+	Description: Markiert!
+}
+
+SummonTag5: {
+	DisplayName: Beschwörungsmarkierung
+	Description: Markiert!
+}
+
+SurgingAnguish: {
+	DisplayName: Aufwallende Qual
+	Description: "'Dein Geist und Körper leiden große Schmerzen'"
+}
+
+Impaled: {
+	DisplayName: Aufgespießt
+	Description: Du wurdest von einem Spieß aufgespießt. Autsch!
+}
+
+KoiTotemBuff: {
+	DisplayName: Geist des Koi
+	Description: Erhöhte Angelfertigkeit
+}
+
+PagodaCurse: {
+	DisplayName: Fluch der Pagode
+	Description: Du spürst eine geisterhafte Präsenz in der Nähe
+}
+
+SunPotBuff: {
+	DisplayName: Sonne im Topf
+	Description: Erhöhte Lebensregeneration
+}
+
+TopazMarked: {
+	DisplayName: Erleuchtet
+	Description: Wie 10 Millionen Glühwürmchen
+}
+
+Tracked: {
+	DisplayName: Verfolgt
+	Description: Du kannst rennen, aber dich nicht verstecken
+}
+
+TrueMarksman: {
+	DisplayName: Wahrer Schütze
+	Description: Waffenschaden ist drastisch erhöht
+}
+
+UnstableAffliction: {
+	DisplayName: Instabiles Leiden
+	Description: Verringert die Bewegungsgeschwindigkeit um 10%
+}
+
+VineTrap: {
+	DisplayName: Rankenfalle
+	Description: Entkommen ist unmöglich
+}
+
+VirulenceCooldown: {
+	DisplayName: Virulente Unterdrückung
+	Description: "'Die Fauligen Säfte müssen ihre Energie zurücksetzen'"
+}
+
+Wither: {
+	DisplayName: Verwelkung
+	Description: ""
+}
+
+WitheringLeaf: {
+	DisplayName: Welkendes Blatt
+	Description: Verwelkt, schwindet dahin...
+}
+
+CryoZoneTimer: {
+	DisplayName: Verlangsamungszone
+	Description: Die Verlangsamungszone ist aktiv!
+}
+
+DefenseZoneBuff: {
+	DisplayName: Befestigungszone
+	Description: Du fühlst dich stark!
+}
+
+HealingZoneBuff: {
+	DisplayName: Heilungszone
+	Description: Du fühlst dich gestärkt!
+}
+
+HealthZoneTimer: {
+	DisplayName: Heilungszone
+	Description: Die Heilungszone ist aktiv!
+}
+
+LowGravZoneBuff: {
+	DisplayName: Schwerelosigkeitszone
+	Description: Du fühlst dich leicht!
+}
+
+LowGravZoneTimer: {
+	DisplayName: Schwerelosigkeitszone
+	Description: Die Schwerelosigkeitszone ist aktiv!
+}
+
+ShieldZoneTimer: {
+	DisplayName: Befestigungszone
+	Description: Die Befestigungszone ist aktiv!
+}
+
+StaminaZoneBuff: {
+	DisplayName: Ausdauerzone
+	Description: Du fühlst dich voller Energie!
+}
+
+StaminaZoneTimer: {
+	DisplayName: Ausdauerzone
+	Description: Die Ausdauerzone ist aktiv!
+}
+
+BaubleCooldown: {
+	DisplayName: Flitter-Abklingzeit
+	Description: Der Schild des Flitters ist im Abklingen
+}
+
+BaubleResistance: {
+	DisplayName: Flitter-Resistenz
+	Description: Du fühlst dich beschützt
+}
+
+GildedScarab_buff: {
+	DisplayName: Skarabäus-Schild
+	Description: Verteidigung um {0} erhöht
+}
+
+SlagFury_buff: {
+	DisplayName: Schlacken-Furie
+	Description: "{$CommonItemTooltip.PercentIncreasedDamage}"
+}
+
+RunicSiphon: {
+	DisplayName: Runischer Entzug
+	Description: Verringerte Schadensresistenz und schneller Lebensverlust
+}
+
+PendantBuff: {
+	DisplayName: Kellerassel-Freund
+	Description: "'Rock and Roll!'"
+}
+
+MirrorCoatBuff: {
+	DisplayName: Spiegelbeschichtung
+	Description: Immunität gegen Versteinerung
+}
+
+SaddleBuff: {
+	DisplayName: Aurora-Hirsch-Reittier
+	Description: Du spürst die Macht der Sterne
+}
+
+Empowered: {
+	DisplayName: Gestärkt
+	Description: Der Kopfspalter ist mit flüchtiger Kraft erfüllt
+}
+
+Mantaray_Buff: {
+	DisplayName: Mantarochen
+	Description: Schnell wie die Gezeiten!
+}
+
+BottleMountBuff: {
+	DisplayName: Floß
+	Description: Sendet einen Notruf
+}
+
+EmpoweredSwim: {
+	DisplayName: Gestärktes Schwimmen
+	Description: Du fühlst dich im Wasser viel schneller
+}
+
+SwimmingFatigue: {
+	DisplayName: Schwimm-Erschöpfung
+	Description: Du kannst für kurze Zeit nicht gut schwimmen
+}
+
+CurseBreakerMark: {
+	DisplayName: Fluchmarkierung
+	Description: Für den Tod markiert!
+}
+
+MarbleMinecartBuff: {
+	DisplayName: Nemeischer Streitwagen
+	Description: "'Du fühlst dich mächtig!'"
+}
+
+Crystallization: {
+	DisplayName: Kristallisierung
+	Description: Rapider Lebensverlust
+}
+
+Golden_Curse: {
+	DisplayName: Goldener Fluch
+	Description: Erhöhte Fallgeschwindigkeit und Fallschaden
+	Death: "{0} starb, fest wie ein Goldbarren"
+}
+
+Crawlerock_Buff: {
+	DisplayName: Kriechfels
+	Description: Ein junger Höhlenkriecher kämpft für dich!
+}
+
+JellyfishMinion_Buff: {
+	DisplayName: Qualle
+	Description: Eine niedliche, hüpfende Qualle kämpft für dich!
+}
+
+LavaRockSummon_Buff: {
+	DisplayName: Schlackenlaterne
+	Description: Die Kraft der Magma fließt durch diese Laterne
+}
+
+MangoJellyMinion_Buff: {
+	DisplayName: Mango-Gelee
+	Description: Ein Mini-Mango-Gelee kämpft für dich!
+}
+
+Minior_Buff: {
+	DisplayName: Mini-Meteor
+	Description: Ein Mini-Meteor kämpft für dich!
+}
+
+SnakeMinion_Buff: {
+	DisplayName: Fliegende Schlange
+	Description: "'Ziemlich giftig...'"
+}
+
+SnapsporeMinion_Buff: {
+	DisplayName: Knallspore
+	Description: Eine hüpfende Knallspore kämpft für dich!
+}
+
+MoonjellySummon_Buff: {
+	DisplayName: Mondlicht-Bewahrer
+	Description: Dieser Mondlicht-Bewahrer beschwört winzige Lunazoa, die für dich kämpfen!
+}
+
+QuacklingMinion_Buff: {
+	DisplayName: Entchen
+	Description: Mit Bandana geboren!
+}
+
+RabbitOfCaerbannog_Buff: {
+	DisplayName: Kaninchen von Caerbannog
+	Description: "'Das ist doch nur ein harmloses kleines Häschen, oder?'"
+}
+
+ButterflyMinion_Buff: {
+	DisplayName: Ätherischer Schmetterling
+	Description: Ein leuchtender Schmetterling kämpft für dich!
+}
+
+ToucanMinion_Buff: {
+	DisplayName: Tukane
+	Description: Trotz all meiner Wut
+}
+
+SoulDaggerProj_Buff: {
+	DisplayName: Seelendolch
+	Description: Ernte ihre Seelen!
+}
+
+SandWarriorMinion_Buff: {
+	DisplayName: Sandkrieger
+	Description: Der Sandkrieger kämpft für dich
+}
+
+PigronMinion_Buff: {
+	DisplayName: Schweinerons
+	Description: Bacon!
+}
+
+FairyMinion_Buff: {
+	DisplayName: Feen
+	Description: Hey! Pass auf!
+}
+
+StarplateDrone_Buff: {
+	DisplayName: Starplate-Kampfdrohne
+	Description: "'Wird deinen Feinden garantiert einen schnellen Tod bescheren'"
+}
+
+LocustBig_Buff: {
+	DisplayName: Heuschrecken
+	Description: Bringerin einer Plage
+}
+
+ExplorerSpeed: {
+	DisplayName: Entdecker-Geschwindigkeit
+	Description: Deine Beweglichkeit ist stark verbessert
+}
+
+ArcaneFreeze: {
+	DisplayName: Arkane Kälte
+	Description: Ein magisches Eis verzehrt dich
+}

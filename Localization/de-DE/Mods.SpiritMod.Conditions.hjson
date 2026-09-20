@@ -1,0 +1,51 @@
+NotDay: Fällt nur nachts
+Day: Fällt nur tagsüber
+DropFrom: "Fällt nur in "
+Purity: Reinheit
+Snow: Schnee
+Asteroid: Asteroid
+DefBoss: Fällt nur, nachdem {0} besiegt wurde
+RrefixThe: ""
+AnyMech: irgendein mechanischer Boss
+FromVHead: Von giftigen Köpfen
+FromFHead: Von brennenden Köpfen
+FromAHead: Von ätzenden Köpfen
+PokeyBodyLastSegment: Fällt nur vom letzten Segment
+Enchanted: Fällt, wenn der Gegner verzaubert ist
+Rarely: Selten
+Uncommonly: Gelegentlich von Schatten-Mimics
+HasMoonshot: Irgendein Spieler besitzt Moonshot
+VoyagerDown: Starplate Voyager ist besiegt
+ScarabDown: Scarabeus ist besiegt
+MJWDown: Der Mondgelee-Zauberer ist besiegt
+VinewrathDown: Rankenzorn ist besiegt
+DuskingDown: Dusking ist besiegt
+InBriar: Im Dorngestrüpp
+InAsteroids: In den Asteroiden
+InSpirit: Im Geist-Biom
+FirstDown: Nur beim ersten Besiegen
+HalfCompleteBestiary: Die Hälfte von Spirits Bestiarium ist vollständig
+FullCompleteBestiary: Das gesamte Spirit-Bestiarium ist vollständig
+DurasilkSheaf: Erhalte 3 Durasilk-Garben
+WarlockLure: Während "Unheiliges Unterfangen"
+# Quest conditions are below here
+# IsCompleted is used to shorten translation
+IsCompleted: Quest ist abgeschlossen
+FirstAdventureFinished: Erstes Abenteuer {$IsCompleted}
+FishyBusinessFinished: Fischiges Geschäft {$IsCompleted}
+SanctuaryNightlightsFinished: Sanktuarium - Nachtlichter {$IsCompleted}
+SpaceRocksFinished: Weltraumgestein {$IsCompleted}
+RockyRoadFinished: Steiniger Weg {$IsCompleted}
+ForgottenCivilizationsFinished: Vergessene Zivilisationen {$IsCompleted}
+HiveHuntingFinished: Bienenstockjagd {$IsCompleted}
+GlowingAGardenFinished: Ein leuchtender Garten {$IsCompleted}
+ManicMageFinished: Der wahnsinnige Magier {$IsCompleted}
+SkyHighFinished: Himmelhoch {$IsCompleted}
+UnholyUndertakingFinished: Unheiliges Unterfangen {$IsCompleted}
+DecrepitDepthsFinished: Verfallene Tiefen {$IsCompleted}
+TowerOrHideoutQuestFinished: Entweder "Einbruch und Eindringen" oder "Freundlicher Rückzugsort" sind abgeschlossen
+ItsNoSalmonFinished: Das ist kein Lachs... {$IsCompleted}
+SanctuarySporeSalvageFinished: Sanktuarium - Sporenbergung {$IsCompleted}
+WhyZombiesFinished: Zombies... Warum Zombies {$IsCompleted}
+BeneathTheIceFinished: Unter dem Eis {$IsCompleted}
+FloweryFiendsFinished: Blumige Bestien {$IsCompleted}

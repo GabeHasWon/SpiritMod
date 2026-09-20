@@ -1,0 +1,44 @@
+AsteroidBiome: {
+	DisplayName: Asteroiden
+	TownNPCDialogueName: das Asteroiden-Biom
+}
+
+BriarSurfaceBiome: {
+	DisplayName: Dornengestrüpp
+	TownNPCDialogueName: das Dornengestrüpp-Biom
+}
+
+BriarUndergroundBiome: {
+	DisplayName: Unterirdisches Dornengestrüpp
+	TownNPCDialogueName: das unterirdische Dornengestrüpp-Biom
+}
+
+JellyDelugeBiome: {
+	DisplayName: Gelee-Flut
+	TownNPCDialogueName: das Gelee-Flut-Biom
+}
+
+MysticMoonBiome: {
+	DisplayName: Mystischer Mond
+	TownNPCDialogueName: das Mystischer-Mond-Biom
+}
+
+TideBiome: {
+	DisplayName: Die Gezeiten
+	TownNPCDialogueName: das Gezeiten-Biom
+}
+
+SpiritSurfaceBiome: {
+	DisplayName: Geist
+	TownNPCDialogueName: das Geist-Biom
+}
+
+SpiritUndergroundBiome: {
+	DisplayName: Unterirdischer Geist
+	TownNPCDialogueName: das unterirdische Geist-Biom
+}
+
+SynthwaveSurfaceBiome: {
+	DisplayName: Synthwave
+	TownNPCDialogueName: das Synthwave-Biom
+}

@@ -1,0 +1,296 @@
+KoiTotem_Tile.MapEntry: Koi-Totem
+OpalFrog_Tile.MapEntry: Opal-Frosch
+Trophy8Tile.MapEntry: Atlas-Trophäe
+Trophy2Tile.MapEntry: Uralte-Vogel-Trophäe
+Trophy6Tile.MapEntry: Dusking-Trophäe
+Trophy4Tile.MapEntry: Infernon-Trophäe
+MJWTrophyTile.MapEntry: Mondgelee-Zauberer-Trophäe
+Trophy1Tile.MapEntry: Scarabeus-Trophäe
+Glowstone.MapEntry: Astralit
+Trophy3Tile.MapEntry: Starplate-Voyager-Trophäe
+Trophy5Tile.MapEntry: Rankenzorn-Trophäe
+BismiteCrystalOre.MapEntry: Bismit-Kristall
+CoilEnergizerTile.MapEntry: Gewickelter Energiespender
+CryoliteOreTile.MapEntry: Kryolith-Erz
+Driftwood1Tile.MapEntry: Treibholz
+Driftwood2Tile.MapEntry: Treibholz
+Driftwood3Tile.MapEntry: Treibholz
+FishLureTile.MapEntry: Köder
+SunkenTreasureTile.MapEntry: Versunkener Schatz
+FloranOreTile.MapEntry: Floran-Erz
+GraniteOre.MapEntry: Verzauberter Granitbrocken
+MarbleOre.MapEntry: Uralter Marmorbrocken
+OlympiumToken_Tile.MapEntry: Olympium-Token
+Trophy10Tile.MapEntry: R'lyehianische Trophäe
+SpiritOreTile.MapEntry: Geist-Erz
+Fathomless_Chest.MapEntry: Bodenlose Vase
+AvianEgg.MapEntry: Vogel-Ei
+Blaststone_Grave.MapEntry: Grabstein
+SkullGrave.MapEntry: Grabstein
+Canvas_Tile.MapEntry: Leinwand
+Coral1x2.MapEntry: Koralle
+Coral2x2.MapEntry: Koralle
+Coral3x3.MapEntry: Koralle
+CrystalFlower.MapEntry: Kristallblume
+Cloudstalk.MapEntry: Wolkenstängel
+GoblinStandardTile.MapEntry: Goblin-Kampfstandarte
+GoblinStatueTile.MapEntry: Goblin-Statue
+Spike1Tile.MapEntry: Granitformation
+Spike2Tile.MapEntry: Granitformation
+Spike3Tile.MapEntry: Granitformation
+Spike4Tile.MapEntry: Granitformation
+Spike5Tile.MapEntry: Granitformation
+Spike6Tile.MapEntry: Granitformation
+Hourglass.MapEntry: Sanduhr
+IceBatHostile.MapEntry: Gefrorene Eisfledermäuse
+IceFlinxHostile.MapEntry: Gefrorener Schnee-Flinx
+IceVikingHostile.MapEntry: Gefrorener Untoter Wikinger
+IceWheezerHostile.MapEntry: Gefrorener Wheezer
+IceBatDecor.MapEntry: Eisfledermaus-Skulptur
+IceBatPassive.MapEntry: Gefrorene Eisfledermäuse
+IceDeityDecor.MapEntry: Eisgottheit-Skulptur
+IceFlinxDecor.MapEntry: Gefrorene-Schnee-Flinx-Skulptur
+IceFlinxPassive.MapEntry: Gefrorener Schnee-Flinx
+IceVikingDecor.MapEntry: Untoter-Wikinger-Skulptur
+IceVikingPassive.MapEntry: Gefrorener Untoter Wikinger
+IceWheezerDecor.MapEntry: Gefrorener-Wheezer-Skulptur
+IceWheezerPassive.MapEntry: Gefrorener Wheezer
+WinterbornDecor.MapEntry: Winterborn-Skulptur
+Kelp1x2.MapEntry: Seetang
+Kelp2x2.MapEntry: Seetang
+Kelp2x3.MapEntry: Seetang
+Breakable1x2Vent.MapEntry: Hydrothermalschlot
+Breakable1x3Vent.MapEntry: Hydrothermalschlot
+HydrothermalVent1x2.MapEntry: Hydrothermalschlot
+HydrothermalVent1x3.MapEntry: Hydrothermalschlot
+
+OceanPirateChest: {
+	MapEntry: Piratenkiste
+	ContainerName: Piratenkiste
+}
+
+Pillar1Tile.MapEntry: Säule
+Pillar2Tile.MapEntry: Säule
+Pillar3Tile.MapEntry: Säule
+Pillar4Tile.MapEntry: Säule
+Pillar5Tile.MapEntry: Säule
+Pillar6Tile.MapEntry: Säule
+Pillar7Tile.MapEntry: Säule
+Pillar8Tile.MapEntry: Säule
+PottedSakuraTile.MapEntry: Sakura-Bonsai
+PottedWillowTile.MapEntry: Gelber-Weiden-Bonsai
+PrimePrint.MapEntry: Bauplan
+ProbePrint.MapEntry: Bauplan
+ReachGrass1.MapEntry: Stacheliges Gras
+ScarabIdol.MapEntry: Skarabäus-Idol
+Shrine1_Tile.MapEntry: Uralter Schrein
+Shrine2_Tile.MapEntry: Uralter Schrein
+Shrine3_Tile.MapEntry: Uralter Schrein
+SkullPile1.MapEntry: Knochenhaufen
+SkullPile2.MapEntry: Knochenhaufen
+SkullStick.MapEntry: Schädel auf einem Stock
+SkullStick3.MapEntry: Schädelstock
+SkullStick3Flip.MapEntry: Schädelstock
+SkullStickFlip.MapEntry: Schädelstock
+BlueShardBig.MapEntry: Riesenkristall
+GreenShardBig.MapEntry: Riesenkristall
+PurpleShardBig.MapEntry: Riesenkristall
+StarBeacon.MapEntry: Astralit-Leuchtfeuer
+TwinsPrint.MapEntry: Bauplan
+BannerTile.MapEntry: Banner
+Black_Stone.MapEntry: Schwarzgestein
+BlastStone.MapEntry: Grundgestein
+SepulchreBrick.MapEntry: Grabmal-Dachziegel
+BloodBlossom.MapEntry: Blutblüte
+CrimsonPustuleTile.MapEntry: Crimson-Pustel
+AcidACTile.MapEntry: Kaputte Klimaanlage
+AcidBarrelTile.MapEntry: Ätzendes Fass
+
+AcidChestTile: {
+	MapEntry: Ätzende Kiste
+	ContainerName: Ätzende Kiste
+}
+
+AcidDresserTile: {
+	MapEntry: Ätzende Kommode
+	ContainerName: Ätzende Kommode
+}
+
+AcidFanTile.MapEntry: Rostiger Ventilator
+AcidKegTile.MapEntry: Ätzendes Fässchen
+ArcadeMachine.MapEntry: Spielautomat
+
+BambooBarrel: {
+	MapEntry: Entrindetes Bambusfass
+	ContainerName: Entrindetes Bambusfass
+}
+
+BambooBench.MapEntry: Entrindete Bambusbank
+BambooBirdCage.MapEntry: Entrindeter Bambus-Vogelkäfig
+BambooPot.MapEntry: Entrindeter Bambustopf
+BoneAltar.MapEntry: Knochenaltar
+BriarCrate_Tile.MapEntry: Kiste
+Blossom_Tile.MapEntry: Kleintierkäfig
+Briarmoth_Tile.MapEntry: Kleintierkäfig
+BrownCrinoid_Tile.MapEntry: Kleintierkäfig
+Cleft_Tile.MapEntry: Kleintierkäfig
+Gulper_Tile.MapEntry: Kleintierkäfig
+Luvdisc_Tile.MapEntry: Kleintierkäfig
+PaleCrinoid_Tile.MapEntry: Kleintierkäfig
+RedCrinoid_Tile.MapEntry: Kleintierkäfig
+Tubeworm_Tile.MapEntry: Kleintierschale
+VibeshroomJar_Tile.MapEntry: Kleintierkäfig
+TheCouch.MapEntry: Die Couch
+DurasilkSheafTile.MapEntry: Durasilk-Garbe
+FestivalLanternTile.MapEntry: Festival-Laterne
+FishCrate_Tile.MapEntry: Kiste
+ForagerTableTile.MapEntry: Naturforscher-Werkstatt
+ForgottenKingStatue.MapEntry: Statue des Vergessenen Königs
+GemsPickaxeRuby.MapEntry: Steckengebliebene Spitzhacke
+GemsPickaxeSapphire.MapEntry: Steckengebliebene Spitzhacke
+Generator.MapEntry: Glimmplatten-Generator
+GiantAnglerStatueTile.MapEntry: Statue des Riesigen, Muskulösen, Halb-Hai-Halb-Angler
+
+GlowplateChest: {
+	MapEntry: Glimmplatten-Truhe
+	ContainerName: Glimmplatten-Truhe
+}
+
+GoblinChest: {
+	MapEntry: Dynastie-Truhe
+	ContainerName: Dynastie-Truhe
+}
+
+GoldScarabChest: {
+	MapEntry: Goldtruhe
+	ContainerName: Goldtruhe
+}
+
+HangingCloudstalkTile.MapEntry: Hängender Wolkenstängel
+HangingSoulbloomTile.MapEntry: Hängende Seelenblüte
+HangingSunPotTile.MapEntry: Sonne im Topf
+HerosMemorialStatueTile.MapEntry: Gedenkstätte eines Helden
+DragonStatue.MapEntry: Jade-Drachenstatuette
+BlueLightsLarge.MapEntry: Neon-Laterne
+BlueLightsSmall.MapEntry: Lichterkette
+BlueNeonCandle.MapEntry: Neon-Kerze
+BlueNeonPlant.MapEntry: Neon-Pflanze
+GreenLightsLarge.MapEntry: Neon-Laterne
+GreenLightsSmall.MapEntry: Lichterkette
+GreenNeonCandle.MapEntry: Neon-Kerze
+GreenNeonPlant.MapEntry: Neon-Pflanze
+PurpleLightsLarge.MapEntry: Neon-Laterne
+PurpleLightsSmall.MapEntry: Lichterkette
+PurpleNeonCandle.MapEntry: Neon-Kerze
+PurpleNeonPlant.MapEntry: Neon-Pflanze
+RedLightsLarge.MapEntry: Neon-Laterne
+RedLightsSmall.MapEntry: Lichterkette
+RedNeonCandle.MapEntry: Neon-Kerze
+RedNeonPlant.MapEntry: Neon-Pflanze
+YellowLightsLarge.MapEntry: Neon-Laterne
+YellowLightsSmall.MapEntry: Lichterkette
+YellowNeonCandle.MapEntry: Neon-Kerze
+YellowNeonPlant.MapEntry: Neon-Pflanze
+OccultistMapTile.MapEntry: Okkulte Wandschriftrolle
+OldTelescopeTile.MapEntry: Altes Teleskop
+PirateCrate.MapEntry: Kiste
+
+ReachChest1: {
+	MapEntry: Elderbark-Truhe
+	ContainerName: Elderbark-Truhe
+}
+
+ReachDresser: {
+	MapEntry: Elderbark-Kommode
+	ContainerName: Elderbark-Kommode
+}
+
+ReachLanternTile.MapEntry: Elderbark-Laterne
+ReachPotTile.MapEntry: Elderbark-Topf
+ReachSofa.MapEntry: Elderbark-Sofa
+TreemanStatue.MapEntry: Statue der Alten Götter
+
+ReachChest: {
+	MapEntry: Dorngestrüpp-Truhe
+	ContainerName: Dorngestrüpp-Truhe
+}
+
+ReachCrate_Tile.MapEntry: Kiste
+GraniteSculpture1x2.MapEntry: Granitskulptur
+GraniteSculpture2x3.MapEntry: Granitskulptur
+GraniteSculpture3x3.MapEntry: Granitskulptur
+GraniteSculpture3x5.MapEntry: Granitskulptur
+MarbleSculpture1x2.MapEntry: Marmorskulptur
+MarbleSculpture2x3.MapEntry: Marmorskulptur
+MarbleSculpture3x8.MapEntry: Marmorskulptur
+
+SepulchreChestTile1: {
+	MapEntry: Grabmal-Truhe
+	ContainerName: Grabmal-Truhe
+}
+
+ShadowflameStone.MapEntry: Goblin-Waffenständer
+ShiverbarkFlagTile.MapEntry: Shiverbark-Fahne
+ShiverbarkTotemTile.MapEntry: Shiverbark-Totem
+BlueSign.MapEntry: Schild
+GreenSign.MapEntry: Schild
+PurpleSign.MapEntry: Schild
+RedSign.MapEntry: Schild
+YellowSign.MapEntry: Schild
+SkullPileTile.MapEntry: Schädelhaufen
+SlotMachineTile.MapEntry: Spielautomat
+
+AsteroidChest: {
+	MapEntry: Asteroiden-Truhe
+	ContainerName: Asteroiden-Truhe
+}
+
+ScrapTile1.MapEntry: Weltraumschrott
+ScrapTile2.MapEntry: Weltraumschrott
+ScrapTile3.MapEntry: Weltraumschrott
+ScrapTile4.MapEntry: Weltraumschrott
+ScrapTile5.MapEntry: Weltraumschrott
+ScrapTile6.MapEntry: Weltraumschrott
+
+SpiritChest: {
+	MapEntry: Duskwood-Truhe
+	ContainerName: Duskwood-Truhe
+}
+
+SpiritCrate.MapEntry: Kiste
+SunPotTile.MapEntry: Sonne im Topf
+SynthpalmTile.MapEntry: Synthpalm-Panel
+SynthwaveHead.MapEntry: Hyperraum-Büste
+SynthwaveHeadActive.MapEntry: Hyperraum-Büste
+TechCrateBig.MapEntry: Glimmplatten-Kiste
+TechCrateSmall.MapEntry: Glimmplatten-Kiste
+TentOpposite.MapEntry: Zelt
+TreasureChestTile.MapEntry: Beutetruhe
+VaporwaveTile.MapEntry: Retrofuturistisches Panel
+JumpPadTile.MapEntry: Sprungplattform
+CopperPile.MapEntry: Kupferhaufen
+GoldPile.MapEntry: Goldhaufen
+IronPile.MapEntry: Eisenhaufen
+LeadPile.MapEntry: Bleihaufen
+PlatinumPile.MapEntry: Platinhaufen
+SilverPile.MapEntry: Silberhaufen
+TinPile.MapEntry: Zinnhaufen
+TungstenPile.MapEntry: Wolframhaufen
+SoulBloomTile.MapEntry: Seelenblüte
+CursedArmor.MapEntry: Verfluchte Rüstung
+ScreamingTomeTile.MapEntry: Mysteriöses Foliant
+
+SepulchreChestTile: {
+	MapEntry: Grabmal-Truhe
+	ContainerName: Grabmal-Truhe
+}
+
+SepulchreMirror.MapEntry: Grabmal-Spiegel
+SepulchreWindowOne.MapEntry: Grabmal-Fenster
+SepulchreWindowTwo.MapEntry: Grabmal-Fenster
+GoblinStandardTileRubble.MapEntry: Trümmer der Goblin-Standarte
+SkullStick3FlipRubble.MapEntry: Trümmer des Schädelstocks 3 (gespiegelt)
+SkullStick3Rubble.MapEntry: Trümmer des Schädelstocks 3
+TentOppositeRubble.MapEntry: Zelttrümmer
+SwordStand.MapEntry: Schwertständer
+Map: Karte

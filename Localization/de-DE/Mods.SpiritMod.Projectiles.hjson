@@ -1,0 +1,695 @@
+IceReflector.DisplayName: Eisreflektor
+ElectricGuitarProj.DisplayName: E-Gitarre
+ElectricGuitarProjPlayer.DisplayName: Blitzschlag
+GranitechDrone.DisplayName: Granitech-Drohne
+Moonlight_Sack_Lightning.DisplayName: Mondlicht-Blitz
+RuneHeart.DisplayName: Runenherz
+Sea_Snail_Poison_Projectile.DisplayName: Gift der Meeresschnecke
+InterstellarShield.DisplayName: Interstellarer Schild
+UkeleleProj.DisplayName: Ukulele
+UkeleleProjTwo.DisplayName: Ukulele
+Unstable_Tesla_Coil_Projectile.DisplayName: Blitzschlag
+RipperSlugProj.DisplayName: Reißerschnecke
+AtlasPetProjectile.DisplayName: Atlas Jr.
+AvianHookProjectile.DisplayName: "{$ProjectileName.GemHookAmethyst}"
+AvianPet.DisplayName: Uraltes Küken
+TalonPiercerProj.DisplayName: Wut der Kralle
+DuskingPetProjectile.DisplayName: Kleine Schattenflamme
+InfernonPetProjectile.DisplayName: Inferno
+MJWPetProjectile.DisplayName: Mondgelee-Glühbirne
+OccultistPetProjectile.DisplayName: Kleiner Okkultist
+AdornedBowProj.DisplayName: Geschmückter-Bogen-Projektil
+ScarabArrow.DisplayName: Skarabäus-Pfeil
+KhopeshSlash.DisplayName: Königlicher Khopesh
+LocustBig.DisplayName: Heuschrecke
+LocustSmall.DisplayName: Baby-Heuschrecke
+RadiantCane.DisplayName: Strahlende Kugel
+ScarabPetProjectile.DisplayName: Kleiner Skarabäus
+LivewireProj.DisplayName: Livewire
+StargloveChargeOrange.DisplayName: Sternenfall
+StargloveChargePurple.DisplayName: Sternenfall
+StargloveOrbiterOrange.DisplayName: Sternenfall
+StargloveOrbiterPurple.DisplayName: Sternenfall
+StarplateGloveProj.DisplayName: Hundertfacher Faustschlag
+StarplatePetProjectile.DisplayName: Starplate-Miniatur
+OrangeBeam.DisplayName: Oranger Strahl
+StarplateDrone.DisplayName: Starplate-Kampfdrohne
+ThornArrow.DisplayName: Dornenpfeil
+VinewrathPetProjectile.DisplayName: Zorniger Setzling
+StarPowderProj.DisplayName: Sternenstaub-Projektil
+BlizzardProjectile.DisplayName: Blizzard
+KelpHookProj.DisplayName: Seetang-Haken
+MagnetHookProj.DisplayName: ${ProjectileName.GemHookAmethyst}
+Zipline.DisplayName: Seilzug
+CosmicRattlerPet.DisplayName: Starachnid
+CrystalFlowerProjectile.DisplayName: Kristallblume
+HeadsplitterProj.DisplayName: Kopfspalter
+FlayedArrow.DisplayName: Gehäuteter Bolzen
+HeartstrikeProj.DisplayName: Herzschlag
+CarrionCrowArrow.DisplayName: Aasrabe
+Amethyst_Arrow.DisplayName: Amethyst-Pfeil
+Diamond_Arrow.DisplayName: Diamant-Pfeil
+Emerald_Arrow.DisplayName: Smaragd-Pfeil
+Ruby_Arrow.DisplayName: Rubin-Pfeil
+Sapphire_Arrow.DisplayName: Saphir-Pfeil
+Topaz_Arrow.DisplayName: Topas-Pfeil
+Ornament_Arrow.DisplayName: Ornament-Pfeil
+ThornHookProj.DisplayName: Dornranken-Haken
+StabberShortsword.DisplayName: Beispiel-Kurzschwert
+Basking_Shark_Projectile.DisplayName: Riesenhai
+BubbleMineBubble.DisplayName: Blase
+BubbleMineProj.DisplayName: Blasenmine
+Coral_Catcher_Hook.DisplayName: Schwimmer
+Reef_Wrath_Projectile_1.DisplayName: Korallenriff
+CoilHookProj.DisplayName: Spulenhaken
+CryoSwordProj.DisplayName: Reifheuler
+IceWall.DisplayName: Kryo-Säule
+IceWave.DisplayName: Kryo-Säule
+GastricAcid.DisplayName: Magensäure
+BismiteGrenadeProj.DisplayName: Bismit-Granate
+HealingSplash.DisplayName: Heilspritzer
+ClatterMaceProj.DisplayName: Klappermaul-Streitkolben-Projektil
+JadeDaoProj.DisplayName: Jade-Dao
+FloranReacherProj.DisplayName: Schwimmer
+FrostbiteProj.DisplayName: Blizzard
+GoldChestTop.DisplayName: Goldtruhe
+GranitechGunBullet.DisplayName: Granitech-Kugel
+EnergyShockwave.DisplayName: Energiestampfer
+EnergyStomp.DisplayName: Energiestampfer
+EnergyStomp_Explosion.DisplayName: Energiestampfer
+GraniteFragment.DisplayName: Granitfragment
+GraniteMaceProj.DisplayName: Granit-Streitkolben
+HeliosDash.DisplayName: Helios
+HeliosPhantomProj.DisplayName: Helios
+RagingSunbladeProj.DisplayName: Helios
+BlasterProj.DisplayName: Blaster
+GoldBlasterProj.DisplayName: Blaster
+Bauble.DisplayName: Flitter
+BoomerangBlaster.DisplayName: Bumerang-Blaster
+EnergyBeam.DisplayName: Energiestrahl
+EnergyBurst.DisplayName: Energiestoß
+GoldBullet.DisplayName: Goldkugel
+HoloShot.DisplayName: Sternenschuss
+LongRocket.DisplayName: Rakete
+MiniRocket.DisplayName: Mini-Rakete
+PhaseBlast.DisplayName: Phasenexplosion
+PiercingBeam.DisplayName: Energiestrahl
+Starshot.DisplayName: Sternenschuss
+SwiftShot.DisplayName: Energiestrahl
+StarplateHologram.DisplayName: Blaster
+HeavenFleetProj.DisplayName: Himmelsflotte
+HeavenfleetStar.DisplayName: Himmelsflotte
+KineticRailgunProj.DisplayName: Tesla-Kanone
+VortexExplosion.DisplayName: Vortex-Explosion
+LadyLuckProj.DisplayName: Glücksmünze
+Meteorite_Spew.DisplayName: Meteoritenspucke
+NightBullet.DisplayName: Nachtkugel
+IronBomberProj.DisplayName: Pulsgranate
+LibertyProjHeld.DisplayName: Liberty
+SharkbonesProjHeld.DisplayName: Haifischknochen
+SharkbonesRocket.DisplayName: Super-Mega-Todesrakete
+ArcLashProj.DisplayName: Bogenschlag
+MagicDeckProj.DisplayName: Magiekarte
+Amethyst_Projectile.DisplayName: Amethystmagie
+Diamond_Projectile.DisplayName: Diamantmagie
+Emerald_Projectile.DisplayName: Smaragdmagie
+Ruby_Projectile.DisplayName: Rubinmagie
+Sapphire_Projectile.DisplayName: Saphirmagie
+Topaz_Projectile.DisplayName: Topasmagie
+MarbleStaffProj.DisplayName: Vergoldetes Foliant
+ArtemisCrescent.DisplayName: Artemis-Halbmond
+ArtemisHuntArrow.DisplayName: Himmlischer Pfeil
+ArtemisHuntProj.DisplayName: Artemis' Jagd
+ArtemisHuntVolley.DisplayName: Himmlischer Pfeil
+BetrayersChainsProj.DisplayName: Klingen des Chaos
+Cannonbubble.DisplayName: Kanonenblase
+SkullSentryEye.DisplayName: Menschenfresser
+SkullSentryMucus.DisplayName: Schädelwächter-Schleim
+SkullSentrySentry.DisplayName: Menschenfresser
+UrchinBall.DisplayName: Seeigel
+UrchinSpike.DisplayName: Seeigel
+UrchinStaffProjectile.DisplayName: Seeigel-Stab
+TentacleChainProj.DisplayName: Salzwasser-Sperrfeuer
+AccursedBolt.DisplayName: Verfluchter Bolzen
+GraveyardBoom.DisplayName: Verfluchte Explosion
+GraveyardPortal.DisplayName: Friedhofsportal
+GraveyardSkull.DisplayName: Verfluchter Schädel
+CrossCoffin.DisplayName: Alter Sarg
+CrossSkelet.DisplayName: WütendesSkelett
+ScreamingSkull.DisplayName: Schreiender Schädel
+AstralGreatswordHeld.DisplayName: Astrale Zauberklinge
+Jinxprobe.DisplayName: Unglückssonde
+JinxprobeEnergy.DisplayName: Miniatur-Stern
+QuasarOrb.DisplayName: Quasar-Kugel
+QuasarOrbiter.DisplayName: Quasar-Kugel
+SagittariusArrow.DisplayName: Astraler Pfeil
+SagittariusConstellation.DisplayName: Sternbild
+SagittariusConstellationArrow.DisplayName: Astraler Pfeil
+StarfireProj.DisplayName: Sternenfeuer
+StarLanceProj.DisplayName: Sternenlanze
+BigStellanova.DisplayName: Stellanova
+StellanovaStarfire.DisplayName: Sternenfeuer
+FairyMinion.DisplayName: Fee
+FairyProj.DisplayName: Feenbolzen
+PigronBubble.DisplayName: Schweinerons-Blase
+PigronMinion.DisplayName: Schweineron
+SandWarriorMinion.DisplayName: Sandkrieger
+SanguineFlayerProj.DisplayName: Blutroter Häuter
+SoulDaggerProj.DisplayName: Seelendolch
+SoulDaggerSummon.DisplayName: Seelendolch
+ToucanFeather.DisplayName: Tukanfeder
+ToucanMinion.DisplayName: Tukan
+DragonSlash.DisplayName: Drachenschnitt
+CurseBreak.DisplayName: Fluchbrechung
+CurseBreakerCurse.DisplayName: Fluch
+CurseBreakerProj.DisplayName: Fluchbrecher
+WhirltideScouter.DisplayName: Wirbelflut-Fontäne
+WhirltideSpout.DisplayName: Wirbelflut-Fontäne
+Sovereign_Talon_Projectile.DisplayName: Souveräne Kralle
+Talon_Projectile.DisplayName: Vergoldete Welle
+Tome_of_the_Great_Scavenger_Projectile.DisplayName: Vergoldete Feder
+PoolNoodleProj.DisplayName: Poolnudel-Projektil
+CreepingVineProj.DisplayName: Thyrsus
+CreepingVineProjTwo.DisplayName: Ranke
+CrystalNote.DisplayName: Kristallnote
+LuminanceSeaconeProjectile.DisplayName: Leuchtkraft-Kugel
+RealityQuillProjectile.DisplayName: Magischer Schleim
+RealityQuillProjectileTwo.DisplayName: Magischer Schleim
+AnthemNote.DisplayName: Hymnennote
+ShadowbreakOrb.DisplayName: Schattenbrecher-Kugel
+ShadowflameStoneStaff_Held.DisplayName: Schattenbrecher-Zauberstab
+ButterflyMinion.DisplayName: Ätherischer Schmetterling
+JadeStaffProj.DisplayName: Stab des Jade-Drachen
+StarShockwave.DisplayName: Schockwelle
+WyvernStaffBody.DisplayName: Wyvern
+WyvernStaffHead.DisplayName: Wyvern
+Punching_Bag_Projectile.DisplayName: Zombie-Schlag
+CryoExplosion.DisplayName: Kryolith-Bombe
+CryoKnifeProj.DisplayName: Kryolith-Bombe
+ExplosiveRumProj.DisplayName: Explosiver Rum
+RumExplosion.DisplayName: Rum-Explosion
+RumFire.DisplayName: Explosiver Rum
+EightCoin.DisplayName: Achterstück
+PlagueVialExplosion.DisplayName: Pestphiole
+PlagueVialProj.DisplayName: Pestphiole
+HecateBoonProj.DisplayName: Rune der Hekate
+HecateBoonRune.DisplayName: Rune der Hekate
+NemesisBoonSword.DisplayName: Schwert der Nemesis
+Fathomless_Chest_Bomb.DisplayName: Bodenlose Vase
+MidasProjectile.DisplayName: Goldenes Licht
+Visual_Projectile.DisplayName: Licht der Reinheit
+RlyehianMount_Proj.DisplayName: Tentakel
+ArterialBloodClump.DisplayName: Blutklumpen
+TendonEffect.DisplayName: Fleischsehne
+TendonEffect1.DisplayName: Fleischsehne
+AstralCluster.DisplayName: Astraler Cluster
+AutomataCreeperProj.DisplayName: Zahnrad
+WrathBoom.DisplayName: Zorn-Explosion
+VomitProj.DisplayName: Blutiges Erbrochenes
+BloodGazerEyeShot.DisplayName: Blutschuss
+BloodGazerEyeShotWavy.DisplayName: Blutschuss
+BrimstoneLaser.DisplayName: Schwefel-Laser
+MortarEye.DisplayName: Losgelöstes Auge
+RunicEye.DisplayName: Runisches Auge
+BloomshroomHostile.DisplayName: Blütenpilz
+GlitterDust.DisplayName: Glitzerstaub
+StarSting.DisplayName: Sternenstich
+GlowToadTongue.DisplayName: Leuchtzunge
+LunarStar.DisplayName: Mondstern
+MadHat.DisplayName: Verrückter Hut
+MiracleBeam.DisplayName: Wunderstrahl
+PrismaticBoltHostile.DisplayName: Prismatischer Bolzen
+AvianNado.DisplayName: Böentornado
+BoneWave.DisplayName: Arkane Welle
+DesertFeather.DisplayName: Wüstenfeder
+CrystalShadow.DisplayName: Umbral-Kristall
+ShadowPulse.DisplayName: Schattenpuls
+ExplodingFeather.DisplayName: Explodierende Feder
+SnowBall.DisplayName: Schneeball
+SnowMongerBeam.DisplayName: Eisstrahl
+Fireball.DisplayName: Feuerball
+FireSpike.DisplayName: Feuerdorn
+InfernalBlastHostile.DisplayName: Höllische Explosion
+InfernalWave.DisplayName: Höllische Welle
+SunBlast.DisplayName: Essenz der Sonne
+ElectricJellyfishOrbiter.DisplayName: Arkane Energie
+JellyfishOrbiter.DisplayName: Arkane Energie
+JellyfishOrbiter_Friendly.DisplayName: Arkaner Stern
+JellyfishOrbiter_Projectile.DisplayName: Arkaner Stern
+LightningNode.DisplayName: Blitzknoten
+MoonBlocker.DisplayName: Mondblockierer
+MoonBubble.DisplayName: Blase
+MoonLightning.DisplayName: Mondblitz
+MoonPredictorTrail.DisplayName: Mondblockierer
+MoonThunder.DisplayName: Blitz
+SineBall.DisplayName: Fokuskugel
+SkyMoonZapper.DisplayName: Mondblitzer
+WizardBall.DisplayName: Zauberer-Mondgelee-Kugel
+WizardBall_Projectile.DisplayName: Arkaner Stern
+WizardBallEnergyEffect.DisplayName: Arkane Energie
+AzureJelly.DisplayName: Azurblaues Gelee
+MysticJellyfishOrbiter.DisplayName: Arkane Energie
+MysticJellyfishOrbiter_Projectile.DisplayName: Arkaner Stern
+MysticSineBall.DisplayName: Fokuskugel
+MysticSkyMoonZapper.DisplayName: Mondblitzer
+MysticWall.DisplayName: Fokuskugel
+MysticWizardBall.DisplayName: Zauberer-Mondgelee-Kugel
+MysticWizardBall_Projectile.DisplayName: Arkaner Stern
+MysticWizardBallEnergyEffect.DisplayName: Arkane Energie
+MysticWizardBallSmall.DisplayName: Zauberer-Mondgelee-Kugel
+MysticWizardBallSmall_Projectile.DisplayName: Arkaner Stern
+BruteShockwave.DisplayName: Brutale Schockwelle
+BruteSlam.DisplayName: Brutaler Schlag
+OccultistDagger.DisplayName: Opferdolch
+OccultistHand.DisplayName: Dunkler Griff
+OccultistHandFiery.DisplayName: Dunkler Griff
+OccultistSoul.DisplayName: Verlorene Seele
+BossRedSpike.DisplayName: Nadelstachel
+BouncingSpore.DisplayName: Dornenspore
+ReachBossFlower.DisplayName: Glühblume
+SporeExplosion.DisplayName: Explodierende Spore
+Yikes.DisplayName: Sporenturm
+RedComet.DisplayName: Roter Komet
+LargeScarab.DisplayName: Skarabäus
+SandShockwave.DisplayName: Sand
+ScarabSandball.DisplayName: Sandkugel
+SwarmTelegraph.DisplayName: Sandkugel
+GlitchLaser.DisplayName: Glitch-Laser
+StarLaser.DisplayName: Sternenlaser
+StarLaserTrace.DisplayName: Sternenlaser
+SteamBodyFallingProj.DisplayName: Starshock
+Feeder1.DisplayName: Verfaultes Fleisch
+Feeder2.DisplayName: Verfaultes Fleisch
+Feeder3.DisplayName: Verfaultes Fleisch
+Cavern_Boulder.DisplayName: Höhlenfelsbrocken
+Granite_Boulder.DisplayName: Granitfelsbrocken
+Marble_Boulder.DisplayName: Marmorsäule
+FrostOrbiterHostile.DisplayName: Frostgeist
+DarkfeatherBoltRegular.DisplayName: Dunkelfeder-Bolzen
+DarkfeatherBomb.DisplayName: Dunkelfeder-Bombe
+Zombie_Puke.DisplayName: Zombie-Kotze
+NoxiousGas.DisplayName: Giftiges Feld
+NoxiousIndicator.DisplayName: Giftiges Feld
+BarrelExplosionLarge.DisplayName: Explosion
+ShootingStarHostile.DisplayName: Sternschnuppe
+VileWaspProjectile.DisplayName: Plagegeist-Larve
+GoblinGrenadierGrenade.DisplayName: Granate
+GraniteSentryBolt.DisplayName: Laserbolzen
+HauntedPaperPlane.DisplayName: Verfluchtes Papierflugzeug
+HauntedSkull.DisplayName: Verfluchter Schädel
+HemophoraProj.DisplayName: Toxischer Blutklumpen
+HydraVenomGlob.DisplayName: Hydraspucke
+Earth_Slam_Projectile.DisplayName: Erdschlag
+CorruptVomitProj.DisplayName: Korruptes Erbrochenes
+CoilRocket.DisplayName: Gewickelte Rakete
+Molten_Core_Projectile.DisplayName: Geschmolzene Lava
+MyceliumHat.DisplayName: Myzel-Botaniker
+MeteorShardHostile1.DisplayName: Meteoritensplitter
+MeteorShardHostile2.DisplayName: Meteoritensplitter
+PirateLobberBarrel.DisplayName: Piratenfass
+ToxicFlaskHostile.DisplayName: Pestphiole
+TeratomaProj.DisplayName: Krebsiger Klumpen
+LittleBouncingSpore.DisplayName: Dornenball
+ThornKnife.DisplayName: Dornenmesser
+ScreechOwlNote.DisplayName: Kakophonische Note
+HopperLaser.DisplayName: Tiefraumhüpfer
+SnaptrapperGas.DisplayName: Giftwolke
+SnaptrapperSpore.DisplayName: Schnappfallen-Spore
+RuneHostile.DisplayName: Uralte Flammen
+SpiritRainHostile.DisplayName: Geistpfeil
+SpiritRockBlast.DisplayName: Felsbolzen
+SpiritScythe.DisplayName: Seelensense
+UnstableWisp_Explosion.DisplayName: Instabiles Irrlicht
+WheezerSporeHostile.DisplayName: Spore
+ArchonStarFragment.DisplayName: Sternenfragment
+BGStarProjectile.DisplayName: Fliehender Stern
+MeteorCastProjectile.DisplayName: Meteor
+MeteorEnchantment_Meteor.DisplayName: Meteor
+MeteorMagus_Comet.DisplayName: Komet
+MeteorMagus_Meteor.DisplayName: Meteor
+MeteorMagus_Star.DisplayName: Sternschnuppe
+PulsarShockwave.DisplayName: Schockwelle
+StarachnidProj.DisplayName: Sternbild
+StarWeaverHead.DisplayName: Sternenweber
+WeaverHeadTelegraph.DisplayName: Sternenweber
+WeaverStarChannel.DisplayName: Stern
+WeaverStarFragment.DisplayName: Sternenfragment
+WeaverStargloopChaser.DisplayName: Sternenschleim
+SplitStar.DisplayName: Starjinx-Stern
+VoidCastProjectile.DisplayName: aeaa
+VoidPortal.DisplayName: Leerenportal
+VoidProjectile.DisplayName: Leerendunst
+StarjinxEnemySpawner.DisplayName: Starjinx-Gegner-Spawner
+CoconutHostile.DisplayName: Kokosnuss
+LobsterBubbleSmall.DisplayName: Hummerblase
+MangoLaser.DisplayName: Mango-Laser
+RyBolt.DisplayName: R'ylheianer
+RyTentacle.DisplayName: Tentakelstachel
+ShamanBolt.DisplayName: Heilbolzen
+StrayGlider.DisplayName: Streuner-Gleiter
+TentacleSquid.DisplayName: R'ylheianer
+Letter.DisplayName: Verbotener Brief
+Undead_Warlock_Crystal.DisplayName: Nekromant-Magiekristall
+ValkyrieSpearHostile.DisplayName: Walküren-Speer
+Sharp_Feather.DisplayName: Kronaubaum-Wurfspeer
+WheezerCloud.DisplayName: Gaswolke
+IceCloudHostile.DisplayName: Frostportal
+AngelLightStar.DisplayName: Heiliger Stern
+AccursedArrow.DisplayName: Verfluchter Pfeil
+AnimaExplosion.DisplayName: Dunkle Anima
+BeetleArrow.DisplayName: Käferpfeil
+EyeArrow.DisplayName: Augenpfeil
+FlayedExplosion.DisplayName: Gehäutete Explosion
+GraniteRepeaterArrow.DisplayName: Instabiler Bolzen
+MorningtideProjectile.DisplayName: Morgendämmerungs-Schäfte
+MorningtideProjectile2.DisplayName: Sonnenstrahl-Bolzen
+NegativeArrow.DisplayName: Negativer Pfeil
+PositiveArrow.DisplayName: Positiver Pfeil
+ShadowmoorProjectile.DisplayName: Dunkellicht-Bolzen
+SleepingStar.DisplayName: Schlafender Stern
+SpiritArrow.DisplayName: Wiedergänger-Pfeil
+StarBolt.DisplayName: Sternenbolzen
+AtlasBolt.DisplayName: Erdene Energie
+Blaze.DisplayName: Feurige Lohe
+BloodRuneEffect.DisplayName: Blutflammen
+BoneShard.DisplayName: Knochensplitter
+BrambleTrap.DisplayName: Dornenfalle
+BaneBullet.DisplayName: Schattenkugel
+BatBullet.DisplayName: Fledermaus
+CoconutSpurt.DisplayName: Kokosnuss-Spritzer
+CoilBullet.DisplayName: Gewickelte Kugel
+CoilBullet1.DisplayName: Gewickelte Kugel
+ConfluxPellet.DisplayName: Schrotkugel
+CrimbineAmalgam.DisplayName: Blutiges Amalgam
+CrimbineBlob.DisplayName: Blutiger Klumpen
+CrimbineBone.DisplayName: Wilder Knochen
+CrimbineHeart.DisplayName: Blutiges Herz
+CrimbineSpine.DisplayName: Fleischige Wirbelsäule
+FlakeRocketProj.DisplayName: Flocken-Rakete
+FreemanRocket.DisplayName: Gewickelte Rakete
+FriendlyFeeder.DisplayName: Verfaultes Fleisch
+FriendlyFeeder2.DisplayName: Verfaultes Fleisch
+FriendlyFeeder3.DisplayName: Verfaultes Fleisch
+GiantBlood.DisplayName: Blutklumpen
+HelixRocket.DisplayName: Helix-Rakete
+LunazoaProj.DisplayName: Arkaner Stern
+MinifishProj.DisplayName: Minifisch
+MoonshotBulletLarge.DisplayName: Fokuskugel
+MoonshotProj.DisplayName: Moonshot
+OrionBullet.DisplayName: Orion-Kugel
+PartyExplosives.DisplayName: Party-Sprengstoff
+PartyStarterBullet.DisplayName: Party-Kugel
+RubberBulletProj.DisplayName: Gummikugel
+ScattergunPellet.DisplayName: Schrotkugel
+ShadowShotTracker.DisplayName: Schattenverfolger
+SpectreBullet.DisplayName: Spektralkugel
+TerraBomb.DisplayName: Elementarbombe
+TerraBullet.DisplayName: Terra-Kugel
+TerraBullet1.DisplayName: Energiebolzen
+VileBullet.DisplayName: Widerliche Kugel
+WitherBlast.DisplayName: Verwelkungsexplosion
+EnergizedShockwave.DisplayName: Energieschockwelle
+FloranShockwave.DisplayName: Schockwelle
+NautilusBubbleProj.DisplayName: Blase
+ToxinField.DisplayName: Giftfeld
+CoiledExplosion.DisplayName: Gewickelte Explosion
+CombustionBlaze.DisplayName: Verbrennungsblaze
+CornucopionProj.DisplayName: Cornucop-ion
+CryoliteMage.DisplayName: Kryo-Explosion
+CryoProj.DisplayName: Kryolith-Aura
+DarkAnima.DisplayName: Dunkle Anima
+AbominationPet.DisplayName: Wunschknochen
+AquaBall.DisplayName: Aqua-Kugel
+ArcEnCielHandle.DisplayName: Arc-en-Ciel
+ArcEnCielProj.DisplayName: Arc-en-Ciel
+ChillBolt.DisplayName: Kaltbolzen
+DemonIceProj.DisplayName: Eisrasierer
+DemonProj.DisplayName: Dämonenschwert
+Dodgeball.DisplayName: Super-Völkerball
+Dodgeball1.DisplayName: Völkerball
+DuskfeatherBlade.DisplayName: Dusknfeder-Klinge
+ElectricityBolt.DisplayName: Elektrizitätsbolzen
+FaeriePet.DisplayName: Mondlicht-Fee
+FlamebergeProjectile.DisplayName: Feuriger Bolzen
+FrostBolt.DisplayName: Frostbolzen
+FrostRune.DisplayName: Frostrune
+HarpyBolt.DisplayName: Feenbolzen
+JadeScarab.DisplayName: Verzierter Skarabäus
+NeutronStar.DisplayName: Neutronenstern
+OmniwrenchProj.DisplayName: Omniwrench
+PhoenixMinion.DisplayName: Feuriger Phönix
+PhoenixProjectile.DisplayName: Phönix-Essenz
+QuacklingMinion.DisplayName: Entchen-Diener
+RabbitOfCaerbannog.DisplayName: Kaninchen von Caerbannog
+Wrath.DisplayName: Arkaner Zorn
+DrakomireFlame.DisplayName: Drakomire-Flamme
+Earthrock.DisplayName: Erdsplitter
+EarthSpirit.DisplayName: Erdgeist
+EelOrb.DisplayName: Elektrische Kugel
+ElectrosphereGrenade.DisplayName: Elektrosphären-Granate
+EnergyFieldStarplate.DisplayName: Energiefeld
+FaerieStar.DisplayName: Feenstern
+FierySetExplosion.DisplayName: Feuriger Zorn
+Fire.DisplayName: Boshafter Zorn
+FireMaw.DisplayName: Feuerspucke
+FireSpark.DisplayName: Höllenglut
+SpikeBall.DisplayName: Stachelkugel
+VineChainProj.DisplayName: Rankenkette
+FloranOrb.DisplayName: Floran-Kugel
+FrostSpike.DisplayName: Eisdorn
+FrostSpine.DisplayName: Frostsplitter
+FrozenFragment.DisplayName: Eis
+GhastSkullFriendly.DisplayName: Spektraler Schädel
+GhostJellyBombProj.DisplayName: Geistergelee-Bombe
+GildedFountain.DisplayName: Goldkaskade
+GraniteShard1.DisplayName: Granitsplitter
+Comet.DisplayName: Komet
+Comet1.DisplayName: Komet
+CorpsebloomExplosion.DisplayName: Leichenblüten-Explosion
+MechBat.DisplayName: Mech-Fledermaus
+Meteor.DisplayName: Meteor
+SpaceDebris1.DisplayName: Weltraummüll
+SpaceDebris2.DisplayName: Weltraummüll
+SpaceDebris3.DisplayName: Weltraummüll
+SpaceDebris4.DisplayName: Weltraummüll
+SpaceDebris5.DisplayName: Weltraummüll
+SpaceDebris6.DisplayName: Weltraummüll
+HostileWrath.DisplayName: Zorn der Sonne
+HowlingBolt.DisplayName: Heulender Bolzen
+HydrothermalVentPlume.DisplayName: Hydrothermalschlot
+InfernalBlast.DisplayName: Höllenglut
+InfernalGuard.DisplayName: Höllischer Wächter
+AdamantiteStaffProj.DisplayName: Adamantit-Explosion
+AdamantiteStaffProj2.DisplayName: Adamantit-Explosion
+AquaFlareProj.DisplayName: Aquaflare
+AquaSphere.DisplayName: Aqua-Sphäre
+AquaSphere2.DisplayName: Aqua-Sphäre
+BismiteShard.DisplayName: Bismit-Energie
+BismiteShot.DisplayName: Bismit-Schuss
+Blood.DisplayName: Blutcluster
+Blood3.DisplayName: Blutcluster
+BloodExplosion.DisplayName: Blutkochen
+BloodFangs.DisplayName: Blutfänge
+BloodVessel.DisplayName: Blutgefäß
+BlueEmber.DisplayName: Blaue Glut
+BubblePumpProj.DisplayName: Blasenblaster
+CactusWallProj.DisplayName: Wandkaktus
+ChaosBall.DisplayName: Chaoskugel
+Clock.DisplayName: Uhr
+CobaltStaffProj.DisplayName: Kobaltsplitter
+CobaltStaffProj1.DisplayName: Kobaltsplitter
+CorruptPortal.DisplayName: Dunkles Portal
+CorruptPortal_Star.DisplayName: Sternschnuppe
+CursedFire.DisplayName: Verfluchtes Feuer
+CursedFlames.DisplayName: Verfluchte Flamme
+FieryFlareMagic.DisplayName: Schlacken-Leuchtsignal
+FireSoul.DisplayName: Feurige Seele
+Firespike.DisplayName: Feuerdorn
+FloranSpore.DisplayName: Floran-Spore
+FrigidWall.DisplayName: Eisige Wand
+GhostFeather.DisplayName: Geisterfeder
+GobSorcererOrb.DisplayName: Schattenflammen-Kugel
+GraniteSpike1.DisplayName: Granitstachel
+GraniteWandProj.DisplayName: Instabile Kaskade
+GunBubble1.DisplayName: Blase
+GunBubble2.DisplayName: Blase
+GunBubble3.DisplayName: Blase
+GunBubble4.DisplayName: Blase
+GunBubble5.DisplayName: Blase
+HallowedStaffProj.DisplayName: Geheiligte Zauberklinge
+InfernalBeam.DisplayName: Höllenstrahl
+JellynautOrbiter.DisplayName: Arkane Qualle
+LeafProjReachChest.DisplayName: Blattpfeil
+MagicConchProj.DisplayName: Strudel
+MarblePortal.DisplayName: Marmorportal
+MarbleStalactite.DisplayName: Vergoldeter Stalaktit
+MythrilStaffProj.DisplayName: Mythril-Kügelchen
+NightSpit.DisplayName: Nächtlicher Griff
+OrichalcumStaffProj.DisplayName: Orichalcum-Blütenblatt
+PalladiumRuneEffect.DisplayName: Palladium-Rune
+PalladiumStaffProj.DisplayName: Runenwand
+Pesterfly.DisplayName: Plagegeist
+PhantomArc.DisplayName: Phantombogen
+PhantomArcHandle.DisplayName: Phantombogen
+Polyshot.DisplayName: Polyschuss
+PossessedDagger.DisplayName: Besessener Dolch
+Rune.DisplayName: Rune
+RuneBook.DisplayName: Runenbuch
+SandWall.DisplayName: Sandwand
+ShadowBall_Friendly.DisplayName: Schattenkugel
+ShadowCircleRune.DisplayName: Schattenkreis-Rune
+ShadowflameOrbBolt.DisplayName: Dunkler Bolzen
+SpiritBolt.DisplayName: Geistbolzen
+SpiritShardFriendly.DisplayName: Geistessenz
+SpiritWave.DisplayName: Geisteswelle
+Spit.DisplayName: Kranker Speichel
+StarfallProjectile.DisplayName: Fallender Stern
+StarTrail1.DisplayName: Sternenirrlicht
+TentacleSpike.DisplayName: Tentakelstachel
+TerraProj.DisplayName: Elementarer Zorn
+TerraProj2.DisplayName: Terra-Zorn
+ThornSpike.DisplayName: Dornstachel
+TitaniumStaffProj.DisplayName: Geschliffenes Schwert
+TitaniumStaffProj2.DisplayName: Geschliffenes Schwert
+TrueClot1.DisplayName: Todesklumpen
+TrueClot2.DisplayName: Wahrer Blutcluster
+TrueHallowedStaffProj.DisplayName: Geheiligte Zauberklinge
+ValkyrieSpearFriendly.DisplayName: Walküren-Speer
+WaterSpout.DisplayName: Wasserhose
+Zephyr.DisplayName: Zephir
+ManaSpark.DisplayName: Engelsfunke
+MiningHelmet.DisplayName: Licht
+NovaBeam1.DisplayName: Nova-Strahl
+NovaBeam2.DisplayName: Sternenstrahl
+NovaBeam3.DisplayName: Sternenstrahl
+OrichHoming.DisplayName: Orichalcum-Blüte
+OvergrowthLeaf.DisplayName: Überwucherungsblatt
+BladePet.DisplayName: Besessene Klinge
+CaptiveMaskPet.DisplayName: Entfesselte Maske
+CultfishPet.DisplayName: Kultfisch
+HauntedBookPet.DisplayName: Verfluchtes Foliant
+JellyfishPet.DisplayName: Qualle
+LanternPet.DisplayName: Laterne
+OverseerPet.DisplayName: Aufseher
+PhantomPet.DisplayName: Phantom
+SaucerPet.DisplayName: Unterstützungs-Untertasse
+ShadowPet.DisplayName: Schattenwelpe
+PoisonCloud.DisplayName: Giftwolke
+PoisonGlob.DisplayName: Giftklumpen
+PrismaticBolt.DisplayName: Prismatischer Bolzen
+PrismBolt2.DisplayName: Prismatische Energie
+Pumpkin.DisplayName: Kürbis
+QuicksilverBolt.DisplayName: Quecksilbertropfen
+ReachPetal.DisplayName: Blutblütenblatt
+BismiteCutter.DisplayName: Bismit-Schneider
+FloraP.DisplayName: Floran-Roller
+MadHatProj.DisplayName: Verrückter Hut
+ReachBoomerang.DisplayName: Dornenherz-Bumerang
+SpiritBoomerang.DisplayName: Geist-Bumerang
+RunicRune.DisplayName: Rune
+ShadowCircleRune1.DisplayName: Schattenkreis-Rune
+ShadowEmber.DisplayName: Schattenglut
+ShadowOrb.DisplayName: Leeren-Singularität
+ShadowPulse1.DisplayName: Schattenpuls
+ShadowSingeProj.DisplayName: Schattenversengung
+ShellHammerProjectile.DisplayName: Muschel
+Shockwave.DisplayName: Schockwelle
+SlicingGust.DisplayName: Schneidende Bö
+SmallExplosion.DisplayName: Kleine Explosion
+SolarBeamFriendly.DisplayName: Solarstrahl
+SolarExplosion.DisplayName: Solar-Knall
+BriarSolution.DisplayName: Dorngestrüpp-Spray
+SpiritSolution.DisplayName: Geist-Spray
+SoulPotionWard.DisplayName: Seelenschutz
+SoulShard.DisplayName: Seelensplitter
+SoulSpirit.DisplayName: Feurige Seele
+SpiritBoom.DisplayName: Instabile Explosion
+SpiritBullet.DisplayName: Geistkugel
+SpiritSand.DisplayName: Geistsand
+SpiritStar.DisplayName: Geiststern
+StarCutterProj.DisplayName: Sternenschneider
+Starshock.DisplayName: Starshock
+Starshock1.DisplayName: Starshock
+Starshock2.DisplayName: Starlux
+StarSoul.DisplayName: Seelenstern
+StarTrail.DisplayName: Sternenspur
+SteamBeam.DisplayName: Dampfstrahl
+StoneSpirit.DisplayName: Geist
+BismiteSentrySummon.DisplayName: Bismit-Kristall
+CimmerianRedGlyph.DisplayName: Rotes Glyphenzeichen
+CimmerianScepterProjectile.DisplayName: Zimmerisches Zepter
+CimmerianStaffStar.DisplayName: Zwielichtstern
+CoilSentrySummon.DisplayName: Elektroturm
+CragboundMinion.DisplayName: Felsgebunden
+Crawlerock.DisplayName: Kriechfels
+DragonBodyOne.DisplayName: Jade-Drache
+ElectricGunProjectile.DisplayName: Bogenblitz
+GloomgusShroom.DisplayName: Düster-Pilz
+HeartilleryMinion.DisplayName: Schmerzendes Herz
+HeartilleryMinionClump.DisplayName: Geklumptes Blut
+HolyKnifeMinion.DisplayName: Zauberklinge
+JellyfishBolt.DisplayName: Elektrobolzen
+JellyfishMinion.DisplayName: Kleine Qualle
+GateLaser.DisplayName: Tor-Laser
+Hopper.DisplayName: Rechtes Tor
+LavaRockSummon.DisplayName: Magmafels
+MangoJellyMinion.DisplayName: Mango-Gelee
+HappySoul.DisplayName: Seele der Freude
+SadBeam.DisplayName: Sternenstrahl
+SadSoul.DisplayName: Seele der Traurigkeit
+Minior.DisplayName: Mini-Meteor
+LunazoaOrbiter.DisplayName: Lunazoa
+MoonjellySummon.DisplayName: Mondlicht-Bewahrer
+RogueKnifeMinion.DisplayName: Verrostetes Schwert
+SacrificialDaggerProj.DisplayName: Opferdolch
+ShroomSummon.DisplayName: Spore
+SkeletalonMinion.DisplayName: Skelettharpyie
+SnakeMinion.DisplayName: Fliegende Schlange
+SnapsporeMinion.DisplayName: Knallspore
+TeslaSpikeProjectile.DisplayName: Tesla-Stachel
+TeslaTurret.DisplayName: Tesla-Geschützturm
+TwinklePopperMinion.DisplayName: Funkelknaller
+DefenseZone.DisplayName: Verteidigungszone
+HealingZone.DisplayName: Heilungszone
+LowGravZone.DisplayName: Schwerelosigkeitszone
+SlowZone.DisplayName: Verlangsamungszone
+StaminaZone.DisplayName: Ausdauerzone
+BloodWave.DisplayName: Blutwelle
+BoneFeather.DisplayName: Knochenfeder
+NailProj.DisplayName: Hohler Nagel
+SwordBarrage.DisplayName: Schwertsperrfeuer
+ThornBowThorn.DisplayName: Dorn
+BrainProj.DisplayName: Kriechende Schrumpfung
+ChaosPearl.DisplayName: Windscher-Perle
+ClatterJavelinProj.DisplayName: Klappermaul-Wurfspeer
+FrigidJavelinProj.DisplayName: Eisiger Wurfspeer
+TikiJavelinProj.DisplayName: Tiki-Wurfspeer
+CoconutP.DisplayName: Kokosnuss
+EoWDaggerProj.DisplayName: Widerlicher Spalter
+FlaskOfGoreProj.DisplayName: Phiole des Blutbads
+InfernalJavelin.DisplayName: Höllischer Wurfspeer
+Kunai_Throwing.DisplayName: Kunai
+MimeBombProj.DisplayName: Pantomime-Bombe
+OakHeart.DisplayName: Eichenherz
+Scapula.DisplayName: Schwebendes Schulterblatt
+SkeletronHandProj.DisplayName: Knochenschneider
+SpectreBolt.DisplayName: Spektralbolzen
+SpectreKnifeProj.DisplayName: Spektralmesser
+TargetBottle.DisplayName: Zielflasche
+TargetCan.DisplayName: Zieldose
+TargetShard.DisplayName: Zielflasche
+WayfinderTorch.DisplayName: Fackel des Wegfinders
+VirulenceExplosion.DisplayName: Virulente Explosion
+VoidStar.DisplayName: Leerenstern
+Wheeze.DisplayName: Röchelgas
+WildMagic.DisplayName: Uralte Magie
+UnstableIcicleProj.DisplayName: Instabiler Eiszapfen
+SteamplateBowProj.DisplayName: Dampfplatten-Bogen-Projektil
+LadyLuckFlash.DisplayName: Glücksmünzen-Blitz
+BloodyCyst.DisplayName: Blutige Zyste
+CursedPhantom.DisplayName: Verfluchtes Phantom
+MagicSpiral.DisplayName: Magiespirale
+PhaseShield.DisplayName: Phasenschild
+RadiantEnergy.DisplayName: Strahlende Energie
+VoidRift.DisplayName: Leerenriss
+ZephyrWave.DisplayName: Zephirwelle

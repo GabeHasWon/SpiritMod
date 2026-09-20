@@ -1,0 +1,108 @@
+Misc: {
+	BadLuck: Pech gehabt!
+	GoodLuck: Glück gehabt!
+	NoShrines: Keine Schreine mehr übrig!
+	Bullseye: Volltreffer!
+	VWBConsume: Das Dorngestrüpp wird dich verschlingen...
+	VWBRainOver: Der sintflutartige Regen im Dorngestrüpp hat aufgehört!
+	VWBWrath: Du kannst dem Zorn der Natur nicht entkommen!
+	StarplateAnnouncement: Der Astralit in den Asteroiden summt vor Energie.
+	Pinned: Standort angepinnt
+	PinRemoved: Pin entfernt
+	PinMove: Klicken zum Verschieben
+	Put: Rechtsklick, um in den Süßigkeitenbeutel zu legen
+	SpiritSpread: Die Geister breiten sich über das Land aus...
+	Cursed: Verflucht!
+	Unlocked: Freigeschaltet!
+	RemainingS: ({0}s verbleibend)
+}
+
+RecipeGroup: {
+	EoRBow: Smaragd- oder Rubinbogen
+	SoTBow: Saphir- oder Topasbogen
+	AoTStaff: Amethyst- oder Topasstab
+	SoEStaff: Saphir- oder Smaragdstab
+	RoDStaff: Rubin- oder Diamantstab
+}
+
+MiscUI: {
+	AutoSell: Klicken, um Gegenstände schnell zu verkaufen
+	SellLock:
+		'''
+		Umschalten, um den Schnellverkauf-Mechanismus zu sperren
+		Du kannst Schnellverkauf nicht nutzen, solange dies aktiviert ist
+		'''
+	SellWeapons: Umschalten, um den Verkauf von Waffen zu deaktivieren
+	SellNoValue: Umschalten, um "wertlose" Gegenstände per Schnellverkauf zu verkaufen
+	Autofire: Dauerfeuer
+	Autoswing: Automatisches Schwingen
+}
+
+Keybinds: {
+	QuestBookToggle.DisplayName: Questbuch umschalten
+	QuestHUDToggle.DisplayName: Quest-HUD umschalten
+}
+
+Events: {
+	BlueMoon: {
+		OnStart: Der Mystische Mond geht auf...
+		IsDay: Der Mond ist bei Tageslicht nicht mächtig.
+		IsCalmNight: Die Nacht ist zu ruhig.
+	}
+
+	TheTide: {
+		OnEnd: Die Gezeiten sind abgeklungen!
+		NotOcean: Die Gezeiten ebben nur bei ruhiger See.
+		AlreadyActive: Die Gezeiten sind bereits da!
+		Wave: "Welle {0}: "
+	}
+
+	JellyDeluge.OnStart: Seltsame Quallen regnen vom Himmel!
+	LuminousOcean.OnStart: Ein Leuchten breitet sich über dem Ozean aus...
+	BloodMoon.DayTime: Der Blutmond erscheint nur nachts.
+}
+
+BossChecklistIntegration: {
+	JellyDeluge: {
+		EntryName: Gelee-Flut
+		SpawnInfo: Tritt auf natürliche Weise über der Erde auf, nachdem irgendein Boss besiegt wurde. Kann auch durch Verwendung eines [i:SpiritMod/DistressJellyItem] beschworen werden, das im Asteroiden-Biom zu finden und mit einem Insektennetz zu fangen ist. Tritt seltener auf, nachdem der Mondgelee-Zauberer besiegt wurde.
+	}
+
+	TheTide: {
+		EntryName: Die Gezeiten
+		SpawnInfo: Verwende jederzeit eine [i:SpiritMod/BlackPearl] am Ozean.
+	}
+
+	MysticMoon: {
+		EntryName: Mystischer Mond
+		SpawnInfo: Verwende nachts einen [i:SpiritMod/BlueMoonSpawn].
+	}
+}
+
+GameTips: {
+	SpiritGameTip0: Mondgelee ist eine großartige Heilquelle!
+	SpiritGameTip1: Der Aufseher kommt nicht zurück!
+	SpiritGameTip2: Du kannst den Abenteurer jederzeit im unterirdischen Dorngestrüpp finden.
+	SpiritGameTip3: Mystische Schreine bieten viele Vorteile - oder Gefahren!
+	SpiritGameTip4: Das Juwel birgt unermessliche Macht. Hast du, was es dafür braucht?
+	SpiritGameTip5: Besiege den Starplate Voyager, um Astralit zu erhalten, ein mächtiges Weltraummetall.
+	SpiritGameTip6: Der Ozean steckt voller Überraschungen. Wirf mal einen Blick hinein!
+	SpiritGameTip7: Keulen sind großartige Nahkampfwaffen, besonders wenn viele Gegner auf Abstand gehalten werden müssen.
+	SpiritGameTip8: Die tief unterirdischen Grabmäler sind gefährlich, aber lohnen sich sehr.
+	SpiritGameTip9: Quests sind ein einfacher Weg, um jede Menge Belohnungen zu bekommen - sprich mit dem Abenteurer, um das Buch zu erhalten!
+}
+
+AvianIslandSigns: {
+	0: (der Text ist unleserlich)
+	1: Schwebendes Resort - Das einzige (Kratzspuren)
+	2: Aufseher in der Ferne gesichtet? Mehr auf Seite 5
+	3: Eine Wiederbelebung? Wahrscheinlicher, als du denkst!
+	4: Finde mehr (Kratzspuren) und das für nur 50g!
+}
+
+FrozenEnemies: {
+	IceBat: Gefrorene(r) {$NPCName.IceBat}
+	SnowFlinx: Gefrorene(r) {$NPCName.SnowFlinx}
+	UndeadViking: Gefrorene(r) {$NPCName.UndeadViking}
+	Wheezer: Gefrorene(r) {$NPCs.Wheezer.DisplayName}
+}

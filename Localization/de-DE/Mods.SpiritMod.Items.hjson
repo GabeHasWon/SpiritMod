@@ -1,0 +1,8892 @@
+AceOfClubs: {
+	DisplayName: Kreuz-Ass
+	Tooltip: Kritische Treffer lassen Gegner Geld fallen lassen
+}
+
+AceOfDiamonds: {
+	DisplayName: Karo-Ass
+	Tooltip:
+		'''
+		Kritische Treffer haben eine Chance, Karo-Asse fallen zu lassen
+		Karo-Asse gewähren beim Einsammeln 20% erhöhten Schaden für 5 Sekunden
+		'''
+}
+
+AceOfHearts: {
+	DisplayName: Herz-Ass
+	Tooltip: Kritische Treffer haben eine Chance, Herzen fallen zu lassen
+}
+
+AceOfSpades: {
+	DisplayName: Pik-Ass
+	Tooltip: Kritische Treffer verursachen zusätzlichen Schaden.
+}
+
+DiamondAce: {
+	DisplayName: Karo-Ass
+	Tooltip: Das solltest du nicht sehen
+}
+
+FourOfAKind: {
+	DisplayName: Vierling
+	Tooltip:
+		'''
+		Kritische Treffer verursachen zusätzlichen Schaden und lassen Geld fallen
+		Kritische Treffer haben eine Chance, ein Karo-Ass oder Herz fallen zu lassen
+		'''
+}
+
+AssassinMagazine: {
+	DisplayName: Magazin des Assassinen
+	Tooltip:
+		'''
+		Doppeltipp {0} während du eine Fernkampfwaffe hältst, um die Munitionsart zu wechseln
+		Funktioniert auch im Inventar
+		'''
+}
+
+Bauble: {
+	DisplayName: Winterlicher Flitter
+	Tooltip:
+		'''
+		Verteidigungs- und Bewegungsfähigkeiten sind erhöht, wenn unter halbem Leben
+		Unter halbes Leben zu fallen erzeugt einen Schild, der 6 Sekunden lang Projektile neutralisiert
+		1 Minute Abklingzeit
+		'''
+}
+
+BowSummonItem: {
+	DisplayName: Unglücksbogen
+	Tooltip:
+		'''
+		Beschwört einen besessenen Bogen, der für dich kämpft
+		Verwendet den ersten Pfeil in deinem Inventar
+		Ohne Pfeile schießt er endlos schwächere Narrenpfeile ab
+		Der Bogen belegt keine Dienerplätze
+		'''
+}
+
+ChaosCrystal: {
+	DisplayName: Chaoskristall
+	Tooltip: Ein Treffer hat eine Chance, dich in die Nähe zu teleportieren
+}
+
+CimmerianScepter: {
+	DisplayName: Zimmerisches Zepter
+	Tooltip:
+		'''
+		Beschwört ein magisches Zepter, das für dich kämpft
+		Das Zepter nutzt eine Vielzahl von Angriffen gegen Feinde
+		Dieses Zepter belegt keine Dienerplätze
+		'''
+}
+
+CleftHorn: {
+	DisplayName: Gespaltenes Horn
+	Tooltip:
+		'''
+		Erhöht Rüstungsdurchdringung um 3
+		Nahkampfangriffe treffen Gegner gelegentlich doppelt
+		'''
+}
+
+CultistScarf: {
+	DisplayName: Schal aus Uraltgeflecht
+	Tooltip:
+		'''
+		20% verringerter Manaverbrauch unter halbem Leben
+		Erhöht das maximale Mana um 120 über halbem Leben
+		9% erhöhte kritische Magiechance
+		Magieangriffe setzen gelegentlich Bolzen mächtiger Uralter Magie frei, die von Wänden abprallen
+		'''
+}
+
+CursedPendant: {
+	DisplayName: Verfluchter Anhänger
+	Tooltip:
+		'''
+		6% erhöhter Nahkampfschaden
+		Waffen haben eine 15%-Chance, Verfluchtes Inferno zu verursachen
+		'''
+}
+
+DarkfeatherVisage: {
+	DisplayName: Dunkelfeder-Antlitz
+	Tooltip:
+		'''
+		Erhöht Magie- und Beschwörungsschaden um 7%
+		Gewährt einen Bonus, wenn zusammen mit einer Magierobe oder einem Pelzmantel getragen
+		'''
+}
+
+Dartboard: {
+	DisplayName: Dartscheibe
+	Tooltip:
+		'''
+		13% verringerter Schaden
+		15% erhöhte kritische Trefferchance
+		'Genau ins Schwarze'
+		'''
+}
+
+DesertSlab: {
+	DisplayName: Uralte Steinplatte
+	Tooltip: Gewährt Immunität gegen den 'Mächtiger Wind'-Debuff während Sandstürmen
+}
+
+ElectricGuitar: {
+	DisplayName: E-Gitarre
+	Tooltip: Nahe Gegner und von Angriffen getroffene Gegner können von Kettenblitzen getroffen werden
+}
+
+FallenAngel: {
+	DisplayName: Engelssiegel
+	Tooltip:
+		'''
+		Magieangriffe können einen Engelsfunken abfeuern
+		Dieser Funke verursacht mehr Schaden, je weniger Mana der Spieler übrig hat
+		'''
+}
+
+FeralConcoction: {
+	DisplayName: Trank der Immunität
+	Tooltip: Immunität gegen Wilden Biss
+}
+
+Flying_Fish_Fin: {
+	DisplayName: Flugfisch-Flosse
+	Tooltip: Erhöht Sprunghöhe und Fallgeschwindigkeit
+}
+
+ForbiddenKnowledgeTome: {
+	DisplayName: Foliant des Verbotenen Wissens
+	Tooltip: Das Töten von Gegnern setzt zielsuchende Spektralschädel frei
+}
+
+FrostGiantBelt: {
+	DisplayName: Frostriesen-Gürtel
+	Tooltip:
+		'''
+		50% Rückstoßresistenz beim Aufladen einer Keule
+		Das Aufladen einer Keule erhöht allmählich die Verteidigung
+		'''
+}
+
+GoldenApple: {
+	DisplayName: Goldener Apfel
+	Tooltip: Erhöht die Verteidigung, während das Leben sinkt
+}
+
+GoldShield: {
+	DisplayName: Vergoldeter Schild
+	Tooltip:
+		'''
+		Gewährt Immunität gegen Rückstoß
+		Während das Leben sinkt, steigt die Verteidigung
+		'''
+}
+
+GranitechDroneBox: {
+	DisplayName: G-TEK-Drohnenbox
+	Tooltip:
+		'''
+		Beschwört 3 Drohnen, die dir helfen
+		Eine Spitzhacke zu halten schaltet die Drohnen in den Abbau-Modus
+		Im Abbau-Modus kopieren diese Drohnen deine Spitzhacken-Stärke und bauen mit dir ab
+		Diese Drohnen belegen keine Dienerplätze
+		'''
+}
+
+GravityModulator: {
+	DisplayName: Schwerkraftmodulator
+	Tooltip: Verringert die Schwerkraft des Spielers erheblich
+}
+
+HellEater: {
+	DisplayName: Feuriges Maul
+	Tooltip:
+		'''
+		Magieangriffe können feurige Spucke ausstoßen, die beim Treffer von Gegnern explodiert
+		7% erhöhter Magieschaden
+		'''
+}
+
+HighGravityBoots: {
+	DisplayName: Hochschwerkraft-Stiefel
+	Tooltip:
+		'''
+		Normalisiert die Schwerkraft im Weltraum
+		Halte RUNTER, um Schwerkraft und vertikalen Schwung zu erhöhen
+		'''
+}
+
+IchorPendant: {
+	DisplayName: Ichor-Anhänger
+	Tooltip:
+		'''
+		6% erhöhter Nahkampfschaden
+		Nahkampftreffer verursachen gelegentlich Ichor
+		'''
+}
+
+IllusionistEye: {
+	DisplayName: Auge des Illusionisten
+	Tooltip:
+		'''
+		Tödlicher Schaden teleportiert dich stattdessen nach Hause
+		Dieser Effekt funktioniert nicht, wenn ein Boss in der Nähe ist
+		10 Minuten Abklingzeit
+		'Ein Illusionist ohne Zuhause ist nur ein Gespenst'
+		'''
+}
+
+KoiTotem: {
+	DisplayName: Koi-Totem
+	Tooltip:
+		'''
+		Erhöht die Angelfertigkeit, wenn getragen oder in der Nähe platziert
+		Das Totem spuckt gelegentlich den verwendeten Köder wieder aus, zur Wiederverwendung
+
+		'''
+}
+
+BismiteShield: {
+	DisplayName: Giftiger Tartsche
+	Tooltip:
+		'''
+		Von einem Gegner getroffen zu werden verursacht Eiternde Wunden
+		Erhöht die Verteidigung um 2 für jeden betroffenen Gegner in der Nähe des Spielers
+		Dieser Effekt stapelt sich bis zu fünfmal
+		'''
+}
+
+BloodfireShield: {
+	DisplayName: Schild des Blutfeuers
+	Tooltip:
+		'''
+		Verringert die Lebensregeneration auf 0
+		Erhöht das maximale Leben um 40
+		'''
+}
+
+ClatterboneShield: {
+	DisplayName: Inbrünstiger Beschützer
+	Tooltip:
+		'''
+		Erhöht die Verteidigung um 2 und verlangsamt die Bewegungsgeschwindigkeit um 3% für jeden nahen Feind
+		Dieser Effekt stapelt sich bis zu fünfmal
+		'Da ist etwas Besonderes zwischen uns'
+		'''
+}
+
+ExplorerTreads: {
+	DisplayName: Sohlen des Entdeckers
+	Tooltip:
+		'''
+		+5% Bewegungsgeschwindigkeit pro 10% fehlendem Leben
+		50% Chance, Fallen und Gefahren zu vermeiden
+		'Macht das Erkunden von Tempeln zum Spaziergang'
+		'''
+}
+
+FrigidGloves: {
+	DisplayName: Eisige Bandagen
+	Tooltip:
+		'''
+		Kritische Nahkampftreffer verursachen Frostbrand
+		Gewährt 4% erhöhte Angriffsgeschwindigkeit pro nahem Gegner
+		Dieser Effekt stapelt sich bis zu fünfmal
+		'''
+}
+
+LeatherBoots: {
+	DisplayName: Lederläufer
+	Tooltip: Erhöht leicht Bewegungsgeschwindigkeit und Beschleunigung
+}
+
+LeatherGlove: {
+	DisplayName: Lederne Fausthandschuhe
+	Tooltip: Erhöht die Nahkampfgeschwindigkeit um 6%
+}
+
+LeatherShield: {
+	DisplayName: Lederner Schutz
+	Tooltip: Erhöht das maximale Leben um 10
+}
+
+Strikeshield: {
+	DisplayName: Schlagschild
+	Tooltip:
+		'''
+		Gegner werden getroffen, wenn sie dich treffen
+		Getroffene Gegner werden von Dienern anvisiert und erleiden 3 Beschwörungsmarkierungsschaden
+		5 Sekunden Dauer
+		'''
+}
+
+TechBoots: {
+	DisplayName: Technik-Schuhe
+	Tooltip:
+		'''
+		Erhöht leicht Bewegungsgeschwindigkeit und Beschleunigung
+		Erhältst einen enormen Geschwindigkeitsschub unter halbem Leben
+		'''
+}
+
+LongFuse: {
+	DisplayName: Lange Zündschnur
+	Tooltip:
+		'''
+		Sprengstoffe brennen langsamer
+		Funktioniert auch im Inventar
+		'''
+}
+
+LumothLantern: {
+	DisplayName: Leuchtende Laterne
+	Tooltip:
+		'''
+		Spendet helles Licht
+		Funktioniert im Kosmetik-Slot, aber weniger effektiv
+		'Erkunde die tiefsten Höhlen mit einer treuen Lichtquelle!'
+		'''
+}
+
+ArcaneNecklace: {
+	DisplayName: Arkane Halskette
+	Tooltip:
+		'''
+		Erhöht das maximale Mana um 20
+		Gegner haben eine 20%-Chance, einen zusätzlichen Manastern fallen zu lassen
+		'''
+}
+
+ManaShield: {
+	DisplayName: Manaschild
+	Tooltip:
+		'''
+		Erhöht das maximale Mana um 20
+		Absorbiert 10% des von Gegnern verursachten Schadens
+		Dieser Schaden wird stattdessen in einen Manaverlust umgewandelt
+		Der verlorene Manabetrag entspricht dem 4-fachen des absorbierten Schadens
+		'''
+}
+
+SeraphimBulwark: {
+	DisplayName: Seraphim-Bollwerk
+	Tooltip:
+		'''
+		Erhöht das maximale Mana um 40
+		Absorbiert 10% des von Gegnern verursachten Schadens
+		Dieser Schaden wird stattdessen in einen Manaverlust umgewandelt
+		'''
+}
+
+MagnifyingGlass: {
+	DisplayName: Vergrößerungsglas
+	Tooltip:
+		'''
+		4% erhöhte kritische Trefferchance
+		Rechtsklick zum Herauszoomen, wenn keine Waffe gehalten wird
+		'''
+}
+
+MedusaShield: {
+	DisplayName: Medusa-Schild
+	Tooltip:
+		'''
+		Gewährt Immunität gegen Rückstoß und den Versteinert-Debuff
+		Während das Leben sinkt, steigt die Verteidigung
+		'''
+}
+
+GildedScarab: {
+	DisplayName: Vergoldeter Skarabäus
+	Tooltip:
+		'''
+		Ein Treffer gewährt einen vorübergehenden Verteidigungsbuff
+		Dieser Schild gewährt mehr Verteidigung, basierend auf dem erlittenen Schaden
+		'''
+}
+
+GrislyTongue: {
+	DisplayName: Grausige Zunge
+	Tooltip:
+		'''
+		Ein Treffer löst ein Fleischstück, das aufgesammelt werden kann, um einen Teil deines verlorenen Lebens wiederherzustellen
+		Dieses Pickup verschwindet nach ein paar Sekunden
+		'''
+}
+
+SlagMedallion: {
+	DisplayName: Schlacken-Medaillon
+	Tooltip:
+		'''
+		Ein Treffer gewährt einen vorübergehenden Schadensbuff
+		Dieser Buff skaliert mit dem erlittenen Schaden
+		'''
+}
+
+GrislyBit: {
+	DisplayName: Grausiges Stück
+	Tooltip: Das solltest du nicht sehen
+}
+
+MetalBand: {
+	DisplayName: Metallband
+	Tooltip:
+		'''
+		Erhöht die Aufnahmereichweite für Erze
+		'Nein, das kannst du dir nicht anhören'
+		'''
+}
+
+MimicRepellent: {
+	DisplayName: Mimic-Abwehrmittel
+	Tooltip:
+		'''
+		Verhindert, dass Kisten-Mimics gefischt werden können
+		'Hält diese tentakligen Freaks fern!'
+		'''
+}
+
+Moonlight_Sack: {
+	DisplayName: Mondlicht-Sack
+	CustomTooltip: Erzeugt eine Blitzkette zwischen dir und deinen Dienern, die Schaden verursacht
+	Tooltip: ""
+}
+
+OpalFrogItem: {
+	DisplayName: Opal-Frosch
+	Tooltip:
+		'''
+		15% erhöhte Hakengeschwindigkeit
+		Löst sich automatisch von Haken, sobald das Ende des Hakens erreicht ist
+		Deaktiviere die Accessoire-Sichtbarkeit, um das automatische Loshaken zu deaktivieren
+		'''
+}
+
+Rabbit_Foot: {
+	DisplayName: Kaninchenpfote
+	Tooltip:
+		'''
+		'Das muss Glück sein!'
+		Du hast 1% kritische Trefferchance
+		'''
+}
+
+Rangefinder: {
+	DisplayName: Entfernungsmesser
+	Tooltip:
+		'''
+		Fernkampfwaffen sind jetzt mit einem Laserzielgerät ausgestattet
+		Funktioniert auch im Inventar
+		'''
+}
+
+RogueCrest: {
+	DisplayName: Wappen des Schurken
+	Tooltip:
+		'''
+		Beschwört ein verrostetes Schwert, das für dich kämpft
+		Dieses Schwert belegt keine Dienerplätze
+		'''
+}
+
+RuneWizardScroll: {
+	DisplayName: Schriftrolle des Runenzauberers
+	Tooltip:
+		'''
+		'Wir wussten alle, dass Skelette schreiben können.'
+		Magieangriffe können zufällige, mächtige Debuffs bei Feinden verursachen
+		Magieangriffe können ein zufälliges Projektil abfeuern
+		'''
+}
+
+BloodWard: {
+	DisplayName: Blutroter Wächter
+	Tooltip:
+		'''
+		Erzeugt eine schwächende runische Aura
+		Das Töten von Gegnern innerhalb deiner runischen Aura heilt etwas Leben
+		'''
+}
+
+Sea_Snail_Poison: {
+	DisplayName: Meeresschnecken-Gift
+	Tooltip: Du hinterlässt eine Schleimspur, die Gegner vergiftet
+}
+
+ShadowSingeFang: {
+	DisplayName: Schattenversengter Fang
+	Tooltip:
+		'''
+		4% erhöhte kritische Trefferchance
+		4% erhöhte kritische Trefferchance bei Nacht oder unter der Erde
+		Das Angreifen von Gegnern mit weniger als halbem Leben kann sie mit Schatten treffen, auf Kosten von Leben
+		'''
+}
+
+ShieldCore: {
+	DisplayName: Interstellarer Schildkern
+	Tooltip: Du bist von reflektierenden Schilden umgeben
+}
+
+ShortFuse: {
+	DisplayName: Kurze Zündschnur
+	Tooltip:
+		'''
+		Sprengstoffe brennen schneller
+		Funktioniert auch im Inventar
+		'''
+}
+
+ShurikenLauncher: {
+	DisplayName: Handschuh des Scharfschützen
+	Tooltip:
+		'''
+		Erhöht Fernkampfschaden auf Distanz
+		Aufeinanderfolgende Schüsse auf dieser Distanz verursachen erhöhten Schaden
+		'''
+}
+
+SkarmoryWings: {
+	DisplayName: Klingenflügel
+	Tooltip:
+		'''
+		'Sie scheinen von einem metallischen Organismus unbekannten Ursprungs zu stammen'
+		Gewährt Flug und langsamen Fall
+		Hinterlässt eine Spur aus Quecksilber, die Feinde verfolgt
+		'''
+}
+
+SpectreRing: {
+	DisplayName: Spektralring
+	Tooltip: Setzt einen Bolzen Spektralenergie frei, wenn der Träger verletzt wird
+}
+
+SpellswordCrest: {
+	DisplayName: Wappen des Zauberklingenträgers
+	Tooltip:
+		'''
+		Beschwört ein heiliges Schwert, das für dich kämpft
+		Dieses Schwert belegt keine Dienerplätze
+		'''
+}
+
+SwiftRune: {
+	DisplayName: Rune der Schnelligkeit
+	Tooltip: Erhöht die unassistierte Luftbeweglichkeit massiv
+}
+
+TimScroll: {
+	DisplayName: Tims Schriftrolle
+	Tooltip:
+		'''
+		'Wer hätte gedacht, dass Skelette schreiben können?'
+		Magieangriffe können zufällige Debuffs bei Feinden verursachen
+		Magieangriffe können ein zufälliges Projektil abfeuern
+		'''
+}
+
+Ukelele: {
+	DisplayName: Ukulele
+	Tooltip:
+		'''
+		Das Treffen von Gegnern hat eine Chance, eine Blitzkette zu erzeugen
+		'...und seine Musik war elektrisierend.'
+		'''
+}
+
+Unstable_Tesla_Coil: {
+	DisplayName: Instabile Teslaspule
+	Tooltip:
+		'''
+		Elektrisiert bis zu 3 nahe Gegner
+		Erhöht die Aufnahmereichweite für Erze
+		'''
+}
+
+VitalityStone: {
+	DisplayName: Vitalitätsstein
+	Tooltip:
+		'''
+		Herzen fallen mit höherer Wahrscheinlichkeit von Gegnern
+		'Die Nacht ist dunkel und voller Schrecken'
+		'''
+}
+
+WheezerScale: {
+	DisplayName: Keuchende-Schuppe
+	Tooltip:
+		'''
+		Nahkampftreffer auf Feinde können sie dazu bringen, eine Wolke giftigen Gases abzugeben
+		5% erhöhte Nahkampfgeschwindigkeit
+		'''
+}
+
+WintryCharmMage: {
+	DisplayName: Winterlicher Talisman
+	Tooltip:
+		'''
+		Angriffe können getroffene Gegner verlangsamen
+		Dieser Effekt gilt nicht für Bosse
+		'''
+}
+
+BeetleArrow: {
+	DisplayName: Käferpfeil
+	Tooltip: Erfolgreiche Treffer auf Gegner verringern erlittenen Schaden um 1%, bis maximal 15%
+}
+
+SepulchreArrow: {
+	DisplayName: Verfluchter Pfeil
+	Tooltip: Durchbohrt bis zu zwei Gegner
+}
+
+RipperSlug: {
+	DisplayName: Reißerschnecke
+	Tooltip: Unterliegt der Schwerkraft, verursacht aber zusätzlichen Schaden
+}
+
+RubberBullet: {
+	DisplayName: Gummigeschoss
+	Tooltip: Stößt Gegner weiter zurück
+}
+
+SpectreBullet: {
+	DisplayName: Spektralkugel
+	Tooltip: Ein spektraler Bolzen, der Gegner verfolgt und gelegentlich ihr Leben entzieht
+}
+
+FaerieStar: {
+	DisplayName: Feenstern
+	Tooltip: Kann als Munition verwendet werden
+}
+
+OliveSolution: {
+	DisplayName: Oliven-Lösung
+	Tooltip:
+		'''
+		Wird vom Clentaminator verwendet
+		Verbreitet das Dorngestrüpp
+		'''
+}
+
+Warhead: {
+	DisplayName: Sprengkopf
+	Tooltip: Kann als Munition für Raketenwerfer verwendet werden
+}
+
+SpiritSolution: {
+	DisplayName: Cyan-Lösung
+	Tooltip:
+		'''
+		Wird vom Clentaminator verwendet
+		Verbreitet den Geist
+		'''
+}
+
+AstronautBody: {
+	DisplayName: Astronautenanzug
+	Tooltip: ""
+}
+
+AstronautHelm: {
+	DisplayName: Astronautenhelm
+	Tooltip: ""
+}
+
+AstronautLegs: {
+	DisplayName: Astronautenhose
+	Tooltip: ""
+}
+
+SwimmingTrunks: {
+	DisplayName: Badehose
+	Tooltip: "'Sie bieten nicht viel an Verteidigung, sind aber unbestreitbar stylisch.'"
+}
+
+BeekeeperBody: {
+	DisplayName: Imker-Anzug
+	Tooltip: ""
+}
+
+BeekeeperHead: {
+	DisplayName: Imker-Visier
+	Tooltip: ""
+}
+
+BeekeeperLegs: {
+	DisplayName: Imker-Beinschienen
+	Tooltip: ""
+}
+
+BotanistBody: {
+	DisplayName: Botaniker-Schürze
+	Tooltip: ""
+}
+
+BotanistHat: {
+	DisplayName: Sonnenblumen-Strohhut
+	Tooltip: Hält dich glücklich
+}
+
+BotanistLegs: {
+	DisplayName: Botaniker-Jogginghose
+	Tooltip: 10% erhöhte Bewegungsgeschwindigkeit
+}
+
+CapacitorBody: {
+	DisplayName: Robe des Kondensators
+	Tooltip: ""
+}
+
+CapacitorHead: {
+	DisplayName: Kapuze des Kondensators
+	Tooltip: ""
+}
+
+CapacitorLegs: {
+	DisplayName: Beinschienen des Kondensators
+	Tooltip: ""
+}
+
+CenturionBody: {
+	DisplayName: Plattenpanzer des Zenturios
+	Tooltip: ""
+}
+
+CenturionHead: {
+	DisplayName: Helm des Zenturios
+	Tooltip: ""
+}
+
+CenturionLegs: {
+	DisplayName: Beinschienen des Zenturios
+	Tooltip: ""
+}
+
+CoiledChestplate: {
+	DisplayName: Brustpanzer des Autonauten
+	Tooltip: ""
+}
+
+CoiledLeggings: {
+	DisplayName: Beinschienen des Autonauten
+	Tooltip: ""
+}
+
+CoiledMask: {
+	DisplayName: Kopfschmuck des Autonauten
+	Tooltip: ""
+}
+
+CommandoBody: {
+	DisplayName: Anzug des Commandos
+	Tooltip: ""
+}
+
+CommandoHead: {
+	DisplayName: Visier des Commandos
+	Tooltip: ""
+}
+
+CommandoLegs: {
+	DisplayName: Beinschienen des Commandos
+	Tooltip: ""
+}
+
+CowboyBody: {
+	DisplayName: Weste des Gesetzlosen
+	Tooltip: ""
+}
+
+CowboyHead: {
+	DisplayName: Hut des Gesetzlosen
+	Tooltip: ""
+}
+
+CowboyLegs: {
+	DisplayName: Hose des Gesetzlosen
+	Tooltip: ""
+}
+
+DaybloomBody: {
+	DisplayName: Sonnenblumen-Gewand
+	Tooltip: Erhöht den Magieschaden um 1
+}
+
+DaybloomHead: {
+	DisplayName: Sonnenblumenhut
+	Tooltip: Erhöht das maximale Mana um 20
+}
+
+DaybloomLegs: {
+	DisplayName: Sonnenblumen-Beinschienen
+	Tooltip: 4% erhöhte kritische Magiechance
+}
+
+DiverBody: {
+	DisplayName: Panzer des Uralten Tauchers
+	Tooltip: ""
+}
+
+DiverHead: {
+	DisplayName: Helm des Uralten Tauchers
+	Tooltip: ""
+}
+
+DiverLegs: {
+	DisplayName: Hose des Uralten Tauchers
+	Tooltip: ""
+}
+
+FreemanBody: {
+	DisplayName: Gefahrenanzug des Gejagten
+	Tooltip: ""
+}
+
+FreemanHead: {
+	DisplayName: Schutzbrille des Gejagten
+	Tooltip: ""
+}
+
+FreemanLegs: {
+	DisplayName: Gefahrenbeinschienen des Gejagten
+	Tooltip: ""
+}
+
+GeodeChestplate: {
+	DisplayName: Geoden-Brustpanzer
+	Tooltip: ""
+}
+
+GeodeHelmet: {
+	DisplayName: Geoden-Helm
+	Tooltip: ""
+}
+
+GeodeLeggings: {
+	DisplayName: Geoden-Beinschienen
+	Tooltip: ""
+}
+
+SnowRangerBody: {
+	DisplayName: Pelzbedeckung
+	Tooltip: ""
+}
+
+SnowRangerHead: {
+	DisplayName: Pelzhelm
+	Tooltip: ""
+}
+
+SnowRangerLegs: {
+	DisplayName: Pelz-Beinwickel
+	Tooltip: ""
+}
+
+JackBody: {
+	DisplayName: Anzug des Gutaussehenden Jack
+	Tooltip: ""
+}
+
+JackHead: {
+	DisplayName: Wunderschönes Antlitz des Gutaussehenden Jack
+	Tooltip: ""
+}
+
+JackLegs: {
+	DisplayName: Hose des Gutaussehenden Jack
+	Tooltip: ""
+}
+
+LeatherHood: {
+	DisplayName: Kapuze des Schützen
+	Tooltip: Erhöht den Fernkampfwaffenschaden um 1
+}
+
+LeatherLegs: {
+	DisplayName: Stiefel des Schützen
+	Tooltip: ""
+}
+
+LeatherPlate: {
+	DisplayName: Panzer des Schützen
+	Tooltip: ""
+}
+
+MadHat: {
+	DisplayName: Verrückter Hut
+	Tooltip:
+		'''
+		Kann geworfen oder getragen werden
+		Erhöht den Magieschaden um 10%
+		Erhöht die kritische Magiechance um 8%
+		'''
+}
+
+BeholderMask: {
+	DisplayName: Beholder-Maske
+	Tooltip: ""
+}
+
+GladeWraithMask: {
+	DisplayName: Lichtungsgeist-Maske
+	Tooltip: ""
+}
+
+HydraMaskAcid: {
+	DisplayName: Ätzende Hydra-Maske
+	Tooltip: ""
+}
+
+HydraMaskFire: {
+	DisplayName: Feurige Hydra-Maske
+	Tooltip: ""
+}
+
+HydraMaskVenom: {
+	DisplayName: Giftige Hydra-Maske
+	Tooltip: ""
+}
+
+LeafPaddyHat: {
+	DisplayName: Reisfeld-Hut
+	Tooltip: ""
+}
+
+PsychoMask: {
+	DisplayName: Psycho-Maske
+	Tooltip: "'Eine Blume? Für miiich?'"
+}
+
+SailorCap: {
+	DisplayName: Kapitänsmütze
+	Tooltip: ""
+}
+
+SnapperHat: {
+	DisplayName: Hut des Schnapperfischers
+	Tooltip: ""
+}
+
+TrapperGlove: {
+	DisplayName: Handschuh des Fallenstellers
+	Tooltip: ""
+}
+
+WinterHat: {
+	DisplayName: Wintermütze
+	Tooltip: Gewährt Immunität gegen kaltes Wasser
+}
+
+MimeMask: {
+	DisplayName: Pantomimen-Maske
+	Tooltip:
+		'''
+		Erhöht den Beschwörungsschaden um 3%
+		Erhöht deine maximale Anzahl an Dienern
+		'''
+}
+
+PlagueDoctorCowl: {
+	DisplayName: Maske des Pestdoktors
+	Tooltip: ""
+}
+
+PlagueDoctorLegs: {
+	DisplayName: Beinschienen des Pestdoktors
+	Tooltip: ""
+}
+
+PlagueDoctorRobe: {
+	DisplayName: Robe des Pestdoktors
+	Tooltip: ""
+}
+
+ProtectorateBody: {
+	DisplayName: Protektorat-Uniform
+	Tooltip: ""
+}
+
+ProtectorateLegs: {
+	DisplayName: Protektorat-Beinschienen
+	Tooltip: ""
+}
+
+ReachBossBody: {
+	DisplayName: Gewand des Dornsprechers
+	Tooltip: ""
+}
+
+ReachBossHead: {
+	DisplayName: Helm des Dornsprechers
+	Tooltip: ""
+}
+
+ReachBossLegs: {
+	DisplayName: Beinschienen des Dornsprechers
+	Tooltip: ""
+}
+
+RogueHood: {
+	DisplayName: Schurken-Kapuze
+	Tooltip: 4% erhöhte Bewegungsgeschwindigkeit
+}
+
+RoguePants: {
+	DisplayName: Schurken-Beinschienen
+	Tooltip: Erhöht die Bewegungsgeschwindigkeit um 5%
+}
+
+RoguePlate: {
+	DisplayName: Schurken-Panzer
+	Tooltip: ""
+}
+
+Earrings: {
+	DisplayName: Ohrringe
+	Tooltip: ""
+}
+
+SilkSirwal: {
+	DisplayName: Sirwal
+	Tooltip: ""
+}
+
+SilkTop: {
+	DisplayName: Wüsten-Oberteil
+	Tooltip: ""
+}
+
+Stoneplate: {
+	DisplayName: Steinplatte
+	Tooltip: Behindert den Träger
+}
+
+WayfarerBody: {
+	DisplayName: Rucksack des Wanderers
+	Tooltip: 5% erhöhte Bewegungsgeschwindigkeit
+}
+
+WayfarerHead: {
+	DisplayName: Hut des Wanderers
+	Tooltip: Immunität gegen Dunkelheit
+}
+
+WayfarerLegs: {
+	DisplayName: Hose des Wanderers
+	Tooltip: 7% erhöhte Bewegungsgeschwindigkeit
+}
+
+WitchBody: {
+	DisplayName: Robe der Zauberweberin
+	Tooltip: ""
+}
+
+WitchHead: {
+	DisplayName: Hut der Zauberweberin
+	Tooltip: ""
+}
+
+WitchLegs: {
+	DisplayName: Beinschienen der Zauberweberin
+	Tooltip: ""
+}
+
+AlienBanner: {
+	DisplayName: Alien-Banner
+	Tooltip: ""
+}
+
+AncientApostleBanner: {
+	DisplayName: Uralter-Apostel-Banner
+	Tooltip: ""
+}
+
+AncientSpectreBanner: {
+	DisplayName: Uraltes-Gespenst-Banner
+	Tooltip: ""
+}
+
+AntlionAssassinBanner: {
+	DisplayName: Ameisenlöwen-Assassinen-Banner
+	Tooltip: ""
+}
+
+ArachmatonBanner: {
+	DisplayName: Arachmaton-Banner
+	Tooltip: ""
+}
+
+ArterialGrasperBanner: {
+	DisplayName: Arterienpacker-Banner
+	Tooltip: ""
+}
+
+AstralAdventurerBanner: {
+	DisplayName: Astraler-Abenteurer-Banner
+	Tooltip: ""
+}
+
+AstralAmalgamBanner: {
+	DisplayName: Astrales-Amalgam-Banner
+	Tooltip: ""
+}
+
+BeholderBanner: {
+	DisplayName: Beholder-Banner
+	Tooltip: ""
+}
+
+BlazingSkullBanner: {
+	DisplayName: Zornige-Seele-Banner
+	Tooltip: ""
+}
+
+BlizzardBanditBanner: {
+	DisplayName: Blizzard-Bandit-Banner
+	Tooltip: ""
+}
+
+BlizzardNimbusBanner: {
+	DisplayName: Blizzard-Nimbus-Banner
+	Tooltip: ""
+}
+
+BloaterBanner: {
+	DisplayName: Speiübel-Banner
+	Tooltip: ""
+}
+
+BloatfishBanner: {
+	DisplayName: Blähfisch-Banner
+	Tooltip: ""
+}
+
+BloomshroomBanner: {
+	DisplayName: Blütenpilz-Banner
+	Tooltip: ""
+}
+
+BlossomHoundBanner: {
+	DisplayName: Blütenhund-Banner
+	Tooltip: ""
+}
+
+BlueDungeonCubeBanner: {
+	DisplayName: Blauer-Kerkerwürfel-Banner
+	Tooltip: ""
+}
+
+BottomFeederBanner: {
+	DisplayName: Grundfresser-Banner
+	Tooltip: ""
+}
+
+BoulderBehemothBanner: {
+	DisplayName: Felsbrocken-Behemoth-Banner
+	Tooltip: ""
+}
+
+BriarthornSlimeBanner: {
+	DisplayName: Dornenschleim-Banner
+	Tooltip: ""
+}
+
+BubbleBruteBanner: {
+	DisplayName: Blasenbrutale-Banner
+	Tooltip: ""
+}
+
+CavernBanditBanner: {
+	DisplayName: Höhlenbandit-Banner
+	Tooltip: ""
+}
+
+CavernCrawlerBanner: {
+	DisplayName: Höhlenkriecher-Banner
+	Tooltip: ""
+}
+
+ChestZombieBanner: {
+	DisplayName: Truhen-Zombie-Banner
+	Tooltip: ""
+}
+
+CoconutSlimeBanner: {
+	DisplayName: Kokosnuss-Schleim-Banner
+	Tooltip: ""
+}
+
+CracklingCoreBanner: {
+	DisplayName: Knisternder-Kern-Banner
+	Tooltip: ""
+}
+
+CrocosaurBanner: {
+	DisplayName: Crocosaurus-Banner
+	Tooltip: ""
+}
+
+CrystalDrifterBanner: {
+	DisplayName: Kristalldrifter-Banner
+	Tooltip: ""
+}
+
+CystalBanner: {
+	DisplayName: Cystal-Banner
+	Tooltip: ""
+}
+
+DarkAlchemistBanner: {
+	DisplayName: Dunkler-Alchemist-Banner
+	Tooltip: ""
+}
+
+DeadeyeMarksmanBanner: {
+	DisplayName: Todesäugiger-Schütze-Banner
+	Tooltip: ""
+}
+
+DiseasedSlimeBanner: {
+	DisplayName: Giftiger-Schleim-Banner
+	Tooltip: ""
+}
+
+DraugrBanner: {
+	DisplayName: Draugr-Banner
+	Tooltip: ""
+}
+
+ElectricEelBanner: {
+	DisplayName: Zitteraal-Banner
+	Tooltip: ""
+}
+
+FallenAngelBanner: {
+	DisplayName: Gefallener-Engel-Banner
+	Tooltip: ""
+}
+
+FallingAsteroidBanner: {
+	DisplayName: Fallender-Asteroid-Banner
+	Tooltip: ""
+}
+
+FesterflyBanner: {
+	DisplayName: Fäulnisfalter-Banner
+	Tooltip: ""
+}
+
+FleshHoundBanner: {
+	DisplayName: Fleischhund-Banner
+	Tooltip: ""
+}
+
+FurnaceMawBanner: {
+	DisplayName: Ofenmaul-Banner
+	Tooltip: ""
+}
+
+GhastBanner: {
+	DisplayName: Ghast-Banner
+	Tooltip: ""
+}
+
+GiantJellyBanner: {
+	DisplayName: Fesselvolt-Qualle-Banner
+	Tooltip: ""
+}
+
+GladeWraithBanner: {
+	DisplayName: Lichtungsgeist-Banner
+	Tooltip: ""
+}
+
+GladiatorSpiritBanner: {
+	DisplayName: Gladiatorengeist-Banner
+	Tooltip: ""
+}
+
+GlitterflyBanner: {
+	DisplayName: Glitzerfalter-Banner
+	Tooltip: ""
+}
+
+GloopBanner: {
+	DisplayName: Gloop-Banner
+	Tooltip: ""
+}
+
+GlowToadBanner: {
+	DisplayName: Leuchtkröte-Banner
+	Tooltip: ""
+}
+
+GluttonousDevourerBanner: {
+	DisplayName: Gieriger-Verschlinger-Banner
+	Tooltip: ""
+}
+
+GoblinGrenadierBanner: {
+	DisplayName: Goblin-Grenadier-Banner
+	Tooltip: ""
+}
+
+GoldCrateMimicBanner: {
+	DisplayName: Goldene-Kisten-Nachahmerin-Banner
+	Tooltip: ""
+}
+
+GranitecTurretBanner: {
+	DisplayName: G-TEK-Geschützturm-Banner
+	Tooltip: ""
+}
+
+GraniteSlimeBanner: {
+	DisplayName: Granitschleim-Banner
+	Tooltip: ""
+}
+
+GreenDungeonCubeBanner: {
+	DisplayName: Grüner-Kerkerwürfel-Banner
+	Tooltip: ""
+}
+
+HauntedTomeBanner: {
+	DisplayName: Verfluchtes-Foliant-Banner
+	Tooltip: ""
+}
+
+HemaphoraBanner: {
+	DisplayName: Hemophora-Banner
+	Tooltip: ""
+}
+
+HydraGreenBanner: {
+	DisplayName: Giftige-Hydra-Banner
+	Tooltip: ""
+}
+
+HydraPurpleBanner: {
+	DisplayName: Venomöse-Hydra-Banner
+	Tooltip: ""
+}
+
+HydraRedBanner: {
+	DisplayName: Feurige-Hydra-Banner
+	Tooltip: ""
+}
+
+IronCrateMimicBanner: {
+	DisplayName: Eisen-Kisten-Nachahmer-Banner
+	Tooltip: ""
+}
+
+KakamoraBanner: {
+	DisplayName: Kakamora-Banner
+	Tooltip: ""
+}
+
+KakamoraBruteBanner: {
+	DisplayName: Kakamora-Schläger-Banner
+	Tooltip: ""
+}
+
+KakamoraGliderBanner: {
+	DisplayName: Kakamora-Windgleiter-Banner
+	Tooltip: ""
+}
+
+KakamoraShamanBanner: {
+	DisplayName: Kakamora-Schamane-Banner
+	Tooltip: ""
+}
+
+KakamoraShielderBanner: {
+	DisplayName: Kakamora-Schildträger-Banner
+	Tooltip: ""
+}
+
+KakamoraShielderBanner1: {
+	DisplayName: Kakamora-Wächter-Banner
+	Tooltip: ""
+}
+
+KakamoraThrowerBanner: {
+	DisplayName: Kakamora-Werfer-Banner
+	Tooltip: ""
+}
+
+LostMimeBanner: {
+	DisplayName: Verlorener-Pantomime-Banner
+	Tooltip: ""
+}
+
+LumantisBanner: {
+	DisplayName: Lumantis-Banner
+	Tooltip: ""
+}
+
+LunarSlimeBanner: {
+	DisplayName: Sternenglotzer-Schleim-Banner
+	Tooltip: ""
+}
+
+MadHatterBanner: {
+	DisplayName: Verrückter-Hutmacher-Banner
+	Tooltip: ""
+}
+
+MangoWarBanner: {
+	DisplayName: Mang-O-Krieg-Banner
+	Tooltip: ""
+}
+
+MangroveDefenderBanner: {
+	DisplayName: Mangroven-Verteidiger-Banner
+	Tooltip: ""
+}
+
+MasticatorBanner: {
+	DisplayName: Kauer-Banner
+	Tooltip: ""
+}
+
+MechromancerBanner: {
+	DisplayName: Mechromant-Banner
+	Tooltip: ""
+}
+
+MoltenCoreBanner: {
+	DisplayName: Geschmolzener-Kern-Banner
+	Tooltip: ""
+}
+
+MoonlightPreserverBanner: {
+	DisplayName: Mondlicht-Bewahrer-Banner
+	Tooltip: ""
+}
+
+MoonlightRupturerBanner: {
+	DisplayName: Mondlicht-Zerreißer-Banner
+	Tooltip: ""
+}
+
+MyceliumBotanistBanner: {
+	DisplayName: Myzel-Botaniker-Banner
+	Tooltip: ""
+}
+
+NetherbaneBanner: {
+	DisplayName: Netherbane-Banner
+	Tooltip: ""
+}
+
+OccultistBanner: {
+	DisplayName: Okkultist-Banner
+	Tooltip: ""
+}
+
+OrbititeBanner: {
+	DisplayName: Orbitit-Banner
+	Tooltip: ""
+}
+
+PhantomBanner: {
+	DisplayName: Phantom-Banner
+	Tooltip: ""
+}
+
+PhantomSamuraiBanner: {
+	DisplayName: Phantom-Samurai-Banner
+	Tooltip: ""
+}
+
+PinkDungeonCubeBanner: {
+	DisplayName: Pinker-Kerkerwürfel-Banner
+	Tooltip: ""
+}
+
+PirateLobberBanner: {
+	DisplayName: Piraten-Werfer-Banner
+	Tooltip: ""
+}
+
+PokeyBanner: {
+	DisplayName: Stachtus-Banner
+	Tooltip: ""
+}
+
+PutromaBanner: {
+	DisplayName: Putroma-Banner
+	Tooltip: ""
+}
+
+ReachmanBanner: {
+	DisplayName: Wilder-Schlurfer-Banner
+	Tooltip: ""
+}
+
+RlyehianBanner: {
+	DisplayName: R'lyehianer-Banner
+	Tooltip: ""
+}
+
+ScreechOwlBanner: {
+	DisplayName: Schreieule-Banner
+	Tooltip: ""
+}
+
+ShockhopperBanner: {
+	DisplayName: Schockhüpfer-Banner
+	Tooltip: ""
+}
+
+SkeletonBruteBanner: {
+	DisplayName: Skelett-Schläger-Banner
+	Tooltip: ""
+}
+
+SoulCrusherBanner: {
+	DisplayName: Seelenzerschmetterer-Banner
+	Tooltip: ""
+}
+
+SpiritBatBanner: {
+	DisplayName: Geistfledermaus-Banner
+	Tooltip: ""
+}
+
+SpiritFloaterBanner: {
+	DisplayName: Geistschweber-Banner
+	Tooltip: ""
+}
+
+SpiritGhoulBanner: {
+	DisplayName: Schattenghul-Banner
+	Tooltip: ""
+}
+
+SpiritMummyBanner: {
+	DisplayName: Dämmerungsmumie-Banner
+	Tooltip: ""
+}
+
+SpiritSkullBanner: {
+	DisplayName: Geistschädel-Banner
+	Tooltip: ""
+}
+
+SpiritTomeBanner: {
+	DisplayName: Uraltes-Foliant-Banner
+	Tooltip: ""
+}
+
+SporeWheezerBanner: {
+	DisplayName: Sporen-Wheezer-Banner
+	Tooltip: ""
+}
+
+StardancerBanner: {
+	DisplayName: Sterntänzer-Banner
+	Tooltip: ""
+}
+
+StymphalianBatBanner: {
+	DisplayName: Stymphalische-Fledermaus-Banner
+	Tooltip: ""
+}
+
+ThornStalkerBanner: {
+	DisplayName: Dornenlauerer-Banner
+	Tooltip: ""
+}
+
+TrochmatonBanner: {
+	DisplayName: Trochmaton-Banner
+	Tooltip: ""
+}
+
+ValkyrieBanner: {
+	DisplayName: Walküre-Banner
+	Tooltip: ""
+}
+
+WanderingSoulBanner: {
+	DisplayName: Wandernde-Seele-Banner
+	Tooltip: ""
+}
+
+WheezerBanner: {
+	DisplayName: Wheezer-Banner
+	Tooltip: ""
+}
+
+WildwoodWatcherBanner: {
+	DisplayName: Wildholz-Wächter-Banner
+	Tooltip: ""
+}
+
+WinterbornBanner: {
+	DisplayName: Winterborn-Banner
+	Tooltip: ""
+}
+
+WinterbornHeraldBanner: {
+	DisplayName: Winterborn-Herold-Banner
+	Tooltip: ""
+}
+
+WoodCrateMimicBanner: {
+	DisplayName: Holzkisten-Nachahmer-Banner
+	Tooltip: ""
+}
+
+YureiBanner: {
+	DisplayName: Yuurei-Banner
+	Tooltip: ""
+}
+
+Book_AccessoryGuide: {
+	DisplayName: Der Anfänger-Leitfaden zu Accessoires
+	Tooltip: von (ehemaligem) Ritter-Kreuzfahrer Aurelius
+	Content:
+		'''
+		[c/95a3ab:Es folgt ein Mitschnitt einer Rede des fragwürdigen Abenteurers Aurelius Finch, ehemaliger Ritter-Kreuzfahrer.]
+		---
+		Aurelius hier. Es läuft nicht so gut für mich. Die Leute waren "enttäuscht von meinem Überlegenheitskomplex" und meiner "übermäßigen, fast lächerlichen Nachsicht mir selbst gegenüber". Man hat mir meine Titel aberkannt, und nachdem ich pleite ging, wurde mein gesamtes Vermögen beschlagnahmt. Ich bin jetzt in eine ziemlich üble Gesellschaft geraten, und ich bring dieses Buch nur raus, weil man mich zwingt, ihre Produkte zu bewerben. Ist das ein emotionaler Appell an dein Mitgefühl? Natürlich nicht! Mir liegt immer noch daran, dass ihr alle Erfo... wen mach ich mir hier was vor? Bringen wir's hinter uns.
+		[c/80deed:Der Anfänger-Leitfaden zu Accessoires]
+		[i:SpiritMod/AceOfClubs] [i:SpiritMod/AceOfDiamonds] [i:SpiritMod/AceOfSpades] [i:SpiritMod/AceOfHearts] [c/80deed: Ass-Karten:] Wie gesagt, ich wurde von ziemlich zwielichtigen Leuten angesprochen, und ich musste mich in letzter Zeit mit fragwürdigen Accessoires vertraut machen. Asse sind nützliche Werkzeuge, wenn du kritische Treffer bei Feinden landen kannst. Du findest sie, wenn du unterwegs auf [c/72a4c2:die Glücksspielerin] triffst. Sie verkauft verschiedene Varianten je nach Mondphase. Und wenn du sie siehst, sag ihr bitte, dass ich dich geschickt hab? Bitte?
+		[i:SpiritMod/AssassinMagazine] [c/80deed: Magazin des Assassinen:] Wie tief bin ich gesunken? Ich kann nicht glauben, dass ich über Gegenstände rede, die von denselben Söldnern benutzt werden, gegen die ich früher gekämpft hab. Aber dieser [c/72a4c2:Bandit] hat überall Augen. Wenn du wie er ein Fernkampfkämpfer bist, sollte dir dieses Magazin helfen, deine Munitionsart schnell zu wechseln. Ich schäme mich gerade so sehr.
+		[i:SpiritMod/ArcaneNecklace] [c/80deed: Arkane Halskette:] Weißt du was? Ich werd nicht mehr so leben. Ich hasse, wer ich geworden bin. Zeit, meinen eigenen Rat zu befolgen und wieder für die Leute abenteuern zu gehen, die ich zu beschützen geschworen hab. Keine zwielichtige Ausrüstung mehr. Stattdessen, wenn du ein Magier bist und ein paar [c/72a4c2:Gefallene Sterne] und [c/72a4c2:Ketten] rumliegen hast, stell diesen Anhänger her, um deine Magieangriffe zu verstärken.
+		[i:SpiritMod/LeatherShield] [i:SpiritMod/LeatherGlove] [i:SpiritMod/LeatherBoots][c/80deed: Lederausrüstung:] Ich schätze, du und ich sind jetzt auf einer Wellenlänge. Ich hab meine verzauberte Ausrüstung nicht mehr, also nutz ich diese Ausrüstungsstücke aus [c/72a4c2:Altem Leder]. Ja, sie sind hässlich. Ja, sie stinken. Aber sie halten uns da draußen sicher und leicht.
+		Zeit für mich, zu meinen Wurzeln zurückzukehren. Monster zu erschlagen und wieder für das Gute zu kämpfen. Falls du all meine Bücher gelesen hast, hoffe ich wirklich, sie helfen uns beiden. Vielleicht seh ich dich da draußen.
+		---
+		[c/95a3ab:Anmerkung des Herausgebers: In der Nacht nach dieser Aufzeichnung verschwand Aurelius Finch und hinterließ nur eine Notiz. Darin versprach er, sich erneut würdig zu machen, indem er die Welt bereist und Monster besiegt. Sein derzeitiger Aufenthaltsort ist unbekannt.]
+		'''
+}
+
+Book_Alchemist1: {
+	DisplayName: Beobachtungen einer Alchemistin
+	Tooltip: von Lena Ashwood, Alchemistin
+	Content:
+		'''
+		Nach Experimenten mit Zutaten aus der ganzen Welt hab ich mich entschieden, einige der interessanteren Gebräue zu beschreiben, die ich hergestellt hab.
+		[i:SpiritMod/BismitePotion] [c/72a4c2:Toxin-Trank:] Ich glaub, ich hab dieses üble Gebräu aus einer Kombination eines giftigen [c/95a3ab:Noxophylls] und einigen dieser seltsamen metallischen [c/95a3ab:Bismit-Kristalle] hergestellt. Die Gifte hoben sich gegenseitig auf, und ich hatte diese übel schmeckende, aber trinkbare Substanz übrig, die sich im Kampf als ziemlich wirksam erweist.
+		[i:SpiritMod/MushroomPotion] [c/72a4c2:Sporoid-Trank:] Nachdem ich eine seltene Probe von [c/95a3ab:Glührübe] von einer Gruppe Feldforscher erhalten hab, hab ich sie mit [c/95a3ab:Leuchtpilzen] gemischt, um dies herzustellen. Die Feldforscher sagten mir, sie würden nie wieder an diesen "gruseligen Ort" zurückkehren, aber ich könnte mehr Glührübe bekommen, indem ich riesige Pilzbäume fälle. Ich muss das bald untersuchen.
+		[i:SpiritMod/PinkPotion] [c/72a4c2:Sprung-Trank:] Es war einer dieser Tage, an denen ich beschloss, wahllos Zeug in einen Topf zu werfen, um zu sehen, was passiert. Wer hätte gedacht, dass [c/95a3ab:Pinkes Gel] und [c/95a3ab:Sonnenblume] mich so beschwingt fühlen lassen würden! Nachdem ich dieses süße Zeug runtergekippt hab, bin ich vor Freude gehüpft - und viel höher gesprungen, als ich es normalerweise täte.
+		[i:SpiritMod/DoubleJumpPotion] [c/72a4c2:Zephir-Trank:] Ich konnte nicht anders, als ein interessantes neues Kraut zu bemerken, das überall in Büscheln sprießt. Ich dachte, es könnte eine Verbindung zu den Inseln oben geben, also kombinierte ich es mit ein paar [c/95a3ab:Wolken] und [c/95a3ab:Harpyienfedern] und trank ziemlich leichtsinnig das Gebräu. Ich fühlte mich so leicht wie die Luft! Vielleicht sollten die luftigen Eigenschaften dieses Stängels weiter erforscht werden...
+		'''
+}
+
+Book_Amea: {
+	DisplayName: Amea, der Wegelagerer
+	Tooltip: von Solaki
+	Content:
+		'''
+		Am Rand der Königreichsgrenzen lag ein kleines Cottage, umgeben von Hektar an Wald. Es war eine kleine Behausung, Heimat einer armen, mittelalten Frau und ihres kleinen Sohnes Amea. Die Familie war mittellos und ziemlich allein, aber Ameas Mutter hatte jahrelang Geld gespart, damit Amea endlich zur Schule gehen und Kaufmann werden konnte. Als sie Amea das Geld gab, wurde er bestürzt. Er wollte seine Mutter nicht allein im Wald zurücklassen, gab aber bald nach. Seine Mutter wollte nicht sehen, wie er denselben Weg wie sie einschlug. Und so machte sich Amea auf den Weg zur kleinen Schule in der Nähe.
+		Wie sich herausstellte, war Amea ein kluger und fleißiger Schüler. Ihm war einfach noch nie die Gelegenheit gegeben worden. Er war freundlich, hilfsbereit und entschlossen, erfolgreich zu sein, damit er mit Reichtum in der Hand nach Hause zu seiner Mutter zurückkehren konnte. Er wurde bald der Liebling seines Lehrers, sehr zum Missfallen seiner Klassenkameraden. Sie fingen bald an, ihn zu hassen, erfüllt von Eifersucht und Zorn. Seine Klassenkameraden schmiedeten dann einen hinterhältigen Plan, um ihren Lehrer gegen Amea aufzubringen. Sie vergifteten langsam den Geist des Lehrers mit vereinzelten Flüstereien und Gerüchten und malten Amea als grausamen Wilden. Der Lehrer fiel in ihre Falle, und auch er begann, Amea zu hassen. Am letzten Unterrichtstag, als die Schüler ihre Empfehlungen von ihrem Lehrer erhalten sollten, um verschiedenen Zünften beizutreten, wurde Amea von einer grausigen Bitte seines Lehrers kalt erwischt.
+		"Um meine Empfehlung zu erhalten, musst du mir zuerst die Zeigefinger von tausend Menschen bringen. Andernfalls wirst du nie der Kaufmannszunft beitreten können, die du suchst," sagte er. Amea war entsetzt über diese grauenhafte Aufgabe. Er wusste nicht, dass jeder, den er kannte, ihn verachtete. Aber Amea musste für seine Familie sorgen.
+		Und so machte er sich an diese Aufgabe.
+		---
+		Amea nutzte einen Teil seines Geldes, um ein verrostetes Schwert zu kaufen, und schlug ein Lager mitten im Wald auf. Anfangs war er zu verängstigt, um diese abscheuliche Mission auszuführen. Amea war ein freundlicher Mann, der niemandem etwas Böses wünschte, auch nicht dem Lehrer, der ihm diese Aufgabe zugewiesen hatte. Aber er dachte an seine Mutter zu Hause und schluckte seine Angst hinunter. Und so begann es. Amea hielt einen Reisenden nach dem anderen an und schnitt ihnen die Finger ab. Als er zu viele gesammelt hatte, um sie zu tragen, versuchte Amea, sie im Boden zu vergraben. Aber sie verwesten entweder oder wurden von Krähen und Geiern gefressen. Amea entschied sich dann, die Finger auf eine Girlande zu fädeln und zu tragen. Sein Ruf wuchs mit der Zeit, und er wurde bald als "Der Bandit mit der Finger-Halskette" bekannt. Amea veränderte sich.
+		---
+		Der einst helle und freundliche Schüler war nicht mehr. Amea schwelgte in Gewalt und wurde immer grausamer zu seinen Opfern. Die Anzahl der Finger auf seiner Girlande wuchs. Er stahl bald von seinen Opfern und verstümmelte sie, zusätzlich zur Zergliederung, und wurde der gefürchtetste Bandit im Königreich. Viele Trupps Soldaten wurden in die Wälder geschickt, um Ameas Schreckensherrschaft zu beenden, kehrten aber ramponiert, mit leeren Händen und fingerlos zurück.
+		Nach Jahren der Verwüstung des Königreichs kam schließlich der schicksalhafte Tag, an dem Amea neunhundertneunundneunzig Finger auf seiner Girlande hatte. Er plante, zu seinem Lehrer zurückzukehren, beladen mit Fingern, und ihn dann zu töten, bevor er zum Leben eines Wegelagerers zurückkehrte. Das war jetzt Ameas Weg. Ein ahnungsloser Ochsenkarren machte sich seinen Weg durch den Wald, und Amea lag wartend in den Bäumen. Als der Zeitpunkt richtig war, sprang er herab und durchschnitt dem Kutscher die Kehle, wobei er schnell seinen Finger nahm. Aber niemand schrie. Verwirrt über den Mangel an Panik, drehte sich Amea um und sah eine einsame Frau im Karren sitzen, die ihn mit reinem Entsetzen, Abscheu und - vor allem - Enttäuschung ansah. Es war seine Mutter. Amea öffnete den Mund, konnte aber nicht sprechen. Seine Mutter sagte kein Wort zu ihm, aber Tränen begannen über ihr altes und müdes Gesicht zu strömen. Sie war hager und wirkte ausgehungert, da sie nicht genug Geld hatte, um sich richtig zu ernähren. Amea sagte nichts und zog sich tief in den Wald zurück. Er fand einen klaren Teich und blickte hinein. Er sah, was er geworden war: ein wilder Wilder, gehüllt in menschliche Finger. Er konnte sich selbst kaum noch erkennen. Eine plötzliche Welle aus Scham und Entsetzen brach über Amea herein. Übel im Magen, entsagte er seinem Räuberleben und führte ein zurückgezogenes Leben in einer Höhle im Wald.
+		---
+		Jahrelang mieden die Menschen im Königreich Ameas Wald. Niemand wusste, wohin der Bandit verschwunden war, aber niemand wollte sein nächstes Opfer sein. Das war so, bis ein großer Zauberer im Königreich eintraf. Dieser Weise war bekannt dafür, Lehren des Friedens an jene zu verbreiten, die zuhören wollten. Er hatte Gerüchte über Amea gehört und war neugierig, den Mann zu treffen. Die Bürger des Königreichs warnten ihn davor, in den Wald zu reisen, aber der Zauberer entschied sich trotzdem dazu. Er ging ohne Stab oder Waffe in den Wald, so sorglos wie nur möglich.
+		Amea hörte bald Schritte von außerhalb seiner Höhle und wurde schnell wütend, dass es jemand wagte, seine Einsamkeit zu stören. Er zog sein Schwert und trat aus der Höhle, um zu sehen, wie der Zauberer gelassen von ihm wegging.
+		"Du da!" brüllte Amea. "Bleib stehen und ergib dich."
+		Der Zauberer ging weiter.
+		Wütend jagte Amea dem Mystiker mit Höchstgeschwindigkeit nach. Egal wie sehr er sich bemühte, er konnte ihn nie einholen. Der Zauberer, langsam und ruhig gehend, blieb immer vor Amea. Amea heulte und rannte weiter, was sich wie Tage anfühlte. Der Zauberer sagte kein Wort. Schließlich gab Amea auf. Er fiel auf Hände und Knie und flehte den Zauberer um Vergebung an. Ein plötzlicher Schwall von Reue und Schmerz brach aus Amea heraus, der nichts mehr wollte, als seine Vergangenheit hinter sich zu lassen. Aber wie könnte ein Mörder jemals seinen Sünden entkommen?
+		Der Zauberer, der diese Gefühle spürte, wandte sich Amea zu und sprach seine ersten Worte.
+		"Wir alle werden achtlos geboren, und manche von uns entscheiden sich, in diesen Zustand zurückzukehren. Aber was uns menschlich macht, ist unsere Fähigkeit zu wachsen und uns zu verändern."
+		Der Zauberer blieb stehen und streckte seine Hand nach Amea aus. Amea stellte fest, dass er sich dem Zauberer endlich nähern konnte. Zum ersten Mal seit Jahren legte Amea sein Schwert nieder. Er nahm die Hand des Mystikers und ging aus dem Wald hinaus ins Licht des Tages.
+		'''
+}
+
+Book_ArmorGuide: {
+	DisplayName: Der Anfänger-Leitfaden zu Rüstungen
+	Tooltip: von Ritter-Kreuzfahrer Aurelius
+	Content:
+		'''
+		[c/95a3ab:Es folgt ein Mitschnitt einer informativen Rede des berühmten Abenteurers Aurelius Finch, Ritter-Kreuzfahrer.]
+		---
+		Hey, Leute! Seid ihr bereit, groß Abenteurer zu werden, genau wie ich? Es scheint hier oben ein gutes Leben zu sein, und das ist es auch! Ich schwimme im Sponsorengeld, und mein Liebesleben war noch nie besser!
+		Aber es war nicht immer so. Ich war einst genau wie ihr alle - bettelarm und besaß nichts außer den Kleidern am Leib. Es kostete mich alles, um zu überleben. Aber wenn ihr meine praktische Serie von Leitfäden kauft, werdet ihr im Nu genau wie ich sein! Ich kann's kaum erwarten, dass ihr in den Rängen aufsteigt, Grünschnabel.
+		[c/80deed:Der Anfänger-Leitfaden zu Rüstungen]
+		Also, ihr brecht gerade auf, und es ist Zeit, eure Spuren in der Welt zu hinterlassen. Aber was anziehen? Rüstung ist das wichtigste Werkzeug im Arsenal eines Abenteurers. Zum Glück für euch bin ich auf viele verschiedene Optionen für Anfänger gestoßen, die einfach zu schmieden und effektiv sind.
+		[i:SpiritMod/DaybloomHead] [i:SpiritMod/DaybloomBody] [i:SpiritMod/DaybloomLegs][c/80deed: Sonnenblumen-Rüstung:] Seid ihr angehende Magier? Nun, ich nicht - ich hab keinen magischen Knochen im Leib! Aber dieses dünne und bequeme Rüstungsset, hergestellt aus [c/72a4c2:Sonnenblumen] und [c/72a4c2:Gefallenen Sternen], kann eurer Magiekraft einen Schub geben.
+		[i:SpiritMod/LeatherHood] [i:SpiritMod/LeatherPlate] [i:SpiritMod/LeatherLegs][c/80deed: Schützen-Rüstung:] Wenn ihr bereit seid, nachts loszuziehen und ein paar Zombies anzugehen, erntet etwas fragwürdig beschafftes [c/72a4c2:Altes Leder] und probiert euch am Bogenschießen. Diese leichte (aber stinkende) Rüstung erlaubt euch, euch auf eure Treffer zu konzentrieren.
+		Das sind ein paar billige und effektive Rüstungssets, die euch lange im Kampf halten. Viel Glück, Abenteurer!
+		---
+		Puh. Gott sei Dank ist das vorbei. Diese Trottel halten da draußen keinen Tag durch, aber sie glauben alles, was ich ihnen erzähle. Das leichteste Geld, das ich je verdient hab. Hey, warum schreibst du das immer noch au-
+		'''
+}
+
+Book_Briar: {
+	DisplayName: Notizen über das Dorngestrüpp
+	Tooltip: von Feldforscherin Laywatts
+	Content:
+		'''
+		Unsere dreimonatige Expedition in das kaum erforschte Dorngestrüpp endete vor zwei Wochen. Das Team bestand aus mir, Dr. Nisha Laywatts, Dr. Rathi Everest und einem angeheuerten Abenteurer, dessen Name unbekannt ist. Dr. Everest und ich beendeten die Expedition unverletzt, aber der Abenteurer verschwand vier Tage vor Abschluss des Ausflugs. Wir versuchten vergeblich, ihn zu suchen. Was für dieses Buch jedoch relevanter ist, sind die Daten, die wir gesammelt haben.
+		---
+		[c/7c9e5a:Klima und Ökologie]
+		Das Dorngestrüpp weist eines der einzigartigsten Klimasysteme der Welt auf: Die gesamte Region erlebt ständigen Regenfall. Die Temperaturen sind warm und feucht, und das Pflanzenleben ist überwuchert. So überwuchert tatsächlich, dass ein riesiges Wurzelsystem quer durch und unter dem gesamten Ökosystem zu verlaufen scheint. Der Grund für diesen anhaltenden Regenfall ist unbekannt, aber ich vermute, dass eine Megaflora (oder vielleicht sogar Megafauna) im Zentrum dieses Wurzelsystems eine Art arkaner Macht über das Gebiet ausübt, die diesen sintflutartigen Regen verursacht.
+		---
+		[i:SpiritMod/BriarFlowerItem] [c/7c9e5a:Flora] [i:SpiritMod/BriarFlowerItem]
+		Wie bereits erwähnt, erstreckt sich ein komplexes und ausgedehntes Wurzelsystem über das gesamte Dorngestrüpp. Daten zeigen, dass jede einzelne Pflanze über dieses Netzwerk verbunden ist. Diese Verbindung erlaubt allen Pflanzen im Dorngestrüpp, Nährstoffe miteinander zu teilen, was Pflanzenwachstum weit unter der Oberfläche ermöglicht. Interessanterweise zeigen alle Pflanzen im Dorngestrüpp eine Form von Biolumineszenz. Die zugrundeliegende Ursache dafür ist unbekannt, aber ich vermute, dass Pflanzen dieses verlockende Licht aussenden, um Beute für die fleischfressenden Bestien des Dorngestrüpps anzulocken. Im Gegenzug absorbieren sie einen Teil des Detritus und nutzen ihn zur Ernährung.
+		---
+		[i:SpiritMod/RawMeat] [c/7c9e5a:Fauna] [i:SpiritMod/RawMeat]
+		Das Dorngestrüpp wird von wilden Zwei- und Vierbeinern mit geringer Intelligenz dominiert. Jeder faunistische Organismus im Dorngestrüpp ist fleischfressend, besteht aber zu einem großen Prozentsatz aus Pflanzenmaterie. Ein paar Zweibeiner scheinen höhere Intelligenz zu zeigen und Magie zu wirken, aber ihr Ursprung und ihre Gewohnheiten konnten nicht ermittelt werden. Alle Organismen im Dorngestrüpp sind hyperaggressiv und sollten mit äußerster Vorsicht angegangen werden.
+		---
+		[c/7c9e5a:Anomalien]
+		Das unterirdische Dorngestrüpp zeigt Anzeichen einer Besiedlung durch eine mittlerweile ausgestorbene Zivilisation. Ruinierte Ziegel- und Holzhäuser können beobachtet werden, zusammen mit primitiven Waffen, Werkzeugen und Nippes. Viele Rätsel bleiben über diese Ruinen und das Dorngestrüpp im Allgemeinen. Woher kam es? Warum ist es so feindselig? Und wo sind die Menschen, die einst hier lebten?
+		---
+		Notiz: Es scheint, als würde eine Seite mit Notizen und Diagrammen im Buch fehlen. Ich hab sie wahrscheinlich zurück in den Tiefen des Dorngestrüpps verloren. Aber nicht wert, eine Rückreise anzutreten.
+		'''
+}
+
+Book_FoodGuide: {
+	DisplayName: Mahlzeiten auf Rädern
+	Tooltip: von Entdecker Trev Irwin
+	Content:
+		'''
+		Trotz des Mangels an Heißhunger hier draußen, hält uns das nicht davon ab, ordentlich hungrig zu werden, was? Seltsamerweise sind komplette Mahlzeiten eine regelmäßige Entdeckung in den meisten toten Kerlen, frisch und heiß dazu - erzähl das deinem besten Kumpel, und er wird denken, du bist total durch den Wind! Verrückt oder nicht, ich hab ein paar Quellen für euch notiert, also zieht eure Laufschuhe an und euer magisches Schwert des Todes und der Zerstörung in eure bevorzugte Hand, bereit für eine gute Jagd.
+		"[i:SpiritMod/Hummus][c/80deed: Hummus:] Unvorbereitet durch die Wüste zu reisen könnte ein paar zwielichtige Banditen dazu bringen, dich zu überfallen! Zum Glück war ich das nicht. Leider war's ein anderer wandernder Typ. Sich um die zu kümmern, belohnte mich mit einer Schüssel "Hummus" aus den Überresten ihrer Verpackung - so nennt's jedenfalls der Typ mit dem Turban. Denk, er verkauft Farbe oder sowas. Passt gut zu jedem Sandwich!
+		"[i:SpiritMod/Meatballs][c/80deed: Fleischbällchen:] Dieser Ort ist ziemlich niedlich im Vergleich zu meiner Heimat, Geruch inklusive. Allerdings hätte ich nicht erwartet, dass mich ein wütendes verrottendes Fleischbällchen über den Haufen schießt. Nachdem ich's höflich mit meinem Messer aufgefordert hab abzuhauen, offenbarten seine Innereien einen frischen Teller Fleischbällchen. Die Ironie könnte nicht größer sein. Nach etwas Überlegen hab ich reingebissen, und es schien stabil genug, also brauchst du dir keine Sorgen zu machen, den Tag aufm Klo zu verbringen, nachdem du welche probiert hast.
+		"[i:SpiritMod/Popsicle][c/80deed: Eis am Stiel:] In die Tundra während eines Sturms zu gehen ist kein toller Urlaubsplan, besonders wenn die Einheimischen unsozial sind und dich wahrscheinlich tot sehen wollen. Einer kam in die Höhle, in der ich mich eingekuschelt hab, und ist ehrlich gesagt nie wieder gegangen. Gelangweilt kam mir eine Idee, und ein Häutungsmesser in die Hand. Ich hab einem seiner Zahnstocher ein paar ordentliche Schläge verpasst, und es verwandelte sich magisch in ein Eis am Stiel, nachdem es mit einem Puff auf dem Boden aufkam, Stiel und alles! Traurigerweise schmolz es schnell nahe meinem Lagerfeuer, zusammen mit den Überresten des Kerls und meiner Laune.
+		'''
+}
+
+Book_Gunslinger: {
+	DisplayName: Der Revolverheld
+	Tooltip: von Usov Lynx
+	Content: Ich sah ihn gestern durch die Stadt gehen. Seit einigen Tagen reden die Dorfbewohner über den einsamen Revolverhelden, der nur dorthin geht, wohin ihn die Erde trägt. Klang für mich nach einem Haufen Unsinn. Niemand wusste wirklich, was er tat, nur für ein paar Momente auf einmal gesehen wie eine Art Kryptid. Einer der alten Kerle im Saloon erinnerte sich, Jahre zuvor mit jemandem mit ähnlichem Aussehen gesprochen zu haben. Er war anscheinend ein Glücksspieler, hielt sich meist für sich. Ein anderer behauptete, er sei über einen Hügel gekommen und hätte gesehen, wie dieser Revolverheld eine Ameisenlöwen-Rotte ausgeschaltet hat. Sagte, sein Eisen war so mächtig, dass es diese Kerle wie eine Dynamitstange explodieren ließ. Trotzdem fühlte sich das alles wie ein Haufen Geistergeschichten an, bis zu dem Moment, als ich ihn sah. Sein Revolver war mit einem Symbol von einer Spielkarte markiert. Statt eines Hutes trug er einen zerfetzten Umhang mit mysteriöser Schrift auf dem Rücken. Er sah mich und nickte langsam, bevor er seinen Weg fortsetzte.
+}
+
+Book_Jellyfish: {
+	DisplayName: Quallen am Himmel!
+	Tooltip: von Jonah dem Schurken
+	Content:
+		'''
+		Ich werd nicht verrückt, versprochen! Ich bin vor ein paar Nächten meinen Lieblingshügel hochgeklettert, und ich schwör, ich hab sie gesehen! Ein Schwarm leuchtender [c/72a4c2:hellblauer Quallen], die über den Himmel huschten! Sie flogen durch die Luft, als wär's Wasser, und ich dachte, meine Zeit sei um. Anstatt mich auf meine unvermeidliche Alien-Entführung vorzubereiten, bin ich abgehauen! Als ich zurückgelaufen bin, konnte ich sie nicht mehr sehen. Und niemand, mit dem ich geredet hab, glaubt mir! Warum nicht? Weil ich versucht hab, bemalte Steine als Edelsteine getarnt zu verkaufen? Haufen Weicheier. Das Zeug ist nicht in Ordnung, ich sag's dir!
+		Während du liest, kann ich dich für ein paar 100% echte Diamanten interessieren?
+		'''
+}
+
+Book_Lava: {
+	DisplayName: Ist Lava heiß?
+	Tooltip: von Feldforscher Ocano
+	Content:
+		'''
+		Heute ist ein sehr aufregender Tag; es ist das erste Mal, dass ich autorisiert bin, unabhängige Feldforschung zu betreiben! Ich bin wirklich aufgeregt, meine einzigartige Hypothese zu testen: Ist Lava heiß? Ich meine, wie wissen wir das? Niemand, mit dem ich je gesprochen hab, hat je Lava berührt oder auch nur gesehen. Aber ich bin hier in einer tiefen Höhle, und ich werd heute meine Spuren in der wissenschaftlichen Gemeinschaft hinterlassen! Ich seh dort drüben etwas Lava, also werd ich sie berühren. WOW, die ist heiß! Wir machen hier echte Entdeckungen! Meine linke Hand ist komplett weg, und es tut wirklich, wirklich weh! Ich werd sicherheitshalber meine rechte Hand probieren und meine Erkenntnisse berichten.
+		[c/ff0000:_--_--+--=&&^^ ^&&]
+		[c/ff0000:^&____/~~~\\_-]
+		'''
+}
+
+Book_MJW: {
+	DisplayName: Dag Dinger
+	Tooltip: von Entdecker Trev Irwin
+	Content: Entweder haben mich diese Boomer-Pilzchen, die ich zum Frühstück hatte, zu hart getroffen, oder ich bin viel zu durchgeknallt, aber [c/72a4c2:eine Qualle mit Hut und Robe] fliegt herum und wirft Tierwelt in eine Blase, während sie kichert. Als wären die Stachel im verdammten Wasser nicht genug, die hier hat die Hand eines Zauberers und das Herz eines Delfins. Der Unruhestifter hat über Nacht allerlei Ärger verursacht, und ich hab noch nicht die Werkzeuge, um mich um ihn zu kümmern. Frag mich, wie Weltraumstachler vom Grill schmecken.
+}
+
+Book_Mushroom: {
+	DisplayName: Pilzdiebe
+	Tooltip: von Dr. Charlie Maitake
+	Content:
+		'''
+		Während sich mein Team und ich nach einer knappen Begegnung mit diesen zombifizierten [c/72a4c2:Pilzbotanikern] am Vortag ausruhten, gelang es mir endlich, die kranken Exemplare zu finden, die uns gefolgt waren. Ich wachte zum Geräusch wiederkehrenden Hustens irgendwo in meinem Lager auf und konnte es bald zu einem Paar [c/72a4c2:einäugiger Vierbeiner] zurückverfolgen, die in unserem Vorratszelt herumstöberten. Die verflixten Dinger hatten eine klare Vorliebe für Pilze, belegt dadurch, dass sie fast ALLE Exemplare verzehrt hatten, die wir in den leuchtenden Pilzfeldern gesammelt hatten. Ich hatte Glück, die Kreaturen mit wenig Widerstand zu vertreiben.
+		Ich informierte Dr. Cho heute Morgen früh darüber, und wir haben die Überreste der Pilzexemplare, die uns noch geblieben sind, gesammelt, um die kranken Kreaturen zu uns zurückzulocken. Ich werd erneut berichten, sobald wir eine von ihnen gefangen haben. Das könnte eine aufregende Entdeckung eines undokumentierten Monsters sein!
+		'''
+}
+
+Book_Slime: {
+	DisplayName: Woher kommen Schleime?
+	Tooltip: von Zauberer Galen Arcturus
+	Content:
+		'''
+		Sie kommen aus Schlick.
+		Das war's im Wesentlichen. Zumindest endet dort die konventionelle Forschung. Aber als vollendeter Magier muss ich tiefer graben!
+		Zuerst ist es wichtig, Bestand aufzunehmen, was wir wissen. Schleime sind, wissenschaftlich gesehen, große Klumpen aus Schlick. Sie sind hoch entflammbar, besitzen keine inneren Organe, scheinen aber ziemlich intelligent zu sein.
+		Ihre Zusammensetzung entspricht keinem anderen Material, das ich oder meine Magier-Kollegen je gesehen haben. Woher kommen sie also? Könnte ein rivalisierender Magier sie beschwören? Und zu welchem hinterhältigen Zweck?! Sind sie eine Bestrafung der Götter selbst? Sind wir für immer in diesem hüpfenden, schleimigen Fegefeuer gefangen?
+		Und am wichtigsten - sind sie essbar? Wir müssen weiter nach Antworten suchen.
+		'''
+}
+
+Book_WeaponGuide: {
+	DisplayName: Der Anfänger-Leitfaden zur Bewaffnung
+	Tooltip: von Ritter-Kreuzfahrer Aurelius
+	Content:
+		'''
+		[c/95a3ab:Es folgt ein Mitschnitt einer informativen Rede des Abenteurers Aurelius Finch, Ritter-Kreuzfahrer.]
+		---
+		Hey, alle zusammen! Ritter-Kreuzfahrer Aurelius hier, wieder mal. Bevor wir anfangen (und in völlig unzusammenhängender Notiz): Mein letzter Leitfaden über Rüstungen verkaufte sich nicht so gut, wie ich wollte, und ich hab keine Ahnung, warum! Aber ich brauch EUER Geld, um meinen aufwendigen Heldenlebensstil zu unterstützen. Also kauft diesen neuen Waffenleitfaden für euren Vater, eure Oma, und vielleicht sogar eure Katze. Bitte? Ich versprech, er wird nützlich sein!
+		[c/80deed:Der Anfänger-Leitfaden zur Bewaffnung]
+		Neben einer starken Rüstung braucht ihr eine treue Waffe an eurer Seite, um euch wirklich als Abenteurer hervorzuheben. Nun, nicht jeder von uns kann eine Waffe so auffällig wie meine treue Feuerklinge haben. Und manche von euch werden nie eine haben! Aber das ist ok. Fangen wir klein an, mit Waffen, die zuverlässig und leicht zu schmieden sind.
+		[i:SpiritMod/IcySpear] [i:SpiritMod/FrigidFragment] [c/80deed: Eisiger Wurfspeer:] Lebt ihr in der Nähe einer verschneiten Tundra oder eines borealen Waldes? Dann ist diese Waffe perfekt für euch! Erntet einfach ein paar [c/72a4c2:Eisige Fragmente] und härtet sie an einem Amboss, um diese eiskalte, messerscharfe Waffe herzustellen. Anders als andere ungenaue Wurfwaffen (wer benutzt die überhaupt?), könnt ihr mit Wurfspeeren präzise Treffer landen!
+		[i:SpiritMod/BismiteSummonStaff] [i:SpiritMod/BismiteCrystal] [c/80deed: Bismit-Kristallstab:] Normalerweise würd ich keine beschworenen Kreaturen empfehlen, da sie es lieben, mich zu beißen und meine Sachen zu zerreißen. Aber dieses Problem habt ihr mit einem halb-empfindungsfähigen giftigen Stein nicht, das ist sicher. Hergestellt aus [c/72a4c2:Bismit-Splittern], wird er euch sicher helfen, Gegner loszuwerden.
+		[i:SpiritMod/ButterflyStaff] [i:1994] [c/80deed: Ätherischer-Schmetterling-Stab:] Nochmal, Vertraute und ich verstehen uns nicht, aber dieser hat keine Zähne oder Klauen! Alles, was es braucht, ist ein wilder [c/72a4c2:Schmetterling], [c/72a4c2:Holz] und ein paar [c/72a4c2:Gefallene Sterne], und ihr habt einen neuen wendigen Begleiter. Wenn ihr das nächste Mal einen [c/72a4c2:Schmetterling] seht, holt das Netz raus!
+		[i:SpiritMod/ClawCannon] [i:SpiritMod/IridescentScale] [c/80deed: Klauenkanone:] Der Ozean kann erschreckend sein. Aber es gibt keinen besseren Weg, eure Ängste zu bekämpfen, als sie euch zunutze zu machen. Mit ein paar [c/72a4c2:schillernden Schuppen] von feindseligen Tiefsee-Kreaturen und [c/72a4c2:Schwefelablagerungen] könnt ihr den ultimativen Blasenbläser herstellen. Glaub ich zumindest. Eine Blasenpistole wäre, hypothetisch, vielleicht cooler.
+		[i:SpiritMod/Florang] [i:SpiritMod/FloranBar] [c/80deed: Floran-Schneider:] Wenn ihr jetzt eine schlanke, coole und potente Waffe wollt, sucht nicht weiter. Der Haken ist, dass ihr euch in die Tiefen des dunklen Dorngestrüpps wagen müsst, um [c/72a4c2:Floran-Barren] zu ernten. Seid ihr dazu fähig? Wahrscheinlich nicht! Aber falls ihr Glück habt, werft diese scharfen Scheiben über den Boden und schaut zu, wie sie eure Feinde zerschneiden.
+		[i:SpiritMod/CactusStaff] [i:276] [c/80deed: Kaktus-Stab:] Hättet ihr je gedacht, dass [c/72a4c2:Kakteen] magische Eigenschaften haben? Ich sicher nicht! Die einzige Interaktion, die ich mit Kakteen hatte, war, direkt in eine Grube voller Stacheldorn zu fallen, als ich ein Anfänger-Abenteurer war, wie ihr. Aber mir wurde gesagt, dass Kaktus-Stäbe ziemlich mächtig und giftig sind.
+		---
+		Ich komm kaum noch über die Runden. Diese Ramschteile sollten mich besser über Wasser halten, damit ich mir diese massive Goldstatue leisten kann, die ich in Auftrag gegeben hab. Nun, die Leute lieben mich immer noch. Ich bin sicher, sie kaufen diesmal mein Buch. Hey, warum bist du immer noch hier? Die Rede ist vorbei. Husch!
+		'''
+}
+
+Book_Yeremy: {
+	DisplayName: Ich bin wirklich sauer
+	Tooltip: von Polius Crassus
+	Content:
+		'''
+		Ich bin wütend. Das sollte mein Meisterwerk sein! Ich hab wirklich mein Herz und meine Seele in dieses Manuskript gesteckt, und es wurde sofort abgelehnt. Es sollte ein schonungsloses Drama über einen Helden sein, der sich in einen Bösewicht verwandelt. Hier ist mein Lieblingsteil:
+		[c/b5a493:Yeremy, der Regenwald-Diktator]
+		[c/b5a493:Und so, nachdem er miterlebt hatte, wie sein sechstes Heimatdorf von bösen Nekromanten zerstört wurde, entschied Yeremy, dass genug genug sei. Er war diesmal wirklich sauer. Er würde Rache an allem Lebendigen nehmen... Und er würde damit beginnen, seinen verfluchten Dämon-Avatar zu beschwören, eine Hydra direkt aus der Unterwelt. Die einzigen Gedanken, die ihm durch den Kopf gingen, waren "töten, töten, töten..."]
+		Aber NEIIIIN. Mein Lektor sagt, es sei "zu albern" gewesen und "so übertrieben, dass ich bei Seite drei aufgehört hab". Nun, sein Verlust! Ich bin sicher, ich finde jemanden, dem dieses Manuskript gefällt.
+		'''
+}
+
+# Do not localize image paths unless you have your own localized png files
+
+Book_Blossmoon: {
+	DisplayName: Notizen über Blossmoons
+	Tooltip:
+		'''
+		von Calvin Reyes, Forscher
+		Enthält Notizen über niedliche kleine Blossmoons
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/BlossmoonPage
+}
+
+Book_BriarArt: {
+	DisplayName: Flora des Dorngestrüpps
+	Tooltip:
+		'''
+		von Feldforscherin Laywatts
+		Scheint eine aus einem Buch über das Dorngestrüpp herausgerissene Seite zu sein
+		Enthält ein kunstvolles Diagramm der Dorngestrüpp-Ökologie
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/TheBriar
+}
+
+Book_Soulbloom: {
+	DisplayName: Notizen über Seelenblüte
+	Tooltip:
+		'''
+		von Lena Ashwood, Alchemistin
+		Beschreibt die Anatomie und Verwendung eines extrem seltenen Krauts
+		'Wo hat sie das nur gefunden?'
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/SoulbloomPage
+}
+
+Book_SpiritArt: {
+	DisplayName: Flora des Geist-Bioms
+	Tooltip:
+		'''
+		von Feldforscherin Laywatts
+		Scheint eine Notizseite über das unbekannte Geist-Biom zu sein
+		'Es gibt so viel von diesem mysteriösen Ort zu lernen'
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/TheSpirit
+}
+
+Book_LuminousArt: {
+	DisplayName: Der Leuchtende Ozean!
+	Tooltip:
+		'''
+		Von einem unbekannten Entdecker
+		Scheint eine Skizze eines seltsamen Vorkommnisses an Küstenregionen zu sein
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/LuminousOcean
+}
+
+Book_Lumoth: {
+	DisplayName: Notizen über Lumoths
+	Tooltip:
+		'''
+		von Calvin Reyes, Forscher
+		Erklärt die Mechanismen hinter leuchtenden Lumoths
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/LumothPage
+}
+
+BismitePage: {
+	DisplayName: Notizen über Bismit-Kristalle
+	Tooltip:
+		'''
+		von Professor Alex Tannis
+		Enthält Informationen über ein toxisches Erz, das in den Höhlen gefunden wird
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/BismiteMaterialPage
+}
+
+EnchantedLeafPage: {
+	DisplayName: Notizen über Verzauberte Blätter
+	Tooltip:
+		'''
+		von Professor Alex Tannis
+		Enthält Informationen über mystische Blätter, die im Dorngestrüpp gefunden werden
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/EnchantedLeafMaterialPage
+}
+
+FrigidFragmentPage: {
+	DisplayName: Notizen über Eisige Fragmente
+	Tooltip:
+		'''
+		von Professor Alex Tannis
+		Enthält Informationen über einen eisigen Kristall, der in der gefrorenen Tundra gefunden wird
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/FrigidFragmentMaterialPage
+}
+
+GlowrootPage: {
+	DisplayName: Notizen über Glührübe
+	Tooltip:
+		'''
+		von Professor Alex Tannis
+		Enthält Informationen über eine seltsame Wurzel, die am Fuß hoher Pilzbäume gefunden wird
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/GlowrootPage
+}
+
+GranitePage: {
+	DisplayName: Notizen über Verzauberte Granitbrocken
+	Tooltip:
+		'''
+		von Professor Alex Tannis
+		Enthält Informationen über ein seltsames Erz, das in Granithöhlen gefunden wird
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/GraniteMaterialPage
+}
+
+HeartScalePage: {
+	DisplayName: Notizen über Herzschuppen
+	Tooltip:
+		'''
+		von Professor Alex Tannis
+		Enthält Informationen über eine schimmernde Schuppe, die oft nahe Sehnsuchtsfischen gefunden wird
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/HeartScaleMaterialPage
+}
+
+MarblePage: {
+	DisplayName: Notizen über Uralte Marmorbrocken
+	Tooltip:
+		'''
+		von Professor Alex Tannis
+		Enthält Informationen über ein seltsames Erz, das in Marmorhöhlen gefunden wird
+		'''
+	ImagePath: SpiritMod/Localization/BooksUI/en-US/MarbleMaterialPage
+}
+
+ArcaneGeyser: {
+	DisplayName: Arkaner Geysir
+	Tooltip: "'Der Fels läuft über vor Energie'"
+}
+
+AtlasBag: {
+	DisplayName: Schatztruhe (Atlas)
+	Tooltip:
+		'''
+		{$LegacyTooltip.35}
+		{$CommonItemTooltip.RightClickToOpen}
+		'''
+}
+
+AtlasEye: {
+	DisplayName: Atlas-Auge
+	Tooltip:
+		'''
+		Unter 50% Leben ist die Verteidigung um 20 erhöht, aber die Bewegungsgeschwindigkeit um 1/3 verringert
+		Verringert erlittenen Schaden um 12%
+		'''
+}
+
+AtlasMask: {
+	DisplayName: Atlas-Maske
+	Tooltip: ""
+}
+
+AtlasPetItem: {
+	DisplayName: Urzeitlicher Kiesel
+	Tooltip: Beschwört Atlas Jr.
+}
+
+CragboundStaff: {
+	DisplayName: Felsgebunden-Stab
+	Tooltip:
+		'''
+		Ein winziger Erdener Wächter lässt Energie für dich herabregnen
+		Verursacht Feinden gelegentlich 'Instabiles Leiden'
+		'''
+}
+
+Earthshatter: {
+	DisplayName: Erdspalter
+	Tooltip: Schießt Erdgestein zusammen mit Pfeilen ab
+}
+
+Mountain: {
+	DisplayName: Der Berg
+	Tooltip:
+		'''
+		'Die Klinge zu schwingen stärkt dich'
+		Verursacht Feinden gelegentlich 'Instabiles Leiden'
+		'''
+}
+
+PrimalstoneBreastplate: {
+	DisplayName: Urgesteins-Brustpanzer
+	Tooltip:
+		'''
+		Erhöht die Lebensregeneration
+		5% erhöhter Nahkampfschaden
+		17% erhöhte kritische Nahkampfchance
+		7% erhöhte kritische Magiechance
+		'''
+}
+
+PrimalstoneFaceplate: {
+	DisplayName: Urgesteins-Gesichtsschutz
+	Tooltip:
+		'''
+		20% erhöhter Nahkampf- und Magieschaden
+		Erhöht das maximale Mana um 60
+		Verringert erlittenen Schaden um 8%
+		'''
+}
+
+PrimalstoneLeggings: {
+	DisplayName: Urgesteins-Beinschienen
+	Tooltip:
+		'''
+		9% erhöhter Nahkampf- und Magieschaden
+		5% verringerter Manaverbrauch
+		10% verringerte Bewegungsgeschwindigkeit
+		'''
+}
+
+QuakeFist: {
+	DisplayName: Bebenfaust
+	Tooltip:
+		'''
+		Schleudert Prismatisches Feuer
+		Verursacht Feinden gelegentlich 'Instabiles Leiden'
+		'''
+}
+
+TitanboundBulwark: {
+	DisplayName: Titanengebundenes Bollwerk
+	Tooltip:
+		'''
+		Während dein Leben sinkt, steigt deine Manaregeneration
+		Verringert erlittenen Schaden um 10%
+		Erhöht die Lebensregeneration
+		'''
+}
+
+Trophy8: {
+	DisplayName: Atlas-Trophäe
+	Tooltip: ""
+}
+
+TalonGarb: {
+	DisplayName: Gewand des Apostels
+	Tooltip:
+		'''
+		Erhöht Magie- und Fernkampfschaden um 7%
+		Erhöht die Bewegungsgeschwindigkeit um 10%
+		'''
+}
+
+TalonHeaddress: {
+	DisplayName: Kopfschmuck des Apostels
+	Tooltip: 7% erhöhte kritische Magie- und Fernkampfchance
+}
+
+AvianHook: {
+	DisplayName: Vogelhaken
+	Tooltip: Das Treffen von Blöcken erlaubt dem Spieler, kurz zu schweben
+}
+
+AvianPetItem: {
+	DisplayName: Uraltes Ei
+	Tooltip: Beschwört ein Uraltes Küken
+}
+
+FlierMask: {
+	DisplayName: Maske des Uralten Vogels
+	Tooltip: ""
+}
+
+FlyerBag: {
+	DisplayName: Schatztruhe (Uralter Vogel)
+	Tooltip:
+		'''
+		{$LegacyTooltip.35}
+		{$CommonItemTooltip.RightClickToOpen}
+		'''
+}
+
+SkeletalonStaff: {
+	DisplayName: Skelettharpyie-Stab
+	Tooltip:
+		'''
+		5 Beschwörungsmarkierungsschaden
+		Beschwört eine Armee temporärer versteinerter Vögel, die für dich kämpfen
+		'''
+}
+
+SoaringScapula: {
+	DisplayName: Schwebendes Schulterblatt
+	Tooltip: Zieht Gegner zu Boden, wodurch sie beim Aufprall zusätzlichen Schaden erleiden
+}
+
+TalonBlade: {
+	DisplayName: Krallenklinge
+	Tooltip: Erzeugt einen Wirbel schädlicher Federn
+}
+
+Talonginus: {
+	DisplayName: Talonginus
+	Tooltip: Extrem schnell, aber ungenau
+}
+
+TalonPiercer: {
+	DisplayName: Wut der Kralle
+	Tooltip: Erzeugt einen Wirbel zielsuchender Federn
+}
+
+Trophy2: {
+	DisplayName: Uralter-Vogel-Trophäe
+	Tooltip: ""
+}
+
+DuskHood: {
+	DisplayName: Dämmerungskapuze
+	Tooltip: Erhöht den Magieschaden um 10% und verringert die Manakosten um 10%
+}
+
+DuskLeggings: {
+	DisplayName: Dämmerungs-Beinschienen
+	Tooltip: Erhöht die kritische Trefferchance um 7%
+}
+
+DuskPlate: {
+	DisplayName: Dämmerungspanzer
+	Tooltip:
+		'''
+		Erhöht den Fernkampfschaden um 10%
+		25% Chance, keine Munition zu verbrauchen
+		'''
+}
+
+DuskingBag: {
+	DisplayName: Schatztruhe (Dusking)
+	Tooltip:
+		'''
+		{$LegacyTooltip.35}
+		{$CommonItemTooltip.RightClickToOpen}
+		'''
+}
+
+DuskingMask: {
+	DisplayName: zwielicht-Maske
+	Tooltip: ""
+}
+
+DuskingPetItem: {
+	DisplayName: Schädelglocke
+	Tooltip: Beschwört eine kleine Schattenflamme
+}
+
+DuskPendant: {
+	DisplayName: Dämmerungsanhänger
+	Tooltip: 13% erhöhte kritische Magie- und Fernkampfchance bei Nacht
+}
+
+DuskStone: {
+	DisplayName: Dämmerungssplitter
+	Tooltip: "'Der Stein funkelt mit Zwielicht-Energien'"
+}
+
+ShadowflameSword: {
+	DisplayName: Schattenflammen-Schwert
+	Tooltip:
+		'''
+		Lässt beim Treffen von Gegnern Explosionen aus Schattenflammen erscheinen
+		Schießt Schattenglut ab, die nahe Feinde beschädigt
+		'''
+}
+
+Shadowmoor: {
+	DisplayName: Schattenholz Pfeile
+	Tooltip: Verwandelt Holzpfeile in Schattenirrlichter
+}
+
+ShadowSphere: {
+	DisplayName: Schattenkugel
+	Tooltip: Beschwört eine stationäre Schattenkugel, die Kristallschatten auf Feinde abfeuert
+}
+
+Trophy6: {
+	DisplayName: Dusking-Trophäe
+	Tooltip: ""
+}
+
+UmbraStaff: {
+	DisplayName: Umbra-Stab
+	Tooltip: Schießt zielsuchende Schattenkugeln ab
+}
+
+DiabolicHorn: {
+	DisplayName: Teuflisches Horn
+	Tooltip: Erzeugt eine feurige Plattform, auf der man fliegen kann
+}
+
+EyeOfTheInferno: {
+	DisplayName: Auge des Infernos
+	Tooltip:
+		'''
+		Getroffene Gegner brennen, wobei erfolgreiche Treffer die Stärke des Debuffs erhöhen.
+		Schießt außerdem einen stacheligen Ball ab
+		'''
+}
+
+InfernalAppendage: {
+	DisplayName: Qual-Splitter
+	Tooltip: "'Erfüllt mit Leid'"
+}
+
+InfernalJavelin: {
+	DisplayName: Höllischer Wurfspeer
+	Tooltip:
+		'''
+		'Ein mit Feuer geschmiedeter Speer'
+		Entzündet getroffene Gegner, wobei zusätzliche Treffer die Flamme verstärken.
+		'''
+}
+
+InfernalPact: {
+	DisplayName: Höllischer Pakt
+	Tooltip:
+		'''
+		4% erhöhter Schaden
+		Verringert deine Verteidigung auf 0
+		Erhöht den Schaden um 0,75% pro verlorenem Verteidigungspunkt
+		'''
+}
+
+InfernalStaff: {
+	DisplayName: Siegel der Qual
+	Tooltip:
+		'''
+		Schießt drei explodierende, zielsuchende, feurige Seelen ab
+		3 Sekunden Abklingzeit
+		'''
+}
+
+InfernalSword: {
+	DisplayName: Glutzorn
+	Tooltip: Schießt zwei Flammen ab, die Gegner entzünden; mehrere Treffer lassen die Verbrennung mehr Schaden verursachen
+}
+
+InfernalBreastplate: {
+	DisplayName: Brustpanzer des Schmerzbringers
+	Tooltip:
+		'''
+		Erhöht den Dienerschaden um 10% und die maximalen Dienerplätze um 1
+		Erhöht die Peitschenreichweite um 10%
+		'''
+}
+
+InfernalGreaves: {
+	DisplayName: Beinschienen des Schmerzbringers
+	Tooltip: Erhöht den Dienerschaden um 10% und die maximalen Dienerplätze um 1
+}
+
+InfernalVisor: {
+	DisplayName: Maske des Schmerzbringers
+	Tooltip: Erhöht den Dienerschaden um 15% und die maximalen Dienerplätze um 2
+}
+
+InfernonBag: {
+	DisplayName: Schatzbeutel Inferno
+	Tooltip:
+		'''
+		{$LegacyTooltip.35}
+		{$CommonItemTooltip.RightClickToOpen}
+		'''
+}
+
+InfernonMask: {
+	DisplayName: Inferno-Maske
+	Tooltip: ""
+}
+
+InfernonPetItem: {
+	DisplayName: Zerbrochenes Horn
+	Tooltip: Beschwört ein kleines Inferno
+}
+
+SevenSins: {
+	DisplayName: Die Sieben Sünden
+	Tooltip: Schießt gelegentlich eine Salve Flammen ab
+}
+
+Trophy4: {
+	DisplayName: Infernon-Trophäe
+	Tooltip: ""
+}
+
+Cornucopion: {
+	DisplayName: Cornucop-ion
+	Tooltip:
+		'''
+		Halten, um Blitze aufzuladen, die nahe Gegner treffen
+		Längeres Aufladen erzeugt mehr Treffer
+		Zu langes Aufladen elektrisiert den Spieler
+		Kann nur an der Oberfläche oder höher verwendet werden
+		'Schockierend effektiv'
+		'''
+}
+
+JellynautBubble: {
+	DisplayName: Blase des Jellynauten
+	Tooltip:
+		'''
+		Erhöht das maximale Mana um 20
+		Erhöht die kritische Trefferchance um 10%
+		Gewährt einen besonderen Set-Bonus mit jeder Magierobe
+		'''
+}
+
+MJWBag: {
+	DisplayName: Schatzbeutel (Mondgelee-Zauberer)
+	Tooltip:
+		'''
+		{$LegacyTooltip.35}
+		{$CommonItemTooltip.RightClickToOpen}
+		'''
+}
+
+MJWMask: {
+	DisplayName: Mondgelee-Zauberer-Maske
+	Tooltip: ""
+}
+
+MJWPetItem: {
+	DisplayName: Neugierige Glühbirne
+	Tooltip: Beschwört eine Mondgelee-Glühbirne
+}
+
+MJWTrophy: {
+	DisplayName: Mondgelee-Zauberer-Trophäe
+	Tooltip: ""
+}
+
+MoonjellySummonStaff: {
+	DisplayName: Lunazoa-Stab
+	Tooltip:
+		'''
+		Beschwört einen Mondlicht-Bewahrer
+		Mondlicht-Bewahrer beschwören kleinere Quallen, die explodieren
+		Es kann jeweils nur ein Mondlicht-Bewahrer existieren
+		Den Stab mehrmals zu benutzen belegt Dienerplätze, erhöht aber die Quallen-Spawnrate
+		'''
+}
+
+Moonshot: {
+	DisplayName: Moonshot
+	Tooltip:
+		'''
+		Entzieht winzigen Lunazoas Energie als Munition
+		33% Chance, keine Munition zu verbrauchen
+		'Ziel auf die Sterne!'
+		'Frag mich, ob der Waffenhändler noch ein paar Lunazoas auftreiben kann...'
+		'''
+}
+
+NautilusClub: {
+	DisplayName: Nautilobber
+	Tooltip: Erzeugt eine Kaskade von Blasen in der Kollisionszone
+}
+
+Handball: {
+	DisplayName: Handball
+	Tooltip:
+		'''
+		Verursacht 'Blutverderbnis'
+		Kritische Treffer verursachen 'Schattenflamme'
+		'Und so sagte ich: 'Fang diese Hände''
+		'''
+}
+
+OccultistPetItem: {
+	DisplayName: Ouija-Brett
+	Tooltip: Beschwört einen winzigen Okkultisten
+}
+
+SacrificialDagger: {
+	DisplayName: Opferdolch
+	Tooltip:
+		'''
+		Deine Diener fokussieren markierte Gegner
+		Diener, die markierte Gegner treffen, können zusätzliche Schadensschläge verursachen
+		'''
+}
+
+ScarabBow: {
+	DisplayName: Scarabeus Bogen
+	Tooltip:
+		'''
+		Länger halten für mehr Schaden
+		Verwandelt Holzpfeile in durchbohrende geschmückte Pfeile, die bei voller Ladung verzaubert werden
+		'''
+}
+
+BagOScarabs: {
+	DisplayName: Schatzbeutel (Scarabeus)
+	Tooltip:
+		'''
+		{$LegacyTooltip.35}
+		{$CommonItemTooltip.RightClickToOpen}
+		'''
+}
+
+Chitin: {
+	DisplayName: Chitin
+	Tooltip: "'Wunderschöne, schillernde Käferschuppen'"
+}
+
+ChitinChestplate: {
+	DisplayName: Chitin-Brustpanzer
+	Tooltip: Erhöht die Bewegungsgeschwindigkeit um 5%
+}
+
+ChitinHelmet: {
+	DisplayName: Chitin-Gesichtsschutz
+	Tooltip: ""
+}
+
+ChitinLeggings: {
+	DisplayName: Chitin-Beinschienen
+	Tooltip: Erhöht die Bewegungsgeschwindigkeit um 7%
+}
+
+ChitinAxe: {
+	DisplayName: Chitin-Axt
+	Tooltip: Fällt Palmenholz und Kaktus schneller
+}
+
+ChitinHammer: {
+	DisplayName: Chitin-Hammer
+	Tooltip: Zerstört Sandwände und wüstenbezogene Wände schneller
+}
+
+ChitinPickaxe: {
+	DisplayName: Chitin-Spitzhacke
+	Tooltip: Baut Sand und wüstenbezogene Blöcke schneller ab
+}
+
+RoyalKhopesh: {
+	DisplayName: Königlicher Khopesh
+	Tooltip:
+		'''
+		Schwingt in einer 3-Treffer-Kombo
+		Der letzte Treffer der Kombo ist größer, verursacht mehr Schaden und ignoriert Rüstung
+		'''
+}
+
+LocustCrook: {
+	DisplayName: Heuschrecken-Hirtenstab
+	Tooltip:
+		'''
+		Beschwört eine freundliche Heuschrecke, die in Gegner stürmt
+		Heuschrecken befallen getroffene Gegner, wodurch Baby-Heuschrecken aus ihnen schlüpfen
+		'''
+}
+
+RadiantCane: {
+	DisplayName: Sonnenaufgang-Zepter
+	Tooltip: Beschwört eine langsame, steuerbare Sonnenkugel
+}
+
+ScarabPendant: {
+	DisplayName: Skarabäus-Anhänger
+	Tooltip:
+		'''
+		Beschwört eine reitbare Riesenassel, die mit hoher Geschwindigkeit durch Gegner rollt
+		Durch einen Gegner zu rollen schützt vor Kontaktschaden
+		'''
+}
+
+ScarabMask: {
+	DisplayName: Scarabeus-Maske
+	Tooltip: ""
+}
+
+ScarabPetItem: {
+	DisplayName: Skarabäus-Futter
+	Tooltip: Beschwört einen kleinen Skarabäus-Begleiter
+}
+
+Trophy1: {
+	DisplayName: Scarabeus-Trophäe
+	Tooltip: ""
+}
+
+AstralLens: {
+	DisplayName: Astrale Konvergenz
+	Tooltip: Schießt Schübe elektrischer Sterne ab, die sich beim Spieler wieder vereinen
+}
+
+CosmiliteShard: {
+	DisplayName: Astralit-Splitter
+	Tooltip: "'Es scheint, Starplate-Wesen haben die Sterne danach durchsucht'"
+}
+
+MagnetFlail: {
+	DisplayName: Spannungsdraht
+	Tooltip: Verbindet sich mit Blöcken und Gegnern und verwandelt die Kette in eine schockierende Elektroleitung
+}
+
+OrionPistol: {
+	DisplayName: Orions Pistole
+	Tooltip:
+		'''
+		Verwandelt normale Kugeln in Orion-Kugeln
+		Orion-Kugeln hinterlassen verweilende Sterne in ihrer Spur
+		'Historisch akkurat'
+		'''
+}
+
+StarLegs: {
+	DisplayName: Astralit-Beinschienen
+	Tooltip:
+		'''
+		5% erhöhter Fernkampfschaden
+		Hinterlässt eine Sternenspur, wo du gehst
+		'''
+}
+
+StarMask: {
+	DisplayName: Astralit-Visier
+	Tooltip: 6% erhöhte kritische Fernkampfchance
+}
+
+StarPlate: {
+	DisplayName: Astralit-Brustschutz
+	Tooltip:
+		'''
+		20% Chance, keine Munition zu verbrauchen
+		Erhöht den Fernkampfschaden um 5%
+		'''
+}
+
+StarMap: {
+	DisplayName: Astrale Karte
+	Tooltip:
+		'''
+		Teleportiert dich zur Cursor-Position
+		{N} Sekunden Abklingzeit
+		'''
+}
+
+StarplateGlove: {
+	DisplayName: Hundertschlag Handschuhe
+	Tooltip: Rechtsklick, um mehrere Schläge nach außen zu schleudern
+}
+
+StarplateMask: {
+	DisplayName: Starplate-Voyager-Maske
+	Tooltip: ""
+}
+
+StarplatePetItem: {
+	DisplayName: Starplate-Controller
+	Tooltip: Beschwört eine Starplate-Miniatur
+}
+
+DroneController: {
+	DisplayName: Drohnen-Controller
+	Tooltip: Beschwört eine Starplate-Kampfdrohne, die für dich kämpft
+}
+
+SteamplateBow: {
+	DisplayName: Sternenlader
+	Tooltip:
+		'''
+		Linksklick, um eine schnelle Salve schwacher Positiver Pfeile abzufeuern
+		Rechtsklick, um einen mächtigen Negativen Pfeil abzufeuern
+		Entgegengesetzt geladene Pfeile explodieren bei Berührung
+		'''
+}
+
+SteamRaiderBag: {
+	DisplayName: Schatztruhe (Starplate Voyager)
+	Tooltip:
+		'''
+		{$LegacyTooltip.35}
+		{$CommonItemTooltip.RightClickToOpen}
+		'''
+}
+
+Trophy3: {
+	DisplayName: Starplate-Voyager-Trophäe
+	Tooltip: ""
+}
+
+DeathRose: {
+	DisplayName: Dorngestrüpp-Blüte
+	Tooltip:
+		'''
+		Doppeltipp {0}, um einen Gegner an der Cursor-Position zu fesseln
+		4 Sekunden Abklingzeit
+		'''
+}
+
+ReachBossBag: {
+	DisplayName: Schatztruhe (Rankenzorn)
+	Tooltip:
+		'''
+		{$LegacyTooltip.35}
+		{$CommonItemTooltip.RightClickToOpen}
+		'''
+}
+
+ReachBossSword: {
+	DisplayName: Blutdorn-Klinge
+	Tooltip:
+		'''
+		Wird schneller, während das Leben sinkt
+		Schießt gelegentlich eine blutige Welle ab
+		Feuert Wellen häufiger ab, wenn unter halbem Leben
+		Kritische Nahkampftreffer vergiften Gegner und verursachen 'Welkendes Blatt'
+		'''
+}
+
+ReachMask: {
+	DisplayName: Rankenzorn-Maske
+	Tooltip: ""
+}
+
+ReachVineStaff: {
+	DisplayName: Blutblütenblatt-Stab
+	Tooltip: Lässt mehrere Blutblütenblätter vom Himmel um die Cursor-Position regnen
+}
+
+SunbeamStaff: {
+	DisplayName: Photosynthese-Schlag
+	Tooltip: Schießt einen schnellen, zielsuchenden Sonnenbolzen ab
+}
+
+ThornBow: {
+	DisplayName: Dornenschuss
+	Tooltip: Holzpfeile spalten sich beim Treffen von Gegnern in giftige Dornen
+}
+
+Trophy5: {
+	DisplayName: Rankenzorn-Trophäe
+	Tooltip: ""
+}
+
+VinewrathPetItem: {
+	DisplayName: Verwelktes Blütenblatt
+	Tooltip: Beschwört einen zornigen Setzling-Begleiter
+}
+
+AsteroidPylonItem: {
+	DisplayName: Asteroiden-Pylon
+	Tooltip: ""
+}
+
+Durian: {
+	DisplayName: Durian
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Was für ein furchtbarer Geruch!'
+		'''
+}
+
+Guava: {
+	DisplayName: Guave
+	Tooltip: "{$BuffDescription.WellFed}"
+}
+
+BriarPylonItem: {
+	DisplayName: Dorngestrüpp-Pylon
+	Tooltip: Wir lieben Teleportieren
+}
+
+EnchantedApple: {
+	DisplayName: Verzauberter Apfel
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Erhöht die Manaregeneration
+		'''
+}
+
+EnchantedStarFruit: {
+	DisplayName: Verzauberte Sternfrucht
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Erhöht die Manaregeneration
+		'''
+}
+
+StarPowder: {
+	DisplayName: Sternenstaub
+	Tooltip: Auf Gras werfen, um es mit Sternenlicht zu beleben!
+}
+
+CloudstalkItem: {
+	DisplayName: Wolkenstängel
+	Tooltip: ""
+}
+
+CloudstalkSeed: {
+	DisplayName: Wolkenstängel-Samen
+	Tooltip: ""
+}
+
+BeachUmbrellaItem: {
+	DisplayName: Strandschirm
+	Tooltip: Lust auf Strandurlaub?
+}
+
+BigBuoyItem: {
+	DisplayName: Große Boje
+	Tooltip: Muss auf Wasser platziert werden
+}
+
+BuoyItem: {
+	DisplayName: Kleine Boje
+	Tooltip: Muss auf Wasser platziert werden
+}
+
+LoungeChairItem: {
+	DisplayName: Liegestuhl
+	Tooltip: "'So bequem, dass du vielleicht einfach einschläfst! Leg dich in den Schatten, um Sonnenbrand zu vermeiden.'"
+}
+
+Glowpear: {
+	DisplayName: Glühbirne (Frucht)
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Sieht hohl aus?'
+		'''
+}
+
+LuminBerry: {
+	DisplayName: Lumin-Beere
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Sie fühlen sich fast glasig an...'
+		'''
+}
+
+SpiritPylonItem: {
+	DisplayName: Geist-Pylon
+	Tooltip: ""
+}
+
+BlackPearl: {
+	DisplayName: Schwarze-Perle
+	Tooltip:
+		'''
+		'Von uralten Schrecken begehrt...'
+		Beschwört Die Gezeiten
+		Kann nur in der Nähe des Ozeans verwendet werden
+		'''
+}
+
+BlossmoonItem: {
+	DisplayName: Blossmoon
+	Tooltip: "'Es strömt ein beruhigendes Aroma aus'"
+}
+
+BlubbyItem: {
+	DisplayName: Blubby
+	Tooltip: ""
+}
+
+BlueMoonSpawn: {
+	DisplayName: Blaumond Erscheinung
+	Tooltip: Verwende bei Nacht, um den Mystischen Mond zu beschwören
+}
+
+BriarCrate: {
+	DisplayName: Distelkiste
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+}
+
+BriarInchwormItem: {
+	DisplayName: Dorngestrüpp-Spannerraupe
+	Tooltip: ""
+}
+
+BriarmothItem: {
+	DisplayName: Dornmotte
+	Tooltip: ""
+}
+
+ChaosPearl: {
+	DisplayName: Windscher-Perle
+	Tooltip:
+		'''
+		Teleportiert dich zur Landeposition des Projektils
+		Dein Körper kann mehrere Anwendungen nicht aushalten
+		'''
+}
+
+CleftItem: {
+	DisplayName: Spalthüpfer
+	Tooltip: "'Seine Schale ist ziemlich robust'"
+}
+
+CrinoidItem: {
+	DisplayName: Seelilie
+	Tooltip: ""
+}
+
+CursedCloth: {
+	DisplayName: Schmerzensrufer
+	Tooltip: Verwende in der Unterwelt, um Infernon zu beschwören
+}
+
+CyberflyBlueItem: {
+	DisplayName: Blaue Cyberfliege
+	Tooltip: "'Echt oder digital?'"
+}
+
+CyberflyPinkItem: {
+	DisplayName: Pinke Cyberfliege
+	Tooltip: "'Echt oder digital?'"
+}
+
+DistressJellyItem: {
+	DisplayName: Notleidende Qualle
+	Tooltip:
+		'''
+		'Sie braucht Hilfe!'
+		Verwende bei Nacht, um die Gelee-Flut zu beschwören
+		'''
+}
+
+DreamlightJellyItem: {
+	DisplayName: Traumlicht-Qualle
+	Tooltip:
+		'''
+		'Sie strahlt arkane Energie aus'
+		Verwende bei Nacht, um den Mondgelee-Zauberer zu beschwören
+		Nicht verbrauchbar
+		'''
+}
+
+DuskCrown: {
+	DisplayName: Dämmerungskrone
+	Tooltip: Verwende bei Nacht, um Dusking zu beschwören
+}
+
+FateToken: {
+	DisplayName: Schicksalsmarke
+	Tooltip:
+		'''
+		Schützt den Benutzer 1 Minute lang vor tödlichem Schaden
+		2 Minuten Abklingzeit
+		'''
+}
+
+CrystalFish: {
+	DisplayName: Kristallisierter Fisch
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Verstärkt die Magiekraft
+		'''
+}
+
+FishChips: {
+	DisplayName: Fish and Chips
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Macht dich träge
+		'''
+}
+
+HoneySalmon: {
+	DisplayName: Honigglasierter Lachs
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Verstärkt die Lebensregeneration
+		'''
+}
+
+RawFish: {
+	DisplayName: Roher Fisch
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Kann gegessen werden... Vielleicht erst kochen?'
+		'''
+}
+
+SteamedMussels: {
+	DisplayName: Gedämpfte Muscheln
+	Tooltip: "{$BuffDescription.WellFed}"
+}
+
+FloaterItem: {
+	DisplayName: Leuchtender Schweber
+	Tooltip: "'Ein Leuchtfeuer am Strand'"
+}
+
+AcornCake: {
+	DisplayName: Eichelkuchen
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Wenn du wirklich hungrig bist, greif zu'
+		'''
+}
+
+Baguette: {
+	DisplayName: Baguette
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Du fühlst dich schon vornehmer'
+		'''
+}
+
+CaesarSalad: {
+	DisplayName: Caesar Salat
+	Tooltip: "{$BuffDescription.WellFed}"
+	CustomTooltip1:
+		'''
+		'Vielleicht kein Messer zum Essen davon benutzen'
+		Erhöht die Lebensregeneration stark
+		'''
+	CustomTooltip2:
+		'''
+		'Vielleicht kein Messer zum Essen davon benutzen'
+		{$LegacyMisc.40}
+		'''
+}
+
+Cake: {
+	DisplayName: Kuchen
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Genau die richtige Menge Zuckerguss!'
+		'''
+}
+
+FishFingers: {
+	DisplayName: Fischstäbchen
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Passt super zu Vanillesoße!'
+		'''
+}
+
+GhostPepper: {
+	DisplayName: Geisterchili
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Gehst du das Risiko ein?'
+		'''
+}
+
+GoldenCaviar: {
+	DisplayName: Goldener Kaviar
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed3}
+		Sendet eine Lichtaura aus
+		'Er hat einen exquisiten Glanz'
+		'''
+}
+
+Hummus: {
+	DisplayName: Hummus
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Warm und lecker!'
+		'''
+}
+
+IceBerries: {
+	DisplayName: Eisbeere
+	Tooltip:
+		'''
+		Gewährt Immunität gegen Feuer
+		Vielleicht mag irgendein mystisches Wesen das?
+		'''
+}
+
+Meatballs: {
+	DisplayName: Fleischbällchen
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed2}
+		'Mit den Klassikern kann man nichts falsch machen!'
+		'''
+}
+
+Nigiri: {
+	DisplayName: Nigiri
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Gewährt freie Bewegung im Wasser
+		'Der perfekte Schnitt'
+		'''
+}
+
+PopRocks: {
+	DisplayName: Knallbonbons
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Sendet eine Lichtaura aus
+		'Es knallt in deinem Mund!'
+		'''
+}
+
+Popsicle: {
+	DisplayName: Eis am Stiel
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Gewährt Immunität gegen 'In Flammen'
+		'Iss es, bevor es schmilzt!'
+		'''
+}
+
+Ramen: {
+	DisplayName: Ramen
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Das wärmt dich richtig auf!'
+		'''
+}
+
+RockCandy: {
+	DisplayName: Steinzucker
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Süß und unglaublich hart!'
+		'''
+}
+
+Sushi: {
+	DisplayName: Sushi
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		Ermöglicht Atmen unter Wasser
+		'Kalt und frisch!'
+		'''
+}
+
+TofuSatay: {
+	DisplayName: Tofu-Satay
+	Tooltip:
+		'''
+		{$BuffDescription.WellFed}
+		'Frisch und frittiert!'
+		'''
+}
+
+GaleSnailItem: {
+	DisplayName: Windböenschnecke
+	Tooltip: ""
+}
+
+GladeWreath: {
+	DisplayName: Lichtungskranz
+	Tooltip:
+		'''
+		Beschwört einen Lichtungsgeist
+		Kann nur im Dorngestrüpp verwendet werden
+		'''
+}
+
+GoldLumothItem: {
+	DisplayName: Gold-Lumoth
+	Tooltip: "'Er schimmert wunderschön'"
+}
+
+GulperItem: {
+	DisplayName: Schlinger
+	Tooltip: "'Ein ziemlich fideles kleines Kerlchen'"
+}
+
+HailSnailItem: {
+	DisplayName: Hagelschnecke
+	Tooltip: ""
+}
+
+HemoglobItem: {
+	DisplayName: Hämoglob
+	Tooltip: ""
+}
+
+HemoglorbItem: {
+	DisplayName: Hämoglorb
+	Tooltip: ""
+}
+
+JewelCrown: {
+	DisplayName: Federkrone
+	Tooltip: Verwende im Himmel, um den Uralten Vogel zu beschwören
+}
+
+LumothItem: {
+	DisplayName: Lumoth
+	Tooltip: "'Mechanisch beeindruckend'"
+}
+
+LuvdiscItem: {
+	DisplayName: Sehnsuchtsfisch
+	Tooltip: "'Er strahlt Zuneigung aus'"
+}
+
+MaggotflyItem: {
+	DisplayName: Madenfliege
+	Tooltip: ""
+}
+
+MapScroll: {
+	DisplayName: Kartografen-Karte
+	Tooltip: Enthüllt einen nahen Teil der Minikarte
+	Effect: Karte enthüllt
+}
+
+MartianTransmitter: {
+	DisplayName: Marssender
+	Tooltip:
+		'''
+		Beschwört die Marsianische Invasion
+		'Sendet auf seltsamen Frequenzen'
+		'''
+}
+
+OliveBranch: {
+	DisplayName: Olivenzweig
+	Tooltip: Verringert Gegner-Spawns stark
+}
+
+PirateCrate: {
+	DisplayName: Piraten-Beutekiste
+	Tooltip:
+		'''
+		{$CommonItemTooltip.RightClickToOpen}
+		'Enthält Beute!'
+		'''
+}
+
+BismitePotion: {
+	DisplayName: Toxin-Trank
+	Tooltip:
+		'''
+		Kritische Treffer verursachen Eiternde Wunden
+		Erhöht die kritische Trefferchance um 4%
+		'''
+}
+
+BottomlessAle: {
+	DisplayName: Bodenloses Ale
+	Tooltip:
+		'''
+		Nicht verbrauchbar
+		Kleinere Verbesserungen der Nahkampfwerte & verringerte Verteidigung
+		'Runter damit!'
+		'''
+}
+
+BottomlessHealingPotion: {
+	DisplayName: Bodenloser Heiltrank
+	CustomTooltip:
+		'''
+		Nicht verbrauchbar
+		Stellt 100 Leben wieder her
+		'''
+	Tooltip: ""
+}
+
+DoubleJumpPotion: {
+	DisplayName: Zephir-Trank
+	Tooltip: Gewährt vorübergehend einen Doppelsprung
+}
+
+FlightPotion: {
+	DisplayName: Höhenflug-Trank
+	Tooltip: Erhöht die Flugdauer um 25%
+}
+
+MirrorCoat: {
+	DisplayName: Spiegelbeschichtung
+	Tooltip: Immunität gegen Versteinerung
+}
+
+MoonJelly: {
+	DisplayName: Mondgelee
+	CustomTooltip:
+		'''
+		Stellt über 10 Sekunden 150 Leben wieder her
+		Verursacht Trankübelkeit
+		'''
+	Tooltip: "{$BuffDescription.WellFed}"
+}
+
+MoonJellyDonut: {
+	DisplayName: Mondgelee-Donut
+	CustomTooltip:
+		'''
+		Stellt über 15 Sekunden 225 Leben wieder her
+		Verursacht Trankübelkeit
+		'''
+	Tooltip: "{$BuffDescription.WellFed}"
+}
+
+MushroomPotion: {
+	DisplayName: Sporoid-Trank
+	Tooltip: Lässt den Spieler eine schädliche Pilzspur hinterlassen
+}
+
+PinkPotion: {
+	DisplayName: Sprung-Trank
+	Tooltip: Erhöht die Sprunghöhe stark
+}
+
+RunePotion: {
+	DisplayName: Runenschrift-Trank
+	Tooltip:
+		'''
+		Magieangriffe können Gegner in Runen ausbrechen lassen
+		Erhöht den Magieschaden um 5%
+		'''
+}
+
+SoulPotion: {
+	DisplayName: Seelenschutz-Trank
+	Tooltip:
+		'''
+		Ein Treffer kann bei allen nahen Gegnern kurzzeitig 'Seelenbrand' auslösen
+		Verringert erlittenen Schaden um 5%
+			Reduces damage taken by 5%
+			
+		'''
+}
+
+SpiritPotion: {
+	DisplayName: Geist-Trank
+	Tooltip:
+		'''
+		Erhöht Schaden und kritische Trefferchance um 5%
+		Ein Treffer lässt gelegentlich einen schädlichen Bolzen entstehen, der Gegner verfolgt
+		'''
+}
+
+StarPotion: {
+	DisplayName: Sternenbrand-Trank
+	Tooltip:
+		'''
+		Kritische Treffer können Sterne vom Himmel fallen lassen
+		Erhöht Fernkampfschaden und kritische Trefferchance um 4% bei Bewegung
+		'''
+}
+
+TurtlePotion: {
+	DisplayName: Unerschütterlich-Trank
+	Tooltip:
+		'''
+		Erhöht die Verteidigung, während das Leben sinkt
+		Verringert erlittenen Schaden um 5%
+		'''
+}
+
+DurasilkSheaf: {
+	DisplayName: Durasilk-Garbe
+	CommonName: Quest-Gegenstand
+	CustomTooltip: "'Der Stoff ist weich, aber ziemlich stark'"
+	Tooltip: ""
+}
+
+ExplorerScrollAsteroidFull: {
+	DisplayName: Fertiggestellte Asteroid-Schriftrolle
+	CustomTooltip: Die Asteroidenfelder wurden kartiert!
+	Tooltip: ""
+}
+
+ExplorerScrollGraniteFull: {
+	DisplayName: Fertiggestellte Granite-Schriftrolle
+	CustomTooltip: Eine nahe Granithöhle wurde kartiert!
+	Tooltip: ""
+}
+
+ExplorerScrollHiveFull: {
+	DisplayName: Fertiggestellte Bienen-Schriftrolle
+	CustomTooltip: Ein riesiger Bienenstock wurde kartiert!
+	Tooltip: ""
+}
+
+ExplorerScrollMarbleFull: {
+	DisplayName: Fertiggestellte Marmor-Schriftrolle
+	CustomTooltip: Eine nahe Marmorhöhle wurde kartiert!
+	Tooltip: ""
+}
+
+ExplorerScrollMushroomFull: {
+	DisplayName: Fertiggestellte Pilz-Schriftrolle
+	CustomTooltip: Ein nahes Leuchtpilz-Biom wurde kartiert!
+	Tooltip: ""
+}
+
+HornetfishQuest: {
+	DisplayName: Hornissenfisch
+	CustomTooltip: "'Er summt und blubbert gleichzeitig'"
+	Tooltip: ""
+}
+
+ScarabIdolQuest: {
+	DisplayName: Verfallenes Idol
+	Tooltip: ""
+}
+
+ScientistLure: {
+	DisplayName: Grausiges Wissenschaftsexperiment
+	CustomTooltip: "'Hoffentlich ist der Wissenschaftler von dieser Abscheulichkeit fasziniert'"
+	MoreCustomTooltip:
+		'''
+		Der Untote Wissenschaftler ist nicht mehr!
+		Dieses widerliche Ding wird nicht mehr gebraucht
+		'''
+	Tooltip: ""
+}
+
+WarlockLureCorruption: {
+	DisplayName: Unheilige Magie
+	CustomTooltip: "'Hoffentlich ist der böse Nekromant von dieser seltsamen Magie fasziniert'"
+	MoreCustomTooltip:
+		'''
+		Der Untote Hexenmeister ist nicht mehr!
+		Dieses abstoßende Ding wird nicht mehr gebraucht
+		'''
+	Tooltip: ""
+}
+
+WarlockLureCrimson: {
+	DisplayName: Unheilige Magie
+	Tooltip: ""
+}
+
+RawMeat: {
+	DisplayName: Rohes Fleisch
+	Tooltip: ""
+}
+
+ReachBossSummon: {
+	DisplayName: Dornenzahn
+	Tooltip:
+		'''
+		'Eine boshafte Mischung aus Flora und Fauna'
+		Verwende im Unterirdischen Dorngestrüpp, um den Rankenzorn zu beschwören
+		'''
+}
+
+ReachCrate: {
+	DisplayName: Dornige Kiste
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+}
+
+RotSlugItem: {
+	DisplayName: Fäulnisschnecke
+	Tooltip: ""
+}
+
+SatchelReward: {
+	DisplayName: Mysteriöse Tasche
+	Tooltip:
+		'''
+		'Der Maler war inspiriert!'
+		Enthält zwei zufällige Gemälde
+		'''
+}
+
+MJWPainting: {
+	DisplayName: Mondlicht-Unfug
+	Tooltip: "'M. Joon'"
+}
+
+SadSlimePainting: {
+	DisplayName: Die Andere Seite
+	Tooltip: "'P. Polaris'"
+}
+
+ScarabIdol: {
+	DisplayName: Skarabäus-Idol
+	Tooltip:
+		'''
+		Nicht verbrauchbar
+		Verwende tagsüber in der Wüste, um Scarabeus zu beschwören
+		'''
+}
+
+SeedBag: {
+	DisplayName: Blumensamen-Beutel
+	Tooltip: Enthält exotische Grassamen
+}
+
+SoulOrbItem: {
+	DisplayName: Seelenkugel
+	Tooltip: "'Die Legende besagt, sie zu berühren bringt Glück'"
+}
+
+SpiritCrate: {
+	DisplayName: Geist-Kiste
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+}
+
+StarWormSummon: {
+	DisplayName: Starplate-Leuchtfeuer
+	Tooltip:
+		'''
+		Nicht verbrauchbar
+		Verwende an einem Astralit-Leuchtfeuer, um den Starplate Voyager zu beschwören
+		'''
+}
+
+StoneSkin: {
+	DisplayName: Haut aus Stein
+	Tooltip: Verwende irgendwo, um Atlas zu beschwören
+}
+
+SurrenderBell: {
+	DisplayName: Kapitulationsglocke
+	Tooltip:
+		'''
+		Stoppt jede Invasion bei Verwendung
+		Kann nur verwendet werden, wenn die Invasion angekommen ist, nicht wenn sie sich nähert
+		'Ein himmlischer Klang'
+		'''
+	Message: Die Eindringlinge haben ihren Angriff abgebrochen!
+}
+
+TinyCrabItem: {
+	DisplayName: Blasskrabbe
+	Tooltip: ""
+}
+
+TinyLunazoaItem: {
+	DisplayName: Kleine Lunazoa
+	Tooltip: Erhöht die Köderkraft bei Nacht, und noch mehr während der Gelee-Flut
+}
+
+TubewormItem: {
+	DisplayName: Röhrenwurm
+	Tooltip: ""
+}
+
+VibeshroomItem: {
+	DisplayName: Zitterpilz
+	Tooltip: "'Er wippt hin und her'"
+}
+
+BladeofYouKai: {
+	DisplayName: Klinge der You-Kai
+	Tooltip:
+		'''
+		Nahkampftreffer auf Gegner können Schattenflammen-Glut aussenden
+		Verursacht Schattenflamme
+		'''
+}
+
+CloakOfTheDesertKing: {
+	DisplayName: Umhang des Wüstenkönigs
+	Tooltip: Beschwört ein Killerkaninchen
+}
+
+DemonSheath: {
+	DisplayName: Dämonenscheide
+	Tooltip:
+		'''
+		Beschwört eine besessene Katana, die über dir schwebt
+		Zeigt auf seltene Gegner in Reichweite
+		'''
+}
+
+DemonTail: {
+	DisplayName: Dämonenschwanz
+	Tooltip: Beschwört eine unheimliche Abscheulichkeit, die dir folgt
+}
+
+DodgeBall: {
+	DisplayName: Blitzball
+	Tooltip: Wirf Völkerbälle mit Überschallgeschwindigkeit!
+}
+
+DodgeBall1: {
+	DisplayName: Schneckenball
+	Tooltip: Wirf einen Völkerballe mit Schneckentempo
+}
+
+DuskfeatherDagger: {
+	DisplayName: Dunkelfeder-Dolch
+	Tooltip:
+		'''
+		Kann bis zu acht Dunkelfeder-Klingen werfen
+		Rechtsklick, um alle eingesetzten Klingen zurückzurufen
+		'''
+}
+
+EternalAsh: {
+	DisplayName: Ewige Asche
+	Tooltip: Beschwört einen Phönix-Wachposten, der Feuerbälle auf deine Feinde regnen lässt
+}
+
+BlizzardEdge: {
+	DisplayName: Klinge des Blizzards
+	Tooltip: Rechtsklick nach fünf Schlägen, um einen Blizzard zu beschwören
+}
+
+Chillrend: {
+	DisplayName: Frostreißer
+	Tooltip:
+		'''
+		Feuert drei aufeinanderfolgende Kugelsalven ab
+		Schießt gelegentlich einen zielsuchenden kalten Stoß ab
+		'''
+}
+
+ShiverWind: {
+	DisplayName: Frostwind
+	Tooltip: Schießt einen kalten Bolzen ab, der sich in eine eisige Rune verwandelt
+}
+
+SnowmongerMountItem: {
+	DisplayName: Robotischer Schneearm
+	Tooltip:
+		'''
+		Beschwört einen fliegenden Mech mit der Fähigkeit, vorwärts zu sprinten
+		Sprints feuern ein abwärtsgerichtetes Sperrfeuer schädlicher Eisstrahlen ab
+		'''
+}
+
+GoldJadeScythe: {
+	DisplayName: Hirtenstab des Gequälten
+	Tooltip: Beschwört gelegentlich verzierte Skarabäen, die dich beim Treffen von Gegnern verteidigen
+}
+
+HeroBow: {
+	DisplayName: Bogen des Helden
+	Tooltip:
+		'''
+		Holzpfeile werden mit den Elementen infundiert
+		- Feuerpfeile können mehrere verschiedene Verbrennungen verursachen
+		- Eispfeile können einfrieren und Frostbrand verursachen
+		- Lichtpfeile haben eine 2%-Chance auf sofortigen Tod
+
+		'''
+}
+
+MysticalCage: {
+	DisplayName: Mystischer Käfig
+	Tooltip:
+		'''
+		Beschwört einen Kultfisch, der dir folgt
+		Enthüllt nahen Schatz
+		'''
+}
+
+Omniwrench: {
+	DisplayName: Omniwrench
+	Tooltip: Rechtsklick zum Werfen
+}
+
+QuacklingStaff: {
+	DisplayName: Entchen-Stab
+	Tooltip: Beschwört eine freundliche Ente, die Wasserbolzen auf Gegner abfeuert
+}
+
+SnakeStaff: {
+	DisplayName: Schlangen-Zauberstab
+	Tooltip: Beschwört eine freundliche Fliegende Schlange, die Gift auf Feinde abfeuert
+}
+
+Terravolt: {
+	DisplayName: Energiestrahl
+	Tooltip: Feuert einen Strahl aus Elektrizität ab
+}
+
+TheCouch: {
+	DisplayName: Die Couch
+	Tooltip:
+		'''
+		Verteidigung ist erhöht, aber Bewegungsgeschwindigkeit verringert, wenn in der Nähe
+		'Hallo Terraria-Enthusiasten'
+		Nicht für Master-Modus!
+		'''
+}
+
+AuroraSaddle: {
+	DisplayName: Aurora-Sattel
+	Tooltip: Beschwört ein leuchtendes Reittier
+}
+
+DynastyFan: {
+	DisplayName: Dynastie-Fächer
+	Tooltip: Schleudere dich mit einer Windböe in jede Richtung
+}
+
+KelpHook: {
+	DisplayName: Haken aus Seetang
+	Tooltip: Ermöglicht schnellere Fortbewegung unter Wasser
+}
+
+MagnetHook: {
+	DisplayName: Magnethaken
+	Tooltip: Verfolgt nahe Blöcke
+}
+
+Obolos: {
+	DisplayName: Obolos
+	Tooltip:
+		'''
+		Beschwört ein reitbares Ätherisches Boot zum Segeln
+		'Zahlung erhalten'
+		'''
+}
+
+SandsOfTime: {
+	DisplayName: Sande der Zeit
+	Tooltip:
+		'''
+		Beschwört oder beendet einen Sandsturm
+		Nur in einer Wüste verwendbar
+		'''
+}
+
+SolarRattle: {
+	DisplayName: Solar-Rassel
+	Tooltip:
+		'''
+		Beschwört einen Drakomire in die Schlacht
+		Beim Reiten des Drakomire ist die Verteidigung um 40 erhöht
+		Eine feurige Spur wird hinterlassen, und Rückstoß wird ignoriert
+		Der Drakomire baut außerdem Ausdauer auf, die alle 10 Sekunden einen Sprint erlaubt.
+		'''
+}
+
+ZiplineGun: {
+	DisplayName: Schienenkanone
+	Tooltip:
+		'''
+		Links- und Rechtsklick haken Halteseile an Blöcken fest, verbunden durch eine Schiene
+		Schienen tragen Spieler schnell entlang
+		Halteseile können entfernt werden, wenn man mit der Maus darüber fährt
+		'''
+}
+
+FisheyeGem: {
+	DisplayName: Fischaugen-Edelstein
+	Tooltip:
+		'''
+		Erhöht den Verkaufspreis von Fischen um 50%
+		Funktioniert auch im Inventar
+		'''
+}
+
+BeeGlyph: {
+	DisplayName: Bienenglyphe
+	Tooltip:
+		'''
+		Gewährt Honigbenetzt, wenn ein Gegner erschlagen wird
+		Angriffe setzen regelmäßig Bienen frei
+		'''
+	Addendum:
+		'''
+		Gewährt Honigbenetzt, wenn ein Gegner erschlagen wird
+		Angriffe setzen regelmäßig Bienen frei
+		'''
+	Effect: Honigbenetzt
+
+	# Russian-only localization - feel free to leave unset.
+	# The Effect key above is the masculine/default form
+	Gendered: {
+		// Fem: Feminine
+		// Neutral: Neutral
+		// Plural: Plural
+	}
+}
+
+BlazeGlyph: {
+	DisplayName: Feuerglyphe
+	Tooltip:
+		'''
+		Schaden zu verursachen entzündet dich
+		+25% Schaden und +10% kritische Trefferchance
+		'''
+	Addendum: Schaden zu verursachen entzündet dich
+	Effect: Lodernd
+	Death: "{0} wurde vom Zorn verzehrt..."
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+ChaosGlyph: {
+	DisplayName: Chaosglyphe
+	Tooltip: Deine Waffe wechselt regelmäßig zwischen Glyphen-Effekten
+	Addendum: Deine Waffe wechselt regelmäßig zwischen Glyphen-Effekten
+	Effect: Instabil
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+FrostGlyph: {
+	DisplayName: Frostglyphe
+	Tooltip: Angriffe haben eine Chance, Gegner kurz einzufrieren
+	Addendum: Angriffe haben eine Chance, Gegner kurz einzufrieren
+	Effect: Frierend
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+Glyph: {
+	DisplayName: Leere Glyphe
+	Tooltip: "'Der Verzauberer könnte das wahrscheinlich gebrauchen'"
+	Gain: Die verzauberte Waffe erhält: [c/{0}:{1}]
+	Target: Kann nur auf Waffen angewendet werden
+	RightClick: Halte diese Glyphe und rechtsklicke die Waffe, die du verzaubern willst
+	Remove: Halte diese Glyphe und rechtsklicke den Gegenstand, dessen Glyphe du entfernen willst
+	PriceText: "{0} {^0:Glyphe;Glyphen}"
+}
+
+NullGlyph: {
+	DisplayName: Null Glyphe
+	Tooltip: Kann verwendet werden, um eine Glyphe von einem Gegenstand zu entfernen
+	Addendum: Ungültig
+	Effect: Ungültig
+}
+
+PhaseGlyph: {
+	DisplayName: Phasen Glyphe
+	Tooltip:
+		'''
+		Waffenschaden erhöht sich, je schneller du dich bewegst, verringert sich aber bei langsamer Bewegung
+		Aufeinanderfolgende Treffer gewähren einen kurzen Geschwindigkeitsschub
+		'''
+	Addendum:
+		'''
+		Waffenschaden erhöht sich, je schneller du dich bewegst, verringert sich aber bei langsamer Bewegung
+		Aufeinanderfolgende Treffer gewähren einen kurzen Geschwindigkeitsschub
+		'''
+	Effect: Zeitlich
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+RadiantGlyph: {
+	DisplayName: Strahlende Glyphe
+	Tooltip: Baut strahlende Energie auf, wenn kein Schaden verursacht wird, und verstärkt deinen nächsten Angriff
+	Addendum: Baut strahlende Energie auf, wenn kein Schaden verursacht wird, und verstärkt deinen nächsten Angriff
+	Effect: Strahlend
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+RageGlyph: {
+	DisplayName: Zorn Glyphe
+	Tooltip: Überschüssiger Schaden bei einem Kill wird für deinen nächsten Angriff gespeichert
+	Addendum: Überschüssiger Schaden bei einem Kill wird für deinen nächsten Angriff gespeichert
+	Effect: Rasend
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+SanguineGlyph: {
+	DisplayName: Blutrote Glyphe
+	Tooltip:
+		'''
+		Schaden zu verursachen erhöht kurzzeitig die Lebensregeneration
+		-10% Schaden
+		'''
+	Addendum: Schaden zu verursachen erhöht kurzzeitig die Lebensregeneration
+	Effect: Aussaugend
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+StormGlyph: {
+	DisplayName: Sturm Glyphe
+	Tooltip: Angriffe setzen gelegentlich eine kräftige Windböe frei
+	Addendum: Angriffe setzen gelegentlich eine kräftige Windböe frei
+	Effect: Aufgewühlt
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+UnholyGlyph: {
+	DisplayName: Unheilige Glyphe
+	Tooltip: Gegner brechen beim Tod in verfluchte Phantome aus
+	Addendum: Gegner brechen beim Tod in verfluchte Phantome aus
+	Effect: Verflucht
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+VeilGlyph: {
+	DisplayName: Schleier Glyphe
+	Tooltip: Schaden zu verursachen baut einen schützenden Schleier um den Benutzer auf
+	Addendum: Schaden zu verursachen baut einen schützenden Schleier um den Benutzer auf
+	Effect: Beschützend
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+VoidGlyph: {
+	DisplayName: Leeren Glyphe
+	Tooltip: Angriffe haben eine Chance, Stapel von Leerenkollaps zu verursachen
+	Addendum: Angriffe haben eine Chance, Stapel von Leerenkollaps zu verursachen
+	Effect: Nichtig
+
+	Gendered: {
+		// Fem: ""
+		// Neutral: ""
+		// Plural: ""
+	}
+}
+
+CaramelApple: {
+	DisplayName: Karamellapfel
+	Tooltip: "{$BuffDescription.WellFed}"
+}
+
+JackOGourd: {
+	DisplayName: Kürbisfratze
+	Tooltip: Kleinere Verbesserung aller Werte... irgendwie
+}
+
+TreeGourd: {
+	DisplayName: Vogelhaus-Kürbis
+	Tooltip: "{$BuffDescription.WellFed}"
+}
+
+Candy: {
+	DisplayName: Süßigkeit
+	Tooltip: Erhöht alle Werte leicht
+
+	Names: {
+		0: "'Popstein'"
+		1: "'Drei Musketen'"
+		2: "'Lhizzler'"
+		3: "'Mondgelee-Bohnen'"
+		4: "'Seiden-Flops'"
+		5: "'Necro-Waffeln'"
+		6: "'Blinkwurzel-Pop'"
+		7: "'Gummischleime'"
+		8: "'Weinender Goblin'"
+		9: "'Sauer-Schleim-Bonbons'"
+		10: "'Sternenstaub-Explosion'"
+		11: "'Höllenfeuer-Tamales'"
+		12: "'Blinkwurzel-Fladen'"
+		13: "'Xenowhopper'"
+		14: "'Edel&Ms'"
+		15: "'100.000-Kupferbarren'"
+		16: "'Toblerknochen'"
+		17: "'Köstlich aussehendes Auge'"
+		18: "'Seidige Milchstraße'"
+		19: "'Malzige Seidenkugeln'"
+		20: "'Wolkenköpfe'"
+		21: "'Rote-Teufel-Schärfe'"
+		22: "'Runen-Pop'"
+		23: "'Schwester-Küsse'"
+		24: "'Schädelchen'"
+		25: "'Feuerbolzen'"
+		26: "'Rankenzorn-Stange'"
+		27: "'Süße Eichel'"
+		28: "'Häschenfinger'"
+		29: "'Ichorlakritz'"
+		30: "'Mondverrückt-Tac'"
+	}
+}
+
+CandyBag: {
+	DisplayName: Süßigkeitenbeutel
+	Tooltip: Fasst bis zu 99 Stück Süßigkeiten
+	BagContents:
+		'''
+		Enthält {0} {^0:Stück;Stücke} Süßigkeiten
+		Rechtsklick, um ein Stück Süßigkeit zu nehmen
+		'''
+}
+
+CandyBowl: {
+	DisplayName: Süßigkeitenschale
+	Tooltip: ""
+	Take: Nimm ein Stück Süßes
+}
+
+ChocolateBar: {
+	DisplayName: Schokoriegel
+	Tooltip: Erhöht die Geschwindigkeit
+}
+
+MaskBlaze: {
+	DisplayName: Blaze Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskGraydee: {
+	DisplayName: Graydees Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskIggy: {
+	DisplayName: Iggys Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskKachow: {
+	DisplayName: Kachows Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskLeemyy: {
+	DisplayName: Leemyys Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskLordCake: {
+	DisplayName: Lordcakespys Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskSchmo: {
+	DisplayName: Schmos Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskSvante: {
+	DisplayName: Svantes Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskVladimier: {
+	DisplayName: Vladimiers Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+MaskYuyutsu: {
+	DisplayName: Yuyutsus Maske
+	Tooltip:
+		'''
+		Kosmetisches Item
+		'Großartig, um Entwickler zu imitieren!'
+		'''
+}
+
+GoldCandy: {
+	DisplayName: Goldene Süßigkeit
+	Tooltip: Kann nicht gegessen werden, verkauft sich aber vielleicht für viel!
+}
+
+HealthCandy: {
+	DisplayName: Lebens-Süßigkeit
+	Tooltip: Erhöht das Leben
+}
+
+Lollipop: {
+	DisplayName: Lutscher
+	Tooltip: Erhöht die Lebensregeneration
+}
+
+ManaCandy: {
+	DisplayName: Mana-Süßigkeit
+	Tooltip: Erhöht das Mana
+}
+
+MysteryCandy: {
+	DisplayName: Geheimnisvolle Süßigkeit
+	Tooltip: Entweder ein toller Leckerbissen... oder ein übler Streich
+
+	Positive: {
+		1: Süß und sättigend. Du fühlst dich erneuert.
+		2: Der Zuckerrausch trifft hart.
+		3: Mmm, der flauschigste Nougat. Du fühlst dich federleicht.
+		4: Magie funkt von deinen Fingerspitzen. Vielleicht war die Süßigkeit doch verzaubert.
+		5: Hat einen leicht metallischen Geschmack, aber deine Haut ist jetzt hart wie Titan.
+		6: Perfekte Zeit zum Erkunden.
+		7: Du kannst alles sehen.
+		8: Deine Hände sind jetzt vollkommen ruhig.
+		9: Das war köstlich.
+		10: Die Bedingungen sind perfekt zum Bauen.
+		11: Dein Wunsch ist ihr Befehl.
+		12: Neue Kraft strömt durch deinen Körper.
+		13: Der Boden gibt unter deinen Füßen nach.
+		14: Du fühlst, als würdest du einen großen Fang machen.
+	}
+
+	Negative: {
+		Hurt: "{0} biss auf eine Rasierklinge."
+		1: Autsch, da war eine Rasierklinge drin!
+		2: Deine Beine können dich kaum noch halten.
+		3: Du bist in Stein eingeschlossen.
+		4: Jeder letzte Funke Magie hat deinen Körper verlassen. Vielleicht war die Süßigkeit doch verzaubert.
+		5: Deine Rüstung zerbröckelt bei der kleinsten Berührung.
+		6: Du kannst kaum klar denken.
+		7: Du bist eingefroren. Vielleicht war Minze doch keine gute Idee...
+		8: Du spürst deine Arme nicht.
+		9: Deine Gliedmaßen schmerzen bei der kleinsten Bewegung.
+		10: Du wurdest betäubt.
+		11: Dir ist übel.
+	}
+}
+
+BatBlaster: {
+	DisplayName: Fledermaus-Blaster
+	Tooltip: Verwandelt Kugeln in Fledermäuse
+}
+
+FearsomeFork: {
+	DisplayName: Furchteinflößende Gabel
+	Tooltip: Schleudert Kürbisse
+}
+
+HauntingClaw: {
+	DisplayName: Heimsuchende Klaue
+	Tooltip: Schießt einen Schwall gruseligen Feuers.
+}
+
+SpookyScythe: {
+	DisplayName: Gruselige Sense
+	Tooltip: Schleudert zielsuchende Kürbisse.
+}
+
+Taffy: {
+	DisplayName: Karamellbonbon
+	Tooltip: Erhöht die Verteidigung
+}
+
+Brightbulb: {
+	DisplayName: Leuchtknospe
+	Tooltip: "'Kunstvoll und vielseitig'"
+}
+
+Canvas: {
+	DisplayName: Leere Leinwand
+	Tooltip: "'So viele Möglichkeiten!'"
+}
+
+GlowRoot: {
+	DisplayName: Glühwurzel
+	Tooltip: "'Pulsiert leicht auf und ab'"
+}
+
+HeartScale: {
+	DisplayName: Herzschuppe
+	Tooltip: "'Eine wunderschöne Schuppe. Von Sammlern begehrt.'"
+}
+
+OldLeather: {
+	DisplayName: Altes Leder
+	Tooltip: "'Muffig, aber nützlich'"
+}
+
+SoulBloom: {
+	DisplayName: Seelenblüte
+	Tooltip: "'Feine Flüstereien hallen in Sprachen wider, die du nicht kennst'"
+}
+
+SpiritKoi: {
+	DisplayName: Geist-Koi
+	Tooltip: "'Ist er über sein Haltbarkeitsdatum hinaus?'"
+}
+
+StarEnergy: {
+	DisplayName: Energetisiertes Metall
+	Tooltip: "'Es nutzt eine Art überirdische Energiequelle'"
+}
+
+StrippedBamboo: {
+	DisplayName: Entrindeter Bambus
+	Tooltip: ""
+}
+
+SynthMaterial: {
+	DisplayName: Entladungsröhre
+	Tooltip: "'Die bunten Röhren sind mit energetisiertem Gas gefüllt'"
+}
+
+CagedMoonlight: {
+	DisplayName: Eingefangenes Mondlicht
+	Tooltip:
+		'''
+		Beschwört eine Fee, die dich beschützt
+		'Hier wohnt ein Wesen aus reinem Sternenfeuer.'
+		'Deine Feinde werden von leuchtenden Lanzen belästigt werden.'
+		'''
+}
+
+JellyCandle: {
+	DisplayName: Gelee-Friedenskerze
+	Tooltip: Beschwört eine friedliche Qualle
+}
+
+PhantomEgg: {
+	DisplayName: Phantom-Ei
+	Tooltip: Ein schattenhaftes Phantom folgt dir...
+}
+
+PowerRing: {
+	DisplayName: Ring der Willenskraft
+	Tooltip: Beschwört eine Laternen-Energiebatterie, die den Weg erleuchtet
+}
+
+SaucerBeacon: {
+	DisplayName: Unterstützungs-Leuchtfeuer
+	Tooltip: Ruft marsianische Verstärkung herbei!
+}
+
+ShadowCollar: {
+	DisplayName: Schattenhalsband
+	Tooltip: Beschwört einen Schattenwelpen-Begleiter
+}
+
+SuspiciousLookingMeatballs: {
+	DisplayName: Verdächtig aussehende Fleischbällchen
+	Tooltip: Beschwört den Aufseher
+}
+
+TatteredScript: {
+	DisplayName: Zerfetztes Skript
+	Tooltip: Beschwört eine Entfesselte Maske, die dem Spieler folgt!
+}
+
+PinBlue: {
+	DisplayName: Wegfinder-Pin (Blau)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen blauen Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinCopperCoin: {
+	DisplayName: Wegfinder-Pin (Kupfer)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen kupfernen Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinGoldCoin: {
+	DisplayName: Wegfinder-Pin (Gold)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen goldenen Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinGreen: {
+	DisplayName: Wegfinder-Pin (Grün)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen grünen Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinMoonjelly: {
+	DisplayName: Wegfinder-Pin (Mondgelee)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen Mondgelee-Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinRed: {
+	DisplayName: Wegfinder-Pin (Rot)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen roten Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinScarab: {
+	DisplayName: Wegfinder-Pin (Skarabäus)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen Skarabäus-Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinSilverCoin: {
+	DisplayName: Wegfinder-Pin (Silber)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen silbernen Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinStar: {
+	DisplayName: Wegfinder-Pin (Stern)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen Stern-Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinTree: {
+	DisplayName: Wegfinder-Pin (Baum)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen Baum-Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+PinYellow: {
+	DisplayName: Wegfinder-Pin (Gelb)
+	Tooltip:
+		'''
+		Platziert oder verschiebt einen gelben Kartenpin
+		Rechtsklick, um Pin zu löschen
+		Platzierte Pins können auf der Karte angeklickt werden
+		'''
+}
+
+FishCrate: {
+	DisplayName: Fischkiste
+	Tooltip:
+		'''
+		'Ein Logo einer beliebten Angelfirma ist zu sehen'
+		{$CommonItemTooltip.RightClickToOpen}
+		Enthält verschiedene Fischarten
+		'''
+}
+
+AcidAC: {
+	DisplayName: Ätzende Klimaanlage
+	Tooltip: ""
+}
+
+AcidBarrel: {
+	DisplayName: Ätzendes Fass
+	Tooltip: ""
+}
+
+AcidBathtub: {
+	DisplayName: Ätzende Badewanne
+	Tooltip: ""
+}
+
+AcidBed: {
+	DisplayName: Ätzendes Bett
+	Tooltip: ""
+}
+
+AcidBench: {
+	DisplayName: Ätzende Werkbank
+	Tooltip: ""
+}
+
+AcidBookcase: {
+	DisplayName: Ätzendes Bücherregal
+	Tooltip: ""
+}
+
+AcidCandelabra: {
+	DisplayName: Ätzender Kandelaber
+	Tooltip: ""
+}
+
+AcidCandle: {
+	DisplayName: Ätzende Kerze
+	Tooltip: ""
+}
+
+AcidChair: {
+	DisplayName: Ätzender Stuhl
+	Tooltip: ""
+}
+
+AcidChandelier: {
+	DisplayName: Ätzender Kronleuchter
+	Tooltip: ""
+}
+
+AcidChest: {
+	DisplayName: Ätzende Truhe
+	Tooltip: ""
+}
+
+AcidClock: {
+	DisplayName: Ätzende Uhr
+	Tooltip: ""
+}
+
+AcidDoor: {
+	DisplayName: Ätzende Tür
+	Tooltip: ""
+}
+
+AcidDresser: {
+	DisplayName: Ätzende Kommode
+	Tooltip: ""
+}
+
+AcidFan: {
+	DisplayName: Ätzender Ventilator
+	Tooltip: ""
+}
+
+AcidKeg: {
+	DisplayName: Ätzendes Fässchen
+	Tooltip: ""
+}
+
+AcidLamp: {
+	DisplayName: Ätzende Lampe
+	Tooltip: ""
+}
+
+AcidLantern: {
+	DisplayName: Ätzende Laterne
+	Tooltip: ""
+}
+
+AcidPiano: {
+	DisplayName: Ätzendes Klavier
+	Tooltip: ""
+}
+
+AcidSink: {
+	DisplayName: Ätzendes Waschbecken
+	Tooltip: ""
+}
+
+AcidSofa: {
+	DisplayName: Ätzendes Sofa
+	Tooltip: ""
+}
+
+AcidTable: {
+	DisplayName: Ätzender Tisch
+	Tooltip: ""
+}
+
+AdventurerMap: {
+	DisplayName: Schatzkarte des Abenteurers
+	Tooltip: "'Südlich von Weißlauf, östlich der Pelagia-Farm'"
+}
+
+AsteroidChest: {
+	DisplayName: Asteroiden-Truhe
+	Tooltip: ""
+}
+
+BambooBarrelItem: {
+	DisplayName: Entrindetes Bambusfass
+	Tooltip: ""
+}
+
+BambooBenchItem: {
+	DisplayName: Entrindete Bambusbank
+	Tooltip: ""
+}
+
+BambooBirdCageItem: {
+	DisplayName: Entrindeter Bambus-Vogelkäfig
+	Tooltip: Vögel können mit Rechtsklick darin eingesperrt werden
+}
+
+BambooPikeItem: {
+	DisplayName: Bambusspieß
+	Tooltip: ""
+}
+
+BambooPotItem: {
+	DisplayName: Entrindeter Bambustopf
+	Tooltip: ""
+}
+
+BismiteChairItem: {
+	DisplayName: Bismit-Stuhl
+	Tooltip: ""
+}
+
+BismiteTableItem: {
+	DisplayName: Bismit-Tisch
+	Tooltip: ""
+}
+
+BlueprintTwins: {
+	DisplayName: Zwillinge-Bauplan
+	Tooltip: Sie können nicht töten, was sie nicht sehen können... Sie sehen alles.
+}
+
+BriarFlowerItem: {
+	DisplayName: Glühblume
+	Tooltip: ""
+}
+
+DuskingPainting: {
+	DisplayName: Duskings Zorn
+	Tooltip: "'S. Kletony'"
+}
+
+FishingPainting: {
+	DisplayName: Mondlicht-Flut
+	Tooltip: "'P. Otat'"
+}
+
+FloppaPainting: {
+	DisplayName: Die Dualität des Menschen
+	Tooltip: "'Tix A. Luna'"
+}
+
+ForagerTableItem: {
+	DisplayName: Naturforscher-Werkstatt
+	Tooltip: Erlaubt das Herstellen von Umgebungsobjekten und Fliesen
+}
+
+ForgottenKingStatueItem: {
+	DisplayName: Statue des Vergessenen Königs
+	Tooltip: "'Ein Denkmal eines uralten Eroberers'"
+}
+
+GiantAnglerStatue: {
+	DisplayName: Statue des Riesigen Menschenhais
+	Tooltip: ""
+}
+
+GraniteSpike1: {
+	DisplayName: Granit-Stachel 1
+	Tooltip: ""
+}
+
+GraniteSpike2: {
+	DisplayName: Granit-Stachel 2
+	Tooltip: ""
+}
+
+GraniteSpike3: {
+	DisplayName: Granit-Stachel 3
+	Tooltip: ""
+}
+
+GraniteSpike4: {
+	DisplayName: Granit-Stachel 4
+	Tooltip: ""
+}
+
+GraniteSpike5: {
+	DisplayName: Granit-Stachel 5
+	Tooltip: ""
+}
+
+GraniteSpike6: {
+	DisplayName: Granit-Stachel 6
+	Tooltip: ""
+}
+
+HangingCloudstalk: {
+	DisplayName: Hängender Wolkenstängel
+	Tooltip: ""
+}
+
+HangingSoulbloom: {
+	DisplayName: Hängende Seelenblüte
+	Tooltip: ""
+}
+
+HangingSunPot: {
+	DisplayName: Hängende Sonne im Topf
+	Tooltip: Erhöht die Lebensregeneration während des Tages
+}
+
+HourglassItem: {
+	DisplayName: Uralte Sanduhr
+	Tooltip: ""
+}
+
+MarbleObeliskItem: {
+	DisplayName: Marmor-Obelisk
+	Tooltip: Sendet uralte Symbole aus
+}
+
+Pillar1: {
+	DisplayName: Säule 1
+	Tooltip: ""
+}
+
+Pillar2: {
+	DisplayName: Säule 2
+	Tooltip: ""
+}
+
+Pillar3: {
+	DisplayName: Säule 3
+	Tooltip: ""
+}
+
+Pillar4: {
+	DisplayName: Säule 4
+	Tooltip: ""
+}
+
+Pillar5: {
+	DisplayName: Säule 5
+	Tooltip: ""
+}
+
+Pillar6: {
+	DisplayName: Säule 6
+	Tooltip: ""
+}
+
+Pillar7: {
+	DisplayName: Säule 7
+	Tooltip: ""
+}
+
+Pillar8: {
+	DisplayName: Säule 8
+	Tooltip: ""
+}
+
+ArcadeMachineItem: {
+	DisplayName: Spielautomat
+	Tooltip: ""
+}
+
+BlueFairyLights: {
+	DisplayName: Blaue Lichterkette
+	Tooltip: ""
+}
+
+BlueNeonLamp: {
+	DisplayName: Blaue Neon-Laterne
+	Tooltip: ""
+}
+
+BlueNeonSign: {
+	DisplayName: Blaues Neon-Schild
+	Tooltip: ""
+}
+
+GeneratorItem: {
+	DisplayName: Generator
+	Tooltip: ""
+}
+
+GreenFairyLights: {
+	DisplayName: Grüne Lichterkette
+	Tooltip: ""
+}
+
+GreenNeonLamp: {
+	DisplayName: Grüne Neon-Laterne
+	Tooltip: ""
+}
+
+GreenNeonSign: {
+	DisplayName: Grünes Neon-Schild
+	Tooltip: ""
+}
+
+LargeTechCrate: {
+	DisplayName: Große Tech-Kiste
+	Tooltip: ""
+}
+
+NeonCandleBlue: {
+	DisplayName: Blaue Neon-Kerze
+	Tooltip: ""
+}
+
+NeonCandleGreen: {
+	DisplayName: Grüne Neon-Kerze
+	Tooltip: ""
+}
+
+NeonCandlePurple: {
+	DisplayName: Lila Neon-Kerze
+	Tooltip: ""
+}
+
+NeonCandleRed: {
+	DisplayName: Rote Neon-Kerze
+	Tooltip: ""
+}
+
+NeonCandleYellow: {
+	DisplayName: Gelbe Neon-Kerze
+	Tooltip: ""
+}
+
+NeonPlantBlue: {
+	DisplayName: Blaue Neon-Pflanze
+	Tooltip: ""
+}
+
+NeonPlantGreen: {
+	DisplayName: Grüne Neon-Pflanze
+	Tooltip: ""
+}
+
+NeonPlantPurple: {
+	DisplayName: Lila Neon-Pflanze
+	Tooltip: ""
+}
+
+NeonPlantRed: {
+	DisplayName: Rote Neon-Pflanze
+	Tooltip: ""
+}
+
+NeonPlantYellow: {
+	DisplayName: Gelbe Neon-Pflanze
+	Tooltip: ""
+}
+
+PurpleFairyLights: {
+	DisplayName: Lila Lichterkette
+	Tooltip: ""
+}
+
+PurpleNeonLamp: {
+	DisplayName: Lila Neon-Laterne
+	Tooltip: ""
+}
+
+PurpleNeonSign: {
+	DisplayName: Lila Neon-Schild
+	Tooltip: ""
+}
+
+RedFairyLights: {
+	DisplayName: Rote Lichterkette
+	Tooltip: ""
+}
+
+RedNeonLamp: {
+	DisplayName: Rote Neon-Laterne
+	Tooltip: ""
+}
+
+RedNeonSign: {
+	DisplayName: Rotes Neon-Schild
+	Tooltip: ""
+}
+
+SmallTechCrate: {
+	DisplayName: Kleine Tech-Kiste
+	Tooltip: ""
+}
+
+Synthpalm: {
+	DisplayName: Synthetisches-Wandpanel
+	Tooltip: "'Eine Mischung aus natürlich und digital'"
+}
+
+VaporwaveItem: {
+	DisplayName: Retrofuturistisches Wandpanel
+	Tooltip: "'Eine Mischung aus Vergangenheit und Gegenwart'"
+}
+
+YellowFairyLights: {
+	DisplayName: Gelbe Lichterkette
+	Tooltip: ""
+}
+
+YellowNeonLamp: {
+	DisplayName: Gelbe Neon-Laterne
+	Tooltip: ""
+}
+
+YellowNeonSign: {
+	DisplayName: Gelbes Neon-Schild
+	Tooltip: ""
+}
+
+OccultistMap: {
+	DisplayName: Okkulte Wandschriftrolle
+	Tooltip: "'Die Tinte ist von fragwürdiger Herkunft'"
+}
+
+OldTelescope: {
+	DisplayName: Altes Teleskop
+	Tooltip:
+		'''
+		Rechtsklick, wenn platziert, um die Mondphase zu prüfen
+		'Blick zu den Sternen'
+		'''
+}
+
+AdvPainting1: {
+	DisplayName: Sonnenuntergangs-Turm
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting10: {
+	DisplayName: Leuchtende Weiden
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting11: {
+	DisplayName: Blick in die Leere
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting12: {
+	DisplayName: Ertrinkende Flut
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting13: {
+	DisplayName: Nebliger Regenwald
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting14: {
+	DisplayName: Sumpfflächen
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting15: {
+	DisplayName: Tanzende Geister, Sternenklarer Himmel
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting16: {
+	DisplayName: Morgendämmerung der Roten Sonne
+	Tooltip: "'S. Tony'"
+}
+
+AdvPainting17: {
+	DisplayName: Träume einer Welt jenseits
+	Tooltip: "'P. Otat'"
+}
+
+AdvPainting18: {
+	DisplayName: Blutstein-Enklave
+	Tooltip: "'E. Sibelius'"
+}
+
+AdvPainting19: {
+	DisplayName: Jenseits der Mauern
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting2: {
+	DisplayName: Sanfte Ebenen
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting20: {
+	DisplayName: Terrarianer über einem Nebelmeer
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting21: {
+	DisplayName: Uralte Stadt
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting22: {
+	DisplayName: Mondaufgang über dem Ozean
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting23: {
+	DisplayName: Mönch am Meer
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting3: {
+	DisplayName: Gezeitenklippen
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting4: {
+	DisplayName: Trostloses Moor
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting5: {
+	DisplayName: Verhülltes Waldland
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting6: {
+	DisplayName: Gefällte Bestie
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting7: {
+	DisplayName: Windgepeitschte Heide
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting8: {
+	DisplayName: Isolierte Steppe
+	Tooltip: "'S. Yaki'"
+}
+
+AdvPainting9: {
+	DisplayName: Bewölkte Küstenlinie
+	Tooltip: "'S. Yaki'"
+}
+
+ScrunklyPaintingItem: {
+	DisplayName: Der Scrunkly
+	Tooltip: "'B. F. Jinx'"
+}
+
+TheBadPaintingItem: {
+	DisplayName: Das Böse
+	Tooltip: "'Professor Jones'"
+}
+
+TheGoodPaintingItem: {
+	DisplayName: Das Gute
+	Tooltip: "'Professor Jones'"
+}
+
+PottedSakura: {
+	DisplayName: Sakura-Bonsai
+	Tooltip: ""
+}
+
+PottedWillow: {
+	DisplayName: Gelber-Weiden-Bonsai
+	Tooltip: ""
+}
+
+PrintPrime: {
+	DisplayName: Skeletron-Prime-Bauplan
+	Tooltip: Vorgewarnt ist Vierbewaffnet.
+}
+
+PrintProbe: {
+	DisplayName: Zerstörer-Bauplan
+	Tooltip: WARNUNG - Freisetzung kann seismische Anomalien über 10f verursachen.
+}
+
+ReachBedItem: {
+	DisplayName: Elderbark-Bett
+	Tooltip: ""
+}
+
+ReachBench: {
+	DisplayName: Elderbark-Werkbank
+	Tooltip: ""
+}
+
+ReachBookcase: {
+	DisplayName: Elderbark-Bücherregal
+	Tooltip: ""
+}
+
+ReachCandelabra: {
+	DisplayName: Elderbark-Kandelaber
+	Tooltip: ""
+}
+
+ReachCandle: {
+	DisplayName: Elderbark-Kerze
+	Tooltip: ""
+}
+
+ReachChairItem: {
+	DisplayName: Elderbark-Stuhl
+	Tooltip: ""
+}
+
+ReachChandelier: {
+	DisplayName: Elderbark-Kronleuchter
+	Tooltip: ""
+}
+
+ReachChest: {
+	DisplayName: Elderbark-Truhe
+	Tooltip: ""
+}
+
+ReachClockItem: {
+	DisplayName: Elderbark-Uhr
+	Tooltip: ""
+}
+
+ReachDoorItem: {
+	DisplayName: Elderbark-Tür
+	Tooltip: ""
+}
+
+ReachDresser: {
+	DisplayName: Elderbark-Kommode
+	Tooltip: ""
+}
+
+ReachLampItem: {
+	DisplayName: Elderbark-Lampe
+	Tooltip: ""
+}
+
+ReachLantern: {
+	DisplayName: Elderbark-Laterne
+	Tooltip: ""
+}
+
+ReachPiano: {
+	DisplayName: Elderbark-Klavier
+	Tooltip: ""
+}
+
+ReachPlatformTile: {
+	DisplayName: Elderbark-Plattform
+	Tooltip: ""
+}
+
+ReachPot: {
+	DisplayName: Elderbark-Topf
+	Tooltip: ""
+}
+
+ReachSink: {
+	DisplayName: Elderbark-Waschbecken
+	Tooltip: ""
+}
+
+ReachSofa: {
+	DisplayName: Elderbark-Sofa
+	Tooltip: ""
+}
+
+ReachTable: {
+	DisplayName: Elderbark-Tisch
+	Tooltip: ""
+}
+
+ReachTub: {
+	DisplayName: Elderbark-Badewanne
+	Tooltip: ""
+}
+
+TreemanStatue: {
+	DisplayName: Statue der Alten Götter
+	Tooltip:
+		'''
+		Gewährt die Effekte einer Werkbank, Tränke-Herstellungsstation und eines Bücherregals
+		'Die Alten werden dich beschützen'
+		'''
+}
+
+ReachChestTile: {
+	DisplayName: Dorngestrüpp-Truhe
+	Tooltip: ""
+}
+
+ReachPainting: {
+	DisplayName: Knapp Außer Reichweite
+	Tooltip: "'M. Beigh'"
+}
+
+GraniteSculpture1x2Item: {
+	DisplayName: Unheilvolle Granitskulptur
+	Tooltip: ""
+}
+
+GraniteSculpture2x3Item: {
+	DisplayName: Wellige Granitskulptur
+	Tooltip: ""
+}
+
+GraniteSculpture3x3Item: {
+	DisplayName: Exotische Granitskulptur
+	Tooltip: ""
+}
+
+GraniteSculpture3x5Item: {
+	DisplayName: Eckige Granitskulptur
+	Tooltip: ""
+}
+
+MarbleSculpture1x2Item: {
+	DisplayName: Marmor-Statuette
+	Tooltip: ""
+}
+
+MarbleSculpture2x3Item: {
+	DisplayName: Marmor-Büste
+	Tooltip: ""
+}
+
+MarbleSculpture3x8Item: {
+	DisplayName: Marmorskulptur
+	Tooltip: ""
+}
+
+SepulchreBannerItem: {
+	DisplayName: Grabmal-Banner
+	Tooltip: ""
+}
+
+SepulchreChest: {
+	DisplayName: Grabmal-Truhe
+	Tooltip: ""
+}
+
+SepulchrePotItem1: {
+	DisplayName: Grabmal-Topf
+	Tooltip: ""
+}
+
+SepulchrePotItem2: {
+	DisplayName: Grabmal-Topf
+	Tooltip: ""
+}
+
+ShiverbarkChair: {
+	DisplayName: Shiverbark-Stuhl
+	Tooltip: ""
+}
+
+ShiverbarkFlag: {
+	DisplayName: Shiverbark-Fahne
+	Tooltip: ""
+}
+
+ShiverbarkTable: {
+	DisplayName: Shiverbark-Tisch
+	Tooltip: ""
+}
+
+ShiverbarkTotem: {
+	DisplayName: Shiverbark-Totem
+	Tooltip: ""
+}
+
+Shrine1: {
+	DisplayName: Uralter Schrein (Hachiman)
+	Tooltip: ""
+}
+
+Shrine2: {
+	DisplayName: Uralter Schrein (Kumano)
+	Tooltip: ""
+}
+
+Shrine3: {
+	DisplayName: Uralter Schrein (Yasaka)
+	Tooltip: ""
+}
+
+SkullPile: {
+	DisplayName: Schädelhaufen
+	Tooltip: ""
+}
+
+SkullStick: {
+	DisplayName: Schädel auf einem Stock
+	Tooltip: ""
+}
+
+SpiritBedItem: {
+	DisplayName: Geister-Bett
+	Tooltip: ""
+}
+
+SpiritBiomePainting: {
+	DisplayName: Polaris-Psyche
+	Tooltip: "'V. Kaiya'"
+}
+
+SpiritChairItem: {
+	DisplayName: Duskwood-Stuhl
+	Tooltip: ""
+}
+
+SpiritChest: {
+	DisplayName: Geister-Truhe
+	Tooltip: ""
+}
+
+SpiritDoorItem: {
+	DisplayName: Geister-Tür
+	Tooltip: ""
+}
+
+SpiritPainting: {
+	DisplayName: Der Meilenstein
+	CustomTooltip:
+		'''
+		"'Wahrlich ein Meilenstein!"
+		"Von hier aus kann's nur bergauf gehen'"
+		'''
+	Tooltip: ""
+}
+
+SpiritTableItem: {
+	DisplayName: Geister-Tisch
+	Tooltip: ""
+}
+
+SpiritWorkbench: {
+	DisplayName: Geister-Werkbank
+	Tooltip: ""
+}
+
+StarplatePainting: {
+	DisplayName: Große Lichtshow
+	Tooltip: "'M. Sicano'"
+}
+
+StreamScaleBench: {
+	DisplayName: Stromschuppen-Werkbank
+	Tooltip: ""
+}
+
+StreamScaleCandle: {
+	DisplayName: Stromschuppen-Kerze
+	Tooltip: ""
+}
+
+StreamScaleChair: {
+	DisplayName: Stromschuppen-Stuhl
+	Tooltip: ""
+}
+
+StreamScaleLantern: {
+	DisplayName: Stromschuppen-Laterne
+	Tooltip: ""
+}
+
+SunPot: {
+	DisplayName: Sonne im Topf
+	Tooltip: Erhöht die Lebensregeneration während des Tages
+}
+
+SynthwaveHeadItem: {
+	DisplayName: Hyperraum-Büste
+	Tooltip: Erzeugt bei Rechtsklick ein künstliches Hyperraum-Biom
+}
+
+TreasureChest: {
+	DisplayName: Beutetruhe
+	Tooltip: "'Sie ist schon bis obenhin gefüllt!'"
+}
+
+WheezerPainting: {
+	DisplayName: Ausgehungerter Wheezer
+	Tooltip: "'K. Rant'"
+}
+
+WWPainting: {
+	DisplayName: Wirbelnde Welten
+	Tooltip: "'E. Stern'"
+}
+
+HerosMemorialStatue: {
+	DisplayName: Gedenkstatue eines Helden
+	Tooltip: ""
+}
+
+IceBatSculpture: {
+	DisplayName: Eisfledermaus-Skulptur
+	Tooltip: ""
+}
+
+IceDeitySculpture: {
+	DisplayName: Eisgottheit-Skulptur
+	Tooltip: ""
+}
+
+IceFlinxSculpture: {
+	DisplayName: Gefrorene-Flinx-Skulptur
+	Tooltip: ""
+}
+
+IceVikingSculpture: {
+	DisplayName: Untoter-Wikinger-Skulptur
+	Tooltip: ""
+}
+
+IceWheezerSculpture: {
+	DisplayName: Gefrorener-Wheezer-Skulptur
+	Tooltip: ""
+}
+
+WinterbornSculpture: {
+	DisplayName: Winterborn-Skulptur
+	Tooltip: ""
+}
+
+JumpPadItem: {
+	DisplayName: Sprungplattform
+	Tooltip: "'Auf in die Lüfte!'"
+}
+
+AshfallBox: {
+	DisplayName: Spieluhr (Aschefall)
+	Tooltip: ""
+}
+
+AsteroidBox: {
+	DisplayName: Spieluhr (Asteroidenfeld)
+	Tooltip: ""
+}
+
+AtlasBox: {
+	DisplayName: Spieluhr (Atlas)
+	Tooltip: ""
+}
+
+AuroraBox: {
+	DisplayName: Spieluhr (Aurora)
+	Tooltip: ""
+}
+
+AvianBox: {
+	DisplayName: Spieluhr (Uralter Vogel)
+	Tooltip: ""
+}
+
+BlizzardBox: {
+	DisplayName: Spieluhr (Blizzard)
+	Tooltip: ""
+}
+
+BlueMoonBox: {
+	DisplayName: Spieluhr (Mystischer Mond)
+	Tooltip: ""
+}
+
+BriarNightBox: {
+	DisplayName: Spieluhr (Dorngestrüpp - Nacht)
+	Tooltip: ""
+}
+
+BriarUndergroundBox: {
+	DisplayName: Spieluhr (Dorngestrüpp - Unterirdisch)
+	Tooltip: ""
+}
+
+CalmNightBox: {
+	DisplayName: Spieluhr (Ruhige Nächte)
+	Tooltip: ""
+}
+
+CorruptNightBox: {
+	DisplayName: Spieluhr (Korruption - Nacht)
+	Tooltip: ""
+}
+
+CrimsonNightBox: {
+	DisplayName: Spieluhr (Crimson - Nacht)
+	Tooltip: ""
+}
+
+DesertNightBox: {
+	DisplayName: Spieluhr (Wüste - Nacht)
+	Tooltip: ""
+}
+
+FrostLegionBox: {
+	DisplayName: Spieluhr (Frostlegion)
+	Tooltip: ""
+}
+
+GraniteBox: {
+	DisplayName: Spieluhr (Granithöhlen)
+	Tooltip: ""
+}
+
+HallowNightBox: {
+	DisplayName: Spieluhr (Hallow - Nacht)
+	Tooltip: ""
+}
+
+HyperspaceDayBox: {
+	DisplayName: Spieluhr (Hyperraum - Tag)
+	Tooltip: ""
+}
+
+InfernonBox: {
+	DisplayName: Spieluhr (Infernon)
+	Tooltip: ""
+}
+
+JellyDelugeBox: {
+	DisplayName: Spieluhr (Gelee-Flut)
+	Tooltip: ""
+}
+
+LuminousNightBox: {
+	DisplayName: Spieluhr (Leuchtender Ozean)
+	Tooltip: ""
+}
+
+MarbleBox: {
+	DisplayName: Spieluhr (Marmorhöhlen)
+	Tooltip: ""
+}
+
+MeteorBox: {
+	DisplayName: Spieluhr (Meteor)
+	Tooltip: ""
+}
+
+MJWBox: {
+	DisplayName: Spieluhr (Mondgelee-Zauberer)
+	Tooltip: ""
+}
+
+NeonMusicBox: {
+	DisplayName: Spieluhr (Hyperraum - Nacht)
+	Tooltip: ""
+}
+
+OceanDepthsBox: {
+	DisplayName: Spieluhr (Ozean - Tiefen)
+	Tooltip: ""
+}
+
+ReachBox: {
+	DisplayName: Spieluhr (Dorngestrüpp - Tag)
+	Tooltip: ""
+}
+
+ScarabBox: {
+	DisplayName: Spieluhr (Scarabeus)
+	Tooltip: ""
+}
+
+SnowNightBox: {
+	DisplayName: Spieluhr (Schnee-Biom - Nacht)
+	Tooltip: ""
+}
+
+SpiderCaveBox: {
+	DisplayName: Spieluhr (Spinnenhöhlen)
+	Tooltip: ""
+}
+
+SpiritBox1: {
+	DisplayName: Spieluhr (Geist-Biom - Oberwelt)
+	Tooltip: ""
+}
+
+SpiritBox2: {
+	DisplayName: Spieluhr (Geist-Biom - Unterirdisch)
+	Tooltip: ""
+}
+
+SpiritBox3: {
+	DisplayName: Spieluhr (Geist-Biom - Tief unter der Erde)
+	Tooltip: ""
+}
+
+SpiritBox4: {
+	DisplayName: Spieluhr (Geist-Biom - Tiefen)
+	Tooltip: ""
+}
+
+StarplateBox: {
+	DisplayName: Spieluhr (Starplate Voyager)
+	Tooltip: ""
+}
+
+TideBox: {
+	DisplayName: Spieluhr (Die Gezeiten)
+	Tooltip: ""
+}
+
+TranquilWindsBox: {
+	DisplayName: Spieluhr (Ruhige Winde)
+	Tooltip: ""
+}
+
+VictoryDayBox: {
+	DisplayName: Spieluhr (Sieges-Tag)
+	Tooltip: ""
+}
+
+VinewrathBox: {
+	DisplayName: Spieluhr (Rankenzorn)
+	Tooltip: ""
+}
+
+SkeletronPrimeBox: {
+	DisplayName: Spieluhr (Skeletron Prime)
+	Tooltip: ""
+}
+
+AtlasRelicItem: {
+	DisplayName: Atlas-Relikt
+	Tooltip: ""
+}
+
+AvianRelicItem: {
+	DisplayName: Uralter-Vogel-Relikt
+	Tooltip: ""
+}
+
+DuskingRelicItem: {
+	DisplayName: Dusking-Relikt
+	Tooltip: ""
+}
+
+FrostSaucerRelicItem: {
+	DisplayName: Schneemech-Relikt
+	Tooltip: ""
+}
+
+InfernonRelicItem: {
+	DisplayName: Infernon-Relikt
+	Tooltip: ""
+}
+
+MJWRelicItem: {
+	DisplayName: Mondgelee-Zauberer-Relikt
+	Tooltip: ""
+}
+
+OccultistRelicItem: {
+	DisplayName: Okkultist-Relikt
+	Tooltip: ""
+}
+
+RlyehianRelicItem: {
+	DisplayName: R'lyehianer-Relikt
+	Tooltip: ""
+}
+
+ScarabeusRelicItem: {
+	DisplayName: Scarabeus-Relikt
+	Tooltip: ""
+}
+
+StarplateRelicItem: {
+	DisplayName: Starplate-Voyager-Relikt
+	Tooltip: ""
+}
+
+VinewrathRelicItem: {
+	DisplayName: Rankenzorn-Relikt
+	Tooltip: ""
+}
+
+SamuraiStatueItem: {
+	DisplayName: Samurai-Statue
+	Tooltip: ""
+}
+
+SoulSeeds: {
+	DisplayName: Seelenblüte-Samen
+	Tooltip: ""
+}
+
+StarBeaconItem: {
+	DisplayName: Astralit-Leuchtfeuer
+	Tooltip: "'Angetrieben von galaktischer Energie'"
+}
+
+SuperSunFlowerItem: {
+	DisplayName: Reinglanz
+	Tooltip:
+		'''
+		Platziert eine große Pflanze, die die Ausbreitung des Bösen und des Hallow aufhalten kann
+		Dieser Effekt erstreckt sich horizontal in einem 5-Block-Radius um die Blume und hat unbegrenzte vertikale Reichweite
+		'''
+}
+
+AcidBrick: {
+	DisplayName: Ätzender Ziegel
+	Tooltip: ""
+}
+
+AsteroidBlock: {
+	DisplayName: Asteroidenblock
+	Tooltip: "'Erzreicher Weltraummüll'"
+}
+
+BlastStoneItem: {
+	DisplayName: Sprengstein
+	Tooltip: ""
+}
+
+BriarGrassSeeds: {
+	DisplayName: Dorngestrüpp-Grassamen
+	Tooltip: "{$LegacyTooltip.33}"
+}
+
+CreepingIce: {
+	DisplayName: Kriechendes Eis
+	Tooltip: Verlangsamt nahe Spieler und Gegner
+}
+
+HalloweenGrass: {
+	DisplayName: Gruseliges Gras
+	Tooltip: ""
+}
+
+NeonBlockBlueItem: {
+	DisplayName: Blauer Neon-Block
+	Tooltip: ""
+}
+
+NeonBlockGreenItem: {
+	DisplayName: Grüner Neon-Block
+	Tooltip: ""
+}
+
+NeonBlockPurpleItem: {
+	DisplayName: Lila Neon-Block
+	Tooltip: ""
+}
+
+NeonBlockRedItem: {
+	DisplayName: Roter Neon-Block
+	Tooltip: ""
+}
+
+NeonBlockYellowItem: {
+	DisplayName: Gelber Neon-Block
+	Tooltip: ""
+}
+
+ReachGrass: {
+	DisplayName: Seltsame Flora
+	Tooltip: ""
+}
+
+ScrapItem: {
+	DisplayName: Geborgener Schrottblock
+	Tooltip: ""
+}
+
+SepulchreBrickItem: {
+	DisplayName: Grabmal-Dachziegel
+	Tooltip: ""
+}
+
+SepulchreBrickTwoItem: {
+	DisplayName: Grabmal-Ziegel
+	Tooltip: ""
+}
+
+SpaceJunkItem: {
+	DisplayName: Weltraummüll
+	Tooltip:
+		'''
+		Kann vom Extraktinator verwendet werden
+		Kann vom Extraktinator verwendet werden
+		'Was verbirgt sich hinter diesem wirren Durcheinander?'
+		'''
+}
+
+SpiritDirtItem: {
+	DisplayName: Geist-Erde
+	Tooltip: ""
+}
+
+SpiritIceItem: {
+	DisplayName: Geist-Eis
+	Tooltip: ""
+}
+
+SpiritSandItem: {
+	DisplayName: Geist-Sand
+	Tooltip: ""
+}
+
+SpiritStoneItem: {
+	DisplayName: Grimmstein
+	Tooltip: ""
+}
+
+SpiritWoodItem: {
+	DisplayName: Duskwood
+	Tooltip: ""
+}
+
+TechBlockItem: {
+	DisplayName: Glimmplatten-Block
+	Tooltip: ""
+}
+
+AcidWall: {
+	DisplayName: Ätzende Ziegelwand
+	Tooltip: ""
+}
+
+AsteroidWall: {
+	DisplayName: Asteroidenwand
+	Tooltip: ""
+}
+
+BarkWall: {
+	DisplayName: Elderbark-Wand
+	Tooltip: ""
+}
+
+ElderbarkFence: {
+	DisplayName: Elderbark-Zaun
+	Tooltip: ""
+}
+
+GlowplateWallItem: {
+	DisplayName: Glatte Glimmplattenwand
+	Tooltip: ""
+}
+
+ScrapWallItem: {
+	DisplayName: Geborgene Schrottwand
+	Tooltip: ""
+}
+
+SepulchreWallItem: {
+	DisplayName: Grabmal-Wand
+	Tooltip: ""
+}
+
+SpiritWallItem: {
+	DisplayName: Duskwood-Wand
+	Tooltip: ""
+}
+
+CloakOfHealing: {
+	DisplayName: Umhang der Heilung
+	Tooltip: Diener haben eine kleine Chance, Leben zurückzugeben
+}
+
+CrystalFlowerItem: {
+	DisplayName: Kristallblume
+	Tooltip: Gegner haben eine Chance, beim Tod in schädliche Kristalle zu explodieren
+}
+
+Dustbound_Ring: {
+	DisplayName: Staubgebundener Ring
+	Tooltip: Zeigt den Standort von Schätzen und Erzen an
+}
+
+EyeOfTheSorcererItem: {
+	DisplayName: Auge des Zauberers
+	Tooltip:
+		'''
+		Erhältst kritische Trefferchance basierend auf deinem vorhandenen Mana
+		Bei vollem Mana erhältst du zusätzlich 10% Krit
+		'''
+}
+
+DefenseCodex: {
+	DisplayName: Arkaner Kodex: Befestigungszone
+	Tooltip:
+		'''
+		Beschwört eine Befestigungszone an der Cursor-Position
+		Befestigungszonen erhöhen die Verteidigung und Schadensresistenz des Spielers, während er sich darin aufhält
+		Zonen zählen als Wachposten
+		'''
+}
+
+EmptyCodex: {
+	DisplayName: Leerer Kodex
+	Tooltip: ""
+}
+
+HealingCodex: {
+	DisplayName: Heilungs Kodex
+	Tooltip:
+		'''
+		Beschwört eine Heilungszone an der Cursor-Position
+		Heilungszonen erhöhen die Lebensregeneration des Spielers, während er sich darin aufhält
+		Zonen zählen als Wachposten
+		'''
+}
+
+LowGravCodex: {
+	DisplayName: Schwerelos Kodex: Schwerelosigkeitszone
+	Tooltip:
+		'''
+		Beschwört eine Schwerelosigkeitszone an der Cursor-Position
+		Schwerelosigkeitszonen verringern die Schwerkraft des Spielers und erhöhen die Luftbeschleunigung
+		Zonen zählen als Wachposten
+		'''
+}
+
+SlowCodex: {
+	DisplayName: Langsamer Kodex: Verlangsamungszone
+	Tooltip:
+		'''
+		Beschwört eine Verlangsamungszone an der Cursor-Position
+		Verlangsamungszonen verringern die Bewegungsgeschwindigkeit von Gegnern
+		Zonen zählen als Wachposten
+		'''
+}
+
+StaminaCodex: {
+	DisplayName: Ausdauer Kodex: Ausdauerzone
+	Tooltip:
+		'''
+		Beschwört eine Ausdauerzone an der Cursor-Position
+		Ausdauerzonen erhöhen die Bewegungsgeschwindigkeit um 20%
+		Zonen zählen als Wachposten
+		'''
+}
+
+BismiteChestplate: {
+	DisplayName: Bismit-Brustpanzer
+	Tooltip: 3% erhöhte kritische Trefferchance
+}
+
+BismiteHelmet: {
+	DisplayName: Bismit-Helm
+	Tooltip: 4% erhöhte Bewegungsgeschwindigkeit
+}
+
+BismiteLeggings: {
+	DisplayName: Bismit-Beinschienen
+	Tooltip: 6% erhöhte Bewegungsgeschwindigkeit
+}
+
+BismiteBow: {
+	DisplayName: Bismit-Bogen
+	Tooltip: Verursacht Feinden gelegentlich 'Eiternde Wunden', die Gegnern unter halbem Leben mehr Schaden zufügen
+}
+
+BismiteChakra: {
+	DisplayName: Bismit-Schneider
+	Tooltip: Verursacht Feinden gelegentlich 'Eiternde Wunden', die Gegnern unter halbem Leben mehr Schaden zufügen
+}
+
+BismiteCrystal: {
+	DisplayName: Bismit-Kristall
+	Tooltip: "'Ein merkwürdig giftiges Metall'"
+}
+
+BismiteHamaxe: {
+	DisplayName: Bismit-Hamaxe
+	Tooltip: ""
+}
+
+BismitePickaxe: {
+	DisplayName: Bismit-Spitzhacke
+	Tooltip: ""
+}
+
+BismiteSpear: {
+	DisplayName: Bismit-Pike
+	Tooltip: Verursacht Feinden gelegentlich 'Eiternde Wunden', die Gegnern unter halbem Leben mehr Schaden zufügen
+}
+
+BismiteStaff: {
+	DisplayName: Bismit-Stab
+	Tooltip:
+		'''
+		Schießt einen Energiebolzen ab
+		Verursacht Feinden gelegentlich 'Eiternde Wunden', die Gegnern unter halbem Leben mehr Schaden zufügen
+		'''
+}
+
+BismiteSummonStaff: {
+	DisplayName: Bismit-Kristallstab
+	Tooltip:
+		'''
+		Beschwört einen stationären Bismit-Kristall, der Giftsplitter auf Gegner schießt
+		Rechtsklick, damit Bismit-Kristalle auf Kosten von Mana eine eiternde Welle aussenden
+		'''
+}
+
+BloodCourtChestplate: {
+	DisplayName: Gewänder des Blutgerichts
+	Tooltip:
+		'''
+		6% erhöhter Schaden
+		12% erhöhte Nahkampfgeschwindigkeit
+		20% Chance, keine Munition zu verbrauchen
+		'''
+}
+
+BloodCourtHead: {
+	DisplayName: Antlitz des Blutgerichts
+	Tooltip:
+		'''
+		4% erhöhter Schaden
+		Erhöht deine maximale Anzahl an Dienern
+		'''
+}
+
+BloodCourtLeggings: {
+	DisplayName: Beinschienen des Blutgerichts
+	Tooltip:
+		'''
+		Erhöht die Bewegungsgeschwindigkeit um 10%
+		Erhöht das maximale Mana um 30
+		'''
+}
+
+DreamstrideEssence: {
+	DisplayName: Traumwandler-Essenz
+	Tooltip: "'Der Stoff, aus dem Alpträume sind'"
+}
+
+FangTome: {
+	DisplayName: Foliant der Tausend Fänge
+	Tooltip:
+		'''
+		Beschwört eine Reihe knirschender Zähne
+		Verursacht 'Aufwallende Qual', die langsam das Leben des Gegners erschöpft
+		'''
+}
+
+Headsplitter: {
+	DisplayName: Kopfspalter
+	Tooltip:
+		'''
+		Treffer verursachen 'Aufwallende Qual', die langsam das Leben des Gegners erschöpft
+		Rechtsklick gewährt kurzzeitig Erstarkung, was gequälten Gegnern zusätzlichen Schaden verursacht
+		'''
+}
+
+Heartstrike: {
+	DisplayName: Herzschlag
+	Tooltip:
+		'''
+		Erfolgreiche Treffer gewähren Ladungen, die per Rechtsklick abgefeuert werden können
+		Abgefeuerte Ladungen verursachen 'Aufwallende Qual', die langsam das Leben des Gegners erschöpft
+		'''
+}
+
+Carrion: {
+	DisplayName: Aas
+	Tooltip:
+		'''
+		Verwandelt Holzpfeile in Aasraben
+		Aasraben werden stärker, nachdem sie Gegner getroffen haben
+		'''
+}
+
+Amethyst_Bow: {
+	DisplayName: Amethyst-Bogen
+	Tooltip:
+		'''
+		Verwandelt Holzpfeile in Amethyst-Pfeile
+		Amethyst-Pfeile haben erhöhte kritische Trefferchance
+		'''
+}
+
+Diamond_Bow: {
+	DisplayName: Diamant-Bogen
+	Tooltip:
+		'''
+		Verwandelt Holzpfeile in Diamant-Pfeile
+		Diamant-Pfeile durchbohren einen zusätzlichen Gegner
+		'''
+}
+
+Emerald_Bow: {
+	DisplayName: Smaragd-Bogen
+	Tooltip: Verwandelt Holzpfeile in Smaragd-Pfeile
+}
+
+Ruby_Bow: {
+	DisplayName: Rubin-Bogen
+	Tooltip:
+		'''
+		Verwandelt Holzpfeile in Rubin-Pfeile
+		Rubin-Pfeile prallen einmal ab
+		'''
+}
+
+Sapphire_Bow: {
+	DisplayName: Saphir-Bogen
+	Tooltip:
+		'''
+		Verwandelt Holzpfeile in Saphir-Pfeile
+		Saphir-Pfeile verfolgen leicht den Cursor
+		'''
+}
+
+Topaz_Bow: {
+	DisplayName: Topas-Bogen
+	Tooltip:
+		'''
+		Verwandelt Holzpfeile in Topas-Pfeile
+		Topas-Pfeile haben hohe Geschwindigkeit und sind resistent gegen Schwerkraft
+		'''
+}
+
+Morningtide: {
+	DisplayName: Morgentide
+	Tooltip: Verwandelt Holzpfeile in Morgendämmerungs-Schäfte
+}
+
+Ornament_Bow: {
+	DisplayName: Bogen der Ornamente
+	Tooltip:
+		'''
+		Verwandelt Holzpfeile in Ornament-Pfeile
+		Ornament-Pfeile erzeugen beim Zerbersten verschiedene Edelstein-Pfeile
+		'''
+}
+
+StarlightBow: {
+	DisplayName: Sternensprüher
+	Tooltip: Verwandelt Holzpfeile in rasende Sterne
+}
+
+LivingElderbarkWand: {
+	DisplayName: Zauberstab aus Lebendem Elderbark
+	Tooltip: Platziert lebendes Elderbark
+}
+
+ReachBoomerang: {
+	DisplayName: Dornenherz-Bumerang
+	Tooltip: Schießt bei Verwendung zwei Bumerangs ab
+}
+
+ReachBrooch: {
+	DisplayName: Verschworener Anhänger
+	Tooltip:
+		'''
+		Erzeugt ein helles Leuchten um den Spieler
+		Gewährt erhöhte Sicht im Dorngestrüpp bei Nacht oder unter der Erde
+		'''
+}
+
+ReachChestMagic: {
+	DisplayName: Blattschlag-Stab
+	Tooltip: Beschwört ein scharfes Blatt, das mit dem Cursor gesteuert werden kann
+}
+
+ThornHook: {
+	DisplayName: Dornranken-Haken
+	Tooltip: ""
+}
+
+ThornyRod: {
+	DisplayName: Dorniger Stab
+	Tooltip: Erzeugt Dorngestrüpp-Gras auf Erde
+}
+
+AnodyneHat: {
+	DisplayName: Anodyne-Hut
+	Tooltip: ""
+}
+
+EnchantedLeaf: {
+	DisplayName: Verzaubertes Blatt
+	Tooltip: "'Gesegnet mit der Magie der Druiden'"
+}
+
+ReachFishingCatch: {
+	DisplayName: Noxophyll
+	Tooltip: "'Es stinkt nach Gift'"
+}
+
+SanctifiedStabber: {
+	DisplayName: Geweihter Stecher
+	Tooltip: Verursacht 'Welkendes Blatt'
+}
+
+VineChain: {
+	DisplayName: Rankenkette
+	Tooltip: Zieht Gegner zu dir heran
+}
+
+CascadeChestplate: {
+	DisplayName: Kaskaden-Brustpanzer
+	Tooltip: 50% Rückstoßresistenz
+}
+
+CascadeHelmet: {
+	DisplayName: Kaskaden-Helm
+	Tooltip: Ermöglicht Atmen unter Wasser
+}
+
+CascadeLeggings: {
+	DisplayName: Kaskaden-Beinschienen
+	Tooltip: 15% erhöhte Bewegung im Wasser
+}
+
+Basking_Shark: {
+	DisplayName: Riesenhai
+	Tooltip: Verwandelt Kugeln in Köderfleischbrocken
+}
+
+BubbleMine: {
+	DisplayName: Blasenmine
+	Tooltip: Rechtsklick, um Blasenminen zu zünden
+}
+
+Coral_Catcher: {
+	DisplayName: Korallenfänger
+	Tooltip: Erkennt gehakte Fische
+}
+
+DeepCascadeShard: {
+	DisplayName: Tiefkaskaden-Splitter
+	Tooltip: "'Wo Magma auf Meerwasser trifft'"
+}
+
+JellyfishStaff: {
+	DisplayName: Quallen-Stab
+	Tooltip: Beschwört eine winzige Qualle, die für dich kämpft!
+}
+
+Mantaray_Hunting_Harpoon: {
+	DisplayName: Manta-Harpune
+	Tooltip:
+		'''
+		Beschwört ein reitbares Mantarochen-Reittier
+		Der Mantarochen kann sich nicht an Land bewegen
+		'''
+}
+
+Reef_Wrath: {
+	DisplayName: Riffzorn
+	Tooltip: Beschwört schädliche Korallenspitzen entlang des Bodens
+}
+
+BassSlapper: {
+	DisplayName: Bass-Klopfer
+	Tooltip: ""
+}
+
+Blasphemer: {
+	DisplayName: Der Lästerer
+	Tooltip: Aufgeladene Treffer erzeugen einen feurigen Geysir
+}
+
+BoneClub: {
+	DisplayName: Knochenkeule
+	Tooltip: Aufgeladene Treffer schleudern Knochen nach vorn
+}
+
+BruteHammer: {
+	DisplayName: Schlägerhammer
+	Tooltip: Dreht sich schnell um den Spieler und verursacht beim Loslassen einen verheerenden Schlag
+}
+
+ClubMealFour: {
+	DisplayName: Keulenmahlzeit
+	Tooltip: Das solltest du nicht sehen
+}
+
+ClubMealOne: {
+	DisplayName: Keulenmahlzeit
+	Tooltip: Das solltest du nicht sehen
+}
+
+ClubMealThree: {
+	DisplayName: Keulenmahlzeit
+	Tooltip: Das solltest du nicht sehen
+}
+
+ClubMealTwo: {
+	DisplayName: Keulenmahlzeit
+	Tooltip: Das solltest du nicht sehen
+}
+
+ClubSandwich: {
+	DisplayName: Club-Sandwich
+	Tooltip:
+		'''
+		Voll aufgeladene Schläge setzen Sandwich-Stücke frei
+		Sammle Stücke, um Werte zu erhöhen
+		'''
+}
+
+FloranBludgeon: {
+	DisplayName: Floran-Knüppel
+	Tooltip: Setzt eine Schockwelle entlang des Bodens frei
+}
+
+GoldClub: {
+	DisplayName: Goldener Großhammer
+	Tooltip: ""
+}
+
+Macuahuitl: {
+	DisplayName: Macuahuitl
+	Tooltip: Aufladen erhöht die Rüstungsdurchdringung
+}
+
+PlatinumClub: {
+	DisplayName: Platin-Zepter
+	Tooltip: ""
+}
+
+RageBlazeDecapitator: {
+	DisplayName: Instabile Dechsel
+	Tooltip:
+		'''
+		Lädt sich schnell auf
+		Aufgeladene Treffer erzeugen beim Aufprall eine Energieschockwelle
+		'''
+}
+
+SporeClub: {
+	DisplayName: Sporenbrecher
+	Tooltip: Aufgeladene Treffer setzen ein Toxinfeld frei
+}
+
+WoodenClub: {
+	DisplayName: Holzkeule
+	Tooltip: ""
+}
+
+CoilEnergizerItem: {
+	DisplayName: Gewickelter Energiespender
+	Tooltip: Erzeugt ein elektrisches Feld, das nahe Spieler energetisiert und Bewegungs- sowie Nahkampfgeschwindigkeit stark erhöht
+}
+
+CoilHook: {
+	DisplayName: Spulenhaken
+	Tooltip: ""
+}
+
+CoilPistol: {
+	DisplayName: Spulenpistole
+	Tooltip: Verwandelt normale Kugeln in elektrifizierte Kugeln, die von Gegner zu Gegner springen
+}
+
+CoilSummonStaff: {
+	DisplayName: Gewickelter Stab
+	Tooltip:
+		'''
+		Beschwört einen stationären Elektroturm
+		Dieser Turm schießt Blitzstrahlen ab, die von Gegner zu Gegner springen
+		'''
+}
+
+CoilSword: {
+	DisplayName: Gewickelte Klinge
+	Tooltip: Alle sechs erfolgreichen Treffer auf einen Gegner setzen eine elektrische Explosion frei
+}
+
+TechDrive: {
+	DisplayName: Tech-Laufwerk
+	Tooltip: "'Seltsam fortschrittliche Schaltkreise'"
+}
+
+CryoGun: {
+	DisplayName: Winters Erwachen
+	Tooltip:
+		'''
+		Verwandelt Raketen in Flockenraketen, die 'Kryo-Zermalmung' verursachen
+		Kryo-Zermalmung verursacht erhöhten Schaden bei geschwächten Gegnern
+		'''
+}
+
+CryoHamaxe: {
+	DisplayName: Kryolith-Hamaxe
+	Tooltip: ""
+}
+
+CryoliteBody: {
+	DisplayName: Kryolith-Brustpanzer
+	Tooltip:
+		'''
+		10% erhöhte Nahkampfgeschwindigkeit
+		Gewährt Immunität gegen Rückstoß
+		'''
+}
+
+CryoliteHead: {
+	DisplayName: Kryolith-Helm
+	Tooltip: 8% erhöhte Nahkampfgeschwindigkeit
+}
+
+CryoliteLegs: {
+	DisplayName: Kryolith-Beinschienen
+	Tooltip: 8% erhöhte Nahkampfgeschwindigkeit
+}
+
+CryoliteBar: {
+	DisplayName: Kryolith-Barren
+	Tooltip: ""
+}
+
+CryoliteOre: {
+	DisplayName: Kryolith-Erz
+	Tooltip: "'Metalladern, verwoben mit Eis'"
+}
+
+CryoPick: {
+	DisplayName: Kryolith-Spitzhacke
+	Tooltip: ""
+}
+
+CryoStaff: {
+	DisplayName: Kryo-Stab
+	Tooltip:
+		'''
+		Wirkt einen Schwall eisiger Magiebolzen, die 'Kryo-Zermalmung' verursachen
+		Kryo-Zermalmung verursacht erhöhten Schaden bei geschwächten Gegnern
+		'''
+}
+
+CryoSword: {
+	DisplayName: Reifheuler
+	Tooltip:
+		'''
+		Jeder dritte Schlag erzeugt eine Kryowelle, die 'Kryo-Zermalmung' verursacht
+		Kryo-Zermalmung verursacht erhöhten Schaden bei geschwächten Gegnern
+		'''
+}
+
+AnimeSword: {
+	DisplayName: Anime-Schwert
+	Tooltip: Halten, um nahe Gegner zu zerschneiden
+}
+
+BambooKendoBlade: {
+	DisplayName: Bambus-Kendo-Klinge
+	Tooltip: Rechtsklick, um vorwärts zu sprinten
+}
+
+BladeOfTheDragon: {
+	DisplayName: Klinge des Drachen
+	Tooltip: Halten, um nahe Gegner zu zerschneiden
+}
+
+LightNovasVanity: {
+	DisplayName: LightNovas' Maske
+	Tooltip: "'Großartig, um Unterstützer zu imitieren!'"
+}
+
+MeteorVanity: {
+	DisplayName: Meteors Maske
+	Tooltip: "'Großartig, um Unterstützer zu imitieren!'"
+}
+
+PixelatedFireballVanity: {
+	DisplayName: Pixelated Fireballs Maske
+	Tooltip: "'Großartig, um Unterstützer zu imitieren!'"
+}
+
+WaasephiVanity: {
+	DisplayName: Waasephis Hut
+	Tooltip: "'Großartig, um Unterstützer zu imitieren!'"
+}
+
+BrightbloodDye: {
+	DisplayName: Helles-Blut-Haarfarbe
+	Tooltip: ""
+}
+
+CystalDye: {
+	DisplayName: Widerliche Haarfarbe
+	Tooltip: ""
+}
+
+MeteorDye: {
+	DisplayName: Leuchtfeuer-Haarfarbe
+	Tooltip: ""
+}
+
+SeafoamDye: {
+	DisplayName: Meerschaum-Haarfarbe
+	Tooltip: ""
+}
+
+SnowMirageDye: {
+	DisplayName: Fata-Morgana-Haarfarbe
+	Tooltip: ""
+}
+
+ViciousDye: {
+	DisplayName: Bösartige Haarfarbe
+	Tooltip: ""
+}
+
+GastricGusher: {
+	DisplayName: Magenstoßer
+	Tooltip:
+		'''
+		Verbraucht Gel
+		Versprüht einen Kegel schädlicher Säure
+		Aufladen, um Reichweite und Schaden zu erhöhen
+		'''
+}
+
+HeartilleryBeacon: {
+	DisplayName: Schmerzendes Herz
+	Tooltip: Beschwört eine stationäre Herzartillerie, die Blut auf Feinde abfeuert
+}
+
+PesterflyCane: {
+	DisplayName: Plagegeist-Stock
+	Tooltip: Beschwört Plagegeister, die getroffene Gegner umschwärmen
+}
+
+BismiteGrenade: {
+	DisplayName: Bismit-Granate
+	Tooltip:
+		'''
+		Explodiert in einer Giftwolke
+		Gift hält 10 Sekunden an
+		'''
+}
+
+ClatterMace: {
+	DisplayName: Klappernder Streitkolben
+	Tooltip: Hat eine Chance, bei Treffer die Verteidigung des Gegners zu senken
+}
+
+JadeDao: {
+	DisplayName: Jade-Dao
+	Tooltip: Zieht Gegner beim Loslassen zu dir heran
+}
+
+Ambergris: {
+	DisplayName: Ambra
+	Tooltip:
+		'''
+		'Sehr wertvoll'
+		'Du willst nicht wissen, woher das kommt'
+		'''
+}
+
+Driftwood1Item: {
+	DisplayName: Kleines Treibholz
+	Tooltip: "'Ästhetisch ansprechend'"
+}
+
+Driftwood2Item: {
+	DisplayName: Mittleres Treibholz
+	Tooltip: "'Ästhetisch ansprechend'"
+}
+
+Driftwood3Item: {
+	DisplayName: Großes Treibholz
+	Tooltip: "'Ästhetisch ansprechend'"
+}
+
+DriftwoodChestplate: {
+	DisplayName: Treibholz-Brustpanzer
+	Tooltip: ""
+}
+
+DriftwoodHelmet: {
+	DisplayName: Treibholz-Helm
+	Tooltip: ""
+}
+
+DriftwoodLeggings: {
+	DisplayName: Treibholz-Beinschienen
+	Tooltip: ""
+}
+
+DriftwoodSword: {
+	DisplayName: Treibholz-Schwert
+	Tooltip: ""
+}
+
+DriftwoodTileItem: {
+	DisplayName: Treibholz-Block
+	Tooltip: ""
+}
+
+DriftwoodWallItem: {
+	DisplayName: Treibholz-Wand
+	Tooltip: ""
+}
+
+FishLure: {
+	DisplayName: Fischköder
+	Tooltip:
+		'''
+		Kann nur im Wasser platziert werden
+		Lockt Fischschwärme in nahe Gewässer
+		'''
+}
+
+Kelp: {
+	DisplayName: Seetang
+	Tooltip: Muss im Wasser gepflanzt werden
+}
+
+MessageBottle: {
+	DisplayName: Flaschenpost
+	Tooltip:
+		'''
+		Beschwört ein Floß-Reittier
+		Erhöhte Angelkraft auf dem Floß
+		'''
+}
+
+SunkenTreasure: {
+	DisplayName: Versunkener Schatz
+	Tooltip:
+		'''
+		{$CommonItemTooltip.RightClickToOpen}
+		'Vielleicht steckt noch wertvoller Schatz darin'
+		'''
+}
+
+FBow: {
+	DisplayName: Floran-Bogen
+	Tooltip: "'Primitiv, aber nützlich'"
+}
+
+FHelmet: {
+	DisplayName: Floran-Helm
+	Tooltip: Erhöht die Bewegungsgeschwindigkeit um 6%
+}
+
+FLegs: {
+	DisplayName: Floran-Beinschienen
+	Tooltip: Erhöht die Bewegungsgeschwindigkeit um 4%
+}
+
+FPlate: {
+	DisplayName: Floran-Panzer
+	Tooltip: Erhöht die Bewegungsgeschwindigkeit um 6%
+}
+
+FloranBar: {
+	DisplayName: Floran-Barren
+	Tooltip: ""
+}
+
+FloranCharm: {
+	DisplayName: Floran-Jagdtalisman
+	Tooltip: 5% erhöhte Nahkampfgeschwindigkeit und leicht erhöhte Lebensregeneration, während man auf Gras steht
+}
+
+Florang: {
+	DisplayName: Floran-Schneider
+	Tooltip:
+		'''
+		Rollt über den Boden und zerschneidet Gegner
+		Ranken fesseln gelegentlich Gegner und verringern ihre Bewegungsgeschwindigkeit
+		'Scharf wie ein Rasierblatt'
+		'''
+}
+
+FloranHamaxe: {
+	DisplayName: Floran-Hamaxe
+	Tooltip: ""
+}
+
+FloranOre: {
+	DisplayName: Floran-Erz
+	Tooltip: "'Eine seltsame Mischung aus Pflanzenzellen und Metall'"
+}
+
+FloranPick: {
+	DisplayName: Floran-Spitzhacke
+	Tooltip: ""
+}
+
+FloranReacher: {
+	DisplayName: Floran-Greifer
+	Tooltip: Gewährt verbesserte Angelkraft bei Nacht
+}
+
+FloranSporeWand: {
+	DisplayName: Floran-Sporenstab
+	Tooltip:
+		'''
+		Schießt eine schwebende Floran-Spore ab
+		Getroffene Gegner werden gelegentlich von Ranken gefesselt und verlieren an Geschwindigkeit
+		'''
+}
+
+FloranStaff: {
+	DisplayName: Floran-Stab
+	Tooltip:
+		'''
+		Ruft drei bewachende Energien herbei, die den Spieler umgeben, bevor sie sich auflösen
+		Ranken fesseln gelegentlich Gegner und verringern ihre Bewegungsgeschwindigkeit
+		'''
+}
+
+FrigidChestplate: {
+	DisplayName: Eisiger Panzer
+	Tooltip: 3% erhöhte kritische Trefferchance
+}
+
+FrigidHelm: {
+	DisplayName: Eisiger Gesichtsschutz
+	Tooltip: ""
+}
+
+FrigidLegs: {
+	DisplayName: Eisige Beinschienen
+	Tooltip: ""
+}
+
+FrigidFragment: {
+	DisplayName: Eisiges Fragment
+	Tooltip: "'Kalt bei Berührung'"
+}
+
+HowlingScepter: {
+	DisplayName: Frostbiss
+	Tooltip: Erzeugt einen langsam ziehenden Blizzard, der deinem Cursor folgt
+}
+
+FrostSpine: {
+	DisplayName: Eisiger Stachel
+	Tooltip: Schießt gelegentlich einen Frostbolzen ab
+}
+
+IcySpear: {
+	DisplayName: Eisiger Wurfspeer
+	Tooltip:
+		'''
+		Halten und loslassen zum Werfen
+		Länger halten für mehr Geschwindigkeit und Schaden
+		Verursacht Frostbrand
+		'''
+}
+
+Champagne: {
+	DisplayName: Champagner
+	Tooltip: Halten und loslassen, um den Korken knallen zu lassen
+}
+
+CopperChest: {
+	DisplayName: Kupfertruhe
+	Tooltip:
+		'''
+		{$CommonItemTooltip.RightClickToOpen}
+		'Könnte ein Vermögen enthalten'
+		'''
+}
+
+FunnyFirework: {
+	DisplayName: Lustiges Feuerwerk
+	Tooltip: Macht was Lustiges
+}
+
+GildedMustache: {
+	DisplayName: Vergoldeter Schnurrbart
+	Tooltip: ""
+}
+
+GoldChest: {
+	DisplayName: Goldkoffer
+	Tooltip:
+		'''
+		{$CommonItemTooltip.RightClickToOpen}
+		'Könnte ein Vermögen enthalten'
+		'''
+}
+
+Jem: {
+	DisplayName: Juwel
+	Tooltip: Birgt unermessliche Macht
+}
+
+PlatinumChest: {
+	DisplayName: Platin-Geldkassette
+	Tooltip:
+		'''
+		{$CommonItemTooltip.RightClickToOpen}
+		'Könnte ein Vermögen enthalten'
+		'''
+}
+
+RegalCane: {
+	DisplayName: Vergoldeter Spazierstock
+	Tooltip: ""
+}
+
+SilverChest: {
+	DisplayName: Silber-Schließfach
+	Tooltip:
+		'''
+		{$CommonItemTooltip.RightClickToOpen}
+		'Könnte ein Vermögen enthalten'
+		'''
+}
+
+HuskstalkStaff: {
+	DisplayName: Huskstalk-Stab
+	Tooltip: Schießt aufeinanderfolgende Blätter ab
+}
+
+OakHeart: {
+	DisplayName: Eichenherz
+	Tooltip:
+		'''
+		Gegner schnell hintereinander zu treffen lässt giftige Sporen herabregnen
+		Effektiver auf kurze Distanz
+		'''
+}
+
+GranitechGun: {
+	DisplayName: Vector .109
+	Tooltip: ""
+}
+
+GranitechMaterial: {
+	DisplayName: G-TEK-Komponenten
+	Tooltip: "'Eine beeindruckende Kombination aus Magie und Wissenschaft'"
+}
+
+GranitechStaffItem: {
+	DisplayName: Fokus M-II
+	Tooltip: ""
+}
+
+GranitechSaberItem: {
+	DisplayName: Technomarke
+	Tooltip: Schwingen erzeugt zusätzliche holografische Klingen
+}
+
+GtechGrenade: {
+	DisplayName: G-TEK-Granate
+	Tooltip:
+		'''
+		Verlangsamt und elektrisiert Gegner in ihrer Aura
+		Kann vom Spieler zerstört werden
+		Zerstören verursacht eine Explosion
+		'''
+}
+
+GraniteChest: {
+	DisplayName: Granit-Brustpanzer
+	Tooltip: Erhöht die Sprunghöhe leicht
+}
+
+GraniteHelm: {
+	DisplayName: Granit-Visier
+	Tooltip: Erhöht die Sprunghöhe leicht
+}
+
+GraniteLegs: {
+	DisplayName: Granit-Beinschienen
+	Tooltip: Erhöht die Sprunghöhe leicht
+}
+
+GraniteAxe: {
+	DisplayName: Granit-Axt
+	Tooltip: ""
+}
+
+GraniteBow: {
+	DisplayName: Instabiler Bolzenwerfer
+	Tooltip:
+		'''
+		Verwandelt Holzpfeile in Instabile Bolzen, die an getroffenen Gegnern haften bleiben
+		Das Töten festsitzender Gegner lässt sie in schädliche Energiewirbel explodieren
+		'''
+}
+
+GraniteChunk: {
+	DisplayName: Verzauberter Granitbrocken
+	Tooltip: ""
+}
+
+GraniteFlail: {
+	DisplayName: Instabiler Stern
+	Tooltip:
+		'''
+		Baut beim Drehen Schwung auf
+		Erzeugt bei vollem Schwung beim Aufprall eine schädliche Explosion
+		'''
+}
+
+GraniteHammer: {
+	DisplayName: Granithammer
+	Tooltip: ""
+}
+
+GranitePickaxe: {
+	DisplayName: Granit-Spitzhacke
+	Tooltip: ""
+}
+
+GraniteWand: {
+	DisplayName: Instabiler Kanal
+	Tooltip:
+		'''
+		Erzeugt eine Fontäne aus Energie am Boden nahe der Cursor-Position
+		Gegner mit dieser Waffe zu töten lässt sie in schädliche Energiewirbel explodieren
+		'''
+}
+
+RagingSunblade: {
+	DisplayName: Helios
+	Tooltip:
+		'''
+		Halten und loslassen zum Werfen
+		Rechtsklick, um dorthin zu sprinten und alles auf deinem Weg zu zerstören
+		'''
+}
+
+BottomFeederGun: {
+	DisplayName: Rülpser
+	Tooltip: Verwandelt normale Kugeln in Klumpen verrottenden Fleisches
+}
+
+Blaster: {
+	DisplayName: Blaster
+	Tooltip: ""
+	Name0: Flammend
+	Name1: Leuchtend
+	Name2: Ekliptisch
+	Name3: Aphelisch
+	Name4: Kosmisch
+	Name5: Perihelisch
+	Name6: Ionisiert
+	Name7: Axial
+
+	Tips: {
+		Auxillary1: Rechtsklick, um einen verstärkten Schuss abzufeuern
+		Auxillary2: Rechtsklick, um die Waffe wie einen Bumerang zu werfen
+		Auxillary3: Feuert in Salven
+		Auxillary4: Schüsse prallen von Oberflächen ab
+		Auxillary5: Feuert schnell, auf Kosten der Genauigkeit
+		Element1: Verursacht Feuerschaden
+		Element2: Verursacht Giftschaden
+		Element3: Angriffe verursachen Frostbrand
+		Element4: Angriffe schocken Gegner
+	}
+}
+
+Exotic: {
+	DisplayName: Blaster
+	Tooltip: ""
+	Name1: Knospe
+	Name2: Golden
+	Name3: Flink
+	Name4: Starplate
+	Tip1: Schleudert hüpfende Glaskugeln ab... autsch!
+	Tip2:
+		'''
+		Getroffene Gegner werden für Schaden markiert
+		Rechtsklick, um alle markierten Gegner zu detonieren
+		Alle Markierungen laufen sofort ab, wenn ein Schuss verfehlt wird
+		'''
+	Tip3: Feuert eine schnelle Salve Energie ab
+	Tip4: Erzeugt ein Hologramm, das zusätzliches Feuer liefert
+}
+
+CaptainsRegards: {
+	DisplayName: Grüße des Kapitäns
+	Tooltip: "'Piratendiplomatie vom Feinsten'"
+}
+
+HeavenFleet: {
+	DisplayName: Sternenflotte
+	Tooltip:
+		'''
+		Nutzt Sterne als Munition
+		Halten für eine größere Explosion
+		'''
+}
+
+KineticRailgun: {
+	DisplayName: Tesla-Kanone
+	Tooltip:
+		'''
+		Verbraucht Gel
+		Verursacht mehr Schaden bei Einzelzielen
+		'Zap deine Feinde ins Vergessen!'
+		'''
+}
+
+LadyLuck: {
+	DisplayName: Lady Luck
+	Tooltip:
+		'''
+		Rechtsklick, um eine Glücksmünze zu werfen
+		Schieß diese Münze an, um die Kugel zu nahen Gegnern abprallen zu lassen
+		'Glück begünstigt die Reichen'
+		'''
+}
+
+Meteorite_Spewer: {
+	DisplayName: Magmaspucker
+	Tooltip:
+		'''
+		Spuckt Meteoriten, die kurz liegen bleiben
+		50% Chance, keine Munition zu verbrauchen
+		'''
+}
+
+PartyStarter: {
+	DisplayName: Partystarter
+	Tooltip:
+		'''
+		'Lasst die Party beginnen!'
+		Verwandelt normale Kugeln in VIP-Party-Kugeln
+		'''
+}
+
+PolymorphGun: {
+	DisplayName: Polymorph-Pistole
+	Tooltip:
+		'''
+		Verwandelt Gegner in harmlose Häschen!
+		Funktioniert nur bei Gegnern unter halbem Leben
+		'''
+}
+
+Scattergun: {
+	DisplayName: Schrotflinte
+	Tooltip: Verwandelt normale Kugeln in Neon-Kugeln
+}
+
+Conflux: {
+	DisplayName: Starflux
+	Tooltip: Verwandelt normale Kugeln in hüpfende Sterne
+}
+
+Swordsplosion: {
+	DisplayName: Schwertexplosion
+	Tooltip:
+		'''
+		Schießt ein Sperrfeuer aus Schwertern ab
+		Abgefeuerte Projektile zählen sowohl als Nahkampf- als auch Fernkampfprojektile
+		'''
+}
+
+Crimbine: {
+	DisplayName: Ernter
+	Tooltip:
+		'''
+		Verwandelt normale Kugeln in Knochen
+		Rechtsklick, um ein langsames blutiges Amalgam abzuschießen
+		Das blutige Amalgam zu beschießen erzeugt eine Explosion aus Organen mit verschiedenen Effekten
+		5 Sekunden Abklingzeit
+		'''
+}
+
+HolyBurst: {
+	DisplayName: Mahlstrom
+	Tooltip:
+		'''
+		Abgefeuerte Kugeln sind von engelhafter Energie umgeben
+		Abgefeuerte Kugeln verursachen Licht des Engels, einen stapelbaren Debuff
+		Erhalten Gegner drei Stapel, regnet heiliges Licht auf sie herab
+		Stapel halten 1 Sekunde
+		'''
+}
+
+ShadowShot: {
+	DisplayName: Schattenblaster
+	Tooltip:
+		'''
+		Verwandelt normale Kugeln in widerliche Kugeln
+		Rechtsklick, um einen verfluchten Tracker abzuschießen, der an Gegnern haften bleibt
+		Widerliche Kugeln verfolgen markierte Gegner
+		'''
+}
+
+Terravolver: {
+	DisplayName: Terravolver
+	Tooltip:
+		'''
+		Schießt elementare Kugeln und Bomben, die starke Verbrennungen verursachen
+		Rechtsklick beim Halten für einen Schrotschuss
+		33% Chance, keine Munition zu verbrauchen
+		'Die Natur geht mit einem Knall unter'
+		'''
+}
+
+TrueCrimbine: {
+	DisplayName: Wahrer Ernter
+	Tooltip:
+		'''
+		Schießt schnell Verwelkungs-Explosionen ab, die bei Treffern 'Verwelkung' verursachen
+		Schießt gelegentlich einen riesigen Blutklumpen ab, der eine große Menge Leben stiehlt
+		'''
+}
+
+TrueHolyBurst: {
+	DisplayName: Heiliger Höllensturm
+	Tooltip:
+		'''
+		Feuert eine Fünferserie engelhafter Energie ab
+		Abgefeuerte Kugeln verursachen 'Zorn des Engels', einen stapelbaren Debuff
+		Verschiedene Mengen heiligen Lichts regnen auf Gegner herab, basierend auf ihren Stapeln von 'Zorn des Engels'
+		'''
+}
+
+TrueShadowShot: {
+	DisplayName: Nachtbann
+	Tooltip: Beschwört zusätzliche Schattenkugeln
+}
+
+AncientBark: {
+	DisplayName: Elderbark
+	Tooltip: ""
+}
+
+ElderbarkChest: {
+	DisplayName: Elderbark-Brustpanzer
+	Tooltip: ""
+}
+
+ElderbarkHead: {
+	DisplayName: Elderbark-Helm
+	Tooltip: ""
+}
+
+ElderbarkLegs: {
+	DisplayName: Elderbark-Beinschienen
+	Tooltip: ""
+}
+
+HuskstalkBow: {
+	DisplayName: Huskstalk-Bogen
+	Tooltip: Abgefeuerte Pfeile verursachen Welkendes Blatt
+}
+
+HuskstalkHammer: {
+	DisplayName: Huskstalk-Hammer
+	Tooltip: ""
+}
+
+HuskstalkSword: {
+	DisplayName: Huskstalk-Schwert
+	Tooltip: ""
+}
+
+KnocbackGun: {
+	DisplayName: Freeman
+	Tooltip:
+		'''
+		Verwandelt abgefeuerte Raketen in gewickelte Raketen, die mit dem Cursor gesteuert werden können
+		'Der richtige Mann am falschen Ort kann den ganzen Unterschied auf der Welt machen'
+		'''
+}
+
+IronBomber: {
+	DisplayName: Eisenbomber
+	Tooltip: Verwandelt Raketen in Pulsgranaten
+}
+
+LibertyItem: {
+	DisplayName: Liberty
+	Tooltip: Lädt auf, um eine Rakete abzufeuern
+}
+
+Sharkbones: {
+	DisplayName: Haifischknochen
+	Tooltip: Feuert zielsuchende Raketen ab
+}
+
+ArcLash: {
+	DisplayName: Bogenschlag
+	Tooltip: Verursacht mehr Schaden gegen Ende seines Zyklus
+}
+
+StopWatch: {
+	DisplayName: Astrale Uhr
+	Tooltip:
+		'''
+		Friert die Zeit in einem Radius um den Spieler ein
+		60 Sekunden Abklingzeit
+		'''
+}
+
+AdamantiteStaff: {
+	DisplayName: Adamantit-Stab
+	Tooltip: Schießt einen Energiecluster ab, der sich in verschiedene Richtungen aufspaltet
+}
+
+CobaltStaff: {
+	DisplayName: Kobalt-Stab
+	Tooltip: Beschwört magnetisierte Kobaltsplitter am Cursor
+}
+
+MythrilStaff: {
+	DisplayName: Mythril-Stab
+	Tooltip: Schießt zielsuchende Bolzen ab, die Gegner gelegentlich doppelt treffen
+}
+
+OrichalcumStaff: {
+	DisplayName: Orichalcum-Stab
+	Tooltip: Beschwört zielsuchende Orichalcum-Blüten an der Cursor-Position
+}
+
+PalladiumStaff: {
+	DisplayName: Palladium-Stab
+	Tooltip:
+		'''
+		Beschwört eine runische Säule an der Cursor-Position
+		Unter 1/3 Leben, tritt in die Säule, um rasch Leben zu regenerieren
+		'''
+}
+
+TitaniumStaff: {
+	DisplayName: Titan-Stab
+	Tooltip:
+		'''
+		Umgibt den Spieler mit Klingen
+		Linksklick halten, um ein Sperrfeuer aus Klingen freizusetzen
+		'''
+}
+
+AkaviriStaff: {
+	DisplayName: Lichtturm
+	Tooltip: "'Jede Menge Licht ist genug'"
+}
+
+MagicDeck: {
+	DisplayName: Magiekartenspiel
+	Tooltip: ""
+}
+
+NightSkyStaff: {
+	DisplayName: Novas Funke
+	Tooltip:
+		'''
+		Schießt einen schnellen Laser aus Sternenenergie ab
+		Jeder fünfte Treffer bei Feinden beschwört einen mächtigeren zielsuchenden Sternenstrahl
+		Dieser Strahl lässt zielsuchende Bolzen vom Himmel regnen
+		'''
+}
+
+Ornament_Staff: {
+	DisplayName: Stab der Ornamente
+	Tooltip: Wirkt einen Haufen Edelsteine, die deinem Cursor folgen
+}
+
+BloodStaff: {
+	DisplayName: Gefäßentzieher
+	Tooltip: Beschwört einen Bluttentakel, der sich in lebenraubende Blutgerinnsel aufteilt
+}
+
+CorruptStaff: {
+	DisplayName: Widerlicher Zauberstab
+	Tooltip:
+		'''
+		Schießt Klumpen kranker Spucke ab
+		Gegner mit kranker Spucke zu töten setzt zielsuchende Fresser frei
+		'''
+}
+
+CrimsonStaff: {
+	DisplayName: Aderlasser
+	Tooltip:
+		'''
+		Spuckt einen Bluttentakel aus dem Spieler
+		Kritische Treffer stehlen eine kleine Menge Leben
+		'''
+}
+
+DungeonStaff: {
+	DisplayName: Schädelspray-Stab
+	Tooltip:
+		'''
+		Beschwört einen Schädel an der Cursor-Position
+		Der Schädel bricht in vier Energiebolzen aus
+		'''
+}
+
+HallowedStaff: {
+	DisplayName: Geheiligter Stab
+	Tooltip: Lässt ein Sperrfeuer magischer Schwerter herabregnen
+}
+
+HellStaff: {
+	DisplayName: Leuchtfunke-Stab
+	Tooltip: Beschwört einen Flammengeysir
+}
+
+JungleStaff: {
+	DisplayName: Rosenranken-Stab
+	Tooltip: Schießt eine hüpfende Masse aus Ranken und Blumen ab
+}
+
+NightStaff: {
+	DisplayName: Horizontrand
+	Tooltip:
+		'''
+		Beschwört ein Portal an der Cursor-Position, das zielsuchende Energie auf Gegner abfeuert
+		Rechtsklick, damit alle Portale in einem Sternenschauer explodieren
+		Bis zu 2 Portale können gleichzeitig existieren
+		'''
+}
+
+TerraStaff: {
+	DisplayName: Terra-Zepter
+	Tooltip: "'Möge der Zorn der Elemente deine Feinde verzehren.'"
+}
+
+TrueBloodStaff: {
+	DisplayName: Wahrer Gefäßentzieher
+	Tooltip: Schießt ein Gerinnsel ab, das über Zeit an Kraft gewinnt
+}
+
+TrueDarkStaff: {
+	DisplayName: Wahrer Horizontrand
+	Tooltip: Schießt eine sich aufteilende Salve zielsuchender Seuche und verfluchten Feuers ab.
+}
+
+TrueHallowedStaff: {
+	DisplayName: Wahrer Geheiligter Stab
+	Tooltip: Schießt mehrere Schwerter mit unterschiedlichen Effekten ab.
+}
+
+BreathOfTheZephyr: {
+	DisplayName: Atem des Zephirs
+	Tooltip:
+		'''
+		Erzeugt eine mächtige Windböe, die deine Feinde beschädigt und zurückstößt
+		Rechtsklick zum Stoßen wie mit einem Speer, entzieht getroffenen Feinden Mana
+		'''
+}
+
+MarbleChest: {
+	DisplayName: Vergoldete Robe
+	Tooltip:
+		'''
+		10% erhöhte Bewegungsgeschwindigkeit
+		Verdoppelt die Beschleunigung
+		'Nicht alles, was glänzt, ist Gold'
+		'''
+}
+
+MarbleHelm: {
+	DisplayName: Vergoldeter Lorbeer
+	Tooltip: 10% erhöhte Bewegungsgeschwindigkeit
+}
+
+MarbleBident: {
+	DisplayName: Vergoldeter Bident
+	Tooltip:
+		'''
+		Verursacht gelegentlich 'Midas', wodurch Gegner mehr Gold fallen lassen
+		Einen Gegner mit 'Midas' zu treffen kann einen Springbrunnen aus Gold freisetzen
+		'''
+}
+
+MarbleChunk: {
+	DisplayName: Uralter Marmorbrocken
+	Tooltip: "'Enthält Fragmente vergangener Zivilisationen'"
+}
+
+MarbleHamaxe: {
+	DisplayName: Vergoldete Hamaxe
+	Tooltip: ""
+}
+
+MarblePick: {
+	DisplayName: Vergoldete Spitzhacke
+	Tooltip: ""
+}
+
+MarbleStaff: {
+	DisplayName: Vergoldetes Foliant
+	Tooltip: Lässt vergoldete Stalaktiten vom Himmel regnen
+}
+
+IceDeityShard1: {
+	DisplayName: Hyperboreisches Relikt
+	CustomTooltip: "'Ein Splitter von etwas viel Größerem'"
+	Tooltip: ""
+}
+
+IceDeityShard2: {
+	DisplayName: Hyperboreisches Fragment
+	Tooltip: ""
+}
+
+IceDeityShard3: {
+	DisplayName: Hyperboreisches Artefakt
+	Tooltip: ""
+}
+
+SeaMandrakeSac: {
+	DisplayName: Leuchtender Sack
+	CustomTooltip: "'Die Tinte darin blitzt in verschiedenen Farben'"
+	Tooltip: ""
+}
+
+ArtemisHunt: {
+	DisplayName: Iokheira
+	Tooltip:
+		'''
+		Treffe Gegner, um sie zu markieren
+		Rechtsklick, um eine Pfeilsalve auf markierte Feinde abzufeuern
+		'''
+}
+
+BetrayersChains: {
+	DisplayName: Klingen des Chaos
+	Tooltip: ""
+}
+
+Eleutherios: {
+	DisplayName: Eleutherios
+	Tooltip:
+		'''
+		Verringert die Wirksamkeit von Heilgegenständen um 15%
+		Einen Heilgegenstand zu benutzen gewährt einen vorübergehenden Schadensbonus, der über 15 Sekunden auf 0 abklingt,
+		Anfangsstärke hängt vom Heilwert des Verbrauchsgegenstands ab
+		'''
+}
+
+MarkOfZeus: {
+	DisplayName: Zeichen des Zeus
+	Tooltip:
+		'''
+		Halten und loslassen zum Werfen
+		Länger halten für mehr Geschwindigkeit und Schaden
+		Verbraucht 20 Mana pro Sekunde beim Aufladen
+		'''
+}
+
+OlympiumToken: {
+	DisplayName: Olympium-Token
+	Tooltip: Könnte für einen Sammler interessant sein...
+	PriceText: "{0} {^0:Olympium-Token;Olympium-Token}"
+}
+
+DuelistLegacy: {
+	DisplayName: Erster Maat
+	Tooltip:
+		'''
+		Rechtsklick für einen mächtigen Schrotschuss
+		Lädt nach 2 Schlägen einen Superangriff auf
+		Setze diesen Spezialangriff entweder als Hieb oder Explosion frei
+		'''
+}
+
+PirateChest: {
+	DisplayName: Piratenkiste
+	Tooltip: ""
+}
+
+PirateKey: {
+	DisplayName: Geheimer Schlüssel
+	Tooltip: "'Die Piraten müssen irgendwo einen Schatz versteckt haben...'"
+}
+
+ClawCannon: {
+	DisplayName: Klauenkanone
+	Tooltip: "'Klaunone...Klawnon...Klawanon...'"
+}
+
+IridescentScale: {
+	DisplayName: Schillernde Schuppe
+	Tooltip: "'Glitzert wunderschön unter Wasser'"
+}
+
+PendantOfTheOcean: {
+	DisplayName: Anhänger des Ozeans
+	Tooltip: Doppeltipp {0}, um kurzzeitig uneingeschränkte Bewegung unter Wasser zu erhalten
+}
+
+ReefSpear: {
+	DisplayName: Riff-Dreizack
+	Tooltip: Rechtsklick, um den Dreizack zu werfen und Gegner kurz zu vergiften
+}
+
+SkullSentry: {
+	DisplayName: Menschenfresser-Schädel
+	Tooltip: Beschwört einen stationären Schädel, befallen von Menschenfresser-Würmern, die roten Schleim auf nahe Gegner abfeuern
+}
+
+SulfurDeposit: {
+	DisplayName: Schwefelablagerung
+	Tooltip: Hochexplosiv
+}
+
+UrchinStaff: {
+	DisplayName: Seeigel-Werfer
+	Tooltip: ""
+}
+
+RlyehianMountItem: {
+	DisplayName: Unheimlicher Umhang
+	Tooltip:
+		'''
+		Beschwört einen unheimlichen Umhang, der dich trägt
+		Sprung halten erlaubt höheres Schweben und beschädigt Gegner, die darunter vorbeikommen
+		'''
+}
+
+RlyehMask: {
+	DisplayName: R'lyehianer-Maske
+	Tooltip: ""
+}
+
+TentacleChain: {
+	DisplayName: Salzwasser-Sperrfeuer
+	Tooltip: ""
+}
+
+TomeOfRylien: {
+	DisplayName: Foliant von R'lyeh
+	Tooltip: ""
+}
+
+Trophy10: {
+	DisplayName: R'lyehianer-Trophäe
+	Tooltip: ""
+}
+
+Rune: {
+	DisplayName: Uralte Rune
+	Tooltip: "'Sie ist in einer archaischen Sprache eingraviert'"
+}
+
+RunicGreaves: {
+	DisplayName: Runische Beinschienen
+	Tooltip: Verringert die Manakosten um 10% und erhöht den Magieschaden um 10%
+}
+
+RunicHood: {
+	DisplayName: Runische Kapuze
+	Tooltip: Erhöht den Magieschaden um 12% und die Bewegungsgeschwindigkeit um 5%
+}
+
+RunicPlate: {
+	DisplayName: Runischer Panzer
+	Tooltip: Erhöht die kritische Magiechance um 8%
+}
+
+SpiritRune: {
+	DisplayName: Geistrune
+	Tooltip:
+		'''
+		'Enthält uralte Energie'
+		Schießt ein uraltes Buch voller gefährlicher Runen ab
+		'''
+}
+
+AccursedBlade: {
+	DisplayName: Verfluchte Klinge
+	Tooltip:
+		'''
+		Töte Gegner und sammle ihre Seelen, um Ladung aufzubauen
+		Rechtsklick, um die Ladung als verfluchten Bolzen freizusetzen
+		'''
+}
+
+AccursedSoul: {
+	DisplayName: Verfluchte Seele
+	Tooltip: Das solltest du nicht sehen
+}
+
+Graveyard: {
+	DisplayName: Friedhof
+	Tooltip: Erzeugt ein Portal zum Höllenreich, das eine Flut von Schädeln freisetzt
+}
+
+OldCross: {
+	DisplayName: Altes Kreuz
+	Tooltip: Beschwört einen uralten Sarg voller wütender Skelette
+}
+
+ScreamingTome: {
+	DisplayName: Schreiendes Foliant
+	Tooltip:
+		'''
+		Erzeugt umkreisende Schädel
+		Loslassen, um Schädel abzuschießen
+		'''
+}
+
+GlowSting: {
+	DisplayName: Schlag des Seraphen
+	Tooltip: Rechtsklick, um einen Schwall Schläge freizusetzen
+}
+
+MoonStone: {
+	DisplayName: Azurblauer Edelstein
+	Tooltip: "'Birgt eine fernab liegende Macht'"
+}
+
+SeraphArmor: {
+	DisplayName: Brustpanzer des Seraphen
+	Tooltip: 10% erhöhter Magieschaden
+}
+
+SeraphHelm: {
+	DisplayName: Krone des Seraphen
+	Tooltip: 12% erhöhter Nahkampfschaden
+}
+
+SeraphLegs: {
+	DisplayName: Beinschienen des Seraphen
+	Tooltip: Erhöht das maximale Mana um 50
+}
+
+StarBow: {
+	DisplayName: Sturm des Seraphen
+	Tooltip: Schießt Bolzen sporadischer Mondenergie ab
+}
+
+WayfinderTorch: {
+	DisplayName: Licht des Seraphen
+	Tooltip: ""
+}
+
+CarvedRock: {
+	DisplayName: Schlackenstein
+	Tooltip: "'Ein brodelndes Stück gehärteter Magma'"
+}
+
+ObsidiusGreaves: {
+	DisplayName: Beinschienen des Schlackentyrannen
+	Tooltip:
+		'''
+		5% erhöhter Dienerschaden
+		Erhöht deine maximale Anzahl an Dienern
+		'''
+}
+
+ObsidiusHelm: {
+	DisplayName: Helm des Schlackentyrannen
+	Tooltip:
+		'''
+		5% erhöhter Dienerschaden
+		Erhöht deine maximale Anzahl an Wachposten
+		'''
+}
+
+ObsidiusPlate: {
+	DisplayName: Plattenpanzer des Schlackentyrannen
+	Tooltip:
+		'''
+		4% erhöhter Dienerschaden
+		Erhöht deine maximale Anzahl an Dienern
+		'''
+}
+
+FieryMagicLauncher: {
+	DisplayName: Schlackenatem
+	Tooltip:
+		'''
+		Stößt Schübe magischer Flammen aus
+		Kritische Treffer überschütten Gegner mit schädlichen Funken
+		'''
+}
+
+FierySummonStaff: {
+	DisplayName: Schlackenlaternen-Stab
+	Tooltip: Beschwört eine schwebende Schlackenlaterne, die Lava auf nahe Feinde schleudert
+}
+
+PossessedHammer: {
+	DisplayName: Besessener Hammer
+	Tooltip: Wirft einen zurückkehrenden, rachsüchtigen Hammer, der Gegner sucht, um sie zusätzlich zu treffen
+}
+
+SlagHammer: {
+	DisplayName: Schlackenbrecher
+	Tooltip:
+		'''
+		Halten und loslassen, um den Hammer wie einen Bumerang zu werfen
+		Kann aufgezogen werden, um erhöhten Schaden zu verursachen
+		'''
+}
+
+BambooHalberd: {
+	DisplayName: Bambus-Hellebarde
+	Tooltip: ""
+}
+
+DuskLance: {
+	DisplayName: Dämmerungslanze
+	Tooltip: Schießt eine Erscheinung ab, die Schattenflamme verursacht
+}
+
+GhostJellyBomb: {
+	DisplayName: Geistergelee-Bombe
+	Tooltip: ""
+}
+
+Gravehunter: {
+	DisplayName: Grabjäger
+	Tooltip: "'Man kann nicht sagen, ob du den Abzug führst oder er dich'"
+}
+
+NetherCrystal: {
+	DisplayName: Nether-Kristall
+	Tooltip: "'Randvoll mit leuchtenden Seelen'"
+}
+
+NetherWings: {
+	DisplayName: Nether-Flügel
+	Tooltip: Ermöglicht Flug und langsamen Fall.
+}
+
+PossessedBook: {
+	DisplayName: Uraltes Grimoire
+	Tooltip: Beschwört ein Verfluchtes Foliant, das dich leitet
+}
+
+SoulWeaver: {
+	DisplayName: Seelenweber
+	Tooltip: Schießt Seelensplitter ab
+}
+
+SpiritFlameStaff: {
+	DisplayName: Geistflammen-Stab
+	Tooltip: Schießt einen Geistbolzen ab, der in 4 Richtungen explodiert
+}
+
+StarCutter: {
+	DisplayName: Sternenschneider
+	Tooltip: ""
+}
+
+StoneOfSpiritsPast: {
+	DisplayName: Stein Vergangener Geister
+	Tooltip: Erzeugt umkreisende Seelen, die nahe Gegner verletzen
+}
+
+PhantomArc: {
+	DisplayName: Phantombogen
+	Tooltip: Beschwört einen unendlich durchbohrenden Laser verlorener Seelen
+}
+
+Revenant: {
+	DisplayName: Wiedergänger
+	Tooltip: Verwandelt normale Pfeile in Wiedergänger-Pfeile
+}
+
+SoulShred: {
+	DisplayName: Ätherische Glut
+	Tooltip: "'Ein Teil der ewigbrennenden Seele'"
+}
+
+SpiritBodyArmor: {
+	DisplayName: Geist-Körperrüstung
+	Tooltip: Erhöht Nahkampfschaden und kritische Trefferchance um 10%, verringert außerdem erlittenen Schaden um 10%
+}
+
+SpiritHeadgear: {
+	DisplayName: Geist-Kopfschmuck
+	Tooltip: Erhöht das maximale Leben um 10 und erhöht den Nahkampfschaden um 12%
+}
+
+SpiritLeggings: {
+	DisplayName: Geist-Beinschienen
+	Tooltip: 10% erhöhte Nahkampfgeschwindigkeit
+}
+
+SpiritBar: {
+	DisplayName: Geist-Barren
+	Tooltip: ""
+}
+
+SpiritBoomerang: {
+	DisplayName: Geist-Bumerang
+	Tooltip: Verursacht Seelenbrand
+}
+
+SpiritDrill: {
+	DisplayName: Geist-Bohrer
+	Tooltip: ""
+}
+
+SpiritGun: {
+	DisplayName: Geist-Salve
+	Tooltip: Verwandelt normale Kugeln in Geistkugeln
+}
+
+SpiritHamaxe: {
+	DisplayName: Geist-Hamaxe
+	Tooltip: ""
+}
+
+SpiritOre: {
+	DisplayName: Geist-Erz
+	Tooltip: "'Geist-durchtränktes Metall'"
+}
+
+SpiritPickaxe: {
+	DisplayName: Geist-Spitzhacke
+	Tooltip: ""
+}
+
+SpiritSaber: {
+	DisplayName: Geist-Säbel
+	Tooltip: Schießt einen zielsuchenden Seelenbolzen ab, der Seelenbrand verursacht
+}
+
+SpiritSpear: {
+	DisplayName: Geist-Speer
+	Tooltip: ""
+}
+
+SpiritWand: {
+	DisplayName: Geist-Zauberstab
+	Tooltip: Schießt Energie ab, die über den Boden wandert
+}
+
+SpiritWings: {
+	DisplayName: Geist-Flügel
+	Tooltip: Ermöglicht Flug und langsamen Fall.
+}
+
+FairyWhistleItem: {
+	DisplayName: Feenpfeife
+	Tooltip: Ruft eine schützende Fee, die um dich schwebt
+}
+
+PigronStaffItem: {
+	DisplayName: Schweineron-Stab
+	Tooltip: "'Bacon kämpft jetzt für dich'"
+}
+
+RodofDunes: {
+	DisplayName: Stab der Dünen
+	Tooltip: Beschwört einen Sandkrieger, der für dich kämpft
+}
+
+SanguineFlayerItem: {
+	DisplayName: Blutroter Häuter
+	Tooltip:
+		'''
+		Hakt sich in getroffene Gegner ein, während die Angriffstaste gehalten wird, gewährt 7 Beschwörungsmarkierungsschaden solange eingehakt
+		Angriffstaste loslassen, während in einen Gegner eingehakt, um die Waffe herauszureißen
+		Beschwörungsschaden an eingehakten Gegnern baut blutrote Energie auf, erhöht den Schaden beim Herausreißen der Waffe
+		'''
+}
+
+SoulDagger: {
+	DisplayName: Seelendolch
+	Tooltip: "Beschwört einen Seelendolch, der für dich kämpft "
+}
+
+ToucaneItem: {
+	DisplayName: Toucane
+	Tooltip: Beschwört einen wütenden Tukan, der für dich kämpft
+}
+
+MimeSummon: {
+	DisplayName: Zweigesichtige Maske
+	Tooltip:
+		'''
+		Beschwört per Links- oder Rechtsklick eine stationäre Seele der Freude oder Traurigkeit an der Cursor-Position
+		Die Seele der Freude schießt Strahlen auf Feinde ab
+		Die Seele der Traurigkeit schießt zielsuchende Tränen auf Feinde ab
+		'''
+}
+
+SpiritStar: {
+	DisplayName: Seelenstern
+	Tooltip:
+		'''
+		Lässt mehrere sternenhafte Bolzen vom Himmel regnen, die Sternenbruch verursachen
+		Diese Sterne explodieren in mehrere Seelen, die Seelenbrand verursachen
+		'Die Konvergenz von Seelen und Kosmos'
+		'''
+}
+
+Starblade: {
+	DisplayName: Sternenklinge
+	Tooltip:
+		'''
+		'Nutze den Nachthimmel'
+		Jeder dritte Schlag lässt die Klinge mehrere helle Sterne freisetzen
+		Jeder Stern explodiert in zielsuchende Sternenirrlichter
+		'''
+}
+
+CurseBreaker: {
+	DisplayName: Fluchbrecher
+	Tooltip:
+		'''
+		Jeder dritte Schlag verflucht nahe Gegner
+		Erneut treffen, um den Fluch zu brechen und zusätzlichen Schaden zu verursachen
+		'''
+}
+
+DemoncomboSword: {
+	DisplayName: Ewiges Schwert
+	Tooltip: Schießt Klingen-Erscheinungen ab
+}
+
+DemonfireSword: {
+	DisplayName: Flameberge-Schwert
+	Tooltip: Schießt einen feurigen Bolzen ab
+}
+
+DemoniceSword: {
+	DisplayName: Vorpal-Schwert
+	Tooltip: Schießt einen eisigen Rasierer ab, der sich beim Treffen an Blöcken festsetzt
+}
+
+CrimsonSkull: {
+	DisplayName: Crimson-Schädel
+	Tooltip: Das solltest du nicht sehen
+}
+
+FlaskOfGore: {
+	DisplayName: Phiole des Blutbads
+	Tooltip:
+		'''
+		Phiolen können beim Zerplatzen einen Crimson-Schädel erzeugen
+		Crimson-Schädel aufzusammeln erhöht vorübergehend den Schaden der Phiole
+		'''
+}
+
+CoconutGun: {
+	DisplayName: Kokosnuss-Kanone
+	Tooltip:
+		'''
+		'Feuert in Schüben'
+		'Wenn's dich trifft, tut's weh!'
+		'''
+}
+
+CrocodrilloMountItem: {
+	DisplayName: Sack voll Köder
+	Tooltip: Beschwört ein freundliches Crocodrillo-Reittier
+}
+
+MagicConch: {
+	DisplayName: Shankya
+	Tooltip: Beschwört einen Strudel an der Position des Cursors
+}
+
+MangoJellyStaff: {
+	DisplayName: Mango-Gelee-Stab
+	Tooltip: Beschwört ein Mini-Mango-Gelee
+}
+
+Minifish: {
+	DisplayName: Gatling-Guppy
+	Tooltip:
+		'''
+		Gegner zu treffen erzeugt vorübergehend zusätzliche Minifische, die auf deinen Cursor feuern und keine Munition verbrauchen
+		'Stärke in der Anzahl'
+		'''
+}
+
+PumpBubbleGun: {
+	DisplayName: Blasenblaster
+	Tooltip:
+		'''
+		Halten für einen längeren Schuss
+		Verbraucht jede Sekunde 20 Mana
+		'''
+}
+
+StreamSurferChestplate: {
+	DisplayName: Strömungssurfer-Brustpanzer
+	Tooltip:
+		'''
+		9% erhöhter Magieschaden
+		Erhöht das maximale Mana um 60
+		'''
+}
+
+StreamSurferHelmet: {
+	DisplayName: Strömungssurfer-Maske
+	Tooltip:
+		'''
+		8% erhöhte kritische Magiechance
+		Du kannst unter Wasser atmen
+		'''
+	BonusText: Wasserhose aufgeladen!
+}
+
+StreamSurferLeggings: {
+	DisplayName: Strömungssurfer-Lendenschurz
+	Tooltip:
+		'''
+		7% erhöhter Magieschaden
+		10% verringerter Manaverbrauch
+		'''
+}
+
+TikiJavelin: {
+	DisplayName: Tiki-Wurfspeer
+	Tooltip:
+		'''
+		Halten und loslassen zum Werfen
+		Länger halten für mehr Geschwindigkeit und Schaden
+		'''
+}
+
+TribalScale: {
+	DisplayName: Stromschuppe
+	Tooltip: "'Schuppen alter Meereskreaturen'"
+}
+
+Whirltide: {
+	DisplayName: Wirbelflut
+	Tooltip: Lässt Gezeiten aus dem Boden sprießen
+}
+
+GemPickaxe: {
+	DisplayName: Brillanter Ernter
+	Tooltip:
+		'''
+		Steinabbau kann auch Edelsteine und Erze liefern
+		Kann Demonit und Crimtan abbauen
+		'''
+}
+
+UnfellerOfEvergreens: {
+	DisplayName: Immergrün
+	Tooltip: Pflanzt Setzlinge, wenn Bäume gefällt werden
+}
+
+AdamantiteWarhammer: {
+	DisplayName: Adamantit-Kriegshammer
+	Tooltip: ""
+}
+
+CobaltWarhammer: {
+	DisplayName: Kobalt-Kriegshammer
+	Tooltip: ""
+}
+
+MythrilWarhammer: {
+	DisplayName: Mythril-Kriegshammer
+	Tooltip: ""
+}
+
+OrichalcumWarhammer: {
+	DisplayName: Orichalcum-Kriegshammer
+	Tooltip: ""
+}
+
+PalladiumWarhammer: {
+	DisplayName: Palladium-Kriegshammer
+	Tooltip: ""
+}
+
+ShellHammer: {
+	DisplayName: Muschelhammer
+	Tooltip: "'Schleudert Muscheln, Alterrrr!'"
+}
+
+TitaniumWarhammer: {
+	DisplayName: Titan-Kriegshammer
+	Tooltip: ""
+}
+
+GoldenEgg: {
+	DisplayName: Goldenes Ei der Geier-Matriarchin
+	Tooltip: ""
+}
+
+Matriarch_Wings: {
+	DisplayName: Matriarchin-Flügel
+	Tooltip: Halten zum Sturzflug
+}
+
+Sovereign_Talon: {
+	DisplayName: Souveräne Kralle
+	Tooltip:
+		'''
+		Ständiges Zustoßen lädt die Kralle auf
+		Bei voller Ladung wird eine arkane Welle gewirkt
+		'''
+}
+
+Tome_of_the_Great_Scavenger: {
+	DisplayName: Foliant des Großen Aasfressers
+	Tooltip:
+		'''
+		Wirkt eine Flut scharfer, rüstungsdurchdringender Federn
+		Getroffene Gegner können mehr Gold fallen lassen
+		'''
+}
+
+Vulture_Matriarch_Mask: {
+	DisplayName: Geier-Matriarchin-Maske
+	Tooltip: ""
+}
+
+PoolNoodle: {
+	DisplayName: Poolnudel
+	Tooltip:
+		'''
+		3 Beschwörungsmarkierungsschaden
+		{$CommonItemTooltip.Whips}
+		'''
+}
+
+CactusStaff: {
+	DisplayName: Kaktus-Stab
+	Tooltip: Beschwört Kaktuswände, die dich schützen
+}
+
+CrystalWindpipe: {
+	DisplayName: Kristall-Windspiel
+	Tooltip: ""
+}
+
+DarkstarLantern: {
+	DisplayName: Dunkelstern-Laterne
+	Tooltip:
+		'''
+		Erzeugt eine Singularität an der Cursor-Position, die mehrere Leerensterne abschießt
+		Leerensterne verfolgen Gegner und können Schattenflamme verursachen
+		'''
+}
+
+DesertTome: {
+	DisplayName: Khamsin
+	Tooltip:
+		'''
+		Erzeugt einen heftigen Sandtornado vom Spieler aus
+		Vom Tornado erfasste Gegner werden nach oben gehoben
+		'''
+}
+
+EelRod: {
+	DisplayName: Aalschwanz
+	Tooltip:
+		'''
+		Schießt einen Blitzbolzen ab, der gelegentlich pausiert und sich auf nahe Feinde umlenkt
+		Elektrisiert manchmal getroffene Feinde
+		'''
+}
+
+LuminanceSeacone: {
+	DisplayName: Leuchtkraft-Meereszapfen
+	Tooltip:
+		'''
+		Zerbirst in einen Schwall lumineszenter Blasen
+		Lumineszente Blasen verursachen erhöhten Schaden, nachdem sie nass geworden sind
+		'''
+}
+
+RealityQuill: {
+	DisplayName: Leerenfeder
+	Tooltip:
+		'''
+		Erzeugt einen Riss in der Realität, der Gegner beschädigt
+			Schneller schreiben, um mehr Schaden zu verursachen
+		'Schreibe dein eigenes Schicksal'
+		'''
+}
+
+ShadowflameStoneStaff: {
+	DisplayName: Schattenbrecher-Zauberstab
+	Tooltip: Lädt einen mächtigen Schattenflammen-Bolzen auf, der gegnerische Rüstung stören kann
+}
+
+ShroomFishSummon: {
+	DisplayName: Pilz-Fischwesen
+	Tooltip:
+		'''
+		Beschwört langsam zielsuchende, vorübergehende Sporen um den Spieler
+		5 Beschwörungsmarkierungsschaden
+		'''
+}
+
+ThornDevilfish: {
+	DisplayName: Dornenteufelsfisch
+	Tooltip: Schießt giftige Blasen ab
+}
+
+ValkyrieSpear: {
+	DisplayName: Walküren-Geistspeer
+	Tooltip: Verursacht sowohl Magie- als auch Nahkampfschaden
+}
+
+ButterflyStaff: {
+	DisplayName: Ätherischer-Schmetterling-Stab
+	Tooltip:
+		'''
+		Beschwört einen magischen Schmetterling, der für dich kämpft
+		Linksklick, damit Schmetterlinge sich auflösen und explodierende arkane Sterne hinterlassen
+		'''
+}
+
+CrawlerockStaff: {
+	DisplayName: Kriechfels-Stab
+	Tooltip: Beschwört hüpfende Mini-Kriecher, die für dich kämpfen
+}
+
+ElectricGun: {
+	DisplayName: Bogenblitzer
+	Tooltip:
+		'''
+		{$CommonItemTooltip.Whips}
+		Getroffene Gegner können, wenn von Dienern getroffen, statische Verbindungen zueinander erzeugen, was zusätzlichen Schaden verursacht
+		'''
+}
+
+EngineeringRod: {
+	DisplayName: Ingenieurs-Stab
+	Tooltip: Beschwört einen stationären Tesla-Geschützturm
+}
+
+GateStaff: {
+	DisplayName: Tor-Stab
+	Tooltip:
+		'''
+		Beschwört einen stationären elektrischen Feldknoten, der sich mit anderen Knoten verbindet
+		Rechtsklick, um beschworene Knoten zu entfernen
+		'''
+}
+
+GloomgusStaff: {
+	DisplayName: Düster-Pilz-Stab
+	Tooltip: Beschwört vorübergehende explosive Pilze
+}
+
+JadeStaff: {
+	DisplayName: Stab des Jade-Drachen
+	Tooltip: Beschwört zwei umkreisende ätherische Drachen
+}
+
+OrbiterStaff: {
+	DisplayName: Orbiter-Stab
+	Tooltip: Beschwört einen Mini-Meteor, der auf Feinde stürmt
+}
+
+SnapsporeStaff: {
+	DisplayName: Knallsporen-Zauberstab
+	Tooltip:
+		'''
+		Beschwört eine Knallspore, die für dich kämpft
+		Knallsporen hüpfen zu Gegnern und stoßen Giftwolken aus
+		'''
+}
+
+StardustBomb: {
+	DisplayName: Supernova
+	Tooltip:
+		'''
+		Beschwört einen kollabierenden Stern
+		Der Stern kann anvisiert werden
+		Verursache Beschwörungsschaden am Stern, um eine mächtige Explosion freizusetzen
+		'''
+}
+
+StarlightStaff: {
+	DisplayName: Sternenlicht-Stab
+	Tooltip: Beschwört einen stationären Funkelknaller
+}
+
+HollowNail: {
+	DisplayName: Hohler Nagel
+	Tooltip: Über Gegnern verwenden, um auf ihnen abzuprallen
+}
+
+Punching_Bag: {
+	DisplayName: Sandsack
+	Tooltip:
+		'''
+		Schießt ein Sperrfeuer aus Fäusten ab
+		'Die Nummer-eins-Krafttrainingsmethode der Untoten'
+		'''
+}
+
+BoCShuriken: {
+	DisplayName: Kriechendes Shuriken
+	Tooltip:
+		'''
+		Schießt einen sich drehenden Kriecher ab
+		'Geformt nach einem weiteren fleischigen Augapfel'
+		'''
+}
+
+ClatterSpear: {
+	DisplayName: Klappermaul-Wurfspeer
+	Tooltip:
+		'''
+		Halten und loslassen zum Werfen
+		Länger halten für mehr Geschwindigkeit und Schaden
+		'''
+}
+
+Coconut: {
+	DisplayName: Harte Kokosnuss
+	Tooltip:
+		'''
+		Verursacht mehr Schaden, wenn aus großer Höhe fallen gelassen
+		'Du traust dich nicht, sie zu essen'
+		'''
+}
+
+CryoKnife: {
+	DisplayName: Kryolith-Bombe
+	Tooltip:
+		'''
+		Verursacht gelegentlich 'Kryo-Zermalmung'
+		Kryo-Zermalmung verursacht erhöhten Schaden bei geschwächten Gegnern
+		'''
+}
+
+EoWDagger: {
+	DisplayName: Widerlicher Spalter
+	Tooltip: Teilt sich in zwei kleinere, zielsuchende Fresser
+}
+
+ExplosiveRum: {
+	DisplayName: Explosiver Rum
+	Tooltip: "'Oh, da ist er ja!'"
+}
+
+Kunai_Throwing: {
+	DisplayName: Kunai
+	Tooltip: ""
+}
+
+MartianGrenade: {
+	DisplayName: Elektrosphären-Granate
+	Tooltip: "'WARNUNG - HOCHSPANNUNG'"
+}
+
+MimeBomb: {
+	DisplayName: Pantomime-Bombe
+	Tooltip: ""
+}
+
+PiecesOfEight: {
+	DisplayName: Achterstücke
+	Tooltip: Kritische Treffer lassen Gegner mehr Münzen fallen lassen
+}
+
+PlagueVial: {
+	DisplayName: Pestphiole
+	Tooltip:
+		'''
+		Eine übelriechende Mischung brennbarer Toxine
+		Explodiert bei Gegnertreffern in verfluchte Glut
+		'Daraus könnten wir einen ganzen Kurs machen!'
+		'''
+}
+
+SkeletronHand: {
+	DisplayName: Knochenschneider
+	Tooltip: Sprintet in schnellen Schüben durch die Luft
+}
+
+SpectreKnife: {
+	DisplayName: Spektralmesser
+	Tooltip: Beim Treffen von Gegnern oder Blöcken werden Spektralbolzen freigesetzt
+}
+
+TargetBottle: {
+	DisplayName: Zielflasche
+	Tooltip:
+		'''
+		Triff sie mit einer Kugel in der Luft, um danach kurzzeitig hohen Kugelschaden zu verursachen
+		'Nimm dir diese Flasche vor!'
+		'''
+}
+
+TargetCan: {
+	DisplayName: Zieldose
+	Tooltip:
+		'''
+		Triff sie mit einer Kugel in der Luft, um extrem hohen Schaden zu verursachen
+		'Mal sehen, was für ein Schütze du bist, Pilger!'
+		'''
+}
+
+Ancient: {
+	DisplayName: Uralt
+	Tooltip: Schießt einen Cluster Uraltes Eis ab
+}
+
+BeholderYoyo: {
+	DisplayName: Auge des Beholders
+	Tooltip:
+		'''
+		Verbraucht 10 Mana pro Sekunde
+		Rechtsklick, um Feuerbälle auf Feinde zu wirken, verbraucht 10 zusätzliches Mana
+		'''
+}
+
+Martian: {
+	DisplayName: Irdisches Ultimatum
+	Tooltip: Schießt Elektrosphären ab
+}
+
+Moonburst: {
+	DisplayName: Mondexplosion
+	Tooltip:
+		'''
+		Gegner zu treffen baut eine instabile Blase auf
+		Die Blase explodiert nach zehn erfolgreichen Treffern
+		'''
+}
+
+Probe: {
+	DisplayName: Die Sonde
+	Tooltip: Feuert Laser auf umliegende Gegner ab
+}
+
+SweetThrow: {
+	DisplayName: Süßer Wurf
+	Tooltip: Setzt Bienen frei, die deine Feinde jagen
+}
+
+Tao: {
+	DisplayName: Taoyo
+	Tooltip:
+		'''
+		Kann Gegner verwirren
+		'Aber es hält deinen Geist klar'
+		'''
+}
+
+TheFireball: {
+	DisplayName: Feuerball
+	Tooltip: Schießt hüpfende Feuerbälle ab
+}
+
+Typhoon: {
+	DisplayName: Taifun
+	Tooltip: Schießt Haie auf nahe Gegner ab
+}
+
+Fathomless_Chest_Item: {
+	DisplayName: Bodenlose Vase
+	Tooltip: Das solltest du nicht haben!
+}
+
+Mystical_Dice: {
+	DisplayName: Mystische Würfel
+	Tooltip: Teleportiert dich zu einem Bodenlosen Schrein
+}
+
+MarbleMinecartItem: {
+	DisplayName: Nemeischer Streitwagen
+	Tooltip:
+		'''
+		Beim Aufladen erhältst du Verteidigung.
+		"Ein gut aussehendes Gefährt, das steht fest" - Professor Temp. O. Rary
+		'''
+}
+
+Zombie_Chest: {
+	DisplayName: Truhe
+	Tooltip: ""
+}
+
+OracleScripture: {
+	DisplayName: Heilige Schrift
+	Tooltip:
+		'''
+		Ruft das Orakel zu dir
+		Kann nur in den Marmorhöhlen verwendet werden
+		'''
+}
+
+LargeKelpItem: {
+	DisplayName: Große Leuchtpflanze
+	Tooltip: ""
+}
+
+SmallKelpItem: {
+	DisplayName: Kleine Leuchtpflanze
+	Tooltip: ""
+}
+
+LargeVentItem: {
+	DisplayName: Großer Hydrothermalschlot
+	Tooltip: ""
+}
+
+MusselItem: {
+	DisplayName: Muschel
+	Tooltip: ""
+}
+
+SmallVentItem: {
+	DisplayName: Kleiner Hydrothermalschlot
+	Tooltip: ""
+}
+
+Black_Stone_Item: {
+	DisplayName: Schwarzgestein
+	Tooltip: ""
+}
+
+AzureGemBlockItem: {
+	DisplayName: Azurblauer Block
+	Tooltip: ""
+}
+
+BloodyFoliageItem: {
+	DisplayName: Blutiges Laub
+	Tooltip: ""
+}
+
+CaveDirtItem: {
+	DisplayName: Höhlenerde
+	Tooltip: ""
+}
+
+CinderstoneItem: {
+	DisplayName: Aschestein
+	Tooltip: ""
+}
+
+CorruptMassItem: {
+	DisplayName: Korrupte Masse
+	Tooltip: ""
+}
+
+CorruptOvergrowthItem: {
+	DisplayName: Korrupte Überwucherung
+	Tooltip: ""
+}
+
+CorruptPustuleItem: {
+	DisplayName: Korrupte Pustel
+	Tooltip: ""
+}
+
+CorruptTendrilItem: {
+	DisplayName: Korrupte Ranke
+	Tooltip: ""
+}
+
+CrackedDirtItem: {
+	DisplayName: Rissige Erde
+	Tooltip: ""
+}
+
+CragstoneItem: {
+	DisplayName: Felsgestein
+	Tooltip: ""
+}
+
+CrimsonBlisterItem: {
+	DisplayName: Crimson-Blase
+	Tooltip: ""
+}
+
+CrimsonPustuleItem: {
+	DisplayName: Crimson-Pustel
+	Tooltip: ""
+}
+
+CrimsonScabItem: {
+	DisplayName: Crimson-Schorf
+	Tooltip: ""
+}
+
+CrumblingDirtItem: {
+	DisplayName: Bröckelnde Erde
+	Tooltip: ""
+}
+
+DarkFoliageItem: {
+	DisplayName: Dunkles Laub
+	Tooltip: ""
+}
+
+FloweryFoliageItem: {
+	DisplayName: Blumiges Laub
+	Tooltip: ""
+}
+
+ForestFoliageItem: {
+	DisplayName: Wald-Laub
+	Tooltip: ""
+}
+
+FracturedStoneItem: {
+	DisplayName: Zersplitterter Stein
+	Tooltip: ""
+}
+
+HallowCavernstoneItem: {
+	DisplayName: Geheiligter Höhlenstein
+	Tooltip: ""
+}
+
+HallowCrystallineItem: {
+	DisplayName: Geheiligter Kristallstein
+	Tooltip: ""
+}
+
+HallowFoliageItem: {
+	DisplayName: Geheiligtes Laub
+	Tooltip: ""
+}
+
+HallowPrismstoneItem: {
+	DisplayName: Geheiligter Prismenstein
+	Tooltip: ""
+}
+
+HallowShardstoneItem: {
+	DisplayName: Geheiligter Splitterstein
+	Tooltip: ""
+}
+
+HiveBlockAltItem: {
+	DisplayName: Waben-Sechseckblock
+	Tooltip: ""
+}
+
+IvyStoneItem: {
+	DisplayName: Efeustein
+	Tooltip: ""
+}
+
+JungleFoliageItem: {
+	DisplayName: Dschungel-Laub
+	Tooltip: ""
+}
+
+KrampusHornBlockItem: {
+	DisplayName: Krampushorn-Block
+	Tooltip: ""
+}
+
+LayeredDirtItem: {
+	DisplayName: Geschichtete Erde
+	Tooltip: ""
+}
+
+LeafyDirtItem: {
+	DisplayName: Belaubte Erde
+	Tooltip: ""
+}
+
+MagmastoneItem: {
+	DisplayName: Magmastein
+	Tooltip: ""
+}
+
+MottledStoneItem: {
+	DisplayName: Gesprenkelter Stein
+	Tooltip: ""
+}
+
+ObsidianBlockItem: {
+	DisplayName: Obsidianstein
+	Tooltip: ""
+}
+
+OldStoneItem: {
+	DisplayName: Alter Stein
+	Tooltip: ""
+}
+
+OutlandStoneItem: {
+	DisplayName: Fremdlandstein
+	Tooltip: ""
+}
+
+RockyDirtItem: {
+	DisplayName: Steinige Erde
+	Tooltip: ""
+}
+
+RoughDirtItem: {
+	DisplayName: Grobe Erde
+	Tooltip: ""
+}
+
+RuinstoneItem: {
+	DisplayName: Ruinenstein
+	Tooltip: ""
+}
+
+RuneBlockItem: {
+	DisplayName: Arkaner Runenblock
+	Tooltip: ""
+}
+
+SmolderingRockItem: {
+	DisplayName: Schwelender Fels
+	Tooltip: ""
+}
+
+StalactiteStoneItem: {
+	DisplayName: Stalaktitenstein
+	Tooltip: ""
+}
+
+VinestoneItem: {
+	DisplayName: Rankenstein
+	Tooltip: ""
+}
+
+WavyDirtItem: {
+	DisplayName: Wellige Erde
+	Tooltip: ""
+}
+
+WornStoneItem: {
+	DisplayName: Abgenutzter Stein
+	Tooltip: ""
+}
+
+BloodMoonAuroraMonolithItem: {
+	DisplayName: Blutmond-Aurora-Monolith
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
+}
+
+FrostMoonAuroraMonolithItem: {
+	DisplayName: Frostmond-Aurora-Monolith
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
+}
+
+NormalAuroraMonolithItem: {
+	DisplayName: Aurora-Monolith
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
+}
+
+PumpkinAuroraMonolithItem: {
+	DisplayName: Kürbismond-Aurora-Monolith
+	Tooltip: "{$SpiritBiomeAuroraMonolithItem.Tooltip}"
+}
+
+SpiritBiomeAuroraMonolithItem: {
+	DisplayName: Geist-Biom-Aurora-Monolith
+	Tooltip: Kann ausgerüstet werden, um eine lokale Aurora anzuzeigen
+}
+
+BlossomCage: {
+	DisplayName: Blossmoon-Käfig
+	Tooltip: ""
+}
+
+BriarmothCage: {
+	DisplayName: Dornmotte im Glas
+	Tooltip: ""
+}
+
+BrownCrinoidCage: {
+	DisplayName: Braune-Seelilie-Käfig
+	Tooltip: ""
+}
+
+CleftCage: {
+	DisplayName: Spalthüpfer-Käfig
+	Tooltip: ""
+}
+
+GulperBowl: {
+	DisplayName: Schlinger-Schale
+	Tooltip: ""
+}
+
+LuvdiscBowl: {
+	DisplayName: Sehnsuchtsfisch-Schale
+	Tooltip: ""
+}
+
+PaleCrinoidCage: {
+	DisplayName: Blasse-Seelilie-Käfig
+	Tooltip: ""
+}
+
+RedCrinoidCage: {
+	DisplayName: Rote-Seelilie-Käfig
+	Tooltip: ""
+}
+
+TubewormBowl: {
+	DisplayName: Röhrenwurm-Schale
+	Tooltip: ""
+}
+
+VibeshroomJarItem: {
+	DisplayName: Zitterpilz-Glas
+	Tooltip: ""
+}
+
+FestivalLanternItem: {
+	DisplayName: Festival-Laterne
+	Tooltip: Startet ein nahes Laternenfest, wenn platziert
+}
+
+BriarFountainItem: {
+	DisplayName: Dorngestrüpp-Wasserbrunnen
+	Tooltip: ""
+}
+
+GlowplateBedItem: {
+	DisplayName: Glimmplatten-Bett
+	Tooltip: ""
+}
+
+GlowplateChairItem: {
+	DisplayName: Glimmplatten-Stuhl
+	Tooltip: ""
+}
+
+GlowplateChestItem: {
+	DisplayName: Glimmplatten-Truhe
+	Tooltip: ""
+}
+
+GlowplateTableItem: {
+	DisplayName: Glimmplatten-Tisch
+	Tooltip: ""
+}
+
+DragonStatueItem: {
+	DisplayName: Jade-Drachenstatuette
+	Tooltip: ""
+}
+
+SlotMachine: {
+	DisplayName: Spielautomat
+	Tooltip: ""
+
+	Win: {
+		1: Du gewinnst eine Glocke!
+		2: Du gewinnst ein... Gelee?
+		3: Du gewinnst Zitronen!
+		4: Du gewinnst Diamanten!
+		5: Du gewinnst eine... Bombe!
+		6: Du gewinnst einen A- Apfel!
+		7: Du gewinnst einen Goldbarren!
+		8: Du gewinnst den JACKPOT!
+	}
+}
+
+ScrapItem1: {
+	DisplayName: Geborgener Schrott
+	Tooltip: ""
+}
+
+ScrapItem2: {
+	DisplayName: Geborgener Schrott
+	Tooltip: ""
+}
+
+ScrapItem3: {
+	DisplayName: Geborgener Schrott
+	Tooltip: ""
+}
+
+ScrapItem4: {
+	DisplayName: Geborgener Schrott
+	Tooltip: ""
+}
+
+ScrapItem5: {
+	DisplayName: Geborgener Schrott
+	Tooltip: ""
+}
+
+ScrapItem6: {
+	DisplayName: Geborgener Schrott
+	Tooltip: ""
+}
+
+CursedArmorItem: {
+	DisplayName: Draugr-Statue
+	Tooltip: "'Sei vorsichtig...'"
+}
+
+SepulchreChandelierItem: {
+	DisplayName: Grabmal-Kronleuchter
+	Tooltip: ""
+}
+
+SepulchreMirrorItem: {
+	DisplayName: Grabmal-Spiegel
+	Tooltip: ""
+}
+
+SepulchreWindowItem: {
+	DisplayName: Grabmal-Fenster
+	Tooltip: ""
+}
+
+TrollfaceMask: {
+	DisplayName: Trollgesicht-Maske
+	Tooltip: ""
+}
+
+DriftwoodChairItem: {
+	DisplayName: Treibholz-Stuhl
+	Tooltip: ""
+}
+
+DriftwoodDoorItem: {
+	DisplayName: Treibholz-Tür
+	Tooltip: ""
+}
+
+DriftwoodTableItem: {
+	DisplayName: Treibholz-Tisch
+	Tooltip: ""
+}
+
+DriftwoodWorkbenchItem: {
+	DisplayName: Treibholz-Werkbank
+	Tooltip: ""
+}
+
+SwordStandItem: {
+	DisplayName: Schwertständer
+	Tooltip: Erlaubt es, manche Schwerter per Rechtsklick auszustellen
+}
+
+DriftwoodPlatformItem: {
+	DisplayName: Treibholz-Plattform
+	Tooltip: ""
+}
+
+SpiritPlatformItem: {
+	DisplayName: Duskwood-Plattform
+	Tooltip: ""
+}
+
+GlowplatePlatformItem: {
+	DisplayName: Glimmplatten-Plattform
+	Tooltip: ""
+}
+
+AcidPlatformItem: {
+	DisplayName: Ätzende Plattform
+	Tooltip: ""
+}
+
+SepulchrePlatformItem: {
+	DisplayName: Grabmal-Plattform
+	Tooltip: ""
+}
+
+ToxicTooth: {
+	DisplayName: Giftzahn
+	Tooltip:
+		'''
+		Erhöht Rüstungsdurchdringung um 3 und Nahkampfgeschwindigkeit um 5%
+		Nahkampfangriffe treffen Gegner gelegentlich doppelt und setzen giftiges Gas frei
+		'''
+}
+
+ScarabeusAnatomyItem: {
+	DisplayName: Anatomie des Scarabeus
+	Tooltip: "'M. Bee'"
+}
+
+ToweringStactus: {
+	DisplayName: Aufragender Stachtus
+	Tooltip: "'A. Knight'"
+}
+
+GildJellyItem: {
+	DisplayName: "{$Mods.SpiritMod.NPCs.GildJelly.DisplayName}"
+	Tooltip: ""
+}
