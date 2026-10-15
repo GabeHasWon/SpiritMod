@@ -1,579 +1,614 @@
 AceOfDiamondsBuff: {
-	DisplayName: As de diamantes
-	Description: Se ha aumentado el daño un 20%.
+	DisplayName: As de Diamantes
+	Description: Daño aumentado un 20%
 }
 
 AngelLight: {
-	DisplayName: Luz del ángel
-	Description: ""
+	DisplayName: Luz del Ángel
+	Description: Mods.SpiritMod.Buffs.AngelLight.Description
 }
 
 AngelWrath: {
-	DisplayName: Cólera del ángel
-	Description: ""
+	DisplayName: Ira del Ángel
+	Description: Mods.SpiritMod.Buffs.AngelWrath.Description
 }
 
 ExplorerFight: {
-	DisplayName: Fuerza de golpe
-	Description: ¡Le estás cogiendo el tranquillo!
+	DisplayName: Fuerza de Impacto
+	Description: ¡Le estás cogiendo el truco!
 }
 
 ExplorerMine: {
-	DisplayName: Fuerza del explorador
+	DisplayName: Fuerza del Explorador
 	Description: ¡Sigue cavando!
 }
 
 ExplorerPot: {
-	DisplayName: Vigor de explorador
-	Description: ¡Te quedas con ganas de más!
+	DisplayName: Vigor del Explorador
+	Description: ¡Estás con ganas de más!
 }
 
 FrigidCooldown: {
-	DisplayName: Bajo cero
-	Description: "'Hace demasiado frío para mantener este muro en pie...'"
+	DisplayName: Bajo Cero
+	Description: "'Hace demasiado frío para mantener este muro...'"
 }
 
 MarbleDivineWinds: {
-	DisplayName: Vientos divinos
-	Description: "'¡A los cielos!'"
+	DisplayName: Vientos Divinos
+	Description: "'¡Hacia los cielos!'"
 }
 
 RogueCooldown: {
-	DisplayName: Sombra disipada
-	Description: "'Espera a que la oscuridad te robe'"
+	DisplayName: Sombra Disipada
+	Description: "'Espera a que la oscuridad te lleve con ella'"
 }
 
 AstralMapCooldown: {
-	DisplayName: Enfriamiento astral
+	DisplayName: Enfriamiento Astral
 	Description: ¡El viaje a la velocidad de la luz es inestable!
 }
 
 BeetleFortitude: {
-	DisplayName: Fortaleza del escarabajo
-	Description: Cada golpe te fortalece...
+	DisplayName: Fortaleza del Escarabajo
+	Description: Cada impacto te fortalece...
 }
 
 BloodInfusion: {
-	DisplayName: Infusión de sangre
+	DisplayName: Infusión de Sangre
 	Description: "'Extremadamente contagioso'"
 }
 
 CandyBuff: {
-	DisplayName: Subidón de azúcar
+	DisplayName: Subidón de Azúcar
 	Description: Ligero aumento de todas las estadísticas
 }
 
 ChocolateBuff: {
 	DisplayName: Chocolate
-	Description: 10& de aumento de velocidad
+	Description: Velocidad aumentada un 10%
 }
 
 HealthBuffC: {
-	DisplayName: Caramelo curativo
-	Description: +25 de salud.
+	DisplayName: Caramelo Curativo
+	Description: +25 de vida.
 }
 
 LollipopBuff: {
 	DisplayName: Piruleta
-	Description: Incrementa la regeneración de vida
+	Description: Regeneración de vida aumentada
 }
 
 ManaBuffC: {
-	DisplayName: Caramelo de maná
-	Description: +40 de maná
+	DisplayName: Caramelo de Maná
+	Description: +40 de Maná
 }
 
 TaffyBuff: {
-	DisplayName: Chicloso
-	Description: +4 Defensa
+	DisplayName: Caramelo Masticable
+	Description: +4 de Defensa
 }
 
 ClockBuff: {
-	DisplayName: Potencia del tiempo
+	DisplayName: Poder del Tiempo
 	Description: ¡¡ZAWARUDO!!
 }
 
 CouchPotato: {
-	DisplayName: Haragán
-	Description: "'¡Deja de ser tan perezoso!'"
+	DisplayName: Vago de Sofá
+	Description: "'¡Deja de ser tan vago!'"
 }
 
 CourtCooldown: {
-	DisplayName: Enfriamiento de Sanguine
-	Description: La sangre necesita tiempo para sanar
+	DisplayName: Enfriamiento Sanguíneo
+	Description: Tu sangre necesita tiempo para curarse
 }
 
 CrimsonSkullBuff: {
-	DisplayName: Calavera carmesí
-	Description: Frasco de sangre ahora inflige el doble de daño.
+	DisplayName: Calavera Carmesí
+	Description: El frasco de visceras ahora inflige el doble de daño
 }
 
 Death: {
 	DisplayName: Muerte
-	Description: ""
+	Description: Mods.SpiritMod.Buffs.Death.Description
 }
 
 DeathRoseCooldown: {
-	DisplayName: Enfriamiento de la Rosa de la Muerte
+	DisplayName: Enfriamiento de Rosa de la Muerte
 	Description: La zarza necesita tiempo para volver a crecer...
 }
 
 AcidBurn: {
-	DisplayName: Agarre tóxico
-	Description: ""
+	DisplayName: Agarre Tóxico
+	Description: Mods.SpiritMod.Buffs.AcidBurn.Description
 }
 
 Afflicted: {
-	DisplayName: Aflicción inestable
-	Description: Cayendo a pedazos
+	DisplayName: Aflicción Inestable
+	Description: Cayéndose a pedazos
 }
 
 BloodCorrupt: {
-	DisplayName: Corrupción de sangre
-	Description: Te arde la sangre...
+	DisplayName: Corrupción de Sangre
+	Description: Tu sangre arde...
 }
 
 CryoCrush: {
-	DisplayName: Trituración criogénica
-	Description: ""
+	DisplayName: Aplastamiento Criogénico
+	Description: Mods.SpiritMod.Buffs.CryoCrush.Description
 }
 
 DoomDestiny: {
-	DisplayName: Corte de estrella
-	Description: ""
+	DisplayName: Corte Estelar
+	Description: Mods.SpiritMod.Buffs.DoomDestiny.Description
 }
 
 FesteringWounds: {
-	DisplayName: Heridas supurantes
-	Description: Inflige más daño si la víctima tiene menos de la mitad de su salud.
+	DisplayName: Heridas Supurantes
+	Description: Inflige más daño si la víctima tiene menos de la mitad de la vida
 }
 
 DrainLife: {
-	DisplayName: Drenar la vida
-	Description: Tu energía vital se convierte en la de ellos.
+	DisplayName: Drenar Vida
+	Description: Tu energía vital pasa a ser suya.
 }
 
 DynastyFanBuff: {
-	DisplayName: Planeador de viento
-	Description: Sigues cayendo, pero más lento
+	DisplayName: Planeador del Viento
+	Description: Sigues cayendo, pero más despacio
 }
 
 ElectrifiedV2: {
-	DisplayName: Electrified
-	Description: La secuela que - esperamos
+	DisplayName: Electrificado
+	Description: La secuela que... espera
 }
 
 EleutheriosBuff: {
-	DisplayName: La fuerza de Eleutherios
-	Description: Se ha aumentado el daño un 0%.
+	DisplayName: Fuerza de Eleutherios
+	Description: Daño aumentado un 0%
 }
 
 FateBlessing: {
-	DisplayName: Bendición del destino
-	Description: Estás protegido por los destinos
+	DisplayName: Bendición del Destino
+	Description: Estás protegido por el destino
 }
 
 Frozen: {
 	DisplayName: Congelado
-	Description: ¡Congelado!
+	Description: ¡Completamente congelado!
 }
 
 BurningRage: {
-	DisplayName: Rabia ardiente
+	DisplayName: Rabia Ardiente
 	Description: Estás recibiendo daño
 }
 
+CollapsingVoid.DisplayName: Vacío Colapsante
+DevouringVoid.DisplayName: Vacío Devorador
+
 DivineStrike: {
-	DisplayName: Golpe divino
-	Description: Tu próximo ataque infligirá más daño
+	DisplayName: Golpe Divino
+	Description: Tu siguiente ataque infligirá daño aumentado
+}
+
+PhantomVeil: {
+	DisplayName: Velo Fantasma
+	Description: El siguiente ataque será bloqueado
+}
+
+SanguineBleed: {
+	DisplayName: Sangrado Carmesí
+	Description: Estás perdiendo sangre rápidamente
 }
 
 SanguineRegen: {
 	DisplayName: Regeneración Sanguínea
-	Description: Está ganando sangre rápidamente
+	Description: Estás ganando sangre rápidamente
 }
 
 TemporalShift: {
-	DisplayName: Desplazamiento temporal
-	Description: Toca dos veces para correr y obtener un aumento de velocidad temporal
+	DisplayName: Desplazamiento Temporal
+	Description: Toca dos veces para dar un impulso y obtener un aumento temporal de velocidad
+}
+
+WanderingPlague.DisplayName: Plaga Ambulante
+
+WindBurst: {
+	DisplayName: Ráfaga de Viento
+	Description: El retroceso se ve amplificado
 }
 
 GraniteArrow_Debuff: {
-	DisplayName: Desventaja de flecha de granito
-	Description: ""
+	DisplayName: Debuff de Flecha de Granito
+	Description: Mods.SpiritMod.Buffs.GraniteArrow_Debuff.Description
 }
 
 GreekFire: {
-	DisplayName: Fuego griego
-	Description: Incendiado por los propios dioses
+	DisplayName: Fuego Griego
+	Description: Envolviendo en llamas por los propios Dioses
+}
+
+HighGravityBuff: {
+	DisplayName: Gravedad Alta
+	Description: La gravedad vuelve a la normalidad
 }
 
 HolyLight: {
-	DisplayName: Luz sagrada
-	Description: ""
+	DisplayName: Luz Sagrada
+	Description: Mods.SpiritMod.Buffs.HolyLight.Description
 }
 
 IceBerryBuff: {
-	DisplayName: Bayas de hielo
+	DisplayName: Bayas Heladas
 	Description: Eres inmune a estar en llamas
 }
 
 InfernalRage: {
-	DisplayName: Rabia infernal
-	Description: Daño aumentado en gran medida a costa de tu alma...
+	DisplayName: Rabia Infernal
+	Description: Daño enormemente aumentado a costa de tu alma...
 }
 
 MageFreeze: {
-	DisplayName: Abrazo frío
+	DisplayName: Agarre Gélido
 	Description: Una mano fría te atrapa
 }
 
 MidasTouch: {
 	DisplayName: Toque de Midas
-	Description: Los enemigos sueltan más oro cuando mueren
+	Description: Los enemigos sueltan más oro al morir
 }
 
 DiabolicPlatformBuff: {
-	DisplayName: Plataforma diabólica
-	Description: Comanda el Infierno
+	DisplayName: Plataforma Diabólica
+	Description: Comanda a lo Infernal
 }
 
 DrakomireMountBuff: {
-	DisplayName: Drakomire
+	DisplayName: Drakomira
 	Description: ¡Has domesticado a un Invasor Celestial!
 }
 
 Obolos_Buff: {
-	DisplayName: Obolos
-	Description: Bastante mueca...
+	DisplayName: Óbolo
+	Description: Bastante espeluznante...
 }
 
 RlyehianMountBuff: {
-	DisplayName: Capa sobrenatural
-	Description: "'Realmente te deja boquiabierto'"
+	DisplayName: Manto Primigenio
+	Description: "'Realmente te deja sin aliento'"
 }
 
 SnowmongerMountBuff: {
-	DisplayName: Mecha de nieve
+	DisplayName: Nievemeca
 	Description: Poderoso
 }
 
 TideMountBuff: {
-	DisplayName: Montura Cocodrilo
-	Description: ¡Este lindo cocodrilo es tu nuevo mejor amigo!
+	DisplayName: Montura de Cocodrilo
+	Description: ¡Este monísimo Cocodrilo es tu nuevo mejor amigo!
 }
 
 NebulaFlame: {
-	DisplayName: Llama de nebulosa
-	Description: ""
+	DisplayName: Llama de Nebulosa
+	Description: Mods.SpiritMod.Buffs.NebulaFlame.Description
 }
 
 OliveBranchBuff: {
-	DisplayName: Resolución pacífica
+	DisplayName: Solución Pacífica
 	Description: "'Haz las paces con tus enemigos'"
+}
+
+OnyxWind: {
+	DisplayName: Torbellino de Ónice
+	Description: Velocidad de movimiento aumentada un 10%
 }
 
 OracleBoonBuff: {
 	DisplayName: Herejía
 	Description:
 		'''
-		Los dioses aceptan tu reto
-		Los enemigos encantados aparecen con más frecuencia
+		Los dioses aceptan tu desafío
+		Aparecen enemigos encantados con más frecuencia
 		'''
 }
 
 OverDrive: {
-	DisplayName: Sobremarcha
-	Description: ¡Tu velocidad de movimiento y tu velocidad cuerpo a cuerpo están cargadas!
+	DisplayName: Sobrecarga
+	Description: ¡Tu velocidad de movimiento y velocidad de cuerpo a cuerpo están al máximo!
 }
 
 AtlasPetBuff: {
 	DisplayName: Atlas Jr.
-	Description: ¡Quiere echar una mano!
+	Description: ¡Quiere echarte una mano!
 }
 
 AvianPetBuff: {
-	DisplayName: Cría antigua
+	DisplayName: Cría Ancestral
 	Description: "'eg.'"
 }
 
 BladePetBuff: {
-	DisplayName: Espada poseída
-	Description: "'¿Es esta una daga que veo frente a mí?'"
+	DisplayName: Hoja Poseída
+	Description: "'¿Es esta una daga que veo ante mí?'"
 }
 
 CaltfistPetBuff: {
-	DisplayName: Pez culto
-	Description: ¡Este pequeño bicho ilumina el camino!
+	DisplayName: Pez del Culto
+	Description: ¡Este pequeñajo ilumina el camino!
 }
 
 CaptiveMaskPetBuff: {
-	DisplayName: Mascarilla desatada
+	DisplayName: Máscara Desatada
 	Description: "'¡Una vez más a la brecha!'"
 }
 
 DuskingPetBuff: {
-	DisplayName: Llama de las Sombras menor
+	DisplayName: Llama Oscura Menor
 	Description: "'Ves algo dentro de las llamas...'"
 }
 
 FaeriePetBuff: {
-	DisplayName: Gibosa menguante
-	Description: El hada a la luz de la luna te protegerá
+	DisplayName: Luna Gibosa Menguante
+	Description: El Hada de la Luz de Luna te protegerá
 }
 
 HauntedBookPetBuff: {
-	DisplayName: Tomo embrujado
-	Description: "'Embrujado, pero reconfortante'"
+	DisplayName: Tomo Encantado
+	Description: "'Encantado, pero reconfortante'"
 }
 
 InfernonPetBuff: {
 	DisplayName: Infierno
-	Description: "'Será mejor que te mantengas fuera de su camino'"
+	Description: "'Más vale que te apartes de su camino'"
 }
 
 JellyfishBuff: {
-	DisplayName: Medusas pacíficas
+	DisplayName: Medusa Pacífica
 	Description: "'La medusa te ayuda a relajarte'"
 }
 
 LanternBuff: {
-	DisplayName: Batería de linterna
+	DisplayName: Batería de Linterna
 	Description: "'¡Ilumina el camino!'"
 }
 
 LoomingPresence: {
-	DisplayName: Presencia amenazante
-	Description: Parece llamar mucho la atención.
+	DisplayName: Presencia Amenazante
+	Description: Parece atraer mucha atención.
 }
 
 MJWPetBuff: {
-	DisplayName: Bombilla de gelatina lunar
-	Description: "'¡No es necesaria instalación!'"
+	DisplayName: Bombilla de Medusa Lunar
+	Description: "'¡No requiere instalación!'"
 }
 
 OccultistPetBuff: {
 	DisplayName: Pequeño Ocultista
-	Description: "'Sorprendentemente suave'"
+	Description: "'Sorprendentemente tranquilo'"
 }
 
 OverseerPetBuff: {
-	DisplayName: Mayoral
+	DisplayName: Capataz
 	Description: "'A mí me parece un jefe final'"
 }
 
 PhantomPetBuff: {
 	DisplayName: Fantasma
-	Description: "'Se funde con la noche'"
+	Description: "'Se camufla en la noche'"
 }
 
 SaucerPetBuff: {
-	DisplayName: Platillo de soporte
-	Description: "'Parece que solo proporciona apoyo moral...'"
+	DisplayName: Platillo de Apoyo
+	Description: "'Parece que solo ofrece apoyo moral...'"
 }
 
 ScarabPetBuff: {
-	DisplayName: Escarabajo diminuto
-	Description: "'Le encanta rodar...'"
+	DisplayName: Escarabajo Diminuto
+	Description: "'Realmente le encanta rodar...'"
 }
 
 ShadowPetBuff: {
-	DisplayName: Cachorro de sombra
+	DisplayName: Cachorro de Sombra
 	Description: "'Awww'"
 }
 
 StarplatePetBuff: {
-	DisplayName: Placa estelar en miniatura
+	DisplayName: Miniatura Estelar
 	Description: Buscando algo...
 }
 
 VinewrathPetBuff: {
-	DisplayName: Plántula iracunda
-	Description: "'¡Les encanta buscar pelea'"
+	DisplayName: Brote Furioso
+	Description: "'Les encanta buscar pelea'"
 }
 
 BismitePotionBuff: {
-	DisplayName: Golpe tóxico
+	DisplayName: Golpe Tóxico
 	Description:
 		'''
-		Los golpes críticos infligen heridas degenerativas
+		Los golpes críticos infligen Heridas Supurantes
 		Probabilidad de golpe crítico aumentada un 4%
 		'''
 }
 
 DoubleJumpPotionBuff: {
-	DisplayName: Salto de éter
+	DisplayName: Salto Éter
 	Description: Otorga temporalmente un salto adicional
 }
 
 FlightPotionBuff: {
-	DisplayName: Ascendente
-	Description: Aumenta la duración del vuelo en un 25%
+	DisplayName: Planeo
+	Description: Aumenta la duración del vuelo un 25%
 }
 
 MoonBlessing: {
-	DisplayName: Gelatina de luna
+	DisplayName: Medusa Lunar
 	Description: Regeneración extrema
 }
 
 MoonBlessingDonut: {
-	DisplayName: Rosquilla de gelatina lunar
+	DisplayName: Rosquilla de Medusa Lunar
 	Description: ¡Regeneración extrema y un subidón de azúcar!
 }
 
 MushroomPotionBuff: {
-	DisplayName: Liberación de esporas
-	Description: Deja un rastro de hongos dañinos
+	DisplayName: Liberación de Esporas
+	Description: Deja un rastro de setas dañinas a tu paso
 }
 
 PinkPotionBuff: {
-	DisplayName: Impulso de salto
+	DisplayName: Mejora de Salto
 	Description: Aumenta la altura de salto
 }
 
 RunePotionBuff: {
-	DisplayName: Runescribe
+	DisplayName: Escriba Rúnico
 	Description:
 		'''
-		Los ataques mágicos pueden hacer que los enemigos estallen en runas
+		Los ataques mágicos pueden hacer que los enemigos exploten en runas
 		Daño mágico aumentado un 5%
 		'''
 }
 
 SoulPotionBuff: {
-	DisplayName: Guardia del alma
+	DisplayName: Guarda Almas
 	Description:
 		'''
 		Reduce el daño recibido un 5%
-		Resultar herido puede hacer que todos los enemigos sufran "Quemadura de alma" durante un corto período de tiempo
+		Recibir daño puede hacer que todos los enemigos sufran 'Quemadura de Alma' durante un breve período
 		'''
 }
 
 StarPotionBuff: {
-	DisplayName: Quemadura de estrellas
+	DisplayName: Ardor Estelar
 	Description:
 		'''
-		Los impactos críticos pueden hacer que las estrellas caigan del cielo
+		Los golpes críticos pueden hacer que caigan estrellas del cielo
 		Daño a distancia y probabilidad de golpe crítico aumentados un 4% al moverse
 		'''
 }
 
 TurtlePotionBuff: {
-	DisplayName: Firme
+	DisplayName: Inquebrantable
 	Description:
 		'''
-		Aumenta la defensa a medida que la salud disminuye
+		Aumenta la defensa a medida que disminuye la vida
 		Reduce el daño recibido un 5%
 		'''
 }
 
 Shadowbroken: {
-	DisplayName: Sombra rota
+	DisplayName: Sombra Rota
 	Description: La sombra se esconde de ti
 }
 
 Shadowflame: {
-	DisplayName: Llama de las Sombras
+	DisplayName: Llama Oscura
 	Description: Una secuela que nunca supimos que queríamos
 }
 
 Shocked: {
-	DisplayName: ¡Conmocionado!
-	Description: ¡Woah!
+	DisplayName: ¡Electrocutado!
+	Description: ¡Uf!
 }
 
 SoulBurn: {
-	DisplayName: Quemadura de alma
+	DisplayName: Quemadura de Alma
 	Description: Tu alma anhela la libertad
 }
 
 SoulFlare: {
-	DisplayName: Llamarada de alma
-	Description: Tu alma fluctúa...
+	DisplayName: Destello del Alma
+	Description: Tu alma está fluctuando...
 }
 
 SpiritBuff: {
-	DisplayName: Aura espiritual
+	DisplayName: Aura de Espíritu
 	Description:
 		'''
-		Aumenta el daño y la probabilidad de golpe crítico en un 5 % 
-		Lastimarse ocasionalmente genera un rayo dañino para perseguir a los enemigos
+		Aumenta el daño y la probabilidad de golpe crítico un 5%
+		Recibir daño genera ocasionalmente un proyectil dañino que persigue a los enemigos
 		'''
 }
 
 StackingFireBuff: {
-	DisplayName: Incendio de combustión
+	DisplayName: Llamarada de Combustión
 	Description: ¡Ardiendo, pero peor!
 }
 
 StarCooldown: {
-	DisplayName: Enfriamiento cósmico
+	DisplayName: Enfriamiento Cósmico
 	Description: Las energías cósmicas deben estabilizarse...
 }
 
 StarFlame: {
-	DisplayName: Llama estelar
-	Description: "'Una fuerza astral mina tu vitalidad'"
+	DisplayName: Llama Estelar
+	Description: "'Una fuerza astral mella tu vitalidad'"
 }
 
 StarFracture: {
-	DisplayName: Fractura estrellada
-	Description: Rotos por las estrellas
+	DisplayName: Fractura Estelar
+	Description: Roto por las estrellas
 }
 
 StarplateGravity: {
-	DisplayName: Starplate Gravity
-	Description: La Starplate Voyager te lleva hacia la tierra...
+	DisplayName: Gravedad Estelar
+	Description: El Viajero Estelar te arrastra hacia la tierra...
 }
 
 Stopped: {
 	DisplayName: Detenido
-	Description: Estás bloqueado en su lugar
+	Description: Estás inmovilizado
+}
+
+Sturdy: {
+	DisplayName: Resistente
+	Description: "'Tu caparazón ha sido agrietado'"
 }
 
 ElectricSummonTag: {
-	DisplayName: Invocación Eléctrica
+	DisplayName: Etiqueta de Invocación
 	Description: ¡Etiquetado!
 }
 
 SacrificialDaggerBuff: {
-	DisplayName: Golpe de sacrificio
+	DisplayName: Golpe Sacrificial
 	Description: Tres (3) proyectiles
 }
 
 SummonTag3: {
-	DisplayName: Summon Tag
-	Description: Tagged!
+	DisplayName: Etiqueta de Invocación
+	Description: ¡Etiquetado!
 }
 
 SummonTag5: {
-	DisplayName: Summon Tag
-	Description: Tagged!
+	DisplayName: Etiqueta de Invocación
+	Description: ¡Etiquetado!
 }
 
 SurgingAnguish: {
-	DisplayName: Angustia creciente
-	Description: "'Tu mente y tu cuerpo están sufriendo mucho'"
+	DisplayName: Angustia Creciente
+	Description: "'Tu mente y cuerpo sufren un gran dolor'"
 }
 
 Impaled: {
 	DisplayName: Empalado
-	Description: Has sido empalado por una pica. ¡¡Ay!
+	Description: Has sido empalado por una pica. ¡Ay!
 }
 
 KoiTotemBuff: {
-	DisplayName: Espíritu de los Koi
-	Description: Aumento de la habilidad de pesca
+	DisplayName: Espíritu del Koi
+	Description: Poder de pesca aumentado
 }
 
 PagodaCurse: {
-	DisplayName: La maldición de la pagoda
+	DisplayName: Maldición de la Pagoda
 	Description: Sientes una presencia fantasmal cerca
 }
 
 SunPotBuff: {
-	DisplayName: Sol en una maceta
-	Description: Aumento de la regeneración de vida
+	DisplayName: Sol en una Maceta
+	Description: Regeneración de vida aumentada
 }
 
 TopazMarked: {
@@ -582,128 +617,143 @@ TopazMarked: {
 }
 
 Tracked: {
-	DisplayName: Localizado
+	DisplayName: Rastreado
 	Description: Puedes correr, pero no puedes esconderte
 }
 
 TrueMarksman: {
-	DisplayName: Verdadero tirador
-	Description: El daño de las armas aumenta drásticamente.
+	DisplayName: Tirador Verdadero
+	Description: El daño de las armas de fuego aumenta drásticamente
 }
 
 UnstableAffliction: {
-	DisplayName: Aflicción inestable
-	Description: Reduce la velocidad de movimiento en un 10%
+	DisplayName: Afección Inestable
+	Description: Reduce la velocidad de movimiento un 10%
 }
 
 VineTrap: {
-	DisplayName: Trampa de enredaderas
+	DisplayName: Trampa de Enredaderas
 	Description: Escapar es imposible
 }
 
 VirulenceCooldown: {
-	DisplayName: Supresión virulenta
-	Description: "'Los humores pútridos deben reiniciar su energía'"
+	DisplayName: Supresión Virulenta
+	Description: "'Los Humores Pútridos deben reajustar su energía'"
 }
 
 Wither: {
-	DisplayName: Marchito
-	Description: ""
+	DisplayName: Marchitez
+	Description: Mods.SpiritMod.Buffs.Wither.Description
 }
 
 WitheringLeaf: {
-	DisplayName: Hoja marchita
-	Description: Wilting, wasting away...
+	DisplayName: Hoja Marchita
+	Description: Marchitándote, consumiéndote...
 }
 
 CryoZoneTimer: {
-	DisplayName: Zona lenta
-	Description: ¡La Zona Lenta ha terminado!
+	DisplayName: Zona de Lentitud
+	Description: ¡La Zona de Lentitud está activa!
 }
 
 DefenseZoneBuff: {
-	DisplayName: Zona defensiva
+	DisplayName: Zona de Fortificación
 	Description: ¡Te sientes fuerte!
 }
 
 HealingZoneBuff: {
-	DisplayName: Zona de curación
-	Description: ¡Te sientes vigorizado!
+	DisplayName: Zona de Curación
+	Description: ¡Te sientes reconfortado!
 }
 
 HealthZoneTimer: {
-	DisplayName: Zona de curación
-	Description: ¡La zona de curación está lista!
+	DisplayName: Zona de Curación
+	Description: ¡La Zona de Curación está activa!
 }
 
 LowGravZoneBuff: {
-	DisplayName: Zona de baja gravedad
+	DisplayName: Zona de Baja Gravedad
 	Description: ¡Te sientes ligero!
 }
 
 LowGravZoneTimer: {
-	DisplayName: Zona de baja gravedad
-	Description: ¡La zona de baja gravedad está lista!
+	DisplayName: Zona de Baja Gravedad
+	Description: ¡La Zona de Baja Gravedad está activa!
+}
+
+RepulsionZoneTimer: {
+	DisplayName: Zona de Repulsión
+	Description: ¡La Zona de Repulsión está activa!
 }
 
 ShieldZoneTimer: {
-	DisplayName: Zona de fortificación
-	Description: ¡La zona de fortificación ya ha terminado!
+	DisplayName: Zona de Fortificación
+	Description: ¡La Zona de Fortificación está activa!
 }
 
 StaminaZoneBuff: {
-	DisplayName: Zona de resistencia
+	DisplayName: Zona de Resistencia
 	Description: ¡Te sientes lleno de energía!
 }
 
 StaminaZoneTimer: {
-	DisplayName: Zona de resistencia
-	Description: ¡La Zona de Resistencia ha terminado!
+	DisplayName: Zona de Resistencia
+	Description: ¡La Zona de Resistencia está activa!
 }
 
 BaubleCooldown: {
-	DisplayName: Enfriamiento de adornos
-	Description: El escudo de adornos está en enfriamiento
+	DisplayName: Enfriamiento de Adorno
+	Description: El escudo del adorno está en enfriamiento
 }
 
 BaubleResistance: {
-	DisplayName: Resistencia a los adornos
+	DisplayName: Resistencia de Adorno
 	Description: Te sientes protegido
 }
 
 GildedScarab_buff: {
-	DisplayName: Escudo de escarabajo
+	DisplayName: Escudo de Escarabajo
 	Description: Defensa aumentada en {0}
 }
 
 SlagFury_buff: {
-	DisplayName: Furia de escoria
+	DisplayName: Furia de Escoria
 	Description: "{$CommonItemTooltip.PercentIncreasedDamage}"
 }
 
 RunicSiphon: {
-	DisplayName: Sifón rúnico
-	Description: Se ha reducido la resistencia al daño y se han perdido puntos de vida rápidamente.
+	DisplayName: Sifón Rúnico
+	Description: Resistencia al daño reducida y perdiendo PV rápidamente
+}
+
+ManajinxBuff: {
+	DisplayName: Encantamiento de Luz Estelar
+	Description: Las armas mágicas generan estrellas teledirigidas adicionales y el consumo de maná se reduce drásticamente
 }
 
 PendantBuff: {
-	DisplayName: Amigo Pillbug
-	Description: "'Rock and roll!'"
+	DisplayName: Amigo Cochinilla
+	Description: "'¡Rock and roll!'"
 }
 
 MirrorCoatBuff: {
-	DisplayName: Capa de espejo
-	Description: Immunity to Stoned
+	DisplayName: Capa Espejo
+	Description: Inmunidad a Petrificado
 }
 
 SaddleBuff: {
-	DisplayName: Montura de ciervo aurora
+	DisplayName: Montura de Ciervo Aurora
 	Description: Sientes el poder de las estrellas
 }
 
+CosmicRattlerPetBuff: {
+	DisplayName: Estelarácnido
+	Description: "'En su interior puedes ver las profundidades del espacio'"
+}
+
 Empowered: {
-	DisplayName: Facultada
-	Description: Headsplitter está imbuido de una fuerza efímera
+	DisplayName: Empoderado
+	Description: Cortacabezas está imbuida con una fuerza pasajera
 }
 
 Mantaray_Buff: {
@@ -713,22 +763,22 @@ Mantaray_Buff: {
 
 BottleMountBuff: {
 	DisplayName: Balsa
-	Description: Enviando un mensaje SOS
+	Description: Enviando un SOS
 }
 
 EmpoweredSwim: {
-	DisplayName: Natación empoderada
+	DisplayName: Natación Potenciada
 	Description: Te sientes mucho más rápido en el agua
 }
 
 SwimmingFatigue: {
-	DisplayName: Fatiga al nadar
-	Description: No se puede nadar muy bien durante un rato
+	DisplayName: Fatiga de Natación
+	Description: No puedes nadar muy bien por un tiempo
 }
 
 CurseBreakerMark: {
-	DisplayName: Marca de maldición
-	Description: ¡Marcado para la muerte!
+	DisplayName: Marca de la Maldición
+	Description: ¡Marcado para morir!
 }
 
 MarbleMinecartBuff: {
@@ -737,34 +787,34 @@ MarbleMinecartBuff: {
 }
 
 Crystallization: {
-	DisplayName: Cistalización
-	Description: Pérdida rápida de vidas
+	DisplayName: Cristalización
+	Description: Perdiendo vida rápidamente
 }
 
 Golden_Curse: {
-	DisplayName: Maldición dorada
-	Description: Aumento de la velocidad de caída y el daño.
-	// Death: "{0} died solid as a gold bar"
+	DisplayName: Maldición Dorada
+	Description: Velocidad de caída y daño aumentados
+	Death: "{0} murió tan firme como un lingote de oro"
 }
 
 Crawlerock_Buff: {
-	DisplayName: Crawlerock
-	Description: ¡Un bebé reptil de las cavernas lucha por ti!
+	DisplayName: Rastrero de Roca
+	Description: ¡Un bebé rastrero de las cavernas lucha por ti!
 }
 
 JellyfishMinion_Buff: {
 	DisplayName: Medusa
-	Description: ¡Una linda medusa saltarina lucha por ti!
+	Description: ¡Una simpática y rebotadora medusa lucha por ti!
 }
 
 LavaRockSummon_Buff: {
-	DisplayName: Slagtern
+	DisplayName: Linterna de Escoria
 	Description: El poder del magma fluye a través de esta linterna
 }
 
 MangoJellyMinion_Buff: {
-	DisplayName: Jalea de mango
-	Description: ¡Una mini gelatina de mango lucha por ti!
+	DisplayName: Medusa de Mango
+	Description: ¡Una mini medusa de mango lucha por ti!
 }
 
 Minior_Buff: {
@@ -773,33 +823,33 @@ Minior_Buff: {
 }
 
 SnakeMinion_Buff: {
-	DisplayName: Serpiente voladora
-	Description: "'Bastante venenoso...'"
+	DisplayName: Serpiente Voladora
+	Description: "'Bastante venenosa...'"
 }
 
 SnapsporeMinion_Buff: {
-	DisplayName: Snapspore
-	Description: ¡Una Snapspore hinchable lucha por ti!
+	DisplayName: Esporagordo
+	Description: ¡Esporagordo rebotador lucha por ti!
 }
 
 MoonjellySummon_Buff: {
-	DisplayName: Conservador de luz de luna
-	Description: ¡Este preservador de luz lunar invoca a pequeños Lunazoa para que luchen por ti!
+	DisplayName: Conservador de Luz Lunar
+	Description: ¡Este conservador de luz lunar invoca a pequeñas lunazoas para luchar por ti!
 }
 
 QuacklingMinion_Buff: {
-	DisplayName: Graznido
-	Description: ¡Nacido con un pañuelo!
+	DisplayName: Cuaquito
+	Description: ¡Nació con un pañuelo!
 }
 
 RabbitOfCaerbannog_Buff: {
 	DisplayName: Conejo de Caerbannog
-	Description: "'Es solo un conejito inofensivo, ¿no?'"
+	Description: "'Solo es un conejito inofensivo, ¿verdad?'"
 }
 
 ButterflyMinion_Buff: {
-	DisplayName: Mariposa etérea
-	Description: ¡Una mariposa resplandeciente lucha por ti!
+	DisplayName: Mariposa Etérea
+	Description: ¡Una mariposa brillante lucha por ti!
 }
 
 ToucanMinion_Buff: {
@@ -808,38 +858,43 @@ ToucanMinion_Buff: {
 }
 
 SoulDaggerProj_Buff: {
-	DisplayName: Daga del alma
-	Description: ¡Segar sus almas!
+	DisplayName: Daga del Alma
+	Description: ¡Cosecha sus almas!
 }
 
 SandWarriorMinion_Buff: {
-	DisplayName: Guerrero de arena
-	Description: El guerrero de la arena luchará por ti
+	DisplayName: Guerrero de Arena
+	Description: El guerrero de arena luchará por ti
 }
 
 PigronMinion_Buff: {
-	DisplayName: Pigrons
-	Description: Bacon!
+	DisplayName: Cerdidragones
+	Description: ¡Panceta!
 }
 
 FairyMinion_Buff: {
 	DisplayName: Hadas
-	Description: ¡Eh! ¡Cuidado!
+	Description: ¡Oye! ¡Cuidado!
+}
+
+Jinxprobe_Buff: {
+	DisplayName: Minisonda de Malduende
+	Description: La minisonda de malduende luchará por ti
 }
 
 StarplateDrone_Buff: {
-	DisplayName: Dron de combate Starplate
-	Description: "'Seguro que causará una muerte rápida a tus enemigos'"
+	DisplayName: Dron de Combate Estelar
+	Description: "'Garantiza una muerte rápida a tus enemigos'"
 }
 
 LocustBig_Buff: {
 	DisplayName: Langostas
-	Description: Portador de una plaga
+	Description: Portadoras de una plaga
 }
 
 ExplorerSpeed: {
-	DisplayName: Velocidad del explorador
-	Description: Su movilidad ha mejorado considerablemente
+	DisplayName: Velocidad del Explorador
+	Description: Tu movilidad ha mejorado enormemente
 }
 
 ArcaneFreeze: {

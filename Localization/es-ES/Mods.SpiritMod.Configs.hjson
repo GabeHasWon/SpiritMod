@@ -119,13 +119,13 @@ SpiritClientConfig: {
 	}
 
 	Headers: {
-		// Visuals: "[i:SpiritMod/MoonStone] Visuals"
-		// QoL: "[i:SpiritMod/PirateCrate] QoL"
-		// Ambience: "[i:SpiritMod/GladeWreath] Ambience"
-		// Quests: "[i:SpiritMod/MapScroll] Quests"
-		// Generation: "[i:SpiritMod/BismiteCrystal] Generation"
-		// Oceans: "[i:SpiritMod/BlackPearl] Oceans"
-		// Fishing: "[i:SpiritMod/HornetfishQuest] Fishing"
+		Visuals: "[i:SpiritMod/MoonStone] Visuales"
+		QoL: "[i:SpiritMod/PirateCrate] Calidad de Vida"
+		Ambience: "[i:SpiritMod/GladeWreath] Ambientación"
+		Quests: "[i:SpiritMod/MapScroll] Misiones"
+		Generation: "[i:SpiritMod/BismiteCrystal] Generación"
+		Oceans: "[i:SpiritMod/BlackPearl] Océanos"
+		Fishing: "[i:SpiritMod/HornetfishQuest] Pesca"
 	}
 }
 
@@ -226,8 +226,8 @@ SpiritMusicConfig: {
 	}
 
 	SpiderCaveMusic: {
-		Label: "[i:SpiritMod/SpiderCaveBox] Añade una pista única para las cavernas de arañas"
-		Tooltip: Agrega una pista única para las cavernas de Arañas
+		Label: "[i:SpiritMod/SpiderCaveBox] Añade una pista única para las cuevas de arañas"
+		Tooltip: Agrega una pista única para las cuevas de Arañas
 	}
 
 	MeteorMusic: {
@@ -242,7 +242,7 @@ SpiritMusicConfig: {
 
 	SkeletronPrimeMusic: {
 		Label: "[i:SpiritMod/SkeletronPrimeBox] Añade una pista única para Esqueletrón Mayor"
-		Tooltip: Agrega una pista única de jefe para Skeletron Prime.
+		Tooltip: Agrega una pista única de jefe para Esqueletrón Mayor.
 	}
 
 	AuroraMusic: {
