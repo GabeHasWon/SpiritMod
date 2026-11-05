@@ -3794,6 +3794,8 @@ Glyph: {
 	RightClick: Hold this glyph and right-click the weapon you want to enchant
 	Remove: Hold this glyph and right-click the item whose glyph you want to remove
 	PriceText: "{0} {^0:glyph;glyphs}"
+	# {0} - glyph prefix, {1} - item name
+	GlyphPrefixing: "{0} {1}"
 }
 
 NullGlyph: {

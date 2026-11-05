@@ -3794,6 +3794,8 @@ Glyph: {
 	RightClick: 手持此雕文并右键你想要附魔的武器
 	Remove: 手持此雕文并右键你想要移除附魔的物品
 	PriceText: "{0} 雕文"
+	# {0} - glyph prefix, {1} - item name
+	GlyphPrefixing: "{0} {1}"
 }
 
 NullGlyph: {
