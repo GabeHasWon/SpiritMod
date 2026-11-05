@@ -427,7 +427,7 @@ DoubleJumpPotionBuff: {
 }
 
 FlightPotionBuff: {
-	DisplayName: Парение
+	DisplayName: Высокий полёт
 	Description: Время полёта увеличено на 25%
 }
 
