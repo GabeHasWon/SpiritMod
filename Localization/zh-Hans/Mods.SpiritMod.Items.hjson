@@ -679,7 +679,7 @@ Warhead: {
 }
 
 SpiritSolution: {
-	DisplayName: 青色溶液
+	DisplayName: 青溶液
 	Tooltip:
 		'''
 		由环境改造枪使用
