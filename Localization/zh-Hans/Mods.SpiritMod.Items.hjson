@@ -679,7 +679,7 @@ Warhead: {
 }
 
 SpiritSolution: {
-	DisplayName: 青色溶液
+	DisplayName: 青溶液
 	Tooltip:
 		'''
 		由环境改造枪使用
@@ -6162,7 +6162,7 @@ Mantaray_Hunting_Harpoon: {
 
 Reef_Wrath: {
 	DisplayName: 珊瑚礁之怒
-	Tooltip: 在地面召唤出珊瑚礁尖刺
+	Tooltip: 在地面召唤出伤害性珊瑚尖刺
 }
 
 BassSlapper: {
@@ -7396,7 +7396,7 @@ PendantOfTheOcean: {
 }
 
 ReefSpear: {
-	DisplayName: 珊瑚三叉戟
+	DisplayName: 海礁三叉戟
 	Tooltip: 右键投掷三叉戟，使敌人中毒一段时间
 }
 
