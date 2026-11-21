@@ -655,8 +655,8 @@ RubberBullet: {
 }
 
 SpectreBullet: {
-	DisplayName: 幽魂弹
-	Tooltip: 幽魂弹幕会追踪敌人并偶尔削弱他们的生命力
+	DisplayName: 幽灵弹
+	Tooltip: 灵能弹幕会追踪敌人并偶尔削弱他们的生命力
 }
 
 FaerieStar: {
@@ -7489,7 +7489,7 @@ AccursedSoul: {
 
 Graveyard: {
 	DisplayName: 墓咒
-	Tooltip: 创造通往幽魂领域的传送门，持续释放颅骨
+	Tooltip: 创造通往幽冥领域的传送门，持续释放颅骨
 }
 
 OldCross: {
@@ -8276,8 +8276,8 @@ SkeletronHand: {
 }
 
 SpectreKnife: {
-	DisplayName: 幽魂刀
-	Tooltip: 在命中敌人或物块时会释放幽魂矢
+	DisplayName: 幽灵刀
+	Tooltip: 在命中敌人或物块时会释放幽灵矢
 }
 
 TargetBottle: {
