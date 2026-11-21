@@ -6752,7 +6752,7 @@ GranitechStaffItem: {
 }
 
 GranitechSaberItem: {
-	DisplayName: 科技品牌
+	DisplayName: 科技烙印
 	Tooltip: 挥舞时会生成额外的全息剑
 }
 
