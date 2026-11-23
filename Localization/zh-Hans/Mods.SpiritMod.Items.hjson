@@ -160,7 +160,7 @@ Flying_Fish_Fin: {
 
 ForbiddenKnowledgeTome: {
 	DisplayName: 禁忌学识巨著
-	Tooltip: 击杀敌人时会释放追踪幽魂颅骨
+	Tooltip: 击杀敌人时会释放追踪灵能颅骨
 }
 
 FrostGiantBelt: {
@@ -6058,7 +6058,7 @@ LivingElderbarkWand: {
 }
 
 ReachBoomerang: {
-	DisplayName: 荆棘之心
+	DisplayName: 棘心回旋镖
 	Tooltip: 一次性发射两个回旋镖
 }
 
