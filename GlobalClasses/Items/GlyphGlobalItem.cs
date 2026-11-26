@@ -119,7 +119,9 @@ namespace SpiritMod.GlobalClasses.Items
 				if (ModLoader.HasMod("CalamityRuTranslate") && Language.ActiveCulture.Name == "ru-RU")
 					itemName = itemName.ToLowerInvariant();
 
-				item.SetNameOverride($"{GenderItemEffect(item, GlyphBase.FromType(Glyph).GetLocalizationKey(""))} " + itemName);
+				string key = "Mods.SpiritMod.Items.Glyph.GlyphPrefixing";
+				string newName = Language.GetTextValue(key, GenderItemEffect(item, GlyphBase.FromType(Glyph).GetLocalizationKey("")), itemName);
+				item.SetNameOverride(newName);
 			}
 			//Set the glyph prefix
 		}

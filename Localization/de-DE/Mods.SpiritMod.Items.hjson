@@ -3796,6 +3796,8 @@ Glyph: {
 	RightClick: Halte diese Glyphe und rechtsklicke die Waffe, die du verzaubern willst
 	Remove: Halte diese Glyphe und rechtsklicke den Gegenstand, dessen Glyphe du entfernen willst
 	PriceText: "{0} {^0:Glyphe;Glyphen}"
+	# {0} - glyph prefix, {1} - item name
+	GlyphPrefixing: ({0}) {1}
 }
 
 NullGlyph: {
