@@ -3791,9 +3791,11 @@ Glyph: {
 	Tooltip: "'El Encantador probablemente podría usar esto'"
 	Gain: El arma encantada obtendrá: [c/{0}:{1}]
 	Target: Solo se puede aplicar a armas
-	RightClick: Sostén este glifo y haz clic derecho sobre el arma que quieras encantar
-	Remove: Sostén este glifo y haz clic derecho sobre el objeto cuyo glifo quieras eliminar
-	PriceText: "{0} {^0:glifo;glifos}"
+	RightClick: Mantén pulsado este glifo y haz clic derecho en el arma que quieras encantar
+	Remove: Mantén pulsado este glifo y haga clic derecho en el arma cuyo glifo desea eliminar
+	// PriceText: "{0} {^0:glyph;glyphs}"
+	# {0} - glyph prefix, {1} - item name
+	GlyphPrefixing: ({0}) {1}
 }
 
 NullGlyph: {
