@@ -1,134 +1,134 @@
 Apostle:
 	'''
-	Los espíritus del viento te guían y te otorgan un salto adicional
-	Los ataques mágicos y a distancia ocasionalmente generan plumas para atacar a los enemigos
+	Los espíritus del viento te guían, otorgando un salto adicional
+	Los ataques mágicos y a distancia a veces generan plumas que atacan a los enemigos
 	'''
 Bismite:
 	'''
-	Si no recibes un golpe, se acumulan acumulaciones de Virulencia
-	La virulencia se carga cada 10 segundos
-	Golpear mientras Virulencia está cargada libera una explosión tóxica
-	Recibir un golpe agota la virulencia por completo
+	No recibir daño acumula cargas de Virulencia
+	La Virulencia se carga cada 10 segundos
+	Golpear mientras la Virulencia está cargada desata una explosión tóxica
+	Recibir daño agota la Virulencia por completo
 	'''
 BloodCourt:
 	'''
-	Toca dos veces {0} para sacrificar un 8% de tu salud máxima
-	y lanza un rayo de ánima oscura que inflige mucho daño en un radio
-	Este rayo absorbe 10 de salud adicional durante 5 segundos
+	Pulsa dos veces {0} para sacrificar un 8% de tu salud máxima
+	y lanzar una descarga de Anima Oscura que inflige gran daño en área
+	Esta descarga drena 10 de salud adicional durante 5 segundos
 	'''
 Botanist:
 	'''
-	Obtienes mayores recompensas de hierbas de todo tipo
-	Tienes un ojo poderoso para detectar hierbas
+	Obtienes mayores recompensas de las hierbas de todo tipo
+	Tienes un ojo experto para detectar hierbas
 	'''
 Cascade:
 	'''
-	Infligir daño a los enemigos crea un escudo de burbujas,
-	que a tamaño completo otorga una gran resistencia al daño contra el próximo ataque,
-	dañando y repeliendo a los enemigos cercanos.
+	Infligir daño a los enemigos genera un escudo de burbuja,
+	el cual, al alcanzar su tamaño máximo, otorga gran resistencia al daño contra el siguiente ataque,
+	dañando y empujando a los enemigos cercanos.
 	'''
-Chitin: Toca dos veces en una dirección para correr y envolverte en un tornado
+Chitin: Pulsa dos veces en una dirección para dar un impulso y envolverte en un tornado
 Cryolite:
 	'''
-	Genera un aura helada que ralentiza a los enemigos cercanos.
-	Esta aura se expande gradualmente, pero se reinicia cuando se lesiona
+	Genera un aura helada que ralentiza a los enemigos cercanos
+	Esta aura se expande gradualmente, pero se reinicia al recibir daño
 	'''
 Daybloom:
 	'''
-	Estar al aire libre durante el día aumenta la defensa, el maná máximo,
-	y la regeneración de la vida ligeramente
+	Estar al aire libre durante el día aumenta ligeramente la defensa,
+	el maná máximo y la regeneración de vida
 	'''
 Driftwood:
 	'''
-	Permite al usuario flotar en el agua
-	Incrementa el poder de pesca
+	Permite al portador flotar en el agua
+	Poder de pesca aumentado
 	'''
 Dusk:
 	'''
-	Magia y daño a distancia aumentado un 8% por la noche
-	Estás rodeado por una runa que guía el camino
-	Los ataques mágicos infligen Llama de las Sombras
+	8% de daño mágico y a distancia aumentado por la noche
+	Te rodea una runa que ilumina el camino
+	Los ataques mágicos infligen Llama sombría
 	'''
-DarkfeatherVisage: Genera rayos explosivos de Pluma Oscura alrededor del jugador.
-Elderbark: Aumenta todo el daño de objetos en 1
-Floran: Matar enemigos puede soltar carne cruda, restaurando salud y otorgando 'Bien alimentado'
+DarkfeatherVisage: Genera proyectiles de pluma oscura explosivos alrededor del jugador
+Elderbark: Aumenta todo el daño de los objetos en 1
+Floran: Matar enemigos puede soltar carne cruda, que restaura vida y otorga 'Bien alimentado'
 Frigid:
 	'''
-	Toque dos veces {0} para crear una pared helada en la posición del cursor
+	Pulsa dos veces {0} para crear un muro de hielo en la posición del cursor
 	8 segundos de enfriamiento
 	'''
 Granite:
 	'''
-	Toca dos veces {0} mientras caes para pisotear hacia abajo
-	Al golpear el suelo, se libera una onda de choque que escala con la altura
+	Pulsa dos veces {0} mientras caes para dar un pisotón hacia abajo
+	Impactar contra el suelo desata una onda de choque que aumenta según la altura
 	'''
 Infernal:
 	'''
-	Cuando tienes menos del 25% de salud, la defensa se reduce en 4, pero los Guardianes Infernales te rodean
-	Los Guardianes Infernales aumentan enormemente el daño mágico y reducen el costo de maná
-	Si te lastimas, pueden aparecer varias Ascuas Infernales explosivas
+	Por debajo del 25% de vida, la defensa se reduce en 4, pero te rodean Guardianes Infernales
+	Los Guardianes Infernales aumentan enormemente el daño de invocación
+	Recibir daño puede generar varias ascuas infernales explosivas
 	'''
 JellynautBubble:
 	'''
-	Golpear o matar a los enemigos con armas mágicas genera medusas arcanas alrededor del jugador
-	Toca dos veces {0} para hacer que la medusa ataque la posición del cursor
+	Golpear o matar enemigos con armas mágicas genera medusas arcanas alrededor del jugador
+	Pulsa dos veces {0} para hacer que las medusas ataquen a la posición del cursor
 	'''
 Leather:
 	'''
-	Usar armadura de tirador aumenta la concentración
+	Llevar la Armadura de Tirador acumula concentración
 	Mientras estás concentrado, tu siguiente golpe es un golpe crítico e inflige más daño
-	La concentración se interrumpe cuando está herido, pero se carga más rápido cuando está quieto
+	La concentración se interrumpe al recibir daño, pero se carga más rápido al quedarse quieto
 	'''
 Marble:
 	'''
-	Presiona 'Arriba' para otorgar 'Vientos divinos', lo que permite un vuelo limitado
-	Enfriamiento de 10 segundos
+	Pulsa 'Arriba' para otorgar 'Vientos Divinos', lo que permite un vuelo limitado
+	10 segundos de enfriamiento
 	'''
 Primalstone:
 	'''
-	Los ataques cuerpo a cuerpo y mágicos infligen Aflicción inestable
-	Velocidad de movimiento reducida un 10%
+	Los ataques cuerpo a cuerpo y mágicos infligen Aflicción Inestable
+	10% de velocidad de movimiento reducida
 	'''
 Rogue:
 	'''
-	Recibir un golpe otorga cuatro segundos de invisibilidad y un 100% más de daño
+	Recibir daño otorga cuatro segundos de invisibilidad y un 100% de daño aumentado
 	25 segundos de enfriamiento
 	'''
 Runic: Deja atrás peligrosas runas explosivas
 Seraph:
 	'''
-	Estar cerca de los enemigos aumenta la regeneración de vida, aumenta la regeneración de maná, aumenta la velocidad cuerpo a cuerpo
-	y reduce el coste de maná un 6% por enemigo
-	Este efecto se acumula tres veces
+	Estar cerca de enemigos aumenta la regeneración de vida, regeneración de maná,
+	velocidad cuerpo a cuerpo y reduce el coste de maná en un 6% por enemigo
+	Este efecto se acumula hasta tres veces
 	'''
 Slag:
 	'''
-	Toca dos veces {0} para hacer que todos los centinelas liberen una ráfaga de bolas de fuego
+	Pulsa dos veces {0} para hacer que todas las centinelas desaten una ráfaga de bolas de fuego
 	8 segundos de enfriamiento
 	'''
 Spirit:
 	'''
-	Los espíritus te otorgan varios beneficios en función de tu salud
-	Aumenta el daño un 8% cuando tienes menos de 400 de salud
-	Aumenta la defensa en 6 cuando tienes menos de 200 de salud
-	Aumenta la regeneración de vida cuando tienes menos de 100 de salud
-	Aumenta los marcos de invencibilidad cuando tienes menos de 50 de salud.
+	Los espíritus te otorgan varios bonificadores según tu salud
+	Aumenta el daño en un 8% por debajo de 400 de salud
+	Aumenta la defensa en 6 por debajo de 200 de salud
+	Aumenta la regeneración de vida por debajo de 100 de salud
+	Aumenta los fotogramas de invulnerabilidad por debajo de 50 de salud
 	'''
 Starplate:
 	'''
-	Toque dos veces {0} para desplegar un campo de energía en la posición del cursor
+	Pulsa dos veces {0} para desplegar un campo de energía en la posición del cursor
 	Este campo dura cinco segundos y sobrecarga todos los proyectiles a distancia que lo atraviesan
-	{1} segundo de enfriamiento
+	{1} segundos de enfriamiento
 	'''
 StreamSurfer:
 	'''
-	Toca dos veces {0} para crear una tromba marina que daña a los enemigos
+	Pulsa dos veces {0} para crear una tromba de agua montable que daña a los enemigos
 	7 segundos de enfriamiento
 	'''
 Wayfarer:
 	'''
-	Matar enemigos otorga un beneficio de daño acumulable
-	Romper ollas otorga un beneficio de velocidad de movimiento acumulable
-	La extracción de mineral otorga un beneficio de velocidad de minería acumulable
-	Todos los beneficios se acumulan hasta 4 veces
+	Matar enemigos otorga un bonificador acumulable de daño
+	Romper vasijas otorga un bonificador acumulable de velocidad de movimiento
+	Minar mineral otorga un bonificador acumulable de velocidad de minería
+	Todos los bonificadores se acumulan hasta 4 veces
 	'''
