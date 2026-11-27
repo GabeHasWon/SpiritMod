@@ -278,10 +278,14 @@ SpiritMusicConfig: {
 }
 
 SpiritServerConfig: {
-	// DisplayName: Spirit Server Config
+	DisplayName: Серверная конфигурация
 
 	LuminousOceanEnabled: {
-		// Label: Luminous Ocean Enabled
-		// Tooltip: ""
+		Label: Событие «Сияющий океан»
+		Tooltip:
+			'''
+			Иногда в океане будет происходить мини-событие «Сияющий океан».
+			Отключите, если оно вызывает проблемы с производительностью.
+			'''
 	}
 }
