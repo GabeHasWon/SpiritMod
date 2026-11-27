@@ -1,3 +1,4 @@
 ﻿v1.5.0.49
 - Updated Russian and Chinese localizations
 - Massively improved Spanish localization, added 'book' UI Spanish localizations as well
+- Added toggle for the Luminous Ocean event, which may ameliorate niche performance issues
