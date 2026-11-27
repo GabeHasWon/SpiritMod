@@ -277,10 +277,10 @@ SpiritMusicConfig: {
 }
 
 SpiritServerConfig: {
-	// DisplayName: Spirit Server Config
+	DisplayName: 服务器配置
 
 	LuminousOceanEnabled: {
-		// Label: Luminous Ocean Enabled
-		// Tooltip: ""
+		Label: 启用流明瀚海
+		Tooltip: 允许流明瀚海事件发生。禁用此项可能会提升性能；在执行此操作之前，请检查你是否有问题。
 	}
 }
