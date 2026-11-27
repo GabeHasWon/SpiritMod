@@ -183,22 +183,9 @@ BurningRage: {
 	Description: Estás recibiendo daño
 }
 
-CollapsingVoid.DisplayName: Vacío Colapsante
-DevouringVoid.DisplayName: Vacío Devorador
-
 DivineStrike: {
 	DisplayName: Golpe Divino
 	Description: Tu siguiente ataque infligirá daño aumentado
-}
-
-PhantomVeil: {
-	DisplayName: Velo Fantasma
-	Description: El siguiente ataque será bloqueado
-}
-
-SanguineBleed: {
-	DisplayName: Sangrado Carmesí
-	Description: Estás perdiendo sangre rápidamente
 }
 
 SanguineRegen: {
@@ -211,13 +198,6 @@ TemporalShift: {
 	Description: Toca dos veces para dar un impulso y obtener un aumento temporal de velocidad
 }
 
-WanderingPlague.DisplayName: Plaga Ambulante
-
-WindBurst: {
-	DisplayName: Ráfaga de Viento
-	Description: El retroceso se ve amplificado
-}
-
 GraniteArrow_Debuff: {
 	DisplayName: Debuff de Flecha de Granito
 	Description: Mods.SpiritMod.Buffs.GraniteArrow_Debuff.Description
@@ -226,11 +206,6 @@ GraniteArrow_Debuff: {
 GreekFire: {
 	DisplayName: Fuego Griego
 	Description: Envolviendo en llamas por los propios Dioses
-}
-
-HighGravityBuff: {
-	DisplayName: Gravedad Alta
-	Description: La gravedad vuelve a la normalidad
 }
 
 HolyLight: {
@@ -296,11 +271,6 @@ NebulaFlame: {
 OliveBranchBuff: {
 	DisplayName: Solución Pacífica
 	Description: "'Haz las paces con tus enemigos'"
-}
-
-OnyxWind: {
-	DisplayName: Torbellino de Ónice
-	Description: Velocidad de movimiento aumentada un 10%
 }
 
 OracleBoonBuff: {
@@ -561,11 +531,6 @@ Stopped: {
 	Description: Estás inmovilizado
 }
 
-Sturdy: {
-	DisplayName: Resistente
-	Description: "'Tu caparazón ha sido agrietado'"
-}
-
 ElectricSummonTag: {
 	DisplayName: Etiqueta de Invocación
 	Description: ¡Etiquetado!
@@ -681,11 +646,6 @@ LowGravZoneTimer: {
 	Description: ¡La Zona de Baja Gravedad está activa!
 }
 
-RepulsionZoneTimer: {
-	DisplayName: Zona de Repulsión
-	Description: ¡La Zona de Repulsión está activa!
-}
-
 ShieldZoneTimer: {
 	DisplayName: Zona de Fortificación
 	Description: ¡La Zona de Fortificación está activa!
@@ -726,11 +686,6 @@ RunicSiphon: {
 	Description: Resistencia al daño reducida y perdiendo PV rápidamente
 }
 
-ManajinxBuff: {
-	DisplayName: Encantamiento de Luz Estelar
-	Description: Las armas mágicas generan estrellas teledirigidas adicionales y el consumo de maná se reduce drásticamente
-}
-
 PendantBuff: {
 	DisplayName: Amigo Cochinilla
 	Description: "'¡Rock and roll!'"
@@ -744,11 +699,6 @@ MirrorCoatBuff: {
 SaddleBuff: {
 	DisplayName: Montura de Ciervo Aurora
 	Description: Sientes el poder de las estrellas
-}
-
-CosmicRattlerPetBuff: {
-	DisplayName: Estelarácnido
-	Description: "'En su interior puedes ver las profundidades del espacio'"
 }
 
 Empowered: {
@@ -875,11 +825,6 @@ PigronMinion_Buff: {
 FairyMinion_Buff: {
 	DisplayName: Hadas
 	Description: ¡Oye! ¡Cuidado!
-}
-
-Jinxprobe_Buff: {
-	DisplayName: Minisonda de Malduende
-	Description: La minisonda de malduende luchará por ti
 }
 
 StarplateDrone_Buff: {

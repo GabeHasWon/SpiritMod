@@ -1,0 +1,214 @@
+Adventurer: {
+	Dialogue: {
+		Basic1: He viajado por todo este mundo y tengo muchísimas cosas que enseñarte.
+		Basic2: Tienes una casa encantadora. Es un alojamiento mucho mejor que cuando esos salvajes de La Zarza me colgaron de un espetón.
+		Basic3: ¡Cada amanecer trae consigo una nueva oportunidad para emprender un viaje! ¿Te interesa?
+		Basic4: Somos bastante parecidos, tú y yo. Siento nuestra sed compartida de aventuras.
+		Basic5: ¡Compra mis cosas y sal ahí fuera! Mira lo que el mundo tiene para ofrecer, justo como he hecho yo.
+		Basic6: Desde las profundidades de los templos hasta las alturas del espacio, echa un vistazo a mi mercancía.
+		Basic7: Tengo maña con los pines, debo admitir. Encuentras todas estas pequeñas baratijas en tus viajes...
+		Special1: ¡Te juro que tengo más productos a la venta que {0}!
+		Special2: ¡Ah! ¡Es {0}! A menudo nos hemos cruzado en nuestros viajes. Aún no he encontrado todas esas selvas exóticas de las que habla.
+		Special3: ¡Tengo muy buenos precios hoy! ¡La mercancía de {0} no puede competir! Literalmente no puede. Ya no vendo armas de fuego.
+		Special4: Al igual que la luna, mi mercancía no es constante.
+		Special5: Todo el mundo parece muy agresivo esta noche. Con los zombis llamando a nuestra puerta, creo que deberías comprar cosas e irte bajo tierra lo antes posible. ¿Puedes llevarme contigo?
+		Special6: Los duendes están más organizados de lo que crees; vi a sus magos construir una torre enorme por allí. ¡Deberías ir a verla algún día!
+		Special7: Mi antiguo socio se pasó a la vida de bandido hace unos años. Me pregunto si le irá bien. Creo que sus compinches han montado un campamento de bandidos en algún lugar cerca del mar.
+		Special8: Hay una tenue luz azul brillando en el horizonte. Me pregunto de qué se tratará, ¿eh?
+		Bound: ¡Pensé que estaba verdaderamente acabado! Si no hubieras intervenido, probablemente me habrían echado de comer a cualquier cosa que esos monstruos intentaban conjurar allí. Yo no tocaría eso si fuera tú... Mira, tienes mi agradecimiento; pero aquí entre nos, han sido unos meses muy largos y lo único que quiero es tomarme un descanso de las aventuras por un tiempo. La vida es corta y preferiría no acortarla aún más. ¿Tienes un lugar donde pueda quedarme?
+	}
+
+	Mood: {
+		Content: Relajarse en casa es casi tan agradable como una buena caminata, ¿verdad?
+		NoHome: Aunque soy un explorador, me gustaría relajarme un tiempo. ¿Tienes algún sitio libre donde pueda resguardarme?
+		LoveSpace: ¡Mucho espacio para planificar mi próxima expedición, maravilloso!
+		FarFromHome: Se podría decir que me estoy "aventurando" demasiado lejos de mi casa... Pero en serio, no tengo un mapa.
+		DislikeCrowded: ¿Cómo se supone que voy a cartografiar tierras inexploradas con tanta gente alrededor?
+		HateCrowded: ¡Preferiría explorar un lago de lava antes que vivir aquí con toda esta gente!
+		LikeBiome: Verdaderamente, el bioma de {BiomeName} es un lugar relajante. Un buen sitio para descansar.
+		LoveBiome: No deberías ver esto.
+		DislikeBiome: Aunque me encantaría terminar lo que empecé, es demasiado pronto para estar de vuelta en el bioma de {BiomeName}.
+		HateBiome: ¡Tampoco deberías ver esto!
+		LikeNPC: "{NPCName} y yo nos conocemos de hace tiempo. ¡Aún recuerdo nuestra primera aventura juntos!"
+		LoveNPC: Ese {NPCName} es un personaje fascinante. ¡Sus historias no tienen rival!
+		DislikeNPC: "{NPCName} sí que sabe cómo arruinar el ambiente. ¿Tal vez una caminata le alegraría el día?"
+		HateNPC: Aunque {NPCName} tiene espíritu de coleccionista, solo le encasqueta su trabajo a los demás. Una decepción para los exploradores de todas partes.
+		LikeNPC_Princess: "{NPCName} tiene un aire especial. Un aire de aventura."
+		Princess_LovesNPC: ¡{NPCName} tiene un montón de historias geniales!
+	}
+
+	Name1: Morgan
+	Name2: Adam
+	Name3: Aziz
+	Name4: Temir
+	Name5: Evan
+	Name6: Senzen
+	Name7: Johanovic
+	Name8: Adrian
+	Name9: Christopher
+}
+
+Gambler: {
+	Dialogue: {
+		Basic1: Apostar es el deporte de la realeza. ¿Por qué no te juegas algo?
+		Basic2: Debería advertirte, mi juego no es apto para pusilánimes.
+		Basic3: Apostar es malo para la salud. A menos que ganes.
+		Basic4: Ganes o pierdas, la emoción del juego vale cada moneda.
+		Basic5: Tienes cara de ganador. ¡Acércate!
+		Basic6: ¡Siente orgullo y satisfacción por unas pocas monedas!
+		Bound:
+			'''
+			¡Debe ser mi día de suerte al ver una cara amable por aquí!
+			A estos duendes no les hizo mucha gracia que les ofreciera un trato... ejem, amañado.
+			En fin, ¿tienes algún lugar donde pueda quedarme? Nos lo jugamos a cara o cruz.
+			'''
+	}
+
+	Mood: {
+		Content: Mientras nos tomamos un respiro aquí, ¿por qué no abres una caja o dos?
+		NoHome: Necesito un lugar propio... De lo contrario, ¿dónde voy a montar el puesto?
+		LoveSpace: Soy del tipo jugadora, pero no me va el rollo casino... Me gusta la paz y la tranquilidad.
+		FarFromHome: El dinero es una cosa, pero no me gusta jugar con mi vida. ¿Dónde está mi casa?
+		DislikeCrowded: Hay un dicho que dice que "muchos cocineros echan a perder el caldo"... si entiendes lo que quiero decir.
+		HateCrowded: ¡La gente no para de tirarme las cajas de botín! ¿Cómo se supone que voy a vender aquí?
+		LikeBiome: Ah, el bioma de {BiomeName}. El lugar idóneo para montar el puesto.
+		LoveBiome: No deberías ver esto.
+		DislikeBiome: A nadie le gusta apostar con esta humedad. ¡Las monedas se quedan pegajosas y da asco!
+		HateBiome: NO PUEDO hacer fluir el dinero aquí.
+		LikeNPC: ¿Mi pelo? Es el orgullo y la alegría de {NPCName}. Hace un trabajo maravilloso.
+		LoveNPC: Una vez le vendí un cofre de madera a {NPCName} a precio de oro para sacarme un dinero rápido. Lo abrió y había como trescientos patos dentro. Nunca he estado tan confusa y sorprendida a la vez.
+		DislikeNPC: A diferencia de {NPCName}, yo no acaparo mi riqueza.
+		HateNPC: Di lo que quieras sobre MÍ, pero ¿lo que hace {NPCName} es siquiera legal?
+		LikeNPC_Princess: Sabes, {NPCName} tiene agallas. Es una chica de armas tomar, ¡y tú también podrías serlo!
+		Princess_LovesNPC: El estilo de {NPCName} es alucinante. Se nota que tiene mucha confianza en sí misma.
+	}
+
+	Name1: Yumeko
+	Name2: Vanessa
+	Name3: Gray
+	Name4: Alexandra
+	Name5: Sasha
+	Name6: Celine
+	Name7: Aleksa
+}
+
+Rogue: {
+	Dialogue: {
+		Basic1: ¿Vienes a echar un vistazo a mis mercancías? Están bastante afiladas.
+		Basic2: Créeme: los restos de los jefes que matas no se echan a perder.
+		Basic3: ¡El mundo está lleno de oportunidades! Ahora ve a matar unas cuantas cosas.
+		Basic4: Esta máscara está empezando a oler a rancio...
+		Basic5: ¡Mira a ese demonio tan atractivo! Ah, si solo es un espejo.
+		Basic6: ¡Aquí para satisfacer todas tus necesidades de asesinato!
+		Basic7: ¡Qué buen día hace por aquí! Y bien, ¿a quién quieres muerto?
+		Special1: Dile a {0} que deje de preguntarme de dónde saqué los amuletos. No necesita saberlo. Le daría un patatús del susto.
+		Special2: ¿Por qué {0} está tan empeñado en vender shurikens? Ese es mi terreno.
+		Bound: ¡Ey! Gracias por rescatarme... Y ahora, ¿te importaría sacarme de este aprieto? ¡Me estafaron, se llevaron todo mi dinero y me dejaron tirado aquí dando por hecho que palmaría! Eso sí, no pienses que por esto te voy a hacer descuento en mis artículos. ¡Es broma! O tal vez no.
+	}
+
+	Mood: {
+		Content: Tres cientos... cuatro cientos... ¡nada supera el recuento de un... arduo día de trabajo!
+		NoHome: ¿Dónde se supone que voy a esconder lo que ro... digo, lo que encuentro, si no tengo casa?
+		LoveSpace: Lejos de miradas indiscretas, perfecto, perfecto.
+		FarFromHome: ¿Alguien me ha robado la casa y se la ha llevado? No sé bien dónde está.
+		DislikeCrowded: Demasiada gente, me están mirando de reojo.
+		HateCrowded: Con tanta multitud, no es culpa mía si ocurre un "accidente" y se despeja el panorama, ¿sabes?
+		LikeBiome: ¡Tanta cobertura! ¡Tantos sitios donde esconderse! Un lugar maravilloso.
+		LoveBiome: No deberías ver esto.
+		DislikeBiome: Tengo DEMASIADA competencia aquí, ¡SÁCAME de aquí!
+		HateBiome: ¡Tampoco deberías ver esto!
+		LikeNPC: "{NPCName} de hecho me ayudó a cruzar por algunas zonas dudosas un par de veces, un gran tipo."
+		LoveNPC: No soy ingeniera, pero las cosas que hace {NPCName} son geniales. ¡Puede que incluso pague por ellas esta vez!
+		DislikeNPC: ¿Ah, {NPCName}? Solo digamos que no le disgusta probar un par de sus explosivos.
+		HateNPC: Te diré una cosa... ¿el tipo ese, {NPCName}? Salta a la mínima de cambio, de verdad. ¡Prometo que solo le quité un par de monedas!
+		LikeNPC_Princess: "{NPCName} dijo que guardaría mi secreto bien cerca de su corazón... el cual yo no tengo. Largo."
+		Princess_LovesNPC: A veces {NPCName} me consigue cosas geniales. ¡Y dice que es gratis!
+	}
+
+	Name1: Zane
+	Name2: Carlos
+	Name3: Tycho
+	Name4: Damien
+	Name5: Shane
+	Name6: Daryl
+	Name7: Shepard
+	Name8: Sly
+}
+
+RuneWizard: {
+	Dialogue: {
+		Basic1: ¡Potencia tus armas con mis extraños Glifos!
+		Basic2: A veces, simplemente garabateo una runa en un Glifo y veo qué pasa. No te recomiendo que lo hagas.
+		Basic3: Antes de que preguntes, no, no voy a poner un Glifo Meloso en una abeja. Sería demasiado poderoso.
+		Basic4: ¡Olvidé la esencia de Heléboro! ¡No toques eso!
+		Basic5: Si no estás seguro de cómo tropezarte con los Glifos, ¡mi maestro me dijo una vez que los jefes poderosos poseen muchos!
+		Basic6: Dato curioso: puedes poner runas en cualquier cosa. Simplemente son más poderosas en los Glifos.
+		Basic7: ¡Cualquier cosa se puede encantar si posees la habilidad, el ingenio y la esencia!
+		Special1: Me pregunto qué encantamientos le habrán puesto a la luna... ¡está totalmente azul!
+		Special2: ¡El resurgimiento de los Espíritus ofrece todo un nuevo nivel de posibilidades de encantamiento!
+	}
+
+	Mood: {
+		Content: Las runas van progresando bastante bien hoy.
+		NoHome: ¡No tengo espacio para mis runas!
+		LoveSpace: La magia fluye con mucha más facilidad en la calma.
+		FarFromHome: No sé si lo habrás adivinado, pero preferiría con diferencia estar cerca de mis amadas runas.
+		DislikeCrowded: ¡Es difícil concentrarse con tanta gente alrededor!
+		HateCrowded: Con tanta gente cerca, solo puedo desear que existiera un Glifo de Silencio.
+		LikeBiome: ¡Nunca he estado tan en sintonía con la magia rúnica! Este lugar es maravilloso.
+		LoveBiome: No deberías ver esto.
+		DislikeBiome: Este lugar es demasiado. Simplemente demasiado. Sácame de aquí.
+		HateBiome: ¡Tampoco deberías ver esto!
+		# LikeNPC: "Ah, {NPCName}? We know nothing of each other's craft - yet, still a fascinating man. Nice fashion too, unique." - Removed Witch Doctor dialogue
+		LikeNPC: A veces, {NPCName} me pide que encante algunas de sus mercancías... Siempre les pongo un encantamiento en blanco. Y él se alegra como un niño cada vez.
+		LoveNPC: "{NPCName} y yo hablamos a menudo de nuestro trabajo; es fascinante cómo puede encantar cosas sin tener ni idea de magia."
+		DislikeNPC: ¡No me cae mal nadie!
+		HateNPC: "{NPCName} no comprende el poder de las runas... Todo son 'Báculo de hielo por aquí' y 'Bola de cristal por allá'..."
+		LikeNPC_Princess: Siempre hay un brillo mágico en los ojos de {NPCName} cuando hago algún truco. Son los pequeños detalles, jaja.
+		Princess_LovesNPC: ¡{NPCName} me dio una runa de purpurina! ¡Bien!
+	}
+
+	Name1: Malachai
+	Name2: Nisarmah
+	Name3: Moneque
+	Name4: Tosalah
+	Name5: Kentremah
+	Name6: Salqueeh
+	Name7: Oarno
+	Name8: Cosimo
+}
+
+Vanilla: {
+	Wizard: {
+		RuneWizard: ¿Has oído hablar de {N}? Sus mercancías son interesantes; yo mismo no he visto ese tipo de magia.
+		Gambler1: ¡Con solo un pequeño hechizo de transmutación, las cajas de {N} pueden ERUPCIONAR en palomas! ¡Pruébalo en algún momento!
+		Gambler2: "{N} nunca se da cuenta de que mi baraja es mágica, ni siquiera es real. ¡Está demasiado concentrada!"
+	}
+
+	Pirate: {
+		Adventurer: ¡Ahoy! Ese {N} sí que sabe de la vida pirata. Puede que sea un marinero de agua dulce, pero no es de los malos, si me preguntas a mí.
+		Rogue: Mmm... Ese viejo {N} de ahí me recuerda a tiempos pasados. Y no precisamente a los buenos, que te quede claro.
+		Gambler: Sabes, {N} tiene madera para llegar a ser una buena pirata algún día. Sí... tiene ojo para el oro.
+	}
+
+	GoblinTinkerer: {
+		RuneWizard: "{N} y yo compartimos experiencias a diario; ¡su magia es fascinante! Es una maravilla hablar con él."
+		Gambler: "{N} me recuerda a los míos. Vendedores vagos vendiéndote MÁS bolas con pinchos por precios ABSURDOS..."
+	}
+
+	ArmsDealer: {
+		Rogue1: "¿{N}? Esa pequeña pestilencia. Intentó llevarse mi Tiburón Minúsculo sin soltar un solo duro."
+		Rogue2: Nunca he visto a un tipo tan molesto como ese {N}. Por suerte, tengo mis formas de mantenerlo alejado.
+		Adventurer: Conozco a {N}. Ese tipo no está tan mal. Sobre todo desde que dejó de vender armas, je.
+	}
+
+	Demolitionist: {
+		RuneWizard: ¡Jajaja! Ese {N} es un cachondo. ¡Me encanta cómo me encanta las mercancías gratis!
+		Rogue: "{N} es un tipo un poco astuto, ¡pero cualquiera que tenga el detalle de pagar una ronda se gana mi respeto!"
+	}
+
+	Golfer.Gambler: ¿Quién es {N} y por qué quiere venderme "[RARE] CAJAS DE BOTÍN DE GOLF"?
+	DD2Bartender.Adventurer: Ese {N} sí que sabe contar una buena historia. Ni siquiera compra mucha bebida, pero aun así disfruto de su compañía.
+	Nurse.Gambler: Emm... "¡Cómprate un par de cajas y no necesitarás curación!". ¿De verdad {N} me dijo que te leyera un anuncio?
+	BestiaryGirl.Adventurer: O sea, {N} sabe mazo de animales. ¡Es súper majo!
+}

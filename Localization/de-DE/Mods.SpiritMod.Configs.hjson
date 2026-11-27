@@ -275,3 +275,12 @@ SpiritMusicConfig: {
 		Tooltip: Aktiviert einen einzigartigen Titel für den Tag nach dem Laternen-Nacht-Event
 	}
 }
+
+SpiritServerConfig: {
+	// DisplayName: Spirit Server Config
+
+	LuminousOceanEnabled: {
+		// Label: Luminous Ocean Enabled
+		// Tooltip: ""
+	}
+}

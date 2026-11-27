@@ -186,7 +186,11 @@ CrimsonTrapper: {
 }
 
 AsteroidDebris.DisplayName: Escombros
-GoldDebris.DisplayName: Escombros
+
+GoldDebris: {
+	DisplayName: Escombros
+	// AltName: Hit Me!
+}
 
 AstralAdventurer: {
 	DisplayName: Aventurero Astral
@@ -1200,7 +1204,7 @@ Adventurer: {
 		DislikeNPC: "{NPCName} sí que sabe cómo arruinar el ambiente. ¿Quizás una excursión le alegraría el día?"
 		HateNPC: Aunque {NPCName} tiene espíritu de coleccionista, solo le encarga su trabajo a los demás. Una decepción para los exploradores de todas partes.
 		LikeNPC_Princess: "{NPCName} tiene un aura especial. Un aura de aventura."
-		Princess_LovesNPC: "¡{NPCName} tiene muchísimas historias geniales!"
+		Princess_LovesNPC: ¡{NPCName} tiene muchísimas historias geniales!
 	}
 
 	Entry: Un intrépido explorador impulsado por una ambición que a menudo lo ha llevado al peligro. También es un ávido tomador de notas, y sus muchos relatos están ahora esparcidos por toda la tierra.

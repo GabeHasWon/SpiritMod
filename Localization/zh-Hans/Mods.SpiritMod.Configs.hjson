@@ -275,3 +275,12 @@ SpiritMusicConfig: {
 		Tooltip: 为灯笼夜事件后的白天启用一首独特的曲目
 	}
 }
+
+SpiritServerConfig: {
+	// DisplayName: Spirit Server Config
+
+	LuminousOceanEnabled: {
+		// Label: Luminous Ocean Enabled
+		// Tooltip: ""
+	}
+}

@@ -24,11 +24,10 @@ InBriar: En el Zarzal
 InAsteroids: En los Asteroides
 InSpirit: En el Espíritu
 FirstDown: Solo en la primera derrota
-NotInSpirit: No en el Espíritu
-NotInBriar: No en el Zarzal
-StarjinxDown: El evento del Malduende Estelar ha sido derrotado
 HalfCompleteBestiary: La mitad del bestiario de Spirit está completado
 FullCompleteBestiary: Todo el bestiario de Spirit está completado
+// DurasilkSheaf: Obtain 3 Durasilk Sheafs
+// WarlockLure: During Unholy Undertaking
 # Quest conditions are below here
 # IsCompleted is used to shorten translation
 IsCompleted: misión completada

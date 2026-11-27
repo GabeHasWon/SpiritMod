@@ -335,7 +335,7 @@ QuestInfo: {
 	RescueQuestStylist: {
 		Name: Atrapada
 		Description: Oí a una chica gritando abajo en las cuevas llenas de arañas. Iría a salvarla yo mismo pero, ejem... tengo asuntos pendientes. No es que les tenga miedo a esos bichos gigantes y espeluznantes ni nada por el estilo. ¿Podrías ir a rescatarla por mí?
-		Dialogue: 'No vayas a explorar con tijeras', dijeron. 'No te quedarás atrapada en una telaraña', dijeron. Por cierto, ¿quién te dijo que vinieras a rescatarme? ¿Ah, el Demoledor? ¡Dile que los cortes de pelo le salen gratis de por vida!
+		Dialogue: "'No vayas a explorar con tijeras', dijeron. 'No te quedarás atrapada en una telaraña', dijeron. Por cierto, ¿quién te dijo que vinieras a rescatarme? ¿Ah, el Demoledor? ¡Dile que los cortes de pelo le salen gratis de por vida!"
 		Objective: Ve a las cuevas de arañas y rescata a la cautiva
 	}
 

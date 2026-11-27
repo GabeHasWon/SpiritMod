@@ -275,3 +275,12 @@ SpiritMusicConfig: {
 		Tooltip: Enables a unique track for the day after the Lantern Night event
 	}
 }
+
+SpiritServerConfig: {
+	DisplayName: Server Config
+
+	LuminousOceanEnabled: {
+		Label: Luminous Ocean Enabled
+		Tooltip: Allows the Luminous Ocean vanity event to occur. Disabling this may have performance benefits; check if you have issues before doing this.
+	}
+}

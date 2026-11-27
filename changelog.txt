@@ -1,4 +1,3 @@
-﻿v1.5.0.48
-- Added German localization (thank you @BardSmard!)
+﻿v1.5.0.49
 - Updated Russian and Chinese localizations
-- Added missing localization for hittable asteroids "Hit me!" text
+- Massively improved Spanish localization, added 'book' UI Spanish localizations as well

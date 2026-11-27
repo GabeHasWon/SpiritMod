@@ -276,3 +276,12 @@ SpiritMusicConfig: {
 		Tooltip: Добавляет новую музыкальную тему для дня после ночи фонарей.
 	}
 }
+
+SpiritServerConfig: {
+	// DisplayName: Spirit Server Config
+
+	LuminousOceanEnabled: {
+		// Label: Luminous Ocean Enabled
+		// Tooltip: ""
+	}
+}

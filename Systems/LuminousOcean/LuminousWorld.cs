@@ -6,19 +6,20 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria.ModLoader.IO;
+using SpiritMod.Utilities;
 
 namespace SpiritMod.Systems.LuminousOcean;
 
 public class LuminousWorld : ModSystem
 {
-	public const byte Default = byte.MaxValue;
+	public const byte DEFAULT_LUMINOUS_VALUE = byte.MaxValue;
 
 	public const int GREEN = 0;
 	public const int BLUE = 1;
 	public const int PURPLE = 2;
 
-	public static bool LuminousOceanActive => LuminousType != Default;
-	public static byte LuminousType { get; private set; } = Default;
+	public static bool LuminousOceanActive => LuminousType != DEFAULT_LUMINOUS_VALUE;
+	public static byte LuminousType { get; private set; } = DEFAULT_LUMINOUS_VALUE;
 
 	public override void Load() => TimeSystem.TimeChanged += UpdateLuminousOcean;
 
@@ -27,9 +28,9 @@ public class LuminousWorld : ModSystem
 		if (Main.netMode == NetmodeID.MultiplayerClient)
 			return;
 
-		LuminousType = Default;
+		LuminousType = DEFAULT_LUMINOUS_VALUE;
 
-		if (!day && Main.rand.NextBool(6))
+		if (!day && Main.rand.NextBool(6) && ModContent.GetInstance<SpiritServerConfig>().LuminousOceanEnabled)
 		{
 			var color = new Color(251, 255, 230);
 			LuminousType = (byte)Main.rand.Next(0, 3);
@@ -41,7 +42,7 @@ public class LuminousWorld : ModSystem
 		}
 	}
 
-	public override void ClearWorld() => LuminousType = Default;
+	public override void ClearWorld() => LuminousType = DEFAULT_LUMINOUS_VALUE;
 
 	public override void NetSend(BinaryWriter writer) => writer.Write(LuminousType);
 	public override void NetReceive(BinaryReader reader) => LuminousType = reader.ReadByte();
